@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsItemsCreateBatchRequest{}
 // CatalogsItemsCreateBatchRequest Request object to create catalogs items
 type CatalogsItemsCreateBatchRequest struct {
 	Country Country `json:"country"`
-	Language Language `json:"language"`
+	Language CatalogsItemsRequestLanguage `json:"language"`
 	Operation BatchOperation `json:"operation"`
 	// Array with catalogs items
 	Items []ItemCreateBatchRecord `json:"items"`
@@ -35,7 +35,7 @@ type _CatalogsItemsCreateBatchRequest CatalogsItemsCreateBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsCreateBatchRequest(country Country, language Language, operation BatchOperation, items []ItemCreateBatchRecord) *CatalogsItemsCreateBatchRequest {
+func NewCatalogsItemsCreateBatchRequest(country Country, language CatalogsItemsRequestLanguage, operation BatchOperation, items []ItemCreateBatchRecord) *CatalogsItemsCreateBatchRequest {
 	this := CatalogsItemsCreateBatchRequest{}
 	this.Country = country
 	this.Language = language
@@ -77,9 +77,9 @@ func (o *CatalogsItemsCreateBatchRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsItemsCreateBatchRequest) GetLanguage() Language {
+func (o *CatalogsItemsCreateBatchRequest) GetLanguage() CatalogsItemsRequestLanguage {
 	if o == nil {
-		var ret Language
+		var ret CatalogsItemsRequestLanguage
 		return ret
 	}
 
@@ -88,7 +88,7 @@ func (o *CatalogsItemsCreateBatchRequest) GetLanguage() Language {
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsCreateBatchRequest) GetLanguageOk() (*Language, bool) {
+func (o *CatalogsItemsCreateBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *CatalogsItemsCreateBatchRequest) GetLanguageOk() (*Language, bool) {
 }
 
 // SetLanguage sets field value
-func (o *CatalogsItemsCreateBatchRequest) SetLanguage(v Language) {
+func (o *CatalogsItemsCreateBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
 	o.Language = v
 }
 

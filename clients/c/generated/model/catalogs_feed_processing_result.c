@@ -5,13 +5,13 @@
 
 
 char* catalogs_feed_processing_result_status_ToString(pinterest_rest_api_catalogs_feed_processing_result__e status) {
-    char* statusArray[] =  { "NULL", "COMPLETED", "COMPLETED_EARLY", "DISAPPROVED", "FAILED", "PROCESSING", "QUEUED_FOR_PROCESSING", "UNDER_APPEAL", "UNDER_REVIEW" };
+    char* statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
     return statusArray[status];
 }
 
 pinterest_rest_api_catalogs_feed_processing_result__e catalogs_feed_processing_result_status_FromString(char* status){
     int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "COMPLETED", "COMPLETED_EARLY", "DISAPPROVED", "FAILED", "PROCESSING", "QUEUED_FOR_PROCESSING", "UNDER_APPEAL", "UNDER_REVIEW" };
+    char *statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
     size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(status, statusArray[stringToReturn]) == 0) {
@@ -87,26 +87,29 @@ cJSON *catalogs_feed_processing_result_convertToJSON(catalogs_feed_processing_re
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_feed_processing_result->created_at
-    if(catalogs_feed_processing_result->created_at) {
+    if (!catalogs_feed_processing_result->created_at) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "created_at", catalogs_feed_processing_result->created_at) == NULL) {
     goto fail; //Date-Time
-    }
     }
 
 
     // catalogs_feed_processing_result->id
-    if(catalogs_feed_processing_result->id) {
+    if (!catalogs_feed_processing_result->id) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "id", catalogs_feed_processing_result->id) == NULL) {
     goto fail; //String
-    }
     }
 
 
     // catalogs_feed_processing_result->updated_at
-    if(catalogs_feed_processing_result->updated_at) {
+    if (!catalogs_feed_processing_result->updated_at) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "updated_at", catalogs_feed_processing_result->updated_at) == NULL) {
     goto fail; //Date-Time
-    }
     }
 
 
@@ -191,29 +194,38 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
     // catalogs_feed_processing_result->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "created_at");
-    if (created_at) { 
+    if (!created_at) {
+        goto end;
+    }
+
+    
     if(!cJSON_IsString(created_at) && !cJSON_IsNull(created_at))
     {
     goto end; //DateTime
     }
-    }
 
     // catalogs_feed_processing_result->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "id");
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    if (!id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(id))
     {
     goto end; //String
-    }
     }
 
     // catalogs_feed_processing_result->updated_at
     cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogs_feed_processing_resultJSON, "updated_at");
-    if (updated_at) { 
+    if (!updated_at) {
+        goto end;
+    }
+
+    
     if(!cJSON_IsString(updated_at) && !cJSON_IsNull(updated_at))
     {
     goto end; //DateTime
-    }
     }
 
     // catalogs_feed_processing_result->ingestion_details
@@ -254,9 +266,9 @@ catalogs_feed_processing_result_t *catalogs_feed_processing_result_parseFromJSON
 
 
     catalogs_feed_processing_result_local_var = catalogs_feed_processing_result_create (
-        created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        updated_at && !cJSON_IsNull(updated_at) ? strdup(updated_at->valuestring) : NULL,
+        strdup(created_at->valuestring),
+        strdup(id->valuestring),
+        strdup(updated_at->valuestring),
         ingestion_details_local_nonprim,
         status_local_nonprim,
         product_counts_local_nonprim,

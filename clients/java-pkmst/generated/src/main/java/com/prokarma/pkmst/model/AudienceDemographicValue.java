@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "Demographic detail for a single audience demographic")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDemographicValue   {
   @JsonProperty("key")
   private String key;
@@ -32,10 +32,10 @@ public class AudienceDemographicValue   {
     return this;
   }
 
-   /**
+  /**
    * Unique key for demographic item
    * @return key
-  **/
+   */
   @ApiModelProperty(example = "us", value = "Unique key for demographic item")
   public String getKey() {
     return key;
@@ -50,10 +50,10 @@ public class AudienceDemographicValue   {
     return this;
   }
 
-   /**
+  /**
    * Display name for demographic
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "United States", value = "Display name for demographic")
   public String getName() {
     return name;
@@ -68,10 +68,10 @@ public class AudienceDemographicValue   {
     return this;
   }
 
-   /**
+  /**
    * Value of demographic item as a percent of total audience
    * @return ratio
-  **/
+   */
   @ApiModelProperty(example = "0.551", value = "Value of demographic item as a percent of total audience")
   public BigDecimal getRatio() {
     return ratio;

@@ -9,7 +9,7 @@ Request object of catalogs items batch
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **Country** |  | 
-**language** | **Language** |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **operation** | **BatchOperation** |  | 
 **items** | [**Seq&lt;ItemDeleteBatchRecord&gt;**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
 

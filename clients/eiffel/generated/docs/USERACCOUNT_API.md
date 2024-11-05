@@ -34,7 +34,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **explicit_following** | **BOOLEAN**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 
 ### Parameters
@@ -98,7 +98,7 @@ Get a list of your followers.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -133,7 +133,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **STRING_32**| A valid username | [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 
 ### Parameters
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -369,7 +369,7 @@ Get a list of who a certain user follows.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **feed_type** | **USER_FOLLOWING_FEED_TYPE**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to null]
  **explicit_following** | **BOOLEAN**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -403,7 +403,7 @@ Get user websites, claimed or not
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_website_update**
-> verify_website_update (user_website_verify_request: USER_WEBSITE_VERIFY_REQUEST ): detachable USER_WEBSITE_SUMMARY
+> verify_website_update (user_website_verify_request: USER_WEBSITE_VERIFY_REQUEST ; ad_account_id:  detachable STRING_32 ): detachable USER_WEBSITE_SUMMARY
 
 
 Verify website
@@ -434,6 +434,7 @@ Verify a website as a signed-in user.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_website_verify_request** | [**USER_WEBSITE_VERIFY_REQUEST**](USER_WEBSITE_VERIFY_REQUEST.md)| Verify a website. | 
+ **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
@@ -451,7 +452,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **website_verification_get**
-> website_verification_get : detachable USER_WEBSITE_VERIFICATION_CODE
+> website_verification_get (ad_account_id:  detachable STRING_32 ): detachable USER_WEBSITE_VERIFICATION_CODE
 
 
 Get user verification code for website claiming
@@ -460,7 +461,10 @@ Get verification code for user to install on the website to claim it.
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
@@ -468,7 +472,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

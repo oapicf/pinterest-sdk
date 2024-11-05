@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CustomLabel3Filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomLabel3Filter   {
-  private @Valid CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
+  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
 
   /**
    **/
@@ -30,8 +30,7 @@ public class CustomLabel3Filter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("CUSTOM_LABEL_3")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
   }
 

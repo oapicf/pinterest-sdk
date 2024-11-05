@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **conversionEvent** | [**ConversionEvent**](#ConversionEvent) |  |  [optional]
 **conversionTagId** | **String** |  |  [optional]
 **cpaGoalValueInMicroCurrency** | **String** |  |  [optional]
-**isRoasOptimized** | **Boolean** | Ad group is ROAS optimized |  [optional]
+**isRoasOptimized** | **Boolean** | ROAS optimization is not supported |  [optional]
 **learningModeType** | [**LearningModeType**](#LearningModeType) | Conversion learning model type |  [optional]
 
 

@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("BillingProfilesResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BillingProfilesResponse   {
-  private @Valid String id;
+  private String id;
   public enum CardTypeEnum {
 
     UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(String.valueOf("MASTERCARD")), AMERICAN_EXPRESS(String.valueOf("AMERICAN_EXPRESS")), DISCOVER(String.valueOf("DISCOVER")), ELO(String.valueOf("ELO"));
@@ -65,7 +65,7 @@ public class BillingProfilesResponse   {
     }
 }
 
-  private @Valid CardTypeEnum cardType;
+  private CardTypeEnum cardType;
   public enum StatusEnum {
 
     UNSPECIFIED(String.valueOf("UNSPECIFIED")), VALID(String.valueOf("VALID")), INVALID(String.valueOf("INVALID")), PENDING(String.valueOf("PENDING")), DELETED(String.valueOf("DELETED")), SECONDARY(String.valueOf("SECONDARY")), PENDING_SECONDARY(String.valueOf("PENDING_SECONDARY"));
@@ -113,8 +113,8 @@ public class BillingProfilesResponse   {
     }
 }
 
-  private @Valid StatusEnum status;
-  private @Valid String advertiserId;
+  private StatusEnum status;
+  private String advertiserId;
   public enum PaymentMethodBrandEnum {
 
     UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(String.valueOf("MASTERCARD")), AMERICAN_EXPRESS(String.valueOf("AMERICAN_EXPRESS")), DISCOVER(String.valueOf("DISCOVER")), SOFORT(String.valueOf("SOFORT")), DINERS_CLUB(String.valueOf("DINERS_CLUB")), ELO(String.valueOf("ELO")), CARTE_BANCAIRE(String.valueOf("CARTE_BANCAIRE"));
@@ -162,7 +162,7 @@ public class BillingProfilesResponse   {
     }
 }
 
-  private @Valid PaymentMethodBrandEnum paymentMethodBrand;
+  private PaymentMethodBrandEnum paymentMethodBrand;
 
   /**
    * Billing ID.
@@ -175,7 +175,7 @@ public class BillingProfilesResponse   {
   
   @ApiModelProperty(example = "12312451231", value = "Billing ID.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -235,7 +235,7 @@ public class BillingProfilesResponse   {
   
   @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
   @JsonProperty("advertiser_id")
- @Pattern(regexp="^\\d+$")  public String getAdvertiserId() {
+   @Pattern(regexp="^\\d+$")public String getAdvertiserId() {
     return advertiserId;
   }
 

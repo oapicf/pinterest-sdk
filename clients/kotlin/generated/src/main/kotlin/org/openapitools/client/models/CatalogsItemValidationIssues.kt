@@ -47,5 +47,8 @@ data class CatalogsItemValidationIssues (
     @Json(name = "warnings")
     val warnings: CatalogsItemValidationWarnings
 
-)
+) {
+
+
+}
 

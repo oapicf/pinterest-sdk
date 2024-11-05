@@ -29,10 +29,7 @@ Protected Class CatalogsUpdateRetailItem
 
     #tag Enum, Name = OperationEnum, Type = Integer, Flags = &h0
         
-        Create
         Update
-        Upsert
-        Delete
         
     #tag EndEnum
 
@@ -41,14 +38,8 @@ Protected Class CatalogsUpdateRetailItem
 		Shared Function OperationEnumToString(value As OperationEnum) As String
 		  Select Case value
 		    
-		    Case OperationEnum.Create
-		      Return "CREATE"
 		    Case OperationEnum.Update
 		      Return "UPDATE"
-		    Case OperationEnum.Upsert
-		      Return "UPSERT"
-		    Case OperationEnum.Delete
-		      Return "DELETE"
 		    
 		  End Select
 		  Return ""

@@ -18,9 +18,6 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-CREATE | `"CREATE"`
-UPDATE | `"UPDATE"`
-UPSERT | `"UPSERT"`
 DELETE | `"DELETE"`
 
 

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.CatalogsCreativeAssetsItemsFilter;
 import org.openapitools.model.CatalogsHotelItemsFilter;
 import org.openapitools.model.CatalogsRetailItemsFilter;
 import org.openapitools.model.CatalogsType;
@@ -20,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemsFilter.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemsFilter.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailItemsFilter.class, name = "RETAIL"),
 })
@@ -34,13 +36,16 @@ public class CatalogsItemsFilters  {
   private List<String> itemIds = new ArrayList<>();
 
  /**
-  * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   */
-  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
   private List<String> hotelIds = new ArrayList<>();
+
+  @ApiModelProperty(required = true, value = "")
+  private List<String> creativeAssetsIds = new ArrayList<>();
  /**
   * Get catalogType
   * @return catalogType
@@ -100,7 +105,7 @@ public class CatalogsItemsFilters  {
   }
 
  /**
-  * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   * @return catalogId
   */
   @JsonProperty("catalog_id")
@@ -156,6 +161,39 @@ public class CatalogsItemsFilters  {
     return this;
   }
 
+ /**
+  * Get creativeAssetsIds
+  * @return creativeAssetsIds
+  */
+  @JsonProperty("creative_assets_ids")
+  @NotNull
+ @Size(min=1,max=100)  public List<String> getCreativeAssetsIds() {
+    return creativeAssetsIds;
+  }
+
+  /**
+   * Sets the <code>creativeAssetsIds</code> property.
+   */
+ public void setCreativeAssetsIds(List<String> creativeAssetsIds) {
+    this.creativeAssetsIds = creativeAssetsIds;
+  }
+
+  /**
+   * Sets the <code>creativeAssetsIds</code> property.
+   */
+  public CatalogsItemsFilters creativeAssetsIds(List<String> creativeAssetsIds) {
+    this.creativeAssetsIds = creativeAssetsIds;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>creativeAssetsIds</code> list.
+   */
+  public CatalogsItemsFilters addCreativeAssetsIdsItem(String creativeAssetsIdsItem) {
+    this.creativeAssetsIds.add(creativeAssetsIdsItem);
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,12 +207,13 @@ public class CatalogsItemsFilters  {
     return Objects.equals(this.catalogType, catalogsItemsFilters.catalogType) &&
         Objects.equals(this.itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(this.catalogId, catalogsItemsFilters.catalogId) &&
-        Objects.equals(this.hotelIds, catalogsItemsFilters.hotelIds);
+        Objects.equals(this.hotelIds, catalogsItemsFilters.hotelIds) &&
+        Objects.equals(this.creativeAssetsIds, catalogsItemsFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds);
+    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -186,6 +225,7 @@ public class CatalogsItemsFilters  {
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
+    sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

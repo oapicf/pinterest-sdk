@@ -15,12 +15,12 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AdCommonQuizPinData
-import org.openapitools.client.models.AdCommonTrackingUrls
 import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
 import org.openapitools.client.models.PinPromotionSummaryStatus
+import org.openapitools.client.models.QuizPinData
+import org.openapitools.client.models.TrackingUrls
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -29,14 +29,14 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param adGroupId ID of the ad group that contains the ad.
- * @param androidDeepLink Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+ * @param androidDeepLink Deep link URL for Android devices.
  * @param carouselAndroidDeepLinks Comma-separated deep links for the carousel pin on Android.
  * @param carouselDestinationUrls Comma-separated destination URLs for the carousel pin to promote.
  * @param carouselIosDeepLinks Comma-separated deep links for the carousel pin on iOS.
  * @param clickTrackingUrl Tracking url for the ad clicks.
  * @param creativeType 
  * @param destinationUrl Destination URL.
- * @param iosDeepLink Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+ * @param iosDeepLink Deep link URL for iOS devices.
  * @param isPinDeleted Is original pin deleted?
  * @param isRemovable Is pin repinnable?
  * @param name Name of the ad - 255 chars max.
@@ -45,8 +45,8 @@ import com.squareup.moshi.JsonClass
  * @param viewTrackingUrl Tracking URL for ad impressions.
  * @param leadFormId Lead form ID for lead ad generation.
  * @param gridClickType 
- * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
- * @param quizPinData 
+ * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+ * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
  * @param pinId Pin ID.
  * @param adAccountId The ID of the advertiser that this ad belongs to.
  * @param campaignId ID of the ad campaign that contains this ad.
@@ -68,7 +68,7 @@ data class AdResponse (
     @Json(name = "ad_group_id")
     val adGroupId: kotlin.String? = null,
 
-    /* Deep link URL for Android devices. Not currently available. Using this field will generate an error. */
+    /* Deep link URL for Android devices. */
     @Json(name = "android_deep_link")
     val androidDeepLink: kotlin.String? = null,
 
@@ -95,7 +95,7 @@ data class AdResponse (
     @Json(name = "destination_url")
     val destinationUrl: kotlin.String? = null,
 
-    /* Deep link URL for iOS devices. Not currently available. Using this field will generate an error. */
+    /* Deep link URL for iOS devices. */
     @Json(name = "ios_deep_link")
     val iosDeepLink: kotlin.String? = null,
 
@@ -115,7 +115,7 @@ data class AdResponse (
     val status: EntityStatus? = null,
 
     @Json(name = "tracking_urls")
-    val trackingUrls: AdCommonTrackingUrls? = null,
+    val trackingUrls: TrackingUrls? = null,
 
     /* Tracking URL for ad impressions. */
     @Json(name = "view_tracking_url")
@@ -128,12 +128,13 @@ data class AdResponse (
     @Json(name = "grid_click_type")
     val gridClickType: GridClickType? = null,
 
-    /* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
+    /* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
     @Json(name = "customizable_cta_type")
     val customizableCtaType: AdResponse.CustomizableCtaType? = null,
 
+    /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
     @Json(name = "quiz_pin_data")
-    val quizPinData: AdCommonQuizPinData? = null,
+    val quizPinData: QuizPinData? = null,
 
     /* Pin ID. */
     @Json(name = "pin_id")
@@ -186,9 +187,9 @@ data class AdResponse (
 ) {
 
     /**
-     * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+     * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
      *
-     * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_WEBSITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE,`null`
+     * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE
      */
     @JsonClass(generateAdapter = false)
     enum class CustomizableCtaType(val value: kotlin.String) {
@@ -201,7 +202,7 @@ data class AdResponse (
         @Json(name = "BUY_NOW") BUY_NOW("BUY_NOW"),
         @Json(name = "CONTACT_US") CONTACT_US("CONTACT_US"),
         @Json(name = "GET_QUOTE") GET_QUOTE("GET_QUOTE"),
-        @Json(name = "VISIT_WEBSITE") VISIT_WEBSITE("VISIT_WEBSITE"),
+        @Json(name = "VISIT_SITE") VISIT_SITE("VISIT_SITE"),
         @Json(name = "APPLY_NOW") APPLY_NOW("APPLY_NOW"),
         @Json(name = "BOOK_NOW") BOOK_NOW("BOOK_NOW"),
         @Json(name = "REQUEST_DEMO") REQUEST_DEMO("REQUEST_DEMO"),
@@ -209,8 +210,7 @@ data class AdResponse (
         @Json(name = "FIND_A_DEALER") FIND_A_DEALER("FIND_A_DEALER"),
         @Json(name = "ADD_TO_CART") ADD_TO_CART("ADD_TO_CART"),
         @Json(name = "WATCH_NOW") WATCH_NOW("WATCH_NOW"),
-        @Json(name = "READ_MORE") READ_MORE("READ_MORE"),
-        @Json(name = "null") `null`("null");
+        @Json(name = "READ_MORE") READ_MORE("READ_MORE");
     }
     /**
      * Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
@@ -280,5 +280,6 @@ data class AdResponse (
         @Json(name = "REJECTED") REJECTED("REJECTED"),
         @Json(name = "APPROVED") APPROVED("APPROVED");
     }
+
 }
 

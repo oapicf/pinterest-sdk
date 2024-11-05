@@ -15,5 +15,5 @@ class CatalogsHotelItemErrorResponse {
     /* The catalog hotel id in the merchant namespace */
     String hotelId
     /* Array with the errors for the item id requested */
-    List<ItemValidationEvent> errors
+    List<ItemValidationEvent> errors = new ArrayList<>()
 }

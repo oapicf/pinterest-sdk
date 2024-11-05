@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -15,17 +15,20 @@ syntax = "proto3";
 package openapitools;
 
 import public "models/catalogs_hotel_batch_item.proto";
-import public "models/catalogs_type.proto";
+import public "models/catalogs_items_request_language.proto";
 import public "models/country.proto";
-import public "models/language.proto";
 
 message CatalogsHotelBatchRequest {
 
-  CatalogsType catalog_type = 73986146;
+  enum Catalog_typeEnum {
+    Catalog_typeEnum_HOTEL = 0;
+  }
+
+  Catalog_typeEnum catalog_type = 73986146;
 
   Country country = 420960151;
 
-  Language language = 2976939;
+  CatalogsItemsRequestLanguage language = 2976939;
 
   // Array with catalogs item operations
   repeated CatalogsHotelBatchItem items = 100526016;

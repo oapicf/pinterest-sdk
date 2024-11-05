@@ -30,10 +30,9 @@ CampaignUpdateRequest::__init()
 	//lifetime_spend_cap = int(0);
 	//daily_spend_cap = int(0);
 	//order_line_id = std::string();
-	//tracking_urls = new AdCommon_tracking_urls();
+	//tracking_urls = null;
 	//start_time = int(0);
 	//end_time = int(0);
-	//summary_status = std::string();
 	//is_flexible_daily_budgets = bool(false);
 	//default_ad_group_budget_in_micro_currency = int(0);
 	//is_automated_campaign = bool(false);
@@ -93,11 +92,6 @@ CampaignUpdateRequest::__cleanup()
 	//
 	//delete end_time;
 	//end_time = NULL;
-	//}
-	//if(summary_status != NULL) {
-	//
-	//delete summary_status;
-	//summary_status = NULL;
 	//}
 	//if(is_flexible_daily_budgets != NULL) {
 	//
@@ -217,11 +211,11 @@ CampaignUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AdCommon_tracking_urls")) {
-			jsonToValue(&tracking_urls, node, "AdCommon_tracking_urls", "AdCommon_tracking_urls");
+		if (isprimitive("TrackingUrls")) {
+			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
 		} else {
 			
-			AdCommon_tracking_urls* obj = static_cast<AdCommon_tracking_urls*> (&tracking_urls);
+			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -245,20 +239,6 @@ CampaignUpdateRequest::fromJson(char* jsonStr)
 		if (isprimitive("int")) {
 			jsonToValue(&end_time, node, "int", "");
 		} else {
-			
-		}
-	}
-	const gchar *summary_statusKey = "summary_status";
-	node = json_object_get_member(pJsonObject, summary_statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CampaignSummaryStatus")) {
-			jsonToValue(&summary_status, node, "CampaignSummaryStatus", "CampaignSummaryStatus");
-		} else {
-			
-			CampaignSummaryStatus* obj = static_cast<CampaignSummaryStatus*> (&summary_status);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -400,13 +380,13 @@ CampaignUpdateRequest::toJson()
 	}
 	const gchar *order_line_idKey = "order_line_id";
 	json_object_set_member(pJsonObject, order_line_idKey, node);
-	if (isprimitive("AdCommon_tracking_urls")) {
-		AdCommon_tracking_urls obj = getTrackingUrls();
-		node = converttoJson(&obj, "AdCommon_tracking_urls", "");
+	if (isprimitive("TrackingUrls")) {
+		TrackingUrls obj = getTrackingUrls();
+		node = converttoJson(&obj, "TrackingUrls", "");
 	}
 	else {
 		
-		AdCommon_tracking_urls obj = static_cast<AdCommon_tracking_urls> (getTrackingUrls());
+		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -432,20 +412,6 @@ CampaignUpdateRequest::toJson()
 	}
 	const gchar *end_timeKey = "end_time";
 	json_object_set_member(pJsonObject, end_timeKey, node);
-	if (isprimitive("CampaignSummaryStatus")) {
-		CampaignSummaryStatus obj = getSummaryStatus();
-		node = converttoJson(&obj, "CampaignSummaryStatus", "");
-	}
-	else {
-		
-		CampaignSummaryStatus obj = static_cast<CampaignSummaryStatus> (getSummaryStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *summary_statusKey = "summary_status";
-	json_object_set_member(pJsonObject, summary_statusKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getIsFlexibleDailyBudgets();
 		node = converttoJson(&obj, "bool", "");
@@ -588,14 +554,14 @@ CampaignUpdateRequest::setOrderLineId(std::string  order_line_id)
 	this->order_line_id = order_line_id;
 }
 
-AdCommon_tracking_urls
+TrackingUrls
 CampaignUpdateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-CampaignUpdateRequest::setTrackingUrls(AdCommon_tracking_urls  tracking_urls)
+CampaignUpdateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -622,18 +588,6 @@ void
 CampaignUpdateRequest::setEndTime(int  end_time)
 {
 	this->end_time = end_time;
-}
-
-CampaignSummaryStatus
-CampaignUpdateRequest::getSummaryStatus()
-{
-	return summary_status;
-}
-
-void
-CampaignUpdateRequest::setSummaryStatus(CampaignSummaryStatus  summary_status)
-{
-	this->summary_status = summary_status;
 }
 
 bool

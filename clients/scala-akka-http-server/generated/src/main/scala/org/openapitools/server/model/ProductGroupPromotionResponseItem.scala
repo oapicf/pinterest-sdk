@@ -8,7 +8,7 @@ package org.openapitools.server.model
  * @param exceptions  for example: ''null''
 */
 final case class ProductGroupPromotionResponseItem (
-  data: Option[ProductGroupPromotion] = None,
+  data: Option[ProductGroupPromotionResponseElement] = None,
   exceptions: Option[Seq[Exception]] = None
 )
 

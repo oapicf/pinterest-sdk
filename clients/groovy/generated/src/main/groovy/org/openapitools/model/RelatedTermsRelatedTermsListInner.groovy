@@ -11,5 +11,5 @@ class RelatedTermsRelatedTermsListInner {
     
     String term
     
-    List<String> relatedTerms
+    List<String> relatedTerms = new ArrayList<>()
 }

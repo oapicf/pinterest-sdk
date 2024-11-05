@@ -40,13 +40,13 @@ class CatalogsRetailItemsBatchTest : ShouldSpec() {
             //modelInstance.batchId shouldBe ("TODO")
         }
 
-        // to test the property `createdTime` - Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+        // to test the property `createdTime` - Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
         should("test createdTime") {
             // uncomment below to test the property
             //modelInstance.createdTime shouldBe ("TODO")
         }
 
-        // to test the property `completedTime` - Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+        // to test the property `completedTime` - Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
         should("test completedTime") {
             // uncomment below to test the property
             //modelInstance.completedTime shouldBe ("TODO")

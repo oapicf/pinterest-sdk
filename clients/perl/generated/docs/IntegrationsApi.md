@@ -282,7 +282,7 @@ my $api_instance = WWW::OpenAPIClient::IntegrationsApi->new(
 );
 
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 eval {
     my $result = $api_instance->integrations_get_list(bookmark => $bookmark, page_size => $page_size);
@@ -298,7 +298,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 

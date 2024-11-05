@@ -7,9 +7,9 @@
 #' @title CatalogsRetailBatchRequest
 #' @description CatalogsRetailBatchRequest Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_type  \link{CatalogsType}
+#' @field catalog_type  character
 #' @field country  \link{Country}
-#' @field language  \link{Language}
+#' @field language  \link{CatalogsItemsRequestLanguage}
 #' @field items Array with catalogs item operations list(\link{CatalogsRetailBatchRequestItemsInner})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,8 +21,7 @@ CatalogsRetailBatchRequest <- R6::R6Class(
     `country` = NULL,
     `language` = NULL,
     `items` = NULL,
-    #' Initialize a new CatalogsRetailBatchRequest class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsRetailBatchRequest class.
     #'
@@ -31,13 +30,14 @@ CatalogsRetailBatchRequest <- R6::R6Class(
     #' @param language language
     #' @param items Array with catalogs item operations
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`catalog_type`, `country`, `language`, `items`, ...) {
       if (!missing(`catalog_type`)) {
-        if (!(`catalog_type` %in% c())) {
-          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
+        if (!(`catalog_type` %in% c("RETAIL"))) {
+          stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
         }
-        stopifnot(R6::is.R6(`catalog_type`))
+        if (!(is.character(`catalog_type`) && length(`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", `catalog_type`))
+        }
         self$`catalog_type` <- `catalog_type`
       }
       if (!missing(`country`)) {
@@ -48,9 +48,6 @@ CatalogsRetailBatchRequest <- R6::R6Class(
         self$`country` <- `country`
       }
       if (!missing(`language`)) {
-        if (!(`language` %in% c())) {
-          stop(paste("Error! \"", `language`, "\" cannot be assigned to `language`. Must be .", sep = ""))
-        }
         stopifnot(R6::is.R6(`language`))
         self$`language` <- `language`
       }
@@ -60,18 +57,16 @@ CatalogsRetailBatchRequest <- R6::R6Class(
         self$`items` <- `items`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailBatchRequest in JSON format
-    #' @export
     toJSON = function() {
       CatalogsRetailBatchRequestObject <- list()
       if (!is.null(self$`catalog_type`)) {
         CatalogsRetailBatchRequestObject[["catalog_type"]] <-
-          self$`catalog_type`$toJSON()
+          self$`catalog_type`
       }
       if (!is.null(self$`country`)) {
         CatalogsRetailBatchRequestObject[["country"]] <-
@@ -87,20 +82,19 @@ CatalogsRetailBatchRequest <- R6::R6Class(
       }
       CatalogsRetailBatchRequestObject
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailBatchRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailBatchRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailBatchRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`)) {
-        `catalog_type_object` <- CatalogsType$new()
-        `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
-        self$`catalog_type` <- `catalog_type_object`
+        if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
+          stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
+        }
+        self$`catalog_type` <- this_object$`catalog_type`
       }
       if (!is.null(this_object$`country`)) {
         `country_object` <- Country$new()
@@ -108,7 +102,7 @@ CatalogsRetailBatchRequest <- R6::R6Class(
         self$`country` <- `country_object`
       }
       if (!is.null(this_object$`language`)) {
-        `language_object` <- Language$new()
+        `language_object` <- CatalogsItemsRequestLanguage$new()
         `language_object`$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
         self$`language` <- `language_object`
       }
@@ -117,21 +111,19 @@ CatalogsRetailBatchRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailBatchRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`catalog_type`)) {
           sprintf(
           '"catalog_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`catalog_type`$toJSON(), auto_unbox = TRUE, digits = NA)
+            "%s"
+                    ',
+          self$`catalog_type`
           )
         },
         if (!is.null(self$`country`)) {
@@ -162,34 +154,35 @@ CatalogsRetailBatchRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailBatchRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailBatchRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailBatchRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
+        stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
+      }
+      self$`catalog_type` <- this_object$`catalog_type`
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
-      self$`language` <- Language$new()$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
+      self$`language` <- CatalogsItemsRequestLanguage$new()$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
       self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[CatalogsRetailBatchRequestItemsInner]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CatalogsRetailBatchRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsRetailBatchRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
       if (!is.null(input_json$`catalog_type`)) {
-        stopifnot(R6::is.R6(input_json$`catalog_type`))
+        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
+        }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailBatchRequest: the required field `catalog_type` is missing."))
       }
@@ -213,23 +206,19 @@ CatalogsRetailBatchRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailBatchRequest: the required field `items` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsRetailBatchRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
@@ -260,13 +249,11 @@ CatalogsRetailBatchRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `catalog_type` is null
@@ -298,12 +285,9 @@ CatalogsRetailBatchRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

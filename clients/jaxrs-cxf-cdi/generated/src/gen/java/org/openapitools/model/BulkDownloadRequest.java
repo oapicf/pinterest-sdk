@@ -24,9 +24,9 @@ import java.util.Objects;
 @ApiModel(description = "Ad entities to get in bulk request.")
 public class BulkDownloadRequest   {
   
-  private List<BulkEntityType> entityTypes;
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
 
-  private List<@Pattern(regexp = "^\\d+$")String> entityIds;
+  private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
 
   private String updatedSince;
 

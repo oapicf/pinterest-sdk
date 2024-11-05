@@ -8,6 +8,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
@@ -35,4 +36,6 @@ class CatalogsRetailFeedsCreateRequest {
     Country defaultCountry
     
     ProductAvailabilityType defaultAvailability
+    
+    CatalogsStatus status
 }

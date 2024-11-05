@@ -40,5 +40,8 @@ data class AdsAnalyticsCreateAsyncResponse (
     @Json(name = "message")
     val message: kotlin.String? = null
 
-)
+) {
+
+
+}
 

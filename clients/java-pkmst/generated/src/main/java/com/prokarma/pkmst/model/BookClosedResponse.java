@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Creation fields")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BookClosedResponse   {
   @JsonProperty("conversion_metrics_ready")
   private Boolean conversionMetricsReady;
@@ -28,10 +28,10 @@ public class BookClosedResponse   {
     return this;
   }
 
-   /**
+  /**
    * Are conversion metrics ready?
    * @return conversionMetricsReady
-  **/
+   */
   @ApiModelProperty(example = "false", value = "Are conversion metrics ready?")
   public Boolean getConversionMetricsReady() {
     return conversionMetricsReady;
@@ -46,10 +46,10 @@ public class BookClosedResponse   {
     return this;
   }
 
-   /**
+  /**
    * Are non-conversion metrics ready?
    * @return nonConversionMetricsReady
-  **/
+   */
   @ApiModelProperty(example = "false", value = "Are non-conversion metrics ready?")
   public Boolean getNonConversionMetricsReady() {
     return nonConversionMetricsReady;

@@ -11,7 +11,7 @@ Protected Class CatalogsHotelItemsBatch
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+			Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 		#tag EndNote
 		created_time As Date
 	#tag EndProperty
@@ -19,7 +19,7 @@ Protected Class CatalogsHotelItemsBatch
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+			Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 		#tag EndNote
 		completed_time As Date
 	#tag EndProperty

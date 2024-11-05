@@ -16,6 +16,7 @@
 #include "../model/ad_account_create_subscription_request.h"
 ad_account_create_subscription_request_t* instantiate_ad_account_create_subscription_request(int include_optional);
 
+#include "test_ad_account_create_subscription_request_partner_metadata.c"
 
 
 ad_account_create_subscription_request_t* instantiate_ad_account_create_subscription_request(int include_optional) {
@@ -25,14 +26,17 @@ ad_account_create_subscription_request_t* instantiate_ad_account_create_subscrip
       "https://webhook.example.com/xyz",
       "383791336903426390",
       "0",
-      "0"
+      "0",
+       // false, not to have infinite recursion
+      instantiate_ad_account_create_subscription_request_partner_metadata(0)
     );
   } else {
     ad_account_create_subscription_request = ad_account_create_subscription_request_create(
       "https://webhook.example.com/xyz",
       "383791336903426390",
       "0",
-      "0"
+      "0",
+      NULL
     );
   }
 

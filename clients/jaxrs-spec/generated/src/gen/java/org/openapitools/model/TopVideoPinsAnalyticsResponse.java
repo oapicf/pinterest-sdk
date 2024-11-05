@@ -20,13 +20,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TopVideoPinsAnalyticsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopVideoPinsAnalyticsResponse   {
-  private @Valid TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private @Valid List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins;
+  private TopPinsAnalyticsResponseDateAvailability dateAvailability;
+  private @Valid List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
   public enum SortByEnum {
 
-    SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), VIDEO_MRC_VIEW(String.valueOf("VIDEO_MRC_VIEW")), VIDEO_AVG_WATCH_TIME(String.valueOf("VIDEO_AVG_WATCH_TIME")), VIDEO_V50_WATCH_TIME(String.valueOf("VIDEO_V50_WATCH_TIME")), QUARTILE_95_PERCENT_VIEW(String.valueOf("QUARTILE_95_PERCENT_VIEW")), VIDEO_10S_VIEW(String.valueOf("VIDEO_10S_VIEW")), VIDEO_START(String.valueOf("VIDEO_START"));
+    SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), VIDEO_MRC_VIEW(String.valueOf("VIDEO_MRC_VIEW")), VIDEO_AVG_WATCH_TIME(String.valueOf("VIDEO_AVG_WATCH_TIME")), VIDEO_V50_WATCH_TIME(String.valueOf("VIDEO_V50_WATCH_TIME")), QUARTILE_95_PERCENT_VIEW(String.valueOf("QUARTILE_95_PERCENT_VIEW")), VIDEO_10_S_VIEW(String.valueOf("VIDEO_10S_VIEW")), VIDEO_START(String.valueOf("VIDEO_START"));
 
 
     private String value;
@@ -71,7 +71,7 @@ public class TopVideoPinsAnalyticsResponse   {
     }
 }
 
-  private @Valid SortByEnum sortBy;
+  private SortByEnum sortBy;
 
   /**
    **/
@@ -83,7 +83,7 @@ public class TopVideoPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("date_availability")
-  public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
+  @Valid public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
   }
 
@@ -102,7 +102,7 @@ public class TopVideoPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pins")
-  public List<TopVideoPinsAnalyticsResponsePinsInner> getPins() {
+  @Valid public List<@Valid TopVideoPinsAnalyticsResponsePinsInner> getPins() {
     return pins;
   }
 

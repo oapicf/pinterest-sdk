@@ -3,7 +3,7 @@ package org.openapitools.model
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.model.Exception
-import org.openapitools.model.ProductGroupPromotion
+import org.openapitools.model.ProductGroupPromotionResponseElement
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -24,12 +24,12 @@ data class ProductGroupPromotionResponseItem(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("data") val `data`: ProductGroupPromotion? = null,
+    @get:JsonProperty("data") val `data`: ProductGroupPromotionResponseElement? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("exceptions") val exceptions: kotlin.collections.List<Exception>? = null
-) {
+    ) {
 
 }
 

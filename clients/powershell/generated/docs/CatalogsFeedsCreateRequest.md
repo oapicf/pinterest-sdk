@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **DefaultCountry** | [**Country**](Country.md) |  | [optional] 
 **DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 ## Examples
 
@@ -25,7 +26,8 @@ $CatalogsFeedsCreateRequest = Initialize-PSOpenAPIToolsCatalogsFeedsCreateReques
  -Location null `
  -PreferredProcessingSchedule null `
  -DefaultCountry null `
- -DefaultAvailability null
+ -DefaultAvailability null `
+ -Status null
 ```
 
 - Convert the resource to JSON

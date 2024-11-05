@@ -3,10 +3,10 @@ package models
 type BulkDownloadRequestCampaignFilter struct {
 
 	// Unix UTC timestamp.
-	StartTime string `json:"start_time,omitempty"`
+	StartTime string `json:"start_time,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Unix UTC timestamp.
-	EndTime string `json:"end_time,omitempty"`
+	EndTime string `json:"end_time,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Campaign name
 	Name string `json:"name,omitempty"`

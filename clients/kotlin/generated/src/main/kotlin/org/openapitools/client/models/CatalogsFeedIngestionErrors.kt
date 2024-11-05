@@ -78,5 +78,6 @@ data class CatalogsFeedIngestionErrors (
     enum class LARGEPRODUCTCOUNTDECREASE(val value: kotlin.Int) {
         @Json(name = "1") _1(1);
     }
+
 }
 

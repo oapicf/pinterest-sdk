@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.BulkReportingJobStatus
@@ -36,7 +37,7 @@ data class CreateMMMReportResponseData(
 
     @Schema(example = "success", description = "")
     @get:JsonProperty("status") val status: kotlin.String? = null
-) {
+    ) {
 
 }
 

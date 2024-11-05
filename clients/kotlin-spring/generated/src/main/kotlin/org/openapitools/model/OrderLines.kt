@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.OrderLinePaidType
@@ -67,7 +68,7 @@ data class OrderLines(
     @field:Valid
     @Schema(example = "null", description = "Order line paid type.")
     @get:JsonProperty("paid_type") val paidType: OrderLinePaidType? = null
-) {
+    ) {
 
 }
 

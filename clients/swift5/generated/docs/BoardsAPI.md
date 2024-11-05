@@ -142,7 +142,7 @@ import OpenAPIClient
 let boardId = "boardId_example" // String | Unique identifier of a board.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // List board sections
 BoardsAPI.boardSectionsList(boardId: boardId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
  **boardId** | **String** | Unique identifier of a board. | 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -199,7 +199,7 @@ let boardId = "boardId_example" // String | Unique identifier of a board.
 let sectionId = "sectionId_example" // String | Unique identifier of a board section.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // List Pins on board section
 BoardsAPI.boardSectionsListPins(boardId: boardId, sectionId: sectionId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
  **sectionId** | **String** | Unique identifier of a board section. | 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -309,7 +309,7 @@ Create a board owned by the \"operation user_account\". Optional: Business Acces
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let board = Board(id: "id_example", createdAt: Date(), boardPinsModifiedAt: Date(), name: "name_example", description: "description_example", collaboratorCount: 123, pinCount: 123, followerCount: 123, media: Board_media(imageCoverUrl: "imageCoverUrl_example", pinThumbnailUrls: ["pinThumbnailUrls_example"]), owner: Board_owner(username: "username_example"), privacy: "privacy_example") // Board | Create a board using a single board json object.
+let board = Board(id: "id_example", createdAt: Date(), boardPinsModifiedAt: Date(), name: "name_example", description: "description_example", collaboratorCount: 123, pinCount: 123, followerCount: 123, media: Board_media(imageCoverUrl: "imageCoverUrl_example", pinThumbnailUrls: ["pinThumbnailUrls_example"]), owner: BoardOwner(username: "username_example"), privacy: "privacy_example") // Board | Create a board using a single board json object.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create board
@@ -442,7 +442,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -467,7 +467,7 @@ import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let privacy = "privacy_example" // String | Privacy setting for a board. (optional)
 
 // List boards
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **privacy** | **String** | Privacy setting for a board. | [optional] 
 
 ### Return type
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -523,7 +523,7 @@ import OpenAPIClient
 
 let boardId = "boardId_example" // String | Unique identifier of a board.
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let creativeTypes = ["creativeTypes_example"] // [String] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 let pinMetrics = true // Bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
@@ -547,7 +547,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String** | Unique identifier of a board. | 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creativeTypes** | [**[String]**](String.md) | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
  **pinMetrics** | **Bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
@@ -558,7 +558,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

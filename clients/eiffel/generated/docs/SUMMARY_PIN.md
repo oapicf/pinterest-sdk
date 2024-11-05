@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**SUMMARY_PIN_MEDIA**](SummaryPin_media.md) |  | [optional] [default to null]
+**media** | [**PIN_MEDIA**](PinMedia.md) |  | [optional] [readonly] [default to null]
 **alt_text** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **link** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **title** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]

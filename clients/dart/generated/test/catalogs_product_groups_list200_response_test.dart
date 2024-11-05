@@ -16,7 +16,7 @@ void main() {
   // final instance = CatalogsProductGroupsList200Response();
 
   group('test CatalogsProductGroupsList200Response', () {
-    // List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items (default value: const [])
+    // List<CatalogsVerticalProductGroup> items (default value: const [])
     test('to test the property `items`', () async {
       // TODO
     });

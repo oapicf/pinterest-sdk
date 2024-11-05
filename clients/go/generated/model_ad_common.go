@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &AdCommon{}
 // AdCommon Creation fields
 type AdCommon struct {
 	// ID of the ad group that contains the ad.
-	AdGroupId *string `json:"ad_group_id,omitempty"`
-	// Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+	AdGroupId *string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
+	// Deep link URL for Android devices.
 	AndroidDeepLink NullableString `json:"android_deep_link,omitempty"`
 	// Comma-separated deep links for the carousel pin on Android.
 	CarouselAndroidDeepLinks []string `json:"carousel_android_deep_links,omitempty"`
@@ -35,7 +35,7 @@ type AdCommon struct {
 	CreativeType *CreativeType `json:"creative_type,omitempty"`
 	// Destination URL.
 	DestinationUrl NullableString `json:"destination_url,omitempty"`
-	// Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+	// Deep link URL for iOS devices.
 	IosDeepLink NullableString `json:"ios_deep_link,omitempty"`
 	// Is original pin deleted?
 	IsPinDeleted *bool `json:"is_pin_deleted,omitempty"`
@@ -44,15 +44,16 @@ type AdCommon struct {
 	// Name of the ad - 255 chars max.
 	Name NullableString `json:"name,omitempty"`
 	Status *EntityStatus `json:"status,omitempty"`
-	TrackingUrls NullableAdCommonTrackingUrls `json:"tracking_urls,omitempty"`
+	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
 	// Tracking URL for ad impressions.
 	ViewTrackingUrl NullableString `json:"view_tracking_url,omitempty"`
 	// Lead form ID for lead ad generation.
-	LeadFormId NullableString `json:"lead_form_id,omitempty"`
+	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
 	GridClickType NullableGridClickType `json:"grid_click_type,omitempty"`
-	// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+	// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
 	CustomizableCtaType NullableString `json:"customizable_cta_type,omitempty"`
-	QuizPinData NullableAdCommonQuizPinData `json:"quiz_pin_data,omitempty"`
+	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+	QuizPinData NullableQuizPinData `json:"quiz_pin_data,omitempty"`
 }
 
 // NewAdCommon instantiates a new AdCommon object
@@ -542,9 +543,9 @@ func (o *AdCommon) SetStatus(v EntityStatus) {
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdCommon) GetTrackingUrls() AdCommonTrackingUrls {
+func (o *AdCommon) GetTrackingUrls() TrackingUrls {
 	if o == nil || IsNil(o.TrackingUrls.Get()) {
-		var ret AdCommonTrackingUrls
+		var ret TrackingUrls
 		return ret
 	}
 	return *o.TrackingUrls.Get()
@@ -553,7 +554,7 @@ func (o *AdCommon) GetTrackingUrls() AdCommonTrackingUrls {
 // GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdCommon) GetTrackingUrlsOk() (*AdCommonTrackingUrls, bool) {
+func (o *AdCommon) GetTrackingUrlsOk() (*TrackingUrls, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -569,8 +570,8 @@ func (o *AdCommon) HasTrackingUrls() bool {
 	return false
 }
 
-// SetTrackingUrls gets a reference to the given NullableAdCommonTrackingUrls and assigns it to the TrackingUrls field.
-func (o *AdCommon) SetTrackingUrls(v AdCommonTrackingUrls) {
+// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
+func (o *AdCommon) SetTrackingUrls(v TrackingUrls) {
 	o.TrackingUrls.Set(&v)
 }
 // SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
@@ -752,9 +753,9 @@ func (o *AdCommon) UnsetCustomizableCtaType() {
 }
 
 // GetQuizPinData returns the QuizPinData field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdCommon) GetQuizPinData() AdCommonQuizPinData {
+func (o *AdCommon) GetQuizPinData() QuizPinData {
 	if o == nil || IsNil(o.QuizPinData.Get()) {
-		var ret AdCommonQuizPinData
+		var ret QuizPinData
 		return ret
 	}
 	return *o.QuizPinData.Get()
@@ -763,7 +764,7 @@ func (o *AdCommon) GetQuizPinData() AdCommonQuizPinData {
 // GetQuizPinDataOk returns a tuple with the QuizPinData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdCommon) GetQuizPinDataOk() (*AdCommonQuizPinData, bool) {
+func (o *AdCommon) GetQuizPinDataOk() (*QuizPinData, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -779,8 +780,8 @@ func (o *AdCommon) HasQuizPinData() bool {
 	return false
 }
 
-// SetQuizPinData gets a reference to the given NullableAdCommonQuizPinData and assigns it to the QuizPinData field.
-func (o *AdCommon) SetQuizPinData(v AdCommonQuizPinData) {
+// SetQuizPinData gets a reference to the given NullableQuizPinData and assigns it to the QuizPinData field.
+func (o *AdCommon) SetQuizPinData(v QuizPinData) {
 	o.QuizPinData.Set(&v)
 }
 // SetQuizPinDataNil sets the value for QuizPinData to be an explicit nil

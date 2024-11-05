@@ -19,7 +19,7 @@ import org.openapitools.client.models.CatalogsCreateRetailItem
 import org.openapitools.client.models.CatalogsDeleteRetailItem
 import org.openapitools.client.models.CatalogsUpdateRetailItem
 import org.openapitools.client.models.CatalogsUpsertRetailItem
-import org.openapitools.client.models.ItemAttributes
+import org.openapitools.client.models.ItemAttributesRequest
 import org.openapitools.client.models.UpdateMaskFieldType
 
 import com.squareup.moshi.Json
@@ -43,21 +43,19 @@ interface CatalogsRetailBatchRequestItemsInner {
     @Json(name = "operation")
     val operation: CatalogsRetailBatchRequestItemsInner.Operation
     @Json(name = "attributes")
-    val attributes: ItemAttributes
+    val attributes: ItemAttributesRequest
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     @Json(name = "update_mask")
     val updateMask: kotlin.collections.List<UpdateMaskFieldType>?
     /**
      * 
      *
-     * Values: CREATE,UPDATE,UPSERT,DELETE
+     * Values: DELETE
      */
     @JsonClass(generateAdapter = false)
     enum class Operation(val value: kotlin.String) {
-        @Json(name = "CREATE") CREATE("CREATE"),
-        @Json(name = "UPDATE") UPDATE("UPDATE"),
-        @Json(name = "UPSERT") UPSERT("UPSERT"),
         @Json(name = "DELETE") DELETE("DELETE");
     }
+
 }
 

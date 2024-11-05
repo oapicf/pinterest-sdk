@@ -18,6 +18,7 @@
   | {'preferred_processing_schedule', openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule() }
   | {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
   | {'catalog_id', binary() }
+  | {'status', openapi_catalogs_status:openapi_catalogs_status() }
   ].
 
 
@@ -34,6 +35,7 @@ openapi_catalogs_hotel_feeds_create_request(Fields) ->
             , {'preferred_processing_schedule', openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule() }
             , {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
             , {'catalog_id', binary() }
+            , {'status', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

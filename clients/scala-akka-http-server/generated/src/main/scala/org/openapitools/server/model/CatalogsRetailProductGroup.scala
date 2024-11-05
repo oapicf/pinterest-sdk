@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- * = catalog_based_product_group =
+ * = retail_product_group =
  *
  * @param catalogType  for example: ''null''
  * @param id ID of the catalog product group. for example: ''443727193917''
@@ -14,7 +14,10 @@ package org.openapitools.server.model
  * @param status  for example: ''null''
  * @param createdAt Unix timestamp in seconds of when catalog product group was created. for example: ''1621350033000''
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated. for example: ''1622742155000''
- * @param feedId  for example: ''null''
+ * @param catalogId Catalog id pertaining to the retail product group. for example: ''null''
+ * @param feedId id of the catalogs feed belonging to this catalog product group for example: ''2680059592705''
+ * @param country  for example: ''null''
+ * @param locale  for example: ''null''
 */
 final case class CatalogsRetailProductGroup (
   catalogType: String,
@@ -27,6 +30,9 @@ final case class CatalogsRetailProductGroup (
   status: Option[CatalogsProductGroupStatus] = None,
   createdAt: Option[Int] = None,
   updatedAt: Option[Int] = None,
-  feedId: String
+  catalogId: String,
+  feedId: String,
+  country: Option[String] = None,
+  locale: Option[String] = None
 )
 

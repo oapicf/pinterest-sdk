@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionEvents_data_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInner {
 
   private String eventName;
@@ -42,7 +42,7 @@ public class ConversionEventsDataInner {
 
   private JsonNullable<String> partnerName = JsonNullable.<String>undefined();
 
-  private JsonNullable<ConversionEventsUserData> userData = JsonNullable.<ConversionEventsUserData>undefined();
+  private ConversionEventsUserData userData;
 
   private ConversionEventsDataInnerCustomData customData;
 
@@ -78,7 +78,7 @@ public class ConversionEventsDataInner {
     this.actionSource = actionSource;
     this.eventTime = eventTime;
     this.eventId = eventId;
-    this.userData = JsonNullable.of(userData);
+    this.userData = userData;
   }
 
   public ConversionEventsDataInner eventName(String eventName) {
@@ -87,11 +87,11 @@ public class ConversionEventsDataInner {
   }
 
   /**
-   * The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
+   * <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
    * @return eventName
-  */
+   */
   @NotNull 
-  @Schema(name = "event_name", example = "checkout", description = "The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "event_name", example = "checkout", description = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("event_name")
   public String getEventName() {
     return eventName;
@@ -107,11 +107,11 @@ public class ConversionEventsDataInner {
   }
 
   /**
-   * The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
+   * <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
    * @return actionSource
-  */
+   */
   @NotNull 
-  @Schema(name = "action_source", example = "app_ios", description = "The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "action_source", example = "app_ios", description = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("action_source")
   public String getActionSource() {
     return actionSource;
@@ -129,7 +129,7 @@ public class ConversionEventsDataInner {
   /**
    * The time when the event happened. Unix timestamp in seconds.
    * @return eventTime
-  */
+   */
   @NotNull 
   @Schema(name = "event_time", example = "1451431341", description = "The time when the event happened. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("event_time")
@@ -149,7 +149,7 @@ public class ConversionEventsDataInner {
   /**
    * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
    * @return eventId
-  */
+   */
   @NotNull 
   @Schema(name = "event_id", example = "eventId0001", description = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("event_id")
@@ -169,7 +169,7 @@ public class ConversionEventsDataInner {
   /**
    * URL of the web conversion event.
    * @return eventSourceUrl
-  */
+   */
   
   @Schema(name = "event_source_url", example = "https://www.my-clothing-shop.org/", description = "URL of the web conversion event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("event_source_url")
@@ -189,7 +189,7 @@ public class ConversionEventsDataInner {
   /**
    * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
    * @return optOut
-  */
+   */
   
   @Schema(name = "opt_out", example = "false", description = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("opt_out")
@@ -209,7 +209,7 @@ public class ConversionEventsDataInner {
   /**
    * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
    * @return partnerName
-  */
+   */
   
   @Schema(name = "partner_name", example = "ss-partnername", description = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_name")
@@ -222,22 +222,22 @@ public class ConversionEventsDataInner {
   }
 
   public ConversionEventsDataInner userData(ConversionEventsUserData userData) {
-    this.userData = JsonNullable.of(userData);
+    this.userData = userData;
     return this;
   }
 
   /**
    * Get userData
    * @return userData
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "user_data", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("user_data")
-  public JsonNullable<ConversionEventsUserData> getUserData() {
+  public ConversionEventsUserData getUserData() {
     return userData;
   }
 
-  public void setUserData(JsonNullable<ConversionEventsUserData> userData) {
+  public void setUserData(ConversionEventsUserData userData) {
     this.userData = userData;
   }
 
@@ -249,7 +249,7 @@ public class ConversionEventsDataInner {
   /**
    * Get customData
    * @return customData
-  */
+   */
   @Valid 
   @Schema(name = "custom_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_data")
@@ -269,7 +269,7 @@ public class ConversionEventsDataInner {
   /**
    * The app store app ID.
    * @return appId
-  */
+   */
   
   @Schema(name = "app_id", example = "429047995", description = "The app store app ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("app_id")
@@ -289,7 +289,7 @@ public class ConversionEventsDataInner {
   /**
    * Name of the app.
    * @return appName
-  */
+   */
   
   @Schema(name = "app_name", example = "Pinterest", description = "Name of the app.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("app_name")
@@ -309,7 +309,7 @@ public class ConversionEventsDataInner {
   /**
    * Version of the app.
    * @return appVersion
-  */
+   */
   
   @Schema(name = "app_version", example = "7.9", description = "Version of the app.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("app_version")
@@ -329,7 +329,7 @@ public class ConversionEventsDataInner {
   /**
    * Brand of the user device.
    * @return deviceBrand
-  */
+   */
   
   @Schema(name = "device_brand", example = "Apple", description = "Brand of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("device_brand")
@@ -349,7 +349,7 @@ public class ConversionEventsDataInner {
   /**
    * User device's mobile carrier.
    * @return deviceCarrier
-  */
+   */
   
   @Schema(name = "device_carrier", example = "T-Mobile", description = "User device's mobile carrier.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("device_carrier")
@@ -369,7 +369,7 @@ public class ConversionEventsDataInner {
   /**
    * Model of the user device.
    * @return deviceModel
-  */
+   */
   
   @Schema(name = "device_model", example = "iPhone X", description = "Model of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("device_model")
@@ -389,7 +389,7 @@ public class ConversionEventsDataInner {
   /**
    * Type of the user device.
    * @return deviceType
-  */
+   */
   
   @Schema(name = "device_type", example = "iPhone", description = "Type of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("device_type")
@@ -409,7 +409,7 @@ public class ConversionEventsDataInner {
   /**
    * Version of the device operating system.
    * @return osVersion
-  */
+   */
   
   @Schema(name = "os_version", example = "12.1.4", description = "Version of the device operating system.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("os_version")
@@ -429,7 +429,7 @@ public class ConversionEventsDataInner {
   /**
    * Whether the event occurred when the user device was connected to wifi.
    * @return wifi
-  */
+   */
   
   @Schema(name = "wifi", example = "false", description = "Whether the event occurred when the user device was connected to wifi.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("wifi")
@@ -449,7 +449,7 @@ public class ConversionEventsDataInner {
   /**
    * Two-character ISO-639-1 language code indicating the user's language.
    * @return language
-  */
+   */
   
   @Schema(name = "language", example = "en", description = "Two-character ISO-639-1 language code indicating the user's language.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("language")

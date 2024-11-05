@@ -18,6 +18,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface PinsApi  {
+    //multi_pins/analytics
+    void multiPinsAnalytics(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, Handler<AsyncResult<Map<String, Map<String, PinAnalyticsMetricsResponse>>>> handler);
+
     //pins/analytics
     void pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, Handler<AsyncResult<Map<String, PinAnalyticsMetricsResponse>>> handler);
 

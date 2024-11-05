@@ -23,8 +23,7 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
     `pct_growth_mom` = NULL,
     `pct_growth_yoy` = NULL,
     `time_series` = NULL,
-    #' Initialize a new TrendingKeywordsResponseTrendsInner class.
-    #'
+
     #' @description
     #' Initialize a new TrendingKeywordsResponseTrendsInner class.
     #'
@@ -34,7 +33,6 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
     #' @param pct_growth_yoy The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5\% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000\% change.  A value of 10001 indicates that this keyword experienced > 10000\% year-over-year growth.
     #' @param time_series time_series
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`keyword` = NULL, `pct_growth_wow` = NULL, `pct_growth_mom` = NULL, `pct_growth_yoy` = NULL, `time_series` = NULL, ...) {
       if (!is.null(`keyword`)) {
         if (!(is.character(`keyword`) && length(`keyword`) == 1)) {
@@ -65,13 +63,11 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
         self$`time_series` <- `time_series`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TrendingKeywordsResponseTrendsInner in JSON format
-    #' @export
     toJSON = function() {
       TrendingKeywordsResponseTrendsInnerObject <- list()
       if (!is.null(self$`keyword`)) {
@@ -96,14 +92,12 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
       }
       TrendingKeywordsResponseTrendsInnerObject
     },
-    #' Deserialize JSON string into an instance of TrendingKeywordsResponseTrendsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TrendingKeywordsResponseTrendsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of TrendingKeywordsResponseTrendsInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`keyword`)) {
@@ -125,13 +119,11 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TrendingKeywordsResponseTrendsInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`keyword`)) {
@@ -178,14 +170,12 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of TrendingKeywordsResponseTrendsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TrendingKeywordsResponseTrendsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of TrendingKeywordsResponseTrendsInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`keyword` <- this_object$`keyword`
@@ -195,33 +185,27 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
       self$`time_series` <- TrendingKeywordsResponseTrendsInnerTimeSeries$new()$fromJSON(jsonlite::toJSON(this_object$`time_series`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to TrendingKeywordsResponseTrendsInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to TrendingKeywordsResponseTrendsInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of TrendingKeywordsResponseTrendsInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (nchar(self$`keyword`) < 1) {
         return(FALSE)
@@ -229,13 +213,11 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (nchar(self$`keyword`) < 1) {
@@ -244,12 +226,9 @@ TrendingKeywordsResponseTrendsInner <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -77,7 +77,10 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
   private Integer updatedAt;
 
-  @ApiModelProperty(required = true, value = "")
+ /**
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
   private String catalogId;
  /**
   * Get catalogType
@@ -251,7 +254,7 @@ public enum CatalogTypeEnum {
   }
 
  /**
-  * Get catalogId
+  * Catalog id pertaining to the hotel product group.
   * @return catalogId
   */
   @JsonProperty("catalog_id")

@@ -18,7 +18,7 @@ import play.api.libs.json._
   * @param isCampaignBudgetOptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CampaignUpdateRequest(
   id: String,
   adAccountId: String,
@@ -27,10 +27,9 @@ case class CampaignUpdateRequest(
   lifetimeSpendCap: Option[Int],
   dailySpendCap: Option[Int],
   orderLineId: Option[String],
-  trackingUrls: Option[AdCommonTrackingUrls],
+  trackingUrls: Option[TrackingUrls],
   startTime: Option[Int],
   endTime: Option[Int],
-  summaryStatus: Option[CampaignSummaryStatus],
   isFlexibleDailyBudgets: Option[Boolean],
   defaultAdGroupBudgetInMicroCurrency: Option[Int],
   isAutomatedCampaign: Option[Boolean],
@@ -42,7 +41,7 @@ case class CampaignUpdateRequest(
 object CampaignUpdateRequest {
   implicit lazy val campaignUpdateRequestJsonFormat: Format[CampaignUpdateRequest] = {
     val realJsonFormat = Json.format[CampaignUpdateRequest]
-    val declaredPropNames = Set("id", "adAccountId", "name", "status", "lifetimeSpendCap", "dailySpendCap", "orderLineId", "trackingUrls", "startTime", "endTime", "summaryStatus", "isFlexibleDailyBudgets", "defaultAdGroupBudgetInMicroCurrency", "isAutomatedCampaign", "isCampaignBudgetOptimization", "objectiveType")
+    val declaredPropNames = Set("id", "adAccountId", "name", "status", "lifetimeSpendCap", "dailySpendCap", "orderLineId", "trackingUrls", "startTime", "endTime", "isFlexibleDailyBudgets", "defaultAdGroupBudgetInMicroCurrency", "isAutomatedCampaign", "isCampaignBudgetOptimization", "objectiveType")
     
     Format(
       Reads {

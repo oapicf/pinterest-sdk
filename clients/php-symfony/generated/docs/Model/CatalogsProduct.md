@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | [**OpenAPI\Server\Model\CatalogsProductMetadata**](CatalogsProductMetadata.md) |  | 
+**catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 
+**metadata** | [**OpenAPI\Server\Model\CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **pin** | [**OpenAPI\Server\Model\Pin**](Pin.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

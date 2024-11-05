@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Create ad preview with pin or image
 
-Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 
 ### Example
 ```objc
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
     adIds: (NSArray<NSString*>*) adIds
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    targetingTypes: (NSArray<OAIAdsAnalyticsTargetingType>*) targetingTypes
+    targetingTypes: (NSArray<OAIAdsAnalyticsAdTargetingType>*) targetingTypes
     columns: (NSArray<NSString*>*) columns
     granularity: (OAIGranularity) granularity
     clickWindowDays: (NSNumber*) clickWindowDays
@@ -105,7 +105,7 @@ NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad ac
 NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<OAIAdsAnalyticsTargetingType>* targetingTypes = @[[[OAIAdsAnalyticsTargetingType alloc] init]]; // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+NSArray<OAIAdsAnalyticsAdTargetingType>* targetingTypes = @[[[OAIAdsAnalyticsAdTargetingType alloc] init]]; // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 NSArray<NSString*>* columns = @[@"columns_example"]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 OAIGranularity granularity = DAY; // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 NSNumber* clickWindowDays = 1; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
  **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **targetingTypes** | [**NSArray&lt;OAIAdsAnalyticsTargetingType&gt;***](OAIAdsAnalyticsTargetingType*.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. | 
+ **targetingTypes** | [**NSArray&lt;OAIAdsAnalyticsAdTargetingType&gt;***](OAIAdsAnalyticsAdTargetingType*.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
  **columns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **granularity** | [**OAIGranularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **clickWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
@@ -176,19 +176,21 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) adsAnalyticsWithAdAccountId: (NSString*) adAccountId
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    adIds: (NSArray<NSString*>*) adIds
     columns: (NSArray<NSString*>*) columns
     granularity: (OAIGranularity) granularity
+    adIds: (NSArray<NSString*>*) adIds
     clickWindowDays: (NSNumber*) clickWindowDays
     engagementWindowDays: (NSNumber*) engagementWindowDays
     viewWindowDays: (NSNumber*) viewWindowDays
     conversionReportTime: (NSString*) conversionReportTime
+    pinIds: (NSArray<NSString*>*) pinIds
+    campaignIds: (NSArray<NSString*>*) campaignIds
         completionHandler: (void (^)(NSArray<OAIAdsAnalyticsResponseInner>* output, NSError* error)) handler;
 ```
 
 Get ad analytics
 
-Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 
 ### Example
 ```objc
@@ -201,13 +203,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results.
 NSArray<NSString*>* columns = @[@"columns_example"]; // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 OAIGranularity granularity = DAY; // TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results. (optional)
 NSNumber* clickWindowDays = 1; // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
 NSNumber* engagementWindowDays = @30; // Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to @30)
 NSNumber* viewWindowDays = @1; // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to @1)
 NSString* conversionReportTime = TIME_OF_AD_ACTION; // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to @"TIME_OF_AD_ACTION")
+NSArray<NSString*>* pinIds = @[@"pinIds_example"]; // List of Pin IDs. (optional)
+NSArray<NSString*>* campaignIds = @[@"campaignIds_example"]; // List of Campaign Ids to use to filter the results. (optional)
 
 OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 
@@ -215,13 +219,15 @@ OAIAdsApi*apiInstance = [[OAIAdsApi alloc] init];
 [apiInstance adsAnalyticsWithAdAccountId:adAccountId
               startDate:startDate
               endDate:endDate
-              adIds:adIds
               columns:columns
               granularity:granularity
+              adIds:adIds
               clickWindowDays:clickWindowDays
               engagementWindowDays:engagementWindowDays
               viewWindowDays:viewWindowDays
               conversionReportTime:conversionReportTime
+              pinIds:pinIds
+              campaignIds:campaignIds
           completionHandler: ^(NSArray<OAIAdsAnalyticsResponseInner>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -239,13 +245,15 @@ Name | Type | Description  | Notes
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | 
  **columns** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **granularity** | [**OAIGranularity**](.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+ **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | [optional] 
  **clickWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
  **engagementWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to @30]
  **viewWindowDays** | **NSNumber***| Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to @1]
  **conversionReportTime** | **NSString***| The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to @&quot;TIME_OF_AD_ACTION&quot;]
+ **pinIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Pin IDs. | [optional] 
+ **campaignIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Campaign Ids to use to filter the results. | [optional] 
 
 ### Return type
 
@@ -410,7 +418,7 @@ NSArray<NSString*>* campaignIds = @[@"campaignIds_example"]; // List of Campaign
 NSArray<NSString*>* adGroupIds = @[@"adGroupIds_example"]; // List of Ad group Ids to use to filter the results. (optional)
 NSArray<NSString*>* adIds = @[@"adIds_example"]; // List of Ad Ids to use to filter the results. (optional)
 NSArray<NSString*>* entityStatuses = @[@"entityStatuses_example"]; // Entity status (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* order = ASCENDING; // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
 
@@ -444,7 +452,7 @@ Name | Type | Description  | Notes
  **adGroupIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad group Ids to use to filter the results. | [optional] 
  **adIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Ad Ids to use to filter the results. | [optional] 
  **entityStatuses** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Entity status | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **order** | **NSString***| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
 

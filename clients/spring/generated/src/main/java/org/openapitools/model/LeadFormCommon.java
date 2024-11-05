@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.LeadFormCommonPolicyLinksInner;
 import org.openapitools.model.LeadFormQuestion;
 import org.openapitools.model.LeadFormStatus;
 import java.util.NoSuchElementException;
@@ -27,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "LeadFormCommon", description = "Creation fields")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LeadFormCommon {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -43,7 +44,10 @@ public class LeadFormCommon {
   private JsonNullable<String> disclosureLanguage = JsonNullable.<String>undefined();
 
   @Valid
-  private List<@Valid LeadFormQuestion> questions;
+  private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+
+  @Valid
+  private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
   public LeadFormCommon name(String name) {
     this.name = JsonNullable.of(name);
@@ -53,7 +57,7 @@ public class LeadFormCommon {
   /**
    * Internal name of the lead form.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -73,7 +77,7 @@ public class LeadFormCommon {
   /**
    * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
    * @return privacyPolicyLink
-  */
+   */
   
   @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy_policy_link")
@@ -91,11 +95,11 @@ public class LeadFormCommon {
   }
 
   /**
-   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
    * @return hasAcceptedTerms
-  */
+   */
   
-  @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_accepted_terms")
   public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
@@ -113,7 +117,7 @@ public class LeadFormCommon {
   /**
    * A message for people who complete the form to let them know what happens next.
    * @return completionMessage
-  */
+   */
   
   @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completion_message")
@@ -133,7 +137,7 @@ public class LeadFormCommon {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -153,7 +157,7 @@ public class LeadFormCommon {
   /**
    * Additional disclosure language to be included in the lead form.
    * @return disclosureLanguage
-  */
+   */
   
   @Schema(name = "disclosure_language", example = "By entering your personal information, you agree that your data will be collected and used.", description = "Additional disclosure language to be included in the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("disclosure_language")
@@ -181,7 +185,7 @@ public class LeadFormCommon {
   /**
    * List of questions to be displayed on the lead form.
    * @return questions
-  */
+   */
   @Valid @Size(min = 0, max = 10) 
   @Schema(name = "questions", example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("questions")
@@ -191,6 +195,34 @@ public class LeadFormCommon {
 
   public void setQuestions(List<@Valid LeadFormQuestion> questions) {
     this.questions = questions;
+  }
+
+  public LeadFormCommon policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+    return this;
+  }
+
+  public LeadFormCommon addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    if (this.policyLinks == null) {
+      this.policyLinks = new ArrayList<>();
+    }
+    this.policyLinks.add(policyLinksItem);
+    return this;
+  }
+
+  /**
+   * List of additional policy links to be displayed on the lead form.
+   * @return policyLinks
+   */
+  @Valid @Size(min = 0, max = 3) 
+  @Schema(name = "policy_links", example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", description = "List of additional policy links to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("policy_links")
+  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
   }
 
   @Override
@@ -208,7 +240,8 @@ public class LeadFormCommon {
         equalsNullable(this.completionMessage, leadFormCommon.completionMessage) &&
         Objects.equals(this.status, leadFormCommon.status) &&
         equalsNullable(this.disclosureLanguage, leadFormCommon.disclosureLanguage) &&
-        Objects.equals(this.questions, leadFormCommon.questions);
+        Objects.equals(this.questions, leadFormCommon.questions) &&
+        Objects.equals(this.policyLinks, leadFormCommon.policyLinks);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -217,7 +250,7 @@ public class LeadFormCommon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(name), hashCodeNullable(privacyPolicyLink), hasAcceptedTerms, hashCodeNullable(completionMessage), status, hashCodeNullable(disclosureLanguage), questions);
+    return Objects.hash(hashCodeNullable(name), hashCodeNullable(privacyPolicyLink), hasAcceptedTerms, hashCodeNullable(completionMessage), status, hashCodeNullable(disclosureLanguage), questions, policyLinks);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -238,6 +271,7 @@ public class LeadFormCommon {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

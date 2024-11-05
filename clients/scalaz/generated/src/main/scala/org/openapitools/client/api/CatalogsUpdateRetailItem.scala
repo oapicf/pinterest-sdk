@@ -22,25 +22,16 @@ attributes: UpdatableItemAttributes,
 object CatalogsUpdateRetailItem {
   import DateTimeCodecs._
   sealed trait Operation
-  case object CREATE extends Operation
   case object UPDATE extends Operation
-  case object UPSERT extends Operation
-  case object DELETE extends Operation
 
   object Operation {
     def toOperation(s: String): Option[Operation] = s match {
-      case "CREATE" => Some(CREATE)
       case "UPDATE" => Some(UPDATE)
-      case "UPSERT" => Some(UPSERT)
-      case "DELETE" => Some(DELETE)
       case _ => None
     }
 
     def fromOperation(x: Operation): String = x match {
-      case CREATE => "CREATE"
       case UPDATE => "UPDATE"
-      case UPSERT => "UPSERT"
-      case DELETE => "DELETE"
     }
   }
 

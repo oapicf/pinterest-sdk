@@ -145,7 +145,7 @@ open class ProductGroupPromotionsAPI {
      - parameter productGroupPromotionIds: (query) List of Product group promotion Ids. (optional)
      - parameter entityStatuses: (query) Entity status (optional)
      - parameter adGroupId: (query) Ad group Id. (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -174,7 +174,7 @@ open class ProductGroupPromotionsAPI {
      - parameter productGroupPromotionIds: (query) List of Product group promotion Ids. (optional)
      - parameter entityStatuses: (query) Entity status (optional)
      - parameter adGroupId: (query) Ad group Id. (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - returns: RequestBuilder<ProductGroupPromotionsList200Response> 
@@ -355,6 +355,7 @@ open class ProductGroupPromotionsAPI {
         case videoP75Combined2 = "VIDEO_P75_COMBINED_2"
         case videoP95Combined2 = "VIDEO_P95_COMBINED_2"
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
+        case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
@@ -387,6 +388,7 @@ open class ProductGroupPromotionsAPI {
         case leads = "LEADS"
         case costPerLead = "COST_PER_LEAD"
         case quizCompleted = "QUIZ_COMPLETED"
+        case quizPinResultOpen = "QUIZ_PIN_RESULT_OPEN"
         case quizCompletionRate = "QUIZ_COMPLETION_RATE"
         case showcasePinClickthrough = "SHOWCASE_PIN_CLICKTHROUGH"
         case showcaseSubpageClickthrough = "SHOWCASE_SUBPAGE_CLICKTHROUGH"

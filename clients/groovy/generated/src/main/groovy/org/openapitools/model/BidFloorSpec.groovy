@@ -15,7 +15,7 @@ import org.openapitools.model.OptimizationGoalMetadata;
 @Canonical
 class BidFloorSpec {
     
-    List<Country> countries
+    List<Country> countries = new ArrayList<>()
     
     Currency currency
     

@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogClientError", description = "System error details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogClientError {
 
   private String cause;
@@ -48,7 +48,7 @@ public class IntegrationLogClientError {
   /**
    * Original cause of the error.
    * @return cause
-  */
+   */
   @Size(max = 512) 
   @Schema(name = "cause", description = "Original cause of the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cause")
@@ -68,7 +68,7 @@ public class IntegrationLogClientError {
   /**
    * Column number in the line of the file that raised the error.
    * @return columnNumber
-  */
+   */
   
   @Schema(name = "column_number", description = "Column number in the line of the file that raised the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column_number")
@@ -88,7 +88,7 @@ public class IntegrationLogClientError {
   /**
    * Filename where the error happened.
    * @return fileName
-  */
+   */
   @Size(max = 256) 
   @Schema(name = "file_name", description = "Filename where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("file_name")
@@ -108,7 +108,7 @@ public class IntegrationLogClientError {
   /**
    * Line number where the error happened.
    * @return lineNumber
-  */
+   */
   
   @Schema(name = "line_number", description = "Line number where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("line_number")
@@ -128,7 +128,7 @@ public class IntegrationLogClientError {
   /**
    * Human-readable description of the error.
    * @return message
-  */
+   */
   @Size(max = 512) 
   @Schema(name = "message", description = "Human-readable description of the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
@@ -148,7 +148,7 @@ public class IntegrationLogClientError {
   /**
    * More detail about the message.
    * @return messageDetail
-  */
+   */
   @Size(max = 1024) 
   @Schema(name = "message_detail", description = "More detail about the message.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message_detail")
@@ -168,7 +168,7 @@ public class IntegrationLogClientError {
   /**
    * Filename where the error happened.
    * @return name
-  */
+   */
   @Size(max = 256) 
   @Schema(name = "name", description = "Filename where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -188,7 +188,7 @@ public class IntegrationLogClientError {
   /**
    * Integer that specifies the error code.
    * @return number
-  */
+   */
   
   @Schema(name = "number", description = "Integer that specifies the error code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("number")
@@ -208,7 +208,7 @@ public class IntegrationLogClientError {
   /**
    * Stack trace of where the error happened.
    * @return stackTrace
-  */
+   */
   
   @Schema(name = "stack_trace", description = "Stack trace of where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("stack_trace")

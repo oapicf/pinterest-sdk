@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingTypeFilter   {
   
-  private List<AdsAnalyticsTargetingType> targetingTypes;
+  private List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
 
   public TargetingTypeFilter () {
 

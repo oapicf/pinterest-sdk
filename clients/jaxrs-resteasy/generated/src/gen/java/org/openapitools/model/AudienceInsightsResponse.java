@@ -17,12 +17,11 @@ import org.openapitools.model.AudienceInsightType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightsResponse   {
   
-  private List<@Valid AudienceCategory> categories;
+  private List<@Valid AudienceCategory> categories = new ArrayList<>();
   private AudienceDemographics demographics;
   private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
   private String date;

@@ -5,13 +5,13 @@
 
 
 char* oauth_access_token_response_refresh_response_type_ToString(pinterest_rest_api_oauth_access_token_response_refresh_RESPONSETYPE_e response_type) {
-    char* response_typeArray[] =  { "NULL", "authorization_code", "refresh_token" };
+    char* response_typeArray[] =  { "NULL", "authorization_code", "refresh_token", "client_credentials" };
     return response_typeArray[response_type];
 }
 
 pinterest_rest_api_oauth_access_token_response_refresh_RESPONSETYPE_e oauth_access_token_response_refresh_response_type_FromString(char* response_type){
     int stringToReturn = 0;
-    char *response_typeArray[] =  { "NULL", "authorization_code", "refresh_token" };
+    char *response_typeArray[] =  { "NULL", "authorization_code", "refresh_token", "client_credentials" };
     size_t sizeofArray = sizeof(response_typeArray) / sizeof(response_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(response_type, response_typeArray[stringToReturn]) == 0) {

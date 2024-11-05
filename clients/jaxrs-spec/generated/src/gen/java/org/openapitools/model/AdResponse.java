@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.PinPromotionSummaryStatus;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -25,28 +25,28 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdResponse   {
-  private @Valid String adGroupId;
-  private @Valid String androidDeepLink;
+  private String adGroupId;
+  private String androidDeepLink;
   private @Valid List<String> carouselAndroidDeepLinks;
   private @Valid List<String> carouselDestinationUrls;
   private @Valid List<String> carouselIosDeepLinks;
-  private @Valid String clickTrackingUrl;
-  private @Valid CreativeType creativeType;
-  private @Valid String destinationUrl;
-  private @Valid String iosDeepLink;
-  private @Valid Boolean isPinDeleted;
-  private @Valid Boolean isRemovable;
-  private @Valid String name;
-  private @Valid EntityStatus status;
-  private @Valid AdCommonTrackingUrls trackingUrls;
-  private @Valid String viewTrackingUrl;
-  private @Valid String leadFormId;
-  private @Valid GridClickType gridClickType;
+  private String clickTrackingUrl;
+  private CreativeType creativeType;
+  private String destinationUrl;
+  private String iosDeepLink;
+  private Boolean isPinDeleted;
+  private Boolean isRemovable;
+  private String name;
+  private EntityStatus status;
+  private TrackingUrls trackingUrls;
+  private String viewTrackingUrl;
+  private String leadFormId;
+  private GridClickType gridClickType;
   public enum CustomizableCtaTypeEnum {
 
-    GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE")), ORDER_NOW(String.valueOf("ORDER_NOW")), SHOP_NOW(String.valueOf("SHOP_NOW")), SIGN_UP(String.valueOf("SIGN_UP")), SUBSCRIBE(String.valueOf("SUBSCRIBE")), BUY_NOW(String.valueOf("BUY_NOW")), CONTACT_US(String.valueOf("CONTACT_US")), GET_QUOTE(String.valueOf("GET_QUOTE")), VISIT_WEBSITE(String.valueOf("VISIT_WEBSITE")), APPLY_NOW(String.valueOf("APPLY_NOW")), BOOK_NOW(String.valueOf("BOOK_NOW")), REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), REGISTER_NOW(String.valueOf("REGISTER_NOW")), FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_NOW(String.valueOf("WATCH_NOW")), READ_MORE(String.valueOf("READ_MORE")), NULL(String.valueOf("null"));
+    GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE")), ORDER_NOW(String.valueOf("ORDER_NOW")), SHOP_NOW(String.valueOf("SHOP_NOW")), SIGN_UP(String.valueOf("SIGN_UP")), SUBSCRIBE(String.valueOf("SUBSCRIBE")), BUY_NOW(String.valueOf("BUY_NOW")), CONTACT_US(String.valueOf("CONTACT_US")), GET_QUOTE(String.valueOf("GET_QUOTE")), VISIT_SITE(String.valueOf("VISIT_SITE")), APPLY_NOW(String.valueOf("APPLY_NOW")), BOOK_NOW(String.valueOf("BOOK_NOW")), REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), REGISTER_NOW(String.valueOf("REGISTER_NOW")), FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_NOW(String.valueOf("WATCH_NOW")), READ_MORE(String.valueOf("READ_MORE"));
 
 
     private String value;
@@ -91,14 +91,14 @@ public class AdResponse   {
     }
 }
 
-  private @Valid CustomizableCtaTypeEnum customizableCtaType;
-  private @Valid AdCommonQuizPinData quizPinData;
-  private @Valid String pinId;
-  private @Valid String adAccountId;
-  private @Valid String campaignId;
-  private @Valid String collectionItemsDestinationUrlTemplate;
-  private @Valid Integer createdTime;
-  private @Valid String id;
+  private CustomizableCtaTypeEnum customizableCtaType;
+  private QuizPinData quizPinData;
+  private String pinId;
+  private String adAccountId;
+  private String campaignId;
+  private String collectionItemsDestinationUrlTemplate;
+  private Integer createdTime;
+  private String id;
   public enum RejectedReasonsEnum {
 
     HASHTAGS(String.valueOf("HASHTAGS")), PROMOTIONS_AND_PRICES(String.valueOf("PROMOTIONS_AND_PRICES")), TARGETING(String.valueOf("TARGETING")), LANDING_PAGE(String.valueOf("LANDING_PAGE")), CAPS_AND_SYMBOLS(String.valueOf("CAPS_AND_SYMBOLS")), SHOCKING(String.valueOf("SHOCKING")), WEIGHT_LOSS(String.valueOf("WEIGHT_LOSS")), PROHIBITED_PRODUCT(String.valueOf("PROHIBITED_PRODUCT")), AUTHENTICITY(String.valueOf("AUTHENTICITY")), NUDITY(String.valueOf("NUDITY")), CONFUSING_DESIGN(String.valueOf("CONFUSING_DESIGN")), URGENCY(String.valueOf("URGENCY")), RATINGS(String.valueOf("RATINGS")), APP(String.valueOf("APP")), ALCOHOL(String.valueOf("ALCOHOL")), CONTESTS(String.valueOf("CONTESTS")), POLITICAL(String.valueOf("POLITICAL")), OTHER(String.valueOf("OTHER")), IMAGE(String.valueOf("IMAGE")), NAR(String.valueOf("NAR")), INCONSISTENT(String.valueOf("INCONSISTENT")), CLICKBAIT(String.valueOf("CLICKBAIT")), NO_DESCRIPTION(String.valueOf("NO_DESCRIPTION")), LOW_QUALITY(String.valueOf("LOW_QUALITY")), EXAGGERATED_CLAIMS(String.valueOf("EXAGGERATED_CLAIMS")), PINTEREST_BRAND(String.valueOf("PINTEREST_BRAND")), ALCOHOL_NO_SALE(String.valueOf("ALCOHOL_NO_SALE")), LANDING_PAGE_SPEED(String.valueOf("LANDING_PAGE_SPEED")), LANDING_PAGE_HARDWALL(String.valueOf("LANDING_PAGE_HARDWALL")), LANDING_PAGE_BROKEN(String.valueOf("LANDING_PAGE_BROKEN")), LANDING_PAGE_QUALITY(String.valueOf("LANDING_PAGE_QUALITY")), OUT_OF_STOCK(String.valueOf("OUT_OF_STOCK")), IMAGE_LOW_QUALITY(String.valueOf("IMAGE_LOW_QUALITY")), IMAGE_BUSY(String.valueOf("IMAGE_BUSY")), IMAGE_POORLY_EDITED(String.valueOf("IMAGE_POORLY_EDITED")), IMAGE_BEFORE_AFTER(String.valueOf("IMAGE_BEFORE_AFTER")), UGC(String.valueOf("UGC")), FAKE_BUTTONS(String.valueOf("FAKE_BUTTONS")), WEAPONS(String.valueOf("WEAPONS")), SENSITIVE(String.valueOf("SENSITIVE")), UNACCEPTABLE_BUSINESS(String.valueOf("UNACCEPTABLE_BUSINESS")), SUSPICIOUS_CLAIMS(String.valueOf("SUSPICIOUS_CLAIMS")), PHARMA(String.valueOf("PHARMA")), SUSPICIOUS_SUPPLEMENTS(String.valueOf("SUSPICIOUS_SUPPLEMENTS")), ILLEGAL_RECREATIONAL_DRUG(String.valueOf("ILLEGAL_RECREATIONAL_DRUG")), LOW_QUALITY_LANDING_PAGE(String.valueOf("LOW_QUALITY_LANDING_PAGE")), RESTRICTED_HEALTHCARE(String.valueOf("RESTRICTED_HEALTHCARE")), INCONSISTENT_LANG_FR(String.valueOf("INCONSISTENT_LANG_FR"));
@@ -146,8 +146,8 @@ public class AdResponse   {
     }
 }
 
-  private @Valid List<RejectedReasonsEnum> rejectedReasons;
-  private @Valid List<String> rejectionLabels;
+  private @Valid List<RejectedReasonsEnum> rejectedReasons = new ArrayList<>();
+  private @Valid List<String> rejectionLabels = new ArrayList<>();
   public enum ReviewStatusEnum {
 
     OTHER(String.valueOf("OTHER")), PENDING(String.valueOf("PENDING")), REJECTED(String.valueOf("REJECTED")), APPROVED(String.valueOf("APPROVED"));
@@ -195,10 +195,10 @@ public class AdResponse   {
     }
 }
 
-  private @Valid ReviewStatusEnum reviewStatus;
-  private @Valid String type;
-  private @Valid Integer updatedTime;
-  private @Valid PinPromotionSummaryStatus summaryStatus;
+  private ReviewStatusEnum reviewStatus;
+  private String type;
+  private Integer updatedTime;
+  private PinPromotionSummaryStatus summaryStatus;
 
   /**
    * ID of the ad group that contains the ad.
@@ -211,7 +211,7 @@ public class AdResponse   {
   
   @ApiModelProperty(example = "2680059592705", value = "ID of the ad group that contains the ad.")
   @JsonProperty("ad_group_id")
- @Pattern(regexp="^(AG)?\\d+$")  public String getAdGroupId() {
+   @Pattern(regexp="^(AG)?\\d+$")public String getAdGroupId() {
     return adGroupId;
   }
 
@@ -221,7 +221,7 @@ public class AdResponse   {
   }
 
   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    **/
   public AdResponse androidDeepLink(String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
@@ -229,7 +229,7 @@ public class AdResponse   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
   @JsonProperty("android_deep_link")
   public String getAndroidDeepLink() {
     return androidDeepLink;
@@ -408,7 +408,7 @@ public class AdResponse   {
   }
 
   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    **/
   public AdResponse iosDeepLink(String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
@@ -416,7 +416,7 @@ public class AdResponse   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
   @JsonProperty("ios_deep_link")
   public String getIosDeepLink() {
     return iosDeepLink;
@@ -508,7 +508,7 @@ public class AdResponse   {
 
   /**
    **/
-  public AdResponse trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -516,12 +516,12 @@ public class AdResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  @Valid public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
   @JsonProperty("tracking_urls")
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -556,7 +556,7 @@ public class AdResponse   {
   
   @ApiModelProperty(value = "Lead form ID for lead ad generation.")
   @JsonProperty("lead_form_id")
- @Pattern(regexp="^(AG)?\\d+$")  public String getLeadFormId() {
+   @Pattern(regexp="^(AG)?\\d+$")public String getLeadFormId() {
     return leadFormId;
   }
 
@@ -585,7 +585,7 @@ public class AdResponse   {
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    **/
   public AdResponse customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
@@ -593,7 +593,7 @@ public class AdResponse   {
   }
 
   
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
   @JsonProperty("customizable_cta_type")
   public CustomizableCtaTypeEnum getCustomizableCtaType() {
     return customizableCtaType;
@@ -605,21 +605,22 @@ public class AdResponse   {
   }
 
   /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    **/
-  public AdResponse quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdResponse quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  @Valid public QuizPinData getQuizPinData() {
     return quizPinData;
   }
 
   @JsonProperty("quiz_pin_data")
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -634,7 +635,7 @@ public class AdResponse   {
   
   @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
   @JsonProperty("pin_id")
- @Pattern(regexp="^\\d+$")  public String getPinId() {
+   @Pattern(regexp="^\\d+$")public String getPinId() {
     return pinId;
   }
 
@@ -654,7 +655,7 @@ public class AdResponse   {
   
   @ApiModelProperty(example = "549755885175", value = "The ID of the advertiser that this ad belongs to.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
@@ -674,7 +675,7 @@ public class AdResponse   {
   
   @ApiModelProperty(example = "626735565838", value = "ID of the ad campaign that contains this ad.")
   @JsonProperty("campaign_id")
- @Pattern(regexp="^\\d+$")  public String getCampaignId() {
+   @Pattern(regexp="^\\d+$")public String getCampaignId() {
     return campaignId;
   }
 
@@ -734,7 +735,7 @@ public class AdResponse   {
   
   @ApiModelProperty(example = "687195134316", value = "The ID of this ad.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 

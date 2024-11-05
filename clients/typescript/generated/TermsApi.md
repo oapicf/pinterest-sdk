@@ -17,22 +17,21 @@ Get a list of terms logically related to each input term. <p/> Example: the term
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, TermsApi } from '';
+import type { TermsApiTermsRelatedListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .TermsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new TermsApi(configuration);
 
-let body:.TermsApiTermsRelatedListRequest = {
-  // Array<string> | List of input terms.
+const request: TermsApiTermsRelatedListRequest = {
+    // List of input terms.
   terms: [
     "workout",
   ],
 };
 
-apiInstance.termsRelatedList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.termsRelatedList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -75,22 +74,21 @@ Get popular search terms that begin with your input term. <p/> Example: \'sport\
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, TermsApi } from '';
+import type { TermsApiTermsSuggestedListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .TermsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new TermsApi(configuration);
 
-let body:.TermsApiTermsSuggestedListRequest = {
-  // string | Input term.
+const request: TermsApiTermsSuggestedListRequest = {
+    // Input term.
   term: "sports",
-  // number | Max suggested terms to return. (optional)
+    // Max suggested terms to return. (optional)
   limit: 4,
 };
 
-apiInstance.termsSuggestedList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.termsSuggestedList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

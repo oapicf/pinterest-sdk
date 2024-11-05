@@ -16,7 +16,7 @@ import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsInner;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopVideoPinsAnalyticsResponse   {
   @JsonProperty("date_availability")
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
@@ -42,7 +42,7 @@ public class TopVideoPinsAnalyticsResponse   {
     
     QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
     
-    VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+    VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
     
     VIDEO_START("VIDEO_START");
 

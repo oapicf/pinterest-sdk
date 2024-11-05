@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "A currency filter. This filter cannot be negated")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupCurrencyCriteria   {
   @JsonProperty("values")
   private NonNullableCatalogsCurrency values;
@@ -30,10 +30,10 @@ public class CatalogsProductGroupCurrencyCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get values
    * @return values
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public NonNullableCatalogsCurrency getValues() {
     return values;
@@ -48,10 +48,10 @@ public class CatalogsProductGroupCurrencyCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get negated
    * @return negated
-  **/
+   */
   @ApiModelProperty(value = "")
   public Boolean getNegated() {
     return negated;

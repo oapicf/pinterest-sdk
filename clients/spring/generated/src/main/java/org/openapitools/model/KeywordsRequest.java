@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * KeywordsRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsRequest {
 
   @Valid
@@ -58,7 +58,7 @@ public class KeywordsRequest {
   /**
    * Keyword JSON array. Each array element has 3 fields
    * @return keywords
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "keywords", description = "Keyword JSON array. Each array element has 3 fields", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("keywords")
@@ -78,7 +78,7 @@ public class KeywordsRequest {
   /**
    * Keyword parent entity ID (advertiser, campaign, ad group).
    * @return parentId
-  */
+   */
   @NotNull @Pattern(regexp = "^((AG)|C)?\\d+$") 
   @Schema(name = "parent_id", example = "383791336903426391", description = "Keyword parent entity ID (advertiser, campaign, ad group).", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("parent_id")

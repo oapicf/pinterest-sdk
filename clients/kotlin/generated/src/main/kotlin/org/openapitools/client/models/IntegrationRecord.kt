@@ -95,5 +95,8 @@ data class IntegrationRecord (
     @Json(name = "updated_time")
     val updatedTime: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

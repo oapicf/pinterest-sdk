@@ -5,8 +5,8 @@ import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -68,7 +68,7 @@ public class Pin  {
   private Boolean isOwner;
 
   @ApiModelProperty(value = "")
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @ApiModelProperty(value = "")
   private PinMediaSource mediaSource;
@@ -79,9 +79,9 @@ public class Pin  {
   **/
   private String parentPinId;
 
-  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.")
+  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.")
  /**
-   * Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+   * Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
   **/
   private Boolean isStandard;
 
@@ -97,7 +97,7 @@ public class Pin  {
   **/
   private String note;
 
-  @ApiModelProperty(example = "{\"pin_metrics\":[{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"all_time\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}},null]}", value = "Pin metrics with associated time intervals if any.")
+  @ApiModelProperty(example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", value = "Pin metrics with associated time intervals if any.")
  /**
    * Pin metrics with associated time intervals if any.
   **/
@@ -267,14 +267,6 @@ public class Pin  {
     return boardOwner;
   }
 
-  public void setBoardOwner(BoardOwner boardOwner) {
-    this.boardOwner = boardOwner;
-  }
-
-  public Pin boardOwner(BoardOwner boardOwner) {
-    this.boardOwner = boardOwner;
-    return this;
-  }
 
  /**
    * Whether the \&quot;operation user_account\&quot; is the Pin owner.
@@ -291,18 +283,10 @@ public class Pin  {
    * @return media
   **/
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
-    this.media = media;
-  }
-
-  public Pin media(SummaryPinMedia media) {
-    this.media = media;
-    return this;
-  }
 
  /**
    * Get mediaSource
@@ -341,7 +325,7 @@ public class Pin  {
   }
 
  /**
-   * Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/content/update/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.
+   * Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.
    * @return isStandard
   **/
   @JsonProperty("is_standard")

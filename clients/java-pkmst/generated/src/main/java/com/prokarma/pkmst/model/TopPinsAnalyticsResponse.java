@@ -20,7 +20,7 @@ import java.util.List;
  * TopPinsAnalyticsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopPinsAnalyticsResponse   {
   @JsonProperty("date_availability")
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
@@ -74,10 +74,10 @@ public class TopPinsAnalyticsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get dateAvailability
    * @return dateAvailability
-  **/
+   */
   @ApiModelProperty(value = "")
   public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
@@ -100,10 +100,10 @@ public class TopPinsAnalyticsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get pins
    * @return pins
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<TopPinsAnalyticsResponsePinsInner> getPins() {
     return pins;
@@ -118,10 +118,10 @@ public class TopPinsAnalyticsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get sortBy
    * @return sortBy
-  **/
+   */
   @ApiModelProperty(example = "IMPRESSION", value = "")
   public SortByEnum getSortBy() {
     return sortBy;

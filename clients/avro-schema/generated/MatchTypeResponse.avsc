@@ -8,7 +8,6 @@
     "PHRASE",
     "EXACT",
     "EXACT_NEGATIVE",
-    "PHRASE_NEGATIVE",
-    "null"
+    "PHRASE_NEGATIVE"
   ]
 }

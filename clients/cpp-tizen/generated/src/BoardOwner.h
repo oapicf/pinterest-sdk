@@ -1,11 +1,11 @@
 /*
- * Board_owner.h
+ * BoardOwner.h
  *
  * 
  */
 
-#ifndef _Board_owner_H_
-#define _Board_owner_H_
+#ifndef _BoardOwner_H_
+#define _BoardOwner_H_
 
 
 #include <string>
@@ -26,16 +26,16 @@ namespace ArtikCloud {
  *
  */
 
-class Board_owner : public Object {
+class BoardOwner : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	Board_owner();
-	Board_owner(char* str);
+	BoardOwner();
+	BoardOwner(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~Board_owner();
+	virtual ~BoardOwner();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -62,4 +62,4 @@ private:
 }
 }
 
-#endif /* _Board_owner_H_ */
+#endif /* _BoardOwner_H_ */

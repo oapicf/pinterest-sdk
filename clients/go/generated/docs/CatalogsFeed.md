@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **time.Time** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**CreatedAt** | **time.Time** |  | 
+**Id** | **string** |  | 
+**UpdatedAt** | **time.Time** |  | 
 **Name** | **NullableString** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsFeed
 
-`func NewCatalogsFeed(name NullableString, format CatalogsFormat, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, location string, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus, defaultCurrency NullableNullableCurrency, defaultLocale string, defaultCountry Country, defaultAvailability NullableProductAvailabilityType, catalogId NullableString, ) *CatalogsFeed`
+`func NewCatalogsFeed(createdAt time.Time, id string, updatedAt time.Time, name NullableString, format CatalogsFormat, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, location string, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus, defaultCurrency NullableNullableCurrency, defaultLocale string, defaultCountry Country, defaultAvailability NullableProductAvailabilityType, catalogId NullableString, ) *CatalogsFeed`
 
 NewCatalogsFeed instantiates a new CatalogsFeed object
 This constructor will assign default values to properties that have it defined,
@@ -58,11 +58,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *CatalogsFeed) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetId
 
@@ -83,11 +78,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *CatalogsFeed) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -108,11 +98,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *CatalogsFeed) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetName
 

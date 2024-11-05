@@ -1,11 +1,13 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.CatalogsHotelAttributes
+import org.openapitools.model.CatalogsCreativeAssetsAttributes
+import org.openapitools.model.CatalogsCreativeAssetsItemResponse
 import org.openapitools.model.CatalogsHotelItemResponse
 import org.openapitools.model.CatalogsRetailItemResponse
 import org.openapitools.model.CatalogsType
@@ -28,10 +30,12 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param pins The pins mapped to the item
  * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
+ * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes(
+      JsonSubTypes.Type(value = CatalogsCreativeAssetsItemResponse::class, name = "CREATIVE_ASSETS"),
       JsonSubTypes.Type(value = CatalogsHotelItemResponse::class, name = "HOTEL"),
       JsonSubTypes.Type(value = CatalogsRetailItemResponse::class, name = "RETAIL")
 )
@@ -47,10 +51,13 @@ interface ItemResponseAnyOf{
         val pins: kotlin.collections.List<Pin>? 
 
                 @get:Schema(example = "null", description = "")
-        val attributes: CatalogsHotelAttributes? 
+        val attributes: CatalogsCreativeAssetsAttributes? 
 
                 @get:Schema(example = "DS0294-M", description = "The catalog hotel id in the merchant namespace")
         val hotelId: kotlin.String? 
+
+                @get:Schema(example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace")
+        val creativeAssetsId: kotlin.String? 
 
 
 }

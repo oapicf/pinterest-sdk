@@ -10,5 +10,5 @@
   binary().
 
 openapi_catalogs_type() ->
-  elements([<<"RETAIL">>, <<"HOTEL">>]).
+  elements([<<"RETAIL">>, <<"HOTEL">>, <<"CREATIVE_ASSETS">>]).
 

@@ -18,16 +18,16 @@ Create an asynchronous report that may include information on campaigns, ad grou
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BulkApi } from '';
+import type { BulkApiBulkDownloadCreateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BulkApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BulkApi(configuration);
 
-let body:.BulkApiBulkDownloadCreateRequest = {
-  // string | Unique identifier of an ad account.
+const request: BulkApiBulkDownloadCreateRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // BulkDownloadRequest | Parameters to get ad entities in bulk
+    // Parameters to get ad entities in bulk
   bulkDownloadRequest: {
     entityTypes: ["CAMPAIGN","AD_GROUP"],
     entityIds: [
@@ -49,9 +49,8 @@ let body:.BulkApiBulkDownloadCreateRequest = {
   },
 };
 
-apiInstance.bulkDownloadCreate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.bulkDownloadCreate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -94,24 +93,23 @@ Get the status of a bulk request by <code>request_id</code>, along with a downlo
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BulkApi } from '';
+import type { BulkApiBulkRequestGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BulkApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BulkApi(configuration);
 
-let body:.BulkApiBulkRequestGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: BulkApiBulkRequestGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Unique identifier of a bulk upsert request.
+    // Unique identifier of a bulk upsert request.
   bulkRequestId: "bulk_request_id_example",
-  // boolean | if set to True then attach the errors/details to all the requests (optional)
+    // if set to True then attach the errors/details to all the requests (optional)
   includeDetails: false,
 };
 
-apiInstance.bulkRequestGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.bulkRequestGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -155,51 +153,32 @@ Either create or update any combination of campaigns, ad groups, product groups,
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BulkApi } from '';
+import type { BulkApiBulkUpsertCreateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BulkApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BulkApi(configuration);
 
-let body:.BulkApiBulkUpsertCreateRequest = {
-  // string | Unique identifier of an ad account.
+const request: BulkApiBulkUpsertCreateRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // BulkUpsertRequest | Parameters to get create/update ad entities in bulk
+    // Parameters to get create/update ad entities in bulk
   bulkUpsertRequest: {
     create: {
       campaigns: [
         ,
       ],
       adGroups: [
-        null,
+        ,
       ],
       ads: [
-        null,
+        ,
       ],
       productGroups: [
         {
           adGroupId: "2680059592705",
           productGroupPromotion: [
-            {
-              id: "2680059592705",
-              adGroupId: "2680059592705",
-              bidInMicroCurrency: 14000000,
-              included: true,
-              definition: "*/product_type_0='kitchen'/product_type_1='beverage appliances'",
-              relativeDefinition: "product_type_1='beverage appliances'",
-              parentId: "1231234",
-              slideshowCollectionsTitle: "slideshow title",
-              slideshowCollectionsDescription: "slideshow description",
-              isMdl: true,
-              status: "ACTIVE",
-              trackingUrl: "https://www.pinterest.com",
-              catalogProductGroupId: "1231235",
-              catalogProductGroupName: "catalogProductGroupName",
-              creativeType: "REGULAR",
-              collectionsHeroPinId: "123123",
-              collectionsHeroDestinationUrl: "http://www.pinterest.com",
-              gridClickType: "CLOSEUP",
-            },
+            ,
           ],
         },
       ],
@@ -207,7 +186,7 @@ let body:.BulkApiBulkUpsertCreateRequest = {
         {
           keywords: [
             {
-              bid: 200000,
+              bid: 1,
               matchType: "BROAD",
               value: "value_example",
             },
@@ -221,10 +200,10 @@ let body:.BulkApiBulkUpsertCreateRequest = {
         ,
       ],
       adGroups: [
-        null,
+        ,
       ],
       ads: [
-        null,
+        ,
       ],
       productGroups: [
         {
@@ -245,7 +224,6 @@ let body:.BulkApiBulkUpsertCreateRequest = {
               trackingUrl: "https://www.pinterest.com",
               catalogProductGroupId: "1231235",
               catalogProductGroupName: "catalogProductGroupName",
-              creativeType: "REGULAR",
               collectionsHeroPinId: "123123",
               collectionsHeroDestinationUrl: "http://www.pinterest.com",
               gridClickType: "CLOSEUP",
@@ -257,16 +235,15 @@ let body:.BulkApiBulkUpsertCreateRequest = {
         {
           id: "2886364308355",
           archived: false,
-          bid: 200000,
+          bid: 1,
         },
       ],
     },
   },
 };
 
-apiInstance.bulkUpsertCreate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.bulkUpsertCreate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

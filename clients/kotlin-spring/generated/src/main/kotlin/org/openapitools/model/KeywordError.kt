@@ -27,7 +27,7 @@ data class KeywordError(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("error_messages") val errorMessages: kotlin.collections.List<kotlin.String>? = null
-) {
+    ) {
 
 }
 

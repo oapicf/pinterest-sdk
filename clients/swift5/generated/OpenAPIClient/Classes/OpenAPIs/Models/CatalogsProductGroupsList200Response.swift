@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct CatalogsProductGroupsList200Response: Codable, JSONEncodable, Hashable {
 
-    public var items: [CatalogsProductGroupsList200ResponseAllOfItemsInner]
+    public var items: [CatalogsVerticalProductGroup]
     public var bookmark: String?
 
-    public init(items: [CatalogsProductGroupsList200ResponseAllOfItemsInner], bookmark: String? = nil) {
+    public init(items: [CatalogsVerticalProductGroup], bookmark: String? = nil) {
         self.items = items
         self.bookmark = bookmark
     }

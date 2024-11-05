@@ -14,12 +14,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}created_time`,
-                label: `Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD - [${labelPrefix}created_time]`,
+                label: `Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss - [${labelPrefix}created_time]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}completed_time`,
-                label: `Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD - [${labelPrefix}completed_time]`,
+                label: `Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss - [${labelPrefix}completed_time]`,
                 type: 'string',
             },
             {

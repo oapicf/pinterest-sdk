@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * LinkedBusiness
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LinkedBusiness   {
   @JsonProperty("username")
   private String username;
@@ -36,10 +36,10 @@ public class LinkedBusiness   {
     return this;
   }
 
-   /**
+  /**
    * Username
    * @return username
-  **/
+   */
   @ApiModelProperty(example = "username", value = "Username")
   public String getUsername() {
     return username;
@@ -54,10 +54,10 @@ public class LinkedBusiness   {
     return this;
   }
 
-   /**
+  /**
    * image_small_url
    * @return imageSmallUrl
-  **/
+   */
   @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_small_url")
   public String getImageSmallUrl() {
     return imageSmallUrl;
@@ -72,10 +72,10 @@ public class LinkedBusiness   {
     return this;
   }
 
-   /**
+  /**
    * image_medium_url
    * @return imageMediumUrl
-  **/
+   */
   @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_medium_url")
   public String getImageMediumUrl() {
     return imageMediumUrl;
@@ -90,10 +90,10 @@ public class LinkedBusiness   {
     return this;
   }
 
-   /**
+  /**
    * image_large_url
    * @return imageLargeUrl
-  **/
+   */
   @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_large_url")
   public String getImageLargeUrl() {
     return imageLargeUrl;
@@ -108,10 +108,10 @@ public class LinkedBusiness   {
     return this;
   }
 
-   /**
+  /**
    * image_xlarge_url
    * @return imageXlargeUrl
-  **/
+   */
   @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_xlarge_url")
   public String getImageXlargeUrl() {
     return imageXlargeUrl;

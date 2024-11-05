@@ -22,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing a retail item error")
 @JsonTypeName("CatalogsRetailItemErrorResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemErrorResponse   {
-  private @Valid CatalogsType catalogType;
-  private @Valid String itemId;
-  private @Valid List<@Valid ItemValidationEvent> errors;
+  private CatalogsType catalogType;
+  private String itemId;
+  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   /**
    **/
@@ -38,8 +38,7 @@ public class CatalogsRetailItemErrorResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
+  @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
@@ -79,7 +78,7 @@ public class CatalogsRetailItemErrorResponse   {
   
   @ApiModelProperty(value = "Array with the errors for the item id requested")
   @JsonProperty("errors")
-  public List<ItemValidationEvent> getErrors() {
+  @Valid public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
 

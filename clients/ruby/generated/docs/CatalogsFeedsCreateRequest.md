@@ -13,6 +13,7 @@
 | **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] |
 | **default_country** | [**Country**](Country.md) |  | [optional] |
 | **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] |
+| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = PinterestSdkClient::CatalogsFeedsCreateRequest.new(
   location: null,
   preferred_processing_schedule: null,
   default_country: null,
-  default_availability: null
+  default_availability: null,
+  status: null
 )
 ```
 

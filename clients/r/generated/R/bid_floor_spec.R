@@ -25,8 +25,7 @@ BidFloorSpec <- R6::R6Class(
     `billable_event` = NULL,
     `optimization_goal_metadata` = NULL,
     `creative_type` = NULL,
-    #' Initialize a new BidFloorSpec class.
-    #'
+
     #' @description
     #' Initialize a new BidFloorSpec class.
     #'
@@ -37,7 +36,6 @@ BidFloorSpec <- R6::R6Class(
     #' @param optimization_goal_metadata optimization_goal_metadata
     #' @param creative_type creative_type
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`currency`, `billable_event`, `countries` = NULL, `objective_type` = NULL, `optimization_goal_metadata` = NULL, `creative_type` = NULL, ...) {
       if (!missing(`currency`)) {
         if (!(`currency` %in% c())) {
@@ -77,13 +75,11 @@ BidFloorSpec <- R6::R6Class(
         self$`creative_type` <- `creative_type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BidFloorSpec in JSON format
-    #' @export
     toJSON = function() {
       BidFloorSpecObject <- list()
       if (!is.null(self$`countries`)) {
@@ -112,14 +108,12 @@ BidFloorSpec <- R6::R6Class(
       }
       BidFloorSpecObject
     },
-    #' Deserialize JSON string into an instance of BidFloorSpec
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BidFloorSpec
     #'
     #' @param input_json the JSON input
     #' @return the instance of BidFloorSpec
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`countries`)) {
@@ -152,13 +146,11 @@ BidFloorSpec <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BidFloorSpec in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`countries`)) {
@@ -213,14 +205,12 @@ BidFloorSpec <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BidFloorSpec
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BidFloorSpec
     #'
     #' @param input_json the JSON input
     #' @return the instance of BidFloorSpec
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[Country]", loadNamespace("openapi"))
@@ -231,13 +221,11 @@ BidFloorSpec <- R6::R6Class(
       self$`creative_type` <- CreativeType$new()$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to BidFloorSpec
-    #'
+
     #' @description
     #' Validate JSON input with respect to BidFloorSpec and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `currency`
@@ -253,23 +241,19 @@ BidFloorSpec <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for BidFloorSpec: the required field `billable_event` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BidFloorSpec
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `currency` is null
       if (is.null(self$`currency`)) {
@@ -283,13 +267,11 @@ BidFloorSpec <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `currency` is null
@@ -304,12 +286,9 @@ BidFloorSpec <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * RelatedTerms
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RelatedTerms {
 
   private String id;
@@ -30,7 +30,7 @@ public class RelatedTerms {
   private Integer relatedTermCount;
 
   @Valid
-  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList;
+  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
 
   public RelatedTerms id(String id) {
     this.id = id;
@@ -40,7 +40,7 @@ public class RelatedTerms {
   /**
    * First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "clothes", description = "First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -60,7 +60,7 @@ public class RelatedTerms {
   /**
    * Total number of related terms returned
    * @return relatedTermCount
-  */
+   */
   
   @Schema(name = "related_term_count", example = "2", description = "Total number of related terms returned", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("related_term_count")
@@ -88,7 +88,7 @@ public class RelatedTerms {
   /**
    * The id of the advertiser.
    * @return relatedTermsList
-  */
+   */
   @Valid 
   @Schema(name = "related_terms_list", description = "The id of the advertiser.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("related_terms_list")

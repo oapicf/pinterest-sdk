@@ -223,14 +223,6 @@ PUBLIC(String.valueOf("PUBLIC")), PROTECTED(String.valueOf("PROTECTED")), SECRET
     return owner;
   }
 
-  public void setOwner(BoardOwner owner) {
-    this.owner = owner;
-  }
-
-  public Board owner(BoardOwner owner) {
-    this.owner = owner;
-    return this;
-  }
 
  /**
    * Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt;

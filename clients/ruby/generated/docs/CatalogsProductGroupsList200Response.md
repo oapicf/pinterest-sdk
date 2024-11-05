@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;CatalogsProductGroupsList200ResponseAllOfItemsInner&gt;**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  |  |
+| **items** | [**Array&lt;CatalogsVerticalProductGroup&gt;**](CatalogsVerticalProductGroup.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
 
 ## Example

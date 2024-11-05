@@ -13,11 +13,11 @@ module Catalog =
   [<CLIMutable>]
   type Catalog = {
     [<JsonProperty(PropertyName = "created_at")>]
-    CreatedAt : Nullable<DateTime>;
+    CreatedAt : DateTime;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "updated_at")>]
-    UpdatedAt : Nullable<DateTime>;
+    UpdatedAt : DateTime;
     [<JsonProperty(PropertyName = "name")>]
     Name : string option;
     [<JsonProperty(PropertyName = "catalog_type")>]

@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **NSDate*** |  | [optional] 
-**_id** | **NSString*** |  | [optional] 
-**updatedAt** | **NSDate*** |  | [optional] 
+**createdAt** | **NSDate*** |  | 
+**_id** | **NSString*** |  | 
+**updatedAt** | **NSDate*** |  | 
 **ingestionDetails** | [**OAICatalogsFeedIngestionDetails***](OAICatalogsFeedIngestionDetails.md) |  | 
 **status** | [**OAICatalogsFeedProcessingStatus***](OAICatalogsFeedProcessingStatus.md) |  | 
 **productCounts** | [**OAICatalogsFeedProductCounts***](OAICatalogsFeedProductCounts.md) |  | 

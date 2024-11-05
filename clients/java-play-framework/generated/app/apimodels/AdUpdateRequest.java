@@ -1,10 +1,10 @@
 package apimodels;
 
-import apimodels.AdCommonQuizPinData;
-import apimodels.AdCommonTrackingUrls;
 import apimodels.CreativeType;
 import apimodels.EntityStatus;
 import apimodels.GridClickType;
+import apimodels.QuizPinData;
+import apimodels.TrackingUrls;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 /**
  * AdUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdUpdateRequest   {
   @JsonProperty("ad_group_id")
@@ -79,7 +79,7 @@ public class AdUpdateRequest   {
   @JsonProperty("tracking_urls")
   @Valid
 
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("view_tracking_url")
   
@@ -96,7 +96,7 @@ public class AdUpdateRequest   {
   private GridClickType gridClickType;
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    */
   public enum CustomizableCtaTypeEnum {
     GET_OFFER("GET_OFFER"),
@@ -117,7 +117,7 @@ public class AdUpdateRequest   {
     
     GET_QUOTE("GET_QUOTE"),
     
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     
     APPLY_NOW("APPLY_NOW"),
     
@@ -133,9 +133,7 @@ public class AdUpdateRequest   {
     
     WATCH_NOW("WATCH_NOW"),
     
-    READ_MORE("READ_MORE"),
-    
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private final String value;
 
@@ -167,7 +165,7 @@ public class AdUpdateRequest   {
   @JsonProperty("quiz_pin_data")
   @Valid
 
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
 
   @JsonProperty("id")
   @NotNull
@@ -203,7 +201,7 @@ public class AdUpdateRequest   {
   }
 
    /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    * @return androidDeepLink
   **/
   public String getAndroidDeepLink() {
@@ -346,7 +344,7 @@ public class AdUpdateRequest   {
   }
 
    /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    * @return iosDeepLink
   **/
   public String getIosDeepLink() {
@@ -425,7 +423,7 @@ public class AdUpdateRequest   {
     this.status = status;
   }
 
-  public AdUpdateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -434,11 +432,11 @@ public class AdUpdateRequest   {
    * Get trackingUrls
    * @return trackingUrls
   **/
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -499,7 +497,7 @@ public class AdUpdateRequest   {
   }
 
    /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    * @return customizableCtaType
   **/
   public CustomizableCtaTypeEnum getCustomizableCtaType() {
@@ -510,20 +508,20 @@ public class AdUpdateRequest   {
     this.customizableCtaType = customizableCtaType;
   }
 
-  public AdUpdateRequest quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdUpdateRequest quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
 
    /**
-   * Get quizPinData
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
   **/
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 

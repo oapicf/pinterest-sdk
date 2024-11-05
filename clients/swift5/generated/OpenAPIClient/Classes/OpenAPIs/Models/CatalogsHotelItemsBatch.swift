@@ -15,9 +15,9 @@ public struct CatalogsHotelItemsBatch: Codable, JSONEncodable, Hashable {
 
     /** Id of the catalogs items batch */
     public var batchId: String?
-    /** Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /** Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
     public var createdTime: Date?
-    /** Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /** Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     public var completedTime: Date?
     public var status: BatchOperationStatus?
     public var catalogType: CatalogsType

@@ -30,7 +30,7 @@ openapi_targeting_spec(Fields) ->
   Default = [ {'AGE_BUCKET', list(binary()) }
             , {'APPTYPE', list(binary()) }
             , {'AUDIENCE_EXCLUDE', list(binary()) }
-            , {'AUDIENCE_INCLUDE&#39;', list(binary()) }
+            , {'AUDIENCE_INCLUDE', list(binary()) }
             , {'GENDER', list(binary()) }
             , {'GEO', list(binary()) }
             , {'INTEREST', list(binary()) }

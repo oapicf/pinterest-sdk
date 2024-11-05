@@ -77,5 +77,6 @@ data class AdGroupAudienceSizingRequest (
         @Json(name = "COLLECTION") COLLECTION("COLLECTION"),
         @Json(name = "IDEA") IDEA("IDEA");
     }
+
 }
 

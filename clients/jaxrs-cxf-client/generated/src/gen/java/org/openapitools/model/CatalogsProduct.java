@@ -1,34 +1,64 @@
 package org.openapitools.model;
 
-import org.openapitools.model.CatalogsProductMetadata;
+import io.swagger.annotations.ApiModel;
+import org.openapitools.model.CatalogsCreativeAssetsProduct;
+import org.openapitools.model.CatalogsCreativeAssetsProductMetadata;
+import org.openapitools.model.CatalogsHotelProduct;
+import org.openapitools.model.CatalogsRetailProduct;
+import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+  * Catalogs product for all verticals
+ **/
+@ApiModel(description="Catalogs product for all verticals")
 
 public class CatalogsProduct  {
   
   @ApiModelProperty(required = true, value = "")
-  private CatalogsProductMetadata metadata;
+  private CatalogsType catalogType;
+
+  @ApiModelProperty(required = true, value = "")
+  private CatalogsCreativeAssetsProductMetadata metadata;
 
   @ApiModelProperty(required = true, value = "")
   private Pin pin;
+ /**
+   * Get catalogType
+   * @return catalogType
+  **/
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  public CatalogsProduct catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
  /**
    * Get metadata
    * @return metadata
   **/
   @JsonProperty("metadata")
-  public CatalogsProductMetadata getMetadata() {
+  public CatalogsCreativeAssetsProductMetadata getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(CatalogsProductMetadata metadata) {
+  public void setMetadata(CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
   }
 
-  public CatalogsProduct metadata(CatalogsProductMetadata metadata) {
+  public CatalogsProduct metadata(CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -60,13 +90,14 @@ public class CatalogsProduct  {
       return false;
     }
     CatalogsProduct catalogsProduct = (CatalogsProduct) o;
-    return Objects.equals(this.metadata, catalogsProduct.metadata) &&
+    return Objects.equals(this.catalogType, catalogsProduct.catalogType) &&
+        Objects.equals(this.metadata, catalogsProduct.metadata) &&
         Objects.equals(this.pin, catalogsProduct.pin);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, pin);
+    return Objects.hash(catalogType, metadata, pin);
   }
 
   @Override
@@ -74,6 +105,7 @@ public class CatalogsProduct  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProduct {\n");
     
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    pin: ").append(toIndentedString(pin)).append("\n");
     sb.append("}");

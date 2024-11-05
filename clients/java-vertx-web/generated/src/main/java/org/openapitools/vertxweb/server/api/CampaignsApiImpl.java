@@ -1,6 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.vertxweb.server.model.CampaignCreateRequest;
 import org.openapitools.vertxweb.server.model.CampaignCreateResponse;
 import org.openapitools.vertxweb.server.model.CampaignResponse;
@@ -26,7 +26,7 @@ import java.util.Map;
 // Implement this class
 
 public class CampaignsApiImpl implements CampaignsApi {
-    public Future<ApiResponse<MetricsResponse>> campaignTargetingAnalyticsGet(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
+    public Future<ApiResponse<MetricsResponse>> campaignTargetingAnalyticsGet(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
         return Future.failedFuture(new HttpException(501));
     }
 

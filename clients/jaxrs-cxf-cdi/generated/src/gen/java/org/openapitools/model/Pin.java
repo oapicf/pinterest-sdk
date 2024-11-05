@@ -7,8 +7,8 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -47,7 +47,7 @@ public class Pin   {
 
   private Boolean isOwner;
 
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   private PinMediaSource mediaSource;
 
@@ -283,7 +283,7 @@ public class Pin   {
 
   /**
    **/
-  public Pin media(SummaryPinMedia media) {
+  public Pin media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -291,10 +291,10 @@ public class Pin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -337,7 +337,7 @@ public class Pin   {
 
 
   /**
-   * Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/content/update/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.
+   * Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.
    **/
   public Pin isStandard(Boolean isStandard) {
     this.isStandard = isStandard;
@@ -345,7 +345,7 @@ public class Pin   {
   }
 
   
-  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.")
+  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.")
   @JsonProperty("is_standard")
   public Boolean getIsStandard() {
     return isStandard;
@@ -402,7 +402,7 @@ public class Pin   {
   }
 
   
-  @ApiModelProperty(example = "{\"pin_metrics\":[{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"all_time\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}},null]}", value = "Pin metrics with associated time intervals if any.")
+  @ApiModelProperty(example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", value = "Pin metrics with associated time intervals if any.")
   @JsonProperty("pin_metrics")
   public Object getPinMetrics() {
     return pinMetrics;

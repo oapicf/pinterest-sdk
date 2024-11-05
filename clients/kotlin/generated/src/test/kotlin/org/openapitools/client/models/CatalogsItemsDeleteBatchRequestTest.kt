@@ -20,9 +20,9 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsItemsDeleteBatchRequest
 import org.openapitools.client.models.BatchOperation
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemDeleteBatchRecord
-import org.openapitools.client.models.Language
 
 class CatalogsItemsDeleteBatchRequestTest : ShouldSpec() {
     init {

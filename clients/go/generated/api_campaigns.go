@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -32,7 +32,7 @@ type ApiCampaignTargetingAnalyticsGetRequest struct {
 	campaignIds *[]string
 	startDate *string
 	endDate *string
-	targetingTypes *[]AdsAnalyticsTargetingType
+	targetingTypes *[]AdsAnalyticsCampaignTargetingType
 	columns *[]string
 	granularity *Granularity
 	clickWindowDays *int32
@@ -60,8 +60,8 @@ func (r ApiCampaignTargetingAnalyticsGetRequest) EndDate(endDate string) ApiCamp
 	return r
 }
 
-// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
-func (r ApiCampaignTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsTargetingType) ApiCampaignTargetingAnalyticsGetRequest {
+// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+func (r ApiCampaignTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsCampaignTargetingType) ApiCampaignTargetingAnalyticsGetRequest {
 	r.targetingTypes = &targetingTypes
 	return r
 }
@@ -181,8 +181,8 @@ func (a *CampaignsAPIService) CampaignTargetingAnalyticsGetExecute(r ApiCampaign
 	if len(*r.targetingTypes) < 1 {
 		return localVarReturnValue, nil, reportError("targetingTypes must have at least 1 elements")
 	}
-	if len(*r.targetingTypes) > 15 {
-		return localVarReturnValue, nil, reportError("targetingTypes must have less than 15 elements")
+	if len(*r.targetingTypes) > 14 {
+		return localVarReturnValue, nil, reportError("targetingTypes must have less than 14 elements")
 	}
 	if r.columns == nil {
 		return localVarReturnValue, nil, reportError("columns is required and must be specified")
@@ -196,43 +196,43 @@ func (a *CampaignsAPIService) CampaignTargetingAnalyticsGetExecute(r ApiCampaign
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
 		}
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
 	}
 	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -435,41 +435,41 @@ func (a *CampaignsAPIService) CampaignsAnalyticsExecute(r ApiCampaignsAnalyticsR
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
 	{
 		t := *r.campaignIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
 		}
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
@@ -573,7 +573,7 @@ For more, see <a href="https://help.pinterest.com/en/business/article/set-up-you
 - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
 <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
-<p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+ <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
   <li>1 microdollar = $0.000001 </li>
@@ -838,7 +838,7 @@ func (r ApiCampaignsListRequest) EntityStatuses(entityStatuses []string) ApiCamp
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiCampaignsListRequest) PageSize(pageSize int32) ApiCampaignsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -908,10 +908,10 @@ func (a *CampaignsAPIService) CampaignsListExecute(r ApiCampaignsListRequest) (*
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
 		}
 	}
 	if r.entityStatuses != nil {
@@ -919,26 +919,26 @@ func (a *CampaignsAPIService) CampaignsListExecute(r ApiCampaignsListRequest) (*
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "form", "multi")
 		}
 	} else {
 		var defaultValue []string = ["ACTIVE","PAUSED"]
 		r.entityStatuses = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1035,9 +1035,9 @@ CampaignsUpdate Update campaigns
 
 Update multiple ad campaigns based on campaign_ids. <p/>
 <strong>Note:</strong><p/>
-- <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
+ - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
+<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
 <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>

@@ -15,7 +15,7 @@ import org.openapitools.vertxweb.server.model.PinAnalyticsMetricsResponseDailyMe
 public class PinAnalyticsMetricsResponse   {
   
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
-  private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics;
+  private List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public PinAnalyticsMetricsResponse () {

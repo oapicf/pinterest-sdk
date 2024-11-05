@@ -15,14 +15,12 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
   "CatalogsProductGroupFiltersRequestAnyOf",
   public = list(
     `any_of` = NULL,
-    #' Initialize a new CatalogsProductGroupFiltersRequestAnyOf class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsProductGroupFiltersRequestAnyOf class.
     #'
     #' @param any_of any_of
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`any_of`, ...) {
       if (!missing(`any_of`)) {
         stopifnot(is.vector(`any_of`), length(`any_of`) != 0)
@@ -30,13 +28,11 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
         self$`any_of` <- `any_of`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupFiltersRequestAnyOf in JSON format
-    #' @export
     toJSON = function() {
       CatalogsProductGroupFiltersRequestAnyOfObject <- list()
       if (!is.null(self$`any_of`)) {
@@ -45,14 +41,12 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
       }
       CatalogsProductGroupFiltersRequestAnyOfObject
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupFiltersRequestAnyOf
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupFiltersRequestAnyOf
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupFiltersRequestAnyOf
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`any_of`)) {
@@ -60,13 +54,11 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupFiltersRequestAnyOf in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`any_of`)) {
@@ -81,26 +73,22 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupFiltersRequestAnyOf
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupFiltersRequestAnyOf
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupFiltersRequestAnyOf
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`any_of` <- ApiClient$new()$deserializeObj(this_object$`any_of`, "array[CatalogsProductGroupFilterKeys]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CatalogsProductGroupFiltersRequestAnyOf
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsProductGroupFiltersRequestAnyOf and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `any_of`
@@ -111,23 +99,19 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupFiltersRequestAnyOf: the required field `any_of` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsProductGroupFiltersRequestAnyOf
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `any_of` is null
       if (is.null(self$`any_of`)) {
@@ -140,13 +124,11 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `any_of` is null
@@ -160,12 +142,9 @@ CatalogsProductGroupFiltersRequestAnyOf <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

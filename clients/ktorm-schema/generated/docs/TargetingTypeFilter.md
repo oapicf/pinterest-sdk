@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**targetingTypes** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdsAnalyticsTargetingType&gt;**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. |  [optional]
+**targetingTypes** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdsAnalyticsTargetingType&gt;**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. |  [optional]
 
 
 # **Table `TargetingTypeFilterAdsAnalyticsTargetingType`**

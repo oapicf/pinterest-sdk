@@ -24,7 +24,7 @@ data class CatalogsProductGroupFiltersRequestAnyOf(
     @get:Size(min=1)
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("any_of", required = true) val anyOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
-) {
+    ) {
 
 }
 

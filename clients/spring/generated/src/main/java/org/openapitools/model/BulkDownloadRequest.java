@@ -26,14 +26,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkDownloadRequest", description = "Ad entities to get in bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequest {
 
   @Valid
-  private List<BulkEntityType> entityTypes;
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
 
   @Valid
-  private List<@Pattern(regexp = "^\\d+$")String> entityIds;
+  private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
 
   private String updatedSince;
 
@@ -57,7 +57,7 @@ public class BulkDownloadRequest {
   /**
    * All entity types specified will be downloaded. Fewer types result in faster downloads.
    * @return entityTypes
-  */
+   */
   @Valid @Size(min = 1, max = 5) 
   @Schema(name = "entity_types", example = "[\"CAMPAIGN\",\"AD_GROUP\"]", description = "All entity types specified will be downloaded. Fewer types result in faster downloads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("entity_types")
@@ -85,7 +85,7 @@ public class BulkDownloadRequest {
   /**
    * All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
    * @return entityIds
-  */
+   */
   
   @Schema(name = "entity_ids", description = "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("entity_ids")
@@ -105,7 +105,7 @@ public class BulkDownloadRequest {
   /**
    * Unix UTC timestamp to retrieve all entities that have changed since this time.
    * @return updatedSince
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "updated_since", example = "1622848072", description = "Unix UTC timestamp to retrieve all entities that have changed since this time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_since")
@@ -125,7 +125,7 @@ public class BulkDownloadRequest {
   /**
    * Get campaignFilter
    * @return campaignFilter
-  */
+   */
   @Valid 
   @Schema(name = "campaign_filter", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_filter")
@@ -145,7 +145,7 @@ public class BulkDownloadRequest {
   /**
    * Get outputFormat
    * @return outputFormat
-  */
+   */
   @Valid 
   @Schema(name = "output_format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("output_format")

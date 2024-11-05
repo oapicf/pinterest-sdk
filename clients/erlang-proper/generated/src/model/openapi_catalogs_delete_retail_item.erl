@@ -19,7 +19,7 @@ openapi_catalogs_delete_retail_item() ->
 
 openapi_catalogs_delete_retail_item(Fields) ->
   Default = [ {'item_id', binary() }
-            , {'operation', elements([<<"CREATE">>, <<"UPDATE">>, <<"UPSERT">>, <<"DELETE">>]) }
+            , {'operation', elements([<<"DELETE">>]) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

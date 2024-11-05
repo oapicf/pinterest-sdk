@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 **CatalogType** | **String** |  | [optional] 
 **Name** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
-**Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [optional] 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
+**Country** | [**Country**](Country.md) |  | [optional] 
+**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
 
 ## Examples
 
@@ -15,7 +17,9 @@ Name | Type | Description | Notes
 $CatalogsVerticalProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsVerticalProductGroupUpdateRequest  -CatalogType null `
  -Name null `
  -Description null `
- -Filters null
+ -Filters null `
+ -Country null `
+ -Locale null
 ```
 
 - Convert the resource to JSON

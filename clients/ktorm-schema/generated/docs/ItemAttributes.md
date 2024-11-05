@@ -7,8 +7,8 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **adLink** | ad_link | text |  | **kotlin.String** | Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. |  [optional]
 **adult** | adult | boolean |  | **kotlin.Boolean** | Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest. |  [optional]
-**ageGroup** | age_group | text |  | **kotlin.String** | The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. |  [optional]
-**availability** | availability | text |  | **kotlin.String** | The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. |  [optional]
+**ageGroup** | age_group | text |  | **kotlin.String** | The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. |  [optional]
+**availability** | availability | text |  | **kotlin.String** | The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’. |  [optional]
 **averageReviewRating** | average_review_rating | decimal |  | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Average reviews for the item. Can be a number from 1-5. |  [optional]
 **brand** | brand | text |  | **kotlin.String** | The brand of the product. |  [optional]
 **checkoutEnabled** | checkout_enabled | boolean |  | **kotlin.Boolean** | This attribute is not supported anymore. |  [optional]
@@ -22,7 +22,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **description** | description | text |  | **kotlin.String** | &lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt; |  [optional]
 **freeShippingLabel** | free_shipping_label | boolean |  | **kotlin.Boolean** | The item is free to ship. |  [optional]
 **freeShippingLimit** | free_shipping_limit | text |  | **kotlin.String** | The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. |  [optional]
-**gender** | gender | text |  | **kotlin.String** | The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. |  [optional]
+**gender** | gender | text |  | **kotlin.String** | The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’. |  [optional]
 **googleProductCategory** | google_product_category | text |  | **kotlin.String** | The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. |  [optional]
 **gtin** | gtin | int |  | **kotlin.Int** | The unique universal product identifier. |  [optional]
 **id** | id | text PRIMARY KEY |  | **kotlin.String** | &lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt; |  [optional]
@@ -44,14 +44,15 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **shippingWeight** | shipping_weight | text |  | **kotlin.String** | The weight of the product. Ensure there is a space between the numeric string and the metric. |  [optional]
 **shippingWidth** | shipping_width | text |  | **kotlin.String** | The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. |  [optional]
 **propertySize** | size | text |  | **kotlin.String** | The size of the product. |  [optional]
-**sizeSystem** | size_system | text |  | **kotlin.String** | Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. |  [optional]
-**sizeType** | size_type | text |  | **kotlin.String** | Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. |  [optional]
+**sizeSystem** | size_system | text |  | **kotlin.String** | Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’. |  [optional]
+**sizeType** | size_type | text |  | **kotlin.String** | Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’. |  [optional]
 **tax** | tax | text |  | **kotlin.String** | Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. |  [optional]
 **title** | title | text |  | **kotlin.String** | &lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt; |  [optional]
 **variantNames** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. |  [optional]
 **variantValues** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names. |  [optional]
 **additionalImageLink** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.&lt;/p&gt; |  [optional]
 **imageLink** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.&lt;/p&gt; |  [optional]
+**videoLink** | video_link | text |  | **kotlin.String** | &lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt; |  [optional]
 
 
 
@@ -138,6 +139,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 itemAttributes | itemAttributes | long | | kotlin.Long | Primary Key | *one*
 imageLink | imageLink | text | | kotlin.String | Foreign Key | *many*
+
 
 
 

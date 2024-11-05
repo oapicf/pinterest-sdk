@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CatalogsUpdatableHotelAttributes
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpdatableHotelAttributes   {
   @JsonProperty("name")
   private String name;
@@ -80,10 +80,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * The hotel's name.
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "The hotel's name.")
   public String getName() {
     return name;
@@ -98,10 +98,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Link to the product page
    * @return link
-  **/
+   */
   @ApiModelProperty(value = "Link to the product page")
   public String getLink() {
     return link;
@@ -116,10 +116,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Brief description of the hotel.
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "Brief description of the hotel.")
   public String getDescription() {
     return description;
@@ -134,10 +134,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * The brand to which this hotel belongs to.
    * @return brand
-  **/
+   */
   @ApiModelProperty(value = "The brand to which this hotel belongs to.")
   public String getBrand() {
     return brand;
@@ -152,10 +152,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Latitude of the hotel.
    * @return latitude
-  **/
+   */
   @ApiModelProperty(value = "Latitude of the hotel.")
   public BigDecimal getLatitude() {
     return latitude;
@@ -170,10 +170,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Longitude of the hotel.
    * @return longitude
-  **/
+   */
   @ApiModelProperty(value = "Longitude of the hotel.")
   public BigDecimal getLongitude() {
     return longitude;
@@ -196,10 +196,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * A list of neighborhoods where the hotel is located
    * @return neighborhood
-  **/
+   */
   @ApiModelProperty(value = "A list of neighborhoods where the hotel is located")
   public List<String> getNeighborhood() {
     return neighborhood;
@@ -214,10 +214,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Get address
    * @return address
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsHotelAddress getAddress() {
     return address;
@@ -232,10 +232,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Custom grouping of hotels
    * @return customLabel0
-  **/
+   */
   @ApiModelProperty(value = "Custom grouping of hotels")
   public String getCustomLabel0() {
     return customLabel0;
@@ -250,10 +250,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Custom grouping of hotels
    * @return customLabel1
-  **/
+   */
   @ApiModelProperty(value = "Custom grouping of hotels")
   public String getCustomLabel1() {
     return customLabel1;
@@ -268,10 +268,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Custom grouping of hotels
    * @return customLabel2
-  **/
+   */
   @ApiModelProperty(value = "Custom grouping of hotels")
   public String getCustomLabel2() {
     return customLabel2;
@@ -286,10 +286,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Custom grouping of hotels
    * @return customLabel3
-  **/
+   */
   @ApiModelProperty(value = "Custom grouping of hotels")
   public String getCustomLabel3() {
     return customLabel3;
@@ -304,10 +304,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Custom grouping of hotels
    * @return customLabel4
-  **/
+   */
   @ApiModelProperty(value = "Custom grouping of hotels")
   public String getCustomLabel4() {
     return customLabel4;
@@ -322,10 +322,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * The type of property. The category can be any type of internal description desired.
    * @return category
-  **/
+   */
   @ApiModelProperty(value = "The type of property. The category can be any type of internal description desired.")
   public String getCategory() {
     return category;
@@ -340,10 +340,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Base price of the hotel room per night followed by the ISO currency code
    * @return basePrice
-  **/
+   */
   @ApiModelProperty(example = "100 USD", value = "Base price of the hotel room per night followed by the ISO currency code")
   public String getBasePrice() {
     return basePrice;
@@ -358,10 +358,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
    * @return salePrice
-  **/
+   */
   @ApiModelProperty(example = "90 USD", value = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.")
   public String getSalePrice() {
     return salePrice;
@@ -376,10 +376,10 @@ public class CatalogsUpdatableHotelAttributes   {
     return this;
   }
 
-   /**
+  /**
    * Get guestRatings
    * @return guestRatings
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;

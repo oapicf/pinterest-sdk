@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("PinMediaSourceImagesURL_items_inner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImagesURLItemsInner {
 
   private String title;
@@ -50,7 +50,7 @@ public class PinMediaSourceImagesURLItemsInner {
   /**
    * Get title
    * @return title
-  */
+   */
   
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -70,7 +70,7 @@ public class PinMediaSourceImagesURLItemsInner {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -90,7 +90,7 @@ public class PinMediaSourceImagesURLItemsInner {
   /**
    * Destination link for the image.
    * @return link
-  */
+   */
   
   @Schema(name = "link", description = "Destination link for the image.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -110,7 +110,7 @@ public class PinMediaSourceImagesURLItemsInner {
   /**
    * URL of image to upload.
    * @return url
-  */
+   */
   @NotNull 
   @Schema(name = "url", description = "URL of image to upload.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("url")

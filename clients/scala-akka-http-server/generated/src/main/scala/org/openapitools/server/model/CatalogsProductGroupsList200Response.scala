@@ -6,7 +6,7 @@ package org.openapitools.server.model
  * @param bookmark  for example: ''null''
 */
 final case class CatalogsProductGroupsList200Response (
-  items: Seq[CatalogsProductGroupsList200ResponseAllOfItemsInner],
+  items: Seq[CatalogsVerticalProductGroup],
   bookmark: Option[String] = None
 )
 

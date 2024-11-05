@@ -23,7 +23,7 @@ test_that("privacy_policy_link", {
 
 test_that("has_accepted_terms", {
   # tests for the property `has_accepted_terms` (character)
-  # Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.
+  # Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
 
   # uncomment below to test the property
   #expect_equal(model.instance$`has_accepted_terms`, "EXPECTED_RESULT")
@@ -58,4 +58,12 @@ test_that("questions", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`questions`, "EXPECTED_RESULT")
+})
+
+test_that("policy_links", {
+  # tests for the property `policy_links` (array[LeadFormCommonPolicyLinksInner])
+  # List of additional policy links to be displayed on the lead form.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`policy_links`, "EXPECTED_RESULT")
 })

@@ -18,9 +18,7 @@ public enum MatchTypeResponse {
   
   EXACT_NEGATIVE("EXACT_NEGATIVE"),
   
-  PHRASE_NEGATIVE("PHRASE_NEGATIVE"),
-  
-  NULL("null");
+  PHRASE_NEGATIVE("PHRASE_NEGATIVE");
 
   private final String value;
 

@@ -47,5 +47,8 @@ data class ConversionEventResponse (
     @Json(name = "created_time")
     val createdTime: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

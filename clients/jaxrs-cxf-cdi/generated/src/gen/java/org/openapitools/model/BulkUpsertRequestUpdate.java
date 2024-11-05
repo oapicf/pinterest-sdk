@@ -26,15 +26,15 @@ import java.util.Objects;
 @ApiModel(description = "Request for creation of entities in bulk.")
 public class BulkUpsertRequestUpdate   {
   
-  private List<@Valid CampaignUpdateRequest> campaigns;
+  private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
 
-  private List<AdGroupUpdateRequest> adGroups;
+  private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
 
-  private List<AdUpdateRequest> ads;
+  private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
 
-  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups;
+  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
 
-  private List<@Valid KeywordUpdate> keywords;
+  private List<@Valid KeywordUpdate> keywords = new ArrayList<>();
 
   /**
    **/
@@ -64,7 +64,7 @@ public class BulkUpsertRequestUpdate   {
 
   /**
    **/
-  public BulkUpsertRequestUpdate adGroups(List<AdGroupUpdateRequest> adGroups) {
+  public BulkUpsertRequestUpdate adGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
     return this;
   }
@@ -72,10 +72,10 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ad_groups")
-  public List<AdGroupUpdateRequest> getAdGroups() {
+  public List<@Valid AdGroupUpdateRequest> getAdGroups() {
     return adGroups;
   }
-  public void setAdGroups(List<AdGroupUpdateRequest> adGroups) {
+  public void setAdGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
@@ -90,7 +90,7 @@ public class BulkUpsertRequestUpdate   {
 
   /**
    **/
-  public BulkUpsertRequestUpdate ads(List<AdUpdateRequest> ads) {
+  public BulkUpsertRequestUpdate ads(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
     return this;
   }
@@ -98,10 +98,10 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ads")
-  public List<AdUpdateRequest> getAds() {
+  public List<@Valid AdUpdateRequest> getAds() {
     return ads;
   }
-  public void setAds(List<AdUpdateRequest> ads) {
+  public void setAds(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
   }
 

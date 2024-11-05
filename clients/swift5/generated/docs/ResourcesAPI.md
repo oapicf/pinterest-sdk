@@ -65,7 +65,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 ```swift
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```swift
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 # **targetingOptionsGet**
 ```swift
-    open class func targetingOptionsGet(targetingType: TargetingType_targetingOptionsGet, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil, completion: @escaping (_ data: [AnyCodable]?, _ error: Error?) -> Void)
+    open class func targetingOptionsGet(targetingType: TargetingType_targetingOptionsGet, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [AnyCodable]?, _ error: Error?) -> Void)
 ```
 
 Get targeting options
@@ -272,9 +272,10 @@ let targetingType = "targetingType_example" // String | Public targeting type.
 let clientId = "clientId_example" // String | Client ID. (optional)
 let oauthSignature = "oauthSignature_example" // String | Oauth signature (optional)
 let timestamp = "timestamp_example" // String | Timestamp (optional)
+let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get targeting options
-ResourcesAPI.targetingOptionsGet(targetingType: targetingType, clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp) { (response, error) in
+ResourcesAPI.targetingOptionsGet(targetingType: targetingType, clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp, adAccountId: adAccountId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -294,6 +295,7 @@ Name | Type | Description  | Notes
  **clientId** | **String** | Client ID. | [optional] 
  **oauthSignature** | **String** | Oauth signature | [optional] 
  **timestamp** | **String** | Timestamp | [optional] 
+ **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
 

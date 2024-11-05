@@ -15,15 +15,16 @@
 
 typedef struct catalogs_vertical_product_group_t catalogs_vertical_product_group_t;
 
+#include "catalogs_creative_assets_product_group.h"
+#include "catalogs_creative_assets_product_group_filters.h"
 #include "catalogs_hotel_product_group.h"
-#include "catalogs_product_group_filters.h"
 #include "catalogs_product_group_status.h"
 #include "catalogs_product_group_type.h"
 #include "catalogs_retail_product_group.h"
 
 // Enum CATALOGTYPE for catalogs_vertical_product_group
 
-typedef enum  { pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_RETAIL } pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_e;
+typedef enum  { pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_CREATIVE_ASSETS } pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_e;
 
 char* catalogs_vertical_product_group_catalog_type_ToString(pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_e catalog_type);
 
@@ -45,14 +46,6 @@ char* catalogs_vertical_product_group_status_ToString(pinterest_rest_api_catalog
 
 pinterest_rest_api_catalogs_vertical_product_group__e catalogs_vertical_product_group_status_FromString(char* status);
 
-// Enum FEEDID for catalogs_vertical_product_group
-
-typedef enum  { pinterest_rest_api_catalogs_vertical_product_group_FEEDID_NULL = 0, pinterest_rest_api_catalogs_vertical_product_group_FEEDID_null } pinterest_rest_api_catalogs_vertical_product_group_FEEDID_e;
-
-char* catalogs_vertical_product_group_feed_id_ToString(pinterest_rest_api_catalogs_vertical_product_group_FEEDID_e feed_id);
-
-pinterest_rest_api_catalogs_vertical_product_group_FEEDID_e catalogs_vertical_product_group_feed_id_FromString(char* feed_id);
-
 
 
 typedef struct catalogs_vertical_product_group_t {
@@ -60,14 +53,16 @@ typedef struct catalogs_vertical_product_group_t {
     char *id; // string
     char *name; // string
     char *description; // string
-    struct catalogs_product_group_filters_t *filters; //model
-    int created_at; //numeric
-    int updated_at; //numeric
-    char *catalog_id; // string
+    struct catalogs_creative_assets_product_group_filters_t *filters; //model
     int is_featured; //boolean
     catalogs_product_group_type_t *type; // custom
     catalogs_product_group_status_t *status; // custom
-    pinterest_rest_api_catalogs_vertical_product_group_FEEDID_e feed_id; //enum
+    int created_at; //numeric
+    int updated_at; //numeric
+    char *catalog_id; // string
+    char *feed_id; // string
+    char *country; // string
+    char *locale; // string
 
 } catalogs_vertical_product_group_t;
 
@@ -76,14 +71,16 @@ catalogs_vertical_product_group_t *catalogs_vertical_product_group_create(
     char *id,
     char *name,
     char *description,
-    catalogs_product_group_filters_t *filters,
-    int created_at,
-    int updated_at,
-    char *catalog_id,
+    catalogs_creative_assets_product_group_filters_t *filters,
     int is_featured,
     catalogs_product_group_type_t *type,
     catalogs_product_group_status_t *status,
-    pinterest_rest_api_catalogs_vertical_product_group_FEEDID_e feed_id
+    int created_at,
+    int updated_at,
+    char *catalog_id,
+    char *feed_id,
+    char *country,
+    char *locale
 );
 
 void catalogs_vertical_product_group_free(catalogs_vertical_product_group_t *catalogs_vertical_product_group);

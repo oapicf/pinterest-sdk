@@ -16,15 +16,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CustomerList")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomerList   {
-  private @Valid String adAccountId;
-  private @Valid BigDecimal createdTime;
-  private @Valid String id;
-  private @Valid String name;
-  private @Valid BigDecimal numBatches;
-  private @Valid BigDecimal numRemovedUserRecords;
-  private @Valid BigDecimal numUploadedUserRecords;
+  private String adAccountId;
+  private BigDecimal createdTime;
+  private String id;
+  private String name;
+  private BigDecimal numBatches;
+  private BigDecimal numRemovedUserRecords;
+  private BigDecimal numUploadedUserRecords;
   public enum StatusEnum {
 
     PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SMALL(String.valueOf("TOO_SMALL")), UPLOADING(String.valueOf("UPLOADING"));
@@ -72,10 +72,10 @@ public class CustomerList   {
     }
 }
 
-  private @Valid StatusEnum status;
-  private @Valid String type;
-  private @Valid BigDecimal updatedTime;
-  private @Valid Object exceptions;
+  private StatusEnum status;
+  private String type;
+  private BigDecimal updatedTime;
+  private Object exceptions;
 
   /**
    * Associated ad account ID.
@@ -108,7 +108,7 @@ public class CustomerList   {
   
   @ApiModelProperty(example = "1452208622", value = "Creation time. Unix timestamp in seconds.")
   @JsonProperty("created_time")
-  public BigDecimal getCreatedTime() {
+  @Valid public BigDecimal getCreatedTime() {
     return createdTime;
   }
 
@@ -168,7 +168,7 @@ public class CustomerList   {
   
   @ApiModelProperty(example = "2", value = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.")
   @JsonProperty("num_batches")
-  public BigDecimal getNumBatches() {
+  @Valid public BigDecimal getNumBatches() {
     return numBatches;
   }
 
@@ -188,7 +188,7 @@ public class CustomerList   {
   
   @ApiModelProperty(example = "0", value = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.")
   @JsonProperty("num_removed_user_records")
-  public BigDecimal getNumRemovedUserRecords() {
+  @Valid public BigDecimal getNumRemovedUserRecords() {
     return numRemovedUserRecords;
   }
 
@@ -208,7 +208,7 @@ public class CustomerList   {
   
   @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.")
   @JsonProperty("num_uploaded_user_records")
-  public BigDecimal getNumUploadedUserRecords() {
+  @Valid public BigDecimal getNumUploadedUserRecords() {
     return numUploadedUserRecords;
   }
 
@@ -268,7 +268,7 @@ public class CustomerList   {
   
   @ApiModelProperty(example = "1461269616", value = "Last update time. Unix timestamp in seconds.")
   @JsonProperty("updated_time")
-  public BigDecimal getUpdatedTime() {
+  @Valid public BigDecimal getUpdatedTime() {
     return updatedTime;
   }
 

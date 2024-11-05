@@ -1,10 +1,12 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsCreativeAssetsItemsFilter
 import org.openapitools.model.CatalogsHotelItemsFilter
 import org.openapitools.model.CatalogsRetailItemsFilter
 import org.openapitools.model.CatalogsType
@@ -24,11 +26,13 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param catalogType 
  * @param itemIds 
  * @param hotelIds 
- * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @param creativeAssetsIds 
+ * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes(
+      JsonSubTypes.Type(value = CatalogsCreativeAssetsItemsFilter::class, name = "CREATIVE_ASSETS"),
       JsonSubTypes.Type(value = CatalogsHotelItemsFilter::class, name = "HOTEL"),
       JsonSubTypes.Type(value = CatalogsRetailItemsFilter::class, name = "RETAIL")
 )
@@ -43,7 +47,10 @@ interface CatalogsItemsFilters{
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val hotelIds: kotlin.collections.List<kotlin.String>
 
-                @get:Schema(example = "null", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val creativeAssetsIds: kotlin.collections.List<kotlin.String>
+
+                @get:Schema(example = "null", description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
         val catalogId: kotlin.String? 
 
 

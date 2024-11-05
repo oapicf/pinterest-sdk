@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,13 +24,13 @@ import org.openapitools.model.AdsAnalyticsTargetingType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TargetingTypeFilter   {
   
-  private List<AdsAnalyticsTargetingType> targetingTypes;
+  private List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
 
   /**
-   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
    */
   public TargetingTypeFilter targetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
@@ -38,7 +38,7 @@ public class TargetingTypeFilter   {
   }
 
   
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
   @JsonProperty("targeting_types")
   public List<AdsAnalyticsTargetingType> getTargetingTypes() {
     return targetingTypes;

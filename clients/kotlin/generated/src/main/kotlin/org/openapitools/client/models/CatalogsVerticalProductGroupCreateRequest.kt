@@ -15,19 +15,25 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupCreateRequest
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupFilters
 import org.openapitools.client.models.CatalogsHotelProductGroupCreateRequest
-import org.openapitools.client.models.CatalogsHotelProductGroupFilters
+import org.openapitools.client.models.CatalogsLocale
+import org.openapitools.client.models.CatalogsRetailProductGroupCreateRequest
+import org.openapitools.client.models.Country
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Request object for creating a hotel product group.
+ * Request object for creating a catalog based product group.
  *
  * @param catalogType 
  * @param name 
  * @param filters 
- * @param catalogId Catalog id pertaining to the hotel product group.
+ * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param country 
+ * @param locale 
  * @param description 
  */
 
@@ -39,20 +45,25 @@ interface CatalogsVerticalProductGroupCreateRequest {
     @Json(name = "name")
     val name: kotlin.String
     @Json(name = "filters")
-    val filters: CatalogsHotelProductGroupFilters
-    /* Catalog id pertaining to the hotel product group. */
+    val filters: CatalogsCreativeAssetsProductGroupFilters
+    /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
+    @Json(name = "country")
+    val country: Country
+    @Json(name = "locale")
+    val locale: CatalogsLocale
     @Json(name = "description")
     val description: kotlin.String?
     /**
      * 
      *
-     * Values: HOTEL
+     * Values: CREATIVE_ASSETS
      */
     @JsonClass(generateAdapter = false)
     enum class CatalogType(val value: kotlin.String) {
-        @Json(name = "HOTEL") HOTEL("HOTEL");
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
     }
+
 }
 

@@ -221,7 +221,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get available metrics&#39; definitions Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.</stringProp>
+          <stringProp name="TestPlan.comments">Get available metrics&#39; definitions Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - deliveryMetrics/get" enabled="true">
@@ -371,7 +371,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get lead form questions Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Get lead form questions Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - leadFormQuestions/get" enabled="true">
@@ -531,6 +531,13 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">timestamp</stringProp>
+              </elementProp>
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>

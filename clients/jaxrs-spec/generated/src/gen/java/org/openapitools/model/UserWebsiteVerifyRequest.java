@@ -17,9 +17,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "User website verification request")
 @JsonTypeName("UserWebsiteVerifyRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserWebsiteVerifyRequest   {
-  private @Valid String website;
+  private String website;
   public enum VerificationMethodEnum {
 
     FILENAME(String.valueOf("FILENAME")), METATAG(String.valueOf("METATAG")), DNSTXT(String.valueOf("DNSTXT"));
@@ -67,7 +67,7 @@ public class UserWebsiteVerifyRequest   {
     }
 }
 
-  private @Valid VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
+  private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
 
   /**
    **/

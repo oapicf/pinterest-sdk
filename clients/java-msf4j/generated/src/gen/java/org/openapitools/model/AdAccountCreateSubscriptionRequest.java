@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.AdAccountCreateSubscriptionRequestPartnerMetadata;
 
 /**
  * AdAccountCreateSubscriptionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateSubscriptionRequest   {
   @JsonProperty("webhook_url")
   private String webhookUrl;
@@ -22,6 +23,9 @@ public class AdAccountCreateSubscriptionRequest   {
 
   @JsonProperty("partner_refresh_token")
   private String partnerRefreshToken;
+
+  @JsonProperty("partner_metadata")
+  private AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata;
 
   public AdAccountCreateSubscriptionRequest webhookUrl(String webhookUrl) {
     this.webhookUrl = webhookUrl;
@@ -95,6 +99,24 @@ public class AdAccountCreateSubscriptionRequest   {
     this.partnerRefreshToken = partnerRefreshToken;
   }
 
+  public AdAccountCreateSubscriptionRequest partnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+    return this;
+  }
+
+   /**
+   * Get partnerMetadata
+   * @return partnerMetadata
+  **/
+  @ApiModelProperty(value = "")
+  public AdAccountCreateSubscriptionRequestPartnerMetadata getPartnerMetadata() {
+    return partnerMetadata;
+  }
+
+  public void setPartnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -108,12 +130,13 @@ public class AdAccountCreateSubscriptionRequest   {
     return Objects.equals(this.webhookUrl, adAccountCreateSubscriptionRequest.webhookUrl) &&
         Objects.equals(this.leadFormId, adAccountCreateSubscriptionRequest.leadFormId) &&
         Objects.equals(this.partnerAccessToken, adAccountCreateSubscriptionRequest.partnerAccessToken) &&
-        Objects.equals(this.partnerRefreshToken, adAccountCreateSubscriptionRequest.partnerRefreshToken);
+        Objects.equals(this.partnerRefreshToken, adAccountCreateSubscriptionRequest.partnerRefreshToken) &&
+        Objects.equals(this.partnerMetadata, adAccountCreateSubscriptionRequest.partnerMetadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhookUrl, leadFormId, partnerAccessToken, partnerRefreshToken);
+    return Objects.hash(webhookUrl, leadFormId, partnerAccessToken, partnerRefreshToken, partnerMetadata);
   }
 
   @Override
@@ -125,6 +148,7 @@ public class AdAccountCreateSubscriptionRequest   {
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    partnerAccessToken: ").append(toIndentedString(partnerAccessToken)).append("\n");
     sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
+    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -16,6 +16,7 @@ public struct PinMediaSourceImagesBase64: Codable, JSONEncodable, Hashable {
     public enum SourceType: String, Codable, CaseIterable {
         case multipleImageBase64 = "multiple_image_base64"
     }
+    static let itemsRule = ArrayRule(minItems: 2, maxItems: 5, uniqueItems: false)
     static let indexRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public var sourceType: SourceType?
     /** Array with image objects. */

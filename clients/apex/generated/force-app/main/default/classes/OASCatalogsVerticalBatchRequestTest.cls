@@ -80,7 +80,7 @@ private class OASCatalogsVerticalBatchRequestTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsVerticalBatchRequest catalogsVerticalBatchRequest = new OASCatalogsVerticalBatchRequest();
-        System.assertEquals(new List<OASCatalogsHotelBatchItem>(), catalogsVerticalBatchRequest.items);
+        System.assertEquals(new List<OASCatalogsCreativeAssetsBatchItem>(), catalogsVerticalBatchRequest.items);
         System.assertEquals(null, catalogsVerticalBatchRequest.catalogType);
         System.assertEquals(null, catalogsVerticalBatchRequest.country);
         System.assertEquals(null, catalogsVerticalBatchRequest.language);

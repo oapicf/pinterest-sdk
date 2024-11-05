@@ -35,7 +35,7 @@ test_that("cpa_goal_value_in_micro_currency", {
 
 test_that("is_roas_optimized", {
   # tests for the property `is_roas_optimized` (character)
-  # Ad group is ROAS optimized
+  # ROAS optimization is not supported
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_roas_optimized`, "EXPECTED_RESULT")

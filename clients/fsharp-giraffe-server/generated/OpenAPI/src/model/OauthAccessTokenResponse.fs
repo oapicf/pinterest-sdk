@@ -8,7 +8,7 @@ module OauthAccessTokenResponse =
   //#region OauthAccessTokenResponse
 
   //#region enums
-  type ResponseTypeEnum = AuthorizationCodeEnum of string  |  RefreshTokenEnum of string  
+  type ResponseTypeEnum = AuthorizationCodeEnum of string  |  RefreshTokenEnum of string  |  ClientCredentialsEnum of string  
   //#endregion
 
   type OauthAccessTokenResponse = {

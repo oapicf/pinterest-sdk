@@ -10,5 +10,5 @@ import org.openapitools.model.KeywordMetricsResponse;
 @Canonical
 class KeywordsMetricsArrayResponse {
     
-    List<KeywordMetricsResponse> data
+    List<KeywordMetricsResponse> data = new ArrayList<>()
 }

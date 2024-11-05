@@ -1,6 +1,7 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsProductGroup = require('../models/CatalogsCreativeAssetsProductGroup');
+const CatalogsCreativeAssetsProductGroupFilters = require('../models/CatalogsCreativeAssetsProductGroupFilters');
 const CatalogsHotelProductGroup = require('../models/CatalogsHotelProductGroup');
-const CatalogsProductGroupFilters = require('../models/CatalogsProductGroupFilters');
 const CatalogsProductGroupStatus = require('../models/CatalogsProductGroupStatus');
 const CatalogsProductGroupType = require('../models/CatalogsProductGroupType');
 const CatalogsRetailProductGroup = require('../models/CatalogsRetailProductGroup');
@@ -15,18 +16,18 @@ module.exports = {
                 required: true,
                 type: 'string',
                 choices: [
-                    'RETAIL',
+                    'CREATIVE_ASSETS',
                 ],
             },
             {
                 key: `${keyPrefix}id`,
-                label: `ID of the catalog product group. - [${labelPrefix}id]`,
+                label: `ID of the creative assets product group. - [${labelPrefix}id]`,
                 required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}name`,
-                label: `Name of catalog product group - [${labelPrefix}name]`,
+                label: `Name of creative assets product group - [${labelPrefix}name]`,
                 type: 'string',
             },
             {
@@ -34,23 +35,7 @@ module.exports = {
                 label: `[${labelPrefix}description]`,
                 type: 'string',
             },
-            ...CatalogsProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
-            {
-                key: `${keyPrefix}created_at`,
-                label: `Unix timestamp in seconds of when catalog product group was created. - [${labelPrefix}created_at]`,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}updated_at`,
-                label: `Unix timestamp in seconds of last time catalog product group was updated. - [${labelPrefix}updated_at]`,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}catalog_id`,
-                label: `[${labelPrefix}catalog_id]`,
-                required: true,
-                type: 'string',
-            },
+            ...CatalogsCreativeAssetsProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
             {
                 key: `${keyPrefix}is_featured`,
                 label: `boolean indicator of whether the product group is being featured or not - [${labelPrefix}is_featured]`,
@@ -65,13 +50,36 @@ module.exports = {
                 ...CatalogsProductGroupStatus.fields(`${keyPrefix}status`, isInput),
             },
             {
-                key: `${keyPrefix}feed_id`,
-                label: `[${labelPrefix}feed_id]`,
+                key: `${keyPrefix}created_at`,
+                label: `Unix timestamp in seconds of when catalog product group was created. - [${labelPrefix}created_at]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}updated_at`,
+                label: `Unix timestamp in seconds of last time catalog product group was updated. - [${labelPrefix}updated_at]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the creative assets product group. - [${labelPrefix}catalog_id]`,
                 required: true,
                 type: 'string',
-                choices: [
-                    'null',
-                ],
+            },
+            {
+                key: `${keyPrefix}feed_id`,
+                label: `id of the catalogs feed belonging to this catalog product group - [${labelPrefix}feed_id]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}country`,
+                label: `[${labelPrefix}country]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}locale`,
+                label: `[${labelPrefix}locale]`,
+                type: 'string',
             },
         ]
     },
@@ -82,14 +90,16 @@ module.exports = {
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
-            'filters': utils.removeIfEmpty(CatalogsProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
-            'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
-            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
-            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
+            'filters': utils.removeIfEmpty(CatalogsCreativeAssetsProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
             'is_featured': bundle.inputData?.[`${keyPrefix}is_featured`],
             'type': bundle.inputData?.[`${keyPrefix}type`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
+            'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
+            'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
+            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'feed_id': bundle.inputData?.[`${keyPrefix}feed_id`],
+            'country': bundle.inputData?.[`${keyPrefix}country`],
+            'locale': bundle.inputData?.[`${keyPrefix}locale`],
         }
     },
 }

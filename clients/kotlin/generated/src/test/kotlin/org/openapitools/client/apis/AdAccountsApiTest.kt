@@ -63,7 +63,7 @@ class AdAccountsApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val targetingTypes : kotlin.collections.List<AdsAnalyticsTargetingType> =  // kotlin.collections.List<AdsAnalyticsTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+            //val targetingTypes : kotlin.collections.List<AdsAnalyticsTargetingType> =  // kotlin.collections.List<AdsAnalyticsTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
             //val columns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
             //val granularity : Granularity = DAY // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
             //val clickWindowDays : kotlin.Int = 1 // kotlin.Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
@@ -95,7 +95,7 @@ class AdAccountsApiTest : ShouldSpec() {
         should("test adAccountsList") {
             // uncomment below to test adAccountsList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val includeSharedAccounts : kotlin.Boolean = true // kotlin.Boolean | Include shared ad accounts
             //val result : AdAccountsList200Response = apiInstance.adAccountsList(bookmark, pageSize, includeSharedAccounts)
             //result shouldBe ("TODO")
@@ -161,7 +161,7 @@ class AdAccountsApiTest : ShouldSpec() {
         should("test templatesList") {
             // uncomment below to test templatesList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val result : TemplatesList200Response = apiInstance.templatesList(adAccountId, pageSize, order, bookmark)

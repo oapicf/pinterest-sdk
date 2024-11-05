@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,6 +14,7 @@ syntax = "proto3";
 
 package openapitools;
 
+import public "models/catalogs_creative_assets_items_filter.proto";
 import public "models/catalogs_hotel_items_filter.proto";
 import public "models/catalogs_retail_items_filter.proto";
 import public "models/catalogs_type.proto";
@@ -24,9 +25,11 @@ message CatalogsItemsFilters {
 
   repeated string item_ids = 104103822;
 
-  // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   string catalog_id = 500076802;
 
   repeated string hotel_ids = 247820883;
+
+  repeated string creative_assets_ids = 316887695;
 
 }

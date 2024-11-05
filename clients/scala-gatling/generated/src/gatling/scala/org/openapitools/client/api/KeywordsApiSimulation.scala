@@ -113,11 +113,11 @@ class KeywordsApiSimulation extends Simulation {
         .feed(keywords/getPATHFeeder)
         .exec(http("keywordsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/keywords")
-        .queryParam("match_types","${match_types}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("campaign_id","${campaign_id}")
         .queryParam("ad_group_id","${ad_group_id}")
+        .queryParam("match_types","${match_types}")
         .queryParam("page_size","${page_size}")
+        .queryParam("campaign_id","${campaign_id}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnkeywordsGet with warm up and reach a constant rate for entire duration
@@ -149,9 +149,10 @@ class KeywordsApiSimulation extends Simulation {
         .httpRequest("GET","/trends/keywords/${region}/top/${trend_type}")
         .queryParam("ages","${ages}")
         .queryParam("limit","${limit}")
-        .queryParam("interests","${interests}")
+        .queryParam("include_keywords","${include_keywords}")
         .queryParam("genders","${genders}")
         .queryParam("normalize_against_group","${normalize_against_group}")
+        .queryParam("interests","${interests}")
 )
 
     // Run scntrendingKeywordsList with warm up and reach a constant rate for entire duration

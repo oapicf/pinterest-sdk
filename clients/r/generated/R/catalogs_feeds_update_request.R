@@ -29,8 +29,7 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
     `location` = NULL,
     `preferred_processing_schedule` = NULL,
     `status` = NULL,
-    #' Initialize a new CatalogsFeedsUpdateRequest class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedsUpdateRequest class.
     #'
@@ -43,7 +42,6 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
     #' @param preferred_processing_schedule preferred_processing_schedule
     #' @param status status
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`default_availability` = NULL, `default_currency` = NULL, `name` = NULL, `format` = NULL, `credentials` = NULL, `location` = NULL, `preferred_processing_schedule` = NULL, `status` = NULL, ...) {
       if (!is.null(`default_availability`)) {
         if (!(`default_availability` %in% c())) {
@@ -94,13 +92,11 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
         self$`status` <- `status`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedsUpdateRequest in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedsUpdateRequestObject <- list()
       if (!is.null(self$`default_availability`)) {
@@ -137,14 +133,12 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
       }
       CatalogsFeedsUpdateRequestObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedsUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedsUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedsUpdateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`default_availability`)) {
@@ -185,13 +179,11 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedsUpdateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`default_availability`)) {
@@ -262,14 +254,12 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedsUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedsUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedsUpdateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`default_availability` <- ProductAvailabilityType$new()$fromJSON(jsonlite::toJSON(this_object$`default_availability`, auto_unbox = TRUE, digits = NA))
@@ -282,33 +272,27 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
       self$`status` <- CatalogsStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedsUpdateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedsUpdateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedsUpdateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`location`, "^(http|https|ftp|sftp):/")) {
         return(FALSE)
@@ -316,13 +300,11 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`location`, "^(http|https|ftp|sftp):/")) {
@@ -331,12 +313,9 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

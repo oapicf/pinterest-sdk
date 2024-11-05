@@ -19,7 +19,7 @@ import java.util.List;
  * SSIOAccountResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountResponse   {
   @JsonProperty("eligible")
   private Boolean eligible;
@@ -46,10 +46,10 @@ public class SSIOAccountResponse   {
     return this;
   }
 
-   /**
+  /**
    * Advertiser eligible to create order lines
    * @return eligible
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
   public Boolean getEligible() {
     return eligible;
@@ -64,10 +64,10 @@ public class SSIOAccountResponse   {
     return this;
   }
 
-   /**
+  /**
    * Advertiser eligible to update order lines
    * @return canEdit
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Advertiser eligible to update order lines")
   public Boolean getCanEdit() {
     return canEdit;
@@ -90,10 +90,10 @@ public class SSIOAccountResponse   {
     return this;
   }
 
-   /**
+  /**
    * An array of Salesforce account information that includes address, io terms, etc.
    * @return billtoInfos
-  **/
+   */
   @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
   public List<SSIOAccountItem> getBilltoInfos() {
     return billtoInfos;
@@ -108,10 +108,10 @@ public class SSIOAccountResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get currency
    * @return currency
-  **/
+   */
   @ApiModelProperty(example = "USD", value = "")
   public String getCurrency() {
     return currency;
@@ -134,10 +134,10 @@ public class SSIOAccountResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get pmpNames
    * @return pmpNames
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<SSIOAccountPMPName> getPmpNames() {
     return pmpNames;
@@ -152,10 +152,10 @@ public class SSIOAccountResponse   {
     return this;
   }
 
-   /**
+  /**
    * Error indicator from Salesforce which could be \"No Error\"
    * @return error
-  **/
+   */
   @ApiModelProperty(example = "No Error", value = "Error indicator from Salesforce which could be \"No Error\"")
   public String getError() {
     return error;

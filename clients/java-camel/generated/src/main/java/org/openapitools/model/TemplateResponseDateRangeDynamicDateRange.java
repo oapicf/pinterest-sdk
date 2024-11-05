@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_dynamic_date_range", description = "The dynamic date range of the template")
 @JsonTypeName("TemplateResponse_date_range_dynamic_date_range")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeDynamicDateRange {
 
   private String type;
@@ -76,7 +76,7 @@ public class TemplateResponseDateRangeDynamicDateRange {
   /**
    * The date range type
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "dynamic", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -96,7 +96,7 @@ public class TemplateResponseDateRangeDynamicDateRange {
   /**
    * The dynamic range type
    * @return range
-  */
+   */
   
   @Schema(name = "range", example = "YEAR_TO_DATE", description = "The dynamic range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("range")

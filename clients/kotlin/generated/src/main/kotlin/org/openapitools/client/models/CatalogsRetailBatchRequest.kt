@@ -15,10 +15,9 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsRetailBatchRequestItemsInner
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
-import org.openapitools.client.models.Language
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -36,17 +35,29 @@ import com.squareup.moshi.JsonClass
 data class CatalogsRetailBatchRequest (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsRetailBatchRequest.CatalogType,
 
     @Json(name = "country")
     val country: Country,
 
     @Json(name = "language")
-    val language: Language,
+    val language: CatalogsItemsRequestLanguage,
 
     /* Array with catalogs item operations */
     @Json(name = "items")
     val items: kotlin.collections.List<CatalogsRetailBatchRequestItemsInner>
 
-)
+) {
+
+    /**
+     * 
+     *
+     * Values: RETAIL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "RETAIL") RETAIL("RETAIL");
+    }
+
+}
 

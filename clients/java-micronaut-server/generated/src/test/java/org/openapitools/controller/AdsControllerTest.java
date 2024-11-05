@@ -6,8 +6,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsResponseInner;
-import org.openapitools.model.AdsAnalyticsTargetingType;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.ConversionReportAttributionType;
 import org.openapitools.model.Error;
@@ -64,7 +64,7 @@ public class AdsControllerTest {
      *
      * The method should: Create ad preview with pin or image
      *
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -98,7 +98,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5c9caa3b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdPreviewURLResponse.class);
@@ -124,7 +124,7 @@ public class AdsControllerTest {
         List<@Pattern(regexp = "^\\d+$")String> adIds = Arrays.asList("example");
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<AdsAnalyticsTargetingType> targetingTypes = Arrays.asList();
+        List<AdsAnalyticsAdTargetingType> targetingTypes = Arrays.asList();
         List<String> columns = Arrays.asList("example");
         Granularity granularity = Granularity.fromValue("DAY");
         Integer clickWindowDays = 30;
@@ -155,7 +155,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@1f1d8f8");
         request.getParameters()
             .add("ad_ids", Arrays.asList("example")) // The query format should be multi
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -181,7 +181,7 @@ public class AdsControllerTest {
      *
      * The method should: Get ad analytics
      *
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -192,16 +192,18 @@ public class AdsControllerTest {
         String adAccountId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<@Pattern(regexp = "^\\d+$")String> adIds = Arrays.asList("example");
         List<String> columns = Arrays.asList("example");
         Granularity granularity = Granularity.fromValue("DAY");
+        List<@Pattern(regexp = "^\\d+$")String> adIds = Arrays.asList("example");
         Integer clickWindowDays = 30;
         Integer engagementWindowDays = 30;
         Integer viewWindowDays = 1;
         String conversionReportTime = "TIME_OF_AD_ACTION";
+        List<@Pattern(regexp = "^\\d+$")String> pinIds = Arrays.asList("example");
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = Arrays.asList("example");
 
         // when
-        List<AdsAnalyticsResponseInner> result = controller.adsAnalytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime).block();
+        List<AdsAnalyticsResponseInner> result = controller.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds).block();
 
         // then
         Assertions.assertTrue(true);
@@ -222,7 +224,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5113d1f2");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -232,7 +234,9 @@ public class AdsControllerTest {
             .add("click_window_days", String.valueOf(30)) // The query parameter format should be 
             .add("engagement_window_days", String.valueOf(30)) // The query parameter format should be 
             .add("view_window_days", String.valueOf(1)) // The query parameter format should be 
-            .add("conversion_report_time", "TIME_OF_AD_ACTION"); // The query parameter format should be 
+            .add("conversion_report_time", "TIME_OF_AD_ACTION") // The query parameter format should be 
+            .add("pin_ids", Arrays.asList("example")) // The query format should be multi
+            .add("campaign_ids", Arrays.asList("example")); // The query format should be multi
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, AdsAnalyticsResponseInner.class));
@@ -255,7 +259,7 @@ public class AdsControllerTest {
     void adsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        List<AdCreateRequest> adCreateRequest = Arrays.asList();
+        List<@Valid AdCreateRequest> adCreateRequest = Arrays.asList();
 
         // when
         AdArrayResponse result = controller.adsCreate(adAccountId, adCreateRequest).block();
@@ -274,13 +278,13 @@ public class AdsControllerTest {
     @Disabled("Not Implemented")
     void adsCreateClientApiTest() throws IOException {
         // given
-        List<AdCreateRequest> body = Arrays.asList();
+        List<@Valid AdCreateRequest> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ads").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@67bec6a9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdArrayResponse.class);
@@ -328,7 +332,7 @@ public class AdsControllerTest {
             put("ad_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5eca7517");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdResponse.class);
@@ -381,7 +385,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5173402e");
         request.getParameters()
             .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
@@ -412,7 +416,7 @@ public class AdsControllerTest {
     void adsUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        List<AdUpdateRequest> adUpdateRequest = Arrays.asList();
+        List<@Valid AdUpdateRequest> adUpdateRequest = Arrays.asList();
 
         // when
         AdArrayResponse result = controller.adsUpdate(adAccountId, adUpdateRequest).block();
@@ -431,13 +435,13 @@ public class AdsControllerTest {
     @Disabled("Not Implemented")
     void adsUpdateClientApiTest() throws IOException {
         // given
-        List<AdUpdateRequest> body = Arrays.asList();
+        List<@Valid AdUpdateRequest> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ads").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@1e2097b3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdArrayResponse.class);

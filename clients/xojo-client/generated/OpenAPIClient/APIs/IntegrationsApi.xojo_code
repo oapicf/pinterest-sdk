@@ -604,7 +604,7 @@ Protected Class IntegrationsApi
 		  // Get integration metadata list
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes IntegrationsApiCallbackHandler.IntegrationsGetListCallback(IntegrationsGetList200Response) on completion. 
 		  //

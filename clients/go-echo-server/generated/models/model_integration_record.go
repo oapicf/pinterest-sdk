@@ -3,7 +3,7 @@ package models
 // IntegrationRecord - Integration record
 type IntegrationRecord struct {
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	ExternalBusinessId *string `json:"external_business_id,omitempty"`
 

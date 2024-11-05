@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -15,19 +15,25 @@ syntax = "proto3";
 package openapitools.services.catalogsservice;
 
 import "google/protobuf/empty.proto";
+import public "models/catalog.proto";
+import public "models/catalogs_create_report_response.proto";
+import public "models/catalogs_create_request.proto";
 import public "models/catalogs_feed.proto";
+import public "models/catalogs_feed_ingestion.proto";
 import public "models/catalogs_item_validation_issue.proto";
 import public "models/catalogs_items.proto";
 import public "models/catalogs_items_batch.proto";
 import public "models/catalogs_items_filters.proto";
+import public "models/catalogs_items_request.proto";
 import public "models/catalogs_list200_response.proto";
 import public "models/catalogs_list_products_by_filter_request.proto";
 import public "models/catalogs_product_group_pins_list200_response.proto";
-import public "models/catalogs_product_group_product_counts.proto";
-import public "models/catalogs_product_groups_create201_response.proto";
-import public "models/catalogs_product_groups_create_request.proto";
+import public "models/catalogs_product_group_product_counts_vertical.proto";
 import public "models/catalogs_product_groups_list200_response.proto";
 import public "models/catalogs_product_groups_update_request.proto";
+import public "models/catalogs_report.proto";
+import public "models/catalogs_report_parameters.proto";
+import public "models/catalogs_vertical_product_group.proto";
 import public "models/error.proto";
 import public "models/feed_processing_results_list200_response.proto";
 import public "models/feeds_create_request.proto";
@@ -35,23 +41,31 @@ import public "models/feeds_list200_response.proto";
 import public "models/feeds_update_request.proto";
 import public "models/items_batch_post_request.proto";
 import public "models/items_issues_list200_response.proto";
+import public "models/multiple_product_groups_inner.proto";
+import public "models/reports_stats200_response.proto";
 
 service CatalogsService {
+  rpc CatalogsCreate (CatalogsCreateRequest) returns (Catalog);
+
   rpc CatalogsList (CatalogsListRequest) returns (CatalogsList200Response);
 
   rpc CatalogsProductGroupPinsList (CatalogsProductGroupPinsListRequest) returns (CatalogsProductGroupPinsList200Response);
 
-  rpc CatalogsProductGroupsCreate (CatalogsProductGroupsCreateRequest) returns (CatalogsProductGroupsCreate201Response);
+  rpc CatalogsProductGroupsCreate (CatalogsProductGroupsCreateRequest) returns (CatalogsVerticalProductGroup);
+
+  rpc CatalogsProductGroupsCreateMany (CatalogsProductGroupsCreateManyRequest) returns (CatalogsProductGroupsCreateManyResponse);
 
   rpc CatalogsProductGroupsDelete (CatalogsProductGroupsDeleteRequest) returns (google.protobuf.Empty);
 
-  rpc CatalogsProductGroupsGet (CatalogsProductGroupsGetRequest) returns (CatalogsProductGroupsCreate201Response);
+  rpc CatalogsProductGroupsDeleteMany (CatalogsProductGroupsDeleteManyRequest) returns (google.protobuf.Empty);
+
+  rpc CatalogsProductGroupsGet (CatalogsProductGroupsGetRequest) returns (CatalogsVerticalProductGroup);
 
   rpc CatalogsProductGroupsList (CatalogsProductGroupsListRequest) returns (CatalogsProductGroupsList200Response);
 
-  rpc CatalogsProductGroupsProductCountsGet (CatalogsProductGroupsProductCountsGetRequest) returns (CatalogsProductGroupProductCounts);
+  rpc CatalogsProductGroupsProductCountsGet (CatalogsProductGroupsProductCountsGetRequest) returns (CatalogsProductGroupProductCountsVertical);
 
-  rpc CatalogsProductGroupsUpdate (CatalogsProductGroupsUpdateRequest) returns (CatalogsProductGroupsCreate201Response);
+  rpc CatalogsProductGroupsUpdate (CatalogsProductGroupsUpdateRequest) returns (CatalogsVerticalProductGroup);
 
   rpc FeedProcessingResultsList (FeedProcessingResultsListRequest) returns (FeedProcessingResultsList200Response);
 
@@ -60,6 +74,8 @@ service CatalogsService {
   rpc FeedsDelete (FeedsDeleteRequest) returns (google.protobuf.Empty);
 
   rpc FeedsGet (FeedsGetRequest) returns (CatalogsFeed);
+
+  rpc FeedsIngest (FeedsIngestRequest) returns (CatalogsFeedIngestion);
 
   rpc FeedsList (FeedsListRequest) returns (FeedsList200Response);
 
@@ -73,14 +89,30 @@ service CatalogsService {
 
   rpc ItemsIssuesList (ItemsIssuesListRequest) returns (ItemsIssuesList200Response);
 
+  rpc ItemsPost (ItemsPostRequest) returns (CatalogsItems);
+
   rpc ProductsByProductGroupFilterList (ProductsByProductGroupFilterListRequest) returns (CatalogsProductGroupPinsList200Response);
+
+  rpc ReportsCreate (ReportsCreateRequest) returns (CatalogsCreateReportResponse);
+
+  rpc ReportsGet (ReportsGetRequest) returns (CatalogsReport);
+
+  rpc ReportsStats (ReportsStatsRequest) returns (ReportsStats200Response);
+
+}
+
+message CatalogsCreateRequest {
+  // Request object used to created a feed.
+  CatalogsCreateRequest catalogsCreateRequest = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
 
 }
 
 message CatalogsListRequest {
   // Cursor used to fetch the next page of items
   string bookmark = 1;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 2;
   // Unique identifier of an ad account.
   string adAccountId = 3;
@@ -92,24 +124,46 @@ message CatalogsProductGroupPinsListRequest {
   string productGroupId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
   // Unique identifier of an ad account.
   string adAccountId = 4;
+  // Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  bool pinMetrics = 5;
 
 }
 
 message CatalogsProductGroupsCreateRequest {
-  // Request object used to created a catalogs product group.
-  CatalogsProductGroupsCreateRequest catalogsProductGroupsCreateRequest = 1;
+  // Request object used to create a single catalogs product groups.
+  MultipleProductGroupsInner multipleProductGroupsInner = 1;
   // Unique identifier of an ad account.
   string adAccountId = 2;
 
 }
 
+message CatalogsProductGroupsCreateManyRequest {
+  // Request object used to create one or more catalogs product groups.
+  repeated MultipleProductGroupsInner multipleProductGroupsInner = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
+
+}
+
+message CatalogsProductGroupsCreateManyResponse {
+  repeated string data = 1;
+}
+
 message CatalogsProductGroupsDeleteRequest {
   // Unique identifier of a product group
   string productGroupId = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
+
+}
+
+message CatalogsProductGroupsDeleteManyRequest {
+  // Comma-separated list of product group ids
+  repeated int32 id = 1;
   // Unique identifier of an ad account.
   string adAccountId = 2;
 
@@ -124,16 +178,18 @@ message CatalogsProductGroupsGetRequest {
 }
 
 message CatalogsProductGroupsListRequest {
+  // Comma-separated list of product group ids
+  repeated int32 id = 1;
   // Filter entities for a given feed_id. If not given, all feeds are considered.
-  string feedId = 1;
+  string feedId = 2;
   // Filter entities for a given catalog_id. If not given, all catalogs are considered.
-  string catalogId = 2;
+  string catalogId = 3;
   // Cursor used to fetch the next page of items
-  string bookmark = 3;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
-  int32 pageSize = 4;
+  string bookmark = 4;
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  int32 pageSize = 5;
   // Unique identifier of an ad account.
-  string adAccountId = 5;
+  string adAccountId = 6;
 
 }
 
@@ -160,7 +216,7 @@ message FeedProcessingResultsListRequest {
   string feedId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
   // Unique identifier of an ad account.
   string adAccountId = 4;
@@ -191,10 +247,18 @@ message FeedsGetRequest {
 
 }
 
+message FeedsIngestRequest {
+  // Unique identifier of a feed
+  string feedId = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
+
+}
+
 message FeedsListRequest {
   // Cursor used to fetch the next page of items
   string bookmark = 1;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 2;
   // Filter entities for a given catalog_id. If not given, all catalogs are considered.
   string catalogId = 3;
@@ -244,11 +308,11 @@ message ItemsGetRequest {
 }
 
 message ItemsIssuesListRequest {
-  // Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list).
+  // Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
   string processingResultId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
   // Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
   repeated int32 itemNumbers = 4;
@@ -259,15 +323,53 @@ message ItemsIssuesListRequest {
 
 }
 
+message ItemsPostRequest {
+  // Request object used to get catalogs items
+  CatalogsItemsRequest catalogsItemsRequest = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
+
+}
+
 message ProductsByProductGroupFilterListRequest {
   // Object holding a group of filters for a catalog product group
   CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
   // Unique identifier of an ad account.
   string adAccountId = 4;
+  // Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+  bool pinMetrics = 5;
+
+}
+
+message ReportsCreateRequest {
+  // Request object to asynchronously create a report.
+  CatalogsReportParameters catalogsReportParameters = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
+
+}
+
+message ReportsGetRequest {
+  // Token returned from async build report call
+  string token = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
+
+}
+
+message ReportsStatsRequest {
+  // Contains the parameters for report identification.
+  CatalogsReportParameters parameters = 1;
+  // Unique identifier of an ad account.
+  string adAccountId = 2;
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  int32 pageSize = 3;
+  // Cursor used to fetch the next page of items
+  string bookmark = 4;
 
 }
 

@@ -226,7 +226,8 @@ class UserAccountApiTest {
     @Test
     fun verifyWebsiteUpdateTest() {
         val userWebsiteVerifyRequest: UserWebsiteVerifyRequest = TODO()
-        val response: ResponseEntity<UserWebsiteSummary> = api.verifyWebsiteUpdate(userWebsiteVerifyRequest)
+        val adAccountId: kotlin.String? = TODO()
+        val response: ResponseEntity<UserWebsiteSummary> = api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
 
         // TODO: test validations
     }
@@ -239,7 +240,8 @@ class UserAccountApiTest {
      */
     @Test
     fun websiteVerificationGetTest() {
-        val response: ResponseEntity<UserWebsiteVerificationCode> = api.websiteVerificationGet()
+        val adAccountId: kotlin.String? = TODO()
+        val response: ResponseEntity<UserWebsiteVerificationCode> = api.websiteVerificationGet(adAccountId)
 
         // TODO: test validations
     }

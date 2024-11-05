@@ -43,14 +43,6 @@ char* catalogs_retail_product_group_status_ToString(pinterest_rest_api_catalogs_
 
 pinterest_rest_api_catalogs_retail_product_group__e catalogs_retail_product_group_status_FromString(char* status);
 
-// Enum FEEDID for catalogs_retail_product_group
-
-typedef enum  { pinterest_rest_api_catalogs_retail_product_group_FEEDID_NULL = 0, pinterest_rest_api_catalogs_retail_product_group_FEEDID_null } pinterest_rest_api_catalogs_retail_product_group_FEEDID_e;
-
-char* catalogs_retail_product_group_feed_id_ToString(pinterest_rest_api_catalogs_retail_product_group_FEEDID_e feed_id);
-
-pinterest_rest_api_catalogs_retail_product_group_FEEDID_e catalogs_retail_product_group_feed_id_FromString(char* feed_id);
-
 
 
 typedef struct catalogs_retail_product_group_t {
@@ -64,7 +56,10 @@ typedef struct catalogs_retail_product_group_t {
     catalogs_product_group_status_t *status; // custom
     int created_at; //numeric
     int updated_at; //numeric
-    pinterest_rest_api_catalogs_retail_product_group_FEEDID_e feed_id; //enum
+    char *catalog_id; // string
+    char *feed_id; // string
+    char *country; // string
+    char *locale; // string
 
 } catalogs_retail_product_group_t;
 
@@ -79,7 +74,10 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_create(
     catalogs_product_group_status_t *status,
     int created_at,
     int updated_at,
-    pinterest_rest_api_catalogs_retail_product_group_FEEDID_e feed_id
+    char *catalog_id,
+    char *feed_id,
+    char *country,
+    char *locale
 );
 
 void catalogs_retail_product_group_free(catalogs_retail_product_group_t *catalogs_retail_product_group);

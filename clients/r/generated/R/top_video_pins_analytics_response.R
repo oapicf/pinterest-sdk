@@ -19,8 +19,7 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
     `date_availability` = NULL,
     `pins` = NULL,
     `sort_by` = NULL,
-    #' Initialize a new TopVideoPinsAnalyticsResponse class.
-    #'
+
     #' @description
     #' Initialize a new TopVideoPinsAnalyticsResponse class.
     #'
@@ -28,7 +27,6 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
     #' @param pins pins
     #' @param sort_by sort_by
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`date_availability` = NULL, `pins` = NULL, `sort_by` = NULL, ...) {
       if (!is.null(`date_availability`)) {
         stopifnot(R6::is.R6(`date_availability`))
@@ -49,13 +47,11 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
         self$`sort_by` <- `sort_by`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TopVideoPinsAnalyticsResponse in JSON format
-    #' @export
     toJSON = function() {
       TopVideoPinsAnalyticsResponseObject <- list()
       if (!is.null(self$`date_availability`)) {
@@ -72,14 +68,12 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
       }
       TopVideoPinsAnalyticsResponseObject
     },
-    #' Deserialize JSON string into an instance of TopVideoPinsAnalyticsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TopVideoPinsAnalyticsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of TopVideoPinsAnalyticsResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`date_availability`)) {
@@ -98,13 +92,11 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TopVideoPinsAnalyticsResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`date_availability`)) {
@@ -135,14 +127,12 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of TopVideoPinsAnalyticsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TopVideoPinsAnalyticsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of TopVideoPinsAnalyticsResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`date_availability` <- TopPinsAnalyticsResponseDateAvailability$new()$fromJSON(jsonlite::toJSON(this_object$`date_availability`, auto_unbox = TRUE, digits = NA))
@@ -153,53 +143,42 @@ TopVideoPinsAnalyticsResponse <- R6::R6Class(
       self$`sort_by` <- this_object$`sort_by`
       self
     },
-    #' Validate JSON input with respect to TopVideoPinsAnalyticsResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to TopVideoPinsAnalyticsResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of TopVideoPinsAnalyticsResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

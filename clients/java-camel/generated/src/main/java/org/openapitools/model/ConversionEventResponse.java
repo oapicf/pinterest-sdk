@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * ConversionEventResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventResponse {
 
   private ConversionTagType conversionEvent;
@@ -39,7 +39,7 @@ public class ConversionEventResponse {
   /**
    * Get conversionEvent
    * @return conversionEvent
-  */
+   */
   @Valid 
   @Schema(name = "conversion_event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_event")
@@ -59,7 +59,7 @@ public class ConversionEventResponse {
   /**
    * Id of the tag.
    * @return conversionTagId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "conversion_tag_id", example = "2614324385652", description = "Id of the tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_tag_id")
@@ -79,7 +79,7 @@ public class ConversionEventResponse {
   /**
    * Id of the ad account.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549757463328", description = "Id of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -99,7 +99,7 @@ public class ConversionEventResponse {
   /**
    * Creation date in epoch format.
    * @return createdTime
-  */
+   */
   
   @Schema(name = "created_time", example = "1564768710", description = "Creation date in epoch format.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")

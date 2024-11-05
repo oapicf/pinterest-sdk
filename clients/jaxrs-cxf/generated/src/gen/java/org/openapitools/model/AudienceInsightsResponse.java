@@ -29,7 +29,7 @@ public class AudienceInsightsResponse  {
  /**
    * Category interest distribution
   **/
-  private List<@Valid AudienceCategory> categories;
+  private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid

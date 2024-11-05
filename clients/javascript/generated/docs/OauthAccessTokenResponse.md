@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 
 * `refresh_token` (value: `"refresh_token"`)
 
+* `client_credentials` (value: `"client_credentials"`)
+
 
 
 

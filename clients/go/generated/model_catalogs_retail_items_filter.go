@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,7 @@ type CatalogsRetailItemsFilter struct {
 	CatalogType string `json:"catalog_type"`
 	ItemIds []string `json:"item_ids"`
 	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	CatalogId *string `json:"catalog_id,omitempty"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 type _CatalogsRetailItemsFilter CatalogsRetailItemsFilter

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &SummaryPin{}
 
 // SummaryPin Summarized pin information
 type SummaryPin struct {
-	Media *SummaryPinMedia `json:"media,omitempty"`
+	Media *PinMedia `json:"media,omitempty"`
 	AltText NullableString `json:"alt_text,omitempty"`
 	Link NullableString `json:"link,omitempty"`
 	Title NullableString `json:"title,omitempty"`
@@ -45,9 +45,9 @@ func NewSummaryPinWithDefaults() *SummaryPin {
 }
 
 // GetMedia returns the Media field value if set, zero value otherwise.
-func (o *SummaryPin) GetMedia() SummaryPinMedia {
+func (o *SummaryPin) GetMedia() PinMedia {
 	if o == nil || IsNil(o.Media) {
-		var ret SummaryPinMedia
+		var ret PinMedia
 		return ret
 	}
 	return *o.Media
@@ -55,7 +55,7 @@ func (o *SummaryPin) GetMedia() SummaryPinMedia {
 
 // GetMediaOk returns a tuple with the Media field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SummaryPin) GetMediaOk() (*SummaryPinMedia, bool) {
+func (o *SummaryPin) GetMediaOk() (*PinMedia, bool) {
 	if o == nil || IsNil(o.Media) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *SummaryPin) HasMedia() bool {
 	return false
 }
 
-// SetMedia gets a reference to the given SummaryPinMedia and assigns it to the Media field.
-func (o *SummaryPin) SetMedia(v SummaryPinMedia) {
+// SetMedia gets a reference to the given PinMedia and assigns it to the Media field.
+func (o *SummaryPin) SetMedia(v PinMedia) {
 	o.Media = &v
 }
 

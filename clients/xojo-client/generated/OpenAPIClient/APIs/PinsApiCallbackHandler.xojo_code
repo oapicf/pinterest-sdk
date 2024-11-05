@@ -1,6 +1,12 @@
 #tag Interface
 Protected Interface PinsApiCallbackHandler
 	#tag Method, Flags = &h0
+		Sub MultiPinsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As Dictionary)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub PinsAnalyticsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As Dictionary)
 		  
 		End Sub

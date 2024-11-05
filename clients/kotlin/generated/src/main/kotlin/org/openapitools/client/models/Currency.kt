@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Currency Codes from ISO 4217
  *
- * Values: UNK,USD,GBP,CAD,EUR,AUD,NZD,SEK,ILS,CHF,HKD,JPY,SGD,KRW,NOK,DKK,PLN,RON,HUF,CZK,BRL,MXN,ARS,CLP,COP
+ * Values: UNK,USD,GBP,CAD,EUR,AUD,NZD,SEK,ILS,CHF,HKD,JPY,SGD,KRW,NOK,DKK,PLN,RON,HUF,CZK,BRL,MXN,ARS,CLP,COP,INR,TRY
  */
 
 @JsonClass(generateAdapter = false)
@@ -101,7 +101,13 @@ enum class Currency(val value: kotlin.String) {
     CLP("CLP"),
 
     @Json(name = "COP")
-    COP("COP");
+    COP("COP"),
+
+    @Json(name = "INR")
+    INR("INR"),
+
+    @Json(name = "TRY")
+    TRY("TRY");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

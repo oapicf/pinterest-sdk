@@ -32,5 +32,8 @@ data class CampaignId (
     @Json(name = "id")
     val id: kotlin.String? = null
 
-)
+) {
+
+
+}
 

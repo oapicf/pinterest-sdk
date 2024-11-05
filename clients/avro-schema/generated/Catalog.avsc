@@ -6,9 +6,8 @@
   "fields": [
     {
       "name": "created_at",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
+      "type": "string",
+      "doc": ""
     },
     {
       "name": "id",
@@ -17,9 +16,8 @@
     },
     {
       "name": "updated_at",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
+      "type": "string",
+      "doc": ""
     },
     {
       "name": "name",

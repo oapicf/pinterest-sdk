@@ -6,8 +6,8 @@ import org.openapitools.vertxweb.server.model.AdPreviewRequest;
 import org.openapitools.vertxweb.server.model.AdPreviewURLResponse;
 import org.openapitools.vertxweb.server.model.AdResponse;
 import org.openapitools.vertxweb.server.model.AdUpdateRequest;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.vertxweb.server.model.AdsAnalyticsResponseInner;
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
 import org.openapitools.vertxweb.server.model.AdsList200Response;
 import org.openapitools.vertxweb.server.model.ConversionReportAttributionType;
 import org.openapitools.vertxweb.server.model.Error;
@@ -89,7 +89,7 @@ public class AdsApiHandler {
         List<String> adIds = requestParameters.queryParameter("ad_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("ad_ids").get(), new TypeReference<List<String>>(){}) : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<AdsAnalyticsTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsTargetingType>>(){}) : null;
+        List<AdsAnalyticsAdTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsAdTargetingType>>(){}) : null;
         List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
         Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
         Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;
@@ -132,26 +132,30 @@ public class AdsApiHandler {
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<String> adIds = requestParameters.queryParameter("ad_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("ad_ids").get(), new TypeReference<List<String>>(){}) : null;
         List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
         Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
+        List<String> adIds = requestParameters.queryParameter("ad_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("ad_ids").get(), new TypeReference<List<String>>(){}) : null;
         Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;
         Integer engagementWindowDays = requestParameters.queryParameter("engagement_window_days") != null ? requestParameters.queryParameter("engagement_window_days").getInteger() : 30;
         Integer viewWindowDays = requestParameters.queryParameter("view_window_days") != null ? requestParameters.queryParameter("view_window_days").getInteger() : 1;
         String conversionReportTime = requestParameters.queryParameter("conversion_report_time") != null ? requestParameters.queryParameter("conversion_report_time").getString() : "TIME_OF_AD_ACTION";
+        List<String> pinIds = requestParameters.queryParameter("pin_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("pin_ids").get(), new TypeReference<List<String>>(){}) : null;
+        List<String> campaignIds = requestParameters.queryParameter("campaign_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("campaign_ids").get(), new TypeReference<List<String>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter startDate is {}", startDate);
         logger.debug("Parameter endDate is {}", endDate);
-        logger.debug("Parameter adIds is {}", adIds);
         logger.debug("Parameter columns is {}", columns);
         logger.debug("Parameter granularity is {}", granularity);
+        logger.debug("Parameter adIds is {}", adIds);
         logger.debug("Parameter clickWindowDays is {}", clickWindowDays);
         logger.debug("Parameter engagementWindowDays is {}", engagementWindowDays);
         logger.debug("Parameter viewWindowDays is {}", viewWindowDays);
         logger.debug("Parameter conversionReportTime is {}", conversionReportTime);
+        logger.debug("Parameter pinIds is {}", pinIds);
+        logger.debug("Parameter campaignIds is {}", campaignIds);
 
-        api.adsAnalytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

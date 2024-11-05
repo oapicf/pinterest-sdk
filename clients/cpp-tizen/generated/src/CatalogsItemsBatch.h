@@ -10,10 +10,11 @@
 
 #include <string>
 #include "BatchOperationStatus.h"
+#include "CatalogsCreativeAssetsItemsBatch.h"
 #include "CatalogsHotelItemsBatch.h"
 #include "CatalogsRetailItemsBatch.h"
 #include "CatalogsType.h"
-#include "HotelProcessingRecord.h"
+#include "CreativeAssetsProcessingRecord.h"
 #include <list>
 #include "Object.h"
 
@@ -65,18 +66,18 @@ public:
 	/*! \brief Set Id of the catalogs items batch
 	 */
 	void setBatchId(std::string  batch_id);
-	/*! \brief Get Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Get Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	std::string getCreatedTime();
 
-	/*! \brief Set Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Set Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	void setCreatedTime(std::string  created_time);
-	/*! \brief Get Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Get Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	std::string getCompletedTime();
 
-	/*! \brief Set Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Set Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	void setCompletedTime(std::string  completed_time);
 	/*! \brief Get 
@@ -88,11 +89,11 @@ public:
 	void setStatus(BatchOperationStatus  status);
 	/*! \brief Get Array with the catalogs items processing records part of the catalogs items batch
 	 */
-	std::list<HotelProcessingRecord> getItems();
+	std::list<CreativeAssetsProcessingRecord> getItems();
 
 	/*! \brief Set Array with the catalogs items processing records part of the catalogs items batch
 	 */
-	void setItems(std::list <HotelProcessingRecord> items);
+	void setItems(std::list <CreativeAssetsProcessingRecord> items);
 
 private:
 	CatalogsType catalog_type;
@@ -100,7 +101,7 @@ private:
 	std::string created_time;
 	std::string completed_time;
 	BatchOperationStatus status;
-	std::list <HotelProcessingRecord>items;
+	std::list <CreativeAssetsProcessingRecord>items;
 	void __init();
 	void __cleanup();
 

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -32,7 +32,7 @@ import org.openapitools.model.ItemProcessingRecord;
  */
 
 @ApiModel(description = "Object describing the catalogs retail items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemsBatch   {
   
   private String batchId;
@@ -40,7 +40,7 @@ public class CatalogsRetailItemsBatch   {
   private Date completedTime;
   private BatchOperationStatus status;
   private CatalogsType catalogType;
-  private List<ItemProcessingRecord> items;
+  private List<ItemProcessingRecord> items = new ArrayList<>();
 
   /**
    * Id of the catalogs items batch
@@ -61,7 +61,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    */
   public CatalogsRetailItemsBatch createdTime(Date createdTime) {
     this.createdTime = createdTime;
@@ -69,7 +69,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("created_time")
   public Date getCreatedTime() {
     return createdTime;
@@ -79,7 +79,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    */
   public CatalogsRetailItemsBatch completedTime(Date completedTime) {
     this.completedTime = completedTime;
@@ -87,7 +87,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("completed_time")
   public Date getCompletedTime() {
     return completedTime;

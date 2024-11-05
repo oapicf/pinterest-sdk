@@ -13,7 +13,7 @@ import org.openapitools.model.MatchTypeResponse;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsCommon   {
   @JsonProperty("bid")
   private Integer bid;
@@ -25,7 +25,7 @@ public class KeywordsCommon   {
   private String value;
 
   /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    **/
   public KeywordsCommon bid(Integer bid) {
     this.bid = bid;
@@ -33,7 +33,7 @@ public class KeywordsCommon   {
   }
 
   
-  @ApiModelProperty(example = "200000", value = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
   @JsonProperty("bid")
   public Integer getBid() {
     return bid;

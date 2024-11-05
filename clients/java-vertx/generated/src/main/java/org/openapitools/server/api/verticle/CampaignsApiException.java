@@ -1,6 +1,6 @@
 package org.openapitools.server.api.verticle;
 
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType;
+import org.openapitools.server.api.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.server.api.model.CampaignCreateRequest;
 import org.openapitools.server.api.model.CampaignCreateResponse;
 import org.openapitools.server.api.model.CampaignResponse;

@@ -32,5 +32,8 @@ data class BrandFilter (
     @Json(name = "BRAND")
     val BRAND: CatalogsProductGroupMultipleStringCriteria
 
-)
+) {
+
+
+}
 

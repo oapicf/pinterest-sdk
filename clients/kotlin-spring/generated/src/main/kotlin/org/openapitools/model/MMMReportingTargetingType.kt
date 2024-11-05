@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,12 +19,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Ad targeting types for MMM report
 * Values: APPTYPE,COUNTRY,CREATIVE_TYPE,GENDER,LOCATION
 */
-enum class MMMReportingTargetingType(val value: kotlin.String) {
+enum class MMMReportingTargetingType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("APPTYPE") APPTYPE("APPTYPE"),
-    @JsonProperty("COUNTRY") COUNTRY("COUNTRY"),
-    @JsonProperty("CREATIVE_TYPE") CREATIVE_TYPE("CREATIVE_TYPE"),
-    @JsonProperty("GENDER") GENDER("GENDER"),
-    @JsonProperty("LOCATION") LOCATION("LOCATION")
+    APPTYPE("APPTYPE"),
+    COUNTRY("COUNTRY"),
+    CREATIVE_TYPE("CREATIVE_TYPE"),
+    GENDER("GENDER"),
+    LOCATION("LOCATION");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): MMMReportingTargetingType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

@@ -18,11 +18,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedIngestionDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionDetails   {
-  private @Valid CatalogsFeedIngestionErrors errors;
-  private @Valid CatalogsFeedIngestionInfo info;
-  private @Valid CatalogsFeedIngestionWarnings warnings;
+  private CatalogsFeedIngestionErrors errors;
+  private CatalogsFeedIngestionInfo info;
+  private CatalogsFeedIngestionWarnings warnings;
 
   /**
    **/
@@ -34,8 +34,7 @@ public class CatalogsFeedIngestionDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("errors")
-  @NotNull
-  public CatalogsFeedIngestionErrors getErrors() {
+  @NotNull @Valid public CatalogsFeedIngestionErrors getErrors() {
     return errors;
   }
 
@@ -54,8 +53,7 @@ public class CatalogsFeedIngestionDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("info")
-  @NotNull
-  public CatalogsFeedIngestionInfo getInfo() {
+  @NotNull @Valid public CatalogsFeedIngestionInfo getInfo() {
     return info;
   }
 
@@ -74,8 +72,7 @@ public class CatalogsFeedIngestionDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("warnings")
-  @NotNull
-  public CatalogsFeedIngestionWarnings getWarnings() {
+  @NotNull @Valid public CatalogsFeedIngestionWarnings getWarnings() {
     return warnings;
   }
 

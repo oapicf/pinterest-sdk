@@ -16,6 +16,16 @@ module.exports = {
                 label: `[${labelPrefix}results]`,
                 children: QuizPinResult.fields(`${keyPrefix}results${!isInput ? '[]' : ''}`, isInput, true), 
             },
+            {
+                key: `${keyPrefix}tie_breaker_type`,
+                label: `Quiz ad tie breaker type, default is RANDOM - [${labelPrefix}tie_breaker_type]`,
+                type: 'string',
+                choices: [
+                    'RANDOM',
+                    'CUSTOM',
+                ],
+            },
+            ...QuizPinResult.fields(`${keyPrefix}tie_breaker_custom_result`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -23,6 +33,8 @@ module.exports = {
         return {
             'questions': utils.childMapping(bundle.inputData?.[`${keyPrefix}questions`], `${keyPrefix}questions`, QuizPinQuestion),
             'results': utils.childMapping(bundle.inputData?.[`${keyPrefix}results`], `${keyPrefix}results`, QuizPinResult),
+            'tie_breaker_type': bundle.inputData?.[`${keyPrefix}tie_breaker_type`],
+            'tie_breaker_custom_result': utils.removeIfEmpty(QuizPinResult.mapping(bundle, `${keyPrefix}tie_breaker_custom_result`)),
         }
     },
 }

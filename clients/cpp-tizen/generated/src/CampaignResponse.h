@@ -9,10 +9,10 @@
 
 
 #include <string>
-#include "AdCommon_tracking_urls.h"
 #include "CampaignSummaryStatus.h"
 #include "EntityStatus.h"
 #include "ObjectiveType.h"
+#include "TrackingUrls.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -100,11 +100,11 @@ public:
 	void setOrderLineId(std::string  order_line_id);
 	/*! \brief Get 
 	 */
-	AdCommon_tracking_urls getTrackingUrls();
+	TrackingUrls getTrackingUrls();
 
 	/*! \brief Set 
 	 */
-	void setTrackingUrls(AdCommon_tracking_urls  tracking_urls);
+	void setTrackingUrls(TrackingUrls  tracking_urls);
 	/*! \brief Get Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	int getStartTime();
@@ -119,13 +119,13 @@ public:
 	/*! \brief Set Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	void setEndTime(int  end_time);
-	/*! \brief Get 
+	/*! \brief Get Determine if a campaign has flexible daily budgets setup.
 	 */
-	CampaignSummaryStatus getSummaryStatus();
+	bool getIsFlexibleDailyBudgets();
 
-	/*! \brief Set 
+	/*! \brief Set Determine if a campaign has flexible daily budgets setup.
 	 */
-	void setSummaryStatus(CampaignSummaryStatus  summary_status);
+	void setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets);
 	/*! \brief Get 
 	 */
 	ObjectiveType getObjectiveType();
@@ -154,13 +154,6 @@ public:
 	/*! \brief Set Always \"campaign\".
 	 */
 	void setType(std::string  type);
-	/*! \brief Get Determines if a campaign has flexible daily budgets setup.
-	 */
-	bool getIsFlexibleDailyBudgets();
-
-	/*! \brief Set Determines if a campaign has flexible daily budgets setup.
-	 */
-	void setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets);
 	/*! \brief Get Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 	 */
 	bool getIsCampaignBudgetOptimization();
@@ -168,6 +161,13 @@ public:
 	/*! \brief Set Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 	 */
 	void setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization);
+	/*! \brief Get 
+	 */
+	CampaignSummaryStatus getSummaryStatus();
+
+	/*! \brief Set 
+	 */
+	void setSummaryStatus(CampaignSummaryStatus  summary_status);
 
 private:
 	std::string id;
@@ -177,16 +177,16 @@ private:
 	int lifetime_spend_cap;
 	int daily_spend_cap;
 	std::string order_line_id;
-	AdCommon_tracking_urls tracking_urls;
+	TrackingUrls tracking_urls;
 	int start_time;
 	int end_time;
-	CampaignSummaryStatus summary_status;
+	bool is_flexible_daily_budgets;
 	ObjectiveType objective_type;
 	int created_time;
 	int updated_time;
 	std::string type;
-	bool is_flexible_daily_budgets;
 	bool is_campaign_budget_optimization;
+	CampaignSummaryStatus summary_status;
 	void __init();
 	void __cleanup();
 

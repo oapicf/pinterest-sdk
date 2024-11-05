@@ -30,7 +30,7 @@ import org.openapitools.model.UserWebsiteVerificationCode;
 import org.openapitools.model.UserWebsiteVerifyRequest;
 import org.openapitools.model.UserWebsitesGet200Response;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserAccountController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -105,13 +105,13 @@ public class UserAccountController  {
   */
 
   /*
-    public ResponseContext verifyWebsiteUpdate(RequestContext request , UserWebsiteVerifyRequest userWebsiteVerifyRequest) {
+    public ResponseContext verifyWebsiteUpdate(RequestContext request , UserWebsiteVerifyRequest userWebsiteVerifyRequest, String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext websiteVerificationGet(RequestContext request ) {
+    public ResponseContext websiteVerificationGet(RequestContext request , String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

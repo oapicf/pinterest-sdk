@@ -9,6 +9,7 @@ import org.openapitools.models.CatalogsFeedCredentials
 import org.openapitools.models.CatalogsFeedProcessingSchedule
 import org.openapitools.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.models.CatalogsFormat
+import org.openapitools.models.CatalogsStatus
 import org.openapitools.models.Country
 import org.openapitools.models.NullableCurrency
 import org.openapitools.models.ProductAvailabilityType
@@ -24,6 +25,7 @@ import org.openapitools.models.ProductAvailabilityType
  * @param preferredUnderscoreprocessingUnderscoreschedule 
  * @param defaultUnderscorecountry 
  * @param defaultUnderscoreavailability 
+ * @param status 
  */
 case class CatalogsFeedsCreateRequest(defaultUnderscorecurrency: Option[NullableCurrency],
                 name: String,
@@ -33,7 +35,8 @@ case class CatalogsFeedsCreateRequest(defaultUnderscorecurrency: Option[Nullable
                 location: String,
                 preferredUnderscoreprocessingUnderscoreschedule: Option[CatalogsFeedProcessingSchedule],
                 defaultUnderscorecountry: Option[Country],
-                defaultUnderscoreavailability: Option[ProductAvailabilityType]
+                defaultUnderscoreavailability: Option[ProductAvailabilityType],
+                status: Option[CatalogsStatus]
                 )
 
 object CatalogsFeedsCreateRequest {

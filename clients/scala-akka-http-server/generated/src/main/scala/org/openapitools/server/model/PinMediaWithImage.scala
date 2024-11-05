@@ -11,6 +11,6 @@ package org.openapitools.server.model
 */
 final case class PinMediaWithImage (
   mediaType: Option[String] = None,
-  images: Option[ImageMetadataImages] = None
+  images: Option[PinMediaWithImageAllOfImages] = None
 )
 

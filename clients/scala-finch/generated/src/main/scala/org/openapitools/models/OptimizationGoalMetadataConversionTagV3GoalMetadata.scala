@@ -13,7 +13,7 @@ import org.openapitools.models.OptimizationGoalMetadataConversionTagV3GoalMetada
  * @param conversionUnderscoreevent 
  * @param conversionUnderscoretagUnderscoreid 
  * @param cpaUnderscoregoalUnderscorevalueUnderscoreinUnderscoremicroUnderscorecurrency 
- * @param isUnderscoreroasUnderscoreoptimized Ad group is ROAS optimized
+ * @param isUnderscoreroasUnderscoreoptimized ROAS optimization is not supported
  * @param learningUnderscoremodeUnderscoretype Conversion learning model type
  */
 case class OptimizationGoalMetadataConversionTagV3GoalMetadata(attributionUnderscorewindows: Option[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows],

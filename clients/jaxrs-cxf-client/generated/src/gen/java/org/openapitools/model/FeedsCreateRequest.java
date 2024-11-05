@@ -6,6 +6,7 @@ import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequest;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.CatalogsVerticalFeedsCreateRequest;
 import org.openapitools.model.Country;
@@ -51,6 +52,9 @@ public class FeedsCreateRequest  {
 
   @ApiModelProperty(value = "")
   private ProductAvailabilityType defaultAvailability;
+
+  @ApiModelProperty(value = "")
+  private CatalogsStatus status;
  /**
    * Get defaultCurrency
    * @return defaultCurrency
@@ -213,6 +217,24 @@ public class FeedsCreateRequest  {
     return this;
   }
 
+ /**
+   * Get status
+   * @return status
+  **/
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
+  public FeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -230,12 +252,13 @@ public class FeedsCreateRequest  {
         Objects.equals(this.location, feedsCreateRequest.location) &&
         Objects.equals(this.preferredProcessingSchedule, feedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.defaultCountry, feedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, feedsCreateRequest.defaultAvailability);
+        Objects.equals(this.defaultAvailability, feedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, feedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -252,6 +275,7 @@ public class FeedsCreateRequest  {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

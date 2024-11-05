@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Lead form question field type
  *
- * Values: TEXT_FIELD,TEXT_AREA,RADIO_LIST,CHECKBOX,`null`
+ * Values: TEXT_FIELD,TEXT_AREA,RADIO_LIST,CHECKBOX
  */
 
 @JsonClass(generateAdapter = false)
@@ -38,10 +38,7 @@ enum class LeadFormQuestionFieldType(val value: kotlin.String) {
     RADIO_LIST("RADIO_LIST"),
 
     @Json(name = "CHECKBOX")
-    CHECKBOX("CHECKBOX"),
-
-    @Json(name = "null")
-    `null`("null");
+    CHECKBOX("CHECKBOX");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

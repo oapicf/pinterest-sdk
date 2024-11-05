@@ -20,7 +20,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```csharp
@@ -118,7 +118,7 @@ catch (ApiException e)
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```csharp
@@ -142,7 +142,7 @@ namespace Example
             var apiInstance = new BillingApi(config);
             var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -187,7 +187,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -217,7 +217,7 @@ catch (ApiException e)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```csharp
@@ -242,7 +242,7 @@ namespace Example
             var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
             var isActive = true;  // bool | Return active billing profiles, if false return all billing profiles.
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -288,7 +288,7 @@ catch (ApiException e)
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **isActive** | **bool** | Return active billing profiles, if false return all billing profiles. |  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -634,7 +634,7 @@ namespace Example
             var apiInstance = new BillingApi(config);
             var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -679,7 +679,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -832,7 +832,7 @@ namespace Example
             var apiInstance = new BillingApi(config);
             var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
             var pinOrderId = 0Q01N0000015hekSVDFDC;  // string? | The pin order id associated with the ssio insertino order (optional) 
 
             try
@@ -878,7 +878,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **pinOrderId** | **string?** | The pin order id associated with the ssio insertino order | [optional]  |
 
 ### Return type

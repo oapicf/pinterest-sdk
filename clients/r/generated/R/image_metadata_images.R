@@ -21,8 +21,7 @@ ImageMetadataImages <- R6::R6Class(
     `400x300` = NULL,
     `600x` = NULL,
     `1200x` = NULL,
-    #' Initialize a new ImageMetadataImages class.
-    #'
+
     #' @description
     #' Initialize a new ImageMetadataImages class.
     #'
@@ -31,7 +30,6 @@ ImageMetadataImages <- R6::R6Class(
     #' @param 600x 600x
     #' @param 1200x 1200x
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`150x150` = NULL, `400x300` = NULL, `600x` = NULL, `1200x` = NULL, ...) {
       if (!is.null(`150x150`)) {
         stopifnot(R6::is.R6(`150x150`))
@@ -50,13 +48,11 @@ ImageMetadataImages <- R6::R6Class(
         self$`1200x` <- `1200x`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ImageMetadataImages in JSON format
-    #' @export
     toJSON = function() {
       ImageMetadataImagesObject <- list()
       if (!is.null(self$`150x150`)) {
@@ -77,14 +73,12 @@ ImageMetadataImages <- R6::R6Class(
       }
       ImageMetadataImagesObject
     },
-    #' Deserialize JSON string into an instance of ImageMetadataImages
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ImageMetadataImages
     #'
     #' @param input_json the JSON input
     #' @return the instance of ImageMetadataImages
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`150x150`)) {
@@ -109,13 +103,11 @@ ImageMetadataImages <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ImageMetadataImages in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`150x150`)) {
@@ -154,14 +146,12 @@ ImageMetadataImages <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ImageMetadataImages
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ImageMetadataImages
     #'
     #' @param input_json the JSON input
     #' @return the instance of ImageMetadataImages
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`150x150` <- ImageDetails$new()$fromJSON(jsonlite::toJSON(this_object$`150x150`, auto_unbox = TRUE, digits = NA))
@@ -170,53 +160,42 @@ ImageMetadataImages <- R6::R6Class(
       self$`1200x` <- ImageDetails$new()$fromJSON(jsonlite::toJSON(this_object$`1200x`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to ImageMetadataImages
-    #'
+
     #' @description
     #' Validate JSON input with respect to ImageMetadataImages and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ImageMetadataImages
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

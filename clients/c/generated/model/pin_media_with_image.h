@@ -15,20 +15,20 @@
 
 typedef struct pin_media_with_image_t pin_media_with_image_t;
 
-#include "image_metadata_images.h"
 #include "pin_media.h"
+#include "pin_media_with_image_all_of_images.h"
 
 
 
 typedef struct pin_media_with_image_t {
     char *media_type; // string
-    struct image_metadata_images_t *images; //model
+    struct pin_media_with_image_all_of_images_t *images; //model
 
 } pin_media_with_image_t;
 
 pin_media_with_image_t *pin_media_with_image_create(
     char *media_type,
-    image_metadata_images_t *images
+    pin_media_with_image_all_of_images_t *images
 );
 
 void pin_media_with_image_free(pin_media_with_image_t *pin_media_with_image);

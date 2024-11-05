@@ -32,6 +32,6 @@ public interface KeywordsApi  {
     void keywordsUpdate(String adAccountId, KeywordUpdateBody keywordUpdateBody, Handler<AsyncResult<KeywordsResponse>> handler);
 
     //trending_keywords/list
-    void trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, Boolean normalizeAgainstGroup, Integer limit, Handler<AsyncResult<TrendingKeywordsResponse>> handler);
+    void trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Handler<AsyncResult<TrendingKeywordsResponse>> handler);
 
 }

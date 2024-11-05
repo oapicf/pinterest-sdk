@@ -5,9 +5,9 @@ Request object to update catalogs hotel items
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **CatalogsType** |  | 
+**CatalogType** | **string** |  | 
 **Country** | **Country** |  | 
-**Language** | **Language** |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Items** | [**List&lt;CatalogsHotelBatchItem&gt;**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
 **CatalogId** | **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 

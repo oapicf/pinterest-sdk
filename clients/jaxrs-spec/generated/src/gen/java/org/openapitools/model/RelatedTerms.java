@@ -19,11 +19,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("RelatedTerms")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RelatedTerms   {
-  private @Valid String id;
-  private @Valid Integer relatedTermCount;
-  private @Valid List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList;
+  private String id;
+  private Integer relatedTermCount;
+  private @Valid List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
 
   /**
    * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;
@@ -76,7 +76,7 @@ public class RelatedTerms   {
   
   @ApiModelProperty(value = "The id of the advertiser.")
   @JsonProperty("related_terms_list")
-  public List<RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
+  @Valid public List<@Valid RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
     return relatedTermsList;
   }
 

@@ -19,9 +19,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsProductGroupsUpdateRequest
+import org.openapitools.client.models.CatalogsLocale
 import org.openapitools.client.models.CatalogsProductGroupFiltersRequest
 import org.openapitools.client.models.CatalogsProductGroupUpdateRequest
 import org.openapitools.client.models.CatalogsVerticalProductGroupUpdateRequest
+import org.openapitools.client.models.Country
 
 class CatalogsProductGroupsUpdateRequestTest : ShouldSpec() {
     init {

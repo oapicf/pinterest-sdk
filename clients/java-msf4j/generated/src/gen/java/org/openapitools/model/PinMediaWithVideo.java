@@ -7,17 +7,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 
 /**
  * Pin with video.
  */
 @ApiModel(description = "Pin with video.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithVideo extends PinMedia  {
   @JsonProperty("images")
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   @JsonProperty("cover_image_url")
   private String coverImageUrl;
@@ -34,7 +34,7 @@ public class PinMediaWithVideo extends PinMedia  {
   @JsonProperty("width")
   private Integer width;
 
-  public PinMediaWithVideo images(ImageMetadataImages images) {
+  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -44,11 +44,11 @@ public class PinMediaWithVideo extends PinMedia  {
    * @return images
   **/
   @ApiModelProperty(value = "")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

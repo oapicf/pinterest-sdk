@@ -5,8 +5,15 @@ context("Test CatalogsProduct")
 
 model_instance <- CatalogsProduct$new()
 
+test_that("catalog_type", {
+  # tests for the property `catalog_type` (CatalogsType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
+})
+
 test_that("metadata", {
-  # tests for the property `metadata` (CatalogsProductMetadata)
+  # tests for the property `metadata` (CatalogsCreativeAssetsProductMetadata)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`metadata`, "EXPECTED_RESULT")

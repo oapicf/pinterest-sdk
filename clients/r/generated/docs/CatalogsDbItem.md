@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **character** |  | [optional] 
-**id** | **character** |  | [optional] 
-**updated_at** | **character** |  | [optional] 
+**created_at** | **character** |  | 
+**id** | **character** |  | 
+**updated_at** | **character** |  | 
 
 

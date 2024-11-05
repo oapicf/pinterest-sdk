@@ -10,8 +10,8 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Pin", description = "Pin")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Pin {
 
   private String id;
@@ -57,7 +57,7 @@ public class Pin {
 
   private Boolean isOwner;
 
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   private PinMediaSource mediaSource;
 
@@ -79,7 +79,7 @@ public class Pin {
   /**
    * Get id
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "813744226420795884", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -99,7 +99,7 @@ public class Pin {
   /**
    * Get createdAt
    * @return createdAt
-  */
+   */
   @Valid 
   @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
@@ -119,7 +119,7 @@ public class Pin {
   /**
    * Get link
    * @return link
-  */
+   */
   @Size(max = 2048) 
   @Schema(name = "link", example = "https://www.pinterest.com/", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -139,7 +139,7 @@ public class Pin {
   /**
    * Get title
    * @return title
-  */
+   */
   
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -159,7 +159,7 @@ public class Pin {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -179,7 +179,7 @@ public class Pin {
   /**
    * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
    * @return dominantColor
-  */
+   */
   
   @Schema(name = "dominant_color", example = "#6E7874", description = "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("dominant_color")
@@ -199,7 +199,7 @@ public class Pin {
   /**
    * Get altText
    * @return altText
-  */
+   */
   @Size(max = 500) 
   @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("alt_text")
@@ -219,7 +219,7 @@ public class Pin {
   /**
    * Get creativeType
    * @return creativeType
-  */
+   */
   @Valid 
   @Schema(name = "creative_type", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
@@ -239,7 +239,7 @@ public class Pin {
   /**
    * The board to which this Pin belongs.
    * @return boardId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_id", description = "The board to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_id")
@@ -259,7 +259,7 @@ public class Pin {
   /**
    * The board section to which this Pin belongs.
    * @return boardSectionId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_section_id", description = "The board section to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_section_id")
@@ -279,9 +279,9 @@ public class Pin {
   /**
    * Get boardOwner
    * @return boardOwner
-  */
+   */
   @Valid 
-  @Schema(name = "board_owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_owner", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_owner")
   public BoardOwner getBoardOwner() {
     return boardOwner;
@@ -299,7 +299,7 @@ public class Pin {
   /**
    * Whether the \"operation user_account\" is the Pin owner.
    * @return isOwner
-  */
+   */
   
   @Schema(name = "is_owner", accessMode = Schema.AccessMode.READ_ONLY, description = "Whether the \"operation user_account\" is the Pin owner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_owner")
@@ -311,7 +311,7 @@ public class Pin {
     this.isOwner = isOwner;
   }
 
-  public Pin media(SummaryPinMedia media) {
+  public Pin media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -319,15 +319,15 @@ public class Pin {
   /**
    * Get media
    * @return media
-  */
+   */
   @Valid 
-  @Schema(name = "media", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -339,7 +339,7 @@ public class Pin {
   /**
    * Get mediaSource
    * @return mediaSource
-  */
+   */
   @Valid 
   @Schema(name = "media_source", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_source")
@@ -359,7 +359,7 @@ public class Pin {
   /**
    * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
    * @return parentPinId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "parent_pin_id", description = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent_pin_id")
@@ -377,11 +377,11 @@ public class Pin {
   }
 
   /**
-   * Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+   * Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
    * @return isStandard
-  */
+   */
   
-  @Schema(name = "is_standard", description = "Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_standard", description = "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_standard")
   public Boolean getIsStandard() {
     return isStandard;
@@ -399,7 +399,7 @@ public class Pin {
   /**
    * Whether the Pin has been promoted or not.
    * @return hasBeenPromoted
-  */
+   */
   
   @Schema(name = "has_been_promoted", accessMode = Schema.AccessMode.READ_ONLY, description = "Whether the Pin has been promoted or not.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_been_promoted")
@@ -419,7 +419,7 @@ public class Pin {
   /**
    * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
    * @return note
-  */
+   */
   
   @Schema(name = "note", description = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("note")
@@ -439,9 +439,9 @@ public class Pin {
   /**
    * Pin metrics with associated time intervals if any.
    * @return pinMetrics
-  */
+   */
   
-  @Schema(name = "pin_metrics", example = "{\"pin_metrics\":[{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"all_time\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}},null]}", description = "Pin metrics with associated time intervals if any.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "pin_metrics", example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", description = "Pin metrics with associated time intervals if any.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_metrics")
   public JsonNullable<Object> getPinMetrics() {
     return pinMetrics;

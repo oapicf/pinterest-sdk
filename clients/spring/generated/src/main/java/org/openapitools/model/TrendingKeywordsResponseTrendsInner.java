@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TrendingKeywordsResponse_trends_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendingKeywordsResponseTrendsInner {
 
   private String keyword;
@@ -42,7 +42,7 @@ public class TrendingKeywordsResponseTrendsInner {
   /**
    * The keyword that is trending.
    * @return keyword
-  */
+   */
   @Size(min = 1) 
   @Schema(name = "keyword", example = "couples halloween costumes", description = "The keyword that is trending.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keyword")
@@ -62,7 +62,7 @@ public class TrendingKeywordsResponseTrendsInner {
   /**
    * The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.
    * @return pctGrowthWow
-  */
+   */
   
   @Schema(name = "pct_growth_wow", example = "50", description = "The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pct_growth_wow")
@@ -82,7 +82,7 @@ public class TrendingKeywordsResponseTrendsInner {
   /**
    * The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.
    * @return pctGrowthMom
-  */
+   */
   
   @Schema(name = "pct_growth_mom", example = "400", description = "The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pct_growth_mom")
@@ -102,7 +102,7 @@ public class TrendingKeywordsResponseTrendsInner {
   /**
    * The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.
    * @return pctGrowthYoy
-  */
+   */
   
   @Schema(name = "pct_growth_yoy", example = "-5", description = "The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pct_growth_yoy")
@@ -122,7 +122,7 @@ public class TrendingKeywordsResponseTrendsInner {
   /**
    * Get timeSeries
    * @return timeSeries
-  */
+   */
   @Valid 
   @Schema(name = "time_series", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("time_series")

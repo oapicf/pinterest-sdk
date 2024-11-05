@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &CatalogsProductGroupsList200Response{}
 
 // CatalogsProductGroupsList200Response struct for CatalogsProductGroupsList200Response
 type CatalogsProductGroupsList200Response struct {
-	Items []CatalogsProductGroupsList200ResponseAllOfItemsInner `json:"items"`
+	Items []CatalogsVerticalProductGroup `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
 }
 
@@ -32,7 +32,7 @@ type _CatalogsProductGroupsList200Response CatalogsProductGroupsList200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsProductGroupsList200Response(items []CatalogsProductGroupsList200ResponseAllOfItemsInner) *CatalogsProductGroupsList200Response {
+func NewCatalogsProductGroupsList200Response(items []CatalogsVerticalProductGroup) *CatalogsProductGroupsList200Response {
 	this := CatalogsProductGroupsList200Response{}
 	this.Items = items
 	return &this
@@ -47,9 +47,9 @@ func NewCatalogsProductGroupsList200ResponseWithDefaults() *CatalogsProductGroup
 }
 
 // GetItems returns the Items field value
-func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsProductGroupsList200ResponseAllOfItemsInner {
+func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsVerticalProductGroup {
 	if o == nil {
-		var ret []CatalogsProductGroupsList200ResponseAllOfItemsInner
+		var ret []CatalogsVerticalProductGroup
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsProductGroup
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupsList200Response) GetItemsOk() ([]CatalogsProductGroupsList200ResponseAllOfItemsInner, bool) {
+func (o *CatalogsProductGroupsList200Response) GetItemsOk() ([]CatalogsVerticalProductGroup, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CatalogsProductGroupsList200Response) GetItemsOk() ([]CatalogsProductGr
 }
 
 // SetItems sets field value
-func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsProductGroupsList200ResponseAllOfItemsInner) {
+func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsVerticalProductGroup) {
 	o.Items = v
 }
 

@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class CatalogsItemsDeleteBatchRequest (
     _country: Country,
-    _language: Language,
+    _language: CatalogsItemsRequestLanguage,
     _operation: BatchOperation,
     /* Array with catalogs items */
     _items: List[ItemDeleteBatchRecord]

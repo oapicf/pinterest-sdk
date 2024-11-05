@@ -13,7 +13,7 @@ class TopVideoPinsAnalyticsResponse {
     
     TopPinsAnalyticsResponseDateAvailability dateAvailability
     
-    List<TopVideoPinsAnalyticsResponsePinsInner> pins
+    List<TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>()
 
     enum SortByEnum {
     
@@ -31,7 +31,7 @@ class TopVideoPinsAnalyticsResponse {
         
         QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
         
-        VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+        VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
         
         VIDEO_START("VIDEO_START")
     

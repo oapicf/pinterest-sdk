@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -91,29 +92,53 @@ interface PinMediaSource{
     * 
     * Values: pin_url
     */
-    enum class SourceType(val value: kotlin.String) {
+    enum class SourceType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("pin_url") pin_url("pin_url")
+        pin_url("pin_url");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): SourceType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * 
     * Values: jpeg,png
     */
-    enum class ContentType(val value: kotlin.String) {
+    enum class ContentType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("image/jpeg") jpeg("image/jpeg"),
-        @JsonProperty("image/png") png("image/png")
+        jpeg("image/jpeg"),
+        png("image/png");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): ContentType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * Content type for cover image Base64.
     * Values: jpeg,png
     */
-    enum class CoverImageContentType(val value: kotlin.String) {
+    enum class CoverImageContentType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("image/jpeg") jpeg("image/jpeg"),
-        @JsonProperty("image/png") png("image/png")
+        jpeg("image/jpeg"),
+        png("image/png");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CoverImageContentType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

@@ -38,7 +38,7 @@ interface ResourcesApi  {
     suspend fun metricsReadyStateGet(date:kotlin.String?,context:OperationRequest):Response<BookClosedResponse>
     /* targetingOptionsGet
      * Get targeting options */
-    suspend fun targetingOptionsGet(targetingType:kotlin.String?,clientId:kotlin.String?,oauthSignature:kotlin.String?,timestamp:kotlin.String?,context:OperationRequest):Response<kotlin.Array<kotlin.Any>>
+    suspend fun targetingOptionsGet(targetingType:kotlin.String?,clientId:kotlin.String?,oauthSignature:kotlin.String?,timestamp:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.Array<kotlin.Any>>
     companion object {
         const val address = "ResourcesApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

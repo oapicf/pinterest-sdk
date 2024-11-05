@@ -23,7 +23,7 @@ test_that("archived", {
 
 test_that("bid", {
   # tests for the property `bid` (integer)
-  # Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  # &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`bid`, "EXPECTED_RESULT")

@@ -11,7 +11,7 @@ Protected Class AdUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+			Deep link URL for Android devices.
 		#tag EndNote
 		android_deep_link As Xoson.O.OptionalString
 	#tag EndProperty
@@ -64,7 +64,7 @@ Protected Class AdUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+			Deep link URL for iOS devices.
 		#tag EndNote
 		ios_deep_link As Xoson.O.OptionalString
 	#tag EndProperty
@@ -100,7 +100,7 @@ Protected Class AdUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		tracking_urls As OpenAPIClient.Models.AdCommonTrackingUrls
+		tracking_urls As OpenAPIClient.Models.TrackingUrls
 	#tag EndProperty
 
 
@@ -127,14 +127,17 @@ Protected Class AdUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+			Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
 		#tag EndNote
 		customizable_cta_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		quiz_pin_data As OpenAPIClient.Models.AdCommonQuizPinData
+		#tag Note
+			Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+		#tag EndNote
+		quiz_pin_data As OpenAPIClient.Models.QuizPinData
 	#tag EndProperty
 
 
@@ -165,7 +168,7 @@ Protected Class AdUpdateRequest
         BuyNow
         ContactUs
         GetQuote
-        VisitWebsite
+        VisitSite
         ApplyNow
         BookNow
         RequestDemo
@@ -174,7 +177,6 @@ Protected Class AdUpdateRequest
         AddToCart
         WatchNow
         ReadMore
-        Null
         
     #tag EndEnum
 
@@ -201,8 +203,8 @@ Protected Class AdUpdateRequest
 		      Return "CONTACT_US"
 		    Case Customizable_cta_typeEnum.GetQuote
 		      Return "GET_QUOTE"
-		    Case Customizable_cta_typeEnum.VisitWebsite
-		      Return "VISIT_WEBSITE"
+		    Case Customizable_cta_typeEnum.VisitSite
+		      Return "VISIT_SITE"
 		    Case Customizable_cta_typeEnum.ApplyNow
 		      Return "APPLY_NOW"
 		    Case Customizable_cta_typeEnum.BookNow
@@ -219,8 +221,6 @@ Protected Class AdUpdateRequest
 		      Return "WATCH_NOW"
 		    Case Customizable_cta_typeEnum.ReadMore
 		      Return "READ_MORE"
-		    Case Customizable_cta_typeEnum.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -370,7 +370,7 @@ Protected Class AdUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdCommonTrackingUrls"
+			Type="TrackingUrls"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -402,7 +402,7 @@ Protected Class AdUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdCommonQuizPinData"
+			Type="QuizPinData"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **ItemId** | **String** | The catalog retail item id in the merchant namespace | [optional] 
 **Pins** | [**Pin[]**](Pin.md) | The pins mapped to the item | [optional] 
-**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] 
+**Attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
 **HotelId** | **String** | The catalog hotel id in the merchant namespace | [optional] 
+**CreativeAssetsId** | **String** | The catalog creative assets id in the merchant namespace | [optional] 
 
 ## Examples
 
@@ -17,7 +18,8 @@ $ItemResponseAnyOf = Initialize-PSOpenAPIToolsItemResponseAnyOf  -CatalogType nu
  -ItemId DS0294-M `
  -Pins null `
  -Attributes null `
- -HotelId DS0294-M
+ -HotelId DS0294-M `
+ -CreativeAssetsId DS0294-M
 ```
 
 - Convert the resource to JSON

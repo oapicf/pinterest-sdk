@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.CatalogsHotelBatchItem;
-import org.openapitools.model.CatalogsType;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -30,14 +29,47 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelBatchRequest", description = "Request object to update catalogs hotel items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
 
   private Country country;
 
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @Valid
   private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
@@ -51,14 +83,14 @@ public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelBatchRequest(CatalogsType catalogType, Country country, Language language, List<@Valid CatalogsHotelBatchItem> items) {
+  public CatalogsHotelBatchRequest(CatalogTypeEnum catalogType, Country country, CatalogsItemsRequestLanguage language, List<@Valid CatalogsHotelBatchItem> items) {
     this.catalogType = catalogType;
     this.country = country;
     this.language = language;
     this.items = items;
   }
 
-  public CatalogsHotelBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsHotelBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -66,15 +98,15 @@ public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
   /**
    * Get catalogType
    * @return catalogType
-  */
-  @NotNull @Valid 
+   */
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -86,7 +118,7 @@ public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
   /**
    * Get country
    * @return country
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "country", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("country")
@@ -98,7 +130,7 @@ public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
     this.country = country;
   }
 
-  public CatalogsHotelBatchRequest language(Language language) {
+  public CatalogsHotelBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -106,15 +138,15 @@ public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
   /**
    * Get language
    * @return language
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
@@ -134,7 +166,7 @@ public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
   /**
    * Array with catalogs item operations
    * @return items
-  */
+   */
   @NotNull @Valid @Size(min = 1, max = 1000) 
   @Schema(name = "items", description = "Array with catalogs item operations", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
@@ -154,7 +186,7 @@ public class CatalogsHotelBatchRequest implements CatalogsVerticalBatchRequest {
   /**
    * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
    * @return catalogId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")

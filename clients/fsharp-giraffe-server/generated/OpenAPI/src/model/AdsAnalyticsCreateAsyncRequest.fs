@@ -21,6 +21,9 @@ module AdsAnalyticsCreateAsyncRequest =
 
   //#region AdsAnalyticsCreateAsyncRequest
 
+  //#region enums
+  type PrimarySortEnum = IDEnum of string  |  DATEEnum of string  
+  //#endregion
 
   type AdsAnalyticsCreateAsyncRequest = {
     StartDate : string;
@@ -46,5 +49,8 @@ module AdsAnalyticsCreateAsyncRequest =
     Columns : ReportingColumnAsync[];
     Level : MetricsReportingLevel;
     ReportFormat : DataOutputFormat;
+    PrimarySort : PrimarySortEnum;
+    StartHour : int;
+    EndHour : int;
   }
   //#endregion

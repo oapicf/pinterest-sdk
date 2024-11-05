@@ -57,5 +57,8 @@ data class ConversionEventsDataInnerCustomDataContentsInner (
     @Json(name = "item_brand")
     val itemBrand: kotlin.String? = null
 
-)
+) {
+
+
+}
 

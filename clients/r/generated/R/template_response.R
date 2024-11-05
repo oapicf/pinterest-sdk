@@ -63,8 +63,7 @@ TemplateResponse <- R6::R6Class(
     `custom_column_ids` = NULL,
     `type` = NULL,
     `ingestion_sources` = NULL,
-    #' Initialize a new TemplateResponse class.
-    #'
+
     #' @description
     #' Initialize a new TemplateResponse class.
     #'
@@ -94,7 +93,6 @@ TemplateResponse <- R6::R6Class(
     #' @param type Reporting template type
     #' @param ingestion_sources The filter on the conversion ingestion source method for conversion metrics
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `ad_account_id` = NULL, `ad_account_ids` = NULL, `user_id` = NULL, `name` = NULL, `report_start_relative_days_in_past` = NULL, `report_end_relative_days_in_past` = NULL, `date_range` = NULL, `report_level` = NULL, `report_format` = NULL, `columns` = NULL, `granularity` = NULL, `view_window_days` = NULL, `click_window_days` = NULL, `engagement_window_days` = NULL, `conversion_report_time_type` = NULL, `filters_json` = NULL, `is_owned_by_user` = NULL, `is_scheduled` = NULL, `creation_source` = NULL, `is_deleted` = NULL, `updated_time` = NULL, `custom_column_ids` = NULL, `type` = NULL, `ingestion_sources` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -235,13 +233,11 @@ TemplateResponse <- R6::R6Class(
         self$`ingestion_sources` <- `ingestion_sources`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TemplateResponse in JSON format
-    #' @export
     toJSON = function() {
       TemplateResponseObject <- list()
       if (!is.null(self$`id`)) {
@@ -346,14 +342,12 @@ TemplateResponse <- R6::R6Class(
       }
       TemplateResponseObject
     },
-    #' Deserialize JSON string into an instance of TemplateResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TemplateResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of TemplateResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -450,13 +444,11 @@ TemplateResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TemplateResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -663,14 +655,12 @@ TemplateResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of TemplateResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TemplateResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of TemplateResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -709,53 +699,42 @@ TemplateResponse <- R6::R6Class(
       self$`ingestion_sources` <- ApiClient$new()$deserializeObj(this_object$`ingestion_sources`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to TemplateResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to TemplateResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of TemplateResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

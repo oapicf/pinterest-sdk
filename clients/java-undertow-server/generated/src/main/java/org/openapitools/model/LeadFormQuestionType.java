@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -39,21 +39,19 @@ public enum LeadFormQuestionType {
         
         ZIP_CODE("ZIP_CODE"),
         
-        AGE("AGE"),
-        
         GENDER("GENDER"),
         
         CITY("CITY"),
         
         COUNTRY("COUNTRY"),
         
-        PREFERRED_CONTACT_METHOD("PREFERRED_CONTACT_METHOD"),
-        
         STATE_PROVINCE("STATE_PROVINCE"),
         
         ADDRESS("ADDRESS"),
         
-        DATE_OF_BIRTH("DATE_OF_BIRTH");
+        DATE_OF_BIRTH("DATE_OF_BIRTH"),
+        
+        AGE("AGE");
 
 private String value;
 

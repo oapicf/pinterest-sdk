@@ -51,5 +51,6 @@ data class TemplateResponseDateRangeDynamicDateRange (
         @Json(name = "MONTH_TO_DATE") MONTH_TO_DATE("MONTH_TO_DATE"),
         @Json(name = "LAST_MONTH") LAST_MONTH("LAST_MONTH");
     }
+
 }
 

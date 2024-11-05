@@ -21,9 +21,9 @@ import org.openapitools.models.CatalogsFeedValidationDetails
  * @param productUnderscorecounts 
  * @param validationUnderscoredetails 
  */
-case class CatalogsFeedProcessingResult(createdUnderscoreat: Option[ZonedDateTime],
-                id: Option[String],
-                updatedUnderscoreat: Option[ZonedDateTime],
+case class CatalogsFeedProcessingResult(createdUnderscoreat: ZonedDateTime,
+                id: String,
+                updatedUnderscoreat: ZonedDateTime,
                 ingestionUnderscoredetails: CatalogsFeedIngestionDetails,
                 status: CatalogsFeedProcessingStatus,
                 productUnderscorecounts: CatalogsFeedProductCounts,

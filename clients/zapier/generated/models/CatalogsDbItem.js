@@ -7,16 +7,19 @@ module.exports = {
             {
                 key: `${keyPrefix}created_at`,
                 label: `[${labelPrefix}created_at]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}id`,
                 label: `[${labelPrefix}id]`,
+                required: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}updated_at`,
                 label: `[${labelPrefix}updated_at]`,
+                required: true,
                 type: 'string',
             },
         ]

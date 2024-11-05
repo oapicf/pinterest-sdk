@@ -13,9 +13,9 @@ import java.time.OffsetDateTime
 import CatalogsFeedProcessingResult._
 
 case class CatalogsFeedProcessingResult (
-  createdAt: Option[OffsetDateTime],
-id: Option[String],
-updatedAt: Option[OffsetDateTime],
+  createdAt: OffsetDateTime,
+id: String,
+updatedAt: OffsetDateTime,
 ingestionDetails: CatalogsFeedIngestionDetails,
 status: CatalogsFeedProcessingStatus,
 productCounts: CatalogsFeedProductCounts,

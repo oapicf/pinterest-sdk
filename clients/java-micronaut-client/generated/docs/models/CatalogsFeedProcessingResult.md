@@ -8,9 +8,9 @@ The class is defined in **[CatalogsFeedProcessingResult.java](../../src/main/jav
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | `OffsetDateTime` |  |  [optional property]
-**id** | `String` |  |  [optional property]
-**updatedAt** | `OffsetDateTime` |  |  [optional property]
+**createdAt** | `OffsetDateTime` |  | 
+**id** | `String` |  | 
+**updatedAt** | `OffsetDateTime` |  | 
 **ingestionDetails** | [`CatalogsFeedIngestionDetails`](CatalogsFeedIngestionDetails.md) |  | 
 **status** | `CatalogsFeedProcessingStatus` |  | 
 **productCounts** | [`CatalogsFeedProductCounts`](CatalogsFeedProductCounts.md) |  | 

@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CatalogsProductGroupsList200ResponseAllOfItemsInner
+import org.openapitools.models.CatalogsVerticalProductGroup
 import scala.collection.immutable.Seq
 
 /**
@@ -13,7 +13,7 @@ import scala.collection.immutable.Seq
  * @param items 
  * @param bookmark 
  */
-case class CatalogsProductGroupsList200Response(items: Seq[CatalogsProductGroupsList200ResponseAllOfItemsInner],
+case class CatalogsProductGroupsList200Response(items: Seq[CatalogsVerticalProductGroup],
                 bookmark: Option[String]
                 )
 

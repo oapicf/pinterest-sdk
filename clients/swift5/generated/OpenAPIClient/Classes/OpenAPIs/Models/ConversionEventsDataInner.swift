@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct ConversionEventsDataInner: Codable, JSONEncodable, Hashable {
 
-    /** The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code> */
+    /** <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p>  */
     public var eventName: String
-    /** The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code> */
+    /** <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p>  */
     public var actionSource: String
     /** The time when the event happened. Unix timestamp in seconds. */
     public var eventTime: Int64
@@ -26,7 +26,7 @@ public struct ConversionEventsDataInner: Codable, JSONEncodable, Hashable {
     public var optOut: Bool?
     /** The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’ */
     public var partnerName: String?
-    public var userData: ConversionEventsUserData?
+    public var userData: ConversionEventsUserData
     public var customData: ConversionEventsDataInnerCustomData?
     /** The app store app ID. */
     public var appId: String?
@@ -49,7 +49,7 @@ public struct ConversionEventsDataInner: Codable, JSONEncodable, Hashable {
     /** Two-character ISO-639-1 language code indicating the user's language. */
     public var language: String?
 
-    public init(eventName: String, actionSource: String, eventTime: Int64, eventId: String, eventSourceUrl: String? = nil, optOut: Bool? = nil, partnerName: String? = nil, userData: ConversionEventsUserData?, customData: ConversionEventsDataInnerCustomData? = nil, appId: String? = nil, appName: String? = nil, appVersion: String? = nil, deviceBrand: String? = nil, deviceCarrier: String? = nil, deviceModel: String? = nil, deviceType: String? = nil, osVersion: String? = nil, wifi: Bool? = nil, language: String? = nil) {
+    public init(eventName: String, actionSource: String, eventTime: Int64, eventId: String, eventSourceUrl: String? = nil, optOut: Bool? = nil, partnerName: String? = nil, userData: ConversionEventsUserData, customData: ConversionEventsDataInnerCustomData? = nil, appId: String? = nil, appName: String? = nil, appVersion: String? = nil, deviceBrand: String? = nil, deviceCarrier: String? = nil, deviceModel: String? = nil, deviceType: String? = nil, osVersion: String? = nil, wifi: Bool? = nil, language: String? = nil) {
         self.eventName = eventName
         self.actionSource = actionSource
         self.eventTime = eventTime

@@ -22,7 +22,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"startDate": @"start_date", @"endDate": @"end_date", @"granularity": @"granularity", @"clickWindowDays": @"click_window_days", @"engagementWindowDays": @"engagement_window_days", @"viewWindowDays": @"view_window_days", @"conversionReportTime": @"conversion_report_time", @"attributionTypes": @"attribution_types", @"campaignIds": @"campaign_ids", @"campaignStatuses": @"campaign_statuses", @"campaignObjectiveTypes": @"campaign_objective_types", @"adGroupIds": @"ad_group_ids", @"adGroupStatuses": @"ad_group_statuses", @"adIds": @"ad_ids", @"adStatuses": @"ad_statuses", @"productGroupIds": @"product_group_ids", @"productGroupStatuses": @"product_group_statuses", @"productItemIds": @"product_item_ids", @"targetingTypes": @"targeting_types", @"metricsFilters": @"metrics_filters", @"columns": @"columns", @"level": @"level", @"reportFormat": @"report_format" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"startDate": @"start_date", @"endDate": @"end_date", @"granularity": @"granularity", @"clickWindowDays": @"click_window_days", @"engagementWindowDays": @"engagement_window_days", @"viewWindowDays": @"view_window_days", @"conversionReportTime": @"conversion_report_time", @"attributionTypes": @"attribution_types", @"campaignIds": @"campaign_ids", @"campaignStatuses": @"campaign_statuses", @"campaignObjectiveTypes": @"campaign_objective_types", @"adGroupIds": @"ad_group_ids", @"adGroupStatuses": @"ad_group_statuses", @"adIds": @"ad_ids", @"adStatuses": @"ad_statuses", @"productGroupIds": @"product_group_ids", @"productGroupStatuses": @"product_group_statuses", @"productItemIds": @"product_item_ids", @"targetingTypes": @"targeting_types", @"metricsFilters": @"metrics_filters", @"columns": @"columns", @"level": @"level", @"reportFormat": @"report_format", @"primarySort": @"primary_sort", @"startHour": @"start_hour", @"endHour": @"end_hour" }];
 }
 
 /**
@@ -32,7 +32,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"clickWindowDays", @"engagementWindowDays", @"viewWindowDays", @"conversionReportTime", @"attributionTypes", @"campaignIds", @"campaignStatuses", @"campaignObjectiveTypes", @"adGroupIds", @"adGroupStatuses", @"adIds", @"adStatuses", @"productGroupIds", @"productGroupStatuses", @"productItemIds", @"targetingTypes", @"metricsFilters", @"reportFormat"];
+  NSArray *optionalProperties = @[@"clickWindowDays", @"engagementWindowDays", @"viewWindowDays", @"conversionReportTime", @"attributionTypes", @"campaignIds", @"campaignStatuses", @"campaignObjectiveTypes", @"adGroupIds", @"adGroupStatuses", @"adIds", @"adStatuses", @"productGroupIds", @"productGroupStatuses", @"productItemIds", @"targetingTypes", @"metricsFilters", @"reportFormat", @"primarySort", @"startHour", @"endHour"];
   return [optionalProperties containsObject:propertyName];
 }
 

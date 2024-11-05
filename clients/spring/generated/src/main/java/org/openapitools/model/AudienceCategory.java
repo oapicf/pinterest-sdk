@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * AudienceCategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCategory {
 
   private String key;
@@ -37,7 +37,7 @@ public class AudienceCategory {
   private String id;
 
   @Valid
-  private List<@Valid AudienceSubcategory> subcategories;
+  private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
 
   public AudienceCategory key(String key) {
     this.key = key;
@@ -47,7 +47,7 @@ public class AudienceCategory {
   /**
    * Interest unique key (same as ID).
    * @return key
-  */
+   */
   
   @Schema(name = "key", example = "1234567", description = "Interest unique key (same as ID).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
@@ -67,7 +67,7 @@ public class AudienceCategory {
   /**
    * Interest name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "travel", description = "Interest name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -87,7 +87,7 @@ public class AudienceCategory {
   /**
    * Interest's percent of category's total audience.
    * @return ratio
-  */
+   */
   @Valid 
   @Schema(name = "ratio", example = "0.551", description = "Interest's percent of category's total audience.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ratio")
@@ -107,7 +107,7 @@ public class AudienceCategory {
   /**
    * Interest affinity index.
    * @return index
-  */
+   */
   @Valid 
   @Schema(name = "index", example = "1.2", description = "Interest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
@@ -127,7 +127,7 @@ public class AudienceCategory {
   /**
    * Interest ID.
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "1234567", description = "Interest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -155,7 +155,7 @@ public class AudienceCategory {
   /**
    * Subcategory interest distribution
    * @return subcategories
-  */
+   */
   @Valid 
   @Schema(name = "subcategories", description = "Subcategory interest distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("subcategories")

@@ -108,6 +108,8 @@ module ItemAttributes =
     AdditionalImageLink : string[];
     [<JsonProperty(PropertyName = "image_link")>]
     ImageLink : string[];
+    [<JsonProperty(PropertyName = "video_link")>]
+    VideoLink : string option;
   }
 
   //#endregion

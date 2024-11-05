@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -34,9 +34,9 @@ public class AdCommon  {
   private String adGroupId;
 
  /**
-  * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  * Deep link URL for Android devices.
   */
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
   private String androidDeepLink;
 
  /**
@@ -74,9 +74,9 @@ public class AdCommon  {
   private String destinationUrl;
 
  /**
-  * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  * Deep link URL for iOS devices.
   */
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
   private String iosDeepLink;
 
  /**
@@ -103,7 +103,7 @@ public class AdCommon  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
  /**
   * Tracking URL for ad impressions.
@@ -132,7 +132,7 @@ public enum CustomizableCtaTypeEnum {
     @JsonProperty("BUY_NOW") BUY_NOW(String.valueOf("BUY_NOW")),
     @JsonProperty("CONTACT_US") CONTACT_US(String.valueOf("CONTACT_US")),
     @JsonProperty("GET_QUOTE") GET_QUOTE(String.valueOf("GET_QUOTE")),
-    @JsonProperty("VISIT_WEBSITE") VISIT_WEBSITE(String.valueOf("VISIT_WEBSITE")),
+    @JsonProperty("VISIT_SITE") VISIT_SITE(String.valueOf("VISIT_SITE")),
     @JsonProperty("APPLY_NOW") APPLY_NOW(String.valueOf("APPLY_NOW")),
     @JsonProperty("BOOK_NOW") BOOK_NOW(String.valueOf("BOOK_NOW")),
     @JsonProperty("REQUEST_DEMO") REQUEST_DEMO(String.valueOf("REQUEST_DEMO")),
@@ -140,8 +140,7 @@ public enum CustomizableCtaTypeEnum {
     @JsonProperty("FIND_A_DEALER") FIND_A_DEALER(String.valueOf("FIND_A_DEALER")),
     @JsonProperty("ADD_TO_CART") ADD_TO_CART(String.valueOf("ADD_TO_CART")),
     @JsonProperty("WATCH_NOW") WATCH_NOW(String.valueOf("WATCH_NOW")),
-    @JsonProperty("READ_MORE") READ_MORE(String.valueOf("READ_MORE")),
-    @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("READ_MORE") READ_MORE(String.valueOf("READ_MORE"));
 
     private String value;
 
@@ -169,14 +168,17 @@ public enum CustomizableCtaTypeEnum {
 }
 
  /**
-  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
   */
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
   private CustomizableCtaTypeEnum customizableCtaType;
 
-  @ApiModelProperty(value = "")
+ /**
+  * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  */
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
   @Valid
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
  /**
   * ID of the ad group that contains the ad.
   * @return adGroupId
@@ -202,7 +204,7 @@ public enum CustomizableCtaTypeEnum {
   }
 
  /**
-  * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  * Deep link URL for Android devices.
   * @return androidDeepLink
   */
   @JsonProperty("android_deep_link")
@@ -394,7 +396,7 @@ public enum CustomizableCtaTypeEnum {
   }
 
  /**
-  * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  * Deep link URL for iOS devices.
   * @return iosDeepLink
   */
   @JsonProperty("ios_deep_link")
@@ -518,21 +520,21 @@ public enum CustomizableCtaTypeEnum {
   * @return trackingUrls
   */
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
- public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+ public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
-  public AdCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -610,7 +612,7 @@ public enum CustomizableCtaTypeEnum {
   }
 
  /**
-  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
   * @return customizableCtaType
   */
   @JsonProperty("customizable_cta_type")
@@ -634,25 +636,25 @@ public enum CustomizableCtaTypeEnum {
   }
 
  /**
-  * Get quizPinData
+  * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   * @return quizPinData
   */
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
 
   /**
    * Sets the <code>quizPinData</code> property.
    */
- public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+ public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 
   /**
    * Sets the <code>quizPinData</code> property.
    */
-  public AdCommon quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdCommon quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }

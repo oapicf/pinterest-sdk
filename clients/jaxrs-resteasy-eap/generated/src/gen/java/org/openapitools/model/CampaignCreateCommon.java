@@ -8,29 +8,27 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignCreateCommon   {
   
   private String adAccountId;
   private String name;
-  private EntityStatus status = "ACTIVE";
+  private EntityStatus status;
   private Integer lifetimeSpendCap;
   private Integer dailySpendCap;
   private String orderLineId;
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private Integer startTime;
   private Integer endTime;
-  private CampaignSummaryStatus summaryStatus;
-  private Boolean isFlexibleDailyBudgets = false;
+  private Boolean isFlexibleDailyBudgets;
   private Integer defaultAdGroupBudgetInMicroCurrency;
-  private Boolean isAutomatedCampaign = false;
+  private Boolean isAutomatedCampaign;
 
   /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
@@ -114,10 +112,10 @@ public class CampaignCreateCommon   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -145,18 +143,6 @@ public class CampaignCreateCommon   {
   }
   public void setEndTime(Integer endTime) {
     this.endTime = endTime;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
   }
 
   /**
@@ -217,7 +203,6 @@ public class CampaignCreateCommon   {
         Objects.equals(this.trackingUrls, campaignCreateCommon.trackingUrls) &&
         Objects.equals(this.startTime, campaignCreateCommon.startTime) &&
         Objects.equals(this.endTime, campaignCreateCommon.endTime) &&
-        Objects.equals(this.summaryStatus, campaignCreateCommon.summaryStatus) &&
         Objects.equals(this.isFlexibleDailyBudgets, campaignCreateCommon.isFlexibleDailyBudgets) &&
         Objects.equals(this.defaultAdGroupBudgetInMicroCurrency, campaignCreateCommon.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(this.isAutomatedCampaign, campaignCreateCommon.isAutomatedCampaign);
@@ -225,7 +210,7 @@ public class CampaignCreateCommon   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
   }
 
   @Override
@@ -242,7 +227,6 @@ public class CampaignCreateCommon   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

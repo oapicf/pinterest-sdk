@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Media** | [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **AltText** | **String** |  | [optional] 
 **Link** | **String** |  | [optional] 
 **Title** | **String** |  | [optional] 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,10 +23,10 @@ var _ MappedNullable = &Catalog{}
 
 // Catalog Catalog entity
 type Catalog struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// ID of the catalog entity.
-	Id string `json:"id"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	UpdatedAt time.Time `json:"updated_at"`
 	// A human-friendly name associated to a catalog entity.
 	Name NullableString `json:"name"`
 	CatalogType CatalogsType `json:"catalog_type"`
@@ -38,9 +38,11 @@ type _Catalog Catalog
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalog(id string, name NullableString, catalogType CatalogsType) *Catalog {
+func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, name NullableString, catalogType CatalogsType) *Catalog {
 	this := Catalog{}
+	this.CreatedAt = createdAt
 	this.Id = id
+	this.UpdatedAt = updatedAt
 	this.Name = name
 	this.CatalogType = catalogType
 	return &this
@@ -54,36 +56,28 @@ func NewCatalogWithDefaults() *Catalog {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *Catalog) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Catalog) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *Catalog) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *Catalog) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
 // GetId returns the Id field value
@@ -110,36 +104,28 @@ func (o *Catalog) SetId(v string) {
 	o.Id = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+// GetUpdatedAt returns the UpdatedAt field value
 func (o *Catalog) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Catalog) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *Catalog) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+// SetUpdatedAt sets field value
 func (o *Catalog) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
+	o.UpdatedAt = v
 }
 
 // GetName returns the Name field value
@@ -202,13 +188,9 @@ func (o Catalog) MarshalJSON() ([]byte, error) {
 
 func (o Catalog) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
+	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["id"] = o.Id
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
+	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["catalog_type"] = o.CatalogType
 	return toSerialize, nil
@@ -219,7 +201,9 @@ func (o *Catalog) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"created_at",
 		"id",
+		"updated_at",
 		"name",
 		"catalog_type",
 	}

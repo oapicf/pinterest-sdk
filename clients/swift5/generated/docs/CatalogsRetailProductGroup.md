@@ -13,7 +13,10 @@ Name | Type | Description | Notes
 **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
 **createdAt** | **Int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **updatedAt** | **Int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**feedId** | **String** |  | 
+**catalogId** | **String** | Catalog id pertaining to the retail product group. | 
+**feedId** | **String** | id of the catalogs feed belonging to this catalog product group | 
+**country** | **String** |  | [optional] 
+**locale** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

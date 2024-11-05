@@ -32,5 +32,8 @@ data class HotelIdFilter (
     @Json(name = "HOTEL_ID")
     val HOTEL_ID: CatalogsProductGroupMultipleStringCriteria
 
-)
+) {
+
+
+}
 

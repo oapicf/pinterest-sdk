@@ -20,7 +20,7 @@ import java.util.List;
  * TopVideoPinsAnalyticsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopVideoPinsAnalyticsResponse   {
   @JsonProperty("date_availability")
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
@@ -47,7 +47,7 @@ public class TopVideoPinsAnalyticsResponse   {
     
     QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
     
-    VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+    VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
     
     VIDEO_START("VIDEO_START");
 
@@ -82,10 +82,10 @@ public class TopVideoPinsAnalyticsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get dateAvailability
    * @return dateAvailability
-  **/
+   */
   @ApiModelProperty(value = "")
   public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
@@ -108,10 +108,10 @@ public class TopVideoPinsAnalyticsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get pins
    * @return pins
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<TopVideoPinsAnalyticsResponsePinsInner> getPins() {
     return pins;
@@ -126,10 +126,10 @@ public class TopVideoPinsAnalyticsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get sortBy
    * @return sortBy
-  **/
+   */
   @ApiModelProperty(example = "IMPRESSION", value = "")
   public SortByEnum getSortBy() {
     return sortBy;

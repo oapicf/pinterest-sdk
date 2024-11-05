@@ -17,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Sections help organize pins within a board.")
 @JsonTypeName("BoardSection")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BoardSection   {
-  private @Valid String id;
-  private @Valid String name;
+  private String id;
+  private String name;
 
   /**
    **/
@@ -51,8 +51,7 @@ public class BoardSection   {
   
   @ApiModelProperty(example = "Salads", required = true, value = "")
   @JsonProperty("name")
-  @NotNull
- @Size(min=1,max=180)  public String getName() {
+  @NotNull  @Size(min=1,max=180)public String getName() {
     return name;
   }
 

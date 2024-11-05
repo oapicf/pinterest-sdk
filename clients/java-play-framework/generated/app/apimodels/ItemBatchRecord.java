@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.ItemAttributes;
+import apimodels.ItemAttributesRequest;
 import apimodels.ItemCreateBatchRecord;
 import apimodels.ItemDeleteBatchRecord;
 import apimodels.ItemDeleteDiscontinuedBatchRecord;
@@ -20,7 +20,7 @@ import javax.validation.Valid;
 /**
  * Object describing an item batch record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemBatchRecord   {
   @JsonProperty("item_id")
@@ -30,7 +30,7 @@ public class ItemBatchRecord   {
   @JsonProperty("attributes")
   @Valid
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   @JsonProperty("update_mask")
   @Valid
@@ -54,7 +54,7 @@ public class ItemBatchRecord   {
     this.itemId = itemId;
   }
 
-  public ItemBatchRecord attributes(ItemAttributes attributes) {
+  public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -63,11 +63,11 @@ public class ItemBatchRecord   {
    * Get attributes
    * @return attributes
   **/
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

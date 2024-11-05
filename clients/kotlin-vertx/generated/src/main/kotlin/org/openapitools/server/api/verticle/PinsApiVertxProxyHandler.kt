@@ -71,6 +71,40 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
             val context = OperationRequest(contextSerialized)
             when (action) {
         
+                "multiPinsAnalytics" -> {
+                    val params = context.params
+                    val pinIdsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"pin_ids")
+                    if(pinIdsParam == null){
+                         throw IllegalArgumentException("pinIds is required")
+                    }
+                    val pinIds:kotlin.Array<kotlin.String> = Gson().fromJson(pinIdsParam.encode()
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val startDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"start_date"))
+                    if(startDate == null){
+                        throw IllegalArgumentException("startDate is required")
+                    }
+                    val endDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"end_date"))
+                    if(endDate == null){
+                        throw IllegalArgumentException("endDate is required")
+                    }
+                    val metricTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"metric_types")
+                    if(metricTypesParam == null){
+                         throw IllegalArgumentException("metricTypes is required")
+                    }
+                    val metricTypes:kotlin.Array<PinsAnalyticsMetricTypesParameterInner> = Gson().fromJson(metricTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>>(){}.type)
+                    val appTypes = ApiHandlerUtils.searchStringInJson(params,"app_types")
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.multiPinsAnalytics(pinIds,startDate,endDate,metricTypes,appTypes,adAccountId,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
                 "pinsAnalytics" -> {
                     val params = context.params
                     val pinId = ApiHandlerUtils.searchStringInJson(params,"pin_id")

@@ -20,6 +20,7 @@ module AdsAnalyticsTargetingType =
   let GEOEnum = "GEO"
   let AGEBUCKETEnum = "AGE_BUCKET"
   let REGIONEnum = "REGION"
+  let AGEBUCKETANDGENDEREnum = "AGE_BUCKET_AND_GENDER"
   type AdsAnalyticsTargetingType = string
 
   //#endregion

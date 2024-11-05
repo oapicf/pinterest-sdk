@@ -6,8 +6,8 @@ import model.AdPreviewRequest
 import model.AdPreviewURLResponse
 import model.AdResponse
 import model.AdUpdateRequest
+import model.AdsAnalyticsAdTargetingType
 import model.AdsAnalyticsResponseInner
-import model.AdsAnalyticsTargetingType
 import model.AdsList200Response
 import model.ConversionReportAttributionType
 import model.Error
@@ -18,7 +18,7 @@ import model.MetricsResponse
 /**
   * Provides a default implementation for [[AdsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 class AdsApiImpl extends AdsApi {
   /**
     * @inheritdoc
@@ -32,7 +32,7 @@ class AdsApiImpl extends AdsApi {
   /**
     * @inheritdoc
     */
-  override def adTargetingAnalyticsGet(adAccountId: String, adIds: List[String], startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsTargetingType], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): MetricsResponse = {
+  override def adTargetingAnalyticsGet(adAccountId: String, adIds: List[String], startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsAdTargetingType], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): MetricsResponse = {
     // TODO: Implement better logic
 
     MetricsResponse(None)
@@ -41,7 +41,7 @@ class AdsApiImpl extends AdsApi {
   /**
     * @inheritdoc
     */
-  override def adsAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, adIds: List[String], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String]): List[AdsAnalyticsResponseInner] = {
+  override def adsAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String], granularity: Granularity, adIds: Option[List[String]], clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], pinIds: Option[List[String]], campaignIds: Option[List[String]]): List[AdsAnalyticsResponseInner] = {
     // TODO: Implement better logic
 
     List.empty[AdsAnalyticsResponseInner]

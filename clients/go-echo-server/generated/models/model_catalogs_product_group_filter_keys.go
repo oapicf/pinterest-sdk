@@ -30,6 +30,8 @@ type CatalogsProductGroupFilterKeys struct {
 
 	GENDER CatalogsProductGroupMultipleGenderCriteria `json:"GENDER"`
 
+	MEDIA_TYPE CatalogsProductGroupMultipleMediaTypesCriteria `json:"MEDIA_TYPE"`
+
 	PRODUCTTYPE4 CatalogsProductGroupMultipleStringListCriteria `json:"PRODUCT_TYPE_4"`
 
 	PRODUCTTYPE3 CatalogsProductGroupMultipleStringListCriteria `json:"PRODUCT_TYPE_3"`
@@ -53,4 +55,6 @@ type CatalogsProductGroupFilterKeys struct {
 	GOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_1"`
 
 	GOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria `json:"GOOGLE_PRODUCT_CATEGORY_0"`
+
+	PRODUCT_GROUP CatalogsProductGroupMultipleStringCriteria `json:"PRODUCT_GROUP"`
 }

@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Error
@@ -43,7 +43,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -208,7 +208,16 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
          @Json(name = "PAUSED") PAUSED("PAUSED"),
          @Json(name = "ARCHIVED") ARCHIVED("ARCHIVED"),
          @Json(name = "DRAFT") DRAFT("DRAFT"),
-         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT")
+         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -216,7 +225,16 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
      */
      enum class OrderProductGroupPromotionsList(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -226,7 +244,7 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
      * @param productGroupPromotionIds List of Product group promotion Ids. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
      * @param adGroupId Ad group Id. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ProductGroupPromotionsList200Response
@@ -263,7 +281,7 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
      * @param productGroupPromotionIds List of Product group promotion Ids. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
      * @param adGroupId Ad group Id. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<ProductGroupPromotionsList200Response?>
@@ -287,7 +305,7 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
      * @param productGroupPromotionIds List of Product group promotion Ids. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
      * @param adGroupId Ad group Id. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig
@@ -498,6 +516,7 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -530,6 +549,7 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -555,7 +575,16 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -567,7 +596,16 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -579,7 +617,16 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -591,7 +638,16 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -599,7 +655,16 @@ class ProductGroupPromotionsApi(basePath: kotlin.String = defaultBasePath, clien
      */
      enum class ConversionReportTimeProductGroupsAnalytics(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**

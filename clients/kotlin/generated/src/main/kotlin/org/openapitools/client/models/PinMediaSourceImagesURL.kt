@@ -52,5 +52,6 @@ data class PinMediaSourceImagesURL (
     enum class SourceType(val value: kotlin.String) {
         @Json(name = "multiple_image_urls") multiple_image_urls("multiple_image_urls");
     }
+
 }
 

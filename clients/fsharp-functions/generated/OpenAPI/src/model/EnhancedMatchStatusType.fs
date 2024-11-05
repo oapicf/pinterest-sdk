@@ -12,7 +12,6 @@ module EnhancedMatchStatusType =
   let NOTVALIDATEDEnum = "NOT_VALIDATED"
   let VALIDATINGINPROGRESSEnum = "VALIDATING_IN_PROGRESS"
   let VALIDATIONCOMPLETEEnum = "VALIDATION_COMPLETE"
-  let NullEnum = "null"
   type EnhancedMatchStatusType = string
 
   //#endregion

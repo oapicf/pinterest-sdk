@@ -19,6 +19,7 @@
        'CUSTOM_LABEL_4' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
        'ITEM_GROUP_ID' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria(),
        'GENDER' := openapi_catalogs_product_group_multiple_gender_criteria:openapi_catalogs_product_group_multiple_gender_criteria(),
+       'MEDIA_TYPE' := openapi_catalogs_product_group_multiple_media_types_criteria:openapi_catalogs_product_group_multiple_media_types_criteria(),
        'PRODUCT_TYPE_4' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'PRODUCT_TYPE_3' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'PRODUCT_TYPE_2' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
@@ -30,7 +31,8 @@
        'GOOGLE_PRODUCT_CATEGORY_3' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_2' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
        'GOOGLE_PRODUCT_CATEGORY_1' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
-       'GOOGLE_PRODUCT_CATEGORY_0' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria()
+       'GOOGLE_PRODUCT_CATEGORY_0' := openapi_catalogs_product_group_multiple_string_list_criteria:openapi_catalogs_product_group_multiple_string_list_criteria(),
+       'PRODUCT_GROUP' := openapi_catalogs_product_group_multiple_string_criteria:openapi_catalogs_product_group_multiple_string_criteria()
      }.
 
 encode(#{ 'MIN_PRICE' := MINPRICE,
@@ -47,6 +49,7 @@ encode(#{ 'MIN_PRICE' := MINPRICE,
           'CUSTOM_LABEL_4' := CUSTOMLABEL4,
           'ITEM_GROUP_ID' := ITEMGROUPID,
           'GENDER' := GENDER,
+          'MEDIA_TYPE' := MEDIATYPE,
           'PRODUCT_TYPE_4' := PRODUCTTYPE4,
           'PRODUCT_TYPE_3' := PRODUCTTYPE3,
           'PRODUCT_TYPE_2' := PRODUCTTYPE2,
@@ -58,7 +61,8 @@ encode(#{ 'MIN_PRICE' := MINPRICE,
           'GOOGLE_PRODUCT_CATEGORY_3' := GOOGLEPRODUCTCATEGORY3,
           'GOOGLE_PRODUCT_CATEGORY_2' := GOOGLEPRODUCTCATEGORY2,
           'GOOGLE_PRODUCT_CATEGORY_1' := GOOGLEPRODUCTCATEGORY1,
-          'GOOGLE_PRODUCT_CATEGORY_0' := GOOGLEPRODUCTCATEGORY0
+          'GOOGLE_PRODUCT_CATEGORY_0' := GOOGLEPRODUCTCATEGORY0,
+          'PRODUCT_GROUP' := PRODUCTGROUP
         }) ->
     #{ 'MIN_PRICE' => MINPRICE,
        'MAX_PRICE' => MAXPRICE,
@@ -74,6 +78,7 @@ encode(#{ 'MIN_PRICE' := MINPRICE,
        'CUSTOM_LABEL_4' => CUSTOMLABEL4,
        'ITEM_GROUP_ID' => ITEMGROUPID,
        'GENDER' => GENDER,
+       'MEDIA_TYPE' => MEDIATYPE,
        'PRODUCT_TYPE_4' => PRODUCTTYPE4,
        'PRODUCT_TYPE_3' => PRODUCTTYPE3,
        'PRODUCT_TYPE_2' => PRODUCTTYPE2,
@@ -85,5 +90,6 @@ encode(#{ 'MIN_PRICE' := MINPRICE,
        'GOOGLE_PRODUCT_CATEGORY_3' => GOOGLEPRODUCTCATEGORY3,
        'GOOGLE_PRODUCT_CATEGORY_2' => GOOGLEPRODUCTCATEGORY2,
        'GOOGLE_PRODUCT_CATEGORY_1' => GOOGLEPRODUCTCATEGORY1,
-       'GOOGLE_PRODUCT_CATEGORY_0' => GOOGLEPRODUCTCATEGORY0
+       'GOOGLE_PRODUCT_CATEGORY_0' => GOOGLEPRODUCTCATEGORY0,
+       'PRODUCT_GROUP' => PRODUCTGROUP
      }.

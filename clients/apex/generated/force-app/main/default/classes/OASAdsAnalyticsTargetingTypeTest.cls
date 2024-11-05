@@ -14,7 +14,8 @@ private class OASAdsAnalyticsTargetingTypeTest {
             OASAdsAnalyticsTargetingType.AUDIENCE_INCLUDE,
             OASAdsAnalyticsTargetingType.GEO,
             OASAdsAnalyticsTargetingType.AGE_BUCKET,
-            OASAdsAnalyticsTargetingType.REGION
+            OASAdsAnalyticsTargetingType.REGION,
+            OASAdsAnalyticsTargetingType.AGE_BUCKET_AND_GENDER
         };
         Set<OASAdsAnalyticsTargetingType> actual  = new Set<OASAdsAnalyticsTargetingType>(OASAdsAnalyticsTargetingType.values());
         System.assertEquals(expected, actual);

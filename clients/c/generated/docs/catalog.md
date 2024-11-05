@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **char \*** |  | [optional] 
+**created_at** | **char \*** |  | 
 **id** | **char \*** | ID of the catalog entity. | 
-**updated_at** | **char \*** |  | [optional] 
+**updated_at** | **char \*** |  | 
 **name** | **char \*** | A human-friendly name associated to a catalog entity. | 
 **catalog_type** | **catalogs_type_t \*** |  | 
 

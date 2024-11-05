@@ -27,7 +27,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the users API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UsersApi  {
    private final UsersApiService delegate = UsersApiServiceFactory.getUsersApi();
 
@@ -37,6 +37,9 @@ public class UsersApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List following interests", notes = "Get a list of a user's following interests in one place.", response = UserAccountFollowedInterests200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -52,7 +55,7 @@ public class UsersApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = UserAccountFollowedInterests200Response.class) })
     public Response userAccountFollowedInterests(@ApiParam(value = "A valid username",required=true) @PathParam("username") String username
 ,@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark") String bookmark
-,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
+,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
 )
     throws NotFoundException {
         return delegate.userAccountFollowedInterests(username,bookmark,pageSize);

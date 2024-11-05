@@ -17,8 +17,8 @@ import org.openapitools.vertxweb.server.model.ItemValidationEvent;
 public class ItemProcessingRecord   {
   
   private String itemId;
-  private List<ItemValidationEvent> errors;
-  private List<ItemValidationEvent> warnings;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
+  private List<ItemValidationEvent> warnings = new ArrayList<>();
   private ItemProcessingStatus status;
 
   public ItemProcessingRecord () {

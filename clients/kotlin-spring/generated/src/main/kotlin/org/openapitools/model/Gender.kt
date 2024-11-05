@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,10 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: FEMALE,MALE,UNISEX
 */
-enum class Gender(val value: kotlin.String) {
+enum class Gender(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("FEMALE") FEMALE("FEMALE"),
-    @JsonProperty("MALE") MALE("MALE"),
-    @JsonProperty("UNISEX") UNISEX("UNISEX")
+    FEMALE("FEMALE"),
+    MALE("MALE"),
+    UNISEX("UNISEX");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): Gender {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

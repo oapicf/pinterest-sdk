@@ -10,7 +10,7 @@ module CatalogsUpdateRetailItem =
   //#region CatalogsUpdateRetailItem
 
   //#region enums
-  type OperationEnum = CREATEEnum of string  |  UPDATEEnum of string  |  UPSERTEnum of string  |  DELETEEnum of string  
+  type OperationEnum = UPDATEEnum of string  
   //#endregion
 
   type CatalogsUpdateRetailItem = {

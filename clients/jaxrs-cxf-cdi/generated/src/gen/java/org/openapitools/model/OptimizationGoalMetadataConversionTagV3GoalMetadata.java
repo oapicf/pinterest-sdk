@@ -62,7 +62,7 @@ public enum ConversionEventEnum {
 
 public enum LearningModeTypeEnum {
 
-    @JsonProperty("NOT_ACTIVE") NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), @JsonProperty("ACTIVE") ACTIVE(String.valueOf("ACTIVE")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("NOT_ACTIVE") NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), @JsonProperty("ACTIVE") ACTIVE(String.valueOf("ACTIVE"));
 
 
     private String value;
@@ -165,7 +165,7 @@ public enum LearningModeTypeEnum {
 
 
   /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
    **/
   public OptimizationGoalMetadataConversionTagV3GoalMetadata isRoasOptimized(Boolean isRoasOptimized) {
     this.isRoasOptimized = isRoasOptimized;
@@ -173,7 +173,7 @@ public enum LearningModeTypeEnum {
   }
 
   
-  @ApiModelProperty(value = "Ad group is ROAS optimized")
+  @ApiModelProperty(value = "ROAS optimization is not supported")
   @JsonProperty("is_roas_optimized")
   public Boolean getIsRoasOptimized() {
     return isRoasOptimized;

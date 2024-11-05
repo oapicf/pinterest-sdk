@@ -15,13 +15,13 @@ public struct SummaryPin: Codable, JSONEncodable, Hashable {
 
     static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
     static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    public var media: SummaryPinMedia?
+    public var media: PinMedia?
     public var altText: String?
     public var link: String?
     public var title: String?
     public var description: String?
 
-    public init(media: SummaryPinMedia? = nil, altText: String? = nil, link: String? = nil, title: String? = nil, description: String? = nil) {
+    public init(media: PinMedia? = nil, altText: String? = nil, link: String? = nil, title: String? = nil, description: String? = nil) {
         self.media = media
         self.altText = altText
         self.link = link

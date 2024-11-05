@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &OauthAccessTokenRequestCode{}
 
 // OauthAccessTokenRequestCode A request to exchange an authorization code for an access token.
 type OauthAccessTokenRequestCode struct {
-	OauthAccessTokenRequest
+	GrantType string `json:"grant_type"`
 	Code string `json:"code"`
 	RedirectUri string `json:"redirect_uri"`
 }
@@ -33,9 +33,8 @@ type _OauthAccessTokenRequestCode OauthAccessTokenRequestCode
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOauthAccessTokenRequestCode(code string, redirectUri string, grantType string) *OauthAccessTokenRequestCode {
+func NewOauthAccessTokenRequestCode(grantType string, code string, redirectUri string) *OauthAccessTokenRequestCode {
 	this := OauthAccessTokenRequestCode{}
-	this.GrantType = grantType
 	this.Code = code
 	this.RedirectUri = redirectUri
 	return &this
@@ -47,6 +46,30 @@ func NewOauthAccessTokenRequestCode(code string, redirectUri string, grantType s
 func NewOauthAccessTokenRequestCodeWithDefaults() *OauthAccessTokenRequestCode {
 	this := OauthAccessTokenRequestCode{}
 	return &this
+}
+
+// GetGrantType returns the GrantType field value
+func (o *OauthAccessTokenRequestCode) GetGrantType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GrantType
+}
+
+// GetGrantTypeOk returns a tuple with the GrantType field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenRequestCode) GetGrantTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GrantType, true
+}
+
+// SetGrantType sets field value
+func (o *OauthAccessTokenRequestCode) SetGrantType(v string) {
+	o.GrantType = v
 }
 
 // GetCode returns the Code field value
@@ -107,14 +130,7 @@ func (o OauthAccessTokenRequestCode) MarshalJSON() ([]byte, error) {
 
 func (o OauthAccessTokenRequestCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedOauthAccessTokenRequest, errOauthAccessTokenRequest := json.Marshal(o.OauthAccessTokenRequest)
-	if errOauthAccessTokenRequest != nil {
-		return map[string]interface{}{}, errOauthAccessTokenRequest
-	}
-	errOauthAccessTokenRequest = json.Unmarshal([]byte(serializedOauthAccessTokenRequest), &toSerialize)
-	if errOauthAccessTokenRequest != nil {
-		return map[string]interface{}{}, errOauthAccessTokenRequest
-	}
+	toSerialize["grant_type"] = o.GrantType
 	toSerialize["code"] = o.Code
 	toSerialize["redirect_uri"] = o.RedirectUri
 	return toSerialize, nil
@@ -125,9 +141,9 @@ func (o *OauthAccessTokenRequestCode) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"grant_type",
 		"code",
 		"redirect_uri",
-		"grant_type",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordsRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsRequest   {
   private @Valid List<@Valid KeywordsCommon> keywords = new ArrayList<>();
-  private @Valid String parentId;
+  private String parentId;
 
   /**
    * Keyword JSON array. Each array element has 3 fields
@@ -35,8 +35,7 @@ public class KeywordsRequest   {
   
   @ApiModelProperty(required = true, value = "Keyword JSON array. Each array element has 3 fields")
   @JsonProperty("keywords")
-  @NotNull
-  public List<KeywordsCommon> getKeywords() {
+  @NotNull @Valid public List<@Valid KeywordsCommon> getKeywords() {
     return keywords;
   }
 
@@ -72,8 +71,7 @@ public class KeywordsRequest   {
   
   @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
   @JsonProperty("parent_id")
-  @NotNull
- @Pattern(regexp="^((AG)|C)?\\d+$")  public String getParentId() {
+  @NotNull  @Pattern(regexp="^((AG)|C)?\\d+$")public String getParentId() {
     return parentId;
   }
 

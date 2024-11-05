@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.SummaryPinMedia
+open OpenAPI.Model.PinMedia
 open OpenAPI.Model.string option
 
 module SummaryPin =
@@ -13,7 +13,7 @@ module SummaryPin =
   [<CLIMutable>]
   type SummaryPin = {
     [<JsonProperty(PropertyName = "media")>]
-    Media : SummaryPinMedia;
+    Media : PinMedia;
     [<JsonProperty(PropertyName = "alt_text")>]
     AltText : string option;
     [<JsonProperty(PropertyName = "link")>]

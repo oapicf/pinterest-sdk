@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;

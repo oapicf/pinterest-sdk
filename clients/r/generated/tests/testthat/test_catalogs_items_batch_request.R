@@ -13,7 +13,7 @@ test_that("country", {
 })
 
 test_that("language", {
-  # tests for the property `language` (Language)
+  # tests for the property `language` (CatalogsItemsRequestLanguage)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`language`, "EXPECTED_RESULT")

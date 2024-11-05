@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.model.CatalogsVerticalProductGroup;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,11 +26,11 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("catalogs_product_groups_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsList200Response {
 
   @Valid
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsVerticalProductGroup> items = new ArrayList<>();
 
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
@@ -41,16 +41,16 @@ public class CatalogsProductGroupsList200Response {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsProductGroupsList200Response(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 
-  public CatalogsProductGroupsList200Response items(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response items(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsProductGroupsList200Response addItemsItem(CatalogsProductGroupsList200ResponseAllOfItemsInner itemsItem) {
+  public CatalogsProductGroupsList200Response addItemsItem(CatalogsVerticalProductGroup itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -61,15 +61,15 @@ public class CatalogsProductGroupsList200Response {
   /**
    * Get items
    * @return items
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<@Valid CatalogsVerticalProductGroup> getItems() {
     return items;
   }
 
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 
@@ -81,7 +81,7 @@ public class CatalogsProductGroupsList200Response {
   /**
    * Get bookmark
    * @return bookmark
-  */
+   */
   
   @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bookmark")

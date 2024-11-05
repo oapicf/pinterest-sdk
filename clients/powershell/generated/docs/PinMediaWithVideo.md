@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MediaType** | **String** |  | [optional] 
-**Images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**Images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 **CoverImageUrl** | **String** |  | [optional] 
 **VideoUrl** | **String** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
 **Duration** | **Decimal** | Duration (in milliseconds) | [optional] 

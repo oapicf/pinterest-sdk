@@ -7,8 +7,8 @@ import org.openapitools.model.AdPreviewRequest
 import org.openapitools.model.AdPreviewURLResponse
 import org.openapitools.model.AdResponse
 import org.openapitools.model.AdUpdateRequest
+import org.openapitools.model.AdsAnalyticsAdTargetingType
 import org.openapitools.model.AdsAnalyticsResponseInner
-import org.openapitools.model.AdsAnalyticsTargetingType
 import org.openapitools.model.AdsList200Response
 import org.openapitools.model.ConversionReportAttributionType
 import org.openapitools.model.Error
@@ -50,7 +50,7 @@ class AdsApi {
 
     }
 
-    def adTargetingAnalyticsGet ( String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
+    def adTargetingAnalyticsGet ( String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads/targeting_analytics"
 
         // params
@@ -131,7 +131,7 @@ class AdsApi {
 
     }
 
-    def adsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> adIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Closure onSuccess, Closure onFailure)  {
+    def adsAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/ads/analytics"
 
         // params
@@ -151,10 +151,6 @@ class AdsApi {
         // verify required params are set
         if (endDate == null) {
             throw new RuntimeException("missing required params endDate")
-        }
-        // verify required params are set
-        if (adIds == null) {
-            throw new RuntimeException("missing required params adIds")
         }
         // verify required params are set
         if (columns == null) {
@@ -191,6 +187,12 @@ class AdsApi {
         }
         if (conversionReportTime != null) {
             queryParams.put("conversion_report_time", conversionReportTime)
+        }
+        if (pinIds != null) {
+            queryParams.put("pin_ids", pinIds)
+        }
+        if (campaignIds != null) {
+            queryParams.put("campaign_ids", campaignIds)
         }
 
 

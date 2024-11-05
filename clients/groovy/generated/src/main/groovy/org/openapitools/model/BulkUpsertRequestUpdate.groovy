@@ -14,13 +14,13 @@ import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 @Canonical
 class BulkUpsertRequestUpdate {
     
-    List<CampaignUpdateRequest> campaigns
+    List<CampaignUpdateRequest> campaigns = new ArrayList<>()
     
-    List<AdGroupUpdateRequest> adGroups
+    List<AdGroupUpdateRequest> adGroups = new ArrayList<>()
     
-    List<AdUpdateRequest> ads
+    List<AdUpdateRequest> ads = new ArrayList<>()
     
-    List<ProductGroupPromotionUpdateRequest> productGroups
+    List<ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>()
     
-    List<KeywordUpdate> keywords
+    List<KeywordUpdate> keywords = new ArrayList<>()
 }

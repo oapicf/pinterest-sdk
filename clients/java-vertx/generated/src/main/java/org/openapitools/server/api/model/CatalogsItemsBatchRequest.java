@@ -11,11 +11,11 @@ import org.openapitools.server.api.model.BatchOperation;
 import org.openapitools.server.api.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.server.api.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.server.api.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
+import org.openapitools.server.api.model.CatalogsItemsRequestLanguage;
 import org.openapitools.server.api.model.CatalogsItemsUpdateBatchRequest;
 import org.openapitools.server.api.model.CatalogsItemsUpsertBatchRequest;
 import org.openapitools.server.api.model.Country;
 import org.openapitools.server.api.model.ItemDeleteBatchRecord;
-import org.openapitools.server.api.model.Language;
 
 /**
  * Request object of catalogs items batch
@@ -24,7 +24,7 @@ import org.openapitools.server.api.model.Language;
 public class CatalogsItemsBatchRequest   {
   
   private Country country;
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
   private BatchOperation operation;
   private List<ItemDeleteBatchRecord> items = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class CatalogsItemsBatchRequest   {
 
   }
 
-  public CatalogsItemsBatchRequest (Country country, Language language, BatchOperation operation, List<ItemDeleteBatchRecord> items) {
+  public CatalogsItemsBatchRequest (Country country, CatalogsItemsRequestLanguage language, BatchOperation operation, List<ItemDeleteBatchRecord> items) {
     this.country = country;
     this.language = language;
     this.operation = operation;
@@ -50,10 +50,10 @@ public class CatalogsItemsBatchRequest   {
 
     
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

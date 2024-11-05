@@ -44,5 +44,8 @@ data class AdPreviewRequest (
     @Json(name = "pin_id")
     val pinId: kotlin.String
 
-)
+) {
+
+
+}
 

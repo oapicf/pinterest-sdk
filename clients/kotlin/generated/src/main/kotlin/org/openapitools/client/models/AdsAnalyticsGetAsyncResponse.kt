@@ -40,5 +40,8 @@ data class AdsAnalyticsGetAsyncResponse (
     @Json(name = "size")
     val propertySize: java.math.BigDecimal? = null
 
-)
+) {
+
+
+}
 

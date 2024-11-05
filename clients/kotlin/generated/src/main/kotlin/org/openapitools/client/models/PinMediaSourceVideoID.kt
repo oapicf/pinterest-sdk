@@ -76,5 +76,6 @@ data class PinMediaSourceVideoID (
         @Json(name = "image/jpeg") jpeg("image/jpeg"),
         @Json(name = "image/png") png("image/png");
     }
+
 }
 

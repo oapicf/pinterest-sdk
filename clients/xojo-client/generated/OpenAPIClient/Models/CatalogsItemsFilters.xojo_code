@@ -13,7 +13,7 @@ Protected Class CatalogsItemsFilters
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+			Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 		#tag EndNote
 		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -21,6 +21,11 @@ Protected Class CatalogsItemsFilters
 
 	#tag Property, Flags = &h0
 		hotel_ids() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		creative_assets_ids() As String
 	#tag EndProperty
 
 
@@ -86,6 +91,14 @@ Protected Class CatalogsItemsFilters
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="hotel_ids"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="creative_assets_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

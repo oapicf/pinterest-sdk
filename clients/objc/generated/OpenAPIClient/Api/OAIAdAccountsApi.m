@@ -233,7 +233,7 @@ NSInteger kOAIAdAccountsApiMissingParamErrorCode = 234513;
 ///
 ///  @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
 ///
-///  @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. 
+///  @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. 
 ///
 ///  @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned 
 ///
@@ -546,7 +546,7 @@ NSInteger kOAIAdAccountsApiMissingParamErrorCode = 234513;
 /// Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param includeSharedAccounts Include shared ad accounts (optional, default to @(YES))
 ///
@@ -1051,7 +1051,7 @@ NSInteger kOAIAdAccountsApiMissingParamErrorCode = 234513;
 
 ///
 /// Delete ads data for ad account in API Sandbox
-/// Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+/// Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @returns NSString*
@@ -1122,7 +1122,7 @@ NSInteger kOAIAdAccountsApiMissingParamErrorCode = 234513;
 /// Gets all Templates associated with an ad account ID.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///

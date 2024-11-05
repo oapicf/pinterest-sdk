@@ -5,7 +5,7 @@ package org.openapitools.client.model
 case class ProductGroupPromotionCreateRequest (
     /* ID of the Ad Group the Product Group Promotion belongs to. */
     _adGroupId: String,
-    _productGroupPromotion: List[ProductGroupPromotion]
+    _productGroupPromotion: List[ProductGroupPromotionCreateRequestElement]
 )
 object ProductGroupPromotionCreateRequest {
     def toStringBody(var_adGroupId: Object, var_productGroupPromotion: Object) =

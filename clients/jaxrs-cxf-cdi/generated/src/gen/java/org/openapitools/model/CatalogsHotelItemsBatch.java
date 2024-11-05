@@ -35,7 +35,7 @@ public class CatalogsHotelItemsBatch   {
 
   private CatalogsType catalogType;
 
-  private List<@Valid HotelProcessingRecord> items;
+  private List<@Valid HotelProcessingRecord> items = new ArrayList<>();
 
   /**
    * Id of the catalogs items batch
@@ -57,7 +57,7 @@ public class CatalogsHotelItemsBatch   {
 
 
   /**
-   * Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
   public CatalogsHotelItemsBatch createdTime(java.util.Date createdTime) {
     this.createdTime = createdTime;
@@ -65,7 +65,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("created_time")
   public java.util.Date getCreatedTime() {
     return createdTime;
@@ -76,7 +76,7 @@ public class CatalogsHotelItemsBatch   {
 
 
   /**
-   * Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
   public CatalogsHotelItemsBatch completedTime(java.util.Date completedTime) {
     this.completedTime = completedTime;
@@ -84,7 +84,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("completed_time")
   public java.util.Date getCompletedTime() {
     return completedTime;

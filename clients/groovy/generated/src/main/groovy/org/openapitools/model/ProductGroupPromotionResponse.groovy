@@ -10,5 +10,5 @@ import org.openapitools.model.ProductGroupPromotionResponseItem;
 @Canonical
 class ProductGroupPromotionResponse {
     
-    List<ProductGroupPromotionResponseItem> items
+    List<ProductGroupPromotionResponseItem> items = new ArrayList<>()
 }

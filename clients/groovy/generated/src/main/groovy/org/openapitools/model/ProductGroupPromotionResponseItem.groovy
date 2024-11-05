@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionResponseElement;
 
 @Canonical
 class ProductGroupPromotionResponseItem {
     
-    ProductGroupPromotion data
+    ProductGroupPromotionResponseElement data
     
     List<Exception> exceptions
 }

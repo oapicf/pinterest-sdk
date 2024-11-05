@@ -47,7 +47,7 @@ API.Client.CampaignCreateResponseData.prototype.dailySpendCap;
 API.Client.CampaignCreateResponseData.prototype.orderLineId;
 
 /**
- * @type {!API.Client.AdCommon_tracking_urls}
+ * @type {!API.Client.TrackingUrls}
  * @export
  */
 API.Client.CampaignCreateResponseData.prototype.trackingUrls;
@@ -67,13 +67,7 @@ API.Client.CampaignCreateResponseData.prototype.startTime;
 API.Client.CampaignCreateResponseData.prototype.endTime;
 
 /**
- * @type {!API.Client.CampaignSummaryStatus}
- * @export
- */
-API.Client.CampaignCreateResponseData.prototype.summaryStatus;
-
-/**
- * Determines if a campaign has flexible daily budgets setup.
+ * Determine if a campaign has flexible daily budgets setup.
  * @type {!boolean}
  * @export
  */
@@ -133,4 +127,10 @@ API.Client.CampaignCreateResponseData.prototype.type;
  * @export
  */
 API.Client.CampaignCreateResponseData.prototype.isCampaignBudgetOptimization;
+
+/**
+ * @type {!API.Client.CampaignSummaryStatus}
+ * @export
+ */
+API.Client.CampaignCreateResponseData.prototype.summaryStatus;
 

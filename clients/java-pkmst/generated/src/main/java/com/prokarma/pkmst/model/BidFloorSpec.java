@@ -24,7 +24,7 @@ import java.util.List;
  * BidFloorSpec
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BidFloorSpec   {
   @JsonProperty("countries")
   
@@ -58,10 +58,10 @@ public class BidFloorSpec   {
     return this;
   }
 
-   /**
+  /**
    * Get countries
    * @return countries
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<Country> getCountries() {
     return countries;
@@ -76,10 +76,10 @@ public class BidFloorSpec   {
     return this;
   }
 
-   /**
+  /**
    * Get currency
    * @return currency
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Currency getCurrency() {
     return currency;
@@ -94,10 +94,10 @@ public class BidFloorSpec   {
     return this;
   }
 
-   /**
+  /**
    * Get objectiveType
    * @return objectiveType
-  **/
+   */
   @ApiModelProperty(value = "")
   public ObjectiveType getObjectiveType() {
     return objectiveType;
@@ -112,10 +112,10 @@ public class BidFloorSpec   {
     return this;
   }
 
-   /**
+  /**
    * Get billableEvent
    * @return billableEvent
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public ActionType getBillableEvent() {
     return billableEvent;
@@ -130,10 +130,10 @@ public class BidFloorSpec   {
     return this;
   }
 
-   /**
+  /**
    * Get optimizationGoalMetadata
    * @return optimizationGoalMetadata
-  **/
+   */
   @ApiModelProperty(value = "")
   public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
@@ -148,10 +148,10 @@ public class BidFloorSpec   {
     return this;
   }
 
-   /**
+  /**
    * Get creativeType
    * @return creativeType
-  **/
+   */
   @ApiModelProperty(value = "")
   public CreativeType getCreativeType() {
     return creativeType;

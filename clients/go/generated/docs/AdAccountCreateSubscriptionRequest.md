@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **LeadFormId** | Pointer to **string** | Lead form ID. | [optional] 
 **PartnerAccessToken** | Pointer to **string** | Partner access token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
 **PartnerRefreshToken** | Pointer to **string** | Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
+**PartnerMetadata** | Pointer to [**AdAccountCreateSubscriptionRequestPartnerMetadata**](AdAccountCreateSubscriptionRequestPartnerMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -122,6 +123,31 @@ SetPartnerRefreshToken sets PartnerRefreshToken field to given value.
 `func (o *AdAccountCreateSubscriptionRequest) HasPartnerRefreshToken() bool`
 
 HasPartnerRefreshToken returns a boolean if a field has been set.
+
+### GetPartnerMetadata
+
+`func (o *AdAccountCreateSubscriptionRequest) GetPartnerMetadata() AdAccountCreateSubscriptionRequestPartnerMetadata`
+
+GetPartnerMetadata returns the PartnerMetadata field if non-nil, zero value otherwise.
+
+### GetPartnerMetadataOk
+
+`func (o *AdAccountCreateSubscriptionRequest) GetPartnerMetadataOk() (*AdAccountCreateSubscriptionRequestPartnerMetadata, bool)`
+
+GetPartnerMetadataOk returns a tuple with the PartnerMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerMetadata
+
+`func (o *AdAccountCreateSubscriptionRequest) SetPartnerMetadata(v AdAccountCreateSubscriptionRequestPartnerMetadata)`
+
+SetPartnerMetadata sets PartnerMetadata field to given value.
+
+### HasPartnerMetadata
+
+`func (o *AdAccountCreateSubscriptionRequest) HasPartnerMetadata() bool`
+
+HasPartnerMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

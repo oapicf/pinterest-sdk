@@ -10,12 +10,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequest;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsHotelFeedsCreateRequest;
 import org.openapitools.model.CatalogsRetailFeedsCreateRequest;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
@@ -39,13 +41,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsCreateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeedsCreateRequest.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsCreateRequest.class, name = "CatalogsCreativeAssetsFeedsCreateRequest"),
   @JsonSubTypes.Type(value = CatalogsHotelFeedsCreateRequest.class, name = "CatalogsHotelFeedsCreateRequest"),
   @JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest.class, name = "CatalogsRetailFeedsCreateRequest")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface CatalogsVerticalFeedsCreateRequest extends FeedsCreateRequest {
     public String getCatalogType();
 }

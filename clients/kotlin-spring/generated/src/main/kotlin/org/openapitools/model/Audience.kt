@@ -65,7 +65,7 @@ data class Audience(
 
     @Schema(example = "1451431341", description = "Last update time. Unix timestamp in seconds.")
     @get:JsonProperty("updated_timestamp") val updatedTimestamp: kotlin.Int? = null
-) {
+    ) {
 
 }
 

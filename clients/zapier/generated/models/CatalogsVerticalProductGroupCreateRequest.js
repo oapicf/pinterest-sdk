@@ -1,6 +1,10 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsProductGroupCreateRequest = require('../models/CatalogsCreativeAssetsProductGroupCreateRequest');
+const CatalogsCreativeAssetsProductGroupFilters = require('../models/CatalogsCreativeAssetsProductGroupFilters');
 const CatalogsHotelProductGroupCreateRequest = require('../models/CatalogsHotelProductGroupCreateRequest');
-const CatalogsHotelProductGroupFilters = require('../models/CatalogsHotelProductGroupFilters');
+const CatalogsLocale = require('../models/CatalogsLocale');
+const CatalogsRetailProductGroupCreateRequest = require('../models/CatalogsRetailProductGroupCreateRequest');
+const Country = require('../models/Country');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -12,7 +16,7 @@ module.exports = {
                 required: true,
                 type: 'string',
                 choices: [
-                    'HOTEL',
+                    'CREATIVE_ASSETS',
                 ],
             },
             {
@@ -26,12 +30,20 @@ module.exports = {
                 label: `[${labelPrefix}description]`,
                 type: 'string',
             },
-            ...CatalogsHotelProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
+            ...CatalogsCreativeAssetsProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
             {
                 key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the hotel product group. - [${labelPrefix}catalog_id]`,
+                label: `Catalog id pertaining to the creative assets product group. - [${labelPrefix}catalog_id]`,
                 required: true,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}country`,
+                ...Country.fields(`${keyPrefix}country`, isInput),
+            },
+            {
+                key: `${keyPrefix}locale`,
+                ...CatalogsLocale.fields(`${keyPrefix}locale`, isInput),
             },
         ]
     },
@@ -41,8 +53,10 @@ module.exports = {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
-            'filters': utils.removeIfEmpty(CatalogsHotelProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
+            'filters': utils.removeIfEmpty(CatalogsCreativeAssetsProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
+            'country': bundle.inputData?.[`${keyPrefix}country`],
+            'locale': bundle.inputData?.[`${keyPrefix}locale`],
         }
     },
 }

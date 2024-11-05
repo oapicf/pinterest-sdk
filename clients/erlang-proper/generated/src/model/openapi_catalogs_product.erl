@@ -9,7 +9,8 @@
 -export_type([openapi_catalogs_product/0]).
 
 -type openapi_catalogs_product() ::
-  [ {'metadata', openapi_catalogs_product_metadata:openapi_catalogs_product_metadata() }
+  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  | {'metadata', openapi_catalogs_creative_assets_product_metadata:openapi_catalogs_creative_assets_product_metadata() }
   | {'pin', openapi_pin:openapi_pin() }
   ].
 
@@ -18,7 +19,8 @@ openapi_catalogs_product() ->
     openapi_catalogs_product([]).
 
 openapi_catalogs_product(Fields) ->
-  Default = [ {'metadata', openapi_catalogs_product_metadata:openapi_catalogs_product_metadata() }
+  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+            , {'metadata', openapi_catalogs_creative_assets_product_metadata:openapi_catalogs_creative_assets_product_metadata() }
             , {'pin', openapi_pin:openapi_pin() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

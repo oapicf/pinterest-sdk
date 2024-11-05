@@ -1,7 +1,7 @@
 package apimodels;
 
-import apimodels.ImageMetadataImages;
 import apimodels.PinMedia;
+import apimodels.PinMediaWithImageAllOfImages;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -13,13 +13,13 @@ import javax.validation.Valid;
 /**
  * Pin with video.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinMediaWithVideo extends PinMedia  {
   @JsonProperty("images")
   @Valid
 
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   @JsonProperty("cover_image_url")
   
@@ -42,7 +42,7 @@ public class PinMediaWithVideo extends PinMedia  {
   
   private Integer width;
 
-  public PinMediaWithVideo images(ImageMetadataImages images) {
+  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -51,11 +51,11 @@ public class PinMediaWithVideo extends PinMedia  {
    * Get images
    * @return images
   **/
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

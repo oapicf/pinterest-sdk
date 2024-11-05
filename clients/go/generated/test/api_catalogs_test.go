@@ -22,6 +22,18 @@ func Test_openapi_CatalogsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test CatalogsAPIService CatalogsCreate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CatalogsAPI.CatalogsCreate(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CatalogsAPIService CatalogsList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -60,6 +72,18 @@ func Test_openapi_CatalogsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CatalogsAPIService CatalogsProductGroupsCreateMany", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CatalogsAPI.CatalogsProductGroupsCreateMany(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CatalogsAPIService CatalogsProductGroupsDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -67,6 +91,17 @@ func Test_openapi_CatalogsAPIService(t *testing.T) {
 		var productGroupId string
 
 		httpRes, err := apiClient.CatalogsAPI.CatalogsProductGroupsDelete(context.Background(), productGroupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CatalogsAPIService CatalogsProductGroupsDeleteMany", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.CatalogsAPI.CatalogsProductGroupsDeleteMany(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -180,6 +215,20 @@ func Test_openapi_CatalogsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CatalogsAPIService FeedsIngest", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var feedId string
+
+		resp, httpRes, err := apiClient.CatalogsAPI.FeedsIngest(context.Background(), feedId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CatalogsAPIService FeedsList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -258,11 +307,59 @@ func Test_openapi_CatalogsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CatalogsAPIService ItemsPost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CatalogsAPI.ItemsPost(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CatalogsAPIService ProductsByProductGroupFilterList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CatalogsAPI.ProductsByProductGroupFilterList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CatalogsAPIService ReportsCreate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CatalogsAPI.ReportsCreate(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CatalogsAPIService ReportsGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CatalogsAPI.ReportsGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CatalogsAPIService ReportsStats", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CatalogsAPI.ReportsStats(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * Where a user is taken after clicking on an ad in grid.
+ * Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
  */
 
 /**
- * Where a user is taken after clicking on an ad in grid.
+ * Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
  */
 public enum GridClickType {
     

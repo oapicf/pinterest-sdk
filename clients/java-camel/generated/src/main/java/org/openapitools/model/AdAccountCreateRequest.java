@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * AdAccountCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateRequest {
 
   private Country country;
@@ -37,7 +37,7 @@ public class AdAccountCreateRequest {
   /**
    * Get country
    * @return country
-  */
+   */
   @Valid 
   @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
@@ -57,7 +57,7 @@ public class AdAccountCreateRequest {
   /**
    * Ad Account name.
    * @return name
-  */
+   */
   @Size(max = 256) 
   @Schema(name = "name", example = "ACME Tools", description = "Ad Account name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -77,7 +77,7 @@ public class AdAccountCreateRequest {
   /**
    * Advertiser's owning user ID.
    * @return ownerUserId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "owner_user_id", example = "383791336903426391", description = "Advertiser's owning user ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("owner_user_id")

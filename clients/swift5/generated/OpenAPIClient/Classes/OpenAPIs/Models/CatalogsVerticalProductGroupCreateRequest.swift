@@ -10,22 +10,32 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Request object for creating a hotel product group. */
+/** Request object for creating a catalog based product group. */
 public enum CatalogsVerticalProductGroupCreateRequest: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsProductGroupCreateRequest(CatalogsCreativeAssetsProductGroupCreateRequest)
     case typeCatalogsHotelProductGroupCreateRequest(CatalogsHotelProductGroupCreateRequest)
+    case typeCatalogsRetailProductGroupCreateRequest(CatalogsRetailProductGroupCreateRequest)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsCreativeAssetsProductGroupCreateRequest(let value):
+            try container.encode(value)
         case .typeCatalogsHotelProductGroupCreateRequest(let value):
+            try container.encode(value)
+        case .typeCatalogsRetailProductGroupCreateRequest(let value):
             try container.encode(value)
         }
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsHotelProductGroupCreateRequest.self) {
+        if let value = try? container.decode(CatalogsCreativeAssetsProductGroupCreateRequest.self) {
+            self = .typeCatalogsCreativeAssetsProductGroupCreateRequest(value)
+        } else if let value = try? container.decode(CatalogsHotelProductGroupCreateRequest.self) {
             self = .typeCatalogsHotelProductGroupCreateRequest(value)
+        } else if let value = try? container.decode(CatalogsRetailProductGroupCreateRequest.self) {
+            self = .typeCatalogsRetailProductGroupCreateRequest(value)
         } else {
             throw DecodingError.typeMismatch(Self.Type.self, .init(codingPath: decoder.codingPath, debugDescription: "Unable to decode instance of CatalogsVerticalProductGroupCreateRequest"))
         }

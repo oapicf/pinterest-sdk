@@ -32,5 +32,8 @@ data class CatalogsProductGroupFiltersRequestAnyOf1 (
     @Json(name = "all_of")
     val allOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
 
-)
+) {
+
+
+}
 

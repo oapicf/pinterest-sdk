@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &ProductGroupAnalyticsResponseInner{}
 // ProductGroupAnalyticsResponseInner struct for ProductGroupAnalyticsResponseInner
 type ProductGroupAnalyticsResponseInner struct {
 	// The ID of the product group that this metrics belongs to.
-	PRODUCT_GROUP_ID string `json:"PRODUCT_GROUP_ID"`
+	PRODUCT_GROUP_ID string `json:"PRODUCT_GROUP_ID" validate:"regexp=^\\\\d+$"`
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE *string `json:"DATE,omitempty"`
 	AdditionalProperties map[string]interface{}

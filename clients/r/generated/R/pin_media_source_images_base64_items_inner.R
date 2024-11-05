@@ -23,8 +23,7 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
     `link` = NULL,
     `content_type` = NULL,
     `data` = NULL,
-    #' Initialize a new PinMediaSourceImagesBase64ItemsInner class.
-    #'
+
     #' @description
     #' Initialize a new PinMediaSourceImagesBase64ItemsInner class.
     #'
@@ -34,7 +33,6 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
     #' @param description description
     #' @param link Destination link for the image.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`content_type`, `data`, `title` = NULL, `description` = NULL, `link` = NULL, ...) {
       if (!missing(`content_type`)) {
         if (!(`content_type` %in% c("image/jpeg", "image/png"))) {
@@ -70,13 +68,11 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
         self$`link` <- `link`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinMediaSourceImagesBase64ItemsInner in JSON format
-    #' @export
     toJSON = function() {
       PinMediaSourceImagesBase64ItemsInnerObject <- list()
       if (!is.null(self$`title`)) {
@@ -101,14 +97,12 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
       }
       PinMediaSourceImagesBase64ItemsInnerObject
     },
-    #' Deserialize JSON string into an instance of PinMediaSourceImagesBase64ItemsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinMediaSourceImagesBase64ItemsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinMediaSourceImagesBase64ItemsInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`title`)) {
@@ -131,13 +125,11 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinMediaSourceImagesBase64ItemsInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`title`)) {
@@ -184,14 +176,12 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of PinMediaSourceImagesBase64ItemsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinMediaSourceImagesBase64ItemsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinMediaSourceImagesBase64ItemsInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`title` <- this_object$`title`
@@ -204,13 +194,11 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
       self$`data` <- this_object$`data`
       self
     },
-    #' Validate JSON input with respect to PinMediaSourceImagesBase64ItemsInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to PinMediaSourceImagesBase64ItemsInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `content_type`
@@ -230,23 +218,19 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for PinMediaSourceImagesBase64ItemsInner: the required field `data` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of PinMediaSourceImagesBase64ItemsInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `content_type` is null
       if (is.null(self$`content_type`)) {
@@ -264,13 +248,11 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `content_type` is null
@@ -289,12 +271,9 @@ PinMediaSourceImagesBase64ItemsInner <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

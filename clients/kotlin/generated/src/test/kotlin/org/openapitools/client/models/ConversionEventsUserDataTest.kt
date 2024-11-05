@@ -19,67 +19,94 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ConversionEventsUserData
+import org.openapitools.client.models.ConversionEventsUserDataAnyOf
+import org.openapitools.client.models.ConversionEventsUserDataAnyOf1
+import org.openapitools.client.models.ConversionEventsUserDataAnyOf2
 
 class ConversionEventsUserDataTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of ConversionEventsUserData
         //val modelInstance = ConversionEventsUserData()
 
-        // to test the property `ph` - Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+        // to test the property `em` - Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+        should("test em") {
+            // uncomment below to test the property
+            //modelInstance.em shouldBe ("TODO")
+        }
+
+        // to test the property `hashedMaids` - Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+        should("test hashedMaids") {
+            // uncomment below to test the property
+            //modelInstance.hashedMaids shouldBe ("TODO")
+        }
+
+        // to test the property `clientIpAddress` - The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+        should("test clientIpAddress") {
+            // uncomment below to test the property
+            //modelInstance.clientIpAddress shouldBe ("TODO")
+        }
+
+        // to test the property `clientUserAgent` - The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+        should("test clientUserAgent") {
+            // uncomment below to test the property
+            //modelInstance.clientUserAgent shouldBe ("TODO")
+        }
+
+        // to test the property `ph` - Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
         should("test ph") {
             // uncomment below to test the property
             //modelInstance.ph shouldBe ("TODO")
         }
 
-        // to test the property `ge` - Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender.
+        // to test the property `ge` - Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender. The string should be in the UTF-8 format.
         should("test ge") {
             // uncomment below to test the property
             //modelInstance.ge shouldBe ("TODO")
         }
 
-        // to test the property `db` - Sha256 hashes of user's date of birthday, given as year, month, and day.
+        // to test the property `db` - Sha256 hashes of user's date of birthday, given as year, month, and day. The string should be in the UTF-8 format.
         should("test db") {
             // uncomment below to test the property
             //modelInstance.db shouldBe ("TODO")
         }
 
-        // to test the property `ln` - Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+        // to test the property `ln` - Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
         should("test ln") {
             // uncomment below to test the property
             //modelInstance.ln shouldBe ("TODO")
         }
 
-        // to test the property `fn` - Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+        // to test the property `fn` - Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
         should("test fn") {
             // uncomment below to test the property
             //modelInstance.fn shouldBe ("TODO")
         }
 
-        // to test the property `ct` - Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing).
+        // to test the property `ct` - Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format.
         should("test ct") {
             // uncomment below to test the property
             //modelInstance.ct shouldBe ("TODO")
         }
 
-        // to test the property `st` - Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing).
+        // to test the property `st` - Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing). The string should be in the UTF-8 format.
         should("test st") {
             // uncomment below to test the property
             //modelInstance.st shouldBe ("TODO")
         }
 
-        // to test the property `zp` - Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing).
+        // to test the property `zp` - Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing). The string should be in the UTF-8 format.
         should("test zp") {
             // uncomment below to test the property
             //modelInstance.zp shouldBe ("TODO")
         }
 
-        // to test the property `country` - Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase.
+        // to test the property `country` - Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase. The string should be in the UTF-8 format.
         should("test country") {
             // uncomment below to test the property
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `externalId` - Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA.
+        // to test the property `externalId` - Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
         should("test externalId") {
             // uncomment below to test the property
             //modelInstance.externalId shouldBe ("TODO")

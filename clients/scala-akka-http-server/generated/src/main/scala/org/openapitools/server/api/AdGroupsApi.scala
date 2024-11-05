@@ -45,7 +45,7 @@ import AdGroupsApiPatterns.adAccountIdPattern
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "ad_groups" / "audience_sizing") { (adAccountId) => 
-      get {  
+      post {  
             entity(as[AdGroupAudienceSizingRequest]){ adGroupAudienceSizingRequest =>
               adGroupsService.adGroupsAudienceSizing(adAccountId = adAccountId, adGroupAudienceSizingRequest = adGroupAudienceSizingRequest)
             }

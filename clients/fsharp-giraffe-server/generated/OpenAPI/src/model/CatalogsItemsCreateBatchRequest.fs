@@ -3,9 +3,9 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.BatchOperation
+open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.Country
 open OpenAPI.Model.ItemCreateBatchRecord
-open OpenAPI.Model.Language
 
 module CatalogsItemsCreateBatchRequest =
 
@@ -14,7 +14,7 @@ module CatalogsItemsCreateBatchRequest =
 
   type CatalogsItemsCreateBatchRequest = {
     Country : Country;
-    Language : Language;
+    Language : CatalogsItemsRequestLanguage;
     Operation : BatchOperation;
     Items : ItemCreateBatchRecord[];
   }

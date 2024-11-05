@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  * SSIOCreateInsertionOrderRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOCreateInsertionOrderRequest   {
   @JsonProperty("start_date")
   private String startDate;
@@ -121,10 +121,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * Starting date of time period. Format: YYYY-MM-DD
    * @return startDate
-  **/
+   */
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Starting date of time period. Format: YYYY-MM-DD")
   public String getStartDate() {
     return startDate;
@@ -139,10 +139,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * End date of time period. Format: YYYY-MM-DD
    * @return endDate
-  **/
+   */
   @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
   public String getEndDate() {
     return endDate;
@@ -157,10 +157,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The po number
    * @return poNumber
-  **/
+   */
   @ApiModelProperty(required = true, value = "The po number")
   public String getPoNumber() {
     return poNumber;
@@ -175,10 +175,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * If Budget order line, the budget amount.
    * @return budgetAmount
-  **/
+   */
   @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
   public BigDecimal getBudgetAmount() {
     return budgetAmount;
@@ -193,10 +193,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The billing contact first name
    * @return billingContactFirstname
-  **/
+   */
   @ApiModelProperty(required = true, value = "The billing contact first name")
   public String getBillingContactFirstname() {
     return billingContactFirstname;
@@ -211,10 +211,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The billing contact last name
    * @return billingContactLastname
-  **/
+   */
   @ApiModelProperty(required = true, value = "The billing contact last name")
   public String getBillingContactLastname() {
     return billingContactLastname;
@@ -229,10 +229,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The billing contact email
    * @return billingContactEmail
-  **/
+   */
   @ApiModelProperty(example = "test@example", required = true, value = "The billing contact email")
   public String getBillingContactEmail() {
     return billingContactEmail;
@@ -247,10 +247,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The media contact first name
    * @return mediaContactFirstname
-  **/
+   */
   @ApiModelProperty(required = true, value = "The media contact first name")
   public String getMediaContactFirstname() {
     return mediaContactFirstname;
@@ -265,10 +265,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The media contact last name
    * @return mediaContactLastname
-  **/
+   */
   @ApiModelProperty(required = true, value = "The media contact last name")
   public String getMediaContactLastname() {
     return mediaContactLastname;
@@ -283,10 +283,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The media contact email
    * @return mediaContactEmail
-  **/
+   */
   @ApiModelProperty(example = "test@example", required = true, value = "The media contact email")
   public String getMediaContactEmail() {
     return mediaContactEmail;
@@ -301,10 +301,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * URL link for agency
    * @return agencyLink
-  **/
+   */
   @ApiModelProperty(value = "URL link for agency")
   public String getAgencyLink() {
     return agencyLink;
@@ -319,10 +319,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The email of user submitting the insertion order
    * @return userEmail
-  **/
+   */
   @ApiModelProperty(example = "test@example", value = "The email of user submitting the insertion order")
   public String getUserEmail() {
     return userEmail;
@@ -337,10 +337,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The UTC timestamp (to the nearest sec) of when terms were accepted
    * @return acceptedTermsTime
-  **/
+   */
   @ApiModelProperty(value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
   public Integer getAcceptedTermsTime() {
     return acceptedTermsTime;
@@ -355,10 +355,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The pmp id
    * @return pmpId
-  **/
+   */
   @ApiModelProperty(required = true, value = "The pmp id")
   public String getPmpId() {
     return pmpId;
@@ -373,10 +373,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The order name
    * @return orderName
-  **/
+   */
   @ApiModelProperty(required = true, value = "The order name")
   public String getOrderName() {
     return orderName;
@@ -391,10 +391,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * Type can be Budget or Perpetual
    * @return orderLineType
-  **/
+   */
   @ApiModelProperty(required = true, value = "Type can be Budget or Perpetual")
   public OrderLineTypeEnum getOrderLineType() {
     return orderLineType;
@@ -409,10 +409,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The SFDC id for the terms
    * @return acceptedTermsId
-  **/
+   */
   @ApiModelProperty(required = true, value = "The SFDC id for the terms")
   public String getAcceptedTermsId() {
     return acceptedTermsId;
@@ -427,10 +427,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The bill-to company id
    * @return billtoCompanyId
-  **/
+   */
   @ApiModelProperty(required = true, value = "The bill-to company id")
   public String getBilltoCompanyId() {
     return billtoCompanyId;
@@ -445,10 +445,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The bill-to business address id
    * @return billtoBusinessAddressId
-  **/
+   */
   @ApiModelProperty(required = true, value = "The bill-to business address id")
   public String getBilltoBusinessAddressId() {
     return billtoBusinessAddressId;
@@ -463,10 +463,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The bill-to billing address id
    * @return billtoBillingAddressId
-  **/
+   */
   @ApiModelProperty(required = true, value = "The bill-to billing address id")
   public String getBilltoBillingAddressId() {
     return billtoBillingAddressId;
@@ -481,10 +481,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * If Ongoing (perpetual) order line, the estimated monthly spend
    * @return estimatedMonthlySpend
-  **/
+   */
   @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
   public BigDecimal getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;
@@ -499,10 +499,10 @@ public class SSIOCreateInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get currencyInfo
    * @return currencyInfo
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Currency getCurrencyInfo() {
     return currencyInfo;

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **AGEUnderscoreBUCKET** | **array[string]** |  | [optional] [default to null]
 **APPTYPE** | **array[string]** |  | [optional] [default to null]
 **AUDIENCEUnderscoreEXCLUDE** | **array[string]** |  | [optional] [default to null]
-**AUDIENCEUnderscoreINCLUDEQuote** | **array[string]** |  | [optional] [default to null]
+**AUDIENCEUnderscoreINCLUDE** | **array[string]** |  | [optional] [default to null]
 **GENDER** | **array[string]** |  | [optional] [default to null]
 **GEO** | **array[string]** |  | [optional] [default to null]
 **INTEREST** | **array[string]** |  | [optional] [default to null]

@@ -173,7 +173,7 @@ bool integrationsGetByIdAsync(char * accessToken,
  *
  * Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -187,7 +187,7 @@ bool integrationsGetListSync(char * accessToken,
  *
  * Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.

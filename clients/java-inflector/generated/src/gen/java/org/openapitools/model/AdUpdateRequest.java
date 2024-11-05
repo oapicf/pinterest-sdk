@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdUpdateRequest   {
   @JsonProperty("ad_group_id")
   private String adGroupId;
@@ -62,7 +62,7 @@ public class AdUpdateRequest   {
   private EntityStatus status;
 
   @JsonProperty("tracking_urls")
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("view_tracking_url")
   private String viewTrackingUrl;
@@ -74,7 +74,7 @@ public class AdUpdateRequest   {
   private GridClickType gridClickType;
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    */
   public enum CustomizableCtaTypeEnum {
     GET_OFFER("GET_OFFER"),
@@ -95,7 +95,7 @@ public class AdUpdateRequest   {
     
     GET_QUOTE("GET_QUOTE"),
     
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     
     APPLY_NOW("APPLY_NOW"),
     
@@ -111,9 +111,7 @@ public class AdUpdateRequest   {
     
     WATCH_NOW("WATCH_NOW"),
     
-    READ_MORE("READ_MORE"),
-    
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private String value;
 
@@ -142,7 +140,7 @@ public class AdUpdateRequest   {
   private CustomizableCtaTypeEnum customizableCtaType;
 
   @JsonProperty("quiz_pin_data")
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
 
   @JsonProperty("id")
   private String id;
@@ -169,7 +167,7 @@ public class AdUpdateRequest   {
   }
 
   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    **/
   public AdUpdateRequest androidDeepLink(String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
@@ -177,7 +175,7 @@ public class AdUpdateRequest   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
   @JsonProperty("android_deep_link")
   public String getAndroidDeepLink() {
     return androidDeepLink;
@@ -294,7 +292,7 @@ public class AdUpdateRequest   {
   }
 
   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    **/
   public AdUpdateRequest iosDeepLink(String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
@@ -302,7 +300,7 @@ public class AdUpdateRequest   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
   @JsonProperty("ios_deep_link")
   public String getIosDeepLink() {
     return iosDeepLink;
@@ -384,7 +382,7 @@ public class AdUpdateRequest   {
 
   /**
    **/
-  public AdUpdateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -392,10 +390,10 @@ public class AdUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -453,7 +451,7 @@ public class AdUpdateRequest   {
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    **/
   public AdUpdateRequest customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
@@ -461,7 +459,7 @@ public class AdUpdateRequest   {
   }
 
   
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
   @JsonProperty("customizable_cta_type")
   public CustomizableCtaTypeEnum getCustomizableCtaType() {
     return customizableCtaType;
@@ -471,19 +469,20 @@ public class AdUpdateRequest   {
   }
 
   /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    **/
-  public AdUpdateRequest quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdUpdateRequest quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 

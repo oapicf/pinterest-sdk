@@ -23,23 +23,23 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceDemographics", description = "Audience demographics")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDemographics {
 
   @Valid
-  private List<@Valid AudienceDemographicValue> ages;
+  private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
 
   @Valid
-  private List<@Valid AudienceDemographicValue> genders;
+  private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
 
   @Valid
-  private List<@Valid AudienceDemographicValue> devices;
+  private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
 
   @Valid
-  private List<@Valid AudienceDemographicValue> metros;
+  private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
 
   @Valid
-  private List<@Valid AudienceDemographicValue> countries;
+  private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
   public AudienceDemographics ages(List<@Valid AudienceDemographicValue> ages) {
     this.ages = ages;
@@ -57,7 +57,7 @@ public class AudienceDemographics {
   /**
    * Ages distribution.
    * @return ages
-  */
+   */
   @Valid 
   @Schema(name = "ages", description = "Ages distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ages")
@@ -85,7 +85,7 @@ public class AudienceDemographics {
   /**
    * Gender distribution.
    * @return genders
-  */
+   */
   @Valid 
   @Schema(name = "genders", description = "Gender distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("genders")
@@ -113,7 +113,7 @@ public class AudienceDemographics {
   /**
    * Device usage distribution.
    * @return devices
-  */
+   */
   @Valid 
   @Schema(name = "devices", description = "Device usage distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("devices")
@@ -141,7 +141,7 @@ public class AudienceDemographics {
   /**
    * Geographic metro area distribution.
    * @return metros
-  */
+   */
   @Valid 
   @Schema(name = "metros", description = "Geographic metro area distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metros")
@@ -169,7 +169,7 @@ public class AudienceDemographics {
   /**
    * Country area distribution.
    * @return countries
-  */
+   */
   @Valid 
   @Schema(name = "countries", description = "Country area distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("countries")

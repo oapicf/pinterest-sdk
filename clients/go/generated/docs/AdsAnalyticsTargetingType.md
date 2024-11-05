@@ -27,6 +27,8 @@
 
 * `REGION` (value: `"REGION"`)
 
+* `AGE_BUCKET_AND_GENDER` (value: `"AGE_BUCKET_AND_GENDER"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

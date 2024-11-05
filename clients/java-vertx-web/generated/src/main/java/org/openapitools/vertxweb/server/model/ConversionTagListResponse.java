@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.ConversionTagResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConversionTagListResponse   {
   
-  private List<ConversionTagResponse> items;
+  private List<ConversionTagResponse> items = new ArrayList<>();
 
   public ConversionTagListResponse () {
 

@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * AdsCreditDiscountsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdsCreditDiscountsResponse   {
   @JsonProperty("active")
@@ -65,9 +65,7 @@ public class AdsCreditDiscountsResponse   {
     
     INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
     
-    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND"),
-    
-    NULL("null");
+    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
 
     private final String value;
 

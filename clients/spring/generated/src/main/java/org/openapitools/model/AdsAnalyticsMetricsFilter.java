@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * AdsAnalyticsMetricsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsMetricsFilter {
 
   private AdsAnalyticsFilterColumn field;
@@ -56,7 +56,7 @@ public class AdsAnalyticsMetricsFilter {
   /**
    * Get field
    * @return field
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "field", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("field")
@@ -76,7 +76,7 @@ public class AdsAnalyticsMetricsFilter {
   /**
    * Get operator
    * @return operator
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "operator", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operator")
@@ -104,7 +104,7 @@ public class AdsAnalyticsMetricsFilter {
   /**
    * List of values for filtering
    * @return values
-  */
+   */
   @NotNull @Valid @Size(min = 1) 
   @Schema(name = "values", description = "List of values for filtering", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")

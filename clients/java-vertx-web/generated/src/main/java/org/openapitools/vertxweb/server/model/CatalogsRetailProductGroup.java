@@ -40,31 +40,16 @@ public class CatalogsRetailProductGroup   {
   private CatalogsProductGroupStatus status;
   private Integer createdAt;
   private Integer updatedAt;
-
-
-  public enum FeedIdEnum {
-    NULL("null");
-
-    private String value;
-
-    FeedIdEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private FeedIdEnum feedId;
+  private String catalogId;
+  private String feedId;
+  private String country;
+  private String locale;
 
   public CatalogsRetailProductGroup () {
 
   }
 
-  public CatalogsRetailProductGroup (CatalogTypeEnum catalogType, String id, String name, String description, CatalogsProductGroupFilters filters, Boolean isFeatured, CatalogsProductGroupType type, CatalogsProductGroupStatus status, Integer createdAt, Integer updatedAt, FeedIdEnum feedId) {
+  public CatalogsRetailProductGroup (CatalogTypeEnum catalogType, String id, String name, String description, CatalogsProductGroupFilters filters, Boolean isFeatured, CatalogsProductGroupType type, CatalogsProductGroupStatus status, Integer createdAt, Integer updatedAt, String catalogId, String feedId, String country, String locale) {
     this.catalogType = catalogType;
     this.id = id;
     this.name = name;
@@ -75,7 +60,10 @@ public class CatalogsRetailProductGroup   {
     this.status = status;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
+    this.catalogId = catalogId;
     this.feedId = feedId;
+    this.country = country;
+    this.locale = locale;
   }
 
     
@@ -169,12 +157,39 @@ public class CatalogsRetailProductGroup   {
   }
 
     
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+    
   @JsonProperty("feed_id")
-  public FeedIdEnum getFeedId() {
+  public String getFeedId() {
     return feedId;
   }
-  public void setFeedId(FeedIdEnum feedId) {
+  public void setFeedId(String feedId) {
     this.feedId = feedId;
+  }
+
+    
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
+  }
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+    
+  @JsonProperty("locale")
+  public String getLocale() {
+    return locale;
+  }
+  public void setLocale(String locale) {
+    this.locale = locale;
   }
 
 
@@ -197,12 +212,15 @@ public class CatalogsRetailProductGroup   {
         Objects.equals(status, catalogsRetailProductGroup.status) &&
         Objects.equals(createdAt, catalogsRetailProductGroup.createdAt) &&
         Objects.equals(updatedAt, catalogsRetailProductGroup.updatedAt) &&
-        Objects.equals(feedId, catalogsRetailProductGroup.feedId);
+        Objects.equals(catalogId, catalogsRetailProductGroup.catalogId) &&
+        Objects.equals(feedId, catalogsRetailProductGroup.feedId) &&
+        Objects.equals(country, catalogsRetailProductGroup.country) &&
+        Objects.equals(locale, catalogsRetailProductGroup.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, feedId);
+    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
   }
 
   @Override
@@ -220,7 +238,10 @@ public class CatalogsRetailProductGroup   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

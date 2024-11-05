@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CatalogsCreativeAssetsFeedsUpdateRequest.h"
 #include "CatalogsFeedCredentials.h"
 #include "CatalogsFeedProcessingSchedule.h"
 #include "CatalogsFormat.h"

@@ -22,7 +22,7 @@ public class TopPinsAnalyticsResponse   {
   
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
-  private List<@Valid TopPinsAnalyticsResponsePinsInner> pins;
+  private List<@Valid TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
 
 public enum SortByEnum {

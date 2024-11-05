@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsRetailProductGroup")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailProductGroup   {
   public enum CatalogTypeEnum {
 
@@ -68,64 +68,20 @@ public class CatalogsRetailProductGroup   {
     }
 }
 
-  private @Valid CatalogTypeEnum catalogType;
-  private @Valid String id;
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid CatalogsProductGroupFilters filters;
-  private @Valid Boolean isFeatured;
-  private @Valid CatalogsProductGroupType type;
-  private @Valid CatalogsProductGroupStatus status;
-  private @Valid Integer createdAt;
-  private @Valid Integer updatedAt;
-  public enum FeedIdEnum {
-
-    NULL(String.valueOf("null"));
-
-
-    private String value;
-
-    FeedIdEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static FeedIdEnum fromString(String s) {
-        for (FeedIdEnum b : FeedIdEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        return null;
-    }
-
-    @JsonCreator
-    public static FeedIdEnum fromValue(String value) {
-        for (FeedIdEnum b : FeedIdEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  private @Valid FeedIdEnum feedId;
+  private CatalogTypeEnum catalogType;
+  private String id;
+  private String name;
+  private String description;
+  private CatalogsProductGroupFilters filters;
+  private Boolean isFeatured;
+  private CatalogsProductGroupType type;
+  private CatalogsProductGroupStatus status;
+  private Integer createdAt;
+  private Integer updatedAt;
+  private String catalogId;
+  private String feedId;
+  private String country;
+  private String locale;
 
   /**
    **/
@@ -137,8 +93,7 @@ public class CatalogsRetailProductGroup   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogTypeEnum getCatalogType() {
+  @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
@@ -158,8 +113,7 @@ public class CatalogsRetailProductGroup   {
   
   @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
   @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -217,8 +171,7 @@ public class CatalogsRetailProductGroup   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("filters")
-  @NotNull
-  public CatalogsProductGroupFilters getFilters() {
+  @NotNull @Valid public CatalogsProductGroupFilters getFilters() {
     return filters;
   }
 
@@ -326,23 +279,81 @@ public class CatalogsRetailProductGroup   {
   }
 
   /**
+   * Catalog id pertaining to the retail product group.
    **/
-  public CatalogsRetailProductGroup feedId(FeedIdEnum feedId) {
+  public CatalogsRetailProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the retail product group.")
+  @JsonProperty("catalog_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
+    return catalogId;
+  }
+
+  @JsonProperty("catalog_id")
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * id of the catalogs feed belonging to this catalog product group
+   **/
+  public CatalogsRetailProductGroup feedId(String feedId) {
     this.feedId = feedId;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
   @JsonProperty("feed_id")
-  @NotNull
-  public FeedIdEnum getFeedId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 
   @JsonProperty("feed_id")
-  public void setFeedId(FeedIdEnum feedId) {
+  public void setFeedId(String feedId) {
     this.feedId = feedId;
+  }
+
+  /**
+   **/
+  public CatalogsRetailProductGroup country(String country) {
+    this.country = country;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
+  }
+
+  @JsonProperty("country")
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  /**
+   **/
+  public CatalogsRetailProductGroup locale(String locale) {
+    this.locale = locale;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("locale")
+  public String getLocale() {
+    return locale;
+  }
+
+  @JsonProperty("locale")
+  public void setLocale(String locale) {
+    this.locale = locale;
   }
 
 
@@ -365,12 +376,15 @@ public class CatalogsRetailProductGroup   {
         Objects.equals(this.status, catalogsRetailProductGroup.status) &&
         Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
         Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt) &&
-        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId);
+        Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
+        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+        Objects.equals(this.country, catalogsRetailProductGroup.country) &&
+        Objects.equals(this.locale, catalogsRetailProductGroup.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, feedId);
+    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
   }
 
   @Override
@@ -388,7 +402,10 @@ public class CatalogsRetailProductGroup   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

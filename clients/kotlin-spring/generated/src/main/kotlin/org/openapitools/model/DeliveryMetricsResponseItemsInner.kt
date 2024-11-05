@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -34,16 +35,24 @@ data class DeliveryMetricsResponseItemsInner(
 
     @Schema(example = "Ad group ID", description = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.")
     @get:JsonProperty("display_name") val displayName: kotlin.String? = null
-) {
+    ) {
 
     /**
     * Category name
     * Values: ADS,ORGANIC
     */
-    enum class Category(val value: kotlin.String) {
+    enum class Category(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("ADS") ADS("ADS"),
-        @JsonProperty("ORGANIC") ORGANIC("ORGANIC")
+        ADS("ADS"),
+        ORGANIC("ORGANIC");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Category {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ## TargetingOptionsGet
 
-> []map[string]interface{} TargetingOptionsGet(ctx, targetingType).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).Execute()
+> []map[string]interface{} TargetingOptionsGet(ctx, targetingType).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).AdAccountId(adAccountId).Execute()
 
 Get targeting options
 
@@ -360,10 +360,11 @@ func main() {
 	clientId := "1094834" // string | Client ID. (optional)
 	oauthSignature := "8209f" // string | Oauth signature (optional)
 	timestamp := "1618338184277" // string | Timestamp (optional)
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ResourcesAPI.TargetingOptionsGet(context.Background(), targetingType).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).Execute()
+	resp, r, err := apiClient.ResourcesAPI.TargetingOptionsGet(context.Background(), targetingType).ClientId(clientId).OauthSignature(oauthSignature).Timestamp(timestamp).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcesAPI.TargetingOptionsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -392,6 +393,7 @@ Name | Type | Description  | Notes
  **clientId** | **string** | Client ID. | 
  **oauthSignature** | **string** | Oauth signature | 
  **timestamp** | **string** | Timestamp | 
+ **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
 

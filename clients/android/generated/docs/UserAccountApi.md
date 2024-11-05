@@ -37,7 +37,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 UserAccountApi apiInstance = new UserAccountApi();
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
@@ -55,7 +55,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -137,7 +137,7 @@ Get a list of your followers.
 
 UserAccountApi apiInstance = new UserAccountApi();
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     FollowersList200Response result = apiInstance.followersList(bookmark, pageSize);
     System.out.println(result);
@@ -153,7 +153,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -203,7 +203,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
  **startDate** | **Date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **Date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
+ **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS]
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
  **endDate** | **Date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
  **sortBy** | **String**| Specify sorting order for metrics | [default to null] [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE]
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
+ **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS]
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
  **endDate** | **Date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
  **sortBy** | **String**| Specify sorting order for video metrics | [default to null] [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START]
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
+ **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS]
@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -473,7 +473,7 @@ Get a list of a user&#39;s following interests in one place.
 UserAccountApi apiInstance = new UserAccountApi();
 String username = username; // String | A valid username
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     UserAccountFollowedInterests200Response result = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize);
     System.out.println(result);
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String**| A valid username | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
 
 ### Example
 
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -568,7 +568,7 @@ Get a list of who a certain user follows.
 
 UserAccountApi apiInstance = new UserAccountApi();
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 UserFollowingFeedType feedType = null; // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
 Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 String adAccountId = null; // String | Unique identifier of an ad account.
@@ -587,7 +587,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to null] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY]
  **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -622,7 +622,7 @@ Get user websites, claimed or not
 
 UserAccountApi apiInstance = new UserAccountApi();
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     UserWebsitesGet200Response result = apiInstance.userWebsitesGet(bookmark, pageSize);
     System.out.println(result);
@@ -638,7 +638,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
 
 ## verifyWebsiteUpdate
 
-> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest)
+> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
 
 Verify website
 
@@ -670,8 +670,9 @@ Verify a website as a signed-in user.
 
 UserAccountApi apiInstance = new UserAccountApi();
 UserWebsiteVerifyRequest userWebsiteVerifyRequest = new UserWebsiteVerifyRequest(); // UserWebsiteVerifyRequest | Verify a website.
+String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    UserWebsiteSummary result = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest);
+    UserWebsiteSummary result = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserAccountApi#verifyWebsiteUpdate");
@@ -685,6 +686,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. |
+ **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
@@ -702,7 +704,7 @@ Name | Type | Description  | Notes
 
 ## websiteVerificationGet
 
-> UserWebsiteVerificationCode websiteVerificationGet()
+> UserWebsiteVerificationCode websiteVerificationGet(adAccountId)
 
 Get user verification code for website claiming
 
@@ -715,8 +717,9 @@ Get verification code for user to install on the website to claim it.
 //import org.openapitools.client.api.UserAccountApi;
 
 UserAccountApi apiInstance = new UserAccountApi();
+String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    UserWebsiteVerificationCode result = apiInstance.websiteVerificationGet();
+    UserWebsiteVerificationCode result = apiInstance.websiteVerificationGet(adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserAccountApi#websiteVerificationGet");
@@ -726,7 +729,10 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
@@ -734,7 +740,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

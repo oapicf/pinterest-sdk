@@ -21,8 +21,16 @@
     }
 
     Class class = nil;
+    if ([discriminatedClassName isEqualToString:@"CREATIVE_ASSETS"]) {
+        class = NSClassFromString(@"OAICatalogsCreativeAssetsProductGroupCreateRequest");
+    }
+    else
     if ([discriminatedClassName isEqualToString:@"HOTEL"]) {
         class = NSClassFromString(@"OAICatalogsHotelProductGroupCreateRequest");
+    }
+    else
+    if ([discriminatedClassName isEqualToString:@"RETAIL"]) {
+        class = NSClassFromString(@"OAICatalogsRetailProductGroupCreateRequest");
     }
     else
     {
@@ -42,7 +50,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"name": @"name", @"_description": @"description", @"filters": @"filters", @"catalogId": @"catalog_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"name": @"name", @"_description": @"description", @"filters": @"filters", @"catalogId": @"catalog_id", @"country": @"country", @"locale": @"locale" }];
 }
 
 /**

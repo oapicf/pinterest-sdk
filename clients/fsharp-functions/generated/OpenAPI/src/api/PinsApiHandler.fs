@@ -14,6 +14,42 @@ module PinsApiHandlers =
     /// 
     /// </summary>
 
+    //#region MultiPinsAnalytics
+    /// <summary>
+    /// Get multiple Pin analytics
+    /// </summary>
+   [<FunctionName("MultiPinsAnalytics")>]
+    let MultiPinsAnalytics
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "GET", Route = "/v5/pins/analytics")>]
+        req:HttpRequest ) =
+
+      let result = PinsApiService.MultiPinsAnalytics ()
+      match result with
+      | MultiPinsAnalyticsStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | MultiPinsAnalyticsStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | MultiPinsAnalyticsStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | MultiPinsAnalyticsStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | MultiPinsAnalyticsStatusCode429 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(429))
+      | MultiPinsAnalyticsDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region PinsAnalytics
     /// <summary>
     /// Get Pin analytics

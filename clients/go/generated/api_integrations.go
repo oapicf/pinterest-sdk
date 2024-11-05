@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -677,7 +677,7 @@ func (r ApiIntegrationsGetListRequest) Bookmark(bookmark string) ApiIntegrations
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiIntegrationsGetListRequest) PageSize(pageSize int32) ApiIntegrationsGetListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -725,10 +725,10 @@ func (a *IntegrationsAPIService) IntegrationsGetListExecute(r ApiIntegrationsGet
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue

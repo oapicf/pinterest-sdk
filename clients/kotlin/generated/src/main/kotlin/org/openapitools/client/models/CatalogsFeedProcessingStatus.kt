@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * Values: COMPLETED,COMPLETED_EARLY,DISAPPROVED,FAILED,PROCESSING,QUEUED_FOR_PROCESSING,UNDER_APPEAL,UNDER_REVIEW
+ * Values: COMPLETED,FAILED,PROCESSING
  */
 
 @JsonClass(generateAdapter = false)
@@ -31,26 +31,11 @@ enum class CatalogsFeedProcessingStatus(val value: kotlin.String) {
     @Json(name = "COMPLETED")
     COMPLETED("COMPLETED"),
 
-    @Json(name = "COMPLETED_EARLY")
-    COMPLETED_EARLY("COMPLETED_EARLY"),
-
-    @Json(name = "DISAPPROVED")
-    DISAPPROVED("DISAPPROVED"),
-
     @Json(name = "FAILED")
     FAILED("FAILED"),
 
     @Json(name = "PROCESSING")
-    PROCESSING("PROCESSING"),
-
-    @Json(name = "QUEUED_FOR_PROCESSING")
-    QUEUED_FOR_PROCESSING("QUEUED_FOR_PROCESSING"),
-
-    @Json(name = "UNDER_APPEAL")
-    UNDER_APPEAL("UNDER_APPEAL"),
-
-    @Json(name = "UNDER_REVIEW")
-    UNDER_REVIEW("UNDER_REVIEW");
+    PROCESSING("PROCESSING");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

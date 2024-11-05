@@ -9,8 +9,8 @@ To see how to make this your own, look here:
 
 [README]((https://openapi-generator.tech))
 
-- API version: 5.12.0
-- Generator version: 7.4.0
+- API version: 5.14.0
+- Generator version: 7.9.0
 For more information, please visit [https://github.com/oapicf/pinterest-sdk](https://github.com/oapicf/pinterest-sdk)
 
 ## QHTTPEngine

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &KeywordsCommon{}
 
 // KeywordsCommon struct for KeywordsCommon
 type KeywordsCommon struct {
-	// Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 	Bid NullableInt32 `json:"bid,omitempty"`
 	MatchType NullableMatchTypeResponse `json:"match_type"`
 	// Keyword value (120 chars max).

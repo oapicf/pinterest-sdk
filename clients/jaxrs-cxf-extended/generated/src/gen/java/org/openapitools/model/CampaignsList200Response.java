@@ -18,7 +18,7 @@ public class CampaignsList200Response  {
   
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private List<CampaignResponse> items = new ArrayList<>();
+  private List<@Valid CampaignResponse> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   private String bookmark;
@@ -28,21 +28,21 @@ public class CampaignsList200Response  {
   */
   @JsonProperty("items")
   @NotNull
-  public List<CampaignResponse> getItems() {
+  public List<@Valid CampaignResponse> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<CampaignResponse> items) {
+ public void setItems(List<@Valid CampaignResponse> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(List<@Valid CampaignResponse> items) {
     this.items = items;
     return this;
   }

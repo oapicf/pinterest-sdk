@@ -154,7 +154,7 @@ class KeywordsApi {
 
     }
 
-    def trendingKeywordsList ( TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, Boolean normalizeAgainstGroup, Integer limit, Closure onSuccess, Closure onFailure)  {
+    def trendingKeywordsList ( TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/trends/keywords/${region}/top/${trend_type}"
 
         // params
@@ -180,6 +180,9 @@ class KeywordsApi {
         }
         if (ages != null) {
             queryParams.put("ages", ages)
+        }
+        if (includeKeywords != null) {
+            queryParams.put("include_keywords", includeKeywords)
         }
         if (normalizeAgainstGroup != null) {
             queryParams.put("normalize_against_group", normalizeAgainstGroup)

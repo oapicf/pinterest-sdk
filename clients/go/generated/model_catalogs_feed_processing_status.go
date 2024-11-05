@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,25 +22,15 @@ type CatalogsFeedProcessingStatus string
 // List of CatalogsFeedProcessingStatus
 const (
 	COMPLETED CatalogsFeedProcessingStatus = "COMPLETED"
-	COMPLETED_EARLY CatalogsFeedProcessingStatus = "COMPLETED_EARLY"
-	DISAPPROVED CatalogsFeedProcessingStatus = "DISAPPROVED"
 	FAILED CatalogsFeedProcessingStatus = "FAILED"
 	PROCESSING CatalogsFeedProcessingStatus = "PROCESSING"
-	QUEUED_FOR_PROCESSING CatalogsFeedProcessingStatus = "QUEUED_FOR_PROCESSING"
-	UNDER_APPEAL CatalogsFeedProcessingStatus = "UNDER_APPEAL"
-	UNDER_REVIEW CatalogsFeedProcessingStatus = "UNDER_REVIEW"
 )
 
 // All allowed values of CatalogsFeedProcessingStatus enum
 var AllowedCatalogsFeedProcessingStatusEnumValues = []CatalogsFeedProcessingStatus{
 	"COMPLETED",
-	"COMPLETED_EARLY",
-	"DISAPPROVED",
 	"FAILED",
 	"PROCESSING",
-	"QUEUED_FOR_PROCESSING",
-	"UNDER_APPEAL",
-	"UNDER_REVIEW",
 }
 
 func (v *CatalogsFeedProcessingStatus) UnmarshalJSON(src []byte) error {

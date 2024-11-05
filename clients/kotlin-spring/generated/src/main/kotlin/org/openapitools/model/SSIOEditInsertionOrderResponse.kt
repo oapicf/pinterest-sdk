@@ -21,7 +21,7 @@ data class SSIOEditInsertionOrderResponse(
 
     @Schema(example = "null", description = "Salesforce order id")
     @get:JsonProperty("pin_order_id") val pinOrderId: kotlin.String? = null
-) {
+    ) {
 
 }
 

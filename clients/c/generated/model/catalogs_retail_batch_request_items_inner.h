@@ -19,12 +19,12 @@ typedef struct catalogs_retail_batch_request_items_inner_t catalogs_retail_batch
 #include "catalogs_delete_retail_item.h"
 #include "catalogs_update_retail_item.h"
 #include "catalogs_upsert_retail_item.h"
-#include "item_attributes.h"
+#include "item_attributes_request.h"
 #include "update_mask_field_type.h"
 
 // Enum OPERATION for catalogs_retail_batch_request_items_inner
 
-typedef enum  { pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_NULL = 0, pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_CREATE, pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_UPDATE, pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_UPSERT, pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION__DELETE } pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e;
+typedef enum  { pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_NULL = 0, pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION__DELETE } pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e;
 
 char* catalogs_retail_batch_request_items_inner_operation_ToString(pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation);
 
@@ -43,7 +43,7 @@ pinterest_rest_api_catalogs_retail_batch_request_items_inner__e catalogs_retail_
 typedef struct catalogs_retail_batch_request_items_inner_t {
     char *item_id; // string
     pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation; //enum
-    struct item_attributes_t *attributes; //model
+    struct item_attributes_request_t *attributes; //model
     list_t *update_mask; //nonprimitive container
 
 } catalogs_retail_batch_request_items_inner_t;
@@ -51,7 +51,7 @@ typedef struct catalogs_retail_batch_request_items_inner_t {
 catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create(
     char *item_id,
     pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation,
-    item_attributes_t *attributes,
+    item_attributes_request_t *attributes,
     list_t *update_mask
 );
 

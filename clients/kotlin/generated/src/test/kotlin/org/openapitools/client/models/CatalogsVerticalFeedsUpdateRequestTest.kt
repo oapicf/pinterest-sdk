@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsVerticalFeedsUpdateRequest
+import org.openapitools.client.models.CatalogsCreativeAssetsFeedsUpdateRequest
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFormat

@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsItemValidationIssues
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationIssues   {
   @JsonProperty("item_number")
   private Integer itemNumber;
@@ -35,10 +35,10 @@ public class CatalogsItemValidationIssues   {
     return this;
   }
 
-   /**
+  /**
    * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
    * @return itemNumber
-  **/
+   */
   @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
   public Integer getItemNumber() {
     return itemNumber;
@@ -53,10 +53,10 @@ public class CatalogsItemValidationIssues   {
     return this;
   }
 
-   /**
+  /**
    * The merchant-created unique ID that represents the product.
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-L", required = true, value = "The merchant-created unique ID that represents the product.")
   public String getItemId() {
     return itemId;
@@ -71,10 +71,10 @@ public class CatalogsItemValidationIssues   {
     return this;
   }
 
-   /**
+  /**
    * Get errors
    * @return errors
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsItemValidationErrors getErrors() {
     return errors;
@@ -89,10 +89,10 @@ public class CatalogsItemValidationIssues   {
     return this;
   }
 
-   /**
+  /**
    * Get warnings
    * @return warnings
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsItemValidationWarnings getWarnings() {
     return warnings;

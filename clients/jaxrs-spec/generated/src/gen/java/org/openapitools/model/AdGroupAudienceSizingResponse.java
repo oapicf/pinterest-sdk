@@ -16,10 +16,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupAudienceSizingResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingResponse   {
-  private @Valid BigDecimal audienceSizeLowerBound;
-  private @Valid BigDecimal audienceSizeUpperBound;
+  private BigDecimal audienceSizeLowerBound;
+  private BigDecimal audienceSizeUpperBound;
 
   /**
    * The lower confidence bound of the estimated potential audience size. \&quot;Potential audience size\&quot; estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
@@ -32,7 +32,7 @@ public class AdGroupAudienceSizingResponse   {
   
   @ApiModelProperty(example = "100000", value = "The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.")
   @JsonProperty("audience_size_lower_bound")
-  public BigDecimal getAudienceSizeLowerBound() {
+  @Valid public BigDecimal getAudienceSizeLowerBound() {
     return audienceSizeLowerBound;
   }
 
@@ -52,7 +52,7 @@ public class AdGroupAudienceSizingResponse   {
   
   @ApiModelProperty(example = "150000", value = "The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.")
   @JsonProperty("audience_size_upper_bound")
-  public BigDecimal getAudienceSizeUpperBound() {
+  @Valid public BigDecimal getAudienceSizeUpperBound() {
     return audienceSizeUpperBound;
   }
 

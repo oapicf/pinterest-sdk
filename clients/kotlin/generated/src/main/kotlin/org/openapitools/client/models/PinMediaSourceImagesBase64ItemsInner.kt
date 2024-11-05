@@ -61,5 +61,6 @@ data class PinMediaSourceImagesBase64ItemsInner (
         @Json(name = "image/jpeg") jpeg("image/jpeg"),
         @Json(name = "image/png") png("image/png");
     }
+
 }
 

@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CampaignId
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignId   {
   @JsonProperty("id")
   private String id;
@@ -24,10 +24,10 @@ public class CampaignId   {
     return this;
   }
 
-   /**
+  /**
    * Campaign ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Campaign ID.")
   public String getId() {
     return id;

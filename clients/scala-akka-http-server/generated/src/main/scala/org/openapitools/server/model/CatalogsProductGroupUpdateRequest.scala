@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- * = retail =
+ * = retail feed based =
  *
  * Request object for updating a product group.
  *

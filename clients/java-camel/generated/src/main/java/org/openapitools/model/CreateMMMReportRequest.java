@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * CreateMMMReportRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateMMMReportRequest {
 
   private String reportName;
@@ -115,7 +115,7 @@ public class CreateMMMReportRequest {
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
   @Valid
-  private List<TargetingAdvertiserCountry> countries;
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
   public CreateMMMReportRequest() {
     super();
@@ -142,7 +142,7 @@ public class CreateMMMReportRequest {
   /**
    * Name of the Marketing Mix Modeling (MMM) report
    * @return reportName
-  */
+   */
   @NotNull 
   @Schema(name = "report_name", description = "Name of the Marketing Mix Modeling (MMM) report", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("report_name")
@@ -162,7 +162,7 @@ public class CreateMMMReportRequest {
   /**
    * Metric report start date (UTC). Format: YYYY-MM-DD
    * @return startDate
-  */
+   */
   @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "start_date", example = "2020-12-20", description = "Metric report start date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("start_date")
@@ -182,7 +182,7 @@ public class CreateMMMReportRequest {
   /**
    * Metric report end date (UTC). Format: YYYY-MM-DD
    * @return endDate
-  */
+   */
   @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "end_date", example = "2020-12-20", description = "Metric report end date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("end_date")
@@ -202,7 +202,7 @@ public class CreateMMMReportRequest {
   /**
    * DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
    * @return granularity
-  */
+   */
   @NotNull 
   @Schema(name = "granularity", description = "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("granularity")
@@ -222,7 +222,7 @@ public class CreateMMMReportRequest {
   /**
    * Level of the report
    * @return level
-  */
+   */
   @NotNull 
   @Schema(name = "level", description = "Level of the report", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("level")
@@ -250,7 +250,7 @@ public class CreateMMMReportRequest {
   /**
    * List of targeting types
    * @return targetingTypes
-  */
+   */
   @NotNull @Valid @Size(min = 1, max = 5) 
   @Schema(name = "targeting_types", example = "[\"GENDER\"]", description = "List of targeting types", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("targeting_types")
@@ -278,7 +278,7 @@ public class CreateMMMReportRequest {
   /**
    * Metric and entity columns
    * @return columns
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "columns", description = "Metric and entity columns", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("columns")
@@ -306,7 +306,7 @@ public class CreateMMMReportRequest {
   /**
    * A List of countries for filtering
    * @return countries
-  */
+   */
   @Valid 
   @Schema(name = "countries", description = "A List of countries for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("countries")

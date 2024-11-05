@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "KeywordMetrics", description = "Keyword metrics JSON")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordMetrics {
 
   private BigDecimal avgCpcInMicroCurrency;
@@ -35,7 +35,7 @@ public class KeywordMetrics {
   /**
    * Average cost per click
    * @return avgCpcInMicroCurrency
-  */
+   */
   @Valid 
   @Schema(name = "avg_cpc_in_micro_currency", example = "100000", description = "Average cost per click", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("avg_cpc_in_micro_currency")
@@ -55,7 +55,7 @@ public class KeywordMetrics {
   /**
    * Keyword's search frequency. This value is based on keyword frequency in pepsi client response
    * @return keywordQueryVolume
-  */
+   */
   
   @Schema(name = "keyword_query_volume", example = "5M+", description = "Keyword's search frequency. This value is based on keyword frequency in pepsi client response", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keyword_query_volume")

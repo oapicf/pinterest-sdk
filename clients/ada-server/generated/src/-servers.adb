@@ -184,11 +184,11 @@ package body .Servers is
    end Analytics_Get_Report;
 
    --  Delete ads data for ad account in API Sandbox
-   --  Delete an ad account and all the ads data associated with that account. 
+   --  Delete an ad account and all the ads data associated with that account.
    --  A string message is returned indicating the status of the delete operation.
    --  
-   --  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). 
-   --  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+   --  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).
+   --  Go to /docs/developer-tools/sandbox/ for more information.
    overriding
    procedure Sandbox_Delete
       (Server : in out Server_Type;
@@ -257,7 +257,7 @@ package body .Servers is
    --  Get bid floors
    --  List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/>
    --  <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-   --  <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
+   --  <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
    --  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
    --  <ul>
    --    <li>$1 = 1,000,000 microdollars</li>
@@ -267,7 +267,7 @@ package body .Servers is
    --  <ul>
    --    <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>
    --    <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>
-   --  </ul>
+   --   </ul>
    --  For more on bid floors see <a class="reference external" href="https://help.pinterest.com/en/business/article/set-your-bid"> Set your bid</a>.
    overriding
    procedure Ad_Groups_Bid_Floor_Get
@@ -286,7 +286,7 @@ package body .Servers is
    --  - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/>
    --  <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
    --  <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
-   --  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+   --   <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
    --  <ul>
    --    <li>$1 = 1,000,000 microdollars</li>
    --    <li>1 microdollar = $0.000001 </li>
@@ -312,8 +312,7 @@ package body .Servers is
    --  Get ad group
    --  Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
    --  contain additional information from the Ad Review process.
-   --  For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/"
-   --  target="_blank">Pinterest advertising standards</a>.
+   --  For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/" target="_blank">Pinterest advertising standards</a>.
    overriding
    procedure Ad_Groups_Get
       (Server : in out Server_Type;
@@ -392,7 +391,7 @@ package body .Servers is
    --  Create ad preview with pin or image
    --  Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/>
    --  If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href="https://help.pinterest.com/en/business/article/promoted-pins-overview" target="_blank">Ads Overview</a>.) <p/>
-   --  You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+   --  You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
    overriding
    procedure Ad_Previews_Create
       (Server : in out Server_Type;
@@ -420,7 +419,7 @@ package body .Servers is
        Ad_Ids : in Swagger.UString_Vectors.Vector;
        Start_Date : in Swagger.Date;
        End_Date : in Swagger.Date;
-       Targeting_Types : in .Models.AdsAnalyticsTargetingType_Type_Vectors.Vector;
+       Targeting_Types : in .Models.AdsAnalyticsAdTargetingType_Type_Vectors.Vector;
        Columns : in Swagger.UString_Vectors.Vector;
        Granularity : in Granularity_Type;
        Click_Window_Days : in Swagger.Nullable_Integer;
@@ -437,6 +436,7 @@ package body .Servers is
    --  Get ad analytics
    --  Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options.
    --  - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
+   --  - The request must contain either ad_ids or both campaign_ids and pin_ids.
    --  - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
    --  - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
    overriding
@@ -445,13 +445,15 @@ package body .Servers is
        Ad_Account_Id : in Swagger.UString;
        Start_Date : in Swagger.Date;
        End_Date : in Swagger.Date;
-       Ad_Ids : in Swagger.UString_Vectors.Vector;
        Columns : in Swagger.UString_Vectors.Vector;
        Granularity : in Granularity_Type;
+       Ad_Ids : in Swagger.UString_Vectors.Vector;
        Click_Window_Days : in Swagger.Nullable_Integer;
        Engagement_Window_Days : in Swagger.Nullable_Integer;
        View_Window_Days : in Swagger.Nullable_Integer;
        Conversion_Report_Time : in Swagger.Nullable_UString;
+       Pin_Ids : in Swagger.UString_Vectors.Vector;
+       Campaign_Ids : in Swagger.UString_Vectors.Vector;
        Result  : out ;
        Context : in out Swagger.Servers.Context_Type) is
    begin
@@ -474,8 +476,7 @@ package body .Servers is
    --  Get ad
    --  Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
    --  contain additional information from the Ad Review process.
-   --  For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/"
-   --  target="_blank">Pinterest advertising standards</a>.
+   --  For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/" target="_blank">Pinterest advertising standards</a>.
    overriding
    procedure Ads_Get
       (Server : in out Server_Type;
@@ -526,6 +527,44 @@ package body .Servers is
       null;
    end Ads_Update;
 
+   --  Get item bid options (POST)
+   --  Get the bid options for a batch of retail catalog items.
+   --  
+   --  The catalog must be owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a> By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: `Owner`, `Admin`.
+   --  
+   --  This endpoint is not available to all users.
+   overriding
+   procedure Advanced_Auction_Items_Get_Post
+      (Server : in out Server_Type;
+       Advanced_Auction_Items_Get_Request_Type : in AdvancedAuctionItemsGetRequest_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out .Models.AdvancedAuctionItems_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Advanced_Auction_Items_Get_Post;
+
+   --  Operate on item level bid options
+   --  This endpoint supports multiple operations on a set of one or more bid options (bid price and bid adjustments for targeting categories) for retail catalog items. These advanced auction settings are applied in campaigns using objective_type `CATALOG_SALES` and ad groups using bid_strategy_type `MAX_BID`.
+   --  
+   --  The catalog must be owned by the "operation user_account". <a href="/docs/api-features/modify-items-in-batch/" target="_blank">See detailed documentation here.</a> By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: `Owner`, `Admin`.
+   --  
+   --  This endpoint is not available to all users.
+   overriding
+   procedure Advanced_Auction_Items_Submit_Post
+      (Server : in out Server_Type;
+       Advanced_Auction_Items_Submit_Request_Type : in AdvancedAuctionItemsSubmitRequest_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out .Models.AdvancedAuctionProcessedItems_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Advanced_Auction_Items_Submit_Post;
+
    --  Get audience insights
    --  Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the
    --  ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's
@@ -553,6 +592,107 @@ package body .Servers is
    begin
       null;
    end Audience_Insights_Scope_And_Type_Get;
+
+   --  List accounts with access to an audience owned by an ad account
+   --  List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
+   overriding
+   procedure Ad_Accounts_Audiences_Shared_Accounts_List
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Audience_Id : in Swagger.UString;
+       Account_Type : in AudienceAccountType_Type;
+       Page_Size : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Result  : out .Models.AdAccountsAudiencesSharedAccountsList200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Ad_Accounts_Audiences_Shared_Accounts_List;
+
+   --  List accounts with access to an audience owned by a business
+   --  List all ad accounts and/or businesses that have access to a specific audience.
+   --  The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business.
+   --  If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+   overriding
+   procedure Business_Account_Audiences_Shared_Accounts_List
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Audience_Id : in Swagger.UString;
+       Account_Type : in AudienceAccountType_Type;
+       Page_Size : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Result  : out .Models.AdAccountsAudiencesSharedAccountsList200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Account_Audiences_Shared_Accounts_List;
+
+   --  List received audiences for a business
+   --  Get a list of received audiences for the given business.
+   overriding
+   procedure Shared_Audiences_For_Business_List
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Bookmark : in Swagger.Nullable_UString;
+       Order : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Result  : out .Models.AudiencesList200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Shared_Audiences_For_Business_List;
+
+   --  Update audience sharing between ad accounts
+   --  From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+   overriding
+   procedure Update_Ad_Account_To_Ad_Account_Shared_Audience
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Shared_Audience_Type : in SharedAudience_Type;
+       Result  : out .Models.SharedAudienceResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Update_Ad_Account_To_Ad_Account_Shared_Audience;
+
+   --  Update audience sharing from an ad account to businesses
+   --  From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+   overriding
+   procedure Update_Ad_Account_To_Business_Shared_Audience
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Business_Shared_Audience_Type : in BusinessSharedAudience_Type;
+       Result  : out .Models.BusinessSharedAudienceResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Update_Ad_Account_To_Business_Shared_Audience;
+
+   --  Update audience sharing from a business to ad accounts
+   --  From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+   overriding
+   procedure Update_Business_To_Ad_Account_Shared_Audience
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Shared_Audience_Type : in SharedAudience_Type;
+       Result  : out .Models.SharedAudienceResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Update_Business_To_Ad_Account_Shared_Audience;
+
+   --  Update audience sharing between businesses
+   --  From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
+   overriding
+   procedure Update_Business_To_Business_Shared_Audience
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Business_Shared_Audience_Type : in BusinessSharedAudience_Type;
+       Result  : out .Models.BusinessSharedAudienceResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Update_Business_To_Business_Shared_Audience;
 
    --  Create audience
    --  Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with
@@ -629,7 +769,7 @@ package body .Servers is
    --  Redeem ad credits
    --  Redeem ads credit on behalf of the ad account id and apply it towards billing.
    --  
-   --  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Ads_Credit_Redeem
       (Server : in out Server_Type;
@@ -644,7 +784,7 @@ package body .Servers is
    --  Get ads credit discounts
    --  Returns the list of discounts applied to the account.
    --  
-   --  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Ads_Credits_Discounts_Get
       (Server : in out Server_Type;
@@ -660,7 +800,7 @@ package body .Servers is
    --  Get billing profiles
    --  Get billing profiles in the advertiser account.
    --  
-   --  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Billing_Profiles_Get
       (Server : in out Server_Type;
@@ -985,6 +1125,404 @@ package body .Servers is
       null;
    end Bulk_Upsert_Create;
 
+   --  Create a new asset group.
+   --  Create a new asset group with the specified parameters.
+   --  - An <a href="https://help.pinterest.com/en/business/article/asset-groups">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
+   overriding
+   procedure Asset_Group_Create
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Create_Asset_Group_Body_Type : in CreateAssetGroupBody_Type;
+       Result  : out .Models.CreateAssetGroupResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Asset_Group_Create;
+
+   --  Delete asset groups.
+   --  Delete a batch of asset groups.
+   overriding
+   procedure Asset_Group_Delete
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Delete_Asset_Group_Body_Type : in DeleteAssetGroupBody_Type;
+       Result  : out .Models.DeleteAssetGroupResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Asset_Group_Delete;
+
+   --  Update asset groups.
+   --  Update a batch of asset groups with the specified parameters.
+   overriding
+   procedure Asset_Group_Update
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Update_Asset_Group_Body_Type : in UpdateAssetGroupBody_Type;
+       Result  : out .Models.UpdateAssetGroupResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Asset_Group_Update;
+
+   --  Get members with access to asset
+   --  Get all the members the requesting business has granted access to on the given asset.
+   overriding
+   procedure Business_Asset_Members_Get
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Asset_Id : in Swagger.UString;
+       Bookmark : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Start_Index : in Swagger.Nullable_Integer;
+       Result  : out .Models.BusinessAssetMembersGet200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Asset_Members_Get;
+
+   --  Get partners with access to asset
+   --  Get all the partners the requesting business has granted access to on the given asset.
+   --  Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with
+   --  you cannot be shared with a different partner.
+   overriding
+   procedure Business_Asset_Partners_Get
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Asset_Id : in Swagger.UString;
+       Start_Index : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Result  : out .Models.BusinessAssetPartnersGet200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Asset_Partners_Get;
+
+   --  List business assets
+   --  Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships.
+   overriding
+   procedure Business_Assets_Get
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Permissions : in .Models.PermissionsWithOwner_Type_Vectors.Vector;
+       Child_Asset_Id : in Swagger.Nullable_UString;
+       Asset_Group_Id : in Swagger.Nullable_UString;
+       Asset_Type : in Swagger.Nullable_UString;
+       Start_Index : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Result  : out .Models.BusinessAssetsGet200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Assets_Get;
+
+   --  Get assets assigned to a member
+   --  Get assets on which you assigned asset permissions to the given member. Can be used to:
+   --  - get all assets, regardless of asset type or
+   --  - get assets of one asset type by using the asset_type query.
+   --  The return response will include the permissions the member has to that asset and the asset type.
+   overriding
+   procedure Business_Member_Assets_Get
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Member_Id : in Swagger.UString;
+       Asset_Type : in Swagger.Nullable_UString;
+       Start_Index : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Result  : out .Models.BusinessMemberAssetsGet200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Member_Assets_Get;
+
+   --  Delete member access to asset
+   --  Terminate multiple members' access to an asset.
+   overriding
+   procedure Business_Members_Asset_Access_Delete
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Business_Members_Asset_Access_Delete_Request_Type : in BusinessMembersAssetAccessDeleteRequest_Type;
+       Result  : out .Models.DeleteMemberAccessResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Members_Asset_Access_Delete;
+
+   --  Assign/Update member asset permissions
+   --  Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset.
+   --  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
+   overriding
+   procedure Business_Members_Asset_Access_Update
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Update_Member_Asset_Access_Body_Type : in UpdateMemberAssetAccessBody_Type;
+       Result  : out .Models.UpdateMemberAssetsResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Members_Asset_Access_Update;
+
+   --  Get assets assigned to a partner or assets assigned by a partner
+   --  Can be used to get the business assets your partner has granted you access to or the business assets you have
+   --  granted your partner access to. If you specify:
+   --  - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to.
+   --  - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.
+   overriding
+   procedure Business_Partner_Asset_Access_Get
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Partner_Id : in Swagger.UString;
+       Partner_Type : in .Models.PartnerType_Type;
+       Asset_Type : in Swagger.Nullable_UString;
+       Start_Index : in Swagger.Nullable_Integer;
+       Page_Size : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Result  : out .Models.BusinessPartnerAssetAccessGet200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Business_Partner_Asset_Access_Get;
+
+   --  Delete partner access to asset
+   --  Terminate multiple partners' access to an asset. If
+   --  - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets.
+   --  - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.
+   overriding
+   procedure Delete_Partner_Asset_Access_Handler_Impl
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Delete_Partner_Asset_Access_Body_Type : in DeletePartnerAssetAccessBody_Type;
+       Result  : out .Models.DeletePartnerAssetsResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Delete_Partner_Asset_Access_Handler_Impl;
+
+   --  Assign/Update partner asset permissions
+   --  Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset.
+   --  If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them.
+   --  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview
+   --  
+   --  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be
+   --  applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of
+   --  the type PROFILE.
+   overriding
+   procedure Update_Partner_Asset_Access_Handler_Impl
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Update_Partner_Asset_Access_Body_Type : in UpdatePartnerAssetAccessBody_Type;
+       Result  : out .Models.UpdatePartnerAssetsResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Update_Partner_Asset_Access_Handler_Impl;
+
+   --  Create a request to access an existing partner's assets.
+   --  Create a request to access an existing partner's assets with the specified permissions. The request will be sent to the partner for approval. The assets that can be requested are ad accounts and profiles.
+   overriding
+   procedure Asset_Access_Requests_Create
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Create_Asset_Access_Request_Body_Type : in CreateAssetAccessRequestBody_Type;
+       Result  : out .Models.CreateAssetAccessRequestResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Asset_Access_Requests_Create;
+
+   --  Cancel invites/requests
+   --  Cancel membership/partnership invites and/or requests.
+   overriding
+   procedure Cancel_Invites_Or_Requests
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Cancel_Invites_Body_Type : in CancelInvitesBody_Type;
+       Result  : out .Models.DeleteInvitesResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Cancel_Invites_Or_Requests;
+
+   --  Update invite/request with an asset permission
+   --  Assign asset permissions information to an existing invite/request. Can be used to:
+   --  - Request access to a partner's asset. Note: This is only for when no existing partnership exists. If an existing
+   --    partnership exists, use "Create a request to access an existing partner's assets" to request access to your
+   --    partner's assets.
+   --      - invite_type="PARTNER_REQUEST"
+   --  - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.
+   --    If there is an existing partnership, use "Assign/Update partner asset permissions" to assign a partner access to
+   --    new assets.
+   --      - invite_type="PARTNER_INVITE"
+   --  - Invite a member to access your business assets. Note: This is only for when there is no existing membership.
+   --    If there is an existing membership, use "Assign/Update member asset permissions" to assign a member access to new
+   --    assets.
+   --      - invite_type="MEMBER_INVITE"
+   --  
+   --  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.
+   overriding
+   procedure Create_Asset_Invites
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Create_Asset_Invites_Request_Type : in CreateAssetInvitesRequest_Type;
+       Result  : out .Models.UpdateInvitesResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Create_Asset_Invites;
+
+   --  Create invites or requests
+   --  Create batch invites or requests. Can create batch invites or requests as described below.
+   --  - Invite members to join the business. This would required specifying the following:
+   --      - invite_type="MEMBER_INVITE"
+   --      - business_role="EMPLOYEE" OR business_role="BIZ_ADMIN" (To learn more about business roles, visit
+   --      https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)
+   --      - members
+   --  - Invite partners to access your business assets. This would require specifying the following:
+   --      - invite_type="PARTNER_INVITE"
+   --      - business_role="PARTNER"
+   --      - partners
+   --  - Request to be a partner so you can access their assets. This would require specifying the following:
+   --      - invite_type="PARTNER_REQUEST"
+   --      - business_role="PARTNER"
+   --      - partners
+   overriding
+   procedure Create_Membership_Or_Partnership_Invites
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Create_Membership_Or_Partnership_Invites_Body_Type : in CreateMembershipOrPartnershipInvitesBody_Type;
+       Result  : out .Models.CreateInvitesResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Create_Membership_Or_Partnership_Invites;
+
+   --  Get invites/requests
+   --  Get the membership/partnership invites and/or requests for the authorized user.
+   overriding
+   procedure Get_Invites
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Is_Member : in Swagger.Nullable_Boolean;
+       Invite_Status : in Swagger.UString_Vectors.Vector;
+       Invite_Type : in InviteType_Type;
+       Bookmark : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Result  : out .Models.GetInvites200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Get_Invites;
+
+   --  Accept or decline an invite/request
+   --  Accept or decline invites or requests.
+   overriding
+   procedure Respond_Business_Access_Invites
+      (Server : in out Server_Type;
+       Auth_Respond_Invites_Body_Type : in AuthRespondInvitesBody_Type;
+       Result  : out .Models.RespondToInvitesResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Respond_Business_Access_Invites;
+
+   --  Terminate business memberships
+   --  Terminate memberships between the specified members and your business.
+   overriding
+   procedure Delete_Business_Membership
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Members_To_Delete_Body_Type : in MembersToDeleteBody_Type;
+       Result  : out .Models.DeletedMembersResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Delete_Business_Membership;
+
+   --  Terminate business partnerships
+   --  Terminate partnerships between the specified partners and your business.
+   --  Note: You may only batch terminate partners of the same partner type.
+   overriding
+   procedure Delete_Business_Partners
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Delete_Partners_Request_Type : in DeletePartnersRequest_Type;
+       Result  : out .Models.DeletePartnersResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Delete_Business_Partners;
+
+   --  List business employers for user
+   --  Get all of the viewing user's business employers.
+   overriding
+   procedure Get_Business_Employers
+      (Server : in out Server_Type;
+       Page_Size : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Result  : out .Models.GetBusinessEmployers200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Get_Business_Employers;
+
+   --  Get business members
+   --  Get all members of the specified business.
+   --  The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
+   overriding
+   procedure Get_Business_Members
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Assets_Summary : in Swagger.Nullable_Boolean;
+       Business_Roles : in .Models.MemberBusinessRole_Type_Vectors.Vector;
+       Member_Ids : in Swagger.Nullable_UString;
+       Start_Index : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Result  : out .Models.GetBusinessMembers200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Get_Business_Members;
+
+   --  Get business partners
+   --  Get all partners of the specified business.
+   --  
+   --  If the assets_summary=TRUE and:
+   --  - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to.
+   --  - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you
+   --    access to.
+   overriding
+   procedure Get_Business_Partners
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Assets_Summary : in Swagger.Nullable_Boolean;
+       Partner_Type : in PartnerType_Type;
+       Partner_Ids : in Swagger.Nullable_UString;
+       Start_Index : in Swagger.Nullable_Integer;
+       Page_Size : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Result  : out .Models.GetBusinessPartners200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Get_Business_Partners;
+
+   --  Update member's business role
+   --  Update a member's business role within the business.
+   overriding
+   procedure Update_Business_Memberships
+      (Server : in out Server_Type;
+       Business_Id : in Swagger.UString;
+       Update_Member_Business_Role_Body : in .Models.UpdateMemberBusinessRoleBody_Type_Vectors.Vector;
+       Result  : out .Models.UpdateMemberResultsResponseArray_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Update_Business_Memberships;
+
    --  Get targeting analytics for campaigns
    --  Get targeting analytics for one or more campaigns.
    --  For the requested account and metrics, the response will include the requested metric information
@@ -1001,7 +1539,7 @@ package body .Servers is
        Campaign_Ids : in Swagger.UString_Vectors.Vector;
        Start_Date : in Swagger.Date;
        End_Date : in Swagger.Date;
-       Targeting_Types : in .Models.AdsAnalyticsTargetingType_Type_Vectors.Vector;
+       Targeting_Types : in .Models.AdsAnalyticsCampaignTargetingType_Type_Vectors.Vector;
        Columns : in Swagger.UString_Vectors.Vector;
        Granularity : in Granularity_Type;
        Click_Window_Days : in Swagger.Nullable_Integer;
@@ -1046,7 +1584,7 @@ package body .Servers is
    --  - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
    --  <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
    --  <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
-   --  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+   --   <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
    --  <ul>
    --    <li>$1 = 1,000,000 microdollars</li>
    --    <li>1 microdollar = $0.000001 </li>
@@ -1101,9 +1639,9 @@ package body .Servers is
    --  Update campaigns
    --  Update multiple ad campaigns based on campaign_ids. <p/>
    --  <strong>Note:</strong><p/>
-   --  - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
+   --   - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
    --  <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-   --  <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
+   --  <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
    --  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
    --  <ul>
    --    <li>$1 = 1,000,000 microdollars</li>
@@ -1125,13 +1663,33 @@ package body .Servers is
       null;
    end Campaigns_Update;
 
+   --  Create catalog
+   --  Create a new catalog owned by the "operation user_account".
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   --  
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+   --  
+   --  Note: this API only supports the catalog type of HOTEL for now.
+   overriding
+   procedure Catalogs_Create
+      (Server : in out Server_Type;
+       Catalogs_Create_Request_Type : in CatalogsCreateRequest_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out .Models.Catalog_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Catalogs_Create;
+
    --  List catalogs
    --  Fetch catalogs owned by the "operation user_account".
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Catalogs_List
       (Server : in out Server_Type;
@@ -1144,13 +1702,13 @@ package body .Servers is
       null;
    end Catalogs_List;
 
-   --  List products for a Product Group
+   --  List products by product group
    --  Get a list of product pins for a given Catalogs Product Group Id owned by the "operation user_account".
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Catalogs_Product_Group_Pins_List
       (Server : in out Server_Type;
@@ -1158,6 +1716,7 @@ package body .Servers is
        Bookmark : in Swagger.Nullable_UString;
        Page_Size : in Swagger.Nullable_Integer;
        Ad_Account_Id : in Swagger.Nullable_UString;
+       Pin_Metrics : in Swagger.Nullable_Boolean;
        Result  : out .Models.CatalogsProductGroupPinsList200Response_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin
@@ -1170,17 +1729,41 @@ package body .Servers is
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+   --  
+   --  Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+   --  If you require access, please reach out to your partner manager.
    overriding
    procedure Catalogs_Product_Groups_Create
       (Server : in out Server_Type;
-       Catalogs_Product_Groups_Create_Request_Type : in CatalogsProductGroupsCreateRequest_Type;
+       Multiple_Product_Groups_Inner_Type : in MultipleProductGroupsInner_Type;
        Ad_Account_Id : in Swagger.Nullable_UString;
-       Result  : out .Models.CatalogsProductGroupsCreate201Response_Type;
+       Result  : out .Models.CatalogsVerticalProductGroup_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin
       null;
    end Catalogs_Product_Groups_Create;
+
+   --  Create product groups
+   --  Create product group to use in Catalogs owned by the "operation user_account".
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   --  
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+   --  
+   --  Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+   --  If you require access, please reach out to your partner manager.
+   overriding
+   procedure Catalogs_Product_Groups_Create_Many
+      (Server : in out Server_Type;
+       Multiple_Product_Groups_Inner : in .Models.MultipleProductGroupsInner_Type_Vectors.Vector;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out ;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Catalogs_Product_Groups_Create_Many;
 
    --  Delete product group
    --  Delete a product group owned by the "operation user_account" from being in use in Catalogs.
@@ -1188,7 +1771,7 @@ package body .Servers is
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Catalogs_Product_Groups_Delete
       (Server : in out Server_Type;
@@ -1199,19 +1782,36 @@ package body .Servers is
       null;
    end Catalogs_Product_Groups_Delete;
 
+   --  Delete product groups
+   --  Delete product groups owned by the "operation user_account".
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   --  
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+   overriding
+   procedure Catalogs_Product_Groups_Delete_Many
+      (Server : in out Server_Type;
+       Id : in Integer_Vectors.Vector;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Catalogs_Product_Groups_Delete_Many;
+
    --  Get product group
    --  Get a singe product group for a given Catalogs Product Group Id owned by the "operation user_account".
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Catalogs_Product_Groups_Get
       (Server : in out Server_Type;
        Product_Group_Id : in Swagger.UString;
        Ad_Account_Id : in Swagger.Nullable_UString;
-       Result  : out .Models.CatalogsProductGroupsCreate201Response_Type;
+       Result  : out .Models.CatalogsVerticalProductGroup_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin
       null;
@@ -1223,10 +1823,11 @@ package body .Servers is
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Catalogs_Product_Groups_List
       (Server : in out Server_Type;
+       Id : in Integer_Vectors.Vector;
        Feed_Id : in Swagger.Nullable_UString;
        Catalog_Id : in Swagger.Nullable_UString;
        Bookmark : in Swagger.Nullable_UString;
@@ -1238,50 +1839,53 @@ package body .Servers is
       null;
    end Catalogs_Product_Groups_List;
 
-   --  Get product counts for a Product Group
+   --  Get product counts
    --  Get a product counts for a given Catalogs Product Group owned by the "operation user_account".
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Catalogs_Product_Groups_Product_Counts_Get
       (Server : in out Server_Type;
        Product_Group_Id : in Swagger.UString;
        Ad_Account_Id : in Swagger.Nullable_UString;
-       Result  : out .Models.CatalogsProductGroupProductCounts_Type;
+       Result  : out .Models.CatalogsProductGroupProductCountsVertical_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin
       null;
    end Catalogs_Product_Groups_Product_Counts_Get;
 
-   --  Update product group
+   --  Update single product group
    --  Update product group owned by the "operation user_account" to use in Catalogs.
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+   --  
+   --  Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+   --  If you require access, please reach out to your partner manager.
    overriding
    procedure Catalogs_Product_Groups_Update
       (Server : in out Server_Type;
        Product_Group_Id : in Swagger.UString;
        Catalogs_Product_Groups_Update_Request_Type : in CatalogsProductGroupsUpdateRequest_Type;
        Ad_Account_Id : in Swagger.Nullable_UString;
-       Result  : out .Models.CatalogsProductGroupsCreate201Response_Type;
+       Result  : out .Models.CatalogsVerticalProductGroup_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin
       null;
    end Catalogs_Product_Groups_Update;
 
-   --  List processing results for a given feed
+   --  List feed processing results
    --  Fetch a feed processing results owned by the "operation user_account". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future.
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Feed_Processing_Results_List
       (Server : in out Server_Type;
@@ -1305,7 +1909,10 @@ package body .Servers is
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+   --  
+   --  Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+   --  If you require access, please reach out to your partner manager.
    overriding
    procedure Feeds_Create
       (Server : in out Server_Type;
@@ -1323,7 +1930,7 @@ package body .Servers is
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
    overriding
    procedure Feeds_Delete
       (Server : in out Server_Type;
@@ -1340,7 +1947,7 @@ package body .Servers is
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
    overriding
    procedure Feeds_Get
       (Server : in out Server_Type;
@@ -1352,13 +1959,32 @@ package body .Servers is
       null;
    end Feeds_Get;
 
+   --  Ingest feed items
+   --  Ingest items for a given feed owned by the "operation user_account".
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   --  
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+   --  
+   --  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+   overriding
+   procedure Feeds_Ingest
+      (Server : in out Server_Type;
+       Feed_Id : in Swagger.UString;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out .Models.CatalogsFeedIngestion_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Feeds_Ingest;
+
    --  List feeds
    --  Fetch feeds owned by the "operation user_account".
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
    overriding
    procedure Feeds_List
       (Server : in out Server_Type;
@@ -1378,7 +2004,10 @@ package body .Servers is
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+   --  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+   --  
+   --  Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+   --  If you require access, please reach out to your partner manager.
    overriding
    procedure Feeds_Update
       (Server : in out Server_Type;
@@ -1391,8 +2020,8 @@ package body .Servers is
       null;
    end Feeds_Update;
 
-   --  Get catalogs item batch status
-   --  Get a single catalogs items batch owned by the "operating user_account". <a href="/docs/shopping/catalog/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+   --  Get item batch status
+   --  Get a single catalogs items batch owned by the "operating user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
@@ -1408,10 +2037,15 @@ package body .Servers is
    end Items_Batch_Get;
 
    --  Operate on item batch
-   --  This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". <a href="/docs/shopping/catalog/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+   --  This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   --  
+   --  Note:
+   --  - Access to the Creative Assets catalog type is restricted to a specific group of users.
+   --  If you require access, please reach out to your partner manager.
+   --  - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
    overriding
    procedure Items_Batch_Post
       (Server : in out Server_Type;
@@ -1424,10 +2058,12 @@ package body .Servers is
    end Items_Batch_Post;
 
    --  Get catalogs items
-   --  Get the items of the catalog owned by the "operation user_account". <a href="/docs/shopping/catalog/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+   --  Get the items of the catalog owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   --  
+   --  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.
    overriding
    procedure Items_Get
       (Server : in out Server_Type;
@@ -1442,13 +2078,15 @@ package body .Servers is
       null;
    end Items_Get;
 
-   --  List item issues for a given processing result
+   --  List item issues
    --  List item validation issues for a given feed processing result owned by the "operation user_account". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future.
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.
+   --  
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Items_Issues_List
       (Server : in out Server_Type;
@@ -1464,14 +2102,35 @@ package body .Servers is
       null;
    end Items_Issues_List;
 
-   --  List filtered products
+   --  Get catalogs items (POST)
+   --  Get the items of the catalog owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   --  
+   --  Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+   --  If you require access, please reach out to your partner manager.
+   overriding
+   procedure Items_Post
+      (Server : in out Server_Type;
+       Catalogs_Items_Request_Type : in CatalogsItemsRequest_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out .Models.CatalogsItems_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Items_Post;
+
+   --  List products by filter
    --  List products Pins owned by the "operation user_account" that meet the criteria specified in the Catalogs Product Group Filter given in the request.
    --  - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent.
    --  - By default, the "operation user_account" is the token user_account.
    --  
    --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
    --  
-   --  <a href='/docs/shopping/catalog/'>Learn more</a>
+   --  Note: This endpoint only supports RETAIL catalog at the moment.
+   --  
+   --  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
    overriding
    procedure Products_By_Product_Group_Filter_List
       (Server : in out Server_Type;
@@ -1479,15 +2138,66 @@ package body .Servers is
        Bookmark : in Swagger.Nullable_UString;
        Page_Size : in Swagger.Nullable_Integer;
        Ad_Account_Id : in Swagger.Nullable_UString;
+       Pin_Metrics : in Swagger.Nullable_Boolean;
        Result  : out .Models.CatalogsProductGroupPinsList200Response_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin
       null;
    end Products_By_Product_Group_Filter_List;
 
+   --  Build catalogs report
+   --  Async request to create a report of the catalog owned by the "operation user_account". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed.
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   overriding
+   procedure Reports_Create
+      (Server : in out Server_Type;
+       Catalogs_Report_Parameters_Type : in CatalogsReportParameters_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out .Models.CatalogsCreateReportResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Reports_Create;
+
+   --  Get catalogs report
+   --  This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report.
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   overriding
+   procedure Reports_Get
+      (Server : in out Server_Type;
+       Token : in Swagger.UString;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out .Models.CatalogsReport_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Reports_Get;
+
+   --  List report stats
+   --  List aggregated numbers of issues for a catalog owned by the "operation user_account".
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+   overriding
+   procedure Reports_Stats
+      (Server : in out Server_Type;
+       Parameters : in CatalogsReportParameters_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Result  : out .Models.ReportsStats200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Reports_Stats;
+
    --  Send conversions
    --  The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object.
-   --  - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href="/docs/conversions/conversions/">Conversions Guide</a> for more details.
+   --  - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href="/docs/api-features/conversion-overview/">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>).
    --  - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.)
    --  - This endpoint has a rate limit of 5,000 calls per minute per ad account.
    --  - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
@@ -1505,11 +2215,11 @@ package body .Servers is
 
    --  Create conversion tag
    --  Create a conversion tag, also known as <a href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag" target="_blank">Pinterest tag</a>, with the option to enable enhanced match.<p/>
-   --  The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/>
+   --  The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/>
    --  For more information, see:<p/>
    --  <a class="reference external" href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag">Set up the Pinterest tag</a><p/>
-   --  <a class="reference external" href="https://developers.pinterest.com/docs/conversions/pinterest-tag/">Pinterest Tag</a><p/>
-   --  <a class="reference external" href="https://developers.pinterest.com/docs/conversions/enhanced-match/">Enhanced match</a>
+   --  <a class="reference external" href="/docs/api-features/pinterest-tag/">Pinterest Tag</a><p/>
+   --  <a class="reference external" href="/docs/api-features/pinterest-tag/#enhanced-match">Enhanced match</a>
    overriding
    procedure Conversion_Tags_Create
       (Server : in out Server_Type;
@@ -1577,13 +2287,13 @@ package body .Servers is
    --  Create customer lists
    --  <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p>
    --  <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
-   --  or the <a href="/docs/ads/targeting/#Audiences" target="_blank">Audiences</a> section of the ads management guide.<p/>
-   --  <p><b>Please review our <u><a href="https://help.pinterest.com/en/business/article/audience-targeting#section-13341" target="_blank">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p>
+   --  or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a> section of the ads management guide.<p/>
+   --   <p><b>Please review our <u><a href="https://help.pinterest.com/en/business/article/audience-targeting#section-13341" target="_blank">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p>
    --  <p>When you create a customer list, the system scans the list for existing Pinterest accounts;
    --  the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process
    --  is complete. The filtered list – containing only the Pinterest accounts that were included in your starting
    --  list – is what will be used to create the audience.</p>
-   --  <p>Note that once you have created your customer list, you must convert it into an audience (of the “CUSTOMER_LIST” type)
+   --  <p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type)
    --  using the <a href="#operation/create_audience_handler">create audience endpoint</a> before it can be used.</p>
    overriding
    procedure Customer_Lists_Create
@@ -1613,7 +2323,7 @@ package body .Servers is
    --  <p>Get a set of customer lists including id and name based on the filters provided.</p>
    --  <p>(Customer lists are a type of audience.) For more information, see
    --  <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
-   --   or the <a href="/docs/ads/targeting/#Audiences" target="_blank">Audiences</a>
+   --   or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a>
    --  section of the ads management guide.</p>
    overriding
    procedure Customer_Lists_List
@@ -1632,9 +2342,9 @@ package body .Servers is
    --  <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p>
    --  <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest
    --  accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records
-   --  to add will be deleted when the matching process is complete.</p>
+   --   to add will be deleted when the matching process is complete.</p>
    --  <p>For more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
-   --  or the <a href="/docs/ads/targeting/#Audiences" target="_blank">Audiences</a>
+   --  or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a>
    --  section of the ads management guide.</p>
    overriding
    procedure Customer_Lists_Update
@@ -1758,9 +2468,9 @@ package body .Servers is
 
    --  Create keywords
    --  <p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target="_blank" href="https://help.pinterest.com/en/business/article/keyword-targeting">Keyword targeting</a>.</p>
-   --  <p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target="_blank" href="/docs/ads/targeting/#Match%20type%20and%20targeting%20level">match type enums</a>.</p>
+   --  <p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target="_blank" href="/docs/api-features/targeting-overview/">match type enums</a>.</p>
    --  <p><b>Returns:</b></p> <ul style="list-style-type: square;"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class="last literal-block"> { "keywords": [], "errors": [ { "data": { "archived": null, "match_type": "EXACT", "parent_type": null, "value": "foobar", "parent_id": null, "type": "keyword", "id": null }, "error_messages": [ "Advertisers and Campaigns only accept excluded targeting attributes." ] } } </pre></li> </ul>
-   --  <p><b>Rate limit</b>: <a href="/docs/redoc/#tag/Rate-Limits">WRITE</a>.</p>
+   --  <p><b>Rate limit</b>: <a href="/docs/reference/rate-limits/">WRITE</a>.</p>
    overriding
    procedure Keywords_Create
       (Server : in out Server_Type;
@@ -1775,7 +2485,7 @@ package body .Servers is
    --  Get keywords
    --  <p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p>
    --  <p>For more information, see <a target="_blank" href="https://help.pinterest.com/en/business/article/keyword-targeting">Keyword targeting</a>.</p>
-   --  <p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target="_blank" href="/docs/ads/targeting/#Match%20type%20and%20targeting%20level">match type enums</a>.</p>
+   --  <p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target="_blank" href="/docs/api-features/targeting-overview/">match type enums</a>.</p>
    --  <p><b>Returns:</b></p> <ul style="list-style-type: square;"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class="last literal-block"> { "keywords": [], "errors": [ { "data": { "archived": null, "match_type": "EXACT", "parent_type": null, "value": "foobar", "parent_id": null, "type": "keyword", "id": null }, "error_messages": [ "Advertisers and Campaigns only accept excluded targeting attributes." ] } } </pre></li> </ul>
    overriding
    procedure Keywords_Get
@@ -1806,10 +2516,7 @@ package body .Servers is
    end Keywords_Update;
 
    --  List trending keywords
-   --  <p>Get the top trending search keywords among the Pinterest user audience.</p>
-   --  <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p>
-   --  <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p>
-   --  <p>For an interactive way to explore this data, please visit <a href="https://trends.pinterest.com">trends.pinterest.com</a>.
+   --  <p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href="https://trends.pinterest.com">trends.pinterest.com</a>.
    overriding
    procedure Trending_Keywords_List
       (Server : in out Server_Type;
@@ -1818,6 +2525,7 @@ package body .Servers is
        Interests : in Swagger.UString_Vectors.Vector;
        Genders : in Swagger.UString_Vectors.Vector;
        Ages : in Swagger.UString_Vectors.Vector;
+       Include_Keywords : in Swagger.UString_Vectors.Vector;
        Normalize_Against_Group : in Swagger.Nullable_Boolean;
        Limit : in Swagger.Nullable_Integer;
        Result  : out .Models.TrendingKeywordsResponse_Type;
@@ -1830,7 +2538,7 @@ package body .Servers is
    --  Delete an existing lead ads webhook subscription by ID.
    --  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
    --  
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Ad_Accounts_Subscriptions_Del_By_Id
       (Server : in out Server_Type;
@@ -1845,7 +2553,7 @@ package body .Servers is
    --  Get a specific lead ads subscription record.
    --  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
    --  
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Ad_Accounts_Subscriptions_Get_By_Id
       (Server : in out Server_Type;
@@ -1861,7 +2569,7 @@ package body .Servers is
    --  Get the advertiser's list of lead ads subscriptions.
    --  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
    --  
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Ad_Accounts_Subscriptions_Get_List
       (Server : in out Server_Type;
@@ -1876,10 +2584,12 @@ package body .Servers is
 
    --  Create lead ads subscription
    --  Create a lead ads webhook subscription.
+   --  Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.
    --  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
    --  - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.
+   --  - For data security, egress lead data is encrypted with AES-256-GCM.
    --  
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Ad_Accounts_Subscriptions_Post
       (Server : in out Server_Type;
@@ -1892,8 +2602,11 @@ package body .Servers is
    end Ad_Accounts_Subscriptions_Post;
 
    --  Get lead form by id
+   --  <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+   --  
    --  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.
-   --  Retrieving an advertiser's lead form will only contain results if you're a part of the Lead ads beta. If you're interested in joining the beta, please reach out to your Pinterest account manager.
+   --  
+   --  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
    overriding
    procedure Lead_Form_Get
       (Server : in out Server_Type;
@@ -1909,7 +2622,7 @@ package body .Servers is
    --  Create lead form test data based on the list of answers provided as part of the body.
    --  - List of answers should follow the questions creation order.
    --  
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Lead_Form_Test_Create
       (Server : in out Server_Type;
@@ -1922,9 +2635,29 @@ package body .Servers is
       null;
    end Lead_Form_Test_Create;
 
-   --  Get lead forms
-   --  Gets all Lead Forms associated with an ad account ID.
-   --  Retrieving an advertiser's list of lead forms will only contain results if you're a part of the Lead ads beta.  If you're interested in joining the beta, please reach out to your Pinterest account manager.
+   --  Create lead forms
+   --  <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+   --  
+   --  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.
+   --  
+   --  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+   overriding
+   procedure Lead_Forms_Create
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Lead_Form_Create_Request : in .Models.LeadFormCreateRequest_Type_Vectors.Vector;
+       Result  : out .Models.LeadFormArrayResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Lead_Forms_Create;
+
+   --  List lead forms
+   --  <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+   --  
+   --  List lead forms associated with an ad account ID.
+   --  
+   --  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
    overriding
    procedure Lead_Forms_List
       (Server : in out Server_Type;
@@ -1938,6 +2671,61 @@ package body .Servers is
       null;
    end Lead_Forms_List;
 
+   --  Update lead forms
+   --  <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+   --  
+   --  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.
+   --  
+   --  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+   overriding
+   procedure Lead_Forms_Update
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Lead_Form_Update_Request : in .Models.LeadFormUpdateRequest_Type_Vectors.Vector;
+       Result  : out .Models.LeadFormArrayResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Lead_Forms_Update;
+
+   --  Create a request to export leads collected from a lead ad
+   --  <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+   --  
+   --  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.
+   --  
+   --  Note: Lead ad data will be available up to 30 days after the lead has been submitted.
+   --  
+   --  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+   overriding
+   procedure Leads_Export_Create
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Leads_Export_Create_Request_Type : in LeadsExportCreateRequest_Type;
+       Result  : out .Models.LeadsExportCreateResponse_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Leads_Export_Create;
+
+   --  Get the lead export from the lead export create call
+   --  <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+   --  
+   --  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.
+   --  
+   --  Note: Lead ad data will be available up to 30 days after the lead has been submitted.
+   --  
+   --  For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+   overriding
+   procedure Leads_Export_Get
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Leads_Export_Id : in Swagger.UString;
+       Result  : out .Models.LeadsExportResponseData_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Leads_Export_Get;
+
    --  Register media upload
    --  Register your intent to upload media
    --  
@@ -1950,7 +2738,7 @@ package body .Servers is
    --  parameter and also include all of the parameters from
    --  <tt>upload_parameters</tt>.
    --  
-   --  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+   --  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
    overriding
    procedure Media_Create
       (Server : in out Server_Type;
@@ -1964,7 +2752,7 @@ package body .Servers is
    --  Get media upload details
    --  Get details for a registered media upload, including its current status.
    --  
-   --  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+   --  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
    overriding
    procedure Media_Get
       (Server : in out Server_Type;
@@ -1978,7 +2766,7 @@ package body .Servers is
    --  List media uploads
    --  List media uploads filtered by given parameters.
    --  
-   --  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+   --  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
    overriding
    procedure Media_List
       (Server : in out Server_Type;
@@ -1995,9 +2783,11 @@ package body .Servers is
    --  
    --  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).
    --  
-   --  See <a href='/docs/getting-started/authentication/'>Authentication</a> for more.
+   --  See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.
    --  
-   --  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+   --  
+   --  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
    overriding
    procedure Oauth_Token
       (Server : in out Server_Type;
@@ -2036,11 +2826,39 @@ package body .Servers is
       null;
    end Order_Lines_List;
 
+   --  Get multiple Pin analytics
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+   --  
+   --  Get analytics for multiple pins owned by the "operation user_account" - or on a group board that has been shared with this account.
+   --  - The maximum number of pins supported in a single request is 100.
+   --  - By default, the "operation user_account" is the token user_account.
+   --  
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
+   --  
+   --  - For Pins on public or protected boards: Admin, Analyst.
+   --  - For Pins on secret boards: Admin.
+   --  
+   --  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+   overriding
+   procedure Multi_Pins_Analytics
+      (Server : in out Server_Type;
+       Pin_Ids : in Swagger.UString_Vectors.Vector;
+       Start_Date : in Swagger.Date;
+       End_Date : in Swagger.Date;
+       Metric_Types : in .Models.PinsAnalyticsMetricTypesParameterInner_Type_Vectors.Vector;
+       App_Types : in Swagger.Nullable_UString;
+       Ad_Account_Id : in Swagger.Nullable_UString;
+       Result  : out ;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Multi_Pins_Analytics;
+
    --  Get Pin analytics
    --  Get analytics for a Pin owned by the "operation user_account" - or on a group board that has been shared with this account.
    --  - By default, the "operation user_account" is the token user_account.
    --  
-   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
+   --  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
    --  
    --  - For Pins on public or protected boards: Admin, Analyst.
    --  - For Pins on secret boards: Admin.
@@ -2067,9 +2885,9 @@ package body .Servers is
    --  
    --  Note: If the current "operation user_account" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).
    --  
-   --  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.
+   --  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.
    --  
-   --  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+   --  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
    overriding
    procedure Pins_Create
       (Server : in out Server_Type;
@@ -2121,9 +2939,12 @@ package body .Servers is
 
    --  List Pins
    --  Get a list of the Pins owned by the "operation user_account".
-   --  - By default, the "operation user_account" is the token user_account.
-   --  - All Pins owned by the "operation user_account" are included, regardless of who owns the board they are on.
+   --    - By default, the "operation user_account" is the token user_account.
+   --    - All Pins owned by the "operation user_account" are included, regardless of who owns the board they are on.
    --  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
+   --  
+   --  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your
+   --  request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.
    overriding
    procedure Pins_List
       (Server : in out Server_Type;
@@ -2172,7 +2993,7 @@ package body .Servers is
    --  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.
    --  - For Pins on secret boards: Owner, Admin.
    --  
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Pins_Update
       (Server : in out Server_Type;
@@ -2271,19 +3092,6 @@ package body .Servers is
       null;
    end Product_Groups_Analytics;
 
-   --  Get catalog product groups
-   --  This endpoint is completely deprecated. Please use <a href='/docs/api/v5/#operation/catalogs_product_groups/list'>List product groups</a> from Catalogs API instead.
-   overriding
-   procedure Ad_Accounts_Catalogs_Product_Groups_List
-      (Server : in out Server_Type;
-       Ad_Account_Id : in Swagger.UString;
-       Feed_Profile_Id : in Swagger.Nullable_UString;
-       Result  : out .Models.AdAccountsCatalogsProductGroupsList200Response_Type;
-       Context : in out Swagger.Servers.Context_Type) is
-   begin
-      null;
-   end Ad_Accounts_Catalogs_Product_Groups_List;
-
    --  Get ad accounts countries
    --  Get Ad Accounts countries
    overriding
@@ -2299,7 +3107,7 @@ package body .Servers is
    --  Get available metrics' definitions
    --  Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints.
    --  The `display_name` attribute will match how the metric is named in our native tools like Ads Manager.
-   --  See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+   --  See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
    overriding
    procedure Delivery_Metrics_Get
       (Server : in out Server_Type;
@@ -2325,7 +3133,7 @@ package body .Servers is
    --  Get lead form questions
    --  Get a list of all lead form question type names. Some questions might not be used.
    --  
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    overriding
    procedure Lead_Form_Questions_Get
       (Server : in out Server_Type
@@ -2357,6 +3165,7 @@ package body .Servers is
        Client_Id : in Swagger.Nullable_UString;
        Oauth_Signature : in Swagger.Nullable_UString;
        Timestamp : in Swagger.Nullable_UString;
+       Ad_Account_Id : in Swagger.Nullable_UString;
        Result  : out ;
        Context : in out Swagger.Servers.Context_Type) is
    begin
@@ -2364,7 +3173,7 @@ package body .Servers is
    end Targeting_Options_Get;
 
    --  Search pins by a given search term
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    --  
    --  Get the top 10 Pins by a given search term.
    overriding
@@ -2385,7 +3194,7 @@ package body .Servers is
    --  Search for boards for the "operation user_account". This includes boards of all board types.
    --  - By default, the "operation user_account" is the token user_account.
    --  
-   --  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+   --  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
    overriding
    procedure Search_User_Boards_Get
       (Server : in out Server_Type;
@@ -2403,7 +3212,7 @@ package body .Servers is
    --  Search for pins for the "operation user_account".
    --  - By default, the "operation user_account" is the token user_account.
    --  
-   --  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+   --  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
    overriding
    procedure Search_User_Pins_List
       (Server : in out Server_Type;
@@ -2415,6 +3224,51 @@ package body .Servers is
    begin
       null;
    end Search_User_Pins_List;
+
+   --  Create targeting templates
+   --  <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,
+   --   keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>
+   --   <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse
+   --    performance targeting from prior campaigns for new campaigns.</p>
+   overriding
+   procedure Targeting_Template_Create
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Targeting_Template_Create_Type : in TargetingTemplateCreate_Type;
+       Result  : out .Models.TargetingTemplateGetResponseData_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Targeting_Template_Create;
+
+   --  List targeting templates
+   --  Get a list of the targeting templates in the specified <code>ad_account_id</code>
+   overriding
+   procedure Targeting_Template_List
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Order : in Swagger.Nullable_UString;
+       Include_Sizing : in Swagger.Nullable_Boolean;
+       Search_Query : in Swagger.Nullable_UString;
+       Page_Size : in Swagger.Nullable_Integer;
+       Bookmark : in Swagger.Nullable_UString;
+       Result  : out .Models.TargetingTemplateList200Response_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Targeting_Template_List;
+
+   --  Update targeting templates
+   --  <p>Update the targeting template given advertiser ID and targeting template ID</p>
+   overriding
+   procedure Targeting_Template_Update
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.UString;
+       Targeting_Template_Update_Request_Type : in TargetingTemplateUpdateRequest_Type;
+       Context : in out Swagger.Servers.Context_Type) is
+   begin
+      null;
+   end Targeting_Template_Update;
 
    --  List related terms
    --  Get a list of terms logically related to each input term. <p/>
@@ -2473,7 +3327,7 @@ package body .Servers is
    end Boards_User_Follows_List;
 
    --  Follow user
-   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+   --  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
    --  
    --  Use this request, as a signed-in user, to follow another user.
    overriding
@@ -2617,7 +3471,7 @@ package body .Servers is
    --  Get account information for the "operation user_account"
    --  - By default, the "operation user_account" is the token user_account.
    --  
-   --  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+   --  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
    overriding
    procedure User_Account_Get
       (Server : in out Server_Type;
@@ -2663,6 +3517,7 @@ package body .Servers is
    procedure Verify_Website_Update
       (Server : in out Server_Type;
        User_Website_Verify_Request_Type : in UserWebsiteVerifyRequest_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
        Result  : out .Models.UserWebsiteSummary_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin
@@ -2673,8 +3528,8 @@ package body .Servers is
    --  Get verification code for user to install on the website to claim it.
    overriding
    procedure Website_Verification_Get
-      (Server : in out Server_Type
-       ;
+      (Server : in out Server_Type;
+       Ad_Account_Id : in Swagger.Nullable_UString;
        Result  : out .Models.UserWebsiteVerificationCode_Type;
        Context : in out Swagger.Servers.Context_Type) is
    begin

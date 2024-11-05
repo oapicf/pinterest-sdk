@@ -19,6 +19,7 @@ import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
+import org.openapitools.client.models.CatalogsStatus
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.NullableCurrency
 import org.openapitools.client.models.ProductAvailabilityType
@@ -38,6 +39,7 @@ import com.squareup.moshi.JsonClass
  * @param preferredProcessingSchedule 
  * @param defaultCountry 
  * @param defaultAvailability 
+ * @param status 
  */
 
 
@@ -70,7 +72,13 @@ data class CatalogsFeedsCreateRequest (
     val defaultCountry: Country? = null,
 
     @Json(name = "default_availability")
-    val defaultAvailability: ProductAvailabilityType? = null
+    val defaultAvailability: ProductAvailabilityType? = null,
 
-)
+    @Json(name = "status")
+    val status: CatalogsStatus? = null
+
+) {
+
+
+}
 

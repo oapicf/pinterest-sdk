@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsProductGroupMultipleCountriesCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupMultipleCountriesCriteria   {
   private @Valid List<Country> values = new ArrayList<>();
-  private @Valid Boolean negated = false;
+  private Boolean negated = false;
 
   /**
    **/
@@ -34,8 +34,7 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("values")
-  @NotNull
-  public List<Country> getValues() {
+  @NotNull public List<Country> getValues() {
     return values;
   }
 

@@ -3,7 +3,7 @@ Protected Class TargetingTypeFilter
 
 	#tag Property, Flags = &h0
 		#tag Note
-			List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+			List of targeting types. Requires `level` to be a value ending in `_TARGETING`. ["AGE_BUCKET_AND_GENDER"] is in BETA and not yet available to all users.
 		#tag EndNote
 		targeting_types() As AdsAnalyticsTargetingType
 	#tag EndProperty

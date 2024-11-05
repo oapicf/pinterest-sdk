@@ -3,9 +3,9 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AdCommonTrackingUrls
-open OpenAPI.Model.CampaignSummaryStatus
 open OpenAPI.Model.EntityStatus
+open OpenAPI.Model.TrackingUrls
+open OpenAPI.Model.bool option
 open OpenAPI.Model.int option
 open OpenAPI.Model.string option
 
@@ -28,19 +28,17 @@ module CampaignCreateCommon =
     [<JsonProperty(PropertyName = "order_line_id")>]
     OrderLineId : string option;
     [<JsonProperty(PropertyName = "tracking_urls")>]
-    TrackingUrls : AdCommonTrackingUrls;
+    TrackingUrls : TrackingUrls;
     [<JsonProperty(PropertyName = "start_time")>]
     StartTime : int option;
     [<JsonProperty(PropertyName = "end_time")>]
     EndTime : int option;
-    [<JsonProperty(PropertyName = "summary_status")>]
-    SummaryStatus : CampaignSummaryStatus;
     [<JsonProperty(PropertyName = "is_flexible_daily_budgets")>]
-    IsFlexibleDailyBudgets : bool;
+    IsFlexibleDailyBudgets : bool option;
     [<JsonProperty(PropertyName = "default_ad_group_budget_in_micro_currency")>]
     DefaultAdGroupBudgetInMicroCurrency : int option;
     [<JsonProperty(PropertyName = "is_automated_campaign")>]
-    IsAutomatedCampaign : bool;
+    IsAutomatedCampaign : bool option;
   }
 
   //#endregion

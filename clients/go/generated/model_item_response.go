@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"fmt"
 )
+
+// checks if the ItemResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ItemResponse{}
 
 // ItemResponse Object describing an item record
 type ItemResponse struct {
@@ -30,6 +33,22 @@ func (dst *ItemResponse) UnmarshalJSON(data []byte) error {
 	err = json.Unmarshal(data, &jsonDict)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// check if the discriminator value is 'CREATIVE_ASSETS'
+	if jsonDict["catalog_type"] == "CREATIVE_ASSETS" {
+		// try to unmarshal JSON data into CatalogsCreativeAssetsItemErrorResponse
+		err = json.Unmarshal(data, &dst.CatalogsCreativeAssetsItemErrorResponse);
+		if err == nil {
+			jsonCatalogsCreativeAssetsItemErrorResponse, _ := json.Marshal(dst.CatalogsCreativeAssetsItemErrorResponse)
+			if string(jsonCatalogsCreativeAssetsItemErrorResponse) == "{}" { // empty struct
+				dst.CatalogsCreativeAssetsItemErrorResponse = nil
+			} else {
+				return nil // data stored in dst.CatalogsCreativeAssetsItemErrorResponse, return on the first match
+			}
+		} else {
+			dst.CatalogsCreativeAssetsItemErrorResponse = nil
+		}
 	}
 
 	// check if the discriminator value is 'HOTEL'
@@ -136,6 +155,18 @@ func (src *ItemResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, nil // no data in anyOf schemas
+}
+
+func (src ItemResponse) ToMap() (map[string]interface{}, error) {
+	if src.ItemResponseAnyOf != nil {
+		return src.ItemResponseAnyOf.ToMap()
+	}
+
+	if src.ItemResponseAnyOf1 != nil {
+		return src.ItemResponseAnyOf1.ToMap()
+	}
+
+    return nil, nil // no data in anyOf schemas
 }
 
 type NullableItemResponse struct {

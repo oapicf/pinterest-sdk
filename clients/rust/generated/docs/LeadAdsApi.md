@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > ad_accounts_subscriptions_slash_del_by_id(ad_account_id, subscription_id)
 Delete lead ads subscription
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > models::AdAccountGetSubscriptionResponse ad_accounts_subscriptions_slash_get_by_id(ad_account_id, subscription_id)
 Get lead ads subscription
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > models::AdAccountsSubscriptionsGetList200Response ad_accounts_subscriptions_slash_get_list(ad_account_id, page_size, bookmark)
 Get lead ads subscriptions
 
-Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Parameters
 
@@ -86,7 +86,7 @@ Get the advertiser's list of lead ads subscriptions. - Only requests for the OWN
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
 
 ### Return type
@@ -110,7 +110,7 @@ Name | Type | Description  | Required | Notes
 > models::AdAccountCreateSubscriptionResponse ad_accounts_subscriptions_slash_post(ad_account_id, ad_account_create_subscription_request)
 Create lead ads subscription
 
-Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Parameters
 

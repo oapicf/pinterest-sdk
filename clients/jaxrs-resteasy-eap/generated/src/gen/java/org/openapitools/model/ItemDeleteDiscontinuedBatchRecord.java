@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item batch record to discontinue items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Object describing an item batch record to discontinue items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemDeleteDiscontinuedBatchRecord   {
   
   private String itemId;

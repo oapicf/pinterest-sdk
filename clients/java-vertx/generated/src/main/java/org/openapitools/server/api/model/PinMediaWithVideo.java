@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.server.api.model.ImageMetadataImages;
 import org.openapitools.server.api.model.PinMedia;
+import org.openapitools.server.api.model.PinMediaWithImageAllOfImages;
 
 /**
  * Pin with video.
@@ -14,7 +14,7 @@ import org.openapitools.server.api.model.PinMedia;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaWithVideo extends PinMedia  {
   
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
   private String coverImageUrl;
   private String videoUrl;
   private BigDecimal duration;
@@ -25,7 +25,7 @@ public class PinMediaWithVideo extends PinMedia  {
 
   }
 
-  public PinMediaWithVideo (ImageMetadataImages images, String coverImageUrl, String videoUrl, BigDecimal duration, Integer height, Integer width) {
+  public PinMediaWithVideo (PinMediaWithImageAllOfImages images, String coverImageUrl, String videoUrl, BigDecimal duration, Integer height, Integer width) {
     this.images = images;
     this.coverImageUrl = coverImageUrl;
     this.videoUrl = videoUrl;
@@ -36,10 +36,10 @@ public class PinMediaWithVideo extends PinMedia  {
 
     
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

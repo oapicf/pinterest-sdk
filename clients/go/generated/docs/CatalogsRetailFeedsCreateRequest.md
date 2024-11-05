@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
+**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -294,6 +295,31 @@ HasDefaultAvailability returns a boolean if a field has been set.
 `func (o *CatalogsRetailFeedsCreateRequest) UnsetDefaultAvailability()`
 
 UnsetDefaultAvailability ensures that no value is present for DefaultAvailability, not even an explicit nil
+### GetStatus
+
+`func (o *CatalogsRetailFeedsCreateRequest) GetStatus() CatalogsStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsRetailFeedsCreateRequest) GetStatusOk() (*CatalogsStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsRetailFeedsCreateRequest) SetStatus(v CatalogsStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CatalogsRetailFeedsCreateRequest) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

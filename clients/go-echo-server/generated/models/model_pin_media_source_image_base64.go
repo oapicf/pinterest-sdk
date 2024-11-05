@@ -7,7 +7,7 @@ type PinMediaSourceImageBase64 struct {
 
 	ContentType string `json:"content_type"`
 
-	Data string `json:"data"`
+	Data string `json:"data" validate:"regexp=[a-zA-Z0-9+\\/=]+"`
 
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard bool `json:"is_standard,omitempty"`

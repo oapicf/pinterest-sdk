@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * SSIOCreateInsertionOrderRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOCreateInsertionOrderRequest {
 
   private String startDate;
@@ -137,7 +137,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * Starting date of time period. Format: YYYY-MM-DD
    * @return startDate
-  */
+   */
   @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "start_date", example = "2020-12-20", description = "Starting date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("start_date")
@@ -157,7 +157,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * End date of time period. Format: YYYY-MM-DD
    * @return endDate
-  */
+   */
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "end_date", example = "2020-12-20", description = "End date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
@@ -177,7 +177,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The po number
    * @return poNumber
-  */
+   */
   @NotNull 
   @Schema(name = "po_number", description = "The po number", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("po_number")
@@ -197,7 +197,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * If Budget order line, the budget amount.
    * @return budgetAmount
-  */
+   */
   @Valid 
   @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_amount")
@@ -217,7 +217,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The billing contact first name
    * @return billingContactFirstname
-  */
+   */
   @NotNull 
   @Schema(name = "billing_contact_firstname", description = "The billing contact first name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billing_contact_firstname")
@@ -237,7 +237,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The billing contact last name
    * @return billingContactLastname
-  */
+   */
   @NotNull 
   @Schema(name = "billing_contact_lastname", description = "The billing contact last name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billing_contact_lastname")
@@ -257,7 +257,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The billing contact email
    * @return billingContactEmail
-  */
+   */
   @NotNull 
   @Schema(name = "billing_contact_email", example = "test@example", description = "The billing contact email", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billing_contact_email")
@@ -277,7 +277,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The media contact first name
    * @return mediaContactFirstname
-  */
+   */
   @NotNull 
   @Schema(name = "media_contact_firstname", description = "The media contact first name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_contact_firstname")
@@ -297,7 +297,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The media contact last name
    * @return mediaContactLastname
-  */
+   */
   @NotNull 
   @Schema(name = "media_contact_lastname", description = "The media contact last name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_contact_lastname")
@@ -317,7 +317,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The media contact email
    * @return mediaContactEmail
-  */
+   */
   @NotNull 
   @Schema(name = "media_contact_email", example = "test@example", description = "The media contact email", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_contact_email")
@@ -337,7 +337,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * URL link for agency
    * @return agencyLink
-  */
+   */
   
   @Schema(name = "agency_link", description = "URL link for agency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("agency_link")
@@ -357,7 +357,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The email of user submitting the insertion order
    * @return userEmail
-  */
+   */
   
   @Schema(name = "user_email", example = "test@example", description = "The email of user submitting the insertion order", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user_email")
@@ -377,7 +377,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The UTC timestamp (to the nearest sec) of when terms were accepted
    * @return acceptedTermsTime
-  */
+   */
   
   @Schema(name = "accepted_terms_time", description = "The UTC timestamp (to the nearest sec) of when terms were accepted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("accepted_terms_time")
@@ -397,7 +397,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The pmp id
    * @return pmpId
-  */
+   */
   @NotNull 
   @Schema(name = "pmp_id", description = "The pmp id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("pmp_id")
@@ -417,7 +417,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The order name
    * @return orderName
-  */
+   */
   @NotNull 
   @Schema(name = "order_name", description = "The order name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("order_name")
@@ -437,7 +437,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * Type can be Budget or Perpetual
    * @return orderLineType
-  */
+   */
   @NotNull 
   @Schema(name = "order_line_type", description = "Type can be Budget or Perpetual", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("order_line_type")
@@ -457,7 +457,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The SFDC id for the terms
    * @return acceptedTermsId
-  */
+   */
   @NotNull 
   @Schema(name = "accepted_terms_id", description = "The SFDC id for the terms", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("accepted_terms_id")
@@ -477,7 +477,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The bill-to company id
    * @return billtoCompanyId
-  */
+   */
   @NotNull 
   @Schema(name = "billto_company_id", description = "The bill-to company id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billto_company_id")
@@ -497,7 +497,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The bill-to business address id
    * @return billtoBusinessAddressId
-  */
+   */
   @NotNull 
   @Schema(name = "billto_business_address_id", description = "The bill-to business address id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billto_business_address_id")
@@ -517,7 +517,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * The bill-to billing address id
    * @return billtoBillingAddressId
-  */
+   */
   @NotNull 
   @Schema(name = "billto_billing_address_id", description = "The bill-to billing address id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billto_billing_address_id")
@@ -537,7 +537,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * If Ongoing (perpetual) order line, the estimated monthly spend
    * @return estimatedMonthlySpend
-  */
+   */
   @Valid 
   @Schema(name = "estimated_monthly_spend", description = "If Ongoing (perpetual) order line, the estimated monthly spend", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("estimated_monthly_spend")
@@ -557,7 +557,7 @@ public class SSIOCreateInsertionOrderRequest {
   /**
    * Get currencyInfo
    * @return currencyInfo
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "currency_info", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("currency_info")

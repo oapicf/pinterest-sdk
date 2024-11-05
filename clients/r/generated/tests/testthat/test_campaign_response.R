@@ -61,7 +61,7 @@ test_that("order_line_id", {
 })
 
 test_that("tracking_urls", {
-  # tests for the property `tracking_urls` (AdCommonTrackingUrls)
+  # tests for the property `tracking_urls` (TrackingUrls)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`tracking_urls`, "EXPECTED_RESULT")
@@ -83,11 +83,12 @@ test_that("end_time", {
   #expect_equal(model.instance$`end_time`, "EXPECTED_RESULT")
 })
 
-test_that("summary_status", {
-  # tests for the property `summary_status` (CampaignSummaryStatus)
+test_that("is_flexible_daily_budgets", {
+  # tests for the property `is_flexible_daily_budgets` (character)
+  # Determine if a campaign has flexible daily budgets setup.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`summary_status`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`is_flexible_daily_budgets`, "EXPECTED_RESULT")
 })
 
 test_that("objective_type", {
@@ -121,18 +122,17 @@ test_that("type", {
   #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
 })
 
-test_that("is_flexible_daily_budgets", {
-  # tests for the property `is_flexible_daily_budgets` (character)
-  # Determines if a campaign has flexible daily budgets setup.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`is_flexible_daily_budgets`, "EXPECTED_RESULT")
-})
-
 test_that("is_campaign_budget_optimization", {
   # tests for the property `is_campaign_budget_optimization` (character)
   # Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_campaign_budget_optimization`, "EXPECTED_RESULT")
+})
+
+test_that("summary_status", {
+  # tests for the property `summary_status` (CampaignSummaryStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`summary_status`, "EXPECTED_RESULT")
 })

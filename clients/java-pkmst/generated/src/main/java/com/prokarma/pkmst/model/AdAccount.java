@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdAccount
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccount   {
   @JsonProperty("id")
   private String id;
@@ -55,10 +55,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getId() {
     return id;
@@ -73,10 +73,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getName() {
     return name;
@@ -91,10 +91,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Get owner
    * @return owner
-  **/
+   */
   @ApiModelProperty(value = "")
   public AdAccountOwner getOwner() {
     return owner;
@@ -109,10 +109,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Get country
    * @return country
-  **/
+   */
   @ApiModelProperty(value = "")
   public Country getCountry() {
     return country;
@@ -127,10 +127,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Get currency
    * @return currency
-  **/
+   */
   @ApiModelProperty(value = "")
   public Currency getCurrency() {
     return currency;
@@ -153,10 +153,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Get permissions
    * @return permissions
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<BusinessAccessRole> getPermissions() {
     return permissions;
@@ -171,10 +171,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Creation time. Unix timestamp in seconds.
    * @return createdTime
-  **/
+   */
   @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
   public Integer getCreatedTime() {
     return createdTime;
@@ -189,10 +189,10 @@ public class AdAccount   {
     return this;
   }
 
-   /**
+  /**
    * Last update time. Unix timestamp in seconds.
    * @return updatedTime
-  **/
+   */
   @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
   public Integer getUpdatedTime() {
     return updatedTime;

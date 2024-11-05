@@ -13,9 +13,13 @@ import scala.collection.immutable.Seq
  * This field includes all quiz data including questions, options, and results.
  * @param questions 
  * @param results 
+ * @param tieUnderscorebreakerUnderscoretype Quiz ad tie breaker type, default is RANDOM
+ * @param tieUnderscorebreakerUnderscorecustomUnderscoreresult 
  */
 case class QuizPinData(questions: Option[Seq[QuizPinQuestion]],
-                results: Option[Seq[QuizPinResult]]
+                results: Option[Seq[QuizPinResult]],
+                tieUnderscorebreakerUnderscoretype: Option[String],
+                tieUnderscorebreakerUnderscorecustomUnderscoreresult: Option[QuizPinResult]
                 )
 
 object QuizPinData {

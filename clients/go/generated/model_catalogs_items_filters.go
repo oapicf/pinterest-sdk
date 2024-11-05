@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,13 +13,22 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // CatalogsItemsFilters - struct for CatalogsItemsFilters
 type CatalogsItemsFilters struct {
+	CatalogsCreativeAssetsItemsFilter *CatalogsCreativeAssetsItemsFilter
 	CatalogsHotelItemsFilter *CatalogsHotelItemsFilter
 	CatalogsRetailItemsFilter *CatalogsRetailItemsFilter
+}
+
+// CatalogsCreativeAssetsItemsFilterAsCatalogsItemsFilters is a convenience function that returns CatalogsCreativeAssetsItemsFilter wrapped in CatalogsItemsFilters
+func CatalogsCreativeAssetsItemsFilterAsCatalogsItemsFilters(v *CatalogsCreativeAssetsItemsFilter) CatalogsItemsFilters {
+	return CatalogsItemsFilters{
+		CatalogsCreativeAssetsItemsFilter: v,
+	}
 }
 
 // CatalogsHotelItemsFilterAsCatalogsItemsFilters is a convenience function that returns CatalogsHotelItemsFilter wrapped in CatalogsItemsFilters
@@ -41,6 +50,23 @@ func CatalogsRetailItemsFilterAsCatalogsItemsFilters(v *CatalogsRetailItemsFilte
 func (dst *CatalogsItemsFilters) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsItemsFilter
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsItemsFilter)
+	if err == nil {
+		jsonCatalogsCreativeAssetsItemsFilter, _ := json.Marshal(dst.CatalogsCreativeAssetsItemsFilter)
+		if string(jsonCatalogsCreativeAssetsItemsFilter) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsItemsFilter = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsItemsFilter); err != nil {
+				dst.CatalogsCreativeAssetsItemsFilter = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsCreativeAssetsItemsFilter = nil
+	}
+
 	// try to unmarshal data into CatalogsHotelItemsFilter
 	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelItemsFilter)
 	if err == nil {
@@ -48,7 +74,11 @@ func (dst *CatalogsItemsFilters) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsHotelItemsFilter) == "{}" { // empty struct
 			dst.CatalogsHotelItemsFilter = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsHotelItemsFilter); err != nil {
+				dst.CatalogsHotelItemsFilter = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsHotelItemsFilter = nil
@@ -61,7 +91,11 @@ func (dst *CatalogsItemsFilters) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsRetailItemsFilter) == "{}" { // empty struct
 			dst.CatalogsRetailItemsFilter = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsRetailItemsFilter); err != nil {
+				dst.CatalogsRetailItemsFilter = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsRetailItemsFilter = nil
@@ -69,6 +103,7 @@ func (dst *CatalogsItemsFilters) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.CatalogsCreativeAssetsItemsFilter = nil
 		dst.CatalogsHotelItemsFilter = nil
 		dst.CatalogsRetailItemsFilter = nil
 
@@ -82,6 +117,10 @@ func (dst *CatalogsItemsFilters) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsItemsFilters) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsItemsFilter != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsItemsFilter)
+	}
+
 	if src.CatalogsHotelItemsFilter != nil {
 		return json.Marshal(&src.CatalogsHotelItemsFilter)
 	}
@@ -98,6 +137,10 @@ func (obj *CatalogsItemsFilters) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.CatalogsCreativeAssetsItemsFilter != nil {
+		return obj.CatalogsCreativeAssetsItemsFilter
+	}
+
 	if obj.CatalogsHotelItemsFilter != nil {
 		return obj.CatalogsHotelItemsFilter
 	}

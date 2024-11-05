@@ -13,7 +13,7 @@ API.Client.ProductGroupPromotionCreateRequest = function() {}
 API.Client.ProductGroupPromotionCreateRequest.prototype.adGroupId;
 
 /**
- * @type {!Array<!API.Client.ProductGroupPromotion>}
+ * @type {!Array<!API.Client.ProductGroupPromotionCreateRequestElement>}
  * @export
  */
 API.Client.ProductGroupPromotionCreateRequest.prototype.productGroupPromotion;

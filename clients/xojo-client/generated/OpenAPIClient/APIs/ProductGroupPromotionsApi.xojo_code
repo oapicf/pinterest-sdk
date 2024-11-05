@@ -278,7 +278,7 @@ Protected Class ProductGroupPromotionsApi
 		  // - parameter productGroupPromotionIds: (query) List of Product group promotion Ids. (optional, default to Nil)
 		  // - parameter entityStatuses: (query) Entity status (optional, default to ["ACTIVE","PAUSED"])
 		  // - parameter adGroupId: (query) Ad group Id. (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  //
@@ -993,6 +993,8 @@ Protected Class ProductGroupPromotionsApi
 		      Return "VIDEO_P95_COMBINED_2"
 		    Case ColumnsEnum_ProductGroupsAnalytics.VideoMrcViews2
 		      Return "VIDEO_MRC_VIEWS_2"
+		    Case ColumnsEnum_ProductGroupsAnalytics.PaidVideoViewableRate
+		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_ProductGroupsAnalytics.VideoLength
 		      Return "VIDEO_LENGTH"
 		    Case ColumnsEnum_ProductGroupsAnalytics.EcpvInDollar
@@ -1057,6 +1059,8 @@ Protected Class ProductGroupPromotionsApi
 		      Return "COST_PER_LEAD"
 		    Case ColumnsEnum_ProductGroupsAnalytics.QuizCompleted
 		      Return "QUIZ_COMPLETED"
+		    Case ColumnsEnum_ProductGroupsAnalytics.QuizPinResultOpen
+		      Return "QUIZ_PIN_RESULT_OPEN"
 		    Case ColumnsEnum_ProductGroupsAnalytics.QuizCompletionRate
 		      Return "QUIZ_COMPLETION_RATE"
 		    Case ColumnsEnum_ProductGroupsAnalytics.ShowcasePinClickthrough
@@ -1314,6 +1318,7 @@ Protected Class ProductGroupPromotionsApi
         VideoP75Combined2
         VideoP95Combined2
         VideoMrcViews2
+        PaidVideoViewableRate
         VideoLength
         EcpvInDollar
         EcpcvInDollar
@@ -1346,6 +1351,7 @@ Protected Class ProductGroupPromotionsApi
         Leads
         CostPerLead
         QuizCompleted
+        QuizPinResultOpen
         QuizCompletionRate
         ShowcasePinClickthrough
         ShowcaseSubpageClickthrough

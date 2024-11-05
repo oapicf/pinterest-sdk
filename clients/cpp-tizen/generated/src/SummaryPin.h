@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "SummaryPin_media.h"
+#include "PinMedia.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -48,11 +48,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	SummaryPin_media getMedia();
+	PinMedia getMedia();
 
 	/*! \brief Set 
 	 */
-	void setMedia(SummaryPin_media  media);
+	void setMedia(PinMedia  media);
 	/*! \brief Get 
 	 */
 	std::string getAltText();
@@ -83,7 +83,7 @@ public:
 	void setDescription(std::string  description);
 
 private:
-	SummaryPin_media media;
+	PinMedia media;
 	std::string alt_text;
 	std::string link;
 	std::string title;

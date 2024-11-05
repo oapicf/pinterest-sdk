@@ -22,13 +22,13 @@ pinterest_rest_api_ssio_create_insertion_order_request_ORDERLINETYPE_e ssio_crea
     return 0;
 }
 char* ssio_create_insertion_order_request_currency_info_ToString(pinterest_rest_api_ssio_create_insertion_order_request__e currency_info) {
-    char* currency_infoArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP" };
+    char* currency_infoArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP", "INR", "TRY" };
     return currency_infoArray[currency_info];
 }
 
 pinterest_rest_api_ssio_create_insertion_order_request__e ssio_create_insertion_order_request_currency_info_FromString(char* currency_info){
     int stringToReturn = 0;
-    char *currency_infoArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP" };
+    char *currency_infoArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP", "INR", "TRY" };
     size_t sizeofArray = sizeof(currency_infoArray) / sizeof(currency_infoArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(currency_info, currency_infoArray[stringToReturn]) == 0) {

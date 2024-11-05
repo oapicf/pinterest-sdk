@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * ImageMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageMetadata   {
   @JsonProperty("item_type")
   private String itemType;
@@ -38,10 +38,10 @@ public class ImageMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get itemType
    * @return itemType
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getItemType() {
     return itemType;
@@ -56,10 +56,10 @@ public class ImageMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
@@ -74,10 +74,10 @@ public class ImageMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -92,10 +92,10 @@ public class ImageMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get link
    * @return link
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getLink() {
     return link;
@@ -110,10 +110,10 @@ public class ImageMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get images
    * @return images
-  **/
+   */
   @ApiModelProperty(value = "")
   public ImageMetadataImages getImages() {
     return images;

@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,10 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 * The status of the item processing record
 * Values: SUCCESS,FAILURE,PROCESSING
 */
-enum class ItemProcessingStatus(val value: kotlin.String) {
+enum class ItemProcessingStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("SUCCESS") SUCCESS("SUCCESS"),
-    @JsonProperty("FAILURE") FAILURE("FAILURE"),
-    @JsonProperty("PROCESSING") PROCESSING("PROCESSING")
+    SUCCESS("SUCCESS"),
+    FAILURE("FAILURE"),
+    PROCESSING("PROCESSING");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): ItemProcessingStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

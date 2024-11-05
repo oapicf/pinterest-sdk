@@ -124,6 +124,9 @@ module ResourcesApiHandlerParams =
 
       timestamp : string option;
 
+
+      adAccountId : string option;
+
     }
     //#endregion
 

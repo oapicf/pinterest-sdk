@@ -16,7 +16,7 @@ import org.openapitools.model.MediaUpload;
 import org.openapitools.model.MediaUploadDetails;
 import org.openapitools.model.MediaUploadRequest;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map

@@ -65,7 +65,7 @@ data class IntegrationRequestPatch(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("partner_metadata") val partnerMetadata: kotlin.String? = null
-) {
+    ) {
 
 }
 

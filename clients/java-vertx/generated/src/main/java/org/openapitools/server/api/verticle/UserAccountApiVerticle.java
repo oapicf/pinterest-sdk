@@ -462,7 +462,9 @@ public class UserAccountApiVerticle extends AbstractVerticle {
                     return;
                 }
                 UserWebsiteVerifyRequest userWebsiteVerifyRequest = Json.mapper.readValue(userWebsiteVerifyRequestParam.encode(), UserWebsiteVerifyRequest.class);
-                service.verifyWebsiteUpdate(userWebsiteVerifyRequest, result -> {
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId, result -> {
                     if (result.succeeded())
                         message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
                     else {
@@ -481,7 +483,9 @@ public class UserAccountApiVerticle extends AbstractVerticle {
             try {
                 // Workaround for #allParams section clearing the vendorExtensions map
                 String serviceId = "website_verification/get";
-                service.websiteVerificationGet(result -> {
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.websiteVerificationGet(adAccountId, result -> {
                     if (result.succeeded())
                         message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
                     else {

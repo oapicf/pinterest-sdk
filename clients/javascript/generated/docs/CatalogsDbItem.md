@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **Date** |  | [optional] 
-**id** | **String** |  | [optional] 
-**updatedAt** | **Date** |  | [optional] 
+**createdAt** | **Date** |  | 
+**id** | **String** |  | 
+**updatedAt** | **Date** |  | 
 
 

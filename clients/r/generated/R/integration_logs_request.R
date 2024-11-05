@@ -15,14 +15,12 @@ IntegrationLogsRequest <- R6::R6Class(
   "IntegrationLogsRequest",
   public = list(
     `logs` = NULL,
-    #' Initialize a new IntegrationLogsRequest class.
-    #'
+
     #' @description
     #' Initialize a new IntegrationLogsRequest class.
     #'
     #' @param logs logs
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`logs`, ...) {
       if (!missing(`logs`)) {
         stopifnot(is.vector(`logs`), length(`logs`) != 0)
@@ -30,13 +28,11 @@ IntegrationLogsRequest <- R6::R6Class(
         self$`logs` <- `logs`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationLogsRequest in JSON format
-    #' @export
     toJSON = function() {
       IntegrationLogsRequestObject <- list()
       if (!is.null(self$`logs`)) {
@@ -45,14 +41,12 @@ IntegrationLogsRequest <- R6::R6Class(
       }
       IntegrationLogsRequestObject
     },
-    #' Deserialize JSON string into an instance of IntegrationLogsRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationLogsRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationLogsRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`logs`)) {
@@ -60,13 +54,11 @@ IntegrationLogsRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationLogsRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`logs`)) {
@@ -81,26 +73,22 @@ IntegrationLogsRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of IntegrationLogsRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationLogsRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationLogsRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`logs` <- ApiClient$new()$deserializeObj(this_object$`logs`, "array[IntegrationLog]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to IntegrationLogsRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to IntegrationLogsRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `logs`
@@ -111,38 +99,39 @@ IntegrationLogsRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for IntegrationLogsRequest: the required field `logs` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of IntegrationLogsRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `logs` is null
       if (is.null(self$`logs`)) {
         return(FALSE)
       }
 
+      if (length(self$`logs`) > 250) {
+        return(FALSE)
+      }
+      if (length(self$`logs`) < 1) {
+        return(FALSE)
+      }
+
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `logs` is null
@@ -150,14 +139,18 @@ IntegrationLogsRequest <- R6::R6Class(
         invalid_fields["logs"] <- "Non-nullable required field `logs` cannot be null."
       }
 
+      if (length(self$`logs`) > 250) {
+        invalid_fields["logs"] <- "Invalid length for `logs`, number of items must be less than or equal to 250."
+      }
+      if (length(self$`logs`) < 1) {
+        invalid_fields["logs"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
+      }
+
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

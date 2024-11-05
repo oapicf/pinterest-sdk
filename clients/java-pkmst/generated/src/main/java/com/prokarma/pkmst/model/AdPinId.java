@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AdPinId
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdPinId   {
   @JsonProperty("pin_id")
   private String pinId;
@@ -24,10 +24,10 @@ public class AdPinId   {
     return this;
   }
 
-   /**
+  /**
    * Pin ID.
    * @return pinId
-  **/
+   */
   @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
   public String getPinId() {
     return pinId;

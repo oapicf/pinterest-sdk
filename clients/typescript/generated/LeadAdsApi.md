@@ -13,28 +13,27 @@ Method | HTTP request | Description
 # **adAccountsSubscriptionsDelById**
 > void adAccountsSubscriptionsDelById()
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, LeadAdsApi } from '';
+import type { LeadAdsApiAdAccountsSubscriptionsDelByIdRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .LeadAdsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new LeadAdsApi(configuration);
 
-let body:.LeadAdsApiAdAccountsSubscriptionsDelByIdRequest = {
-  // string | Unique identifier of an ad account.
+const request: LeadAdsApiAdAccountsSubscriptionsDelByIdRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Unique identifier of a subscription.
+    // Unique identifier of a subscription.
   subscriptionId: "4",
 };
 
-apiInstance.adAccountsSubscriptionsDelById(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.adAccountsSubscriptionsDelById(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -74,28 +73,27 @@ Name | Type | Description  | Notes
 # **adAccountsSubscriptionsGetById**
 > AdAccountGetSubscriptionResponse adAccountsSubscriptionsGetById()
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, LeadAdsApi } from '';
+import type { LeadAdsApiAdAccountsSubscriptionsGetByIdRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .LeadAdsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new LeadAdsApi(configuration);
 
-let body:.LeadAdsApiAdAccountsSubscriptionsGetByIdRequest = {
-  // string | Unique identifier of an ad account.
+const request: LeadAdsApiAdAccountsSubscriptionsGetByIdRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Unique identifier of a subscription.
+    // Unique identifier of a subscription.
   subscriptionId: "4",
 };
 
-apiInstance.adAccountsSubscriptionsGetById(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.adAccountsSubscriptionsGetById(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -135,30 +133,29 @@ Name | Type | Description  | Notes
 # **adAccountsSubscriptionsGetList**
 > AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList()
 
-Get the advertiser\'s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Get the advertiser\'s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, LeadAdsApi } from '';
+import type { LeadAdsApiAdAccountsSubscriptionsGetListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .LeadAdsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new LeadAdsApi(configuration);
 
-let body:.LeadAdsApiAdAccountsSubscriptionsGetListRequest = {
-  // string | Unique identifier of an ad account.
+const request: LeadAdsApiAdAccountsSubscriptionsGetListRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
 };
 
-apiInstance.adAccountsSubscriptionsGetList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.adAccountsSubscriptionsGetList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -167,7 +164,7 @@ apiInstance.adAccountsSubscriptionsGetList(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
 
 
@@ -197,33 +194,35 @@ Name | Type | Description  | Notes
 # **adAccountsSubscriptionsPost**
 > AdAccountCreateSubscriptionResponse adAccountsSubscriptionsPost(adAccountCreateSubscriptionRequest)
 
-Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, LeadAdsApi } from '';
+import type { LeadAdsApiAdAccountsSubscriptionsPostRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .LeadAdsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new LeadAdsApi(configuration);
 
-let body:.LeadAdsApiAdAccountsSubscriptionsPostRequest = {
-  // string | Unique identifier of an ad account.
+const request: LeadAdsApiAdAccountsSubscriptionsPostRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // AdAccountCreateSubscriptionRequest | Subscription to create.
+    // Subscription to create.
   adAccountCreateSubscriptionRequest: {
     webhookUrl: "https://webhook.example.com/xyz",
     leadFormId: "383791336903426390",
     partnerAccessToken: "partnerAccessToken_example",
     partnerRefreshToken: "partnerRefreshToken_example",
+    partnerMetadata: {
+      subscriberKey: "subscriberKey_example",
+    },
   },
 };
 
-apiInstance.adAccountsSubscriptionsPost(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.adAccountsSubscriptionsPost(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

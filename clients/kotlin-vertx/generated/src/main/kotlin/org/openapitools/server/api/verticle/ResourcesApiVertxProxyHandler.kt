@@ -128,8 +128,9 @@ class ResourcesApiVertxProxyHandler(private val vertx: Vertx, private val servic
                     val clientId = ApiHandlerUtils.searchStringInJson(params,"client_id")
                     val oauthSignature = ApiHandlerUtils.searchStringInJson(params,"oauth_signature")
                     val timestamp = ApiHandlerUtils.searchStringInJson(params,"timestamp")
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.targetingOptionsGet(targetingType,clientId,oauthSignature,timestamp,context)
+                        val result = service.targetingOptionsGet(targetingType,clientId,oauthSignature,timestamp,adAccountId,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

@@ -37,7 +37,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-03-14T23:04:30.273794609Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationsApi  {
    private final IntegrationsApiService delegate;
 
@@ -48,7 +48,7 @@ public class IntegrationsApi  {
          String implClass = servletContext.getInitParameter("IntegrationsApi.implementation");
          if (implClass != null && !"".equals(implClass.trim())) {
             try {
-               delegate = (IntegrationsApiService) Class.forName(implClass).newInstance();
+               delegate = (IntegrationsApiService) Class.forName(implClass).getDeclaredConstructor().newInstance();
             } catch (Exception e) {
                throw new RuntimeException(e);
             }
@@ -167,7 +167,7 @@ public class IntegrationsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = IntegrationsGetList200Response.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
     })
-    public Response integrationsGetList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
+    public Response integrationsGetList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.integrationsGetList(bookmark, pageSize, securityContext);
     }

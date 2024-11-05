@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const CatalogsHotelAttributes = require('../models/CatalogsHotelAttributes');
+const CatalogsCreativeAssetsAttributes = require('../models/CatalogsCreativeAssetsAttributes');
 const CatalogsType = require('../models/CatalogsType');
 const ItemResponse_anyOf = require('../models/ItemResponse_anyOf');
 const ItemResponse_anyOf_1 = require('../models/ItemResponse_anyOf_1');
@@ -24,10 +24,15 @@ module.exports = {
                 label: `[${labelPrefix}pins]`,
                 children: Pin.fields(`${keyPrefix}pins${!isInput ? '[]' : ''}`, isInput, true), 
             },
-            ...CatalogsHotelAttributes.fields(`${keyPrefix}attributes`, isInput),
+            ...CatalogsCreativeAssetsAttributes.fields(`${keyPrefix}attributes`, isInput),
             {
                 key: `${keyPrefix}hotel_id`,
                 label: `The catalog hotel id in the merchant namespace - [${labelPrefix}hotel_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}creative_assets_id`,
+                label: `The catalog creative assets id in the merchant namespace - [${labelPrefix}creative_assets_id]`,
                 type: 'string',
             },
             {
@@ -43,8 +48,9 @@ module.exports = {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'pins': utils.childMapping(bundle.inputData?.[`${keyPrefix}pins`], `${keyPrefix}pins`, Pin),
-            'attributes': utils.removeIfEmpty(CatalogsHotelAttributes.mapping(bundle, `${keyPrefix}attributes`)),
+            'attributes': utils.removeIfEmpty(CatalogsCreativeAssetsAttributes.mapping(bundle, `${keyPrefix}attributes`)),
             'hotel_id': bundle.inputData?.[`${keyPrefix}hotel_id`],
+            'creative_assets_id': bundle.inputData?.[`${keyPrefix}creative_assets_id`],
             'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, ItemValidationEvent),
         }
     },

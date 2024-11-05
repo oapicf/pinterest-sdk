@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsItemsDeleteDiscontinuedBatchRequest{}
 // CatalogsItemsDeleteDiscontinuedBatchRequest Request object to discontinue catalogs items
 type CatalogsItemsDeleteDiscontinuedBatchRequest struct {
 	Country Country `json:"country"`
-	Language Language `json:"language"`
+	Language CatalogsItemsRequestLanguage `json:"language"`
 	Operation BatchOperation `json:"operation"`
 	// Array with catalogs items
 	Items []ItemDeleteDiscontinuedBatchRecord `json:"items"`
@@ -35,7 +35,7 @@ type _CatalogsItemsDeleteDiscontinuedBatchRequest CatalogsItemsDeleteDiscontinue
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, language Language, operation BatchOperation, items []ItemDeleteDiscontinuedBatchRecord) *CatalogsItemsDeleteDiscontinuedBatchRequest {
+func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, language CatalogsItemsRequestLanguage, operation BatchOperation, items []ItemDeleteDiscontinuedBatchRecord) *CatalogsItemsDeleteDiscontinuedBatchRequest {
 	this := CatalogsItemsDeleteDiscontinuedBatchRequest{}
 	this.Country = country
 	this.Language = language
@@ -77,9 +77,9 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguage() Language {
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguage() CatalogsItemsRequestLanguage {
 	if o == nil {
-		var ret Language
+		var ret CatalogsItemsRequestLanguage
 		return ret
 	}
 
@@ -88,7 +88,7 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguage() Language {
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguageOk() (*Language, bool) {
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguageOk() (*Language
 }
 
 // SetLanguage sets field value
-func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetLanguage(v Language) {
+func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
 	o.Language = v
 }
 

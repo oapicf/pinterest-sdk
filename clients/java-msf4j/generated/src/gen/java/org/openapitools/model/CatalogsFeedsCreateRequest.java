@@ -11,6 +11,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
@@ -19,7 +20,7 @@ import org.openapitools.model.ProductAvailabilityType;
  * Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedsCreateRequest   {
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;
@@ -47,6 +48,9 @@ public class CatalogsFeedsCreateRequest   {
 
   @JsonProperty("default_availability")
   private ProductAvailabilityType defaultAvailability;
+
+  @JsonProperty("status")
+  private CatalogsStatus status;
 
   public CatalogsFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
@@ -210,6 +214,24 @@ public class CatalogsFeedsCreateRequest   {
     this.defaultAvailability = defaultAvailability;
   }
 
+  public CatalogsFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @ApiModelProperty(value = "")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -228,12 +250,13 @@ public class CatalogsFeedsCreateRequest   {
         Objects.equals(this.location, catalogsFeedsCreateRequest.location) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.defaultCountry, catalogsFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability);
+        Objects.equals(this.defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, catalogsFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -250,6 +273,7 @@ public class CatalogsFeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

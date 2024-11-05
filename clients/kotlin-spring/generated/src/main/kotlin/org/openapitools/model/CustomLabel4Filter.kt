@@ -23,7 +23,7 @@ data class CustomLabel4Filter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
-) {
+    ) {
 
 }
 

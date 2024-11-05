@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | Option<**String**> |  | [optional]
-**id** | Option<**String**> |  | [optional]
-**updated_at** | Option<**String**> |  | [optional]
+**created_at** | **String** |  | 
+**id** | **String** |  | 
+**updated_at** | **String** |  | 
 **ingestion_details** | [**models::CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **status** | [**models::CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **product_counts** | Option<[**models::CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md)> |  | 

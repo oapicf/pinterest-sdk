@@ -4,6 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ResponseType** | Pointer to **string** |  | [optional] 
+**AccessToken** | **string** |  | 
+**TokenType** | **string** |  | [default to "bearer"]
+**ExpiresIn** | **int32** |  | 
+**Scope** | **string** |  | 
 **RefreshToken** | **string** |  | 
 **RefreshTokenExpiresIn** | **int32** |  | 
 **RefreshTokenExpiresAt** | **int32** |  | 
@@ -12,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewOauthAccessTokenResponseEverlastingRefresh
 
-`func NewOauthAccessTokenResponseEverlastingRefresh(refreshToken string, refreshTokenExpiresIn int32, refreshTokenExpiresAt int32, ) *OauthAccessTokenResponseEverlastingRefresh`
+`func NewOauthAccessTokenResponseEverlastingRefresh(accessToken string, tokenType string, expiresIn int32, scope string, refreshToken string, refreshTokenExpiresIn int32, refreshTokenExpiresAt int32, ) *OauthAccessTokenResponseEverlastingRefresh`
 
 NewOauthAccessTokenResponseEverlastingRefresh instantiates a new OauthAccessTokenResponseEverlastingRefresh object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +31,111 @@ will change when the set of required properties is changed
 NewOauthAccessTokenResponseEverlastingRefreshWithDefaults instantiates a new OauthAccessTokenResponseEverlastingRefresh object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetResponseType
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetResponseType() string`
+
+GetResponseType returns the ResponseType field if non-nil, zero value otherwise.
+
+### GetResponseTypeOk
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetResponseTypeOk() (*string, bool)`
+
+GetResponseTypeOk returns a tuple with the ResponseType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResponseType
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) SetResponseType(v string)`
+
+SetResponseType sets ResponseType field to given value.
+
+### HasResponseType
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) HasResponseType() bool`
+
+HasResponseType returns a boolean if a field has been set.
+
+### GetAccessToken
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetAccessToken() string`
+
+GetAccessToken returns the AccessToken field if non-nil, zero value otherwise.
+
+### GetAccessTokenOk
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetAccessTokenOk() (*string, bool)`
+
+GetAccessTokenOk returns a tuple with the AccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessToken
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) SetAccessToken(v string)`
+
+SetAccessToken sets AccessToken field to given value.
+
+
+### GetTokenType
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetTokenType() string`
+
+GetTokenType returns the TokenType field if non-nil, zero value otherwise.
+
+### GetTokenTypeOk
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetTokenTypeOk() (*string, bool)`
+
+GetTokenTypeOk returns a tuple with the TokenType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenType
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) SetTokenType(v string)`
+
+SetTokenType sets TokenType field to given value.
+
+
+### GetExpiresIn
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetExpiresIn() int32`
+
+GetExpiresIn returns the ExpiresIn field if non-nil, zero value otherwise.
+
+### GetExpiresInOk
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetExpiresInOk() (*int32, bool)`
+
+GetExpiresInOk returns a tuple with the ExpiresIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiresIn
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) SetExpiresIn(v int32)`
+
+SetExpiresIn sets ExpiresIn field to given value.
+
+
+### GetScope
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetScope() string`
+
+GetScope returns the Scope field if non-nil, zero value otherwise.
+
+### GetScopeOk
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) GetScopeOk() (*string, bool)`
+
+GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScope
+
+`func (o *OauthAccessTokenResponseEverlastingRefresh) SetScope(v string)`
+
+SetScope sets Scope field to given value.
+
 
 ### GetRefreshToken
 

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BatchOperation;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemUpsertBatchRecord;
-import org.openapitools.model.Language;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,11 +24,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object to upsert catalogs items")
 @JsonTypeName("CatalogsItemsUpsertBatchRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemsUpsertBatchRequest   {
-  private @Valid Country country;
-  private @Valid Language language;
-  private @Valid BatchOperation operation;
+  private Country country;
+  private CatalogsItemsRequestLanguage language;
+  private BatchOperation operation;
   private @Valid List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
 
   /**
@@ -41,8 +41,7 @@ public class CatalogsItemsUpsertBatchRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("country")
-  @NotNull
-  public Country getCountry() {
+  @NotNull public Country getCountry() {
     return country;
   }
 
@@ -53,7 +52,7 @@ public class CatalogsItemsUpsertBatchRequest   {
 
   /**
    **/
-  public CatalogsItemsUpsertBatchRequest language(Language language) {
+  public CatalogsItemsUpsertBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -61,13 +60,12 @@ public class CatalogsItemsUpsertBatchRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("language")
-  @NotNull
-  public Language getLanguage() {
+  @NotNull @Valid public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
   @JsonProperty("language")
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
@@ -81,8 +79,7 @@ public class CatalogsItemsUpsertBatchRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
-  @NotNull
-  public BatchOperation getOperation() {
+  @NotNull public BatchOperation getOperation() {
     return operation;
   }
 
@@ -102,8 +99,7 @@ public class CatalogsItemsUpsertBatchRequest   {
   
   @ApiModelProperty(required = true, value = "Array with catalogs items")
   @JsonProperty("items")
-  @NotNull
- @Size(min=1,max=1000)  public List<ItemUpsertBatchRecord> getItems() {
+  @NotNull @Valid  @Size(min=1,max=1000)public List<@Valid ItemUpsertBatchRecord> getItems() {
     return items;
   }
 

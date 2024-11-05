@@ -26,7 +26,7 @@
 	        <jaxb:typesafeEnumMember value="BUY_NOW" name="BUY_NOW" />
 	        <jaxb:typesafeEnumMember value="CONTACT_US" name="CONTACT_US" />
 	        <jaxb:typesafeEnumMember value="GET_QUOTE" name="GET_QUOTE" />
-	        <jaxb:typesafeEnumMember value="VISIT_WEBSITE" name="VISIT_WEBSITE" />
+	        <jaxb:typesafeEnumMember value="VISIT_SITE" name="VISIT_SITE" />
 	        <jaxb:typesafeEnumMember value="APPLY_NOW" name="APPLY_NOW" />
 	        <jaxb:typesafeEnumMember value="BOOK_NOW" name="BOOK_NOW" />
 	        <jaxb:typesafeEnumMember value="REQUEST_DEMO" name="REQUEST_DEMO" />
@@ -35,7 +35,6 @@
 	        <jaxb:typesafeEnumMember value="ADD_TO_CART" name="ADD_TO_CART" />
 	        <jaxb:typesafeEnumMember value="WATCH_NOW" name="WATCH_NOW" />
 	        <jaxb:typesafeEnumMember value="READ_MORE" name="READ_MORE" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CreativeUnderscoretypes']">
@@ -55,7 +54,12 @@
 	        <jaxb:typesafeEnumMember value="AUTOMATIC_BID" name="AUTOMATIC_BID" />
 	        <jaxb:typesafeEnumMember value="MAX_BID" name="MAX_BID" />
 	        <jaxb:typesafeEnumMember value="TARGET_AVG" name="TARGET_AVG" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='PrimaryUnderscoresort']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="BY_ID" name="ID" />
+	        <jaxb:typesafeEnumMember value="BY_DATE" name="DATE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='DiscountType']">
@@ -80,7 +84,6 @@
 	        <jaxb:typesafeEnumMember value="INVOICE_SALES_INCENTIVE_CREDIT" name="INVOICE_SALES_INCENTIVE_CREDIT" />
 	        <jaxb:typesafeEnumMember value="INVOICE_SALES_INCENTIVE_CREDIT_APPLIED" name="INVOICE_SALES_INCENTIVE_CREDIT_APPLIED" />
 	        <jaxb:typesafeEnumMember value="PREPAID_CREDIT_REFUND" name="PREPAID_CREDIT_REFUND" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CardUnderscoretype']">
@@ -138,21 +141,80 @@
     <jaxws:bindings node="xsd:simpleType[@name='Operation']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="CREATE" name="CREATE" />
-	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
-	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
-	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
+	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Operation']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="CREATE" name="CREATE" />
-	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
-	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
@@ -550,7 +612,6 @@
 	        <jaxb:typesafeEnumMember value="Pacific/Wake" name="PACIFIC_WAKE" />
 	        <jaxb:typesafeEnumMember value="Pacific/Wallis" name="PACIFIC_WALLIS" />
 	        <jaxb:typesafeEnumMember value="WET" name="WET" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='FETCHUnderscoreSAMEUnderscoreSIGNATURE']">
@@ -585,7 +646,43 @@
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
+	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="FEED_INGESTION_ISSUES" name="FEED_INGESTION_ISSUES" />
+	        <jaxb:typesafeEnumMember value="DISTRIBUTION_ISSUES" name="DISTRIBUTION_ISSUES" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Operator']">
@@ -596,41 +693,62 @@
 	        <jaxb:typesafeEnumMember value="LESS_THAN_OR_EQUALS" name="LESS_THAN_OR_EQUALS" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='FeedUnderscoreid']">
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportUnderscorestatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="FINISHED" name="FINISHED" />
+	        <jaxb:typesafeEnumMember value="IN_PROGRESS" name="IN_PROGRESS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="DISTRIBUTION_ISSUES" name="DISTRIBUTION_ISSUES" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="DISTRIBUTION_ISSUES" name="DISTRIBUTION_ISSUES" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="FEED_INGESTION_ISSUES" name="FEED_INGESTION_ISSUES" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="FEED_INGESTION_ISSUES" name="FEED_INGESTION_ISSUES" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Severity']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="WARN" name="WARN" />
+	        <jaxb:typesafeEnumMember value="ERROR" name="ERROR" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ReportUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="FEED_INGESTION_ISSUES" name="FEED_INGESTION_ISSUES" />
+	        <jaxb:typesafeEnumMember value="DISTRIBUTION_ISSUES" name="DISTRIBUTION_ISSUES" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Severity']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="WARN" name="WARN" />
+	        <jaxb:typesafeEnumMember value="ERROR" name="ERROR" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='FeedUnderscoreid']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Operation']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="CREATE" name="CREATE" />
-	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
-	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
 	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
@@ -644,35 +762,9 @@
 	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='FeedUnderscoreid']">
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="CREATE" name="CREATE" />
-	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
-	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
-	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
-	    </jaxb:typesafeEnumClass>
-    </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
-    	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="CREATE" name="CREATE" />
-	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
-	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
-	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
+	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
@@ -680,19 +772,84 @@
 	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
-    <jaxws:bindings node="xsd:simpleType[@name='FeedUnderscoreid']">
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
     	<jaxb:typesafeEnumClass>
-	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPDATE" name="UPDATE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Operation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Status']">
@@ -713,12 +870,25 @@
 	        <jaxb:typesafeEnumMember value="AD_GROUP_TARGETING" name="AD_GROUP_TARGETING" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='BusinessUnderscorerole']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="EMPLOYEE" name="EMPLOYEE" />
+	        <jaxb:typesafeEnumMember value="BIZ_ADMIN" name="BIZ_ADMIN" />
+	        <jaxb:typesafeEnumMember value="PARTNER" name="PARTNER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Status']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="PROCESSING" name="PROCESSING" />
 	        <jaxb:typesafeEnumMember value="READY" name="READY" />
 	        <jaxb:typesafeEnumMember value="TOO_SMALL" name="TOO_SMALL" />
 	        <jaxb:typesafeEnumMember value="UPLOADING" name="UPLOADING" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='PartnerUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="INTERNAL" name="INTERNAL" />
+	        <jaxb:typesafeEnumMember value="EXTERNAL" name="EXTERNAL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Category']">
@@ -763,10 +933,77 @@
 	        <jaxb:typesafeEnumMember value="PATCH" name="PATCH" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='GrantUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='GrantUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='GrantUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
 	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ResponseUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="authorization_code" name="AUTHORIZATION_CODE" />
+	        <jaxb:typesafeEnumMember value="refresh_token" name="REFRESH_TOKEN" />
+	        <jaxb:typesafeEnumMember value="client_credentials" name="CLIENT_CREDENTIALS" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ConversionUnderscoreevent']">
@@ -787,7 +1024,6 @@
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="NOT_ACTIVE" name="NOT_ACTIVE" />
 	        <jaxb:typesafeEnumMember value="ACTIVE" name="ACTIVE" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Timerange']">
@@ -865,6 +1101,24 @@
 	        <jaxb:typesafeEnumMember value="image/png" name="PNG" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='PLACEMENT']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="SEARCH" name="SEARCH" />
+	        <jaxb:typesafeEnumMember value="BROWSE" name="BROWSE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='TieUnderscorebreakerUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="RANDOM" name="RANDOM" />
+	        <jaxb:typesafeEnumMember value="CUSTOM" name="CUSTOM" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AccountUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AD_ACCOUNT" name="AD_ACCOUNT" />
+	        <jaxb:typesafeEnumMember value="BUSINESS_ACCOUNT" name="BUSINESS_ACCOUNT" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='AGEUnderscoreBUCKET']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="18-24" name="_18_24" />
@@ -901,6 +1155,11 @@
 	        <jaxb:typesafeEnumMember value="RECONNECT_WITH_USERS" name="RECONNECT_WITH_USERS" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='OperationUnderscoretype']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="REMOVE" name="REMOVE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Columns']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="SPEND_IN_MICRO_DOLLAR" name="SPEND_IN_MICRO_DOLLAR" />
@@ -925,7 +1184,9 @@
 	        <jaxb:typesafeEnumMember value="AD_ONLY_PIN" name="AD_ONLY_PIN" />
 	        <jaxb:typesafeEnumMember value="CAMPAIGN_NAME" name="CAMPAIGN_NAME" />
 	        <jaxb:typesafeEnumMember value="CAMPAIGN_STATUS" name="CAMPAIGN_STATUS" />
+	        <jaxb:typesafeEnumMember value="IS_CAMPAIGN_LEARNING_PHASE" name="IS_CAMPAIGN_LEARNING_PHASE" />
 	        <jaxb:typesafeEnumMember value="DATE" name="DATE" />
+	        <jaxb:typesafeEnumMember value="DATE_AS_TIMESTAMP" name="DATE_AS_TIMESTAMP" />
 	        <jaxb:typesafeEnumMember value="BUDGET_IN_DOLLAR" name="BUDGET_IN_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="AVAILABLE_BUDGET_IN_DOLLAR" name="AVAILABLE_BUDGET_IN_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="TARGETING_TYPE" name="TARGETING_TYPE" />
@@ -1008,6 +1269,7 @@
 	        <jaxb:typesafeEnumMember value="ITEM_ID" name="ITEM_ID" />
 	        <jaxb:typesafeEnumMember value="PRODUCT_ITEM_ID" name="PRODUCT_ITEM_ID" />
 	        <jaxb:typesafeEnumMember value="INTERNAL_PRODUCT_ITEM_ID" name="INTERNAL_PRODUCT_ITEM_ID" />
+	        <jaxb:typesafeEnumMember value="INTERNAL_PRODUCT_ITEM_ID_STR" name="INTERNAL_PRODUCT_ITEM_ID_STR" />
 	        <jaxb:typesafeEnumMember value="PRODUCT_ITEM_NAME" name="PRODUCT_ITEM_NAME" />
 	        <jaxb:typesafeEnumMember value="PRODUCT_ITEM_IMAGE_URL" name="PRODUCT_ITEM_IMAGE_URL" />
 	        <jaxb:typesafeEnumMember value="PRODUCT_ITEM_PRICE" name="PRODUCT_ITEM_PRICE" />
@@ -1017,6 +1279,10 @@
 	        <jaxb:typesafeEnumMember value="ORDER_LINE_PAID_TYPE" name="ORDER_LINE_PAID_TYPE" />
 	        <jaxb:typesafeEnumMember value="SPEND_ORDER_LINE_ID" name="SPEND_ORDER_LINE_ID" />
 	        <jaxb:typesafeEnumMember value="SPEND_ORDER_LINE_PAID_TYPE" name="SPEND_ORDER_LINE_PAID_TYPE" />
+	        <jaxb:typesafeEnumMember value="CONVERSION_PRODUCT_ID" name="CONVERSION_PRODUCT_ID" />
+	        <jaxb:typesafeEnumMember value="CONVERSION_PRODUCT_NAME" name="CONVERSION_PRODUCT_NAME" />
+	        <jaxb:typesafeEnumMember value="CONVERSION_PRODUCT_BRAND" name="CONVERSION_PRODUCT_BRAND" />
+	        <jaxb:typesafeEnumMember value="CONVERSION_PRODUCT_CATEGORY" name="CONVERSION_PRODUCT_CATEGORY" />
 	        <jaxb:typesafeEnumMember value="CLICKTHROUGH_1" name="CLICKTHROUGH_1" />
 	        <jaxb:typesafeEnumMember value="REPIN_1" name="REPIN_1" />
 	        <jaxb:typesafeEnumMember value="IMPRESSION_1" name="IMPRESSION_1" />
@@ -1056,7 +1322,9 @@
 	        <jaxb:typesafeEnumMember value="TOTAL_SEND" name="TOTAL_SEND" />
 	        <jaxb:typesafeEnumMember value="TOTAL_FLAG" name="TOTAL_FLAG" />
 	        <jaxb:typesafeEnumMember value="TOTAL_IMPRESSION_USER" name="TOTAL_IMPRESSION_USER" />
+	        <jaxb:typesafeEnumMember value="TOTAL_IMPRESSION_USER_HLL" name="TOTAL_IMPRESSION_USER_HLL" />
 	        <jaxb:typesafeEnumMember value="TOTAL_IMPRESSION_FREQUENCY" name="TOTAL_IMPRESSION_FREQUENCY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_IMPRESSION_FREQUENCY_HLL" name="TOTAL_IMPRESSION_FREQUENCY_HLL" />
 	        <jaxb:typesafeEnumMember value="TOTAL_OUTBOUND_CLICK" name="TOTAL_OUTBOUND_CLICK" />
 	        <jaxb:typesafeEnumMember value="COST_PER_OUTBOUND_CLICK_IN_DOLLAR" name="COST_PER_OUTBOUND_CLICK_IN_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="ENGAGEMENT_PAGE_VISIT_1" name="ENGAGEMENT_PAGE_VISIT_1" />
@@ -1486,6 +1754,8 @@
 	        <jaxb:typesafeEnumMember value="IS_AUTOMATED_CAMPAIGN" name="IS_AUTOMATED_CAMPAIGN" />
 	        <jaxb:typesafeEnumMember value="IS_PREMIERE_CAMPAIGN" name="IS_PREMIERE_CAMPAIGN" />
 	        <jaxb:typesafeEnumMember value="FLEXIBLE_DAILY_BUDGETS" name="FLEXIBLE_DAILY_BUDGETS" />
+	        <jaxb:typesafeEnumMember value="IS_PERFORMANCE_PLUS_CAMPAIGN" name="IS_PERFORMANCE_PLUS_CAMPAIGN" />
+	        <jaxb:typesafeEnumMember value="IS_DCO_FORMAT_ENHANCMENT" name="IS_DCO_FORMAT_ENHANCMENT" />
 	        <jaxb:typesafeEnumMember value="PERCENT_CROSS_DEVICE_CONVERSIONS" name="PERCENT_CROSS_DEVICE_CONVERSIONS" />
 	        <jaxb:typesafeEnumMember value="PAGE_VISIT_PERCENT_CROSS_DEVICE_CONVERSIONS" name="PAGE_VISIT_PERCENT_CROSS_DEVICE_CONVERSIONS" />
 	        <jaxb:typesafeEnumMember value="SIGNUP_PERCENT_CROSS_DEVICE_CONVERSIONS" name="SIGNUP_PERCENT_CROSS_DEVICE_CONVERSIONS" />
@@ -1783,6 +2053,9 @@
 	        <jaxb:typesafeEnumMember value="VIDEO_AVG_WATCHTIME_2" name="VIDEO_AVG_WATCHTIME_2" />
 	        <jaxb:typesafeEnumMember value="VIDEO_MRC_VIEWS_2" name="VIDEO_MRC_VIEWS_2" />
 	        <jaxb:typesafeEnumMember value="VIDEO_VIEW_RATE_2" name="VIDEO_VIEW_RATE_2" />
+	        <jaxb:typesafeEnumMember value="PAID_VIDEO_VIEW" name="PAID_VIDEO_VIEW" />
+	        <jaxb:typesafeEnumMember value="PAID_VIDEO_IMPRESSION" name="PAID_VIDEO_IMPRESSION" />
+	        <jaxb:typesafeEnumMember value="PAID_VIDEO_VIEWABLE_RATE" name="PAID_VIDEO_VIEWABLE_RATE" />
 	        <jaxb:typesafeEnumMember value="VIDEO_LENGTH" name="VIDEO_LENGTH" />
 	        <jaxb:typesafeEnumMember value="CPV_IN_MICRO_DOLLAR" name="CPV_IN_MICRO_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="CPV_IN_DOLLAR" name="CPV_IN_DOLLAR" />
@@ -2273,6 +2546,208 @@
 	        <jaxb:typesafeEnumMember value="TARGETING_LOCATION" name="TARGETING_LOCATION" />
 	        <jaxb:typesafeEnumMember value="TARGETING_APPTYPE" name="TARGETING_APPTYPE" />
 	        <jaxb:typesafeEnumMember value="TARGETING_LOCATION_CODE" name="TARGETING_LOCATION_CODE" />
+	        <jaxb:typesafeEnumMember value="TARGETING_MEDIA_TYPE" name="TARGETING_MEDIA_TYPE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSION_PRODUCT_VALUE" name="TOTAL_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE" name="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE" name="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="CONVERSION_PRODUCT_COUNT_UNIQUE" name="CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE" name="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE" name="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE" name="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE" name="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE" name="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE" name="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_SIGNUP_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE" name="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE" name="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE" name="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE" name="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_LEAD_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE" name="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE" name="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_SEARCH_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE" name="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE" name="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE" name="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_CUSTOM_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE" name="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE" name="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE" name="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE" name="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE" name="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" name="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_QUANTITY" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE" name="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" name="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" name="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" name="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" />
+	        <jaxb:typesafeEnumMember value="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" name="TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ConversionUnderscorereportUnderscoretimeUnderscoretype']">
@@ -2614,6 +3089,42 @@
 	        <jaxb:typesafeEnumMember value="DELETED_DRAFT" name="DELETED_DRAFT" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AdsAnalyticsAdTargetingType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="KEYWORD" name="KEYWORD" />
+	        <jaxb:typesafeEnumMember value="APPTYPE" name="APPTYPE" />
+	        <jaxb:typesafeEnumMember value="GENDER" name="GENDER" />
+	        <jaxb:typesafeEnumMember value="LOCATION" name="LOCATION" />
+	        <jaxb:typesafeEnumMember value="PLACEMENT" name="PLACEMENT" />
+	        <jaxb:typesafeEnumMember value="COUNTRY" name="COUNTRY" />
+	        <jaxb:typesafeEnumMember value="TARGETED_INTEREST" name="TARGETED_INTEREST" />
+	        <jaxb:typesafeEnumMember value="PINNER_INTEREST" name="PINNER_INTEREST" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_INCLUDE" name="AUDIENCE_INCLUDE" />
+	        <jaxb:typesafeEnumMember value="GEO" name="GEO" />
+	        <jaxb:typesafeEnumMember value="AGE_BUCKET" name="AGE_BUCKET" />
+	        <jaxb:typesafeEnumMember value="REGION" name="REGION" />
+	        <jaxb:typesafeEnumMember value="QUIZ_RESULT" name="QUIZ_RESULT" />
+	        <jaxb:typesafeEnumMember value="AGE_BUCKET_AND_GENDER" name="AGE_BUCKET_AND_GENDER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AdsAnalyticsCampaignTargetingType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="KEYWORD" name="KEYWORD" />
+	        <jaxb:typesafeEnumMember value="APPTYPE" name="APPTYPE" />
+	        <jaxb:typesafeEnumMember value="GENDER" name="GENDER" />
+	        <jaxb:typesafeEnumMember value="LOCATION" name="LOCATION" />
+	        <jaxb:typesafeEnumMember value="PLACEMENT" name="PLACEMENT" />
+	        <jaxb:typesafeEnumMember value="COUNTRY" name="COUNTRY" />
+	        <jaxb:typesafeEnumMember value="TARGETED_INTEREST" name="TARGETED_INTEREST" />
+	        <jaxb:typesafeEnumMember value="PINNER_INTEREST" name="PINNER_INTEREST" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_INCLUDE" name="AUDIENCE_INCLUDE" />
+	        <jaxb:typesafeEnumMember value="GEO" name="GEO" />
+	        <jaxb:typesafeEnumMember value="AGE_BUCKET" name="AGE_BUCKET" />
+	        <jaxb:typesafeEnumMember value="REGION" name="REGION" />
+	        <jaxb:typesafeEnumMember value="CREATIVE_TYPE" name="CREATIVE_TYPE" />
+	        <jaxb:typesafeEnumMember value="AGE_BUCKET_AND_GENDER" name="AGE_BUCKET_AND_GENDER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='AdsAnalyticsFilterColumn']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="SPEND_IN_DOLLAR" name="SPEND_IN_DOLLAR" />
@@ -2640,6 +3151,27 @@
 	        <jaxb:typesafeEnumMember value="GEO" name="GEO" />
 	        <jaxb:typesafeEnumMember value="AGE_BUCKET" name="AGE_BUCKET" />
 	        <jaxb:typesafeEnumMember value="REGION" name="REGION" />
+	        <jaxb:typesafeEnumMember value="AGE_BUCKET_AND_GENDER" name="AGE_BUCKET_AND_GENDER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AdvancedAuctionOperation']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="UPSERT" name="UPSERT" />
+	        <jaxb:typesafeEnumMember value="DELETE" name="DELETE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AssetGroupType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="BRAND" name="BRAND" />
+	        <jaxb:typesafeEnumMember value="LOCATION_OR_LANGUAGE" name="LOCATION_OR_LANGUAGE" />
+	        <jaxb:typesafeEnumMember value="PRODUCT_LINE" name="PRODUCT_LINE" />
+	        <jaxb:typesafeEnumMember value="OTHER" name="OTHER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AudienceAccountType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AD_ACCOUNT" name="AD_ACCOUNT" />
+	        <jaxb:typesafeEnumMember value="BUSINESS_ACCOUNT" name="BUSINESS_ACCOUNT" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='AudienceCreateRequest_1_audience_type']">
@@ -2657,6 +3189,12 @@
 	        <jaxb:typesafeEnumMember value="YOUR_TOTAL_AUDIENCE" name="YOUR_TOTAL_AUDIENCE" />
 	        <jaxb:typesafeEnumMember value="YOUR_ENGAGED_AUDIENCE" name="YOUR_ENGAGED_AUDIENCE" />
 	        <jaxb:typesafeEnumMember value="PINTEREST_TOTAL_AUDIENCE" name="PINTEREST_TOTAL_AUDIENCE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='AudienceShareType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="SHARED" name="SHARED" />
+	        <jaxb:typesafeEnumMember value="RECEIVED" name="RECEIVED" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='AudienceSharingType']">
@@ -2693,6 +3231,7 @@
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="PROCESSING" name="PROCESSING" />
 	        <jaxb:typesafeEnumMember value="COMPLETED" name="COMPLETED" />
+	        <jaxb:typesafeEnumMember value="FAILED" name="FAILED" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='BudgetType']">
@@ -2753,6 +3292,25 @@
 	        <jaxb:typesafeEnumMember value="RESOURCE_CONVERSION_TAGS_READER" name="RESOURCE_CONVERSION_TAGS_READER" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='BusinessRole']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="EMPLOYEE" name="EMPLOYEE" />
+	        <jaxb:typesafeEnumMember value="BIZ_ADMIN" name="BIZ_ADMIN" />
+	        <jaxb:typesafeEnumMember value="PARTNER" name="PARTNER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='BusinessRoleCheckMode']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="INTERNAL" name="INTERNAL" />
+	        <jaxb:typesafeEnumMember value="EXTERNAL" name="EXTERNAL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='BusinessRoleForMembers']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="EMPLOYEE" name="EMPLOYEE" />
+	        <jaxb:typesafeEnumMember value="BIZ_ADMIN" name="BIZ_ADMIN" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CampaignSummaryStatus']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="RUNNING" name="RUNNING" />
@@ -2768,13 +3326,8 @@
     <jaxws:bindings node="xsd:simpleType[@name='CatalogsFeedProcessingStatus']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="COMPLETED" name="COMPLETED" />
-	        <jaxb:typesafeEnumMember value="COMPLETED_EARLY" name="COMPLETED_EARLY" />
-	        <jaxb:typesafeEnumMember value="DISAPPROVED" name="DISAPPROVED" />
 	        <jaxb:typesafeEnumMember value="FAILED" name="FAILED" />
 	        <jaxb:typesafeEnumMember value="PROCESSING" name="PROCESSING" />
-	        <jaxb:typesafeEnumMember value="QUEUED_FOR_PROCESSING" name="QUEUED_FOR_PROCESSING" />
-	        <jaxb:typesafeEnumMember value="UNDER_APPEAL" name="UNDER_APPEAL" />
-	        <jaxb:typesafeEnumMember value="UNDER_REVIEW" name="UNDER_REVIEW" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CatalogsFeedsCreateRequest_default_locale']">
@@ -2859,6 +3412,10 @@
 	        <jaxb:typesafeEnumMember value="WEIGHT_UNIT_INVALID" name="WEIGHT_UNIT_INVALID" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CatalogsItemsRequest_language']">
+    	<jaxb:typesafeEnumClass>
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CatalogsLocale']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="af-ZA" name="AF_ZA" />
@@ -2938,6 +3495,7 @@
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="RETAIL" name="RETAIL" />
 	        <jaxb:typesafeEnumMember value="HOTEL" name="HOTEL" />
+	        <jaxb:typesafeEnumMember value="CREATIVE_ASSETS" name="CREATIVE_ASSETS" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ConversionAttributionWindowDays']">
@@ -3233,6 +3791,12 @@
 	        <jaxb:typesafeEnumMember value="ZW" name="ZW" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='CreativeAssetsVisibilityType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="VISIBLE" name="VISIBLE" />
+	        <jaxb:typesafeEnumMember value="HIDDEN" name="HIDDEN" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='CreativeType']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="REGULAR" name="REGULAR" />
@@ -3274,6 +3838,8 @@
 	        <jaxb:typesafeEnumMember value="ARS" name="ARS" />
 	        <jaxb:typesafeEnumMember value="CLP" name="CLP" />
 	        <jaxb:typesafeEnumMember value="COP" name="COP" />
+	        <jaxb:typesafeEnumMember value="INR" name="INR" />
+	        <jaxb:typesafeEnumMember value="TRY" name="TRY" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='DataOutputFormat']">
@@ -3315,7 +3881,6 @@
 	        <jaxb:typesafeEnumMember value="NOT_VALIDATED" name="NOT_VALIDATED" />
 	        <jaxb:typesafeEnumMember value="VALIDATING_IN_PROGRESS" name="VALIDATING_IN_PROGRESS" />
 	        <jaxb:typesafeEnumMember value="VALIDATION_COMPLETE" name="VALIDATION_COMPLETE" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='EntityStatus']">
@@ -3346,6 +3911,14 @@
 	        <jaxb:typesafeEnumMember value="TYPE" name="TYPE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='GetBusinessAssetTypeResponse']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="AD_ACCOUNT" name="AD_ACCOUNT" />
+	        <jaxb:typesafeEnumMember value="PROFILE" name="PROFILE" />
+	        <jaxb:typesafeEnumMember value="ASSET_GROUP" name="ASSET_GROUP" />
+	        <jaxb:typesafeEnumMember value="CONVERSION_TAG" name="CONVERSION_TAG" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='Granularity']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="TOTAL" name="TOTAL" />
@@ -3359,6 +3932,26 @@
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="CLOSEUP" name="CLOSEUP" />
 	        <jaxb:typesafeEnumMember value="DIRECT_TO_DESTINATION" name="DIRECT_TO_DESTINATION" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='InviteStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="PENDING" name="PENDING" />
+	        <jaxb:typesafeEnumMember value="ACCEPTED" name="ACCEPTED" />
+	        <jaxb:typesafeEnumMember value="DECLINED" name="DECLINED" />
+	        <jaxb:typesafeEnumMember value="CANCELLED" name="CANCELLED" />
+	        <jaxb:typesafeEnumMember value="EXPIRED" name="EXPIRED" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='InviteType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="MEMBER_INVITE" name="MEMBER_INVITE" />
+	        <jaxb:typesafeEnumMember value="PARTNER_INVITE" name="PARTNER_INVITE" />
+	        <jaxb:typesafeEnumMember value="PARTNER_REQUEST" name="PARTNER_REQUEST" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='ItemAttributesRequest_allOf_image_link']">
+    	<jaxb:typesafeEnumClass>
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ItemProcessingStatus']">
@@ -3439,7 +4032,6 @@
 	        <jaxb:typesafeEnumMember value="TEXT_AREA" name="TEXT_AREA" />
 	        <jaxb:typesafeEnumMember value="RADIO_LIST" name="RADIO_LIST" />
 	        <jaxb:typesafeEnumMember value="CHECKBOX" name="CHECKBOX" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='LeadFormQuestionType']">
@@ -3451,20 +4043,26 @@
 	        <jaxb:typesafeEnumMember value="EMAIL" name="EMAIL" />
 	        <jaxb:typesafeEnumMember value="PHONE_NUMBER" name="PHONE_NUMBER" />
 	        <jaxb:typesafeEnumMember value="ZIP_CODE" name="ZIP_CODE" />
-	        <jaxb:typesafeEnumMember value="AGE" name="AGE" />
 	        <jaxb:typesafeEnumMember value="GENDER" name="GENDER" />
 	        <jaxb:typesafeEnumMember value="CITY" name="CITY" />
 	        <jaxb:typesafeEnumMember value="COUNTRY" name="COUNTRY" />
-	        <jaxb:typesafeEnumMember value="PREFERRED_CONTACT_METHOD" name="PREFERRED_CONTACT_METHOD" />
 	        <jaxb:typesafeEnumMember value="STATE_PROVINCE" name="STATE_PROVINCE" />
 	        <jaxb:typesafeEnumMember value="ADDRESS" name="ADDRESS" />
 	        <jaxb:typesafeEnumMember value="DATE_OF_BIRTH" name="DATE_OF_BIRTH" />
+	        <jaxb:typesafeEnumMember value="AGE" name="AGE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='LeadFormStatus']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="DRAFT" name="DRAFT" />
 	        <jaxb:typesafeEnumMember value="ACTIVE" name="ACTIVE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='LeadsExportStatus']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="IN_PROGRESS" name="IN_PROGRESS" />
+	        <jaxb:typesafeEnumMember value="FINISHED" name="FINISHED" />
+	        <jaxb:typesafeEnumMember value="FAILED" name="FAILED" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='MMMReportingColumn']">
@@ -3516,7 +4114,12 @@
 	        <jaxb:typesafeEnumMember value="EXACT" name="EXACT" />
 	        <jaxb:typesafeEnumMember value="EXACT_NEGATIVE" name="EXACT_NEGATIVE" />
 	        <jaxb:typesafeEnumMember value="PHRASE_NEGATIVE" name="PHRASE_NEGATIVE" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='MediaType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="IMAGE" name="IMAGE" />
+	        <jaxb:typesafeEnumMember value="VIDEO" name="VIDEO" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='MediaUploadStatus']">
@@ -3530,6 +4133,12 @@
     <jaxws:bindings node="xsd:simpleType[@name='MediaUploadType']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="video" name="VIDEO" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='MemberBusinessRole']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="EMPLOYEE" name="EMPLOYEE" />
+	        <jaxb:typesafeEnumMember value="BIZ_ADMIN" name="BIZ_ADMIN" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='MetricsReportingLevel']">
@@ -3546,6 +4155,7 @@
 	        <jaxb:typesafeEnumMember value="PRODUCT_GROUP" name="PRODUCT_GROUP" />
 	        <jaxb:typesafeEnumMember value="PRODUCT_GROUP_TARGETING" name="PRODUCT_GROUP_TARGETING" />
 	        <jaxb:typesafeEnumMember value="PRODUCT_ITEM" name="PRODUCT_ITEM" />
+	        <jaxb:typesafeEnumMember value="PRODUCT_ITEM_TARGETING" name="PRODUCT_ITEM_TARGETING" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='NonNullableCatalogsCurrency']">
@@ -3780,7 +4390,6 @@
 	        <jaxb:typesafeEnumMember value="MIN_AD_PRICE" name="MIN_AD_PRICE" />
 	        <jaxb:typesafeEnumMember value="SHIPPING_WIDTH" name="SHIPPING_WIDTH" />
 	        <jaxb:typesafeEnumMember value="SHIPPING_HEIGHT" name="SHIPPING_HEIGHT" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='NullableCurrency']">
@@ -3948,7 +4557,6 @@
 	        <jaxb:typesafeEnumMember value="ZAR" name="ZAR" />
 	        <jaxb:typesafeEnumMember value="ZMW" name="ZMW" />
 	        <jaxb:typesafeEnumMember value="ZWD" name="ZWD" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ObjectiveType']">
@@ -3959,6 +4567,13 @@
 	        <jaxb:typesafeEnumMember value="WEB_CONVERSION" name="WEB_CONVERSION" />
 	        <jaxb:typesafeEnumMember value="CATALOG_SALES" name="CATALOG_SALES" />
 	        <jaxb:typesafeEnumMember value="WEB_SESSIONS" name="WEB_SESSIONS" />
+	        <jaxb:typesafeEnumMember value="VIDEO_COMPLETION" name="VIDEO_COMPLETION" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='OperationType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="SHARE" name="SHARE" />
+	        <jaxb:typesafeEnumMember value="REVOKE" name="REVOKE" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='OrderLinePaidType']">
@@ -3967,7 +4582,6 @@
 	        <jaxb:typesafeEnumMember value="BONUS" name="BONUS" />
 	        <jaxb:typesafeEnumMember value="MAKE_GOOD" name="MAKE_GOOD" />
 	        <jaxb:typesafeEnumMember value="TEST" name="TEST" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='OrderLineStatus']">
@@ -3987,6 +4601,30 @@
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="INTERNAL" name="INTERNAL" />
 	        <jaxb:typesafeEnumMember value="EXTERNAL" name="EXTERNAL" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='Permissions']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="ADMIN" name="ADMIN" />
+	        <jaxb:typesafeEnumMember value="ANALYST" name="ANALYST" />
+	        <jaxb:typesafeEnumMember value="FINANCE_MANAGER" name="FINANCE_MANAGER" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_MANAGER" name="AUDIENCE_MANAGER" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_MANAGER" name="CAMPAIGN_MANAGER" />
+	        <jaxb:typesafeEnumMember value="CATALOGS_MANAGER" name="CATALOGS_MANAGER" />
+	        <jaxb:typesafeEnumMember value="PROFILE_PUBLISHER" name="PROFILE_PUBLISHER" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='PermissionsWithOwner']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="ADMIN" name="ADMIN" />
+	        <jaxb:typesafeEnumMember value="ANALYST" name="ANALYST" />
+	        <jaxb:typesafeEnumMember value="FINANCE_MANAGER" name="FINANCE_MANAGER" />
+	        <jaxb:typesafeEnumMember value="AUDIENCE_MANAGER" name="AUDIENCE_MANAGER" />
+	        <jaxb:typesafeEnumMember value="CAMPAIGN_MANAGER" name="CAMPAIGN_MANAGER" />
+	        <jaxb:typesafeEnumMember value="CATALOGS_MANAGER" name="CATALOGS_MANAGER" />
+	        <jaxb:typesafeEnumMember value="CATALOGS_VIEWER" name="CATALOGS_VIEWER" />
+	        <jaxb:typesafeEnumMember value="PROFILE_PUBLISHER" name="PROFILE_PUBLISHER" />
+	        <jaxb:typesafeEnumMember value="OWNER" name="OWNER" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='PinPromotionSummaryStatus']">
@@ -4018,7 +4656,6 @@
 	        <jaxb:typesafeEnumMember value="IN_STOCK" name="IN_STOCK" />
 	        <jaxb:typesafeEnumMember value="OUT_OF_STOCK" name="OUT_OF_STOCK" />
 	        <jaxb:typesafeEnumMember value="PREORDER" name="PREORDER" />
-	        <jaxb:typesafeEnumMember value="null" name="NULL" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='ProductGroupSummaryStatus']">
@@ -4298,11 +4935,20 @@
 	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP" name="TOTAL_SIGNUP" />
 	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT" name="TOTAL_CHECKOUT" />
 	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM" name="TOTAL_CUSTOM" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART" name="TOTAL_ADD_TO_CART" />
 	        <jaxb:typesafeEnumMember value="TOTAL_LEAD" name="TOTAL_LEAD" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH" name="TOTAL_SEARCH" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO" name="TOTAL_WATCH_VIDEO" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY" name="TOTAL_VIEW_CATEGORY" />
 	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL" name="TOTAL_APP_INSTALL" />
 	        <jaxb:typesafeEnumMember value="TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR" name="TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR" name="TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" name="TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR" name="TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR" name="TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" name="TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR" />
+	        <jaxb:typesafeEnumMember value="TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" name="TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" name="TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="TOTAL_CHECKOUT_QUANTITY" name="TOTAL_CHECKOUT_QUANTITY" />
 	        <jaxb:typesafeEnumMember value="PAGE_VISIT_COST_PER_ACTION" name="PAGE_VISIT_COST_PER_ACTION" />
@@ -4326,6 +4972,7 @@
 	        <jaxb:typesafeEnumMember value="VIDEO_P75_COMBINED_2" name="VIDEO_P75_COMBINED_2" />
 	        <jaxb:typesafeEnumMember value="VIDEO_P95_COMBINED_2" name="VIDEO_P95_COMBINED_2" />
 	        <jaxb:typesafeEnumMember value="VIDEO_MRC_VIEWS_2" name="VIDEO_MRC_VIEWS_2" />
+	        <jaxb:typesafeEnumMember value="PAID_VIDEO_VIEWABLE_RATE" name="PAID_VIDEO_VIEWABLE_RATE" />
 	        <jaxb:typesafeEnumMember value="VIDEO_LENGTH" name="VIDEO_LENGTH" />
 	        <jaxb:typesafeEnumMember value="CPV_IN_MICRO_DOLLAR" name="CPV_IN_MICRO_DOLLAR" />
 	        <jaxb:typesafeEnumMember value="ECPV_IN_DOLLAR" name="ECPV_IN_DOLLAR" />
@@ -4344,6 +4991,7 @@
 	        <jaxb:typesafeEnumMember value="VIDEO_AVG_WATCHTIME_IN_SECOND_1" name="VIDEO_AVG_WATCHTIME_IN_SECOND_1" />
 	        <jaxb:typesafeEnumMember value="VIDEO_AVG_WATCHTIME_IN_SECOND_2" name="VIDEO_AVG_WATCHTIME_IN_SECOND_2" />
 	        <jaxb:typesafeEnumMember value="TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND" name="TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND" />
+	        <jaxb:typesafeEnumMember value="TOTAL_DESTINATION_VIEWS" name="TOTAL_DESTINATION_VIEWS" />
 	        <jaxb:typesafeEnumMember value="TOTAL_REPIN_RATE" name="TOTAL_REPIN_RATE" />
 	        <jaxb:typesafeEnumMember value="WEB_CHECKOUT_COST_PER_ACTION" name="WEB_CHECKOUT_COST_PER_ACTION" />
 	        <jaxb:typesafeEnumMember value="WEB_CHECKOUT_ROAS" name="WEB_CHECKOUT_ROAS" />
@@ -4656,6 +5304,16 @@
 	        <jaxb:typesafeEnumMember value="CO" name="CO" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='TargetingSpecAppType']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="android_mobile" name="ANDROID_MOBILE" />
+	        <jaxb:typesafeEnumMember value="android_tablet" name="ANDROID_TABLET" />
+	        <jaxb:typesafeEnumMember value="ipad" name="IPAD" />
+	        <jaxb:typesafeEnumMember value="iphone" name="IPHONE" />
+	        <jaxb:typesafeEnumMember value="web" name="WEB" />
+	        <jaxb:typesafeEnumMember value="web_mobile" name="WEB_MOBILE" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='TrendType']">
     	<jaxb:typesafeEnumClass>
 	        <jaxb:typesafeEnumMember value="growing" name="GROWING" />
@@ -4684,6 +5342,13 @@
 	        <jaxb:typesafeEnumMember value="MX" name="MX" />
 	        <jaxb:typesafeEnumMember value="MX+AR+CO+CL" name="MX_AR_CO_CL" />
 	        <jaxb:typesafeEnumMember value="AU+NZ" name="AU_NZ" />
+	    </jaxb:typesafeEnumClass>
+    </jaxws:bindings>
+    <jaxws:bindings node="xsd:simpleType[@name='UpdateMaskBidOptionField']">
+    	<jaxb:typesafeEnumClass>
+	        <jaxb:typesafeEnumMember value="BID" name="BID" />
+	        <jaxb:typesafeEnumMember value="APP_TYPE_BID_MULTIPLIER_SET" name="APP_TYPE_BID_MULTIPLIER_SET" />
+	        <jaxb:typesafeEnumMember value="PLACEMENT_BID_MULTIPLIER_SET" name="PLACEMENT_BID_MULTIPLIER_SET" />
 	    </jaxb:typesafeEnumClass>
     </jaxws:bindings>
     <jaxws:bindings node="xsd:simpleType[@name='UpdateMaskFieldType']">

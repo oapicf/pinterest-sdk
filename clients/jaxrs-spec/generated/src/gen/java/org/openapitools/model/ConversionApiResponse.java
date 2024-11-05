@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
 @JsonTypeName("ConversionApiResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionApiResponse   {
-  private @Valid Integer numEventsReceived;
-  private @Valid Integer numEventsProcessed;
+  private Integer numEventsReceived;
+  private Integer numEventsProcessed;
   private @Valid List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
 
   /**
@@ -38,8 +38,7 @@ public class ConversionApiResponse   {
   
   @ApiModelProperty(required = true, value = "Total number of events received in the request.")
   @JsonProperty("num_events_received")
-  @NotNull
-  public Integer getNumEventsReceived() {
+  @NotNull public Integer getNumEventsReceived() {
     return numEventsReceived;
   }
 
@@ -59,8 +58,7 @@ public class ConversionApiResponse   {
   
   @ApiModelProperty(required = true, value = "Number of events that were successfully processed from the events.")
   @JsonProperty("num_events_processed")
-  @NotNull
-  public Integer getNumEventsProcessed() {
+  @NotNull public Integer getNumEventsProcessed() {
     return numEventsProcessed;
   }
 
@@ -80,8 +78,7 @@ public class ConversionApiResponse   {
   
   @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
   @JsonProperty("events")
-  @NotNull
-  public List<ConversionApiResponseEventsInner> getEvents() {
+  @NotNull @Valid public List<@Valid ConversionApiResponseEventsInner> getEvents() {
     return events;
   }
 

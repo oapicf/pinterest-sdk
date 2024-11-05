@@ -133,7 +133,7 @@ data class CatalogsItemValidationErrors(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("TITLE_MISSING") val TITLE_MISSING: CatalogsItemValidationDetails? = null
-) {
+    ) {
 
 }
 

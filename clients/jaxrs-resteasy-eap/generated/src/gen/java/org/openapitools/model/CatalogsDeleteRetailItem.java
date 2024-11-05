@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An item to be deleted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="An item to be deleted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsDeleteRetailItem   {
   
   private String itemId;
@@ -20,13 +20,7 @@ public class CatalogsDeleteRetailItem   {
    * Gets or Sets operation
    */
   public enum OperationEnum {
-    CREATE("CREATE"),
-
-        UPDATE("UPDATE"),
-
-        UPSERT("UPSERT"),
-
-        DELETE("DELETE");
+    DELETE("DELETE");
     private String value;
 
     OperationEnum(String value) {

@@ -13,10 +13,9 @@ campaign_update_request_t *campaign_update_request_create(
     int lifetime_spend_cap,
     int daily_spend_cap,
     char *order_line_id,
-    ad_common_tracking_urls_t *tracking_urls,
+    tracking_urls_t *tracking_urls,
     int start_time,
     int end_time,
-    campaign_summary_status_t *summary_status,
     int is_flexible_daily_budgets,
     int default_ad_group_budget_in_micro_currency,
     int is_automated_campaign,
@@ -37,7 +36,6 @@ campaign_update_request_t *campaign_update_request_create(
     campaign_update_request_local_var->tracking_urls = tracking_urls;
     campaign_update_request_local_var->start_time = start_time;
     campaign_update_request_local_var->end_time = end_time;
-    campaign_update_request_local_var->summary_status = summary_status;
     campaign_update_request_local_var->is_flexible_daily_budgets = is_flexible_daily_budgets;
     campaign_update_request_local_var->default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency;
     campaign_update_request_local_var->is_automated_campaign = is_automated_campaign;
@@ -74,12 +72,8 @@ void campaign_update_request_free(campaign_update_request_t *campaign_update_req
         campaign_update_request->order_line_id = NULL;
     }
     if (campaign_update_request->tracking_urls) {
-        ad_common_tracking_urls_free(campaign_update_request->tracking_urls);
+        tracking_urls_free(campaign_update_request->tracking_urls);
         campaign_update_request->tracking_urls = NULL;
-    }
-    if (campaign_update_request->summary_status) {
-        campaign_summary_status_free(campaign_update_request->summary_status);
-        campaign_update_request->summary_status = NULL;
     }
     if (campaign_update_request->objective_type) {
         objective_type_free(campaign_update_request->objective_type);
@@ -156,7 +150,7 @@ cJSON *campaign_update_request_convertToJSON(campaign_update_request_t *campaign
 
     // campaign_update_request->tracking_urls
     if(campaign_update_request->tracking_urls) {
-    cJSON *tracking_urls_local_JSON = ad_common_tracking_urls_convertToJSON(campaign_update_request->tracking_urls);
+    cJSON *tracking_urls_local_JSON = tracking_urls_convertToJSON(campaign_update_request->tracking_urls);
     if(tracking_urls_local_JSON == NULL) {
     goto fail; //model
     }
@@ -179,19 +173,6 @@ cJSON *campaign_update_request_convertToJSON(campaign_update_request_t *campaign
     if(campaign_update_request->end_time) {
     if(cJSON_AddNumberToObject(item, "end_time", campaign_update_request->end_time) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // campaign_update_request->summary_status
-    if(campaign_update_request->summary_status) {
-    cJSON *summary_status_local_JSON = campaign_summary_status_convertToJSON(campaign_update_request->summary_status);
-    if(summary_status_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "summary_status", summary_status_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
     }
     }
 
@@ -256,10 +237,7 @@ campaign_update_request_t *campaign_update_request_parseFromJSON(cJSON *campaign
     entity_status_t *status_local_nonprim = NULL;
 
     // define the local variable for campaign_update_request->tracking_urls
-    ad_common_tracking_urls_t *tracking_urls_local_nonprim = NULL;
-
-    // define the local variable for campaign_update_request->summary_status
-    campaign_summary_status_t *summary_status_local_nonprim = NULL;
+    tracking_urls_t *tracking_urls_local_nonprim = NULL;
 
     // define the local variable for campaign_update_request->objective_type
     objective_type_t *objective_type_local_nonprim = NULL;
@@ -333,7 +311,7 @@ campaign_update_request_t *campaign_update_request_parseFromJSON(cJSON *campaign
     // campaign_update_request->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(campaign_update_requestJSON, "tracking_urls");
     if (tracking_urls) { 
-    tracking_urls_local_nonprim = ad_common_tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
+    tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // campaign_update_request->start_time
@@ -352,12 +330,6 @@ campaign_update_request_t *campaign_update_request_parseFromJSON(cJSON *campaign
     {
     goto end; //Numeric
     }
-    }
-
-    // campaign_update_request->summary_status
-    cJSON *summary_status = cJSON_GetObjectItemCaseSensitive(campaign_update_requestJSON, "summary_status");
-    if (summary_status) { 
-    summary_status_local_nonprim = campaign_summary_status_parseFromJSON(summary_status); //custom
     }
 
     // campaign_update_request->is_flexible_daily_budgets
@@ -414,7 +386,6 @@ campaign_update_request_t *campaign_update_request_parseFromJSON(cJSON *campaign
         tracking_urls ? tracking_urls_local_nonprim : NULL,
         start_time ? start_time->valuedouble : 0,
         end_time ? end_time->valuedouble : 0,
-        summary_status ? summary_status_local_nonprim : NULL,
         is_flexible_daily_budgets ? is_flexible_daily_budgets->valueint : 0,
         default_ad_group_budget_in_micro_currency ? default_ad_group_budget_in_micro_currency->valuedouble : 0,
         is_automated_campaign ? is_automated_campaign->valueint : 0,
@@ -429,12 +400,8 @@ end:
         status_local_nonprim = NULL;
     }
     if (tracking_urls_local_nonprim) {
-        ad_common_tracking_urls_free(tracking_urls_local_nonprim);
+        tracking_urls_free(tracking_urls_local_nonprim);
         tracking_urls_local_nonprim = NULL;
-    }
-    if (summary_status_local_nonprim) {
-        campaign_summary_status_free(summary_status_local_nonprim);
-        summary_status_local_nonprim = NULL;
     }
     if (objective_type_local_nonprim) {
         objective_type_free(objective_type_local_nonprim);

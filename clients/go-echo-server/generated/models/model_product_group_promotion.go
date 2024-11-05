@@ -3,10 +3,10 @@ package models
 type ProductGroupPromotion struct {
 
 	// ID of the product group promotion.
-	Id string `json:"id,omitempty"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// ID of the ad group the product group belongs to.
-	AdGroupId string `json:"ad_group_id,omitempty"`
+	AdGroupId string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
 
 	// The bid in micro currency.
 	BidInMicroCurrency *int32 `json:"bid_in_micro_currency,omitempty"`
@@ -21,7 +21,7 @@ type ProductGroupPromotion struct {
 	RelativeDefinition *string `json:"relative_definition,omitempty"`
 
 	// The parent Product Group ID of this Product Group
-	ParentId *string `json:"parent_id,omitempty"`
+	ParentId *string `json:"parent_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Slideshow Collections Title
 	SlideshowCollectionsTitle *string `json:"slideshow_collections_title,omitempty"`
@@ -38,15 +38,13 @@ type ProductGroupPromotion struct {
 	TrackingUrl *string `json:"tracking_url,omitempty"`
 
 	// ID of the catalogs product group that this product group promotion references
-	CatalogProductGroupId *string `json:"catalog_product_group_id,omitempty"`
+	CatalogProductGroupId *string `json:"catalog_product_group_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Catalogs product group name
 	CatalogProductGroupName *string `json:"catalog_product_group_name,omitempty"`
 
-	CreativeType CreativeType `json:"creative_type,omitempty"`
-
 	// Hero Pin ID if this PG is promoted as a Collection
-	CollectionsHeroPinId *string `json:"collections_hero_pin_id,omitempty"`
+	CollectionsHeroPinId *string `json:"collections_hero_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Collections Hero Destination Url
 	CollectionsHeroDestinationUrl *string `json:"collections_hero_destination_url,omitempty"`

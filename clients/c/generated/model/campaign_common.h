@@ -15,9 +15,8 @@
 
 typedef struct campaign_common_t campaign_common_t;
 
-#include "ad_common_tracking_urls.h"
-#include "campaign_summary_status.h"
 #include "entity_status.h"
+#include "tracking_urls.h"
 
 
 
@@ -28,10 +27,10 @@ typedef struct campaign_common_t {
     int lifetime_spend_cap; //numeric
     int daily_spend_cap; //numeric
     char *order_line_id; // string
-    struct ad_common_tracking_urls_t *tracking_urls; //model
+    struct tracking_urls_t *tracking_urls; //model
     int start_time; //numeric
     int end_time; //numeric
-    campaign_summary_status_t *summary_status; // custom
+    int is_flexible_daily_budgets; //boolean
 
 } campaign_common_t;
 
@@ -42,10 +41,10 @@ campaign_common_t *campaign_common_create(
     int lifetime_spend_cap,
     int daily_spend_cap,
     char *order_line_id,
-    ad_common_tracking_urls_t *tracking_urls,
+    tracking_urls_t *tracking_urls,
     int start_time,
     int end_time,
-    campaign_summary_status_t *summary_status
+    int is_flexible_daily_budgets
 );
 
 void campaign_common_free(campaign_common_t *campaign_common);

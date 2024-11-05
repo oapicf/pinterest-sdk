@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 
 ## Enum: ResponseType
-Allowed values: [authorization_code, refresh_token]
+Allowed values: [authorization_code, refresh_token, client_credentials]
 
 
 

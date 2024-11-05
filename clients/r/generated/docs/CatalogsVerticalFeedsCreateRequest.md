@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [Enum: ] 
 **default_country** | [**Country**](Country.md) |  | [Enum: ] 
 **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [Enum: ] 
-**catalog_id** | **character** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] [Pattern: ^\\d+$] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**catalog_id** | **character** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] [Pattern: ^\\d+$] 
 
 

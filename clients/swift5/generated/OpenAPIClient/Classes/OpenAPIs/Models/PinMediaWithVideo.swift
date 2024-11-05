@@ -14,7 +14,7 @@ import AnyCodable
 public struct PinMediaWithVideo: Codable, JSONEncodable, Hashable {
 
     public var mediaType: String?
-    public var images: ImageMetadataImages?
+    public var images: PinMediaWithImageAllOfImages?
     public var coverImageUrl: String?
     /** Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
     public var videoUrl: String?
@@ -25,7 +25,7 @@ public struct PinMediaWithVideo: Codable, JSONEncodable, Hashable {
     /** Width (in pixels) */
     public var width: Int?
 
-    public init(mediaType: String? = nil, images: ImageMetadataImages? = nil, coverImageUrl: String? = nil, videoUrl: String? = nil, duration: Double? = nil, height: Int? = nil, width: Int? = nil) {
+    public init(mediaType: String? = nil, images: PinMediaWithImageAllOfImages? = nil, coverImageUrl: String? = nil, videoUrl: String? = nil, duration: Double? = nil, height: Int? = nil, width: Int? = nil) {
         self.mediaType = mediaType
         self.images = images
         self.coverImageUrl = coverImageUrl

@@ -39,6 +39,12 @@ void main() {
       // TODO
     });
 
+    // The catalog creative assets id in the merchant namespace
+    // String creativeAssetsId
+    test('to test the property `creativeAssetsId`', () async {
+      // TODO
+    });
+
 
   });
 

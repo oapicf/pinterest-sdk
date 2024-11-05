@@ -16,7 +16,7 @@
 #include "../model/item_response_any_of.h"
 item_response_any_of_t* instantiate_item_response_any_of(int include_optional);
 
-#include "test_catalogs_hotel_attributes.c"
+#include "test_catalogs_creative_assets_attributes.c"
 
 
 item_response_any_of_t* instantiate_item_response_any_of(int include_optional) {
@@ -27,7 +27,8 @@ item_response_any_of_t* instantiate_item_response_any_of(int include_optional) {
       "DS0294-M",
       list_createList(),
        // false, not to have infinite recursion
-      instantiate_catalogs_hotel_attributes(0),
+      instantiate_catalogs_creative_assets_attributes(0),
+      "DS0294-M",
       "DS0294-M"
     );
   } else {
@@ -36,6 +37,7 @@ item_response_any_of_t* instantiate_item_response_any_of(int include_optional) {
       "DS0294-M",
       list_createList(),
       NULL,
+      "DS0294-M",
       "DS0294-M"
     );
   }

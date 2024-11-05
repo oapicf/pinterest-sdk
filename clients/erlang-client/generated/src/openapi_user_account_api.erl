@@ -39,7 +39,7 @@ boards_user_follows/list(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Follow user
-%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 -spec follow_user/update(ctx:ctx(), binary(), openapi_follow_user_request:openapi_follow_user_request()) -> {ok, openapi_user_summary:openapi_user_summary(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 follow_user/update(Ctx, Username, OpenapiFollowUserRequest) ->
     follow_user/update(Ctx, Username, OpenapiFollowUserRequest, #{}).
@@ -207,7 +207,7 @@ user_account/followed_interests(Ctx, Username, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get user account
-%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 -spec user_account/get(ctx:ctx()) -> {ok, openapi_account:openapi_account(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 user_account/get(Ctx) ->
     user_account/get(Ctx, #{}).
@@ -282,7 +282,7 @@ verify_website/update(Ctx, OpenapiUserWebsiteVerifyRequest, Optional) ->
 
     Method = post,
     Path = [?BASE_URL, "/user_account/websites"],
-    QS = [],
+    QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
     Body1 = OpenapiUserWebsiteVerifyRequest,
     ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
@@ -303,7 +303,7 @@ website_verification/get(Ctx, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/user_account/websites/verification"],
-    QS = [],
+    QS = lists:flatten([])++openapi_utils:optional_params(['ad_account_id'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

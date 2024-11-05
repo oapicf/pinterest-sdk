@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **conversionEvent** | **String** |  | [optional] 
 **conversionTagId** | **String** |  | [optional] 
 **cpaGoalValueInMicroCurrency** | **String** |  | [optional] 
-**isRoasOptimized** | **Boolean** | Ad group is ROAS optimized | [optional] 
+**isRoasOptimized** | **Boolean** | ROAS optimization is not supported | [optional] 
 **learningModeType** | **String** | Conversion learning model type | [optional] 
 
 
@@ -46,8 +46,6 @@ Name | Type | Description | Notes
 * `NOT_ACTIVE` (value: `"NOT_ACTIVE"`)
 
 * `ACTIVE` (value: `"ACTIVE"`)
-
-* `null` (value: `"null"`)
 
 
 

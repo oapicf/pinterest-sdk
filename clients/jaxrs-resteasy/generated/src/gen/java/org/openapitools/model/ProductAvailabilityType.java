@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum ProductAvailabilityType {
-    IN_STOCK, OUT_OF_STOCK, PREORDER, NULL
+    IN_STOCK, OUT_OF_STOCK, PREORDER
 }

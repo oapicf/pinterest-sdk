@@ -251,8 +251,8 @@ object UserAccountApi {
         * @return An endpoint representing a UserWebsiteSummary
         */
         private def verifyWebsite/update(da: DataAccessor): Endpoint[UserWebsiteSummary] =
-        post("user_account" :: "websites" :: jsonBody[UserWebsiteVerifyRequest]) { (userWebsiteVerifyRequest: UserWebsiteVerifyRequest) =>
-          da.UserAccount_verifyWebsite/update(userWebsiteVerifyRequest) match {
+        post("user_account" :: "websites" :: jsonBody[UserWebsiteVerifyRequest] :: paramOption("ad_account_id")) { (userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: Option[String]) =>
+          da.UserAccount_verifyWebsite/update(userWebsiteVerifyRequest, adAccountId) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -265,8 +265,8 @@ object UserAccountApi {
         * @return An endpoint representing a UserWebsiteVerificationCode
         */
         private def websiteVerification/get(da: DataAccessor): Endpoint[UserWebsiteVerificationCode] =
-        get("user_account" :: "websites" :: "verification") { () =>
-          da.UserAccount_websiteVerification/get() match {
+        get("user_account" :: "websites" :: "verification" :: paramOption("ad_account_id")) { (adAccountId: Option[String]) =>
+          da.UserAccount_websiteVerification/get(adAccountId) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

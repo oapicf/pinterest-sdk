@@ -13,7 +13,5 @@ The class is defined in **[ProductAvailabilityType.java](../../src/main/java/org
 
 * `PREORDER` (value: `"PREORDER"`)
 
-* `NULL` (value: `"null"`)
-
 
 

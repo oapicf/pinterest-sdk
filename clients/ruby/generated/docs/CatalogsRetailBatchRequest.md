@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
+| **catalog_type** | **String** |  |  |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**Language**](Language.md) |  |  |
+| **language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  |
 | **items** | [**Array&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations |  |
 
 ## Example

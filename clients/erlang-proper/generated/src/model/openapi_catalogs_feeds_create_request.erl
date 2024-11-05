@@ -18,6 +18,7 @@
   | {'preferred_processing_schedule', openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule() }
   | {'default_country', openapi_country:openapi_country() }
   | {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
+  | {'status', openapi_catalogs_status:openapi_catalogs_status() }
   ].
 
 
@@ -34,6 +35,7 @@ openapi_catalogs_feeds_create_request(Fields) ->
             , {'preferred_processing_schedule', openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule() }
             , {'default_country', openapi_country:openapi_country() }
             , {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
+            , {'status', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("pins_save_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinsSaveRequest {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardId = JsonNullable.<String>undefined();
@@ -38,7 +38,7 @@ public class PinsSaveRequest {
   /**
    * Unique identifier of the board to which the pin will be saved.
    * @return boardId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_id", description = "Unique identifier of the board to which the pin will be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_id")
@@ -58,7 +58,7 @@ public class PinsSaveRequest {
   /**
    * Unique identifier of the board section to which the pin will be saved.
    * @return boardSectionId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_section_id", description = "Unique identifier of the board section to which the pin will be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_section_id")

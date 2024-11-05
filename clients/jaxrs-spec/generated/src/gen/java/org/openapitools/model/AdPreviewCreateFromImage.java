@@ -15,10 +15,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdPreviewCreateFromImage")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdPreviewCreateFromImage   {
-  private @Valid String imageUrl;
-  private @Valid String title;
+  private String imageUrl;
+  private String title;
 
   /**
    * Image URL.
@@ -31,8 +31,7 @@ public class AdPreviewCreateFromImage   {
   
   @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
   @JsonProperty("image_url")
-  @NotNull
-  public String getImageUrl() {
+  @NotNull public String getImageUrl() {
     return imageUrl;
   }
 
@@ -52,8 +51,7 @@ public class AdPreviewCreateFromImage   {
   
   @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
   @JsonProperty("title")
-  @NotNull
-  public String getTitle() {
+  @NotNull public String getTitle() {
     return title;
   }
 

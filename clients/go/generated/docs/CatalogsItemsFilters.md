@@ -6,14 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **ItemIds** | **[]string** |  | 
-**CatalogId** | Pointer to **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 **HotelIds** | **[]string** |  | 
+**CreativeAssetsIds** | **[]string** |  | 
 
 ## Methods
 
 ### NewCatalogsItemsFilters
 
-`func NewCatalogsItemsFilters(catalogType CatalogsType, itemIds []string, hotelIds []string, ) *CatalogsItemsFilters`
+`func NewCatalogsItemsFilters(catalogType CatalogsType, itemIds []string, hotelIds []string, creativeAssetsIds []string, ) *CatalogsItemsFilters`
 
 NewCatalogsItemsFilters instantiates a new CatalogsItemsFilters object
 This constructor will assign default values to properties that have it defined,
@@ -111,6 +112,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsItemsFilters) SetHotelIds(v []string)`
 
 SetHotelIds sets HotelIds field to given value.
+
+
+### GetCreativeAssetsIds
+
+`func (o *CatalogsItemsFilters) GetCreativeAssetsIds() []string`
+
+GetCreativeAssetsIds returns the CreativeAssetsIds field if non-nil, zero value otherwise.
+
+### GetCreativeAssetsIdsOk
+
+`func (o *CatalogsItemsFilters) GetCreativeAssetsIdsOk() (*[]string, bool)`
+
+GetCreativeAssetsIdsOk returns a tuple with the CreativeAssetsIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreativeAssetsIds
+
+`func (o *CatalogsItemsFilters) SetCreativeAssetsIds(v []string)`
+
+SetCreativeAssetsIds sets CreativeAssetsIds field to given value.
 
 
 

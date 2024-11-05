@@ -1,7 +1,6 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 
@@ -92,9 +91,6 @@ public class ProductGroupPromotion  {
    * Catalogs product group name
   **/
   private String catalogProductGroupName;
-
-  @ApiModelProperty(value = "")
-  private CreativeType creativeType;
 
   @ApiModelProperty(example = "123123", value = "Hero Pin ID if this PG is promoted as a Collection")
  /**
@@ -363,24 +359,6 @@ public class ProductGroupPromotion  {
   }
 
  /**
-   * Get creativeType
-   * @return creativeType
-  **/
-  @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
-  public ProductGroupPromotion creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
- /**
    * Hero Pin ID if this PG is promoted as a Collection
    * @return collectionsHeroPinId
   **/
@@ -457,7 +435,6 @@ public class ProductGroupPromotion  {
         Objects.equals(this.trackingUrl, productGroupPromotion.trackingUrl) &&
         Objects.equals(this.catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
         Objects.equals(this.catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
-        Objects.equals(this.creativeType, productGroupPromotion.creativeType) &&
         Objects.equals(this.collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         Objects.equals(this.collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         Objects.equals(this.gridClickType, productGroupPromotion.gridClickType);
@@ -465,7 +442,7 @@ public class ProductGroupPromotion  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, creativeType, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
+    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
   }
 
   @Override
@@ -487,7 +464,6 @@ public class ProductGroupPromotion  {
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
     sb.append("    catalogProductGroupName: ").append(toIndentedString(catalogProductGroupName)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    collectionsHeroPinId: ").append(toIndentedString(collectionsHeroPinId)).append("\n");
     sb.append("    collectionsHeroDestinationUrl: ").append(toIndentedString(collectionsHeroDestinationUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");

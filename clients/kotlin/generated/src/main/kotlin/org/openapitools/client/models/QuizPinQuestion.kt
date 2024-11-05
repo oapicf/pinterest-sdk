@@ -40,5 +40,8 @@ data class QuizPinQuestion (
     @Json(name = "options")
     val options: kotlin.collections.List<QuizPinOption>? = null
 
-)
+) {
+
+
+}
 

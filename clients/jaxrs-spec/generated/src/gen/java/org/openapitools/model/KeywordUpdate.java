@@ -16,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordUpdate   {
-  private @Valid String id;
-  private @Valid Boolean archived;
-  private @Valid Integer bid;
+  private String id;
+  private Boolean archived;
+  private Integer bid;
 
   /**
    * Keyword ID.
@@ -33,8 +33,7 @@ public class KeywordUpdate   {
   
   @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
   @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -64,8 +63,7 @@ public class KeywordUpdate   {
   }
 
   /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * minimum: 1
+   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    **/
   public KeywordUpdate bid(Integer bid) {
     this.bid = bid;
@@ -73,9 +71,9 @@ public class KeywordUpdate   {
   }
 
   
-  @ApiModelProperty(example = "200000", value = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
   @JsonProperty("bid")
- @Min(1)  public Integer getBid() {
+  public Integer getBid() {
     return bid;
   }
 

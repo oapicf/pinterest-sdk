@@ -13,9 +13,9 @@ import java.time.ZonedDateTime
  * @param id 
  * @param updatedUnderscoreat 
  */
-case class CatalogsDbItem(createdUnderscoreat: Option[ZonedDateTime],
-                id: Option[String],
-                updatedUnderscoreat: Option[ZonedDateTime]
+case class CatalogsDbItem(createdUnderscoreat: ZonedDateTime,
+                id: String,
+                updatedUnderscoreat: ZonedDateTime
                 )
 
 object CatalogsDbItem {

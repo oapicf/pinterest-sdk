@@ -79,7 +79,6 @@ Protected Class AdsCreditDiscountsResponse
         InvoiceSalesIncentiveCredit
         InvoiceSalesIncentiveCreditApplied
         PrepaidCreditRefund
-        Null
         
     #tag EndEnum
 
@@ -128,8 +127,6 @@ Protected Class AdsCreditDiscountsResponse
 		      Return "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"
 		    Case DiscountTypeEnum.PrepaidCreditRefund
 		      Return "PREPAID_CREDIT_REFUND"
-		    Case DiscountTypeEnum.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""

@@ -60,6 +60,7 @@ test_that("updated_at", {
 
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the hotel product group.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")

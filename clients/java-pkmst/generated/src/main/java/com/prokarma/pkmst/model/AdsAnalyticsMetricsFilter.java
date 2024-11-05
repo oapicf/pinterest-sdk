@@ -21,7 +21,7 @@ import java.util.List;
  * AdsAnalyticsMetricsFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsMetricsFilter   {
   @JsonProperty("field")
   private AdsAnalyticsFilterColumn field;
@@ -38,10 +38,10 @@ public class AdsAnalyticsMetricsFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get field
    * @return field
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public AdsAnalyticsFilterColumn getField() {
     return field;
@@ -56,10 +56,10 @@ public class AdsAnalyticsMetricsFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get operator
    * @return operator
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public AdsAnalyticsFilterOperator getOperator() {
     return operator;
@@ -82,10 +82,10 @@ public class AdsAnalyticsMetricsFilter   {
     return this;
   }
 
-   /**
+  /**
    * List of values for filtering
    * @return values
-  **/
+   */
   @ApiModelProperty(required = true, value = "List of values for filtering")
   public List<BigDecimal> getValues() {
     return values;

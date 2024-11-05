@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **created_at** | **Time** |  | [optional] |
-| **id** | **String** |  | [optional] |
-| **updated_at** | **Time** |  | [optional] |
+| **created_at** | **Time** |  |  |
+| **id** | **String** |  |  |
+| **updated_at** | **Time** |  |  |
 | **ingestion_details** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  |  |
 | **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  |  |
 | **product_counts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  |  |

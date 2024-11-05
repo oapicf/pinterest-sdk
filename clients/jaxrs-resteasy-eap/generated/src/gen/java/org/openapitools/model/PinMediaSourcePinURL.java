@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourcePinURL   {
   
 

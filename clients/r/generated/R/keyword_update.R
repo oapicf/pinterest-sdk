@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field id Keyword ID. character
 #' @field archived Is keyword archived? character [optional]
-#' @field bid Keyword custom bid in microcurrency - null if inherited from parent ad group. integer [optional]
+#' @field bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,16 +19,14 @@ KeywordUpdate <- R6::R6Class(
     `id` = NULL,
     `archived` = NULL,
     `bid` = NULL,
-    #' Initialize a new KeywordUpdate class.
-    #'
+
     #' @description
     #' Initialize a new KeywordUpdate class.
     #'
     #' @param id Keyword ID.
     #' @param archived Is keyword archived?
-    #' @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
+    #' @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id`, `archived` = NULL, `bid` = NULL, ...) {
       if (!missing(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -49,13 +47,11 @@ KeywordUpdate <- R6::R6Class(
         self$`bid` <- `bid`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordUpdate in JSON format
-    #' @export
     toJSON = function() {
       KeywordUpdateObject <- list()
       if (!is.null(self$`id`)) {
@@ -72,14 +68,12 @@ KeywordUpdate <- R6::R6Class(
       }
       KeywordUpdateObject
     },
-    #' Deserialize JSON string into an instance of KeywordUpdate
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordUpdate
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordUpdate
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -93,13 +87,11 @@ KeywordUpdate <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordUpdate in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -130,14 +122,12 @@ KeywordUpdate <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of KeywordUpdate
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordUpdate
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordUpdate
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -145,13 +135,11 @@ KeywordUpdate <- R6::R6Class(
       self$`bid` <- this_object$`bid`
       self
     },
-    #' Validate JSON input with respect to KeywordUpdate
-    #'
+
     #' @description
     #' Validate JSON input with respect to KeywordUpdate and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `id`
@@ -163,23 +151,19 @@ KeywordUpdate <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for KeywordUpdate: the required field `id` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of KeywordUpdate
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `id` is null
       if (is.null(self$`id`)) {
@@ -190,19 +174,13 @@ KeywordUpdate <- R6::R6Class(
         return(FALSE)
       }
 
-      if (self$`bid` < 1) {
-        return(FALSE)
-      }
-
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `id` is null
@@ -214,18 +192,11 @@ KeywordUpdate <- R6::R6Class(
         invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }
 
-      if (self$`bid` < 1) {
-        invalid_fields["bid"] <- "Invalid value for `bid`, must be bigger than or equal to 1."
-      }
-
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

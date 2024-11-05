@@ -29,4 +29,6 @@ const (
 	ARS Currency = "ARS"
 	CLP Currency = "CLP"
 	COP Currency = "COP"
+	INR Currency = "INR"
+	TRY Currency = "TRY"
 )

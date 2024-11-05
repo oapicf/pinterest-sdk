@@ -17,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedValidationDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationDetails   {
-  private @Valid CatalogsFeedValidationErrors errors;
-  private @Valid CatalogsFeedValidationWarnings warnings;
+  private CatalogsFeedValidationErrors errors;
+  private CatalogsFeedValidationWarnings warnings;
 
   /**
    **/
@@ -32,8 +32,7 @@ public class CatalogsFeedValidationDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("errors")
-  @NotNull
-  public CatalogsFeedValidationErrors getErrors() {
+  @NotNull @Valid public CatalogsFeedValidationErrors getErrors() {
     return errors;
   }
 
@@ -52,8 +51,7 @@ public class CatalogsFeedValidationDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("warnings")
-  @NotNull
-  public CatalogsFeedValidationWarnings getWarnings() {
+  @NotNull @Valid public CatalogsFeedValidationWarnings getWarnings() {
     return warnings;
   }
 

@@ -11,7 +11,7 @@
 #' @field conversion_event  character [optional]
 #' @field conversion_tag_id  character [optional]
 #' @field cpa_goal_value_in_micro_currency  character [optional]
-#' @field is_roas_optimized Ad group is ROAS optimized character [optional]
+#' @field is_roas_optimized ROAS optimization is not supported character [optional]
 #' @field learning_mode_type Conversion learning model type character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -25,8 +25,7 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
     `cpa_goal_value_in_micro_currency` = NULL,
     `is_roas_optimized` = NULL,
     `learning_mode_type` = NULL,
-    #' Initialize a new OptimizationGoalMetadataConversionTagV3GoalMetadata class.
-    #'
+
     #' @description
     #' Initialize a new OptimizationGoalMetadataConversionTagV3GoalMetadata class.
     #'
@@ -34,10 +33,9 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
     #' @param conversion_event conversion_event
     #' @param conversion_tag_id conversion_tag_id
     #' @param cpa_goal_value_in_micro_currency cpa_goal_value_in_micro_currency
-    #' @param is_roas_optimized Ad group is ROAS optimized
+    #' @param is_roas_optimized ROAS optimization is not supported
     #' @param learning_mode_type Conversion learning model type
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`attribution_windows` = NULL, `conversion_event` = NULL, `conversion_tag_id` = NULL, `cpa_goal_value_in_micro_currency` = NULL, `is_roas_optimized` = NULL, `learning_mode_type` = NULL, ...) {
       if (!is.null(`attribution_windows`)) {
         stopifnot(R6::is.R6(`attribution_windows`))
@@ -71,8 +69,8 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
         self$`is_roas_optimized` <- `is_roas_optimized`
       }
       if (!is.null(`learning_mode_type`)) {
-        if (!(`learning_mode_type` %in% c("NOT_ACTIVE", "ACTIVE", "null"))) {
-          stop(paste("Error! \"", `learning_mode_type`, "\" cannot be assigned to `learning_mode_type`. Must be \"NOT_ACTIVE\", \"ACTIVE\", \"null\".", sep = ""))
+        if (!(`learning_mode_type` %in% c("NOT_ACTIVE", "ACTIVE"))) {
+          stop(paste("Error! \"", `learning_mode_type`, "\" cannot be assigned to `learning_mode_type`. Must be \"NOT_ACTIVE\", \"ACTIVE\".", sep = ""))
         }
         if (!(is.character(`learning_mode_type`) && length(`learning_mode_type`) == 1)) {
           stop(paste("Error! Invalid data for `learning_mode_type`. Must be a string:", `learning_mode_type`))
@@ -80,13 +78,11 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
         self$`learning_mode_type` <- `learning_mode_type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OptimizationGoalMetadataConversionTagV3GoalMetadata in JSON format
-    #' @export
     toJSON = function() {
       OptimizationGoalMetadataConversionTagV3GoalMetadataObject <- list()
       if (!is.null(self$`attribution_windows`)) {
@@ -115,14 +111,12 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
       }
       OptimizationGoalMetadataConversionTagV3GoalMetadataObject
     },
-    #' Deserialize JSON string into an instance of OptimizationGoalMetadataConversionTagV3GoalMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OptimizationGoalMetadataConversionTagV3GoalMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of OptimizationGoalMetadataConversionTagV3GoalMetadata
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attribution_windows`)) {
@@ -146,20 +140,18 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
         self$`is_roas_optimized` <- this_object$`is_roas_optimized`
       }
       if (!is.null(this_object$`learning_mode_type`)) {
-        if (!is.null(this_object$`learning_mode_type`) && !(this_object$`learning_mode_type` %in% c("NOT_ACTIVE", "ACTIVE", "null"))) {
-          stop(paste("Error! \"", this_object$`learning_mode_type`, "\" cannot be assigned to `learning_mode_type`. Must be \"NOT_ACTIVE\", \"ACTIVE\", \"null\".", sep = ""))
+        if (!is.null(this_object$`learning_mode_type`) && !(this_object$`learning_mode_type` %in% c("NOT_ACTIVE", "ACTIVE"))) {
+          stop(paste("Error! \"", this_object$`learning_mode_type`, "\" cannot be assigned to `learning_mode_type`. Must be \"NOT_ACTIVE\", \"ACTIVE\".", sep = ""))
         }
         self$`learning_mode_type` <- this_object$`learning_mode_type`
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OptimizationGoalMetadataConversionTagV3GoalMetadata in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`attribution_windows`)) {
@@ -214,14 +206,12 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of OptimizationGoalMetadataConversionTagV3GoalMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OptimizationGoalMetadataConversionTagV3GoalMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of OptimizationGoalMetadataConversionTagV3GoalMetadata
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`attribution_windows` <- OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows$new()$fromJSON(jsonlite::toJSON(this_object$`attribution_windows`, auto_unbox = TRUE, digits = NA))
@@ -232,39 +222,33 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
       self$`conversion_tag_id` <- this_object$`conversion_tag_id`
       self$`cpa_goal_value_in_micro_currency` <- this_object$`cpa_goal_value_in_micro_currency`
       self$`is_roas_optimized` <- this_object$`is_roas_optimized`
-      if (!is.null(this_object$`learning_mode_type`) && !(this_object$`learning_mode_type` %in% c("NOT_ACTIVE", "ACTIVE", "null"))) {
-        stop(paste("Error! \"", this_object$`learning_mode_type`, "\" cannot be assigned to `learning_mode_type`. Must be \"NOT_ACTIVE\", \"ACTIVE\", \"null\".", sep = ""))
+      if (!is.null(this_object$`learning_mode_type`) && !(this_object$`learning_mode_type` %in% c("NOT_ACTIVE", "ACTIVE"))) {
+        stop(paste("Error! \"", this_object$`learning_mode_type`, "\" cannot be assigned to `learning_mode_type`. Must be \"NOT_ACTIVE\", \"ACTIVE\".", sep = ""))
       }
       self$`learning_mode_type` <- this_object$`learning_mode_type`
       self
     },
-    #' Validate JSON input with respect to OptimizationGoalMetadataConversionTagV3GoalMetadata
-    #'
+
     #' @description
     #' Validate JSON input with respect to OptimizationGoalMetadataConversionTagV3GoalMetadata and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of OptimizationGoalMetadataConversionTagV3GoalMetadata
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`conversion_tag_id`, "^[0-9]+$")) {
         return(FALSE)
@@ -276,13 +260,11 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`conversion_tag_id`, "^[0-9]+$")) {
@@ -295,12 +277,9 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

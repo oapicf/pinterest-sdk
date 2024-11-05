@@ -2,9 +2,9 @@
 # CurrencyFilter
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](.md) |  |  |
 
 
 

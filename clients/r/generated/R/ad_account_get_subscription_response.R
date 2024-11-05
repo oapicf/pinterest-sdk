@@ -31,8 +31,7 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
     `cryptographic_key` = NULL,
     `cryptographic_algorithm` = NULL,
     `created_time` = NULL,
-    #' Initialize a new AdAccountGetSubscriptionResponse class.
-    #'
+
     #' @description
     #' Initialize a new AdAccountGetSubscriptionResponse class.
     #'
@@ -46,7 +45,6 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
     #' @param cryptographic_algorithm Lead data encryption algorithm.
     #' @param created_time Lead form creation time. Unix timestamp in milliseconds.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`lead_form_id` = NULL, `webhook_url` = NULL, `id` = NULL, `user_account_id` = NULL, `ad_account_id` = NULL, `api_version` = NULL, `cryptographic_key` = NULL, `cryptographic_algorithm` = NULL, `created_time` = NULL, ...) {
       if (!is.null(`lead_form_id`)) {
         if (!(is.character(`lead_form_id`) && length(`lead_form_id`) == 1)) {
@@ -103,13 +101,11 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
         self$`created_time` <- `created_time`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdAccountGetSubscriptionResponse in JSON format
-    #' @export
     toJSON = function() {
       AdAccountGetSubscriptionResponseObject <- list()
       if (!is.null(self$`lead_form_id`)) {
@@ -150,14 +146,12 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
       }
       AdAccountGetSubscriptionResponseObject
     },
-    #' Deserialize JSON string into an instance of AdAccountGetSubscriptionResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdAccountGetSubscriptionResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdAccountGetSubscriptionResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`lead_form_id`)) {
@@ -189,13 +183,11 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdAccountGetSubscriptionResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`lead_form_id`)) {
@@ -274,14 +266,12 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdAccountGetSubscriptionResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdAccountGetSubscriptionResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdAccountGetSubscriptionResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`lead_form_id` <- this_object$`lead_form_id`
@@ -295,33 +285,27 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
       self$`created_time` <- this_object$`created_time`
       self
     },
-    #' Validate JSON input with respect to AdAccountGetSubscriptionResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdAccountGetSubscriptionResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdAccountGetSubscriptionResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`lead_form_id`, "^\\d+$")) {
         return(FALSE)
@@ -341,13 +325,11 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`lead_form_id`, "^\\d+$")) {
@@ -368,12 +350,9 @@ AdAccountGetSubscriptionResponse <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

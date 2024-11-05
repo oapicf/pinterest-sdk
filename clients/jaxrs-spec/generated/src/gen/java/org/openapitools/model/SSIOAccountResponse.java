@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOAccountResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountResponse   {
-  private @Valid Boolean eligible;
-  private @Valid Boolean canEdit;
-  private @Valid List<@Valid SSIOAccountItem> billtoInfos;
-  private @Valid String currency;
-  private @Valid List<@Valid SSIOAccountPMPName> pmpNames;
-  private @Valid String error;
+  private Boolean eligible;
+  private Boolean canEdit;
+  private @Valid List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
+  private String currency;
+  private @Valid List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
+  private String error;
 
   /**
    * Advertiser eligible to create order lines
@@ -80,7 +80,7 @@ public class SSIOAccountResponse   {
   
   @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
   @JsonProperty("billto_infos")
-  public List<SSIOAccountItem> getBilltoInfos() {
+  @Valid public List<@Valid SSIOAccountItem> getBilltoInfos() {
     return billtoInfos;
   }
 
@@ -134,7 +134,7 @@ public class SSIOAccountResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pmp_names")
-  public List<SSIOAccountPMPName> getPmpNames() {
+  @Valid public List<@Valid SSIOAccountPMPName> getPmpNames() {
     return pmpNames;
   }
 

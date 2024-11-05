@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -28,7 +28,7 @@ import org.openapitools.model.PinUpdateCarouselSlotsInner;
  */
 
 @ApiModel(description = "Pin fields for updates")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdate   {
   
   private String altText;
@@ -37,7 +37,7 @@ public class PinUpdate   {
   private String description;
   private String link;
   private String title;
-  private List<PinUpdateCarouselSlotsInner> carouselSlots;
+  private List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
   private String note;
 
   /**

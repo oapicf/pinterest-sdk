@@ -7,12 +7,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsCreativeAssetsFeedsCreateRequest;
 import com.prokarma.pkmst.model.CatalogsFeedCredentials;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
 import com.prokarma.pkmst.model.CatalogsFeedsCreateRequestDefaultLocale;
 import com.prokarma.pkmst.model.CatalogsFormat;
 import com.prokarma.pkmst.model.CatalogsHotelFeedsCreateRequest;
 import com.prokarma.pkmst.model.CatalogsRetailFeedsCreateRequest;
+import com.prokarma.pkmst.model.CatalogsStatus;
 import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.Country;
 import com.prokarma.pkmst.model.NullableCurrency;
@@ -30,9 +32,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a feed.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsCreateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeedsCreateRequest.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest.class, name = "RETAIL"),
 })
@@ -68,6 +71,9 @@ public class CatalogsVerticalFeedsCreateRequest   {
   @JsonProperty("default_availability")
   private ProductAvailabilityType defaultAvailability;
 
+  @JsonProperty("status")
+  private CatalogsStatus status;
+
   @JsonProperty("catalog_id")
   private String catalogId;
 
@@ -76,10 +82,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -94,10 +100,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
   public String getName() {
     return name;
@@ -112,10 +118,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -130,10 +136,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultLocale
    * @return defaultLocale
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
@@ -148,10 +154,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -166,10 +172,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -184,10 +190,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -202,10 +208,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -220,10 +226,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCountry
    * @return defaultCountry
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Country getDefaultCountry() {
     return defaultCountry;
@@ -238,10 +244,10 @@ public class CatalogsVerticalFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultAvailability
    * @return defaultAvailability
-  **/
+   */
   @ApiModelProperty(value = "")
   public ProductAvailabilityType getDefaultAvailability() {
     return defaultAvailability;
@@ -251,16 +257,34 @@ public class CatalogsVerticalFeedsCreateRequest   {
     this.defaultAvailability = defaultAvailability;
   }
 
+  public CatalogsVerticalFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @ApiModelProperty(value = "")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
   public CatalogsVerticalFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
 
-   /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  /**
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
    * @return catalogId
-  **/
-  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
+   */
+  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
   public String getCatalogId() {
     return catalogId;
   }
@@ -289,12 +313,13 @@ public class CatalogsVerticalFeedsCreateRequest   {
         Objects.equals(this.catalogType, catalogsVerticalFeedsCreateRequest.catalogType) &&
         Objects.equals(this.defaultCountry, catalogsVerticalFeedsCreateRequest.defaultCountry) &&
         Objects.equals(this.defaultAvailability, catalogsVerticalFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, catalogsVerticalFeedsCreateRequest.status) &&
         Objects.equals(this.catalogId, catalogsVerticalFeedsCreateRequest.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, catalogId);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, status, catalogId);
   }
 
   @Override
@@ -312,6 +337,7 @@ public class CatalogsVerticalFeedsCreateRequest   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();

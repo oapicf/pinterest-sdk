@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * SSIOAccountResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountResponse {
 
   private Boolean eligible;
@@ -31,12 +31,12 @@ public class SSIOAccountResponse {
   private Boolean canEdit;
 
   @Valid
-  private List<@Valid SSIOAccountItem> billtoInfos;
+  private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
 
   private String currency;
 
   @Valid
-  private List<@Valid SSIOAccountPMPName> pmpNames;
+  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   private String error;
 
@@ -48,7 +48,7 @@ public class SSIOAccountResponse {
   /**
    * Advertiser eligible to create order lines
    * @return eligible
-  */
+   */
   
   @Schema(name = "eligible", example = "true", description = "Advertiser eligible to create order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("eligible")
@@ -68,7 +68,7 @@ public class SSIOAccountResponse {
   /**
    * Advertiser eligible to update order lines
    * @return canEdit
-  */
+   */
   
   @Schema(name = "can_edit", example = "true", description = "Advertiser eligible to update order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("can_edit")
@@ -96,7 +96,7 @@ public class SSIOAccountResponse {
   /**
    * An array of Salesforce account information that includes address, io terms, etc.
    * @return billtoInfos
-  */
+   */
   @Valid 
   @Schema(name = "billto_infos", description = "An array of Salesforce account information that includes address, io terms, etc.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billto_infos")
@@ -116,7 +116,7 @@ public class SSIOAccountResponse {
   /**
    * Get currency
    * @return currency
-  */
+   */
   
   @Schema(name = "currency", example = "USD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
@@ -144,7 +144,7 @@ public class SSIOAccountResponse {
   /**
    * Get pmpNames
    * @return pmpNames
-  */
+   */
   @Valid 
   @Schema(name = "pmp_names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pmp_names")
@@ -164,7 +164,7 @@ public class SSIOAccountResponse {
   /**
    * Error indicator from Salesforce which could be \"No Error\"
    * @return error
-  */
+   */
   
   @Schema(name = "error", example = "No Error", description = "Error indicator from Salesforce which could be \"No Error\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("error")

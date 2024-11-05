@@ -84,7 +84,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Examples
 
@@ -224,7 +224,7 @@ end
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Examples
 
@@ -376,7 +376,8 @@ targeting_type = 'APPTYPE' # String | Public targeting type.
 opts = {
   client_id: '1094834', # String | Client ID.
   oauth_signature: '8209f', # String | Oauth signature
-  timestamp: '1618338184277' # String | Timestamp
+  timestamp: '1618338184277', # String | Timestamp
+  ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
 
 begin
@@ -414,6 +415,7 @@ end
 | **client_id** | **String** | Client ID. | [optional] |
 | **oauth_signature** | **String** | Oauth signature | [optional] |
 | **timestamp** | **String** | Timestamp | [optional] |
+| **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
 

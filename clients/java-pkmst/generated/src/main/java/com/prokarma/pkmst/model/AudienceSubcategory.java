@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * AudienceSubcategory
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceSubcategory   {
   @JsonProperty("key")
   private String key;
@@ -37,10 +37,10 @@ public class AudienceSubcategory   {
     return this;
   }
 
-   /**
+  /**
    * Interest unique key (same as ID).
    * @return key
-  **/
+   */
   @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
   public String getKey() {
     return key;
@@ -55,10 +55,10 @@ public class AudienceSubcategory   {
     return this;
   }
 
-   /**
+  /**
    * Subinterest name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "travel destinations", value = "Subinterest name.")
   public String getName() {
     return name;
@@ -73,10 +73,10 @@ public class AudienceSubcategory   {
     return this;
   }
 
-   /**
+  /**
    * Subinterest's percent of category's total audience.
    * @return ratio
-  **/
+   */
   @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
   public BigDecimal getRatio() {
     return ratio;
@@ -91,10 +91,10 @@ public class AudienceSubcategory   {
     return this;
   }
 
-   /**
+  /**
    * Subinterest affinity index.
    * @return index
-  **/
+   */
   @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
   public BigDecimal getIndex() {
     return index;
@@ -109,10 +109,10 @@ public class AudienceSubcategory   {
     return this;
   }
 
-   /**
+  /**
    * Subinterest ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
   public String getId() {
     return id;

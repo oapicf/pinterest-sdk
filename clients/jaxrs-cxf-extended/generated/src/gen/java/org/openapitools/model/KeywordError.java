@@ -19,7 +19,7 @@ public class KeywordError  {
   private Keyword data;
 
   @ApiModelProperty(value = "")
-  private List<String> errorMessages;
+  private List<String> errorMessages = new ArrayList<>();
  /**
   * Get data
   * @return data

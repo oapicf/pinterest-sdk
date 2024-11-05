@@ -17,6 +17,19 @@ open OpenAPI.CatalogsApiHandlerParams
 
 module CatalogsApiHandlerTestsHelper =
 
+
+  let mutable CatalogsCreateExamples = Map.empty
+  let mutable CatalogsCreateBody = ""
+
+  CatalogsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;catalog_type&quot; : &quot;HOTEL&quot;,
+  &quot;name&quot; : &quot;name&quot;
+}"
+  CatalogsCreateExamples <- CatalogsCreateExamples.Add("application/json", CatalogsCreateBody)
+
+  let getCatalogsCreateExample mediaType =
+    CatalogsCreateExamples.[mediaType]
+      |> getConverter mediaType
   ()
 
   ()
@@ -31,6 +44,18 @@ module CatalogsApiHandlerTestsHelper =
   let getCatalogsProductGroupsCreateExample mediaType =
     CatalogsProductGroupsCreateExamples.[mediaType]
       |> getConverter mediaType
+
+  let mutable CatalogsProductGroupsCreateManyExamples = Map.empty
+  let mutable CatalogsProductGroupsCreateManyBody = ""
+
+  CatalogsProductGroupsCreateManyBody <- WebUtility.HtmlDecode ""
+  CatalogsProductGroupsCreateManyExamples <- CatalogsProductGroupsCreateManyExamples.Add("", CatalogsProductGroupsCreateManyBody)
+
+  let getCatalogsProductGroupsCreateManyExample mediaType =
+    CatalogsProductGroupsCreateManyExamples.[mediaType]
+      |> getConverter mediaType
+  ()
+
   ()
 
   ()
@@ -67,6 +92,8 @@ module CatalogsApiHandlerTestsHelper =
 
   ()
 
+  ()
+
 
   let mutable FeedsUpdateExamples = Map.empty
   let mutable FeedsUpdateBody = ""
@@ -94,6 +121,22 @@ module CatalogsApiHandlerTestsHelper =
   ()
 
 
+  let mutable ItemsPostExamples = Map.empty
+  let mutable ItemsPostBody = ""
+
+  ItemsPostBody <- WebUtility.HtmlDecode "{
+  &quot;country&quot; : &quot;US&quot;,
+  &quot;language&quot; : &quot;af-ZA&quot;,
+  &quot;filters&quot; : {
+    &quot;catalog_type&quot; : &quot;RETAIL&quot;
+  }
+}"
+  ItemsPostExamples <- ItemsPostExamples.Add("application/json", ItemsPostBody)
+
+  let getItemsPostExample mediaType =
+    ItemsPostExamples.[mediaType]
+      |> getConverter mediaType
+
   let mutable ProductsByProductGroupFilterListExamples = Map.empty
   let mutable ProductsByProductGroupFilterListBody = ""
 
@@ -120,3 +163,19 @@ module CatalogsApiHandlerTestsHelper =
   let getProductsByProductGroupFilterListExample mediaType =
     ProductsByProductGroupFilterListExamples.[mediaType]
       |> getConverter mediaType
+
+  let mutable ReportsCreateExamples = Map.empty
+  let mutable ReportsCreateBody = ""
+
+  ReportsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;catalog_type&quot; : &quot;RETAIL&quot;
+}"
+  ReportsCreateExamples <- ReportsCreateExamples.Add("application/json", ReportsCreateBody)
+
+  let getReportsCreateExample mediaType =
+    ReportsCreateExamples.[mediaType]
+      |> getConverter mediaType
+  ()
+
+  ()
+

@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object describing the catalogs hotel items batch")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemsBatch   {
   @JsonProperty("batch_id")
   private String batchId;
@@ -50,10 +50,10 @@ public class CatalogsHotelItemsBatch   {
     return this;
   }
 
-   /**
+  /**
    * Id of the catalogs items batch
    * @return batchId
-  **/
+   */
   @ApiModelProperty(example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", value = "Id of the catalogs items batch")
   public String getBatchId() {
     return batchId;
@@ -68,11 +68,11 @@ public class CatalogsHotelItemsBatch   {
     return this;
   }
 
-   /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+  /**
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    * @return createdTime
-  **/
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", readOnly = true, value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+   */
+  @ApiModelProperty(readOnly = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   public OffsetDateTime getCreatedTime() {
     return createdTime;
   }
@@ -86,11 +86,11 @@ public class CatalogsHotelItemsBatch   {
     return this;
   }
 
-   /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+  /**
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    * @return completedTime
-  **/
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", readOnly = true, value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+   */
+  @ApiModelProperty(readOnly = true, value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   public OffsetDateTime getCompletedTime() {
     return completedTime;
   }
@@ -104,10 +104,10 @@ public class CatalogsHotelItemsBatch   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "")
   public BatchOperationStatus getStatus() {
     return status;
@@ -122,10 +122,10 @@ public class CatalogsHotelItemsBatch   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -148,10 +148,10 @@ public class CatalogsHotelItemsBatch   {
     return this;
   }
 
-   /**
+  /**
    * Array with the catalogs items processing records part of the catalogs items batch
    * @return items
-  **/
+   */
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
   public List<HotelProcessingRecord> getItems() {
     return items;

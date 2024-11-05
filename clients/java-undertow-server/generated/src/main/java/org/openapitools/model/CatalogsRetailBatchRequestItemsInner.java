@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,23 +24,20 @@ import org.openapitools.model.CatalogsCreateRetailItem;
 import org.openapitools.model.CatalogsDeleteRetailItem;
 import org.openapitools.model.CatalogsUpdateRetailItem;
 import org.openapitools.model.CatalogsUpsertRetailItem;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.UpdateMaskFieldType;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailBatchRequestItemsInner   {
   
   private String itemId;
 
 
   public enum OperationEnum {
-    CREATE("CREATE"),
-    UPDATE("UPDATE"),
-    UPSERT("UPSERT"),
     DELETE("DELETE");
 
     private String value;
@@ -57,7 +54,7 @@ public class CatalogsRetailBatchRequestItemsInner   {
   }
 
   private OperationEnum operation;
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
   private List<UpdateMaskFieldType> updateMask;
 
   /**
@@ -97,7 +94,7 @@ public class CatalogsRetailBatchRequestItemsInner   {
 
   /**
    */
-  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributes attributes) {
+  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -105,10 +102,10 @@ public class CatalogsRetailBatchRequestItemsInner   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

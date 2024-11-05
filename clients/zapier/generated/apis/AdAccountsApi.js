@@ -109,7 +109,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -126,9 +125,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adAccount/analytics', response.json);
                     return results;
                 })
             },
@@ -165,7 +164,7 @@ module.exports = {
                 },
                 {
                     key: 'targeting_types',
-                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.',
+                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.',
                     type: 'string',
                 }
                 {
@@ -233,7 +232,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -252,9 +250,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adAccountTargetingAnalytics/get', response.json);
                     return results;
                 })
             },
@@ -282,7 +280,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -292,9 +289,9 @@ module.exports = {
                         ...AdAccountCreateRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adAccounts/create', response.json);
                     return results;
                 })
             },
@@ -327,7 +324,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -336,9 +332,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adAccounts/get', response.json);
                     return results;
                 })
             },
@@ -362,7 +358,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -380,7 +376,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -392,9 +387,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adAccounts/list', response.json);
                     return results;
                 })
             },
@@ -428,7 +423,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -438,9 +432,9 @@ module.exports = {
                         ...CreateMMMReportRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'analytics/createMmmReport', response.json);
                     return results;
                 })
             },
@@ -474,7 +468,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -484,9 +477,9 @@ module.exports = {
                         ...AdsAnalyticsCreateAsyncRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'analytics/createReport', response.json);
                     return results;
                 })
             },
@@ -536,7 +529,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -548,9 +540,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'analytics/createTemplateReport', response.json);
                     return results;
                 })
             },
@@ -589,7 +581,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -599,9 +590,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'analytics/getMmmReport', response.json);
                     return results;
                 })
             },
@@ -640,7 +631,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -650,9 +640,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'analytics/getReport', response.json);
                     return results;
                 })
             },
@@ -664,7 +654,7 @@ module.exports = {
         noun: 'ad_accounts',
         display: {
             label: 'Delete ads data for ad account in API Sandbox',
-            description: 'Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.',
+            description: 'Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.',
             hidden: false,
         },
         operation: {
@@ -684,7 +674,6 @@ module.exports = {
                     method: 'DELETE',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -693,9 +682,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'sandbox/delete', response.json);
                     return { data: results };
                 })
             },
@@ -720,7 +709,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -747,7 +736,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -759,9 +747,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'templates/list', response.json);
                     return results;
                 })
             },

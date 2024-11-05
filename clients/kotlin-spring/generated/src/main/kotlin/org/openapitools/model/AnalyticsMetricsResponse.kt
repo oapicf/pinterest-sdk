@@ -28,7 +28,7 @@ data class AnalyticsMetricsResponse(
     @field:Valid
     @Schema(example = "null", description = "Array with the requested daily metric records")
     @get:JsonProperty("daily_metrics") val dailyMetrics: kotlin.collections.List<AnalyticsDailyMetrics>? = null
-) {
+    ) {
 
 }
 

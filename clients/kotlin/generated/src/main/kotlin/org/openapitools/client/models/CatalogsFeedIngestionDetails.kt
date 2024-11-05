@@ -42,5 +42,8 @@ data class CatalogsFeedIngestionDetails (
     @Json(name = "warnings")
     val warnings: CatalogsFeedIngestionWarnings
 
-)
+) {
+
+
+}
 

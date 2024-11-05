@@ -18,9 +18,9 @@ module CatalogsRetailFeed =
 
 
   type CatalogsRetailFeed = {
-    CreatedAt : Nullable<DateTime>;
+    CreatedAt : DateTime;
     Id : string;
-    UpdatedAt : Nullable<DateTime>;
+    UpdatedAt : DateTime;
     Name : string option;
     Format : CatalogsFormat;
     CatalogType : CatalogsType;

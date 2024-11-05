@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * OptimizationGoalMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadata   {
   @JsonProperty("conversion_tag_v3_goal_metadata")
   private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
@@ -33,10 +33,10 @@ public class OptimizationGoalMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get conversionTagV3GoalMetadata
    * @return conversionTagV3GoalMetadata
-  **/
+   */
   @ApiModelProperty(value = "")
   public OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
     return conversionTagV3GoalMetadata;
@@ -51,10 +51,10 @@ public class OptimizationGoalMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get frequencyGoalMetadata
    * @return frequencyGoalMetadata
-  **/
+   */
   @ApiModelProperty(value = "")
   public OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
     return frequencyGoalMetadata;
@@ -69,10 +69,10 @@ public class OptimizationGoalMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get scrollupGoalMetadata
    * @return scrollupGoalMetadata
-  **/
+   */
   @ApiModelProperty(value = "")
   public OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
     return scrollupGoalMetadata;

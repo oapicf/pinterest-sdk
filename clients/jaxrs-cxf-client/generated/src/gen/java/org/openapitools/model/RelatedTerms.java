@@ -28,7 +28,7 @@ public class RelatedTerms  {
  /**
    * The id of the advertiser.
   **/
-  private List<RelatedTermsRelatedTermsListInner> relatedTermsList;
+  private List<RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
  /**
    * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;
    * @return id

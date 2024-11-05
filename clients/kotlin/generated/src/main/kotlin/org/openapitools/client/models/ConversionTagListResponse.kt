@@ -32,5 +32,8 @@ data class ConversionTagListResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<ConversionTagResponse>? = null
 
-)
+) {
+
+
+}
 

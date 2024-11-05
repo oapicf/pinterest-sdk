@@ -2,19 +2,19 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**boardSectionsCreate**](BoardsApi.md#boardSectionsCreate) | **POST** /boards/{board_id}/sections | Create board section
-[**boardSectionsDelete**](BoardsApi.md#boardSectionsDelete) | **DELETE** /boards/{board_id}/sections/{section_id} | Delete board section
-[**boardSectionsList**](BoardsApi.md#boardSectionsList) | **GET** /boards/{board_id}/sections | List board sections
-[**boardSectionsListPins**](BoardsApi.md#boardSectionsListPins) | **GET** /boards/{board_id}/sections/{section_id}/pins | List Pins on board section
-[**boardSectionsUpdate**](BoardsApi.md#boardSectionsUpdate) | **PATCH** /boards/{board_id}/sections/{section_id} | Update board section
-[**boardsCreate**](BoardsApi.md#boardsCreate) | **POST** /boards | Create board
-[**boardsDelete**](BoardsApi.md#boardsDelete) | **DELETE** /boards/{board_id} | Delete board
-[**boardsGet**](BoardsApi.md#boardsGet) | **GET** /boards/{board_id} | Get board
-[**boardsList**](BoardsApi.md#boardsList) | **GET** /boards | List boards
-[**boardsListPins**](BoardsApi.md#boardsListPins) | **GET** /boards/{board_id}/pins | List Pins on board
-[**boardsUpdate**](BoardsApi.md#boardsUpdate) | **PATCH** /boards/{board_id} | Update board
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**boardSectionsCreate**](BoardsApi.md#boardSectionsCreate) | **POST** /boards/{board_id}/sections | Create board section |
+| [**boardSectionsDelete**](BoardsApi.md#boardSectionsDelete) | **DELETE** /boards/{board_id}/sections/{section_id} | Delete board section |
+| [**boardSectionsList**](BoardsApi.md#boardSectionsList) | **GET** /boards/{board_id}/sections | List board sections |
+| [**boardSectionsListPins**](BoardsApi.md#boardSectionsListPins) | **GET** /boards/{board_id}/sections/{section_id}/pins | List Pins on board section |
+| [**boardSectionsUpdate**](BoardsApi.md#boardSectionsUpdate) | **PATCH** /boards/{board_id}/sections/{section_id} | Update board section |
+| [**boardsCreate**](BoardsApi.md#boardsCreate) | **POST** /boards | Create board |
+| [**boardsDelete**](BoardsApi.md#boardsDelete) | **DELETE** /boards/{board_id} | Delete board |
+| [**boardsGet**](BoardsApi.md#boardsGet) | **GET** /boards/{board_id} | Get board |
+| [**boardsList**](BoardsApi.md#boardsList) | **GET** /boards | List boards |
+| [**boardsListPins**](BoardsApi.md#boardsListPins) | **GET** /boards/{board_id}/pins | List Pins on board |
+| [**boardsUpdate**](BoardsApi.md#boardsUpdate) | **PATCH** /boards/{board_id} | Update board |
 
 
 <a id="boardSectionsCreate"></a>
@@ -48,12 +48,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **boardSection** | [**BoardSection**](BoardSection.md)| Create a board section. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -100,12 +99,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **sectionId** | **kotlin.String**| Unique identifier of a board section. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **sectionId** | **kotlin.String**| Unique identifier of a board section. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -140,7 +138,7 @@ val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     val result : BoardSectionsList200Response = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize)
     println(result)
@@ -154,13 +152,12 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -170,6 +167,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -196,7 +195,7 @@ val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifi
 val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     val result : BoardsListPins200Response = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize)
     println(result)
@@ -210,14 +209,13 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **sectionId** | **kotlin.String**| Unique identifier of a board section. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **sectionId** | **kotlin.String**| Unique identifier of a board section. | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -227,6 +225,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -266,13 +266,12 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **sectionId** | **kotlin.String**| Unique identifier of a board section. |
- **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **sectionId** | **kotlin.String**| Unique identifier of a board section. | |
+| **boardSection** | [**BoardSection**](BoardSection.md)| Update a board section. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -319,11 +318,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **board** | [**Board**](Board.md)| Create a board using a single board json object. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **board** | [**Board**](Board.md)| Create a board using a single board json object. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -369,11 +367,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -420,11 +417,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -434,6 +430,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -458,7 +456,7 @@ Get a list of the boards owned by the \&quot;operation user_account\&quot; + gro
 val apiInstance = BoardsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val privacy : kotlin.String = privacy_example // kotlin.String | Privacy setting for a board.
 try {
     val result : BoardsList200Response = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy)
@@ -473,13 +471,12 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **privacy** | **kotlin.String**| Privacy setting for a board. | [optional] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET]
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **privacy** | **kotlin.String**| Privacy setting for a board. | [optional] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET] |
 
 ### Return type
 
@@ -489,6 +486,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -513,7 +512,7 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 val apiInstance = BoardsApi()
 val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val creativeTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -530,15 +529,14 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **creativeTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA]
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
- **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **creativeTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA] |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
 
 ### Return type
 
@@ -548,6 +546,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -586,12 +586,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **boardId** | **kotlin.String**| Unique identifier of a board. |
- **boardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. |
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **boardId** | **kotlin.String**| Unique identifier of a board. | |
+| **boardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 

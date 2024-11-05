@@ -5,9 +5,9 @@
 -export_type([openapi_catalogs_db_item/0]).
 
 -type openapi_catalogs_db_item() ::
-    #{ 'created_at' => openapi_date_time:openapi_date_time(),
-       'id' => binary(),
-       'updated_at' => openapi_date_time:openapi_date_time()
+    #{ 'created_at' := openapi_date_time:openapi_date_time(),
+       'id' := binary(),
+       'updated_at' := openapi_date_time:openapi_date_time()
      }.
 
 encode(#{ 'created_at' := CreatedAt,

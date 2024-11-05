@@ -12,5 +12,5 @@ class BoardMedia {
     /* Board cover image. */
     String imageCoverUrl
     /* Board pin thumbnail urls. */
-    List<String> pinThumbnailUrls
+    List<String> pinThumbnailUrls = new ArrayList<>()
 }

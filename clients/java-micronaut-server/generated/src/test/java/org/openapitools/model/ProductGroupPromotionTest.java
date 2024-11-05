@@ -1,7 +1,6 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -133,14 +132,6 @@ public class ProductGroupPromotionTest {
     @Test
     public void catalogProductGroupNameTest() {
         // TODO: test catalogProductGroupName
-    }
-
-    /**
-     * Test the property 'creativeType'
-     */
-    @Test
-    public void creativeTypeTest() {
-        // TODO: test creativeType
     }
 
     /**

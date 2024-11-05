@@ -5,9 +5,11 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CatalogsHotelProductGroupFilters
+import org.openapitools.models.CatalogsCreativeAssetsProductGroupFilters
+import org.openapitools.models.CatalogsLocale
 import org.openapitools.models.CatalogsProductGroupUpdateRequest
 import org.openapitools.models.CatalogsVerticalProductGroupUpdateRequest
+import org.openapitools.models.Country
 
 /**
  * 
@@ -16,12 +18,16 @@ import org.openapitools.models.CatalogsVerticalProductGroupUpdateRequest
  * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
  * @param filters 
  * @param catalogUnderscoretype 
+ * @param country 
+ * @param locale 
  */
 case class CatalogsProductGroupsUpdateRequest(name: Option[String],
                 description: Option[String],
                 isUnderscorefeatured: Option[Boolean],
-                filters: Option[CatalogsHotelProductGroupFilters],
-                catalogUnderscoretype: Option[String]
+                filters: Option[CatalogsCreativeAssetsProductGroupFilters],
+                catalogUnderscoretype: Option[String],
+                country: Option[Country],
+                locale: Option[CatalogsLocale]
                 )
 
 object CatalogsProductGroupsUpdateRequest {

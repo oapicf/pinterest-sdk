@@ -84,5 +84,8 @@ data class OrderLines (
     @Json(name = "paid_type")
     val paidType: OrderLinePaidType? = null
 
-)
+) {
+
+
+}
 

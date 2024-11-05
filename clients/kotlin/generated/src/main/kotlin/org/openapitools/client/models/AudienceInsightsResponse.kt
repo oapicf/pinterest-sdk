@@ -58,5 +58,8 @@ data class AudienceInsightsResponse (
     @Json(name = "size_is_upper_bound")
     val sizeIsUpperBound: kotlin.Boolean? = null
 
-)
+) {
+
+
+}
 

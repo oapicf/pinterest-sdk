@@ -36,7 +36,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -59,7 +59,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -72,9 +71,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'boardsUserFollows/list', response.json);
                     return results;
                 })
             },
@@ -86,7 +85,7 @@ module.exports = {
         noun: 'user_account',
         display: {
             label: 'Follow user',
-            description: '&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.',
+            description: '&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.',
             hidden: false,
         },
         operation: {
@@ -108,7 +107,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -118,9 +116,9 @@ module.exports = {
                         ...FollowUserRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'followUser/update', response.json);
                     return results;
                 })
             },
@@ -144,7 +142,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
             ],
@@ -157,7 +155,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -168,9 +165,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'followers/list', response.json);
                     return results;
                 })
             },
@@ -196,7 +193,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -205,9 +201,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'linkedBusinessAccounts/get', response.json);
                     return results;
                 })
             },
@@ -239,7 +235,6 @@ module.exports = {
                     method: 'DELETE',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -249,9 +244,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'unverifyWebsite/delete', response.json);
                     return results;
                 })
             },
@@ -303,9 +298,6 @@ module.exports = {
                         'ADS_PRODUCT',
                         'ADS_VIDEO',
                         'ADS_IDEA',
-                        'PRODUCT',
-                        'REGULAR',
-                        'VIDEO',
                     ],
                 },
                 {
@@ -371,7 +363,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -390,9 +381,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'userAccount/analytics', response.json);
                     return results;
                 })
             },
@@ -457,9 +448,6 @@ module.exports = {
                         'ADS_PRODUCT',
                         'ADS_VIDEO',
                         'ADS_IDEA',
-                        'PRODUCT',
-                        'REGULAR',
-                        'VIDEO',
                     ],
                 },
                 {
@@ -526,7 +514,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -547,9 +534,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'userAccount/analytics/topPins', response.json);
                     return results;
                 })
             },
@@ -618,9 +605,6 @@ module.exports = {
                         'ADS_PRODUCT',
                         'ADS_VIDEO',
                         'ADS_IDEA',
-                        'PRODUCT',
-                        'REGULAR',
-                        'VIDEO',
                     ],
                 },
                 {
@@ -687,7 +671,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -708,9 +691,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'userAccount/analytics/topVideoPins', response.json);
                     return results;
                 })
             },
@@ -740,7 +723,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
             ],
@@ -753,7 +736,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -764,9 +746,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'userAccount/followedInterests', response.json);
                     return results;
                 })
             },
@@ -778,7 +760,7 @@ module.exports = {
         noun: 'user_account',
         display: {
             label: 'Get user account',
-            description: 'Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.',
+            description: 'Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.',
             hidden: false,
         },
         operation: {
@@ -798,7 +780,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -808,9 +789,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'userAccount/get', response.json);
                     return results;
                 })
             },
@@ -834,7 +815,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -862,7 +843,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -876,9 +856,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'userFollowing/get', response.json);
                     return results;
                 })
             },
@@ -902,7 +882,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
             ],
@@ -915,7 +895,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -926,9 +905,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'userWebsites/get', response.json);
                     return results;
                 })
             },
@@ -946,6 +925,11 @@ module.exports = {
         operation: {
             inputFields: [
                 ...UserWebsiteVerifyRequest.fields(),
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                },
             ],
             outputFields: [
                 ...UserWebsiteSummary.fields('', false),
@@ -956,19 +940,19 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
                     params: {
+                        'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
                         ...UserWebsiteVerifyRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'verifyWebsite/update', response.json);
                     return results;
                 })
             },
@@ -985,6 +969,11 @@ module.exports = {
         },
         operation: {
             inputFields: [
+                {
+                    key: 'ad_account_id',
+                    label: 'Unique identifier of an ad account.',
+                    type: 'string',
+                },
             ],
             outputFields: [
                 ...UserWebsiteVerificationCode.fields('', false),
@@ -995,18 +984,18 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
                     params: {
+                        'ad_account_id': bundle.inputData?.['ad_account_id'],
                     },
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'websiteVerification/get', response.json);
                     return results;
                 })
             },

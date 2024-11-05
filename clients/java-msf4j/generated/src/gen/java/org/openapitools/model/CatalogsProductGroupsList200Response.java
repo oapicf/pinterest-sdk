@@ -10,25 +10,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.model.CatalogsVerticalProductGroup;
 
 /**
  * CatalogsProductGroupsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsList200Response   {
   @JsonProperty("items")
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsVerticalProductGroup> items = new ArrayList<>();
 
   @JsonProperty("bookmark")
   private String bookmark;
 
-  public CatalogsProductGroupsList200Response items(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response items(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsProductGroupsList200Response addItemsItem(CatalogsProductGroupsList200ResponseAllOfItemsInner itemsItem) {
+  public CatalogsProductGroupsList200Response addItemsItem(CatalogsVerticalProductGroup itemsItem) {
     this.items.add(itemsItem);
     return this;
   }
@@ -38,11 +38,11 @@ public class CatalogsProductGroupsList200Response   {
    * @return items
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<@Valid CatalogsVerticalProductGroup> getItems() {
     return items;
   }
 
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 

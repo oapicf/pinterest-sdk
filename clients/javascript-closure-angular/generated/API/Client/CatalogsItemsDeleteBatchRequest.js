@@ -13,7 +13,7 @@ API.Client.CatalogsItemsDeleteBatchRequest = function() {}
 API.Client.CatalogsItemsDeleteBatchRequest.prototype.country;
 
 /**
- * @type {!API.Client.Language}
+ * @type {!API.Client.CatalogsItemsRequest_language}
  * @export
  */
 API.Client.CatalogsItemsDeleteBatchRequest.prototype.language;

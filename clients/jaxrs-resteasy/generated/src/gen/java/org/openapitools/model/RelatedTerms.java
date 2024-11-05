@@ -13,14 +13,13 @@ import org.openapitools.model.RelatedTermsRelatedTermsListInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RelatedTerms   {
   
   private String id;
   private Integer relatedTermCount;
-  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList;
+  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
 
   /**
    * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;

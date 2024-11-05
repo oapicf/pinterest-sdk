@@ -14,6 +14,7 @@
 #include "CatalogsFeedsCreateRequest.h"
 #include "CatalogsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFormat.h"
+#include "CatalogsStatus.h"
 #include "CatalogsType.h"
 #include "CatalogsVerticalFeedsCreateRequest.h"
 #include "Country.h"
@@ -125,11 +126,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setDefaultAvailability(ProductAvailabilityType  default_availability);
-	/*! \brief Get Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+	/*! \brief Get 
+	 */
+	CatalogsStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(CatalogsStatus  status);
+	/*! \brief Get Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+	/*! \brief Set Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
 	 */
 	void setCatalogId(std::string  catalog_id);
 
@@ -144,6 +152,7 @@ private:
 	CatalogsType catalog_type;
 	Country default_country;
 	ProductAvailabilityType default_availability;
+	CatalogsStatus status;
 	std::string catalog_id;
 	void __init();
 	void __cleanup();

@@ -22,13 +22,13 @@ keywords_common_t* instantiate_keywords_common(int include_optional) {
   keywords_common_t* keywords_common = NULL;
   if (include_optional) {
     keywords_common = keywords_common_create(
-      200000,
+      56,
       pinterest_rest_api_keywords_common__"BROAD",
       "0"
     );
   } else {
     keywords_common = keywords_common_create(
-      200000,
+      56,
       pinterest_rest_api_keywords_common__"BROAD",
       "0"
     );

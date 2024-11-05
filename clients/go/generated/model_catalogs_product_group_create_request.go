@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,10 +25,11 @@ type CatalogsProductGroupCreateRequest struct {
 	Name string `json:"name"`
 	Description NullableString `json:"description,omitempty"`
 	// boolean indicator of whether the product group is being featured or not
+	// Deprecated
 	IsFeatured *bool `json:"is_featured,omitempty"`
 	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
 	// Catalog Feed id pertaining to the catalog product group.
-	FeedId string `json:"feed_id"`
+	FeedId string `json:"feed_id" validate:"regexp=^\\\\d+$"`
 }
 
 type _CatalogsProductGroupCreateRequest CatalogsProductGroupCreateRequest
@@ -124,6 +125,7 @@ func (o *CatalogsProductGroupCreateRequest) UnsetDescription() {
 }
 
 // GetIsFeatured returns the IsFeatured field value if set, zero value otherwise.
+// Deprecated
 func (o *CatalogsProductGroupCreateRequest) GetIsFeatured() bool {
 	if o == nil || IsNil(o.IsFeatured) {
 		var ret bool
@@ -134,6 +136,7 @@ func (o *CatalogsProductGroupCreateRequest) GetIsFeatured() bool {
 
 // GetIsFeaturedOk returns a tuple with the IsFeatured field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *CatalogsProductGroupCreateRequest) GetIsFeaturedOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsFeatured) {
 		return nil, false
@@ -151,6 +154,7 @@ func (o *CatalogsProductGroupCreateRequest) HasIsFeatured() bool {
 }
 
 // SetIsFeatured gets a reference to the given bool and assigns it to the IsFeatured field.
+// Deprecated
 func (o *CatalogsProductGroupCreateRequest) SetIsFeatured(v bool) {
 	o.IsFeatured = &v
 }

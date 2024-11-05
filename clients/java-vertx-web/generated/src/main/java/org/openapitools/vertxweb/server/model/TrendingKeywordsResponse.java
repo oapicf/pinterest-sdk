@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.TrendingKeywordsResponseTrendsInne
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TrendingKeywordsResponse   {
   
-  private List<TrendingKeywordsResponseTrendsInner> trends;
+  private List<TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
 
   public TrendingKeywordsResponse () {
 

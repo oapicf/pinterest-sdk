@@ -183,6 +183,9 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
@@ -190,7 +193,7 @@ board_id = 'board_id_example' # String | Unique identifier of a board.
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -227,7 +230,7 @@ end
 | **board_id** | **String** | Unique identifier of a board. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -235,7 +238,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -260,6 +263,9 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
@@ -268,7 +274,7 @@ section_id = 'section_id_example' # String | Unique identifier of a board sectio
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -306,7 +312,7 @@ end
 | **section_id** | **String** | Unique identifier of a board section. |  |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -314,7 +320,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -561,6 +567,9 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
@@ -609,7 +618,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -634,13 +643,16 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   privacy: 'ALL' # String | Privacy setting for a board.
 }
 
@@ -677,7 +689,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **privacy** | **String** | Privacy setting for a board. | [optional] |
 
 ### Return type
@@ -686,7 +698,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -711,13 +723,16 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::BoardsApi.new
 board_id = 'board_id_example' # String | Unique identifier of a board.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   creative_types: ['REGULAR'], # Array<String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   pin_metrics: true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -756,7 +771,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **board_id** | **String** | Unique identifier of a board. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **creative_types** | [**Array&lt;String&gt;**](String.md) | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **pin_metrics** | **Boolean** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional][default to false] |
@@ -767,7 +782,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

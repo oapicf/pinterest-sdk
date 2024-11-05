@@ -15,9 +15,11 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsLocale
 import org.openapitools.client.models.CatalogsProductGroupFiltersRequest
 import org.openapitools.client.models.CatalogsProductGroupUpdateRequest
 import org.openapitools.client.models.CatalogsVerticalProductGroupUpdateRequest
+import org.openapitools.client.models.Country
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -30,6 +32,8 @@ import com.squareup.moshi.JsonClass
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  * @param filters 
  * @param catalogType 
+ * @param country 
+ * @param locale 
  */
 
 
@@ -43,13 +47,23 @@ data class CatalogsProductGroupsUpdateRequest (
 
     /* boolean indicator of whether the product group is being featured or not */
     @Json(name = "is_featured")
+    @Deprecated(message = "This property is deprecated.")
     val isFeatured: kotlin.Boolean? = null,
 
     @Json(name = "filters")
     val filters: CatalogsProductGroupFiltersRequest? = null,
 
     @Json(name = "catalog_type")
-    override val catalogType: CatalogsProductGroupsUpdateRequest.CatalogType? = null
+    override val catalogType: CatalogsProductGroupsUpdateRequest.CatalogType? = null,
 
-)
+    @Json(name = "country")
+    override val country: Country? = null,
+
+    @Json(name = "locale")
+    override val locale: CatalogsLocale? = null
+
+) {
+
+
+}
 

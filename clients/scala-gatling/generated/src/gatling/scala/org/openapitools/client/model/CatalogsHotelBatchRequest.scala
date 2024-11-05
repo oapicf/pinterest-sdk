@@ -3,9 +3,9 @@ package org.openapitools.client.model
 
 
 case class CatalogsHotelBatchRequest (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _country: Country,
-    _language: Language,
+    _language: CatalogsItemsRequestLanguage,
     /* Array with catalogs item operations */
     _items: List[CatalogsHotelBatchItem],
     /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */

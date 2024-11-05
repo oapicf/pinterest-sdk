@@ -29,10 +29,10 @@ CampaignCommon::__init()
 	//lifetime_spend_cap = int(0);
 	//daily_spend_cap = int(0);
 	//order_line_id = std::string();
-	//tracking_urls = new AdCommon_tracking_urls();
+	//tracking_urls = null;
 	//start_time = int(0);
 	//end_time = int(0);
-	//summary_status = std::string();
+	//is_flexible_daily_budgets = bool(false);
 }
 
 void
@@ -83,10 +83,10 @@ CampaignCommon::__cleanup()
 	//delete end_time;
 	//end_time = NULL;
 	//}
-	//if(summary_status != NULL) {
+	//if(is_flexible_daily_budgets != NULL) {
 	//
-	//delete summary_status;
-	//summary_status = NULL;
+	//delete is_flexible_daily_budgets;
+	//is_flexible_daily_budgets = NULL;
 	//}
 	//
 }
@@ -170,11 +170,11 @@ CampaignCommon::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AdCommon_tracking_urls")) {
-			jsonToValue(&tracking_urls, node, "AdCommon_tracking_urls", "AdCommon_tracking_urls");
+		if (isprimitive("TrackingUrls")) {
+			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
 		} else {
 			
-			AdCommon_tracking_urls* obj = static_cast<AdCommon_tracking_urls*> (&tracking_urls);
+			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -201,17 +201,14 @@ CampaignCommon::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *summary_statusKey = "summary_status";
-	node = json_object_get_member(pJsonObject, summary_statusKey);
+	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
+	node = json_object_get_member(pJsonObject, is_flexible_daily_budgetsKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CampaignSummaryStatus")) {
-			jsonToValue(&summary_status, node, "CampaignSummaryStatus", "CampaignSummaryStatus");
+		if (isprimitive("bool")) {
+			jsonToValue(&is_flexible_daily_budgets, node, "bool", "");
 		} else {
-			
-			CampaignSummaryStatus* obj = static_cast<CampaignSummaryStatus*> (&summary_status);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -286,13 +283,13 @@ CampaignCommon::toJson()
 	}
 	const gchar *order_line_idKey = "order_line_id";
 	json_object_set_member(pJsonObject, order_line_idKey, node);
-	if (isprimitive("AdCommon_tracking_urls")) {
-		AdCommon_tracking_urls obj = getTrackingUrls();
-		node = converttoJson(&obj, "AdCommon_tracking_urls", "");
+	if (isprimitive("TrackingUrls")) {
+		TrackingUrls obj = getTrackingUrls();
+		node = converttoJson(&obj, "TrackingUrls", "");
 	}
 	else {
 		
-		AdCommon_tracking_urls obj = static_cast<AdCommon_tracking_urls> (getTrackingUrls());
+		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -318,20 +315,15 @@ CampaignCommon::toJson()
 	}
 	const gchar *end_timeKey = "end_time";
 	json_object_set_member(pJsonObject, end_timeKey, node);
-	if (isprimitive("CampaignSummaryStatus")) {
-		CampaignSummaryStatus obj = getSummaryStatus();
-		node = converttoJson(&obj, "CampaignSummaryStatus", "");
+	if (isprimitive("bool")) {
+		bool obj = getIsFlexibleDailyBudgets();
+		node = converttoJson(&obj, "bool", "");
 	}
 	else {
 		
-		CampaignSummaryStatus obj = static_cast<CampaignSummaryStatus> (getSummaryStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
 	}
-	const gchar *summary_statusKey = "summary_status";
-	json_object_set_member(pJsonObject, summary_statusKey, node);
+	const gchar *is_flexible_daily_budgetsKey = "is_flexible_daily_budgets";
+	json_object_set_member(pJsonObject, is_flexible_daily_budgetsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -412,14 +404,14 @@ CampaignCommon::setOrderLineId(std::string  order_line_id)
 	this->order_line_id = order_line_id;
 }
 
-AdCommon_tracking_urls
+TrackingUrls
 CampaignCommon::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-CampaignCommon::setTrackingUrls(AdCommon_tracking_urls  tracking_urls)
+CampaignCommon::setTrackingUrls(TrackingUrls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -448,16 +440,16 @@ CampaignCommon::setEndTime(int  end_time)
 	this->end_time = end_time;
 }
 
-CampaignSummaryStatus
-CampaignCommon::getSummaryStatus()
+bool
+CampaignCommon::getIsFlexibleDailyBudgets()
 {
-	return summary_status;
+	return is_flexible_daily_budgets;
 }
 
 void
-CampaignCommon::setSummaryStatus(CampaignSummaryStatus  summary_status)
+CampaignCommon::setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets)
 {
-	this->summary_status = summary_status;
+	this->is_flexible_daily_budgets = is_flexible_daily_budgets;
 }
 
 

@@ -42,7 +42,7 @@ data class AudienceCreateRequest(
 
     @Schema(example = "string", description = "Audience description.")
     @get:JsonProperty("description") val description: kotlin.String? = null
-) {
+    ) {
 
 }
 

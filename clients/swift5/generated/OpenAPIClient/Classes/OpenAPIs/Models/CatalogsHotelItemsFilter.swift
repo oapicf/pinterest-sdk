@@ -15,6 +15,7 @@ public struct CatalogsHotelItemsFilter: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
+    static let hotelIdsRule = ArrayRule(minItems: 1, maxItems: 100, uniqueItems: false)
     static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     public var hotelIds: [String]

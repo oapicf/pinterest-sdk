@@ -22,13 +22,13 @@ pinterest_rest_api_catalogs_retail_feed__e catalogs_retail_feed_format_FromStrin
     return 0;
 }
 char* catalogs_retail_feed_catalog_type_ToString(pinterest_rest_api_catalogs_retail_feed__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_catalogs_retail_feed__e catalogs_retail_feed_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -214,26 +214,29 @@ cJSON *catalogs_retail_feed_convertToJSON(catalogs_retail_feed_t *catalogs_retai
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_retail_feed->created_at
-    if(catalogs_retail_feed->created_at) {
+    if (!catalogs_retail_feed->created_at) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "created_at", catalogs_retail_feed->created_at) == NULL) {
     goto fail; //Date-Time
-    }
     }
 
 
     // catalogs_retail_feed->id
-    if(catalogs_retail_feed->id) {
+    if (!catalogs_retail_feed->id) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "id", catalogs_retail_feed->id) == NULL) {
     goto fail; //String
-    }
     }
 
 
     // catalogs_retail_feed->updated_at
-    if(catalogs_retail_feed->updated_at) {
+    if (!catalogs_retail_feed->updated_at) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "updated_at", catalogs_retail_feed->updated_at) == NULL) {
     goto fail; //Date-Time
-    }
     }
 
 
@@ -413,29 +416,38 @@ catalogs_retail_feed_t *catalogs_retail_feed_parseFromJSON(cJSON *catalogs_retai
 
     // catalogs_retail_feed->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(catalogs_retail_feedJSON, "created_at");
-    if (created_at) { 
+    if (!created_at) {
+        goto end;
+    }
+
+    
     if(!cJSON_IsString(created_at) && !cJSON_IsNull(created_at))
     {
     goto end; //DateTime
     }
-    }
 
     // catalogs_retail_feed->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_feedJSON, "id");
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    if (!id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(id))
     {
     goto end; //String
-    }
     }
 
     // catalogs_retail_feed->updated_at
     cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogs_retail_feedJSON, "updated_at");
-    if (updated_at) { 
+    if (!updated_at) {
+        goto end;
+    }
+
+    
     if(!cJSON_IsString(updated_at) && !cJSON_IsNull(updated_at))
     {
     goto end; //DateTime
-    }
     }
 
     // catalogs_retail_feed->name
@@ -548,9 +560,9 @@ catalogs_retail_feed_t *catalogs_retail_feed_parseFromJSON(cJSON *catalogs_retai
 
 
     catalogs_retail_feed_local_var = catalogs_retail_feed_create (
-        created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        updated_at && !cJSON_IsNull(updated_at) ? strdup(updated_at->valuestring) : NULL,
+        strdup(created_at->valuestring),
+        strdup(id->valuestring),
+        strdup(updated_at->valuestring),
         strdup(name->valuestring),
         format_local_nonprim,
         catalog_type_local_nonprim,

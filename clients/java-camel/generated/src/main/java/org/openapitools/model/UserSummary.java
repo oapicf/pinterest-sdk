@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * UserSummary
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserSummary {
 
   private String username;
@@ -33,7 +33,7 @@ public class UserSummary {
   /**
    * Username
    * @return username
-  */
+   */
   
   @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
@@ -53,7 +53,7 @@ public class UserSummary {
   /**
    * Always \"user\"
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "user", description = "Always \"user\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")

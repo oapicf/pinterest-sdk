@@ -63,7 +63,7 @@ public class BillingControllerTest {
      *
      * The method should: Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -97,7 +97,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@7156f7c3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdsCreditRedeemResponse.class);
@@ -111,7 +111,7 @@ public class BillingControllerTest {
      *
      * The method should: Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -145,7 +145,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@4bc733ed");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -162,7 +162,7 @@ public class BillingControllerTest {
      *
      * The method should: Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -197,7 +197,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@50334476");
         request.getParameters()
             .add("is_active", String.valueOf(false)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -247,7 +247,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@747236fd");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOAccountResponse.class);
@@ -295,7 +295,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@325c3f5f");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOCreateInsertionOrderResponse.class);
@@ -343,7 +343,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@40f62aa2");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOEditInsertionOrderResponse.class);
@@ -391,7 +391,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@a2cc63e");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -442,7 +442,7 @@ public class BillingControllerTest {
             put("pin_order_id", "0Q01N0000015hekSVDFDC");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@6f0ccc58");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOInsertionOrderStatusResponse.class);
@@ -491,7 +491,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@3cf9a021");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 

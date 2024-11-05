@@ -15,19 +15,25 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsHotelProductGroupFilters
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupFilters
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupUpdateRequest
 import org.openapitools.client.models.CatalogsHotelProductGroupUpdateRequest
+import org.openapitools.client.models.CatalogsLocale
+import org.openapitools.client.models.CatalogsRetailProductGroupUpdateRequest
+import org.openapitools.client.models.Country
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Request object for updating a hotel product group.
+ * Request object for updating a catalog based product group.
  *
  * @param catalogType 
  * @param name 
  * @param description 
  * @param filters 
+ * @param country 
+ * @param locale 
  */
 
 
@@ -40,15 +46,20 @@ interface CatalogsVerticalProductGroupUpdateRequest {
     @Json(name = "description")
     val description: kotlin.String?
     @Json(name = "filters")
-    val filters: CatalogsHotelProductGroupFilters?
+    val filters: CatalogsCreativeAssetsProductGroupFilters?
+    @Json(name = "country")
+    val country: Country?
+    @Json(name = "locale")
+    val locale: CatalogsLocale?
     /**
      * 
      *
-     * Values: HOTEL
+     * Values: CREATIVE_ASSETS
      */
     @JsonClass(generateAdapter = false)
     enum class CatalogType(val value: kotlin.String) {
-        @Json(name = "HOTEL") HOTEL("HOTEL");
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
     }
+
 }
 

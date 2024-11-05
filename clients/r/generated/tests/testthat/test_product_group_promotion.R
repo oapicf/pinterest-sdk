@@ -116,13 +116,6 @@ test_that("catalog_product_group_name", {
   #expect_equal(model.instance$`catalog_product_group_name`, "EXPECTED_RESULT")
 })
 
-test_that("creative_type", {
-  # tests for the property `creative_type` (CreativeType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`creative_type`, "EXPECTED_RESULT")
-})
-
 test_that("collections_hero_pin_id", {
   # tests for the property `collections_hero_pin_id` (character)
   # Hero Pin ID if this PG is promoted as a Collection

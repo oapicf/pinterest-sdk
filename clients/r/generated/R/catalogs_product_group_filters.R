@@ -17,13 +17,11 @@ CatalogsProductGroupFilters <- R6::R6Class(
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
     any_of = list("CatalogsProductGroupFiltersAllOf", "CatalogsProductGroupFiltersAnyOf"),
-    #' Initialize a new CatalogsProductGroupFilters.
-    #'
+
     #' @description
     #' Initialize a new CatalogsProductGroupFilters.
     #'
     #' @param instance an instance of the object defined in the anyOf schemas: "CatalogsProductGroupFiltersAllOf", "CatalogsProductGroupFiltersAnyOf"
-    #' @export
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -38,26 +36,24 @@ CatalogsProductGroupFilters <- R6::R6Class(
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupFilters.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupFilters.
     #' An alias to the method `fromJSON`.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsProductGroupFilters.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupFilters.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupFilters.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsProductGroupFilters.
-    #' @export
     fromJSON = function(input) {
       error_messages <- list()
 
@@ -93,13 +89,11 @@ CatalogsProductGroupFilters <- R6::R6Class(
       stop(paste("No match found when deserializing the input into CatalogsProductGroupFilters with anyOf schemas CatalogsProductGroupFiltersAllOf, CatalogsProductGroupFiltersAnyOf. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
-    #' Serialize CatalogsProductGroupFilters to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsProductGroupFilters to JSON string.
     #'
     #' @return JSON string representation of the CatalogsProductGroupFilters.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify((self$actual_instance$toJSONString())))
@@ -107,13 +101,11 @@ CatalogsProductGroupFilters <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsProductGroupFilters to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsProductGroupFilters to JSON.
     #'
     #' @return JSON representation of the CatalogsProductGroupFilters.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -121,14 +113,12 @@ CatalogsProductGroupFilters <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsProductGroupFilters.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsProductGroupFilters and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -141,13 +131,11 @@ CatalogsProductGroupFilters <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -157,12 +145,9 @@ CatalogsProductGroupFilters <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

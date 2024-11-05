@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdArrayResponse  {
   
   @ApiModelProperty(value = "")
-  private List<AdArrayResponseElement> items;
+  private List<AdArrayResponseElement> items = new ArrayList<>();
  /**
    * Get items
    * @return items

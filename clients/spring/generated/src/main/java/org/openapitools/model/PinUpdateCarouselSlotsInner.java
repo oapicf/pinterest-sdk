@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("PinUpdate_carousel_slots_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdateCarouselSlotsInner {
 
   private String title;
@@ -37,7 +37,7 @@ public class PinUpdateCarouselSlotsInner {
   /**
    * Carousel Pin slot title.
    * @return title
-  */
+   */
   
   @Schema(name = "title", description = "Carousel Pin slot title.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -57,7 +57,7 @@ public class PinUpdateCarouselSlotsInner {
   /**
    * Carousel Pin slot description.
    * @return description
-  */
+   */
   
   @Schema(name = "description", description = "Carousel Pin slot description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -77,7 +77,7 @@ public class PinUpdateCarouselSlotsInner {
   /**
    * Carousel Pin slot link.
    * @return link
-  */
+   */
   
   @Schema(name = "link", description = "Carousel Pin slot link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")

@@ -3,11 +3,17 @@ package org.openapitools.configuration;
 import org.openapitools.model.ActionType;
 import org.openapitools.model.AdCountry;
 import org.openapitools.model.AdGroupSummaryStatus;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsFilterColumn;
 import org.openapitools.model.AdsAnalyticsFilterOperator;
 import org.openapitools.model.AdsAnalyticsTargetingType;
+import org.openapitools.model.AdvancedAuctionOperation;
+import org.openapitools.model.AssetGroupType;
+import org.openapitools.model.AudienceAccountType;
 import org.openapitools.model.AudienceDataParty;
 import org.openapitools.model.AudienceInsightType;
+import org.openapitools.model.AudienceShareType;
 import org.openapitools.model.AudienceSharingType;
 import org.openapitools.model.AudienceType;
 import org.openapitools.model.AudienceUpdateOperationType;
@@ -19,6 +25,9 @@ import org.openapitools.model.BulkOutputFormat;
 import org.openapitools.model.BulkReportingJobStatus;
 import org.openapitools.model.BulkUpsertStatus;
 import org.openapitools.model.BusinessAccessRole;
+import org.openapitools.model.BusinessRole;
+import org.openapitools.model.BusinessRoleCheckMode;
+import org.openapitools.model.BusinessRoleForMembers;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.CatalogsFeedProcessingStatus;
 import org.openapitools.model.CatalogsFormat;
@@ -33,6 +42,7 @@ import org.openapitools.model.ConversionReportAttributionType;
 import org.openapitools.model.ConversionReportTimeType;
 import org.openapitools.model.ConversionTagType;
 import org.openapitools.model.Country;
+import org.openapitools.model.CreativeAssetsVisibilityType;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.Currency;
 import org.openapitools.model.DataOutputFormat;
@@ -41,29 +51,38 @@ import org.openapitools.model.EnhancedMatchStatusType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.Gender;
 import org.openapitools.model.GetAudiencesOrderBy;
+import org.openapitools.model.GetBusinessAssetTypeResponse;
 import org.openapitools.model.Granularity;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.InviteStatus;
+import org.openapitools.model.InviteType;
 import org.openapitools.model.ItemProcessingStatus;
 import org.openapitools.model.Language;
 import org.openapitools.model.LeadFormQuestionFieldType;
 import org.openapitools.model.LeadFormQuestionType;
 import org.openapitools.model.LeadFormStatus;
+import org.openapitools.model.LeadsExportStatus;
 import org.openapitools.model.MMMReportingColumn;
 import org.openapitools.model.MMMReportingTargetingType;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MatchTypeResponse;
+import org.openapitools.model.MediaType;
 import org.openapitools.model.MediaUploadStatus;
 import org.openapitools.model.MediaUploadType;
+import org.openapitools.model.MemberBusinessRole;
 import org.openapitools.model.MetricsReportingLevel;
 import org.openapitools.model.NonNullableCatalogsCurrency;
 import org.openapitools.model.NonNullableProductAvailabilityType;
 import org.openapitools.model.NullableCatalogsItemFieldType;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.OperationType;
 import org.openapitools.model.OrderLinePaidType;
 import org.openapitools.model.OrderLineStatus;
 import org.openapitools.model.PacingDeliveryType;
 import org.openapitools.model.PartnerType;
+import org.openapitools.model.Permissions;
+import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.PinPromotionSummaryStatus;
 import org.openapitools.model.PlacementGroupType;
 import org.openapitools.model.ProductAvailabilityType;
@@ -71,8 +90,10 @@ import org.openapitools.model.ProductGroupSummaryStatus;
 import org.openapitools.model.ReportingColumnAsync;
 import org.openapitools.model.Role;
 import org.openapitools.model.TargetingAdvertiserCountry;
+import org.openapitools.model.TargetingSpecAppType;
 import org.openapitools.model.TrendType;
 import org.openapitools.model.TrendsSupportedRegion;
+import org.openapitools.model.UpdateMaskBidOptionField;
 import org.openapitools.model.UpdateMaskFieldType;
 import org.openapitools.model.UserFollowingFeedType;
 import org.openapitools.model.UserListOperationType;
@@ -112,6 +133,24 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.adsAnalyticsAdTargetingTypeConverter")
+    Converter<String, AdsAnalyticsAdTargetingType> adsAnalyticsAdTargetingTypeConverter() {
+        return new Converter<String, AdsAnalyticsAdTargetingType>() {
+            @Override
+            public AdsAnalyticsAdTargetingType convert(String source) {
+                return AdsAnalyticsAdTargetingType.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.adsAnalyticsCampaignTargetingTypeConverter")
+    Converter<String, AdsAnalyticsCampaignTargetingType> adsAnalyticsCampaignTargetingTypeConverter() {
+        return new Converter<String, AdsAnalyticsCampaignTargetingType>() {
+            @Override
+            public AdsAnalyticsCampaignTargetingType convert(String source) {
+                return AdsAnalyticsCampaignTargetingType.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.adsAnalyticsFilterColumnConverter")
     Converter<String, AdsAnalyticsFilterColumn> adsAnalyticsFilterColumnConverter() {
         return new Converter<String, AdsAnalyticsFilterColumn>() {
@@ -139,6 +178,33 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.advancedAuctionOperationConverter")
+    Converter<String, AdvancedAuctionOperation> advancedAuctionOperationConverter() {
+        return new Converter<String, AdvancedAuctionOperation>() {
+            @Override
+            public AdvancedAuctionOperation convert(String source) {
+                return AdvancedAuctionOperation.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.assetGroupTypeConverter")
+    Converter<String, AssetGroupType> assetGroupTypeConverter() {
+        return new Converter<String, AssetGroupType>() {
+            @Override
+            public AssetGroupType convert(String source) {
+                return AssetGroupType.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.audienceAccountTypeConverter")
+    Converter<String, AudienceAccountType> audienceAccountTypeConverter() {
+        return new Converter<String, AudienceAccountType>() {
+            @Override
+            public AudienceAccountType convert(String source) {
+                return AudienceAccountType.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.audienceDataPartyConverter")
     Converter<String, AudienceDataParty> audienceDataPartyConverter() {
         return new Converter<String, AudienceDataParty>() {
@@ -154,6 +220,15 @@ public class EnumConverterConfiguration {
             @Override
             public AudienceInsightType convert(String source) {
                 return AudienceInsightType.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.audienceShareTypeConverter")
+    Converter<String, AudienceShareType> audienceShareTypeConverter() {
+        return new Converter<String, AudienceShareType>() {
+            @Override
+            public AudienceShareType convert(String source) {
+                return AudienceShareType.fromValue(source);
             }
         };
     }
@@ -253,6 +328,33 @@ public class EnumConverterConfiguration {
             @Override
             public BusinessAccessRole convert(String source) {
                 return BusinessAccessRole.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.businessRoleConverter")
+    Converter<String, BusinessRole> businessRoleConverter() {
+        return new Converter<String, BusinessRole>() {
+            @Override
+            public BusinessRole convert(String source) {
+                return BusinessRole.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.businessRoleCheckModeConverter")
+    Converter<String, BusinessRoleCheckMode> businessRoleCheckModeConverter() {
+        return new Converter<String, BusinessRoleCheckMode>() {
+            @Override
+            public BusinessRoleCheckMode convert(String source) {
+                return BusinessRoleCheckMode.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.businessRoleForMembersConverter")
+    Converter<String, BusinessRoleForMembers> businessRoleForMembersConverter() {
+        return new Converter<String, BusinessRoleForMembers>() {
+            @Override
+            public BusinessRoleForMembers convert(String source) {
+                return BusinessRoleForMembers.fromValue(source);
             }
         };
     }
@@ -382,6 +484,15 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.creativeAssetsVisibilityTypeConverter")
+    Converter<String, CreativeAssetsVisibilityType> creativeAssetsVisibilityTypeConverter() {
+        return new Converter<String, CreativeAssetsVisibilityType>() {
+            @Override
+            public CreativeAssetsVisibilityType convert(String source) {
+                return CreativeAssetsVisibilityType.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.creativeTypeConverter")
     Converter<String, CreativeType> creativeTypeConverter() {
         return new Converter<String, CreativeType>() {
@@ -454,6 +565,15 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.getBusinessAssetTypeResponseConverter")
+    Converter<String, GetBusinessAssetTypeResponse> getBusinessAssetTypeResponseConverter() {
+        return new Converter<String, GetBusinessAssetTypeResponse>() {
+            @Override
+            public GetBusinessAssetTypeResponse convert(String source) {
+                return GetBusinessAssetTypeResponse.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.granularityConverter")
     Converter<String, Granularity> granularityConverter() {
         return new Converter<String, Granularity>() {
@@ -469,6 +589,24 @@ public class EnumConverterConfiguration {
             @Override
             public GridClickType convert(String source) {
                 return GridClickType.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.inviteStatusConverter")
+    Converter<String, InviteStatus> inviteStatusConverter() {
+        return new Converter<String, InviteStatus>() {
+            @Override
+            public InviteStatus convert(String source) {
+                return InviteStatus.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.inviteTypeConverter")
+    Converter<String, InviteType> inviteTypeConverter() {
+        return new Converter<String, InviteType>() {
+            @Override
+            public InviteType convert(String source) {
+                return InviteType.fromValue(source);
             }
         };
     }
@@ -517,6 +655,15 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.leadsExportStatusConverter")
+    Converter<String, LeadsExportStatus> leadsExportStatusConverter() {
+        return new Converter<String, LeadsExportStatus>() {
+            @Override
+            public LeadsExportStatus convert(String source) {
+                return LeadsExportStatus.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.mmMReportingColumnConverter")
     Converter<String, MMMReportingColumn> mmMReportingColumnConverter() {
         return new Converter<String, MMMReportingColumn>() {
@@ -553,6 +700,15 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.mediaTypeConverter")
+    Converter<String, MediaType> mediaTypeConverter() {
+        return new Converter<String, MediaType>() {
+            @Override
+            public MediaType convert(String source) {
+                return MediaType.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.mediaUploadStatusConverter")
     Converter<String, MediaUploadStatus> mediaUploadStatusConverter() {
         return new Converter<String, MediaUploadStatus>() {
@@ -568,6 +724,15 @@ public class EnumConverterConfiguration {
             @Override
             public MediaUploadType convert(String source) {
                 return MediaUploadType.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.memberBusinessRoleConverter")
+    Converter<String, MemberBusinessRole> memberBusinessRoleConverter() {
+        return new Converter<String, MemberBusinessRole>() {
+            @Override
+            public MemberBusinessRole convert(String source) {
+                return MemberBusinessRole.fromValue(source);
             }
         };
     }
@@ -625,6 +790,15 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.operationTypeConverter")
+    Converter<String, OperationType> operationTypeConverter() {
+        return new Converter<String, OperationType>() {
+            @Override
+            public OperationType convert(String source) {
+                return OperationType.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.orderLinePaidTypeConverter")
     Converter<String, OrderLinePaidType> orderLinePaidTypeConverter() {
         return new Converter<String, OrderLinePaidType>() {
@@ -658,6 +832,24 @@ public class EnumConverterConfiguration {
             @Override
             public PartnerType convert(String source) {
                 return PartnerType.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.permissionsConverter")
+    Converter<String, Permissions> permissionsConverter() {
+        return new Converter<String, Permissions>() {
+            @Override
+            public Permissions convert(String source) {
+                return Permissions.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.permissionsWithOwnerConverter")
+    Converter<String, PermissionsWithOwner> permissionsWithOwnerConverter() {
+        return new Converter<String, PermissionsWithOwner>() {
+            @Override
+            public PermissionsWithOwner convert(String source) {
+                return PermissionsWithOwner.fromValue(source);
             }
         };
     }
@@ -724,6 +916,15 @@ public class EnumConverterConfiguration {
             }
         };
     }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.targetingSpecAppTypeConverter")
+    Converter<String, TargetingSpecAppType> targetingSpecAppTypeConverter() {
+        return new Converter<String, TargetingSpecAppType>() {
+            @Override
+            public TargetingSpecAppType convert(String source) {
+                return TargetingSpecAppType.fromValue(source);
+            }
+        };
+    }
     @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.trendTypeConverter")
     Converter<String, TrendType> trendTypeConverter() {
         return new Converter<String, TrendType>() {
@@ -739,6 +940,15 @@ public class EnumConverterConfiguration {
             @Override
             public TrendsSupportedRegion convert(String source) {
                 return TrendsSupportedRegion.fromValue(source);
+            }
+        };
+    }
+    @Bean(name = "org.openapitools.configuration.EnumConverterConfiguration.updateMaskBidOptionFieldConverter")
+    Converter<String, UpdateMaskBidOptionField> updateMaskBidOptionFieldConverter() {
+        return new Converter<String, UpdateMaskBidOptionField>() {
+            @Override
+            public UpdateMaskBidOptionField convert(String source) {
+                return UpdateMaskBidOptionField.fromValue(source);
             }
         };
     }

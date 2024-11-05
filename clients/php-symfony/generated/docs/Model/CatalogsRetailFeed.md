@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **\DateTime** |  | [optional] 
-**id** | **string** |  | [optional] 
-**updatedAt** | **\DateTime** |  | [optional] 
+**createdAt** | **\DateTime** |  | 
+**id** | **string** |  | 
+**updatedAt** | **\DateTime** |  | 
 **name** | **string** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | [**OpenAPI\Server\Model\CatalogsFormat**](CatalogsFormat.md) |  | 
 **catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 

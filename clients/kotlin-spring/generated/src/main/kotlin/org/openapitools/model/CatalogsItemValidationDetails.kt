@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.NullableCatalogsItemFieldType
@@ -28,7 +29,7 @@ data class CatalogsItemValidationDetails(
 
     @Schema(example = "null", required = true, description = "Provided value that caused the validation issue.")
     @get:JsonProperty("provided_value", required = true) val providedValue: kotlin.String?
-) {
+    ) {
 
 }
 

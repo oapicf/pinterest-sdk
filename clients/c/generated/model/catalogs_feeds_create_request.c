@@ -82,7 +82,8 @@ catalogs_feeds_create_request_t *catalogs_feeds_create_request_create(
     char *location,
     catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     country_t *default_country,
-    product_availability_type_t *default_availability
+    product_availability_type_t *default_availability,
+    catalogs_status_t *status
     ) {
     catalogs_feeds_create_request_t *catalogs_feeds_create_request_local_var = malloc(sizeof(catalogs_feeds_create_request_t));
     if (!catalogs_feeds_create_request_local_var) {
@@ -97,6 +98,7 @@ catalogs_feeds_create_request_t *catalogs_feeds_create_request_create(
     catalogs_feeds_create_request_local_var->preferred_processing_schedule = preferred_processing_schedule;
     catalogs_feeds_create_request_local_var->default_country = default_country;
     catalogs_feeds_create_request_local_var->default_availability = default_availability;
+    catalogs_feeds_create_request_local_var->status = status;
 
     return catalogs_feeds_create_request_local_var;
 }
@@ -142,6 +144,10 @@ void catalogs_feeds_create_request_free(catalogs_feeds_create_request_t *catalog
     if (catalogs_feeds_create_request->default_availability) {
         product_availability_type_free(catalogs_feeds_create_request->default_availability);
         catalogs_feeds_create_request->default_availability = NULL;
+    }
+    if (catalogs_feeds_create_request->status) {
+        catalogs_status_free(catalogs_feeds_create_request->status);
+        catalogs_feeds_create_request->status = NULL;
     }
     free(catalogs_feeds_create_request);
 }
@@ -258,6 +264,19 @@ cJSON *catalogs_feeds_create_request_convertToJSON(catalogs_feeds_create_request
     }
     }
 
+
+    // catalogs_feeds_create_request->status
+    if(catalogs_feeds_create_request->status) {
+    cJSON *status_local_JSON = catalogs_status_convertToJSON(catalogs_feeds_create_request->status);
+    if(status_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -290,6 +309,9 @@ catalogs_feeds_create_request_t *catalogs_feeds_create_request_parseFromJSON(cJS
 
     // define the local variable for catalogs_feeds_create_request->default_availability
     product_availability_type_t *default_availability_local_nonprim = NULL;
+
+    // define the local variable for catalogs_feeds_create_request->status
+    catalogs_status_t *status_local_nonprim = NULL;
 
     // catalogs_feeds_create_request->default_currency
     cJSON *default_currency = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_create_requestJSON, "default_currency");
@@ -360,6 +382,12 @@ catalogs_feeds_create_request_t *catalogs_feeds_create_request_parseFromJSON(cJS
     default_availability_local_nonprim = product_availability_type_parseFromJSON(default_availability); //custom
     }
 
+    // catalogs_feeds_create_request->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(catalogs_feeds_create_requestJSON, "status");
+    if (status) { 
+    status_local_nonprim = catalogs_status_parseFromJSON(status); //nonprimitive
+    }
+
 
     catalogs_feeds_create_request_local_var = catalogs_feeds_create_request_create (
         default_currency ? default_currency_local_nonprim : NULL,
@@ -370,7 +398,8 @@ catalogs_feeds_create_request_t *catalogs_feeds_create_request_parseFromJSON(cJS
         strdup(location->valuestring),
         preferred_processing_schedule ? preferred_processing_schedule_local_nonprim : NULL,
         default_country ? default_country_local_nonprim : NULL,
-        default_availability ? default_availability_local_nonprim : NULL
+        default_availability ? default_availability_local_nonprim : NULL,
+        status ? status_local_nonprim : NULL
         );
 
     return catalogs_feeds_create_request_local_var;
@@ -402,6 +431,10 @@ end:
     if (default_availability_local_nonprim) {
         product_availability_type_free(default_availability_local_nonprim);
         default_availability_local_nonprim = NULL;
+    }
+    if (status_local_nonprim) {
+        catalogs_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
     }
     return NULL;
 

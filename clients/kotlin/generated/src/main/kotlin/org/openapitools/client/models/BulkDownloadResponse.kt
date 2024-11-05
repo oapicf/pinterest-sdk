@@ -32,5 +32,8 @@ data class BulkDownloadResponse (
     @Json(name = "request_id")
     val requestId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

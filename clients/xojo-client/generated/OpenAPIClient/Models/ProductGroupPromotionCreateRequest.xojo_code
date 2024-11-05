@@ -10,7 +10,7 @@ Protected Class ProductGroupPromotionCreateRequest
 
 
 	#tag Property, Flags = &h0
-		product_group_promotion() As OpenAPIClient.Models.ProductGroupPromotion
+		product_group_promotion() As OpenAPIClient.Models.ProductGroupPromotionCreateRequestElement
 	#tag EndProperty
 
 
@@ -63,7 +63,7 @@ Protected Class ProductGroupPromotionCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ProductGroupPromotion"
+			Type="ProductGroupPromotionCreateRequestElement"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

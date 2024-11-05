@@ -32,5 +32,8 @@ data class DeliveryMetricsResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<DeliveryMetricsResponseItemsInner>? = null
 
-)
+) {
+
+
+}
 

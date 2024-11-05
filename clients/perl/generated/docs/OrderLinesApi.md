@@ -82,7 +82,7 @@ my $api_instance = WWW::OpenAPIClient::OrderLinesApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $order = ASCENDING; # string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
 
@@ -100,7 +100,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **order** | **string**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
 

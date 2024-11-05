@@ -52,7 +52,8 @@ item_attributes_t *item_attributes_create(
     list_t *variant_names,
     list_t *variant_values,
     list_t *additional_image_link,
-    list_t *image_link
+    list_t *image_link,
+    char *video_link
     ) {
     item_attributes_t *item_attributes_local_var = malloc(sizeof(item_attributes_t));
     if (!item_attributes_local_var) {
@@ -105,6 +106,7 @@ item_attributes_t *item_attributes_create(
     item_attributes_local_var->variant_values = variant_values;
     item_attributes_local_var->additional_image_link = additional_image_link;
     item_attributes_local_var->image_link = image_link;
+    item_attributes_local_var->video_link = video_link;
 
     return item_attributes_local_var;
 }
@@ -282,6 +284,10 @@ void item_attributes_free(item_attributes_t *item_attributes) {
         }
         list_freeList(item_attributes->image_link);
         item_attributes->image_link = NULL;
+    }
+    if (item_attributes->video_link) {
+        free(item_attributes->video_link);
+        item_attributes->video_link = NULL;
     }
     free(item_attributes);
 }
@@ -697,6 +703,14 @@ cJSON *item_attributes_convertToJSON(item_attributes_t *item_attributes) {
     {
         goto fail;
     }
+    }
+    }
+
+
+    // item_attributes->video_link
+    if(item_attributes->video_link) {
+    if(cJSON_AddStringToObject(item, "video_link", item_attributes->video_link) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -1187,6 +1201,15 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
     }
     }
 
+    // item_attributes->video_link
+    cJSON *video_link = cJSON_GetObjectItemCaseSensitive(item_attributesJSON, "video_link");
+    if (video_link) { 
+    if(!cJSON_IsString(video_link) && !cJSON_IsNull(video_link))
+    {
+    goto end; //String
+    }
+    }
+
 
     item_attributes_local_var = item_attributes_create (
         ad_link && !cJSON_IsNull(ad_link) ? strdup(ad_link->valuestring) : NULL,
@@ -1235,7 +1258,8 @@ item_attributes_t *item_attributes_parseFromJSON(cJSON *item_attributesJSON){
         variant_names ? variant_namesList : NULL,
         variant_values ? variant_valuesList : NULL,
         additional_image_link ? additional_image_linkList : NULL,
-        image_link ? image_linkList : NULL
+        image_link ? image_linkList : NULL,
+        video_link && !cJSON_IsNull(video_link) ? strdup(video_link->valuestring) : NULL
         );
 
     return item_attributes_local_var;

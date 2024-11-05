@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ```c
 // Search pins by a given search term
 //
-// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 //
 search_partner_pins_200_response_t* SearchAPI_searchPartnerPins(apiClient_t *apiClient, char *term, char *country_code, char *bookmark, char *locale, int *limit);
 ```
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 ```c
 // Search user's boards
 //
-// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 //
 search_user_boards_get_200_response_t* SearchAPI_searchUserBoardsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size, char *query);
 ```
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 **bookmark** | **char \*** | Cursor used to fetch the next page of items | [optional] 
-**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+**page_size** | **int \*** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 **query** | **char \*** | Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
 
 ### Return type
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ```c
 // Search user's Pins
 //
-// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 //
 pins_list_200_response_t* SearchAPI_searchUserPinsList(apiClient_t *apiClient, char *query, char *ad_account_id, char *bookmark);
 ```

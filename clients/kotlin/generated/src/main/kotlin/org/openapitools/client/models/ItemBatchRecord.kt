@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ItemAttributes
+import org.openapitools.client.models.ItemAttributesRequest
 import org.openapitools.client.models.ItemCreateBatchRecord
 import org.openapitools.client.models.ItemDeleteBatchRecord
 import org.openapitools.client.models.ItemDeleteDiscontinuedBatchRecord
@@ -42,11 +42,14 @@ data class ItemBatchRecord (
     val itemId: kotlin.String? = null,
 
     @Json(name = "attributes")
-    val attributes: ItemAttributes? = null,
+    val attributes: ItemAttributesRequest? = null,
 
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     @Json(name = "update_mask")
     val updateMask: kotlin.collections.List<UpdateMaskFieldType>? = null
 
-)
+) {
+
+
+}
 

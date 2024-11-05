@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ProductGroupPromotionCreateRequest
-import org.openapitools.client.models.ProductGroupPromotion
+import org.openapitools.client.models.ProductGroupPromotionCreateRequestElement
 
 class ProductGroupPromotionCreateRequestTest : ShouldSpec() {
     init {

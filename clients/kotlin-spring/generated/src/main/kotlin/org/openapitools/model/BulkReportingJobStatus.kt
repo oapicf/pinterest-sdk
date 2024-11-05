@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,13 +19,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Possible status for a bulk reporting job
 * Values: DOES_NOT_EXIST,FINISHED,IN_PROGRESS,EXPIRED,FAILED,CANCELLED
 */
-enum class BulkReportingJobStatus(val value: kotlin.String) {
+enum class BulkReportingJobStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("DOES_NOT_EXIST") DOES_NOT_EXIST("DOES_NOT_EXIST"),
-    @JsonProperty("FINISHED") FINISHED("FINISHED"),
-    @JsonProperty("IN_PROGRESS") IN_PROGRESS("IN_PROGRESS"),
-    @JsonProperty("EXPIRED") EXPIRED("EXPIRED"),
-    @JsonProperty("FAILED") FAILED("FAILED"),
-    @JsonProperty("CANCELLED") CANCELLED("CANCELLED")
+    DOES_NOT_EXIST("DOES_NOT_EXIST"),
+    FINISHED("FINISHED"),
+    IN_PROGRESS("IN_PROGRESS"),
+    EXPIRED("EXPIRED"),
+    FAILED("FAILED"),
+    CANCELLED("CANCELLED");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): BulkReportingJobStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

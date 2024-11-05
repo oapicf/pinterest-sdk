@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **BatchId** | Pointer to **string** | Id of the catalogs items batch | [optional] 
-**CreatedTime** | Pointer to **time.Time** | Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD | [optional] [readonly] 
-**CompletedTime** | Pointer to **NullableTime** | Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD | [optional] [readonly] 
+**CreatedTime** | Pointer to **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
 **Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
-**Items** | Pointer to [**[]HotelProcessingRecord**](HotelProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
+**Items** | Pointer to [**[]CreativeAssetsProcessingRecord**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
 
 ## Methods
 
@@ -162,20 +162,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetItems
 
-`func (o *CatalogsItemsBatch) GetItems() []HotelProcessingRecord`
+`func (o *CatalogsItemsBatch) GetItems() []CreativeAssetsProcessingRecord`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *CatalogsItemsBatch) GetItemsOk() (*[]HotelProcessingRecord, bool)`
+`func (o *CatalogsItemsBatch) GetItemsOk() (*[]CreativeAssetsProcessingRecord, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *CatalogsItemsBatch) SetItems(v []HotelProcessingRecord)`
+`func (o *CatalogsItemsBatch) SetItems(v []CreativeAssetsProcessingRecord)`
 
 SetItems sets Items field to given value.
 

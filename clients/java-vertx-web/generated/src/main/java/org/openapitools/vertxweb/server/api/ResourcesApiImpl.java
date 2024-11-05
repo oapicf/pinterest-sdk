@@ -38,7 +38,7 @@ public class ResourcesApiImpl implements ResourcesApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<List<Object>>> targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp) {
+    public Future<ApiResponse<List<Object>>> targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 

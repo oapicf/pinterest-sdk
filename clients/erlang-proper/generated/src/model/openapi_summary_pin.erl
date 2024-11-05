@@ -9,7 +9,7 @@
 -export_type([openapi_summary_pin/0]).
 
 -type openapi_summary_pin() ::
-  [ {'media', openapi_summary_pin_media:openapi_summary_pin_media() }
+  [ {'media', openapi_pin_media:openapi_pin_media() }
   | {'alt_text', binary() }
   | {'link', binary() }
   | {'title', binary() }
@@ -21,7 +21,7 @@ openapi_summary_pin() ->
     openapi_summary_pin([]).
 
 openapi_summary_pin(Fields) ->
-  Default = [ {'media', openapi_summary_pin_media:openapi_summary_pin_media() }
+  Default = [ {'media', openapi_pin_media:openapi_pin_media() }
             , {'alt_text', binary() }
             , {'link', binary() }
             , {'title', binary() }

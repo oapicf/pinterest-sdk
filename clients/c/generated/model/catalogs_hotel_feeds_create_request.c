@@ -39,13 +39,13 @@ pinterest_rest_api_catalogs_hotel_feeds_create_request__e catalogs_hotel_feeds_c
     return 0;
 }
 char* catalogs_hotel_feeds_create_request_catalog_type_ToString(pinterest_rest_api_catalogs_hotel_feeds_create_request__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_catalogs_hotel_feeds_create_request__e catalogs_hotel_feeds_create_request_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -65,7 +65,8 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_creat
     char *location,
     catalogs_feed_processing_schedule_t *preferred_processing_schedule,
     catalogs_type_t *catalog_type,
-    char *catalog_id
+    char *catalog_id,
+    catalogs_status_t *status
     ) {
     catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_local_var = malloc(sizeof(catalogs_hotel_feeds_create_request_t));
     if (!catalogs_hotel_feeds_create_request_local_var) {
@@ -80,6 +81,7 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_creat
     catalogs_hotel_feeds_create_request_local_var->preferred_processing_schedule = preferred_processing_schedule;
     catalogs_hotel_feeds_create_request_local_var->catalog_type = catalog_type;
     catalogs_hotel_feeds_create_request_local_var->catalog_id = catalog_id;
+    catalogs_hotel_feeds_create_request_local_var->status = status;
 
     return catalogs_hotel_feeds_create_request_local_var;
 }
@@ -125,6 +127,10 @@ void catalogs_hotel_feeds_create_request_free(catalogs_hotel_feeds_create_reques
     if (catalogs_hotel_feeds_create_request->catalog_id) {
         free(catalogs_hotel_feeds_create_request->catalog_id);
         catalogs_hotel_feeds_create_request->catalog_id = NULL;
+    }
+    if (catalogs_hotel_feeds_create_request->status) {
+        catalogs_status_free(catalogs_hotel_feeds_create_request->status);
+        catalogs_hotel_feeds_create_request->status = NULL;
     }
     free(catalogs_hotel_feeds_create_request);
 }
@@ -238,6 +244,19 @@ cJSON *catalogs_hotel_feeds_create_request_convertToJSON(catalogs_hotel_feeds_cr
     }
     }
 
+
+    // catalogs_hotel_feeds_create_request->status
+    if(catalogs_hotel_feeds_create_request->status) {
+    cJSON *status_local_JSON = catalogs_status_convertToJSON(catalogs_hotel_feeds_create_request->status);
+    if(status_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -267,6 +286,9 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
 
     // define the local variable for catalogs_hotel_feeds_create_request->catalog_type
     catalogs_type_t *catalog_type_local_nonprim = NULL;
+
+    // define the local variable for catalogs_hotel_feeds_create_request->status
+    catalogs_status_t *status_local_nonprim = NULL;
 
     // catalogs_hotel_feeds_create_request->default_currency
     cJSON *default_currency = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_feeds_create_requestJSON, "default_currency");
@@ -346,6 +368,12 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
     }
     }
 
+    // catalogs_hotel_feeds_create_request->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_feeds_create_requestJSON, "status");
+    if (status) { 
+    status_local_nonprim = catalogs_status_parseFromJSON(status); //nonprimitive
+    }
+
 
     catalogs_hotel_feeds_create_request_local_var = catalogs_hotel_feeds_create_request_create (
         default_currency ? default_currency_local_nonprim : NULL,
@@ -356,7 +384,8 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
         strdup(location->valuestring),
         preferred_processing_schedule ? preferred_processing_schedule_local_nonprim : NULL,
         catalog_type_local_nonprim,
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL
+        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        status ? status_local_nonprim : NULL
         );
 
     return catalogs_hotel_feeds_create_request_local_var;
@@ -384,6 +413,10 @@ end:
     if (catalog_type_local_nonprim) {
         catalogs_type_free(catalog_type_local_nonprim);
         catalog_type_local_nonprim = NULL;
+    }
+    if (status_local_nonprim) {
+        catalogs_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
     }
     return NULL;
 

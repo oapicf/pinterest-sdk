@@ -24,14 +24,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Audience interests and demographics.")
 @JsonTypeName("AudienceInsightsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightsResponse   {
-  private @Valid List<@Valid AudienceCategory> categories;
-  private @Valid AudienceDemographics demographics;
-  private @Valid AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
-  private @Valid String date;
-  private @Valid Integer size;
-  private @Valid Boolean sizeIsUpperBound;
+  private @Valid List<@Valid AudienceCategory> categories = new ArrayList<>();
+  private AudienceDemographics demographics;
+  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
+  private String date;
+  private Integer size;
+  private Boolean sizeIsUpperBound;
 
   /**
    * Category interest distribution
@@ -44,7 +44,7 @@ public class AudienceInsightsResponse   {
   
   @ApiModelProperty(value = "Category interest distribution")
   @JsonProperty("categories")
-  public List<AudienceCategory> getCategories() {
+  @Valid public List<@Valid AudienceCategory> getCategories() {
     return categories;
   }
 
@@ -79,7 +79,7 @@ public class AudienceInsightsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("demographics")
-  public AudienceDemographics getDemographics() {
+  @Valid public AudienceDemographics getDemographics() {
     return demographics;
   }
 
@@ -118,7 +118,7 @@ public class AudienceInsightsResponse   {
   
   @ApiModelProperty(example = "2022-10-09", value = "Generation date")
   @JsonProperty("date")
- @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  public String getDate() {
+   @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")public String getDate() {
     return date;
   }
 

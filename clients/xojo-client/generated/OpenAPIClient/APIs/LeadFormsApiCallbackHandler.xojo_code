@@ -13,7 +13,19 @@ Protected Interface LeadFormsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub LeadFormsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormArrayResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub LeadFormsListCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormsList200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub LeadFormsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadFormArrayResponse)
 		  
 		End Sub
 	#tag EndMethod

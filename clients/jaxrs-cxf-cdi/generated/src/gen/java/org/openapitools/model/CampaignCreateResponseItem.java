@@ -22,7 +22,7 @@ public class CampaignCreateResponseItem   {
   
   private CampaignCreateResponseData data;
 
-  private List<@Valid Exception> exceptions;
+  private List<@Valid Exception> exceptions = new ArrayList<>();
 
   /**
    **/

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -172,7 +172,7 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     adGroupsAnalytics().handleRequest(exchange);
                 }
             })
-            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing", new HttpHandler() {
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     adGroupsAudienceSizing().handleRequest(exchange);
@@ -256,6 +256,18 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     adsUpdate().handleRequest(exchange);
                 }
             })
+            .add(Methods.POST, basePath + "/advanced_auction/items/get", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    advancedAuctionItemsGetPost().handleRequest(exchange);
+                }
+            })
+            .add(Methods.POST, basePath + "/advanced_auction/items/submit", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    advancedAuctionItemsSubmitPost().handleRequest(exchange);
+                }
+            })
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/audience_insights", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
@@ -266,6 +278,48 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     audienceInsightsScopeAndTypeGet().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/audiences/shared/accounts", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    adAccountsAudiencesSharedAccountsList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/audiences/shared/accounts", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessAccountAudiencesSharedAccountsList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/audiences", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    sharedAudiencesForBusinessList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    updateAdAccountToAdAccountSharedAudience().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/audiences/businesses/shared", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    updateAdAccountToBusinessSharedAudience().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/audiences/ad_accounts/shared", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    updateBusinessToAdAccountSharedAudience().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/audiences/businesses/shared", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    updateBusinessToBusinessSharedAudience().handleRequest(exchange);
                 }
             })
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/audiences", new HttpHandler() {
@@ -436,6 +490,150 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     bulkUpsertCreate().handleRequest(exchange);
                 }
             })
+            .add(Methods.POST, basePath + "/businesses/{business_id}/asset_groups", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    assetGroupCreate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/asset_groups", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    assetGroupDelete().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/asset_groups", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    assetGroupUpdate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/assets/{asset_id}/members", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessAssetMembersGet().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/assets/{asset_id}/partners", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessAssetPartnersGet().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/assets", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessAssetsGet().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/members/{member_id}/assets", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessMemberAssetsGet().handleRequest(exchange);
+                }
+            })
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/members/assets/access", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessMembersAssetAccessDelete().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/members/assets/access", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessMembersAssetAccessUpdate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/partners/{partner_id}/assets", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    businessPartnerAssetAccessGet().handleRequest(exchange);
+                }
+            })
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/partners/assets", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    deletePartnerAssetAccessHandlerImpl().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/partners/assets", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    updatePartnerAssetAccessHandlerImpl().handleRequest(exchange);
+                }
+            })
+            .add(Methods.POST, basePath + "/businesses/{business_id}/requests/assets/access", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    assetAccessRequestsCreate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/invites", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    cancelInvitesOrRequests().handleRequest(exchange);
+                }
+            })
+            .add(Methods.POST, basePath + "/businesses/{business_id}/invites/assets/access", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    createAssetInvites().handleRequest(exchange);
+                }
+            })
+            .add(Methods.POST, basePath + "/businesses/{business_id}/invites", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    createMembershipOrPartnershipInvites().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/invites", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    getInvites().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/businesses/invites", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    respondBusinessAccessInvites().handleRequest(exchange);
+                }
+            })
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/members", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    deleteBusinessMembership().handleRequest(exchange);
+                }
+            })
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/partners", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    deleteBusinessPartners().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/employers", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    getBusinessEmployers().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/members", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    getBusinessMembers().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/businesses/{business_id}/partners", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    getBusinessPartners().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/members", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    updateBusinessMemberships().handleRequest(exchange);
+                }
+            })
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
@@ -472,6 +670,12 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     campaignsUpdate().handleRequest(exchange);
                 }
             })
+            .add(Methods.POST, basePath + "/catalogs", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    catalogsCreate().handleRequest(exchange);
+                }
+            })
             .add(Methods.GET, basePath + "/catalogs", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
@@ -490,10 +694,22 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     catalogsProductGroupsCreate().handleRequest(exchange);
                 }
             })
+            .add(Methods.POST, basePath + "/catalogs/product_groups/multiple", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    catalogsProductGroupsCreateMany().handleRequest(exchange);
+                }
+            })
             .add(Methods.DELETE, basePath + "/catalogs/product_groups/{product_group_id}", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     catalogsProductGroupsDelete().handleRequest(exchange);
+                }
+            })
+            .add(Methods.DELETE, basePath + "/catalogs/product_groups/multiple", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    catalogsProductGroupsDeleteMany().handleRequest(exchange);
                 }
             })
             .add(Methods.GET, basePath + "/catalogs/product_groups/{product_group_id}", new HttpHandler() {
@@ -544,6 +760,12 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     feedsGet().handleRequest(exchange);
                 }
             })
+            .add(Methods.POST, basePath + "/catalogs/feeds/{feed_id}/ingest", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    feedsIngest().handleRequest(exchange);
+                }
+            })
             .add(Methods.GET, basePath + "/catalogs/feeds", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
@@ -580,10 +802,34 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     itemsIssuesList().handleRequest(exchange);
                 }
             })
+            .add(Methods.POST, basePath + "/catalogs/items", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    itemsPost().handleRequest(exchange);
+                }
+            })
             .add(Methods.POST, basePath + "/catalogs/products/get_by_product_group_filters", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     productsByProductGroupFilterList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.POST, basePath + "/catalogs/reports", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    reportsCreate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/catalogs/reports", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    reportsGet().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/catalogs/reports/stats", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    reportsStats().handleRequest(exchange);
                 }
             })
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/events", new HttpHandler() {
@@ -754,10 +1000,34 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     leadFormTestCreate().handleRequest(exchange);
                 }
             })
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/lead_forms", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    leadFormsCreate().handleRequest(exchange);
+                }
+            })
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/lead_forms", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     leadFormsList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/lead_forms", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    leadFormsUpdate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/leads_export", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    leadsExportCreate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    leadsExportGet().handleRequest(exchange);
                 }
             })
             .add(Methods.POST, basePath + "/media", new HttpHandler() {
@@ -794,6 +1064,12 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     orderLinesList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/pins/analytics", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    multiPinsAnalytics().handleRequest(exchange);
                 }
             })
             .add(Methods.GET, basePath + "/pins/{pin_id}/analytics", new HttpHandler() {
@@ -868,12 +1144,6 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                     productGroupsAnalytics().handleRequest(exchange);
                 }
             })
-            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/product_groups/catalogs", new HttpHandler() {
-                @Override
-                public void handleRequest(HttpServerExchange exchange) throws Exception {
-                    adAccountsCatalogsProductGroupsList().handleRequest(exchange);
-                }
-            })
             .add(Methods.GET, basePath + "/resources/ad_account_countries", new HttpHandler() {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
@@ -926,6 +1196,24 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     searchUserPinsList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/targeting_templates", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    targetingTemplateCreate().handleRequest(exchange);
+                }
+            })
+            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/targeting_templates", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    targetingTemplateList().handleRequest(exchange);
+                }
+            })
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/targeting_templates", new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    targetingTemplateUpdate().handleRequest(exchange);
                 }
             })
             .add(Methods.GET, basePath + "/terms/related", new HttpHandler() {
@@ -1091,7 +1379,7 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
             .add(Methods.DELETE, basePath + "/ad_accounts/{ad_account_id}/sandbox", sandboxDelete())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/templates", templatesList())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/ad_groups/analytics", adGroupsAnalytics())
-            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing", adGroupsAudienceSizing())
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing", adGroupsAudienceSizing())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/bid_floor", adGroupsBidFloorGet())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/ad_groups", adGroupsCreate())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}", adGroupsGet())
@@ -1105,8 +1393,17 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/ads/{ad_id}", adsGet())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/ads", adsList())
             .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/ads", adsUpdate())
+            .add(Methods.POST, basePath + "/advanced_auction/items/get", advancedAuctionItemsGetPost())
+            .add(Methods.POST, basePath + "/advanced_auction/items/submit", advancedAuctionItemsSubmitPost())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/audience_insights", audienceInsightsGet())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/insights/audiences", audienceInsightsScopeAndTypeGet())
+            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/audiences/shared/accounts", adAccountsAudiencesSharedAccountsList())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/audiences/shared/accounts", businessAccountAudiencesSharedAccountsList())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/audiences", sharedAudiencesForBusinessList())
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared", updateAdAccountToAdAccountSharedAudience())
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/audiences/businesses/shared", updateAdAccountToBusinessSharedAudience())
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/audiences/ad_accounts/shared", updateBusinessToAdAccountSharedAudience())
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/audiences/businesses/shared", updateBusinessToBusinessSharedAudience())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/audiences", audiencesCreate())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/audiences/custom", audiencesCreateCustom())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/audiences/{audience_id}", audiencesGet())
@@ -1135,16 +1432,43 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/bulk/download", bulkDownloadCreate())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}", bulkRequestGet())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/bulk/upsert", bulkUpsertCreate())
+            .add(Methods.POST, basePath + "/businesses/{business_id}/asset_groups", assetGroupCreate())
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/asset_groups", assetGroupDelete())
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/asset_groups", assetGroupUpdate())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/assets/{asset_id}/members", businessAssetMembersGet())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/assets/{asset_id}/partners", businessAssetPartnersGet())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/assets", businessAssetsGet())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/members/{member_id}/assets", businessMemberAssetsGet())
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/members/assets/access", businessMembersAssetAccessDelete())
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/members/assets/access", businessMembersAssetAccessUpdate())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/partners/{partner_id}/assets", businessPartnerAssetAccessGet())
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/partners/assets", deletePartnerAssetAccessHandlerImpl())
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/partners/assets", updatePartnerAssetAccessHandlerImpl())
+            .add(Methods.POST, basePath + "/businesses/{business_id}/requests/assets/access", assetAccessRequestsCreate())
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/invites", cancelInvitesOrRequests())
+            .add(Methods.POST, basePath + "/businesses/{business_id}/invites/assets/access", createAssetInvites())
+            .add(Methods.POST, basePath + "/businesses/{business_id}/invites", createMembershipOrPartnershipInvites())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/invites", getInvites())
+            .add(Methods.PATCH, basePath + "/businesses/invites", respondBusinessAccessInvites())
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/members", deleteBusinessMembership())
+            .add(Methods.DELETE, basePath + "/businesses/{business_id}/partners", deleteBusinessPartners())
+            .add(Methods.GET, basePath + "/businesses/employers", getBusinessEmployers())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/members", getBusinessMembers())
+            .add(Methods.GET, basePath + "/businesses/{business_id}/partners", getBusinessPartners())
+            .add(Methods.PATCH, basePath + "/businesses/{business_id}/members", updateBusinessMemberships())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics", campaignTargetingAnalyticsGet())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/campaigns/analytics", campaignsAnalytics())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/campaigns", campaignsCreate())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}", campaignsGet())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/campaigns", campaignsList())
             .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/campaigns", campaignsUpdate())
+            .add(Methods.POST, basePath + "/catalogs", catalogsCreate())
             .add(Methods.GET, basePath + "/catalogs", catalogsList())
             .add(Methods.GET, basePath + "/catalogs/product_groups/{product_group_id}/products", catalogsProductGroupPinsList())
             .add(Methods.POST, basePath + "/catalogs/product_groups", catalogsProductGroupsCreate())
+            .add(Methods.POST, basePath + "/catalogs/product_groups/multiple", catalogsProductGroupsCreateMany())
             .add(Methods.DELETE, basePath + "/catalogs/product_groups/{product_group_id}", catalogsProductGroupsDelete())
+            .add(Methods.DELETE, basePath + "/catalogs/product_groups/multiple", catalogsProductGroupsDeleteMany())
             .add(Methods.GET, basePath + "/catalogs/product_groups/{product_group_id}", catalogsProductGroupsGet())
             .add(Methods.GET, basePath + "/catalogs/product_groups", catalogsProductGroupsList())
             .add(Methods.GET, basePath + "/catalogs/product_groups/{product_group_id}/product_counts", catalogsProductGroupsProductCountsGet())
@@ -1153,13 +1477,18 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
             .add(Methods.POST, basePath + "/catalogs/feeds", feedsCreate())
             .add(Methods.DELETE, basePath + "/catalogs/feeds/{feed_id}", feedsDelete())
             .add(Methods.GET, basePath + "/catalogs/feeds/{feed_id}", feedsGet())
+            .add(Methods.POST, basePath + "/catalogs/feeds/{feed_id}/ingest", feedsIngest())
             .add(Methods.GET, basePath + "/catalogs/feeds", feedsList())
             .add(Methods.PATCH, basePath + "/catalogs/feeds/{feed_id}", feedsUpdate())
             .add(Methods.GET, basePath + "/catalogs/items/batch/{batch_id}", itemsBatchGet())
             .add(Methods.POST, basePath + "/catalogs/items/batch", itemsBatchPost())
             .add(Methods.GET, basePath + "/catalogs/items", itemsGet())
             .add(Methods.GET, basePath + "/catalogs/processing_results/{processing_result_id}/item_issues", itemsIssuesList())
+            .add(Methods.POST, basePath + "/catalogs/items", itemsPost())
             .add(Methods.POST, basePath + "/catalogs/products/get_by_product_group_filters", productsByProductGroupFilterList())
+            .add(Methods.POST, basePath + "/catalogs/reports", reportsCreate())
+            .add(Methods.GET, basePath + "/catalogs/reports", reportsGet())
+            .add(Methods.GET, basePath + "/catalogs/reports/stats", reportsStats())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/events", eventsCreate())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/conversion_tags", conversionTagsCreate())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}", conversionTagsGet())
@@ -1188,13 +1517,18 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/leads/subscriptions", adAccountsSubscriptionsPost())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}", leadFormGet())
             .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test", leadFormTestCreate())
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/lead_forms", leadFormsCreate())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/lead_forms", leadFormsList())
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/lead_forms", leadFormsUpdate())
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/leads_export", leadsExportCreate())
+            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}", leadsExportGet())
             .add(Methods.POST, basePath + "/media", mediaCreate())
             .add(Methods.GET, basePath + "/media/{media_id}", mediaGet())
             .add(Methods.GET, basePath + "/media", mediaList())
             .add(Methods.POST, basePath + "/oauth/token", oauthToken())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}", orderLinesGet())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/order_lines", orderLinesList())
+            .add(Methods.GET, basePath + "/pins/analytics", multiPinsAnalytics())
             .add(Methods.GET, basePath + "/pins/{pin_id}/analytics", pinsAnalytics())
             .add(Methods.POST, basePath + "/pins", pinsCreate())
             .add(Methods.DELETE, basePath + "/pins/{pin_id}", pinsDelete())
@@ -1207,7 +1541,6 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/product_group_promotions", productGroupPromotionsList())
             .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/product_group_promotions", productGroupPromotionsUpdate())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/product_groups/analytics", productGroupsAnalytics())
-            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/product_groups/catalogs", adAccountsCatalogsProductGroupsList())
             .add(Methods.GET, basePath + "/resources/ad_account_countries", adAccountCountriesGet())
             .add(Methods.GET, basePath + "/resources/delivery_metrics", deliveryMetricsGet())
             .add(Methods.GET, basePath + "/resources/targeting/interests/{interest_id}", interestTargetingOptionsGet())
@@ -1217,6 +1550,9 @@ abstract public class PathHandlerProvider implements HandlerProvider, PathHandle
             .add(Methods.GET, basePath + "/search/partner/pins", searchPartnerPins())
             .add(Methods.GET, basePath + "/search/boards", searchUserBoardsGet())
             .add(Methods.GET, basePath + "/search/pins", searchUserPinsList())
+            .add(Methods.POST, basePath + "/ad_accounts/{ad_account_id}/targeting_templates", targetingTemplateCreate())
+            .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/targeting_templates", targetingTemplateList())
+            .add(Methods.PATCH, basePath + "/ad_accounts/{ad_account_id}/targeting_templates", targetingTemplateUpdate())
             .add(Methods.GET, basePath + "/terms/related", termsRelatedList())
             .add(Methods.GET, basePath + "/terms/suggested", termsSuggestedList())
             .add(Methods.GET, basePath + "/ad_accounts/{ad_account_id}/terms_of_service", termsOfServiceGet())

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &ProductGroupPromotionResponseItem{}
 
 // ProductGroupPromotionResponseItem struct for ProductGroupPromotionResponseItem
 type ProductGroupPromotionResponseItem struct {
-	Data *ProductGroupPromotion `json:"data,omitempty"`
+	Data *ProductGroupPromotionResponseElement `json:"data,omitempty"`
 	Exceptions []Exception `json:"exceptions,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewProductGroupPromotionResponseItemWithDefaults() *ProductGroupPromotionRe
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *ProductGroupPromotionResponseItem) GetData() ProductGroupPromotion {
+func (o *ProductGroupPromotionResponseItem) GetData() ProductGroupPromotionResponseElement {
 	if o == nil || IsNil(o.Data) {
-		var ret ProductGroupPromotion
+		var ret ProductGroupPromotionResponseElement
 		return ret
 	}
 	return *o.Data
@@ -52,7 +52,7 @@ func (o *ProductGroupPromotionResponseItem) GetData() ProductGroupPromotion {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductGroupPromotionResponseItem) GetDataOk() (*ProductGroupPromotion, bool) {
+func (o *ProductGroupPromotionResponseItem) GetDataOk() (*ProductGroupPromotionResponseElement, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *ProductGroupPromotionResponseItem) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given ProductGroupPromotion and assigns it to the Data field.
-func (o *ProductGroupPromotionResponseItem) SetData(v ProductGroupPromotion) {
+// SetData gets a reference to the given ProductGroupPromotionResponseElement and assigns it to the Data field.
+func (o *ProductGroupPromotionResponseItem) SetData(v ProductGroupPromotionResponseElement) {
 	o.Data = &v
 }
 

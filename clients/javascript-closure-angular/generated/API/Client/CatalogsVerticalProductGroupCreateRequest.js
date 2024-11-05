@@ -1,7 +1,7 @@
 goog.provide('API.Client.CatalogsVerticalProductGroupCreateRequest');
 
 /**
- * Request object for creating a hotel product group.
+ * Request object for creating a catalog based product group.
  * @record
  */
 API.Client.CatalogsVerticalProductGroupCreateRequest = function() {}
@@ -25,19 +25,31 @@ API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.name;
 API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.description;
 
 /**
- * @type {!API.Client.CatalogsHotelProductGroupFilters}
+ * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
  * @export
  */
 API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.filters;
 
 /**
- * Catalog id pertaining to the hotel product group.
+ * Catalog id pertaining to the creative assets product group.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.catalogId;
 
+/**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.country;
+
+/**
+ * @type {!API.Client.CatalogsLocale}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroupCreateRequest.prototype.locale;
+
 /** @enum {string} */
 API.Client.CatalogsVerticalProductGroupCreateRequest.CatalogTypeEnum = { 
-  HOTEL: 'HOTEL',
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
 }

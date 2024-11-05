@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductGroupPromotionUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionUpdateRequest   {
-  private @Valid String adGroupId;
+  private String adGroupId;
   private @Valid List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
 
   /**
@@ -35,8 +35,7 @@ public class ProductGroupPromotionUpdateRequest   {
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group the product group belongs to.")
   @JsonProperty("ad_group_id")
-  @NotNull
- @Pattern(regexp="^(AG)?\\d+$")  public String getAdGroupId() {
+  @NotNull  @Pattern(regexp="^(AG)?\\d+$")public String getAdGroupId() {
     return adGroupId;
   }
 
@@ -55,8 +54,7 @@ public class ProductGroupPromotionUpdateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("product_group_promotion")
-  @NotNull
-  public List<ProductGroupPromotion> getProductGroupPromotion() {
+  @NotNull @Valid public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 

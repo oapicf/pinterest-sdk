@@ -19,8 +19,7 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
     `type` = NULL,
     `start_days_in_past` = NULL,
     `end_days_in_past` = NULL,
-    #' Initialize a new TemplateResponseDateRangeRelativeDateRange class.
-    #'
+
     #' @description
     #' Initialize a new TemplateResponseDateRangeRelativeDateRange class.
     #'
@@ -28,7 +27,6 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
     #' @param start_days_in_past The start date of the date range
     #' @param end_days_in_past The end date of the date range
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`type` = NULL, `start_days_in_past` = NULL, `end_days_in_past` = NULL, ...) {
       if (!is.null(`type`)) {
         if (!(is.character(`type`) && length(`type`) == 1)) {
@@ -43,13 +41,11 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
         self$`end_days_in_past` <- `end_days_in_past`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TemplateResponseDateRangeRelativeDateRange in JSON format
-    #' @export
     toJSON = function() {
       TemplateResponseDateRangeRelativeDateRangeObject <- list()
       if (!is.null(self$`type`)) {
@@ -66,14 +62,12 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
       }
       TemplateResponseDateRangeRelativeDateRangeObject
     },
-    #' Deserialize JSON string into an instance of TemplateResponseDateRangeRelativeDateRange
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TemplateResponseDateRangeRelativeDateRange
     #'
     #' @param input_json the JSON input
     #' @return the instance of TemplateResponseDateRangeRelativeDateRange
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`type`)) {
@@ -87,13 +81,11 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TemplateResponseDateRangeRelativeDateRange in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`type`)) {
@@ -124,14 +116,12 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of TemplateResponseDateRangeRelativeDateRange
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TemplateResponseDateRangeRelativeDateRange
     #'
     #' @param input_json the JSON input
     #' @return the instance of TemplateResponseDateRangeRelativeDateRange
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`type` <- this_object$`type`
@@ -139,53 +129,42 @@ TemplateResponseDateRangeRelativeDateRange <- R6::R6Class(
       self$`end_days_in_past` <- this_object$`end_days_in_past`
       self
     },
-    #' Validate JSON input with respect to TemplateResponseDateRangeRelativeDateRange
-    #'
+
     #' @description
     #' Validate JSON input with respect to TemplateResponseDateRangeRelativeDateRange and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of TemplateResponseDateRangeRelativeDateRange
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

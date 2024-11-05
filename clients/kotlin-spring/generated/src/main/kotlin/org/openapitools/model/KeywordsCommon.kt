@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.MatchTypeResponse
@@ -19,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param matchType 
  * @param &#x60;value&#x60; Keyword value (120 chars max).
- * @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
 data class KeywordsCommon(
 
@@ -30,9 +31,9 @@ data class KeywordsCommon(
     @Schema(example = "null", required = true, description = "Keyword value (120 chars max).")
     @get:JsonProperty("value", required = true) val `value`: kotlin.String,
 
-    @Schema(example = "200000", description = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+    @Schema(example = "null", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
     @get:JsonProperty("bid") val bid: kotlin.Int? = null
-) {
+    ) {
 
 }
 

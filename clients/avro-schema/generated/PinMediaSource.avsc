@@ -21,8 +21,8 @@
         "type": "enum",
         "name": "PinMediaSource_contentUnderscoretype",
         "symbols": [
-          "image/jpeg",
-          "image/png"
+          "image_jpeg",
+          "image_png"
         ]
       },
       "doc": ""
@@ -55,8 +55,8 @@
         "type": "enum",
         "name": "PinMediaSource_coverUnderscoreimageUnderscorecontentUnderscoretype",
         "symbols": [
-          "image/jpeg",
-          "image/png"
+          "image_jpeg",
+          "image_png"
         ]
       }],
       "doc": "Content type for cover image Base64.",

@@ -1,7 +1,7 @@
 #' Create a new AudienceRule
 #'
 #' @description
-#' JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
+#' JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
 #'
 #' @docType class
 #' @title AudienceRule
@@ -53,8 +53,7 @@ AudienceRule <- R6::R6Class(
     `ad_id` = NULL,
     `objective_type` = NULL,
     `ad_account_id` = NULL,
-    #' Initialize a new AudienceRule class.
-    #'
+
     #' @description
     #' Initialize a new AudienceRule class.
     #'
@@ -79,7 +78,6 @@ AudienceRule <- R6::R6Class(
     #' @param objective_type Objective for engagement audience filter.
     #' @param ad_account_id Ad account ID.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`country` = NULL, `customer_list_id` = NULL, `engagement_domain` = NULL, `engagement_type` = NULL, `event` = NULL, `event_data` = NULL, `percentage` = NULL, `pin_id` = NULL, `prefill` = NULL, `retention_days` = NULL, `seed_id` = NULL, `url` = NULL, `visitor_source_id` = NULL, `event_source` = NULL, `ingestion_source` = NULL, `engager_type` = NULL, `campaign_id` = NULL, `ad_id` = NULL, `objective_type` = NULL, `ad_account_id` = NULL, ...) {
       if (!is.null(`country`)) {
         if (!(is.character(`country`) && length(`country`) == 1)) {
@@ -187,13 +185,11 @@ AudienceRule <- R6::R6Class(
         self$`ad_account_id` <- `ad_account_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceRule in JSON format
-    #' @export
     toJSON = function() {
       AudienceRuleObject <- list()
       if (!is.null(self$`country`)) {
@@ -278,14 +274,12 @@ AudienceRule <- R6::R6Class(
       }
       AudienceRuleObject
     },
-    #' Deserialize JSON string into an instance of AudienceRule
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceRule
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceRule
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`country`)) {
@@ -352,13 +346,11 @@ AudienceRule <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceRule in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`country`)) {
@@ -525,14 +517,12 @@ AudienceRule <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AudienceRule
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceRule
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceRule
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`country` <- this_object$`country`
@@ -557,33 +547,27 @@ AudienceRule <- R6::R6Class(
       self$`ad_account_id` <- this_object$`ad_account_id`
       self
     },
-    #' Validate JSON input with respect to AudienceRule
-    #'
+
     #' @description
     #' Validate JSON input with respect to AudienceRule and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AudienceRule
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`customer_list_id`, "^\\d+$")) {
         return(FALSE)
@@ -599,13 +583,11 @@ AudienceRule <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`customer_list_id`, "^\\d+$")) {
@@ -622,12 +604,9 @@ AudienceRule <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

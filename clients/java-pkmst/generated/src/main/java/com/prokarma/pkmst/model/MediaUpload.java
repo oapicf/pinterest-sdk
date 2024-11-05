@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Media upload that has been registered but not uploaded/processed yet.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUpload   {
   @JsonProperty("media_id")
   private String mediaId;
@@ -37,10 +37,10 @@ public class MediaUpload   {
     return this;
   }
 
-   /**
+  /**
    * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
    * @return mediaId
-  **/
+   */
   @ApiModelProperty(value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
   public String getMediaId() {
     return mediaId;
@@ -55,10 +55,10 @@ public class MediaUpload   {
     return this;
   }
 
-   /**
+  /**
    * Get mediaType
    * @return mediaType
-  **/
+   */
   @ApiModelProperty(value = "")
   public MediaUploadType getMediaType() {
     return mediaType;
@@ -73,10 +73,10 @@ public class MediaUpload   {
     return this;
   }
 
-   /**
+  /**
    * The URL where you will POST your media file.
    * @return uploadUrl
-  **/
+   */
   @ApiModelProperty(example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", value = "The URL where you will POST your media file.")
   public String getUploadUrl() {
     return uploadUrl;
@@ -91,10 +91,10 @@ public class MediaUpload   {
     return this;
   }
 
-   /**
+  /**
    * Get uploadParameters
    * @return uploadParameters
-  **/
+   */
   @ApiModelProperty(value = "")
   public MediaUploadAllOfUploadParameters getUploadParameters() {
     return uploadParameters;

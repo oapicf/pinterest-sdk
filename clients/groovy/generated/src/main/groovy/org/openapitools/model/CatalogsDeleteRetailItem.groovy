@@ -11,12 +11,6 @@ class CatalogsDeleteRetailItem {
 
     enum OperationEnum {
     
-        CREATE("CREATE"),
-        
-        UPDATE("UPDATE"),
-        
-        UPSERT("UPSERT"),
-        
         DELETE("DELETE")
     
         private final String value

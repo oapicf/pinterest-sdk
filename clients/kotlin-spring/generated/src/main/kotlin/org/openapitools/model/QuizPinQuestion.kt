@@ -31,7 +31,7 @@ data class QuizPinQuestion(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("options") val options: kotlin.collections.List<QuizPinOption>? = null
-) {
+    ) {
 
 }
 

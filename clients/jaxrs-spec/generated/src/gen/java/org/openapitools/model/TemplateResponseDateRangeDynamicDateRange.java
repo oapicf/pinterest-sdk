@@ -18,9 +18,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "The dynamic date range of the template")
 @JsonTypeName("TemplateResponse_date_range_dynamic_date_range")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeDynamicDateRange   {
-  private @Valid String type;
+  private String type;
   public enum RangeEnum {
 
     YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QUARTER_TO_DATE")), MONTH_TO_DATE(String.valueOf("MONTH_TO_DATE")), LAST_MONTH(String.valueOf("LAST_MONTH"));
@@ -68,7 +68,7 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     }
 }
 
-  private @Valid RangeEnum range;
+  private RangeEnum range;
 
   /**
    * The date range type

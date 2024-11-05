@@ -1,19 +1,11 @@
-{application, openapi, [
-    {description, "Pinterest&#39;s REST API"},
-    {vsn, "1.0.0"},
-    {registered, []},
-    {applications, [
-        kernel,
-        stdlib,
-        ssl,
-        inets,
-        jsx,
-        jesse,
-        cowboy
-    ]},
-    {env, [
-    ]},
-    {modules, []},
-    {licenses, ["MIT"]},
-    {links, ["https://github.com/oapicf/pinterest-sdk"]}
-]}.
+{application,
+ openapi,
+ [{description,
+   "Pinterest&#39;s REST API"},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {applications, [kernel, stdlib, public_key, ssl, inets, ranch, cowboy]},
+  {env, []},
+  {modules, []},
+  {licenses, ["MIT"]},
+  {links, ["https://github.com/oapicf/pinterest-sdk"]}]}.

@@ -1,7 +1,7 @@
 goog.provide('API.Client.CatalogsVerticalProductGroupUpdateRequest');
 
 /**
- * Request object for updating a hotel product group.
+ * Request object for updating a catalog based product group.
  * @record
  */
 API.Client.CatalogsVerticalProductGroupUpdateRequest = function() {}
@@ -25,12 +25,24 @@ API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.name;
 API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.description;
 
 /**
- * @type {!API.Client.CatalogsHotelProductGroupFilters}
+ * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
  * @export
  */
 API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.filters;
 
+/**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.country;
+
+/**
+ * @type {!API.Client.CatalogsLocale}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroupUpdateRequest.prototype.locale;
+
 /** @enum {string} */
 API.Client.CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnum = { 
-  HOTEL: 'HOTEL',
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
 }

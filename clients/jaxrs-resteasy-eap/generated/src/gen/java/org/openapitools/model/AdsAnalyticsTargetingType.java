@@ -18,5 +18,6 @@ public enum AdsAnalyticsTargetingType {
   AUDIENCE_INCLUDE,
   GEO,
   AGE_BUCKET,
-  REGION;
+  REGION,
+  AGE_BUCKET_AND_GENDER;
 }

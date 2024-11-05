@@ -37,5 +37,8 @@ data class BulkUpsertRequest (
     @Json(name = "update")
     val update: BulkUpsertRequestUpdate? = null
 
-)
+) {
+
+
+}
 

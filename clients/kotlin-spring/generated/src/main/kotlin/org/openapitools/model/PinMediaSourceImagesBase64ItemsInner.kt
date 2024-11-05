@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -39,16 +40,24 @@ data class PinMediaSourceImagesBase64ItemsInner(
 
     @Schema(example = "null", description = "Destination link for the image.")
     @get:JsonProperty("link") val link: kotlin.String? = null
-) {
+    ) {
 
     /**
     * 
     * Values: jpeg,png
     */
-    enum class ContentType(val value: kotlin.String) {
+    enum class ContentType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("image/jpeg") jpeg("image/jpeg"),
-        @JsonProperty("image/png") png("image/png")
+        jpeg("image/jpeg"),
+        png("image/png");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): ContentType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

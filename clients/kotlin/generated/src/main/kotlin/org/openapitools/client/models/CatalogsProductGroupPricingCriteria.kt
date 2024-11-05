@@ -39,5 +39,8 @@ data class CatalogsProductGroupPricingCriteria (
     @Json(name = "negated")
     val negated: kotlin.Boolean? = false
 
-)
+) {
+
+
+}
 

@@ -29,7 +29,7 @@ data class UserWebsiteSummary(
 
     @Schema(example = "2022-12-14T21:03:01.602000", description = "UTC timestamp when the verification happened - sometimes missing")
     @get:JsonProperty("verified_at") val verifiedAt: kotlin.String? = null
-) {
+    ) {
 
 }
 

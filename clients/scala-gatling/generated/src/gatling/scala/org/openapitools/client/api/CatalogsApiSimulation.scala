@@ -56,10 +56,13 @@ class CatalogsApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
+    val catalogsCreatePerSecond = config.getDouble("performance.operationsPerSecond.catalogsCreate") * rateMultiplier * instanceMultiplier
     val catalogsListPerSecond = config.getDouble("performance.operationsPerSecond.catalogsList") * rateMultiplier * instanceMultiplier
     val catalogsProductGroupPinsListPerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupPinsList") * rateMultiplier * instanceMultiplier
     val catalogsProductGroupsCreatePerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupsCreate") * rateMultiplier * instanceMultiplier
+    val catalogsProductGroupsCreateManyPerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupsCreateMany") * rateMultiplier * instanceMultiplier
     val catalogsProductGroupsDeletePerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupsDelete") * rateMultiplier * instanceMultiplier
+    val catalogsProductGroupsDeleteManyPerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupsDeleteMany") * rateMultiplier * instanceMultiplier
     val catalogsProductGroupsGetPerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupsGet") * rateMultiplier * instanceMultiplier
     val catalogsProductGroupsListPerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupsList") * rateMultiplier * instanceMultiplier
     val catalogsProductGroupsProductCountsGetPerSecond = config.getDouble("performance.operationsPerSecond.catalogsProductGroupsProductCountsGet") * rateMultiplier * instanceMultiplier
@@ -68,23 +71,31 @@ class CatalogsApiSimulation extends Simulation {
     val feedsCreatePerSecond = config.getDouble("performance.operationsPerSecond.feedsCreate") * rateMultiplier * instanceMultiplier
     val feedsDeletePerSecond = config.getDouble("performance.operationsPerSecond.feedsDelete") * rateMultiplier * instanceMultiplier
     val feedsGetPerSecond = config.getDouble("performance.operationsPerSecond.feedsGet") * rateMultiplier * instanceMultiplier
+    val feedsIngestPerSecond = config.getDouble("performance.operationsPerSecond.feedsIngest") * rateMultiplier * instanceMultiplier
     val feedsListPerSecond = config.getDouble("performance.operationsPerSecond.feedsList") * rateMultiplier * instanceMultiplier
     val feedsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.feedsUpdate") * rateMultiplier * instanceMultiplier
     val itemsBatchGetPerSecond = config.getDouble("performance.operationsPerSecond.itemsBatchGet") * rateMultiplier * instanceMultiplier
     val itemsBatchPostPerSecond = config.getDouble("performance.operationsPerSecond.itemsBatchPost") * rateMultiplier * instanceMultiplier
     val itemsGetPerSecond = config.getDouble("performance.operationsPerSecond.itemsGet") * rateMultiplier * instanceMultiplier
     val itemsIssuesListPerSecond = config.getDouble("performance.operationsPerSecond.itemsIssuesList") * rateMultiplier * instanceMultiplier
+    val itemsPostPerSecond = config.getDouble("performance.operationsPerSecond.itemsPost") * rateMultiplier * instanceMultiplier
     val productsByProductGroupFilterListPerSecond = config.getDouble("performance.operationsPerSecond.productsByProductGroupFilterList") * rateMultiplier * instanceMultiplier
+    val reportsCreatePerSecond = config.getDouble("performance.operationsPerSecond.reportsCreate") * rateMultiplier * instanceMultiplier
+    val reportsGetPerSecond = config.getDouble("performance.operationsPerSecond.reportsGet") * rateMultiplier * instanceMultiplier
+    val reportsStatsPerSecond = config.getDouble("performance.operationsPerSecond.reportsStats") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
+    val catalogs/createQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsCreate-queryParams.csv").random
     val catalogs/listQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsList-queryParams.csv").random
     val catalogs_product_group_pins/listQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupPinsList-queryParams.csv").random
     val catalogs_product_group_pins/listPATHFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupPinsList-pathParams.csv").random
     val catalogs_product_groups/createQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsCreate-queryParams.csv").random
+    val catalogs_product_groups/create_manyQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsCreateMany-queryParams.csv").random
     val catalogs_product_groups/deleteQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsDelete-queryParams.csv").random
     val catalogs_product_groups/deletePATHFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsDelete-pathParams.csv").random
+    val catalogs_product_groups/delete_manyQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsDeleteMany-queryParams.csv").random
     val catalogs_product_groups/getQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsGet-queryParams.csv").random
     val catalogs_product_groups/getPATHFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsGet-pathParams.csv").random
     val catalogs_product_groups/listQUERYFeeder = csv(userDataDirectory + File.separator + "catalogsProductGroupsList-queryParams.csv").random
@@ -99,6 +110,8 @@ class CatalogsApiSimulation extends Simulation {
     val feeds/deletePATHFeeder = csv(userDataDirectory + File.separator + "feedsDelete-pathParams.csv").random
     val feeds/getQUERYFeeder = csv(userDataDirectory + File.separator + "feedsGet-queryParams.csv").random
     val feeds/getPATHFeeder = csv(userDataDirectory + File.separator + "feedsGet-pathParams.csv").random
+    val feeds/ingestQUERYFeeder = csv(userDataDirectory + File.separator + "feedsIngest-queryParams.csv").random
+    val feeds/ingestPATHFeeder = csv(userDataDirectory + File.separator + "feedsIngest-pathParams.csv").random
     val feeds/listQUERYFeeder = csv(userDataDirectory + File.separator + "feedsList-queryParams.csv").random
     val feeds/updateQUERYFeeder = csv(userDataDirectory + File.separator + "feedsUpdate-queryParams.csv").random
     val feeds/updatePATHFeeder = csv(userDataDirectory + File.separator + "feedsUpdate-pathParams.csv").random
@@ -108,9 +121,28 @@ class CatalogsApiSimulation extends Simulation {
     val items/getQUERYFeeder = csv(userDataDirectory + File.separator + "itemsGet-queryParams.csv").random
     val items_issues/listQUERYFeeder = csv(userDataDirectory + File.separator + "itemsIssuesList-queryParams.csv").random
     val items_issues/listPATHFeeder = csv(userDataDirectory + File.separator + "itemsIssuesList-pathParams.csv").random
+    val items/postQUERYFeeder = csv(userDataDirectory + File.separator + "itemsPost-queryParams.csv").random
     val products_by_product_group_filter/listQUERYFeeder = csv(userDataDirectory + File.separator + "productsByProductGroupFilterList-queryParams.csv").random
+    val reports/createQUERYFeeder = csv(userDataDirectory + File.separator + "reportsCreate-queryParams.csv").random
+    val reports/getQUERYFeeder = csv(userDataDirectory + File.separator + "reportsGet-queryParams.csv").random
+    val reports/statsQUERYFeeder = csv(userDataDirectory + File.separator + "reportsStats-queryParams.csv").random
 
     // Setup all scenarios
+
+    
+    val scncatalogsCreate = scenario("catalogsCreateSimulation")
+        .feed(catalogs/createQUERYFeeder)
+        .exec(http("catalogsCreate")
+        .httpRequest("POST","/catalogs")
+        .queryParam("ad_account_id","${ad_account_id}")
+)
+
+    // Run scncatalogsCreate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scncatalogsCreate.inject(
+        rampUsersPerSec(1) to(catalogsCreatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(catalogsCreatePerSecond) during(durationSeconds),
+        rampUsersPerSec(catalogsCreatePerSecond) to(1) during(rampDownSeconds)
+    )
 
     
     val scncatalogsList = scenario("catalogsListSimulation")
@@ -118,8 +150,8 @@ class CatalogsApiSimulation extends Simulation {
         .exec(http("catalogsList")
         .httpRequest("GET","/catalogs")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scncatalogsList with warm up and reach a constant rate for entire duration
@@ -136,8 +168,9 @@ class CatalogsApiSimulation extends Simulation {
         .exec(http("catalogsProductGroupPinsList")
         .httpRequest("GET","/catalogs/product_groups/${product_group_id}/products")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
+        .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scncatalogsProductGroupPinsList with warm up and reach a constant rate for entire duration
@@ -163,6 +196,21 @@ class CatalogsApiSimulation extends Simulation {
     )
 
     
+    val scncatalogsProductGroupsCreateMany = scenario("catalogsProductGroupsCreateManySimulation")
+        .feed(catalogs_product_groups/create_manyQUERYFeeder)
+        .exec(http("catalogsProductGroupsCreateMany")
+        .httpRequest("POST","/catalogs/product_groups/multiple")
+        .queryParam("ad_account_id","${ad_account_id}")
+)
+
+    // Run scncatalogsProductGroupsCreateMany with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scncatalogsProductGroupsCreateMany.inject(
+        rampUsersPerSec(1) to(catalogsProductGroupsCreateManyPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(catalogsProductGroupsCreateManyPerSecond) during(durationSeconds),
+        rampUsersPerSec(catalogsProductGroupsCreateManyPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scncatalogsProductGroupsDelete = scenario("catalogsProductGroupsDeleteSimulation")
         .feed(catalogs_product_groups/deleteQUERYFeeder)
         .feed(catalogs_product_groups/deletePATHFeeder)
@@ -176,6 +224,22 @@ class CatalogsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(catalogsProductGroupsDeletePerSecond) during(rampUpSeconds),
         constantUsersPerSec(catalogsProductGroupsDeletePerSecond) during(durationSeconds),
         rampUsersPerSec(catalogsProductGroupsDeletePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scncatalogsProductGroupsDeleteMany = scenario("catalogsProductGroupsDeleteManySimulation")
+        .feed(catalogs_product_groups/delete_manyQUERYFeeder)
+        .exec(http("catalogsProductGroupsDeleteMany")
+        .httpRequest("DELETE","/catalogs/product_groups/multiple")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("id","${id}")
+)
+
+    // Run scncatalogsProductGroupsDeleteMany with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scncatalogsProductGroupsDeleteMany.inject(
+        rampUsersPerSec(1) to(catalogsProductGroupsDeleteManyPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(catalogsProductGroupsDeleteManyPerSecond) during(durationSeconds),
+        rampUsersPerSec(catalogsProductGroupsDeleteManyPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -199,11 +263,12 @@ class CatalogsApiSimulation extends Simulation {
         .feed(catalogs_product_groups/listQUERYFeeder)
         .exec(http("catalogsProductGroupsList")
         .httpRequest("GET","/catalogs/product_groups")
-        .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("catalog_id","${catalog_id}")
         .queryParam("feed_id","${feed_id}")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("catalog_id","${catalog_id}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("id","${id}")
 )
 
     // Run scncatalogsProductGroupsList with warm up and reach a constant rate for entire duration
@@ -252,8 +317,8 @@ class CatalogsApiSimulation extends Simulation {
         .exec(http("feedProcessingResultsList")
         .httpRequest("GET","/catalogs/feeds/${feed_id}/processing_results")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnfeedProcessingResultsList with warm up and reach a constant rate for entire duration
@@ -311,14 +376,30 @@ class CatalogsApiSimulation extends Simulation {
     )
 
     
+    val scnfeedsIngest = scenario("feedsIngestSimulation")
+        .feed(feeds/ingestQUERYFeeder)
+        .feed(feeds/ingestPATHFeeder)
+        .exec(http("feedsIngest")
+        .httpRequest("POST","/catalogs/feeds/${feed_id}/ingest")
+        .queryParam("ad_account_id","${ad_account_id}")
+)
+
+    // Run scnfeedsIngest with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnfeedsIngest.inject(
+        rampUsersPerSec(1) to(feedsIngestPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(feedsIngestPerSecond) during(durationSeconds),
+        rampUsersPerSec(feedsIngestPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnfeedsList = scenario("feedsListSimulation")
         .feed(feeds/listQUERYFeeder)
         .exec(http("feedsList")
         .httpRequest("GET","/catalogs/feeds")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("catalog_id","${catalog_id}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnfeedsList with warm up and reach a constant rate for entire duration
@@ -380,10 +461,10 @@ class CatalogsApiSimulation extends Simulation {
         .feed(items/getQUERYFeeder)
         .exec(http("itemsGet")
         .httpRequest("GET","/catalogs/items")
-        .queryParam("country","${country}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("item_ids","${item_ids}")
         .queryParam("filters","${filters}")
+        .queryParam("country","${country}")
+        .queryParam("item_ids","${item_ids}")
         .queryParam("language","${language}")
 )
 
@@ -401,10 +482,10 @@ class CatalogsApiSimulation extends Simulation {
         .exec(http("itemsIssuesList")
         .httpRequest("GET","/catalogs/processing_results/${processing_result_id}/item_issues")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("item_validation_issue","${item_validation_issue}")
-        .queryParam("item_numbers","${item_numbers}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("item_numbers","${item_numbers}")
 )
 
     // Run scnitemsIssuesList with warm up and reach a constant rate for entire duration
@@ -415,13 +496,29 @@ class CatalogsApiSimulation extends Simulation {
     )
 
     
+    val scnitemsPost = scenario("itemsPostSimulation")
+        .feed(items/postQUERYFeeder)
+        .exec(http("itemsPost")
+        .httpRequest("POST","/catalogs/items")
+        .queryParam("ad_account_id","${ad_account_id}")
+)
+
+    // Run scnitemsPost with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnitemsPost.inject(
+        rampUsersPerSec(1) to(itemsPostPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(itemsPostPerSecond) during(durationSeconds),
+        rampUsersPerSec(itemsPostPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnproductsByProductGroupFilterList = scenario("productsByProductGroupFilterListSimulation")
         .feed(products_by_product_group_filter/listQUERYFeeder)
         .exec(http("productsByProductGroupFilterList")
         .httpRequest("POST","/catalogs/products/get_by_product_group_filters")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
+        .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnproductsByProductGroupFilterList with warm up and reach a constant rate for entire duration
@@ -429,6 +526,55 @@ class CatalogsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(productsByProductGroupFilterListPerSecond) during(rampUpSeconds),
         constantUsersPerSec(productsByProductGroupFilterListPerSecond) during(durationSeconds),
         rampUsersPerSec(productsByProductGroupFilterListPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnreportsCreate = scenario("reportsCreateSimulation")
+        .feed(reports/createQUERYFeeder)
+        .exec(http("reportsCreate")
+        .httpRequest("POST","/catalogs/reports")
+        .queryParam("ad_account_id","${ad_account_id}")
+)
+
+    // Run scnreportsCreate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnreportsCreate.inject(
+        rampUsersPerSec(1) to(reportsCreatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(reportsCreatePerSecond) during(durationSeconds),
+        rampUsersPerSec(reportsCreatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnreportsGet = scenario("reportsGetSimulation")
+        .feed(reports/getQUERYFeeder)
+        .exec(http("reportsGet")
+        .httpRequest("GET","/catalogs/reports")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("token","${token}")
+)
+
+    // Run scnreportsGet with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnreportsGet.inject(
+        rampUsersPerSec(1) to(reportsGetPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(reportsGetPerSecond) during(durationSeconds),
+        rampUsersPerSec(reportsGetPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnreportsStats = scenario("reportsStatsSimulation")
+        .feed(reports/statsQUERYFeeder)
+        .exec(http("reportsStats")
+        .httpRequest("GET","/catalogs/reports/stats")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("parameters","${parameters}")
+)
+
+    // Run scnreportsStats with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnreportsStats.inject(
+        rampUsersPerSec(1) to(reportsStatsPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(reportsStatsPerSecond) during(durationSeconds),
+        rampUsersPerSec(reportsStatsPerSecond) to(1) during(rampDownSeconds)
     )
 
     setUp(

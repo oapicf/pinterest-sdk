@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordsMetricsArrayResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsMetricsArrayResponse   {
-  private @Valid List<@Valid KeywordMetricsResponse> data;
+  private @Valid List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
 
   /**
    **/
@@ -33,7 +33,7 @@ public class KeywordsMetricsArrayResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public List<KeywordMetricsResponse> getData() {
+  @Valid public List<@Valid KeywordMetricsResponse> getData() {
     return data;
   }
 

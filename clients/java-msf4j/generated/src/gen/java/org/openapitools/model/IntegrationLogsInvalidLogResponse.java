@@ -14,7 +14,7 @@ import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner
  * Schema describing the response when a log has invalid fields.
  */
 @ApiModel(description = "Schema describing the response when a log has invalid fields.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsInvalidLogResponse   {
   @JsonProperty("rejected_logs")
   private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = null;
@@ -26,7 +26,7 @@ public class IntegrationLogsInvalidLogResponse   {
 
   public IntegrationLogsInvalidLogResponse addRejectedLogsItem(IntegrationLogsInvalidLogResponseRejectedLogsInner rejectedLogsItem) {
     if (this.rejectedLogs == null) {
-      this.rejectedLogs = ;
+      this.rejectedLogs = new ArrayList<>();
     }
     this.rejectedLogs.add(rejectedLogsItem);
     return this;

@@ -9,11 +9,11 @@ import org.openapitools.models.BatchOperation
 import org.openapitools.models.CatalogsItemsCreateBatchRequest
 import org.openapitools.models.CatalogsItemsDeleteBatchRequest
 import org.openapitools.models.CatalogsItemsDeleteDiscontinuedBatchRequest
+import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.CatalogsItemsUpdateBatchRequest
 import org.openapitools.models.CatalogsItemsUpsertBatchRequest
 import org.openapitools.models.Country
 import org.openapitools.models.ItemDeleteBatchRecord
-import org.openapitools.models.Language
 import scala.collection.immutable.Seq
 
 /**
@@ -24,7 +24,7 @@ import scala.collection.immutable.Seq
  * @param items Array with catalogs items
  */
 case class CatalogsItemsBatchRequest(country: Country,
-                language: Language,
+                language: CatalogsItemsRequestLanguage,
                 operation: BatchOperation,
                 items: Seq[ItemDeleteBatchRecord]
                 )

@@ -46,7 +46,7 @@
     },
     {
       "name": "tracking_urls",
-      "type": ["null", "model.AdCommonTrackingUrls"],
+      "type": ["null", "model.TrackingUrls"],
       "doc": "",
       "default": null
     },
@@ -60,12 +60,6 @@
       "name": "end_time",
       "type": ["null", "int"],
       "doc": "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.",
-      "default": null
-    },
-    {
-      "name": "summary_status",
-      "type": ["null", "model.CampaignSummaryStatus"],
-      "doc": "",
       "default": null
     },
     {

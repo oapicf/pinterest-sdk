@@ -37,5 +37,8 @@ data class BidFloorRequest (
     @Json(name = "targeting_spec")
     val targetingSpec: TargetingSpec? = null
 
-)
+) {
+
+
+}
 

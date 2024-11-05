@@ -72,5 +72,8 @@ data class CatalogsRetailFeedsUpdateRequest (
     @Json(name = "default_availability")
     val defaultAvailability: ProductAvailabilityType? = null
 
-)
+) {
+
+
+}
 

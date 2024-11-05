@@ -15,7 +15,5 @@ The class is defined in **[OrderLinePaidType.java](../../src/main/java/org/opena
 
 * `TEST` (value: `"TEST"`)
 
-* `NULL` (value: `"null"`)
-
 
 

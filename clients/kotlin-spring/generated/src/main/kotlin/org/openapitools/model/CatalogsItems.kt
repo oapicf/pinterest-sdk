@@ -23,7 +23,7 @@ data class CatalogsItems(
     @field:Valid
     @Schema(example = "null", description = "Array with catalogs items")
     @get:JsonProperty("items") val items: kotlin.collections.List<ItemResponse>? = null
-) {
+    ) {
 
 }
 

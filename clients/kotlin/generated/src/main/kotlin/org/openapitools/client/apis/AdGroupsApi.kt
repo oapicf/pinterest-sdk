@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.AdGroupArrayResponse
@@ -51,7 +51,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -154,6 +154,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -186,6 +187,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -211,7 +213,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -223,7 +234,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -235,7 +255,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -247,7 +276,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -255,7 +293,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      */
      enum class ConversionReportTimeAdGroupsAnalytics(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -441,7 +488,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
-            method = RequestMethod.GET,
+            method = RequestMethod.POST,
             path = "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing".replace("{"+"ad_account_id"+"}", encodeURIComponent(adAccountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
@@ -452,7 +499,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
 
     /**
      * Get bid floors
-     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
+     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt;  &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
      * @param bidFloorRequest Parameters to get bid_floor info
      * @return BidFloor
@@ -484,7 +531,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
 
     /**
      * Get bid floors
-     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
+     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt;  &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
      * @param bidFloorRequest Parameters to get bid_floor info
      * @return ApiResponse<BidFloor?>
@@ -527,7 +574,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
 
     /**
      * Create ad groups
-     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
      * @param adAccountId Unique identifier of an ad account.
      * @param adGroupCreateRequest List of ad groups to create, size limit [1, 30].
      * @return AdGroupArrayResponse
@@ -559,7 +606,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
 
     /**
      * Create ad groups
-     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
      * @param adAccountId Unique identifier of an ad account.
      * @param adGroupCreateRequest List of ad groups to create, size limit [1, 30].
      * @return ApiResponse<AdGroupArrayResponse?>
@@ -682,7 +729,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "PAUSED") PAUSED("PAUSED"),
          @Json(name = "ARCHIVED") ARCHIVED("ARCHIVED"),
          @Json(name = "DRAFT") DRAFT("DRAFT"),
-         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT")
+         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -690,7 +746,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      */
      enum class OrderAdGroupsList(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -700,7 +765,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param adGroupIds List of Ad group Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param translateInterestsToNames Return interests as text names (if value is true) rather than topic IDs. (optional, default to false)
@@ -738,7 +803,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param adGroupIds List of Ad group Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param translateInterestsToNames Return interests as text names (if value is true) rather than topic IDs. (optional, default to false)
@@ -763,7 +828,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param adGroupIds List of Ad group Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param translateInterestsToNames Return interests as text names (if value is true) rather than topic IDs. (optional, default to false)
@@ -903,6 +968,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -935,6 +1001,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -960,7 +1027,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -972,7 +1048,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -984,7 +1069,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -996,7 +1090,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -1004,7 +1107,16 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      */
      enum class ConversionReportTimeAdGroupsTargetingAnalyticsGet(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -1014,7 +1126,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      * @param adGroupIds List of Ad group Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -1056,7 +1168,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      * @param adGroupIds List of Ad group Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -1085,7 +1197,7 @@ class AdGroupsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClien
      * @param adGroupIds List of Ad group Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)

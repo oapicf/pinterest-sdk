@@ -15,21 +15,23 @@ case class CatalogsVerticalProductGroupUpdateRequest (
   catalogType: Option[CatalogType],
 name: Option[String],
 description: Option[String],
-filters: Option[CatalogsHotelProductGroupFilters])
+filters: Option[CatalogsCreativeAssetsProductGroupFilters],
+country: Option[Country],
+locale: Option[CatalogsLocale])
 
 object CatalogsVerticalProductGroupUpdateRequest {
   import DateTimeCodecs._
   sealed trait CatalogType
-  case object HOTEL extends CatalogType
+  case object CREATIVEASSETS extends CatalogType
 
   object CatalogType {
     def toCatalogType(s: String): Option[CatalogType] = s match {
-      case "HOTEL" => Some(HOTEL)
+      case "CREATIVEASSETS" => Some(CREATIVEASSETS)
       case _ => None
     }
 
     def fromCatalogType(x: CatalogType): String = x match {
-      case HOTEL => "HOTEL"
+      case CREATIVEASSETS => "CREATIVEASSETS"
     }
   }
 

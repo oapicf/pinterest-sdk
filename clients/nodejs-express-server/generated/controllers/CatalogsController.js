@@ -8,6 +8,10 @@
 
 const Controller = require('./Controller');
 const service = require('../services/CatalogsService');
+const catalogs/create = async (request, response) => {
+  await Controller.handleRequest(request, response, service.catalogs/create);
+};
+
 const catalogs/list = async (request, response) => {
   await Controller.handleRequest(request, response, service.catalogs/list);
 };
@@ -20,8 +24,16 @@ const catalogs_product_groups/create = async (request, response) => {
   await Controller.handleRequest(request, response, service.catalogs_product_groups/create);
 };
 
+const catalogs_product_groups/create_many = async (request, response) => {
+  await Controller.handleRequest(request, response, service.catalogs_product_groups/create_many);
+};
+
 const catalogs_product_groups/delete = async (request, response) => {
   await Controller.handleRequest(request, response, service.catalogs_product_groups/delete);
+};
+
+const catalogs_product_groups/delete_many = async (request, response) => {
+  await Controller.handleRequest(request, response, service.catalogs_product_groups/delete_many);
 };
 
 const catalogs_product_groups/get = async (request, response) => {
@@ -56,6 +68,10 @@ const feeds/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.feeds/get);
 };
 
+const feeds/ingest = async (request, response) => {
+  await Controller.handleRequest(request, response, service.feeds/ingest);
+};
+
 const feeds/list = async (request, response) => {
   await Controller.handleRequest(request, response, service.feeds/list);
 };
@@ -66,6 +82,10 @@ const feeds/update = async (request, response) => {
 
 const items/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.items/get);
+};
+
+const items/post = async (request, response) => {
+  await Controller.handleRequest(request, response, service.items/post);
 };
 
 const items_batch/get = async (request, response) => {
@@ -84,12 +104,27 @@ const products_by_product_group_filter/list = async (request, response) => {
   await Controller.handleRequest(request, response, service.products_by_product_group_filter/list);
 };
 
+const reports/create = async (request, response) => {
+  await Controller.handleRequest(request, response, service.reports/create);
+};
+
+const reports/get = async (request, response) => {
+  await Controller.handleRequest(request, response, service.reports/get);
+};
+
+const reports/stats = async (request, response) => {
+  await Controller.handleRequest(request, response, service.reports/stats);
+};
+
 
 module.exports = {
+  catalogs/create,
   catalogs/list,
   catalogs_product_group_pins/list,
   catalogs_product_groups/create,
+  catalogs_product_groups/create_many,
   catalogs_product_groups/delete,
+  catalogs_product_groups/delete_many,
   catalogs_product_groups/get,
   catalogs_product_groups/list,
   catalogs_product_groups/product_counts_get,
@@ -98,11 +133,16 @@ module.exports = {
   feeds/create,
   feeds/delete,
   feeds/get,
+  feeds/ingest,
   feeds/list,
   feeds/update,
   items/get,
+  items/post,
   items_batch/get,
   items_batch/post,
   items_issues/list,
   products_by_product_group_filter/list,
+  reports/create,
+  reports/get,
+  reports/stats,
 };

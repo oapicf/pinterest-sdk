@@ -36,7 +36,7 @@ Protected Class CatalogsRetailProductGroup
 		#tag Note
 			boolean indicator of whether the product group is being featured or not
 		#tag EndNote
-		is_featured As Xoson.O.OptionalBoolean
+		Attributes( Deprecated ) is_featured As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -67,19 +67,34 @@ Protected Class CatalogsRetailProductGroup
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the retail product group.
+		#tag EndNote
+		catalog_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			id of the catalogs feed belonging to this catalog product group
+		#tag EndNote
 		feed_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		country As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		locale As Xoson.O.OptionalString
 	#tag EndProperty
 
 
     #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
         
         Retail
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Feed_idEnum, Type = Integer, Flags = &h0
-        
-        Null
         
     #tag EndEnum
 
@@ -90,17 +105,6 @@ Protected Class CatalogsRetailProductGroup
 		    
 		    Case Catalog_typeEnum.Retail
 		      Return "RETAIL"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Feed_idEnumToString(value As Feed_idEnum) As String
-		  Select Case value
-		    
-		    Case Feed_idEnum.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -211,6 +215,38 @@ Protected Class CatalogsRetailProductGroup
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="catalog_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="feed_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="locale"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

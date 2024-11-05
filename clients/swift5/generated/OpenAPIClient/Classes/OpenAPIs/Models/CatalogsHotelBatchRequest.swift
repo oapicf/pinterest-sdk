@@ -13,16 +13,20 @@ import AnyCodable
 /** Request object to update catalogs hotel items */
 public struct CatalogsHotelBatchRequest: Codable, JSONEncodable, Hashable {
 
+    public enum CatalogType: String, Codable, CaseIterable {
+        case hotel = "HOTEL"
+    }
+    static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var catalogType: CatalogsType
+    public var catalogType: CatalogType
     public var country: Country
-    public var language: Language
+    public var language: CatalogsItemsRequestLanguage
     /** Array with catalogs item operations */
     public var items: [CatalogsHotelBatchItem]
     /** Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     public var catalogId: String?
 
-    public init(catalogType: CatalogsType, country: Country, language: Language, items: [CatalogsHotelBatchItem], catalogId: String? = nil) {
+    public init(catalogType: CatalogType, country: Country, language: CatalogsItemsRequestLanguage, items: [CatalogsHotelBatchItem], catalogId: String? = nil) {
         self.catalogType = catalogType
         self.country = country
         self.language = language

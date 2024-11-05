@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &OrderLines{}
 // OrderLines Order Line
 type OrderLines struct {
 	// Order line ID.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Always \"orderline\".
 	Type *string `json:"type,omitempty"`
 	// Ad account ID.

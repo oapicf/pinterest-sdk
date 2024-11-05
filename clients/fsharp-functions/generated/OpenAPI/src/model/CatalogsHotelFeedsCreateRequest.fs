@@ -7,6 +7,7 @@ open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFeedsCreateRequestDefaultLocale
 open OpenAPI.Model.CatalogsFormat
+open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.NullableCurrency
 open OpenAPI.Model.string option
@@ -35,6 +36,8 @@ module CatalogsHotelFeedsCreateRequest =
     CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string option;
+    [<JsonProperty(PropertyName = "status")>]
+    Status : CatalogsStatus;
   }
 
   //#endregion

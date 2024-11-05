@@ -19,9 +19,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CampaignCommon
-import org.openapitools.client.models.AdCommonTrackingUrls
-import org.openapitools.client.models.CampaignSummaryStatus
 import org.openapitools.client.models.EntityStatus
+import org.openapitools.client.models.TrackingUrls
 
 class CampaignCommonTest : ShouldSpec() {
     init {
@@ -82,10 +81,10 @@ class CampaignCommonTest : ShouldSpec() {
             //modelInstance.endTime shouldBe ("TODO")
         }
 
-        // to test the property `summaryStatus`
-        should("test summaryStatus") {
+        // to test the property `isFlexibleDailyBudgets` - Determine if a campaign has flexible daily budgets setup.
+        should("test isFlexibleDailyBudgets") {
             // uncomment below to test the property
-            //modelInstance.summaryStatus shouldBe ("TODO")
+            //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
         }
 
     }

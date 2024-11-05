@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **char \*** |  | [optional] 
-**id** | **char \*** |  | [optional] 
-**updated_at** | **char \*** |  | [optional] 
+**created_at** | **char \*** |  | 
+**id** | **char \*** |  | 
+**updated_at** | **char \*** |  | 
 **ingestion_details** | [**catalogs_feed_ingestion_details_t**](catalogs_feed_ingestion_details.md) \* |  | 
 **status** | **catalogs_feed_processing_status_t \*** |  | 
 **product_counts** | [**catalogs_feed_product_counts_t**](catalogs_feed_product_counts.md) \* |  | 

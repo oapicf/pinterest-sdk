@@ -17,12 +17,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ImageMetadata_images")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageMetadataImages   {
-  private @Valid ImageDetails _150x150;
-  private @Valid ImageDetails _400x300;
-  private @Valid ImageDetails _600x;
-  private @Valid ImageDetails _1200x;
+  private ImageDetails _150x150;
+  private ImageDetails _400x300;
+  private ImageDetails _600x;
+  private ImageDetails _1200x;
 
   /**
    **/
@@ -34,7 +34,7 @@ public class ImageMetadataImages   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("150x150")
-  public ImageDetails get150x150() {
+  @Valid public ImageDetails get150x150() {
     return _150x150;
   }
 
@@ -53,7 +53,7 @@ public class ImageMetadataImages   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("400x300")
-  public ImageDetails get400x300() {
+  @Valid public ImageDetails get400x300() {
     return _400x300;
   }
 
@@ -72,7 +72,7 @@ public class ImageMetadataImages   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("600x")
-  public ImageDetails get600x() {
+  @Valid public ImageDetails get600x() {
     return _600x;
   }
 
@@ -91,7 +91,7 @@ public class ImageMetadataImages   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("1200x")
-  public ImageDetails get1200x() {
+  @Valid public ImageDetails get1200x() {
     return _1200x;
   }
 

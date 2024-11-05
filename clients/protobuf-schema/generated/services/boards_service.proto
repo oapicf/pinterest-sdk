@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -75,7 +75,7 @@ message BoardSectionsListRequest {
   string adAccountId = 2;
   // Cursor used to fetch the next page of items
   string bookmark = 3;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 4;
 
 }
@@ -89,7 +89,7 @@ message BoardSectionsListPinsRequest {
   string adAccountId = 3;
   // Cursor used to fetch the next page of items
   string bookmark = 4;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 5;
 
 }
@@ -135,7 +135,7 @@ message BoardsListRequest {
   string adAccountId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
   // Privacy setting for a board.
   string privacy = 4;
@@ -147,7 +147,7 @@ message BoardsListPinsRequest {
   string boardId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
   // Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
   repeated string creativeTypes = 4;

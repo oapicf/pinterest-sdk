@@ -6,7 +6,13 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": "model.CatalogsType",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsRetailBatchRequest_catalogUnderscoretype",
+        "symbols": [
+          "RETAIL"
+        ]
+      },
       "doc": ""
     },
     {
@@ -16,7 +22,7 @@
     },
     {
       "name": "language",
-      "type": "model.Language",
+      "type": "model.CatalogsItemsRequestLanguage",
       "doc": ""
     },
     {

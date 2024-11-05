@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.AdArrayResponseElement;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdArrayResponse   {
   
-  private List<AdArrayResponseElement> items;
+  private List<AdArrayResponseElement> items = new ArrayList<>();
 
   public AdArrayResponse () {
 

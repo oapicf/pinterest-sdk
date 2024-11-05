@@ -25,9 +25,12 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **productGroupIds** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | List of product group ids |  [optional]
 **productGroupStatuses** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupSummaryStatus&gt;**](ProductGroupSummaryStatus.md) | List of values for filtering |  [optional]
 **productItemIds** | `One-To-Many` | `----` | `----`  | **kotlin.Array&lt;kotlin.String&gt;** | List of product item ids |  [optional]
-**targetingTypes** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdsAnalyticsTargetingType&gt;**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. |  [optional]
+**targetingTypes** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdsAnalyticsTargetingType&gt;**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. |  [optional]
 **metricsFilters** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdsAnalyticsMetricsFilter&gt;**](AdsAnalyticsMetricsFilter.md) | List of metrics filters |  [optional]
 **reportFormat** | report_format | long |  | [**DataOutputFormat**](DataOutputFormat.md) | Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. |  [optional] [foreignkey]
+**primarySort** | primary_sort | text |  | [**primary_sort**](#PrimarySort) | Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. |  [optional]
+**startHour** | start_hour | int UNSIGNED |  | **kotlin.Int** | Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. |  [optional]
+**endHour** | end_hour | int UNSIGNED |  | **kotlin.Int** | Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports. |  [optional]
 
 
 
@@ -189,6 +192,9 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 adsAnalyticsCreateAsyncRequest | adsAnalyticsCreateAsyncRequest | long | | kotlin.Long | Primary Key | *one*
 adsAnalyticsMetricsFilter | adsAnalyticsMetricsFilter | long | | kotlin.Long | Foreign Key | *many*
+
+
+
 
 
 

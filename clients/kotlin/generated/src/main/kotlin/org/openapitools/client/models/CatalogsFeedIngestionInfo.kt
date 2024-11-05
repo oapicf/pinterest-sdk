@@ -42,5 +42,8 @@ data class CatalogsFeedIngestionInfo (
     @Json(name = "PREORDER")
     val PREORDER: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

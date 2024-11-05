@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * AudienceCreateCustomRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCreateCustomRequest {
 
   private String adAccountId;
@@ -59,7 +59,7 @@ public class AudienceCreateCustomRequest {
   /**
    * Ad account ID.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -79,7 +79,7 @@ public class AudienceCreateCustomRequest {
   /**
    * Audience name.
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", example = "string", description = "Audience name.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -99,7 +99,7 @@ public class AudienceCreateCustomRequest {
   /**
    * Get rule
    * @return rule
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "rule", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("rule")
@@ -119,7 +119,7 @@ public class AudienceCreateCustomRequest {
   /**
    * Get sharingType
    * @return sharingType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "sharing_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("sharing_type")
@@ -139,7 +139,7 @@ public class AudienceCreateCustomRequest {
   /**
    * Get dataParty
    * @return dataParty
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "data_party", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("data_party")
@@ -159,7 +159,7 @@ public class AudienceCreateCustomRequest {
   /**
    * Get category
    * @return category
-  */
+   */
   
   @Schema(name = "category", example = "DLX Demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("category")

@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.OrderLines;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderLinesArrayResponse   {
   
-  private List<OrderLines> items;
+  private List<OrderLines> items = new ArrayList<>();
 
   public OrderLinesArrayResponse () {
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,7 +27,7 @@ type CatalogsFeedsUpdateRequest struct {
 	Format *CatalogsFormat `json:"format,omitempty"`
 	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location *string `json:"location,omitempty"`
+	Location *string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
 	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
 	Status *CatalogsStatus `json:"status,omitempty"`
 }

@@ -13,7 +13,7 @@ API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest = function() {}
 API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.country;
 
 /**
- * @type {!API.Client.Language}
+ * @type {!API.Client.CatalogsItemsRequest_language}
  * @export
  */
 API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.language;

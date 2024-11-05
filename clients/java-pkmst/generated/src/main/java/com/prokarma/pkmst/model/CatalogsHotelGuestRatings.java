@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "If specified, you must provide all properties")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelGuestRatings   {
   @JsonProperty("score")
   private BigDecimal score;
@@ -35,10 +35,10 @@ public class CatalogsHotelGuestRatings   {
     return this;
   }
 
-   /**
+  /**
    * Your hotel's rating.
    * @return score
-  **/
+   */
   @ApiModelProperty(value = "Your hotel's rating.")
   public BigDecimal getScore() {
     return score;
@@ -53,10 +53,10 @@ public class CatalogsHotelGuestRatings   {
     return this;
   }
 
-   /**
+  /**
    * Total number of people who have rated this hotel.
    * @return numberOfReviewers
-  **/
+   */
   @ApiModelProperty(value = "Total number of people who have rated this hotel.")
   public Integer getNumberOfReviewers() {
     return numberOfReviewers;
@@ -71,10 +71,10 @@ public class CatalogsHotelGuestRatings   {
     return this;
   }
 
-   /**
+  /**
    * Max value for the hotel rating score.
    * @return maxScore
-  **/
+   */
   @ApiModelProperty(value = "Max value for the hotel rating score.")
   public BigDecimal getMaxScore() {
     return maxScore;
@@ -89,10 +89,10 @@ public class CatalogsHotelGuestRatings   {
     return this;
   }
 
-   /**
+  /**
    * System you use for guest reviews.
    * @return ratingSystem
-  **/
+   */
   @ApiModelProperty(value = "System you use for guest reviews.")
   public String getRatingSystem() {
     return ratingSystem;

@@ -17,12 +17,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountsCountryResponseData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsCountryResponseData   {
-  private @Valid AdCountry code;
-  private @Valid String currency;
-  private @Valid BigDecimal index;
-  private @Valid String name;
+  private AdCountry code;
+  private String currency;
+  private BigDecimal index;
+  private String name;
 
   /**
    **/
@@ -74,7 +74,7 @@ public class AdAccountsCountryResponseData   {
   
   @ApiModelProperty(example = "1", value = "Country index")
   @JsonProperty("index")
-  public BigDecimal getIndex() {
+  @Valid public BigDecimal getIndex() {
     return index;
   }
 

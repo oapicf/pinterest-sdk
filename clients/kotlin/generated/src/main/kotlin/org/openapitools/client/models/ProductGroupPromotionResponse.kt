@@ -32,5 +32,8 @@ data class ProductGroupPromotionResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<ProductGroupPromotionResponseItem>? = null
 
-)
+) {
+
+
+}
 

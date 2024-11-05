@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsItemResponse;
 import org.openapitools.model.CatalogsHotelItemResponse;
 import org.openapitools.model.CatalogsRetailItemResponse;
 import org.openapitools.model.CatalogsType;
@@ -36,13 +37,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemResponse.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemResponse.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailItemResponse.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemResponse.class, name = "CatalogsCreativeAssetsItemResponse"),
   @JsonSubTypes.Type(value = CatalogsHotelItemResponse.class, name = "CatalogsHotelItemResponse"),
   @JsonSubTypes.Type(value = CatalogsRetailItemResponse.class, name = "CatalogsRetailItemResponse")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface ItemResponseAnyOf {
     public CatalogsType getCatalogType();
 }

@@ -22,6 +22,7 @@ A successful OAuth access token response.
 |---- | -----|
 | AUTHORIZATION_CODE | &quot;authorization_code&quot; |
 | REFRESH_TOKEN | &quot;refresh_token&quot; |
+| CLIENT_CREDENTIALS | &quot;client_credentials&quot; |
 
 
 

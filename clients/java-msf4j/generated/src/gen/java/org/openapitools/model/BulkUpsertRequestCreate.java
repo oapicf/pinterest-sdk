@@ -18,16 +18,16 @@ import org.openapitools.model.ProductGroupPromotionCreateRequest;
  * Request for creation of entities in bulk.
  */
 @ApiModel(description = "Request for creation of entities in bulk.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequestCreate   {
   @JsonProperty("campaigns")
   private List<@Valid CampaignCreateRequest> campaigns = null;
 
   @JsonProperty("ad_groups")
-  private List<AdGroupCreateRequest> adGroups = null;
+  private List<@Valid AdGroupCreateRequest> adGroups = null;
 
   @JsonProperty("ads")
-  private List<AdCreateRequest> ads = null;
+  private List<@Valid AdCreateRequest> ads = null;
 
   @JsonProperty("product_groups")
   private List<@Valid ProductGroupPromotionCreateRequest> productGroups = null;
@@ -42,7 +42,7 @@ public class BulkUpsertRequestCreate   {
 
   public BulkUpsertRequestCreate addCampaignsItem(CampaignCreateRequest campaignsItem) {
     if (this.campaigns == null) {
-      this.campaigns = ;
+      this.campaigns = new ArrayList<>();
     }
     this.campaigns.add(campaignsItem);
     return this;
@@ -61,14 +61,14 @@ public class BulkUpsertRequestCreate   {
     this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestCreate adGroups(List<AdGroupCreateRequest> adGroups) {
+  public BulkUpsertRequestCreate adGroups(List<@Valid AdGroupCreateRequest> adGroups) {
     this.adGroups = adGroups;
     return this;
   }
 
   public BulkUpsertRequestCreate addAdGroupsItem(AdGroupCreateRequest adGroupsItem) {
     if (this.adGroups == null) {
-      this.adGroups = ;
+      this.adGroups = new ArrayList<>();
     }
     this.adGroups.add(adGroupsItem);
     return this;
@@ -79,22 +79,22 @@ public class BulkUpsertRequestCreate   {
    * @return adGroups
   **/
   @ApiModelProperty(value = "")
-  public List<AdGroupCreateRequest> getAdGroups() {
+  public List<@Valid AdGroupCreateRequest> getAdGroups() {
     return adGroups;
   }
 
-  public void setAdGroups(List<AdGroupCreateRequest> adGroups) {
+  public void setAdGroups(List<@Valid AdGroupCreateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
-  public BulkUpsertRequestCreate ads(List<AdCreateRequest> ads) {
+  public BulkUpsertRequestCreate ads(List<@Valid AdCreateRequest> ads) {
     this.ads = ads;
     return this;
   }
 
   public BulkUpsertRequestCreate addAdsItem(AdCreateRequest adsItem) {
     if (this.ads == null) {
-      this.ads = ;
+      this.ads = new ArrayList<>();
     }
     this.ads.add(adsItem);
     return this;
@@ -105,11 +105,11 @@ public class BulkUpsertRequestCreate   {
    * @return ads
   **/
   @ApiModelProperty(value = "")
-  public List<AdCreateRequest> getAds() {
+  public List<@Valid AdCreateRequest> getAds() {
     return ads;
   }
 
-  public void setAds(List<AdCreateRequest> ads) {
+  public void setAds(List<@Valid AdCreateRequest> ads) {
     this.ads = ads;
   }
 
@@ -120,7 +120,7 @@ public class BulkUpsertRequestCreate   {
 
   public BulkUpsertRequestCreate addProductGroupsItem(ProductGroupPromotionCreateRequest productGroupsItem) {
     if (this.productGroups == null) {
-      this.productGroups = ;
+      this.productGroups = new ArrayList<>();
     }
     this.productGroups.add(productGroupsItem);
     return this;
@@ -146,7 +146,7 @@ public class BulkUpsertRequestCreate   {
 
   public BulkUpsertRequestCreate addKeywordsItem(KeywordsRequest keywordsItem) {
     if (this.keywords == null) {
-      this.keywords = ;
+      this.keywords = new ArrayList<>();
     }
     this.keywords.add(keywordsItem);
     return this;

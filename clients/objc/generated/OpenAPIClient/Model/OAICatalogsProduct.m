@@ -11,13 +11,46 @@
   return self;
 }
 
+/**
+ * Maps "discriminator" value to the sub-class name, so that inheritance is supported.
+ */
+- (id)initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err {
+    NSString * discriminatedClassName = [dict valueForKey:@"catalogType"];
+    if(discriminatedClassName == nil ){
+         return [super initWithDictionary:dict error:err];
+    }
+
+    Class class = nil;
+    if ([discriminatedClassName isEqualToString:@"CREATIVE_ASSETS"]) {
+        class = NSClassFromString(@"OAICatalogsCreativeAssetsProduct");
+    }
+    else
+    if ([discriminatedClassName isEqualToString:@"HOTEL"]) {
+        class = NSClassFromString(@"OAICatalogsHotelProduct");
+    }
+    else
+    if ([discriminatedClassName isEqualToString:@"RETAIL"]) {
+        class = NSClassFromString(@"OAICatalogsRetailProduct");
+    }
+    else
+    {
+        class = NSClassFromString([@"OAI" stringByAppendingString:discriminatedClassName]);
+        if(!class) {
+            class = NSClassFromString([@"OAI" stringByAppendingString:[discriminatedClassName capitalizedString]]);
+        }
+    }
+    if([self class ] == class) {
+        return [super initWithDictionary:dict error:err];
+    }
+    return [[class alloc] initWithDictionary:dict error: err];
+}
 
 /**
  * Maps json key to property name.
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"metadata": @"metadata", @"pin": @"pin" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"metadata": @"metadata", @"pin": @"pin" }];
 }
 
 /**

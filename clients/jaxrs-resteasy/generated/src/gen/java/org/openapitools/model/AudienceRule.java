@@ -14,30 +14,29 @@ import org.openapitools.model.PinterestTagEventData;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceRule   {
   
   private String country;
   private String customerListId;
-  private List<String> engagementDomain;
+  private List<String> engagementDomain = new ArrayList<>();
   private String engagementType;
   private String event;
   private PinterestTagEventData eventData;
   private Integer percentage;
-  private List<@Pattern(regexp = "^\\d+$")String> pinId;
+  private List<@Pattern(regexp = "^\\d+$")String> pinId = new ArrayList<>();
   private Boolean prefill;
   private Integer retentionDays;
-  private List<@Pattern(regexp = "^\\d+$")String> seedId;
-  private List<String> url;
+  private List<@Pattern(regexp = "^\\d+$")String> seedId = new ArrayList<>();
+  private List<String> url = new ArrayList<>();
   private String visitorSourceId;
   private Object eventSource;
   private Object ingestionSource;
   private Integer engagerType;
-  private List<@Pattern(regexp = "^\\d+$")String> campaignId;
-  private List<@Pattern(regexp = "^\\d+$")String> adId;
-  private List<ObjectiveType> objectiveType;
+  private List<@Pattern(regexp = "^\\d+$")String> campaignId = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> adId = new ArrayList<>();
+  private List<ObjectiveType> objectiveType = new ArrayList<>();
   private String adAccountId;
 
   /**

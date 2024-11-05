@@ -1,18 +1,24 @@
 package org.openapitools.server.api.verticle;
 
+import org.openapitools.server.api.model.Catalog;
+import org.openapitools.server.api.model.CatalogsCreateReportResponse;
+import org.openapitools.server.api.model.CatalogsCreateRequest;
 import org.openapitools.server.api.model.CatalogsFeed;
+import org.openapitools.server.api.model.CatalogsFeedIngestion;
 import org.openapitools.server.api.model.CatalogsItemValidationIssue;
 import org.openapitools.server.api.model.CatalogsItems;
 import org.openapitools.server.api.model.CatalogsItemsBatch;
 import org.openapitools.server.api.model.CatalogsItemsFilters;
+import org.openapitools.server.api.model.CatalogsItemsRequest;
 import org.openapitools.server.api.model.CatalogsList200Response;
 import org.openapitools.server.api.model.CatalogsListProductsByFilterRequest;
 import org.openapitools.server.api.model.CatalogsProductGroupPinsList200Response;
-import org.openapitools.server.api.model.CatalogsProductGroupProductCounts;
-import org.openapitools.server.api.model.CatalogsProductGroupsCreate201Response;
-import org.openapitools.server.api.model.CatalogsProductGroupsCreateRequest;
+import org.openapitools.server.api.model.CatalogsProductGroupProductCountsVertical;
 import org.openapitools.server.api.model.CatalogsProductGroupsList200Response;
 import org.openapitools.server.api.model.CatalogsProductGroupsUpdateRequest;
+import org.openapitools.server.api.model.CatalogsReport;
+import org.openapitools.server.api.model.CatalogsReportParameters;
+import org.openapitools.server.api.model.CatalogsVerticalProductGroup;
 import org.openapitools.server.api.model.Error;
 import org.openapitools.server.api.model.FeedProcessingResultsList200Response;
 import org.openapitools.server.api.model.FeedsCreateRequest;
@@ -21,12 +27,17 @@ import org.openapitools.server.api.model.FeedsUpdateRequest;
 import org.openapitools.server.api.model.ItemsBatchPostRequest;
 import org.openapitools.server.api.model.ItemsIssuesList200Response;
 import org.openapitools.server.api.MainApiException;
+import org.openapitools.server.api.model.MultipleProductGroupsInner;
+import org.openapitools.server.api.model.ReportsStats200Response;
 
 public final class CatalogsApiException extends MainApiException {
     public CatalogsApiException(int statusCode, String statusMessage) {
         super(statusCode, statusMessage);
     }
 
+    public static final CatalogsApiException Catalogs_catalogsCreate_200_Exception = new CatalogsApiException(200, "Success");
+    public static final CatalogsApiException Catalogs_catalogsCreate_400_Exception = new CatalogsApiException(400, "Invalid parameters.");
+    public static final CatalogsApiException Catalogs_catalogsCreate_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
     public static final CatalogsApiException Catalogs_catalogsList_200_Exception = new CatalogsApiException(200, "Success");
     public static final CatalogsApiException Catalogs_catalogsList_400_Exception = new CatalogsApiException(400, "Invalid parameters.");
     public static final CatalogsApiException Catalogs_catalogsList_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
@@ -39,12 +50,22 @@ public final class CatalogsApiException extends MainApiException {
     public static final CatalogsApiException Catalogs_catalogsProductGroupsCreate_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsCreate_403_Exception = new CatalogsApiException(403, "Forbidden. Account not approved for catalog product group mutations yet.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsCreate_409_Exception = new CatalogsApiException(409, "Conflict. Can't create this catalogs product group with this value.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsCreateMany_201_Exception = new CatalogsApiException(201, "Success");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsCreateMany_400_Exception = new CatalogsApiException(400, "Invalid body.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsCreateMany_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsCreateMany_403_Exception = new CatalogsApiException(403, "Forbidden. Account not approved for catalog product group mutations yet.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsCreateMany_409_Exception = new CatalogsApiException(409, "Conflict. Can't create this catalogs product group with this value.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsDelete_204_Exception = new CatalogsApiException(204, "Catalogs Product Group deleted successfully.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsDelete_400_Exception = new CatalogsApiException(400, "Invalid catalogs product group id parameters.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsDelete_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsDelete_403_Exception = new CatalogsApiException(403, "Forbidden. Account not approved for catalog product group mutations yet.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsDelete_404_Exception = new CatalogsApiException(404, "Catalogs product group not found.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsDelete_409_Exception = new CatalogsApiException(409, "Conflict. Can't delete this catalogs product group.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsDeleteMany_204_Exception = new CatalogsApiException(204, "Catalogs Product Groups deleted successfully.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsDeleteMany_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsDeleteMany_403_Exception = new CatalogsApiException(403, "Forbidden. Account not approved for catalog product group mutations yet.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsDeleteMany_404_Exception = new CatalogsApiException(404, "Catalogs product group not found.");
+    public static final CatalogsApiException Catalogs_catalogsProductGroupsDeleteMany_409_Exception = new CatalogsApiException(409, "Conflict. Can't delete this catalogs product group.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsGet_200_Exception = new CatalogsApiException(200, "Success");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsGet_400_Exception = new CatalogsApiException(400, "Invalid catalogs product group id parameters.");
     public static final CatalogsApiException Catalogs_catalogsProductGroupsGet_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
@@ -86,6 +107,10 @@ public final class CatalogsApiException extends MainApiException {
     public static final CatalogsApiException Catalogs_feedsGet_400_Exception = new CatalogsApiException(400, "Invalid feed parameters.");
     public static final CatalogsApiException Catalogs_feedsGet_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
     public static final CatalogsApiException Catalogs_feedsGet_404_Exception = new CatalogsApiException(404, "Data feed not found.");
+    public static final CatalogsApiException Catalogs_feedsIngest_200_Exception = new CatalogsApiException(200, "The ingestion process was successfully started.");
+    public static final CatalogsApiException Catalogs_feedsIngest_400_Exception = new CatalogsApiException(400, "Invalid feed parameters.");
+    public static final CatalogsApiException Catalogs_feedsIngest_403_Exception = new CatalogsApiException(403, "Forbidden. Account not approved for feed mutations yet.");
+    public static final CatalogsApiException Catalogs_feedsIngest_404_Exception = new CatalogsApiException(404, "Data feed not found.");
     public static final CatalogsApiException Catalogs_feedsList_200_Exception = new CatalogsApiException(200, "Success");
     public static final CatalogsApiException Catalogs_feedsList_400_Exception = new CatalogsApiException(400, "Invalid parameters.");
     public static final CatalogsApiException Catalogs_feedsList_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
@@ -110,9 +135,21 @@ public final class CatalogsApiException extends MainApiException {
     public static final CatalogsApiException Catalogs_itemsIssuesList_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
     public static final CatalogsApiException Catalogs_itemsIssuesList_404_Exception = new CatalogsApiException(404, "Processing Result not found.");
     public static final CatalogsApiException Catalogs_itemsIssuesList_501_Exception = new CatalogsApiException(501, "Not implemented.");
+    public static final CatalogsApiException Catalogs_itemsPost_200_Exception = new CatalogsApiException(200, "Response containing the requested catalogs items");
+    public static final CatalogsApiException Catalogs_itemsPost_400_Exception = new CatalogsApiException(400, "Invalid request");
+    public static final CatalogsApiException Catalogs_itemsPost_401_Exception = new CatalogsApiException(401, "Not authorized to access catalogs items");
+    public static final CatalogsApiException Catalogs_itemsPost_403_Exception = new CatalogsApiException(403, "Not authorized to access catalogs items");
     public static final CatalogsApiException Catalogs_productsByProductGroupFilterList_200_Exception = new CatalogsApiException(200, "Success");
     public static final CatalogsApiException Catalogs_productsByProductGroupFilterList_401_Exception = new CatalogsApiException(401, "Unauthorized access.");
     public static final CatalogsApiException Catalogs_productsByProductGroupFilterList_409_Exception = new CatalogsApiException(409, "Conflict. Can't get products.");
+    public static final CatalogsApiException Catalogs_reportsCreate_200_Exception = new CatalogsApiException(200, "Response containing the report token");
+    public static final CatalogsApiException Catalogs_reportsCreate_404_Exception = new CatalogsApiException(404, "Entity (e.g., catalog, feed or processing_result) not found");
+    public static final CatalogsApiException Catalogs_reportsCreate_409_Exception = new CatalogsApiException(409, "Can't access this feature without an existing catalog.");
+    public static final CatalogsApiException Catalogs_reportsGet_200_Exception = new CatalogsApiException(200, "Response that contains a link to download the report");
+    public static final CatalogsApiException Catalogs_reportsGet_400_Exception = new CatalogsApiException(400, "The token you provided is not valid or has expired.");
+    public static final CatalogsApiException Catalogs_reportsGet_409_Exception = new CatalogsApiException(409, "Can't access this feature without an existing catalog.");
+    public static final CatalogsApiException Catalogs_reportsStats_200_Exception = new CatalogsApiException(200, "Response containing the diagnostics aggregated counters");
+    public static final CatalogsApiException Catalogs_reportsStats_401_Exception = new CatalogsApiException(401, "Not authorized to access catalogs");
     
 
 }

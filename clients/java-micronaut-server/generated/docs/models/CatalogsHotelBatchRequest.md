@@ -10,12 +10,17 @@ The class is defined in **[CatalogsHotelBatchRequest.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | `CatalogsType` |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  | 
-**language** | `Language` |  | 
+**language** | [`CatalogsItemsRequestLanguage`](CatalogsItemsRequestLanguage.md) |  | 
 **items** | [`List&lt;CatalogsHotelBatchItem&gt;`](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
 **catalogId** | `String` | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional property]
 
+## CatalogTypeEnum
+
+Name | Value
+---- | -----
+HOTEL | `"HOTEL"`
 
 
 

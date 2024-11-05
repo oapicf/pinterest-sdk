@@ -82,5 +82,8 @@ data class Audience (
     @Json(name = "updated_timestamp")
     val updatedTimestamp: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsCreativeAssetsItemErrorResponse;
 import com.prokarma.pkmst.model.CatalogsHotelItemErrorResponse;
 import com.prokarma.pkmst.model.CatalogsRetailItemErrorResponse;
 import com.prokarma.pkmst.model.CatalogsType;
@@ -26,9 +27,10 @@ import java.util.List;
  * ItemResponseAnyOf1
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemErrorResponse.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailItemErrorResponse.class, name = "RETAIL"),
 })
@@ -47,15 +49,18 @@ public class ItemResponseAnyOf1   {
   @JsonProperty("hotel_id")
   private String hotelId;
 
+  @JsonProperty("creative_assets_id")
+  private String creativeAssetsId;
+
   public ItemResponseAnyOf1 catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -70,10 +75,10 @@ public class ItemResponseAnyOf1   {
     return this;
   }
 
-   /**
+  /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
   public String getItemId() {
     return itemId;
@@ -96,10 +101,10 @@ public class ItemResponseAnyOf1   {
     return this;
   }
 
-   /**
+  /**
    * Array with the errors for the item id requested
    * @return errors
-  **/
+   */
   @ApiModelProperty(value = "Array with the errors for the item id requested")
   public List<ItemValidationEvent> getErrors() {
     return errors;
@@ -114,10 +119,10 @@ public class ItemResponseAnyOf1   {
     return this;
   }
 
-   /**
+  /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
   public String getHotelId() {
     return hotelId;
@@ -125,6 +130,24 @@ public class ItemResponseAnyOf1   {
 
   public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
+  }
+
+  public ItemResponseAnyOf1 creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+  /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+   */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
   }
 
 
@@ -140,12 +163,13 @@ public class ItemResponseAnyOf1   {
     return Objects.equals(this.catalogType, itemResponseAnyOf1.catalogType) &&
         Objects.equals(this.itemId, itemResponseAnyOf1.itemId) &&
         Objects.equals(this.errors, itemResponseAnyOf1.errors) &&
-        Objects.equals(this.hotelId, itemResponseAnyOf1.hotelId);
+        Objects.equals(this.hotelId, itemResponseAnyOf1.hotelId) &&
+        Objects.equals(this.creativeAssetsId, itemResponseAnyOf1.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -157,6 +181,7 @@ public class ItemResponseAnyOf1   {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

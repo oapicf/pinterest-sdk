@@ -13,7 +13,7 @@ import org.openapitools.model.AudienceInsightType;
 @Canonical
 class AudienceInsightsResponse {
     /* Category interest distribution */
-    List<AudienceCategory> categories
+    List<AudienceCategory> categories = new ArrayList<>()
     
     AudienceDemographics demographics
     

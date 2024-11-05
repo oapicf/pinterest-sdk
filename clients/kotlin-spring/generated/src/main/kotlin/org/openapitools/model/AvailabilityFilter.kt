@@ -23,7 +23,7 @@ data class AvailabilityFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("AVAILABILITY", required = true) val AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
-) {
+    ) {
 
 }
 

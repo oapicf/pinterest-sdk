@@ -10,11 +10,16 @@ The class is defined in **[CatalogsRetailBatchRequest.java](../../src/main/java/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | `CatalogsType` |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | `Country` |  | 
-**language** | `Language` |  | 
+**language** | [`CatalogsItemsRequestLanguage`](CatalogsItemsRequestLanguage.md) |  | 
 **items** | [`List&lt;CatalogsRetailBatchRequestItemsInner&gt;`](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
 
+## CatalogTypeEnum
+
+Name | Value
+---- | -----
+RETAIL | `"RETAIL"`
 
 
 

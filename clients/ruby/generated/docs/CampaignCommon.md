@@ -10,10 +10,10 @@
 | **lifetime_spend_cap** | **Integer** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] |
 | **daily_spend_cap** | **Integer** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional] |
 | **order_line_id** | **String** | Order line ID that appears on the invoice. | [optional] |
-| **tracking_urls** | [**AdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] |
+| **tracking_urls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] |
 | **start_time** | **Integer** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] |
 | **end_time** | **Integer** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] |
-| **summary_status** | [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] |
+| **is_flexible_daily_budgets** | **Boolean** | Determine if a campaign has flexible daily budgets setup. | [optional] |
 
 ## Example
 
@@ -30,7 +30,7 @@ instance = PinterestSdkClient::CampaignCommon.new(
   tracking_urls: null,
   start_time: 1580865126,
   end_time: 1644023526,
-  summary_status: null
+  is_flexible_daily_budgets: true
 )
 ```
 

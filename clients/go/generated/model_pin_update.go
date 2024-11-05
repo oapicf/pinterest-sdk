@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,9 @@ type PinUpdate struct {
 	// Pin's alternative text.
 	AltText NullableString `json:"alt_text,omitempty"`
 	// The id of the board to move the Pin onto.
-	BoardId NullableString `json:"board_id,omitempty"`
+	BoardId NullableString `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
-	BoardSectionId NullableString `json:"board_section_id,omitempty"`
+	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Pin description - 800 characters maximum.
 	Description NullableString `json:"description,omitempty"`
 	// URL viewer is taken to when they click pin.

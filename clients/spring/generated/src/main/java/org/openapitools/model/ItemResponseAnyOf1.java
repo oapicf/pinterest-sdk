@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.CatalogsCreativeAssetsItemErrorResponse;
 import org.openapitools.model.CatalogsHotelItemErrorResponse;
 import org.openapitools.model.CatalogsRetailItemErrorResponse;
 import org.openapitools.model.CatalogsType;
@@ -33,13 +34,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemErrorResponse.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailItemErrorResponse.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse.class, name = "CatalogsCreativeAssetsItemErrorResponse"),
   @JsonSubTypes.Type(value = CatalogsHotelItemErrorResponse.class, name = "CatalogsHotelItemErrorResponse"),
   @JsonSubTypes.Type(value = CatalogsRetailItemErrorResponse.class, name = "CatalogsRetailItemErrorResponse")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface ItemResponseAnyOf1 {
     public CatalogsType getCatalogType();
 }

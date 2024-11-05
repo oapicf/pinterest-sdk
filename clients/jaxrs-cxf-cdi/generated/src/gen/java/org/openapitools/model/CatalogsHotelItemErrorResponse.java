@@ -27,7 +27,7 @@ public class CatalogsHotelItemErrorResponse   {
 
   private String hotelId;
 
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   /**
    **/

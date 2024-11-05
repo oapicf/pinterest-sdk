@@ -34,7 +34,10 @@ Protected Class AdGroupUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		optimization_goal_metadata As OpenAPIClient.Models.AdGroupCommonOptimizationGoalMetadata
+		#tag Note
+			Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `"WEB_CONVERSION"`.
+		#tag EndNote
+		optimization_goal_metadata As OpenAPIClient.Models.OptimizationGoalMetadata
 	#tag EndProperty
 
 
@@ -66,14 +69,17 @@ Protected Class AdGroupUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href="https://developers.pinterest.com/docs/redoc/#section/Billable-event">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+			Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href="/docs/redoc/#section/Billable-event">billable_event</a> value. This field **REQUIRES** the `end_time` field.
 		#tag EndNote
 		lifetime_frequency_cap As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		tracking_urls As OpenAPIClient.Models.AdGroupCommonTrackingUrls
+		#tag Note
+			Third-party tracking URLs.<br> JSON object with the format: {"<a href="/docs/redoc/#section/Tracking-URL-event">Tracking event enum</a>":[URL string array],...}<br> For example: {"impression": ["URL1", "URL2"], "click": ["URL1", "URL2", "URL3"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href="https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking" target="_blank">Third-party and dynamic tracking</a>.
+		#tag EndNote
+		tracking_urls As OpenAPIClient.Models.TrackingUrls
 	#tag EndProperty
 
 
@@ -87,7 +93,7 @@ Protected Class AdGroupUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			<a href="https://developers.pinterest.com/docs/redoc/#section/Placement-group">Placement group</a>.
+			<a href="/docs/redoc/#section/Placement-group">Placement group</a>.
 		#tag EndNote
 		placement_group As Xoson.O.OptionalString
 	#tag EndProperty
@@ -113,9 +119,17 @@ Protected Class AdGroupUpdateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Bid strategy type
+			Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
 		#tag EndNote
 		bid_strategy_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+		#tag EndNote
+		targeting_template_ids() As String
 	#tag EndProperty
 
 
@@ -132,7 +146,6 @@ Protected Class AdGroupUpdateRequest
         AutomaticBid
         MaxBid
         TargetAvg
-        Null
         
     #tag EndEnum
 
@@ -147,8 +160,6 @@ Protected Class AdGroupUpdateRequest
 		      Return "MAX_BID"
 		    Case Bid_strategy_typeEnum.TargetAvg
 		      Return "TARGET_AVG"
-		    Case Bid_strategy_typeEnum.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -226,7 +237,7 @@ Protected Class AdGroupUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdGroupCommonOptimizationGoalMetadata"
+			Type="OptimizationGoalMetadata"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -274,7 +285,7 @@ Protected Class AdGroupUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdGroupCommonTrackingUrls"
+			Type="TrackingUrls"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -315,6 +326,14 @@ Protected Class AdGroupUpdateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="ActionType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="targeting_template_ids"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

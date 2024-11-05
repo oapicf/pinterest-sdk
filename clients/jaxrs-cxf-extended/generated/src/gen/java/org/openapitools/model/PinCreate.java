@@ -4,8 +4,8 @@ import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -64,7 +64,7 @@ public class PinCreate  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -312,6 +312,7 @@ public class PinCreate  {
 
   /**
    * Sets the <code>boardOwner</code> property.
+   * <br><em>N.B. <code>boardOwner</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setBoardOwner(BoardOwner boardOwner) {
     this.boardOwner = boardOwner;
@@ -319,6 +320,7 @@ public class PinCreate  {
 
   /**
    * Sets the <code>boardOwner</code> property.
+   * <br><em>N.B. <code>boardOwner</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public PinCreate boardOwner(BoardOwner boardOwner) {
     this.boardOwner = boardOwner;
@@ -330,21 +332,23 @@ public class PinCreate  {
   * @return media
   */
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
 
   /**
    * Sets the <code>media</code> property.
+   * <br><em>N.B. <code>media</code> is <b>read only</b>; client code should not call this method</em>.
    */
- public void setMedia(SummaryPinMedia media) {
+ public void setMedia(PinMedia media) {
     this.media = media;
   }
 
   /**
    * Sets the <code>media</code> property.
+   * <br><em>N.B. <code>media</code> is <b>read only</b>; client code should not call this method</em>.
    */
-  public PinCreate media(SummaryPinMedia media) {
+  public PinCreate media(PinMedia media) {
     this.media = media;
     return this;
   }

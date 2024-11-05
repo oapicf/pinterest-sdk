@@ -2,8 +2,11 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsListProductsByFilterRequestOneOf;
+import org.openapitools.model.CatalogsListProductsByFeedBasedFilter;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFilters;
+import org.openapitools.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest;
+import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,10 +22,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object to list products for a given product group filter.")
 @JsonTypeName("CatalogsListProductsByFilterRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsListProductsByFilterRequest   {
-  private @Valid String feedId;
-  private @Valid CatalogsProductGroupFilters filters;
+  private String feedId;
+  private CatalogsProductGroupFilters filters;
 
   /**
    * Catalog Feed id pertaining to the catalog product group filter.
@@ -35,8 +38,7 @@ public class CatalogsListProductsByFilterRequest   {
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group filter.")
   @JsonProperty("feed_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getFeedId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 
@@ -55,8 +57,7 @@ public class CatalogsListProductsByFilterRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("filters")
-  @NotNull
-  public CatalogsProductGroupFilters getFilters() {
+  @NotNull @Valid public CatalogsProductGroupFilters getFilters() {
     return filters;
   }
 

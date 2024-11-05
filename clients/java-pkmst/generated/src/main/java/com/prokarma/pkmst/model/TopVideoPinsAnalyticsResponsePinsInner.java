@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopVideoPinsAnalyticsResponsePinsInner   {
   @JsonProperty("metrics")
   
@@ -46,10 +46,10 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     return this;
   }
 
-   /**
+  /**
    * The metric name and daily value for each requested metric
    * @return metrics
-  **/
+   */
   @ApiModelProperty(example = "{\"IMPRESSION\":7,\"QUARTILE_95_PERCENT_VIEW\":2,\"SAVE\":1,\"VIDEO_10S_VIEW\":5,\"VIDEO_AVG_WATCH_TIME\":86989,\"VIDEO_MRC_VIEW\":2,\"VIDEO_START\":2,\"VIDEO_V50_WATCH_TIME\":173979,\"OUTBOUND_CLICK\":2}", value = "The metric name and daily value for each requested metric")
   public Map<String, BigDecimal> getMetrics() {
     return metrics;
@@ -72,10 +72,10 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get dataStatus
    * @return dataStatus
-  **/
+   */
   @ApiModelProperty(value = "")
   public Map<String, DataStatus> getDataStatus() {
     return dataStatus;
@@ -90,10 +90,10 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     return this;
   }
 
-   /**
+  /**
    * The pin id
    * @return pinId
-  **/
+   */
   @ApiModelProperty(example = "642396334344813594", value = "The pin id")
   public String getPinId() {
     return pinId;

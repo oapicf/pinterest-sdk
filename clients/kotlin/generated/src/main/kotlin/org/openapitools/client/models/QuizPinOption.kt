@@ -35,5 +35,8 @@ data class QuizPinOption (
     @Json(name = "text")
     val text: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -22,5 +22,15 @@ message QuizPinData {
   repeated QuizPinQuestion questions = 171622070;
 
   repeated QuizPinResult results = 23804920;
+
+  // Quiz ad tie breaker type, default is RANDOM
+  enum Tie_breaker_typeEnum {
+    Tie_breaker_typeEnum_RANDOM = 0;
+    Tie_breaker_typeEnum_CUSTOM = 1;
+  }
+
+  Tie_breaker_typeEnum tie_breaker_type = 253457159;
+
+  QuizPinResult tie_breaker_custom_result = 108002008;
 
 }

@@ -16,6 +16,25 @@ class PinsApiTest {
     private val api: PinsApiController = PinsApiController()
 
     /**
+     * To test PinsApiController.multiPinsAnalytics
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun multiPinsAnalyticsTest() {
+        val pinIds: kotlin.collections.List<kotlin.String> = TODO()
+        val startDate: java.time.LocalDate = TODO()
+        val endDate: java.time.LocalDate = TODO()
+        val metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner> = TODO()
+        val appTypes: kotlin.String = TODO()
+        val adAccountId: kotlin.String? = TODO()
+        val response: ResponseEntity<Map<String, kotlin.collections.Map<kotlin.String>> = api.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId)
+
+        // TODO: test validations
+    }
+
+    /**
      * To test PinsApiController.pinsAnalytics
      *
      * @throws ApiException

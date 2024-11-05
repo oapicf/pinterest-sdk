@@ -5,7 +5,7 @@ import play.api.libs.json._
 /**
   * Represents the Swagger definition for CatalogsProductGroupFilterKeys.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CatalogsProductGroupFilterKeys(
   MIN_PRICE: CatalogsProductGroupPricingCriteria,
   MAX_PRICE: CatalogsProductGroupPricingCriteria,
@@ -21,6 +21,7 @@ case class CatalogsProductGroupFilterKeys(
   CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
   ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria,
   GENDER: CatalogsProductGroupMultipleGenderCriteria,
+  MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
   PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria,
   PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria,
   PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria,
@@ -32,7 +33,8 @@ case class CatalogsProductGroupFilterKeys(
   GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
-  GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+  GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
+  PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
 )
 
 object CatalogsProductGroupFilterKeys {

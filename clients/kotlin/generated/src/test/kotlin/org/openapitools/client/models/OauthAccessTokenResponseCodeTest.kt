@@ -19,12 +19,35 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.OauthAccessTokenResponseCode
-import org.openapitools.client.models.OauthAccessTokenResponse
 
 class OauthAccessTokenResponseCodeTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of OauthAccessTokenResponseCode
         //val modelInstance = OauthAccessTokenResponseCode()
+
+        // to test the property `accessToken`
+        should("test accessToken") {
+            // uncomment below to test the property
+            //modelInstance.accessToken shouldBe ("TODO")
+        }
+
+        // to test the property `tokenType`
+        should("test tokenType") {
+            // uncomment below to test the property
+            //modelInstance.tokenType shouldBe ("TODO")
+        }
+
+        // to test the property `expiresIn`
+        should("test expiresIn") {
+            // uncomment below to test the property
+            //modelInstance.expiresIn shouldBe ("TODO")
+        }
+
+        // to test the property `scope`
+        should("test scope") {
+            // uncomment below to test the property
+            //modelInstance.scope shouldBe ("TODO")
+        }
 
         // to test the property `refreshToken`
         should("test refreshToken") {
@@ -36,6 +59,12 @@ class OauthAccessTokenResponseCodeTest : ShouldSpec() {
         should("test refreshTokenExpiresIn") {
             // uncomment below to test the property
             //modelInstance.refreshTokenExpiresIn shouldBe ("TODO")
+        }
+
+        // to test the property `responseType`
+        should("test responseType") {
+            // uncomment below to test the property
+            //modelInstance.responseType shouldBe ("TODO")
         }
 
     }

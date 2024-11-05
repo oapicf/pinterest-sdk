@@ -8,5 +8,4 @@ const (
 	TEXT_AREA LeadFormQuestionFieldType = "TEXT_AREA"
 	RADIO_LIST LeadFormQuestionFieldType = "RADIO_LIST"
 	CHECKBOX LeadFormQuestionFieldType = "CHECKBOX"
-	NULL LeadFormQuestionFieldType = "null"
 )

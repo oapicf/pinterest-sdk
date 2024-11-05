@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Video ID-based media source")
 @JsonTypeName("PinMediaSourceVideoID")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceVideoID   {
   public enum SourceTypeEnum {
 
@@ -66,8 +66,8 @@ public class PinMediaSourceVideoID   {
     }
 }
 
-  private @Valid SourceTypeEnum sourceType;
-  private @Valid String coverImageUrl;
+  private SourceTypeEnum sourceType;
+  private String coverImageUrl;
   public enum CoverImageContentTypeEnum {
 
     JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
@@ -115,10 +115,10 @@ public class PinMediaSourceVideoID   {
     }
 }
 
-  private @Valid CoverImageContentTypeEnum coverImageContentType;
-  private @Valid String coverImageData;
-  private @Valid String mediaId;
-  private @Valid Boolean isStandard = true;
+  private CoverImageContentTypeEnum coverImageContentType;
+  private String coverImageData;
+  private String mediaId;
+  private Boolean isStandard = true;
 
   /**
    **/
@@ -130,8 +130,7 @@ public class PinMediaSourceVideoID   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("source_type")
-  @NotNull
-  public SourceTypeEnum getSourceType() {
+  @NotNull public SourceTypeEnum getSourceType() {
     return sourceType;
   }
 
@@ -210,8 +209,7 @@ public class PinMediaSourceVideoID   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("media_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getMediaId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getMediaId() {
     return mediaId;
   }
 

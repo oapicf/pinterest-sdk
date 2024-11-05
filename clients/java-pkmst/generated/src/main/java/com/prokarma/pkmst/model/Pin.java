@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.prokarma.pkmst.model.BoardOwner;
 import com.prokarma.pkmst.model.CreativeType;
+import com.prokarma.pkmst.model.PinMedia;
 import com.prokarma.pkmst.model.PinMediaSource;
-import com.prokarma.pkmst.model.SummaryPinMedia;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
@@ -22,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Pin")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Pin   {
   @JsonProperty("id")
   private String id;
@@ -61,7 +61,7 @@ public class Pin   {
   private Boolean isOwner;
 
   @JsonProperty("media")
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @JsonProperty("media_source")
   private PinMediaSource mediaSource;
@@ -86,10 +86,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "813744226420795884", readOnly = true, value = "")
   public String getId() {
     return id;
@@ -104,10 +104,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get createdAt
    * @return createdAt
-  **/
+   */
   @ApiModelProperty(example = "2020-01-01T20:10:40Z", readOnly = true, value = "")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -122,10 +122,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get link
    * @return link
-  **/
+   */
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
   public String getLink() {
     return link;
@@ -140,10 +140,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
@@ -158,10 +158,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -176,10 +176,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
    * @return dominantColor
-  **/
+   */
   @ApiModelProperty(example = "#6E7874", value = "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".")
   public String getDominantColor() {
     return dominantColor;
@@ -194,10 +194,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get altText
    * @return altText
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAltText() {
     return altText;
@@ -212,10 +212,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get creativeType
    * @return creativeType
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public CreativeType getCreativeType() {
     return creativeType;
@@ -230,10 +230,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * The board to which this Pin belongs.
    * @return boardId
-  **/
+   */
   @ApiModelProperty(value = "The board to which this Pin belongs.")
   public String getBoardId() {
     return boardId;
@@ -248,10 +248,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * The board section to which this Pin belongs.
    * @return boardSectionId
-  **/
+   */
   @ApiModelProperty(value = "The board section to which this Pin belongs.")
   public String getBoardSectionId() {
     return boardSectionId;
@@ -266,11 +266,11 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get boardOwner
    * @return boardOwner
-  **/
-  @ApiModelProperty(value = "")
+   */
+  @ApiModelProperty(readOnly = true, value = "")
   public BoardOwner getBoardOwner() {
     return boardOwner;
   }
@@ -284,10 +284,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Whether the \"operation user_account\" is the Pin owner.
    * @return isOwner
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "Whether the \"operation user_account\" is the Pin owner.")
   public Boolean getIsOwner() {
     return isOwner;
@@ -297,21 +297,21 @@ public class Pin   {
     this.isOwner = isOwner;
   }
 
-  public Pin media(SummaryPinMedia media) {
+  public Pin media(PinMedia media) {
     this.media = media;
     return this;
   }
 
-   /**
+  /**
    * Get media
    * @return media
-  **/
-  @ApiModelProperty(value = "")
-  public SummaryPinMedia getMedia() {
+   */
+  @ApiModelProperty(readOnly = true, value = "")
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -320,10 +320,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Get mediaSource
    * @return mediaSource
-  **/
+   */
   @ApiModelProperty(value = "")
   public PinMediaSource getMediaSource() {
     return mediaSource;
@@ -338,10 +338,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
    * @return parentPinId
-  **/
+   */
   @ApiModelProperty(value = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.")
   public String getParentPinId() {
     return parentPinId;
@@ -356,11 +356,11 @@ public class Pin   {
     return this;
   }
 
-   /**
-   * Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+  /**
+   * Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
    * @return isStandard
-  **/
-  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.")
+   */
+  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.")
   public Boolean getIsStandard() {
     return isStandard;
   }
@@ -374,10 +374,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Whether the Pin has been promoted or not.
    * @return hasBeenPromoted
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "Whether the Pin has been promoted or not.")
   public Boolean getHasBeenPromoted() {
     return hasBeenPromoted;
@@ -392,10 +392,10 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
    * @return note
-  **/
+   */
   @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
   public String getNote() {
     return note;
@@ -410,11 +410,11 @@ public class Pin   {
     return this;
   }
 
-   /**
+  /**
    * Pin metrics with associated time intervals if any.
    * @return pinMetrics
-  **/
-  @ApiModelProperty(example = "{\"pin_metrics\":[{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"all_time\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}},null]}", value = "Pin metrics with associated time intervals if any.")
+   */
+  @ApiModelProperty(example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", value = "Pin metrics with associated time intervals if any.")
   public Object getPinMetrics() {
     return pinMetrics;
   }

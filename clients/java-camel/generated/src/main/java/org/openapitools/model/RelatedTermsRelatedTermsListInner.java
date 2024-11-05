@@ -23,13 +23,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("RelatedTerms_related_terms_list_inner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RelatedTermsRelatedTermsListInner {
 
   private String term;
 
   @Valid
-  private List<String> relatedTerms;
+  private List<String> relatedTerms = new ArrayList<>();
 
   public RelatedTermsRelatedTermsListInner term(String term) {
     this.term = term;
@@ -39,7 +39,7 @@ public class RelatedTermsRelatedTermsListInner {
   /**
    * Get term
    * @return term
-  */
+   */
   
   @Schema(name = "term", example = "clothes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("term")
@@ -67,7 +67,7 @@ public class RelatedTermsRelatedTermsListInner {
   /**
    * Get relatedTerms
    * @return relatedTerms
-  */
+   */
   
   @Schema(name = "related_terms", example = "[\"shoes\",\"cute clothes\"]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("related_terms")

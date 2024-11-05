@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -40,52 +41,76 @@ data class BillingProfilesResponse(
 
     @Schema(example = "VISA", description = "Brand of the payment method.")
     @get:JsonProperty("payment_method_brand") val paymentMethodBrand: BillingProfilesResponse.PaymentMethodBrand? = null
-) {
+    ) {
 
     /**
     * Type of the card.
     * Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,ELO
     */
-    enum class CardType(val value: kotlin.String) {
+    enum class CardType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("UNKNOWN") UNKNOWN("UNKNOWN"),
-        @JsonProperty("VISA") VISA("VISA"),
-        @JsonProperty("MASTERCARD") MASTERCARD("MASTERCARD"),
-        @JsonProperty("AMERICAN_EXPRESS") AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-        @JsonProperty("DISCOVER") DISCOVER("DISCOVER"),
-        @JsonProperty("ELO") ELO("ELO")
+        UNKNOWN("UNKNOWN"),
+        VISA("VISA"),
+        MASTERCARD("MASTERCARD"),
+        AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
+        DISCOVER("DISCOVER"),
+        ELO("ELO");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CardType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * Status of the billing.
     * Values: UNSPECIFIED,VALID,INVALID,PENDING,DELETED,SECONDARY,PENDING_SECONDARY
     */
-    enum class Status(val value: kotlin.String) {
+    enum class Status(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("UNSPECIFIED") UNSPECIFIED("UNSPECIFIED"),
-        @JsonProperty("VALID") VALID("VALID"),
-        @JsonProperty("INVALID") INVALID("INVALID"),
-        @JsonProperty("PENDING") PENDING("PENDING"),
-        @JsonProperty("DELETED") DELETED("DELETED"),
-        @JsonProperty("SECONDARY") SECONDARY("SECONDARY"),
-        @JsonProperty("PENDING_SECONDARY") PENDING_SECONDARY("PENDING_SECONDARY")
+        UNSPECIFIED("UNSPECIFIED"),
+        VALID("VALID"),
+        INVALID("INVALID"),
+        PENDING("PENDING"),
+        DELETED("DELETED"),
+        SECONDARY("SECONDARY"),
+        PENDING_SECONDARY("PENDING_SECONDARY");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Status {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * Brand of the payment method.
     * Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,SOFORT,DINERS_CLUB,ELO,CARTE_BANCAIRE
     */
-    enum class PaymentMethodBrand(val value: kotlin.String) {
+    enum class PaymentMethodBrand(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("UNKNOWN") UNKNOWN("UNKNOWN"),
-        @JsonProperty("VISA") VISA("VISA"),
-        @JsonProperty("MASTERCARD") MASTERCARD("MASTERCARD"),
-        @JsonProperty("AMERICAN_EXPRESS") AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
-        @JsonProperty("DISCOVER") DISCOVER("DISCOVER"),
-        @JsonProperty("SOFORT") SOFORT("SOFORT"),
-        @JsonProperty("DINERS_CLUB") DINERS_CLUB("DINERS_CLUB"),
-        @JsonProperty("ELO") ELO("ELO"),
-        @JsonProperty("CARTE_BANCAIRE") CARTE_BANCAIRE("CARTE_BANCAIRE")
+        UNKNOWN("UNKNOWN"),
+        VISA("VISA"),
+        MASTERCARD("MASTERCARD"),
+        AMERICAN_EXPRESS("AMERICAN_EXPRESS"),
+        DISCOVER("DISCOVER"),
+        SOFORT("SOFORT"),
+        DINERS_CLUB("DINERS_CLUB"),
+        ELO("ELO"),
+        CARTE_BANCAIRE("CARTE_BANCAIRE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): PaymentMethodBrand {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

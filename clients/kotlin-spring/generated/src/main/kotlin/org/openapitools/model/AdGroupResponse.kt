@@ -1,17 +1,18 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.ActionType
-import org.openapitools.model.AdGroupCommonOptimizationGoalMetadata
-import org.openapitools.model.AdGroupCommonTrackingUrls
 import org.openapitools.model.AdGroupSummaryStatus
 import org.openapitools.model.BudgetType
 import org.openapitools.model.EntityStatus
+import org.openapitools.model.OptimizationGoalMetadata
 import org.openapitools.model.PacingDeliveryType
 import org.openapitools.model.PlacementGroupType
 import org.openapitools.model.TargetingSpec
+import org.openapitools.model.TrackingUrls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -29,19 +30,20 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param status Ad group/entity status.
  * @param budgetInMicroCurrency Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
  * @param bidInMicroCurrency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
- * @param optimizationGoalMetadata 
+ * @param optimizationGoalMetadata Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
  * @param budgetType 
  * @param startTime Ad group start time. Unix timestamp in seconds. Defaults to current time.
  * @param endTime Ad group end time. Unix timestamp in seconds.
  * @param targetingSpec 
- * @param lifetimeFrequencyCap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
- * @param trackingUrls 
+ * @param lifetimeFrequencyCap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+ * @param trackingUrls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
  * @param autoTargetingEnabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param placementGroup <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+ * @param placementGroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
  * @param pacingDeliveryType 
  * @param campaignId Campaign ID of the ad group.
  * @param billableEvent 
- * @param bidStrategyType Bid strategy type
+ * @param bidStrategyType Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+ * @param targetingTemplateIds Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
  * @param id Ad group ID.
  * @param adAccountId Advertiser ID.
  * @param createdTime Ad group creation time. Unix timestamp in seconds.
@@ -68,8 +70,8 @@ data class AdGroupResponse(
     @get:JsonProperty("bid_in_micro_currency") val bidInMicroCurrency: kotlin.Int? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("optimization_goal_metadata") val optimizationGoalMetadata: AdGroupCommonOptimizationGoalMetadata? = null,
+    @Schema(example = "null", description = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.")
+    @get:JsonProperty("optimization_goal_metadata") val optimizationGoalMetadata: OptimizationGoalMetadata? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -85,18 +87,18 @@ data class AdGroupResponse(
     @Schema(example = "null", description = "")
     @get:JsonProperty("targeting_spec") val targetingSpec: TargetingSpec? = null,
 
-    @Schema(example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
+    @Schema(example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
     @get:JsonProperty("lifetime_frequency_cap") val lifetimeFrequencyCap: kotlin.Int? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("tracking_urls") val trackingUrls: AdGroupCommonTrackingUrls? = null,
+    @Schema(example = "null", description = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
+    @get:JsonProperty("tracking_urls") val trackingUrls: TrackingUrls? = null,
 
     @Schema(example = "true", description = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
     @get:JsonProperty("auto_targeting_enabled") val autoTargetingEnabled: kotlin.Boolean? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "<a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.")
+    @Schema(example = "null", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
     @get:JsonProperty("placement_group") val placementGroup: PlacementGroupType? = null,
 
     @field:Valid
@@ -111,8 +113,12 @@ data class AdGroupResponse(
     @Schema(example = "null", description = "")
     @get:JsonProperty("billable_event") val billableEvent: ActionType? = null,
 
-    @Schema(example = "MAX_BID", description = "Bid strategy type")
+    @Schema(example = "MAX_BID", description = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.")
     @get:JsonProperty("bid_strategy_type") val bidStrategyType: AdGroupResponse.BidStrategyType? = null,
+
+    @get:Size(max=1)
+    @Schema(example = "null", description = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].")
+    @get:JsonProperty("targeting_template_ids") val targetingTemplateIds: kotlin.collections.List<kotlin.String>? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680060704746", description = "Ad group ID.")
@@ -144,29 +150,43 @@ data class AdGroupResponse(
     @field:Valid
     @Schema(example = "null", description = "[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.")
     @get:JsonProperty("dca_assets") val dcaAssets: kotlin.Any? = null
-) {
+    ) {
 
     /**
-    * Bid strategy type
-    * Values: AUTOMATIC_BID,MAX_BID,TARGET_AVG,`null`
+    * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+    * Values: AUTOMATIC_BID,MAX_BID,TARGET_AVG
     */
-    enum class BidStrategyType(val value: kotlin.String) {
+    enum class BidStrategyType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("AUTOMATIC_BID") AUTOMATIC_BID("AUTOMATIC_BID"),
-        @JsonProperty("MAX_BID") MAX_BID("MAX_BID"),
-        @JsonProperty("TARGET_AVG") TARGET_AVG("TARGET_AVG"),
-        @JsonProperty("null") `null`("null")
+        AUTOMATIC_BID("AUTOMATIC_BID"),
+        MAX_BID("MAX_BID"),
+        TARGET_AVG("TARGET_AVG");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): BidStrategyType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * oCPM learn mode
-    * Values: NOT_ACTIVE,ACTIVE,`null`
+    * Values: NOT_ACTIVE,ACTIVE
     */
-    enum class ConversionLearningModeType(val value: kotlin.String) {
+    enum class ConversionLearningModeType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("NOT_ACTIVE") NOT_ACTIVE("NOT_ACTIVE"),
-        @JsonProperty("ACTIVE") ACTIVE("ACTIVE"),
-        @JsonProperty("null") `null`("null")
+        NOT_ACTIVE("NOT_ACTIVE"),
+        ACTIVE("ACTIVE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): ConversionLearningModeType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

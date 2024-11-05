@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * SSIOOrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOOrderLine {
 
   private JsonNullable<String> salesforceOrderLineId = JsonNullable.<String>undefined();
@@ -83,7 +83,7 @@ public class SSIOOrderLine {
   /**
    * OrderLineId in SFDC
    * @return salesforceOrderLineId
-  */
+   */
   
   @Schema(name = "salesforce_order_line_id", description = "OrderLineId in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("salesforce_order_line_id")
@@ -103,7 +103,7 @@ public class SSIOOrderLine {
   /**
    * Ads manager OrderLineId
    * @return adsManagerOrderLineId
-  */
+   */
   
   @Schema(name = "ads_manager_order_line_id", description = "Ads manager OrderLineId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ads_manager_order_line_id")
@@ -123,7 +123,7 @@ public class SSIOOrderLine {
   /**
    * The pin order id associated with the order line in SFDC
    * @return pinOrderId
-  */
+   */
   
   @Schema(name = "pin_order_id", description = "The pin order id associated with the order line in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_order_id")
@@ -143,7 +143,7 @@ public class SSIOOrderLine {
   /**
    * Last modified date.
    * @return lastModifiedDateTime
-  */
+   */
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") 
   @Schema(name = "last_modified_date_time", example = "2020-10-06T13:07:04.000Z", description = "Last modified date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("last_modified_date_time")
@@ -163,7 +163,7 @@ public class SSIOOrderLine {
   /**
    * Start date of the order line.
    * @return startDate
-  */
+   */
   @Valid 
   @Schema(name = "start_date", example = "Thu Mar 01 00:00:00 UTC 2018", description = "Start date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
@@ -183,7 +183,7 @@ public class SSIOOrderLine {
   /**
    * End date of the order line.
    * @return endDate
-  */
+   */
   @Valid 
   @Schema(name = "end_date", example = "Mon Oct 05 00:00:00 UTC 2020", description = "End date of the order line.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
@@ -203,7 +203,7 @@ public class SSIOOrderLine {
   /**
    * Bill To Company name
    * @return billToCompanyName
-  */
+   */
   
   @Schema(name = "bill_to_company_name", example = "Home Depot Inc.", description = "Bill To Company name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bill_to_company_name")
@@ -223,7 +223,7 @@ public class SSIOOrderLine {
   /**
    * Billing contact first name
    * @return billingContactFirstname
-  */
+   */
   
   @Schema(name = "billing_contact_firstname", example = "Mary", description = "Billing contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_firstname")
@@ -243,7 +243,7 @@ public class SSIOOrderLine {
   /**
    * Billing contact last name
    * @return billingContactLastname
-  */
+   */
   
   @Schema(name = "billing_contact_lastname", example = "Smith", description = "Billing contact last name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_lastname")
@@ -263,7 +263,7 @@ public class SSIOOrderLine {
   /**
    * Billing contact email
    * @return billingContactEmail
-  */
+   */
   
   @Schema(name = "billing_contact_email", example = "mail@test.com", description = "Billing contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_email")
@@ -283,7 +283,7 @@ public class SSIOOrderLine {
   /**
    * Billing media email
    * @return mediaContactEmail
-  */
+   */
   
   @Schema(name = "media_contact_email", example = "mail@test.com", description = "Billing media email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_email")
@@ -303,7 +303,7 @@ public class SSIOOrderLine {
   /**
    * Billing contact first name
    * @return mediaContactFirstname
-  */
+   */
   
   @Schema(name = "media_contact_firstname", example = "John", description = "Billing contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_firstname")
@@ -323,7 +323,7 @@ public class SSIOOrderLine {
   /**
    * Billing contact first name
    * @return mediaContactLastname
-  */
+   */
   
   @Schema(name = "media_contact_lastname", example = "Doe", description = "Billing contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_lastname")
@@ -343,7 +343,7 @@ public class SSIOOrderLine {
   /**
    * Get currencyInfo
    * @return currencyInfo
-  */
+   */
   @Valid 
   @Schema(name = "currency_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency_info")
@@ -363,7 +363,7 @@ public class SSIOOrderLine {
   /**
    * Agency link
    * @return agencyLink
-  */
+   */
   
   @Schema(name = "agency_link", example = "", description = "Agency link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("agency_link")
@@ -383,7 +383,7 @@ public class SSIOOrderLine {
   /**
    * The po number
    * @return poNumber
-  */
+   */
   
   @Schema(name = "po_number", description = "The po number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("po_number")
@@ -403,7 +403,7 @@ public class SSIOOrderLine {
   /**
    * The order name
    * @return orderName
-  */
+   */
   
   @Schema(name = "order_name", description = "The order name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_name")
@@ -423,7 +423,7 @@ public class SSIOOrderLine {
   /**
    * The Pinterest marketing partner name
    * @return pmpName
-  */
+   */
   
   @Schema(name = "pmp_name", description = "The Pinterest marketing partner name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pmp_name")
@@ -443,7 +443,7 @@ public class SSIOOrderLine {
   /**
    * The SFDC id for the terms
    * @return acceptedTermsId
-  */
+   */
   
   @Schema(name = "accepted_terms_id", description = "The SFDC id for the terms", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("accepted_terms_id")
@@ -463,7 +463,7 @@ public class SSIOOrderLine {
   /**
    * The UTC timestamp (to the nearest sec) of when terms were accepted
    * @return acceptedTermsTime
-  */
+   */
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$") 
   @Schema(name = "accepted_terms_time", example = "2020-10-06T13:07:04.000Z", description = "The UTC timestamp (to the nearest sec) of when terms were accepted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("accepted_terms_time")
@@ -483,7 +483,7 @@ public class SSIOOrderLine {
   /**
    * If Budget order line, the budget amount.
    * @return budgetAmount
-  */
+   */
   @Valid 
   @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_amount")
@@ -503,7 +503,7 @@ public class SSIOOrderLine {
   /**
    * If Ongoing (perpetual) order line, the estimated monthly spend
    * @return estimatedMonthlySpend
-  */
+   */
   @Valid 
   @Schema(name = "estimated_monthly_spend", description = "If Ongoing (perpetual) order line, the estimated monthly spend", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("estimated_monthly_spend")

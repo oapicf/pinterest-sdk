@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -89,7 +89,7 @@ func (a *AudienceInsightsAPIService) AudienceInsightsGetExecute(r ApiAudienceIns
 		return localVarReturnValue, nil, reportError("audienceInsightType is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "audience_insight_type", r.audienceInsightType, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "audience_insight_type", r.audienceInsightType, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

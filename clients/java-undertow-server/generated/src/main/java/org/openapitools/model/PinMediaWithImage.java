@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -15,8 +15,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 
 
 
@@ -25,14 +25,14 @@ import org.openapitools.model.PinMedia;
  */
 
 @ApiModel(description = "Pin with image.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithImage extends PinMedia  {
   
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   /**
    */
-  public PinMediaWithImage images(ImageMetadataImages images) {
+  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -40,10 +40,10 @@ public class PinMediaWithImage extends PinMedia  {
   
   @ApiModelProperty(value = "")
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **media** | [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] |
+| **media** | [**PinMedia**](PinMedia.md) |  | [optional][readonly] |
 | **alt_text** | **String** |  | [optional] |
 | **link** | **String** |  | [optional] |
 | **title** | **String** |  | [optional] |

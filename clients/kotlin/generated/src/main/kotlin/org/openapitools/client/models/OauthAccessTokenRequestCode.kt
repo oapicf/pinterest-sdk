@@ -15,7 +15,6 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.OauthAccessTokenRequest
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,7 +22,6 @@ import com.squareup.moshi.JsonClass
 /**
  * A request to exchange an authorization code for an access token.
  *
- * @param grantType 
  * @param code 
  * @param redirectUri 
  */
@@ -31,14 +29,25 @@ import com.squareup.moshi.JsonClass
 
 data class OauthAccessTokenRequestCode (
 
-    @Json(name = "grant_type")
-    override val grantType: OauthAccessTokenRequestCode.GrantType,
-
     @Json(name = "code")
     val code: kotlin.String,
 
     @Json(name = "redirect_uri")
     val redirectUri: kotlin.String
 
-) : OauthAccessTokenRequest
+) {
+
+    /**
+     * 
+     *
+     * Values: authorization_code,refresh_token,client_credentials
+     */
+    @JsonClass(generateAdapter = false)
+    enum class GrantType(val value: kotlin.String) {
+        @Json(name = "authorization_code") authorization_code("authorization_code"),
+        @Json(name = "refresh_token") refresh_token("refresh_token"),
+        @Json(name = "client_credentials") client_credentials("client_credentials");
+    }
+
+}
 

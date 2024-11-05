@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsUpdateRequest;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
@@ -27,7 +28,7 @@ import org.openapitools.model.ProductAvailabilityType;
  **/
 
 @ApiModel(description = "Request object for updating a feed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsVerticalFeedsUpdateRequest   {
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;

@@ -18,7 +18,7 @@ import java.util.List;
  * CatalogsProductGroupMultipleGenderCriteria
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupMultipleGenderCriteria   {
   @JsonProperty("values")
   
@@ -40,10 +40,10 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get values
    * @return values
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public List<Gender> getValues() {
     return values;
@@ -58,10 +58,10 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get negated
    * @return negated
-  **/
+   */
   @ApiModelProperty(value = "")
   public Boolean getNegated() {
     return negated;

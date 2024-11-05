@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GrantType** | **string** |  | 
 **Code** | **string** |  | 
 **RedirectUri** | **string** |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewOauthAccessTokenRequestCode
 
-`func NewOauthAccessTokenRequestCode(code string, redirectUri string, ) *OauthAccessTokenRequestCode`
+`func NewOauthAccessTokenRequestCode(grantType string, code string, redirectUri string, ) *OauthAccessTokenRequestCode`
 
 NewOauthAccessTokenRequestCode instantiates a new OauthAccessTokenRequestCode object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewOauthAccessTokenRequestCodeWithDefaults instantiates a new OauthAccessTokenRequestCode object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGrantType
+
+`func (o *OauthAccessTokenRequestCode) GetGrantType() string`
+
+GetGrantType returns the GrantType field if non-nil, zero value otherwise.
+
+### GetGrantTypeOk
+
+`func (o *OauthAccessTokenRequestCode) GetGrantTypeOk() (*string, bool)`
+
+GetGrantTypeOk returns a tuple with the GrantType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantType
+
+`func (o *OauthAccessTokenRequestCode) SetGrantType(v string)`
+
+SetGrantType sets GrantType field to given value.
+
 
 ### GetCode
 

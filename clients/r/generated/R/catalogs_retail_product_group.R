@@ -17,7 +17,10 @@
 #' @field status  \link{CatalogsProductGroupStatus} [optional]
 #' @field created_at Unix timestamp in seconds of when catalog product group was created. integer [optional]
 #' @field updated_at Unix timestamp in seconds of last time catalog product group was updated. integer [optional]
-#' @field feed_id  character
+#' @field catalog_id Catalog id pertaining to the retail product group. character
+#' @field feed_id id of the catalogs feed belonging to this catalog product group character
+#' @field country  character [optional]
+#' @field locale  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -34,16 +37,19 @@ CatalogsRetailProductGroup <- R6::R6Class(
     `status` = NULL,
     `created_at` = NULL,
     `updated_at` = NULL,
+    `catalog_id` = NULL,
     `feed_id` = NULL,
-    #' Initialize a new CatalogsRetailProductGroup class.
-    #'
+    `country` = NULL,
+    `locale` = NULL,
+
     #' @description
     #' Initialize a new CatalogsRetailProductGroup class.
     #'
     #' @param catalog_type catalog_type
     #' @param id ID of the catalog product group.
     #' @param filters filters
-    #' @param feed_id feed_id
+    #' @param catalog_id Catalog id pertaining to the retail product group.
+    #' @param feed_id id of the catalogs feed belonging to this catalog product group
     #' @param name Name of catalog product group
     #' @param description description
     #' @param is_featured boolean indicator of whether the product group is being featured or not
@@ -51,9 +57,10 @@ CatalogsRetailProductGroup <- R6::R6Class(
     #' @param status status
     #' @param created_at Unix timestamp in seconds of when catalog product group was created.
     #' @param updated_at Unix timestamp in seconds of last time catalog product group was updated.
+    #' @param country country
+    #' @param locale locale
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`catalog_type`, `id`, `filters`, `feed_id`, `name` = NULL, `description` = NULL, `is_featured` = NULL, `type` = NULL, `status` = NULL, `created_at` = NULL, `updated_at` = NULL, ...) {
+    initialize = function(`catalog_type`, `id`, `filters`, `catalog_id`, `feed_id`, `name` = NULL, `description` = NULL, `is_featured` = NULL, `type` = NULL, `status` = NULL, `created_at` = NULL, `updated_at` = NULL, `country` = NULL, `locale` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c("RETAIL"))) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
@@ -73,10 +80,13 @@ CatalogsRetailProductGroup <- R6::R6Class(
         stopifnot(R6::is.R6(`filters`))
         self$`filters` <- `filters`
       }
-      if (!missing(`feed_id`)) {
-        if (!(`feed_id` %in% c("null"))) {
-          stop(paste("Error! \"", `feed_id`, "\" cannot be assigned to `feed_id`. Must be \"null\".", sep = ""))
+      if (!missing(`catalog_id`)) {
+        if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
         }
+        self$`catalog_id` <- `catalog_id`
+      }
+      if (!missing(`feed_id`)) {
         if (!(is.character(`feed_id`) && length(`feed_id`) == 1)) {
           stop(paste("Error! Invalid data for `feed_id`. Must be a string:", `feed_id`))
         }
@@ -126,14 +136,24 @@ CatalogsRetailProductGroup <- R6::R6Class(
         }
         self$`updated_at` <- `updated_at`
       }
+      if (!is.null(`country`)) {
+        if (!(is.character(`country`) && length(`country`) == 1)) {
+          stop(paste("Error! Invalid data for `country`. Must be a string:", `country`))
+        }
+        self$`country` <- `country`
+      }
+      if (!is.null(`locale`)) {
+        if (!(is.character(`locale`) && length(`locale`) == 1)) {
+          stop(paste("Error! Invalid data for `locale`. Must be a string:", `locale`))
+        }
+        self$`locale` <- `locale`
+      }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailProductGroup in JSON format
-    #' @export
     toJSON = function() {
       CatalogsRetailProductGroupObject <- list()
       if (!is.null(self$`catalog_type`)) {
@@ -176,20 +196,30 @@ CatalogsRetailProductGroup <- R6::R6Class(
         CatalogsRetailProductGroupObject[["updated_at"]] <-
           self$`updated_at`
       }
+      if (!is.null(self$`catalog_id`)) {
+        CatalogsRetailProductGroupObject[["catalog_id"]] <-
+          self$`catalog_id`
+      }
       if (!is.null(self$`feed_id`)) {
         CatalogsRetailProductGroupObject[["feed_id"]] <-
           self$`feed_id`
       }
+      if (!is.null(self$`country`)) {
+        CatalogsRetailProductGroupObject[["country"]] <-
+          self$`country`
+      }
+      if (!is.null(self$`locale`)) {
+        CatalogsRetailProductGroupObject[["locale"]] <-
+          self$`locale`
+      }
       CatalogsRetailProductGroupObject
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailProductGroup
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailProductGroup
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailProductGroup
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`)) {
@@ -231,21 +261,25 @@ CatalogsRetailProductGroup <- R6::R6Class(
       if (!is.null(this_object$`updated_at`)) {
         self$`updated_at` <- this_object$`updated_at`
       }
+      if (!is.null(this_object$`catalog_id`)) {
+        self$`catalog_id` <- this_object$`catalog_id`
+      }
       if (!is.null(this_object$`feed_id`)) {
-        if (!is.null(this_object$`feed_id`) && !(this_object$`feed_id` %in% c("null"))) {
-          stop(paste("Error! \"", this_object$`feed_id`, "\" cannot be assigned to `feed_id`. Must be \"null\".", sep = ""))
-        }
         self$`feed_id` <- this_object$`feed_id`
+      }
+      if (!is.null(this_object$`country`)) {
+        self$`country` <- this_object$`country`
+      }
+      if (!is.null(this_object$`locale`)) {
+        self$`locale` <- this_object$`locale`
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailProductGroup in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`catalog_type`)) {
@@ -328,6 +362,14 @@ CatalogsRetailProductGroup <- R6::R6Class(
           self$`updated_at`
           )
         },
+        if (!is.null(self$`catalog_id`)) {
+          sprintf(
+          '"catalog_id":
+            "%s"
+                    ',
+          self$`catalog_id`
+          )
+        },
         if (!is.null(self$`feed_id`)) {
           sprintf(
           '"feed_id":
@@ -335,19 +377,33 @@ CatalogsRetailProductGroup <- R6::R6Class(
                     ',
           self$`feed_id`
           )
+        },
+        if (!is.null(self$`country`)) {
+          sprintf(
+          '"country":
+            "%s"
+                    ',
+          self$`country`
+          )
+        },
+        if (!is.null(self$`locale`)) {
+          sprintf(
+          '"locale":
+            "%s"
+                    ',
+          self$`locale`
+          )
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailProductGroup
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailProductGroup
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailProductGroup
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
@@ -363,19 +419,17 @@ CatalogsRetailProductGroup <- R6::R6Class(
       self$`status` <- CatalogsProductGroupStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`created_at` <- this_object$`created_at`
       self$`updated_at` <- this_object$`updated_at`
-      if (!is.null(this_object$`feed_id`) && !(this_object$`feed_id` %in% c("null"))) {
-        stop(paste("Error! \"", this_object$`feed_id`, "\" cannot be assigned to `feed_id`. Must be \"null\".", sep = ""))
-      }
+      self$`catalog_id` <- this_object$`catalog_id`
       self$`feed_id` <- this_object$`feed_id`
+      self$`country` <- this_object$`country`
+      self$`locale` <- this_object$`locale`
       self
     },
-    #' Validate JSON input with respect to CatalogsRetailProductGroup
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsRetailProductGroup and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
@@ -400,6 +454,14 @@ CatalogsRetailProductGroup <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductGroup: the required field `filters` is missing."))
       }
+      # check the required field `catalog_id`
+      if (!is.null(input_json$`catalog_id`)) {
+        if (!(is.character(input_json$`catalog_id`) && length(input_json$`catalog_id`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", input_json$`catalog_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductGroup: the required field `catalog_id` is missing."))
+      }
       # check the required field `feed_id`
       if (!is.null(input_json$`feed_id`)) {
         if (!(is.character(input_json$`feed_id`) && length(input_json$`feed_id`) == 1)) {
@@ -409,23 +471,19 @@ CatalogsRetailProductGroup <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductGroup: the required field `feed_id` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsRetailProductGroup
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
@@ -446,15 +504,26 @@ CatalogsRetailProductGroup <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `catalog_id` is null
+      if (is.null(self$`catalog_id`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`feed_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `catalog_type` is null
@@ -476,14 +545,24 @@ CatalogsRetailProductGroup <- R6::R6Class(
         invalid_fields["filters"] <- "Non-nullable required field `filters` cannot be null."
       }
 
+      # check if the required `catalog_id` is null
+      if (is.null(self$`catalog_id`)) {
+        invalid_fields["catalog_id"] <- "Non-nullable required field `catalog_id` cannot be null."
+      }
+
+      if (!str_detect(self$`catalog_id`, "^\\d+$")) {
+        invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
+      }
+
+      if (!str_detect(self$`feed_id`, "^\\d+$")) {
+        invalid_fields["feed_id"] <- "Invalid value for `feed_id`, must conform to the pattern ^\\d+$."
+      }
+
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

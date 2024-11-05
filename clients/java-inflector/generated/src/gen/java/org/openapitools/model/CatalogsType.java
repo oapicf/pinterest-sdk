@@ -18,7 +18,9 @@ public enum CatalogsType {
   
   RETAIL("RETAIL"),
   
-  HOTEL("HOTEL");
+  HOTEL("HOTEL"),
+  
+  CREATIVE_ASSETS("CREATIVE_ASSETS");
 
   private String value;
 

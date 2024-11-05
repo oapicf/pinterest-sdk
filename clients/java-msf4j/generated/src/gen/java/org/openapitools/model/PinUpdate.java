@@ -15,7 +15,7 @@ import org.openapitools.model.PinUpdateCarouselSlotsInner;
  * Pin fields for updates
  */
 @ApiModel(description = "Pin fields for updates")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdate   {
   @JsonProperty("alt_text")
   private String altText;
@@ -156,7 +156,7 @@ public class PinUpdate   {
 
   public PinUpdate addCarouselSlotsItem(PinUpdateCarouselSlotsInner carouselSlotsItem) {
     if (this.carouselSlots == null) {
-      this.carouselSlots = ;
+      this.carouselSlots = new ArrayList<>();
     }
     this.carouselSlots.add(carouselSlotsItem);
     return this;

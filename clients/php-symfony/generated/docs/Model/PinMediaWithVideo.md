@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**OpenAPI\Server\Model\ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**images** | [**OpenAPI\Server\Model\PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 **coverImageUrl** | **string** |  | [optional] 
 **videoUrl** | **string** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
 **duration** | **float** | Duration (in milliseconds) | [optional] 

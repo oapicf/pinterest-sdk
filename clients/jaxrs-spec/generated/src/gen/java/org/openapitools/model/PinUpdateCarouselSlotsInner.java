@@ -16,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("PinUpdate_carousel_slots_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdateCarouselSlotsInner   {
-  private @Valid String title;
-  private @Valid String description;
-  private @Valid String link;
+  private String title;
+  private String description;
+  private String link;
 
   /**
    * Carousel Pin slot title.

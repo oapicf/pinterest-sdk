@@ -38,7 +38,7 @@ public class CatalogsRetailItemErrorResponse  {
   */
   @ApiModelProperty(value = "Array with the errors for the item id requested")
   @Valid
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
  /**
   * Get catalogType
   * @return catalogType

@@ -12,8 +12,26 @@ import AnyCodable
 
 public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
 
+    public enum PrimarySort: String, Codable, CaseIterable {
+        case id = "BY_ID"
+        case date = "BY_DATE"
+    }
     static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    static let campaignIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    static let campaignStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    static let campaignObjectiveTypesRule = ArrayRule(minItems: 1, maxItems: 7, uniqueItems: false)
+    static let adGroupIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    static let adGroupStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    static let adIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    static let adStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    static let productGroupIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    static let productGroupStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
+    static let productItemIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
+    static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
+    static let metricsFiltersRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    static let startHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
+    static let endHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
     /** Metric report start date (UTC). Format: YYYY-MM-DD */
     public var startDate: String
     /** Metric report end date (UTC). Format: YYYY-MM-DD */
@@ -50,7 +68,7 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
     public var productGroupStatuses: [ProductGroupSummaryStatus]?
     /** List of product item ids */
     public var productItemIds: [String]?
-    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
+    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
     public var targetingTypes: [AdsAnalyticsTargetingType]?
     /** List of metrics filters */
     public var metricsFilters: [AdsAnalyticsMetricsFilter]?
@@ -60,8 +78,14 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
     public var level: MetricsReportingLevel
     /** Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. */
     public var reportFormat: DataOutputFormat? = "JSON"
+    /** Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. */
+    public var primarySort: PrimarySort?
+    /** Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. */
+    public var startHour: Int?
+    /** Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. */
+    public var endHour: Int?
 
-    public init(startDate: String, endDate: String, granularity: Granularity, clickWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, engagementWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, viewWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__1, conversionReportTime: ConversionReportTimeType? = "TIME_OF_AD_ACTION", attributionTypes: [ConversionReportAttributionType]? = nil, campaignIds: [String]? = nil, campaignStatuses: [CampaignSummaryStatus]? = nil, campaignObjectiveTypes: [ObjectiveType]? = nil, adGroupIds: [String]? = nil, adGroupStatuses: [AdGroupSummaryStatus]? = nil, adIds: [String]? = nil, adStatuses: [PinPromotionSummaryStatus]? = nil, productGroupIds: [String]? = nil, productGroupStatuses: [ProductGroupSummaryStatus]? = nil, productItemIds: [String]? = nil, targetingTypes: [AdsAnalyticsTargetingType]? = nil, metricsFilters: [AdsAnalyticsMetricsFilter]? = nil, columns: [ReportingColumnAsync], level: MetricsReportingLevel, reportFormat: DataOutputFormat? = "JSON") {
+    public init(startDate: String, endDate: String, granularity: Granularity, clickWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, engagementWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, viewWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__1, conversionReportTime: ConversionReportTimeType? = "TIME_OF_AD_ACTION", attributionTypes: [ConversionReportAttributionType]? = nil, campaignIds: [String]? = nil, campaignStatuses: [CampaignSummaryStatus]? = nil, campaignObjectiveTypes: [ObjectiveType]? = nil, adGroupIds: [String]? = nil, adGroupStatuses: [AdGroupSummaryStatus]? = nil, adIds: [String]? = nil, adStatuses: [PinPromotionSummaryStatus]? = nil, productGroupIds: [String]? = nil, productGroupStatuses: [ProductGroupSummaryStatus]? = nil, productItemIds: [String]? = nil, targetingTypes: [AdsAnalyticsTargetingType]? = nil, metricsFilters: [AdsAnalyticsMetricsFilter]? = nil, columns: [ReportingColumnAsync], level: MetricsReportingLevel, reportFormat: DataOutputFormat? = "JSON", primarySort: PrimarySort? = nil, startHour: Int? = nil, endHour: Int? = nil) {
         self.startDate = startDate
         self.endDate = endDate
         self.granularity = granularity
@@ -85,6 +109,9 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
         self.columns = columns
         self.level = level
         self.reportFormat = reportFormat
+        self.primarySort = primarySort
+        self.startHour = startHour
+        self.endHour = endHour
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -111,6 +138,9 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
         case columns
         case level
         case reportFormat = "report_format"
+        case primarySort = "primary_sort"
+        case startHour = "start_hour"
+        case endHour = "end_hour"
     }
 
     // Encodable protocol methods
@@ -140,6 +170,9 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
         try container.encode(columns, forKey: .columns)
         try container.encode(level, forKey: .level)
         try container.encodeIfPresent(reportFormat, forKey: .reportFormat)
+        try container.encodeIfPresent(primarySort, forKey: .primarySort)
+        try container.encodeIfPresent(startHour, forKey: .startHour)
+        try container.encodeIfPresent(endHour, forKey: .endHour)
     }
 }
 

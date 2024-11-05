@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -30,15 +31,23 @@ data class PinMediaSourceImageURL(
 
     @Schema(example = "null", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = true
-) {
+    ) {
 
     /**
     * 
     * Values: image_url
     */
-    enum class SourceType(val value: kotlin.String) {
+    enum class SourceType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("image_url") image_url("image_url")
+        image_url("image_url");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): SourceType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

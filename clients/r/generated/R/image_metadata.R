@@ -23,8 +23,7 @@ ImageMetadata <- R6::R6Class(
     `description` = NULL,
     `link` = NULL,
     `images` = NULL,
-    #' Initialize a new ImageMetadata class.
-    #'
+
     #' @description
     #' Initialize a new ImageMetadata class.
     #'
@@ -34,7 +33,6 @@ ImageMetadata <- R6::R6Class(
     #' @param link link
     #' @param images images
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`item_type` = NULL, `title` = NULL, `description` = NULL, `link` = NULL, `images` = NULL, ...) {
       if (!is.null(`item_type`)) {
         if (!(is.character(`item_type`) && length(`item_type`) == 1)) {
@@ -65,13 +63,11 @@ ImageMetadata <- R6::R6Class(
         self$`images` <- `images`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ImageMetadata in JSON format
-    #' @export
     toJSON = function() {
       ImageMetadataObject <- list()
       if (!is.null(self$`item_type`)) {
@@ -96,14 +92,12 @@ ImageMetadata <- R6::R6Class(
       }
       ImageMetadataObject
     },
-    #' Deserialize JSON string into an instance of ImageMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ImageMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of ImageMetadata
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`item_type`)) {
@@ -125,13 +119,11 @@ ImageMetadata <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ImageMetadata in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`item_type`)) {
@@ -178,14 +170,12 @@ ImageMetadata <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ImageMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ImageMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of ImageMetadata
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`item_type` <- this_object$`item_type`
@@ -195,53 +185,42 @@ ImageMetadata <- R6::R6Class(
       self$`images` <- ImageMetadataImages$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to ImageMetadata
-    #'
+
     #' @description
     #' Validate JSON input with respect to ImageMetadata and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ImageMetadata
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

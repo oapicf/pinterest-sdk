@@ -32,10 +32,10 @@ public class BulkDownloadRequestCampaignFilter  {
   private String name;
 
   @ApiModelProperty(value = "")
-  private List<CampaignSummaryStatus> campaignStatus;
+  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<ObjectiveType> objectiveType;
+  private List<ObjectiveType> objectiveType = new ArrayList<>();
  /**
    * Unix UTC timestamp.
    * @return startTime

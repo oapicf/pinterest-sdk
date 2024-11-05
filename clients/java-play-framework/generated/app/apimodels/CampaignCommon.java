@@ -1,8 +1,7 @@
 package apimodels;
 
-import apimodels.AdCommonTrackingUrls;
-import apimodels.CampaignSummaryStatus;
 import apimodels.EntityStatus;
+import apimodels.TrackingUrls;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -13,7 +12,7 @@ import javax.validation.Valid;
 /**
  * Campaign Data
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CampaignCommon   {
   @JsonProperty("ad_account_id")
@@ -46,7 +45,7 @@ public class CampaignCommon   {
   @JsonProperty("tracking_urls")
   @Valid
 
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("start_time")
   
@@ -56,10 +55,9 @@ public class CampaignCommon   {
   
   private Integer endTime;
 
-  @JsonProperty("summary_status")
-  @Valid
-
-  private CampaignSummaryStatus summaryStatus;
+  @JsonProperty("is_flexible_daily_budgets")
+  
+  private Boolean isFlexibleDailyBudgets;
 
   public CampaignCommon adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -163,7 +161,7 @@ public class CampaignCommon   {
     this.orderLineId = orderLineId;
   }
 
-  public CampaignCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -172,11 +170,11 @@ public class CampaignCommon   {
    * Get trackingUrls
    * @return trackingUrls
   **/
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -214,21 +212,21 @@ public class CampaignCommon   {
     this.endTime = endTime;
   }
 
-  public CampaignCommon summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public CampaignCommon isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
 
    /**
-   * Get summaryStatus
-   * @return summaryStatus
+   * Determine if a campaign has flexible daily budgets setup.
+   * @return isFlexibleDailyBudgets
   **/
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
   }
 
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
 
@@ -250,12 +248,12 @@ public class CampaignCommon   {
         Objects.equals(trackingUrls, campaignCommon.trackingUrls) &&
         Objects.equals(startTime, campaignCommon.startTime) &&
         Objects.equals(endTime, campaignCommon.endTime) &&
-        Objects.equals(summaryStatus, campaignCommon.summaryStatus);
+        Objects.equals(isFlexibleDailyBudgets, campaignCommon.isFlexibleDailyBudgets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -273,7 +271,7 @@ public class CampaignCommon   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("}");
     return sb.toString();
   }

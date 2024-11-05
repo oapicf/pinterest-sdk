@@ -32,5 +32,8 @@ data class AdPreviewURLResponse (
     @Json(name = "url")
     val url: kotlin.String? = null
 
-)
+) {
+
+
+}
 

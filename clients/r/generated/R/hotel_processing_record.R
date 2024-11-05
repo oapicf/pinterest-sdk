@@ -21,8 +21,7 @@ HotelProcessingRecord <- R6::R6Class(
     `errors` = NULL,
     `warnings` = NULL,
     `status` = NULL,
-    #' Initialize a new HotelProcessingRecord class.
-    #'
+
     #' @description
     #' Initialize a new HotelProcessingRecord class.
     #'
@@ -31,7 +30,6 @@ HotelProcessingRecord <- R6::R6Class(
     #' @param warnings Array with the validation warnings for the item processing record
     #' @param status status
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`hotel_id` = NULL, `errors` = NULL, `warnings` = NULL, `status` = NULL, ...) {
       if (!is.null(`hotel_id`)) {
         if (!(is.character(`hotel_id`) && length(`hotel_id`) == 1)) {
@@ -57,13 +55,11 @@ HotelProcessingRecord <- R6::R6Class(
         self$`status` <- `status`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return HotelProcessingRecord in JSON format
-    #' @export
     toJSON = function() {
       HotelProcessingRecordObject <- list()
       if (!is.null(self$`hotel_id`)) {
@@ -84,14 +80,12 @@ HotelProcessingRecord <- R6::R6Class(
       }
       HotelProcessingRecordObject
     },
-    #' Deserialize JSON string into an instance of HotelProcessingRecord
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of HotelProcessingRecord
     #'
     #' @param input_json the JSON input
     #' @return the instance of HotelProcessingRecord
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`hotel_id`)) {
@@ -110,13 +104,11 @@ HotelProcessingRecord <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return HotelProcessingRecord in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`hotel_id`)) {
@@ -155,14 +147,12 @@ HotelProcessingRecord <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of HotelProcessingRecord
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of HotelProcessingRecord
     #'
     #' @param input_json the JSON input
     #' @return the instance of HotelProcessingRecord
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`hotel_id` <- this_object$`hotel_id`
@@ -171,53 +161,42 @@ HotelProcessingRecord <- R6::R6Class(
       self$`status` <- ItemProcessingStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to HotelProcessingRecord
-    #'
+
     #' @description
     #' Validate JSON input with respect to HotelProcessingRecord and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of HotelProcessingRecord
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

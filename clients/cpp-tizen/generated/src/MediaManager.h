@@ -30,7 +30,7 @@ public:
 
 /*! \brief Register media upload. *Synchronous*
  *
- * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+ * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
  * \param mediaUploadRequest Create a media upload request *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -43,7 +43,7 @@ bool mediaCreateSync(char * accessToken,
 
 /*! \brief Register media upload. *Asynchronous*
  *
- * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+ * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
  * \param mediaUploadRequest Create a media upload request *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -57,7 +57,7 @@ bool mediaCreateAsync(char * accessToken,
 
 /*! \brief Get media upload details. *Synchronous*
  *
- * Get details for a registered media upload, including its current status.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+ * Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
  * \param mediaId Media identifier *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -70,7 +70,7 @@ bool mediaGetSync(char * accessToken,
 
 /*! \brief Get media upload details. *Asynchronous*
  *
- * Get details for a registered media upload, including its current status.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+ * Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
  * \param mediaId Media identifier *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -84,9 +84,9 @@ bool mediaGetAsync(char * accessToken,
 
 /*! \brief List media uploads. *Synchronous*
  *
- * List media uploads filtered by given parameters.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+ * List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -98,9 +98,9 @@ bool mediaListSync(char * accessToken,
 
 /*! \brief List media uploads. *Asynchronous*
  *
- * List media uploads filtered by given parameters.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+ * List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.

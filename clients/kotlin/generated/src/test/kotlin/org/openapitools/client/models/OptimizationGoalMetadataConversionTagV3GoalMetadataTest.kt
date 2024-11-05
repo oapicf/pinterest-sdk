@@ -50,7 +50,7 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadataTest : ShouldSpec() {
             //modelInstance.cpaGoalValueInMicroCurrency shouldBe ("TODO")
         }
 
-        // to test the property `isRoasOptimized` - Ad group is ROAS optimized
+        // to test the property `isRoasOptimized` - ROAS optimization is not supported
         should("test isRoasOptimized") {
             // uncomment below to test the property
             //modelInstance.isRoasOptimized shouldBe ("TODO")

@@ -16,7 +16,7 @@ void main() {
   // final instance = CatalogsVerticalBatchRequest();
 
   group('test CatalogsVerticalBatchRequest', () {
-    // CatalogsType catalogType
+    // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
     });
@@ -26,18 +26,18 @@ void main() {
       // TODO
     });
 
-    // Language language
+    // CatalogsItemsRequestLanguage language
     test('to test the property `language`', () async {
       // TODO
     });
 
-    // Array with catalogs item operations
-    // List<CatalogsHotelBatchItem> items (default value: const [])
+    // Array with creative assets item operations
+    // List<CatalogsCreativeAssetsBatchItem> items (default value: const [])
     test('to test the property `items`', () async {
       // TODO
     });
 
-    // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
     // String catalogId
     test('to test the property `catalogId`', () async {
       // TODO

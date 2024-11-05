@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,8 +20,8 @@ import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 
 
 
@@ -30,7 +30,7 @@ import org.openapitools.model.SummaryPinMedia;
  */
 
 @ApiModel(description = "Pin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Pin   {
   
   private String id;
@@ -45,7 +45,7 @@ public class Pin   {
   private String boardSectionId;
   private BoardOwner boardOwner;
   private Boolean isOwner;
-  private SummaryPinMedia media;
+  private PinMedia media;
   private PinMediaSource mediaSource;
   private String parentPinId;
   private Boolean isStandard;
@@ -263,7 +263,7 @@ public class Pin   {
 
   /**
    */
-  public Pin media(SummaryPinMedia media) {
+  public Pin media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -271,10 +271,10 @@ public class Pin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -314,7 +314,7 @@ public class Pin   {
   }
 
   /**
-   * Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+   * Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
    */
   public Pin isStandard(Boolean isStandard) {
     this.isStandard = isStandard;
@@ -322,7 +322,7 @@ public class Pin   {
   }
 
   
-  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.")
+  @ApiModelProperty(value = "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.")
   @JsonProperty("is_standard")
   public Boolean getIsStandard() {
     return isStandard;
@@ -376,7 +376,7 @@ public class Pin   {
   }
 
   
-  @ApiModelProperty(example = "{\"pin_metrics\":[{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"all_time\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}},null]}", value = "Pin metrics with associated time intervals if any.")
+  @ApiModelProperty(example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", value = "Pin metrics with associated time intervals if any.")
   @JsonProperty("pin_metrics")
   public Object getPinMetrics() {
     return pinMetrics;

@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.LeadFormCommonPolicyLinksInner;
 import apimodels.LeadFormQuestion;
 import apimodels.LeadFormStatus;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 /**
  * Creation fields
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LeadFormCommon   {
   @JsonProperty("name")
@@ -48,6 +49,12 @@ public class LeadFormCommon   {
 @Valid
 
   private List<@Valid LeadFormQuestion> questions = null;
+
+  @JsonProperty("policy_links")
+  @Size(min=0,max=3)
+@Valid
+
+  private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = null;
 
   public LeadFormCommon name(String name) {
     this.name = name;
@@ -89,7 +96,7 @@ public class LeadFormCommon   {
   }
 
    /**
-   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
    * @return hasAcceptedTerms
   **/
   public Boolean getHasAcceptedTerms() {
@@ -176,6 +183,31 @@ public class LeadFormCommon   {
     this.questions = questions;
   }
 
+  public LeadFormCommon policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+    return this;
+  }
+
+  public LeadFormCommon addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    if (this.policyLinks == null) {
+      this.policyLinks = new ArrayList<>();
+    }
+    this.policyLinks.add(policyLinksItem);
+    return this;
+  }
+
+   /**
+   * List of additional policy links to be displayed on the lead form.
+   * @return policyLinks
+  **/
+  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,12 +224,13 @@ public class LeadFormCommon   {
         Objects.equals(completionMessage, leadFormCommon.completionMessage) &&
         Objects.equals(status, leadFormCommon.status) &&
         Objects.equals(disclosureLanguage, leadFormCommon.disclosureLanguage) &&
-        Objects.equals(questions, leadFormCommon.questions);
+        Objects.equals(questions, leadFormCommon.questions) &&
+        Objects.equals(policyLinks, leadFormCommon.policyLinks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions);
+    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -213,6 +246,7 @@ public class LeadFormCommon   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

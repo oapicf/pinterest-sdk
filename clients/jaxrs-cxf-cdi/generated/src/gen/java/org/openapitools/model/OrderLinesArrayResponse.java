@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class OrderLinesArrayResponse   {
   
-  private List<@Valid OrderLines> items;
+  private List<@Valid OrderLines> items = new ArrayList<>();
 
   /**
    **/

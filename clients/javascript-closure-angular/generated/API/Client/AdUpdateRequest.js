@@ -13,7 +13,7 @@ API.Client.AdUpdateRequest = function() {}
 API.Client.AdUpdateRequest.prototype.adGroupId;
 
 /**
- * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+ * Deep link URL for Android devices.
  * @type {!string}
  * @export
  */
@@ -61,7 +61,7 @@ API.Client.AdUpdateRequest.prototype.creativeType;
 API.Client.AdUpdateRequest.prototype.destinationUrl;
 
 /**
- * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+ * Deep link URL for iOS devices.
  * @type {!string}
  * @export
  */
@@ -95,7 +95,7 @@ API.Client.AdUpdateRequest.prototype.name;
 API.Client.AdUpdateRequest.prototype.status;
 
 /**
- * @type {!API.Client.AdCommon_tracking_urls}
+ * @type {!API.Client.TrackingUrls}
  * @export
  */
 API.Client.AdUpdateRequest.prototype.trackingUrls;
@@ -121,14 +121,15 @@ API.Client.AdUpdateRequest.prototype.leadFormId;
 API.Client.AdUpdateRequest.prototype.gridClickType;
 
 /**
- * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+ * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
  * @type {!string}
  * @export
  */
 API.Client.AdUpdateRequest.prototype.customizableCtaType;
 
 /**
- * @type {!API.Client.AdCommon_quiz_pin_data}
+ * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+ * @type {!API.Client.QuizPinData}
  * @export
  */
 API.Client.AdUpdateRequest.prototype.quizPinData;
@@ -158,7 +159,7 @@ API.Client.AdUpdateRequest.CustomizableCtaTypeEnum = {
   BUY_NOW: 'BUY_NOW',
   CONTACT_US: 'CONTACT_US',
   GET_QUOTE: 'GET_QUOTE',
-  VISIT_WEBSITE: 'VISIT_WEBSITE',
+  VISIT_SITE: 'VISIT_SITE',
   APPLY_NOW: 'APPLY_NOW',
   BOOK_NOW: 'BOOK_NOW',
   REQUEST_DEMO: 'REQUEST_DEMO',

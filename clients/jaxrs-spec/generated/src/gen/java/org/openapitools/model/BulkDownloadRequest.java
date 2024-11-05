@@ -23,13 +23,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Ad entities to get in bulk request.")
 @JsonTypeName("BulkDownloadRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequest   {
-  private @Valid List<BulkEntityType> entityTypes;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> entityIds;
-  private @Valid String updatedSince;
-  private @Valid BulkDownloadRequestCampaignFilter campaignFilter;
-  private @Valid BulkOutputFormat outputFormat = "JSON";
+  private @Valid List<BulkEntityType> entityTypes = new ArrayList<>();
+  private @Valid List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
+  private String updatedSince;
+  private BulkDownloadRequestCampaignFilter campaignFilter;
+  private BulkOutputFormat outputFormat = "JSON";
 
   /**
    * All entity types specified will be downloaded. Fewer types result in faster downloads.
@@ -42,7 +42,7 @@ public class BulkDownloadRequest   {
   
   @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
   @JsonProperty("entity_types")
- @Size(min=1,max=5)  public List<BulkEntityType> getEntityTypes() {
+   @Size(min=1,max=5)public List<BulkEntityType> getEntityTypes() {
     return entityTypes;
   }
 
@@ -114,7 +114,7 @@ public class BulkDownloadRequest   {
   
   @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp to retrieve all entities that have changed since this time.")
   @JsonProperty("updated_since")
- @Pattern(regexp="^\\d+$")  public String getUpdatedSince() {
+   @Pattern(regexp="^\\d+$")public String getUpdatedSince() {
     return updatedSince;
   }
 
@@ -133,7 +133,7 @@ public class BulkDownloadRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("campaign_filter")
-  public BulkDownloadRequestCampaignFilter getCampaignFilter() {
+  @Valid public BulkDownloadRequestCampaignFilter getCampaignFilter() {
     return campaignFilter;
   }
 

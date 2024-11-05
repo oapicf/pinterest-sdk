@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,12 +24,13 @@ var _ MappedNullable = &CatalogsRetailProductGroup{}
 type CatalogsRetailProductGroup struct {
 	CatalogType string `json:"catalog_type"`
 	// ID of the catalog product group.
-	Id string `json:"id"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 	// Name of catalog product group
 	Name *string `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	Filters CatalogsProductGroupFilters `json:"filters"`
 	// boolean indicator of whether the product group is being featured or not
+	// Deprecated
 	IsFeatured *bool `json:"is_featured,omitempty"`
 	Type *CatalogsProductGroupType `json:"type,omitempty"`
 	Status *CatalogsProductGroupStatus `json:"status,omitempty"`
@@ -37,7 +38,12 @@ type CatalogsRetailProductGroup struct {
 	CreatedAt *int32 `json:"created_at,omitempty"`
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt *int32 `json:"updated_at,omitempty"`
-	FeedId NullableString `json:"feed_id"`
+	// Catalog id pertaining to the retail product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	// id of the catalogs feed belonging to this catalog product group
+	FeedId NullableString `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	Country NullableString `json:"country,omitempty"`
+	Locale NullableString `json:"locale,omitempty"`
 }
 
 type _CatalogsRetailProductGroup CatalogsRetailProductGroup
@@ -46,11 +52,12 @@ type _CatalogsRetailProductGroup CatalogsRetailProductGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailProductGroup(catalogType string, id string, filters CatalogsProductGroupFilters, feedId NullableString) *CatalogsRetailProductGroup {
+func NewCatalogsRetailProductGroup(catalogType string, id string, filters CatalogsProductGroupFilters, catalogId string, feedId NullableString) *CatalogsRetailProductGroup {
 	this := CatalogsRetailProductGroup{}
 	this.CatalogType = catalogType
 	this.Id = id
 	this.Filters = filters
+	this.CatalogId = catalogId
 	this.FeedId = feedId
 	return &this
 }
@@ -210,6 +217,7 @@ func (o *CatalogsRetailProductGroup) SetFilters(v CatalogsProductGroupFilters) {
 }
 
 // GetIsFeatured returns the IsFeatured field value if set, zero value otherwise.
+// Deprecated
 func (o *CatalogsRetailProductGroup) GetIsFeatured() bool {
 	if o == nil || IsNil(o.IsFeatured) {
 		var ret bool
@@ -220,6 +228,7 @@ func (o *CatalogsRetailProductGroup) GetIsFeatured() bool {
 
 // GetIsFeaturedOk returns a tuple with the IsFeatured field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *CatalogsRetailProductGroup) GetIsFeaturedOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsFeatured) {
 		return nil, false
@@ -237,6 +246,7 @@ func (o *CatalogsRetailProductGroup) HasIsFeatured() bool {
 }
 
 // SetIsFeatured gets a reference to the given bool and assigns it to the IsFeatured field.
+// Deprecated
 func (o *CatalogsRetailProductGroup) SetIsFeatured(v bool) {
 	o.IsFeatured = &v
 }
@@ -369,6 +379,30 @@ func (o *CatalogsRetailProductGroup) SetUpdatedAt(v int32) {
 	o.UpdatedAt = &v
 }
 
+// GetCatalogId returns the CatalogId field value
+func (o *CatalogsRetailProductGroup) GetCatalogId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetCatalogIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogId, true
+}
+
+// SetCatalogId sets field value
+func (o *CatalogsRetailProductGroup) SetCatalogId(v string) {
+	o.CatalogId = v
+}
+
 // GetFeedId returns the FeedId field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *CatalogsRetailProductGroup) GetFeedId() string {
@@ -393,6 +427,90 @@ func (o *CatalogsRetailProductGroup) GetFeedIdOk() (*string, bool) {
 // SetFeedId sets field value
 func (o *CatalogsRetailProductGroup) SetFeedId(v string) {
 	o.FeedId.Set(&v)
+}
+
+// GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsRetailProductGroup) GetCountry() string {
+	if o == nil || IsNil(o.Country.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Country.Get()
+}
+
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsRetailProductGroup) GetCountryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Country.Get(), o.Country.IsSet()
+}
+
+// HasCountry returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasCountry() bool {
+	if o != nil && o.Country.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given NullableString and assigns it to the Country field.
+func (o *CatalogsRetailProductGroup) SetCountry(v string) {
+	o.Country.Set(&v)
+}
+// SetCountryNil sets the value for Country to be an explicit nil
+func (o *CatalogsRetailProductGroup) SetCountryNil() {
+	o.Country.Set(nil)
+}
+
+// UnsetCountry ensures that no value is present for Country, not even an explicit nil
+func (o *CatalogsRetailProductGroup) UnsetCountry() {
+	o.Country.Unset()
+}
+
+// GetLocale returns the Locale field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsRetailProductGroup) GetLocale() string {
+	if o == nil || IsNil(o.Locale.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Locale.Get()
+}
+
+// GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsRetailProductGroup) GetLocaleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Locale.Get(), o.Locale.IsSet()
+}
+
+// HasLocale returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasLocale() bool {
+	if o != nil && o.Locale.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLocale gets a reference to the given NullableString and assigns it to the Locale field.
+func (o *CatalogsRetailProductGroup) SetLocale(v string) {
+	o.Locale.Set(&v)
+}
+// SetLocaleNil sets the value for Locale to be an explicit nil
+func (o *CatalogsRetailProductGroup) SetLocaleNil() {
+	o.Locale.Set(nil)
+}
+
+// UnsetLocale ensures that no value is present for Locale, not even an explicit nil
+func (o *CatalogsRetailProductGroup) UnsetLocale() {
+	o.Locale.Unset()
 }
 
 func (o CatalogsRetailProductGroup) MarshalJSON() ([]byte, error) {
@@ -429,7 +547,14 @@ func (o CatalogsRetailProductGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	toSerialize["catalog_id"] = o.CatalogId
 	toSerialize["feed_id"] = o.FeedId.Get()
+	if o.Country.IsSet() {
+		toSerialize["country"] = o.Country.Get()
+	}
+	if o.Locale.IsSet() {
+		toSerialize["locale"] = o.Locale.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -441,6 +566,7 @@ func (o *CatalogsRetailProductGroup) UnmarshalJSON(data []byte) (err error) {
 		"catalog_type",
 		"id",
 		"filters",
+		"catalog_id",
 		"feed_id",
 	}
 

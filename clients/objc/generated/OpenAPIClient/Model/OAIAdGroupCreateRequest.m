@@ -19,7 +19,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"status": @"status", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"bidInMicroCurrency": @"bid_in_micro_currency", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"budgetType": @"budget_type", @"startTime": @"start_time", @"endTime": @"end_time", @"targetingSpec": @"targeting_spec", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"trackingUrls": @"tracking_urls", @"autoTargetingEnabled": @"auto_targeting_enabled", @"placementGroup": @"placement_group", @"pacingDeliveryType": @"pacing_delivery_type", @"campaignId": @"campaign_id", @"billableEvent": @"billable_event", @"bidStrategyType": @"bid_strategy_type" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"status": @"status", @"budgetInMicroCurrency": @"budget_in_micro_currency", @"bidInMicroCurrency": @"bid_in_micro_currency", @"optimizationGoalMetadata": @"optimization_goal_metadata", @"budgetType": @"budget_type", @"startTime": @"start_time", @"endTime": @"end_time", @"targetingSpec": @"targeting_spec", @"lifetimeFrequencyCap": @"lifetime_frequency_cap", @"trackingUrls": @"tracking_urls", @"autoTargetingEnabled": @"auto_targeting_enabled", @"placementGroup": @"placement_group", @"pacingDeliveryType": @"pacing_delivery_type", @"campaignId": @"campaign_id", @"billableEvent": @"billable_event", @"bidStrategyType": @"bid_strategy_type", @"targetingTemplateIds": @"targeting_template_ids" }];
 }
 
 /**
@@ -29,7 +29,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"status", @"budgetInMicroCurrency", @"bidInMicroCurrency", @"optimizationGoalMetadata", @"budgetType", @"startTime", @"endTime", @"targetingSpec", @"lifetimeFrequencyCap", @"trackingUrls", @"autoTargetingEnabled", @"placementGroup", @"pacingDeliveryType", @"bidStrategyType"];
+  NSArray *optionalProperties = @[@"status", @"budgetInMicroCurrency", @"bidInMicroCurrency", @"optimizationGoalMetadata", @"budgetType", @"startTime", @"endTime", @"targetingSpec", @"lifetimeFrequencyCap", @"trackingUrls", @"autoTargetingEnabled", @"placementGroup", @"pacingDeliveryType", @"bidStrategyType", @"targetingTemplateIds"];
   return [optionalProperties containsObject:propertyName];
 }
 

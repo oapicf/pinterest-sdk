@@ -16,7 +16,7 @@ import org.openapitools.model.AdAccountCreateRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionResponse;
 import org.openapitools.model.AdAccountGetSubscriptionResponse;
-import org.openapitools.model.AdAccountsCatalogsProductGroupsList200Response;
+import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
 import org.openapitools.model.AdArrayResponse;
@@ -33,6 +33,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
@@ -43,6 +45,7 @@ import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.Audience;
+import org.openapitools.model.AudienceAccountType;
 import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
@@ -58,6 +61,8 @@ import org.openapitools.model.BulkDownloadResponse;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
 import org.openapitools.model.BulkUpsertStatusResponse;
+import org.openapitools.model.BusinessSharedAudience;
+import org.openapitools.model.BusinessSharedAudienceResponse;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.CampaignCreateResponse;
 import org.openapitools.model.CampaignResponse;
@@ -88,10 +93,16 @@ import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LeadFormArrayResponse;
+import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
 import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
+import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadsExportCreateRequest;
+import org.openapitools.model.LeadsExportCreateResponse;
+import org.openapitools.model.LeadsExportResponseData;
 import java.util.List;
 import java.util.Map;
 import org.openapitools.model.MatchType;
@@ -110,12 +121,18 @@ import org.openapitools.model.SSIOCreateInsertionOrderResponse;
 import org.openapitools.model.SSIOEditInsertionOrderRequest;
 import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SharedAudience;
+import org.openapitools.model.SharedAudienceResponse;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
+import org.openapitools.model.TargetingTemplateCreate;
+import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplateList200Response;
+import org.openapitools.model.TargetingTemplateUpdateRequest;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -136,7 +153,7 @@ public class AdAccountsController  {
   */
 
   /*
-    public ResponseContext adAccountsCatalogsProductGroupsList(RequestContext request , String adAccountId, String feedProfileId) {
+    public ResponseContext adAccountsAudiencesSharedAccountsList(RequestContext request , String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -238,13 +255,13 @@ public class AdAccountsController  {
   */
 
   /*
-    public ResponseContext adTargetingAnalyticsGet(RequestContext request , String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
+    public ResponseContext adTargetingAnalyticsGet(RequestContext request , String adAccountId, List<String> adIds, Date startDate, Date endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext adsAnalytics(RequestContext request , String adAccountId, Date startDate, Date endDate, List<String> adIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) {
+    public ResponseContext adsAnalytics(RequestContext request , String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -382,7 +399,7 @@ public class AdAccountsController  {
   */
 
   /*
-    public ResponseContext campaignTargetingAnalyticsGet(RequestContext request , String adAccountId, List<String> campaignIds, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
+    public ResponseContext campaignTargetingAnalyticsGet(RequestContext request , String adAccountId, List<String> campaignIds, Date startDate, Date endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -502,7 +519,31 @@ public class AdAccountsController  {
   */
 
   /*
+    public ResponseContext leadFormsCreate(RequestContext request , String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
     public ResponseContext leadFormsList(RequestContext request , String adAccountId, Integer pageSize, String order, String bookmark) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext leadFormsUpdate(RequestContext request , String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext leadsExportCreate(RequestContext request , String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext leadsExportGet(RequestContext request , String adAccountId, String leadsExportId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -604,6 +645,24 @@ public class AdAccountsController  {
   */
 
   /*
+    public ResponseContext targetingTemplateCreate(RequestContext request , String adAccountId, TargetingTemplateCreate targetingTemplateCreate) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext targetingTemplateList(RequestContext request , String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext targetingTemplateUpdate(RequestContext request , String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
     public ResponseContext templatesList(RequestContext request , String adAccountId, Integer pageSize, String order, String bookmark) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -611,6 +670,18 @@ public class AdAccountsController  {
 
   /*
     public ResponseContext termsOfServiceGet(RequestContext request , String adAccountId, Boolean includeHtml, String tosType) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext updateAdAccountToAdAccountSharedAudience(RequestContext request , String adAccountId, SharedAudience sharedAudience) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext updateAdAccountToBusinessSharedAudience(RequestContext request , String adAccountId, BusinessSharedAudience businessSharedAudience) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

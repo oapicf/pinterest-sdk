@@ -24,13 +24,13 @@ import javax.annotation.Generated;
  * TopVideoPinsAnalyticsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopVideoPinsAnalyticsResponse {
 
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @Valid
-  private List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins;
+  private List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
   /**
    * Gets or Sets sortBy
@@ -50,7 +50,7 @@ public class TopVideoPinsAnalyticsResponse {
     
     QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
     
-    VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+    VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
     
     VIDEO_START("VIDEO_START");
 
@@ -91,7 +91,7 @@ public class TopVideoPinsAnalyticsResponse {
   /**
    * Get dateAvailability
    * @return dateAvailability
-  */
+   */
   @Valid 
   @Schema(name = "date_availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date_availability")
@@ -119,7 +119,7 @@ public class TopVideoPinsAnalyticsResponse {
   /**
    * Get pins
    * @return pins
-  */
+   */
   @Valid 
   @Schema(name = "pins", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pins")
@@ -139,7 +139,7 @@ public class TopVideoPinsAnalyticsResponse {
   /**
    * Get sortBy
    * @return sortBy
-  */
+   */
   
   @Schema(name = "sort_by", example = "IMPRESSION", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sort_by")

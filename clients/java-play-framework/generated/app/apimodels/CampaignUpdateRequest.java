@@ -1,9 +1,8 @@
 package apimodels;
 
-import apimodels.AdCommonTrackingUrls;
-import apimodels.CampaignSummaryStatus;
 import apimodels.EntityStatus;
 import apimodels.ObjectiveType;
+import apimodels.TrackingUrls;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -14,7 +13,7 @@ import javax.validation.Valid;
 /**
  * CampaignUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CampaignUpdateRequest   {
   @JsonProperty("id")
@@ -54,7 +53,7 @@ public class CampaignUpdateRequest   {
   @JsonProperty("tracking_urls")
   @Valid
 
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("start_time")
   
@@ -63,11 +62,6 @@ public class CampaignUpdateRequest   {
   @JsonProperty("end_time")
   
   private Integer endTime;
-
-  @JsonProperty("summary_status")
-  @Valid
-
-  private CampaignSummaryStatus summaryStatus;
 
   @JsonProperty("is_flexible_daily_budgets")
   
@@ -209,7 +203,7 @@ public class CampaignUpdateRequest   {
     this.orderLineId = orderLineId;
   }
 
-  public CampaignUpdateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -218,11 +212,11 @@ public class CampaignUpdateRequest   {
    * Get trackingUrls
    * @return trackingUrls
   **/
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -258,23 +252,6 @@ public class CampaignUpdateRequest   {
 
   public void setEndTime(Integer endTime) {
     this.endTime = endTime;
-  }
-
-  public CampaignUpdateRequest summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-    return this;
-  }
-
-   /**
-   * Get summaryStatus
-   * @return summaryStatus
-  **/
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
   }
 
   public CampaignUpdateRequest isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
@@ -382,7 +359,6 @@ public class CampaignUpdateRequest   {
         Objects.equals(trackingUrls, campaignUpdateRequest.trackingUrls) &&
         Objects.equals(startTime, campaignUpdateRequest.startTime) &&
         Objects.equals(endTime, campaignUpdateRequest.endTime) &&
-        Objects.equals(summaryStatus, campaignUpdateRequest.summaryStatus) &&
         Objects.equals(isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
         Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(isAutomatedCampaign, campaignUpdateRequest.isAutomatedCampaign) &&
@@ -392,7 +368,7 @@ public class CampaignUpdateRequest   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, isCampaignBudgetOptimization, objectiveType);
+    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, isCampaignBudgetOptimization, objectiveType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -411,7 +387,6 @@ public class CampaignUpdateRequest   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

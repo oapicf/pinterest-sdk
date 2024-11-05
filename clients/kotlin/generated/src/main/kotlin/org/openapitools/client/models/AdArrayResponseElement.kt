@@ -37,5 +37,8 @@ data class AdArrayResponseElement (
     @Json(name = "exceptions")
     val exceptions: Exception? = null
 
-)
+) {
+
+
+}
 

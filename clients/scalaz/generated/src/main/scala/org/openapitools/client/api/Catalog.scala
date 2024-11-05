@@ -13,10 +13,10 @@ import java.time.OffsetDateTime
 import Catalog._
 
 case class Catalog (
-  createdAt: Option[OffsetDateTime],
+  createdAt: OffsetDateTime,
 /* ID of the catalog entity. */
   id: String,
-updatedAt: Option[OffsetDateTime],
+updatedAt: OffsetDateTime,
 /* A human-friendly name associated to a catalog entity. */
   name: String,
 catalogType: CatalogsType)

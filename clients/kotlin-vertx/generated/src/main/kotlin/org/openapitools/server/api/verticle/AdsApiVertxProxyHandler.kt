@@ -22,8 +22,8 @@ import org.openapitools.server.api.model.AdPreviewRequest
 import org.openapitools.server.api.model.AdPreviewURLResponse
 import org.openapitools.server.api.model.AdResponse
 import org.openapitools.server.api.model.AdUpdateRequest
+import org.openapitools.server.api.model.AdsAnalyticsAdTargetingType
 import org.openapitools.server.api.model.AdsAnalyticsResponseInner
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType
 import org.openapitools.server.api.model.AdsList200Response
 import org.openapitools.server.api.model.ConversionReportAttributionType
 import org.openapitools.server.api.model.Error
@@ -121,8 +121,8 @@ class AdsApiVertxProxyHandler(private val vertx: Vertx, private val service: Ads
                     if(targetingTypesParam == null){
                          throw IllegalArgumentException("targetingTypes is required")
                     }
-                    val targetingTypes:kotlin.Array<AdsAnalyticsTargetingType> = Gson().fromJson(targetingTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsTargetingType>>(){}.type)
+                    val targetingTypes:kotlin.Array<AdsAnalyticsAdTargetingType> = Gson().fromJson(targetingTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsAdTargetingType>>(){}.type)
                     val columnsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"columns")
                     if(columnsParam == null){
                          throw IllegalArgumentException("columns is required")
@@ -164,12 +164,6 @@ class AdsApiVertxProxyHandler(private val vertx: Vertx, private val service: Ads
                     if(endDate == null){
                         throw IllegalArgumentException("endDate is required")
                     }
-                    val adIdsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"ad_ids")
-                    if(adIdsParam == null){
-                         throw IllegalArgumentException("adIds is required")
-                    }
-                    val adIds:kotlin.Array<kotlin.String> = Gson().fromJson(adIdsParam.encode()
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val columnsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"columns")
                     if(columnsParam == null){
                          throw IllegalArgumentException("columns is required")
@@ -181,12 +175,24 @@ class AdsApiVertxProxyHandler(private val vertx: Vertx, private val service: Ads
                         throw IllegalArgumentException("granularity is required")
                     }
                     val granularity = Gson().fromJson(granularityParam.encode(), Granularity::class.java)
+                    val adIdsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"ad_ids")
+                    val adIds:kotlin.Array<kotlin.String>? = if(adIdsParam == null) null
+                            else Gson().fromJson(adIdsParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val clickWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"click_window_days")
                     val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
                     val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
+                    val pinIdsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"pin_ids")
+                    val pinIds:kotlin.Array<kotlin.String>? = if(pinIdsParam == null) null
+                            else Gson().fromJson(pinIdsParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val campaignIdsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"campaign_ids")
+                    val campaignIds:kotlin.Array<kotlin.String>? = if(campaignIdsParam == null) null
+                            else Gson().fromJson(campaignIdsParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adsAnalytics(adAccountId,startDate,endDate,adIds,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,context)
+                        val result = service.adsAnalytics(adAccountId,startDate,endDate,columns,granularity,adIds,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,pinIds,campaignIds,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

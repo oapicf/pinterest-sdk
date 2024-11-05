@@ -5,7 +5,7 @@
   <h2><a name="adPreviews/create"></a>adPreviews/create</h2>
   <hr>
   <p></p>
-  <p>Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.</p>
+  <p>Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ad_previews</code>
   <h3 class="section">HTTP Method</h3>
@@ -100,9 +100,9 @@
       
       
       <span class="param-name">targeting_types</span>
-      <span class="param-type">List(AdsAnalyticsTargetingType)</span>
+      <span class="param-type">List(AdsAnalyticsAdTargetingType)</span>
       
-      <p class="param-description">Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.</p>
+      <p class="param-description">Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.</p>
       </li>
       <li class="parameter">
       
@@ -185,7 +185,7 @@
   <h2><a name="ads/analytics"></a>ads/analytics</h2>
   <hr>
   <p></p>
-  <p>Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.</p>
+  <p>Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ads/analytics</code>
   <h3 class="section">HTTP Method</h3>
@@ -233,17 +233,6 @@
       
       
       
-      <span class="param-name">ad_ids</span>
-      <span class="param-type">List(String)</span>
-      
-      <p class="param-description">List of Ad Ids to use to filter the results.</p>
-      </li>
-      <li class="parameter">
-      
-      <span class="param-in">Query: </span>
-      
-      
-      
       <span class="param-name">columns</span>
       <span class="param-type">List(String)</span>
       
@@ -259,6 +248,17 @@
       <span class="param-type">Granularity</span>
       
       <p class="param-description">TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_ids</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">List of Ad Ids to use to filter the results.</p>
       </li>
       <li class="parameter">
       
@@ -303,6 +303,28 @@
       <span class="param-type">String</span>
       
       <p class="param-description">The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">pin_ids</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">List of Pin IDs.</p>
+      </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">campaign_ids</span>
+      <span class="param-type">List(String)</span>
+      
+      <p class="param-description">List of Campaign Ids to use to filter the results.</p>
       </li>
   </ul>
   <h2><a name="ads/create"></a>ads/create</h2>
@@ -451,7 +473,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
       </li>
       <li class="parameter">
       

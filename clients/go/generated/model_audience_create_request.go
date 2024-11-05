@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &AudienceCreateRequest{}
 // AudienceCreateRequest struct for AudienceCreateRequest
 type AudienceCreateRequest struct {
 	// Ad account ID.
-	AdAccountId *string `json:"ad_account_id,omitempty"`
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Audience name.
 	Name string `json:"name"`
 	Rule AudienceRule `json:"rule"`

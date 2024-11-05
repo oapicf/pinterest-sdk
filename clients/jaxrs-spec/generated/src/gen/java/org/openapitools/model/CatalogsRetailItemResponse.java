@@ -24,12 +24,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing a retail item record")
 @JsonTypeName("CatalogsRetailItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemResponse   {
-  private @Valid CatalogsType catalogType;
-  private @Valid String itemId;
+  private CatalogsType catalogType;
+  private String itemId;
   private @Valid List<@Valid Pin> pins;
-  private @Valid ItemAttributes attributes;
+  private ItemAttributes attributes;
 
   /**
    **/
@@ -41,8 +41,7 @@ public class CatalogsRetailItemResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
+  @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
@@ -82,7 +81,7 @@ public class CatalogsRetailItemResponse   {
   
   @ApiModelProperty(value = "The pins mapped to the item")
   @JsonProperty("pins")
- @Size(max=11)  public List<Pin> getPins() {
+  @Valid  @Size(max=11)public List<@Valid Pin> getPins() {
     return pins;
   }
 
@@ -117,7 +116,7 @@ public class CatalogsRetailItemResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  @Valid public ItemAttributes getAttributes() {
     return attributes;
   }
 

@@ -13,19 +13,16 @@ import AnyCodable
 public struct CatalogsRetailBatchRequestItemsInner: Codable, JSONEncodable, Hashable {
 
     public enum Operation: String, Codable, CaseIterable {
-        case create = "CREATE"
-        case update = "UPDATE"
-        case upsert = "UPSERT"
         case delete = "DELETE"
     }
     /** The catalog item id in the merchant namespace */
     public var itemId: String
     public var operation: Operation
-    public var attributes: ItemAttributes
+    public var attributes: ItemAttributesRequest
     /** The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     public var updateMask: [UpdateMaskFieldType]?
 
-    public init(itemId: String, operation: Operation, attributes: ItemAttributes, updateMask: [UpdateMaskFieldType]? = nil) {
+    public init(itemId: String, operation: Operation, attributes: ItemAttributesRequest, updateMask: [UpdateMaskFieldType]? = nil) {
         self.itemId = itemId
         self.operation = operation
         self.attributes = attributes

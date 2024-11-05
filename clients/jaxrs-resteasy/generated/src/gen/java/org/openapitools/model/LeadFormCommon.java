@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.LeadFormCommonPolicyLinksInner;
 import org.openapitools.model.LeadFormQuestion;
 import org.openapitools.model.LeadFormStatus;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Creation fields")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Creation fields")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LeadFormCommon   {
   
   private String name;
@@ -27,7 +27,8 @@ public class LeadFormCommon   {
   private String completionMessage;
   private LeadFormStatus status;
   private String disclosureLanguage;
-  private List<@Valid LeadFormQuestion> questions;
+  private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+  private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
   /**
    * Internal name of the lead form.
@@ -56,10 +57,10 @@ public class LeadFormCommon   {
   }
 
   /**
-   * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.
+   * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
    **/
   
-  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.")
+  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
   @JsonProperty("has_accepted_terms")
   public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
@@ -121,6 +122,20 @@ public class LeadFormCommon   {
     this.questions = questions;
   }
 
+  /**
+   * List of additional policy links to be displayed on the lead form.
+   **/
+  
+  @ApiModelProperty(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", value = "List of additional policy links to be displayed on the lead form.")
+  @JsonProperty("policy_links")
+ @Size(min=0,max=3)  @Valid
+  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -137,12 +152,13 @@ public class LeadFormCommon   {
         Objects.equals(this.completionMessage, leadFormCommon.completionMessage) &&
         Objects.equals(this.status, leadFormCommon.status) &&
         Objects.equals(this.disclosureLanguage, leadFormCommon.disclosureLanguage) &&
-        Objects.equals(this.questions, leadFormCommon.questions);
+        Objects.equals(this.questions, leadFormCommon.questions) &&
+        Objects.equals(this.policyLinks, leadFormCommon.policyLinks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions);
+    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks);
   }
 
   @Override
@@ -157,6 +173,7 @@ public class LeadFormCommon   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

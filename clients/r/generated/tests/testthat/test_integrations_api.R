@@ -72,7 +72,7 @@ test_that("IntegrationsGetList", {
   # Get integration metadata list
   # Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [IntegrationsGetList200Response]
 
   # uncomment below to test the operation

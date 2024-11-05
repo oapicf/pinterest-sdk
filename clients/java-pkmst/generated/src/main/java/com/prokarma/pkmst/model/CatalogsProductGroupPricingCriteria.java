@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * CatalogsProductGroupPricingCriteria
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupPricingCriteria   {
   @JsonProperty("inclusion")
   private Boolean inclusion = true;
@@ -31,10 +31,10 @@ public class CatalogsProductGroupPricingCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get inclusion
    * @return inclusion
-  **/
+   */
   @ApiModelProperty(value = "")
   public Boolean getInclusion() {
     return inclusion;
@@ -49,11 +49,11 @@ public class CatalogsProductGroupPricingCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get values
    * minimum: 0
    * @return values
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public BigDecimal getValues() {
     return values;
@@ -68,10 +68,10 @@ public class CatalogsProductGroupPricingCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get negated
    * @return negated
-  **/
+   */
   @ApiModelProperty(value = "")
   public Boolean getNegated() {
     return negated;

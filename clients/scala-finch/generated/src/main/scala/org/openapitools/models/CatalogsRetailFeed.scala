@@ -32,9 +32,9 @@ import org.openapitools.models.ProductAvailabilityType
  * @param defaultUnderscorecountry 
  * @param defaultUnderscoreavailability 
  */
-case class CatalogsRetailFeed(createdUnderscoreat: Option[ZonedDateTime],
-                id: Option[String],
-                updatedUnderscoreat: Option[ZonedDateTime],
+case class CatalogsRetailFeed(createdUnderscoreat: ZonedDateTime,
+                id: String,
+                updatedUnderscoreat: ZonedDateTime,
                 name: String,
                 format: CatalogsFormat,
                 catalogUnderscoretype: CatalogsType,

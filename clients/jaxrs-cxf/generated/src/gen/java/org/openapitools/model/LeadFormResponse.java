@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.LeadFormCommonPolicyLinksInner;
 import org.openapitools.model.LeadFormQuestion;
 import org.openapitools.model.LeadFormStatus;
 import javax.validation.constraints.*;
@@ -30,9 +31,9 @@ public class LeadFormResponse  {
   **/
   private String privacyPolicyLink;
 
-  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.")
+  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
  /**
-   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
   **/
   private Boolean hasAcceptedTerms;
 
@@ -57,7 +58,14 @@ public class LeadFormResponse  {
  /**
    * List of questions to be displayed on the lead form.
   **/
-  private List<@Valid LeadFormQuestion> questions;
+  private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+
+  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
+  @Valid
+ /**
+   * List of additional policy links to be displayed on the lead form.
+  **/
+  private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
   @ApiModelProperty(example = "7765300871171", value = "The ID of this lead form")
  /**
@@ -119,7 +127,7 @@ public class LeadFormResponse  {
   }
 
  /**
-   * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.
+   * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
    * @return hasAcceptedTerms
   **/
   @JsonProperty("has_accepted_terms")
@@ -214,6 +222,29 @@ public class LeadFormResponse  {
   }
 
  /**
+   * List of additional policy links to be displayed on the lead form.
+   * @return policyLinks
+  **/
+  @JsonProperty("policy_links")
+ @Size(min=0,max=3)  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+  }
+
+  public LeadFormResponse policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+    return this;
+  }
+
+  public LeadFormResponse addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    this.policyLinks.add(policyLinksItem);
+    return this;
+  }
+
+ /**
    * The ID of this lead form
    * @return id
   **/
@@ -301,6 +332,7 @@ public class LeadFormResponse  {
         Objects.equals(this.status, leadFormResponse.status) &&
         Objects.equals(this.disclosureLanguage, leadFormResponse.disclosureLanguage) &&
         Objects.equals(this.questions, leadFormResponse.questions) &&
+        Objects.equals(this.policyLinks, leadFormResponse.policyLinks) &&
         Objects.equals(this.id, leadFormResponse.id) &&
         Objects.equals(this.adAccountId, leadFormResponse.adAccountId) &&
         Objects.equals(this.createdTime, leadFormResponse.createdTime) &&
@@ -309,7 +341,7 @@ public class LeadFormResponse  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, id, adAccountId, createdTime, updatedTime);
+    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks, id, adAccountId, createdTime, updatedTime);
   }
 
   @Override
@@ -324,6 +356,7 @@ public class LeadFormResponse  {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");

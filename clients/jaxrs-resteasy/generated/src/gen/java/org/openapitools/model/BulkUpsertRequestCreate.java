@@ -17,16 +17,15 @@ import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequestCreate   {
   
-  private List<@Valid CampaignCreateRequest> campaigns;
-  private List<AdGroupCreateRequest> adGroups;
-  private List<AdCreateRequest> ads;
-  private List<@Valid ProductGroupPromotionCreateRequest> productGroups;
-  private List<@Valid KeywordsRequest> keywords;
+  private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
+  private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
+  private List<@Valid AdCreateRequest> ads = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
+  private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
 
   /**
    **/
@@ -47,10 +46,10 @@ public class BulkUpsertRequestCreate   {
   @ApiModelProperty(value = "")
   @JsonProperty("ad_groups")
   @Valid
-  public List<AdGroupCreateRequest> getAdGroups() {
+  public List<@Valid AdGroupCreateRequest> getAdGroups() {
     return adGroups;
   }
-  public void setAdGroups(List<AdGroupCreateRequest> adGroups) {
+  public void setAdGroups(List<@Valid AdGroupCreateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
@@ -60,10 +59,10 @@ public class BulkUpsertRequestCreate   {
   @ApiModelProperty(value = "")
   @JsonProperty("ads")
   @Valid
-  public List<AdCreateRequest> getAds() {
+  public List<@Valid AdCreateRequest> getAds() {
     return ads;
   }
-  public void setAds(List<AdCreateRequest> ads) {
+  public void setAds(List<@Valid AdCreateRequest> ads) {
     this.ads = ads;
   }
 

@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,11 +19,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: growing,monthly,yearly,seasonal
 */
-enum class TrendType(val value: kotlin.String) {
+enum class TrendType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("growing") growing("growing"),
-    @JsonProperty("monthly") monthly("monthly"),
-    @JsonProperty("yearly") yearly("yearly"),
-    @JsonProperty("seasonal") seasonal("seasonal")
+    growing("growing"),
+    monthly("monthly"),
+    yearly("yearly"),
+    seasonal("seasonal");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): TrendType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

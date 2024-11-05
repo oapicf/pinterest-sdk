@@ -5,7 +5,8 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CatalogsHotelAttributes
+import org.openapitools.models.CatalogsCreativeAssetsAttributes
+import org.openapitools.models.CatalogsCreativeAssetsItemResponse
 import org.openapitools.models.CatalogsHotelItemResponse
 import org.openapitools.models.CatalogsRetailItemResponse
 import org.openapitools.models.CatalogsType
@@ -19,12 +20,14 @@ import scala.collection.immutable.Seq
  * @param pins The pins mapped to the item
  * @param attributes 
  * @param hotelUnderscoreid The catalog hotel id in the merchant namespace
+ * @param creativeUnderscoreassetsUnderscoreid The catalog creative assets id in the merchant namespace
  */
 case class ItemResponseAnyOf(catalogUnderscoretype: CatalogsType,
                 itemUnderscoreid: Option[String],
                 pins: Option[Seq[Pin]],
-                attributes: Option[CatalogsHotelAttributes],
-                hotelUnderscoreid: Option[String]
+                attributes: Option[CatalogsCreativeAssetsAttributes],
+                hotelUnderscoreid: Option[String],
+                creativeUnderscoreassetsUnderscoreid: Option[String]
                 )
 
 object ItemResponseAnyOf {

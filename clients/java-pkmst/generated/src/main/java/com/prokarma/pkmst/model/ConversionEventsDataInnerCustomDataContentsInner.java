@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ConversionEventsDataInnerCustomDataContentsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInnerCustomDataContentsInner   {
   @JsonProperty("id")
   private String id;
@@ -40,10 +40,10 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     return this;
   }
 
-   /**
+  /**
    * The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "red-pinterest-shirt-logo-1", value = "The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public String getId() {
     return id;
@@ -58,10 +58,10 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     return this;
   }
 
-   /**
+  /**
    * The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return itemPrice
-  **/
+   */
   @ApiModelProperty(example = "1325.12", value = "The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public String getItemPrice() {
     return itemPrice;
@@ -76,10 +76,10 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     return this;
   }
 
-   /**
+  /**
    * The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return quantity
-  **/
+   */
   @ApiModelProperty(example = "5", value = "The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public Long getQuantity() {
     return quantity;
@@ -94,10 +94,10 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     return this;
   }
 
-   /**
+  /**
    * The name of a product.
    * @return itemName
-  **/
+   */
   @ApiModelProperty(example = "pinterest-clothing-shirt", value = "The name of a product.")
   public String getItemName() {
     return itemName;
@@ -112,10 +112,10 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     return this;
   }
 
-   /**
+  /**
    * The category of a product.
    * @return itemCategory
-  **/
+   */
   @ApiModelProperty(example = "pinterest-entertainment", value = "The category of a product.")
   public String getItemCategory() {
     return itemCategory;
@@ -130,10 +130,10 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     return this;
   }
 
-   /**
+  /**
    * The brand of a product.
    * @return itemBrand
-  **/
+   */
   @ApiModelProperty(example = "pinterest", value = "The brand of a product.")
   public String getItemBrand() {
     return itemBrand;

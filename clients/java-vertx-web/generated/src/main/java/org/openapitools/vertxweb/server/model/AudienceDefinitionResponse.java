@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.AudienceDefinition;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceDefinitionResponse   {
   
-  private List<AudienceDefinition> items;
+  private List<AudienceDefinition> items = new ArrayList<>();
 
   public AudienceDefinitionResponse () {
 

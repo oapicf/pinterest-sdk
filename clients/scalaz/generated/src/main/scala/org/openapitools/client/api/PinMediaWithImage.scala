@@ -13,7 +13,7 @@ import PinMediaWithImage._
 
 case class PinMediaWithImage (
   mediaType: Option[String],
-images: Option[ImageMetadataImages])
+images: Option[PinMediaWithImageAllOfImages])
 
 object PinMediaWithImage {
   import DateTimeCodecs._

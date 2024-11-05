@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLog", description = "Schema for log sent from an integration application.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLog {
 
   private Integer clientTimestamp;
@@ -147,7 +147,7 @@ public class IntegrationLog {
   /**
    * Timestamp in milliseconds of when the log was executed at the client.
    * @return clientTimestamp
-  */
+   */
   @NotNull 
   @Schema(name = "client_timestamp", description = "Timestamp in milliseconds of when the log was executed at the client.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("client_timestamp")
@@ -167,7 +167,7 @@ public class IntegrationLog {
   /**
    * Log event type
    * @return eventType
-  */
+   */
   @NotNull 
   @Schema(name = "event_type", description = "Log event type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("event_type")
@@ -187,7 +187,7 @@ public class IntegrationLog {
   /**
    * Log level type
    * @return logLevel
-  */
+   */
   @NotNull 
   @Schema(name = "log_level", description = "Log level type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("log_level")
@@ -207,7 +207,7 @@ public class IntegrationLog {
   /**
    * Get externalBusinessId
    * @return externalBusinessId
-  */
+   */
   @Size(max = 2048) 
   @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("external_business_id")
@@ -227,7 +227,7 @@ public class IntegrationLog {
   /**
    * Get advertiserId
    * @return advertiserId
-  */
+   */
   @Size(max = 128) 
   @Schema(name = "advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("advertiser_id")
@@ -247,7 +247,7 @@ public class IntegrationLog {
   /**
    * Get merchantId
    * @return merchantId
-  */
+   */
   @Size(max = 128) 
   @Schema(name = "merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("merchant_id")
@@ -267,7 +267,7 @@ public class IntegrationLog {
   /**
    * Get tagId
    * @return tagId
-  */
+   */
   @Size(max = 128) 
   @Schema(name = "tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tag_id")
@@ -287,7 +287,7 @@ public class IntegrationLog {
   /**
    * Get feedProfileId
    * @return feedProfileId
-  */
+   */
   @Size(max = 128) 
   @Schema(name = "feed_profile_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("feed_profile_id")
@@ -307,7 +307,7 @@ public class IntegrationLog {
   /**
    * Explanation of the event that occured.
    * @return message
-  */
+   */
   @Size(max = 2048) 
   @Schema(name = "message", description = "Explanation of the event that occured.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
@@ -327,7 +327,7 @@ public class IntegrationLog {
   /**
    * Version number of the integration application.
    * @return appVersionNumber
-  */
+   */
   @Size(max = 20) 
   @Schema(name = "app_version_number", description = "Version number of the integration application.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("app_version_number")
@@ -347,7 +347,7 @@ public class IntegrationLog {
   /**
    * Version number of the platform the integration application is running on.
    * @return platformVersionNumber
-  */
+   */
   @Size(max = 20) 
   @Schema(name = "platform_version_number", description = "Version number of the platform the integration application is running on.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("platform_version_number")
@@ -367,7 +367,7 @@ public class IntegrationLog {
   /**
    * Get error
    * @return error
-  */
+   */
   @Valid 
   @Schema(name = "error", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("error")
@@ -387,7 +387,7 @@ public class IntegrationLog {
   /**
    * Get request
    * @return request
-  */
+   */
   @Valid 
   @Schema(name = "request", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("request")

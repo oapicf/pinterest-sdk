@@ -19,12 +19,14 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsVerticalFeedsCreateRequest
+import org.openapitools.client.models.CatalogsCreativeAssetsFeedsCreateRequest
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsHotelFeedsCreateRequest
 import org.openapitools.client.models.CatalogsRetailFeedsCreateRequest
+import org.openapitools.client.models.CatalogsStatus
 import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.NullableCurrency
@@ -95,7 +97,13 @@ class CatalogsVerticalFeedsCreateRequestTest : ShouldSpec() {
             //modelInstance.defaultAvailability shouldBe ("TODO")
         }
 
-        // to test the property `catalogId` - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `catalogId` - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")

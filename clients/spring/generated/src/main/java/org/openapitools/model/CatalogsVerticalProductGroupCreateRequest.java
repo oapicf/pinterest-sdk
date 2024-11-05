@@ -10,8 +10,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupCreateRequest;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroupCreateRequest;
-import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsRetailProductGroupCreateRequest;
+import org.openapitools.model.Country;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -31,11 +35,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupCreateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroupCreateRequest.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsHotelProductGroupCreateRequest.class, name = "CatalogsHotelProductGroupCreateRequest")
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroupCreateRequest.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupCreateRequest.class, name = "CatalogsCreativeAssetsProductGroupCreateRequest"),
+  @JsonSubTypes.Type(value = CatalogsHotelProductGroupCreateRequest.class, name = "CatalogsHotelProductGroupCreateRequest"),
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroupCreateRequest.class, name = "CatalogsRetailProductGroupCreateRequest")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
-public interface CatalogsVerticalProductGroupCreateRequest extends CatalogsProductGroupsCreateRequest {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public interface CatalogsVerticalProductGroupCreateRequest extends MultipleProductGroupsInner {
     public String getCatalogType();
 }

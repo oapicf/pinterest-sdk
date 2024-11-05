@@ -3,7 +3,6 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CreativeType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
 open OpenAPI.Model.bool option
@@ -44,8 +43,6 @@ module ProductGroupPromotion =
     CatalogProductGroupId : string option;
     [<JsonProperty(PropertyName = "catalog_product_group_name")>]
     CatalogProductGroupName : string option;
-    [<JsonProperty(PropertyName = "creative_type")>]
-    CreativeType : CreativeType;
     [<JsonProperty(PropertyName = "collections_hero_pin_id")>]
     CollectionsHeroPinId : string option;
     [<JsonProperty(PropertyName = "collections_hero_destination_url")>]

@@ -39,7 +39,6 @@ status: Option[EntityStatus],
   catalogProductGroupId: Option[String],
 /* Catalogs product group name */
   catalogProductGroupName: Option[String],
-creativeType: Option[CreativeType],
 /* Hero Pin ID if this PG is promoted as a Collection */
   collectionsHeroPinId: Option[String],
 /* Collections Hero Destination Url */

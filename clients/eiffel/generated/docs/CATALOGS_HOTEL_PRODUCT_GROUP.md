@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **filters** | [**CATALOGS_HOTEL_PRODUCT_GROUP_FILTERS**](CatalogsHotelProductGroupFilters.md) |  | [default to null]
 **created_at** | **INTEGER_32** | Unix timestamp in seconds of when catalog product group was created. | [optional] [default to null]
 **updated_at** | **INTEGER_32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] [default to null]
-**catalog_id** | [**STRING_32**](STRING_32.md) |  | [default to null]
+**catalog_id** | [**STRING_32**](STRING_32.md) | Catalog id pertaining to the hotel product group. | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

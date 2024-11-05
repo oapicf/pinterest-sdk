@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **AltText** | Pointer to **NullableString** |  | [optional] 
 **BoardId** | Pointer to **string** | The board to which this Pin belongs. | [optional] 
 **BoardSectionId** | Pointer to **NullableString** | The board section to which this Pin belongs. | [optional] 
-**BoardOwner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] 
-**Media** | Pointer to [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**BoardOwner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
+**Media** | Pointer to [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **MediaSource** | Pointer to [**PinMediaSource**](PinMediaSource.md) |  | [optional] 
 **ParentPinId** | Pointer to **NullableString** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
 **Note** | Pointer to **NullableString** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
@@ -350,20 +350,20 @@ HasBoardOwner returns a boolean if a field has been set.
 
 ### GetMedia
 
-`func (o *PinCreate) GetMedia() SummaryPinMedia`
+`func (o *PinCreate) GetMedia() PinMedia`
 
 GetMedia returns the Media field if non-nil, zero value otherwise.
 
 ### GetMediaOk
 
-`func (o *PinCreate) GetMediaOk() (*SummaryPinMedia, bool)`
+`func (o *PinCreate) GetMediaOk() (*PinMedia, bool)`
 
 GetMediaOk returns a tuple with the Media field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedia
 
-`func (o *PinCreate) SetMedia(v SummaryPinMedia)`
+`func (o *PinCreate) SetMedia(v PinMedia)`
 
 SetMedia sets Media field to given value.
 

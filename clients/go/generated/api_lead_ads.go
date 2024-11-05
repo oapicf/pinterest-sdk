@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -41,7 +41,7 @@ AdAccountsSubscriptionsDelById Delete lead ads subscription
 Delete an existing lead ads webhook subscription by ID.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -184,7 +184,7 @@ AdAccountsSubscriptionsGetById Get lead ads subscription
 Get a specific lead ads subscription record.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -329,7 +329,7 @@ type ApiAdAccountsSubscriptionsGetListRequest struct {
 	bookmark *string
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiAdAccountsSubscriptionsGetListRequest) PageSize(pageSize int32) ApiAdAccountsSubscriptionsGetListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -351,7 +351,7 @@ AdAccountsSubscriptionsGetList Get lead ads subscriptions
 Get the advertiser's list of lead ads subscriptions.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -391,13 +391,13 @@ func (a *LeadAdsAPIService) AdAccountsSubscriptionsGetListExecute(r ApiAdAccount
 	}
 
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -493,10 +493,12 @@ func (r ApiAdAccountsSubscriptionsPostRequest) Execute() (*AdAccountCreateSubscr
 AdAccountsSubscriptionsPost Create lead ads subscription
 
 Create a lead ads webhook subscription.
+Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.
+- For data security, egress lead data is encrypted with AES-256-GCM.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.

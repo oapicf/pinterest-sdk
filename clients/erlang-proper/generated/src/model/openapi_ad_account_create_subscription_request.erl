@@ -13,6 +13,7 @@
   | {'lead_form_id', binary() }
   | {'partner_access_token', binary() }
   | {'partner_refresh_token', binary() }
+  | {'partner_metadata', openapi_ad_account_create_subscription_request_partner_metadata:openapi_ad_account_create_subscription_request_partner_metadata() }
   ].
 
 
@@ -24,6 +25,7 @@ openapi_ad_account_create_subscription_request(Fields) ->
             , {'lead_form_id', binary() }
             , {'partner_access_token', binary() }
             , {'partner_refresh_token', binary() }
+            , {'partner_metadata', openapi_ad_account_create_subscription_request_partner_metadata:openapi_ad_account_create_subscription_request_partner_metadata() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

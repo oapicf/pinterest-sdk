@@ -24,7 +24,7 @@ data class ConversionEvents(
     @get:Size(min=1,max=1000) 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("data", required = true) val `data`: kotlin.collections.List<ConversionEventsDataInner>
-) {
+    ) {
 
 }
 

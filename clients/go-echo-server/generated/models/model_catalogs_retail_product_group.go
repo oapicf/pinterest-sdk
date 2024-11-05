@@ -5,7 +5,7 @@ type CatalogsRetailProductGroup struct {
 	CatalogType string `json:"catalog_type"`
 
 	// ID of the catalog product group.
-	Id string `json:"id"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 
 	// Name of catalog product group
 	Name string `json:"name,omitempty"`
@@ -15,6 +15,7 @@ type CatalogsRetailProductGroup struct {
 	Filters CatalogsProductGroupFilters `json:"filters"`
 
 	// boolean indicator of whether the product group is being featured or not
+	// Deprecated
 	IsFeatured bool `json:"is_featured,omitempty"`
 
 	Type CatalogsProductGroupType `json:"type,omitempty"`
@@ -27,5 +28,13 @@ type CatalogsRetailProductGroup struct {
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt int32 `json:"updated_at,omitempty"`
 
-	FeedId *string `json:"feed_id"`
+	// Catalog id pertaining to the retail product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+
+	// id of the catalogs feed belonging to this catalog product group
+	FeedId *string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+
+	Country *string `json:"country,omitempty"`
+
+	Locale *string `json:"locale,omitempty"`
 }

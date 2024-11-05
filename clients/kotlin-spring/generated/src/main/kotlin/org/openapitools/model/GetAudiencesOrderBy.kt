@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,15 +19,23 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: NONE,ID,SIZE,CREATION_DATE,UPDATED_TIME,NAME,STATUS,TYPE
 */
-enum class GetAudiencesOrderBy(val value: kotlin.String) {
+enum class GetAudiencesOrderBy(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("NONE") NONE("NONE"),
-    @JsonProperty("ID") ID("ID"),
-    @JsonProperty("SIZE") SIZE("SIZE"),
-    @JsonProperty("CREATION_DATE") CREATION_DATE("CREATION_DATE"),
-    @JsonProperty("UPDATED_TIME") UPDATED_TIME("UPDATED_TIME"),
-    @JsonProperty("NAME") NAME("NAME"),
-    @JsonProperty("STATUS") STATUS("STATUS"),
-    @JsonProperty("TYPE") TYPE("TYPE")
+    NONE("NONE"),
+    ID("ID"),
+    SIZE("SIZE"),
+    CREATION_DATE("CREATION_DATE"),
+    UPDATED_TIME("UPDATED_TIME"),
+    NAME("NAME"),
+    STATUS("STATUS"),
+    TYPE("TYPE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): GetAudiencesOrderBy {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

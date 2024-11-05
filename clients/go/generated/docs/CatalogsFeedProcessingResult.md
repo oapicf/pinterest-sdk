@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **time.Time** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**CreatedAt** | **time.Time** |  | 
+**Id** | **string** |  | 
+**UpdatedAt** | **time.Time** |  | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **ProductCounts** | [**NullableCatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsFeedProcessingResult
 
-`func NewCatalogsFeedProcessingResult(ingestionDetails CatalogsFeedIngestionDetails, status CatalogsFeedProcessingStatus, productCounts NullableCatalogsFeedProductCounts, validationDetails CatalogsFeedValidationDetails, ) *CatalogsFeedProcessingResult`
+`func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, updatedAt time.Time, ingestionDetails CatalogsFeedIngestionDetails, status CatalogsFeedProcessingStatus, productCounts NullableCatalogsFeedProductCounts, validationDetails CatalogsFeedValidationDetails, ) *CatalogsFeedProcessingResult`
 
 NewCatalogsFeedProcessingResult instantiates a new CatalogsFeedProcessingResult object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *CatalogsFeedProcessingResult) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetId
 
@@ -75,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *CatalogsFeedProcessingResult) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -100,11 +90,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *CatalogsFeedProcessingResult) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetIngestionDetails
 

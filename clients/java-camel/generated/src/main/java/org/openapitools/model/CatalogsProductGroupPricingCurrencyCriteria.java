@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("catalogs_product_group_pricing_currency_criteria")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupPricingCurrencyCriteria {
 
   /**
@@ -94,7 +94,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
   /**
    * Get operator
    * @return operator
-  */
+   */
   @NotNull 
   @Schema(name = "operator", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operator")
@@ -115,7 +115,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
    * Get value
    * minimum: 0
    * @return value
-  */
+   */
   @NotNull @Valid @DecimalMin("0") 
   @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("value")
@@ -135,7 +135,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
   /**
    * Get currency
    * @return currency
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "currency", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("currency")
@@ -155,7 +155,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
   /**
    * Get negated
    * @return negated
-  */
+   */
   
   @Schema(name = "negated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("negated")

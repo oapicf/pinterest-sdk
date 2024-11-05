@@ -41,7 +41,7 @@ test_that("BoardSectionsList", {
   # @param board_id character Unique identifier of a board.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [BoardSectionsList200Response]
 
   # uncomment below to test the operation
@@ -57,7 +57,7 @@ test_that("BoardSectionsListPins", {
   # @param section_id character Unique identifier of a board section.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [BoardsListPins200Response]
 
   # uncomment below to test the operation
@@ -125,7 +125,7 @@ test_that("BoardsList", {
   # Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param privacy character Privacy setting for a board. (optional)
   # @return [BoardsList200Response]
 
@@ -140,7 +140,7 @@ test_that("BoardsListPins", {
   # Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
   # @param board_id character Unique identifier of a board.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param creative_types array[character] Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param pin_metrics character Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)

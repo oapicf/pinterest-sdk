@@ -163,7 +163,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Redeem ad credits Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Redeem ad credits Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - adsCredit/redeem" enabled="true">
@@ -252,7 +252,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get ads credit discounts Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Get ads credit discounts Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - adsCreditsDiscounts/get" enabled="true">
@@ -348,7 +348,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get billing profiles Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Get billing profiles Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - billingProfiles/get" enabled="true">

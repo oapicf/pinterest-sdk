@@ -34,7 +34,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * Get a list of the boards a user follows. The request returns a board summary object array.
      * List following boards
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
      * @param adAccountId Unique identifier of an ad account.
      */
@@ -79,6 +79,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -89,7 +94,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
      * Follow user
      * @param username A valid username
      * @param followUserRequest Follow a user.
@@ -148,7 +153,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * Get a list of your followers.
      * List followers
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async followersList(bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -179,6 +184,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -206,6 +216,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -274,7 +289,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * @param splitField How to split the data into groups. Not including this param means data won\&#39;t be split.
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async userAccountAnalytics(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async userAccountAnalytics(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'startDate' is not null or undefined
@@ -321,7 +336,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (pinFormat !== undefined) {
-            requestContext.setQueryParam("pin_format", ObjectSerializer.serialize(pinFormat, "'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO'", ""));
+            requestContext.setQueryParam("pin_format", ObjectSerializer.serialize(pinFormat, "'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA'", ""));
         }
 
         // Query Params
@@ -386,7 +401,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days.
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async userAccountAnalyticsTopPins(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async userAccountAnalyticsTopPins(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'startDate' is not null or undefined
@@ -445,7 +460,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (pinFormat !== undefined) {
-            requestContext.setQueryParam("pin_format", ObjectSerializer.serialize(pinFormat, "'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO'", ""));
+            requestContext.setQueryParam("pin_format", ObjectSerializer.serialize(pinFormat, "'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA'", ""));
         }
 
         // Query Params
@@ -490,6 +505,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -515,7 +535,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days.
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async userAccountAnalyticsTopVideoPins(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async userAccountAnalyticsTopVideoPins(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'startDate' is not null or undefined
@@ -574,7 +594,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (pinFormat !== undefined) {
-            requestContext.setQueryParam("pin_format", ObjectSerializer.serialize(pinFormat, "'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO'", ""));
+            requestContext.setQueryParam("pin_format", ObjectSerializer.serialize(pinFormat, "'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA'", ""));
         }
 
         // Query Params
@@ -619,6 +639,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -633,7 +658,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * List following interests
      * @param username A valid username
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async userAccountFollowedInterests(username: string, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -671,6 +696,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -681,7 +711,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/reference/business-access/\'>Understanding Business Access</a> for more information.
+     * Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/getting-started/using-business-access/\'>Understanding Business Access</a> for more information.
      * Get user account
      * @param adAccountId Unique identifier of an ad account.
      */
@@ -708,6 +738,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -721,7 +756,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * Get a list of who a certain user follows.
      * List following
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees.
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
      * @param adAccountId Unique identifier of an ad account.
@@ -773,6 +808,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -786,7 +826,7 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * Get user websites, claimed or not
      * Get user websites
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async userWebsitesGet(bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -830,8 +870,9 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
      * Verify a website as a signed-in user.
      * Verify website
      * @param userWebsiteVerifyRequest Verify a website.
+     * @param adAccountId Unique identifier of an ad account.
      */
-    public async verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, _options?: Configuration): Promise<RequestContext> {
+    public async verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'userWebsiteVerifyRequest' is not null or undefined
@@ -840,12 +881,18 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/user_account/websites';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (adAccountId !== undefined) {
+            requestContext.setQueryParam("ad_account_id", ObjectSerializer.serialize(adAccountId, "string", ""));
+        }
 
 
         // Body Params
@@ -877,9 +924,11 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Get verification code for user to install on the website to claim it.
      * Get user verification code for website claiming
+     * @param adAccountId Unique identifier of an ad account.
      */
-    public async websiteVerificationGet(_options?: Configuration): Promise<RequestContext> {
+    public async websiteVerificationGet(adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
         // Path Params
         const localVarPath = '/user_account/websites/verification';
@@ -888,10 +937,20 @@ export class UserAccountApiRequestFactory extends BaseAPIRequestFactory {
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
+        // Query Params
+        if (adAccountId !== undefined) {
+            requestContext.setQueryParam("ad_account_id", ObjectSerializer.serialize(adAccountId, "string", ""));
+        }
+
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }

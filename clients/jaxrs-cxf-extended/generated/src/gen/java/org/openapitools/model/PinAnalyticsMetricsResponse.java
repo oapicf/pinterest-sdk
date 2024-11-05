@@ -28,7 +28,7 @@ public class PinAnalyticsMetricsResponse  {
   */
   @ApiModelProperty(value = "Array with the requested daily metric records")
   @Valid
-  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics;
+  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
 
  /**
   * The metric name and value over the requested period for each requested metric

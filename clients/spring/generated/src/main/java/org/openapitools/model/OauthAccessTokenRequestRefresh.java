@@ -2,13 +2,9 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.model.OauthAccessTokenRequest;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -24,9 +20,47 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "OauthAccessTokenRequestRefresh", description = "A request to exchange a refresh token for a new access token.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class OauthAccessTokenRequestRefresh {
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
-public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
+  /**
+   * Gets or Sets grantType
+   */
+  public enum GrantTypeEnum {
+    AUTHORIZATION_CODE("authorization_code"),
+    
+    REFRESH_TOKEN("refresh_token"),
+    
+    CLIENT_CREDENTIALS("client_credentials");
+
+    private String value;
+
+    GrantTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static GrantTypeEnum fromValue(String value) {
+      for (GrantTypeEnum b : GrantTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private GrantTypeEnum grantType;
 
   private String refreshToken;
 
@@ -41,9 +75,29 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
   /**
    * Constructor with only required parameters
    */
-  public OauthAccessTokenRequestRefresh(String refreshToken, GrantTypeEnum grantType) {
-    super();
+  public OauthAccessTokenRequestRefresh(GrantTypeEnum grantType, String refreshToken) {
+    this.grantType = grantType;
     this.refreshToken = refreshToken;
+  }
+
+  public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   */
+  @NotNull 
+  @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("grant_type")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
   }
 
   public OauthAccessTokenRequestRefresh refreshToken(String refreshToken) {
@@ -54,7 +108,7 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
   /**
    * Get refreshToken
    * @return refreshToken
-  */
+   */
   @NotNull 
   @Schema(name = "refresh_token", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("refresh_token")
@@ -74,7 +128,7 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
   /**
    * Get scope
    * @return scope
-  */
+   */
   
   @Schema(name = "scope", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scope")
@@ -94,7 +148,7 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
   /**
    * Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
    * @return refreshOn
-  */
+   */
   
   @Schema(name = "refresh_on", description = "Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("refresh_on")
@@ -115,22 +169,22 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest {
       return false;
     }
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
-    return Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
+    return Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType) &&
+        Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(this.scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
-        super.equals(o);
+        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, scope, refreshOn, super.hashCode());
+    return Objects.hash(grantType, refreshToken, scope, refreshOn);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestRefresh {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");

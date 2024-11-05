@@ -90,12 +90,22 @@ $ composer phplint
 
 ## Show errors
 
-Switch your app environment to development in `public/.htaccess` file:
+Switch your app environment to development
+- When using with some webserver => in `public/.htaccess` file:
 ```ini
 ## .htaccess
 <IfModule mod_env.c>
     SetEnv APP_ENV 'development'
 </IfModule>
+```
+
+- Or when using whatever else, set `APP_ENV` environment variable like this:
+```bash
+export APP_ENV=development
+```
+or simply
+```bash
+export APP_ENV=dev
 ```
 
 ## Mock Server
@@ -165,7 +175,7 @@ Class | Method | HTTP request | Description
 *AbstractAdAccountsApi* | **sandboxDelete** | **DELETE** /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox
 *AbstractAdAccountsApi* | **templatesList** | **GET** /ad_accounts/{ad_account_id}/templates | List templates
 *AbstractAdGroupsApi* | **adGroupsAnalytics** | **GET** /ad_accounts/{ad_account_id}/ad_groups/analytics | Get ad group analytics
-*AbstractAdGroupsApi* | **adGroupsAudienceSizing** | **GET** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
+*AbstractAdGroupsApi* | **adGroupsAudienceSizing** | **POST** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
 *AbstractAdGroupsApi* | **adGroupsBidFloorGet** | **POST** /ad_accounts/{ad_account_id}/bid_floor | Get bid floors
 *AbstractAdGroupsApi* | **adGroupsCreate** | **POST** /ad_accounts/{ad_account_id}/ad_groups | Create ad groups
 *AbstractAdGroupsApi* | **adGroupsGet** | **GET** /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id} | Get ad group
@@ -179,8 +189,17 @@ Class | Method | HTTP request | Description
 *AbstractAdsApi* | **adsGet** | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad
 *AbstractAdsApi* | **adsList** | **GET** /ad_accounts/{ad_account_id}/ads | List ads
 *AbstractAdsApi* | **adsUpdate** | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads
+*AbstractAdvancedAuctionApi* | **advancedAuctionItemsGetPost** | **POST** /advanced_auction/items/get | Get item bid options (POST)
+*AbstractAdvancedAuctionApi* | **advancedAuctionItemsSubmitPost** | **POST** /advanced_auction/items/submit | Operate on item level bid options
 *AbstractAudienceInsightsApi* | **audienceInsightsGet** | **GET** /ad_accounts/{ad_account_id}/audience_insights | Get audience insights
 *AbstractAudienceInsightsApi* | **audienceInsightsScopeAndTypeGet** | **GET** /ad_accounts/{ad_account_id}/insights/audiences | Get audience insights scope and type
+*AbstractAudienceSharingApi* | **adAccountsAudiencesSharedAccountsList** | **GET** /ad_accounts/{ad_account_id}/audiences/shared/accounts | List accounts with access to an audience owned by an ad account
+*AbstractAudienceSharingApi* | **businessAccountAudiencesSharedAccountsList** | **GET** /businesses/{business_id}/audiences/shared/accounts | List accounts with access to an audience owned by a business
+*AbstractAudienceSharingApi* | **sharedAudiencesForBusinessList** | **GET** /businesses/{business_id}/audiences | List received audiences for a business
+*AbstractAudienceSharingApi* | **updateAdAccountToAdAccountSharedAudience** | **PATCH** /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared | Update audience sharing between ad accounts
+*AbstractAudienceSharingApi* | **updateAdAccountToBusinessSharedAudience** | **PATCH** /ad_accounts/{ad_account_id}/audiences/businesses/shared | Update audience sharing from an ad account to businesses
+*AbstractAudienceSharingApi* | **updateBusinessToAdAccountSharedAudience** | **PATCH** /businesses/{business_id}/audiences/ad_accounts/shared | Update audience sharing from a business to ad accounts
+*AbstractAudienceSharingApi* | **updateBusinessToBusinessSharedAudience** | **PATCH** /businesses/{business_id}/audiences/businesses/shared | Update audience sharing between businesses
 *AbstractAudiencesApi* | **audiencesCreate** | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
 *AbstractAudiencesApi* | **audiencesCreateCustom** | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 *AbstractAudiencesApi* | **audiencesGet** | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
@@ -209,31 +228,63 @@ Class | Method | HTTP request | Description
 *AbstractBulkApi* | **bulkDownloadCreate** | **POST** /ad_accounts/{ad_account_id}/bulk/download | Get advertiser entities in bulk
 *AbstractBulkApi* | **bulkRequestGet** | **GET** /ad_accounts/{ad_account_id}/bulk/{bulk_request_id} | Download advertiser entities in bulk
 *AbstractBulkApi* | **bulkUpsertCreate** | **POST** /ad_accounts/{ad_account_id}/bulk/upsert | Create/update ad entities in bulk
+*AbstractBusinessAccessAssetsApi* | **assetGroupCreate** | **POST** /businesses/{business_id}/asset_groups | Create a new asset group.
+*AbstractBusinessAccessAssetsApi* | **assetGroupDelete** | **DELETE** /businesses/{business_id}/asset_groups | Delete asset groups.
+*AbstractBusinessAccessAssetsApi* | **assetGroupUpdate** | **PATCH** /businesses/{business_id}/asset_groups | Update asset groups.
+*AbstractBusinessAccessAssetsApi* | **businessAssetMembersGet** | **GET** /businesses/{business_id}/assets/{asset_id}/members | Get members with access to asset
+*AbstractBusinessAccessAssetsApi* | **businessAssetPartnersGet** | **GET** /businesses/{business_id}/assets/{asset_id}/partners | Get partners with access to asset
+*AbstractBusinessAccessAssetsApi* | **businessAssetsGet** | **GET** /businesses/{business_id}/assets | List business assets
+*AbstractBusinessAccessAssetsApi* | **businessMemberAssetsGet** | **GET** /businesses/{business_id}/members/{member_id}/assets | Get assets assigned to a member
+*AbstractBusinessAccessAssetsApi* | **businessMembersAssetAccessDelete** | **DELETE** /businesses/{business_id}/members/assets/access | Delete member access to asset
+*AbstractBusinessAccessAssetsApi* | **businessMembersAssetAccessUpdate** | **PATCH** /businesses/{business_id}/members/assets/access | Assign/Update member asset permissions
+*AbstractBusinessAccessAssetsApi* | **businessPartnerAssetAccessGet** | **GET** /businesses/{business_id}/partners/{partner_id}/assets | Get assets assigned to a partner or assets assigned by a partner
+*AbstractBusinessAccessAssetsApi* | **deletePartnerAssetAccessHandlerImpl** | **DELETE** /businesses/{business_id}/partners/assets | Delete partner access to asset
+*AbstractBusinessAccessAssetsApi* | **updatePartnerAssetAccessHandlerImpl** | **PATCH** /businesses/{business_id}/partners/assets | Assign/Update partner asset permissions
+*AbstractBusinessAccessInviteApi* | **respondBusinessAccessInvites** | **PATCH** /businesses/invites | Accept or decline an invite/request
+*AbstractBusinessAccessInviteApi* | **assetAccessRequestsCreate** | **POST** /businesses/{business_id}/requests/assets/access | Create a request to access an existing partner's assets.
+*AbstractBusinessAccessInviteApi* | **cancelInvitesOrRequests** | **DELETE** /businesses/{business_id}/invites | Cancel invites/requests
+*AbstractBusinessAccessInviteApi* | **createAssetInvites** | **POST** /businesses/{business_id}/invites/assets/access | Update invite/request with an asset permission
+*AbstractBusinessAccessInviteApi* | **createMembershipOrPartnershipInvites** | **POST** /businesses/{business_id}/invites | Create invites or requests
+*AbstractBusinessAccessInviteApi* | **getInvites** | **GET** /businesses/{business_id}/invites | Get invites/requests
+*AbstractBusinessAccessRelationshipsApi* | **getBusinessEmployers** | **GET** /businesses/employers | List business employers for user
+*AbstractBusinessAccessRelationshipsApi* | **deleteBusinessMembership** | **DELETE** /businesses/{business_id}/members | Terminate business memberships
+*AbstractBusinessAccessRelationshipsApi* | **deleteBusinessPartners** | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
+*AbstractBusinessAccessRelationshipsApi* | **getBusinessMembers** | **GET** /businesses/{business_id}/members | Get business members
+*AbstractBusinessAccessRelationshipsApi* | **getBusinessPartners** | **GET** /businesses/{business_id}/partners | Get business partners
+*AbstractBusinessAccessRelationshipsApi* | **updateBusinessMemberships** | **PATCH** /businesses/{business_id}/members | Update member's business role
 *AbstractCampaignsApi* | **campaignTargetingAnalyticsGet** | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns
 *AbstractCampaignsApi* | **campaignsAnalytics** | **GET** /ad_accounts/{ad_account_id}/campaigns/analytics | Get campaign analytics
 *AbstractCampaignsApi* | **campaignsCreate** | **POST** /ad_accounts/{ad_account_id}/campaigns | Create campaigns
 *AbstractCampaignsApi* | **campaignsGet** | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign
 *AbstractCampaignsApi* | **campaignsList** | **GET** /ad_accounts/{ad_account_id}/campaigns | List campaigns
 *AbstractCampaignsApi* | **campaignsUpdate** | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns
+*AbstractCatalogsApi* | **catalogsCreate** | **POST** /catalogs | Create catalog
 *AbstractCatalogsApi* | **catalogsList** | **GET** /catalogs | List catalogs
 *AbstractCatalogsApi* | **catalogsProductGroupsCreate** | **POST** /catalogs/product_groups | Create product group
+*AbstractCatalogsApi* | **catalogsProductGroupsCreateMany** | **POST** /catalogs/product_groups/multiple | Create product groups
+*AbstractCatalogsApi* | **catalogsProductGroupsDeleteMany** | **DELETE** /catalogs/product_groups/multiple | Delete product groups
 *AbstractCatalogsApi* | **catalogsProductGroupsList** | **GET** /catalogs/product_groups | List product groups
 *AbstractCatalogsApi* | **feedsCreate** | **POST** /catalogs/feeds | Create feed
 *AbstractCatalogsApi* | **feedsList** | **GET** /catalogs/feeds | List feeds
 *AbstractCatalogsApi* | **itemsBatchPost** | **POST** /catalogs/items/batch | Operate on item batch
 *AbstractCatalogsApi* | **itemsGet** | **GET** /catalogs/items | Get catalogs items
-*AbstractCatalogsApi* | **productsByProductGroupFilterList** | **POST** /catalogs/products/get_by_product_group_filters | List filtered products
-*AbstractCatalogsApi* | **catalogsProductGroupPinsList** | **GET** /catalogs/product_groups/{product_group_id}/products | List products for a Product Group
+*AbstractCatalogsApi* | **itemsPost** | **POST** /catalogs/items | Get catalogs items (POST)
+*AbstractCatalogsApi* | **productsByProductGroupFilterList** | **POST** /catalogs/products/get_by_product_group_filters | List products by filter
+*AbstractCatalogsApi* | **reportsCreate** | **POST** /catalogs/reports | Build catalogs report
+*AbstractCatalogsApi* | **reportsGet** | **GET** /catalogs/reports | Get catalogs report
+*AbstractCatalogsApi* | **reportsStats** | **GET** /catalogs/reports/stats | List report stats
+*AbstractCatalogsApi* | **catalogsProductGroupPinsList** | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group
 *AbstractCatalogsApi* | **catalogsProductGroupsDelete** | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group
 *AbstractCatalogsApi* | **catalogsProductGroupsGet** | **GET** /catalogs/product_groups/{product_group_id} | Get product group
-*AbstractCatalogsApi* | **catalogsProductGroupsProductCountsGet** | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts for a Product Group
-*AbstractCatalogsApi* | **catalogsProductGroupsUpdate** | **PATCH** /catalogs/product_groups/{product_group_id} | Update product group
-*AbstractCatalogsApi* | **feedProcessingResultsList** | **GET** /catalogs/feeds/{feed_id}/processing_results | List processing results for a given feed
+*AbstractCatalogsApi* | **catalogsProductGroupsProductCountsGet** | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts
+*AbstractCatalogsApi* | **catalogsProductGroupsUpdate** | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group
+*AbstractCatalogsApi* | **feedProcessingResultsList** | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results
 *AbstractCatalogsApi* | **feedsDelete** | **DELETE** /catalogs/feeds/{feed_id} | Delete feed
 *AbstractCatalogsApi* | **feedsGet** | **GET** /catalogs/feeds/{feed_id} | Get feed
+*AbstractCatalogsApi* | **feedsIngest** | **POST** /catalogs/feeds/{feed_id}/ingest | Ingest feed items
 *AbstractCatalogsApi* | **feedsUpdate** | **PATCH** /catalogs/feeds/{feed_id} | Update feed
-*AbstractCatalogsApi* | **itemsBatchGet** | **GET** /catalogs/items/batch/{batch_id} | Get catalogs item batch status
-*AbstractCatalogsApi* | **itemsIssuesList** | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues for a given processing result
+*AbstractCatalogsApi* | **itemsBatchGet** | **GET** /catalogs/items/batch/{batch_id} | Get item batch status
+*AbstractCatalogsApi* | **itemsIssuesList** | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues
 *AbstractConversionEventsApi* | **eventsCreate** | **POST** /ad_accounts/{ad_account_id}/events | Send conversions
 *AbstractConversionTagsApi* | **conversionTagsCreate** | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 *AbstractConversionTagsApi* | **conversionTagsGet** | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
@@ -262,13 +313,18 @@ Class | Method | HTTP request | Description
 *AbstractLeadAdsApi* | **adAccountsSubscriptionsPost** | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 *AbstractLeadFormsApi* | **leadFormGet** | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id
 *AbstractLeadFormsApi* | **leadFormTestCreate** | **POST** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test | Create lead form test data
-*AbstractLeadFormsApi* | **leadFormsList** | **GET** /ad_accounts/{ad_account_id}/lead_forms | Get lead forms
+*AbstractLeadFormsApi* | **leadFormsCreate** | **POST** /ad_accounts/{ad_account_id}/lead_forms | Create lead forms
+*AbstractLeadFormsApi* | **leadFormsList** | **GET** /ad_accounts/{ad_account_id}/lead_forms | List lead forms
+*AbstractLeadFormsApi* | **leadFormsUpdate** | **PATCH** /ad_accounts/{ad_account_id}/lead_forms | Update lead forms
+*AbstractLeadsExportApi* | **leadsExportCreate** | **POST** /ad_accounts/{ad_account_id}/leads_export | Create a request to export leads collected from a lead ad
+*AbstractLeadsExportApi* | **leadsExportGet** | **GET** /ad_accounts/{ad_account_id}/leads_export/{leads_export_id} | Get the lead export from the lead export create call
 *AbstractMediaApi* | **mediaCreate** | **POST** /media | Register media upload
 *AbstractMediaApi* | **mediaList** | **GET** /media | List media uploads
 *AbstractMediaApi* | **mediaGet** | **GET** /media/{media_id} | Get media upload details
 *AbstractOauthApi* | **oauthToken** | **POST** /oauth/token | Generate OAuth access token
 *AbstractOrderLinesApi* | **orderLinesGet** | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
 *AbstractOrderLinesApi* | **orderLinesList** | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+*AbstractPinsApi* | **multiPinsAnalytics** | **GET** /pins/analytics | Get multiple Pin analytics
 *AbstractPinsApi* | **pinsCreate** | **POST** /pins | Create Pin
 *AbstractPinsApi* | **pinsList** | **GET** /pins | List Pins
 *AbstractPinsApi* | **pinsAnalytics** | **GET** /pins/{pin_id}/analytics | Get Pin analytics
@@ -281,7 +337,6 @@ Class | Method | HTTP request | Description
 *AbstractProductGroupPromotionsApi* | **productGroupPromotionsList** | **GET** /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions
 *AbstractProductGroupPromotionsApi* | **productGroupPromotionsUpdate** | **PATCH** /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions
 *AbstractProductGroupPromotionsApi* | **productGroupsAnalytics** | **GET** /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics
-*AbstractProductGroupsApi* | **adAccountsCatalogsProductGroupsList** | **GET** /ad_accounts/{ad_account_id}/product_groups/catalogs | Get catalog product groups
 *AbstractResourcesApi* | **adAccountCountriesGet** | **GET** /resources/ad_account_countries | Get ad accounts countries
 *AbstractResourcesApi* | **deliveryMetricsGet** | **GET** /resources/delivery_metrics | Get available metrics' definitions
 *AbstractResourcesApi* | **leadFormQuestionsGet** | **GET** /resources/lead_form_questions | Get lead form questions
@@ -291,6 +346,9 @@ Class | Method | HTTP request | Description
 *AbstractSearchApi* | **searchPartnerPins** | **GET** /search/partner/pins | Search pins by a given search term
 *AbstractSearchApi* | **searchUserBoardsGet** | **GET** /search/boards | Search user's boards
 *AbstractSearchApi* | **searchUserPinsList** | **GET** /search/pins | Search user's Pins
+*AbstractTargetingTemplateApi* | **targetingTemplateCreate** | **POST** /ad_accounts/{ad_account_id}/targeting_templates | Create targeting templates
+*AbstractTargetingTemplateApi* | **targetingTemplateList** | **GET** /ad_accounts/{ad_account_id}/targeting_templates | List targeting templates
+*AbstractTargetingTemplateApi* | **targetingTemplateUpdate** | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates
 *AbstractTermsApi* | **termsRelatedList** | **GET** /terms/related | List related terms
 *AbstractTermsApi* | **termsSuggestedList** | **GET** /terms/suggested | List suggested terms
 *AbstractTermsOfServiceApi* | **termsOfServiceGet** | **GET** /ad_accounts/{ad_account_id}/terms_of_service | Get terms of service
@@ -318,10 +376,11 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\AdAccountAnalyticsResponseInner
 * OpenAPIServer\Model\AdAccountCreateRequest
 * OpenAPIServer\Model\AdAccountCreateSubscriptionRequest
+* OpenAPIServer\Model\AdAccountCreateSubscriptionRequestPartnerMetadata
 * OpenAPIServer\Model\AdAccountCreateSubscriptionResponse
 * OpenAPIServer\Model\AdAccountGetSubscriptionResponse
 * OpenAPIServer\Model\AdAccountOwner
-* OpenAPIServer\Model\AdAccountsCatalogsProductGroupsList200Response
+* OpenAPIServer\Model\AdAccountsAudiencesSharedAccountsList200Response
 * OpenAPIServer\Model\AdAccountsCountryResponse
 * OpenAPIServer\Model\AdAccountsCountryResponseData
 * OpenAPIServer\Model\AdAccountsList200Response
@@ -329,8 +388,6 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\AdArrayResponse
 * OpenAPIServer\Model\AdArrayResponseElement
 * OpenAPIServer\Model\AdCommon
-* OpenAPIServer\Model\AdCommonQuizPinData
-* OpenAPIServer\Model\AdCommonTrackingUrls
 * OpenAPIServer\Model\AdCountry
 * OpenAPIServer\Model\AdCreateRequest
 * OpenAPIServer\Model\AdGroupArrayResponse
@@ -339,8 +396,6 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\AdGroupAudienceSizingRequestKeywordsInner
 * OpenAPIServer\Model\AdGroupAudienceSizingResponse
 * OpenAPIServer\Model\AdGroupCommon
-* OpenAPIServer\Model\AdGroupCommonOptimizationGoalMetadata
-* OpenAPIServer\Model\AdGroupCommonTrackingUrls
 * OpenAPIServer\Model\AdGroupCreateRequest
 * OpenAPIServer\Model\AdGroupResponse
 * OpenAPIServer\Model\AdGroupSummaryStatus
@@ -354,6 +409,8 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\AdPreviewURLResponse
 * OpenAPIServer\Model\AdResponse
 * OpenAPIServer\Model\AdUpdateRequest
+* OpenAPIServer\Model\AdsAnalyticsAdTargetingType
+* OpenAPIServer\Model\AdsAnalyticsCampaignTargetingType
 * OpenAPIServer\Model\AdsAnalyticsCreateAsyncRequest
 * OpenAPIServer\Model\AdsAnalyticsCreateAsyncResponse
 * OpenAPIServer\Model\AdsAnalyticsFilterColumn
@@ -367,9 +424,28 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\AdsCreditRedeemResponse
 * OpenAPIServer\Model\AdsCreditsDiscountsGet200Response
 * OpenAPIServer\Model\AdsList200Response
+* OpenAPIServer\Model\AdvancedAuctionBidOptions
+* OpenAPIServer\Model\AdvancedAuctionItem
+* OpenAPIServer\Model\AdvancedAuctionItems
+* OpenAPIServer\Model\AdvancedAuctionItemsGetRecord
+* OpenAPIServer\Model\AdvancedAuctionItemsGetRequest
+* OpenAPIServer\Model\AdvancedAuctionItemsSubmitDeleteRecord
+* OpenAPIServer\Model\AdvancedAuctionItemsSubmitRecord
+* OpenAPIServer\Model\AdvancedAuctionItemsSubmitRequest
+* OpenAPIServer\Model\AdvancedAuctionItemsSubmitUpsertRecord
+* OpenAPIServer\Model\AdvancedAuctionKey
+* OpenAPIServer\Model\AdvancedAuctionOperation
+* OpenAPIServer\Model\AdvancedAuctionOperationError
+* OpenAPIServer\Model\AdvancedAuctionProcessedItem
+* OpenAPIServer\Model\AdvancedAuctionProcessedItems
 * OpenAPIServer\Model\AnalyticsDailyMetrics
 * OpenAPIServer\Model\AnalyticsMetricsResponse
+* OpenAPIServer\Model\AppTypeMultipliers
+* OpenAPIServer\Model\AssetGroupBinding
+* OpenAPIServer\Model\AssetGroupType
+* OpenAPIServer\Model\AssetIdPermissions
 * OpenAPIServer\Model\Audience
+* OpenAPIServer\Model\AudienceAccountType
 * OpenAPIServer\Model\AudienceCategory
 * OpenAPIServer\Model\AudienceCommon
 * OpenAPIServer\Model\AudienceCreateCustomRequest
@@ -385,13 +461,19 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\AudienceInsightType
 * OpenAPIServer\Model\AudienceInsightsResponse
 * OpenAPIServer\Model\AudienceRule
+* OpenAPIServer\Model\AudienceShareType
 * OpenAPIServer\Model\AudienceSharingType
 * OpenAPIServer\Model\AudienceSubcategory
 * OpenAPIServer\Model\AudienceType
 * OpenAPIServer\Model\AudienceUpdateOperationType
 * OpenAPIServer\Model\AudienceUpdateRequest
 * OpenAPIServer\Model\AudiencesList200Response
+* OpenAPIServer\Model\AuthRespondInvitesBody
+* OpenAPIServer\Model\AuthRespondInvitesBodyInvitesInner
+* OpenAPIServer\Model\AuthRespondInvitesBodyInvitesInnerAction
 * OpenAPIServer\Model\AvailabilityFilter
+* OpenAPIServer\Model\BaseInviteDataResponse
+* OpenAPIServer\Model\BaseInviteDataResponseInviteData
 * OpenAPIServer\Model\BatchOperation
 * OpenAPIServer\Model\BatchOperationStatus
 * OpenAPIServer\Model\BidFloor
@@ -423,7 +505,24 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\BulkUpsertResponse
 * OpenAPIServer\Model\BulkUpsertStatus
 * OpenAPIServer\Model\BulkUpsertStatusResponse
+* OpenAPIServer\Model\BusinessAccessError
 * OpenAPIServer\Model\BusinessAccessRole
+* OpenAPIServer\Model\BusinessAccessUserSummary
+* OpenAPIServer\Model\BusinessAssetMembersGet200Response
+* OpenAPIServer\Model\BusinessAssetPartnersGet200Response
+* OpenAPIServer\Model\BusinessAssetsGet200Response
+* OpenAPIServer\Model\BusinessMemberAssetsGet200Response
+* OpenAPIServer\Model\BusinessMemberAssetsSummary
+* OpenAPIServer\Model\BusinessMemberAssetsSummaryAdAccountsInner
+* OpenAPIServer\Model\BusinessMemberAssetsSummaryProfilesInner
+* OpenAPIServer\Model\BusinessMembersAssetAccessDeleteRequest
+* OpenAPIServer\Model\BusinessMembersAssetAccessDeleteRequestAccessesInner
+* OpenAPIServer\Model\BusinessPartnerAssetAccessGet200Response
+* OpenAPIServer\Model\BusinessRole
+* OpenAPIServer\Model\BusinessRoleCheckMode
+* OpenAPIServer\Model\BusinessRoleForMembers
+* OpenAPIServer\Model\BusinessSharedAudience
+* OpenAPIServer\Model\BusinessSharedAudienceResponse
 * OpenAPIServer\Model\CampaignCommon
 * OpenAPIServer\Model\CampaignCreateCommon
 * OpenAPIServer\Model\CampaignCreateRequest
@@ -437,15 +536,42 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CampaignUpdateResponse
 * OpenAPIServer\Model\CampaignsAnalyticsResponseInner
 * OpenAPIServer\Model\CampaignsList200Response
+* OpenAPIServer\Model\CancelInvitesBody
 * OpenAPIServer\Model\Catalog
-* OpenAPIServer\Model\CatalogProductGroup
+* OpenAPIServer\Model\CatalogsCreateCreativeAssetsItem
 * OpenAPIServer\Model\CatalogsCreateHotelItem
+* OpenAPIServer\Model\CatalogsCreateReportResponse
+* OpenAPIServer\Model\CatalogsCreateRequest
 * OpenAPIServer\Model\CatalogsCreateRetailItem
+* OpenAPIServer\Model\CatalogsCreativeAssetsAttributes
+* OpenAPIServer\Model\CatalogsCreativeAssetsBatchItem
+* OpenAPIServer\Model\CatalogsCreativeAssetsBatchRequest
+* OpenAPIServer\Model\CatalogsCreativeAssetsFeed
+* OpenAPIServer\Model\CatalogsCreativeAssetsFeedsCreateRequest
+* OpenAPIServer\Model\CatalogsCreativeAssetsFeedsUpdateRequest
+* OpenAPIServer\Model\CatalogsCreativeAssetsItemErrorResponse
+* OpenAPIServer\Model\CatalogsCreativeAssetsItemResponse
+* OpenAPIServer\Model\CatalogsCreativeAssetsItemsBatch
+* OpenAPIServer\Model\CatalogsCreativeAssetsItemsFilter
+* OpenAPIServer\Model\CatalogsCreativeAssetsItemsPostFilter
+* OpenAPIServer\Model\CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+* OpenAPIServer\Model\CatalogsCreativeAssetsProduct
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroup
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroupCreateRequest
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroupFilterKeys
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroupFilters
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroupFiltersAllOf
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroupFiltersAnyOf
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroupProductCounts
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductGroupUpdateRequest
+* OpenAPIServer\Model\CatalogsCreativeAssetsProductMetadata
 * OpenAPIServer\Model\CatalogsDbItem
+* OpenAPIServer\Model\CatalogsDeleteCreativeAssetsItem
 * OpenAPIServer\Model\CatalogsDeleteHotelItem
 * OpenAPIServer\Model\CatalogsDeleteRetailItem
 * OpenAPIServer\Model\CatalogsFeed
 * OpenAPIServer\Model\CatalogsFeedCredentials
+* OpenAPIServer\Model\CatalogsFeedIngestion
 * OpenAPIServer\Model\CatalogsFeedIngestionDetails
 * OpenAPIServer\Model\CatalogsFeedIngestionErrors
 * OpenAPIServer\Model\CatalogsFeedIngestionInfo
@@ -474,13 +600,20 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CatalogsHotelItemResponse
 * OpenAPIServer\Model\CatalogsHotelItemsBatch
 * OpenAPIServer\Model\CatalogsHotelItemsFilter
+* OpenAPIServer\Model\CatalogsHotelItemsPostFilter
+* OpenAPIServer\Model\CatalogsHotelListProductsByCatalogBasedFilterRequest
+* OpenAPIServer\Model\CatalogsHotelProduct
 * OpenAPIServer\Model\CatalogsHotelProductGroup
 * OpenAPIServer\Model\CatalogsHotelProductGroupCreateRequest
 * OpenAPIServer\Model\CatalogsHotelProductGroupFilterKeys
 * OpenAPIServer\Model\CatalogsHotelProductGroupFilters
 * OpenAPIServer\Model\CatalogsHotelProductGroupFiltersAllOf
 * OpenAPIServer\Model\CatalogsHotelProductGroupFiltersAnyOf
+* OpenAPIServer\Model\CatalogsHotelProductGroupProductCounts
 * OpenAPIServer\Model\CatalogsHotelProductGroupUpdateRequest
+* OpenAPIServer\Model\CatalogsHotelProductMetadata
+* OpenAPIServer\Model\CatalogsHotelReportParameters
+* OpenAPIServer\Model\CatalogsHotelReportParametersReport
 * OpenAPIServer\Model\CatalogsItemValidationDetails
 * OpenAPIServer\Model\CatalogsItemValidationErrors
 * OpenAPIServer\Model\CatalogsItemValidationIssue
@@ -493,14 +626,16 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CatalogsItemsDeleteBatchRequest
 * OpenAPIServer\Model\CatalogsItemsDeleteDiscontinuedBatchRequest
 * OpenAPIServer\Model\CatalogsItemsFilters
+* OpenAPIServer\Model\CatalogsItemsPostFilters
+* OpenAPIServer\Model\CatalogsItemsRequest
+* OpenAPIServer\Model\CatalogsItemsRequestLanguage
 * OpenAPIServer\Model\CatalogsItemsUpdateBatchRequest
 * OpenAPIServer\Model\CatalogsItemsUpsertBatchRequest
 * OpenAPIServer\Model\CatalogsList200Response
+* OpenAPIServer\Model\CatalogsListProductsByFeedBasedFilter
 * OpenAPIServer\Model\CatalogsListProductsByFilterRequest
-* OpenAPIServer\Model\CatalogsListProductsByFilterRequestOneOf
 * OpenAPIServer\Model\CatalogsLocale
 * OpenAPIServer\Model\CatalogsProduct
-* OpenAPIServer\Model\CatalogsProductGroup
 * OpenAPIServer\Model\CatalogsProductGroupCreateRequest
 * OpenAPIServer\Model\CatalogsProductGroupCurrencyCriteria
 * OpenAPIServer\Model\CatalogsProductGroupFilterKeys
@@ -512,21 +647,25 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CatalogsProductGroupFiltersRequestAnyOf1
 * OpenAPIServer\Model\CatalogsProductGroupMultipleCountriesCriteria
 * OpenAPIServer\Model\CatalogsProductGroupMultipleGenderCriteria
+* OpenAPIServer\Model\CatalogsProductGroupMultipleMediaTypesCriteria
 * OpenAPIServer\Model\CatalogsProductGroupMultipleStringCriteria
 * OpenAPIServer\Model\CatalogsProductGroupMultipleStringListCriteria
 * OpenAPIServer\Model\CatalogsProductGroupPinsList200Response
 * OpenAPIServer\Model\CatalogsProductGroupPricingCriteria
 * OpenAPIServer\Model\CatalogsProductGroupPricingCurrencyCriteria
-* OpenAPIServer\Model\CatalogsProductGroupProductCounts
+* OpenAPIServer\Model\CatalogsProductGroupProductCountsVertical
 * OpenAPIServer\Model\CatalogsProductGroupStatus
 * OpenAPIServer\Model\CatalogsProductGroupType
 * OpenAPIServer\Model\CatalogsProductGroupUpdateRequest
-* OpenAPIServer\Model\CatalogsProductGroupsCreate201Response
-* OpenAPIServer\Model\CatalogsProductGroupsCreateRequest
 * OpenAPIServer\Model\CatalogsProductGroupsList200Response
-* OpenAPIServer\Model\CatalogsProductGroupsList200ResponseAllOfItemsInner
 * OpenAPIServer\Model\CatalogsProductGroupsUpdateRequest
-* OpenAPIServer\Model\CatalogsProductMetadata
+* OpenAPIServer\Model\CatalogsReport
+* OpenAPIServer\Model\CatalogsReportDistributionIssueFilter
+* OpenAPIServer\Model\CatalogsReportDistributionStats
+* OpenAPIServer\Model\CatalogsReportFeedIngestionFilter
+* OpenAPIServer\Model\CatalogsReportFeedIngestionStats
+* OpenAPIServer\Model\CatalogsReportParameters
+* OpenAPIServer\Model\CatalogsReportStats
 * OpenAPIServer\Model\CatalogsRetailBatchRequest
 * OpenAPIServer\Model\CatalogsRetailBatchRequestItemsInner
 * OpenAPIServer\Model\CatalogsRetailFeed
@@ -536,12 +675,23 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CatalogsRetailItemResponse
 * OpenAPIServer\Model\CatalogsRetailItemsBatch
 * OpenAPIServer\Model\CatalogsRetailItemsFilter
+* OpenAPIServer\Model\CatalogsRetailItemsPostFilter
+* OpenAPIServer\Model\CatalogsRetailListProductsByCatalogBasedFilterRequest
+* OpenAPIServer\Model\CatalogsRetailProduct
 * OpenAPIServer\Model\CatalogsRetailProductGroup
+* OpenAPIServer\Model\CatalogsRetailProductGroupCreateRequest
+* OpenAPIServer\Model\CatalogsRetailProductGroupProductCounts
+* OpenAPIServer\Model\CatalogsRetailProductGroupUpdateRequest
+* OpenAPIServer\Model\CatalogsRetailProductMetadata
+* OpenAPIServer\Model\CatalogsRetailReportParameters
 * OpenAPIServer\Model\CatalogsStatus
 * OpenAPIServer\Model\CatalogsType
+* OpenAPIServer\Model\CatalogsUpdatableCreativeAssetsAttributes
 * OpenAPIServer\Model\CatalogsUpdatableHotelAttributes
+* OpenAPIServer\Model\CatalogsUpdateCreativeAssetsItem
 * OpenAPIServer\Model\CatalogsUpdateHotelItem
 * OpenAPIServer\Model\CatalogsUpdateRetailItem
+* OpenAPIServer\Model\CatalogsUpsertCreativeAssetsItem
 * OpenAPIServer\Model\CatalogsUpsertHotelItem
 * OpenAPIServer\Model\CatalogsUpsertRetailItem
 * OpenAPIServer\Model\CatalogsVerticalBatchRequest
@@ -550,6 +700,7 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CatalogsVerticalProductGroup
 * OpenAPIServer\Model\CatalogsVerticalProductGroupCreateRequest
 * OpenAPIServer\Model\CatalogsVerticalProductGroupUpdateRequest
+* OpenAPIServer\Model\CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 * OpenAPIServer\Model\ConditionFilter
 * OpenAPIServer\Model\ConversionApiResponse
 * OpenAPIServer\Model\ConversionApiResponseEventsInner
@@ -560,6 +711,9 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\ConversionEventsDataInnerCustomData
 * OpenAPIServer\Model\ConversionEventsDataInnerCustomDataContentsInner
 * OpenAPIServer\Model\ConversionEventsUserData
+* OpenAPIServer\Model\ConversionEventsUserDataAnyOf
+* OpenAPIServer\Model\ConversionEventsUserDataAnyOf1
+* OpenAPIServer\Model\ConversionEventsUserDataAnyOf2
 * OpenAPIServer\Model\ConversionReportAttributionType
 * OpenAPIServer\Model\ConversionReportTimeType
 * OpenAPIServer\Model\ConversionTagCommon
@@ -570,9 +724,24 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\ConversionTagType
 * OpenAPIServer\Model\Country
 * OpenAPIServer\Model\CountryFilter
+* OpenAPIServer\Model\CreateAssetAccessRequestBody
+* OpenAPIServer\Model\CreateAssetAccessRequestBodyAssetRequestsInner
+* OpenAPIServer\Model\CreateAssetAccessRequestErrorMessageInner
+* OpenAPIServer\Model\CreateAssetAccessRequestResponse
+* OpenAPIServer\Model\CreateAssetGroupBody
+* OpenAPIServer\Model\CreateAssetGroupResponse
+* OpenAPIServer\Model\CreateAssetInvitesRequest
+* OpenAPIServer\Model\CreateAssetInvitesRequestItem
+* OpenAPIServer\Model\CreateInvitesResultsResponseArray
+* OpenAPIServer\Model\CreateInvitesResultsResponseArrayItemsInner
+* OpenAPIServer\Model\CreateInvitesResultsResponseArrayItemsInnerInvite
 * OpenAPIServer\Model\CreateMMMReportRequest
 * OpenAPIServer\Model\CreateMMMReportResponse
 * OpenAPIServer\Model\CreateMMMReportResponseData
+* OpenAPIServer\Model\CreateMembershipOrPartnershipInvitesBody
+* OpenAPIServer\Model\CreativeAssetsIdFilter
+* OpenAPIServer\Model\CreativeAssetsProcessingRecord
+* OpenAPIServer\Model\CreativeAssetsVisibilityType
 * OpenAPIServer\Model\CreativeType
 * OpenAPIServer\Model\Currency
 * OpenAPIServer\Model\CurrencyFilter
@@ -587,6 +756,21 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CustomerListsList200Response
 * OpenAPIServer\Model\DataOutputFormat
 * OpenAPIServer\Model\DataStatus
+* OpenAPIServer\Model\DeleteAssetGroupBody
+* OpenAPIServer\Model\DeleteAssetGroupResponse
+* OpenAPIServer\Model\DeleteAssetGroupResponseExceptionsInner
+* OpenAPIServer\Model\DeleteInvitesResultsResponseArray
+* OpenAPIServer\Model\DeleteInvitesResultsResponseArrayItemsInner
+* OpenAPIServer\Model\DeleteInvitesResultsResponseArrayItemsInnerException
+* OpenAPIServer\Model\DeleteMemberAccessResult
+* OpenAPIServer\Model\DeleteMemberAccessResultsResponseArray
+* OpenAPIServer\Model\DeletePartnerAssetAccessBody
+* OpenAPIServer\Model\DeletePartnerAssetAccessBodyAccessesInner
+* OpenAPIServer\Model\DeletePartnerAssetsResult
+* OpenAPIServer\Model\DeletePartnerAssetsResultsResponseArray
+* OpenAPIServer\Model\DeletePartnersRequest
+* OpenAPIServer\Model\DeletePartnersResponse
+* OpenAPIServer\Model\DeletedMembersResponse
 * OpenAPIServer\Model\DeliveryMetricsResponse
 * OpenAPIServer\Model\DeliveryMetricsResponseItemsInner
 * OpenAPIServer\Model\DetailedError
@@ -603,8 +787,15 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\Gender
 * OpenAPIServer\Model\GenderFilter
 * OpenAPIServer\Model\GetAudiencesOrderBy
+* OpenAPIServer\Model\GetBusinessAssetTypeResponse
+* OpenAPIServer\Model\GetBusinessAssetsResponse
+* OpenAPIServer\Model\GetBusinessEmployers200Response
+* OpenAPIServer\Model\GetBusinessMembers200Response
+* OpenAPIServer\Model\GetBusinessPartners200Response
+* OpenAPIServer\Model\GetInvites200Response
 * OpenAPIServer\Model\GetMMMReportResponse
 * OpenAPIServer\Model\GetMMMReportResponseData
+* OpenAPIServer\Model\GetPartnerAssetsResponse
 * OpenAPIServer\Model\GoogleProductCategory0Filter
 * OpenAPIServer\Model\GoogleProductCategory1Filter
 * OpenAPIServer\Model\GoogleProductCategory2Filter
@@ -632,7 +823,17 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\IntegrationRequestPatch
 * OpenAPIServer\Model\IntegrationsGetList200Response
 * OpenAPIServer\Model\Interest
+* OpenAPIServer\Model\InviteAssetsSummary
+* OpenAPIServer\Model\InviteAssetsSummaryAdAccountsInner
+* OpenAPIServer\Model\InviteAssetsSummaryProfilesInner
+* OpenAPIServer\Model\InviteBusinessRoleBinding
+* OpenAPIServer\Model\InviteExceptionResponse
+* OpenAPIServer\Model\InviteResponse
+* OpenAPIServer\Model\InviteStatus
+* OpenAPIServer\Model\InviteType
 * OpenAPIServer\Model\ItemAttributes
+* OpenAPIServer\Model\ItemAttributesRequest
+* OpenAPIServer\Model\ItemAttributesRequestAllOfImageLink
 * OpenAPIServer\Model\ItemBatchRecord
 * OpenAPIServer\Model\ItemCreateBatchRecord
 * OpenAPIServer\Model\ItemDeleteBatchRecord
@@ -661,7 +862,11 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\KeywordsRequest
 * OpenAPIServer\Model\KeywordsResponse
 * OpenAPIServer\Model\Language
+* OpenAPIServer\Model\LeadFormArrayResponse
+* OpenAPIServer\Model\LeadFormArrayResponseItemsInner
 * OpenAPIServer\Model\LeadFormCommon
+* OpenAPIServer\Model\LeadFormCommonPolicyLinksInner
+* OpenAPIServer\Model\LeadFormCreateRequest
 * OpenAPIServer\Model\LeadFormQuestion
 * OpenAPIServer\Model\LeadFormQuestionFieldType
 * OpenAPIServer\Model\LeadFormQuestionType
@@ -669,7 +874,12 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\LeadFormStatus
 * OpenAPIServer\Model\LeadFormTestRequest
 * OpenAPIServer\Model\LeadFormTestResponse
+* OpenAPIServer\Model\LeadFormUpdateRequest
 * OpenAPIServer\Model\LeadFormsList200Response
+* OpenAPIServer\Model\LeadsExportCreateRequest
+* OpenAPIServer\Model\LeadsExportCreateResponse
+* OpenAPIServer\Model\LeadsExportResponseData
+* OpenAPIServer\Model\LeadsExportStatus
 * OpenAPIServer\Model\LineItem
 * OpenAPIServer\Model\LinkedBusiness
 * OpenAPIServer\Model\MMMReportingColumn
@@ -678,27 +888,36 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\MatchTypeResponse
 * OpenAPIServer\Model\MaxPriceFilter
 * OpenAPIServer\Model\MediaList200Response
+* OpenAPIServer\Model\MediaType
+* OpenAPIServer\Model\MediaTypeFilter
 * OpenAPIServer\Model\MediaUpload
 * OpenAPIServer\Model\MediaUploadAllOfUploadParameters
 * OpenAPIServer\Model\MediaUploadDetails
 * OpenAPIServer\Model\MediaUploadRequest
 * OpenAPIServer\Model\MediaUploadStatus
 * OpenAPIServer\Model\MediaUploadType
+* OpenAPIServer\Model\MemberBusinessRole
+* OpenAPIServer\Model\MembersToDeleteBody
+* OpenAPIServer\Model\MembersToDeleteBodyMembersInner
 * OpenAPIServer\Model\MetricsReportingLevel
 * OpenAPIServer\Model\MetricsResponse
 * OpenAPIServer\Model\MinPriceFilter
+* OpenAPIServer\Model\MultipleProductGroupsInner
 * OpenAPIServer\Model\NonNullableCatalogsCurrency
 * OpenAPIServer\Model\NonNullableProductAvailabilityType
 * OpenAPIServer\Model\NullableCatalogsItemFieldType
 * OpenAPIServer\Model\NullableCurrency
+* OpenAPIServer\Model\OauthAccessTokenRequestClientCredentials
 * OpenAPIServer\Model\OauthAccessTokenRequestCode
 * OpenAPIServer\Model\OauthAccessTokenRequestRefresh
 * OpenAPIServer\Model\OauthAccessTokenResponse
+* OpenAPIServer\Model\OauthAccessTokenResponseClientCredentials
 * OpenAPIServer\Model\OauthAccessTokenResponseCode
 * OpenAPIServer\Model\OauthAccessTokenResponseEverlastingRefresh
 * OpenAPIServer\Model\OauthAccessTokenResponseIntegrationRefresh
 * OpenAPIServer\Model\OauthAccessTokenResponseRefresh
 * OpenAPIServer\Model\ObjectiveType
+* OpenAPIServer\Model\OperationType
 * OpenAPIServer\Model\OptimizationGoalMetadata
 * OpenAPIServer\Model\OptimizationGoalMetadataConversionTagV3GoalMetadata
 * OpenAPIServer\Model\OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
@@ -717,6 +936,8 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\PageVisitConversionTagsGet200Response
 * OpenAPIServer\Model\Paginated
 * OpenAPIServer\Model\PartnerType
+* OpenAPIServer\Model\Permissions
+* OpenAPIServer\Model\PermissionsWithOwner
 * OpenAPIServer\Model\Pin
 * OpenAPIServer\Model\PinAnalyticsMetricsResponse
 * OpenAPIServer\Model\PinAnalyticsMetricsResponseDailyMetricsInner
@@ -733,6 +954,7 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\PinMediaSourcePinURL
 * OpenAPIServer\Model\PinMediaSourceVideoID
 * OpenAPIServer\Model\PinMediaWithImage
+* OpenAPIServer\Model\PinMediaWithImageAllOfImages
 * OpenAPIServer\Model\PinMediaWithImageAndVideo
 * OpenAPIServer\Model\PinMediaWithImages
 * OpenAPIServer\Model\PinMediaWithVideo
@@ -745,15 +967,19 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\PinsSaveRequest
 * OpenAPIServer\Model\PinterestTagEventData
 * OpenAPIServer\Model\PlacementGroupType
+* OpenAPIServer\Model\PlacementMultipliers
 * OpenAPIServer\Model\PriceFilter
 * OpenAPIServer\Model\ProductAvailabilityType
 * OpenAPIServer\Model\ProductGroupAnalyticsResponseInner
 * OpenAPIServer\Model\ProductGroupPromotion
 * OpenAPIServer\Model\ProductGroupPromotionCreateRequest
+* OpenAPIServer\Model\ProductGroupPromotionCreateRequestElement
 * OpenAPIServer\Model\ProductGroupPromotionResponse
+* OpenAPIServer\Model\ProductGroupPromotionResponseElement
 * OpenAPIServer\Model\ProductGroupPromotionResponseItem
 * OpenAPIServer\Model\ProductGroupPromotionUpdateRequest
 * OpenAPIServer\Model\ProductGroupPromotionsList200Response
+* OpenAPIServer\Model\ProductGroupReferenceFilter
 * OpenAPIServer\Model\ProductGroupSummaryStatus
 * OpenAPIServer\Model\ProductType0Filter
 * OpenAPIServer\Model\ProductType1Filter
@@ -767,6 +993,9 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\RelatedTerms
 * OpenAPIServer\Model\RelatedTermsRelatedTermsListInner
 * OpenAPIServer\Model\ReportingColumnAsync
+* OpenAPIServer\Model\ReportsStats200Response
+* OpenAPIServer\Model\RespondToInvitesResponseArray
+* OpenAPIServer\Model\RespondToInvitesResponseArrayItemsInner
 * OpenAPIServer\Model\Role
 * OpenAPIServer\Model\SSIOAccountAddress
 * OpenAPIServer\Model\SSIOAccountItem
@@ -782,14 +1011,28 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\SSIOOrderLine
 * OpenAPIServer\Model\SearchPartnerPins200Response
 * OpenAPIServer\Model\SearchUserBoardsGet200Response
+* OpenAPIServer\Model\SharedAudience
+* OpenAPIServer\Model\SharedAudienceAccount
+* OpenAPIServer\Model\SharedAudienceCommon
+* OpenAPIServer\Model\SharedAudienceResponse
+* OpenAPIServer\Model\SharedAudienceResponseCommon
 * OpenAPIServer\Model\SingleInterestTargetingOptionResponse
 * OpenAPIServer\Model\SsioInsertionOrdersStatusGetByAdAccount200Response
 * OpenAPIServer\Model\SsioOrderLinesGetByAdAccount200Response
 * OpenAPIServer\Model\SummaryPin
-* OpenAPIServer\Model\SummaryPinMedia
 * OpenAPIServer\Model\TargetingAdvertiserCountry
 * OpenAPIServer\Model\TargetingSpec
+* OpenAPIServer\Model\TargetingSpecAppType
 * OpenAPIServer\Model\TargetingSpecSHOPPINGRETARGETING
+* OpenAPIServer\Model\TargetingTemplateAudienceSizing
+* OpenAPIServer\Model\TargetingTemplateAudienceSizingReachEstimate
+* OpenAPIServer\Model\TargetingTemplateCommon
+* OpenAPIServer\Model\TargetingTemplateCreate
+* OpenAPIServer\Model\TargetingTemplateGetResponseData
+* OpenAPIServer\Model\TargetingTemplateKeyword
+* OpenAPIServer\Model\TargetingTemplateList200Response
+* OpenAPIServer\Model\TargetingTemplateResponseData
+* OpenAPIServer\Model\TargetingTemplateUpdateRequest
 * OpenAPIServer\Model\TargetingTypeFilter
 * OpenAPIServer\Model\TemplateResponse
 * OpenAPIServer\Model\TemplateResponseDateRange
@@ -810,17 +1053,40 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\TrendingKeywordsResponseTrendsInnerTimeSeries
 * OpenAPIServer\Model\TrendsSupportedRegion
 * OpenAPIServer\Model\UpdatableItemAttributes
+* OpenAPIServer\Model\UpdateAssetGroupBody
+* OpenAPIServer\Model\UpdateAssetGroupBodyAssetGroupsToUpdateInner
+* OpenAPIServer\Model\UpdateAssetGroupResponse
+* OpenAPIServer\Model\UpdateAssetGroupResponseExceptionsInner
+* OpenAPIServer\Model\UpdateInvitesResultsResponseArray
+* OpenAPIServer\Model\UpdateInvitesResultsResponseArrayItemsInner
+* OpenAPIServer\Model\UpdateMaskBidOptionField
 * OpenAPIServer\Model\UpdateMaskFieldType
+* OpenAPIServer\Model\UpdateMemberAssetAccessBody
+* OpenAPIServer\Model\UpdateMemberAssetAccessBodyAccessesInner
+* OpenAPIServer\Model\UpdateMemberAssetsResultsResponseArray
+* OpenAPIServer\Model\UpdateMemberAssetsResultsResponseArrayItemsInner
+* OpenAPIServer\Model\UpdateMemberBusinessRoleBody
+* OpenAPIServer\Model\UpdateMemberResult
+* OpenAPIServer\Model\UpdateMemberResultsResponseArray
+* OpenAPIServer\Model\UpdatePartnerAssetAccessBody
+* OpenAPIServer\Model\UpdatePartnerAssetAccessBodyAccessesInner
+* OpenAPIServer\Model\UpdatePartnerAssetsResult
+* OpenAPIServer\Model\UpdatePartnerAssetsResultsResponseArray
+* OpenAPIServer\Model\UpdatePartnerResultsResponseArray
+* OpenAPIServer\Model\UpdatePartnerResultsResponseArrayItemsInner
 * OpenAPIServer\Model\UserAccountFollowedInterests200Response
+* OpenAPIServer\Model\UserBusinessRoleBinding
 * OpenAPIServer\Model\UserFollowingFeedType
 * OpenAPIServer\Model\UserFollowingGet200Response
 * OpenAPIServer\Model\UserListOperationType
 * OpenAPIServer\Model\UserListType
+* OpenAPIServer\Model\UserSingleAssetBinding
 * OpenAPIServer\Model\UserSummary
 * OpenAPIServer\Model\UserWebsiteSummary
 * OpenAPIServer\Model\UserWebsiteVerificationCode
 * OpenAPIServer\Model\UserWebsiteVerifyRequest
 * OpenAPIServer\Model\UserWebsitesGet200Response
+* OpenAPIServer\Model\UsersForIndividualAssetResponse
 * OpenAPIServer\Model\VideoMetadata
 
 
@@ -849,8 +1115,34 @@ Scope list:
 * `user_accounts:read` - See your user accounts and followers
 * `user_accounts:write` - Update your user accounts and followers
 
+### Security schema `conversion_token`
+> Important! To make Bearer authentication work you need to extend [\OpenAPIServer\Auth\AbstractAuthenticator](./lib/Auth/AbstractAuthenticator.php) class by [\OpenAPIServer\Auth\BearerAuthenticator](./src/Auth/BearerAuthenticator.php) class.
+
 ### Security schema `basic`
 > Important! To make Basic authentication work you need to extend [\OpenAPIServer\Auth\AbstractAuthenticator](./lib/Auth/AbstractAuthenticator.php) class by [\OpenAPIServer\Auth\BasicAuthenticator](./src/Auth/BasicAuthenticator.php) class.
+
+### Security schema `client_credentials`
+> Important! To make OAuth authentication work you need to extend [\OpenAPIServer\Auth\AbstractAuthenticator](./lib/Auth/AbstractAuthenticator.php) class by [\OpenAPIServer\Auth\OAuthAuthenticator](./src/Auth/OAuthAuthenticator.php) class.
+
+Scope list:
+* `ads:read` - See all of your advertising data, including ads, ad groups, campaigns etc.
+* `ads:write` - Create, update, or delete ads, ad groups, campaigns etc.
+* `billing:read` - See all of your billing data, billing profile, etc.
+* `billing:write` - Create, update, or delete billing data, billing profiles, etc.
+* `biz_access:read` - See business access data
+* `biz_access:write` - Create, update, or delete business access data
+* `boards:read` - See your public boards, including group boards you join
+* `boards:read_secret` - See your secret boards
+* `boards:write` - Create, update, or delete your public boards
+* `boards:write_secret` - Create, update, or delete your secret boards
+* `catalogs:read` - See all of your catalogs data
+* `catalogs:write` - Create, update, or delete your catalogs data
+* `pins:read` - See your public Pins
+* `pins:read_secret` - See your secret Pins
+* `pins:write` - Create, update, or delete your public Pins
+* `pins:write_secret` - Create, update, or delete your secret Pins
+* `user_accounts:read` - See your user accounts and followers
+* `user_accounts:write` - Update your user accounts and followers
 
 ### Advanced middleware configuration
 Ref to used Slim Token Middleware [dyorg/slim-token-authentication](https://github.com/dyorg/slim-token-authentication/tree/1.x#readme)

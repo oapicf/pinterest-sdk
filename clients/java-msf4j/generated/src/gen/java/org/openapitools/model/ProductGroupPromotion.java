@@ -7,14 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 
 /**
  * ProductGroupPromotion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotion   {
   @JsonProperty("id")
   private String id;
@@ -57,9 +56,6 @@ public class ProductGroupPromotion   {
 
   @JsonProperty("catalog_product_group_name")
   private String catalogProductGroupName;
-
-  @JsonProperty("creative_type")
-  private CreativeType creativeType;
 
   @JsonProperty("collections_hero_pin_id")
   private String collectionsHeroPinId;
@@ -322,24 +318,6 @@ public class ProductGroupPromotion   {
     this.catalogProductGroupName = catalogProductGroupName;
   }
 
-  public ProductGroupPromotion creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-   /**
-   * Get creativeType
-   * @return creativeType
-  **/
-  @ApiModelProperty(value = "")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
   public ProductGroupPromotion collectionsHeroPinId(String collectionsHeroPinId) {
     this.collectionsHeroPinId = collectionsHeroPinId;
     return this;
@@ -418,7 +396,6 @@ public class ProductGroupPromotion   {
         Objects.equals(this.trackingUrl, productGroupPromotion.trackingUrl) &&
         Objects.equals(this.catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
         Objects.equals(this.catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
-        Objects.equals(this.creativeType, productGroupPromotion.creativeType) &&
         Objects.equals(this.collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         Objects.equals(this.collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         Objects.equals(this.gridClickType, productGroupPromotion.gridClickType);
@@ -426,7 +403,7 @@ public class ProductGroupPromotion   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, creativeType, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
+    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
   }
 
   @Override
@@ -448,7 +425,6 @@ public class ProductGroupPromotion   {
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
     sb.append("    catalogProductGroupName: ").append(toIndentedString(catalogProductGroupName)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    collectionsHeroPinId: ").append(toIndentedString(collectionsHeroPinId)).append("\n");
     sb.append("    collectionsHeroDestinationUrl: ").append(toIndentedString(collectionsHeroDestinationUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");

@@ -36,6 +36,27 @@ public abstract class PinsApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
+    public Result multiPinsAnalyticsHttp(Http.Request request, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> pinIds, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
+            return unauthorized();
+        }
+
+        Map<String, Map<String> obj = multiPinsAnalytics(request, pinIds, startDate, endDate, metricTypes, appTypes, adAccountId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            for (Map.Entry<String, Map<String> entry : obj.entrySet()) {
+                OpenAPIUtils.validate(entry.getValue());
+            }
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract Map<String, Map<String> multiPinsAnalytics(Http.Request request, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> pinIds, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+
     public Result pinsAnalyticsHttp(Http.Request request, String pinId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();

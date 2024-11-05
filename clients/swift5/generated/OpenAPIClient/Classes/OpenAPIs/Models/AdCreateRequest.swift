@@ -22,7 +22,7 @@ public struct AdCreateRequest: Codable, JSONEncodable, Hashable {
         case buyNow = "BUY_NOW"
         case contactUs = "CONTACT_US"
         case getQuote = "GET_QUOTE"
-        case visitWebsite = "VISIT_WEBSITE"
+        case visitSite = "VISIT_SITE"
         case applyNow = "APPLY_NOW"
         case bookNow = "BOOK_NOW"
         case requestDemo = "REQUEST_DEMO"
@@ -31,14 +31,13 @@ public struct AdCreateRequest: Codable, JSONEncodable, Hashable {
         case addToCart = "ADD_TO_CART"
         case watchNow = "WATCH_NOW"
         case readMore = "READ_MORE"
-        case null = "null"
     }
     static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
     static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
     static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** ID of the ad group that contains the ad. */
     public var adGroupId: String
-    /** Deep link URL for Android devices. Not currently available. Using this field will generate an error. */
+    /** Deep link URL for Android devices. */
     public var androidDeepLink: String?
     /** Comma-separated deep links for the carousel pin on Android. */
     public var carouselAndroidDeepLinks: [String]?
@@ -51,7 +50,7 @@ public struct AdCreateRequest: Codable, JSONEncodable, Hashable {
     public var creativeType: CreativeType
     /** Destination URL. */
     public var destinationUrl: String?
-    /** Deep link URL for iOS devices. Not currently available. Using this field will generate an error. */
+    /** Deep link URL for iOS devices. */
     public var iosDeepLink: String?
     /** Is original pin deleted? */
     public var isPinDeleted: Bool?
@@ -60,19 +59,20 @@ public struct AdCreateRequest: Codable, JSONEncodable, Hashable {
     /** Name of the ad - 255 chars max. */
     public var name: String?
     public var status: EntityStatus?
-    public var trackingUrls: AdCommonTrackingUrls?
+    public var trackingUrls: TrackingUrls?
     /** Tracking URL for ad impressions. */
     public var viewTrackingUrl: String?
     /** Lead form ID for lead ad generation. */
     public var leadFormId: String?
     public var gridClickType: GridClickType?
-    /** Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
+    /** Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
     public var customizableCtaType: CustomizableCtaType?
-    public var quizPinData: AdCommonQuizPinData?
+    /** Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
+    public var quizPinData: QuizPinData?
     /** Pin ID. */
     public var pinId: String
 
-    public init(adGroupId: String, androidDeepLink: String? = nil, carouselAndroidDeepLinks: [String]? = nil, carouselDestinationUrls: [String]? = nil, carouselIosDeepLinks: [String]? = nil, clickTrackingUrl: String? = nil, creativeType: CreativeType, destinationUrl: String? = nil, iosDeepLink: String? = nil, isPinDeleted: Bool? = nil, isRemovable: Bool? = nil, name: String? = nil, status: EntityStatus? = nil, trackingUrls: AdCommonTrackingUrls? = nil, viewTrackingUrl: String? = nil, leadFormId: String? = nil, gridClickType: GridClickType? = nil, customizableCtaType: CustomizableCtaType? = nil, quizPinData: AdCommonQuizPinData? = nil, pinId: String) {
+    public init(adGroupId: String, androidDeepLink: String? = nil, carouselAndroidDeepLinks: [String]? = nil, carouselDestinationUrls: [String]? = nil, carouselIosDeepLinks: [String]? = nil, clickTrackingUrl: String? = nil, creativeType: CreativeType, destinationUrl: String? = nil, iosDeepLink: String? = nil, isPinDeleted: Bool? = nil, isRemovable: Bool? = nil, name: String? = nil, status: EntityStatus? = nil, trackingUrls: TrackingUrls? = nil, viewTrackingUrl: String? = nil, leadFormId: String? = nil, gridClickType: GridClickType? = nil, customizableCtaType: CustomizableCtaType? = nil, quizPinData: QuizPinData? = nil, pinId: String) {
         self.adGroupId = adGroupId
         self.androidDeepLink = androidDeepLink
         self.carouselAndroidDeepLinks = carouselAndroidDeepLinks

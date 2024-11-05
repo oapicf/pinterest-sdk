@@ -11,7 +11,7 @@ Protected Class AdsApi
 		  // Invokes AdsApiCallbackHandler.AdPreviewsCreateCallback(AdPreviewURLResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/ad_previews
-		  // - Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href="https://help.pinterest.com/en/business/article/promoted-pins-overview" target="_blank">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+		  // - Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href="https://help.pinterest.com/en/business/article/promoted-pins-overview" target="_blank">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -134,7 +134,7 @@ Protected Class AdsApi
 
 
 	#tag Method, Flags = &h0
-		Sub AdTargetingAnalyticsGet(, adAccountId As String, adIds() As String, startDate As Date, endDate As Date, targetingTypes() As AdsAnalyticsTargetingType, columns() As ColumnsEnum_AdTargetingAnalyticsGet, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdTargetingAnalyticsGet, engagementWindowDays As Engagement_window_daysEnum_AdTargetingAnalyticsGet, viewWindowDays As View_window_daysEnum_AdTargetingAnalyticsGet, conversionReportTime As Conversion_report_timeEnum_AdTargetingAnalyticsGet, attributionTypes As OpenAPIClient.Models.ConversionReportAttributionTypeOptional)
+		Sub AdTargetingAnalyticsGet(, adAccountId As String, adIds() As String, startDate As Date, endDate As Date, targetingTypes() As AdsAnalyticsAdTargetingType, columns() As ColumnsEnum_AdTargetingAnalyticsGet, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdTargetingAnalyticsGet, engagementWindowDays As Engagement_window_daysEnum_AdTargetingAnalyticsGet, viewWindowDays As View_window_daysEnum_AdTargetingAnalyticsGet, conversionReportTime As Conversion_report_timeEnum_AdTargetingAnalyticsGet, attributionTypes As OpenAPIClient.Models.ConversionReportAttributionTypeOptional)
 		  // Operation ad_targeting_analytics/get
 		  // Get targeting analytics for ads
 		  // - 
@@ -142,7 +142,7 @@ Protected Class AdsApi
 		  // - parameter adIds: (query) List of Ad Ids to use to filter the results. 
 		  // - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 		  // - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-		  // - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. 
+		  // - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [&quot;AGE_BUCKET_AND_GENDER&quot;] is in BETA and not yet available to all users. 
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -190,7 +190,7 @@ Protected Class AdsApi
 		  
 		  
 		  Dim localVarQueryStringstargetingTypes() As String
-		  For Each localVarItemtargetingTypes As AdsAnalyticsTargetingType in targetingTypes
+		  For Each localVarItemtargetingTypes As AdsAnalyticsAdTargetingType in targetingTypes
 		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemtargetingTypes))
 		    localVarQueryStringstargetingTypes.Append(encodedParameter)
 		  Next
@@ -534,6 +534,8 @@ Protected Class AdsApi
 		      Return "VIDEO_P95_COMBINED_2"
 		    Case ColumnsEnum_AdTargetingAnalyticsGet.VideoMrcViews2
 		      Return "VIDEO_MRC_VIEWS_2"
+		    Case ColumnsEnum_AdTargetingAnalyticsGet.PaidVideoViewableRate
+		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdTargetingAnalyticsGet.VideoLength
 		      Return "VIDEO_LENGTH"
 		    Case ColumnsEnum_AdTargetingAnalyticsGet.EcpvInDollar
@@ -598,6 +600,8 @@ Protected Class AdsApi
 		      Return "COST_PER_LEAD"
 		    Case ColumnsEnum_AdTargetingAnalyticsGet.QuizCompleted
 		      Return "QUIZ_COMPLETED"
+		    Case ColumnsEnum_AdTargetingAnalyticsGet.QuizPinResultOpen
+		      Return "QUIZ_PIN_RESULT_OPEN"
 		    Case ColumnsEnum_AdTargetingAnalyticsGet.QuizCompletionRate
 		      Return "QUIZ_COMPLETION_RATE"
 		    Case ColumnsEnum_AdTargetingAnalyticsGet.ShowcasePinClickthrough
@@ -670,25 +674,27 @@ Protected Class AdsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdsAnalytics(, adAccountId As String, startDate As Date, endDate As Date, adIds() As String, columns() As ColumnsEnum_AdsAnalytics, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_AdsAnalytics, engagementWindowDays As Engagement_window_daysEnum_AdsAnalytics, viewWindowDays As View_window_daysEnum_AdsAnalytics, conversionReportTime As Conversion_report_timeEnum_AdsAnalytics)
+		Sub AdsAnalytics(, adAccountId As String, startDate As Date, endDate As Date, columns() As ColumnsEnum_AdsAnalytics, granularity As OpenAPIClient.Models.Granularity, adIds() As String, clickWindowDays As Click_window_daysEnum_AdsAnalytics, engagementWindowDays As Engagement_window_daysEnum_AdsAnalytics, viewWindowDays As View_window_daysEnum_AdsAnalytics, conversionReportTime As Conversion_report_timeEnum_AdsAnalytics, pinIds() As String, campaignIds() As String)
 		  // Operation ads/analytics
 		  // Get ad analytics
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 		  // - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-		  // - parameter adIds: (query) List of Ad Ids to use to filter the results. 
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
+		  // - parameter adIds: (query) List of Ad Ids to use to filter the results. (optional, default to Nil)
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
 		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
 		  // - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
 		  // - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+		  // - parameter pinIds: (query) List of Pin IDs. (optional, default to Nil)
+		  // - parameter campaignIds: (query) List of Campaign Ids to use to filter the results. (optional, default to Nil)
 		  //
 		  // Invokes AdsApiCallbackHandler.AdsAnalyticsCallback(AdsAnalyticsResponseInner) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ads/analytics
-		  // - Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+		  // - Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -751,6 +757,42 @@ Protected Class AdsApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("conversion_report_time") + "=" + EncodeURLComponent(Conversion_report_timeEnum_AdsAnalyticsToString(conversionReportTime))
 		  
+		  
+		  Dim localVarQueryStringspinIds() As String
+		  For Each localVarItempinIds As String in pinIds
+		    Dim encodedParameter As String = EncodeURLComponent(localVarItempinIds)
+		    Select Case "form"
+		      Case "form"
+		        localVarQueryStringspinIds.Append("inner=" + encodedParameter)
+		      Case "spaceDelimited"
+		        localVarQueryStringspinIds.Append("inner=" + encodedParameter)
+		      Case "pipeDelimited"
+		        localVarQueryStringspinIds.Append("inner=" + encodedParameter)
+		      Case "deepObject"
+		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		    End Select
+		  Next
+		  
+		  Dim localVarQueryStringpinIds As String
+		  localVarQueryStringpinIds = Join(localVarQueryStringspinIds, "&")
+		  
+		  Dim localVarQueryStringscampaignIds() As String
+		  For Each localVarItemcampaignIds As String in campaignIds
+		    Dim encodedParameter As String = EncodeURLComponent(localVarItemcampaignIds)
+		    Select Case "form"
+		      Case "form"
+		        localVarQueryStringscampaignIds.Append("inner=" + encodedParameter)
+		      Case "spaceDelimited"
+		        localVarQueryStringscampaignIds.Append("inner=" + encodedParameter)
+		      Case "pipeDelimited"
+		        localVarQueryStringscampaignIds.Append("inner=" + encodedParameter)
+		      Case "deepObject"
+		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		    End Select
+		  Next
+		  
+		  Dim localVarQueryStringcampaignIds As String
+		  localVarQueryStringcampaignIds = Join(localVarQueryStringscampaignIds, "&")
 
 		  
 		  
@@ -1045,6 +1087,8 @@ Protected Class AdsApi
 		      Return "VIDEO_P95_COMBINED_2"
 		    Case ColumnsEnum_AdsAnalytics.VideoMrcViews2
 		      Return "VIDEO_MRC_VIEWS_2"
+		    Case ColumnsEnum_AdsAnalytics.PaidVideoViewableRate
+		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdsAnalytics.VideoLength
 		      Return "VIDEO_LENGTH"
 		    Case ColumnsEnum_AdsAnalytics.EcpvInDollar
@@ -1109,6 +1153,8 @@ Protected Class AdsApi
 		      Return "COST_PER_LEAD"
 		    Case ColumnsEnum_AdsAnalytics.QuizCompleted
 		      Return "QUIZ_COMPLETED"
+		    Case ColumnsEnum_AdsAnalytics.QuizPinResultOpen
+		      Return "QUIZ_PIN_RESULT_OPEN"
 		    Case ColumnsEnum_AdsAnalytics.QuizCompletionRate
 		      Return "QUIZ_COMPLETION_RATE"
 		    Case ColumnsEnum_AdsAnalytics.ShowcasePinClickthrough
@@ -1459,7 +1505,7 @@ Protected Class AdsApi
 		  // - parameter adGroupIds: (query) List of Ad group Ids to use to filter the results. (optional, default to Nil)
 		  // - parameter adIds: (query) List of Ad Ids to use to filter the results. (optional, default to Nil)
 		  // - parameter entityStatuses: (query) Entity status (optional, default to ["ACTIVE","PAUSED"])
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  //
@@ -2001,6 +2047,7 @@ Protected Class AdsApi
         VideoP75Combined2
         VideoP95Combined2
         VideoMrcViews2
+        PaidVideoViewableRate
         VideoLength
         EcpvInDollar
         EcpcvInDollar
@@ -2033,6 +2080,7 @@ Protected Class AdsApi
         Leads
         CostPerLead
         QuizCompleted
+        QuizPinResultOpen
         QuizCompletionRate
         ShowcasePinClickthrough
         ShowcaseSubpageClickthrough
@@ -2195,6 +2243,7 @@ Protected Class AdsApi
         VideoP75Combined2
         VideoP95Combined2
         VideoMrcViews2
+        PaidVideoViewableRate
         VideoLength
         EcpvInDollar
         EcpcvInDollar
@@ -2227,6 +2276,7 @@ Protected Class AdsApi
         Leads
         CostPerLead
         QuizCompleted
+        QuizPinResultOpen
         QuizCompletionRate
         ShowcasePinClickthrough
         ShowcaseSubpageClickthrough

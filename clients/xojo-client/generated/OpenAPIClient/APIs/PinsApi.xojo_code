@@ -1,6 +1,207 @@
 #tag Class
 Protected Class PinsApi
 	#tag Method, Flags = &h0
+		Sub MultiPinsAnalytics(, pinIds() As String, startDate As Date, endDate As Date, metricTypes() As OpenAPIClient.Models.PinsAnalyticsMetricTypesParameterInner, appTypes As App_typesEnum_MultiPinsAnalytics, Optional adAccountId As Xoson.O.OptionalString)
+		  // Operation multi_pins/analytics
+		  // Get multiple Pin analytics
+		  // - 
+		  // - parameter pinIds: (query) List of Pin IDs. 
+		  // - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
+		  // - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
+		  // - parameter metricTypes: (query) Pin metric types to get data for. 
+		  // - parameter appTypes: (query) Apps or devices to get data for, default is all. (optional, default to ALL)
+		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
+		  //
+		  // Invokes PinsApiCallbackHandler.MultiPinsAnalyticsCallback(Dictionary) on completion. 
+		  //
+		  // - GET /pins/analytics
+		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the "operation user_account" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
+		  Dim localVarQueryParams As String = "?"
+		  
+		  Dim localVarQueryStringspinIds() As String
+		  For Each localVarItempinIds As String in pinIds
+		    Dim encodedParameter As String = EncodeURLComponent(localVarItempinIds)
+		    Select Case "form"
+		      Case "form"
+		        localVarQueryStringspinIds.Append("inner=" + encodedParameter)
+		      Case "spaceDelimited"
+		        localVarQueryStringspinIds.Append("inner=" + encodedParameter)
+		      Case "pipeDelimited"
+		        localVarQueryStringspinIds.Append("inner=" + encodedParameter)
+		      Case "deepObject"
+		        Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		    End Select
+		  Next
+		  
+		  Dim localVarQueryStringpinIds As String
+		  localVarQueryStringpinIds = Join(localVarQueryStringspinIds, "&")
+		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("start_date") + "=" + EncodeURLComponent(startDate.ToRFC3339)
+		  
+		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("end_date") + "=" + EncodeURLComponent(endDate.ToRFC3339)
+		  
+		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("app_types") + "=" + EncodeURLComponent(App_typesEnum_MultiPinsAnalyticsToString(appTypes))
+		  
+		  
+		  Dim localVarQueryStringsmetricTypes() As String
+		  For Each localVarItemmetricTypes As PinsAnalyticsMetricTypesParameterInner in metricTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemmetricTypes))
+		    localVarQueryStringsmetricTypes.Append(encodedParameter)
+		  Next
+		  
+		  Dim localVarQueryStringmetricTypes As String
+		  Select Case "form"
+		    Case "form"
+			  localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, ",")
+		    Case "spaceDelimited"
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, " ")
+		    Case "pipeDelimited"
+		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, "|")
+		    Case "deepObject"
+		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
+		  End Select
+		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  
+
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/pins/analytics"
+		  
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.MultiPinsAnalytics_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.MultiPinsAnalytics_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("GET", Me.BasePath + localVarPath + localVarQueryParams)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function MultiPinsAnalyticsPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As Dictionary) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New Dictionary
+			  Try
+		        outData = ParseJSON(Content)
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub MultiPinsAnalytics_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As Dictionary
+		  CallbackHandler.MultiPinsAnalyticsCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub MultiPinsAnalytics_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As Dictionary
+		  Call MultiPinsAnalyticsPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.MultiPinsAnalyticsCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+	#tag Method, Flags = &h21
+		Private Function App_typesEnum_MultiPinsAnalyticsToString(value As App_typesEnum_MultiPinsAnalytics) As String
+		  Select Case value
+		    
+		    Case App_typesEnum_MultiPinsAnalytics.All
+		      Return "ALL"
+		    Case App_typesEnum_MultiPinsAnalytics.Mobile
+		      Return "MOBILE"
+		    Case App_typesEnum_MultiPinsAnalytics.Tablet
+		      Return "TABLET"
+		    Case App_typesEnum_MultiPinsAnalytics.Web
+		      Return "WEB"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub PinsAnalytics(, pinId As String, startDate As Date, endDate As Date, metricTypes() As OpenAPIClient.Models.PinsAnalyticsMetricTypesParameterInner, appTypes As App_typesEnum_PinsAnalytics, splitField As Split_fieldEnum_PinsAnalytics, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation pins/analytics
 		  // Get Pin analytics
@@ -8,7 +209,7 @@ Protected Class PinsApi
 		  // - parameter pinId: (path) Unique identifier of a Pin. 
 		  // - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 		  // - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-		  // - parameter metricTypes: (query) Pin metric types to get data for, default is all. 
+		  // - parameter metricTypes: (query) Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. 
 		  // - parameter appTypes: (query) Apps or devices to get data for, default is all. (optional, default to ALL)
 		  // - parameter splitField: (query) How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
@@ -16,12 +217,15 @@ Protected Class PinsApi
 		  // Invokes PinsApiCallbackHandler.PinsAnalyticsCallback(Dictionary) on completion. 
 		  //
 		  // - GET /pins/{pin_id}/analytics
-		  // - Get analytics for a Pin owned by the "operation user_account" - or on a group board that has been shared with this account. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+		  // - Get analytics for a Pin owned by the "operation user_account" - or on a group board that has been shared with this account. - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -58,6 +262,7 @@ Protected Class PinsApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -209,7 +414,7 @@ Protected Class PinsApi
 		  // Invokes PinsApiCallbackHandler.PinsCreateCallback(Pin) on completion. 
 		  //
 		  // - POST /pins
-		  // - Create a Pin on a board or board section owned by the "operation user_account".  Note: If the current "operation user_account" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+		  // - Create a Pin on a board or board section owned by the "operation user_account".  Note: If the current "operation user_account" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -425,6 +630,9 @@ Protected Class PinsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -436,6 +644,7 @@ Protected Class PinsApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -552,7 +761,7 @@ Protected Class PinsApi
 		  // List Pins
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter pinFilter: (query) Pin filter. (optional, default to Sample)
 		  // - parameter includeProtectedPins: (query) Specify if return pins from protected boards (optional, default to false)
 		  // - parameter pinType: (query) The type of pins to return, currently only enabled for private pins (optional, default to Sample)
@@ -563,12 +772,15 @@ Protected Class PinsApi
 		  // Invokes PinsApiCallbackHandler.PinsListCallback(PinsList200Response) on completion. 
 		  //
 		  // - GET /pins
-		  // - Get a list of the Pins owned by the "operation user_account". - By default, the "operation user_account" is the token user_account. - All Pins owned by the "operation user_account" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
+		  // - Get a list of the Pins owned by the "operation user_account".   - By default, the "operation user_account" is the token user_account.   - All Pins owned by the "operation user_account" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -608,6 +820,7 @@ Protected Class PinsApi
 		  If pinMetrics <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("pin_metrics") + "=" + EncodeURLComponent(pinMetrics.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -915,7 +1128,7 @@ Protected Class PinsApi
 		  // Invokes PinsApiCallbackHandler.PinsUpdateCallback(Pin) on completion. 
 		  //
 		  // - PATCH /pins/{pin_id}
-		  // - Update a pin owned by the "operating user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+		  // - Update a pin owned by the "operating user_account". - By default, the "operation user_account" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1115,6 +1328,15 @@ Protected Class PinsApi
 	#tag Property, Flags = &h0
 		UseHTTPS As Boolean = true
 	#tag EndProperty
+
+	#tag Enum, Name = App_typesEnum_MultiPinsAnalytics, Type = Integer, Flags = &h0
+		
+        All
+        Mobile
+        Tablet
+        Web
+		
+	#tag EndEnum
 
 	#tag Enum, Name = App_typesEnum_PinsAnalytics, Type = Integer, Flags = &h0
 		

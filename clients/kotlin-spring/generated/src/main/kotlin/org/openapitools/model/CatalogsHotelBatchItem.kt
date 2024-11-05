@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -51,9 +52,17 @@ interface CatalogsHotelBatchItem{
     * 
     * Values: DELETE
     */
-    enum class Operation(val value: kotlin.String) {
+    enum class Operation(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("DELETE") DELETE("DELETE")
+        DELETE("DELETE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Operation {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

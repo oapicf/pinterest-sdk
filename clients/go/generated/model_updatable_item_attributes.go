@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,9 +24,9 @@ type UpdatableItemAttributes struct {
 	AdLink NullableString `json:"ad_link,omitempty"`
 	// Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
 	Adult NullableBool `json:"adult,omitempty"`
-	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 	AgeGroup NullableString `json:"age_group,omitempty"`
-	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
 	Availability *string `json:"availability,omitempty"`
 	// Average reviews for the item. Can be a number from 1-5.
 	AverageReviewRating NullableFloat32 `json:"average_review_rating,omitempty"`
@@ -55,7 +55,7 @@ type UpdatableItemAttributes struct {
 	FreeShippingLabel NullableBool `json:"free_shipping_label,omitempty"`
 	// The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
 	FreeShippingLimit NullableString `json:"free_shipping_limit,omitempty"`
-	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
 	Gender NullableString `json:"gender,omitempty"`
 	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
 	GoogleProductCategory NullableString `json:"google_product_category,omitempty"`
@@ -100,9 +100,9 @@ type UpdatableItemAttributes struct {
 	ShippingWidth NullableString `json:"shipping_width,omitempty"`
 	// The size of the product.
 	Size NullableString `json:"size,omitempty"`
-	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
 	SizeSystem NullableString `json:"size_system,omitempty"`
-	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
 	SizeType NullableString `json:"size_type,omitempty"`
 	// Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
 	Tax NullableString `json:"tax,omitempty"`

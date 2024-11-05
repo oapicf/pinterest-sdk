@@ -42,5 +42,8 @@ data class SSIOInsertionOrderStatus (
     @Json(name = "creation_time")
     val creationTime: kotlin.String? = null
 
-)
+) {
+
+
+}
 

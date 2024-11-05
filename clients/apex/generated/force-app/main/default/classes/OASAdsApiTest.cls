@@ -3,7 +3,7 @@ private class OASAdsApiTest {
     /**
      * Create ad preview with pin or image
      *
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt;\nIf you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview&quot; target&#x3D;&quot;_blank&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt;\nYou can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt;\nIf you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview&quot; target&#x3D;&quot;_blank&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt;\nYou can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      */
     @isTest
     private static void adPreviewsCreateTest() {
@@ -67,7 +67,7 @@ private class OASAdsApiTest {
             'adIds' => new List<String>{''},
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'targetingTypes' => new List<OASAdsAnalyticsTargetingType>{OASAdsAnalyticsTargetingType.getExample()},
+            'targetingTypes' => new List<OASAdsAnalyticsAdTargetingType>{OASAdsAnalyticsAdTargetingType.getExample()},
             'columns' => new List<String>{'TOTAL_CONVERSIONS'},
             'granularity' => DAY,
             'clickWindowDays' => 1,
@@ -105,7 +105,7 @@ private class OASAdsApiTest {
     /**
      * Get ad analytics
      *
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.\n- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- The request must contain either ad_ids or both campaign_ids and pin_ids.\n- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.\n- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      */
     @isTest
     private static void adsAnalyticsTest() {
@@ -118,13 +118,15 @@ private class OASAdsApiTest {
             'adAccountId' => 'null',
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'adIds' => new List<String>{''},
             'columns' => new List<String>{'TOTAL_CONVERSIONS'},
             'granularity' => DAY,
+            'adIds' => new List<String>{''},
             'clickWindowDays' => 1,
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
-            'conversionReportTime' => TIME_OF_AD_ACTION
+            'conversionReportTime' => TIME_OF_AD_ACTION,
+            'pinIds' => new List<String>{''},
+            'campaignIds' => new List<String>{''}
         };
 
         OASClient client;
@@ -205,7 +207,7 @@ private class OASAdsApiTest {
     /**
      * Get ad
      *
-     * Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will\ncontain additional information from the Ad Review process.\nFor more information about our policies and rejection reasons see the &lt;a href&#x3D;&quot;https://www.pinterest.com/_/_/policy/advertising-guidelines/&quot;\ntarget&#x3D;&quot;_blank&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
+     * Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will\ncontain additional information from the Ad Review process.\nFor more information about our policies and rejection reasons see the &lt;a href&#x3D;&quot;https://www.pinterest.com/_/_/policy/advertising-guidelines/&quot; target&#x3D;&quot;_blank&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
      */
     @isTest
     private static void adsGetTest() {

@@ -10,8 +10,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -29,10 +29,10 @@ import javax.annotation.Generated;
 
 @Schema(name = "PinMediaWithVideo", description = "Pin with video.")
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithVideo extends PinMedia {
 
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   private String coverImageUrl;
 
@@ -44,7 +44,7 @@ public class PinMediaWithVideo extends PinMedia {
 
   private Integer width;
 
-  public PinMediaWithVideo images(ImageMetadataImages images) {
+  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -52,15 +52,15 @@ public class PinMediaWithVideo extends PinMedia {
   /**
    * Get images
    * @return images
-  */
+   */
   @Valid 
   @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
@@ -72,7 +72,7 @@ public class PinMediaWithVideo extends PinMedia {
   /**
    * Get coverImageUrl
    * @return coverImageUrl
-  */
+   */
   
   @Schema(name = "cover_image_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_url")
@@ -92,7 +92,7 @@ public class PinMediaWithVideo extends PinMedia {
   /**
    * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
    * @return videoUrl
-  */
+   */
   
   @Schema(name = "video_url", description = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("video_url")
@@ -112,7 +112,7 @@ public class PinMediaWithVideo extends PinMedia {
   /**
    * Duration (in milliseconds)
    * @return duration
-  */
+   */
   @Valid 
   @Schema(name = "duration", description = "Duration (in milliseconds)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("duration")
@@ -132,7 +132,7 @@ public class PinMediaWithVideo extends PinMedia {
   /**
    * Height (in pixels)
    * @return height
-  */
+   */
   
   @Schema(name = "height", description = "Height (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("height")
@@ -152,7 +152,7 @@ public class PinMediaWithVideo extends PinMedia {
   /**
    * Width (in pixels)
    * @return width
-  */
+   */
   
   @Schema(name = "width", description = "Width (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("width")

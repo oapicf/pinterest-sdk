@@ -13,7 +13,7 @@ import play.api.libs.json._
   * @param IMAGE_FILE_NOT_FOUND Image files are unreadable. Please upload new files to continue.
   * @param IMAGE_INVALID_FILE Image files are unreadable. Please upload new files to continue.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CatalogsFeedIngestionErrors(
   LINE_LEVEL_INTERNAL_ERROR: Option[Int],
   LARGE_PRODUCT_COUNT_DECREASE: Option[CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASE.Value],

@@ -68,4 +68,11 @@ private class OASCatalogsProductTest {
         System.assertEquals(catalogsProduct1.hashCode(), catalogsProduct2.hashCode());
         System.assertEquals(catalogsProduct3.hashCode(), catalogsProduct4.hashCode());
     }
+
+    @isTest
+    private static void maintainRenamedProperties() {
+        OASCatalogsProduct catalogsProduct = new OASCatalogsProduct();
+        Map<String, String> x-property-mappings = catalogsProduct.getx-property-mappings();
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
+    }
 }

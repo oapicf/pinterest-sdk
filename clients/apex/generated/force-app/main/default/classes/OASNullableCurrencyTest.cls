@@ -165,8 +165,7 @@ private class OASNullableCurrencyTest {
             OASNullableCurrency.YER,
             OASNullableCurrency.ZAR,
             OASNullableCurrency.ZMW,
-            OASNullableCurrency.ZWD,
-            OASNullableCurrency.NULL
+            OASNullableCurrency.ZWD
         };
         Set<OASNullableCurrency> actual  = new Set<OASNullableCurrency>(OASNullableCurrency.values());
         System.assertEquals(expected, actual);

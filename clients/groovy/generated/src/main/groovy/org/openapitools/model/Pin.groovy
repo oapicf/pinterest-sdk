@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 
 @Canonical
 class Pin {
@@ -36,12 +36,12 @@ class Pin {
     /* Whether the \"operation user_account\" is the Pin owner. */
     Boolean isOwner
     
-    SummaryPinMedia media
+    PinMedia media
     
     PinMediaSource mediaSource
     /* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
     String parentPinId
-    /* Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information. */
+    /* Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. */
     Boolean isStandard
     /* Whether the Pin has been promoted or not. */
     Boolean hasBeenPromoted

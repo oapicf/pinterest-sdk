@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  * CatalogsHotelProductGroupFilterKeys
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupFilterKeys {
 
   private CatalogsProductGroupPricingCurrencyCriteria PRICE;
@@ -78,7 +78,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get PRICE
    * @return PRICE
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "PRICE", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("PRICE")
@@ -98,7 +98,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get HOTEL_ID
    * @return HOTEL_ID
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "HOTEL_ID", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("HOTEL_ID")
@@ -118,7 +118,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get BRAND
    * @return BRAND
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "BRAND", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("BRAND")
@@ -138,7 +138,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get CUSTOM_LABEL_0
    * @return CUSTOM_LABEL_0
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "CUSTOM_LABEL_0", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CUSTOM_LABEL_0")
@@ -158,7 +158,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get CUSTOM_LABEL_1
    * @return CUSTOM_LABEL_1
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "CUSTOM_LABEL_1", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CUSTOM_LABEL_1")
@@ -178,7 +178,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get CUSTOM_LABEL_2
    * @return CUSTOM_LABEL_2
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "CUSTOM_LABEL_2", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CUSTOM_LABEL_2")
@@ -198,7 +198,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get CUSTOM_LABEL_3
    * @return CUSTOM_LABEL_3
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "CUSTOM_LABEL_3", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CUSTOM_LABEL_3")
@@ -218,7 +218,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get CUSTOM_LABEL_4
    * @return CUSTOM_LABEL_4
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "CUSTOM_LABEL_4", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CUSTOM_LABEL_4")
@@ -238,7 +238,7 @@ public class CatalogsHotelProductGroupFilterKeys {
   /**
    * Get COUNTRY
    * @return COUNTRY
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "COUNTRY", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("COUNTRY")

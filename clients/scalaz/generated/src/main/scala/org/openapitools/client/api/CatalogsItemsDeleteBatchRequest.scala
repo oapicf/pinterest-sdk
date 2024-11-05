@@ -13,7 +13,7 @@ import CatalogsItemsDeleteBatchRequest._
 
 case class CatalogsItemsDeleteBatchRequest (
   country: Country,
-language: Language,
+language: CatalogsItemsRequestLanguage,
 operation: BatchOperation,
 /* Array with catalogs items */
   items: List[ItemDeleteBatchRecord])

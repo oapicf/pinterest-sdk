@@ -5,13 +5,13 @@
 
 
 char* catalog_catalog_type_ToString(pinterest_rest_api_catalog__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_catalog__e catalog_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -75,10 +75,11 @@ cJSON *catalog_convertToJSON(catalog_t *catalog) {
     cJSON *item = cJSON_CreateObject();
 
     // catalog->created_at
-    if(catalog->created_at) {
+    if (!catalog->created_at) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "created_at", catalog->created_at) == NULL) {
     goto fail; //Date-Time
-    }
     }
 
 
@@ -92,10 +93,11 @@ cJSON *catalog_convertToJSON(catalog_t *catalog) {
 
 
     // catalog->updated_at
-    if(catalog->updated_at) {
+    if (!catalog->updated_at) {
+        goto fail;
+    }
     if(cJSON_AddStringToObject(item, "updated_at", catalog->updated_at) == NULL) {
     goto fail; //Date-Time
-    }
     }
 
 
@@ -138,11 +140,14 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
 
     // catalog->created_at
     cJSON *created_at = cJSON_GetObjectItemCaseSensitive(catalogJSON, "created_at");
-    if (created_at) { 
+    if (!created_at) {
+        goto end;
+    }
+
+    
     if(!cJSON_IsString(created_at) && !cJSON_IsNull(created_at))
     {
     goto end; //DateTime
-    }
     }
 
     // catalog->id
@@ -159,11 +164,14 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
 
     // catalog->updated_at
     cJSON *updated_at = cJSON_GetObjectItemCaseSensitive(catalogJSON, "updated_at");
-    if (updated_at) { 
+    if (!updated_at) {
+        goto end;
+    }
+
+    
     if(!cJSON_IsString(updated_at) && !cJSON_IsNull(updated_at))
     {
     goto end; //DateTime
-    }
     }
 
     // catalog->name
@@ -189,9 +197,9 @@ catalog_t *catalog_parseFromJSON(cJSON *catalogJSON){
 
 
     catalog_local_var = catalog_create (
-        created_at && !cJSON_IsNull(created_at) ? strdup(created_at->valuestring) : NULL,
+        strdup(created_at->valuestring),
         strdup(id->valuestring),
-        updated_at && !cJSON_IsNull(updated_at) ? strdup(updated_at->valuestring) : NULL,
+        strdup(updated_at->valuestring),
         strdup(name->valuestring),
         catalog_type_local_nonprim
         );

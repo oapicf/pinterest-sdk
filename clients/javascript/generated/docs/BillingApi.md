@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -88,7 +88,7 @@ let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 };
 apiInstance.adsCreditsDiscountsGet(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -144,7 +144,7 @@ let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad 
 let isActive = true; // Boolean | Return active billing profiles, if false return all billing profiles.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 };
 apiInstance.billingProfilesGet(adAccountId, isActive, opts, (error, data, response) => {
   if (error) {
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **isActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -351,7 +351,7 @@ let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 };
 apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -404,7 +404,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-let pinOrderId = 0Q01N0000015hekSVDFDC; // String | The pin order id associated with the ssio insertion order
+let pinOrderId = "0Q01N0000015hekSVDFDC"; // String | The pin order id associated with the ssio insertion order
 apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -457,8 +457,8 @@ let apiInstance = new PinterestSdk.BillingApi();
 let adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
-  'pinOrderId': 0Q01N0000015hekSVDFDC // String | The pin order id associated with the ssio insertino order
+  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  'pinOrderId': "0Q01N0000015hekSVDFDC" // String | The pin order id associated with the ssio insertino order
 };
 apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, opts, (error, data, response) => {
   if (error) {
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **pinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional] 
 
 ### Return type

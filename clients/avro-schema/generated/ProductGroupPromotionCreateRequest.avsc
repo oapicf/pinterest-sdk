@@ -13,7 +13,7 @@
       "name": "product_group_promotion",
       "type": {
         "type": "array",
-        "items": "model.ProductGroupPromotion"
+        "items": "model.ProductGroupPromotionCreateRequestElement"
       },
       "doc": ""
     }

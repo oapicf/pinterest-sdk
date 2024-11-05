@@ -52,5 +52,8 @@ data class UserWebsiteVerificationCode (
     @Json(name = "file_content")
     val fileContent: kotlin.String? = null
 
-)
+) {
+
+
+}
 

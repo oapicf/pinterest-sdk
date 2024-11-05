@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **catalog_type** | [**models::CatalogsType**](CatalogsType.md) |  | 
 **default_country** | [**models::Country**](Country.md) |  | 
 **default_availability** | Option<[**models::ProductAvailabilityType**](ProductAvailabilityType.md)> |  | [optional]
+**status** | Option<[**models::CatalogsStatus**](CatalogsStatus.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

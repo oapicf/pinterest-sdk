@@ -172,7 +172,7 @@ module UserAccountApiServiceImplementation =
             let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             VerifyWebsiteUpdateDefaultStatusCode { content = content }
 
-        member this.WebsiteVerificationGet ctx  =
+        member this.WebsiteVerificationGet ctx args =
           if true then
             let content = "Success" :> obj :?> UserWebsiteVerificationCode // this cast is obviously wrong, and is only intended to allow generated project to compile   
             WebsiteVerificationGetStatusCode200 { content = content }

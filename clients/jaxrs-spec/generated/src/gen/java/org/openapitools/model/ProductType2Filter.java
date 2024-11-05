@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductType2Filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductType2Filter   {
-  private @Valid CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_2;
+  private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_2;
 
   /**
    **/
@@ -30,8 +30,7 @@ public class ProductType2Filter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("PRODUCT_TYPE_2")
-  @NotNull
-  public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE2() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE2() {
     return PRODUCT_TYPE_2;
   }
 

@@ -472,7 +472,7 @@ object Example extends App {
     val apiInstance = IntegrationsApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     
     val request = apiInstance.integrationsGetList(bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -503,7 +503,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
 
 ### Return type
 

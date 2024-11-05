@@ -5,29 +5,29 @@
 #include "Helpers.h"
 
 
-#include "Board_owner.h"
+#include "BoardOwner.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-Board_owner::Board_owner()
+BoardOwner::BoardOwner()
 {
 	//__init();
 }
 
-Board_owner::~Board_owner()
+BoardOwner::~BoardOwner()
 {
 	//__cleanup();
 }
 
 void
-Board_owner::__init()
+BoardOwner::__init()
 {
 	//username = std::string();
 }
 
 void
-Board_owner::__cleanup()
+BoardOwner::__cleanup()
 {
 	//if(username != NULL) {
 	//
@@ -38,7 +38,7 @@ Board_owner::__cleanup()
 }
 
 void
-Board_owner::fromJson(char* jsonStr)
+BoardOwner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
@@ -55,13 +55,13 @@ Board_owner::fromJson(char* jsonStr)
 	}
 }
 
-Board_owner::Board_owner(char* json)
+BoardOwner::BoardOwner(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-Board_owner::toJson()
+BoardOwner::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
@@ -83,13 +83,13 @@ Board_owner::toJson()
 }
 
 std::string
-Board_owner::getUsername()
+BoardOwner::getUsername()
 {
 	return username;
 }
 
 void
-Board_owner::setUsername(std::string  username)
+BoardOwner::setUsername(std::string  username)
 {
 	this->username = username;
 }

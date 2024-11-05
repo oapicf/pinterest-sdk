@@ -15,13 +15,14 @@
 
 typedef struct catalogs_items_filters_t catalogs_items_filters_t;
 
+#include "catalogs_creative_assets_items_filter.h"
 #include "catalogs_hotel_items_filter.h"
 #include "catalogs_retail_items_filter.h"
 #include "catalogs_type.h"
 
 // Enum  for catalogs_items_filters
 
-typedef enum  { pinterest_rest_api_catalogs_items_filters__NULL = 0, pinterest_rest_api_catalogs_items_filters__RETAIL, pinterest_rest_api_catalogs_items_filters__HOTEL } pinterest_rest_api_catalogs_items_filters__e;
+typedef enum  { pinterest_rest_api_catalogs_items_filters__NULL = 0, pinterest_rest_api_catalogs_items_filters__RETAIL, pinterest_rest_api_catalogs_items_filters__HOTEL, pinterest_rest_api_catalogs_items_filters__CREATIVE_ASSETS } pinterest_rest_api_catalogs_items_filters__e;
 
 char* catalogs_items_filters_catalog_type_ToString(pinterest_rest_api_catalogs_items_filters__e catalog_type);
 
@@ -34,6 +35,7 @@ typedef struct catalogs_items_filters_t {
     list_t *item_ids; //primitive container
     char *catalog_id; // string
     list_t *hotel_ids; //primitive container
+    list_t *creative_assets_ids; //primitive container
 
 } catalogs_items_filters_t;
 
@@ -41,7 +43,8 @@ catalogs_items_filters_t *catalogs_items_filters_create(
     catalogs_type_t *catalog_type,
     list_t *item_ids,
     char *catalog_id,
-    list_t *hotel_ids
+    list_t *hotel_ids,
+    list_t *creative_assets_ids
 );
 
 void catalogs_items_filters_free(catalogs_items_filters_t *catalogs_items_filters);

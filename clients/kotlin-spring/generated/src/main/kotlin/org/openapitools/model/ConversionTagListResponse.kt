@@ -23,7 +23,7 @@ data class ConversionTagListResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("items") val items: kotlin.collections.List<ConversionTagResponse>? = null
-) {
+    ) {
 
 }
 

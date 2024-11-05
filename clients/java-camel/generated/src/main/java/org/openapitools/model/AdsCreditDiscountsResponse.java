@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * AdsCreditDiscountsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditDiscountsResponse {
 
   private Boolean active;
@@ -72,9 +72,7 @@ public class AdsCreditDiscountsResponse {
     
     INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
     
-    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND"),
-    
-    NULL("null");
+    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
 
     private String value;
 
@@ -121,7 +119,7 @@ public class AdsCreditDiscountsResponse {
   /**
    * True if the offer code is currently active.
    * @return active
-  */
+   */
   
   @Schema(name = "active", example = "true", description = "True if the offer code is currently active.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("active")
@@ -141,7 +139,7 @@ public class AdsCreditDiscountsResponse {
   /**
    * Advertiser ID the offer was applied to.
    * @return advertiserId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "advertiser_id", example = "12312451231", description = "Advertiser ID the offer was applied to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("advertiser_id")
@@ -161,7 +159,7 @@ public class AdsCreditDiscountsResponse {
   /**
    * The type of discount of this credit
    * @return discountType
-  */
+   */
   
   @Schema(name = "discountType", description = "The type of discount of this credit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("discountType")
@@ -181,7 +179,7 @@ public class AdsCreditDiscountsResponse {
   /**
    * The discount applied in the offer’s currency value.
    * @return discountInMicroCurrency
-  */
+   */
   @Valid 
   @Schema(name = "discountInMicroCurrency", example = "125000000", description = "The discount applied in the offer’s currency value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("discountInMicroCurrency")
@@ -201,7 +199,7 @@ public class AdsCreditDiscountsResponse {
   /**
    * Currency value for the discount.
    * @return discountCurrency
-  */
+   */
   
   @Schema(name = "discountCurrency", example = "USD", description = "Currency value for the discount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("discountCurrency")
@@ -221,7 +219,7 @@ public class AdsCreditDiscountsResponse {
   /**
    * Human readable title of the offer code.
    * @return title
-  */
+   */
   
   @Schema(name = "title", example = "Ads Credits", description = "Human readable title of the offer code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -241,7 +239,7 @@ public class AdsCreditDiscountsResponse {
   /**
    * The credits left to spend.
    * @return remainingDiscountInMicroCurrency
-  */
+   */
   @Valid 
   @Schema(name = "remainingDiscountInMicroCurrency", example = "125000000", description = "The credits left to spend.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("remainingDiscountInMicroCurrency")

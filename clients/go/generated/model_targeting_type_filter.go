@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &TargetingTypeFilter{}
 
 // TargetingTypeFilter struct for TargetingTypeFilter
 type TargetingTypeFilter struct {
-	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 	TargetingTypes []AdsAnalyticsTargetingType `json:"targeting_types,omitempty"`
 }
 

@@ -86,7 +86,7 @@ data class IntegrationRecord(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null
-) {
+    ) {
 
 }
 

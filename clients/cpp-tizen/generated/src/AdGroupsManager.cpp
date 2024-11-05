@@ -363,9 +363,9 @@ static bool adGroupsAudienceSizingHelper(char * accessToken,
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
 	long code;
 	char* errormsg = NULL;
-	string myhttpmethod("GET");
+	string myhttpmethod("POST");
 
-	if(strcmp("PUT", "GET") == 0){
+	if(strcmp("PUT", "POST") == 0){
 		if(strcmp("", mBody.c_str()) == 0){
 			mBody.append("{}");
 		}

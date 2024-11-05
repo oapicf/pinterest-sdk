@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -16,24 +16,27 @@ package openapitools;
 
 import public "models/batch_operation.proto";
 import public "models/catalogs_items_batch_request.proto";
-import public "models/catalogs_type.proto";
+import public "models/catalogs_items_request_language.proto";
 import public "models/catalogs_vertical_batch_request.proto";
 import public "models/country.proto";
 import public "models/item_delete_batch_record.proto";
-import public "models/language.proto";
 
 message ItemsBatchPostRequest {
 
-  CatalogsType catalog_type = 73986146;
+  enum Catalog_typeEnum {
+    Catalog_typeEnum_CREATIVE_ASSETS = 0;
+  }
+
+  Catalog_typeEnum catalog_type = 73986146;
 
   Country country = 420960151;
 
-  Language language = 2976939;
+  CatalogsItemsRequestLanguage language = 2976939;
 
   // Array with catalogs items
   repeated ItemDeleteBatchRecord items = 100526016;
 
-  // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   string catalog_id = 500076802;
 
   BatchOperation operation = 52090218;

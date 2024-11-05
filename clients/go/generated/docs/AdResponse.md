@@ -5,24 +5,24 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdGroupId** | Pointer to **string** | ID of the ad group that contains the ad. | [optional] 
-**AndroidDeepLink** | Pointer to **NullableString** | Deep link URL for Android devices. Not currently available. Using this field will generate an error. | [optional] 
+**AndroidDeepLink** | Pointer to **NullableString** | Deep link URL for Android devices. | [optional] 
 **CarouselAndroidDeepLinks** | Pointer to **[]string** | Comma-separated deep links for the carousel pin on Android. | [optional] 
 **CarouselDestinationUrls** | Pointer to **[]string** | Comma-separated destination URLs for the carousel pin to promote. | [optional] 
 **CarouselIosDeepLinks** | Pointer to **[]string** | Comma-separated deep links for the carousel pin on iOS. | [optional] 
 **ClickTrackingUrl** | Pointer to **NullableString** | Tracking url for the ad clicks. | [optional] 
 **CreativeType** | Pointer to [**CreativeType**](CreativeType.md) |  | [optional] 
 **DestinationUrl** | Pointer to **NullableString** | Destination URL. | [optional] 
-**IosDeepLink** | Pointer to **NullableString** | Deep link URL for iOS devices. Not currently available. Using this field will generate an error. | [optional] 
+**IosDeepLink** | Pointer to **NullableString** | Deep link URL for iOS devices. | [optional] 
 **IsPinDeleted** | Pointer to **bool** | Is original pin deleted? | [optional] 
 **IsRemovable** | Pointer to **bool** | Is pin repinnable? | [optional] 
 **Name** | Pointer to **NullableString** | Name of the ad - 255 chars max. | [optional] 
 **Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**TrackingUrls** | Pointer to [**NullableAdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] 
+**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
 **ViewTrackingUrl** | Pointer to **NullableString** | Tracking URL for ad impressions. | [optional] 
 **LeadFormId** | Pointer to **NullableString** | Lead form ID for lead ad generation. | [optional] 
 **GridClickType** | Pointer to [**NullableGridClickType**](GridClickType.md) |  | [optional] 
-**CustomizableCtaType** | Pointer to **NullableString** | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) | [optional] 
-**QuizPinData** | Pointer to [**NullableAdCommonQuizPinData**](AdCommonQuizPinData.md) |  | [optional] 
+**CustomizableCtaType** | Pointer to **NullableString** | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) | [optional] 
+**QuizPinData** | Pointer to [**NullableQuizPinData**](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. | [optional] 
 **PinId** | Pointer to **string** | Pin ID. | [optional] 
 **AdAccountId** | Pointer to **string** | The ID of the advertiser that this ad belongs to. | [optional] 
 **CampaignId** | Pointer to **string** | ID of the ad campaign that contains this ad. | [optional] 
@@ -462,20 +462,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetTrackingUrls
 
-`func (o *AdResponse) GetTrackingUrls() AdCommonTrackingUrls`
+`func (o *AdResponse) GetTrackingUrls() TrackingUrls`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *AdResponse) GetTrackingUrlsOk() (*AdCommonTrackingUrls, bool)`
+`func (o *AdResponse) GetTrackingUrlsOk() (*TrackingUrls, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *AdResponse) SetTrackingUrls(v AdCommonTrackingUrls)`
+`func (o *AdResponse) SetTrackingUrls(v TrackingUrls)`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -637,20 +637,20 @@ HasCustomizableCtaType returns a boolean if a field has been set.
 UnsetCustomizableCtaType ensures that no value is present for CustomizableCtaType, not even an explicit nil
 ### GetQuizPinData
 
-`func (o *AdResponse) GetQuizPinData() AdCommonQuizPinData`
+`func (o *AdResponse) GetQuizPinData() QuizPinData`
 
 GetQuizPinData returns the QuizPinData field if non-nil, zero value otherwise.
 
 ### GetQuizPinDataOk
 
-`func (o *AdResponse) GetQuizPinDataOk() (*AdCommonQuizPinData, bool)`
+`func (o *AdResponse) GetQuizPinDataOk() (*QuizPinData, bool)`
 
 GetQuizPinDataOk returns a tuple with the QuizPinData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuizPinData
 
-`func (o *AdResponse) SetQuizPinData(v AdCommonQuizPinData)`
+`func (o *AdResponse) SetQuizPinData(v QuizPinData)`
 
 SetQuizPinData sets QuizPinData field to given value.
 

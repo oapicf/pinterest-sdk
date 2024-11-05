@@ -19,10 +19,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CampaignResponse
-import org.openapitools.client.models.AdCommonTrackingUrls
 import org.openapitools.client.models.CampaignSummaryStatus
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.ObjectiveType
+import org.openapitools.client.models.TrackingUrls
 
 class CampaignResponseTest : ShouldSpec() {
     init {
@@ -89,10 +89,10 @@ class CampaignResponseTest : ShouldSpec() {
             //modelInstance.endTime shouldBe ("TODO")
         }
 
-        // to test the property `summaryStatus`
-        should("test summaryStatus") {
+        // to test the property `isFlexibleDailyBudgets` - Determine if a campaign has flexible daily budgets setup.
+        should("test isFlexibleDailyBudgets") {
             // uncomment below to test the property
-            //modelInstance.summaryStatus shouldBe ("TODO")
+            //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
         }
 
         // to test the property `objectiveType`
@@ -119,16 +119,16 @@ class CampaignResponseTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
-        // to test the property `isFlexibleDailyBudgets` - Determines if a campaign has flexible daily budgets setup.
-        should("test isFlexibleDailyBudgets") {
-            // uncomment below to test the property
-            //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
-        }
-
         // to test the property `isCampaignBudgetOptimization` - Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
         should("test isCampaignBudgetOptimization") {
             // uncomment below to test the property
             //modelInstance.isCampaignBudgetOptimization shouldBe ("TODO")
+        }
+
+        // to test the property `summaryStatus`
+        should("test summaryStatus") {
+            // uncomment below to test the property
+            //modelInstance.summaryStatus shouldBe ("TODO")
         }
 
     }

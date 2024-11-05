@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ImageDetails
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageDetails   {
   @JsonProperty("width")
   private Integer width;
@@ -30,11 +30,11 @@ public class ImageDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get width
    * minimum: 100
    * @return width
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Integer getWidth() {
     return width;
@@ -49,11 +49,11 @@ public class ImageDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get height
    * minimum: 100
    * @return height
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Integer getHeight() {
     return height;
@@ -68,10 +68,10 @@ public class ImageDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get url
    * @return url
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getUrl() {
     return url;

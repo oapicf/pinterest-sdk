@@ -13,7 +13,7 @@ class SingleInterestTargetingOptionResponse {
     
     String name
     
-    List<String> childInterests
+    List<String> childInterests = new ArrayList<>()
     
     Integer level
 }

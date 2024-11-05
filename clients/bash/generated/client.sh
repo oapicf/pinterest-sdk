@@ -8,7 +8,7 @@
 # ! openapi-generator (https://openapi-generator.tech)
 # ! FROM OPENAPI SPECIFICATION IN JSON.
 # !
-# ! Generator version: 7.4.0
+# ! Generator version: 7.9.0
 # !
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -196,13 +196,15 @@ operation_parameters_minimum_occurrences["adTargetingAnalyticsGet:::attribution_
 operation_parameters_minimum_occurrences["adsAnalytics:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["adsAnalytics:::start_date"]=1
 operation_parameters_minimum_occurrences["adsAnalytics:::end_date"]=1
-operation_parameters_minimum_occurrences["adsAnalytics:::ad_ids"]=1
 operation_parameters_minimum_occurrences["adsAnalytics:::columns"]=1
 operation_parameters_minimum_occurrences["adsAnalytics:::granularity"]=1
+operation_parameters_minimum_occurrences["adsAnalytics:::ad_ids"]=0
 operation_parameters_minimum_occurrences["adsAnalytics:::click_window_days"]=0
 operation_parameters_minimum_occurrences["adsAnalytics:::engagement_window_days"]=0
 operation_parameters_minimum_occurrences["adsAnalytics:::view_window_days"]=0
 operation_parameters_minimum_occurrences["adsAnalytics:::conversion_report_time"]=0
+operation_parameters_minimum_occurrences["adsAnalytics:::pin_ids"]=0
+operation_parameters_minimum_occurrences["adsAnalytics:::campaign_ids"]=0
 operation_parameters_minimum_occurrences["adsCreate:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["adsCreate:::AdCreateRequest"]=1
 operation_parameters_minimum_occurrences["adsGet:::ad_account_id"]=1
@@ -217,9 +219,35 @@ operation_parameters_minimum_occurrences["adsList:::order"]=0
 operation_parameters_minimum_occurrences["adsList:::bookmark"]=0
 operation_parameters_minimum_occurrences["adsUpdate:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["adsUpdate:::AdUpdateRequest"]=1
+operation_parameters_minimum_occurrences["advancedAuctionItemsGetPost:::AdvancedAuctionItemsGetRequest"]=1
+operation_parameters_minimum_occurrences["advancedAuctionItemsGetPost:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["advancedAuctionItemsSubmitPost:::AdvancedAuctionItemsSubmitRequest"]=1
+operation_parameters_minimum_occurrences["advancedAuctionItemsSubmitPost:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["audienceInsightsGet:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["audienceInsightsGet:::audience_insight_type"]=1
 operation_parameters_minimum_occurrences["audienceInsightsScopeAndTypeGet:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["adAccountsAudiencesSharedAccountsList:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["adAccountsAudiencesSharedAccountsList:::audience_id"]=1
+operation_parameters_minimum_occurrences["adAccountsAudiencesSharedAccountsList:::account_type"]=1
+operation_parameters_minimum_occurrences["adAccountsAudiencesSharedAccountsList:::page_size"]=0
+operation_parameters_minimum_occurrences["adAccountsAudiencesSharedAccountsList:::bookmark"]=0
+operation_parameters_minimum_occurrences["businessAccountAudiencesSharedAccountsList:::business_id"]=1
+operation_parameters_minimum_occurrences["businessAccountAudiencesSharedAccountsList:::audience_id"]=1
+operation_parameters_minimum_occurrences["businessAccountAudiencesSharedAccountsList:::account_type"]=1
+operation_parameters_minimum_occurrences["businessAccountAudiencesSharedAccountsList:::page_size"]=0
+operation_parameters_minimum_occurrences["businessAccountAudiencesSharedAccountsList:::bookmark"]=0
+operation_parameters_minimum_occurrences["sharedAudiencesForBusinessList:::business_id"]=1
+operation_parameters_minimum_occurrences["sharedAudiencesForBusinessList:::bookmark"]=0
+operation_parameters_minimum_occurrences["sharedAudiencesForBusinessList:::order"]=0
+operation_parameters_minimum_occurrences["sharedAudiencesForBusinessList:::page_size"]=0
+operation_parameters_minimum_occurrences["updateAdAccountToAdAccountSharedAudience:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["updateAdAccountToAdAccountSharedAudience:::SharedAudience"]=1
+operation_parameters_minimum_occurrences["updateAdAccountToBusinessSharedAudience:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["updateAdAccountToBusinessSharedAudience:::BusinessSharedAudience"]=1
+operation_parameters_minimum_occurrences["updateBusinessToAdAccountSharedAudience:::business_id"]=1
+operation_parameters_minimum_occurrences["updateBusinessToAdAccountSharedAudience:::SharedAudience"]=1
+operation_parameters_minimum_occurrences["updateBusinessToBusinessSharedAudience:::business_id"]=1
+operation_parameters_minimum_occurrences["updateBusinessToBusinessSharedAudience:::BusinessSharedAudience"]=1
 operation_parameters_minimum_occurrences["audiencesCreate:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["audiencesCreate:::AudienceCreateRequest"]=1
 operation_parameters_minimum_occurrences["audiencesCreateCustom:::ad_account_id"]=1
@@ -302,6 +330,88 @@ operation_parameters_minimum_occurrences["bulkRequestGet:::bulk_request_id"]=1
 operation_parameters_minimum_occurrences["bulkRequestGet:::include_details"]=0
 operation_parameters_minimum_occurrences["bulkUpsertCreate:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["bulkUpsertCreate:::BulkUpsertRequest"]=1
+operation_parameters_minimum_occurrences["assetGroupCreate:::business_id"]=1
+operation_parameters_minimum_occurrences["assetGroupCreate:::CreateAssetGroupBody"]=1
+operation_parameters_minimum_occurrences["assetGroupDelete:::business_id"]=1
+operation_parameters_minimum_occurrences["assetGroupDelete:::DeleteAssetGroupBody"]=1
+operation_parameters_minimum_occurrences["assetGroupUpdate:::business_id"]=1
+operation_parameters_minimum_occurrences["assetGroupUpdate:::UpdateAssetGroupBody"]=1
+operation_parameters_minimum_occurrences["businessAssetMembersGet:::business_id"]=1
+operation_parameters_minimum_occurrences["businessAssetMembersGet:::asset_id"]=1
+operation_parameters_minimum_occurrences["businessAssetMembersGet:::bookmark"]=0
+operation_parameters_minimum_occurrences["businessAssetMembersGet:::page_size"]=0
+operation_parameters_minimum_occurrences["businessAssetMembersGet:::start_index"]=0
+operation_parameters_minimum_occurrences["businessAssetPartnersGet:::business_id"]=1
+operation_parameters_minimum_occurrences["businessAssetPartnersGet:::asset_id"]=1
+operation_parameters_minimum_occurrences["businessAssetPartnersGet:::start_index"]=0
+operation_parameters_minimum_occurrences["businessAssetPartnersGet:::bookmark"]=0
+operation_parameters_minimum_occurrences["businessAssetPartnersGet:::page_size"]=0
+operation_parameters_minimum_occurrences["businessAssetsGet:::business_id"]=1
+operation_parameters_minimum_occurrences["businessAssetsGet:::permissions"]=0
+operation_parameters_minimum_occurrences["businessAssetsGet:::child_asset_id"]=0
+operation_parameters_minimum_occurrences["businessAssetsGet:::asset_group_id"]=0
+operation_parameters_minimum_occurrences["businessAssetsGet:::asset_type"]=0
+operation_parameters_minimum_occurrences["businessAssetsGet:::start_index"]=0
+operation_parameters_minimum_occurrences["businessAssetsGet:::bookmark"]=0
+operation_parameters_minimum_occurrences["businessAssetsGet:::page_size"]=0
+operation_parameters_minimum_occurrences["businessMemberAssetsGet:::business_id"]=1
+operation_parameters_minimum_occurrences["businessMemberAssetsGet:::member_id"]=1
+operation_parameters_minimum_occurrences["businessMemberAssetsGet:::asset_type"]=0
+operation_parameters_minimum_occurrences["businessMemberAssetsGet:::start_index"]=0
+operation_parameters_minimum_occurrences["businessMemberAssetsGet:::bookmark"]=0
+operation_parameters_minimum_occurrences["businessMemberAssetsGet:::page_size"]=0
+operation_parameters_minimum_occurrences["businessMembersAssetAccessDelete:::business_id"]=1
+operation_parameters_minimum_occurrences["businessMembersAssetAccessDelete:::BusinessMembersAssetAccessDeleteRequest"]=1
+operation_parameters_minimum_occurrences["businessMembersAssetAccessUpdate:::business_id"]=1
+operation_parameters_minimum_occurrences["businessMembersAssetAccessUpdate:::UpdateMemberAssetAccessBody"]=1
+operation_parameters_minimum_occurrences["businessPartnerAssetAccessGet:::business_id"]=1
+operation_parameters_minimum_occurrences["businessPartnerAssetAccessGet:::partner_id"]=1
+operation_parameters_minimum_occurrences["businessPartnerAssetAccessGet:::partner_type"]=0
+operation_parameters_minimum_occurrences["businessPartnerAssetAccessGet:::asset_type"]=0
+operation_parameters_minimum_occurrences["businessPartnerAssetAccessGet:::start_index"]=0
+operation_parameters_minimum_occurrences["businessPartnerAssetAccessGet:::page_size"]=0
+operation_parameters_minimum_occurrences["businessPartnerAssetAccessGet:::bookmark"]=0
+operation_parameters_minimum_occurrences["deletePartnerAssetAccessHandlerImpl:::business_id"]=1
+operation_parameters_minimum_occurrences["deletePartnerAssetAccessHandlerImpl:::DeletePartnerAssetAccessBody"]=1
+operation_parameters_minimum_occurrences["updatePartnerAssetAccessHandlerImpl:::business_id"]=1
+operation_parameters_minimum_occurrences["updatePartnerAssetAccessHandlerImpl:::UpdatePartnerAssetAccessBody"]=1
+operation_parameters_minimum_occurrences["assetAccessRequestsCreate:::business_id"]=1
+operation_parameters_minimum_occurrences["assetAccessRequestsCreate:::CreateAssetAccessRequestBody"]=1
+operation_parameters_minimum_occurrences["cancelInvitesOrRequests:::business_id"]=1
+operation_parameters_minimum_occurrences["cancelInvitesOrRequests:::CancelInvitesBody"]=1
+operation_parameters_minimum_occurrences["createAssetInvites:::business_id"]=1
+operation_parameters_minimum_occurrences["createAssetInvites:::CreateAssetInvitesRequest"]=1
+operation_parameters_minimum_occurrences["createMembershipOrPartnershipInvites:::business_id"]=1
+operation_parameters_minimum_occurrences["createMembershipOrPartnershipInvites:::CreateMembershipOrPartnershipInvitesBody"]=1
+operation_parameters_minimum_occurrences["getInvites:::business_id"]=1
+operation_parameters_minimum_occurrences["getInvites:::is_member"]=0
+operation_parameters_minimum_occurrences["getInvites:::invite_status"]=0
+operation_parameters_minimum_occurrences["getInvites:::invite_type"]=0
+operation_parameters_minimum_occurrences["getInvites:::bookmark"]=0
+operation_parameters_minimum_occurrences["getInvites:::page_size"]=0
+operation_parameters_minimum_occurrences["respondBusinessAccessInvites:::AuthRespondInvitesBody"]=1
+operation_parameters_minimum_occurrences["deleteBusinessMembership:::business_id"]=1
+operation_parameters_minimum_occurrences["deleteBusinessMembership:::MembersToDeleteBody"]=1
+operation_parameters_minimum_occurrences["deleteBusinessPartners:::business_id"]=1
+operation_parameters_minimum_occurrences["deleteBusinessPartners:::DeletePartnersRequest"]=1
+operation_parameters_minimum_occurrences["getBusinessEmployers:::page_size"]=0
+operation_parameters_minimum_occurrences["getBusinessEmployers:::bookmark"]=0
+operation_parameters_minimum_occurrences["getBusinessMembers:::business_id"]=1
+operation_parameters_minimum_occurrences["getBusinessMembers:::assets_summary"]=0
+operation_parameters_minimum_occurrences["getBusinessMembers:::business_roles"]=0
+operation_parameters_minimum_occurrences["getBusinessMembers:::member_ids"]=0
+operation_parameters_minimum_occurrences["getBusinessMembers:::start_index"]=0
+operation_parameters_minimum_occurrences["getBusinessMembers:::bookmark"]=0
+operation_parameters_minimum_occurrences["getBusinessMembers:::page_size"]=0
+operation_parameters_minimum_occurrences["getBusinessPartners:::business_id"]=1
+operation_parameters_minimum_occurrences["getBusinessPartners:::assets_summary"]=0
+operation_parameters_minimum_occurrences["getBusinessPartners:::partner_type"]=0
+operation_parameters_minimum_occurrences["getBusinessPartners:::partner_ids"]=0
+operation_parameters_minimum_occurrences["getBusinessPartners:::start_index"]=0
+operation_parameters_minimum_occurrences["getBusinessPartners:::page_size"]=0
+operation_parameters_minimum_occurrences["getBusinessPartners:::bookmark"]=0
+operation_parameters_minimum_occurrences["updateBusinessMemberships:::business_id"]=1
+operation_parameters_minimum_occurrences["updateBusinessMemberships:::UpdateMemberBusinessRoleBody"]=1
 operation_parameters_minimum_occurrences["campaignTargetingAnalyticsGet:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["campaignTargetingAnalyticsGet:::campaign_ids"]=1
 operation_parameters_minimum_occurrences["campaignTargetingAnalyticsGet:::start_date"]=1
@@ -336,6 +446,8 @@ operation_parameters_minimum_occurrences["campaignsList:::order"]=0
 operation_parameters_minimum_occurrences["campaignsList:::bookmark"]=0
 operation_parameters_minimum_occurrences["campaignsUpdate:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["campaignsUpdate:::CampaignUpdateRequest"]=1
+operation_parameters_minimum_occurrences["catalogsCreate:::CatalogsCreateRequest"]=1
+operation_parameters_minimum_occurrences["catalogsCreate:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["catalogsList:::bookmark"]=0
 operation_parameters_minimum_occurrences["catalogsList:::page_size"]=0
 operation_parameters_minimum_occurrences["catalogsList:::ad_account_id"]=0
@@ -343,12 +455,18 @@ operation_parameters_minimum_occurrences["catalogsProductGroupPinsList:::product
 operation_parameters_minimum_occurrences["catalogsProductGroupPinsList:::bookmark"]=0
 operation_parameters_minimum_occurrences["catalogsProductGroupPinsList:::page_size"]=0
 operation_parameters_minimum_occurrences["catalogsProductGroupPinsList:::ad_account_id"]=0
-operation_parameters_minimum_occurrences["catalogsProductGroupsCreate:::CatalogsProductGroupsCreateRequest"]=1
+operation_parameters_minimum_occurrences["catalogsProductGroupPinsList:::pin_metrics"]=0
+operation_parameters_minimum_occurrences["catalogsProductGroupsCreate:::MultipleProductGroupsInner"]=1
 operation_parameters_minimum_occurrences["catalogsProductGroupsCreate:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["catalogsProductGroupsCreateMany:::MultipleProductGroupsInner"]=1
+operation_parameters_minimum_occurrences["catalogsProductGroupsCreateMany:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["catalogsProductGroupsDelete:::product_group_id"]=1
 operation_parameters_minimum_occurrences["catalogsProductGroupsDelete:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["catalogsProductGroupsDeleteMany:::id"]=1
+operation_parameters_minimum_occurrences["catalogsProductGroupsDeleteMany:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["catalogsProductGroupsGet:::product_group_id"]=1
 operation_parameters_minimum_occurrences["catalogsProductGroupsGet:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["catalogsProductGroupsList:::id"]=0
 operation_parameters_minimum_occurrences["catalogsProductGroupsList:::feed_id"]=0
 operation_parameters_minimum_occurrences["catalogsProductGroupsList:::catalog_id"]=0
 operation_parameters_minimum_occurrences["catalogsProductGroupsList:::bookmark"]=0
@@ -369,6 +487,8 @@ operation_parameters_minimum_occurrences["feedsDelete:::feed_id"]=1
 operation_parameters_minimum_occurrences["feedsDelete:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["feedsGet:::feed_id"]=1
 operation_parameters_minimum_occurrences["feedsGet:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["feedsIngest:::feed_id"]=1
+operation_parameters_minimum_occurrences["feedsIngest:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["feedsList:::bookmark"]=0
 operation_parameters_minimum_occurrences["feedsList:::page_size"]=0
 operation_parameters_minimum_occurrences["feedsList:::catalog_id"]=0
@@ -391,10 +511,21 @@ operation_parameters_minimum_occurrences["itemsIssuesList:::page_size"]=0
 operation_parameters_minimum_occurrences["itemsIssuesList:::item_numbers"]=0
 operation_parameters_minimum_occurrences["itemsIssuesList:::item_validation_issue"]=0
 operation_parameters_minimum_occurrences["itemsIssuesList:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["itemsPost:::CatalogsItemsRequest"]=1
+operation_parameters_minimum_occurrences["itemsPost:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["productsByProductGroupFilterList:::CatalogsListProductsByFilterRequest"]=1
 operation_parameters_minimum_occurrences["productsByProductGroupFilterList:::bookmark"]=0
 operation_parameters_minimum_occurrences["productsByProductGroupFilterList:::page_size"]=0
 operation_parameters_minimum_occurrences["productsByProductGroupFilterList:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["productsByProductGroupFilterList:::pin_metrics"]=0
+operation_parameters_minimum_occurrences["reportsCreate:::CatalogsReportParameters"]=1
+operation_parameters_minimum_occurrences["reportsCreate:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["reportsGet:::token"]=1
+operation_parameters_minimum_occurrences["reportsGet:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["reportsStats:::parameters"]=1
+operation_parameters_minimum_occurrences["reportsStats:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["reportsStats:::page_size"]=0
+operation_parameters_minimum_occurrences["reportsStats:::bookmark"]=0
 operation_parameters_minimum_occurrences["eventsCreate:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["eventsCreate:::ConversionEvents"]=1
 operation_parameters_minimum_occurrences["eventsCreate:::test"]=0
@@ -447,6 +578,7 @@ operation_parameters_minimum_occurrences["trendingKeywordsList:::trend_type"]=1
 operation_parameters_minimum_occurrences["trendingKeywordsList:::interests"]=0
 operation_parameters_minimum_occurrences["trendingKeywordsList:::genders"]=0
 operation_parameters_minimum_occurrences["trendingKeywordsList:::ages"]=0
+operation_parameters_minimum_occurrences["trendingKeywordsList:::include_keywords"]=0
 operation_parameters_minimum_occurrences["trendingKeywordsList:::normalize_against_group"]=0
 operation_parameters_minimum_occurrences["trendingKeywordsList:::limit"]=0
 operation_parameters_minimum_occurrences["adAccountsSubscriptionsDelById:::ad_account_id"]=1
@@ -463,10 +595,18 @@ operation_parameters_minimum_occurrences["leadFormGet:::lead_form_id"]=1
 operation_parameters_minimum_occurrences["leadFormTestCreate:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["leadFormTestCreate:::lead_form_id"]=1
 operation_parameters_minimum_occurrences["leadFormTestCreate:::LeadFormTestRequest"]=1
+operation_parameters_minimum_occurrences["leadFormsCreate:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["leadFormsCreate:::LeadFormCreateRequest"]=1
 operation_parameters_minimum_occurrences["leadFormsList:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["leadFormsList:::page_size"]=0
 operation_parameters_minimum_occurrences["leadFormsList:::order"]=0
 operation_parameters_minimum_occurrences["leadFormsList:::bookmark"]=0
+operation_parameters_minimum_occurrences["leadFormsUpdate:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["leadFormsUpdate:::LeadFormUpdateRequest"]=1
+operation_parameters_minimum_occurrences["leadsExportCreate:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["leadsExportCreate:::LeadsExportCreateRequest"]=1
+operation_parameters_minimum_occurrences["leadsExportGet:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["leadsExportGet:::leads_export_id"]=1
 operation_parameters_minimum_occurrences["mediaCreate:::MediaUploadRequest"]=1
 operation_parameters_minimum_occurrences["mediaGet:::media_id"]=1
 operation_parameters_minimum_occurrences["mediaList:::bookmark"]=0
@@ -478,6 +618,12 @@ operation_parameters_minimum_occurrences["orderLinesList:::ad_account_id"]=1
 operation_parameters_minimum_occurrences["orderLinesList:::page_size"]=0
 operation_parameters_minimum_occurrences["orderLinesList:::order"]=0
 operation_parameters_minimum_occurrences["orderLinesList:::bookmark"]=0
+operation_parameters_minimum_occurrences["multiPinsAnalytics:::pin_ids"]=1
+operation_parameters_minimum_occurrences["multiPinsAnalytics:::start_date"]=1
+operation_parameters_minimum_occurrences["multiPinsAnalytics:::end_date"]=1
+operation_parameters_minimum_occurrences["multiPinsAnalytics:::metric_types"]=1
+operation_parameters_minimum_occurrences["multiPinsAnalytics:::app_types"]=0
+operation_parameters_minimum_occurrences["multiPinsAnalytics:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["pinsAnalytics:::pin_id"]=1
 operation_parameters_minimum_occurrences["pinsAnalytics:::start_date"]=1
 operation_parameters_minimum_occurrences["pinsAnalytics:::end_date"]=1
@@ -529,8 +675,6 @@ operation_parameters_minimum_occurrences["productGroupsAnalytics:::click_window_
 operation_parameters_minimum_occurrences["productGroupsAnalytics:::engagement_window_days"]=0
 operation_parameters_minimum_occurrences["productGroupsAnalytics:::view_window_days"]=0
 operation_parameters_minimum_occurrences["productGroupsAnalytics:::conversion_report_time"]=0
-operation_parameters_minimum_occurrences["adAccountsCatalogsProductGroupsList:::ad_account_id"]=1
-operation_parameters_minimum_occurrences["adAccountsCatalogsProductGroupsList:::feed_profile_id"]=0
 operation_parameters_minimum_occurrences["deliveryMetricsGet:::report_type"]=0
 operation_parameters_minimum_occurrences["interestTargetingOptionsGet:::interest_id"]=1
 operation_parameters_minimum_occurrences["metricsReadyStateGet:::date"]=1
@@ -538,6 +682,7 @@ operation_parameters_minimum_occurrences["targetingOptionsGet:::targeting_type"]
 operation_parameters_minimum_occurrences["targetingOptionsGet:::client_id"]=0
 operation_parameters_minimum_occurrences["targetingOptionsGet:::oauth_signature"]=0
 operation_parameters_minimum_occurrences["targetingOptionsGet:::timestamp"]=0
+operation_parameters_minimum_occurrences["targetingOptionsGet:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["searchPartnerPins:::term"]=1
 operation_parameters_minimum_occurrences["searchPartnerPins:::country_code"]=1
 operation_parameters_minimum_occurrences["searchPartnerPins:::bookmark"]=0
@@ -550,6 +695,16 @@ operation_parameters_minimum_occurrences["searchUserBoardsGet:::query"]=0
 operation_parameters_minimum_occurrences["searchUserPinsList:::query"]=1
 operation_parameters_minimum_occurrences["searchUserPinsList:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["searchUserPinsList:::bookmark"]=0
+operation_parameters_minimum_occurrences["targetingTemplateCreate:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["targetingTemplateCreate:::TargetingTemplateCreate"]=1
+operation_parameters_minimum_occurrences["targetingTemplateList:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["targetingTemplateList:::order"]=0
+operation_parameters_minimum_occurrences["targetingTemplateList:::include_sizing"]=0
+operation_parameters_minimum_occurrences["targetingTemplateList:::search_query"]=0
+operation_parameters_minimum_occurrences["targetingTemplateList:::page_size"]=0
+operation_parameters_minimum_occurrences["targetingTemplateList:::bookmark"]=0
+operation_parameters_minimum_occurrences["targetingTemplateUpdate:::ad_account_id"]=1
+operation_parameters_minimum_occurrences["targetingTemplateUpdate:::TargetingTemplateUpdateRequest"]=1
 operation_parameters_minimum_occurrences["termsRelatedList:::terms"]=1
 operation_parameters_minimum_occurrences["termsSuggestedList:::term"]=1
 operation_parameters_minimum_occurrences["termsSuggestedList:::limit"]=0
@@ -611,6 +766,8 @@ operation_parameters_minimum_occurrences["userFollowingGet:::ad_account_id"]=0
 operation_parameters_minimum_occurrences["userWebsitesGet:::bookmark"]=0
 operation_parameters_minimum_occurrences["userWebsitesGet:::page_size"]=0
 operation_parameters_minimum_occurrences["verifyWebsiteUpdate:::UserWebsiteVerifyRequest"]=1
+operation_parameters_minimum_occurrences["verifyWebsiteUpdate:::ad_account_id"]=0
+operation_parameters_minimum_occurrences["websiteVerificationGet:::ad_account_id"]=0
 
 ##
 # This array stores the maximum number of allowed occurrences for parameter
@@ -719,13 +876,15 @@ operation_parameters_maximum_occurrences["adTargetingAnalyticsGet:::attribution_
 operation_parameters_maximum_occurrences["adsAnalytics:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::start_date"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::end_date"]=0
-operation_parameters_maximum_occurrences["adsAnalytics:::ad_ids"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::columns"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::granularity"]=0
+operation_parameters_maximum_occurrences["adsAnalytics:::ad_ids"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::click_window_days"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::engagement_window_days"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::view_window_days"]=0
 operation_parameters_maximum_occurrences["adsAnalytics:::conversion_report_time"]=0
+operation_parameters_maximum_occurrences["adsAnalytics:::pin_ids"]=0
+operation_parameters_maximum_occurrences["adsAnalytics:::campaign_ids"]=0
 operation_parameters_maximum_occurrences["adsCreate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["adsCreate:::AdCreateRequest"]=0
 operation_parameters_maximum_occurrences["adsGet:::ad_account_id"]=0
@@ -740,9 +899,35 @@ operation_parameters_maximum_occurrences["adsList:::order"]=0
 operation_parameters_maximum_occurrences["adsList:::bookmark"]=0
 operation_parameters_maximum_occurrences["adsUpdate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["adsUpdate:::AdUpdateRequest"]=0
+operation_parameters_maximum_occurrences["advancedAuctionItemsGetPost:::AdvancedAuctionItemsGetRequest"]=0
+operation_parameters_maximum_occurrences["advancedAuctionItemsGetPost:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["advancedAuctionItemsSubmitPost:::AdvancedAuctionItemsSubmitRequest"]=0
+operation_parameters_maximum_occurrences["advancedAuctionItemsSubmitPost:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["audienceInsightsGet:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["audienceInsightsGet:::audience_insight_type"]=0
 operation_parameters_maximum_occurrences["audienceInsightsScopeAndTypeGet:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["adAccountsAudiencesSharedAccountsList:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["adAccountsAudiencesSharedAccountsList:::audience_id"]=0
+operation_parameters_maximum_occurrences["adAccountsAudiencesSharedAccountsList:::account_type"]=0
+operation_parameters_maximum_occurrences["adAccountsAudiencesSharedAccountsList:::page_size"]=0
+operation_parameters_maximum_occurrences["adAccountsAudiencesSharedAccountsList:::bookmark"]=0
+operation_parameters_maximum_occurrences["businessAccountAudiencesSharedAccountsList:::business_id"]=0
+operation_parameters_maximum_occurrences["businessAccountAudiencesSharedAccountsList:::audience_id"]=0
+operation_parameters_maximum_occurrences["businessAccountAudiencesSharedAccountsList:::account_type"]=0
+operation_parameters_maximum_occurrences["businessAccountAudiencesSharedAccountsList:::page_size"]=0
+operation_parameters_maximum_occurrences["businessAccountAudiencesSharedAccountsList:::bookmark"]=0
+operation_parameters_maximum_occurrences["sharedAudiencesForBusinessList:::business_id"]=0
+operation_parameters_maximum_occurrences["sharedAudiencesForBusinessList:::bookmark"]=0
+operation_parameters_maximum_occurrences["sharedAudiencesForBusinessList:::order"]=0
+operation_parameters_maximum_occurrences["sharedAudiencesForBusinessList:::page_size"]=0
+operation_parameters_maximum_occurrences["updateAdAccountToAdAccountSharedAudience:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["updateAdAccountToAdAccountSharedAudience:::SharedAudience"]=0
+operation_parameters_maximum_occurrences["updateAdAccountToBusinessSharedAudience:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["updateAdAccountToBusinessSharedAudience:::BusinessSharedAudience"]=0
+operation_parameters_maximum_occurrences["updateBusinessToAdAccountSharedAudience:::business_id"]=0
+operation_parameters_maximum_occurrences["updateBusinessToAdAccountSharedAudience:::SharedAudience"]=0
+operation_parameters_maximum_occurrences["updateBusinessToBusinessSharedAudience:::business_id"]=0
+operation_parameters_maximum_occurrences["updateBusinessToBusinessSharedAudience:::BusinessSharedAudience"]=0
 operation_parameters_maximum_occurrences["audiencesCreate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["audiencesCreate:::AudienceCreateRequest"]=0
 operation_parameters_maximum_occurrences["audiencesCreateCustom:::ad_account_id"]=0
@@ -825,6 +1010,88 @@ operation_parameters_maximum_occurrences["bulkRequestGet:::bulk_request_id"]=0
 operation_parameters_maximum_occurrences["bulkRequestGet:::include_details"]=0
 operation_parameters_maximum_occurrences["bulkUpsertCreate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["bulkUpsertCreate:::BulkUpsertRequest"]=0
+operation_parameters_maximum_occurrences["assetGroupCreate:::business_id"]=0
+operation_parameters_maximum_occurrences["assetGroupCreate:::CreateAssetGroupBody"]=0
+operation_parameters_maximum_occurrences["assetGroupDelete:::business_id"]=0
+operation_parameters_maximum_occurrences["assetGroupDelete:::DeleteAssetGroupBody"]=0
+operation_parameters_maximum_occurrences["assetGroupUpdate:::business_id"]=0
+operation_parameters_maximum_occurrences["assetGroupUpdate:::UpdateAssetGroupBody"]=0
+operation_parameters_maximum_occurrences["businessAssetMembersGet:::business_id"]=0
+operation_parameters_maximum_occurrences["businessAssetMembersGet:::asset_id"]=0
+operation_parameters_maximum_occurrences["businessAssetMembersGet:::bookmark"]=0
+operation_parameters_maximum_occurrences["businessAssetMembersGet:::page_size"]=0
+operation_parameters_maximum_occurrences["businessAssetMembersGet:::start_index"]=0
+operation_parameters_maximum_occurrences["businessAssetPartnersGet:::business_id"]=0
+operation_parameters_maximum_occurrences["businessAssetPartnersGet:::asset_id"]=0
+operation_parameters_maximum_occurrences["businessAssetPartnersGet:::start_index"]=0
+operation_parameters_maximum_occurrences["businessAssetPartnersGet:::bookmark"]=0
+operation_parameters_maximum_occurrences["businessAssetPartnersGet:::page_size"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::business_id"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::permissions"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::child_asset_id"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::asset_group_id"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::asset_type"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::start_index"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::bookmark"]=0
+operation_parameters_maximum_occurrences["businessAssetsGet:::page_size"]=0
+operation_parameters_maximum_occurrences["businessMemberAssetsGet:::business_id"]=0
+operation_parameters_maximum_occurrences["businessMemberAssetsGet:::member_id"]=0
+operation_parameters_maximum_occurrences["businessMemberAssetsGet:::asset_type"]=0
+operation_parameters_maximum_occurrences["businessMemberAssetsGet:::start_index"]=0
+operation_parameters_maximum_occurrences["businessMemberAssetsGet:::bookmark"]=0
+operation_parameters_maximum_occurrences["businessMemberAssetsGet:::page_size"]=0
+operation_parameters_maximum_occurrences["businessMembersAssetAccessDelete:::business_id"]=0
+operation_parameters_maximum_occurrences["businessMembersAssetAccessDelete:::BusinessMembersAssetAccessDeleteRequest"]=0
+operation_parameters_maximum_occurrences["businessMembersAssetAccessUpdate:::business_id"]=0
+operation_parameters_maximum_occurrences["businessMembersAssetAccessUpdate:::UpdateMemberAssetAccessBody"]=0
+operation_parameters_maximum_occurrences["businessPartnerAssetAccessGet:::business_id"]=0
+operation_parameters_maximum_occurrences["businessPartnerAssetAccessGet:::partner_id"]=0
+operation_parameters_maximum_occurrences["businessPartnerAssetAccessGet:::partner_type"]=0
+operation_parameters_maximum_occurrences["businessPartnerAssetAccessGet:::asset_type"]=0
+operation_parameters_maximum_occurrences["businessPartnerAssetAccessGet:::start_index"]=0
+operation_parameters_maximum_occurrences["businessPartnerAssetAccessGet:::page_size"]=0
+operation_parameters_maximum_occurrences["businessPartnerAssetAccessGet:::bookmark"]=0
+operation_parameters_maximum_occurrences["deletePartnerAssetAccessHandlerImpl:::business_id"]=0
+operation_parameters_maximum_occurrences["deletePartnerAssetAccessHandlerImpl:::DeletePartnerAssetAccessBody"]=0
+operation_parameters_maximum_occurrences["updatePartnerAssetAccessHandlerImpl:::business_id"]=0
+operation_parameters_maximum_occurrences["updatePartnerAssetAccessHandlerImpl:::UpdatePartnerAssetAccessBody"]=0
+operation_parameters_maximum_occurrences["assetAccessRequestsCreate:::business_id"]=0
+operation_parameters_maximum_occurrences["assetAccessRequestsCreate:::CreateAssetAccessRequestBody"]=0
+operation_parameters_maximum_occurrences["cancelInvitesOrRequests:::business_id"]=0
+operation_parameters_maximum_occurrences["cancelInvitesOrRequests:::CancelInvitesBody"]=0
+operation_parameters_maximum_occurrences["createAssetInvites:::business_id"]=0
+operation_parameters_maximum_occurrences["createAssetInvites:::CreateAssetInvitesRequest"]=0
+operation_parameters_maximum_occurrences["createMembershipOrPartnershipInvites:::business_id"]=0
+operation_parameters_maximum_occurrences["createMembershipOrPartnershipInvites:::CreateMembershipOrPartnershipInvitesBody"]=0
+operation_parameters_maximum_occurrences["getInvites:::business_id"]=0
+operation_parameters_maximum_occurrences["getInvites:::is_member"]=0
+operation_parameters_maximum_occurrences["getInvites:::invite_status"]=0
+operation_parameters_maximum_occurrences["getInvites:::invite_type"]=0
+operation_parameters_maximum_occurrences["getInvites:::bookmark"]=0
+operation_parameters_maximum_occurrences["getInvites:::page_size"]=0
+operation_parameters_maximum_occurrences["respondBusinessAccessInvites:::AuthRespondInvitesBody"]=0
+operation_parameters_maximum_occurrences["deleteBusinessMembership:::business_id"]=0
+operation_parameters_maximum_occurrences["deleteBusinessMembership:::MembersToDeleteBody"]=0
+operation_parameters_maximum_occurrences["deleteBusinessPartners:::business_id"]=0
+operation_parameters_maximum_occurrences["deleteBusinessPartners:::DeletePartnersRequest"]=0
+operation_parameters_maximum_occurrences["getBusinessEmployers:::page_size"]=0
+operation_parameters_maximum_occurrences["getBusinessEmployers:::bookmark"]=0
+operation_parameters_maximum_occurrences["getBusinessMembers:::business_id"]=0
+operation_parameters_maximum_occurrences["getBusinessMembers:::assets_summary"]=0
+operation_parameters_maximum_occurrences["getBusinessMembers:::business_roles"]=0
+operation_parameters_maximum_occurrences["getBusinessMembers:::member_ids"]=0
+operation_parameters_maximum_occurrences["getBusinessMembers:::start_index"]=0
+operation_parameters_maximum_occurrences["getBusinessMembers:::bookmark"]=0
+operation_parameters_maximum_occurrences["getBusinessMembers:::page_size"]=0
+operation_parameters_maximum_occurrences["getBusinessPartners:::business_id"]=0
+operation_parameters_maximum_occurrences["getBusinessPartners:::assets_summary"]=0
+operation_parameters_maximum_occurrences["getBusinessPartners:::partner_type"]=0
+operation_parameters_maximum_occurrences["getBusinessPartners:::partner_ids"]=0
+operation_parameters_maximum_occurrences["getBusinessPartners:::start_index"]=0
+operation_parameters_maximum_occurrences["getBusinessPartners:::page_size"]=0
+operation_parameters_maximum_occurrences["getBusinessPartners:::bookmark"]=0
+operation_parameters_maximum_occurrences["updateBusinessMemberships:::business_id"]=0
+operation_parameters_maximum_occurrences["updateBusinessMemberships:::UpdateMemberBusinessRoleBody"]=0
 operation_parameters_maximum_occurrences["campaignTargetingAnalyticsGet:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["campaignTargetingAnalyticsGet:::campaign_ids"]=0
 operation_parameters_maximum_occurrences["campaignTargetingAnalyticsGet:::start_date"]=0
@@ -859,6 +1126,8 @@ operation_parameters_maximum_occurrences["campaignsList:::order"]=0
 operation_parameters_maximum_occurrences["campaignsList:::bookmark"]=0
 operation_parameters_maximum_occurrences["campaignsUpdate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["campaignsUpdate:::CampaignUpdateRequest"]=0
+operation_parameters_maximum_occurrences["catalogsCreate:::CatalogsCreateRequest"]=0
+operation_parameters_maximum_occurrences["catalogsCreate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["catalogsList:::bookmark"]=0
 operation_parameters_maximum_occurrences["catalogsList:::page_size"]=0
 operation_parameters_maximum_occurrences["catalogsList:::ad_account_id"]=0
@@ -866,12 +1135,18 @@ operation_parameters_maximum_occurrences["catalogsProductGroupPinsList:::product
 operation_parameters_maximum_occurrences["catalogsProductGroupPinsList:::bookmark"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupPinsList:::page_size"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupPinsList:::ad_account_id"]=0
-operation_parameters_maximum_occurrences["catalogsProductGroupsCreate:::CatalogsProductGroupsCreateRequest"]=0
+operation_parameters_maximum_occurrences["catalogsProductGroupPinsList:::pin_metrics"]=0
+operation_parameters_maximum_occurrences["catalogsProductGroupsCreate:::MultipleProductGroupsInner"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsCreate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["catalogsProductGroupsCreateMany:::MultipleProductGroupsInner"]=0
+operation_parameters_maximum_occurrences["catalogsProductGroupsCreateMany:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsDelete:::product_group_id"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsDelete:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["catalogsProductGroupsDeleteMany:::id"]=0
+operation_parameters_maximum_occurrences["catalogsProductGroupsDeleteMany:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsGet:::product_group_id"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsGet:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["catalogsProductGroupsList:::id"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsList:::feed_id"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsList:::catalog_id"]=0
 operation_parameters_maximum_occurrences["catalogsProductGroupsList:::bookmark"]=0
@@ -892,6 +1167,8 @@ operation_parameters_maximum_occurrences["feedsDelete:::feed_id"]=0
 operation_parameters_maximum_occurrences["feedsDelete:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["feedsGet:::feed_id"]=0
 operation_parameters_maximum_occurrences["feedsGet:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["feedsIngest:::feed_id"]=0
+operation_parameters_maximum_occurrences["feedsIngest:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["feedsList:::bookmark"]=0
 operation_parameters_maximum_occurrences["feedsList:::page_size"]=0
 operation_parameters_maximum_occurrences["feedsList:::catalog_id"]=0
@@ -914,10 +1191,21 @@ operation_parameters_maximum_occurrences["itemsIssuesList:::page_size"]=0
 operation_parameters_maximum_occurrences["itemsIssuesList:::item_numbers"]=0
 operation_parameters_maximum_occurrences["itemsIssuesList:::item_validation_issue"]=0
 operation_parameters_maximum_occurrences["itemsIssuesList:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["itemsPost:::CatalogsItemsRequest"]=0
+operation_parameters_maximum_occurrences["itemsPost:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["productsByProductGroupFilterList:::CatalogsListProductsByFilterRequest"]=0
 operation_parameters_maximum_occurrences["productsByProductGroupFilterList:::bookmark"]=0
 operation_parameters_maximum_occurrences["productsByProductGroupFilterList:::page_size"]=0
 operation_parameters_maximum_occurrences["productsByProductGroupFilterList:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["productsByProductGroupFilterList:::pin_metrics"]=0
+operation_parameters_maximum_occurrences["reportsCreate:::CatalogsReportParameters"]=0
+operation_parameters_maximum_occurrences["reportsCreate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["reportsGet:::token"]=0
+operation_parameters_maximum_occurrences["reportsGet:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["reportsStats:::parameters"]=0
+operation_parameters_maximum_occurrences["reportsStats:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["reportsStats:::page_size"]=0
+operation_parameters_maximum_occurrences["reportsStats:::bookmark"]=0
 operation_parameters_maximum_occurrences["eventsCreate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["eventsCreate:::ConversionEvents"]=0
 operation_parameters_maximum_occurrences["eventsCreate:::test"]=0
@@ -970,6 +1258,7 @@ operation_parameters_maximum_occurrences["trendingKeywordsList:::trend_type"]=0
 operation_parameters_maximum_occurrences["trendingKeywordsList:::interests"]=0
 operation_parameters_maximum_occurrences["trendingKeywordsList:::genders"]=0
 operation_parameters_maximum_occurrences["trendingKeywordsList:::ages"]=0
+operation_parameters_maximum_occurrences["trendingKeywordsList:::include_keywords"]=0
 operation_parameters_maximum_occurrences["trendingKeywordsList:::normalize_against_group"]=0
 operation_parameters_maximum_occurrences["trendingKeywordsList:::limit"]=0
 operation_parameters_maximum_occurrences["adAccountsSubscriptionsDelById:::ad_account_id"]=0
@@ -986,10 +1275,18 @@ operation_parameters_maximum_occurrences["leadFormGet:::lead_form_id"]=0
 operation_parameters_maximum_occurrences["leadFormTestCreate:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["leadFormTestCreate:::lead_form_id"]=0
 operation_parameters_maximum_occurrences["leadFormTestCreate:::LeadFormTestRequest"]=0
+operation_parameters_maximum_occurrences["leadFormsCreate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["leadFormsCreate:::LeadFormCreateRequest"]=0
 operation_parameters_maximum_occurrences["leadFormsList:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["leadFormsList:::page_size"]=0
 operation_parameters_maximum_occurrences["leadFormsList:::order"]=0
 operation_parameters_maximum_occurrences["leadFormsList:::bookmark"]=0
+operation_parameters_maximum_occurrences["leadFormsUpdate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["leadFormsUpdate:::LeadFormUpdateRequest"]=0
+operation_parameters_maximum_occurrences["leadsExportCreate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["leadsExportCreate:::LeadsExportCreateRequest"]=0
+operation_parameters_maximum_occurrences["leadsExportGet:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["leadsExportGet:::leads_export_id"]=0
 operation_parameters_maximum_occurrences["mediaCreate:::MediaUploadRequest"]=0
 operation_parameters_maximum_occurrences["mediaGet:::media_id"]=0
 operation_parameters_maximum_occurrences["mediaList:::bookmark"]=0
@@ -1001,6 +1298,12 @@ operation_parameters_maximum_occurrences["orderLinesList:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["orderLinesList:::page_size"]=0
 operation_parameters_maximum_occurrences["orderLinesList:::order"]=0
 operation_parameters_maximum_occurrences["orderLinesList:::bookmark"]=0
+operation_parameters_maximum_occurrences["multiPinsAnalytics:::pin_ids"]=0
+operation_parameters_maximum_occurrences["multiPinsAnalytics:::start_date"]=0
+operation_parameters_maximum_occurrences["multiPinsAnalytics:::end_date"]=0
+operation_parameters_maximum_occurrences["multiPinsAnalytics:::metric_types"]=0
+operation_parameters_maximum_occurrences["multiPinsAnalytics:::app_types"]=0
+operation_parameters_maximum_occurrences["multiPinsAnalytics:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["pinsAnalytics:::pin_id"]=0
 operation_parameters_maximum_occurrences["pinsAnalytics:::start_date"]=0
 operation_parameters_maximum_occurrences["pinsAnalytics:::end_date"]=0
@@ -1052,8 +1355,6 @@ operation_parameters_maximum_occurrences["productGroupsAnalytics:::click_window_
 operation_parameters_maximum_occurrences["productGroupsAnalytics:::engagement_window_days"]=0
 operation_parameters_maximum_occurrences["productGroupsAnalytics:::view_window_days"]=0
 operation_parameters_maximum_occurrences["productGroupsAnalytics:::conversion_report_time"]=0
-operation_parameters_maximum_occurrences["adAccountsCatalogsProductGroupsList:::ad_account_id"]=0
-operation_parameters_maximum_occurrences["adAccountsCatalogsProductGroupsList:::feed_profile_id"]=0
 operation_parameters_maximum_occurrences["deliveryMetricsGet:::report_type"]=0
 operation_parameters_maximum_occurrences["interestTargetingOptionsGet:::interest_id"]=0
 operation_parameters_maximum_occurrences["metricsReadyStateGet:::date"]=0
@@ -1061,6 +1362,7 @@ operation_parameters_maximum_occurrences["targetingOptionsGet:::targeting_type"]
 operation_parameters_maximum_occurrences["targetingOptionsGet:::client_id"]=0
 operation_parameters_maximum_occurrences["targetingOptionsGet:::oauth_signature"]=0
 operation_parameters_maximum_occurrences["targetingOptionsGet:::timestamp"]=0
+operation_parameters_maximum_occurrences["targetingOptionsGet:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["searchPartnerPins:::term"]=0
 operation_parameters_maximum_occurrences["searchPartnerPins:::country_code"]=0
 operation_parameters_maximum_occurrences["searchPartnerPins:::bookmark"]=0
@@ -1073,6 +1375,16 @@ operation_parameters_maximum_occurrences["searchUserBoardsGet:::query"]=0
 operation_parameters_maximum_occurrences["searchUserPinsList:::query"]=0
 operation_parameters_maximum_occurrences["searchUserPinsList:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["searchUserPinsList:::bookmark"]=0
+operation_parameters_maximum_occurrences["targetingTemplateCreate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["targetingTemplateCreate:::TargetingTemplateCreate"]=0
+operation_parameters_maximum_occurrences["targetingTemplateList:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["targetingTemplateList:::order"]=0
+operation_parameters_maximum_occurrences["targetingTemplateList:::include_sizing"]=0
+operation_parameters_maximum_occurrences["targetingTemplateList:::search_query"]=0
+operation_parameters_maximum_occurrences["targetingTemplateList:::page_size"]=0
+operation_parameters_maximum_occurrences["targetingTemplateList:::bookmark"]=0
+operation_parameters_maximum_occurrences["targetingTemplateUpdate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["targetingTemplateUpdate:::TargetingTemplateUpdateRequest"]=0
 operation_parameters_maximum_occurrences["termsRelatedList:::terms"]=0
 operation_parameters_maximum_occurrences["termsSuggestedList:::term"]=0
 operation_parameters_maximum_occurrences["termsSuggestedList:::limit"]=0
@@ -1134,6 +1446,8 @@ operation_parameters_maximum_occurrences["userFollowingGet:::ad_account_id"]=0
 operation_parameters_maximum_occurrences["userWebsitesGet:::bookmark"]=0
 operation_parameters_maximum_occurrences["userWebsitesGet:::page_size"]=0
 operation_parameters_maximum_occurrences["verifyWebsiteUpdate:::UserWebsiteVerifyRequest"]=0
+operation_parameters_maximum_occurrences["verifyWebsiteUpdate:::ad_account_id"]=0
+operation_parameters_maximum_occurrences["websiteVerificationGet:::ad_account_id"]=0
 
 ##
 # The type of collection for specifying multiple values for parameter:
@@ -1239,13 +1553,15 @@ operation_parameters_collection_type["adTargetingAnalyticsGet:::attribution_type
 operation_parameters_collection_type["adsAnalytics:::ad_account_id"]=""
 operation_parameters_collection_type["adsAnalytics:::start_date"]=""
 operation_parameters_collection_type["adsAnalytics:::end_date"]=""
-operation_parameters_collection_type["adsAnalytics:::ad_ids"]="multi"
 operation_parameters_collection_type["adsAnalytics:::columns"]="csv"
 operation_parameters_collection_type["adsAnalytics:::granularity"]=""
+operation_parameters_collection_type["adsAnalytics:::ad_ids"]="multi"
 operation_parameters_collection_type["adsAnalytics:::click_window_days"]=""
 operation_parameters_collection_type["adsAnalytics:::engagement_window_days"]=""
 operation_parameters_collection_type["adsAnalytics:::view_window_days"]=""
 operation_parameters_collection_type["adsAnalytics:::conversion_report_time"]=""
+operation_parameters_collection_type["adsAnalytics:::pin_ids"]="multi"
+operation_parameters_collection_type["adsAnalytics:::campaign_ids"]="multi"
 operation_parameters_collection_type["adsCreate:::ad_account_id"]=""
 operation_parameters_collection_type["adsCreate:::AdCreateRequest"]=
 operation_parameters_collection_type["adsGet:::ad_account_id"]=""
@@ -1260,9 +1576,35 @@ operation_parameters_collection_type["adsList:::order"]=""
 operation_parameters_collection_type["adsList:::bookmark"]=""
 operation_parameters_collection_type["adsUpdate:::ad_account_id"]=""
 operation_parameters_collection_type["adsUpdate:::AdUpdateRequest"]=
+operation_parameters_collection_type["advancedAuctionItemsGetPost:::AdvancedAuctionItemsGetRequest"]=""
+operation_parameters_collection_type["advancedAuctionItemsGetPost:::ad_account_id"]=""
+operation_parameters_collection_type["advancedAuctionItemsSubmitPost:::AdvancedAuctionItemsSubmitRequest"]=""
+operation_parameters_collection_type["advancedAuctionItemsSubmitPost:::ad_account_id"]=""
 operation_parameters_collection_type["audienceInsightsGet:::ad_account_id"]=""
 operation_parameters_collection_type["audienceInsightsGet:::audience_insight_type"]=""
 operation_parameters_collection_type["audienceInsightsScopeAndTypeGet:::ad_account_id"]=""
+operation_parameters_collection_type["adAccountsAudiencesSharedAccountsList:::ad_account_id"]=""
+operation_parameters_collection_type["adAccountsAudiencesSharedAccountsList:::audience_id"]=""
+operation_parameters_collection_type["adAccountsAudiencesSharedAccountsList:::account_type"]=""
+operation_parameters_collection_type["adAccountsAudiencesSharedAccountsList:::page_size"]=""
+operation_parameters_collection_type["adAccountsAudiencesSharedAccountsList:::bookmark"]=""
+operation_parameters_collection_type["businessAccountAudiencesSharedAccountsList:::business_id"]=""
+operation_parameters_collection_type["businessAccountAudiencesSharedAccountsList:::audience_id"]=""
+operation_parameters_collection_type["businessAccountAudiencesSharedAccountsList:::account_type"]=""
+operation_parameters_collection_type["businessAccountAudiencesSharedAccountsList:::page_size"]=""
+operation_parameters_collection_type["businessAccountAudiencesSharedAccountsList:::bookmark"]=""
+operation_parameters_collection_type["sharedAudiencesForBusinessList:::business_id"]=""
+operation_parameters_collection_type["sharedAudiencesForBusinessList:::bookmark"]=""
+operation_parameters_collection_type["sharedAudiencesForBusinessList:::order"]=""
+operation_parameters_collection_type["sharedAudiencesForBusinessList:::page_size"]=""
+operation_parameters_collection_type["updateAdAccountToAdAccountSharedAudience:::ad_account_id"]=""
+operation_parameters_collection_type["updateAdAccountToAdAccountSharedAudience:::SharedAudience"]=""
+operation_parameters_collection_type["updateAdAccountToBusinessSharedAudience:::ad_account_id"]=""
+operation_parameters_collection_type["updateAdAccountToBusinessSharedAudience:::BusinessSharedAudience"]=""
+operation_parameters_collection_type["updateBusinessToAdAccountSharedAudience:::business_id"]=""
+operation_parameters_collection_type["updateBusinessToAdAccountSharedAudience:::SharedAudience"]=""
+operation_parameters_collection_type["updateBusinessToBusinessSharedAudience:::business_id"]=""
+operation_parameters_collection_type["updateBusinessToBusinessSharedAudience:::BusinessSharedAudience"]=""
 operation_parameters_collection_type["audiencesCreate:::ad_account_id"]=""
 operation_parameters_collection_type["audiencesCreate:::AudienceCreateRequest"]=""
 operation_parameters_collection_type["audiencesCreateCustom:::ad_account_id"]=""
@@ -1345,6 +1687,88 @@ operation_parameters_collection_type["bulkRequestGet:::bulk_request_id"]=""
 operation_parameters_collection_type["bulkRequestGet:::include_details"]=""
 operation_parameters_collection_type["bulkUpsertCreate:::ad_account_id"]=""
 operation_parameters_collection_type["bulkUpsertCreate:::BulkUpsertRequest"]=""
+operation_parameters_collection_type["assetGroupCreate:::business_id"]=""
+operation_parameters_collection_type["assetGroupCreate:::CreateAssetGroupBody"]=""
+operation_parameters_collection_type["assetGroupDelete:::business_id"]=""
+operation_parameters_collection_type["assetGroupDelete:::DeleteAssetGroupBody"]=""
+operation_parameters_collection_type["assetGroupUpdate:::business_id"]=""
+operation_parameters_collection_type["assetGroupUpdate:::UpdateAssetGroupBody"]=""
+operation_parameters_collection_type["businessAssetMembersGet:::business_id"]=""
+operation_parameters_collection_type["businessAssetMembersGet:::asset_id"]=""
+operation_parameters_collection_type["businessAssetMembersGet:::bookmark"]=""
+operation_parameters_collection_type["businessAssetMembersGet:::page_size"]=""
+operation_parameters_collection_type["businessAssetMembersGet:::start_index"]=""
+operation_parameters_collection_type["businessAssetPartnersGet:::business_id"]=""
+operation_parameters_collection_type["businessAssetPartnersGet:::asset_id"]=""
+operation_parameters_collection_type["businessAssetPartnersGet:::start_index"]=""
+operation_parameters_collection_type["businessAssetPartnersGet:::bookmark"]=""
+operation_parameters_collection_type["businessAssetPartnersGet:::page_size"]=""
+operation_parameters_collection_type["businessAssetsGet:::business_id"]=""
+operation_parameters_collection_type["businessAssetsGet:::permissions"]="multi"
+operation_parameters_collection_type["businessAssetsGet:::child_asset_id"]=""
+operation_parameters_collection_type["businessAssetsGet:::asset_group_id"]=""
+operation_parameters_collection_type["businessAssetsGet:::asset_type"]=""
+operation_parameters_collection_type["businessAssetsGet:::start_index"]=""
+operation_parameters_collection_type["businessAssetsGet:::bookmark"]=""
+operation_parameters_collection_type["businessAssetsGet:::page_size"]=""
+operation_parameters_collection_type["businessMemberAssetsGet:::business_id"]=""
+operation_parameters_collection_type["businessMemberAssetsGet:::member_id"]=""
+operation_parameters_collection_type["businessMemberAssetsGet:::asset_type"]=""
+operation_parameters_collection_type["businessMemberAssetsGet:::start_index"]=""
+operation_parameters_collection_type["businessMemberAssetsGet:::bookmark"]=""
+operation_parameters_collection_type["businessMemberAssetsGet:::page_size"]=""
+operation_parameters_collection_type["businessMembersAssetAccessDelete:::business_id"]=""
+operation_parameters_collection_type["businessMembersAssetAccessDelete:::BusinessMembersAssetAccessDeleteRequest"]=""
+operation_parameters_collection_type["businessMembersAssetAccessUpdate:::business_id"]=""
+operation_parameters_collection_type["businessMembersAssetAccessUpdate:::UpdateMemberAssetAccessBody"]=""
+operation_parameters_collection_type["businessPartnerAssetAccessGet:::business_id"]=""
+operation_parameters_collection_type["businessPartnerAssetAccessGet:::partner_id"]=""
+operation_parameters_collection_type["businessPartnerAssetAccessGet:::partner_type"]=""
+operation_parameters_collection_type["businessPartnerAssetAccessGet:::asset_type"]=""
+operation_parameters_collection_type["businessPartnerAssetAccessGet:::start_index"]=""
+operation_parameters_collection_type["businessPartnerAssetAccessGet:::page_size"]=""
+operation_parameters_collection_type["businessPartnerAssetAccessGet:::bookmark"]=""
+operation_parameters_collection_type["deletePartnerAssetAccessHandlerImpl:::business_id"]=""
+operation_parameters_collection_type["deletePartnerAssetAccessHandlerImpl:::DeletePartnerAssetAccessBody"]=""
+operation_parameters_collection_type["updatePartnerAssetAccessHandlerImpl:::business_id"]=""
+operation_parameters_collection_type["updatePartnerAssetAccessHandlerImpl:::UpdatePartnerAssetAccessBody"]=""
+operation_parameters_collection_type["assetAccessRequestsCreate:::business_id"]=""
+operation_parameters_collection_type["assetAccessRequestsCreate:::CreateAssetAccessRequestBody"]=""
+operation_parameters_collection_type["cancelInvitesOrRequests:::business_id"]=""
+operation_parameters_collection_type["cancelInvitesOrRequests:::CancelInvitesBody"]=""
+operation_parameters_collection_type["createAssetInvites:::business_id"]=""
+operation_parameters_collection_type["createAssetInvites:::CreateAssetInvitesRequest"]=""
+operation_parameters_collection_type["createMembershipOrPartnershipInvites:::business_id"]=""
+operation_parameters_collection_type["createMembershipOrPartnershipInvites:::CreateMembershipOrPartnershipInvitesBody"]=""
+operation_parameters_collection_type["getInvites:::business_id"]=""
+operation_parameters_collection_type["getInvites:::is_member"]=""
+operation_parameters_collection_type["getInvites:::invite_status"]="multi"
+operation_parameters_collection_type["getInvites:::invite_type"]=""
+operation_parameters_collection_type["getInvites:::bookmark"]=""
+operation_parameters_collection_type["getInvites:::page_size"]=""
+operation_parameters_collection_type["respondBusinessAccessInvites:::AuthRespondInvitesBody"]=""
+operation_parameters_collection_type["deleteBusinessMembership:::business_id"]=""
+operation_parameters_collection_type["deleteBusinessMembership:::MembersToDeleteBody"]=""
+operation_parameters_collection_type["deleteBusinessPartners:::business_id"]=""
+operation_parameters_collection_type["deleteBusinessPartners:::DeletePartnersRequest"]=""
+operation_parameters_collection_type["getBusinessEmployers:::page_size"]=""
+operation_parameters_collection_type["getBusinessEmployers:::bookmark"]=""
+operation_parameters_collection_type["getBusinessMembers:::business_id"]=""
+operation_parameters_collection_type["getBusinessMembers:::assets_summary"]=""
+operation_parameters_collection_type["getBusinessMembers:::business_roles"]="multi"
+operation_parameters_collection_type["getBusinessMembers:::member_ids"]=""
+operation_parameters_collection_type["getBusinessMembers:::start_index"]=""
+operation_parameters_collection_type["getBusinessMembers:::bookmark"]=""
+operation_parameters_collection_type["getBusinessMembers:::page_size"]=""
+operation_parameters_collection_type["getBusinessPartners:::business_id"]=""
+operation_parameters_collection_type["getBusinessPartners:::assets_summary"]=""
+operation_parameters_collection_type["getBusinessPartners:::partner_type"]=""
+operation_parameters_collection_type["getBusinessPartners:::partner_ids"]=""
+operation_parameters_collection_type["getBusinessPartners:::start_index"]=""
+operation_parameters_collection_type["getBusinessPartners:::page_size"]=""
+operation_parameters_collection_type["getBusinessPartners:::bookmark"]=""
+operation_parameters_collection_type["updateBusinessMemberships:::business_id"]=""
+operation_parameters_collection_type["updateBusinessMemberships:::UpdateMemberBusinessRoleBody"]=
 operation_parameters_collection_type["campaignTargetingAnalyticsGet:::ad_account_id"]=""
 operation_parameters_collection_type["campaignTargetingAnalyticsGet:::campaign_ids"]="multi"
 operation_parameters_collection_type["campaignTargetingAnalyticsGet:::start_date"]=""
@@ -1379,6 +1803,8 @@ operation_parameters_collection_type["campaignsList:::order"]=""
 operation_parameters_collection_type["campaignsList:::bookmark"]=""
 operation_parameters_collection_type["campaignsUpdate:::ad_account_id"]=""
 operation_parameters_collection_type["campaignsUpdate:::CampaignUpdateRequest"]=
+operation_parameters_collection_type["catalogsCreate:::CatalogsCreateRequest"]=""
+operation_parameters_collection_type["catalogsCreate:::ad_account_id"]=""
 operation_parameters_collection_type["catalogsList:::bookmark"]=""
 operation_parameters_collection_type["catalogsList:::page_size"]=""
 operation_parameters_collection_type["catalogsList:::ad_account_id"]=""
@@ -1386,12 +1812,18 @@ operation_parameters_collection_type["catalogsProductGroupPinsList:::product_gro
 operation_parameters_collection_type["catalogsProductGroupPinsList:::bookmark"]=""
 operation_parameters_collection_type["catalogsProductGroupPinsList:::page_size"]=""
 operation_parameters_collection_type["catalogsProductGroupPinsList:::ad_account_id"]=""
-operation_parameters_collection_type["catalogsProductGroupsCreate:::CatalogsProductGroupsCreateRequest"]=""
+operation_parameters_collection_type["catalogsProductGroupPinsList:::pin_metrics"]=""
+operation_parameters_collection_type["catalogsProductGroupsCreate:::MultipleProductGroupsInner"]=""
 operation_parameters_collection_type["catalogsProductGroupsCreate:::ad_account_id"]=""
+operation_parameters_collection_type["catalogsProductGroupsCreateMany:::MultipleProductGroupsInner"]=
+operation_parameters_collection_type["catalogsProductGroupsCreateMany:::ad_account_id"]=""
 operation_parameters_collection_type["catalogsProductGroupsDelete:::product_group_id"]=""
 operation_parameters_collection_type["catalogsProductGroupsDelete:::ad_account_id"]=""
+operation_parameters_collection_type["catalogsProductGroupsDeleteMany:::id"]="csv"
+operation_parameters_collection_type["catalogsProductGroupsDeleteMany:::ad_account_id"]=""
 operation_parameters_collection_type["catalogsProductGroupsGet:::product_group_id"]=""
 operation_parameters_collection_type["catalogsProductGroupsGet:::ad_account_id"]=""
+operation_parameters_collection_type["catalogsProductGroupsList:::id"]="csv"
 operation_parameters_collection_type["catalogsProductGroupsList:::feed_id"]=""
 operation_parameters_collection_type["catalogsProductGroupsList:::catalog_id"]=""
 operation_parameters_collection_type["catalogsProductGroupsList:::bookmark"]=""
@@ -1412,6 +1844,8 @@ operation_parameters_collection_type["feedsDelete:::feed_id"]=""
 operation_parameters_collection_type["feedsDelete:::ad_account_id"]=""
 operation_parameters_collection_type["feedsGet:::feed_id"]=""
 operation_parameters_collection_type["feedsGet:::ad_account_id"]=""
+operation_parameters_collection_type["feedsIngest:::feed_id"]=""
+operation_parameters_collection_type["feedsIngest:::ad_account_id"]=""
 operation_parameters_collection_type["feedsList:::bookmark"]=""
 operation_parameters_collection_type["feedsList:::page_size"]=""
 operation_parameters_collection_type["feedsList:::catalog_id"]=""
@@ -1434,10 +1868,21 @@ operation_parameters_collection_type["itemsIssuesList:::page_size"]=""
 operation_parameters_collection_type["itemsIssuesList:::item_numbers"]="multi"
 operation_parameters_collection_type["itemsIssuesList:::item_validation_issue"]=""
 operation_parameters_collection_type["itemsIssuesList:::ad_account_id"]=""
+operation_parameters_collection_type["itemsPost:::CatalogsItemsRequest"]=""
+operation_parameters_collection_type["itemsPost:::ad_account_id"]=""
 operation_parameters_collection_type["productsByProductGroupFilterList:::CatalogsListProductsByFilterRequest"]=""
 operation_parameters_collection_type["productsByProductGroupFilterList:::bookmark"]=""
 operation_parameters_collection_type["productsByProductGroupFilterList:::page_size"]=""
 operation_parameters_collection_type["productsByProductGroupFilterList:::ad_account_id"]=""
+operation_parameters_collection_type["productsByProductGroupFilterList:::pin_metrics"]=""
+operation_parameters_collection_type["reportsCreate:::CatalogsReportParameters"]=""
+operation_parameters_collection_type["reportsCreate:::ad_account_id"]=""
+operation_parameters_collection_type["reportsGet:::token"]=""
+operation_parameters_collection_type["reportsGet:::ad_account_id"]=""
+operation_parameters_collection_type["reportsStats:::parameters"]=""
+operation_parameters_collection_type["reportsStats:::ad_account_id"]=""
+operation_parameters_collection_type["reportsStats:::page_size"]=""
+operation_parameters_collection_type["reportsStats:::bookmark"]=""
 operation_parameters_collection_type["eventsCreate:::ad_account_id"]=""
 operation_parameters_collection_type["eventsCreate:::ConversionEvents"]=""
 operation_parameters_collection_type["eventsCreate:::test"]=""
@@ -1490,6 +1935,7 @@ operation_parameters_collection_type["trendingKeywordsList:::trend_type"]=""
 operation_parameters_collection_type["trendingKeywordsList:::interests"]="multi"
 operation_parameters_collection_type["trendingKeywordsList:::genders"]="multi"
 operation_parameters_collection_type["trendingKeywordsList:::ages"]="multi"
+operation_parameters_collection_type["trendingKeywordsList:::include_keywords"]="multi"
 operation_parameters_collection_type["trendingKeywordsList:::normalize_against_group"]=""
 operation_parameters_collection_type["trendingKeywordsList:::limit"]=""
 operation_parameters_collection_type["adAccountsSubscriptionsDelById:::ad_account_id"]=""
@@ -1506,10 +1952,18 @@ operation_parameters_collection_type["leadFormGet:::lead_form_id"]=""
 operation_parameters_collection_type["leadFormTestCreate:::ad_account_id"]=""
 operation_parameters_collection_type["leadFormTestCreate:::lead_form_id"]=""
 operation_parameters_collection_type["leadFormTestCreate:::LeadFormTestRequest"]=""
+operation_parameters_collection_type["leadFormsCreate:::ad_account_id"]=""
+operation_parameters_collection_type["leadFormsCreate:::LeadFormCreateRequest"]=
 operation_parameters_collection_type["leadFormsList:::ad_account_id"]=""
 operation_parameters_collection_type["leadFormsList:::page_size"]=""
 operation_parameters_collection_type["leadFormsList:::order"]=""
 operation_parameters_collection_type["leadFormsList:::bookmark"]=""
+operation_parameters_collection_type["leadFormsUpdate:::ad_account_id"]=""
+operation_parameters_collection_type["leadFormsUpdate:::LeadFormUpdateRequest"]=
+operation_parameters_collection_type["leadsExportCreate:::ad_account_id"]=""
+operation_parameters_collection_type["leadsExportCreate:::LeadsExportCreateRequest"]=""
+operation_parameters_collection_type["leadsExportGet:::ad_account_id"]=""
+operation_parameters_collection_type["leadsExportGet:::leads_export_id"]=""
 operation_parameters_collection_type["mediaCreate:::MediaUploadRequest"]=""
 operation_parameters_collection_type["mediaGet:::media_id"]=""
 operation_parameters_collection_type["mediaList:::bookmark"]=""
@@ -1521,6 +1975,12 @@ operation_parameters_collection_type["orderLinesList:::ad_account_id"]=""
 operation_parameters_collection_type["orderLinesList:::page_size"]=""
 operation_parameters_collection_type["orderLinesList:::order"]=""
 operation_parameters_collection_type["orderLinesList:::bookmark"]=""
+operation_parameters_collection_type["multiPinsAnalytics:::pin_ids"]="multi"
+operation_parameters_collection_type["multiPinsAnalytics:::start_date"]=""
+operation_parameters_collection_type["multiPinsAnalytics:::end_date"]=""
+operation_parameters_collection_type["multiPinsAnalytics:::metric_types"]="csv"
+operation_parameters_collection_type["multiPinsAnalytics:::app_types"]=""
+operation_parameters_collection_type["multiPinsAnalytics:::ad_account_id"]=""
 operation_parameters_collection_type["pinsAnalytics:::pin_id"]=""
 operation_parameters_collection_type["pinsAnalytics:::start_date"]=""
 operation_parameters_collection_type["pinsAnalytics:::end_date"]=""
@@ -1572,8 +2032,6 @@ operation_parameters_collection_type["productGroupsAnalytics:::click_window_days
 operation_parameters_collection_type["productGroupsAnalytics:::engagement_window_days"]=""
 operation_parameters_collection_type["productGroupsAnalytics:::view_window_days"]=""
 operation_parameters_collection_type["productGroupsAnalytics:::conversion_report_time"]=""
-operation_parameters_collection_type["adAccountsCatalogsProductGroupsList:::ad_account_id"]=""
-operation_parameters_collection_type["adAccountsCatalogsProductGroupsList:::feed_profile_id"]=""
 operation_parameters_collection_type["deliveryMetricsGet:::report_type"]=""
 operation_parameters_collection_type["interestTargetingOptionsGet:::interest_id"]=""
 operation_parameters_collection_type["metricsReadyStateGet:::date"]=""
@@ -1581,6 +2039,7 @@ operation_parameters_collection_type["targetingOptionsGet:::targeting_type"]=""
 operation_parameters_collection_type["targetingOptionsGet:::client_id"]=""
 operation_parameters_collection_type["targetingOptionsGet:::oauth_signature"]=""
 operation_parameters_collection_type["targetingOptionsGet:::timestamp"]=""
+operation_parameters_collection_type["targetingOptionsGet:::ad_account_id"]=""
 operation_parameters_collection_type["searchPartnerPins:::term"]=""
 operation_parameters_collection_type["searchPartnerPins:::country_code"]=""
 operation_parameters_collection_type["searchPartnerPins:::bookmark"]=""
@@ -1593,6 +2052,16 @@ operation_parameters_collection_type["searchUserBoardsGet:::query"]=""
 operation_parameters_collection_type["searchUserPinsList:::query"]=""
 operation_parameters_collection_type["searchUserPinsList:::ad_account_id"]=""
 operation_parameters_collection_type["searchUserPinsList:::bookmark"]=""
+operation_parameters_collection_type["targetingTemplateCreate:::ad_account_id"]=""
+operation_parameters_collection_type["targetingTemplateCreate:::TargetingTemplateCreate"]=""
+operation_parameters_collection_type["targetingTemplateList:::ad_account_id"]=""
+operation_parameters_collection_type["targetingTemplateList:::order"]=""
+operation_parameters_collection_type["targetingTemplateList:::include_sizing"]=""
+operation_parameters_collection_type["targetingTemplateList:::search_query"]=""
+operation_parameters_collection_type["targetingTemplateList:::page_size"]=""
+operation_parameters_collection_type["targetingTemplateList:::bookmark"]=""
+operation_parameters_collection_type["targetingTemplateUpdate:::ad_account_id"]=""
+operation_parameters_collection_type["targetingTemplateUpdate:::TargetingTemplateUpdateRequest"]=""
 operation_parameters_collection_type["termsRelatedList:::terms"]="multi"
 operation_parameters_collection_type["termsSuggestedList:::term"]=""
 operation_parameters_collection_type["termsSuggestedList:::limit"]=""
@@ -1654,6 +2123,8 @@ operation_parameters_collection_type["userFollowingGet:::ad_account_id"]=""
 operation_parameters_collection_type["userWebsitesGet:::bookmark"]=""
 operation_parameters_collection_type["userWebsitesGet:::page_size"]=""
 operation_parameters_collection_type["verifyWebsiteUpdate:::UserWebsiteVerifyRequest"]=""
+operation_parameters_collection_type["verifyWebsiteUpdate:::ad_account_id"]=""
+operation_parameters_collection_type["websiteVerificationGet:::ad_account_id"]=""
 
 
 ##
@@ -2011,7 +2482,7 @@ build_request_path() {
 print_help() {
 cat <<EOF
 
-${BOLD}${WHITE}Pinterest REST API command line client (API version 5.12.0)${OFF}
+${BOLD}${WHITE}Pinterest REST API command line client (API version 5.14.0)${OFF}
 
 ${BOLD}${WHITE}Usage${OFF}
 
@@ -2066,6 +2537,28 @@ EOF
     echo -e "        * user_accounts:write - Update your user accounts and followers"
     echo -e "  - ${BLUE}Basic AUTH${OFF} - add '-u <username>:<password>' before ${YELLOW}<operation>${OFF}"
     
+    echo -e "  - ${MAGENTA}OAuth2 (flow: application)${OFF}"
+    echo -e "      Token URL: "
+    echo -e "        * https://api.pinterest.com/v3/oauth/access_token/"
+    echo -e "      Scopes:"
+    echo -e "        * ads:read - See all of your advertising data, including ads, ad groups, campaigns etc."
+    echo -e "        * ads:write - Create, update, or delete ads, ad groups, campaigns etc."
+    echo -e "        * billing:read - See all of your billing data, billing profile, etc."
+    echo -e "        * billing:write - Create, update, or delete billing data, billing profiles, etc."
+    echo -e "        * biz_access:read - See business access data"
+    echo -e "        * biz_access:write - Create, update, or delete business access data"
+    echo -e "        * boards:read - See your public boards, including group boards you join"
+    echo -e "        * boards:read_secret - See your secret boards"
+    echo -e "        * boards:write - Create, update, or delete your public boards"
+    echo -e "        * boards:write_secret - Create, update, or delete your secret boards"
+    echo -e "        * catalogs:read - See all of your catalogs data"
+    echo -e "        * catalogs:write - Create, update, or delete your catalogs data"
+    echo -e "        * pins:read - See your public Pins"
+    echo -e "        * pins:read_secret - See your secret Pins"
+    echo -e "        * pins:write - Create, update, or delete your public Pins"
+    echo -e "        * pins:write_secret - Create, update, or delete your secret Pins"
+    echo -e "        * user_accounts:read - See your user accounts and followers"
+    echo -e "        * user_accounts:write - Update your user accounts and followers"
     echo ""
     echo -e "${BOLD}${WHITE}Operations (grouped by tags)${OFF}"
     echo ""
@@ -2111,10 +2604,29 @@ read -r -d '' ops <<EOF
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
+    echo -e "${BOLD}${WHITE}[advancedAuction]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}advancedAuctionItemsGetPost${OFF};Get item bid options (POST) (AUTH)
+  ${CYAN}advancedAuctionItemsSubmitPost${OFF};Operate on item level bid options (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
     echo -e "${BOLD}${WHITE}[audienceInsights]${OFF}"
 read -r -d '' ops <<EOF
   ${CYAN}audienceInsightsGet${OFF};Get audience insights (AUTH)
   ${CYAN}audienceInsightsScopeAndTypeGet${OFF};Get audience insights scope and type (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[audienceSharing]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}adAccountsAudiencesSharedAccountsList${OFF};List accounts with access to an audience owned by an ad account (AUTH)
+  ${CYAN}businessAccountAudiencesSharedAccountsList${OFF};List accounts with access to an audience owned by a business (AUTH)
+  ${CYAN}sharedAudiencesForBusinessList${OFF};List received audiences for a business (AUTH)
+  ${CYAN}updateAdAccountToAdAccountSharedAudience${OFF};Update audience sharing between ad accounts (AUTH)
+  ${CYAN}updateAdAccountToBusinessSharedAudience${OFF};Update audience sharing from an ad account to businesses (AUTH)
+  ${CYAN}updateBusinessToAdAccountSharedAudience${OFF};Update audience sharing from a business to ad accounts (AUTH)
+  ${CYAN}updateBusinessToBusinessSharedAudience${OFF};Update audience sharing between businesses (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -2146,14 +2658,14 @@ echo "  $ops" | column -t -s ';'
 read -r -d '' ops <<EOF
   ${CYAN}boardSectionsCreate${OFF};Create board section (AUTH)
   ${CYAN}boardSectionsDelete${OFF};Delete board section (AUTH)
-  ${CYAN}boardSectionsList${OFF};List board sections (AUTH)
-  ${CYAN}boardSectionsListPins${OFF};List Pins on board section (AUTH)
+  ${CYAN}boardSectionsList${OFF};List board sections (AUTH) (AUTH)
+  ${CYAN}boardSectionsListPins${OFF};List Pins on board section (AUTH) (AUTH)
   ${CYAN}boardSectionsUpdate${OFF};Update board section (AUTH)
   ${CYAN}boardsCreate${OFF};Create board (AUTH)
   ${CYAN}boardsDelete${OFF};Delete board (AUTH)
-  ${CYAN}boardsGet${OFF};Get board (AUTH)
-  ${CYAN}boardsList${OFF};List boards (AUTH)
-  ${CYAN}boardsListPins${OFF};List Pins on board (AUTH)
+  ${CYAN}boardsGet${OFF};Get board (AUTH) (AUTH)
+  ${CYAN}boardsList${OFF};List boards (AUTH) (AUTH)
+  ${CYAN}boardsListPins${OFF};List Pins on board (AUTH) (AUTH)
   ${CYAN}boardsUpdate${OFF};Update board (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
@@ -2163,6 +2675,45 @@ read -r -d '' ops <<EOF
   ${CYAN}bulkDownloadCreate${OFF};Get advertiser entities in bulk (AUTH)
   ${CYAN}bulkRequestGet${OFF};Download advertiser entities in bulk (AUTH)
   ${CYAN}bulkUpsertCreate${OFF};Create/update ad entities in bulk (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[businessAccessAssets]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}assetGroupCreate${OFF};Create a new asset group. (AUTH)
+  ${CYAN}assetGroupDelete${OFF};Delete asset groups. (AUTH)
+  ${CYAN}assetGroupUpdate${OFF};Update asset groups. (AUTH)
+  ${CYAN}businessAssetMembersGet${OFF};Get members with access to asset (AUTH)
+  ${CYAN}businessAssetPartnersGet${OFF};Get partners with access to asset (AUTH)
+  ${CYAN}businessAssetsGet${OFF};List business assets (AUTH)
+  ${CYAN}businessMemberAssetsGet${OFF};Get assets assigned to a member (AUTH)
+  ${CYAN}businessMembersAssetAccessDelete${OFF};Delete member access to asset (AUTH)
+  ${CYAN}businessMembersAssetAccessUpdate${OFF};Assign/Update member asset permissions (AUTH)
+  ${CYAN}businessPartnerAssetAccessGet${OFF};Get assets assigned to a partner or assets assigned by a partner (AUTH)
+  ${CYAN}deletePartnerAssetAccessHandlerImpl${OFF};Delete partner access to asset (AUTH)
+  ${CYAN}updatePartnerAssetAccessHandlerImpl${OFF};Assign/Update partner asset permissions (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[businessAccessInvite]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}assetAccessRequestsCreate${OFF};Create a request to access an existing partner's assets. (AUTH)
+  ${CYAN}cancelInvitesOrRequests${OFF};Cancel invites/requests (AUTH)
+  ${CYAN}createAssetInvites${OFF};Update invite/request with an asset permission (AUTH)
+  ${CYAN}createMembershipOrPartnershipInvites${OFF};Create invites or requests (AUTH)
+  ${CYAN}getInvites${OFF};Get invites/requests (AUTH)
+  ${CYAN}respondBusinessAccessInvites${OFF};Accept or decline an invite/request (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[businessAccessRelationships]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}deleteBusinessMembership${OFF};Terminate business memberships (AUTH)
+  ${CYAN}deleteBusinessPartners${OFF};Terminate business partnerships (AUTH)
+  ${CYAN}getBusinessEmployers${OFF};List business employers for user (AUTH)
+  ${CYAN}getBusinessMembers${OFF};Get business members (AUTH)
+  ${CYAN}getBusinessPartners${OFF};Get business partners (AUTH)
+  ${CYAN}updateBusinessMemberships${OFF};Update member's business role (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -2179,25 +2730,33 @@ echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[catalogs]${OFF}"
 read -r -d '' ops <<EOF
+  ${CYAN}catalogsCreate${OFF};Create catalog (AUTH)
   ${CYAN}catalogsList${OFF};List catalogs (AUTH)
-  ${CYAN}catalogsProductGroupPinsList${OFF};List products for a Product Group (AUTH)
+  ${CYAN}catalogsProductGroupPinsList${OFF};List products by product group (AUTH)
   ${CYAN}catalogsProductGroupsCreate${OFF};Create product group (AUTH)
+  ${CYAN}catalogsProductGroupsCreateMany${OFF};Create product groups (AUTH)
   ${CYAN}catalogsProductGroupsDelete${OFF};Delete product group (AUTH)
+  ${CYAN}catalogsProductGroupsDeleteMany${OFF};Delete product groups (AUTH)
   ${CYAN}catalogsProductGroupsGet${OFF};Get product group (AUTH)
   ${CYAN}catalogsProductGroupsList${OFF};List product groups (AUTH)
-  ${CYAN}catalogsProductGroupsProductCountsGet${OFF};Get product counts for a Product Group (AUTH)
-  ${CYAN}catalogsProductGroupsUpdate${OFF};Update product group (AUTH)
-  ${CYAN}feedProcessingResultsList${OFF};List processing results for a given feed (AUTH)
-  ${CYAN}feedsCreate${OFF};Create feed (AUTH)
-  ${CYAN}feedsDelete${OFF};Delete feed (AUTH)
-  ${CYAN}feedsGet${OFF};Get feed (AUTH)
-  ${CYAN}feedsList${OFF};List feeds (AUTH)
-  ${CYAN}feedsUpdate${OFF};Update feed (AUTH)
-  ${CYAN}itemsBatchGet${OFF};Get catalogs item batch status (AUTH)
-  ${CYAN}itemsBatchPost${OFF};Operate on item batch (AUTH)
+  ${CYAN}catalogsProductGroupsProductCountsGet${OFF};Get product counts (AUTH)
+  ${CYAN}catalogsProductGroupsUpdate${OFF};Update single product group (AUTH)
+  ${CYAN}feedProcessingResultsList${OFF};List feed processing results (AUTH)
+  ${CYAN}feedsCreate${OFF};Create feed (AUTH) (AUTH)
+  ${CYAN}feedsDelete${OFF};Delete feed (AUTH) (AUTH)
+  ${CYAN}feedsGet${OFF};Get feed (AUTH) (AUTH)
+  ${CYAN}feedsIngest${OFF};Ingest feed items (AUTH)
+  ${CYAN}feedsList${OFF};List feeds (AUTH) (AUTH)
+  ${CYAN}feedsUpdate${OFF};Update feed (AUTH) (AUTH)
+  ${CYAN}itemsBatchGet${OFF};Get item batch status (AUTH) (AUTH)
+  ${CYAN}itemsBatchPost${OFF};Operate on item batch (AUTH) (AUTH)
   ${CYAN}itemsGet${OFF};Get catalogs items (AUTH)
-  ${CYAN}itemsIssuesList${OFF};List item issues for a given processing result (AUTH)
-  ${CYAN}productsByProductGroupFilterList${OFF};List filtered products (AUTH)
+  ${CYAN}itemsIssuesList${OFF};List item issues (AUTH)
+  ${CYAN}itemsPost${OFF};Get catalogs items (POST) (AUTH)
+  ${CYAN}productsByProductGroupFilterList${OFF};List products by filter (AUTH)
+  ${CYAN}reportsCreate${OFF};Build catalogs report (AUTH)
+  ${CYAN}reportsGet${OFF};Get catalogs report (AUTH)
+  ${CYAN}reportsStats${OFF};List report stats (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -2261,7 +2820,16 @@ echo "  $ops" | column -t -s ';'
 read -r -d '' ops <<EOF
   ${CYAN}leadFormGet${OFF};Get lead form by id (AUTH)
   ${CYAN}leadFormTestCreate${OFF};Create lead form test data (AUTH)
-  ${CYAN}leadFormsList${OFF};Get lead forms (AUTH)
+  ${CYAN}leadFormsCreate${OFF};Create lead forms (AUTH)
+  ${CYAN}leadFormsList${OFF};List lead forms (AUTH)
+  ${CYAN}leadFormsUpdate${OFF};Update lead forms (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[leadsExport]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}leadsExportCreate${OFF};Create a request to export leads collected from a lead ad (AUTH)
+  ${CYAN}leadsExportGet${OFF};Get the lead export from the lead export create call (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -2288,11 +2856,12 @@ echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[pins]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}pinsAnalytics${OFF};Get Pin analytics (AUTH)
+  ${CYAN}multiPinsAnalytics${OFF};Get multiple Pin analytics (AUTH) (AUTH)
+  ${CYAN}pinsAnalytics${OFF};Get Pin analytics (AUTH) (AUTH)
   ${CYAN}pinsCreate${OFF};Create Pin (AUTH)
   ${CYAN}pinsDelete${OFF};Delete Pin (AUTH)
-  ${CYAN}pinsGet${OFF};Get Pin (AUTH)
-  ${CYAN}pinsList${OFF};List Pins (AUTH)
+  ${CYAN}pinsGet${OFF};Get Pin (AUTH) (AUTH)
+  ${CYAN}pinsList${OFF};List Pins (AUTH) (AUTH)
   ${CYAN}pinsSave${OFF};Save Pin (AUTH)
   ${CYAN}pinsUpdate${OFF};Update Pin (AUTH)
 EOF
@@ -2305,12 +2874,6 @@ read -r -d '' ops <<EOF
   ${CYAN}productGroupPromotionsList${OFF};Get product group promotions (AUTH)
   ${CYAN}productGroupPromotionsUpdate${OFF};Update product group promotions (AUTH)
   ${CYAN}productGroupsAnalytics${OFF};Get product group analytics (AUTH)
-EOF
-echo "  $ops" | column -t -s ';'
-    echo ""
-    echo -e "${BOLD}${WHITE}[productGroups]${OFF}"
-read -r -d '' ops <<EOF
-  ${CYAN}adAccountsCatalogsProductGroupsList${OFF};Get catalog product groups (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -2328,8 +2891,16 @@ echo "  $ops" | column -t -s ';'
     echo -e "${BOLD}${WHITE}[search]${OFF}"
 read -r -d '' ops <<EOF
   ${CYAN}searchPartnerPins${OFF};Search pins by a given search term (AUTH)
-  ${CYAN}searchUserBoardsGet${OFF};Search user's boards (AUTH)
+  ${CYAN}searchUserBoardsGet${OFF};Search user's boards (AUTH) (AUTH)
   ${CYAN}searchUserPinsList${OFF};Search user's Pins (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[targetingTemplate]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}targetingTemplateCreate${OFF};Create targeting templates (AUTH)
+  ${CYAN}targetingTemplateList${OFF};List targeting templates (AUTH)
+  ${CYAN}targetingTemplateUpdate${OFF};Update targeting templates (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -2348,20 +2919,20 @@ echo "  $ops" | column -t -s ';'
     echo ""
     echo -e "${BOLD}${WHITE}[userAccount]${OFF}"
 read -r -d '' ops <<EOF
-  ${CYAN}boardsUserFollowsList${OFF};List following boards (AUTH)
+  ${CYAN}boardsUserFollowsList${OFF};List following boards (AUTH) (AUTH)
   ${CYAN}followUserUpdate${OFF};Follow user (AUTH)
-  ${CYAN}followersList${OFF};List followers (AUTH)
-  ${CYAN}linkedBusinessAccountsGet${OFF};List linked businesses (AUTH)
+  ${CYAN}followersList${OFF};List followers (AUTH) (AUTH)
+  ${CYAN}linkedBusinessAccountsGet${OFF};List linked businesses (AUTH) (AUTH)
   ${CYAN}unverifyWebsiteDelete${OFF};Unverify website (AUTH)
   ${CYAN}userAccountAnalytics${OFF};Get user account analytics (AUTH)
-  ${CYAN}userAccountAnalyticsTopPins${OFF};Get user account top pins analytics (AUTH)
-  ${CYAN}userAccountAnalyticsTopVideoPins${OFF};Get user account top video pins analytics (AUTH)
-  ${CYAN}userAccountFollowedInterests${OFF};List following interests (AUTH)
-  ${CYAN}userAccountGet${OFF};Get user account (AUTH)
-  ${CYAN}userFollowingGet${OFF};List following (AUTH)
+  ${CYAN}userAccountAnalyticsTopPins${OFF};Get user account top pins analytics (AUTH) (AUTH)
+  ${CYAN}userAccountAnalyticsTopVideoPins${OFF};Get user account top video pins analytics (AUTH) (AUTH)
+  ${CYAN}userAccountFollowedInterests${OFF};List following interests (AUTH) (AUTH)
+  ${CYAN}userAccountGet${OFF};Get user account (AUTH) (AUTH)
+  ${CYAN}userFollowingGet${OFF};List following (AUTH) (AUTH)
   ${CYAN}userWebsitesGet${OFF};Get user websites (AUTH)
   ${CYAN}verifyWebsiteUpdate${OFF};Verify website (AUTH)
-  ${CYAN}websiteVerificationGet${OFF};Get user verification code for website claiming (AUTH)
+  ${CYAN}websiteVerificationGet${OFF};Get user verification code for website claiming (AUTH) (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -2391,7 +2962,7 @@ echo -e "              \\t\\t\\t\\t(e.g. 'https://api.pinterest.com')"
 ##############################################################################
 print_about() {
     echo ""
-    echo -e "${BOLD}${WHITE}Pinterest REST API command line client (API version 5.12.0)${OFF}"
+    echo -e "${BOLD}${WHITE}Pinterest REST API command line client (API version 5.14.0)${OFF}"
     echo ""
     echo -e "License: MIT"
     echo -e "Contact: blah+oapicf@cliffano.com"
@@ -2411,7 +2982,7 @@ echo "$appdescription" | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_version() {
     echo ""
-    echo -e "${BOLD}Pinterest REST API command line client (API version 5.12.0)${OFF}"
+    echo -e "${BOLD}Pinterest REST API command line client (API version 5.14.0)${OFF}"
     echo ""
 }
 
@@ -2480,7 +3051,7 @@ of the necessary roles granted to them via
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}end_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.${YELLOW} Specify as: end_date=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
+    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}columns${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned${YELLOW} Specify as: columns="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -2562,7 +3133,7 @@ print_adAccountsList_help() {
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}include_shared_accounts${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: true)${OFF} - Include shared ad accounts${YELLOW} Specify as: include_shared_accounts=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -2716,11 +3287,11 @@ print_sandboxDelete_help() {
     echo ""
     echo -e "${BOLD}${WHITE}sandboxDelete - Delete ads data for ad account in API Sandbox${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Delete an ad account and all the ads data associated with that account. 
+    echo -e "Delete an ad account and all the ads data associated with that account.
 A string message is returned indicating the status of the delete operation.
 
-Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). 
-Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information." | paste -sd' ' | fold -sw 80
+Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).
+Go to /docs/developer-tools/sandbox/ for more information." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -2746,7 +3317,7 @@ print_templatesList_help() {
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -2846,7 +3417,7 @@ print_adGroupsBidFloorGet_help() {
     echo -e ""
     echo -e "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
+<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
 <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
@@ -2856,7 +3427,7 @@ print_adGroupsBidFloorGet_help() {
 <ul>
   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>
   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>
-</ul>
+ </ul>
 For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
@@ -2884,7 +3455,7 @@ print_adGroupsCreate_help() {
 - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
 <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
-<p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+ <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
   <li>1 microdollar = $0.000001 </li>
@@ -2919,8 +3490,7 @@ print_adGroupsGet_help() {
     echo -e ""
     echo -e "Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
 contain additional information from the Ad Review process.
-For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\"
-target=\"_blank\">Pinterest advertising standards</a>." | paste -sd' ' | fold -sw 80
+For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -2953,7 +3523,7 @@ Provide only campaign_id or ad_group_id. Do not provide both." | paste -sd' ' | 
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}entity_statuses${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: [&quot;ACTIVE&quot;,&quot;PAUSED&quot;])${OFF} - Entity status${YELLOW} Specify as: entity_statuses=value1 entity_statuses=value2 entity_statuses=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -2998,7 +3568,7 @@ of the necessary roles granted to them via
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}end_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.${YELLOW} Specify as: end_date=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
+    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}columns${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned${YELLOW} Specify as: columns="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3054,7 +3624,7 @@ print_adPreviewsCreate_help() {
     echo -e ""
     echo -e "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/>
 If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/>
-You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires." | paste -sd' ' | fold -sw 80
+You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3095,7 +3665,7 @@ of the necessary roles granted to them via
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}end_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.${YELLOW} Specify as: end_date=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
+    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsAdTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}columns${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned${YELLOW} Specify as: columns="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3129,6 +3699,7 @@ print_adsAnalytics_help() {
     echo -e ""
     echo -e "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+- The request must contain either ad_ids or both campaign_ids and pin_ids.
 - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
 - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -3138,11 +3709,11 @@ print_adsAnalytics_help() {
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}end_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.${YELLOW} Specify as: end_date=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}ad_ids${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - List of Ad Ids to use to filter the results.${YELLOW} Specify as: ad_ids=value1 ad_ids=value2 ad_ids=...${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}columns${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned${YELLOW} Specify as: columns="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}granularity${OFF} ${BLUE}[Granularity]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly${YELLOW} Specify as: granularity=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ad_ids${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - List of Ad Ids to use to filter the results.${YELLOW} Specify as: ad_ids=value1 ad_ids=value2 ad_ids=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}click_window_days${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 30)${OFF} - Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to '30' days.${YELLOW} Specify as: click_window_days=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3151,6 +3722,10 @@ print_adsAnalytics_help() {
     echo -e "  * ${GREEN}view_window_days${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 1)${OFF} - Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to '1' day.${YELLOW} Specify as: view_window_days=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}conversion_report_time${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: TIME_OF_AD_ACTION)${OFF} - The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.${YELLOW} Specify as: conversion_report_time=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}pin_ids${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - List of Pin IDs.${YELLOW} Specify as: pin_ids=value1 pin_ids=value2 pin_ids=...${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}campaign_ids${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - List of Campaign Ids to use to filter the results.${YELLOW} Specify as: campaign_ids=value1 campaign_ids=value2 campaign_ids=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -3194,8 +3769,7 @@ print_adsGet_help() {
     echo -e ""
     echo -e "Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
 contain additional information from the Ad Review process.
-For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\"
-target=\"_blank\">Pinterest advertising standards</a>." | paste -sd' ' | fold -sw 80
+For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3235,7 +3809,7 @@ For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\"
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}entity_statuses${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: [&quot;ACTIVE&quot;,&quot;PAUSED&quot;])${OFF} - Entity status${YELLOW} Specify as: entity_statuses=value1 entity_statuses=value2 entity_statuses=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -3271,6 +3845,80 @@ print_adsUpdate_help() {
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
     echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for advancedAuctionItemsGetPost operation
+#
+##############################################################################
+print_advancedAuctionItemsGetPost_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}advancedAuctionItemsGetPost - Get item bid options (POST)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get the bid options for a batch of retail catalog items.
+
+The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: 'Owner', 'Admin'.
+
+This endpoint is not available to all users." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object used to get bid options values for a batch of retail catalog items" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Response containing the bid option values for the requested retail catalog items. Items that don't exist or do not have bid options set won't be present in the response.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid request parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Not authenticated to get item bid options${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=403
+    echo -e "${result_color_table[${code:0:1}]}  403;Not authorized to get item bid options${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=500
+    echo -e "${result_color_table[${code:0:1}]}  500;Internal error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for advancedAuctionItemsSubmitPost operation
+#
+##############################################################################
+print_advancedAuctionItemsSubmitPost_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}advancedAuctionItemsSubmitPost - Operate on item level bid options${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "This endpoint supports multiple operations on a set of one or more bid options (bid price and bid adjustments for targeting categories) for retail catalog items. These advanced auction settings are applied in campaigns using objective_type 'CATALOG_SALES' and ad groups using bid_strategy_type 'MAX_BID'.
+
+The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/modify-items-in-batch/\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: 'Owner', 'Admin'.
+
+This endpoint is not available to all users." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object used to upsert or delete bid options for a batch of retail catalog items" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Response containing the results of the item bid options operations${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid request parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Not authenticated to post item bid options${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=403
+    echo -e "${result_color_table[${code:0:1}]}  403;Not authorized to post item bid options${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=500
+    echo -e "${result_color_table[${code:0:1}]}  500;Internal error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=0
     echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
@@ -3316,6 +3964,198 @@ print_audienceInsightsScopeAndTypeGet_help() {
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
     echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for adAccountsAudiencesSharedAccountsList operation
+#
+##############################################################################
+print_adAccountsAudiencesSharedAccountsList_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}adAccountsAudiencesSharedAccountsList - List accounts with access to an audience owned by an ad account${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}audience_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the audience to use to filter the results.${YELLOW} Specify as: audience_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}account_type${OFF} ${BLUE}[AudienceAccountType]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Filter accounts by account type.${YELLOW} Specify as: account_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account audiences shared accounts parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Shared accounts not found.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessAccountAudiencesSharedAccountsList operation
+#
+##############################################################################
+print_businessAccountAudiencesSharedAccountsList_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessAccountAudiencesSharedAccountsList - List accounts with access to an audience owned by a business${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "List all ad accounts and/or businesses that have access to a specific audience.
+The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business.
+If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}audience_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the audience to use to filter the results.${YELLOW} Specify as: audience_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}account_type${OFF} ${BLUE}[AudienceAccountType]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Filter accounts by account type.${YELLOW} Specify as: account_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid business audiences shared accounts parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Shared accounts not found.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for sharedAudiencesForBusinessList operation
+#
+##############################################################################
+print_sharedAudiencesForBusinessList_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}sharedAudiencesForBusinessList - List received audiences for a business${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get a list of received audiences for the given business." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
+by ID. Note that higher-value IDs are associated with more-recently added
+items.${YELLOW} Specify as: order=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for updateAdAccountToAdAccountSharedAudience operation
+#
+##############################################################################
+print_updateAdAccountToAdAccountSharedAudience_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}updateAdAccountToAdAccountSharedAudience - Update audience sharing between ad accounts${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for updateAdAccountToBusinessSharedAudience operation
+#
+##############################################################################
+print_updateAdAccountToBusinessSharedAudience_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}updateAdAccountToBusinessSharedAudience - Update audience sharing from an ad account to businesses${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for updateBusinessToAdAccountSharedAudience operation
+#
+##############################################################################
+print_updateBusinessToAdAccountSharedAudience_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}updateBusinessToAdAccountSharedAudience - Update audience sharing from a business to ad accounts${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for updateBusinessToBusinessSharedAudience operation
+#
+##############################################################################
+print_updateBusinessToBusinessSharedAudience_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}updateBusinessToBusinessSharedAudience - Update audience sharing between businesses${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=0
     echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
@@ -3408,10 +4248,9 @@ print_audiencesList_help() {
 For received audiences, it is sorted by sharing event time.
 Note that higher-value IDs are associated with more-recently added items.${YELLOW} Specify as: order=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}ownership_type${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: OWNED)${OFF} - <strong>This feature is currently in beta and not available to all apps.</strong>
-Filter audiences by ownership type.${YELLOW} Specify as: ownership_type=value${OFF}" \
+    echo -e "  * ${GREEN}ownership_type${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: OWNED)${OFF} - Filter audiences by ownership type.${YELLOW} Specify as: ownership_type=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -3456,7 +4295,7 @@ print_adsCreditRedeem_help() {
     echo -e ""
     echo -e "Redeem ads credit on behalf of the ad account id and apply it towards billing.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3482,13 +4321,13 @@ print_adsCreditsDiscountsGet_help() {
     echo -e ""
     echo -e "Returns the list of discounts applied to the account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -3508,7 +4347,7 @@ print_billingProfilesGet_help() {
     echo -e ""
     echo -e "Get billing profiles in the advertiser account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3516,7 +4355,7 @@ print_billingProfilesGet_help() {
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -3614,7 +4453,7 @@ print_ssioInsertionOrdersStatusGetByAdAccount_help() {
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -3665,7 +4504,7 @@ print_ssioOrderLinesGetByAdAccount_help() {
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}pin_order_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The pin order id associated with the ssio insertino order${YELLOW} Specify as: pin_order_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3750,7 +4589,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 ##############################################################################
 print_boardSectionsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}boardSectionsList - List board sections${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}boardSectionsList - List board sections${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of all board sections from a board owned by the \"operation user_account\" - or a group board that has been shared with this account.
 Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
@@ -3762,7 +4601,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -3778,7 +4617,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 ##############################################################################
 print_boardSectionsListPins_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}boardSectionsListPins - List Pins on board section${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}boardSectionsListPins - List Pins on board section${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of the Pins on a board section of a board owned by the \"operation user_account\" - or on a group board that has been shared with this account.
 Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
@@ -3791,7 +4630,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -3907,7 +4746,7 @@ an object within a short time window.${OFF}" | paste -sd' ' | column -t -s ';' |
 ##############################################################################
 print_boardsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}boardsGet - Get board${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}boardsGet - Get board${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a board owned by the operation user_account - or a group board that has been shared with this account.
 - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
@@ -3933,7 +4772,7 @@ print_boardsGet_help() {
 ##############################################################################
 print_boardsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}boardsList - List boards${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}boardsList - List boards${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator
 Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
@@ -3945,7 +4784,7 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}privacy${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Privacy setting for a board.${YELLOW} Specify as: privacy=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -3963,7 +4802,7 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
 ##############################################################################
 print_boardsListPins_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}boardsListPins - List Pins on board${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}boardsListPins - List Pins on board${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account.
 - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
@@ -3973,7 +4812,7 @@ print_boardsListPins_help() {
     echo -e "  * ${GREEN}board_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a board. ${YELLOW}Specify as: board_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}creative_types${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.${YELLOW} Specify as: creative_types=value1 creative_types=value2 creative_types=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4098,6 +4937,672 @@ that can be used to obtain the status of the request." | paste -sd' ' | fold -sw
 }
 ##############################################################################
 #
+# Print help for assetGroupCreate operation
+#
+##############################################################################
+print_assetGroupCreate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}assetGroupCreate - Create a new asset group.${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Create a new asset group with the specified parameters.
+- An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for assetGroupDelete operation
+#
+##############################################################################
+print_assetGroupDelete_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}assetGroupDelete - Delete asset groups.${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Delete a batch of asset groups." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for assetGroupUpdate operation
+#
+##############################################################################
+print_assetGroupUpdate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}assetGroupUpdate - Update asset groups.${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Update a batch of asset groups with the specified parameters." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessAssetMembersGet operation
+#
+##############################################################################
+print_businessAssetMembersGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessAssetMembersGet - Get members with access to asset${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all the members the requesting business has granted access to on the given asset." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a business asset. ${YELLOW}Specify as: asset_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_index${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - An index to start fetching the results from. Only the results starting from this index will be returned.${YELLOW} Specify as: start_index=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Sucess${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessAssetPartnersGet operation
+#
+##############################################################################
+print_businessAssetPartnersGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessAssetPartnersGet - Get partners with access to asset${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all the partners the requesting business has granted access to on the given asset.
+Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with
+you cannot be shared with a different partner." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}asset_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a business asset. ${YELLOW}Specify as: asset_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_index${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - An index to start fetching the results from. Only the results starting from this index will be returned.${YELLOW} Specify as: start_index=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Sucess${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessAssetsGet operation
+#
+##############################################################################
+print_businessAssetsGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessAssetsGet - List business assets${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}permissions${OFF} ${BLUE}[array[PermissionsWithOwner]]${OFF} ${CYAN}(default: null)${OFF} - A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.${YELLOW} Specify as: permissions=value1 permissions=value2 permissions=...${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}child_asset_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.${YELLOW} Specify as: child_asset_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}asset_group_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - An asset group unique identifier. Used to fetch assets contained within the specified asset group.${YELLOW} Specify as: asset_group_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}asset_type${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: AD_ACCOUNT)${OFF} - A resource type to filter the assets by. Only assets of the specified type will be returned.${YELLOW} Specify as: asset_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_index${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - An index to start fetching the results from. Only the results starting from this index will be returned.${YELLOW} Specify as: start_index=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessMemberAssetsGet operation
+#
+##############################################################################
+print_businessMemberAssetsGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessMemberAssetsGet - Get assets assigned to a member${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get assets on which you assigned asset permissions to the given member. Can be used to:
+- get all assets, regardless of asset type or
+- get assets of one asset type by using the asset_type query.
+The return response will include the permissions the member has to that asset and the asset type." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}member_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The member id to fetch assets for. ${YELLOW}Specify as: member_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}asset_type${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: AD_ACCOUNT)${OFF} - A resource type to filter the assets by. Only assets of the specified type will be returned.${YELLOW} Specify as: asset_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_index${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - An index to start fetching the results from. Only the results starting from this index will be returned.${YELLOW} Specify as: start_index=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessMembersAssetAccessDelete operation
+#
+##############################################################################
+print_businessMembersAssetAccessDelete_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessMembersAssetAccessDelete - Delete member access to asset${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Terminate multiple members' access to an asset." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - List member assset permissions to delete." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;response${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessMembersAssetAccessUpdate operation
+#
+##############################################################################
+print_businessMembersAssetAccessUpdate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessMembersAssetAccessUpdate - Assign/Update member asset permissions${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset.
+Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - List of member asset permissions to create or update." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;response${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for businessPartnerAssetAccessGet operation
+#
+##############################################################################
+print_businessPartnerAssetAccessGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}businessPartnerAssetAccessGet - Get assets assigned to a partner or assets assigned by a partner${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Can be used to get the business assets your partner has granted you access to or the business assets you have
+granted your partner access to. If you specify:
+- partner_type=INTERNAL, you will retrieve your business assets that the partner has access to.
+- partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}partner_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The partner id to be bound to the Business ${YELLOW}Specify as: partner_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}partner_type${OFF} ${BLUE}[PartnerType]${OFF} ${CYAN}(default: null)${OFF} - Specifies whether to fetch internal or external (shared) partners.
+If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
+If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.${YELLOW} Specify as: partner_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}asset_type${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: AD_ACCOUNT)${OFF} - A resource type to filter the assets by. Only assets of the specified type will be returned.${YELLOW} Specify as: asset_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_index${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - An index to start fetching the results from. Only the results starting from this index will be returned.${YELLOW} Specify as: start_index=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for deletePartnerAssetAccessHandlerImpl operation
+#
+##############################################################################
+print_deletePartnerAssetAccessHandlerImpl_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}deletePartnerAssetAccessHandlerImpl - Delete partner access to asset${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Terminate multiple partners' access to an asset. If
+- partner_type=INTERNAL: You will terminate a partner's asset access to your business assets.
+- partner_type=EXTERNAL: You will terminate your own access to your partner's business assets." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for updatePartnerAssetAccessHandlerImpl operation
+#
+##############################################################################
+print_updatePartnerAssetAccessHandlerImpl_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}updatePartnerAssetAccessHandlerImpl - Assign/Update partner asset permissions${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset.
+If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them.
+To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview
+
+Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be
+applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of
+the type PROFILE." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - A list of assets and permissions to assign to your partners." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for assetAccessRequestsCreate operation
+#
+##############################################################################
+print_assetAccessRequestsCreate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}assetAccessRequestsCreate - Create a request to access an existing partner's assets.${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Create a request to access an existing partner's assets with the specified permissions. The request will be sent to the partner for approval. The assets that can be requested are ad accounts and profiles." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for cancelInvitesOrRequests operation
+#
+##############################################################################
+print_cancelInvitesOrRequests_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}cancelInvitesOrRequests - Cancel invites/requests${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Cancel membership/partnership invites and/or requests." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Business id ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - A list with invite ids" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for createAssetInvites operation
+#
+##############################################################################
+print_createAssetInvites_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}createAssetInvites - Update invite/request with an asset permission${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Assign asset permissions information to an existing invite/request. Can be used to:
+- Request access to a partner's asset. Note: This is only for when no existing partnership exists. If an existing
+  partnership exists, use \"Create a request to access an existing partner's assets\" to request access to your
+  partner's assets.
+    - invite_type=\"PARTNER_REQUEST\"
+- Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.
+  If there is an existing partnership, use \"Assign/Update partner asset permissions\" to assign a partner access to
+  new assets.
+    - invite_type=\"PARTNER_INVITE\"
+- Invite a member to access your business assets. Note: This is only for when there is no existing membership.
+  If there is an existing membership, use \"Assign/Update member asset permissions\" to assign a member access to new
+  assets.
+    - invite_type=\"MEMBER_INVITE\"
+
+To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - A list of invites/requests together with the asset permissions to be assigned to the invite/request." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for createMembershipOrPartnershipInvites operation
+#
+##############################################################################
+print_createMembershipOrPartnershipInvites_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}createMembershipOrPartnershipInvites - Create invites or requests${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Create batch invites or requests. Can create batch invites or requests as described below.
+- Invite members to join the business. This would required specifying the following:
+    - invite_type=\"MEMBER_INVITE\"
+    - business_role=\"EMPLOYEE\" OR business_role=\"BIZ_ADMIN\" (To learn more about business roles, visit
+    https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)
+    - members
+- Invite partners to access your business assets. This would require specifying the following:
+    - invite_type=\"PARTNER_INVITE\"
+    - business_role=\"PARTNER\"
+    - partners
+- Request to be a partner so you can access their assets. This would require specifying the following:
+    - invite_type=\"PARTNER_REQUEST\"
+    - business_role=\"PARTNER\"
+    - partners" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Business id ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - An object with the properties: invite_type, partners, members, business_role" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for getInvites operation
+#
+##############################################################################
+print_getInvites_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}getInvites - Get invites/requests${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get the membership/partnership invites and/or requests for the authorized user." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}is_member${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: true)${OFF} - A boolean field to indicate whether the invite is to create a partnership or a membership.${YELLOW} Specify as: is_member=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}invite_status${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.${YELLOW} Specify as: invite_status=value1 invite_status=value2 invite_status=...${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}invite_type${OFF} ${BLUE}[InviteType]${OFF} ${CYAN}(default: null)${OFF} - Invite type to filter invites by. Only invites of the specified type will be returned.${YELLOW} Specify as: invite_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for respondBusinessAccessInvites operation
+#
+##############################################################################
+print_respondBusinessAccessInvites_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}respondBusinessAccessInvites - Accept or decline an invite/request${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Accept or decline invites or requests." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for deleteBusinessMembership operation
+#
+##############################################################################
+print_deleteBusinessMembership_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}deleteBusinessMembership - Terminate business memberships${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Terminate memberships between the specified members and your business." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Business id ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - List of members with role to delete." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for deleteBusinessPartners operation
+#
+##############################################################################
+print_deleteBusinessPartners_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}deleteBusinessPartners - Terminate business partnerships${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Terminate partnerships between the specified partners and your business.
+Note: You may only batch terminate partners of the same partner type." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;A supplied partner id doesn't exist${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for getBusinessEmployers operation
+#
+##############################################################################
+print_getBusinessEmployers_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}getBusinessEmployers - List business employers for user${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all of the viewing user's business employers." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for getBusinessMembers operation
+#
+##############################################################################
+print_getBusinessMembers_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}getBusinessMembers - Get business members${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all members of the specified business.
+The return response will include the member's business_role and assets they have access to if assets_summary=TRUE" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}assets_summary${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: false)${OFF} - Include assets summary in the response if this is true.
+
+The assets summary returns a dictionary representing a summary of the assets
+for the business user ID, with information like the ad accounts and profiles
+the user has permissions for and what those permissions are${YELLOW} Specify as: assets_summary=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}business_roles${OFF} ${BLUE}[array[MemberBusinessRole]]${OFF} ${CYAN}(default: null)${OFF} - A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.${YELLOW} Specify as: business_roles=value1 business_roles=value2 business_roles=...${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}member_ids${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - A list of business members ids separated by comma.${YELLOW} Specify as: member_ids=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_index${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - An index to start fetching the results from. Only the results starting from this index will be returned.${YELLOW} Specify as: start_index=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for getBusinessPartners operation
+#
+##############################################################################
+print_getBusinessPartners_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}getBusinessPartners - Get business partners${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get all partners of the specified business.
+
+If the assets_summary=TRUE and:
+- partner_type=INTERNAL, the business assets returned are your business assets the partner has access to.
+- partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you
+  access to." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of the requesting business. ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}assets_summary${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: false)${OFF} - Include assets summary in the response if this is true.
+
+The assets summary returns a dictionary representing a summary of the assets
+for the business user ID, with information like the ad accounts and profiles
+the user has permissions for and what those permissions are${YELLOW} Specify as: assets_summary=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}partner_type${OFF} ${BLUE}[PartnerType]${OFF} ${CYAN}(default: null)${OFF} - Specifies whether to fetch internal or external (shared) partners.
+If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
+If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.${YELLOW} Specify as: partner_type=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}partner_ids${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.${YELLOW} Specify as: partner_ids=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_index${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 0)${OFF} - An index to start fetching the results from. Only the results starting from this index will be returned.${YELLOW} Specify as: start_index=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for updateBusinessMemberships operation
+#
+##############################################################################
+print_updateBusinessMemberships_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}updateBusinessMemberships - Update member's business role${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Update a member's business role within the business." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}business_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Business id ${YELLOW}Specify as: business_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - List of objects with the member id and the business_role." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;response${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for campaignTargetingAnalyticsGet operation
 #
 ##############################################################################
@@ -4122,7 +5627,7 @@ of the necessary roles granted to them via
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}end_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.${YELLOW} Specify as: end_date=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
+    echo -e "  * ${GREEN}targeting_types${OFF} ${BLUE}[array[AdsAnalyticsCampaignTargetingType]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.${YELLOW} Specify as: targeting_types="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}columns${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned${YELLOW} Specify as: columns="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4203,7 +5708,7 @@ For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-yo
 - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
 <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
-<p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+ <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
   <li>1 microdollar = $0.000001 </li>
@@ -4264,7 +5769,7 @@ print_campaignsList_help() {
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}entity_statuses${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: [&quot;ACTIVE&quot;,&quot;PAUSED&quot;])${OFF} - Entity status${YELLOW} Specify as: entity_statuses=value1 entity_statuses=value2 entity_statuses=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -4292,9 +5797,9 @@ print_campaignsUpdate_help() {
     echo -e ""
     echo -e "Update multiple ad campaigns based on campaign_ids. <p/>
 <strong>Note:</strong><p/>
-- <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
+ - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
+<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
 <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
@@ -4319,6 +5824,40 @@ print_campaignsUpdate_help() {
 }
 ##############################################################################
 #
+# Print help for catalogsCreate operation
+#
+##############################################################################
+print_catalogsCreate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}catalogsCreate - Create catalog${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Create a new catalog owned by the \"operation user_account\".
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: this API only supports the catalog type of HOTEL for now." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object used to created a feed." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Unauthorized access.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for catalogsList operation
 #
 ##############################################################################
@@ -4331,12 +5870,12 @@ print_catalogsList_help() {
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4358,22 +5897,24 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_catalogsProductGroupPinsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}catalogsProductGroupPinsList - List products for a Product Group${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}catalogsProductGroupPinsList - List products by product group${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}product_group_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a product group ${YELLOW}Specify as: product_group_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}pin_metrics${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: false)${OFF} - Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.${YELLOW} Specify as: pin_metrics=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -4402,12 +5943,54 @@ print_catalogsProductGroupsCreate_help() {
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object used to created a catalogs product group." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object used to create a single catalogs product groups." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=201
+    echo -e "${result_color_table[${code:0:1}]}  201;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid body.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Unauthorized access.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=403
+    echo -e "${result_color_table[${code:0:1}]}  403;Forbidden. Account not approved for catalog product group mutations yet.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=409
+    echo -e "${result_color_table[${code:0:1}]}  409;Conflict. Can't create this catalogs product group with this value.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for catalogsProductGroupsCreateMany operation
+#
+##############################################################################
+print_catalogsProductGroupsCreateMany_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}catalogsProductGroupsCreateMany - Create product groups${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Create product group to use in Catalogs owned by the \"operation user_account\".
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object used to create one or more catalogs product groups." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -4438,7 +6021,7 @@ print_catalogsProductGroupsDelete_help() {
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}product_group_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a product group ${YELLOW}Specify as: product_group_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4450,6 +6033,42 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     echo -e "${result_color_table[${code:0:1}]}  204;Catalogs Product Group deleted successfully.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=400
     echo -e "${result_color_table[${code:0:1}]}  400;Invalid catalogs product group id parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Unauthorized access.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=403
+    echo -e "${result_color_table[${code:0:1}]}  403;Forbidden. Account not approved for catalog product group mutations yet.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Catalogs product group not found.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=409
+    echo -e "${result_color_table[${code:0:1}]}  409;Conflict. Can't delete this catalogs product group.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for catalogsProductGroupsDeleteMany operation
+#
+##############################################################################
+print_catalogsProductGroupsDeleteMany_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}catalogsProductGroupsDeleteMany - Delete product groups${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Delete product groups owned by the \"operation user_account\".
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}id${OFF} ${BLUE}[array[integer]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Comma-separated list of product group ids${YELLOW} Specify as: id="value1,value2,..."${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=204
+    echo -e "${result_color_table[${code:0:1}]}  204;Catalogs Product Groups deleted successfully.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=401
     echo -e "${result_color_table[${code:0:1}]}  401;Unauthorized access.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=403
@@ -4475,7 +6094,7 @@ print_catalogsProductGroupsGet_help() {
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}product_group_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a product group ${YELLOW}Specify as: product_group_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4512,16 +6131,18 @@ print_catalogsProductGroupsList_help() {
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}id${OFF} ${BLUE}[array[integer]]${OFF} ${CYAN}(default: null)${OFF} - Comma-separated list of product group ids${YELLOW} Specify as: id="value1,value2,..."${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}feed_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter entities for a given feed_id. If not given, all feeds are considered.${YELLOW} Specify as: feed_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}catalog_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter entities for a given catalog_id. If not given, all catalogs are considered.${YELLOW} Specify as: catalog_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4549,14 +6170,14 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_catalogsProductGroupsProductCountsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}catalogsProductGroupsProductCountsGet - Get product counts for a Product Group${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}catalogsProductGroupsProductCountsGet - Get product counts${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}product_group_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a product group ${YELLOW}Specify as: product_group_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4580,14 +6201,17 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_catalogsProductGroupsUpdate_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}catalogsProductGroupsUpdate - Update product group${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}catalogsProductGroupsUpdate - Update single product group${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Update product group owned by the \"operation user_account\" to use in Catalogs.
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}product_group_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a product group ${YELLOW}Specify as: product_group_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4619,20 +6243,20 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_feedProcessingResultsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}feedProcessingResultsList - List processing results for a given feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}feedProcessingResultsList - List feed processing results${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future.
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}feed_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a feed ${YELLOW}Specify as: feed_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4656,7 +6280,7 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_feedsCreate_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}feedsCreate - Create feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}feedsCreate - Create feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Create a new feed owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
@@ -4667,7 +6291,10 @@ but for now the API will not accept requests without those fields.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
@@ -4700,14 +6327,14 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 ##############################################################################
 print_feedsDelete_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}feedsDelete - Delete feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}feedsDelete - Delete feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Delete a feed owned by the \"operating user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}feed_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a feed ${YELLOW}Specify as: feed_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4735,14 +6362,14 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 ##############################################################################
 print_feedsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}feedsGet - Get feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}feedsGet - Get feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a single feed owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}feed_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a feed ${YELLOW}Specify as: feed_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4763,24 +6390,58 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 }
 ##############################################################################
 #
+# Print help for feedsIngest operation
+#
+##############################################################################
+print_feedsIngest_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}feedsIngest - Ingest feed items${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Ingest items for a given feed owned by the \"operation user_account\".
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}feed_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a feed ${YELLOW}Specify as: feed_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;The ingestion process was successfully started.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid feed parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=403
+    echo -e "${result_color_table[${code:0:1}]}  403;Forbidden. Account not approved for feed mutations yet.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Data feed not found.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for feedsList operation
 #
 ##############################################################################
 print_feedsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}feedsList - List feeds${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}feedsList - List feeds${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Fetch feeds owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}catalog_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Filter entities for a given catalog_id. If not given, all catalogs are considered.${YELLOW} Specify as: catalog_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4804,14 +6465,17 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 ##############################################################################
 print_feedsUpdate_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}feedsUpdate - Update feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}feedsUpdate - Update feed${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Update a feed owned by the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>." | paste -sd' ' | fold -sw 80
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}feed_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a feed ${YELLOW}Specify as: feed_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4839,9 +6503,9 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
 ##############################################################################
 print_itemsBatchGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}itemsBatchGet - Get catalogs item batch status${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}itemsBatchGet - Get item batch status${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a>
+    echo -e "Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a>
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager." | paste -sd' ' | fold -sw 80
@@ -4872,12 +6536,17 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_itemsBatchPost_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}itemsBatchPost - Operate on item batch${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}itemsBatchPost - Operate on item batch${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a>
+    echo -e "This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a>
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager." | paste -sd' ' | fold -sw 80
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+Note:
+- Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
+- The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
@@ -4906,10 +6575,12 @@ print_itemsGet_help() {
     echo ""
     echo -e "${BOLD}${WHITE}itemsGet - Get catalogs items${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a>
+    echo -e "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a>
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager." | paste -sd' ' | fold -sw 80
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}country${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Country for the Catalogs Items${YELLOW} Specify as: country=value${OFF}" \
@@ -4942,20 +6613,22 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_itemsIssuesList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}itemsIssuesList - List item issues for a given processing result${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}itemsIssuesList - List item issues${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future.
 - By default, the \"operation user_account\" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}processing_result_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list). ${YELLOW}Specify as: processing_result_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}processing_result_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). ${YELLOW}Specify as: processing_result_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}item_numbers${OFF} ${BLUE}[array[integer]]${OFF} ${CYAN}(default: null)${OFF} - Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.${YELLOW} Specify as: item_numbers=value1 item_numbers=value2 item_numbers=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -4978,12 +6651,47 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 }
 ##############################################################################
 #
+# Print help for itemsPost operation
+#
+##############################################################################
+print_itemsPost_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}itemsPost - Get catalogs items (POST)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a>
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object used to get catalogs items" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Response containing the requested catalogs items${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid request${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Not authorized to access catalogs items${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=403
+    echo -e "${result_color_table[${code:0:1}]}  403;Not authorized to access catalogs items${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for productsByProductGroupFilterList operation
 #
 ##############################################################################
 print_productsByProductGroupFilterList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}productsByProductGroupFilterList - List filtered products${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}productsByProductGroupFilterList - List products by filter${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request.
 - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent.
@@ -4991,14 +6699,18 @@ print_productsByProductGroupFilterList_help() {
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>" | paste -sd' ' | fold -sw 80
+Note: This endpoint only supports RETAIL catalog at the moment.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}pin_metrics${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: false)${OFF} - Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.${YELLOW} Specify as: pin_metrics=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Object holding a group of filters for a catalog product group" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
@@ -5015,6 +6727,98 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 }
 ##############################################################################
 #
+# Print help for reportsCreate operation
+#
+##############################################################################
+print_reportsCreate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}reportsCreate - Build catalogs report${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed.
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Request object to asynchronously create a report." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Response containing the report token${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Entity (e.g., catalog, feed or processing_result) not found${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=409
+    echo -e "${result_color_table[${code:0:1}]}  409;Can't access this feature without an existing catalog.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for reportsGet operation
+#
+##############################################################################
+print_reportsGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}reportsGet - Get catalogs report${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report.
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}token${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Token returned from async build report call${YELLOW} Specify as: token=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Response that contains a link to download the report${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;The token you provided is not valid or has expired.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=409
+    echo -e "${result_color_table[${code:0:1}]}  409;Can't access this feature without an existing catalog.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for reportsStats operation
+#
+##############################################################################
+print_reportsStats_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}reportsStats - List report stats${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "List aggregated numbers of issues for a catalog owned by the \"operation user_account\".
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}parameters${OFF} ${BLUE}[CatalogsReportParameters]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Contains the parameters for report identification.${YELLOW} Specify as: parameters=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Response containing the diagnostics aggregated counters${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Not authorized to access catalogs${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for eventsCreate operation
 #
 ##############################################################################
@@ -5023,7 +6827,7 @@ print_eventsCreate_help() {
     echo -e "${BOLD}${WHITE}eventsCreate - Send conversions${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - )${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object.
-- This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/conversions/conversions/\">Conversions Guide</a> for more details.
+- This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/api-features/conversion-overview/\">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>).
 - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.)
 - This endpoint has a rate limit of 5,000 calls per minute per ad account.
 - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)" | paste -sd' ' | fold -sw 80
@@ -5065,11 +6869,11 @@ print_conversionTagsCreate_help() {
     echo -e "${BOLD}${WHITE}conversionTagsCreate - Create conversion tag${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/>
-The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/>
+The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/>
 For more information, see:<p/>
 <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/>
-<a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/pinterest-tag/\">Pinterest Tag</a><p/>
-<a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/enhanced-match/\">Enhanced match</a>" | paste -sd' ' | fold -sw 80
+<a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/>
+<a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5158,7 +6962,7 @@ print_pageVisitConversionTagsGet_help() {
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -5184,13 +6988,13 @@ print_customerListsCreate_help() {
     echo -e ""
     echo -e "<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p>
 <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>
-or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>
-<p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p>
+or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>
+ <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p>
 <p>When you create a customer list, the system scans the list for existing Pinterest accounts;
 the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process
 is complete. The filtered list – containing only the Pinterest accounts that were included in your starting
 list – is what will be used to create the audience.</p>
-<p>Note that once you have created your customer list, you must convert it into an audience (of the “CUSTOMER_LIST” type)
+<p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type)
 using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
@@ -5237,12 +7041,12 @@ print_customerListsList_help() {
     echo -e "<p>Get a set of customer lists including id and name based on the filters provided.</p>
 <p>(Customer lists are a type of audience.) For more information, see
 <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>
- or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a>
+ or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a>
 section of the ads management guide.</p>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -5269,9 +7073,9 @@ print_customerListsUpdate_help() {
     echo -e "<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p>
 <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest
 accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records
-to add will be deleted when the matching process is complete.</p>
+ to add will be deleted when the matching process is complete.</p>
 <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>
-or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a>
+or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a>
 section of the ads management guide.</p>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
@@ -5423,7 +7227,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -5492,9 +7296,9 @@ print_keywordsCreate_help() {
     echo -e "${BOLD}${WHITE}keywordsCreate - Create keywords${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "<p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p>
-<p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type enums</a>.</p>
+<p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p>
 <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>
-<p><b>Rate limit</b>: <a href=\"/docs/redoc/#tag/Rate-Limits\">WRITE</a>.</p>" | paste -sd' ' | fold -sw 80
+<p><b>Rate limit</b>: <a href=\"/docs/reference/rate-limits/\">WRITE</a>.</p>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5518,7 +7322,7 @@ print_keywordsGet_help() {
     echo -e ""
     echo -e "<p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p>
 <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p>
-<p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type enums</a>.</p>
+<p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p>
 <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
@@ -5527,9 +7331,9 @@ print_keywordsGet_help() {
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}ad_group_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ad group Id.${YELLOW} Specify as: ad_group_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}match_types${OFF} ${BLUE}[array[MatchType]]${OFF} ${CYAN}(default: null)${OFF} - Keyword <a target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type</a>${YELLOW} Specify as: match_types=value1 match_types=value2 match_types=...${OFF}" \
+    echo -e "  * ${GREEN}match_types${OFF} ${BLUE}[array[MatchType]]${OFF} ${CYAN}(default: null)${OFF} - Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>${YELLOW} Specify as: match_types=value1 match_types=value2 match_types=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5571,10 +7375,7 @@ print_trendingKeywordsList_help() {
     echo ""
     echo -e "${BOLD}${WHITE}trendingKeywordsList - List trending keywords${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "<p>Get the top trending search keywords among the Pinterest user audience.</p>
-<p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p>
-<p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p>
-<p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>." | paste -sd' ' | fold -sw 80
+    echo -e "<p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}region${OFF} ${BLUE}[TrendsSupportedRegion]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - The geographic region of interest. Only top trends within the specified region will be returned.<br />
@@ -5637,6 +7438,9 @@ The 'unknown' group includes users with unspecified or customized gender profile
     echo -e "  * ${GREEN}ages${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - If set, filters the results to trends among users in the specified age range(s).<br />
 If unset, trends among all age groups will be returned.${YELLOW} Specify as: ages=value1 ages=value2 ages=...${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}include_keywords${OFF} ${BLUE}[array[string]]${OFF} ${CYAN}(default: null)${OFF} - If set, filters the results to top trends which include at least one of the specified keywords.<br />
+If unset, no keyword filtering logic is applied.${YELLOW} Specify as: include_keywords=value1 include_keywords=value2 include_keywords=...${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}normalize_against_group${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: false)${OFF} - Governs how the resulting time series data will be normalized to a [0-100] scale.<br />
 By default ('false'), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br />
 If set to 'true', the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.${YELLOW} Specify as: normalize_against_group=value${OFF}" \
@@ -5664,7 +7468,7 @@ print_adAccountsSubscriptionsDelById_help() {
     echo -e "Delete an existing lead ads webhook subscription by ID.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5694,7 +7498,7 @@ print_adAccountsSubscriptionsGetById_help() {
     echo -e "Get a specific lead ads subscription record.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5724,11 +7528,11 @@ print_adAccountsSubscriptionsGetList_help() {
     echo -e "Get the advertiser's list of lead ads subscriptions.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5751,10 +7555,12 @@ print_adAccountsSubscriptionsPost_help() {
     echo -e "${BOLD}${WHITE}adAccountsSubscriptionsPost - Create lead ads subscription${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Create a lead ads webhook subscription.
+Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.
 - Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.
+- For data security, egress lead data is encrypted with AES-256-GCM.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5780,8 +7586,11 @@ print_leadFormGet_help() {
     echo ""
     echo -e "${BOLD}${WHITE}leadFormGet - Get lead form by id${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Gets a lead form given it's ID. It must also be associated with the provided ad account ID.
-Retrieving an advertiser's lead form will only contain results if you're a part of the Lead ads beta. If you're interested in joining the beta, please reach out to your Pinterest account manager." | paste -sd' ' | fold -sw 80
+    echo -e "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+Gets a lead form given it's ID. It must also be associated with the provided ad account ID.
+
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5809,7 +7618,7 @@ print_leadFormTestCreate_help() {
     echo -e "Create lead form test data based on the list of answers provided as part of the body.
 - List of answers should follow the questions creation order.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5829,19 +7638,50 @@ print_leadFormTestCreate_help() {
 }
 ##############################################################################
 #
+# Print help for leadFormsCreate operation
+#
+##############################################################################
+print_leadFormsCreate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}leadFormsCreate - Create lead forms${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.
+
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - List of lead forms to create, size limit [1, 30]." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account lead forms parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for leadFormsList operation
 #
 ##############################################################################
 print_leadFormsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}leadFormsList - Get lead forms${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}leadFormsList - List lead forms${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "Gets all Lead Forms associated with an ad account ID.
-Retrieving an advertiser's list of lead forms will only contain results if you're a part of the Lead ads beta.  If you're interested in joining the beta, please reach out to your Pinterest account manager." | paste -sd' ' | fold -sw 80
+    echo -e "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+List lead forms associated with an ad account ID.
+
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -5855,6 +7695,95 @@ items.${YELLOW} Specify as: order=value${OFF}" \
     echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=400
     echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account lead forms parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for leadFormsUpdate operation
+#
+##############################################################################
+print_leadFormsUpdate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}leadFormsUpdate - Update lead forms${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.
+
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - List of lead forms to update, size limit [1, 30]." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account lead forms parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for leadsExportCreate operation
+#
+##############################################################################
+print_leadsExportCreate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}leadsExportCreate - Create a request to export leads collected from a lead ad${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.
+
+Note: Lead ad data will be available up to 30 days after the lead has been submitted.
+
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - " | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account parameter.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for leadsExportGet operation
+#
+##############################################################################
+print_leadsExportGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}leadsExportGet - Get the lead export from the lead export create call${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.
+
+Note: Lead ad data will be available up to 30 days after the lead has been submitted.
+
+For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}leads_export_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - lead_export_id token returned from the create a lead export endpoint ${YELLOW}Specify as: leads_export_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account parameter.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Invalid leads export id parameter.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=0
     echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
@@ -5878,7 +7807,7 @@ value. Send the media file's contents as the request's <tt>file</tt>
 parameter and also include all of the parameters from
 <tt>upload_parameters</tt>.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Create a media upload request" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5901,7 +7830,7 @@ print_mediaGet_help() {
     echo -e ""
     echo -e "Get details for a registered media upload, including its current status.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}media_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Media identifier ${YELLOW}Specify as: media_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -5925,12 +7854,12 @@ print_mediaList_help() {
     echo -e ""
     echo -e "List media uploads filtered by given parameters.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -5952,9 +7881,11 @@ print_oauthToken_help() {
 
 IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).
 
-See <a href='/docs/getting-started/authentication/'>Authentication</a> for more.
+See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.
 
-<strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
+<strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo ""
@@ -5998,7 +7929,7 @@ print_orderLinesList_help() {
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -6015,17 +7946,69 @@ items.${YELLOW} Specify as: order=value${OFF}" \
 }
 ##############################################################################
 #
+# Print help for multiPinsAnalytics operation
+#
+##############################################################################
+print_multiPinsAnalytics_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}multiPinsAnalytics - Get multiple Pin analytics${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
+Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.
+- The maximum number of pins supported in a single request is 100.
+- By default, the \"operation user_account\" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:
+
+- For Pins on public or protected boards: Admin, Analyst.
+- For Pins on secret boards: Admin.
+
+If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then." | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}pin_ids${OFF} ${BLUE}[array[string]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - List of Pin IDs.${YELLOW} Specify as: pin_ids=value1 pin_ids=value2 pin_ids=...${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}start_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.${YELLOW} Specify as: start_date=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}end_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.${YELLOW} Specify as: end_date=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}metric_types${OFF} ${BLUE}[array[PinsAnalyticsMetricTypesParameterInner]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Pin metric types to get data for.${YELLOW} Specify as: metric_types="value1,value2,..."${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}app_types${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: ALL)${OFF} - Apps or devices to get data for, default is all.${YELLOW} Specify as: app_types=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;response${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid pins analytics parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=401
+    echo -e "${result_color_table[${code:0:1}]}  401;Not authorized to access board or Pin.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=404
+    echo -e "${result_color_table[${code:0:1}]}  404;Pin not found.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=429
+    echo -e "${result_color_table[${code:0:1}]}  429;This request exceeded a rate limit. This can happen if the client exceeds one
+of the published rate limits or if multiple write operations are applied to
+an object within a short time window.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for pinsAnalytics operation
 #
 ##############################################################################
 print_pinsAnalytics_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}pinsAnalytics - Get Pin analytics${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}pinsAnalytics - Get Pin analytics${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.
 - By default, the \"operation user_account\" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:
 
 - For Pins on public or protected boards: Admin, Analyst.
 - For Pins on secret boards: Admin.
@@ -6038,7 +8021,7 @@ If Pin was created before <code>2023-03-20</code> lifetime metrics will only be 
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}end_date${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.${YELLOW} Specify as: end_date=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}metric_types${OFF} ${BLUE}[array[PinsAnalyticsMetricTypesParameterInner]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Pin metric types to get data for, default is all.${YELLOW} Specify as: metric_types="value1,value2,..."${OFF}" \
+    echo -e "  * ${GREEN}metric_types${OFF} ${BLUE}[array[PinsAnalyticsMetricTypesParameterInner]]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.${YELLOW} Specify as: metric_types="value1,value2,..."${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}app_types${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: ALL)${OFF} - Apps or devices to get data for, default is all.${YELLOW} Specify as: app_types=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -6072,9 +8055,9 @@ print_pinsCreate_help() {
 
 Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).
 
-- This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.
+- This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
@@ -6137,7 +8120,7 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_pinsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}pinsGet - Get Pin${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}pinsGet - Get Pin${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.
 - By default, the \"operation user_account\" is the token user_account.
@@ -6171,17 +8154,20 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 ##############################################################################
 print_pinsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}pinsList - List Pins${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}pinsList - List Pins${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of the Pins owned by the \"operation user_account\".
-- By default, the \"operation user_account\" is the token user_account.
-- All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.
-Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\"." | paste -sd' ' | fold -sw 80
+  - By default, the \"operation user_account\" is the token user_account.
+  - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.
+Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+
+Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your
+request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}pin_filter${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Pin filter.${YELLOW} Specify as: pin_filter=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -6257,7 +8243,7 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.
 - For Pins on secret boards: Owner, Admin.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}pin_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of a Pin. ${YELLOW}Specify as: pin_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -6347,7 +8333,7 @@ Only provide one. If multiple options are provided, product_group_promotion_ids 
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}ad_group_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Ad group Id.${YELLOW} Specify as: ad_group_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
@@ -6429,34 +8415,6 @@ print_productGroupsAnalytics_help() {
 }
 ##############################################################################
 #
-# Print help for adAccountsCatalogsProductGroupsList operation
-#
-##############################################################################
-print_adAccountsCatalogsProductGroupsList_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}adAccountsCatalogsProductGroupsList - Get catalog product groups${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "This endpoint is completely deprecated. Please use <a href='/docs/api/v5/#operation/catalogs_product_groups/list'>List product groups</a> from Catalogs API instead." | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}feed_profile_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The feed profile id whose catalog product groups we want to return.${YELLOW} Specify as: feed_profile_id=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-    code=200
-    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=400
-    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account ads parameters.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=401
-    echo -e "${result_color_table[${code:0:1}]}  401;Access Denied. This can happen if account is not yet approved to operate as Merchant on Pinterest.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=404
-    echo -e "${result_color_table[${code:0:1}]}  404;Merchant data not found.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-    code=0
-    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
-}
-##############################################################################
-#
 # Print help for adAccountCountriesGet operation
 #
 ##############################################################################
@@ -6484,7 +8442,7 @@ print_deliveryMetricsGet_help() {
     echo -e ""
     echo -e "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints.
 The 'display_name' attribute will match how the metric is named in our native tools like Ads Manager.
-See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information." | paste -sd' ' | fold -sw 80
+See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}report_type${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Report type.${YELLOW} Specify as: report_type=value${OFF}" \
@@ -6527,7 +8485,7 @@ print_leadFormQuestionsGet_help() {
     echo -e ""
     echo -e "Get a list of all lead form question type names. Some questions might not be used.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -6577,6 +8535,8 @@ print_targetingOptionsGet_help() {
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}timestamp${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Timestamp${YELLOW} Specify as: timestamp=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -6593,7 +8553,7 @@ print_searchPartnerPins_help() {
     echo ""
     echo -e "${BOLD}${WHITE}searchPartnerPins - Search pins by a given search term${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+    echo -e "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 Get the top 10 Pins by a given search term." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -6624,19 +8584,19 @@ Get the top 10 Pins by a given search term." | paste -sd' ' | fold -sw 80
 ##############################################################################
 print_searchUserBoardsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}searchUserBoardsGet - Search user's boards${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}searchUserBoardsGet - Search user's boards${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Search for boards for the \"operation user_account\". This includes boards of all board types.
 - By default, the \"operation user_account\" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information." | paste -sd' ' | fold -sw 80
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}query${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Search query. Can contain pin description keywords or comma-separated pin IDs.${YELLOW} Specify as: query=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -6659,7 +8619,7 @@ print_searchUserPinsList_help() {
     echo -e "Search for pins for the \"operation user_account\".
 - By default, the \"operation user_account\" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information." | paste -sd' ' | fold -sw 80
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}query${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Search query. Can contain pin description keywords or comma-separated pin IDs.${YELLOW} Specify as: query=value${OFF}" \
@@ -6674,6 +8634,91 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=404
     echo -e "${result_color_table[${code:0:1}]}  404;User not found${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for targetingTemplateCreate operation
+#
+##############################################################################
+print_targetingTemplateCreate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}targetingTemplateCreate - Create targeting templates${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,
+ keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>
+ <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse
+  performance targeting from prior campaigns for new campaigns.</p>" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - targeting template creation entity" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for targetingTemplateList operation
+#
+##############################################################################
+print_targetingTemplateList_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}targetingTemplateList - List targeting templates${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "Get a list of the targeting templates in the specified <code>ad_account_id</code>" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}order${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
+by ID. Note that higher-value IDs are associated with more-recently added
+items.${YELLOW} Specify as: order=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}include_sizing${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: false)${OFF} - Include audience sizing in result or not${YELLOW} Specify as: include_sizing=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}search_query${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Search keyword for targeting templates${YELLOW} Specify as: search_query=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=0
+    echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for targetingTemplateUpdate operation
+#
+##############################################################################
+print_targetingTemplateUpdate_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}targetingTemplateUpdate - Update targeting templates${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "<p>Update the targeting template given advertiser ID and targeting template ID</p>" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account. ${YELLOW}Specify as: ad_account_id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Operation type and targeting template ID" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;Success${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Invalid ad account id.${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
     code=0
     echo -e "${result_color_table[${code:0:1}]}  0;Unexpected error${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
 }
@@ -6758,14 +8803,14 @@ print_termsOfServiceGet_help() {
 ##############################################################################
 print_boardsUserFollowsList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}boardsUserFollowsList - List following boards${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}boardsUserFollowsList - List following boards${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of the boards a user follows. The request returns a board summary object array." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}explicit_following${OFF} ${BLUE}[boolean]${OFF} ${CYAN}(default: false)${OFF} - Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.${YELLOW} Specify as: explicit_following=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -6789,7 +8834,7 @@ print_followUserUpdate_help() {
     echo ""
     echo -e "${BOLD}${WHITE}followUserUpdate - Follow user${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+    echo -e "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 Use this request, as a signed-in user, to follow another user." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -6813,14 +8858,14 @@ Use this request, as a signed-in user, to follow another user." | paste -sd' ' |
 ##############################################################################
 print_followersList_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}followersList - List followers${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}followersList - List followers${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of your followers." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -6838,7 +8883,7 @@ print_followersList_help() {
 ##############################################################################
 print_linkedBusinessAccountsGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}linkedBusinessAccountsGet - List linked businesses${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}linkedBusinessAccountsGet - List linked businesses${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of your linked business accounts." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -6925,7 +8970,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 ##############################################################################
 print_userAccountAnalyticsTopPins_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}userAccountAnalyticsTopPins - Get user account top pins analytics${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}userAccountAnalyticsTopPins - Get user account top pins analytics${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Gets analytics data about a user's top pins (limited to the top 50).
 - By default, the \"operation user_account\" is the token user_account.
@@ -6973,7 +9018,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 ##############################################################################
 print_userAccountAnalyticsTopVideoPins_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}userAccountAnalyticsTopVideoPins - Get user account top video pins analytics${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}userAccountAnalyticsTopVideoPins - Get user account top video pins analytics${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Gets analytics data about a user's top video pins (limited to the top 50).
 - By default, the \"operation user_account\" is the token user_account.
@@ -7021,7 +9066,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
 ##############################################################################
 print_userAccountFollowedInterests_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}userAccountFollowedInterests - List following interests${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}userAccountFollowedInterests - List following interests${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of a user's following interests in one place." | paste -sd' ' | fold -sw 80
     echo -e ""
@@ -7029,7 +9074,7 @@ print_userAccountFollowedInterests_help() {
     echo -e "  * ${GREEN}username${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF} ${CYAN}(default: null)${OFF} - A valid username ${YELLOW}Specify as: username=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -7051,12 +9096,12 @@ print_userAccountFollowedInterests_help() {
 ##############################################################################
 print_userAccountGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}userAccountGet - Get user account${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}userAccountGet - Get user account${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get account information for the \"operation user_account\"
 - By default, the \"operation user_account\" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information." | paste -sd' ' | fold -sw 80
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
@@ -7077,14 +9122,14 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
 ##############################################################################
 print_userFollowingGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}userFollowingGet - List following${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}userFollowingGet - List following${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get a list of who a certain user follows." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}feed_type${OFF} ${BLUE}[UserFollowingFeedType]${OFF} ${CYAN}(default: null)${OFF} - Thrift param specifying what type of followees will be kept. Default to include all followees.${YELLOW} Specify as: feed_type=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
@@ -7113,7 +9158,7 @@ print_userWebsitesGet_help() {
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}bookmark${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Cursor used to fetch the next page of items${YELLOW} Specify as: bookmark=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
+    echo -e "  * ${GREEN}page_size${OFF} ${BLUE}[integer]${OFF} ${CYAN}(default: 25)${OFF} - Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.${YELLOW} Specify as: page_size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -7136,6 +9181,8 @@ print_verifyWebsiteUpdate_help() {
     echo -e "Verify a website as a signed-in user." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Verify a website." | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
@@ -7152,10 +9199,13 @@ print_verifyWebsiteUpdate_help() {
 ##############################################################################
 print_websiteVerificationGet_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}websiteVerificationGet - Get user verification code for website claiming${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}websiteVerificationGet - Get user verification code for website claiming${OFF}${BLUE}(AUTH - OAuth2)${OFF}${BLUE}(AUTH - OAuth2)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "Get verification code for user to install on the website to claim it." | paste -sd' ' | fold -sw 80
     echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ad_account_id${OFF} ${BLUE}[string]${OFF} ${CYAN}(default: null)${OFF} - Unique identifier of an ad account.${YELLOW} Specify as: ad_account_id=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -7779,7 +9829,7 @@ call_adGroupsAudienceSizing() {
         ERROR_MSG=$path
         exit 1
     fi
-    local method="GET"
+    local method="POST"
     local headers_curl
     headers_curl=$(header_arguments_to_curl)
     if [[ -n $header_accept ]]; then
@@ -8306,7 +10356,7 @@ call_adsAnalytics() {
     local path_parameter_names=(ad_account_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(start_date end_date ad_ids columns granularity click_window_days engagement_window_days view_window_days conversion_report_time  )
+    local query_parameter_names=(start_date end_date ad_ids columns granularity click_window_days engagement_window_days view_window_days conversion_report_time pin_ids campaign_ids  )
     local path
 
     if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/ads/analytics" path_parameter_names query_parameter_names); then
@@ -8561,6 +10611,162 @@ call_adsUpdate() {
 
 ##############################################################################
 #
+# Call advancedAuctionItemsGetPost operation
+#
+##############################################################################
+call_advancedAuctionItemsGetPost() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/advanced_auction/items/get" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call advancedAuctionItemsSubmitPost operation
+#
+##############################################################################
+call_advancedAuctionItemsSubmitPost() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/advanced_auction/items/submit" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
 # Call audienceInsightsGet operation
 #
 ##############################################################################
@@ -8628,6 +10834,426 @@ call_audienceInsightsScopeAndTypeGet() {
         echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     else
         eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call adAccountsAudiencesSharedAccountsList operation
+#
+##############################################################################
+call_adAccountsAudiencesSharedAccountsList() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(audience_id account_type page_size bookmark  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call businessAccountAudiencesSharedAccountsList operation
+#
+##############################################################################
+call_businessAccountAudiencesSharedAccountsList() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(audience_id account_type page_size bookmark  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/audiences/shared/accounts" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call sharedAudiencesForBusinessList operation
+#
+##############################################################################
+call_sharedAudiencesForBusinessList() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(bookmark order page_size  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/audiences" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call updateAdAccountToAdAccountSharedAudience operation
+#
+##############################################################################
+call_updateAdAccountToAdAccountSharedAudience() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call updateAdAccountToBusinessSharedAudience operation
+#
+##############################################################################
+call_updateAdAccountToBusinessSharedAudience() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/audiences/businesses/shared" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call updateBusinessToAdAccountSharedAudience operation
+#
+##############################################################################
+call_updateBusinessToAdAccountSharedAudience() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/audiences/ad_accounts/shared" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call updateBusinessToBusinessSharedAudience operation
+#
+##############################################################################
+call_updateBusinessToBusinessSharedAudience() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/audiences/businesses/shared" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
     fi
 }
 
@@ -9512,7 +12138,7 @@ call_boardSectionsList() {
     local path_parameter_names=(board_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id bookmark page_size  )
+    local query_parameter_names=(ad_account_id bookmark page_size    )
     local path
 
     if ! path=$(build_request_path "/v5/boards/{board_id}/sections" path_parameter_names query_parameter_names); then
@@ -9548,7 +12174,7 @@ call_boardSectionsListPins() {
     local path_parameter_names=(board_id section_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id bookmark page_size  )
+    local query_parameter_names=(ad_account_id bookmark page_size    )
     local path
 
     if ! path=$(build_request_path "/v5/boards/{board_id}/sections/{section_id}/pins" path_parameter_names query_parameter_names); then
@@ -9776,7 +12402,7 @@ call_boardsGet() {
     local path_parameter_names=(board_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/boards/{board_id}" path_parameter_names query_parameter_names); then
@@ -9812,7 +12438,7 @@ call_boardsList() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id bookmark page_size privacy  )
+    local query_parameter_names=(ad_account_id bookmark page_size privacy    )
     local path
 
     if ! path=$(build_request_path "/v5/boards" path_parameter_names query_parameter_names); then
@@ -9848,7 +12474,7 @@ call_boardsListPins() {
     local path_parameter_names=(board_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size creative_types ad_account_id pin_metrics  )
+    local query_parameter_names=(bookmark page_size creative_types ad_account_id pin_metrics    )
     local path
 
     if ! path=$(build_request_path "/v5/boards/{board_id}/pins" path_parameter_names query_parameter_names); then
@@ -10084,6 +12710,1500 @@ call_bulkUpsertCreate() {
         exit 1
     fi
     local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call assetGroupCreate operation
+#
+##############################################################################
+call_assetGroupCreate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/asset_groups" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call assetGroupDelete operation
+#
+##############################################################################
+call_assetGroupDelete() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/asset_groups" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call assetGroupUpdate operation
+#
+##############################################################################
+call_assetGroupUpdate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/asset_groups" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call businessAssetMembersGet operation
+#
+##############################################################################
+call_businessAssetMembersGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id asset_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(bookmark page_size start_index  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/assets/{asset_id}/members" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call businessAssetPartnersGet operation
+#
+##############################################################################
+call_businessAssetPartnersGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id asset_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(start_index bookmark page_size  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/assets/{asset_id}/partners" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call businessAssetsGet operation
+#
+##############################################################################
+call_businessAssetsGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(permissions child_asset_id asset_group_id asset_type start_index bookmark page_size  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/assets" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call businessMemberAssetsGet operation
+#
+##############################################################################
+call_businessMemberAssetsGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id member_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(asset_type start_index bookmark page_size  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/members/{member_id}/assets" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call businessMembersAssetAccessDelete operation
+#
+##############################################################################
+call_businessMembersAssetAccessDelete() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/members/assets/access" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call businessMembersAssetAccessUpdate operation
+#
+##############################################################################
+call_businessMembersAssetAccessUpdate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/members/assets/access" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call businessPartnerAssetAccessGet operation
+#
+##############################################################################
+call_businessPartnerAssetAccessGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id partner_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(partner_type asset_type start_index page_size bookmark  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/partners/{partner_id}/assets" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call deletePartnerAssetAccessHandlerImpl operation
+#
+##############################################################################
+call_deletePartnerAssetAccessHandlerImpl() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/partners/assets" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call updatePartnerAssetAccessHandlerImpl operation
+#
+##############################################################################
+call_updatePartnerAssetAccessHandlerImpl() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/partners/assets" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call assetAccessRequestsCreate operation
+#
+##############################################################################
+call_assetAccessRequestsCreate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/requests/assets/access" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call cancelInvitesOrRequests operation
+#
+##############################################################################
+call_cancelInvitesOrRequests() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/invites" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call createAssetInvites operation
+#
+##############################################################################
+call_createAssetInvites() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/invites/assets/access" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call createMembershipOrPartnershipInvites operation
+#
+##############################################################################
+call_createMembershipOrPartnershipInvites() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/invites" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call getInvites operation
+#
+##############################################################################
+call_getInvites() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(is_member invite_status invite_type bookmark page_size  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/invites" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call respondBusinessAccessInvites operation
+#
+##############################################################################
+call_respondBusinessAccessInvites() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/invites" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call deleteBusinessMembership operation
+#
+##############################################################################
+call_deleteBusinessMembership() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/members" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call deleteBusinessPartners operation
+#
+##############################################################################
+call_deleteBusinessPartners() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/partners" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call getBusinessEmployers operation
+#
+##############################################################################
+call_getBusinessEmployers() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(page_size bookmark  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/employers" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call getBusinessMembers operation
+#
+##############################################################################
+call_getBusinessMembers() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(assets_summary business_roles member_ids start_index bookmark page_size  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/members" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call getBusinessPartners operation
+#
+##############################################################################
+call_getBusinessPartners() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(assets_summary partner_type partner_ids start_index page_size bookmark  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/partners" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call updateBusinessMemberships operation
+#
+##############################################################################
+call_updateBusinessMemberships() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(business_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/businesses/{business_id}/members" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
     local headers_curl
     headers_curl=$(header_arguments_to_curl)
     if [[ -n $header_accept ]]; then
@@ -10445,6 +14565,84 @@ call_campaignsUpdate() {
 
 ##############################################################################
 #
+# Call catalogsCreate operation
+#
+##############################################################################
+call_catalogsCreate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
 # Call catalogsList operation
 #
 ##############################################################################
@@ -10490,7 +14688,7 @@ call_catalogsProductGroupPinsList() {
     local path_parameter_names=(product_group_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size ad_account_id  )
+    local query_parameter_names=(bookmark page_size ad_account_id pin_metrics  )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/product_groups/{product_group_id}/products" path_parameter_names query_parameter_names); then
@@ -10595,6 +14793,84 @@ call_catalogsProductGroupsCreate() {
 
 ##############################################################################
 #
+# Call catalogsProductGroupsCreateMany operation
+#
+##############################################################################
+call_catalogsProductGroupsCreateMany() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs/product_groups/multiple" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
 # Call catalogsProductGroupsDelete operation
 #
 ##############################################################################
@@ -10608,6 +14884,42 @@ call_catalogsProductGroupsDelete() {
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/product_groups/{product_group_id}" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call catalogsProductGroupsDeleteMany operation
+#
+##############################################################################
+call_catalogsProductGroupsDeleteMany() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(id ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs/product_groups/multiple" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -10676,7 +14988,7 @@ call_catalogsProductGroupsList() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(feed_id catalog_id bookmark page_size ad_account_id  )
+    local query_parameter_names=(id feed_id catalog_id bookmark page_size ad_account_id  )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/product_groups" path_parameter_names query_parameter_names); then
@@ -10862,7 +15174,7 @@ call_feedsCreate() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/feeds" path_parameter_names query_parameter_names); then
@@ -10940,7 +15252,7 @@ call_feedsDelete() {
     local path_parameter_names=(feed_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/feeds/{feed_id}" path_parameter_names query_parameter_names); then
@@ -10976,7 +15288,7 @@ call_feedsGet() {
     local path_parameter_names=(feed_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/feeds/{feed_id}" path_parameter_names query_parameter_names); then
@@ -10984,6 +15296,42 @@ call_feedsGet() {
         exit 1
     fi
     local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call feedsIngest operation
+#
+##############################################################################
+call_feedsIngest() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(feed_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs/feeds/{feed_id}/ingest" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
     local headers_curl
     headers_curl=$(header_arguments_to_curl)
     if [[ -n $header_accept ]]; then
@@ -11012,7 +15360,7 @@ call_feedsList() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size catalog_id ad_account_id  )
+    local query_parameter_names=(bookmark page_size catalog_id ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/feeds" path_parameter_names query_parameter_names); then
@@ -11048,7 +15396,7 @@ call_feedsUpdate() {
     local path_parameter_names=(feed_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/feeds/{feed_id}" path_parameter_names query_parameter_names); then
@@ -11126,7 +15474,7 @@ call_itemsBatchGet() {
     local path_parameter_names=(batch_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/items/batch/{batch_id}" path_parameter_names query_parameter_names); then
@@ -11162,7 +15510,7 @@ call_itemsBatchPost() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/items/batch" path_parameter_names query_parameter_names); then
@@ -11303,6 +15651,84 @@ call_itemsIssuesList() {
 
 ##############################################################################
 #
+# Call itemsPost operation
+#
+##############################################################################
+call_itemsPost() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs/items" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
 # Call productsByProductGroupFilterList operation
 #
 ##############################################################################
@@ -11312,7 +15738,7 @@ call_productsByProductGroupFilterList() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size ad_account_id  )
+    local query_parameter_names=(bookmark page_size ad_account_id pin_metrics  )
     local path
 
     if ! path=$(build_request_path "/v5/catalogs/products/get_by_product_group_filters" path_parameter_names query_parameter_names); then
@@ -11376,6 +15802,156 @@ call_productsByProductGroupFilterList() {
         else
             eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
         fi
+    fi
+}
+
+##############################################################################
+#
+# Call reportsCreate operation
+#
+##############################################################################
+call_reportsCreate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs/reports" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call reportsGet operation
+#
+##############################################################################
+call_reportsGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id token  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs/reports" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call reportsStats operation
+#
+##############################################################################
+call_reportsStats() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(ad_account_id page_size bookmark parameters  )
+    local path
+
+    if ! path=$(build_request_path "/v5/catalogs/reports/stats" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     fi
 }
 
@@ -12524,7 +17100,7 @@ call_trendingKeywordsList() {
     local path_parameter_names=(region trend_type)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(interests genders ages normalize_against_group limit  )
+    local query_parameter_names=(interests genders ages include_keywords normalize_against_group limit  )
     local path
 
     if ! path=$(build_request_path "/v5/trends/keywords/{region}/top/{trend_type}" path_parameter_names query_parameter_names); then
@@ -12851,6 +17427,84 @@ call_leadFormTestCreate() {
 
 ##############################################################################
 #
+# Call leadFormsCreate operation
+#
+##############################################################################
+call_leadFormsCreate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/lead_forms" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
 # Call leadFormsList operation
 #
 ##############################################################################
@@ -12864,6 +17518,198 @@ call_leadFormsList() {
     local path
 
     if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/lead_forms" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call leadFormsUpdate operation
+#
+##############################################################################
+call_leadFormsUpdate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/lead_forms" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call leadsExportCreate operation
+#
+##############################################################################
+call_leadsExportCreate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/leads_export" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call leadsExportGet operation
+#
+##############################################################################
+call_leadsExportGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id leads_export_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -13146,6 +17992,42 @@ call_orderLinesList() {
 
 ##############################################################################
 #
+# Call multiPinsAnalytics operation
+#
+##############################################################################
+call_multiPinsAnalytics() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(pin_ids start_date end_date app_types metric_types ad_account_id    )
+    local path
+
+    if ! path=$(build_request_path "/v5/pins/analytics" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
 # Call pinsAnalytics operation
 #
 ##############################################################################
@@ -13155,7 +18037,7 @@ call_pinsAnalytics() {
     local path_parameter_names=(pin_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(start_date end_date app_types metric_types split_field ad_account_id  )
+    local query_parameter_names=(start_date end_date app_types metric_types split_field ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/pins/{pin_id}/analytics" path_parameter_names query_parameter_names); then
@@ -13305,7 +18187,7 @@ call_pinsGet() {
     local path_parameter_names=(pin_id)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(pin_metrics ad_account_id  )
+    local query_parameter_names=(pin_metrics ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/pins/{pin_id}" path_parameter_names query_parameter_names); then
@@ -13341,7 +18223,7 @@ call_pinsList() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size pin_filter include_protected_pins pin_type creative_types ad_account_id pin_metrics  )
+    local query_parameter_names=(bookmark page_size pin_filter include_protected_pins pin_type creative_types ad_account_id pin_metrics    )
     local path
 
     if ! path=$(build_request_path "/v5/pins" path_parameter_names query_parameter_names); then
@@ -13788,42 +18670,6 @@ call_productGroupsAnalytics() {
 
 ##############################################################################
 #
-# Call adAccountsCatalogsProductGroupsList operation
-#
-##############################################################################
-call_adAccountsCatalogsProductGroupsList() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=(ad_account_id)
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(feed_profile_id  )
-    local path
-
-    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/product_groups/catalogs" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="GET"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
 # Call adAccountCountriesGet operation
 #
 ##############################################################################
@@ -14013,7 +18859,7 @@ call_targetingOptionsGet() {
     local path_parameter_names=(targeting_type)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(client_id oauth_signature timestamp  )
+    local query_parameter_names=(client_id oauth_signature timestamp ad_account_id  )
     local path
 
     if ! path=$(build_request_path "/v5/resources/targeting/{targeting_type}" path_parameter_names query_parameter_names); then
@@ -14085,7 +18931,7 @@ call_searchUserBoardsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id bookmark page_size query  )
+    local query_parameter_names=(ad_account_id bookmark page_size query    )
     local path
 
     if ! path=$(build_request_path "/v5/search/boards" path_parameter_names query_parameter_names); then
@@ -14143,6 +18989,198 @@ call_searchUserPinsList() {
         echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
     else
         eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call targetingTemplateCreate operation
+#
+##############################################################################
+call_targetingTemplateCreate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/targeting_templates" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
+# Call targetingTemplateList operation
+#
+##############################################################################
+call_targetingTemplateList() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(order include_sizing search_query page_size bookmark  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/targeting_templates" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl -d '' ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call targetingTemplateUpdate operation
+#
+##############################################################################
+call_targetingTemplateUpdate() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(ad_account_id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/v5/ad_accounts/{ad_account_id}/targeting_templates" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="PATCH"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the OpenAPI specification
+    # if values produces and consumes are defined unambiguously
+    #
+    if [[ -z $header_content_type ]]; then
+        header_content_type="application/json"
+    fi
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+        echo "ERROR: Request's content-type not specified!!!"
+        echo "This operation expects content-type in one of the following formats:"
+        echo -e "\\t- application/json"
+        echo ""
+        echo "Use '--content-type' to set proper content type"
+        exit 1
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
     fi
 }
 
@@ -14265,7 +19303,7 @@ call_boardsUserFollowsList() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size explicit_following ad_account_id  )
+    local query_parameter_names=(bookmark page_size explicit_following ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/following/boards" path_parameter_names query_parameter_names); then
@@ -14379,7 +19417,7 @@ call_followersList() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size  )
+    local query_parameter_names=(bookmark page_size    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/followers" path_parameter_names query_parameter_names); then
@@ -14415,7 +19453,7 @@ call_linkedBusinessAccountsGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/businesses" path_parameter_names query_parameter_names); then
@@ -14523,7 +19561,7 @@ call_userAccountAnalyticsTopPins() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(start_date end_date sort_by from_claimed_content pin_format app_types content_type source metric_types num_of_pins created_in_last_n_days ad_account_id  )
+    local query_parameter_names=(start_date end_date sort_by from_claimed_content pin_format app_types content_type source metric_types num_of_pins created_in_last_n_days ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/analytics/top_pins" path_parameter_names query_parameter_names); then
@@ -14559,7 +19597,7 @@ call_userAccountAnalyticsTopVideoPins() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(start_date end_date sort_by from_claimed_content pin_format app_types content_type source metric_types num_of_pins created_in_last_n_days ad_account_id  )
+    local query_parameter_names=(start_date end_date sort_by from_claimed_content pin_format app_types content_type source metric_types num_of_pins created_in_last_n_days ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/analytics/top_video_pins" path_parameter_names query_parameter_names); then
@@ -14595,7 +19633,7 @@ call_userAccountFollowedInterests() {
     local path_parameter_names=(username)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size  )
+    local query_parameter_names=(bookmark page_size    )
     local path
 
     if ! path=$(build_request_path "/v5/users/{username}/interests/follow" path_parameter_names query_parameter_names); then
@@ -14631,7 +19669,7 @@ call_userAccountGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(ad_account_id  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account" path_parameter_names query_parameter_names); then
@@ -14667,7 +19705,7 @@ call_userFollowingGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(bookmark page_size feed_type explicit_following ad_account_id  )
+    local query_parameter_names=(bookmark page_size feed_type explicit_following ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/following" path_parameter_names query_parameter_names); then
@@ -14739,7 +19777,7 @@ call_verifyWebsiteUpdate() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(ad_account_id  )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/websites" path_parameter_names query_parameter_names); then
@@ -14817,7 +19855,7 @@ call_websiteVerificationGet() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(ad_account_id    )
     local path
 
     if ! path=$(build_request_path "/v5/user_account/websites/verification" path_parameter_names query_parameter_names); then
@@ -15020,11 +20058,38 @@ case $key in
     adsUpdate)
     operation="adsUpdate"
     ;;
+    advancedAuctionItemsGetPost)
+    operation="advancedAuctionItemsGetPost"
+    ;;
+    advancedAuctionItemsSubmitPost)
+    operation="advancedAuctionItemsSubmitPost"
+    ;;
     audienceInsightsGet)
     operation="audienceInsightsGet"
     ;;
     audienceInsightsScopeAndTypeGet)
     operation="audienceInsightsScopeAndTypeGet"
+    ;;
+    adAccountsAudiencesSharedAccountsList)
+    operation="adAccountsAudiencesSharedAccountsList"
+    ;;
+    businessAccountAudiencesSharedAccountsList)
+    operation="businessAccountAudiencesSharedAccountsList"
+    ;;
+    sharedAudiencesForBusinessList)
+    operation="sharedAudiencesForBusinessList"
+    ;;
+    updateAdAccountToAdAccountSharedAudience)
+    operation="updateAdAccountToAdAccountSharedAudience"
+    ;;
+    updateAdAccountToBusinessSharedAudience)
+    operation="updateAdAccountToBusinessSharedAudience"
+    ;;
+    updateBusinessToAdAccountSharedAudience)
+    operation="updateBusinessToAdAccountSharedAudience"
+    ;;
+    updateBusinessToBusinessSharedAudience)
+    operation="updateBusinessToBusinessSharedAudience"
     ;;
     audiencesCreate)
     operation="audiencesCreate"
@@ -15110,6 +20175,78 @@ case $key in
     bulkUpsertCreate)
     operation="bulkUpsertCreate"
     ;;
+    assetGroupCreate)
+    operation="assetGroupCreate"
+    ;;
+    assetGroupDelete)
+    operation="assetGroupDelete"
+    ;;
+    assetGroupUpdate)
+    operation="assetGroupUpdate"
+    ;;
+    businessAssetMembersGet)
+    operation="businessAssetMembersGet"
+    ;;
+    businessAssetPartnersGet)
+    operation="businessAssetPartnersGet"
+    ;;
+    businessAssetsGet)
+    operation="businessAssetsGet"
+    ;;
+    businessMemberAssetsGet)
+    operation="businessMemberAssetsGet"
+    ;;
+    businessMembersAssetAccessDelete)
+    operation="businessMembersAssetAccessDelete"
+    ;;
+    businessMembersAssetAccessUpdate)
+    operation="businessMembersAssetAccessUpdate"
+    ;;
+    businessPartnerAssetAccessGet)
+    operation="businessPartnerAssetAccessGet"
+    ;;
+    deletePartnerAssetAccessHandlerImpl)
+    operation="deletePartnerAssetAccessHandlerImpl"
+    ;;
+    updatePartnerAssetAccessHandlerImpl)
+    operation="updatePartnerAssetAccessHandlerImpl"
+    ;;
+    assetAccessRequestsCreate)
+    operation="assetAccessRequestsCreate"
+    ;;
+    cancelInvitesOrRequests)
+    operation="cancelInvitesOrRequests"
+    ;;
+    createAssetInvites)
+    operation="createAssetInvites"
+    ;;
+    createMembershipOrPartnershipInvites)
+    operation="createMembershipOrPartnershipInvites"
+    ;;
+    getInvites)
+    operation="getInvites"
+    ;;
+    respondBusinessAccessInvites)
+    operation="respondBusinessAccessInvites"
+    ;;
+    deleteBusinessMembership)
+    operation="deleteBusinessMembership"
+    ;;
+    deleteBusinessPartners)
+    operation="deleteBusinessPartners"
+    ;;
+    getBusinessEmployers)
+    operation="getBusinessEmployers"
+    ;;
+    getBusinessMembers)
+    operation="getBusinessMembers"
+    ;;
+    getBusinessPartners)
+    operation="getBusinessPartners"
+    ;;
+    updateBusinessMemberships)
+    operation="updateBusinessMemberships"
+    ;;
     campaignTargetingAnalyticsGet)
     operation="campaignTargetingAnalyticsGet"
     ;;
@@ -15128,6 +20265,9 @@ case $key in
     campaignsUpdate)
     operation="campaignsUpdate"
     ;;
+    catalogsCreate)
+    operation="catalogsCreate"
+    ;;
     catalogsList)
     operation="catalogsList"
     ;;
@@ -15137,8 +20277,14 @@ case $key in
     catalogsProductGroupsCreate)
     operation="catalogsProductGroupsCreate"
     ;;
+    catalogsProductGroupsCreateMany)
+    operation="catalogsProductGroupsCreateMany"
+    ;;
     catalogsProductGroupsDelete)
     operation="catalogsProductGroupsDelete"
+    ;;
+    catalogsProductGroupsDeleteMany)
+    operation="catalogsProductGroupsDeleteMany"
     ;;
     catalogsProductGroupsGet)
     operation="catalogsProductGroupsGet"
@@ -15164,6 +20310,9 @@ case $key in
     feedsGet)
     operation="feedsGet"
     ;;
+    feedsIngest)
+    operation="feedsIngest"
+    ;;
     feedsList)
     operation="feedsList"
     ;;
@@ -15182,8 +20331,20 @@ case $key in
     itemsIssuesList)
     operation="itemsIssuesList"
     ;;
+    itemsPost)
+    operation="itemsPost"
+    ;;
     productsByProductGroupFilterList)
     operation="productsByProductGroupFilterList"
+    ;;
+    reportsCreate)
+    operation="reportsCreate"
+    ;;
+    reportsGet)
+    operation="reportsGet"
+    ;;
+    reportsStats)
+    operation="reportsStats"
     ;;
     eventsCreate)
     operation="eventsCreate"
@@ -15269,8 +20430,20 @@ case $key in
     leadFormTestCreate)
     operation="leadFormTestCreate"
     ;;
+    leadFormsCreate)
+    operation="leadFormsCreate"
+    ;;
     leadFormsList)
     operation="leadFormsList"
+    ;;
+    leadFormsUpdate)
+    operation="leadFormsUpdate"
+    ;;
+    leadsExportCreate)
+    operation="leadsExportCreate"
+    ;;
+    leadsExportGet)
+    operation="leadsExportGet"
     ;;
     mediaCreate)
     operation="mediaCreate"
@@ -15289,6 +20462,9 @@ case $key in
     ;;
     orderLinesList)
     operation="orderLinesList"
+    ;;
+    multiPinsAnalytics)
+    operation="multiPinsAnalytics"
     ;;
     pinsAnalytics)
     operation="pinsAnalytics"
@@ -15326,9 +20502,6 @@ case $key in
     productGroupsAnalytics)
     operation="productGroupsAnalytics"
     ;;
-    adAccountsCatalogsProductGroupsList)
-    operation="adAccountsCatalogsProductGroupsList"
-    ;;
     adAccountCountriesGet)
     operation="adAccountCountriesGet"
     ;;
@@ -15355,6 +20528,15 @@ case $key in
     ;;
     searchUserPinsList)
     operation="searchUserPinsList"
+    ;;
+    targetingTemplateCreate)
+    operation="targetingTemplateCreate"
+    ;;
+    targetingTemplateList)
+    operation="targetingTemplateList"
+    ;;
+    targetingTemplateUpdate)
+    operation="targetingTemplateUpdate"
     ;;
     termsRelatedList)
     operation="termsRelatedList"
@@ -15575,11 +20757,38 @@ case $operation in
     adsUpdate)
     call_adsUpdate
     ;;
+    advancedAuctionItemsGetPost)
+    call_advancedAuctionItemsGetPost
+    ;;
+    advancedAuctionItemsSubmitPost)
+    call_advancedAuctionItemsSubmitPost
+    ;;
     audienceInsightsGet)
     call_audienceInsightsGet
     ;;
     audienceInsightsScopeAndTypeGet)
     call_audienceInsightsScopeAndTypeGet
+    ;;
+    adAccountsAudiencesSharedAccountsList)
+    call_adAccountsAudiencesSharedAccountsList
+    ;;
+    businessAccountAudiencesSharedAccountsList)
+    call_businessAccountAudiencesSharedAccountsList
+    ;;
+    sharedAudiencesForBusinessList)
+    call_sharedAudiencesForBusinessList
+    ;;
+    updateAdAccountToAdAccountSharedAudience)
+    call_updateAdAccountToAdAccountSharedAudience
+    ;;
+    updateAdAccountToBusinessSharedAudience)
+    call_updateAdAccountToBusinessSharedAudience
+    ;;
+    updateBusinessToAdAccountSharedAudience)
+    call_updateBusinessToAdAccountSharedAudience
+    ;;
+    updateBusinessToBusinessSharedAudience)
+    call_updateBusinessToBusinessSharedAudience
     ;;
     audiencesCreate)
     call_audiencesCreate
@@ -15665,6 +20874,78 @@ case $operation in
     bulkUpsertCreate)
     call_bulkUpsertCreate
     ;;
+    assetGroupCreate)
+    call_assetGroupCreate
+    ;;
+    assetGroupDelete)
+    call_assetGroupDelete
+    ;;
+    assetGroupUpdate)
+    call_assetGroupUpdate
+    ;;
+    businessAssetMembersGet)
+    call_businessAssetMembersGet
+    ;;
+    businessAssetPartnersGet)
+    call_businessAssetPartnersGet
+    ;;
+    businessAssetsGet)
+    call_businessAssetsGet
+    ;;
+    businessMemberAssetsGet)
+    call_businessMemberAssetsGet
+    ;;
+    businessMembersAssetAccessDelete)
+    call_businessMembersAssetAccessDelete
+    ;;
+    businessMembersAssetAccessUpdate)
+    call_businessMembersAssetAccessUpdate
+    ;;
+    businessPartnerAssetAccessGet)
+    call_businessPartnerAssetAccessGet
+    ;;
+    deletePartnerAssetAccessHandlerImpl)
+    call_deletePartnerAssetAccessHandlerImpl
+    ;;
+    updatePartnerAssetAccessHandlerImpl)
+    call_updatePartnerAssetAccessHandlerImpl
+    ;;
+    assetAccessRequestsCreate)
+    call_assetAccessRequestsCreate
+    ;;
+    cancelInvitesOrRequests)
+    call_cancelInvitesOrRequests
+    ;;
+    createAssetInvites)
+    call_createAssetInvites
+    ;;
+    createMembershipOrPartnershipInvites)
+    call_createMembershipOrPartnershipInvites
+    ;;
+    getInvites)
+    call_getInvites
+    ;;
+    respondBusinessAccessInvites)
+    call_respondBusinessAccessInvites
+    ;;
+    deleteBusinessMembership)
+    call_deleteBusinessMembership
+    ;;
+    deleteBusinessPartners)
+    call_deleteBusinessPartners
+    ;;
+    getBusinessEmployers)
+    call_getBusinessEmployers
+    ;;
+    getBusinessMembers)
+    call_getBusinessMembers
+    ;;
+    getBusinessPartners)
+    call_getBusinessPartners
+    ;;
+    updateBusinessMemberships)
+    call_updateBusinessMemberships
+    ;;
     campaignTargetingAnalyticsGet)
     call_campaignTargetingAnalyticsGet
     ;;
@@ -15683,6 +20964,9 @@ case $operation in
     campaignsUpdate)
     call_campaignsUpdate
     ;;
+    catalogsCreate)
+    call_catalogsCreate
+    ;;
     catalogsList)
     call_catalogsList
     ;;
@@ -15692,8 +20976,14 @@ case $operation in
     catalogsProductGroupsCreate)
     call_catalogsProductGroupsCreate
     ;;
+    catalogsProductGroupsCreateMany)
+    call_catalogsProductGroupsCreateMany
+    ;;
     catalogsProductGroupsDelete)
     call_catalogsProductGroupsDelete
+    ;;
+    catalogsProductGroupsDeleteMany)
+    call_catalogsProductGroupsDeleteMany
     ;;
     catalogsProductGroupsGet)
     call_catalogsProductGroupsGet
@@ -15719,6 +21009,9 @@ case $operation in
     feedsGet)
     call_feedsGet
     ;;
+    feedsIngest)
+    call_feedsIngest
+    ;;
     feedsList)
     call_feedsList
     ;;
@@ -15737,8 +21030,20 @@ case $operation in
     itemsIssuesList)
     call_itemsIssuesList
     ;;
+    itemsPost)
+    call_itemsPost
+    ;;
     productsByProductGroupFilterList)
     call_productsByProductGroupFilterList
+    ;;
+    reportsCreate)
+    call_reportsCreate
+    ;;
+    reportsGet)
+    call_reportsGet
+    ;;
+    reportsStats)
+    call_reportsStats
     ;;
     eventsCreate)
     call_eventsCreate
@@ -15824,8 +21129,20 @@ case $operation in
     leadFormTestCreate)
     call_leadFormTestCreate
     ;;
+    leadFormsCreate)
+    call_leadFormsCreate
+    ;;
     leadFormsList)
     call_leadFormsList
+    ;;
+    leadFormsUpdate)
+    call_leadFormsUpdate
+    ;;
+    leadsExportCreate)
+    call_leadsExportCreate
+    ;;
+    leadsExportGet)
+    call_leadsExportGet
     ;;
     mediaCreate)
     call_mediaCreate
@@ -15844,6 +21161,9 @@ case $operation in
     ;;
     orderLinesList)
     call_orderLinesList
+    ;;
+    multiPinsAnalytics)
+    call_multiPinsAnalytics
     ;;
     pinsAnalytics)
     call_pinsAnalytics
@@ -15881,9 +21201,6 @@ case $operation in
     productGroupsAnalytics)
     call_productGroupsAnalytics
     ;;
-    adAccountsCatalogsProductGroupsList)
-    call_adAccountsCatalogsProductGroupsList
-    ;;
     adAccountCountriesGet)
     call_adAccountCountriesGet
     ;;
@@ -15910,6 +21227,15 @@ case $operation in
     ;;
     searchUserPinsList)
     call_searchUserPinsList
+    ;;
+    targetingTemplateCreate)
+    call_targetingTemplateCreate
+    ;;
+    targetingTemplateList)
+    call_targetingTemplateList
+    ;;
+    targetingTemplateUpdate)
+    call_targetingTemplateUpdate
     ;;
     termsRelatedList)
     call_termsRelatedList

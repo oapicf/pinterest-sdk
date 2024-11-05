@@ -52,5 +52,8 @@ data class CatalogsHotelAddress (
     @Json(name = "postal_code")
     val postalCode: kotlin.String? = null
 
-)
+) {
+
+
+}
 

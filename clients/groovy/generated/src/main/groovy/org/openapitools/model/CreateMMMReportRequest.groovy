@@ -72,5 +72,5 @@ class CreateMMMReportRequest {
     /* Metric and entity columns */
     List<MMMReportingColumn> columns = new ArrayList<>()
     /* A List of countries for filtering */
-    List<TargetingAdvertiserCountry> countries
+    List<TargetingAdvertiserCountry> countries = new ArrayList<>()
 }

@@ -151,7 +151,7 @@ test_that("product_item_ids", {
 
 test_that("targeting_types", {
   # tests for the property `targeting_types` (array[AdsAnalyticsTargetingType])
-  # List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;.
+  # List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`targeting_types`, "EXPECTED_RESULT")
@@ -187,4 +187,28 @@ test_that("report_format", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`report_format`, "EXPECTED_RESULT")
+})
+
+test_that("primary_sort", {
+  # tests for the property `primary_sort` (character)
+  # Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`primary_sort`, "EXPECTED_RESULT")
+})
+
+test_that("start_hour", {
+  # tests for the property `start_hour` (integer)
+  # Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`start_hour`, "EXPECTED_RESULT")
+})
+
+test_that("end_hour", {
+  # tests for the property `end_hour` (integer)
+  # Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`end_hour`, "EXPECTED_RESULT")
 })

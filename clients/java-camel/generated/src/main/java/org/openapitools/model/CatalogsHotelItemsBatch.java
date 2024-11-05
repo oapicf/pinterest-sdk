@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemsBatch", description = "Object describing the catalogs hotel items batch")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
 
   private String batchId;
@@ -49,7 +49,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   private CatalogsType catalogType;
 
   @Valid
-  private List<@Valid HotelProcessingRecord> items;
+  private List<@Valid HotelProcessingRecord> items = new ArrayList<>();
 
   public CatalogsHotelItemsBatch() {
     super();
@@ -70,7 +70,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   /**
    * Id of the catalogs items batch
    * @return batchId
-  */
+   */
   
   @Schema(name = "batch_id", example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", description = "Id of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("batch_id")
@@ -88,11 +88,11 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   }
 
   /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    * @return createdTime
-  */
+   */
   @Valid 
-  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", description = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
   public Date getCreatedTime() {
     return createdTime;
@@ -108,11 +108,11 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   }
 
   /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    * @return completedTime
-  */
+   */
   @Valid 
-  @Schema(name = "completed_time", accessMode = Schema.AccessMode.READ_ONLY, example = "2022-03-10T15:37:10Z", description = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "completed_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completed_time")
   public JsonNullable<Date> getCompletedTime() {
     return completedTime;
@@ -130,7 +130,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -150,7 +150,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -178,7 +178,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   /**
    * Array with the catalogs items processing records part of the catalogs items batch
    * @return items
-  */
+   */
   @Valid 
   @Schema(name = "items", description = "Array with the catalogs items processing records part of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")

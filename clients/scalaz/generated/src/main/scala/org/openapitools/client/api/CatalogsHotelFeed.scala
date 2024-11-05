@@ -13,9 +13,9 @@ import java.time.OffsetDateTime
 import CatalogsHotelFeed._
 
 case class CatalogsHotelFeed (
-  createdAt: Option[OffsetDateTime],
-id: Option[String],
-updatedAt: Option[OffsetDateTime],
+  createdAt: OffsetDateTime,
+id: String,
+updatedAt: OffsetDateTime,
 /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
   name: String,
 format: CatalogsFormat,

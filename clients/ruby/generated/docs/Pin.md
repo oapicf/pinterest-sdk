@@ -14,12 +14,12 @@
 | **creative_type** | [**CreativeType**](CreativeType.md) |  | [optional][readonly] |
 | **board_id** | **String** | The board to which this Pin belongs. | [optional] |
 | **board_section_id** | **String** | The board section to which this Pin belongs. | [optional] |
-| **board_owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] |
+| **board_owner** | [**BoardOwner**](BoardOwner.md) |  | [optional][readonly] |
 | **is_owner** | **Boolean** | Whether the \&quot;operation user_account\&quot; is the Pin owner. | [optional][readonly] |
-| **media** | [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] |
+| **media** | [**PinMedia**](PinMedia.md) |  | [optional][readonly] |
 | **media_source** | [**PinMediaSource**](PinMediaSource.md) |  | [optional] |
 | **parent_pin_id** | **String** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] |
-| **is_standard** | **Boolean** | Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/content/update/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information. | [optional] |
+| **is_standard** | **Boolean** | Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information. | [optional] |
 | **has_been_promoted** | **Boolean** | Whether the Pin has been promoted or not. | [optional][readonly] |
 | **note** | **String** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] |
 | **pin_metrics** | **Object** | Pin metrics with associated time intervals if any. | [optional] |
@@ -48,7 +48,7 @@ instance = PinterestSdkClient::Pin.new(
   is_standard: null,
   has_been_promoted: null,
   note: null,
-  pin_metrics: {&quot;pin_metrics&quot;:[{&quot;90d&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3},&quot;all_time&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3,&quot;reaction&quot;:10,&quot;comment&quot;:2}},null]}
+  pin_metrics: {&quot;90d&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3},&quot;lifetime_metrics&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3,&quot;reaction&quot;:10,&quot;comment&quot;:2}}
 )
 ```
 

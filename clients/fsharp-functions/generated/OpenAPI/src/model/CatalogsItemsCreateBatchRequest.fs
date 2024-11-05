@@ -4,9 +4,9 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.BatchOperation
+open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.Country
 open OpenAPI.Model.ItemCreateBatchRecord
-open OpenAPI.Model.Language
 
 module CatalogsItemsCreateBatchRequest =
 
@@ -17,7 +17,7 @@ module CatalogsItemsCreateBatchRequest =
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "language")>]
-    Language : Language;
+    Language : CatalogsItemsRequestLanguage;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : BatchOperation;
     [<JsonProperty(PropertyName = "items")>]

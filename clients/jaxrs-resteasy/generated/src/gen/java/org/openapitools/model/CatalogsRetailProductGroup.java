@@ -14,9 +14,8 @@ import org.openapitools.model.CatalogsProductGroupType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailProductGroup   {
   
 
@@ -48,26 +47,10 @@ public class CatalogsRetailProductGroup   {
   private CatalogsProductGroupStatus status;
   private Integer createdAt;
   private Integer updatedAt;
-
-  /**
-   * Gets or Sets feedId
-   */
-  public enum FeedIdEnum {
-    NULL("null");
-    private String value;
-
-    FeedIdEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  private FeedIdEnum feedId;
+  private String catalogId;
+  private String feedId;
+  private String country;
+  private String locale;
 
   /**
    **/
@@ -201,16 +184,55 @@ public class CatalogsRetailProductGroup   {
   }
 
   /**
+   * Catalog id pertaining to the retail product group.
    **/
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the retail product group.")
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * id of the catalogs feed belonging to this catalog product group
+   **/
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
   @JsonProperty("feed_id")
   @NotNull
-  public FeedIdEnum getFeedId() {
+ @Pattern(regexp="^\\d+$")  public String getFeedId() {
     return feedId;
   }
-  public void setFeedId(FeedIdEnum feedId) {
+  public void setFeedId(String feedId) {
     this.feedId = feedId;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
+  }
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("locale")
+  public String getLocale() {
+    return locale;
+  }
+  public void setLocale(String locale) {
+    this.locale = locale;
   }
 
 
@@ -233,12 +255,15 @@ public class CatalogsRetailProductGroup   {
         Objects.equals(this.status, catalogsRetailProductGroup.status) &&
         Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
         Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt) &&
-        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId);
+        Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
+        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+        Objects.equals(this.country, catalogsRetailProductGroup.country) &&
+        Objects.equals(this.locale, catalogsRetailProductGroup.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, feedId);
+    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
   }
 
   @Override
@@ -256,7 +281,10 @@ public class CatalogsRetailProductGroup   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,12 +28,13 @@ public struct CampaignResponse: Codable, JSONEncodable, Hashable {
     public var dailySpendCap: Int?
     /** Order line ID that appears on the invoice. */
     public var orderLineId: String?
-    public var trackingUrls: AdCommonTrackingUrls?
+    public var trackingUrls: TrackingUrls?
     /** Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     public var startTime: Int?
     /** Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     public var endTime: Int?
-    public var summaryStatus: CampaignSummaryStatus?
+    /** Determine if a campaign has flexible daily budgets setup. */
+    public var isFlexibleDailyBudgets: Bool?
     public var objectiveType: ObjectiveType?
     /** Campaign creation time. Unix timestamp in seconds. */
     public var createdTime: Int?
@@ -41,12 +42,11 @@ public struct CampaignResponse: Codable, JSONEncodable, Hashable {
     public var updatedTime: Int?
     /** Always \"campaign\". */
     public var type: String?
-    /** Determines if a campaign has flexible daily budgets setup. */
-    public var isFlexibleDailyBudgets: Bool?
     /** Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. */
     public var isCampaignBudgetOptimization: Bool?
+    public var summaryStatus: CampaignSummaryStatus?
 
-    public init(id: String? = nil, adAccountId: String? = nil, name: String? = nil, status: EntityStatus? = nil, lifetimeSpendCap: Int? = nil, dailySpendCap: Int? = nil, orderLineId: String? = nil, trackingUrls: AdCommonTrackingUrls? = nil, startTime: Int? = nil, endTime: Int? = nil, summaryStatus: CampaignSummaryStatus? = nil, objectiveType: ObjectiveType? = nil, createdTime: Int? = nil, updatedTime: Int? = nil, type: String? = nil, isFlexibleDailyBudgets: Bool? = nil, isCampaignBudgetOptimization: Bool? = nil) {
+    public init(id: String? = nil, adAccountId: String? = nil, name: String? = nil, status: EntityStatus? = nil, lifetimeSpendCap: Int? = nil, dailySpendCap: Int? = nil, orderLineId: String? = nil, trackingUrls: TrackingUrls? = nil, startTime: Int? = nil, endTime: Int? = nil, isFlexibleDailyBudgets: Bool? = nil, objectiveType: ObjectiveType? = nil, createdTime: Int? = nil, updatedTime: Int? = nil, type: String? = nil, isCampaignBudgetOptimization: Bool? = nil, summaryStatus: CampaignSummaryStatus? = nil) {
         self.id = id
         self.adAccountId = adAccountId
         self.name = name
@@ -57,13 +57,13 @@ public struct CampaignResponse: Codable, JSONEncodable, Hashable {
         self.trackingUrls = trackingUrls
         self.startTime = startTime
         self.endTime = endTime
-        self.summaryStatus = summaryStatus
+        self.isFlexibleDailyBudgets = isFlexibleDailyBudgets
         self.objectiveType = objectiveType
         self.createdTime = createdTime
         self.updatedTime = updatedTime
         self.type = type
-        self.isFlexibleDailyBudgets = isFlexibleDailyBudgets
         self.isCampaignBudgetOptimization = isCampaignBudgetOptimization
+        self.summaryStatus = summaryStatus
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -77,13 +77,13 @@ public struct CampaignResponse: Codable, JSONEncodable, Hashable {
         case trackingUrls = "tracking_urls"
         case startTime = "start_time"
         case endTime = "end_time"
-        case summaryStatus = "summary_status"
+        case isFlexibleDailyBudgets = "is_flexible_daily_budgets"
         case objectiveType = "objective_type"
         case createdTime = "created_time"
         case updatedTime = "updated_time"
         case type
-        case isFlexibleDailyBudgets = "is_flexible_daily_budgets"
         case isCampaignBudgetOptimization = "is_campaign_budget_optimization"
+        case summaryStatus = "summary_status"
     }
 
     // Encodable protocol methods
@@ -100,13 +100,13 @@ public struct CampaignResponse: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
         try container.encodeIfPresent(startTime, forKey: .startTime)
         try container.encodeIfPresent(endTime, forKey: .endTime)
-        try container.encodeIfPresent(summaryStatus, forKey: .summaryStatus)
+        try container.encodeIfPresent(isFlexibleDailyBudgets, forKey: .isFlexibleDailyBudgets)
         try container.encodeIfPresent(objectiveType, forKey: .objectiveType)
         try container.encodeIfPresent(createdTime, forKey: .createdTime)
         try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
         try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(isFlexibleDailyBudgets, forKey: .isFlexibleDailyBudgets)
         try container.encodeIfPresent(isCampaignBudgetOptimization, forKey: .isCampaignBudgetOptimization)
+        try container.encodeIfPresent(summaryStatus, forKey: .summaryStatus)
     }
 }
 

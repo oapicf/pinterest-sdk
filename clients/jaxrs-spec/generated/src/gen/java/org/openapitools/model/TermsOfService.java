@@ -16,12 +16,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TermsOfService")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TermsOfService   {
-  private @Valid String id;
-  private @Valid String html;
-  private @Valid Boolean hasAccepted;
-  private @Valid String adAccountId;
+  private String id;
+  private String html;
+  private Boolean hasAccepted;
+  private String adAccountId;
 
   /**
    * The ID of the terms of service

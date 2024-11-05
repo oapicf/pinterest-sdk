@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,13 +13,22 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // CatalogsVerticalFeedsCreateRequest - Request object for creating a feed.
 type CatalogsVerticalFeedsCreateRequest struct {
+	CatalogsCreativeAssetsFeedsCreateRequest *CatalogsCreativeAssetsFeedsCreateRequest
 	CatalogsHotelFeedsCreateRequest *CatalogsHotelFeedsCreateRequest
 	CatalogsRetailFeedsCreateRequest *CatalogsRetailFeedsCreateRequest
+}
+
+// CatalogsCreativeAssetsFeedsCreateRequestAsCatalogsVerticalFeedsCreateRequest is a convenience function that returns CatalogsCreativeAssetsFeedsCreateRequest wrapped in CatalogsVerticalFeedsCreateRequest
+func CatalogsCreativeAssetsFeedsCreateRequestAsCatalogsVerticalFeedsCreateRequest(v *CatalogsCreativeAssetsFeedsCreateRequest) CatalogsVerticalFeedsCreateRequest {
+	return CatalogsVerticalFeedsCreateRequest{
+		CatalogsCreativeAssetsFeedsCreateRequest: v,
+	}
 }
 
 // CatalogsHotelFeedsCreateRequestAsCatalogsVerticalFeedsCreateRequest is a convenience function that returns CatalogsHotelFeedsCreateRequest wrapped in CatalogsVerticalFeedsCreateRequest
@@ -41,6 +50,23 @@ func CatalogsRetailFeedsCreateRequestAsCatalogsVerticalFeedsCreateRequest(v *Cat
 func (dst *CatalogsVerticalFeedsCreateRequest) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsFeedsCreateRequest
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsFeedsCreateRequest)
+	if err == nil {
+		jsonCatalogsCreativeAssetsFeedsCreateRequest, _ := json.Marshal(dst.CatalogsCreativeAssetsFeedsCreateRequest)
+		if string(jsonCatalogsCreativeAssetsFeedsCreateRequest) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsFeedsCreateRequest = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsFeedsCreateRequest); err != nil {
+				dst.CatalogsCreativeAssetsFeedsCreateRequest = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsCreativeAssetsFeedsCreateRequest = nil
+	}
+
 	// try to unmarshal data into CatalogsHotelFeedsCreateRequest
 	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelFeedsCreateRequest)
 	if err == nil {
@@ -48,7 +74,11 @@ func (dst *CatalogsVerticalFeedsCreateRequest) UnmarshalJSON(data []byte) error 
 		if string(jsonCatalogsHotelFeedsCreateRequest) == "{}" { // empty struct
 			dst.CatalogsHotelFeedsCreateRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsHotelFeedsCreateRequest); err != nil {
+				dst.CatalogsHotelFeedsCreateRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsHotelFeedsCreateRequest = nil
@@ -61,7 +91,11 @@ func (dst *CatalogsVerticalFeedsCreateRequest) UnmarshalJSON(data []byte) error 
 		if string(jsonCatalogsRetailFeedsCreateRequest) == "{}" { // empty struct
 			dst.CatalogsRetailFeedsCreateRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsRetailFeedsCreateRequest); err != nil {
+				dst.CatalogsRetailFeedsCreateRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsRetailFeedsCreateRequest = nil
@@ -69,6 +103,7 @@ func (dst *CatalogsVerticalFeedsCreateRequest) UnmarshalJSON(data []byte) error 
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.CatalogsCreativeAssetsFeedsCreateRequest = nil
 		dst.CatalogsHotelFeedsCreateRequest = nil
 		dst.CatalogsRetailFeedsCreateRequest = nil
 
@@ -82,6 +117,10 @@ func (dst *CatalogsVerticalFeedsCreateRequest) UnmarshalJSON(data []byte) error 
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsVerticalFeedsCreateRequest) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsFeedsCreateRequest != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsFeedsCreateRequest)
+	}
+
 	if src.CatalogsHotelFeedsCreateRequest != nil {
 		return json.Marshal(&src.CatalogsHotelFeedsCreateRequest)
 	}
@@ -98,6 +137,10 @@ func (obj *CatalogsVerticalFeedsCreateRequest) GetActualInstance() (interface{})
 	if obj == nil {
 		return nil
 	}
+	if obj.CatalogsCreativeAssetsFeedsCreateRequest != nil {
+		return obj.CatalogsCreativeAssetsFeedsCreateRequest
+	}
+
 	if obj.CatalogsHotelFeedsCreateRequest != nil {
 		return obj.CatalogsHotelFeedsCreateRequest
 	}

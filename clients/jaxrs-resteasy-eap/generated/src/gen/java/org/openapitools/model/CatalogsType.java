@@ -8,5 +8,6 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum CatalogsType {
   RETAIL,
-  HOTEL;
+  HOTEL,
+  CREATIVE_ASSETS;
 }

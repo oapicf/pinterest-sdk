@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,9 +25,9 @@ type CreateMMMReportRequest struct {
 	// Name of the Marketing Mix Modeling (MMM) report
 	ReportName string `json:"report_name"`
 	// Metric report start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date"`
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// Metric report end date (UTC). Format: YYYY-MM-DD
-	EndDate string `json:"end_date"`
+	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
 	Granularity string `json:"granularity"`
 	// Level of the report

@@ -5,32 +5,30 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.server.api.model.AdCommonTrackingUrls;
-import org.openapitools.server.api.model.CampaignSummaryStatus;
 import org.openapitools.server.api.model.EntityStatus;
+import org.openapitools.server.api.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CampaignCreateCommon   {
   
   private String adAccountId;
   private String name;
-  private EntityStatus status = "ACTIVE";
+  private EntityStatus status;
   private Integer lifetimeSpendCap;
   private Integer dailySpendCap;
   private String orderLineId;
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private Integer startTime;
   private Integer endTime;
-  private CampaignSummaryStatus summaryStatus;
-  private Boolean isFlexibleDailyBudgets = false;
+  private Boolean isFlexibleDailyBudgets;
   private Integer defaultAdGroupBudgetInMicroCurrency;
-  private Boolean isAutomatedCampaign = false;
+  private Boolean isAutomatedCampaign;
 
   public CampaignCreateCommon () {
 
   }
 
-  public CampaignCreateCommon (String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, AdCommonTrackingUrls trackingUrls, Integer startTime, Integer endTime, CampaignSummaryStatus summaryStatus, Boolean isFlexibleDailyBudgets, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isAutomatedCampaign) {
+  public CampaignCreateCommon (String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, TrackingUrls trackingUrls, Integer startTime, Integer endTime, Boolean isFlexibleDailyBudgets, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isAutomatedCampaign) {
     this.adAccountId = adAccountId;
     this.name = name;
     this.status = status;
@@ -40,7 +38,6 @@ public class CampaignCreateCommon   {
     this.trackingUrls = trackingUrls;
     this.startTime = startTime;
     this.endTime = endTime;
-    this.summaryStatus = summaryStatus;
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     this.isAutomatedCampaign = isAutomatedCampaign;
@@ -102,10 +99,10 @@ public class CampaignCreateCommon   {
 
     
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -125,15 +122,6 @@ public class CampaignCreateCommon   {
   }
   public void setEndTime(Integer endTime) {
     this.endTime = endTime;
-  }
-
-    
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
   }
 
     
@@ -182,7 +170,6 @@ public class CampaignCreateCommon   {
         Objects.equals(trackingUrls, campaignCreateCommon.trackingUrls) &&
         Objects.equals(startTime, campaignCreateCommon.startTime) &&
         Objects.equals(endTime, campaignCreateCommon.endTime) &&
-        Objects.equals(summaryStatus, campaignCreateCommon.summaryStatus) &&
         Objects.equals(isFlexibleDailyBudgets, campaignCreateCommon.isFlexibleDailyBudgets) &&
         Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignCreateCommon.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(isAutomatedCampaign, campaignCreateCommon.isAutomatedCampaign);
@@ -190,7 +177,7 @@ public class CampaignCreateCommon   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
   }
 
   @Override
@@ -207,7 +194,6 @@ public class CampaignCreateCommon   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

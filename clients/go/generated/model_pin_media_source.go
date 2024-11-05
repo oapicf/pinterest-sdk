@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -80,7 +81,11 @@ func (dst *PinMediaSource) UnmarshalJSON(data []byte) error {
 		if string(jsonPinMediaSourceImageBase64) == "{}" { // empty struct
 			dst.PinMediaSourceImageBase64 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.PinMediaSourceImageBase64); err != nil {
+				dst.PinMediaSourceImageBase64 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.PinMediaSourceImageBase64 = nil
@@ -93,7 +98,11 @@ func (dst *PinMediaSource) UnmarshalJSON(data []byte) error {
 		if string(jsonPinMediaSourceImageURL) == "{}" { // empty struct
 			dst.PinMediaSourceImageURL = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.PinMediaSourceImageURL); err != nil {
+				dst.PinMediaSourceImageURL = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.PinMediaSourceImageURL = nil
@@ -106,7 +115,11 @@ func (dst *PinMediaSource) UnmarshalJSON(data []byte) error {
 		if string(jsonPinMediaSourceImagesBase64) == "{}" { // empty struct
 			dst.PinMediaSourceImagesBase64 = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.PinMediaSourceImagesBase64); err != nil {
+				dst.PinMediaSourceImagesBase64 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.PinMediaSourceImagesBase64 = nil
@@ -119,7 +132,11 @@ func (dst *PinMediaSource) UnmarshalJSON(data []byte) error {
 		if string(jsonPinMediaSourceImagesURL) == "{}" { // empty struct
 			dst.PinMediaSourceImagesURL = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.PinMediaSourceImagesURL); err != nil {
+				dst.PinMediaSourceImagesURL = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.PinMediaSourceImagesURL = nil
@@ -132,7 +149,11 @@ func (dst *PinMediaSource) UnmarshalJSON(data []byte) error {
 		if string(jsonPinMediaSourcePinURL) == "{}" { // empty struct
 			dst.PinMediaSourcePinURL = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.PinMediaSourcePinURL); err != nil {
+				dst.PinMediaSourcePinURL = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.PinMediaSourcePinURL = nil
@@ -145,7 +166,11 @@ func (dst *PinMediaSource) UnmarshalJSON(data []byte) error {
 		if string(jsonPinMediaSourceVideoID) == "{}" { // empty struct
 			dst.PinMediaSourceVideoID = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.PinMediaSourceVideoID); err != nil {
+				dst.PinMediaSourceVideoID = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.PinMediaSourceVideoID = nil

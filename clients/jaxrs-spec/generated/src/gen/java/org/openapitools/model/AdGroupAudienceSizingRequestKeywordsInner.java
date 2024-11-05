@@ -17,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupAudienceSizingRequest_keywords_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingRequestKeywordsInner   {
-  private @Valid MatchTypeResponse matchType;
-  private @Valid String value;
+  private MatchTypeResponse matchType;
+  private String value;
 
   /**
    **/
@@ -32,8 +32,7 @@ public class AdGroupAudienceSizingRequestKeywordsInner   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("match_type")
-  @NotNull
-  public MatchTypeResponse getMatchType() {
+  @NotNull public MatchTypeResponse getMatchType() {
     return matchType;
   }
 
@@ -53,8 +52,7 @@ public class AdGroupAudienceSizingRequestKeywordsInner   {
   
   @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
   @JsonProperty("value")
-  @NotNull
-  public String getValue() {
+  @NotNull public String getValue() {
     return value;
   }
 

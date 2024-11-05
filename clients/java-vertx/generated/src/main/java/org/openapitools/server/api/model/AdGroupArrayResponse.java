@@ -11,7 +11,7 @@ import org.openapitools.server.api.model.AdGroupArrayResponseElement;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdGroupArrayResponse   {
   
-  private List<AdGroupArrayResponseElement> items;
+  private List<AdGroupArrayResponseElement> items = new ArrayList<>();
 
   public AdGroupArrayResponse () {
 

@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsFeedsUpdateRequest = require('../models/CatalogsCreativeAssetsFeedsUpdateRequest');
 const CatalogsFeedCredentials = require('../models/CatalogsFeedCredentials');
 const CatalogsFeedProcessingSchedule = require('../models/CatalogsFeedProcessingSchedule');
 const CatalogsFormat = require('../models/CatalogsFormat');

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,21 +20,21 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionResponseElement;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionResponseItem   {
   
-  private ProductGroupPromotion data;
+  private ProductGroupPromotionResponseElement data;
   private List<Exception> exceptions;
 
   /**
    */
-  public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
+  public ProductGroupPromotionResponseItem data(ProductGroupPromotionResponseElement data) {
     this.data = data;
     return this;
   }
@@ -42,10 +42,10 @@ public class ProductGroupPromotionResponseItem   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public ProductGroupPromotion getData() {
+  public ProductGroupPromotionResponseElement getData() {
     return data;
   }
-  public void setData(ProductGroupPromotion data) {
+  public void setData(ProductGroupPromotionResponseElement data) {
     this.data = data;
   }
 

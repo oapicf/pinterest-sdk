@@ -27,19 +27,20 @@ AdGroupUpdateRequest::__init()
 	//status = std::string();
 	//budget_in_micro_currency = int(0);
 	//bid_in_micro_currency = int(0);
-	//optimization_goal_metadata = new AdGroupCommon_optimization_goal_metadata();
+	//optimization_goal_metadata = null;
 	//budget_type = std::string();
 	//start_time = int(0);
 	//end_time = int(0);
 	//targeting_spec = new TargetingSpec();
 	//lifetime_frequency_cap = int(0);
-	//tracking_urls = new AdGroupCommon_tracking_urls();
+	//tracking_urls = null;
 	//auto_targeting_enabled = bool(false);
 	//placement_group = std::string();
 	//pacing_delivery_type = std::string();
 	//campaign_id = std::string();
 	//billable_event = new ActionType();
 	//bid_strategy_type = std::string();
+	//new std::list()std::list> targeting_template_ids;
 	//id = std::string();
 }
 
@@ -131,6 +132,11 @@ AdGroupUpdateRequest::__cleanup()
 	//delete bid_strategy_type;
 	//bid_strategy_type = NULL;
 	//}
+	//if(targeting_template_ids != NULL) {
+	//targeting_template_ids.RemoveAll(true);
+	//delete targeting_template_ids;
+	//targeting_template_ids = NULL;
+	//}
 	//if(id != NULL) {
 	//
 	//delete id;
@@ -196,11 +202,11 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AdGroupCommon_optimization_goal_metadata")) {
-			jsonToValue(&optimization_goal_metadata, node, "AdGroupCommon_optimization_goal_metadata", "AdGroupCommon_optimization_goal_metadata");
+		if (isprimitive("OptimizationGoalMetadata")) {
+			jsonToValue(&optimization_goal_metadata, node, "OptimizationGoalMetadata", "OptimizationGoalMetadata");
 		} else {
 			
-			AdGroupCommon_optimization_goal_metadata* obj = static_cast<AdGroupCommon_optimization_goal_metadata*> (&optimization_goal_metadata);
+			OptimizationGoalMetadata* obj = static_cast<OptimizationGoalMetadata*> (&optimization_goal_metadata);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -271,11 +277,11 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AdGroupCommon_tracking_urls")) {
-			jsonToValue(&tracking_urls, node, "AdGroupCommon_tracking_urls", "AdGroupCommon_tracking_urls");
+		if (isprimitive("TrackingUrls")) {
+			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
 		} else {
 			
-			AdGroupCommon_tracking_urls* obj = static_cast<AdGroupCommon_tracking_urls*> (&tracking_urls);
+			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -355,6 +361,28 @@ AdGroupUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *targeting_template_idsKey = "targeting_template_ids";
+	node = json_object_get_member(pJsonObject, targeting_template_idsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			targeting_template_ids = new_list;
+		}
+		
+	}
 	const gchar *idKey = "id";
 	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
@@ -419,13 +447,13 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *bid_in_micro_currencyKey = "bid_in_micro_currency";
 	json_object_set_member(pJsonObject, bid_in_micro_currencyKey, node);
-	if (isprimitive("AdGroupCommon_optimization_goal_metadata")) {
-		AdGroupCommon_optimization_goal_metadata obj = getOptimizationGoalMetadata();
-		node = converttoJson(&obj, "AdGroupCommon_optimization_goal_metadata", "");
+	if (isprimitive("OptimizationGoalMetadata")) {
+		OptimizationGoalMetadata obj = getOptimizationGoalMetadata();
+		node = converttoJson(&obj, "OptimizationGoalMetadata", "");
 	}
 	else {
 		
-		AdGroupCommon_optimization_goal_metadata obj = static_cast<AdGroupCommon_optimization_goal_metadata> (getOptimizationGoalMetadata());
+		OptimizationGoalMetadata obj = static_cast<OptimizationGoalMetadata> (getOptimizationGoalMetadata());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -488,13 +516,13 @@ AdGroupUpdateRequest::toJson()
 	}
 	const gchar *lifetime_frequency_capKey = "lifetime_frequency_cap";
 	json_object_set_member(pJsonObject, lifetime_frequency_capKey, node);
-	if (isprimitive("AdGroupCommon_tracking_urls")) {
-		AdGroupCommon_tracking_urls obj = getTrackingUrls();
-		node = converttoJson(&obj, "AdGroupCommon_tracking_urls", "");
+	if (isprimitive("TrackingUrls")) {
+		TrackingUrls obj = getTrackingUrls();
+		node = converttoJson(&obj, "TrackingUrls", "");
 	}
 	else {
 		
-		AdGroupCommon_tracking_urls obj = static_cast<AdGroupCommon_tracking_urls> (getTrackingUrls());
+		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -572,6 +600,21 @@ AdGroupUpdateRequest::toJson()
 	const gchar *bid_strategy_typeKey = "bid_strategy_type";
 	json_object_set_member(pJsonObject, bid_strategy_typeKey, node);
 	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getTargetingTemplateIds());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getTargetingTemplateIds());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *targeting_template_idsKey = "targeting_template_ids";
+	json_object_set_member(pJsonObject, targeting_template_idsKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -636,14 +679,14 @@ AdGroupUpdateRequest::setBidInMicroCurrency(int  bid_in_micro_currency)
 	this->bid_in_micro_currency = bid_in_micro_currency;
 }
 
-AdGroupCommon_optimization_goal_metadata
+OptimizationGoalMetadata
 AdGroupUpdateRequest::getOptimizationGoalMetadata()
 {
 	return optimization_goal_metadata;
 }
 
 void
-AdGroupUpdateRequest::setOptimizationGoalMetadata(AdGroupCommon_optimization_goal_metadata  optimization_goal_metadata)
+AdGroupUpdateRequest::setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata)
 {
 	this->optimization_goal_metadata = optimization_goal_metadata;
 }
@@ -708,14 +751,14 @@ AdGroupUpdateRequest::setLifetimeFrequencyCap(int  lifetime_frequency_cap)
 	this->lifetime_frequency_cap = lifetime_frequency_cap;
 }
 
-AdGroupCommon_tracking_urls
+TrackingUrls
 AdGroupUpdateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdGroupUpdateRequest::setTrackingUrls(AdGroupCommon_tracking_urls  tracking_urls)
+AdGroupUpdateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -790,6 +833,18 @@ void
 AdGroupUpdateRequest::setBidStrategyType(std::string  bid_strategy_type)
 {
 	this->bid_strategy_type = bid_strategy_type;
+}
+
+std::list<std::string>
+AdGroupUpdateRequest::getTargetingTemplateIds()
+{
+	return targeting_template_ids;
+}
+
+void
+AdGroupUpdateRequest::setTargetingTemplateIds(std::list <std::string> targeting_template_ids)
+{
+	this->targeting_template_ids = targeting_template_ids;
 }
 
 std::string

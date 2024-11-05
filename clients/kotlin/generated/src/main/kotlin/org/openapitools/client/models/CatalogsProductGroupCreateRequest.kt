@@ -48,7 +48,11 @@ data class CatalogsProductGroupCreateRequest (
 
     /* boolean indicator of whether the product group is being featured or not */
     @Json(name = "is_featured")
+    @Deprecated(message = "This property is deprecated.")
     val isFeatured: kotlin.Boolean? = false
 
-)
+) {
+
+
+}
 

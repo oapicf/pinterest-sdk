@@ -13,32 +13,40 @@ import AnyCodable
 /** Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent. */
 public struct ConversionEventsUserData: Codable, JSONEncodable, Hashable {
 
-    /** Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. */
+    /** Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
     public var ph: [String]?
-    /** Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender. */
+    /** Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender. The string should be in the UTF-8 format. */
     public var ge: [String]?
-    /** Sha256 hashes of user's date of birthday, given as year, month, and day. */
+    /** Sha256 hashes of user's date of birthday, given as year, month, and day. The string should be in the UTF-8 format. */
     public var db: [String]?
-    /** Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. */
+    /** Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
     public var ln: [String]?
-    /** Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. */
+    /** Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
     public var fn: [String]?
-    /** Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). */
+    /** Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format. */
     public var ct: [String]?
-    /** Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing). */
+    /** Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing). The string should be in the UTF-8 format. */
     public var st: [String]?
-    /** Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing). */
+    /** Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing). The string should be in the UTF-8 format. */
     public var zp: [String]?
-    /** Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase. */
+    /** Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase. The string should be in the UTF-8 format. */
     public var country: [String]?
-    /** Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. */
+    /** Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
     public var externalId: [String]?
     /** The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. */
     public var clickId: String?
     /** A unique identifier of visitors' information defined by third party partners. e.g RampID */
     public var partnerId: String?
+    /** Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
+    public var em: [String]
+    /** Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
+    public var hashedMaids: [String]
+    /** The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. */
+    public var clientIpAddress: String
+    /** The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. */
+    public var clientUserAgent: String
 
-    public init(ph: [String]? = nil, ge: [String]? = nil, db: [String]? = nil, ln: [String]? = nil, fn: [String]? = nil, ct: [String]? = nil, st: [String]? = nil, zp: [String]? = nil, country: [String]? = nil, externalId: [String]? = nil, clickId: String? = nil, partnerId: String? = nil) {
+    public init(ph: [String]? = nil, ge: [String]? = nil, db: [String]? = nil, ln: [String]? = nil, fn: [String]? = nil, ct: [String]? = nil, st: [String]? = nil, zp: [String]? = nil, country: [String]? = nil, externalId: [String]? = nil, clickId: String? = nil, partnerId: String? = nil, em: [String], hashedMaids: [String], clientIpAddress: String, clientUserAgent: String) {
         self.ph = ph
         self.ge = ge
         self.db = db
@@ -51,6 +59,10 @@ public struct ConversionEventsUserData: Codable, JSONEncodable, Hashable {
         self.externalId = externalId
         self.clickId = clickId
         self.partnerId = partnerId
+        self.em = em
+        self.hashedMaids = hashedMaids
+        self.clientIpAddress = clientIpAddress
+        self.clientUserAgent = clientUserAgent
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -66,6 +78,10 @@ public struct ConversionEventsUserData: Codable, JSONEncodable, Hashable {
         case externalId = "external_id"
         case clickId = "click_id"
         case partnerId = "partner_id"
+        case em
+        case hashedMaids = "hashed_maids"
+        case clientIpAddress = "client_ip_address"
+        case clientUserAgent = "client_user_agent"
     }
 
     // Encodable protocol methods
@@ -84,6 +100,10 @@ public struct ConversionEventsUserData: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(externalId, forKey: .externalId)
         try container.encodeIfPresent(clickId, forKey: .clickId)
         try container.encodeIfPresent(partnerId, forKey: .partnerId)
+        try container.encode(em, forKey: .em)
+        try container.encode(hashedMaids, forKey: .hashedMaids)
+        try container.encode(clientIpAddress, forKey: .clientIpAddress)
+        try container.encode(clientUserAgent, forKey: .clientUserAgent)
     }
 }
 

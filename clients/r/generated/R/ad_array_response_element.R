@@ -17,15 +17,13 @@ AdArrayResponseElement <- R6::R6Class(
   public = list(
     `data` = NULL,
     `exceptions` = NULL,
-    #' Initialize a new AdArrayResponseElement class.
-    #'
+
     #' @description
     #' Initialize a new AdArrayResponseElement class.
     #'
     #' @param data data
     #' @param exceptions exceptions
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`data` = NULL, `exceptions` = NULL, ...) {
       if (!is.null(`data`)) {
         stopifnot(R6::is.R6(`data`))
@@ -36,13 +34,11 @@ AdArrayResponseElement <- R6::R6Class(
         self$`exceptions` <- `exceptions`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdArrayResponseElement in JSON format
-    #' @export
     toJSON = function() {
       AdArrayResponseElementObject <- list()
       if (!is.null(self$`data`)) {
@@ -55,14 +51,12 @@ AdArrayResponseElement <- R6::R6Class(
       }
       AdArrayResponseElementObject
     },
-    #' Deserialize JSON string into an instance of AdArrayResponseElement
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdArrayResponseElement
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdArrayResponseElement
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`data`)) {
@@ -77,13 +71,11 @@ AdArrayResponseElement <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdArrayResponseElement in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`data`)) {
@@ -106,67 +98,54 @@ AdArrayResponseElement <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdArrayResponseElement
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdArrayResponseElement
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdArrayResponseElement
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`data` <- AdResponse$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
       self$`exceptions` <- Exception$new()$fromJSON(jsonlite::toJSON(this_object$`exceptions`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to AdArrayResponseElement
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdArrayResponseElement and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdArrayResponseElement
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

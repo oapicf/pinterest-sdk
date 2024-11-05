@@ -113,7 +113,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -131,9 +130,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroups/analytics', response.json);
                     return results;
                 })
             },
@@ -164,10 +163,9 @@ module.exports = {
             perform: async (z, bundle) => {
                 const options = {
                     url: utils.replacePathParameters('https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing'),
-                    method: 'GET',
+                    method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -177,9 +175,9 @@ module.exports = {
                         ...AdGroupAudienceSizingRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroups/audienceSizing', response.json);
                     return results;
                 })
             },
@@ -191,7 +189,7 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'Create ad groups',
-            description: 'Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.',
+            description: 'Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.',
             hidden: false,
         },
         operation: {
@@ -217,7 +215,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -227,9 +224,9 @@ module.exports = {
                         ...AdGroupCreateRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroups/create', response.json);
                     return results;
                 })
             },
@@ -268,7 +265,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -277,9 +273,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroups/get', response.json);
                     return results;
                 })
             },
@@ -319,7 +315,7 @@ module.exports = {
                 }
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -351,7 +347,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -367,9 +362,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroups/list', response.json);
                     return results;
                 })
             },
@@ -407,7 +402,6 @@ module.exports = {
                     method: 'PATCH',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -417,9 +411,9 @@ module.exports = {
                         ...AdGroupUpdateRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroups/update', response.json);
                     return results;
                 })
             },
@@ -431,7 +425,7 @@ module.exports = {
         noun: 'ad_groups',
         display: {
             label: 'Get bid floors',
-            description: 'List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.',
+            description: 'List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt;  &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.',
             hidden: false,
         },
         operation: {
@@ -453,7 +447,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -463,9 +456,9 @@ module.exports = {
                         ...BidFloorRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroupsBidFloor/get', response.json);
                     return results;
                 })
             },
@@ -507,7 +500,7 @@ module.exports = {
                 },
                 {
                     key: 'targeting_types',
-                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.',
+                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.',
                     type: 'string',
                 }
                 {
@@ -575,7 +568,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -595,9 +587,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adGroupsTargetingAnalytics/get', response.json);
                     return results;
                 })
             },

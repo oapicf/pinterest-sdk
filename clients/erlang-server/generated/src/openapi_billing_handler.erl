@@ -1,524 +1,320 @@
-%% basic handler
 -module(openapi_billing_handler).
+-moduledoc """
+Exposes the following operation IDs:
+
+- `POST` to `/ad_accounts/:ad_account_id/ads_credit/redeem`, OperationId: `ads_credit/redeem`:
+Redeem ad credits.
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+
+- `GET` to `/ad_accounts/:ad_account_id/ads_credit/discounts`, OperationId: `ads_credits_discounts/get`:
+Get ads credit discounts.
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+
+- `GET` to `/ad_accounts/:ad_account_id/billing_profiles`, OperationId: `billing_profiles/get`:
+Get billing profiles.
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+
+- `GET` to `/ad_accounts/:ad_account_id/ssio/accounts`, OperationId: `ssio_accounts/get`:
+Get Salesforce account details including bill-to information..
+Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+
+- `POST` to `/ad_accounts/:ad_account_id/ssio/insertion_orders`, OperationId: `ssio_insertion_order/create`:
+Create insertion order through SSIO..
+Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+
+- `PATCH` to `/ad_accounts/:ad_account_id/ssio/insertion_orders`, OperationId: `ssio_insertion_order/edit`:
+Edit insertion order through SSIO..
+Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+
+- `GET` to `/ad_accounts/:ad_account_id/ssio/insertion_orders/status`, OperationId: `ssio_insertion_orders_status/get_by_ad_account`:
+Get insertion order status by ad account id..
+Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+
+- `GET` to `/ad_accounts/:ad_account_id/ssio/insertion_orders/:pin_order_id/status`, OperationId: `ssio_insertion_orders_status/get_by_pin_order_id`:
+Get insertion order status by pin order id..
+Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+
+- `GET` to `/ad_accounts/:ad_account_id/ssio/order_lines`, OperationId: `ssio_order_lines/get_by_ad_account`:
+Get Salesforce order lines by ad account id..
+Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+
+""".
+
+-behaviour(cowboy_rest).
+
+-include_lib("kernel/include/logger.hrl").
 
 %% Cowboy REST callbacks
--export([allowed_methods/2]).
 -export([init/2]).
--export([allow_missing_post/2]).
+-export([allowed_methods/2]).
 -export([content_types_accepted/2]).
 -export([content_types_provided/2]).
 -export([delete_resource/2]).
 -export([is_authorized/2]).
--export([known_content_type/2]).
--export([malformed_request/2]).
 -export([valid_content_headers/2]).
--export([valid_entity_length/2]).
+-export([handle_type_accepted/2, handle_type_provided/2]).
 
-%% Handlers
--export([handle_request_json/2]).
+-ignore_xref([handle_type_accepted/2, handle_type_provided/2]).
 
--record(state, {
-    operation_id :: openapi_api:operation_id(),
-    logic_handler :: atom(),
-    validator_state :: jesse_state:state(),
-    context=#{} :: #{}
-}).
+-export_type([class/0, operation_id/0]).
 
--type state() :: state().
+-type class() :: 'billing'.
 
--spec init(Req :: cowboy_req:req(), Opts :: openapi_router:init_opts()) ->
-    {cowboy_rest, Req :: cowboy_req:req(), State :: state()}.
+-type operation_id() ::
+    'ads_credit/redeem' %% Redeem ad credits
+    | 'ads_credits_discounts/get' %% Get ads credit discounts
+    | 'billing_profiles/get' %% Get billing profiles
+    | 'ssio_accounts/get' %% Get Salesforce account details including bill-to information.
+    | 'ssio_insertion_order/create' %% Create insertion order through SSIO.
+    | 'ssio_insertion_order/edit' %% Edit insertion order through SSIO.
+    | 'ssio_insertion_orders_status/get_by_ad_account' %% Get insertion order status by ad account id.
+    | 'ssio_insertion_orders_status/get_by_pin_order_id' %% Get insertion order status by pin order id.
+    | 'ssio_order_lines/get_by_ad_account'. %% Get Salesforce order lines by ad account id.
 
-init(Req, {Operations, LogicHandler, ValidatorMod}) ->
+
+-record(state,
+        {operation_id :: operation_id(),
+         accept_callback :: openapi_logic_handler:accept_callback(),
+         provide_callback :: openapi_logic_handler:provide_callback(),
+         api_key_handler :: openapi_logic_handler:api_key_callback(),
+         context = #{} :: openapi_logic_handler:context()}).
+
+-type state() :: #state{}.
+
+-spec init(cowboy_req:req(), openapi_router:init_opts()) ->
+    {cowboy_rest, cowboy_req:req(), state()}.
+init(Req, {Operations, Module}) ->
     Method = cowboy_req:method(Req),
     OperationID = maps:get(Method, Operations, undefined),
-
-    ValidatorState = ValidatorMod:get_validator_state(),
-
-    error_logger:info_msg("Attempt to process operation: ~p", [OperationID]),
-
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    },
+    ?LOG_INFO(#{what => "Attempt to process operation",
+                method => Method,
+                operation_id => OperationID}),
+    State = #state{operation_id = OperationID,
+                   accept_callback = fun Module:accept_callback/4,
+                   provide_callback = fun Module:provide_callback/4,
+                   api_key_handler = fun Module:authorize_api_key/2},
     {cowboy_rest, Req, State}.
 
--spec allowed_methods(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: [binary()], Req :: cowboy_req:req(), State :: state()}.
-
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'AdsCreditRedeem'
-    }
-) ->
+-spec allowed_methods(cowboy_req:req(), state()) ->
+    {[binary()], cowboy_req:req(), state()}.
+allowed_methods(Req, #state{operation_id = 'ads_credit/redeem'} = State) ->
     {[<<"POST">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'AdsCreditsDiscountsGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BillingProfilesGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'billing_profiles/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'SsioAccountsGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'ssio_accounts/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'SsioInsertionOrderCreate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'ssio_insertion_order/create'} = State) ->
     {[<<"POST">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'SsioInsertionOrderEdit'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'ssio_insertion_order/edit'} = State) ->
     {[<<"PATCH">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'SsioInsertionOrdersStatusGetByAdAccount'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_ad_account'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'SsioInsertionOrdersStatusGetByPinOrderId'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_pin_order_id'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'SsioOrderLinesGetByAdAccount'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'ssio_order_lines/get_by_ad_account'} = State) ->
     {[<<"GET">>], Req, State};
-
 allowed_methods(Req, State) ->
     {[], Req, State}.
 
--spec is_authorized(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: true | {false, AuthHeader :: iodata()},
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'AdsCreditRedeem' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+-spec is_authorized(cowboy_req:req(), state()) ->
+    {true | {false, iodata()}, cowboy_req:req(), state()}.
+is_authorized(Req0,
+              #state{operation_id = 'ads_credit/redeem' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'AdsCreditsDiscountsGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'ads_credits_discounts/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BillingProfilesGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'billing_profiles/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'SsioAccountsGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'ssio_accounts/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrderCreate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'ssio_insertion_order/create' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrderEdit' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'ssio_insertion_order/edit' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrdersStatusGetByAdAccount' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'ssio_insertion_orders_status/get_by_ad_account' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrdersStatusGetByPinOrderId' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'ssio_insertion_orders_status/get_by_pin_order_id' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'SsioOrderLinesGetByAdAccount' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'ssio_order_lines/get_by_ad_account' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
 is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
+    {true, Req, State}.
 
--spec content_types_accepted(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), AcceptResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_accepted(Req, State) ->
+-spec content_types_accepted(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_accepted(Req, #state{operation_id = 'ads_credit/redeem'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'billing_profiles/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'ssio_accounts/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'ssio_insertion_order/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'ssio_insertion_order/edit'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_ad_account'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_pin_order_id'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'ssio_order_lines/get_by_ad_account'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, State) ->
+    {[], Req, State}.
 
--spec valid_content_headers(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: boolean(), Req :: cowboy_req:req(), State :: state()}.
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'AdsCreditRedeem'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'AdsCreditsDiscountsGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BillingProfilesGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'SsioAccountsGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrderCreate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrderEdit'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrdersStatusGetByAdAccount'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'SsioInsertionOrdersStatusGetByPinOrderId'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'SsioOrderLinesGetByAdAccount'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
+-spec valid_content_headers(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
+valid_content_headers(Req, #state{operation_id = 'ads_credit/redeem'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'billing_profiles/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'ssio_accounts/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'ssio_insertion_order/create'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'ssio_insertion_order/edit'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_ad_account'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_pin_order_id'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'ssio_order_lines/get_by_ad_account'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, State) ->
     {false, Req, State}.
 
--spec content_types_provided(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), ProvideResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_provided(Req, State) ->
+-spec content_types_provided(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_provided(Req, #state{operation_id = 'ads_credit/redeem'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'billing_profiles/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'ssio_accounts/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'ssio_insertion_order/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'ssio_insertion_order/edit'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_ad_account'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'ssio_insertion_orders_status/get_by_pin_order_id'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'ssio_order_lines/get_by_ad_account'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, State) ->
+    {[], Req, State}.
 
--spec malformed_request(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-malformed_request(Req, State) ->
-    {false, Req, State}.
-
--spec allow_missing_post(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-allow_missing_post(Req, State) ->
-    {false, Req, State}.
-
--spec delete_resource(Req :: cowboy_req:req(), State :: state()) ->
-    processed_response().
-
+-spec delete_resource(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
 delete_resource(Req, State) ->
-    handle_request_json(Req, State).
+    {Res, Req1, State1} = handle_type_accepted(Req, State),
+    {true =:= Res, Req1, State1}.
 
--spec known_content_type(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
+-spec handle_type_accepted(cowboy_req:req(), state()) ->
+    { openapi_logic_handler:accept_callback_return(), cowboy_req:req(), state()}.
+handle_type_accepted(Req, #state{operation_id = OperationID,
+                                 accept_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(billing, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.
 
-known_content_type(Req, State) ->
-    {true, Req, State}.
-
--spec valid_entity_length(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
-
-valid_entity_length(Req, State) ->
-    %% @TODO check the length
-    {true, Req, State}.
-
-%%%%
--type result_ok() :: {
-    ok,
-    {Status :: cowboy:http_status(), Headers :: cowboy:http_headers(), Body :: iodata()}
-}.
-
--type result_error() :: {error, Reason :: any()}.
-
--type processed_response() :: {stop, cowboy_req:req(), state()}.
-
--spec process_response(result_ok() | result_error(), cowboy_req:req(), state()) ->
-    processed_response().
-
-process_response(Response, Req0, State = #state{operation_id = OperationID}) ->
-    case Response of
-        {ok, {Code, Headers, Body}} ->
-            Req = cowboy_req:reply(Code, Headers, Body, Req0),
-            {stop, Req, State};
-        {error, Message} ->
-            error_logger:error_msg("Unable to process request for ~p: ~p", [OperationID, Message]),
-
-            Req = cowboy_req:reply(400, Req0),
-            {stop, Req, State}
-    end.
-
--spec handle_request_json(cowboy_req:req(), state()) -> processed_response().
-
-handle_request_json(
-    Req0,
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    }
-) ->
-    case openapi_api:populate_request(OperationID, Req0, ValidatorState) of
-        {ok, Populated, Req1} ->
-            {Code, Headers, Body} = openapi_logic_handler:handle_request(
-                LogicHandler,
-                OperationID,
-                Req1,
-                maps:merge(State#state.context, Populated)
-            ),
-            _ = openapi_api:validate_response(
-                OperationID,
-                Code,
-                Body,
-                ValidatorState
-            ),
-            PreparedBody = prepare_body(Code, Body),
-            Response = {ok, {Code, Headers, PreparedBody}},
-            process_response(Response, Req1, State);
-        {error, Reason, Req1} ->
-            process_response({error, Reason}, Req1, State)
-    end.
-
-validate_headers(_, Req) -> {true, Req}.
-
-prepare_body(204, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(304, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(_Code, Body) ->
-    jsx:encode(Body).
+-spec handle_type_provided(cowboy_req:req(), state()) ->
+    {cowboy_req:resp_body(), cowboy_req:req(), state()}.
+handle_type_provided(Req, #state{operation_id = OperationID,
+                                 provide_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(billing, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.

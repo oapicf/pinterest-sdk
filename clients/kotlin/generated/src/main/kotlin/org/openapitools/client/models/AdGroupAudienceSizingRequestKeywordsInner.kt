@@ -37,5 +37,8 @@ data class AdGroupAudienceSizingRequestKeywordsInner (
     @Json(name = "value")
     val `value`: kotlin.String
 
-)
+) {
+
+
+}
 

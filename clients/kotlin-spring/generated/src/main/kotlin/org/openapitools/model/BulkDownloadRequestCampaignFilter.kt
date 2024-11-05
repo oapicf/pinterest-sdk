@@ -43,7 +43,7 @@ data class BulkDownloadRequestCampaignFilter(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("objective_type") val objectiveType: kotlin.collections.List<ObjectiveType>? = null
-) {
+    ) {
 
 }
 

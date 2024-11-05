@@ -22,13 +22,19 @@ import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
    * Code allows you to implement logic incrementally, they are disabled.
    **/
+
+  /*
+    public ResponseContext multiPinsAnalytics(RequestContext request , List<String> pinIds, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
 
   /*
     public ResponseContext pinsAnalytics(RequestContext request , String pinId, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId) {

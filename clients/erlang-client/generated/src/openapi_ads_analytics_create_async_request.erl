@@ -27,7 +27,10 @@
        'metrics_filters' => list(),
        'columns' := list(),
        'level' := openapi_metrics_reporting_level:openapi_metrics_reporting_level(),
-       'report_format' => openapi_data_output_format:openapi_data_output_format()
+       'report_format' => openapi_data_output_format:openapi_data_output_format(),
+       'primary_sort' => binary(),
+       'start_hour' => integer(),
+       'end_hour' => integer()
      }.
 
 encode(#{ 'start_date' := StartDate,
@@ -52,7 +55,10 @@ encode(#{ 'start_date' := StartDate,
           'metrics_filters' := MetricsFilters,
           'columns' := Columns,
           'level' := Level,
-          'report_format' := ReportFormat
+          'report_format' := ReportFormat,
+          'primary_sort' := PrimarySort,
+          'start_hour' := StartHour,
+          'end_hour' := EndHour
         }) ->
     #{ 'start_date' => StartDate,
        'end_date' => EndDate,
@@ -76,5 +82,8 @@ encode(#{ 'start_date' := StartDate,
        'metrics_filters' => MetricsFilters,
        'columns' => Columns,
        'level' => Level,
-       'report_format' => ReportFormat
+       'report_format' => ReportFormat,
+       'primary_sort' => PrimarySort,
+       'start_hour' => StartHour,
+       'end_hour' => EndHour
      }.

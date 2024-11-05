@@ -52,5 +52,8 @@ data class LinkedBusiness (
     @Json(name = "image_xlarge_url")
     val imageXlargeUrl: kotlin.String? = null
 
-)
+) {
+
+
+}
 

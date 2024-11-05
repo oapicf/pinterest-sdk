@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarOperator** | **string** |  | 
+**Operator** | **string** |  | 
 **Value** | **decimal** |  | 
 **Currency** | **NonNullableCatalogsCurrency** |  | 
 **Negated** | **bool** |  | [optional] [default to false]

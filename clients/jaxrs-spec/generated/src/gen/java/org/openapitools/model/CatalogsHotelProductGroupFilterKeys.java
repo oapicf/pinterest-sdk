@@ -27,17 +27,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsHotelProductGroupFilterKeys")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupFilterKeys   {
-  private @Valid CatalogsProductGroupPricingCurrencyCriteria PRICE;
-  private @Valid CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
-  private @Valid CatalogsProductGroupMultipleStringCriteria BRAND;
-  private @Valid CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
-  private @Valid CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1;
-  private @Valid CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
-  private @Valid CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
-  private @Valid CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4;
-  private @Valid CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
+  private CatalogsProductGroupPricingCurrencyCriteria PRICE;
+  private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
+  private CatalogsProductGroupMultipleStringCriteria BRAND;
+  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
+  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1;
+  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
+  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
+  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4;
+  private CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
 
   /**
    **/
@@ -49,8 +49,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("PRICE")
-  @NotNull
-  public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
+  @NotNull @Valid public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
     return PRICE;
   }
 
@@ -69,8 +68,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("HOTEL_ID")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getHOTELID() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getHOTELID() {
     return HOTEL_ID;
   }
 
@@ -89,8 +87,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("BRAND")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getBRAND() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getBRAND() {
     return BRAND;
   }
 
@@ -109,8 +106,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("CUSTOM_LABEL_0")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
     return CUSTOM_LABEL_0;
   }
 
@@ -129,8 +125,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("CUSTOM_LABEL_1")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1() {
     return CUSTOM_LABEL_1;
   }
 
@@ -149,8 +144,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("CUSTOM_LABEL_2")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
   }
 
@@ -169,8 +163,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("CUSTOM_LABEL_3")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
   }
 
@@ -189,8 +182,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("CUSTOM_LABEL_4")
-  @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4() {
+  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4() {
     return CUSTOM_LABEL_4;
   }
 
@@ -209,8 +201,7 @@ public class CatalogsHotelProductGroupFilterKeys   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("COUNTRY")
-  @NotNull
-  public CatalogsProductGroupMultipleCountriesCriteria getCOUNTRY() {
+  @NotNull @Valid public CatalogsProductGroupMultipleCountriesCriteria getCOUNTRY() {
     return COUNTRY;
   }
 

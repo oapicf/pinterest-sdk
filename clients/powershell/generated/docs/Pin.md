@@ -13,12 +13,12 @@ Name | Type | Description | Notes
 **CreativeType** | [**CreativeType**](CreativeType.md) |  | [optional] [readonly] 
 **BoardId** | **String** | The board to which this Pin belongs. | [optional] 
 **BoardSectionId** | **String** | The board section to which this Pin belongs. | [optional] 
-**BoardOwner** | [**BoardOwner**](BoardOwner.md) |  | [optional] 
+**BoardOwner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
 **IsOwner** | **Boolean** | Whether the &quot;&quot;operation user_account&quot;&quot; is the Pin owner. | [optional] [readonly] 
-**Media** | [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **MediaSource** | [**PinMediaSource**](PinMediaSource.md) |  | [optional] 
 **ParentPinId** | **String** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;&quot;&quot;https://help.pinterest.com/article/save-pins-on-pinterest&quot;&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
-**IsStandard** | **Boolean** | Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;&quot;&quot;https://developers.pinterest.com/docs/content/update/&quot;&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information. | [optional] 
+**IsStandard** | **Boolean** | Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;&quot;&quot;/docs/api-features/content-overview/&quot;&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information. | [optional] 
 **HasBeenPromoted** | **Boolean** | Whether the Pin has been promoted or not. | [optional] [readonly] 
 **Note** | **String** | Private note for this Pin. &lt;a href&#x3D;&quot;&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins&quot;&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
 **PinMetrics** | [**SystemCollectionsHashtable**](.md) | Pin metrics with associated time intervals if any. | [optional] 
@@ -45,7 +45,7 @@ $Pin = Initialize-PSOpenAPIToolsPin  -Id 813744226420795884 `
  -IsStandard null `
  -HasBeenPromoted null `
  -Note null `
- -PinMetrics {&quot;pin_metrics&quot;:[{&quot;90d&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3},&quot;all_time&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3,&quot;reaction&quot;:10,&quot;comment&quot;:2}},null]}
+ -PinMetrics {&quot;90d&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3},&quot;lifetime_metrics&quot;:{&quot;pin_click&quot;:7,&quot;impression&quot;:2,&quot;clickthrough&quot;:3,&quot;reaction&quot;:10,&quot;comment&quot;:2}}
 ```
 
 - Convert the resource to JSON

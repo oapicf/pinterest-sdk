@@ -194,11 +194,15 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String boardId = "boardId_example"; // String | Unique identifier of a board.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       BoardSectionsList200Response result = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -220,7 +224,7 @@ public class Example {
 | **boardId** | **String**| Unique identifier of a board. | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -228,7 +232,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -268,12 +272,16 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String boardId = "boardId_example"; // String | Unique identifier of a board.
     String sectionId = "sectionId_example"; // String | Unique identifier of a board section.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       BoardsListPins200Response result = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -296,7 +304,7 @@ public class Example {
 | **sectionId** | **String**| Unique identifier of a board section. | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -304,7 +312,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -568,6 +576,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String boardId = "boardId_example"; // String | Unique identifier of a board.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
@@ -598,7 +610,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -639,10 +651,14 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     String privacy = "ALL"; // String | Privacy setting for a board.
     try {
       BoardsList200Response result = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy);
@@ -664,7 +680,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **privacy** | **String**| Privacy setting for a board. | [optional] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET] |
 
 ### Return type
@@ -673,7 +689,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -713,10 +729,14 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String boardId = "boardId_example"; // String | Unique identifier of a board.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     List<String> creativeTypes = Arrays.asList(); // List<String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     Boolean pinMetrics = false; // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -740,7 +760,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | **String**| Unique identifier of a board. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creativeTypes** | [**List&lt;String&gt;**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 | **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
@@ -751,7 +771,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

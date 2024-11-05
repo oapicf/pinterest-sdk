@@ -8,11 +8,16 @@ A request object that can have multiple operations on a single batch
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | **CatalogsType** |  | 
+**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **country** | **Country** |  | 
-**language** | **Language** |  | 
-**items** | [**Seq&lt;CatalogsHotelBatchItem&gt;**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**catalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional]
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
+**items** | [**Seq&lt;CatalogsCreativeAssetsBatchItem&gt;**](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | 
+**catalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  [optional]
+
+
+## Enum: CatalogType
+Allowed values: [CREATIVE_ASSETS]
+
 
 
 

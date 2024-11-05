@@ -74,10 +74,10 @@ private class OASCatalogsVerticalProductGroupTest {
         OASCatalogsVerticalProductGroup catalogsVerticalProductGroup = new OASCatalogsVerticalProductGroup();
         Map<String, String> x-property-mappings = catalogsVerticalProductGroup.getx-property-mappings();
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
+        System.assertEquals('isFeatured', x-property-mappings.get('is_featured'));
         System.assertEquals('createdAt', x-property-mappings.get('created_at'));
         System.assertEquals('updatedAt', x-property-mappings.get('updated_at'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
-        System.assertEquals('isFeatured', x-property-mappings.get('is_featured'));
         System.assertEquals('feedId', x-property-mappings.get('feed_id'));
     }
 }

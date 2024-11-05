@@ -5,6 +5,29 @@ context("Test Keyword")
 
 model_instance <- Keyword$new()
 
+test_that("bid", {
+  # tests for the property `bid` (integer)
+  # &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`bid`, "EXPECTED_RESULT")
+})
+
+test_that("match_type", {
+  # tests for the property `match_type` (MatchTypeResponse)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`match_type`, "EXPECTED_RESULT")
+})
+
+test_that("value", {
+  # tests for the property `value` (character)
+  # Keyword value (120 chars max).
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
+})
+
 test_that("archived", {
   # tests for the property `archived` (character)
 
@@ -42,27 +65,4 @@ test_that("type", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
-})
-
-test_that("bid", {
-  # tests for the property `bid` (integer)
-  # Keyword custom bid in microcurrency - null if inherited from parent ad group.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`bid`, "EXPECTED_RESULT")
-})
-
-test_that("match_type", {
-  # tests for the property `match_type` (MatchTypeResponse)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`match_type`, "EXPECTED_RESULT")
-})
-
-test_that("value", {
-  # tests for the property `value` (character)
-  # Keyword value (120 chars max).
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
 })

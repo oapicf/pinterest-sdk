@@ -48,5 +48,8 @@ data class ImageMetadata (
     @Json(name = "images")
     val images: ImageMetadataImages? = null
 
-)
+) {
+
+
+}
 

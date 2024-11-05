@@ -15,7 +15,7 @@
        'board_id' => binary(),
        'board_section_id' => binary(),
        'board_owner' => openapi_board_owner:openapi_board_owner(),
-       'media' => openapi_summary_pin_media:openapi_summary_pin_media(),
+       'media' => openapi_pin_media:openapi_pin_media(),
        'media_source' => openapi_pin_media_source:openapi_pin_media_source(),
        'parent_pin_id' => binary(),
        'note' => binary()

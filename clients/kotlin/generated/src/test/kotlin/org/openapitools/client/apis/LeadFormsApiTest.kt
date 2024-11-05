@@ -20,9 +20,12 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.LeadFormsApi
 import org.openapitools.client.models.Error
+import org.openapitools.client.models.LeadFormArrayResponse
+import org.openapitools.client.models.LeadFormCreateRequest
 import org.openapitools.client.models.LeadFormResponse
 import org.openapitools.client.models.LeadFormTestRequest
 import org.openapitools.client.models.LeadFormTestResponse
+import org.openapitools.client.models.LeadFormUpdateRequest
 import org.openapitools.client.models.LeadFormsList200Response
 
 class LeadFormsApiTest : ShouldSpec() {
@@ -49,14 +52,32 @@ class LeadFormsApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
+        // to test leadFormsCreate
+        should("test leadFormsCreate") {
+            // uncomment below to test leadFormsCreate
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val leadFormCreateRequest : kotlin.collections.List<LeadFormCreateRequest> =  // kotlin.collections.List<LeadFormCreateRequest> | List of lead forms to create, size limit [1, 30].
+            //val result : LeadFormArrayResponse = apiInstance.leadFormsCreate(adAccountId, leadFormCreateRequest)
+            //result shouldBe ("TODO")
+        }
+
         // to test leadFormsList
         should("test leadFormsList") {
             // uncomment below to test leadFormsList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val result : LeadFormsList200Response = apiInstance.leadFormsList(adAccountId, pageSize, order, bookmark)
+            //result shouldBe ("TODO")
+        }
+
+        // to test leadFormsUpdate
+        should("test leadFormsUpdate") {
+            // uncomment below to test leadFormsUpdate
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val leadFormUpdateRequest : kotlin.collections.List<LeadFormUpdateRequest> =  // kotlin.collections.List<LeadFormUpdateRequest> | List of lead forms to update, size limit [1, 30].
+            //val result : LeadFormArrayResponse = apiInstance.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
             //result shouldBe ("TODO")
         }
 

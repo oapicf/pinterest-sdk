@@ -11,19 +11,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsDbItem  {
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   private Date createdAt;
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   private String id;
 
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   private Date updatedAt;
  /**
    * Get createdAt
    * @return createdAt
   **/
   @JsonProperty("created_at")
+  @NotNull
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -42,6 +43,7 @@ public class CatalogsDbItem  {
    * @return id
   **/
   @JsonProperty("id")
+  @NotNull
   public String getId() {
     return id;
   }
@@ -60,6 +62,7 @@ public class CatalogsDbItem  {
    * @return updatedAt
   **/
   @JsonProperty("updated_at")
+  @NotNull
   public Date getUpdatedAt() {
     return updatedAt;
   }

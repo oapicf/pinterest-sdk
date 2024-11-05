@@ -5,9 +5,9 @@ A request object that can have multiple operations on a single retail batch
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **CatalogsType** |  | 
+**CatalogType** | **string** |  | 
 **Country** | **Country** |  | 
-**Language** | **Language** |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Items** | [**List&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

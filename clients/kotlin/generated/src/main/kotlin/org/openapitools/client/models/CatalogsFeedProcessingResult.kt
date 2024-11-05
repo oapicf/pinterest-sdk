@@ -26,17 +26,26 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param createdAt 
+ * @param id 
+ * @param updatedAt 
  * @param ingestionDetails 
  * @param status 
  * @param productCounts 
  * @param validationDetails 
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  */
 
 
 data class CatalogsFeedProcessingResult (
+
+    @Json(name = "created_at")
+    val createdAt: java.time.OffsetDateTime,
+
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    @Json(name = "updated_at")
+    val updatedAt: java.time.OffsetDateTime,
 
     @Json(name = "ingestion_details")
     val ingestionDetails: CatalogsFeedIngestionDetails,
@@ -48,16 +57,10 @@ data class CatalogsFeedProcessingResult (
     val productCounts: CatalogsFeedProductCounts?,
 
     @Json(name = "validation_details")
-    val validationDetails: CatalogsFeedValidationDetails,
+    val validationDetails: CatalogsFeedValidationDetails
 
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime? = null,
+) {
 
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
-    @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime? = null
-
-)
+}
 

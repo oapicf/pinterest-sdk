@@ -5,10 +5,10 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.AdCommonTrackingUrls
 import org.openapitools.models.CampaignSummaryStatus
 import org.openapitools.models.EntityStatus
 import org.openapitools.models.ObjectiveType
+import org.openapitools.models.TrackingUrls
 
 /**
  * 
@@ -21,8 +21,7 @@ import org.openapitools.models.ObjectiveType
  * @param trackingUnderscoreurls 
  * @param startUnderscoretime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
  * @param endUnderscoretime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
- * @param summaryUnderscorestatus 
- * @param isUnderscoreflexibleUnderscoredailyUnderscorebudgets Determines if a campaign has flexible daily budgets setup.
+ * @param isUnderscoreflexibleUnderscoredailyUnderscorebudgets Determine if a campaign has flexible daily budgets setup.
  * @param defaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
  * @param isUnderscoreautomatedUnderscorecampaign Specifies whether the campaign was created in the automated campaign flow
  * @param id Campaign ID.
@@ -31,6 +30,7 @@ import org.openapitools.models.ObjectiveType
  * @param updatedUnderscoretime UTC timestamp. Last update time.
  * @param _type Always \"campaign\".
  * @param isUnderscorecampaignUnderscorebudgetUnderscoreoptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+ * @param summaryUnderscorestatus 
  */
 case class CampaignCreateResponseData(adUnderscoreaccountUnderscoreid: Option[String],
                 name: Option[String],
@@ -38,10 +38,9 @@ case class CampaignCreateResponseData(adUnderscoreaccountUnderscoreid: Option[St
                 lifetimeUnderscorespendUnderscorecap: Option[Int],
                 dailyUnderscorespendUnderscorecap: Option[Int],
                 orderUnderscorelineUnderscoreid: Option[String],
-                trackingUnderscoreurls: Option[AdCommonTrackingUrls],
+                trackingUnderscoreurls: Option[TrackingUrls],
                 startUnderscoretime: Option[Int],
                 endUnderscoretime: Option[Int],
-                summaryUnderscorestatus: Option[CampaignSummaryStatus],
                 isUnderscoreflexibleUnderscoredailyUnderscorebudgets: Option[Boolean],
                 defaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency: Option[Int],
                 isUnderscoreautomatedUnderscorecampaign: Option[Boolean],
@@ -50,7 +49,8 @@ case class CampaignCreateResponseData(adUnderscoreaccountUnderscoreid: Option[St
                 createdUnderscoretime: Option[Int],
                 updatedUnderscoretime: Option[Int],
                 _type: Option[String],
-                isUnderscorecampaignUnderscorebudgetUnderscoreoptimization: Option[Boolean]
+                isUnderscorecampaignUnderscorebudgetUnderscoreoptimization: Option[Boolean],
+                summaryUnderscorestatus: Option[CampaignSummaryStatus]
                 )
 
 object CampaignCreateResponseData {

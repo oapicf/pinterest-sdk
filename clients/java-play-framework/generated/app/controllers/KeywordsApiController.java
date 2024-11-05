@@ -33,7 +33,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsApiController extends Controller {
     private final KeywordsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -171,6 +171,15 @@ public class KeywordsApiController extends Controller {
                 ages.add(curParam);
             }
         }
+        String[] includeKeywordsArray = request.queryString().get("include_keywords");
+        List<String> includeKeywordsList = OpenAPIUtils.parametersToList("multi", includeKeywordsArray);
+        List<@Size(min = 1, max = 100)String> includeKeywords = new ArrayList<>();
+        for (String curParam : includeKeywordsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                includeKeywords.add(curParam);
+            }
+        }
         String valuenormalizeAgainstGroup = request.getQueryString("normalize_against_group");
         Boolean normalizeAgainstGroup;
         if (valuenormalizeAgainstGroup != null) {
@@ -185,7 +194,7 @@ public class KeywordsApiController extends Controller {
         } else {
             limit = 50;
         }
-        return imp.trendingKeywordsListHttp(request, region, trendType, interests, genders, ages, normalizeAgainstGroup, limit);
+        return imp.trendingKeywordsListHttp(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit);
     }
 
 }

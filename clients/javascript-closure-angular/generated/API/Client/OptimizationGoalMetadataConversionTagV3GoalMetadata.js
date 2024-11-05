@@ -30,7 +30,7 @@ API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.prototype.convers
 API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.prototype.cpaGoalValueInMicroCurrency;
 
 /**
- * Ad group is ROAS optimized
+ * ROAS optimization is not supported
  * @type {!boolean}
  * @export
  */

@@ -23,13 +23,13 @@ public class BulkDownloadRequest  {
  /**
    * All entity types specified will be downloaded. Fewer types result in faster downloads.
   **/
-  private List<BulkEntityType> entityTypes;
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
 
   @ApiModelProperty(value = "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.")
  /**
    * All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
   **/
-  private List<String> entityIds;
+  private List<String> entityIds = new ArrayList<>();
 
   @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp to retrieve all entities that have changed since this time.")
  /**

@@ -41,7 +41,7 @@ data class ConversionEventsDataInnerCustomDataContentsInner(
 
     @Schema(example = "pinterest", description = "The brand of a product.")
     @get:JsonProperty("item_brand") val itemBrand: kotlin.String? = null
-) {
+    ) {
 
 }
 

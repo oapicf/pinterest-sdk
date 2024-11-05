@@ -4,8 +4,8 @@ open System
 open System.Collections.Generic
 open OpenAPI.Model.BoardOwner
 open OpenAPI.Model.CreativeType
+open OpenAPI.Model.PinMedia
 open OpenAPI.Model.PinMediaSource
-open OpenAPI.Model.SummaryPinMedia
 open OpenAPI.Model.string option
 
 module Pin =
@@ -26,7 +26,7 @@ module Pin =
     BoardSectionId : string option;
     BoardOwner : BoardOwner;
     IsOwner : bool;
-    Media : SummaryPinMedia;
+    Media : PinMedia;
     MediaSource : PinMediaSource;
     ParentPinId : string option;
     IsStandard : bool;

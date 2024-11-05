@@ -23,8 +23,7 @@ BillingProfilesResponse <- R6::R6Class(
     `status` = NULL,
     `advertiser_id` = NULL,
     `payment_method_brand` = NULL,
-    #' Initialize a new BillingProfilesResponse class.
-    #'
+
     #' @description
     #' Initialize a new BillingProfilesResponse class.
     #'
@@ -34,7 +33,6 @@ BillingProfilesResponse <- R6::R6Class(
     #' @param advertiser_id Advertiser ID of the billing.
     #' @param payment_method_brand Brand of the payment method.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `card_type` = NULL, `status` = NULL, `advertiser_id` = NULL, `payment_method_brand` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -76,13 +74,11 @@ BillingProfilesResponse <- R6::R6Class(
         self$`payment_method_brand` <- `payment_method_brand`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BillingProfilesResponse in JSON format
-    #' @export
     toJSON = function() {
       BillingProfilesResponseObject <- list()
       if (!is.null(self$`id`)) {
@@ -107,14 +103,12 @@ BillingProfilesResponse <- R6::R6Class(
       }
       BillingProfilesResponseObject
     },
-    #' Deserialize JSON string into an instance of BillingProfilesResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BillingProfilesResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of BillingProfilesResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -143,13 +137,11 @@ BillingProfilesResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BillingProfilesResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -196,14 +188,12 @@ BillingProfilesResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BillingProfilesResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BillingProfilesResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of BillingProfilesResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -222,33 +212,27 @@ BillingProfilesResponse <- R6::R6Class(
       self$`payment_method_brand` <- this_object$`payment_method_brand`
       self
     },
-    #' Validate JSON input with respect to BillingProfilesResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to BillingProfilesResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BillingProfilesResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -260,13 +244,11 @@ BillingProfilesResponse <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -279,12 +261,9 @@ BillingProfilesResponse <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

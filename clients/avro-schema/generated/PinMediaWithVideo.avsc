@@ -12,7 +12,7 @@
     },
     {
       "name": "images",
-      "type": ["null", "model.ImageMetadataImages"],
+      "type": ["null", "model.PinMediaWithImageAllOfImages"],
       "doc": "",
       "default": null
     },

@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Board
@@ -43,7 +43,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class BoardsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -220,7 +220,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * @param boardId Unique identifier of a board.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return BoardSectionsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -254,7 +254,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * @param boardId Unique identifier of a board.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<BoardSectionsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -275,7 +275,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * @param boardId Unique identifier of a board.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun boardSectionsListRequestConfig(boardId: kotlin.String, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -312,7 +312,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * @param sectionId Unique identifier of a board section.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return BoardsListPins200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -347,7 +347,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * @param sectionId Unique identifier of a board section.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<BoardsListPins200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -369,7 +369,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * @param sectionId Unique identifier of a board section.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun boardSectionsListPinsRequestConfig(boardId: kotlin.String, sectionId: kotlin.String, adAccountId: kotlin.String?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -729,7 +729,16 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
          @Json(name = "PROTECTED") PROTECTED("PROTECTED"),
          @Json(name = "PUBLIC") PUBLIC("PUBLIC"),
          @Json(name = "SECRET") SECRET("SECRET"),
-         @Json(name = "PUBLIC_AND_SECRET") PUBLIC_AND_SECRET("PUBLIC_AND_SECRET")
+         @Json(name = "PUBLIC_AND_SECRET") PUBLIC_AND_SECRET("PUBLIC_AND_SECRET");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -737,7 +746,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param privacy Privacy setting for a board. (optional)
      * @return BoardsList200Response
      * @throws IllegalStateException If the request is not correctly configured
@@ -771,7 +780,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param privacy Privacy setting for a board. (optional)
      * @return ApiResponse<BoardsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -792,7 +801,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      *
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param privacy Privacy setting for a board. (optional)
      * @return RequestConfig
      */
@@ -837,7 +846,16 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
          @Json(name = "MAX_VIDEO") MAX_VIDEO("MAX_VIDEO"),
          @Json(name = "SHOP_THE_PIN") SHOP_THE_PIN("SHOP_THE_PIN"),
          @Json(name = "COLLECTION") COLLECTION("COLLECTION"),
-         @Json(name = "IDEA") IDEA("IDEA")
+         @Json(name = "IDEA") IDEA("IDEA");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -845,7 +863,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
@@ -881,7 +899,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      * Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
@@ -904,7 +922,7 @@ class BoardsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient 
      *
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)

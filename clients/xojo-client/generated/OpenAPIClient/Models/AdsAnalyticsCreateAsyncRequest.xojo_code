@@ -147,7 +147,7 @@ Protected Class AdsAnalyticsCreateAsyncRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+			List of targeting types. Requires `level` to be a value ending in `_TARGETING`. ["AGE_BUCKET_AND_GENDER"] is in BETA and not yet available to all users.
 		#tag EndNote
 		targeting_types() As AdsAnalyticsTargetingType
 	#tag EndProperty
@@ -185,7 +185,51 @@ Protected Class AdsAnalyticsCreateAsyncRequest
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+		#tag EndNote
+		primary_sort As Xoson.O.OptionalString
+	#tag EndProperty
 
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+		#tag EndNote
+		start_hour As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+		#tag EndNote
+		end_hour As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+    #tag Enum, Name = Primary_sortEnum, Type = Integer, Flags = &h0
+        
+        Id
+        Date
+        
+    #tag EndEnum
+
+
+	#tag Method, Flags = &h0
+		Shared Function Primary_sortEnumToString(value As Primary_sortEnum) As String
+		  Select Case value
+		    
+		    Case Primary_sortEnum.Id
+		      Return "BY_ID"
+		    Case Primary_sortEnum.Date
+		      Return "BY_DATE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -403,6 +447,22 @@ Protected Class AdsAnalyticsCreateAsyncRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="DataOutputFormat"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="start_hour"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="end_hour"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

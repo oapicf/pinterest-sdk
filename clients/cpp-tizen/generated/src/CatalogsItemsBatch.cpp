@@ -140,12 +140,12 @@ CatalogsItemsBatch::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<HotelProcessingRecord> new_list;
-			HotelProcessingRecord inst;
+			list<CreativeAssetsProcessingRecord> new_list;
+			CreativeAssetsProcessingRecord inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("HotelProcessingRecord")) {
-					jsonToValue(&inst, temp_json, "HotelProcessingRecord", "");
+				if (isprimitive("CreativeAssetsProcessingRecord")) {
+					jsonToValue(&inst, temp_json, "CreativeAssetsProcessingRecord", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -224,18 +224,18 @@ CatalogsItemsBatch::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("HotelProcessingRecord")) {
-		list<HotelProcessingRecord> new_list = static_cast<list <HotelProcessingRecord> > (getItems());
-		node = converttoJson(&new_list, "HotelProcessingRecord", "array");
+	if (isprimitive("CreativeAssetsProcessingRecord")) {
+		list<CreativeAssetsProcessingRecord> new_list = static_cast<list <CreativeAssetsProcessingRecord> > (getItems());
+		node = converttoJson(&new_list, "CreativeAssetsProcessingRecord", "array");
 	} else {
 		node = json_node_alloc();
-		list<HotelProcessingRecord> new_list = static_cast<list <HotelProcessingRecord> > (getItems());
+		list<CreativeAssetsProcessingRecord> new_list = static_cast<list <CreativeAssetsProcessingRecord> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<HotelProcessingRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<CreativeAssetsProcessingRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			HotelProcessingRecord obj = *it;
+			CreativeAssetsProcessingRecord obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -317,14 +317,14 @@ CatalogsItemsBatch::setStatus(BatchOperationStatus  status)
 	this->status = status;
 }
 
-std::list<HotelProcessingRecord>
+std::list<CreativeAssetsProcessingRecord>
 CatalogsItemsBatch::getItems()
 {
 	return items;
 }
 
 void
-CatalogsItemsBatch::setItems(std::list <HotelProcessingRecord> items)
+CatalogsItemsBatch::setItems(std::list <CreativeAssetsProcessingRecord> items)
 {
 	this->items = items;
 }

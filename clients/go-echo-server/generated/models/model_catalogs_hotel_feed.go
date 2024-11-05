@@ -7,11 +7,11 @@ import (
 // CatalogsHotelFeed - Catalogs Hotel Feed object
 type CatalogsHotelFeed struct {
 
-	CreatedAt time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"id"`
 
-	UpdatedAt time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 
 	// A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
 	Name *string `json:"name"`
@@ -35,5 +35,5 @@ type CatalogsHotelFeed struct {
 	DefaultLocale string `json:"default_locale"`
 
 	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-	CatalogId *string `json:"catalog_id"`
+	CatalogId *string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 }

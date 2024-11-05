@@ -7,10 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.vertxweb.server.model.CatalogsItemsRequestLanguage;
 import org.openapitools.vertxweb.server.model.CatalogsRetailBatchRequestItemsInner;
-import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.Country;
-import org.openapitools.vertxweb.server.model.Language;
 
 /**
  * A request object that can have multiple operations on a single retail batch
@@ -18,16 +17,34 @@ import org.openapitools.vertxweb.server.model.Language;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailBatchRequest   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private Country country;
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
   private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
   public CatalogsRetailBatchRequest () {
 
   }
 
-  public CatalogsRetailBatchRequest (CatalogsType catalogType, Country country, Language language, List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest (CatalogTypeEnum catalogType, Country country, CatalogsItemsRequestLanguage language, List<CatalogsRetailBatchRequestItemsInner> items) {
     this.catalogType = catalogType;
     this.country = country;
     this.language = language;
@@ -36,10 +53,10 @@ public class CatalogsRetailBatchRequest   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -54,10 +71,10 @@ public class CatalogsRetailBatchRequest   {
 
     
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

@@ -213,7 +213,9 @@ Protected Class TemplateResponse
         AdOnlyPin
         CampaignName
         CampaignStatus
+        IsCampaignLearningPhase
         Date
+        DateAsTimestamp
         BudgetInDollar
         AvailableBudgetInDollar
         TargetingType
@@ -296,6 +298,7 @@ Protected Class TemplateResponse
         ItemId
         ProductItemId
         InternalProductItemId
+        InternalProductItemIdStr
         ProductItemName
         ProductItemImageUrl
         ProductItemPrice
@@ -305,6 +308,10 @@ Protected Class TemplateResponse
         OrderLinePaidType
         SpendOrderLineId
         SpendOrderLinePaidType
+        ConversionProductId
+        ConversionProductName
+        ConversionProductBrand
+        ConversionProductCategory
         Clickthrough1
         Repin1
         Impression1
@@ -344,7 +351,9 @@ Protected Class TemplateResponse
         TotalSend
         TotalFlag
         TotalImpressionUser
+        TotalImpressionUserHll
         TotalImpressionFrequency
+        TotalImpressionFrequencyHll
         TotalOutboundClick
         CostPerOutboundClickInDollar
         EngagementPageVisit1
@@ -774,6 +783,8 @@ Protected Class TemplateResponse
         IsAutomatedCampaign
         IsPremiereCampaign
         FlexibleDailyBudgets
+        IsPerformancePlusCampaign
+        IsDcoFormatEnhancment
         PercentCrossDeviceConversions
         PageVisitPercentCrossDeviceConversions
         SignupPercentCrossDeviceConversions
@@ -1071,6 +1082,9 @@ Protected Class TemplateResponse
         VideoAvgWatchtime2
         VideoMrcViews2
         VideoViewRate2
+        PaidVideoView
+        PaidVideoImpression
+        PaidVideoViewableRate
         VideoLength
         CpvInMicroDollar
         CpvInDollar
@@ -1561,6 +1575,208 @@ Protected Class TemplateResponse
         TargetingLocation
         TargetingApptype
         TargetingLocationCode
+        TargetingMediaType
+        TotalConversionProductQuantity
+        TotalWebConversionProductQuantity
+        TotalInappConversionProductQuantity
+        TotalOfflineConversionProductQuantity
+        TotalConversionProductValue
+        TotalWebConversionProductValue
+        TotalInappConversionProductValue
+        TotalOfflineConversionProductValue
+        TotalConversionProductValueInMicroUnits
+        TotalWebConversionProductValueInMicroUnits
+        TotalInappConversionProductValueInMicroUnits
+        TotalOfflineConversionProductValueInMicroUnits
+        TotalConversionProductValueInUsd
+        TotalWebConversionProductValueInUsd
+        TotalInappConversionProductValueInUsd
+        TotalOfflineConversionProductValueInUsd
+        TotalConversionProductValueInMicroUsd
+        TotalWebConversionProductValueInMicroUsd
+        TotalInappConversionProductValueInMicroUsd
+        TotalOfflineConversionProductValueInMicroUsd
+        ConversionProductCountUnique
+        TotalCheckoutConversionProductQuantity
+        TotalCheckoutConversionProductValue
+        TotalCheckoutConversionProductValueInMicroUnits
+        TotalCheckoutConversionProductValueInUsd
+        TotalCheckoutConversionProductValueInMicroUsd
+        TotalWebCheckoutConversionProductQuantity
+        TotalWebCheckoutConversionProductValue
+        TotalWebCheckoutConversionProductValueInMicroUnits
+        TotalWebCheckoutConversionProductValueInUsd
+        TotalWebCheckoutConversionProductValueInMicroUsd
+        TotalInappCheckoutConversionProductQuantity
+        TotalInappCheckoutConversionProductValue
+        TotalInappCheckoutConversionProductValueInMicroUnits
+        TotalInappCheckoutConversionProductValueInUsd
+        TotalInappCheckoutConversionProductValueInMicroUsd
+        TotalOfflineCheckoutConversionProductQuantity
+        TotalOfflineCheckoutConversionProductValue
+        TotalOfflineCheckoutConversionProductValueInMicroUnits
+        TotalOfflineCheckoutConversionProductValueInUsd
+        TotalOfflineCheckoutConversionProductValueInMicroUsd
+        TotalAddToCartConversionProductQuantity
+        TotalAddToCartConversionProductValue
+        TotalAddToCartConversionProductValueInMicroUnits
+        TotalAddToCartConversionProductValueInUsd
+        TotalAddToCartConversionProductValueInMicroUsd
+        TotalWebAddToCartConversionProductQuantity
+        TotalWebAddToCartConversionProductValue
+        TotalWebAddToCartConversionProductValueInMicroUnits
+        TotalWebAddToCartConversionProductValueInUsd
+        TotalWebAddToCartConversionProductValueInMicroUsd
+        TotalInappAddToCartConversionProductQuantity
+        TotalInappAddToCartConversionProductValue
+        TotalInappAddToCartConversionProductValueInMicroUnits
+        TotalInappAddToCartConversionProductValueInUsd
+        TotalInappAddToCartConversionProductValueInMicroUsd
+        TotalPageVisitConversionProductQuantity
+        TotalPageVisitConversionProductValue
+        TotalPageVisitConversionProductValueInMicroUnits
+        TotalPageVisitConversionProductValueInUsd
+        TotalPageVisitConversionProductValueInMicroUsd
+        TotalWebPageVisitConversionProductQuantity
+        TotalWebPageVisitConversionProductValue
+        TotalWebPageVisitConversionProductValueInMicroUnits
+        TotalWebPageVisitConversionProductValueInUsd
+        TotalWebPageVisitConversionProductValueInMicroUsd
+        TotalSignupConversionProductQuantity
+        TotalSignupConversionProductValue
+        TotalSignupConversionProductValueInMicroUnits
+        TotalSignupConversionProductValueInUsd
+        TotalSignupConversionProductValueInMicroUsd
+        TotalWebSignupConversionProductQuantity
+        TotalWebSignupConversionProductValue
+        TotalWebSignupConversionProductValueInMicroUnits
+        TotalWebSignupConversionProductValueInUsd
+        TotalWebSignupConversionProductValueInMicroUsd
+        TotalInappSignupConversionProductQuantity
+        TotalInappSignupConversionProductValue
+        TotalInappSignupConversionProductValueInMicroUnits
+        TotalInappSignupConversionProductValueInUsd
+        TotalInappSignupConversionProductValueInMicroUsd
+        TotalOfflineSignupConversionProductQuantity
+        TotalOfflineSignupConversionProductValue
+        TotalOfflineSignupConversionProductValueInMicroUnits
+        TotalOfflineSignupConversionProductValueInUsd
+        TotalOfflineSignupConversionProductValueInMicroUsd
+        TotalWatchVideoConversionProductQuantity
+        TotalWatchVideoConversionProductValue
+        TotalWatchVideoConversionProductValueInMicroUnits
+        TotalWatchVideoConversionProductValueInUsd
+        TotalWatchVideoConversionProductValueInMicroUsd
+        TotalWebWatchVideoConversionProductQuantity
+        TotalWebWatchVideoConversionProductValue
+        TotalWebWatchVideoConversionProductValueInMicroUnits
+        TotalWebWatchVideoConversionProductValueInUsd
+        TotalWebWatchVideoConversionProductValueInMicroUsd
+        TotalLeadConversionProductQuantity
+        TotalLeadConversionProductValue
+        TotalLeadConversionProductValueInMicroUnits
+        TotalLeadConversionProductValueInUsd
+        TotalLeadConversionProductValueInMicroUsd
+        TotalWebLeadConversionProductQuantity
+        TotalWebLeadConversionProductValue
+        TotalWebLeadConversionProductValueInMicroUnits
+        TotalWebLeadConversionProductValueInUsd
+        TotalWebLeadConversionProductValueInMicroUsd
+        TotalOfflineLeadConversionProductQuantity
+        TotalOfflineLeadConversionProductValue
+        TotalOfflineLeadConversionProductValueInMicroUnits
+        TotalOfflineLeadConversionProductValueInUsd
+        TotalOfflineLeadConversionProductValueInMicroUsd
+        TotalSearchConversionProductQuantity
+        TotalSearchConversionProductValue
+        TotalSearchConversionProductValueInMicroUnits
+        TotalSearchConversionProductValueInUsd
+        TotalSearchConversionProductValueInMicroUsd
+        TotalWebSearchConversionProductQuantity
+        TotalWebSearchConversionProductValue
+        TotalWebSearchConversionProductValueInMicroUnits
+        TotalWebSearchConversionProductValueInUsd
+        TotalWebSearchConversionProductValueInMicroUsd
+        TotalInappSearchConversionProductQuantity
+        TotalInappSearchConversionProductValue
+        TotalInappSearchConversionProductValueInMicroUnits
+        TotalInappSearchConversionProductValueInUsd
+        TotalInappSearchConversionProductValueInMicroUsd
+        TotalViewCategoryConversionProductQuantity
+        TotalViewCategoryConversionProductValue
+        TotalViewCategoryConversionProductValueInMicroUnits
+        TotalViewCategoryConversionProductValueInUsd
+        TotalViewCategoryConversionProductValueInMicroUsd
+        TotalWebViewCategoryConversionProductQuantity
+        TotalWebViewCategoryConversionProductValue
+        TotalWebViewCategoryConversionProductValueInMicroUnits
+        TotalWebViewCategoryConversionProductValueInUsd
+        TotalWebViewCategoryConversionProductValueInMicroUsd
+        TotalCustomConversionProductQuantity
+        TotalCustomConversionProductValue
+        TotalCustomConversionProductValueInMicroUnits
+        TotalCustomConversionProductValueInUsd
+        TotalCustomConversionProductValueInMicroUsd
+        TotalWebCustomConversionProductQuantity
+        TotalWebCustomConversionProductValue
+        TotalWebCustomConversionProductValueInMicroUnits
+        TotalWebCustomConversionProductValueInUsd
+        TotalWebCustomConversionProductValueInMicroUsd
+        TotalOfflineCustomConversionProductQuantity
+        TotalOfflineCustomConversionProductValue
+        TotalOfflineCustomConversionProductValueInMicroUnits
+        TotalOfflineCustomConversionProductValueInUsd
+        TotalOfflineCustomConversionProductValueInMicroUsd
+        TotalUnknownConversionProductQuantity
+        TotalUnknownConversionProductValue
+        TotalUnknownConversionProductValueInMicroUnits
+        TotalUnknownConversionProductValueInUsd
+        TotalUnknownConversionProductValueInMicroUsd
+        TotalWebUnknownConversionProductQuantity
+        TotalWebUnknownConversionProductValue
+        TotalWebUnknownConversionProductValueInMicroUnits
+        TotalWebUnknownConversionProductValueInUsd
+        TotalWebUnknownConversionProductValueInMicroUsd
+        TotalInappUnknownConversionProductQuantity
+        TotalInappUnknownConversionProductValue
+        TotalInappUnknownConversionProductValueInMicroUnits
+        TotalInappUnknownConversionProductValueInUsd
+        TotalInappUnknownConversionProductValueInMicroUsd
+        TotalOfflineUnknownConversionProductQuantity
+        TotalOfflineUnknownConversionProductValue
+        TotalOfflineUnknownConversionProductValueInMicroUnits
+        TotalOfflineUnknownConversionProductValueInUsd
+        TotalOfflineUnknownConversionProductValueInMicroUsd
+        TotalCheckoutConversionProductCountUnique
+        TotalWebCheckoutConversionProductCountUnique
+        TotalInappCheckoutConversionProductCountUnique
+        TotalOfflineCheckoutConversionProductCountUnique
+        TotalAddToCartConversionProductCountUnique
+        TotalWebAddToCartConversionProductCountUnique
+        TotalInappAddToCartConversionProductCountUnique
+        TotalPageVisitConversionProductCountUnique
+        TotalWebPageVisitConversionProductCountUnique
+        TotalSignupConversionProductCountUnique
+        TotalWebSignupConversionProductCountUnique
+        TotalInappSignupConversionProductCountUnique
+        TotalOfflineSignupConversionProductCountUnique
+        TotalWatchVideoConversionProductCountUnique
+        TotalWebWatchVideoConversionProductCountUnique
+        TotalLeadConversionProductCountUnique
+        TotalWebLeadConversionProductCountUnique
+        TotalOfflineLeadConversionProductCountUnique
+        TotalSearchConversionProductCountUnique
+        TotalWebSearchConversionProductCountUnique
+        TotalInappSearchConversionProductCountUnique
+        TotalViewCategoryConversionProductCountUnique
+        TotalWebViewCategoryConversionProductCountUnique
+        TotalCustomConversionProductCountUnique
+        TotalWebCustomConversionProductCountUnique
+        TotalOfflineCustomConversionProductCountUnique
+        TotalUnknownConversionProductCountUnique
+        TotalWebUnknownConversionProductCountUnique
+        TotalInappUnknownConversionProductCountUnique
+        TotalOfflineUnknownConversionProductCountUnique
         
     #tag EndEnum
 
@@ -1647,8 +1863,12 @@ Protected Class TemplateResponse
 		      Return "CAMPAIGN_NAME"
 		    Case ColumnsEnum.CampaignStatus
 		      Return "CAMPAIGN_STATUS"
+		    Case ColumnsEnum.IsCampaignLearningPhase
+		      Return "IS_CAMPAIGN_LEARNING_PHASE"
 		    Case ColumnsEnum.Date
 		      Return "DATE"
+		    Case ColumnsEnum.DateAsTimestamp
+		      Return "DATE_AS_TIMESTAMP"
 		    Case ColumnsEnum.BudgetInDollar
 		      Return "BUDGET_IN_DOLLAR"
 		    Case ColumnsEnum.AvailableBudgetInDollar
@@ -1813,6 +2033,8 @@ Protected Class TemplateResponse
 		      Return "PRODUCT_ITEM_ID"
 		    Case ColumnsEnum.InternalProductItemId
 		      Return "INTERNAL_PRODUCT_ITEM_ID"
+		    Case ColumnsEnum.InternalProductItemIdStr
+		      Return "INTERNAL_PRODUCT_ITEM_ID_STR"
 		    Case ColumnsEnum.ProductItemName
 		      Return "PRODUCT_ITEM_NAME"
 		    Case ColumnsEnum.ProductItemImageUrl
@@ -1831,6 +2053,14 @@ Protected Class TemplateResponse
 		      Return "SPEND_ORDER_LINE_ID"
 		    Case ColumnsEnum.SpendOrderLinePaidType
 		      Return "SPEND_ORDER_LINE_PAID_TYPE"
+		    Case ColumnsEnum.ConversionProductId
+		      Return "CONVERSION_PRODUCT_ID"
+		    Case ColumnsEnum.ConversionProductName
+		      Return "CONVERSION_PRODUCT_NAME"
+		    Case ColumnsEnum.ConversionProductBrand
+		      Return "CONVERSION_PRODUCT_BRAND"
+		    Case ColumnsEnum.ConversionProductCategory
+		      Return "CONVERSION_PRODUCT_CATEGORY"
 		    Case ColumnsEnum.Clickthrough1
 		      Return "CLICKTHROUGH_1"
 		    Case ColumnsEnum.Repin1
@@ -1909,8 +2139,12 @@ Protected Class TemplateResponse
 		      Return "TOTAL_FLAG"
 		    Case ColumnsEnum.TotalImpressionUser
 		      Return "TOTAL_IMPRESSION_USER"
+		    Case ColumnsEnum.TotalImpressionUserHll
+		      Return "TOTAL_IMPRESSION_USER_HLL"
 		    Case ColumnsEnum.TotalImpressionFrequency
 		      Return "TOTAL_IMPRESSION_FREQUENCY"
+		    Case ColumnsEnum.TotalImpressionFrequencyHll
+		      Return "TOTAL_IMPRESSION_FREQUENCY_HLL"
 		    Case ColumnsEnum.TotalOutboundClick
 		      Return "TOTAL_OUTBOUND_CLICK"
 		    Case ColumnsEnum.CostPerOutboundClickInDollar
@@ -2769,6 +3003,10 @@ Protected Class TemplateResponse
 		      Return "IS_PREMIERE_CAMPAIGN"
 		    Case ColumnsEnum.FlexibleDailyBudgets
 		      Return "FLEXIBLE_DAILY_BUDGETS"
+		    Case ColumnsEnum.IsPerformancePlusCampaign
+		      Return "IS_PERFORMANCE_PLUS_CAMPAIGN"
+		    Case ColumnsEnum.IsDcoFormatEnhancment
+		      Return "IS_DCO_FORMAT_ENHANCMENT"
 		    Case ColumnsEnum.PercentCrossDeviceConversions
 		      Return "PERCENT_CROSS_DEVICE_CONVERSIONS"
 		    Case ColumnsEnum.PageVisitPercentCrossDeviceConversions
@@ -3363,6 +3601,12 @@ Protected Class TemplateResponse
 		      Return "VIDEO_MRC_VIEWS_2"
 		    Case ColumnsEnum.VideoViewRate2
 		      Return "VIDEO_VIEW_RATE_2"
+		    Case ColumnsEnum.PaidVideoView
+		      Return "PAID_VIDEO_VIEW"
+		    Case ColumnsEnum.PaidVideoImpression
+		      Return "PAID_VIDEO_IMPRESSION"
+		    Case ColumnsEnum.PaidVideoViewableRate
+		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum.VideoLength
 		      Return "VIDEO_LENGTH"
 		    Case ColumnsEnum.CpvInMicroDollar
@@ -4343,6 +4587,410 @@ Protected Class TemplateResponse
 		      Return "TARGETING_APPTYPE"
 		    Case ColumnsEnum.TargetingLocationCode
 		      Return "TARGETING_LOCATION_CODE"
+		    Case ColumnsEnum.TargetingMediaType
+		      Return "TARGETING_MEDIA_TYPE"
+		    Case ColumnsEnum.TotalConversionProductQuantity
+		      Return "TOTAL_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebConversionProductQuantity
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappConversionProductQuantity
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalConversionProductValue
+		      Return "TOTAL_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebConversionProductValue
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappConversionProductValue
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineConversionProductValue
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalConversionProductValueInMicroUnits
+		      Return "TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalConversionProductValueInUsd
+		      Return "TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebConversionProductValueInUsd
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappConversionProductValueInUsd
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalConversionProductValueInMicroUsd
+		      Return "TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.ConversionProductCountUnique
+		      Return "CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalCheckoutConversionProductQuantity
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalCheckoutConversionProductValue
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalCheckoutConversionProductValueInUsd
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebCheckoutConversionProductQuantity
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebCheckoutConversionProductValue
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebCheckoutConversionProductValueInUsd
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappCheckoutConversionProductQuantity
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappCheckoutConversionProductValue
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappCheckoutConversionProductValueInUsd
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineCheckoutConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineCheckoutConversionProductValue
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineCheckoutConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalAddToCartConversionProductQuantity
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalAddToCartConversionProductValue
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalAddToCartConversionProductValueInMicroUnits
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalAddToCartConversionProductValueInUsd
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalAddToCartConversionProductValueInMicroUsd
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebAddToCartConversionProductQuantity
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebAddToCartConversionProductValue
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebAddToCartConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebAddToCartConversionProductValueInUsd
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebAddToCartConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappAddToCartConversionProductQuantity
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappAddToCartConversionProductValue
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappAddToCartConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappAddToCartConversionProductValueInUsd
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappAddToCartConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalPageVisitConversionProductQuantity
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalPageVisitConversionProductValue
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalPageVisitConversionProductValueInMicroUnits
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalPageVisitConversionProductValueInUsd
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalPageVisitConversionProductValueInMicroUsd
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebPageVisitConversionProductQuantity
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebPageVisitConversionProductValue
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebPageVisitConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebPageVisitConversionProductValueInUsd
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebPageVisitConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalSignupConversionProductQuantity
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalSignupConversionProductValue
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalSignupConversionProductValueInMicroUnits
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalSignupConversionProductValueInUsd
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalSignupConversionProductValueInMicroUsd
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebSignupConversionProductQuantity
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebSignupConversionProductValue
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebSignupConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebSignupConversionProductValueInUsd
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebSignupConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappSignupConversionProductQuantity
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappSignupConversionProductValue
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappSignupConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappSignupConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappSignupConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineSignupConversionProductQuantity
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineSignupConversionProductValue
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineSignupConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineSignupConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineSignupConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWatchVideoConversionProductQuantity
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWatchVideoConversionProductValue
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWatchVideoConversionProductValueInMicroUnits
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWatchVideoConversionProductValueInUsd
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWatchVideoConversionProductValueInMicroUsd
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebWatchVideoConversionProductQuantity
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebWatchVideoConversionProductValue
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebWatchVideoConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebWatchVideoConversionProductValueInUsd
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebWatchVideoConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalLeadConversionProductQuantity
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalLeadConversionProductValue
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalLeadConversionProductValueInMicroUnits
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalLeadConversionProductValueInUsd
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalLeadConversionProductValueInMicroUsd
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebLeadConversionProductQuantity
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebLeadConversionProductValue
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebLeadConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebLeadConversionProductValueInUsd
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebLeadConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineLeadConversionProductQuantity
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineLeadConversionProductValue
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineLeadConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineLeadConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineLeadConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalSearchConversionProductQuantity
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalSearchConversionProductValue
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalSearchConversionProductValueInMicroUnits
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalSearchConversionProductValueInUsd
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalSearchConversionProductValueInMicroUsd
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebSearchConversionProductQuantity
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebSearchConversionProductValue
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebSearchConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebSearchConversionProductValueInUsd
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebSearchConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappSearchConversionProductQuantity
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappSearchConversionProductValue
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappSearchConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappSearchConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappSearchConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalViewCategoryConversionProductQuantity
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalViewCategoryConversionProductValue
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalViewCategoryConversionProductValueInMicroUnits
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalViewCategoryConversionProductValueInUsd
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalViewCategoryConversionProductValueInMicroUsd
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebViewCategoryConversionProductQuantity
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebViewCategoryConversionProductValue
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebViewCategoryConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebViewCategoryConversionProductValueInUsd
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebViewCategoryConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalCustomConversionProductQuantity
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalCustomConversionProductValue
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalCustomConversionProductValueInMicroUnits
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalCustomConversionProductValueInUsd
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalCustomConversionProductValueInMicroUsd
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebCustomConversionProductQuantity
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebCustomConversionProductValue
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebCustomConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebCustomConversionProductValueInUsd
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebCustomConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineCustomConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineCustomConversionProductValue
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineCustomConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineCustomConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineCustomConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalUnknownConversionProductQuantity
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalUnknownConversionProductValue
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalUnknownConversionProductValueInMicroUnits
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalUnknownConversionProductValueInUsd
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalUnknownConversionProductValueInMicroUsd
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebUnknownConversionProductQuantity
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebUnknownConversionProductValue
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebUnknownConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebUnknownConversionProductValueInUsd
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebUnknownConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappUnknownConversionProductQuantity
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappUnknownConversionProductValue
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappUnknownConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappUnknownConversionProductValueInUsd
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappUnknownConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineUnknownConversionProductQuantity
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineUnknownConversionProductValue
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineUnknownConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineUnknownConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineUnknownConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalCheckoutConversionProductCountUnique
+		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebCheckoutConversionProductCountUnique
+		      Return "TOTAL_WEB_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappCheckoutConversionProductCountUnique
+		      Return "TOTAL_INAPP_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineCheckoutConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalAddToCartConversionProductCountUnique
+		      Return "TOTAL_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebAddToCartConversionProductCountUnique
+		      Return "TOTAL_WEB_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappAddToCartConversionProductCountUnique
+		      Return "TOTAL_INAPP_ADD_TO_CART_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalPageVisitConversionProductCountUnique
+		      Return "TOTAL_PAGE_VISIT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebPageVisitConversionProductCountUnique
+		      Return "TOTAL_WEB_PAGE_VISIT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalSignupConversionProductCountUnique
+		      Return "TOTAL_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebSignupConversionProductCountUnique
+		      Return "TOTAL_WEB_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappSignupConversionProductCountUnique
+		      Return "TOTAL_INAPP_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineSignupConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_SIGNUP_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWatchVideoConversionProductCountUnique
+		      Return "TOTAL_WATCH_VIDEO_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebWatchVideoConversionProductCountUnique
+		      Return "TOTAL_WEB_WATCH_VIDEO_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalLeadConversionProductCountUnique
+		      Return "TOTAL_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebLeadConversionProductCountUnique
+		      Return "TOTAL_WEB_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineLeadConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_LEAD_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalSearchConversionProductCountUnique
+		      Return "TOTAL_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebSearchConversionProductCountUnique
+		      Return "TOTAL_WEB_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappSearchConversionProductCountUnique
+		      Return "TOTAL_INAPP_SEARCH_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalViewCategoryConversionProductCountUnique
+		      Return "TOTAL_VIEW_CATEGORY_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebViewCategoryConversionProductCountUnique
+		      Return "TOTAL_WEB_VIEW_CATEGORY_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalCustomConversionProductCountUnique
+		      Return "TOTAL_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebCustomConversionProductCountUnique
+		      Return "TOTAL_WEB_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineCustomConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_CUSTOM_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalUnknownConversionProductCountUnique
+		      Return "TOTAL_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebUnknownConversionProductCountUnique
+		      Return "TOTAL_WEB_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappUnknownConversionProductCountUnique
+		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineUnknownConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE"
 		    
 		  End Select
 		  Return ""

@@ -27,9 +27,9 @@ public class BulkDownloadRequestCampaignFilter   {
 
   private String name;
 
-  private List<CampaignSummaryStatus> campaignStatus;
+  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
 
-  private List<ObjectiveType> objectiveType;
+  private List<ObjectiveType> objectiveType = new ArrayList<>();
 
   /**
    * Unix UTC timestamp.

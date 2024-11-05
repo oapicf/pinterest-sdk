@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdPinId")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdPinId   {
-  private @Valid String pinId;
+  private String pinId;
 
   /**
    * Pin ID.
@@ -30,7 +30,7 @@ public class AdPinId   {
   
   @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
   @JsonProperty("pin_id")
- @Pattern(regexp="^\\d+$")  public String getPinId() {
+   @Pattern(regexp="^\\d+$")public String getPinId() {
     return pinId;
   }
 

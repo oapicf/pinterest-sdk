@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsItemResponse;
 import org.openapitools.model.CatalogsHotelItemResponse;
 import org.openapitools.model.CatalogsRetailItemResponse;
 import org.openapitools.model.CatalogsType;
@@ -70,6 +71,14 @@ public class ItemResponseAnyOfTest {
     @Test
     public void hotelIdTest() {
         // TODO: test hotelId
+    }
+
+    /**
+     * Test the property 'creativeAssetsId'
+     */
+    @Test
+    public void creativeAssetsIdTest() {
+        // TODO: test creativeAssetsId
     }
 
 }

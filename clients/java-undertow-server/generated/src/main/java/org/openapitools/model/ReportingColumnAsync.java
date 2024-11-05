@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -559,7 +559,15 @@ public enum ReportingColumnAsync {
         
         TOTAL_CUSTOM("TOTAL_CUSTOM"),
         
+        TOTAL_ADD_TO_CART("TOTAL_ADD_TO_CART"),
+        
         TOTAL_LEAD("TOTAL_LEAD"),
+        
+        TOTAL_SEARCH("TOTAL_SEARCH"),
+        
+        TOTAL_WATCH_VIDEO("TOTAL_WATCH_VIDEO"),
+        
+        TOTAL_VIEW_CATEGORY("TOTAL_VIEW_CATEGORY"),
         
         TOTAL_APP_INSTALL("TOTAL_APP_INSTALL"),
         
@@ -568,6 +576,16 @@ public enum ReportingColumnAsync {
         TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR("TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"),
         
         TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR("TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"),
+        
+        TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR("TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR"),
+        
+        TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR("TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR"),
+        
+        TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR("TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR"),
+        
+        TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR("TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR"),
+        
+        TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR("TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR"),
         
         TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR("TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"),
         
@@ -583,7 +601,7 @@ public enum ReportingColumnAsync {
         
         CUSTOM_ROAS("CUSTOM_ROAS"),
         
-        VIDEO_3SEC_VIEWS_1("VIDEO_3SEC_VIEWS_1"),
+        VIDEO_3_SEC_VIEWS_1("VIDEO_3SEC_VIEWS_1"),
         
         VIDEO_P100_COMPLETE_1("VIDEO_P100_COMPLETE_1"),
         
@@ -599,7 +617,7 @@ public enum ReportingColumnAsync {
         
         VIDEO_MRC_VIEWS_1("VIDEO_MRC_VIEWS_1"),
         
-        VIDEO_3SEC_VIEWS_2("VIDEO_3SEC_VIEWS_2"),
+        VIDEO_3_SEC_VIEWS_2("VIDEO_3SEC_VIEWS_2"),
         
         VIDEO_P100_COMPLETE_2("VIDEO_P100_COMPLETE_2"),
         
@@ -615,6 +633,8 @@ public enum ReportingColumnAsync {
         
         VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
         
+        PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
+        
         VIDEO_LENGTH("VIDEO_LENGTH"),
         
         CPV_IN_MICRO_DOLLAR("CPV_IN_MICRO_DOLLAR"),
@@ -629,7 +649,7 @@ public enum ReportingColumnAsync {
         
         ECPCV_P95_IN_DOLLAR("ECPCV_P95_IN_DOLLAR"),
         
-        TOTAL_VIDEO_3SEC_VIEWS("TOTAL_VIDEO_3SEC_VIEWS"),
+        TOTAL_VIDEO_3_SEC_VIEWS("TOTAL_VIDEO_3SEC_VIEWS"),
         
         TOTAL_VIDEO_P100_COMPLETE("TOTAL_VIDEO_P100_COMPLETE"),
         
@@ -650,6 +670,8 @@ public enum ReportingColumnAsync {
         VIDEO_AVG_WATCHTIME_IN_SECOND_2("VIDEO_AVG_WATCHTIME_IN_SECOND_2"),
         
         TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND("TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"),
+        
+        TOTAL_DESTINATION_VIEWS("TOTAL_DESTINATION_VIEWS"),
         
         TOTAL_REPIN_RATE("TOTAL_REPIN_RATE"),
         

@@ -9,9 +9,12 @@ import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.Error
+import org.openapitools.server.model.LeadFormArrayResponse
+import org.openapitools.server.model.LeadFormCreateRequest
 import org.openapitools.server.model.LeadFormResponse
 import org.openapitools.server.model.LeadFormTestRequest
 import org.openapitools.server.model.LeadFormTestResponse
+import org.openapitools.server.model.LeadFormUpdateRequest
 import org.openapitools.server.model.LeadFormsList200Response
 
 
@@ -39,10 +42,24 @@ import LeadFormsApiPatterns.leadFormIdPattern
       }
     } ~
     path("ad_accounts" / adAccountIdPattern / "lead_forms") { (adAccountId) => 
+      post {  
+            entity(as[Seq[LeadFormCreateRequest]]){ leadFormCreateRequest =>
+              leadFormsService.leadFormsCreate(adAccountId = adAccountId, leadFormCreateRequest = leadFormCreateRequest)
+            }
+      }
+    } ~
+    path("ad_accounts" / adAccountIdPattern / "lead_forms") { (adAccountId) => 
       get { 
         parameters("page_size".as[Int].?(25), "order".as[String].?, "bookmark".as[String].?) { (pageSize, order, bookmark) => 
             leadFormsService.leadFormsList(adAccountId = adAccountId, pageSize = pageSize, order = order, bookmark = bookmark)
         }
+      }
+    } ~
+    path("ad_accounts" / adAccountIdPattern / "lead_forms") { (adAccountId) => 
+      patch {  
+            entity(as[Seq[LeadFormUpdateRequest]]){ leadFormUpdateRequest =>
+              leadFormsService.leadFormsUpdate(adAccountId = adAccountId, leadFormUpdateRequest = leadFormUpdateRequest)
+            }
       }
     }
 }
@@ -89,6 +106,20 @@ trait LeadFormsApiService {
   def leadFormTestCreate(adAccountId: String, leadFormId: String, leadFormTestRequest: LeadFormTestRequest)
       (implicit toEntityMarshallerLeadFormTestResponse: ToEntityMarshaller[LeadFormTestResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
+  def leadFormsCreate200(responseLeadFormArrayResponse: LeadFormArrayResponse)(implicit toEntityMarshallerLeadFormArrayResponse: ToEntityMarshaller[LeadFormArrayResponse]): Route =
+    complete((200, responseLeadFormArrayResponse))
+  def leadFormsCreate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def leadFormsCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Success, DataType: LeadFormArrayResponse
+   * Code: 400, Message: Invalid ad account lead forms parameters., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def leadFormsCreate(adAccountId: String, leadFormCreateRequest: Seq[LeadFormCreateRequest])
+      (implicit toEntityMarshallerLeadFormArrayResponse: ToEntityMarshaller[LeadFormArrayResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
   def leadFormsList200(responseLeadFormsList200Response: LeadFormsList200Response)(implicit toEntityMarshallerLeadFormsList200Response: ToEntityMarshaller[LeadFormsList200Response]): Route =
     complete((200, responseLeadFormsList200Response))
   def leadFormsList400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -103,14 +134,34 @@ trait LeadFormsApiService {
   def leadFormsList(adAccountId: String, pageSize: Int, order: Option[String], bookmark: Option[String])
       (implicit toEntityMarshallerLeadFormsList200Response: ToEntityMarshaller[LeadFormsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
+  def leadFormsUpdate200(responseLeadFormArrayResponse: LeadFormArrayResponse)(implicit toEntityMarshallerLeadFormArrayResponse: ToEntityMarshaller[LeadFormArrayResponse]): Route =
+    complete((200, responseLeadFormArrayResponse))
+  def leadFormsUpdate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def leadFormsUpdateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Success, DataType: LeadFormArrayResponse
+   * Code: 400, Message: Invalid ad account lead forms parameters., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def leadFormsUpdate(adAccountId: String, leadFormUpdateRequest: Seq[LeadFormUpdateRequest])
+      (implicit toEntityMarshallerLeadFormArrayResponse: ToEntityMarshaller[LeadFormArrayResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
 }
 
 trait LeadFormsApiMarshaller {
+  implicit def fromEntityUnmarshallerLeadFormUpdateRequestList: FromEntityUnmarshaller[Seq[LeadFormUpdateRequest]]
+
   implicit def fromEntityUnmarshallerLeadFormTestRequest: FromEntityUnmarshaller[LeadFormTestRequest]
+
+  implicit def fromEntityUnmarshallerLeadFormCreateRequestList: FromEntityUnmarshaller[Seq[LeadFormCreateRequest]]
 
 
 
   implicit def toEntityMarshallerLeadFormResponse: ToEntityMarshaller[LeadFormResponse]
+
+  implicit def toEntityMarshallerLeadFormArrayResponse: ToEntityMarshaller[LeadFormArrayResponse]
 
   implicit def toEntityMarshallerLeadFormTestResponse: ToEntityMarshaller[LeadFormTestResponse]
 

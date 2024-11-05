@@ -7,10 +7,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.TrackingUrls;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,7 +25,7 @@ import javax.annotation.Generated;
  * CampaignUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignUpdateRequest {
 
   private String id;
@@ -35,7 +34,7 @@ public class CampaignUpdateRequest {
 
   private String name;
 
-  private JsonNullable<EntityStatus> status = JsonNullable.<EntityStatus>undefined();
+  private EntityStatus status;
 
   private JsonNullable<Integer> lifetimeSpendCap = JsonNullable.<Integer>undefined();
 
@@ -43,13 +42,11 @@ public class CampaignUpdateRequest {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> orderLineId = JsonNullable.<String>undefined();
 
-  private JsonNullable<AdCommonTrackingUrls> trackingUrls = JsonNullable.<AdCommonTrackingUrls>undefined();
+  private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
   private JsonNullable<Integer> startTime = JsonNullable.<Integer>undefined();
 
   private JsonNullable<Integer> endTime = JsonNullable.<Integer>undefined();
-
-  private CampaignSummaryStatus summaryStatus;
 
   private JsonNullable<Boolean> isFlexibleDailyBudgets = JsonNullable.<Boolean>undefined();
 
@@ -81,7 +78,7 @@ public class CampaignUpdateRequest {
   /**
    * Campaign ID.
    * @return id
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "549755885175", description = "Campaign ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
@@ -101,7 +98,7 @@ public class CampaignUpdateRequest {
   /**
    * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
    * @return adAccountId
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ad_account_id")
@@ -121,7 +118,7 @@ public class CampaignUpdateRequest {
   /**
    * Campaign name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "ACME Tools", description = "Campaign name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -134,22 +131,22 @@ public class CampaignUpdateRequest {
   }
 
   public CampaignUpdateRequest status(EntityStatus status) {
-    this.status = JsonNullable.of(status);
+    this.status = status;
     return this;
   }
 
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public JsonNullable<EntityStatus> getStatus() {
+  public EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(JsonNullable<EntityStatus> status) {
+  public void setStatus(EntityStatus status) {
     this.status = status;
   }
 
@@ -161,7 +158,7 @@ public class CampaignUpdateRequest {
   /**
    * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
    * @return lifetimeSpendCap
-  */
+   */
   
   @Schema(name = "lifetime_spend_cap", example = "1432744744", description = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lifetime_spend_cap")
@@ -181,7 +178,7 @@ public class CampaignUpdateRequest {
   /**
    * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
    * @return dailySpendCap
-  */
+   */
   
   @Schema(name = "daily_spend_cap", example = "1432744744", description = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("daily_spend_cap")
@@ -201,7 +198,7 @@ public class CampaignUpdateRequest {
   /**
    * Order line ID that appears on the invoice.
    * @return orderLineId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "order_line_id", example = "549755885175", description = "Order line ID that appears on the invoice.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_line_id")
@@ -213,7 +210,7 @@ public class CampaignUpdateRequest {
     this.orderLineId = orderLineId;
   }
 
-  public CampaignUpdateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
   }
@@ -221,15 +218,15 @@ public class CampaignUpdateRequest {
   /**
    * Get trackingUrls
    * @return trackingUrls
-  */
+   */
   @Valid 
   @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_urls")
-  public JsonNullable<AdCommonTrackingUrls> getTrackingUrls() {
+  public JsonNullable<TrackingUrls> getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(JsonNullable<AdCommonTrackingUrls> trackingUrls) {
+  public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -241,7 +238,7 @@ public class CampaignUpdateRequest {
   /**
    * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
    * @return startTime
-  */
+   */
   
   @Schema(name = "start_time", example = "1580865126", description = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_time")
@@ -261,7 +258,7 @@ public class CampaignUpdateRequest {
   /**
    * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
    * @return endTime
-  */
+   */
   
   @Schema(name = "end_time", example = "1644023526", description = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_time")
@@ -273,26 +270,6 @@ public class CampaignUpdateRequest {
     this.endTime = endTime;
   }
 
-  public CampaignUpdateRequest summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-    return this;
-  }
-
-  /**
-   * Get summaryStatus
-   * @return summaryStatus
-  */
-  @Valid 
-  @Schema(name = "summary_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-  }
-
   public CampaignUpdateRequest isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
     this.isFlexibleDailyBudgets = JsonNullable.of(isFlexibleDailyBudgets);
     return this;
@@ -301,7 +278,7 @@ public class CampaignUpdateRequest {
   /**
    * Determine if a campaign has flexible daily budgets setup.
    * @return isFlexibleDailyBudgets
-  */
+   */
   
   @Schema(name = "is_flexible_daily_budgets", example = "true", description = "Determine if a campaign has flexible daily budgets setup.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_flexible_daily_budgets")
@@ -321,7 +298,7 @@ public class CampaignUpdateRequest {
   /**
    * When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
    * @return defaultAdGroupBudgetInMicroCurrency
-  */
+   */
   
   @Schema(name = "default_ad_group_budget_in_micro_currency", example = "0", description = "When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("default_ad_group_budget_in_micro_currency")
@@ -341,7 +318,7 @@ public class CampaignUpdateRequest {
   /**
    * Specifies whether the campaign was created in the automated campaign flow
    * @return isAutomatedCampaign
-  */
+   */
   
   @Schema(name = "is_automated_campaign", example = "true", description = "Specifies whether the campaign was created in the automated campaign flow", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_automated_campaign")
@@ -361,7 +338,7 @@ public class CampaignUpdateRequest {
   /**
    * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
    * @return isCampaignBudgetOptimization
-  */
+   */
   
   @Schema(name = "is_campaign_budget_optimization", example = "true", description = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_campaign_budget_optimization")
@@ -381,7 +358,7 @@ public class CampaignUpdateRequest {
   /**
    * Get objectiveType
    * @return objectiveType
-  */
+   */
   @Valid 
   @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
@@ -405,14 +382,13 @@ public class CampaignUpdateRequest {
     return Objects.equals(this.id, campaignUpdateRequest.id) &&
         Objects.equals(this.adAccountId, campaignUpdateRequest.adAccountId) &&
         Objects.equals(this.name, campaignUpdateRequest.name) &&
-        equalsNullable(this.status, campaignUpdateRequest.status) &&
+        Objects.equals(this.status, campaignUpdateRequest.status) &&
         equalsNullable(this.lifetimeSpendCap, campaignUpdateRequest.lifetimeSpendCap) &&
         equalsNullable(this.dailySpendCap, campaignUpdateRequest.dailySpendCap) &&
         equalsNullable(this.orderLineId, campaignUpdateRequest.orderLineId) &&
         equalsNullable(this.trackingUrls, campaignUpdateRequest.trackingUrls) &&
         equalsNullable(this.startTime, campaignUpdateRequest.startTime) &&
         equalsNullable(this.endTime, campaignUpdateRequest.endTime) &&
-        Objects.equals(this.summaryStatus, campaignUpdateRequest.summaryStatus) &&
         equalsNullable(this.isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
         equalsNullable(this.defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         equalsNullable(this.isAutomatedCampaign, campaignUpdateRequest.isAutomatedCampaign) &&
@@ -426,7 +402,7 @@ public class CampaignUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, hashCodeNullable(status), hashCodeNullable(lifetimeSpendCap), hashCodeNullable(dailySpendCap), hashCodeNullable(orderLineId), hashCodeNullable(trackingUrls), hashCodeNullable(startTime), hashCodeNullable(endTime), summaryStatus, hashCodeNullable(isFlexibleDailyBudgets), hashCodeNullable(defaultAdGroupBudgetInMicroCurrency), hashCodeNullable(isAutomatedCampaign), hashCodeNullable(isCampaignBudgetOptimization), hashCodeNullable(objectiveType));
+    return Objects.hash(id, adAccountId, name, status, hashCodeNullable(lifetimeSpendCap), hashCodeNullable(dailySpendCap), hashCodeNullable(orderLineId), hashCodeNullable(trackingUrls), hashCodeNullable(startTime), hashCodeNullable(endTime), hashCodeNullable(isFlexibleDailyBudgets), hashCodeNullable(defaultAdGroupBudgetInMicroCurrency), hashCodeNullable(isAutomatedCampaign), hashCodeNullable(isCampaignBudgetOptimization), hashCodeNullable(objectiveType));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -450,7 +426,6 @@ public class CampaignUpdateRequest {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

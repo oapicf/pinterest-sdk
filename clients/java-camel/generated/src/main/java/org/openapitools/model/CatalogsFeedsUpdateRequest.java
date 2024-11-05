@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
 
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
@@ -57,7 +57,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * Get defaultAvailability
    * @return defaultAvailability
-  */
+   */
   @Valid 
   @Schema(name = "default_availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("default_availability")
@@ -77,7 +77,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * Get defaultCurrency
    * @return defaultCurrency
-  */
+   */
   @Valid 
   @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("default_currency")
@@ -97,7 +97,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * A human-friendly name associated to a given feed.
    * @return name
-  */
+   */
   
   @Schema(name = "name", description = "A human-friendly name associated to a given feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -117,7 +117,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * Get format
    * @return format
-  */
+   */
   @Valid 
   @Schema(name = "format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("format")
@@ -137,7 +137,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * Get credentials
    * @return credentials
-  */
+   */
   @Valid 
   @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("credentials")
@@ -157,7 +157,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  */
+   */
   @Pattern(regexp = "^(http|https|ftp|sftp)://") 
   @Schema(name = "location", description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("location")
@@ -177,7 +177,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  */
+   */
   @Valid 
   @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("preferred_processing_schedule")
@@ -197,7 +197,7 @@ public class CatalogsFeedsUpdateRequest implements FeedsUpdateRequest {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")

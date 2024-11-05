@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinResult", description = "The result, and link out, based on the user’s choice.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QuizPinResult {
 
   private String organicPinId;
@@ -41,7 +41,7 @@ public class QuizPinResult {
   /**
    * Get organicPinId
    * @return organicPinId
-  */
+   */
   
   @Schema(name = "organic_pin_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("organic_pin_id")
@@ -61,7 +61,7 @@ public class QuizPinResult {
   /**
    * Get androidDeepLink
    * @return androidDeepLink
-  */
+   */
   
   @Schema(name = "android_deep_link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("android_deep_link")
@@ -81,7 +81,7 @@ public class QuizPinResult {
   /**
    * Get iosDeepLink
    * @return iosDeepLink
-  */
+   */
   
   @Schema(name = "ios_deep_link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ios_deep_link")
@@ -101,7 +101,7 @@ public class QuizPinResult {
   /**
    * Get destinationUrl
    * @return destinationUrl
-  */
+   */
   
   @Schema(name = "destination_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("destination_url")
@@ -121,7 +121,7 @@ public class QuizPinResult {
   /**
    * Get resultId
    * @return resultId
-  */
+   */
   @Valid 
   @Schema(name = "result_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("result_id")

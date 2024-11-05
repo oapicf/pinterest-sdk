@@ -22,7 +22,7 @@ import org.openapitools.model.HotelProcessingRecord;
  **/
 
 @ApiModel(description = "Object describing the catalogs hotel items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemsBatch   {
   @JsonProperty("batch_id")
   private String batchId;
@@ -61,7 +61,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
   /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    **/
   public CatalogsHotelItemsBatch createdTime(Date createdTime) {
     this.createdTime = createdTime;
@@ -69,7 +69,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("created_time")
   public Date getCreatedTime() {
     return createdTime;
@@ -79,7 +79,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
   /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    **/
   public CatalogsHotelItemsBatch completedTime(Date completedTime) {
     this.completedTime = completedTime;
@@ -87,7 +87,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("completed_time")
   public Date getCompletedTime() {
     return completedTime;

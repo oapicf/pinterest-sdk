@@ -122,8 +122,8 @@ object KeywordsApi {
         * @return An endpoint representing a TrendingKeywordsResponse
         */
         private def trendingKeywords/list(da: DataAccessor): Endpoint[TrendingKeywordsResponse] =
-        get("trends" :: "keywords" :: trendssupportedregion :: "top" :: trendtype :: params("interests") :: params("genders") :: params("ages") :: paramOption("normalize_against_group").map(_.map(_.toBoolean)) :: paramOption("limit").map(_.map(_.toInt))) { (region: TrendsSupportedRegion, trendType: TrendType, interests: Seq[String], genders: Seq[String], ages: Seq[String], normalizeAgainstGroup: Option[Boolean], limit: Option[Int]) =>
-          da.Keywords_trendingKeywords/list(region, trendType, interests, genders, ages, normalizeAgainstGroup, limit) match {
+        get("trends" :: "keywords" :: trendssupportedregion :: "top" :: trendtype :: params("interests") :: params("genders") :: params("ages") :: params("include_keywords") :: paramOption("normalize_against_group").map(_.map(_.toBoolean)) :: paramOption("limit").map(_.map(_.toInt))) { (region: TrendsSupportedRegion, trendType: TrendType, interests: Seq[String], genders: Seq[String], ages: Seq[String], includeKeywords: Seq[String], normalizeAgainstGroup: Option[Boolean], limit: Option[Int]) =>
+          da.Keywords_trendingKeywords/list(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

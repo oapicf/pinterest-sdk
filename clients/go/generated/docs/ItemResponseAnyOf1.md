@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ItemId** | Pointer to **string** | The catalog item id in the merchant namespace | [optional] 
 **Errors** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] 
 **HotelId** | Pointer to **string** | The catalog hotel id in the merchant namespace | [optional] 
+**CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
 
 ## Methods
 
@@ -122,6 +123,31 @@ SetHotelId sets HotelId field to given value.
 `func (o *ItemResponseAnyOf1) HasHotelId() bool`
 
 HasHotelId returns a boolean if a field has been set.
+
+### GetCreativeAssetsId
+
+`func (o *ItemResponseAnyOf1) GetCreativeAssetsId() string`
+
+GetCreativeAssetsId returns the CreativeAssetsId field if non-nil, zero value otherwise.
+
+### GetCreativeAssetsIdOk
+
+`func (o *ItemResponseAnyOf1) GetCreativeAssetsIdOk() (*string, bool)`
+
+GetCreativeAssetsIdOk returns a tuple with the CreativeAssetsId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreativeAssetsId
+
+`func (o *ItemResponseAnyOf1) SetCreativeAssetsId(v string)`
+
+SetCreativeAssetsId sets CreativeAssetsId field to given value.
+
+### HasCreativeAssetsId
+
+`func (o *ItemResponseAnyOf1) HasCreativeAssetsId() bool`
+
+HasCreativeAssetsId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

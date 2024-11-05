@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedProductCounts", description = "The counts can be null early in the process.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedProductCounts {
 
   private Integer original;
@@ -34,7 +34,7 @@ public class CatalogsFeedProductCounts {
   /**
    * The number of products in the feed file.
    * @return original
-  */
+   */
   
   @Schema(name = "original", description = "The number of products in the feed file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("original")
@@ -54,7 +54,7 @@ public class CatalogsFeedProductCounts {
   /**
    * The number of products successfully ingested from the feed file.
    * @return ingested
-  */
+   */
   
   @Schema(name = "ingested", description = "The number of products successfully ingested from the feed file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ingested")

@@ -13,7 +13,7 @@ import PinMediaWithVideo._
 
 case class PinMediaWithVideo (
   mediaType: Option[String],
-images: Option[ImageMetadataImages],
+images: Option[PinMediaWithImageAllOfImages],
 coverImageUrl: Option[String],
 /* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
   videoUrl: Option[String],

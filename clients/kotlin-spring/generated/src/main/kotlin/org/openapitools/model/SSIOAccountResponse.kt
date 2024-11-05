@@ -45,7 +45,7 @@ data class SSIOAccountResponse(
 
     @Schema(example = "No Error", description = "Error indicator from Salesforce which could be \"No Error\"")
     @get:JsonProperty("error") val error: kotlin.String? = null
-) {
+    ) {
 
 }
 

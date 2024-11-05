@@ -58,7 +58,7 @@ data class IntegrationLogClientError(
 
     @Schema(example = "null", description = "Stack trace of where the error happened.")
     @get:JsonProperty("stack_trace") val stackTrace: kotlin.String? = null
-) {
+    ) {
 
 }
 

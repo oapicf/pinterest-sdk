@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 ```powershell
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```powershell
@@ -249,6 +249,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ClientId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OauthSignature] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Timestamp] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get targeting options
 
@@ -265,10 +266,11 @@ $TargetingType = "APPTYPE" # String | Public targeting type.
 $ClientId = "1094834" # String | Client ID. (optional)
 $OauthSignature = "8209f" # String | Oauth signature (optional)
 $Timestamp = "1618338184277" # String | Timestamp (optional)
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Get targeting options
 try {
-    $Result = Invoke-TargetingOptionsGet -TargetingType $TargetingType -ClientId $ClientId -OauthSignature $OauthSignature -Timestamp $Timestamp
+    $Result = Invoke-TargetingOptionsGet -TargetingType $TargetingType -ClientId $ClientId -OauthSignature $OauthSignature -Timestamp $Timestamp -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-TargetingOptionsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -283,6 +285,7 @@ Name | Type | Description  | Notes
  **ClientId** | **String**| Client ID. | [optional] 
  **OauthSignature** | **String**| Oauth signature | [optional] 
  **Timestamp** | **String**| Timestamp | [optional] 
+ **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 

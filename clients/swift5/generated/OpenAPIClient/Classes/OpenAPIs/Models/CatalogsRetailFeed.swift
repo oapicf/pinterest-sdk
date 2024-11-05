@@ -13,9 +13,9 @@ import AnyCodable
 /** Catalogs Retail Feed object */
 public struct CatalogsRetailFeed: Codable, JSONEncodable, Hashable {
 
-    public var createdAt: Date?
-    public var id: String?
-    public var updatedAt: Date?
+    public var createdAt: Date
+    public var id: String
+    public var updatedAt: Date
     /** A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     public var name: String?
     public var format: CatalogsFormat
@@ -31,7 +31,7 @@ public struct CatalogsRetailFeed: Codable, JSONEncodable, Hashable {
     public var defaultCountry: Country
     public var defaultAvailability: ProductAvailabilityType?
 
-    public init(createdAt: Date? = nil, id: String? = nil, updatedAt: Date? = nil, name: String?, format: CatalogsFormat, catalogType: CatalogsType, credentials: CatalogsFeedCredentials?, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule?, status: CatalogsStatus, defaultCurrency: NullableCurrency?, defaultLocale: String, defaultCountry: Country, defaultAvailability: ProductAvailabilityType?) {
+    public init(createdAt: Date, id: String, updatedAt: Date, name: String?, format: CatalogsFormat, catalogType: CatalogsType, credentials: CatalogsFeedCredentials?, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule?, status: CatalogsStatus, defaultCurrency: NullableCurrency?, defaultLocale: String, defaultCountry: Country, defaultAvailability: ProductAvailabilityType?) {
         self.createdAt = createdAt
         self.id = id
         self.updatedAt = updatedAt
@@ -69,9 +69,9 @@ public struct CatalogsRetailFeed: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
+        try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(id, forKey: .id)
+        try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(name, forKey: .name)
         try container.encode(format, forKey: .format)
         try container.encode(catalogType, forKey: .catalogType)

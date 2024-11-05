@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationRequestPatch", description = "Schema used for updating the integration metadata.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationRequestPatch {
 
   private String connectedMerchantId;
@@ -55,7 +55,7 @@ public class IntegrationRequestPatch {
   /**
    * Get connectedMerchantId
    * @return connectedMerchantId
-  */
+   */
   
   @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_merchant_id")
@@ -75,7 +75,7 @@ public class IntegrationRequestPatch {
   /**
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
-  */
+   */
   
   @Schema(name = "connected_advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
@@ -95,7 +95,7 @@ public class IntegrationRequestPatch {
   /**
    * Get connectedLbaId
    * @return connectedLbaId
-  */
+   */
   
   @Schema(name = "connected_lba_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_lba_id")
@@ -115,7 +115,7 @@ public class IntegrationRequestPatch {
   /**
    * Get connectedTagId
    * @return connectedTagId
-  */
+   */
   
   @Schema(name = "connected_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_tag_id")
@@ -135,7 +135,7 @@ public class IntegrationRequestPatch {
   /**
    * Get partnerAccessToken
    * @return partnerAccessToken
-  */
+   */
   
   @Schema(name = "partner_access_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token")
@@ -155,7 +155,7 @@ public class IntegrationRequestPatch {
   /**
    * Get partnerRefreshToken
    * @return partnerRefreshToken
-  */
+   */
   
   @Schema(name = "partner_refresh_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token")
@@ -175,7 +175,7 @@ public class IntegrationRequestPatch {
   /**
    * Get partnerPrimaryEmail
    * @return partnerPrimaryEmail
-  */
+   */
   
   @Schema(name = "partner_primary_email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_primary_email")
@@ -195,7 +195,7 @@ public class IntegrationRequestPatch {
   /**
    * Get partnerAccessTokenExpiry
    * @return partnerAccessTokenExpiry
-  */
+   */
   @Valid 
   @Schema(name = "partner_access_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token_expiry")
@@ -215,7 +215,7 @@ public class IntegrationRequestPatch {
   /**
    * Get partnerRefreshTokenExpiry
    * @return partnerRefreshTokenExpiry
-  */
+   */
   @Valid 
   @Schema(name = "partner_refresh_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token_expiry")
@@ -235,7 +235,7 @@ public class IntegrationRequestPatch {
   /**
    * Get scopes
    * @return scopes
-  */
+   */
   
   @Schema(name = "scopes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scopes")
@@ -255,7 +255,7 @@ public class IntegrationRequestPatch {
   /**
    * Get additionalId1
    * @return additionalId1
-  */
+   */
   
   @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_id_1")
@@ -275,7 +275,7 @@ public class IntegrationRequestPatch {
   /**
    * Get partnerMetadata
    * @return partnerMetadata
-  */
+   */
   
   @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_metadata")

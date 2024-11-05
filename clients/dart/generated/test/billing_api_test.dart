@@ -19,7 +19,7 @@ void main() {
   group('tests for BillingApi', () {
     // Redeem ad credits
     //
-    // Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+    // Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
     //
     //Future<AdsCreditRedeemResponse> adsCreditRedeem(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) async
     test('test adsCreditRedeem', () async {
@@ -28,7 +28,7 @@ void main() {
 
     // Get ads credit discounts
     //
-    // Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+    // Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
     //
     //Future<AdsCreditsDiscountsGet200Response> adsCreditsDiscountsGet(String adAccountId, { String bookmark, int pageSize }) async
     test('test adsCreditsDiscountsGet', () async {
@@ -37,7 +37,7 @@ void main() {
 
     // Get billing profiles
     //
-    // Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+    // Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
     //
     //Future<BillingProfilesGet200Response> billingProfilesGet(String adAccountId, bool isActive, { String bookmark, int pageSize }) async
     test('test billingProfilesGet', () async {

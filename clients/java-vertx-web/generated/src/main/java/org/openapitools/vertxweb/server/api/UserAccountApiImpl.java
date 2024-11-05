@@ -79,11 +79,11 @@ public class UserAccountApiImpl implements UserAccountApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<UserWebsiteSummary>> verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest) {
+    public Future<ApiResponse<UserWebsiteSummary>> verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<UserWebsiteVerificationCode>> websiteVerificationGet() {
+    public Future<ApiResponse<UserWebsiteVerificationCode>> websiteVerificationGet(String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 

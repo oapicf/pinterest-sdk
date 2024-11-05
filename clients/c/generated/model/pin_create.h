@@ -16,8 +16,8 @@
 typedef struct pin_create_t pin_create_t;
 
 #include "board_owner.h"
+#include "pin_media.h"
 #include "pin_media_source.h"
-#include "summary_pin_media.h"
 
 
 
@@ -32,7 +32,7 @@ typedef struct pin_create_t {
     char *board_id; // string
     char *board_section_id; // string
     struct board_owner_t *board_owner; //model
-    struct summary_pin_media_t *media; //model
+    struct pin_media_t *media; //model
     struct pin_media_source_t *media_source; //model
     char *parent_pin_id; // string
     char *note; // string
@@ -50,7 +50,7 @@ pin_create_t *pin_create_create(
     char *board_id,
     char *board_section_id,
     board_owner_t *board_owner,
-    summary_pin_media_t *media,
+    pin_media_t *media,
     pin_media_source_t *media_source,
     char *parent_pin_id,
     char *note

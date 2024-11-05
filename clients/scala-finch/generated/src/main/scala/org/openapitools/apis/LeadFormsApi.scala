@@ -4,10 +4,14 @@ import java.io._
 import org.openapitools._
 import org.openapitools.models._
 import org.openapitools.models.Error
+import org.openapitools.models.LeadFormArrayResponse
+import org.openapitools.models.LeadFormCreateRequest
 import org.openapitools.models.LeadFormResponse
 import org.openapitools.models.LeadFormTestRequest
 import org.openapitools.models.LeadFormTestResponse
+import org.openapitools.models.LeadFormUpdateRequest
 import org.openapitools.models.LeadFormsList200Response
+import scala.collection.immutable.Seq
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import com.twitter.concurrent.AsyncStream
@@ -30,7 +34,9 @@ object LeadFormsApi {
     def endpoints(da: DataAccessor) =
         leadForm/get(da) :+:
         leadFormTest/create(da) :+:
-        leadForms/list(da)
+        leadForms/create(da) :+:
+        leadForms/list(da) :+:
+        leadForms/update(da)
 
 
     private def checkError(e: CommonError) = e match {
@@ -83,11 +89,39 @@ object LeadFormsApi {
 
         /**
         * 
+        * @return An endpoint representing a LeadFormArrayResponse
+        */
+        private def leadForms/create(da: DataAccessor): Endpoint[LeadFormArrayResponse] =
+        post("ad_accounts" :: string :: "lead_forms" :: jsonBody[Seq[LeadFormCreateRequest]]) { (adAccountId: String, leadFormCreateRequest: Seq[LeadFormCreateRequest]) =>
+          da.LeadForms_leadForms/create(adAccountId, leadFormCreateRequest) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
         * @return An endpoint representing a LeadFormsList200Response
         */
         private def leadForms/list(da: DataAccessor): Endpoint[LeadFormsList200Response] =
         get("ad_accounts" :: string :: "lead_forms" :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("order") :: paramOption("bookmark")) { (adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]) =>
           da.LeadForms_leadForms/list(adAccountId, pageSize, order, bookmark) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a LeadFormArrayResponse
+        */
+        private def leadForms/update(da: DataAccessor): Endpoint[LeadFormArrayResponse] =
+        patch("ad_accounts" :: string :: "lead_forms" :: jsonBody[Seq[LeadFormUpdateRequest]]) { (adAccountId: String, leadFormUpdateRequest: Seq[LeadFormUpdateRequest]) =>
+          da.LeadForms_leadForms/update(adAccountId, leadFormUpdateRequest) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

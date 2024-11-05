@@ -14,8 +14,8 @@ import org.openapitools.server.api.model.AdPreviewRequest;
 import org.openapitools.server.api.model.AdPreviewURLResponse;
 import org.openapitools.server.api.model.AdResponse;
 import org.openapitools.server.api.model.AdUpdateRequest;
+import org.openapitools.server.api.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.server.api.model.AdsAnalyticsResponseInner;
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType;
 import org.openapitools.server.api.model.AdsList200Response;
 import org.openapitools.server.api.model.ConversionReportAttributionType;
 import org.openapitools.server.api.model.Error;
@@ -119,8 +119,8 @@ public class AdsApiVerticle extends AbstractVerticle {
                     manageError(message, new MainApiException(400, "targeting_types is required"), serviceId);
                     return;
                 }
-                List<AdsAnalyticsTargetingType> targetingTypes = Json.mapper.readValue(targetingTypesParam.encode(),
-                    Json.mapper.getTypeFactory().constructCollectionType(List.class, AdsAnalyticsTargetingType.class));
+                List<AdsAnalyticsAdTargetingType> targetingTypes = Json.mapper.readValue(targetingTypesParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, AdsAnalyticsAdTargetingType.class));
                 JsonArray columnsParam = message.body().getJsonArray("columns");
                 if(columnsParam == null) {
                     manageError(message, new MainApiException(400, "columns is required"), serviceId);
@@ -185,13 +185,6 @@ public class AdsApiVerticle extends AbstractVerticle {
                     return;
                 }
                 LocalDate endDate = Json.mapper.readValue(endDateParam, LocalDate.class);
-                JsonArray adIdsParam = message.body().getJsonArray("ad_ids");
-                if(adIdsParam == null) {
-                    manageError(message, new MainApiException(400, "ad_ids is required"), serviceId);
-                    return;
-                }
-                List<String> adIds = Json.mapper.readValue(adIdsParam.encode(),
-                    Json.mapper.getTypeFactory().constructCollectionType(List.class, String.class));
                 JsonArray columnsParam = message.body().getJsonArray("columns");
                 if(columnsParam == null) {
                     manageError(message, new MainApiException(400, "columns is required"), serviceId);
@@ -205,6 +198,9 @@ public class AdsApiVerticle extends AbstractVerticle {
                     return;
                 }
                 Granularity granularity = Json.mapper.readValue(granularityParam.encode(), Granularity.class);
+                JsonArray adIdsParam = message.body().getJsonArray("ad_ids");
+                List<String> adIds = (adIdsParam == null) ? null : Json.mapper.readValue(adIdsParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, String.class));
                 String clickWindowDaysParam = message.body().getString("click_window_days");
                 Integer clickWindowDays = (clickWindowDaysParam == null) ? 30 : Json.mapper.readValue(clickWindowDaysParam, Integer.class);
                 String engagementWindowDaysParam = message.body().getString("engagement_window_days");
@@ -213,7 +209,13 @@ public class AdsApiVerticle extends AbstractVerticle {
                 Integer viewWindowDays = (viewWindowDaysParam == null) ? 1 : Json.mapper.readValue(viewWindowDaysParam, Integer.class);
                 String conversionReportTimeParam = message.body().getString("conversion_report_time");
                 String conversionReportTime = (conversionReportTimeParam == null) ? "TIME_OF_AD_ACTION" : conversionReportTimeParam;
-                service.adsAnalytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, result -> {
+                JsonArray pinIdsParam = message.body().getJsonArray("pin_ids");
+                List<String> pinIds = (pinIdsParam == null) ? null : Json.mapper.readValue(pinIdsParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, String.class));
+                JsonArray campaignIdsParam = message.body().getJsonArray("campaign_ids");
+                List<String> campaignIds = (campaignIdsParam == null) ? null : Json.mapper.readValue(campaignIdsParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, String.class));
+                service.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, result -> {
                     if (result.succeeded())
                         message.reply(new JsonArray(Json.encode(result.result())).encodePrettily());
                     else {

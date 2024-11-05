@@ -54,7 +54,7 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 
 ///
 /// Search pins by a given search term
-/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 ///  @param term Search term to look up pins. 
 ///
 ///  @param countryCode Two letter country code (ISO 3166-1 alpha-2) 
@@ -157,12 +157,12 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 
 ///
 /// Search user's boards
-/// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+/// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param query Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 ///
@@ -205,7 +205,7 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -232,7 +232,7 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 
 ///
 /// Search user's Pins
-/// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+/// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 ///  @param query Search query. Can contain pin description keywords or comma-separated pin IDs. 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)

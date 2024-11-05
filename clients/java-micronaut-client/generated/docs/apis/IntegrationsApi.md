@@ -185,7 +185,7 @@ Get integration metadata list. Note: If you&#39;re interested in joining the bet
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type

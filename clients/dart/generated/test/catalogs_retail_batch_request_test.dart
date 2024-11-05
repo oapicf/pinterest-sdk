@@ -16,7 +16,7 @@ void main() {
   // final instance = CatalogsRetailBatchRequest();
 
   group('test CatalogsRetailBatchRequest', () {
-    // CatalogsType catalogType
+    // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
     });
@@ -26,7 +26,7 @@ void main() {
       // TODO
     });
 
-    // Language language
+    // CatalogsItemsRequestLanguage language
     test('to test the property `language`', () async {
       // TODO
     });

@@ -283,5 +283,6 @@ data class CatalogsFeedValidationWarnings (
     enum class FETCHSAMESIGNATURE(val value: kotlin.Int) {
         @Json(name = "1") _1(1);
     }
+
 }
 

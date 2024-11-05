@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &Pin{}
 
 // Pin Pin
 type Pin struct {
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	Link NullableString `json:"link,omitempty"`
 	Title NullableString `json:"title,omitempty"`
@@ -31,17 +31,17 @@ type Pin struct {
 	AltText NullableString `json:"alt_text,omitempty"`
 	CreativeType NullableCreativeType `json:"creative_type,omitempty"`
 	// The board to which this Pin belongs.
-	BoardId *string `json:"board_id,omitempty"`
+	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// The board section to which this Pin belongs.
-	BoardSectionId NullableString `json:"board_section_id,omitempty"`
+	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
 	BoardOwner *BoardOwner `json:"board_owner,omitempty"`
 	// Whether the \"operation user_account\" is the Pin owner.
 	IsOwner *bool `json:"is_owner,omitempty"`
-	Media *SummaryPinMedia `json:"media,omitempty"`
+	Media *PinMedia `json:"media,omitempty"`
 	MediaSource *PinMediaSource `json:"media_source,omitempty"`
 	// The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-	ParentPinId NullableString `json:"parent_pin_id,omitempty"`
-	// Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+	ParentPinId NullableString `json:"parent_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
 	IsStandard *bool `json:"is_standard,omitempty"`
 	// Whether the Pin has been promoted or not.
 	HasBeenPromoted *bool `json:"has_been_promoted,omitempty"`
@@ -523,9 +523,9 @@ func (o *Pin) SetIsOwner(v bool) {
 }
 
 // GetMedia returns the Media field value if set, zero value otherwise.
-func (o *Pin) GetMedia() SummaryPinMedia {
+func (o *Pin) GetMedia() PinMedia {
 	if o == nil || IsNil(o.Media) {
-		var ret SummaryPinMedia
+		var ret PinMedia
 		return ret
 	}
 	return *o.Media
@@ -533,7 +533,7 @@ func (o *Pin) GetMedia() SummaryPinMedia {
 
 // GetMediaOk returns a tuple with the Media field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Pin) GetMediaOk() (*SummaryPinMedia, bool) {
+func (o *Pin) GetMediaOk() (*PinMedia, bool) {
 	if o == nil || IsNil(o.Media) {
 		return nil, false
 	}
@@ -549,8 +549,8 @@ func (o *Pin) HasMedia() bool {
 	return false
 }
 
-// SetMedia gets a reference to the given SummaryPinMedia and assigns it to the Media field.
-func (o *Pin) SetMedia(v SummaryPinMedia) {
+// SetMedia gets a reference to the given PinMedia and assigns it to the Media field.
+func (o *Pin) SetMedia(v PinMedia) {
 	o.Media = &v
 }
 

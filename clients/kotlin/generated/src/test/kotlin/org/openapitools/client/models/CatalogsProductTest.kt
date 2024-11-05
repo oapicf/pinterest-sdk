@@ -19,13 +19,23 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsProduct
-import org.openapitools.client.models.CatalogsProductMetadata
+import org.openapitools.client.models.CatalogsCreativeAssetsProduct
+import org.openapitools.client.models.CatalogsCreativeAssetsProductMetadata
+import org.openapitools.client.models.CatalogsHotelProduct
+import org.openapitools.client.models.CatalogsRetailProduct
+import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Pin
 
 class CatalogsProductTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of CatalogsProduct
         //val modelInstance = CatalogsProduct()
+
+        // to test the property `catalogType`
+        should("test catalogType") {
+            // uncomment below to test the property
+            //modelInstance.catalogType shouldBe ("TODO")
+        }
 
         // to test the property `metadata`
         should("test metadata") {

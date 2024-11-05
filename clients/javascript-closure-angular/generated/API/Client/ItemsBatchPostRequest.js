@@ -6,7 +6,7 @@ goog.provide('API.Client.items_batch_post_request');
 API.Client.ItemsBatchPostRequest = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.ItemsBatchPostRequest.prototype.catalogType;
@@ -18,7 +18,7 @@ API.Client.ItemsBatchPostRequest.prototype.catalogType;
 API.Client.ItemsBatchPostRequest.prototype.country;
 
 /**
- * @type {!API.Client.Language}
+ * @type {!API.Client.CatalogsItemsRequest_language}
  * @export
  */
 API.Client.ItemsBatchPostRequest.prototype.language;
@@ -31,7 +31,7 @@ API.Client.ItemsBatchPostRequest.prototype.language;
 API.Client.ItemsBatchPostRequest.prototype.items;
 
 /**
- * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  * @type {!string}
  * @export
  */
@@ -43,3 +43,7 @@ API.Client.ItemsBatchPostRequest.prototype.catalogId;
  */
 API.Client.ItemsBatchPostRequest.prototype.operation;
 
+/** @enum {string} */
+API.Client.ItemsBatchPostRequest.CatalogTypeEnum = { 
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
+}

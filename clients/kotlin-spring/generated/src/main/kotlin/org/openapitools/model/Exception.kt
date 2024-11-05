@@ -25,7 +25,7 @@ data class Exception(
 
     @Schema(example = "Advertiser not found.", description = "Exception message.")
     @get:JsonProperty("message") val message: kotlin.String? = null
-) {
+    ) {
 
 }
 

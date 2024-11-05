@@ -19,7 +19,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * PinMediaMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaMetadata   {
   @JsonProperty("item_type")
   private String itemType;
@@ -56,10 +56,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get itemType
    * @return itemType
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getItemType() {
     return itemType;
@@ -74,10 +74,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
@@ -92,10 +92,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -110,10 +110,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get link
    * @return link
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getLink() {
     return link;
@@ -128,10 +128,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get images
    * @return images
-  **/
+   */
   @ApiModelProperty(value = "")
   public ImageMetadataImages getImages() {
     return images;
@@ -146,10 +146,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get coverImageUrl
    * @return coverImageUrl
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getCoverImageUrl() {
     return coverImageUrl;
@@ -164,10 +164,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
    * @return videoUrl
-  **/
+   */
   @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
   public String getVideoUrl() {
     return videoUrl;
@@ -182,10 +182,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Duration (in milliseconds)
    * @return duration
-  **/
+   */
   @ApiModelProperty(value = "Duration (in milliseconds)")
   public BigDecimal getDuration() {
     return duration;
@@ -200,10 +200,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Height (in pixels)
    * @return height
-  **/
+   */
   @ApiModelProperty(value = "Height (in pixels)")
   public Integer getHeight() {
     return height;
@@ -218,10 +218,10 @@ public class PinMediaMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Width (in pixels)
    * @return width
-  **/
+   */
   @ApiModelProperty(value = "Width (in pixels)")
   public Integer getWidth() {
     return width;

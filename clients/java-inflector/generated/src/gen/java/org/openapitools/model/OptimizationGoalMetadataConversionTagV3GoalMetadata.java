@@ -14,7 +14,7 @@ import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadat
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   @JsonProperty("attribution_windows")
   private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
@@ -84,9 +84,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   public enum LearningModeTypeEnum {
     NOT_ACTIVE("NOT_ACTIVE"),
     
-    ACTIVE("ACTIVE"),
-    
-    NULL("null");
+    ACTIVE("ACTIVE");
 
     private String value;
 
@@ -183,7 +181,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
    **/
   public OptimizationGoalMetadataConversionTagV3GoalMetadata isRoasOptimized(Boolean isRoasOptimized) {
     this.isRoasOptimized = isRoasOptimized;
@@ -191,7 +189,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   
-  @ApiModelProperty(value = "Ad group is ROAS optimized")
+  @ApiModelProperty(value = "ROAS optimization is not supported")
   @JsonProperty("is_roas_optimized")
   public Boolean getIsRoasOptimized() {
     return isRoasOptimized;

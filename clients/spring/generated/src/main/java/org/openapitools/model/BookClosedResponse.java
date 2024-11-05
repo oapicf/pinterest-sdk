@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BookClosedResponse", description = "Creation fields")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BookClosedResponse {
 
   private Boolean conversionMetricsReady;
@@ -34,7 +34,7 @@ public class BookClosedResponse {
   /**
    * Are conversion metrics ready?
    * @return conversionMetricsReady
-  */
+   */
   
   @Schema(name = "conversion_metrics_ready", example = "false", description = "Are conversion metrics ready?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_metrics_ready")
@@ -54,7 +54,7 @@ public class BookClosedResponse {
   /**
    * Are non-conversion metrics ready?
    * @return nonConversionMetricsReady
-  */
+   */
   
   @Schema(name = "non_conversion_metrics_ready", example = "false", description = "Are non-conversion metrics ready?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("non_conversion_metrics_ready")

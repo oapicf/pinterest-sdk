@@ -8,67 +8,69 @@
 CatalogsFormat <- R6::R6Class(
   "CatalogsFormat",
   public = list(
-    #' Initialize a new CatalogsFormat class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFormat class.
     #'
     #' @param ... Optional arguments.
-    #' @export
     initialize = function(...) {
       local.optional.var <- list(...)
       val <- unlist(local.optional.var)
       enumvec <- .parse_CatalogsFormat()
 
-      stopifnot(length(val) == 1L)
+      if (length(val) == 0L) {
+        val = "DUMMY_ENUM"
+      } else {
+        stopifnot(length(val) == 1L)
+      }
 
-      if (!val %in% enumvec)
+      if (!val %in% enumvec) {
+        if (!(val=="DUMMY_ENUM")) {
           stop("Use one of the valid values: ",
-              paste0(enumvec, collapse = ", "))
+            paste0(enumvec, collapse = ", "))
+        }
+        warning("Initializing CatalogsFormat with DUMMY_ENUM. Use one of the valid values: ",
+          paste0(enumvec, collapse = ", "),
+          ". If you did not manually initialize CatalogsFormat, this may already be overwritten by an enum loaded from a JSON config.")
+      }
       private$value <- val
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFormat in JSON format
-    #' @export
     toJSON = function() {
         jsonlite::toJSON(private$value, auto_unbox = TRUE)
     },
-    #' Deserialize JSON string into an instance of CatalogsFormat
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFormat
     #'
     #' @param input_json the JSON input
+    #'
     #' @return the instance of CatalogsFormat
-    #' @export
     fromJSON = function(input_json) {
       private$value <- jsonlite::fromJSON(input_json,
           simplifyVector = FALSE)
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFormat in JSON format
-    #' @export
     toJSONString = function() {
       as.character(jsonlite::toJSON(private$value,
           auto_unbox = TRUE))
     },
-    #' Deserialize JSON string into an instance of CatalogsFormat
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFormat
     #'
     #' @param input_json the JSON input
+    #'
     #' @return the instance of CatalogsFormat
-    #' @export
     fromJSONString = function(input_json) {
       private$value <- jsonlite::fromJSON(input_json,
           simplifyVector = FALSE)

@@ -15,15 +15,15 @@ import org.openapitools.model.CampaignResponse;
 /**
  * CampaignsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignsList200Response   {
   @JsonProperty("items")
-  private List<CampaignResponse> items = new ArrayList<>();
+  private List<@Valid CampaignResponse> items = new ArrayList<>();
 
   @JsonProperty("bookmark")
   private String bookmark;
 
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(List<@Valid CampaignResponse> items) {
     this.items = items;
     return this;
   }
@@ -38,11 +38,11 @@ public class CampaignsList200Response   {
    * @return items
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CampaignResponse> getItems() {
+  public List<@Valid CampaignResponse> getItems() {
     return items;
   }
 
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(List<@Valid CampaignResponse> items) {
     this.items = items;
   }
 

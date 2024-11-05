@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **pinUnderscorecount** | **integer** |  | [optional] [readonly] [default to null]
 **followerUnderscorecount** | **integer** |  | [optional] [readonly] [default to null]
 **media** | [**BoardMedia**](BoardMedia.md) |  | [optional] [default to null]
-**owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [default to null]
+**owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] [default to null]
 **privacy** | **string** |  | [optional] [default to PUBLIC]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

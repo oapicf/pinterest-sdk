@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -45,9 +45,11 @@ Generate an OAuth access token by using an authorization code or a refresh token
 
 IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).
 
-See <a href='/docs/getting-started/authentication/'>Authentication</a> for more.
+See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.
 
-<strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
+<strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOauthTokenRequest
@@ -100,7 +102,7 @@ func (a *OauthAPIService) OauthTokenExecute(r ApiOauthTokenRequest) (*OauthAcces
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "grant_type", r.grantType, "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "grant_type", r.grantType, "", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

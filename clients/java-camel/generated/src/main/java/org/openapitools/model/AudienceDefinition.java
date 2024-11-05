@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceDefinition", description = "Queryable audience representation.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDefinition {
 
   private JsonNullable<String> date = JsonNullable.<String>undefined();
@@ -39,7 +39,7 @@ public class AudienceDefinition {
   /**
    * Generation date
    * @return date
-  */
+   */
   
   @Schema(name = "date", example = "2022-10-09", description = "Generation date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date")
@@ -59,7 +59,7 @@ public class AudienceDefinition {
   /**
    * Generated audience type to request.
    * @return type
-  */
+   */
   
   @Schema(name = "type", description = "Generated audience type to request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -79,7 +79,7 @@ public class AudienceDefinition {
   /**
    * Generated audience scope to request.
    * @return scope
-  */
+   */
   
   @Schema(name = "scope", description = "Generated audience scope to request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scope")

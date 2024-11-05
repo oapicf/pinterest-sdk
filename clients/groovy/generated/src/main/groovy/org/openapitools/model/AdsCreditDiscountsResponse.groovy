@@ -53,9 +53,7 @@ class AdsCreditDiscountsResponse {
         
         INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
         
-        PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND"),
-        
-        NULL("null")
+        PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND")
     
         private final String value
     

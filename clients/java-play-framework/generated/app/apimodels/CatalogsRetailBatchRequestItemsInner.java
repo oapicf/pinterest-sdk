@@ -4,7 +4,7 @@ import apimodels.CatalogsCreateRetailItem;
 import apimodels.CatalogsDeleteRetailItem;
 import apimodels.CatalogsUpdateRetailItem;
 import apimodels.CatalogsUpsertRetailItem;
-import apimodels.ItemAttributes;
+import apimodels.ItemAttributesRequest;
 import apimodels.UpdateMaskFieldType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -23,7 +23,7 @@ import javax.validation.Valid;
 /**
  * CatalogsRetailBatchRequestItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailBatchRequestItemsInner   {
   @JsonProperty("item_id")
@@ -35,12 +35,6 @@ public class CatalogsRetailBatchRequestItemsInner   {
    * Gets or Sets operation
    */
   public enum OperationEnum {
-    CREATE("CREATE"),
-    
-    UPDATE("UPDATE"),
-    
-    UPSERT("UPSERT"),
-    
     DELETE("DELETE");
 
     private final String value;
@@ -75,7 +69,7 @@ public class CatalogsRetailBatchRequestItemsInner   {
   @NotNull
 @Valid
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   @JsonProperty("update_mask")
   @Valid
@@ -116,7 +110,7 @@ public class CatalogsRetailBatchRequestItemsInner   {
     this.operation = operation;
   }
 
-  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributes attributes) {
+  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -125,11 +119,11 @@ public class CatalogsRetailBatchRequestItemsInner   {
    * Get attributes
    * @return attributes
   **/
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

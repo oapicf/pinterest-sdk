@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * SSIOAccountItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountItem {
 
   private String id;
@@ -42,7 +42,7 @@ public class SSIOAccountItem {
   private String ioType;
 
   @Valid
-  private List<@Valid SSIOAccountAddress> addresses;
+  private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
 
   public SSIOAccountItem id(String id) {
     this.id = id;
@@ -52,7 +52,7 @@ public class SSIOAccountItem {
   /**
    * Salesforce id for billto_info
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "0011N00001LW8kAQAT", description = "Salesforce id for billto_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -72,7 +72,7 @@ public class SSIOAccountItem {
   /**
    * Salesforce id for IO Terms and Conditions
    * @return ioTermsId
-  */
+   */
   
   @Schema(name = "io_terms_id", example = "a2S1N000000bKHgUAM", description = "Salesforce id for IO Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("io_terms_id")
@@ -92,7 +92,7 @@ public class SSIOAccountItem {
   /**
    * Salesforce text for IO Terms and Conditions
    * @return ioTerms
-  */
+   */
   
   @Schema(name = "io_terms", example = "The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", description = "Salesforce text for IO Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("io_terms")
@@ -112,7 +112,7 @@ public class SSIOAccountItem {
   /**
    * Salesforce id for US Terms and Conditions
    * @return usTermsId
-  */
+   */
   
   @Schema(name = "us_terms_id", example = "a2S1N000000bKIOUA2", description = "Salesforce id for US Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("us_terms_id")
@@ -132,7 +132,7 @@ public class SSIOAccountItem {
   /**
    * Salesforce text for US Terms and Conditions
    * @return usTerms
-  */
+   */
   
   @Schema(name = "us_terms", example = "This Insertion Order (\"IO\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", description = "Salesforce text for US Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("us_terms")
@@ -152,7 +152,7 @@ public class SSIOAccountItem {
   /**
    * Salesforce id for Rest of the World Terms and Conditions
    * @return rowTermsId
-  */
+   */
   
   @Schema(name = "row_terms_id", example = "a2S1N000000bKHhUAM", description = "Salesforce id for Rest of the World Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("row_terms_id")
@@ -172,7 +172,7 @@ public class SSIOAccountItem {
   /**
    * Salesforce text for Rest of the World Terms and Conditions
    * @return rowTerms
-  */
+   */
   
   @Schema(name = "row_terms", example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", description = "Salesforce text for Rest of the World Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("row_terms")
@@ -192,7 +192,7 @@ public class SSIOAccountItem {
   /**
    * Insertion Order Type - Pinterest Paper or Agency Paper
    * @return ioType
-  */
+   */
   
   @Schema(name = "io_type", example = "Pinterest Paper", description = "Insertion Order Type - Pinterest Paper or Agency Paper", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("io_type")
@@ -220,7 +220,7 @@ public class SSIOAccountItem {
   /**
    * Address information that is associated with this account.
    * @return addresses
-  */
+   */
   @Valid 
   @Schema(name = "addresses", description = "Address information that is associated with this account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("addresses")

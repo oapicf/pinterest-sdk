@@ -15,6 +15,7 @@
        'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'default_country' := openapi_country:openapi_country(),
        'default_availability' => openapi_product_availability_type:openapi_product_availability_type(),
+       'status' => openapi_catalogs_status:openapi_catalogs_status(),
        'catalog_id' => binary()
      }.
 
@@ -28,6 +29,7 @@ encode(#{ 'default_currency' := DefaultCurrency,
           'catalog_type' := CatalogType,
           'default_country' := DefaultCountry,
           'default_availability' := DefaultAvailability,
+          'status' := Status,
           'catalog_id' := CatalogId
         }) ->
     #{ 'default_currency' => DefaultCurrency,
@@ -40,5 +42,6 @@ encode(#{ 'default_currency' := DefaultCurrency,
        'catalog_type' => CatalogType,
        'default_country' => DefaultCountry,
        'default_availability' => DefaultAvailability,
+       'status' => Status,
        'catalog_id' => CatalogId
      }.

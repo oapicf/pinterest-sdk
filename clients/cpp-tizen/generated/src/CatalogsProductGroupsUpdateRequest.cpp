@@ -26,8 +26,10 @@ Catalogs_product_groups_update_request::__init()
 	//name = std::string();
 	//description = std::string();
 	//is_featured = bool(false);
-	//filters = new CatalogsHotelProductGroupFilters();
+	//filters = new CatalogsCreativeAssetsProductGroupFilters();
 	//catalog_type = std::string();
+	//country = new Country();
+	//locale = new CatalogsLocale();
 }
 
 void
@@ -57,6 +59,16 @@ Catalogs_product_groups_update_request::__cleanup()
 	//
 	//delete catalog_type;
 	//catalog_type = NULL;
+	//}
+	//if(country != NULL) {
+	//
+	//delete country;
+	//country = NULL;
+	//}
+	//if(locale != NULL) {
+	//
+	//delete locale;
+	//locale = NULL;
 	//}
 	//
 }
@@ -104,11 +116,11 @@ Catalogs_product_groups_update_request::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsHotelProductGroupFilters")) {
-			jsonToValue(&filters, node, "CatalogsHotelProductGroupFilters", "CatalogsHotelProductGroupFilters");
+		if (isprimitive("CatalogsCreativeAssetsProductGroupFilters")) {
+			jsonToValue(&filters, node, "CatalogsCreativeAssetsProductGroupFilters", "CatalogsCreativeAssetsProductGroupFilters");
 		} else {
 			
-			CatalogsHotelProductGroupFilters* obj = static_cast<CatalogsHotelProductGroupFilters*> (&filters);
+			CatalogsCreativeAssetsProductGroupFilters* obj = static_cast<CatalogsCreativeAssetsProductGroupFilters*> (&filters);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -121,6 +133,34 @@ Catalogs_product_groups_update_request::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
+			
+		}
+	}
+	const gchar *countryKey = "country";
+	node = json_object_get_member(pJsonObject, countryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Country")) {
+			jsonToValue(&country, node, "Country", "Country");
+		} else {
+			
+			Country* obj = static_cast<Country*> (&country);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *localeKey = "locale";
+	node = json_object_get_member(pJsonObject, localeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsLocale")) {
+			jsonToValue(&locale, node, "CatalogsLocale", "CatalogsLocale");
+		} else {
+			
+			CatalogsLocale* obj = static_cast<CatalogsLocale*> (&locale);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -163,13 +203,13 @@ Catalogs_product_groups_update_request::toJson()
 	}
 	const gchar *is_featuredKey = "is_featured";
 	json_object_set_member(pJsonObject, is_featuredKey, node);
-	if (isprimitive("CatalogsHotelProductGroupFilters")) {
-		CatalogsHotelProductGroupFilters obj = getFilters();
-		node = converttoJson(&obj, "CatalogsHotelProductGroupFilters", "");
+	if (isprimitive("CatalogsCreativeAssetsProductGroupFilters")) {
+		CatalogsCreativeAssetsProductGroupFilters obj = getFilters();
+		node = converttoJson(&obj, "CatalogsCreativeAssetsProductGroupFilters", "");
 	}
 	else {
 		
-		CatalogsHotelProductGroupFilters obj = static_cast<CatalogsHotelProductGroupFilters> (getFilters());
+		CatalogsCreativeAssetsProductGroupFilters obj = static_cast<CatalogsCreativeAssetsProductGroupFilters> (getFilters());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -186,6 +226,34 @@ Catalogs_product_groups_update_request::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	if (isprimitive("Country")) {
+		Country obj = getCountry();
+		node = converttoJson(&obj, "Country", "");
+	}
+	else {
+		
+		Country obj = static_cast<Country> (getCountry());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *countryKey = "country";
+	json_object_set_member(pJsonObject, countryKey, node);
+	if (isprimitive("CatalogsLocale")) {
+		CatalogsLocale obj = getLocale();
+		node = converttoJson(&obj, "CatalogsLocale", "");
+	}
+	else {
+		
+		CatalogsLocale obj = static_cast<CatalogsLocale> (getLocale());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *localeKey = "locale";
+	json_object_set_member(pJsonObject, localeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -230,14 +298,14 @@ Catalogs_product_groups_update_request::setIsFeatured(bool  is_featured)
 	this->is_featured = is_featured;
 }
 
-CatalogsHotelProductGroupFilters
+CatalogsCreativeAssetsProductGroupFilters
 Catalogs_product_groups_update_request::getFilters()
 {
 	return filters;
 }
 
 void
-Catalogs_product_groups_update_request::setFilters(CatalogsHotelProductGroupFilters  filters)
+Catalogs_product_groups_update_request::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
 {
 	this->filters = filters;
 }
@@ -252,6 +320,30 @@ void
 Catalogs_product_groups_update_request::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
+}
+
+Country
+Catalogs_product_groups_update_request::getCountry()
+{
+	return country;
+}
+
+void
+Catalogs_product_groups_update_request::setCountry(Country  country)
+{
+	this->country = country;
+}
+
+CatalogsLocale
+Catalogs_product_groups_update_request::getLocale()
+{
+	return locale;
+}
+
+void
+Catalogs_product_groups_update_request::setLocale(CatalogsLocale  locale)
+{
+	this->locale = locale;
 }
 
 

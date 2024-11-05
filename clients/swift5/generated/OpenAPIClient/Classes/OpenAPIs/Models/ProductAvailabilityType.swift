@@ -15,5 +15,4 @@ public enum ProductAvailabilityType: String, Codable, CaseIterable {
     case inStock = "IN_STOCK"
     case outOfStock = "OUT_OF_STOCK"
     case preorder = "PREORDER"
-    case null = "null"
 }

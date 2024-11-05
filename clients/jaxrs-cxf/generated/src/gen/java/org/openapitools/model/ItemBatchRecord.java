@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.ItemCreateBatchRecord;
 import org.openapitools.model.ItemDeleteBatchRecord;
 import org.openapitools.model.ItemDeleteDiscontinuedBatchRecord;
@@ -34,7 +34,7 @@ public class ItemBatchRecord  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   @ApiModelProperty(example = "[ad_link, adult, age_group, availability, average_review_rating, brand, checkout_enabled, color, condition, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, description, free_shipping_label, free_shipping_limit, gender, google_product_category, gtin, item_group_id, last_updated_time, link, material, min_ad_price, mpn, number_of_ratings, number_of_reviews, pattern, price, product_type, sale_price, shipping, shipping_height, shipping_weight, shipping_width, size, size_system, size_type, tax, title, variant_names, variant_values]", value = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
   @Valid
@@ -65,15 +65,15 @@ public class ItemBatchRecord  {
    * @return attributes
   **/
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
-  public ItemBatchRecord attributes(ItemAttributes attributes) {
+  public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }

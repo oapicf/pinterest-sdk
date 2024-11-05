@@ -25,7 +25,7 @@ data class TopPinsAnalyticsResponseDateAvailability(
 
     @Schema(example = "false", description = "")
     @get:JsonProperty("is_realtime") val isRealtime: kotlin.Boolean? = null
-) {
+    ) {
 
 }
 

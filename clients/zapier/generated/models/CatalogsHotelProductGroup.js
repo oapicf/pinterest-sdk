@@ -43,7 +43,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}catalog_id`,
-                label: `[${labelPrefix}catalog_id]`,
+                label: `Catalog id pertaining to the hotel product group. - [${labelPrefix}catalog_id]`,
                 required: true,
                 type: 'string',
             },

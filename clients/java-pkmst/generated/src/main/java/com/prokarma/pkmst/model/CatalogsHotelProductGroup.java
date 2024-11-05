@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CatalogsHotelProductGroup
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroup   {
   /**
    * Gets or Sets catalogType
@@ -77,10 +77,10 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogTypeEnum getCatalogType() {
     return catalogType;
@@ -95,10 +95,10 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
+  /**
    * ID of the hotel product group.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
   public String getId() {
     return id;
@@ -113,10 +113,10 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
+  /**
    * Name of hotel product group
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "Most Popular", value = "Name of hotel product group")
   public String getName() {
     return name;
@@ -131,10 +131,10 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -149,10 +149,10 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsHotelProductGroupFilters getFilters() {
     return filters;
@@ -167,10 +167,10 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
+  /**
    * Unix timestamp in seconds of when catalog product group was created.
    * @return createdAt
-  **/
+   */
   @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
   public Integer getCreatedAt() {
     return createdAt;
@@ -185,10 +185,10 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
+  /**
    * Unix timestamp in seconds of last time catalog product group was updated.
    * @return updatedAt
-  **/
+   */
   @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
   public Integer getUpdatedAt() {
     return updatedAt;
@@ -203,11 +203,11 @@ public class CatalogsHotelProductGroup   {
     return this;
   }
 
-   /**
-   * Get catalogId
+  /**
+   * Catalog id pertaining to the hotel product group.
    * @return catalogId
-  **/
-  @ApiModelProperty(required = true, value = "")
+   */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
   public String getCatalogId() {
     return catalogId;
   }

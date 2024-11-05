@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -33,7 +33,7 @@ import org.openapitools.model.ProductAvailabilityType;
  */
 
 @ApiModel(description = "Catalogs Retail Feed object")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailFeed   {
   
   private Date createdAt;
@@ -59,7 +59,7 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -76,7 +76,7 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -93,7 +93,7 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;

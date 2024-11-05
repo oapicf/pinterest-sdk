@@ -27,7 +27,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "ConversionEvents_data_inner_custom_data", description = "Object containing other custom data.")
 @JsonTypeName("ConversionEvents_data_inner_custom_data")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInnerCustomData {
 
   private JsonNullable<String> currency = JsonNullable.<String>undefined();
@@ -35,7 +35,7 @@ public class ConversionEventsDataInnerCustomData {
   private JsonNullable<String> value = JsonNullable.<String>undefined();
 
   @Valid
-  private List<String> contentIds;
+  private List<String> contentIds = new ArrayList<>();
 
   private JsonNullable<String> contentName = JsonNullable.<String>undefined();
 
@@ -44,7 +44,7 @@ public class ConversionEventsDataInnerCustomData {
   private JsonNullable<String> contentBrand = JsonNullable.<String>undefined();
 
   @Valid
-  private List<@Valid ConversionEventsDataInnerCustomDataContentsInner> contents;
+  private List<@Valid ConversionEventsDataInnerCustomDataContentsInner> contents = new ArrayList<>();
 
   private Long numItems;
 
@@ -64,7 +64,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
    * @return currency
-  */
+   */
   
   @Schema(name = "currency", example = "USD", description = "The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
@@ -84,7 +84,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
    * @return value
-  */
+   */
   
   @Schema(name = "value", example = "72.39", description = "Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("value")
@@ -112,7 +112,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return contentIds
-  */
+   */
   
   @Schema(name = "content_ids", example = "[\"red-pinterest-shirt-logo-1\",\"purple-pinterest-shirt-logo-3\"]", description = "List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content_ids")
@@ -132,7 +132,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * The name of the page or product associated with the event.
    * @return contentName
-  */
+   */
   
   @Schema(name = "content_name", example = "pinterest-themed-clothing", description = "The name of the page or product associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content_name")
@@ -152,7 +152,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * The category of the content associated with the event.
    * @return contentCategory
-  */
+   */
   
   @Schema(name = "content_category", example = "shirts", description = "The category of the content associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content_category")
@@ -172,7 +172,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * The brand of the content associated with the event.
    * @return contentBrand
-  */
+   */
   
   @Schema(name = "content_brand", example = "pinterest-brand", description = "The brand of the content associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("content_brand")
@@ -200,7 +200,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return contents
-  */
+   */
   @Valid 
   @Schema(name = "contents", description = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("contents")
@@ -220,7 +220,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return numItems
-  */
+   */
   
   @Schema(name = "num_items", example = "2", description = "Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_items")
@@ -240,7 +240,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
    * @return orderId
-  */
+   */
   
   @Schema(name = "order_id", example = "my_order_id", description = "The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_id")
@@ -260,7 +260,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * The search string related to the user conversion event.
    * @return searchString
-  */
+   */
   
   @Schema(name = "search_string", example = "sample string", description = "The search string related to the user conversion event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("search_string")
@@ -278,11 +278,11 @@ public class ConversionEventsDataInnerCustomData {
   }
 
   /**
-   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
+   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
    * @return optOutType
-  */
+   */
   
-  @Schema(name = "opt_out_type", example = "LDP", description = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "opt_out_type", example = "LDP", description = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("opt_out_type")
   public JsonNullable<String> getOptOutType() {
     return optOutType;
@@ -300,7 +300,7 @@ public class ConversionEventsDataInnerCustomData {
   /**
    * Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
    * @return np
-  */
+   */
   
   @Schema(name = "np", example = "ss-company", description = "Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("np")

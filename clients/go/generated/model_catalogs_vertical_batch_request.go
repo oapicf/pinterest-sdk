@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,13 +13,22 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // CatalogsVerticalBatchRequest - A request object that can have multiple operations on a single batch
 type CatalogsVerticalBatchRequest struct {
+	CatalogsCreativeAssetsBatchRequest *CatalogsCreativeAssetsBatchRequest
 	CatalogsHotelBatchRequest *CatalogsHotelBatchRequest
 	CatalogsRetailBatchRequest *CatalogsRetailBatchRequest
+}
+
+// CatalogsCreativeAssetsBatchRequestAsCatalogsVerticalBatchRequest is a convenience function that returns CatalogsCreativeAssetsBatchRequest wrapped in CatalogsVerticalBatchRequest
+func CatalogsCreativeAssetsBatchRequestAsCatalogsVerticalBatchRequest(v *CatalogsCreativeAssetsBatchRequest) CatalogsVerticalBatchRequest {
+	return CatalogsVerticalBatchRequest{
+		CatalogsCreativeAssetsBatchRequest: v,
+	}
 }
 
 // CatalogsHotelBatchRequestAsCatalogsVerticalBatchRequest is a convenience function that returns CatalogsHotelBatchRequest wrapped in CatalogsVerticalBatchRequest
@@ -41,6 +50,23 @@ func CatalogsRetailBatchRequestAsCatalogsVerticalBatchRequest(v *CatalogsRetailB
 func (dst *CatalogsVerticalBatchRequest) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsBatchRequest
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsBatchRequest)
+	if err == nil {
+		jsonCatalogsCreativeAssetsBatchRequest, _ := json.Marshal(dst.CatalogsCreativeAssetsBatchRequest)
+		if string(jsonCatalogsCreativeAssetsBatchRequest) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsBatchRequest = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsBatchRequest); err != nil {
+				dst.CatalogsCreativeAssetsBatchRequest = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsCreativeAssetsBatchRequest = nil
+	}
+
 	// try to unmarshal data into CatalogsHotelBatchRequest
 	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelBatchRequest)
 	if err == nil {
@@ -48,7 +74,11 @@ func (dst *CatalogsVerticalBatchRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsHotelBatchRequest) == "{}" { // empty struct
 			dst.CatalogsHotelBatchRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsHotelBatchRequest); err != nil {
+				dst.CatalogsHotelBatchRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsHotelBatchRequest = nil
@@ -61,7 +91,11 @@ func (dst *CatalogsVerticalBatchRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsRetailBatchRequest) == "{}" { // empty struct
 			dst.CatalogsRetailBatchRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsRetailBatchRequest); err != nil {
+				dst.CatalogsRetailBatchRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsRetailBatchRequest = nil
@@ -69,6 +103,7 @@ func (dst *CatalogsVerticalBatchRequest) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.CatalogsCreativeAssetsBatchRequest = nil
 		dst.CatalogsHotelBatchRequest = nil
 		dst.CatalogsRetailBatchRequest = nil
 
@@ -82,6 +117,10 @@ func (dst *CatalogsVerticalBatchRequest) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsVerticalBatchRequest) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsBatchRequest != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsBatchRequest)
+	}
+
 	if src.CatalogsHotelBatchRequest != nil {
 		return json.Marshal(&src.CatalogsHotelBatchRequest)
 	}
@@ -98,6 +137,10 @@ func (obj *CatalogsVerticalBatchRequest) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.CatalogsCreativeAssetsBatchRequest != nil {
+		return obj.CatalogsCreativeAssetsBatchRequest
+	}
+
 	if obj.CatalogsHotelBatchRequest != nil {
 		return obj.CatalogsHotelBatchRequest
 	}

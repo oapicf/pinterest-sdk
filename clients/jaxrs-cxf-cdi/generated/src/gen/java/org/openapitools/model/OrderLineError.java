@@ -21,7 +21,7 @@ public class OrderLineError   {
   
   private OrderLine data;
 
-  private List<String> errorMessages;
+  private List<String> errorMessages = new ArrayList<>();
 
   /**
    **/

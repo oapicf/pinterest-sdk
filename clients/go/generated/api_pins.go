@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,6 +24,251 @@ import (
 
 // PinsAPIService PinsAPI service
 type PinsAPIService service
+
+type ApiMultiPinsAnalyticsRequest struct {
+	ctx context.Context
+	ApiService *PinsAPIService
+	pinIds *[]string
+	startDate *string
+	endDate *string
+	metricTypes *[]PinsAnalyticsMetricTypesParameterInner
+	appTypes *string
+	adAccountId *string
+}
+
+// List of Pin IDs.
+func (r ApiMultiPinsAnalyticsRequest) PinIds(pinIds []string) ApiMultiPinsAnalyticsRequest {
+	r.pinIds = &pinIds
+	return r
+}
+
+// Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+func (r ApiMultiPinsAnalyticsRequest) StartDate(startDate string) ApiMultiPinsAnalyticsRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+func (r ApiMultiPinsAnalyticsRequest) EndDate(endDate string) ApiMultiPinsAnalyticsRequest {
+	r.endDate = &endDate
+	return r
+}
+
+// Pin metric types to get data for.
+func (r ApiMultiPinsAnalyticsRequest) MetricTypes(metricTypes []PinsAnalyticsMetricTypesParameterInner) ApiMultiPinsAnalyticsRequest {
+	r.metricTypes = &metricTypes
+	return r
+}
+
+// Apps or devices to get data for, default is all.
+func (r ApiMultiPinsAnalyticsRequest) AppTypes(appTypes string) ApiMultiPinsAnalyticsRequest {
+	r.appTypes = &appTypes
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiMultiPinsAnalyticsRequest) AdAccountId(adAccountId string) ApiMultiPinsAnalyticsRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiMultiPinsAnalyticsRequest) Execute() (*map[string]map[string]PinAnalyticsMetricsResponse, *http.Response, error) {
+	return r.ApiService.MultiPinsAnalyticsExecute(r)
+}
+
+/*
+MultiPinsAnalytics Get multiple Pin analytics
+
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+
+Get analytics for multiple pins owned by the "operation user_account" - or on a group board that has been shared with this account.
+- The maximum number of pins supported in a single request is 100.
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
+
+- For Pins on public or protected boards: Admin, Analyst.
+- For Pins on secret boards: Admin.
+
+If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiMultiPinsAnalyticsRequest
+*/
+func (a *PinsAPIService) MultiPinsAnalytics(ctx context.Context) ApiMultiPinsAnalyticsRequest {
+	return ApiMultiPinsAnalyticsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]map[string]PinAnalyticsMetricsResponse
+func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsRequest) (*map[string]map[string]PinAnalyticsMetricsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *map[string]map[string]PinAnalyticsMetricsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PinsAPIService.MultiPinsAnalytics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/pins/analytics"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.pinIds == nil {
+		return localVarReturnValue, nil, reportError("pinIds is required and must be specified")
+	}
+	if len(*r.pinIds) < 1 {
+		return localVarReturnValue, nil, reportError("pinIds must have at least 1 elements")
+	}
+	if len(*r.pinIds) > 100 {
+		return localVarReturnValue, nil, reportError("pinIds must have less than 100 elements")
+	}
+	if r.startDate == nil {
+		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
+	}
+	if r.endDate == nil {
+		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
+	}
+	if r.metricTypes == nil {
+		return localVarReturnValue, nil, reportError("metricTypes is required and must be specified")
+	}
+
+	{
+		t := *r.pinIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "pin_ids", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "pin_ids", t, "form", "multi")
+		}
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	if r.appTypes != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
+	} else {
+		var defaultValue string = "ALL"
+		r.appTypes = &defaultValue
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiPinsAnalyticsRequest struct {
 	ctx context.Context
@@ -49,7 +294,7 @@ func (r ApiPinsAnalyticsRequest) EndDate(endDate string) ApiPinsAnalyticsRequest
 	return r
 }
 
-// Pin metric types to get data for, default is all.
+// Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
 func (r ApiPinsAnalyticsRequest) MetricTypes(metricTypes []PinsAnalyticsMetricTypesParameterInner) ApiPinsAnalyticsRequest {
 	r.metricTypes = &metricTypes
 	return r
@@ -83,7 +328,7 @@ PinsAnalytics Get Pin analytics
 Get analytics for a Pin owned by the "operation user_account" - or on a group board that has been shared with this account.
 - By default, the "operation user_account" is the token user_account.
 
-Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href="/docs/api/v5/#operation/ad_accounts/list">List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account:
 
 - For Pins on public or protected boards: Admin, Analyst.
 - For Pins on secret boards: Admin.
@@ -133,23 +378,23 @@ func (a *PinsAPIService) PinsAnalyticsExecute(r ApiPinsAnalyticsRequest) (*map[s
 		return localVarReturnValue, nil, reportError("metricTypes is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
 	if r.appTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.appTypes = &defaultValue
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	if r.splitField != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "form", "")
 	} else {
 		var defaultValue string = "NO_SPLIT"
 		r.splitField = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -276,9 +521,9 @@ Create a Pin on a board or board section owned by the "operation user_account".
 
 Note: If the current "operation user_account" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).
 
-- This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.
+- This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPinsCreateRequest
@@ -315,7 +560,7 @@ func (a *PinsAPIService) PinsCreateExecute(r ApiPinsCreateRequest) (*Pin, *http.
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -486,7 +731,7 @@ func (a *PinsAPIService) PinsDeleteExecute(r ApiPinsDeleteRequest) (*http.Respon
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -633,13 +878,13 @@ func (a *PinsAPIService) PinsGetExecute(r ApiPinsGetRequest) (*Pin, *http.Respon
 	localVarFormParams := url.Values{}
 
 	if r.pinMetrics != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.pinMetrics = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -744,7 +989,7 @@ func (r ApiPinsListRequest) Bookmark(bookmark string) ApiPinsListRequest {
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiPinsListRequest) PageSize(pageSize int32) ApiPinsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -794,9 +1039,12 @@ func (r ApiPinsListRequest) Execute() (*PinsList200Response, *http.Response, err
 PinsList List Pins
 
 Get a list of the Pins owned by the "operation user_account".
-- By default, the "operation user_account" is the token user_account.
-- All Pins owned by the "operation user_account" are included, regardless of who owns the board they are on.
+  - By default, the "operation user_account" is the token user_account.
+  - All Pins owned by the "operation user_account" are included, regardless of who owns the board they are on.
 Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account".
+
+Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your
+request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPinsListRequest
@@ -830,42 +1078,42 @@ func (a *PinsAPIService) PinsListExecute(r ApiPinsListRequest) (*PinsList200Resp
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.pinFilter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_filter", r.pinFilter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_filter", r.pinFilter, "form", "")
 	}
 	if r.includeProtectedPins != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_protected_pins", r.includeProtectedPins, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_protected_pins", r.includeProtectedPins, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.includeProtectedPins = &defaultValue
 	}
 	if r.pinType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_type", r.pinType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_type", r.pinType, "form", "")
 	}
 	if r.creativeTypes != nil {
 		t := *r.creativeTypes
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", t, "form", "multi")
 		}
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	if r.pinMetrics != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.pinMetrics = &defaultValue
@@ -1018,7 +1266,7 @@ func (a *PinsAPIService) PinsSaveExecute(r ApiPinsSaveRequest) (*Pin, *http.Resp
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1140,7 +1388,7 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.
 - For Pins on secret boards: Owner, Admin.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param pinId Unique identifier of a Pin.
@@ -1180,7 +1428,7 @@ func (a *PinsAPIService) PinsUpdateExecute(r ApiPinsUpdateRequest) (*Pin, *http.
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -15,7 +15,7 @@ import org.openapitools.server.api.model.VideoMetadata;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaWithVideos extends PinMedia  {
   
-  private List<VideoMetadata> items;
+  private List<VideoMetadata> items = new ArrayList<>();
 
   public PinMediaWithVideos () {
 

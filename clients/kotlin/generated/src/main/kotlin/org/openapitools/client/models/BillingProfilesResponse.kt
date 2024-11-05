@@ -100,5 +100,6 @@ data class BillingProfilesResponse (
         @Json(name = "ELO") ELO("ELO"),
         @Json(name = "CARTE_BANCAIRE") CARTE_BANCAIRE("CARTE_BANCAIRE");
     }
+
 }
 

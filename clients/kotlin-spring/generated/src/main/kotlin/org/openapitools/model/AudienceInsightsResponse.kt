@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.AudienceCategory
@@ -49,7 +50,7 @@ data class AudienceInsightsResponse(
 
     @Schema(example = "true", description = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
     @get:JsonProperty("size_is_upper_bound") val sizeIsUpperBound: kotlin.Boolean? = null
-) {
+    ) {
 
 }
 

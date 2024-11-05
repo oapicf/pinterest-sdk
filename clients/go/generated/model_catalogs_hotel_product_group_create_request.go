@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,7 +27,7 @@ type CatalogsHotelProductGroupCreateRequest struct {
 	Description NullableString `json:"description,omitempty"`
 	Filters CatalogsHotelProductGroupFilters `json:"filters"`
 	// Catalog id pertaining to the hotel product group.
-	CatalogId string `json:"catalog_id"`
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 }
 
 type _CatalogsHotelProductGroupCreateRequest CatalogsHotelProductGroupCreateRequest

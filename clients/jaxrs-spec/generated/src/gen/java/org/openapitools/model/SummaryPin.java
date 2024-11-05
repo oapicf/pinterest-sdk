@@ -3,7 +3,7 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.SummaryPinMedia;
+import org.openapitools.model.PinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,17 +19,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Summarized pin information")
 @JsonTypeName("SummaryPin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SummaryPin   {
-  private @Valid SummaryPinMedia media;
-  private @Valid String altText;
-  private @Valid String link;
-  private @Valid String title;
-  private @Valid String description;
+  private PinMedia media;
+  private String altText;
+  private String link;
+  private String title;
+  private String description;
 
   /**
    **/
-  public SummaryPin media(SummaryPinMedia media) {
+  public SummaryPin media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -37,12 +37,12 @@ public class SummaryPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  @Valid public PinMedia getMedia() {
     return media;
   }
 
   @JsonProperty("media")
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -56,7 +56,7 @@ public class SummaryPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("alt_text")
- @Size(max=500)  public String getAltText() {
+   @Size(max=500)public String getAltText() {
     return altText;
   }
 
@@ -75,7 +75,7 @@ public class SummaryPin   {
   
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
   @JsonProperty("link")
- @Size(max=2048)  public String getLink() {
+   @Size(max=2048)public String getLink() {
     return link;
   }
 

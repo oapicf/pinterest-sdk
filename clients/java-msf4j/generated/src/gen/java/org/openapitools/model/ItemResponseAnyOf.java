@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsItemResponse;
 import org.openapitools.model.CatalogsHotelItemResponse;
 import org.openapitools.model.CatalogsRetailItemResponse;
 import org.openapitools.model.CatalogsType;
@@ -23,7 +24,7 @@ import org.openapitools.model.Pin;
 /**
  * ItemResponseAnyOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemResponseAnyOf   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -35,10 +36,13 @@ public class ItemResponseAnyOf   {
   private List<@Valid Pin> pins = null;
 
   @JsonProperty("attributes")
-  private CatalogsHotelAttributes attributes;
+  private CatalogsCreativeAssetsAttributes attributes;
 
   @JsonProperty("hotel_id")
   private String hotelId;
+
+  @JsonProperty("creative_assets_id")
+  private String creativeAssetsId;
 
   public ItemResponseAnyOf catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -102,7 +106,7 @@ public class ItemResponseAnyOf   {
     this.pins = pins;
   }
 
-  public ItemResponseAnyOf attributes(CatalogsHotelAttributes attributes) {
+  public ItemResponseAnyOf attributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -112,11 +116,11 @@ public class ItemResponseAnyOf   {
    * @return attributes
   **/
   @ApiModelProperty(value = "")
-  public CatalogsHotelAttributes getAttributes() {
+  public CatalogsCreativeAssetsAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(CatalogsHotelAttributes attributes) {
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -138,6 +142,24 @@ public class ItemResponseAnyOf   {
     this.hotelId = hotelId;
   }
 
+  public ItemResponseAnyOf creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+   /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+  **/
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -152,12 +174,13 @@ public class ItemResponseAnyOf   {
         Objects.equals(this.itemId, itemResponseAnyOf.itemId) &&
         Objects.equals(this.pins, itemResponseAnyOf.pins) &&
         Objects.equals(this.attributes, itemResponseAnyOf.attributes) &&
-        Objects.equals(this.hotelId, itemResponseAnyOf.hotelId);
+        Objects.equals(this.hotelId, itemResponseAnyOf.hotelId) &&
+        Objects.equals(this.creativeAssetsId, itemResponseAnyOf.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes, hotelId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -170,6 +193,7 @@ public class ItemResponseAnyOf   {
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

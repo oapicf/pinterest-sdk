@@ -21,7 +21,7 @@ openapi_catalogs_update_retail_item() ->
 
 openapi_catalogs_update_retail_item(Fields) ->
   Default = [ {'item_id', binary() }
-            , {'operation', elements([<<"CREATE">>, <<"UPDATE">>, <<"UPSERT">>, <<"DELETE">>]) }
+            , {'operation', elements([<<"UPDATE">>]) }
             , {'attributes', openapi_updatable_item_attributes:openapi_updatable_item_attributes() }
             , {'update_mask', list(openapi_update_mask_field_type:openapi_update_mask_field_type()) }
             ],

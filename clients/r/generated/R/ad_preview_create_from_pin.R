@@ -15,14 +15,12 @@ AdPreviewCreateFromPin <- R6::R6Class(
   "AdPreviewCreateFromPin",
   public = list(
     `pin_id` = NULL,
-    #' Initialize a new AdPreviewCreateFromPin class.
-    #'
+
     #' @description
     #' Initialize a new AdPreviewCreateFromPin class.
     #'
     #' @param pin_id Pin ID.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`pin_id`, ...) {
       if (!missing(`pin_id`)) {
         if (!(is.character(`pin_id`) && length(`pin_id`) == 1)) {
@@ -31,13 +29,11 @@ AdPreviewCreateFromPin <- R6::R6Class(
         self$`pin_id` <- `pin_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdPreviewCreateFromPin in JSON format
-    #' @export
     toJSON = function() {
       AdPreviewCreateFromPinObject <- list()
       if (!is.null(self$`pin_id`)) {
@@ -46,14 +42,12 @@ AdPreviewCreateFromPin <- R6::R6Class(
       }
       AdPreviewCreateFromPinObject
     },
-    #' Deserialize JSON string into an instance of AdPreviewCreateFromPin
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdPreviewCreateFromPin
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdPreviewCreateFromPin
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`pin_id`)) {
@@ -61,13 +55,11 @@ AdPreviewCreateFromPin <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdPreviewCreateFromPin in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`pin_id`)) {
@@ -82,26 +74,22 @@ AdPreviewCreateFromPin <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdPreviewCreateFromPin
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdPreviewCreateFromPin
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdPreviewCreateFromPin
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`pin_id` <- this_object$`pin_id`
       self
     },
-    #' Validate JSON input with respect to AdPreviewCreateFromPin
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdPreviewCreateFromPin and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `pin_id`
@@ -113,23 +101,19 @@ AdPreviewCreateFromPin <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for AdPreviewCreateFromPin: the required field `pin_id` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdPreviewCreateFromPin
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `pin_id` is null
       if (is.null(self$`pin_id`)) {
@@ -138,13 +122,11 @@ AdPreviewCreateFromPin <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `pin_id` is null
@@ -154,12 +136,9 @@ AdPreviewCreateFromPin <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

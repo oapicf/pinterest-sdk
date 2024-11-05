@@ -31,5 +31,7 @@ public enum Currency {
   MXN,
   ARS,
   CLP,
-  COP;
+  COP,
+  INR,
+  TRY;
 }

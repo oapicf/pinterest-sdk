@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -85,10 +85,10 @@ func (a *TermsAPIService) TermsRelatedListExecute(r ApiTermsRelatedListRequest) 
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "terms", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "terms", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "terms", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "terms", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -227,9 +227,9 @@ func (a *TermsAPIService) TermsSuggestedListExecute(r ApiTermsSuggestedListReque
 		return localVarReturnValue, nil, reportError("term is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "term", r.term, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "term", r.term, "form", "")
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue int32 = 4
 		r.limit = &defaultValue

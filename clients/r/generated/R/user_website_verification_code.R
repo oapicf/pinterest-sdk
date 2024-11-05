@@ -23,8 +23,7 @@ UserWebsiteVerificationCode <- R6::R6Class(
     `metatag` = NULL,
     `filename` = NULL,
     `file_content` = NULL,
-    #' Initialize a new UserWebsiteVerificationCode class.
-    #'
+
     #' @description
     #' Initialize a new UserWebsiteVerificationCode class.
     #'
@@ -34,7 +33,6 @@ UserWebsiteVerificationCode <- R6::R6Class(
     #' @param filename File expected to find on the website being claimed
     #' @param file_content A full html file to upload to the website in order for it to be claimed
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`verification_code` = NULL, `dns_txt_record` = NULL, `metatag` = NULL, `filename` = NULL, `file_content` = NULL, ...) {
       if (!is.null(`verification_code`)) {
         if (!(is.character(`verification_code`) && length(`verification_code`) == 1)) {
@@ -67,13 +65,11 @@ UserWebsiteVerificationCode <- R6::R6Class(
         self$`file_content` <- `file_content`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return UserWebsiteVerificationCode in JSON format
-    #' @export
     toJSON = function() {
       UserWebsiteVerificationCodeObject <- list()
       if (!is.null(self$`verification_code`)) {
@@ -98,14 +94,12 @@ UserWebsiteVerificationCode <- R6::R6Class(
       }
       UserWebsiteVerificationCodeObject
     },
-    #' Deserialize JSON string into an instance of UserWebsiteVerificationCode
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of UserWebsiteVerificationCode
     #'
     #' @param input_json the JSON input
     #' @return the instance of UserWebsiteVerificationCode
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`verification_code`)) {
@@ -125,13 +119,11 @@ UserWebsiteVerificationCode <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return UserWebsiteVerificationCode in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`verification_code`)) {
@@ -178,14 +170,12 @@ UserWebsiteVerificationCode <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of UserWebsiteVerificationCode
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of UserWebsiteVerificationCode
     #'
     #' @param input_json the JSON input
     #' @return the instance of UserWebsiteVerificationCode
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`verification_code` <- this_object$`verification_code`
@@ -195,53 +185,42 @@ UserWebsiteVerificationCode <- R6::R6Class(
       self$`file_content` <- this_object$`file_content`
       self
     },
-    #' Validate JSON input with respect to UserWebsiteVerificationCode
-    #'
+
     #' @description
     #' Validate JSON input with respect to UserWebsiteVerificationCode and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of UserWebsiteVerificationCode
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

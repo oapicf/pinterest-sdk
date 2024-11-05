@@ -21,12 +21,14 @@ public struct AdAccountCreateSubscriptionRequest: Codable, JSONEncodable, Hashab
     public var partnerAccessToken: String?
     /** Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     public var partnerRefreshToken: String?
+    public var partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata?
 
-    public init(webhookUrl: String, leadFormId: String? = nil, partnerAccessToken: String? = nil, partnerRefreshToken: String? = nil) {
+    public init(webhookUrl: String, leadFormId: String? = nil, partnerAccessToken: String? = nil, partnerRefreshToken: String? = nil, partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = nil) {
         self.webhookUrl = webhookUrl
         self.leadFormId = leadFormId
         self.partnerAccessToken = partnerAccessToken
         self.partnerRefreshToken = partnerRefreshToken
+        self.partnerMetadata = partnerMetadata
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,6 +36,7 @@ public struct AdAccountCreateSubscriptionRequest: Codable, JSONEncodable, Hashab
         case leadFormId = "lead_form_id"
         case partnerAccessToken = "partner_access_token"
         case partnerRefreshToken = "partner_refresh_token"
+        case partnerMetadata = "partner_metadata"
     }
 
     // Encodable protocol methods
@@ -44,6 +47,7 @@ public struct AdAccountCreateSubscriptionRequest: Codable, JSONEncodable, Hashab
         try container.encodeIfPresent(leadFormId, forKey: .leadFormId)
         try container.encodeIfPresent(partnerAccessToken, forKey: .partnerAccessToken)
         try container.encodeIfPresent(partnerRefreshToken, forKey: .partnerRefreshToken)
+        try container.encodeIfPresent(partnerMetadata, forKey: .partnerMetadata)
     }
 }
 

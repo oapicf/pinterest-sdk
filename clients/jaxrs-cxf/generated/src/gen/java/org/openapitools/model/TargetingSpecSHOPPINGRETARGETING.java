@@ -24,7 +24,7 @@ public class TargetingSpecSHOPPINGRETARGETING  {
  /**
    * Event types to target for dynamic retargeting
   **/
-  private List<Integer> tagTypes;
+  private List<Integer> tagTypes = new ArrayList<>();
 
   @ApiModelProperty(example = "14", value = "Number of days ago to stop lookback timeframe for dynamic retargeting")
  /**

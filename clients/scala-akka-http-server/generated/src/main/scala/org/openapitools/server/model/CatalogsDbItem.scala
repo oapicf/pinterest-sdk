@@ -10,8 +10,8 @@ import java.time.OffsetDateTime
  * @param updatedAt  for example: ''2022-03-14T15:16:34Z''
 */
 final case class CatalogsDbItem (
-  createdAt: Option[OffsetDateTime] = None,
-  id: Option[String] = None,
-  updatedAt: Option[OffsetDateTime] = None
+  createdAt: OffsetDateTime,
+  id: String,
+  updatedAt: OffsetDateTime
 )
 

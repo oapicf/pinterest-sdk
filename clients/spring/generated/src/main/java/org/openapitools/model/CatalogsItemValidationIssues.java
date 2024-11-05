@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * CatalogsItemValidationIssues
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationIssues {
 
   private Integer itemNumber;
@@ -53,7 +53,7 @@ public class CatalogsItemValidationIssues {
   /**
    * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
    * @return itemNumber
-  */
+   */
   @NotNull 
   @Schema(name = "item_number", example = "0", description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("item_number")
@@ -73,7 +73,7 @@ public class CatalogsItemValidationIssues {
   /**
    * The merchant-created unique ID that represents the product.
    * @return itemId
-  */
+   */
   @NotNull 
   @Schema(name = "item_id", example = "DS0294-L", description = "The merchant-created unique ID that represents the product.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("item_id")
@@ -93,7 +93,7 @@ public class CatalogsItemValidationIssues {
   /**
    * Get errors
    * @return errors
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "errors", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("errors")
@@ -113,7 +113,7 @@ public class CatalogsItemValidationIssues {
   /**
    * Get warnings
    * @return warnings
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "warnings", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("warnings")

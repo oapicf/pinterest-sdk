@@ -30,7 +30,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	conversionEvents := *openapiclient.NewConversionEvents([]openapiclient.ConversionEventsDataInner{*openapiclient.NewConversionEventsDataInner("checkout", "app_ios", int64(1451431341), "eventId0001", "TODO")}) // ConversionEvents | Conversion events.
+	conversionEvents := *openapiclient.NewConversionEvents([]openapiclient.ConversionEventsDataInner{*openapiclient.NewConversionEventsDataInner("checkout", "app_ios", int64(1451431341), "eventId0001", *openapiclient.NewConversionEventsUserData([]string{"Em_example"}, []string{"HashedMaids_example"}, "216.3.128.12", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36"))}) // ConversionEvents | Conversion events.
 	test := true // bool | Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request. (optional)
 
 	configuration := openapiclient.NewConfiguration()

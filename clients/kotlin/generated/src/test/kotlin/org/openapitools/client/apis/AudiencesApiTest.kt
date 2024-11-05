@@ -64,8 +64,8 @@ class AudiencesApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
-            //val ownershipType : kotlin.String = OWNED // kotlin.String | <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val ownershipType : kotlin.String = OWNED // kotlin.String | Filter audiences by ownership type.
             //val result : AudiencesList200Response = apiInstance.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
             //result shouldBe ("TODO")
         }

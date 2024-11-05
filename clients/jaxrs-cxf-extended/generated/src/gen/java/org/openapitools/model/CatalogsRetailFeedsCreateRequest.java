@@ -8,6 +8,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
@@ -70,6 +71,9 @@ public class CatalogsRetailFeedsCreateRequest  {
   @ApiModelProperty(value = "")
   @Valid
   private ProductAvailabilityType defaultAvailability;
+
+  @ApiModelProperty(value = "")
+  private CatalogsStatus status;
  /**
   * Get defaultCurrency
   * @return defaultCurrency
@@ -316,6 +320,30 @@ public class CatalogsRetailFeedsCreateRequest  {
     return this;
   }
 
+ /**
+  * Get status
+  * @return status
+  */
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+ public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+  public CatalogsRetailFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -335,12 +363,13 @@ public class CatalogsRetailFeedsCreateRequest  {
         Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.catalogType, catalogsRetailFeedsCreateRequest.catalogType) &&
         Objects.equals(this.defaultCountry, catalogsRetailFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability);
+        Objects.equals(this.defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, catalogsRetailFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -358,6 +387,7 @@ public class CatalogsRetailFeedsCreateRequest  {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

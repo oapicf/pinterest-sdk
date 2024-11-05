@@ -1,15 +1,15 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.BatchOperation
 import org.openapitools.model.CatalogsItemsBatchRequest
-import org.openapitools.model.CatalogsType
+import org.openapitools.model.CatalogsItemsRequestLanguage
 import org.openapitools.model.CatalogsVerticalBatchRequest
 import org.openapitools.model.Country
 import org.openapitools.model.ItemDeleteBatchRecord
-import org.openapitools.model.Language
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -36,7 +36,7 @@ data class ItemsBatchPostRequest(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("language", required = true) val language: Language,
+    @get:JsonProperty("language", required = true) val language: CatalogsItemsRequestLanguage,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -46,14 +46,13 @@ data class ItemsBatchPostRequest(
     @Schema(example = "null", required = true, description = "Array with catalogs items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemDeleteBatchRecord>,
 
-    @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsType,
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: ItemsBatchPostRequest.CatalogType,
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "2680059592705", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+    @Schema(example = "2680059592705", description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
     @get:JsonProperty("catalog_id") override val catalogId: kotlin.String? = null
-) {
+    ) {
 
 }
 

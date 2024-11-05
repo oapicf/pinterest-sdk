@@ -25,11 +25,14 @@
 #' @field product_group_ids List of product group ids list(character) [optional]
 #' @field product_group_statuses List of values for filtering list(\link{ProductGroupSummaryStatus}) [optional]
 #' @field product_item_ids List of product item ids list(character) [optional]
-#' @field targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. list(\link{AdsAnalyticsTargetingType}) [optional]
+#' @field targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. list(\link{AdsAnalyticsTargetingType}) [optional]
 #' @field metrics_filters List of metrics filters list(\link{AdsAnalyticsMetricsFilter}) [optional]
 #' @field columns Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. list(\link{ReportingColumnAsync})
 #' @field level Level of the report \link{MetricsReportingLevel}
 #' @field report_format Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. \link{DataOutputFormat} [optional]
+#' @field primary_sort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. character [optional]
+#' @field start_hour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. integer [optional]
+#' @field end_hour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -59,8 +62,10 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     `columns` = NULL,
     `level` = NULL,
     `report_format` = NULL,
-    #' Initialize a new AdsAnalyticsCreateAsyncRequest class.
-    #'
+    `primary_sort` = NULL,
+    `start_hour` = NULL,
+    `end_hour` = NULL,
+
     #' @description
     #' Initialize a new AdsAnalyticsCreateAsyncRequest class.
     #'
@@ -84,12 +89,14 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
     #' @param product_group_ids List of product group ids
     #' @param product_group_statuses List of values for filtering
     #' @param product_item_ids List of product item ids
-    #' @param targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+    #' @param targeting_types List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
     #' @param metrics_filters List of metrics filters
     #' @param report_format Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.. Default to "JSON".
+    #' @param primary_sort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+    #' @param start_hour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+    #' @param end_hour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`start_date`, `end_date`, `granularity`, `columns`, `level`, `click_window_days` = ConversionAttributionWindowDays_30_, `engagement_window_days` = ConversionAttributionWindowDays_30_, `view_window_days` = ConversionAttributionWindowDays_1_, `conversion_report_time` = "TIME_OF_AD_ACTION", `attribution_types` = NULL, `campaign_ids` = NULL, `campaign_statuses` = NULL, `campaign_objective_types` = NULL, `ad_group_ids` = NULL, `ad_group_statuses` = NULL, `ad_ids` = NULL, `ad_statuses` = NULL, `product_group_ids` = NULL, `product_group_statuses` = NULL, `product_item_ids` = NULL, `targeting_types` = NULL, `metrics_filters` = NULL, `report_format` = "JSON", ...) {
+    initialize = function(`start_date`, `end_date`, `granularity`, `columns`, `level`, `click_window_days` = ConversionAttributionWindowDays_30_, `engagement_window_days` = ConversionAttributionWindowDays_30_, `view_window_days` = ConversionAttributionWindowDays_1_, `conversion_report_time` = "TIME_OF_AD_ACTION", `attribution_types` = NULL, `campaign_ids` = NULL, `campaign_statuses` = NULL, `campaign_objective_types` = NULL, `ad_group_ids` = NULL, `ad_group_statuses` = NULL, `ad_ids` = NULL, `ad_statuses` = NULL, `product_group_ids` = NULL, `product_group_statuses` = NULL, `product_item_ids` = NULL, `targeting_types` = NULL, `metrics_filters` = NULL, `report_format` = "JSON", `primary_sort` = NULL, `start_hour` = NULL, `end_hour` = NULL, ...) {
       if (!missing(`start_date`)) {
         if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
           stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
@@ -221,14 +228,33 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`report_format`))
         self$`report_format` <- `report_format`
       }
+      if (!is.null(`primary_sort`)) {
+        if (!(`primary_sort` %in% c("BY_ID", "BY_DATE"))) {
+          stop(paste("Error! \"", `primary_sort`, "\" cannot be assigned to `primary_sort`. Must be \"BY_ID\", \"BY_DATE\".", sep = ""))
+        }
+        if (!(is.character(`primary_sort`) && length(`primary_sort`) == 1)) {
+          stop(paste("Error! Invalid data for `primary_sort`. Must be a string:", `primary_sort`))
+        }
+        self$`primary_sort` <- `primary_sort`
+      }
+      if (!is.null(`start_hour`)) {
+        if (!(is.numeric(`start_hour`) && length(`start_hour`) == 1)) {
+          stop(paste("Error! Invalid data for `start_hour`. Must be an integer:", `start_hour`))
+        }
+        self$`start_hour` <- `start_hour`
+      }
+      if (!is.null(`end_hour`)) {
+        if (!(is.numeric(`end_hour`) && length(`end_hour`) == 1)) {
+          stop(paste("Error! Invalid data for `end_hour`. Must be an integer:", `end_hour`))
+        }
+        self$`end_hour` <- `end_hour`
+      }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsAnalyticsCreateAsyncRequest in JSON format
-    #' @export
     toJSON = function() {
       AdsAnalyticsCreateAsyncRequestObject <- list()
       if (!is.null(self$`start_date`)) {
@@ -323,16 +349,26 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         AdsAnalyticsCreateAsyncRequestObject[["report_format"]] <-
           self$`report_format`$toJSON()
       }
+      if (!is.null(self$`primary_sort`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["primary_sort"]] <-
+          self$`primary_sort`
+      }
+      if (!is.null(self$`start_hour`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["start_hour"]] <-
+          self$`start_hour`
+      }
+      if (!is.null(self$`end_hour`)) {
+        AdsAnalyticsCreateAsyncRequestObject[["end_hour"]] <-
+          self$`end_hour`
+      }
       AdsAnalyticsCreateAsyncRequestObject
     },
-    #' Deserialize JSON string into an instance of AdsAnalyticsCreateAsyncRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsAnalyticsCreateAsyncRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsAnalyticsCreateAsyncRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`start_date`)) {
@@ -418,15 +454,25 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         `report_format_object`$fromJSON(jsonlite::toJSON(this_object$`report_format`, auto_unbox = TRUE, digits = NA))
         self$`report_format` <- `report_format_object`
       }
+      if (!is.null(this_object$`primary_sort`)) {
+        if (!is.null(this_object$`primary_sort`) && !(this_object$`primary_sort` %in% c("BY_ID", "BY_DATE"))) {
+          stop(paste("Error! \"", this_object$`primary_sort`, "\" cannot be assigned to `primary_sort`. Must be \"BY_ID\", \"BY_DATE\".", sep = ""))
+        }
+        self$`primary_sort` <- this_object$`primary_sort`
+      }
+      if (!is.null(this_object$`start_hour`)) {
+        self$`start_hour` <- this_object$`start_hour`
+      }
+      if (!is.null(this_object$`end_hour`)) {
+        self$`end_hour` <- this_object$`end_hour`
+      }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsAnalyticsCreateAsyncRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`start_date`)) {
@@ -612,19 +658,41 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
           ',
           jsonlite::toJSON(self$`report_format`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
+        },
+        if (!is.null(self$`primary_sort`)) {
+          sprintf(
+          '"primary_sort":
+            "%s"
+                    ',
+          self$`primary_sort`
+          )
+        },
+        if (!is.null(self$`start_hour`)) {
+          sprintf(
+          '"start_hour":
+            %d
+                    ',
+          self$`start_hour`
+          )
+        },
+        if (!is.null(self$`end_hour`)) {
+          sprintf(
+          '"end_hour":
+            %d
+                    ',
+          self$`end_hour`
+          )
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdsAnalyticsCreateAsyncRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsAnalyticsCreateAsyncRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsAnalyticsCreateAsyncRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`start_date` <- this_object$`start_date`
@@ -650,15 +718,19 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
       self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[ReportingColumnAsync]", loadNamespace("openapi"))
       self$`level` <- MetricsReportingLevel$new()$fromJSON(jsonlite::toJSON(this_object$`level`, auto_unbox = TRUE, digits = NA))
       self$`report_format` <- DataOutputFormat$new()$fromJSON(jsonlite::toJSON(this_object$`report_format`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`primary_sort`) && !(this_object$`primary_sort` %in% c("BY_ID", "BY_DATE"))) {
+        stop(paste("Error! \"", this_object$`primary_sort`, "\" cannot be assigned to `primary_sort`. Must be \"BY_ID\", \"BY_DATE\".", sep = ""))
+      }
+      self$`primary_sort` <- this_object$`primary_sort`
+      self$`start_hour` <- this_object$`start_hour`
+      self$`end_hour` <- this_object$`end_hour`
       self
     },
-    #' Validate JSON input with respect to AdsAnalyticsCreateAsyncRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdsAnalyticsCreateAsyncRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `start_date`
@@ -697,23 +769,19 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for AdsAnalyticsCreateAsyncRequest: the required field `level` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdsAnalyticsCreateAsyncRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `start_date` is null
       if (is.null(self$`start_date`)) {
@@ -752,7 +820,7 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      if (length(self$`campaign_objective_types`) > 6) {
+      if (length(self$`campaign_objective_types`) > 7) {
         return(FALSE)
       }
       if (length(self$`campaign_objective_types`) < 1) {
@@ -829,15 +897,27 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         return(FALSE)
       }
 
+      if (self$`start_hour` > 23) {
+        return(FALSE)
+      }
+      if (self$`start_hour` < 0) {
+        return(FALSE)
+      }
+
+      if (self$`end_hour` > 23) {
+        return(FALSE)
+      }
+      if (self$`end_hour` < 0) {
+        return(FALSE)
+      }
+
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `start_date` is null
@@ -877,8 +957,8 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         invalid_fields["campaign_statuses"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
-      if (length(self$`campaign_objective_types`) > 6) {
-        invalid_fields["campaign_objective_types"] <- "Invalid length for `campaign_objective_types`, number of items must be less than or equal to 6."
+      if (length(self$`campaign_objective_types`) > 7) {
+        invalid_fields["campaign_objective_types"] <- "Invalid length for `campaign_objective_types`, number of items must be less than or equal to 7."
       }
       if (length(self$`campaign_objective_types`) < 1) {
         invalid_fields["campaign_objective_types"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
@@ -954,14 +1034,25 @@ AdsAnalyticsCreateAsyncRequest <- R6::R6Class(
         invalid_fields["level"] <- "Non-nullable required field `level` cannot be null."
       }
 
+      if (self$`start_hour` > 23) {
+        invalid_fields["start_hour"] <- "Invalid value for `start_hour`, must be smaller than or equal to 23."
+      }
+      if (self$`start_hour` < 0) {
+        invalid_fields["start_hour"] <- "Invalid value for `start_hour`, must be bigger than or equal to 0."
+      }
+
+      if (self$`end_hour` > 23) {
+        invalid_fields["end_hour"] <- "Invalid value for `end_hour`, must be smaller than or equal to 23."
+      }
+      if (self$`end_hour` < 0) {
+        invalid_fields["end_hour"] <- "Invalid value for `end_hour`, must be bigger than or equal to 0."
+      }
+
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

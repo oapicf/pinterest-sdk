@@ -15,7 +15,7 @@ import org.openapitools.model.PinMediaMetadata;
  * Pin with a mix of images and videos.
  */
 @ApiModel(description = "Pin with a mix of images and videos.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithImageAndVideo extends PinMedia  {
   @JsonProperty("items")
   private List<@Valid PinMediaMetadata> items = null;
@@ -27,7 +27,7 @@ public class PinMediaWithImageAndVideo extends PinMedia  {
 
   public PinMediaWithImageAndVideo addItemsItem(PinMediaMetadata itemsItem) {
     if (this.items == null) {
-      this.items = ;
+      this.items = new ArrayList<>();
     }
     this.items.add(itemsItem);
     return this;

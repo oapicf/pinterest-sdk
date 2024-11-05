@@ -10,5 +10,5 @@ import org.openapitools.model.ItemResponse;
 @Canonical
 class CatalogsItems {
     /* Array with catalogs items */
-    List<ItemResponse> items
+    List<ItemResponse> items = new ArrayList<>()
 }

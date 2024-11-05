@@ -16,12 +16,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("IntegrationLogsInvalidLogResponse_rejected_logs_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
-  private @Valid Integer logIndex;
-  private @Valid String field;
-  private @Valid String value;
-  private @Valid String reason;
+  private Integer logIndex;
+  private String field;
+  private String value;
+  private String reason;
 
   /**
    * Index of the log in the batch.
@@ -54,8 +54,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   
   @ApiModelProperty(required = true, value = "The field name containing an invalid value.")
   @JsonProperty("field")
-  @NotNull
-  public String getField() {
+  @NotNull public String getField() {
     return field;
   }
 
@@ -75,8 +74,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   
   @ApiModelProperty(required = true, value = "The value that is invalid.")
   @JsonProperty("value")
-  @NotNull
-  public String getValue() {
+  @NotNull public String getValue() {
     return value;
   }
 
@@ -96,8 +94,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   
   @ApiModelProperty(required = true, value = "The reason the value is invalid.")
   @JsonProperty("reason")
-  @NotNull
-  public String getReason() {
+  @NotNull public String getReason() {
     return reason;
   }
 

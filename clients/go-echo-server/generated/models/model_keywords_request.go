@@ -6,5 +6,5 @@ type KeywordsRequest struct {
 	Keywords []KeywordsCommon `json:"keywords"`
 
 	// Keyword parent entity ID (advertiser, campaign, ad group).
-	ParentId string `json:"parent_id"`
+	ParentId string `json:"parent_id" validate:"regexp=^((AG)|C)?\\\\d+$"`
 }

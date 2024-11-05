@@ -101,7 +101,7 @@ public abstract class AdGroupsApiControllerImpInterface {
 
     public abstract BidFloor adGroupsBidFloorGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, BidFloorRequest bidFloorRequest) throws Exception;
 
-    public Result adGroupsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdGroupCreateRequest> adGroupCreateRequest) throws Exception {
+    public Result adGroupsCreateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdGroupCreateRequest> adGroupCreateRequest) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -118,7 +118,7 @@ public abstract class AdGroupsApiControllerImpInterface {
 
     }
 
-    public abstract AdGroupArrayResponse adGroupsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdGroupCreateRequest> adGroupCreateRequest) throws Exception;
+    public abstract AdGroupArrayResponse adGroupsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdGroupCreateRequest> adGroupCreateRequest) throws Exception;
 
     public Result adGroupsGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
@@ -177,7 +177,7 @@ public abstract class AdGroupsApiControllerImpInterface {
 
     public abstract MetricsResponse adGroupsTargetingAnalyticsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsTargetingType> targetingTypes, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) throws Exception;
 
-    public Result adGroupsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdGroupUpdateRequest> adGroupUpdateRequest) throws Exception {
+    public Result adGroupsUpdateHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -194,6 +194,6 @@ public abstract class AdGroupsApiControllerImpInterface {
 
     }
 
-    public abstract AdGroupArrayResponse adGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdGroupUpdateRequest> adGroupUpdateRequest) throws Exception;
+    public abstract AdGroupArrayResponse adGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest) throws Exception;
 
 }

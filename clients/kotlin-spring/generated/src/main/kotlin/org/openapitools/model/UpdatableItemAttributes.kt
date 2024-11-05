@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param adLink Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
  * @param adult Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
- * @param ageGroup The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
- * @param availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+ * @param ageGroup The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+ * @param availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
  * @param averageReviewRating Average reviews for the item. Can be a number from 1-5.
  * @param brand The brand of the product.
  * @param checkoutEnabled This attribute is not supported anymore.
@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param description <p><= 10000 characters</p> <p>The description of the product.</p>
  * @param freeShippingLabel The item is free to ship.
  * @param freeShippingLimit The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
- * @param gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+ * @param gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
  * @param googleProductCategory The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
  * @param gtin The unique universal product identifier.
  * @param id <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
@@ -54,8 +54,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param shippingWeight The weight of the product. Ensure there is a space between the numeric string and the metric.
  * @param shippingWidth The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
  * @param propertySize The size of the product.
- * @param sizeSystem Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
- * @param sizeType Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+ * @param sizeSystem Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+ * @param sizeType Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
  * @param tax Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
  * @param title <p><= 500 characters</p> <p>The name of the product.</p>
  * @param variantNames Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
@@ -69,10 +69,10 @@ data class UpdatableItemAttributes(
     @Schema(example = "true", description = "Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.")
     @get:JsonProperty("adult") val adult: kotlin.Boolean? = null,
 
-    @Schema(example = "newborn", description = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
+    @Schema(example = "newborn", description = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
     @get:JsonProperty("age_group") val ageGroup: kotlin.String? = null,
 
-    @Schema(example = "in stock", description = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.")
+    @Schema(example = "in stock", description = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.")
     @get:JsonProperty("availability") val availability: kotlin.String? = null,
 
     @Schema(example = "5", description = "Average reviews for the item. Can be a number from 1-5.")
@@ -115,7 +115,7 @@ data class UpdatableItemAttributes(
     @Schema(example = "35 USD", description = "The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.")
     @get:JsonProperty("free_shipping_limit") val freeShippingLimit: kotlin.String? = null,
 
-    @Schema(example = "unisex", description = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.")
+    @Schema(example = "unisex", description = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.")
     @get:JsonProperty("gender") val gender: kotlin.String? = null,
 
     @Schema(example = "Apparel & Accessories > Clothing > Shirts & Tops", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.")
@@ -182,10 +182,10 @@ data class UpdatableItemAttributes(
     @Schema(example = "M", description = "The size of the product.")
     @get:JsonProperty("size") val propertySize: kotlin.String? = null,
 
-    @Schema(example = "US", description = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.")
+    @Schema(example = "US", description = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.")
     @get:JsonProperty("size_system") val sizeSystem: kotlin.String? = null,
 
-    @Schema(example = "regular", description = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.")
+    @Schema(example = "regular", description = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.")
     @get:JsonProperty("size_type") val sizeType: kotlin.String? = null,
 
     @Schema(example = "US:1025433:6.00:y", description = "Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.")
@@ -199,7 +199,7 @@ data class UpdatableItemAttributes(
 
     @Schema(example = "[\"Red\",\"Small\"]", description = "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.")
     @get:JsonProperty("variant_values") val variantValues: kotlin.collections.List<kotlin.String>? = null
-) {
+    ) {
 
 }
 

@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AudienceCommon
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCommon   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -31,10 +31,10 @@ public class AudienceCommon   {
     return this;
   }
 
-   /**
+  /**
    * Ad account ID.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   public String getAdAccountId() {
     return adAccountId;
@@ -49,10 +49,10 @@ public class AudienceCommon   {
     return this;
   }
 
-   /**
+  /**
    * Audience name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "string", value = "Audience name.")
   public String getName() {
     return name;
@@ -67,10 +67,10 @@ public class AudienceCommon   {
     return this;
   }
 
-   /**
+  /**
    * Get rule
    * @return rule
-  **/
+   */
   @ApiModelProperty(value = "")
   public AudienceRule getRule() {
     return rule;

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.AdCommonQuizPinData;
-import org.openapitools.vertxweb.server.model.AdCommonTrackingUrls;
 import org.openapitools.vertxweb.server.model.CreativeType;
 import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.GridClickType;
 import org.openapitools.vertxweb.server.model.PinPromotionSummaryStatus;
+import org.openapitools.vertxweb.server.model.QuizPinData;
+import org.openapitools.vertxweb.server.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdResponse   {
@@ -31,7 +31,7 @@ public class AdResponse   {
   private Boolean isRemovable;
   private String name;
   private EntityStatus status;
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private String viewTrackingUrl;
   private String leadFormId;
   private GridClickType gridClickType;
@@ -47,7 +47,7 @@ public class AdResponse   {
     BUY_NOW("BUY_NOW"),
     CONTACT_US("CONTACT_US"),
     GET_QUOTE("GET_QUOTE"),
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     APPLY_NOW("APPLY_NOW"),
     BOOK_NOW("BOOK_NOW"),
     REQUEST_DEMO("REQUEST_DEMO"),
@@ -55,8 +55,7 @@ public class AdResponse   {
     FIND_A_DEALER("FIND_A_DEALER"),
     ADD_TO_CART("ADD_TO_CART"),
     WATCH_NOW("WATCH_NOW"),
-    READ_MORE("READ_MORE"),
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private String value;
 
@@ -72,7 +71,7 @@ public class AdResponse   {
   }
 
   private CustomizableCtaTypeEnum customizableCtaType;
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
   private String pinId;
   private String adAccountId;
   private String campaignId;
@@ -144,8 +143,8 @@ public class AdResponse   {
     }
   }
 
-  private List<RejectedReasonsEnum> rejectedReasons;
-  private List<String> rejectionLabels;
+  private List<RejectedReasonsEnum> rejectedReasons = new ArrayList<>();
+  private List<String> rejectionLabels = new ArrayList<>();
 
 
   public enum ReviewStatusEnum {
@@ -176,7 +175,7 @@ public class AdResponse   {
 
   }
 
-  public AdResponse (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, String destinationUrl, String iosDeepLink, Boolean isPinDeleted, Boolean isRemovable, String name, EntityStatus status, AdCommonTrackingUrls trackingUrls, String viewTrackingUrl, String leadFormId, GridClickType gridClickType, CustomizableCtaTypeEnum customizableCtaType, AdCommonQuizPinData quizPinData, String pinId, String adAccountId, String campaignId, String collectionItemsDestinationUrlTemplate, Integer createdTime, String id, List<RejectedReasonsEnum> rejectedReasons, List<String> rejectionLabels, ReviewStatusEnum reviewStatus, String type, Integer updatedTime, PinPromotionSummaryStatus summaryStatus) {
+  public AdResponse (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, String destinationUrl, String iosDeepLink, Boolean isPinDeleted, Boolean isRemovable, String name, EntityStatus status, TrackingUrls trackingUrls, String viewTrackingUrl, String leadFormId, GridClickType gridClickType, CustomizableCtaTypeEnum customizableCtaType, QuizPinData quizPinData, String pinId, String adAccountId, String campaignId, String collectionItemsDestinationUrlTemplate, Integer createdTime, String id, List<RejectedReasonsEnum> rejectedReasons, List<String> rejectionLabels, ReviewStatusEnum reviewStatus, String type, Integer updatedTime, PinPromotionSummaryStatus summaryStatus) {
     this.adGroupId = adGroupId;
     this.androidDeepLink = androidDeepLink;
     this.carouselAndroidDeepLinks = carouselAndroidDeepLinks;
@@ -329,10 +328,10 @@ public class AdResponse   {
 
     
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -374,10 +373,10 @@ public class AdResponse   {
 
     
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 

@@ -32,5 +32,8 @@ data class IntegrationLogsInvalidLogResponse (
     @Json(name = "rejected_logs")
     val rejectedLogs: kotlin.collections.List<IntegrationLogsInvalidLogResponseRejectedLogsInner>? = null
 
-)
+) {
+
+
+}
 

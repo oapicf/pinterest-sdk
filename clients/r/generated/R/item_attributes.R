@@ -9,8 +9,8 @@
 #' @format An \code{R6Class} generator object
 #' @field ad_link Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. character [optional]
 #' @field adult Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest. character [optional]
-#' @field age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. character [optional]
-#' @field availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. character [optional]
+#' @field age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. character [optional]
+#' @field availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’. character [optional]
 #' @field average_review_rating Average reviews for the item. Can be a number from 1-5. numeric [optional]
 #' @field brand The brand of the product. character [optional]
 #' @field checkout_enabled This attribute is not supported anymore. character [optional]
@@ -24,7 +24,7 @@
 #' @field description <p><= 10000 characters</p> <p>The description of the product.</p> character [optional]
 #' @field free_shipping_label The item is free to ship. character [optional]
 #' @field free_shipping_limit The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. character [optional]
-#' @field gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. character [optional]
+#' @field gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’. character [optional]
 #' @field google_product_category The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. character [optional]
 #' @field gtin The unique universal product identifier. integer [optional]
 #' @field id <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p> character [optional]
@@ -46,14 +46,15 @@
 #' @field shipping_weight The weight of the product. Ensure there is a space between the numeric string and the metric. character [optional]
 #' @field shipping_width The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric. character [optional]
 #' @field size The size of the product. character [optional]
-#' @field size_system Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. character [optional]
-#' @field size_type Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. character [optional]
+#' @field size_system Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’. character [optional]
+#' @field size_type Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’. character [optional]
 #' @field tax Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. character [optional]
 #' @field title <p><= 500 characters</p> <p>The name of the product.</p> character [optional]
 #' @field variant_names Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. list(character) [optional]
 #' @field variant_values Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names. list(character) [optional]
 #' @field additional_image_link <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p> list(character) [optional]
 #' @field image_link <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p> list(character) [optional]
+#' @field video_link <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p> character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -107,15 +108,15 @@ ItemAttributes <- R6::R6Class(
     `variant_values` = NULL,
     `additional_image_link` = NULL,
     `image_link` = NULL,
-    #' Initialize a new ItemAttributes class.
-    #'
+    `video_link` = NULL,
+
     #' @description
     #' Initialize a new ItemAttributes class.
     #'
     #' @param ad_link Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
     #' @param adult Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
-    #' @param age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
-    #' @param availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+    #' @param age_group The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+    #' @param availability The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
     #' @param average_review_rating Average reviews for the item. Can be a number from 1-5.
     #' @param brand The brand of the product.
     #' @param checkout_enabled This attribute is not supported anymore.
@@ -129,7 +130,7 @@ ItemAttributes <- R6::R6Class(
     #' @param description <p><= 10000 characters</p> <p>The description of the product.</p>
     #' @param free_shipping_label The item is free to ship.
     #' @param free_shipping_limit The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
-    #' @param gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+    #' @param gender The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
     #' @param google_product_category The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
     #' @param gtin The unique universal product identifier.
     #' @param id <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
@@ -151,17 +152,17 @@ ItemAttributes <- R6::R6Class(
     #' @param shipping_weight The weight of the product. Ensure there is a space between the numeric string and the metric.
     #' @param shipping_width The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
     #' @param size The size of the product.
-    #' @param size_system Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
-    #' @param size_type Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+    #' @param size_system Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+    #' @param size_type Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
     #' @param tax Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
     #' @param title <p><= 500 characters</p> <p>The name of the product.</p>
     #' @param variant_names Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
     #' @param variant_values Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
     #' @param additional_image_link <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
     #' @param image_link <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
+    #' @param video_link <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`ad_link` = NULL, `adult` = NULL, `age_group` = NULL, `availability` = NULL, `average_review_rating` = NULL, `brand` = NULL, `checkout_enabled` = NULL, `color` = NULL, `condition` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `free_shipping_label` = NULL, `free_shipping_limit` = NULL, `gender` = NULL, `google_product_category` = NULL, `gtin` = NULL, `id` = NULL, `item_group_id` = NULL, `last_updated_time` = NULL, `link` = NULL, `material` = NULL, `min_ad_price` = NULL, `mobile_link` = NULL, `mpn` = NULL, `number_of_ratings` = NULL, `number_of_reviews` = NULL, `pattern` = NULL, `price` = NULL, `product_type` = NULL, `sale_price` = NULL, `shipping` = NULL, `shipping_height` = NULL, `shipping_weight` = NULL, `shipping_width` = NULL, `size` = NULL, `size_system` = NULL, `size_type` = NULL, `tax` = NULL, `title` = NULL, `variant_names` = NULL, `variant_values` = NULL, `additional_image_link` = NULL, `image_link` = NULL, ...) {
+    initialize = function(`ad_link` = NULL, `adult` = NULL, `age_group` = NULL, `availability` = NULL, `average_review_rating` = NULL, `brand` = NULL, `checkout_enabled` = NULL, `color` = NULL, `condition` = NULL, `custom_label_0` = NULL, `custom_label_1` = NULL, `custom_label_2` = NULL, `custom_label_3` = NULL, `custom_label_4` = NULL, `description` = NULL, `free_shipping_label` = NULL, `free_shipping_limit` = NULL, `gender` = NULL, `google_product_category` = NULL, `gtin` = NULL, `id` = NULL, `item_group_id` = NULL, `last_updated_time` = NULL, `link` = NULL, `material` = NULL, `min_ad_price` = NULL, `mobile_link` = NULL, `mpn` = NULL, `number_of_ratings` = NULL, `number_of_reviews` = NULL, `pattern` = NULL, `price` = NULL, `product_type` = NULL, `sale_price` = NULL, `shipping` = NULL, `shipping_height` = NULL, `shipping_weight` = NULL, `shipping_width` = NULL, `size` = NULL, `size_system` = NULL, `size_type` = NULL, `tax` = NULL, `title` = NULL, `variant_names` = NULL, `variant_values` = NULL, `additional_image_link` = NULL, `image_link` = NULL, `video_link` = NULL, ...) {
       if (!is.null(`ad_link`)) {
         if (!(is.character(`ad_link`) && length(`ad_link`) == 1)) {
           stop(paste("Error! Invalid data for `ad_link`. Must be a string:", `ad_link`))
@@ -437,14 +438,18 @@ ItemAttributes <- R6::R6Class(
         sapply(`image_link`, function(x) stopifnot(is.character(x)))
         self$`image_link` <- `image_link`
       }
+      if (!is.null(`video_link`)) {
+        if (!(is.character(`video_link`) && length(`video_link`) == 1)) {
+          stop(paste("Error! Invalid data for `video_link`. Must be a string:", `video_link`))
+        }
+        self$`video_link` <- `video_link`
+      }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ItemAttributes in JSON format
-    #' @export
     toJSON = function() {
       ItemAttributesObject <- list()
       if (!is.null(self$`ad_link`)) {
@@ -635,16 +640,18 @@ ItemAttributes <- R6::R6Class(
         ItemAttributesObject[["image_link"]] <-
           self$`image_link`
       }
+      if (!is.null(self$`video_link`)) {
+        ItemAttributesObject[["video_link"]] <-
+          self$`video_link`
+      }
       ItemAttributesObject
     },
-    #' Deserialize JSON string into an instance of ItemAttributes
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ItemAttributes
     #'
     #' @param input_json the JSON input
     #' @return the instance of ItemAttributes
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_link`)) {
@@ -788,15 +795,16 @@ ItemAttributes <- R6::R6Class(
       if (!is.null(this_object$`image_link`)) {
         self$`image_link` <- ApiClient$new()$deserializeObj(this_object$`image_link`, "array[character]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`video_link`)) {
+        self$`video_link` <- this_object$`video_link`
+      }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ItemAttributes in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_link`)) {
@@ -1174,19 +1182,25 @@ ItemAttributes <- R6::R6Class(
           ',
           paste(unlist(lapply(self$`image_link`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
+        },
+        if (!is.null(self$`video_link`)) {
+          sprintf(
+          '"video_link":
+            "%s"
+                    ',
+          self$`video_link`
+          )
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ItemAttributes
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ItemAttributes
     #'
     #' @param input_json the JSON input
     #' @return the instance of ItemAttributes
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_link` <- this_object$`ad_link`
@@ -1236,35 +1250,30 @@ ItemAttributes <- R6::R6Class(
       self$`variant_values` <- ApiClient$new()$deserializeObj(this_object$`variant_values`, "array[character]", loadNamespace("openapi"))
       self$`additional_image_link` <- ApiClient$new()$deserializeObj(this_object$`additional_image_link`, "array[character]", loadNamespace("openapi"))
       self$`image_link` <- ApiClient$new()$deserializeObj(this_object$`image_link`, "array[character]", loadNamespace("openapi"))
+      self$`video_link` <- this_object$`video_link`
       self
     },
-    #' Validate JSON input with respect to ItemAttributes
-    #'
+
     #' @description
     #' Validate JSON input with respect to ItemAttributes and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ItemAttributes
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (length(self$`image_link`) < 1) {
         return(FALSE)
@@ -1272,13 +1281,11 @@ ItemAttributes <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`image_link`) < 1) {
@@ -1287,12 +1294,9 @@ ItemAttributes <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

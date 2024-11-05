@@ -2,7 +2,7 @@
 
 # CatalogsVerticalProductGroupCreateRequest
 
-Request object for creating a hotel product group.
+Request object for creating a catalog based product group.
 
 ## Properties
 
@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 **catalogType** | [**CatalogType**](#CatalogType) |  | 
 **name** | **String** |  | 
 **description** | **String** |  |  [optional]
-**filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**catalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**country** | **Country** |  | 
+**locale** | **CatalogsLocale** |  | 
 
 
 ## Enum: CatalogType
-Allowed values: [HOTEL]
+Allowed values: [CREATIVE_ASSETS]
 
 
 

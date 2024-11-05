@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedIngestionErrors")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionErrors   {
-  private @Valid Integer LINE_LEVEL_INTERNAL_ERROR;
+  private Integer LINE_LEVEL_INTERNAL_ERROR;
   public enum LARGEPRODUCTCOUNTDECREASEEnum {
 
     NUMBER_1(Integer.valueOf(1));
@@ -65,13 +65,13 @@ public class CatalogsFeedIngestionErrors   {
     }
 }
 
-  private @Valid LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
-  private @Valid Integer ACCOUNT_FLAGGED;
-  private @Valid Integer IMAGE_LEVEL_INTERNAL_ERROR;
-  private @Valid Integer IMAGE_FILE_NOT_ACCESSIBLE;
-  private @Valid Integer IMAGE_MALFORMED_URL;
-  private @Valid Integer IMAGE_FILE_NOT_FOUND;
-  private @Valid Integer IMAGE_INVALID_FILE;
+  private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
+  private Integer ACCOUNT_FLAGGED;
+  private Integer IMAGE_LEVEL_INTERNAL_ERROR;
+  private Integer IMAGE_FILE_NOT_ACCESSIBLE;
+  private Integer IMAGE_MALFORMED_URL;
+  private Integer IMAGE_FILE_NOT_FOUND;
+  private Integer IMAGE_INVALID_FILE;
 
   /**
    * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.

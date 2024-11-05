@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **PinCount** | Pointer to **int32** | Count of pins on the board. | [optional] [readonly] 
 **FollowerCount** | Pointer to **int32** | Board follower count. | [optional] [readonly] 
 **Media** | Pointer to [**BoardMedia**](BoardMedia.md) |  | [optional] 
-**Owner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] 
+**Owner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
 **Privacy** | Pointer to **string** | Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt; | [optional] [default to "PUBLIC"]
 
 ## Methods

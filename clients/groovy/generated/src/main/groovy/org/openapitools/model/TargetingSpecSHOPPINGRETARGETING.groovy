@@ -11,7 +11,7 @@ class TargetingSpecSHOPPINGRETARGETING {
     /* Number of days ago to start lookback timeframe for dynamic retargeting */
     Integer lookbackWindow
     /* Event types to target for dynamic retargeting */
-    List<Integer> tagTypes
+    List<Integer> tagTypes = new ArrayList<>()
     /* Number of days ago to stop lookback timeframe for dynamic retargeting */
     Integer exclusionWindow
 }

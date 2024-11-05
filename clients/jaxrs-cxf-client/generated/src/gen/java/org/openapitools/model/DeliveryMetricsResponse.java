@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeliveryMetricsResponse  {
   
   @ApiModelProperty(value = "")
-  private List<DeliveryMetricsResponseItemsInner> items;
+  private List<DeliveryMetricsResponseItemsInner> items = new ArrayList<>();
  /**
    * Get items
    * @return items

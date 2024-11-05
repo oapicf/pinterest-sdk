@@ -1,6 +1,10 @@
 const utils = require('../utils/utils');
-const CatalogsHotelProductGroupFilters = require('../models/CatalogsHotelProductGroupFilters');
+const CatalogsCreativeAssetsProductGroupFilters = require('../models/CatalogsCreativeAssetsProductGroupFilters');
+const CatalogsCreativeAssetsProductGroupUpdateRequest = require('../models/CatalogsCreativeAssetsProductGroupUpdateRequest');
 const CatalogsHotelProductGroupUpdateRequest = require('../models/CatalogsHotelProductGroupUpdateRequest');
+const CatalogsLocale = require('../models/CatalogsLocale');
+const CatalogsRetailProductGroupUpdateRequest = require('../models/CatalogsRetailProductGroupUpdateRequest');
+const Country = require('../models/Country');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,7 +15,7 @@ module.exports = {
                 label: `[${labelPrefix}catalog_type]`,
                 type: 'string',
                 choices: [
-                    'HOTEL',
+                    'CREATIVE_ASSETS',
                 ],
             },
             {
@@ -24,7 +28,15 @@ module.exports = {
                 label: `[${labelPrefix}description]`,
                 type: 'string',
             },
-            ...CatalogsHotelProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
+            ...CatalogsCreativeAssetsProductGroupFilters.fields(`${keyPrefix}filters`, isInput),
+            {
+                key: `${keyPrefix}country`,
+                ...Country.fields(`${keyPrefix}country`, isInput),
+            },
+            {
+                key: `${keyPrefix}locale`,
+                ...CatalogsLocale.fields(`${keyPrefix}locale`, isInput),
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -33,7 +45,9 @@ module.exports = {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
-            'filters': utils.removeIfEmpty(CatalogsHotelProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
+            'filters': utils.removeIfEmpty(CatalogsCreativeAssetsProductGroupFilters.mapping(bundle, `${keyPrefix}filters`)),
+            'country': bundle.inputData?.[`${keyPrefix}country`],
+            'locale': bundle.inputData?.[`${keyPrefix}locale`],
         }
     },
 }

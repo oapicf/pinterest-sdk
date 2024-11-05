@@ -15,6 +15,9 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.ConversionEventsUserDataAnyOf
+import org.openapitools.client.models.ConversionEventsUserDataAnyOf1
+import org.openapitools.client.models.ConversionEventsUserDataAnyOf2
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -22,10 +25,33 @@ import com.squareup.moshi.JsonClass
 /**
  * Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
  *
+ * @param em Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+ * @param hashedMaids Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+ * @param clientIpAddress The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+ * @param clientUserAgent The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
  */
 
 
 data class ConversionEventsUserData (
 
-)
+    /* Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
+    @Json(name = "em")
+    val em: kotlin.collections.List<kotlin.String>,
+
+    /* Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. */
+    @Json(name = "hashed_maids")
+    val hashedMaids: kotlin.collections.List<kotlin.String>,
+
+    /* The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. */
+    @Json(name = "client_ip_address")
+    val clientIpAddress: kotlin.String,
+
+    /* The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. */
+    @Json(name = "client_user_agent")
+    val clientUserAgent: kotlin.String
+
+) {
+
+
+}
 

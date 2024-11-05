@@ -11,7 +11,7 @@ import org.openapitools.server.api.model.AdArrayResponseElement;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdArrayResponse   {
   
-  private List<AdArrayResponseElement> items;
+  private List<AdArrayResponseElement> items = new ArrayList<>();
 
   public AdArrayResponse () {
 

@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AdCommon", description = "Creation fields")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdCommon {
 
   private String adGroupId;
@@ -62,7 +62,7 @@ public class AdCommon {
 
   private EntityStatus status;
 
-  private JsonNullable<AdCommonTrackingUrls> trackingUrls = JsonNullable.<AdCommonTrackingUrls>undefined();
+  private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
   private JsonNullable<String> viewTrackingUrl = JsonNullable.<String>undefined();
 
@@ -71,7 +71,7 @@ public class AdCommon {
   private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    */
   public enum CustomizableCtaTypeEnum {
     GET_OFFER("GET_OFFER"),
@@ -92,7 +92,7 @@ public class AdCommon {
     
     GET_QUOTE("GET_QUOTE"),
     
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     
     APPLY_NOW("APPLY_NOW"),
     
@@ -108,9 +108,7 @@ public class AdCommon {
     
     WATCH_NOW("WATCH_NOW"),
     
-    READ_MORE("READ_MORE"),
-    
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private String value;
 
@@ -141,7 +139,7 @@ public class AdCommon {
 
   private JsonNullable<CustomizableCtaTypeEnum> customizableCtaType = JsonNullable.<CustomizableCtaTypeEnum>undefined();
 
-  private JsonNullable<AdCommonQuizPinData> quizPinData = JsonNullable.<AdCommonQuizPinData>undefined();
+  private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
 
   public AdCommon adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
@@ -151,7 +149,7 @@ public class AdCommon {
   /**
    * ID of the ad group that contains the ad.
    * @return adGroupId
-  */
+   */
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
@@ -169,11 +167,11 @@ public class AdCommon {
   }
 
   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    * @return androidDeepLink
-  */
+   */
   
-  @Schema(name = "android_deep_link", description = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "android_deep_link", description = "Deep link URL for Android devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("android_deep_link")
   public JsonNullable<String> getAndroidDeepLink() {
     return androidDeepLink;
@@ -199,7 +197,7 @@ public class AdCommon {
   /**
    * Comma-separated deep links for the carousel pin on Android.
    * @return carouselAndroidDeepLinks
-  */
+   */
   
   @Schema(name = "carousel_android_deep_links", description = "Comma-separated deep links for the carousel pin on Android.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_android_deep_links")
@@ -227,7 +225,7 @@ public class AdCommon {
   /**
    * Comma-separated destination URLs for the carousel pin to promote.
    * @return carouselDestinationUrls
-  */
+   */
   
   @Schema(name = "carousel_destination_urls", description = "Comma-separated destination URLs for the carousel pin to promote.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_destination_urls")
@@ -255,7 +253,7 @@ public class AdCommon {
   /**
    * Comma-separated deep links for the carousel pin on iOS.
    * @return carouselIosDeepLinks
-  */
+   */
   
   @Schema(name = "carousel_ios_deep_links", description = "Comma-separated deep links for the carousel pin on iOS.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_ios_deep_links")
@@ -275,7 +273,7 @@ public class AdCommon {
   /**
    * Tracking url for the ad clicks.
    * @return clickTrackingUrl
-  */
+   */
   
   @Schema(name = "click_tracking_url", description = "Tracking url for the ad clicks.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("click_tracking_url")
@@ -295,7 +293,7 @@ public class AdCommon {
   /**
    * Get creativeType
    * @return creativeType
-  */
+   */
   @Valid 
   @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
@@ -315,7 +313,7 @@ public class AdCommon {
   /**
    * Destination URL.
    * @return destinationUrl
-  */
+   */
   
   @Schema(name = "destination_url", description = "Destination URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("destination_url")
@@ -333,11 +331,11 @@ public class AdCommon {
   }
 
   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    * @return iosDeepLink
-  */
+   */
   
-  @Schema(name = "ios_deep_link", description = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ios_deep_link", description = "Deep link URL for iOS devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ios_deep_link")
   public JsonNullable<String> getIosDeepLink() {
     return iosDeepLink;
@@ -355,7 +353,7 @@ public class AdCommon {
   /**
    * Is original pin deleted?
    * @return isPinDeleted
-  */
+   */
   
   @Schema(name = "is_pin_deleted", example = "false", description = "Is original pin deleted?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_pin_deleted")
@@ -375,7 +373,7 @@ public class AdCommon {
   /**
    * Is pin repinnable?
    * @return isRemovable
-  */
+   */
   
   @Schema(name = "is_removable", example = "false", description = "Is pin repinnable?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_removable")
@@ -395,7 +393,7 @@ public class AdCommon {
   /**
    * Name of the ad - 255 chars max.
    * @return name
-  */
+   */
   
   @Schema(name = "name", description = "Name of the ad - 255 chars max.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -415,7 +413,7 @@ public class AdCommon {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -427,7 +425,7 @@ public class AdCommon {
     this.status = status;
   }
 
-  public AdCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
   }
@@ -435,15 +433,15 @@ public class AdCommon {
   /**
    * Get trackingUrls
    * @return trackingUrls
-  */
+   */
   @Valid 
   @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_urls")
-  public JsonNullable<AdCommonTrackingUrls> getTrackingUrls() {
+  public JsonNullable<TrackingUrls> getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(JsonNullable<AdCommonTrackingUrls> trackingUrls) {
+  public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -455,7 +453,7 @@ public class AdCommon {
   /**
    * Tracking URL for ad impressions.
    * @return viewTrackingUrl
-  */
+   */
   
   @Schema(name = "view_tracking_url", description = "Tracking URL for ad impressions.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("view_tracking_url")
@@ -475,7 +473,7 @@ public class AdCommon {
   /**
    * Lead form ID for lead ad generation.
    * @return leadFormId
-  */
+   */
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "lead_form_id", description = "Lead form ID for lead ad generation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lead_form_id")
@@ -495,7 +493,7 @@ public class AdCommon {
   /**
    * Get gridClickType
    * @return gridClickType
-  */
+   */
   @Valid 
   @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("grid_click_type")
@@ -513,11 +511,11 @@ public class AdCommon {
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    * @return customizableCtaType
-  */
+   */
   
-  @Schema(name = "customizable_cta_type", example = "LEARN_MORE", description = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "customizable_cta_type", example = "LEARN_MORE", description = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("customizable_cta_type")
   public JsonNullable<CustomizableCtaTypeEnum> getCustomizableCtaType() {
     return customizableCtaType;
@@ -527,23 +525,23 @@ public class AdCommon {
     this.customizableCtaType = customizableCtaType;
   }
 
-  public AdCommon quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdCommon quizPinData(QuizPinData quizPinData) {
     this.quizPinData = JsonNullable.of(quizPinData);
     return this;
   }
 
   /**
-   * Get quizPinData
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
-  */
+   */
   @Valid 
-  @Schema(name = "quiz_pin_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("quiz_pin_data")
-  public JsonNullable<AdCommonQuizPinData> getQuizPinData() {
+  public JsonNullable<QuizPinData> getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(JsonNullable<AdCommonQuizPinData> quizPinData) {
+  public void setQuizPinData(JsonNullable<QuizPinData> quizPinData) {
     this.quizPinData = quizPinData;
   }
 

@@ -23,9 +23,9 @@ import java.time.OffsetDateTime
  * @param defaultAvailability  for example: ''null''
 */
 final case class CatalogsRetailFeed (
-  createdAt: Option[OffsetDateTime] = None,
-  id: Option[String] = None,
-  updatedAt: Option[OffsetDateTime] = None,
+  createdAt: OffsetDateTime,
+  id: String,
+  updatedAt: OffsetDateTime,
   name: String,
   format: CatalogsFormat,
   catalogType: CatalogsType,

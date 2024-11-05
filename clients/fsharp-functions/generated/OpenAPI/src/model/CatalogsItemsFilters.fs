@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsCreativeAssetsItemsFilter
 open OpenAPI.Model.CatalogsHotelItemsFilter
 open OpenAPI.Model.CatalogsRetailItemsFilter
 open OpenAPI.Model.CatalogsType
@@ -21,6 +22,8 @@ module CatalogsItemsFilters =
     CatalogId : string;
     [<JsonProperty(PropertyName = "hotel_ids")>]
     HotelIds : string[];
+    [<JsonProperty(PropertyName = "creative_assets_ids")>]
+    CreativeAssetsIds : string[];
   }
 
   //#endregion

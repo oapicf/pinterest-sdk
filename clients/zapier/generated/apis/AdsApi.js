@@ -5,8 +5,8 @@ const AdPreviewRequest = require('../models/AdPreviewRequest');
 const AdPreviewURLResponse = require('../models/AdPreviewURLResponse');
 const AdResponse = require('../models/AdResponse');
 const AdUpdateRequest = require('../models/AdUpdateRequest');
+const AdsAnalyticsAdTargetingType = require('../models/AdsAnalyticsAdTargetingType');
 const AdsAnalyticsResponse_inner = require('../models/AdsAnalyticsResponse_inner');
-const AdsAnalyticsTargetingType = require('../models/AdsAnalyticsTargetingType');
 const ConversionReportAttributionType = require('../models/ConversionReportAttributionType');
 const Error = require('../models/Error');
 const Granularity = require('../models/Granularity');
@@ -20,7 +20,7 @@ module.exports = {
         noun: 'ads',
         display: {
             label: 'Create ad preview with pin or image',
-            description: 'Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.',
+            description: 'Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.',
             hidden: false,
         },
         operation: {
@@ -42,7 +42,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -52,9 +51,9 @@ module.exports = {
                         ...AdPreviewRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adPreviews/create', response.json);
                     return results;
                 })
             },
@@ -96,7 +95,7 @@ module.exports = {
                 },
                 {
                     key: 'targeting_types',
-                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.',
+                    label: 'Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.',
                     type: 'string',
                 }
                 {
@@ -164,7 +163,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -184,9 +182,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'adTargetingAnalytics/get', response.json);
                     return results;
                 })
             },
@@ -198,7 +196,7 @@ module.exports = {
         noun: 'ads',
         display: {
             label: 'Get ad analytics',
-            description: 'Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.',
+            description: 'Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.',
             hidden: false,
         },
         operation: {
@@ -222,16 +220,16 @@ module.exports = {
                     required: true,
                 },
                 {
-                    key: 'ad_ids',
-                    label: 'List of Ad Ids to use to filter the results.',
-                    type: 'string',
-                }
-                {
                     key: 'columns',
                     label: 'Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned',
                     type: 'string',
                 }
                 ....fields(),
+                {
+                    key: 'ad_ids',
+                    label: 'List of Ad Ids to use to filter the results.',
+                    type: 'string',
+                }
                 {
                     key: 'click_window_days',
                     label: 'Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.',
@@ -280,6 +278,16 @@ module.exports = {
                         'TIME_OF_CONVERSION',
                     ],
                 },
+                {
+                    key: 'pin_ids',
+                    label: 'List of Pin IDs.',
+                    type: 'string',
+                }
+                {
+                    key: 'campaign_ids',
+                    label: 'List of Campaign Ids to use to filter the results.',
+                    type: 'string',
+                }
             ],
             outputFields: [
             ],
@@ -289,27 +297,28 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
                     params: {
                         'start_date': bundle.inputData?.['start_date'],
                         'end_date': bundle.inputData?.['end_date'],
-                        'ad_ids': bundle.inputData?.['ad_ids'],
                         'columns': bundle.inputData?.['columns'],
                         'granularity': bundle.inputData?.['granularity'],
+                        'ad_ids': bundle.inputData?.['ad_ids'],
                         'click_window_days': bundle.inputData?.['click_window_days'],
                         'engagement_window_days': bundle.inputData?.['engagement_window_days'],
                         'view_window_days': bundle.inputData?.['view_window_days'],
                         'conversion_report_time': bundle.inputData?.['conversion_report_time'],
+                        'pin_ids': bundle.inputData?.['pin_ids'],
+                        'campaign_ids': bundle.inputData?.['campaign_ids'],
                     },
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'ads/analytics', response.json);
                     return results;
                 })
             },
@@ -347,7 +356,6 @@ module.exports = {
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -357,9 +365,9 @@ module.exports = {
                         ...AdCreateRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'ads/create', response.json);
                     return results;
                 })
             },
@@ -398,7 +406,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -407,9 +414,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'ads/get', response.json);
                     return results;
                 })
             },
@@ -454,7 +461,7 @@ module.exports = {
                 }
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -481,7 +488,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -497,9 +503,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'ads/list', response.json);
                     return results;
                 })
             },
@@ -537,7 +543,6 @@ module.exports = {
                     method: 'PATCH',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
@@ -547,9 +552,9 @@ module.exports = {
                         ...AdUpdateRequest.mapping(bundle),
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'ads/update', response.json);
                     return results;
                 })
             },

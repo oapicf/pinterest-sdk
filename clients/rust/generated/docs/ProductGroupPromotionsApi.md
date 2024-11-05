@@ -90,7 +90,7 @@ Name | Type | Description  | Required | Notes
 **product_group_promotion_ids** | Option<[**Vec<String>**](String.md)> | List of Product group promotion Ids. |  |
 **entity_statuses** | Option<[**Vec<String>**](String.md)> | Entity status |  |[default to ["ACTIVE","PAUSED"]]
 **ad_group_id** | Option<**String**> | Ad group Id. |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **order** | Option<**String**> | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
 

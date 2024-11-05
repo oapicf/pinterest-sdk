@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,10 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: YOUR_TOTAL_AUDIENCE,YOUR_ENGAGED_AUDIENCE,PINTEREST_TOTAL_AUDIENCE
 */
-enum class AudienceInsightType(val value: kotlin.String) {
+enum class AudienceInsightType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("YOUR_TOTAL_AUDIENCE") YOUR_TOTAL_AUDIENCE("YOUR_TOTAL_AUDIENCE"),
-    @JsonProperty("YOUR_ENGAGED_AUDIENCE") YOUR_ENGAGED_AUDIENCE("YOUR_ENGAGED_AUDIENCE"),
-    @JsonProperty("PINTEREST_TOTAL_AUDIENCE") PINTEREST_TOTAL_AUDIENCE("PINTEREST_TOTAL_AUDIENCE")
+    YOUR_TOTAL_AUDIENCE("YOUR_TOTAL_AUDIENCE"),
+    YOUR_ENGAGED_AUDIENCE("YOUR_ENGAGED_AUDIENCE"),
+    PINTEREST_TOTAL_AUDIENCE("PINTEREST_TOTAL_AUDIENCE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): AudienceInsightType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

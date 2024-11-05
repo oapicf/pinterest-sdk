@@ -20,6 +20,7 @@ module MetricsReportingLevel =
   let PRODUCTGROUPEnum = "PRODUCT_GROUP"
   let PRODUCTGROUPTARGETINGEnum = "PRODUCT_GROUP_TARGETING"
   let PRODUCTITEMEnum = "PRODUCT_ITEM"
+  let PRODUCTITEMTARGETINGEnum = "PRODUCT_ITEM_TARGETING"
   type MetricsReportingLevel = string
 
   //#endregion

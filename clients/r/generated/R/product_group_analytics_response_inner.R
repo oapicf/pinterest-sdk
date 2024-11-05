@@ -16,14 +16,13 @@
 #' @export
 ProductGroupAnalyticsResponseInner <- R6::R6Class(
   "ProductGroupAnalyticsResponseInner",
-  inherit = null<String, AnyType>,
+  inherit = AnyType,
   public = list(
     `PRODUCT_GROUP_ID` = NULL,
     `DATE` = NULL,
     `_field_list` = c("PRODUCT_GROUP_ID", "DATE"),
     `additional_properties` = list(),
-    #' Initialize a new ProductGroupAnalyticsResponseInner class.
-    #'
+
     #' @description
     #' Initialize a new ProductGroupAnalyticsResponseInner class.
     #'
@@ -31,7 +30,6 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
     #' @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
     #' @param additional_properties additional properties (optional)
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`PRODUCT_GROUP_ID`, `DATE` = NULL, additional_properties = NULL, ...) {
       if (!missing(`PRODUCT_GROUP_ID`)) {
         if (!(is.character(`PRODUCT_GROUP_ID`) && length(`PRODUCT_GROUP_ID`) == 1)) {
@@ -51,13 +49,11 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
         }
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupAnalyticsResponseInner in JSON format
-    #' @export
     toJSON = function() {
       ProductGroupAnalyticsResponseInnerObject <- list()
       if (!is.null(self$`PRODUCT_GROUP_ID`)) {
@@ -74,14 +70,12 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
 
       ProductGroupAnalyticsResponseInnerObject
     },
-    #' Deserialize JSON string into an instance of ProductGroupAnalyticsResponseInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupAnalyticsResponseInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupAnalyticsResponseInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`PRODUCT_GROUP_ID`)) {
@@ -99,13 +93,11 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
 
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupAnalyticsResponseInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`PRODUCT_GROUP_ID`)) {
@@ -133,14 +125,12 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
       }
       json_string <- as.character(jsonlite::minify(jsonlite::toJSON(json_obj, auto_unbox = TRUE, digits = NA)))
     },
-    #' Deserialize JSON string into an instance of ProductGroupAnalyticsResponseInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupAnalyticsResponseInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupAnalyticsResponseInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`PRODUCT_GROUP_ID` <- this_object$`PRODUCT_GROUP_ID`
@@ -154,13 +144,11 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
 
       self
     },
-    #' Validate JSON input with respect to ProductGroupAnalyticsResponseInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to ProductGroupAnalyticsResponseInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `PRODUCT_GROUP_ID`
@@ -172,23 +160,19 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for ProductGroupAnalyticsResponseInner: the required field `PRODUCT_GROUP_ID` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ProductGroupAnalyticsResponseInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `PRODUCT_GROUP_ID` is null
       if (is.null(self$`PRODUCT_GROUP_ID`)) {
@@ -201,13 +185,11 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `PRODUCT_GROUP_ID` is null
@@ -221,12 +203,9 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

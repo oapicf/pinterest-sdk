@@ -21,9 +21,7 @@ public enum LeadFormQuestionFieldType {
   
   RADIO_LIST("RADIO_LIST"),
   
-  CHECKBOX("CHECKBOX"),
-  
-  NULL("null");
+  CHECKBOX("CHECKBOX");
 
   private String value;
 

@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OrderLineResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLineResponse   {
-  private @Valid List<OrderLineError> errors;
-  private @Valid List<OrderLine> orderLine;
+  private @Valid List<OrderLineError> errors = new ArrayList<>();
+  private @Valid List<OrderLine> orderLine = new ArrayList<>();
 
   /**
    * Error list if update(s) fail.
@@ -36,7 +36,7 @@ public class OrderLineResponse   {
   
   @ApiModelProperty(value = "Error list if update(s) fail.")
   @JsonProperty("errors")
-  public List<OrderLineError> getErrors() {
+  @Valid public List<@Valid OrderLineError> getErrors() {
     return errors;
   }
 
@@ -72,7 +72,7 @@ public class OrderLineResponse   {
   
   @ApiModelProperty(value = "Order Line object array.")
   @JsonProperty("order_line")
-  public List<OrderLine> getOrderLine() {
+  @Valid public List<@Valid OrderLine> getOrderLine() {
     return orderLine;
   }
 

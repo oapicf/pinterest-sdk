@@ -27,6 +27,13 @@ class PinsApi(
   import pinsMarshaller._
 
   lazy val route: Route =
+    path("pins" / "analytics") { 
+      get { 
+        parameters("pin_ids".as[String], "start_date".as[String], "end_date".as[String], "app_types".as[String].?("ALL"), "metric_types".as[String], "ad_account_id".as[String].?) { (pinIds, startDate, endDate, appTypes, metricTypes, adAccountId) => 
+            pinsService.multiPinsAnalytics(pinIds = pinIds, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, adAccountId = adAccountId)
+        }
+      }
+    } ~
     path("pins" / Segment / "analytics") { (pinId) => 
       get { 
         parameters("start_date".as[String], "end_date".as[String], "app_types".as[String].?("ALL"), "metric_types".as[String], "split_field".as[String].?("NO_SPLIT"), "ad_account_id".as[String].?) { (startDate, endDate, appTypes, metricTypes, splitField, adAccountId) => 
@@ -86,6 +93,29 @@ class PinsApi(
 
 
 trait PinsApiService {
+
+  def multiPinsAnalytics200(responseMapmap: Map[String, Map[String, PinAnalyticsMetricsResponse]])(implicit toEntityMarshallerMapmap: ToEntityMarshaller[Map[String, Map[String, PinAnalyticsMetricsResponse]]]): Route =
+    complete((200, responseMapmap))
+  def multiPinsAnalytics400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def multiPinsAnalytics401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def multiPinsAnalytics404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def multiPinsAnalytics429(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((429, responseError))
+  def multiPinsAnalyticsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: response, DataType: Map[String, Map[String, PinAnalyticsMetricsResponse]]
+   * Code: 400, Message: Invalid pins analytics parameters., DataType: Error
+   * Code: 401, Message: Not authorized to access board or Pin., DataType: Error
+   * Code: 404, Message: Pin not found., DataType: Error
+   * Code: 429, Message: This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def multiPinsAnalytics(pinIds: String, startDate: String, endDate: String, metricTypes: String, appTypes: String, adAccountId: Option[String])
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def pinsAnalytics200(responsePinAnalyticsMetricsResponsemap: Map[String, PinAnalyticsMetricsResponse])(implicit toEntityMarshallerPinAnalyticsMetricsResponsemap: ToEntityMarshaller[Map[String, PinAnalyticsMetricsResponse]]): Route =
     complete((200, responsePinAnalyticsMetricsResponsemap))

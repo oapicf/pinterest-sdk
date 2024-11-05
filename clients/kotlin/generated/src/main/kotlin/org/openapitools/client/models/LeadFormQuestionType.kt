@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Lead form question type
  *
- * Values: CUSTOM,FULL_NAME,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,ZIP_CODE,AGE,GENDER,CITY,COUNTRY,PREFERRED_CONTACT_METHOD,STATE_PROVINCE,ADDRESS,DATE_OF_BIRTH
+ * Values: CUSTOM,FULL_NAME,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,ZIP_CODE,GENDER,CITY,COUNTRY,STATE_PROVINCE,ADDRESS,DATE_OF_BIRTH,AGE
  */
 
 @JsonClass(generateAdapter = false)
@@ -49,9 +49,6 @@ enum class LeadFormQuestionType(val value: kotlin.String) {
     @Json(name = "ZIP_CODE")
     ZIP_CODE("ZIP_CODE"),
 
-    @Json(name = "AGE")
-    AGE("AGE"),
-
     @Json(name = "GENDER")
     GENDER("GENDER"),
 
@@ -61,9 +58,6 @@ enum class LeadFormQuestionType(val value: kotlin.String) {
     @Json(name = "COUNTRY")
     COUNTRY("COUNTRY"),
 
-    @Json(name = "PREFERRED_CONTACT_METHOD")
-    PREFERRED_CONTACT_METHOD("PREFERRED_CONTACT_METHOD"),
-
     @Json(name = "STATE_PROVINCE")
     STATE_PROVINCE("STATE_PROVINCE"),
 
@@ -71,7 +65,10 @@ enum class LeadFormQuestionType(val value: kotlin.String) {
     ADDRESS("ADDRESS"),
 
     @Json(name = "DATE_OF_BIRTH")
-    DATE_OF_BIRTH("DATE_OF_BIRTH");
+    DATE_OF_BIRTH("DATE_OF_BIRTH"),
+
+    @Json(name = "AGE")
+    AGE("AGE");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

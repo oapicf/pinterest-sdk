@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,12 +19,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Audience type
 * Values: CUSTOMER_LIST,VISITOR,ENGAGEMENT,ACTALIKE,PERSONA
 */
-enum class AudienceType(val value: kotlin.String) {
+enum class AudienceType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("CUSTOMER_LIST") CUSTOMER_LIST("CUSTOMER_LIST"),
-    @JsonProperty("VISITOR") VISITOR("VISITOR"),
-    @JsonProperty("ENGAGEMENT") ENGAGEMENT("ENGAGEMENT"),
-    @JsonProperty("ACTALIKE") ACTALIKE("ACTALIKE"),
-    @JsonProperty("PERSONA") PERSONA("PERSONA")
+    CUSTOMER_LIST("CUSTOMER_LIST"),
+    VISITOR("VISITOR"),
+    ENGAGEMENT("ENGAGEMENT"),
+    ACTALIKE("ACTALIKE"),
+    PERSONA("PERSONA");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): AudienceType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

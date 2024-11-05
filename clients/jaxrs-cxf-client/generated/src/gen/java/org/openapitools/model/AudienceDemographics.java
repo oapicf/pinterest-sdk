@@ -21,31 +21,31 @@ public class AudienceDemographics  {
  /**
    * Ages distribution.
   **/
-  private List<AudienceDemographicValue> ages;
+  private List<AudienceDemographicValue> ages = new ArrayList<>();
 
   @ApiModelProperty(value = "Gender distribution.")
  /**
    * Gender distribution.
   **/
-  private List<AudienceDemographicValue> genders;
+  private List<AudienceDemographicValue> genders = new ArrayList<>();
 
   @ApiModelProperty(value = "Device usage distribution.")
  /**
    * Device usage distribution.
   **/
-  private List<AudienceDemographicValue> devices;
+  private List<AudienceDemographicValue> devices = new ArrayList<>();
 
   @ApiModelProperty(value = "Geographic metro area distribution.")
  /**
    * Geographic metro area distribution.
   **/
-  private List<AudienceDemographicValue> metros;
+  private List<AudienceDemographicValue> metros = new ArrayList<>();
 
   @ApiModelProperty(value = "Country area distribution.")
  /**
    * Country area distribution.
   **/
-  private List<AudienceDemographicValue> countries;
+  private List<AudienceDemographicValue> countries = new ArrayList<>();
  /**
    * Ages distribution.
    * @return ages

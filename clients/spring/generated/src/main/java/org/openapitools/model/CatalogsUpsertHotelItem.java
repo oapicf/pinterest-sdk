@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsUpsertHotelItem", description = "A hotel item to be upserted.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpsertHotelItem {
 
   private String hotelId;
@@ -84,7 +84,7 @@ public class CatalogsUpsertHotelItem {
   /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  */
+   */
   @NotNull 
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hotel_id")
@@ -104,7 +104,7 @@ public class CatalogsUpsertHotelItem {
   /**
    * Get operation
    * @return operation
-  */
+   */
   @NotNull 
   @Schema(name = "operation", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation")
@@ -124,7 +124,7 @@ public class CatalogsUpsertHotelItem {
   /**
    * Get attributes
    * @return attributes
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("attributes")

@@ -1,5 +1,5 @@
 namespace OpenAPI
-open OpenAPI.Model.AdsAnalyticsTargetingType
+open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.CampaignCreateResponse
 open OpenAPI.Model.CampaignResponse

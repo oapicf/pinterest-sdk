@@ -19,19 +19,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TrackingUrls  {
   
   @ApiModelProperty(value = "")
-  private List<String> impression;
+  private List<String> impression = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<String> click;
+  private List<String> click = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<String> engagement;
+  private List<String> engagement = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<String> buyableButton;
+  private List<String> buyableButton = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<String> audienceVerification;
+  private List<String> audienceVerification = new ArrayList<>();
  /**
    * Get impression
    * @return impression

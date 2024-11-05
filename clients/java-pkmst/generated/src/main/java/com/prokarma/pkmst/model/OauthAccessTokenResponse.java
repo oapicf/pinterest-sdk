@@ -19,10 +19,11 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "A successful OAuth access token response.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "response_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = OauthAccessTokenResponseCode.class, name = "authorization_code"),
+  @JsonSubTypes.Type(value = OauthAccessTokenResponseClientCredentials.class, name = "client_credentials"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseEverlastingRefresh.class, name = "everlasting_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseIntegrationRefresh.class, name = "integration_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseRefresh.class, name = "refresh_token"),
@@ -35,7 +36,9 @@ public class OauthAccessTokenResponse   {
   public enum ResponseTypeEnum {
     AUTHORIZATION_CODE("authorization_code"),
     
-    REFRESH_TOKEN("refresh_token");
+    REFRESH_TOKEN("refresh_token"),
+    
+    CLIENT_CREDENTIALS("client_credentials");
 
     private String value;
 
@@ -80,10 +83,10 @@ public class OauthAccessTokenResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get responseType
    * @return responseType
-  **/
+   */
   @ApiModelProperty(value = "")
   public ResponseTypeEnum getResponseType() {
     return responseType;
@@ -98,10 +101,10 @@ public class OauthAccessTokenResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get accessToken
    * @return accessToken
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getAccessToken() {
     return accessToken;
@@ -116,10 +119,10 @@ public class OauthAccessTokenResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get tokenType
    * @return tokenType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getTokenType() {
     return tokenType;
@@ -134,10 +137,10 @@ public class OauthAccessTokenResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get expiresIn
    * @return expiresIn
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Integer getExpiresIn() {
     return expiresIn;
@@ -152,10 +155,10 @@ public class OauthAccessTokenResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get scope
    * @return scope
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getScope() {
     return scope;

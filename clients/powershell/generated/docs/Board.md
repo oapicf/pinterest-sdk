@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **PinCount** | **Int32** | Count of pins on the board. | [optional] [readonly] 
 **FollowerCount** | **Int32** | Board follower count. | [optional] [readonly] 
 **Media** | [**BoardMedia**](BoardMedia.md) |  | [optional] 
-**Owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] 
+**Owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
 **Privacy** | **String** | Privacy setting for a board. Learn more about &lt;a href&#x3D;&quot;&quot;https://help.pinterest.com/en/article/secret-boards&quot;&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;&quot;&quot;https://help.pinterest.com/en/business/article/protected-boards&quot;&quot;&gt;protected boards&lt;/a&gt; | [optional] [default to "PUBLIC"]
 
 ## Examples

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,6 @@ const (
 	BONUS OrderLinePaidType = "BONUS"
 	MAKE_GOOD OrderLinePaidType = "MAKE_GOOD"
 	TEST OrderLinePaidType = "TEST"
-	NULL OrderLinePaidType = "null"
 )
 
 // All allowed values of OrderLinePaidType enum
@@ -34,7 +33,6 @@ var AllowedOrderLinePaidTypeEnumValues = []OrderLinePaidType{
 	"BONUS",
 	"MAKE_GOOD",
 	"TEST",
-	"null",
 }
 
 func (v *OrderLinePaidType) UnmarshalJSON(src []byte) error {

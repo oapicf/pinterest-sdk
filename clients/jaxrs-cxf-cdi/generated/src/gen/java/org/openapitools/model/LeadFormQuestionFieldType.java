@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum LeadFormQuestionFieldType {
 
-    @JsonProperty("TEXT_FIELD") TEXT_FIELD(String.valueOf("TEXT_FIELD")), @JsonProperty("TEXT_AREA") TEXT_AREA(String.valueOf("TEXT_AREA")), @JsonProperty("RADIO_LIST") RADIO_LIST(String.valueOf("RADIO_LIST")), @JsonProperty("CHECKBOX") CHECKBOX(String.valueOf("CHECKBOX")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("TEXT_FIELD") TEXT_FIELD(String.valueOf("TEXT_FIELD")), @JsonProperty("TEXT_AREA") TEXT_AREA(String.valueOf("TEXT_AREA")), @JsonProperty("RADIO_LIST") RADIO_LIST(String.valueOf("RADIO_LIST")), @JsonProperty("CHECKBOX") CHECKBOX(String.valueOf("CHECKBOX"));
 
 
     private String value;

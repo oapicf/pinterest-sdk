@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,13 +17,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Default availability for products in a feed.
-* Values: IN_STOCK,OUT_OF_STOCK,PREORDER,`null`
+* Values: IN_STOCK,OUT_OF_STOCK,PREORDER
 */
-enum class ProductAvailabilityType(val value: kotlin.String) {
+enum class ProductAvailabilityType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("IN_STOCK") IN_STOCK("IN_STOCK"),
-    @JsonProperty("OUT_OF_STOCK") OUT_OF_STOCK("OUT_OF_STOCK"),
-    @JsonProperty("PREORDER") PREORDER("PREORDER"),
-    @JsonProperty("null") `null`("null")
+    IN_STOCK("IN_STOCK"),
+    OUT_OF_STOCK("OUT_OF_STOCK"),
+    PREORDER("PREORDER");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): ProductAvailabilityType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

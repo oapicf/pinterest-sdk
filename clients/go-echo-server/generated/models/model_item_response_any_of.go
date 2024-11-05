@@ -1,5 +1,9 @@
 package models
 
+import (
+	"gopkg.in/validator.v2"
+)
+
 type ItemResponseAnyOf struct {
 
 	CatalogType CatalogsType `json:"catalog_type"`
@@ -10,8 +14,11 @@ type ItemResponseAnyOf struct {
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
 
-	Attributes CatalogsHotelAttributes `json:"attributes,omitempty"`
+	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 
 	// The catalog hotel id in the merchant namespace
 	HotelId string `json:"hotel_id,omitempty"`
+
+	// The catalog creative assets id in the merchant namespace
+	CreativeAssetsId string `json:"creative_assets_id,omitempty"`
 }

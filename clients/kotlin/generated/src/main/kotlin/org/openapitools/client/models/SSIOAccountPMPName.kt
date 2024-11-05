@@ -37,5 +37,8 @@ data class SSIOAccountPMPName (
     @Json(name = "id")
     val id: kotlin.String? = null
 
-)
+) {
+
+
+}
 

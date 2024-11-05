@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,12 +14,18 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/catalogs_product_metadata.proto";
+import public "models/catalogs_creative_assets_product.proto";
+import public "models/catalogs_creative_assets_product_metadata.proto";
+import public "models/catalogs_hotel_product.proto";
+import public "models/catalogs_retail_product.proto";
+import public "models/catalogs_type.proto";
 import public "models/pin.proto";
 
 message CatalogsProduct {
 
-  CatalogsProductMetadata metadata = 450004177;
+  CatalogsType catalog_type = 73986146;
+
+  CatalogsCreativeAssetsProductMetadata metadata = 450004177;
 
   Pin pin = 110997;
 

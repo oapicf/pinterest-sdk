@@ -29,7 +29,7 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("view_window_days") val viewWindowDays: kotlin.Int? = null
-) {
+    ) {
 
 }
 

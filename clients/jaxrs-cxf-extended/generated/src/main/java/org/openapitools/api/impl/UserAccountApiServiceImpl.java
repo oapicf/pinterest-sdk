@@ -56,7 +56,7 @@ public class UserAccountApiServiceImpl implements UserAccountApi {
     /**
      * Follow user
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      *
      */
     @Override
@@ -152,7 +152,7 @@ public class UserAccountApiServiceImpl implements UserAccountApi {
     /**
      * Get user account
      *
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      *
      */
     @Override
@@ -192,7 +192,7 @@ public class UserAccountApiServiceImpl implements UserAccountApi {
      *
      */
     @Override
-    public UserWebsiteSummary verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest) {
+    public UserWebsiteSummary verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, String adAccountId) {
         // TODO: Implement...
         return null;
     }
@@ -204,7 +204,7 @@ public class UserAccountApiServiceImpl implements UserAccountApi {
      *
      */
     @Override
-    public UserWebsiteVerificationCode websiteVerificationGet() {
+    public UserWebsiteVerificationCode websiteVerificationGet(String adAccountId) {
         // TODO: Implement...
         return null;
     }

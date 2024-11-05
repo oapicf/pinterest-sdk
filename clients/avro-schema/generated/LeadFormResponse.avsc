@@ -19,7 +19,7 @@
     {
       "name": "has_accepted_terms",
       "type": ["null", "boolean"],
-      "doc": "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.",
+      "doc": "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO",
       "default": null
     },
     {
@@ -47,6 +47,15 @@
         "items": "model.LeadFormQuestion"
       }],
       "doc": "List of questions to be displayed on the lead form.",
+      "default": null
+    },
+    {
+      "name": "policy_links",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.LeadFormCommonPolicyLinksInner"
+      }],
+      "doc": "List of additional policy links to be displayed on the lead form.",
       "default": null
     },
     {

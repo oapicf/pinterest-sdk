@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.AdGroupSummaryStatus
@@ -50,9 +51,12 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param productGroupIds List of product group ids
  * @param productGroupStatuses List of values for filtering
  * @param productItemIds List of product item ids
- * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+ * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  * @param metricsFilters List of metrics filters
  * @param reportFormat Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+ * @param primarySort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+ * @param startHour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+ * @param endHour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
  */
 data class AdsAnalyticsCreateAsyncRequest(
 
@@ -106,7 +110,7 @@ data class AdsAnalyticsCreateAsyncRequest(
     @get:JsonProperty("campaign_statuses") val campaignStatuses: kotlin.collections.List<CampaignSummaryStatus>? = null,
 
     @field:Valid
-    @get:Size(min=1,max=6) 
+    @get:Size(min=1,max=7) 
     @Schema(example = "[\"AWARENESS\",\"VIDEO_VIEW\"]", description = "List of values for filtering. [\"WEB_SESSIONS\"] in BETA.")
     @get:JsonProperty("campaign_objective_types") val campaignObjectiveTypes: kotlin.collections.List<ObjectiveType>? = null,
 
@@ -143,7 +147,7 @@ data class AdsAnalyticsCreateAsyncRequest(
 
     @field:Valid
     @get:Size(min=1,max=5) 
-    @Schema(example = "null", description = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+    @Schema(example = "null", description = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
     @get:JsonProperty("targeting_types") val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>? = null,
 
     @field:Valid
@@ -153,8 +157,39 @@ data class AdsAnalyticsCreateAsyncRequest(
 
     @field:Valid
     @Schema(example = "null", description = "Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.")
-    @get:JsonProperty("report_format") val reportFormat: DataOutputFormat? = "JSON"
-) {
+    @get:JsonProperty("report_format") val reportFormat: DataOutputFormat? = "JSON",
+
+    @Schema(example = "BY_ID", description = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
+    @get:JsonProperty("primary_sort") val primarySort: AdsAnalyticsCreateAsyncRequest.PrimarySort? = null,
+
+    @get:Min(0)
+    @get:Max(23)
+    @Schema(example = "null", description = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
+    @get:JsonProperty("start_hour") val startHour: kotlin.Int? = null,
+
+    @get:Min(0)
+    @get:Max(23)
+    @Schema(example = "null", description = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
+    @get:JsonProperty("end_hour") val endHour: kotlin.Int? = null
+    ) {
+
+    /**
+    * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+    * Values: ID,DATE
+    */
+    enum class PrimarySort(@get:JsonValue val value: kotlin.String) {
+
+        ID("BY_ID"),
+        DATE("BY_DATE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): PrimarySort {
+                return values().first{it -> it.value == value}
+            }
+        }
+    }
 
 }
 

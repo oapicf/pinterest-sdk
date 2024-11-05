@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -54,7 +54,7 @@ value. Send the media file's contents as the request's <tt>file</tt>
 parameter and also include all of the parameters from
 <tt>upload_parameters</tt>.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiMediaCreateRequest
@@ -169,7 +169,7 @@ MediaGet Get media upload details
 
 Get details for a registered media upload, including its current status.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param mediaId Media identifier
@@ -291,7 +291,7 @@ func (r ApiMediaListRequest) Bookmark(bookmark string) ApiMediaListRequest {
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiMediaListRequest) PageSize(pageSize int32) ApiMediaListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -306,7 +306,7 @@ MediaList List media uploads
 
 List media uploads filtered by given parameters.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiMediaListRequest
@@ -340,10 +340,10 @@ func (a *MediaAPIService) MediaListExecute(r ApiMediaListRequest) (*MediaList200
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue

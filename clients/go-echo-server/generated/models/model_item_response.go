@@ -13,4 +13,7 @@ type ItemResponse struct {
 
 	// The catalog hotel id in the merchant namespace
 	HotelId string `json:"hotel_id,omitempty"`
+
+	// The catalog creative assets id in the merchant namespace
+	CreativeAssetsId string `json:"creative_assets_id,omitempty"`
 }

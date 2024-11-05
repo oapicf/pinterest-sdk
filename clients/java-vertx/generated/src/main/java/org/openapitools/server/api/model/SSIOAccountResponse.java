@@ -14,9 +14,9 @@ public class SSIOAccountResponse   {
   
   private Boolean eligible;
   private Boolean canEdit;
-  private List<SSIOAccountItem> billtoInfos;
+  private List<SSIOAccountItem> billtoInfos = new ArrayList<>();
   private String currency;
-  private List<SSIOAccountPMPName> pmpNames;
+  private List<SSIOAccountPMPName> pmpNames = new ArrayList<>();
   private String error;
 
   public SSIOAccountResponse () {

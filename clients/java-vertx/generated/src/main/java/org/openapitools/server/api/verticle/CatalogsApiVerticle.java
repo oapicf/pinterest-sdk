@@ -8,19 +8,25 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 
+import org.openapitools.server.api.model.Catalog;
+import org.openapitools.server.api.model.CatalogsCreateReportResponse;
+import org.openapitools.server.api.model.CatalogsCreateRequest;
 import org.openapitools.server.api.model.CatalogsFeed;
+import org.openapitools.server.api.model.CatalogsFeedIngestion;
 import org.openapitools.server.api.model.CatalogsItemValidationIssue;
 import org.openapitools.server.api.model.CatalogsItems;
 import org.openapitools.server.api.model.CatalogsItemsBatch;
 import org.openapitools.server.api.model.CatalogsItemsFilters;
+import org.openapitools.server.api.model.CatalogsItemsRequest;
 import org.openapitools.server.api.model.CatalogsList200Response;
 import org.openapitools.server.api.model.CatalogsListProductsByFilterRequest;
 import org.openapitools.server.api.model.CatalogsProductGroupPinsList200Response;
-import org.openapitools.server.api.model.CatalogsProductGroupProductCounts;
-import org.openapitools.server.api.model.CatalogsProductGroupsCreate201Response;
-import org.openapitools.server.api.model.CatalogsProductGroupsCreateRequest;
+import org.openapitools.server.api.model.CatalogsProductGroupProductCountsVertical;
 import org.openapitools.server.api.model.CatalogsProductGroupsList200Response;
 import org.openapitools.server.api.model.CatalogsProductGroupsUpdateRequest;
+import org.openapitools.server.api.model.CatalogsReport;
+import org.openapitools.server.api.model.CatalogsReportParameters;
+import org.openapitools.server.api.model.CatalogsVerticalProductGroup;
 import org.openapitools.server.api.model.Error;
 import org.openapitools.server.api.model.FeedProcessingResultsList200Response;
 import org.openapitools.server.api.model.FeedsCreateRequest;
@@ -29,6 +35,8 @@ import org.openapitools.server.api.model.FeedsUpdateRequest;
 import org.openapitools.server.api.model.ItemsBatchPostRequest;
 import org.openapitools.server.api.model.ItemsIssuesList200Response;
 import org.openapitools.server.api.MainApiException;
+import org.openapitools.server.api.model.MultipleProductGroupsInner;
+import org.openapitools.server.api.model.ReportsStats200Response;
 
 import java.util.List;
 import java.util.Map;
@@ -36,10 +44,13 @@ import java.util.Map;
 public class CatalogsApiVerticle extends AbstractVerticle {
     static final Logger LOGGER = LoggerFactory.getLogger(CatalogsApiVerticle.class);
 
+    static final String CATALOGS/CREATE_SERVICE_ID = "catalogs/create";
     static final String CATALOGS/LIST_SERVICE_ID = "catalogs/list";
     static final String CATALOGS_PRODUCT_GROUP_PINS/LIST_SERVICE_ID = "catalogs_product_group_pins/list";
     static final String CATALOGS_PRODUCT_GROUPS/CREATE_SERVICE_ID = "catalogs_product_groups/create";
+    static final String CATALOGS_PRODUCT_GROUPS/CREATE_MANY_SERVICE_ID = "catalogs_product_groups/create_many";
     static final String CATALOGS_PRODUCT_GROUPS/DELETE_SERVICE_ID = "catalogs_product_groups/delete";
+    static final String CATALOGS_PRODUCT_GROUPS/DELETE_MANY_SERVICE_ID = "catalogs_product_groups/delete_many";
     static final String CATALOGS_PRODUCT_GROUPS/GET_SERVICE_ID = "catalogs_product_groups/get";
     static final String CATALOGS_PRODUCT_GROUPS/LIST_SERVICE_ID = "catalogs_product_groups/list";
     static final String CATALOGS_PRODUCT_GROUPS/PRODUCT_COUNTS_GET_SERVICE_ID = "catalogs_product_groups/product_counts_get";
@@ -48,13 +59,18 @@ public class CatalogsApiVerticle extends AbstractVerticle {
     static final String FEEDS/CREATE_SERVICE_ID = "feeds/create";
     static final String FEEDS/DELETE_SERVICE_ID = "feeds/delete";
     static final String FEEDS/GET_SERVICE_ID = "feeds/get";
+    static final String FEEDS/INGEST_SERVICE_ID = "feeds/ingest";
     static final String FEEDS/LIST_SERVICE_ID = "feeds/list";
     static final String FEEDS/UPDATE_SERVICE_ID = "feeds/update";
     static final String ITEMS_BATCH/GET_SERVICE_ID = "items_batch/get";
     static final String ITEMS_BATCH/POST_SERVICE_ID = "items_batch/post";
     static final String ITEMS/GET_SERVICE_ID = "items/get";
     static final String ITEMS_ISSUES/LIST_SERVICE_ID = "items_issues/list";
+    static final String ITEMS/POST_SERVICE_ID = "items/post";
     static final String PRODUCTS_BY_PRODUCT_GROUP_FILTER/LIST_SERVICE_ID = "products_by_product_group_filter/list";
+    static final String REPORTS/CREATE_SERVICE_ID = "reports/create";
+    static final String REPORTS/GET_SERVICE_ID = "reports/get";
+    static final String REPORTS/STATS_SERVICE_ID = "reports/stats";
     
     final CatalogsApi service;
 
@@ -70,6 +86,33 @@ public class CatalogsApiVerticle extends AbstractVerticle {
 
     @Override
     public void start() throws Exception {
+        
+        //Consumer for catalogs/create
+        vertx.eventBus().<JsonObject> consumer(CATALOGS/CREATE_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "catalogs/create";
+                JsonObject catalogsCreateRequestParam = message.body().getJsonObject("CatalogsCreateRequest");
+                if (catalogsCreateRequestParam == null) {
+                    manageError(message, new MainApiException(400, "CatalogsCreateRequest is required"), serviceId);
+                    return;
+                }
+                CatalogsCreateRequest catalogsCreateRequest = Json.mapper.readValue(catalogsCreateRequestParam.encode(), CatalogsCreateRequest.class);
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.catalogsCreate(catalogsCreateRequest, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "catalogs/create");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("catalogs/create", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
         
         //Consumer for catalogs/list
         vertx.eventBus().<JsonObject> consumer(CATALOGS/LIST_SERVICE_ID).handler(message -> {
@@ -113,7 +156,9 @@ public class CatalogsApiVerticle extends AbstractVerticle {
                 Integer pageSize = (pageSizeParam == null) ? 25 : Json.mapper.readValue(pageSizeParam, Integer.class);
                 String adAccountIdParam = message.body().getString("ad_account_id");
                 String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
-                service.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, result -> {
+                String pinMetricsParam = message.body().getString("pin_metrics");
+                Boolean pinMetrics = (pinMetricsParam == null) ? false : Json.mapper.readValue(pinMetricsParam, Boolean.class);
+                service.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics, result -> {
                     if (result.succeeded())
                         message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
                     else {
@@ -132,15 +177,15 @@ public class CatalogsApiVerticle extends AbstractVerticle {
             try {
                 // Workaround for #allParams section clearing the vendorExtensions map
                 String serviceId = "catalogs_product_groups/create";
-                JsonObject catalogsProductGroupsCreateRequestParam = message.body().getJsonObject("CatalogsProductGroupsCreateRequest");
-                if (catalogsProductGroupsCreateRequestParam == null) {
-                    manageError(message, new MainApiException(400, "CatalogsProductGroupsCreateRequest is required"), serviceId);
+                JsonObject multipleProductGroupsInnerParam = message.body().getJsonObject("MultipleProductGroupsInner");
+                if (multipleProductGroupsInnerParam == null) {
+                    manageError(message, new MainApiException(400, "MultipleProductGroupsInner is required"), serviceId);
                     return;
                 }
-                CatalogsProductGroupsCreateRequest catalogsProductGroupsCreateRequest = Json.mapper.readValue(catalogsProductGroupsCreateRequestParam.encode(), CatalogsProductGroupsCreateRequest.class);
+                MultipleProductGroupsInner multipleProductGroupsInner = Json.mapper.readValue(multipleProductGroupsInnerParam.encode(), MultipleProductGroupsInner.class);
                 String adAccountIdParam = message.body().getString("ad_account_id");
                 String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
-                service.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequest, adAccountId, result -> {
+                service.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId, result -> {
                     if (result.succeeded())
                         message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
                     else {
@@ -150,6 +195,34 @@ public class CatalogsApiVerticle extends AbstractVerticle {
                 });
             } catch (Exception e) {
                 logUnexpectedError("catalogs_product_groups/create", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
+        //Consumer for catalogs_product_groups/create_many
+        vertx.eventBus().<JsonObject> consumer(CATALOGS_PRODUCT_GROUPS/CREATE_MANY_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "catalogs_product_groups/create_many";
+                JsonArray multipleProductGroupsInnerParam = message.body().getJsonArray("MultipleProductGroupsInner");
+                if(multipleProductGroupsInnerParam == null) {
+                    manageError(message, new MainApiException(400, "MultipleProductGroupsInner is required"), serviceId);
+                    return;
+                }
+                List<MultipleProductGroupsInner> multipleProductGroupsInner = Json.mapper.readValue(multipleProductGroupsInnerParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, MultipleProductGroupsInner.class));
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonArray(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "catalogs_product_groups/create_many");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("catalogs_product_groups/create_many", e);
                 message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
             }
         });
@@ -177,6 +250,34 @@ public class CatalogsApiVerticle extends AbstractVerticle {
                 });
             } catch (Exception e) {
                 logUnexpectedError("catalogs_product_groups/delete", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
+        //Consumer for catalogs_product_groups/delete_many
+        vertx.eventBus().<JsonObject> consumer(CATALOGS_PRODUCT_GROUPS/DELETE_MANY_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "catalogs_product_groups/delete_many";
+                JsonArray idParam = message.body().getJsonArray("id");
+                if(idParam == null) {
+                    manageError(message, new MainApiException(400, "id is required"), serviceId);
+                    return;
+                }
+                List<Integer> id = Json.mapper.readValue(idParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, Integer.class));
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.catalogsProductGroupsDeleteMany(id, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(null);
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "catalogs_product_groups/delete_many");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("catalogs_product_groups/delete_many", e);
                 message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
             }
         });
@@ -213,6 +314,9 @@ public class CatalogsApiVerticle extends AbstractVerticle {
             try {
                 // Workaround for #allParams section clearing the vendorExtensions map
                 String serviceId = "catalogs_product_groups/list";
+                JsonArray idParam = message.body().getJsonArray("id");
+                List<Integer> id = (idParam == null) ? null : Json.mapper.readValue(idParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, Integer.class));
                 String feedIdParam = message.body().getString("feed_id");
                 String feedId = (feedIdParam == null) ? null : feedIdParam;
                 String catalogIdParam = message.body().getString("catalog_id");
@@ -223,7 +327,7 @@ public class CatalogsApiVerticle extends AbstractVerticle {
                 Integer pageSize = (pageSizeParam == null) ? 25 : Json.mapper.readValue(pageSizeParam, Integer.class);
                 String adAccountIdParam = message.body().getString("ad_account_id");
                 String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
-                service.catalogsProductGroupsList(feedId, catalogId, bookmark, pageSize, adAccountId, result -> {
+                service.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId, result -> {
                     if (result.succeeded())
                         message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
                     else {
@@ -405,6 +509,33 @@ public class CatalogsApiVerticle extends AbstractVerticle {
                 });
             } catch (Exception e) {
                 logUnexpectedError("feeds/get", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
+        //Consumer for feeds/ingest
+        vertx.eventBus().<JsonObject> consumer(FEEDS/INGEST_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "feeds/ingest";
+                String feedIdParam = message.body().getString("feed_id");
+                if(feedIdParam == null) {
+                    manageError(message, new MainApiException(400, "feed_id is required"), serviceId);
+                    return;
+                }
+                String feedId = feedIdParam;
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.feedsIngest(feedId, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "feeds/ingest");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("feeds/ingest", e);
                 message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
             }
         });
@@ -605,6 +736,33 @@ public class CatalogsApiVerticle extends AbstractVerticle {
             }
         });
         
+        //Consumer for items/post
+        vertx.eventBus().<JsonObject> consumer(ITEMS/POST_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "items/post";
+                JsonObject catalogsItemsRequestParam = message.body().getJsonObject("CatalogsItemsRequest");
+                if (catalogsItemsRequestParam == null) {
+                    manageError(message, new MainApiException(400, "CatalogsItemsRequest is required"), serviceId);
+                    return;
+                }
+                CatalogsItemsRequest catalogsItemsRequest = Json.mapper.readValue(catalogsItemsRequestParam.encode(), CatalogsItemsRequest.class);
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.itemsPost(catalogsItemsRequest, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "items/post");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("items/post", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
         //Consumer for products_by_product_group_filter/list
         vertx.eventBus().<JsonObject> consumer(PRODUCTS_BY_PRODUCT_GROUP_FILTER/LIST_SERVICE_ID).handler(message -> {
             try {
@@ -622,7 +780,9 @@ public class CatalogsApiVerticle extends AbstractVerticle {
                 Integer pageSize = (pageSizeParam == null) ? 25 : Json.mapper.readValue(pageSizeParam, Integer.class);
                 String adAccountIdParam = message.body().getString("ad_account_id");
                 String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
-                service.productsByProductGroupFilterList(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, result -> {
+                String pinMetricsParam = message.body().getString("pin_metrics");
+                Boolean pinMetrics = (pinMetricsParam == null) ? false : Json.mapper.readValue(pinMetricsParam, Boolean.class);
+                service.productsByProductGroupFilterList(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, result -> {
                     if (result.succeeded())
                         message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
                     else {
@@ -632,6 +792,91 @@ public class CatalogsApiVerticle extends AbstractVerticle {
                 });
             } catch (Exception e) {
                 logUnexpectedError("products_by_product_group_filter/list", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
+        //Consumer for reports/create
+        vertx.eventBus().<JsonObject> consumer(REPORTS/CREATE_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "reports/create";
+                JsonObject catalogsReportParametersParam = message.body().getJsonObject("CatalogsReportParameters");
+                if (catalogsReportParametersParam == null) {
+                    manageError(message, new MainApiException(400, "CatalogsReportParameters is required"), serviceId);
+                    return;
+                }
+                CatalogsReportParameters catalogsReportParameters = Json.mapper.readValue(catalogsReportParametersParam.encode(), CatalogsReportParameters.class);
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.reportsCreate(catalogsReportParameters, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "reports/create");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("reports/create", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
+        //Consumer for reports/get
+        vertx.eventBus().<JsonObject> consumer(REPORTS/GET_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "reports/get";
+                String tokenParam = message.body().getString("token");
+                if(tokenParam == null) {
+                    manageError(message, new MainApiException(400, "token is required"), serviceId);
+                    return;
+                }
+                String token = tokenParam;
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.reportsGet(token, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "reports/get");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("reports/get", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
+        //Consumer for reports/stats
+        vertx.eventBus().<JsonObject> consumer(REPORTS/STATS_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "reports/stats";
+                JsonObject parametersParam = message.body().getJsonObject("parameters");
+                if (parametersParam == null) {
+                    manageError(message, new MainApiException(400, "parameters is required"), serviceId);
+                    return;
+                }
+                CatalogsReportParameters parameters = Json.mapper.readValue(parametersParam.encode(), CatalogsReportParameters.class);
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                String pageSizeParam = message.body().getString("page_size");
+                Integer pageSize = (pageSizeParam == null) ? 25 : Json.mapper.readValue(pageSizeParam, Integer.class);
+                String bookmarkParam = message.body().getString("bookmark");
+                String bookmark = (bookmarkParam == null) ? null : bookmarkParam;
+                service.reportsStats(parameters, adAccountId, pageSize, bookmark, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "reports/stats");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("reports/stats", e);
                 message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
             }
         });

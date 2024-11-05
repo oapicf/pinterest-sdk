@@ -28,7 +28,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @Controller
 public class AudiencesApiController implements AudiencesApi {
     private final ObjectMapper objectMapper;
@@ -96,8 +96,8 @@ public class AudiencesApiController implements AudiencesApi {
     public ResponseEntity<AudiencesList200Response> audiencesList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
         @ApiParam(value = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.", allowableValues = "ASCENDING, DESCENDING")  @RequestParam(value = "order", required = false) String order,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
-        @ApiParam(value = "<strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type.", allowableValues = "OWNED, RECEIVED", defaultValue = "OWNED")  @RequestParam(value = "ownership_type", required = false, defaultValue="OWNED") String ownershipType,
+        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+        @ApiParam(value = "Filter audiences by ownership type.", allowableValues = "OWNED, RECEIVED", defaultValue = "OWNED")  @RequestParam(value = "ownership_type", required = false, defaultValue="OWNED") String ownershipType,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 

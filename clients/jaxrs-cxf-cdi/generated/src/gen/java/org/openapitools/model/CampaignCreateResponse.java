@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class CampaignCreateResponse   {
   
-  private List<@Valid CampaignCreateResponseItem> items;
+  private List<@Valid CampaignCreateResponseItem> items = new ArrayList<>();
 
   /**
    **/

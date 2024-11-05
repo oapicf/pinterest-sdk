@@ -22,12 +22,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item processing record")
 @JsonTypeName("ItemProcessingRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemProcessingRecord   {
-  private @Valid String itemId;
-  private @Valid List<@Valid ItemValidationEvent> errors;
-  private @Valid List<@Valid ItemValidationEvent> warnings;
-  private @Valid ItemProcessingStatus status;
+  private String itemId;
+  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private @Valid List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
+  private ItemProcessingStatus status;
 
   /**
    * The catalog item id in the merchant namespace
@@ -60,7 +60,7 @@ public class ItemProcessingRecord   {
   
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
   @JsonProperty("errors")
-  public List<ItemValidationEvent> getErrors() {
+  @Valid public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
 
@@ -96,7 +96,7 @@ public class ItemProcessingRecord   {
   
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
   @JsonProperty("warnings")
-  public List<ItemValidationEvent> getWarnings() {
+  @Valid public List<@Valid ItemValidationEvent> getWarnings() {
     return warnings;
   }
 

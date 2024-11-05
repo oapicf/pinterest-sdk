@@ -27,8 +27,7 @@ ConversionTagConfigs <- R6::R6Class(
     `aem_ge_enabled` = NULL,
     `aem_db_enabled` = NULL,
     `aem_loc_enabled` = NULL,
-    #' Initialize a new ConversionTagConfigs class.
-    #'
+
     #' @description
     #' Initialize a new ConversionTagConfigs class.
     #'
@@ -40,7 +39,6 @@ ConversionTagConfigs <- R6::R6Class(
     #' @param aem_db_enabled Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
     #' @param aem_loc_enabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`aem_enabled` = FALSE, `md_frequency` = 1, `aem_fnln_enabled` = FALSE, `aem_ph_enabled` = FALSE, `aem_ge_enabled` = FALSE, `aem_db_enabled` = FALSE, `aem_loc_enabled` = FALSE, ...) {
       if (!is.null(`aem_enabled`)) {
         if (!(is.logical(`aem_enabled`) && length(`aem_enabled`) == 1)) {
@@ -82,13 +80,11 @@ ConversionTagConfigs <- R6::R6Class(
         self$`aem_loc_enabled` <- `aem_loc_enabled`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionTagConfigs in JSON format
-    #' @export
     toJSON = function() {
       ConversionTagConfigsObject <- list()
       if (!is.null(self$`aem_enabled`)) {
@@ -121,14 +117,12 @@ ConversionTagConfigs <- R6::R6Class(
       }
       ConversionTagConfigsObject
     },
-    #' Deserialize JSON string into an instance of ConversionTagConfigs
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionTagConfigs
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionTagConfigs
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`aem_enabled`)) {
@@ -154,13 +148,11 @@ ConversionTagConfigs <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionTagConfigs in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`aem_enabled`)) {
@@ -223,14 +215,12 @@ ConversionTagConfigs <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ConversionTagConfigs
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionTagConfigs
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionTagConfigs
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`aem_enabled` <- this_object$`aem_enabled`
@@ -242,53 +232,42 @@ ConversionTagConfigs <- R6::R6Class(
       self$`aem_loc_enabled` <- this_object$`aem_loc_enabled`
       self
     },
-    #' Validate JSON input with respect to ConversionTagConfigs
-    #'
+
     #' @description
     #' Validate JSON input with respect to ConversionTagConfigs and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ConversionTagConfigs
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

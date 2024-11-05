@@ -32,5 +32,8 @@ data class CampaignUpdateResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<CampaignCreateResponseItem>? = null
 
-)
+) {
+
+
+}
 

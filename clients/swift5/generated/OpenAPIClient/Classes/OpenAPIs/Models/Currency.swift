@@ -37,4 +37,6 @@ public enum Currency: String, Codable, CaseIterable {
     case ars = "ARS"
     case clp = "CLP"
     case cop = "COP"
+    case inr = "INR"
+    case _try = "TRY"
 }

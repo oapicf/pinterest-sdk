@@ -32,5 +32,8 @@ data class ConditionFilter (
     @Json(name = "CONDITION")
     val CONDITION: CatalogsProductGroupMultipleStringCriteria
 
-)
+) {
+
+
+}
 

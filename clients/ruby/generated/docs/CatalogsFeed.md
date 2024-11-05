@@ -14,6 +14,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsFeed.openapi_one_of
 # =>
 # [
+#   :'CatalogsCreativeAssetsFeed',
 #   :'CatalogsHotelFeed',
 #   :'CatalogsRetailFeed'
 # ]
@@ -44,6 +45,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsFeed.openapi_discriminator_mapping
 # =>
 # {
+#   :'CREATIVE_ASSETS' => :'CatalogsCreativeAssetsFeed',
 #   :'HOTEL' => :'CatalogsHotelFeed',
 #   :'RETAIL' => :'CatalogsRetailFeed'
 # }
@@ -59,7 +61,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::CatalogsFeed.build(data)
-# => #<CatalogsHotelFeed:0x00007fdd4aab02a0>
+# => #<CatalogsCreativeAssetsFeed:0x00007fdd4aab02a0>
 
 PinterestSdkClient::CatalogsFeed.build(data_that_doesnt_match)
 # => nil
@@ -73,6 +75,7 @@ PinterestSdkClient::CatalogsFeed.build(data_that_doesnt_match)
 
 #### Return type
 
+- `CatalogsCreativeAssetsFeed`
 - `CatalogsHotelFeed`
 - `CatalogsRetailFeed`
 - `nil` (if no type matches)

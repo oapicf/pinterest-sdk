@@ -19,7 +19,7 @@ import java.util.List;
  * OrderLineResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLineResponse   {
   @JsonProperty("errors")
   
@@ -42,10 +42,10 @@ public class OrderLineResponse   {
     return this;
   }
 
-   /**
+  /**
    * Error list if update(s) fail.
    * @return errors
-  **/
+   */
   @ApiModelProperty(value = "Error list if update(s) fail.")
   public List<OrderLineError> getErrors() {
     return errors;
@@ -68,10 +68,10 @@ public class OrderLineResponse   {
     return this;
   }
 
-   /**
+  /**
    * Order Line object array.
    * @return orderLine
-  **/
+   */
   @ApiModelProperty(value = "Order Line object array.")
   public List<OrderLine> getOrderLine() {
     return orderLine;

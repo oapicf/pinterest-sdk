@@ -1,13 +1,72 @@
 require 'json'
 
 
+MyApp.add_route('GET', '/v5/pins/analytics', {
+  "resourcePath" => "/Pins",
+  "summary" => "Get multiple Pin analytics",
+  "nickname" => "multi_pins/analytics",
+  "responseClass" => "Hash<String, Hash>",
+  "endpoint" => "/pins/analytics",
+  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
+  "parameters" => [
+    {
+      "name" => "pin_ids",
+      "description" => "List of Pin IDs.",
+      "dataType" => "Array<String>",
+      "collectionFormat" => "multi",
+      "paramType" => "query",
+    },
+    {
+      "name" => "start_date",
+      "description" => "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",
+      "dataType" => "Date",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "end_date",
+      "description" => "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",
+      "dataType" => "Date",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "app_types",
+      "description" => "Apps or devices to get data for, default is all.",
+      "dataType" => "String",
+      "allowableValues" => "[ALL, MOBILE, TABLET, WEB]",
+      "defaultValue" => "'ALL'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "metric_types",
+      "description" => "Pin metric types to get data for.",
+      "dataType" => "Array<pins_analytics_metric_types_parameter_inner>",
+      "collectionFormat" => "csv",
+      "paramType" => "query",
+    },
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
 MyApp.add_route('GET', '/v5/pins/{pin_id}/analytics', {
   "resourcePath" => "/Pins",
   "summary" => "Get Pin analytics",
   "nickname" => "pins/analytics",
   "responseClass" => "Hash<String, PinAnalyticsMetricsResponse>",
   "endpoint" => "/pins/{pin_id}/analytics",
-  "notes" => "Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
+  "notes" => "Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
   "parameters" => [
     {
       "name" => "start_date",
@@ -33,7 +92,7 @@ MyApp.add_route('GET', '/v5/pins/{pin_id}/analytics', {
     },
     {
       "name" => "metric_types",
-      "description" => "Pin metric types to get data for, default is all.",
+      "description" => "Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.",
       "dataType" => "Array<pins_analytics_metric_types_parameter_inner>",
       "collectionFormat" => "csv",
       "paramType" => "query",
@@ -73,7 +132,7 @@ MyApp.add_route('POST', '/v5/pins', {
   "nickname" => "pins/create",
   "responseClass" => "Pin",
   "endpoint" => "/pins",
-  "notes" => "Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.",
+  "notes" => "Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -168,7 +227,7 @@ MyApp.add_route('GET', '/v5/pins', {
   "nickname" => "pins/list",
   "responseClass" => "pins_list_200_response",
   "endpoint" => "/pins",
-  "notes" => "Get a list of the Pins owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".",
+  "notes" => "Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -179,7 +238,7 @@ MyApp.add_route('GET', '/v5/pins', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -278,7 +337,7 @@ MyApp.add_route('PATCH', '/v5/pins/{pin_id}', {
   "nickname" => "pins/update",
   "responseClass" => "Pin",
   "endpoint" => "/pins/{pin_id}",
-  "notes" => "Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>",
+  "notes" => "Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
   "parameters" => [
     {
       "name" => "ad_account_id",

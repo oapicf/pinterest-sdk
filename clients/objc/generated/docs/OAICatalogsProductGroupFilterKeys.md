@@ -3,32 +3,34 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mINPRICE** | [**OAICatalogsProductGroupPricingCriteria***](OAICatalogsProductGroupPricingCriteria.md) |  | 
-**mAXPRICE** | [**OAICatalogsProductGroupPricingCriteria***](OAICatalogsProductGroupPricingCriteria.md) |  | 
-**cURRENCY** | [**OAICatalogsProductGroupCurrencyCriteria***](OAICatalogsProductGroupCurrencyCriteria.md) |  | 
-**iTEMID** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**aVAILABILITY** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**bRAND** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**cONDITION** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**cUSTOMLABEL0** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**cUSTOMLABEL1** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**cUSTOMLABEL2** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**cUSTOMLABEL3** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**cUSTOMLABEL4** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**iTEMGROUPID** | [**OAICatalogsProductGroupMultipleStringCriteria***](OAICatalogsProductGroupMultipleStringCriteria.md) |  | 
-**gENDER** | [**OAICatalogsProductGroupMultipleGenderCriteria***](OAICatalogsProductGroupMultipleGenderCriteria.md) |  | 
-**pRODUCTTYPE4** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**pRODUCTTYPE3** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**pRODUCTTYPE2** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**pRODUCTTYPE1** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**pRODUCTTYPE0** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**gOOGLEPRODUCTCATEGORY6** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**gOOGLEPRODUCTCATEGORY5** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**gOOGLEPRODUCTCATEGORY4** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**gOOGLEPRODUCTCATEGORY3** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**gOOGLEPRODUCTCATEGORY2** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**gOOGLEPRODUCTCATEGORY1** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**gOOGLEPRODUCTCATEGORY0** | [**OAICatalogsProductGroupMultipleStringListCriteria***](OAICatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**mINPRICE** | [**OAICatalogsProductGroupPricingCriteria***](.md) |  | 
+**mAXPRICE** | [**OAICatalogsProductGroupPricingCriteria***](.md) |  | 
+**cURRENCY** | [**OAICatalogsProductGroupCurrencyCriteria***](.md) |  | 
+**iTEMID** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**aVAILABILITY** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**bRAND** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cONDITION** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cUSTOMLABEL0** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cUSTOMLABEL1** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cUSTOMLABEL2** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cUSTOMLABEL3** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**cUSTOMLABEL4** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**iTEMGROUPID** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
+**gENDER** | [**OAICatalogsProductGroupMultipleGenderCriteria***](.md) |  | 
+**mEDIATYPE** | [**OAICatalogsProductGroupMultipleMediaTypesCriteria***](.md) |  | 
+**pRODUCTTYPE4** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**pRODUCTTYPE3** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**pRODUCTTYPE2** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**pRODUCTTYPE1** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**pRODUCTTYPE0** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**gOOGLEPRODUCTCATEGORY6** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**gOOGLEPRODUCTCATEGORY5** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**gOOGLEPRODUCTCATEGORY4** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**gOOGLEPRODUCTCATEGORY3** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**gOOGLEPRODUCTCATEGORY2** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**gOOGLEPRODUCTCATEGORY1** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**gOOGLEPRODUCTCATEGORY0** | [**OAICatalogsProductGroupMultipleStringListCriteria***](.md) |  | 
+**pRODUCTGROUP** | [**OAICatalogsProductGroupMultipleStringCriteria***](.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

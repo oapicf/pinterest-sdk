@@ -27,7 +27,7 @@ public class CatalogsUpdateRetailItem  {
 
 public enum OperationEnum {
 
-CREATE(String.valueOf("CREATE")), UPDATE(String.valueOf("UPDATE")), UPSERT(String.valueOf("UPSERT")), DELETE(String.valueOf("DELETE"));
+UPDATE(String.valueOf("UPDATE"));
 
 
     private String value;

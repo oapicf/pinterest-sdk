@@ -15,7 +15,7 @@ public class RelatedTermsRelatedTermsListInner  {
   private String term;
 
   @ApiModelProperty(example = "[\"shoes\",\"cute clothes\"]", value = "")
-  private List<String> relatedTerms;
+  private List<String> relatedTerms = new ArrayList<>();
  /**
    * Get term
    * @return term

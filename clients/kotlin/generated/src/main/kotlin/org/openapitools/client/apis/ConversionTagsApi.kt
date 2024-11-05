@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.ConversionEventResponse
@@ -42,7 +42,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -52,7 +52,7 @@ class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Create conversion tag
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://developers.pinterest.com/docs/conversions/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://developers.pinterest.com/docs/conversions/enhanced-match/\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param conversionTagCreate Conversion Tag to create
      * @return ConversionTagResponse
@@ -84,7 +84,7 @@ class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
 
     /**
      * Create conversion tag
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://developers.pinterest.com/docs/conversions/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://developers.pinterest.com/docs/conversions/enhanced-match/\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param conversionTagCreate Conversion Tag to create
      * @return ApiResponse<ConversionTagResponse?>
@@ -354,14 +354,23 @@ class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
      */
      enum class OrderPageVisitConversionTagsGet(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
      * Get page visit conversion tags
      * Get all page visit conversion tag events for an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return PageVisitConversionTagsGet200Response
@@ -395,7 +404,7 @@ class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
      * Get page visit conversion tags
      * Get all page visit conversion tag events for an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<PageVisitConversionTagsGet200Response?>
@@ -416,7 +425,7 @@ class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: OkHtt
      * To obtain the request config of the operation pageVisitConversionTagsGet
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig

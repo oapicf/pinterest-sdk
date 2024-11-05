@@ -9,5 +9,5 @@ import java.util.Arrays;
 @Canonical
 class MetricsResponse {
     
-    List<Object> data
+    List<Object> data = new ArrayList<>()
 }

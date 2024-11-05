@@ -87,5 +87,8 @@ data class SSIOInsertionOrderCommon (
     @Json(name = "user_email")
     val userEmail: kotlin.String? = null
 
-)
+) {
+
+
+}
 

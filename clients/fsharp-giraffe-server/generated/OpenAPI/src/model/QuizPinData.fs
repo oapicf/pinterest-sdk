@@ -9,9 +9,14 @@ module QuizPinData =
 
   //#region QuizPinData
 
+  //#region enums
+  type TieBreakerTypeEnum = RANDOMEnum of string  |  CUSTOMEnum of string  
+  //#endregion
 
   type QuizPinData = {
     Questions : QuizPinQuestion[];
     Results : QuizPinResult[];
+    TieBreakerType : TieBreakerTypeEnum;
+    TieBreakerCustomResult : QuizPinResult;
   }
   //#endregion

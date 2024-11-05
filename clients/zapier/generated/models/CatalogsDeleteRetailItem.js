@@ -16,9 +16,6 @@ module.exports = {
                 required: true,
                 type: 'string',
                 choices: [
-                    'CREATE',
-                    'UPDATE',
-                    'UPSERT',
                     'DELETE',
                 ],
             },

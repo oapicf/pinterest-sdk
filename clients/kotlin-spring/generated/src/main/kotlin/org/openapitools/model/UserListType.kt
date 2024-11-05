@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,13 +19,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 * User list type
 * Values: EMAIL,IDFA,MAID,LR_ID,DLX_ID,HASHED_PINNER_ID
 */
-enum class UserListType(val value: kotlin.String) {
+enum class UserListType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("EMAIL") EMAIL("EMAIL"),
-    @JsonProperty("IDFA") IDFA("IDFA"),
-    @JsonProperty("MAID") MAID("MAID"),
-    @JsonProperty("LR_ID") LR_ID("LR_ID"),
-    @JsonProperty("DLX_ID") DLX_ID("DLX_ID"),
-    @JsonProperty("HASHED_PINNER_ID") HASHED_PINNER_ID("HASHED_PINNER_ID")
+    EMAIL("EMAIL"),
+    IDFA("IDFA"),
+    MAID("MAID"),
+    LR_ID("LR_ID"),
+    DLX_ID("DLX_ID"),
+    HASHED_PINNER_ID("HASHED_PINNER_ID");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): UserListType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

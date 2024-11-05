@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,7 @@ type AudienceInsightsResponse struct {
 	Demographics *AudienceDemographics `json:"demographics,omitempty"`
 	Type *AudienceInsightType `json:"type,omitempty"`
 	// Generation date
-	Date NullableString `json:"date,omitempty"`
+	Date NullableString `json:"date,omitempty" validate:"regexp=^\\\\d{4}-\\\\d{2}-\\\\d{2}$"`
 	// Population count.
 	Size *int32 `json:"size,omitempty"`
 	// Indicates whether the audience size has been rounded up to the next highest upper boundary.

@@ -27,23 +27,23 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertRequestUpdate", description = "Request for creation of entities in bulk.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequestUpdate {
 
   @Valid
-  private List<@Valid CampaignUpdateRequest> campaigns;
+  private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
 
   @Valid
-  private List<AdGroupUpdateRequest> adGroups;
+  private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
 
   @Valid
-  private List<AdUpdateRequest> ads;
+  private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
 
   @Valid
-  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups;
+  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
 
   @Valid
-  private List<@Valid KeywordUpdate> keywords;
+  private List<@Valid KeywordUpdate> keywords = new ArrayList<>();
 
   public BulkUpsertRequestUpdate campaigns(List<@Valid CampaignUpdateRequest> campaigns) {
     this.campaigns = campaigns;
@@ -61,7 +61,7 @@ public class BulkUpsertRequestUpdate {
   /**
    * Get campaigns
    * @return campaigns
-  */
+   */
   @Valid 
   @Schema(name = "campaigns", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaigns")
@@ -73,7 +73,7 @@ public class BulkUpsertRequestUpdate {
     this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestUpdate adGroups(List<AdGroupUpdateRequest> adGroups) {
+  public BulkUpsertRequestUpdate adGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
     return this;
   }
@@ -89,19 +89,19 @@ public class BulkUpsertRequestUpdate {
   /**
    * Get adGroups
    * @return adGroups
-  */
+   */
   @Valid 
   @Schema(name = "ad_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_groups")
-  public List<AdGroupUpdateRequest> getAdGroups() {
+  public List<@Valid AdGroupUpdateRequest> getAdGroups() {
     return adGroups;
   }
 
-  public void setAdGroups(List<AdGroupUpdateRequest> adGroups) {
+  public void setAdGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
-  public BulkUpsertRequestUpdate ads(List<AdUpdateRequest> ads) {
+  public BulkUpsertRequestUpdate ads(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
     return this;
   }
@@ -117,15 +117,15 @@ public class BulkUpsertRequestUpdate {
   /**
    * Get ads
    * @return ads
-  */
+   */
   @Valid 
   @Schema(name = "ads", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ads")
-  public List<AdUpdateRequest> getAds() {
+  public List<@Valid AdUpdateRequest> getAds() {
     return ads;
   }
 
-  public void setAds(List<AdUpdateRequest> ads) {
+  public void setAds(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
   }
 
@@ -145,7 +145,7 @@ public class BulkUpsertRequestUpdate {
   /**
    * Get productGroups
    * @return productGroups
-  */
+   */
   @Valid 
   @Schema(name = "product_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_groups")
@@ -173,7 +173,7 @@ public class BulkUpsertRequestUpdate {
   /**
    * Get keywords
    * @return keywords
-  */
+   */
   @Valid 
   @Schema(name = "keywords", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")

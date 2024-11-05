@@ -9,6 +9,5 @@ import javax.validation.Valid;
 public enum ProductAvailabilityType {
   IN_STOCK,
   OUT_OF_STOCK,
-  PREORDER,
-  NULL;
+  PREORDER;
 }

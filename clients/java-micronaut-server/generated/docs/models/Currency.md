@@ -57,5 +57,9 @@ The class is defined in **[Currency.java](../../src/main/java/org/openapitools/m
 
 * `COP` (value: `"COP"`)
 
+* `INR` (value: `"INR"`)
+
+* `TRY` (value: `"TRY"`)
+
 
 

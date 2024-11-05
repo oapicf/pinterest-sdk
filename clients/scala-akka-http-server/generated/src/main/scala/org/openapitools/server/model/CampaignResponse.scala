@@ -12,13 +12,13 @@ package org.openapitools.server.model
  * @param trackingUrls  for example: ''null''
  * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. for example: ''1580865126''
  * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. for example: ''1644023526''
- * @param summaryStatus  for example: ''null''
+ * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup. for example: ''true''
  * @param objectiveType  for example: ''null''
  * @param createdTime Campaign creation time. Unix timestamp in seconds. for example: ''1432744744''
  * @param updatedTime UTC timestamp. Last update time. for example: ''1432744744''
  * @param `type` Always \"campaign\". for example: ''campaign''
- * @param isFlexibleDailyBudgets Determines if a campaign has flexible daily budgets setup. for example: ''true''
  * @param isCampaignBudgetOptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. for example: ''true''
+ * @param summaryStatus  for example: ''null''
 */
 final case class CampaignResponse (
   id: Option[String] = None,
@@ -28,15 +28,15 @@ final case class CampaignResponse (
   lifetimeSpendCap: Option[Int] = None,
   dailySpendCap: Option[Int] = None,
   orderLineId: Option[String] = None,
-  trackingUrls: Option[AdCommonTrackingUrls] = None,
+  trackingUrls: Option[TrackingUrls] = None,
   startTime: Option[Int] = None,
   endTime: Option[Int] = None,
-  summaryStatus: Option[CampaignSummaryStatus] = None,
+  isFlexibleDailyBudgets: Option[Boolean] = None,
   objectiveType: Option[ObjectiveType] = None,
   createdTime: Option[Int] = None,
   updatedTime: Option[Int] = None,
   `type`: Option[String] = None,
-  isFlexibleDailyBudgets: Option[Boolean] = None,
-  isCampaignBudgetOptimization: Option[Boolean] = None
+  isCampaignBudgetOptimization: Option[Boolean] = None,
+  summaryStatus: Option[CampaignSummaryStatus] = None
 )
 

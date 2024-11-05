@@ -247,7 +247,7 @@ cJSON *targeting_spec_convertToJSON(targeting_spec_t *targeting_spec) {
 
     // targeting_spec->audience_include
     if(targeting_spec->audience_include) {
-    cJSON *audience_include = cJSON_AddArrayToObject(item, "AUDIENCE_INCLUDE'");
+    cJSON *audience_include = cJSON_AddArrayToObject(item, "AUDIENCE_INCLUDE");
     if(audience_include == NULL) {
         goto fail; //primitive container
     }
@@ -486,7 +486,7 @@ targeting_spec_t *targeting_spec_parseFromJSON(cJSON *targeting_specJSON){
     }
 
     // targeting_spec->audience_include
-    cJSON *audience_include = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "AUDIENCE_INCLUDE'");
+    cJSON *audience_include = cJSON_GetObjectItemCaseSensitive(targeting_specJSON, "AUDIENCE_INCLUDE");
     if (audience_include) { 
     cJSON *audience_include_local = NULL;
     if(!cJSON_IsArray(audience_include)) {

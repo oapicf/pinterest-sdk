@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Schema for log sent from an integration application.")
 @JsonTypeName("IntegrationLog")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLog   {
-  private @Valid Integer clientTimestamp;
+  private Integer clientTimestamp;
   public enum EventTypeEnum {
 
     APP(String.valueOf("APP")), API(String.valueOf("API"));
@@ -70,7 +70,7 @@ public class IntegrationLog   {
     }
 }
 
-  private @Valid EventTypeEnum eventType;
+  private EventTypeEnum eventType;
   public enum LogLevelEnum {
 
     INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
@@ -118,17 +118,17 @@ public class IntegrationLog   {
     }
 }
 
-  private @Valid LogLevelEnum logLevel;
-  private @Valid String externalBusinessId;
-  private @Valid String advertiserId;
-  private @Valid String merchantId;
-  private @Valid String tagId;
-  private @Valid String feedProfileId;
-  private @Valid String message;
-  private @Valid String appVersionNumber;
-  private @Valid String platformVersionNumber;
-  private @Valid IntegrationLogClientError error;
-  private @Valid IntegrationLogClientRequest request;
+  private LogLevelEnum logLevel;
+  private String externalBusinessId;
+  private String advertiserId;
+  private String merchantId;
+  private String tagId;
+  private String feedProfileId;
+  private String message;
+  private String appVersionNumber;
+  private String platformVersionNumber;
+  private IntegrationLogClientError error;
+  private IntegrationLogClientRequest request;
 
   /**
    * Timestamp in milliseconds of when the log was executed at the client.
@@ -141,8 +141,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(required = true, value = "Timestamp in milliseconds of when the log was executed at the client.")
   @JsonProperty("client_timestamp")
-  @NotNull
-  public Integer getClientTimestamp() {
+  @NotNull public Integer getClientTimestamp() {
     return clientTimestamp;
   }
 
@@ -162,8 +161,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(required = true, value = "Log event type")
   @JsonProperty("event_type")
-  @NotNull
-  public EventTypeEnum getEventType() {
+  @NotNull public EventTypeEnum getEventType() {
     return eventType;
   }
 
@@ -183,8 +181,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(required = true, value = "Log level type")
   @JsonProperty("log_level")
-  @NotNull
-  public LogLevelEnum getLogLevel() {
+  @NotNull public LogLevelEnum getLogLevel() {
     return logLevel;
   }
 
@@ -203,7 +200,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("external_business_id")
- @Size(max=2048)  public String getExternalBusinessId() {
+   @Size(max=2048)public String getExternalBusinessId() {
     return externalBusinessId;
   }
 
@@ -222,7 +219,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("advertiser_id")
- @Size(max=128)  public String getAdvertiserId() {
+   @Size(max=128)public String getAdvertiserId() {
     return advertiserId;
   }
 
@@ -241,7 +238,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("merchant_id")
- @Size(max=128)  public String getMerchantId() {
+   @Size(max=128)public String getMerchantId() {
     return merchantId;
   }
 
@@ -260,7 +257,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tag_id")
- @Size(max=128)  public String getTagId() {
+   @Size(max=128)public String getTagId() {
     return tagId;
   }
 
@@ -279,7 +276,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("feed_profile_id")
- @Size(max=128)  public String getFeedProfileId() {
+   @Size(max=128)public String getFeedProfileId() {
     return feedProfileId;
   }
 
@@ -299,7 +296,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "Explanation of the event that occured.")
   @JsonProperty("message")
- @Size(max=2048)  public String getMessage() {
+   @Size(max=2048)public String getMessage() {
     return message;
   }
 
@@ -319,7 +316,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "Version number of the integration application.")
   @JsonProperty("app_version_number")
- @Size(max=20)  public String getAppVersionNumber() {
+   @Size(max=20)public String getAppVersionNumber() {
     return appVersionNumber;
   }
 
@@ -339,7 +336,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "Version number of the platform the integration application is running on.")
   @JsonProperty("platform_version_number")
- @Size(max=20)  public String getPlatformVersionNumber() {
+   @Size(max=20)public String getPlatformVersionNumber() {
     return platformVersionNumber;
   }
 
@@ -358,7 +355,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("error")
-  public IntegrationLogClientError getError() {
+  @Valid public IntegrationLogClientError getError() {
     return error;
   }
 
@@ -377,7 +374,7 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("request")
-  public IntegrationLogClientRequest getRequest() {
+  @Valid public IntegrationLogClientRequest getRequest() {
     return request;
   }
 

@@ -20,17 +20,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionTagCommon")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionTagCommon   {
-  private @Valid String adAccountId;
-  private @Valid String codeSnippet;
-  private @Valid EnhancedMatchStatusType enhancedMatchStatus;
-  private @Valid String id;
-  private @Valid BigDecimal lastFiredTimeMs;
-  private @Valid String name;
-  private @Valid EntityStatus status;
-  private @Valid String version;
-  private @Valid ConversionTagConfigs configs;
+  private String adAccountId;
+  private String codeSnippet;
+  private EnhancedMatchStatusType enhancedMatchStatus;
+  private String id;
+  private BigDecimal lastFiredTimeMs;
+  private String name;
+  private EntityStatus status;
+  private String version;
+  private ConversionTagConfigs configs;
 
   /**
    * Ad account ID.
@@ -122,7 +122,7 @@ public class ConversionTagCommon   {
   
   @ApiModelProperty(example = "1599030000000", value = "Time for the last event fired.")
   @JsonProperty("last_fired_time_ms")
-  public BigDecimal getLastFiredTimeMs() {
+  @Valid public BigDecimal getLastFiredTimeMs() {
     return lastFiredTimeMs;
   }
 
@@ -200,7 +200,7 @@ public class ConversionTagCommon   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("configs")
-  public ConversionTagConfigs getConfigs() {
+  @Valid public ConversionTagConfigs getConfigs() {
     return configs;
   }
 

@@ -32,6 +32,9 @@
   | {'columns', list(openapi_reporting_column_async:openapi_reporting_column_async()) }
   | {'level', openapi_metrics_reporting_level:openapi_metrics_reporting_level() }
   | {'report_format', openapi_data_output_format:openapi_data_output_format() }
+  | {'primary_sort', binary() }
+  | {'start_hour', integer() }
+  | {'end_hour', integer() }
   ].
 
 
@@ -49,7 +52,7 @@ openapi_ads_analytics_create_async_request(Fields) ->
             , {'attribution_types', list(openapi_conversion_report_attribution_type:openapi_conversion_report_attribution_type()) }
             , {'campaign_ids', list(binary(), 1, 500) }
             , {'campaign_statuses', list(openapi_campaign_summary_status:openapi_campaign_summary_status(), 1, 6) }
-            , {'campaign_objective_types', list(openapi_objective_type:openapi_objective_type(), 1, 6) }
+            , {'campaign_objective_types', list(openapi_objective_type:openapi_objective_type(), 1, 7) }
             , {'ad_group_ids', list(binary(), 1, 500) }
             , {'ad_group_statuses', list(openapi_ad_group_summary_status:openapi_ad_group_summary_status(), 1, 6) }
             , {'ad_ids', list(binary(), 1, 500) }
@@ -62,6 +65,9 @@ openapi_ads_analytics_create_async_request(Fields) ->
             , {'columns', list(openapi_reporting_column_async:openapi_reporting_column_async()) }
             , {'level', openapi_metrics_reporting_level:openapi_metrics_reporting_level() }
             , {'report_format', openapi_data_output_format:openapi_data_output_format() }
+            , {'primary_sort', elements([<<"BY_ID">>, <<"BY_DATE">>]) }
+            , {'start_hour', integer(0, 23) }
+            , {'end_hour', integer(0, 23) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

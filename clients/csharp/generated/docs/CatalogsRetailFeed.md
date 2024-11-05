@@ -5,9 +5,9 @@ Catalogs Retail Feed object
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **DateTime** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**UpdatedAt** | **DateTime** |  | [optional] 
+**CreatedAt** | **DateTime** |  | 
+**Id** | **string** |  | 
+**UpdatedAt** | **DateTime** |  | 
 **Name** | **string** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **Format** | **CatalogsFormat** |  | 
 **CatalogType** | **CatalogsType** |  | 

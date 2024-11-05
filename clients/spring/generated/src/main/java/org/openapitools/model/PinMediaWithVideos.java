@@ -28,11 +28,11 @@ import javax.annotation.Generated;
 
 @Schema(name = "PinMediaWithVideos", description = "Pin with multiple videos.")
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithVideos extends PinMedia {
 
   @Valid
-  private List<@Valid VideoMetadata> items;
+  private List<@Valid VideoMetadata> items = new ArrayList<>();
 
   public PinMediaWithVideos items(List<@Valid VideoMetadata> items) {
     this.items = items;
@@ -50,7 +50,7 @@ public class PinMediaWithVideos extends PinMedia {
   /**
    * Get items
    * @return items
-  */
+   */
   @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")

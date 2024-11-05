@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metadata** | [**CatalogsProductMetadata**](CatalogsProductMetadata.md) |  | 
+**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**Metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **Pin** | [**NullablePin**](Pin.md) |  | 
 
 ## Methods
 
 ### NewCatalogsProduct
 
-`func NewCatalogsProduct(metadata CatalogsProductMetadata, pin NullablePin, ) *CatalogsProduct`
+`func NewCatalogsProduct(catalogType CatalogsType, metadata CatalogsCreativeAssetsProductMetadata, pin NullablePin, ) *CatalogsProduct`
 
 NewCatalogsProduct instantiates a new CatalogsProduct object
 This constructor will assign default values to properties that have it defined,
@@ -26,22 +27,42 @@ NewCatalogsProductWithDefaults instantiates a new CatalogsProduct object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetCatalogType
+
+`func (o *CatalogsProduct) GetCatalogType() CatalogsType`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *CatalogsProduct) GetCatalogTypeOk() (*CatalogsType, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *CatalogsProduct) SetCatalogType(v CatalogsType)`
+
+SetCatalogType sets CatalogType field to given value.
+
+
 ### GetMetadata
 
-`func (o *CatalogsProduct) GetMetadata() CatalogsProductMetadata`
+`func (o *CatalogsProduct) GetMetadata() CatalogsCreativeAssetsProductMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *CatalogsProduct) GetMetadataOk() (*CatalogsProductMetadata, bool)`
+`func (o *CatalogsProduct) GetMetadataOk() (*CatalogsCreativeAssetsProductMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *CatalogsProduct) SetMetadata(v CatalogsProductMetadata)`
+`func (o *CatalogsProduct) SetMetadata(v CatalogsCreativeAssetsProductMetadata)`
 
 SetMetadata sets Metadata field to given value.
 

@@ -18,11 +18,11 @@ import org.openapitools.vertxweb.server.model.ProductGroupPromotionCreateRequest
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BulkUpsertRequestCreate   {
   
-  private List<CampaignCreateRequest> campaigns;
-  private List<AdGroupCreateRequest> adGroups;
-  private List<AdCreateRequest> ads;
-  private List<ProductGroupPromotionCreateRequest> productGroups;
-  private List<KeywordsRequest> keywords;
+  private List<CampaignCreateRequest> campaigns = new ArrayList<>();
+  private List<AdGroupCreateRequest> adGroups = new ArrayList<>();
+  private List<AdCreateRequest> ads = new ArrayList<>();
+  private List<ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
+  private List<KeywordsRequest> keywords = new ArrayList<>();
 
   public BulkUpsertRequestCreate () {
 

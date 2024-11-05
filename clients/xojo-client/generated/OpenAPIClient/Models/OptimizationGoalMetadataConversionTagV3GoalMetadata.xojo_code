@@ -23,7 +23,7 @@ Protected Class OptimizationGoalMetadataConversionTagV3GoalMetadata
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ad group is ROAS optimized
+			ROAS optimization is not supported
 		#tag EndNote
 		is_roas_optimized As Xoson.O.OptionalBoolean
 	#tag EndProperty
@@ -56,7 +56,6 @@ Protected Class OptimizationGoalMetadataConversionTagV3GoalMetadata
         
         NotActive
         Active
-        Null
         
     #tag EndEnum
 
@@ -98,8 +97,6 @@ Protected Class OptimizationGoalMetadataConversionTagV3GoalMetadata
 		      Return "NOT_ACTIVE"
 		    Case Learning_mode_typeEnum.Active
 		      Return "ACTIVE"
-		    Case Learning_mode_typeEnum.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""

@@ -18,9 +18,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
-  private @Valid OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
+  private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
   public enum ConversionEventEnum {
 
     PAGE_VISIT(String.valueOf("PAGE_VISIT")), SIGNUP(String.valueOf("SIGNUP")), CHECKOUT(String.valueOf("CHECKOUT")), CUSTOM(String.valueOf("CUSTOM")), VIEW_CATEGORY(String.valueOf("VIEW_CATEGORY")), SEARCH(String.valueOf("SEARCH")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_VIDEO(String.valueOf("WATCH_VIDEO")), LEAD(String.valueOf("LEAD")), APP_INSTALL(String.valueOf("APP_INSTALL"));
@@ -68,13 +68,13 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     }
 }
 
-  private @Valid ConversionEventEnum conversionEvent;
-  private @Valid String conversionTagId;
-  private @Valid String cpaGoalValueInMicroCurrency;
-  private @Valid Boolean isRoasOptimized;
+  private ConversionEventEnum conversionEvent;
+  private String conversionTagId;
+  private String cpaGoalValueInMicroCurrency;
+  private Boolean isRoasOptimized;
   public enum LearningModeTypeEnum {
 
-    NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), ACTIVE(String.valueOf("ACTIVE")), NULL(String.valueOf("null"));
+    NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), ACTIVE(String.valueOf("ACTIVE"));
 
 
     private String value;
@@ -119,7 +119,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
     }
 }
 
-  private @Valid LearningModeTypeEnum learningModeType;
+  private LearningModeTypeEnum learningModeType;
 
   /**
    **/
@@ -131,7 +131,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("attribution_windows")
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows getAttributionWindows() {
+  @Valid public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows getAttributionWindows() {
     return attributionWindows;
   }
 
@@ -169,7 +169,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("conversion_tag_id")
- @Pattern(regexp="^[0-9]+$")  public String getConversionTagId() {
+   @Pattern(regexp="^[0-9]+$")public String getConversionTagId() {
     return conversionTagId;
   }
 
@@ -188,7 +188,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("cpa_goal_value_in_micro_currency")
- @Pattern(regexp="^[0-9]+$")  public String getCpaGoalValueInMicroCurrency() {
+   @Pattern(regexp="^[0-9]+$")public String getCpaGoalValueInMicroCurrency() {
     return cpaGoalValueInMicroCurrency;
   }
 
@@ -198,7 +198,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
    **/
   public OptimizationGoalMetadataConversionTagV3GoalMetadata isRoasOptimized(Boolean isRoasOptimized) {
     this.isRoasOptimized = isRoasOptimized;
@@ -206,7 +206,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   
-  @ApiModelProperty(value = "Ad group is ROAS optimized")
+  @ApiModelProperty(value = "ROAS optimization is not supported")
   @JsonProperty("is_roas_optimized")
   public Boolean getIsRoasOptimized() {
     return isRoasOptimized;

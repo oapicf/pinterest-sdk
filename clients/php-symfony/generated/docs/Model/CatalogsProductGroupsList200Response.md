@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**OpenAPI\Server\Model\CatalogsProductGroupsList200ResponseAllOfItemsInner**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**items** | [**OpenAPI\Server\Model\CatalogsVerticalProductGroup**](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

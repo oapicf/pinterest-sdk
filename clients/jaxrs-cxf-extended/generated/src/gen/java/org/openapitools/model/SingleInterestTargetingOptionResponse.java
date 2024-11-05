@@ -20,7 +20,7 @@ public class SingleInterestTargetingOptionResponse  {
   private String name;
 
   @ApiModelProperty(value = "")
-  private List<String> childInterests;
+  private List<String> childInterests = new ArrayList<>();
 
   @ApiModelProperty(example = "2", value = "")
   private Integer level;

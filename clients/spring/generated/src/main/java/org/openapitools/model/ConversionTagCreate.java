@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * ConversionTagCreate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionTagCreate {
 
   private String name;
@@ -60,7 +60,7 @@ public class ConversionTagCreate {
   /**
    * Conversion tag name.
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", example = "ACME Tools Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -80,7 +80,7 @@ public class ConversionTagCreate {
   /**
    * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemEnabled
-  */
+   */
   
   @Schema(name = "aem_enabled", example = "true", description = "Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("aem_enabled")
@@ -100,7 +100,7 @@ public class ConversionTagCreate {
   /**
    * Metadata ingestion frequency.
    * @return mdFrequency
-  */
+   */
   @Valid 
   @Schema(name = "md_frequency", example = "0.6", description = "Metadata ingestion frequency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("md_frequency")
@@ -120,7 +120,7 @@ public class ConversionTagCreate {
   /**
    * Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemFnlnEnabled
-  */
+   */
   
   @Schema(name = "aem_fnln_enabled", example = "true", description = "Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("aem_fnln_enabled")
@@ -140,7 +140,7 @@ public class ConversionTagCreate {
   /**
    * Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemPhEnabled
-  */
+   */
   
   @Schema(name = "aem_ph_enabled", example = "true", description = "Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("aem_ph_enabled")
@@ -160,7 +160,7 @@ public class ConversionTagCreate {
   /**
    * Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemGeEnabled
-  */
+   */
   
   @Schema(name = "aem_ge_enabled", example = "true", description = "Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("aem_ge_enabled")
@@ -180,7 +180,7 @@ public class ConversionTagCreate {
   /**
    * Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemDbEnabled
-  */
+   */
   
   @Schema(name = "aem_db_enabled", example = "true", description = "Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("aem_db_enabled")
@@ -200,7 +200,7 @@ public class ConversionTagCreate {
   /**
    * Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemLocEnabled
-  */
+   */
   
   @Schema(name = "aem_loc_enabled", example = "true", description = "Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("aem_loc_enabled")

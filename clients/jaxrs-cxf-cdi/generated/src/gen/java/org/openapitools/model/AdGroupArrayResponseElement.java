@@ -22,7 +22,7 @@ public class AdGroupArrayResponseElement   {
   
   private AdGroupResponse data;
 
-  private List<@Valid Exception> exceptions;
+  private List<@Valid Exception> exceptions = new ArrayList<>();
 
   /**
    **/

@@ -9,6 +9,7 @@ import org.openapitools.models.CatalogsFeedCredentials
 import org.openapitools.models.CatalogsFeedProcessingSchedule
 import org.openapitools.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.models.CatalogsFormat
+import org.openapitools.models.CatalogsStatus
 import org.openapitools.models.CatalogsType
 import org.openapitools.models.NullableCurrency
 
@@ -23,6 +24,7 @@ import org.openapitools.models.NullableCurrency
  * @param preferredUnderscoreprocessingUnderscoreschedule 
  * @param catalogUnderscoretype 
  * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
  */
 case class CatalogsHotelFeedsCreateRequest(defaultUnderscorecurrency: Option[NullableCurrency],
                 name: String,
@@ -32,7 +34,8 @@ case class CatalogsHotelFeedsCreateRequest(defaultUnderscorecurrency: Option[Nul
                 location: String,
                 preferredUnderscoreprocessingUnderscoreschedule: Option[CatalogsFeedProcessingSchedule],
                 catalogUnderscoretype: CatalogsType,
-                catalogUnderscoreid: Option[String]
+                catalogUnderscoreid: Option[String],
+                status: Option[CatalogsStatus]
                 )
 
 object CatalogsHotelFeedsCreateRequest {

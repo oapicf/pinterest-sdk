@@ -16,7 +16,11 @@
        'country' => list(),
        'external_id' => list(),
        'click_id' => binary(),
-       'partner_id' => binary()
+       'partner_id' => binary(),
+       'em' := list(),
+       'hashed_maids' := list(),
+       'client_ip_address' := binary(),
+       'client_user_agent' := binary()
      }.
 
 encode(#{ 'ph' := Ph,
@@ -30,7 +34,11 @@ encode(#{ 'ph' := Ph,
           'country' := Country,
           'external_id' := ExternalId,
           'click_id' := ClickId,
-          'partner_id' := PartnerId
+          'partner_id' := PartnerId,
+          'em' := Em,
+          'hashed_maids' := HashedMaids,
+          'client_ip_address' := ClientIpAddress,
+          'client_user_agent' := ClientUserAgent
         }) ->
     #{ 'ph' => Ph,
        'ge' => Ge,
@@ -43,5 +51,9 @@ encode(#{ 'ph' := Ph,
        'country' => Country,
        'external_id' => ExternalId,
        'click_id' => ClickId,
-       'partner_id' => PartnerId
+       'partner_id' => PartnerId,
+       'em' => Em,
+       'hashed_maids' => HashedMaids,
+       'client_ip_address' => ClientIpAddress,
+       'client_user_agent' => ClientUserAgent
      }.

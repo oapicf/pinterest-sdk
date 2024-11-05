@@ -75,6 +75,11 @@
       "doc": ""
     },
     {
+      "name": "MEDIA_TYPE",
+      "type": "model.CatalogsProductGroupMultipleMediaTypesCriteria",
+      "doc": ""
+    },
+    {
       "name": "PRODUCT_TYPE_4",
       "type": "model.CatalogsProductGroupMultipleStringListCriteria",
       "doc": ""
@@ -132,6 +137,11 @@
     {
       "name": "GOOGLE_PRODUCT_CATEGORY_0",
       "type": "model.CatalogsProductGroupMultipleStringListCriteria",
+      "doc": ""
+    },
+    {
+      "name": "PRODUCT_GROUP",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
       "doc": ""
     }
   ]

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,9 @@ var _ MappedNullable = &CatalogsFeedProcessingResult{}
 
 // CatalogsFeedProcessingResult struct for CatalogsFeedProcessingResult
 type CatalogsFeedProcessingResult struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Id *string `json:"id,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
+	Id string `json:"id"`
+	UpdatedAt time.Time `json:"updated_at"`
 	IngestionDetails CatalogsFeedIngestionDetails `json:"ingestion_details"`
 	Status CatalogsFeedProcessingStatus `json:"status"`
 	ProductCounts NullableCatalogsFeedProductCounts `json:"product_counts"`
@@ -38,8 +38,11 @@ type _CatalogsFeedProcessingResult CatalogsFeedProcessingResult
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsFeedProcessingResult(ingestionDetails CatalogsFeedIngestionDetails, status CatalogsFeedProcessingStatus, productCounts NullableCatalogsFeedProductCounts, validationDetails CatalogsFeedValidationDetails) *CatalogsFeedProcessingResult {
+func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, updatedAt time.Time, ingestionDetails CatalogsFeedIngestionDetails, status CatalogsFeedProcessingStatus, productCounts NullableCatalogsFeedProductCounts, validationDetails CatalogsFeedValidationDetails) *CatalogsFeedProcessingResult {
 	this := CatalogsFeedProcessingResult{}
+	this.CreatedAt = createdAt
+	this.Id = id
+	this.UpdatedAt = updatedAt
 	this.IngestionDetails = ingestionDetails
 	this.Status = status
 	this.ProductCounts = productCounts
@@ -55,100 +58,76 @@ func NewCatalogsFeedProcessingResultWithDefaults() *CatalogsFeedProcessingResult
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *CatalogsFeedProcessingResult) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *CatalogsFeedProcessingResult) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CatalogsFeedProcessingResult) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *CatalogsFeedProcessingResult) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *CatalogsFeedProcessingResult) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *CatalogsFeedProcessingResult) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CatalogsFeedProcessingResult) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *CatalogsFeedProcessingResult) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+// GetUpdatedAt returns the UpdatedAt field value
 func (o *CatalogsFeedProcessingResult) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
 func (o *CatalogsFeedProcessingResult) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *CatalogsFeedProcessingResult) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+// SetUpdatedAt sets field value
 func (o *CatalogsFeedProcessingResult) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
+	o.UpdatedAt = v
 }
 
 // GetIngestionDetails returns the IngestionDetails field value
@@ -259,15 +238,9 @@ func (o CatalogsFeedProcessingResult) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsFeedProcessingResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["id"] = o.Id
+	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["ingestion_details"] = o.IngestionDetails
 	toSerialize["status"] = o.Status
 	toSerialize["product_counts"] = o.ProductCounts.Get()
@@ -280,6 +253,9 @@ func (o *CatalogsFeedProcessingResult) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"created_at",
+		"id",
+		"updated_at",
 		"ingestion_details",
 		"status",
 		"product_counts",

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Bid** | **Int32** | Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
+**Bid** | **Int32** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
 **MatchType** | [**MatchTypeResponse**](MatchTypeResponse.md) |  | 
 **Value** | **String** | Keyword value (120 chars max). | 
 
@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$KeywordsCommon = Initialize-PSOpenAPIToolsKeywordsCommon  -Bid 200000 `
+$KeywordsCommon = Initialize-PSOpenAPIToolsKeywordsCommon  -Bid null `
  -MatchType null `
  -Value null
 ```

@@ -26,14 +26,14 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the search API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface SearchApi  {
 
     @GET
     @Path("/partner/pins")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Search pins by a given search term", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.", response = SearchPartnerPins200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Search pins by a given search term", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.", response = SearchPartnerPins200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins")
@@ -50,8 +50,12 @@ public interface SearchApi  {
     @Path("/boards")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Search user's boards", notes = "Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.", response = SearchUserBoardsGet200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Search user's boards", notes = "Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.", response = SearchUserBoardsGet200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
+            @io.swagger.annotations.AuthorizationScope(scope = "boards:read_secret", description = "See your secret boards")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read_secret", description = "See your secret boards")
         })
@@ -65,7 +69,7 @@ public interface SearchApi  {
     @Path("/pins")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Search user's Pins", notes = "Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.", response = PinsList200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Search user's Pins", notes = "Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.", response = PinsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read_secret", description = "See your secret boards"),

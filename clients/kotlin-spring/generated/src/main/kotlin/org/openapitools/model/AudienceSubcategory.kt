@@ -37,7 +37,7 @@ data class AudienceSubcategory(
 
     @Schema(example = "958862518888", description = "Subinterest ID.")
     @get:JsonProperty("id") val id: kotlin.String? = null
-) {
+    ) {
 
 }
 

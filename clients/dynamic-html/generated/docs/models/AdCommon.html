@@ -7,7 +7,7 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">androidUnderscoredeepUnderscorelink : String
-    <br/>Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+    <br/>Deep link URL for Android devices.
   </li>
 </ul>
 <ul class="parameter">
@@ -42,7 +42,7 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">iosUnderscoredeepUnderscorelink : String
-    <br/>Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+    <br/>Deep link URL for iOS devices.
   </li>
 </ul>
 <ul class="parameter">
@@ -66,7 +66,7 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">trackingUnderscoreurls : AdCommon_tracking_urls
+  <li class="param-required-false">trackingUnderscoreurls : TrackingUrls
     <br/>
   </li>
 </ul>
@@ -87,7 +87,7 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">customizableUnderscorectaUnderscoretype : String
-    <br/>Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+    <br/>Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
       <dl class="param-enum">
         <dt>Enum:
             <dd>GET_OFFER</dd>
@@ -99,7 +99,7 @@
             <dd>BUY_NOW</dd>
             <dd>CONTACT_US</dd>
             <dd>GET_QUOTE</dd>
-            <dd>VISIT_WEBSITE</dd>
+            <dd>VISIT_SITE</dd>
             <dd>APPLY_NOW</dd>
             <dd>BOOK_NOW</dd>
             <dd>REQUEST_DEMO</dd>
@@ -108,13 +108,12 @@
             <dd>ADD_TO_CART</dd>
             <dd>WATCH_NOW</dd>
             <dd>READ_MORE</dd>
-            <dd>null</dd>
         </dt>
       </dl>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">quizUnderscorepinUnderscoredata : AdCommon_quiz_pin_data
-    <br/>
+  <li class="param-required-false">quizUnderscorepinUnderscoredata : QuizPinData
+    <br/>Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   </li>
 </ul>

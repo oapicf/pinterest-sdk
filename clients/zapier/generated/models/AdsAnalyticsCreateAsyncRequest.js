@@ -141,6 +141,25 @@ module.exports = {
                 key: `${keyPrefix}report_format`,
                 ...DataOutputFormat.fields(`${keyPrefix}report_format`, isInput),
             },
+            {
+                key: `${keyPrefix}primary_sort`,
+                label: `Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. - [${labelPrefix}primary_sort]`,
+                type: 'string',
+                choices: [
+                    'BY_ID',
+                    'BY_DATE',
+                ],
+            },
+            {
+                key: `${keyPrefix}start_hour`,
+                label: `Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. - [${labelPrefix}start_hour]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}end_hour`,
+                label: `Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. - [${labelPrefix}end_hour]`,
+                type: 'integer',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -169,6 +188,9 @@ module.exports = {
             'columns': utils.childMapping(bundle.inputData?.[`${keyPrefix}columns`], `${keyPrefix}columns`, ReportingColumnAsync),
             'level': bundle.inputData?.[`${keyPrefix}level`],
             'report_format': bundle.inputData?.[`${keyPrefix}report_format`],
+            'primary_sort': bundle.inputData?.[`${keyPrefix}primary_sort`],
+            'start_hour': bundle.inputData?.[`${keyPrefix}start_hour`],
+            'end_hour': bundle.inputData?.[`${keyPrefix}end_hour`],
         }
     },
 }

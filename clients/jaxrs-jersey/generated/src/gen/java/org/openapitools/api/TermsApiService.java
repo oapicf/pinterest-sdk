@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-03-14T23:04:30.273794609Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public abstract class TermsApiService {
     public abstract Response termsRelatedList( @NotNull List<String> terms,SecurityContext securityContext) throws NotFoundException;
     public abstract Response termsSuggestedList( @NotNull String term, @Min(1) @Max(10)Integer limit,SecurityContext securityContext) throws NotFoundException;

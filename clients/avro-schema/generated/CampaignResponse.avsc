@@ -48,7 +48,7 @@
     },
     {
       "name": "tracking_urls",
-      "type": ["null", "model.AdCommonTrackingUrls"],
+      "type": ["null", "model.TrackingUrls"],
       "doc": "",
       "default": null
     },
@@ -65,9 +65,9 @@
       "default": null
     },
     {
-      "name": "summary_status",
-      "type": ["null", "model.CampaignSummaryStatus"],
-      "doc": "",
+      "name": "is_flexible_daily_budgets",
+      "type": ["null", "boolean"],
+      "doc": "Determine if a campaign has flexible daily budgets setup.",
       "default": null
     },
     {
@@ -95,15 +95,15 @@
       "default": null
     },
     {
-      "name": "is_flexible_daily_budgets",
-      "type": ["null", "boolean"],
-      "doc": "Determines if a campaign has flexible daily budgets setup.",
-      "default": null
-    },
-    {
       "name": "is_campaign_budget_optimization",
       "type": ["null", "boolean"],
       "doc": "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.",
+      "default": null
+    },
+    {
+      "name": "summary_status",
+      "type": ["null", "model.CampaignSummaryStatus"],
+      "doc": "",
       "default": null
     }
   ]

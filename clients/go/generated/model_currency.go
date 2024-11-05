@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -46,6 +46,8 @@ const (
 	ARS Currency = "ARS"
 	CLP Currency = "CLP"
 	COP Currency = "COP"
+	INR Currency = "INR"
+	TRY Currency = "TRY"
 )
 
 // All allowed values of Currency enum
@@ -75,6 +77,8 @@ var AllowedCurrencyEnumValues = []Currency{
 	"ARS",
 	"CLP",
 	"COP",
+	"INR",
+	"TRY",
 }
 
 func (v *Currency) UnmarshalJSON(src []byte) error {

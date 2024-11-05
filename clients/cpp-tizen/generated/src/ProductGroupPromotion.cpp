@@ -37,7 +37,6 @@ ProductGroupPromotion::__init()
 	//tracking_url = std::string();
 	//catalog_product_group_id = std::string();
 	//catalog_product_group_name = std::string();
-	//creative_type = new CreativeType();
 	//collections_hero_pin_id = std::string();
 	//collections_hero_destination_url = std::string();
 	//grid_click_type = new GridClickType();
@@ -115,11 +114,6 @@ ProductGroupPromotion::__cleanup()
 	//
 	//delete catalog_product_group_name;
 	//catalog_product_group_name = NULL;
-	//}
-	//if(creative_type != NULL) {
-	//
-	//delete creative_type;
-	//creative_type = NULL;
 	//}
 	//if(collections_hero_pin_id != NULL) {
 	//
@@ -298,20 +292,6 @@ ProductGroupPromotion::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_product_group_name, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *creative_typeKey = "creative_type";
-	node = json_object_get_member(pJsonObject, creative_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CreativeType")) {
-			jsonToValue(&creative_type, node, "CreativeType", "CreativeType");
-		} else {
-			
-			CreativeType* obj = static_cast<CreativeType*> (&creative_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -494,20 +474,6 @@ ProductGroupPromotion::toJson()
 	}
 	const gchar *catalog_product_group_nameKey = "catalog_product_group_name";
 	json_object_set_member(pJsonObject, catalog_product_group_nameKey, node);
-	if (isprimitive("CreativeType")) {
-		CreativeType obj = getCreativeType();
-		node = converttoJson(&obj, "CreativeType", "");
-	}
-	else {
-		
-		CreativeType obj = static_cast<CreativeType> (getCreativeType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *creative_typeKey = "creative_type";
-	json_object_set_member(pJsonObject, creative_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCollectionsHeroPinId();
 		node = converttoJson(&obj, "std::string", "");
@@ -714,18 +680,6 @@ void
 ProductGroupPromotion::setCatalogProductGroupName(std::string  catalog_product_group_name)
 {
 	this->catalog_product_group_name = catalog_product_group_name;
-}
-
-CreativeType
-ProductGroupPromotion::getCreativeType()
-{
-	return creative_type;
-}
-
-void
-ProductGroupPromotion::setCreativeType(CreativeType  creative_type)
-{
-	this->creative_type = creative_type;
 }
 
 std::string

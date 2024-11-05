@@ -37,5 +37,8 @@ data class CatalogsFeedProductCounts (
     @Json(name = "ingested")
     val ingested: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

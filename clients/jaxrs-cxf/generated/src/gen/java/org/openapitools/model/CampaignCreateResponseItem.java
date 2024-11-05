@@ -21,7 +21,7 @@ public class CampaignCreateResponseItem  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid Exception> exceptions;
+  private List<@Valid Exception> exceptions = new ArrayList<>();
  /**
    * Get data
    * @return data

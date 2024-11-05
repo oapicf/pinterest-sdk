@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -164,41 +164,41 @@ func (a *AdGroupsAPIService) AdGroupsAnalyticsExecute(r ApiAdGroupsAnalyticsRequ
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
 	{
 		t := *r.adGroupIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "form", "multi")
 		}
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
@@ -316,7 +316,7 @@ func (a *AdGroupsAPIService) AdGroupsAudienceSizing(ctx context.Context, adAccou
 //  @return AdGroupAudienceSizingResponse
 func (a *AdGroupsAPIService) AdGroupsAudienceSizingExecute(r ApiAdGroupsAudienceSizingRequest) (*AdGroupAudienceSizingResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  *AdGroupAudienceSizingResponse
@@ -445,7 +445,7 @@ AdGroupsBidFloorGet Get bid floors
 
 List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
+<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
 <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
@@ -455,7 +455,7 @@ List bid floors for your campaign configuration. Bid floors are given in microcu
 <ul>
   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>
   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>
-</ul>
+ </ul>
 For more on bid floors see <a class="reference external" href="https://help.pinterest.com/en/business/article/set-your-bid"> Set your bid</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -587,7 +587,7 @@ Create multiple new ad groups. All ads in a given ad group will have the same bu
 - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
 <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
-<p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+ <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
   <li>1 microdollar = $0.000001 </li>
@@ -726,8 +726,7 @@ AdGroupsGet Get ad group
 
 Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
 contain additional information from the Ad Review process.
-For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/"
-target="_blank">Pinterest advertising standards</a>.
+For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/" target="_blank">Pinterest advertising standards</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -865,7 +864,7 @@ func (r ApiAdGroupsListRequest) EntityStatuses(entityStatuses []string) ApiAdGro
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiAdGroupsListRequest) PageSize(pageSize int32) ApiAdGroupsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -942,10 +941,10 @@ func (a *AdGroupsAPIService) AdGroupsListExecute(r ApiAdGroupsListRequest) (*AdG
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
 		}
 	}
 	if r.adGroupIds != nil {
@@ -953,10 +952,10 @@ func (a *AdGroupsAPIService) AdGroupsListExecute(r ApiAdGroupsListRequest) (*AdG
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "form", "multi")
 		}
 	}
 	if r.entityStatuses != nil {
@@ -964,29 +963,29 @@ func (a *AdGroupsAPIService) AdGroupsListExecute(r ApiAdGroupsListRequest) (*AdG
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "form", "multi")
 		}
 	} else {
 		var defaultValue []string = ["ACTIVE","PAUSED"]
 		r.entityStatuses = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.translateInterestsToNames != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "translate_interests_to_names", r.translateInterestsToNames, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "translate_interests_to_names", r.translateInterestsToNames, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.translateInterestsToNames = &defaultValue
@@ -1099,7 +1098,7 @@ func (r ApiAdGroupsTargetingAnalyticsGetRequest) EndDate(endDate string) ApiAdGr
 	return r
 }
 
-// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
 func (r ApiAdGroupsTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsTargetingType) ApiAdGroupsTargetingAnalyticsGetRequest {
 	r.targetingTypes = &targetingTypes
 	return r
@@ -1235,43 +1234,43 @@ func (a *AdGroupsAPIService) AdGroupsTargetingAnalyticsGetExecute(r ApiAdGroupsT
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "form", "multi")
 		}
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
 	}
 	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

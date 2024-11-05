@@ -17,13 +17,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsCreditDiscountsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditDiscountsResponse   {
-  private @Valid Boolean active;
-  private @Valid String advertiserId;
+  private Boolean active;
+  private String advertiserId;
   public enum DiscountTypeEnum {
 
-    COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLIED(String.valueOf("COUPON_APPLIED")), CREDIT_APPLIED(String.valueOf("CREDIT_APPLIED")), MARKETING_OFFER_CREDIT(String.valueOf("MARKETING_OFFER_CREDIT")), MARKETING_OFFER_CREDIT_APPLIED(String.valueOf("MARKETING_OFFER_CREDIT_APPLIED")), GOODWILL_CREDIT(String.valueOf("GOODWILL_CREDIT")), GOODWILL_CREDIT_APPLIED(String.valueOf("GOODWILL_CREDIT_APPLIED")), INTERNAL_CREDIT(String.valueOf("INTERNAL_CREDIT")), INTERNAL_CREDIT_APPLIED(String.valueOf("INTERNAL_CREDIT_APPLIED")), PREPAID_CREDIT(String.valueOf("PREPAID_CREDIT")), PREPAID_CREDIT_APPLIED(String.valueOf("PREPAID_CREDIT_APPLIED")), SALES_INCENTIVE_CREDIT(String.valueOf("SALES_INCENTIVE_CREDIT")), SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("SALES_INCENTIVE_CREDIT_APPLIED")), CREDIT_EXPIRED(String.valueOf("CREDIT_EXPIRED")), FUTURE_CREDIT(String.valueOf("FUTURE_CREDIT")), REFERRAL_CREDIT(String.valueOf("REFERRAL_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")), PREPAID_CREDIT_REFUND(String.valueOf("PREPAID_CREDIT_REFUND")), NULL(String.valueOf("null"));
+    COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLIED(String.valueOf("COUPON_APPLIED")), CREDIT_APPLIED(String.valueOf("CREDIT_APPLIED")), MARKETING_OFFER_CREDIT(String.valueOf("MARKETING_OFFER_CREDIT")), MARKETING_OFFER_CREDIT_APPLIED(String.valueOf("MARKETING_OFFER_CREDIT_APPLIED")), GOODWILL_CREDIT(String.valueOf("GOODWILL_CREDIT")), GOODWILL_CREDIT_APPLIED(String.valueOf("GOODWILL_CREDIT_APPLIED")), INTERNAL_CREDIT(String.valueOf("INTERNAL_CREDIT")), INTERNAL_CREDIT_APPLIED(String.valueOf("INTERNAL_CREDIT_APPLIED")), PREPAID_CREDIT(String.valueOf("PREPAID_CREDIT")), PREPAID_CREDIT_APPLIED(String.valueOf("PREPAID_CREDIT_APPLIED")), SALES_INCENTIVE_CREDIT(String.valueOf("SALES_INCENTIVE_CREDIT")), SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("SALES_INCENTIVE_CREDIT_APPLIED")), CREDIT_EXPIRED(String.valueOf("CREDIT_EXPIRED")), FUTURE_CREDIT(String.valueOf("FUTURE_CREDIT")), REFERRAL_CREDIT(String.valueOf("REFERRAL_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")), PREPAID_CREDIT_REFUND(String.valueOf("PREPAID_CREDIT_REFUND"));
 
 
     private String value;
@@ -68,11 +68,11 @@ public class AdsCreditDiscountsResponse   {
     }
 }
 
-  private @Valid DiscountTypeEnum discountType;
-  private @Valid BigDecimal discountInMicroCurrency;
-  private @Valid String discountCurrency;
-  private @Valid String title;
-  private @Valid BigDecimal remainingDiscountInMicroCurrency;
+  private DiscountTypeEnum discountType;
+  private BigDecimal discountInMicroCurrency;
+  private String discountCurrency;
+  private String title;
+  private BigDecimal remainingDiscountInMicroCurrency;
 
   /**
    * True if the offer code is currently active.
@@ -105,7 +105,7 @@ public class AdsCreditDiscountsResponse   {
   
   @ApiModelProperty(example = "12312451231", value = "Advertiser ID the offer was applied to.")
   @JsonProperty("advertiser_id")
- @Pattern(regexp="^\\d+$")  public String getAdvertiserId() {
+   @Pattern(regexp="^\\d+$")public String getAdvertiserId() {
     return advertiserId;
   }
 
@@ -145,7 +145,7 @@ public class AdsCreditDiscountsResponse   {
   
   @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
   @JsonProperty("discountInMicroCurrency")
-  public BigDecimal getDiscountInMicroCurrency() {
+  @Valid public BigDecimal getDiscountInMicroCurrency() {
     return discountInMicroCurrency;
   }
 
@@ -205,7 +205,7 @@ public class AdsCreditDiscountsResponse   {
   
   @ApiModelProperty(example = "125000000", value = "The credits left to spend.")
   @JsonProperty("remainingDiscountInMicroCurrency")
-  public BigDecimal getRemainingDiscountInMicroCurrency() {
+  @Valid public BigDecimal getRemainingDiscountInMicroCurrency() {
     return remainingDiscountInMicroCurrency;
   }
 

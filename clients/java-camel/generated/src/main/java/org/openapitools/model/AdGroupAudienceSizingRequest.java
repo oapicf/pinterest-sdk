@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * AdGroupAudienceSizingRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingRequest {
 
   private Boolean autoTargetingEnabled = true;
@@ -100,7 +100,7 @@ public class AdGroupAudienceSizingRequest {
   /**
    * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
    * @return autoTargetingEnabled
-  */
+   */
   
   @Schema(name = "auto_targeting_enabled", example = "true", description = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("auto_targeting_enabled")
@@ -120,7 +120,7 @@ public class AdGroupAudienceSizingRequest {
   /**
    * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
    * @return placementGroup
-  */
+   */
   @Valid 
   @Schema(name = "placement_group", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("placement_group")
@@ -148,7 +148,7 @@ public class AdGroupAudienceSizingRequest {
   /**
    * Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
    * @return creativeTypes
-  */
+   */
   
   @Schema(name = "creative_types", description = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_types")
@@ -168,7 +168,7 @@ public class AdGroupAudienceSizingRequest {
   /**
    * Get targetingSpec
    * @return targetingSpec
-  */
+   */
   @Valid 
   @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_spec")
@@ -196,7 +196,7 @@ public class AdGroupAudienceSizingRequest {
   /**
    * Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
    * @return productGroupIds
-  */
+   */
   
   @Schema(name = "product_group_ids", description = "Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_group_ids")
@@ -224,7 +224,7 @@ public class AdGroupAudienceSizingRequest {
   /**
    * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    * @return keywords
-  */
+   */
   @Valid 
   @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")

@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ssio_order_lines_get_by_ad_account_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SsioOrderLinesGetByAdAccount200Response {
 
   @Valid
@@ -61,7 +61,7 @@ public class SsioOrderLinesGetByAdAccount200Response {
   /**
    * SSIO order lines by ad acount id
    * @return items
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "items", description = "SSIO order lines by ad acount id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
@@ -81,7 +81,7 @@ public class SsioOrderLinesGetByAdAccount200Response {
   /**
    * Get bookmark
    * @return bookmark
-  */
+   */
   
   @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bookmark")

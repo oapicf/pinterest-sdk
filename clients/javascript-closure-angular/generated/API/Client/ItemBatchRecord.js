@@ -14,7 +14,7 @@ API.Client.ItemBatchRecord = function() {}
 API.Client.ItemBatchRecord.prototype.itemId;
 
 /**
- * @type {!API.Client.ItemAttributes}
+ * @type {!API.Client.ItemAttributesRequest}
  * @export
  */
 API.Client.ItemBatchRecord.prototype.attributes;

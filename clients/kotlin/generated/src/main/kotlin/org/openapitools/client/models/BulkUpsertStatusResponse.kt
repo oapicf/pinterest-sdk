@@ -36,5 +36,8 @@ data class BulkUpsertStatusResponse (
     @Json(name = "result_url")
     val resultUrl: kotlin.String? = null
 
-)
+) {
+
+
+}
 

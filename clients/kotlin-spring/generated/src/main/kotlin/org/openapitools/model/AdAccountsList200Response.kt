@@ -27,7 +27,7 @@ data class AdAccountsList200Response(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null
-) {
+    ) {
 
 }
 

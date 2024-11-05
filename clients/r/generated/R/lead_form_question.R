@@ -21,8 +21,7 @@ LeadFormQuestion <- R6::R6Class(
     `custom_question_field_type` = NULL,
     `custom_question_label` = NULL,
     `custom_question_options` = NULL,
-    #' Initialize a new LeadFormQuestion class.
-    #'
+
     #' @description
     #' Initialize a new LeadFormQuestion class.
     #'
@@ -31,7 +30,6 @@ LeadFormQuestion <- R6::R6Class(
     #' @param custom_question_label Question label for a custom question.
     #' @param custom_question_options Question options for a custom question.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`question_type` = NULL, `custom_question_field_type` = NULL, `custom_question_label` = NULL, `custom_question_options` = NULL, ...) {
       if (!is.null(`question_type`)) {
         if (!(`question_type` %in% c())) {
@@ -59,13 +57,11 @@ LeadFormQuestion <- R6::R6Class(
         self$`custom_question_options` <- `custom_question_options`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LeadFormQuestion in JSON format
-    #' @export
     toJSON = function() {
       LeadFormQuestionObject <- list()
       if (!is.null(self$`question_type`)) {
@@ -86,14 +82,12 @@ LeadFormQuestion <- R6::R6Class(
       }
       LeadFormQuestionObject
     },
-    #' Deserialize JSON string into an instance of LeadFormQuestion
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LeadFormQuestion
     #'
     #' @param input_json the JSON input
     #' @return the instance of LeadFormQuestion
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`question_type`)) {
@@ -114,13 +108,11 @@ LeadFormQuestion <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LeadFormQuestion in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`question_type`)) {
@@ -159,14 +151,12 @@ LeadFormQuestion <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of LeadFormQuestion
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LeadFormQuestion
     #'
     #' @param input_json the JSON input
     #' @return the instance of LeadFormQuestion
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`question_type` <- LeadFormQuestionType$new()$fromJSON(jsonlite::toJSON(this_object$`question_type`, auto_unbox = TRUE, digits = NA))
@@ -175,33 +165,27 @@ LeadFormQuestion <- R6::R6Class(
       self$`custom_question_options` <- ApiClient$new()$deserializeObj(this_object$`custom_question_options`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to LeadFormQuestion
-    #'
+
     #' @description
     #' Validate JSON input with respect to LeadFormQuestion and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of LeadFormQuestion
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (length(self$`custom_question_options`) > 5) {
         return(FALSE)
@@ -212,13 +196,11 @@ LeadFormQuestion <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`custom_question_options`) > 5) {
@@ -230,12 +212,9 @@ LeadFormQuestion <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

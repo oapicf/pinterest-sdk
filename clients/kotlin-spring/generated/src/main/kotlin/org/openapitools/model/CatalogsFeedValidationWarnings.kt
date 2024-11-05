@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -214,15 +215,23 @@ data class CatalogsFeedValidationWarnings(
 
     @Schema(example = "null", description = "Some items include incorrectly formatted MPNs.")
     @get:JsonProperty("MPN_INVALID") val MPN_INVALID: kotlin.Int? = null
-) {
+    ) {
 
     /**
     * Ingestion completed early because there are no changes to your feed since the last successful update.
     * Values: _1
     */
-    enum class FETCHSAMESIGNATURE(val value: kotlin.Int) {
+    enum class FETCHSAMESIGNATURE(@get:JsonValue val value: kotlin.Int) {
 
-        @JsonProperty(1) _1(1)
+        _1(1);
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.Int): FETCHSAMESIGNATURE {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

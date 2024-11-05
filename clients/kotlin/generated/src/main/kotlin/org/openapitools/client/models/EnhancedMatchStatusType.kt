@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * The enhanced match status of the tag
  *
- * Values: UNKNOWN,NOT_VALIDATED,VALIDATING_IN_PROGRESS,VALIDATION_COMPLETE,`null`
+ * Values: UNKNOWN,NOT_VALIDATED,VALIDATING_IN_PROGRESS,VALIDATION_COMPLETE
  */
 
 @JsonClass(generateAdapter = false)
@@ -38,10 +38,7 @@ enum class EnhancedMatchStatusType(val value: kotlin.String) {
     VALIDATING_IN_PROGRESS("VALIDATING_IN_PROGRESS"),
 
     @Json(name = "VALIDATION_COMPLETE")
-    VALIDATION_COMPLETE("VALIDATION_COMPLETE"),
-
-    @Json(name = "null")
-    `null`("null");
+    VALIDATION_COMPLETE("VALIDATION_COMPLETE");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

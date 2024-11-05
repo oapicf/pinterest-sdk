@@ -13,7 +13,8 @@
        'location' := binary(),
        'preferred_processing_schedule' => openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule(),
        'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
-       'catalog_id' => binary()
+       'catalog_id' => binary(),
+       'status' => openapi_catalogs_status:openapi_catalogs_status()
      }.
 
 encode(#{ 'default_currency' := DefaultCurrency,
@@ -24,7 +25,8 @@ encode(#{ 'default_currency' := DefaultCurrency,
           'location' := Location,
           'preferred_processing_schedule' := PreferredProcessingSchedule,
           'catalog_type' := CatalogType,
-          'catalog_id' := CatalogId
+          'catalog_id' := CatalogId,
+          'status' := Status
         }) ->
     #{ 'default_currency' => DefaultCurrency,
        'name' => Name,
@@ -34,5 +36,6 @@ encode(#{ 'default_currency' := DefaultCurrency,
        'location' => Location,
        'preferred_processing_schedule' => PreferredProcessingSchedule,
        'catalog_type' => CatalogType,
-       'catalog_id' => CatalogId
+       'catalog_id' => CatalogId,
+       'status' => Status
      }.

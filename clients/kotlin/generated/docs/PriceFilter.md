@@ -2,9 +2,9 @@
 # PriceFilter
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  |  |
 
 
 

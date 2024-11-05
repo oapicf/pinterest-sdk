@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **tracking_url** | [**STRING_32**](STRING_32.md) | Tracking template for proudct group promotions. 4000 limit | [optional] [default to null]
 **catalog_product_group_id** | [**STRING_32**](STRING_32.md) | ID of the catalogs product group that this product group promotion references | [optional] [default to null]
 **catalog_product_group_name** | [**STRING_32**](STRING_32.md) | Catalogs product group name | [optional] [default to null]
-**creative_type** | [**CREATIVE_TYPE**](CreativeType.md) |  | [optional] [default to null]
 **collections_hero_pin_id** | [**STRING_32**](STRING_32.md) | Hero Pin ID if this PG is promoted as a Collection | [optional] [default to null]
 **collections_hero_destination_url** | [**STRING_32**](STRING_32.md) | Collections Hero Destination Url | [optional] [default to null]
 **grid_click_type** | [**GRID_CLICK_TYPE**](GridClickType.md) |  | [optional] [default to null]

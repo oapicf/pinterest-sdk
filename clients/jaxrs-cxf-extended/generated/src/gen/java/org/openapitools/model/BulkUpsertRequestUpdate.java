@@ -26,23 +26,23 @@ public class BulkUpsertRequestUpdate  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid CampaignUpdateRequest> campaigns;
+  private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<AdGroupUpdateRequest> adGroups;
+  private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<AdUpdateRequest> ads;
+  private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups;
+  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid KeywordUpdate> keywords;
+  private List<@Valid KeywordUpdate> keywords = new ArrayList<>();
  /**
   * Get campaigns
   * @return campaigns
@@ -80,21 +80,21 @@ public class BulkUpsertRequestUpdate  {
   * @return adGroups
   */
   @JsonProperty("ad_groups")
-  public List<AdGroupUpdateRequest> getAdGroups() {
+  public List<@Valid AdGroupUpdateRequest> getAdGroups() {
     return adGroups;
   }
 
   /**
    * Sets the <code>adGroups</code> property.
    */
- public void setAdGroups(List<AdGroupUpdateRequest> adGroups) {
+ public void setAdGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
   /**
    * Sets the <code>adGroups</code> property.
    */
-  public BulkUpsertRequestUpdate adGroups(List<AdGroupUpdateRequest> adGroups) {
+  public BulkUpsertRequestUpdate adGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
     return this;
   }
@@ -112,21 +112,21 @@ public class BulkUpsertRequestUpdate  {
   * @return ads
   */
   @JsonProperty("ads")
-  public List<AdUpdateRequest> getAds() {
+  public List<@Valid AdUpdateRequest> getAds() {
     return ads;
   }
 
   /**
    * Sets the <code>ads</code> property.
    */
- public void setAds(List<AdUpdateRequest> ads) {
+ public void setAds(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
   }
 
   /**
    * Sets the <code>ads</code> property.
    */
-  public BulkUpsertRequestUpdate ads(List<AdUpdateRequest> ads) {
+  public BulkUpsertRequestUpdate ads(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
     return this;
   }

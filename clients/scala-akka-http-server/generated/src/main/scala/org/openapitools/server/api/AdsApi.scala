@@ -14,8 +14,8 @@ import org.openapitools.server.model.AdPreviewRequest
 import org.openapitools.server.model.AdPreviewURLResponse
 import org.openapitools.server.model.AdResponse
 import org.openapitools.server.model.AdUpdateRequest
+import org.openapitools.server.model.AdsAnalyticsAdTargetingType
 import org.openapitools.server.model.AdsAnalyticsResponseInner
-import org.openapitools.server.model.AdsAnalyticsTargetingType
 import org.openapitools.server.model.AdsList200Response
 import org.openapitools.server.model.ConversionReportAttributionType
 import org.openapitools.server.model.Error
@@ -51,8 +51,8 @@ import AdsApiPatterns.adAccountIdPattern
     } ~
     path("ad_accounts" / adAccountIdPattern / "ads" / "analytics") { (adAccountId) => 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "ad_ids".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION")) { (startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) => 
-            adsService.adsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, adIds = adIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+        parameters("start_date".as[String], "end_date".as[String], "ad_ids".as[String].?, "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "pin_ids".as[String].?, "campaign_ids".as[String].?) { (startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds) => 
+            adsService.adsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, adIds = adIds, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, pinIds = pinIds, campaignIds = campaignIds)
         }
       }
     } ~
@@ -128,7 +128,7 @@ trait AdsApiService {
    * Code: 400, Message: Invalid ad account ads analytics parameters., DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def adsAnalytics(adAccountId: String, startDate: String, endDate: String, adIds: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String)
+  def adsAnalytics(adAccountId: String, startDate: String, endDate: String, columns: String, granularity: String, adIds: Option[String], clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, pinIds: Option[String], campaignIds: Option[String])
       (implicit toEntityMarshallerAdsAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[AdsAnalyticsResponseInner]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def adsCreate200(responseAdArrayResponse: AdArrayResponse)(implicit toEntityMarshallerAdArrayResponse: ToEntityMarshaller[AdArrayResponse]): Route =

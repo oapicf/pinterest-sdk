@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -433,13 +433,13 @@ func (r ApiAudiencesListRequest) Order(order string) ApiAudiencesListRequest {
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiAudiencesListRequest) PageSize(pageSize int32) ApiAudiencesListRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-// &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type.
+// Filter audiences by ownership type.
 func (r ApiAudiencesListRequest) OwnershipType(ownershipType string) ApiAudiencesListRequest {
 	r.ownershipType = &ownershipType
 	return r
@@ -492,19 +492,19 @@ func (a *AudiencesAPIService) AudiencesListExecute(r ApiAudiencesListRequest) (*
 	}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.ownershipType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ownership_type", r.ownershipType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ownership_type", r.ownershipType, "form", "")
 	} else {
 		var defaultValue string = "OWNED"
 		r.ownershipType = &defaultValue

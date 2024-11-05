@@ -42,5 +42,8 @@ data class AdsAnalyticsMetricsFilter (
     @Json(name = "values")
     val propertyValues: kotlin.collections.List<java.math.BigDecimal>
 
-)
+) {
+
+
+}
 

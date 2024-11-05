@@ -29,7 +29,7 @@ data class OrderLineResponse(
     @field:Valid
     @Schema(example = "null", description = "Order Line object array.")
     @get:JsonProperty("order_line") val orderLine: kotlin.collections.List<OrderLine>? = null
-) {
+    ) {
 
 }
 

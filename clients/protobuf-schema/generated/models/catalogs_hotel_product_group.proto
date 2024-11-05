@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -40,6 +40,7 @@ message CatalogsHotelProductGroup {
   // Unix timestamp in seconds of last time catalog product group was updated.
   int32 updated_at = 295464393;
 
+  // Catalog id pertaining to the hotel product group.
   string catalog_id = 500076802;
 
 }

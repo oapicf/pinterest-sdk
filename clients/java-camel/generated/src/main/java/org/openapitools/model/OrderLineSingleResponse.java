@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * OrderLineSingleResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLineSingleResponse {
 
   private OrderLineResponse data;
@@ -32,7 +32,7 @@ public class OrderLineSingleResponse {
   /**
    * Get data
    * @return data
-  */
+   */
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")

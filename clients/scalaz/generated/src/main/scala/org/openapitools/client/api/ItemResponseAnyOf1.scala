@@ -18,7 +18,9 @@ case class ItemResponseAnyOf1 (
 /* Array with the errors for the item id requested */
   errors: Option[List[ItemValidationEvent]],
 /* The catalog hotel id in the merchant namespace */
-  hotelId: Option[String])
+  hotelId: Option[String],
+/* The catalog creative assets id in the merchant namespace */
+  creativeAssetsId: Option[String])
 
 object ItemResponseAnyOf1 {
   import DateTimeCodecs._

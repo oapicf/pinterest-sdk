@@ -1,16 +1,19 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequest
 import org.openapitools.model.CatalogsFeedCredentials
 import org.openapitools.model.CatalogsFeedProcessingSchedule
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.model.CatalogsFormat
 import org.openapitools.model.CatalogsHotelFeedsCreateRequest
 import org.openapitools.model.CatalogsRetailFeedsCreateRequest
+import org.openapitools.model.CatalogsStatus
 import org.openapitools.model.CatalogsType
 import org.openapitools.model.Country
 import org.openapitools.model.NullableCurrency
@@ -38,11 +41,13 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param credentials 
  * @param preferredProcessingSchedule 
  * @param defaultAvailability 
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
  */
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes(
+      JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsCreateRequest::class, name = "CREATIVE_ASSETS"),
       JsonSubTypes.Type(value = CatalogsHotelFeedsCreateRequest::class, name = "HOTEL"),
       JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest::class, name = "RETAIL")
 )
@@ -78,7 +83,10 @@ interface CatalogsVerticalFeedsCreateRequest{
                 @get:Schema(example = "null", description = "")
         val defaultAvailability: ProductAvailabilityType? 
 
-                @get:Schema(example = "null", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
+                @get:Schema(example = "null", description = "")
+        val status: CatalogsStatus? 
+
+                @get:Schema(example = "null", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
         val catalogId: kotlin.String? 
 
 

@@ -36,5 +36,8 @@ data class CreateMMMReportResponse (
     @Json(name = "data")
     val `data`: CreateMMMReportResponseData? = null
 
-)
+) {
+
+
+}
 

@@ -2,11 +2,11 @@
 # CatalogsDbItem
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**createdAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  [optional]
-**id** | **kotlin.String** |  |  [optional]
-**updatedAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  [optional]
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **createdAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  |
+| **id** | **kotlin.String** |  |  |
+| **updatedAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) |  |  |
 
 
 

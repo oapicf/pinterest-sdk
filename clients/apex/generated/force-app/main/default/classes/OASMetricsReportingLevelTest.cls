@@ -14,7 +14,8 @@ private class OASMetricsReportingLevelTest {
             OASMetricsReportingLevel.KEYWORD,
             OASMetricsReportingLevel.PRODUCT_GROUP,
             OASMetricsReportingLevel.PRODUCT_GROUP_TARGETING,
-            OASMetricsReportingLevel.PRODUCT_ITEM
+            OASMetricsReportingLevel.PRODUCT_ITEM,
+            OASMetricsReportingLevel.PRODUCT_ITEM_TARGETING
         };
         Set<OASMetricsReportingLevel> actual  = new Set<OASMetricsReportingLevel>(OASMetricsReportingLevel.values());
         System.assertEquals(expected, actual);

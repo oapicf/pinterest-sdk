@@ -1,8 +1,7 @@
 const utils = require('../utils/utils');
+const CatalogsItemsRequest_language = require('../models/CatalogsItemsRequest_language');
 const CatalogsRetailBatchRequest_items_inner = require('../models/CatalogsRetailBatchRequest_items_inner');
-const CatalogsType = require('../models/CatalogsType');
 const Country = require('../models/Country');
-const Language = require('../models/Language');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -10,16 +9,18 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}catalog_type`,
-                ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
+                label: `[${labelPrefix}catalog_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'RETAIL',
+                ],
             },
             {
                 key: `${keyPrefix}country`,
                 ...Country.fields(`${keyPrefix}country`, isInput),
             },
-            {
-                key: `${keyPrefix}language`,
-                ...Language.fields(`${keyPrefix}language`, isInput),
-            },
+            ...CatalogsItemsRequest_language.fields(`${keyPrefix}language`, isInput),
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
@@ -32,7 +33,7 @@ module.exports = {
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
-            'language': bundle.inputData?.[`${keyPrefix}language`],
+            'language': utils.removeIfEmpty(CatalogsItemsRequest_language.mapping(bundle, `${keyPrefix}language`)),
             'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CatalogsRetailBatchRequest_items_inner),
         }
     },

@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * VideoMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class VideoMetadata   {
   @JsonProperty("item_type")
   private String itemType;
@@ -41,10 +41,10 @@ public class VideoMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get itemType
    * @return itemType
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getItemType() {
     return itemType;
@@ -59,10 +59,10 @@ public class VideoMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get coverImageUrl
    * @return coverImageUrl
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getCoverImageUrl() {
     return coverImageUrl;
@@ -77,10 +77,10 @@ public class VideoMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
    * @return videoUrl
-  **/
+   */
   @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
   public String getVideoUrl() {
     return videoUrl;
@@ -95,10 +95,10 @@ public class VideoMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Duration (in milliseconds)
    * @return duration
-  **/
+   */
   @ApiModelProperty(value = "Duration (in milliseconds)")
   public BigDecimal getDuration() {
     return duration;
@@ -113,10 +113,10 @@ public class VideoMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Height (in pixels)
    * @return height
-  **/
+   */
   @ApiModelProperty(value = "Height (in pixels)")
   public Integer getHeight() {
     return height;
@@ -131,10 +131,10 @@ public class VideoMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Width (in pixels)
    * @return width
-  **/
+   */
   @ApiModelProperty(value = "Width (in pixels)")
   public Integer getWidth() {
     return width;

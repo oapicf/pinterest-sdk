@@ -39,7 +39,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/order_lines', {
   "parameters" => [
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",

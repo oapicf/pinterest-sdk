@@ -141,7 +141,7 @@ NSInteger kOAIOrderLinesApiMissingParamErrorCode = 234513;
 /// List existing order lines associated with an ad account.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///

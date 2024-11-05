@@ -45,12 +45,14 @@ interface OauthAccessTokenResponse {
     /**
      * 
      *
-     * Values: authorization_code,refresh_token
+     * Values: authorization_code,refresh_token,client_credentials
      */
     @JsonClass(generateAdapter = false)
     enum class ResponseType(val value: kotlin.String) {
         @Json(name = "authorization_code") authorization_code("authorization_code"),
-        @Json(name = "refresh_token") refresh_token("refresh_token");
+        @Json(name = "refresh_token") refresh_token("refresh_token"),
+        @Json(name = "client_credentials") client_credentials("client_credentials");
     }
+
 }
 

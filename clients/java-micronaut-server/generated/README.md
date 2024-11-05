@@ -17,11 +17,16 @@ Description on how to create Apis is given inside individual api guides:
 * [AdAccountsController](docs/controllers/AdAccountsController.md)
 * [AdGroupsController](docs/controllers/AdGroupsController.md)
 * [AdsController](docs/controllers/AdsController.md)
+* [AdvancedAuctionController](docs/controllers/AdvancedAuctionController.md)
 * [AudienceInsightsController](docs/controllers/AudienceInsightsController.md)
+* [AudienceSharingController](docs/controllers/AudienceSharingController.md)
 * [AudiencesController](docs/controllers/AudiencesController.md)
 * [BillingController](docs/controllers/BillingController.md)
 * [BoardsController](docs/controllers/BoardsController.md)
 * [BulkController](docs/controllers/BulkController.md)
+* [BusinessAccessAssetsController](docs/controllers/BusinessAccessAssetsController.md)
+* [BusinessAccessInviteController](docs/controllers/BusinessAccessInviteController.md)
+* [BusinessAccessRelationshipsController](docs/controllers/BusinessAccessRelationshipsController.md)
 * [CampaignsController](docs/controllers/CampaignsController.md)
 * [CatalogsController](docs/controllers/CatalogsController.md)
 * [ConversionEventsController](docs/controllers/ConversionEventsController.md)
@@ -31,20 +36,27 @@ Description on how to create Apis is given inside individual api guides:
 * [KeywordsController](docs/controllers/KeywordsController.md)
 * [LeadAdsController](docs/controllers/LeadAdsController.md)
 * [LeadFormsController](docs/controllers/LeadFormsController.md)
+* [LeadsExportController](docs/controllers/LeadsExportController.md)
 * [MediaController](docs/controllers/MediaController.md)
 * [OauthController](docs/controllers/OauthController.md)
 * [OrderLinesController](docs/controllers/OrderLinesController.md)
 * [PinsController](docs/controllers/PinsController.md)
 * [ProductGroupPromotionsController](docs/controllers/ProductGroupPromotionsController.md)
-* [ProductGroupsController](docs/controllers/ProductGroupsController.md)
 * [ResourcesController](docs/controllers/ResourcesController.md)
 * [SearchController](docs/controllers/SearchController.md)
+* [TargetingTemplateController](docs/controllers/TargetingTemplateController.md)
 * [TermsController](docs/controllers/TermsController.md)
 * [TermsOfServiceController](docs/controllers/TermsOfServiceController.md)
 * [UserAccountController](docs/controllers/UserAccountController.md)
 
 ## Author
 
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com

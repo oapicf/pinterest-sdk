@@ -28,7 +28,8 @@ import com.squareup.moshi.JsonClass
  * @param catalogType 
  * @param id ID of the catalog product group.
  * @param filters 
- * @param feedId 
+ * @param catalogId Catalog id pertaining to the retail product group.
+ * @param feedId id of the catalogs feed belonging to this catalog product group
  * @param name Name of catalog product group
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
@@ -36,6 +37,8 @@ import com.squareup.moshi.JsonClass
  * @param status 
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
+ * @param country 
+ * @param locale 
  */
 
 
@@ -51,8 +54,13 @@ data class CatalogsRetailProductGroup (
     @Json(name = "filters")
     val filters: CatalogsProductGroupFilters,
 
+    /* Catalog id pertaining to the retail product group. */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String,
+
+    /* id of the catalogs feed belonging to this catalog product group */
     @Json(name = "feed_id")
-    val feedId: CatalogsRetailProductGroup.FeedId?,
+    val feedId: kotlin.String?,
 
     /* Name of catalog product group */
     @Json(name = "name")
@@ -63,6 +71,7 @@ data class CatalogsRetailProductGroup (
 
     /* boolean indicator of whether the product group is being featured or not */
     @Json(name = "is_featured")
+    @Deprecated(message = "This property is deprecated.")
     val isFeatured: kotlin.Boolean? = null,
 
     @Json(name = "type")
@@ -77,7 +86,13 @@ data class CatalogsRetailProductGroup (
 
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     @Json(name = "updated_at")
-    val updatedAt: kotlin.Int? = null
+    val updatedAt: kotlin.Int? = null,
+
+    @Json(name = "country")
+    val country: kotlin.String? = null,
+
+    @Json(name = "locale")
+    val locale: kotlin.String? = null
 
 ) {
 
@@ -90,14 +105,6 @@ data class CatalogsRetailProductGroup (
     enum class CatalogType(val value: kotlin.String) {
         @Json(name = "RETAIL") RETAIL("RETAIL");
     }
-    /**
-     * 
-     *
-     * Values: `null`
-     */
-    @JsonClass(generateAdapter = false)
-    enum class FeedId(val value: kotlin.String) {
-        @Json(name = "null") `null`("null");
-    }
+
 }
 

@@ -26,26 +26,25 @@ Create a board section on a board owned by the \"operation user_account\" - or o
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardSectionsCreateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardSectionsCreateRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardSectionsCreateRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // BoardSection | Create a board section.
+    // Create a board section.
   boardSection: {
     name: "Salads",
   },
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardSectionsCreate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardSectionsCreate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -93,24 +92,23 @@ Delete a board section on a board owned by the \"operation user_account\" - or o
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardSectionsDeleteRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardSectionsDeleteRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardSectionsDeleteRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // string | Unique identifier of a board section.
+    // Unique identifier of a board section.
   sectionId: "4",
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardSectionsDelete(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardSectionsDelete(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -157,26 +155,25 @@ Get a list of all board sections from a board owned by the \"operation user_acco
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardSectionsListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardSectionsListRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardSectionsListRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.boardSectionsList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardSectionsList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -187,7 +184,7 @@ Name | Type | Description  | Notes
  **boardId** | [**string**] | Unique identifier of a board. | defaults to undefined
  **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -196,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -221,28 +218,27 @@ Get a list of the Pins on a board section of a board owned by the \"operation us
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardSectionsListPinsRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardSectionsListPinsRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardSectionsListPinsRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // string | Unique identifier of a board section.
+    // Unique identifier of a board section.
   sectionId: "4",
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.boardSectionsListPins(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardSectionsListPins(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -254,7 +250,7 @@ Name | Type | Description  | Notes
  **sectionId** | [**string**] | Unique identifier of a board section. | defaults to undefined
  **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -263,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -291,28 +287,27 @@ Update a board section on a board owned by the \"operation user_account\" - or o
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardSectionsUpdateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardSectionsUpdateRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardSectionsUpdateRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // string | Unique identifier of a board section.
+    // Unique identifier of a board section.
   sectionId: "4",
-  // BoardSection | Update a board section.
+    // Update a board section.
   boardSection: {
     name: "Salads",
   },
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardSectionsUpdate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardSectionsUpdate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -360,26 +355,25 @@ Create a board owned by the \"operation user_account\". Optional: Business Acces
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardsCreateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardsCreateRequest = {
-  // Board | Create a board using a single board json object.
+const request: BoardsApiBoardsCreateRequest = {
+    // Create a board using a single board json object.
   board: {
     name: "Summer Recipes",
     description: "My favorite summer recipes",
     privacy: "PUBLIC",
   },
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardsCreate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardsCreate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -423,22 +417,21 @@ Delete a board owned by the \"operation user_account\". - Optional: Business Acc
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardsDeleteRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardsDeleteRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardsDeleteRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardsDelete(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardsDelete(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -485,22 +478,21 @@ Get a board owned by the operation user_account - or a group board that has been
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardsGetRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardsGetRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -518,7 +510,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -544,26 +536,25 @@ Get a list of the boards owned by the \"operation user_account\" + group boards 
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardsListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardsListRequest = {
-  // string | Unique identifier of an ad account. (optional)
+const request: BoardsApiBoardsListRequest = {
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET' | Privacy setting for a board. (optional)
+    // Privacy setting for a board. (optional)
   privacy: "ALL",
 };
 
-apiInstance.boardsList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardsList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -573,7 +564,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **privacy** | [**&#39;ALL&#39; | &#39;PROTECTED&#39; | &#39;PUBLIC&#39; | &#39;SECRET&#39; | &#39;PUBLIC_AND_SECRET&#39;**]**Array<&#39;ALL&#39; &#124; &#39;PROTECTED&#39; &#124; &#39;PUBLIC&#39; &#124; &#39;SECRET&#39; &#124; &#39;PUBLIC_AND_SECRET&#39;>** | Privacy setting for a board. | (optional) defaults to undefined
 
 
@@ -583,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -608,32 +599,31 @@ Get a list of the Pins on a board owned by the \"operation user_account\" - or o
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardsListPinsRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardsListPinsRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardsListPinsRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+    // Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
   creativeTypes: [
     "REGULAR",
   ],
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
-  // boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
+    // Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
   pinMetrics: false,
 };
 
-apiInstance.boardsListPins(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardsListPins(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -643,7 +633,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | [**string**] | Unique identifier of a board. | defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **creativeTypes** | **Array<&#39;REGULAR&#39; &#124; &#39;VIDEO&#39; &#124; &#39;SHOPPING&#39; &#124; &#39;CAROUSEL&#39; &#124; &#39;MAX_VIDEO&#39; &#124; &#39;SHOP_THE_PIN&#39; &#124; &#39;COLLECTION&#39; &#124; &#39;IDEA&#39;>** | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | (optional) defaults to undefined
  **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
  **pinMetrics** | [**boolean**] | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | (optional) defaults to false
@@ -655,7 +645,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -681,28 +671,27 @@ Update a board owned by the \"operating user_account\". - Optional: Business Acc
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BoardsApi } from '';
+import type { BoardsApiBoardsUpdateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BoardsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BoardsApi(configuration);
 
-let body:.BoardsApiBoardsUpdateRequest = {
-  // string | Unique identifier of a board.
+const request: BoardsApiBoardsUpdateRequest = {
+    // Unique identifier of a board.
   boardId: "4",
-  // BoardUpdate | Update a board.
+    // Update a board.
   boardUpdate: {
     name: "Summer Recipes",
     description: "My favorite summer recipes",
     privacy: "PUBLIC",
   },
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardsUpdate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardsUpdate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

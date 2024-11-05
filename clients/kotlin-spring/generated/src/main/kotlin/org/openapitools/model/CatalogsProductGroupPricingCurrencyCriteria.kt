@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.NonNullableCatalogsCurrency
@@ -37,18 +38,26 @@ data class CatalogsProductGroupPricingCurrencyCriteria(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = false
-) {
+    ) {
 
     /**
     * 
     * Values: GREATER_THAN,GREATER_THAN_OR_EQUALS,LESS_THAN,LESS_THAN_OR_EQUALS
     */
-    enum class `Operator`(val value: kotlin.String) {
+    enum class `Operator`(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("GREATER_THAN") GREATER_THAN("GREATER_THAN"),
-        @JsonProperty("GREATER_THAN_OR_EQUALS") GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
-        @JsonProperty("LESS_THAN") LESS_THAN("LESS_THAN"),
-        @JsonProperty("LESS_THAN_OR_EQUALS") LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS")
+        GREATER_THAN("GREATER_THAN"),
+        GREATER_THAN_OR_EQUALS("GREATER_THAN_OR_EQUALS"),
+        LESS_THAN("LESS_THAN"),
+        LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): `Operator` {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

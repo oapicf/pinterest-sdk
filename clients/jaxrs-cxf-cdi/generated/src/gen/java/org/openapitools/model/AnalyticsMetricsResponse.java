@@ -24,7 +24,7 @@ public class AnalyticsMetricsResponse   {
   
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
-  private List<@Valid AnalyticsDailyMetrics> dailyMetrics;
+  private List<@Valid AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
   /**
    * The metric name and value over the requested period for each requested metric

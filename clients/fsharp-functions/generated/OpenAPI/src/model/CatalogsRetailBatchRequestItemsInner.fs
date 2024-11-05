@@ -7,7 +7,7 @@ open OpenAPI.Model.CatalogsCreateRetailItem
 open OpenAPI.Model.CatalogsDeleteRetailItem
 open OpenAPI.Model.CatalogsUpdateRetailItem
 open OpenAPI.Model.CatalogsUpsertRetailItem
-open OpenAPI.Model.ItemAttributes
+open OpenAPI.Model.ItemAttributesRequest
 open OpenAPI.Model.UpdateMaskFieldType
 
 module CatalogsRetailBatchRequestItemsInner =
@@ -21,7 +21,7 @@ module CatalogsRetailBatchRequestItemsInner =
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
     [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : ItemAttributes;
+    Attributes : ItemAttributesRequest;
     [<JsonProperty(PropertyName = "update_mask")>]
     UpdateMask : UpdateMaskFieldType[];
   }

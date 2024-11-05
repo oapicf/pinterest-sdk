@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.ItemAttributes
+open OpenAPI.Model.ItemAttributesRequest
 
 module ItemUpsertBatchRecord =
 
@@ -14,7 +14,7 @@ module ItemUpsertBatchRecord =
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : ItemAttributes;
+    Attributes : ItemAttributesRequest;
   }
 
   //#endregion

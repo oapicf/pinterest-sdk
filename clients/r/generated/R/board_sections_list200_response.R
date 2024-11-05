@@ -17,15 +17,13 @@ BoardSectionsList200Response <- R6::R6Class(
   public = list(
     `items` = NULL,
     `bookmark` = NULL,
-    #' Initialize a new BoardSectionsList200Response class.
-    #'
+
     #' @description
     #' Initialize a new BoardSectionsList200Response class.
     #'
     #' @param items Board sections
     #' @param bookmark bookmark
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`items`, `bookmark` = NULL, ...) {
       if (!missing(`items`)) {
         stopifnot(is.vector(`items`), length(`items`) != 0)
@@ -39,13 +37,11 @@ BoardSectionsList200Response <- R6::R6Class(
         self$`bookmark` <- `bookmark`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BoardSectionsList200Response in JSON format
-    #' @export
     toJSON = function() {
       BoardSectionsList200ResponseObject <- list()
       if (!is.null(self$`items`)) {
@@ -58,14 +54,12 @@ BoardSectionsList200Response <- R6::R6Class(
       }
       BoardSectionsList200ResponseObject
     },
-    #' Deserialize JSON string into an instance of BoardSectionsList200Response
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BoardSectionsList200Response
     #'
     #' @param input_json the JSON input
     #' @return the instance of BoardSectionsList200Response
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`items`)) {
@@ -76,13 +70,11 @@ BoardSectionsList200Response <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BoardSectionsList200Response in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`items`)) {
@@ -105,27 +97,23 @@ BoardSectionsList200Response <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BoardSectionsList200Response
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BoardSectionsList200Response
     #'
     #' @param input_json the JSON input
     #' @return the instance of BoardSectionsList200Response
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[BoardSection]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
       self
     },
-    #' Validate JSON input with respect to BoardSectionsList200Response
-    #'
+
     #' @description
     #' Validate JSON input with respect to BoardSectionsList200Response and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `items`
@@ -136,23 +124,19 @@ BoardSectionsList200Response <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for BoardSectionsList200Response: the required field `items` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BoardSectionsList200Response
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `items` is null
       if (is.null(self$`items`)) {
@@ -161,13 +145,11 @@ BoardSectionsList200Response <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `items` is null
@@ -177,12 +159,9 @@ BoardSectionsList200Response <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

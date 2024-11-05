@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Error
@@ -39,7 +39,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -126,14 +126,23 @@ class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      */
      enum class OrderOrderLinesList(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
      * Get order lines
      * List existing order lines associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return OrderLinesList200Response
@@ -167,7 +176,7 @@ class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * Get order lines
      * List existing order lines associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<OrderLinesList200Response?>
@@ -188,7 +197,7 @@ class OrderLinesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * To obtain the request config of the operation orderLinesList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig

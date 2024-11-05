@@ -500,6 +500,14 @@ module UserAccountApiHandlerParams =
       queryParams:Result<UserWebsitesGetQueryParams,string>;
     }
 
+    //#region Query parameters
+    [<CLIMutable>]
+    type VerifyWebsiteUpdateQueryParams = {
+      adAccountId : string option;
+
+    }
+    //#endregion
+
     //#region Body parameters
     [<CLIMutable>]
     type VerifyWebsiteUpdateBodyParams = UserWebsiteVerifyRequest
@@ -518,8 +526,17 @@ module UserAccountApiHandlerParams =
     type VerifyWebsiteUpdateResult = VerifyWebsiteUpdateStatusCode200 of VerifyWebsiteUpdateStatusCode200Response|VerifyWebsiteUpdateDefaultStatusCode of VerifyWebsiteUpdateDefaultStatusCodeResponse
 
     type VerifyWebsiteUpdateArgs = {
+      queryParams:Result<VerifyWebsiteUpdateQueryParams,string>;
       bodyParams:VerifyWebsiteUpdateBodyParams
     }
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type WebsiteVerificationGetQueryParams = {
+      adAccountId : string option;
+
+    }
+    //#endregion
 
 
     type WebsiteVerificationGetStatusCode200Response = {
@@ -538,3 +555,6 @@ module UserAccountApiHandlerParams =
     }
     type WebsiteVerificationGetResult = WebsiteVerificationGetStatusCode200 of WebsiteVerificationGetStatusCode200Response|WebsiteVerificationGetStatusCode403 of WebsiteVerificationGetStatusCode403Response|WebsiteVerificationGetDefaultStatusCode of WebsiteVerificationGetDefaultStatusCodeResponse
 
+    type WebsiteVerificationGetArgs = {
+      queryParams:Result<WebsiteVerificationGetQueryParams,string>;
+    }

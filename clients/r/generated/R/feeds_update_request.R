@@ -17,13 +17,11 @@ FeedsUpdateRequest <- R6::R6Class(
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
     one_of = list("CatalogsFeedsUpdateRequest", "CatalogsVerticalFeedsUpdateRequest"),
-    #' Initialize a new FeedsUpdateRequest.
-    #'
+
     #' @description
     #' Initialize a new FeedsUpdateRequest.
     #'
     #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsFeedsUpdateRequest", "CatalogsVerticalFeedsUpdateRequest"
-    #' @export
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -38,26 +36,24 @@ FeedsUpdateRequest <- R6::R6Class(
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of FeedsUpdateRequest.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of FeedsUpdateRequest.
     #' An alias to the method `fromJSON` .
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of FeedsUpdateRequest.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of FeedsUpdateRequest.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of FeedsUpdateRequest.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of FeedsUpdateRequest.
-    #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
       matched_schemas <- list() #names of matched schemas
@@ -110,13 +106,11 @@ FeedsUpdateRequest <- R6::R6Class(
 
       self
     },
-    #' Serialize FeedsUpdateRequest to JSON string.
-    #'
+
     #' @description
     #' Serialize FeedsUpdateRequest to JSON string.
     #'
     #' @return JSON string representation of the FeedsUpdateRequest.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify(self$actual_instance$toJSONString()))
@@ -124,13 +118,11 @@ FeedsUpdateRequest <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize FeedsUpdateRequest to JSON.
-    #'
+
     #' @description
     #' Serialize FeedsUpdateRequest to JSON.
     #'
     #' @return JSON representation of the FeedsUpdateRequest.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -138,14 +130,12 @@ FeedsUpdateRequest <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to FeedsUpdateRequest.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to FeedsUpdateRequest and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -158,13 +148,11 @@ FeedsUpdateRequest <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -174,12 +162,9 @@ FeedsUpdateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

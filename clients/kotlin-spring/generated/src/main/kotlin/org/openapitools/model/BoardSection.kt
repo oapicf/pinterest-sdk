@@ -26,7 +26,7 @@ data class BoardSection(
 
     @Schema(example = "549755885175", readOnly = true, description = "")
     @get:JsonProperty("id") val id: kotlin.String? = null
-) {
+    ) {
 
 }
 

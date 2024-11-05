@@ -24,7 +24,7 @@ void
 PinMediaWithVideo::__init()
 {
 	//media_type = std::string();
-	//images = new ImageMetadata_images();
+	//images = new PinMediaWithImage_allOf_images();
 	//cover_image_url = std::string();
 	//video_url = std::string();
 	//duration = double(0);
@@ -94,11 +94,11 @@ PinMediaWithVideo::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("ImageMetadata_images")) {
-			jsonToValue(&images, node, "ImageMetadata_images", "ImageMetadata_images");
+		if (isprimitive("PinMediaWithImage_allOf_images")) {
+			jsonToValue(&images, node, "PinMediaWithImage_allOf_images", "PinMediaWithImage_allOf_images");
 		} else {
 			
-			ImageMetadata_images* obj = static_cast<ImageMetadata_images*> (&images);
+			PinMediaWithImage_allOf_images* obj = static_cast<PinMediaWithImage_allOf_images*> (&images);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -182,13 +182,13 @@ PinMediaWithVideo::toJson()
 	}
 	const gchar *media_typeKey = "media_type";
 	json_object_set_member(pJsonObject, media_typeKey, node);
-	if (isprimitive("ImageMetadata_images")) {
-		ImageMetadata_images obj = getImages();
-		node = converttoJson(&obj, "ImageMetadata_images", "");
+	if (isprimitive("PinMediaWithImage_allOf_images")) {
+		PinMediaWithImage_allOf_images obj = getImages();
+		node = converttoJson(&obj, "PinMediaWithImage_allOf_images", "");
 	}
 	else {
 		
-		ImageMetadata_images obj = static_cast<ImageMetadata_images> (getImages());
+		PinMediaWithImage_allOf_images obj = static_cast<PinMediaWithImage_allOf_images> (getImages());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -266,14 +266,14 @@ PinMediaWithVideo::setMediaType(std::string  media_type)
 	this->media_type = media_type;
 }
 
-ImageMetadata_images
+PinMediaWithImage_allOf_images
 PinMediaWithVideo::getImages()
 {
 	return images;
 }
 
 void
-PinMediaWithVideo::setImages(ImageMetadata_images  images)
+PinMediaWithVideo::setImages(PinMediaWithImage_allOf_images  images)
 {
 	this->images = images;
 }

@@ -23,7 +23,7 @@ data class PriceFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("PRICE", required = true) val PRICE: CatalogsProductGroupPricingCurrencyCriteria
-) {
+    ) {
 
 }
 

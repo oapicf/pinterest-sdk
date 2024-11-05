@@ -8,8 +8,9 @@ import play.api.libs.json._
   * @param name Name of hotel product group
   * @param createdAt Unix timestamp in seconds of when catalog product group was created.
   * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
+  * @param catalogId Catalog id pertaining to the hotel product group.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CatalogsHotelProductGroup(
   catalogType: CatalogsHotelProductGroup.CatalogType.Value,
   id: String,

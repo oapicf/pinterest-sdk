@@ -32,7 +32,7 @@ data class AudienceCommon(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("rule") val rule: AudienceRule? = null
-) {
+    ) {
 
 }
 

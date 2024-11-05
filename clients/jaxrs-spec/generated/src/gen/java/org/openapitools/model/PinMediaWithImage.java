@@ -2,8 +2,8 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -19,13 +19,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Pin with image.")
 @JsonTypeName("PinMediaWithImage")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithImage extends PinMedia  {
-  private @Valid ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   /**
    **/
-  public PinMediaWithImage images(ImageMetadataImages images) {
+  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -33,12 +33,12 @@ public class PinMediaWithImage extends PinMedia  {
   
   @ApiModelProperty(value = "")
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  @Valid public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
   @JsonProperty("images")
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

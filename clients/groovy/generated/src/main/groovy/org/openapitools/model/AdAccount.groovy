@@ -24,7 +24,7 @@ class AdAccount {
     
     Currency currency
     
-    List<BusinessAccessRole> permissions
+    List<BusinessAccessRole> permissions = new ArrayList<>()
     /* Creation time. Unix timestamp in seconds. */
     Integer createdTime
     /* Last update time. Unix timestamp in seconds. */

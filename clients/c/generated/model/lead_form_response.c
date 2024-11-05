@@ -30,6 +30,7 @@ lead_form_response_t *lead_form_response_create(
     lead_form_status_t *status,
     char *disclosure_language,
     list_t *questions,
+    list_t *policy_links,
     char *id,
     char *ad_account_id,
     int created_time,
@@ -46,6 +47,7 @@ lead_form_response_t *lead_form_response_create(
     lead_form_response_local_var->status = status;
     lead_form_response_local_var->disclosure_language = disclosure_language;
     lead_form_response_local_var->questions = questions;
+    lead_form_response_local_var->policy_links = policy_links;
     lead_form_response_local_var->id = id;
     lead_form_response_local_var->ad_account_id = ad_account_id;
     lead_form_response_local_var->created_time = created_time;
@@ -86,6 +88,13 @@ void lead_form_response_free(lead_form_response_t *lead_form_response) {
         }
         list_freeList(lead_form_response->questions);
         lead_form_response->questions = NULL;
+    }
+    if (lead_form_response->policy_links) {
+        list_ForEach(listEntry, lead_form_response->policy_links) {
+            lead_form_common_policy_links_inner_free(listEntry->data);
+        }
+        list_freeList(lead_form_response->policy_links);
+        lead_form_response->policy_links = NULL;
     }
     if (lead_form_response->id) {
         free(lead_form_response->id);
@@ -174,6 +183,26 @@ cJSON *lead_form_response_convertToJSON(lead_form_response_t *lead_form_response
     }
 
 
+    // lead_form_response->policy_links
+    if(lead_form_response->policy_links) {
+    cJSON *policy_links = cJSON_AddArrayToObject(item, "policy_links");
+    if(policy_links == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *policy_linksListEntry;
+    if (lead_form_response->policy_links) {
+    list_ForEach(policy_linksListEntry, lead_form_response->policy_links) {
+    cJSON *itemLocal = lead_form_common_policy_links_inner_convertToJSON(policy_linksListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(policy_links, itemLocal);
+    }
+    }
+    }
+
+
     // lead_form_response->id
     if(lead_form_response->id) {
     if(cJSON_AddStringToObject(item, "id", lead_form_response->id) == NULL) {
@@ -222,6 +251,9 @@ lead_form_response_t *lead_form_response_parseFromJSON(cJSON *lead_form_response
 
     // define the local list for lead_form_response->questions
     list_t *questionsList = NULL;
+
+    // define the local list for lead_form_response->policy_links
+    list_t *policy_linksList = NULL;
 
     // lead_form_response->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(lead_form_responseJSON, "name");
@@ -295,6 +327,27 @@ lead_form_response_t *lead_form_response_parseFromJSON(cJSON *lead_form_response
     }
     }
 
+    // lead_form_response->policy_links
+    cJSON *policy_links = cJSON_GetObjectItemCaseSensitive(lead_form_responseJSON, "policy_links");
+    if (policy_links) { 
+    cJSON *policy_links_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(policy_links)){
+        goto end; //nonprimitive container
+    }
+
+    policy_linksList = list_createList();
+
+    cJSON_ArrayForEach(policy_links_local_nonprimitive,policy_links )
+    {
+        if(!cJSON_IsObject(policy_links_local_nonprimitive)){
+            goto end;
+        }
+        lead_form_common_policy_links_inner_t *policy_linksItem = lead_form_common_policy_links_inner_parseFromJSON(policy_links_local_nonprimitive);
+
+        list_addElement(policy_linksList, policy_linksItem);
+    }
+    }
+
     // lead_form_response->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(lead_form_responseJSON, "id");
     if (id) { 
@@ -340,6 +393,7 @@ lead_form_response_t *lead_form_response_parseFromJSON(cJSON *lead_form_response
         status ? status_local_nonprim : NULL,
         disclosure_language && !cJSON_IsNull(disclosure_language) ? strdup(disclosure_language->valuestring) : NULL,
         questions ? questionsList : NULL,
+        policy_links ? policy_linksList : NULL,
         id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
         created_time ? created_time->valuedouble : 0,
@@ -360,6 +414,15 @@ end:
         }
         list_freeList(questionsList);
         questionsList = NULL;
+    }
+    if (policy_linksList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, policy_linksList) {
+            lead_form_common_policy_links_inner_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(policy_linksList);
+        policy_linksList = NULL;
     }
     return NULL;
 

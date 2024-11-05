@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,12 +25,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemCreateBatchRecord", description = "Object describing an item batch record to create items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemCreateBatchRecord implements ItemBatchRecord {
 
   private String itemId;
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   public ItemCreateBatchRecord itemId(String itemId) {
     this.itemId = itemId;
@@ -40,7 +40,7 @@ public class ItemCreateBatchRecord implements ItemBatchRecord {
   /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  */
+   */
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
@@ -52,7 +52,7 @@ public class ItemCreateBatchRecord implements ItemBatchRecord {
     this.itemId = itemId;
   }
 
-  public ItemCreateBatchRecord attributes(ItemAttributes attributes) {
+  public ItemCreateBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -60,15 +60,15 @@ public class ItemCreateBatchRecord implements ItemBatchRecord {
   /**
    * Get attributes
    * @return attributes
-  */
+   */
   @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

@@ -55,6 +55,11 @@ Protected Class CatalogsHotelFeedsCreateRequest
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		status As OpenAPIClient.Models.CatalogsStatus
+	#tag EndProperty
+
+
 
 
 
@@ -161,6 +166,14 @@ Protected Class CatalogsHotelFeedsCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsStatus"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

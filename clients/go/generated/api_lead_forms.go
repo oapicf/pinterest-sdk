@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -38,8 +38,11 @@ func (r ApiLeadFormGetRequest) Execute() (*LeadFormResponse, *http.Response, err
 /*
 LeadFormGet Get lead form by id
 
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
 Gets a lead form given it's ID. It must also be associated with the provided ad account ID.
-Retrieving an advertiser's lead form will only contain results if you're a part of the Lead ads beta. If you're interested in joining the beta, please reach out to your Pinterest account manager.
+
+For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -189,7 +192,7 @@ LeadFormTestCreate Create lead form test data
 Create lead form test data based on the list of answers provided as part of the body.
 - List of answers should follow the questions creation order.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -320,6 +323,153 @@ func (a *LeadFormsAPIService) LeadFormTestCreateExecute(r ApiLeadFormTestCreateR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiLeadFormsCreateRequest struct {
+	ctx context.Context
+	ApiService *LeadFormsAPIService
+	adAccountId string
+	leadFormCreateRequest *[]LeadFormCreateRequest
+}
+
+// List of lead forms to create, size limit [1, 30].
+func (r ApiLeadFormsCreateRequest) LeadFormCreateRequest(leadFormCreateRequest []LeadFormCreateRequest) ApiLeadFormsCreateRequest {
+	r.leadFormCreateRequest = &leadFormCreateRequest
+	return r
+}
+
+func (r ApiLeadFormsCreateRequest) Execute() (*LeadFormArrayResponse, *http.Response, error) {
+	return r.ApiService.LeadFormsCreateExecute(r)
+}
+
+/*
+LeadFormsCreate Create lead forms
+
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.
+
+For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiLeadFormsCreateRequest
+*/
+func (a *LeadFormsAPIService) LeadFormsCreate(ctx context.Context, adAccountId string) ApiLeadFormsCreateRequest {
+	return ApiLeadFormsCreateRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return LeadFormArrayResponse
+func (a *LeadFormsAPIService) LeadFormsCreateExecute(r ApiLeadFormsCreateRequest) (*LeadFormArrayResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LeadFormArrayResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadFormsAPIService.LeadFormsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/lead_forms"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+	if r.leadFormCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("leadFormCreateRequest is required and must be specified")
+	}
+	if len(*r.leadFormCreateRequest) < 1 {
+		return localVarReturnValue, nil, reportError("leadFormCreateRequest must have at least 1 elements")
+	}
+	if len(*r.leadFormCreateRequest) > 30 {
+		return localVarReturnValue, nil, reportError("leadFormCreateRequest must have less than 30 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.leadFormCreateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiLeadFormsListRequest struct {
 	ctx context.Context
 	ApiService *LeadFormsAPIService
@@ -329,7 +479,7 @@ type ApiLeadFormsListRequest struct {
 	bookmark *string
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiLeadFormsListRequest) PageSize(pageSize int32) ApiLeadFormsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -352,10 +502,13 @@ func (r ApiLeadFormsListRequest) Execute() (*LeadFormsList200Response, *http.Res
 }
 
 /*
-LeadFormsList Get lead forms
+LeadFormsList List lead forms
 
-Gets all Lead Forms associated with an ad account ID.
-Retrieving an advertiser's list of lead forms will only contain results if you're a part of the Lead ads beta.  If you're interested in joining the beta, please reach out to your Pinterest account manager.
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+List lead forms associated with an ad account ID.
+
+For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -395,16 +548,16 @@ func (a *LeadFormsAPIService) LeadFormsListExecute(r ApiLeadFormsListRequest) (*
 	}
 
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -423,6 +576,153 @@ func (a *LeadFormsAPIService) LeadFormsListExecute(r ApiLeadFormsListRequest) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiLeadFormsUpdateRequest struct {
+	ctx context.Context
+	ApiService *LeadFormsAPIService
+	adAccountId string
+	leadFormUpdateRequest *[]LeadFormUpdateRequest
+}
+
+// List of lead forms to update, size limit [1, 30].
+func (r ApiLeadFormsUpdateRequest) LeadFormUpdateRequest(leadFormUpdateRequest []LeadFormUpdateRequest) ApiLeadFormsUpdateRequest {
+	r.leadFormUpdateRequest = &leadFormUpdateRequest
+	return r
+}
+
+func (r ApiLeadFormsUpdateRequest) Execute() (*LeadFormArrayResponse, *http.Response, error) {
+	return r.ApiService.LeadFormsUpdateExecute(r)
+}
+
+/*
+LeadFormsUpdate Update lead forms
+
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>
+
+Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.
+
+For more, see <a class="reference external" href="https://help.pinterest.com/en/business/article/lead-ads">Lead ads</a>.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiLeadFormsUpdateRequest
+*/
+func (a *LeadFormsAPIService) LeadFormsUpdate(ctx context.Context, adAccountId string) ApiLeadFormsUpdateRequest {
+	return ApiLeadFormsUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return LeadFormArrayResponse
+func (a *LeadFormsAPIService) LeadFormsUpdateExecute(r ApiLeadFormsUpdateRequest) (*LeadFormArrayResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LeadFormArrayResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LeadFormsAPIService.LeadFormsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/lead_forms"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+	if r.leadFormUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("leadFormUpdateRequest is required and must be specified")
+	}
+	if len(*r.leadFormUpdateRequest) < 1 {
+		return localVarReturnValue, nil, reportError("leadFormUpdateRequest must have at least 1 elements")
+	}
+	if len(*r.leadFormUpdateRequest) > 30 {
+		return localVarReturnValue, nil, reportError("leadFormUpdateRequest must have less than 30 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.leadFormUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

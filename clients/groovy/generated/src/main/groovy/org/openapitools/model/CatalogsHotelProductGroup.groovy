@@ -43,6 +43,6 @@ class CatalogsHotelProductGroup {
     Integer createdAt
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     Integer updatedAt
-    
+    /* Catalog id pertaining to the hotel product group. */
     String catalogId
 }

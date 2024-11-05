@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsItemsFilter;
 import org.openapitools.vertxweb.server.model.CatalogsHotelItemsFilter;
 import org.openapitools.vertxweb.server.model.CatalogsRetailItemsFilter;
 import org.openapitools.vertxweb.server.model.CatalogsType;
@@ -18,16 +19,18 @@ public class CatalogsItemsFilters   {
   private List<String> itemIds = new ArrayList<>();
   private String catalogId;
   private List<String> hotelIds = new ArrayList<>();
+  private List<String> creativeAssetsIds = new ArrayList<>();
 
   public CatalogsItemsFilters () {
 
   }
 
-  public CatalogsItemsFilters (CatalogsType catalogType, List<String> itemIds, String catalogId, List<String> hotelIds) {
+  public CatalogsItemsFilters (CatalogsType catalogType, List<String> itemIds, String catalogId, List<String> hotelIds, List<String> creativeAssetsIds) {
     this.catalogType = catalogType;
     this.itemIds = itemIds;
     this.catalogId = catalogId;
     this.hotelIds = hotelIds;
+    this.creativeAssetsIds = creativeAssetsIds;
   }
 
     
@@ -66,6 +69,15 @@ public class CatalogsItemsFilters   {
     this.hotelIds = hotelIds;
   }
 
+    
+  @JsonProperty("creative_assets_ids")
+  public List<String> getCreativeAssetsIds() {
+    return creativeAssetsIds;
+  }
+  public void setCreativeAssetsIds(List<String> creativeAssetsIds) {
+    this.creativeAssetsIds = creativeAssetsIds;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -79,12 +91,13 @@ public class CatalogsItemsFilters   {
     return Objects.equals(catalogType, catalogsItemsFilters.catalogType) &&
         Objects.equals(itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(catalogId, catalogsItemsFilters.catalogId) &&
-        Objects.equals(hotelIds, catalogsItemsFilters.hotelIds);
+        Objects.equals(hotelIds, catalogsItemsFilters.hotelIds) &&
+        Objects.equals(creativeAssetsIds, catalogsItemsFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds);
+    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -96,6 +109,7 @@ public class CatalogsItemsFilters   {
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
+    sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

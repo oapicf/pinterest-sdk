@@ -22,20 +22,19 @@ Delete commerce integration metadata for the given external business ID. Note: I
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, IntegrationsApi } from '';
+import type { IntegrationsApiIntegrationsCommerceDelRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .IntegrationsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new IntegrationsApi(configuration);
 
-let body:.IntegrationsApiIntegrationsCommerceDelRequest = {
-  // string | External business ID for the integration.
+const request: IntegrationsApiIntegrationsCommerceDelRequest = {
+    // External business ID for the integration.
   externalBusinessId: "external_business_id_example",
 };
 
-apiInstance.integrationsCommerceDel(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.integrationsCommerceDel(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -77,20 +76,19 @@ Get commerce integration metadata associated with the given external business ID
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, IntegrationsApi } from '';
+import type { IntegrationsApiIntegrationsCommerceGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .IntegrationsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new IntegrationsApi(configuration);
 
-let body:.IntegrationsApiIntegrationsCommerceGetRequest = {
-  // string | External business ID for the integration.
+const request: IntegrationsApiIntegrationsCommerceGetRequest = {
+    // External business ID for the integration.
   externalBusinessId: "external_business_id_example",
 };
 
-apiInstance.integrationsCommerceGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.integrationsCommerceGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -134,16 +132,16 @@ Update commerce integration metadata for the given external business ID. Note: I
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, IntegrationsApi } from '';
+import type { IntegrationsApiIntegrationsCommercePatchRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .IntegrationsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new IntegrationsApi(configuration);
 
-let body:.IntegrationsApiIntegrationsCommercePatchRequest = {
-  // string | External business ID for the integration.
+const request: IntegrationsApiIntegrationsCommercePatchRequest = {
+    // External business ID for the integration.
   externalBusinessId: "external_business_id_example",
-  // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata (optional)
+    // Parameters to get create/update the Integration Metadata (optional)
   integrationRequestPatch: {
     connectedMerchantId: "connectedMerchantId_example",
     connectedAdvertiserId: "connectedAdvertiserId_example",
@@ -160,9 +158,8 @@ let body:.IntegrationsApiIntegrationsCommercePatchRequest = {
   },
 };
 
-apiInstance.integrationsCommercePatch(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.integrationsCommercePatch(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -207,14 +204,14 @@ Create commerce integration metadata to link an external business ID with a Pint
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, IntegrationsApi } from '';
+import type { IntegrationsApiIntegrationsCommercePostRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .IntegrationsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new IntegrationsApi(configuration);
 
-let body:.IntegrationsApiIntegrationsCommercePostRequest = {
-  // IntegrationRequest | Parameters to get create/update the Integration Metadata (optional)
+const request: IntegrationsApiIntegrationsCommercePostRequest = {
+    // Parameters to get create/update the Integration Metadata (optional)
   integrationRequest: {
     externalBusinessId: "externalBusinessId_example",
     connectedMerchantId: "connectedMerchantId_example",
@@ -232,9 +229,8 @@ let body:.IntegrationsApiIntegrationsCommercePostRequest = {
   },
 };
 
-apiInstance.integrationsCommercePost(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.integrationsCommercePost(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -278,20 +274,19 @@ Get integration metadata by ID. Note: If you\'re interested in joining the beta,
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, IntegrationsApi } from '';
+import type { IntegrationsApiIntegrationsGetByIdRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .IntegrationsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new IntegrationsApi(configuration);
 
-let body:.IntegrationsApiIntegrationsGetByIdRequest = {
-  // string | Integration ID.
+const request: IntegrationsApiIntegrationsGetByIdRequest = {
+    // Integration ID.
   id: "id_example",
 };
 
-apiInstance.integrationsGetById(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.integrationsGetById(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -334,22 +329,21 @@ Get integration metadata list. Note: If you\'re interested in joining the beta, 
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, IntegrationsApi } from '';
+import type { IntegrationsApiIntegrationsGetListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .IntegrationsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new IntegrationsApi(configuration);
 
-let body:.IntegrationsApiIntegrationsGetListRequest = {
-  // string | Cursor used to fetch the next page of items (optional)
+const request: IntegrationsApiIntegrationsGetListRequest = {
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.integrationsGetList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.integrationsGetList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -358,7 +352,7 @@ apiInstance.integrationsGetList(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -392,14 +386,14 @@ This endpoint receives batched logs from integration applications on partner pla
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, IntegrationsApi } from '';
+import type { IntegrationsApiIntegrationsLogsPostRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .IntegrationsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new IntegrationsApi(configuration);
 
-let body:.IntegrationsApiIntegrationsLogsPostRequest = {
-  // IntegrationLogsRequest | Ingest log information from external integration application.
+const request: IntegrationsApiIntegrationsLogsPostRequest = {
+    // Ingest log information from external integration application.
   integrationLogsRequest: {
     logs: [
       {
@@ -442,9 +436,8 @@ let body:.IntegrationsApiIntegrationsLogsPostRequest = {
   },
 };
 
-apiInstance.integrationsLogsPost(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.integrationsLogsPost(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

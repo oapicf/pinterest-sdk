@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.model.CatalogsVerticalProductGroup;
 
 @Canonical
 class CatalogsProductGroupsList200Response {
     
-    List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>()
+    List<CatalogsVerticalProductGroup> items = new ArrayList<>()
     
     String bookmark
 }

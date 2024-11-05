@@ -32,14 +32,14 @@ typedef struct catalogs_hotel_product_group_filter_keys_t catalogs_hotel_product
 
 typedef struct catalogs_hotel_product_group_filter_keys_t {
     struct catalogs_product_group_pricing_currency_criteria_t *price; //model
-    struct catalogs_product_group_multiple_string_criteria_t *hotel_id; //model
-    struct catalogs_product_group_multiple_string_criteria_t *brand; //model
-    struct catalogs_product_group_multiple_string_criteria_t *custom_label_0; //model
-    struct catalogs_product_group_multiple_string_criteria_t *custom_label_1; //model
-    struct catalogs_product_group_multiple_string_criteria_t *custom_label_2; //model
-    struct catalogs_product_group_multiple_string_criteria_t *custom_label_3; //model
-    struct catalogs_product_group_multiple_string_criteria_t *custom_label_4; //model
-    struct catalogs_product_group_multiple_countries_criteria_t *country; //model
+    catalogs_product_group_multiple_string_criteria_t *hotel_id; //object
+    catalogs_product_group_multiple_string_criteria_t *brand; //object
+    catalogs_product_group_multiple_string_criteria_t *custom_label_0; //object
+    catalogs_product_group_multiple_string_criteria_t *custom_label_1; //object
+    catalogs_product_group_multiple_string_criteria_t *custom_label_2; //object
+    catalogs_product_group_multiple_string_criteria_t *custom_label_3; //object
+    catalogs_product_group_multiple_string_criteria_t *custom_label_4; //object
+    catalogs_product_group_multiple_countries_criteria_t *country; //object
 
 } catalogs_hotel_product_group_filter_keys_t;
 

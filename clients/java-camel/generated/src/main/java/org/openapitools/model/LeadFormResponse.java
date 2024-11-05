@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.LeadFormCommonPolicyLinksInner;
 import org.openapitools.model.LeadFormQuestion;
 import org.openapitools.model.LeadFormStatus;
 import java.util.NoSuchElementException;
@@ -26,7 +27,7 @@ import javax.annotation.Generated;
  * LeadFormResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LeadFormResponse {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -42,7 +43,10 @@ public class LeadFormResponse {
   private JsonNullable<String> disclosureLanguage = JsonNullable.<String>undefined();
 
   @Valid
-  private List<@Valid LeadFormQuestion> questions;
+  private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+
+  @Valid
+  private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
   private String id;
 
@@ -60,7 +64,7 @@ public class LeadFormResponse {
   /**
    * Internal name of the lead form.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -80,7 +84,7 @@ public class LeadFormResponse {
   /**
    * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
    * @return privacyPolicyLink
-  */
+   */
   
   @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy_policy_link")
@@ -98,11 +102,11 @@ public class LeadFormResponse {
   }
 
   /**
-   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
    * @return hasAcceptedTerms
-  */
+   */
   
-  @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_accepted_terms")
   public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
@@ -120,7 +124,7 @@ public class LeadFormResponse {
   /**
    * A message for people who complete the form to let them know what happens next.
    * @return completionMessage
-  */
+   */
   
   @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completion_message")
@@ -140,7 +144,7 @@ public class LeadFormResponse {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -160,7 +164,7 @@ public class LeadFormResponse {
   /**
    * Additional disclosure language to be included in the lead form.
    * @return disclosureLanguage
-  */
+   */
   
   @Schema(name = "disclosure_language", example = "By entering your personal information, you agree that your data will be collected and used.", description = "Additional disclosure language to be included in the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("disclosure_language")
@@ -188,7 +192,7 @@ public class LeadFormResponse {
   /**
    * List of questions to be displayed on the lead form.
    * @return questions
-  */
+   */
   @Valid @Size(min = 0, max = 10) 
   @Schema(name = "questions", example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("questions")
@@ -200,6 +204,34 @@ public class LeadFormResponse {
     this.questions = questions;
   }
 
+  public LeadFormResponse policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+    return this;
+  }
+
+  public LeadFormResponse addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    if (this.policyLinks == null) {
+      this.policyLinks = new ArrayList<>();
+    }
+    this.policyLinks.add(policyLinksItem);
+    return this;
+  }
+
+  /**
+   * List of additional policy links to be displayed on the lead form.
+   * @return policyLinks
+   */
+  @Valid @Size(min = 0, max = 3) 
+  @Schema(name = "policy_links", example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", description = "List of additional policy links to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("policy_links")
+  public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+  }
+
   public LeadFormResponse id(String id) {
     this.id = id;
     return this;
@@ -208,7 +240,7 @@ public class LeadFormResponse {
   /**
    * The ID of this lead form
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "7765300871171", description = "The ID of this lead form", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -228,7 +260,7 @@ public class LeadFormResponse {
   /**
    * The Ad Account ID that this lead form belongs to.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "The Ad Account ID that this lead form belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -248,7 +280,7 @@ public class LeadFormResponse {
   /**
    * Lead form creation time. Unix timestamp in seconds.
    * @return createdTime
-  */
+   */
   
   @Schema(name = "created_time", example = "1451431341", description = "Lead form creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
@@ -268,7 +300,7 @@ public class LeadFormResponse {
   /**
    * Last update time. Unix timestamp in seconds.
    * @return updatedTime
-  */
+   */
   
   @Schema(name = "updated_time", example = "1451431341", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
@@ -296,6 +328,7 @@ public class LeadFormResponse {
         Objects.equals(this.status, leadFormResponse.status) &&
         equalsNullable(this.disclosureLanguage, leadFormResponse.disclosureLanguage) &&
         Objects.equals(this.questions, leadFormResponse.questions) &&
+        Objects.equals(this.policyLinks, leadFormResponse.policyLinks) &&
         Objects.equals(this.id, leadFormResponse.id) &&
         Objects.equals(this.adAccountId, leadFormResponse.adAccountId) &&
         Objects.equals(this.createdTime, leadFormResponse.createdTime) &&
@@ -308,7 +341,7 @@ public class LeadFormResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(name), hashCodeNullable(privacyPolicyLink), hasAcceptedTerms, hashCodeNullable(completionMessage), status, hashCodeNullable(disclosureLanguage), questions, id, adAccountId, createdTime, updatedTime);
+    return Objects.hash(hashCodeNullable(name), hashCodeNullable(privacyPolicyLink), hasAcceptedTerms, hashCodeNullable(completionMessage), status, hashCodeNullable(disclosureLanguage), questions, policyLinks, id, adAccountId, createdTime, updatedTime);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -329,6 +362,7 @@ public class LeadFormResponse {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");

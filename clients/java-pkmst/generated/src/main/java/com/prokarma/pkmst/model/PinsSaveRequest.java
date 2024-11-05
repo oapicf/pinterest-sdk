@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * PinsSaveRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinsSaveRequest   {
   @JsonProperty("board_id")
   private String boardId;
@@ -29,10 +29,10 @@ public class PinsSaveRequest   {
     return this;
   }
 
-   /**
+  /**
    * Unique identifier of the board to which the pin will be saved.
    * @return boardId
-  **/
+   */
   @ApiModelProperty(value = "Unique identifier of the board to which the pin will be saved.")
   public String getBoardId() {
     return boardId;
@@ -47,10 +47,10 @@ public class PinsSaveRequest   {
     return this;
   }
 
-   /**
+  /**
    * Unique identifier of the board section to which the pin will be saved.
    * @return boardSectionId
-  **/
+   */
   @ApiModelProperty(value = "Unique identifier of the board section to which the pin will be saved.")
   public String getBoardSectionId() {
     return boardSectionId;

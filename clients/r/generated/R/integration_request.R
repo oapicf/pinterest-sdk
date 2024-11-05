@@ -39,8 +39,7 @@ IntegrationRequest <- R6::R6Class(
     `scopes` = NULL,
     `additional_id_1` = NULL,
     `partner_metadata` = NULL,
-    #' Initialize a new IntegrationRequest class.
-    #'
+
     #' @description
     #' Initialize a new IntegrationRequest class.
     #'
@@ -58,7 +57,6 @@ IntegrationRequest <- R6::R6Class(
     #' @param additional_id_1 additional_id_1
     #' @param partner_metadata partner_metadata
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`external_business_id` = NULL, `connected_merchant_id` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_tag_id` = NULL, `partner_access_token` = NULL, `partner_refresh_token` = NULL, `partner_primary_email` = NULL, `partner_access_token_expiry` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `additional_id_1` = NULL, `partner_metadata` = NULL, ...) {
       if (!is.null(`external_business_id`)) {
         if (!(is.character(`external_business_id`) && length(`external_business_id`) == 1)) {
@@ -139,13 +137,11 @@ IntegrationRequest <- R6::R6Class(
         self$`partner_metadata` <- `partner_metadata`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationRequest in JSON format
-    #' @export
     toJSON = function() {
       IntegrationRequestObject <- list()
       if (!is.null(self$`external_business_id`)) {
@@ -202,14 +198,12 @@ IntegrationRequest <- R6::R6Class(
       }
       IntegrationRequestObject
     },
-    #' Deserialize JSON string into an instance of IntegrationRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`external_business_id`)) {
@@ -253,13 +247,11 @@ IntegrationRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`external_business_id`)) {
@@ -370,14 +362,12 @@ IntegrationRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of IntegrationRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`external_business_id` <- this_object$`external_business_id`
@@ -395,53 +385,42 @@ IntegrationRequest <- R6::R6Class(
       self$`partner_metadata` <- this_object$`partner_metadata`
       self
     },
-    #' Validate JSON input with respect to IntegrationRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to IntegrationRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of IntegrationRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

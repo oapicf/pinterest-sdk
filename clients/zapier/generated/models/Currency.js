@@ -30,6 +30,8 @@ module.exports = {
                     'ARS',
                     'CLP',
                     'COP',
+                    'INR',
+                    'TRY',
                 ],
             }
         )

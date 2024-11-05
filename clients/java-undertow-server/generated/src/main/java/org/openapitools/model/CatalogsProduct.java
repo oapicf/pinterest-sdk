@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -13,24 +13,50 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsProductMetadata;
+import org.openapitools.model.CatalogsCreativeAssetsProduct;
+import org.openapitools.model.CatalogsCreativeAssetsProductMetadata;
+import org.openapitools.model.CatalogsHotelProduct;
+import org.openapitools.model.CatalogsRetailProduct;
+import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 
 
 
+/**
+ * Catalogs product for all verticals
+ */
 
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description = "Catalogs product for all verticals")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProduct   {
   
-  private CatalogsProductMetadata metadata;
+  private CatalogsType catalogType;
+  private CatalogsCreativeAssetsProductMetadata metadata;
   private Pin pin;
 
   /**
    */
-  public CatalogsProduct metadata(CatalogsProductMetadata metadata) {
+  public CatalogsProduct catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   */
+  public CatalogsProduct metadata(CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -38,10 +64,10 @@ public class CatalogsProduct   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("metadata")
-  public CatalogsProductMetadata getMetadata() {
+  public CatalogsCreativeAssetsProductMetadata getMetadata() {
     return metadata;
   }
-  public void setMetadata(CatalogsProductMetadata metadata) {
+  public void setMetadata(CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
   }
 
@@ -72,13 +98,14 @@ public class CatalogsProduct   {
       return false;
     }
     CatalogsProduct catalogsProduct = (CatalogsProduct) o;
-    return Objects.equals(metadata, catalogsProduct.metadata) &&
+    return Objects.equals(catalogType, catalogsProduct.catalogType) &&
+        Objects.equals(metadata, catalogsProduct.metadata) &&
         Objects.equals(pin, catalogsProduct.pin);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, pin);
+    return Objects.hash(catalogType, metadata, pin);
   }
 
   @Override
@@ -86,6 +113,7 @@ public class CatalogsProduct   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProduct {\n");
     
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    pin: ").append(toIndentedString(pin)).append("\n");
     sb.append("}");

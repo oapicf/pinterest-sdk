@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "Catalogs_product_groups_list_200_response_allOf_items_inner.h"
+#include "CatalogsVerticalProductGroup.h"
 #include <list>
 #include "Object.h"
 
@@ -49,11 +49,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<Catalogs_product_groups_list_200_response_allOf_items_inner> getItems();
+	std::list<CatalogsVerticalProductGroup> getItems();
 
 	/*! \brief Set 
 	 */
-	void setItems(std::list <Catalogs_product_groups_list_200_response_allOf_items_inner> items);
+	void setItems(std::list <CatalogsVerticalProductGroup> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -63,7 +63,7 @@ public:
 	void setBookmark(std::string  bookmark);
 
 private:
-	std::list <Catalogs_product_groups_list_200_response_allOf_items_inner>items;
+	std::list <CatalogsVerticalProductGroup>items;
 	std::string bookmark;
 	void __init();
 	void __cleanup();

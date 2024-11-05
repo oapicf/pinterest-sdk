@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ItemAttributes
+import org.openapitools.models.ItemAttributesRequest
 
 /**
  * An item to be created
@@ -15,7 +15,7 @@ import org.openapitools.models.ItemAttributes
  */
 case class CatalogsCreateRetailItem(itemUnderscoreid: String,
                 operation: String,
-                attributes: ItemAttributes
+                attributes: ItemAttributesRequest
                 )
 
 object CatalogsCreateRetailItem {

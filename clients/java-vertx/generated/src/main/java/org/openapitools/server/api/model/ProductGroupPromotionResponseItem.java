@@ -8,29 +8,29 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.server.api.model.Exception;
-import org.openapitools.server.api.model.ProductGroupPromotion;
+import org.openapitools.server.api.model.ProductGroupPromotionResponseElement;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductGroupPromotionResponseItem   {
   
-  private ProductGroupPromotion data;
+  private ProductGroupPromotionResponseElement data;
   private List<Exception> exceptions;
 
   public ProductGroupPromotionResponseItem () {
 
   }
 
-  public ProductGroupPromotionResponseItem (ProductGroupPromotion data, List<Exception> exceptions) {
+  public ProductGroupPromotionResponseItem (ProductGroupPromotionResponseElement data, List<Exception> exceptions) {
     this.data = data;
     this.exceptions = exceptions;
   }
 
     
   @JsonProperty("data")
-  public ProductGroupPromotion getData() {
+  public ProductGroupPromotionResponseElement getData() {
     return data;
   }
-  public void setData(ProductGroupPromotion data) {
+  public void setData(ProductGroupPromotionResponseElement data) {
     this.data = data;
   }
 

@@ -5,13 +5,13 @@
 
 
 char* oauth_access_token_request_code_grant_type_ToString(pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type) {
-    char* grant_typeArray[] =  { "NULL", "authorization_code", "refresh_token" };
+    char* grant_typeArray[] =  { "NULL", "authorization_code", "refresh_token", "client_credentials" };
     return grant_typeArray[grant_type];
 }
 
 pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e oauth_access_token_request_code_grant_type_FromString(char* grant_type){
     int stringToReturn = 0;
-    char *grant_typeArray[] =  { "NULL", "authorization_code", "refresh_token" };
+    char *grant_typeArray[] =  { "NULL", "authorization_code", "refresh_token", "client_credentials" };
     size_t sizeofArray = sizeof(grant_typeArray) / sizeof(grant_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(grant_type, grant_typeArray[stringToReturn]) == 0) {

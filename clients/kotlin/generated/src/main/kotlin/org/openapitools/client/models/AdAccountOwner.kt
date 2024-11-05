@@ -37,5 +37,8 @@ data class AdAccountOwner (
     @Json(name = "id")
     val id: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -22,12 +22,12 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface ResourcesApiService {
       public Response adAccountCountriesGet(SecurityContext securityContext);
       public Response deliveryMetricsGet(String reportType, SecurityContext securityContext);
       public Response interestTargetingOptionsGet(String interestId, SecurityContext securityContext);
       public Response leadFormQuestionsGet(SecurityContext securityContext);
       public Response metricsReadyStateGet(String date, SecurityContext securityContext);
-      public Response targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, SecurityContext securityContext);
+      public Response targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId, SecurityContext securityContext);
 }

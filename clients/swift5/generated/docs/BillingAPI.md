@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```swift
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```swift
@@ -83,7 +83,7 @@ import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // Get ads credit discounts
 BillingAPI.adsCreditsDiscountsGet(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```swift
@@ -138,7 +138,7 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let isActive = true // Bool | Return active billing profiles, if false return all billing profiles.
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // Get billing profiles
 BillingAPI.billingProfilesGet(adAccountId: adAccountId, isActive: isActive, bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **isActive** | **Bool** | Return active billing profiles, if false return all billing profiles. | 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -347,7 +347,7 @@ import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // Get insertion order status by ad account id.
 BillingAPI.ssioInsertionOrdersStatusGetByAdAccount(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -453,7 +453,7 @@ import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let pinOrderId = "pinOrderId_example" // String | The pin order id associated with the ssio insertino order (optional)
 
 // Get Salesforce order lines by ad account id.
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **pinOrderId** | **String** | The pin order id associated with the ssio insertino order | [optional] 
 
 ### Return type

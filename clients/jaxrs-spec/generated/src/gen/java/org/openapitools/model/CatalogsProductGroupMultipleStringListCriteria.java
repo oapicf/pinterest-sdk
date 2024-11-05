@@ -18,10 +18,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsProductGroupMultipleStringListCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupMultipleStringListCriteria   {
   private @Valid List<List<String>> values = new ArrayList<>();
-  private @Valid Boolean negated = false;
+  private Boolean negated = false;
 
   /**
    **/
@@ -33,8 +33,7 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("values")
-  @NotNull
-  public List<List<String>> getValues() {
+  @NotNull public List<List<String>> getValues() {
     return values;
   }
 

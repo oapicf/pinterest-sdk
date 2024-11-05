@@ -27,8 +27,7 @@ AdsCreditDiscountsResponse <- R6::R6Class(
     `discountCurrency` = NULL,
     `title` = NULL,
     `remainingDiscountInMicroCurrency` = NULL,
-    #' Initialize a new AdsCreditDiscountsResponse class.
-    #'
+
     #' @description
     #' Initialize a new AdsCreditDiscountsResponse class.
     #'
@@ -40,7 +39,6 @@ AdsCreditDiscountsResponse <- R6::R6Class(
     #' @param title Human readable title of the offer code.
     #' @param remainingDiscountInMicroCurrency The credits left to spend.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`active` = NULL, `advertiser_id` = NULL, `discountType` = NULL, `discountInMicroCurrency` = NULL, `discountCurrency` = NULL, `title` = NULL, `remainingDiscountInMicroCurrency` = NULL, ...) {
       if (!is.null(`active`)) {
         if (!(is.logical(`active`) && length(`active`) == 1)) {
@@ -55,8 +53,8 @@ AdsCreditDiscountsResponse <- R6::R6Class(
         self$`advertiser_id` <- `advertiser_id`
       }
       if (!is.null(`discountType`)) {
-        if (!(`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", "null"))) {
-          stop(paste("Error! \"", `discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\", \"null\".", sep = ""))
+        if (!(`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND"))) {
+          stop(paste("Error! \"", `discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\".", sep = ""))
         }
         if (!(is.character(`discountType`) && length(`discountType`) == 1)) {
           stop(paste("Error! Invalid data for `discountType`. Must be a string:", `discountType`))
@@ -82,13 +80,11 @@ AdsCreditDiscountsResponse <- R6::R6Class(
         self$`remainingDiscountInMicroCurrency` <- `remainingDiscountInMicroCurrency`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsCreditDiscountsResponse in JSON format
-    #' @export
     toJSON = function() {
       AdsCreditDiscountsResponseObject <- list()
       if (!is.null(self$`active`)) {
@@ -121,14 +117,12 @@ AdsCreditDiscountsResponse <- R6::R6Class(
       }
       AdsCreditDiscountsResponseObject
     },
-    #' Deserialize JSON string into an instance of AdsCreditDiscountsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsCreditDiscountsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsCreditDiscountsResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`active`)) {
@@ -138,8 +132,8 @@ AdsCreditDiscountsResponse <- R6::R6Class(
         self$`advertiser_id` <- this_object$`advertiser_id`
       }
       if (!is.null(this_object$`discountType`)) {
-        if (!is.null(this_object$`discountType`) && !(this_object$`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", "null"))) {
-          stop(paste("Error! \"", this_object$`discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\", \"null\".", sep = ""))
+        if (!is.null(this_object$`discountType`) && !(this_object$`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND"))) {
+          stop(paste("Error! \"", this_object$`discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\".", sep = ""))
         }
         self$`discountType` <- this_object$`discountType`
       }
@@ -157,13 +151,11 @@ AdsCreditDiscountsResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsCreditDiscountsResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`active`)) {
@@ -226,20 +218,18 @@ AdsCreditDiscountsResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdsCreditDiscountsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsCreditDiscountsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsCreditDiscountsResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`active` <- this_object$`active`
       self$`advertiser_id` <- this_object$`advertiser_id`
-      if (!is.null(this_object$`discountType`) && !(this_object$`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND", "null"))) {
-        stop(paste("Error! \"", this_object$`discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\", \"null\".", sep = ""))
+      if (!is.null(this_object$`discountType`) && !(this_object$`discountType` %in% c("COUPON", "CREDIT", "COUPON_APPLIED", "CREDIT_APPLIED", "MARKETING_OFFER_CREDIT", "MARKETING_OFFER_CREDIT_APPLIED", "GOODWILL_CREDIT", "GOODWILL_CREDIT_APPLIED", "INTERNAL_CREDIT", "INTERNAL_CREDIT_APPLIED", "PREPAID_CREDIT", "PREPAID_CREDIT_APPLIED", "SALES_INCENTIVE_CREDIT", "SALES_INCENTIVE_CREDIT_APPLIED", "CREDIT_EXPIRED", "FUTURE_CREDIT", "REFERRAL_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT", "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED", "PREPAID_CREDIT_REFUND"))) {
+        stop(paste("Error! \"", this_object$`discountType`, "\" cannot be assigned to `discountType`. Must be \"COUPON\", \"CREDIT\", \"COUPON_APPLIED\", \"CREDIT_APPLIED\", \"MARKETING_OFFER_CREDIT\", \"MARKETING_OFFER_CREDIT_APPLIED\", \"GOODWILL_CREDIT\", \"GOODWILL_CREDIT_APPLIED\", \"INTERNAL_CREDIT\", \"INTERNAL_CREDIT_APPLIED\", \"PREPAID_CREDIT\", \"PREPAID_CREDIT_APPLIED\", \"SALES_INCENTIVE_CREDIT\", \"SALES_INCENTIVE_CREDIT_APPLIED\", \"CREDIT_EXPIRED\", \"FUTURE_CREDIT\", \"REFERRAL_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT\", \"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED\", \"PREPAID_CREDIT_REFUND\".", sep = ""))
       }
       self$`discountType` <- this_object$`discountType`
       self$`discountInMicroCurrency` <- this_object$`discountInMicroCurrency`
@@ -248,33 +238,27 @@ AdsCreditDiscountsResponse <- R6::R6Class(
       self$`remainingDiscountInMicroCurrency` <- this_object$`remainingDiscountInMicroCurrency`
       self
     },
-    #' Validate JSON input with respect to AdsCreditDiscountsResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdsCreditDiscountsResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdsCreditDiscountsResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`advertiser_id`, "^\\d+$")) {
         return(FALSE)
@@ -282,13 +266,11 @@ AdsCreditDiscountsResponse <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`advertiser_id`, "^\\d+$")) {
@@ -297,12 +279,9 @@ AdsCreditDiscountsResponse <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

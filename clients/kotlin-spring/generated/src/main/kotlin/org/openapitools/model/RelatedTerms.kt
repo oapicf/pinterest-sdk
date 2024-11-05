@@ -31,7 +31,7 @@ data class RelatedTerms(
     @field:Valid
     @Schema(example = "null", description = "The id of the advertiser.")
     @get:JsonProperty("related_terms_list") val relatedTermsList: kotlin.collections.List<RelatedTermsRelatedTermsListInner>? = null
-) {
+    ) {
 
 }
 

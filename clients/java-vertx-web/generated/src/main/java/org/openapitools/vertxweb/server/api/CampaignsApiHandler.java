@@ -1,6 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.vertxweb.server.model.CampaignCreateRequest;
 import org.openapitools.vertxweb.server.model.CampaignCreateResponse;
 import org.openapitools.vertxweb.server.model.CampaignResponse;
@@ -62,7 +62,7 @@ public class CampaignsApiHandler {
         List<String> campaignIds = requestParameters.queryParameter("campaign_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("campaign_ids").get(), new TypeReference<List<String>>(){}) : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<AdsAnalyticsTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsTargetingType>>(){}) : null;
+        List<AdsAnalyticsCampaignTargetingType> targetingTypes = requestParameters.queryParameter("targeting_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("targeting_types").get(), new TypeReference<List<AdsAnalyticsCampaignTargetingType>>(){}) : null;
         List<String> columns = requestParameters.queryParameter("columns") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("columns").get(), new TypeReference<List<String>>(){}) : null;
         Granularity granularity = requestParameters.queryParameter("granularity") != null ? requestParameters.queryParameter("granularity").getGranularity() : null;
         Integer clickWindowDays = requestParameters.queryParameter("click_window_days") != null ? requestParameters.queryParameter("click_window_days").getInteger() : 30;

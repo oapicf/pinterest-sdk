@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.time.OffsetDateTime;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsFeed;
 import org.openapitools.vertxweb.server.model.CatalogsFeedCredentials;
 import org.openapitools.vertxweb.server.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.vertxweb.server.model.CatalogsFormat;

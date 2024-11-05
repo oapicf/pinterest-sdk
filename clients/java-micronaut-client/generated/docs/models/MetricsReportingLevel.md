@@ -31,5 +31,7 @@ The class is defined in **[MetricsReportingLevel.java](../../src/main/java/org/o
 
 * `PRODUCT_ITEM` (value: `"PRODUCT_ITEM"`)
 
+* `PRODUCT_ITEM_TARGETING` (value: `"PRODUCT_ITEM_TARGETING"`)
+
 
 

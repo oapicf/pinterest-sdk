@@ -46,7 +46,13 @@ class CatalogsRetailProductGroupTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `feedId`
+        // to test the property `catalogId` - Catalog id pertaining to the retail product group.
+        should("test catalogId") {
+            // uncomment below to test the property
+            //modelInstance.catalogId shouldBe ("TODO")
+        }
+
+        // to test the property `feedId` - id of the catalogs feed belonging to this catalog product group
         should("test feedId") {
             // uncomment below to test the property
             //modelInstance.feedId shouldBe ("TODO")
@@ -92,6 +98,18 @@ class CatalogsRetailProductGroupTest : ShouldSpec() {
         should("test updatedAt") {
             // uncomment below to test the property
             //modelInstance.updatedAt shouldBe ("TODO")
+        }
+
+        // to test the property `country`
+        should("test country") {
+            // uncomment below to test the property
+            //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `locale`
+        should("test locale") {
+            // uncomment below to test the property
+            //modelInstance.locale shouldBe ("TODO")
         }
 
     }

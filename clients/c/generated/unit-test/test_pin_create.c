@@ -17,7 +17,7 @@
 pin_create_t* instantiate_pin_create(int include_optional);
 
 #include "test_board_owner.c"
-#include "test_summary_pin_media.c"
+#include "test_pin_media.c"
 #include "test_pin_media_source.c"
 
 
@@ -37,7 +37,7 @@ pin_create_t* instantiate_pin_create(int include_optional) {
        // false, not to have infinite recursion
       instantiate_board_owner(0),
        // false, not to have infinite recursion
-      instantiate_summary_pin_media(0),
+      instantiate_pin_media(0),
       null,
       "a",
       "0"

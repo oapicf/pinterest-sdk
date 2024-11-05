@@ -23,7 +23,7 @@ data class IntegrationLogsInvalidLogResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("rejected_logs") val rejectedLogs: kotlin.collections.List<IntegrationLogsInvalidLogResponseRejectedLogsInner>? = null
-) {
+    ) {
 
 }
 

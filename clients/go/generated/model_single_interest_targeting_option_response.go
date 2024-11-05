@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &SingleInterestTargetingOptionResponse{}
 
 // SingleInterestTargetingOptionResponse struct for SingleInterestTargetingOptionResponse
 type SingleInterestTargetingOptionResponse struct {
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=\\\\d+"`
 	Name *string `json:"name,omitempty"`
 	ChildInterests []string `json:"child_interests,omitempty"`
 	Level *int32 `json:"level,omitempty"`

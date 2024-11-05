@@ -37,5 +37,8 @@ data class PinsSaveRequest (
     @Json(name = "board_section_id")
     val boardSectionId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

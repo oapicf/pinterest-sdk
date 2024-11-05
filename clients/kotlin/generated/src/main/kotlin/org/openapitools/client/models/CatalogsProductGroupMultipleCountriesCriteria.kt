@@ -36,5 +36,8 @@ data class CatalogsProductGroupMultipleCountriesCriteria (
     @Json(name = "negated")
     val negated: kotlin.Boolean? = false
 
-)
+) {
+
+
+}
 

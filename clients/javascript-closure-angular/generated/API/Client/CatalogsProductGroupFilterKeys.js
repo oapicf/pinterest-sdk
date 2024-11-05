@@ -90,6 +90,12 @@ API.Client.CatalogsProductGroupFilterKeys.prototype.ITEM_GROUP_ID;
 API.Client.CatalogsProductGroupFilterKeys.prototype.GENDER;
 
 /**
+ * @type {!API.Client.CatalogsProductGroupMultipleMediaTypesCriteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.MEDIA_TYPE;
+
+/**
  * @type {!API.Client.CatalogsProductGroupMultipleStringListCriteria}
  * @export
  */
@@ -160,4 +166,10 @@ API.Client.CatalogsProductGroupFilterKeys.prototype.gOOGLEPRODUCTCATEGORY1;
  * @export
  */
 API.Client.CatalogsProductGroupFilterKeys.prototype.gOOGLEPRODUCTCATEGORY0;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @export
+ */
+API.Client.CatalogsProductGroupFilterKeys.prototype.PRODUCT_GROUP;
 

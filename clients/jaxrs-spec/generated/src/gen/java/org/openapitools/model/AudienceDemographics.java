@@ -21,13 +21,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Audience demographics")
 @JsonTypeName("AudienceDemographics")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDemographics   {
-  private @Valid List<@Valid AudienceDemographicValue> ages;
-  private @Valid List<@Valid AudienceDemographicValue> genders;
-  private @Valid List<@Valid AudienceDemographicValue> devices;
-  private @Valid List<@Valid AudienceDemographicValue> metros;
-  private @Valid List<@Valid AudienceDemographicValue> countries;
+  private @Valid List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
+  private @Valid List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
+  private @Valid List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
+  private @Valid List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
+  private @Valid List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
   /**
    * Ages distribution.
@@ -40,7 +40,7 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Ages distribution.")
   @JsonProperty("ages")
-  public List<AudienceDemographicValue> getAges() {
+  @Valid public List<@Valid AudienceDemographicValue> getAges() {
     return ages;
   }
 
@@ -76,7 +76,7 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Gender distribution.")
   @JsonProperty("genders")
-  public List<AudienceDemographicValue> getGenders() {
+  @Valid public List<@Valid AudienceDemographicValue> getGenders() {
     return genders;
   }
 
@@ -112,7 +112,7 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Device usage distribution.")
   @JsonProperty("devices")
-  public List<AudienceDemographicValue> getDevices() {
+  @Valid public List<@Valid AudienceDemographicValue> getDevices() {
     return devices;
   }
 
@@ -148,7 +148,7 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Geographic metro area distribution.")
   @JsonProperty("metros")
-  public List<AudienceDemographicValue> getMetros() {
+  @Valid public List<@Valid AudienceDemographicValue> getMetros() {
     return metros;
   }
 
@@ -184,7 +184,7 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Country area distribution.")
   @JsonProperty("countries")
-  public List<AudienceDemographicValue> getCountries() {
+  @Valid public List<@Valid AudienceDemographicValue> getCountries() {
     return countries;
   }
 

@@ -122,5 +122,8 @@ data class CatalogsHotelAttributes (
     @Json(name = "additional_image_link")
     val additionalImageLink: kotlin.collections.List<kotlin.String>? = null
 
-)
+) {
+
+
+}
 

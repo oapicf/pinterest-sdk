@@ -9,11 +9,11 @@
 
 
 #include <string>
-#include "AdCommon_quiz_pin_data.h"
-#include "AdCommon_tracking_urls.h"
 #include "CreativeType.h"
 #include "EntityStatus.h"
 #include "GridClickType.h"
+#include "QuizPinData.h"
+#include "TrackingUrls.h"
 #include <list>
 #include "Object.h"
 
@@ -58,11 +58,11 @@ public:
 	/*! \brief Set ID of the ad group that contains the ad.
 	 */
 	void setAdGroupId(std::string  ad_group_id);
-	/*! \brief Get Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+	/*! \brief Get Deep link URL for Android devices.
 	 */
 	std::string getAndroidDeepLink();
 
-	/*! \brief Set Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+	/*! \brief Set Deep link URL for Android devices.
 	 */
 	void setAndroidDeepLink(std::string  android_deep_link);
 	/*! \brief Get Comma-separated deep links for the carousel pin on Android.
@@ -107,11 +107,11 @@ public:
 	/*! \brief Set Destination URL.
 	 */
 	void setDestinationUrl(std::string  destination_url);
-	/*! \brief Get Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+	/*! \brief Get Deep link URL for iOS devices.
 	 */
 	std::string getIosDeepLink();
 
-	/*! \brief Set Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+	/*! \brief Set Deep link URL for iOS devices.
 	 */
 	void setIosDeepLink(std::string  ios_deep_link);
 	/*! \brief Get Is original pin deleted?
@@ -144,11 +144,11 @@ public:
 	void setStatus(EntityStatus  status);
 	/*! \brief Get 
 	 */
-	AdCommon_tracking_urls getTrackingUrls();
+	TrackingUrls getTrackingUrls();
 
 	/*! \brief Set 
 	 */
-	void setTrackingUrls(AdCommon_tracking_urls  tracking_urls);
+	void setTrackingUrls(TrackingUrls  tracking_urls);
 	/*! \brief Get Tracking URL for ad impressions.
 	 */
 	std::string getViewTrackingUrl();
@@ -170,20 +170,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setGridClickType(GridClickType  grid_click_type);
-	/*! \brief Get Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+	/*! \brief Get Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
 	 */
 	std::string getCustomizableCtaType();
 
-	/*! \brief Set Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+	/*! \brief Set Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
 	 */
 	void setCustomizableCtaType(std::string  customizable_cta_type);
-	/*! \brief Get 
+	/*! \brief Get Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
 	 */
-	AdCommon_quiz_pin_data getQuizPinData();
+	QuizPinData getQuizPinData();
 
-	/*! \brief Set 
+	/*! \brief Set Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
 	 */
-	void setQuizPinData(AdCommon_quiz_pin_data  quiz_pin_data);
+	void setQuizPinData(QuizPinData  quiz_pin_data);
 	/*! \brief Get Pin ID.
 	 */
 	std::string getPinId();
@@ -206,12 +206,12 @@ private:
 	bool is_removable;
 	std::string name;
 	EntityStatus status;
-	AdCommon_tracking_urls tracking_urls;
+	TrackingUrls tracking_urls;
 	std::string view_tracking_url;
 	std::string lead_form_id;
 	GridClickType grid_click_type;
 	std::string customizable_cta_type;
-	AdCommon_quiz_pin_data quiz_pin_data;
+	QuizPinData quiz_pin_data;
 	std::string pin_id;
 	void __init();
 	void __cleanup();

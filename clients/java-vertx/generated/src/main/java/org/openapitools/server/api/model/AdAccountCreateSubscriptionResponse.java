@@ -3,6 +3,7 @@ package org.openapitools.server.api.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdAccountCreateSubscriptionResponse   {

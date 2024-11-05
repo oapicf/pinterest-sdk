@@ -13,7 +13,10 @@ Name | Type | Description | Notes
 **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] [default to null]
 **createdUnderscoreat** | **integer** |  | [optional] [default to null]
 **updatedUnderscoreat** | **integer** |  | [optional] [default to null]
+**catalogUnderscoreid** | **string** |  | [default to null]
 **feedUnderscoreid** | **string** |  | [default to null]
+**country** | **string** |  | [optional] [default to null]
+**locale** | **string** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

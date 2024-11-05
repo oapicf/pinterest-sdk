@@ -14,13 +14,7 @@ Name | Type | Description | Notes
 ## Enum: OperationEnum
 
 
-* `CREATE` (value: `"CREATE"`)
-
 * `UPDATE` (value: `"UPDATE"`)
-
-* `UPSERT` (value: `"UPSERT"`)
-
-* `DELETE` (value: `"DELETE"`)
 
 
 

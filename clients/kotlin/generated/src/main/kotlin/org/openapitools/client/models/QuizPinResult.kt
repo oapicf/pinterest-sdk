@@ -47,5 +47,8 @@ data class QuizPinResult (
     @Json(name = "result_id")
     val resultId: java.math.BigDecimal? = null
 
-)
+) {
+
+
+}
 

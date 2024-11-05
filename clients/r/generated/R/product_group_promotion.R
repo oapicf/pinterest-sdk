@@ -21,7 +21,6 @@
 #' @field tracking_url Tracking template for proudct group promotions. 4000 limit character [optional]
 #' @field catalog_product_group_id ID of the catalogs product group that this product group promotion references character [optional]
 #' @field catalog_product_group_name Catalogs product group name character [optional]
-#' @field creative_type  \link{CreativeType} [optional]
 #' @field collections_hero_pin_id Hero Pin ID if this PG is promoted as a Collection character [optional]
 #' @field collections_hero_destination_url Collections Hero Destination Url character [optional]
 #' @field grid_click_type  \link{GridClickType} [optional]
@@ -45,12 +44,10 @@ ProductGroupPromotion <- R6::R6Class(
     `tracking_url` = NULL,
     `catalog_product_group_id` = NULL,
     `catalog_product_group_name` = NULL,
-    `creative_type` = NULL,
     `collections_hero_pin_id` = NULL,
     `collections_hero_destination_url` = NULL,
     `grid_click_type` = NULL,
-    #' Initialize a new ProductGroupPromotion class.
-    #'
+
     #' @description
     #' Initialize a new ProductGroupPromotion class.
     #'
@@ -68,13 +65,11 @@ ProductGroupPromotion <- R6::R6Class(
     #' @param tracking_url Tracking template for proudct group promotions. 4000 limit
     #' @param catalog_product_group_id ID of the catalogs product group that this product group promotion references
     #' @param catalog_product_group_name Catalogs product group name
-    #' @param creative_type creative_type
     #' @param collections_hero_pin_id Hero Pin ID if this PG is promoted as a Collection
     #' @param collections_hero_destination_url Collections Hero Destination Url
     #' @param grid_click_type grid_click_type
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`id` = NULL, `ad_group_id` = NULL, `bid_in_micro_currency` = NULL, `included` = NULL, `definition` = NULL, `relative_definition` = NULL, `parent_id` = NULL, `slideshow_collections_title` = NULL, `slideshow_collections_description` = NULL, `is_mdl` = NULL, `status` = NULL, `tracking_url` = NULL, `catalog_product_group_id` = NULL, `catalog_product_group_name` = NULL, `creative_type` = NULL, `collections_hero_pin_id` = NULL, `collections_hero_destination_url` = NULL, `grid_click_type` = NULL, ...) {
+    initialize = function(`id` = NULL, `ad_group_id` = NULL, `bid_in_micro_currency` = NULL, `included` = NULL, `definition` = NULL, `relative_definition` = NULL, `parent_id` = NULL, `slideshow_collections_title` = NULL, `slideshow_collections_description` = NULL, `is_mdl` = NULL, `status` = NULL, `tracking_url` = NULL, `catalog_product_group_id` = NULL, `catalog_product_group_name` = NULL, `collections_hero_pin_id` = NULL, `collections_hero_destination_url` = NULL, `grid_click_type` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
@@ -160,13 +155,6 @@ ProductGroupPromotion <- R6::R6Class(
         }
         self$`catalog_product_group_name` <- `catalog_product_group_name`
       }
-      if (!is.null(`creative_type`)) {
-        if (!(`creative_type` %in% c())) {
-          stop(paste("Error! \"", `creative_type`, "\" cannot be assigned to `creative_type`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`creative_type`))
-        self$`creative_type` <- `creative_type`
-      }
       if (!is.null(`collections_hero_pin_id`)) {
         if (!(is.character(`collections_hero_pin_id`) && length(`collections_hero_pin_id`) == 1)) {
           stop(paste("Error! Invalid data for `collections_hero_pin_id`. Must be a string:", `collections_hero_pin_id`))
@@ -187,13 +175,11 @@ ProductGroupPromotion <- R6::R6Class(
         self$`grid_click_type` <- `grid_click_type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupPromotion in JSON format
-    #' @export
     toJSON = function() {
       ProductGroupPromotionObject <- list()
       if (!is.null(self$`id`)) {
@@ -252,10 +238,6 @@ ProductGroupPromotion <- R6::R6Class(
         ProductGroupPromotionObject[["catalog_product_group_name"]] <-
           self$`catalog_product_group_name`
       }
-      if (!is.null(self$`creative_type`)) {
-        ProductGroupPromotionObject[["creative_type"]] <-
-          self$`creative_type`$toJSON()
-      }
       if (!is.null(self$`collections_hero_pin_id`)) {
         ProductGroupPromotionObject[["collections_hero_pin_id"]] <-
           self$`collections_hero_pin_id`
@@ -270,14 +252,12 @@ ProductGroupPromotion <- R6::R6Class(
       }
       ProductGroupPromotionObject
     },
-    #' Deserialize JSON string into an instance of ProductGroupPromotion
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupPromotion
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupPromotion
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -324,11 +304,6 @@ ProductGroupPromotion <- R6::R6Class(
       if (!is.null(this_object$`catalog_product_group_name`)) {
         self$`catalog_product_group_name` <- this_object$`catalog_product_group_name`
       }
-      if (!is.null(this_object$`creative_type`)) {
-        `creative_type_object` <- CreativeType$new()
-        `creative_type_object`$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
-        self$`creative_type` <- `creative_type_object`
-      }
       if (!is.null(this_object$`collections_hero_pin_id`)) {
         self$`collections_hero_pin_id` <- this_object$`collections_hero_pin_id`
       }
@@ -342,13 +317,11 @@ ProductGroupPromotion <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupPromotion in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -463,14 +436,6 @@ ProductGroupPromotion <- R6::R6Class(
           self$`catalog_product_group_name`
           )
         },
-        if (!is.null(self$`creative_type`)) {
-          sprintf(
-          '"creative_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`creative_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
         if (!is.null(self$`collections_hero_pin_id`)) {
           sprintf(
           '"collections_hero_pin_id":
@@ -499,14 +464,12 @@ ProductGroupPromotion <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ProductGroupPromotion
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupPromotion
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupPromotion
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -523,39 +486,32 @@ ProductGroupPromotion <- R6::R6Class(
       self$`tracking_url` <- this_object$`tracking_url`
       self$`catalog_product_group_id` <- this_object$`catalog_product_group_id`
       self$`catalog_product_group_name` <- this_object$`catalog_product_group_name`
-      self$`creative_type` <- CreativeType$new()$fromJSON(jsonlite::toJSON(this_object$`creative_type`, auto_unbox = TRUE, digits = NA))
       self$`collections_hero_pin_id` <- this_object$`collections_hero_pin_id`
       self$`collections_hero_destination_url` <- this_object$`collections_hero_destination_url`
       self$`grid_click_type` <- GridClickType$new()$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to ProductGroupPromotion
-    #'
+
     #' @description
     #' Validate JSON input with respect to ProductGroupPromotion and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ProductGroupPromotion
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -579,13 +535,11 @@ ProductGroupPromotion <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -610,12 +564,9 @@ ProductGroupPromotion <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

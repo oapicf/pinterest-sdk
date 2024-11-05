@@ -47,7 +47,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$TargetingTypes = "KEYWORD" # AdsAnalyticsTargetingType[] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+$TargetingTypes = "KEYWORD" # AdsAnalyticsTargetingType[] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [""AGE_BUCKET_AND_GENDER""] is in BETA and not yet available to all users.
 $Columns = "SPEND_IN_MICRO_DOLLAR" # String[] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 $Granularity = "TOTAL" # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 $ClickWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **TargetingTypes** | [**AdsAnalyticsTargetingType[]**](AdsAnalyticsTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. | 
+ **TargetingTypes** | [**AdsAnalyticsTargetingType[]**](AdsAnalyticsTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [&quot;&quot;AGE_BUCKET_AND_GENDER&quot;&quot;] is in BETA and not yet available to all users. | 
  **Columns** | [**String[]**](String.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **Granularity** | [**Granularity**](Granularity.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **ClickWindowDays** | **Int32**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
@@ -283,7 +283,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $IncludeSharedAccounts = $true # Boolean | Include shared ad accounts (optional) (default to $true)
 
 # List ad accounts
@@ -300,7 +300,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **IncludeSharedAccounts** | **Boolean**| Include shared ad accounts | [optional] [default to $true]
 
 ### Return type
@@ -388,7 +388,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $AdsAnalyticsMetricsFilter = Initialize-AdsAnalyticsMetricsFilter -Field "SPEND_IN_DOLLAR" -Operator "LESS_THAN" -Values 0
-$AdsAnalyticsCreateAsyncRequest = Initialize-AdsAnalyticsCreateAsyncRequest -StartDate "2020-12-20" -EndDate "2020-12-20" -Granularity "TOTAL" -ClickWindowDays "0" -EngagementWindowDays "0" -ViewWindowDays "0" -ConversionReportTime "TIME_OF_AD_ACTION" -AttributionTypes "INDIVIDUAL" -CampaignIds "MyCampaignIds" -CampaignStatuses "RUNNING" -CampaignObjectiveTypes "AWARENESS" -AdGroupIds "MyAdGroupIds" -AdGroupStatuses "RUNNING" -AdIds "MyAdIds" -AdStatuses "APPROVED" -ProductGroupIds "MyProductGroupIds" -ProductGroupStatuses "RUNNING" -ProductItemIds "MyProductItemIds" -TargetingTypes "KEYWORD" -MetricsFilters $AdsAnalyticsMetricsFilter -Columns "SPEND_IN_MICRO_DOLLAR" -Level "ADVERTISER" -ReportFormat "JSON" # AdsAnalyticsCreateAsyncRequest | 
+$AdsAnalyticsCreateAsyncRequest = Initialize-AdsAnalyticsCreateAsyncRequest -StartDate "2020-12-20" -EndDate "2020-12-20" -Granularity "TOTAL" -ClickWindowDays "0" -EngagementWindowDays "0" -ViewWindowDays "0" -ConversionReportTime "TIME_OF_AD_ACTION" -AttributionTypes "INDIVIDUAL" -CampaignIds "MyCampaignIds" -CampaignStatuses "RUNNING" -CampaignObjectiveTypes "AWARENESS" -AdGroupIds "MyAdGroupIds" -AdGroupStatuses "RUNNING" -AdIds "MyAdIds" -AdStatuses "APPROVED" -ProductGroupIds "MyProductGroupIds" -ProductGroupStatuses "RUNNING" -ProductItemIds "MyProductItemIds" -TargetingTypes "KEYWORD" -MetricsFilters $AdsAnalyticsMetricsFilter -Columns "SPEND_IN_MICRO_DOLLAR" -Level "ADVERTISER" -ReportFormat "JSON" -PrimarySort "BY_ID" -StartHour 0 -EndHour 0 # AdsAnalyticsCreateAsyncRequest | 
 
 # Create async request for an account analytics report
 try {
@@ -590,7 +590,7 @@ Name | Type | Description  | Notes
 
 Delete ads data for ad account in API Sandbox
 
-Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
 
 ### Example
 ```powershell
@@ -651,7 +651,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
 
@@ -669,7 +669,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
 

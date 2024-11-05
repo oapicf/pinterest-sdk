@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **lifetime_spend_cap** | **int** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional]
 **daily_spend_cap** | **int** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional]
 **order_line_id** | **string** | Order line ID that appears on the invoice. | [optional]
-**tracking_urls** | [**\OpenAPI\Client\Model\AdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional]
+**tracking_urls** | [**\OpenAPI\Client\Model\TrackingUrls**](TrackingUrls.md) |  | [optional]
 **start_time** | **int** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional]
 **end_time** | **int** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional]
-**summary_status** | [**\OpenAPI\Client\Model\CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional]
+**is_flexible_daily_budgets** | **bool** | Determine if a campaign has flexible daily budgets setup. | [optional]
 **objective_type** | [**\OpenAPI\Client\Model\ObjectiveType**](ObjectiveType.md) |  | [optional]
 **created_time** | **int** | Campaign creation time. Unix timestamp in seconds. | [optional]
 **updated_time** | **int** | UTC timestamp. Last update time. | [optional]
 **type** | **string** | Always \&quot;campaign\&quot;. | [optional]
-**is_flexible_daily_budgets** | **bool** | Determines if a campaign has flexible daily budgets setup. | [optional]
 **is_campaign_budget_optimization** | **bool** | Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. | [optional]
+**summary_status** | [**\OpenAPI\Client\Model\CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

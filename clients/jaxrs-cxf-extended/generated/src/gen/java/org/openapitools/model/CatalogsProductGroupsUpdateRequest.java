@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.model.CatalogsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsVerticalProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 

@@ -17,15 +17,13 @@ SSIOAccountPMPName <- R6::R6Class(
   public = list(
     `name` = NULL,
     `id` = NULL,
-    #' Initialize a new SSIOAccountPMPName class.
-    #'
+
     #' @description
     #' Initialize a new SSIOAccountPMPName class.
     #'
     #' @param name Display name
     #' @param id Salesforce id for PMP
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`name` = NULL, `id` = NULL, ...) {
       if (!is.null(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
@@ -40,13 +38,11 @@ SSIOAccountPMPName <- R6::R6Class(
         self$`id` <- `id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOAccountPMPName in JSON format
-    #' @export
     toJSON = function() {
       SSIOAccountPMPNameObject <- list()
       if (!is.null(self$`name`)) {
@@ -59,14 +55,12 @@ SSIOAccountPMPName <- R6::R6Class(
       }
       SSIOAccountPMPNameObject
     },
-    #' Deserialize JSON string into an instance of SSIOAccountPMPName
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOAccountPMPName
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOAccountPMPName
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`name`)) {
@@ -77,13 +71,11 @@ SSIOAccountPMPName <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOAccountPMPName in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`name`)) {
@@ -106,67 +98,54 @@ SSIOAccountPMPName <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of SSIOAccountPMPName
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOAccountPMPName
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOAccountPMPName
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
       self$`id` <- this_object$`id`
       self
     },
-    #' Validate JSON input with respect to SSIOAccountPMPName
-    #'
+
     #' @description
     #' Validate JSON input with respect to SSIOAccountPMPName and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of SSIOAccountPMPName
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

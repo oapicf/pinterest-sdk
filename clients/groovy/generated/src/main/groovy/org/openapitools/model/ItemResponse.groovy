@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemResponseAnyOf;
 import org.openapitools.model.ItemResponseAnyOf1;
@@ -20,7 +20,9 @@ class ItemResponse {
     /* The catalog item id in the merchant namespace */
     String itemId
     /* Array with the errors for the item id requested */
-    List<ItemValidationEvent> errors
+    List<ItemValidationEvent> errors = new ArrayList<>()
     /* The catalog hotel id in the merchant namespace */
     String hotelId
+    /* The catalog creative assets id in the merchant namespace */
+    String creativeAssetsId
 }

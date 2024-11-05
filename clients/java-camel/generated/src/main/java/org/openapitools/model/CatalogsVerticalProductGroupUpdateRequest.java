@@ -10,8 +10,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsHotelProductGroupUpdateRequest;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsRetailProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -31,11 +35,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupUpdateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroupUpdateRequest.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsHotelProductGroupUpdateRequest.class, name = "CatalogsHotelProductGroupUpdateRequest")
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroupUpdateRequest.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupUpdateRequest.class, name = "CatalogsCreativeAssetsProductGroupUpdateRequest"),
+  @JsonSubTypes.Type(value = CatalogsHotelProductGroupUpdateRequest.class, name = "CatalogsHotelProductGroupUpdateRequest"),
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroupUpdateRequest.class, name = "CatalogsRetailProductGroupUpdateRequest")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface CatalogsVerticalProductGroupUpdateRequest extends CatalogsProductGroupsUpdateRequest {
     public String getCatalogType();
 }

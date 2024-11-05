@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventName** | **string** | The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt; &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt; &lt;li&gt;&lt;code&gt;custom&lt;/code&gt; &lt;li&gt;&lt;code&gt;lead&lt;/code&gt; &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt; &lt;li&gt;&lt;code&gt;search&lt;/code&gt; &lt;li&gt;&lt;code&gt;signup&lt;/code&gt; &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt; &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt; | 
-**ActionSource** | **string** | The source indicating where the conversion event occurred. &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt; &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt; &lt;li&gt;&lt;code&gt;web&lt;/code&gt; &lt;li&gt;&lt;code&gt;offline&lt;/code&gt; | 
+**EventName** | **string** | &lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt;  | 
+**ActionSource** | **string** | &lt;p&gt;   The source indicating where the conversion event occurred.   &lt;ul&gt;     &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;web&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt;  | 
 **EventTime** | **int64** | The time when the event happened. Unix timestamp in seconds. | 
 **EventId** | **string** | A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. | 
 **EventSourceUrl** | Pointer to **NullableString** | URL of the web conversion event. | [optional] 
 **OptOut** | Pointer to **bool** | When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device. | [optional] 
 **PartnerName** | Pointer to **NullableString** | The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \&quot;ss-partnername\&quot; lowercase. E.g ‘ss-shopify’ | [optional] 
-**UserData** | [**NullableConversionEventsUserData**](ConversionEventsUserData.md) |  | 
+**UserData** | [**ConversionEventsUserData**](ConversionEventsUserData.md) |  | 
 **CustomData** | Pointer to [**ConversionEventsDataInnerCustomData**](ConversionEventsDataInnerCustomData.md) |  | [optional] 
 **AppId** | Pointer to **NullableString** | The app store app ID. | [optional] 
 **AppName** | Pointer to **NullableString** | Name of the app. | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewConversionEventsDataInner
 
-`func NewConversionEventsDataInner(eventName string, actionSource string, eventTime int64, eventId string, userData NullableConversionEventsUserData, ) *ConversionEventsDataInner`
+`func NewConversionEventsDataInner(eventName string, actionSource string, eventTime int64, eventId string, userData ConversionEventsUserData, ) *ConversionEventsDataInner`
 
 NewConversionEventsDataInner instantiates a new ConversionEventsDataInner object
 This constructor will assign default values to properties that have it defined,
@@ -238,16 +238,6 @@ and a boolean to check if the value has been set.
 SetUserData sets UserData field to given value.
 
 
-### SetUserDataNil
-
-`func (o *ConversionEventsDataInner) SetUserDataNil(b bool)`
-
- SetUserDataNil sets the value for UserData to be an explicit nil
-
-### UnsetUserData
-`func (o *ConversionEventsDataInner) UnsetUserData()`
-
-UnsetUserData ensures that no value is present for UserData, not even an explicit nil
 ### GetCustomData
 
 `func (o *ConversionEventsDataInner) GetCustomData() ConversionEventsDataInnerCustomData`

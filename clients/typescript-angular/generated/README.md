@@ -1,5 +1,9 @@
 ## @
 
+Pinterest\'s REST API
+
+The version of the OpenAPI document: 5.14.0
+
 ### Building
 
 To install the required dependencies and to build the typescript sources run:

@@ -38,7 +38,7 @@ import play.api.libs.json._
   * @param LIST_PRICE_INVALID Some items have list price formatting errors in their product metadata, those items will not be published.
   * @param PRICE_CANNOT_BE_DETERMINED Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CatalogsFeedValidationErrors(
   FETCH_ERROR: Option[Int],
   FETCH_INACTIVE_FEED_ERROR: Option[Int],

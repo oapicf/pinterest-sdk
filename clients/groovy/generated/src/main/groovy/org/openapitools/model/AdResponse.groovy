@@ -6,18 +6,18 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.PinPromotionSummaryStatus;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 
 @Canonical
 class AdResponse {
     /* ID of the ad group that contains the ad. */
     String adGroupId
-    /* Deep link URL for Android devices. Not currently available. Using this field will generate an error. */
+    /* Deep link URL for Android devices. */
     String androidDeepLink
     /* Comma-separated deep links for the carousel pin on Android. */
     List<String> carouselAndroidDeepLinks
@@ -31,7 +31,7 @@ class AdResponse {
     CreativeType creativeType
     /* Destination URL. */
     String destinationUrl
-    /* Deep link URL for iOS devices. Not currently available. Using this field will generate an error. */
+    /* Deep link URL for iOS devices. */
     String iosDeepLink
     /* Is original pin deleted? */
     Boolean isPinDeleted
@@ -42,7 +42,7 @@ class AdResponse {
     
     EntityStatus status
     
-    AdCommonTrackingUrls trackingUrls
+    TrackingUrls trackingUrls
     /* Tracking URL for ad impressions. */
     String viewTrackingUrl
     /* Lead form ID for lead ad generation. */
@@ -70,7 +70,7 @@ class AdResponse {
         
         GET_QUOTE("GET_QUOTE"),
         
-        VISIT_WEBSITE("VISIT_WEBSITE"),
+        VISIT_SITE("VISIT_SITE"),
         
         APPLY_NOW("APPLY_NOW"),
         
@@ -86,9 +86,7 @@ class AdResponse {
         
         WATCH_NOW("WATCH_NOW"),
         
-        READ_MORE("READ_MORE"),
-        
-        NULL("null")
+        READ_MORE("READ_MORE")
     
         private final String value
     
@@ -106,10 +104,10 @@ class AdResponse {
         }
     }
 
-    /* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
+    /* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
     CustomizableCtaTypeEnum customizableCtaType
-    
-    AdCommonQuizPinData quizPinData
+    /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
+    QuizPinData quizPinData
     /* Pin ID. */
     String pinId
     /* The ID of the advertiser that this ad belongs to. */
@@ -238,9 +236,9 @@ class AdResponse {
     }
 
     /* Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\". */
-    List<RejectedReasonsEnum> rejectedReasons
+    List<RejectedReasonsEnum> rejectedReasons = new ArrayList<>()
     /* Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\". */
-    List<String> rejectionLabels
+    List<String> rejectionLabels = new ArrayList<>()
 
     enum ReviewStatusEnum {
     

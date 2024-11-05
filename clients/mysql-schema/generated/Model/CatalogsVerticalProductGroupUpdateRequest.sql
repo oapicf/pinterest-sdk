@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsVerticalProductGroupUpdateRequest`
 --
-SELECT `catalog_type`, `name`, `description`, `filters` FROM `CatalogsVerticalProductGroupUpdateRequest` WHERE 1;
+SELECT `catalog_type`, `name`, `description`, `filters`, `country`, `locale` FROM `CatalogsVerticalProductGroupUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsVerticalProductGroupUpdateRequest`
 --
-INSERT INTO `CatalogsVerticalProductGroupUpdateRequest`(`catalog_type`, `name`, `description`, `filters`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsVerticalProductGroupUpdateRequest`(`catalog_type`, `name`, `description`, `filters`, `country`, `locale`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsVerticalProductGroupUpdateRequest`
 --
-UPDATE `CatalogsVerticalProductGroupUpdateRequest` SET `catalog_type` = ?, `name` = ?, `description` = ?, `filters` = ? WHERE 1;
+UPDATE `CatalogsVerticalProductGroupUpdateRequest` SET `catalog_type` = ?, `name` = ?, `description` = ?, `filters` = ?, `country` = ?, `locale` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsVerticalProductGroupUpdateRequest`

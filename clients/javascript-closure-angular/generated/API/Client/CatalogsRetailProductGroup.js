@@ -71,16 +71,32 @@ API.Client.CatalogsRetailProductGroup.prototype.createdAt;
 API.Client.CatalogsRetailProductGroup.prototype.updatedAt;
 
 /**
+ * Catalog id pertaining to the retail product group.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailProductGroup.prototype.catalogId;
+
+/**
+ * id of the catalogs feed belonging to this catalog product group
  * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailProductGroup.prototype.feedId;
 
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailProductGroup.prototype.country;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailProductGroup.prototype.locale;
+
 /** @enum {string} */
 API.Client.CatalogsRetailProductGroup.CatalogTypeEnum = { 
   RETAIL: 'RETAIL',
-}
-/** @enum {string} */
-API.Client.CatalogsRetailProductGroup.FeedIdEnum = { 
-  : '',
 }

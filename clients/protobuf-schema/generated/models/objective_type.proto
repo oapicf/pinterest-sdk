@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -22,4 +22,5 @@ enum ObjectiveType {
   ObjectiveType_WEB_CONVERSION = 3;
   ObjectiveType_CATALOG_SALES = 4;
   ObjectiveType_WEB_SESSIONS = 5;
+  ObjectiveType_VIDEO_COMPLETION = 6;
 }

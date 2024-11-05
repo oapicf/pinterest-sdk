@@ -70,9 +70,19 @@ private class OASQuizPinDataTest {
     }
 
     @isTest
+    private static void maintainRenamedProperties() {
+        OASQuizPinData quizPinData = new OASQuizPinData();
+        Map<String, String> x-property-mappings = quizPinData.getx-property-mappings();
+        System.assertEquals('tieBreakerType', x-property-mappings.get('tie_breaker_type'));
+        System.assertEquals('tieBreakerCustomResult', x-property-mappings.get('tie_breaker_custom_result'));
+    }
+
+    @isTest
     private static void defaultValuesPopulated() {
         OASQuizPinData quizPinData = new OASQuizPinData();
         System.assertEquals(new List<OASQuizPinQuestion>(), quizPinData.questions);
         System.assertEquals(new List<OASQuizPinResult>(), quizPinData.results);
+        System.assertEquals(null, quizPinData.tieBreakerType);
+        System.assertEquals(null, quizPinData.tieBreakerCustomResult);
     }
 }

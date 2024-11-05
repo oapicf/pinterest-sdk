@@ -28,7 +28,7 @@ import javax.validation.Valid;
 @Api(description = "the users API")
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 
 public class UsersApi  {
 
@@ -43,6 +43,8 @@ public class UsersApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List following interests", notes = "Get a list of a user's following interests in one place.", response = UserAccountFollowedInterests200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers") })
          }, tags={ "user_account" })
     @ApiResponses(value = { 
@@ -51,7 +53,7 @@ public class UsersApi  {
         @ApiResponse(code = 401, message = "Authorization failed", response = Error.class),
         @ApiResponse(code = 404, message = "User not found", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response userAccountFollowedInterests( @Pattern(regexp="(?!^\\d+$)^.+$")@ApiParam(value = "A valid username",required=true) @PathParam("username") String username, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+    public Response userAccountFollowedInterests( @Pattern(regexp="(?!^\\d+$)^.+$")@ApiParam(value = "A valid username",required=true) @PathParam("username") String username, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.userAccountFollowedInterests(username, bookmark, pageSize, securityContext);
     }
 }

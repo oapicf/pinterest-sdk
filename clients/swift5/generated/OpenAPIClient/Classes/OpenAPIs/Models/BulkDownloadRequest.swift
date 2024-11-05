@@ -13,6 +13,7 @@ import AnyCodable
 /** Ad entities to get in bulk request. */
 public struct BulkDownloadRequest: Codable, JSONEncodable, Hashable {
 
+    static let entityTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
     static let updatedSinceRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** All entity types specified will be downloaded. Fewer types result in faster downloads. */
     public var entityTypes: [BulkEntityType]?

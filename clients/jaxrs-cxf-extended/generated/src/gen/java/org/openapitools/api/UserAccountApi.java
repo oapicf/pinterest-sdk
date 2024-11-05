@@ -66,7 +66,7 @@ public interface UserAccountApi  {
     /**
      * Follow user
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      *
      */
     @POST
@@ -197,7 +197,7 @@ public interface UserAccountApi  {
     /**
      * Get user account
      *
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      *
      */
     @GET
@@ -255,7 +255,7 @@ public interface UserAccountApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = UserWebsiteSummary.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public UserWebsiteSummary verifyWebsiteUpdate(@Valid UserWebsiteVerifyRequest userWebsiteVerifyRequest);
+    public UserWebsiteSummary verifyWebsiteUpdate(@Valid UserWebsiteVerifyRequest userWebsiteVerifyRequest, @QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 
     /**
      * Get user verification code for website claiming
@@ -271,5 +271,5 @@ public interface UserAccountApi  {
         @ApiResponse(code = 200, message = "Success", response = UserWebsiteVerificationCode.class),
         @ApiResponse(code = 403, message = "Not authorized to access the user verification code for website claiming.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public UserWebsiteVerificationCode websiteVerificationGet();
+    public UserWebsiteVerificationCode websiteVerificationGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 }

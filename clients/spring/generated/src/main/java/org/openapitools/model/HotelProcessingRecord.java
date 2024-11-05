@@ -25,16 +25,16 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "HotelProcessingRecord", description = "Object describing an item processing record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class HotelProcessingRecord {
 
   private String hotelId;
 
   @Valid
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   @Valid
-  private List<@Valid ItemValidationEvent> warnings;
+  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   private ItemProcessingStatus status;
 
@@ -46,7 +46,7 @@ public class HotelProcessingRecord {
   /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  */
+   */
   
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hotel_id")
@@ -74,7 +74,7 @@ public class HotelProcessingRecord {
   /**
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
    * @return errors
-  */
+   */
   @Valid 
   @Schema(name = "errors", description = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")
@@ -102,7 +102,7 @@ public class HotelProcessingRecord {
   /**
    * Array with the validation warnings for the item processing record
    * @return warnings
-  */
+   */
   @Valid 
   @Schema(name = "warnings", description = "Array with the validation warnings for the item processing record", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("warnings")
@@ -122,7 +122,7 @@ public class HotelProcessingRecord {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")

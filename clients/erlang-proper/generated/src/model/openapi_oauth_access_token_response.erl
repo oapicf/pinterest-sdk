@@ -21,7 +21,7 @@ openapi_oauth_access_token_response() ->
     openapi_oauth_access_token_response([]).
 
 openapi_oauth_access_token_response(Fields) ->
-  Default = [ {'response_type', elements([<<"authorization_code">>, <<"refresh_token">>]) }
+  Default = [ {'response_type', elements([<<"authorization_code">>, <<"refresh_token">>, <<"client_credentials">>]) }
             , {'access_token', binary() }
             , {'token_type', binary() }
             , {'expires_in', integer() }

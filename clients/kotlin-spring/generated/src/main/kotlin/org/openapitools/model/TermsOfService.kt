@@ -33,7 +33,7 @@ data class TermsOfService(
 
     @Schema(example = "549755885175", description = "The ID of the ad account.")
     @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null
-) {
+    ) {
 
 }
 

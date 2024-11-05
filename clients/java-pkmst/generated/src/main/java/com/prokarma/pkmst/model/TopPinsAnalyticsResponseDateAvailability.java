@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  * TopPinsAnalyticsResponseDateAvailability
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopPinsAnalyticsResponseDateAvailability   {
   @JsonProperty("latest_available_timestamp")
   private BigDecimal latestAvailableTimestamp;
@@ -29,10 +29,10 @@ public class TopPinsAnalyticsResponseDateAvailability   {
     return this;
   }
 
-   /**
+  /**
    * Get latestAvailableTimestamp
    * @return latestAvailableTimestamp
-  **/
+   */
   @ApiModelProperty(example = "1649116799000", value = "")
   public BigDecimal getLatestAvailableTimestamp() {
     return latestAvailableTimestamp;
@@ -47,10 +47,10 @@ public class TopPinsAnalyticsResponseDateAvailability   {
     return this;
   }
 
-   /**
+  /**
    * Get isRealtime
    * @return isRealtime
-  **/
+   */
   @ApiModelProperty(example = "false", value = "")
   public Boolean getIsRealtime() {
     return isRealtime;

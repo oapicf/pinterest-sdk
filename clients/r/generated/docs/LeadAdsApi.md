@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Delete lead ads subscription
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -67,7 +67,7 @@ void (empty response body)
 
 Get lead ads subscription
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 Get lead ads subscriptions
 
-Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -132,7 +132,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
 
 api_instance <- LeadAdsApi$new()
@@ -149,7 +149,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
 
 ### Return type
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 Create lead ads subscription
 
-Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -187,7 +187,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_ad_account_create_subscription_request <- AdAccountCreateSubscriptionRequest$new("webhook_url_example", "lead_form_id_example", "partner_access_token_example", "partner_refresh_token_example") # AdAccountCreateSubscriptionRequest | Subscription to create.
+var_ad_account_create_subscription_request <- AdAccountCreateSubscriptionRequest$new("webhook_url_example", "lead_form_id_example", "partner_access_token_example", "partner_refresh_token_example", AdAccountCreateSubscriptionRequest_partner_metadata$new("subscriber_key_example")) # AdAccountCreateSubscriptionRequest | Subscription to create.
 
 api_instance <- LeadAdsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

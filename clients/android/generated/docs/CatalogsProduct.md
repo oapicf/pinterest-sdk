@@ -6,7 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | [**CatalogsProductMetadata**](CatalogsProductMetadata.md) |  | 
+**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **pin** | [**Pin**](Pin.md) |  | 
 
 

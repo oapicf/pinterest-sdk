@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **char \*** |  | [optional] 
-**id** | **char \*** |  | [optional] 
-**updated_at** | **char \*** |  | [optional] 
+**created_at** | **char \*** |  | 
+**id** | **char \*** |  | 
+**updated_at** | **char \*** |  | 
 **name** | **char \*** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | **catalogs_format_t \*** |  | 
 **catalog_type** | **catalogs_type_t \*** |  | 

@@ -25,8 +25,7 @@ AudienceInsightsResponse <- R6::R6Class(
     `date` = NULL,
     `size` = NULL,
     `size_is_upper_bound` = NULL,
-    #' Initialize a new AudienceInsightsResponse class.
-    #'
+
     #' @description
     #' Initialize a new AudienceInsightsResponse class.
     #'
@@ -37,7 +36,6 @@ AudienceInsightsResponse <- R6::R6Class(
     #' @param size Population count.
     #' @param size_is_upper_bound Indicates whether the audience size has been rounded up to the next highest upper boundary.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`categories` = NULL, `demographics` = NULL, `type` = NULL, `date` = NULL, `size` = NULL, `size_is_upper_bound` = NULL, ...) {
       if (!is.null(`categories`)) {
         stopifnot(is.vector(`categories`), length(`categories`) != 0)
@@ -74,13 +72,11 @@ AudienceInsightsResponse <- R6::R6Class(
         self$`size_is_upper_bound` <- `size_is_upper_bound`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceInsightsResponse in JSON format
-    #' @export
     toJSON = function() {
       AudienceInsightsResponseObject <- list()
       if (!is.null(self$`categories`)) {
@@ -109,14 +105,12 @@ AudienceInsightsResponse <- R6::R6Class(
       }
       AudienceInsightsResponseObject
     },
-    #' Deserialize JSON string into an instance of AudienceInsightsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceInsightsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceInsightsResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`categories`)) {
@@ -143,13 +137,11 @@ AudienceInsightsResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceInsightsResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`categories`)) {
@@ -204,14 +196,12 @@ AudienceInsightsResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AudienceInsightsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceInsightsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceInsightsResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`categories` <- ApiClient$new()$deserializeObj(this_object$`categories`, "array[AudienceCategory]", loadNamespace("openapi"))
@@ -222,33 +212,27 @@ AudienceInsightsResponse <- R6::R6Class(
       self$`size_is_upper_bound` <- this_object$`size_is_upper_bound`
       self
     },
-    #' Validate JSON input with respect to AudienceInsightsResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to AudienceInsightsResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AudienceInsightsResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`date`, "^\\d{4}-\\d{2}-\\d{2}$")) {
         return(FALSE)
@@ -256,13 +240,11 @@ AudienceInsightsResponse <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`date`, "^\\d{4}-\\d{2}-\\d{2}$")) {
@@ -271,12 +253,9 @@ AudienceInsightsResponse <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

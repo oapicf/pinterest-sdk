@@ -21,7 +21,7 @@ Method | HTTP request | Description
 > models::AdsCreditRedeemResponse ads_credit_slash_redeem(ad_account_id, ads_credit_redeem_request)
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Parameters
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Required | Notes
 > models::AdsCreditsDiscountsGet200Response ads_credits_discounts_slash_get(ad_account_id, bookmark, page_size)
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Parameters
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 
 ### Return type
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Required | Notes
 > models::BillingProfilesGet200Response billing_profiles_slash_get(ad_account_id, is_active, bookmark, page_size)
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Parameters
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Required | Notes
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **is_active** | **bool** | Return active billing profiles, if false return all billing profiles. | [required] |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 
 ### Return type
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 
 ### Return type
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **pin_order_id** | Option<**String**> | The pin order id associated with the ssio insertino order |  |
 
 ### Return type

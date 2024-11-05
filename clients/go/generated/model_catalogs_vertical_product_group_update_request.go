@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,12 +13,22 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
-// CatalogsVerticalProductGroupUpdateRequest - Request object for updating a hotel product group.
+// CatalogsVerticalProductGroupUpdateRequest - Request object for updating a catalog based product group.
 type CatalogsVerticalProductGroupUpdateRequest struct {
+	CatalogsCreativeAssetsProductGroupUpdateRequest *CatalogsCreativeAssetsProductGroupUpdateRequest
 	CatalogsHotelProductGroupUpdateRequest *CatalogsHotelProductGroupUpdateRequest
+	CatalogsRetailProductGroupUpdateRequest *CatalogsRetailProductGroupUpdateRequest
+}
+
+// CatalogsCreativeAssetsProductGroupUpdateRequestAsCatalogsVerticalProductGroupUpdateRequest is a convenience function that returns CatalogsCreativeAssetsProductGroupUpdateRequest wrapped in CatalogsVerticalProductGroupUpdateRequest
+func CatalogsCreativeAssetsProductGroupUpdateRequestAsCatalogsVerticalProductGroupUpdateRequest(v *CatalogsCreativeAssetsProductGroupUpdateRequest) CatalogsVerticalProductGroupUpdateRequest {
+	return CatalogsVerticalProductGroupUpdateRequest{
+		CatalogsCreativeAssetsProductGroupUpdateRequest: v,
+	}
 }
 
 // CatalogsHotelProductGroupUpdateRequestAsCatalogsVerticalProductGroupUpdateRequest is a convenience function that returns CatalogsHotelProductGroupUpdateRequest wrapped in CatalogsVerticalProductGroupUpdateRequest
@@ -28,11 +38,35 @@ func CatalogsHotelProductGroupUpdateRequestAsCatalogsVerticalProductGroupUpdateR
 	}
 }
 
+// CatalogsRetailProductGroupUpdateRequestAsCatalogsVerticalProductGroupUpdateRequest is a convenience function that returns CatalogsRetailProductGroupUpdateRequest wrapped in CatalogsVerticalProductGroupUpdateRequest
+func CatalogsRetailProductGroupUpdateRequestAsCatalogsVerticalProductGroupUpdateRequest(v *CatalogsRetailProductGroupUpdateRequest) CatalogsVerticalProductGroupUpdateRequest {
+	return CatalogsVerticalProductGroupUpdateRequest{
+		CatalogsRetailProductGroupUpdateRequest: v,
+	}
+}
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CatalogsVerticalProductGroupUpdateRequest) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsProductGroupUpdateRequest
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsProductGroupUpdateRequest)
+	if err == nil {
+		jsonCatalogsCreativeAssetsProductGroupUpdateRequest, _ := json.Marshal(dst.CatalogsCreativeAssetsProductGroupUpdateRequest)
+		if string(jsonCatalogsCreativeAssetsProductGroupUpdateRequest) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsProductGroupUpdateRequest = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsProductGroupUpdateRequest); err != nil {
+				dst.CatalogsCreativeAssetsProductGroupUpdateRequest = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsCreativeAssetsProductGroupUpdateRequest = nil
+	}
+
 	// try to unmarshal data into CatalogsHotelProductGroupUpdateRequest
 	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelProductGroupUpdateRequest)
 	if err == nil {
@@ -40,15 +74,38 @@ func (dst *CatalogsVerticalProductGroupUpdateRequest) UnmarshalJSON(data []byte)
 		if string(jsonCatalogsHotelProductGroupUpdateRequest) == "{}" { // empty struct
 			dst.CatalogsHotelProductGroupUpdateRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsHotelProductGroupUpdateRequest); err != nil {
+				dst.CatalogsHotelProductGroupUpdateRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsHotelProductGroupUpdateRequest = nil
 	}
 
+	// try to unmarshal data into CatalogsRetailProductGroupUpdateRequest
+	err = newStrictDecoder(data).Decode(&dst.CatalogsRetailProductGroupUpdateRequest)
+	if err == nil {
+		jsonCatalogsRetailProductGroupUpdateRequest, _ := json.Marshal(dst.CatalogsRetailProductGroupUpdateRequest)
+		if string(jsonCatalogsRetailProductGroupUpdateRequest) == "{}" { // empty struct
+			dst.CatalogsRetailProductGroupUpdateRequest = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsRetailProductGroupUpdateRequest); err != nil {
+				dst.CatalogsRetailProductGroupUpdateRequest = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsRetailProductGroupUpdateRequest = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.CatalogsCreativeAssetsProductGroupUpdateRequest = nil
 		dst.CatalogsHotelProductGroupUpdateRequest = nil
+		dst.CatalogsRetailProductGroupUpdateRequest = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(CatalogsVerticalProductGroupUpdateRequest)")
 	} else if match == 1 {
@@ -60,8 +117,16 @@ func (dst *CatalogsVerticalProductGroupUpdateRequest) UnmarshalJSON(data []byte)
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsVerticalProductGroupUpdateRequest) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsProductGroupUpdateRequest != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsProductGroupUpdateRequest)
+	}
+
 	if src.CatalogsHotelProductGroupUpdateRequest != nil {
 		return json.Marshal(&src.CatalogsHotelProductGroupUpdateRequest)
+	}
+
+	if src.CatalogsRetailProductGroupUpdateRequest != nil {
+		return json.Marshal(&src.CatalogsRetailProductGroupUpdateRequest)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -72,8 +137,16 @@ func (obj *CatalogsVerticalProductGroupUpdateRequest) GetActualInstance() (inter
 	if obj == nil {
 		return nil
 	}
+	if obj.CatalogsCreativeAssetsProductGroupUpdateRequest != nil {
+		return obj.CatalogsCreativeAssetsProductGroupUpdateRequest
+	}
+
 	if obj.CatalogsHotelProductGroupUpdateRequest != nil {
 		return obj.CatalogsHotelProductGroupUpdateRequest
+	}
+
+	if obj.CatalogsRetailProductGroupUpdateRequest != nil {
+		return obj.CatalogsRetailProductGroupUpdateRequest
 	}
 
 	// all schemas are nil

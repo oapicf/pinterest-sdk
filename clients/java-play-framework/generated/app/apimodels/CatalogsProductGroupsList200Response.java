@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import apimodels.CatalogsVerticalProductGroup;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,25 +15,25 @@ import javax.validation.Valid;
 /**
  * CatalogsProductGroupsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupsList200Response   {
   @JsonProperty("items")
   @NotNull
 @Valid
 
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsVerticalProductGroup> items = new ArrayList<>();
 
   @JsonProperty("bookmark")
   
   private String bookmark;
 
-  public CatalogsProductGroupsList200Response items(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response items(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsProductGroupsList200Response addItemsItem(CatalogsProductGroupsList200ResponseAllOfItemsInner itemsItem) {
+  public CatalogsProductGroupsList200Response addItemsItem(CatalogsVerticalProductGroup itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -45,11 +45,11 @@ public class CatalogsProductGroupsList200Response   {
    * Get items
    * @return items
   **/
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<@Valid CatalogsVerticalProductGroup> getItems() {
     return items;
   }
 
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 

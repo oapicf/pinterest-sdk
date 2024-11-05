@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceInsightCategoryArrayResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightCategoryArrayResponse   {
-  private @Valid List<@Valid AudienceInsightCategoryCommon> items;
+  private @Valid List<@Valid AudienceInsightCategoryCommon> items = new ArrayList<>();
 
   /**
    **/
@@ -33,7 +33,7 @@ public class AudienceInsightCategoryArrayResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<AudienceInsightCategoryCommon> getItems() {
+  @Valid public List<@Valid AudienceInsightCategoryCommon> getItems() {
     return items;
   }
 

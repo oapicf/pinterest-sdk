@@ -121,15 +121,19 @@ class UserAccountApi(
       }
     } ~
     path("user_account" / "websites") { 
-      post {  
+      post { 
+        parameters("ad_account_id".as[String].?) { (adAccountId) => 
             entity(as[UserWebsiteVerifyRequest]){ userWebsiteVerifyRequest =>
-              userAccountService.verifyWebsiteUpdate(userWebsiteVerifyRequest = userWebsiteVerifyRequest)
+              userAccountService.verifyWebsiteUpdate(userWebsiteVerifyRequest = userWebsiteVerifyRequest, adAccountId = adAccountId)
             }
+        }
       }
     } ~
     path("user_account" / "websites" / "verification") { 
-      get {  
-            userAccountService.websiteVerificationGet()
+      get { 
+        parameters("ad_account_id".as[String].?) { (adAccountId) => 
+            userAccountService.websiteVerificationGet(adAccountId = adAccountId)
+        }
       }
     }
 }
@@ -320,7 +324,7 @@ trait UserAccountApiService {
    * Code: 200, Message: Success, DataType: UserWebsiteSummary
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest)
+  def verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerUserWebsiteSummary: ToEntityMarshaller[UserWebsiteSummary]): Route
 
   def websiteVerificationGet200(responseUserWebsiteVerificationCode: UserWebsiteVerificationCode)(implicit toEntityMarshallerUserWebsiteVerificationCode: ToEntityMarshaller[UserWebsiteVerificationCode]): Route =
@@ -334,7 +338,7 @@ trait UserAccountApiService {
    * Code: 403, Message: Not authorized to access the user verification code for website claiming., DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def websiteVerificationGet()
+  def websiteVerificationGet(adAccountId: Option[String])
       (implicit toEntityMarshallerUserWebsiteVerificationCode: ToEntityMarshaller[UserWebsiteVerificationCode], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }

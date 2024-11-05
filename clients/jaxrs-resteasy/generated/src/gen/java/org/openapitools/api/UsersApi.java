@@ -28,7 +28,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the users API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UsersApi  {
 
     @Inject UsersApiService service;
@@ -39,6 +39,9 @@ public class UsersApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List following interests", notes = "Get a list of a user's following interests in one place.", response = UserAccountFollowedInterests200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })

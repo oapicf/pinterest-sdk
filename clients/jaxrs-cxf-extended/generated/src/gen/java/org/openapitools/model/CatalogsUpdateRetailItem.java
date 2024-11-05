@@ -32,10 +32,7 @@ public class CatalogsUpdateRetailItem  {
 
 public enum OperationEnum {
 
-    @JsonProperty("CREATE") CREATE(String.valueOf("CREATE")),
-    @JsonProperty("UPDATE") UPDATE(String.valueOf("UPDATE")),
-    @JsonProperty("UPSERT") UPSERT(String.valueOf("UPSERT")),
-    @JsonProperty("DELETE") DELETE(String.valueOf("DELETE"));
+    @JsonProperty("UPDATE") UPDATE(String.valueOf("UPDATE"));
 
     private String value;
 

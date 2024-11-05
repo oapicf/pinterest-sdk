@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,11 +25,12 @@ type AdAccountCreateSubscriptionRequest struct {
 	// Standard HTTPS webhook URL.
 	WebhookUrl string `json:"webhook_url"`
 	// Lead form ID.
-	LeadFormId *string `json:"lead_form_id,omitempty"`
+	LeadFormId *string `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerAccessToken *string `json:"partner_access_token,omitempty"`
 	// Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	PartnerRefreshToken *string `json:"partner_refresh_token,omitempty"`
+	PartnerMetadata *AdAccountCreateSubscriptionRequestPartnerMetadata `json:"partner_metadata,omitempty"`
 }
 
 type _AdAccountCreateSubscriptionRequest AdAccountCreateSubscriptionRequest
@@ -172,6 +173,38 @@ func (o *AdAccountCreateSubscriptionRequest) SetPartnerRefreshToken(v string) {
 	o.PartnerRefreshToken = &v
 }
 
+// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
+func (o *AdAccountCreateSubscriptionRequest) GetPartnerMetadata() AdAccountCreateSubscriptionRequestPartnerMetadata {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		var ret AdAccountCreateSubscriptionRequestPartnerMetadata
+		return ret
+	}
+	return *o.PartnerMetadata
+}
+
+// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdAccountCreateSubscriptionRequest) GetPartnerMetadataOk() (*AdAccountCreateSubscriptionRequestPartnerMetadata, bool) {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		return nil, false
+	}
+	return o.PartnerMetadata, true
+}
+
+// HasPartnerMetadata returns a boolean if a field has been set.
+func (o *AdAccountCreateSubscriptionRequest) HasPartnerMetadata() bool {
+	if o != nil && !IsNil(o.PartnerMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerMetadata gets a reference to the given AdAccountCreateSubscriptionRequestPartnerMetadata and assigns it to the PartnerMetadata field.
+func (o *AdAccountCreateSubscriptionRequest) SetPartnerMetadata(v AdAccountCreateSubscriptionRequestPartnerMetadata) {
+	o.PartnerMetadata = &v
+}
+
 func (o AdAccountCreateSubscriptionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,6 +224,9 @@ func (o AdAccountCreateSubscriptionRequest) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.PartnerRefreshToken) {
 		toSerialize["partner_refresh_token"] = o.PartnerRefreshToken
+	}
+	if !IsNil(o.PartnerMetadata) {
+		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
 	return toSerialize, nil
 }

@@ -29,26 +29,25 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiBoardsUserFollowsListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiBoardsUserFollowsListRequest = {
-  // string | Cursor used to fetch the next page of items (optional)
+const request: UserAccountApiBoardsUserFollowsListRequest = {
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+    // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
   explicitFollowing: false,
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.boardsUserFollowsList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.boardsUserFollowsList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -57,7 +56,7 @@ apiInstance.boardsUserFollowsList(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **explicitFollowing** | [**boolean**] | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | (optional) defaults to false
  **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
 
@@ -68,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -88,30 +87,29 @@ Name | Type | Description  | Notes
 # **followUserUpdate**
 > UserSummary followUserUpdate(followUserRequest)
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiFollowUserUpdateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiFollowUserUpdateRequest = {
-  // string | A valid username
+const request: UserAccountApiFollowUserUpdateRequest = {
+    // A valid username
   username: "username",
-  // FollowUserRequest | Follow a user.
+    // Follow a user.
   followUserRequest: {
     autoFollow: false,
   },
 };
 
-apiInstance.followUserUpdate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.followUserUpdate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -155,22 +153,21 @@ Get a list of your followers.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiFollowersListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiFollowersListRequest = {
-  // string | Cursor used to fetch the next page of items (optional)
+const request: UserAccountApiFollowersListRequest = {
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.followersList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.followersList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -179,7 +176,7 @@ apiInstance.followersList(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -188,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -214,17 +211,15 @@ Get a list of your linked business accounts.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:any = {};
+const request = {};
 
-apiInstance.linkedBusinessAccountsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.linkedBusinessAccountsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -238,7 +233,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -263,20 +258,19 @@ Unverifu a website verified by the signed-in user.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUnverifyWebsiteDeleteRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUnverifyWebsiteDeleteRequest = {
-  // string | Website with path or domain only
+const request: UserAccountApiUnverifyWebsiteDeleteRequest = {
+    // Website with path or domain only
   website: "mysite.test",
 };
 
-apiInstance.unverifyWebsiteDelete(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.unverifyWebsiteDelete(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -319,40 +313,39 @@ Get analytics for the \"operation user_account\" - By default, the \"operation u
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUserAccountAnalyticsRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUserAccountAnalyticsRequest = {
-  // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+const request: UserAccountApiUserAccountAnalyticsRequest = {
+    // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   startDate: new Date('1970-01-01').toISOString().split('T')[0];,
-  // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+    // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   endDate: new Date('1970-01-01').toISOString().split('T')[0];,
-  // 'OTHER' | 'CLAIMED' | 'BOTH' | Filter on Pins that match your claimed domain. (optional)
+    // Filter on Pins that match your claimed domain. (optional)
   fromClaimedContent: "BOTH",
-  // 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO' | Pin formats to get data for, default is all. (optional)
+    // Pin formats to get data for, default is all. (optional)
   pinFormat: "ALL",
-  // 'ALL' | 'MOBILE' | 'TABLET' | 'WEB' | Apps or devices to get data for, default is all. (optional)
+    // Apps or devices to get data for, default is all. (optional)
   appTypes: "ALL",
-  // 'ALL' | 'PAID' | 'ORGANIC' | Filter to paid or organic data. Default is all. (optional)
+    // Filter to paid or organic data. Default is all. (optional)
   contentType: "ALL",
-  // 'ALL' | 'YOUR_PINS' | 'OTHER_PINS' | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
+    // Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
   source: "ALL",
-  // Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'> | Metric types to get data for, default is all.  (optional)
+    // Metric types to get data for, default is all.  (optional)
   metricTypes: [
     "ENGAGEMENT",
   ],
-  // 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT' | How to split the data into groups. Not including this param means data won\'t be split. (optional)
+    // How to split the data into groups. Not including this param means data won\'t be split. (optional)
   splitField: "NO_SPLIT",
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.userAccountAnalytics(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.userAccountAnalytics(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -363,7 +356,7 @@ Name | Type | Description  | Notes
  **startDate** | [**string**] | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | defaults to undefined
  **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined
  **fromClaimedContent** | [**&#39;OTHER&#39; | &#39;CLAIMED&#39; | &#39;BOTH&#39;**]**Array<&#39;OTHER&#39; &#124; &#39;CLAIMED&#39; &#124; &#39;BOTH&#39;>** | Filter on Pins that match your claimed domain. | (optional) defaults to 'BOTH'
- **pinFormat** | [**&#39;ALL&#39; | &#39;ORGANIC_IMAGE&#39; | &#39;ORGANIC_PRODUCT&#39; | &#39;ORGANIC_VIDEO&#39; | &#39;ADS_STANDARD&#39; | &#39;ADS_PRODUCT&#39; | &#39;ADS_VIDEO&#39; | &#39;ADS_IDEA&#39; | &#39;PRODUCT&#39; | &#39;REGULAR&#39; | &#39;VIDEO&#39;**]**Array<&#39;ALL&#39; &#124; &#39;ORGANIC_IMAGE&#39; &#124; &#39;ORGANIC_PRODUCT&#39; &#124; &#39;ORGANIC_VIDEO&#39; &#124; &#39;ADS_STANDARD&#39; &#124; &#39;ADS_PRODUCT&#39; &#124; &#39;ADS_VIDEO&#39; &#124; &#39;ADS_IDEA&#39; &#124; &#39;PRODUCT&#39; &#124; &#39;REGULAR&#39; &#124; &#39;VIDEO&#39;>** | Pin formats to get data for, default is all. | (optional) defaults to 'ALL'
+ **pinFormat** | [**&#39;ALL&#39; | &#39;ORGANIC_IMAGE&#39; | &#39;ORGANIC_PRODUCT&#39; | &#39;ORGANIC_VIDEO&#39; | &#39;ADS_STANDARD&#39; | &#39;ADS_PRODUCT&#39; | &#39;ADS_VIDEO&#39; | &#39;ADS_IDEA&#39;**]**Array<&#39;ALL&#39; &#124; &#39;ORGANIC_IMAGE&#39; &#124; &#39;ORGANIC_PRODUCT&#39; &#124; &#39;ORGANIC_VIDEO&#39; &#124; &#39;ADS_STANDARD&#39; &#124; &#39;ADS_PRODUCT&#39; &#124; &#39;ADS_VIDEO&#39; &#124; &#39;ADS_IDEA&#39;>** | Pin formats to get data for, default is all. | (optional) defaults to 'ALL'
  **appTypes** | [**&#39;ALL&#39; | &#39;MOBILE&#39; | &#39;TABLET&#39; | &#39;WEB&#39;**]**Array<&#39;ALL&#39; &#124; &#39;MOBILE&#39; &#124; &#39;TABLET&#39; &#124; &#39;WEB&#39;>** | Apps or devices to get data for, default is all. | (optional) defaults to 'ALL'
  **contentType** | [**&#39;ALL&#39; | &#39;PAID&#39; | &#39;ORGANIC&#39;**]**Array<&#39;ALL&#39; &#124; &#39;PAID&#39; &#124; &#39;ORGANIC&#39;>** | Filter to paid or organic data. Default is all. | (optional) defaults to 'ALL'
  **source** | [**&#39;ALL&#39; | &#39;YOUR_PINS&#39; | &#39;OTHER_PINS&#39;**]**Array<&#39;ALL&#39; &#124; &#39;YOUR_PINS&#39; &#124; &#39;OTHER_PINS&#39;>** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | (optional) defaults to 'ALL'
@@ -405,44 +398,43 @@ Gets analytics data about a user\'s top pins (limited to the top 50). - By defau
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUserAccountAnalyticsTopPinsRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUserAccountAnalyticsTopPinsRequest = {
-  // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+const request: UserAccountApiUserAccountAnalyticsTopPinsRequest = {
+    // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   startDate: new Date('1970-01-01').toISOString().split('T')[0];,
-  // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+    // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   endDate: new Date('1970-01-01').toISOString().split('T')[0];,
-  // 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | Specify sorting order for metrics
+    // Specify sorting order for metrics
   sortBy: "ENGAGEMENT",
-  // 'OTHER' | 'CLAIMED' | 'BOTH' | Filter on Pins that match your claimed domain. (optional)
+    // Filter on Pins that match your claimed domain. (optional)
   fromClaimedContent: "BOTH",
-  // 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO' | Pin formats to get data for, default is all. (optional)
+    // Pin formats to get data for, default is all. (optional)
   pinFormat: "ALL",
-  // 'ALL' | 'MOBILE' | 'TABLET' | 'WEB' | Apps or devices to get data for, default is all. (optional)
+    // Apps or devices to get data for, default is all. (optional)
   appTypes: "ALL",
-  // 'ALL' | 'PAID' | 'ORGANIC' | Filter to paid or organic data. Default is all. (optional)
+    // Filter to paid or organic data. Default is all. (optional)
   contentType: "ALL",
-  // 'ALL' | 'YOUR_PINS' | 'OTHER_PINS' | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
+    // Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
   source: "ALL",
-  // Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'> | Metric types to get data for, default is all.  (optional)
+    // Metric types to get data for, default is all.  (optional)
   metricTypes: [
     "ENGAGEMENT",
   ],
-  // number | Number of pins to include, default is 10. Max is 50. (optional)
+    // Number of pins to include, default is 10. Max is 50. (optional)
   numOfPins: 25,
-  // 30 | Get metrics for pins created in the last \"n\" days. (optional)
+    // Get metrics for pins created in the last \"n\" days. (optional)
   createdInLastNDays: 30,
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.userAccountAnalyticsTopPins(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.userAccountAnalyticsTopPins(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -454,7 +446,7 @@ Name | Type | Description  | Notes
  **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined
  **sortBy** | [**&#39;ENGAGEMENT&#39; | &#39;IMPRESSION&#39; | &#39;OUTBOUND_CLICK&#39; | &#39;PIN_CLICK&#39; | &#39;SAVE&#39;**]**Array<&#39;ENGAGEMENT&#39; &#124; &#39;IMPRESSION&#39; &#124; &#39;OUTBOUND_CLICK&#39; &#124; &#39;PIN_CLICK&#39; &#124; &#39;SAVE&#39;>** | Specify sorting order for metrics | defaults to undefined
  **fromClaimedContent** | [**&#39;OTHER&#39; | &#39;CLAIMED&#39; | &#39;BOTH&#39;**]**Array<&#39;OTHER&#39; &#124; &#39;CLAIMED&#39; &#124; &#39;BOTH&#39;>** | Filter on Pins that match your claimed domain. | (optional) defaults to 'BOTH'
- **pinFormat** | [**&#39;ALL&#39; | &#39;ORGANIC_IMAGE&#39; | &#39;ORGANIC_PRODUCT&#39; | &#39;ORGANIC_VIDEO&#39; | &#39;ADS_STANDARD&#39; | &#39;ADS_PRODUCT&#39; | &#39;ADS_VIDEO&#39; | &#39;ADS_IDEA&#39; | &#39;PRODUCT&#39; | &#39;REGULAR&#39; | &#39;VIDEO&#39;**]**Array<&#39;ALL&#39; &#124; &#39;ORGANIC_IMAGE&#39; &#124; &#39;ORGANIC_PRODUCT&#39; &#124; &#39;ORGANIC_VIDEO&#39; &#124; &#39;ADS_STANDARD&#39; &#124; &#39;ADS_PRODUCT&#39; &#124; &#39;ADS_VIDEO&#39; &#124; &#39;ADS_IDEA&#39; &#124; &#39;PRODUCT&#39; &#124; &#39;REGULAR&#39; &#124; &#39;VIDEO&#39;>** | Pin formats to get data for, default is all. | (optional) defaults to 'ALL'
+ **pinFormat** | [**&#39;ALL&#39; | &#39;ORGANIC_IMAGE&#39; | &#39;ORGANIC_PRODUCT&#39; | &#39;ORGANIC_VIDEO&#39; | &#39;ADS_STANDARD&#39; | &#39;ADS_PRODUCT&#39; | &#39;ADS_VIDEO&#39; | &#39;ADS_IDEA&#39;**]**Array<&#39;ALL&#39; &#124; &#39;ORGANIC_IMAGE&#39; &#124; &#39;ORGANIC_PRODUCT&#39; &#124; &#39;ORGANIC_VIDEO&#39; &#124; &#39;ADS_STANDARD&#39; &#124; &#39;ADS_PRODUCT&#39; &#124; &#39;ADS_VIDEO&#39; &#124; &#39;ADS_IDEA&#39;>** | Pin formats to get data for, default is all. | (optional) defaults to 'ALL'
  **appTypes** | [**&#39;ALL&#39; | &#39;MOBILE&#39; | &#39;TABLET&#39; | &#39;WEB&#39;**]**Array<&#39;ALL&#39; &#124; &#39;MOBILE&#39; &#124; &#39;TABLET&#39; &#124; &#39;WEB&#39;>** | Apps or devices to get data for, default is all. | (optional) defaults to 'ALL'
  **contentType** | [**&#39;ALL&#39; | &#39;PAID&#39; | &#39;ORGANIC&#39;**]**Array<&#39;ALL&#39; &#124; &#39;PAID&#39; &#124; &#39;ORGANIC&#39;>** | Filter to paid or organic data. Default is all. | (optional) defaults to 'ALL'
  **source** | [**&#39;ALL&#39; | &#39;YOUR_PINS&#39; | &#39;OTHER_PINS&#39;**]**Array<&#39;ALL&#39; &#124; &#39;YOUR_PINS&#39; &#124; &#39;OTHER_PINS&#39;>** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | (optional) defaults to 'ALL'
@@ -470,7 +462,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -496,44 +488,43 @@ Gets analytics data about a user\'s top video pins (limited to the top 50). - By
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUserAccountAnalyticsTopVideoPinsRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUserAccountAnalyticsTopVideoPinsRequest = {
-  // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+const request: UserAccountApiUserAccountAnalyticsTopVideoPinsRequest = {
+    // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   startDate: new Date('1970-01-01').toISOString().split('T')[0];,
-  // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+    // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   endDate: new Date('1970-01-01').toISOString().split('T')[0];,
-  // 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | Specify sorting order for video metrics
+    // Specify sorting order for video metrics
   sortBy: "IMPRESSION",
-  // 'OTHER' | 'CLAIMED' | 'BOTH' | Filter on Pins that match your claimed domain. (optional)
+    // Filter on Pins that match your claimed domain. (optional)
   fromClaimedContent: "BOTH",
-  // 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA' | 'PRODUCT' | 'REGULAR' | 'VIDEO' | Pin formats to get data for, default is all. (optional)
+    // Pin formats to get data for, default is all. (optional)
   pinFormat: "ALL",
-  // 'ALL' | 'MOBILE' | 'TABLET' | 'WEB' | Apps or devices to get data for, default is all. (optional)
+    // Apps or devices to get data for, default is all. (optional)
   appTypes: "ALL",
-  // 'ALL' | 'PAID' | 'ORGANIC' | Filter to paid or organic data. Default is all. (optional)
+    // Filter to paid or organic data. Default is all. (optional)
   contentType: "ALL",
-  // 'ALL' | 'YOUR_PINS' | 'OTHER_PINS' | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
+    // Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
   source: "ALL",
-  // Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'> | Metric types to get video data for, default is all.  (optional)
+    // Metric types to get video data for, default is all.  (optional)
   metricTypes: [
     "IMPRESSION",
   ],
-  // number | Number of pins to include, default is 10. Max is 50. (optional)
+    // Number of pins to include, default is 10. Max is 50. (optional)
   numOfPins: 25,
-  // 30 | Get metrics for pins created in the last \"n\" days. (optional)
+    // Get metrics for pins created in the last \"n\" days. (optional)
   createdInLastNDays: 30,
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.userAccountAnalyticsTopVideoPins(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.userAccountAnalyticsTopVideoPins(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -545,7 +536,7 @@ Name | Type | Description  | Notes
  **endDate** | [**string**] | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | defaults to undefined
  **sortBy** | [**&#39;IMPRESSION&#39; | &#39;SAVE&#39; | &#39;OUTBOUND_CLICK&#39; | &#39;VIDEO_MRC_VIEW&#39; | &#39;VIDEO_AVG_WATCH_TIME&#39; | &#39;VIDEO_V50_WATCH_TIME&#39; | &#39;QUARTILE_95_PERCENT_VIEW&#39; | &#39;VIDEO_10S_VIEW&#39; | &#39;VIDEO_START&#39;**]**Array<&#39;IMPRESSION&#39; &#124; &#39;SAVE&#39; &#124; &#39;OUTBOUND_CLICK&#39; &#124; &#39;VIDEO_MRC_VIEW&#39; &#124; &#39;VIDEO_AVG_WATCH_TIME&#39; &#124; &#39;VIDEO_V50_WATCH_TIME&#39; &#124; &#39;QUARTILE_95_PERCENT_VIEW&#39; &#124; &#39;VIDEO_10S_VIEW&#39; &#124; &#39;VIDEO_START&#39;>** | Specify sorting order for video metrics | defaults to undefined
  **fromClaimedContent** | [**&#39;OTHER&#39; | &#39;CLAIMED&#39; | &#39;BOTH&#39;**]**Array<&#39;OTHER&#39; &#124; &#39;CLAIMED&#39; &#124; &#39;BOTH&#39;>** | Filter on Pins that match your claimed domain. | (optional) defaults to 'BOTH'
- **pinFormat** | [**&#39;ALL&#39; | &#39;ORGANIC_IMAGE&#39; | &#39;ORGANIC_PRODUCT&#39; | &#39;ORGANIC_VIDEO&#39; | &#39;ADS_STANDARD&#39; | &#39;ADS_PRODUCT&#39; | &#39;ADS_VIDEO&#39; | &#39;ADS_IDEA&#39; | &#39;PRODUCT&#39; | &#39;REGULAR&#39; | &#39;VIDEO&#39;**]**Array<&#39;ALL&#39; &#124; &#39;ORGANIC_IMAGE&#39; &#124; &#39;ORGANIC_PRODUCT&#39; &#124; &#39;ORGANIC_VIDEO&#39; &#124; &#39;ADS_STANDARD&#39; &#124; &#39;ADS_PRODUCT&#39; &#124; &#39;ADS_VIDEO&#39; &#124; &#39;ADS_IDEA&#39; &#124; &#39;PRODUCT&#39; &#124; &#39;REGULAR&#39; &#124; &#39;VIDEO&#39;>** | Pin formats to get data for, default is all. | (optional) defaults to 'ALL'
+ **pinFormat** | [**&#39;ALL&#39; | &#39;ORGANIC_IMAGE&#39; | &#39;ORGANIC_PRODUCT&#39; | &#39;ORGANIC_VIDEO&#39; | &#39;ADS_STANDARD&#39; | &#39;ADS_PRODUCT&#39; | &#39;ADS_VIDEO&#39; | &#39;ADS_IDEA&#39;**]**Array<&#39;ALL&#39; &#124; &#39;ORGANIC_IMAGE&#39; &#124; &#39;ORGANIC_PRODUCT&#39; &#124; &#39;ORGANIC_VIDEO&#39; &#124; &#39;ADS_STANDARD&#39; &#124; &#39;ADS_PRODUCT&#39; &#124; &#39;ADS_VIDEO&#39; &#124; &#39;ADS_IDEA&#39;>** | Pin formats to get data for, default is all. | (optional) defaults to 'ALL'
  **appTypes** | [**&#39;ALL&#39; | &#39;MOBILE&#39; | &#39;TABLET&#39; | &#39;WEB&#39;**]**Array<&#39;ALL&#39; &#124; &#39;MOBILE&#39; &#124; &#39;TABLET&#39; &#124; &#39;WEB&#39;>** | Apps or devices to get data for, default is all. | (optional) defaults to 'ALL'
  **contentType** | [**&#39;ALL&#39; | &#39;PAID&#39; | &#39;ORGANIC&#39;**]**Array<&#39;ALL&#39; &#124; &#39;PAID&#39; &#124; &#39;ORGANIC&#39;>** | Filter to paid or organic data. Default is all. | (optional) defaults to 'ALL'
  **source** | [**&#39;ALL&#39; | &#39;YOUR_PINS&#39; | &#39;OTHER_PINS&#39;**]**Array<&#39;ALL&#39; &#124; &#39;YOUR_PINS&#39; &#124; &#39;OTHER_PINS&#39;>** | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | (optional) defaults to 'ALL'
@@ -561,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -587,24 +578,23 @@ Get a list of a user\'s following interests in one place.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUserAccountFollowedInterestsRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUserAccountFollowedInterestsRequest = {
-  // string | A valid username
+const request: UserAccountApiUserAccountFollowedInterestsRequest = {
+    // A valid username
   username: "username",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.userAccountFollowedInterests(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.userAccountFollowedInterests(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -614,7 +604,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | [**string**] | A valid username | defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -623,7 +613,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -645,26 +635,25 @@ Name | Type | Description  | Notes
 # **userAccountGet**
 > Account userAccountGet()
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/reference/business-access/\'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/getting-started/using-business-access/\'>Understanding Business Access</a> for more information.
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUserAccountGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUserAccountGetRequest = {
-  // string | Unique identifier of an ad account. (optional)
+const request: UserAccountApiUserAccountGetRequest = {
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.userAccountGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.userAccountGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -681,7 +670,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -707,28 +696,27 @@ Get a list of who a certain user follows.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUserFollowingGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUserFollowingGetRequest = {
-  // string | Cursor used to fetch the next page of items (optional)
+const request: UserAccountApiUserFollowingGetRequest = {
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
+    // Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
   feedType: "CREATOR_ONLY",
-  // boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+    // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
   explicitFollowing: false,
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
 };
 
-apiInstance.userFollowingGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.userFollowingGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -737,7 +725,7 @@ apiInstance.userFollowingGet(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **feedType** | [**UserFollowingFeedType**] | Thrift param specifying what type of followees will be kept. Default to include all followees. | (optional) defaults to undefined
  **explicitFollowing** | [**boolean**] | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | (optional) defaults to false
  **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
@@ -749,7 +737,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -774,22 +762,21 @@ Get user websites, claimed or not
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiUserWebsitesGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiUserWebsitesGetRequest = {
-  // string | Cursor used to fetch the next page of items (optional)
+const request: UserAccountApiUserWebsitesGetRequest = {
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.userWebsitesGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.userWebsitesGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -798,7 +785,7 @@ apiInstance.userWebsitesGet(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -833,23 +820,24 @@ Verify a website as a signed-in user.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiVerifyWebsiteUpdateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:.UserAccountApiVerifyWebsiteUpdateRequest = {
-  // UserWebsiteVerifyRequest | Verify a website.
+const request: UserAccountApiVerifyWebsiteUpdateRequest = {
+    // Verify a website.
   userWebsiteVerifyRequest: {
     website: "pintest-website-12345678.test/test_1",
     verificationMethod: "METATAG",
   },
+    // Unique identifier of an ad account. (optional)
+  adAccountId: "4",
 };
 
-apiInstance.verifyWebsiteUpdate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.verifyWebsiteUpdate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -858,6 +846,7 @@ apiInstance.verifyWebsiteUpdate(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | **UserWebsiteVerifyRequest**| Verify a website. |
+ **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
 
 
 ### Return type
@@ -891,22 +880,27 @@ Get verification code for user to install on the website to claim it.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, UserAccountApi } from '';
+import type { UserAccountApiWebsiteVerificationGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .UserAccountApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new UserAccountApi(configuration);
 
-let body:any = {};
+const request: UserAccountApiWebsiteVerificationGetRequest = {
+    // Unique identifier of an ad account. (optional)
+  adAccountId: "4",
+};
 
-apiInstance.websiteVerificationGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.websiteVerificationGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
 
 
 ### Return type
@@ -915,7 +909,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 

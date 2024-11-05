@@ -10,5 +10,5 @@
   binary().
 
 openapi_catalogs_feed_processing_status() ->
-  elements([<<"COMPLETED">>, <<"COMPLETED_EARLY">>, <<"DISAPPROVED">>, <<"FAILED">>, <<"PROCESSING">>, <<"QUEUED_FOR_PROCESSING">>, <<"UNDER_APPEAL">>, <<"UNDER_REVIEW">>]).
+  elements([<<"COMPLETED">>, <<"FAILED">>, <<"PROCESSING">>]).
 

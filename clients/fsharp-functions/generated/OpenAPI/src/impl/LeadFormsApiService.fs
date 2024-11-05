@@ -1,8 +1,11 @@
 namespace OpenAPI
 open OpenAPI.Model.Error
+open OpenAPI.Model.LeadFormArrayResponse
+open OpenAPI.Model.LeadFormCreateRequest
 open OpenAPI.Model.LeadFormResponse
 open OpenAPI.Model.LeadFormTestRequest
 open OpenAPI.Model.LeadFormTestResponse
+open OpenAPI.Model.LeadFormUpdateRequest
 open OpenAPI.Model.LeadFormsList200Response
 open LeadFormsApiHandlerParams
 open LeadFormsApiServiceInterface
@@ -43,6 +46,17 @@ module LeadFormsApiServiceImplementation =
             let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             LeadFormTestCreateDefaultStatusCode { content = content }
 
+        member this.LeadFormsCreate (parameters:LeadFormsCreateBodyParams) =
+          if true then
+            let content = "Success" :> obj :?> LeadFormArrayResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            LeadFormsCreateStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid ad account lead forms parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            LeadFormsCreateStatusCode400 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            LeadFormsCreateDefaultStatusCode { content = content }
+
         member this.LeadFormsList () =
           if true then
             let content = "Success" :> obj :?> LeadFormsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
@@ -53,6 +67,17 @@ module LeadFormsApiServiceImplementation =
           else
             let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             LeadFormsListDefaultStatusCode { content = content }
+
+        member this.LeadFormsUpdate (parameters:LeadFormsUpdateBodyParams) =
+          if true then
+            let content = "Success" :> obj :?> LeadFormArrayResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            LeadFormsUpdateStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid ad account lead forms parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            LeadFormsUpdateStatusCode400 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            LeadFormsUpdateDefaultStatusCode { content = content }
 
       //#endregion
 

@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -57,7 +56,7 @@ public class CampaignCommon  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
@@ -71,9 +70,11 @@ public class CampaignCommon  {
   **/
   private Integer endTime;
 
-  @ApiModelProperty(value = "")
-  @Valid
-  private CampaignSummaryStatus summaryStatus;
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
+ /**
+   * Determine if a campaign has flexible daily budgets setup.
+  **/
+  private Boolean isFlexibleDailyBudgets;
  /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
    * @return adAccountId
@@ -187,15 +188,15 @@ public class CampaignCommon  {
    * @return trackingUrls
   **/
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
-  public CampaignCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -237,20 +238,20 @@ public class CampaignCommon  {
   }
 
  /**
-   * Get summaryStatus
-   * @return summaryStatus
+   * Determine if a campaign has flexible daily budgets setup.
+   * @return isFlexibleDailyBudgets
   **/
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  @JsonProperty("is_flexible_daily_budgets")
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
   }
 
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
-  public CampaignCommon summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public CampaignCommon isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
 
@@ -272,12 +273,12 @@ public class CampaignCommon  {
         Objects.equals(this.trackingUrls, campaignCommon.trackingUrls) &&
         Objects.equals(this.startTime, campaignCommon.startTime) &&
         Objects.equals(this.endTime, campaignCommon.endTime) &&
-        Objects.equals(this.summaryStatus, campaignCommon.summaryStatus);
+        Objects.equals(this.isFlexibleDailyBudgets, campaignCommon.isFlexibleDailyBudgets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets);
   }
 
   @Override
@@ -294,7 +295,7 @@ public class CampaignCommon  {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("}");
     return sb.toString();
   }

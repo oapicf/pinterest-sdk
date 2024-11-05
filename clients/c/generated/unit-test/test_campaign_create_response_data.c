@@ -16,7 +16,7 @@
 #include "../model/campaign_create_response_data.h"
 campaign_create_response_data_t* instantiate_campaign_create_response_data(int include_optional);
 
-#include "test_ad_common_tracking_urls.c"
+#include "test_tracking_urls.c"
 
 
 campaign_create_response_data_t* instantiate_campaign_create_response_data(int include_optional) {
@@ -29,11 +29,9 @@ campaign_create_response_data_t* instantiate_campaign_create_response_data(int i
       1432744744,
       1432744744,
       "549755885175",
-       // false, not to have infinite recursion
-      instantiate_ad_common_tracking_urls(0),
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       1580865126,
       1644023526,
-      "RUNNING",
       true,
       0,
       true,
@@ -42,7 +40,8 @@ campaign_create_response_data_t* instantiate_campaign_create_response_data(int i
       1432744744,
       1432744744,
       "campaign",
-      true
+      true,
+      pinterest_rest_api_campaign_create_response_data__"RUNNING"
     );
   } else {
     campaign_create_response_data = campaign_create_response_data_create(
@@ -52,10 +51,9 @@ campaign_create_response_data_t* instantiate_campaign_create_response_data(int i
       1432744744,
       1432744744,
       "549755885175",
-      NULL,
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       1580865126,
       1644023526,
-      "RUNNING",
       true,
       0,
       true,
@@ -64,7 +62,8 @@ campaign_create_response_data_t* instantiate_campaign_create_response_data(int i
       1432744744,
       1432744744,
       "campaign",
-      true
+      true,
+      pinterest_rest_api_campaign_create_response_data__"RUNNING"
     );
   }
 

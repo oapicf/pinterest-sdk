@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import java.util.Date;
+import org.openapitools.model.CatalogsCreativeAssetsFeed;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeed.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeed.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailFeed.class, name = "RETAIL"),
 })
@@ -37,14 +39,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeed  {
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date createdAt;
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   private String id;
 
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date updatedAt;
 
@@ -108,6 +110,7 @@ public class CatalogsFeed  {
   * @return createdAt
   */
   @JsonProperty("created_at")
+  @NotNull
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -132,6 +135,7 @@ public class CatalogsFeed  {
   * @return id
   */
   @JsonProperty("id")
+  @NotNull
   public String getId() {
     return id;
   }
@@ -156,6 +160,7 @@ public class CatalogsFeed  {
   * @return updatedAt
   */
   @JsonProperty("updated_at")
+  @NotNull
   public Date getUpdatedAt() {
     return updatedAt;
   }

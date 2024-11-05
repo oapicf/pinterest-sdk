@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * AdsCreditRedeemResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditRedeemResponse {
 
   private Boolean success;
@@ -38,7 +38,7 @@ public class AdsCreditRedeemResponse {
   /**
    * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
    * @return success
-  */
+   */
   
   @Schema(name = "success", example = "false", description = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("success")
@@ -58,7 +58,7 @@ public class AdsCreditRedeemResponse {
   /**
    * Error code type if error occurs
    * @return errorCode
-  */
+   */
   
   @Schema(name = "errorCode", example = "2708", description = "Error code type if error occurs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errorCode")
@@ -78,7 +78,7 @@ public class AdsCreditRedeemResponse {
   /**
    * Reason for failure
    * @return errorMessage
-  */
+   */
   
   @Schema(name = "errorMessage", example = "The offer has already been redeemed by this advertiser", description = "Reason for failure", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errorMessage")

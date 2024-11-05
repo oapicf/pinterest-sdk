@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.prokarma.pkmst.model.Exception;
-import com.prokarma.pkmst.model.ProductGroupPromotion;
+import com.prokarma.pkmst.model.ProductGroupPromotionResponseElement;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -20,30 +20,30 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * ProductGroupPromotionResponseItem
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionResponseItem   {
   @JsonProperty("data")
-  private ProductGroupPromotion data;
+  private ProductGroupPromotionResponseElement data;
 
   @JsonProperty("exceptions")
   
   private List<Exception> exceptions = null;
 
-  public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
+  public ProductGroupPromotionResponseItem data(ProductGroupPromotionResponseElement data) {
     this.data = data;
     return this;
   }
 
-   /**
+  /**
    * Get data
    * @return data
-  **/
+   */
   @ApiModelProperty(value = "")
-  public ProductGroupPromotion getData() {
+  public ProductGroupPromotionResponseElement getData() {
     return data;
   }
 
-  public void setData(ProductGroupPromotion data) {
+  public void setData(ProductGroupPromotionResponseElement data) {
     this.data = data;
   }
 
@@ -60,10 +60,10 @@ public class ProductGroupPromotionResponseItem   {
     return this;
   }
 
-   /**
+  /**
    * Get exceptions
    * @return exceptions
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<Exception> getExceptions() {
     return exceptions;

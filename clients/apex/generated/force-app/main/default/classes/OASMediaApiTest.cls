@@ -3,7 +3,7 @@ private class OASMediaApiTest {
     /**
      * Register media upload
      *
-     * Register your intent to upload media\n\nThe response includes all of the information needed to upload the media\nto Pinterest.\n\nTo upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for\nexample) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header\nvalue. Send the media file\&#39;s contents as the request\&#39;s &lt;tt&gt;file&lt;/tt&gt;\nparameter and also include all of the parameters from\n&lt;tt&gt;upload_parameters&lt;/tt&gt;.\n\n&lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/content/content-creation/#Creating%20video%20Pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Register your intent to upload media\n\nThe response includes all of the information needed to upload the media\nto Pinterest.\n\nTo upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for\nexample) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header\nvalue. Send the media file\&#39;s contents as the request\&#39;s &lt;tt&gt;file&lt;/tt&gt;\nparameter and also include all of the parameters from\n&lt;tt&gt;upload_parameters&lt;/tt&gt;.\n\n&lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
      */
     @isTest
     private static void mediaCreateTest() {
@@ -44,7 +44,7 @@ private class OASMediaApiTest {
     /**
      * Get media upload details
      *
-     * Get details for a registered media upload, including its current status.\n\n&lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/content/content-creation/#Creating%20video%20Pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Get details for a registered media upload, including its current status.\n\n&lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
      */
     @isTest
     private static void mediaGetTest() {
@@ -93,7 +93,7 @@ private class OASMediaApiTest {
     /**
      * List media uploads
      *
-     * List media uploads filtered by given parameters.\n\n&lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/content/content-creation/#Creating%20video%20Pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.\n\n&lt;strong&gt;&lt;a href&#x3D;\&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins\&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
      */
     @isTest
     private static void mediaListTest() {

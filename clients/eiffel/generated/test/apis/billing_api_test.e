@@ -16,7 +16,7 @@ feature -- Test routines
     test_ads_credit_redeem
             -- Redeem ad credits
             --
-            -- Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+            -- Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
         local
             l_response: ADS_CREDIT_REDEEM_RESPONSE
             l_ad_account_id: STRING_32
@@ -33,7 +33,7 @@ feature -- Test routines
     test_ads_credits_discounts_get
             -- Get ads credit discounts
             --
-            -- Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+            -- Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
         local
             l_response: ADS_CREDITS_DISCOUNTS_GET_200_RESPONSE
             l_ad_account_id: STRING_32
@@ -50,7 +50,7 @@ feature -- Test routines
     test_billing_profiles_get
             -- Get billing profiles
             --
-            -- Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+            -- Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
         local
             l_response: BILLING_PROFILES_GET_200_RESPONSE
             l_ad_account_id: STRING_32

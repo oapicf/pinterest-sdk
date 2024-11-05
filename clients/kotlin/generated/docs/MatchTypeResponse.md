@@ -14,7 +14,5 @@
 
     * `PHRASE_NEGATIVE` (value: `"PHRASE_NEGATIVE"`)
 
-    * `&#x60;null&#x60;` (value: `"null"`)
-
 
 

@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsItemsFilter = require('../models/CatalogsCreativeAssetsItemsFilter');
 const CatalogsHotelItemsFilter = require('../models/CatalogsHotelItemsFilter');
 const CatalogsRetailItemsFilter = require('../models/CatalogsRetailItemsFilter');
 const CatalogsType = require('../models/CatalogsType');
@@ -20,12 +21,19 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog - [${labelPrefix}catalog_id]`,
+                label: `Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog - [${labelPrefix}catalog_id]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}hotel_ids`,
                 label: `[${labelPrefix}hotel_ids]`,
+                required: true,
+                list: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}creative_assets_ids`,
+                label: `[${labelPrefix}creative_assets_ids]`,
                 required: true,
                 list: true,
                 type: 'string',
@@ -39,6 +47,7 @@ module.exports = {
             'item_ids': bundle.inputData?.[`${keyPrefix}item_ids`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'hotel_ids': bundle.inputData?.[`${keyPrefix}hotel_ids`],
+            'creative_assets_ids': bundle.inputData?.[`${keyPrefix}creative_assets_ids`],
         }
     },
 }

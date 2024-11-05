@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -36,10 +36,10 @@ message AdAccountGetSubscriptionResponse {
   string api_version = 60849231;
 
   // Base64 encoded key for client to decrypt lead data.
-  string cryptographic_key = 12089050;
+  optional string cryptographic_key = 12089050;
 
   // Lead data encryption algorithm.
-  string cryptographic_algorithm = 184379706;
+  optional string cryptographic_algorithm = 184379706;
 
   // Lead form creation time. Unix timestamp in milliseconds.
   int32 created_time = 392535495;

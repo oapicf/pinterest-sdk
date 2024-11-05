@@ -131,7 +131,7 @@ CAMPAIGN_TARGETING(String.valueOf("CAMPAIGN_TARGETING")), AD_GROUP_TARGETING(Str
  /**
    * A List of countries for filtering
   **/
-  private List<TargetingAdvertiserCountry> countries;
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
  /**
    * Name of the Marketing Mix Modeling (MMM) report
    * @return reportName

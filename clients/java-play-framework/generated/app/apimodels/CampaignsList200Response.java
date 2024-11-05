@@ -15,20 +15,20 @@ import javax.validation.Valid;
 /**
  * CampaignsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CampaignsList200Response   {
   @JsonProperty("items")
   @NotNull
 @Valid
 
-  private List<CampaignResponse> items = new ArrayList<>();
+  private List<@Valid CampaignResponse> items = new ArrayList<>();
 
   @JsonProperty("bookmark")
   
   private String bookmark;
 
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(List<@Valid CampaignResponse> items) {
     this.items = items;
     return this;
   }
@@ -45,11 +45,11 @@ public class CampaignsList200Response   {
    * Get items
    * @return items
   **/
-  public List<CampaignResponse> getItems() {
+  public List<@Valid CampaignResponse> getItems() {
     return items;
   }
 
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(List<@Valid CampaignResponse> items) {
     this.items = items;
   }
 

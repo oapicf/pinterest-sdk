@@ -12,7 +12,5 @@
 
     * `VALIDATION_COMPLETE` (value: `"VALIDATION_COMPLETE"`)
 
-    * `&#x60;null&#x60;` (value: `"null"`)
-
 
 

@@ -11,9 +11,9 @@ package org.openapitools.server.model
  * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog for example: ''2680059592705''
 */
 final case class CatalogsHotelBatchRequest (
-  catalogType: CatalogsType,
+  catalogType: String,
   country: Country,
-  language: Language,
+  language: CatalogsItemsRequestLanguage,
   items: Seq[CatalogsHotelBatchItem],
   catalogId: Option[String] = None
 )

@@ -58,5 +58,6 @@ data class CatalogsProductGroupPricingCurrencyCriteria (
         @Json(name = "LESS_THAN") LESS_THAN("LESS_THAN"),
         @Json(name = "LESS_THAN_OR_EQUALS") LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
     }
+
 }
 

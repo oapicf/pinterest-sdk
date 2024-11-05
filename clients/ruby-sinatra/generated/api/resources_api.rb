@@ -23,7 +23,7 @@ MyApp.add_route('GET', '/v5/resources/delivery_metrics', {
   "nickname" => "delivery_metrics/get",
   "responseClass" => "DeliveryMetricsResponse",
   "endpoint" => "/resources/delivery_metrics",
-  "notes" => "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.",
+  "notes" => "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.",
   "parameters" => [
     {
       "name" => "report_type",
@@ -68,7 +68,7 @@ MyApp.add_route('GET', '/v5/resources/lead_form_questions', {
   "nickname" => "lead_form_questions/get",
   "responseClass" => "void",
   "endpoint" => "/resources/lead_form_questions",
-  "notes" => "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>",
+  "notes" => "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
   "parameters" => [
     ]}) do
   cross_origin
@@ -126,6 +126,13 @@ MyApp.add_route('GET', '/v5/resources/targeting/{targeting_type}', {
     {
       "name" => "timestamp",
       "description" => "Timestamp",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
       "dataType" => "String",
       "allowableValues" => "",
       "paramType" => "query",

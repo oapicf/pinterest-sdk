@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.CampaignCreateResponseItem;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CampaignUpdateResponse   {
   
-  private List<CampaignCreateResponseItem> items;
+  private List<CampaignCreateResponseItem> items = new ArrayList<>();
 
   public CampaignUpdateResponse () {
 

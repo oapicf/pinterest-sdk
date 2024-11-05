@@ -4,14 +4,34 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.vertxweb.server.model.OauthAccessTokenRequest;
 
 /**
  * A request to exchange an authorization code for an access token.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
+public class OauthAccessTokenRequestCode   {
   
+
+
+  public enum GrantTypeEnum {
+    AUTHORIZATION_CODE("authorization_code"),
+    REFRESH_TOKEN("refresh_token"),
+    CLIENT_CREDENTIALS("client_credentials");
+
+    private String value;
+
+    GrantTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private GrantTypeEnum grantType;
   private String code;
   private String redirectUri;
 
@@ -19,9 +39,19 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
 
   }
 
-  public OauthAccessTokenRequestCode (String code, String redirectUri) {
+  public OauthAccessTokenRequestCode (GrantTypeEnum grantType, String code, String redirectUri) {
+    this.grantType = grantType;
     this.code = code;
     this.redirectUri = redirectUri;
+  }
+
+    
+  @JsonProperty("grant_type")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
   }
 
     
@@ -52,20 +82,22 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return super.equals(o) && Objects.equals(code, oauthAccessTokenRequestCode.code) &&
+    return Objects.equals(grantType, oauthAccessTokenRequestCode.grantType) &&
+        Objects.equals(code, oauthAccessTokenRequestCode.code) &&
         Objects.equals(redirectUri, oauthAccessTokenRequestCode.redirectUri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), code, super.hashCode(), redirectUri);
+    return Objects.hash(grantType, code, redirectUri);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
     sb.append("}");

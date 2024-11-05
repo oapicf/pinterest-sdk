@@ -33,5 +33,8 @@ data class CatalogsItems (
     @Json(name = "items")
     val items: kotlin.collections.List<ItemResponse>? = null
 
-)
+) {
+
+
+}
 

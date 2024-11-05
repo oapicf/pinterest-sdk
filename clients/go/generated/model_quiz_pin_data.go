@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,6 +22,9 @@ var _ MappedNullable = &QuizPinData{}
 type QuizPinData struct {
 	Questions []QuizPinQuestion `json:"questions,omitempty"`
 	Results []QuizPinResult `json:"results,omitempty"`
+	// Quiz ad tie breaker type, default is RANDOM
+	TieBreakerType *string `json:"tie_breaker_type,omitempty"`
+	TieBreakerCustomResult NullableQuizPinResult `json:"tie_breaker_custom_result,omitempty"`
 }
 
 // NewQuizPinData instantiates a new QuizPinData object
@@ -105,6 +108,80 @@ func (o *QuizPinData) SetResults(v []QuizPinResult) {
 	o.Results = v
 }
 
+// GetTieBreakerType returns the TieBreakerType field value if set, zero value otherwise.
+func (o *QuizPinData) GetTieBreakerType() string {
+	if o == nil || IsNil(o.TieBreakerType) {
+		var ret string
+		return ret
+	}
+	return *o.TieBreakerType
+}
+
+// GetTieBreakerTypeOk returns a tuple with the TieBreakerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QuizPinData) GetTieBreakerTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.TieBreakerType) {
+		return nil, false
+	}
+	return o.TieBreakerType, true
+}
+
+// HasTieBreakerType returns a boolean if a field has been set.
+func (o *QuizPinData) HasTieBreakerType() bool {
+	if o != nil && !IsNil(o.TieBreakerType) {
+		return true
+	}
+
+	return false
+}
+
+// SetTieBreakerType gets a reference to the given string and assigns it to the TieBreakerType field.
+func (o *QuizPinData) SetTieBreakerType(v string) {
+	o.TieBreakerType = &v
+}
+
+// GetTieBreakerCustomResult returns the TieBreakerCustomResult field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QuizPinData) GetTieBreakerCustomResult() QuizPinResult {
+	if o == nil || IsNil(o.TieBreakerCustomResult.Get()) {
+		var ret QuizPinResult
+		return ret
+	}
+	return *o.TieBreakerCustomResult.Get()
+}
+
+// GetTieBreakerCustomResultOk returns a tuple with the TieBreakerCustomResult field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QuizPinData) GetTieBreakerCustomResultOk() (*QuizPinResult, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TieBreakerCustomResult.Get(), o.TieBreakerCustomResult.IsSet()
+}
+
+// HasTieBreakerCustomResult returns a boolean if a field has been set.
+func (o *QuizPinData) HasTieBreakerCustomResult() bool {
+	if o != nil && o.TieBreakerCustomResult.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTieBreakerCustomResult gets a reference to the given NullableQuizPinResult and assigns it to the TieBreakerCustomResult field.
+func (o *QuizPinData) SetTieBreakerCustomResult(v QuizPinResult) {
+	o.TieBreakerCustomResult.Set(&v)
+}
+// SetTieBreakerCustomResultNil sets the value for TieBreakerCustomResult to be an explicit nil
+func (o *QuizPinData) SetTieBreakerCustomResultNil() {
+	o.TieBreakerCustomResult.Set(nil)
+}
+
+// UnsetTieBreakerCustomResult ensures that no value is present for TieBreakerCustomResult, not even an explicit nil
+func (o *QuizPinData) UnsetTieBreakerCustomResult() {
+	o.TieBreakerCustomResult.Unset()
+}
+
 func (o QuizPinData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -120,6 +197,12 @@ func (o QuizPinData) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
+	}
+	if !IsNil(o.TieBreakerType) {
+		toSerialize["tie_breaker_type"] = o.TieBreakerType
+	}
+	if o.TieBreakerCustomResult.IsSet() {
+		toSerialize["tie_breaker_custom_result"] = o.TieBreakerCustomResult.Get()
 	}
 	return toSerialize, nil
 }

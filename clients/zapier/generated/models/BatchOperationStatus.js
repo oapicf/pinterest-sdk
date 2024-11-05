@@ -7,6 +7,7 @@ module.exports = {
                 choices: [
                     'PROCESSING',
                     'COMPLETED',
+                    'FAILED',
                 ],
             }
         )

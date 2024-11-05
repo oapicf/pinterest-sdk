@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedCredentials", description = "This field is **OPTIONAL**. Use this if your feed file requires username and password.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedCredentials {
 
   private String password;
@@ -46,7 +46,7 @@ public class CatalogsFeedCredentials {
   /**
    * The required password for downloading a feed.
    * @return password
-  */
+   */
   @NotNull 
   @Schema(name = "password", description = "The required password for downloading a feed.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("password")
@@ -66,7 +66,7 @@ public class CatalogsFeedCredentials {
   /**
    * The required username for downloading a feed.
    * @return username
-  */
+   */
   @NotNull 
   @Schema(name = "username", description = "The required username for downloading a feed.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("username")

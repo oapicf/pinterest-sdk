@@ -18,7 +18,7 @@ import java.util.List;
  * KeywordsRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsRequest   {
   @JsonProperty("keywords")
   
@@ -40,10 +40,10 @@ public class KeywordsRequest   {
     return this;
   }
 
-   /**
+  /**
    * Keyword JSON array. Each array element has 3 fields
    * @return keywords
-  **/
+   */
   @ApiModelProperty(required = true, value = "Keyword JSON array. Each array element has 3 fields")
   public List<KeywordsCommon> getKeywords() {
     return keywords;
@@ -58,10 +58,10 @@ public class KeywordsRequest   {
     return this;
   }
 
-   /**
+  /**
    * Keyword parent entity ID (advertiser, campaign, ad group).
    * @return parentId
-  **/
+   */
   @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
   public String getParentId() {
     return parentId;

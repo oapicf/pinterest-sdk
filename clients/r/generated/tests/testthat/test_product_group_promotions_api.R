@@ -40,7 +40,7 @@ test_that("ProductGroupPromotionsList", {
   # @param product_group_promotion_ids array[character] List of Product group promotion Ids. (optional)
   # @param entity_statuses array[character] Entity status (optional)
   # @param ad_group_id character Ad group Id. (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
   # @return [ProductGroupPromotionsList200Response]

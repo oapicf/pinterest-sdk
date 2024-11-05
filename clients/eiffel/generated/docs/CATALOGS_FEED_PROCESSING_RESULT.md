@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | [**DATE_TIME**](DATE_TIME.md) |  | [optional] [default to null]
-**id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
-**updated_at** | [**DATE_TIME**](DATE_TIME.md) |  | [optional] [default to null]
+**created_at** | [**DATE_TIME**](DATE_TIME.md) |  | [default to null]
+**id** | [**STRING_32**](STRING_32.md) |  | [default to null]
+**updated_at** | [**DATE_TIME**](DATE_TIME.md) |  | [default to null]
 **ingestion_details** | [**CATALOGS_FEED_INGESTION_DETAILS**](CatalogsFeedIngestionDetails.md) |  | [default to null]
 **status** | [**CATALOGS_FEED_PROCESSING_STATUS**](CatalogsFeedProcessingStatus.md) |  | [default to null]
 **product_counts** | [**CATALOGS_FEED_PRODUCT_COUNTS**](CatalogsFeedProductCounts.md) |  | [default to null]

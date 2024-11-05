@@ -42,5 +42,8 @@ data class PinUpdateCarouselSlotsInner (
     @Json(name = "link")
     val link: kotlin.String? = null
 
-)
+) {
+
+
+}
 

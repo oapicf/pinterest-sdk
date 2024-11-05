@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * TermsOfService
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TermsOfService {
 
   private String id;
@@ -40,7 +40,7 @@ public class TermsOfService {
   /**
    * The ID of the terms of service
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "2650449554526", description = "The ID of the terms of service", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -60,7 +60,7 @@ public class TermsOfService {
   /**
    * The terms of service content
    * @return html
-  */
+   */
   
   @Schema(name = "html", example = "example test", description = "The terms of service content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("html")
@@ -80,7 +80,7 @@ public class TermsOfService {
   /**
    * Whether the ad account has accepted terms of service.
    * @return hasAccepted
-  */
+   */
   
   @Schema(name = "has_accepted", example = "true", description = "Whether the ad account has accepted terms of service.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_accepted")
@@ -100,7 +100,7 @@ public class TermsOfService {
   /**
    * The ID of the ad account.
    * @return adAccountId
-  */
+   */
   
   @Schema(name = "ad_account_id", example = "549755885175", description = "The ID of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")

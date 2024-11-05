@@ -8,7 +8,7 @@ module BoardOwner =
   //#region BoardOwner
 
 
-  type Board_owner = {
+  type BoardOwner = {
     Username : string;
   }
   //#endregion

@@ -107,7 +107,7 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
 
 ///
 /// Get available metrics' definitions
-/// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+/// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 ///  @param reportType Report type. (optional)
 ///
 ///  @returns OAIDeliveryMetricsResponse*
@@ -232,7 +232,7 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
 
 ///
 /// Get lead form questions
-/// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+/// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 ///  @returns void
 ///
 -(NSURLSessionTask*) leadFormQuestionsGetWithCompletionHandler: 
@@ -361,12 +361,15 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
 ///
 ///  @param timestamp Timestamp (optional)
 ///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
 ///  @returns NSArray<NSObject*>*
 ///
 -(NSURLSessionTask*) targetingOptionsGetWithTargetingType: (NSString*) targetingType
     clientId: (NSString*) clientId
     oauthSignature: (NSString*) oauthSignature
     timestamp: (NSString*) timestamp
+    adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(NSArray<NSObject*>* output, NSError* error)) handler {
     // verify the required parameter 'targetingType' is set
     if (targetingType == nil) {
@@ -395,6 +398,9 @@ NSInteger kOAIResourcesApiMissingParamErrorCode = 234513;
     }
     if (timestamp != nil) {
         queryParams[@"timestamp"] = timestamp;
+    }
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

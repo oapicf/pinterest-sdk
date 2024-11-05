@@ -8,14 +8,16 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.model.CatalogsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsVerticalProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 
 /**
  * CatalogsProductGroupsUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsUpdateRequest   {
   @JsonProperty("name")
   private String name;

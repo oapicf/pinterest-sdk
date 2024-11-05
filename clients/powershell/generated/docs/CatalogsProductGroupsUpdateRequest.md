@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 **Name** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
 **IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] 
-**Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | [optional] 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
 **CatalogType** | **String** |  | [optional] 
+**Country** | [**Country**](Country.md) |  | [optional] 
+**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
 
 ## Examples
 
@@ -17,7 +19,9 @@ $CatalogsProductGroupsUpdateRequest = Initialize-PSOpenAPIToolsCatalogsProductGr
  -Description null `
  -IsFeatured null `
  -Filters null `
- -CatalogType null
+ -CatalogType null `
+ -Country null `
+ -Locale null
 ```
 
 - Convert the resource to JSON

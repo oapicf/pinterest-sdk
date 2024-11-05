@@ -25,7 +25,7 @@ data class UserSummary(
 
     @Schema(example = "user", description = "Always \"user\"")
     @get:JsonProperty("type") val type: kotlin.String? = null
-) {
+    ) {
 
 }
 

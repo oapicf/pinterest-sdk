@@ -67,7 +67,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 ```perl
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```perl
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **targeting_options_get**
-> ARRAY[object] targeting_options_get(targeting_type => $targeting_type, client_id => $client_id, oauth_signature => $oauth_signature, timestamp => $timestamp)
+> ARRAY[object] targeting_options_get(targeting_type => $targeting_type, client_id => $client_id, oauth_signature => $oauth_signature, timestamp => $timestamp, ad_account_id => $ad_account_id)
 
 Get targeting options
 
@@ -274,9 +274,10 @@ my $targeting_type = APPTYPE; # string | Public targeting type.
 my $client_id = 1094834; # string | Client ID.
 my $oauth_signature = 8209f; # string | Oauth signature
 my $timestamp = 1618338184277; # string | Timestamp
+my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->targeting_options_get(targeting_type => $targeting_type, client_id => $client_id, oauth_signature => $oauth_signature, timestamp => $timestamp);
+    my $result = $api_instance->targeting_options_get(targeting_type => $targeting_type, client_id => $client_id, oauth_signature => $oauth_signature, timestamp => $timestamp, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -292,6 +293,7 @@ Name | Type | Description  | Notes
  **client_id** | **string**| Client ID. | [optional] 
  **oauth_signature** | **string**| Oauth signature | [optional] 
  **timestamp** | **string**| Timestamp | [optional] 
+ **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,19 +23,9 @@ public enum CatalogsFeedProcessingStatus {
     
         COMPLETED("COMPLETED"),
         
-        COMPLETED_EARLY("COMPLETED_EARLY"),
-        
-        DISAPPROVED("DISAPPROVED"),
-        
         FAILED("FAILED"),
         
-        PROCESSING("PROCESSING"),
-        
-        QUEUED_FOR_PROCESSING("QUEUED_FOR_PROCESSING"),
-        
-        UNDER_APPEAL("UNDER_APPEAL"),
-        
-        UNDER_REVIEW("UNDER_REVIEW");
+        PROCESSING("PROCESSING");
 
 private String value;
 

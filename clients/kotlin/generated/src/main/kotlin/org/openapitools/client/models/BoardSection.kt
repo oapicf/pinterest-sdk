@@ -35,5 +35,8 @@ data class BoardSection (
     @Json(name = "id")
     val id: kotlin.String? = null
 
-)
+) {
+
+
+}
 

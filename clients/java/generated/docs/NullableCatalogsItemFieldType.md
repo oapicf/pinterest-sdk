@@ -117,7 +117,5 @@
 
 * `SHIPPING_HEIGHT` (value: `"SHIPPING_HEIGHT"`)
 
-* `NULL` (value: `"null"`)
-
 
 

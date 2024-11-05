@@ -42,5 +42,8 @@ data class TemplateResponseDateRangeAbsoluteDateRange (
     @Json(name = "end_date")
     val endDate: java.math.BigDecimal? = null
 
-)
+) {
+
+
+}
 

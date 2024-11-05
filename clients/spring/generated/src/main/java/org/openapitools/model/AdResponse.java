@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.PinPromotionSummaryStatus;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  * AdResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdResponse {
 
   private String adGroupId;
@@ -62,7 +62,7 @@ public class AdResponse {
 
   private EntityStatus status;
 
-  private JsonNullable<AdCommonTrackingUrls> trackingUrls = JsonNullable.<AdCommonTrackingUrls>undefined();
+  private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
   private JsonNullable<String> viewTrackingUrl = JsonNullable.<String>undefined();
 
@@ -71,7 +71,7 @@ public class AdResponse {
   private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    */
   public enum CustomizableCtaTypeEnum {
     GET_OFFER("GET_OFFER"),
@@ -92,7 +92,7 @@ public class AdResponse {
     
     GET_QUOTE("GET_QUOTE"),
     
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     
     APPLY_NOW("APPLY_NOW"),
     
@@ -108,9 +108,7 @@ public class AdResponse {
     
     WATCH_NOW("WATCH_NOW"),
     
-    READ_MORE("READ_MORE"),
-    
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private String value;
 
@@ -141,7 +139,7 @@ public class AdResponse {
 
   private JsonNullable<CustomizableCtaTypeEnum> customizableCtaType = JsonNullable.<CustomizableCtaTypeEnum>undefined();
 
-  private JsonNullable<AdCommonQuizPinData> quizPinData = JsonNullable.<AdCommonQuizPinData>undefined();
+  private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
 
   private String pinId;
 
@@ -283,10 +281,10 @@ public class AdResponse {
   }
 
   @Valid
-  private List<RejectedReasonsEnum> rejectedReasons;
+  private List<RejectedReasonsEnum> rejectedReasons = new ArrayList<>();
 
   @Valid
-  private List<String> rejectionLabels;
+  private List<String> rejectionLabels = new ArrayList<>();
 
   /**
    * Ad review status
@@ -343,7 +341,7 @@ public class AdResponse {
   /**
    * ID of the ad group that contains the ad.
    * @return adGroupId
-  */
+   */
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
@@ -361,11 +359,11 @@ public class AdResponse {
   }
 
   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    * @return androidDeepLink
-  */
+   */
   
-  @Schema(name = "android_deep_link", description = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "android_deep_link", description = "Deep link URL for Android devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("android_deep_link")
   public JsonNullable<String> getAndroidDeepLink() {
     return androidDeepLink;
@@ -391,7 +389,7 @@ public class AdResponse {
   /**
    * Comma-separated deep links for the carousel pin on Android.
    * @return carouselAndroidDeepLinks
-  */
+   */
   
   @Schema(name = "carousel_android_deep_links", description = "Comma-separated deep links for the carousel pin on Android.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_android_deep_links")
@@ -419,7 +417,7 @@ public class AdResponse {
   /**
    * Comma-separated destination URLs for the carousel pin to promote.
    * @return carouselDestinationUrls
-  */
+   */
   
   @Schema(name = "carousel_destination_urls", description = "Comma-separated destination URLs for the carousel pin to promote.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_destination_urls")
@@ -447,7 +445,7 @@ public class AdResponse {
   /**
    * Comma-separated deep links for the carousel pin on iOS.
    * @return carouselIosDeepLinks
-  */
+   */
   
   @Schema(name = "carousel_ios_deep_links", description = "Comma-separated deep links for the carousel pin on iOS.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_ios_deep_links")
@@ -467,7 +465,7 @@ public class AdResponse {
   /**
    * Tracking url for the ad clicks.
    * @return clickTrackingUrl
-  */
+   */
   
   @Schema(name = "click_tracking_url", description = "Tracking url for the ad clicks.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("click_tracking_url")
@@ -487,7 +485,7 @@ public class AdResponse {
   /**
    * Get creativeType
    * @return creativeType
-  */
+   */
   @Valid 
   @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
@@ -507,7 +505,7 @@ public class AdResponse {
   /**
    * Destination URL.
    * @return destinationUrl
-  */
+   */
   
   @Schema(name = "destination_url", description = "Destination URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("destination_url")
@@ -525,11 +523,11 @@ public class AdResponse {
   }
 
   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    * @return iosDeepLink
-  */
+   */
   
-  @Schema(name = "ios_deep_link", description = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ios_deep_link", description = "Deep link URL for iOS devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ios_deep_link")
   public JsonNullable<String> getIosDeepLink() {
     return iosDeepLink;
@@ -547,7 +545,7 @@ public class AdResponse {
   /**
    * Is original pin deleted?
    * @return isPinDeleted
-  */
+   */
   
   @Schema(name = "is_pin_deleted", example = "false", description = "Is original pin deleted?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_pin_deleted")
@@ -567,7 +565,7 @@ public class AdResponse {
   /**
    * Is pin repinnable?
    * @return isRemovable
-  */
+   */
   
   @Schema(name = "is_removable", example = "false", description = "Is pin repinnable?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_removable")
@@ -587,7 +585,7 @@ public class AdResponse {
   /**
    * Name of the ad - 255 chars max.
    * @return name
-  */
+   */
   
   @Schema(name = "name", description = "Name of the ad - 255 chars max.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -607,7 +605,7 @@ public class AdResponse {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -619,7 +617,7 @@ public class AdResponse {
     this.status = status;
   }
 
-  public AdResponse trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
   }
@@ -627,15 +625,15 @@ public class AdResponse {
   /**
    * Get trackingUrls
    * @return trackingUrls
-  */
+   */
   @Valid 
   @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_urls")
-  public JsonNullable<AdCommonTrackingUrls> getTrackingUrls() {
+  public JsonNullable<TrackingUrls> getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(JsonNullable<AdCommonTrackingUrls> trackingUrls) {
+  public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -647,7 +645,7 @@ public class AdResponse {
   /**
    * Tracking URL for ad impressions.
    * @return viewTrackingUrl
-  */
+   */
   
   @Schema(name = "view_tracking_url", description = "Tracking URL for ad impressions.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("view_tracking_url")
@@ -667,7 +665,7 @@ public class AdResponse {
   /**
    * Lead form ID for lead ad generation.
    * @return leadFormId
-  */
+   */
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "lead_form_id", description = "Lead form ID for lead ad generation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lead_form_id")
@@ -687,7 +685,7 @@ public class AdResponse {
   /**
    * Get gridClickType
    * @return gridClickType
-  */
+   */
   @Valid 
   @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("grid_click_type")
@@ -705,11 +703,11 @@ public class AdResponse {
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    * @return customizableCtaType
-  */
+   */
   
-  @Schema(name = "customizable_cta_type", example = "LEARN_MORE", description = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "customizable_cta_type", example = "LEARN_MORE", description = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("customizable_cta_type")
   public JsonNullable<CustomizableCtaTypeEnum> getCustomizableCtaType() {
     return customizableCtaType;
@@ -719,23 +717,23 @@ public class AdResponse {
     this.customizableCtaType = customizableCtaType;
   }
 
-  public AdResponse quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdResponse quizPinData(QuizPinData quizPinData) {
     this.quizPinData = JsonNullable.of(quizPinData);
     return this;
   }
 
   /**
-   * Get quizPinData
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
-  */
+   */
   @Valid 
-  @Schema(name = "quiz_pin_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("quiz_pin_data")
-  public JsonNullable<AdCommonQuizPinData> getQuizPinData() {
+  public JsonNullable<QuizPinData> getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(JsonNullable<AdCommonQuizPinData> quizPinData) {
+  public void setQuizPinData(JsonNullable<QuizPinData> quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -747,7 +745,7 @@ public class AdResponse {
   /**
    * Pin ID.
    * @return pinId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "pin_id", example = "394205773611545468", description = "Pin ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_id")
@@ -767,7 +765,7 @@ public class AdResponse {
   /**
    * The ID of the advertiser that this ad belongs to.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "The ID of the advertiser that this ad belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -787,7 +785,7 @@ public class AdResponse {
   /**
    * ID of the ad campaign that contains this ad.
    * @return campaignId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "campaign_id", example = "626735565838", description = "ID of the ad campaign that contains this ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_id")
@@ -807,7 +805,7 @@ public class AdResponse {
   /**
    * Destination URL template for all items within a collections drawer.
    * @return collectionItemsDestinationUrlTemplate
-  */
+   */
   
   @Schema(name = "collection_items_destination_url_template", description = "Destination URL template for all items within a collections drawer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("collection_items_destination_url_template")
@@ -827,7 +825,7 @@ public class AdResponse {
   /**
    * Pin creation time. Unix timestamp in seconds.
    * @return createdTime
-  */
+   */
   
   @Schema(name = "created_time", example = "1451431341", description = "Pin creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
@@ -847,7 +845,7 @@ public class AdResponse {
   /**
    * The ID of this ad.
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "687195134316", description = "The ID of this ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -875,7 +873,7 @@ public class AdResponse {
   /**
    * Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
    * @return rejectedReasons
-  */
+   */
   
   @Schema(name = "rejected_reasons", description = "Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rejected_reasons")
@@ -903,7 +901,7 @@ public class AdResponse {
   /**
    * Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
    * @return rejectionLabels
-  */
+   */
   
   @Schema(name = "rejection_labels", description = "Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rejection_labels")
@@ -923,7 +921,7 @@ public class AdResponse {
   /**
    * Ad review status
    * @return reviewStatus
-  */
+   */
   
   @Schema(name = "review_status", example = "PENDING", description = "Ad review status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("review_status")
@@ -943,7 +941,7 @@ public class AdResponse {
   /**
    * Always \"ad\".
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "pinpromotion", description = "Always \"ad\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -963,7 +961,7 @@ public class AdResponse {
   /**
    * Last update time. Unix timestamp in seconds.
    * @return updatedTime
-  */
+   */
   
   @Schema(name = "updated_time", example = "1451431341", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
@@ -983,7 +981,7 @@ public class AdResponse {
   /**
    * Ad summary status
    * @return summaryStatus
-  */
+   */
   @Valid 
   @Schema(name = "summary_status", description = "Ad summary status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("summary_status")

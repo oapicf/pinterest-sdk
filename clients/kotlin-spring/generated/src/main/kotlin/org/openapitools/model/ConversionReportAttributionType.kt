@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Attribution type. Refers to the Pinterest Tag endpoints
 * Values: INDIVIDUAL,HOUSEHOLD
 */
-enum class ConversionReportAttributionType(val value: kotlin.String) {
+enum class ConversionReportAttributionType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("INDIVIDUAL") INDIVIDUAL("INDIVIDUAL"),
-    @JsonProperty("HOUSEHOLD") HOUSEHOLD("HOUSEHOLD")
+    INDIVIDUAL("INDIVIDUAL"),
+    HOUSEHOLD("HOUSEHOLD");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): ConversionReportAttributionType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

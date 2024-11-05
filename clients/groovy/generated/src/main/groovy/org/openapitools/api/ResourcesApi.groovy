@@ -126,7 +126,7 @@ class ResourcesApi {
 
     }
 
-    def targetingOptionsGet ( String targetingType, String clientId, String oauthSignature, String timestamp, Closure onSuccess, Closure onFailure)  {
+    def targetingOptionsGet ( String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/resources/targeting/${targeting_type}"
 
         // params
@@ -148,6 +148,9 @@ class ResourcesApi {
         }
         if (timestamp != null) {
             queryParams.put("timestamp", timestamp)
+        }
+        if (adAccountId != null) {
+            queryParams.put("ad_account_id", adAccountId)
         }
 
 

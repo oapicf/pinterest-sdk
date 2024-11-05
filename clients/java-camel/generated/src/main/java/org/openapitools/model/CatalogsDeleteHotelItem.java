@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsDeleteHotelItem", description = "A hotel item to be deleted")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsDeleteHotelItem {
 
   private String hotelId;
@@ -80,7 +80,7 @@ public class CatalogsDeleteHotelItem {
   /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  */
+   */
   @NotNull 
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hotel_id")
@@ -100,7 +100,7 @@ public class CatalogsDeleteHotelItem {
   /**
    * Get operation
    * @return operation
-  */
+   */
   @NotNull 
   @Schema(name = "operation", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation")

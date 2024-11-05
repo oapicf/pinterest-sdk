@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * The status of the operation performed by the batch
  *
- * Values: PROCESSING,COMPLETED
+ * Values: PROCESSING,COMPLETED,FAILED
  */
 
 @JsonClass(generateAdapter = false)
@@ -32,7 +32,10 @@ enum class BatchOperationStatus(val value: kotlin.String) {
     PROCESSING("PROCESSING"),
 
     @Json(name = "COMPLETED")
-    COMPLETED("COMPLETED");
+    COMPLETED("COMPLETED"),
+
+    @Json(name = "FAILED")
+    FAILED("FAILED");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

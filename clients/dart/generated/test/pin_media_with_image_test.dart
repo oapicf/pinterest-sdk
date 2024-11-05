@@ -21,7 +21,7 @@ void main() {
       // TODO
     });
 
-    // ImageMetadataImages images
+    // PinMediaWithImageAllOfImages images
     test('to test the property `images`', () async {
       // TODO
     });

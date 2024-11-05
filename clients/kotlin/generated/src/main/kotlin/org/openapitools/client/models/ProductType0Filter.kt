@@ -32,5 +32,8 @@ data class ProductType0Filter (
     @Json(name = "PRODUCT_TYPE_0")
     val PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria
 
-)
+) {
+
+
+}
 

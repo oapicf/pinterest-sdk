@@ -22,12 +22,12 @@
   | {'is_removable', boolean() }
   | {'name', binary() }
   | {'status', openapi_entity_status:openapi_entity_status() }
-  | {'tracking_urls', openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls() }
+  | {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
   | {'view_tracking_url', binary() }
   | {'lead_form_id', binary() }
   | {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
   | {'customizable_cta_type', binary() }
-  | {'quiz_pin_data', openapi_ad_common_quiz_pin_data:openapi_ad_common_quiz_pin_data() }
+  | {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
   ].
 
 
@@ -48,12 +48,12 @@ openapi_ad_common(Fields) ->
             , {'is_removable', boolean() }
             , {'name', binary() }
             , {'status', openapi_entity_status:openapi_entity_status() }
-            , {'tracking_urls', openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls() }
+            , {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
             , {'view_tracking_url', binary() }
             , {'lead_form_id', binary() }
             , {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
-            , {'customizable_cta_type', elements([<<"GET_OFFER">>, <<"LEARN_MORE">>, <<"ORDER_NOW">>, <<"SHOP_NOW">>, <<"SIGN_UP">>, <<"SUBSCRIBE">>, <<"BUY_NOW">>, <<"CONTACT_US">>, <<"GET_QUOTE">>, <<"VISIT_WEBSITE">>, <<"APPLY_NOW">>, <<"BOOK_NOW">>, <<"REQUEST_DEMO">>, <<"REGISTER_NOW">>, <<"FIND_A_DEALER">>, <<"ADD_TO_CART">>, <<"WATCH_NOW">>, <<"READ_MORE">>, <<"">>]) }
-            , {'quiz_pin_data', openapi_ad_common_quiz_pin_data:openapi_ad_common_quiz_pin_data() }
+            , {'customizable_cta_type', elements([<<"GET_OFFER">>, <<"LEARN_MORE">>, <<"ORDER_NOW">>, <<"SHOP_NOW">>, <<"SIGN_UP">>, <<"SUBSCRIBE">>, <<"BUY_NOW">>, <<"CONTACT_US">>, <<"GET_QUOTE">>, <<"VISIT_SITE">>, <<"APPLY_NOW">>, <<"BOOK_NOW">>, <<"REQUEST_DEMO">>, <<"REGISTER_NOW">>, <<"FIND_A_DEALER">>, <<"ADD_TO_CART">>, <<"WATCH_NOW">>, <<"READ_MORE">>, <<"">>]) }
+            , {'quiz_pin_data', openapi_quiz_pin_data:openapi_quiz_pin_data() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

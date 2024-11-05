@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * GoogleProductCategory1Filter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GoogleProductCategory1Filter   {
   @JsonProperty("GOOGLE_PRODUCT_CATEGORY_1")
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1;
@@ -25,10 +25,10 @@ public class GoogleProductCategory1Filter   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_1
    * @return GOOGLE_PRODUCT_CATEGORY_1
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY1() {
     return GOOGLE_PRODUCT_CATEGORY_1;

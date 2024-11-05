@@ -16,6 +16,7 @@
 #include "../model/catalogs_items_update_batch_request.h"
 catalogs_items_update_batch_request_t* instantiate_catalogs_items_update_batch_request(int include_optional);
 
+#include "test_catalogs_items_request_language.c"
 
 
 catalogs_items_update_batch_request_t* instantiate_catalogs_items_update_batch_request(int include_optional) {
@@ -23,14 +24,14 @@ catalogs_items_update_batch_request_t* instantiate_catalogs_items_update_batch_r
   if (include_optional) {
     catalogs_items_update_batch_request = catalogs_items_update_batch_request_create(
       pinterest_rest_api_catalogs_items_update_batch_request__"US",
-      pinterest_rest_api_catalogs_items_update_batch_request__"EN",
+      null,
       pinterest_rest_api_catalogs_items_update_batch_request__"UPDATE",
       list_createList()
     );
   } else {
     catalogs_items_update_batch_request = catalogs_items_update_batch_request_create(
       pinterest_rest_api_catalogs_items_update_batch_request__"US",
-      pinterest_rest_api_catalogs_items_update_batch_request__"EN",
+      null,
       pinterest_rest_api_catalogs_items_update_batch_request__"UPDATE",
       list_createList()
     );

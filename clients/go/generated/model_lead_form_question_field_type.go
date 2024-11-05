@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,6 @@ const (
 	TEXT_AREA LeadFormQuestionFieldType = "TEXT_AREA"
 	RADIO_LIST LeadFormQuestionFieldType = "RADIO_LIST"
 	CHECKBOX LeadFormQuestionFieldType = "CHECKBOX"
-	NULL LeadFormQuestionFieldType = "null"
 )
 
 // All allowed values of LeadFormQuestionFieldType enum
@@ -34,7 +33,6 @@ var AllowedLeadFormQuestionFieldTypeEnumValues = []LeadFormQuestionFieldType{
 	"TEXT_AREA",
 	"RADIO_LIST",
 	"CHECKBOX",
-	"null",
 }
 
 func (v *LeadFormQuestionFieldType) UnmarshalJSON(src []byte) error {

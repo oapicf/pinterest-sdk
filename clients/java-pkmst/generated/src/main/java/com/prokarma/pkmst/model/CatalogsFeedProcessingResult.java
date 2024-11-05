@@ -20,7 +20,7 @@ import java.time.OffsetDateTime;
  * CatalogsFeedProcessingResult
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedProcessingResult   {
   @JsonProperty("created_at")
   private OffsetDateTime createdAt;
@@ -48,11 +48,11 @@ public class CatalogsFeedProcessingResult   {
     return this;
   }
 
-   /**
+  /**
    * Get createdAt
    * @return createdAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -66,11 +66,11 @@ public class CatalogsFeedProcessingResult   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
+   */
+  @ApiModelProperty(required = true, value = "")
   public String getId() {
     return id;
   }
@@ -84,11 +84,11 @@ public class CatalogsFeedProcessingResult   {
     return this;
   }
 
-   /**
+  /**
    * Get updatedAt
    * @return updatedAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -102,10 +102,10 @@ public class CatalogsFeedProcessingResult   {
     return this;
   }
 
-   /**
+  /**
    * Get ingestionDetails
    * @return ingestionDetails
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedIngestionDetails getIngestionDetails() {
     return ingestionDetails;
@@ -120,10 +120,10 @@ public class CatalogsFeedProcessingResult   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedProcessingStatus getStatus() {
     return status;
@@ -138,10 +138,10 @@ public class CatalogsFeedProcessingResult   {
     return this;
   }
 
-   /**
+  /**
    * Get productCounts
    * @return productCounts
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedProductCounts getProductCounts() {
     return productCounts;
@@ -156,10 +156,10 @@ public class CatalogsFeedProcessingResult   {
     return this;
   }
 
-   /**
+  /**
    * Get validationDetails
    * @return validationDetails
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedValidationDetails getValidationDetails() {
     return validationDetails;

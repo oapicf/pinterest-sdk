@@ -7,7 +7,7 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open CampaignsApiHandlerParams
 open CampaignsApiServiceInterface
 open CampaignsApiServiceImplementation
-open OpenAPI.Model.AdsAnalyticsTargetingType
+open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.CampaignCreateResponse
 open OpenAPI.Model.CampaignResponse

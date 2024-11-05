@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 **CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**CatalogId** | **string** |  | 
+**CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
 
 ## Methods
 

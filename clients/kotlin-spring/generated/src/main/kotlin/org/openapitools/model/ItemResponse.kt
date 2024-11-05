@@ -1,9 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.CatalogsHotelAttributes
+import org.openapitools.model.CatalogsCreativeAssetsAttributes
 import org.openapitools.model.CatalogsType
 import org.openapitools.model.ItemResponseAnyOf
 import org.openapitools.model.ItemResponseAnyOf1
@@ -26,6 +27,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param itemId The catalog item id in the merchant namespace
  * @param errors Array with the errors for the item id requested
  * @param hotelId The catalog hotel id in the merchant namespace
+ * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
 data class ItemResponse(
 
@@ -43,6 +45,9 @@ data class ItemResponse(
     @Schema(example = "DS0294-M", description = "The catalog hotel id in the merchant namespace")
     @get:JsonProperty("hotel_id") val hotelId: kotlin.String? = null,
 
+    @Schema(example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace")
+    @get:JsonProperty("creative_assets_id") val creativeAssetsId: kotlin.String? = null,
+
     @field:Valid
     @get:Size(max=11)
     @Schema(example = "null", description = "The pins mapped to the item")
@@ -50,8 +55,8 @@ data class ItemResponse(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("attributes") override val attributes: CatalogsHotelAttributes? = null
-) {
+    @get:JsonProperty("attributes") override val attributes: CatalogsCreativeAssetsAttributes? = null
+    ) {
 
 }
 

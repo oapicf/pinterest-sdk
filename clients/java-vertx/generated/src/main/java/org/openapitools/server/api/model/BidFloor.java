@@ -10,7 +10,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BidFloor   {
   
-  private List<Integer> bidFloors;
+  private List<Integer> bidFloors = new ArrayList<>();
   private String type = "bidfloor";
 
   public BidFloor () {

@@ -1,12 +1,14 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsFeedCredentials
 import org.openapitools.model.CatalogsFeedProcessingSchedule
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.model.CatalogsFormat
+import org.openapitools.model.CatalogsStatus
 import org.openapitools.model.CatalogsType
 import org.openapitools.model.Country
 import org.openapitools.model.NullableCurrency
@@ -34,6 +36,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param credentials 
  * @param preferredProcessingSchedule 
  * @param defaultAvailability 
+ * @param status 
  */
 data class CatalogsRetailFeedsCreateRequest(
 
@@ -74,8 +77,12 @@ data class CatalogsRetailFeedsCreateRequest(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("default_availability") val defaultAvailability: ProductAvailabilityType? = null
-) {
+    @get:JsonProperty("default_availability") val defaultAvailability: ProductAvailabilityType? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("status") val status: CatalogsStatus? = null
+    ) {
 
 }
 

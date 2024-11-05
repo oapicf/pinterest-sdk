@@ -70,7 +70,7 @@ Mono<DeliveryMetricsResponse> ResourcesApi.deliveryMetricsGet(reportType)
 
 Get available metrics&#39; definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -122,7 +122,7 @@ Mono<Void> ResourcesApi.leadFormQuestionsGet()
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 
 
@@ -164,7 +164,7 @@ Learn whether conversion or non-conversion metrics are finalized and ready to qu
 <a id="targetingOptionsGet"></a>
 # **targetingOptionsGet**
 ```java
-Mono<List<Object>> ResourcesApi.targetingOptionsGet(targetingTypeclientIdoauthSignaturetimestamp)
+Mono<List<Object>> ResourcesApi.targetingOptionsGet(targetingTypeclientIdoauthSignaturetimestampadAccountId)
 ```
 
 Get targeting options
@@ -178,6 +178,7 @@ Get targeting options
 | **clientId** | `String`| Client ID. | [optional parameter] |
 | **oauthSignature** | `String`| Oauth signature | [optional parameter] |
 | **timestamp** | `String`| Timestamp | [optional parameter] |
+| **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
 ### Return type

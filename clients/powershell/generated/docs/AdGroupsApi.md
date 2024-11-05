@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**Invoke-AdGroupsBidFloorGet**](AdGroupsApi.md#Invoke-AdGroupsBidFloorGet) | **POST** /ad_accounts/{ad_account_id}/bid_floor | Get bid floors
 [**Invoke-AdGroupsTargetingAnalyticsGet**](AdGroupsApi.md#Invoke-AdGroupsTargetingAnalyticsGet) | **GET** /ad_accounts/{ad_account_id}/ad_groups/targeting_analytics | Get targeting analytics for ad groups
 [**Invoke-AdGroupsAnalytics**](AdGroupsApi.md#Invoke-AdGroupsAnalytics) | **GET** /ad_accounts/{ad_account_id}/ad_groups/analytics | Get ad group analytics
-[**Invoke-AdGroupsAudienceSizing**](AdGroupsApi.md#Invoke-AdGroupsAudienceSizing) | **GET** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
+[**Invoke-AdGroupsAudienceSizing**](AdGroupsApi.md#Invoke-AdGroupsAudienceSizing) | **POST** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
 [**Invoke-AdGroupsCreate**](AdGroupsApi.md#Invoke-AdGroupsCreate) | **POST** /ad_accounts/{ad_account_id}/ad_groups | Create ad groups
 [**Invoke-AdGroupsGet**](AdGroupsApi.md#Invoke-AdGroupsGet) | **GET** /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id} | Get ad group
 [**Invoke-AdGroupsList**](AdGroupsApi.md#Invoke-AdGroupsList) | **GET** /ad_accounts/{ad_account_id}/ad_groups | List ad groups
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Get bid floors
 
-List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=""reference external"" href=""https://help.pinterest.com/en/business/article/set-your-bid""> Set your bid</a>.
+List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=""reference external"" href=""https://help.pinterest.com/en/business/article/set-your-bid""> Set your bid</a>.
 
 ### Example
 ```powershell
@@ -111,7 +111,7 @@ $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $AdGroupIds = "MyAdGroupIds" # String[] | List of Ad group Ids to use to filter the results.
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$TargetingTypes = "KEYWORD" # AdsAnalyticsTargetingType[] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+$TargetingTypes = "KEYWORD" # AdsAnalyticsTargetingType[] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [""AGE_BUCKET_AND_GENDER""] is in BETA and not yet available to all users.
 $Columns = "SPEND_IN_MICRO_DOLLAR" # String[] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 $Granularity = "TOTAL" # Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 $ClickWindowDays = "0" # Int32 | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
  **AdGroupIds** | [**String[]**](String.md)| List of Ad group Ids to use to filter the results. | 
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **TargetingTypes** | [**AdsAnalyticsTargetingType[]**](AdsAnalyticsTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. | 
+ **TargetingTypes** | [**AdsAnalyticsTargetingType[]**](AdsAnalyticsTargetingType.md)| Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [&quot;&quot;AGE_BUCKET_AND_GENDER&quot;&quot;] is in BETA and not yet available to all users. | 
  **Columns** | [**String[]**](String.md)| Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **Granularity** | [**Granularity**](Granularity.md)| TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **ClickWindowDays** | **Int32**| Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to 30]
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 Create ad groups
 
-Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=""https://help.pinterest.com/en/business/article/campaign-structure"" target=""_blank""> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=""https://help.pinterest.com/en/business/article/campaign-structure"" target=""_blank""> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
 
 ### Example
 ```powershell
@@ -318,7 +318,7 @@ $OptimizationGoalMetadataConversionTagV3GoalMetadata = Initialize-OptimizationGo
 
 $OptimizationGoalMetadataFrequencyGoalMetadata = Initialize-OptimizationGoalMetadataFrequencyGoalMetadata -Frequency 0 -Timerange "THIRTY_DAY"
 $OptimizationGoalMetadataScrollupGoalMetadata = Initialize-OptimizationGoalMetadataScrollupGoalMetadata -ScrollupGoalValueInMicroCurrency "MyScrollupGoalValueInMicroCurrency"
-$AdGroupCommonOptimizationGoalMetadata = Initialize-AdGroupCommonOptimizationGoalMetadata -ConversionTagV3GoalMetadata $OptimizationGoalMetadataConversionTagV3GoalMetadata -FrequencyGoalMetadata $OptimizationGoalMetadataFrequencyGoalMetadata -ScrollupGoalMetadata $OptimizationGoalMetadataScrollupGoalMetadata
+$OptimizationGoalMetadata = Initialize-OptimizationGoalMetadata -ConversionTagV3GoalMetadata $OptimizationGoalMetadataConversionTagV3GoalMetadata -FrequencyGoalMetadata $OptimizationGoalMetadataFrequencyGoalMetadata -ScrollupGoalMetadata $OptimizationGoalMetadataScrollupGoalMetadata
 
 "18-24""android_mobile""unknown"
 $TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING -LookbackWindow 30 -TagTypes 0 -ExclusionWindow 14
@@ -326,8 +326,8 @@ $TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING 
 $TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING -LookbackWindow 30 -TagTypes 0 -ExclusionWindow 14
 "CHOOSE_YOUR_OWN"
 
-$AdGroupCommonTrackingUrls = Initialize-AdGroupCommonTrackingUrls -Impression "MyImpression" -Click "MyClick" -Engagement "MyEngagement" -BuyableButton "MyBuyableButton" -AudienceVerification "MyAudienceVerification"
-$AdGroupCreateRequest = Initialize-AdGroupCreateRequest -Name "Ad Group For Pin: 687195905986" -Status "ACTIVE" -BudgetInMicroCurrency 5000000 -BidInMicroCurrency 5000000 -OptimizationGoalMetadata $AdGroupCommonOptimizationGoalMetadata -BudgetType "DAILY" -StartTime 5686848000 -EndTime 5705424000 -TargetingSpec $TargetingSpec -LifetimeFrequencyCap 100 -TrackingUrls $AdGroupCommonTrackingUrls -AutoTargetingEnabled $true -PlacementGroup "ALL" -PacingDeliveryType "STANDARD" -CampaignId "626736533506" -BillableEvent "CLICKTHROUGH" -BidStrategyType "AUTOMATIC_BID" # AdGroupCreateRequest[] | List of ad groups to create, size limit [1, 30].
+$TrackingUrls = Initialize-TrackingUrls -Impression "MyImpression" -Click "MyClick" -Engagement "MyEngagement" -BuyableButton "MyBuyableButton" -AudienceVerification "MyAudienceVerification"
+$AdGroupCreateRequest = Initialize-AdGroupCreateRequest -Name "Ad Group For Pin: 687195905986" -Status "ACTIVE" -BudgetInMicroCurrency 5000000 -BidInMicroCurrency 5000000 -OptimizationGoalMetadata $OptimizationGoalMetadata -BudgetType "DAILY" -StartTime 5686848000 -EndTime 5705424000 -TargetingSpec $TargetingSpec -LifetimeFrequencyCap 100 -TrackingUrls $TrackingUrls -AutoTargetingEnabled $true -PlacementGroup "ALL" -PacingDeliveryType "STANDARD" -CampaignId "626736533506" -BillableEvent "CLICKTHROUGH" -BidStrategyType "AUTOMATIC_BID" -TargetingTemplateIds "643" # AdGroupCreateRequest[] | List of ad groups to create, size limit [1, 30].
 
 # Create ad groups
 try {
@@ -438,7 +438,7 @@ $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $CampaignIds = "MyCampaignIds" # String[] | List of Campaign Ids to use to filter the results. (optional)
 $AdGroupIds = "MyAdGroupIds" # String[] | List of Ad group Ids to use to filter the results. (optional)
 $EntityStatuses = "ACTIVE" # String[] | Entity status (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
 $TranslateInterestsToNames = $true # Boolean | Return interests as text names (if value is true) rather than topic IDs. (optional) (default to $false)
@@ -460,7 +460,7 @@ Name | Type | Description  | Notes
  **CampaignIds** | [**String[]**](String.md)| List of Campaign Ids to use to filter the results. | [optional] 
  **AdGroupIds** | [**String[]**](String.md)| List of Ad group Ids to use to filter the results. | [optional] 
  **EntityStatuses** | [**String[]**](String.md)| Entity status | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
  **TranslateInterestsToNames** | **Boolean**| Return interests as text names (if value is true) rather than topic IDs. | [optional] [default to $false]
@@ -503,7 +503,7 @@ $OptimizationGoalMetadataConversionTagV3GoalMetadata = Initialize-OptimizationGo
 
 $OptimizationGoalMetadataFrequencyGoalMetadata = Initialize-OptimizationGoalMetadataFrequencyGoalMetadata -Frequency 0 -Timerange "THIRTY_DAY"
 $OptimizationGoalMetadataScrollupGoalMetadata = Initialize-OptimizationGoalMetadataScrollupGoalMetadata -ScrollupGoalValueInMicroCurrency "MyScrollupGoalValueInMicroCurrency"
-$AdGroupCommonOptimizationGoalMetadata = Initialize-AdGroupCommonOptimizationGoalMetadata -ConversionTagV3GoalMetadata $OptimizationGoalMetadataConversionTagV3GoalMetadata -FrequencyGoalMetadata $OptimizationGoalMetadataFrequencyGoalMetadata -ScrollupGoalMetadata $OptimizationGoalMetadataScrollupGoalMetadata
+$OptimizationGoalMetadata = Initialize-OptimizationGoalMetadata -ConversionTagV3GoalMetadata $OptimizationGoalMetadataConversionTagV3GoalMetadata -FrequencyGoalMetadata $OptimizationGoalMetadataFrequencyGoalMetadata -ScrollupGoalMetadata $OptimizationGoalMetadataScrollupGoalMetadata
 
 "18-24""android_mobile""unknown"
 $TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING -LookbackWindow 30 -TagTypes 0 -ExclusionWindow 14
@@ -511,8 +511,8 @@ $TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING 
 $TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING -LookbackWindow 30 -TagTypes 0 -ExclusionWindow 14
 "CHOOSE_YOUR_OWN"
 
-$AdGroupCommonTrackingUrls = Initialize-AdGroupCommonTrackingUrls -Impression "MyImpression" -Click "MyClick" -Engagement "MyEngagement" -BuyableButton "MyBuyableButton" -AudienceVerification "MyAudienceVerification"
-$AdGroupUpdateRequest = Initialize-AdGroupUpdateRequest -Name "Ad Group For Pin: 687195905986" -Status "ACTIVE" -BudgetInMicroCurrency 5000000 -BidInMicroCurrency 5000000 -OptimizationGoalMetadata $AdGroupCommonOptimizationGoalMetadata -BudgetType "DAILY" -StartTime 5686848000 -EndTime 5705424000 -TargetingSpec $TargetingSpec -LifetimeFrequencyCap 100 -TrackingUrls $AdGroupCommonTrackingUrls -AutoTargetingEnabled $true -PlacementGroup "ALL" -PacingDeliveryType "STANDARD" -CampaignId "626736533506" -BillableEvent "CLICKTHROUGH" -BidStrategyType "AUTOMATIC_BID" -Id "2680060704746" # AdGroupUpdateRequest[] | List of ad groups to update, size limit [1, 30].
+$TrackingUrls = Initialize-TrackingUrls -Impression "MyImpression" -Click "MyClick" -Engagement "MyEngagement" -BuyableButton "MyBuyableButton" -AudienceVerification "MyAudienceVerification"
+$AdGroupUpdateRequest = Initialize-AdGroupUpdateRequest -Name "Ad Group For Pin: 687195905986" -Status "ACTIVE" -BudgetInMicroCurrency 5000000 -BidInMicroCurrency 5000000 -OptimizationGoalMetadata $OptimizationGoalMetadata -BudgetType "DAILY" -StartTime 5686848000 -EndTime 5705424000 -TargetingSpec $TargetingSpec -LifetimeFrequencyCap 100 -TrackingUrls $TrackingUrls -AutoTargetingEnabled $true -PlacementGroup "ALL" -PacingDeliveryType "STANDARD" -CampaignId "626736533506" -BillableEvent "CLICKTHROUGH" -BidStrategyType "AUTOMATIC_BID" -TargetingTemplateIds "643" -Id "2680060704746" # AdGroupUpdateRequest[] | List of ad groups to update, size limit [1, 30].
 
 # Update ad groups
 try {

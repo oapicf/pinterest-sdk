@@ -11,5 +11,5 @@ import org.openapitools.model.VideoMetadata;
 @Canonical
 class PinMediaWithVideos {
     
-    List<VideoMetadata> items
+    List<VideoMetadata> items = new ArrayList<>()
 }

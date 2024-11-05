@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **Date** |  | [optional] 
-**id** | **String** |  | [optional] 
-**updatedAt** | **Date** |  | [optional] 
+**createdAt** | **Date** |  | 
+**id** | **String** |  | 
+**updatedAt** | **Date** |  | 
 **name** | **String** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **catalogType** | [**CatalogsType**](CatalogsType.md) |  | 

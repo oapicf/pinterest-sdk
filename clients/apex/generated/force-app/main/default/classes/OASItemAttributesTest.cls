@@ -102,6 +102,7 @@ private class OASItemAttributesTest {
         System.assertEquals('variantValues', x-property-mappings.get('variant_values'));
         System.assertEquals('additionalImageLink', x-property-mappings.get('additional_image_link'));
         System.assertEquals('imageLink', x-property-mappings.get('image_link'));
+        System.assertEquals('videoLink', x-property-mappings.get('video_link'));
     }
 
     @isTest
@@ -154,5 +155,6 @@ private class OASItemAttributesTest {
         System.assertEquals(null, itemAttributes.sizeType);
         System.assertEquals(null, itemAttributes.tax);
         System.assertEquals(null, itemAttributes.title);
+        System.assertEquals(null, itemAttributes.videoLink);
     }
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,12 +23,14 @@ type BatchOperationStatus string
 const (
 	PROCESSING BatchOperationStatus = "PROCESSING"
 	COMPLETED BatchOperationStatus = "COMPLETED"
+	FAILED BatchOperationStatus = "FAILED"
 )
 
 // All allowed values of BatchOperationStatus enum
 var AllowedBatchOperationStatusEnumValues = []BatchOperationStatus{
 	"PROCESSING",
 	"COMPLETED",
+	"FAILED",
 }
 
 func (v *BatchOperationStatus) UnmarshalJSON(src []byte) error {

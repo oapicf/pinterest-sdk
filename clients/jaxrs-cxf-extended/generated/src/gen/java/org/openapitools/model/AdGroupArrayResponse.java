@@ -16,7 +16,7 @@ public class AdGroupArrayResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid AdGroupArrayResponseElement> items;
+  private List<@Valid AdGroupArrayResponseElement> items = new ArrayList<>();
  /**
   * Get items
   * @return items

@@ -32,5 +32,8 @@ data class CustomLabel1Filter (
     @Json(name = "CUSTOM_LABEL_1")
     val CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
 
-)
+) {
+
+
+}
 

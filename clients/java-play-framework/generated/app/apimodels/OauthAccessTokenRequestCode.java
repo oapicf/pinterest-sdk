@@ -1,6 +1,5 @@
 package apimodels;
 
-import apimodels.OauthAccessTokenRequest;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -10,9 +9,47 @@ import javax.validation.Valid;
 /**
  * A request to exchange an authorization code for an access token.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
-public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
+public class OauthAccessTokenRequestCode   {
+  /**
+   * Gets or Sets grantType
+   */
+  public enum GrantTypeEnum {
+    AUTHORIZATION_CODE("authorization_code"),
+    
+    REFRESH_TOKEN("refresh_token"),
+    
+    CLIENT_CREDENTIALS("client_credentials");
+
+    private final String value;
+
+    GrantTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static GrantTypeEnum fromValue(String value) {
+      for (GrantTypeEnum b : GrantTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("grant_type")
+  @NotNull
+
+  private GrantTypeEnum grantType;
+
   @JsonProperty("code")
   @NotNull
 
@@ -22,6 +59,23 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
   @NotNull
 
   private String redirectUri;
+
+  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+   /**
+   * Get grantType
+   * @return grantType
+  **/
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
 
   public OauthAccessTokenRequestCode code(String code) {
     this.code = code;
@@ -67,14 +121,14 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
-        super.equals(o);
+    return Objects.equals(grantType, oauthAccessTokenRequestCode.grantType) &&
+        Objects.equals(code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(redirectUri, oauthAccessTokenRequestCode.redirectUri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, redirectUri, super.hashCode());
+    return Objects.hash(grantType, code, redirectUri);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -82,7 +136,8 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
     sb.append("}");

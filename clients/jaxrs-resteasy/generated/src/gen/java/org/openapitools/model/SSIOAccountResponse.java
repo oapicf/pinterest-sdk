@@ -14,16 +14,15 @@ import org.openapitools.model.SSIOAccountPMPName;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountResponse   {
   
   private Boolean eligible;
   private Boolean canEdit;
-  private List<@Valid SSIOAccountItem> billtoInfos;
+  private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
   private String currency;
-  private List<@Valid SSIOAccountPMPName> pmpNames;
+  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
   private String error;
 
   /**

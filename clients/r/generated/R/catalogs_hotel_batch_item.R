@@ -17,13 +17,11 @@ CatalogsHotelBatchItem <- R6::R6Class(
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
     any_of = list("CatalogsCreateHotelItem", "CatalogsDeleteHotelItem", "CatalogsUpdateHotelItem", "CatalogsUpsertHotelItem"),
-    #' Initialize a new CatalogsHotelBatchItem.
-    #'
+
     #' @description
     #' Initialize a new CatalogsHotelBatchItem.
     #'
     #' @param instance an instance of the object defined in the anyOf schemas: "CatalogsCreateHotelItem", "CatalogsDeleteHotelItem", "CatalogsUpdateHotelItem", "CatalogsUpsertHotelItem"
-    #' @export
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -44,26 +42,24 @@ CatalogsHotelBatchItem <- R6::R6Class(
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelBatchItem.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelBatchItem.
     #' An alias to the method `fromJSON`.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsHotelBatchItem.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelBatchItem.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelBatchItem.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsHotelBatchItem.
-    #' @export
     fromJSON = function(input) {
       error_messages <- list()
 
@@ -127,13 +123,11 @@ CatalogsHotelBatchItem <- R6::R6Class(
       stop(paste("No match found when deserializing the input into CatalogsHotelBatchItem with anyOf schemas CatalogsCreateHotelItem, CatalogsDeleteHotelItem, CatalogsUpdateHotelItem, CatalogsUpsertHotelItem. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
-    #' Serialize CatalogsHotelBatchItem to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsHotelBatchItem to JSON string.
     #'
     #' @return JSON string representation of the CatalogsHotelBatchItem.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify((self$actual_instance$toJSONString())))
@@ -141,13 +135,11 @@ CatalogsHotelBatchItem <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsHotelBatchItem to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsHotelBatchItem to JSON.
     #'
     #' @return JSON representation of the CatalogsHotelBatchItem.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -155,14 +147,12 @@ CatalogsHotelBatchItem <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsHotelBatchItem.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsHotelBatchItem and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -175,13 +165,11 @@ CatalogsHotelBatchItem <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -191,12 +179,9 @@ CatalogsHotelBatchItem <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

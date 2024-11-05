@@ -22,7 +22,7 @@ data class TrendingKeywordsResponseTrendsInnerTimeSeries(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("date") val date: java.time.LocalDate? = null
-) : kotlin.collections.HashMap<String, kotlin.Int>{
+    ) : kotlin.collections.HashMap<String, kotlin.Int>{
 
 }
 

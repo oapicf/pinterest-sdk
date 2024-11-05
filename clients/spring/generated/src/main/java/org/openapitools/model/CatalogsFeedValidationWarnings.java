@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsFeedValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationWarnings {
 
   private Integer AD_LINK_FORMAT_WARNING;
@@ -161,7 +161,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have ad links that are formatted incorrectly.
    * @return AD_LINK_FORMAT_WARNING
-  */
+   */
   
   @Schema(name = "AD_LINK_FORMAT_WARNING", description = "Some items have ad links that are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_FORMAT_WARNING")
@@ -181,7 +181,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have ad link URLs that are duplicates of the link URLs for those items.
    * @return AD_LINK_SAME_AS_LINK
-  */
+   */
   
   @Schema(name = "AD_LINK_SAME_AS_LINK", description = "Some items have ad link URLs that are duplicates of the link URLs for those items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_SAME_AS_LINK")
@@ -201,7 +201,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * The title for some items were truncated because they contain too many characters.
    * @return TITLE_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "TITLE_LENGTH_TOO_LONG", description = "The title for some items were truncated because they contain too many characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_LENGTH_TOO_LONG")
@@ -221,7 +221,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * The description for some items were truncated because they contain too many characters.
    * @return DESCRIPTION_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "DESCRIPTION_LENGTH_TOO_LONG", description = "The description for some items were truncated because they contain too many characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_LENGTH_TOO_LONG")
@@ -241,7 +241,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return GENDER_INVALID
-  */
+   */
   
   @Schema(name = "GENDER_INVALID", description = "Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GENDER_INVALID")
@@ -261,7 +261,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return AGE_GROUP_INVALID
-  */
+   */
   
   @Schema(name = "AGE_GROUP_INVALID", description = "Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AGE_GROUP_INVALID")
@@ -281,7 +281,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return SIZE_TYPE_INVALID
-  */
+   */
   
   @Schema(name = "SIZE_TYPE_INVALID", description = "Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_TYPE_INVALID")
@@ -301,7 +301,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have size system values which are not one of the supported size systems.
    * @return SIZE_SYSTEM_INVALID
-  */
+   */
   
   @Schema(name = "SIZE_SYSTEM_INVALID", description = "Some items have size system values which are not one of the supported size systems.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_SYSTEM_INVALID")
@@ -321,7 +321,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have an invalid product link which contains invalid UTM tracking paramaters.
    * @return LINK_FORMAT_WARNING
-  */
+   */
   
   @Schema(name = "LINK_FORMAT_WARNING", description = "Some items have an invalid product link which contains invalid UTM tracking paramaters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_WARNING")
@@ -341,7 +341,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have sale price values that are higher than the original price of the item.
    * @return SALES_PRICE_INVALID
-  */
+   */
   
   @Schema(name = "SALES_PRICE_INVALID", description = "Some items have sale price values that are higher than the original price of the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_INVALID")
@@ -361,7 +361,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
    * @return PRODUCT_CATEGORY_DEPTH_WARNING
-  */
+   */
   
   @Schema(name = "PRODUCT_CATEGORY_DEPTH_WARNING", description = "Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_CATEGORY_DEPTH_WARNING")
@@ -381,7 +381,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have adwords_redirect links that are formatted incorrectly.
    * @return ADWORDS_FORMAT_WARNING
-  */
+   */
   
   @Schema(name = "ADWORDS_FORMAT_WARNING", description = "Some items have adwords_redirect links that are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_WARNING")
@@ -401,7 +401,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
    * @return ADWORDS_SAME_AS_LINK
-  */
+   */
   
   @Schema(name = "ADWORDS_SAME_AS_LINK", description = "Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_SAME_AS_LINK")
@@ -421,7 +421,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Your feed contains duplicate headers.
    * @return DUPLICATE_HEADERS
-  */
+   */
   
   @Schema(name = "DUPLICATE_HEADERS", description = "Your feed contains duplicate headers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DUPLICATE_HEADERS")
@@ -441,7 +441,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Ingestion completed early because there are no changes to your feed since the last successful update.
    * @return FETCH_SAME_SIGNATURE
-  */
+   */
   
   @Schema(name = "FETCH_SAME_SIGNATURE", description = "Ingestion completed early because there are no changes to your feed since the last successful update.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_SAME_SIGNATURE")
@@ -461,7 +461,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
    * @return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", description = "Some items have additional_image_link URLs that contain too many characters, so those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
@@ -481,7 +481,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
    * @return ADDITIONAL_IMAGE_LINK_WARNING
-  */
+   */
   
   @Schema(name = "ADDITIONAL_IMAGE_LINK_WARNING", description = "Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_WARNING")
@@ -501,7 +501,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
    * @return IMAGE_LINK_WARNING
-  */
+   */
   
   @Schema(name = "IMAGE_LINK_WARNING", description = "Some items have image_link URLs that are formatted incorrectly and will not be published with those items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_WARNING")
@@ -521,7 +521,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have shipping values that are formatted incorrectly.
    * @return SHIPPING_INVALID
-  */
+   */
   
   @Schema(name = "SHIPPING_INVALID", description = "Some items have shipping values that are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_INVALID")
@@ -541,7 +541,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have tax values that are formatted incorrectly.
    * @return TAX_INVALID
-  */
+   */
   
   @Schema(name = "TAX_INVALID", description = "Some items have tax values that are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TAX_INVALID")
@@ -561,7 +561,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have invalid shipping_weight values.
    * @return SHIPPING_WEIGHT_INVALID
-  */
+   */
   
   @Schema(name = "SHIPPING_WEIGHT_INVALID", description = "Some items have invalid shipping_weight values.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WEIGHT_INVALID")
@@ -581,7 +581,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
    * @return EXPIRATION_DATE_INVALID
-  */
+   */
   
   @Schema(name = "EXPIRATION_DATE_INVALID", description = "Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("EXPIRATION_DATE_INVALID")
@@ -601,7 +601,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
    * @return AVAILABILITY_DATE_INVALID
-  */
+   */
   
   @Schema(name = "AVAILABILITY_DATE_INVALID", description = "Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_DATE_INVALID")
@@ -621,7 +621,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
    * @return SALE_DATE_INVALID
-  */
+   */
   
   @Schema(name = "SALE_DATE_INVALID", description = "Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALE_DATE_INVALID")
@@ -641,7 +641,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
    * @return WEIGHT_UNIT_INVALID
-  */
+   */
   
   @Schema(name = "WEIGHT_UNIT_INVALID", description = "Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("WEIGHT_UNIT_INVALID")
@@ -661,7 +661,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
    * @return IS_BUNDLE_INVALID
-  */
+   */
   
   @Schema(name = "IS_BUNDLE_INVALID", description = "Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IS_BUNDLE_INVALID")
@@ -681,7 +681,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
    * @return UPDATED_TIME_INVALID
-  */
+   */
   
   @Schema(name = "UPDATED_TIME_INVALID", description = "Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("UPDATED_TIME_INVALID")
@@ -701,7 +701,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have custom_label values that are too long, those items will be published without that custom label.
    * @return CUSTOM_LABEL_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "CUSTOM_LABEL_LENGTH_TOO_LONG", description = "Some items have custom_label values that are too long, those items will be published without that custom label.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("CUSTOM_LABEL_LENGTH_TOO_LONG")
@@ -721,7 +721,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have product_type values that are too long, those items will be published without that product type.
    * @return PRODUCT_TYPE_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "PRODUCT_TYPE_LENGTH_TOO_LONG", description = "Some items have product_type values that are too long, those items will be published without that product type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_TYPE_LENGTH_TOO_LONG")
@@ -741,7 +741,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
    * @return TOO_MANY_ADDITIONAL_IMAGE_LINKS
-  */
+   */
   
   @Schema(name = "TOO_MANY_ADDITIONAL_IMAGE_LINKS", description = "Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
@@ -761,7 +761,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items have invalid multipack values.
    * @return MULTIPACK_INVALID
-  */
+   */
   
   @Schema(name = "MULTIPACK_INVALID", description = "Some items have invalid multipack values.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MULTIPACK_INVALID")
@@ -781,7 +781,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * The product count has increased or decreased significantly compared to the last successful ingestion.
    * @return INDEXED_PRODUCT_COUNT_LARGE_DELTA
-  */
+   */
   
   @Schema(name = "INDEXED_PRODUCT_COUNT_LARGE_DELTA", description = "The product count has increased or decreased significantly compared to the last successful ingestion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INDEXED_PRODUCT_COUNT_LARGE_DELTA")
@@ -801,7 +801,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include additional_image_links that can't be found.
    * @return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
-  */
+   */
   
   @Schema(name = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", description = "Some items include additional_image_links that can't be found.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
@@ -821,7 +821,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items are missing a google_product_category.
    * @return OPTIONAL_PRODUCT_CATEGORY_MISSING
-  */
+   */
   
   @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_MISSING", description = "Some items are missing a google_product_category.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_MISSING")
@@ -841,7 +841,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
    * @return OPTIONAL_PRODUCT_CATEGORY_INVALID
-  */
+   */
   
   @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_INVALID", description = "Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_INVALID")
@@ -861,7 +861,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_MISSING
-  */
+   */
   
   @Schema(name = "OPTIONAL_CONDITION_MISSING", description = "Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_MISSING")
@@ -881,7 +881,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_INVALID
-  */
+   */
   
   @Schema(name = "OPTIONAL_CONDITION_INVALID", description = "Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_INVALID")
@@ -901,7 +901,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include invalid ios_deep_link values.
    * @return IOS_DEEP_LINK_INVALID
-  */
+   */
   
   @Schema(name = "IOS_DEEP_LINK_INVALID", description = "Some items include invalid ios_deep_link values.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IOS_DEEP_LINK_INVALID")
@@ -921,7 +921,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include invalid android_deep_link.
    * @return ANDROID_DEEP_LINK_INVALID
-  */
+   */
   
   @Schema(name = "ANDROID_DEEP_LINK_INVALID", description = "Some items include invalid android_deep_link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ANDROID_DEEP_LINK_INVALID")
@@ -941,7 +941,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
    * @return UTM_SOURCE_AUTO_CORRECTED
-  */
+   */
   
   @Schema(name = "UTM_SOURCE_AUTO_CORRECTED", description = "Some items include utm_source values that are formatted incorrectly and have been automatically corrected.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("UTM_SOURCE_AUTO_CORRECTED")
@@ -961,7 +961,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
    * @return COUNTRY_DOES_NOT_MAP_TO_CURRENCY
-  */
+   */
   
   @Schema(name = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", description = "Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
@@ -981,7 +981,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include min_ad_price values that are formatted incorrectly.
    * @return MIN_AD_PRICE_INVALID
-  */
+   */
   
   @Schema(name = "MIN_AD_PRICE_INVALID", description = "Some items include min_ad_price values that are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MIN_AD_PRICE_INVALID")
@@ -1001,7 +1001,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include incorrectly formatted GTINs.
    * @return GTIN_INVALID
-  */
+   */
   
   @Schema(name = "GTIN_INVALID", description = "Some items include incorrectly formatted GTINs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GTIN_INVALID")
@@ -1021,7 +1021,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include inconsistent currencies in price fields.
    * @return INCONSISTENT_CURRENCY_VALUES
-  */
+   */
   
   @Schema(name = "INCONSISTENT_CURRENCY_VALUES", description = "Some items include inconsistent currencies in price fields.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INCONSISTENT_CURRENCY_VALUES")
@@ -1041,7 +1041,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include sales price that is much lower than the list price.
    * @return SALES_PRICE_TOO_LOW
-  */
+   */
   
   @Schema(name = "SALES_PRICE_TOO_LOW", description = "Some items include sales price that is much lower than the list price.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_LOW")
@@ -1061,7 +1061,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include incorrectly formatted shipping_width.
    * @return SHIPPING_WIDTH_INVALID
-  */
+   */
   
   @Schema(name = "SHIPPING_WIDTH_INVALID", description = "Some items include incorrectly formatted shipping_width.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WIDTH_INVALID")
@@ -1081,7 +1081,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include incorrectly formatted shipping_height.
    * @return SHIPPING_HEIGHT_INVALID
-  */
+   */
   
   @Schema(name = "SHIPPING_HEIGHT_INVALID", description = "Some items include incorrectly formatted shipping_height.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_HEIGHT_INVALID")
@@ -1101,7 +1101,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
    * @return SALES_PRICE_TOO_HIGH
-  */
+   */
   
   @Schema(name = "SALES_PRICE_TOO_HIGH", description = "Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_HIGH")
@@ -1121,7 +1121,7 @@ public class CatalogsFeedValidationWarnings {
   /**
    * Some items include incorrectly formatted MPNs.
    * @return MPN_INVALID
-  */
+   */
   
   @Schema(name = "MPN_INVALID", description = "Some items include incorrectly formatted MPNs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MPN_INVALID")

@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Audience interests and demographics.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightsResponse   {
   @JsonProperty("categories")
   
@@ -57,10 +57,10 @@ public class AudienceInsightsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Category interest distribution
    * @return categories
-  **/
+   */
   @ApiModelProperty(value = "Category interest distribution")
   public List<AudienceCategory> getCategories() {
     return categories;
@@ -75,10 +75,10 @@ public class AudienceInsightsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get demographics
    * @return demographics
-  **/
+   */
   @ApiModelProperty(value = "")
   public AudienceDemographics getDemographics() {
     return demographics;
@@ -93,10 +93,10 @@ public class AudienceInsightsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @ApiModelProperty(value = "")
   public AudienceInsightType getType() {
     return type;
@@ -111,10 +111,10 @@ public class AudienceInsightsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Generation date
    * @return date
-  **/
+   */
   @ApiModelProperty(example = "2022-10-09", value = "Generation date")
   public String getDate() {
     return date;
@@ -129,10 +129,10 @@ public class AudienceInsightsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Population count.
    * @return size
-  **/
+   */
   @ApiModelProperty(example = "10000", value = "Population count.")
   public Integer getSize() {
     return size;
@@ -147,10 +147,10 @@ public class AudienceInsightsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the audience size has been rounded up to the next highest upper boundary.
    * @return sizeIsUpperBound
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
   public Boolean getSizeIsUpperBound() {
     return sizeIsUpperBound;

@@ -32,7 +32,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-03-14T23:04:30.273794609Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public abstract class UserAccountApiService {
     public abstract Response boardsUserFollowsList(String bookmark, @Min(1) @Max(250)Integer pageSize,Boolean explicitFollowing, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response followUserUpdate( @Pattern(regexp="(?!^\\d+$)^.+$")String username,FollowUserRequest followUserRequest,SecurityContext securityContext) throws NotFoundException;
@@ -45,6 +45,6 @@ public abstract class UserAccountApiService {
     public abstract Response userAccountGet( @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response userFollowingGet(String bookmark, @Min(1) @Max(250)Integer pageSize,UserFollowingFeedType feedType,Boolean explicitFollowing, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response userWebsitesGet(String bookmark, @Min(1) @Max(250)Integer pageSize,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response websiteVerificationGet(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response websiteVerificationGet( @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
 }

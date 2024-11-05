@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,11 +17,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * The status of the operation performed by the batch
-* Values: PROCESSING,COMPLETED
+* Values: PROCESSING,COMPLETED,FAILED
 */
-enum class BatchOperationStatus(val value: kotlin.String) {
+enum class BatchOperationStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("PROCESSING") PROCESSING("PROCESSING"),
-    @JsonProperty("COMPLETED") COMPLETED("COMPLETED")
+    PROCESSING("PROCESSING"),
+    COMPLETED("COMPLETED"),
+    FAILED("FAILED");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): BatchOperationStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

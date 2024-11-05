@@ -13,8 +13,17 @@ import model.PinsSaveRequest
 /**
   * Provides a default implementation for [[PinsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 class PinsApiImpl extends PinsApi {
+  /**
+    * @inheritdoc
+    */
+  override def multiPinsAnalytics(pinIds: List[String], startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], adAccountId: Option[String]): Map[String, Map[String, PinAnalyticsMetricsResponse]] = {
+    // TODO: Implement better logic
+
+    Map.empty[String, Map]
+  }
+
   /**
     * @inheritdoc
     */

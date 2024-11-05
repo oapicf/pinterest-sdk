@@ -10,6 +10,7 @@ import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
 import com.prokarma.pkmst.model.CatalogsFeedsCreateRequest;
 import com.prokarma.pkmst.model.CatalogsFeedsCreateRequestDefaultLocale;
 import com.prokarma.pkmst.model.CatalogsFormat;
+import com.prokarma.pkmst.model.CatalogsStatus;
 import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.CatalogsVerticalFeedsCreateRequest;
 import com.prokarma.pkmst.model.Country;
@@ -27,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * FeedsCreateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class FeedsCreateRequest   {
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;
@@ -56,15 +57,18 @@ public class FeedsCreateRequest   {
   @JsonProperty("default_availability")
   private ProductAvailabilityType defaultAvailability;
 
+  @JsonProperty("status")
+  private CatalogsStatus status;
+
   public FeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -79,10 +83,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
   public String getName() {
     return name;
@@ -97,10 +101,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -115,10 +119,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultLocale
    * @return defaultLocale
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
@@ -133,10 +137,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -151,10 +155,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -169,10 +173,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -187,10 +191,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCountry
    * @return defaultCountry
-  **/
+   */
   @ApiModelProperty(value = "")
   public Country getDefaultCountry() {
     return defaultCountry;
@@ -205,10 +209,10 @@ public class FeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultAvailability
    * @return defaultAvailability
-  **/
+   */
   @ApiModelProperty(value = "")
   public ProductAvailabilityType getDefaultAvailability() {
     return defaultAvailability;
@@ -216,6 +220,24 @@ public class FeedsCreateRequest   {
 
   public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
     this.defaultAvailability = defaultAvailability;
+  }
+
+  public FeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @ApiModelProperty(value = "")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
 
@@ -236,12 +258,13 @@ public class FeedsCreateRequest   {
         Objects.equals(this.location, feedsCreateRequest.location) &&
         Objects.equals(this.preferredProcessingSchedule, feedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.defaultCountry, feedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, feedsCreateRequest.defaultAvailability);
+        Objects.equals(this.defaultAvailability, feedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, feedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -258,6 +281,7 @@ public class FeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

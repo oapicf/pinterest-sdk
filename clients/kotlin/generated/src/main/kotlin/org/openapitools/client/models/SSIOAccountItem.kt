@@ -73,5 +73,8 @@ data class SSIOAccountItem (
     @Json(name = "addresses")
     val addresses: kotlin.collections.List<SSIOAccountAddress>? = null
 
-)
+) {
+
+
+}
 

@@ -43,6 +43,11 @@
             <stringProp name="Argument.value">${__P(port,8080)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="testData.multiPins/analyticsFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.multiPins/analyticsFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.multiPins/analyticsFile,PinsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="testData.pins/analyticsFile" elementType="Argument">
             <stringProp name="Argument.name">testData.pins/analyticsFile</stringProp>
             <stringProp name="Argument.value">${__P(testData.pins/analyticsFile,PinsApi.csv)}</stringProp>
@@ -95,7 +100,7 @@
         <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
       </ConfigTestElement>
       <hashTree/>
-    <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - pins/analytics" enabled="true">
+    <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - multiPins/analytics" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -115,6 +120,131 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="multiPins/analytics - ${testCase}" enabled="true">
+          
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="pinIds" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${pinIds}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">pinIds</stringProp>
+              </elementProp>
+              <elementProp name="startDate" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${startDate}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">startDate</stringProp>
+              </elementProp>
+              <elementProp name="endDate" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${endDate}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">endDate</stringProp>
+              </elementProp>
+              <elementProp name="appTypes" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${appTypes}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">appTypes</stringProp>
+              </elementProp>
+              <elementProp name="metricTypes" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${metricTypes}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">metricTypes</stringProp>
+              </elementProp>
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/pins/analytics</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Get multiple Pin analytics &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - multiPins/analytics" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.multiPins/analyticsFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - pins/analytics" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -186,7 +316,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get Pin analytics Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</stringProp>
+          <stringProp name="TestPlan.comments">Get Pin analytics Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - pins/analytics" enabled="true">
@@ -277,7 +407,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Create Pin Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.  Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our &lt;a href&#x3D;&#39;/docs/add-ons/save-button&#39;&gt;Save button&lt;/a&gt; instead. For more tips on creating fresh content for Pinterest, review our &lt;a href&#x3D;&#39;/docs/content/content-creation/&#39;&gt;Content App Solutions Guide&lt;/a&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/content/content-creation/#Creating%20video%20Pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.</stringProp>
+          <stringProp name="TestPlan.comments">Create Pin Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.  Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our &lt;a href&#x3D;&#39;/docs/web-features/add-ons-overview/&#39;&gt;Save button&lt;/a&gt; instead. For more tips on creating fresh content for Pinterest, review our &lt;a href&#x3D;&#39;/docs/api-features/content-overview/&#39;&gt;Content App Solutions Guide&lt;/a&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - pins/create" enabled="true">
@@ -410,6 +540,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -499,6 +633,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -579,7 +717,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List Pins Get a list of the Pins owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account. - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.</stringProp>
+          <stringProp name="TestPlan.comments">List Pins Get a list of the Pins owned by the \&quot;operation user_account\&quot;.   - By default, the \&quot;operation user_account\&quot; is the token user_account.   - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.  Disclaimer: there are known performance issues when filtering by field &lt;code&gt;creative_type&lt;/code&gt; and including protected pins. If your request is timing out in this scenario we encourage you to use &lt;a href&#x3D;&#39;/docs/api/v5/#operation/boards/list_pins&#39;&gt;GET List Pins on Board&lt;/a&gt;.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - pins/list" enabled="true">
@@ -761,7 +899,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Update Pin Update a pin owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Update Pin Update a pin owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - pins/update" enabled="true">

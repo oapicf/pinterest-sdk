@@ -3,6 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.CatalogsCreativeAssetsItemsFilter;
 import org.openapitools.model.CatalogsHotelItemsFilter;
 import org.openapitools.model.CatalogsRetailItemsFilter;
 import org.openapitools.model.CatalogsType;
@@ -20,14 +21,17 @@ public class CatalogsItemsFilters  {
   @ApiModelProperty(required = true, value = "")
   private List<String> itemIds = new ArrayList<>();
 
-  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   **/
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
   private List<String> hotelIds = new ArrayList<>();
+
+  @ApiModelProperty(required = true, value = "")
+  private List<String> creativeAssetsIds = new ArrayList<>();
  /**
    * Get catalogType
    * @return catalogType
@@ -70,7 +74,7 @@ public class CatalogsItemsFilters  {
   }
 
  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
    * @return catalogId
   **/
   @JsonProperty("catalog_id")
@@ -110,6 +114,29 @@ public class CatalogsItemsFilters  {
     return this;
   }
 
+ /**
+   * Get creativeAssetsIds
+   * @return creativeAssetsIds
+  **/
+  @JsonProperty("creative_assets_ids")
+  public List<String> getCreativeAssetsIds() {
+    return creativeAssetsIds;
+  }
+
+  public void setCreativeAssetsIds(List<String> creativeAssetsIds) {
+    this.creativeAssetsIds = creativeAssetsIds;
+  }
+
+  public CatalogsItemsFilters creativeAssetsIds(List<String> creativeAssetsIds) {
+    this.creativeAssetsIds = creativeAssetsIds;
+    return this;
+  }
+
+  public CatalogsItemsFilters addCreativeAssetsIdsItem(String creativeAssetsIdsItem) {
+    this.creativeAssetsIds.add(creativeAssetsIdsItem);
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,12 +149,13 @@ public class CatalogsItemsFilters  {
     return Objects.equals(this.catalogType, catalogsItemsFilters.catalogType) &&
         Objects.equals(this.itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(this.catalogId, catalogsItemsFilters.catalogId) &&
-        Objects.equals(this.hotelIds, catalogsItemsFilters.hotelIds);
+        Objects.equals(this.hotelIds, catalogsItemsFilters.hotelIds) &&
+        Objects.equals(this.creativeAssetsIds, catalogsItemsFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds);
+    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -139,6 +167,7 @@ public class CatalogsItemsFilters  {
     sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
+    sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -28,6 +28,7 @@ public struct CatalogsHotelProductGroup: Codable, JSONEncodable, Hashable {
     public var createdAt: Int?
     /** Unix timestamp in seconds of last time catalog product group was updated. */
     public var updatedAt: Int?
+    /** Catalog id pertaining to the hotel product group. */
     public var catalogId: String
 
     public init(catalogType: CatalogType, id: String, name: String? = nil, description: String? = nil, filters: CatalogsHotelProductGroupFilters, createdAt: Int? = nil, updatedAt: Int? = nil, catalogId: String) {

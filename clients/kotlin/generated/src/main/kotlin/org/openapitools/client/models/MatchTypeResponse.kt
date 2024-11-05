@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Keyword match type
  *
- * Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE,`null`
+ * Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE
  */
 
 @JsonClass(generateAdapter = false)
@@ -41,10 +41,7 @@ enum class MatchTypeResponse(val value: kotlin.String) {
     EXACT_NEGATIVE("EXACT_NEGATIVE"),
 
     @Json(name = "PHRASE_NEGATIVE")
-    PHRASE_NEGATIVE("PHRASE_NEGATIVE"),
-
-    @Json(name = "null")
-    `null`("null");
+    PHRASE_NEGATIVE("PHRASE_NEGATIVE");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

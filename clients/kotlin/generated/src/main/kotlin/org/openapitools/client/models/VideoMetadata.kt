@@ -55,5 +55,8 @@ data class VideoMetadata (
     @Json(name = "width")
     val width: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

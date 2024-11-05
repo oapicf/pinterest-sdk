@@ -15,7 +15,9 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **preferredProcessingSchedule** | preferred_processing_schedule | long |  | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  |  [optional] [foreignkey]
 **defaultCountry** | default_country | long |  | [**Country**](Country.md) |  |  [optional] [foreignkey]
 **defaultAvailability** | default_availability | long |  | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  |  [optional] [foreignkey]
-**catalogId** | catalog_id | text |  | **kotlin.String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. |  [optional]
+**status** | status | long |  | [**CatalogsStatus**](CatalogsStatus.md) |  |  [optional] [foreignkey]
+**catalogId** | catalog_id | text |  | **kotlin.String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. |  [optional]
+
 
 
 

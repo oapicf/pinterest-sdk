@@ -64,7 +64,7 @@ public class SSIOAccountItem  {
  /**
    * Address information that is associated with this account.
   **/
-  private List<SSIOAccountAddress> addresses;
+  private List<SSIOAccountAddress> addresses = new ArrayList<>();
  /**
    * Salesforce id for billto_info
    * @return id

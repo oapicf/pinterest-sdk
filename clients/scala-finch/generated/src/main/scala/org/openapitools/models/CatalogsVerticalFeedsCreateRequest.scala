@@ -5,12 +5,14 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
+import org.openapitools.models.CatalogsCreativeAssetsFeedsCreateRequest
 import org.openapitools.models.CatalogsFeedCredentials
 import org.openapitools.models.CatalogsFeedProcessingSchedule
 import org.openapitools.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.models.CatalogsFormat
 import org.openapitools.models.CatalogsHotelFeedsCreateRequest
 import org.openapitools.models.CatalogsRetailFeedsCreateRequest
+import org.openapitools.models.CatalogsStatus
 import org.openapitools.models.CatalogsType
 import org.openapitools.models.Country
 import org.openapitools.models.NullableCurrency
@@ -28,7 +30,8 @@ import org.openapitools.models.ProductAvailabilityType
  * @param catalogUnderscoretype 
  * @param defaultUnderscorecountry 
  * @param defaultUnderscoreavailability 
- * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
+ * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
  */
 case class CatalogsVerticalFeedsCreateRequest(defaultUnderscorecurrency: Option[NullableCurrency],
                 name: String,
@@ -40,6 +43,7 @@ case class CatalogsVerticalFeedsCreateRequest(defaultUnderscorecurrency: Option[
                 catalogUnderscoretype: CatalogsType,
                 defaultUnderscorecountry: Country,
                 defaultUnderscoreavailability: Option[ProductAvailabilityType],
+                status: Option[CatalogsStatus],
                 catalogUnderscoreid: Option[String]
                 )
 

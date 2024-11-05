@@ -34,8 +34,5 @@ API.Client.CatalogsUpdateRetailItem.prototype.updateMask;
 
 /** @enum {string} */
 API.Client.CatalogsUpdateRetailItem.OperationEnum = { 
-  CREATE: 'CREATE',
   UPDATE: 'UPDATE',
-  UPSERT: 'UPSERT',
-  DELETE: 'DELETE',
 }

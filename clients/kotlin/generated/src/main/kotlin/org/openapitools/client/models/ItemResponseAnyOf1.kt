@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsItemErrorResponse
 import org.openapitools.client.models.CatalogsHotelItemErrorResponse
 import org.openapitools.client.models.CatalogsRetailItemErrorResponse
 import org.openapitools.client.models.CatalogsType
@@ -30,6 +31,7 @@ import com.squareup.moshi.JsonClass
  * @param itemId The catalog item id in the merchant namespace
  * @param errors Array with the errors for the item id requested
  * @param hotelId The catalog hotel id in the merchant namespace
+ * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
 
 
@@ -46,5 +48,9 @@ interface ItemResponseAnyOf1 {
     /* The catalog hotel id in the merchant namespace */
     @Json(name = "hotel_id")
     val hotelId: kotlin.String?
+    /* The catalog creative assets id in the merchant namespace */
+    @Json(name = "creative_assets_id")
+    val creativeAssetsId: kotlin.String?
+
 }
 

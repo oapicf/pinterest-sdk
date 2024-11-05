@@ -52,5 +52,6 @@ data class OptimizationGoalMetadataFrequencyGoalMetadata (
         @Json(name = "TEN_MINUTE") TEN_MINUTE("TEN_MINUTE"),
         @Json(name = "TWENTY_FOUR_HOUR") TWENTY_FOUR_HOUR("TWENTY_FOUR_HOUR");
     }
+
 }
 

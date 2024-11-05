@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -77,7 +77,6 @@ const (
 	MIN_AD_PRICE NullableCatalogsItemFieldType = "MIN_AD_PRICE"
 	SHIPPING_WIDTH NullableCatalogsItemFieldType = "SHIPPING_WIDTH"
 	SHIPPING_HEIGHT NullableCatalogsItemFieldType = "SHIPPING_HEIGHT"
-	NULL NullableCatalogsItemFieldType = "null"
 )
 
 // All allowed values of NullableCatalogsItemFieldType enum
@@ -138,7 +137,6 @@ var AllowedNullableCatalogsItemFieldTypeEnumValues = []NullableCatalogsItemField
 	"MIN_AD_PRICE",
 	"SHIPPING_WIDTH",
 	"SHIPPING_HEIGHT",
-	"null",
 }
 
 func (v *NullableCatalogsItemFieldType) UnmarshalJSON(src []byte) error {

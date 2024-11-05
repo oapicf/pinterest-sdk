@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.ItemCreateBatchRecord;
 import org.openapitools.model.ItemDeleteBatchRecord;
 import org.openapitools.model.ItemDeleteDiscontinuedBatchRecord;
@@ -28,10 +28,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item batch record")
 @JsonTypeName("ItemBatchRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemBatchRecord   {
-  private @Valid String itemId;
-  private @Valid ItemAttributes attributes;
+  private String itemId;
+  private ItemAttributesRequest attributes;
   private @Valid List<UpdateMaskFieldType> updateMask;
 
   /**
@@ -56,7 +56,7 @@ public class ItemBatchRecord   {
 
   /**
    **/
-  public ItemBatchRecord attributes(ItemAttributes attributes) {
+  public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -64,12 +64,12 @@ public class ItemBatchRecord   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  @Valid public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
   @JsonProperty("attributes")
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class KeywordsCommon (
-    /* Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+    /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     _bid: Option[Integer],
     _matchType: MatchTypeResponse,
     /* Keyword value (120 chars max). */

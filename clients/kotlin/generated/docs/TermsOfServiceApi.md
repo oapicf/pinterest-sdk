@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**termsOfServiceGet**](TermsOfServiceApi.md#termsOfServiceGet) | **GET** /ad_accounts/{ad_account_id}/terms_of_service | Get terms of service
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**termsOfServiceGet**](TermsOfServiceApi.md#termsOfServiceGet) | **GET** /ad_accounts/{ad_account_id}/terms_of_service | Get terms of service |
 
 
 <a id="termsOfServiceGet"></a>
@@ -38,12 +38,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. |
- **includeHtml** | **kotlin.Boolean**| Return HTML in TOS text. | [optional] [default to false]
- **tosType** | **kotlin.String**| Request type. | [optional]
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **includeHtml** | **kotlin.Boolean**| Return HTML in TOS text. | [optional] [default to false] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tosType** | **kotlin.String**| Request type. | [optional] |
 
 ### Return type
 

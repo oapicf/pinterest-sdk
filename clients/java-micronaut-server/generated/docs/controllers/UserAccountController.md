@@ -35,7 +35,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 **explicitFollowing** | `Boolean` | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional parameter] [default to `false`]
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
@@ -44,6 +44,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `user_accounts:read`
+* **client_credentials**, scopes: `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -57,7 +58,7 @@ Mono<UserSummary> UserAccountController.followUserUpdate(usernamefollowUserReque
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
 
 ### Parameters
 Name | Type | Description  | Notes
@@ -89,13 +90,14 @@ Get a list of your followers.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**FollowersList200Response**](../../docs/models/FollowersList200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `user_accounts:read`
+* **client_credentials**, scopes: `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -117,6 +119,7 @@ Get a list of your linked business accounts.
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `user_accounts:read`
+* **client_credentials**, scopes: `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -161,7 +164,7 @@ Name | Type | Description  | Notes
 **startDate** | `LocalDate` | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
 **endDate** | `LocalDate` | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
 **fromClaimedContent** | `String` | Filter on Pins that match your claimed domain. | [optional parameter] [default to `BOTH`] [enum: `OTHER`, `CLAIMED`, `BOTH`]
-**pinFormat** | `String` | Pin formats to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA`, `PRODUCT`, `REGULAR`, `VIDEO`]
+**pinFormat** | `String` | Pin formats to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA`]
 **appTypes** | `String` | Apps or devices to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `MOBILE`, `TABLET`, `WEB`]
 **contentType** | `String` | Filter to paid or organic data. Default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `PAID`, `ORGANIC`]
 **source** | `String` | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional parameter] [default to `ALL`] [enum: `ALL`, `YOUR_PINS`, `OTHER_PINS`]
@@ -196,7 +199,7 @@ Name | Type | Description  | Notes
 **endDate** | `LocalDate` | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
 **sortBy** | `String` | Specify sorting order for metrics | [enum: `ENGAGEMENT`, `IMPRESSION`, `OUTBOUND_CLICK`, `PIN_CLICK`, `SAVE`]
 **fromClaimedContent** | `String` | Filter on Pins that match your claimed domain. | [optional parameter] [default to `BOTH`] [enum: `OTHER`, `CLAIMED`, `BOTH`]
-**pinFormat** | `String` | Pin formats to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA`, `PRODUCT`, `REGULAR`, `VIDEO`]
+**pinFormat** | `String` | Pin formats to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA`]
 **appTypes** | `String` | Apps or devices to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `MOBILE`, `TABLET`, `WEB`]
 **contentType** | `String` | Filter to paid or organic data. Default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `PAID`, `ORGANIC`]
 **source** | `String` | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional parameter] [default to `ALL`] [enum: `ALL`, `YOUR_PINS`, `OTHER_PINS`]
@@ -210,6 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `pins:read`, `user_accounts:read`
+* **client_credentials**, scopes: `pins:read`, `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -232,7 +236,7 @@ Name | Type | Description  | Notes
 **endDate** | `LocalDate` | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
 **sortBy** | `String` | Specify sorting order for video metrics | [enum: `IMPRESSION`, `SAVE`, `OUTBOUND_CLICK`, `VIDEO_MRC_VIEW`, `VIDEO_AVG_WATCH_TIME`, `VIDEO_V50_WATCH_TIME`, `QUARTILE_95_PERCENT_VIEW`, `VIDEO_10S_VIEW`, `VIDEO_START`]
 **fromClaimedContent** | `String` | Filter on Pins that match your claimed domain. | [optional parameter] [default to `BOTH`] [enum: `OTHER`, `CLAIMED`, `BOTH`]
-**pinFormat** | `String` | Pin formats to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA`, `PRODUCT`, `REGULAR`, `VIDEO`]
+**pinFormat** | `String` | Pin formats to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `ORGANIC_IMAGE`, `ORGANIC_PRODUCT`, `ORGANIC_VIDEO`, `ADS_STANDARD`, `ADS_PRODUCT`, `ADS_VIDEO`, `ADS_IDEA`]
 **appTypes** | `String` | Apps or devices to get data for, default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `MOBILE`, `TABLET`, `WEB`]
 **contentType** | `String` | Filter to paid or organic data. Default is all. | [optional parameter] [default to `ALL`] [enum: `ALL`, `PAID`, `ORGANIC`]
 **source** | `String` | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional parameter] [default to `ALL`] [enum: `ALL`, `YOUR_PINS`, `OTHER_PINS`]
@@ -246,6 +250,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `pins:read`, `user_accounts:read`
+* **client_credentials**, scopes: `pins:read`, `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -266,13 +271,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **username** | `String` | A valid username |
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**UserAccountFollowedInterests200Response**](../../docs/models/UserAccountFollowedInterests200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `user_accounts:read`
+* **client_credentials**, scopes: `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -286,7 +292,7 @@ Mono<Account> UserAccountController.userAccountGet(adAccountId)
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
 
 ### Parameters
 Name | Type | Description  | Notes
@@ -298,6 +304,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `user_accounts:read`
+* **client_credentials**, scopes: `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -317,7 +324,7 @@ Get a list of who a certain user follows.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 **feedType** | `UserFollowingFeedType` | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional parameter] [default to `ALL`] [enum: `ALL`, `RANKED`, `CREATOR_ONLY`, `RANKED_CREATOR_ONLY`]
 **explicitFollowing** | `Boolean` | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional parameter] [default to `false`]
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
@@ -327,6 +334,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `user_accounts:read`
+* **client_credentials**, scopes: `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -346,7 +354,7 @@ Get user websites, claimed or not
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**UserWebsitesGet200Response**](../../docs/models/UserWebsitesGet200Response.md)
@@ -361,7 +369,7 @@ Name | Type | Description  | Notes
 <a id="verifyWebsiteUpdate"></a>
 # **verifyWebsiteUpdate**
 ```java
-Mono<UserWebsiteSummary> UserAccountController.verifyWebsiteUpdate(userWebsiteVerifyRequest)
+Mono<UserWebsiteSummary> UserAccountController.verifyWebsiteUpdate(userWebsiteVerifyRequestadAccountId)
 ```
 
 Verify website
@@ -372,6 +380,7 @@ Verify a website as a signed-in user.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](../../docs/models/UserWebsiteVerifyRequest.md) | Verify a website. |
+**adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
 ### Return type
 [**UserWebsiteSummary**](../../docs/models/UserWebsiteSummary.md)
@@ -386,19 +395,24 @@ Name | Type | Description  | Notes
 <a id="websiteVerificationGet"></a>
 # **websiteVerificationGet**
 ```java
-Mono<UserWebsiteVerificationCode> UserAccountController.websiteVerificationGet()
+Mono<UserWebsiteVerificationCode> UserAccountController.websiteVerificationGet(adAccountId)
 ```
 
 Get user verification code for website claiming
 
 Get verification code for user to install on the website to claim it.
 
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
 ### Return type
 [**UserWebsiteVerificationCode**](../../docs/models/UserWebsiteVerificationCode.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `user_accounts:read`
+* **client_credentials**, scopes: `user_accounts:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined

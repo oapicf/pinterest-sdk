@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CustomerListRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomerListRequest   {
   @JsonProperty("name")
   private String name;
@@ -35,10 +35,10 @@ public class CustomerListRequest   {
     return this;
   }
 
-   /**
+  /**
    * Customer list name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "The Glengarry Glen Ross leads", required = true, value = "Customer list name.")
   public String getName() {
     return name;
@@ -53,10 +53,10 @@ public class CustomerListRequest   {
     return this;
   }
 
-   /**
+  /**
    * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
    * @return records
-  **/
+   */
   @ApiModelProperty(example = "email1@pinterest.com,email2@pinterest.com,..<more records>", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
   public String getRecords() {
     return records;
@@ -71,10 +71,10 @@ public class CustomerListRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get listType
    * @return listType
-  **/
+   */
   @ApiModelProperty(value = "")
   public UserListType getListType() {
     return listType;
@@ -89,10 +89,10 @@ public class CustomerListRequest   {
     return this;
   }
 
-   /**
+  /**
    * Customer list errors.
    * @return exceptions
-  **/
+   */
   @ApiModelProperty(value = "Customer list errors.")
   public Object getExceptions() {
     return exceptions;

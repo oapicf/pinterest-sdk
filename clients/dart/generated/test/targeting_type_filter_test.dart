@@ -16,7 +16,7 @@ void main() {
   // final instance = TargetingTypeFilter();
 
   group('test TargetingTypeFilter', () {
-    // List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+    // List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
     // List<AdsAnalyticsTargetingType> targetingTypes (default value: const [])
     test('to test the property `targetingTypes`', () async {
       // TODO

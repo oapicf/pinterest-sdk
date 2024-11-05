@@ -18,13 +18,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "The result, and link out, based on the user’s choice.")
 @JsonTypeName("QuizPinResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QuizPinResult   {
-  private @Valid String organicPinId;
-  private @Valid String androidDeepLink;
-  private @Valid String iosDeepLink;
-  private @Valid String destinationUrl;
-  private @Valid BigDecimal resultId;
+  private String organicPinId;
+  private String androidDeepLink;
+  private String iosDeepLink;
+  private String destinationUrl;
+  private BigDecimal resultId;
 
   /**
    **/
@@ -112,7 +112,7 @@ public class QuizPinResult   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("result_id")
-  public BigDecimal getResultId() {
+  @Valid public BigDecimal getResultId() {
     return resultId;
   }
 

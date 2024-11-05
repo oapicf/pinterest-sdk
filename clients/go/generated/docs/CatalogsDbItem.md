@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **time.Time** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**CreatedAt** | **time.Time** |  | 
+**Id** | **string** |  | 
+**UpdatedAt** | **time.Time** |  | 
 
 ## Methods
 
 ### NewCatalogsDbItem
 
-`func NewCatalogsDbItem() *CatalogsDbItem`
+`func NewCatalogsDbItem(createdAt time.Time, id string, updatedAt time.Time, ) *CatalogsDbItem`
 
 NewCatalogsDbItem instantiates a new CatalogsDbItem object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *CatalogsDbItem) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetId
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *CatalogsDbItem) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *CatalogsDbItem) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

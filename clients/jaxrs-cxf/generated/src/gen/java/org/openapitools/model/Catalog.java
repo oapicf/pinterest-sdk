@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Catalog  {
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   private Date createdAt;
 
   @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the catalog entity.")
@@ -28,7 +28,7 @@ public class Catalog  {
   **/
   private String id;
 
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   private Date updatedAt;
 
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
@@ -45,6 +45,7 @@ public class Catalog  {
    * @return createdAt
   **/
   @JsonProperty("created_at")
+  @NotNull
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -82,6 +83,7 @@ public class Catalog  {
    * @return updatedAt
   **/
   @JsonProperty("updated_at")
+  @NotNull
   public Date getUpdatedAt() {
     return updatedAt;
   }

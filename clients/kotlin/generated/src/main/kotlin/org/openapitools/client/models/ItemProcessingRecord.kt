@@ -48,5 +48,8 @@ data class ItemProcessingRecord (
     @Json(name = "status")
     val status: ItemProcessingStatus? = null
 
-)
+) {
+
+
+}
 

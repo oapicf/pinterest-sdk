@@ -5,22 +5,24 @@ import play.api.libs.json._
 /**
   * Represents the Swagger definition for AdCreateRequest.
   * @param adGroupId ID of the ad group that contains the ad.
-  * @param androidDeepLink Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  * @param androidDeepLink Deep link URL for Android devices.
   * @param carouselAndroidDeepLinks Comma-separated deep links for the carousel pin on Android.
   * @param carouselDestinationUrls Comma-separated destination URLs for the carousel pin to promote.
   * @param carouselIosDeepLinks Comma-separated deep links for the carousel pin on iOS.
   * @param clickTrackingUrl Tracking url for the ad clicks.
   * @param destinationUrl Destination URL.
-  * @param iosDeepLink Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  * @param iosDeepLink Deep link URL for iOS devices.
   * @param isPinDeleted Is original pin deleted?
   * @param isRemovable Is pin repinnable?
   * @param name Name of the ad - 255 chars max.
   * @param viewTrackingUrl Tracking URL for ad impressions.
   * @param leadFormId Lead form ID for lead ad generation.
-  * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   * @param pinId Pin ID.
+  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class AdCreateRequest(
   adGroupId: String,
   androidDeepLink: Option[String],
@@ -35,17 +37,41 @@ case class AdCreateRequest(
   isRemovable: Option[Boolean],
   name: Option[String],
   status: Option[EntityStatus],
-  trackingUrls: Option[AdCommonTrackingUrls],
+  trackingUrls: Option[TrackingUrls],
   viewTrackingUrl: Option[String],
   leadFormId: Option[String],
   gridClickType: Option[GridClickType],
   customizableCtaType: Option[AdCreateRequest.CustomizableCtaType.Value],
-  quizPinData: Option[AdCommonQuizPinData],
+  quizPinData: Option[QuizPinData],
   pinId: String
+  additionalProperties: 
 )
 
 object AdCreateRequest {
-  implicit lazy val adCreateRequestJsonFormat: Format[AdCreateRequest] = Json.format[AdCreateRequest]
+  implicit lazy val adCreateRequestJsonFormat: Format[AdCreateRequest] = {
+    val realJsonFormat = Json.format[AdCreateRequest]
+    val declaredPropNames = Set("adGroupId", "androidDeepLink", "carouselAndroidDeepLinks", "carouselDestinationUrls", "carouselIosDeepLinks", "clickTrackingUrl", "creativeType", "destinationUrl", "iosDeepLink", "isPinDeleted", "isRemovable", "name", "status", "trackingUrls", "viewTrackingUrl", "leadFormId", "gridClickType", "customizableCtaType", "quizPinData", "pinId")
+    
+    Format(
+      Reads {
+        case JsObject(xs) =>
+          val declaredProps = xs.filterKeys(declaredPropNames)
+          val additionalProps = JsObject(xs -- declaredPropNames)
+          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
+          val newObj = JsObject(restructuredProps)
+          realJsonFormat.reads(newObj)
+        case _ =>
+          JsError("error.expected.jsobject")
+      },
+      Writes { adCreateRequest =>
+        val jsObj = realJsonFormat.writes(adCreateRequest)
+        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
+        val declaredProps = jsObj - "additionalProperties"
+        val newObj = declaredProps ++ additionalProps
+        newObj
+      }
+    )
+  }
 
   // noinspection TypeAnnotation
   object CustomizableCtaType extends Enumeration {
@@ -58,7 +84,7 @@ object AdCreateRequest {
     val BUYNOW = Value("BUY_NOW")
     val CONTACTUS = Value("CONTACT_US")
     val GETQUOTE = Value("GET_QUOTE")
-    val VISITWEBSITE = Value("VISIT_WEBSITE")
+    val VISITSITE = Value("VISIT_SITE")
     val APPLYNOW = Value("APPLY_NOW")
     val BOOKNOW = Value("BOOK_NOW")
     val REQUESTDEMO = Value("REQUEST_DEMO")
@@ -67,7 +93,6 @@ object AdCreateRequest {
     val ADDTOCART = Value("ADD_TO_CART")
     val WATCHNOW = Value("WATCH_NOW")
     val READMORE = Value("READ_MORE")
-    val Null = Value("null")
 
     type CustomizableCtaType = Value
     implicit lazy val CustomizableCtaTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])

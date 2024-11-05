@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"adGroupId": @"ad_group_id", @"bidInMicroCurrency": @"bid_in_micro_currency", @"included": @"included", @"definition": @"definition", @"relativeDefinition": @"relative_definition", @"parentId": @"parent_id", @"slideshowCollectionsTitle": @"slideshow_collections_title", @"slideshowCollectionsDescription": @"slideshow_collections_description", @"isMdl": @"is_mdl", @"status": @"status", @"trackingUrl": @"tracking_url", @"catalogProductGroupId": @"catalog_product_group_id", @"catalogProductGroupName": @"catalog_product_group_name", @"creativeType": @"creative_type", @"collectionsHeroPinId": @"collections_hero_pin_id", @"collectionsHeroDestinationUrl": @"collections_hero_destination_url", @"gridClickType": @"grid_click_type" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"adGroupId": @"ad_group_id", @"bidInMicroCurrency": @"bid_in_micro_currency", @"included": @"included", @"definition": @"definition", @"relativeDefinition": @"relative_definition", @"parentId": @"parent_id", @"slideshowCollectionsTitle": @"slideshow_collections_title", @"slideshowCollectionsDescription": @"slideshow_collections_description", @"isMdl": @"is_mdl", @"status": @"status", @"trackingUrl": @"tracking_url", @"catalogProductGroupId": @"catalog_product_group_id", @"catalogProductGroupName": @"catalog_product_group_name", @"collectionsHeroPinId": @"collections_hero_pin_id", @"collectionsHeroDestinationUrl": @"collections_hero_destination_url", @"gridClickType": @"grid_click_type" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"_id", @"adGroupId", @"bidInMicroCurrency", @"included", @"definition", @"relativeDefinition", @"parentId", @"slideshowCollectionsTitle", @"slideshowCollectionsDescription", @"isMdl", @"status", @"trackingUrl", @"catalogProductGroupId", @"catalogProductGroupName", @"creativeType", @"collectionsHeroPinId", @"collectionsHeroDestinationUrl", @"gridClickType"];
+  NSArray *optionalProperties = @[@"_id", @"adGroupId", @"bidInMicroCurrency", @"included", @"definition", @"relativeDefinition", @"parentId", @"slideshowCollectionsTitle", @"slideshowCollectionsDescription", @"isMdl", @"status", @"trackingUrl", @"catalogProductGroupId", @"catalogProductGroupName", @"collectionsHeroPinId", @"collectionsHeroDestinationUrl", @"gridClickType"];
   return [optionalProperties containsObject:propertyName];
 }
 

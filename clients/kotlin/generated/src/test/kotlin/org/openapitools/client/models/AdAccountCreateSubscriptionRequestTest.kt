@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AdAccountCreateSubscriptionRequest
+import org.openapitools.client.models.AdAccountCreateSubscriptionRequestPartnerMetadata
 
 class AdAccountCreateSubscriptionRequestTest : ShouldSpec() {
     init {
@@ -47,6 +48,12 @@ class AdAccountCreateSubscriptionRequestTest : ShouldSpec() {
         should("test partnerRefreshToken") {
             // uncomment below to test the property
             //modelInstance.partnerRefreshToken shouldBe ("TODO")
+        }
+
+        // to test the property `partnerMetadata`
+        should("test partnerMetadata") {
+            // uncomment below to test the property
+            //modelInstance.partnerMetadata shouldBe ("TODO")
         }
 
     }

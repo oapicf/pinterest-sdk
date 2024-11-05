@@ -14,7 +14,7 @@ import org.openapitools.server.api.model.TopPinsAnalyticsResponsePinsInner;
 public class TopPinsAnalyticsResponse   {
   
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private List<TopPinsAnalyticsResponsePinsInner> pins;
+  private List<TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
 
   public enum SortByEnum {

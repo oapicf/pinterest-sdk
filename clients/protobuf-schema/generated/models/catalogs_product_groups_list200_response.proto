@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,11 +14,11 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/catalogs_product_groups_list200_response_all_of_items_inner.proto";
+import public "models/catalogs_vertical_product_group.proto";
 
 message CatalogsProductGroupsList200Response {
 
-  repeated CatalogsProductGroupsList200ResponseAllOfItemsInner items = 100526016;
+  repeated CatalogsVerticalProductGroup items = 100526016;
 
   optional string bookmark = 394765625;
 

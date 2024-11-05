@@ -1,18 +1,24 @@
 package api
 
+import model.Catalog
+import model.CatalogsCreateReportResponse
+import model.CatalogsCreateRequest
 import model.CatalogsFeed
+import model.CatalogsFeedIngestion
 import model.CatalogsItemValidationIssue
 import model.CatalogsItems
 import model.CatalogsItemsBatch
 import model.CatalogsItemsFilters
+import model.CatalogsItemsRequest
 import model.CatalogsList200Response
 import model.CatalogsListProductsByFilterRequest
 import model.CatalogsProductGroupPinsList200Response
-import model.CatalogsProductGroupProductCounts
-import model.CatalogsProductGroupsCreate201Response
-import model.CatalogsProductGroupsCreateRequest
+import model.CatalogsProductGroupProductCountsVertical
 import model.CatalogsProductGroupsList200Response
 import model.CatalogsProductGroupsUpdateRequest
+import model.CatalogsReport
+import model.CatalogsReportParameters
+import model.CatalogsVerticalProductGroup
 import model.Error
 import model.FeedProcessingResultsList200Response
 import model.FeedsCreateRequest
@@ -20,12 +26,23 @@ import model.FeedsList200Response
 import model.FeedsUpdateRequest
 import model.ItemsBatchPostRequest
 import model.ItemsIssuesList200Response
+import model.MultipleProductGroupsInner
+import model.ReportsStats200Response
 
 /**
   * Provides a default implementation for [[CatalogsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 class CatalogsApiImpl extends CatalogsApi {
+  /**
+    * @inheritdoc
+    */
+  override def catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId: Option[String]): Catalog = {
+    // TODO: Implement better logic
+
+    Catalog(OffsetDateTime.now, "", OffsetDateTime.now, "", CatalogsType(), Map.empty)
+  }
+
   /**
     * @inheritdoc
     */
@@ -38,7 +55,7 @@ class CatalogsApiImpl extends CatalogsApi {
   /**
     * @inheritdoc
     */
-  override def catalogsProductGroupPinsList(productGroupId: String, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): CatalogsProductGroupPinsList200Response = {
+  override def catalogsProductGroupPinsList(productGroupId: String, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String], pinMetrics: Option[Boolean]): CatalogsProductGroupPinsList200Response = {
     // TODO: Implement better logic
 
     CatalogsProductGroupPinsList200Response(List.empty[CatalogsProduct], None)
@@ -47,10 +64,19 @@ class CatalogsApiImpl extends CatalogsApi {
   /**
     * @inheritdoc
     */
-  override def catalogsProductGroupsCreate(catalogsProductGroupsCreateRequest: CatalogsProductGroupsCreateRequest, adAccountId: Option[String]): CatalogsProductGroupsCreate201Response = {
+  override def catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: Option[String]): CatalogsVerticalProductGroup = {
     // TODO: Implement better logic
 
-    CatalogsProductGroupsCreate201Response("", None, None, CatalogsProductGroupFilters(List.empty[CatalogsProductGroupFilterKeys], List.empty[CatalogsProductGroupFilterKeys], Map.empty), None, None, None, None, None, "", "", "")
+    CatalogsVerticalProductGroup("", "", None, None, CatalogsCreativeAssetsProductGroupFilters(List.empty[CatalogsCreativeAssetsProductGroupFilterKeys], List.empty[CatalogsCreativeAssetsProductGroupFilterKeys], Map.empty), None, None, None, None, None, "", "", None, None, Map.empty)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def catalogsProductGroupsCreateMany(multipleProductGroupsInner: List[MultipleProductGroupsInner], adAccountId: Option[String]): List[String] = {
+    // TODO: Implement better logic
+
+    List.empty[String]
   }
 
   /**
@@ -65,37 +91,46 @@ class CatalogsApiImpl extends CatalogsApi {
   /**
     * @inheritdoc
     */
-  override def catalogsProductGroupsGet(productGroupId: String, adAccountId: Option[String]): CatalogsProductGroupsCreate201Response = {
+  override def catalogsProductGroupsDeleteMany(id: List[Int], adAccountId: Option[String]): Unit = {
     // TODO: Implement better logic
 
-    CatalogsProductGroupsCreate201Response("", None, None, CatalogsProductGroupFilters(List.empty[CatalogsProductGroupFilterKeys], List.empty[CatalogsProductGroupFilterKeys], Map.empty), None, None, None, None, None, "", "", "")
+    
   }
 
   /**
     * @inheritdoc
     */
-  override def catalogsProductGroupsList(feedId: Option[String], catalogId: Option[String], bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): CatalogsProductGroupsList200Response = {
+  override def catalogsProductGroupsGet(productGroupId: String, adAccountId: Option[String]): CatalogsVerticalProductGroup = {
     // TODO: Implement better logic
 
-    CatalogsProductGroupsList200Response(List.empty[CatalogsProductGroupsList200ResponseAllOfItemsInner], None)
+    CatalogsVerticalProductGroup("", "", None, None, CatalogsCreativeAssetsProductGroupFilters(List.empty[CatalogsCreativeAssetsProductGroupFilterKeys], List.empty[CatalogsCreativeAssetsProductGroupFilterKeys], Map.empty), None, None, None, None, None, "", "", None, None, Map.empty)
   }
 
   /**
     * @inheritdoc
     */
-  override def catalogsProductGroupsProductCountsGet(productGroupId: String, adAccountId: Option[String]): CatalogsProductGroupProductCounts = {
+  override def catalogsProductGroupsList(id: Option[List[Int]], feedId: Option[String], catalogId: Option[String], bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): CatalogsProductGroupsList200Response = {
     // TODO: Implement better logic
 
-    CatalogsProductGroupProductCounts(null, null, null, null)
+    CatalogsProductGroupsList200Response(List.empty[CatalogsVerticalProductGroup], None)
   }
 
   /**
     * @inheritdoc
     */
-  override def catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: Option[String]): CatalogsProductGroupsCreate201Response = {
+  override def catalogsProductGroupsProductCountsGet(productGroupId: String, adAccountId: Option[String]): CatalogsProductGroupProductCountsVertical = {
     // TODO: Implement better logic
 
-    CatalogsProductGroupsCreate201Response("", None, None, CatalogsProductGroupFilters(List.empty[CatalogsProductGroupFilterKeys], List.empty[CatalogsProductGroupFilterKeys], Map.empty), None, None, None, None, None, "", "", "")
+    CatalogsProductGroupProductCountsVertical(CatalogsType(), null, null, null, null, null)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: Option[String]): CatalogsVerticalProductGroup = {
+    // TODO: Implement better logic
+
+    CatalogsVerticalProductGroup("", "", None, None, CatalogsCreativeAssetsProductGroupFilters(List.empty[CatalogsCreativeAssetsProductGroupFilterKeys], List.empty[CatalogsCreativeAssetsProductGroupFilterKeys], Map.empty), None, None, None, None, None, "", "", None, None, Map.empty)
   }
 
   /**
@@ -113,7 +148,7 @@ class CatalogsApiImpl extends CatalogsApi {
   override def feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId: Option[String]): CatalogsFeed = {
     // TODO: Implement better logic
 
-    CatalogsFeed(None, None, None, "", CatalogsFormat(), CatalogsType(), CatalogsFeedCredentials("", ""), "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), NullableCurrency(), "", Country(), ProductAvailabilityType(), "", Map.empty)
+    CatalogsFeed(OffsetDateTime.now, "", OffsetDateTime.now, "", CatalogsFormat(), CatalogsType(), CatalogsFeedCredentials("", ""), "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), NullableCurrency(), "", Country(), ProductAvailabilityType(), "", Map.empty)
   }
 
   /**
@@ -131,7 +166,16 @@ class CatalogsApiImpl extends CatalogsApi {
   override def feedsGet(feedId: String, adAccountId: Option[String]): CatalogsFeed = {
     // TODO: Implement better logic
 
-    CatalogsFeed(None, None, None, "", CatalogsFormat(), CatalogsType(), CatalogsFeedCredentials("", ""), "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), NullableCurrency(), "", Country(), ProductAvailabilityType(), "", Map.empty)
+    CatalogsFeed(OffsetDateTime.now, "", OffsetDateTime.now, "", CatalogsFormat(), CatalogsType(), CatalogsFeedCredentials("", ""), "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), NullableCurrency(), "", Country(), ProductAvailabilityType(), "", Map.empty)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def feedsIngest(feedId: String, adAccountId: Option[String]): CatalogsFeedIngestion = {
+    // TODO: Implement better logic
+
+    CatalogsFeedIngestion("", "", OffsetDateTime.now, CatalogsFeedProcessingStatus())
   }
 
   /**
@@ -149,7 +193,7 @@ class CatalogsApiImpl extends CatalogsApi {
   override def feedsUpdate(feedId: String, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: Option[String]): CatalogsFeed = {
     // TODO: Implement better logic
 
-    CatalogsFeed(None, None, None, "", CatalogsFormat(), CatalogsType(), CatalogsFeedCredentials("", ""), "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), NullableCurrency(), "", Country(), ProductAvailabilityType(), "", Map.empty)
+    CatalogsFeed(OffsetDateTime.now, "", OffsetDateTime.now, "", CatalogsFormat(), CatalogsType(), CatalogsFeedCredentials("", ""), "", CatalogsFeedProcessingSchedule("", ""), CatalogsStatus(), NullableCurrency(), "", Country(), ProductAvailabilityType(), "", Map.empty)
   }
 
   /**
@@ -191,9 +235,45 @@ class CatalogsApiImpl extends CatalogsApi {
   /**
     * @inheritdoc
     */
-  override def productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): CatalogsProductGroupPinsList200Response = {
+  override def itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: Option[String]): CatalogsItems = {
+    // TODO: Implement better logic
+
+    CatalogsItems(None)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String], pinMetrics: Option[Boolean]): CatalogsProductGroupPinsList200Response = {
     // TODO: Implement better logic
 
     CatalogsProductGroupPinsList200Response(List.empty[CatalogsProduct], None)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId: Option[String]): CatalogsCreateReportResponse = {
+    // TODO: Implement better logic
+
+    CatalogsCreateReportResponse(None)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def reportsGet(token: String, adAccountId: Option[String]): CatalogsReport = {
+    // TODO: Implement better logic
+
+    CatalogsReport(None, None, None)
+  }
+
+  /**
+    * @inheritdoc
+    */
+  override def reportsStats(parameters: CatalogsReportParameters, adAccountId: Option[String], pageSize: Option[Int], bookmark: Option[String]): ReportsStats200Response = {
+    // TODO: Implement better logic
+
+    ReportsStats200Response(List.empty[CatalogsReportStats], None)
   }
 }

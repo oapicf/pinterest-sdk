@@ -57,7 +57,7 @@ class BoardsApiTest : ShouldSpec() {
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : BoardSectionsList200Response = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -69,7 +69,7 @@ class BoardsApiTest : ShouldSpec() {
             //val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : BoardsListPins200Response = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -116,7 +116,7 @@ class BoardsApiTest : ShouldSpec() {
             // uncomment below to test boardsList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val privacy : kotlin.String = privacy_example // kotlin.String | Privacy setting for a board.
             //val result : BoardsList200Response = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy)
             //result shouldBe ("TODO")
@@ -127,7 +127,7 @@ class BoardsApiTest : ShouldSpec() {
             // uncomment below to test boardsListPins
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val creativeTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.

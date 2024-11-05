@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -91,13 +91,13 @@ func (a *TermsOfServiceAPIService) TermsOfServiceGetExecute(r ApiTermsOfServiceG
 	}
 
 	if r.includeHtml != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_html", r.includeHtml, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_html", r.includeHtml, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.includeHtml = &defaultValue
 	}
 	if r.tosType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tos_type", r.tosType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tos_type", r.tosType, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

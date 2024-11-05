@@ -1,12 +1,17 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "",
+  "doc": "Catalogs product for all verticals",
   "name": "CatalogsProduct",
   "fields": [
     {
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
+      "doc": ""
+    },
+    {
       "name": "metadata",
-      "type": "model.CatalogsProductMetadata",
+      "type": "model.CatalogsCreativeAssetsProductMetadata",
       "doc": ""
     },
     {

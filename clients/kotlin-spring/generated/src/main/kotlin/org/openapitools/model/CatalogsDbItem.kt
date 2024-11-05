@@ -21,15 +21,15 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsDbItem(
 
-    @Schema(example = "2022-03-14T15:15:22Z", description = "")
-    @get:JsonProperty("created_at") val createdAt: java.time.OffsetDateTime? = null,
+    @Schema(example = "2022-03-14T15:15:22Z", required = true, description = "")
+    @get:JsonProperty("created_at", required = true) val createdAt: java.time.OffsetDateTime,
 
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("id") val id: kotlin.String? = null,
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("id", required = true) val id: kotlin.String,
 
-    @Schema(example = "2022-03-14T15:16:34Z", description = "")
-    @get:JsonProperty("updated_at") val updatedAt: java.time.OffsetDateTime? = null
-) {
+    @Schema(example = "2022-03-14T15:16:34Z", required = true, description = "")
+    @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime
+    ) {
 
 }
 

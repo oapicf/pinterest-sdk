@@ -693,7 +693,7 @@ module UserAccountApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/user_account/websites"
+      let path = "/v5/user_account/websites" + "?adAccountId=ADDME"
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getVerifyWebsiteUpdateExample "application/json")
@@ -715,7 +715,7 @@ module UserAccountApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/user_account/websites"
+      let path = "/v5/user_account/websites" + "?adAccountId=ADDME"
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getVerifyWebsiteUpdateExample "application/json")
@@ -737,7 +737,7 @@ module UserAccountApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/user_account/websites/verification"
+      let path = "/v5/user_account/websites/verification" + "?adAccountId=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -754,7 +754,7 @@ module UserAccountApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/user_account/websites/verification"
+      let path = "/v5/user_account/websites/verification" + "?adAccountId=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(403))
@@ -771,7 +771,7 @@ module UserAccountApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/user_account/websites/verification"
+      let path = "/v5/user_account/websites/verification" + "?adAccountId=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

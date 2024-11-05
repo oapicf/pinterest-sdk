@@ -16,6 +16,7 @@ public struct OauthAccessTokenRequestCode: Codable, JSONEncodable, Hashable {
     public enum GrantType: String, Codable, CaseIterable {
         case authorizationCode = "authorization_code"
         case refreshToken = "refresh_token"
+        case clientCredentials = "client_credentials"
     }
     public var grantType: GrantType
     public var code: String

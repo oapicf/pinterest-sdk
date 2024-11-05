@@ -19,12 +19,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for updating a product group.")
 @JsonTypeName("CatalogsProductGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupUpdateRequest   {
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid Boolean isFeatured;
-  private @Valid CatalogsProductGroupFiltersRequest filters;
+  private String name;
+  private String description;
+  private Boolean isFeatured;
+  private CatalogsProductGroupFiltersRequest filters;
 
   /**
    **/
@@ -94,7 +94,7 @@ public class CatalogsProductGroupUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
+  @Valid public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
   }
 

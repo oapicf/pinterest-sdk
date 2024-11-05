@@ -25,23 +25,23 @@ public class BulkUpsertRequestCreate  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid CampaignCreateRequest> campaigns;
+  private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<AdGroupCreateRequest> adGroups;
+  private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<AdCreateRequest> ads;
+  private List<@Valid AdCreateRequest> ads = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid ProductGroupPromotionCreateRequest> productGroups;
+  private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid KeywordsRequest> keywords;
+  private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
  /**
    * Get campaigns
    * @return campaigns
@@ -70,15 +70,15 @@ public class BulkUpsertRequestCreate  {
    * @return adGroups
   **/
   @JsonProperty("ad_groups")
-  public List<AdGroupCreateRequest> getAdGroups() {
+  public List<@Valid AdGroupCreateRequest> getAdGroups() {
     return adGroups;
   }
 
-  public void setAdGroups(List<AdGroupCreateRequest> adGroups) {
+  public void setAdGroups(List<@Valid AdGroupCreateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
-  public BulkUpsertRequestCreate adGroups(List<AdGroupCreateRequest> adGroups) {
+  public BulkUpsertRequestCreate adGroups(List<@Valid AdGroupCreateRequest> adGroups) {
     this.adGroups = adGroups;
     return this;
   }
@@ -93,15 +93,15 @@ public class BulkUpsertRequestCreate  {
    * @return ads
   **/
   @JsonProperty("ads")
-  public List<AdCreateRequest> getAds() {
+  public List<@Valid AdCreateRequest> getAds() {
     return ads;
   }
 
-  public void setAds(List<AdCreateRequest> ads) {
+  public void setAds(List<@Valid AdCreateRequest> ads) {
     this.ads = ads;
   }
 
-  public BulkUpsertRequestCreate ads(List<AdCreateRequest> ads) {
+  public BulkUpsertRequestCreate ads(List<@Valid AdCreateRequest> ads) {
     this.ads = ads;
     return this;
   }

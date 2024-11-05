@@ -52,5 +52,6 @@ data class CatalogsUpsertHotelItem (
     enum class Operation(val value: kotlin.String) {
         @Json(name = "UPSERT") UPSERT("UPSERT");
     }
+
 }
 

@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -42,7 +42,7 @@ public class PinCreate   {
 
   private BoardOwner boardOwner;
 
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   private PinMediaSource mediaSource;
 
@@ -235,7 +235,7 @@ public class PinCreate   {
 
   /**
    **/
-  public PinCreate media(SummaryPinMedia media) {
+  public PinCreate media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -243,10 +243,10 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 

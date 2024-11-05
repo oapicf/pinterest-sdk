@@ -40,7 +40,7 @@ interface KeywordsApi  {
     suspend fun keywordsUpdate(adAccountId:kotlin.String?,keywordUpdateBody:KeywordUpdateBody?,context:OperationRequest):Response<KeywordsResponse>
     /* trendingKeywordsList
      * List trending keywords */
-    suspend fun trendingKeywordsList(region:TrendsSupportedRegion?,trendType:TrendType?,interests:kotlin.Array<kotlin.String>?,genders:kotlin.Array<kotlin.String>?,ages:kotlin.Array<kotlin.String>?,normalizeAgainstGroup:kotlin.Boolean?,limit:kotlin.Int?,context:OperationRequest):Response<TrendingKeywordsResponse>
+    suspend fun trendingKeywordsList(region:TrendsSupportedRegion?,trendType:TrendType?,interests:kotlin.Array<kotlin.String>?,genders:kotlin.Array<kotlin.String>?,ages:kotlin.Array<kotlin.String>?,includeKeywords:kotlin.Array<kotlin.String>?,normalizeAgainstGroup:kotlin.Boolean?,limit:kotlin.Int?,context:OperationRequest):Response<TrendingKeywordsResponse>
     companion object {
         const val address = "KeywordsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

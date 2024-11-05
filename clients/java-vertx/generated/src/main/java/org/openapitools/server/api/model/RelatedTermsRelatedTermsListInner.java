@@ -11,7 +11,7 @@ import java.util.List;
 public class RelatedTermsRelatedTermsListInner   {
   
   private String term;
-  private List<String> relatedTerms;
+  private List<String> relatedTerms = new ArrayList<>();
 
   public RelatedTermsRelatedTermsListInner () {
 

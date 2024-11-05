@@ -243,12 +243,14 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new BoardsApi(config);
             var boardId = "boardId_example";  // string | Unique identifier of a board.
             var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -294,7 +296,7 @@ catch (ApiException e)
 | **boardId** | **string** | Unique identifier of a board. |  |
 | **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -302,7 +304,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -344,13 +346,15 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new BoardsApi(config);
             var boardId = "boardId_example";  // string | Unique identifier of a board.
             var sectionId = "sectionId_example";  // string | Unique identifier of a board section.
             var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -397,7 +401,7 @@ catch (ApiException e)
 | **sectionId** | **string** | Unique identifier of a board section. |  |
 | **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -405,7 +409,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -749,6 +753,8 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new BoardsApi(config);
             var boardId = "boardId_example";  // string | Unique identifier of a board.
@@ -804,7 +810,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -847,11 +853,13 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new BoardsApi(config);
             var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
             var privacy = "ALL";  // string? | Privacy setting for a board. (optional) 
 
             try
@@ -897,7 +905,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **privacy** | **string?** | Privacy setting for a board. | [optional]  |
 
 ### Return type
@@ -906,7 +914,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -948,11 +956,13 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new BoardsApi(config);
             var boardId = "boardId_example";  // string | Unique identifier of a board.
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
             var creativeTypes = new List<string>?(); // List<string>? | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional) 
             var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
             var pinMetrics = false;  // bool? | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)  (default to false)
@@ -1000,7 +1010,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **boardId** | **string** | Unique identifier of a board. |  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creativeTypes** | [**List&lt;string&gt;?**](string.md) | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]  |
 | **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
 | **pinMetrics** | **bool?** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
@@ -1011,7 +1021,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

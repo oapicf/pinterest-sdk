@@ -12,13 +12,14 @@ import AnyCodable
 
 public struct ItemAttributes: Codable, JSONEncodable, Hashable {
 
+    static let imageLinkRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     /** Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. */
     public var adLink: String?
     /** Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest. */
     public var adult: Bool?
-    /** The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. */
+    /** The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. */
     public var ageGroup: String?
-    /** The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. */
+    /** The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’. */
     public var availability: String?
     /** Average reviews for the item. Can be a number from 1-5. */
     public var averageReviewRating: Double?
@@ -47,7 +48,7 @@ public struct ItemAttributes: Codable, JSONEncodable, Hashable {
     public var freeShippingLabel: Bool?
     /** The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. */
     public var freeShippingLimit: String?
-    /** The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. */
+    /** The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’. */
     public var gender: String?
     /** The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. */
     public var googleProductCategory: String?
@@ -92,9 +93,9 @@ public struct ItemAttributes: Codable, JSONEncodable, Hashable {
     public var shippingWidth: String?
     /** The size of the product. */
     public var size: String?
-    /** Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. */
+    /** Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’. */
     public var sizeSystem: String?
-    /** Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. */
+    /** Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’. */
     public var sizeType: String?
     /** Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. */
     public var tax: String?
@@ -108,8 +109,10 @@ public struct ItemAttributes: Codable, JSONEncodable, Hashable {
     public var additionalImageLink: [String]?
     /** <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p> */
     public var imageLink: [String]?
+    /** <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p> */
+    public var videoLink: String?
 
-    public init(adLink: String? = nil, adult: Bool? = nil, ageGroup: String? = nil, availability: String? = nil, averageReviewRating: Double? = nil, brand: String? = nil, checkoutEnabled: Bool? = nil, color: String? = nil, condition: String? = nil, customLabel0: String? = nil, customLabel1: String? = nil, customLabel2: String? = nil, customLabel3: String? = nil, customLabel4: String? = nil, description: String? = nil, freeShippingLabel: Bool? = nil, freeShippingLimit: String? = nil, gender: String? = nil, googleProductCategory: String? = nil, gtin: Int? = nil, id: String? = nil, itemGroupId: String? = nil, lastUpdatedTime: Int64? = nil, link: String? = nil, material: String? = nil, minAdPrice: String? = nil, mobileLink: String? = nil, mpn: String? = nil, numberOfRatings: Int? = nil, numberOfReviews: Int? = nil, pattern: String? = nil, price: String? = nil, productType: String? = nil, salePrice: String? = nil, shipping: String? = nil, shippingHeight: String? = nil, shippingWeight: String? = nil, shippingWidth: String? = nil, size: String? = nil, sizeSystem: String? = nil, sizeType: String? = nil, tax: String? = nil, title: String? = nil, variantNames: [String]? = nil, variantValues: [String]? = nil, additionalImageLink: [String]? = nil, imageLink: [String]? = nil) {
+    public init(adLink: String? = nil, adult: Bool? = nil, ageGroup: String? = nil, availability: String? = nil, averageReviewRating: Double? = nil, brand: String? = nil, checkoutEnabled: Bool? = nil, color: String? = nil, condition: String? = nil, customLabel0: String? = nil, customLabel1: String? = nil, customLabel2: String? = nil, customLabel3: String? = nil, customLabel4: String? = nil, description: String? = nil, freeShippingLabel: Bool? = nil, freeShippingLimit: String? = nil, gender: String? = nil, googleProductCategory: String? = nil, gtin: Int? = nil, id: String? = nil, itemGroupId: String? = nil, lastUpdatedTime: Int64? = nil, link: String? = nil, material: String? = nil, minAdPrice: String? = nil, mobileLink: String? = nil, mpn: String? = nil, numberOfRatings: Int? = nil, numberOfReviews: Int? = nil, pattern: String? = nil, price: String? = nil, productType: String? = nil, salePrice: String? = nil, shipping: String? = nil, shippingHeight: String? = nil, shippingWeight: String? = nil, shippingWidth: String? = nil, size: String? = nil, sizeSystem: String? = nil, sizeType: String? = nil, tax: String? = nil, title: String? = nil, variantNames: [String]? = nil, variantValues: [String]? = nil, additionalImageLink: [String]? = nil, imageLink: [String]? = nil, videoLink: String? = nil) {
         self.adLink = adLink
         self.adult = adult
         self.ageGroup = ageGroup
@@ -157,6 +160,7 @@ public struct ItemAttributes: Codable, JSONEncodable, Hashable {
         self.variantValues = variantValues
         self.additionalImageLink = additionalImageLink
         self.imageLink = imageLink
+        self.videoLink = videoLink
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -207,6 +211,7 @@ public struct ItemAttributes: Codable, JSONEncodable, Hashable {
         case variantValues = "variant_values"
         case additionalImageLink = "additional_image_link"
         case imageLink = "image_link"
+        case videoLink = "video_link"
     }
 
     // Encodable protocol methods
@@ -260,6 +265,7 @@ public struct ItemAttributes: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(variantValues, forKey: .variantValues)
         try container.encodeIfPresent(additionalImageLink, forKey: .additionalImageLink)
         try container.encodeIfPresent(imageLink, forKey: .imageLink)
+        try container.encodeIfPresent(videoLink, forKey: .videoLink)
     }
 }
 

@@ -57,5 +57,8 @@ data class BidFloorSpec (
     @Json(name = "creative_type")
     val creativeType: CreativeType? = null
 
-)
+) {
+
+
+}
 

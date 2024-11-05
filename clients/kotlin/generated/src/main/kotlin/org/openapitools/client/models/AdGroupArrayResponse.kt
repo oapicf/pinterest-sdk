@@ -32,5 +32,8 @@ data class AdGroupArrayResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<AdGroupArrayResponseElement>? = null
 
-)
+) {
+
+
+}
 

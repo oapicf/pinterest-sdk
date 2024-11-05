@@ -16,14 +16,15 @@
 typedef struct catalogs_items_batch_t catalogs_items_batch_t;
 
 #include "batch_operation_status.h"
+#include "catalogs_creative_assets_items_batch.h"
 #include "catalogs_hotel_items_batch.h"
 #include "catalogs_retail_items_batch.h"
 #include "catalogs_type.h"
-#include "hotel_processing_record.h"
+#include "creative_assets_processing_record.h"
 
 // Enum  for catalogs_items_batch
 
-typedef enum  { pinterest_rest_api_catalogs_items_batch__NULL = 0, pinterest_rest_api_catalogs_items_batch__RETAIL, pinterest_rest_api_catalogs_items_batch__HOTEL } pinterest_rest_api_catalogs_items_batch__e;
+typedef enum  { pinterest_rest_api_catalogs_items_batch__NULL = 0, pinterest_rest_api_catalogs_items_batch__RETAIL, pinterest_rest_api_catalogs_items_batch__HOTEL, pinterest_rest_api_catalogs_items_batch__CREATIVE_ASSETS } pinterest_rest_api_catalogs_items_batch__e;
 
 char* catalogs_items_batch_catalog_type_ToString(pinterest_rest_api_catalogs_items_batch__e catalog_type);
 
@@ -31,7 +32,7 @@ pinterest_rest_api_catalogs_items_batch__e catalogs_items_batch_catalog_type_Fro
 
 // Enum  for catalogs_items_batch
 
-typedef enum  { pinterest_rest_api_catalogs_items_batch__NULL = 0, pinterest_rest_api_catalogs_items_batch__PROCESSING, pinterest_rest_api_catalogs_items_batch__COMPLETED } pinterest_rest_api_catalogs_items_batch__e;
+typedef enum  { pinterest_rest_api_catalogs_items_batch__NULL = 0, pinterest_rest_api_catalogs_items_batch__PROCESSING, pinterest_rest_api_catalogs_items_batch__COMPLETED, pinterest_rest_api_catalogs_items_batch__FAILED } pinterest_rest_api_catalogs_items_batch__e;
 
 char* catalogs_items_batch_status_ToString(pinterest_rest_api_catalogs_items_batch__e status);
 

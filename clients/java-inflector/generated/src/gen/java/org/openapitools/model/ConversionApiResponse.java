@@ -17,7 +17,7 @@ import org.openapitools.model.ConversionApiResponseEventsInner;
  **/
 
 @ApiModel(description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionApiResponse   {
   @JsonProperty("num_events_received")
   private Integer numEventsReceived;

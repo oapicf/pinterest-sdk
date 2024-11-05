@@ -7,7 +7,7 @@ model_instance <- ConversionEventsUserData$new()
 
 test_that("ph", {
   # tests for the property `ph` (array[character])
-  # Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+  # Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ph`, "EXPECTED_RESULT")
@@ -15,7 +15,7 @@ test_that("ph", {
 
 test_that("ge", {
   # tests for the property `ge` (array[character])
-  # Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender.
+  # Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender. The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ge`, "EXPECTED_RESULT")
@@ -23,7 +23,7 @@ test_that("ge", {
 
 test_that("db", {
   # tests for the property `db` (array[character])
-  # Sha256 hashes of user&#39;s date of birthday, given as year, month, and day.
+  # Sha256 hashes of user&#39;s date of birthday, given as year, month, and day. The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`db`, "EXPECTED_RESULT")
@@ -31,7 +31,7 @@ test_that("db", {
 
 test_that("ln", {
   # tests for the property `ln` (array[character])
-  # Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+  # Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ln`, "EXPECTED_RESULT")
@@ -39,7 +39,7 @@ test_that("ln", {
 
 test_that("fn", {
   # tests for the property `fn` (array[character])
-  # Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
+  # Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`fn`, "EXPECTED_RESULT")
@@ -47,7 +47,7 @@ test_that("fn", {
 
 test_that("ct", {
   # tests for the property `ct` (array[character])
-  # Sha256 hashes of user&#39;s city, in lowercase, and without spaces or punctuation. User residency city (mostly billing).
+  # Sha256 hashes of user&#39;s city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ct`, "EXPECTED_RESULT")
@@ -55,7 +55,7 @@ test_that("ct", {
 
 test_that("st", {
   # tests for the property `st` (array[character])
-  # Sha256 hashes of user&#39;s state, given as a two-letter code in lowercase. User residency state (mostly billing).
+  # Sha256 hashes of user&#39;s state, given as a two-letter code in lowercase. User residency state (mostly billing). The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`st`, "EXPECTED_RESULT")
@@ -63,7 +63,7 @@ test_that("st", {
 
 test_that("zp", {
   # tests for the property `zp` (array[character])
-  # Sha256 hashes of user&#39;s zipcode, only digits. User residency zipcode (mostly billing).
+  # Sha256 hashes of user&#39;s zipcode, only digits. User residency zipcode (mostly billing). The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`zp`, "EXPECTED_RESULT")
@@ -71,7 +71,7 @@ test_that("zp", {
 
 test_that("country", {
   # tests for the property `country` (array[character])
-  # Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase.
+  # Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase. The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
@@ -79,7 +79,7 @@ test_that("country", {
 
 test_that("external_id", {
   # tests for the property `external_id` (array[character])
-  # Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA.
+  # Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`external_id`, "EXPECTED_RESULT")
@@ -99,4 +99,36 @@ test_that("partner_id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`partner_id`, "EXPECTED_RESULT")
+})
+
+test_that("em", {
+  # tests for the property `em` (array[character])
+  # Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`em`, "EXPECTED_RESULT")
+})
+
+test_that("hashed_maids", {
+  # tests for the property `hashed_maids` (array[character])
+  # Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`hashed_maids`, "EXPECTED_RESULT")
+})
+
+test_that("client_ip_address", {
+  # tests for the property `client_ip_address` (character)
+  # The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`client_ip_address`, "EXPECTED_RESULT")
+})
+
+test_that("client_user_agent", {
+  # tests for the property `client_user_agent` (character)
+  # The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`client_user_agent`, "EXPECTED_RESULT")
 })

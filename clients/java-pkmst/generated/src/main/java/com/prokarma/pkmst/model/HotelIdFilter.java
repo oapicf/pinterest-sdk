@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * HotelIdFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class HotelIdFilter   {
   @JsonProperty("HOTEL_ID")
   private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
@@ -25,10 +25,10 @@ public class HotelIdFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get HOTEL_ID
    * @return HOTEL_ID
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getHOTELID() {
     return HOTEL_ID;

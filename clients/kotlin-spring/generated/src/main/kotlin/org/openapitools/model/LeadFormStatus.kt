@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Status of the lead form
 * Values: DRAFT,ACTIVE
 */
-enum class LeadFormStatus(val value: kotlin.String) {
+enum class LeadFormStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("DRAFT") DRAFT("DRAFT"),
-    @JsonProperty("ACTIVE") ACTIVE("ACTIVE")
+    DRAFT("DRAFT"),
+    ACTIVE("ACTIVE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): LeadFormStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

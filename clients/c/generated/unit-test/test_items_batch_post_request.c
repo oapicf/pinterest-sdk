@@ -16,24 +16,25 @@
 #include "../model/items_batch_post_request.h"
 items_batch_post_request_t* instantiate_items_batch_post_request(int include_optional);
 
+#include "test_catalogs_items_request_language.c"
 
 
 items_batch_post_request_t* instantiate_items_batch_post_request(int include_optional) {
   items_batch_post_request_t* items_batch_post_request = NULL;
   if (include_optional) {
     items_batch_post_request = items_batch_post_request_create(
-      pinterest_rest_api_items_batch_post_request__RETAIL,
+      pinterest_rest_api_items_batch_post_request_CATALOGTYPE_CREATIVE_ASSETS,
       pinterest_rest_api_items_batch_post_request__"US",
-      pinterest_rest_api_items_batch_post_request__"EN",
+      null,
       list_createList(),
       "2680059592705",
       pinterest_rest_api_items_batch_post_request__"UPDATE"
     );
   } else {
     items_batch_post_request = items_batch_post_request_create(
-      pinterest_rest_api_items_batch_post_request__RETAIL,
+      pinterest_rest_api_items_batch_post_request_CATALOGTYPE_CREATIVE_ASSETS,
       pinterest_rest_api_items_batch_post_request__"US",
-      pinterest_rest_api_items_batch_post_request__"EN",
+      null,
       list_createList(),
       "2680059592705",
       pinterest_rest_api_items_batch_post_request__"UPDATE"

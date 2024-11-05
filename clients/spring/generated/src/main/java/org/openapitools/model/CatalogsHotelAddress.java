@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CatalogsHotelAddress
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelAddress {
 
   private String addr1;
@@ -39,7 +39,7 @@ public class CatalogsHotelAddress {
   /**
    * Primary street address of hotel.
    * @return addr1
-  */
+   */
   
   @Schema(name = "addr1", description = "Primary street address of hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("addr1")
@@ -59,7 +59,7 @@ public class CatalogsHotelAddress {
   /**
    * City where the hotel is located.
    * @return city
-  */
+   */
   
   @Schema(name = "city", description = "City where the hotel is located.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("city")
@@ -79,7 +79,7 @@ public class CatalogsHotelAddress {
   /**
    * State, county, province, where the hotel is located.
    * @return region
-  */
+   */
   
   @Schema(name = "region", description = "State, county, province, where the hotel is located.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("region")
@@ -99,7 +99,7 @@ public class CatalogsHotelAddress {
   /**
    * Country where the hotel is located.
    * @return country
-  */
+   */
   
   @Schema(name = "country", description = "Country where the hotel is located.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
@@ -119,7 +119,7 @@ public class CatalogsHotelAddress {
   /**
    * Required for countries with a postal code system. Postal or zip code of the hotel.
    * @return postalCode
-  */
+   */
   
   @Schema(name = "postal_code", description = "Required for countries with a postal code system. Postal or zip code of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("postal_code")

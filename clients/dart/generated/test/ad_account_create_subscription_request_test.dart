@@ -40,6 +40,11 @@ void main() {
       // TODO
     });
 
+    // AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata
+    test('to test the property `partnerMetadata`', () async {
+      // TODO
+    });
+
 
   });
 

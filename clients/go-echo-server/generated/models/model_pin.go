@@ -7,7 +7,7 @@ import (
 // Pin - Pin
 type Pin struct {
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	CreatedAt time.Time `json:"created_at,omitempty"`
 
@@ -25,24 +25,24 @@ type Pin struct {
 	CreativeType *CreativeType `json:"creative_type,omitempty"`
 
 	// The board to which this Pin belongs.
-	BoardId string `json:"board_id,omitempty"`
+	BoardId string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// The board section to which this Pin belongs.
-	BoardSectionId *string `json:"board_section_id,omitempty"`
+	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	BoardOwner BoardOwner `json:"board_owner,omitempty"`
 
 	// Whether the \"operation user_account\" is the Pin owner.
 	IsOwner bool `json:"is_owner,omitempty"`
 
-	Media SummaryPinMedia `json:"media,omitempty"`
+	Media PinMedia `json:"media,omitempty"`
 
 	MediaSource PinMediaSource `json:"media_source,omitempty"`
 
 	// The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-	ParentPinId *string `json:"parent_pin_id,omitempty"`
+	ParentPinId *string `json:"parent_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 
-	// Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+	// Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
 	IsStandard bool `json:"is_standard,omitempty"`
 
 	// Whether the Pin has been promoted or not.

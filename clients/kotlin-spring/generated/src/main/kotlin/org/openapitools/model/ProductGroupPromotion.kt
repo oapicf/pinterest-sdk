@@ -1,9 +1,9 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.CreativeType
 import org.openapitools.model.EntityStatus
 import org.openapitools.model.GridClickType
 import javax.validation.constraints.DecimalMax
@@ -33,7 +33,6 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param trackingUrl Tracking template for proudct group promotions. 4000 limit
  * @param catalogProductGroupId ID of the catalogs product group that this product group promotion references
  * @param catalogProductGroupName Catalogs product group name
- * @param creativeType 
  * @param collectionsHeroPinId Hero Pin ID if this PG is promoted as a Collection
  * @param collectionsHeroDestinationUrl Collections Hero Destination Url
  * @param gridClickType 
@@ -87,10 +86,6 @@ data class ProductGroupPromotion(
     @Schema(example = "catalogProductGroupName", description = "Catalogs product group name")
     @get:JsonProperty("catalog_product_group_name") val catalogProductGroupName: kotlin.String? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("creative_type") val creativeType: CreativeType? = null,
-
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "123123", description = "Hero Pin ID if this PG is promoted as a Collection")
     @get:JsonProperty("collections_hero_pin_id") val collectionsHeroPinId: kotlin.String? = null,
@@ -101,7 +96,7 @@ data class ProductGroupPromotion(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("grid_click_type") val gridClickType: GridClickType? = null
-) {
+    ) {
 
 }
 

@@ -17,7 +17,7 @@ public class BidFloor  {
  /**
    * A list of bid floors in micro currency. For example, [100000, 200000]
   **/
-  private List<Integer> bidFloors;
+  private List<Integer> bidFloors = new ArrayList<>();
 
   @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
  /**

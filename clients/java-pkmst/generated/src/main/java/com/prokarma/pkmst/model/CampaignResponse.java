@@ -4,10 +4,10 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.pkmst.model.AdCommonTrackingUrls;
 import com.prokarma.pkmst.model.CampaignSummaryStatus;
 import com.prokarma.pkmst.model.EntityStatus;
 import com.prokarma.pkmst.model.ObjectiveType;
+import com.prokarma.pkmst.model.TrackingUrls;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CampaignResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignResponse   {
   @JsonProperty("id")
   private String id;
@@ -44,7 +44,7 @@ public class CampaignResponse   {
   private String orderLineId;
 
   @JsonProperty("tracking_urls")
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("start_time")
   private Integer startTime;
@@ -52,8 +52,8 @@ public class CampaignResponse   {
   @JsonProperty("end_time")
   private Integer endTime;
 
-  @JsonProperty("summary_status")
-  private CampaignSummaryStatus summaryStatus;
+  @JsonProperty("is_flexible_daily_budgets")
+  private Boolean isFlexibleDailyBudgets;
 
   @JsonProperty("objective_type")
   private ObjectiveType objectiveType;
@@ -67,21 +67,21 @@ public class CampaignResponse   {
   @JsonProperty("type")
   private String type;
 
-  @JsonProperty("is_flexible_daily_budgets")
-  private Boolean isFlexibleDailyBudgets;
-
   @JsonProperty("is_campaign_budget_optimization")
   private Boolean isCampaignBudgetOptimization;
+
+  @JsonProperty("summary_status")
+  private CampaignSummaryStatus summaryStatus;
 
   public CampaignResponse id(String id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Campaign ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Campaign ID.")
   public String getId() {
     return id;
@@ -96,10 +96,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
   public String getAdAccountId() {
     return adAccountId;
@@ -114,10 +114,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Campaign name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "ACME Tools", value = "Campaign name.")
   public String getName() {
     return name;
@@ -132,10 +132,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "")
   public EntityStatus getStatus() {
     return status;
@@ -150,10 +150,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
    * @return lifetimeSpendCap
-  **/
+   */
   @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
   public Integer getLifetimeSpendCap() {
     return lifetimeSpendCap;
@@ -168,10 +168,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
    * @return dailySpendCap
-  **/
+   */
   @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
   public Integer getDailySpendCap() {
     return dailySpendCap;
@@ -186,10 +186,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Order line ID that appears on the invoice.
    * @return orderLineId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
   public String getOrderLineId() {
     return orderLineId;
@@ -199,21 +199,21 @@ public class CampaignResponse   {
     this.orderLineId = orderLineId;
   }
 
-  public CampaignResponse trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
 
-   /**
+  /**
    * Get trackingUrls
    * @return trackingUrls
-  **/
+   */
   @ApiModelProperty(value = "")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -222,10 +222,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
    * @return startTime
-  **/
+   */
   @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
   public Integer getStartTime() {
     return startTime;
@@ -240,10 +240,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
    * @return endTime
-  **/
+   */
   @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
   public Integer getEndTime() {
     return endTime;
@@ -253,22 +253,22 @@ public class CampaignResponse   {
     this.endTime = endTime;
   }
 
-  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
 
-   /**
-   * Get summaryStatus
-   * @return summaryStatus
-  **/
-  @ApiModelProperty(value = "")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  /**
+   * Determine if a campaign has flexible daily budgets setup.
+   * @return isFlexibleDailyBudgets
+   */
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
   }
 
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
   public CampaignResponse objectiveType(ObjectiveType objectiveType) {
@@ -276,10 +276,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get objectiveType
    * @return objectiveType
-  **/
+   */
   @ApiModelProperty(value = "")
   public ObjectiveType getObjectiveType() {
     return objectiveType;
@@ -294,10 +294,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Campaign creation time. Unix timestamp in seconds.
    * @return createdTime
-  **/
+   */
   @ApiModelProperty(example = "1432744744", value = "Campaign creation time. Unix timestamp in seconds.")
   public Integer getCreatedTime() {
     return createdTime;
@@ -312,10 +312,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * UTC timestamp. Last update time.
    * @return updatedTime
-  **/
+   */
   @ApiModelProperty(example = "1432744744", value = "UTC timestamp. Last update time.")
   public Integer getUpdatedTime() {
     return updatedTime;
@@ -330,10 +330,10 @@ public class CampaignResponse   {
     return this;
   }
 
-   /**
+  /**
    * Always \"campaign\".
    * @return type
-  **/
+   */
   @ApiModelProperty(example = "campaign", value = "Always \"campaign\".")
   public String getType() {
     return type;
@@ -343,33 +343,15 @@ public class CampaignResponse   {
     this.type = type;
   }
 
-  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-    return this;
-  }
-
-   /**
-   * Determines if a campaign has flexible daily budgets setup.
-   * @return isFlexibleDailyBudgets
-  **/
-  @ApiModelProperty(example = "true", value = "Determines if a campaign has flexible daily budgets setup.")
-  public Boolean getIsFlexibleDailyBudgets() {
-    return isFlexibleDailyBudgets;
-  }
-
-  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-  }
-
   public CampaignResponse isCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
     return this;
   }
 
-   /**
+  /**
    * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
    * @return isCampaignBudgetOptimization
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.")
   public Boolean getIsCampaignBudgetOptimization() {
     return isCampaignBudgetOptimization;
@@ -377,6 +359,24 @@ public class CampaignResponse   {
 
   public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+  }
+
+  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+    return this;
+  }
+
+  /**
+   * Get summaryStatus
+   * @return summaryStatus
+   */
+  @ApiModelProperty(value = "")
+  public CampaignSummaryStatus getSummaryStatus() {
+    return summaryStatus;
+  }
+
+  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
   }
 
 
@@ -399,18 +399,18 @@ public class CampaignResponse   {
         Objects.equals(this.trackingUrls, campaignResponse.trackingUrls) &&
         Objects.equals(this.startTime, campaignResponse.startTime) &&
         Objects.equals(this.endTime, campaignResponse.endTime) &&
-        Objects.equals(this.summaryStatus, campaignResponse.summaryStatus) &&
+        Objects.equals(this.isFlexibleDailyBudgets, campaignResponse.isFlexibleDailyBudgets) &&
         Objects.equals(this.objectiveType, campaignResponse.objectiveType) &&
         Objects.equals(this.createdTime, campaignResponse.createdTime) &&
         Objects.equals(this.updatedTime, campaignResponse.updatedTime) &&
         Objects.equals(this.type, campaignResponse.type) &&
-        Objects.equals(this.isFlexibleDailyBudgets, campaignResponse.isFlexibleDailyBudgets) &&
-        Objects.equals(this.isCampaignBudgetOptimization, campaignResponse.isCampaignBudgetOptimization);
+        Objects.equals(this.isCampaignBudgetOptimization, campaignResponse.isCampaignBudgetOptimization) &&
+        Objects.equals(this.summaryStatus, campaignResponse.summaryStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, objectiveType, createdTime, updatedTime, type, isFlexibleDailyBudgets, isCampaignBudgetOptimization);
+    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, objectiveType, createdTime, updatedTime, type, isCampaignBudgetOptimization, summaryStatus);
   }
 
   @Override
@@ -428,13 +428,13 @@ public class CampaignResponse   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
+    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

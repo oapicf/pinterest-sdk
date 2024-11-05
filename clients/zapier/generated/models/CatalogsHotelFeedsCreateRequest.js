@@ -3,6 +3,7 @@ const CatalogsFeedCredentials = require('../models/CatalogsFeedCredentials');
 const CatalogsFeedProcessingSchedule = require('../models/CatalogsFeedProcessingSchedule');
 const CatalogsFeedsCreateRequest_default_locale = require('../models/CatalogsFeedsCreateRequest_default_locale');
 const CatalogsFormat = require('../models/CatalogsFormat');
+const CatalogsStatus = require('../models/CatalogsStatus');
 const CatalogsType = require('../models/CatalogsType');
 const NullableCurrency = require('../models/NullableCurrency');
 
@@ -42,6 +43,7 @@ module.exports = {
                 label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. - [${labelPrefix}catalog_id]`,
                 type: 'string',
             },
+            ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -56,6 +58,7 @@ module.exports = {
             'preferred_processing_schedule': utils.removeIfEmpty(CatalogsFeedProcessingSchedule.mapping(bundle, `${keyPrefix}preferred_processing_schedule`)),
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
+            'status': utils.removeIfEmpty(CatalogsStatus.mapping(bundle, `${keyPrefix}status`)),
         }
     },
 }

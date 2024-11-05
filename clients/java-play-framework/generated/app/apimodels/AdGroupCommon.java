@@ -1,13 +1,16 @@
 package apimodels;
 
 import apimodels.ActionType;
-import apimodels.AdGroupCommonOptimizationGoalMetadata;
-import apimodels.AdGroupCommonTrackingUrls;
 import apimodels.BudgetType;
 import apimodels.EntityStatus;
+import apimodels.OptimizationGoalMetadata;
 import apimodels.PacingDeliveryType;
 import apimodels.PlacementGroupType;
 import apimodels.TargetingSpec;
+import apimodels.TrackingUrls;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -18,7 +21,7 @@ import javax.validation.Valid;
 /**
  * AdGroupCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdGroupCommon   {
   @JsonProperty("name")
@@ -41,7 +44,7 @@ public class AdGroupCommon   {
   @JsonProperty("optimization_goal_metadata")
   @Valid
 
-  private AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata;
+  private OptimizationGoalMetadata optimizationGoalMetadata;
 
   @JsonProperty("budget_type")
   @Valid
@@ -68,7 +71,7 @@ public class AdGroupCommon   {
   @JsonProperty("tracking_urls")
   @Valid
 
-  private AdGroupCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("auto_targeting_enabled")
   
@@ -95,16 +98,14 @@ public class AdGroupCommon   {
   private ActionType billableEvent;
 
   /**
-   * Bid strategy type
+   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
    */
   public enum BidStrategyTypeEnum {
     AUTOMATIC_BID("AUTOMATIC_BID"),
     
     MAX_BID("MAX_BID"),
     
-    TARGET_AVG("TARGET_AVG"),
-    
-    NULL("null");
+    TARGET_AVG("TARGET_AVG");
 
     private final String value;
 
@@ -132,6 +133,11 @@ public class AdGroupCommon   {
   @JsonProperty("bid_strategy_type")
   
   private BidStrategyTypeEnum bidStrategyType;
+
+  @JsonProperty("targeting_template_ids")
+  @Size(max=1)
+
+  private List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds = null;
 
   public AdGroupCommon name(String name) {
     this.name = name;
@@ -201,20 +207,20 @@ public class AdGroupCommon   {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
-  public AdGroupCommon optimizationGoalMetadata(AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata) {
+  public AdGroupCommon optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
   }
 
    /**
-   * Get optimizationGoalMetadata
+   * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
    * @return optimizationGoalMetadata
   **/
-  public AdGroupCommonOptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 
-  public void setOptimizationGoalMetadata(AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
@@ -292,7 +298,7 @@ public class AdGroupCommon   {
   }
 
    /**
-   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
    * @return lifetimeFrequencyCap
   **/
   public Integer getLifetimeFrequencyCap() {
@@ -303,20 +309,20 @@ public class AdGroupCommon   {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
   }
 
-  public AdGroupCommon trackingUrls(AdGroupCommonTrackingUrls trackingUrls) {
+  public AdGroupCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
 
    /**
-   * Get trackingUrls
+   * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
    * @return trackingUrls
   **/
-  public AdGroupCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdGroupCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -343,7 +349,7 @@ public class AdGroupCommon   {
   }
 
    /**
-   * <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+   * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
    * @return placementGroup
   **/
   public PlacementGroupType getPlacementGroup() {
@@ -411,7 +417,7 @@ public class AdGroupCommon   {
   }
 
    /**
-   * Bid strategy type
+   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
    * @return bidStrategyType
   **/
   public BidStrategyTypeEnum getBidStrategyType() {
@@ -420,6 +426,31 @@ public class AdGroupCommon   {
 
   public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
+  }
+
+  public AdGroupCommon targetingTemplateIds(List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds) {
+    this.targetingTemplateIds = targetingTemplateIds;
+    return this;
+  }
+
+  public AdGroupCommon addTargetingTemplateIdsItem(String targetingTemplateIdsItem) {
+    if (this.targetingTemplateIds == null) {
+      this.targetingTemplateIds = new ArrayList<>();
+    }
+    this.targetingTemplateIds.add(targetingTemplateIdsItem);
+    return this;
+  }
+
+   /**
+   * Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+   * @return targetingTemplateIds
+  **/
+  public List<@Pattern(regexp = "^\\d+$")String> getTargetingTemplateIds() {
+    return targetingTemplateIds;
+  }
+
+  public void setTargetingTemplateIds(List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds) {
+    this.targetingTemplateIds = targetingTemplateIds;
   }
 
 
@@ -448,12 +479,13 @@ public class AdGroupCommon   {
         Objects.equals(pacingDeliveryType, adGroupCommon.pacingDeliveryType) &&
         Objects.equals(campaignId, adGroupCommon.campaignId) &&
         Objects.equals(billableEvent, adGroupCommon.billableEvent) &&
-        Objects.equals(bidStrategyType, adGroupCommon.bidStrategyType);
+        Objects.equals(bidStrategyType, adGroupCommon.bidStrategyType) &&
+        Objects.equals(targetingTemplateIds, adGroupCommon.targetingTemplateIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType);
+    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, targetingTemplateIds);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -479,6 +511,7 @@ public class AdGroupCommon   {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
+    sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

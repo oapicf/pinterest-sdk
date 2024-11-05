@@ -1,12 +1,13 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.BatchOperation
+import org.openapitools.model.CatalogsItemsRequestLanguage
 import org.openapitools.model.Country
 import org.openapitools.model.ItemCreateBatchRecord
-import org.openapitools.model.Language
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -33,7 +34,7 @@ data class CatalogsItemsCreateBatchRequest(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("language", required = true) val language: Language,
+    @get:JsonProperty("language", required = true) val language: CatalogsItemsRequestLanguage,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -43,7 +44,7 @@ data class CatalogsItemsCreateBatchRequest(
     @get:Size(min=1,max=1000) 
     @Schema(example = "null", required = true, description = "Array with catalogs items")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemCreateBatchRecord>
-) {
+    ) {
 
 }
 

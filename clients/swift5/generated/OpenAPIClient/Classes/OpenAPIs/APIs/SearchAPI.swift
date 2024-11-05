@@ -38,7 +38,7 @@ open class SearchAPI {
     /**
      Search pins by a given search term
      - GET /search/partner/pins
-     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -79,7 +79,7 @@ open class SearchAPI {
      
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter query: (query) Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -99,13 +99,16 @@ open class SearchAPI {
     /**
      Search user's boards
      - GET /search/boards
-     - Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+     - Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter query: (query) Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
      - returns: RequestBuilder<SearchUserBoardsGet200Response> 
      */
@@ -157,7 +160,7 @@ open class SearchAPI {
     /**
      Search user's Pins
      - GET /search/pins
-     - Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+     - Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2

@@ -13,13 +13,17 @@ import AnyCodable
 /** A request object that can have multiple operations on a single retail batch */
 public struct CatalogsRetailBatchRequest: Codable, JSONEncodable, Hashable {
 
-    public var catalogType: CatalogsType
+    public enum CatalogType: String, Codable, CaseIterable {
+        case retail = "RETAIL"
+    }
+    static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
+    public var catalogType: CatalogType
     public var country: Country
-    public var language: Language
+    public var language: CatalogsItemsRequestLanguage
     /** Array with catalogs item operations */
     public var items: [CatalogsRetailBatchRequestItemsInner]
 
-    public init(catalogType: CatalogsType, country: Country, language: Language, items: [CatalogsRetailBatchRequestItemsInner]) {
+    public init(catalogType: CatalogType, country: Country, language: CatalogsItemsRequestLanguage, items: [CatalogsRetailBatchRequestItemsInner]) {
         self.catalogType = catalogType
         self.country = country
         self.language = language

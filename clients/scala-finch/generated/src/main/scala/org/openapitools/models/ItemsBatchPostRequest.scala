@@ -7,11 +7,10 @@ import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.BatchOperation
 import org.openapitools.models.CatalogsItemsBatchRequest
-import org.openapitools.models.CatalogsType
+import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.CatalogsVerticalBatchRequest
 import org.openapitools.models.Country
 import org.openapitools.models.ItemDeleteBatchRecord
-import org.openapitools.models.Language
 import scala.collection.immutable.Seq
 
 /**
@@ -20,12 +19,12 @@ import scala.collection.immutable.Seq
  * @param country 
  * @param language 
  * @param items Array with catalogs items
- * @param catalogUnderscoreid Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  * @param operation 
  */
-case class ItemsBatchPostRequest(catalogUnderscoretype: CatalogsType,
+case class ItemsBatchPostRequest(catalogUnderscoretype: String,
                 country: Country,
-                language: Language,
+                language: CatalogsItemsRequestLanguage,
                 items: Seq[ItemDeleteBatchRecord],
                 catalogUnderscoreid: Option[String],
                 operation: BatchOperation

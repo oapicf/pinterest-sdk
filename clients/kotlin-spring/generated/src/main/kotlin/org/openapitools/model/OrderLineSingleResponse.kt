@@ -23,7 +23,7 @@ data class OrderLineSingleResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("data") val `data`: OrderLineResponse? = null
-) {
+    ) {
 
 }
 

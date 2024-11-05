@@ -10,7 +10,7 @@ package org.openapitools.server.model
 final case class CatalogsRetailBatchRequestItemsInner (
   itemId: String,
   operation: String,
-  attributes: ItemAttributes,
+  attributes: ItemAttributesRequest,
   updateMask: Option[Seq[UpdateMaskFieldType]] = None
 )
 

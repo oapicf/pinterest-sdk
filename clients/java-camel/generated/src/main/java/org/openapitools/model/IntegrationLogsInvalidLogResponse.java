@@ -23,11 +23,11 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogsInvalidLogResponse", description = "Schema describing the response when a log has invalid fields.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsInvalidLogResponse {
 
   @Valid
-  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs;
+  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
 
   public IntegrationLogsInvalidLogResponse rejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs) {
     this.rejectedLogs = rejectedLogs;
@@ -45,7 +45,7 @@ public class IntegrationLogsInvalidLogResponse {
   /**
    * Get rejectedLogs
    * @return rejectedLogs
-  */
+   */
   @Valid 
   @Schema(name = "rejected_logs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rejected_logs")

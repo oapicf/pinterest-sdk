@@ -12,12 +12,15 @@ import AnyCodable
 
 /** Object describing the catalogs items batch */
 public enum CatalogsItemsBatch: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsItemsBatch(CatalogsCreativeAssetsItemsBatch)
     case typeCatalogsHotelItemsBatch(CatalogsHotelItemsBatch)
     case typeCatalogsRetailItemsBatch(CatalogsRetailItemsBatch)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsCreativeAssetsItemsBatch(let value):
+            try container.encode(value)
         case .typeCatalogsHotelItemsBatch(let value):
             try container.encode(value)
         case .typeCatalogsRetailItemsBatch(let value):
@@ -27,7 +30,9 @@ public enum CatalogsItemsBatch: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsHotelItemsBatch.self) {
+        if let value = try? container.decode(CatalogsCreativeAssetsItemsBatch.self) {
+            self = .typeCatalogsCreativeAssetsItemsBatch(value)
+        } else if let value = try? container.decode(CatalogsHotelItemsBatch.self) {
             self = .typeCatalogsHotelItemsBatch(value)
         } else if let value = try? container.decode(CatalogsRetailItemsBatch.self) {
             self = .typeCatalogsRetailItemsBatch(value)

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**createdAt** | **OffsetDateTime** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**updatedAt** | **OffsetDateTime** |  |  [optional] |
+|**createdAt** | **OffsetDateTime** |  |  |
+|**id** | **String** |  |  |
+|**updatedAt** | **OffsetDateTime** |  |  |
 
 
 

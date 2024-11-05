@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -25,12 +25,12 @@ import javax.annotation.Generated;
 
 @Schema(name = "PinMediaWithImage", description = "Pin with image.")
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithImage extends PinMedia {
 
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
-  public PinMediaWithImage images(ImageMetadataImages images) {
+  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -38,15 +38,15 @@ public class PinMediaWithImage extends PinMedia {
   /**
    * Get images
    * @return images
-  */
+   */
   @Valid 
   @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

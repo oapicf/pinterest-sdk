@@ -4,7 +4,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **country** | [**Country**](Country.md) |  | [default to null] |
-| **language** | [**Language**](Language.md) |  | [default to null] |
+| **language** | [**CatalogsItemsRequest_language**](CatalogsItemsRequest_language.md) |  | [default to null] |
 | **operation** | [**BatchOperation**](BatchOperation.md) |  | [default to null] |
 | **items** | [**List**](ItemUpdateBatchRecord.md) | Array with catalogs items | [default to null] |
 

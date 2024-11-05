@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Used for including extra details to a base error")
 @JsonTypeName("DetailedError")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class DetailedError   {
-  private @Valid Integer code;
-  private @Valid String message;
-  private @Valid Object details;
+  private Integer code;
+  private String message;
+  private Object details;
 
   /**
    **/
@@ -33,8 +33,7 @@ public class DetailedError   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("code")
-  @NotNull
-  public Integer getCode() {
+  @NotNull public Integer getCode() {
     return code;
   }
 
@@ -53,8 +52,7 @@ public class DetailedError   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("message")
-  @NotNull
-  public String getMessage() {
+  @NotNull public String getMessage() {
     return message;
   }
 
@@ -73,8 +71,7 @@ public class DetailedError   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("details")
-  @NotNull
-  public Object getDetails() {
+  @NotNull public Object getDetails() {
     return details;
   }
 

@@ -3,8 +3,8 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,7 +22,7 @@ public class PinMediaWithVideo extends PinMedia {
   
   @ApiModelProperty(value = "")
   @Valid
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   @ApiModelProperty(value = "")
   private String coverImageUrl;
@@ -56,21 +56,21 @@ public class PinMediaWithVideo extends PinMedia {
   * @return images
   */
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
   /**
    * Sets the <code>images</code> property.
    */
- public void setImages(ImageMetadataImages images) {
+ public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
   /**
    * Sets the <code>images</code> property.
    */
-  public PinMediaWithVideo images(ImageMetadataImages images) {
+  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }

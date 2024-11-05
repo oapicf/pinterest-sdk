@@ -28,11 +28,16 @@ Description on how to create Apis is given inside individual api guides:
 * [AdAccountsApi](docs/apis/AdAccountsApi.md)
 * [AdGroupsApi](docs/apis/AdGroupsApi.md)
 * [AdsApi](docs/apis/AdsApi.md)
+* [AdvancedAuctionApi](docs/apis/AdvancedAuctionApi.md)
 * [AudienceInsightsApi](docs/apis/AudienceInsightsApi.md)
+* [AudienceSharingApi](docs/apis/AudienceSharingApi.md)
 * [AudiencesApi](docs/apis/AudiencesApi.md)
 * [BillingApi](docs/apis/BillingApi.md)
 * [BoardsApi](docs/apis/BoardsApi.md)
 * [BulkApi](docs/apis/BulkApi.md)
+* [BusinessAccessAssetsApi](docs/apis/BusinessAccessAssetsApi.md)
+* [BusinessAccessInviteApi](docs/apis/BusinessAccessInviteApi.md)
+* [BusinessAccessRelationshipsApi](docs/apis/BusinessAccessRelationshipsApi.md)
 * [CampaignsApi](docs/apis/CampaignsApi.md)
 * [CatalogsApi](docs/apis/CatalogsApi.md)
 * [ConversionEventsApi](docs/apis/ConversionEventsApi.md)
@@ -42,14 +47,15 @@ Description on how to create Apis is given inside individual api guides:
 * [KeywordsApi](docs/apis/KeywordsApi.md)
 * [LeadAdsApi](docs/apis/LeadAdsApi.md)
 * [LeadFormsApi](docs/apis/LeadFormsApi.md)
+* [LeadsExportApi](docs/apis/LeadsExportApi.md)
 * [MediaApi](docs/apis/MediaApi.md)
 * [OauthApi](docs/apis/OauthApi.md)
 * [OrderLinesApi](docs/apis/OrderLinesApi.md)
 * [PinsApi](docs/apis/PinsApi.md)
 * [ProductGroupPromotionsApi](docs/apis/ProductGroupPromotionsApi.md)
-* [ProductGroupsApi](docs/apis/ProductGroupsApi.md)
 * [ResourcesApi](docs/apis/ResourcesApi.md)
 * [SearchApi](docs/apis/SearchApi.md)
+* [TargetingTemplateApi](docs/apis/TargetingTemplateApi.md)
 * [TermsApi](docs/apis/TermsApi.md)
 * [TermsOfServiceApi](docs/apis/TermsOfServiceApi.md)
 * [UserAccountApi](docs/apis/UserAccountApi.md)
@@ -61,6 +67,12 @@ Details on auth methods can be found in the [auth.md](doc/auth.md).
 
 ## Author
 
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
+blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com
 blah+oapicf@cliffano.com

@@ -15,7 +15,6 @@
 
 typedef struct product_group_promotion_t product_group_promotion_t;
 
-#include "creative_type.h"
 #include "entity_status.h"
 #include "grid_click_type.h"
 
@@ -26,14 +25,6 @@ typedef enum  { pinterest_rest_api_product_group_promotion__NULL = 0, pinterest_
 char* product_group_promotion_status_ToString(pinterest_rest_api_product_group_promotion__e status);
 
 pinterest_rest_api_product_group_promotion__e product_group_promotion_status_FromString(char* status);
-
-// Enum  for product_group_promotion
-
-typedef enum  { pinterest_rest_api_product_group_promotion__NULL = 0, pinterest_rest_api_product_group_promotion__REGULAR, pinterest_rest_api_product_group_promotion__VIDEO, pinterest_rest_api_product_group_promotion__SHOPPING, pinterest_rest_api_product_group_promotion__CAROUSEL, pinterest_rest_api_product_group_promotion__MAX_VIDEO, pinterest_rest_api_product_group_promotion__SHOP_THE_PIN, pinterest_rest_api_product_group_promotion__COLLECTION, pinterest_rest_api_product_group_promotion__IDEA, pinterest_rest_api_product_group_promotion__SHOWCASE, pinterest_rest_api_product_group_promotion__QUIZ } pinterest_rest_api_product_group_promotion__e;
-
-char* product_group_promotion_creative_type_ToString(pinterest_rest_api_product_group_promotion__e creative_type);
-
-pinterest_rest_api_product_group_promotion__e product_group_promotion_creative_type_FromString(char* creative_type);
 
 // Enum  for product_group_promotion
 
@@ -60,7 +51,6 @@ typedef struct product_group_promotion_t {
     char *tracking_url; // string
     char *catalog_product_group_id; // string
     char *catalog_product_group_name; // string
-    creative_type_t *creative_type; // custom
     char *collections_hero_pin_id; // string
     char *collections_hero_destination_url; // string
     grid_click_type_t *grid_click_type; // custom
@@ -82,7 +72,6 @@ product_group_promotion_t *product_group_promotion_create(
     char *tracking_url,
     char *catalog_product_group_id,
     char *catalog_product_group_name,
-    creative_type_t *creative_type,
     char *collections_hero_pin_id,
     char *collections_hero_destination_url,
     grid_click_type_t *grid_click_type

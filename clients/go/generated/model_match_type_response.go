@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -26,7 +26,6 @@ const (
 	EXACT MatchTypeResponse = "EXACT"
 	EXACT_NEGATIVE MatchTypeResponse = "EXACT_NEGATIVE"
 	PHRASE_NEGATIVE MatchTypeResponse = "PHRASE_NEGATIVE"
-	NULL MatchTypeResponse = "null"
 )
 
 // All allowed values of MatchTypeResponse enum
@@ -36,7 +35,6 @@ var AllowedMatchTypeResponseEnumValues = []MatchTypeResponse{
 	"EXACT",
 	"EXACT_NEGATIVE",
 	"PHRASE_NEGATIVE",
-	"null",
 }
 
 func (v *MatchTypeResponse) UnmarshalJSON(src []byte) error {

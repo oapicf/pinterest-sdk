@@ -13,10 +13,62 @@ import AnyCodable
 open class CatalogsAPI {
 
     /**
+     Create catalog
+     
+     - parameter catalogsCreateRequest: (body) Request object used to created a feed. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Catalog?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogsCreateWithRequestBuilder(catalogsCreateRequest: catalogsCreateRequest, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create catalog
+     - POST /catalogs
+     - Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter catalogsCreateRequest: (body) Request object used to created a feed. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - returns: RequestBuilder<Catalog> 
+     */
+    open class func catalogsCreateWithRequestBuilder(catalogsCreateRequest: CatalogsCreateRequest, adAccountId: String? = nil) -> RequestBuilder<Catalog> {
+        let localVariablePath = "/catalogs"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogsCreateRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Catalog>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      List catalogs
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -36,12 +88,12 @@ open class CatalogsAPI {
     /**
      List catalogs
      - GET /catalogs
-     - Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<CatalogsList200Response> 
      */
@@ -69,18 +121,19 @@ open class CatalogsAPI {
     }
 
     /**
-     List products for a Product Group
+     List products by product group
      
      - parameter productGroupId: (path) Unique identifier of a product group 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogsProductGroupPinsList(productGroupId: String, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupPinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return catalogsProductGroupPinsListWithRequestBuilder(productGroupId: productGroupId, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+    open class func catalogsProductGroupPinsList(productGroupId: String, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupPinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogsProductGroupPinsListWithRequestBuilder(productGroupId: productGroupId, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId, pinMetrics: pinMetrics).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -91,19 +144,20 @@ open class CatalogsAPI {
     }
 
     /**
-     List products for a Product Group
+     List products by product group
      - GET /catalogs/product_groups/{product_group_id}/products
-     - Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter productGroupId: (path) Unique identifier of a product group 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      - returns: RequestBuilder<CatalogsProductGroupPinsList200Response> 
      */
-    open class func catalogsProductGroupPinsListWithRequestBuilder(productGroupId: String, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupPinsList200Response> {
+    open class func catalogsProductGroupPinsListWithRequestBuilder(productGroupId: String, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil) -> RequestBuilder<CatalogsProductGroupPinsList200Response> {
         var localVariablePath = "/catalogs/product_groups/{product_group_id}/products"
         let productGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(productGroupId))"
         let productGroupIdPostEscape = productGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -116,6 +170,7 @@ open class CatalogsAPI {
             "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
             "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+            "pin_metrics": (wrappedValue: pinMetrics?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -132,14 +187,14 @@ open class CatalogsAPI {
     /**
      Create product group
      
-     - parameter catalogsProductGroupsCreateRequest: (body) Request object used to created a catalogs product group. 
+     - parameter multipleProductGroupsInner: (body) Request object used to create a single catalogs product groups. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogsProductGroupsCreate(catalogsProductGroupsCreateRequest: CatalogsProductGroupsCreateRequest, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupsCreate201Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return catalogsProductGroupsCreateWithRequestBuilder(catalogsProductGroupsCreateRequest: catalogsProductGroupsCreateRequest, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+    open class func catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsVerticalProductGroup?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogsProductGroupsCreateWithRequestBuilder(multipleProductGroupsInner: multipleProductGroupsInner, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -152,18 +207,18 @@ open class CatalogsAPI {
     /**
      Create product group
      - POST /catalogs/product_groups
-     - Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter catalogsProductGroupsCreateRequest: (body) Request object used to created a catalogs product group. 
+     - parameter multipleProductGroupsInner: (body) Request object used to create a single catalogs product groups. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - returns: RequestBuilder<CatalogsProductGroupsCreate201Response> 
+     - returns: RequestBuilder<CatalogsVerticalProductGroup> 
      */
-    open class func catalogsProductGroupsCreateWithRequestBuilder(catalogsProductGroupsCreateRequest: CatalogsProductGroupsCreateRequest, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupsCreate201Response> {
+    open class func catalogsProductGroupsCreateWithRequestBuilder(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: String? = nil) -> RequestBuilder<CatalogsVerticalProductGroup> {
         let localVariablePath = "/catalogs/product_groups"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogsProductGroupsCreateRequest)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: multipleProductGroupsInner)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -176,7 +231,59 @@ open class CatalogsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CatalogsProductGroupsCreate201Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CatalogsVerticalProductGroup>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Create product groups
+     
+     - parameter multipleProductGroupsInner: (body) Request object used to create one or more catalogs product groups. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func catalogsProductGroupsCreateMany(multipleProductGroupsInner: [MultipleProductGroupsInner], adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String]?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogsProductGroupsCreateManyWithRequestBuilder(multipleProductGroupsInner: multipleProductGroupsInner, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create product groups
+     - POST /catalogs/product_groups/multiple
+     - Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter multipleProductGroupsInner: (body) Request object used to create one or more catalogs product groups. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - returns: RequestBuilder<[String]> 
+     */
+    open class func catalogsProductGroupsCreateManyWithRequestBuilder(multipleProductGroupsInner: [MultipleProductGroupsInner], adAccountId: String? = nil) -> RequestBuilder<[String]> {
+        let localVariablePath = "/catalogs/product_groups/multiple"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: multipleProductGroupsInner)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[String]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -204,7 +311,7 @@ open class CatalogsAPI {
     /**
      Delete product group
      - DELETE /catalogs/product_groups/{product_group_id}
-     - Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -237,6 +344,59 @@ open class CatalogsAPI {
     }
 
     /**
+     Delete product groups
+     
+     - parameter id: (query) Comma-separated list of product group ids 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func catalogsProductGroupsDeleteMany(id: [Int], adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogsProductGroupsDeleteManyWithRequestBuilder(id: id, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete product groups
+     - DELETE /catalogs/product_groups/multiple
+     - Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter id: (query) Comma-separated list of product group ids 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func catalogsProductGroupsDeleteManyWithRequestBuilder(id: [Int], adAccountId: String? = nil) -> RequestBuilder<Void> {
+        let localVariablePath = "/catalogs/product_groups/multiple"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "id": (wrappedValue: id.encodeToJSON(), isExplode: false),
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Get product group
      
      - parameter productGroupId: (path) Unique identifier of a product group 
@@ -245,7 +405,7 @@ open class CatalogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogsProductGroupsGet(productGroupId: String, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupsCreate201Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func catalogsProductGroupsGet(productGroupId: String, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsVerticalProductGroup?, _ error: Error?) -> Void)) -> RequestTask {
         return catalogsProductGroupsGetWithRequestBuilder(productGroupId: productGroupId, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -259,15 +419,15 @@ open class CatalogsAPI {
     /**
      Get product group
      - GET /catalogs/product_groups/{product_group_id}
-     - Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter productGroupId: (path) Unique identifier of a product group 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - returns: RequestBuilder<CatalogsProductGroupsCreate201Response> 
+     - returns: RequestBuilder<CatalogsVerticalProductGroup> 
      */
-    open class func catalogsProductGroupsGetWithRequestBuilder(productGroupId: String, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupsCreate201Response> {
+    open class func catalogsProductGroupsGetWithRequestBuilder(productGroupId: String, adAccountId: String? = nil) -> RequestBuilder<CatalogsVerticalProductGroup> {
         var localVariablePath = "/catalogs/product_groups/{product_group_id}"
         let productGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(productGroupId))"
         let productGroupIdPostEscape = productGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -286,7 +446,7 @@ open class CatalogsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CatalogsProductGroupsCreate201Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CatalogsVerticalProductGroup>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -294,17 +454,18 @@ open class CatalogsAPI {
     /**
      List product groups
      
+     - parameter id: (query) Comma-separated list of product group ids (optional)
      - parameter feedId: (query) Filter entities for a given feed_id. If not given, all feeds are considered. (optional)
      - parameter catalogId: (query) Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogsProductGroupsList(feedId: String? = nil, catalogId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return catalogsProductGroupsListWithRequestBuilder(feedId: feedId, catalogId: catalogId, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+    open class func catalogsProductGroupsList(id: [Int]? = nil, feedId: String? = nil, catalogId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogsProductGroupsListWithRequestBuilder(id: id, feedId: feedId, catalogId: catalogId, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -317,24 +478,26 @@ open class CatalogsAPI {
     /**
      List product groups
      - GET /catalogs/product_groups
-     - Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - parameter id: (query) Comma-separated list of product group ids (optional)
      - parameter feedId: (query) Filter entities for a given feed_id. If not given, all feeds are considered. (optional)
      - parameter catalogId: (query) Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<CatalogsProductGroupsList200Response> 
      */
-    open class func catalogsProductGroupsListWithRequestBuilder(feedId: String? = nil, catalogId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupsList200Response> {
+    open class func catalogsProductGroupsListWithRequestBuilder(id: [Int]? = nil, feedId: String? = nil, catalogId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupsList200Response> {
         let localVariablePath = "/catalogs/product_groups"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "id": (wrappedValue: id?.encodeToJSON(), isExplode: false),
             "feed_id": (wrappedValue: feedId?.encodeToJSON(), isExplode: true),
             "catalog_id": (wrappedValue: catalogId?.encodeToJSON(), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
@@ -354,7 +517,7 @@ open class CatalogsAPI {
     }
 
     /**
-     Get product counts for a Product Group
+     Get product counts
      
      - parameter productGroupId: (path) Unique identifier of a product group 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
@@ -362,7 +525,7 @@ open class CatalogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogsProductGroupsProductCountsGet(productGroupId: String, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupProductCounts?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func catalogsProductGroupsProductCountsGet(productGroupId: String, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupProductCountsVertical?, _ error: Error?) -> Void)) -> RequestTask {
         return catalogsProductGroupsProductCountsGetWithRequestBuilder(productGroupId: productGroupId, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -374,17 +537,17 @@ open class CatalogsAPI {
     }
 
     /**
-     Get product counts for a Product Group
+     Get product counts
      - GET /catalogs/product_groups/{product_group_id}/product_counts
-     - Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter productGroupId: (path) Unique identifier of a product group 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - returns: RequestBuilder<CatalogsProductGroupProductCounts> 
+     - returns: RequestBuilder<CatalogsProductGroupProductCountsVertical> 
      */
-    open class func catalogsProductGroupsProductCountsGetWithRequestBuilder(productGroupId: String, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupProductCounts> {
+    open class func catalogsProductGroupsProductCountsGetWithRequestBuilder(productGroupId: String, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupProductCountsVertical> {
         var localVariablePath = "/catalogs/product_groups/{product_group_id}/product_counts"
         let productGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(productGroupId))"
         let productGroupIdPostEscape = productGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -403,13 +566,13 @@ open class CatalogsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CatalogsProductGroupProductCounts>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CatalogsProductGroupProductCountsVertical>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
-     Update product group
+     Update single product group
      
      - parameter productGroupId: (path) Unique identifier of a product group 
      - parameter catalogsProductGroupsUpdateRequest: (body) Request object used to Update a catalogs product group. 
@@ -418,7 +581,7 @@ open class CatalogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupsCreate201Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsVerticalProductGroup?, _ error: Error?) -> Void)) -> RequestTask {
         return catalogsProductGroupsUpdateWithRequestBuilder(productGroupId: productGroupId, catalogsProductGroupsUpdateRequest: catalogsProductGroupsUpdateRequest, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -430,18 +593,18 @@ open class CatalogsAPI {
     }
 
     /**
-     Update product group
+     Update single product group
      - PATCH /catalogs/product_groups/{product_group_id}
-     - Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter productGroupId: (path) Unique identifier of a product group 
      - parameter catalogsProductGroupsUpdateRequest: (body) Request object used to Update a catalogs product group. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
-     - returns: RequestBuilder<CatalogsProductGroupsCreate201Response> 
+     - returns: RequestBuilder<CatalogsVerticalProductGroup> 
      */
-    open class func catalogsProductGroupsUpdateWithRequestBuilder(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupsCreate201Response> {
+    open class func catalogsProductGroupsUpdateWithRequestBuilder(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: String? = nil) -> RequestBuilder<CatalogsVerticalProductGroup> {
         var localVariablePath = "/catalogs/product_groups/{product_group_id}"
         let productGroupIdPreEscape = "\(APIHelper.mapValueToPathItem(productGroupId))"
         let productGroupIdPostEscape = productGroupIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -460,17 +623,17 @@ open class CatalogsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CatalogsProductGroupsCreate201Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CatalogsVerticalProductGroup>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
-     List processing results for a given feed
+     List feed processing results
      
      - parameter feedId: (path) Unique identifier of a feed 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -488,15 +651,15 @@ open class CatalogsAPI {
     }
 
     /**
-     List processing results for a given feed
+     List feed processing results
      - GET /catalogs/feeds/{feed_id}/processing_results
-     - Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter feedId: (path) Unique identifier of a feed 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<FeedProcessingResultsList200Response> 
      */
@@ -549,10 +712,13 @@ open class CatalogsAPI {
     /**
      Create feed
      - POST /catalogs/feeds
-     - Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+     - Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter feedsCreateRequest: (body) Request object used to created a feed. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<CatalogsFeed> 
@@ -601,10 +767,13 @@ open class CatalogsAPI {
     /**
      Delete feed
      - DELETE /catalogs/feeds/{feed_id}
-     - Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+     - Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter feedId: (path) Unique identifier of a feed 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Void> 
@@ -656,10 +825,13 @@ open class CatalogsAPI {
     /**
      Get feed
      - GET /catalogs/feeds/{feed_id}
-     - Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+     - Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter feedId: (path) Unique identifier of a feed 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<CatalogsFeed> 
@@ -689,10 +861,65 @@ open class CatalogsAPI {
     }
 
     /**
+     Ingest feed items
+     
+     - parameter feedId: (path) Unique identifier of a feed 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func feedsIngest(feedId: String, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsFeedIngestion?, _ error: Error?) -> Void)) -> RequestTask {
+        return feedsIngestWithRequestBuilder(feedId: feedId, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Ingest feed items
+     - POST /catalogs/feeds/{feed_id}/ingest
+     - Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter feedId: (path) Unique identifier of a feed 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - returns: RequestBuilder<CatalogsFeedIngestion> 
+     */
+    open class func feedsIngestWithRequestBuilder(feedId: String, adAccountId: String? = nil) -> RequestBuilder<CatalogsFeedIngestion> {
+        var localVariablePath = "/catalogs/feeds/{feed_id}/ingest"
+        let feedIdPreEscape = "\(APIHelper.mapValueToPathItem(feedId))"
+        let feedIdPostEscape = feedIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{feed_id}", with: feedIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CatalogsFeedIngestion>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      List feeds
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter catalogId: (query) Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -713,12 +940,15 @@ open class CatalogsAPI {
     /**
      List feeds
      - GET /catalogs/feeds
-     - Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+     - Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter catalogId: (query) Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<FeedsList200Response> 
@@ -771,10 +1001,13 @@ open class CatalogsAPI {
     /**
      Update feed
      - PATCH /catalogs/feeds/{feed_id}
-     - Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+     - Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter feedId: (path) Unique identifier of a feed 
      - parameter feedsUpdateRequest: (body) Request object used to update a feed. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
@@ -805,7 +1038,7 @@ open class CatalogsAPI {
     }
 
     /**
-     Get catalogs item batch status
+     Get item batch status
      
      - parameter batchId: (path) Id of a catalogs items batch to fetch 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
@@ -825,12 +1058,15 @@ open class CatalogsAPI {
     }
 
     /**
-     Get catalogs item batch status
+     Get item batch status
      - GET /catalogs/items/batch/{batch_id}
-     - Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     - Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter batchId: (path) Id of a catalogs items batch to fetch 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<CatalogsItemsBatch> 
@@ -882,10 +1118,13 @@ open class CatalogsAPI {
     /**
      Operate on item batch
      - POST /catalogs/items/batch
-     - This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     - This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter itemsBatchPostRequest: (body) Request object used to create catalogs items in a batch 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<CatalogsItemsBatch> 
@@ -922,6 +1161,7 @@ open class CatalogsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func itemsGet(country: String, language: String, adAccountId: String? = nil, itemIds: [String]? = nil, filters: CatalogsItemsFilters? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsItems?, _ error: Error?) -> Void)) -> RequestTask {
         return itemsGetWithRequestBuilder(country: country, language: language, adAccountId: adAccountId, itemIds: itemIds, filters: filters).execute(apiResponseQueue) { result in
@@ -937,7 +1177,7 @@ open class CatalogsAPI {
     /**
      Get catalogs items
      - GET /catalogs/items
-     - Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     - Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -948,6 +1188,7 @@ open class CatalogsAPI {
      - parameter filters: (query) Identifies items to be retrieved. This is a required parameter. (optional)
      - returns: RequestBuilder<CatalogsItems> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func itemsGetWithRequestBuilder(country: String, language: String, adAccountId: String? = nil, itemIds: [String]? = nil, filters: CatalogsItemsFilters? = nil) -> RequestBuilder<CatalogsItems> {
         let localVariablePath = "/catalogs/items"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
@@ -974,11 +1215,11 @@ open class CatalogsAPI {
     }
 
     /**
-     List item issues for a given processing result
+     List item issues
      
-     - parameter processingResultId: (path) Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list). 
+     - parameter processingResultId: (path) Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter itemNumbers: (query) Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. (optional)
      - parameter itemValidationIssue: (query) Filter item validation issues that have a given type of item validation issue. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
@@ -998,15 +1239,15 @@ open class CatalogsAPI {
     }
 
     /**
-     List item issues for a given processing result
+     List item issues
      - GET /catalogs/processing_results/{processing_result_id}/item_issues
-     - List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter processingResultId: (path) Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list). 
+     - parameter processingResultId: (path) Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter itemNumbers: (query) Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. (optional)
      - parameter itemValidationIssue: (query) Filter item validation issues that have a given type of item validation issue. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
@@ -1041,18 +1282,16 @@ open class CatalogsAPI {
     }
 
     /**
-     List filtered products
+     Get catalogs items (POST)
      
-     - parameter catalogsListProductsByFilterRequest: (body) Object holding a group of filters for a catalog product group 
-     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter catalogsItemsRequest: (body) Request object used to get catalogs items 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupPinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return productsByProductGroupFilterListWithRequestBuilder(catalogsListProductsByFilterRequest: catalogsListProductsByFilterRequest, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+    open class func itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsItems?, _ error: Error?) -> Void)) -> RequestTask {
+        return itemsPostWithRequestBuilder(catalogsItemsRequest: catalogsItemsRequest, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1063,19 +1302,75 @@ open class CatalogsAPI {
     }
 
     /**
-     List filtered products
+     Get catalogs items (POST)
+     - POST /catalogs/items
+     - Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter catalogsItemsRequest: (body) Request object used to get catalogs items 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - returns: RequestBuilder<CatalogsItems> 
+     */
+    open class func itemsPostWithRequestBuilder(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String? = nil) -> RequestBuilder<CatalogsItems> {
+        let localVariablePath = "/catalogs/items"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogsItemsRequest)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CatalogsItems>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     List products by filter
+     
+     - parameter catalogsListProductsByFilterRequest: (body) Object holding a group of filters for a catalog product group 
+     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsProductGroupPinsList200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return productsByProductGroupFilterListWithRequestBuilder(catalogsListProductsByFilterRequest: catalogsListProductsByFilterRequest, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId, pinMetrics: pinMetrics).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     List products by filter
      - POST /catalogs/products/get_by_product_group_filters
-     - List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+     - List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter catalogsListProductsByFilterRequest: (body) Object holding a group of filters for a catalog product group 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
      - returns: RequestBuilder<CatalogsProductGroupPinsList200Response> 
      */
-    open class func productsByProductGroupFilterListWithRequestBuilder(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil) -> RequestBuilder<CatalogsProductGroupPinsList200Response> {
+    open class func productsByProductGroupFilterListWithRequestBuilder(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil) -> RequestBuilder<CatalogsProductGroupPinsList200Response> {
         let localVariablePath = "/catalogs/products/get_by_product_group_filters"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogsListProductsByFilterRequest)
@@ -1085,6 +1380,7 @@ open class CatalogsAPI {
             "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
             "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+            "pin_metrics": (wrappedValue: pinMetrics?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -1096,5 +1392,169 @@ open class CatalogsAPI {
         let localVariableRequestBuilder: RequestBuilder<CatalogsProductGroupPinsList200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Build catalogs report
+     
+     - parameter catalogsReportParameters: (body) Request object to asynchronously create a report. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsCreateReportResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return reportsCreateWithRequestBuilder(catalogsReportParameters: catalogsReportParameters, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Build catalogs report
+     - POST /catalogs/reports
+     - Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter catalogsReportParameters: (body) Request object to asynchronously create a report. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - returns: RequestBuilder<CatalogsCreateReportResponse> 
+     */
+    open class func reportsCreateWithRequestBuilder(catalogsReportParameters: CatalogsReportParameters, adAccountId: String? = nil) -> RequestBuilder<CatalogsCreateReportResponse> {
+        let localVariablePath = "/catalogs/reports"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: catalogsReportParameters)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CatalogsCreateReportResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Get catalogs report
+     
+     - parameter token: (query) Token returned from async build report call 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func reportsGet(token: String, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CatalogsReport?, _ error: Error?) -> Void)) -> RequestTask {
+        return reportsGetWithRequestBuilder(token: token, adAccountId: adAccountId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get catalogs report
+     - GET /catalogs/reports
+     - This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter token: (query) Token returned from async build report call 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - returns: RequestBuilder<CatalogsReport> 
+     */
+    open class func reportsGetWithRequestBuilder(token: String, adAccountId: String? = nil) -> RequestBuilder<CatalogsReport> {
+        let localVariablePath = "/catalogs/reports"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+            "token": (wrappedValue: token.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CatalogsReport>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     List report stats
+     
+     - parameter parameters: (query) Contains the parameters for report identification. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func reportsStats(parameters: CatalogsReportParameters, adAccountId: String? = nil, pageSize: Int? = nil, bookmark: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ReportsStats200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return reportsStatsWithRequestBuilder(parameters: parameters, adAccountId: adAccountId, pageSize: pageSize, bookmark: bookmark).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     List report stats
+     - GET /catalogs/reports/stats
+     - List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter parameters: (query) Contains the parameters for report identification. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - returns: RequestBuilder<ReportsStats200Response> 
+     */
+    open class func reportsStatsWithRequestBuilder(parameters: CatalogsReportParameters, adAccountId: String? = nil, pageSize: Int? = nil, bookmark: String? = nil) -> RequestBuilder<ReportsStats200Response> {
+        let localVariablePath = "/catalogs/reports/stats"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
+            "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
+            "parameters": (wrappedValue: parameters.encodeToJSON(), isExplode: false),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ReportsStats200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

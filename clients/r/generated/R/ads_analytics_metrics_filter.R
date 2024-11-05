@@ -19,8 +19,7 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
     `field` = NULL,
     `operator` = NULL,
     `values` = NULL,
-    #' Initialize a new AdsAnalyticsMetricsFilter class.
-    #'
+
     #' @description
     #' Initialize a new AdsAnalyticsMetricsFilter class.
     #'
@@ -28,7 +27,6 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
     #' @param operator operator
     #' @param values List of values for filtering
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`field`, `operator`, `values`, ...) {
       if (!missing(`field`)) {
         if (!(`field` %in% c())) {
@@ -50,13 +48,11 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
         self$`values` <- `values`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsAnalyticsMetricsFilter in JSON format
-    #' @export
     toJSON = function() {
       AdsAnalyticsMetricsFilterObject <- list()
       if (!is.null(self$`field`)) {
@@ -73,14 +69,12 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
       }
       AdsAnalyticsMetricsFilterObject
     },
-    #' Deserialize JSON string into an instance of AdsAnalyticsMetricsFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsAnalyticsMetricsFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsAnalyticsMetricsFilter
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`field`)) {
@@ -98,13 +92,11 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsAnalyticsMetricsFilter in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`field`)) {
@@ -135,14 +127,12 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdsAnalyticsMetricsFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsAnalyticsMetricsFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsAnalyticsMetricsFilter
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`field` <- AdsAnalyticsFilterColumn$new()$fromJSON(jsonlite::toJSON(this_object$`field`, auto_unbox = TRUE, digits = NA))
@@ -150,13 +140,11 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
       self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[numeric]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to AdsAnalyticsMetricsFilter
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdsAnalyticsMetricsFilter and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `field`
@@ -179,23 +167,19 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for AdsAnalyticsMetricsFilter: the required field `values` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdsAnalyticsMetricsFilter
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `field` is null
       if (is.null(self$`field`)) {
@@ -218,13 +202,11 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `field` is null
@@ -248,12 +230,9 @@ AdsAnalyticsMetricsFilter <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

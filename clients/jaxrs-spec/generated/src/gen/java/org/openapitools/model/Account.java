@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("Account")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Account   {
   public enum AccountTypeEnum {
 
@@ -65,18 +65,18 @@ public class Account   {
     }
 }
 
-  private @Valid AccountTypeEnum accountType;
-  private @Valid String id;
-  private @Valid String profileImage;
-  private @Valid String websiteUrl;
-  private @Valid String username;
-  private @Valid String about;
-  private @Valid String businessName;
-  private @Valid Integer boardCount;
-  private @Valid Integer pinCount;
-  private @Valid Integer followerCount;
-  private @Valid Integer followingCount;
-  private @Valid Integer monthlyViews;
+  private AccountTypeEnum accountType;
+  private String id;
+  private String profileImage;
+  private String websiteUrl;
+  private String username;
+  private String about;
+  private String businessName;
+  private Integer boardCount;
+  private Integer pinCount;
+  private Integer followerCount;
+  private Integer followingCount;
+  private Integer monthlyViews;
 
   /**
    * Type of account
@@ -109,7 +109,7 @@ public class Account   {
   
   @ApiModelProperty(example = "2783136121146311751", value = "User account ID.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 

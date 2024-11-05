@@ -198,8 +198,8 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
 $Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-$OwnershipType = "OWNED" # String | <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type. (optional) (default to "OWNED")
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$OwnershipType = "OWNED" # String | Filter audiences by ownership type. (optional) (default to "OWNED")
 
 # List audiences
 try {
@@ -217,8 +217,8 @@ Name | Type | Description  | Notes
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
  **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **OwnershipType** | **String**| &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. | [optional] [default to &quot;OWNED&quot;]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **OwnershipType** | **String**| Filter audiences by ownership type. | [optional] [default to &quot;OWNED&quot;]
 
 ### Return type
 

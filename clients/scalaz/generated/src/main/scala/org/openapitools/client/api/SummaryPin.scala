@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import SummaryPin._
 
 case class SummaryPin (
-  media: Option[SummaryPinMedia],
+  media: Option[PinMedia],
 altText: Option[String],
 link: Option[String],
 title: Option[String],

@@ -20,11 +20,19 @@
     {
       "name": "catalog_id",
       "type": ["null", "string"],
-      "doc": "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog",
+      "doc": "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog",
       "default": null
     },
     {
       "name": "hotel_ids",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    },
+    {
+      "name": "creative_assets_ids",
       "type": {
         "type": "array",
         "items": "string"

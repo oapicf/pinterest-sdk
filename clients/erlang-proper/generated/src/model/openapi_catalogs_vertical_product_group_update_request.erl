@@ -12,7 +12,9 @@
   [ {'catalog_type', binary() }
   | {'name', binary() }
   | {'description', binary() }
-  | {'filters', openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters() }
+  | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+  | {'country', openapi_country:openapi_country() }
+  | {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
   ].
 
 
@@ -20,10 +22,12 @@ openapi_catalogs_vertical_product_group_update_request() ->
     openapi_catalogs_vertical_product_group_update_request([]).
 
 openapi_catalogs_vertical_product_group_update_request(Fields) ->
-  Default = [ {'catalog_type', elements([<<"HOTEL">>]) }
+  Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'name', binary() }
             , {'description', binary() }
-            , {'filters', openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters() }
+            , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+            , {'country', openapi_country:openapi_country() }
+            , {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

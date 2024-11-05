@@ -41,7 +41,7 @@ data class CatalogsFeedIngestionWarnings(
 
     @Schema(example = "null", description = "price is not a supported column. Use base_price and sale_price instead.")
     @get:JsonProperty("HOTEL_PRICE_HEADER_IS_PRESENT") val HOTEL_PRICE_HEADER_IS_PRESENT: kotlin.Int? = null
-) {
+    ) {
 
 }
 

@@ -37,7 +37,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -46,9 +45,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'orderLines/get', response.json);
                     return results;
                 })
             },
@@ -73,7 +72,7 @@ module.exports = {
                 },
                 {
                     key: 'page_size',
-                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
+                    label: 'Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.',
                     type: 'integer',
                 },
                 {
@@ -100,7 +99,6 @@ module.exports = {
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
-                        'Authorization': 'Bearer {{bundle.authData.access_token}}',
                         'Content-Type': '',
                         'Accept': 'application/json',
                     },
@@ -112,9 +110,9 @@ module.exports = {
                     body: {
                     },
                 }
-                return z.request(options).then((response) => {
+                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
                     response.throwForStatus();
-                    const results = response.json;
+                    const results = utils.responseOptionsMiddleware(z, bundle, 'orderLines/list', response.json);
                     return results;
                 })
             },

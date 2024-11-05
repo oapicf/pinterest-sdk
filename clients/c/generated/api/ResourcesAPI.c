@@ -185,7 +185,7 @@ end:
 
 // Get available metrics' definitions
 //
-// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 //
 delivery_metrics_response_t*
 ResourcesAPI_deliveryMetricsGet(apiClient_t *apiClient, pinterest_rest_api_deliveryMetricsGet_report_type_e report_type)
@@ -351,7 +351,7 @@ end:
 
 // Get lead form questions
 //
-// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+// Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 //
 void
 ResourcesAPI_leadFormQuestionsGet(apiClient_t *apiClient)
@@ -501,7 +501,7 @@ end:
 // <p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
 //
 list_t*
-ResourcesAPI_targetingOptionsGet(apiClient_t *apiClient, pinterest_rest_api_targetingOptionsGet_targeting_type_e targeting_type, char *client_id, char *oauth_signature, char *timestamp)
+ResourcesAPI_targetingOptionsGet(apiClient_t *apiClient, pinterest_rest_api_targetingOptionsGet_targeting_type_e targeting_type, char *client_id, char *oauth_signature, char *timestamp, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -562,6 +562,18 @@ ResourcesAPI_targetingOptionsGet(apiClient_t *apiClient, pinterest_rest_api_targ
         valueQuery_timestamp = strdup((timestamp));
         keyPairQuery_timestamp = keyValuePair_create(keyQuery_timestamp, valueQuery_timestamp);
         list_addElement(localVarQueryParameters,keyPairQuery_timestamp);
+    }
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -648,6 +660,18 @@ ResourcesAPI_targetingOptionsGet(apiClient_t *apiClient, pinterest_rest_api_targ
     if(keyPairQuery_timestamp){
         keyValuePair_free(keyPairQuery_timestamp);
         keyPairQuery_timestamp = NULL;
+    }
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
     }
     return elementToReturn;
 end:

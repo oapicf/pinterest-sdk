@@ -1,5 +1,4 @@
 const utils = require('../utils/utils');
-const CreativeType = require('../models/CreativeType');
 const EntityStatus = require('../models/EntityStatus');
 const GridClickType = require('../models/GridClickType');
 
@@ -77,10 +76,6 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}creative_type`,
-                ...CreativeType.fields(`${keyPrefix}creative_type`, isInput),
-            },
-            {
                 key: `${keyPrefix}collections_hero_pin_id`,
                 label: `Hero Pin ID if this PG is promoted as a Collection - [${labelPrefix}collections_hero_pin_id]`,
                 type: 'string',
@@ -113,7 +108,6 @@ module.exports = {
             'tracking_url': bundle.inputData?.[`${keyPrefix}tracking_url`],
             'catalog_product_group_id': bundle.inputData?.[`${keyPrefix}catalog_product_group_id`],
             'catalog_product_group_name': bundle.inputData?.[`${keyPrefix}catalog_product_group_name`],
-            'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
             'collections_hero_pin_id': bundle.inputData?.[`${keyPrefix}collections_hero_pin_id`],
             'collections_hero_destination_url': bundle.inputData?.[`${keyPrefix}collections_hero_destination_url`],
             'grid_click_type': bundle.inputData?.[`${keyPrefix}grid_click_type`],

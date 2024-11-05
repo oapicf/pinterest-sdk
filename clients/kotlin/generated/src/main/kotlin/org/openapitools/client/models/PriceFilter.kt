@@ -32,5 +32,8 @@ data class PriceFilter (
     @Json(name = "PRICE")
     val PRICE: CatalogsProductGroupPricingCurrencyCriteria
 
-)
+) {
+
+
+}
 

@@ -18,7 +18,7 @@ public class CatalogsRetailItemErrorResponse   {
   
   private CatalogsType catalogType;
   private String itemId;
-  private List<ItemValidationEvent> errors;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public CatalogsRetailItemErrorResponse () {
 

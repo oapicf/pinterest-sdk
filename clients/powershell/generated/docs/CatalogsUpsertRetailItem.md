@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ItemId** | **String** | The catalog item id in the merchant namespace | 
 **Operation** | **String** |  | 
-**Attributes** | [**ItemAttributes**](ItemAttributes.md) |  | 
+**Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 
 ## Examples
 

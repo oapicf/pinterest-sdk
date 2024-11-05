@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum CatalogsVerticalProductGroup: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsProductGroup(CatalogsCreativeAssetsProductGroup)
     case typeCatalogsHotelProductGroup(CatalogsHotelProductGroup)
     case typeCatalogsRetailProductGroup(CatalogsRetailProductGroup)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsCreativeAssetsProductGroup(let value):
+            try container.encode(value)
         case .typeCatalogsHotelProductGroup(let value):
             try container.encode(value)
         case .typeCatalogsRetailProductGroup(let value):
@@ -26,7 +29,9 @@ public enum CatalogsVerticalProductGroup: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsHotelProductGroup.self) {
+        if let value = try? container.decode(CatalogsCreativeAssetsProductGroup.self) {
+            self = .typeCatalogsCreativeAssetsProductGroup(value)
+        } else if let value = try? container.decode(CatalogsHotelProductGroup.self) {
             self = .typeCatalogsHotelProductGroup(value)
         } else if let value = try? container.decode(CatalogsRetailProductGroup.self) {
             self = .typeCatalogsRetailProductGroup(value)

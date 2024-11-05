@@ -4,7 +4,7 @@ package models
 type OrderLines struct {
 
 	// Order line ID.
-	Id string `json:"id,omitempty"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Always \"orderline\".
 	Type string `json:"type,omitempty"`

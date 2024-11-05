@@ -14,6 +14,11 @@ public struct Keyword: Codable, JSONEncodable, Hashable {
 
     static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    /** </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+    public var bid: Int?
+    public var matchType: MatchTypeResponse?
+    /** Keyword value (120 chars max). */
+    public var value: String
     public var archived: Bool?
     /** Keyword ID . */
     public var id: String?
@@ -23,46 +28,41 @@ public struct Keyword: Codable, JSONEncodable, Hashable {
     public var parentType: String?
     /** Always keyword */
     public var type: String?
-    /** Keyword custom bid in microcurrency - null if inherited from parent ad group. */
-    public var bid: Int?
-    public var matchType: MatchTypeResponse?
-    /** Keyword value (120 chars max). */
-    public var value: String
 
-    public init(archived: Bool? = nil, id: String? = nil, parentId: String? = nil, parentType: String? = nil, type: String? = nil, bid: Int? = nil, matchType: MatchTypeResponse?, value: String) {
+    public init(bid: Int? = nil, matchType: MatchTypeResponse?, value: String, archived: Bool? = nil, id: String? = nil, parentId: String? = nil, parentType: String? = nil, type: String? = nil) {
+        self.bid = bid
+        self.matchType = matchType
+        self.value = value
         self.archived = archived
         self.id = id
         self.parentId = parentId
         self.parentType = parentType
         self.type = type
-        self.bid = bid
-        self.matchType = matchType
-        self.value = value
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case bid
+        case matchType = "match_type"
+        case value
         case archived
         case id
         case parentId = "parent_id"
         case parentType = "parent_type"
         case type
-        case bid
-        case matchType = "match_type"
-        case value
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(bid, forKey: .bid)
+        try container.encode(matchType, forKey: .matchType)
+        try container.encode(value, forKey: .value)
         try container.encodeIfPresent(archived, forKey: .archived)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(parentId, forKey: .parentId)
         try container.encodeIfPresent(parentType, forKey: .parentType)
         try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(bid, forKey: .bid)
-        try container.encode(matchType, forKey: .matchType)
-        try container.encode(value, forKey: .value)
     }
 }
 

@@ -19,8 +19,7 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
     `inclusion` = NULL,
     `values` = NULL,
     `negated` = NULL,
-    #' Initialize a new CatalogsProductGroupPricingCriteria class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsProductGroupPricingCriteria class.
     #'
@@ -28,7 +27,6 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
     #' @param inclusion inclusion. Default to TRUE.
     #' @param negated negated. Default to FALSE.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`values`, `inclusion` = TRUE, `negated` = FALSE, ...) {
       if (!missing(`values`)) {
         self$`values` <- `values`
@@ -46,13 +44,11 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
         self$`negated` <- `negated`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupPricingCriteria in JSON format
-    #' @export
     toJSON = function() {
       CatalogsProductGroupPricingCriteriaObject <- list()
       if (!is.null(self$`inclusion`)) {
@@ -69,14 +65,12 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
       }
       CatalogsProductGroupPricingCriteriaObject
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupPricingCriteria
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupPricingCriteria
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupPricingCriteria
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`inclusion`)) {
@@ -90,13 +84,11 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupPricingCriteria in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`inclusion`)) {
@@ -127,14 +119,12 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupPricingCriteria
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupPricingCriteria
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupPricingCriteria
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`inclusion` <- this_object$`inclusion`
@@ -142,13 +132,11 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
       self$`negated` <- this_object$`negated`
       self
     },
-    #' Validate JSON input with respect to CatalogsProductGroupPricingCriteria
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsProductGroupPricingCriteria and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `values`
@@ -157,23 +145,19 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupPricingCriteria: the required field `values` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsProductGroupPricingCriteria
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `values` is null
       if (is.null(self$`values`)) {
@@ -186,13 +170,11 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `values` is null
@@ -206,12 +188,9 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -43,5 +43,8 @@ data class RelatedTerms (
     @Json(name = "related_terms_list")
     val relatedTermsList: kotlin.collections.List<RelatedTermsRelatedTermsListInner>? = null
 
-)
+) {
+
+
+}
 

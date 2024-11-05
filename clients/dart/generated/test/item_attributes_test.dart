@@ -28,13 +28,13 @@ void main() {
       // TODO
     });
 
-    // The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+    // The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
     // String ageGroup
     test('to test the property `ageGroup`', () async {
       // TODO
     });
 
-    // The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+    // The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
     // String availability
     test('to test the property `availability`', () async {
       // TODO
@@ -118,7 +118,7 @@ void main() {
       // TODO
     });
 
-    // The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+    // The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
     // String gender
     test('to test the property `gender`', () async {
       // TODO
@@ -250,13 +250,13 @@ void main() {
       // TODO
     });
 
-    // Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+    // Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
     // String sizeSystem
     test('to test the property `sizeSystem`', () async {
       // TODO
     });
 
-    // Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+    // Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
     // String sizeType
     test('to test the property `sizeType`', () async {
       // TODO
@@ -295,6 +295,12 @@ void main() {
     // <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
     // List<String> imageLink (default value: const [])
     test('to test the property `imageLink`', () async {
+      // TODO
+    });
+
+    // <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+    // String videoLink
+    test('to test the property `videoLink`', () async {
       // TODO
     });
 

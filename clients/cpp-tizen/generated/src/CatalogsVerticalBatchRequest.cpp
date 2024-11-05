@@ -23,9 +23,9 @@ CatalogsVerticalBatchRequest::~CatalogsVerticalBatchRequest()
 void
 CatalogsVerticalBatchRequest::__init()
 {
-	//catalog_type = new CatalogsType();
+	//catalog_type = std::string();
 	//country = new Country();
-	//language = new Language();
+	//language = new CatalogsItemsRequest_language();
 	//new std::list()std::list> items;
 	//catalog_id = std::string();
 }
@@ -71,12 +71,9 @@ CatalogsVerticalBatchRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsType")) {
-			jsonToValue(&catalog_type, node, "CatalogsType", "CatalogsType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
-			
-			CatalogsType* obj = static_cast<CatalogsType*> (&catalog_type);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -99,11 +96,11 @@ CatalogsVerticalBatchRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Language")) {
-			jsonToValue(&language, node, "Language", "Language");
+		if (isprimitive("CatalogsItemsRequest_language")) {
+			jsonToValue(&language, node, "CatalogsItemsRequest_language", "CatalogsItemsRequest_language");
 		} else {
 			
-			Language* obj = static_cast<Language*> (&language);
+			CatalogsItemsRequest_language* obj = static_cast<CatalogsItemsRequest_language*> (&language);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -115,12 +112,12 @@ CatalogsVerticalBatchRequest::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<CatalogsHotelBatchItem> new_list;
-			CatalogsHotelBatchItem inst;
+			list<CatalogsCreativeAssetsBatchItem> new_list;
+			CatalogsCreativeAssetsBatchItem inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("CatalogsHotelBatchItem")) {
-					jsonToValue(&inst, temp_json, "CatalogsHotelBatchItem", "");
+				if (isprimitive("CatalogsCreativeAssetsBatchItem")) {
+					jsonToValue(&inst, temp_json, "CatalogsCreativeAssetsBatchItem", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -155,16 +152,11 @@ CatalogsVerticalBatchRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("CatalogsType")) {
-		CatalogsType obj = getCatalogType();
-		node = converttoJson(&obj, "CatalogsType", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsType obj = static_cast<CatalogsType> (getCatalogType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *catalog_typeKey = "catalog_type";
@@ -183,13 +175,13 @@ CatalogsVerticalBatchRequest::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("Language")) {
-		Language obj = getLanguage();
-		node = converttoJson(&obj, "Language", "");
+	if (isprimitive("CatalogsItemsRequest_language")) {
+		CatalogsItemsRequest_language obj = getLanguage();
+		node = converttoJson(&obj, "CatalogsItemsRequest_language", "");
 	}
 	else {
 		
-		Language obj = static_cast<Language> (getLanguage());
+		CatalogsItemsRequest_language obj = static_cast<CatalogsItemsRequest_language> (getLanguage());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -197,18 +189,18 @@ CatalogsVerticalBatchRequest::toJson()
 	}
 	const gchar *languageKey = "language";
 	json_object_set_member(pJsonObject, languageKey, node);
-	if (isprimitive("CatalogsHotelBatchItem")) {
-		list<CatalogsHotelBatchItem> new_list = static_cast<list <CatalogsHotelBatchItem> > (getItems());
-		node = converttoJson(&new_list, "CatalogsHotelBatchItem", "array");
+	if (isprimitive("CatalogsCreativeAssetsBatchItem")) {
+		list<CatalogsCreativeAssetsBatchItem> new_list = static_cast<list <CatalogsCreativeAssetsBatchItem> > (getItems());
+		node = converttoJson(&new_list, "CatalogsCreativeAssetsBatchItem", "array");
 	} else {
 		node = json_node_alloc();
-		list<CatalogsHotelBatchItem> new_list = static_cast<list <CatalogsHotelBatchItem> > (getItems());
+		list<CatalogsCreativeAssetsBatchItem> new_list = static_cast<list <CatalogsCreativeAssetsBatchItem> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<CatalogsHotelBatchItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<CatalogsCreativeAssetsBatchItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			CatalogsHotelBatchItem obj = *it;
+			CatalogsCreativeAssetsBatchItem obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -239,14 +231,14 @@ CatalogsVerticalBatchRequest::toJson()
 	return ret;
 }
 
-CatalogsType
+std::string
 CatalogsVerticalBatchRequest::getCatalogType()
 {
 	return catalog_type;
 }
 
 void
-CatalogsVerticalBatchRequest::setCatalogType(CatalogsType  catalog_type)
+CatalogsVerticalBatchRequest::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
 }
@@ -263,26 +255,26 @@ CatalogsVerticalBatchRequest::setCountry(Country  country)
 	this->country = country;
 }
 
-Language
+CatalogsItemsRequest_language
 CatalogsVerticalBatchRequest::getLanguage()
 {
 	return language;
 }
 
 void
-CatalogsVerticalBatchRequest::setLanguage(Language  language)
+CatalogsVerticalBatchRequest::setLanguage(CatalogsItemsRequest_language  language)
 {
 	this->language = language;
 }
 
-std::list<CatalogsHotelBatchItem>
+std::list<CatalogsCreativeAssetsBatchItem>
 CatalogsVerticalBatchRequest::getItems()
 {
 	return items;
 }
 
 void
-CatalogsVerticalBatchRequest::setItems(std::list <CatalogsHotelBatchItem> items)
+CatalogsVerticalBatchRequest::setItems(std::list <CatalogsCreativeAssetsBatchItem> items)
 {
 	this->items = items;
 }

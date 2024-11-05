@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &IntegrationRecord{}
 
 // IntegrationRecord Integration record
 type IntegrationRecord struct {
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
 	ConnectedMerchantId NullableString `json:"connected_merchant_id,omitempty"`
 	ConnectedUserId *string `json:"connected_user_id,omitempty"`

@@ -29,8 +29,7 @@ LineItem <- R6::R6Class(
     `product_quantity` = NULL,
     `product_variant` = NULL,
     `product_variant_id` = NULL,
-    #' Initialize a new LineItem class.
-    #'
+
     #' @description
     #' Initialize a new LineItem class.
     #'
@@ -43,7 +42,6 @@ LineItem <- R6::R6Class(
     #' @param product_variant Product variant. For example, \"Red\".
     #' @param product_variant_id Product variant ID. For example, \"1414-34832\".
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`product_brand` = NULL, `product_category` = NULL, `product_id` = NULL, `product_name` = NULL, `product_price` = NULL, `product_quantity` = NULL, `product_variant` = NULL, `product_variant_id` = NULL, ...) {
       if (!is.null(`product_brand`)) {
         if (!(is.character(`product_brand`) && length(`product_brand`) == 1)) {
@@ -94,13 +92,11 @@ LineItem <- R6::R6Class(
         self$`product_variant_id` <- `product_variant_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LineItem in JSON format
-    #' @export
     toJSON = function() {
       LineItemObject <- list()
       if (!is.null(self$`product_brand`)) {
@@ -137,14 +133,12 @@ LineItem <- R6::R6Class(
       }
       LineItemObject
     },
-    #' Deserialize JSON string into an instance of LineItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LineItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of LineItem
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`product_brand`)) {
@@ -173,13 +167,11 @@ LineItem <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LineItem in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`product_brand`)) {
@@ -250,14 +242,12 @@ LineItem <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of LineItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LineItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of LineItem
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`product_brand` <- this_object$`product_brand`
@@ -270,53 +260,42 @@ LineItem <- R6::R6Class(
       self$`product_variant_id` <- this_object$`product_variant_id`
       self
     },
-    #' Validate JSON input with respect to LineItem
-    #'
+
     #' @description
     #' Validate JSON input with respect to LineItem and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of LineItem
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

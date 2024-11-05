@@ -29,7 +29,7 @@ data class AudienceDemographicValue(
 
     @Schema(example = "0.551", description = "Value of demographic item as a percent of total audience")
     @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null
-) {
+    ) {
 
 }
 

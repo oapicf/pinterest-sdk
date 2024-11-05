@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AdAccountCreateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateRequest   {
   @JsonProperty("country")
   private Country country;
@@ -32,10 +32,10 @@ public class AdAccountCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get country
    * @return country
-  **/
+   */
   @ApiModelProperty(value = "")
   public Country getCountry() {
     return country;
@@ -50,10 +50,10 @@ public class AdAccountCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Ad Account name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "ACME Tools", value = "Ad Account name.")
   public String getName() {
     return name;
@@ -68,10 +68,10 @@ public class AdAccountCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Advertiser's owning user ID.
    * @return ownerUserId
-  **/
+   */
   @ApiModelProperty(example = "383791336903426391", value = "Advertiser's owning user ID.")
   public String getOwnerUserId() {
     return ownerUserId;

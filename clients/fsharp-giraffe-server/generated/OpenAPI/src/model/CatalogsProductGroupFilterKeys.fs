@@ -6,6 +6,7 @@ open OpenAPI.Model.AvailabilityFilter
 open OpenAPI.Model.BrandFilter
 open OpenAPI.Model.CatalogsProductGroupCurrencyCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleGenderCriteria
+open OpenAPI.Model.CatalogsProductGroupMultipleMediaTypesCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringListCriteria
 open OpenAPI.Model.CatalogsProductGroupPricingCriteria
@@ -27,7 +28,9 @@ open OpenAPI.Model.GoogleProductCategory6Filter
 open OpenAPI.Model.ItemGroupIdFilter
 open OpenAPI.Model.ItemIdFilter
 open OpenAPI.Model.MaxPriceFilter
+open OpenAPI.Model.MediaTypeFilter
 open OpenAPI.Model.MinPriceFilter
+open OpenAPI.Model.ProductGroupReferenceFilter
 open OpenAPI.Model.ProductType0Filter
 open OpenAPI.Model.ProductType1Filter
 open OpenAPI.Model.ProductType2Filter
@@ -54,6 +57,7 @@ module CatalogsProductGroupFilterKeys =
     CUSTOMLABEL4 : CatalogsProductGroupMultipleStringCriteria;
     ITEM_GROUP_ID : CatalogsProductGroupMultipleStringCriteria;
     GENDER : CatalogsProductGroupMultipleGenderCriteria;
+    MEDIA_TYPE : CatalogsProductGroupMultipleMediaTypesCriteria;
     PRODUCTTYPE4 : CatalogsProductGroupMultipleStringListCriteria;
     PRODUCTTYPE3 : CatalogsProductGroupMultipleStringListCriteria;
     PRODUCTTYPE2 : CatalogsProductGroupMultipleStringListCriteria;
@@ -66,5 +70,6 @@ module CatalogsProductGroupFilterKeys =
     GOOGLEPRODUCTCATEGORY2 : CatalogsProductGroupMultipleStringListCriteria;
     GOOGLEPRODUCTCATEGORY1 : CatalogsProductGroupMultipleStringListCriteria;
     GOOGLEPRODUCTCATEGORY0 : CatalogsProductGroupMultipleStringListCriteria;
+    PRODUCT_GROUP : CatalogsProductGroupMultipleStringCriteria;
   }
   //#endregion

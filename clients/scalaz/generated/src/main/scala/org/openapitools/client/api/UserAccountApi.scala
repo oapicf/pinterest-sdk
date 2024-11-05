@@ -296,7 +296,7 @@ object UserAccountApi {
     } yield resp
   }
 
-  def verifyWebsiteUpdate(host: String, userWebsiteVerifyRequest: UserWebsiteVerifyRequest): Task[UserWebsiteSummary] = {
+  def verifyWebsiteUpdate(host: String, userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteSummary] = {
     implicit val returnTypeDecoder: EntityDecoder[UserWebsiteSummary] = jsonOf[UserWebsiteSummary]
 
     val path = "/user_account/websites"
@@ -306,7 +306,7 @@ object UserAccountApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -317,7 +317,7 @@ object UserAccountApi {
     } yield resp
   }
 
-  def websiteVerificationGet(host: String): Task[UserWebsiteVerificationCode] = {
+  def websiteVerificationGet(host: String, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteVerificationCode] = {
     implicit val returnTypeDecoder: EntityDecoder[UserWebsiteVerificationCode] = jsonOf[UserWebsiteVerificationCode]
 
     val path = "/user_account/websites/verification"
@@ -327,7 +327,7 @@ object UserAccountApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -595,7 +595,7 @@ class HttpServiceUserAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest): Task[UserWebsiteSummary] = {
+  def verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteSummary] = {
     implicit val returnTypeDecoder: EntityDecoder[UserWebsiteSummary] = jsonOf[UserWebsiteSummary]
 
     val path = "/user_account/websites"
@@ -605,7 +605,7 @@ class HttpServiceUserAccountApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -616,7 +616,7 @@ class HttpServiceUserAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def websiteVerificationGet(): Task[UserWebsiteVerificationCode] = {
+  def websiteVerificationGet(adAccountId: String)(implicit adAccountIdQuery: QueryParam[String]): Task[UserWebsiteVerificationCode] = {
     implicit val returnTypeDecoder: EntityDecoder[UserWebsiteVerificationCode] = jsonOf[UserWebsiteVerificationCode]
 
     val path = "/user_account/websites/verification"
@@ -626,7 +626,7 @@ class HttpServiceUserAccountApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

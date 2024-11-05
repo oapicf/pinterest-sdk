@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedProcessingResult  {
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   private Date createdAt;
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   private String id;
 
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   private Date updatedAt;
 
   @ApiModelProperty(required = true, value = "")

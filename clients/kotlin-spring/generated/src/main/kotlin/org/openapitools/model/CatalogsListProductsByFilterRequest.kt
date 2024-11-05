@@ -1,9 +1,14 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.CatalogsListProductsByFilterRequestOneOf
+import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsListProductsByFeedBasedFilter
+import org.openapitools.model.CatalogsLocale
 import org.openapitools.model.CatalogsProductGroupFilters
+import org.openapitools.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+import org.openapitools.model.Country
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -28,8 +33,23 @@ data class CatalogsListProductsByFilterRequest(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters
-) {
+    @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsListProductsByFilterRequest.CatalogType,
+
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the creative assets product group.")
+    @get:JsonProperty("catalog_id", required = true) override val catalogId: kotlin.String,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("country", required = true) override val country: Country,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("locale", required = true) override val locale: CatalogsLocale
+    ) {
 
 }
 

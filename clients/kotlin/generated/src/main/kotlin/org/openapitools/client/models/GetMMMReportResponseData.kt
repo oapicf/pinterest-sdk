@@ -55,5 +55,6 @@ data class GetMMMReportResponseData (
         @Json(name = "FAILED") FAILED("FAILED"),
         @Json(name = "CANCELLED") CANCELLED("CANCELLED");
     }
+
 }
 

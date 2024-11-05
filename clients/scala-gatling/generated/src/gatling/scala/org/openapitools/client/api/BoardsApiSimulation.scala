@@ -133,8 +133,8 @@ class BoardsApiSimulation extends Simulation {
         .exec(http("boardSectionsList")
         .httpRequest("GET","/boards/${board_id}/sections")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardSectionsList with warm up and reach a constant rate for entire duration
@@ -151,8 +151,8 @@ class BoardsApiSimulation extends Simulation {
         .exec(http("boardSectionsListPins")
         .httpRequest("GET","/boards/${board_id}/sections/${section_id}/pins")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardSectionsListPins with warm up and reach a constant rate for entire duration
@@ -231,9 +231,9 @@ class BoardsApiSimulation extends Simulation {
         .exec(http("boardsList")
         .httpRequest("GET","/boards")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("privacy","${privacy}")
         .queryParam("page_size","${page_size}")
+        .queryParam("privacy","${privacy}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardsList with warm up and reach a constant rate for entire duration
@@ -250,10 +250,10 @@ class BoardsApiSimulation extends Simulation {
         .exec(http("boardsListPins")
         .httpRequest("GET","/boards/${board_id}/pins")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("creative_types","${creative_types}")
         .queryParam("pin_metrics","${pin_metrics}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardsListPins with warm up and reach a constant rate for entire duration

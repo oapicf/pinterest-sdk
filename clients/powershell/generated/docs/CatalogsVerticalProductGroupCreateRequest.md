@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 **CatalogType** | **String** |  | 
 **Name** | **String** |  | 
 **Description** | **String** |  | [optional] 
-**Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**Country** | [**Country**](Country.md) |  | 
+**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
 
 ## Examples
 
@@ -17,7 +19,9 @@ $CatalogsVerticalProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsVe
  -Name null `
  -Description null `
  -Filters null `
- -CatalogId 2680059592705
+ -CatalogId 2680059592705 `
+ -Country null `
+ -Locale null
 ```
 
 - Convert the resource to JSON

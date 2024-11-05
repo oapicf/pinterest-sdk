@@ -47,5 +47,8 @@ data class CatalogsHotelGuestRatings (
     @Json(name = "rating_system")
     val ratingSystem: kotlin.String? = null
 
-)
+) {
+
+
+}
 

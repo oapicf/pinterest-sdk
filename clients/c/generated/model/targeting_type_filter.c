@@ -5,13 +5,13 @@
 
 
 char* targeting_type_filter_targeting_types_ToString(pinterest_rest_api_targeting_type_filter__e targeting_types) {
-    char *targeting_typesArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION" };
+    char *targeting_typesArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION", "AGE_BUCKET_AND_GENDER" };
     return targeting_typesArray[targeting_types - 1];
 }
 
 pinterest_rest_api_targeting_type_filter__e targeting_type_filter_targeting_types_FromString(char* targeting_types) {
     int stringToReturn = 0;
-    char *targeting_typesArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION" };
+    char *targeting_typesArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION", "AGE_BUCKET_AND_GENDER" };
     size_t sizeofArray = sizeof(targeting_typesArray) / sizeof(targeting_typesArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(targeting_types, targeting_typesArray[stringToReturn]) == 0) {

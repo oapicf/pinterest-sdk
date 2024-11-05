@@ -12,14 +12,14 @@ API.Client.CatalogsVerticalProductGroup = function() {}
 API.Client.CatalogsVerticalProductGroup.prototype.catalogType;
 
 /**
- * ID of the catalog product group.
+ * ID of the creative assets product group.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsVerticalProductGroup.prototype.id;
 
 /**
- * Name of catalog product group
+ * Name of creative assets product group
  * @type {!string}
  * @export
  */
@@ -32,30 +32,10 @@ API.Client.CatalogsVerticalProductGroup.prototype.name;
 API.Client.CatalogsVerticalProductGroup.prototype.description;
 
 /**
- * @type {!API.Client.CatalogsProductGroupFilters}
+ * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
  * @export
  */
 API.Client.CatalogsVerticalProductGroup.prototype.filters;
-
-/**
- * Unix timestamp in seconds of when catalog product group was created.
- * @type {!number}
- * @export
- */
-API.Client.CatalogsVerticalProductGroup.prototype.createdAt;
-
-/**
- * Unix timestamp in seconds of last time catalog product group was updated.
- * @type {!number}
- * @export
- */
-API.Client.CatalogsVerticalProductGroup.prototype.updatedAt;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsVerticalProductGroup.prototype.catalogId;
 
 /**
  * boolean indicator of whether the product group is being featured or not
@@ -77,16 +57,46 @@ API.Client.CatalogsVerticalProductGroup.prototype.type;
 API.Client.CatalogsVerticalProductGroup.prototype.status;
 
 /**
+ * Unix timestamp in seconds of when catalog product group was created.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroup.prototype.createdAt;
+
+/**
+ * Unix timestamp in seconds of last time catalog product group was updated.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroup.prototype.updatedAt;
+
+/**
+ * Catalog id pertaining to the creative assets product group.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroup.prototype.catalogId;
+
+/**
+ * id of the catalogs feed belonging to this catalog product group
  * @type {!string}
  * @export
  */
 API.Client.CatalogsVerticalProductGroup.prototype.feedId;
 
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroup.prototype.country;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsVerticalProductGroup.prototype.locale;
+
 /** @enum {string} */
 API.Client.CatalogsVerticalProductGroup.CatalogTypeEnum = { 
-  RETAIL: 'RETAIL',
-}
-/** @enum {string} */
-API.Client.CatalogsVerticalProductGroup.FeedIdEnum = { 
-  : '',
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
 }

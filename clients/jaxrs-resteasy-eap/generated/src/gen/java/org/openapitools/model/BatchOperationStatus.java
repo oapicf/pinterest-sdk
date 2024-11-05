@@ -8,5 +8,6 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum BatchOperationStatus {
   PROCESSING,
-  COMPLETED;
+  COMPLETED,
+  FAILED;
 }

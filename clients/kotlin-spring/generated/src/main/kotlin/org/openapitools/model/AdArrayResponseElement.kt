@@ -29,7 +29,7 @@ data class AdArrayResponseElement(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("exceptions") val exceptions: Exception? = null
-) {
+    ) {
 
 }
 

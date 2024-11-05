@@ -3,7 +3,7 @@ private class OASLeadAdsApiTest {
     /**
      * Delete lead ads subscription
      *
-     * Delete an existing lead ads webhook subscription by ID.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/new/about-beta-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Delete an existing lead ads webhook subscription by ID.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void adAccountsSubscriptionsDelByIdTest() {
@@ -59,7 +59,7 @@ private class OASLeadAdsApiTest {
     /**
      * Get lead ads subscription
      *
-     * Get a specific lead ads subscription record.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/new/about-beta-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a specific lead ads subscription record.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void adAccountsSubscriptionsGetByIdTest() {
@@ -125,7 +125,7 @@ private class OASLeadAdsApiTest {
     /**
      * Get lead ads subscriptions
      *
-     * Get the advertiser\&#39;s list of lead ads subscriptions.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/new/about-beta-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get the advertiser\&#39;s list of lead ads subscriptions.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void adAccountsSubscriptionsGetListTest() {
@@ -176,7 +176,7 @@ private class OASLeadAdsApiTest {
     /**
      * Create lead ads subscription
      *
-     * Create a lead ads webhook subscription.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n- Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/new/about-beta-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create a lead ads webhook subscription.\nSubscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n- Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.\n- For data security, egress lead data is encrypted with AES-256-GCM.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void adAccountsSubscriptionsPostTest() {

@@ -2,12 +2,14 @@
 
 # CatalogsProduct
 
+Catalogs product for all verticals
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**metadata** | [**CatalogsProductMetadata**](CatalogsProductMetadata.md) |  |  |
+|**catalogType** | **CatalogsType** |  |  |
+|**metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  |  |
 |**pin** | [**Pin**](Pin.md) |  |  |
 
 

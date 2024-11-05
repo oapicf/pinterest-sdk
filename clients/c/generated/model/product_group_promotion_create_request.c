@@ -31,7 +31,7 @@ void product_group_promotion_create_request_free(product_group_promotion_create_
     }
     if (product_group_promotion_create_request->product_group_promotion) {
         list_ForEach(listEntry, product_group_promotion_create_request->product_group_promotion) {
-            product_group_promotion_free(listEntry->data);
+            product_group_promotion_create_request_element_free(listEntry->data);
         }
         list_freeList(product_group_promotion_create_request->product_group_promotion);
         product_group_promotion_create_request->product_group_promotion = NULL;
@@ -63,7 +63,7 @@ cJSON *product_group_promotion_create_request_convertToJSON(product_group_promot
     listEntry_t *product_group_promotionListEntry;
     if (product_group_promotion_create_request->product_group_promotion) {
     list_ForEach(product_group_promotionListEntry, product_group_promotion_create_request->product_group_promotion) {
-    cJSON *itemLocal = product_group_promotion_convertToJSON(product_group_promotionListEntry->data);
+    cJSON *itemLocal = product_group_promotion_create_request_element_convertToJSON(product_group_promotionListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -117,7 +117,7 @@ product_group_promotion_create_request_t *product_group_promotion_create_request
         if(!cJSON_IsObject(product_group_promotion_local_nonprimitive)){
             goto end;
         }
-        product_group_promotion_t *product_group_promotionItem = product_group_promotion_parseFromJSON(product_group_promotion_local_nonprimitive);
+        product_group_promotion_create_request_element_t *product_group_promotionItem = product_group_promotion_create_request_element_parseFromJSON(product_group_promotion_local_nonprimitive);
 
         list_addElement(product_group_promotionList, product_group_promotionItem);
     }
@@ -133,7 +133,7 @@ end:
     if (product_group_promotionList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, product_group_promotionList) {
-            product_group_promotion_free(listEntry->data);
+            product_group_promotion_create_request_element_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(product_group_promotionList);

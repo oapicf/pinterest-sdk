@@ -26,8 +26,9 @@ ItemResponse::__init()
 	//catalog_type = new CatalogsType();
 	//item_id = std::string();
 	//new std::list()std::list> pins;
-	//attributes = new CatalogsHotelAttributes();
+	//attributes = new CatalogsCreativeAssetsAttributes();
 	//hotel_id = std::string();
+	//creative_assets_id = std::string();
 	//new std::list()std::list> errors;
 }
 
@@ -58,6 +59,11 @@ ItemResponse::__cleanup()
 	//
 	//delete hotel_id;
 	//hotel_id = NULL;
+	//}
+	//if(creative_assets_id != NULL) {
+	//
+	//delete creative_assets_id;
+	//creative_assets_id = NULL;
 	//}
 	//if(errors != NULL) {
 	//errors.RemoveAll(true);
@@ -126,11 +132,11 @@ ItemResponse::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsHotelAttributes")) {
-			jsonToValue(&attributes, node, "CatalogsHotelAttributes", "CatalogsHotelAttributes");
+		if (isprimitive("CatalogsCreativeAssetsAttributes")) {
+			jsonToValue(&attributes, node, "CatalogsCreativeAssetsAttributes", "CatalogsCreativeAssetsAttributes");
 		} else {
 			
-			CatalogsHotelAttributes* obj = static_cast<CatalogsHotelAttributes*> (&attributes);
+			CatalogsCreativeAssetsAttributes* obj = static_cast<CatalogsCreativeAssetsAttributes*> (&attributes);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -142,6 +148,17 @@ ItemResponse::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&hotel_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *creative_assets_idKey = "creative_assets_id";
+	node = json_object_get_member(pJsonObject, creative_assets_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&creative_assets_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -230,13 +247,13 @@ ItemResponse::toJson()
 	
 	const gchar *pinsKey = "pins";
 	json_object_set_member(pJsonObject, pinsKey, node);
-	if (isprimitive("CatalogsHotelAttributes")) {
-		CatalogsHotelAttributes obj = getAttributes();
-		node = converttoJson(&obj, "CatalogsHotelAttributes", "");
+	if (isprimitive("CatalogsCreativeAssetsAttributes")) {
+		CatalogsCreativeAssetsAttributes obj = getAttributes();
+		node = converttoJson(&obj, "CatalogsCreativeAssetsAttributes", "");
 	}
 	else {
 		
-		CatalogsHotelAttributes obj = static_cast<CatalogsHotelAttributes> (getAttributes());
+		CatalogsCreativeAssetsAttributes obj = static_cast<CatalogsCreativeAssetsAttributes> (getAttributes());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -253,6 +270,15 @@ ItemResponse::toJson()
 	}
 	const gchar *hotel_idKey = "hotel_id";
 	json_object_set_member(pJsonObject, hotel_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCreativeAssetsId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *creative_assets_idKey = "creative_assets_id";
+	json_object_set_member(pJsonObject, creative_assets_idKey, node);
 	if (isprimitive("ItemValidationEvent")) {
 		list<ItemValidationEvent> new_list = static_cast<list <ItemValidationEvent> > (getErrors());
 		node = converttoJson(&new_list, "ItemValidationEvent", "array");
@@ -322,14 +348,14 @@ ItemResponse::setPins(std::list <Pin> pins)
 	this->pins = pins;
 }
 
-CatalogsHotelAttributes
+CatalogsCreativeAssetsAttributes
 ItemResponse::getAttributes()
 {
 	return attributes;
 }
 
 void
-ItemResponse::setAttributes(CatalogsHotelAttributes  attributes)
+ItemResponse::setAttributes(CatalogsCreativeAssetsAttributes  attributes)
 {
 	this->attributes = attributes;
 }
@@ -344,6 +370,18 @@ void
 ItemResponse::setHotelId(std::string  hotel_id)
 {
 	this->hotel_id = hotel_id;
+}
+
+std::string
+ItemResponse::getCreativeAssetsId()
+{
+	return creative_assets_id;
+}
+
+void
+ItemResponse::setCreativeAssetsId(std::string  creative_assets_id)
+{
+	this->creative_assets_id = creative_assets_id;
 }
 
 std::list<ItemValidationEvent>

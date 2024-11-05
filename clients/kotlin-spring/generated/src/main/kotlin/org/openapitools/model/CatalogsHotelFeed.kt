@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsFeedCredentials
@@ -22,6 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Catalogs Hotel Feed object
+ * @param createdAt 
+ * @param id 
+ * @param updatedAt 
  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
  * @param format 
  * @param catalogType 
@@ -32,11 +36,17 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param defaultCurrency 
  * @param defaultLocale The locale used within a feed for product descriptions.
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  */
 data class CatalogsHotelFeed(
+
+    @Schema(example = "2022-03-14T15:15:22Z", required = true, description = "")
+    @get:JsonProperty("created_at", required = true) val createdAt: java.time.OffsetDateTime,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("id", required = true) val id: kotlin.String,
+
+    @Schema(example = "2022-03-14T15:16:34Z", required = true, description = "")
+    @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime,
 
     @Schema(example = "null", required = true, description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
     @get:JsonProperty("name", required = true) val name: kotlin.String?,
@@ -73,17 +83,8 @@ data class CatalogsHotelFeed(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", required = true, description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
-    @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String?,
-
-    @Schema(example = "2022-03-14T15:15:22Z", description = "")
-    @get:JsonProperty("created_at") val createdAt: java.time.OffsetDateTime? = null,
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("id") val id: kotlin.String? = null,
-
-    @Schema(example = "2022-03-14T15:16:34Z", description = "")
-    @get:JsonProperty("updated_at") val updatedAt: java.time.OffsetDateTime? = null
-) {
+    @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String?
+    ) {
 
 }
 

@@ -23,7 +23,7 @@ public class BidFloorSpec  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<Country> countries;
+  private List<Country> countries = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
   @Valid

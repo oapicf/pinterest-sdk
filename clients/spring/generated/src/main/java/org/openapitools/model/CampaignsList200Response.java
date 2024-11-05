@@ -26,11 +26,11 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("campaigns_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignsList200Response {
 
   @Valid
-  private List<CampaignResponse> items = new ArrayList<>();
+  private List<@Valid CampaignResponse> items = new ArrayList<>();
 
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
@@ -41,11 +41,11 @@ public class CampaignsList200Response {
   /**
    * Constructor with only required parameters
    */
-  public CampaignsList200Response(List<CampaignResponse> items) {
+  public CampaignsList200Response(List<@Valid CampaignResponse> items) {
     this.items = items;
   }
 
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(List<@Valid CampaignResponse> items) {
     this.items = items;
     return this;
   }
@@ -61,15 +61,15 @@ public class CampaignsList200Response {
   /**
    * Get items
    * @return items
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
-  public List<CampaignResponse> getItems() {
+  public List<@Valid CampaignResponse> getItems() {
     return items;
   }
 
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(List<@Valid CampaignResponse> items) {
     this.items = items;
   }
 
@@ -81,7 +81,7 @@ public class CampaignsList200Response {
   /**
    * Get bookmark
    * @return bookmark
-  */
+   */
   
   @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bookmark")

@@ -18,14 +18,14 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequestUpdate   {
   
-  private List<@Valid CampaignUpdateRequest> campaigns;
-  private List<AdGroupUpdateRequest> adGroups;
-  private List<AdUpdateRequest> ads;
-  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups;
-  private List<@Valid KeywordUpdate> keywords;
+  private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
+  private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
+  private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
+  private List<@Valid KeywordUpdate> keywords = new ArrayList<>();
 
   /**
    **/
@@ -44,10 +44,10 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ad_groups")
-  public List<AdGroupUpdateRequest> getAdGroups() {
+  public List<@Valid AdGroupUpdateRequest> getAdGroups() {
     return adGroups;
   }
-  public void setAdGroups(List<AdGroupUpdateRequest> adGroups) {
+  public void setAdGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
@@ -56,10 +56,10 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ads")
-  public List<AdUpdateRequest> getAds() {
+  public List<@Valid AdUpdateRequest> getAds() {
     return ads;
   }
-  public void setAds(List<AdUpdateRequest> ads) {
+  public void setAds(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
   }
 

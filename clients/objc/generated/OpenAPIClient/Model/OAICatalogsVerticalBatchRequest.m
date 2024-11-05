@@ -21,6 +21,10 @@
     }
 
     Class class = nil;
+    if ([discriminatedClassName isEqualToString:@"CREATIVE_ASSETS"]) {
+        class = NSClassFromString(@"OAICatalogsCreativeAssetsBatchRequest");
+    }
+    else
     if ([discriminatedClassName isEqualToString:@"HOTEL"]) {
         class = NSClassFromString(@"OAICatalogsHotelBatchRequest");
     }

@@ -3,12 +3,12 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AdCommonQuizPinData
-open OpenAPI.Model.AdCommonTrackingUrls
 open OpenAPI.Model.CreativeType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
 open OpenAPI.Model.PinPromotionSummaryStatus
+open OpenAPI.Model.QuizPinData
+open OpenAPI.Model.TrackingUrls
 open OpenAPI.Model.string option
 
 module AdResponse =
@@ -44,7 +44,7 @@ module AdResponse =
     [<JsonProperty(PropertyName = "status")>]
     Status : EntityStatus;
     [<JsonProperty(PropertyName = "tracking_urls")>]
-    TrackingUrls : AdCommonTrackingUrls;
+    TrackingUrls : TrackingUrls;
     [<JsonProperty(PropertyName = "view_tracking_url")>]
     ViewTrackingUrl : string option;
     [<JsonProperty(PropertyName = "lead_form_id")>]
@@ -54,7 +54,7 @@ module AdResponse =
     [<JsonProperty(PropertyName = "customizable_cta_type")>]
     CustomizableCtaType : string option;
     [<JsonProperty(PropertyName = "quiz_pin_data")>]
-    QuizPinData : AdCommonQuizPinData;
+    QuizPinData : QuizPinData;
     [<JsonProperty(PropertyName = "pin_id")>]
     PinId : string;
     [<JsonProperty(PropertyName = "ad_account_id")>]

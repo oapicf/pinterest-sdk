@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,508 +13,79 @@ package openapi
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the ConversionEventsUserData type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ConversionEventsUserData{}
 
 // ConversionEventsUserData Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
 type ConversionEventsUserData struct {
-	// Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-	Ph []string `json:"ph,omitempty"`
-	// Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender.
-	Ge []string `json:"ge,omitempty"`
-	// Sha256 hashes of user's date of birthday, given as year, month, and day.
-	Db []string `json:"db,omitempty"`
-	// Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-	Ln []string `json:"ln,omitempty"`
-	// Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-	Fn []string `json:"fn,omitempty"`
-	// Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing).
-	Ct []string `json:"ct,omitempty"`
-	// Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing).
-	St []string `json:"st,omitempty"`
-	// Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing).
-	Zp []string `json:"zp,omitempty"`
-	// Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase.
-	Country []string `json:"country,omitempty"`
-	// Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA.
-	ExternalId []string `json:"external_id,omitempty"`
-	// The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-	ClickId NullableString `json:"click_id,omitempty"`
-	// A unique identifier of visitors' information defined by third party partners. e.g RampID
-	PartnerId NullableString `json:"partner_id,omitempty"`
+	ConversionEventsUserDataAnyOf *ConversionEventsUserDataAnyOf
+	ConversionEventsUserDataAnyOf1 *ConversionEventsUserDataAnyOf1
+	ConversionEventsUserDataAnyOf2 *ConversionEventsUserDataAnyOf2
 }
 
-// NewConversionEventsUserData instantiates a new ConversionEventsUserData object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewConversionEventsUserData() *ConversionEventsUserData {
-	this := ConversionEventsUserData{}
-	return &this
-}
-
-// NewConversionEventsUserDataWithDefaults instantiates a new ConversionEventsUserData object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewConversionEventsUserDataWithDefaults() *ConversionEventsUserData {
-	this := ConversionEventsUserData{}
-	return &this
-}
-
-// GetPh returns the Ph field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetPh() []string {
-	if o == nil || IsNil(o.Ph) {
-		var ret []string
-		return ret
-	}
-	return o.Ph
-}
-
-// GetPhOk returns a tuple with the Ph field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetPhOk() ([]string, bool) {
-	if o == nil || IsNil(o.Ph) {
-		return nil, false
-	}
-	return o.Ph, true
-}
-
-// HasPh returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasPh() bool {
-	if o != nil && !IsNil(o.Ph) {
-		return true
+// Unmarshal JSON data into any of the pointers in the struct
+func (dst *ConversionEventsUserData) UnmarshalJSON(data []byte) error {
+	var err error
+	// try to unmarshal JSON data into ConversionEventsUserDataAnyOf
+	err = json.Unmarshal(data, &dst.ConversionEventsUserDataAnyOf);
+	if err == nil {
+		jsonConversionEventsUserDataAnyOf, _ := json.Marshal(dst.ConversionEventsUserDataAnyOf)
+		if string(jsonConversionEventsUserDataAnyOf) == "{}" { // empty struct
+			dst.ConversionEventsUserDataAnyOf = nil
+		} else {
+			return nil // data stored in dst.ConversionEventsUserDataAnyOf, return on the first match
+		}
+	} else {
+		dst.ConversionEventsUserDataAnyOf = nil
 	}
 
-	return false
-}
-
-// SetPh gets a reference to the given []string and assigns it to the Ph field.
-func (o *ConversionEventsUserData) SetPh(v []string) {
-	o.Ph = v
-}
-
-// GetGe returns the Ge field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetGe() []string {
-	if o == nil || IsNil(o.Ge) {
-		var ret []string
-		return ret
-	}
-	return o.Ge
-}
-
-// GetGeOk returns a tuple with the Ge field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetGeOk() ([]string, bool) {
-	if o == nil || IsNil(o.Ge) {
-		return nil, false
-	}
-	return o.Ge, true
-}
-
-// HasGe returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasGe() bool {
-	if o != nil && !IsNil(o.Ge) {
-		return true
+	// try to unmarshal JSON data into ConversionEventsUserDataAnyOf1
+	err = json.Unmarshal(data, &dst.ConversionEventsUserDataAnyOf1);
+	if err == nil {
+		jsonConversionEventsUserDataAnyOf1, _ := json.Marshal(dst.ConversionEventsUserDataAnyOf1)
+		if string(jsonConversionEventsUserDataAnyOf1) == "{}" { // empty struct
+			dst.ConversionEventsUserDataAnyOf1 = nil
+		} else {
+			return nil // data stored in dst.ConversionEventsUserDataAnyOf1, return on the first match
+		}
+	} else {
+		dst.ConversionEventsUserDataAnyOf1 = nil
 	}
 
-	return false
-}
-
-// SetGe gets a reference to the given []string and assigns it to the Ge field.
-func (o *ConversionEventsUserData) SetGe(v []string) {
-	o.Ge = v
-}
-
-// GetDb returns the Db field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetDb() []string {
-	if o == nil || IsNil(o.Db) {
-		var ret []string
-		return ret
-	}
-	return o.Db
-}
-
-// GetDbOk returns a tuple with the Db field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetDbOk() ([]string, bool) {
-	if o == nil || IsNil(o.Db) {
-		return nil, false
-	}
-	return o.Db, true
-}
-
-// HasDb returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasDb() bool {
-	if o != nil && !IsNil(o.Db) {
-		return true
+	// try to unmarshal JSON data into ConversionEventsUserDataAnyOf2
+	err = json.Unmarshal(data, &dst.ConversionEventsUserDataAnyOf2);
+	if err == nil {
+		jsonConversionEventsUserDataAnyOf2, _ := json.Marshal(dst.ConversionEventsUserDataAnyOf2)
+		if string(jsonConversionEventsUserDataAnyOf2) == "{}" { // empty struct
+			dst.ConversionEventsUserDataAnyOf2 = nil
+		} else {
+			return nil // data stored in dst.ConversionEventsUserDataAnyOf2, return on the first match
+		}
+	} else {
+		dst.ConversionEventsUserDataAnyOf2 = nil
 	}
 
-	return false
+	return fmt.Errorf("data failed to match schemas in anyOf(ConversionEventsUserData)")
 }
 
-// SetDb gets a reference to the given []string and assigns it to the Db field.
-func (o *ConversionEventsUserData) SetDb(v []string) {
-	o.Db = v
-}
-
-// GetLn returns the Ln field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetLn() []string {
-	if o == nil || IsNil(o.Ln) {
-		var ret []string
-		return ret
-	}
-	return o.Ln
-}
-
-// GetLnOk returns a tuple with the Ln field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetLnOk() ([]string, bool) {
-	if o == nil || IsNil(o.Ln) {
-		return nil, false
-	}
-	return o.Ln, true
-}
-
-// HasLn returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasLn() bool {
-	if o != nil && !IsNil(o.Ln) {
-		return true
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src *ConversionEventsUserData) MarshalJSON() ([]byte, error) {
+	if src.ConversionEventsUserDataAnyOf != nil {
+		return json.Marshal(&src.ConversionEventsUserDataAnyOf)
 	}
 
-	return false
-}
-
-// SetLn gets a reference to the given []string and assigns it to the Ln field.
-func (o *ConversionEventsUserData) SetLn(v []string) {
-	o.Ln = v
-}
-
-// GetFn returns the Fn field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetFn() []string {
-	if o == nil || IsNil(o.Fn) {
-		var ret []string
-		return ret
-	}
-	return o.Fn
-}
-
-// GetFnOk returns a tuple with the Fn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetFnOk() ([]string, bool) {
-	if o == nil || IsNil(o.Fn) {
-		return nil, false
-	}
-	return o.Fn, true
-}
-
-// HasFn returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasFn() bool {
-	if o != nil && !IsNil(o.Fn) {
-		return true
+	if src.ConversionEventsUserDataAnyOf1 != nil {
+		return json.Marshal(&src.ConversionEventsUserDataAnyOf1)
 	}
 
-	return false
-}
-
-// SetFn gets a reference to the given []string and assigns it to the Fn field.
-func (o *ConversionEventsUserData) SetFn(v []string) {
-	o.Fn = v
-}
-
-// GetCt returns the Ct field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetCt() []string {
-	if o == nil || IsNil(o.Ct) {
-		var ret []string
-		return ret
-	}
-	return o.Ct
-}
-
-// GetCtOk returns a tuple with the Ct field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetCtOk() ([]string, bool) {
-	if o == nil || IsNil(o.Ct) {
-		return nil, false
-	}
-	return o.Ct, true
-}
-
-// HasCt returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasCt() bool {
-	if o != nil && !IsNil(o.Ct) {
-		return true
+	if src.ConversionEventsUserDataAnyOf2 != nil {
+		return json.Marshal(&src.ConversionEventsUserDataAnyOf2)
 	}
 
-	return false
+	return nil, nil // no data in anyOf schemas
 }
 
-// SetCt gets a reference to the given []string and assigns it to the Ct field.
-func (o *ConversionEventsUserData) SetCt(v []string) {
-	o.Ct = v
-}
-
-// GetSt returns the St field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetSt() []string {
-	if o == nil || IsNil(o.St) {
-		var ret []string
-		return ret
-	}
-	return o.St
-}
-
-// GetStOk returns a tuple with the St field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetStOk() ([]string, bool) {
-	if o == nil || IsNil(o.St) {
-		return nil, false
-	}
-	return o.St, true
-}
-
-// HasSt returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasSt() bool {
-	if o != nil && !IsNil(o.St) {
-		return true
-	}
-
-	return false
-}
-
-// SetSt gets a reference to the given []string and assigns it to the St field.
-func (o *ConversionEventsUserData) SetSt(v []string) {
-	o.St = v
-}
-
-// GetZp returns the Zp field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetZp() []string {
-	if o == nil || IsNil(o.Zp) {
-		var ret []string
-		return ret
-	}
-	return o.Zp
-}
-
-// GetZpOk returns a tuple with the Zp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetZpOk() ([]string, bool) {
-	if o == nil || IsNil(o.Zp) {
-		return nil, false
-	}
-	return o.Zp, true
-}
-
-// HasZp returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasZp() bool {
-	if o != nil && !IsNil(o.Zp) {
-		return true
-	}
-
-	return false
-}
-
-// SetZp gets a reference to the given []string and assigns it to the Zp field.
-func (o *ConversionEventsUserData) SetZp(v []string) {
-	o.Zp = v
-}
-
-// GetCountry returns the Country field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetCountry() []string {
-	if o == nil || IsNil(o.Country) {
-		var ret []string
-		return ret
-	}
-	return o.Country
-}
-
-// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetCountryOk() ([]string, bool) {
-	if o == nil || IsNil(o.Country) {
-		return nil, false
-	}
-	return o.Country, true
-}
-
-// HasCountry returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasCountry() bool {
-	if o != nil && !IsNil(o.Country) {
-		return true
-	}
-
-	return false
-}
-
-// SetCountry gets a reference to the given []string and assigns it to the Country field.
-func (o *ConversionEventsUserData) SetCountry(v []string) {
-	o.Country = v
-}
-
-// GetExternalId returns the ExternalId field value if set, zero value otherwise.
-func (o *ConversionEventsUserData) GetExternalId() []string {
-	if o == nil || IsNil(o.ExternalId) {
-		var ret []string
-		return ret
-	}
-	return o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsUserData) GetExternalIdOk() ([]string, bool) {
-	if o == nil || IsNil(o.ExternalId) {
-		return nil, false
-	}
-	return o.ExternalId, true
-}
-
-// HasExternalId returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasExternalId() bool {
-	if o != nil && !IsNil(o.ExternalId) {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalId gets a reference to the given []string and assigns it to the ExternalId field.
-func (o *ConversionEventsUserData) SetExternalId(v []string) {
-	o.ExternalId = v
-}
-
-// GetClickId returns the ClickId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsUserData) GetClickId() string {
-	if o == nil || IsNil(o.ClickId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ClickId.Get()
-}
-
-// GetClickIdOk returns a tuple with the ClickId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsUserData) GetClickIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ClickId.Get(), o.ClickId.IsSet()
-}
-
-// HasClickId returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasClickId() bool {
-	if o != nil && o.ClickId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetClickId gets a reference to the given NullableString and assigns it to the ClickId field.
-func (o *ConversionEventsUserData) SetClickId(v string) {
-	o.ClickId.Set(&v)
-}
-// SetClickIdNil sets the value for ClickId to be an explicit nil
-func (o *ConversionEventsUserData) SetClickIdNil() {
-	o.ClickId.Set(nil)
-}
-
-// UnsetClickId ensures that no value is present for ClickId, not even an explicit nil
-func (o *ConversionEventsUserData) UnsetClickId() {
-	o.ClickId.Unset()
-}
-
-// GetPartnerId returns the PartnerId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsUserData) GetPartnerId() string {
-	if o == nil || IsNil(o.PartnerId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerId.Get()
-}
-
-// GetPartnerIdOk returns a tuple with the PartnerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsUserData) GetPartnerIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PartnerId.Get(), o.PartnerId.IsSet()
-}
-
-// HasPartnerId returns a boolean if a field has been set.
-func (o *ConversionEventsUserData) HasPartnerId() bool {
-	if o != nil && o.PartnerId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerId gets a reference to the given NullableString and assigns it to the PartnerId field.
-func (o *ConversionEventsUserData) SetPartnerId(v string) {
-	o.PartnerId.Set(&v)
-}
-// SetPartnerIdNil sets the value for PartnerId to be an explicit nil
-func (o *ConversionEventsUserData) SetPartnerIdNil() {
-	o.PartnerId.Set(nil)
-}
-
-// UnsetPartnerId ensures that no value is present for PartnerId, not even an explicit nil
-func (o *ConversionEventsUserData) UnsetPartnerId() {
-	o.PartnerId.Unset()
-}
-
-func (o ConversionEventsUserData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ConversionEventsUserData) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ph) {
-		toSerialize["ph"] = o.Ph
-	}
-	if !IsNil(o.Ge) {
-		toSerialize["ge"] = o.Ge
-	}
-	if !IsNil(o.Db) {
-		toSerialize["db"] = o.Db
-	}
-	if !IsNil(o.Ln) {
-		toSerialize["ln"] = o.Ln
-	}
-	if !IsNil(o.Fn) {
-		toSerialize["fn"] = o.Fn
-	}
-	if !IsNil(o.Ct) {
-		toSerialize["ct"] = o.Ct
-	}
-	if !IsNil(o.St) {
-		toSerialize["st"] = o.St
-	}
-	if !IsNil(o.Zp) {
-		toSerialize["zp"] = o.Zp
-	}
-	if !IsNil(o.Country) {
-		toSerialize["country"] = o.Country
-	}
-	if !IsNil(o.ExternalId) {
-		toSerialize["external_id"] = o.ExternalId
-	}
-	if o.ClickId.IsSet() {
-		toSerialize["click_id"] = o.ClickId.Get()
-	}
-	if o.PartnerId.IsSet() {
-		toSerialize["partner_id"] = o.PartnerId.Get()
-	}
-	return toSerialize, nil
-}
 
 type NullableConversionEventsUserData struct {
 	value *ConversionEventsUserData

@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountAnalyticsResponse_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountAnalyticsResponseInner extends HashMap<String, Object>  {
-  private @Valid String AD_ACCOUNT_ID;
-  private @Valid LocalDate DATE;
+  private String AD_ACCOUNT_ID;
+  private LocalDate DATE;
 
   /**
    * The ID of the advertiser that this metrics belongs to.
@@ -35,8 +35,7 @@ public class AdAccountAnalyticsResponseInner extends HashMap<String, Object>  {
   
   @ApiModelProperty(required = true, value = "The ID of the advertiser that this metrics belongs to.")
   @JsonProperty("AD_ACCOUNT_ID")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getADACCOUNTID() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getADACCOUNTID() {
     return AD_ACCOUNT_ID;
   }
 

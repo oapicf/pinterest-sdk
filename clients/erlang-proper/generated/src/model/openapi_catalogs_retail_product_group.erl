@@ -19,7 +19,10 @@
   | {'status', openapi_catalogs_product_group_status:openapi_catalogs_product_group_status() }
   | {'created_at', integer() }
   | {'updated_at', integer() }
+  | {'catalog_id', binary() }
   | {'feed_id', binary() }
+  | {'country', binary() }
+  | {'locale', binary() }
   ].
 
 
@@ -37,7 +40,10 @@ openapi_catalogs_retail_product_group(Fields) ->
             , {'status', openapi_catalogs_product_group_status:openapi_catalogs_product_group_status() }
             , {'created_at', integer() }
             , {'updated_at', integer() }
-            , {'feed_id', elements([<<"">>]) }
+            , {'catalog_id', binary() }
+            , {'feed_id', binary() }
+            , {'country', binary() }
+            , {'locale', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

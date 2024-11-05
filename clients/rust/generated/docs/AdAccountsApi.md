@@ -72,7 +72,7 @@ Name | Type | Description  | Required | Notes
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
 **start_date** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [required] |
 **end_date** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [required] |
-**targeting_types** | [**Vec<models::AdsAnalyticsTargetingType>**](models::AdsAnalyticsTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. | [required] |
+**targeting_types** | [**Vec<models::AdsAnalyticsTargetingType>**](models::AdsAnalyticsTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. | [required] |
 **columns** | [**Vec<String>**](String.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned | [required] |
 **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly | [required] |
 **click_window_days** | Option<**i32**> | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. |  |[default to 30]
@@ -170,7 +170,7 @@ Get a list of the ad_accounts that the \"operation user_account\" has access to.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **include_shared_accounts** | Option<**bool**> | Include shared ad accounts |  |[default to true]
 
 ### Return type
@@ -352,7 +352,7 @@ Name | Type | Description  | Required | Notes
 > String sandbox_slash_delete(ad_account_id)
 Delete ads data for ad account in API Sandbox
 
-Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
 
 ### Parameters
 
@@ -390,7 +390,7 @@ Gets all Templates associated with an ad account ID.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | **String** | Unique identifier of an ad account. | [required] |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **order** | Option<**String**> | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
 

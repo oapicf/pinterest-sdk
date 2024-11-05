@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.pkmst.model.CatalogsHotelAttributes;
+import com.prokarma.pkmst.model.CatalogsCreativeAssetsAttributes;
 import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.ItemResponseAnyOf;
 import com.prokarma.pkmst.model.ItemResponseAnyOf1;
@@ -26,7 +26,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object describing an item record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -41,15 +41,18 @@ public class ItemResponse   {
   @JsonProperty("hotel_id")
   private String hotelId;
 
+  @JsonProperty("creative_assets_id")
+  private String creativeAssetsId;
+
   public ItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -64,10 +67,10 @@ public class ItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
   public String getItemId() {
     return itemId;
@@ -90,10 +93,10 @@ public class ItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Array with the errors for the item id requested
    * @return errors
-  **/
+   */
   @ApiModelProperty(value = "Array with the errors for the item id requested")
   public List<ItemValidationEvent> getErrors() {
     return errors;
@@ -108,10 +111,10 @@ public class ItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
   public String getHotelId() {
     return hotelId;
@@ -119,6 +122,24 @@ public class ItemResponse   {
 
   public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
+  }
+
+  public ItemResponse creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+  /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+   */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
   }
 
 
@@ -134,12 +155,13 @@ public class ItemResponse   {
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
         Objects.equals(this.errors, itemResponse.errors) &&
-        Objects.equals(this.hotelId, itemResponse.hotelId);
+        Objects.equals(this.hotelId, itemResponse.hotelId) &&
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -151,6 +173,7 @@ public class ItemResponse   {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -18,8 +18,8 @@ typedef struct pin_t pin_t;
 #include "board_owner.h"
 #include "creative_type.h"
 #include "object.h"
+#include "pin_media.h"
 #include "pin_media_source.h"
-#include "summary_pin_media.h"
 
 
 
@@ -36,7 +36,7 @@ typedef struct pin_t {
     char *board_section_id; // string
     struct board_owner_t *board_owner; //model
     int is_owner; //boolean
-    struct summary_pin_media_t *media; //model
+    struct pin_media_t *media; //model
     struct pin_media_source_t *media_source; //model
     char *parent_pin_id; // string
     int is_standard; //boolean
@@ -59,7 +59,7 @@ pin_t *pin_create(
     char *board_section_id,
     board_owner_t *board_owner,
     int is_owner,
-    summary_pin_media_t *media,
+    pin_media_t *media,
     pin_media_source_t *media_source,
     char *parent_pin_id,
     int is_standard,

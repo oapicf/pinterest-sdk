@@ -1,8 +1,7 @@
 const utils = require('../utils/utils');
-const AdCommon_tracking_urls = require('../models/AdCommon_tracking_urls');
-const CampaignSummaryStatus = require('../models/CampaignSummaryStatus');
 const EntityStatus = require('../models/EntityStatus');
 const ObjectiveType = require('../models/ObjectiveType');
+const TrackingUrls = require('../models/TrackingUrls');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -39,7 +38,7 @@ module.exports = {
                 label: `Order line ID that appears on the invoice. - [${labelPrefix}order_line_id]`,
                 type: 'string',
             },
-            ...AdCommon_tracking_urls.fields(`${keyPrefix}tracking_urls`, isInput),
+            ...TrackingUrls.fields(`${keyPrefix}tracking_urls`, isInput),
             {
                 key: `${keyPrefix}start_time`,
                 label: `Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. - [${labelPrefix}start_time]`,
@@ -49,10 +48,6 @@ module.exports = {
                 key: `${keyPrefix}end_time`,
                 label: `Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. - [${labelPrefix}end_time]`,
                 type: 'integer',
-            },
-            {
-                key: `${keyPrefix}summary_status`,
-                ...CampaignSummaryStatus.fields(`${keyPrefix}summary_status`, isInput),
             },
             {
                 key: `${keyPrefix}is_flexible_daily_budgets`,
@@ -84,10 +79,9 @@ module.exports = {
             'lifetime_spend_cap': bundle.inputData?.[`${keyPrefix}lifetime_spend_cap`],
             'daily_spend_cap': bundle.inputData?.[`${keyPrefix}daily_spend_cap`],
             'order_line_id': bundle.inputData?.[`${keyPrefix}order_line_id`],
-            'tracking_urls': utils.removeIfEmpty(AdCommon_tracking_urls.mapping(bundle, `${keyPrefix}tracking_urls`)),
+            'tracking_urls': utils.removeIfEmpty(TrackingUrls.mapping(bundle, `${keyPrefix}tracking_urls`)),
             'start_time': bundle.inputData?.[`${keyPrefix}start_time`],
             'end_time': bundle.inputData?.[`${keyPrefix}end_time`],
-            'summary_status': bundle.inputData?.[`${keyPrefix}summary_status`],
             'is_flexible_daily_budgets': bundle.inputData?.[`${keyPrefix}is_flexible_daily_budgets`],
             'default_ad_group_budget_in_micro_currency': bundle.inputData?.[`${keyPrefix}default_ad_group_budget_in_micro_currency`],
             'is_automated_campaign': bundle.inputData?.[`${keyPrefix}is_automated_campaign`],

@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CountryFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CountryFilter   {
-  private @Valid CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
+  private CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
 
   /**
    **/
@@ -30,8 +30,7 @@ public class CountryFilter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("COUNTRY")
-  @NotNull
-  public CatalogsProductGroupMultipleCountriesCriteria getCOUNTRY() {
+  @NotNull @Valid public CatalogsProductGroupMultipleCountriesCriteria getCOUNTRY() {
     return COUNTRY;
   }
 

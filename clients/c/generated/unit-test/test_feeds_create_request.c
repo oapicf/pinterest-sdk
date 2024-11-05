@@ -19,6 +19,7 @@ feeds_create_request_t* instantiate_feeds_create_request(int include_optional);
 #include "test_catalogs_feeds_create_request_default_locale.c"
 #include "test_catalogs_feed_credentials.c"
 #include "test_catalogs_feed_processing_schedule.c"
+#include "test_catalogs_status.c"
 
 
 feeds_create_request_t* instantiate_feeds_create_request(int include_optional) {
@@ -37,6 +38,7 @@ feeds_create_request_t* instantiate_feeds_create_request(int include_optional) {
       pinterest_rest_api_feeds_create_request__RETAIL,
       pinterest_rest_api_feeds_create_request__"US",
       pinterest_rest_api_feeds_create_request__IN_STOCK,
+      "0",
       "a"
     );
   } else {
@@ -51,6 +53,7 @@ feeds_create_request_t* instantiate_feeds_create_request(int include_optional) {
       pinterest_rest_api_feeds_create_request__RETAIL,
       pinterest_rest_api_feeds_create_request__"US",
       pinterest_rest_api_feeds_create_request__IN_STOCK,
+      "0",
       "a"
     );
   }

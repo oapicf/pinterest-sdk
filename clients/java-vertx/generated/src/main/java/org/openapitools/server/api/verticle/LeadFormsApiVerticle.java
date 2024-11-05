@@ -9,9 +9,12 @@ import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 
 import org.openapitools.server.api.model.Error;
+import org.openapitools.server.api.model.LeadFormArrayResponse;
+import org.openapitools.server.api.model.LeadFormCreateRequest;
 import org.openapitools.server.api.model.LeadFormResponse;
 import org.openapitools.server.api.model.LeadFormTestRequest;
 import org.openapitools.server.api.model.LeadFormTestResponse;
+import org.openapitools.server.api.model.LeadFormUpdateRequest;
 import org.openapitools.server.api.model.LeadFormsList200Response;
 import org.openapitools.server.api.MainApiException;
 
@@ -23,7 +26,9 @@ public class LeadFormsApiVerticle extends AbstractVerticle {
 
     static final String LEAD_FORM/GET_SERVICE_ID = "lead_form/get";
     static final String LEAD_FORM_TEST/CREATE_SERVICE_ID = "lead_form_test/create";
+    static final String LEAD_FORMS/CREATE_SERVICE_ID = "lead_forms/create";
     static final String LEAD_FORMS/LIST_SERVICE_ID = "lead_forms/list";
+    static final String LEAD_FORMS/UPDATE_SERVICE_ID = "lead_forms/update";
     
     final LeadFormsApi service;
 
@@ -108,6 +113,38 @@ public class LeadFormsApiVerticle extends AbstractVerticle {
             }
         });
         
+        //Consumer for lead_forms/create
+        vertx.eventBus().<JsonObject> consumer(LEAD_FORMS/CREATE_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "lead_forms/create";
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                if(adAccountIdParam == null) {
+                    manageError(message, new MainApiException(400, "ad_account_id is required"), serviceId);
+                    return;
+                }
+                String adAccountId = adAccountIdParam;
+                JsonArray leadFormCreateRequestParam = message.body().getJsonArray("LeadFormCreateRequest");
+                if(leadFormCreateRequestParam == null) {
+                    manageError(message, new MainApiException(400, "LeadFormCreateRequest is required"), serviceId);
+                    return;
+                }
+                List<LeadFormCreateRequest> leadFormCreateRequest = Json.mapper.readValue(leadFormCreateRequestParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, LeadFormCreateRequest.class));
+                service.leadFormsCreate(adAccountId, leadFormCreateRequest, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "lead_forms/create");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("lead_forms/create", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
         //Consumer for lead_forms/list
         vertx.eventBus().<JsonObject> consumer(LEAD_FORMS/LIST_SERVICE_ID).handler(message -> {
             try {
@@ -135,6 +172,38 @@ public class LeadFormsApiVerticle extends AbstractVerticle {
                 });
             } catch (Exception e) {
                 logUnexpectedError("lead_forms/list", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
+        
+        //Consumer for lead_forms/update
+        vertx.eventBus().<JsonObject> consumer(LEAD_FORMS/UPDATE_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "lead_forms/update";
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                if(adAccountIdParam == null) {
+                    manageError(message, new MainApiException(400, "ad_account_id is required"), serviceId);
+                    return;
+                }
+                String adAccountId = adAccountIdParam;
+                JsonArray leadFormUpdateRequestParam = message.body().getJsonArray("LeadFormUpdateRequest");
+                if(leadFormUpdateRequestParam == null) {
+                    manageError(message, new MainApiException(400, "LeadFormUpdateRequest is required"), serviceId);
+                    return;
+                }
+                List<LeadFormUpdateRequest> leadFormUpdateRequest = Json.mapper.readValue(leadFormUpdateRequestParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, LeadFormUpdateRequest.class));
+                service.leadFormsUpdate(adAccountId, leadFormUpdateRequest, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "lead_forms/update");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("lead_forms/update", e);
                 message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
             }
         });

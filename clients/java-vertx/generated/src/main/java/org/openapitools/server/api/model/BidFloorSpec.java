@@ -17,7 +17,7 @@ import org.openapitools.server.api.model.OptimizationGoalMetadata;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BidFloorSpec   {
   
-  private List<Country> countries;
+  private List<Country> countries = new ArrayList<>();
   private Currency currency;
   private ObjectiveType objectiveType;
   private ActionType billableEvent;

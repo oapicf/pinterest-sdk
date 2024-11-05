@@ -10,5 +10,5 @@ import org.openapitools.model.AdGroupArrayResponseElement;
 @Canonical
 class AdGroupArrayResponse {
     
-    List<AdGroupArrayResponseElement> items
+    List<AdGroupArrayResponseElement> items = new ArrayList<>()
 }

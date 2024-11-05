@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -19,21 +19,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.model.CatalogsVerticalProductGroup;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsList200Response   {
   
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<CatalogsVerticalProductGroup> items = new ArrayList<>();
   private String bookmark;
 
   /**
    */
-  public CatalogsProductGroupsList200Response items(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response items(List<CatalogsVerticalProductGroup> items) {
     this.items = items;
     return this;
   }
@@ -41,10 +41,10 @@ public class CatalogsProductGroupsList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<CatalogsVerticalProductGroup> getItems() {
     return items;
   }
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 

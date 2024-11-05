@@ -7,7 +7,7 @@
 
 pin_media_with_image_t *pin_media_with_image_create(
     char *media_type,
-    image_metadata_images_t *images
+    pin_media_with_image_all_of_images_t *images
     ) {
     pin_media_with_image_t *pin_media_with_image_local_var = malloc(sizeof(pin_media_with_image_t));
     if (!pin_media_with_image_local_var) {
@@ -30,7 +30,7 @@ void pin_media_with_image_free(pin_media_with_image_t *pin_media_with_image) {
         pin_media_with_image->media_type = NULL;
     }
     if (pin_media_with_image->images) {
-        image_metadata_images_free(pin_media_with_image->images);
+        pin_media_with_image_all_of_images_free(pin_media_with_image->images);
         pin_media_with_image->images = NULL;
     }
     free(pin_media_with_image);
@@ -49,7 +49,7 @@ cJSON *pin_media_with_image_convertToJSON(pin_media_with_image_t *pin_media_with
 
     // pin_media_with_image->images
     if(pin_media_with_image->images) {
-    cJSON *images_local_JSON = image_metadata_images_convertToJSON(pin_media_with_image->images);
+    cJSON *images_local_JSON = pin_media_with_image_all_of_images_convertToJSON(pin_media_with_image->images);
     if(images_local_JSON == NULL) {
     goto fail; //model
     }
@@ -72,7 +72,7 @@ pin_media_with_image_t *pin_media_with_image_parseFromJSON(cJSON *pin_media_with
     pin_media_with_image_t *pin_media_with_image_local_var = NULL;
 
     // define the local variable for pin_media_with_image->images
-    image_metadata_images_t *images_local_nonprim = NULL;
+    pin_media_with_image_all_of_images_t *images_local_nonprim = NULL;
 
     // pin_media_with_image->media_type
     cJSON *media_type = cJSON_GetObjectItemCaseSensitive(pin_media_with_imageJSON, "media_type");
@@ -86,7 +86,7 @@ pin_media_with_image_t *pin_media_with_image_parseFromJSON(cJSON *pin_media_with
     // pin_media_with_image->images
     cJSON *images = cJSON_GetObjectItemCaseSensitive(pin_media_with_imageJSON, "images");
     if (images) { 
-    images_local_nonprim = image_metadata_images_parseFromJSON(images); //nonprimitive
+    images_local_nonprim = pin_media_with_image_all_of_images_parseFromJSON(images); //nonprimitive
     }
 
 
@@ -98,7 +98,7 @@ pin_media_with_image_t *pin_media_with_image_parseFromJSON(cJSON *pin_media_with
     return pin_media_with_image_local_var;
 end:
     if (images_local_nonprim) {
-        image_metadata_images_free(images_local_nonprim);
+        pin_media_with_image_all_of_images_free(images_local_nonprim);
         images_local_nonprim = NULL;
     }
     return NULL;

@@ -23,7 +23,7 @@ data class CountryFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("COUNTRY", required = true) val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
-) {
+    ) {
 
 }
 

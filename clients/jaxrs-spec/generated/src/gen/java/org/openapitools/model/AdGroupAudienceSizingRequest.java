@@ -22,10 +22,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupAudienceSizingRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingRequest   {
-  private @Valid Boolean autoTargetingEnabled = true;
-  private @Valid PlacementGroupType placementGroup = "ALL";
+  private Boolean autoTargetingEnabled = true;
+  private PlacementGroupType placementGroup = "ALL";
   public enum CreativeTypesEnum {
 
     REGULAR(String.valueOf("REGULAR")), VIDEO(String.valueOf("VIDEO")), SHOPPING(String.valueOf("SHOPPING")), CAROUSEL(String.valueOf("CAROUSEL")), MAX_VIDEO(String.valueOf("MAX_VIDEO")), SHOP_THE_PIN(String.valueOf("SHOP_THE_PIN")), COLLECTION(String.valueOf("COLLECTION")), IDEA(String.valueOf("IDEA"));
@@ -74,7 +74,7 @@ public class AdGroupAudienceSizingRequest   {
 }
 
   private @Valid List<CreativeTypesEnum> creativeTypes;
-  private @Valid TargetingSpec targetingSpec;
+  private TargetingSpec targetingSpec;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> productGroupIds;
   private @Valid List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords;
 
@@ -164,7 +164,7 @@ public class AdGroupAudienceSizingRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
+  @Valid public TargetingSpec getTargetingSpec() {
     return targetingSpec;
   }
 
@@ -220,7 +220,7 @@ public class AdGroupAudienceSizingRequest   {
   
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
   @JsonProperty("keywords")
-  public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
+  @Valid public List<@Valid AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
     return keywords;
   }
 

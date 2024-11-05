@@ -21,23 +21,6 @@ pinterest_rest_api_product_group_promotion__e product_group_promotion_status_Fro
     }
     return 0;
 }
-char* product_group_promotion_creative_type_ToString(pinterest_rest_api_product_group_promotion__e creative_type) {
-    char* creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ" };
-    return creative_typeArray[creative_type];
-}
-
-pinterest_rest_api_product_group_promotion__e product_group_promotion_creative_type_FromString(char* creative_type){
-    int stringToReturn = 0;
-    char *creative_typeArray[] =  { "NULL", "REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA", "SHOWCASE", "QUIZ" };
-    size_t sizeofArray = sizeof(creative_typeArray) / sizeof(creative_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(creative_type, creative_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 char* product_group_promotion_grid_click_type_ToString(pinterest_rest_api_product_group_promotion__e grid_click_type) {
     char* grid_click_typeArray[] =  { "NULL", "CLOSEUP", "DIRECT_TO_DESTINATION" };
     return grid_click_typeArray[grid_click_type];
@@ -71,7 +54,6 @@ product_group_promotion_t *product_group_promotion_create(
     char *tracking_url,
     char *catalog_product_group_id,
     char *catalog_product_group_name,
-    creative_type_t *creative_type,
     char *collections_hero_pin_id,
     char *collections_hero_destination_url,
     grid_click_type_t *grid_click_type
@@ -94,7 +76,6 @@ product_group_promotion_t *product_group_promotion_create(
     product_group_promotion_local_var->tracking_url = tracking_url;
     product_group_promotion_local_var->catalog_product_group_id = catalog_product_group_id;
     product_group_promotion_local_var->catalog_product_group_name = catalog_product_group_name;
-    product_group_promotion_local_var->creative_type = creative_type;
     product_group_promotion_local_var->collections_hero_pin_id = collections_hero_pin_id;
     product_group_promotion_local_var->collections_hero_destination_url = collections_hero_destination_url;
     product_group_promotion_local_var->grid_click_type = grid_click_type;
@@ -151,10 +132,6 @@ void product_group_promotion_free(product_group_promotion_t *product_group_promo
     if (product_group_promotion->catalog_product_group_name) {
         free(product_group_promotion->catalog_product_group_name);
         product_group_promotion->catalog_product_group_name = NULL;
-    }
-    if (product_group_promotion->creative_type) {
-        creative_type_free(product_group_promotion->creative_type);
-        product_group_promotion->creative_type = NULL;
     }
     if (product_group_promotion->collections_hero_pin_id) {
         free(product_group_promotion->collections_hero_pin_id);
@@ -291,19 +268,6 @@ cJSON *product_group_promotion_convertToJSON(product_group_promotion_t *product_
     }
 
 
-    // product_group_promotion->creative_type
-    if(product_group_promotion->creative_type != pinterest_rest_api_product_group_promotion__NULL) {
-    cJSON *creative_type_local_JSON = creative_type_convertToJSON(product_group_promotion->creative_type);
-    if(creative_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "creative_type", creative_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-    }
-
-
     // product_group_promotion->collections_hero_pin_id
     if(product_group_promotion->collections_hero_pin_id) {
     if(cJSON_AddStringToObject(item, "collections_hero_pin_id", product_group_promotion->collections_hero_pin_id) == NULL) {
@@ -346,9 +310,6 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
 
     // define the local variable for product_group_promotion->status
     entity_status_t *status_local_nonprim = NULL;
-
-    // define the local variable for product_group_promotion->creative_type
-    creative_type_t *creative_type_local_nonprim = NULL;
 
     // define the local variable for product_group_promotion->grid_click_type
     grid_click_type_t *grid_click_type_local_nonprim = NULL;
@@ -476,12 +437,6 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
     }
     }
 
-    // product_group_promotion->creative_type
-    cJSON *creative_type = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "creative_type");
-    if (creative_type) { 
-    creative_type_local_nonprim = creative_type_parseFromJSON(creative_type); //custom
-    }
-
     // product_group_promotion->collections_hero_pin_id
     cJSON *collections_hero_pin_id = cJSON_GetObjectItemCaseSensitive(product_group_promotionJSON, "collections_hero_pin_id");
     if (collections_hero_pin_id) { 
@@ -522,7 +477,6 @@ product_group_promotion_t *product_group_promotion_parseFromJSON(cJSON *product_
         tracking_url && !cJSON_IsNull(tracking_url) ? strdup(tracking_url->valuestring) : NULL,
         catalog_product_group_id && !cJSON_IsNull(catalog_product_group_id) ? strdup(catalog_product_group_id->valuestring) : NULL,
         catalog_product_group_name && !cJSON_IsNull(catalog_product_group_name) ? strdup(catalog_product_group_name->valuestring) : NULL,
-        creative_type ? creative_type_local_nonprim : NULL,
         collections_hero_pin_id && !cJSON_IsNull(collections_hero_pin_id) ? strdup(collections_hero_pin_id->valuestring) : NULL,
         collections_hero_destination_url && !cJSON_IsNull(collections_hero_destination_url) ? strdup(collections_hero_destination_url->valuestring) : NULL,
         grid_click_type ? grid_click_type_local_nonprim : NULL
@@ -533,10 +487,6 @@ end:
     if (status_local_nonprim) {
         entity_status_free(status_local_nonprim);
         status_local_nonprim = NULL;
-    }
-    if (creative_type_local_nonprim) {
-        creative_type_free(creative_type_local_nonprim);
-        creative_type_local_nonprim = NULL;
     }
     if (grid_click_type_local_nonprim) {
         grid_click_type_free(grid_click_type_local_nonprim);

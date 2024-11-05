@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,6 +21,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
@@ -32,7 +33,7 @@ import org.openapitools.model.ProductAvailabilityType;
  */
 
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedsCreateRequest   {
   
   private NullableCurrency defaultCurrency;
@@ -44,6 +45,7 @@ public class CatalogsFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
+  private CatalogsStatus status;
 
   /**
    */
@@ -200,6 +202,23 @@ public class CatalogsFeedsCreateRequest   {
     this.defaultAvailability = defaultAvailability;
   }
 
+  /**
+   */
+  public CatalogsFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -218,12 +237,13 @@ public class CatalogsFeedsCreateRequest   {
         Objects.equals(location, catalogsFeedsCreateRequest.location) &&
         Objects.equals(preferredProcessingSchedule, catalogsFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(defaultCountry, catalogsFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability);
+        Objects.equals(defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(status, catalogsFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -240,6 +260,7 @@ public class CatalogsFeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

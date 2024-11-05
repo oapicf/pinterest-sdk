@@ -20,26 +20,30 @@ case class AdGroupCreateRequest (
   budgetInMicroCurrency: Option[Integer],
 /* Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC. */
   bidInMicroCurrency: Option[Integer],
-optimizationGoalMetadata: Option[AdGroupCommonOptimizationGoalMetadata],
+/* Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. */
+  optimizationGoalMetadata: Option[OptimizationGoalMetadata],
 budgetType: Option[BudgetType],
 /* Ad group start time. Unix timestamp in seconds. Defaults to current time. */
   startTime: Option[Integer],
 /* Ad group end time. Unix timestamp in seconds. */
   endTime: Option[Integer],
 targetingSpec: Option[TargetingSpec],
-/* Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. */
+/* Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. */
   lifetimeFrequencyCap: Option[Integer],
-trackingUrls: Option[AdGroupCommonTrackingUrls],
+/* Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. */
+  trackingUrls: Option[TrackingUrls],
 /* Enable auto-targeting for ad group.Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
   autoTargetingEnabled: Option[Boolean],
-/* <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>. */
+/* <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
   placementGroup: Option[PlacementGroupType],
 pacingDeliveryType: Option[PacingDeliveryType],
 /* Campaign ID of the ad group. */
   campaignId: String,
 billableEvent: ActionType,
-/* Bid strategy type */
-  bidStrategyType: Option[BidStrategyType])
+/* Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID. */
+  bidStrategyType: Option[BidStrategyType],
+/* Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0']. */
+  targetingTemplateIds: Option[List[String]])
 
 object AdGroupCreateRequest {
   import DateTimeCodecs._
@@ -47,14 +51,12 @@ object AdGroupCreateRequest {
   case object AUTOMATICBID extends BidStrategyType
   case object MAXBID extends BidStrategyType
   case object TARGETAVG extends BidStrategyType
-  case object `Null` extends BidStrategyType
 
   object BidStrategyType {
     def toBidStrategyType(s: String): Option[BidStrategyType] = s match {
       case "AUTOMATICBID" => Some(AUTOMATICBID)
       case "MAXBID" => Some(MAXBID)
       case "TARGETAVG" => Some(TARGETAVG)
-      case "`Null`" => Some(`Null`)
       case _ => None
     }
 
@@ -62,7 +64,6 @@ object AdGroupCreateRequest {
       case AUTOMATICBID => "AUTOMATICBID"
       case MAXBID => "MAXBID"
       case TARGETAVG => "TARGETAVG"
-      case `Null` => "`Null`"
     }
   }
 

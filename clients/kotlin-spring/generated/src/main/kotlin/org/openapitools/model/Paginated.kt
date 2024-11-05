@@ -26,7 +26,7 @@ data class Paginated(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null
-) {
+    ) {
 
 }
 

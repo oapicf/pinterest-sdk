@@ -18,7 +18,7 @@ import java.util.List;
  * TargetingSpecSHOPPINGRETARGETING
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TargetingSpecSHOPPINGRETARGETING   {
   @JsonProperty("lookback_window")
   private Integer lookbackWindow;
@@ -35,10 +35,10 @@ public class TargetingSpecSHOPPINGRETARGETING   {
     return this;
   }
 
-   /**
+  /**
    * Number of days ago to start lookback timeframe for dynamic retargeting
    * @return lookbackWindow
-  **/
+   */
   @ApiModelProperty(example = "30", value = "Number of days ago to start lookback timeframe for dynamic retargeting")
   public Integer getLookbackWindow() {
     return lookbackWindow;
@@ -61,10 +61,10 @@ public class TargetingSpecSHOPPINGRETARGETING   {
     return this;
   }
 
-   /**
+  /**
    * Event types to target for dynamic retargeting
    * @return tagTypes
-  **/
+   */
   @ApiModelProperty(example = "[0,6]", value = "Event types to target for dynamic retargeting")
   public List<Integer> getTagTypes() {
     return tagTypes;
@@ -79,10 +79,10 @@ public class TargetingSpecSHOPPINGRETARGETING   {
     return this;
   }
 
-   /**
+  /**
    * Number of days ago to stop lookback timeframe for dynamic retargeting
    * @return exclusionWindow
-  **/
+   */
   @ApiModelProperty(example = "14", value = "Number of days ago to stop lookback timeframe for dynamic retargeting")
   public Integer getExclusionWindow() {
     return exclusionWindow;

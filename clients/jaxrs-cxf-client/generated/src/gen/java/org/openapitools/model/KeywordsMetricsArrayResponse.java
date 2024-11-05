@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class KeywordsMetricsArrayResponse  {
   
   @ApiModelProperty(value = "")
-  private List<KeywordMetricsResponse> data;
+  private List<KeywordMetricsResponse> data = new ArrayList<>();
  /**
    * Get data
    * @return data

@@ -16,7 +16,7 @@ import org.openapitools.model.TrendType;
 import org.openapitools.model.TrendingKeywordsResponse;
 import org.openapitools.model.TrendsSupportedRegion;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -25,7 +25,7 @@ public class TrendsController  {
    **/
 
   /*
-    public ResponseContext trendingKeywordsList(RequestContext request , TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, Boolean normalizeAgainstGroup, Integer limit) {
+    public ResponseContext trendingKeywordsList(RequestContext request , TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

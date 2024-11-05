@@ -64,7 +64,6 @@ module NullableCatalogsItemFieldType =
   let MINADPRICEEnum = "MIN_AD_PRICE"
   let SHIPPINGWIDTHEnum = "SHIPPING_WIDTH"
   let SHIPPINGHEIGHTEnum = "SHIPPING_HEIGHT"
-  let NullEnum = "null"
   type NullableCatalogsItemFieldType = string
 
   //#endregion

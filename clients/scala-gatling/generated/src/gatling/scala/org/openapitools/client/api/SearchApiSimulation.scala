@@ -74,11 +74,11 @@ class SearchApiSimulation extends Simulation {
         .feed(search_partner_pinsQUERYFeeder)
         .exec(http("searchPartnerPins")
         .httpRequest("GET","/search/partner/pins")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("term","${term}")
-        .queryParam("country_code","${country_code}")
-        .queryParam("locale","${locale}")
         .queryParam("limit","${limit}")
+        .queryParam("country_code","${country_code}")
+        .queryParam("term","${term}")
+        .queryParam("locale","${locale}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnsearchPartnerPins with warm up and reach a constant rate for entire duration
@@ -95,8 +95,8 @@ class SearchApiSimulation extends Simulation {
         .httpRequest("GET","/search/boards")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("query","${query}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnsearchUserBoardsGet with warm up and reach a constant rate for entire duration
@@ -112,8 +112,8 @@ class SearchApiSimulation extends Simulation {
         .exec(http("searchUserPinsList")
         .httpRequest("GET","/search/pins")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("query","${query}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnsearchUserPinsList with warm up and reach a constant rate for entire duration

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **UserAccountId** | Pointer to **string** | User account used to subscribe lead data. | [optional] 
 **AdAccountId** | Pointer to **string** | The Ad Account ID that this lead form belongs to. | [optional] 
 **ApiVersion** | Pointer to **string** | API version. | [optional] 
-**CryptographicKey** | Pointer to **string** | Base64 encoded key for client to decrypt lead data. | [optional] 
-**CryptographicAlgorithm** | Pointer to **string** | Lead data encryption algorithm. | [optional] 
+**CryptographicKey** | Pointer to **NullableString** | Base64 encoded key for client to decrypt lead data. | [optional] 
+**CryptographicAlgorithm** | Pointer to **NullableString** | Lead data encryption algorithm. | [optional] 
 **CreatedTime** | Pointer to **int32** | Lead form creation time. Unix timestamp in milliseconds. | [optional] 
 
 ## Methods
@@ -218,6 +218,16 @@ SetCryptographicKey sets CryptographicKey field to given value.
 
 HasCryptographicKey returns a boolean if a field has been set.
 
+### SetCryptographicKeyNil
+
+`func (o *AdAccountGetSubscriptionResponse) SetCryptographicKeyNil(b bool)`
+
+ SetCryptographicKeyNil sets the value for CryptographicKey to be an explicit nil
+
+### UnsetCryptographicKey
+`func (o *AdAccountGetSubscriptionResponse) UnsetCryptographicKey()`
+
+UnsetCryptographicKey ensures that no value is present for CryptographicKey, not even an explicit nil
 ### GetCryptographicAlgorithm
 
 `func (o *AdAccountGetSubscriptionResponse) GetCryptographicAlgorithm() string`
@@ -243,6 +253,16 @@ SetCryptographicAlgorithm sets CryptographicAlgorithm field to given value.
 
 HasCryptographicAlgorithm returns a boolean if a field has been set.
 
+### SetCryptographicAlgorithmNil
+
+`func (o *AdAccountGetSubscriptionResponse) SetCryptographicAlgorithmNil(b bool)`
+
+ SetCryptographicAlgorithmNil sets the value for CryptographicAlgorithm to be an explicit nil
+
+### UnsetCryptographicAlgorithm
+`func (o *AdAccountGetSubscriptionResponse) UnsetCryptographicAlgorithm()`
+
+UnsetCryptographicAlgorithm ensures that no value is present for CryptographicAlgorithm, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *AdAccountGetSubscriptionResponse) GetCreatedTime() int32`

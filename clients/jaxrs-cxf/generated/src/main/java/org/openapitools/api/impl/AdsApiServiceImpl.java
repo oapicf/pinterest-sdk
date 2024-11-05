@@ -7,8 +7,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsResponseInner;
-import org.openapitools.model.AdsAnalyticsTargetingType;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.ConversionReportAttributionType;
 import org.openapitools.model.Error;
@@ -39,7 +39,7 @@ public class AdsApiServiceImpl implements AdsApi {
     /**
      * Create ad preview with pin or image
      *
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      *
      */
     public AdPreviewURLResponse adPreviewsCreate(String adAccountId, AdPreviewRequest adPreviewRequest) {
@@ -54,7 +54,7 @@ public class AdsApiServiceImpl implements AdsApi {
      * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      *
      */
-    public MetricsResponse adTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
+    public MetricsResponse adTargetingAnalyticsGet(String adAccountId, List<@Pattern(regexp = "^\\d+$")String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
         // TODO: Implement...
 
         return null;
@@ -63,10 +63,10 @@ public class AdsApiServiceImpl implements AdsApi {
     /**
      * Get ad analytics
      *
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      *
      */
-    public List<AdsAnalyticsResponseInner> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")String> adIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) {
+    public List<AdsAnalyticsResponseInner> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<@Pattern(regexp = "^\\d+$")String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<@Pattern(regexp = "^\\d+$")String> pinIds, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds) {
         // TODO: Implement...
 
         return null;
@@ -78,7 +78,7 @@ public class AdsApiServiceImpl implements AdsApi {
      * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
      *
      */
-    public AdArrayResponse adsCreate(String adAccountId, List<AdCreateRequest> adCreateRequest) {
+    public AdArrayResponse adsCreate(String adAccountId, List<@Valid AdCreateRequest> adCreateRequest) {
         // TODO: Implement...
 
         return null;
@@ -114,7 +114,7 @@ public class AdsApiServiceImpl implements AdsApi {
      * Update multiple existing ads
      *
      */
-    public AdArrayResponse adsUpdate(String adAccountId, List<AdUpdateRequest> adUpdateRequest) {
+    public AdArrayResponse adsUpdate(String adAccountId, List<@Valid AdUpdateRequest> adUpdateRequest) {
         // TODO: Implement...
 
         return null;

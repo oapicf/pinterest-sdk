@@ -815,7 +815,7 @@ static bool trendingKeywordsListProcessor(MemoryStruct_s p_chunk, long code, cha
 }
 
 static bool trendingKeywordsListHelper(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -857,6 +857,15 @@ static bool trendingKeywordsListHelper(char * accessToken,
 			continue;
 		}
 		queryParams.insert(pair<string, string>("ages", itemAt));
+	}
+	
+	for (std::list
+	<std::string>::iterator queryIter = includeKeywords.begin(); queryIter != includeKeywords.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("includeKeywords", itemAt));
 	}
 	
 
@@ -939,22 +948,22 @@ static bool trendingKeywordsListHelper(char * accessToken,
 
 
 bool KeywordsManager::trendingKeywordsListAsync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData)
 {
 	return trendingKeywordsListHelper(accessToken,
-	region, trendType, interests, genders, ages, normalizeAgainstGroup, limit, 
+	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, 
 	handler, userData, true);
 }
 
 bool KeywordsManager::trendingKeywordsListSync(char * accessToken,
-	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, bool normalizeAgainstGroup, int limit, 
+	TrendsSupportedRegion region, TrendType trendType, std::list<std::string> interests, std::list<std::string> genders, std::list<std::string> ages, std::list<std::string> includeKeywords, bool normalizeAgainstGroup, int limit, 
 	void(* handler)(TrendingKeywordsResponse, Error, void* )
 	, void* userData)
 {
 	return trendingKeywordsListHelper(accessToken,
-	region, trendType, interests, genders, ages, normalizeAgainstGroup, limit, 
+	region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, 
 	handler, userData, false);
 }
 

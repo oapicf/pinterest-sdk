@@ -10,7 +10,7 @@ The class is defined in **[PinMediaWithVideo.java](../../src/main/java/org/opena
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [`ImageMetadataImages`](ImageMetadataImages.md) |  |  [optional property]
+**images** | [`PinMediaWithImageAllOfImages`](PinMediaWithImageAllOfImages.md) |  |  [optional property]
 **coverImageUrl** | `String` |  |  [optional property]
 **videoUrl** | `String` | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. |  [optional property]
 **duration** | `BigDecimal` | Duration (in milliseconds) |  [optional property]

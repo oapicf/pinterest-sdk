@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,12 +19,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Refers ads entity type
 * Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD
 */
-enum class BulkEntityType(val value: kotlin.String) {
+enum class BulkEntityType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("CAMPAIGN") CAMPAIGN("CAMPAIGN"),
-    @JsonProperty("AD_GROUP") AD_GROUP("AD_GROUP"),
-    @JsonProperty("PRODUCT_GROUP") PRODUCT_GROUP("PRODUCT_GROUP"),
-    @JsonProperty("AD") AD("AD"),
-    @JsonProperty("KEYWORD") KEYWORD("KEYWORD")
+    CAMPAIGN("CAMPAIGN"),
+    AD_GROUP("AD_GROUP"),
+    PRODUCT_GROUP("PRODUCT_GROUP"),
+    AD("AD"),
+    KEYWORD("KEYWORD");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): BulkEntityType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

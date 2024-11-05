@@ -39,5 +39,8 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
     @Json(name = "view_window_days")
     val viewWindowDays: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

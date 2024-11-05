@@ -11,7 +11,7 @@ Protected Class BillingApi
 		  // Invokes BillingApiCallbackHandler.AdsCreditRedeemCallback(AdsCreditRedeemResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/ads_credit/redeem
-		  // - Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+		  // - Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -140,12 +140,12 @@ Protected Class BillingApi
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes BillingApiCallbackHandler.AdsCreditsDiscountsGetCallback(AdsCreditsDiscountsGet200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/ads_credit/discounts
-		  // - Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+		  // - Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -280,12 +280,12 @@ Protected Class BillingApi
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter isActive: (query) Return active billing profiles, if false return all billing profiles. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes BillingApiCallbackHandler.BillingProfilesGetCallback(BillingProfilesGet200Response) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/billing_profiles
-		  // - Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+		  // - Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -819,7 +819,7 @@ Protected Class BillingApi
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes BillingApiCallbackHandler.SsioInsertionOrdersStatusGetByAdAccountCallback(SsioInsertionOrdersStatusGetByAdAccount200Response) on completion. 
 		  //
@@ -1094,7 +1094,7 @@ Protected Class BillingApi
 		  // - 
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter pinOrderId: (query) The pin order id associated with the ssio insertino order (optional, default to Sample)
 		  //
 		  // Invokes BillingApiCallbackHandler.SsioOrderLinesGetByAdAccountCallback(SsioOrderLinesGetByAdAccount200Response) on completion. 

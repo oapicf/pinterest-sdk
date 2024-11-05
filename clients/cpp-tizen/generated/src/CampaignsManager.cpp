@@ -109,7 +109,7 @@ static bool campaignTargetingAnalyticsGetProcessor(MemoryStruct_s p_chunk, long 
 }
 
 static bool campaignTargetingAnalyticsGetHelper(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -141,8 +141,8 @@ static bool campaignTargetingAnalyticsGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("end_date", itemAtq));
 
 	for (std::list
-	<AdsAnalyticsTargetingType>::iterator queryIter = targetingTypes.begin(); queryIter != targetingTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "AdsAnalyticsTargetingType");
+	<AdsAnalyticsCampaignTargetingType>::iterator queryIter = targetingTypes.begin(); queryIter != targetingTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "AdsAnalyticsCampaignTargetingType");
 		queryParams.insert(pair<string, string>("targetingTypes", itemAt));
 	}
 	
@@ -251,7 +251,7 @@ static bool campaignTargetingAnalyticsGetHelper(char * accessToken,
 
 
 bool CampaignsManager::campaignTargetingAnalyticsGetAsync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {
@@ -261,7 +261,7 @@ bool CampaignsManager::campaignTargetingAnalyticsGetAsync(char * accessToken,
 }
 
 bool CampaignsManager::campaignTargetingAnalyticsGetSync(char * accessToken,
-	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, std::list<std::string> campaignIds, Date startDate, Date endDate, std::list<AdsAnalyticsCampaignTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {

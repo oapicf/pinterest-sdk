@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -18,6 +18,7 @@ import public "models/availability_filter.proto";
 import public "models/brand_filter.proto";
 import public "models/catalogs_product_group_currency_criteria.proto";
 import public "models/catalogs_product_group_multiple_gender_criteria.proto";
+import public "models/catalogs_product_group_multiple_media_types_criteria.proto";
 import public "models/catalogs_product_group_multiple_string_criteria.proto";
 import public "models/catalogs_product_group_multiple_string_list_criteria.proto";
 import public "models/catalogs_product_group_pricing_criteria.proto";
@@ -39,7 +40,9 @@ import public "models/google_product_category6_filter.proto";
 import public "models/item_group_id_filter.proto";
 import public "models/item_id_filter.proto";
 import public "models/max_price_filter.proto";
+import public "models/media_type_filter.proto";
 import public "models/min_price_filter.proto";
+import public "models/product_group_reference_filter.proto";
 import public "models/product_type0_filter.proto";
 import public "models/product_type1_filter.proto";
 import public "models/product_type2_filter.proto";
@@ -76,6 +79,8 @@ message CatalogsProductGroupFilterKeys {
 
   CatalogsProductGroupMultipleGenderCriteria GENDER = 488171204;
 
+  CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE = 229834030;
+
   CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_4 = 500799967;
 
   CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3 = 500799966;
@@ -99,5 +104,7 @@ message CatalogsProductGroupFilterKeys {
   CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1 = 454792809;
 
   CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0 = 454792808;
+
+  CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP = 38576881;
 
 }

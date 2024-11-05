@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.MatchTypeResponse
@@ -19,12 +20,12 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param matchType 
  * @param &#x60;value&#x60; Keyword value (120 chars max).
+ * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  * @param archived 
  * @param id Keyword ID .
  * @param parentId Keyword parent entity ID (advertiser, campaign, ad group).
  * @param parentType Parent entity type
  * @param type Always keyword
- * @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
 data class Keyword(
 
@@ -34,6 +35,9 @@ data class Keyword(
 
     @Schema(example = "null", required = true, description = "Keyword value (120 chars max).")
     @get:JsonProperty("value", required = true) val `value`: kotlin.String,
+
+    @Schema(example = "null", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+    @get:JsonProperty("bid") val bid: kotlin.Int? = null,
 
     @Schema(example = "false", description = "")
     @get:JsonProperty("archived") val archived: kotlin.Boolean? = null,
@@ -50,11 +54,8 @@ data class Keyword(
     @get:JsonProperty("parent_type") val parentType: kotlin.String? = null,
 
     @Schema(example = "keyword", description = "Always keyword")
-    @get:JsonProperty("type") val type: kotlin.String? = null,
-
-    @Schema(example = "200000", description = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
-    @get:JsonProperty("bid") val bid: kotlin.Int? = null
-) {
+    @get:JsonProperty("type") val type: kotlin.String? = null
+    ) {
 
 }
 

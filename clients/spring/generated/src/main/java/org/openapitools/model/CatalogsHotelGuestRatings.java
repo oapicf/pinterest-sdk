@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelGuestRatings", description = "If specified, you must provide all properties")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelGuestRatings {
 
   private BigDecimal score;
@@ -39,7 +39,7 @@ public class CatalogsHotelGuestRatings {
   /**
    * Your hotel's rating.
    * @return score
-  */
+   */
   @Valid 
   @Schema(name = "score", description = "Your hotel's rating.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("score")
@@ -59,7 +59,7 @@ public class CatalogsHotelGuestRatings {
   /**
    * Total number of people who have rated this hotel.
    * @return numberOfReviewers
-  */
+   */
   
   @Schema(name = "number_of_reviewers", description = "Total number of people who have rated this hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("number_of_reviewers")
@@ -79,7 +79,7 @@ public class CatalogsHotelGuestRatings {
   /**
    * Max value for the hotel rating score.
    * @return maxScore
-  */
+   */
   @Valid 
   @Schema(name = "max_score", description = "Max value for the hotel rating score.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("max_score")
@@ -99,7 +99,7 @@ public class CatalogsHotelGuestRatings {
   /**
    * System you use for guest reviews.
    * @return ratingSystem
-  */
+   */
   
   @Schema(name = "rating_system", description = "System you use for guest reviews.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rating_system")

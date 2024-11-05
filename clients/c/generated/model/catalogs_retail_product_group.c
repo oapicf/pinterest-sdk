@@ -55,23 +55,6 @@ pinterest_rest_api_catalogs_retail_product_group__e catalogs_retail_product_grou
     }
     return 0;
 }
-char* catalogs_retail_product_group_feed_id_ToString(pinterest_rest_api_catalogs_retail_product_group_FEEDID_e feed_id) {
-    char* feed_idArray[] =  { "NULL", "" };
-    return feed_idArray[feed_id];
-}
-
-pinterest_rest_api_catalogs_retail_product_group_FEEDID_e catalogs_retail_product_group_feed_id_FromString(char* feed_id){
-    int stringToReturn = 0;
-    char *feed_idArray[] =  { "NULL", "" };
-    size_t sizeofArray = sizeof(feed_idArray) / sizeof(feed_idArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(feed_id, feed_idArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 catalogs_retail_product_group_t *catalogs_retail_product_group_create(
     pinterest_rest_api_catalogs_retail_product_group_CATALOGTYPE_e catalog_type,
@@ -84,7 +67,10 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_create(
     catalogs_product_group_status_t *status,
     int created_at,
     int updated_at,
-    pinterest_rest_api_catalogs_retail_product_group_FEEDID_e feed_id
+    char *catalog_id,
+    char *feed_id,
+    char *country,
+    char *locale
     ) {
     catalogs_retail_product_group_t *catalogs_retail_product_group_local_var = malloc(sizeof(catalogs_retail_product_group_t));
     if (!catalogs_retail_product_group_local_var) {
@@ -100,7 +86,10 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_create(
     catalogs_retail_product_group_local_var->status = status;
     catalogs_retail_product_group_local_var->created_at = created_at;
     catalogs_retail_product_group_local_var->updated_at = updated_at;
+    catalogs_retail_product_group_local_var->catalog_id = catalog_id;
     catalogs_retail_product_group_local_var->feed_id = feed_id;
+    catalogs_retail_product_group_local_var->country = country;
+    catalogs_retail_product_group_local_var->locale = locale;
 
     return catalogs_retail_product_group_local_var;
 }
@@ -134,6 +123,22 @@ void catalogs_retail_product_group_free(catalogs_retail_product_group_t *catalog
     if (catalogs_retail_product_group->status) {
         catalogs_product_group_status_free(catalogs_retail_product_group->status);
         catalogs_retail_product_group->status = NULL;
+    }
+    if (catalogs_retail_product_group->catalog_id) {
+        free(catalogs_retail_product_group->catalog_id);
+        catalogs_retail_product_group->catalog_id = NULL;
+    }
+    if (catalogs_retail_product_group->feed_id) {
+        free(catalogs_retail_product_group->feed_id);
+        catalogs_retail_product_group->feed_id = NULL;
+    }
+    if (catalogs_retail_product_group->country) {
+        free(catalogs_retail_product_group->country);
+        catalogs_retail_product_group->country = NULL;
+    }
+    if (catalogs_retail_product_group->locale) {
+        free(catalogs_retail_product_group->locale);
+        catalogs_retail_product_group->locale = NULL;
     }
     free(catalogs_retail_product_group);
 }
@@ -240,13 +245,37 @@ cJSON *catalogs_retail_product_group_convertToJSON(catalogs_retail_product_group
     }
 
 
-    // catalogs_retail_product_group->feed_id
-    if (pinterest_rest_api_catalogs_retail_product_group_FEEDID_NULL == catalogs_retail_product_group->feed_id) {
+    // catalogs_retail_product_group->catalog_id
+    if (!catalogs_retail_product_group->catalog_id) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "feed_id", feed_idcatalogs_retail_product_group_ToString(catalogs_retail_product_group->feed_id)) == NULL)
-    {
-    goto fail; //Enum
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_retail_product_group->catalog_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // catalogs_retail_product_group->feed_id
+    if (!catalogs_retail_product_group->feed_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "feed_id", catalogs_retail_product_group->feed_id) == NULL) {
+    goto fail; //String
+    }
+
+
+    // catalogs_retail_product_group->country
+    if(catalogs_retail_product_group->country) {
+    if(cJSON_AddStringToObject(item, "country", catalogs_retail_product_group->country) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // catalogs_retail_product_group->locale
+    if(catalogs_retail_product_group->locale) {
+    if(cJSON_AddStringToObject(item, "locale", catalogs_retail_product_group->locale) == NULL) {
+    goto fail; //String
+    }
     }
 
     return item;
@@ -362,19 +391,47 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_parseFromJSON(cJS
     }
     }
 
+    // catalogs_retail_product_group->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_product_groupJSON, "catalog_id");
+    if (!catalog_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(catalog_id))
+    {
+    goto end; //String
+    }
+
     // catalogs_retail_product_group->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_product_groupJSON, "feed_id");
     if (!feed_id) {
         goto end;
     }
 
-    pinterest_rest_api_catalogs_retail_product_group_FEEDID_e feed_idVariable;
     
     if(!cJSON_IsString(feed_id))
     {
-    goto end; //Enum
+    goto end; //String
     }
-    feed_idVariable = catalogs_retail_product_group_feed_id_FromString(feed_id->valuestring);
+
+    // catalogs_retail_product_group->country
+    cJSON *country = cJSON_GetObjectItemCaseSensitive(catalogs_retail_product_groupJSON, "country");
+    if (country) { 
+    if(!cJSON_IsString(country) && !cJSON_IsNull(country))
+    {
+    goto end; //String
+    }
+    }
+
+    // catalogs_retail_product_group->locale
+    cJSON *locale = cJSON_GetObjectItemCaseSensitive(catalogs_retail_product_groupJSON, "locale");
+    if (locale) { 
+    if(!cJSON_IsString(locale) && !cJSON_IsNull(locale))
+    {
+    goto end; //String
+    }
+    }
 
 
     catalogs_retail_product_group_local_var = catalogs_retail_product_group_create (
@@ -388,7 +445,10 @@ catalogs_retail_product_group_t *catalogs_retail_product_group_parseFromJSON(cJS
         status ? status_local_nonprim : NULL,
         created_at ? created_at->valuedouble : 0,
         updated_at ? updated_at->valuedouble : 0,
-        feed_idVariable
+        strdup(catalog_id->valuestring),
+        strdup(feed_id->valuestring),
+        country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
+        locale && !cJSON_IsNull(locale) ? strdup(locale->valuestring) : NULL
         );
 
     return catalogs_retail_product_group_local_var;

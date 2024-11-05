@@ -21,10 +21,7 @@ public class CatalogsUpdateRetailItem   {
 
 
   public enum OperationEnum {
-    CREATE("CREATE"),
-    UPDATE("UPDATE"),
-    UPSERT("UPSERT"),
-    DELETE("DELETE");
+    UPDATE("UPDATE");
 
     private String value;
 

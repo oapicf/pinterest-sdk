@@ -107,5 +107,8 @@ data class SSIOEditInsertionOrderRequest (
     @Json(name = "ads_manager_order_line_id")
     val adsManagerOrderLineId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

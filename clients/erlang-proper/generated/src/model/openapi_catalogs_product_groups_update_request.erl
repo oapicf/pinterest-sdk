@@ -12,8 +12,10 @@
   [ {'name', binary() }
   | {'description', binary() }
   | {'is_featured', boolean() }
-  | {'filters', openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters() }
+  | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
   | {'catalog_type', binary() }
+  | {'country', openapi_country:openapi_country() }
+  | {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
   ].
 
 
@@ -24,8 +26,10 @@ openapi_catalogs_product_groups_update_request(Fields) ->
   Default = [ {'name', binary() }
             , {'description', binary() }
             , {'is_featured', boolean() }
-            , {'filters', openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters() }
-            , {'catalog_type', elements([<<"HOTEL">>]) }
+            , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+            , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
+            , {'country', openapi_country:openapi_country() }
+            , {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

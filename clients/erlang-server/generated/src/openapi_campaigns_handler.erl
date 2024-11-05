@@ -1,413 +1,246 @@
-%% basic handler
 -module(openapi_campaigns_handler).
+-moduledoc """
+Exposes the following operation IDs:
+
+- `GET` to `/ad_accounts/:ad_account_id/campaigns/targeting_analytics`, OperationId: `campaign_targeting_analytics/get`:
+Get targeting analytics for campaigns.
+Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
+- `GET` to `/ad_accounts/:ad_account_id/campaigns/analytics`, OperationId: `campaigns/analytics`:
+Get campaign analytics.
+Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+
+- `POST` to `/ad_accounts/:ad_account_id/campaigns`, OperationId: `campaigns/create`:
+Create campaigns.
+Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+
+- `GET` to `/ad_accounts/:ad_account_id/campaigns/:campaign_id`, OperationId: `campaigns/get`:
+Get campaign.
+Get a specific campaign given the campaign ID.
+
+- `GET` to `/ad_accounts/:ad_account_id/campaigns`, OperationId: `campaigns/list`:
+List campaigns.
+Get a list of the campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
+
+- `PATCH` to `/ad_accounts/:ad_account_id/campaigns`, OperationId: `campaigns/update`:
+Update campaigns.
+Update multiple ad campaigns based on campaign_ids. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt;  - &lt;p&gt;The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+
+""".
+
+-behaviour(cowboy_rest).
+
+-include_lib("kernel/include/logger.hrl").
 
 %% Cowboy REST callbacks
--export([allowed_methods/2]).
 -export([init/2]).
--export([allow_missing_post/2]).
+-export([allowed_methods/2]).
 -export([content_types_accepted/2]).
 -export([content_types_provided/2]).
 -export([delete_resource/2]).
 -export([is_authorized/2]).
--export([known_content_type/2]).
--export([malformed_request/2]).
 -export([valid_content_headers/2]).
--export([valid_entity_length/2]).
+-export([handle_type_accepted/2, handle_type_provided/2]).
 
-%% Handlers
--export([handle_request_json/2]).
+-ignore_xref([handle_type_accepted/2, handle_type_provided/2]).
 
--record(state, {
-    operation_id :: openapi_api:operation_id(),
-    logic_handler :: atom(),
-    validator_state :: jesse_state:state(),
-    context=#{} :: #{}
-}).
+-export_type([class/0, operation_id/0]).
 
--type state() :: state().
+-type class() :: 'campaigns'.
 
--spec init(Req :: cowboy_req:req(), Opts :: openapi_router:init_opts()) ->
-    {cowboy_rest, Req :: cowboy_req:req(), State :: state()}.
+-type operation_id() ::
+    'campaign_targeting_analytics/get' %% Get targeting analytics for campaigns
+    | 'campaigns/analytics' %% Get campaign analytics
+    | 'campaigns/create' %% Create campaigns
+    | 'campaigns/get' %% Get campaign
+    | 'campaigns/list' %% List campaigns
+    | 'campaigns/update'. %% Update campaigns
 
-init(Req, {Operations, LogicHandler, ValidatorMod}) ->
+
+-record(state,
+        {operation_id :: operation_id(),
+         accept_callback :: openapi_logic_handler:accept_callback(),
+         provide_callback :: openapi_logic_handler:provide_callback(),
+         api_key_handler :: openapi_logic_handler:api_key_callback(),
+         context = #{} :: openapi_logic_handler:context()}).
+
+-type state() :: #state{}.
+
+-spec init(cowboy_req:req(), openapi_router:init_opts()) ->
+    {cowboy_rest, cowboy_req:req(), state()}.
+init(Req, {Operations, Module}) ->
     Method = cowboy_req:method(Req),
     OperationID = maps:get(Method, Operations, undefined),
-
-    ValidatorState = ValidatorMod:get_validator_state(),
-
-    error_logger:info_msg("Attempt to process operation: ~p", [OperationID]),
-
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    },
+    ?LOG_INFO(#{what => "Attempt to process operation",
+                method => Method,
+                operation_id => OperationID}),
+    State = #state{operation_id = OperationID,
+                   accept_callback = fun Module:accept_callback/4,
+                   provide_callback = fun Module:provide_callback/4,
+                   api_key_handler = fun Module:authorize_api_key/2},
     {cowboy_rest, Req, State}.
 
--spec allowed_methods(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: [binary()], Req :: cowboy_req:req(), State :: state()}.
-
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'CampaignTargetingAnalyticsGet'
-    }
-) ->
+-spec allowed_methods(cowboy_req:req(), state()) ->
+    {[binary()], cowboy_req:req(), state()}.
+allowed_methods(Req, #state{operation_id = 'campaign_targeting_analytics/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'CampaignsAnalytics'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'campaigns/analytics'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'CampaignsCreate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'campaigns/create'} = State) ->
     {[<<"POST">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'CampaignsGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'campaigns/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'CampaignsList'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'campaigns/list'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'CampaignsUpdate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'campaigns/update'} = State) ->
     {[<<"PATCH">>], Req, State};
-
 allowed_methods(Req, State) ->
     {[], Req, State}.
 
--spec is_authorized(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: true | {false, AuthHeader :: iodata()},
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignTargetingAnalyticsGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+-spec is_authorized(cowboy_req:req(), state()) ->
+    {true | {false, iodata()}, cowboy_req:req(), state()}.
+is_authorized(Req0,
+              #state{operation_id = 'campaign_targeting_analytics/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsAnalytics' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'campaigns/analytics' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsCreate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'campaigns/create' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'campaigns/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsList' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'campaigns/list' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsUpdate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'campaigns/update' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
 is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
+    {true, Req, State}.
 
--spec content_types_accepted(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), AcceptResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_accepted(Req, State) ->
+-spec content_types_accepted(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_accepted(Req, #state{operation_id = 'campaign_targeting_analytics/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'campaigns/analytics'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'campaigns/create'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'campaigns/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'campaigns/list'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'campaigns/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, State) ->
+    {[], Req, State}.
 
--spec valid_content_headers(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: boolean(), Req :: cowboy_req:req(), State :: state()}.
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignTargetingAnalyticsGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsAnalytics'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsCreate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsList'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'CampaignsUpdate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
+-spec valid_content_headers(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
+valid_content_headers(Req, #state{operation_id = 'campaign_targeting_analytics/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'campaigns/analytics'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'campaigns/create'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'campaigns/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'campaigns/list'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'campaigns/update'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, State) ->
     {false, Req, State}.
 
--spec content_types_provided(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), ProvideResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_provided(Req, State) ->
+-spec content_types_provided(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_provided(Req, #state{operation_id = 'campaign_targeting_analytics/get'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'campaigns/analytics'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'campaigns/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'campaigns/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'campaigns/list'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'campaigns/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, State) ->
+    {[], Req, State}.
 
--spec malformed_request(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-malformed_request(Req, State) ->
-    {false, Req, State}.
-
--spec allow_missing_post(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-allow_missing_post(Req, State) ->
-    {false, Req, State}.
-
--spec delete_resource(Req :: cowboy_req:req(), State :: state()) ->
-    processed_response().
-
+-spec delete_resource(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
 delete_resource(Req, State) ->
-    handle_request_json(Req, State).
+    {Res, Req1, State1} = handle_type_accepted(Req, State),
+    {true =:= Res, Req1, State1}.
 
--spec known_content_type(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
+-spec handle_type_accepted(cowboy_req:req(), state()) ->
+    { openapi_logic_handler:accept_callback_return(), cowboy_req:req(), state()}.
+handle_type_accepted(Req, #state{operation_id = OperationID,
+                                 accept_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(campaigns, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.
 
-known_content_type(Req, State) ->
-    {true, Req, State}.
-
--spec valid_entity_length(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
-
-valid_entity_length(Req, State) ->
-    %% @TODO check the length
-    {true, Req, State}.
-
-%%%%
--type result_ok() :: {
-    ok,
-    {Status :: cowboy:http_status(), Headers :: cowboy:http_headers(), Body :: iodata()}
-}.
-
--type result_error() :: {error, Reason :: any()}.
-
--type processed_response() :: {stop, cowboy_req:req(), state()}.
-
--spec process_response(result_ok() | result_error(), cowboy_req:req(), state()) ->
-    processed_response().
-
-process_response(Response, Req0, State = #state{operation_id = OperationID}) ->
-    case Response of
-        {ok, {Code, Headers, Body}} ->
-            Req = cowboy_req:reply(Code, Headers, Body, Req0),
-            {stop, Req, State};
-        {error, Message} ->
-            error_logger:error_msg("Unable to process request for ~p: ~p", [OperationID, Message]),
-
-            Req = cowboy_req:reply(400, Req0),
-            {stop, Req, State}
-    end.
-
--spec handle_request_json(cowboy_req:req(), state()) -> processed_response().
-
-handle_request_json(
-    Req0,
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    }
-) ->
-    case openapi_api:populate_request(OperationID, Req0, ValidatorState) of
-        {ok, Populated, Req1} ->
-            {Code, Headers, Body} = openapi_logic_handler:handle_request(
-                LogicHandler,
-                OperationID,
-                Req1,
-                maps:merge(State#state.context, Populated)
-            ),
-            _ = openapi_api:validate_response(
-                OperationID,
-                Code,
-                Body,
-                ValidatorState
-            ),
-            PreparedBody = prepare_body(Code, Body),
-            Response = {ok, {Code, Headers, PreparedBody}},
-            process_response(Response, Req1, State);
-        {error, Reason, Req1} ->
-            process_response({error, Reason}, Req1, State)
-    end.
-
-validate_headers(_, Req) -> {true, Req}.
-
-prepare_body(204, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(304, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(_Code, Body) ->
-    jsx:encode(Body).
+-spec handle_type_provided(cowboy_req:req(), state()) ->
+    {cowboy_req:resp_body(), cowboy_req:req(), state()}.
+handle_type_provided(Req, #state{operation_id = OperationID,
+                                 provide_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(campaigns, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.

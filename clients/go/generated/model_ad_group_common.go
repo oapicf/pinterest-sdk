@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,26 +28,30 @@ type AdGroupCommon struct {
 	BudgetInMicroCurrency NullableInt32 `json:"budget_in_micro_currency,omitempty"`
 	// Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
 	BidInMicroCurrency NullableInt32 `json:"bid_in_micro_currency,omitempty"`
-	OptimizationGoalMetadata NullableAdGroupCommonOptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
+	// Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+	OptimizationGoalMetadata NullableOptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
 	BudgetType *BudgetType `json:"budget_type,omitempty"`
 	// Ad group start time. Unix timestamp in seconds. Defaults to current time.
 	StartTime NullableInt32 `json:"start_time,omitempty"`
 	// Ad group end time. Unix timestamp in seconds.
 	EndTime NullableInt32 `json:"end_time,omitempty"`
 	TargetingSpec *TargetingSpec `json:"targeting_spec,omitempty"`
-	// Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+	// Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
 	LifetimeFrequencyCap *int32 `json:"lifetime_frequency_cap,omitempty"`
-	TrackingUrls NullableAdGroupCommonTrackingUrls `json:"tracking_urls,omitempty"`
+	// Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
 	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	AutoTargetingEnabled NullableBool `json:"auto_targeting_enabled,omitempty"`
-	// <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
 	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
 	PacingDeliveryType *PacingDeliveryType `json:"pacing_delivery_type,omitempty"`
 	// Campaign ID of the ad group.
-	CampaignId *string `json:"campaign_id,omitempty"`
+	CampaignId *string `json:"campaign_id,omitempty" validate:"regexp=^[C]?\\\\d+$"`
 	BillableEvent *ActionType `json:"billable_event,omitempty"`
-	// Bid strategy type
+	// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
 	BidStrategyType NullableString `json:"bid_strategy_type,omitempty"`
+	// Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+	TargetingTemplateIds []string `json:"targeting_template_ids,omitempty"`
 }
 
 // NewAdGroupCommon instantiates a new AdGroupCommon object
@@ -216,9 +220,9 @@ func (o *AdGroupCommon) UnsetBidInMicroCurrency() {
 }
 
 // GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupCommon) GetOptimizationGoalMetadata() AdGroupCommonOptimizationGoalMetadata {
+func (o *AdGroupCommon) GetOptimizationGoalMetadata() OptimizationGoalMetadata {
 	if o == nil || IsNil(o.OptimizationGoalMetadata.Get()) {
-		var ret AdGroupCommonOptimizationGoalMetadata
+		var ret OptimizationGoalMetadata
 		return ret
 	}
 	return *o.OptimizationGoalMetadata.Get()
@@ -227,7 +231,7 @@ func (o *AdGroupCommon) GetOptimizationGoalMetadata() AdGroupCommonOptimizationG
 // GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupCommon) GetOptimizationGoalMetadataOk() (*AdGroupCommonOptimizationGoalMetadata, bool) {
+func (o *AdGroupCommon) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -243,8 +247,8 @@ func (o *AdGroupCommon) HasOptimizationGoalMetadata() bool {
 	return false
 }
 
-// SetOptimizationGoalMetadata gets a reference to the given NullableAdGroupCommonOptimizationGoalMetadata and assigns it to the OptimizationGoalMetadata field.
-func (o *AdGroupCommon) SetOptimizationGoalMetadata(v AdGroupCommonOptimizationGoalMetadata) {
+// SetOptimizationGoalMetadata gets a reference to the given NullableOptimizationGoalMetadata and assigns it to the OptimizationGoalMetadata field.
+func (o *AdGroupCommon) SetOptimizationGoalMetadata(v OptimizationGoalMetadata) {
 	o.OptimizationGoalMetadata.Set(&v)
 }
 // SetOptimizationGoalMetadataNil sets the value for OptimizationGoalMetadata to be an explicit nil
@@ -438,9 +442,9 @@ func (o *AdGroupCommon) SetLifetimeFrequencyCap(v int32) {
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupCommon) GetTrackingUrls() AdGroupCommonTrackingUrls {
+func (o *AdGroupCommon) GetTrackingUrls() TrackingUrls {
 	if o == nil || IsNil(o.TrackingUrls.Get()) {
-		var ret AdGroupCommonTrackingUrls
+		var ret TrackingUrls
 		return ret
 	}
 	return *o.TrackingUrls.Get()
@@ -449,7 +453,7 @@ func (o *AdGroupCommon) GetTrackingUrls() AdGroupCommonTrackingUrls {
 // GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupCommon) GetTrackingUrlsOk() (*AdGroupCommonTrackingUrls, bool) {
+func (o *AdGroupCommon) GetTrackingUrlsOk() (*TrackingUrls, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -465,8 +469,8 @@ func (o *AdGroupCommon) HasTrackingUrls() bool {
 	return false
 }
 
-// SetTrackingUrls gets a reference to the given NullableAdGroupCommonTrackingUrls and assigns it to the TrackingUrls field.
-func (o *AdGroupCommon) SetTrackingUrls(v AdGroupCommonTrackingUrls) {
+// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
+func (o *AdGroupCommon) SetTrackingUrls(v TrackingUrls) {
 	o.TrackingUrls.Set(&v)
 }
 // SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
@@ -691,6 +695,39 @@ func (o *AdGroupCommon) UnsetBidStrategyType() {
 	o.BidStrategyType.Unset()
 }
 
+// GetTargetingTemplateIds returns the TargetingTemplateIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupCommon) GetTargetingTemplateIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.TargetingTemplateIds
+}
+
+// GetTargetingTemplateIdsOk returns a tuple with the TargetingTemplateIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupCommon) GetTargetingTemplateIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.TargetingTemplateIds) {
+		return nil, false
+	}
+	return o.TargetingTemplateIds, true
+}
+
+// HasTargetingTemplateIds returns a boolean if a field has been set.
+func (o *AdGroupCommon) HasTargetingTemplateIds() bool {
+	if o != nil && !IsNil(o.TargetingTemplateIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetingTemplateIds gets a reference to the given []string and assigns it to the TargetingTemplateIds field.
+func (o *AdGroupCommon) SetTargetingTemplateIds(v []string) {
+	o.TargetingTemplateIds = v
+}
+
 func (o AdGroupCommon) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -751,6 +788,9 @@ func (o AdGroupCommon) ToMap() (map[string]interface{}, error) {
 	}
 	if o.BidStrategyType.IsSet() {
 		toSerialize["bid_strategy_type"] = o.BidStrategyType.Get()
+	}
+	if o.TargetingTemplateIds != nil {
+		toSerialize["targeting_template_ids"] = o.TargetingTemplateIds
 	}
 	return toSerialize, nil
 }

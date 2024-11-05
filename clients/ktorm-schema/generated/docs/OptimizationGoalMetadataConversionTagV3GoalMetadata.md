@@ -9,7 +9,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **conversionEvent** | conversion_event | text |  | [**conversion_event**](#ConversionEvent) |  |  [optional]
 **conversionTagId** | conversion_tag_id | text |  | **kotlin.String** |  |  [optional]
 **cpaGoalValueInMicroCurrency** | cpa_goal_value_in_micro_currency | text |  | **kotlin.String** |  |  [optional]
-**isRoasOptimized** | is_roas_optimized | boolean |  | **kotlin.Boolean** | Ad group is ROAS optimized |  [optional]
+**isRoasOptimized** | is_roas_optimized | boolean |  | **kotlin.Boolean** | ROAS optimization is not supported |  [optional]
 **learningModeType** | learning_mode_type | text |  | [**learning_mode_type**](#LearningModeType) | Conversion learning model type |  [optional]
 
 

@@ -57,7 +57,7 @@ void main() {
       // TODO
     });
 
-    // AdCommonTrackingUrls trackingUrls
+    // TrackingUrls trackingUrls
     test('to test the property `trackingUrls`', () async {
       // TODO
     });
@@ -71,11 +71,6 @@ void main() {
     // Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
     // int endTime
     test('to test the property `endTime`', () async {
-      // TODO
-    });
-
-    // CampaignSummaryStatus summaryStatus
-    test('to test the property `summaryStatus`', () async {
       // TODO
     });
 

@@ -1,13 +1,42 @@
 require 'json'
 
 
+MyApp.add_route('POST', '/v5/catalogs', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "Create catalog",
+  "nickname" => "catalogs/create",
+  "responseClass" => "Catalog",
+  "endpoint" => "/catalogs",
+  "notes" => "Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.",
+  "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "body",
+      "description" => "Request object used to created a feed.",
+      "dataType" => "CatalogsCreateRequest",
+      "paramType" => "body",
+    }
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
 MyApp.add_route('GET', '/v5/catalogs', {
   "resourcePath" => "/Catalogs",
   "summary" => "List catalogs",
   "nickname" => "catalogs/list",
   "responseClass" => "catalogs_list_200_response",
   "endpoint" => "/catalogs",
-  "notes" => "Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -18,7 +47,7 @@ MyApp.add_route('GET', '/v5/catalogs', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -41,11 +70,11 @@ end
 
 MyApp.add_route('GET', '/v5/catalogs/product_groups/{product_group_id}/products', {
   "resourcePath" => "/Catalogs",
-  "summary" => "List products for a Product Group",
+  "summary" => "List products by product group",
   "nickname" => "catalogs_product_group_pins/list",
   "responseClass" => "catalogs_product_group_pins_list_200_response",
   "endpoint" => "/catalogs/product_groups/{product_group_id}/products",
-  "notes" => "Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -56,7 +85,7 @@ MyApp.add_route('GET', '/v5/catalogs/product_groups/{product_group_id}/products'
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -67,6 +96,14 @@ MyApp.add_route('GET', '/v5/catalogs/product_groups/{product_group_id}/products'
       "description" => "Unique identifier of an ad account.",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "pin_metrics",
+      "description" => "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "false",
       "paramType" => "query",
     },
     {
@@ -87,9 +124,9 @@ MyApp.add_route('POST', '/v5/catalogs/product_groups', {
   "resourcePath" => "/Catalogs",
   "summary" => "Create product group",
   "nickname" => "catalogs_product_groups/create",
-  "responseClass" => "catalogs_product_groups_create_201_response",
+  "responseClass" => "CatalogsVerticalProductGroup",
   "endpoint" => "/catalogs/product_groups",
-  "notes" => "Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -100,8 +137,37 @@ MyApp.add_route('POST', '/v5/catalogs/product_groups', {
     },
     {
       "name" => "body",
-      "description" => "Request object used to created a catalogs product group.",
-      "dataType" => "CatalogsProductGroupsCreateRequest",
+      "description" => "Request object used to create a single catalogs product groups.",
+      "dataType" => "MultipleProductGroupsInner",
+      "paramType" => "body",
+    }
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('POST', '/v5/catalogs/product_groups/multiple', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "Create product groups",
+  "nickname" => "catalogs_product_groups/create_many",
+  "responseClass" => "Array<String>",
+  "endpoint" => "/catalogs/product_groups/multiple",
+  "notes" => "Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.",
+  "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "body",
+      "description" => "Request object used to create one or more catalogs product groups.",
+      "dataType" => "Array<multiple_product_groups_inner>",
       "paramType" => "body",
     }
     ]}) do
@@ -118,7 +184,7 @@ MyApp.add_route('DELETE', '/v5/catalogs/product_groups/{product_group_id}', {
   "nickname" => "catalogs_product_groups/delete",
   "responseClass" => "void",
   "endpoint" => "/catalogs/product_groups/{product_group_id}",
-  "notes" => "Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -141,13 +207,43 @@ MyApp.add_route('DELETE', '/v5/catalogs/product_groups/{product_group_id}', {
 end
 
 
+MyApp.add_route('DELETE', '/v5/catalogs/product_groups/multiple', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "Delete product groups",
+  "nickname" => "catalogs_product_groups/delete_many",
+  "responseClass" => "void",
+  "endpoint" => "/catalogs/product_groups/multiple",
+  "notes" => "Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
+  "parameters" => [
+    {
+      "name" => "id",
+      "description" => "Comma-separated list of product group ids",
+      "dataType" => "Array<Integer>",
+      "collectionFormat" => "csv",
+      "paramType" => "query",
+    },
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
 MyApp.add_route('GET', '/v5/catalogs/product_groups/{product_group_id}', {
   "resourcePath" => "/Catalogs",
   "summary" => "Get product group",
   "nickname" => "catalogs_product_groups/get",
-  "responseClass" => "catalogs_product_groups_create_201_response",
+  "responseClass" => "CatalogsVerticalProductGroup",
   "endpoint" => "/catalogs/product_groups/{product_group_id}",
-  "notes" => "Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -176,8 +272,15 @@ MyApp.add_route('GET', '/v5/catalogs/product_groups', {
   "nickname" => "catalogs_product_groups/list",
   "responseClass" => "catalogs_product_groups_list_200_response",
   "endpoint" => "/catalogs/product_groups",
-  "notes" => "Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
+    {
+      "name" => "id",
+      "description" => "Comma-separated list of product group ids",
+      "dataType" => "Array<Integer>",
+      "collectionFormat" => "csv",
+      "paramType" => "query",
+    },
     {
       "name" => "feed_id",
       "description" => "Filter entities for a given feed_id. If not given, all feeds are considered.",
@@ -201,7 +304,7 @@ MyApp.add_route('GET', '/v5/catalogs/product_groups', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -224,11 +327,11 @@ end
 
 MyApp.add_route('GET', '/v5/catalogs/product_groups/{product_group_id}/product_counts', {
   "resourcePath" => "/Catalogs",
-  "summary" => "Get product counts for a Product Group",
+  "summary" => "Get product counts",
   "nickname" => "catalogs_product_groups/product_counts_get",
-  "responseClass" => "CatalogsProductGroupProductCounts",
+  "responseClass" => "CatalogsProductGroupProductCountsVertical",
   "endpoint" => "/catalogs/product_groups/{product_group_id}/product_counts",
-  "notes" => "Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -253,11 +356,11 @@ end
 
 MyApp.add_route('PATCH', '/v5/catalogs/product_groups/{product_group_id}', {
   "resourcePath" => "/Catalogs",
-  "summary" => "Update product group",
+  "summary" => "Update single product group",
   "nickname" => "catalogs_product_groups/update",
-  "responseClass" => "catalogs_product_groups_create_201_response",
+  "responseClass" => "CatalogsVerticalProductGroup",
   "endpoint" => "/catalogs/product_groups/{product_group_id}",
-  "notes" => "Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -288,11 +391,11 @@ end
 
 MyApp.add_route('GET', '/v5/catalogs/feeds/{feed_id}/processing_results', {
   "resourcePath" => "/Catalogs",
-  "summary" => "List processing results for a given feed",
+  "summary" => "List feed processing results",
   "nickname" => "feed_processing_results/list",
   "responseClass" => "feed_processing_results_list_200_response",
   "endpoint" => "/catalogs/feeds/{feed_id}/processing_results",
-  "notes" => "Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -303,7 +406,7 @@ MyApp.add_route('GET', '/v5/catalogs/feeds/{feed_id}/processing_results', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -336,7 +439,7 @@ MyApp.add_route('POST', '/v5/catalogs/feeds', {
   "nickname" => "feeds/create",
   "responseClass" => "CatalogsFeed",
   "endpoint" => "/catalogs/feeds",
-  "notes" => "Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.",
+  "notes" => "Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -365,7 +468,7 @@ MyApp.add_route('DELETE', '/v5/catalogs/feeds/{feed_id}', {
   "nickname" => "feeds/delete",
   "responseClass" => "void",
   "endpoint" => "/catalogs/feeds/{feed_id}",
-  "notes" => "Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.",
+  "notes" => "Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -394,7 +497,36 @@ MyApp.add_route('GET', '/v5/catalogs/feeds/{feed_id}', {
   "nickname" => "feeds/get",
   "responseClass" => "CatalogsFeed",
   "endpoint" => "/catalogs/feeds/{feed_id}",
-  "notes" => "Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.",
+  "notes" => "Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.",
+  "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "feed_id",
+      "description" => "Unique identifier of a feed",
+      "dataType" => "String",
+      "paramType" => "path",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('POST', '/v5/catalogs/feeds/{feed_id}/ingest', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "Ingest feed items",
+  "nickname" => "feeds/ingest",
+  "responseClass" => "CatalogsFeedIngestion",
+  "endpoint" => "/catalogs/feeds/{feed_id}/ingest",
+  "notes" => "Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -423,7 +555,7 @@ MyApp.add_route('GET', '/v5/catalogs/feeds', {
   "nickname" => "feeds/list",
   "responseClass" => "feeds_list_200_response",
   "endpoint" => "/catalogs/feeds",
-  "notes" => "Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.",
+  "notes" => "Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -434,7 +566,7 @@ MyApp.add_route('GET', '/v5/catalogs/feeds', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -468,7 +600,7 @@ MyApp.add_route('PATCH', '/v5/catalogs/feeds/{feed_id}', {
   "nickname" => "feeds/update",
   "responseClass" => "CatalogsFeed",
   "endpoint" => "/catalogs/feeds/{feed_id}",
-  "notes" => "Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.",
+  "notes" => "Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -503,7 +635,7 @@ MyApp.add_route('GET', '/v5/catalogs/items', {
   "nickname" => "items/get",
   "responseClass" => "CatalogsItems",
   "endpoint" => "/catalogs/items",
-  "notes" => "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.",
+  "notes" => "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -548,13 +680,42 @@ MyApp.add_route('GET', '/v5/catalogs/items', {
 end
 
 
+MyApp.add_route('POST', '/v5/catalogs/items', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "Get catalogs items (POST)",
+  "nickname" => "items/post",
+  "responseClass" => "CatalogsItems",
+  "endpoint" => "/catalogs/items",
+  "notes" => "Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.",
+  "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "body",
+      "description" => "Request object used to get catalogs items",
+      "dataType" => "CatalogsItemsRequest",
+      "paramType" => "body",
+    }
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
 MyApp.add_route('GET', '/v5/catalogs/items/batch/{batch_id}', {
   "resourcePath" => "/Catalogs",
-  "summary" => "Get catalogs item batch status",
+  "summary" => "Get item batch status",
   "nickname" => "items_batch/get",
   "responseClass" => "CatalogsItemsBatch",
   "endpoint" => "/catalogs/items/batch/{batch_id}",
-  "notes" => "Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.",
+  "notes" => "Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -583,7 +744,7 @@ MyApp.add_route('POST', '/v5/catalogs/items/batch', {
   "nickname" => "items_batch/post",
   "responseClass" => "CatalogsItemsBatch",
   "endpoint" => "/catalogs/items/batch",
-  "notes" => "This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.",
+  "notes" => "This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -608,11 +769,11 @@ end
 
 MyApp.add_route('GET', '/v5/catalogs/processing_results/{processing_result_id}/item_issues', {
   "resourcePath" => "/Catalogs",
-  "summary" => "List item issues for a given processing result",
+  "summary" => "List item issues",
   "nickname" => "items_issues/list",
   "responseClass" => "items_issues_list_200_response",
   "endpoint" => "/catalogs/processing_results/{processing_result_id}/item_issues",
-  "notes" => "List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -623,7 +784,7 @@ MyApp.add_route('GET', '/v5/catalogs/processing_results/{processing_result_id}/i
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -652,7 +813,7 @@ MyApp.add_route('GET', '/v5/catalogs/processing_results/{processing_result_id}/i
     },
     {
       "name" => "processing_result_id",
-      "description" => "Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list).",
+      "description" => "Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).",
       "dataType" => "String",
       "paramType" => "path",
     },
@@ -666,11 +827,11 @@ end
 
 MyApp.add_route('POST', '/v5/catalogs/products/get_by_product_group_filters', {
   "resourcePath" => "/Catalogs",
-  "summary" => "List filtered products",
+  "summary" => "List products by filter",
   "nickname" => "products_by_product_group_filter/list",
   "responseClass" => "catalogs_product_group_pins_list_200_response",
   "endpoint" => "/catalogs/products/get_by_product_group_filters",
-  "notes" => "List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>",
+  "notes" => "List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -681,7 +842,7 @@ MyApp.add_route('POST', '/v5/catalogs/products/get_by_product_group_filters', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -695,11 +856,123 @@ MyApp.add_route('POST', '/v5/catalogs/products/get_by_product_group_filters', {
       "paramType" => "query",
     },
     {
+      "name" => "pin_metrics",
+      "description" => "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
+      "dataType" => "Boolean",
+      "allowableValues" => "",
+      "defaultValue" => "false",
+      "paramType" => "query",
+    },
+    {
       "name" => "body",
       "description" => "Object holding a group of filters for a catalog product group",
       "dataType" => "CatalogsListProductsByFilterRequest",
       "paramType" => "body",
     }
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('POST', '/v5/catalogs/reports', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "Build catalogs report",
+  "nickname" => "reports/create",
+  "responseClass" => "CatalogsCreateReportResponse",
+  "endpoint" => "/catalogs/reports",
+  "notes" => "Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.",
+  "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "body",
+      "description" => "Request object to asynchronously create a report.",
+      "dataType" => "CatalogsReportParameters",
+      "paramType" => "body",
+    }
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('GET', '/v5/catalogs/reports', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "Get catalogs report",
+  "nickname" => "reports/get",
+  "responseClass" => "CatalogsReport",
+  "endpoint" => "/catalogs/reports",
+  "notes" => "This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.",
+  "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "token",
+      "description" => "Token returned from async build report call",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    ]}) do
+  cross_origin
+  # the guts live here
+
+  {"message" => "yes, it worked"}.to_json
+end
+
+
+MyApp.add_route('GET', '/v5/catalogs/reports/stats', {
+  "resourcePath" => "/Catalogs",
+  "summary" => "List report stats",
+  "nickname" => "reports/stats",
+  "responseClass" => "reports_stats_200_response",
+  "endpoint" => "/catalogs/reports/stats",
+  "notes" => "List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.",
+  "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
+      "paramType" => "query",
+    },
+    {
+      "name" => "bookmark",
+      "description" => "Cursor used to fetch the next page of items",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "parameters",
+      "description" => "Contains the parameters for report identification.",
+      "dataType" => "CatalogsReportParameters",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
     ]}) do
   cross_origin
   # the guts live here

@@ -37,7 +37,7 @@ data class CatalogsHotelAddress(
 
     @Schema(example = "null", description = "Required for countries with a postal code system. Postal or zip code of the hotel.")
     @get:JsonProperty("postal_code") val postalCode: kotlin.String? = null
-) {
+    ) {
 
 }
 

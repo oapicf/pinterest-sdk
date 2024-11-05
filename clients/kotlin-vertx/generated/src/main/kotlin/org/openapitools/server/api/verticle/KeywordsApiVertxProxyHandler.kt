@@ -189,10 +189,14 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     val ages:kotlin.Array<kotlin.String>? = if(agesParam == null) null
                             else Gson().fromJson(agesParam.encode(),
                             , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val includeKeywordsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"include_keywords")
+                    val includeKeywords:kotlin.Array<kotlin.String>? = if(includeKeywordsParam == null) null
+                            else Gson().fromJson(includeKeywordsParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val normalizeAgainstGroup = ApiHandlerUtils.searchStringInJson(params,"normalize_against_group")?.toBoolean()
                     val limit = ApiHandlerUtils.searchIntegerInJson(params,"limit")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.trendingKeywordsList(region,trendType,interests,genders,ages,normalizeAgainstGroup,limit,context)
+                        val result = service.trendingKeywordsList(region,trendType,interests,genders,ages,includeKeywords,normalizeAgainstGroup,limit,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

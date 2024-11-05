@@ -1,5 +1,5 @@
 
-# Table `Board_owner`
+# Table `BoardOwner`
 (mapped from: BoardOwner)
 
 ## Properties

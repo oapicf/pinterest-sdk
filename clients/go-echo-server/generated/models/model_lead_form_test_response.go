@@ -4,5 +4,5 @@ package models
 type LeadFormTestResponse struct {
 
 	// Subscription ID.
-	SubscriptionId string `json:"subscription_id,omitempty"`
+	SubscriptionId string `json:"subscription_id,omitempty" validate:"regexp=^\\\\d+$"`
 }

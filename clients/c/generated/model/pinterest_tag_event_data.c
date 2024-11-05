@@ -5,13 +5,13 @@
 
 
 char* pinterest_tag_event_data_currency_ToString(pinterest_rest_api_pinterest_tag_event_data__e currency) {
-    char* currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP" };
+    char* currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP", "INR", "TRY" };
     return currencyArray[currency];
 }
 
 pinterest_rest_api_pinterest_tag_event_data__e pinterest_tag_event_data_currency_FromString(char* currency){
     int stringToReturn = 0;
-    char *currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP" };
+    char *currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP", "INR", "TRY" };
     size_t sizeofArray = sizeof(currencyArray) / sizeof(currencyArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(currency, currencyArray[stringToReturn]) == 0) {

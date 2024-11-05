@@ -9,6 +9,7 @@ module PinsApiServiceInterface =
 
     //#region Service interface
     type IPinsApiService =
+      abstract member MultiPinsAnalytics:HttpContext -> MultiPinsAnalyticsArgs->MultiPinsAnalyticsResult
       abstract member PinsAnalytics:HttpContext -> PinsAnalyticsArgs->PinsAnalyticsResult
       abstract member PinsCreate:HttpContext -> PinsCreateArgs->PinsCreateResult
       abstract member PinsDelete:HttpContext -> PinsDeleteArgs->PinsDeleteResult

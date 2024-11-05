@@ -57,7 +57,7 @@ data class PinUpdate(
 
     @Schema(example = "null", description = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
     @get:JsonProperty("note") val note: kotlin.String? = null
-) {
+    ) {
 
 }
 

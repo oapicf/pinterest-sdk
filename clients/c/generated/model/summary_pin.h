@@ -15,12 +15,12 @@
 
 typedef struct summary_pin_t summary_pin_t;
 
-#include "summary_pin_media.h"
+#include "pin_media.h"
 
 
 
 typedef struct summary_pin_t {
-    struct summary_pin_media_t *media; //model
+    struct pin_media_t *media; //model
     char *alt_text; // string
     char *link; // string
     char *title; // string
@@ -29,7 +29,7 @@ typedef struct summary_pin_t {
 } summary_pin_t;
 
 summary_pin_t *summary_pin_create(
-    summary_pin_media_t *media,
+    pin_media_t *media,
     char *alt_text,
     char *link,
     char *title,

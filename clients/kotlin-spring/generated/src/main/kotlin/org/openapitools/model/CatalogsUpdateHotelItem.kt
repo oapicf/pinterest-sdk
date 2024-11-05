@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsUpdatableHotelAttributes
@@ -32,15 +33,23 @@ data class CatalogsUpdateHotelItem(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("attributes", required = true) val attributes: CatalogsUpdatableHotelAttributes
-) {
+    ) {
 
     /**
     * 
     * Values: UPDATE
     */
-    enum class Operation(val value: kotlin.String) {
+    enum class Operation(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("UPDATE") UPDATE("UPDATE")
+        UPDATE("UPDATE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Operation {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

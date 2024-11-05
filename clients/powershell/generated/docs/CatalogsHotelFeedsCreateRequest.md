@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **CatalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] 
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 ## Examples
 
@@ -25,7 +26,8 @@ $CatalogsHotelFeedsCreateRequest = Initialize-PSOpenAPIToolsCatalogsHotelFeedsCr
  -Location null `
  -PreferredProcessingSchedule null `
  -CatalogType null `
- -CatalogId null
+ -CatalogId null `
+ -Status null
 ```
 
 - Convert the resource to JSON

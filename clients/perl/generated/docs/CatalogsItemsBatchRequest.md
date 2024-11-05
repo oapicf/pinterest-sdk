@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::CatalogsItemsBatchRequest;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | 
-**language** | [**Language**](Language.md) |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | 
 **items** | [**ARRAY[ItemDeleteBatchRecord]**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
 

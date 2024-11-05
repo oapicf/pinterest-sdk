@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,13 +14,17 @@ syntax = "proto3";
 
 package openapitools;
 
+import public "models/catalogs_creative_assets_product_group_create_request.proto";
+import public "models/catalogs_creative_assets_product_group_filters.proto";
 import public "models/catalogs_hotel_product_group_create_request.proto";
-import public "models/catalogs_hotel_product_group_filters.proto";
+import public "models/catalogs_locale.proto";
+import public "models/catalogs_retail_product_group_create_request.proto";
+import public "models/country.proto";
 
 message CatalogsVerticalProductGroupCreateRequest {
 
   enum Catalog_typeEnum {
-    Catalog_typeEnum_HOTEL = 0;
+    Catalog_typeEnum_CREATIVE_ASSETS = 0;
   }
 
   Catalog_typeEnum catalog_type = 73986146;
@@ -29,9 +33,13 @@ message CatalogsVerticalProductGroupCreateRequest {
 
   optional string description = 113933319;
 
-  CatalogsHotelProductGroupFilters filters = 317676550;
+  CatalogsCreativeAssetsProductGroupFilters filters = 317676550;
 
-  // Catalog id pertaining to the hotel product group.
+  // Catalog id pertaining to the creative assets product group.
   string catalog_id = 500076802;
+
+  Country country = 420960151;
+
+  CatalogsLocale locale = 23720360;
 
 }

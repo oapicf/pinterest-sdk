@@ -29,8 +29,9 @@ public class CatalogsDbItem   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonProperty("created_at")
+  @NotNull
   public java.util.Date getCreatedAt() {
     return createdAt;
   }
@@ -47,8 +48,9 @@ public class CatalogsDbItem   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
+  @NotNull
   public String getId() {
     return id;
   }
@@ -65,8 +67,9 @@ public class CatalogsDbItem   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonProperty("updated_at")
+  @NotNull
   public java.util.Date getUpdatedAt() {
     return updatedAt;
   }

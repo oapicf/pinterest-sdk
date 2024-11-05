@@ -9,7 +9,7 @@ Request object to create catalogs items
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**country** | **Country** |  |  |
-|**language** | **Language** |  |  |
+|**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  |
 |**operation** | **BatchOperation** |  |  |
 |**items** | [**List&lt;ItemCreateBatchRecord&gt;**](ItemCreateBatchRecord.md) | Array with catalogs items |  |
 

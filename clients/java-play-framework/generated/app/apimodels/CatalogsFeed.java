@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.CatalogsCreativeAssetsFeed;
 import apimodels.CatalogsFeedCredentials;
 import apimodels.CatalogsFeedProcessingSchedule;
 import apimodels.CatalogsFormat;
@@ -23,20 +24,23 @@ import javax.validation.Valid;
 /**
  * Catalogs Feed object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeed   {
   @JsonProperty("created_at")
-  @Valid
+  @NotNull
+@Valid
 
   private OffsetDateTime createdAt;
 
   @JsonProperty("id")
-  
+  @NotNull
+
   private String id;
 
   @JsonProperty("updated_at")
-  @Valid
+  @NotNull
+@Valid
 
   private OffsetDateTime updatedAt;
 

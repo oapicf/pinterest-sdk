@@ -1,9 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.ItemAttributes
+import org.openapitools.model.ItemAttributesRequest
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -31,19 +32,24 @@ data class CatalogsCreateRetailItem(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("attributes", required = true) val attributes: ItemAttributes
-) {
+    @get:JsonProperty("attributes", required = true) val attributes: ItemAttributesRequest
+    ) {
 
     /**
     * 
-    * Values: CREATE,UPDATE,UPSERT,DELETE
+    * Values: CREATE
     */
-    enum class Operation(val value: kotlin.String) {
+    enum class Operation(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("CREATE") CREATE("CREATE"),
-        @JsonProperty("UPDATE") UPDATE("UPDATE"),
-        @JsonProperty("UPSERT") UPSERT("UPSERT"),
-        @JsonProperty("DELETE") DELETE("DELETE")
+        CREATE("CREATE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Operation {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

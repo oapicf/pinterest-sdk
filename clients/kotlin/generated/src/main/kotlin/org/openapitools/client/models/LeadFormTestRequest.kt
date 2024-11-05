@@ -32,5 +32,8 @@ data class LeadFormTestRequest (
     @Json(name = "answers")
     val answers: kotlin.collections.List<kotlin.String>
 
-)
+) {
+
+
+}
 

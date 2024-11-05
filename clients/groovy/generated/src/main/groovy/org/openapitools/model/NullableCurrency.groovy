@@ -329,9 +329,7 @@ enum NullableCurrency {
     
     ZMW("ZMW"),
     
-    ZWD("ZWD"),
-    
-    NULL("null")
+    ZWD("ZWD")
 
     private final String value
 

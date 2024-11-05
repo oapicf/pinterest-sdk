@@ -13,6 +13,7 @@ import AnyCodable
 /** Batch of logs sent from an integration application. */
 public struct IntegrationLogsRequest: Codable, JSONEncodable, Hashable {
 
+    static let logsRule = ArrayRule(minItems: 1, maxItems: 250, uniqueItems: false)
     public var logs: [IntegrationLog]
 
     public init(logs: [IntegrationLog]) {

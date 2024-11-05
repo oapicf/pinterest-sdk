@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("Ad_account_owner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountOwner {
 
   private String username;
@@ -35,7 +35,7 @@ public class AdAccountOwner {
   /**
    * Public username for the user account
    * @return username
-  */
+   */
   
   @Schema(name = "username", description = "Public username for the user account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
@@ -55,7 +55,7 @@ public class AdAccountOwner {
   /**
    * The owning account's user ID.
    * @return id
-  */
+   */
   
   @Schema(name = "id", description = "The owning account's user ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")

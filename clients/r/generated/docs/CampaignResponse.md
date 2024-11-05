@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **lifetime_spend_cap** | **integer** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **daily_spend_cap** | **integer** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **order_line_id** | **character** | Order line ID that appears on the invoice. | [optional] [Pattern: ^\\d+$] 
-**tracking_urls** | [**AdCommonTrackingUrls**](AdCommon_tracking_urls.md) |  | [optional] 
+**tracking_urls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
 **start_time** | **integer** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
 **end_time** | **integer** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**summary_status** | [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] [Enum: ] 
+**is_flexible_daily_budgets** | **character** | Determine if a campaign has flexible daily budgets setup. | [optional] 
 **objective_type** | [**ObjectiveType**](ObjectiveType.md) |  | [optional] [Enum: ] 
 **created_time** | **integer** | Campaign creation time. Unix timestamp in seconds. | [optional] 
 **updated_time** | **integer** | UTC timestamp. Last update time. | [optional] 
 **type** | **character** | Always \&quot;campaign\&quot;. | [optional] 
-**is_flexible_daily_budgets** | **character** | Determines if a campaign has flexible daily budgets setup. | [optional] 
 **is_campaign_budget_optimization** | **character** | Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. | [optional] 
+**summary_status** | [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] [Enum: ] 
 
 

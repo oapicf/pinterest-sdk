@@ -32,5 +32,8 @@ data class GenderFilter (
     @Json(name = "GENDER")
     val GENDER: CatalogsProductGroupMultipleGenderCriteria
 
-)
+) {
+
+
+}
 

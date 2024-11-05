@@ -9,6 +9,7 @@ import org.openapitools.server.api.model.CatalogsFeedCredentials;
 import org.openapitools.server.api.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.server.api.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.server.api.model.CatalogsFormat;
+import org.openapitools.server.api.model.CatalogsStatus;
 import org.openapitools.server.api.model.CatalogsType;
 import org.openapitools.server.api.model.NullableCurrency;
 
@@ -27,12 +28,13 @@ public class CatalogsHotelFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsType catalogType;
   private String catalogId;
+  private CatalogsStatus status;
 
   public CatalogsHotelFeedsCreateRequest () {
 
   }
 
-  public CatalogsHotelFeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsType catalogType, String catalogId) {
+  public CatalogsHotelFeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsType catalogType, String catalogId, CatalogsStatus status) {
     this.defaultCurrency = defaultCurrency;
     this.name = name;
     this.format = format;
@@ -42,6 +44,7 @@ public class CatalogsHotelFeedsCreateRequest   {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
     this.catalogType = catalogType;
     this.catalogId = catalogId;
+    this.status = status;
   }
 
     
@@ -125,6 +128,15 @@ public class CatalogsHotelFeedsCreateRequest   {
     this.catalogId = catalogId;
   }
 
+    
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,12 +155,13 @@ public class CatalogsHotelFeedsCreateRequest   {
         Objects.equals(location, catalogsHotelFeedsCreateRequest.location) &&
         Objects.equals(preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(catalogType, catalogsHotelFeedsCreateRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsHotelFeedsCreateRequest.catalogId);
+        Objects.equals(catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
+        Objects.equals(status, catalogsHotelFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId, status);
   }
 
   @Override
@@ -165,6 +178,7 @@ public class CatalogsHotelFeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

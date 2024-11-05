@@ -51,27 +51,12 @@ class CatalogsRetailProductGroup {
     Integer createdAt
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     Integer updatedAt
-
-    enum FeedIdEnum {
+    /* Catalog id pertaining to the retail product group. */
+    String catalogId
+    /* id of the catalogs feed belonging to this catalog product group */
+    String feedId
     
-        NULL("null")
+    String country
     
-        private final String value
-    
-        FeedIdEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    
-    FeedIdEnum feedId
+    String locale
 }

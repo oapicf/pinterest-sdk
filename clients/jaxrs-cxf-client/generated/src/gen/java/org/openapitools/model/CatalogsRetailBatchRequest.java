@@ -4,10 +4,9 @@ import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -20,14 +19,44 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsRetailBatchRequest  {
   
+public enum CatalogTypeEnum {
+
+RETAIL(String.valueOf("RETAIL"));
+
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
  /**
@@ -39,15 +68,18 @@ public class CatalogsRetailBatchRequest  {
    * @return catalogType
   **/
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public String getCatalogType() {
+    if (catalogType == null) {
+      return null;
+    }
+    return catalogType.value();
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsRetailBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -75,15 +107,15 @@ public class CatalogsRetailBatchRequest  {
    * @return language
   **/
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
-  public CatalogsRetailBatchRequest language(Language language) {
+  public CatalogsRetailBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }

@@ -51,7 +51,7 @@ void main() {
       // TODO
     });
 
-    // AdCommonTrackingUrls trackingUrls
+    // TrackingUrls trackingUrls
     test('to test the property `trackingUrls`', () async {
       // TODO
     });
@@ -68,12 +68,7 @@ void main() {
       // TODO
     });
 
-    // CampaignSummaryStatus summaryStatus
-    test('to test the property `summaryStatus`', () async {
-      // TODO
-    });
-
-    // Determines if a campaign has flexible daily budgets setup.
+    // Determine if a campaign has flexible daily budgets setup.
     // bool isFlexibleDailyBudgets
     test('to test the property `isFlexibleDailyBudgets`', () async {
       // TODO
@@ -86,7 +81,7 @@ void main() {
     });
 
     // Specifies whether the campaign was created in the automated campaign flow
-    // bool isAutomatedCampaign (default value: false)
+    // bool isAutomatedCampaign
     test('to test the property `isAutomatedCampaign`', () async {
       // TODO
     });
@@ -123,6 +118,11 @@ void main() {
     // Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
     // bool isCampaignBudgetOptimization
     test('to test the property `isCampaignBudgetOptimization`', () async {
+      // TODO
+    });
+
+    // CampaignSummaryStatus summaryStatus
+    test('to test the property `summaryStatus`', () async {
       // TODO
     });
 

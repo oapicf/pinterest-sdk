@@ -7,10 +7,10 @@ type PinUpdate struct {
 	AltText *string `json:"alt_text,omitempty"`
 
 	// The id of the board to move the Pin onto.
-	BoardId *string `json:"board_id,omitempty"`
+	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
-	BoardSectionId *string `json:"board_section_id,omitempty"`
+	BoardSectionId *string `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Pin description - 800 characters maximum.
 	Description *string `json:"description,omitempty"`

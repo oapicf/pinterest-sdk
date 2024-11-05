@@ -21,8 +21,8 @@
         "type": "enum",
         "name": "PinMediaSourceImageBase64_contentUnderscoretype",
         "symbols": [
-          "image/jpeg",
-          "image/png"
+          "image_jpeg",
+          "image_png"
         ]
       },
       "doc": ""

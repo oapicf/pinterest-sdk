@@ -35,7 +35,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserAccountApiServiceImpl implements UserAccountApiService {
       public Response boardsUserFollowsList(String bookmark,Integer pageSize,Boolean explicitFollowing,String adAccountId,SecurityContext securityContext)
       throws NotFoundException {
@@ -92,12 +92,12 @@ public class UserAccountApiServiceImpl implements UserAccountApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest,SecurityContext securityContext)
+      public Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest,String adAccountId,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response websiteVerificationGet(SecurityContext securityContext)
+      public Response websiteVerificationGet(String adAccountId,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

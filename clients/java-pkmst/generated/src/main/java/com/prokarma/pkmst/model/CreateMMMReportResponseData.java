@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CreateMMMReportResponseData
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateMMMReportResponseData   {
   @JsonProperty("report_status")
   private BulkReportingJobStatus reportStatus;
@@ -36,10 +36,10 @@ public class CreateMMMReportResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Get reportStatus
    * @return reportStatus
-  **/
+   */
   @ApiModelProperty(value = "")
   public BulkReportingJobStatus getReportStatus() {
     return reportStatus;
@@ -54,10 +54,10 @@ public class CreateMMMReportResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Get token
    * @return token
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getToken() {
     return token;
@@ -72,10 +72,10 @@ public class CreateMMMReportResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Get message
    * @return message
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getMessage() {
     return message;
@@ -90,10 +90,10 @@ public class CreateMMMReportResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(example = "success", value = "")
   public String getStatus() {
     return status;

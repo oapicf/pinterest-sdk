@@ -8,6 +8,7 @@ import com.prokarma.pkmst.model.CatalogsFeedCredentials;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
 import com.prokarma.pkmst.model.CatalogsFeedsCreateRequestDefaultLocale;
 import com.prokarma.pkmst.model.CatalogsFormat;
+import com.prokarma.pkmst.model.CatalogsStatus;
 import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.NullableCurrency;
 import io.swagger.annotations.ApiModel;
@@ -23,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelFeedsCreateRequest   {
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;
@@ -52,15 +53,18 @@ public class CatalogsHotelFeedsCreateRequest   {
   @JsonProperty("catalog_id")
   private String catalogId;
 
+  @JsonProperty("status")
+  private CatalogsStatus status;
+
   public CatalogsHotelFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -75,10 +79,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
   public String getName() {
     return name;
@@ -93,10 +97,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -111,10 +115,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultLocale
    * @return defaultLocale
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
@@ -129,10 +133,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -147,10 +151,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -165,10 +169,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -183,10 +187,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -201,10 +205,10 @@ public class CatalogsHotelFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
    * @return catalogId
-  **/
+   */
   @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
   public String getCatalogId() {
     return catalogId;
@@ -212,6 +216,24 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  public CatalogsHotelFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @ApiModelProperty(value = "")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
 
@@ -232,12 +254,13 @@ public class CatalogsHotelFeedsCreateRequest   {
         Objects.equals(this.location, catalogsHotelFeedsCreateRequest.location) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.catalogType, catalogsHotelFeedsCreateRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsHotelFeedsCreateRequest.catalogId);
+        Objects.equals(this.catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
+        Objects.equals(this.status, catalogsHotelFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId, status);
   }
 
   @Override
@@ -254,6 +277,7 @@ public class CatalogsHotelFeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

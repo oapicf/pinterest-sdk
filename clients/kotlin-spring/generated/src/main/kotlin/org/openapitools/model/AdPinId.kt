@@ -22,7 +22,7 @@ data class AdPinId(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "394205773611545468", description = "Pin ID.")
     @get:JsonProperty("pin_id") val pinId: kotlin.String? = null
-) {
+    ) {
 
 }
 

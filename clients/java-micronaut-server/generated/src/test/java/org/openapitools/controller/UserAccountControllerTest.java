@@ -100,7 +100,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/following/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@6625d4aa");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -119,7 +119,7 @@ public class UserAccountControllerTest {
      *
      * The method should: Follow user
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -153,7 +153,7 @@ public class UserAccountControllerTest {
             put("username", "username");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@23be198a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UserSummary.class);
@@ -197,7 +197,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/followers").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@45507d66");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -242,7 +242,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/businesses").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@2d604f79");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, LinkedBusiness.class));
@@ -285,7 +285,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/websites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@65284efb");
         request.getParameters()
             .add("website", "mysite.test"); // The query parameter format should be 
 
@@ -339,7 +339,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/analytics").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@3689699d");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -404,7 +404,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/analytics/top_pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@70749967");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -471,7 +471,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/analytics/top_video_pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5f400b97");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -532,7 +532,7 @@ public class UserAccountControllerTest {
             put("username", "username");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@78b8c912");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -549,7 +549,7 @@ public class UserAccountControllerTest {
      *
      * The method should: Get user account
      *
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -578,7 +578,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5009219");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -627,7 +627,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/following").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@516b9c7f");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -677,7 +677,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/websites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@e283976");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -703,9 +703,10 @@ public class UserAccountControllerTest {
     void verifyWebsiteUpdateMethodTest() {
         // given
         UserWebsiteVerifyRequest userWebsiteVerifyRequest = new UserWebsiteVerifyRequest();
+        String adAccountId = "example";
 
         // when
-        UserWebsiteSummary result = controller.verifyWebsiteUpdate(userWebsiteVerifyRequest).block();
+        UserWebsiteSummary result = controller.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -724,7 +725,9 @@ public class UserAccountControllerTest {
         UserWebsiteVerifyRequest body = new UserWebsiteVerifyRequest();
         String uri = UriTemplate.of("/user_account/websites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@30e691f8");
+        request.getParameters()
+            .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UserWebsiteSummary.class);
@@ -746,9 +749,10 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void websiteVerificationGetMethodTest() {
         // given
+        String adAccountId = "example";
 
         // when
-        UserWebsiteVerificationCode result = controller.websiteVerificationGet().block();
+        UserWebsiteVerificationCode result = controller.websiteVerificationGet(adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -766,7 +770,9 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/websites/verification").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@31f75da7");
+        request.getParameters()
+            .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UserWebsiteVerificationCode.class);

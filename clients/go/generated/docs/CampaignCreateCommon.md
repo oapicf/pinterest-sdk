@@ -6,17 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdAccountId** | Pointer to **string** | Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. | [optional] 
 **Name** | Pointer to **string** | Campaign name. | [optional] 
-**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] [default to ACTIVE]
+**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
 **LifetimeSpendCap** | Pointer to **NullableInt32** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **DailySpendCap** | Pointer to **NullableInt32** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **OrderLineId** | Pointer to **NullableString** | Order line ID that appears on the invoice. | [optional] 
-**TrackingUrls** | Pointer to [**NullableAdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] 
+**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
 **StartTime** | Pointer to **NullableInt32** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
 **EndTime** | Pointer to **NullableInt32** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**SummaryStatus** | Pointer to [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
-**IsFlexibleDailyBudgets** | Pointer to **bool** | Determine if a campaign has flexible daily budgets setup. | [optional] [default to false]
+**IsFlexibleDailyBudgets** | Pointer to **NullableBool** | Determine if a campaign has flexible daily budgets setup. | [optional] 
 **DefaultAdGroupBudgetInMicroCurrency** | Pointer to **NullableInt32** | When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. | [optional] 
-**IsAutomatedCampaign** | Pointer to **bool** | Specifies whether the campaign was created in the automated campaign flow | [optional] [default to false]
+**IsAutomatedCampaign** | Pointer to **NullableBool** | Specifies whether the campaign was created in the automated campaign flow | [optional] 
 
 ## Methods
 
@@ -219,20 +218,20 @@ HasOrderLineId returns a boolean if a field has been set.
 UnsetOrderLineId ensures that no value is present for OrderLineId, not even an explicit nil
 ### GetTrackingUrls
 
-`func (o *CampaignCreateCommon) GetTrackingUrls() AdCommonTrackingUrls`
+`func (o *CampaignCreateCommon) GetTrackingUrls() TrackingUrls`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *CampaignCreateCommon) GetTrackingUrlsOk() (*AdCommonTrackingUrls, bool)`
+`func (o *CampaignCreateCommon) GetTrackingUrlsOk() (*TrackingUrls, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *CampaignCreateCommon) SetTrackingUrls(v AdCommonTrackingUrls)`
+`func (o *CampaignCreateCommon) SetTrackingUrls(v TrackingUrls)`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -322,31 +321,6 @@ HasEndTime returns a boolean if a field has been set.
 `func (o *CampaignCreateCommon) UnsetEndTime()`
 
 UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
-### GetSummaryStatus
-
-`func (o *CampaignCreateCommon) GetSummaryStatus() CampaignSummaryStatus`
-
-GetSummaryStatus returns the SummaryStatus field if non-nil, zero value otherwise.
-
-### GetSummaryStatusOk
-
-`func (o *CampaignCreateCommon) GetSummaryStatusOk() (*CampaignSummaryStatus, bool)`
-
-GetSummaryStatusOk returns a tuple with the SummaryStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSummaryStatus
-
-`func (o *CampaignCreateCommon) SetSummaryStatus(v CampaignSummaryStatus)`
-
-SetSummaryStatus sets SummaryStatus field to given value.
-
-### HasSummaryStatus
-
-`func (o *CampaignCreateCommon) HasSummaryStatus() bool`
-
-HasSummaryStatus returns a boolean if a field has been set.
-
 ### GetIsFlexibleDailyBudgets
 
 `func (o *CampaignCreateCommon) GetIsFlexibleDailyBudgets() bool`
@@ -372,6 +346,16 @@ SetIsFlexibleDailyBudgets sets IsFlexibleDailyBudgets field to given value.
 
 HasIsFlexibleDailyBudgets returns a boolean if a field has been set.
 
+### SetIsFlexibleDailyBudgetsNil
+
+`func (o *CampaignCreateCommon) SetIsFlexibleDailyBudgetsNil(b bool)`
+
+ SetIsFlexibleDailyBudgetsNil sets the value for IsFlexibleDailyBudgets to be an explicit nil
+
+### UnsetIsFlexibleDailyBudgets
+`func (o *CampaignCreateCommon) UnsetIsFlexibleDailyBudgets()`
+
+UnsetIsFlexibleDailyBudgets ensures that no value is present for IsFlexibleDailyBudgets, not even an explicit nil
 ### GetDefaultAdGroupBudgetInMicroCurrency
 
 `func (o *CampaignCreateCommon) GetDefaultAdGroupBudgetInMicroCurrency() int32`
@@ -432,6 +416,16 @@ SetIsAutomatedCampaign sets IsAutomatedCampaign field to given value.
 
 HasIsAutomatedCampaign returns a boolean if a field has been set.
 
+### SetIsAutomatedCampaignNil
+
+`func (o *CampaignCreateCommon) SetIsAutomatedCampaignNil(b bool)`
+
+ SetIsAutomatedCampaignNil sets the value for IsAutomatedCampaign to be an explicit nil
+
+### UnsetIsAutomatedCampaign
+`func (o *CampaignCreateCommon) UnsetIsAutomatedCampaign()`
+
+UnsetIsAutomatedCampaign ensures that no value is present for IsAutomatedCampaign, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

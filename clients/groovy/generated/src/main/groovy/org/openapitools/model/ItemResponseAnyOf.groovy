@@ -6,7 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsItemResponse;
 import org.openapitools.model.CatalogsHotelItemResponse;
 import org.openapitools.model.CatalogsRetailItemResponse;
 import org.openapitools.model.CatalogsType;
@@ -21,7 +22,9 @@ class ItemResponseAnyOf {
     /* The pins mapped to the item */
     List<Pin> pins
     
-    CatalogsHotelAttributes attributes
+    CatalogsCreativeAssetsAttributes attributes
     /* The catalog hotel id in the merchant namespace */
     String hotelId
+    /* The catalog creative assets id in the merchant namespace */
+    String creativeAssetsId
 }

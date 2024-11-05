@@ -11,7 +11,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.TargetingSpecSHOPPINGRETARGETING;
 
 /**
- * Ad group targeting specification defining the ad group target audience. For example, {\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}
+ * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingSpec   {
@@ -67,7 +67,7 @@ public class TargetingSpec   {
 
   private List<APPTYPEEnum> APPTYPE;
   private List<String> AUDIENCE_EXCLUDE;
-  private List<String> auDIENCEINCLUDEQuote;
+  private List<String> AUDIENCE_INCLUDE;
 
 
   public enum GENDEREnum {
@@ -90,7 +90,7 @@ public class TargetingSpec   {
 
   private List<GENDEREnum> GENDER;
   private List<String> GEO;
-  private List<String> INTEREST;
+  private List<String> INTEREST = new ArrayList<>();
   private List<String> LOCALE;
   private List<String> LOCATION;
   private List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING;
@@ -120,11 +120,11 @@ public class TargetingSpec   {
 
   }
 
-  public TargetingSpec (List<AGEBUCKETEnum> AGE_BUCKET, List<APPTYPEEnum> APPTYPE, List<String> AUDIENCE_EXCLUDE, List<String> auDIENCEINCLUDEQuote, List<GENDEREnum> GENDER, List<String> GEO, List<String> INTEREST, List<String> LOCALE, List<String> LOCATION, List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING, List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
+  public TargetingSpec (List<AGEBUCKETEnum> AGE_BUCKET, List<APPTYPEEnum> APPTYPE, List<String> AUDIENCE_EXCLUDE, List<String> AUDIENCE_INCLUDE, List<GENDEREnum> GENDER, List<String> GEO, List<String> INTEREST, List<String> LOCALE, List<String> LOCATION, List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING, List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY) {
     this.AGE_BUCKET = AGE_BUCKET;
     this.APPTYPE = APPTYPE;
     this.AUDIENCE_EXCLUDE = AUDIENCE_EXCLUDE;
-    this.auDIENCEINCLUDEQuote = auDIENCEINCLUDEQuote;
+    this.AUDIENCE_INCLUDE = AUDIENCE_INCLUDE;
     this.GENDER = GENDER;
     this.GEO = GEO;
     this.INTEREST = INTEREST;
@@ -162,12 +162,12 @@ public class TargetingSpec   {
   }
 
     
-  @JsonProperty("AUDIENCE_INCLUDE&#39;")
-  public List<String> getAuDIENCEINCLUDEQuote() {
-    return auDIENCEINCLUDEQuote;
+  @JsonProperty("AUDIENCE_INCLUDE")
+  public List<String> getAUDIENCEINCLUDE() {
+    return AUDIENCE_INCLUDE;
   }
-  public void setAuDIENCEINCLUDEQuote(List<String> auDIENCEINCLUDEQuote) {
-    this.auDIENCEINCLUDEQuote = auDIENCEINCLUDEQuote;
+  public void setAUDIENCEINCLUDE(List<String> AUDIENCE_INCLUDE) {
+    this.AUDIENCE_INCLUDE = AUDIENCE_INCLUDE;
   }
 
     
@@ -246,7 +246,7 @@ public class TargetingSpec   {
     return Objects.equals(AGE_BUCKET, targetingSpec.AGE_BUCKET) &&
         Objects.equals(APPTYPE, targetingSpec.APPTYPE) &&
         Objects.equals(AUDIENCE_EXCLUDE, targetingSpec.AUDIENCE_EXCLUDE) &&
-        Objects.equals(auDIENCEINCLUDEQuote, targetingSpec.auDIENCEINCLUDEQuote) &&
+        Objects.equals(AUDIENCE_INCLUDE, targetingSpec.AUDIENCE_INCLUDE) &&
         Objects.equals(GENDER, targetingSpec.GENDER) &&
         Objects.equals(GEO, targetingSpec.GEO) &&
         Objects.equals(INTEREST, targetingSpec.INTEREST) &&
@@ -258,7 +258,7 @@ public class TargetingSpec   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, auDIENCEINCLUDEQuote, GENDER, GEO, INTEREST, LOCALE, LOCATION, SHOPPING_RETARGETING, TARGETING_STRATEGY);
+    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, INTEREST, LOCALE, LOCATION, SHOPPING_RETARGETING, TARGETING_STRATEGY);
   }
 
   @Override
@@ -269,7 +269,7 @@ public class TargetingSpec   {
     sb.append("    AGE_BUCKET: ").append(toIndentedString(AGE_BUCKET)).append("\n");
     sb.append("    APPTYPE: ").append(toIndentedString(APPTYPE)).append("\n");
     sb.append("    AUDIENCE_EXCLUDE: ").append(toIndentedString(AUDIENCE_EXCLUDE)).append("\n");
-    sb.append("    auDIENCEINCLUDEQuote: ").append(toIndentedString(auDIENCEINCLUDEQuote)).append("\n");
+    sb.append("    AUDIENCE_INCLUDE: ").append(toIndentedString(AUDIENCE_INCLUDE)).append("\n");
     sb.append("    GENDER: ").append(toIndentedString(GENDER)).append("\n");
     sb.append("    GEO: ").append(toIndentedString(GEO)).append("\n");
     sb.append("    INTEREST: ").append(toIndentedString(INTEREST)).append("\n");

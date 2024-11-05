@@ -27,8 +27,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param batchId Id of the catalogs items batch
- * @param createdTime Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
- * @param completedTime Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+ * @param createdTime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+ * @param completedTime Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
  * @param status 
  * @param items Array with the catalogs items processing records part of the catalogs items batch
  */
@@ -43,11 +43,11 @@ data class CatalogsRetailItemsBatch (
     @Json(name = "batch_id")
     val batchId: kotlin.String? = null,
 
-    /* Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
     @Json(name = "created_time")
     val createdTime: java.time.OffsetDateTime? = null,
 
-    /* Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     @Json(name = "completed_time")
     val completedTime: java.time.OffsetDateTime? = null,
 
@@ -58,5 +58,8 @@ data class CatalogsRetailItemsBatch (
     @Json(name = "items")
     val items: kotlin.collections.List<ItemProcessingRecord>? = null
 
-)
+) {
+
+
+}
 

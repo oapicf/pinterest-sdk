@@ -9,6 +9,6 @@ package org.openapitools.server.model
 */
 final case class ItemUpsertBatchRecord (
   itemId: Option[String] = None,
-  attributes: Option[ItemAttributes] = None
+  attributes: Option[ItemAttributesRequest] = None
 )
 

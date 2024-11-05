@@ -15,7 +15,5 @@ The class is defined in **[LeadFormQuestionFieldType.java](../../src/main/java/o
 
 * `CHECKBOX` (value: `"CHECKBOX"`)
 
-* `NULL` (value: `"null"`)
-
 
 

@@ -17,7 +17,7 @@ public class QuizPinQuestion   {
   
   private BigDecimal questionId;
   private String questionText;
-  private List<QuizPinOption> options;
+  private List<QuizPinOption> options = new ArrayList<>();
 
   public QuizPinQuestion () {
 

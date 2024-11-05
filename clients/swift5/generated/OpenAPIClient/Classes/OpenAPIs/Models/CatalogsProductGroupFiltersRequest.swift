@@ -13,6 +13,8 @@ import AnyCodable
 /** Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters. */
 public struct CatalogsProductGroupFiltersRequest: Codable, JSONEncodable, Hashable {
 
+    static let anyOfRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    static let allOfRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     public var anyOf: [CatalogsProductGroupFilterKeys]
     public var allOf: [CatalogsProductGroupFilterKeys]
 

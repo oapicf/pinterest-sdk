@@ -47,7 +47,7 @@ data class BulkUpsertRequestCreate(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("keywords") val keywords: kotlin.collections.List<KeywordsRequest>? = null
-) {
+    ) {
 
 }
 

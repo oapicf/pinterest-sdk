@@ -15,7 +15,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * KeywordUpdate
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordUpdate   {
   @JsonProperty("id")
   private String id;
@@ -31,10 +31,10 @@ public class KeywordUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Keyword ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
   public String getId() {
     return id;
@@ -49,10 +49,10 @@ public class KeywordUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Is keyword archived?
    * @return archived
-  **/
+   */
   @ApiModelProperty(example = "false", value = "Is keyword archived?")
   public Boolean getArchived() {
     return archived;
@@ -67,12 +67,11 @@ public class KeywordUpdate   {
     return this;
   }
 
-   /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * minimum: 1
+  /**
+   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    * @return bid
-  **/
-  @ApiModelProperty(example = "200000", value = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+   */
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
   public Integer getBid() {
     return bid;
   }

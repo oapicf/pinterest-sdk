@@ -20,5 +20,5 @@ public interface ResourcesApi  {
     Future<ApiResponse<SingleInterestTargetingOptionResponse>> interestTargetingOptionsGet(String interestId);
     Future<ApiResponse<Void>> leadFormQuestionsGet();
     Future<ApiResponse<BookClosedResponse>> metricsReadyStateGet(String date);
-    Future<ApiResponse<List<Object>>> targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp);
+    Future<ApiResponse<List<Object>>> targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId);
 }

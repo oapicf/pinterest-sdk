@@ -52,5 +52,6 @@ data class CatalogsCreateHotelItem (
     enum class Operation(val value: kotlin.String) {
         @Json(name = "CREATE") CREATE("CREATE");
     }
+
 }
 

@@ -13,7 +13,5 @@
 
 * `VALIDATION_COMPLETE` (value: `"VALIDATION_COMPLETE"`)
 
-* `NULL` (value: `"null"`)
-
 
 

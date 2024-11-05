@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**\OpenAPI\Client\Model\SummaryPinMedia**](SummaryPinMedia.md) |  | [optional]
+**media** | [**\OpenAPI\Client\Model\PinMedia**](PinMedia.md) |  | [optional] [readonly]
 **alt_text** | **string** |  | [optional]
 **link** | **string** |  | [optional]
 **title** | **string** |  | [optional]

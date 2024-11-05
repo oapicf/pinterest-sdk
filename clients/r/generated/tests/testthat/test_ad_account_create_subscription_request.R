@@ -36,3 +36,10 @@ test_that("partner_refresh_token", {
   # uncomment below to test the property
   #expect_equal(model.instance$`partner_refresh_token`, "EXPECTED_RESULT")
 })
+
+test_that("partner_metadata", {
+  # tests for the property `partner_metadata` (AdAccountCreateSubscriptionRequestPartnerMetadata)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`partner_metadata`, "EXPECTED_RESULT")
+})

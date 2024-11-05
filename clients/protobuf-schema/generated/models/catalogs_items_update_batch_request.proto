@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -15,15 +15,15 @@ syntax = "proto3";
 package openapitools;
 
 import public "models/batch_operation.proto";
+import public "models/catalogs_items_request_language.proto";
 import public "models/country.proto";
 import public "models/item_update_batch_record.proto";
-import public "models/language.proto";
 
 message CatalogsItemsUpdateBatchRequest {
 
   Country country = 420960151;
 
-  Language language = 2976939;
+  CatalogsItemsRequestLanguage language = 2976939;
 
   BatchOperation operation = 52090218;
 

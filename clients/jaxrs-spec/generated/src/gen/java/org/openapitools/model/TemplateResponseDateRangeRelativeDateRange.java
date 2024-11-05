@@ -19,11 +19,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "The relative date range of the template")
 @JsonTypeName("TemplateResponse_date_range_relative_date_range")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeRelativeDateRange   {
-  private @Valid String type;
-  private @Valid BigDecimal startDaysInPast;
-  private @Valid BigDecimal endDaysInPast;
+  private String type;
+  private BigDecimal startDaysInPast;
+  private BigDecimal endDaysInPast;
 
   /**
    * The date range type
@@ -56,7 +56,7 @@ public class TemplateResponseDateRangeRelativeDateRange   {
   
   @ApiModelProperty(example = "14", value = "The start date of the date range")
   @JsonProperty("start_days_in_past")
-  public BigDecimal getStartDaysInPast() {
+  @Valid public BigDecimal getStartDaysInPast() {
     return startDaysInPast;
   }
 
@@ -76,7 +76,7 @@ public class TemplateResponseDateRangeRelativeDateRange   {
   
   @ApiModelProperty(example = "7", value = "The end date of the date range")
   @JsonProperty("end_days_in_past")
-  public BigDecimal getEndDaysInPast() {
+  @Valid public BigDecimal getEndDaysInPast() {
     return endDaysInPast;
   }
 

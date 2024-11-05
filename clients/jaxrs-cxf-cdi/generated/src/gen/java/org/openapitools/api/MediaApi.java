@@ -31,7 +31,7 @@ import javax.validation.Valid;
 @Api(description = "the media API")
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 
 public class MediaApi  {
 
@@ -44,7 +44,7 @@ public class MediaApi  {
     
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Register media upload", notes = "Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.", response = MediaUpload.class, authorizations = {
+    @ApiOperation(value = "Register media upload", notes = "Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaUpload.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
             @AuthorizationScope(scope = "pins:write", description = "Create, update, or delete your public Pins") })
@@ -60,7 +60,7 @@ public class MediaApi  {
     @Path("/{media_id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get media upload details", notes = "Get details for a registered media upload, including its current status.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.", response = MediaUploadDetails.class, authorizations = {
+    @ApiOperation(value = "Get media upload details", notes = "Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaUploadDetails.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
          }, tags={ "media" })
@@ -76,14 +76,14 @@ public class MediaApi  {
     
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List media uploads", notes = "List media uploads filtered by given parameters.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.", response = MediaList200Response.class, authorizations = {
+    @ApiOperation(value = "List media uploads", notes = "List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
          }, tags={ "media" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "response", response = MediaList200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response mediaList(@ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+    public Response mediaList(@ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.mediaList(bookmark, pageSize, securityContext);
     }
 }

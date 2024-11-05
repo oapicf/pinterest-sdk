@@ -3,9 +3,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **System.DateTime** |  | [optional] 
-**Id** | **String** |  | [optional] 
-**UpdatedAt** | **System.DateTime** |  | [optional] 
+**CreatedAt** | **System.DateTime** |  | 
+**Id** | **String** |  | 
+**UpdatedAt** | **System.DateTime** |  | 
 **Name** | **String** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 

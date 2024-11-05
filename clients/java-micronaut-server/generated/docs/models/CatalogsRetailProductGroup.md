@@ -18,7 +18,10 @@ Name | Type | Description | Notes
 **status** | `CatalogsProductGroupStatus` |  |  [optional property]
 **createdAt** | `Integer` | Unix timestamp in seconds of when catalog product group was created. |  [optional property]
 **updatedAt** | `Integer` | Unix timestamp in seconds of last time catalog product group was updated. |  [optional property]
-**feedId** | [**FeedIdEnum**](#FeedIdEnum) |  | 
+**catalogId** | `String` | Catalog id pertaining to the retail product group. | 
+**feedId** | `String` | id of the catalogs feed belonging to this catalog product group | 
+**country** | `String` |  |  [optional property]
+**locale** | `String` |  |  [optional property]
 
 ## CatalogTypeEnum
 
@@ -35,10 +38,8 @@ RETAIL | `"RETAIL"`
 
 
 
-## FeedIdEnum
 
-Name | Value
----- | -----
-NULL | `"null"`
+
+
 
 

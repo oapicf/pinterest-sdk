@@ -23,8 +23,7 @@ LinkedBusiness <- R6::R6Class(
     `image_medium_url` = NULL,
     `image_large_url` = NULL,
     `image_xlarge_url` = NULL,
-    #' Initialize a new LinkedBusiness class.
-    #'
+
     #' @description
     #' Initialize a new LinkedBusiness class.
     #'
@@ -34,7 +33,6 @@ LinkedBusiness <- R6::R6Class(
     #' @param image_large_url image_large_url
     #' @param image_xlarge_url image_xlarge_url
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`username` = NULL, `image_small_url` = NULL, `image_medium_url` = NULL, `image_large_url` = NULL, `image_xlarge_url` = NULL, ...) {
       if (!is.null(`username`)) {
         if (!(is.character(`username`) && length(`username`) == 1)) {
@@ -67,13 +65,11 @@ LinkedBusiness <- R6::R6Class(
         self$`image_xlarge_url` <- `image_xlarge_url`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LinkedBusiness in JSON format
-    #' @export
     toJSON = function() {
       LinkedBusinessObject <- list()
       if (!is.null(self$`username`)) {
@@ -98,14 +94,12 @@ LinkedBusiness <- R6::R6Class(
       }
       LinkedBusinessObject
     },
-    #' Deserialize JSON string into an instance of LinkedBusiness
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LinkedBusiness
     #'
     #' @param input_json the JSON input
     #' @return the instance of LinkedBusiness
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`username`)) {
@@ -125,13 +119,11 @@ LinkedBusiness <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LinkedBusiness in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`username`)) {
@@ -178,14 +170,12 @@ LinkedBusiness <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of LinkedBusiness
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LinkedBusiness
     #'
     #' @param input_json the JSON input
     #' @return the instance of LinkedBusiness
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`username` <- this_object$`username`
@@ -195,53 +185,42 @@ LinkedBusiness <- R6::R6Class(
       self$`image_xlarge_url` <- this_object$`image_xlarge_url`
       self
     },
-    #' Validate JSON input with respect to LinkedBusiness
-    #'
+
     #' @description
     #' Validate JSON input with respect to LinkedBusiness and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of LinkedBusiness
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

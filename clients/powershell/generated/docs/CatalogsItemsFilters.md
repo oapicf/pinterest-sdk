@@ -5,8 +5,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **ItemIds** | **String[]** |  | 
-**CatalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**CatalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 **HotelIds** | **String[]** |  | 
+**CreativeAssetsIds** | **String[]** |  | 
 
 ## Examples
 
@@ -15,7 +16,8 @@ Name | Type | Description | Notes
 $CatalogsItemsFilters = Initialize-PSOpenAPIToolsCatalogsItemsFilters  -CatalogType null `
  -ItemIds null `
  -CatalogId null `
- -HotelIds null
+ -HotelIds null `
+ -CreativeAssetsIds null
 ```
 
 - Convert the resource to JSON

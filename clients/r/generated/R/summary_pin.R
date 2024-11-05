@@ -7,7 +7,7 @@
 #' @title SummaryPin
 #' @description SummaryPin Class
 #' @format An \code{R6Class} generator object
-#' @field media  \link{SummaryPinMedia} [optional]
+#' @field media  \link{PinMedia} [optional]
 #' @field alt_text  character [optional]
 #' @field link  character [optional]
 #' @field title  character [optional]
@@ -23,8 +23,7 @@ SummaryPin <- R6::R6Class(
     `link` = NULL,
     `title` = NULL,
     `description` = NULL,
-    #' Initialize a new SummaryPin class.
-    #'
+
     #' @description
     #' Initialize a new SummaryPin class.
     #'
@@ -34,7 +33,6 @@ SummaryPin <- R6::R6Class(
     #' @param title title
     #' @param description description
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`media` = NULL, `alt_text` = NULL, `link` = NULL, `title` = NULL, `description` = NULL, ...) {
       if (!is.null(`media`)) {
         stopifnot(R6::is.R6(`media`))
@@ -65,13 +63,11 @@ SummaryPin <- R6::R6Class(
         self$`description` <- `description`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SummaryPin in JSON format
-    #' @export
     toJSON = function() {
       SummaryPinObject <- list()
       if (!is.null(self$`media`)) {
@@ -96,18 +92,16 @@ SummaryPin <- R6::R6Class(
       }
       SummaryPinObject
     },
-    #' Deserialize JSON string into an instance of SummaryPin
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SummaryPin
     #'
     #' @param input_json the JSON input
     #' @return the instance of SummaryPin
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`media`)) {
-        `media_object` <- SummaryPinMedia$new()
+        `media_object` <- PinMedia$new()
         `media_object`$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
         self$`media` <- `media_object`
       }
@@ -125,13 +119,11 @@ SummaryPin <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SummaryPin in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`media`)) {
@@ -178,50 +170,42 @@ SummaryPin <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of SummaryPin
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SummaryPin
     #'
     #' @param input_json the JSON input
     #' @return the instance of SummaryPin
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`media` <- SummaryPinMedia$new()$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
+      self$`media` <- PinMedia$new()$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
       self$`alt_text` <- this_object$`alt_text`
       self$`link` <- this_object$`link`
       self$`title` <- this_object$`title`
       self$`description` <- this_object$`description`
       self
     },
-    #' Validate JSON input with respect to SummaryPin
-    #'
+
     #' @description
     #' Validate JSON input with respect to SummaryPin and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of SummaryPin
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (nchar(self$`alt_text`) > 500) {
         return(FALSE)
@@ -233,13 +217,11 @@ SummaryPin <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (nchar(self$`alt_text`) > 500) {
@@ -252,12 +234,9 @@ SummaryPin <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -80,7 +80,7 @@ void main() {
       // TODO
     });
 
-    // SummaryPinMedia media
+    // PinMedia media
     test('to test the property `media`', () async {
       // TODO
     });
@@ -96,7 +96,7 @@ void main() {
       // TODO
     });
 
-    // Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+    // Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
     // bool isStandard
     test('to test the property `isStandard`', () async {
       // TODO

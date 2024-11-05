@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-03-14T23:04:30.273794609Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public abstract class SearchApiService {
     public abstract Response searchPartnerPins( @NotNull String term, @NotNull String countryCode,String bookmark,String locale, @Min(1) @Max(50)Integer limit,SecurityContext securityContext) throws NotFoundException;
     public abstract Response searchUserBoardsGet( @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,String bookmark, @Min(1) @Max(250)Integer pageSize,String query,SecurityContext securityContext) throws NotFoundException;

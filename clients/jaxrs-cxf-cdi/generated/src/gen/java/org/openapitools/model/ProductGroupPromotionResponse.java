@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class ProductGroupPromotionResponse   {
   
-  private List<@Valid ProductGroupPromotionResponseItem> items;
+  private List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
 
   /**
    **/

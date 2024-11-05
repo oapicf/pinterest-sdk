@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ConversionEvent** | Pointer to **string** |  | [optional] 
 **ConversionTagId** | Pointer to **string** |  | [optional] 
 **CpaGoalValueInMicroCurrency** | Pointer to **string** |  | [optional] 
-**IsRoasOptimized** | Pointer to **NullableBool** | Ad group is ROAS optimized | [optional] 
+**IsRoasOptimized** | Pointer to **NullableBool** | ROAS optimization is not supported | [optional] 
 **LearningModeType** | Pointer to **NullableString** | Conversion learning model type | [optional] 
 
 ## Methods

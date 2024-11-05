@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * DeliveryMetricsResponseItemsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class DeliveryMetricsResponseItemsInner   {
   @JsonProperty("name")
   private String name;
@@ -66,10 +66,10 @@ public class DeliveryMetricsResponseItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Metric's name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "AD_GROUP_ID", value = "Metric's name.")
   public String getName() {
     return name;
@@ -84,10 +84,10 @@ public class DeliveryMetricsResponseItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Category name
    * @return category
-  **/
+   */
   @ApiModelProperty(example = "ADS", value = "Category name")
   public CategoryEnum getCategory() {
     return category;
@@ -102,10 +102,10 @@ public class DeliveryMetricsResponseItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * How the metric is defined.
    * @return definition
-  **/
+   */
   @ApiModelProperty(example = "Unique ID for your ad group", value = "How the metric is defined.")
   public String getDefinition() {
     return definition;
@@ -120,10 +120,10 @@ public class DeliveryMetricsResponseItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
    * @return displayName
-  **/
+   */
   @ApiModelProperty(example = "Ad group ID", value = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.")
   public String getDisplayName() {
     return displayName;

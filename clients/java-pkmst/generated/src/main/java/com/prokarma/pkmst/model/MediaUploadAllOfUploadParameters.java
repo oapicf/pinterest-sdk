@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadAllOfUploadParameters   {
   @JsonProperty("x-amz-date")
   private String xAmzDate;
@@ -47,10 +47,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get xAmzDate
    * @return xAmzDate
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getxAmzDate() {
     return xAmzDate;
@@ -65,10 +65,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get xAmzSignature
    * @return xAmzSignature
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getxAmzSignature() {
     return xAmzSignature;
@@ -83,10 +83,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get xAmzSecurityToken
    * @return xAmzSecurityToken
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getxAmzSecurityToken() {
     return xAmzSecurityToken;
@@ -101,10 +101,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get xAmzAlgorithm
    * @return xAmzAlgorithm
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getxAmzAlgorithm() {
     return xAmzAlgorithm;
@@ -119,10 +119,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get key
    * @return key
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getKey() {
     return key;
@@ -137,10 +137,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get policy
    * @return policy
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getPolicy() {
     return policy;
@@ -155,10 +155,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get xAmzCredential
    * @return xAmzCredential
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getxAmzCredential() {
     return xAmzCredential;
@@ -173,10 +173,10 @@ public class MediaUploadAllOfUploadParameters   {
     return this;
   }
 
-   /**
+  /**
    * Get contentType
    * @return contentType
-  **/
+   */
   @ApiModelProperty(example = "multipart/form-data", value = "")
   public String getContentType() {
     return contentType;

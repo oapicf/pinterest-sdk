@@ -2,7 +2,7 @@
 Protected Class SummaryPin
 
 	#tag Property, Flags = &h0
-		media As OpenAPIClient.Models.SummaryPinMedia
+		media As OpenAPIClient.Models.PinMedia
 	#tag EndProperty
 
 
@@ -67,7 +67,7 @@ Protected Class SummaryPin
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="SummaryPinMedia"
+			Type="PinMedia"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

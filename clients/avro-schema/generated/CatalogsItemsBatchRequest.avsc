@@ -11,7 +11,7 @@
     },
     {
       "name": "language",
-      "type": "model.Language",
+      "type": "model.CatalogsItemsRequestLanguage",
       "doc": ""
     },
     {

@@ -103,6 +103,13 @@ test_that("GENDER", {
   #expect_equal(model.instance$`GENDER`, "EXPECTED_RESULT")
 })
 
+test_that("MEDIA_TYPE", {
+  # tests for the property `MEDIA_TYPE` (CatalogsProductGroupMultipleMediaTypesCriteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`MEDIA_TYPE`, "EXPECTED_RESULT")
+})
+
 test_that("PRODUCT_TYPE_4", {
   # tests for the property `PRODUCT_TYPE_4` (CatalogsProductGroupMultipleStringListCriteria)
 
@@ -185,4 +192,11 @@ test_that("GOOGLE_PRODUCT_CATEGORY_0", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`GOOGLE_PRODUCT_CATEGORY_0`, "EXPECTED_RESULT")
+})
+
+test_that("PRODUCT_GROUP", {
+  # tests for the property `PRODUCT_GROUP` (CatalogsProductGroupMultipleStringCriteria)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`PRODUCT_GROUP`, "EXPECTED_RESULT")
 })

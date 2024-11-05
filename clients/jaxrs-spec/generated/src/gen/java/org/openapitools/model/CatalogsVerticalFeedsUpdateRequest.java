@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsUpdateRequest;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
@@ -27,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsUpdateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeedsUpdateRequest.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailFeedsUpdateRequest.class, name = "RETAIL"),
 })
@@ -35,17 +37,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for updating a feed.")
 @JsonTypeName("CatalogsVerticalFeedsUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsVerticalFeedsUpdateRequest   {
-  private @Valid NullableCurrency defaultCurrency;
-  private @Valid String name;
-  private @Valid CatalogsFormat format;
-  private @Valid CatalogsFeedCredentials credentials;
-  private @Valid String location;
-  private @Valid CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private @Valid CatalogsStatus status;
-  private @Valid CatalogsType catalogType;
-  private @Valid ProductAvailabilityType defaultAvailability;
+  private NullableCurrency defaultCurrency;
+  private String name;
+  private CatalogsFormat format;
+  private CatalogsFeedCredentials credentials;
+  private String location;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+  private CatalogsStatus status;
+  private CatalogsType catalogType;
+  private ProductAvailabilityType defaultAvailability;
 
   /**
    **/
@@ -115,7 +117,7 @@ public class CatalogsVerticalFeedsUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
+  @Valid public CatalogsFeedCredentials getCredentials() {
     return credentials;
   }
 
@@ -135,7 +137,7 @@ public class CatalogsVerticalFeedsUpdateRequest   {
   
   @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   @JsonProperty("location")
- @Pattern(regexp="^(http|https|ftp|sftp)://")  public String getLocation() {
+   @Pattern(regexp="^(http|https|ftp|sftp)://")public String getLocation() {
     return location;
   }
 
@@ -154,7 +156,7 @@ public class CatalogsVerticalFeedsUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("preferred_processing_schedule")
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+  @Valid public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
   }
 
@@ -192,8 +194,7 @@ public class CatalogsVerticalFeedsUpdateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
+  @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 

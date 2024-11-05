@@ -13,7 +13,7 @@ class TopPinsAnalyticsResponse {
     
     TopPinsAnalyticsResponseDateAvailability dateAvailability
     
-    List<TopPinsAnalyticsResponsePinsInner> pins
+    List<TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>()
 
     enum SortByEnum {
     

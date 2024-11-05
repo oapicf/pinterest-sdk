@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinUpdate", description = "Pin fields for updates")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdate {
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
@@ -41,7 +41,7 @@ public class PinUpdate {
   private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
 
   @Valid
-  private List<@Valid PinUpdateCarouselSlotsInner> carouselSlots;
+  private List<@Valid PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
 
   private JsonNullable<String> note = JsonNullable.<String>undefined();
 
@@ -53,7 +53,7 @@ public class PinUpdate {
   /**
    * Pin's alternative text.
    * @return altText
-  */
+   */
   @Size(max = 500) 
   @Schema(name = "alt_text", description = "Pin's alternative text.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("alt_text")
@@ -73,7 +73,7 @@ public class PinUpdate {
   /**
    * The id of the board to move the Pin onto.
    * @return boardId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_id", description = "The id of the board to move the Pin onto.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_id")
@@ -93,7 +93,7 @@ public class PinUpdate {
   /**
    * <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
    * @return boardSectionId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_section_id", description = "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_section_id")
@@ -113,7 +113,7 @@ public class PinUpdate {
   /**
    * Pin description - 800 characters maximum.
    * @return description
-  */
+   */
   @Size(max = 800) 
   @Schema(name = "description", description = "Pin description - 800 characters maximum.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -133,7 +133,7 @@ public class PinUpdate {
   /**
    * URL viewer is taken to when they click pin.
    * @return link
-  */
+   */
   @Size(max = 2048) 
   @Schema(name = "link", example = "https://www.pinterest.com/", description = "URL viewer is taken to when they click pin.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -153,7 +153,7 @@ public class PinUpdate {
   /**
    * The native pin title that creators explicitly prefer to display.
    * @return title
-  */
+   */
   @Size(max = 100) 
   @Schema(name = "title", description = "The native pin title that creators explicitly prefer to display.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -181,7 +181,7 @@ public class PinUpdate {
   /**
    * Carousel Pin slots data.
    * @return carouselSlots
-  */
+   */
   @Valid 
   @Schema(name = "carousel_slots", description = "Carousel Pin slots data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_slots")
@@ -201,7 +201,7 @@ public class PinUpdate {
   /**
    * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
    * @return note
-  */
+   */
   
   @Schema(name = "note", description = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("note")

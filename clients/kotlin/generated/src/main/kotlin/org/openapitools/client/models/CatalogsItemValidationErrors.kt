@@ -120,5 +120,8 @@ data class CatalogsItemValidationErrors (
     @Json(name = "TITLE_MISSING")
     val TITLE_MISSING: CatalogsItemValidationDetails? = null
 
-)
+) {
+
+
+}
 

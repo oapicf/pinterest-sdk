@@ -13,7 +13,6 @@ module MatchTypeResponse =
   let EXACTEnum = "EXACT"
   let EXACTNEGATIVEEnum = "EXACT_NEGATIVE"
   let PHRASENEGATIVEEnum = "PHRASE_NEGATIVE"
-  let NullEnum = "null"
   type MatchTypeResponse = string
 
   //#endregion

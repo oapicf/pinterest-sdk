@@ -56,5 +56,6 @@ data class TopPinsAnalyticsResponse (
         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK");
     }
+
 }
 

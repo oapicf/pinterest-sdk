@@ -19,13 +19,13 @@ import org.openapitools.model.CatalogsCreateRetailItem;
 import org.openapitools.model.CatalogsDeleteRetailItem;
 import org.openapitools.model.CatalogsUpdateRetailItem;
 import org.openapitools.model.CatalogsUpsertRetailItem;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.UpdateMaskFieldType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreateRetailItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteRetailItem.class, name = "DELETE"),
@@ -41,13 +41,7 @@ public class CatalogsRetailBatchRequestItemsInner   {
    * Gets or Sets operation
    */
   public enum OperationEnum {
-    CREATE("CREATE"),
-
-        UPDATE("UPDATE"),
-
-        UPSERT("UPSERT"),
-
-        DELETE("DELETE");
+    DELETE("DELETE");
     private String value;
 
     OperationEnum(String value) {
@@ -62,7 +56,7 @@ public class CatalogsRetailBatchRequestItemsInner   {
   }
 
   private OperationEnum operation;
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
   private List<UpdateMaskFieldType> updateMask;
 
   /**
@@ -98,10 +92,10 @@ public class CatalogsRetailBatchRequestItemsInner   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
   @NotNull
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

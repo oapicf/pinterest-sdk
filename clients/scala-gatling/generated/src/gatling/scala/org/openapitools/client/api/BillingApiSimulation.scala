@@ -105,8 +105,8 @@ class BillingApiSimulation extends Simulation {
         .feed(ads_credits_discounts/getPATHFeeder)
         .exec(http("adsCreditsDiscountsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ads_credit/discounts")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnadsCreditsDiscountsGet with warm up and reach a constant rate for entire duration
@@ -122,9 +122,9 @@ class BillingApiSimulation extends Simulation {
         .feed(billing_profiles/getPATHFeeder)
         .exec(http("billingProfilesGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/billing_profiles")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("is_active","${is_active}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnbillingProfilesGet with warm up and reach a constant rate for entire duration
@@ -182,8 +182,8 @@ class BillingApiSimulation extends Simulation {
         .feed(ssio_insertion_orders_status/get_by_ad_accountPATHFeeder)
         .exec(http("ssioInsertionOrdersStatusGetByAdAccount")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ssio/insertion_orders/status")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnssioInsertionOrdersStatusGetByAdAccount with warm up and reach a constant rate for entire duration
@@ -213,9 +213,9 @@ class BillingApiSimulation extends Simulation {
         .feed(ssio_order_lines/get_by_ad_accountPATHFeeder)
         .exec(http("ssioOrderLinesGetByAdAccount")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/ssio/order_lines")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("pin_order_id","${pin_order_id}")
         .queryParam("page_size","${page_size}")
+        .queryParam("pin_order_id","${pin_order_id}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnssioOrderLinesGetByAdAccount with warm up and reach a constant rate for entire duration

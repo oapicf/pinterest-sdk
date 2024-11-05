@@ -80,6 +80,6 @@ private class OASCampaignCommonTest {
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
-        System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
+        System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
     }
 }

@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * SSIOAccountPMPName
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountPMPName   {
   @JsonProperty("name")
   private String name;
@@ -27,10 +27,10 @@ public class SSIOAccountPMPName   {
     return this;
   }
 
-   /**
+  /**
    * Display name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "Bidalgo", value = "Display name")
   public String getName() {
     return name;
@@ -45,10 +45,10 @@ public class SSIOAccountPMPName   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce id for PMP
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "0011N00001LW2aSQAT", value = "Salesforce id for PMP")
   public String getId() {
     return id;

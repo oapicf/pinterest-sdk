@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TopPinsAnalyticsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopPinsAnalyticsResponse   {
-  private @Valid TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private @Valid List<@Valid TopPinsAnalyticsResponsePinsInner> pins;
+  private TopPinsAnalyticsResponseDateAvailability dateAvailability;
+  private @Valid List<@Valid TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
   public enum SortByEnum {
 
     ENGAGEMENT(String.valueOf("ENGAGEMENT")), SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), PIN_CLICK(String.valueOf("PIN_CLICK"));
@@ -71,7 +71,7 @@ public class TopPinsAnalyticsResponse   {
     }
 }
 
-  private @Valid SortByEnum sortBy;
+  private SortByEnum sortBy;
 
   /**
    **/
@@ -83,7 +83,7 @@ public class TopPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("date_availability")
-  public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
+  @Valid public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
   }
 
@@ -102,7 +102,7 @@ public class TopPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pins")
-  public List<TopPinsAnalyticsResponsePinsInner> getPins() {
+  @Valid public List<@Valid TopPinsAnalyticsResponsePinsInner> getPins() {
     return pins;
   }
 

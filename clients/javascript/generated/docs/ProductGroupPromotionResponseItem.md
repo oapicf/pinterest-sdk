@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ProductGroupPromotion**](ProductGroupPromotion.md) |  | [optional] 
+**data** | [**ProductGroupPromotionResponseElement**](ProductGroupPromotionResponseElement.md) |  | [optional] 
 **exceptions** | [**[Exception]**](Exception.md) |  | [optional] 
 
 

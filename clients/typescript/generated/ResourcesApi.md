@@ -21,17 +21,15 @@ Get Ad Accounts countries
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ResourcesApi } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ResourcesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ResourcesApi(configuration);
 
-let body:any = {};
+const request = {};
 
-apiInstance.adAccountCountriesGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.adAccountCountriesGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -64,26 +62,25 @@ This endpoint does not need any parameter.
 # **deliveryMetricsGet**
 > DeliveryMetricsResponse deliveryMetricsGet()
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href=\'/docs/content/analytics/\'>Organic Analytics</a> and <a href=\'/docs/ads/ad-analytics-reporting/\'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href=\'/docs/api-features/analytics-overview/\'>Organic Analytics</a> and <a href=\'/docs/api-features/ads-reporting/\'>Ads Analytics</a> for more information.
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ResourcesApi } from '';
+import type { ResourcesApiDeliveryMetricsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ResourcesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ResourcesApi(configuration);
 
-let body:.ResourcesApiDeliveryMetricsGetRequest = {
-  // 'SYNC' | 'ASYNC' | Report type. (optional)
+const request: ResourcesApiDeliveryMetricsGetRequest = {
+    // Report type. (optional)
   reportType: "SYNC",
 };
 
-apiInstance.deliveryMetricsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.deliveryMetricsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -125,20 +122,19 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ResourcesApi } from '';
+import type { ResourcesApiInterestTargetingOptionsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ResourcesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ResourcesApi(configuration);
 
-let body:.ResourcesApiInterestTargetingOptionsGetRequest = {
-  // string | Unique identifier of an interest.
+const request: ResourcesApiInterestTargetingOptionsGetRequest = {
+    // Unique identifier of an interest.
   interestId: "4",
 };
 
-apiInstance.interestTargetingOptionsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.interestTargetingOptionsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -174,23 +170,21 @@ Name | Type | Description  | Notes
 # **leadFormQuestionsGet**
 > void leadFormQuestionsGet()
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ResourcesApi } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ResourcesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ResourcesApi(configuration);
 
-let body:any = {};
+const request = {};
 
-apiInstance.leadFormQuestionsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.leadFormQuestionsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -229,20 +223,19 @@ Learn whether conversion or non-conversion metrics are finalized and ready to qu
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ResourcesApi } from '';
+import type { ResourcesApiMetricsReadyStateGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ResourcesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ResourcesApi(configuration);
 
-let body:.ResourcesApiMetricsReadyStateGetRequest = {
-  // string | Analytics reports request date (UTC). Format: YYYY-MM-DD
+const request: ResourcesApiMetricsReadyStateGetRequest = {
+    // Analytics reports request date (UTC). Format: YYYY-MM-DD
   date: "2022-07-13",
 };
 
-apiInstance.metricsReadyStateGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.metricsReadyStateGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -284,26 +277,27 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ResourcesApi } from '';
+import type { ResourcesApiTargetingOptionsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ResourcesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ResourcesApi(configuration);
 
-let body:.ResourcesApiTargetingOptionsGetRequest = {
-  // 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE' | Public targeting type.
+const request: ResourcesApiTargetingOptionsGetRequest = {
+    // Public targeting type.
   targetingType: "APPTYPE",
-  // string | Client ID. (optional)
+    // Client ID. (optional)
   clientId: "1094834",
-  // string | Oauth signature (optional)
+    // Oauth signature (optional)
   oauthSignature: "8209f",
-  // string | Timestamp (optional)
+    // Timestamp (optional)
   timestamp: "1618338184277",
+    // Unique identifier of an ad account. (optional)
+  adAccountId: "4",
 };
 
-apiInstance.targetingOptionsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.targetingOptionsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -315,6 +309,7 @@ Name | Type | Description  | Notes
  **clientId** | [**string**] | Client ID. | (optional) defaults to undefined
  **oauthSignature** | [**string**] | Oauth signature | (optional) defaults to undefined
  **timestamp** | [**string**] | Timestamp | (optional) defaults to undefined
+ **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
 
 
 ### Return type

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.server.api.model.AdCommonQuizPinData;
-import org.openapitools.server.api.model.AdCommonTrackingUrls;
 import org.openapitools.server.api.model.CreativeType;
 import org.openapitools.server.api.model.EntityStatus;
 import org.openapitools.server.api.model.GridClickType;
+import org.openapitools.server.api.model.QuizPinData;
+import org.openapitools.server.api.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdUpdateRequest   {
@@ -30,7 +30,7 @@ public class AdUpdateRequest   {
   private Boolean isRemovable;
   private String name;
   private EntityStatus status;
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private String viewTrackingUrl;
   private String leadFormId;
   private GridClickType gridClickType;
@@ -46,7 +46,7 @@ public class AdUpdateRequest   {
     BUY_NOW("BUY_NOW"),
     CONTACT_US("CONTACT_US"),
     GET_QUOTE("GET_QUOTE"),
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     APPLY_NOW("APPLY_NOW"),
     BOOK_NOW("BOOK_NOW"),
     REQUEST_DEMO("REQUEST_DEMO"),
@@ -54,8 +54,7 @@ public class AdUpdateRequest   {
     FIND_A_DEALER("FIND_A_DEALER"),
     ADD_TO_CART("ADD_TO_CART"),
     WATCH_NOW("WATCH_NOW"),
-    READ_MORE("READ_MORE"),
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private String value;
 
@@ -71,7 +70,7 @@ public class AdUpdateRequest   {
   }
 
   private CustomizableCtaTypeEnum customizableCtaType;
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
   private String id;
   private String pinId;
 
@@ -79,7 +78,7 @@ public class AdUpdateRequest   {
 
   }
 
-  public AdUpdateRequest (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, String destinationUrl, String iosDeepLink, Boolean isPinDeleted, Boolean isRemovable, String name, EntityStatus status, AdCommonTrackingUrls trackingUrls, String viewTrackingUrl, String leadFormId, GridClickType gridClickType, CustomizableCtaTypeEnum customizableCtaType, AdCommonQuizPinData quizPinData, String id, String pinId) {
+  public AdUpdateRequest (String adGroupId, String androidDeepLink, List<String> carouselAndroidDeepLinks, List<String> carouselDestinationUrls, List<String> carouselIosDeepLinks, String clickTrackingUrl, CreativeType creativeType, String destinationUrl, String iosDeepLink, Boolean isPinDeleted, Boolean isRemovable, String name, EntityStatus status, TrackingUrls trackingUrls, String viewTrackingUrl, String leadFormId, GridClickType gridClickType, CustomizableCtaTypeEnum customizableCtaType, QuizPinData quizPinData, String id, String pinId) {
     this.adGroupId = adGroupId;
     this.androidDeepLink = androidDeepLink;
     this.carouselAndroidDeepLinks = carouselAndroidDeepLinks;
@@ -222,10 +221,10 @@ public class AdUpdateRequest   {
 
     
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -267,10 +266,10 @@ public class AdUpdateRequest   {
 
     
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 

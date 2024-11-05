@@ -27,7 +27,9 @@ private class OASCurrencyTest {
             OASCurrency.MXN,
             OASCurrency.ARS,
             OASCurrency.CLP,
-            OASCurrency.COP
+            OASCurrency.COP,
+            OASCurrency.INR,
+            OASCurrency.TRY
         };
         Set<OASCurrency> actual  = new Set<OASCurrency>(OASCurrency.values());
         System.assertEquals(expected, actual);

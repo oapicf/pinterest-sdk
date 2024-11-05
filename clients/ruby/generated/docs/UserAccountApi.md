@@ -37,12 +37,15 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   explicit_following: true, # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -79,7 +82,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **explicit_following** | **Boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional][default to false] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
@@ -89,7 +92,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -103,7 +106,7 @@ end
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Examples
 
@@ -185,12 +188,15 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -225,7 +231,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -233,7 +239,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -257,6 +263,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -299,7 +308,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -481,6 +490,9 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
@@ -549,7 +561,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -573,6 +585,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -642,7 +657,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -667,13 +682,16 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
 username = 'username' # String | A valid username
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -709,7 +727,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **username** | **String** | A valid username |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -717,7 +735,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -731,7 +749,7 @@ end
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Examples
 
@@ -741,6 +759,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -788,7 +809,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -813,12 +834,15 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   feed_type: 'feed_type_example', # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
   explicit_following: true, # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
@@ -856,7 +880,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **feed_type** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional][default to &#39;ALL&#39;] |
 | **explicit_following** | **Boolean** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional][default to false] |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
@@ -867,7 +891,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -897,7 +921,7 @@ end
 api_instance = PinterestSdkClient::UserAccountApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -932,7 +956,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -950,7 +974,7 @@ end
 
 ## verify_website_update
 
-> <UserWebsiteSummary> verify_website_update(user_website_verify_request)
+> <UserWebsiteSummary> verify_website_update(user_website_verify_request, opts)
 
 Verify website
 
@@ -969,10 +993,13 @@ end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
 user_website_verify_request = PinterestSdkClient::UserWebsiteVerifyRequest.new # UserWebsiteVerifyRequest | Verify a website.
+opts = {
+  ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
+}
 
 begin
   # Verify website
-  result = api_instance.verify_website_update(user_website_verify_request)
+  result = api_instance.verify_website_update(user_website_verify_request, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->verify_website_update: #{e}"
@@ -983,12 +1010,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserWebsiteSummary>, Integer, Hash)> verify_website_update_with_http_info(user_website_verify_request)
+> <Array(<UserWebsiteSummary>, Integer, Hash)> verify_website_update_with_http_info(user_website_verify_request, opts)
 
 ```ruby
 begin
   # Verify website
-  data, status_code, headers = api_instance.verify_website_update_with_http_info(user_website_verify_request)
+  data, status_code, headers = api_instance.verify_website_update_with_http_info(user_website_verify_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <UserWebsiteSummary>
@@ -1002,6 +1029,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **user_website_verify_request** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. |  |
+| **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -1019,7 +1047,7 @@ end
 
 ## website_verification_get
 
-> <UserWebsiteVerificationCode> website_verification_get
+> <UserWebsiteVerificationCode> website_verification_get(opts)
 
 Get user verification code for website claiming
 
@@ -1034,13 +1062,19 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::UserAccountApi.new
+opts = {
+  ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
+}
 
 begin
   # Get user verification code for website claiming
-  result = api_instance.website_verification_get
+  result = api_instance.website_verification_get(opts)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling UserAccountApi->website_verification_get: #{e}"
@@ -1051,12 +1085,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserWebsiteVerificationCode>, Integer, Hash)> website_verification_get_with_http_info
+> <Array(<UserWebsiteVerificationCode>, Integer, Hash)> website_verification_get_with_http_info(opts)
 
 ```ruby
 begin
   # Get user verification code for website claiming
-  data, status_code, headers = api_instance.website_verification_get_with_http_info
+  data, status_code, headers = api_instance.website_verification_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <UserWebsiteVerificationCode>
@@ -1067,7 +1101,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -1075,7 +1111,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

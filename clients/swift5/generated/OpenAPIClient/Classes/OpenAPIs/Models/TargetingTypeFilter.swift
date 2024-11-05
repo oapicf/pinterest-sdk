@@ -12,7 +12,8 @@ import AnyCodable
 
 public struct TargetingTypeFilter: Codable, JSONEncodable, Hashable {
 
-    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
+    static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
+    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
     public var targetingTypes: [AdsAnalyticsTargetingType]?
 
     public init(targetingTypes: [AdsAnalyticsTargetingType]? = nil) {

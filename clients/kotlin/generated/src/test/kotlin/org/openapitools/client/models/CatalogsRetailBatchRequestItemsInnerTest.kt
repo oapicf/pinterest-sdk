@@ -23,7 +23,7 @@ import org.openapitools.client.models.CatalogsCreateRetailItem
 import org.openapitools.client.models.CatalogsDeleteRetailItem
 import org.openapitools.client.models.CatalogsUpdateRetailItem
 import org.openapitools.client.models.CatalogsUpsertRetailItem
-import org.openapitools.client.models.ItemAttributes
+import org.openapitools.client.models.ItemAttributesRequest
 import org.openapitools.client.models.UpdateMaskFieldType
 
 class CatalogsRetailBatchRequestItemsInnerTest : ShouldSpec() {

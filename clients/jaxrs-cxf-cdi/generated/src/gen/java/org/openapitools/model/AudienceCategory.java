@@ -30,7 +30,7 @@ public class AudienceCategory   {
 
   private String id;
 
-  private List<@Valid AudienceSubcategory> subcategories;
+  private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
 
   /**
    * Interest unique key (same as ID).

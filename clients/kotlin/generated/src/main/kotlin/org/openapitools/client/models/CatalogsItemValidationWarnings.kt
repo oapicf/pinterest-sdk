@@ -204,5 +204,8 @@ data class CatalogsItemValidationWarnings (
     @Json(name = "WEIGHT_UNIT_INVALID")
     val WEIGHT_UNIT_INVALID: CatalogsItemValidationDetails? = null
 
-)
+) {
+
+
+}
 

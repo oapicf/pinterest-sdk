@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * BillingProfilesResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BillingProfilesResponse {
 
   private String id;
@@ -177,7 +177,7 @@ public class BillingProfilesResponse {
   /**
    * Billing ID.
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "12312451231", description = "Billing ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -197,7 +197,7 @@ public class BillingProfilesResponse {
   /**
    * Type of the card.
    * @return cardType
-  */
+   */
   
   @Schema(name = "card_type", example = "VISA", description = "Type of the card.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("card_type")
@@ -217,7 +217,7 @@ public class BillingProfilesResponse {
   /**
    * Status of the billing.
    * @return status
-  */
+   */
   
   @Schema(name = "status", example = "INVALID", description = "Status of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -237,7 +237,7 @@ public class BillingProfilesResponse {
   /**
    * Advertiser ID of the billing.
    * @return advertiserId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "advertiser_id", example = "12312451231", description = "Advertiser ID of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("advertiser_id")
@@ -257,7 +257,7 @@ public class BillingProfilesResponse {
   /**
    * Brand of the payment method.
    * @return paymentMethodBrand
-  */
+   */
   
   @Schema(name = "payment_method_brand", example = "VISA", description = "Brand of the payment method.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("payment_method_brand")

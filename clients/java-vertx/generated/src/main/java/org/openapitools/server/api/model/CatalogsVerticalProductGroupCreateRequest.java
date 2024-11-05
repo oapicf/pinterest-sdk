@@ -5,11 +5,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsProductGroupCreateRequest;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.server.api.model.CatalogsHotelProductGroupCreateRequest;
-import org.openapitools.server.api.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.server.api.model.CatalogsLocale;
+import org.openapitools.server.api.model.CatalogsRetailProductGroupCreateRequest;
+import org.openapitools.server.api.model.Country;
 
 /**
- * Request object for creating a hotel product group.
+ * Request object for creating a catalog based product group.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsVerticalProductGroupCreateRequest   {
@@ -17,7 +21,7 @@ public class CatalogsVerticalProductGroupCreateRequest   {
 
 
   public enum CatalogTypeEnum {
-    HOTEL("HOTEL");
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
 
     private String value;
 
@@ -35,19 +39,23 @@ public class CatalogsVerticalProductGroupCreateRequest   {
   private CatalogTypeEnum catalogType;
   private String name;
   private String description;
-  private CatalogsHotelProductGroupFilters filters;
+  private CatalogsCreativeAssetsProductGroupFilters filters;
   private String catalogId;
+  private Country country;
+  private CatalogsLocale locale;
 
   public CatalogsVerticalProductGroupCreateRequest () {
 
   }
 
-  public CatalogsVerticalProductGroupCreateRequest (CatalogTypeEnum catalogType, String name, String description, CatalogsHotelProductGroupFilters filters, String catalogId) {
+  public CatalogsVerticalProductGroupCreateRequest (CatalogTypeEnum catalogType, String name, String description, CatalogsCreativeAssetsProductGroupFilters filters, String catalogId, Country country, CatalogsLocale locale) {
     this.catalogType = catalogType;
     this.name = name;
     this.description = description;
     this.filters = filters;
     this.catalogId = catalogId;
+    this.country = country;
+    this.locale = locale;
   }
 
     
@@ -79,10 +87,10 @@ public class CatalogsVerticalProductGroupCreateRequest   {
 
     
   @JsonProperty("filters")
-  public CatalogsHotelProductGroupFilters getFilters() {
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
-  public void setFilters(CatalogsHotelProductGroupFilters filters) {
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
 
@@ -93,6 +101,24 @@ public class CatalogsVerticalProductGroupCreateRequest   {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+    
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
+  }
+  public void setCountry(Country country) {
+    this.country = country;
+  }
+
+    
+  @JsonProperty("locale")
+  public CatalogsLocale getLocale() {
+    return locale;
+  }
+  public void setLocale(CatalogsLocale locale) {
+    this.locale = locale;
   }
 
 
@@ -109,12 +135,14 @@ public class CatalogsVerticalProductGroupCreateRequest   {
         Objects.equals(name, catalogsVerticalProductGroupCreateRequest.name) &&
         Objects.equals(description, catalogsVerticalProductGroupCreateRequest.description) &&
         Objects.equals(filters, catalogsVerticalProductGroupCreateRequest.filters) &&
-        Objects.equals(catalogId, catalogsVerticalProductGroupCreateRequest.catalogId);
+        Objects.equals(catalogId, catalogsVerticalProductGroupCreateRequest.catalogId) &&
+        Objects.equals(country, catalogsVerticalProductGroupCreateRequest.country) &&
+        Objects.equals(locale, catalogsVerticalProductGroupCreateRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
   }
 
   @Override
@@ -127,6 +155,8 @@ public class CatalogsVerticalProductGroupCreateRequest   {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

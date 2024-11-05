@@ -1,6 +1,6 @@
 package api
 
-import model.AdsAnalyticsTargetingType
+import model.AdsAnalyticsCampaignTargetingType
 import model.CampaignCreateRequest
 import model.CampaignCreateResponse
 import model.CampaignResponse
@@ -17,12 +17,12 @@ import model.MetricsResponse
 /**
   * Provides a default implementation for [[CampaignsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 class CampaignsApiImpl extends CampaignsApi {
   /**
     * @inheritdoc
     */
-  override def campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: List[String], startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsTargetingType], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): MetricsResponse = {
+  override def campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: List[String], startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsCampaignTargetingType], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): MetricsResponse = {
     // TODO: Implement better logic
 
     MetricsResponse(None)
@@ -52,7 +52,7 @@ class CampaignsApiImpl extends CampaignsApi {
   override def campaignsGet(adAccountId: String, campaignId: String): CampaignResponse = {
     // TODO: Implement better logic
 
-    CampaignResponse(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+    CampaignResponse(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Map.empty)
   }
 
   /**
@@ -70,6 +70,6 @@ class CampaignsApiImpl extends CampaignsApi {
   override def campaignsUpdate(adAccountId: String, campaignUpdateRequest: List[CampaignUpdateRequest]): CampaignUpdateResponse = {
     // TODO: Implement better logic
 
-    CampaignUpdateResponse(None)
+    CampaignUpdateResponse(None, Map.empty)
   }
 }

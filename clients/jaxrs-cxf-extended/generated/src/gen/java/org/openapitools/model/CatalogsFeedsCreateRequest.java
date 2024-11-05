@@ -8,6 +8,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
@@ -65,6 +66,9 @@ public class CatalogsFeedsCreateRequest  {
   @ApiModelProperty(value = "")
   @Valid
   private ProductAvailabilityType defaultAvailability;
+
+  @ApiModelProperty(value = "")
+  private CatalogsStatus status;
  /**
   * Get defaultCurrency
   * @return defaultCurrency
@@ -284,6 +288,30 @@ public class CatalogsFeedsCreateRequest  {
     return this;
   }
 
+ /**
+  * Get status
+  * @return status
+  */
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+ public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+  public CatalogsFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -302,12 +330,13 @@ public class CatalogsFeedsCreateRequest  {
         Objects.equals(this.location, catalogsFeedsCreateRequest.location) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.defaultCountry, catalogsFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability);
+        Objects.equals(this.defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, catalogsFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -324,6 +353,7 @@ public class CatalogsFeedsCreateRequest  {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

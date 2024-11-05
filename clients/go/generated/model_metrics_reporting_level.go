@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -33,6 +33,7 @@ const (
 	PRODUCT_GROUP MetricsReportingLevel = "PRODUCT_GROUP"
 	PRODUCT_GROUP_TARGETING MetricsReportingLevel = "PRODUCT_GROUP_TARGETING"
 	PRODUCT_ITEM MetricsReportingLevel = "PRODUCT_ITEM"
+	PRODUCT_ITEM_TARGETING MetricsReportingLevel = "PRODUCT_ITEM_TARGETING"
 )
 
 // All allowed values of MetricsReportingLevel enum
@@ -49,6 +50,7 @@ var AllowedMetricsReportingLevelEnumValues = []MetricsReportingLevel{
 	"PRODUCT_GROUP",
 	"PRODUCT_GROUP_TARGETING",
 	"PRODUCT_ITEM",
+	"PRODUCT_ITEM_TARGETING",
 }
 
 func (v *MetricsReportingLevel) UnmarshalJSON(src []byte) error {

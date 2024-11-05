@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionErrors {
 
   private Integer LINE_LEVEL_INTERNAL_ERROR;
@@ -79,7 +79,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
    * @return LINE_LEVEL_INTERNAL_ERROR
-  */
+   */
   
   @Schema(name = "LINE_LEVEL_INTERNAL_ERROR", description = "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINE_LEVEL_INTERNAL_ERROR")
@@ -99,7 +99,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * The product count has decreased by more than 99% compared to the last successful ingestion.
    * @return LARGE_PRODUCT_COUNT_DECREASE
-  */
+   */
   
   @Schema(name = "LARGE_PRODUCT_COUNT_DECREASE", description = "The product count has decreased by more than 99% compared to the last successful ingestion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
@@ -119,7 +119,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
    * @return ACCOUNT_FLAGGED
-  */
+   */
   
   @Schema(name = "ACCOUNT_FLAGGED", description = "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ACCOUNT_FLAGGED")
@@ -139,7 +139,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
    * @return IMAGE_LEVEL_INTERNAL_ERROR
-  */
+   */
   
   @Schema(name = "IMAGE_LEVEL_INTERNAL_ERROR", description = "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LEVEL_INTERNAL_ERROR")
@@ -159,7 +159,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * Image files are unreadable. Please upload new files to continue.
    * @return IMAGE_FILE_NOT_ACCESSIBLE
-  */
+   */
   
   @Schema(name = "IMAGE_FILE_NOT_ACCESSIBLE", description = "Image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_FILE_NOT_ACCESSIBLE")
@@ -179,7 +179,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * Image files are unreadable. Please check your link and upload new files to continue.
    * @return IMAGE_MALFORMED_URL
-  */
+   */
   
   @Schema(name = "IMAGE_MALFORMED_URL", description = "Image files are unreadable. Please check your link and upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_MALFORMED_URL")
@@ -199,7 +199,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * Image files are unreadable. Please upload new files to continue.
    * @return IMAGE_FILE_NOT_FOUND
-  */
+   */
   
   @Schema(name = "IMAGE_FILE_NOT_FOUND", description = "Image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_FILE_NOT_FOUND")
@@ -219,7 +219,7 @@ public class CatalogsFeedIngestionErrors {
   /**
    * Image files are unreadable. Please upload new files to continue.
    * @return IMAGE_INVALID_FILE
-  */
+   */
   
   @Schema(name = "IMAGE_INVALID_FILE", description = "Image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_INVALID_FILE")

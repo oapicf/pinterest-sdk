@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ItemAttributes
+open OpenAPI.Model.ItemAttributesRequest
 
 module ItemUpsertBatchRecord =
 
@@ -11,6 +11,6 @@ module ItemUpsertBatchRecord =
 
   type ItemUpsertBatchRecord = {
     ItemId : string;
-    Attributes : ItemAttributes;
+    Attributes : ItemAttributesRequest;
   }
   //#endregion

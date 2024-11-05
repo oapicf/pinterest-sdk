@@ -90,6 +90,9 @@ update_params_with_auth(Cfg, Headers, QS) ->
                   in => header}, 'basic' =>
                 #{type => 'http',
                   key => <<"Authorization">>,
+                  in => header}, 'client_credentials' =>
+                #{type => 'oauth2',
+                  key => <<"Authorization">>,
                   in => header}},
 
     maps:fold(fun(AuthName, #{type := _Type,

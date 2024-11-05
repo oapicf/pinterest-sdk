@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,18 +13,27 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // CatalogsListProductsByFilterRequest - Request object to list products for a given product group filter.
 type CatalogsListProductsByFilterRequest struct {
-	CatalogsListProductsByFilterRequestOneOf *CatalogsListProductsByFilterRequestOneOf
+	CatalogsListProductsByFeedBasedFilter *CatalogsListProductsByFeedBasedFilter
+	CatalogsVerticalsListProductsByCatalogBasedFilterRequest *CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 }
 
-// CatalogsListProductsByFilterRequestOneOfAsCatalogsListProductsByFilterRequest is a convenience function that returns CatalogsListProductsByFilterRequestOneOf wrapped in CatalogsListProductsByFilterRequest
-func CatalogsListProductsByFilterRequestOneOfAsCatalogsListProductsByFilterRequest(v *CatalogsListProductsByFilterRequestOneOf) CatalogsListProductsByFilterRequest {
+// CatalogsListProductsByFeedBasedFilterAsCatalogsListProductsByFilterRequest is a convenience function that returns CatalogsListProductsByFeedBasedFilter wrapped in CatalogsListProductsByFilterRequest
+func CatalogsListProductsByFeedBasedFilterAsCatalogsListProductsByFilterRequest(v *CatalogsListProductsByFeedBasedFilter) CatalogsListProductsByFilterRequest {
 	return CatalogsListProductsByFilterRequest{
-		CatalogsListProductsByFilterRequestOneOf: v,
+		CatalogsListProductsByFeedBasedFilter: v,
+	}
+}
+
+// CatalogsVerticalsListProductsByCatalogBasedFilterRequestAsCatalogsListProductsByFilterRequest is a convenience function that returns CatalogsVerticalsListProductsByCatalogBasedFilterRequest wrapped in CatalogsListProductsByFilterRequest
+func CatalogsVerticalsListProductsByCatalogBasedFilterRequestAsCatalogsListProductsByFilterRequest(v *CatalogsVerticalsListProductsByCatalogBasedFilterRequest) CatalogsListProductsByFilterRequest {
+	return CatalogsListProductsByFilterRequest{
+		CatalogsVerticalsListProductsByCatalogBasedFilterRequest: v,
 	}
 }
 
@@ -33,22 +42,44 @@ func CatalogsListProductsByFilterRequestOneOfAsCatalogsListProductsByFilterReque
 func (dst *CatalogsListProductsByFilterRequest) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into CatalogsListProductsByFilterRequestOneOf
-	err = newStrictDecoder(data).Decode(&dst.CatalogsListProductsByFilterRequestOneOf)
+	// try to unmarshal data into CatalogsListProductsByFeedBasedFilter
+	err = newStrictDecoder(data).Decode(&dst.CatalogsListProductsByFeedBasedFilter)
 	if err == nil {
-		jsonCatalogsListProductsByFilterRequestOneOf, _ := json.Marshal(dst.CatalogsListProductsByFilterRequestOneOf)
-		if string(jsonCatalogsListProductsByFilterRequestOneOf) == "{}" { // empty struct
-			dst.CatalogsListProductsByFilterRequestOneOf = nil
+		jsonCatalogsListProductsByFeedBasedFilter, _ := json.Marshal(dst.CatalogsListProductsByFeedBasedFilter)
+		if string(jsonCatalogsListProductsByFeedBasedFilter) == "{}" { // empty struct
+			dst.CatalogsListProductsByFeedBasedFilter = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsListProductsByFeedBasedFilter); err != nil {
+				dst.CatalogsListProductsByFeedBasedFilter = nil
+			} else {
+				match++
+			}
 		}
 	} else {
-		dst.CatalogsListProductsByFilterRequestOneOf = nil
+		dst.CatalogsListProductsByFeedBasedFilter = nil
+	}
+
+	// try to unmarshal data into CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+	err = newStrictDecoder(data).Decode(&dst.CatalogsVerticalsListProductsByCatalogBasedFilterRequest)
+	if err == nil {
+		jsonCatalogsVerticalsListProductsByCatalogBasedFilterRequest, _ := json.Marshal(dst.CatalogsVerticalsListProductsByCatalogBasedFilterRequest)
+		if string(jsonCatalogsVerticalsListProductsByCatalogBasedFilterRequest) == "{}" { // empty struct
+			dst.CatalogsVerticalsListProductsByCatalogBasedFilterRequest = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsVerticalsListProductsByCatalogBasedFilterRequest); err != nil {
+				dst.CatalogsVerticalsListProductsByCatalogBasedFilterRequest = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsVerticalsListProductsByCatalogBasedFilterRequest = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.CatalogsListProductsByFilterRequestOneOf = nil
+		dst.CatalogsListProductsByFeedBasedFilter = nil
+		dst.CatalogsVerticalsListProductsByCatalogBasedFilterRequest = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(CatalogsListProductsByFilterRequest)")
 	} else if match == 1 {
@@ -60,8 +91,12 @@ func (dst *CatalogsListProductsByFilterRequest) UnmarshalJSON(data []byte) error
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsListProductsByFilterRequest) MarshalJSON() ([]byte, error) {
-	if src.CatalogsListProductsByFilterRequestOneOf != nil {
-		return json.Marshal(&src.CatalogsListProductsByFilterRequestOneOf)
+	if src.CatalogsListProductsByFeedBasedFilter != nil {
+		return json.Marshal(&src.CatalogsListProductsByFeedBasedFilter)
+	}
+
+	if src.CatalogsVerticalsListProductsByCatalogBasedFilterRequest != nil {
+		return json.Marshal(&src.CatalogsVerticalsListProductsByCatalogBasedFilterRequest)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -72,8 +107,12 @@ func (obj *CatalogsListProductsByFilterRequest) GetActualInstance() (interface{}
 	if obj == nil {
 		return nil
 	}
-	if obj.CatalogsListProductsByFilterRequestOneOf != nil {
-		return obj.CatalogsListProductsByFilterRequestOneOf
+	if obj.CatalogsListProductsByFeedBasedFilter != nil {
+		return obj.CatalogsListProductsByFeedBasedFilter
+	}
+
+	if obj.CatalogsVerticalsListProductsByCatalogBasedFilterRequest != nil {
+		return obj.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 	}
 
 	// all schemas are nil

@@ -83,7 +83,6 @@ private class OASProductGroupPromotionTest {
         System.assertEquals('trackingUrl', x-property-mappings.get('tracking_url'));
         System.assertEquals('catalogProductGroupId', x-property-mappings.get('catalog_product_group_id'));
         System.assertEquals('catalogProductGroupName', x-property-mappings.get('catalog_product_group_name'));
-        System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
         System.assertEquals('collectionsHeroPinId', x-property-mappings.get('collections_hero_pin_id'));
         System.assertEquals('collectionsHeroDestinationUrl', x-property-mappings.get('collections_hero_destination_url'));
         System.assertEquals('gridClickType', x-property-mappings.get('grid_click_type'));

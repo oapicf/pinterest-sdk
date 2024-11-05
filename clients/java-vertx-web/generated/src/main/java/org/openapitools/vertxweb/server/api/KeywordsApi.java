@@ -24,5 +24,5 @@ public interface KeywordsApi  {
     Future<ApiResponse<KeywordsResponse>> keywordsCreate(String adAccountId, KeywordsRequest keywordsRequest);
     Future<ApiResponse<KeywordsGet200Response>> keywordsGet(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark);
     Future<ApiResponse<KeywordsResponse>> keywordsUpdate(String adAccountId, KeywordUpdateBody keywordUpdateBody);
-    Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, Boolean normalizeAgainstGroup, Integer limit);
+    Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit);
 }

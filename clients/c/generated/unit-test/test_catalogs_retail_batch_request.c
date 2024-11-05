@@ -16,22 +16,23 @@
 #include "../model/catalogs_retail_batch_request.h"
 catalogs_retail_batch_request_t* instantiate_catalogs_retail_batch_request(int include_optional);
 
+#include "test_catalogs_items_request_language.c"
 
 
 catalogs_retail_batch_request_t* instantiate_catalogs_retail_batch_request(int include_optional) {
   catalogs_retail_batch_request_t* catalogs_retail_batch_request = NULL;
   if (include_optional) {
     catalogs_retail_batch_request = catalogs_retail_batch_request_create(
-      pinterest_rest_api_catalogs_retail_batch_request__RETAIL,
+      pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_RETAIL,
       pinterest_rest_api_catalogs_retail_batch_request__"US",
-      pinterest_rest_api_catalogs_retail_batch_request__"EN",
+      null,
       list_createList()
     );
   } else {
     catalogs_retail_batch_request = catalogs_retail_batch_request_create(
-      pinterest_rest_api_catalogs_retail_batch_request__RETAIL,
+      pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_RETAIL,
       pinterest_rest_api_catalogs_retail_batch_request__"US",
-      pinterest_rest_api_catalogs_retail_batch_request__"EN",
+      null,
       list_createList()
     );
   }

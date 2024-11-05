@@ -35,6 +35,10 @@ ConversionEventsUserData::__init()
 	//new std::list()std::list> external_id;
 	//click_id = std::string();
 	//partner_id = std::string();
+	//new std::list()std::list> em;
+	//new std::list()std::list> hashed_maids;
+	//client_ip_address = std::string();
+	//client_user_agent = std::string();
 }
 
 void
@@ -99,6 +103,26 @@ ConversionEventsUserData::__cleanup()
 	//
 	//delete partner_id;
 	//partner_id = NULL;
+	//}
+	//if(em != NULL) {
+	//em.RemoveAll(true);
+	//delete em;
+	//em = NULL;
+	//}
+	//if(hashed_maids != NULL) {
+	//hashed_maids.RemoveAll(true);
+	//delete hashed_maids;
+	//hashed_maids = NULL;
+	//}
+	//if(client_ip_address != NULL) {
+	//
+	//delete client_ip_address;
+	//client_ip_address = NULL;
+	//}
+	//if(client_user_agent != NULL) {
+	//
+	//delete client_user_agent;
+	//client_user_agent = NULL;
 	//}
 	//
 }
@@ -350,6 +374,72 @@ ConversionEventsUserData::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *emKey = "em";
+	node = json_object_get_member(pJsonObject, emKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			em = new_list;
+		}
+		
+	}
+	const gchar *hashed_maidsKey = "hashed_maids";
+	node = json_object_get_member(pJsonObject, hashed_maidsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			hashed_maids = new_list;
+		}
+		
+	}
+	const gchar *client_ip_addressKey = "client_ip_address";
+	node = json_object_get_member(pJsonObject, client_ip_addressKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&client_ip_address, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *client_user_agentKey = "client_user_agent";
+	node = json_object_get_member(pJsonObject, client_user_agentKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&client_user_agent, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 ConversionEventsUserData::ConversionEventsUserData(char* json)
@@ -530,6 +620,54 @@ ConversionEventsUserData::toJson()
 	}
 	const gchar *partner_idKey = "partner_id";
 	json_object_set_member(pJsonObject, partner_idKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getEm());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getEm());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *emKey = "em";
+	json_object_set_member(pJsonObject, emKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getHashedMaids());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getHashedMaids());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *hashed_maidsKey = "hashed_maids";
+	json_object_set_member(pJsonObject, hashed_maidsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getClientIpAddress();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *client_ip_addressKey = "client_ip_address";
+	json_object_set_member(pJsonObject, client_ip_addressKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getClientUserAgent();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *client_user_agentKey = "client_user_agent";
+	json_object_set_member(pJsonObject, client_user_agentKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -680,6 +818,54 @@ void
 ConversionEventsUserData::setPartnerId(std::string  partner_id)
 {
 	this->partner_id = partner_id;
+}
+
+std::list<std::string>
+ConversionEventsUserData::getEm()
+{
+	return em;
+}
+
+void
+ConversionEventsUserData::setEm(std::list <std::string> em)
+{
+	this->em = em;
+}
+
+std::list<std::string>
+ConversionEventsUserData::getHashedMaids()
+{
+	return hashed_maids;
+}
+
+void
+ConversionEventsUserData::setHashedMaids(std::list <std::string> hashed_maids)
+{
+	this->hashed_maids = hashed_maids;
+}
+
+std::string
+ConversionEventsUserData::getClientIpAddress()
+{
+	return client_ip_address;
+}
+
+void
+ConversionEventsUserData::setClientIpAddress(std::string  client_ip_address)
+{
+	this->client_ip_address = client_ip_address;
+}
+
+std::string
+ConversionEventsUserData::getClientUserAgent()
+{
+	return client_user_agent;
+}
+
+void
+ConversionEventsUserData::setClientUserAgent(std::string  client_user_agent)
+{
+	this->client_user_agent = client_user_agent;
 }
 
 

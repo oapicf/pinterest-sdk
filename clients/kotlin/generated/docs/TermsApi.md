@@ -2,10 +2,10 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**termsRelatedList**](TermsApi.md#termsRelatedList) | **GET** /terms/related | List related terms
-[**termsSuggestedList**](TermsApi.md#termsSuggestedList) | **GET** /terms/suggested | List suggested terms
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**termsRelatedList**](TermsApi.md#termsRelatedList) | **GET** /terms/related | List related terms |
+| [**termsSuggestedList**](TermsApi.md#termsSuggestedList) | **GET** /terms/suggested | List suggested terms |
 
 
 <a id="termsRelatedList"></a>
@@ -37,10 +37,9 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terms** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of input terms. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **terms** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of input terms. | |
 
 ### Return type
 
@@ -87,11 +86,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **term** | **kotlin.String**| Input term. |
- **limit** | **kotlin.Int**| Max suggested terms to return. | [optional] [default to 4]
+| **term** | **kotlin.String**| Input term. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **kotlin.Int**| Max suggested terms to return. | [optional] [default to 4] |
 
 ### Return type
 

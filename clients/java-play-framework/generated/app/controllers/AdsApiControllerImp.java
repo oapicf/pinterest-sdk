@@ -6,8 +6,8 @@ import apimodels.AdPreviewRequest;
 import apimodels.AdPreviewURLResponse;
 import apimodels.AdResponse;
 import apimodels.AdUpdateRequest;
+import apimodels.AdsAnalyticsAdTargetingType;
 import apimodels.AdsAnalyticsResponseInner;
-import apimodels.AdsAnalyticsTargetingType;
 import apimodels.AdsList200Response;
 import apimodels.ConversionReportAttributionType;
 import apimodels.Error;
@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsApiControllerImp extends AdsApiControllerImpInterface {
     @Override
     public AdPreviewURLResponse adPreviewsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdPreviewRequest adPreviewRequest) throws Exception {
@@ -33,19 +33,19 @@ public class AdsApiControllerImp extends AdsApiControllerImpInterface {
     }
 
     @Override
-    public MetricsResponse adTargetingAnalyticsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> adIds, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsTargetingType> targetingTypes, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) throws Exception {
+    public MetricsResponse adTargetingAnalyticsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> adIds, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=14)List<AdsAnalyticsAdTargetingType> targetingTypes, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) throws Exception {
         //Do your magic!!!
         return new MetricsResponse();
     }
 
     @Override
-    public List<AdsAnalyticsResponseInner> adsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> adIds, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) throws Exception {
+    public List<AdsAnalyticsResponseInner> adsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull List<String> columns, @NotNull Granularity granularity,  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime,  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> pinIds,  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds) throws Exception {
         //Do your magic!!!
         return new ArrayList<AdsAnalyticsResponseInner>();
     }
 
     @Override
-    public AdArrayResponse adsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdCreateRequest> adCreateRequest) throws Exception {
+    public AdArrayResponse adsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdCreateRequest> adCreateRequest) throws Exception {
         //Do your magic!!!
         return new AdArrayResponse();
     }
@@ -63,7 +63,7 @@ public class AdsApiControllerImp extends AdsApiControllerImpInterface {
     }
 
     @Override
-    public AdArrayResponse adsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdUpdateRequest> adUpdateRequest) throws Exception {
+    public AdArrayResponse adsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdUpdateRequest> adUpdateRequest) throws Exception {
         //Do your magic!!!
         return new AdArrayResponse();
     }

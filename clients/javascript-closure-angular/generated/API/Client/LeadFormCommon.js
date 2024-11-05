@@ -21,7 +21,7 @@ API.Client.LeadFormCommon.prototype.name;
 API.Client.LeadFormCommon.prototype.privacyPolicyLink;
 
 /**
- * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+ * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
  * @type {!boolean}
  * @export
  */
@@ -53,4 +53,11 @@ API.Client.LeadFormCommon.prototype.disclosureLanguage;
  * @export
  */
 API.Client.LeadFormCommon.prototype.questions;
+
+/**
+ * List of additional policy links to be displayed on the lead form.
+ * @type {!Array<!API.Client.LeadFormCommon_policy_links_inner>}
+ * @export
+ */
+API.Client.LeadFormCommon.prototype.policyLinks;
 

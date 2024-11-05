@@ -11,7 +11,6 @@ package org.openapitools.server.model
  * @param trackingUrls  for example: ''null''
  * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. for example: ''1580865126''
  * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. for example: ''1644023526''
- * @param summaryStatus  for example: ''null''
  * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup. for example: ''true''
  * @param defaultAdGroupBudgetInMicroCurrency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. for example: ''0''
  * @param isAutomatedCampaign Specifies whether the campaign was created in the automated campaign flow for example: ''true''
@@ -23,10 +22,9 @@ final case class CampaignCreateCommon (
   lifetimeSpendCap: Option[Int] = None,
   dailySpendCap: Option[Int] = None,
   orderLineId: Option[String] = None,
-  trackingUrls: Option[AdCommonTrackingUrls] = None,
+  trackingUrls: Option[TrackingUrls] = None,
   startTime: Option[Int] = None,
   endTime: Option[Int] = None,
-  summaryStatus: Option[CampaignSummaryStatus] = None,
   isFlexibleDailyBudgets: Option[Boolean] = None,
   defaultAdGroupBudgetInMicroCurrency: Option[Int] = None,
   isAutomatedCampaign: Option[Boolean] = None

@@ -79,7 +79,7 @@ test_that("board_owner", {
 })
 
 test_that("media", {
-  # tests for the property `media` (SummaryPinMedia)
+  # tests for the property `media` (PinMedia)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`media`, "EXPECTED_RESULT")

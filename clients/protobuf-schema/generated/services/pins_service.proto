@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -25,6 +25,8 @@ import public "models/pins_list200_response.proto";
 import public "models/pins_save_request.proto";
 
 service PinsService {
+  rpc MultiPinsAnalytics (MultiPinsAnalyticsRequest) returns (MultiPinsAnalyticsResponse);
+
   rpc PinsAnalytics (PinsAnalyticsRequest) returns (PinsAnalyticsResponse);
 
   rpc PinsCreate (PinsCreateRequest) returns (Pin);
@@ -41,6 +43,26 @@ service PinsService {
 
 }
 
+message MultiPinsAnalyticsRequest {
+  // List of Pin IDs.
+  repeated string pinIds = 1;
+  // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+  string startDate = 2;
+  // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+  string endDate = 3;
+  // Pin metric types to get data for.
+  repeated PinsAnalyticsMetricTypesParameterInner metricTypes = 4;
+  // Apps or devices to get data for, default is all.
+  string appTypes = 5;
+  // Unique identifier of an ad account.
+  string adAccountId = 6;
+
+}
+
+message MultiPinsAnalyticsResponse {
+  map data = 1;
+}
+
 message PinsAnalyticsRequest {
   // Unique identifier of a Pin.
   string pinId = 1;
@@ -48,7 +70,7 @@ message PinsAnalyticsRequest {
   string startDate = 2;
   // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   string endDate = 3;
-  // Pin metric types to get data for, default is all.
+  // Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
   repeated PinsAnalyticsMetricTypesParameterInner metricTypes = 4;
   // Apps or devices to get data for, default is all.
   string appTypes = 5;
@@ -92,7 +114,7 @@ message PinsGetRequest {
 message PinsListRequest {
   // Cursor used to fetch the next page of items
   string bookmark = 1;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 2;
   // Pin filter.
   string pinFilter = 3;

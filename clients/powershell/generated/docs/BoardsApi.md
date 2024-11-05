@@ -144,10 +144,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # List board sections
 try {
@@ -165,7 +168,7 @@ Name | Type | Description  | Notes
  **BoardId** | **String**| Unique identifier of a board. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -173,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -202,11 +205,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $SectionId = "MySectionId" # String | Unique identifier of a board section.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # List Pins on board section
 try {
@@ -225,7 +231,7 @@ Name | Type | Description  | Notes
  **SectionId** | **String**| Unique identifier of a board section. | 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -233,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -420,6 +426,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
@@ -445,7 +454,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -473,9 +482,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Privacy = "ALL" # String | Privacy setting for a board. (optional)
 
 # List boards
@@ -493,7 +505,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Privacy** | **String**| Privacy setting for a board. | [optional] 
 
 ### Return type
@@ -502,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -532,9 +544,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $BoardId = "MyBoardId" # String | Unique identifier of a board.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $CreativeTypes = "REGULAR" # String[] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 $PinMetrics = $true # Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to $false)
@@ -554,7 +569,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BoardId** | **String**| Unique identifier of a board. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **CreativeTypes** | [**String[]**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
  **PinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to $false]
@@ -565,7 +580,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

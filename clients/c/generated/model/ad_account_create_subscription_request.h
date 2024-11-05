@@ -15,6 +15,7 @@
 
 typedef struct ad_account_create_subscription_request_t ad_account_create_subscription_request_t;
 
+#include "ad_account_create_subscription_request_partner_metadata.h"
 
 
 
@@ -23,6 +24,7 @@ typedef struct ad_account_create_subscription_request_t {
     char *lead_form_id; // string
     char *partner_access_token; // string
     char *partner_refresh_token; // string
+    struct ad_account_create_subscription_request_partner_metadata_t *partner_metadata; //model
 
 } ad_account_create_subscription_request_t;
 
@@ -30,7 +32,8 @@ ad_account_create_subscription_request_t *ad_account_create_subscription_request
     char *webhook_url,
     char *lead_form_id,
     char *partner_access_token,
-    char *partner_refresh_token
+    char *partner_refresh_token,
+    ad_account_create_subscription_request_partner_metadata_t *partner_metadata
 );
 
 void ad_account_create_subscription_request_free(ad_account_create_subscription_request_t *ad_account_create_subscription_request);

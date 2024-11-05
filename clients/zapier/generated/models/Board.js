@@ -1,6 +1,6 @@
 const utils = require('../utils/utils');
+const BoardOwner = require('../models/BoardOwner');
 const Board_media = require('../models/Board_media');
-const Board_owner = require('../models/Board_owner');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -48,7 +48,7 @@ module.exports = {
                 type: 'integer',
             },
             ...Board_media.fields(`${keyPrefix}media`, isInput),
-            ...Board_owner.fields(`${keyPrefix}owner`, isInput),
+            ...BoardOwner.fields(`${keyPrefix}owner`, isInput),
             {
                 key: `${keyPrefix}privacy`,
                 label: `Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a> - [${labelPrefix}privacy]`,
@@ -73,7 +73,7 @@ module.exports = {
             'pin_count': bundle.inputData?.[`${keyPrefix}pin_count`],
             'follower_count': bundle.inputData?.[`${keyPrefix}follower_count`],
             'media': utils.removeIfEmpty(Board_media.mapping(bundle, `${keyPrefix}media`)),
-            'owner': utils.removeIfEmpty(Board_owner.mapping(bundle, `${keyPrefix}owner`)),
+            'owner': utils.removeIfEmpty(BoardOwner.mapping(bundle, `${keyPrefix}owner`)),
             'privacy': bundle.inputData?.[`${keyPrefix}privacy`],
         }
     },

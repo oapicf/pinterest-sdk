@@ -16,10 +16,9 @@
   | {'lifetime_spend_cap', integer() }
   | {'daily_spend_cap', integer() }
   | {'order_line_id', binary() }
-  | {'tracking_urls', openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls() }
+  | {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
   | {'start_time', integer() }
   | {'end_time', integer() }
-  | {'summary_status', openapi_campaign_summary_status:openapi_campaign_summary_status() }
   | {'is_flexible_daily_budgets', boolean() }
   | {'default_ad_group_budget_in_micro_currency', integer() }
   | {'is_automated_campaign', boolean() }
@@ -39,10 +38,9 @@ openapi_campaign_update_request(Fields) ->
             , {'lifetime_spend_cap', integer() }
             , {'daily_spend_cap', integer() }
             , {'order_line_id', binary() }
-            , {'tracking_urls', openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls() }
+            , {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
             , {'start_time', integer() }
             , {'end_time', integer() }
-            , {'summary_status', openapi_campaign_summary_status:openapi_campaign_summary_status() }
             , {'is_flexible_daily_budgets', boolean() }
             , {'default_ad_group_budget_in_micro_currency', integer() }
             , {'is_automated_campaign', boolean() }

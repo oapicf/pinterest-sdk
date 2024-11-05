@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.Currency
@@ -112,7 +113,7 @@ data class SSIOOrderLine(
 
     @Schema(example = "null", description = "If Ongoing (perpetual) order line, the estimated monthly spend")
     @get:JsonProperty("estimated_monthly_spend") val estimatedMonthlySpend: java.math.BigDecimal? = null
-) {
+    ) {
 
 }
 

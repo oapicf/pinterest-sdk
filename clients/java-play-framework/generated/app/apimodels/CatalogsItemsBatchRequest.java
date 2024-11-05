@@ -4,11 +4,11 @@ import apimodels.BatchOperation;
 import apimodels.CatalogsItemsCreateBatchRequest;
 import apimodels.CatalogsItemsDeleteBatchRequest;
 import apimodels.CatalogsItemsDeleteDiscontinuedBatchRequest;
+import apimodels.CatalogsItemsRequestLanguage;
 import apimodels.CatalogsItemsUpdateBatchRequest;
 import apimodels.CatalogsItemsUpsertBatchRequest;
 import apimodels.Country;
 import apimodels.ItemDeleteBatchRecord;
-import apimodels.Language;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -24,7 +24,7 @@ import javax.validation.Valid;
 /**
  * Request object of catalogs items batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsBatchRequest   {
   @JsonProperty("country")
@@ -37,7 +37,7 @@ public class CatalogsItemsBatchRequest   {
   @NotNull
 @Valid
 
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("operation")
   @NotNull
@@ -68,7 +68,7 @@ public class CatalogsItemsBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsItemsBatchRequest language(Language language) {
+  public CatalogsItemsBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -77,11 +77,11 @@ public class CatalogsItemsBatchRequest   {
    * Get language
    * @return language
   **/
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

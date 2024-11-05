@@ -225,7 +225,7 @@ Protected Class BoardsApi
 		  // - parameter boardId: (path) Unique identifier of a board. 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardSectionsListCallback(BoardSectionsList200Response) on completion. 
 		  //
@@ -236,6 +236,9 @@ Protected Class BoardsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -249,6 +252,7 @@ Protected Class BoardsApi
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -368,7 +372,7 @@ Protected Class BoardsApi
 		  // - parameter sectionId: (path) Unique identifier of a board section. 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardSectionsListPinsCallback(BoardsListPins200Response) on completion. 
 		  //
@@ -379,6 +383,9 @@ Protected Class BoardsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -392,6 +399,7 @@ Protected Class BoardsApi
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -872,6 +880,9 @@ Protected Class BoardsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -881,6 +892,7 @@ Protected Class BoardsApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -998,7 +1010,7 @@ Protected Class BoardsApi
 		  // - 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter privacy: (query) Privacy setting for a board. (optional, default to Sample)
 		  //
 		  // Invokes BoardsApiCallbackHandler.BoardsListCallback(BoardsList200Response) on completion. 
@@ -1010,6 +1022,9 @@ Protected Class BoardsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1025,6 +1040,7 @@ Protected Class BoardsApi
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("privacy") + "=" + EncodeURLComponent(PrivacyEnum_BoardsListToString(privacy))
 		  
 
+		  
 		  
 		  
 
@@ -1158,7 +1174,7 @@ Protected Class BoardsApi
 		  // - 
 		  // - parameter boardId: (path) Unique identifier of a board. 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional, default to Nil)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
@@ -1172,6 +1188,9 @@ Protected Class BoardsApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1205,6 +1224,7 @@ Protected Class BoardsApi
 		  If pinMetrics <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("pin_metrics") + "=" + EncodeURLComponent(pinMetrics.ToString)
 		  
 
+		  
 		  
 		  
 

@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
  **product_group_promotion_ids** | [**LIST [STRING_32]**](STRING_32.md)| List of Product group promotion Ids. | [optional] [default to null]
  **entity_statuses** | [**LIST [STRING_32]**](STRING_32.md)| Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
  **ad_group_id** | **STRING_32**| Ad group Id. | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **order** | **STRING_32**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
 

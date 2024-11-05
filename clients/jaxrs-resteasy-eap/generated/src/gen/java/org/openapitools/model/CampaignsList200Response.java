@@ -16,10 +16,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignsList200Response   {
   
-  private List<CampaignResponse> items = new ArrayList<>();
+  private List<@Valid CampaignResponse> items = new ArrayList<>();
   private String bookmark;
 
   /**
@@ -28,10 +28,10 @@ public class CampaignsList200Response   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<CampaignResponse> getItems() {
+  public List<@Valid CampaignResponse> getItems() {
     return items;
   }
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(List<@Valid CampaignResponse> items) {
     this.items = items;
   }
 

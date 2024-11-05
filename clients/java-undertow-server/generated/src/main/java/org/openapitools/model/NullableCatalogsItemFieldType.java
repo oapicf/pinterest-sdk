@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -135,9 +135,7 @@ public enum NullableCatalogsItemFieldType {
         
         SHIPPING_WIDTH("SHIPPING_WIDTH"),
         
-        SHIPPING_HEIGHT("SHIPPING_HEIGHT"),
-        
-        NULL("null");
+        SHIPPING_HEIGHT("SHIPPING_HEIGHT");
 
 private String value;
 

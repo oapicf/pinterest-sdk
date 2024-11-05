@@ -1,12 +1,12 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsItemsRequestLanguage
 import org.openapitools.model.CatalogsRetailBatchRequestItemsInner
-import org.openapitools.model.CatalogsType
 import org.openapitools.model.Country
-import org.openapitools.model.Language
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -27,9 +27,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsRetailBatchRequest(
 
-    @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
+    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailBatchRequest.CatalogType,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -37,13 +36,30 @@ data class CatalogsRetailBatchRequest(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("language", required = true) val language: Language,
+    @get:JsonProperty("language", required = true) val language: CatalogsItemsRequestLanguage,
 
     @field:Valid
     @get:Size(min=1,max=1000) 
     @Schema(example = "null", required = true, description = "Array with catalogs item operations")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<CatalogsRetailBatchRequestItemsInner>
-) {
+    ) {
+
+    /**
+    * 
+    * Values: RETAIL
+    */
+    enum class CatalogType(@get:JsonValue val value: kotlin.String) {
+
+        RETAIL("RETAIL");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CatalogType {
+                return values().first{it -> it.value == value}
+            }
+        }
+    }
 
 }
 

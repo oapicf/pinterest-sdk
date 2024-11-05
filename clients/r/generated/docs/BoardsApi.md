@@ -146,11 +146,13 @@ library(openapi)
 var_board_id <- "board_id_example" # character | Unique identifier of a board.
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$BoardSectionsList(var_board_id, ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
 result <- api_instance$BoardSectionsList(var_board_id, ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size)
@@ -164,7 +166,7 @@ Name | Type | Description  | Notes
  **board_id** | **character**| Unique identifier of a board. | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -172,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -203,11 +205,13 @@ var_board_id <- "board_id_example" # character | Unique identifier of a board.
 var_section_id <- "section_id_example" # character | Unique identifier of a board section.
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$BoardSectionsListPins(var_board_id, var_section_id, ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
 result <- api_instance$BoardSectionsListPins(var_board_id, var_section_id, ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size)
@@ -222,7 +226,7 @@ Name | Type | Description  | Notes
  **section_id** | **character**| Unique identifier of a board section. | 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -230,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -319,7 +323,7 @@ library(openapi)
 # Create board
 #
 # prepare function argument(s)
-var_board <- Board$new("name_example", "id_example", "created_at_example", "board_pins_modified_at_example", "description_example", 123, 123, 123, Board_media$new("image_cover_url_example", c("pin_thumbnail_urls_example")), Board_owner$new("username_example"), "PUBLIC") # Board | Create a board using a single board json object.
+var_board <- Board$new("name_example", "id_example", "created_at_example", "board_pins_modified_at_example", "description_example", 123, 123, 123, Board_media$new("image_cover_url_example", c("pin_thumbnail_urls_example")), BoardOwner$new("username_example"), "PUBLIC") # Board | Create a board using a single board json object.
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- BoardsApi$new()
@@ -431,6 +435,8 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$BoardsGet(var_board_id, ad_account_id = var_ad_account_iddata_file = "result.txt")
 result <- api_instance$BoardsGet(var_board_id, ad_account_id = var_ad_account_id)
@@ -450,7 +456,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -480,12 +486,14 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_privacy <- "privacy_example" # character | Privacy setting for a board. (Optional)
 
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$BoardsList(ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, privacy = var_privacydata_file = "result.txt")
 result <- api_instance$BoardsList(ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, privacy = var_privacy)
@@ -498,7 +506,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **privacy** | Enum [ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET] | Privacy setting for a board. | [optional] 
 
 ### Return type
@@ -507,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -536,7 +544,7 @@ library(openapi)
 # prepare function argument(s)
 var_board_id <- "board_id_example" # character | Unique identifier of a board.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_creative_types <- c("REGULAR") # array[character] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_pin_metrics <- FALSE # character | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (Optional)
@@ -544,6 +552,8 @@ var_pin_metrics <- FALSE # character | Specify whether to return 90d and lifetim
 api_instance <- BoardsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$BoardsListPins(var_board_id, bookmark = var_bookmark, page_size = var_page_size, creative_types = var_creative_types, ad_account_id = var_ad_account_id, pin_metrics = var_pin_metricsdata_file = "result.txt")
 result <- api_instance$BoardsListPins(var_board_id, bookmark = var_bookmark, page_size = var_page_size, creative_types = var_creative_types, ad_account_id = var_ad_account_id, pin_metrics = var_pin_metrics)
@@ -556,7 +566,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **character**| Unique identifier of a board. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creative_types** | Enum [REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA] | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **pin_metrics** | **character**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to FALSE]
@@ -567,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

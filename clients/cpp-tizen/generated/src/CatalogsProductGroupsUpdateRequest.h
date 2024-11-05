@@ -9,9 +9,11 @@
 
 
 #include <string>
-#include "CatalogsHotelProductGroupFilters.h"
+#include "CatalogsCreativeAssetsProductGroupFilters.h"
+#include "CatalogsLocale.h"
 #include "CatalogsProductGroupUpdateRequest.h"
 #include "CatalogsVerticalProductGroupUpdateRequest.h"
+#include "Country.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -71,11 +73,11 @@ public:
 	void setIsFeatured(bool  is_featured);
 	/*! \brief Get 
 	 */
-	CatalogsHotelProductGroupFilters getFilters();
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsHotelProductGroupFilters  filters);
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -83,13 +85,29 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(std::string  catalog_type);
+	/*! \brief Get 
+	 */
+	Country getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(Country  country);
+	/*! \brief Get 
+	 */
+	CatalogsLocale getLocale();
+
+	/*! \brief Set 
+	 */
+	void setLocale(CatalogsLocale  locale);
 
 private:
 	std::string name;
 	std::string description;
 	bool is_featured;
-	CatalogsHotelProductGroupFilters filters;
+	CatalogsCreativeAssetsProductGroupFilters filters;
 	std::string catalog_type;
+	Country country;
+	CatalogsLocale locale;
 	void __init();
 	void __cleanup();
 

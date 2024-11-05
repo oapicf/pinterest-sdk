@@ -28,12 +28,11 @@ public struct CampaignUpdateRequest: Codable, JSONEncodable, Hashable {
     public var dailySpendCap: Int?
     /** Order line ID that appears on the invoice. */
     public var orderLineId: String?
-    public var trackingUrls: AdCommonTrackingUrls?
+    public var trackingUrls: TrackingUrls?
     /** Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     public var startTime: Int?
     /** Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     public var endTime: Int?
-    public var summaryStatus: CampaignSummaryStatus?
     /** Determine if a campaign has flexible daily budgets setup. */
     public var isFlexibleDailyBudgets: Bool?
     /** When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */
@@ -44,7 +43,7 @@ public struct CampaignUpdateRequest: Codable, JSONEncodable, Hashable {
     public var isCampaignBudgetOptimization: Bool?
     public var objectiveType: ObjectiveType?
 
-    public init(id: String, adAccountId: String, name: String? = nil, status: EntityStatus? = nil, lifetimeSpendCap: Int? = nil, dailySpendCap: Int? = nil, orderLineId: String? = nil, trackingUrls: AdCommonTrackingUrls? = nil, startTime: Int? = nil, endTime: Int? = nil, summaryStatus: CampaignSummaryStatus? = nil, isFlexibleDailyBudgets: Bool? = nil, defaultAdGroupBudgetInMicroCurrency: Int? = nil, isAutomatedCampaign: Bool? = nil, isCampaignBudgetOptimization: Bool? = nil, objectiveType: ObjectiveType? = nil) {
+    public init(id: String, adAccountId: String, name: String? = nil, status: EntityStatus? = nil, lifetimeSpendCap: Int? = nil, dailySpendCap: Int? = nil, orderLineId: String? = nil, trackingUrls: TrackingUrls? = nil, startTime: Int? = nil, endTime: Int? = nil, isFlexibleDailyBudgets: Bool? = nil, defaultAdGroupBudgetInMicroCurrency: Int? = nil, isAutomatedCampaign: Bool? = nil, isCampaignBudgetOptimization: Bool? = nil, objectiveType: ObjectiveType? = nil) {
         self.id = id
         self.adAccountId = adAccountId
         self.name = name
@@ -55,7 +54,6 @@ public struct CampaignUpdateRequest: Codable, JSONEncodable, Hashable {
         self.trackingUrls = trackingUrls
         self.startTime = startTime
         self.endTime = endTime
-        self.summaryStatus = summaryStatus
         self.isFlexibleDailyBudgets = isFlexibleDailyBudgets
         self.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency
         self.isAutomatedCampaign = isAutomatedCampaign
@@ -74,7 +72,6 @@ public struct CampaignUpdateRequest: Codable, JSONEncodable, Hashable {
         case trackingUrls = "tracking_urls"
         case startTime = "start_time"
         case endTime = "end_time"
-        case summaryStatus = "summary_status"
         case isFlexibleDailyBudgets = "is_flexible_daily_budgets"
         case defaultAdGroupBudgetInMicroCurrency = "default_ad_group_budget_in_micro_currency"
         case isAutomatedCampaign = "is_automated_campaign"
@@ -96,7 +93,6 @@ public struct CampaignUpdateRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
         try container.encodeIfPresent(startTime, forKey: .startTime)
         try container.encodeIfPresent(endTime, forKey: .endTime)
-        try container.encodeIfPresent(summaryStatus, forKey: .summaryStatus)
         try container.encodeIfPresent(isFlexibleDailyBudgets, forKey: .isFlexibleDailyBudgets)
         try container.encodeIfPresent(defaultAdGroupBudgetInMicroCurrency, forKey: .defaultAdGroupBudgetInMicroCurrency)
         try container.encodeIfPresent(isAutomatedCampaign, forKey: .isAutomatedCampaign)

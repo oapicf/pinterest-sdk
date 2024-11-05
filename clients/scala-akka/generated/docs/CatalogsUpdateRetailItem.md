@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 
 ## Enum: Operation
-Allowed values: [CREATE, UPDATE, UPSERT, DELETE]
+Allowed values: [UPDATE]
 
 
 

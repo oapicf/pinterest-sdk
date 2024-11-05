@@ -6,8 +6,7 @@ private class OASOrderLinePaidTypeTest {
             OASOrderLinePaidType.PAID,
             OASOrderLinePaidType.BONUS,
             OASOrderLinePaidType.MAKE_GOOD,
-            OASOrderLinePaidType.TEST,
-            OASOrderLinePaidType.NULL
+            OASOrderLinePaidType.TEST
         };
         Set<OASOrderLinePaidType> actual  = new Set<OASOrderLinePaidType>(OASOrderLinePaidType.values());
         System.assertEquals(expected, actual);

@@ -4,8 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,18 +21,18 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Pin with video.")
 @JsonTypeName("PinMediaWithVideo")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithVideo extends PinMedia  {
-  private @Valid ImageMetadataImages images;
-  private @Valid String coverImageUrl;
-  private @Valid String videoUrl;
-  private @Valid BigDecimal duration;
-  private @Valid Integer height;
-  private @Valid Integer width;
+  private PinMediaWithImageAllOfImages images;
+  private String coverImageUrl;
+  private String videoUrl;
+  private BigDecimal duration;
+  private Integer height;
+  private Integer width;
 
   /**
    **/
-  public PinMediaWithVideo images(ImageMetadataImages images) {
+  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -40,12 +40,12 @@ public class PinMediaWithVideo extends PinMedia  {
   
   @ApiModelProperty(value = "")
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  @Valid public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
   @JsonProperty("images")
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
@@ -99,7 +99,7 @@ public class PinMediaWithVideo extends PinMedia  {
   
   @ApiModelProperty(value = "Duration (in milliseconds)")
   @JsonProperty("duration")
-  public BigDecimal getDuration() {
+  @Valid public BigDecimal getDuration() {
     return duration;
   }
 

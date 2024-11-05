@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * MaxPriceFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MaxPriceFilter   {
   @JsonProperty("MAX_PRICE")
   private CatalogsProductGroupPricingCriteria MAX_PRICE;
@@ -25,10 +25,10 @@ public class MaxPriceFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get MAX_PRICE
    * @return MAX_PRICE
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupPricingCriteria getMAXPRICE() {
     return MAX_PRICE;

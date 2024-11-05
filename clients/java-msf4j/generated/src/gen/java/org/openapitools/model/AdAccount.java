@@ -18,7 +18,7 @@ import org.openapitools.model.Currency;
 /**
  * AdAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccount   {
   @JsonProperty("id")
   private String id;
@@ -141,7 +141,7 @@ public class AdAccount   {
 
   public AdAccount addPermissionsItem(BusinessAccessRole permissionsItem) {
     if (this.permissions == null) {
-      this.permissions = ;
+      this.permissions = new ArrayList<>();
     }
     this.permissions.add(permissionsItem);
     return this;

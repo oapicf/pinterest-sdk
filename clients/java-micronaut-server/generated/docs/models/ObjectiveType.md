@@ -19,5 +19,7 @@ The class is defined in **[ObjectiveType.java](../../src/main/java/org/openapito
 
 * `WEB_SESSIONS` (value: `"WEB_SESSIONS"`)
 
+* `VIDEO_COMPLETION` (value: `"VIDEO_COMPLETION"`)
+
 
 

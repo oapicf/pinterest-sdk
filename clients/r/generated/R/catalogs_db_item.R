@@ -7,9 +7,9 @@
 #' @title CatalogsDbItem
 #' @description CatalogsDbItem Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character [optional]
-#' @field id  character [optional]
-#' @field updated_at  character [optional]
+#' @field created_at  character
+#' @field id  character
+#' @field updated_at  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,8 +19,7 @@ CatalogsDbItem <- R6::R6Class(
     `created_at` = NULL,
     `id` = NULL,
     `updated_at` = NULL,
-    #' Initialize a new CatalogsDbItem class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsDbItem class.
     #'
@@ -28,34 +27,31 @@ CatalogsDbItem <- R6::R6Class(
     #' @param id id
     #' @param updated_at updated_at
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`created_at` = NULL, `id` = NULL, `updated_at` = NULL, ...) {
-      if (!is.null(`created_at`)) {
-        if (!is.character(`created_at`)) {
+    initialize = function(`created_at`, `id`, `updated_at`, ...) {
+      if (!missing(`created_at`)) {
+        if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
         self$`created_at` <- `created_at`
       }
-      if (!is.null(`id`)) {
+      if (!missing(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
       }
-      if (!is.null(`updated_at`)) {
-        if (!is.character(`updated_at`)) {
+      if (!missing(`updated_at`)) {
+        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
           stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
         }
         self$`updated_at` <- `updated_at`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsDbItem in JSON format
-    #' @export
     toJSON = function() {
       CatalogsDbItemObject <- list()
       if (!is.null(self$`created_at`)) {
@@ -72,14 +68,12 @@ CatalogsDbItem <- R6::R6Class(
       }
       CatalogsDbItemObject
     },
-    #' Deserialize JSON string into an instance of CatalogsDbItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsDbItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsDbItem
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`created_at`)) {
@@ -93,13 +87,11 @@ CatalogsDbItem <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsDbItem in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`created_at`)) {
@@ -130,14 +122,12 @@ CatalogsDbItem <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsDbItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsDbItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsDbItem
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`created_at` <- this_object$`created_at`
@@ -145,53 +135,96 @@ CatalogsDbItem <- R6::R6Class(
       self$`updated_at` <- this_object$`updated_at`
       self
     },
-    #' Validate JSON input with respect to CatalogsDbItem
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsDbItem and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `created_at`
+      if (!is.null(input_json$`created_at`)) {
+        if (!(is.character(input_json$`created_at`) && length(input_json$`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", input_json$`created_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsDbItem: the required field `created_at` is missing."))
+      }
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsDbItem: the required field `id` is missing."))
+      }
+      # check the required field `updated_at`
+      if (!is.null(input_json$`updated_at`)) {
+        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsDbItem: the required field `updated_at` is missing."))
+      }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsDbItem
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        return(FALSE)
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
+      }
+
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

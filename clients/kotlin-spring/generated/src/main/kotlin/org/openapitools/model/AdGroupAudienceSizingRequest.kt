@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.AdGroupAudienceSizingRequestKeywordsInner
@@ -48,22 +49,30 @@ data class AdGroupAudienceSizingRequest(
     @field:Valid
     @Schema(example = "null", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
     @get:JsonProperty("keywords") val keywords: kotlin.collections.List<AdGroupAudienceSizingRequestKeywordsInner>? = null
-) {
+    ) {
 
     /**
     * Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
     * Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA
     */
-    enum class CreativeTypes(val value: kotlin.String) {
+    enum class CreativeTypes(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("REGULAR") REGULAR("REGULAR"),
-        @JsonProperty("VIDEO") VIDEO("VIDEO"),
-        @JsonProperty("SHOPPING") SHOPPING("SHOPPING"),
-        @JsonProperty("CAROUSEL") CAROUSEL("CAROUSEL"),
-        @JsonProperty("MAX_VIDEO") MAX_VIDEO("MAX_VIDEO"),
-        @JsonProperty("SHOP_THE_PIN") SHOP_THE_PIN("SHOP_THE_PIN"),
-        @JsonProperty("COLLECTION") COLLECTION("COLLECTION"),
-        @JsonProperty("IDEA") IDEA("IDEA")
+        REGULAR("REGULAR"),
+        VIDEO("VIDEO"),
+        SHOPPING("SHOPPING"),
+        CAROUSEL("CAROUSEL"),
+        MAX_VIDEO("MAX_VIDEO"),
+        SHOP_THE_PIN("SHOP_THE_PIN"),
+        COLLECTION("COLLECTION"),
+        IDEA("IDEA");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CreativeTypes {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

@@ -1,10 +1,10 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.TrackingUrls;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -105,11 +105,11 @@ public class CampaignResponseTest {
     }
 
     /**
-     * Test the property 'summaryStatus'
+     * Test the property 'isFlexibleDailyBudgets'
      */
     @Test
-    public void summaryStatusTest() {
-        // TODO: test summaryStatus
+    public void isFlexibleDailyBudgetsTest() {
+        // TODO: test isFlexibleDailyBudgets
     }
 
     /**
@@ -145,19 +145,19 @@ public class CampaignResponseTest {
     }
 
     /**
-     * Test the property 'isFlexibleDailyBudgets'
-     */
-    @Test
-    public void isFlexibleDailyBudgetsTest() {
-        // TODO: test isFlexibleDailyBudgets
-    }
-
-    /**
      * Test the property 'isCampaignBudgetOptimization'
      */
     @Test
     public void isCampaignBudgetOptimizationTest() {
         // TODO: test isCampaignBudgetOptimization
+    }
+
+    /**
+     * Test the property 'summaryStatus'
+     */
+    @Test
+    public void summaryStatusTest() {
+        // TODO: test summaryStatus
     }
 
 }

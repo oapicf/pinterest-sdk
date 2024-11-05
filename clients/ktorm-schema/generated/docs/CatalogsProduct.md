@@ -5,8 +5,10 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**metadata** | metadata | long NOT NULL |  | [**CatalogsProductMetadata**](CatalogsProductMetadata.md) |  |  [foreignkey]
+**catalogType** | catalog_type | text NOT NULL |  | [**catalog_type**](#CatalogType) |  | 
+**metadata** | metadata | long NOT NULL |  | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  |  [foreignkey]
 **pin** | pin | long NOT NULL |  | [**Pin**](Pin.md) |  |  [foreignkey]
+
 
 
 

@@ -16,5 +16,4 @@ public enum EnhancedMatchStatusType: String, Codable, CaseIterable {
     case notValidated = "NOT_VALIDATED"
     case validatingInProgress = "VALIDATING_IN_PROGRESS"
     case validationComplete = "VALIDATION_COMPLETE"
-    case null = "null"
 }

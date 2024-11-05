@@ -23,7 +23,7 @@ data class ProductType0Filter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("PRODUCT_TYPE_0", required = true) val PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria
-) {
+    ) {
 
 }
 

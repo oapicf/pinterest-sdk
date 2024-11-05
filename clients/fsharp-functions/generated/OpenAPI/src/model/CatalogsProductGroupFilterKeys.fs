@@ -7,6 +7,7 @@ open OpenAPI.Model.AvailabilityFilter
 open OpenAPI.Model.BrandFilter
 open OpenAPI.Model.CatalogsProductGroupCurrencyCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleGenderCriteria
+open OpenAPI.Model.CatalogsProductGroupMultipleMediaTypesCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringListCriteria
 open OpenAPI.Model.CatalogsProductGroupPricingCriteria
@@ -28,7 +29,9 @@ open OpenAPI.Model.GoogleProductCategory6Filter
 open OpenAPI.Model.ItemGroupIdFilter
 open OpenAPI.Model.ItemIdFilter
 open OpenAPI.Model.MaxPriceFilter
+open OpenAPI.Model.MediaTypeFilter
 open OpenAPI.Model.MinPriceFilter
+open OpenAPI.Model.ProductGroupReferenceFilter
 open OpenAPI.Model.ProductType0Filter
 open OpenAPI.Model.ProductType1Filter
 open OpenAPI.Model.ProductType2Filter
@@ -69,6 +72,8 @@ module CatalogsProductGroupFilterKeys =
     ITEM_GROUP_ID : CatalogsProductGroupMultipleStringCriteria;
     [<JsonProperty(PropertyName = "GENDER")>]
     GENDER : CatalogsProductGroupMultipleGenderCriteria;
+    [<JsonProperty(PropertyName = "MEDIA_TYPE")>]
+    MEDIA_TYPE : CatalogsProductGroupMultipleMediaTypesCriteria;
     [<JsonProperty(PropertyName = "PRODUCT_TYPE_4")>]
     PRODUCTTYPE4 : CatalogsProductGroupMultipleStringListCriteria;
     [<JsonProperty(PropertyName = "PRODUCT_TYPE_3")>]
@@ -93,6 +98,8 @@ module CatalogsProductGroupFilterKeys =
     GOOGLEPRODUCTCATEGORY1 : CatalogsProductGroupMultipleStringListCriteria;
     [<JsonProperty(PropertyName = "GOOGLE_PRODUCT_CATEGORY_0")>]
     GOOGLEPRODUCTCATEGORY0 : CatalogsProductGroupMultipleStringListCriteria;
+    [<JsonProperty(PropertyName = "PRODUCT_GROUP")>]
+    PRODUCT_GROUP : CatalogsProductGroupMultipleStringCriteria;
   }
 
   //#endregion

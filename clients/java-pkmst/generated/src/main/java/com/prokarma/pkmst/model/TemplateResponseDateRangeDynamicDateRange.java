@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "The dynamic date range of the template")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeDynamicDateRange   {
   @JsonProperty("type")
   private String type;
@@ -65,10 +65,10 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The date range type
    * @return type
-  **/
+   */
   @ApiModelProperty(example = "dynamic", value = "The date range type")
   public String getType() {
     return type;
@@ -83,10 +83,10 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The dynamic range type
    * @return range
-  **/
+   */
   @ApiModelProperty(example = "YEAR_TO_DATE", value = "The dynamic range type")
   public RangeEnum getRange() {
     return range;

@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 Get available metrics&#39; definitions
 
-    Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+    Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
 
 ### Parameters
 
@@ -96,7 +96,7 @@ Get interest details
 
 Get lead form questions
 
-    Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -143,7 +143,7 @@ Get metrics ready state
 
 <a name="targetingOptions/get"></a>
 # **targetingOptions/get**
-> List targetingOptions/get(targeting\_type, client\_id, oauth\_signature, timestamp)
+> List targetingOptions/get(targeting\_type, client\_id, oauth\_signature, timestamp, ad\_account\_id)
 
 Get targeting options
 
@@ -157,6 +157,7 @@ Get targeting options
 | **client\_id** | **String**| Client ID. | [optional] [default to null] |
 | **oauth\_signature** | **String**| Oauth signature | [optional] [default to null] |
 | **timestamp** | **String**| Timestamp | [optional] [default to null] |
+| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 
 ### Return type
 

@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ConversionEventResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventResponse   {
   @JsonProperty("conversion_event")
   private ConversionTagType conversionEvent;
@@ -35,10 +35,10 @@ public class ConversionEventResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get conversionEvent
    * @return conversionEvent
-  **/
+   */
   @ApiModelProperty(value = "")
   public ConversionTagType getConversionEvent() {
     return conversionEvent;
@@ -53,10 +53,10 @@ public class ConversionEventResponse   {
     return this;
   }
 
-   /**
+  /**
    * Id of the tag.
    * @return conversionTagId
-  **/
+   */
   @ApiModelProperty(example = "2614324385652", value = "Id of the tag.")
   public String getConversionTagId() {
     return conversionTagId;
@@ -71,10 +71,10 @@ public class ConversionEventResponse   {
     return this;
   }
 
-   /**
+  /**
    * Id of the ad account.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
   public String getAdAccountId() {
     return adAccountId;
@@ -89,10 +89,10 @@ public class ConversionEventResponse   {
     return this;
   }
 
-   /**
+  /**
    * Creation date in epoch format.
    * @return createdTime
-  **/
+   */
   @ApiModelProperty(example = "1564768710", value = "Creation date in epoch format.")
   public Integer getCreatedTime() {
     return createdTime;

@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * SsioInsertionOrdersStatusGetByAdAccount200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
   @JsonProperty("items")
   
@@ -42,10 +42,10 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
     return this;
   }
 
-   /**
+  /**
    * Insertion orders status by ad acount id
    * @return items
-  **/
+   */
   @ApiModelProperty(required = true, value = "Insertion orders status by ad acount id")
   public List<SSIOInsertionOrderStatus> getItems() {
     return items;
@@ -60,10 +60,10 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
     return this;
   }
 
-   /**
+  /**
    * Get bookmark
    * @return bookmark
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getBookmark() {
     return bookmark;

@@ -46,7 +46,7 @@
     {
       "name": "is_roas_optimized",
       "type": ["null", "boolean"],
-      "doc": "Ad group is ROAS optimized",
+      "doc": "ROAS optimization is not supported",
       "default": null
     },
     {
@@ -56,8 +56,7 @@
         "name": "OptimizationGoalMetadataConversionTagV3GoalMetadata_learningUnderscoremodeUnderscoretype",
         "symbols": [
           "NOT_ACTIVE",
-          "ACTIVE",
-          "null"
+          "ACTIVE"
         ]
       }],
       "doc": "Conversion learning model type",

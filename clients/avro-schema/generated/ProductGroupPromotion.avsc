@@ -89,12 +89,6 @@
       "default": null
     },
     {
-      "name": "creative_type",
-      "type": ["null", "model.CreativeType"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "collections_hero_pin_id",
       "type": ["null", "string"],
       "doc": "Hero Pin ID if this PG is promoted as a Collection",

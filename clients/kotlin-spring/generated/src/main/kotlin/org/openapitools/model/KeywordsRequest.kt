@@ -28,7 +28,7 @@ data class KeywordsRequest(
     @get:Pattern(regexp="^((AG)|C)?\\d+$")
     @Schema(example = "383791336903426391", required = true, description = "Keyword parent entity ID (advertiser, campaign, ad group).")
     @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String
-) {
+    ) {
 
 }
 

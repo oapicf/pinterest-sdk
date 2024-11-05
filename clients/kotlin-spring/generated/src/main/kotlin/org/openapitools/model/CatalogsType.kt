@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,11 +17,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Type of the catalog entity.
-* Values: RETAIL,HOTEL
+* Values: RETAIL,HOTEL,CREATIVE_ASSETS
 */
-enum class CatalogsType(val value: kotlin.String) {
+enum class CatalogsType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("RETAIL") RETAIL("RETAIL"),
-    @JsonProperty("HOTEL") HOTEL("HOTEL")
+    RETAIL("RETAIL"),
+    HOTEL("HOTEL"),
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): CatalogsType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

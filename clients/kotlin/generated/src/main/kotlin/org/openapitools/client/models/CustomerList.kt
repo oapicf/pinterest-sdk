@@ -96,5 +96,6 @@ data class CustomerList (
         @Json(name = "TOO_SMALL") TOO_SMALL("TOO_SMALL"),
         @Json(name = "UPLOADING") UPLOADING("UPLOADING");
     }
+
 }
 

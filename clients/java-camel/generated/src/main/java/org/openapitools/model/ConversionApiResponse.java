@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ConversionApiResponse", description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionApiResponse {
 
   private Integer numEventsReceived;
@@ -54,7 +54,7 @@ public class ConversionApiResponse {
   /**
    * Total number of events received in the request.
    * @return numEventsReceived
-  */
+   */
   @NotNull 
   @Schema(name = "num_events_received", description = "Total number of events received in the request.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("num_events_received")
@@ -74,7 +74,7 @@ public class ConversionApiResponse {
   /**
    * Number of events that were successfully processed from the events.
    * @return numEventsProcessed
-  */
+   */
   @NotNull 
   @Schema(name = "num_events_processed", description = "Number of events that were successfully processed from the events.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("num_events_processed")
@@ -102,7 +102,7 @@ public class ConversionApiResponse {
   /**
    * Specific messages for each event received. The order will match the order in which the events were received in the request.
    * @return events
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "events", description = "Specific messages for each event received. The order will match the order in which the events were received in the request.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("events")

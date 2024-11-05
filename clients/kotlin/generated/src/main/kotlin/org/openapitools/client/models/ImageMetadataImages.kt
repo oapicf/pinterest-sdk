@@ -44,5 +44,8 @@ data class ImageMetadataImages (
     @Json(name = "1200x")
     val `1200x`: ImageDetails? = null
 
-)
+) {
+
+
+}
 

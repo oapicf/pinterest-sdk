@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -30,16 +31,24 @@ data class BoardUpdate(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("privacy") val privacy: BoardUpdate.Privacy? = null
-) {
+    ) {
 
     /**
     * 
     * Values: PUBLIC,SECRET
     */
-    enum class Privacy(val value: kotlin.String) {
+    enum class Privacy(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("PUBLIC") PUBLIC("PUBLIC"),
-        @JsonProperty("SECRET") SECRET("SECRET")
+        PUBLIC("PUBLIC"),
+        SECRET("SECRET");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Privacy {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

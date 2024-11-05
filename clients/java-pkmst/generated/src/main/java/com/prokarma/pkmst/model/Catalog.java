@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
  */
 @ApiModel(description = "Catalog entity")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Catalog   {
   @JsonProperty("created_at")
   private OffsetDateTime createdAt;
@@ -40,11 +40,11 @@ public class Catalog   {
     return this;
   }
 
-   /**
+  /**
    * Get createdAt
    * @return createdAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -58,10 +58,10 @@ public class Catalog   {
     return this;
   }
 
-   /**
+  /**
    * ID of the catalog entity.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the catalog entity.")
   public String getId() {
     return id;
@@ -76,11 +76,11 @@ public class Catalog   {
     return this;
   }
 
-   /**
+  /**
    * Get updatedAt
    * @return updatedAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -94,10 +94,10 @@ public class Catalog   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a catalog entity.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
   public String getName() {
     return name;
@@ -112,10 +112,10 @@ public class Catalog   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;

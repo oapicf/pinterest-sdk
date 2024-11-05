@@ -33,7 +33,7 @@ void main() {
       // TODO
     });
 
-    // CatalogsHotelAttributes attributes
+    // CatalogsCreativeAssetsAttributes attributes
     test('to test the property `attributes`', () async {
       // TODO
     });
@@ -41,6 +41,12 @@ void main() {
     // The catalog hotel id in the merchant namespace
     // String hotelId
     test('to test the property `hotelId`', () async {
+      // TODO
+    });
+
+    // The catalog creative assets id in the merchant namespace
+    // String creativeAssetsId
+    test('to test the property `creativeAssetsId`', () async {
       // TODO
     });
 

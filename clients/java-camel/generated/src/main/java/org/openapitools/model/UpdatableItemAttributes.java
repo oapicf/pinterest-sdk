@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * UpdatableItemAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UpdatableItemAttributes {
 
   private JsonNullable<String> adLink = JsonNullable.<String>undefined();
@@ -129,7 +129,7 @@ public class UpdatableItemAttributes {
   /**
    * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
    * @return adLink
-  */
+   */
   
   @Schema(name = "ad_link", example = "https://www.example.com/cat/denim-shirt/item012?utm_source=Pinterest", description = "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_link")
@@ -149,7 +149,7 @@ public class UpdatableItemAttributes {
   /**
    * Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
    * @return adult
-  */
+   */
   
   @Schema(name = "adult", example = "true", description = "Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("adult")
@@ -167,11 +167,11 @@ public class UpdatableItemAttributes {
   }
 
   /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
    * @return ageGroup
-  */
+   */
   
-  @Schema(name = "age_group", example = "newborn", description = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "age_group", example = "newborn", description = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("age_group")
   public JsonNullable<String> getAgeGroup() {
     return ageGroup;
@@ -187,11 +187,11 @@ public class UpdatableItemAttributes {
   }
 
   /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
    * @return availability
-  */
+   */
   
-  @Schema(name = "availability", example = "in stock", description = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "availability", example = "in stock", description = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("availability")
   public String getAvailability() {
     return availability;
@@ -209,7 +209,7 @@ public class UpdatableItemAttributes {
   /**
    * Average reviews for the item. Can be a number from 1-5.
    * @return averageReviewRating
-  */
+   */
   @Valid 
   @Schema(name = "average_review_rating", example = "5", description = "Average reviews for the item. Can be a number from 1-5.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("average_review_rating")
@@ -229,7 +229,7 @@ public class UpdatableItemAttributes {
   /**
    * The brand of the product.
    * @return brand
-  */
+   */
   
   @Schema(name = "brand", example = "Josie’s Denim", description = "The brand of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("brand")
@@ -250,7 +250,7 @@ public class UpdatableItemAttributes {
    * This attribute is not supported anymore.
    * @return checkoutEnabled
    * @deprecated
-  */
+   */
   
   @Schema(name = "checkout_enabled", example = "false", description = "This attribute is not supported anymore.", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("checkout_enabled")
@@ -261,7 +261,7 @@ public class UpdatableItemAttributes {
 
   /**
    * @deprecated
-  */
+   */
   @Deprecated
   public void setCheckoutEnabled(JsonNullable<Boolean> checkoutEnabled) {
     this.checkoutEnabled = checkoutEnabled;
@@ -275,7 +275,7 @@ public class UpdatableItemAttributes {
   /**
    * The primary color of the product.
    * @return color
-  */
+   */
   
   @Schema(name = "color", example = "blue", description = "The primary color of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("color")
@@ -295,7 +295,7 @@ public class UpdatableItemAttributes {
   /**
    * The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
    * @return condition
-  */
+   */
   
   @Schema(name = "condition", example = "new", description = "The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("condition")
@@ -315,7 +315,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
    * @return customLabel0
-  */
+   */
   
   @Schema(name = "custom_label_0", example = "Best sellers", description = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_0")
@@ -335,7 +335,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
    * @return customLabel1
-  */
+   */
   
   @Schema(name = "custom_label_1", example = "Summer promotion", description = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_1")
@@ -355,7 +355,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
    * @return customLabel2
-  */
+   */
   
   @Schema(name = "custom_label_2", example = "Winter sales", description = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_2")
@@ -375,7 +375,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
    * @return customLabel3
-  */
+   */
   
   @Schema(name = "custom_label_3", example = "Woman dress", description = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_3")
@@ -395,7 +395,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
    * @return customLabel4
-  */
+   */
   
   @Schema(name = "custom_label_4", example = "Man hat", description = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_4")
@@ -415,7 +415,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 10000 characters</p> <p>The description of the product.</p>
    * @return description
-  */
+   */
   
   @Schema(name = "description", example = "Casual fit denim shirt made with the finest quality Japanese denim.", description = "<p><= 10000 characters</p> <p>The description of the product.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -435,7 +435,7 @@ public class UpdatableItemAttributes {
   /**
    * The item is free to ship.
    * @return freeShippingLabel
-  */
+   */
   
   @Schema(name = "free_shipping_label", example = "true", description = "The item is free to ship.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("free_shipping_label")
@@ -455,7 +455,7 @@ public class UpdatableItemAttributes {
   /**
    * The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
    * @return freeShippingLimit
-  */
+   */
   
   @Schema(name = "free_shipping_limit", example = "35 USD", description = "The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("free_shipping_limit")
@@ -473,11 +473,11 @@ public class UpdatableItemAttributes {
   }
 
   /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
    * @return gender
-  */
+   */
   
-  @Schema(name = "gender", example = "unisex", description = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "gender", example = "unisex", description = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("gender")
   public JsonNullable<String> getGender() {
     return gender;
@@ -495,7 +495,7 @@ public class UpdatableItemAttributes {
   /**
    * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
    * @return googleProductCategory
-  */
+   */
   
   @Schema(name = "google_product_category", example = "Apparel & Accessories > Clothing > Shirts & Tops", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("google_product_category")
@@ -515,7 +515,7 @@ public class UpdatableItemAttributes {
   /**
    * The unique universal product identifier.
    * @return gtin
-  */
+   */
   
   @Schema(name = "gtin", example = "3234567890126", description = "The unique universal product identifier.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("gtin")
@@ -536,7 +536,7 @@ public class UpdatableItemAttributes {
    * <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
    * @return id
    * @deprecated
-  */
+   */
   
   @Schema(name = "id", example = "DS0294-L", description = "<p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -547,7 +547,7 @@ public class UpdatableItemAttributes {
 
   /**
    * @deprecated
-  */
+   */
   @Deprecated
   public void setId(String id) {
     this.id = id;
@@ -561,7 +561,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 127 characters</p> <p>The parent ID of the product.</p>
    * @return itemGroupId
-  */
+   */
   
   @Schema(name = "item_group_id", example = "DS0294", description = "<p><= 127 characters</p> <p>The parent ID of the product.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_group_id")
@@ -581,7 +581,7 @@ public class UpdatableItemAttributes {
   /**
    * The millisecond timestamp when the item was lastly modified by the merchant.
    * @return lastUpdatedTime
-  */
+   */
   
   @Schema(name = "last_updated_time", example = "1641483432072", description = "The millisecond timestamp when the item was lastly modified by the merchant.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("last_updated_time")
@@ -601,7 +601,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 511 characters</p> <p>The landing page for the product.</p>
    * @return link
-  */
+   */
   
   @Schema(name = "link", example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", description = "<p><= 511 characters</p> <p>The landing page for the product.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -621,7 +621,7 @@ public class UpdatableItemAttributes {
   /**
    * The material used to make the product.
    * @return material
-  */
+   */
   
   @Schema(name = "material", example = "cotton", description = "The material used to make the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("material")
@@ -641,7 +641,7 @@ public class UpdatableItemAttributes {
   /**
    * The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
    * @return minAdPrice
-  */
+   */
   
   @Schema(name = "min_ad_price", example = "19.99 USD", description = "The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("min_ad_price")
@@ -661,7 +661,7 @@ public class UpdatableItemAttributes {
   /**
    * The mobile-optimized version of your landing page. Must begin with http:// or https://.
    * @return mobileLink
-  */
+   */
   
   @Schema(name = "mobile_link", example = "https://m.example.com/cat/womens-clothing/denim-shirt-0294", description = "The mobile-optimized version of your landing page. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("mobile_link")
@@ -681,7 +681,7 @@ public class UpdatableItemAttributes {
   /**
    * Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
    * @return mpn
-  */
+   */
   
   @Schema(name = "mpn", example = "PI12345NTEREST", description = "Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("mpn")
@@ -701,7 +701,7 @@ public class UpdatableItemAttributes {
   /**
    * The number of ratings for the item.
    * @return numberOfRatings
-  */
+   */
   
   @Schema(name = "number_of_ratings", example = "10", description = "The number of ratings for the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("number_of_ratings")
@@ -721,7 +721,7 @@ public class UpdatableItemAttributes {
   /**
    * The number of reviews available for the item.
    * @return numberOfReviews
-  */
+   */
   
   @Schema(name = "number_of_reviews", example = "10", description = "The number of reviews available for the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("number_of_reviews")
@@ -741,7 +741,7 @@ public class UpdatableItemAttributes {
   /**
    * The description of the pattern used for the product.
    * @return pattern
-  */
+   */
   
   @Schema(name = "pattern", example = "plaid", description = "The description of the pattern used for the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pattern")
@@ -761,7 +761,7 @@ public class UpdatableItemAttributes {
   /**
    * The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
    * @return price
-  */
+   */
   
   @Schema(name = "price", example = "24.99 USD", description = "The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("price")
@@ -781,7 +781,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
    * @return productType
-  */
+   */
   
   @Schema(name = "product_type", example = "Clothing > Women’s > Shirts > Denim", description = "<p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_type")
@@ -801,7 +801,7 @@ public class UpdatableItemAttributes {
   /**
    * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
    * @return salePrice
-  */
+   */
   
   @Schema(name = "sale_price", example = "14.99 USD", description = "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sale_price")
@@ -821,7 +821,7 @@ public class UpdatableItemAttributes {
   /**
    * Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
    * @return shipping
-  */
+   */
   
   @Schema(name = "shipping", example = "US:CA:Ground:0 USD", description = "Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("shipping")
@@ -841,7 +841,7 @@ public class UpdatableItemAttributes {
   /**
    * The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
    * @return shippingHeight
-  */
+   */
   
   @Schema(name = "shipping_height", example = "12 in", description = "The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("shipping_height")
@@ -861,7 +861,7 @@ public class UpdatableItemAttributes {
   /**
    * The weight of the product. Ensure there is a space between the numeric string and the metric.
    * @return shippingWeight
-  */
+   */
   
   @Schema(name = "shipping_weight", example = "3 kg", description = "The weight of the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("shipping_weight")
@@ -881,7 +881,7 @@ public class UpdatableItemAttributes {
   /**
    * The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
    * @return shippingWidth
-  */
+   */
   
   @Schema(name = "shipping_width", example = "16 in", description = "The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("shipping_width")
@@ -901,7 +901,7 @@ public class UpdatableItemAttributes {
   /**
    * The size of the product.
    * @return size
-  */
+   */
   
   @Schema(name = "size", example = "M", description = "The size of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("size")
@@ -919,11 +919,11 @@ public class UpdatableItemAttributes {
   }
 
   /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
    * @return sizeSystem
-  */
+   */
   
-  @Schema(name = "size_system", example = "US", description = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "size_system", example = "US", description = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("size_system")
   public JsonNullable<String> getSizeSystem() {
     return sizeSystem;
@@ -939,11 +939,11 @@ public class UpdatableItemAttributes {
   }
 
   /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
    * @return sizeType
-  */
+   */
   
-  @Schema(name = "size_type", example = "regular", description = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "size_type", example = "regular", description = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("size_type")
   public JsonNullable<String> getSizeType() {
     return sizeType;
@@ -961,7 +961,7 @@ public class UpdatableItemAttributes {
   /**
    * Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
    * @return tax
-  */
+   */
   
   @Schema(name = "tax", example = "US:1025433:6.00:y", description = "Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tax")
@@ -981,7 +981,7 @@ public class UpdatableItemAttributes {
   /**
    * <p><= 500 characters</p> <p>The name of the product.</p>
    * @return title
-  */
+   */
   
   @Schema(name = "title", example = "Women’s denim shirt, large", description = "<p><= 500 characters</p> <p>The name of the product.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -1009,7 +1009,7 @@ public class UpdatableItemAttributes {
   /**
    * Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
    * @return variantNames
-  */
+   */
   
   @Schema(name = "variant_names", example = "[\"Color\",\"Size\"]", description = "Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("variant_names")
@@ -1037,7 +1037,7 @@ public class UpdatableItemAttributes {
   /**
    * Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
    * @return variantValues
-  */
+   */
   
   @Schema(name = "variant_values", example = "[\"Red\",\"Small\"]", description = "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("variant_values")

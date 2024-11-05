@@ -10,6 +10,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Keyword  {
   
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+ /**
+   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  **/
+  private Integer bid;
+
+  @ApiModelProperty(required = true, value = "")
+  private MatchTypeResponse matchType;
+
+  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
+ /**
+   * Keyword value (120 chars max).
+  **/
+  private String value;
+
   @ApiModelProperty(example = "false", value = "")
   private Boolean archived;
 
@@ -36,21 +51,60 @@ public class Keyword  {
    * Always keyword
   **/
   private String type;
-
-  @ApiModelProperty(example = "200000", value = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
  /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   * @return bid
   **/
-  private Integer bid;
+  @JsonProperty("bid")
+  public Integer getBid() {
+    return bid;
+  }
 
-  @ApiModelProperty(required = true, value = "")
-  private MatchTypeResponse matchType;
+  public void setBid(Integer bid) {
+    this.bid = bid;
+  }
 
-  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
+  public Keyword bid(Integer bid) {
+    this.bid = bid;
+    return this;
+  }
+
+ /**
+   * Get matchType
+   * @return matchType
+  **/
+  @JsonProperty("match_type")
+  public MatchTypeResponse getMatchType() {
+    return matchType;
+  }
+
+  public void setMatchType(MatchTypeResponse matchType) {
+    this.matchType = matchType;
+  }
+
+  public Keyword matchType(MatchTypeResponse matchType) {
+    this.matchType = matchType;
+    return this;
+  }
+
  /**
    * Keyword value (120 chars max).
+   * @return value
   **/
-  private String value;
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+  public Keyword value(String value) {
+    this.value = value;
+    return this;
+  }
+
  /**
    * Get archived
    * @return archived
@@ -141,60 +195,6 @@ public class Keyword  {
     return this;
   }
 
- /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * @return bid
-  **/
-  @JsonProperty("bid")
-  public Integer getBid() {
-    return bid;
-  }
-
-  public void setBid(Integer bid) {
-    this.bid = bid;
-  }
-
-  public Keyword bid(Integer bid) {
-    this.bid = bid;
-    return this;
-  }
-
- /**
-   * Get matchType
-   * @return matchType
-  **/
-  @JsonProperty("match_type")
-  public MatchTypeResponse getMatchType() {
-    return matchType;
-  }
-
-  public void setMatchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-  }
-
-  public Keyword matchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-    return this;
-  }
-
- /**
-   * Keyword value (120 chars max).
-   * @return value
-  **/
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
-  }
-
-  public void setValue(String value) {
-    this.value = value;
-  }
-
-  public Keyword value(String value) {
-    this.value = value;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -204,19 +204,19 @@ public class Keyword  {
       return false;
     }
     Keyword keyword = (Keyword) o;
-    return Objects.equals(this.archived, keyword.archived) &&
+    return Objects.equals(this.bid, keyword.bid) &&
+        Objects.equals(this.matchType, keyword.matchType) &&
+        Objects.equals(this.value, keyword.value) &&
+        Objects.equals(this.archived, keyword.archived) &&
         Objects.equals(this.id, keyword.id) &&
         Objects.equals(this.parentId, keyword.parentId) &&
         Objects.equals(this.parentType, keyword.parentType) &&
-        Objects.equals(this.type, keyword.type) &&
-        Objects.equals(this.bid, keyword.bid) &&
-        Objects.equals(this.matchType, keyword.matchType) &&
-        Objects.equals(this.value, keyword.value);
+        Objects.equals(this.type, keyword.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(archived, id, parentId, parentType, type, bid, matchType, value);
+    return Objects.hash(bid, matchType, value, archived, id, parentId, parentType, type);
   }
 
   @Override
@@ -224,14 +224,14 @@ public class Keyword  {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keyword {\n");
     
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

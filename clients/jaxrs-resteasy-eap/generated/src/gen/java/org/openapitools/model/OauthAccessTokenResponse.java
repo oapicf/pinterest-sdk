@@ -14,9 +14,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A successful OAuth access token response.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "response_type", visible = true)
+@ApiModel(description="A successful OAuth access token response.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "response_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = OauthAccessTokenResponseCode.class, name = "authorization_code"),
+  @JsonSubTypes.Type(value = OauthAccessTokenResponseClientCredentials.class, name = "client_credentials"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseEverlastingRefresh.class, name = "everlasting_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseIntegrationRefresh.class, name = "integration_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseRefresh.class, name = "refresh_token"),
@@ -31,7 +32,9 @@ public class OauthAccessTokenResponse   {
   public enum ResponseTypeEnum {
     AUTHORIZATION_CODE("authorization_code"),
 
-        REFRESH_TOKEN("refresh_token");
+        REFRESH_TOKEN("refresh_token"),
+
+        CLIENT_CREDENTIALS("client_credentials");
     private String value;
 
     ResponseTypeEnum(String value) {

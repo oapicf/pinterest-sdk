@@ -76,7 +76,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.TermsApi();
-let term = sports; // String | Input term.
+let term = "sports"; // String | Input term.
 let opts = {
   'limit': 4 // Number | Max suggested terms to return.
 };

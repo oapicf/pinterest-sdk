@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AdAccountCreateSubscriptionRequestPartnerMetadata
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -26,6 +27,7 @@ import com.squareup.moshi.JsonClass
  * @param leadFormId Lead form ID.
  * @param partnerAccessToken Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
  * @param partnerRefreshToken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+ * @param partnerMetadata 
  */
 
 
@@ -45,7 +47,13 @@ data class AdAccountCreateSubscriptionRequest (
 
     /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     @Json(name = "partner_refresh_token")
-    val partnerRefreshToken: kotlin.String? = null
+    val partnerRefreshToken: kotlin.String? = null,
 
-)
+    @Json(name = "partner_metadata")
+    val partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = null
+
+) {
+
+
+}
 

@@ -15,10 +15,9 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
     public enum CatalogType: String, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    public enum FeedId: String, Codable, CaseIterable {
-        case null = "null"
-    }
     static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public var catalogType: CatalogType
     /** ID of the catalog product group. */
     public var id: String
@@ -27,6 +26,7 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var filters: CatalogsProductGroupFilters
     /** boolean indicator of whether the product group is being featured or not */
+    @available(*, deprecated, message: "This property is deprecated.")
     public var isFeatured: Bool?
     public var type: CatalogsProductGroupType?
     public var status: CatalogsProductGroupStatus?
@@ -34,9 +34,14 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
     public var createdAt: Int?
     /** Unix timestamp in seconds of last time catalog product group was updated. */
     public var updatedAt: Int?
-    public var feedId: FeedId?
+    /** Catalog id pertaining to the retail product group. */
+    public var catalogId: String
+    /** id of the catalogs feed belonging to this catalog product group */
+    public var feedId: String?
+    public var country: String?
+    public var locale: String?
 
-    public init(catalogType: CatalogType, id: String, name: String? = nil, description: String? = nil, filters: CatalogsProductGroupFilters, isFeatured: Bool? = nil, type: CatalogsProductGroupType? = nil, status: CatalogsProductGroupStatus? = nil, createdAt: Int? = nil, updatedAt: Int? = nil, feedId: FeedId?) {
+    public init(catalogType: CatalogType, id: String, name: String? = nil, description: String? = nil, filters: CatalogsProductGroupFilters, isFeatured: Bool? = nil, type: CatalogsProductGroupType? = nil, status: CatalogsProductGroupStatus? = nil, createdAt: Int? = nil, updatedAt: Int? = nil, catalogId: String, feedId: String?, country: String? = nil, locale: String? = nil) {
         self.catalogType = catalogType
         self.id = id
         self.name = name
@@ -47,7 +52,10 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
         self.status = status
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.catalogId = catalogId
         self.feedId = feedId
+        self.country = country
+        self.locale = locale
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -61,7 +69,10 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
         case status
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case catalogId = "catalog_id"
         case feedId = "feed_id"
+        case country
+        case locale
     }
 
     // Encodable protocol methods
@@ -78,7 +89,10 @@ public struct CatalogsRetailProductGroup: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
+        try container.encode(catalogId, forKey: .catalogId)
         try container.encode(feedId, forKey: .feedId)
+        try container.encodeIfPresent(country, forKey: .country)
+        try container.encodeIfPresent(locale, forKey: .locale)
     }
 }
 

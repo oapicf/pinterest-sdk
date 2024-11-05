@@ -25,7 +25,12 @@ import com.squareup.moshi.JsonClass
  *
  * @param matchType 
  * @param `value` Keyword value (120 chars max).
- * @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param archived 
+ * @param id Keyword ID .
+ * @param parentId Keyword parent entity ID (advertiser, campaign, ad group).
+ * @param parentType Parent entity type
+ * @param type Always keyword
  */
 
 
@@ -38,9 +43,31 @@ data class Keyword (
     @Json(name = "value")
     val `value`: kotlin.String,
 
-    /* Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+    /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     @Json(name = "bid")
-    val bid: kotlin.Int? = null
+    val bid: kotlin.Int? = null,
 
-)
+    @Json(name = "archived")
+    val archived: kotlin.Boolean? = null,
+
+    /* Keyword ID . */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    /* Keyword parent entity ID (advertiser, campaign, ad group). */
+    @Json(name = "parent_id")
+    val parentId: kotlin.String? = null,
+
+    /* Parent entity type */
+    @Json(name = "parent_type")
+    val parentType: kotlin.String? = null,
+
+    /* Always keyword */
+    @Json(name = "type")
+    val type: kotlin.String? = null
+
+) {
+
+
+}
 

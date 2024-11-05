@@ -12,14 +12,13 @@ module.exports = {
                     'EMAIL',
                     'PHONE_NUMBER',
                     'ZIP_CODE',
-                    'AGE',
                     'GENDER',
                     'CITY',
                     'COUNTRY',
-                    'PREFERRED_CONTACT_METHOD',
                     'STATE_PROVINCE',
                     'ADDRESS',
                     'DATE_OF_BIRTH',
+                    'AGE',
                 ],
             }
         )

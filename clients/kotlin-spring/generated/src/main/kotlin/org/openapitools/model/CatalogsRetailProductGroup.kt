@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsProductGroupFilters
@@ -22,7 +23,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param catalogType 
  * @param id ID of the catalog product group.
  * @param filters 
- * @param feedId 
+ * @param catalogId Catalog id pertaining to the retail product group.
+ * @param feedId id of the catalogs feed belonging to this catalog product group
  * @param name Name of catalog product group
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
@@ -30,6 +32,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param status 
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
+ * @param country 
+ * @param locale 
  */
 data class CatalogsRetailProductGroup(
 
@@ -44,8 +48,13 @@ data class CatalogsRetailProductGroup(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("feed_id", required = true) val feedId: CatalogsRetailProductGroup.FeedId?,
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "null", required = true, description = "Catalog id pertaining to the retail product group.")
+    @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
+
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "2680059592705", required = true, description = "id of the catalogs feed belonging to this catalog product group")
+    @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String?,
 
     @Schema(example = "Most Popular", description = "Name of catalog product group")
     @get:JsonProperty("name") val name: kotlin.String? = null,
@@ -54,6 +63,7 @@ data class CatalogsRetailProductGroup(
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @Schema(example = "null", description = "boolean indicator of whether the product group is being featured or not")
+    @Deprecated(message = "")
     @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = null,
 
     @field:Valid
@@ -68,25 +78,30 @@ data class CatalogsRetailProductGroup(
     @get:JsonProperty("created_at") val createdAt: kotlin.Int? = null,
 
     @Schema(example = "1622742155000", description = "Unix timestamp in seconds of last time catalog product group was updated.")
-    @get:JsonProperty("updated_at") val updatedAt: kotlin.Int? = null
-) {
+    @get:JsonProperty("updated_at") val updatedAt: kotlin.Int? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("country") val country: kotlin.String? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("locale") val locale: kotlin.String? = null
+    ) {
 
     /**
     * 
     * Values: RETAIL
     */
-    enum class CatalogType(val value: kotlin.String) {
+    enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("RETAIL") RETAIL("RETAIL")
-    }
+        RETAIL("RETAIL");
 
-    /**
-    * 
-    * Values: `null`
-    */
-    enum class FeedId(val value: kotlin.String) {
-
-        @JsonProperty("null") `null`("null")
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CatalogType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

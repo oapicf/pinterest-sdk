@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * Interest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Interest {
 
   private String canonicalUrl;
@@ -37,7 +37,7 @@ public class Interest {
   /**
    * Get canonicalUrl
    * @return canonicalUrl
-  */
+   */
   
   @Schema(name = "canonical_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("canonical_url")
@@ -57,7 +57,7 @@ public class Interest {
   /**
    * Get id
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "903972677830", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -77,7 +77,7 @@ public class Interest {
   /**
    * Get key
    * @return key
-  */
+   */
   
   @Schema(name = "key", example = "man cave", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
@@ -97,7 +97,7 @@ public class Interest {
   /**
    * Get name
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "Man cave", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")

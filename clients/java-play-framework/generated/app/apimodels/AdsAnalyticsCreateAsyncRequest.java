@@ -26,7 +26,7 @@ import javax.validation.Valid;
 /**
  * AdsAnalyticsCreateAsyncRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("start_date")
@@ -84,7 +84,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private List<CampaignSummaryStatus> campaignStatuses = null;
 
   @JsonProperty("campaign_objective_types")
-  @Size(min=1,max=6)
+  @Size(min=1,max=7)
 @Valid
 
   private List<ObjectiveType> campaignObjectiveTypes = null;
@@ -155,6 +155,53 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @Valid
 
   private DataOutputFormat reportFormat = "JSON";
+
+  /**
+   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+   */
+  public enum PrimarySortEnum {
+    ID("BY_ID"),
+    
+    DATE("BY_DATE");
+
+    private final String value;
+
+    PrimarySortEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PrimarySortEnum fromValue(String value) {
+      for (PrimarySortEnum b : PrimarySortEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("primary_sort")
+  
+  private PrimarySortEnum primarySort;
+
+  @JsonProperty("start_hour")
+  @Min(0)
+@Max(23)
+
+  private Integer startHour;
+
+  @JsonProperty("end_hour")
+  @Min(0)
+@Max(23)
+
+  private Integer endHour;
 
   public AdsAnalyticsCreateAsyncRequest startDate(String startDate) {
     this.startDate = startDate;
@@ -564,7 +611,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
    /**
-   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
    * @return targetingTypes
   **/
   public List<AdsAnalyticsTargetingType> getTargetingTypes() {
@@ -659,6 +706,61 @@ public class AdsAnalyticsCreateAsyncRequest   {
     this.reportFormat = reportFormat;
   }
 
+  public AdsAnalyticsCreateAsyncRequest primarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+    return this;
+  }
+
+   /**
+   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+   * @return primarySort
+  **/
+  public PrimarySortEnum getPrimarySort() {
+    return primarySort;
+  }
+
+  public void setPrimarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+  }
+
+  public AdsAnalyticsCreateAsyncRequest startHour(Integer startHour) {
+    this.startHour = startHour;
+    return this;
+  }
+
+   /**
+   * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   * @return startHour
+  **/
+  public Integer getStartHour() {
+    return startHour;
+  }
+
+  public void setStartHour(Integer startHour) {
+    this.startHour = startHour;
+  }
+
+  public AdsAnalyticsCreateAsyncRequest endHour(Integer endHour) {
+    this.endHour = endHour;
+    return this;
+  }
+
+   /**
+   * Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   * @return endHour
+  **/
+  public Integer getEndHour() {
+    return endHour;
+  }
+
+  public void setEndHour(Integer endHour) {
+    this.endHour = endHour;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -691,12 +793,15 @@ public class AdsAnalyticsCreateAsyncRequest   {
         Objects.equals(metricsFilters, adsAnalyticsCreateAsyncRequest.metricsFilters) &&
         Objects.equals(columns, adsAnalyticsCreateAsyncRequest.columns) &&
         Objects.equals(level, adsAnalyticsCreateAsyncRequest.level) &&
-        Objects.equals(reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat);
+        Objects.equals(reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat) &&
+        Objects.equals(primarySort, adsAnalyticsCreateAsyncRequest.primarySort) &&
+        Objects.equals(startHour, adsAnalyticsCreateAsyncRequest.startHour) &&
+        Objects.equals(endHour, adsAnalyticsCreateAsyncRequest.endHour);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat);
+    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat, primarySort, startHour, endHour);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -728,6 +833,9 @@ public class AdsAnalyticsCreateAsyncRequest   {
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    reportFormat: ").append(toIndentedString(reportFormat)).append("\n");
+    sb.append("    primarySort: ").append(toIndentedString(primarySort)).append("\n");
+    sb.append("    startHour: ").append(toIndentedString(startHour)).append("\n");
+    sb.append("    endHour: ").append(toIndentedString(endHour)).append("\n");
     sb.append("}");
     return sb.toString();
   }

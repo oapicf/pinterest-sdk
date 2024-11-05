@@ -58,8 +58,10 @@ public class SecurityAPIUtils {
         leeway = configuration.hasPath("oauth.leeway") ? configuration.getLong("oauth.leeway") : 3;
 
         tokenIntrospectEndpoints.put("pinterest_oauth2", "");
+        tokenIntrospectEndpoints.put("client_credentials", "");
 
         jwksEndpoints.put("pinterest_oauth2", "");
+        jwksEndpoints.put("client_credentials", "");
     }
 
     //This function is not currently used because we hardcode USE_ONLINE_VALIDATION to false but might in the future versions

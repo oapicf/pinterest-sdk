@@ -78,7 +78,7 @@
     },
     {
       "name": "media",
-      "type": ["null", "model.SummaryPinMedia"],
+      "type": ["null", "model.PinMedia"],
       "doc": "",
       "default": null
     },
@@ -97,7 +97,7 @@
     {
       "name": "is_standard",
       "type": ["null", "boolean"],
-      "doc": "Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.",
+      "doc": "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.",
       "default": null
     },
     {

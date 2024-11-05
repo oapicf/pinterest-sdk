@@ -14,7 +14,7 @@ import org.openapitools.vertxweb.server.model.IntegrationLogsInvalidLogResponseR
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class IntegrationLogsInvalidLogResponse   {
   
-  private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs;
+  private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
 
   public IntegrationLogsInvalidLogResponse () {
 

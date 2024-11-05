@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.MatchTypeResponse
@@ -28,7 +29,7 @@ data class AdGroupAudienceSizingRequestKeywordsInner(
 
     @Schema(example = "null", required = true, description = "Keyword value (120 chars max).")
     @get:JsonProperty("value", required = true) val `value`: kotlin.String
-) {
+    ) {
 
 }
 

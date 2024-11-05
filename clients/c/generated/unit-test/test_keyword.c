@@ -22,25 +22,25 @@ keyword_t* instantiate_keyword(int include_optional) {
   keyword_t* keyword = NULL;
   if (include_optional) {
     keyword = keyword_create(
+      56,
+      pinterest_rest_api_keyword__"BROAD",
+      "0",
       false,
       "383791336903426391",
       "383791336903426391",
       "campaign",
-      "keyword",
-      200000,
-      pinterest_rest_api_keyword__"BROAD",
-      "0"
+      "keyword"
     );
   } else {
     keyword = keyword_create(
+      56,
+      pinterest_rest_api_keyword__"BROAD",
+      "0",
       false,
       "383791336903426391",
       "383791336903426391",
       "campaign",
-      "keyword",
-      200000,
-      pinterest_rest_api_keyword__"BROAD",
-      "0"
+      "keyword"
     );
   }
 

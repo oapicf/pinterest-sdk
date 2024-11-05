@@ -14,9 +14,9 @@ import AnyCodable
 public struct CatalogsHotelFeed: Codable, JSONEncodable, Hashable {
 
     static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var createdAt: Date?
-    public var id: String?
-    public var updatedAt: Date?
+    public var createdAt: Date
+    public var id: String
+    public var updatedAt: Date
     /** A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     public var name: String?
     public var format: CatalogsFormat
@@ -32,7 +32,7 @@ public struct CatalogsHotelFeed: Codable, JSONEncodable, Hashable {
     /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     public var catalogId: String?
 
-    public init(createdAt: Date? = nil, id: String? = nil, updatedAt: Date? = nil, name: String?, format: CatalogsFormat, catalogType: CatalogsType, credentials: CatalogsFeedCredentials?, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule?, status: CatalogsStatus, defaultCurrency: NullableCurrency?, defaultLocale: String, catalogId: String?) {
+    public init(createdAt: Date, id: String, updatedAt: Date, name: String?, format: CatalogsFormat, catalogType: CatalogsType, credentials: CatalogsFeedCredentials?, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule?, status: CatalogsStatus, defaultCurrency: NullableCurrency?, defaultLocale: String, catalogId: String?) {
         self.createdAt = createdAt
         self.id = id
         self.updatedAt = updatedAt
@@ -68,9 +68,9 @@ public struct CatalogsHotelFeed: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
+        try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(id, forKey: .id)
+        try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(name, forKey: .name)
         try container.encode(format, forKey: .format)
         try container.encode(catalogType, forKey: .catalogType)

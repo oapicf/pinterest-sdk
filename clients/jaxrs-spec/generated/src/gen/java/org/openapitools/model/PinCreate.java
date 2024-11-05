@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,22 +22,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Pin")
 @JsonTypeName("PinCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinCreate   {
-  private @Valid String id;
-  private @Valid Date createdAt;
-  private @Valid String link;
-  private @Valid String title;
-  private @Valid String description;
-  private @Valid String dominantColor;
-  private @Valid String altText;
-  private @Valid String boardId;
-  private @Valid String boardSectionId;
-  private @Valid BoardOwner boardOwner;
-  private @Valid SummaryPinMedia media;
-  private @Valid PinMediaSource mediaSource;
-  private @Valid String parentPinId;
-  private @Valid String note;
+  private String id;
+  private Date createdAt;
+  private String link;
+  private String title;
+  private String description;
+  private String dominantColor;
+  private String altText;
+  private String boardId;
+  private String boardSectionId;
+  private BoardOwner boardOwner;
+  private PinMedia media;
+  private PinMediaSource mediaSource;
+  private String parentPinId;
+  private String note;
 
   /**
    **/
@@ -49,7 +49,7 @@ public class PinCreate   {
   
   @ApiModelProperty(example = "813744226420795884", value = "")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -87,7 +87,7 @@ public class PinCreate   {
   
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
   @JsonProperty("link")
- @Size(max=2048)  public String getLink() {
+   @Size(max=2048)public String getLink() {
     return link;
   }
 
@@ -106,7 +106,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("title")
- @Size(max=100)  public String getTitle() {
+   @Size(max=100)public String getTitle() {
     return title;
   }
 
@@ -125,7 +125,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("description")
- @Size(max=800)  public String getDescription() {
+   @Size(max=800)public String getDescription() {
     return description;
   }
 
@@ -164,7 +164,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("alt_text")
- @Size(max=500)  public String getAltText() {
+   @Size(max=500)public String getAltText() {
     return altText;
   }
 
@@ -184,7 +184,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "The board to which this Pin belongs.")
   @JsonProperty("board_id")
- @Pattern(regexp="^\\d+$")  public String getBoardId() {
+   @Pattern(regexp="^\\d+$")public String getBoardId() {
     return boardId;
   }
 
@@ -204,7 +204,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "The board section to which this Pin belongs.")
   @JsonProperty("board_section_id")
- @Pattern(regexp="^\\d+$")  public String getBoardSectionId() {
+   @Pattern(regexp="^\\d+$")public String getBoardSectionId() {
     return boardSectionId;
   }
 
@@ -223,7 +223,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("board_owner")
-  public BoardOwner getBoardOwner() {
+  @Valid public BoardOwner getBoardOwner() {
     return boardOwner;
   }
 
@@ -234,7 +234,7 @@ public class PinCreate   {
 
   /**
    **/
-  public PinCreate media(SummaryPinMedia media) {
+  public PinCreate media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -242,12 +242,12 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  @Valid public PinMedia getMedia() {
     return media;
   }
 
   @JsonProperty("media")
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -261,7 +261,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media_source")
-  public PinMediaSource getMediaSource() {
+  @Valid public PinMediaSource getMediaSource() {
     return mediaSource;
   }
 
@@ -281,7 +281,7 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.")
   @JsonProperty("parent_pin_id")
- @Pattern(regexp="^\\d+$")  public String getParentPinId() {
+   @Pattern(regexp="^\\d+$")public String getParentPinId() {
     return parentPinId;
   }
 

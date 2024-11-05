@@ -23,8 +23,7 @@ AudienceInsightCategoryCommon <- R6::R6Class(
     `ratio` = NULL,
     `index` = NULL,
     `id` = NULL,
-    #' Initialize a new AudienceInsightCategoryCommon class.
-    #'
+
     #' @description
     #' Initialize a new AudienceInsightCategoryCommon class.
     #'
@@ -34,7 +33,6 @@ AudienceInsightCategoryCommon <- R6::R6Class(
     #' @param index index
     #' @param id id
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`key` = NULL, `name` = NULL, `ratio` = NULL, `index` = NULL, `id` = NULL, ...) {
       if (!is.null(`key`)) {
         if (!(is.character(`key`) && length(`key`) == 1)) {
@@ -61,13 +59,11 @@ AudienceInsightCategoryCommon <- R6::R6Class(
         self$`id` <- `id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceInsightCategoryCommon in JSON format
-    #' @export
     toJSON = function() {
       AudienceInsightCategoryCommonObject <- list()
       if (!is.null(self$`key`)) {
@@ -92,14 +88,12 @@ AudienceInsightCategoryCommon <- R6::R6Class(
       }
       AudienceInsightCategoryCommonObject
     },
-    #' Deserialize JSON string into an instance of AudienceInsightCategoryCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceInsightCategoryCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceInsightCategoryCommon
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`key`)) {
@@ -119,13 +113,11 @@ AudienceInsightCategoryCommon <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceInsightCategoryCommon in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`key`)) {
@@ -172,14 +164,12 @@ AudienceInsightCategoryCommon <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AudienceInsightCategoryCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceInsightCategoryCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceInsightCategoryCommon
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`key` <- this_object$`key`
@@ -189,53 +179,42 @@ AudienceInsightCategoryCommon <- R6::R6Class(
       self$`id` <- this_object$`id`
       self
     },
-    #' Validate JSON input with respect to AudienceInsightCategoryCommon
-    #'
+
     #' @description
     #' Validate JSON input with respect to AudienceInsightCategoryCommon and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AudienceInsightCategoryCommon
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

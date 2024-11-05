@@ -19,7 +19,6 @@
 #' @export
 OauthAccessTokenResponseCode <- R6::R6Class(
   "OauthAccessTokenResponseCode",
-  inherit = OauthAccessTokenResponse,
   public = list(
     `response_type` = NULL,
     `access_token` = NULL,
@@ -28,8 +27,7 @@ OauthAccessTokenResponseCode <- R6::R6Class(
     `scope` = NULL,
     `refresh_token` = NULL,
     `refresh_token_expires_in` = NULL,
-    #' Initialize a new OauthAccessTokenResponseCode class.
-    #'
+
     #' @description
     #' Initialize a new OauthAccessTokenResponseCode class.
     #'
@@ -41,7 +39,6 @@ OauthAccessTokenResponseCode <- R6::R6Class(
     #' @param refresh_token_expires_in refresh_token_expires_in
     #' @param response_type response_type
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`access_token`, `token_type`, `expires_in`, `scope`, `refresh_token`, `refresh_token_expires_in`, `response_type` = NULL, ...) {
       if (!missing(`access_token`)) {
         if (!(is.character(`access_token`) && length(`access_token`) == 1)) {
@@ -80,8 +77,8 @@ OauthAccessTokenResponseCode <- R6::R6Class(
         self$`refresh_token_expires_in` <- `refresh_token_expires_in`
       }
       if (!is.null(`response_type`)) {
-        if (!(`response_type` %in% c("authorization_code", "refresh_token"))) {
-          stop(paste("Error! \"", `response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\".", sep = ""))
+        if (!(`response_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
+          stop(paste("Error! \"", `response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
         }
         if (!(is.character(`response_type`) && length(`response_type`) == 1)) {
           stop(paste("Error! Invalid data for `response_type`. Must be a string:", `response_type`))
@@ -89,13 +86,11 @@ OauthAccessTokenResponseCode <- R6::R6Class(
         self$`response_type` <- `response_type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OauthAccessTokenResponseCode in JSON format
-    #' @export
     toJSON = function() {
       OauthAccessTokenResponseCodeObject <- list()
       if (!is.null(self$`response_type`)) {
@@ -128,19 +123,17 @@ OauthAccessTokenResponseCode <- R6::R6Class(
       }
       OauthAccessTokenResponseCodeObject
     },
-    #' Deserialize JSON string into an instance of OauthAccessTokenResponseCode
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OauthAccessTokenResponseCode
     #'
     #' @param input_json the JSON input
     #' @return the instance of OauthAccessTokenResponseCode
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`response_type`)) {
-        if (!is.null(this_object$`response_type`) && !(this_object$`response_type` %in% c("authorization_code", "refresh_token"))) {
-          stop(paste("Error! \"", this_object$`response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\".", sep = ""))
+        if (!is.null(this_object$`response_type`) && !(this_object$`response_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
+          stop(paste("Error! \"", this_object$`response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
         }
         self$`response_type` <- this_object$`response_type`
       }
@@ -164,13 +157,11 @@ OauthAccessTokenResponseCode <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OauthAccessTokenResponseCode in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`response_type`)) {
@@ -233,18 +224,16 @@ OauthAccessTokenResponseCode <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of OauthAccessTokenResponseCode
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OauthAccessTokenResponseCode
     #'
     #' @param input_json the JSON input
     #' @return the instance of OauthAccessTokenResponseCode
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`response_type`) && !(this_object$`response_type` %in% c("authorization_code", "refresh_token"))) {
-        stop(paste("Error! \"", this_object$`response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\".", sep = ""))
+      if (!is.null(this_object$`response_type`) && !(this_object$`response_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
+        stop(paste("Error! \"", this_object$`response_type`, "\" cannot be assigned to `response_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
       }
       self$`response_type` <- this_object$`response_type`
       self$`access_token` <- this_object$`access_token`
@@ -255,13 +244,11 @@ OauthAccessTokenResponseCode <- R6::R6Class(
       self$`refresh_token_expires_in` <- this_object$`refresh_token_expires_in`
       self
     },
-    #' Validate JSON input with respect to OauthAccessTokenResponseCode
-    #'
+
     #' @description
     #' Validate JSON input with respect to OauthAccessTokenResponseCode and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `access_token`
@@ -313,23 +300,19 @@ OauthAccessTokenResponseCode <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenResponseCode: the required field `refresh_token_expires_in` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of OauthAccessTokenResponseCode
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `access_token` is null
       if (is.null(self$`access_token`)) {
@@ -363,13 +346,11 @@ OauthAccessTokenResponseCode <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `access_token` is null
@@ -404,12 +385,9 @@ OauthAccessTokenResponseCode <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

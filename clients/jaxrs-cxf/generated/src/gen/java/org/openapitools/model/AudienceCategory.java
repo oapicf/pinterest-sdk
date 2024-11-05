@@ -52,7 +52,7 @@ public class AudienceCategory  {
  /**
    * Subcategory interest distribution
   **/
-  private List<@Valid AudienceSubcategory> subcategories;
+  private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
  /**
    * Interest unique key (same as ID).
    * @return key

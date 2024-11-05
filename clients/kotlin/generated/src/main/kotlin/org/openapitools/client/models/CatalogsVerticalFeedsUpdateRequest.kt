@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsFeedsUpdateRequest
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFormat
@@ -65,5 +66,6 @@ interface CatalogsVerticalFeedsUpdateRequest {
     val status: CatalogsStatus?
     @Json(name = "default_availability")
     val defaultAvailability: ProductAvailabilityType?
+
 }
 

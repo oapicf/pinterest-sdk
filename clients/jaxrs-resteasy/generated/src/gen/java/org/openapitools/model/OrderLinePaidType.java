@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum OrderLinePaidType {
-    PAID, BONUS, MAKE_GOOD, TEST, NULL
+    PAID, BONUS, MAKE_GOOD, TEST
 }

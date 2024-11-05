@@ -70,7 +70,7 @@ API.Client.Pin.prototype.boardId;
 API.Client.Pin.prototype.boardSectionId;
 
 /**
- * @type {!API.Client.Board_owner}
+ * @type {!API.Client.BoardOwner}
  * @export
  */
 API.Client.Pin.prototype.boardOwner;
@@ -83,7 +83,7 @@ API.Client.Pin.prototype.boardOwner;
 API.Client.Pin.prototype.isOwner;
 
 /**
- * @type {!API.Client.SummaryPin_media}
+ * @type {!API.Client.PinMedia}
  * @export
  */
 API.Client.Pin.prototype.media;
@@ -102,7 +102,7 @@ API.Client.Pin.prototype.mediaSource;
 API.Client.Pin.prototype.parentPinId;
 
 /**
- * Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+ * Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
  * @type {!boolean}
  * @export
  */

@@ -90,7 +90,7 @@ bool adAccountAnalyticsAsync(char * accessToken,
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. *Required*
  * \param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. *Required*
- * \param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. *Required*
+ * \param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. *Required*
  * \param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned *Required*
  * \param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly *Required*
  * \param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
@@ -113,7 +113,7 @@ bool adAccountTargetingAnalyticsGetSync(char * accessToken,
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. *Required*
  * \param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. *Required*
- * \param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. *Required*
+ * \param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. *Required*
  * \param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned *Required*
  * \param granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly *Required*
  * \param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
@@ -189,7 +189,7 @@ bool adAccountsGetAsync(char * accessToken,
  *
  * Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param includeSharedAccounts Include shared ad accounts
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -204,7 +204,7 @@ bool adAccountsListSync(char * accessToken,
  *
  * Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param includeSharedAccounts Include shared ad accounts
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -369,7 +369,7 @@ bool analyticsGetReportAsync(char * accessToken,
 
 /*! \brief Delete ads data for ad account in API Sandbox. *Synchronous*
  *
- * Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+ * Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -382,7 +382,7 @@ bool sandboxDeleteSync(char * accessToken,
 
 /*! \brief Delete ads data for ad account in API Sandbox. *Asynchronous*
  *
- * Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+ * Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -398,7 +398,7 @@ bool sandboxDeleteAsync(char * accessToken,
  *
  * Gets all Templates associated with an ad account ID.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
  * \param bookmark Cursor used to fetch the next page of items
  * \param handler The callback function to be invoked on completion. *Required*
@@ -414,7 +414,7 @@ bool templatesListSync(char * accessToken,
  *
  * Gets all Templates associated with an ad account ID.
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
  * \param bookmark Cursor used to fetch the next page of items
  * \param handler The callback function to be invoked on completion. *Required*

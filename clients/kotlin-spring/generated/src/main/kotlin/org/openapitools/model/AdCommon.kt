@@ -1,13 +1,14 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.AdCommonQuizPinData
-import org.openapitools.model.AdCommonTrackingUrls
 import org.openapitools.model.CreativeType
 import org.openapitools.model.EntityStatus
 import org.openapitools.model.GridClickType
+import org.openapitools.model.QuizPinData
+import org.openapitools.model.TrackingUrls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,14 +23,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Creation fields
  * @param adGroupId ID of the ad group that contains the ad.
- * @param androidDeepLink Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+ * @param androidDeepLink Deep link URL for Android devices.
  * @param carouselAndroidDeepLinks Comma-separated deep links for the carousel pin on Android.
  * @param carouselDestinationUrls Comma-separated destination URLs for the carousel pin to promote.
  * @param carouselIosDeepLinks Comma-separated deep links for the carousel pin on iOS.
  * @param clickTrackingUrl Tracking url for the ad clicks.
  * @param creativeType 
  * @param destinationUrl Destination URL.
- * @param iosDeepLink Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+ * @param iosDeepLink Deep link URL for iOS devices.
  * @param isPinDeleted Is original pin deleted?
  * @param isRemovable Is pin repinnable?
  * @param name Name of the ad - 255 chars max.
@@ -38,8 +39,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param viewTrackingUrl Tracking URL for ad impressions.
  * @param leadFormId Lead form ID for lead ad generation.
  * @param gridClickType 
- * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
- * @param quizPinData 
+ * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+ * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
  */
 data class AdCommon(
 
@@ -47,7 +48,7 @@ data class AdCommon(
     @Schema(example = "2680059592705", description = "ID of the ad group that contains the ad.")
     @get:JsonProperty("ad_group_id") val adGroupId: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+    @Schema(example = "null", description = "Deep link URL for Android devices.")
     @get:JsonProperty("android_deep_link") val androidDeepLink: kotlin.String? = null,
 
     @Schema(example = "null", description = "Comma-separated deep links for the carousel pin on Android.")
@@ -69,7 +70,7 @@ data class AdCommon(
     @Schema(example = "null", description = "Destination URL.")
     @get:JsonProperty("destination_url") val destinationUrl: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+    @Schema(example = "null", description = "Deep link URL for iOS devices.")
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
     @Schema(example = "false", description = "Is original pin deleted?")
@@ -87,7 +88,7 @@ data class AdCommon(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("tracking_urls") val trackingUrls: AdCommonTrackingUrls? = null,
+    @get:JsonProperty("tracking_urls") val trackingUrls: TrackingUrls? = null,
 
     @Schema(example = "null", description = "Tracking URL for ad impressions.")
     @get:JsonProperty("view_tracking_url") val viewTrackingUrl: kotlin.String? = null,
@@ -100,39 +101,46 @@ data class AdCommon(
     @Schema(example = "null", description = "")
     @get:JsonProperty("grid_click_type") val gridClickType: GridClickType? = null,
 
-    @Schema(example = "LEARN_MORE", description = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+    @Schema(example = "LEARN_MORE", description = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
     @get:JsonProperty("customizable_cta_type") val customizableCtaType: AdCommon.CustomizableCtaType? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("quiz_pin_data") val quizPinData: AdCommonQuizPinData? = null
-) {
+    @Schema(example = "null", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
+    @get:JsonProperty("quiz_pin_data") val quizPinData: QuizPinData? = null
+    ) {
 
     /**
-    * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-    * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_WEBSITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE,`null`
+    * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+    * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE
     */
-    enum class CustomizableCtaType(val value: kotlin.String) {
+    enum class CustomizableCtaType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("GET_OFFER") GET_OFFER("GET_OFFER"),
-        @JsonProperty("LEARN_MORE") LEARN_MORE("LEARN_MORE"),
-        @JsonProperty("ORDER_NOW") ORDER_NOW("ORDER_NOW"),
-        @JsonProperty("SHOP_NOW") SHOP_NOW("SHOP_NOW"),
-        @JsonProperty("SIGN_UP") SIGN_UP("SIGN_UP"),
-        @JsonProperty("SUBSCRIBE") SUBSCRIBE("SUBSCRIBE"),
-        @JsonProperty("BUY_NOW") BUY_NOW("BUY_NOW"),
-        @JsonProperty("CONTACT_US") CONTACT_US("CONTACT_US"),
-        @JsonProperty("GET_QUOTE") GET_QUOTE("GET_QUOTE"),
-        @JsonProperty("VISIT_WEBSITE") VISIT_WEBSITE("VISIT_WEBSITE"),
-        @JsonProperty("APPLY_NOW") APPLY_NOW("APPLY_NOW"),
-        @JsonProperty("BOOK_NOW") BOOK_NOW("BOOK_NOW"),
-        @JsonProperty("REQUEST_DEMO") REQUEST_DEMO("REQUEST_DEMO"),
-        @JsonProperty("REGISTER_NOW") REGISTER_NOW("REGISTER_NOW"),
-        @JsonProperty("FIND_A_DEALER") FIND_A_DEALER("FIND_A_DEALER"),
-        @JsonProperty("ADD_TO_CART") ADD_TO_CART("ADD_TO_CART"),
-        @JsonProperty("WATCH_NOW") WATCH_NOW("WATCH_NOW"),
-        @JsonProperty("READ_MORE") READ_MORE("READ_MORE"),
-        @JsonProperty("null") `null`("null")
+        GET_OFFER("GET_OFFER"),
+        LEARN_MORE("LEARN_MORE"),
+        ORDER_NOW("ORDER_NOW"),
+        SHOP_NOW("SHOP_NOW"),
+        SIGN_UP("SIGN_UP"),
+        SUBSCRIBE("SUBSCRIBE"),
+        BUY_NOW("BUY_NOW"),
+        CONTACT_US("CONTACT_US"),
+        GET_QUOTE("GET_QUOTE"),
+        VISIT_SITE("VISIT_SITE"),
+        APPLY_NOW("APPLY_NOW"),
+        BOOK_NOW("BOOK_NOW"),
+        REQUEST_DEMO("REQUEST_DEMO"),
+        REGISTER_NOW("REGISTER_NOW"),
+        FIND_A_DEALER("FIND_A_DEALER"),
+        ADD_TO_CART("ADD_TO_CART"),
+        WATCH_NOW("WATCH_NOW"),
+        READ_MORE("READ_MORE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CustomizableCtaType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

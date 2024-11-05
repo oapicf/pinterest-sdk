@@ -30,7 +30,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the media API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaApi  {
    private final MediaApiService delegate = MediaApiServiceFactory.getMediaApi();
 
@@ -38,7 +38,7 @@ public class MediaApi  {
     
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Register media upload", notes = "Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.", response = MediaUpload.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Register media upload", notes = "Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaUpload.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
             @io.swagger.annotations.AuthorizationScope(scope = "pins:write", description = "Create, update, or delete your public Pins")
@@ -57,7 +57,7 @@ public class MediaApi  {
     @Path("/{media_id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get media upload details", notes = "Get details for a registered media upload, including its current status.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.", response = MediaUploadDetails.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get media upload details", notes = "Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaUploadDetails.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins")
         })
@@ -77,7 +77,7 @@ public class MediaApi  {
     
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "List media uploads", notes = "List media uploads filtered by given parameters.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.", response = MediaList200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "List media uploads", notes = "List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins")
         })
@@ -87,7 +87,7 @@ public class MediaApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = MediaList200Response.class) })
     public Response mediaList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark") String bookmark
-,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
+,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
 )
     throws NotFoundException {
         return delegate.mediaList(bookmark,pageSize);

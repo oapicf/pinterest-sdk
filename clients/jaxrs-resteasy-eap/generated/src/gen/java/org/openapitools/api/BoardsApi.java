@@ -29,7 +29,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the boards API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface BoardsApi  {
 
     @POST
@@ -83,6 +83,9 @@ public interface BoardsApi  {
     @io.swagger.annotations.ApiOperation(value = "List board sections", notes = "Get a list of all board sections from a board owned by the \"operation user_account\" - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = BoardSectionsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join")
         })
     }, tags={ "boards", })
     @io.swagger.annotations.ApiResponses(value = { 
@@ -96,6 +99,10 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List Pins on board section", notes = "Get a list of the Pins on a board section of a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = BoardsListPins200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
+            @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins")
         })
@@ -179,6 +186,9 @@ public interface BoardsApi  {
     @io.swagger.annotations.ApiOperation(value = "Get board", notes = "Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = Board.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join")
         })
     }, tags={ "boards", })
     @io.swagger.annotations.ApiResponses(value = { 
@@ -195,6 +205,9 @@ public interface BoardsApi  {
     @io.swagger.annotations.ApiOperation(value = "List boards", notes = "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.", response = BoardsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join")
         })
     }, tags={ "boards", })
     @io.swagger.annotations.ApiResponses(value = { 
@@ -208,6 +221,10 @@ public interface BoardsApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List Pins on board", notes = "Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = BoardsListPins200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
+            @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins")
         })

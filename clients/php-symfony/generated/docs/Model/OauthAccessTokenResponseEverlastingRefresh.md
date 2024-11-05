@@ -3,6 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**responseType** | **string** |  | [optional] 
+**accessToken** | **string** |  | 
+**tokenType** | **string** |  | [default to 'bearer']
+**expiresIn** | **int** |  | 
+**scope** | **string** |  | 
 **refreshToken** | **string** |  | 
 **refreshTokenExpiresIn** | **int** |  | 
 **refreshTokenExpiresAt** | **int** |  | 

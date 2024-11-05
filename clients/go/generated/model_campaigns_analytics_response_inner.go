@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &CampaignsAnalyticsResponseInner{}
 // CampaignsAnalyticsResponseInner struct for CampaignsAnalyticsResponseInner
 type CampaignsAnalyticsResponseInner struct {
 	// The ID of the campaing that this metrics belongs to.
-	CAMPAIGN_ID string `json:"CAMPAIGN_ID"`
+	CAMPAIGN_ID string `json:"CAMPAIGN_ID" validate:"regexp=^\\\\d+$"`
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE *string `json:"DATE,omitempty"`
 	AdditionalProperties map[string]interface{}

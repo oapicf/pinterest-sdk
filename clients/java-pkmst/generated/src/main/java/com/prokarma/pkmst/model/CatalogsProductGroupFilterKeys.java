@@ -7,6 +7,7 @@ import com.prokarma.pkmst.model.AvailabilityFilter;
 import com.prokarma.pkmst.model.BrandFilter;
 import com.prokarma.pkmst.model.CatalogsProductGroupCurrencyCriteria;
 import com.prokarma.pkmst.model.CatalogsProductGroupMultipleGenderCriteria;
+import com.prokarma.pkmst.model.CatalogsProductGroupMultipleMediaTypesCriteria;
 import com.prokarma.pkmst.model.CatalogsProductGroupMultipleStringCriteria;
 import com.prokarma.pkmst.model.CatalogsProductGroupMultipleStringListCriteria;
 import com.prokarma.pkmst.model.CatalogsProductGroupPricingCriteria;
@@ -28,7 +29,9 @@ import com.prokarma.pkmst.model.GoogleProductCategory6Filter;
 import com.prokarma.pkmst.model.ItemGroupIdFilter;
 import com.prokarma.pkmst.model.ItemIdFilter;
 import com.prokarma.pkmst.model.MaxPriceFilter;
+import com.prokarma.pkmst.model.MediaTypeFilter;
 import com.prokarma.pkmst.model.MinPriceFilter;
+import com.prokarma.pkmst.model.ProductGroupReferenceFilter;
 import com.prokarma.pkmst.model.ProductType0Filter;
 import com.prokarma.pkmst.model.ProductType1Filter;
 import com.prokarma.pkmst.model.ProductType2Filter;
@@ -45,7 +48,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsProductGroupFilterKeys
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupFilterKeys   {
   @JsonProperty("MIN_PRICE")
   private CatalogsProductGroupPricingCriteria MIN_PRICE;
@@ -89,6 +92,9 @@ public class CatalogsProductGroupFilterKeys   {
   @JsonProperty("GENDER")
   private CatalogsProductGroupMultipleGenderCriteria GENDER;
 
+  @JsonProperty("MEDIA_TYPE")
+  private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
+
   @JsonProperty("PRODUCT_TYPE_4")
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_4;
 
@@ -125,15 +131,18 @@ public class CatalogsProductGroupFilterKeys   {
   @JsonProperty("GOOGLE_PRODUCT_CATEGORY_0")
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
 
+  @JsonProperty("PRODUCT_GROUP")
+  private CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
+
   public CatalogsProductGroupFilterKeys MIN_PRICE(CatalogsProductGroupPricingCriteria MIN_PRICE) {
     this.MIN_PRICE = MIN_PRICE;
     return this;
   }
 
-   /**
+  /**
    * Get MIN_PRICE
    * @return MIN_PRICE
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupPricingCriteria getMINPRICE() {
     return MIN_PRICE;
@@ -148,10 +157,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get MAX_PRICE
    * @return MAX_PRICE
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupPricingCriteria getMAXPRICE() {
     return MAX_PRICE;
@@ -166,10 +175,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CURRENCY
    * @return CURRENCY
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupCurrencyCriteria getCURRENCY() {
     return CURRENCY;
@@ -184,10 +193,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get ITEM_ID
    * @return ITEM_ID
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getITEMID() {
     return ITEM_ID;
@@ -202,10 +211,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get AVAILABILITY
    * @return AVAILABILITY
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getAVAILABILITY() {
     return AVAILABILITY;
@@ -220,10 +229,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get BRAND
    * @return BRAND
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getBRAND() {
     return BRAND;
@@ -238,10 +247,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CONDITION
    * @return CONDITION
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCONDITION() {
     return CONDITION;
@@ -256,10 +265,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_0
    * @return CUSTOM_LABEL_0
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
     return CUSTOM_LABEL_0;
@@ -274,10 +283,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_1
    * @return CUSTOM_LABEL_1
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1() {
     return CUSTOM_LABEL_1;
@@ -292,10 +301,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_2
    * @return CUSTOM_LABEL_2
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
@@ -310,10 +319,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_3
    * @return CUSTOM_LABEL_3
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
@@ -328,10 +337,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_4
    * @return CUSTOM_LABEL_4
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4() {
     return CUSTOM_LABEL_4;
@@ -346,10 +355,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get ITEM_GROUP_ID
    * @return ITEM_GROUP_ID
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getITEMGROUPID() {
     return ITEM_GROUP_ID;
@@ -364,10 +373,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GENDER
    * @return GENDER
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleGenderCriteria getGENDER() {
     return GENDER;
@@ -377,15 +386,33 @@ public class CatalogsProductGroupFilterKeys   {
     this.GENDER = GENDER;
   }
 
+  public CatalogsProductGroupFilterKeys MEDIA_TYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
+    this.MEDIA_TYPE = MEDIA_TYPE;
+    return this;
+  }
+
+  /**
+   * Get MEDIA_TYPE
+   * @return MEDIA_TYPE
+   */
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsProductGroupMultipleMediaTypesCriteria getMEDIATYPE() {
+    return MEDIA_TYPE;
+  }
+
+  public void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE) {
+    this.MEDIA_TYPE = MEDIA_TYPE;
+  }
+
   public CatalogsProductGroupFilterKeys PRODUCT_TYPE_4(CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_4) {
     this.PRODUCT_TYPE_4 = PRODUCT_TYPE_4;
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_TYPE_4
    * @return PRODUCT_TYPE_4
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE4() {
     return PRODUCT_TYPE_4;
@@ -400,10 +427,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_TYPE_3
    * @return PRODUCT_TYPE_3
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE3() {
     return PRODUCT_TYPE_3;
@@ -418,10 +445,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_TYPE_2
    * @return PRODUCT_TYPE_2
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE2() {
     return PRODUCT_TYPE_2;
@@ -436,10 +463,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_TYPE_1
    * @return PRODUCT_TYPE_1
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE1() {
     return PRODUCT_TYPE_1;
@@ -454,10 +481,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_TYPE_0
    * @return PRODUCT_TYPE_0
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE0() {
     return PRODUCT_TYPE_0;
@@ -472,10 +499,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_6
    * @return GOOGLE_PRODUCT_CATEGORY_6
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY6() {
     return GOOGLE_PRODUCT_CATEGORY_6;
@@ -490,10 +517,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_5
    * @return GOOGLE_PRODUCT_CATEGORY_5
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY5() {
     return GOOGLE_PRODUCT_CATEGORY_5;
@@ -508,10 +535,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_4
    * @return GOOGLE_PRODUCT_CATEGORY_4
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY4() {
     return GOOGLE_PRODUCT_CATEGORY_4;
@@ -526,10 +553,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_3
    * @return GOOGLE_PRODUCT_CATEGORY_3
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY3() {
     return GOOGLE_PRODUCT_CATEGORY_3;
@@ -544,10 +571,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_2
    * @return GOOGLE_PRODUCT_CATEGORY_2
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY2() {
     return GOOGLE_PRODUCT_CATEGORY_2;
@@ -562,10 +589,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_1
    * @return GOOGLE_PRODUCT_CATEGORY_1
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY1() {
     return GOOGLE_PRODUCT_CATEGORY_1;
@@ -580,10 +607,10 @@ public class CatalogsProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get GOOGLE_PRODUCT_CATEGORY_0
    * @return GOOGLE_PRODUCT_CATEGORY_0
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getGOOGLEPRODUCTCATEGORY0() {
     return GOOGLE_PRODUCT_CATEGORY_0;
@@ -591,6 +618,24 @@ public class CatalogsProductGroupFilterKeys   {
 
   public void setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0) {
     this.GOOGLE_PRODUCT_CATEGORY_0 = GOOGLE_PRODUCT_CATEGORY_0;
+  }
+
+  public CatalogsProductGroupFilterKeys PRODUCT_GROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
+    this.PRODUCT_GROUP = PRODUCT_GROUP;
+    return this;
+  }
+
+  /**
+   * Get PRODUCT_GROUP
+   * @return PRODUCT_GROUP
+   */
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsProductGroupMultipleStringCriteria getPRODUCTGROUP() {
+    return PRODUCT_GROUP;
+  }
+
+  public void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP) {
+    this.PRODUCT_GROUP = PRODUCT_GROUP;
   }
 
 
@@ -617,6 +662,7 @@ public class CatalogsProductGroupFilterKeys   {
         Objects.equals(this.CUSTOM_LABEL_4, catalogsProductGroupFilterKeys.CUSTOM_LABEL_4) &&
         Objects.equals(this.ITEM_GROUP_ID, catalogsProductGroupFilterKeys.ITEM_GROUP_ID) &&
         Objects.equals(this.GENDER, catalogsProductGroupFilterKeys.GENDER) &&
+        Objects.equals(this.MEDIA_TYPE, catalogsProductGroupFilterKeys.MEDIA_TYPE) &&
         Objects.equals(this.PRODUCT_TYPE_4, catalogsProductGroupFilterKeys.PRODUCT_TYPE_4) &&
         Objects.equals(this.PRODUCT_TYPE_3, catalogsProductGroupFilterKeys.PRODUCT_TYPE_3) &&
         Objects.equals(this.PRODUCT_TYPE_2, catalogsProductGroupFilterKeys.PRODUCT_TYPE_2) &&
@@ -628,12 +674,13 @@ public class CatalogsProductGroupFilterKeys   {
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_3, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_3) &&
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_2, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_2) &&
         Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_1, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_1) &&
-        Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_0, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_0);
+        Objects.equals(this.GOOGLE_PRODUCT_CATEGORY_0, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_0) &&
+        Objects.equals(this.PRODUCT_GROUP, catalogsProductGroupFilterKeys.PRODUCT_GROUP);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(MIN_PRICE, MAX_PRICE, CURRENCY, ITEM_ID, AVAILABILITY, BRAND, CONDITION, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, ITEM_GROUP_ID, GENDER, PRODUCT_TYPE_4, PRODUCT_TYPE_3, PRODUCT_TYPE_2, PRODUCT_TYPE_1, PRODUCT_TYPE_0, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0);
+    return Objects.hash(MIN_PRICE, MAX_PRICE, CURRENCY, ITEM_ID, AVAILABILITY, BRAND, CONDITION, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, ITEM_GROUP_ID, GENDER, MEDIA_TYPE, PRODUCT_TYPE_4, PRODUCT_TYPE_3, PRODUCT_TYPE_2, PRODUCT_TYPE_1, PRODUCT_TYPE_0, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, PRODUCT_GROUP);
   }
 
   @Override
@@ -655,6 +702,7 @@ public class CatalogsProductGroupFilterKeys   {
     sb.append("    CUSTOM_LABEL_4: ").append(toIndentedString(CUSTOM_LABEL_4)).append("\n");
     sb.append("    ITEM_GROUP_ID: ").append(toIndentedString(ITEM_GROUP_ID)).append("\n");
     sb.append("    GENDER: ").append(toIndentedString(GENDER)).append("\n");
+    sb.append("    MEDIA_TYPE: ").append(toIndentedString(MEDIA_TYPE)).append("\n");
     sb.append("    PRODUCT_TYPE_4: ").append(toIndentedString(PRODUCT_TYPE_4)).append("\n");
     sb.append("    PRODUCT_TYPE_3: ").append(toIndentedString(PRODUCT_TYPE_3)).append("\n");
     sb.append("    PRODUCT_TYPE_2: ").append(toIndentedString(PRODUCT_TYPE_2)).append("\n");
@@ -667,6 +715,7 @@ public class CatalogsProductGroupFilterKeys   {
     sb.append("    GOOGLE_PRODUCT_CATEGORY_2: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_2)).append("\n");
     sb.append("    GOOGLE_PRODUCT_CATEGORY_1: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_1)).append("\n");
     sb.append("    GOOGLE_PRODUCT_CATEGORY_0: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_0)).append("\n");
+    sb.append("    PRODUCT_GROUP: ").append(toIndentedString(PRODUCT_GROUP)).append("\n");
     sb.append("}");
     return sb.toString();
   }

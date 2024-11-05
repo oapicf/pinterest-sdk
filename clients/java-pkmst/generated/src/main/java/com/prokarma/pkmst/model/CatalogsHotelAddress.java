@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsHotelAddress
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelAddress   {
   @JsonProperty("addr1")
   private String addr1;
@@ -36,10 +36,10 @@ public class CatalogsHotelAddress   {
     return this;
   }
 
-   /**
+  /**
    * Primary street address of hotel.
    * @return addr1
-  **/
+   */
   @ApiModelProperty(value = "Primary street address of hotel.")
   public String getAddr1() {
     return addr1;
@@ -54,10 +54,10 @@ public class CatalogsHotelAddress   {
     return this;
   }
 
-   /**
+  /**
    * City where the hotel is located.
    * @return city
-  **/
+   */
   @ApiModelProperty(value = "City where the hotel is located.")
   public String getCity() {
     return city;
@@ -72,10 +72,10 @@ public class CatalogsHotelAddress   {
     return this;
   }
 
-   /**
+  /**
    * State, county, province, where the hotel is located.
    * @return region
-  **/
+   */
   @ApiModelProperty(value = "State, county, province, where the hotel is located.")
   public String getRegion() {
     return region;
@@ -90,10 +90,10 @@ public class CatalogsHotelAddress   {
     return this;
   }
 
-   /**
+  /**
    * Country where the hotel is located.
    * @return country
-  **/
+   */
   @ApiModelProperty(value = "Country where the hotel is located.")
   public String getCountry() {
     return country;
@@ -108,10 +108,10 @@ public class CatalogsHotelAddress   {
     return this;
   }
 
-   /**
+  /**
    * Required for countries with a postal code system. Postal or zip code of the hotel.
    * @return postalCode
-  **/
+   */
   @ApiModelProperty(value = "Required for countries with a postal code system. Postal or zip code of the hotel.")
   public String getPostalCode() {
     return postalCode;

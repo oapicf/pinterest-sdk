@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.model.CatalogsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsVerticalProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 

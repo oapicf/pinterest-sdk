@@ -24,7 +24,8 @@ preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule],
 catalogType: CatalogsType,
 defaultCountry: Country,
 defaultAvailability: Option[ProductAvailabilityType],
-/* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
+status: Option[CatalogsStatus],
+/* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
   catalogId: Option[String])
 
 object FeedsCreateRequest {

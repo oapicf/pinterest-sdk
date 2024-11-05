@@ -87,7 +87,7 @@ open class ResourcesAPI {
     /**
      Get available metrics' definitions
      - GET /resources/delivery_metrics
-     - Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+     - Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -186,7 +186,7 @@ open class ResourcesAPI {
     /**
      Get lead form questions
      - GET /resources/lead_form_questions
-     - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+     - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -283,12 +283,13 @@ open class ResourcesAPI {
      - parameter clientId: (query) Client ID. (optional)
      - parameter oauthSignature: (query) Oauth signature (optional)
      - parameter timestamp: (query) Timestamp (optional)
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func targetingOptionsGet(targetingType: TargetingType_targetingOptionsGet, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AnyCodable]?, _ error: Error?) -> Void)) -> RequestTask {
-        return targetingOptionsGetWithRequestBuilder(targetingType: targetingType, clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp).execute(apiResponseQueue) { result in
+    open class func targetingOptionsGet(targetingType: TargetingType_targetingOptionsGet, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AnyCodable]?, _ error: Error?) -> Void)) -> RequestTask {
+        return targetingOptionsGetWithRequestBuilder(targetingType: targetingType, clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -309,9 +310,10 @@ open class ResourcesAPI {
      - parameter clientId: (query) Client ID. (optional)
      - parameter oauthSignature: (query) Oauth signature (optional)
      - parameter timestamp: (query) Timestamp (optional)
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<[AnyCodable]> 
      */
-    open class func targetingOptionsGetWithRequestBuilder(targetingType: TargetingType_targetingOptionsGet, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil) -> RequestBuilder<[AnyCodable]> {
+    open class func targetingOptionsGetWithRequestBuilder(targetingType: TargetingType_targetingOptionsGet, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil, adAccountId: String? = nil) -> RequestBuilder<[AnyCodable]> {
         var localVariablePath = "/resources/targeting/{targeting_type}"
         let targetingTypePreEscape = "\(targetingType.rawValue)"
         let targetingTypePostEscape = targetingTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -324,6 +326,7 @@ open class ResourcesAPI {
             "client_id": (wrappedValue: clientId?.encodeToJSON(), isExplode: true),
             "oauth_signature": (wrappedValue: oauthSignature?.encodeToJSON(), isExplode: true),
             "timestamp": (wrappedValue: timestamp?.encodeToJSON(), isExplode: true),
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [

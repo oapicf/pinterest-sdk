@@ -22,10 +22,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("PinAnalyticsMetricsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinAnalyticsMetricsResponse   {
   private @Valid Map<String, Integer> lifetimeMetrics = new HashMap<>();
-  private @Valid List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics;
+  private @Valid List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
   private @Valid Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   /**
@@ -57,9 +57,9 @@ public class PinAnalyticsMetricsResponse   {
     return this;
   }
 
-  public PinAnalyticsMetricsResponse removeLifetimeMetricsItem(Integer lifetimeMetricsItem) {
-    if (lifetimeMetricsItem != null && this.lifetimeMetrics != null) {
-      this.lifetimeMetrics.remove(lifetimeMetricsItem);
+  public PinAnalyticsMetricsResponse removeLifetimeMetricsItem(String key) {
+    if (this.lifetimeMetrics != null) {
+      this.lifetimeMetrics.remove(key);
     }
 
     return this;
@@ -75,7 +75,7 @@ public class PinAnalyticsMetricsResponse   {
   
   @ApiModelProperty(value = "Array with the requested daily metric records")
   @JsonProperty("daily_metrics")
-  public List<PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
+  @Valid public List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> getDailyMetrics() {
     return dailyMetrics;
   }
 
@@ -111,7 +111,7 @@ public class PinAnalyticsMetricsResponse   {
   
   @ApiModelProperty(example = "{\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"PIN_CLICK\":37,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", value = "The metric name and value over the requested period for each requested metric")
   @JsonProperty("summary_metrics")
-  public Map<String, BigDecimal> getSummaryMetrics() {
+  @Valid public Map<String, BigDecimal> getSummaryMetrics() {
     return summaryMetrics;
   }
 
@@ -129,9 +129,9 @@ public class PinAnalyticsMetricsResponse   {
     return this;
   }
 
-  public PinAnalyticsMetricsResponse removeSummaryMetricsItem(BigDecimal summaryMetricsItem) {
-    if (summaryMetricsItem != null && this.summaryMetrics != null) {
-      this.summaryMetrics.remove(summaryMetricsItem);
+  public PinAnalyticsMetricsResponse removeSummaryMetricsItem(String key) {
+    if (this.summaryMetrics != null) {
+      this.summaryMetrics.remove(key);
     }
 
     return this;

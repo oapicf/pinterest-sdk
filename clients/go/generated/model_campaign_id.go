@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &CampaignId{}
 // CampaignId struct for CampaignId
 type CampaignId struct {
 	// Campaign ID.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewCampaignId instantiates a new CampaignId object

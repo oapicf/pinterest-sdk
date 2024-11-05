@@ -21,8 +21,16 @@
     }
 
     Class class = nil;
+    if ([discriminatedClassName isEqualToString:@"CREATIVE_ASSETS"]) {
+        class = NSClassFromString(@"OAICatalogsCreativeAssetsProductGroupUpdateRequest");
+    }
+    else
     if ([discriminatedClassName isEqualToString:@"HOTEL"]) {
         class = NSClassFromString(@"OAICatalogsHotelProductGroupUpdateRequest");
+    }
+    else
+    if ([discriminatedClassName isEqualToString:@"RETAIL"]) {
+        class = NSClassFromString(@"OAICatalogsRetailProductGroupUpdateRequest");
     }
     else
     {
@@ -42,7 +50,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"name": @"name", @"_description": @"description", @"filters": @"filters" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"name": @"name", @"_description": @"description", @"filters": @"filters", @"country": @"country", @"locale": @"locale" }];
 }
 
 /**
@@ -52,7 +60,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"catalogType", @"name", @"_description", @"filters"];
+  NSArray *optionalProperties = @[@"catalogType", @"name", @"_description", @"filters", @"country", @"locale"];
   return [optionalProperties containsObject:propertyName];
 }
 

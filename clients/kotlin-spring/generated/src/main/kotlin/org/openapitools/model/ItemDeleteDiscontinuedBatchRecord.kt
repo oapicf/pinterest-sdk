@@ -21,7 +21,7 @@ data class ItemDeleteDiscontinuedBatchRecord(
 
     @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
     @get:JsonProperty("item_id") val itemId: kotlin.String? = null
-) {
+    ) {
 
 }
 

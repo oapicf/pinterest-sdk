@@ -15,14 +15,12 @@ ItemDeleteDiscontinuedBatchRecord <- R6::R6Class(
   "ItemDeleteDiscontinuedBatchRecord",
   public = list(
     `item_id` = NULL,
-    #' Initialize a new ItemDeleteDiscontinuedBatchRecord class.
-    #'
+
     #' @description
     #' Initialize a new ItemDeleteDiscontinuedBatchRecord class.
     #'
     #' @param item_id The catalog item id in the merchant namespace
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`item_id` = NULL, ...) {
       if (!is.null(`item_id`)) {
         if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
@@ -31,13 +29,11 @@ ItemDeleteDiscontinuedBatchRecord <- R6::R6Class(
         self$`item_id` <- `item_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ItemDeleteDiscontinuedBatchRecord in JSON format
-    #' @export
     toJSON = function() {
       ItemDeleteDiscontinuedBatchRecordObject <- list()
       if (!is.null(self$`item_id`)) {
@@ -46,14 +42,12 @@ ItemDeleteDiscontinuedBatchRecord <- R6::R6Class(
       }
       ItemDeleteDiscontinuedBatchRecordObject
     },
-    #' Deserialize JSON string into an instance of ItemDeleteDiscontinuedBatchRecord
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ItemDeleteDiscontinuedBatchRecord
     #'
     #' @param input_json the JSON input
     #' @return the instance of ItemDeleteDiscontinuedBatchRecord
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`item_id`)) {
@@ -61,13 +55,11 @@ ItemDeleteDiscontinuedBatchRecord <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ItemDeleteDiscontinuedBatchRecord in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`item_id`)) {
@@ -82,66 +74,53 @@ ItemDeleteDiscontinuedBatchRecord <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ItemDeleteDiscontinuedBatchRecord
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ItemDeleteDiscontinuedBatchRecord
     #'
     #' @param input_json the JSON input
     #' @return the instance of ItemDeleteDiscontinuedBatchRecord
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`item_id` <- this_object$`item_id`
       self
     },
-    #' Validate JSON input with respect to ItemDeleteDiscontinuedBatchRecord
-    #'
+
     #' @description
     #' Validate JSON input with respect to ItemDeleteDiscontinuedBatchRecord and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ItemDeleteDiscontinuedBatchRecord
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

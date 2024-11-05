@@ -27,7 +27,7 @@ import { SsioOrderLinesGetByAdAccount200Response } from '../models/SsioOrderLine
 export class BillingApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Redeem ad credits
      * @param adAccountId Unique identifier of an ad account.
      * @param adsCreditRedeemRequest Redeem ad credits request.
@@ -83,11 +83,11 @@ export class BillingApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Get ads credit discounts
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async adsCreditsDiscountsGet(adAccountId: string, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -135,12 +135,12 @@ export class BillingApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Get billing profiles
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -353,7 +353,7 @@ export class BillingApiRequestFactory extends BaseAPIRequestFactory {
      * Get insertion order status by ad account id.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async ssioInsertionOrdersStatusGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -451,7 +451,7 @@ export class BillingApiRequestFactory extends BaseAPIRequestFactory {
      * Get Salesforce order lines by ad account id.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param pinOrderId The pin order id associated with the ssio insertino order
      */
     public async ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, _options?: Configuration): Promise<RequestContext> {

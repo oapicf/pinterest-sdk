@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.BulkReportingJobStatus
@@ -32,7 +33,7 @@ data class AdsAnalyticsCreateAsyncResponse(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("message") val message: kotlin.String? = null
-) {
+    ) {
 
 }
 

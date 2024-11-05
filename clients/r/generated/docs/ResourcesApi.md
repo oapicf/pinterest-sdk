@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 ```R
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **TargetingOptionsGet**
-> array[object] TargetingOptionsGet(targeting_type, client_id = var.client_id, oauth_signature = var.oauth_signature, timestamp = var.timestamp)
+> array[object] TargetingOptionsGet(targeting_type, client_id = var.client_id, oauth_signature = var.oauth_signature, timestamp = var.timestamp, ad_account_id = var.ad_account_id)
 
 Get targeting options
 
@@ -267,13 +267,14 @@ var_targeting_type <- "APPTYPE" # character | Public targeting type.
 var_client_id <- "1094834" # character | Client ID. (Optional)
 var_oauth_signature <- "8209f" # character | Oauth signature (Optional)
 var_timestamp <- "1618338184277" # character | Timestamp (Optional)
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- ResourcesApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$TargetingOptionsGet(var_targeting_type, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestampdata_file = "result.txt")
-result <- api_instance$TargetingOptionsGet(var_targeting_type, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestamp)
+# result <- api_instance$TargetingOptionsGet(var_targeting_type, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestamp, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$TargetingOptionsGet(var_targeting_type, client_id = var_client_id, oauth_signature = var_oauth_signature, timestamp = var_timestamp, ad_account_id = var_ad_account_id)
 dput(result)
 ```
 
@@ -285,6 +286,7 @@ Name | Type | Description  | Notes
  **client_id** | **character**| Client ID. | [optional] 
  **oauth_signature** | **character**| Oauth signature | [optional] 
  **timestamp** | **character**| Timestamp | [optional] 
+ **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 

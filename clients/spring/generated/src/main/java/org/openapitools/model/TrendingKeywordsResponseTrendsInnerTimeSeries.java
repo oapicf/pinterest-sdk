@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 
 @Schema(name = "TrendingKeywordsResponse_trends_inner_time_series", description = "A sequence of weekly observations of the relative search volume for this keyword over the past year.<br /> These values are normalized to a [0-100] range, and can be used to visualize the history of user interest in this keyword. By default, normalization is applied independently to the time series of each keyword, but the `normalize_against_group` query parameter can be used in cases where you wish to compare relative volume between keywords.<br /> **Note**: The date of each observation is in ISO-8601 format and represents the *end* of the week.  For example, a value of `2023-10-31` would include searches that happened between `2023-10-25` and `2023-10-31`.")
 @JsonTypeName("TrendingKeywordsResponse_trends_inner_time_series")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendingKeywordsResponseTrendsInnerTimeSeries {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -41,7 +41,7 @@ public class TrendingKeywordsResponseTrendsInnerTimeSeries {
   /**
    * Get date
    * @return date
-  */
+   */
   @Valid 
   @Schema(name = "date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date")

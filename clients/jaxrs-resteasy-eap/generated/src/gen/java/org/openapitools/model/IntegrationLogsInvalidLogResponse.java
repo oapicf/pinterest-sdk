@@ -14,10 +14,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Schema describing the response when a log has invalid fields.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Schema describing the response when a log has invalid fields.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsInvalidLogResponse   {
   
-  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs;
+  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
 
   /**
    **/

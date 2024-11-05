@@ -32,5 +32,8 @@ data class KeywordsMetricsArrayResponse (
     @Json(name = "data")
     val `data`: kotlin.collections.List<KeywordMetricsResponse>? = null
 
-)
+) {
+
+
+}
 

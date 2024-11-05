@@ -21,9 +21,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class IntegrationLogsRequest(
 
     @field:Valid
+    @get:Size(min=1,max=250) 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("logs", required = true) val logs: kotlin.collections.List<IntegrationLog>
-) {
+    ) {
 
 }
 

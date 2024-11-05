@@ -6,7 +6,7 @@
 
 -type openapi_pin_media_with_image() ::
     #{ 'media_type' => binary(),
-       'images' => openapi_image_metadata_images:openapi_image_metadata_images()
+       'images' => openapi_pin_media_with_image_all_of_images:openapi_pin_media_with_image_all_of_images()
      }.
 
 encode(#{ 'media_type' := MediaType,

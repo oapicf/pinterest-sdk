@@ -1,9 +1,8 @@
 package apimodels;
 
+import apimodels.CatalogsItemsRequestLanguage;
 import apimodels.CatalogsRetailBatchRequestItemsInner;
-import apimodels.CatalogsType;
 import apimodels.Country;
-import apimodels.Language;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,14 +15,42 @@ import javax.validation.Valid;
 /**
  * A request object that can have multiple operations on a single retail batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailBatchRequest   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
   @NotNull
-@Valid
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("country")
   @NotNull
@@ -35,7 +62,7 @@ public class CatalogsRetailBatchRequest   {
   @NotNull
 @Valid
 
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("items")
   @NotNull
@@ -44,7 +71,7 @@ public class CatalogsRetailBatchRequest   {
 
   private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
-  public CatalogsRetailBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsRetailBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -53,11 +80,11 @@ public class CatalogsRetailBatchRequest   {
    * Get catalogType
    * @return catalogType
   **/
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -78,7 +105,7 @@ public class CatalogsRetailBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsRetailBatchRequest language(Language language) {
+  public CatalogsRetailBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -87,11 +114,11 @@ public class CatalogsRetailBatchRequest   {
    * Get language
    * @return language
   **/
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

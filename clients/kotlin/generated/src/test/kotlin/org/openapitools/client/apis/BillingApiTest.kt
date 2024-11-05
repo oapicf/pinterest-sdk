@@ -52,7 +52,7 @@ class BillingApiTest : ShouldSpec() {
             // uncomment below to test adsCreditsDiscountsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : AdsCreditsDiscountsGet200Response = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -63,7 +63,7 @@ class BillingApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val isActive : kotlin.Boolean = true // kotlin.Boolean | Return active billing profiles, if false return all billing profiles.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : BillingProfilesGet200Response = apiInstance.billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -99,7 +99,7 @@ class BillingApiTest : ShouldSpec() {
             // uncomment below to test ssioInsertionOrdersStatusGetByAdAccount
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : SsioInsertionOrdersStatusGetByAdAccount200Response = apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -118,7 +118,7 @@ class BillingApiTest : ShouldSpec() {
             // uncomment below to test ssioOrderLinesGetByAdAccount
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val pinOrderId : kotlin.String = 0Q01N0000015hekSVDFDC // kotlin.String | The pin order id associated with the ssio insertino order
             //val result : SsioOrderLinesGetByAdAccount200Response = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
             //result shouldBe ("TODO")

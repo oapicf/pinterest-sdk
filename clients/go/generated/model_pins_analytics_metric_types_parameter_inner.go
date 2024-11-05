@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -40,7 +41,11 @@ func (dst *PinsAnalyticsMetricTypesParameterInner) UnmarshalJSON(data []byte) er
 		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.String); err != nil {
+				dst.String = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.String = nil

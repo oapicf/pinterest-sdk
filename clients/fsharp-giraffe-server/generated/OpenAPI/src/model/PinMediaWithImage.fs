@@ -2,8 +2,8 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ImageMetadataImages
 open OpenAPI.Model.PinMedia
+open OpenAPI.Model.PinMediaWithImageAllOfImages
 
 module PinMediaWithImage =
 
@@ -11,6 +11,6 @@ module PinMediaWithImage =
 
 
   type PinMediaWithImage = {
-    Images : ImageMetadataImages;
+    Images : PinMediaWithImageAllOfImages;
   }
   //#endregion

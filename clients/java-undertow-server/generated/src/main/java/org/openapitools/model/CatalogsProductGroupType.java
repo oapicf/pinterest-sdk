@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -41,7 +41,7 @@ public enum CatalogsProductGroupType {
         
         SHOPIFY_COLLECTIONS("SHOPIFY_COLLECTIONS"),
         
-        I2PC("I2PC");
+        I2_PC("I2PC");
 
 private String value;
 

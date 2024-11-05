@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] |
+| **images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] |
 
 ## Example
 

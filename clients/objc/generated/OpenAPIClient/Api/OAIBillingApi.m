@@ -63,7 +63,7 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 
 ///
 /// Redeem ad credits
-/// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+/// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param adsCreditRedeemRequest Redeem ad credits request. 
@@ -146,12 +146,12 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 
 ///
 /// Get ads credit discounts
-/// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+/// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIAdsCreditsDiscountsGet200Response*
 ///
@@ -226,14 +226,14 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 
 ///
 /// Get billing profiles
-/// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+/// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param isActive Return active billing profiles, if false return all billing profiles. 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIBillingProfilesGet200Response*
 ///
@@ -562,7 +562,7 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAISsioInsertionOrdersStatusGetByAdAccount200Response*
 ///
@@ -727,7 +727,7 @@ NSInteger kOAIBillingApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param pinOrderId The pin order id associated with the ssio insertino order (optional)
 ///

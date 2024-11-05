@@ -43,7 +43,7 @@ data class AudienceDemographics(
     @field:Valid
     @Schema(example = "null", description = "Country area distribution.")
     @get:JsonProperty("countries") val countries: kotlin.collections.List<AudienceDemographicValue>? = null
-) {
+    ) {
 
 }
 

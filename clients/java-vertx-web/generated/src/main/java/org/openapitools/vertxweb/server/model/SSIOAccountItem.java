@@ -19,7 +19,7 @@ public class SSIOAccountItem   {
   private String rowTermsId;
   private String rowTerms;
   private String ioType;
-  private List<SSIOAccountAddress> addresses;
+  private List<SSIOAccountAddress> addresses = new ArrayList<>();
 
   public SSIOAccountItem () {
 

@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Audience
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Audience   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -56,10 +56,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Ad account ID.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   public String getAdAccountId() {
     return adAccountId;
@@ -74,10 +74,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Audience ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "1234", value = "Audience ID.")
   public String getId() {
     return id;
@@ -92,10 +92,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Audience name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "ACME Tools", value = "Audience name.")
   public String getName() {
     return name;
@@ -110,10 +110,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
    * @return audienceType
-  **/
+   */
   @ApiModelProperty(value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
   public String getAudienceType() {
     return audienceType;
@@ -128,10 +128,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Audience description.
    * @return description
-  **/
+   */
   @ApiModelProperty(example = "People who love making quilts.", value = "Audience description.")
   public String getDescription() {
     return description;
@@ -146,10 +146,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Get rule
    * @return rule
-  **/
+   */
   @ApiModelProperty(value = "")
   public AudienceRule getRule() {
     return rule;
@@ -164,10 +164,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Audience size.
    * @return size
-  **/
+   */
   @ApiModelProperty(example = "1000", value = "Audience size.")
   public Integer getSize() {
     return size;
@@ -182,10 +182,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.")
   public String getStatus() {
     return status;
@@ -200,10 +200,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Always \"audience\".
    * @return type
-  **/
+   */
   @ApiModelProperty(example = "audience", value = "Always \"audience\".")
   public String getType() {
     return type;
@@ -218,10 +218,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Creation time. Unix timestamp in seconds.
    * @return createdTimestamp
-  **/
+   */
   @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
   public Integer getCreatedTimestamp() {
     return createdTimestamp;
@@ -236,10 +236,10 @@ public class Audience   {
     return this;
   }
 
-   /**
+  /**
    * Last update time. Unix timestamp in seconds.
    * @return updatedTimestamp
-  **/
+   */
   @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
   public Integer getUpdatedTimestamp() {
     return updatedTimestamp;

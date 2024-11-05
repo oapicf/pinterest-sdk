@@ -16,7 +16,7 @@ import org.openapitools.models.CatalogsHotelProductGroupFilters
  * @param filters 
  * @param createdUnderscoreat Unix timestamp in seconds of when catalog product group was created.
  * @param updatedUnderscoreat Unix timestamp in seconds of last time catalog product group was updated.
- * @param catalogUnderscoreid 
+ * @param catalogUnderscoreid Catalog id pertaining to the hotel product group.
  */
 case class CatalogsHotelProductGroup(catalogUnderscoretype: String,
                 id: String,

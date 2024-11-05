@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "ID of the bulk request.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertResponse   {
   @JsonProperty("request_id")
   private String requestId;
@@ -25,10 +25,10 @@ public class BulkUpsertResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get requestId
    * @return requestId
-  **/
+   */
   @ApiModelProperty(example = "549763856477-1660864560-1407e16a-c586-4add-94df-d0b160bec0ff, 549763856477-1660864560-d0b160bec0ff", value = "")
   public String getRequestId() {
     return requestId;

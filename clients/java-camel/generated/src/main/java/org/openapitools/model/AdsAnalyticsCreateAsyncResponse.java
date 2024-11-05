@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * AdsAnalyticsCreateAsyncResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsCreateAsyncResponse {
 
   private BulkReportingJobStatus reportStatus;
@@ -40,7 +40,7 @@ public class AdsAnalyticsCreateAsyncResponse {
   /**
    * Get reportStatus
    * @return reportStatus
-  */
+   */
   @Valid 
   @Schema(name = "report_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_status")
@@ -60,7 +60,7 @@ public class AdsAnalyticsCreateAsyncResponse {
   /**
    * Get token
    * @return token
-  */
+   */
   
   @Schema(name = "token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("token")
@@ -80,7 +80,7 @@ public class AdsAnalyticsCreateAsyncResponse {
   /**
    * Get message
    * @return message
-  */
+   */
   
   @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")

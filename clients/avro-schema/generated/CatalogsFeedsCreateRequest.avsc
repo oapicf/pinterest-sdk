@@ -54,6 +54,12 @@
       "type": ["null", "model.ProductAvailabilityType"],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.CatalogsStatus"],
+      "doc": "",
+      "default": null
     }
   ]
 

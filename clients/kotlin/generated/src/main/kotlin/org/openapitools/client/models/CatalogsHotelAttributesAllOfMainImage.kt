@@ -37,5 +37,8 @@ data class CatalogsHotelAttributesAllOfMainImage (
     @Json(name = "tag")
     val tag: kotlin.collections.List<kotlin.String>? = null
 
-)
+) {
+
+
+}
 

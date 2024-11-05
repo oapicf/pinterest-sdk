@@ -26,7 +26,7 @@ data class AdsCreditRedeemRequest(
 
     @Schema(example = "true", required = true, description = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account")
     @get:JsonProperty("validateOnly", required = true) val validateOnly: kotlin.Boolean
-) {
+    ) {
 
 }
 

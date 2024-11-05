@@ -12,7 +12,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * AdsCreditDiscountsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditDiscountsResponse   {
   @JsonProperty("active")
   private Boolean active;
@@ -62,9 +62,7 @@ public class AdsCreditDiscountsResponse   {
     
     INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
     
-    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND"),
-    
-    NULL("null");
+    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
 
     private String value;
 

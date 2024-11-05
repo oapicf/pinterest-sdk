@@ -14,12 +14,12 @@ import AnyCodable
 public struct CatalogsItemsDeleteDiscontinuedBatchRequest: Codable, JSONEncodable, Hashable {
 
     public var country: Country
-    public var language: Language
+    public var language: CatalogsItemsRequestLanguage
     public var operation: BatchOperation
     /** Array with catalogs items */
     public var items: [ItemDeleteDiscontinuedBatchRecord]
 
-    public init(country: Country, language: Language, operation: BatchOperation, items: [ItemDeleteDiscontinuedBatchRecord]) {
+    public init(country: Country, language: CatalogsItemsRequestLanguage, operation: BatchOperation, items: [ItemDeleteDiscontinuedBatchRecord]) {
         self.country = country
         self.language = language
         self.operation = operation

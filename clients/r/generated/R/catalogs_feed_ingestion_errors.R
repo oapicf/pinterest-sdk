@@ -29,8 +29,7 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
     `IMAGE_MALFORMED_URL` = NULL,
     `IMAGE_FILE_NOT_FOUND` = NULL,
     `IMAGE_INVALID_FILE` = NULL,
-    #' Initialize a new CatalogsFeedIngestionErrors class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedIngestionErrors class.
     #'
@@ -43,7 +42,6 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
     #' @param IMAGE_FILE_NOT_FOUND Image files are unreadable. Please upload new files to continue.
     #' @param IMAGE_INVALID_FILE Image files are unreadable. Please upload new files to continue.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`LINE_LEVEL_INTERNAL_ERROR` = NULL, `LARGE_PRODUCT_COUNT_DECREASE` = NULL, `ACCOUNT_FLAGGED` = NULL, `IMAGE_LEVEL_INTERNAL_ERROR` = NULL, `IMAGE_FILE_NOT_ACCESSIBLE` = NULL, `IMAGE_MALFORMED_URL` = NULL, `IMAGE_FILE_NOT_FOUND` = NULL, `IMAGE_INVALID_FILE` = NULL, ...) {
       if (!is.null(`LINE_LEVEL_INTERNAL_ERROR`)) {
         if (!(is.numeric(`LINE_LEVEL_INTERNAL_ERROR`) && length(`LINE_LEVEL_INTERNAL_ERROR`) == 1)) {
@@ -97,13 +95,11 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
         self$`IMAGE_INVALID_FILE` <- `IMAGE_INVALID_FILE`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedIngestionErrors in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedIngestionErrorsObject <- list()
       if (!is.null(self$`LINE_LEVEL_INTERNAL_ERROR`)) {
@@ -140,14 +136,12 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
       }
       CatalogsFeedIngestionErrorsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedIngestionErrors
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedIngestionErrors
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedIngestionErrors
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`LINE_LEVEL_INTERNAL_ERROR`)) {
@@ -179,13 +173,11 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedIngestionErrors in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`LINE_LEVEL_INTERNAL_ERROR`)) {
@@ -256,14 +248,12 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedIngestionErrors
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedIngestionErrors
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedIngestionErrors
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`LINE_LEVEL_INTERNAL_ERROR` <- this_object$`LINE_LEVEL_INTERNAL_ERROR`
@@ -279,53 +269,42 @@ CatalogsFeedIngestionErrors <- R6::R6Class(
       self$`IMAGE_INVALID_FILE` <- this_object$`IMAGE_INVALID_FILE`
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedIngestionErrors
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedIngestionErrors and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedIngestionErrors
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

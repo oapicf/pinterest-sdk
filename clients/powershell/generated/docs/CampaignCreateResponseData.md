@@ -9,19 +9,19 @@ Name | Type | Description | Notes
 **LifetimeSpendCap** | **Int32** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and &quot;&quot;daily_spend_cap&quot;&quot; cannot be set at the same time. | [optional] 
 **DailySpendCap** | **Int32** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and &quot;&quot;lifetime_spend_cap&quot;&quot; cannot be set at the same time. | [optional] 
 **OrderLineId** | **String** | Order line ID that appears on the invoice. | [optional] 
-**TrackingUrls** | [**AdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] 
+**TrackingUrls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
 **StartTime** | **Int32** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
 **EndTime** | **Int32** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**SummaryStatus** | [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
-**IsFlexibleDailyBudgets** | **Boolean** | Determines if a campaign has flexible daily budgets setup. | [optional] 
+**IsFlexibleDailyBudgets** | **Boolean** | Determine if a campaign has flexible daily budgets setup. | [optional] 
 **DefaultAdGroupBudgetInMicroCurrency** | **Int32** | When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. | [optional] 
-**IsAutomatedCampaign** | **Boolean** | Specifies whether the campaign was created in the automated campaign flow | [optional] [default to $false]
+**IsAutomatedCampaign** | **Boolean** | Specifies whether the campaign was created in the automated campaign flow | [optional] 
 **Id** | **String** | Campaign ID. | [optional] 
 **ObjectiveType** | [**ObjectiveType**](ObjectiveType.md) |  | [optional] 
 **CreatedTime** | **Int32** | Campaign creation time. Unix timestamp in seconds. | [optional] 
 **UpdatedTime** | **Int32** | UTC timestamp. Last update time. | [optional] 
 **Type** | **String** | Always &quot;&quot;campaign&quot;&quot;. | [optional] 
 **IsCampaignBudgetOptimization** | **Boolean** | Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. | [optional] 
+**SummaryStatus** | [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
 
 ## Examples
 
@@ -36,7 +36,6 @@ $CampaignCreateResponseData = Initialize-PSOpenAPIToolsCampaignCreateResponseDat
  -TrackingUrls null `
  -StartTime 1580865126 `
  -EndTime 1644023526 `
- -SummaryStatus null `
  -IsFlexibleDailyBudgets true `
  -DefaultAdGroupBudgetInMicroCurrency 0 `
  -IsAutomatedCampaign true `
@@ -45,7 +44,8 @@ $CampaignCreateResponseData = Initialize-PSOpenAPIToolsCampaignCreateResponseDat
  -CreatedTime 1432744744 `
  -UpdatedTime 1432744744 `
  -Type campaign `
- -IsCampaignBudgetOptimization true
+ -IsCampaignBudgetOptimization true `
+ -SummaryStatus null
 ```
 
 - Convert the resource to JSON

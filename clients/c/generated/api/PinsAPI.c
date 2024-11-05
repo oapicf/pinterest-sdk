@@ -11,6 +11,58 @@
     snprintf(dst, 256, "%ld", (long int)(src));\
 }while(0)
 
+// Functions for enum APPTYPES for PinsAPI_multiPinsAnalytics
+
+static char* multiPinsAnalytics_APPTYPES_ToString(pinterest_rest_api_multiPinsAnalytics_app_types_e APPTYPES){
+    char *APPTYPESArray[] =  { "NULL", "ALL", "MOBILE", "TABLET", "WEB" };
+    return APPTYPESArray[APPTYPES];
+}
+
+static pinterest_rest_api_multiPinsAnalytics_app_types_e multiPinsAnalytics_APPTYPES_FromString(char* APPTYPES){
+    int stringToReturn = 0;
+    char *APPTYPESArray[] =  { "NULL", "ALL", "MOBILE", "TABLET", "WEB" };
+    size_t sizeofArray = sizeof(APPTYPESArray) / sizeof(APPTYPESArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(APPTYPES, APPTYPESArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+
+/*
+// Function multiPinsAnalytics_APPTYPES_convertToJSON is not currently used,
+// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
+//
+static cJSON *multiPinsAnalytics_APPTYPES_convertToJSON(pinterest_rest_api_multiPinsAnalytics_app_types_e APPTYPES) {
+    cJSON *item = cJSON_CreateObject();
+    if(cJSON_AddStringToObject(item, "app_types", multiPinsAnalytics_APPTYPES_ToString(APPTYPES)) == NULL) {
+        goto fail;
+    }
+    return item;
+    fail:
+    cJSON_Delete(item);
+    return NULL;
+}
+
+// Function multiPinsAnalytics_APPTYPES_parseFromJSON is not currently used,
+// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
+//
+static pinterest_rest_api_multiPinsAnalytics_app_types_e multiPinsAnalytics_APPTYPES_parseFromJSON(cJSON* APPTYPESJSON) {
+    pinterest_rest_api_multiPinsAnalytics_app_types_e APPTYPESVariable = 0;
+    cJSON *APPTYPESVar = cJSON_GetObjectItemCaseSensitive(APPTYPESJSON, "app_types");
+    if(!cJSON_IsString(APPTYPESVar) || (APPTYPESVar->valuestring == NULL))
+    {
+        goto end;
+    }
+    APPTYPESVariable = multiPinsAnalytics_APPTYPES_FromString(APPTYPESVar->valuestring);
+    return APPTYPESVariable;
+end:
+    return 0;
+}
+*/
+
 // Functions for enum APPTYPES for PinsAPI_pinsAnalytics
 
 static char* pinsAnalytics_APPTYPES_ToString(pinterest_rest_api_pinsAnalytics_app_types_e APPTYPES){
@@ -263,9 +315,190 @@ end:
 */
 
 
+// Get multiple Pin analytics
+//
+// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+//
+list_t*
+PinsAPI_multiPinsAnalytics(apiClient_t *apiClient, list_t *pin_ids, char start_date, char end_date, list_t *metric_types, pinterest_rest_api_multiPinsAnalytics_app_types_e app_types, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/pins/analytics")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/pins/analytics");
+
+
+
+
+    // query parameters
+    if (pin_ids)
+    {
+        list_addElement(localVarQueryParameters,pin_ids);
+    }
+
+    // query parameters
+    char *keyQuery_start_date = NULL;
+    char valueQuery_start_date ;
+    keyValuePair_t *keyPairQuery_start_date = 0;
+    if (start_date)
+    {
+        keyQuery_start_date = strdup("start_date");
+        valueQuery_start_date = (start_date);
+        keyPairQuery_start_date = keyValuePair_create(keyQuery_start_date, &valueQuery_start_date);
+        list_addElement(localVarQueryParameters,keyPairQuery_start_date);
+    }
+
+    // query parameters
+    char *keyQuery_end_date = NULL;
+    char valueQuery_end_date ;
+    keyValuePair_t *keyPairQuery_end_date = 0;
+    if (end_date)
+    {
+        keyQuery_end_date = strdup("end_date");
+        valueQuery_end_date = (end_date);
+        keyPairQuery_end_date = keyValuePair_create(keyQuery_end_date, &valueQuery_end_date);
+        list_addElement(localVarQueryParameters,keyPairQuery_end_date);
+    }
+
+    // query parameters
+    char *keyQuery_app_types = NULL;
+    pinterest_rest_api_multiPinsAnalytics_app_types_e valueQuery_app_types ;
+    keyValuePair_t *keyPairQuery_app_types = 0;
+    if (app_types)
+    {
+        keyQuery_app_types = strdup("app_types");
+        valueQuery_app_types = (app_types);
+        keyPairQuery_app_types = keyValuePair_create(keyQuery_app_types, (void *)strdup(multiPinsAnalytics_APPTYPES_ToString(
+        valueQuery_app_types)));
+        list_addElement(localVarQueryParameters,keyPairQuery_app_types);
+    }
+
+    // query parameters
+    if (metric_types)
+    {
+        list_addElement(localVarQueryParameters,metric_types);
+    }
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","response");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid pins analytics parameters.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Not authorized to access board or Pin.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Pin not found.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //primitive return type not simple
+    cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
+    cJSON *VarJSON;
+    list_t *elementToReturn = list_createList();
+    cJSON_ArrayForEach(VarJSON, localVarJSON){
+        keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
+        list_addElement(elementToReturn, keyPair);
+    }
+    cJSON_Delete(localVarJSON);
+
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if(keyQuery_start_date){
+        free(keyQuery_start_date);
+        keyQuery_start_date = NULL;
+    }
+    if(keyPairQuery_start_date){
+        keyValuePair_free(keyPairQuery_start_date);
+        keyPairQuery_start_date = NULL;
+    }
+    if(keyQuery_end_date){
+        free(keyQuery_end_date);
+        keyQuery_end_date = NULL;
+    }
+    if(keyPairQuery_end_date){
+        keyValuePair_free(keyPairQuery_end_date);
+        keyPairQuery_end_date = NULL;
+    }
+    if(keyQuery_app_types){
+        free(keyQuery_app_types);
+        keyQuery_app_types = NULL;
+    }
+    if(keyPairQuery_app_types){
+        keyValuePair_free(keyPairQuery_app_types);
+        keyPairQuery_app_types = NULL;
+    }
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Get Pin analytics
 //
-// Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+// Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 //
 list_t*_t*
 PinsAPI_pinsAnalytics(apiClient_t *apiClient, char *pin_id, char start_date, char end_date, list_t *metric_types, pinterest_rest_api_pinsAnalytics_app_types_e app_types, pinterest_rest_api_pinsAnalytics_split_field_e split_field, char *ad_account_id)
@@ -477,7 +710,7 @@ end:
 
 // Create Pin
 //
-// Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+// Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 //
 pin_t*
 PinsAPI_pinsCreate(apiClient_t *apiClient, pin_create_t *pin_create, char *ad_account_id)
@@ -841,7 +1074,7 @@ end:
 
 // List Pins
 //
-// Get a list of the Pins owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+// Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.
 //
 pins_list_200_response_t*
 PinsAPI_pinsList(apiClient_t *apiClient, char *bookmark, int *page_size, pinterest_rest_api_pinsList_pin_filter_e pin_filter, int *include_protected_pins, pinterest_rest_api_pinsList_pin_type_e pin_type, list_t *creative_types, char *ad_account_id, int *pin_metrics)
@@ -1208,7 +1441,7 @@ end:
 
 // Update Pin
 //
-// Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+// Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 //
 pin_t*
 PinsAPI_pinsUpdate(apiClient_t *apiClient, char *pin_id, pin_update_t *pin_update, char *ad_account_id)

@@ -20,22 +20,21 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, AudiencesApi } from '';
+import type { AudiencesApiAudiencesCreateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .AudiencesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new AudiencesApi(configuration);
 
-let body:.AudiencesApiAudiencesCreateRequest = {
-  // string | Unique identifier of an ad account.
+const request: AudiencesApiAudiencesCreateRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // AudienceCreateRequest | List of ads to create, size limit [1, 30]
+    // List of ads to create, size limit [1, 30]
   audienceCreateRequest: ,
 };
 
-apiInstance.audiencesCreate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.audiencesCreate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -78,22 +77,21 @@ Create a custom audience and find the audiences you want your ads to reach.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, AudiencesApi } from '';
+import type { AudiencesApiAudiencesCreateCustomRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .AudiencesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new AudiencesApi(configuration);
 
-let body:.AudiencesApiAudiencesCreateCustomRequest = {
-  // string | Unique identifier of an ad account.
+const request: AudiencesApiAudiencesCreateCustomRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // AudienceCreateCustomRequest | Custom audience to create.
+    // Custom audience to create.
   audienceCreateCustomRequest: ,
 };
 
-apiInstance.audiencesCreateCustom(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.audiencesCreateCustom(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -136,22 +134,21 @@ Get a specific audience given the audience ID.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, AudiencesApi } from '';
+import type { AudiencesApiAudiencesGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .AudiencesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new AudiencesApi(configuration);
 
-let body:.AudiencesApiAudiencesGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: AudiencesApiAudiencesGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Unique identifier of an audience
+    // Unique identifier of an audience
   audienceId: "4",
 };
 
-apiInstance.audiencesGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.audiencesGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -195,28 +192,27 @@ Get list of audiences for the ad account.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, AudiencesApi } from '';
+import type { AudiencesApiAudiencesListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .AudiencesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new AudiencesApi(configuration);
 
-let body:.AudiencesApiAudiencesListRequest = {
-  // string | Unique identifier of an ad account.
+const request: AudiencesApiAudiencesListRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // 'ASCENDING' | 'DESCENDING' | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
+    // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
   order: "ASCENDING",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // 'OWNED' | 'RECEIVED' | <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type. (optional)
+    // Filter audiences by ownership type. (optional)
   ownershipType: "OWNED",
 };
 
-apiInstance.audiencesList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.audiencesList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -227,8 +223,8 @@ Name | Type | Description  | Notes
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
  **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
- **ownershipType** | [**&#39;OWNED&#39; | &#39;RECEIVED&#39;**]**Array<&#39;OWNED&#39; &#124; &#39;RECEIVED&#39;>** | &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. | (optional) defaults to 'OWNED'
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **ownershipType** | [**&#39;OWNED&#39; | &#39;RECEIVED&#39;**]**Array<&#39;OWNED&#39; &#124; &#39;RECEIVED&#39;>** | Filter audiences by ownership type. | (optional) defaults to 'OWNED'
 
 
 ### Return type
@@ -263,24 +259,23 @@ Update (edit or remove) an existing targeting audience.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, AudiencesApi } from '';
+import type { AudiencesApiAudiencesUpdateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .AudiencesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new AudiencesApi(configuration);
 
-let body:.AudiencesApiAudiencesUpdateRequest = {
-  // string | Unique identifier of an ad account.
+const request: AudiencesApiAudiencesUpdateRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Unique identifier of an audience
+    // Unique identifier of an audience
   audienceId: "4",
-  // AudienceUpdateRequest | The audience to be updated. (optional)
-  audienceUpdateRequest: null,
+    // The audience to be updated. (optional)
+  audienceUpdateRequest: ,
 };
 
-apiInstance.audiencesUpdate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.audiencesUpdate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

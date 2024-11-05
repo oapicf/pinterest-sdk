@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,7 +24,7 @@ public class CatalogsUpsertRetailItem   {
 
 public enum OperationEnum {
 
-    @JsonProperty("CREATE") CREATE(String.valueOf("CREATE")), @JsonProperty("UPDATE") UPDATE(String.valueOf("UPDATE")), @JsonProperty("UPSERT") UPSERT(String.valueOf("UPSERT")), @JsonProperty("DELETE") DELETE(String.valueOf("DELETE"));
+    @JsonProperty("UPSERT") UPSERT(String.valueOf("UPSERT"));
 
 
     private String value;
@@ -54,7 +54,7 @@ public enum OperationEnum {
 
   private OperationEnum operation;
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   /**
    * The catalog item id in the merchant namespace
@@ -97,7 +97,7 @@ public enum OperationEnum {
 
   /**
    **/
-  public CatalogsUpsertRetailItem attributes(ItemAttributes attributes) {
+  public CatalogsUpsertRetailItem attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -106,10 +106,10 @@ public enum OperationEnum {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
   @NotNull
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

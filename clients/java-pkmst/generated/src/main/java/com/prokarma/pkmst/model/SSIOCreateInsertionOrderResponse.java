@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * SSIOCreateInsertionOrderResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOCreateInsertionOrderResponse   {
   @JsonProperty("pin_order_id")
   private String pinOrderId;
@@ -24,10 +24,10 @@ public class SSIOCreateInsertionOrderResponse   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce order id
    * @return pinOrderId
-  **/
+   */
   @ApiModelProperty(value = "Salesforce order id")
   public String getPinOrderId() {
     return pinOrderId;

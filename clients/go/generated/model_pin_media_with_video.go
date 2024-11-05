@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &PinMediaWithVideo{}
 // PinMediaWithVideo Pin with video.
 type PinMediaWithVideo struct {
 	PinMedia
-	Images *ImageMetadataImages `json:"images,omitempty"`
+	Images *PinMediaWithImageAllOfImages `json:"images,omitempty"`
 	CoverImageUrl *string `json:"cover_image_url,omitempty"`
 	// Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
 	VideoUrl NullableString `json:"video_url,omitempty"`
@@ -51,9 +51,9 @@ func NewPinMediaWithVideoWithDefaults() *PinMediaWithVideo {
 }
 
 // GetImages returns the Images field value if set, zero value otherwise.
-func (o *PinMediaWithVideo) GetImages() ImageMetadataImages {
+func (o *PinMediaWithVideo) GetImages() PinMediaWithImageAllOfImages {
 	if o == nil || IsNil(o.Images) {
-		var ret ImageMetadataImages
+		var ret PinMediaWithImageAllOfImages
 		return ret
 	}
 	return *o.Images
@@ -61,7 +61,7 @@ func (o *PinMediaWithVideo) GetImages() ImageMetadataImages {
 
 // GetImagesOk returns a tuple with the Images field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PinMediaWithVideo) GetImagesOk() (*ImageMetadataImages, bool) {
+func (o *PinMediaWithVideo) GetImagesOk() (*PinMediaWithImageAllOfImages, bool) {
 	if o == nil || IsNil(o.Images) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *PinMediaWithVideo) HasImages() bool {
 	return false
 }
 
-// SetImages gets a reference to the given ImageMetadataImages and assigns it to the Images field.
-func (o *PinMediaWithVideo) SetImages(v ImageMetadataImages) {
+// SetImages gets a reference to the given PinMediaWithImageAllOfImages and assigns it to the Images field.
+func (o *PinMediaWithVideo) SetImages(v PinMediaWithImageAllOfImages) {
 	o.Images = &v
 }
 
@@ -262,14 +262,6 @@ func (o PinMediaWithVideo) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaWithVideo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedPinMedia, errPinMedia := json.Marshal(o.PinMedia)
-	if errPinMedia != nil {
-		return map[string]interface{}{}, errPinMedia
-	}
-	errPinMedia = json.Unmarshal([]byte(serializedPinMedia), &toSerialize)
-	if errPinMedia != nil {
-		return map[string]interface{}{}, errPinMedia
-	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}

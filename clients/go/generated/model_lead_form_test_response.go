@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &LeadFormTestResponse{}
 // LeadFormTestResponse Response for lead data test API.
 type LeadFormTestResponse struct {
 	// Subscription ID.
-	SubscriptionId *string `json:"subscription_id,omitempty"`
+	SubscriptionId *string `json:"subscription_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewLeadFormTestResponse instantiates a new LeadFormTestResponse object

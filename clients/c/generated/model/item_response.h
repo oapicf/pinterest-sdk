@@ -15,7 +15,7 @@
 
 typedef struct item_response_t item_response_t;
 
-#include "catalogs_hotel_attributes.h"
+#include "catalogs_creative_assets_attributes.h"
 #include "catalogs_type.h"
 #include "item_response_any_of.h"
 #include "item_response_any_of_1.h"
@@ -24,7 +24,7 @@ typedef struct item_response_t item_response_t;
 
 // Enum  for item_response
 
-typedef enum  { pinterest_rest_api_item_response__NULL = 0, pinterest_rest_api_item_response__RETAIL, pinterest_rest_api_item_response__HOTEL } pinterest_rest_api_item_response__e;
+typedef enum  { pinterest_rest_api_item_response__NULL = 0, pinterest_rest_api_item_response__RETAIL, pinterest_rest_api_item_response__HOTEL, pinterest_rest_api_item_response__CREATIVE_ASSETS } pinterest_rest_api_item_response__e;
 
 char* item_response_catalog_type_ToString(pinterest_rest_api_item_response__e catalog_type);
 
@@ -36,8 +36,9 @@ typedef struct item_response_t {
     catalogs_type_t *catalog_type; // custom
     char *item_id; // string
     list_t *pins; //nonprimitive container
-    struct catalogs_hotel_attributes_t *attributes; //model
+    struct catalogs_creative_assets_attributes_t *attributes; //model
     char *hotel_id; // string
+    char *creative_assets_id; // string
     list_t *errors; //nonprimitive container
 
 } item_response_t;
@@ -46,8 +47,9 @@ item_response_t *item_response_create(
     catalogs_type_t *catalog_type,
     char *item_id,
     list_t *pins,
-    catalogs_hotel_attributes_t *attributes,
+    catalogs_creative_assets_attributes_t *attributes,
     char *hotel_id,
+    char *creative_assets_id,
     list_t *errors
 );
 

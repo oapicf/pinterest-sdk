@@ -18,10 +18,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Keyword metrics JSON")
 @JsonTypeName("KeywordMetrics")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordMetrics   {
-  private @Valid BigDecimal avgCpcInMicroCurrency;
-  private @Valid String keywordQueryVolume;
+  private BigDecimal avgCpcInMicroCurrency;
+  private String keywordQueryVolume;
 
   /**
    * Average cost per click
@@ -34,7 +34,7 @@ public class KeywordMetrics   {
   
   @ApiModelProperty(example = "100000", value = "Average cost per click")
   @JsonProperty("avg_cpc_in_micro_currency")
-  public BigDecimal getAvgCpcInMicroCurrency() {
+  @Valid public BigDecimal getAvgCpcInMicroCurrency() {
     return avgCpcInMicroCurrency;
   }
 

@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a product group.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupCreateRequest   {
   @JsonProperty("name")
   private String name;
@@ -39,10 +39,10 @@ public class CatalogsProductGroupCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getName() {
     return name;
@@ -57,10 +57,10 @@ public class CatalogsProductGroupCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -75,10 +75,10 @@ public class CatalogsProductGroupCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * boolean indicator of whether the product group is being featured or not
    * @return isFeatured
-  **/
+   */
   @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
   public Boolean getIsFeatured() {
     return isFeatured;
@@ -93,10 +93,10 @@ public class CatalogsProductGroupCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
@@ -111,10 +111,10 @@ public class CatalogsProductGroupCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Catalog Feed id pertaining to the catalog product group.
    * @return feedId
-  **/
+   */
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
   public String getFeedId() {
     return feedId;

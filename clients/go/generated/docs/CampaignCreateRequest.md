@@ -10,13 +10,12 @@ Name | Type | Description | Notes
 **LifetimeSpendCap** | Pointer to **NullableInt32** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **DailySpendCap** | Pointer to **NullableInt32** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **OrderLineId** | Pointer to **NullableString** | Order line ID that appears on the invoice. | [optional] 
-**TrackingUrls** | Pointer to [**NullableAdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] 
+**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
 **StartTime** | Pointer to **NullableInt32** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
 **EndTime** | Pointer to **NullableInt32** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**SummaryStatus** | Pointer to [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
-**IsFlexibleDailyBudgets** | Pointer to **bool** | Determine if a campaign has flexible daily budgets setup. | [optional] [default to false]
+**IsFlexibleDailyBudgets** | Pointer to **NullableBool** | Determine if a campaign has flexible daily budgets setup. | [optional] [default to false]
 **DefaultAdGroupBudgetInMicroCurrency** | Pointer to **NullableInt32** | When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. | [optional] 
-**IsAutomatedCampaign** | Pointer to **bool** | Specifies whether the campaign was created in the automated campaign flow | [optional] [default to false]
+**IsAutomatedCampaign** | Pointer to **NullableBool** | Specifies whether the campaign was created in the automated campaign flow | [optional] [default to false]
 **ObjectiveType** | [**ObjectiveType**](ObjectiveType.md) |  | 
 
 ## Methods
@@ -210,20 +209,20 @@ HasOrderLineId returns a boolean if a field has been set.
 UnsetOrderLineId ensures that no value is present for OrderLineId, not even an explicit nil
 ### GetTrackingUrls
 
-`func (o *CampaignCreateRequest) GetTrackingUrls() AdCommonTrackingUrls`
+`func (o *CampaignCreateRequest) GetTrackingUrls() TrackingUrls`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *CampaignCreateRequest) GetTrackingUrlsOk() (*AdCommonTrackingUrls, bool)`
+`func (o *CampaignCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *CampaignCreateRequest) SetTrackingUrls(v AdCommonTrackingUrls)`
+`func (o *CampaignCreateRequest) SetTrackingUrls(v TrackingUrls)`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -313,31 +312,6 @@ HasEndTime returns a boolean if a field has been set.
 `func (o *CampaignCreateRequest) UnsetEndTime()`
 
 UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
-### GetSummaryStatus
-
-`func (o *CampaignCreateRequest) GetSummaryStatus() CampaignSummaryStatus`
-
-GetSummaryStatus returns the SummaryStatus field if non-nil, zero value otherwise.
-
-### GetSummaryStatusOk
-
-`func (o *CampaignCreateRequest) GetSummaryStatusOk() (*CampaignSummaryStatus, bool)`
-
-GetSummaryStatusOk returns a tuple with the SummaryStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSummaryStatus
-
-`func (o *CampaignCreateRequest) SetSummaryStatus(v CampaignSummaryStatus)`
-
-SetSummaryStatus sets SummaryStatus field to given value.
-
-### HasSummaryStatus
-
-`func (o *CampaignCreateRequest) HasSummaryStatus() bool`
-
-HasSummaryStatus returns a boolean if a field has been set.
-
 ### GetIsFlexibleDailyBudgets
 
 `func (o *CampaignCreateRequest) GetIsFlexibleDailyBudgets() bool`
@@ -363,6 +337,16 @@ SetIsFlexibleDailyBudgets sets IsFlexibleDailyBudgets field to given value.
 
 HasIsFlexibleDailyBudgets returns a boolean if a field has been set.
 
+### SetIsFlexibleDailyBudgetsNil
+
+`func (o *CampaignCreateRequest) SetIsFlexibleDailyBudgetsNil(b bool)`
+
+ SetIsFlexibleDailyBudgetsNil sets the value for IsFlexibleDailyBudgets to be an explicit nil
+
+### UnsetIsFlexibleDailyBudgets
+`func (o *CampaignCreateRequest) UnsetIsFlexibleDailyBudgets()`
+
+UnsetIsFlexibleDailyBudgets ensures that no value is present for IsFlexibleDailyBudgets, not even an explicit nil
 ### GetDefaultAdGroupBudgetInMicroCurrency
 
 `func (o *CampaignCreateRequest) GetDefaultAdGroupBudgetInMicroCurrency() int32`
@@ -423,6 +407,16 @@ SetIsAutomatedCampaign sets IsAutomatedCampaign field to given value.
 
 HasIsAutomatedCampaign returns a boolean if a field has been set.
 
+### SetIsAutomatedCampaignNil
+
+`func (o *CampaignCreateRequest) SetIsAutomatedCampaignNil(b bool)`
+
+ SetIsAutomatedCampaignNil sets the value for IsAutomatedCampaign to be an explicit nil
+
+### UnsetIsAutomatedCampaign
+`func (o *CampaignCreateRequest) UnsetIsAutomatedCampaign()`
+
+UnsetIsAutomatedCampaign ensures that no value is present for IsAutomatedCampaign, not even an explicit nil
 ### GetObjectiveType
 
 `func (o *CampaignCreateRequest) GetObjectiveType() ObjectiveType`

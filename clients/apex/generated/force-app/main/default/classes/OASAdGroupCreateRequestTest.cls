@@ -88,6 +88,7 @@ private class OASAdGroupCreateRequestTest {
         System.assertEquals('campaignId', x-property-mappings.get('campaign_id'));
         System.assertEquals('billableEvent', x-property-mappings.get('billable_event'));
         System.assertEquals('bidStrategyType', x-property-mappings.get('bid_strategy_type'));
+        System.assertEquals('targetingTemplateIds', x-property-mappings.get('targeting_template_ids'));
     }
 
     @isTest
@@ -95,6 +96,7 @@ private class OASAdGroupCreateRequestTest {
         OASAdGroupCreateRequest adGroupCreateRequest = new OASAdGroupCreateRequest();
         System.assertEquals('DAILY', adGroupCreateRequest.budgetType);
         System.assertEquals('STANDARD', adGroupCreateRequest.pacingDeliveryType);
+        System.assertEquals(new List<String>(), adGroupCreateRequest.targetingTemplateIds);
         System.assertEquals(null, adGroupCreateRequest.name);
         System.assertEquals(null, adGroupCreateRequest.status);
         System.assertEquals(null, adGroupCreateRequest.budgetInMicroCurrency);

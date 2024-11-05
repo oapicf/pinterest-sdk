@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ProductGroupPromotionResponse  {
   
   @ApiModelProperty(value = "")
-  private List<ProductGroupPromotionResponseItem> items;
+  private List<ProductGroupPromotionResponseItem> items = new ArrayList<>();
  /**
    * Get items
    * @return items

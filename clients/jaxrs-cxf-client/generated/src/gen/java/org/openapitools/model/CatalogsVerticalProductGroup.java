@@ -1,8 +1,9 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
-import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.CatalogsProductGroupStatus;
 import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
@@ -16,7 +17,7 @@ public class CatalogsVerticalProductGroup  {
   
 public enum CatalogTypeEnum {
 
-RETAIL(String.valueOf("RETAIL"));
+CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
 
     private String value;
@@ -47,15 +48,15 @@ RETAIL(String.valueOf("RETAIL"));
   @ApiModelProperty(required = true, value = "")
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
  /**
-   * ID of the catalog product group.
+   * ID of the creative assets product group.
   **/
   private String id;
 
-  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
+  @ApiModelProperty(example = "Most Popular", value = "Name of creative assets product group")
  /**
-   * Name of catalog product group
+   * Name of creative assets product group
   **/
   private String name;
 
@@ -63,22 +64,7 @@ RETAIL(String.valueOf("RETAIL"));
   private String description;
 
   @ApiModelProperty(required = true, value = "")
-  private CatalogsProductGroupFilters filters;
-
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
- /**
-   * Unix timestamp in seconds of when catalog product group was created.
-  **/
-  private Integer createdAt;
-
-  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
- /**
-   * Unix timestamp in seconds of last time catalog product group was updated.
-  **/
-  private Integer updatedAt;
-
-  @ApiModelProperty(required = true, value = "")
-  private String catalogId;
+  private CatalogsCreativeAssetsProductGroupFilters filters;
 
   @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
  /**
@@ -92,38 +78,35 @@ RETAIL(String.valueOf("RETAIL"));
   @ApiModelProperty(value = "")
   private CatalogsProductGroupStatus status;
 
-public enum FeedIdEnum {
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+ /**
+   * Unix timestamp in seconds of when catalog product group was created.
+  **/
+  private Integer createdAt;
 
-NULL(String.valueOf("null"));
+  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
+ /**
+   * Unix timestamp in seconds of last time catalog product group was updated.
+  **/
+  private Integer updatedAt;
 
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+ /**
+   * Catalog id pertaining to the creative assets product group.
+  **/
+  private String catalogId;
 
-    private String value;
+  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
+ /**
+   * id of the catalogs feed belonging to this catalog product group
+  **/
+  private String feedId;
 
-    FeedIdEnum (String v) {
-        value = v;
-    }
+  @ApiModelProperty(value = "")
+  private String country;
 
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static FeedIdEnum fromValue(String value) {
-        for (FeedIdEnum b : FeedIdEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  @ApiModelProperty(required = true, value = "")
-  private FeedIdEnum feedId;
+  @ApiModelProperty(value = "")
+  private String locale;
  /**
    * Get catalogType
    * @return catalogType
@@ -146,7 +129,7 @@ NULL(String.valueOf("null"));
   }
 
  /**
-   * ID of the catalog product group.
+   * ID of the creative assets product group.
    * @return id
   **/
   @JsonProperty("id")
@@ -164,7 +147,7 @@ NULL(String.valueOf("null"));
   }
 
  /**
-   * Name of catalog product group
+   * Name of creative assets product group
    * @return name
   **/
   @JsonProperty("name")
@@ -204,70 +187,16 @@ NULL(String.valueOf("null"));
    * @return filters
   **/
   @JsonProperty("filters")
-  public CatalogsProductGroupFilters getFilters() {
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFilters filters) {
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
 
-  public CatalogsVerticalProductGroup filters(CatalogsProductGroupFilters filters) {
+  public CatalogsVerticalProductGroup filters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
-    return this;
-  }
-
- /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   * @return createdAt
-  **/
-  @JsonProperty("created_at")
-  public Integer getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public CatalogsVerticalProductGroup createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
- /**
-   * Unix timestamp in seconds of last time catalog product group was updated.
-   * @return updatedAt
-  **/
-  @JsonProperty("updated_at")
-  public Integer getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Integer updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public CatalogsVerticalProductGroup updatedAt(Integer updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
- /**
-   * Get catalogId
-   * @return catalogId
-  **/
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsVerticalProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
     return this;
   }
 
@@ -326,23 +255,110 @@ NULL(String.valueOf("null"));
   }
 
  /**
-   * Get feedId
+   * Unix timestamp in seconds of when catalog product group was created.
+   * @return createdAt
+  **/
+  @JsonProperty("created_at")
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public CatalogsVerticalProductGroup createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+ /**
+   * Unix timestamp in seconds of last time catalog product group was updated.
+   * @return updatedAt
+  **/
+  @JsonProperty("updated_at")
+  public Integer getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(Integer updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  public CatalogsVerticalProductGroup updatedAt(Integer updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+ /**
+   * Catalog id pertaining to the creative assets product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsVerticalProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+ /**
+   * id of the catalogs feed belonging to this catalog product group
    * @return feedId
   **/
   @JsonProperty("feed_id")
   public String getFeedId() {
-    if (feedId == null) {
-      return null;
-    }
-    return feedId.value();
+    return feedId;
   }
 
-  public void setFeedId(FeedIdEnum feedId) {
+  public void setFeedId(String feedId) {
     this.feedId = feedId;
   }
 
-  public CatalogsVerticalProductGroup feedId(FeedIdEnum feedId) {
+  public CatalogsVerticalProductGroup feedId(String feedId) {
     this.feedId = feedId;
+    return this;
+  }
+
+ /**
+   * Get country
+   * @return country
+  **/
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public CatalogsVerticalProductGroup country(String country) {
+    this.country = country;
+    return this;
+  }
+
+ /**
+   * Get locale
+   * @return locale
+  **/
+  @JsonProperty("locale")
+  public String getLocale() {
+    return locale;
+  }
+
+  public void setLocale(String locale) {
+    this.locale = locale;
+  }
+
+  public CatalogsVerticalProductGroup locale(String locale) {
+    this.locale = locale;
     return this;
   }
 
@@ -360,18 +376,20 @@ NULL(String.valueOf("null"));
         Objects.equals(this.name, catalogsVerticalProductGroup.name) &&
         Objects.equals(this.description, catalogsVerticalProductGroup.description) &&
         Objects.equals(this.filters, catalogsVerticalProductGroup.filters) &&
-        Objects.equals(this.createdAt, catalogsVerticalProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsVerticalProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsVerticalProductGroup.catalogId) &&
         Objects.equals(this.isFeatured, catalogsVerticalProductGroup.isFeatured) &&
         Objects.equals(this.type, catalogsVerticalProductGroup.type) &&
         Objects.equals(this.status, catalogsVerticalProductGroup.status) &&
-        Objects.equals(this.feedId, catalogsVerticalProductGroup.feedId);
+        Objects.equals(this.createdAt, catalogsVerticalProductGroup.createdAt) &&
+        Objects.equals(this.updatedAt, catalogsVerticalProductGroup.updatedAt) &&
+        Objects.equals(this.catalogId, catalogsVerticalProductGroup.catalogId) &&
+        Objects.equals(this.feedId, catalogsVerticalProductGroup.feedId) &&
+        Objects.equals(this.country, catalogsVerticalProductGroup.country) &&
+        Objects.equals(this.locale, catalogsVerticalProductGroup.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId, isFeatured, type, status, feedId);
+    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
   }
 
   @Override
@@ -384,13 +402,15 @@ NULL(String.valueOf("null"));
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

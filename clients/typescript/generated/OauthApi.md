@@ -10,26 +10,25 @@ Method | HTTP request | Description
 # **oauthToken**
 > OauthAccessTokenResponse oauthToken()
 
-Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href=\'/docs/getting-started/authentication/\'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href=\'/docs/getting-started/authentication-and-scopes/\'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, OauthApi } from '';
+import type { OauthApiOauthTokenRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .OauthApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new OauthApi(configuration);
 
-let body:.OauthApiOauthTokenRequest = {
-  // string
+const request: OauthApiOauthTokenRequest = {
+  
   grantType: "authorization_code",
 };
 
-apiInstance.oauthToken(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.oauthToken(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -37,7 +36,7 @@ apiInstance.oauthToken(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grantType** | [**string**]**Array<&#39;authorization_code&#39; &#124; &#39;refresh_token&#39;>** |  | defaults to undefined
+ **grantType** | [**string**]**Array<&#39;authorization_code&#39; &#124; &#39;refresh_token&#39; &#124; &#39;client_credentials&#39;>** |  | defaults to undefined
 
 
 ### Return type

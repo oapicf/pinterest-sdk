@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -26,17 +27,25 @@ data class UserWebsiteVerifyRequest(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("verification_method") val verificationMethod: UserWebsiteVerifyRequest.VerificationMethod? = VerificationMethod.METATAG
-) {
+    ) {
 
     /**
     * 
     * Values: FILENAME,METATAG,DNSTXT
     */
-    enum class VerificationMethod(val value: kotlin.String) {
+    enum class VerificationMethod(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("FILENAME") FILENAME("FILENAME"),
-        @JsonProperty("METATAG") METATAG("METATAG"),
-        @JsonProperty("DNSTXT") DNSTXT("DNSTXT")
+        FILENAME("FILENAME"),
+        METATAG("METATAG"),
+        DNSTXT("DNSTXT");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): VerificationMethod {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

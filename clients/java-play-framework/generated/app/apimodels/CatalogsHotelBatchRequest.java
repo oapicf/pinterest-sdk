@@ -1,9 +1,8 @@
 package apimodels;
 
 import apimodels.CatalogsHotelBatchItem;
-import apimodels.CatalogsType;
+import apimodels.CatalogsItemsRequestLanguage;
 import apimodels.Country;
-import apimodels.Language;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,14 +15,42 @@ import javax.validation.Valid;
 /**
  * Request object to update catalogs hotel items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelBatchRequest   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
   @NotNull
-@Valid
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("country")
   @NotNull
@@ -35,7 +62,7 @@ public class CatalogsHotelBatchRequest   {
   @NotNull
 @Valid
 
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("items")
   @NotNull
@@ -49,7 +76,7 @@ public class CatalogsHotelBatchRequest   {
 
   private String catalogId;
 
-  public CatalogsHotelBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsHotelBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -58,11 +85,11 @@ public class CatalogsHotelBatchRequest   {
    * Get catalogType
    * @return catalogType
   **/
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -83,7 +110,7 @@ public class CatalogsHotelBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsHotelBatchRequest language(Language language) {
+  public CatalogsHotelBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -92,11 +119,11 @@ public class CatalogsHotelBatchRequest   {
    * Get language
    * @return language
   **/
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

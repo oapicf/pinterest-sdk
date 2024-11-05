@@ -15,7 +15,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdsCreditRedeemResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditRedeemResponse   {
   @JsonProperty("success")
   private Boolean success;
@@ -31,10 +31,10 @@ public class AdsCreditRedeemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
    * @return success
-  **/
+   */
   @ApiModelProperty(example = "false", value = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
   public Boolean getSuccess() {
     return success;
@@ -49,10 +49,10 @@ public class AdsCreditRedeemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Error code type if error occurs
    * @return errorCode
-  **/
+   */
   @ApiModelProperty(example = "2708", value = "Error code type if error occurs")
   public Integer getErrorCode() {
     return errorCode;
@@ -67,10 +67,10 @@ public class AdsCreditRedeemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Reason for failure
    * @return errorMessage
-  **/
+   */
   @ApiModelProperty(example = "The offer has already been redeemed by this advertiser", value = "Reason for failure")
   public String getErrorMessage() {
     return errorMessage;

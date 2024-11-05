@@ -17,9 +17,11 @@ case class ItemResponse (
   itemId: Option[String],
 /* The pins mapped to the item */
   pins: Option[List[Pin]],
-attributes: Option[CatalogsHotelAttributes],
+attributes: Option[CatalogsCreativeAssetsAttributes],
 /* The catalog hotel id in the merchant namespace */
   hotelId: Option[String],
+/* The catalog creative assets id in the merchant namespace */
+  creativeAssetsId: Option[String],
 /* Array with the errors for the item id requested */
   errors: Option[List[ItemValidationEvent]])
 

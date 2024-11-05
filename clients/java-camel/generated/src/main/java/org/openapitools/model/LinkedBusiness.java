@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * LinkedBusiness
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LinkedBusiness {
 
   private String username;
@@ -39,7 +39,7 @@ public class LinkedBusiness {
   /**
    * Username
    * @return username
-  */
+   */
   
   @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
@@ -59,7 +59,7 @@ public class LinkedBusiness {
   /**
    * image_small_url
    * @return imageSmallUrl
-  */
+   */
   
   @Schema(name = "image_small_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_small_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_small_url")
@@ -79,7 +79,7 @@ public class LinkedBusiness {
   /**
    * image_medium_url
    * @return imageMediumUrl
-  */
+   */
   
   @Schema(name = "image_medium_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_medium_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_medium_url")
@@ -99,7 +99,7 @@ public class LinkedBusiness {
   /**
    * image_large_url
    * @return imageLargeUrl
-  */
+   */
   
   @Schema(name = "image_large_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_large_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_large_url")
@@ -119,7 +119,7 @@ public class LinkedBusiness {
   /**
    * image_xlarge_url
    * @return imageXlargeUrl
-  */
+   */
   
   @Schema(name = "image_xlarge_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_xlarge_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_xlarge_url")

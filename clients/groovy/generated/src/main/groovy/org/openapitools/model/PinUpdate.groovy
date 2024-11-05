@@ -23,7 +23,7 @@ class PinUpdate {
     /* The native pin title that creators explicitly prefer to display. */
     String title
     /* Carousel Pin slots data. */
-    List<PinUpdateCarouselSlotsInner> carouselSlots
+    List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>()
     /* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
     String note
 }

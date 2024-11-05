@@ -17,12 +17,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsItemValidationIssues")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationIssues   {
-  private @Valid Integer itemNumber;
-  private @Valid String itemId;
-  private @Valid CatalogsItemValidationErrors errors;
-  private @Valid CatalogsItemValidationWarnings warnings;
+  private Integer itemNumber;
+  private String itemId;
+  private CatalogsItemValidationErrors errors;
+  private CatalogsItemValidationWarnings warnings;
 
   /**
    * Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.
@@ -35,8 +35,7 @@ public class CatalogsItemValidationIssues   {
   
   @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
   @JsonProperty("item_number")
-  @NotNull
-  public Integer getItemNumber() {
+  @NotNull public Integer getItemNumber() {
     return itemNumber;
   }
 
@@ -56,8 +55,7 @@ public class CatalogsItemValidationIssues   {
   
   @ApiModelProperty(example = "DS0294-L", required = true, value = "The merchant-created unique ID that represents the product.")
   @JsonProperty("item_id")
-  @NotNull
-  public String getItemId() {
+  @NotNull public String getItemId() {
     return itemId;
   }
 
@@ -76,8 +74,7 @@ public class CatalogsItemValidationIssues   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("errors")
-  @NotNull
-  public CatalogsItemValidationErrors getErrors() {
+  @NotNull @Valid public CatalogsItemValidationErrors getErrors() {
     return errors;
   }
 
@@ -96,8 +93,7 @@ public class CatalogsItemValidationIssues   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("warnings")
-  @NotNull
-  public CatalogsItemValidationWarnings getWarnings() {
+  @NotNull @Valid public CatalogsItemValidationWarnings getWarnings() {
     return warnings;
   }
 

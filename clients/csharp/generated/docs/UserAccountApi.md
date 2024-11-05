@@ -45,10 +45,12 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
             var explicitFollowing = false;  // bool? | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)  (default to false)
             var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
 
@@ -94,7 +96,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **explicitFollowing** | **bool?** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
 
@@ -104,7 +106,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -127,7 +129,7 @@ catch (ApiException e)
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```csharp
@@ -245,10 +247,12 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -292,7 +296,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -300,7 +304,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -342,6 +346,8 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
@@ -391,7 +397,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -640,6 +646,8 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
             var startDate = DateOnly.Parse("2013-10-20");  // DateOnly | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -715,7 +723,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -757,6 +765,8 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
@@ -833,7 +843,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -876,11 +886,13 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
             var username = username;  // string | A valid username
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -925,7 +937,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **username** | **string** | A valid username |  |
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -933,7 +945,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -958,7 +970,7 @@ catch (ApiException e)
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```csharp
@@ -977,6 +989,8 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
@@ -1031,7 +1045,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -1074,10 +1088,12 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
             var feedType = "ALL";  // UserFollowingFeedType? | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional) 
             var explicitFollowing = false;  // bool? | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)  (default to false)
             var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
@@ -1124,7 +1140,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **feedType** | **UserFollowingFeedType?** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional]  |
 | **explicitFollowing** | **bool?** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
@@ -1135,7 +1151,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -1180,7 +1196,7 @@ namespace Example
 
             var apiInstance = new UserAccountApi(config);
             var bookmark = "bookmark_example";  // string? | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
+            var pageSize = 25;  // int? | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
 
             try
             {
@@ -1224,7 +1240,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **bookmark** | **string?** | Cursor used to fetch the next page of items | [optional]  |
-| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **int?** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -1251,7 +1267,7 @@ catch (ApiException e)
 
 <a id="verifywebsiteupdate"></a>
 # **VerifyWebsiteUpdate**
-> UserWebsiteSummary VerifyWebsiteUpdate (UserWebsiteVerifyRequest userWebsiteVerifyRequest)
+> UserWebsiteSummary VerifyWebsiteUpdate (UserWebsiteVerifyRequest userWebsiteVerifyRequest, string? adAccountId = null)
 
 Verify website
 
@@ -1278,11 +1294,12 @@ namespace Example
 
             var apiInstance = new UserAccountApi(config);
             var userWebsiteVerifyRequest = new UserWebsiteVerifyRequest(); // UserWebsiteVerifyRequest | Verify a website.
+            var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
 
             try
             {
                 // Verify website
-                UserWebsiteSummary result = apiInstance.VerifyWebsiteUpdate(userWebsiteVerifyRequest);
+                UserWebsiteSummary result = apiInstance.VerifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1303,7 +1320,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Verify website
-    ApiResponse<UserWebsiteSummary> response = apiInstance.VerifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest);
+    ApiResponse<UserWebsiteSummary> response = apiInstance.VerifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest, adAccountId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1321,6 +1338,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. |  |
+| **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
 
 ### Return type
 
@@ -1346,7 +1364,7 @@ catch (ApiException e)
 
 <a id="websiteverificationget"></a>
 # **WebsiteVerificationGet**
-> UserWebsiteVerificationCode WebsiteVerificationGet ()
+> UserWebsiteVerificationCode WebsiteVerificationGet (string? adAccountId = null)
 
 Get user verification code for website claiming
 
@@ -1370,13 +1388,16 @@ namespace Example
             config.BasePath = "https://api.pinterest.com/v5";
             // Configure OAuth2 access token for authorization: pinterest_oauth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
+            // Configure OAuth2 access token for authorization: client_credentials
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UserAccountApi(config);
+            var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
 
             try
             {
                 // Get user verification code for website claiming
-                UserWebsiteVerificationCode result = apiInstance.WebsiteVerificationGet();
+                UserWebsiteVerificationCode result = apiInstance.WebsiteVerificationGet(adAccountId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1397,7 +1418,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get user verification code for website claiming
-    ApiResponse<UserWebsiteVerificationCode> response = apiInstance.WebsiteVerificationGetWithHttpInfo();
+    ApiResponse<UserWebsiteVerificationCode> response = apiInstance.WebsiteVerificationGetWithHttpInfo(adAccountId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1411,14 +1432,18 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
+
 ### Return type
 
 [**UserWebsiteVerificationCode**](UserWebsiteVerificationCode.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

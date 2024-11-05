@@ -3,16 +3,20 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsListProductsByFilterRequestOneOf;
+import org.openapitools.model.CatalogsListProductsByFeedBasedFilter;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFilters;
+import org.openapitools.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest;
+import org.openapitools.model.Country;
 
 /**
  * Request object to list products for a given product group filter.
  */
 @ApiModel(description = "Request object to list products for a given product group filter.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsListProductsByFilterRequest   {
   @JsonProperty("feed_id")
   private String feedId;

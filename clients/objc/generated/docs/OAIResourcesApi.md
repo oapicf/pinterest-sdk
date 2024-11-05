@@ -71,7 +71,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 ```objc
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```objc
@@ -282,6 +282,7 @@ Name | Type | Description  | Notes
     clientId: (NSString*) clientId
     oauthSignature: (NSString*) oauthSignature
     timestamp: (NSString*) timestamp
+    adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(NSArray<NSObject*>* output, NSError* error)) handler;
 ```
 
@@ -301,6 +302,7 @@ NSString* targetingType = APPTYPE; // Public targeting type.
 NSString* clientId = 1094834; // Client ID. (optional)
 NSString* oauthSignature = 8209f; // Oauth signature (optional)
 NSString* timestamp = 1618338184277; // Timestamp (optional)
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIResourcesApi*apiInstance = [[OAIResourcesApi alloc] init];
 
@@ -309,6 +311,7 @@ OAIResourcesApi*apiInstance = [[OAIResourcesApi alloc] init];
               clientId:clientId
               oauthSignature:oauthSignature
               timestamp:timestamp
+              adAccountId:adAccountId
           completionHandler: ^(NSArray<NSObject*>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -327,6 +330,7 @@ Name | Type | Description  | Notes
  **clientId** | **NSString***| Client ID. | [optional] 
  **oauthSignature** | **NSString***| Oauth signature | [optional] 
  **timestamp** | **NSString***| Timestamp | [optional] 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 

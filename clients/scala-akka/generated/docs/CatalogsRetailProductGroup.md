@@ -17,16 +17,14 @@ Name | Type | Description | Notes
 **status** | **CatalogsProductGroupStatus** |  |  [optional]
 **createdAt** | **Int** | Unix timestamp in seconds of when catalog product group was created. |  [optional]
 **updatedAt** | **Int** | Unix timestamp in seconds of last time catalog product group was updated. |  [optional]
-**feedId** | [**FeedId**](#FeedId) |  | 
+**catalogId** | **String** | Catalog id pertaining to the retail product group. | 
+**feedId** | **String** | id of the catalogs feed belonging to this catalog product group | 
+**country** | **String** |  |  [optional]
+**locale** | **String** |  |  [optional]
 
 
 ## Enum: CatalogType
 Allowed values: [RETAIL]
-
-
-
-## Enum: FeedId
-Allowed values: []
 
 
 

@@ -57,15 +57,146 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
+/// Get multiple Pin analytics
+/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+///  @param pinIds List of Pin IDs. 
+///
+///  @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
+///
+///  @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
+///
+///  @param metricTypes Pin metric types to get data for. 
+///
+///  @param appTypes Apps or devices to get data for, default is all. (optional, default to @"ALL")
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns NSDictionary<NSString*, NSDictionary*>*
+///
+-(NSURLSessionTask*) multiPinsAnalyticsWithPinIds: (NSArray<NSString*>*) pinIds
+    startDate: (NSDate*) startDate
+    endDate: (NSDate*) endDate
+    metricTypes: (NSArray<OAIPinsAnalyticsMetricTypesParameterInner>*) metricTypes
+    appTypes: (NSString*) appTypes
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(NSDictionary<NSString*, NSDictionary*>* output, NSError* error)) handler {
+    // verify the required parameter 'pinIds' is set
+    if (pinIds == nil) {
+        NSParameterAssert(pinIds);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinIds"] };
+            NSError* error = [NSError errorWithDomain:kOAIPinsApiErrorDomain code:kOAIPinsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'startDate' is set
+    if (startDate == nil) {
+        NSParameterAssert(startDate);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"startDate"] };
+            NSError* error = [NSError errorWithDomain:kOAIPinsApiErrorDomain code:kOAIPinsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'endDate' is set
+    if (endDate == nil) {
+        NSParameterAssert(endDate);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"endDate"] };
+            NSError* error = [NSError errorWithDomain:kOAIPinsApiErrorDomain code:kOAIPinsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'metricTypes' is set
+    if (metricTypes == nil) {
+        NSParameterAssert(metricTypes);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"metricTypes"] };
+            NSError* error = [NSError errorWithDomain:kOAIPinsApiErrorDomain code:kOAIPinsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/pins/analytics"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (pinIds != nil) {
+        queryParams[@"pin_ids"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: pinIds format: @"multi"];
+    }
+    if (startDate != nil) {
+        queryParams[@"start_date"] = startDate;
+    }
+    if (endDate != nil) {
+        queryParams[@"end_date"] = endDate;
+    }
+    if (appTypes != nil) {
+        queryParams[@"app_types"] = appTypes;
+    }
+    if (metricTypes != nil) {
+        queryParams[@"metric_types"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: metricTypes format: @"csv"];
+    }
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"GET"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"NSDictionary<NSString*, NSDictionary*>*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((NSDictionary<NSString*, NSDictionary*>*)data, error);
+                                }
+                            }];
+}
+
+///
 /// Get Pin analytics
-/// Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+/// Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 ///  @param pinId Unique identifier of a Pin. 
 ///
 ///  @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 ///
 ///  @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
 ///
-///  @param metricTypes Pin metric types to get data for, default is all. 
+///  @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. 
 ///
 ///  @param appTypes Apps or devices to get data for, default is all. (optional, default to @"ALL")
 ///
@@ -168,7 +299,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -195,7 +326,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create Pin
-/// Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+/// Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 ///  @param pinCreate Create a new Pin. 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -394,7 +525,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -421,10 +552,10 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// List Pins
-/// Get a list of the Pins owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+/// Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param pinFilter Pin filter. (optional)
 ///
@@ -493,7 +624,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -609,7 +740,7 @@ NSInteger kOAIPinsApiMissingParamErrorCode = 234513;
 
 ///
 /// Update Pin
-/// Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+/// Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 ///  @param pinId Unique identifier of a Pin. 
 ///
 ///  @param pinUpdate  

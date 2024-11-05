@@ -20,9 +20,9 @@ import java.util.Objects;
 
 public class OrderLineResponse   {
   
-  private List<OrderLineError> errors;
+  private List<OrderLineError> errors = new ArrayList<>();
 
-  private List<OrderLine> orderLine;
+  private List<OrderLine> orderLine = new ArrayList<>();
 
   /**
    * Error list if update(s) fail.

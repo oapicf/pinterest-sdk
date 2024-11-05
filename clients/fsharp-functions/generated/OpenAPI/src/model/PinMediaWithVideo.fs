@@ -3,8 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.ImageMetadataImages
 open OpenAPI.Model.PinMedia
+open OpenAPI.Model.PinMediaWithImageAllOfImages
 open OpenAPI.Model.string option
 
 module PinMediaWithVideo =
@@ -14,7 +14,7 @@ module PinMediaWithVideo =
   [<CLIMutable>]
   type PinMediaWithVideo = {
     [<JsonProperty(PropertyName = "images")>]
-    Images : ImageMetadataImages;
+    Images : PinMediaWithImageAllOfImages;
     [<JsonProperty(PropertyName = "cover_image_url")>]
     CoverImageUrl : string;
     [<JsonProperty(PropertyName = "video_url")>]

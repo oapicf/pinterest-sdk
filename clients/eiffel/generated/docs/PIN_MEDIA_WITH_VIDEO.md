@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **media_type** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
-**images** | [**IMAGE_METADATA_IMAGES**](ImageMetadata_images.md) |  | [optional] [default to null]
+**images** | [**PIN_MEDIA_WITH_IMAGE_ALL_OF_IMAGES**](PinMediaWithImage_allOf_images.md) |  | [optional] [default to null]
 **cover_image_url** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
 **video_url** | [**STRING_32**](STRING_32.md) | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] [default to null]
 **duration** | **REAL_32** | Duration (in milliseconds) | [optional] [default to null]

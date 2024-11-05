@@ -309,7 +309,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 
@@ -331,7 +331,7 @@ OAIIntegrationsApi*apiInstance = [[OAIIntegrationsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 

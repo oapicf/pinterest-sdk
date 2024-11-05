@@ -8,11 +8,11 @@ description:    .
                 .
                 base path: https://api.pinterest.com/v5
                 .
-                Pinterest REST API API version: 5.12.0
+                Pinterest REST API API version: 5.14.0
                 .
                 OpenAPI version: 3.0.3
                 .
-                Generator version: 7.4.0
+                Generator version: 7.9.0
                 .
 category:       Web
 homepage:       https://openapi-generator.tech
@@ -69,11 +69,16 @@ library
       PinterestREST.API.AdAccounts
       PinterestREST.API.AdGroups
       PinterestREST.API.Ads
+      PinterestREST.API.AdvancedAuction
       PinterestREST.API.AudienceInsights
+      PinterestREST.API.AudienceSharing
       PinterestREST.API.Audiences
       PinterestREST.API.Billing
       PinterestREST.API.Boards
       PinterestREST.API.Bulk
+      PinterestREST.API.BusinessAccessAssets
+      PinterestREST.API.BusinessAccessInvite
+      PinterestREST.API.BusinessAccessRelationships
       PinterestREST.API.Campaigns
       PinterestREST.API.Catalogs
       PinterestREST.API.ConversionEvents
@@ -83,14 +88,15 @@ library
       PinterestREST.API.Keywords
       PinterestREST.API.LeadAds
       PinterestREST.API.LeadForms
+      PinterestREST.API.LeadsExport
       PinterestREST.API.Media
       PinterestREST.API.Oauth
       PinterestREST.API.OrderLines
       PinterestREST.API.Pins
       PinterestREST.API.ProductGroupPromotions
-      PinterestREST.API.ProductGroups
       PinterestREST.API.Resources
       PinterestREST.API.Search
+      PinterestREST.API.TargetingTemplate
       PinterestREST.API.Terms
       PinterestREST.API.TermsOfService
       PinterestREST.API.UserAccount

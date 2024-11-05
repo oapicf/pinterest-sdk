@@ -18,7 +18,7 @@ import java.util.List;
  * CatalogsHotelItemsFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemsFilter   {
   /**
    * Gets or Sets catalogType
@@ -64,10 +64,10 @@ public class CatalogsHotelItemsFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogTypeEnum getCatalogType() {
     return catalogType;
@@ -90,10 +90,10 @@ public class CatalogsHotelItemsFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get hotelIds
    * @return hotelIds
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public List<String> getHotelIds() {
     return hotelIds;
@@ -108,10 +108,10 @@ public class CatalogsHotelItemsFilter   {
     return this;
   }
 
-   /**
+  /**
    * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
    * @return catalogId
-  **/
+   */
   @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
   public String getCatalogId() {
     return catalogId;

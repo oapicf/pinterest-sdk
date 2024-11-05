@@ -1,10 +1,12 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsFeedsCreateRequest = require('../models/CatalogsCreativeAssetsFeedsCreateRequest');
 const CatalogsFeedCredentials = require('../models/CatalogsFeedCredentials');
 const CatalogsFeedProcessingSchedule = require('../models/CatalogsFeedProcessingSchedule');
 const CatalogsFeedsCreateRequest_default_locale = require('../models/CatalogsFeedsCreateRequest_default_locale');
 const CatalogsFormat = require('../models/CatalogsFormat');
 const CatalogsHotelFeedsCreateRequest = require('../models/CatalogsHotelFeedsCreateRequest');
 const CatalogsRetailFeedsCreateRequest = require('../models/CatalogsRetailFeedsCreateRequest');
+const CatalogsStatus = require('../models/CatalogsStatus');
 const CatalogsType = require('../models/CatalogsType');
 const Country = require('../models/Country');
 const NullableCurrency = require('../models/NullableCurrency');
@@ -49,9 +51,10 @@ module.exports = {
                 key: `${keyPrefix}default_availability`,
                 ...ProductAvailabilityType.fields(`${keyPrefix}default_availability`, isInput),
             },
+            ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
             {
                 key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. - [${labelPrefix}catalog_id]`,
+                label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. - [${labelPrefix}catalog_id]`,
                 type: 'string',
             },
         ]
@@ -69,6 +72,7 @@ module.exports = {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'default_country': bundle.inputData?.[`${keyPrefix}default_country`],
             'default_availability': bundle.inputData?.[`${keyPrefix}default_availability`],
+            'status': utils.removeIfEmpty(CatalogsStatus.mapping(bundle, `${keyPrefix}status`)),
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
         }
     },

@@ -35,7 +35,7 @@ data class GetMMMReportResponse(
 
     @Schema(example = "success", description = "")
     @get:JsonProperty("status") val status: kotlin.String? = null
-) {
+    ) {
 
 }
 

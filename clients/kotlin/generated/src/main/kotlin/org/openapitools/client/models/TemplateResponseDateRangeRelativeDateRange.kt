@@ -42,5 +42,8 @@ data class TemplateResponseDateRangeRelativeDateRange (
     @Json(name = "end_days_in_past")
     val endDaysInPast: java.math.BigDecimal? = null
 
-)
+) {
+
+
+}
 

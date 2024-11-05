@@ -37,7 +37,7 @@ public class CatalogsRetailItemErrorResponse  {
  /**
    * Array with the errors for the item id requested
   **/
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
  /**
    * Get catalogType
    * @return catalogType

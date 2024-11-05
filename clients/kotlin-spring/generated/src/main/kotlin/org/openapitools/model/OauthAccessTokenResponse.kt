@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -28,6 +29,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "response_type", visible = true)
 @JsonSubTypes(
       JsonSubTypes.Type(value = OauthAccessTokenResponseCode::class, name = "authorization_code"),
+      JsonSubTypes.Type(value = OauthAccessTokenResponseClientCredentials::class, name = "client_credentials"),
       JsonSubTypes.Type(value = OauthAccessTokenResponseEverlastingRefresh::class, name = "everlasting_refresh"),
       JsonSubTypes.Type(value = OauthAccessTokenResponseIntegrationRefresh::class, name = "integration_refresh"),
       JsonSubTypes.Type(value = OauthAccessTokenResponseRefresh::class, name = "refresh_token")
@@ -52,12 +54,21 @@ interface OauthAccessTokenResponse{
 
     /**
     * 
-    * Values: authorization_code,refresh_token
+    * Values: authorization_code,refresh_token,client_credentials
     */
-    enum class ResponseType(val value: kotlin.String) {
+    enum class ResponseType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("authorization_code") authorization_code("authorization_code"),
-        @JsonProperty("refresh_token") refresh_token("refresh_token")
+        authorization_code("authorization_code"),
+        refresh_token("refresh_token"),
+        client_credentials("client_credentials");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): ResponseType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

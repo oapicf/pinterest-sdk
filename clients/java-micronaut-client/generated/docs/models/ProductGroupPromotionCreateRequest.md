@@ -9,7 +9,7 @@ The class is defined in **[ProductGroupPromotionCreateRequest.java](../../src/ma
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **adGroupId** | `String` | ID of the Ad Group the Product Group Promotion belongs to. | 
-**productGroupPromotion** | [`List&lt;ProductGroupPromotion&gt;`](ProductGroupPromotion.md) |  | 
+**productGroupPromotion** | [`List&lt;ProductGroupPromotionCreateRequestElement&gt;`](ProductGroupPromotionCreateRequestElement.md) |  | 
 
 
 

@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "Keyword metrics JSON")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordMetrics   {
   @JsonProperty("avg_cpc_in_micro_currency")
   private BigDecimal avgCpcInMicroCurrency;
@@ -29,10 +29,10 @@ public class KeywordMetrics   {
     return this;
   }
 
-   /**
+  /**
    * Average cost per click
    * @return avgCpcInMicroCurrency
-  **/
+   */
   @ApiModelProperty(example = "100000", value = "Average cost per click")
   public BigDecimal getAvgCpcInMicroCurrency() {
     return avgCpcInMicroCurrency;
@@ -47,10 +47,10 @@ public class KeywordMetrics   {
     return this;
   }
 
-   /**
+  /**
    * Keyword's search frequency. This value is based on keyword frequency in pepsi client response
    * @return keywordQueryVolume
-  **/
+   */
   @ApiModelProperty(example = "5M+", value = "Keyword's search frequency. This value is based on keyword frequency in pepsi client response")
   public String getKeywordQueryVolume() {
     return keywordQueryVolume;

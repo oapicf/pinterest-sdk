@@ -25,7 +25,7 @@ data class QuizPinOption(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("text") val text: kotlin.String? = null
-) {
+    ) {
 
 }
 

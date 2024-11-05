@@ -56,6 +56,7 @@
   | {'variant_values', list(binary()) }
   | {'additional_image_link', list(binary()) }
   | {'image_link', list(binary()) }
+  | {'video_link', binary() }
   ].
 
 
@@ -110,6 +111,7 @@ openapi_item_attributes(Fields) ->
             , {'variant_values', list(binary()) }
             , {'additional_image_link', list(binary()) }
             , {'image_link', list(binary(), 1) }
+            , {'video_link', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

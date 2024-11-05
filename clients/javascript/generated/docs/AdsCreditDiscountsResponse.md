@@ -57,8 +57,6 @@ Name | Type | Description | Notes
 
 * `PREPAID_CREDIT_REFUND` (value: `"PREPAID_CREDIT_REFUND"`)
 
-* `null` (value: `"null"`)
-
 
 
 

@@ -1,5 +1,9 @@
 package models
 
+import (
+	"gopkg.in/validator.v2"
+)
+
 type FeedsCreateRequest struct {
 
 	DefaultCurrency *NullableCurrency `json:"default_currency,omitempty"`
@@ -21,4 +25,6 @@ type FeedsCreateRequest struct {
 	DefaultCountry Country `json:"default_country,omitempty"`
 
 	DefaultAvailability *ProductAvailabilityType `json:"default_availability,omitempty"`
+
+	Status CatalogsStatus `json:"status,omitempty"`
 }

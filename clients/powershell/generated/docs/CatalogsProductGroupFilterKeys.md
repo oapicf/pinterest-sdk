@@ -3,32 +3,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MINPRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | 
-**MAXPRICE** | [**CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  | 
-**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](CatalogsProductGroupCurrencyCriteria.md) |  | 
-**ITEMID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**ITEMGROUPID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  | 
-**PRODUCTTYPE4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**PRODUCTTYPE3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**PRODUCTTYPE2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**PRODUCTTYPE1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**PRODUCTTYPE0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**GOOGLEPRODUCTCATEGORY6** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**GOOGLEPRODUCTCATEGORY5** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**GOOGLEPRODUCTCATEGORY4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**GOOGLEPRODUCTCATEGORY3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**GOOGLEPRODUCTCATEGORY2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
-**GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**MINPRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | 
+**MAXPRICE** | [**CatalogsProductGroupPricingCriteria**](.md) |  | 
+**CURRENCY** | [**CatalogsProductGroupCurrencyCriteria**](.md) |  | 
+**ITEMID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**ITEMGROUPID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
+**MEDIATYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  | 
+**PRODUCTTYPE4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**PRODUCTTYPE3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**PRODUCTTYPE2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**PRODUCTTYPE1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**PRODUCTTYPE0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLEPRODUCTCATEGORY6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLEPRODUCTCATEGORY5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLEPRODUCTCATEGORY4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLEPRODUCTCATEGORY3** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLEPRODUCTCATEGORY2** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  | 
+**PRODUCTGROUP** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 ## Examples
 
@@ -48,6 +50,7 @@ $CatalogsProductGroupFilterKeys = Initialize-PSOpenAPIToolsCatalogsProductGroupF
  -CUSTOMLABEL4 null `
  -ITEMGROUPID null `
  -GENDER null `
+ -MEDIATYPE null `
  -PRODUCTTYPE4 null `
  -PRODUCTTYPE3 null `
  -PRODUCTTYPE2 null `
@@ -59,7 +62,8 @@ $CatalogsProductGroupFilterKeys = Initialize-PSOpenAPIToolsCatalogsProductGroupF
  -GOOGLEPRODUCTCATEGORY3 null `
  -GOOGLEPRODUCTCATEGORY2 null `
  -GOOGLEPRODUCTCATEGORY1 null `
- -GOOGLEPRODUCTCATEGORY0 null
+ -GOOGLEPRODUCTCATEGORY0 null `
+ -PRODUCTGROUP null
 ```
 
 - Convert the resource to JSON

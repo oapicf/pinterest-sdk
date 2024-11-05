@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.model.CatalogsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsVerticalProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,12 +22,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("catalogs_product_groups_update_request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsUpdateRequest   {
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid Boolean isFeatured;
-  private @Valid CatalogsProductGroupFiltersRequest filters;
+  private String name;
+  private String description;
+  private Boolean isFeatured;
+  private CatalogsProductGroupFiltersRequest filters;
 
   /**
    **/
@@ -95,7 +97,7 @@ public class CatalogsProductGroupsUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
+  @Valid public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
   }
 

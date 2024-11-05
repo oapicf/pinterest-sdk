@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -83,14 +83,6 @@ func (o PinMediaWithImageAndVideo) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaWithImageAndVideo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedPinMedia, errPinMedia := json.Marshal(o.PinMedia)
-	if errPinMedia != nil {
-		return map[string]interface{}{}, errPinMedia
-	}
-	errPinMedia = json.Unmarshal([]byte(serializedPinMedia), &toSerialize)
-	if errPinMedia != nil {
-		return map[string]interface{}{}, errPinMedia
-	}
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}

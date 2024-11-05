@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An item to be upserted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="An item to be upserted")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpsertRetailItem   {
   
   private String itemId;
@@ -21,13 +21,7 @@ public class CatalogsUpsertRetailItem   {
    * Gets or Sets operation
    */
   public enum OperationEnum {
-    CREATE("CREATE"),
-
-        UPDATE("UPDATE"),
-
-        UPSERT("UPSERT"),
-
-        DELETE("DELETE");
+    UPSERT("UPSERT");
     private String value;
 
     OperationEnum(String value) {
@@ -42,7 +36,7 @@ public class CatalogsUpsertRetailItem   {
   }
 
   private OperationEnum operation;
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   /**
    * The catalog item id in the merchant namespace
@@ -77,10 +71,10 @@ public class CatalogsUpsertRetailItem   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
   @NotNull
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

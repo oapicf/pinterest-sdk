@@ -39,5 +39,8 @@ data class ImageDetails (
     @Json(name = "url")
     val url: kotlin.String
 
-)
+) {
+
+
+}
 

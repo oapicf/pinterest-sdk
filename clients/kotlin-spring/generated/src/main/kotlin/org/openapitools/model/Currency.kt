@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,34 +17,44 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Currency Codes from ISO 4217
-* Values: UNK,USD,GBP,CAD,EUR,AUD,NZD,SEK,ILS,CHF,HKD,JPY,SGD,KRW,NOK,DKK,PLN,RON,HUF,CZK,BRL,MXN,ARS,CLP,COP
+* Values: UNK,USD,GBP,CAD,EUR,AUD,NZD,SEK,ILS,CHF,HKD,JPY,SGD,KRW,NOK,DKK,PLN,RON,HUF,CZK,BRL,MXN,ARS,CLP,COP,INR,TRY
 */
-enum class Currency(val value: kotlin.String) {
+enum class Currency(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("UNK") UNK("UNK"),
-    @JsonProperty("USD") USD("USD"),
-    @JsonProperty("GBP") GBP("GBP"),
-    @JsonProperty("CAD") CAD("CAD"),
-    @JsonProperty("EUR") EUR("EUR"),
-    @JsonProperty("AUD") AUD("AUD"),
-    @JsonProperty("NZD") NZD("NZD"),
-    @JsonProperty("SEK") SEK("SEK"),
-    @JsonProperty("ILS") ILS("ILS"),
-    @JsonProperty("CHF") CHF("CHF"),
-    @JsonProperty("HKD") HKD("HKD"),
-    @JsonProperty("JPY") JPY("JPY"),
-    @JsonProperty("SGD") SGD("SGD"),
-    @JsonProperty("KRW") KRW("KRW"),
-    @JsonProperty("NOK") NOK("NOK"),
-    @JsonProperty("DKK") DKK("DKK"),
-    @JsonProperty("PLN") PLN("PLN"),
-    @JsonProperty("RON") RON("RON"),
-    @JsonProperty("HUF") HUF("HUF"),
-    @JsonProperty("CZK") CZK("CZK"),
-    @JsonProperty("BRL") BRL("BRL"),
-    @JsonProperty("MXN") MXN("MXN"),
-    @JsonProperty("ARS") ARS("ARS"),
-    @JsonProperty("CLP") CLP("CLP"),
-    @JsonProperty("COP") COP("COP")
+    UNK("UNK"),
+    USD("USD"),
+    GBP("GBP"),
+    CAD("CAD"),
+    EUR("EUR"),
+    AUD("AUD"),
+    NZD("NZD"),
+    SEK("SEK"),
+    ILS("ILS"),
+    CHF("CHF"),
+    HKD("HKD"),
+    JPY("JPY"),
+    SGD("SGD"),
+    KRW("KRW"),
+    NOK("NOK"),
+    DKK("DKK"),
+    PLN("PLN"),
+    RON("RON"),
+    HUF("HUF"),
+    CZK("CZK"),
+    BRL("BRL"),
+    MXN("MXN"),
+    ARS("ARS"),
+    CLP("CLP"),
+    COP("COP"),
+    INR("INR"),
+    TRY("TRY");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): Currency {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

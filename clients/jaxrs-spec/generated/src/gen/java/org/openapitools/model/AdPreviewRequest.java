@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdPreviewRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdPreviewRequest   {
-  private @Valid String imageUrl;
-  private @Valid String title;
-  private @Valid String pinId;
+  private String imageUrl;
+  private String title;
+  private String pinId;
 
   /**
    * Image URL.
@@ -34,8 +34,7 @@ public class AdPreviewRequest   {
   
   @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
   @JsonProperty("image_url")
-  @NotNull
-  public String getImageUrl() {
+  @NotNull public String getImageUrl() {
     return imageUrl;
   }
 
@@ -55,8 +54,7 @@ public class AdPreviewRequest   {
   
   @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
   @JsonProperty("title")
-  @NotNull
-  public String getTitle() {
+  @NotNull public String getTitle() {
     return title;
   }
 
@@ -76,8 +74,7 @@ public class AdPreviewRequest   {
   
   @ApiModelProperty(example = "7389479023", required = true, value = "Pin ID.")
   @JsonProperty("pin_id")
-  @NotNull
-  public String getPinId() {
+  @NotNull public String getPinId() {
     return pinId;
   }
 

@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -41,4 +41,6 @@ enum Currency {
   Currency_ARS = 22;
   Currency_CLP = 23;
   Currency_COP = 24;
+  Currency_INR = 25;
+  Currency_TRY = 26;
 }

@@ -16,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("PinMediaSourceImagesBase64_items_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImagesBase64ItemsInner   {
-  private @Valid String title;
-  private @Valid String description;
-  private @Valid String link;
+  private String title;
+  private String description;
+  private String link;
   public enum ContentTypeEnum {
 
     JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
@@ -68,8 +68,8 @@ public class PinMediaSourceImagesBase64ItemsInner   {
     }
 }
 
-  private @Valid ContentTypeEnum contentType;
-  private @Valid String data;
+  private ContentTypeEnum contentType;
+  private String data;
 
   /**
    **/
@@ -139,8 +139,7 @@ public class PinMediaSourceImagesBase64ItemsInner   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("content_type")
-  @NotNull
-  public ContentTypeEnum getContentType() {
+  @NotNull public ContentTypeEnum getContentType() {
     return contentType;
   }
 
@@ -160,8 +159,7 @@ public class PinMediaSourceImagesBase64ItemsInner   {
   
   @ApiModelProperty(required = true, value = "Image to upload as base64 string.")
   @JsonProperty("data")
-  @NotNull
- @Pattern(regexp="[a-zA-Z0-9+/=]+")  public String getData() {
+  @NotNull  @Pattern(regexp="[a-zA-Z0-9+/=]+")public String getData() {
     return data;
   }
 

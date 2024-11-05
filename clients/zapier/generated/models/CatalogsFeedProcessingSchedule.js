@@ -403,7 +403,6 @@ module.exports = {
                     'Pacific/Wake',
                     'Pacific/Wallis',
                     'WET',
-                    'null',
                 ],
             },
         ]

@@ -169,6 +169,9 @@ module KeywordsApiHandlerParams =
       ages : string[] option;
 
 
+      includeKeywords : string[] option;
+
+
       normalizeAgainstGroup : bool option;
 
 

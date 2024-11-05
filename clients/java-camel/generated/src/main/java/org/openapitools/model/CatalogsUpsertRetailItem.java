@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsUpsertRetailItem", description = "An item to be upserted")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpsertRetailItem {
 
   private String itemId;
@@ -30,13 +30,7 @@ public class CatalogsUpsertRetailItem {
    * Gets or Sets operation
    */
   public enum OperationEnum {
-    CREATE("CREATE"),
-    
-    UPDATE("UPDATE"),
-    
-    UPSERT("UPSERT"),
-    
-    DELETE("DELETE");
+    UPSERT("UPSERT");
 
     private String value;
 
@@ -67,7 +61,7 @@ public class CatalogsUpsertRetailItem {
 
   private OperationEnum operation;
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   public CatalogsUpsertRetailItem() {
     super();
@@ -76,7 +70,7 @@ public class CatalogsUpsertRetailItem {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsUpsertRetailItem(String itemId, OperationEnum operation, ItemAttributes attributes) {
+  public CatalogsUpsertRetailItem(String itemId, OperationEnum operation, ItemAttributesRequest attributes) {
     this.itemId = itemId;
     this.operation = operation;
     this.attributes = attributes;
@@ -90,7 +84,7 @@ public class CatalogsUpsertRetailItem {
   /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  */
+   */
   @NotNull 
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("item_id")
@@ -110,7 +104,7 @@ public class CatalogsUpsertRetailItem {
   /**
    * Get operation
    * @return operation
-  */
+   */
   @NotNull 
   @Schema(name = "operation", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation")
@@ -122,7 +116,7 @@ public class CatalogsUpsertRetailItem {
     this.operation = operation;
   }
 
-  public CatalogsUpsertRetailItem attributes(ItemAttributes attributes) {
+  public CatalogsUpsertRetailItem attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -130,15 +124,15 @@ public class CatalogsUpsertRetailItem {
   /**
    * Get attributes
    * @return attributes
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

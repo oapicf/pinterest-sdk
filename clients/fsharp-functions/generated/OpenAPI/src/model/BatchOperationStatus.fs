@@ -10,6 +10,7 @@ module BatchOperationStatus =
 
   let PROCESSINGEnum = "PROCESSING"
   let COMPLETEDEnum = "COMPLETED"
+  let FAILEDEnum = "FAILED"
   type BatchOperationStatus = string
 
   //#endregion

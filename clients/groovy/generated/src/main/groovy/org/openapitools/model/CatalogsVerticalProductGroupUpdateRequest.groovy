@@ -4,15 +4,19 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsHotelProductGroupUpdateRequest;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsRetailProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsVerticalProductGroupUpdateRequest {
 
     enum CatalogTypeEnum {
     
-        HOTEL("HOTEL")
+        CREATIVE_ASSETS("CREATIVE_ASSETS")
     
         private final String value
     
@@ -37,5 +41,9 @@ class CatalogsVerticalProductGroupUpdateRequest {
     
     String description
     
-    CatalogsHotelProductGroupFilters filters
+    CatalogsCreativeAssetsProductGroupFilters filters
+    
+    Country country
+    
+    CatalogsLocale locale
 }

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for creating a hotel product group.")
 @JsonTypeName("CatalogsHotelProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupCreateRequest   {
   public enum CatalogTypeEnum {
 
@@ -68,11 +68,11 @@ public class CatalogsHotelProductGroupCreateRequest   {
     }
 }
 
-  private @Valid CatalogTypeEnum catalogType;
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid CatalogsHotelProductGroupFilters filters;
-  private @Valid String catalogId;
+  private CatalogTypeEnum catalogType;
+  private String name;
+  private String description;
+  private CatalogsHotelProductGroupFilters filters;
+  private String catalogId;
 
   /**
    **/
@@ -84,8 +84,7 @@ public class CatalogsHotelProductGroupCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogTypeEnum getCatalogType() {
+  @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
@@ -104,8 +103,7 @@ public class CatalogsHotelProductGroupCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("name")
-  @NotNull
-  public String getName() {
+  @NotNull public String getName() {
     return name;
   }
 
@@ -143,8 +141,7 @@ public class CatalogsHotelProductGroupCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("filters")
-  @NotNull
-  public CatalogsHotelProductGroupFilters getFilters() {
+  @NotNull @Valid public CatalogsHotelProductGroupFilters getFilters() {
     return filters;
   }
 
@@ -164,8 +161,7 @@ public class CatalogsHotelProductGroupCreateRequest   {
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
   @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 

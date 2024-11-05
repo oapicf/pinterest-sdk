@@ -1,18 +1,24 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.Catalog;
+import org.openapitools.vertxweb.server.model.CatalogsCreateReportResponse;
+import org.openapitools.vertxweb.server.model.CatalogsCreateRequest;
 import org.openapitools.vertxweb.server.model.CatalogsFeed;
+import org.openapitools.vertxweb.server.model.CatalogsFeedIngestion;
 import org.openapitools.vertxweb.server.model.CatalogsItemValidationIssue;
 import org.openapitools.vertxweb.server.model.CatalogsItems;
 import org.openapitools.vertxweb.server.model.CatalogsItemsBatch;
 import org.openapitools.vertxweb.server.model.CatalogsItemsFilters;
+import org.openapitools.vertxweb.server.model.CatalogsItemsRequest;
 import org.openapitools.vertxweb.server.model.CatalogsList200Response;
 import org.openapitools.vertxweb.server.model.CatalogsListProductsByFilterRequest;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupPinsList200Response;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupProductCounts;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupsCreate201Response;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupsCreateRequest;
+import org.openapitools.vertxweb.server.model.CatalogsProductGroupProductCountsVertical;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupsList200Response;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupsUpdateRequest;
+import org.openapitools.vertxweb.server.model.CatalogsReport;
+import org.openapitools.vertxweb.server.model.CatalogsReportParameters;
+import org.openapitools.vertxweb.server.model.CatalogsVerticalProductGroup;
 import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.FeedProcessingResultsList200Response;
 import org.openapitools.vertxweb.server.model.FeedsCreateRequest;
@@ -20,6 +26,8 @@ import org.openapitools.vertxweb.server.model.FeedsList200Response;
 import org.openapitools.vertxweb.server.model.FeedsUpdateRequest;
 import org.openapitools.vertxweb.server.model.ItemsBatchPostRequest;
 import org.openapitools.vertxweb.server.model.ItemsIssuesList200Response;
+import org.openapitools.vertxweb.server.model.MultipleProductGroupsInner;
+import org.openapitools.vertxweb.server.model.ReportsStats200Response;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -51,10 +59,13 @@ public class CatalogsApiHandler {
     }
 
     public void mount(RouterBuilder builder) {
+        builder.operation("catalogsCreate").handler(this::catalogsCreate);
         builder.operation("catalogsList").handler(this::catalogsList);
         builder.operation("catalogsProductGroupPinsList").handler(this::catalogsProductGroupPinsList);
         builder.operation("catalogsProductGroupsCreate").handler(this::catalogsProductGroupsCreate);
+        builder.operation("catalogsProductGroupsCreateMany").handler(this::catalogsProductGroupsCreateMany);
         builder.operation("catalogsProductGroupsDelete").handler(this::catalogsProductGroupsDelete);
+        builder.operation("catalogsProductGroupsDeleteMany").handler(this::catalogsProductGroupsDeleteMany);
         builder.operation("catalogsProductGroupsGet").handler(this::catalogsProductGroupsGet);
         builder.operation("catalogsProductGroupsList").handler(this::catalogsProductGroupsList);
         builder.operation("catalogsProductGroupsProductCountsGet").handler(this::catalogsProductGroupsProductCountsGet);
@@ -63,13 +74,43 @@ public class CatalogsApiHandler {
         builder.operation("feedsCreate").handler(this::feedsCreate);
         builder.operation("feedsDelete").handler(this::feedsDelete);
         builder.operation("feedsGet").handler(this::feedsGet);
+        builder.operation("feedsIngest").handler(this::feedsIngest);
         builder.operation("feedsList").handler(this::feedsList);
         builder.operation("feedsUpdate").handler(this::feedsUpdate);
         builder.operation("itemsBatchGet").handler(this::itemsBatchGet);
         builder.operation("itemsBatchPost").handler(this::itemsBatchPost);
         builder.operation("itemsGet").handler(this::itemsGet);
         builder.operation("itemsIssuesList").handler(this::itemsIssuesList);
+        builder.operation("itemsPost").handler(this::itemsPost);
         builder.operation("productsByProductGroupFilterList").handler(this::productsByProductGroupFilterList);
+        builder.operation("reportsCreate").handler(this::reportsCreate);
+        builder.operation("reportsGet").handler(this::reportsGet);
+        builder.operation("reportsStats").handler(this::reportsStats);
+    }
+
+    private void catalogsCreate(RoutingContext routingContext) {
+        logger.info("catalogsCreate()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        RequestParameter body = requestParameters.body();
+        CatalogsCreateRequest catalogsCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsCreateRequest>(){}) : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter catalogsCreateRequest is {}", catalogsCreateRequest);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.catalogsCreate(catalogsCreateRequest, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
     }
 
     private void catalogsList(RoutingContext routingContext) {
@@ -108,13 +149,15 @@ public class CatalogsApiHandler {
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        Boolean pinMetrics = requestParameters.queryParameter("pin_metrics") != null ? requestParameters.queryParameter("pin_metrics").getBoolean() : false;
 
         logger.debug("Parameter productGroupId is {}", productGroupId);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter pinMetrics is {}", pinMetrics);
 
-        api.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId)
+        api.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -133,13 +176,38 @@ public class CatalogsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         RequestParameter body = requestParameters.body();
-        CatalogsProductGroupsCreateRequest catalogsProductGroupsCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsProductGroupsCreateRequest>(){}) : null;
+        MultipleProductGroupsInner multipleProductGroupsInner = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<MultipleProductGroupsInner>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogsProductGroupsCreateRequest is {}", catalogsProductGroupsCreateRequest);
+        logger.debug("Parameter multipleProductGroupsInner is {}", multipleProductGroupsInner);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequest, adAccountId)
+        api.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void catalogsProductGroupsCreateMany(RoutingContext routingContext) {
+        logger.info("catalogsProductGroupsCreateMany()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        RequestParameter body = requestParameters.body();
+        List<MultipleProductGroupsInner> multipleProductGroupsInner = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<MultipleProductGroupsInner>>(){}) : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter multipleProductGroupsInner is {}", multipleProductGroupsInner);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -164,6 +232,30 @@ public class CatalogsApiHandler {
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsProductGroupsDelete(productGroupId, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void catalogsProductGroupsDeleteMany(RoutingContext routingContext) {
+        logger.info("catalogsProductGroupsDeleteMany()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        List<Integer> id = requestParameters.queryParameter("id") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("id").get(), new TypeReference<List<Integer>>(){}) : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter id is {}", id);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.catalogsProductGroupsDeleteMany(id, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -205,19 +297,21 @@ public class CatalogsApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
+        List<Integer> id = requestParameters.queryParameter("id") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("id").get(), new TypeReference<List<Integer>>(){}) : null;
         String feedId = requestParameters.queryParameter("feed_id") != null ? requestParameters.queryParameter("feed_id").getString() : null;
         String catalogId = requestParameters.queryParameter("catalog_id") != null ? requestParameters.queryParameter("catalog_id").getString() : null;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
+        logger.debug("Parameter id is {}", id);
         logger.debug("Parameter feedId is {}", feedId);
         logger.debug("Parameter catalogId is {}", catalogId);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.catalogsProductGroupsList(feedId, catalogId, bookmark, pageSize, adAccountId)
+        api.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -370,6 +464,30 @@ public class CatalogsApiHandler {
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.feedsGet(feedId, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void feedsIngest(RoutingContext routingContext) {
+        logger.info("feedsIngest()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String feedId = requestParameters.pathParameter("feed_id") != null ? requestParameters.pathParameter("feed_id").getString() : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter feedId is {}", feedId);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.feedsIngest(feedId, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -547,6 +665,31 @@ public class CatalogsApiHandler {
             .onFailure(routingContext::fail);
     }
 
+    private void itemsPost(RoutingContext routingContext) {
+        logger.info("itemsPost()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        RequestParameter body = requestParameters.body();
+        CatalogsItemsRequest catalogsItemsRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsItemsRequest>(){}) : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter catalogsItemsRequest is {}", catalogsItemsRequest);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.itemsPost(catalogsItemsRequest, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
     private void productsByProductGroupFilterList(RoutingContext routingContext) {
         logger.info("productsByProductGroupFilterList()");
 
@@ -558,13 +701,92 @@ public class CatalogsApiHandler {
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        Boolean pinMetrics = requestParameters.queryParameter("pin_metrics") != null ? requestParameters.queryParameter("pin_metrics").getBoolean() : false;
 
         logger.debug("Parameter catalogsListProductsByFilterRequest is {}", catalogsListProductsByFilterRequest);
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter pinMetrics is {}", pinMetrics);
 
-        api.productsByProductGroupFilterList(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId)
+        api.productsByProductGroupFilterList(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void reportsCreate(RoutingContext routingContext) {
+        logger.info("reportsCreate()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        RequestParameter body = requestParameters.body();
+        CatalogsReportParameters catalogsReportParameters = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsReportParameters>(){}) : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter catalogsReportParameters is {}", catalogsReportParameters);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.reportsCreate(catalogsReportParameters, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void reportsGet(RoutingContext routingContext) {
+        logger.info("reportsGet()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String token = requestParameters.queryParameter("token") != null ? requestParameters.queryParameter("token").getString() : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter token is {}", token);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.reportsGet(token, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void reportsStats(RoutingContext routingContext) {
+        logger.info("reportsStats()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        CatalogsReportParameters parameters = requestParameters.queryParameter("parameters") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("parameters").get(), new TypeReference<CatalogsReportParameters>(){}) : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+
+        logger.debug("Parameter parameters is {}", parameters);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter pageSize is {}", pageSize);
+        logger.debug("Parameter bookmark is {}", bookmark);
+
+        api.reportsStats(parameters, adAccountId, pageSize, bookmark)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

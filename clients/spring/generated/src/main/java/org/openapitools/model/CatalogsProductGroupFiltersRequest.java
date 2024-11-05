@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupFiltersRequest", description = "Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupFiltersRequest {
 
   @Valid
@@ -62,7 +62,7 @@ public class CatalogsProductGroupFiltersRequest {
   /**
    * Get anyOf
    * @return anyOf
-  */
+   */
   @NotNull @Valid @Size(min = 1) 
   @Schema(name = "any_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("any_of")
@@ -90,7 +90,7 @@ public class CatalogsProductGroupFiltersRequest {
   /**
    * Get allOf
    * @return allOf
-  */
+   */
   @NotNull @Valid @Size(min = 1) 
   @Schema(name = "all_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("all_of")

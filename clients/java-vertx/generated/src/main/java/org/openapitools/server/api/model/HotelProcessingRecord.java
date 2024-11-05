@@ -17,8 +17,8 @@ import org.openapitools.server.api.model.ItemValidationEvent;
 public class HotelProcessingRecord   {
   
   private String hotelId;
-  private List<ItemValidationEvent> errors;
-  private List<ItemValidationEvent> warnings;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
+  private List<ItemValidationEvent> warnings = new ArrayList<>();
   private ItemProcessingStatus status;
 
   public HotelProcessingRecord () {

@@ -10,10 +10,9 @@ Name | Type | Description | Notes
 **LifetimeSpendCap** | **Int32** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and &quot;&quot;daily_spend_cap&quot;&quot; cannot be set at the same time. | [optional] 
 **DailySpendCap** | **Int32** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and &quot;&quot;lifetime_spend_cap&quot;&quot; cannot be set at the same time. | [optional] 
 **OrderLineId** | **String** | Order line ID that appears on the invoice. | [optional] 
-**TrackingUrls** | [**AdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] 
+**TrackingUrls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] 
 **StartTime** | **Int32** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
 **EndTime** | **Int32** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**SummaryStatus** | [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
 **IsFlexibleDailyBudgets** | **Boolean** | Determine if a campaign has flexible daily budgets setup. | [optional] 
 **DefaultAdGroupBudgetInMicroCurrency** | **Int32** | When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. | [optional] 
 **IsAutomatedCampaign** | **Boolean** | Specifies whether the campaign was created in the automated campaign flow | [optional] 
@@ -34,7 +33,6 @@ $CampaignUpdateRequest = Initialize-PSOpenAPIToolsCampaignUpdateRequest  -Id 549
  -TrackingUrls null `
  -StartTime 1580865126 `
  -EndTime 1644023526 `
- -SummaryStatus null `
  -IsFlexibleDailyBudgets true `
  -DefaultAdGroupBudgetInMicroCurrency 0 `
  -IsAutomatedCampaign true `

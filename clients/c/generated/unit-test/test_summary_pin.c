@@ -16,7 +16,7 @@
 #include "../model/summary_pin.h"
 summary_pin_t* instantiate_summary_pin(int include_optional);
 
-#include "test_summary_pin_media.c"
+#include "test_pin_media.c"
 
 
 summary_pin_t* instantiate_summary_pin(int include_optional) {
@@ -24,7 +24,7 @@ summary_pin_t* instantiate_summary_pin(int include_optional) {
   if (include_optional) {
     summary_pin = summary_pin_create(
        // false, not to have infinite recursion
-      instantiate_summary_pin_media(0),
+      instantiate_pin_media(0),
       "0",
       "https://www.pinterest.com/",
       "0",

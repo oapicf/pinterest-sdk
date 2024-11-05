@@ -72,5 +72,8 @@ data class ConversionTagResponse (
     @Json(name = "configs")
     val configs: ConversionTagConfigs? = null
 
-)
+) {
+
+
+}
 

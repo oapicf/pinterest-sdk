@@ -220,4 +220,28 @@ public class AdsAnalyticsCreateAsyncRequestTest {
         // TODO: test reportFormat
     }
 
+    /**
+     * Test the property 'primarySort'
+     */
+    @Test
+    public void primarySortTest() {
+        // TODO: test primarySort
+    }
+
+    /**
+     * Test the property 'startHour'
+     */
+    @Test
+    public void startHourTest() {
+        // TODO: test startHour
+    }
+
+    /**
+     * Test the property 'endHour'
+     */
+    @Test
+    public void endHourTest() {
+        // TODO: test endHour
+    }
+
 }

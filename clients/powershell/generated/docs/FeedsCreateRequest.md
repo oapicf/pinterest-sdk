@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**CatalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] 
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**CatalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] 
 
 ## Examples
 
@@ -29,6 +30,7 @@ $FeedsCreateRequest = Initialize-PSOpenAPIToolsFeedsCreateRequest  -DefaultCurre
  -CatalogType null `
  -DefaultCountry null `
  -DefaultAvailability null `
+ -Status null `
  -CatalogId null
 ```
 

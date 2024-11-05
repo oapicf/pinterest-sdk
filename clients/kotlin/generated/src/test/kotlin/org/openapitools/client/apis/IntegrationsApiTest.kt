@@ -78,7 +78,7 @@ class IntegrationsApiTest : ShouldSpec() {
         should("test integrationsGetList") {
             // uncomment below to test integrationsGetList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : IntegrationsGetList200Response = apiInstance.integrationsGetList(bookmark, pageSize)
             //result shouldBe ("TODO")
         }

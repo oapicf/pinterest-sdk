@@ -159,7 +159,7 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
             //modelInstance.productItemIds shouldBe ("TODO")
         }
 
-        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
         should("test targetingTypes") {
             // uncomment below to test the property
             //modelInstance.targetingTypes shouldBe ("TODO")
@@ -175,6 +175,24 @@ class AdsAnalyticsCreateAsyncRequestTest : ShouldSpec() {
         should("test reportFormat") {
             // uncomment below to test the property
             //modelInstance.reportFormat shouldBe ("TODO")
+        }
+
+        // to test the property `primarySort` - Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+        should("test primarySort") {
+            // uncomment below to test the property
+            //modelInstance.primarySort shouldBe ("TODO")
+        }
+
+        // to test the property `startHour` - Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+        should("test startHour") {
+            // uncomment below to test the property
+            //modelInstance.startHour shouldBe ("TODO")
+        }
+
+        // to test the property `endHour` - Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+        should("test endHour") {
+            // uncomment below to test the property
+            //modelInstance.endHour shouldBe ("TODO")
         }
 
     }

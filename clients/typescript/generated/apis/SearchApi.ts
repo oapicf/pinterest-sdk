@@ -18,7 +18,7 @@ import { SearchUserBoardsGet200Response } from '../models/SearchUserBoardsGet200
 export class SearchApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
      * Search pins by a given search term
      * @param term Search term to look up pins.
      * @param countryCode Two letter country code (ISO 3166-1 alpha-2)
@@ -93,11 +93,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/reference/business-access/\'>Understanding Business Access</a> for more information.
+     * Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/getting-started/using-business-access/\'>Understanding Business Access</a> for more information.
      * Search user\'s boards
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs.
      */
     public async searchUserBoardsGet(adAccountId?: string, bookmark?: string, pageSize?: number, query?: string, _options?: Configuration): Promise<RequestContext> {
@@ -141,6 +141,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -151,7 +156,7 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/reference/business-access/\'>Understanding Business Access</a> for more information.
+     * Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/getting-started/using-business-access/\'>Understanding Business Access</a> for more information.
      * Search user\'s Pins
      * @param query Search query. Can contain pin description keywords or comma-separated pin IDs.
      * @param adAccountId Unique identifier of an ad account.

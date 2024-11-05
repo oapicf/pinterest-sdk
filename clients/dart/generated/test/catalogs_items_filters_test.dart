@@ -26,7 +26,7 @@ void main() {
       // TODO
     });
 
-    // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
     // String catalogId
     test('to test the property `catalogId`', () async {
       // TODO
@@ -34,6 +34,11 @@ void main() {
 
     // List<String> hotelIds (default value: const [])
     test('to test the property `hotelIds`', () async {
+      // TODO
+    });
+
+    // List<String> creativeAssetsIds (default value: const [])
+    test('to test the property `creativeAssetsIds`', () async {
       // TODO
     });
 

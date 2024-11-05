@@ -10,7 +10,7 @@ The class is defined in **[SummaryPin.java](../../src/main/java/org/openapitools
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [`SummaryPinMedia`](SummaryPinMedia.md) |  |  [optional property]
+**media** | [`PinMedia`](PinMedia.md) |  |  [optional property] [readonly property]
 **altText** | `String` |  |  [optional property]
 **link** | `String` |  |  [optional property]
 **title** | `String` |  |  [optional property]

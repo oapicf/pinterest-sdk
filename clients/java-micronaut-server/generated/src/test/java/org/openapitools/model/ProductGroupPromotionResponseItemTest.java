@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionResponseElement;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;

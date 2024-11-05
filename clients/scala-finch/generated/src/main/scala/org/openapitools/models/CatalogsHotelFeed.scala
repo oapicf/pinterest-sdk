@@ -29,9 +29,9 @@ import org.openapitools.models.NullableCurrency
  * @param defaultUnderscorelocale The locale used within a feed for product descriptions.
  * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  */
-case class CatalogsHotelFeed(createdUnderscoreat: Option[ZonedDateTime],
-                id: Option[String],
-                updatedUnderscoreat: Option[ZonedDateTime],
+case class CatalogsHotelFeed(createdUnderscoreat: ZonedDateTime,
+                id: String,
+                updatedUnderscoreat: ZonedDateTime,
                 name: String,
                 format: CatalogsFormat,
                 catalogUnderscoretype: CatalogsType,

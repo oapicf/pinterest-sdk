@@ -1,5 +1,4 @@
 const utils = require('../utils/utils');
-const OauthAccessTokenRequest = require('../models/OauthAccessTokenRequest');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -13,6 +12,7 @@ module.exports = {
                 choices: [
                     'authorization_code',
                     'refresh_token',
+                    'client_credentials',
                 ],
             },
             {

@@ -11,19 +11,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BatchOperation;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
-import org.openapitools.model.Language;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Request object to delete catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Request object to delete catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemsDeleteBatchRequest   {
   
   private Country country;
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
   private BatchOperation operation;
   private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
@@ -48,10 +47,10 @@ public class CatalogsItemsDeleteBatchRequest   {
   @JsonProperty("language")
   @NotNull
   @Valid
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

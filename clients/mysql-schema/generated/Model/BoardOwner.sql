@@ -1,26 +1,26 @@
 --
 -- Pinterest REST API.
--- Prepared SQL queries for 'Board_owner' definition.
+-- Prepared SQL queries for 'BoardOwner' definition.
 --
 
 
 --
--- SELECT template for table `Board_owner`
+-- SELECT template for table `BoardOwner`
 --
-SELECT `username` FROM `Board_owner` WHERE 1;
+SELECT `username` FROM `BoardOwner` WHERE 1;
 
 --
--- INSERT template for table `Board_owner`
+-- INSERT template for table `BoardOwner`
 --
-INSERT INTO `Board_owner`(`username`) VALUES (?);
+INSERT INTO `BoardOwner`(`username`) VALUES (?);
 
 --
--- UPDATE template for table `Board_owner`
+-- UPDATE template for table `BoardOwner`
 --
-UPDATE `Board_owner` SET `username` = ? WHERE 1;
+UPDATE `BoardOwner` SET `username` = ? WHERE 1;
 
 --
--- DELETE template for table `Board_owner`
+-- DELETE template for table `BoardOwner`
 --
-DELETE FROM `Board_owner` WHERE 0;
+DELETE FROM `BoardOwner` WHERE 0;
 

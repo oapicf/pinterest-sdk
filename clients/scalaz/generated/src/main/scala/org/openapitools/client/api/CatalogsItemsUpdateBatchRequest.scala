@@ -13,7 +13,7 @@ import CatalogsItemsUpdateBatchRequest._
 
 case class CatalogsItemsUpdateBatchRequest (
   country: Country,
-language: Language,
+language: CatalogsItemsRequestLanguage,
 operation: BatchOperation,
 /* Array with catalogs items */
   items: List[ItemUpdateBatchRecord])

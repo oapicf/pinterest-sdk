@@ -1,6 +1,13 @@
 package org.openapitools.model;
 
-import org.openapitools.model.CatalogsProductMetadata;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.openapitools.model.CatalogsCreativeAssetsProduct;
+import org.openapitools.model.CatalogsCreativeAssetsProductMetadata;
+import org.openapitools.model.CatalogsHotelProduct;
+import org.openapitools.model.CatalogsRetailProduct;
+import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -19,6 +26,14 @@ public class CatalogsProductTest {
     @Test
     public void testCatalogsProduct() {
         // TODO: test CatalogsProduct
+    }
+
+    /**
+     * Test the property 'catalogType'
+     */
+    @Test
+    public void catalogTypeTest() {
+        // TODO: test catalogType
     }
 
     /**

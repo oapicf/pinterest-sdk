@@ -16,10 +16,11 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BatchOperationStatus
+import org.openapitools.client.models.CatalogsCreativeAssetsItemsBatch
 import org.openapitools.client.models.CatalogsHotelItemsBatch
 import org.openapitools.client.models.CatalogsRetailItemsBatch
 import org.openapitools.client.models.CatalogsType
-import org.openapitools.client.models.HotelProcessingRecord
+import org.openapitools.client.models.CreativeAssetsProcessingRecord
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -29,8 +30,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param batchId Id of the catalogs items batch
- * @param createdTime Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
- * @param completedTime Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+ * @param createdTime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+ * @param completedTime Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
  * @param status 
  * @param items Array with the catalogs items processing records part of the catalogs items batch
  */
@@ -43,16 +44,17 @@ interface CatalogsItemsBatch {
     /* Id of the catalogs items batch */
     @Json(name = "batch_id")
     val batchId: kotlin.String?
-    /* Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
     @Json(name = "created_time")
     val createdTime: java.time.OffsetDateTime?
-    /* Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     @Json(name = "completed_time")
     val completedTime: java.time.OffsetDateTime?
     @Json(name = "status")
     val status: BatchOperationStatus?
     /* Array with the catalogs items processing records part of the catalogs items batch */
     @Json(name = "items")
-    val items: kotlin.collections.List<HotelProcessingRecord>?
+    val items: kotlin.collections.List<CreativeAssetsProcessingRecord>?
+
 }
 

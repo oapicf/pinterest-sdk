@@ -20,7 +20,7 @@ API.Client.CatalogsCreateRetailItem.prototype.itemId;
 API.Client.CatalogsCreateRetailItem.prototype.operation;
 
 /**
- * @type {!API.Client.ItemAttributes}
+ * @type {!API.Client.ItemAttributesRequest}
  * @export
  */
 API.Client.CatalogsCreateRetailItem.prototype.attributes;
@@ -28,7 +28,4 @@ API.Client.CatalogsCreateRetailItem.prototype.attributes;
 /** @enum {string} */
 API.Client.CatalogsCreateRetailItem.OperationEnum = { 
   CREATE: 'CREATE',
-  UPDATE: 'UPDATE',
-  UPSERT: 'UPSERT',
-  DELETE: 'DELETE',
 }

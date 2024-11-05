@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.openapitools.model.AdAccountCreateSubscriptionRequestPartnerMetadata;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,7 +19,7 @@ import javax.annotation.Generated;
  * AdAccountCreateSubscriptionRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateSubscriptionRequest {
 
   private String webhookUrl;
@@ -28,6 +29,8 @@ public class AdAccountCreateSubscriptionRequest {
   private String partnerAccessToken;
 
   private String partnerRefreshToken;
+
+  private AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata;
 
   public AdAccountCreateSubscriptionRequest() {
     super();
@@ -48,7 +51,7 @@ public class AdAccountCreateSubscriptionRequest {
   /**
    * Standard HTTPS webhook URL.
    * @return webhookUrl
-  */
+   */
   @NotNull 
   @Schema(name = "webhook_url", example = "https://webhook.example.com/xyz", description = "Standard HTTPS webhook URL.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("webhook_url")
@@ -68,7 +71,7 @@ public class AdAccountCreateSubscriptionRequest {
   /**
    * Lead form ID.
    * @return leadFormId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "lead_form_id", example = "383791336903426390", description = "Lead form ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lead_form_id")
@@ -88,7 +91,7 @@ public class AdAccountCreateSubscriptionRequest {
   /**
    * Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
    * @return partnerAccessToken
-  */
+   */
   
   @Schema(name = "partner_access_token", description = "Partner access token. Only for clients that requires authentication. We recommend to avoid this param.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token")
@@ -108,7 +111,7 @@ public class AdAccountCreateSubscriptionRequest {
   /**
    * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
    * @return partnerRefreshToken
-  */
+   */
   
   @Schema(name = "partner_refresh_token", description = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token")
@@ -118,6 +121,26 @@ public class AdAccountCreateSubscriptionRequest {
 
   public void setPartnerRefreshToken(String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
+  }
+
+  public AdAccountCreateSubscriptionRequest partnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+    return this;
+  }
+
+  /**
+   * Get partnerMetadata
+   * @return partnerMetadata
+   */
+  @Valid 
+  @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("partner_metadata")
+  public AdAccountCreateSubscriptionRequestPartnerMetadata getPartnerMetadata() {
+    return partnerMetadata;
+  }
+
+  public void setPartnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
   }
 
   @Override
@@ -132,12 +155,13 @@ public class AdAccountCreateSubscriptionRequest {
     return Objects.equals(this.webhookUrl, adAccountCreateSubscriptionRequest.webhookUrl) &&
         Objects.equals(this.leadFormId, adAccountCreateSubscriptionRequest.leadFormId) &&
         Objects.equals(this.partnerAccessToken, adAccountCreateSubscriptionRequest.partnerAccessToken) &&
-        Objects.equals(this.partnerRefreshToken, adAccountCreateSubscriptionRequest.partnerRefreshToken);
+        Objects.equals(this.partnerRefreshToken, adAccountCreateSubscriptionRequest.partnerRefreshToken) &&
+        Objects.equals(this.partnerMetadata, adAccountCreateSubscriptionRequest.partnerMetadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhookUrl, leadFormId, partnerAccessToken, partnerRefreshToken);
+    return Objects.hash(webhookUrl, leadFormId, partnerAccessToken, partnerRefreshToken, partnerMetadata);
   }
 
   @Override
@@ -148,6 +172,7 @@ public class AdAccountCreateSubscriptionRequest {
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    partnerAccessToken: ").append(toIndentedString(partnerAccessToken)).append("\n");
     sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
+    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

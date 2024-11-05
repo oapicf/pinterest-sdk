@@ -23,15 +23,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+ * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  */
 
 
 data class TargetingTypeFilter (
 
-    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
+    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
     @Json(name = "targeting_types")
     val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>? = null
 
-)
+) {
+
+
+}
 

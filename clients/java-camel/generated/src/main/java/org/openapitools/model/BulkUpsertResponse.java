@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertResponse", description = "ID of the bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertResponse {
 
   private String requestId;
@@ -32,7 +32,7 @@ public class BulkUpsertResponse {
   /**
    * Get requestId
    * @return requestId
-  */
+   */
   
   @Schema(name = "request_id", example = "549763856477-1660864560-1407e16a-c586-4add-94df-d0b160bec0ff, 549763856477-1660864560-d0b160bec0ff", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("request_id")

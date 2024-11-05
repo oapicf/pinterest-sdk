@@ -86,7 +86,7 @@ public class TermsOfServiceControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5a6003b1");
         request.getParameters()
             .add("include_html", String.valueOf(false)) // The query parameter format should be 
             .add("tos_type", "example"); // The query parameter format should be 

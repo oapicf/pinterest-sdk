@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class AudienceDefinitionResponse   {
   
-  private List<@Valid AudienceDefinition> items;
+  private List<@Valid AudienceDefinition> items = new ArrayList<>();
 
   /**
    **/

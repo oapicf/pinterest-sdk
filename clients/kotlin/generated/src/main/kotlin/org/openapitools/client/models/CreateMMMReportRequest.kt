@@ -57,5 +57,6 @@ data class CreateMMMReportRequest (
         @Json(name = "CAMPAIGN_TARGETING") CAMPAIGN_TARGETING("CAMPAIGN_TARGETING"),
         @Json(name = "AD_GROUP_TARGETING") AD_GROUP_TARGETING("AD_GROUP_TARGETING");
     }
+
 }
 

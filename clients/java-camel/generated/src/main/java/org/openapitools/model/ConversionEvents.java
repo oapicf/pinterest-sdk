@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ConversionEvents", description = "A list of events (one or more) encapsulated by a data object.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEvents {
 
   @Valid
@@ -56,7 +56,7 @@ public class ConversionEvents {
   /**
    * Get data
    * @return data
-  */
+   */
   @NotNull @Valid @Size(min = 1, max = 1000) 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("data")

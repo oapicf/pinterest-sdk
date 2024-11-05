@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import TargetingTypeFilter._
 
 case class TargetingTypeFilter (
-  /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
+  /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
   targetingTypes: Option[List[AdsAnalyticsTargetingType]])
 
 object TargetingTypeFilter {

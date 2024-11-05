@@ -6,11 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **NullableString** | Internal name of the lead form. | [optional] 
 **PrivacyPolicyLink** | Pointer to **NullableString** | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. | [optional] 
-**HasAcceptedTerms** | Pointer to **bool** | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad. | [optional] 
+**HasAcceptedTerms** | Pointer to **bool** | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO | [optional] 
 **CompletionMessage** | Pointer to **NullableString** | A message for people who complete the form to let them know what happens next. | [optional] 
 **Status** | Pointer to [**LeadFormStatus**](LeadFormStatus.md) |  | [optional] 
 **DisclosureLanguage** | Pointer to **NullableString** | Additional disclosure language to be included in the lead form. | [optional] 
 **Questions** | Pointer to [**[]LeadFormQuestion**](LeadFormQuestion.md) | List of questions to be displayed on the lead form. | [optional] 
+**PolicyLinks** | Pointer to [**[]LeadFormCommonPolicyLinksInner**](LeadFormCommonPolicyLinksInner.md) | List of additional policy links to be displayed on the lead form. | [optional] 
 **Id** | Pointer to **string** | The ID of this lead form | [optional] 
 **AdAccountId** | Pointer to **string** | The Ad Account ID that this lead form belongs to. | [optional] 
 **CreatedTime** | Pointer to **int32** | Lead form creation time. Unix timestamp in seconds. | [optional] 
@@ -249,6 +250,31 @@ SetQuestions sets Questions field to given value.
 `func (o *LeadFormResponse) HasQuestions() bool`
 
 HasQuestions returns a boolean if a field has been set.
+
+### GetPolicyLinks
+
+`func (o *LeadFormResponse) GetPolicyLinks() []LeadFormCommonPolicyLinksInner`
+
+GetPolicyLinks returns the PolicyLinks field if non-nil, zero value otherwise.
+
+### GetPolicyLinksOk
+
+`func (o *LeadFormResponse) GetPolicyLinksOk() (*[]LeadFormCommonPolicyLinksInner, bool)`
+
+GetPolicyLinksOk returns a tuple with the PolicyLinks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPolicyLinks
+
+`func (o *LeadFormResponse) SetPolicyLinks(v []LeadFormCommonPolicyLinksInner)`
+
+SetPolicyLinks sets PolicyLinks field to given value.
+
+### HasPolicyLinks
+
+`func (o *LeadFormResponse) HasPolicyLinks() bool`
+
+HasPolicyLinks returns a boolean if a field has been set.
 
 ### GetId
 

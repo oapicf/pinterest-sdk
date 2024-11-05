@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -18,12 +18,12 @@ import (
 // checks if the AudienceRule type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AudienceRule{}
 
-// AudienceRule JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
+// AudienceRule JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
 type AudienceRule struct {
 	// Valid countries include: \"US\", \"CA\", and \"GB\".
 	Country *string `json:"country,omitempty"`
 	// Customer list ID. For CUSTOMER_LIST `audience_type`.
-	CustomerListId *string `json:"customer_list_id,omitempty"`
+	CustomerListId *string `json:"customer_list_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// The audience account's verified domain. **Required** for ENGAGEMENT `audience_type`.
 	EngagementDomain []string `json:"engagement_domain,omitempty"`
 	// Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. 
@@ -44,7 +44,7 @@ type AudienceRule struct {
 	// Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}
 	Url []string `json:"url,omitempty"`
 	// The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
-	VisitorSourceId *string `json:"visitor_source_id,omitempty"`
+	VisitorSourceId *string `json:"visitor_source_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
 	EventSource map[string]interface{} `json:"event_source,omitempty"`
 	// Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
@@ -58,7 +58,7 @@ type AudienceRule struct {
 	// Objective for engagement audience filter.
 	ObjectiveType []ObjectiveType `json:"objective_type,omitempty"`
 	// Ad account ID.
-	AdAccountId *string `json:"ad_account_id,omitempty"`
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewAudienceRule instantiates a new AudienceRule object

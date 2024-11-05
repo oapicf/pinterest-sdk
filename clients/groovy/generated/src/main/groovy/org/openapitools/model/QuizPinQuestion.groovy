@@ -15,5 +15,5 @@ class QuizPinQuestion {
     
     String questionText
     
-    List<QuizPinOption> options
+    List<QuizPinOption> options = new ArrayList<>()
 }

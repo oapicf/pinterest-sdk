@@ -5,13 +5,13 @@
 
 
 char* lead_form_question_question_type_ToString(pinterest_rest_api_lead_form_question__e question_type) {
-    char* question_typeArray[] =  { "NULL", "CUSTOM", "FULL_NAME", "FIRST_NAME", "LAST_NAME", "EMAIL", "PHONE_NUMBER", "ZIP_CODE", "AGE", "GENDER", "CITY", "COUNTRY", "PREFERRED_CONTACT_METHOD", "STATE_PROVINCE", "ADDRESS", "DATE_OF_BIRTH" };
+    char* question_typeArray[] =  { "NULL", "CUSTOM", "FULL_NAME", "FIRST_NAME", "LAST_NAME", "EMAIL", "PHONE_NUMBER", "ZIP_CODE", "GENDER", "CITY", "COUNTRY", "STATE_PROVINCE", "ADDRESS", "DATE_OF_BIRTH", "AGE" };
     return question_typeArray[question_type];
 }
 
 pinterest_rest_api_lead_form_question__e lead_form_question_question_type_FromString(char* question_type){
     int stringToReturn = 0;
-    char *question_typeArray[] =  { "NULL", "CUSTOM", "FULL_NAME", "FIRST_NAME", "LAST_NAME", "EMAIL", "PHONE_NUMBER", "ZIP_CODE", "AGE", "GENDER", "CITY", "COUNTRY", "PREFERRED_CONTACT_METHOD", "STATE_PROVINCE", "ADDRESS", "DATE_OF_BIRTH" };
+    char *question_typeArray[] =  { "NULL", "CUSTOM", "FULL_NAME", "FIRST_NAME", "LAST_NAME", "EMAIL", "PHONE_NUMBER", "ZIP_CODE", "GENDER", "CITY", "COUNTRY", "STATE_PROVINCE", "ADDRESS", "DATE_OF_BIRTH", "AGE" };
     size_t sizeofArray = sizeof(question_typeArray) / sizeof(question_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(question_type, question_typeArray[stringToReturn]) == 0) {

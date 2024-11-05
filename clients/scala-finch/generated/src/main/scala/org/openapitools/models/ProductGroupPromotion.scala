@@ -5,7 +5,6 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CreativeType
 import org.openapitools.models.EntityStatus
 import org.openapitools.models.GridClickType
 
@@ -25,7 +24,6 @@ import org.openapitools.models.GridClickType
  * @param trackingUnderscoreurl Tracking template for proudct group promotions. 4000 limit
  * @param catalogUnderscoreproductUnderscoregroupUnderscoreid ID of the catalogs product group that this product group promotion references
  * @param catalogUnderscoreproductUnderscoregroupUnderscorename Catalogs product group name
- * @param creativeUnderscoretype 
  * @param collectionsUnderscoreheroUnderscorepinUnderscoreid Hero Pin ID if this PG is promoted as a Collection
  * @param collectionsUnderscoreheroUnderscoredestinationUnderscoreurl Collections Hero Destination Url
  * @param gridUnderscoreclickUnderscoretype 
@@ -44,7 +42,6 @@ case class ProductGroupPromotion(id: Option[String],
                 trackingUnderscoreurl: Option[String],
                 catalogUnderscoreproductUnderscoregroupUnderscoreid: Option[String],
                 catalogUnderscoreproductUnderscoregroupUnderscorename: Option[String],
-                creativeUnderscoretype: Option[CreativeType],
                 collectionsUnderscoreheroUnderscorepinUnderscoreid: Option[String],
                 collectionsUnderscoreheroUnderscoredestinationUnderscoreurl: Option[String],
                 gridUnderscoreclickUnderscoretype: Option[GridClickType]

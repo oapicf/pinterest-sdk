@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **default_country** | [**Country**](Country.md) |  | [optional] [Enum: ] 
 **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [Enum: ] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 

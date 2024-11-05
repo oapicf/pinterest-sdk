@@ -33,7 +33,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the resources API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-03-14T23:04:30.273794609Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ResourcesApi  {
    private final ResourcesApiService delegate;
 
@@ -44,7 +44,7 @@ public class ResourcesApi  {
          String implClass = servletContext.getInitParameter("ResourcesApi.implementation");
          if (implClass != null && !"".equals(implClass.trim())) {
             try {
-               delegate = (ResourcesApiService) Class.forName(implClass).newInstance();
+               delegate = (ResourcesApiService) Class.forName(implClass).getDeclaredConstructor().newInstance();
             } catch (Exception e) {
                throw new RuntimeException(e);
             }
@@ -79,7 +79,7 @@ public class ResourcesApi  {
     @Path("/delivery_metrics")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get available metrics' definitions", notes = "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.", response = DeliveryMetricsResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get available metrics' definitions", notes = "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.", response = DeliveryMetricsResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
@@ -115,7 +115,7 @@ public class ResourcesApi  {
     @Path("/lead_form_questions")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get lead form questions", notes = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get lead form questions", notes = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -158,8 +158,8 @@ public class ResourcesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = Object.class, responseContainer = "List"),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response targetingOptionsGet(@ApiParam(value = "Public targeting type.", required = true, allowableValues="APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE") @PathParam("targeting_type") @NotNull  String targetingType,@ApiParam(value = "Client ID.") @QueryParam("client_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String clientId,@ApiParam(value = "Oauth signature") @QueryParam("oauth_signature")  String oauthSignature,@ApiParam(value = "Timestamp") @QueryParam("timestamp")  @Pattern(regexp="\\d+") String timestamp,@Context SecurityContext securityContext)
+    public Response targetingOptionsGet(@ApiParam(value = "Public targeting type.", required = true, allowableValues="APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE") @PathParam("targeting_type") @NotNull  String targetingType,@ApiParam(value = "Client ID.") @QueryParam("client_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String clientId,@ApiParam(value = "Oauth signature") @QueryParam("oauth_signature")  String oauthSignature,@ApiParam(value = "Timestamp") @QueryParam("timestamp")  @Pattern(regexp="\\d+") String timestamp,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, securityContext);
+        return delegate.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId, securityContext);
     }
 }

@@ -16,9 +16,9 @@ import org.openapitools.models.CatalogsType
  * @param name A human-friendly name associated to a catalog entity.
  * @param catalogUnderscoretype 
  */
-case class Catalog(createdUnderscoreat: Option[ZonedDateTime],
+case class Catalog(createdUnderscoreat: ZonedDateTime,
                 id: String,
-                updatedUnderscoreat: Option[ZonedDateTime],
+                updatedUnderscoreat: ZonedDateTime,
                 name: String,
                 catalogUnderscoretype: CatalogsType
                 )

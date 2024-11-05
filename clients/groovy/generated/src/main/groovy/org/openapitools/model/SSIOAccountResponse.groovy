@@ -15,11 +15,11 @@ class SSIOAccountResponse {
     /* Advertiser eligible to update order lines */
     Boolean canEdit
     /* An array of Salesforce account information that includes address, io terms, etc. */
-    List<SSIOAccountItem> billtoInfos
+    List<SSIOAccountItem> billtoInfos = new ArrayList<>()
     
     String currency
     
-    List<SSIOAccountPMPName> pmpNames
+    List<SSIOAccountPMPName> pmpNames = new ArrayList<>()
     /* Error indicator from Salesforce which could be \"No Error\" */
     String error
 }

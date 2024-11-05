@@ -16,8 +16,8 @@ module AdAccountGetSubscriptionResponse =
     UserAccountId : string;
     AdAccountId : string;
     ApiVersion : string;
-    CryptographicKey : string;
-    CryptographicAlgorithm : string;
+    CryptographicKey : string option;
+    CryptographicAlgorithm : string option;
     CreatedTime : int;
   }
   //#endregion

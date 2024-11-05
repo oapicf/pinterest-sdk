@@ -23,17 +23,20 @@ object OauthAccessTokenRequestRefresh {
   sealed trait GrantType
   case object AuthorizationCode extends GrantType
   case object RefreshToken extends GrantType
+  case object ClientCredentials extends GrantType
 
   object GrantType {
     def toGrantType(s: String): Option[GrantType] = s match {
       case "AuthorizationCode" => Some(AuthorizationCode)
       case "RefreshToken" => Some(RefreshToken)
+      case "ClientCredentials" => Some(ClientCredentials)
       case _ => None
     }
 
     def fromGrantType(x: GrantType): String = x match {
       case AuthorizationCode => "AuthorizationCode"
       case RefreshToken => "RefreshToken"
+      case ClientCredentials => "ClientCredentials"
     }
   }
 

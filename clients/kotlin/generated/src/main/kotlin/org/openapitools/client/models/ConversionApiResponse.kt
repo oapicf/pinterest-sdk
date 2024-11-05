@@ -43,5 +43,8 @@ data class ConversionApiResponse (
     @Json(name = "events")
     val events: kotlin.collections.List<ConversionApiResponseEventsInner>
 
-)
+) {
+
+
+}
 

@@ -21,11 +21,14 @@ Name | Type | Description | Notes
 **productGroupIds** | **string** | List of product group ids | [optional] 
 **productGroupStatuses** | [**OpenAPI\Server\Model\ProductGroupSummaryStatus**](ProductGroupSummaryStatus.md) | List of values for filtering | [optional] 
 **productItemIds** | **string** | List of product item ids | [optional] 
-**targetingTypes** | [**OpenAPI\Server\Model\AdsAnalyticsTargetingType**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. | [optional] 
+**targetingTypes** | [**OpenAPI\Server\Model\AdsAnalyticsTargetingType**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | [optional] 
 **metricsFilters** | [**OpenAPI\Server\Model\AdsAnalyticsMetricsFilter**](AdsAnalyticsMetricsFilter.md) | List of metrics filters | [optional] 
 **columns** | [**OpenAPI\Server\Model\ReportingColumnAsync**](ReportingColumnAsync.md) | Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. | 
 **level** | [**OpenAPI\Server\Model\MetricsReportingLevel**](MetricsReportingLevel.md) | Level of the report | 
 **reportFormat** | [**OpenAPI\Server\Model\DataOutputFormat**](DataOutputFormat.md) | Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. | [optional] [default to 'JSON']
+**primarySort** | **string** | Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. | [optional] 
+**startHour** | **int** | Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. | [optional] 
+**endHour** | **int** | Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

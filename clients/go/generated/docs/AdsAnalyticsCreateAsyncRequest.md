@@ -22,11 +22,14 @@ Name | Type | Description | Notes
 **ProductGroupIds** | Pointer to **[]string** | List of product group ids | [optional] 
 **ProductGroupStatuses** | Pointer to [**[]ProductGroupSummaryStatus**](ProductGroupSummaryStatus.md) | List of values for filtering | [optional] 
 **ProductItemIds** | Pointer to **[]string** | List of product item ids | [optional] 
-**TargetingTypes** | Pointer to [**[]AdsAnalyticsTargetingType**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. | [optional] 
+**TargetingTypes** | Pointer to [**[]AdsAnalyticsTargetingType**](AdsAnalyticsTargetingType.md) | List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | [optional] 
 **MetricsFilters** | Pointer to [**[]AdsAnalyticsMetricsFilter**](AdsAnalyticsMetricsFilter.md) | List of metrics filters | [optional] 
 **Columns** | [**[]ReportingColumnAsync**](ReportingColumnAsync.md) | Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. | 
 **Level** | [**MetricsReportingLevel**](MetricsReportingLevel.md) | Level of the report | 
 **ReportFormat** | Pointer to [**DataOutputFormat**](DataOutputFormat.md) | Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. | [optional] [default to JSON]
+**PrimarySort** | Pointer to **string** | Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. | [optional] 
+**StartHour** | Pointer to **int32** | Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. | [optional] 
+**EndHour** | Pointer to **int32** | Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports. | [optional] 
 
 ## Methods
 
@@ -596,6 +599,81 @@ SetReportFormat sets ReportFormat field to given value.
 `func (o *AdsAnalyticsCreateAsyncRequest) HasReportFormat() bool`
 
 HasReportFormat returns a boolean if a field has been set.
+
+### GetPrimarySort
+
+`func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySort() string`
+
+GetPrimarySort returns the PrimarySort field if non-nil, zero value otherwise.
+
+### GetPrimarySortOk
+
+`func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySortOk() (*string, bool)`
+
+GetPrimarySortOk returns a tuple with the PrimarySort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrimarySort
+
+`func (o *AdsAnalyticsCreateAsyncRequest) SetPrimarySort(v string)`
+
+SetPrimarySort sets PrimarySort field to given value.
+
+### HasPrimarySort
+
+`func (o *AdsAnalyticsCreateAsyncRequest) HasPrimarySort() bool`
+
+HasPrimarySort returns a boolean if a field has been set.
+
+### GetStartHour
+
+`func (o *AdsAnalyticsCreateAsyncRequest) GetStartHour() int32`
+
+GetStartHour returns the StartHour field if non-nil, zero value otherwise.
+
+### GetStartHourOk
+
+`func (o *AdsAnalyticsCreateAsyncRequest) GetStartHourOk() (*int32, bool)`
+
+GetStartHourOk returns a tuple with the StartHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartHour
+
+`func (o *AdsAnalyticsCreateAsyncRequest) SetStartHour(v int32)`
+
+SetStartHour sets StartHour field to given value.
+
+### HasStartHour
+
+`func (o *AdsAnalyticsCreateAsyncRequest) HasStartHour() bool`
+
+HasStartHour returns a boolean if a field has been set.
+
+### GetEndHour
+
+`func (o *AdsAnalyticsCreateAsyncRequest) GetEndHour() int32`
+
+GetEndHour returns the EndHour field if non-nil, zero value otherwise.
+
+### GetEndHourOk
+
+`func (o *AdsAnalyticsCreateAsyncRequest) GetEndHourOk() (*int32, bool)`
+
+GetEndHourOk returns a tuple with the EndHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndHour
+
+`func (o *AdsAnalyticsCreateAsyncRequest) SetEndHour(v int32)`
+
+SetEndHour sets EndHour field to given value.
+
+### HasEndHour
+
+`func (o *AdsAnalyticsCreateAsyncRequest) HasEndHour() bool`
+
+HasEndHour returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -27,7 +27,7 @@ data class KeywordMetricsResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("metrics") val metrics: KeywordMetrics? = null
-) {
+    ) {
 
 }
 

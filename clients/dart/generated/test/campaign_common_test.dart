@@ -51,7 +51,7 @@ void main() {
       // TODO
     });
 
-    // AdCommonTrackingUrls trackingUrls
+    // TrackingUrls trackingUrls
     test('to test the property `trackingUrls`', () async {
       // TODO
     });
@@ -68,8 +68,9 @@ void main() {
       // TODO
     });
 
-    // CampaignSummaryStatus summaryStatus
-    test('to test the property `summaryStatus`', () async {
+    // Determine if a campaign has flexible daily budgets setup.
+    // bool isFlexibleDailyBudgets
+    test('to test the property `isFlexibleDailyBudgets`', () async {
       // TODO
     });
 

@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class DeliveryMetricsResponse   {
   
-  private List<@Valid DeliveryMetricsResponseItemsInner> items;
+  private List<@Valid DeliveryMetricsResponseItemsInner> items = new ArrayList<>();
 
   /**
    **/

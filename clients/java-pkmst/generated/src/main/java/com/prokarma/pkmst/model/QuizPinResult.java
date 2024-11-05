@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "The result, and link out, based on the user’s choice.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QuizPinResult   {
   @JsonProperty("organic_pin_id")
   private String organicPinId;
@@ -38,10 +38,10 @@ public class QuizPinResult   {
     return this;
   }
 
-   /**
+  /**
    * Get organicPinId
    * @return organicPinId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getOrganicPinId() {
     return organicPinId;
@@ -56,10 +56,10 @@ public class QuizPinResult   {
     return this;
   }
 
-   /**
+  /**
    * Get androidDeepLink
    * @return androidDeepLink
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAndroidDeepLink() {
     return androidDeepLink;
@@ -74,10 +74,10 @@ public class QuizPinResult   {
     return this;
   }
 
-   /**
+  /**
    * Get iosDeepLink
    * @return iosDeepLink
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getIosDeepLink() {
     return iosDeepLink;
@@ -92,10 +92,10 @@ public class QuizPinResult   {
     return this;
   }
 
-   /**
+  /**
    * Get destinationUrl
    * @return destinationUrl
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDestinationUrl() {
     return destinationUrl;
@@ -110,10 +110,10 @@ public class QuizPinResult   {
     return this;
   }
 
-   /**
+  /**
    * Get resultId
    * @return resultId
-  **/
+   */
   @ApiModelProperty(value = "")
   public BigDecimal getResultId() {
     return resultId;

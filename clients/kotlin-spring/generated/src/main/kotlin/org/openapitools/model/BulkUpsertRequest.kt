@@ -29,7 +29,7 @@ data class BulkUpsertRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("update") val update: BulkUpsertRequestUpdate? = null
-) {
+    ) {
 
 }
 

@@ -21,11 +21,11 @@ import javax.annotation.Generated;
  * BidFloor
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BidFloor {
 
   @Valid
-  private List<Integer> bidFloors;
+  private List<Integer> bidFloors = new ArrayList<>();
 
   private String type = "bidfloor";
 
@@ -45,7 +45,7 @@ public class BidFloor {
   /**
    * A list of bid floors in micro currency. For example, [100000, 200000]
    * @return bidFloors
-  */
+   */
   
   @Schema(name = "bid_floors", example = "[100000,200000]", description = "A list of bid floors in micro currency. For example, [100000, 200000]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid_floors")
@@ -65,7 +65,7 @@ public class BidFloor {
   /**
    * Always the string 'bidfloor'
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "bidfloor", description = "Always the string 'bidfloor'", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")

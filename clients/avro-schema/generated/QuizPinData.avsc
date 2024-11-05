@@ -21,6 +21,25 @@
       }],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "tie_breaker_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "QuizPinData_tieUnderscorebreakerUnderscoretype",
+        "symbols": [
+          "RANDOM",
+          "CUSTOM"
+        ]
+      }],
+      "doc": "Quiz ad tie breaker type, default is RANDOM",
+      "default": null
+    },
+    {
+      "name": "tie_breaker_custom_result",
+      "type": ["null", "model.QuizPinResult"],
+      "doc": "",
+      "default": null
     }
   ]
 

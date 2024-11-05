@@ -30,7 +30,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the terms API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-03-14T23:04:30.273794609Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TermsApi  {
    private final TermsApiService delegate;
 
@@ -41,7 +41,7 @@ public class TermsApi  {
          String implClass = servletContext.getInitParameter("TermsApi.implementation");
          if (implClass != null && !"".equals(implClass.trim())) {
             try {
-               delegate = (TermsApiService) Class.forName(implClass).newInstance();
+               delegate = (TermsApiService) Class.forName(implClass).getDeclaredConstructor().newInstance();
             } catch (Exception e) {
                throw new RuntimeException(e);
             }
@@ -69,7 +69,7 @@ public class TermsApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid terms related parameters.", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response termsRelatedList(@ApiParam(value = "List of input terms.", required = true) @QueryParam("terms") @NotNull @Valid  List<String> terms,@Context SecurityContext securityContext)
+    public Response termsRelatedList(@ApiParam(value = "List of input terms.", required = true) @QueryParam("terms") @NotNull  List<String> terms,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.termsRelatedList(terms, securityContext);
     }

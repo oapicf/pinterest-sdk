@@ -160,13 +160,15 @@ public class ResourcesApiHandler {
         String clientId = requestParameters.queryParameter("client_id") != null ? requestParameters.queryParameter("client_id").getString() : null;
         String oauthSignature = requestParameters.queryParameter("oauth_signature") != null ? requestParameters.queryParameter("oauth_signature").getString() : null;
         String timestamp = requestParameters.queryParameter("timestamp") != null ? requestParameters.queryParameter("timestamp").getString() : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter targetingType is {}", targetingType);
         logger.debug("Parameter clientId is {}", clientId);
         logger.debug("Parameter oauthSignature is {}", oauthSignature);
         logger.debug("Parameter timestamp is {}", timestamp);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp)
+        api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

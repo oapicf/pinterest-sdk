@@ -10,7 +10,7 @@
 
 -type openapi_product_group_promotion_create_request() ::
   [ {'ad_group_id', binary() }
-  | {'product_group_promotion', list(openapi_product_group_promotion:openapi_product_group_promotion()) }
+  | {'product_group_promotion', list(openapi_product_group_promotion_create_request_element:openapi_product_group_promotion_create_request_element()) }
   ].
 
 
@@ -19,7 +19,7 @@ openapi_product_group_promotion_create_request() ->
 
 openapi_product_group_promotion_create_request(Fields) ->
   Default = [ {'ad_group_id', binary() }
-            , {'product_group_promotion', list(openapi_product_group_promotion:openapi_product_group_promotion()) }
+            , {'product_group_promotion', list(openapi_product_group_promotion_create_request_element:openapi_product_group_promotion_create_request_element()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

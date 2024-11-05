@@ -10,5 +10,5 @@ import org.openapitools.model.ConversionTagResponse;
 @Canonical
 class ConversionTagListResponse {
     
-    List<ConversionTagResponse> items
+    List<ConversionTagResponse> items = new ArrayList<>()
 }

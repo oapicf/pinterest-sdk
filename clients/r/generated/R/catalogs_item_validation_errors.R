@@ -59,8 +59,7 @@ CatalogsItemValidationErrors <- R6::R6Class(
     `PRODUCT_LINK_MISSING` = NULL,
     `PRODUCT_PRICE_INVALID` = NULL,
     `TITLE_MISSING` = NULL,
-    #' Initialize a new CatalogsItemValidationErrors class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsItemValidationErrors class.
     #'
@@ -88,7 +87,6 @@ CatalogsItemValidationErrors <- R6::R6Class(
     #' @param PRODUCT_PRICE_INVALID PRODUCT_PRICE_INVALID
     #' @param TITLE_MISSING TITLE_MISSING
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`ADULT_INVALID` = NULL, `ADWORDS_FORMAT_INVALID` = NULL, `AVAILABILITY_INVALID` = NULL, `BLOCKLISTED_IMAGE_SIGNATURE` = NULL, `DESCRIPTION_MISSING` = NULL, `DUPLICATE_PRODUCTS` = NULL, `IMAGE_LINK_INVALID` = NULL, `IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `IMAGE_LINK_MISSING` = NULL, `INVALID_DOMAIN` = NULL, `ITEMID_MISSING` = NULL, `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` = NULL, `LINK_FORMAT_INVALID` = NULL, `LINK_LENGTH_TOO_LONG` = NULL, `LIST_PRICE_INVALID` = NULL, `MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED` = NULL, `PARSE_LINE_ERROR` = NULL, `PINJOIN_CONTENT_UNSAFE` = NULL, `PRICE_CANNOT_BE_DETERMINED` = NULL, `PRICE_MISSING` = NULL, `PRODUCT_LINK_MISSING` = NULL, `PRODUCT_PRICE_INVALID` = NULL, `TITLE_MISSING` = NULL, ...) {
       if (!is.null(`ADULT_INVALID`)) {
         stopifnot(R6::is.R6(`ADULT_INVALID`))
@@ -183,13 +181,11 @@ CatalogsItemValidationErrors <- R6::R6Class(
         self$`TITLE_MISSING` <- `TITLE_MISSING`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemValidationErrors in JSON format
-    #' @export
     toJSON = function() {
       CatalogsItemValidationErrorsObject <- list()
       if (!is.null(self$`ADULT_INVALID`)) {
@@ -286,14 +282,12 @@ CatalogsItemValidationErrors <- R6::R6Class(
       }
       CatalogsItemValidationErrorsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsItemValidationErrors
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemValidationErrors
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemValidationErrors
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ADULT_INVALID`)) {
@@ -413,13 +407,11 @@ CatalogsItemValidationErrors <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemValidationErrors in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ADULT_INVALID`)) {
@@ -610,14 +602,12 @@ CatalogsItemValidationErrors <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsItemValidationErrors
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemValidationErrors
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemValidationErrors
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ADULT_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ADULT_INVALID`, auto_unbox = TRUE, digits = NA))
@@ -645,53 +635,42 @@ CatalogsItemValidationErrors <- R6::R6Class(
       self$`TITLE_MISSING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`TITLE_MISSING`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsItemValidationErrors
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsItemValidationErrors and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsItemValidationErrors
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

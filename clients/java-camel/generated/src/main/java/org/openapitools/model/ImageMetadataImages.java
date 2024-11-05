@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ImageMetadata_images")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageMetadataImages {
 
   private ImageDetails _150x150;
@@ -40,7 +40,7 @@ public class ImageMetadataImages {
   /**
    * Get _150x150
    * @return _150x150
-  */
+   */
   @Valid 
   @Schema(name = "150x150", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("150x150")
@@ -60,7 +60,7 @@ public class ImageMetadataImages {
   /**
    * Get _400x300
    * @return _400x300
-  */
+   */
   @Valid 
   @Schema(name = "400x300", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("400x300")
@@ -80,7 +80,7 @@ public class ImageMetadataImages {
   /**
    * Get _600x
    * @return _600x
-  */
+   */
   @Valid 
   @Schema(name = "600x", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("600x")
@@ -100,7 +100,7 @@ public class ImageMetadataImages {
   /**
    * Get _1200x
    * @return _1200x
-  */
+   */
   @Valid 
   @Schema(name = "1200x", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("1200x")

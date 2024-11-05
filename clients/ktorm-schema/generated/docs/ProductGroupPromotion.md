@@ -19,11 +19,9 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **trackingUrl** | tracking_url | text |  | **kotlin.String** | Tracking template for proudct group promotions. 4000 limit |  [optional]
 **catalogProductGroupId** | catalog_product_group_id | text |  | **kotlin.String** | ID of the catalogs product group that this product group promotion references |  [optional]
 **catalogProductGroupName** | catalog_product_group_name | text |  | **kotlin.String** | Catalogs product group name |  [optional]
-**creativeType** | creative_type | long |  | [**CreativeType**](CreativeType.md) |  |  [optional] [foreignkey]
 **collectionsHeroPinId** | collections_hero_pin_id | text |  | **kotlin.String** | Hero Pin ID if this PG is promoted as a Collection |  [optional]
 **collectionsHeroDestinationUrl** | collections_hero_destination_url | text |  | **kotlin.String** | Collections Hero Destination Url |  [optional]
 **gridClickType** | grid_click_type | long |  | [**GridClickType**](GridClickType.md) |  |  [optional] [foreignkey]
-
 
 
 

@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Integration record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationRecord   {
   @JsonProperty("id")
   private String id;
@@ -74,10 +74,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getId() {
     return id;
@@ -92,10 +92,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get externalBusinessId
    * @return externalBusinessId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getExternalBusinessId() {
     return externalBusinessId;
@@ -110,10 +110,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedMerchantId
    * @return connectedMerchantId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getConnectedMerchantId() {
     return connectedMerchantId;
@@ -128,10 +128,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedUserId
    * @return connectedUserId
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public String getConnectedUserId() {
     return connectedUserId;
@@ -146,10 +146,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
@@ -164,10 +164,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedLbaId
    * @return connectedLbaId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getConnectedLbaId() {
     return connectedLbaId;
@@ -182,10 +182,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedTagId
    * @return connectedTagId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getConnectedTagId() {
     return connectedTagId;
@@ -200,10 +200,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerAccessToken
    * @return partnerAccessToken
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getPartnerAccessToken() {
     return partnerAccessToken;
@@ -218,10 +218,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerRefreshToken
    * @return partnerRefreshToken
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getPartnerRefreshToken() {
     return partnerRefreshToken;
@@ -236,10 +236,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerPrimaryEmail
    * @return partnerPrimaryEmail
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getPartnerPrimaryEmail() {
     return partnerPrimaryEmail;
@@ -254,10 +254,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerAccessTokenExpiry
    * @return partnerAccessTokenExpiry
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getPartnerAccessTokenExpiry() {
     return partnerAccessTokenExpiry;
@@ -272,10 +272,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerRefreshTokenExpiry
    * @return partnerRefreshTokenExpiry
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getPartnerRefreshTokenExpiry() {
     return partnerRefreshTokenExpiry;
@@ -290,10 +290,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get scopes
    * @return scopes
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getScopes() {
     return scopes;
@@ -308,10 +308,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerMetadata
    * @return partnerMetadata
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getPartnerMetadata() {
     return partnerMetadata;
@@ -326,10 +326,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get additionalId1
    * @return additionalId1
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAdditionalId1() {
     return additionalId1;
@@ -344,10 +344,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get createdTime
    * @return createdTime
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getCreatedTime() {
     return createdTime;
@@ -362,10 +362,10 @@ public class IntegrationRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get updatedTime
    * @return updatedTime
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getUpdatedTime() {
     return updatedTime;

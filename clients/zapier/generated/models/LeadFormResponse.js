@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const LeadFormCommon_policy_links_inner = require('../models/LeadFormCommon_policy_links_inner');
 const LeadFormQuestion = require('../models/LeadFormQuestion');
 const LeadFormStatus = require('../models/LeadFormStatus');
 
@@ -18,7 +19,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}has_accepted_terms`,
-                label: `Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad. - [${labelPrefix}has_accepted_terms]`,
+                label: `Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO - [${labelPrefix}has_accepted_terms]`,
                 type: 'boolean',
             },
             {
@@ -39,6 +40,11 @@ module.exports = {
                 key: `${keyPrefix}questions`,
                 label: `[${labelPrefix}questions]`,
                 children: LeadFormQuestion.fields(`${keyPrefix}questions${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
+                key: `${keyPrefix}policy_links`,
+                label: `[${labelPrefix}policy_links]`,
+                children: LeadFormCommon_policy_links_inner.fields(`${keyPrefix}policy_links${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}id`,
@@ -72,6 +78,7 @@ module.exports = {
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'disclosure_language': bundle.inputData?.[`${keyPrefix}disclosure_language`],
             'questions': utils.childMapping(bundle.inputData?.[`${keyPrefix}questions`], `${keyPrefix}questions`, LeadFormQuestion),
+            'policy_links': utils.childMapping(bundle.inputData?.[`${keyPrefix}policy_links`], `${keyPrefix}policy_links`, LeadFormCommon_policy_links_inner),
             'id': bundle.inputData?.[`${keyPrefix}id`],
             'ad_account_id': bundle.inputData?.[`${keyPrefix}ad_account_id`],
             'created_time': bundle.inputData?.[`${keyPrefix}created_time`],

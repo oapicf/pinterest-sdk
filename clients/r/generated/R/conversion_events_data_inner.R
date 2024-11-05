@@ -7,8 +7,8 @@
 #' @title ConversionEventsDataInner
 #' @description ConversionEventsDataInner Class
 #' @format An \code{R6Class} generator object
-#' @field event_name The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code> character
-#' @field action_source The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code> character
+#' @field event_name <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> character
+#' @field action_source <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> character
 #' @field event_time The time when the event happened. Unix timestamp in seconds. integer
 #' @field event_id A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. character
 #' @field event_source_url URL of the web conversion event. character [optional]
@@ -51,13 +51,12 @@ ConversionEventsDataInner <- R6::R6Class(
     `os_version` = NULL,
     `wifi` = NULL,
     `language` = NULL,
-    #' Initialize a new ConversionEventsDataInner class.
-    #'
+
     #' @description
     #' Initialize a new ConversionEventsDataInner class.
     #'
-    #' @param event_name The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
-    #' @param action_source The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
+    #' @param event_name <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p>
+    #' @param action_source <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p>
     #' @param event_time The time when the event happened. Unix timestamp in seconds.
     #' @param event_id A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
     #' @param user_data user_data
@@ -76,7 +75,6 @@ ConversionEventsDataInner <- R6::R6Class(
     #' @param wifi Whether the event occurred when the user device was connected to wifi.
     #' @param language Two-character ISO-639-1 language code indicating the user's language.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`event_name`, `action_source`, `event_time`, `event_id`, `user_data`, `event_source_url` = NULL, `opt_out` = NULL, `partner_name` = NULL, `custom_data` = NULL, `app_id` = NULL, `app_name` = NULL, `app_version` = NULL, `device_brand` = NULL, `device_carrier` = NULL, `device_model` = NULL, `device_type` = NULL, `os_version` = NULL, `wifi` = NULL, `language` = NULL, ...) {
       if (!missing(`event_name`)) {
         if (!(is.character(`event_name`) && length(`event_name`) == 1)) {
@@ -189,13 +187,11 @@ ConversionEventsDataInner <- R6::R6Class(
         self$`language` <- `language`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionEventsDataInner in JSON format
-    #' @export
     toJSON = function() {
       ConversionEventsDataInnerObject <- list()
       if (!is.null(self$`event_name`)) {
@@ -276,14 +272,12 @@ ConversionEventsDataInner <- R6::R6Class(
       }
       ConversionEventsDataInnerObject
     },
-    #' Deserialize JSON string into an instance of ConversionEventsDataInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionEventsDataInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionEventsDataInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`event_name`)) {
@@ -349,13 +343,11 @@ ConversionEventsDataInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionEventsDataInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`event_name`)) {
@@ -514,14 +506,12 @@ ConversionEventsDataInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ConversionEventsDataInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionEventsDataInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionEventsDataInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`event_name` <- this_object$`event_name`
@@ -545,13 +535,11 @@ ConversionEventsDataInner <- R6::R6Class(
       self$`language` <- this_object$`language`
       self
     },
-    #' Validate JSON input with respect to ConversionEventsDataInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to ConversionEventsDataInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `event_name`
@@ -593,23 +581,19 @@ ConversionEventsDataInner <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for ConversionEventsDataInner: the required field `user_data` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ConversionEventsDataInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `event_name` is null
       if (is.null(self$`event_name`)) {
@@ -631,15 +615,18 @@ ConversionEventsDataInner <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `user_data` is null
+      if (is.null(self$`user_data`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `event_name` is null
@@ -662,14 +649,16 @@ ConversionEventsDataInner <- R6::R6Class(
         invalid_fields["event_id"] <- "Non-nullable required field `event_id` cannot be null."
       }
 
+      # check if the required `user_data` is null
+      if (is.null(self$`user_data`)) {
+        invalid_fields["user_data"] <- "Non-nullable required field `user_data` cannot be null."
+      }
+
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

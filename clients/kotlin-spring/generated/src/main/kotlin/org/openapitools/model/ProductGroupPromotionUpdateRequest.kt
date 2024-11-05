@@ -28,7 +28,7 @@ data class ProductGroupPromotionUpdateRequest(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("product_group_promotion", required = true) val productGroupPromotion: kotlin.collections.List<ProductGroupPromotion>
-) {
+    ) {
 
 }
 

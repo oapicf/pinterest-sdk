@@ -15,7 +15,7 @@ import org.openapitools.vertxweb.server.model.PinMediaMetadata;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaWithImageAndVideo extends PinMedia  {
   
-  private List<PinMediaMetadata> items;
+  private List<PinMediaMetadata> items = new ArrayList<>();
 
   public PinMediaWithImageAndVideo () {
 

@@ -16,11 +16,11 @@ import java.util.List;
  *
  */
 /**
- * JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
+ * JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
  */
-@ApiModel(description = "JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.")
+@ApiModel(description = "JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceRule   {
   @JsonProperty("country")
   private String country;
@@ -94,10 +94,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Valid countries include: \"US\", \"CA\", and \"GB\".
    * @return country
-  **/
+   */
   @ApiModelProperty(example = "US", value = "Valid countries include: \"US\", \"CA\", and \"GB\".")
   public String getCountry() {
     return country;
@@ -112,10 +112,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Customer list ID. For CUSTOMER_LIST `audience_type`.
    * @return customerListId
-  **/
+   */
   @ApiModelProperty(example = "5497558859876", value = "Customer list ID. For CUSTOMER_LIST `audience_type`.")
   public String getCustomerListId() {
     return customerListId;
@@ -138,10 +138,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * The audience account's verified domain. **Required** for ENGAGEMENT `audience_type`.
    * @return engagementDomain
-  **/
+   */
   @ApiModelProperty(example = "[\"www.somedomain.com\"]", value = "The audience account's verified domain. **Required** for ENGAGEMENT `audience_type`.")
   public List<String> getEngagementDomain() {
     return engagementDomain;
@@ -156,10 +156,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. 
    * @return engagementType
-  **/
+   */
   @ApiModelProperty(example = "click", value = "Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. ")
   public String getEngagementType() {
     return engagementType;
@@ -174,10 +174,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
    * @return event
-  **/
+   */
   @ApiModelProperty(example = "checkout", value = "A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.")
   public String getEvent() {
     return event;
@@ -192,10 +192,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Get eventData
    * @return eventData
-  **/
+   */
   @ApiModelProperty(value = "")
   public PinterestTagEventData getEventData() {
     return eventData;
@@ -210,10 +210,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Percentage should be 1-10. The targeted audience should be this % size across Pinterest.
    * @return percentage
-  **/
+   */
   @ApiModelProperty(example = "3", value = "Percentage should be 1-10. The targeted audience should be this % size across Pinterest.")
   public Integer getPercentage() {
     return percentage;
@@ -236,10 +236,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"]
    * @return pinId
-  **/
+   */
   @ApiModelProperty(example = "[\"34567\"]", value = "IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, \"pin_id:\": [\"34567\"]")
   public List<String> getPinId() {
     return pinId;
@@ -254,10 +254,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Optional for VISITOR `audience_type`. If `true`, the specified rule on existing engagement data is applied to pre-populate the audience. If `false`, the audience is empty at creation time. The default is `true`.
    * @return prefill
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Optional for VISITOR `audience_type`. If `true`, the specified rule on existing engagement data is applied to pre-populate the audience. If `false`, the audience is empty at creation time. The default is `true`.")
   public Boolean getPrefill() {
     return prefill;
@@ -272,10 +272,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified.
    * @return retentionDays
-  **/
+   */
   @ApiModelProperty(example = "30", value = "Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified.")
   public Integer getRetentionDays() {
     return retentionDays;
@@ -298,10 +298,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Audience ID(s). For ACTALIKE `audience_type`. 
    * @return seedId
-  **/
+   */
   @ApiModelProperty(example = "[\"2542620639259\",\"2542620639261\"]", value = "Audience ID(s). For ACTALIKE `audience_type`. ")
   public List<String> getSeedId() {
     return seedId;
@@ -324,10 +324,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}
    * @return url
-  **/
+   */
   @ApiModelProperty(value = "Optional for ENGAGEMENT or VISITOR `audience_type`. For ENGAGEMENT, it is the engaged pin's URL. For VISITOR, you can use it as a string or a {operator: value} object for filtering visitors based on conversion tag event URLs. Supported operators are [ =, !=, contains, not_contains].<br>Example 1:  \"url\": \"http://www.myonlinestore123.com/view_item/shoe\"<br>Example 2: \"url\": {\"contains\": \"/view_item/shoe\"}")
   public List<String> getUrl() {
     return url;
@@ -342,10 +342,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
    * @return visitorSourceId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.")
   public String getVisitorSourceId() {
     return visitorSourceId;
@@ -360,10 +360,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
    * @return eventSource
-  **/
+   */
   @ApiModelProperty(example = "{\"=\":[\"web\",\"mobile\"]}", value = "Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline")
   public Object getEventSource() {
     return eventSource;
@@ -378,10 +378,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
    * @return ingestionSource
-  **/
+   */
   @ApiModelProperty(example = "{\"=\":[\"tag\"]}", value = "Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api")
   public Object getIngestionSource() {
     return ingestionSource;
@@ -396,10 +396,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Optional for ENGAGEMENT. Engager type value should be 1-2.
    * @return engagerType
-  **/
+   */
   @ApiModelProperty(example = "1", value = "Optional for ENGAGEMENT. Engager type value should be 1-2.")
   public Integer getEngagerType() {
     return engagerType;
@@ -422,10 +422,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Campaign ID for engagement audience filter.
    * @return campaignId
-  **/
+   */
   @ApiModelProperty(example = "[\"626744528398\"]", value = "Campaign ID for engagement audience filter.")
   public List<String> getCampaignId() {
     return campaignId;
@@ -448,10 +448,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Ad ID for engagement audience filter.
    * @return adId
-  **/
+   */
   @ApiModelProperty(example = "[\"687201361754\"]", value = "Ad ID for engagement audience filter.")
   public List<String> getAdId() {
     return adId;
@@ -474,10 +474,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Objective for engagement audience filter.
    * @return objectiveType
-  **/
+   */
   @ApiModelProperty(example = "[\"AWARENESS\"]", value = "Objective for engagement audience filter.")
   public List<ObjectiveType> getObjectiveType() {
     return objectiveType;
@@ -492,10 +492,10 @@ public class AudienceRule   {
     return this;
   }
 
-   /**
+  /**
    * Ad account ID.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   public String getAdAccountId() {
     return adAccountId;

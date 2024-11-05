@@ -59,9 +59,33 @@ public class ExecuteReport {
 
     reportBuilder = new ReportBuilder(jsonFiles, configuration);
     reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/advanced_auction-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/advanced_auction-report-json/advanced_auction.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
     reportOutputDirectory = new File("./report/audience_insights-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/audience_insights-report-json/audience_insights.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/audience_sharing-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/audience_sharing-report-json/audience_sharing.json");
 
     configuration = new Configuration(reportOutputDirectory,projectName);
     // optionally only if you need
@@ -227,6 +251,18 @@ public class ExecuteReport {
 
     reportBuilder = new ReportBuilder(jsonFiles, configuration);
     reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/leads_export-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/leads_export-report-json/leads_export.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
     reportOutputDirectory = new File("./report/media-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/media-report-json/media.json");
@@ -287,18 +323,6 @@ public class ExecuteReport {
 
     reportBuilder = new ReportBuilder(jsonFiles, configuration);
     reportBuilder.generateReports();
-    reportOutputDirectory = new File("./report/product_groups-report-html/");
-    jsonFiles = new ArrayList();
-    jsonFiles.add("./report/product_groups-report-json/product_groups.json");
-
-    configuration = new Configuration(reportOutputDirectory,projectName);
-    // optionally only if you need
-    configuration.setParallelTesting(parallelTesting);
-    configuration.setRunWithJenkins(runWithJenkins);
-    configuration.setBuildNumber(buildNumber);
-
-    reportBuilder = new ReportBuilder(jsonFiles, configuration);
-    reportBuilder.generateReports();
     reportOutputDirectory = new File("./report/resources-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/resources-report-json/resources.json");
@@ -314,6 +338,18 @@ public class ExecuteReport {
     reportOutputDirectory = new File("./report/search-report-html/");
     jsonFiles = new ArrayList();
     jsonFiles.add("./report/search-report-json/search.json");
+
+    configuration = new Configuration(reportOutputDirectory,projectName);
+    // optionally only if you need
+    configuration.setParallelTesting(parallelTesting);
+    configuration.setRunWithJenkins(runWithJenkins);
+    configuration.setBuildNumber(buildNumber);
+
+    reportBuilder = new ReportBuilder(jsonFiles, configuration);
+    reportBuilder.generateReports();
+    reportOutputDirectory = new File("./report/targeting_template-report-html/");
+    jsonFiles = new ArrayList();
+    jsonFiles.add("./report/targeting_template-report-json/targeting_template.json");
 
     configuration = new Configuration(reportOutputDirectory,projectName);
     // optionally only if you need

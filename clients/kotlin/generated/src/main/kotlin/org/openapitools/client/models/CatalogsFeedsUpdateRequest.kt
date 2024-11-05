@@ -67,5 +67,8 @@ data class CatalogsFeedsUpdateRequest (
     @Json(name = "status")
     val status: CatalogsStatus? = null
 
-)
+) {
+
+
+}
 

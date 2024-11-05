@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.server.api.model.BatchOperation;
+import org.openapitools.server.api.model.CatalogsItemsRequestLanguage;
 import org.openapitools.server.api.model.Country;
 import org.openapitools.server.api.model.ItemUpdateBatchRecord;
-import org.openapitools.server.api.model.Language;
 
 /**
  * Request object to update catalogs items
@@ -19,7 +19,7 @@ import org.openapitools.server.api.model.Language;
 public class CatalogsItemsUpdateBatchRequest   {
   
   private Country country;
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
   private BatchOperation operation;
   private List<ItemUpdateBatchRecord> items = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class CatalogsItemsUpdateBatchRequest   {
 
   }
 
-  public CatalogsItemsUpdateBatchRequest (Country country, Language language, BatchOperation operation, List<ItemUpdateBatchRecord> items) {
+  public CatalogsItemsUpdateBatchRequest (Country country, CatalogsItemsRequestLanguage language, BatchOperation operation, List<ItemUpdateBatchRecord> items) {
     this.country = country;
     this.language = language;
     this.operation = operation;
@@ -45,10 +45,10 @@ public class CatalogsItemsUpdateBatchRequest   {
 
     
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

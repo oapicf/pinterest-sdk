@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedProcessingSchedule", description = "Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedProcessingSchedule {
 
   private String time;
@@ -333,7 +333,7 @@ public class CatalogsFeedProcessingSchedule {
     
     ANTARCTICA_DAVIS("Antarctica/Davis"),
     
-    ANTARCTICA_DUMONTDURVILLE("Antarctica/DumontDUrville"),
+    ANTARCTICA_DUMONT_D_URVILLE("Antarctica/DumontDUrville"),
     
     ANTARCTICA_MACQUARIE("Antarctica/Macquarie"),
     
@@ -547,13 +547,13 @@ public class CatalogsFeedProcessingSchedule {
     
     CET("CET"),
     
-    CST6CDT("CST6CDT"),
+    CST6_CDT("CST6CDT"),
     
     EET("EET"),
     
     EST("EST"),
     
-    EST5EDT("EST5EDT"),
+    EST5_EDT("EST5EDT"),
     
     ETC_GMT("Etc/GMT"),
     
@@ -725,9 +725,9 @@ public class CatalogsFeedProcessingSchedule {
     
     MST("MST"),
     
-    MST7MDT("MST7MDT"),
+    MST7_MDT("MST7MDT"),
     
-    PST8PDT("PST8PDT"),
+    PST8_PDT("PST8PDT"),
     
     PACIFIC_APIA("Pacific/Apia"),
     
@@ -801,9 +801,7 @@ public class CatalogsFeedProcessingSchedule {
     
     PACIFIC_WALLIS("Pacific/Wallis"),
     
-    WET("WET"),
-    
-    NULL("null");
+    WET("WET");
 
     private String value;
 
@@ -854,7 +852,7 @@ public class CatalogsFeedProcessingSchedule {
   /**
    * A time in format HH:MM with leading 0 (zero)
    * @return time
-  */
+   */
   @NotNull @Pattern(regexp = "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$") 
   @Schema(name = "time", example = "02:59", description = "A time in format HH:MM with leading 0 (zero)", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("time")
@@ -874,7 +872,7 @@ public class CatalogsFeedProcessingSchedule {
   /**
    * The timezone considered for the processing schedule time.
    * @return timezone
-  */
+   */
   @NotNull 
   @Schema(name = "timezone", description = "The timezone considered for the processing schedule time.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("timezone")

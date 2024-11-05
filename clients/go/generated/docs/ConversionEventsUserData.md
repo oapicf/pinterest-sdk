@@ -4,24 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ph** | Pointer to **[]string** | Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. | [optional] 
-**Ge** | Pointer to **[]string** | Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender. | [optional] 
-**Db** | Pointer to **[]string** | Sha256 hashes of user&#39;s date of birthday, given as year, month, and day. | [optional] 
-**Ln** | Pointer to **[]string** | Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. | [optional] 
-**Fn** | Pointer to **[]string** | Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. | [optional] 
-**Ct** | Pointer to **[]string** | Sha256 hashes of user&#39;s city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). | [optional] 
-**St** | Pointer to **[]string** | Sha256 hashes of user&#39;s state, given as a two-letter code in lowercase. User residency state (mostly billing). | [optional] 
-**Zp** | Pointer to **[]string** | Sha256 hashes of user&#39;s zipcode, only digits. User residency zipcode (mostly billing). | [optional] 
-**Country** | Pointer to **[]string** | Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase. | [optional] 
-**ExternalId** | Pointer to **[]string** | Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. | [optional] 
+**Ph** | Pointer to **[]string** | Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**Ge** | Pointer to **[]string** | Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender. The string should be in the UTF-8 format. | [optional] 
+**Db** | Pointer to **[]string** | Sha256 hashes of user&#39;s date of birthday, given as year, month, and day. The string should be in the UTF-8 format. | [optional] 
+**Ln** | Pointer to **[]string** | Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**Fn** | Pointer to **[]string** | Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
+**Ct** | Pointer to **[]string** | Sha256 hashes of user&#39;s city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format. | [optional] 
+**St** | Pointer to **[]string** | Sha256 hashes of user&#39;s state, given as a two-letter code in lowercase. User residency state (mostly billing). The string should be in the UTF-8 format. | [optional] 
+**Zp** | Pointer to **[]string** | Sha256 hashes of user&#39;s zipcode, only digits. User residency zipcode (mostly billing). The string should be in the UTF-8 format. | [optional] 
+**Country** | Pointer to **[]string** | Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase. The string should be in the UTF-8 format. | [optional] 
+**ExternalId** | Pointer to **[]string** | Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | [optional] 
 **ClickId** | Pointer to **NullableString** | The unique identifier stored in _epik cookie on your domain or &amp;epik&#x3D; query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. | [optional] 
 **PartnerId** | Pointer to **NullableString** | A unique identifier of visitors&#39; information defined by third party partners. e.g RampID | [optional] 
+**Em** | **[]string** | Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | 
+**HashedMaids** | **[]string** | Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format. | 
+**ClientIpAddress** | **string** | The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. | 
+**ClientUserAgent** | **string** | The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA. | 
 
 ## Methods
 
 ### NewConversionEventsUserData
 
-`func NewConversionEventsUserData() *ConversionEventsUserData`
+`func NewConversionEventsUserData(em []string, hashedMaids []string, clientIpAddress string, clientUserAgent string, ) *ConversionEventsUserData`
 
 NewConversionEventsUserData instantiates a new ConversionEventsUserData object
 This constructor will assign default values to properties that have it defined,
@@ -356,6 +360,86 @@ HasPartnerId returns a boolean if a field has been set.
 `func (o *ConversionEventsUserData) UnsetPartnerId()`
 
 UnsetPartnerId ensures that no value is present for PartnerId, not even an explicit nil
+### GetEm
+
+`func (o *ConversionEventsUserData) GetEm() []string`
+
+GetEm returns the Em field if non-nil, zero value otherwise.
+
+### GetEmOk
+
+`func (o *ConversionEventsUserData) GetEmOk() (*[]string, bool)`
+
+GetEmOk returns a tuple with the Em field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEm
+
+`func (o *ConversionEventsUserData) SetEm(v []string)`
+
+SetEm sets Em field to given value.
+
+
+### GetHashedMaids
+
+`func (o *ConversionEventsUserData) GetHashedMaids() []string`
+
+GetHashedMaids returns the HashedMaids field if non-nil, zero value otherwise.
+
+### GetHashedMaidsOk
+
+`func (o *ConversionEventsUserData) GetHashedMaidsOk() (*[]string, bool)`
+
+GetHashedMaidsOk returns a tuple with the HashedMaids field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashedMaids
+
+`func (o *ConversionEventsUserData) SetHashedMaids(v []string)`
+
+SetHashedMaids sets HashedMaids field to given value.
+
+
+### GetClientIpAddress
+
+`func (o *ConversionEventsUserData) GetClientIpAddress() string`
+
+GetClientIpAddress returns the ClientIpAddress field if non-nil, zero value otherwise.
+
+### GetClientIpAddressOk
+
+`func (o *ConversionEventsUserData) GetClientIpAddressOk() (*string, bool)`
+
+GetClientIpAddressOk returns a tuple with the ClientIpAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientIpAddress
+
+`func (o *ConversionEventsUserData) SetClientIpAddress(v string)`
+
+SetClientIpAddress sets ClientIpAddress field to given value.
+
+
+### GetClientUserAgent
+
+`func (o *ConversionEventsUserData) GetClientUserAgent() string`
+
+GetClientUserAgent returns the ClientUserAgent field if non-nil, zero value otherwise.
+
+### GetClientUserAgentOk
+
+`func (o *ConversionEventsUserData) GetClientUserAgentOk() (*string, bool)`
+
+GetClientUserAgentOk returns a tuple with the ClientUserAgent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientUserAgent
+
+`func (o *ConversionEventsUserData) SetClientUserAgent(v string)`
+
+SetClientUserAgent sets ClientUserAgent field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

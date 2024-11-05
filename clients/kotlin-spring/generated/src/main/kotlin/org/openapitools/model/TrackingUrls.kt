@@ -37,7 +37,7 @@ data class TrackingUrls(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("audience_verification") val audienceVerification: kotlin.collections.List<kotlin.String>? = null
-) {
+    ) {
 
 }
 

@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ItemCreateBatchRecord
-import org.openapitools.client.models.ItemAttributes
+import org.openapitools.client.models.ItemAttributesRequest
 
 class ItemCreateBatchRecordTest : ShouldSpec() {
     init {

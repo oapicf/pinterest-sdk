@@ -30,5 +30,6 @@ interface PinMedia {
 
     @Json(name = "media_type")
     val mediaType: kotlin.String?
+
 }
 

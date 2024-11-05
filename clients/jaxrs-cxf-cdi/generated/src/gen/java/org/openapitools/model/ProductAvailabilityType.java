@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum ProductAvailabilityType {
 
-    @JsonProperty("IN_STOCK") IN_STOCK(String.valueOf("IN_STOCK")), @JsonProperty("OUT_OF_STOCK") OUT_OF_STOCK(String.valueOf("OUT_OF_STOCK")), @JsonProperty("PREORDER") PREORDER(String.valueOf("PREORDER")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("IN_STOCK") IN_STOCK(String.valueOf("IN_STOCK")), @JsonProperty("OUT_OF_STOCK") OUT_OF_STOCK(String.valueOf("OUT_OF_STOCK")), @JsonProperty("PREORDER") PREORDER(String.valueOf("PREORDER"));
 
 
     private String value;

@@ -19,8 +19,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaWithVideo
-import org.openapitools.client.models.ImageMetadataImages
 import org.openapitools.client.models.PinMedia
+import org.openapitools.client.models.PinMediaWithImageAllOfImages
 
 class PinMediaWithVideoTest : ShouldSpec() {
     init {

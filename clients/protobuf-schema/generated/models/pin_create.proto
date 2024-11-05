@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -15,8 +15,8 @@ syntax = "proto3";
 package openapitools;
 
 import public "models/board_owner.proto";
+import public "models/pin_media.proto";
 import public "models/pin_media_source.proto";
-import public "models/summary_pin_media.proto";
 
 message PinCreate {
 
@@ -43,7 +43,7 @@ message PinCreate {
 
   BoardOwner board_owner = 302514152;
 
-  SummaryPinMedia media = 103772132;
+  PinMedia media = 103772132;
 
   PinMediaSource media_source = 166857942;
 

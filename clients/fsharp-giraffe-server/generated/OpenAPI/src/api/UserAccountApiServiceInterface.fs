@@ -22,5 +22,5 @@ module UserAccountApiServiceInterface =
       abstract member UserFollowingGet:HttpContext -> UserFollowingGetArgs->UserFollowingGetResult
       abstract member UserWebsitesGet:HttpContext -> UserWebsitesGetArgs->UserWebsitesGetResult
       abstract member VerifyWebsiteUpdate:HttpContext -> VerifyWebsiteUpdateArgs->VerifyWebsiteUpdateResult
-      abstract member WebsiteVerificationGet:HttpContext ->WebsiteVerificationGetResult
+      abstract member WebsiteVerificationGet:HttpContext -> WebsiteVerificationGetArgs->WebsiteVerificationGetResult
     //#endregion

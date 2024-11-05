@@ -9,7 +9,7 @@ import org.openapitools.models.MatchTypeResponse
 
 /**
  * 
- * @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  * @param matchUnderscoretype 
  * @param value Keyword value (120 chars max).
  */

@@ -17,28 +17,20 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             ...catalogs_product_group_pricing_currency_criteria.fields(`${keyPrefix}PRICE`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}HOTEL_ID`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}BRAND`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CUSTOM_LABEL_0`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CUSTOM_LABEL_1`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CUSTOM_LABEL_2`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CUSTOM_LABEL_3`, isInput),
-            ...CatalogsProductGroupMultipleStringCriteria.fields(`${keyPrefix}CUSTOM_LABEL_4`, isInput),
-            ...CatalogsProductGroupMultipleCountriesCriteria.fields(`${keyPrefix}COUNTRY`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'PRICE': utils.removeIfEmpty(catalogs_product_group_pricing_currency_criteria.mapping(bundle, `${keyPrefix}PRICE`)),
-            'HOTEL_ID': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}HOTEL_ID`)),
-            'BRAND': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}BRAND`)),
-            'CUSTOM_LABEL_0': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_0`)),
-            'CUSTOM_LABEL_1': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_1`)),
-            'CUSTOM_LABEL_2': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_2`)),
-            'CUSTOM_LABEL_3': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_3`)),
-            'CUSTOM_LABEL_4': utils.removeIfEmpty(CatalogsProductGroupMultipleStringCriteria.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_4`)),
-            'COUNTRY': utils.removeIfEmpty(CatalogsProductGroupMultipleCountriesCriteria.mapping(bundle, `${keyPrefix}COUNTRY`)),
+            'HOTEL_ID': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}HOTEL_ID`)),
+            'BRAND': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}BRAND`)),
+            'CUSTOM_LABEL_0': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_0`)),
+            'CUSTOM_LABEL_1': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_1`)),
+            'CUSTOM_LABEL_2': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_2`)),
+            'CUSTOM_LABEL_3': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_3`)),
+            'CUSTOM_LABEL_4': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_4`)),
+            'COUNTRY': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}COUNTRY`)),
         }
     },
 }

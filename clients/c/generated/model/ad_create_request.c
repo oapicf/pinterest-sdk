@@ -56,13 +56,13 @@ pinterest_rest_api_ad_create_request__e ad_create_request_grid_click_type_FromSt
     return 0;
 }
 char* ad_create_request_customizable_cta_type_ToString(pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e customizable_cta_type) {
-    char* customizable_cta_typeArray[] =  { "NULL", "GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_WEBSITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "" };
+    char* customizable_cta_typeArray[] =  { "NULL", "GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "" };
     return customizable_cta_typeArray[customizable_cta_type];
 }
 
 pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e ad_create_request_customizable_cta_type_FromString(char* customizable_cta_type){
     int stringToReturn = 0;
-    char *customizable_cta_typeArray[] =  { "NULL", "GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_WEBSITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "" };
+    char *customizable_cta_typeArray[] =  { "NULL", "GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "" };
     size_t sizeofArray = sizeof(customizable_cta_typeArray) / sizeof(customizable_cta_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(customizable_cta_type, customizable_cta_typeArray[stringToReturn]) == 0) {
@@ -87,12 +87,12 @@ ad_create_request_t *ad_create_request_create(
     int is_removable,
     char *name,
     entity_status_t *status,
-    ad_common_tracking_urls_t *tracking_urls,
+    tracking_urls_t *tracking_urls,
     char *view_tracking_url,
     char *lead_form_id,
     grid_click_type_t *grid_click_type,
     pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e customizable_cta_type,
-    ad_common_quiz_pin_data_t *quiz_pin_data,
+    quiz_pin_data_t *quiz_pin_data,
     char *pin_id
     ) {
     ad_create_request_t *ad_create_request_local_var = malloc(sizeof(ad_create_request_t));
@@ -183,7 +183,7 @@ void ad_create_request_free(ad_create_request_t *ad_create_request) {
         ad_create_request->status = NULL;
     }
     if (ad_create_request->tracking_urls) {
-        ad_common_tracking_urls_free(ad_create_request->tracking_urls);
+        tracking_urls_free(ad_create_request->tracking_urls);
         ad_create_request->tracking_urls = NULL;
     }
     if (ad_create_request->view_tracking_url) {
@@ -199,7 +199,7 @@ void ad_create_request_free(ad_create_request_t *ad_create_request) {
         ad_create_request->grid_click_type = NULL;
     }
     if (ad_create_request->quiz_pin_data) {
-        ad_common_quiz_pin_data_free(ad_create_request->quiz_pin_data);
+        quiz_pin_data_free(ad_create_request->quiz_pin_data);
         ad_create_request->quiz_pin_data = NULL;
     }
     if (ad_create_request->pin_id) {
@@ -357,7 +357,7 @@ cJSON *ad_create_request_convertToJSON(ad_create_request_t *ad_create_request) {
 
     // ad_create_request->tracking_urls
     if(ad_create_request->tracking_urls) {
-    cJSON *tracking_urls_local_JSON = ad_common_tracking_urls_convertToJSON(ad_create_request->tracking_urls);
+    cJSON *tracking_urls_local_JSON = tracking_urls_convertToJSON(ad_create_request->tracking_urls);
     if(tracking_urls_local_JSON == NULL) {
     goto fail; //model
     }
@@ -408,7 +408,7 @@ cJSON *ad_create_request_convertToJSON(ad_create_request_t *ad_create_request) {
 
     // ad_create_request->quiz_pin_data
     if(ad_create_request->quiz_pin_data) {
-    cJSON *quiz_pin_data_local_JSON = ad_common_quiz_pin_data_convertToJSON(ad_create_request->quiz_pin_data);
+    cJSON *quiz_pin_data_local_JSON = quiz_pin_data_convertToJSON(ad_create_request->quiz_pin_data);
     if(quiz_pin_data_local_JSON == NULL) {
     goto fail; //model
     }
@@ -455,13 +455,13 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     entity_status_t *status_local_nonprim = NULL;
 
     // define the local variable for ad_create_request->tracking_urls
-    ad_common_tracking_urls_t *tracking_urls_local_nonprim = NULL;
+    tracking_urls_t *tracking_urls_local_nonprim = NULL;
 
     // define the local variable for ad_create_request->grid_click_type
     grid_click_type_t *grid_click_type_local_nonprim = NULL;
 
     // define the local variable for ad_create_request->quiz_pin_data
-    ad_common_quiz_pin_data_t *quiz_pin_data_local_nonprim = NULL;
+    quiz_pin_data_t *quiz_pin_data_local_nonprim = NULL;
 
     // ad_create_request->ad_group_id
     cJSON *ad_group_id = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "ad_group_id");
@@ -613,7 +613,7 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     // ad_create_request->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "tracking_urls");
     if (tracking_urls) { 
-    tracking_urls_local_nonprim = ad_common_tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
+    tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // ad_create_request->view_tracking_url
@@ -654,7 +654,7 @@ ad_create_request_t *ad_create_request_parseFromJSON(cJSON *ad_create_requestJSO
     // ad_create_request->quiz_pin_data
     cJSON *quiz_pin_data = cJSON_GetObjectItemCaseSensitive(ad_create_requestJSON, "quiz_pin_data");
     if (quiz_pin_data) { 
-    quiz_pin_data_local_nonprim = ad_common_quiz_pin_data_parseFromJSON(quiz_pin_data); //nonprimitive
+    quiz_pin_data_local_nonprim = quiz_pin_data_parseFromJSON(quiz_pin_data); //nonprimitive
     }
 
     // ad_create_request->pin_id
@@ -731,7 +731,7 @@ end:
         status_local_nonprim = NULL;
     }
     if (tracking_urls_local_nonprim) {
-        ad_common_tracking_urls_free(tracking_urls_local_nonprim);
+        tracking_urls_free(tracking_urls_local_nonprim);
         tracking_urls_local_nonprim = NULL;
     }
     if (grid_click_type_local_nonprim) {
@@ -739,7 +739,7 @@ end:
         grid_click_type_local_nonprim = NULL;
     }
     if (quiz_pin_data_local_nonprim) {
-        ad_common_quiz_pin_data_free(quiz_pin_data_local_nonprim);
+        quiz_pin_data_free(quiz_pin_data_local_nonprim);
         quiz_pin_data_local_nonprim = NULL;
     }
     return NULL;

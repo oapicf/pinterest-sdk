@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.BulkDownloadRequestCampaignFilter
@@ -46,7 +47,7 @@ data class BulkDownloadRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("output_format") val outputFormat: BulkOutputFormat? = "JSON"
-) {
+    ) {
 
 }
 

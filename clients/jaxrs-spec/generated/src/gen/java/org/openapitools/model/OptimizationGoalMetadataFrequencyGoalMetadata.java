@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OptimizationGoalMetadata_frequency_goal_metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata   {
-  private @Valid Integer frequency;
+  private Integer frequency;
   public enum TimerangeEnum {
 
     THIRTY_DAY(String.valueOf("THIRTY_DAY")), DAY(String.valueOf("DAY")), SEVEN_DAY(String.valueOf("SEVEN_DAY")), TWENTY_MINUTE(String.valueOf("TWENTY_MINUTE")), TEN_MINUTE(String.valueOf("TEN_MINUTE")), TWENTY_FOUR_HOUR(String.valueOf("TWENTY_FOUR_HOUR"));
@@ -66,7 +66,7 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
     }
 }
 
-  private @Valid TimerangeEnum timerange;
+  private TimerangeEnum timerange;
 
   /**
    **/

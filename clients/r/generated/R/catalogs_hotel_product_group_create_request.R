@@ -23,8 +23,7 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
     `description` = NULL,
     `filters` = NULL,
     `catalog_id` = NULL,
-    #' Initialize a new CatalogsHotelProductGroupCreateRequest class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsHotelProductGroupCreateRequest class.
     #'
@@ -34,7 +33,6 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
     #' @param catalog_id Catalog id pertaining to the hotel product group.
     #' @param description description
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`catalog_type`, `name`, `filters`, `catalog_id`, `description` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c("HOTEL"))) {
@@ -68,13 +66,11 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
         self$`description` <- `description`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelProductGroupCreateRequest in JSON format
-    #' @export
     toJSON = function() {
       CatalogsHotelProductGroupCreateRequestObject <- list()
       if (!is.null(self$`catalog_type`)) {
@@ -99,14 +95,12 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
       }
       CatalogsHotelProductGroupCreateRequestObject
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelProductGroupCreateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`)) {
@@ -131,13 +125,11 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelProductGroupCreateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`catalog_type`)) {
@@ -184,14 +176,12 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelProductGroupCreateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
@@ -204,13 +194,11 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
       self$`catalog_id` <- this_object$`catalog_id`
       self
     },
-    #' Validate JSON input with respect to CatalogsHotelProductGroupCreateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsHotelProductGroupCreateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
@@ -244,23 +232,19 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelProductGroupCreateRequest: the required field `catalog_id` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsHotelProductGroupCreateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
@@ -288,13 +272,11 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `catalog_type` is null
@@ -323,12 +305,9 @@ CatalogsHotelProductGroupCreateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

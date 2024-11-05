@@ -25,14 +25,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing the catalogs retail items batch")
 @JsonTypeName("CatalogsRetailItemsBatch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemsBatch   {
-  private @Valid String batchId;
-  private @Valid Date createdTime;
-  private @Valid Date completedTime;
-  private @Valid BatchOperationStatus status;
-  private @Valid CatalogsType catalogType;
-  private @Valid List<@Valid ItemProcessingRecord> items;
+  private String batchId;
+  private Date createdTime;
+  private Date completedTime;
+  private BatchOperationStatus status;
+  private CatalogsType catalogType;
+  private @Valid List<@Valid ItemProcessingRecord> items = new ArrayList<>();
 
   /**
    * Id of the catalogs items batch
@@ -55,7 +55,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   /**
-   * Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
   public CatalogsRetailItemsBatch createdTime(Date createdTime) {
     this.createdTime = createdTime;
@@ -63,7 +63,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("created_time")
   public Date getCreatedTime() {
     return createdTime;
@@ -75,7 +75,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   /**
-   * Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    **/
   public CatalogsRetailItemsBatch completedTime(Date completedTime) {
     this.completedTime = completedTime;
@@ -83,7 +83,7 @@ public class CatalogsRetailItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("completed_time")
   public Date getCompletedTime() {
     return completedTime;
@@ -123,8 +123,7 @@ public class CatalogsRetailItemsBatch   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
+  @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
@@ -144,7 +143,7 @@ public class CatalogsRetailItemsBatch   {
   
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
   @JsonProperty("items")
-  public List<ItemProcessingRecord> getItems() {
+  @Valid public List<@Valid ItemProcessingRecord> getItems() {
     return items;
   }
 

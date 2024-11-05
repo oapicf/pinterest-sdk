@@ -10,5 +10,5 @@ import org.openapitools.model.DeliveryMetricsResponseItemsInner;
 @Canonical
 class DeliveryMetricsResponse {
     
-    List<DeliveryMetricsResponseItemsInner> items
+    List<DeliveryMetricsResponseItemsInner> items = new ArrayList<>()
 }

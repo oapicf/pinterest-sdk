@@ -37,5 +37,8 @@ data class Exception (
     @Json(name = "message")
     val message: kotlin.String? = null
 
-)
+) {
+
+
+}
 

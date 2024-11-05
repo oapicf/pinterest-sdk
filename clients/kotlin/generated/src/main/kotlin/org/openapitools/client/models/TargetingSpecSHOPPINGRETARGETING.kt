@@ -42,5 +42,8 @@ data class TargetingSpecSHOPPINGRETARGETING (
     @Json(name = "exclusion_window")
     val exclusionWindow: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

@@ -23,16 +23,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccount")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccount   {
-  private @Valid String id;
-  private @Valid String name;
-  private @Valid AdAccountOwner owner;
-  private @Valid Country country;
-  private @Valid Currency currency;
-  private @Valid List<BusinessAccessRole> permissions;
-  private @Valid Integer createdTime;
-  private @Valid Integer updatedTime;
+  private String id;
+  private String name;
+  private AdAccountOwner owner;
+  private Country country;
+  private Currency currency;
+  private @Valid List<BusinessAccessRole> permissions = new ArrayList<>();
+  private Integer createdTime;
+  private Integer updatedTime;
 
   /**
    **/
@@ -82,7 +82,7 @@ public class AdAccount   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("owner")
-  public AdAccountOwner getOwner() {
+  @Valid public AdAccountOwner getOwner() {
     return owner;
   }
 

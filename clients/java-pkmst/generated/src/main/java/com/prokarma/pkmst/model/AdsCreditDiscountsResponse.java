@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdsCreditDiscountsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditDiscountsResponse   {
   @JsonProperty("active")
   private Boolean active;
@@ -67,9 +67,7 @@ public class AdsCreditDiscountsResponse   {
     
     INVOICE_SALES_INCENTIVE_CREDIT_APPLIED("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"),
     
-    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND"),
-    
-    NULL("null");
+    PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
 
     private String value;
 
@@ -114,10 +112,10 @@ public class AdsCreditDiscountsResponse   {
     return this;
   }
 
-   /**
+  /**
    * True if the offer code is currently active.
    * @return active
-  **/
+   */
   @ApiModelProperty(example = "true", value = "True if the offer code is currently active.")
   public Boolean getActive() {
     return active;
@@ -132,10 +130,10 @@ public class AdsCreditDiscountsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Advertiser ID the offer was applied to.
    * @return advertiserId
-  **/
+   */
   @ApiModelProperty(example = "12312451231", value = "Advertiser ID the offer was applied to.")
   public String getAdvertiserId() {
     return advertiserId;
@@ -150,10 +148,10 @@ public class AdsCreditDiscountsResponse   {
     return this;
   }
 
-   /**
+  /**
    * The type of discount of this credit
    * @return discountType
-  **/
+   */
   @ApiModelProperty(value = "The type of discount of this credit")
   public DiscountTypeEnum getDiscountType() {
     return discountType;
@@ -168,10 +166,10 @@ public class AdsCreditDiscountsResponse   {
     return this;
   }
 
-   /**
+  /**
    * The discount applied in the offer’s currency value.
    * @return discountInMicroCurrency
-  **/
+   */
   @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
   public BigDecimal getDiscountInMicroCurrency() {
     return discountInMicroCurrency;
@@ -186,10 +184,10 @@ public class AdsCreditDiscountsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Currency value for the discount.
    * @return discountCurrency
-  **/
+   */
   @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
   public String getDiscountCurrency() {
     return discountCurrency;
@@ -204,10 +202,10 @@ public class AdsCreditDiscountsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Human readable title of the offer code.
    * @return title
-  **/
+   */
   @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
   public String getTitle() {
     return title;
@@ -222,10 +220,10 @@ public class AdsCreditDiscountsResponse   {
     return this;
   }
 
-   /**
+  /**
    * The credits left to spend.
    * @return remainingDiscountInMicroCurrency
-  **/
+   */
   @ApiModelProperty(example = "125000000", value = "The credits left to spend.")
   public BigDecimal getRemainingDiscountInMicroCurrency() {
     return remainingDiscountInMicroCurrency;

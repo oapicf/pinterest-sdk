@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "A hotel item to be upserted.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpsertHotelItem   {
   @JsonProperty("hotel_id")
   private String hotelId;
@@ -62,10 +62,10 @@ public class CatalogsUpsertHotelItem   {
     return this;
   }
 
-   /**
+  /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
   public String getHotelId() {
     return hotelId;
@@ -80,10 +80,10 @@ public class CatalogsUpsertHotelItem   {
     return this;
   }
 
-   /**
+  /**
    * Get operation
    * @return operation
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public OperationEnum getOperation() {
     return operation;
@@ -98,10 +98,10 @@ public class CatalogsUpsertHotelItem   {
     return this;
   }
 
-   /**
+  /**
    * Get attributes
    * @return attributes
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsHotelAttributes getAttributes() {
     return attributes;

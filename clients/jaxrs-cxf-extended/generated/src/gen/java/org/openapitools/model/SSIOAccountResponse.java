@@ -32,14 +32,14 @@ public class SSIOAccountResponse  {
   */
   @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
   @Valid
-  private List<@Valid SSIOAccountItem> billtoInfos;
+  private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
 
   @ApiModelProperty(example = "USD", value = "")
   private String currency;
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid SSIOAccountPMPName> pmpNames;
+  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
  /**
   * Error indicator from Salesforce which could be \"No Error\"

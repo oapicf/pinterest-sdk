@@ -15,22 +15,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedValidationWarnings")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationWarnings   {
-  private @Valid Integer AD_LINK_FORMAT_WARNING;
-  private @Valid Integer AD_LINK_SAME_AS_LINK;
-  private @Valid Integer TITLE_LENGTH_TOO_LONG;
-  private @Valid Integer DESCRIPTION_LENGTH_TOO_LONG;
-  private @Valid Integer GENDER_INVALID;
-  private @Valid Integer AGE_GROUP_INVALID;
-  private @Valid Integer SIZE_TYPE_INVALID;
-  private @Valid Integer SIZE_SYSTEM_INVALID;
-  private @Valid Integer LINK_FORMAT_WARNING;
-  private @Valid Integer SALES_PRICE_INVALID;
-  private @Valid Integer PRODUCT_CATEGORY_DEPTH_WARNING;
-  private @Valid Integer ADWORDS_FORMAT_WARNING;
-  private @Valid Integer ADWORDS_SAME_AS_LINK;
-  private @Valid Integer DUPLICATE_HEADERS;
+  private Integer AD_LINK_FORMAT_WARNING;
+  private Integer AD_LINK_SAME_AS_LINK;
+  private Integer TITLE_LENGTH_TOO_LONG;
+  private Integer DESCRIPTION_LENGTH_TOO_LONG;
+  private Integer GENDER_INVALID;
+  private Integer AGE_GROUP_INVALID;
+  private Integer SIZE_TYPE_INVALID;
+  private Integer SIZE_SYSTEM_INVALID;
+  private Integer LINK_FORMAT_WARNING;
+  private Integer SALES_PRICE_INVALID;
+  private Integer PRODUCT_CATEGORY_DEPTH_WARNING;
+  private Integer ADWORDS_FORMAT_WARNING;
+  private Integer ADWORDS_SAME_AS_LINK;
+  private Integer DUPLICATE_HEADERS;
   public enum FETCHSAMESIGNATUREEnum {
 
     NUMBER_1(Integer.valueOf(1));
@@ -78,41 +78,41 @@ public class CatalogsFeedValidationWarnings   {
     }
 }
 
-  private @Valid FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
-  private @Valid Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
-  private @Valid Integer ADDITIONAL_IMAGE_LINK_WARNING;
-  private @Valid Integer IMAGE_LINK_WARNING;
-  private @Valid Integer SHIPPING_INVALID;
-  private @Valid Integer TAX_INVALID;
-  private @Valid Integer SHIPPING_WEIGHT_INVALID;
-  private @Valid Integer EXPIRATION_DATE_INVALID;
-  private @Valid Integer AVAILABILITY_DATE_INVALID;
-  private @Valid Integer SALE_DATE_INVALID;
-  private @Valid Integer WEIGHT_UNIT_INVALID;
-  private @Valid Integer IS_BUNDLE_INVALID;
-  private @Valid Integer UPDATED_TIME_INVALID;
-  private @Valid Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
-  private @Valid Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
-  private @Valid Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
-  private @Valid Integer MULTIPACK_INVALID;
-  private @Valid Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
-  private @Valid Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
-  private @Valid Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
-  private @Valid Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
-  private @Valid Integer OPTIONAL_CONDITION_MISSING;
-  private @Valid Integer OPTIONAL_CONDITION_INVALID;
-  private @Valid Integer IOS_DEEP_LINK_INVALID;
-  private @Valid Integer ANDROID_DEEP_LINK_INVALID;
-  private @Valid Integer UTM_SOURCE_AUTO_CORRECTED;
-  private @Valid Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
-  private @Valid Integer MIN_AD_PRICE_INVALID;
-  private @Valid Integer GTIN_INVALID;
-  private @Valid Integer INCONSISTENT_CURRENCY_VALUES;
-  private @Valid Integer SALES_PRICE_TOO_LOW;
-  private @Valid Integer SHIPPING_WIDTH_INVALID;
-  private @Valid Integer SHIPPING_HEIGHT_INVALID;
-  private @Valid Integer SALES_PRICE_TOO_HIGH;
-  private @Valid Integer MPN_INVALID;
+  private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
+  private Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
+  private Integer ADDITIONAL_IMAGE_LINK_WARNING;
+  private Integer IMAGE_LINK_WARNING;
+  private Integer SHIPPING_INVALID;
+  private Integer TAX_INVALID;
+  private Integer SHIPPING_WEIGHT_INVALID;
+  private Integer EXPIRATION_DATE_INVALID;
+  private Integer AVAILABILITY_DATE_INVALID;
+  private Integer SALE_DATE_INVALID;
+  private Integer WEIGHT_UNIT_INVALID;
+  private Integer IS_BUNDLE_INVALID;
+  private Integer UPDATED_TIME_INVALID;
+  private Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
+  private Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
+  private Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
+  private Integer MULTIPACK_INVALID;
+  private Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
+  private Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
+  private Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
+  private Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
+  private Integer OPTIONAL_CONDITION_MISSING;
+  private Integer OPTIONAL_CONDITION_INVALID;
+  private Integer IOS_DEEP_LINK_INVALID;
+  private Integer ANDROID_DEEP_LINK_INVALID;
+  private Integer UTM_SOURCE_AUTO_CORRECTED;
+  private Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
+  private Integer MIN_AD_PRICE_INVALID;
+  private Integer GTIN_INVALID;
+  private Integer INCONSISTENT_CURRENCY_VALUES;
+  private Integer SALES_PRICE_TOO_LOW;
+  private Integer SHIPPING_WIDTH_INVALID;
+  private Integer SHIPPING_HEIGHT_INVALID;
+  private Integer SALES_PRICE_TOO_HIGH;
+  private Integer MPN_INVALID;
 
   /**
    * Some items have ad links that are formatted incorrectly.

@@ -6,7 +6,7 @@ Request object to upsert catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | **Country** |  | 
-**Language** | **Language** |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Operation** | **BatchOperation** |  | 
 **Items** | [**List&lt;ItemUpsertBatchRecord&gt;**](ItemUpsertBatchRecord.md) | Array with catalogs items | 
 

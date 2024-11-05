@@ -19,7 +19,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ItemResponseAnyOf
-import org.openapitools.client.models.CatalogsHotelAttributes
+import org.openapitools.client.models.CatalogsCreativeAssetsAttributes
+import org.openapitools.client.models.CatalogsCreativeAssetsItemResponse
 import org.openapitools.client.models.CatalogsHotelItemResponse
 import org.openapitools.client.models.CatalogsRetailItemResponse
 import org.openapitools.client.models.CatalogsType
@@ -58,6 +59,12 @@ class ItemResponseAnyOfTest : ShouldSpec() {
         should("test hotelId") {
             // uncomment below to test the property
             //modelInstance.hotelId shouldBe ("TODO")
+        }
+
+        // to test the property `creativeAssetsId` - The catalog creative assets id in the merchant namespace
+        should("test creativeAssetsId") {
+            // uncomment below to test the property
+            //modelInstance.creativeAssetsId shouldBe ("TODO")
         }
 
     }

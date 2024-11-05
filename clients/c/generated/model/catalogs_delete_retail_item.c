@@ -5,13 +5,13 @@
 
 
 char* catalogs_delete_retail_item_operation_ToString(pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e operation) {
-    char* operationArray[] =  { "NULL", "CREATE", "UPDATE", "UPSERT", "DELETE" };
+    char* operationArray[] =  { "NULL", "DELETE" };
     return operationArray[operation];
 }
 
 pinterest_rest_api_catalogs_delete_retail_item_OPERATION_e catalogs_delete_retail_item_operation_FromString(char* operation){
     int stringToReturn = 0;
-    char *operationArray[] =  { "NULL", "CREATE", "UPDATE", "UPSERT", "DELETE" };
+    char *operationArray[] =  { "NULL", "DELETE" };
     size_t sizeofArray = sizeof(operationArray) / sizeof(operationArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(operation, operationArray[stringToReturn]) == 0) {

@@ -15,8 +15,9 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroup
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupFilters
 import org.openapitools.client.models.CatalogsHotelProductGroup
-import org.openapitools.client.models.CatalogsProductGroupFilters
 import org.openapitools.client.models.CatalogsProductGroupStatus
 import org.openapitools.client.models.CatalogsProductGroupType
 import org.openapitools.client.models.CatalogsRetailProductGroup
@@ -28,17 +29,19 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param catalogType 
- * @param id ID of the catalog product group.
+ * @param id ID of the creative assets product group.
  * @param filters 
- * @param catalogId 
- * @param feedId 
- * @param name Name of catalog product group
+ * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param feedId id of the catalogs feed belonging to this catalog product group
+ * @param name Name of creative assets product group
  * @param description 
- * @param createdAt Unix timestamp in seconds of when catalog product group was created.
- * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  * @param type 
  * @param status 
+ * @param createdAt Unix timestamp in seconds of when catalog product group was created.
+ * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
+ * @param country 
+ * @param locale 
  */
 
 
@@ -46,26 +49,22 @@ interface CatalogsVerticalProductGroup {
 
     @Json(name = "catalog_type")
     val catalogType: CatalogsVerticalProductGroup.CatalogType
-    /* ID of the catalog product group. */
+    /* ID of the creative assets product group. */
     @Json(name = "id")
     val id: kotlin.String
     @Json(name = "filters")
-    val filters: CatalogsProductGroupFilters
+    val filters: CatalogsCreativeAssetsProductGroupFilters
+    /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
+    /* id of the catalogs feed belonging to this catalog product group */
     @Json(name = "feed_id")
-    val feedId: CatalogsVerticalProductGroup.FeedId?
-    /* Name of catalog product group */
+    val feedId: kotlin.String?
+    /* Name of creative assets product group */
     @Json(name = "name")
     val name: kotlin.String?
     @Json(name = "description")
     val description: kotlin.String?
-    /* Unix timestamp in seconds of when catalog product group was created. */
-    @Json(name = "created_at")
-    val createdAt: kotlin.Int?
-    /* Unix timestamp in seconds of last time catalog product group was updated. */
-    @Json(name = "updated_at")
-    val updatedAt: kotlin.Int?
     /* boolean indicator of whether the product group is being featured or not */
     @Json(name = "is_featured")
     val isFeatured: kotlin.Boolean?
@@ -73,23 +72,25 @@ interface CatalogsVerticalProductGroup {
     val type: CatalogsProductGroupType?
     @Json(name = "status")
     val status: CatalogsProductGroupStatus?
+    /* Unix timestamp in seconds of when catalog product group was created. */
+    @Json(name = "created_at")
+    val createdAt: kotlin.Int?
+    /* Unix timestamp in seconds of last time catalog product group was updated. */
+    @Json(name = "updated_at")
+    val updatedAt: kotlin.Int?
+    @Json(name = "country")
+    val country: kotlin.String?
+    @Json(name = "locale")
+    val locale: kotlin.String?
     /**
      * 
      *
-     * Values: RETAIL
+     * Values: CREATIVE_ASSETS
      */
     @JsonClass(generateAdapter = false)
     enum class CatalogType(val value: kotlin.String) {
-        @Json(name = "RETAIL") RETAIL("RETAIL");
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
     }
-    /**
-     * 
-     *
-     * Values: `null`
-     */
-    @JsonClass(generateAdapter = false)
-    enum class FeedId(val value: kotlin.String) {
-        @Json(name = "null") `null`("null");
-    }
+
 }
 

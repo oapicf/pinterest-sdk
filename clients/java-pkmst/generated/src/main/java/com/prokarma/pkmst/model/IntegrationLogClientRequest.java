@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogClientRequest   {
   /**
    * Gets or Sets method
@@ -90,10 +90,10 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get method
    * @return method
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public MethodEnum getMethod() {
     return method;
@@ -108,10 +108,10 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-   /**
+  /**
    * HTTP request host from host header.
    * @return host
-  **/
+   */
   @ApiModelProperty(required = true, value = "HTTP request host from host header.")
   public String getHost() {
     return host;
@@ -126,10 +126,10 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-   /**
+  /**
    * HTTP request path.
    * @return path
-  **/
+   */
   @ApiModelProperty(required = true, value = "HTTP request path.")
   public String getPath() {
     return path;
@@ -152,10 +152,10 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-   /**
+  /**
    * HTTP request headers as key-value pairs.
    * @return requestHeaders
-  **/
+   */
   @ApiModelProperty(value = "HTTP request headers as key-value pairs.")
   public Map<String, String> getRequestHeaders() {
     return requestHeaders;
@@ -178,10 +178,10 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-   /**
+  /**
    * HTTP response headers as key-value pairs.
    * @return responseHeaders
-  **/
+   */
   @ApiModelProperty(value = "HTTP response headers as key-value pairs.")
   public Map<String, String> getResponseHeaders() {
     return responseHeaders;
@@ -196,10 +196,10 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get responseStatusCode
    * @return responseStatusCode
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getResponseStatusCode() {
     return responseStatusCode;

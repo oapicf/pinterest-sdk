@@ -59,5 +59,6 @@ data class DeliveryMetricsResponseItemsInner (
         @Json(name = "ADS") ADS("ADS"),
         @Json(name = "ORGANIC") ORGANIC("ORGANIC");
     }
+
 }
 

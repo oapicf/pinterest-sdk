@@ -10,7 +10,7 @@ import model.ProductGroupPromotionResponse
 import model.ProductGroupPromotionUpdateRequest
 import model.ProductGroupPromotionsList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 trait ProductGroupPromotionsApi {
   /**
     * Create product group promotions
@@ -35,7 +35,7 @@ trait ProductGroupPromotionsApi {
     * @param productGroupPromotionIds List of Product group promotion Ids.
     * @param entityStatuses Entity status
     * @param adGroupId Ad group Id.
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
     * @param bookmark Cursor used to fetch the next page of items
     */

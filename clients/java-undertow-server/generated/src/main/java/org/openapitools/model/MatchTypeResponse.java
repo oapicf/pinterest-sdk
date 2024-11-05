@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -33,9 +33,7 @@ public enum MatchTypeResponse {
         
         EXACT_NEGATIVE("EXACT_NEGATIVE"),
         
-        PHRASE_NEGATIVE("PHRASE_NEGATIVE"),
-        
-        NULL("null");
+        PHRASE_NEGATIVE("PHRASE_NEGATIVE");
 
 private String value;
 

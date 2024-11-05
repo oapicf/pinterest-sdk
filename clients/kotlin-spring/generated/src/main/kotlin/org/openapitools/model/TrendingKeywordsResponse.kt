@@ -23,7 +23,7 @@ data class TrendingKeywordsResponse(
     @field:Valid
     @Schema(example = "null", description = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
     @get:JsonProperty("trends") val trends: kotlin.collections.List<TrendingKeywordsResponseTrendsInner>? = null
-) {
+    ) {
 
 }
 

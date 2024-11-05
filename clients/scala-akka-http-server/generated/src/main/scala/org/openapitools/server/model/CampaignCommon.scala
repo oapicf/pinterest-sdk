@@ -13,7 +13,7 @@ package org.openapitools.server.model
  * @param trackingUrls  for example: ''null''
  * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. for example: ''1580865126''
  * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. for example: ''1644023526''
- * @param summaryStatus  for example: ''null''
+ * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup. for example: ''true''
 */
 final case class CampaignCommon (
   adAccountId: Option[String] = None,
@@ -22,9 +22,9 @@ final case class CampaignCommon (
   lifetimeSpendCap: Option[Int] = None,
   dailySpendCap: Option[Int] = None,
   orderLineId: Option[String] = None,
-  trackingUrls: Option[AdCommonTrackingUrls] = None,
+  trackingUrls: Option[TrackingUrls] = None,
   startTime: Option[Int] = None,
   endTime: Option[Int] = None,
-  summaryStatus: Option[CampaignSummaryStatus] = None
+  isFlexibleDailyBudgets: Option[Boolean] = None
 )
 

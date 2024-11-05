@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.UserListType
@@ -37,7 +38,7 @@ data class CustomerListRequest(
     @field:Valid
     @Schema(example = "null", description = "Customer list errors.")
     @get:JsonProperty("exceptions") val exceptions: kotlin.Any? = null
-) {
+    ) {
 
 }
 

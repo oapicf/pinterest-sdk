@@ -15,10 +15,7 @@
         "type": "enum",
         "name": "CatalogsUpdateRetailItem_operation",
         "symbols": [
-          "CREATE",
-          "UPDATE",
-          "UPSERT",
-          "DELETE"
+          "UPDATE"
         ]
       },
       "doc": ""

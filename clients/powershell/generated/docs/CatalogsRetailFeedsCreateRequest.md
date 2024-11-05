@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 ## Examples
 
@@ -27,7 +28,8 @@ $CatalogsRetailFeedsCreateRequest = Initialize-PSOpenAPIToolsCatalogsRetailFeeds
  -PreferredProcessingSchedule null `
  -CatalogType null `
  -DefaultCountry null `
- -DefaultAvailability null
+ -DefaultAvailability null `
+ -Status null
 ```
 
 - Convert the resource to JSON

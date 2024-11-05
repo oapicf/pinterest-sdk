@@ -17,9 +17,12 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.LeadFormArrayResponse
+import org.openapitools.server.api.model.LeadFormCreateRequest
 import org.openapitools.server.api.model.LeadFormResponse
 import org.openapitools.server.api.model.LeadFormTestRequest
 import org.openapitools.server.api.model.LeadFormTestResponse
+import org.openapitools.server.api.model.LeadFormUpdateRequest
 import org.openapitools.server.api.model.LeadFormsList200Response
 
 class LeadFormsApiVertxProxyHandler(private val vertx: Vertx, private val service: LeadFormsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
@@ -113,6 +116,28 @@ class LeadFormsApiVertxProxyHandler(private val vertx: Vertx, private val servic
                     }
                 }
         
+                "leadFormsCreate" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val leadFormCreateRequestParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
+                    if(leadFormCreateRequestParam == null){
+                         throw IllegalArgumentException("leadFormCreateRequest is required")
+                    }
+                    val leadFormCreateRequest:kotlin.Array<LeadFormCreateRequest> = Gson().fromJson(leadFormCreateRequestParam.encode()
+                            , object : TypeToken<kotlin.collections.List<LeadFormCreateRequest>>(){}.type)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.leadFormsCreate(adAccountId,leadFormCreateRequest,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
                 "leadFormsList" -> {
                     val params = context.params
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
@@ -124,6 +149,28 @@ class LeadFormsApiVertxProxyHandler(private val vertx: Vertx, private val servic
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.leadFormsList(adAccountId,pageSize,order,bookmark,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "leadFormsUpdate" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val leadFormUpdateRequestParam = ApiHandlerUtils.searchJsonArrayInJson(params,"body")
+                    if(leadFormUpdateRequestParam == null){
+                         throw IllegalArgumentException("leadFormUpdateRequest is required")
+                    }
+                    val leadFormUpdateRequest:kotlin.Array<LeadFormUpdateRequest> = Gson().fromJson(leadFormUpdateRequestParam.encode()
+                            , object : TypeToken<kotlin.collections.List<LeadFormUpdateRequest>>(){}.type)
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.leadFormsUpdate(adAccountId,leadFormUpdateRequest,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

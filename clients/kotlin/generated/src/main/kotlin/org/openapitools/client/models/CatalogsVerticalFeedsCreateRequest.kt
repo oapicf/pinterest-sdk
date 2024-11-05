@@ -15,12 +15,14 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsFeedsCreateRequest
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
 import org.openapitools.client.models.CatalogsHotelFeedsCreateRequest
 import org.openapitools.client.models.CatalogsRetailFeedsCreateRequest
+import org.openapitools.client.models.CatalogsStatus
 import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.NullableCurrency
@@ -42,7 +44,8 @@ import com.squareup.moshi.JsonClass
  * @param credentials 
  * @param preferredProcessingSchedule 
  * @param defaultAvailability 
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
  */
 
 
@@ -70,8 +73,11 @@ interface CatalogsVerticalFeedsCreateRequest {
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     @Json(name = "default_availability")
     val defaultAvailability: ProductAvailabilityType?
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
+    @Json(name = "status")
+    val status: CatalogsStatus?
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String?
+
 }
 

@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param eventName The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
- * @param actionSource The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
+ * @param eventName <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
+ * @param actionSource <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
  * @param eventTime The time when the event happened. Unix timestamp in seconds.
  * @param eventId A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
  * @param userData 
@@ -39,10 +39,10 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class ConversionEventsDataInner(
 
-    @Schema(example = "checkout", required = true, description = "The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>")
+    @Schema(example = "checkout", required = true, description = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ")
     @get:JsonProperty("event_name", required = true) val eventName: kotlin.String,
 
-    @Schema(example = "app_ios", required = true, description = "The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>")
+    @Schema(example = "app_ios", required = true, description = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ")
     @get:JsonProperty("action_source", required = true) val actionSource: kotlin.String,
 
     @Schema(example = "1451431341", required = true, description = "The time when the event happened. Unix timestamp in seconds.")
@@ -53,7 +53,7 @@ data class ConversionEventsDataInner(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("user_data", required = true) val userData: ConversionEventsUserData?,
+    @get:JsonProperty("user_data", required = true) val userData: ConversionEventsUserData,
 
     @Schema(example = "https://www.my-clothing-shop.org/", description = "URL of the web conversion event.")
     @get:JsonProperty("event_source_url") val eventSourceUrl: kotlin.String? = null,
@@ -97,7 +97,7 @@ data class ConversionEventsDataInner(
 
     @Schema(example = "en", description = "Two-character ISO-639-1 language code indicating the user's language.")
     @get:JsonProperty("language") val language: kotlin.String? = null
-) {
+    ) {
 
 }
 

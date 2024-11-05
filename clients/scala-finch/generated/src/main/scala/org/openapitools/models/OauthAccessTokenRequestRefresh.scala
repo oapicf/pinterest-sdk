@@ -5,7 +5,6 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.OauthAccessTokenRequest
 
 /**
  * A request to exchange a refresh token for a new access token.

@@ -265,7 +265,7 @@ open class IntegrationsAPI {
      Get integration metadata list
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -289,7 +289,7 @@ open class IntegrationsAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<IntegrationsGetList200Response> 
      */
     open class func integrationsGetListWithRequestBuilder(bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<IntegrationsGetList200Response> {

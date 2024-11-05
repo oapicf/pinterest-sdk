@@ -3,7 +3,6 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -15,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * BoardOwner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BoardOwner   {
   @JsonProperty("username")
   private String username;
@@ -25,10 +24,10 @@ public class BoardOwner   {
     return this;
   }
 
-   /**
+  /**
    * Get username
    * @return username
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public String getUsername() {
     return username;

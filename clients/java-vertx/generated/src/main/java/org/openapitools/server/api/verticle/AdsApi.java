@@ -6,8 +6,8 @@ import org.openapitools.server.api.model.AdPreviewRequest;
 import org.openapitools.server.api.model.AdPreviewURLResponse;
 import org.openapitools.server.api.model.AdResponse;
 import org.openapitools.server.api.model.AdUpdateRequest;
+import org.openapitools.server.api.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.server.api.model.AdsAnalyticsResponseInner;
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType;
 import org.openapitools.server.api.model.AdsList200Response;
 import org.openapitools.server.api.model.ConversionReportAttributionType;
 import org.openapitools.server.api.model.Error;
@@ -27,10 +27,10 @@ public interface AdsApi  {
     void adPreviewsCreate(String adAccountId, AdPreviewRequest adPreviewRequest, Handler<AsyncResult<AdPreviewURLResponse>> handler);
 
     //ad_targeting_analytics/get
-    void adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Handler<AsyncResult<MetricsResponse>> handler);
+    void adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Handler<AsyncResult<MetricsResponse>> handler);
 
     //ads/analytics
-    void adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> adIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Handler<AsyncResult<List<AdsAnalyticsResponseInner>>> handler);
+    void adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds, Handler<AsyncResult<List<AdsAnalyticsResponseInner>>> handler);
 
     //ads/create
     void adsCreate(String adAccountId, List<AdCreateRequest> adCreateRequest, Handler<AsyncResult<AdArrayResponse>> handler);

@@ -17,15 +17,13 @@ BoardMedia <- R6::R6Class(
   public = list(
     `image_cover_url` = NULL,
     `pin_thumbnail_urls` = NULL,
-    #' Initialize a new BoardMedia class.
-    #'
+
     #' @description
     #' Initialize a new BoardMedia class.
     #'
     #' @param image_cover_url Board cover image.
     #' @param pin_thumbnail_urls Board pin thumbnail urls.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`image_cover_url` = NULL, `pin_thumbnail_urls` = NULL, ...) {
       if (!is.null(`image_cover_url`)) {
         if (!(is.character(`image_cover_url`) && length(`image_cover_url`) == 1)) {
@@ -39,13 +37,11 @@ BoardMedia <- R6::R6Class(
         self$`pin_thumbnail_urls` <- `pin_thumbnail_urls`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BoardMedia in JSON format
-    #' @export
     toJSON = function() {
       BoardMediaObject <- list()
       if (!is.null(self$`image_cover_url`)) {
@@ -58,14 +54,12 @@ BoardMedia <- R6::R6Class(
       }
       BoardMediaObject
     },
-    #' Deserialize JSON string into an instance of BoardMedia
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BoardMedia
     #'
     #' @param input_json the JSON input
     #' @return the instance of BoardMedia
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`image_cover_url`)) {
@@ -76,13 +70,11 @@ BoardMedia <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BoardMedia in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`image_cover_url`)) {
@@ -105,67 +97,54 @@ BoardMedia <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BoardMedia
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BoardMedia
     #'
     #' @param input_json the JSON input
     #' @return the instance of BoardMedia
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`image_cover_url` <- this_object$`image_cover_url`
       self$`pin_thumbnail_urls` <- ApiClient$new()$deserializeObj(this_object$`pin_thumbnail_urls`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to BoardMedia
-    #'
+
     #' @description
     #' Validate JSON input with respect to BoardMedia and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BoardMedia
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

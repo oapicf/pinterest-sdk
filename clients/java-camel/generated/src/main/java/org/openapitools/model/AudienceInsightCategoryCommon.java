@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * @deprecated
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightCategoryCommon {
 
   private String key;
@@ -41,7 +41,7 @@ public class AudienceInsightCategoryCommon {
   /**
    * Get key
    * @return key
-  */
+   */
   
   @Schema(name = "key", example = "549755885175", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
@@ -61,7 +61,7 @@ public class AudienceInsightCategoryCommon {
   /**
    * Get name
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "travel", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -81,7 +81,7 @@ public class AudienceInsightCategoryCommon {
   /**
    * Get ratio
    * @return ratio
-  */
+   */
   @Valid 
   @Schema(name = "ratio", example = "0.551", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ratio")
@@ -101,7 +101,7 @@ public class AudienceInsightCategoryCommon {
   /**
    * Get index
    * @return index
-  */
+   */
   @Valid 
   @Schema(name = "index", example = "1.2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
@@ -121,7 +121,7 @@ public class AudienceInsightCategoryCommon {
   /**
    * Get id
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "549755885175", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")

@@ -48,6 +48,164 @@ static gpointer __PinsManagerthreadFunc(gpointer data)
 }
 
 
+static bool multiPinsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(std::map<string,string>, Error, void* )
+	= reinterpret_cast<void(*)(std::map<string,string>, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	std::map<string,string> out;
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool multiPinsAnalyticsHelper(char * accessToken,
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	void(* handler)(std::map<string,string>, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	for (std::list
+	<std::string>::iterator queryIter = pinIds.begin(); queryIter != pinIds.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		queryParams.insert(pair<string, string>("pinIds", itemAt));
+	}
+	
+
+	itemAtq = stringify(&startDate, "Date");
+	queryParams.insert(pair<string, string>("start_date", itemAtq));
+
+
+	itemAtq = stringify(&endDate, "Date");
+	queryParams.insert(pair<string, string>("end_date", itemAtq));
+
+
+	itemAtq = stringify(&appTypes, "std::string");
+	queryParams.insert(pair<string, string>("app_types", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("app_types");
+	}
+
+	for (std::list
+	<Pins_analytics_metric_types_parameter_inner>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "Pins_analytics_metric_types_parameter_inner");
+		queryParams.insert(pair<string, string>("metricTypes", itemAt));
+	}
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/pins/analytics");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(PinsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = multiPinsAnalyticsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (PinsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), multiPinsAnalyticsProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __PinsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool PinsManager::multiPinsAnalyticsAsync(char * accessToken,
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	void(* handler)(std::map<string,string>, Error, void* )
+	, void* userData)
+{
+	return multiPinsAnalyticsHelper(accessToken,
+	pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, 
+	handler, userData, true);
+}
+
+bool PinsManager::multiPinsAnalyticsSync(char * accessToken,
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	void(* handler)(std::map<string,string>, Error, void* )
+	, void* userData)
+{
+	return multiPinsAnalyticsHelper(accessToken,
+	pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, 
+	handler, userData, false);
+}
+
 static bool pinsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {

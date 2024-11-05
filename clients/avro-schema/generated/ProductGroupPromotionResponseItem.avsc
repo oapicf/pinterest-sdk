@@ -6,7 +6,7 @@
   "fields": [
     {
       "name": "data",
-      "type": ["null", "model.ProductGroupPromotion"],
+      "type": ["null", "model.ProductGroupPromotionResponseElement"],
       "doc": "",
       "default": null
     },

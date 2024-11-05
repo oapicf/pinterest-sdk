@@ -30,6 +30,7 @@ LeadFormCommon::__init()
 	//status = new LeadFormStatus();
 	//disclosure_language = std::string();
 	//new std::list()std::list> questions;
+	//new std::list()std::list> policy_links;
 }
 
 void
@@ -69,6 +70,11 @@ LeadFormCommon::__cleanup()
 	//questions.RemoveAll(true);
 	//delete questions;
 	//questions = NULL;
+	//}
+	//if(policy_links != NULL) {
+	//policy_links.RemoveAll(true);
+	//delete policy_links;
+	//policy_links = NULL;
 	//}
 	//
 }
@@ -171,6 +177,30 @@ LeadFormCommon::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *policy_linksKey = "policy_links";
+	node = json_object_get_member(pJsonObject, policy_linksKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<LeadFormCommon_policy_links_inner> new_list;
+			LeadFormCommon_policy_links_inner inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("LeadFormCommon_policy_links_inner")) {
+					jsonToValue(&inst, temp_json, "LeadFormCommon_policy_links_inner", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			policy_links = new_list;
+		}
+		
+	}
 }
 
 LeadFormCommon::LeadFormCommon(char* json)
@@ -267,6 +297,31 @@ LeadFormCommon::toJson()
 	
 	const gchar *questionsKey = "questions";
 	json_object_set_member(pJsonObject, questionsKey, node);
+	if (isprimitive("LeadFormCommon_policy_links_inner")) {
+		list<LeadFormCommon_policy_links_inner> new_list = static_cast<list <LeadFormCommon_policy_links_inner> > (getPolicyLinks());
+		node = converttoJson(&new_list, "LeadFormCommon_policy_links_inner", "array");
+	} else {
+		node = json_node_alloc();
+		list<LeadFormCommon_policy_links_inner> new_list = static_cast<list <LeadFormCommon_policy_links_inner> > (getPolicyLinks());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<LeadFormCommon_policy_links_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			LeadFormCommon_policy_links_inner obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *policy_linksKey = "policy_links";
+	json_object_set_member(pJsonObject, policy_linksKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -357,6 +412,18 @@ void
 LeadFormCommon::setQuestions(std::list <LeadFormQuestion> questions)
 {
 	this->questions = questions;
+}
+
+std::list<LeadFormCommon_policy_links_inner>
+LeadFormCommon::getPolicyLinks()
+{
+	return policy_links;
+}
+
+void
+LeadFormCommon::setPolicyLinks(std::list <LeadFormCommon_policy_links_inner> policy_links)
+{
+	this->policy_links = policy_links;
 }
 
 

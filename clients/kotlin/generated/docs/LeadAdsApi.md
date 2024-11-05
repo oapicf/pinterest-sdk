@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**adAccountsSubscriptionsDelById**](LeadAdsApi.md#adAccountsSubscriptionsDelById) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription
-[**adAccountsSubscriptionsGetById**](LeadAdsApi.md#adAccountsSubscriptionsGetById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription
-[**adAccountsSubscriptionsGetList**](LeadAdsApi.md#adAccountsSubscriptionsGetList) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions
-[**adAccountsSubscriptionsPost**](LeadAdsApi.md#adAccountsSubscriptionsPost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**adAccountsSubscriptionsDelById**](LeadAdsApi.md#adAccountsSubscriptionsDelById) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription |
+| [**adAccountsSubscriptionsGetById**](LeadAdsApi.md#adAccountsSubscriptionsGetById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription |
+| [**adAccountsSubscriptionsGetList**](LeadAdsApi.md#adAccountsSubscriptionsGetList) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions |
+| [**adAccountsSubscriptionsPost**](LeadAdsApi.md#adAccountsSubscriptionsPost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription |
 
 
 <a id="adAccountsSubscriptionsDelById"></a>
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Delete lead ads subscription
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -39,11 +39,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. |
- **subscriptionId** | **kotlin.String**| Unique identifier of a subscription. |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subscriptionId** | **kotlin.String**| Unique identifier of a subscription. | |
 
 ### Return type
 
@@ -66,7 +65,7 @@ Configure pinterest_oauth2:
 
 Get lead ads subscription
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -90,11 +89,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. |
- **subscriptionId** | **kotlin.String**| Unique identifier of a subscription. |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subscriptionId** | **kotlin.String**| Unique identifier of a subscription. | |
 
 ### Return type
 
@@ -117,7 +115,7 @@ Configure pinterest_oauth2:
 
 Get lead ads subscriptions
 
-Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -127,7 +125,7 @@ Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the
 
 val apiInstance = LeadAdsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
 try {
     val result : AdAccountsSubscriptionsGetList200Response = apiInstance.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark)
@@ -142,12 +140,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. |
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 
 ### Return type
 
@@ -170,7 +167,7 @@ Configure pinterest_oauth2:
 
 Create lead ads subscription
 
-Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -194,11 +191,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. |
- **adAccountCreateSubscriptionRequest** | [**AdAccountCreateSubscriptionRequest**](AdAccountCreateSubscriptionRequest.md)| Subscription to create. |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountCreateSubscriptionRequest** | [**AdAccountCreateSubscriptionRequest**](AdAccountCreateSubscriptionRequest.md)| Subscription to create. | |
 
 ### Return type
 

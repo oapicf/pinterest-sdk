@@ -135,7 +135,7 @@ open class BoardsAPI {
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -158,10 +158,13 @@ open class BoardsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<BoardSectionsList200Response> 
      */
     open class func boardSectionsListWithRequestBuilder(boardId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<BoardSectionsList200Response> {
@@ -197,7 +200,7 @@ open class BoardsAPI {
      - parameter sectionId: (path) Unique identifier of a board section. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -220,11 +223,14 @@ open class BoardsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter sectionId: (path) Unique identifier of a board section. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<BoardsListPins200Response> 
      */
     open class func boardSectionsListPinsWithRequestBuilder(boardId: String, sectionId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<BoardsListPins200Response> {
@@ -452,6 +458,9 @@ open class BoardsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Board> 
@@ -496,7 +505,7 @@ open class BoardsAPI {
      
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter privacy: (query) Privacy setting for a board. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -520,9 +529,12 @@ open class BoardsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter privacy: (query) Privacy setting for a board. (optional)
      - returns: RequestBuilder<BoardsList200Response> 
      */
@@ -569,7 +581,7 @@ open class BoardsAPI {
      
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
@@ -595,9 +607,12 @@ open class BoardsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter boardId: (path) Unique identifier of a board. 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter creativeTypes: (query) Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter pinMetrics: (query) Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)

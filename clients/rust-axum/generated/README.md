@@ -11,9 +11,9 @@ server, you can easily generate a server stub.
 
 To see how to make this your own, look here: [README]((https://openapi-generator.tech))
 
-- API version: 5.12.0
-- Build date: 2024-03-14T23:21:29.621873236Z[Etc/UTC]
-- Generator version: 7.4.0
+- API version: 5.14.0
+- Build date: 2024-11-05T03:17:03.469206991Z[Etc/UTC]
+- Generator version: 7.9.0
 
 For more information, please visit [https://github.com/oapicf/pinterest-sdk](https://github.com/oapicf/pinterest-sdk)
 

@@ -23,8 +23,7 @@ AudienceCreateRequest <- R6::R6Class(
     `rule` = NULL,
     `description` = NULL,
     `audience_type` = NULL,
-    #' Initialize a new AudienceCreateRequest class.
-    #'
+
     #' @description
     #' Initialize a new AudienceCreateRequest class.
     #'
@@ -34,7 +33,6 @@ AudienceCreateRequest <- R6::R6Class(
     #' @param ad_account_id Ad account ID.
     #' @param description Audience description.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`name`, `rule`, `audience_type`, `ad_account_id` = NULL, `description` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
@@ -63,13 +61,11 @@ AudienceCreateRequest <- R6::R6Class(
         self$`description` <- `description`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceCreateRequest in JSON format
-    #' @export
     toJSON = function() {
       AudienceCreateRequestObject <- list()
       if (!is.null(self$`ad_account_id`)) {
@@ -94,14 +90,12 @@ AudienceCreateRequest <- R6::R6Class(
       }
       AudienceCreateRequestObject
     },
-    #' Deserialize JSON string into an instance of AudienceCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceCreateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_account_id`)) {
@@ -125,13 +119,11 @@ AudienceCreateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceCreateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_account_id`)) {
@@ -178,14 +170,12 @@ AudienceCreateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AudienceCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceCreateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
@@ -195,13 +185,11 @@ AudienceCreateRequest <- R6::R6Class(
       self$`audience_type` <- AudienceCreateRequest1AudienceType$new()$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to AudienceCreateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to AudienceCreateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `name`
@@ -225,23 +213,19 @@ AudienceCreateRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for AudienceCreateRequest: the required field `audience_type` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AudienceCreateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
         return(FALSE)
@@ -264,13 +248,11 @@ AudienceCreateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
@@ -294,12 +276,9 @@ AudienceCreateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

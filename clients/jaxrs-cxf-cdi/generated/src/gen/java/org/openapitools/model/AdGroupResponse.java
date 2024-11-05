@@ -4,16 +4,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ActionType;
-import org.openapitools.model.AdGroupCommonOptimizationGoalMetadata;
-import org.openapitools.model.AdGroupCommonTrackingUrls;
 import org.openapitools.model.AdGroupSummaryStatus;
 import org.openapitools.model.BudgetType;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.OptimizationGoalMetadata;
 import org.openapitools.model.PacingDeliveryType;
 import org.openapitools.model.PlacementGroupType;
 import org.openapitools.model.TargetingSpec;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -33,7 +36,7 @@ public class AdGroupResponse   {
 
   private Integer bidInMicroCurrency;
 
-  private AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata;
+  private OptimizationGoalMetadata optimizationGoalMetadata;
 
   private BudgetType budgetType;
 
@@ -45,7 +48,7 @@ public class AdGroupResponse   {
 
   private Integer lifetimeFrequencyCap;
 
-  private AdGroupCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   private Boolean autoTargetingEnabled;
 
@@ -60,7 +63,7 @@ public class AdGroupResponse   {
 
 public enum BidStrategyTypeEnum {
 
-    @JsonProperty("AUTOMATIC_BID") AUTOMATIC_BID(String.valueOf("AUTOMATIC_BID")), @JsonProperty("MAX_BID") MAX_BID(String.valueOf("MAX_BID")), @JsonProperty("TARGET_AVG") TARGET_AVG(String.valueOf("TARGET_AVG")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("AUTOMATIC_BID") AUTOMATIC_BID(String.valueOf("AUTOMATIC_BID")), @JsonProperty("MAX_BID") MAX_BID(String.valueOf("MAX_BID")), @JsonProperty("TARGET_AVG") TARGET_AVG(String.valueOf("TARGET_AVG"));
 
 
     private String value;
@@ -90,6 +93,8 @@ public enum BidStrategyTypeEnum {
 
   private BidStrategyTypeEnum bidStrategyType;
 
+  private List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
+
   private String id;
 
   private String adAccountId;
@@ -103,7 +108,7 @@ public enum BidStrategyTypeEnum {
 
 public enum ConversionLearningModeTypeEnum {
 
-    @JsonProperty("NOT_ACTIVE") NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), @JsonProperty("ACTIVE") ACTIVE(String.valueOf("ACTIVE")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("NOT_ACTIVE") NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), @JsonProperty("ACTIVE") ACTIVE(String.valueOf("ACTIVE"));
 
 
     private String value;
@@ -216,19 +221,20 @@ public enum ConversionLearningModeTypeEnum {
 
 
   /**
+   * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.
    **/
-  public AdGroupResponse optimizationGoalMetadata(AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata) {
+  public AdGroupResponse optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.")
   @JsonProperty("optimization_goal_metadata")
-  public AdGroupCommonOptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
-  public void setOptimizationGoalMetadata(AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
@@ -308,7 +314,7 @@ public enum ConversionLearningModeTypeEnum {
 
 
   /**
-   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
+   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
    **/
   public AdGroupResponse lifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
@@ -316,7 +322,7 @@ public enum ConversionLearningModeTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "100", value = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
+  @ApiModelProperty(example = "100", value = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
   @JsonProperty("lifetime_frequency_cap")
   public Integer getLifetimeFrequencyCap() {
     return lifetimeFrequencyCap;
@@ -327,19 +333,20 @@ public enum ConversionLearningModeTypeEnum {
 
 
   /**
+   * Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
    **/
-  public AdGroupResponse trackingUrls(AdGroupCommonTrackingUrls trackingUrls) {
+  public AdGroupResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
   @JsonProperty("tracking_urls")
-  public AdGroupCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdGroupCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -364,7 +371,7 @@ public enum ConversionLearningModeTypeEnum {
 
 
   /**
-   * &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+   * &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
    **/
   public AdGroupResponse placementGroup(PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
@@ -372,7 +379,7 @@ public enum ConversionLearningModeTypeEnum {
   }
 
   
-  @ApiModelProperty(value = "<a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.")
+  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
   @JsonProperty("placement_group")
   public PlacementGroupType getPlacementGroup() {
     return placementGroup;
@@ -438,7 +445,7 @@ public enum ConversionLearningModeTypeEnum {
 
 
   /**
-   * Bid strategy type
+   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
    **/
   public AdGroupResponse bidStrategyType(BidStrategyTypeEnum bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
@@ -446,13 +453,40 @@ public enum ConversionLearningModeTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type")
+  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.")
   @JsonProperty("bid_strategy_type")
   public BidStrategyTypeEnum getBidStrategyType() {
     return bidStrategyType;
   }
   public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
+  }
+
+
+  /**
+   * Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;].
+   **/
+  public AdGroupResponse targetingTemplateIds(List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds) {
+    this.targetingTemplateIds = targetingTemplateIds;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].")
+  @JsonProperty("targeting_template_ids")
+ @Size(max=1)  public List<@Pattern(regexp = "^\\d+$")String> getTargetingTemplateIds() {
+    return targetingTemplateIds;
+  }
+  public void setTargetingTemplateIds(List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds) {
+    this.targetingTemplateIds = targetingTemplateIds;
+  }
+
+  public AdGroupResponse addTargetingTemplateIdsItem(String targetingTemplateIdsItem) {
+    if (this.targetingTemplateIds == null) {
+      this.targetingTemplateIds = new ArrayList<>();
+    }
+    this.targetingTemplateIds.add(targetingTemplateIdsItem);
+    return this;
   }
 
 
@@ -654,6 +688,7 @@ public enum ConversionLearningModeTypeEnum {
         Objects.equals(this.campaignId, adGroupResponse.campaignId) &&
         Objects.equals(this.billableEvent, adGroupResponse.billableEvent) &&
         Objects.equals(this.bidStrategyType, adGroupResponse.bidStrategyType) &&
+        Objects.equals(this.targetingTemplateIds, adGroupResponse.targetingTemplateIds) &&
         Objects.equals(this.id, adGroupResponse.id) &&
         Objects.equals(this.adAccountId, adGroupResponse.adAccountId) &&
         Objects.equals(this.createdTime, adGroupResponse.createdTime) &&
@@ -667,7 +702,7 @@ public enum ConversionLearningModeTypeEnum {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, id, adAccountId, createdTime, updatedTime, type, conversionLearningModeType, summaryStatus, feedProfileId, dcaAssets);
+    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, targetingTemplateIds, id, adAccountId, createdTime, updatedTime, type, conversionLearningModeType, summaryStatus, feedProfileId, dcaAssets);
   }
 
   @Override
@@ -692,6 +727,7 @@ public enum ConversionLearningModeTypeEnum {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
+    sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");

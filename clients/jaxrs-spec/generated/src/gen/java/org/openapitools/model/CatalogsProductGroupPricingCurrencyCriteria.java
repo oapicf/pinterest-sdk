@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("catalogs_product_group_pricing_currency_criteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupPricingCurrencyCriteria   {
   public enum OperatorEnum {
 
@@ -67,10 +67,10 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     }
 }
 
-  private @Valid OperatorEnum operator;
-  private @Valid BigDecimal value;
-  private @Valid NonNullableCatalogsCurrency currency;
-  private @Valid Boolean negated = false;
+  private OperatorEnum operator;
+  private BigDecimal value;
+  private NonNullableCatalogsCurrency currency;
+  private Boolean negated = false;
 
   /**
    **/
@@ -82,8 +82,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operator")
-  @NotNull
-  public OperatorEnum getOperator() {
+  @NotNull public OperatorEnum getOperator() {
     return operator;
   }
 
@@ -103,8 +102,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("value")
-  @NotNull
- @DecimalMin("0")  public BigDecimal getValue() {
+  @NotNull @Valid  @DecimalMin("0")public BigDecimal getValue() {
     return value;
   }
 
@@ -123,8 +121,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("currency")
-  @NotNull
-  public NonNullableCatalogsCurrency getCurrency() {
+  @NotNull public NonNullableCatalogsCurrency getCurrency() {
     return currency;
   }
 

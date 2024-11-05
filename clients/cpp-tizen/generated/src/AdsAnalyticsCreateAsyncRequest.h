@@ -186,11 +186,11 @@ public:
 	/*! \brief Set List of product item ids
 	 */
 	void setProductItemIds(std::list <std::string> product_item_ids);
-	/*! \brief Get List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+	/*! \brief Get List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 	 */
 	std::list<AdsAnalyticsTargetingType> getTargetingTypes();
 
-	/*! \brief Set List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+	/*! \brief Set List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 	 */
 	void setTargetingTypes(std::list <AdsAnalyticsTargetingType> targeting_types);
 	/*! \brief Get List of metrics filters
@@ -221,6 +221,27 @@ public:
 	/*! \brief Set Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
 	 */
 	void setReportFormat(DataOutputFormat  report_format);
+	/*! \brief Get Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+	 */
+	std::string getPrimarySort();
+
+	/*! \brief Set Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+	 */
+	void setPrimarySort(std::string  primary_sort);
+	/*! \brief Get Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+	 */
+	int getStartHour();
+
+	/*! \brief Set Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+	 */
+	void setStartHour(int  start_hour);
+	/*! \brief Get Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+	 */
+	int getEndHour();
+
+	/*! \brief Set Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+	 */
+	void setEndHour(int  end_hour);
 
 private:
 	std::string start_date;
@@ -246,6 +267,9 @@ private:
 	std::list <ReportingColumnAsync>columns;
 	MetricsReportingLevel level;
 	DataOutputFormat report_format;
+	std::string primary_sort;
+	int start_hour;
+	int end_hour;
 	void __init();
 	void __cleanup();
 

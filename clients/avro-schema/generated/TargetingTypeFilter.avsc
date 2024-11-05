@@ -10,7 +10,7 @@
         "type": "array",
         "items": "model.AdsAnalyticsTargetingType"
       }],
-      "doc": "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.",
+      "doc": "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",
       "default": null
     }
   ]

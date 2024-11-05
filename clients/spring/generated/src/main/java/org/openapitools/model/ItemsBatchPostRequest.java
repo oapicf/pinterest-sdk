@@ -11,11 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsBatchRequest;
-import org.openapitools.model.CatalogsType;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsVerticalBatchRequest;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
-import org.openapitools.model.Language;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -29,6 +28,6 @@ import java.util.*;
 import javax.annotation.Generated;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface ItemsBatchPostRequest {
 }

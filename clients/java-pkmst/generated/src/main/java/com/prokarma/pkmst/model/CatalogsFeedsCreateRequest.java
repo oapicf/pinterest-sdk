@@ -8,6 +8,7 @@ import com.prokarma.pkmst.model.CatalogsFeedCredentials;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
 import com.prokarma.pkmst.model.CatalogsFeedsCreateRequestDefaultLocale;
 import com.prokarma.pkmst.model.CatalogsFormat;
+import com.prokarma.pkmst.model.CatalogsStatus;
 import com.prokarma.pkmst.model.Country;
 import com.prokarma.pkmst.model.NullableCurrency;
 import com.prokarma.pkmst.model.ProductAvailabilityType;
@@ -24,7 +25,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedsCreateRequest   {
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;
@@ -53,15 +54,18 @@ public class CatalogsFeedsCreateRequest   {
   @JsonProperty("default_availability")
   private ProductAvailabilityType defaultAvailability;
 
+  @JsonProperty("status")
+  private CatalogsStatus status;
+
   public CatalogsFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -76,10 +80,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
   public String getName() {
     return name;
@@ -94,10 +98,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -112,10 +116,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultLocale
    * @return defaultLocale
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
@@ -130,10 +134,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -148,10 +152,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -166,10 +170,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -184,10 +188,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCountry
    * @return defaultCountry
-  **/
+   */
   @ApiModelProperty(value = "")
   public Country getDefaultCountry() {
     return defaultCountry;
@@ -202,10 +206,10 @@ public class CatalogsFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultAvailability
    * @return defaultAvailability
-  **/
+   */
   @ApiModelProperty(value = "")
   public ProductAvailabilityType getDefaultAvailability() {
     return defaultAvailability;
@@ -213,6 +217,24 @@ public class CatalogsFeedsCreateRequest   {
 
   public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
     this.defaultAvailability = defaultAvailability;
+  }
+
+  public CatalogsFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @ApiModelProperty(value = "")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
 
@@ -233,12 +255,13 @@ public class CatalogsFeedsCreateRequest   {
         Objects.equals(this.location, catalogsFeedsCreateRequest.location) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.defaultCountry, catalogsFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability);
+        Objects.equals(this.defaultAvailability, catalogsFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, catalogsFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -255,6 +278,7 @@ public class CatalogsFeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

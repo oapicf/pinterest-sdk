@@ -25,8 +25,7 @@ CatalogsFeedIngestionWarnings <- R6::R6Class(
     `ADDITIONAL_IMAGE_FILE_NOT_FOUND` = NULL,
     `ADDITIONAL_IMAGE_INVALID_FILE` = NULL,
     `HOTEL_PRICE_HEADER_IS_PRESENT` = NULL,
-    #' Initialize a new CatalogsFeedIngestionWarnings class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedIngestionWarnings class.
     #'
@@ -37,7 +36,6 @@ CatalogsFeedIngestionWarnings <- R6::R6Class(
     #' @param ADDITIONAL_IMAGE_INVALID_FILE Additional image files are unreadable. Please upload new files to continue.
     #' @param HOTEL_PRICE_HEADER_IS_PRESENT price is not a supported column. Use base_price and sale_price instead.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` = NULL, `ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE` = NULL, `ADDITIONAL_IMAGE_MALFORMED_URL` = NULL, `ADDITIONAL_IMAGE_FILE_NOT_FOUND` = NULL, `ADDITIONAL_IMAGE_INVALID_FILE` = NULL, `HOTEL_PRICE_HEADER_IS_PRESENT` = NULL, ...) {
       if (!is.null(`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`)) {
         if (!(is.numeric(`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`) && length(`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`) == 1)) {
@@ -76,13 +74,11 @@ CatalogsFeedIngestionWarnings <- R6::R6Class(
         self$`HOTEL_PRICE_HEADER_IS_PRESENT` <- `HOTEL_PRICE_HEADER_IS_PRESENT`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedIngestionWarnings in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedIngestionWarningsObject <- list()
       if (!is.null(self$`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`)) {
@@ -111,14 +107,12 @@ CatalogsFeedIngestionWarnings <- R6::R6Class(
       }
       CatalogsFeedIngestionWarningsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedIngestionWarnings
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedIngestionWarnings
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedIngestionWarnings
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`)) {
@@ -141,13 +135,11 @@ CatalogsFeedIngestionWarnings <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedIngestionWarnings in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`)) {
@@ -202,14 +194,12 @@ CatalogsFeedIngestionWarnings <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedIngestionWarnings
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedIngestionWarnings
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedIngestionWarnings
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` <- this_object$`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`
@@ -220,53 +210,42 @@ CatalogsFeedIngestionWarnings <- R6::R6Class(
       self$`HOTEL_PRICE_HEADER_IS_PRESENT` <- this_object$`HOTEL_PRICE_HEADER_IS_PRESENT`
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedIngestionWarnings
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedIngestionWarnings and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedIngestionWarnings
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

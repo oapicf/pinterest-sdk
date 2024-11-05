@@ -16,8 +16,8 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BoardOwner
+import org.openapitools.client.models.PinMedia
 import org.openapitools.client.models.PinMediaSource
-import org.openapitools.client.models.SummaryPinMedia
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -78,7 +78,7 @@ data class PinCreate (
     val boardOwner: BoardOwner? = null,
 
     @Json(name = "media")
-    val media: SummaryPinMedia? = null,
+    val media: PinMedia? = null,
 
     @Json(name = "media_source")
     val mediaSource: PinMediaSource? = null,
@@ -91,5 +91,8 @@ data class PinCreate (
     @Json(name = "note")
     val note: kotlin.String? = null
 
-)
+) {
+
+
+}
 

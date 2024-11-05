@@ -16,7 +16,7 @@
         "type": "enum",
         "name": "CatalogsFeedIngestionErrors_LARGEUnderscorePRODUCTUnderscoreCOUNTUnderscoreDECREASE",
         "symbols": [
-          "1"
+          "_1"
         ]
       }],
       "doc": "The product count has decreased by more than 99% compared to the last successful ingestion.",

@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ItemAttributes
+import org.openapitools.models.ItemAttributesRequest
 
 /**
  * Object describing an item batch record to upsert items
@@ -13,7 +13,7 @@ import org.openapitools.models.ItemAttributes
  * @param attributes 
  */
 case class ItemUpsertBatchRecord(itemUnderscoreid: Option[String],
-                attributes: Option[ItemAttributes]
+                attributes: Option[ItemAttributesRequest]
                 )
 
 object ItemUpsertBatchRecord {

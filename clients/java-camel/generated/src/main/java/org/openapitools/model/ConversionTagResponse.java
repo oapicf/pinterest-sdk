@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * ConversionTagResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionTagResponse {
 
   private String adAccountId;
@@ -55,7 +55,7 @@ public class ConversionTagResponse {
   /**
    * Ad account ID.
    * @return adAccountId
-  */
+   */
   
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -75,7 +75,7 @@ public class ConversionTagResponse {
   /**
    * Tag code snippet.
    * @return codeSnippet
-  */
+   */
   
   @Schema(name = "code_snippet", example = "<script type=text/javascript> [...]", description = "Tag code snippet.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code_snippet")
@@ -95,7 +95,7 @@ public class ConversionTagResponse {
   /**
    * Get enhancedMatchStatus
    * @return enhancedMatchStatus
-  */
+   */
   @Valid 
   @Schema(name = "enhanced_match_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("enhanced_match_status")
@@ -115,7 +115,7 @@ public class ConversionTagResponse {
   /**
    * Tag ID.
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "2617998078212", description = "Tag ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -135,7 +135,7 @@ public class ConversionTagResponse {
   /**
    * Time for the last event fired.
    * @return lastFiredTimeMs
-  */
+   */
   @Valid 
   @Schema(name = "last_fired_time_ms", example = "1599030000000", description = "Time for the last event fired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("last_fired_time_ms")
@@ -155,7 +155,7 @@ public class ConversionTagResponse {
   /**
    * Conversion tag name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "ACME Checkout Test Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -175,7 +175,7 @@ public class ConversionTagResponse {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -195,7 +195,7 @@ public class ConversionTagResponse {
   /**
    * Version number.
    * @return version
-  */
+   */
   
   @Schema(name = "version", example = "3", description = "Version number.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("version")
@@ -215,7 +215,7 @@ public class ConversionTagResponse {
   /**
    * Get configs
    * @return configs
-  */
+   */
   @Valid 
   @Schema(name = "configs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("configs")

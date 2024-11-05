@@ -25,7 +25,7 @@ data class SSIOAccountPMPName(
 
     @Schema(example = "0011N00001LW2aSQAT", description = "Salesforce id for PMP")
     @get:JsonProperty("id") val id: kotlin.String? = null
-) {
+    ) {
 
 }
 

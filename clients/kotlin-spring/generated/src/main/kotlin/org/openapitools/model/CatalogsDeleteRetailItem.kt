@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -26,18 +27,23 @@ data class CatalogsDeleteRetailItem(
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("operation", required = true) val operation: CatalogsDeleteRetailItem.Operation
-) {
+    ) {
 
     /**
     * 
-    * Values: CREATE,UPDATE,UPSERT,DELETE
+    * Values: DELETE
     */
-    enum class Operation(val value: kotlin.String) {
+    enum class Operation(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("CREATE") CREATE("CREATE"),
-        @JsonProperty("UPDATE") UPDATE("UPDATE"),
-        @JsonProperty("UPSERT") UPSERT("UPSERT"),
-        @JsonProperty("DELETE") DELETE("DELETE")
+        DELETE("DELETE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Operation {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

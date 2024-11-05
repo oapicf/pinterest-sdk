@@ -12,23 +12,22 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsBatchRequest;
-import org.openapitools.model.CatalogsType;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsVerticalBatchRequest;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
-import org.openapitools.model.Language;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemsBatchPostRequest   {
   @JsonProperty("country")
   private Country country;
 
   @JsonProperty("language")
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("operation")
   private BatchOperation operation;
@@ -55,7 +54,7 @@ public class ItemsBatchPostRequest   {
 
   /**
    **/
-  public ItemsBatchPostRequest language(Language language) {
+  public ItemsBatchPostRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -63,10 +62,10 @@ public class ItemsBatchPostRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

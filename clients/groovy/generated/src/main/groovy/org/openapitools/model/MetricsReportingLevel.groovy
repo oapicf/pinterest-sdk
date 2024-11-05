@@ -27,7 +27,9 @@ enum MetricsReportingLevel {
     
     PRODUCT_GROUP_TARGETING("PRODUCT_GROUP_TARGETING"),
     
-    PRODUCT_ITEM("PRODUCT_ITEM")
+    PRODUCT_ITEM("PRODUCT_ITEM"),
+    
+    PRODUCT_ITEM_TARGETING("PRODUCT_ITEM_TARGETING")
 
     private final String value
 

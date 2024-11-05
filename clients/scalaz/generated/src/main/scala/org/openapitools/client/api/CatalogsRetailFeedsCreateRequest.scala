@@ -23,7 +23,8 @@ credentials: Option[CatalogsFeedCredentials],
 preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule],
 catalogType: CatalogsType,
 defaultCountry: Country,
-defaultAvailability: Option[ProductAvailabilityType])
+defaultAvailability: Option[ProductAvailabilityType],
+status: Option[CatalogsStatus])
 
 object CatalogsRetailFeedsCreateRequest {
   import DateTimeCodecs._

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
+import org.openapitools.model.CatalogsCreativeAssetsFeed;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
@@ -24,10 +25,10 @@ import org.openapitools.model.ProductAvailabilityType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Catalogs Feed object")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@ApiModel(description="Catalogs Feed object")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeed.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeed.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailFeed.class, name = "RETAIL"),
 })
@@ -53,8 +54,9 @@ public class CatalogsFeed   {
   /**
    **/
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonProperty("created_at")
+  @NotNull
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -65,8 +67,9 @@ public class CatalogsFeed   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
+  @NotNull
   public String getId() {
     return id;
   }
@@ -77,8 +80,9 @@ public class CatalogsFeed   {
   /**
    **/
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonProperty("updated_at")
+  @NotNull
   public Date getUpdatedAt() {
     return updatedAt;
   }

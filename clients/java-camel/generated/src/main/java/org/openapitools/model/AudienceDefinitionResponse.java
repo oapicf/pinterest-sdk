@@ -22,11 +22,11 @@ import javax.annotation.Generated;
  * AudienceDefinitionResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDefinitionResponse {
 
   @Valid
-  private List<@Valid AudienceDefinition> items;
+  private List<@Valid AudienceDefinition> items = new ArrayList<>();
 
   public AudienceDefinitionResponse items(List<@Valid AudienceDefinition> items) {
     this.items = items;
@@ -44,7 +44,7 @@ public class AudienceDefinitionResponse {
   /**
    * Get items
    * @return items
-  */
+   */
   @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")

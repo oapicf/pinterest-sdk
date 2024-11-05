@@ -15,16 +15,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("LineItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LineItem   {
-  private @Valid String productBrand;
-  private @Valid String productCategory;
-  private @Valid Integer productId;
-  private @Valid String productName;
-  private @Valid String productPrice;
-  private @Valid Integer productQuantity;
-  private @Valid String productVariant;
-  private @Valid String productVariantId;
+  private String productBrand;
+  private String productCategory;
+  private Integer productId;
+  private String productName;
+  private String productPrice;
+  private Integer productQuantity;
+  private String productVariant;
+  private String productVariantId;
 
   /**
    * Product brand. For example, \&quot;Parker\&quot;.

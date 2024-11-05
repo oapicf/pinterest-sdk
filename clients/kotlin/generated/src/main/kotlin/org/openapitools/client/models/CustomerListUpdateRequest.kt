@@ -42,5 +42,8 @@ data class CustomerListUpdateRequest (
     @Json(name = "exceptions")
     val exceptions: Exception? = null
 
-)
+) {
+
+
+}
 

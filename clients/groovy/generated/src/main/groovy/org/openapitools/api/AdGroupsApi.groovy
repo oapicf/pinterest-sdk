@@ -114,7 +114,7 @@ class AdGroupsApi {
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
-                    "GET", "",
+                    "POST", "",
                     AdGroupAudienceSizingResponse.class )
 
     }

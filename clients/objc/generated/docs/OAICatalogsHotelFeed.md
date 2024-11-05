@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **NSDate*** |  | [optional] 
-**_id** | **NSString*** |  | [optional] 
-**updatedAt** | **NSDate*** |  | [optional] 
+**createdAt** | **NSDate*** |  | 
+**_id** | **NSString*** |  | 
+**updatedAt** | **NSDate*** |  | 
 **name** | **NSString*** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | [**OAICatalogsFormat***](OAICatalogsFormat.md) |  | 
 **catalogType** | [**OAICatalogsType***](OAICatalogsType.md) |  | 

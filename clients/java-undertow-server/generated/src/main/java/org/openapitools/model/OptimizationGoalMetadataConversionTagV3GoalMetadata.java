@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,7 +23,7 @@ import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadat
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   
   private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
@@ -62,8 +62,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
 
   public enum LearningModeTypeEnum {
     NOT_ACTIVE("NOT_ACTIVE"),
-    ACTIVE("ACTIVE"),
-    NULL("null");
+    ACTIVE("ACTIVE");
 
     private String value;
 
@@ -149,7 +148,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
    */
   public OptimizationGoalMetadataConversionTagV3GoalMetadata isRoasOptimized(Boolean isRoasOptimized) {
     this.isRoasOptimized = isRoasOptimized;
@@ -157,7 +156,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
   
-  @ApiModelProperty(value = "Ad group is ROAS optimized")
+  @ApiModelProperty(value = "ROAS optimization is not supported")
   @JsonProperty("is_roas_optimized")
   public Boolean getIsRoasOptimized() {
     return isRoasOptimized;

@@ -21,7 +21,7 @@ public class AdAccount   {
   private AdAccountOwner owner;
   private Country country;
   private Currency currency;
-  private List<BusinessAccessRole> permissions;
+  private List<BusinessAccessRole> permissions = new ArrayList<>();
   private Integer createdTime;
   private Integer updatedTime;
 

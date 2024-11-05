@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class BidFloorSpec   {
   
-  private List<Country> countries;
+  private List<Country> countries = new ArrayList<>();
 
   private Currency currency;
 

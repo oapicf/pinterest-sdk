@@ -8,8 +8,8 @@ import org.openapitools._
 import java.time.ZonedDateTime
 import org.openapitools.models.BoardOwner
 import org.openapitools.models.CreativeType
+import org.openapitools.models.PinMedia
 import org.openapitools.models.PinMediaSource
-import org.openapitools.models.SummaryPinMedia
 
 /**
  * Pin
@@ -28,7 +28,7 @@ import org.openapitools.models.SummaryPinMedia
  * @param media 
  * @param mediaUnderscoresource 
  * @param parentUnderscorepinUnderscoreid The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
- * @param isUnderscorestandard Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+ * @param isUnderscorestandard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
  * @param hasUnderscorebeenUnderscorepromoted Whether the Pin has been promoted or not.
  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
  * @param pinUnderscoremetrics Pin metrics with associated time intervals if any.
@@ -45,7 +45,7 @@ case class Pin(id: Option[String],
                 boardUnderscoresectionUnderscoreid: Option[String],
                 boardUnderscoreowner: Option[BoardOwner],
                 isUnderscoreowner: Option[Boolean],
-                media: Option[SummaryPinMedia],
+                media: Option[PinMedia],
                 mediaUnderscoresource: Option[PinMediaSource],
                 parentUnderscorepinUnderscoreid: Option[String],
                 isUnderscorestandard: Option[Boolean],

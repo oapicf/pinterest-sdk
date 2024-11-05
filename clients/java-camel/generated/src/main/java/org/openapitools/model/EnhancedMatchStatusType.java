@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * The enhanced match status of the tag
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public enum EnhancedMatchStatusType {
   
   UNKNOWN("UNKNOWN"),
@@ -29,9 +29,7 @@ public enum EnhancedMatchStatusType {
   
   VALIDATING_IN_PROGRESS("VALIDATING_IN_PROGRESS"),
   
-  VALIDATION_COMPLETE("VALIDATION_COMPLETE"),
-  
-  NULL("null");
+  VALIDATION_COMPLETE("VALIDATION_COMPLETE");
 
   private String value;
 

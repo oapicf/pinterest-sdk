@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsCreativeAssetsFeed;
 import com.prokarma.pkmst.model.CatalogsFeedCredentials;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
 import com.prokarma.pkmst.model.CatalogsFormat;
@@ -30,9 +31,10 @@ import java.time.OffsetDateTime;
  */
 @ApiModel(description = "Catalogs Feed object")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeed.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeed.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailFeed.class, name = "RETAIL"),
 })
@@ -88,11 +90,11 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get createdAt
    * @return createdAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -106,11 +108,11 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
+   */
+  @ApiModelProperty(required = true, value = "")
   public String getId() {
     return id;
   }
@@ -124,11 +126,11 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get updatedAt
    * @return updatedAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -142,10 +144,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
   public String getName() {
     return name;
@@ -160,10 +162,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -178,10 +180,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -196,10 +198,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -214,10 +216,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -232,10 +234,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -250,10 +252,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsStatus getStatus() {
     return status;
@@ -268,10 +270,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -286,10 +288,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * The locale used within a feed for product descriptions.
    * @return defaultLocale
-  **/
+   */
   @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
   public String getDefaultLocale() {
     return defaultLocale;
@@ -304,10 +306,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCountry
    * @return defaultCountry
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Country getDefaultCountry() {
     return defaultCountry;
@@ -322,10 +324,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultAvailability
    * @return defaultAvailability
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public ProductAvailabilityType getDefaultAvailability() {
     return defaultAvailability;
@@ -340,10 +342,10 @@ public class CatalogsFeed   {
     return this;
   }
 
-   /**
+  /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    * @return catalogId
-  **/
+   */
   @ApiModelProperty(required = true, value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
   public String getCatalogId() {
     return catalogId;

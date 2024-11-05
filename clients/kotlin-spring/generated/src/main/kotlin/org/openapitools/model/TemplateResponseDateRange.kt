@@ -35,7 +35,7 @@ data class TemplateResponseDateRange(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("absolute_date_range") val absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = null
-) {
+    ) {
 
 }
 

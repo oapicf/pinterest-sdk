@@ -15,6 +15,7 @@ package org.openapitools.server.model
  * @param preferredProcessingSchedule  for example: ''null''
  * @param catalogType  for example: ''null''
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. for example: ''null''
+ * @param status  for example: ''null''
 */
 final case class CatalogsHotelFeedsCreateRequest (
   defaultCurrency: Option[NullableCurrency] = None,
@@ -25,6 +26,7 @@ final case class CatalogsHotelFeedsCreateRequest (
   location: String,
   preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule] = None,
   catalogType: CatalogsType,
-  catalogId: Option[String] = None
+  catalogId: Option[String] = None,
+  status: Option[CatalogsStatus] = None
 )
 

@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum ItemResponseAnyOf: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsItemResponse(CatalogsCreativeAssetsItemResponse)
     case typeCatalogsHotelItemResponse(CatalogsHotelItemResponse)
     case typeCatalogsRetailItemResponse(CatalogsRetailItemResponse)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsCreativeAssetsItemResponse(let value):
+            try container.encode(value)
         case .typeCatalogsHotelItemResponse(let value):
             try container.encode(value)
         case .typeCatalogsRetailItemResponse(let value):
@@ -26,7 +29,9 @@ public enum ItemResponseAnyOf: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsHotelItemResponse.self) {
+        if let value = try? container.decode(CatalogsCreativeAssetsItemResponse.self) {
+            self = .typeCatalogsCreativeAssetsItemResponse(value)
+        } else if let value = try? container.decode(CatalogsHotelItemResponse.self) {
             self = .typeCatalogsHotelItemResponse(value)
         } else if let value = try? container.decode(CatalogsRetailItemResponse.self) {
             self = .typeCatalogsRetailItemResponse(value)

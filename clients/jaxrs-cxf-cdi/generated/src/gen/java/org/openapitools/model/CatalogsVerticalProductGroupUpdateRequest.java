@@ -8,22 +8,28 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsHotelProductGroupUpdateRequest;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsRetailProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Request object for updating a hotel product group.
+ * Request object for updating a catalog based product group.
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "Request object for updating a hotel product group.")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@ApiModel(description = "Request object for updating a catalog based product group.")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupUpdateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroupUpdateRequest.class, name = "HOTEL"),
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroupUpdateRequest.class, name = "RETAIL"),
 })
 
 public class CatalogsVerticalProductGroupUpdateRequest   {
@@ -31,7 +37,7 @@ public class CatalogsVerticalProductGroupUpdateRequest   {
 
 public enum CatalogTypeEnum {
 
-    @JsonProperty("HOTEL") HOTEL(String.valueOf("HOTEL"));
+    @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
 
     private String value;
@@ -65,7 +71,11 @@ public enum CatalogTypeEnum {
 
   private String description;
 
-  private CatalogsHotelProductGroupFilters filters;
+  private CatalogsCreativeAssetsProductGroupFilters filters;
+
+  private Country country;
+
+  private CatalogsLocale locale;
 
   /**
    **/
@@ -123,7 +133,7 @@ public enum CatalogTypeEnum {
 
   /**
    **/
-  public CatalogsVerticalProductGroupUpdateRequest filters(CatalogsHotelProductGroupFilters filters) {
+  public CatalogsVerticalProductGroupUpdateRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -131,11 +141,47 @@ public enum CatalogTypeEnum {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filters")
-  public CatalogsHotelProductGroupFilters getFilters() {
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
-  public void setFilters(CatalogsHotelProductGroupFilters filters) {
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
+  }
+
+
+  /**
+   **/
+  public CatalogsVerticalProductGroupUpdateRequest country(Country country) {
+    this.country = country;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
+  }
+  public void setCountry(Country country) {
+    this.country = country;
+  }
+
+
+  /**
+   **/
+  public CatalogsVerticalProductGroupUpdateRequest locale(CatalogsLocale locale) {
+    this.locale = locale;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("locale")
+  public CatalogsLocale getLocale() {
+    return locale;
+  }
+  public void setLocale(CatalogsLocale locale) {
+    this.locale = locale;
   }
 
 
@@ -152,12 +198,14 @@ public enum CatalogTypeEnum {
     return Objects.equals(this.catalogType, catalogsVerticalProductGroupUpdateRequest.catalogType) &&
         Objects.equals(this.name, catalogsVerticalProductGroupUpdateRequest.name) &&
         Objects.equals(this.description, catalogsVerticalProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsVerticalProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsVerticalProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.country, catalogsVerticalProductGroupUpdateRequest.country) &&
+        Objects.equals(this.locale, catalogsVerticalProductGroupUpdateRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, name, description, filters, country, locale);
   }
 
   @Override
@@ -169,6 +217,8 @@ public enum CatalogTypeEnum {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

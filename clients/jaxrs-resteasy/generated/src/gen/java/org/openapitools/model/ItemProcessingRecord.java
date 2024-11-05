@@ -15,14 +15,13 @@ import org.openapitools.model.ItemValidationEvent;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Object describing an item processing record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Object describing an item processing record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemProcessingRecord   {
   
   private String itemId;
-  private List<@Valid ItemValidationEvent> errors;
-  private List<@Valid ItemValidationEvent> warnings;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
   private ItemProcessingStatus status;
 
   /**

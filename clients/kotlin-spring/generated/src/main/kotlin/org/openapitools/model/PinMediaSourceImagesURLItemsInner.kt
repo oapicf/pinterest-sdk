@@ -33,7 +33,7 @@ data class PinMediaSourceImagesURLItemsInner(
 
     @Schema(example = "null", description = "Destination link for the image.")
     @get:JsonProperty("link") val link: kotlin.String? = null
-) {
+    ) {
 
 }
 

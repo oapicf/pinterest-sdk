@@ -16,7 +16,7 @@
 #include "../model/item_create_batch_record.h"
 item_create_batch_record_t* instantiate_item_create_batch_record(int include_optional);
 
-#include "test_item_attributes.c"
+#include "test_item_attributes_request.c"
 
 
 item_create_batch_record_t* instantiate_item_create_batch_record(int include_optional) {
@@ -25,7 +25,7 @@ item_create_batch_record_t* instantiate_item_create_batch_record(int include_opt
     item_create_batch_record = item_create_batch_record_create(
       "DS0294-M",
        // false, not to have infinite recursion
-      instantiate_item_attributes(0)
+      instantiate_item_attributes_request(0)
     );
   } else {
     item_create_batch_record = item_create_batch_record_create(

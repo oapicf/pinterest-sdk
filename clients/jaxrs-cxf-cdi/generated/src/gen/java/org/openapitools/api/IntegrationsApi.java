@@ -35,7 +35,7 @@ import javax.validation.Valid;
 @Api(description = "the integrations API")
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 
 public class IntegrationsApi  {
 
@@ -137,7 +137,7 @@ public class IntegrationsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = IntegrationsGetList200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response integrationsGetList(@ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+    public Response integrationsGetList(@ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.integrationsGetList(bookmark, pageSize, securityContext);
     }
 

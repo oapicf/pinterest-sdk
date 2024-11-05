@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.ProductGroupPromotion
+import org.openapitools.model.ProductGroupPromotionCreateRequestElement
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -27,8 +27,8 @@ data class ProductGroupPromotionCreateRequest(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("product_group_promotion", required = true) val productGroupPromotion: kotlin.collections.List<ProductGroupPromotion>
-) {
+    @get:JsonProperty("product_group_promotion", required = true) val productGroupPromotion: kotlin.collections.List<ProductGroupPromotionCreateRequestElement>
+    ) {
 
 }
 

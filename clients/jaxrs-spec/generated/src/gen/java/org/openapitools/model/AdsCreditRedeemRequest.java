@@ -15,10 +15,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsCreditRedeemRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditRedeemRequest   {
-  private @Valid String offerCodeHash;
-  private @Valid Boolean validateOnly;
+  private String offerCodeHash;
+  private Boolean validateOnly;
 
   /**
    * Takes in a SHA256 hash of the offerCode.
@@ -31,8 +31,7 @@ public class AdsCreditRedeemRequest   {
   
   @ApiModelProperty(example = "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", required = true, value = "Takes in a SHA256 hash of the offerCode.")
   @JsonProperty("offerCodeHash")
-  @NotNull
- @Pattern(regexp="^[a-z0-9]*$")  public String getOfferCodeHash() {
+  @NotNull  @Pattern(regexp="^[a-z0-9]*$")public String getOfferCodeHash() {
     return offerCodeHash;
   }
 
@@ -52,8 +51,7 @@ public class AdsCreditRedeemRequest   {
   
   @ApiModelProperty(example = "true", required = true, value = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account")
   @JsonProperty("validateOnly")
-  @NotNull
-  public Boolean getValidateOnly() {
+  @NotNull public Boolean getValidateOnly() {
     return validateOnly;
   }
 

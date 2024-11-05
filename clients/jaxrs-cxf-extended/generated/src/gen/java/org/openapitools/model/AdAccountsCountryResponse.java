@@ -16,7 +16,7 @@ public class AdAccountsCountryResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid AdAccountsCountryResponseData> items;
+  private List<@Valid AdAccountsCountryResponseData> items = new ArrayList<>();
  /**
   * Get items
   * @return items

@@ -15,12 +15,12 @@ Protected Class CatalogsProductGroupsUpdateRequest
 		#tag Note
 			boolean indicator of whether the product group is being featured or not
 		#tag EndNote
-		is_featured As Xoson.O.OptionalBoolean
+		Attributes( Deprecated ) is_featured As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsHotelProductGroupFilters
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
 	#tag EndProperty
 
 
@@ -29,9 +29,19 @@ Protected Class CatalogsProductGroupsUpdateRequest
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		country As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		locale As Xoson.O.OptionalString
+	#tag EndProperty
+
+
     #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
         
-        Hotel
+        CreativeAssets
         
     #tag EndEnum
 
@@ -40,8 +50,8 @@ Protected Class CatalogsProductGroupsUpdateRequest
 		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
 		  Select Case value
 		    
-		    Case Catalog_typeEnum.Hotel
-		      Return "HOTEL"
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
 		    
 		  End Select
 		  Return ""
@@ -111,7 +121,23 @@ Protected Class CatalogsProductGroupsUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsHotelProductGroupFilters"
+			Type="CatalogsCreativeAssetsProductGroupFilters"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="locale"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsLocale"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**Language**](Language.md) |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
 **Items** | [**[]ItemCreateBatchRecord**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsItemsCreateBatchRequest
 
-`func NewCatalogsItemsCreateBatchRequest(country Country, language Language, operation BatchOperation, items []ItemCreateBatchRecord, ) *CatalogsItemsCreateBatchRequest`
+`func NewCatalogsItemsCreateBatchRequest(country Country, language CatalogsItemsRequestLanguage, operation BatchOperation, items []ItemCreateBatchRecord, ) *CatalogsItemsCreateBatchRequest`
 
 NewCatalogsItemsCreateBatchRequest instantiates a new CatalogsItemsCreateBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetCountry sets Country field to given value.
 
 ### GetLanguage
 
-`func (o *CatalogsItemsCreateBatchRequest) GetLanguage() Language`
+`func (o *CatalogsItemsCreateBatchRequest) GetLanguage() CatalogsItemsRequestLanguage`
 
 GetLanguage returns the Language field if non-nil, zero value otherwise.
 
 ### GetLanguageOk
 
-`func (o *CatalogsItemsCreateBatchRequest) GetLanguageOk() (*Language, bool)`
+`func (o *CatalogsItemsCreateBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool)`
 
 GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguage
 
-`func (o *CatalogsItemsCreateBatchRequest) SetLanguage(v Language)`
+`func (o *CatalogsItemsCreateBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage)`
 
 SetLanguage sets Language field to given value.
 

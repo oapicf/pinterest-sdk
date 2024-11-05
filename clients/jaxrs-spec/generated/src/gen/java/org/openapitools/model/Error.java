@@ -15,10 +15,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("Error")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Error   {
-  private @Valid Integer code;
-  private @Valid String message;
+  private Integer code;
+  private String message;
 
   /**
    **/
@@ -30,8 +30,7 @@ public class Error   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("code")
-  @NotNull
-  public Integer getCode() {
+  @NotNull public Integer getCode() {
     return code;
   }
 
@@ -50,8 +49,7 @@ public class Error   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("message")
-  @NotNull
-  public String getMessage() {
+  @NotNull public String getMessage() {
     return message;
   }
 

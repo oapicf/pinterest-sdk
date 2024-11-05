@@ -6,7 +6,7 @@ type AdsCreditDiscountsResponse struct {
 	Active bool `json:"active,omitempty"`
 
 	// Advertiser ID the offer was applied to.
-	AdvertiserId string `json:"advertiser_id,omitempty"`
+	AdvertiserId string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// The type of discount of this credit
 	DiscountType *string `json:"discountType,omitempty"`

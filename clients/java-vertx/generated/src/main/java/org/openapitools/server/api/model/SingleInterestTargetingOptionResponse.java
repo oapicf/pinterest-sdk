@@ -12,7 +12,7 @@ public class SingleInterestTargetingOptionResponse   {
   
   private String id;
   private String name;
-  private List<String> childInterests;
+  private List<String> childInterests = new ArrayList<>();
   private Integer level;
 
   public SingleInterestTargetingOptionResponse () {

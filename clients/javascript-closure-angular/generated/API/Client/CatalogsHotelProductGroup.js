@@ -52,6 +52,7 @@ API.Client.CatalogsHotelProductGroup.prototype.createdAt;
 API.Client.CatalogsHotelProductGroup.prototype.updatedAt;
 
 /**
+ * Catalog id pertaining to the hotel product group.
  * @type {!string}
  * @export
  */

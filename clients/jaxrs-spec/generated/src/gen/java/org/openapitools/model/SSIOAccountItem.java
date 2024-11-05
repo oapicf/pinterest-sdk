@@ -19,17 +19,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOAccountItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountItem   {
-  private @Valid String id;
-  private @Valid String ioTermsId;
-  private @Valid String ioTerms;
-  private @Valid String usTermsId;
-  private @Valid String usTerms;
-  private @Valid String rowTermsId;
-  private @Valid String rowTerms;
-  private @Valid String ioType;
-  private @Valid List<@Valid SSIOAccountAddress> addresses;
+  private String id;
+  private String ioTermsId;
+  private String ioTerms;
+  private String usTermsId;
+  private String usTerms;
+  private String rowTermsId;
+  private String rowTerms;
+  private String ioType;
+  private @Valid List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
 
   /**
    * Salesforce id for billto_info
@@ -202,7 +202,7 @@ public class SSIOAccountItem   {
   
   @ApiModelProperty(value = "Address information that is associated with this account.")
   @JsonProperty("addresses")
-  public List<SSIOAccountAddress> getAddresses() {
+  @Valid public List<@Valid SSIOAccountAddress> getAddresses() {
     return addresses;
   }
 

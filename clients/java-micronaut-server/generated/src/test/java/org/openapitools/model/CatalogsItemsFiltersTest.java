@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.CatalogsCreativeAssetsItemsFilter;
 import org.openapitools.model.CatalogsHotelItemsFilter;
 import org.openapitools.model.CatalogsRetailItemsFilter;
 import org.openapitools.model.CatalogsType;
@@ -58,6 +59,14 @@ public class CatalogsItemsFiltersTest {
     @Test
     public void hotelIdsTest() {
         // TODO: test hotelIds
+    }
+
+    /**
+     * Test the property 'creativeAssetsIds'
+     */
+    @Test
+    public void creativeAssetsIdsTest() {
+        // TODO: test creativeAssetsIds
     }
 
 }

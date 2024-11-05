@@ -19,7 +19,7 @@ import java.util.List;
  */
 @ApiModel(description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionApiResponse   {
   @JsonProperty("num_events_received")
   private Integer numEventsReceived;
@@ -36,10 +36,10 @@ public class ConversionApiResponse   {
     return this;
   }
 
-   /**
+  /**
    * Total number of events received in the request.
    * @return numEventsReceived
-  **/
+   */
   @ApiModelProperty(required = true, value = "Total number of events received in the request.")
   public Integer getNumEventsReceived() {
     return numEventsReceived;
@@ -54,10 +54,10 @@ public class ConversionApiResponse   {
     return this;
   }
 
-   /**
+  /**
    * Number of events that were successfully processed from the events.
    * @return numEventsProcessed
-  **/
+   */
   @ApiModelProperty(required = true, value = "Number of events that were successfully processed from the events.")
   public Integer getNumEventsProcessed() {
     return numEventsProcessed;
@@ -80,10 +80,10 @@ public class ConversionApiResponse   {
     return this;
   }
 
-   /**
+  /**
    * Specific messages for each event received. The order will match the order in which the events were received in the request.
    * @return events
-  **/
+   */
   @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
   public List<ConversionApiResponseEventsInner> getEvents() {
     return events;

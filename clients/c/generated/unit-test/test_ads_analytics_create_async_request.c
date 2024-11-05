@@ -44,7 +44,10 @@ ads_analytics_create_async_request_t* instantiate_ads_analytics_create_async_req
       list_createList(),
       list_createList(),
       "CAMPAIGN",
-      "JSON"
+      "JSON",
+      pinterest_rest_api_ads_analytics_create_async_request_PRIMARYSORT_"BY_ID",
+      0,
+      0
     );
   } else {
     ads_analytics_create_async_request = ads_analytics_create_async_request_create(
@@ -70,7 +73,10 @@ ads_analytics_create_async_request_t* instantiate_ads_analytics_create_async_req
       list_createList(),
       list_createList(),
       "CAMPAIGN",
-      "JSON"
+      "JSON",
+      pinterest_rest_api_ads_analytics_create_async_request_PRIMARYSORT_"BY_ID",
+      0,
+      0
     );
   }
 

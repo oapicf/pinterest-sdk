@@ -314,9 +314,9 @@ NSInteger kOAIAudiencesApiMissingParamErrorCode = 234513;
 ///
 ///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
-///  @param ownershipType <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type. (optional, default to @"OWNED")
+///  @param ownershipType Filter audiences by ownership type. (optional, default to @"OWNED")
 ///
 ///  @returns OAIAudiencesList200Response*
 ///

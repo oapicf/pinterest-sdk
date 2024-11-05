@@ -3,6 +3,9 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.ConversionEventsUserDataAnyOf
+open OpenAPI.Model.ConversionEventsUserDataAnyOf1
+open OpenAPI.Model.ConversionEventsUserDataAnyOf2
 open OpenAPI.Model.string option
 
 module ConversionEventsUserData =
@@ -35,6 +38,14 @@ module ConversionEventsUserData =
     ClickId : string option;
     [<JsonProperty(PropertyName = "partner_id")>]
     PartnerId : string option;
+    [<JsonProperty(PropertyName = "em")>]
+    Em : string[];
+    [<JsonProperty(PropertyName = "hashed_maids")>]
+    HashedMaids : string[];
+    [<JsonProperty(PropertyName = "client_ip_address")>]
+    ClientIpAddress : string;
+    [<JsonProperty(PropertyName = "client_user_agent")>]
+    ClientUserAgent : string;
   }
 
   //#endregion

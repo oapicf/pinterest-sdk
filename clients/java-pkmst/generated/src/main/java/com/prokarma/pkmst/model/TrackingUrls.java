@@ -18,7 +18,7 @@ import java.util.List;
  */
 @ApiModel(description = "Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrackingUrls   {
   @JsonProperty("impression")
   
@@ -53,10 +53,10 @@ public class TrackingUrls   {
     return this;
   }
 
-   /**
+  /**
    * Get impression
    * @return impression
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<String> getImpression() {
     return impression;
@@ -79,10 +79,10 @@ public class TrackingUrls   {
     return this;
   }
 
-   /**
+  /**
    * Get click
    * @return click
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<String> getClick() {
     return click;
@@ -105,10 +105,10 @@ public class TrackingUrls   {
     return this;
   }
 
-   /**
+  /**
    * Get engagement
    * @return engagement
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<String> getEngagement() {
     return engagement;
@@ -131,10 +131,10 @@ public class TrackingUrls   {
     return this;
   }
 
-   /**
+  /**
    * Get buyableButton
    * @return buyableButton
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<String> getBuyableButton() {
     return buyableButton;
@@ -157,10 +157,10 @@ public class TrackingUrls   {
     return this;
   }
 
-   /**
+  /**
    * Get audienceVerification
    * @return audienceVerification
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<String> getAudienceVerification() {
     return audienceVerification;

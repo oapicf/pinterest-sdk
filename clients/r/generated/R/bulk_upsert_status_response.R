@@ -17,15 +17,13 @@ BulkUpsertStatusResponse <- R6::R6Class(
   public = list(
     `status` = NULL,
     `result_url` = NULL,
-    #' Initialize a new BulkUpsertStatusResponse class.
-    #'
+
     #' @description
     #' Initialize a new BulkUpsertStatusResponse class.
     #'
     #' @param status status
     #' @param result_url result_url
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`status` = NULL, `result_url` = NULL, ...) {
       if (!is.null(`status`)) {
         if (!(`status` %in% c())) {
@@ -41,13 +39,11 @@ BulkUpsertStatusResponse <- R6::R6Class(
         self$`result_url` <- `result_url`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkUpsertStatusResponse in JSON format
-    #' @export
     toJSON = function() {
       BulkUpsertStatusResponseObject <- list()
       if (!is.null(self$`status`)) {
@@ -60,14 +56,12 @@ BulkUpsertStatusResponse <- R6::R6Class(
       }
       BulkUpsertStatusResponseObject
     },
-    #' Deserialize JSON string into an instance of BulkUpsertStatusResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkUpsertStatusResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkUpsertStatusResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`status`)) {
@@ -80,13 +74,11 @@ BulkUpsertStatusResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkUpsertStatusResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`status`)) {
@@ -109,67 +101,54 @@ BulkUpsertStatusResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BulkUpsertStatusResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkUpsertStatusResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkUpsertStatusResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`status` <- BulkUpsertStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`result_url` <- this_object$`result_url`
       self
     },
-    #' Validate JSON input with respect to BulkUpsertStatusResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to BulkUpsertStatusResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BulkUpsertStatusResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

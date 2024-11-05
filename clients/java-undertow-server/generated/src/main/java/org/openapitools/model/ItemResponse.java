@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemResponseAnyOf;
 import org.openapitools.model.ItemResponseAnyOf1;
@@ -34,13 +34,14 @@ import org.openapitools.model.Pin;
  */
 
 @ApiModel(description = "Object describing an item record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemResponse   {
   
   private CatalogsType catalogType;
   private String itemId;
-  private List<ItemValidationEvent> errors;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
   private String hotelId;
+  private String creativeAssetsId;
 
   /**
    */
@@ -113,6 +114,24 @@ public class ItemResponse   {
     this.hotelId = hotelId;
   }
 
+  /**
+   * The catalog creative assets id in the merchant namespace
+   */
+  public ItemResponse creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+  @JsonProperty("creative_assets_id")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -126,12 +145,13 @@ public class ItemResponse   {
     return Objects.equals(catalogType, itemResponse.catalogType) &&
         Objects.equals(itemId, itemResponse.itemId) &&
         Objects.equals(errors, itemResponse.errors) &&
-        Objects.equals(hotelId, itemResponse.hotelId);
+        Objects.equals(hotelId, itemResponse.hotelId) &&
+        Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -143,6 +163,7 @@ public class ItemResponse   {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

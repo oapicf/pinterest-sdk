@@ -1,7 +1,7 @@
 package apimodels;
 
-import apimodels.ImageMetadataImages;
 import apimodels.PinMedia;
+import apimodels.PinMediaWithImageAllOfImages;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -11,15 +11,15 @@ import javax.validation.Valid;
 /**
  * Pin with image.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinMediaWithImage extends PinMedia  {
   @JsonProperty("images")
   @Valid
 
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
-  public PinMediaWithImage images(ImageMetadataImages images) {
+  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -28,11 +28,11 @@ public class PinMediaWithImage extends PinMedia  {
    * Get images
    * @return images
   **/
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

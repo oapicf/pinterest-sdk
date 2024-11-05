@@ -6,18 +6,38 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.model.CatalogsHotelBatchItem;
-import org.openapitools.model.CatalogsType;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 
 @Canonical
 class CatalogsHotelBatchRequest {
+
+    enum CatalogTypeEnum {
     
-    CatalogsType catalogType
+        HOTEL("HOTEL")
+    
+        private final String value
+    
+        CatalogTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    CatalogTypeEnum catalogType
     
     Country country
     
-    Language language
+    CatalogsItemsRequestLanguage language
     /* Array with catalogs item operations */
     List<CatalogsHotelBatchItem> items = new ArrayList<>()
     /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */

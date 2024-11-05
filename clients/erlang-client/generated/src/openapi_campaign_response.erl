@@ -12,16 +12,16 @@
        'lifetime_spend_cap' => integer(),
        'daily_spend_cap' => integer(),
        'order_line_id' => binary(),
-       'tracking_urls' => openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls(),
+       'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls(),
        'start_time' => integer(),
        'end_time' => integer(),
-       'summary_status' => openapi_campaign_summary_status:openapi_campaign_summary_status(),
+       'is_flexible_daily_budgets' => boolean(),
        'objective_type' => openapi_objective_type:openapi_objective_type(),
        'created_time' => integer(),
        'updated_time' => integer(),
        'type' => binary(),
-       'is_flexible_daily_budgets' => boolean(),
-       'is_campaign_budget_optimization' => boolean()
+       'is_campaign_budget_optimization' => boolean(),
+       'summary_status' => openapi_campaign_summary_status:openapi_campaign_summary_status()
      }.
 
 encode(#{ 'id' := Id,
@@ -34,13 +34,13 @@ encode(#{ 'id' := Id,
           'tracking_urls' := TrackingUrls,
           'start_time' := StartTime,
           'end_time' := EndTime,
-          'summary_status' := SummaryStatus,
+          'is_flexible_daily_budgets' := IsFlexibleDailyBudgets,
           'objective_type' := ObjectiveType,
           'created_time' := CreatedTime,
           'updated_time' := UpdatedTime,
           'type' := Type,
-          'is_flexible_daily_budgets' := IsFlexibleDailyBudgets,
-          'is_campaign_budget_optimization' := IsCampaignBudgetOptimization
+          'is_campaign_budget_optimization' := IsCampaignBudgetOptimization,
+          'summary_status' := SummaryStatus
         }) ->
     #{ 'id' => Id,
        'ad_account_id' => AdAccountId,
@@ -52,11 +52,11 @@ encode(#{ 'id' := Id,
        'tracking_urls' => TrackingUrls,
        'start_time' => StartTime,
        'end_time' => EndTime,
-       'summary_status' => SummaryStatus,
+       'is_flexible_daily_budgets' => IsFlexibleDailyBudgets,
        'objective_type' => ObjectiveType,
        'created_time' => CreatedTime,
        'updated_time' => UpdatedTime,
        'type' => Type,
-       'is_flexible_daily_budgets' => IsFlexibleDailyBudgets,
-       'is_campaign_budget_optimization' => IsCampaignBudgetOptimization
+       'is_campaign_budget_optimization' => IsCampaignBudgetOptimization,
+       'summary_status' => SummaryStatus
      }.

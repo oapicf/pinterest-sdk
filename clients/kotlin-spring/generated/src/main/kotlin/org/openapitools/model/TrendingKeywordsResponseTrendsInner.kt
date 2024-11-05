@@ -40,7 +40,7 @@ data class TrendingKeywordsResponseTrendsInner(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("time_series") val timeSeries: TrendingKeywordsResponseTrendsInnerTimeSeries? = null
-) {
+    ) {
 
 }
 

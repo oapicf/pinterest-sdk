@@ -4,9 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | **String** |  | 
 **country** | [**Country**](Country.md) |  | 
-**language** | [**Language**](Language.md) |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **items** | [**[CatalogsRetailBatchRequestItemsInner]**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+
+
+
+## Enum: CatalogTypeEnum
+
+
+* `RETAIL` (value: `"RETAIL"`)
+
+
 
 

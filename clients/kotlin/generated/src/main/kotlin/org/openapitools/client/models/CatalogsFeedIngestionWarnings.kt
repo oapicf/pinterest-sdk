@@ -57,5 +57,8 @@ data class CatalogsFeedIngestionWarnings (
     @Json(name = "HOTEL_PRICE_HEADER_IS_PRESENT")
     val HOTEL_PRICE_HEADER_IS_PRESENT: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

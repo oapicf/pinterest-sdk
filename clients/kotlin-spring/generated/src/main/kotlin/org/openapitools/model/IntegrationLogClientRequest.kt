@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -42,23 +43,31 @@ data class IntegrationLogClientRequest(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("response_status_code") val responseStatusCode: kotlin.Int? = null
-) {
+    ) {
 
     /**
     * 
     * Values: GET,HEAD,POST,PUT,DELETE,CONNECT,OPTIONS,TRACE,PATCH
     */
-    enum class Method(val value: kotlin.String) {
+    enum class Method(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("GET") GET("GET"),
-        @JsonProperty("HEAD") HEAD("HEAD"),
-        @JsonProperty("POST") POST("POST"),
-        @JsonProperty("PUT") PUT("PUT"),
-        @JsonProperty("DELETE") DELETE("DELETE"),
-        @JsonProperty("CONNECT") CONNECT("CONNECT"),
-        @JsonProperty("OPTIONS") OPTIONS("OPTIONS"),
-        @JsonProperty("TRACE") TRACE("TRACE"),
-        @JsonProperty("PATCH") PATCH("PATCH")
+        GET("GET"),
+        HEAD("HEAD"),
+        POST("POST"),
+        PUT("PUT"),
+        DELETE("DELETE"),
+        CONNECT("CONNECT"),
+        OPTIONS("OPTIONS"),
+        TRACE("TRACE"),
+        PATCH("PATCH");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Method {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

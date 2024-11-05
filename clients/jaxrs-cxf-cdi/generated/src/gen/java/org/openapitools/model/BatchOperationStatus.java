@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum BatchOperationStatus {
 
-    @JsonProperty("PROCESSING") PROCESSING(String.valueOf("PROCESSING")), @JsonProperty("COMPLETED") COMPLETED(String.valueOf("COMPLETED"));
+    @JsonProperty("PROCESSING") PROCESSING(String.valueOf("PROCESSING")), @JsonProperty("COMPLETED") COMPLETED(String.valueOf("COMPLETED")), @JsonProperty("FAILED") FAILED(String.valueOf("FAILED"));
 
 
     private String value;

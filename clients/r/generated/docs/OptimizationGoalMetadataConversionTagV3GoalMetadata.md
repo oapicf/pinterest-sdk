@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **conversion_event** | **character** |  | [optional] [Enum: [PAGE_VISIT, SIGNUP, CHECKOUT, CUSTOM, VIEW_CATEGORY, SEARCH, ADD_TO_CART, WATCH_VIDEO, LEAD, APP_INSTALL]] 
 **conversion_tag_id** | **character** |  | [optional] [Pattern: ^[0-9]+$] 
 **cpa_goal_value_in_micro_currency** | **character** |  | [optional] [Pattern: ^[0-9]+$] 
-**is_roas_optimized** | **character** | Ad group is ROAS optimized | [optional] 
-**learning_mode_type** | **character** | Conversion learning model type | [optional] [Enum: [NOT_ACTIVE, ACTIVE, null]] 
+**is_roas_optimized** | **character** | ROAS optimization is not supported | [optional] 
+**learning_mode_type** | **character** | Conversion learning model type | [optional] [Enum: [NOT_ACTIVE, ACTIVE]] 
 
 

@@ -244,7 +244,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIBoardSectionsList200Response*
 ///
@@ -296,7 +296,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -332,7 +332,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIBoardsListPins200Response*
 ///
@@ -399,7 +399,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -725,7 +725,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -757,7 +757,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param privacy Privacy setting for a board. (optional)
 ///
@@ -800,7 +800,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -832,7 +832,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param creativeTypes Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 ///
@@ -898,7 +898,7 @@ NSInteger kOAIBoardsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];

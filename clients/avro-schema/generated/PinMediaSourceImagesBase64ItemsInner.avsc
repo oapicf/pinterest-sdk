@@ -28,8 +28,8 @@
         "type": "enum",
         "name": "PinMediaSourceImagesBase64ItemsInner_contentUnderscoretype",
         "symbols": [
-          "image/jpeg",
-          "image/png"
+          "image_jpeg",
+          "image_png"
         ]
       },
       "doc": ""

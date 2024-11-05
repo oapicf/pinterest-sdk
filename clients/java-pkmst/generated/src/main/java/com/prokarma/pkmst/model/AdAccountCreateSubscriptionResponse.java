@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * Response class to be returned by Api
  * @author pkmst
@@ -14,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AdAccountCreateSubscriptionResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateSubscriptionResponse   {
   @JsonProperty("id")
   private String id;
@@ -33,10 +34,10 @@ public class AdAccountCreateSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Subscription ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
   public String getId() {
     return id;
@@ -51,10 +52,10 @@ public class AdAccountCreateSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Base64 encoded key for client to decrypt lead data.
    * @return cryptographicKey
-  **/
+   */
   @ApiModelProperty(example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", value = "Base64 encoded key for client to decrypt lead data.")
   public String getCryptographicKey() {
     return cryptographicKey;
@@ -69,10 +70,10 @@ public class AdAccountCreateSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Lead data encryption algorithm.
    * @return cryptographicAlgorithm
-  **/
+   */
   @ApiModelProperty(example = "AES-256-GCM", value = "Lead data encryption algorithm.")
   public String getCryptographicAlgorithm() {
     return cryptographicAlgorithm;
@@ -87,10 +88,10 @@ public class AdAccountCreateSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Subscription creation time. Unix timestamp in milliseconds.
    * @return createdTime
-  **/
+   */
   @ApiModelProperty(example = "1699209842000", value = "Subscription creation time. Unix timestamp in milliseconds.")
   public Integer getCreatedTime() {
     return createdTime;

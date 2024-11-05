@@ -5,7 +5,7 @@ type CatalogsItemsDeleteBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language Language `json:"language"`
+	Language CatalogsItemsRequestLanguage `json:"language"`
 
 	Operation BatchOperation `json:"operation"`
 

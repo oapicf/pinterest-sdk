@@ -17,14 +17,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("VideoMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class VideoMetadata   {
-  private @Valid String itemType;
-  private @Valid String coverImageUrl;
-  private @Valid String videoUrl;
-  private @Valid BigDecimal duration;
-  private @Valid Integer height;
-  private @Valid Integer width;
+  private String itemType;
+  private String coverImageUrl;
+  private String videoUrl;
+  private BigDecimal duration;
+  private Integer height;
+  private Integer width;
 
   /**
    **/
@@ -95,7 +95,7 @@ public class VideoMetadata   {
   
   @ApiModelProperty(value = "Duration (in milliseconds)")
   @JsonProperty("duration")
-  public BigDecimal getDuration() {
+  @Valid public BigDecimal getDuration() {
     return duration;
   }
 

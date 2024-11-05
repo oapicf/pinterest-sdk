@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * KeywordUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class KeywordUpdate   {
   @JsonProperty("id")
@@ -24,8 +24,7 @@ public class KeywordUpdate   {
   private Boolean archived;
 
   @JsonProperty("bid")
-  @Min(1)
-
+  
   private Integer bid;
 
   public KeywordUpdate id(String id) {
@@ -68,8 +67,7 @@ public class KeywordUpdate   {
   }
 
    /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * minimum: 1
+   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    * @return bid
   **/
   public Integer getBid() {

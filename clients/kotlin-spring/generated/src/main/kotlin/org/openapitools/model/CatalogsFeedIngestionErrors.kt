@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -50,15 +51,23 @@ data class CatalogsFeedIngestionErrors(
 
     @Schema(example = "null", description = "Image files are unreadable. Please upload new files to continue.")
     @get:JsonProperty("IMAGE_INVALID_FILE") val IMAGE_INVALID_FILE: kotlin.Int? = null
-) {
+    ) {
 
     /**
     * The product count has decreased by more than 99% compared to the last successful ingestion.
     * Values: _1
     */
-    enum class LARGEPRODUCTCOUNTDECREASE(val value: kotlin.Int) {
+    enum class LARGEPRODUCTCOUNTDECREASE(@get:JsonValue val value: kotlin.Int) {
 
-        @JsonProperty(1) _1(1)
+        _1(1);
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.Int): LARGEPRODUCTCOUNTDECREASE {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

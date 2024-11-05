@@ -34,7 +34,7 @@ data class SingleInterestTargetingOptionResponse(
 
     @Schema(example = "2", description = "")
     @get:JsonProperty("level") val level: kotlin.Int? = null
-) {
+    ) {
 
 }
 

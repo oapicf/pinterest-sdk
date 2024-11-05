@@ -58,8 +58,13 @@ Protected Class FeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
+		status As OpenAPIClient.Models.CatalogsStatus
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+			Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
 		#tag EndNote
 		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
@@ -179,6 +184,14 @@ Protected Class FeedsCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="ProductAvailabilityType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsStatus"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

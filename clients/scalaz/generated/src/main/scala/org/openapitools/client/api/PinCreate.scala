@@ -26,7 +26,7 @@ altText: Option[String],
 /* The board section to which this Pin belongs. */
   boardSectionId: Option[String],
 boardOwner: Option[BoardOwner],
-media: Option[SummaryPinMedia],
+media: Option[PinMedia],
 mediaSource: Option[PinMediaSource],
 /* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
   parentPinId: Option[String],

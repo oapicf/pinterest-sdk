@@ -40,6 +40,6 @@ public interface UserAccountApi  {
     Future<ApiResponse<Account>> userAccountGet(String adAccountId);
     Future<ApiResponse<UserFollowingGet200Response>> userFollowingGet(String bookmark, Integer pageSize, UserFollowingFeedType feedType, Boolean explicitFollowing, String adAccountId);
     Future<ApiResponse<UserWebsitesGet200Response>> userWebsitesGet(String bookmark, Integer pageSize);
-    Future<ApiResponse<UserWebsiteSummary>> verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest);
-    Future<ApiResponse<UserWebsiteVerificationCode>> websiteVerificationGet();
+    Future<ApiResponse<UserWebsiteSummary>> verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, String adAccountId);
+    Future<ApiResponse<UserWebsiteVerificationCode>> websiteVerificationGet(String adAccountId);
 }

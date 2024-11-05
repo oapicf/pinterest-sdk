@@ -15,14 +15,13 @@ module LeadFormQuestionType =
   let EMAILEnum = "EMAIL"
   let PHONENUMBEREnum = "PHONE_NUMBER"
   let ZIPCODEEnum = "ZIP_CODE"
-  let AGEEnum = "AGE"
   let GENDEREnum = "GENDER"
   let CITYEnum = "CITY"
   let COUNTRYEnum = "COUNTRY"
-  let PREFERREDCONTACTMETHODEnum = "PREFERRED_CONTACT_METHOD"
   let STATEPROVINCEEnum = "STATE_PROVINCE"
   let ADDRESSEnum = "ADDRESS"
   let DATEOFBIRTHEnum = "DATE_OF_BIRTH"
+  let AGEEnum = "AGE"
   type LeadFormQuestionType = string
 
   //#endregion

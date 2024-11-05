@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.model.CatalogsVerticalProductGroup;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,7 +18,7 @@ public class CatalogsProductGroupsList200Response  {
   
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsVerticalProductGroup> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   private String bookmark;
@@ -28,21 +28,21 @@ public class CatalogsProductGroupsList200Response  {
   */
   @JsonProperty("items")
   @NotNull
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<@Valid CatalogsVerticalProductGroup> getItems() {
     return items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
- public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+ public void setItems(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 
   /**
    * Sets the <code>items</code> property.
    */
-  public CatalogsProductGroupsList200Response items(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response items(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
     return this;
   }
@@ -50,7 +50,7 @@ public class CatalogsProductGroupsList200Response  {
   /**
    * Adds a new item to the <code>items</code> list.
    */
-  public CatalogsProductGroupsList200Response addItemsItem(CatalogsProductGroupsList200ResponseAllOfItemsInner itemsItem) {
+  public CatalogsProductGroupsList200Response addItemsItem(CatalogsVerticalProductGroup itemsItem) {
     this.items.add(itemsItem);
     return this;
   }

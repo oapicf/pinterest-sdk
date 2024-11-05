@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * CatalogsHotelProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
 
   /**
@@ -100,7 +100,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -120,7 +120,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * ID of the hotel product group.
    * @return id
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "443727193917", description = "ID of the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
@@ -140,7 +140,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * Name of hotel product group
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "Most Popular", description = "Name of hotel product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -160,7 +160,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -180,7 +180,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * Get filters
    * @return filters
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "filters", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("filters")
@@ -200,7 +200,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * Unix timestamp in seconds of when catalog product group was created.
    * @return createdAt
-  */
+   */
   
   @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
@@ -220,7 +220,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   /**
    * Unix timestamp in seconds of last time catalog product group was updated.
    * @return updatedAt
-  */
+   */
   
   @Schema(name = "updated_at", example = "1622742155000", description = "Unix timestamp in seconds of last time catalog product group was updated.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_at")
@@ -238,11 +238,11 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   }
 
   /**
-   * Get catalogId
+   * Catalog id pertaining to the hotel product group.
    * @return catalogId
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;

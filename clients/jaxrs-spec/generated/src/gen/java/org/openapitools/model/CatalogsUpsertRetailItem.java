@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,12 +18,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "An item to be upserted")
 @JsonTypeName("CatalogsUpsertRetailItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpsertRetailItem   {
-  private @Valid String itemId;
+  private String itemId;
   public enum OperationEnum {
 
-    CREATE(String.valueOf("CREATE")), UPDATE(String.valueOf("UPDATE")), UPSERT(String.valueOf("UPSERT")), DELETE(String.valueOf("DELETE"));
+    UPSERT(String.valueOf("UPSERT"));
 
 
     private String value;
@@ -68,8 +68,8 @@ public class CatalogsUpsertRetailItem   {
     }
 }
 
-  private @Valid OperationEnum operation;
-  private @Valid ItemAttributes attributes;
+  private OperationEnum operation;
+  private ItemAttributesRequest attributes;
 
   /**
    * The catalog item id in the merchant namespace
@@ -82,8 +82,7 @@ public class CatalogsUpsertRetailItem   {
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
   @JsonProperty("item_id")
-  @NotNull
-  public String getItemId() {
+  @NotNull public String getItemId() {
     return itemId;
   }
 
@@ -102,8 +101,7 @@ public class CatalogsUpsertRetailItem   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
-  @NotNull
-  public OperationEnum getOperation() {
+  @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
@@ -114,7 +112,7 @@ public class CatalogsUpsertRetailItem   {
 
   /**
    **/
-  public CatalogsUpsertRetailItem attributes(ItemAttributes attributes) {
+  public CatalogsUpsertRetailItem attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -122,13 +120,12 @@ public class CatalogsUpsertRetailItem   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
-  @NotNull
-  public ItemAttributes getAttributes() {
+  @NotNull @Valid public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
   @JsonProperty("attributes")
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

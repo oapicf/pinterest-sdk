@@ -31,14 +31,24 @@ void main() {
       // TODO
     });
 
-    // CatalogsHotelProductGroupFilters filters
+    // CatalogsCreativeAssetsProductGroupFilters filters
     test('to test the property `filters`', () async {
       // TODO
     });
 
-    // Catalog id pertaining to the hotel product group.
+    // Catalog id pertaining to the creative assets product group.
     // String catalogId
     test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // Country country
+    test('to test the property `country`', () async {
+      // TODO
+    });
+
+    // CatalogsLocale locale
+    test('to test the property `locale`', () async {
       // TODO
     });
 

@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,11 +19,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Campaign placement group type
 * Values: ALL,SEARCH,BROWSE,OTHER
 */
-enum class PlacementGroupType(val value: kotlin.String) {
+enum class PlacementGroupType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("ALL") ALL("ALL"),
-    @JsonProperty("SEARCH") SEARCH("SEARCH"),
-    @JsonProperty("BROWSE") BROWSE("BROWSE"),
-    @JsonProperty("OTHER") OTHER("OTHER")
+    ALL("ALL"),
+    SEARCH("SEARCH"),
+    BROWSE("BROWSE"),
+    OTHER("OTHER");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): PlacementGroupType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

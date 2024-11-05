@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TargetingTypeFilter  {
   
  /**
-  * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+  * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   */
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
   @Valid
-  private List<AdsAnalyticsTargetingType> targetingTypes;
+  private List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
  /**
-  * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;.
+  * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
   * @return targetingTypes
   */
   @JsonProperty("targeting_types")

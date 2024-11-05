@@ -15,7 +15,7 @@ import org.openapitools.server.api.model.PinMedia;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaWithImages extends PinMedia  {
   
-  private List<ImageMetadata> items;
+  private List<ImageMetadata> items = new ArrayList<>();
 
   public PinMediaWithImages () {
 

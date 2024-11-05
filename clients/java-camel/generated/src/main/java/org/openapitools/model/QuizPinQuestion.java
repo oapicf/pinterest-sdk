@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinQuestion", description = "A specific quiz inquiry.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QuizPinQuestion {
 
   private BigDecimal questionId;
@@ -32,7 +32,7 @@ public class QuizPinQuestion {
   private String questionText;
 
   @Valid
-  private List<@Valid QuizPinOption> options;
+  private List<@Valid QuizPinOption> options = new ArrayList<>();
 
   public QuizPinQuestion questionId(BigDecimal questionId) {
     this.questionId = questionId;
@@ -42,7 +42,7 @@ public class QuizPinQuestion {
   /**
    * Get questionId
    * @return questionId
-  */
+   */
   @Valid 
   @Schema(name = "question_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("question_id")
@@ -62,7 +62,7 @@ public class QuizPinQuestion {
   /**
    * Get questionText
    * @return questionText
-  */
+   */
   
   @Schema(name = "question_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("question_text")
@@ -90,7 +90,7 @@ public class QuizPinQuestion {
   /**
    * Get options
    * @return options
-  */
+   */
   @Valid 
   @Schema(name = "options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("options")

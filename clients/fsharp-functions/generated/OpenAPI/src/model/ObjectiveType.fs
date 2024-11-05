@@ -14,6 +14,7 @@ module ObjectiveType =
   let WEBCONVERSIONEnum = "WEB_CONVERSION"
   let CATALOGSALESEnum = "CATALOG_SALES"
   let WEBSESSIONSEnum = "WEB_SESSIONS"
+  let VIDEOCOMPLETIONEnum = "VIDEO_COMPLETION"
   type ObjectiveType = string
 
   //#endregion

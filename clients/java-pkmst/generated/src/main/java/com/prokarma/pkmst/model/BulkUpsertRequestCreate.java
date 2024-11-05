@@ -23,7 +23,7 @@ import java.util.List;
  */
 @ApiModel(description = "Request for creation of entities in bulk.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequestCreate   {
   @JsonProperty("campaigns")
   
@@ -58,10 +58,10 @@ public class BulkUpsertRequestCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get campaigns
    * @return campaigns
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<CampaignCreateRequest> getCampaigns() {
     return campaigns;
@@ -84,10 +84,10 @@ public class BulkUpsertRequestCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get adGroups
    * @return adGroups
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<AdGroupCreateRequest> getAdGroups() {
     return adGroups;
@@ -110,10 +110,10 @@ public class BulkUpsertRequestCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get ads
    * @return ads
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<AdCreateRequest> getAds() {
     return ads;
@@ -136,10 +136,10 @@ public class BulkUpsertRequestCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get productGroups
    * @return productGroups
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<ProductGroupPromotionCreateRequest> getProductGroups() {
     return productGroups;
@@ -162,10 +162,10 @@ public class BulkUpsertRequestCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get keywords
    * @return keywords
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<KeywordsRequest> getKeywords() {
     return keywords;

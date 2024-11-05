@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * SSIOEditInsertionOrderRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOEditInsertionOrderRequest   {
   @JsonProperty("start_date")
   private String startDate;
@@ -70,10 +70,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * Starting date of time period. Format: YYYY-MM-DD
    * @return startDate
-  **/
+   */
   @ApiModelProperty(example = "2020-12-20", value = "Starting date of time period. Format: YYYY-MM-DD")
   public String getStartDate() {
     return startDate;
@@ -88,10 +88,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * End date of time period. Format: YYYY-MM-DD
    * @return endDate
-  **/
+   */
   @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
   public String getEndDate() {
     return endDate;
@@ -106,10 +106,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The po number
    * @return poNumber
-  **/
+   */
   @ApiModelProperty(value = "The po number")
   public String getPoNumber() {
     return poNumber;
@@ -124,10 +124,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * If Budget order line, the budget amount.
    * @return budgetAmount
-  **/
+   */
   @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
   public BigDecimal getBudgetAmount() {
     return budgetAmount;
@@ -142,10 +142,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The billing contact first name
    * @return billingContactFirstname
-  **/
+   */
   @ApiModelProperty(value = "The billing contact first name")
   public String getBillingContactFirstname() {
     return billingContactFirstname;
@@ -160,10 +160,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The billing contact last name
    * @return billingContactLastname
-  **/
+   */
   @ApiModelProperty(value = "The billing contact last name")
   public String getBillingContactLastname() {
     return billingContactLastname;
@@ -178,10 +178,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The billing contact email
    * @return billingContactEmail
-  **/
+   */
   @ApiModelProperty(example = "test@example", value = "The billing contact email")
   public String getBillingContactEmail() {
     return billingContactEmail;
@@ -196,10 +196,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The media contact first name
    * @return mediaContactFirstname
-  **/
+   */
   @ApiModelProperty(value = "The media contact first name")
   public String getMediaContactFirstname() {
     return mediaContactFirstname;
@@ -214,10 +214,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The media contact last name
    * @return mediaContactLastname
-  **/
+   */
   @ApiModelProperty(value = "The media contact last name")
   public String getMediaContactLastname() {
     return mediaContactLastname;
@@ -232,10 +232,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The media contact email
    * @return mediaContactEmail
-  **/
+   */
   @ApiModelProperty(example = "test@example", value = "The media contact email")
   public String getMediaContactEmail() {
     return mediaContactEmail;
@@ -250,10 +250,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * URL link for agency
    * @return agencyLink
-  **/
+   */
   @ApiModelProperty(value = "URL link for agency")
   public String getAgencyLink() {
     return agencyLink;
@@ -268,10 +268,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * The email of user submitting the insertion order
    * @return userEmail
-  **/
+   */
   @ApiModelProperty(example = "test@example", value = "The email of user submitting the insertion order")
   public String getUserEmail() {
     return userEmail;
@@ -286,10 +286,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * LineId in the Oracle DB
    * @return oracleLineId
-  **/
+   */
   @ApiModelProperty(value = "LineId in the Oracle DB")
   public String getOracleLineId() {
     return oracleLineId;
@@ -304,10 +304,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * OrderId in SFDC
    * @return salesforceOrderId
-  **/
+   */
   @ApiModelProperty(value = "OrderId in SFDC")
   public String getSalesforceOrderId() {
     return salesforceOrderId;
@@ -322,10 +322,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * OrderLineId in SFDC
    * @return salesforceOrderLineId
-  **/
+   */
   @ApiModelProperty(value = "OrderLineId in SFDC")
   public String getSalesforceOrderLineId() {
     return salesforceOrderLineId;
@@ -340,10 +340,10 @@ public class SSIOEditInsertionOrderRequest   {
     return this;
   }
 
-   /**
+  /**
    * Ads manager OrderLineId
    * @return adsManagerOrderLineId
-  **/
+   */
   @ApiModelProperty(value = "Ads manager OrderLineId")
   public String getAdsManagerOrderLineId() {
     return adsManagerOrderLineId;

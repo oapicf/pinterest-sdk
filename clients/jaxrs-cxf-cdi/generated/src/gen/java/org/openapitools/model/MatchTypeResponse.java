@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum MatchTypeResponse {
 
-    @JsonProperty("BROAD") BROAD(String.valueOf("BROAD")), @JsonProperty("PHRASE") PHRASE(String.valueOf("PHRASE")), @JsonProperty("EXACT") EXACT(String.valueOf("EXACT")), @JsonProperty("EXACT_NEGATIVE") EXACT_NEGATIVE(String.valueOf("EXACT_NEGATIVE")), @JsonProperty("PHRASE_NEGATIVE") PHRASE_NEGATIVE(String.valueOf("PHRASE_NEGATIVE")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("BROAD") BROAD(String.valueOf("BROAD")), @JsonProperty("PHRASE") PHRASE(String.valueOf("PHRASE")), @JsonProperty("EXACT") EXACT(String.valueOf("EXACT")), @JsonProperty("EXACT_NEGATIVE") EXACT_NEGATIVE(String.valueOf("EXACT_NEGATIVE")), @JsonProperty("PHRASE_NEGATIVE") PHRASE_NEGATIVE(String.valueOf("PHRASE_NEGATIVE"));
 
 
     private String value;

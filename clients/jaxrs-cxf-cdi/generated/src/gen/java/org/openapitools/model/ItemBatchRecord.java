@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.ItemCreateBatchRecord;
 import org.openapitools.model.ItemDeleteBatchRecord;
 import org.openapitools.model.ItemDeleteDiscontinuedBatchRecord;
@@ -31,7 +31,7 @@ public class ItemBatchRecord   {
   
   private String itemId;
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   private List<UpdateMaskFieldType> updateMask;
 
@@ -56,7 +56,7 @@ public class ItemBatchRecord   {
 
   /**
    **/
-  public ItemBatchRecord attributes(ItemAttributes attributes) {
+  public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -64,10 +64,10 @@ public class ItemBatchRecord   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

@@ -29,7 +29,7 @@ data class ItemValidationEvent(
 
     @Schema(example = "Title is missing from product metadata.", description = "Title message describing the item validation event")
     @get:JsonProperty("message") val message: kotlin.String? = null
-) {
+    ) {
 
 }
 

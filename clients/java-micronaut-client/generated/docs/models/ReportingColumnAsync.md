@@ -541,7 +541,15 @@ The class is defined in **[ReportingColumnAsync.java](../../src/main/java/org/op
 
 * `TOTAL_CUSTOM` (value: `"TOTAL_CUSTOM"`)
 
+* `TOTAL_ADD_TO_CART` (value: `"TOTAL_ADD_TO_CART"`)
+
 * `TOTAL_LEAD` (value: `"TOTAL_LEAD"`)
+
+* `TOTAL_SEARCH` (value: `"TOTAL_SEARCH"`)
+
+* `TOTAL_WATCH_VIDEO` (value: `"TOTAL_WATCH_VIDEO"`)
+
+* `TOTAL_VIEW_CATEGORY` (value: `"TOTAL_VIEW_CATEGORY"`)
 
 * `TOTAL_APP_INSTALL` (value: `"TOTAL_APP_INSTALL"`)
 
@@ -550,6 +558,16 @@ The class is defined in **[ReportingColumnAsync.java](../../src/main/java/org/op
 * `TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"`)
 
 * `TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"`)
+
+* `TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR"`)
+
+* `TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR"`)
+
+* `TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR"`)
+
+* `TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR"`)
+
+* `TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR"`)
 
 * `TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR` (value: `"TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"`)
 
@@ -565,7 +583,7 @@ The class is defined in **[ReportingColumnAsync.java](../../src/main/java/org/op
 
 * `CUSTOM_ROAS` (value: `"CUSTOM_ROAS"`)
 
-* `VIDEO_3SEC_VIEWS_1` (value: `"VIDEO_3SEC_VIEWS_1"`)
+* `VIDEO_3_SEC_VIEWS_1` (value: `"VIDEO_3SEC_VIEWS_1"`)
 
 * `VIDEO_P100_COMPLETE_1` (value: `"VIDEO_P100_COMPLETE_1"`)
 
@@ -581,7 +599,7 @@ The class is defined in **[ReportingColumnAsync.java](../../src/main/java/org/op
 
 * `VIDEO_MRC_VIEWS_1` (value: `"VIDEO_MRC_VIEWS_1"`)
 
-* `VIDEO_3SEC_VIEWS_2` (value: `"VIDEO_3SEC_VIEWS_2"`)
+* `VIDEO_3_SEC_VIEWS_2` (value: `"VIDEO_3SEC_VIEWS_2"`)
 
 * `VIDEO_P100_COMPLETE_2` (value: `"VIDEO_P100_COMPLETE_2"`)
 
@@ -597,6 +615,8 @@ The class is defined in **[ReportingColumnAsync.java](../../src/main/java/org/op
 
 * `VIDEO_MRC_VIEWS_2` (value: `"VIDEO_MRC_VIEWS_2"`)
 
+* `PAID_VIDEO_VIEWABLE_RATE` (value: `"PAID_VIDEO_VIEWABLE_RATE"`)
+
 * `VIDEO_LENGTH` (value: `"VIDEO_LENGTH"`)
 
 * `CPV_IN_MICRO_DOLLAR` (value: `"CPV_IN_MICRO_DOLLAR"`)
@@ -611,7 +631,7 @@ The class is defined in **[ReportingColumnAsync.java](../../src/main/java/org/op
 
 * `ECPCV_P95_IN_DOLLAR` (value: `"ECPCV_P95_IN_DOLLAR"`)
 
-* `TOTAL_VIDEO_3SEC_VIEWS` (value: `"TOTAL_VIDEO_3SEC_VIEWS"`)
+* `TOTAL_VIDEO_3_SEC_VIEWS` (value: `"TOTAL_VIDEO_3SEC_VIEWS"`)
 
 * `TOTAL_VIDEO_P100_COMPLETE` (value: `"TOTAL_VIDEO_P100_COMPLETE"`)
 
@@ -632,6 +652,8 @@ The class is defined in **[ReportingColumnAsync.java](../../src/main/java/org/op
 * `VIDEO_AVG_WATCHTIME_IN_SECOND_2` (value: `"VIDEO_AVG_WATCHTIME_IN_SECOND_2"`)
 
 * `TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND` (value: `"TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"`)
+
+* `TOTAL_DESTINATION_VIEWS` (value: `"TOTAL_DESTINATION_VIEWS"`)
 
 * `TOTAL_REPIN_RATE` (value: `"TOTAL_REPIN_RATE"`)
 

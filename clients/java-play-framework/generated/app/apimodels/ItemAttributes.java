@@ -14,7 +14,7 @@ import javax.validation.Valid;
 /**
  * ItemAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemAttributes   {
   @JsonProperty("ad_link")
@@ -207,6 +207,10 @@ public class ItemAttributes   {
 
   private List<String> imageLink = null;
 
+  @JsonProperty("video_link")
+  
+  private String videoLink;
+
   public ItemAttributes adLink(String adLink) {
     this.adLink = adLink;
     return this;
@@ -247,7 +251,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
    * @return ageGroup
   **/
   public String getAgeGroup() {
@@ -264,7 +268,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
    * @return availability
   **/
   public String getAvailability() {
@@ -502,7 +506,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
    * @return gender
   **/
   public String getGender() {
@@ -876,7 +880,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
    * @return sizeSystem
   **/
   public String getSizeSystem() {
@@ -893,7 +897,7 @@ public class ItemAttributes   {
   }
 
    /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
    * @return sizeType
   **/
   public String getSizeType() {
@@ -1038,6 +1042,23 @@ public class ItemAttributes   {
     this.imageLink = imageLink;
   }
 
+  public ItemAttributes videoLink(String videoLink) {
+    this.videoLink = videoLink;
+    return this;
+  }
+
+   /**
+   * <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+   * @return videoLink
+  **/
+  public String getVideoLink() {
+    return videoLink;
+  }
+
+  public void setVideoLink(String videoLink) {
+    this.videoLink = videoLink;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -1094,12 +1115,13 @@ public class ItemAttributes   {
         Objects.equals(variantNames, itemAttributes.variantNames) &&
         Objects.equals(variantValues, itemAttributes.variantValues) &&
         Objects.equals(additionalImageLink, itemAttributes.additionalImageLink) &&
-        Objects.equals(imageLink, itemAttributes.imageLink);
+        Objects.equals(imageLink, itemAttributes.imageLink) &&
+        Objects.equals(videoLink, itemAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink);
+    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -1155,6 +1177,7 @@ public class ItemAttributes   {
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
+    sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }

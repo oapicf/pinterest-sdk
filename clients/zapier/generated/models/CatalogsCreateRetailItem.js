@@ -1,5 +1,5 @@
 const utils = require('../utils/utils');
-const ItemAttributes = require('../models/ItemAttributes');
+const ItemAttributesRequest = require('../models/ItemAttributesRequest');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -18,12 +18,9 @@ module.exports = {
                 type: 'string',
                 choices: [
                     'CREATE',
-                    'UPDATE',
-                    'UPSERT',
-                    'DELETE',
                 ],
             },
-            ...ItemAttributes.fields(`${keyPrefix}attributes`, isInput),
+            ...ItemAttributesRequest.fields(`${keyPrefix}attributes`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -31,7 +28,7 @@ module.exports = {
         return {
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'operation': bundle.inputData?.[`${keyPrefix}operation`],
-            'attributes': utils.removeIfEmpty(ItemAttributes.mapping(bundle, `${keyPrefix}attributes`)),
+            'attributes': utils.removeIfEmpty(ItemAttributesRequest.mapping(bundle, `${keyPrefix}attributes`)),
         }
     },
 }

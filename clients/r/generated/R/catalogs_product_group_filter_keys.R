@@ -16,14 +16,12 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MinPriceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter"),
-    #' Initialize a new CatalogsProductGroupFilterKeys.
-    #'
+    any_of = list("AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MediaTypeFilter", "MinPriceFilter", "ProductGroupReferenceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter"),
+
     #' @description
     #' Initialize a new CatalogsProductGroupFilterKeys.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MinPriceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter"
-    #' @export
+    #' @param instance an instance of the object defined in the anyOf schemas: "AvailabilityFilter", "BrandFilter", "ConditionFilter", "CurrencyFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "GenderFilter", "GoogleProductCategory0Filter", "GoogleProductCategory1Filter", "GoogleProductCategory2Filter", "GoogleProductCategory3Filter", "GoogleProductCategory4Filter", "GoogleProductCategory5Filter", "GoogleProductCategory6Filter", "ItemGroupIdFilter", "ItemIdFilter", "MaxPriceFilter", "MediaTypeFilter", "MinPriceFilter", "ProductGroupReferenceFilter", "ProductType0Filter", "ProductType1Filter", "ProductType2Filter", "ProductType3Filter", "ProductType4Filter"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -87,9 +85,15 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MaxPriceFilter") {
         self$actual_instance <- instance
         self$actual_type <- "MaxPriceFilter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MediaTypeFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "MediaTypeFilter"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MinPriceFilter") {
         self$actual_instance <- instance
         self$actual_type <- "MinPriceFilter"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ProductGroupReferenceFilter") {
+        self$actual_instance <- instance
+        self$actual_type <- "ProductGroupReferenceFilter"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ProductType0Filter") {
         self$actual_instance <- instance
         self$actual_type <- "ProductType0Filter"
@@ -106,30 +110,28 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "ProductType4Filter"
       } else {
-        stop(paste("Failed to initialize CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MinPriceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupFilterKeys.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupFilterKeys.
     #' An alias to the method `fromJSON`.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsProductGroupFilterKeys.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupFilterKeys.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupFilterKeys.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsProductGroupFilterKeys.
-    #' @export
     fromJSON = function(input) {
       error_messages <- list()
 
@@ -329,6 +331,20 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
         error_messages <- append(error_messages, `GenderFilter_result`["message"])
       }
 
+      `MediaTypeFilter_result` <- tryCatch({
+          `MediaTypeFilter`$public_methods$validateJSON(input)
+          `MediaTypeFilter_instance` <- `MediaTypeFilter`$new()
+          self$actual_instance <- `MediaTypeFilter_instance`$fromJSON(input)
+          self$actual_type <- "MediaTypeFilter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MediaTypeFilter_result`["error"])) {
+        error_messages <- append(error_messages, `MediaTypeFilter_result`["message"])
+      }
+
       `ProductType4Filter_result` <- tryCatch({
           `ProductType4Filter`$public_methods$validateJSON(input)
           `ProductType4Filter_instance` <- `ProductType4Filter`$new()
@@ -497,17 +513,29 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
         error_messages <- append(error_messages, `GoogleProductCategory0Filter_result`["message"])
       }
 
+      `ProductGroupReferenceFilter_result` <- tryCatch({
+          `ProductGroupReferenceFilter`$public_methods$validateJSON(input)
+          `ProductGroupReferenceFilter_instance` <- `ProductGroupReferenceFilter`$new()
+          self$actual_instance <- `ProductGroupReferenceFilter_instance`$fromJSON(input)
+          self$actual_type <- "ProductGroupReferenceFilter"
+          return(self)
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`ProductGroupReferenceFilter_result`["error"])) {
+        error_messages <- append(error_messages, `ProductGroupReferenceFilter_result`["message"])
+      }
+
       # no match
-      stop(paste("No match found when deserializing the input into CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MinPriceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. Details: >>",
+      stop(paste("No match found when deserializing the input into CatalogsProductGroupFilterKeys with anyOf schemas AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
-    #' Serialize CatalogsProductGroupFilterKeys to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsProductGroupFilterKeys to JSON string.
     #'
     #' @return JSON string representation of the CatalogsProductGroupFilterKeys.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify((self$actual_instance$toJSONString())))
@@ -515,13 +543,11 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsProductGroupFilterKeys to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsProductGroupFilterKeys to JSON.
     #'
     #' @return JSON representation of the CatalogsProductGroupFilterKeys.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -529,14 +555,12 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsProductGroupFilterKeys.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsProductGroupFilterKeys and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -549,13 +573,11 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -565,12 +587,9 @@ CatalogsProductGroupFilterKeys <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -144,13 +144,13 @@ trait DataAccessor {
         * 
         * @return A MetricsResponse
         */
-        def Ads_adTargetingAnalytics/get(adAccountId: String, adIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): Either[CommonError,MetricsResponse] = Left(TODO)
+        def Ads_adTargetingAnalytics/get(adAccountId: String, adIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsAdTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): Either[CommonError,MetricsResponse] = Left(TODO)
 
         /**
         * 
         * @return A Seq[AdsAnalyticsResponseInner]
         */
-        def Ads_ads/analytics(adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, adIds: Seq[String], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String]): Either[CommonError,Seq[AdsAnalyticsResponseInner]] = Left(TODO)
+        def Ads_ads/analytics(adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, columns: Seq[String], granularity: Granularity, adIds: Seq[String], clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], pinIds: Seq[String], campaignIds: Seq[String]): Either[CommonError,Seq[AdsAnalyticsResponseInner]] = Left(TODO)
 
         /**
         * 
@@ -178,6 +178,18 @@ trait DataAccessor {
 
         /**
         * 
+        * @return A AdvancedAuctionItems
+        */
+        def AdvancedAuction_advancedAuctionItemsGet/post(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId: Option[String]): Either[CommonError,AdvancedAuctionItems] = Left(TODO)
+
+        /**
+        * 
+        * @return A AdvancedAuctionProcessedItems
+        */
+        def AdvancedAuction_advancedAuctionItemsSubmit/post(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId: Option[String]): Either[CommonError,AdvancedAuctionProcessedItems] = Left(TODO)
+
+        /**
+        * 
         * @return A AudienceInsightsResponse
         */
         def AudienceInsights_audienceInsights/get(adAccountId: String, audienceInsightType: AudienceInsightType): Either[CommonError,AudienceInsightsResponse] = Left(TODO)
@@ -187,6 +199,48 @@ trait DataAccessor {
         * @return A AudienceDefinitionResponse
         */
         def AudienceInsights_audienceInsightsScopeAndType/get(adAccountId: String): Either[CommonError,AudienceDefinitionResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A AdAccountsAudiencesSharedAccountsList200Response
+        */
+        def AudienceSharing_adAccountsAudiencesSharedAccounts/list(adAccountId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Option[Int], bookmark: Option[String]): Either[CommonError,AdAccountsAudiencesSharedAccountsList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A AdAccountsAudiencesSharedAccountsList200Response
+        */
+        def AudienceSharing_businessAccountAudiencesSharedAccounts/list(businessId: String, audienceId: String, accountType: AudienceAccountType, pageSize: Option[Int], bookmark: Option[String]): Either[CommonError,AdAccountsAudiencesSharedAccountsList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A AudiencesList200Response
+        */
+        def AudienceSharing_sharedAudiencesForBusiness/list(businessId: String, bookmark: Option[String], order: Option[String], pageSize: Option[Int]): Either[CommonError,AudiencesList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A SharedAudienceResponse
+        */
+        def AudienceSharing_updateAdAccountToAdAccountSharedAudience(adAccountId: String, sharedAudience: SharedAudience): Either[CommonError,SharedAudienceResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A BusinessSharedAudienceResponse
+        */
+        def AudienceSharing_updateAdAccountToBusinessSharedAudience(adAccountId: String, businessSharedAudience: BusinessSharedAudience): Either[CommonError,BusinessSharedAudienceResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A SharedAudienceResponse
+        */
+        def AudienceSharing_updateBusinessToAdAccountSharedAudience(businessId: String, sharedAudience: SharedAudience): Either[CommonError,SharedAudienceResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A BusinessSharedAudienceResponse
+        */
+        def AudienceSharing_updateBusinessToBusinessSharedAudience(businessId: String, businessSharedAudience: BusinessSharedAudience): Either[CommonError,BusinessSharedAudienceResponse] = Left(TODO)
 
         /**
         * 
@@ -358,9 +412,153 @@ trait DataAccessor {
 
         /**
         * 
+        * @return A CreateAssetGroupResponse
+        */
+        def BusinessAccessAssets_assetGroup/create(businessId: String, createAssetGroupBody: CreateAssetGroupBody): Either[CommonError,CreateAssetGroupResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A DeleteAssetGroupResponse
+        */
+        def BusinessAccessAssets_assetGroup/delete(businessId: String, deleteAssetGroupBody: DeleteAssetGroupBody): Either[CommonError,DeleteAssetGroupResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A UpdateAssetGroupResponse
+        */
+        def BusinessAccessAssets_assetGroup/update(businessId: String, updateAssetGroupBody: UpdateAssetGroupBody): Either[CommonError,UpdateAssetGroupResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A BusinessAssetMembersGet200Response
+        */
+        def BusinessAccessAssets_businessAssetMembers/get(businessId: String, assetId: String, bookmark: Option[String], pageSize: Option[Int], startIndex: Option[Int]): Either[CommonError,BusinessAssetMembersGet200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A BusinessAssetPartnersGet200Response
+        */
+        def BusinessAccessAssets_businessAssetPartners/get(businessId: String, assetId: String, startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): Either[CommonError,BusinessAssetPartnersGet200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A BusinessAssetsGet200Response
+        */
+        def BusinessAccessAssets_businessAssets/get(businessId: String, permissions: Seq[PermissionsWithOwner], childAssetId: Option[String], assetGroupId: Option[String], assetType: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): Either[CommonError,BusinessAssetsGet200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A BusinessMemberAssetsGet200Response
+        */
+        def BusinessAccessAssets_businessMemberAssets/get(businessId: String, memberId: String, assetType: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): Either[CommonError,BusinessMemberAssetsGet200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A DeleteMemberAccessResultsResponseArray
+        */
+        def BusinessAccessAssets_businessMembersAssetAccess/delete(businessId: String, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest): Either[CommonError,DeleteMemberAccessResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A UpdateMemberAssetsResultsResponseArray
+        */
+        def BusinessAccessAssets_businessMembersAssetAccess/update(businessId: String, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody): Either[CommonError,UpdateMemberAssetsResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A BusinessPartnerAssetAccessGet200Response
+        */
+        def BusinessAccessAssets_businessPartnerAssetAccess/get(businessId: String, partnerId: String, partnerType: Option[PartnerType], assetType: Option[String], startIndex: Option[Int], pageSize: Option[Int], bookmark: Option[String]): Either[CommonError,BusinessPartnerAssetAccessGet200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A DeletePartnerAssetsResultsResponseArray
+        */
+        def BusinessAccessAssets_deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): Either[CommonError,DeletePartnerAssetsResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A UpdatePartnerAssetsResultsResponseArray
+        */
+        def BusinessAccessAssets_updatePartnerAssetAccessHandlerImpl(businessId: String, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody): Either[CommonError,UpdatePartnerAssetsResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A CreateAssetAccessRequestResponse
+        */
+        def BusinessAccessInvite_assetAccessRequests/create(businessId: String, createAssetAccessRequestBody: CreateAssetAccessRequestBody): Either[CommonError,CreateAssetAccessRequestResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A DeleteInvitesResultsResponseArray
+        */
+        def BusinessAccessInvite_cancelInvitesOrRequests(businessId: String, cancelInvitesBody: CancelInvitesBody): Either[CommonError,DeleteInvitesResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A UpdateInvitesResultsResponseArray
+        */
+        def BusinessAccessInvite_createAssetInvites(businessId: String, createAssetInvitesRequest: CreateAssetInvitesRequest): Either[CommonError,UpdateInvitesResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A CreateInvitesResultsResponseArray
+        */
+        def BusinessAccessInvite_createMembershipOrPartnershipInvites(businessId: String, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody): Either[CommonError,CreateInvitesResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A GetInvites200Response
+        */
+        def BusinessAccessInvite_get/invites(businessId: String, isMember: Option[Boolean], inviteStatus: Seq[String], inviteType: Option[InviteType], bookmark: Option[String], pageSize: Option[Int]): Either[CommonError,GetInvites200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A RespondToInvitesResponseArray
+        */
+        def BusinessAccessInvite_respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody): Either[CommonError,RespondToInvitesResponseArray] = Left(TODO)
+
+        /**
+        * 
+        * @return A DeletedMembersResponse
+        */
+        def BusinessAccessRelationships_deleteBusinessMembership(businessId: String, membersToDeleteBody: MembersToDeleteBody): Either[CommonError,DeletedMembersResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A DeletePartnersResponse
+        */
+        def BusinessAccessRelationships_deleteBusinessPartners(businessId: String, deletePartnersRequest: DeletePartnersRequest): Either[CommonError,DeletePartnersResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A GetBusinessEmployers200Response
+        */
+        def BusinessAccessRelationships_get/businessEmployers(pageSize: Option[Int], bookmark: Option[String]): Either[CommonError,GetBusinessEmployers200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A GetBusinessMembers200Response
+        */
+        def BusinessAccessRelationships_get/businessMembers(businessId: String, assetsSummary: Option[Boolean], businessRoles: Seq[MemberBusinessRole], memberIds: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]): Either[CommonError,GetBusinessMembers200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A GetBusinessPartners200Response
+        */
+        def BusinessAccessRelationships_get/businessPartners(businessId: String, assetsSummary: Option[Boolean], partnerType: Option[PartnerType], partnerIds: Option[String], startIndex: Option[Int], pageSize: Option[Int], bookmark: Option[String]): Either[CommonError,GetBusinessPartners200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A UpdateMemberResultsResponseArray
+        */
+        def BusinessAccessRelationships_update/businessMemberships(businessId: String, updateMemberBusinessRoleBody: Seq[UpdateMemberBusinessRoleBody]): Either[CommonError,UpdateMemberResultsResponseArray] = Left(TODO)
+
+        /**
+        * 
         * @return A MetricsResponse
         */
-        def Campaigns_campaignTargetingAnalytics/get(adAccountId: String, campaignIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): Either[CommonError,MetricsResponse] = Left(TODO)
+        def Campaigns_campaignTargetingAnalytics/get(adAccountId: String, campaignIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsCampaignTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): Either[CommonError,MetricsResponse] = Left(TODO)
 
         /**
         * 
@@ -394,6 +592,12 @@ trait DataAccessor {
 
         /**
         * 
+        * @return A Catalog
+        */
+        def Catalogs_catalogs/create(catalogsCreateRequest: CatalogsCreateRequest, adAccountId: Option[String]): Either[CommonError,Catalog] = Left(TODO)
+
+        /**
+        * 
         * @return A CatalogsList200Response
         */
         def Catalogs_catalogs/list(bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): Either[CommonError,CatalogsList200Response] = Left(TODO)
@@ -402,13 +606,19 @@ trait DataAccessor {
         * 
         * @return A CatalogsProductGroupPinsList200Response
         */
-        def Catalogs_catalogsProductGroupPins/list(productGroupId: String, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupPinsList200Response] = Left(TODO)
+        def Catalogs_catalogsProductGroupPins/list(productGroupId: String, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String], pinMetrics: Option[Boolean]): Either[CommonError,CatalogsProductGroupPinsList200Response] = Left(TODO)
 
         /**
         * 
-        * @return A CatalogsProductGroupsCreate201Response
+        * @return A CatalogsVerticalProductGroup
         */
-        def Catalogs_catalogsProductGroups/create(catalogsProductGroupsCreateRequest: CatalogsProductGroupsCreateRequest, adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupsCreate201Response] = Left(TODO)
+        def Catalogs_catalogsProductGroups/create(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: Option[String]): Either[CommonError,CatalogsVerticalProductGroup] = Left(TODO)
+
+        /**
+        * 
+        * @return A Seq[String]
+        */
+        def Catalogs_catalogsProductGroups/createMany(multipleProductGroupsInner: Seq[MultipleProductGroupsInner], adAccountId: Option[String]): Either[CommonError,Seq[String]] = Left(TODO)
 
         /**
         * 
@@ -418,27 +628,33 @@ trait DataAccessor {
 
         /**
         * 
-        * @return A CatalogsProductGroupsCreate201Response
+        * @return A Unit
         */
-        def Catalogs_catalogsProductGroups/get(productGroupId: String, adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupsCreate201Response] = Left(TODO)
+        def Catalogs_catalogsProductGroups/deleteMany(id: Seq[Int], adAccountId: Option[String]): Either[CommonError,Unit] = Left(TODO)
+
+        /**
+        * 
+        * @return A CatalogsVerticalProductGroup
+        */
+        def Catalogs_catalogsProductGroups/get(productGroupId: String, adAccountId: Option[String]): Either[CommonError,CatalogsVerticalProductGroup] = Left(TODO)
 
         /**
         * 
         * @return A CatalogsProductGroupsList200Response
         */
-        def Catalogs_catalogsProductGroups/list(feedId: Option[String], catalogId: Option[String], bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupsList200Response] = Left(TODO)
+        def Catalogs_catalogsProductGroups/list(id: Seq[Int], feedId: Option[String], catalogId: Option[String], bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupsList200Response] = Left(TODO)
 
         /**
         * 
-        * @return A CatalogsProductGroupProductCounts
+        * @return A CatalogsProductGroupProductCountsVertical
         */
-        def Catalogs_catalogsProductGroups/productCountsGet(productGroupId: String, adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupProductCounts] = Left(TODO)
+        def Catalogs_catalogsProductGroups/productCountsGet(productGroupId: String, adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupProductCountsVertical] = Left(TODO)
 
         /**
         * 
-        * @return A CatalogsProductGroupsCreate201Response
+        * @return A CatalogsVerticalProductGroup
         */
-        def Catalogs_catalogsProductGroups/update(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupsCreate201Response] = Left(TODO)
+        def Catalogs_catalogsProductGroups/update(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: Option[String]): Either[CommonError,CatalogsVerticalProductGroup] = Left(TODO)
 
         /**
         * 
@@ -466,6 +682,12 @@ trait DataAccessor {
 
         /**
         * 
+        * @return A CatalogsFeedIngestion
+        */
+        def Catalogs_feeds/ingest(feedId: String, adAccountId: Option[String]): Either[CommonError,CatalogsFeedIngestion] = Left(TODO)
+
+        /**
+        * 
         * @return A FeedsList200Response
         */
         def Catalogs_feeds/list(bookmark: Option[String], pageSize: Option[Int], catalogId: Option[String], adAccountId: Option[String]): Either[CommonError,FeedsList200Response] = Left(TODO)
@@ -481,6 +703,12 @@ trait DataAccessor {
         * @return A CatalogsItems
         */
         def Catalogs_items/get(country: String, language: String, adAccountId: Option[String], itemIds: Seq[String], filters: Option[CatalogsItemsFilters]): Either[CommonError,CatalogsItems] = Left(TODO)
+
+        /**
+        * 
+        * @return A CatalogsItems
+        */
+        def Catalogs_items/post(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: Option[String]): Either[CommonError,CatalogsItems] = Left(TODO)
 
         /**
         * 
@@ -504,7 +732,25 @@ trait DataAccessor {
         * 
         * @return A CatalogsProductGroupPinsList200Response
         */
-        def Catalogs_productsByProductGroupFilter/list(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String]): Either[CommonError,CatalogsProductGroupPinsList200Response] = Left(TODO)
+        def Catalogs_productsByProductGroupFilter/list(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: Option[String], pageSize: Option[Int], adAccountId: Option[String], pinMetrics: Option[Boolean]): Either[CommonError,CatalogsProductGroupPinsList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A CatalogsCreateReportResponse
+        */
+        def Catalogs_reports/create(catalogsReportParameters: CatalogsReportParameters, adAccountId: Option[String]): Either[CommonError,CatalogsCreateReportResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A CatalogsReport
+        */
+        def Catalogs_reports/get(token: String, adAccountId: Option[String]): Either[CommonError,CatalogsReport] = Left(TODO)
+
+        /**
+        * 
+        * @return A ReportsStats200Response
+        */
+        def Catalogs_reports/stats(parameters: CatalogsReportParameters, adAccountId: Option[String], pageSize: Option[Int], bookmark: Option[String]): Either[CommonError,ReportsStats200Response] = Left(TODO)
 
         /**
         * 
@@ -636,7 +882,7 @@ trait DataAccessor {
         * 
         * @return A TrendingKeywordsResponse
         */
-        def Keywords_trendingKeywords/list(region: TrendsSupportedRegion, trendType: TrendType, interests: Seq[String], genders: Seq[String], ages: Seq[String], normalizeAgainstGroup: Option[Boolean], limit: Option[Int]): Either[CommonError,TrendingKeywordsResponse] = Left(TODO)
+        def Keywords_trendingKeywords/list(region: TrendsSupportedRegion, trendType: TrendType, interests: Seq[String], genders: Seq[String], ages: Seq[String], includeKeywords: Seq[String], normalizeAgainstGroup: Option[Boolean], limit: Option[Int]): Either[CommonError,TrendingKeywordsResponse] = Left(TODO)
 
         /**
         * 
@@ -676,9 +922,33 @@ trait DataAccessor {
 
         /**
         * 
+        * @return A LeadFormArrayResponse
+        */
+        def LeadForms_leadForms/create(adAccountId: String, leadFormCreateRequest: Seq[LeadFormCreateRequest]): Either[CommonError,LeadFormArrayResponse] = Left(TODO)
+
+        /**
+        * 
         * @return A LeadFormsList200Response
         */
         def LeadForms_leadForms/list(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): Either[CommonError,LeadFormsList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A LeadFormArrayResponse
+        */
+        def LeadForms_leadForms/update(adAccountId: String, leadFormUpdateRequest: Seq[LeadFormUpdateRequest]): Either[CommonError,LeadFormArrayResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A LeadsExportCreateResponse
+        */
+        def LeadsExport_leadsExport/create(adAccountId: String, leadsExportCreateRequest: LeadsExportCreateRequest): Either[CommonError,LeadsExportCreateResponse] = Left(TODO)
+
+        /**
+        * 
+        * @return A LeadsExportResponseData
+        */
+        def LeadsExport_leadsExport/get(adAccountId: String, leadsExportId: String): Either[CommonError,LeadsExportResponseData] = Left(TODO)
 
         /**
         * 
@@ -715,6 +985,12 @@ trait DataAccessor {
         * @return A OrderLinesList200Response
         */
         def OrderLines_orderLines/list(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): Either[CommonError,OrderLinesList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A Map[String, Map]
+        */
+        def Pins_multiPins/analytics(pinIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], adAccountId: Option[String]): Either[CommonError,Map[String, Map]] = Left(TODO)
 
         /**
         * 
@@ -790,12 +1066,6 @@ trait DataAccessor {
 
         /**
         * 
-        * @return A AdAccountsCatalogsProductGroupsList200Response
-        */
-        def ProductGroups_adAccountsCatalogsProductGroups/list(adAccountId: String, feedProfileId: Option[String]): Either[CommonError,AdAccountsCatalogsProductGroupsList200Response] = Left(TODO)
-
-        /**
-        * 
         * @return A AdAccountsCountryResponse
         */
         def Resources_adAccountCountries/get(): Either[CommonError,AdAccountsCountryResponse] = Left(TODO)
@@ -828,7 +1098,7 @@ trait DataAccessor {
         * 
         * @return A Seq[Object]
         */
-        def Resources_targetingOptions/get(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String]): Either[CommonError,Seq[Object]] = Left(TODO)
+        def Resources_targetingOptions/get(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String], adAccountId: Option[String]): Either[CommonError,Seq[Object]] = Left(TODO)
 
         /**
         * 
@@ -847,6 +1117,24 @@ trait DataAccessor {
         * @return A PinsList200Response
         */
         def Search_searchUserPins/list(query: String, adAccountId: Option[String], bookmark: Option[String]): Either[CommonError,PinsList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A TargetingTemplateGetResponseData
+        */
+        def TargetingTemplate_targetingTemplate/create(adAccountId: String, targetingTemplateCreate: TargetingTemplateCreate): Either[CommonError,TargetingTemplateGetResponseData] = Left(TODO)
+
+        /**
+        * 
+        * @return A TargetingTemplateList200Response
+        */
+        def TargetingTemplate_targetingTemplate/list(adAccountId: String, order: Option[String], includeSizing: Option[Boolean], searchQuery: Option[String], pageSize: Option[Int], bookmark: Option[String]): Either[CommonError,TargetingTemplateList200Response] = Left(TODO)
+
+        /**
+        * 
+        * @return A Unit
+        */
+        def TargetingTemplate_targetingTemplate/update(adAccountId: String, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest): Either[CommonError,Unit] = Left(TODO)
 
         /**
         * 
@@ -942,12 +1230,12 @@ trait DataAccessor {
         * 
         * @return A UserWebsiteSummary
         */
-        def UserAccount_verifyWebsite/update(userWebsiteVerifyRequest: UserWebsiteVerifyRequest): Either[CommonError,UserWebsiteSummary] = Left(TODO)
+        def UserAccount_verifyWebsite/update(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: Option[String]): Either[CommonError,UserWebsiteSummary] = Left(TODO)
 
         /**
         * 
         * @return A UserWebsiteVerificationCode
         */
-        def UserAccount_websiteVerification/get(): Either[CommonError,UserWebsiteVerificationCode] = Left(TODO)
+        def UserAccount_websiteVerification/get(adAccountId: Option[String]): Either[CommonError,UserWebsiteVerificationCode] = Left(TODO)
 
 }

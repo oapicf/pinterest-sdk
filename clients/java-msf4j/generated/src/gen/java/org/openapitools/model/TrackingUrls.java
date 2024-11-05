@@ -13,7 +13,7 @@ import java.util.List;
  * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
  */
 @ApiModel(description = "Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrackingUrls   {
   @JsonProperty("impression")
   private List<String> impression = null;
@@ -37,7 +37,7 @@ public class TrackingUrls   {
 
   public TrackingUrls addImpressionItem(String impressionItem) {
     if (this.impression == null) {
-      this.impression = ;
+      this.impression = new ArrayList<>();
     }
     this.impression.add(impressionItem);
     return this;
@@ -63,7 +63,7 @@ public class TrackingUrls   {
 
   public TrackingUrls addClickItem(String clickItem) {
     if (this.click == null) {
-      this.click = ;
+      this.click = new ArrayList<>();
     }
     this.click.add(clickItem);
     return this;
@@ -89,7 +89,7 @@ public class TrackingUrls   {
 
   public TrackingUrls addEngagementItem(String engagementItem) {
     if (this.engagement == null) {
-      this.engagement = ;
+      this.engagement = new ArrayList<>();
     }
     this.engagement.add(engagementItem);
     return this;
@@ -115,7 +115,7 @@ public class TrackingUrls   {
 
   public TrackingUrls addBuyableButtonItem(String buyableButtonItem) {
     if (this.buyableButton == null) {
-      this.buyableButton = ;
+      this.buyableButton = new ArrayList<>();
     }
     this.buyableButton.add(buyableButtonItem);
     return this;
@@ -141,7 +141,7 @@ public class TrackingUrls   {
 
   public TrackingUrls addAudienceVerificationItem(String audienceVerificationItem) {
     if (this.audienceVerification == null) {
-      this.audienceVerification = ;
+      this.audienceVerification = new ArrayList<>();
     }
     this.audienceVerification.add(audienceVerificationItem);
     return this;

@@ -11,6 +11,6 @@ package org.openapitools.server.model
 final case class CatalogsCreateRetailItem (
   itemId: String,
   operation: String,
-  attributes: ItemAttributes
+  attributes: ItemAttributesRequest
 )
 

@@ -6,7 +6,7 @@ context("Test CatalogsRetailBatchRequest")
 model_instance <- CatalogsRetailBatchRequest$new()
 
 test_that("catalog_type", {
-  # tests for the property `catalog_type` (CatalogsType)
+  # tests for the property `catalog_type` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
@@ -20,7 +20,7 @@ test_that("country", {
 })
 
 test_that("language", {
-  # tests for the property `language` (Language)
+  # tests for the property `language` (CatalogsItemsRequestLanguage)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`language`, "EXPECTED_RESULT")

@@ -29,8 +29,8 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$ProductGroupPromotion = Initialize-ProductGroupPromotion -Id "2680059592705" -AdGroupId "2680059592705" -BidInMicroCurrency 14000000 -Included $true -Definition "*/product_type_0='kitchen'/product_type_1='beverage appliances'" -RelativeDefinition "product_type_1='beverage appliances'" -ParentId "1231234" -SlideshowCollectionsTitle "slideshow title" -SlideshowCollectionsDescription "slideshow description" -IsMdl $true -Status "ACTIVE" -TrackingUrl "https://www.pinterest.com" -CatalogProductGroupId "1231235" -CatalogProductGroupName "catalogProductGroupName" -CreativeType "REGULAR" -CollectionsHeroPinId "123123" -CollectionsHeroDestinationUrl "http://www.pinterest.com" -GridClickType "CLOSEUP"
-$ProductGroupPromotionCreateRequest = Initialize-ProductGroupPromotionCreateRequest -AdGroupId "2680059592705" -ProductGroupPromotion $ProductGroupPromotion # ProductGroupPromotionCreateRequest | List of Product Group Promotions to create, size limit [1, 30].
+$ProductGroupPromotionCreateRequestElement = Initialize-ProductGroupPromotionCreateRequestElement -Id "2680059592705" -AdGroupId "2680059592705" -BidInMicroCurrency 14000000 -Included $true -Definition "*/product_type_0='kitchen'/product_type_1='beverage appliances'" -RelativeDefinition "product_type_1='beverage appliances'" -ParentId "1231234" -SlideshowCollectionsTitle "slideshow title" -SlideshowCollectionsDescription "slideshow description" -IsMdl $true -Status "ACTIVE" -TrackingUrl "https://www.pinterest.com" -CatalogProductGroupId "1231235" -CatalogProductGroupName "catalogProductGroupName" -CollectionsHeroPinId "123123" -CollectionsHeroDestinationUrl "http://www.pinterest.com" -GridClickType "CLOSEUP" -CreativeType "REGULAR"
+$ProductGroupPromotionCreateRequest = Initialize-ProductGroupPromotionCreateRequest -AdGroupId "2680059592705" -ProductGroupPromotion $ProductGroupPromotionCreateRequestElement # ProductGroupPromotionCreateRequest | List of Product Group Promotions to create, size limit [1, 30].
 
 # Create product group promotions
 try {
@@ -140,7 +140,7 @@ $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $ProductGroupPromotionIds = "MyProductGroupPromotionIds" # String[] | List of Product group promotion Ids. (optional)
 $EntityStatuses = "ACTIVE" # String[] | Entity status (optional)
 $AdGroupId = "123123123" # String | Ad group Id. (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
  **ProductGroupPromotionIds** | [**String[]**](String.md)| List of Product group promotion Ids. | [optional] 
  **EntityStatuses** | [**String[]**](String.md)| Entity status | [optional] 
  **AdGroupId** | **String**| Ad group Id. | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
 
@@ -198,7 +198,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$ProductGroupPromotion = Initialize-ProductGroupPromotion -Id "2680059592705" -AdGroupId "2680059592705" -BidInMicroCurrency 14000000 -Included $true -Definition "*/product_type_0='kitchen'/product_type_1='beverage appliances'" -RelativeDefinition "product_type_1='beverage appliances'" -ParentId "1231234" -SlideshowCollectionsTitle "slideshow title" -SlideshowCollectionsDescription "slideshow description" -IsMdl $true -Status "ACTIVE" -TrackingUrl "https://www.pinterest.com" -CatalogProductGroupId "1231235" -CatalogProductGroupName "catalogProductGroupName" -CreativeType "REGULAR" -CollectionsHeroPinId "123123" -CollectionsHeroDestinationUrl "http://www.pinterest.com" -GridClickType "CLOSEUP"
+$ProductGroupPromotion = Initialize-ProductGroupPromotion -Id "2680059592705" -AdGroupId "2680059592705" -BidInMicroCurrency 14000000 -Included $true -Definition "*/product_type_0='kitchen'/product_type_1='beverage appliances'" -RelativeDefinition "product_type_1='beverage appliances'" -ParentId "1231234" -SlideshowCollectionsTitle "slideshow title" -SlideshowCollectionsDescription "slideshow description" -IsMdl $true -Status "ACTIVE" -TrackingUrl "https://www.pinterest.com" -CatalogProductGroupId "1231235" -CatalogProductGroupName "catalogProductGroupName" -CollectionsHeroPinId "123123" -CollectionsHeroDestinationUrl "http://www.pinterest.com" -GridClickType "CLOSEUP"
 $ProductGroupPromotionUpdateRequest = Initialize-ProductGroupPromotionUpdateRequest -AdGroupId "2680059592705" -ProductGroupPromotion $ProductGroupPromotion # ProductGroupPromotionUpdateRequest | Parameters to update Product group promotions
 
 # Update product group promotions

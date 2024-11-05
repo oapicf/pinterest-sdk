@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **DateTime** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**UpdatedAt** | **DateTime** |  | [optional] 
+**CreatedAt** | **DateTime** |  | 
+**Id** | **string** |  | 
+**UpdatedAt** | **DateTime** |  | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **Status** | **CatalogsFeedProcessingStatus** |  | 
 **ProductCounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 

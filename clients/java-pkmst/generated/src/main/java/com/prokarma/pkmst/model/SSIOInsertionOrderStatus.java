@@ -15,7 +15,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * SSIOInsertionOrderStatus
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOInsertionOrderStatus   {
   @JsonProperty("pin_order_id")
   private String pinOrderId;
@@ -31,10 +31,10 @@ public class SSIOInsertionOrderStatus   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce order id
    * @return pinOrderId
-  **/
+   */
   @ApiModelProperty(example = "0Q01N0000015hekSAB", value = "Salesforce order id")
   public String getPinOrderId() {
     return pinOrderId;
@@ -49,10 +49,10 @@ public class SSIOInsertionOrderStatus   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce insertion order status
    * @return status
-  **/
+   */
   @ApiModelProperty(example = "Approved", value = "Salesforce insertion order status")
   public String getStatus() {
     return status;
@@ -67,10 +67,10 @@ public class SSIOInsertionOrderStatus   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce insertion order creation time
    * @return creationTime
-  **/
+   */
   @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
   public String getCreationTime() {
     return creationTime;

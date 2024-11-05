@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * MaxPriceFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MaxPriceFilter {
 
   private CatalogsProductGroupPricingCriteria MAX_PRICE;
@@ -43,7 +43,7 @@ public class MaxPriceFilter {
   /**
    * Get MAX_PRICE
    * @return MAX_PRICE
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "MAX_PRICE", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("MAX_PRICE")

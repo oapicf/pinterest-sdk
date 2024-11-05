@@ -13,7 +13,10 @@ Name | Type | Description | Notes
 **status** | [**OpenAPI\Server\Model\CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
 **createdAt** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **updatedAt** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**feedId** | **string** |  | 
+**catalogId** | **string** | Catalog id pertaining to the retail product group. | 
+**feedId** | **string** | id of the catalogs feed belonging to this catalog product group | 
+**country** | **string** |  | [optional] 
+**locale** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

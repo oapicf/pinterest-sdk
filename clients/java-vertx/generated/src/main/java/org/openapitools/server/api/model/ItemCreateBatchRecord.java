@@ -3,7 +3,7 @@ package org.openapitools.server.api.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.server.api.model.ItemAttributes;
+import org.openapitools.server.api.model.ItemAttributesRequest;
 
 /**
  * Object describing an item batch record to create items
@@ -12,13 +12,13 @@ import org.openapitools.server.api.model.ItemAttributes;
 public class ItemCreateBatchRecord   {
   
   private String itemId;
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   public ItemCreateBatchRecord () {
 
   }
 
-  public ItemCreateBatchRecord (String itemId, ItemAttributes attributes) {
+  public ItemCreateBatchRecord (String itemId, ItemAttributesRequest attributes) {
     this.itemId = itemId;
     this.attributes = attributes;
   }
@@ -34,10 +34,10 @@ public class ItemCreateBatchRecord   {
 
     
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

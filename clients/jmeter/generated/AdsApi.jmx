@@ -153,7 +153,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Create ad preview with pin or image Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.</stringProp>
+          <stringProp name="TestPlan.comments">Create ad preview with pin or image Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - adPreviews/create" enabled="true">
@@ -426,6 +426,20 @@
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">conversionReportTime</stringProp>
               </elementProp>
+              <elementProp name="pinIds" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${pinIds}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">pinIds</stringProp>
+              </elementProp>
+              <elementProp name="campaignIds" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${campaignIds}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">campaignIds</stringProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
@@ -443,7 +457,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get ad analytics Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.</stringProp>
+          <stringProp name="TestPlan.comments">Get ad analytics Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - ads/analytics" enabled="true">

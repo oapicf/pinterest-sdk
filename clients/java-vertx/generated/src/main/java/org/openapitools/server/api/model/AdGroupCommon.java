@@ -4,15 +4,18 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.server.api.model.ActionType;
-import org.openapitools.server.api.model.AdGroupCommonOptimizationGoalMetadata;
-import org.openapitools.server.api.model.AdGroupCommonTrackingUrls;
 import org.openapitools.server.api.model.BudgetType;
 import org.openapitools.server.api.model.EntityStatus;
+import org.openapitools.server.api.model.OptimizationGoalMetadata;
 import org.openapitools.server.api.model.PacingDeliveryType;
 import org.openapitools.server.api.model.PlacementGroupType;
 import org.openapitools.server.api.model.TargetingSpec;
+import org.openapitools.server.api.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdGroupCommon   {
@@ -21,13 +24,13 @@ public class AdGroupCommon   {
   private EntityStatus status;
   private Integer budgetInMicroCurrency;
   private Integer bidInMicroCurrency;
-  private AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata;
+  private OptimizationGoalMetadata optimizationGoalMetadata;
   private BudgetType budgetType;
   private Integer startTime;
   private Integer endTime;
   private TargetingSpec targetingSpec;
   private Integer lifetimeFrequencyCap;
-  private AdGroupCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private Boolean autoTargetingEnabled;
   private PlacementGroupType placementGroup;
   private PacingDeliveryType pacingDeliveryType;
@@ -38,8 +41,7 @@ public class AdGroupCommon   {
   public enum BidStrategyTypeEnum {
     AUTOMATIC_BID("AUTOMATIC_BID"),
     MAX_BID("MAX_BID"),
-    TARGET_AVG("TARGET_AVG"),
-    NULL("null");
+    TARGET_AVG("TARGET_AVG");
 
     private String value;
 
@@ -55,12 +57,13 @@ public class AdGroupCommon   {
   }
 
   private BidStrategyTypeEnum bidStrategyType;
+  private List<String> targetingTemplateIds;
 
   public AdGroupCommon () {
 
   }
 
-  public AdGroupCommon (String name, EntityStatus status, Integer budgetInMicroCurrency, Integer bidInMicroCurrency, AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata, BudgetType budgetType, Integer startTime, Integer endTime, TargetingSpec targetingSpec, Integer lifetimeFrequencyCap, AdGroupCommonTrackingUrls trackingUrls, Boolean autoTargetingEnabled, PlacementGroupType placementGroup, PacingDeliveryType pacingDeliveryType, String campaignId, ActionType billableEvent, BidStrategyTypeEnum bidStrategyType) {
+  public AdGroupCommon (String name, EntityStatus status, Integer budgetInMicroCurrency, Integer bidInMicroCurrency, OptimizationGoalMetadata optimizationGoalMetadata, BudgetType budgetType, Integer startTime, Integer endTime, TargetingSpec targetingSpec, Integer lifetimeFrequencyCap, TrackingUrls trackingUrls, Boolean autoTargetingEnabled, PlacementGroupType placementGroup, PacingDeliveryType pacingDeliveryType, String campaignId, ActionType billableEvent, BidStrategyTypeEnum bidStrategyType, List<String> targetingTemplateIds) {
     this.name = name;
     this.status = status;
     this.budgetInMicroCurrency = budgetInMicroCurrency;
@@ -78,6 +81,7 @@ public class AdGroupCommon   {
     this.campaignId = campaignId;
     this.billableEvent = billableEvent;
     this.bidStrategyType = bidStrategyType;
+    this.targetingTemplateIds = targetingTemplateIds;
   }
 
     
@@ -118,10 +122,10 @@ public class AdGroupCommon   {
 
     
   @JsonProperty("optimization_goal_metadata")
-  public AdGroupCommonOptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
-  public void setOptimizationGoalMetadata(AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
@@ -172,10 +176,10 @@ public class AdGroupCommon   {
 
     
   @JsonProperty("tracking_urls")
-  public AdGroupCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdGroupCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -233,6 +237,15 @@ public class AdGroupCommon   {
     this.bidStrategyType = bidStrategyType;
   }
 
+    
+  @JsonProperty("targeting_template_ids")
+  public List<String> getTargetingTemplateIds() {
+    return targetingTemplateIds;
+  }
+  public void setTargetingTemplateIds(List<String> targetingTemplateIds) {
+    this.targetingTemplateIds = targetingTemplateIds;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -259,12 +272,13 @@ public class AdGroupCommon   {
         Objects.equals(pacingDeliveryType, adGroupCommon.pacingDeliveryType) &&
         Objects.equals(campaignId, adGroupCommon.campaignId) &&
         Objects.equals(billableEvent, adGroupCommon.billableEvent) &&
-        Objects.equals(bidStrategyType, adGroupCommon.bidStrategyType);
+        Objects.equals(bidStrategyType, adGroupCommon.bidStrategyType) &&
+        Objects.equals(targetingTemplateIds, adGroupCommon.targetingTemplateIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType);
+    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, targetingTemplateIds);
   }
 
   @Override
@@ -289,6 +303,7 @@ public class AdGroupCommon   {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
+    sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

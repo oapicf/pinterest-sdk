@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsCreativeAssetsItemErrorResponse
 open OpenAPI.Model.CatalogsHotelItemErrorResponse
 open OpenAPI.Model.CatalogsRetailItemErrorResponse
 open OpenAPI.Model.CatalogsType
@@ -22,6 +23,8 @@ module ItemResponseAnyOf1 =
     Errors : ItemValidationEvent[];
     [<JsonProperty(PropertyName = "hotel_id")>]
     HotelId : string;
+    [<JsonProperty(PropertyName = "creative_assets_id")>]
+    CreativeAssetsId : string;
   }
 
   //#endregion

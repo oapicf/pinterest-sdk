@@ -5,16 +5,33 @@
 
 
 char* campaign_create_response_data_objective_type_ToString(pinterest_rest_api_campaign_create_response_data__e objective_type) {
-    char* objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS" };
+    char* objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
     return objective_typeArray[objective_type];
 }
 
 pinterest_rest_api_campaign_create_response_data__e campaign_create_response_data_objective_type_FromString(char* objective_type){
     int stringToReturn = 0;
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
     size_t sizeofArray = sizeof(objective_typeArray) / sizeof(objective_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(objective_type, objective_typeArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+char* campaign_create_response_data_summary_status_ToString(pinterest_rest_api_campaign_create_response_data__e summary_status) {
+    char* summary_statusArray[] =  { "NULL", "RUNNING", "PAUSED", "NOT_STARTED", "COMPLETED", "ADVERTISER_DISABLED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
+    return summary_statusArray[summary_status];
+}
+
+pinterest_rest_api_campaign_create_response_data__e campaign_create_response_data_summary_status_FromString(char* summary_status){
+    int stringToReturn = 0;
+    char *summary_statusArray[] =  { "NULL", "RUNNING", "PAUSED", "NOT_STARTED", "COMPLETED", "ADVERTISER_DISABLED", "ARCHIVED", "DRAFT", "DELETED_DRAFT" };
+    size_t sizeofArray = sizeof(summary_statusArray) / sizeof(summary_statusArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(summary_status, summary_statusArray[stringToReturn]) == 0) {
             return stringToReturn;
         }
         stringToReturn++;
@@ -29,10 +46,9 @@ campaign_create_response_data_t *campaign_create_response_data_create(
     int lifetime_spend_cap,
     int daily_spend_cap,
     char *order_line_id,
-    ad_common_tracking_urls_t *tracking_urls,
+    tracking_urls_t *tracking_urls,
     int start_time,
     int end_time,
-    campaign_summary_status_t *summary_status,
     int is_flexible_daily_budgets,
     int default_ad_group_budget_in_micro_currency,
     int is_automated_campaign,
@@ -41,7 +57,8 @@ campaign_create_response_data_t *campaign_create_response_data_create(
     int created_time,
     int updated_time,
     char *type,
-    int is_campaign_budget_optimization
+    int is_campaign_budget_optimization,
+    campaign_summary_status_t *summary_status
     ) {
     campaign_create_response_data_t *campaign_create_response_data_local_var = malloc(sizeof(campaign_create_response_data_t));
     if (!campaign_create_response_data_local_var) {
@@ -56,7 +73,6 @@ campaign_create_response_data_t *campaign_create_response_data_create(
     campaign_create_response_data_local_var->tracking_urls = tracking_urls;
     campaign_create_response_data_local_var->start_time = start_time;
     campaign_create_response_data_local_var->end_time = end_time;
-    campaign_create_response_data_local_var->summary_status = summary_status;
     campaign_create_response_data_local_var->is_flexible_daily_budgets = is_flexible_daily_budgets;
     campaign_create_response_data_local_var->default_ad_group_budget_in_micro_currency = default_ad_group_budget_in_micro_currency;
     campaign_create_response_data_local_var->is_automated_campaign = is_automated_campaign;
@@ -66,6 +82,7 @@ campaign_create_response_data_t *campaign_create_response_data_create(
     campaign_create_response_data_local_var->updated_time = updated_time;
     campaign_create_response_data_local_var->type = type;
     campaign_create_response_data_local_var->is_campaign_budget_optimization = is_campaign_budget_optimization;
+    campaign_create_response_data_local_var->summary_status = summary_status;
 
     return campaign_create_response_data_local_var;
 }
@@ -93,12 +110,8 @@ void campaign_create_response_data_free(campaign_create_response_data_t *campaig
         campaign_create_response_data->order_line_id = NULL;
     }
     if (campaign_create_response_data->tracking_urls) {
-        ad_common_tracking_urls_free(campaign_create_response_data->tracking_urls);
+        tracking_urls_free(campaign_create_response_data->tracking_urls);
         campaign_create_response_data->tracking_urls = NULL;
-    }
-    if (campaign_create_response_data->summary_status) {
-        campaign_summary_status_free(campaign_create_response_data->summary_status);
-        campaign_create_response_data->summary_status = NULL;
     }
     if (campaign_create_response_data->id) {
         free(campaign_create_response_data->id);
@@ -111,6 +124,10 @@ void campaign_create_response_data_free(campaign_create_response_data_t *campaig
     if (campaign_create_response_data->type) {
         free(campaign_create_response_data->type);
         campaign_create_response_data->type = NULL;
+    }
+    if (campaign_create_response_data->summary_status) {
+        campaign_summary_status_free(campaign_create_response_data->summary_status);
+        campaign_create_response_data->summary_status = NULL;
     }
     free(campaign_create_response_data);
 }
@@ -173,7 +190,7 @@ cJSON *campaign_create_response_data_convertToJSON(campaign_create_response_data
 
     // campaign_create_response_data->tracking_urls
     if(campaign_create_response_data->tracking_urls) {
-    cJSON *tracking_urls_local_JSON = ad_common_tracking_urls_convertToJSON(campaign_create_response_data->tracking_urls);
+    cJSON *tracking_urls_local_JSON = tracking_urls_convertToJSON(campaign_create_response_data->tracking_urls);
     if(tracking_urls_local_JSON == NULL) {
     goto fail; //model
     }
@@ -196,19 +213,6 @@ cJSON *campaign_create_response_data_convertToJSON(campaign_create_response_data
     if(campaign_create_response_data->end_time) {
     if(cJSON_AddNumberToObject(item, "end_time", campaign_create_response_data->end_time) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // campaign_create_response_data->summary_status
-    if(campaign_create_response_data->summary_status) {
-    cJSON *summary_status_local_JSON = campaign_summary_status_convertToJSON(campaign_create_response_data->summary_status);
-    if(summary_status_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "summary_status", summary_status_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
     }
     }
 
@@ -289,6 +293,19 @@ cJSON *campaign_create_response_data_convertToJSON(campaign_create_response_data
     }
     }
 
+
+    // campaign_create_response_data->summary_status
+    if(campaign_create_response_data->summary_status != pinterest_rest_api_campaign_create_response_data__NULL) {
+    cJSON *summary_status_local_JSON = campaign_summary_status_convertToJSON(campaign_create_response_data->summary_status);
+    if(summary_status_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "summary_status", summary_status_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -305,13 +322,13 @@ campaign_create_response_data_t *campaign_create_response_data_parseFromJSON(cJS
     entity_status_t *status_local_nonprim = NULL;
 
     // define the local variable for campaign_create_response_data->tracking_urls
-    ad_common_tracking_urls_t *tracking_urls_local_nonprim = NULL;
-
-    // define the local variable for campaign_create_response_data->summary_status
-    campaign_summary_status_t *summary_status_local_nonprim = NULL;
+    tracking_urls_t *tracking_urls_local_nonprim = NULL;
 
     // define the local variable for campaign_create_response_data->objective_type
     objective_type_t *objective_type_local_nonprim = NULL;
+
+    // define the local variable for campaign_create_response_data->summary_status
+    campaign_summary_status_t *summary_status_local_nonprim = NULL;
 
     // campaign_create_response_data->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(campaign_create_response_dataJSON, "ad_account_id");
@@ -367,7 +384,7 @@ campaign_create_response_data_t *campaign_create_response_data_parseFromJSON(cJS
     // campaign_create_response_data->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(campaign_create_response_dataJSON, "tracking_urls");
     if (tracking_urls) { 
-    tracking_urls_local_nonprim = ad_common_tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
+    tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // campaign_create_response_data->start_time
@@ -386,12 +403,6 @@ campaign_create_response_data_t *campaign_create_response_data_parseFromJSON(cJS
     {
     goto end; //Numeric
     }
-    }
-
-    // campaign_create_response_data->summary_status
-    cJSON *summary_status = cJSON_GetObjectItemCaseSensitive(campaign_create_response_dataJSON, "summary_status");
-    if (summary_status) { 
-    summary_status_local_nonprim = campaign_summary_status_parseFromJSON(summary_status); //custom
     }
 
     // campaign_create_response_data->is_flexible_daily_budgets
@@ -472,6 +483,12 @@ campaign_create_response_data_t *campaign_create_response_data_parseFromJSON(cJS
     }
     }
 
+    // campaign_create_response_data->summary_status
+    cJSON *summary_status = cJSON_GetObjectItemCaseSensitive(campaign_create_response_dataJSON, "summary_status");
+    if (summary_status) { 
+    summary_status_local_nonprim = campaign_summary_status_parseFromJSON(summary_status); //custom
+    }
+
 
     campaign_create_response_data_local_var = campaign_create_response_data_create (
         ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
@@ -483,7 +500,6 @@ campaign_create_response_data_t *campaign_create_response_data_parseFromJSON(cJS
         tracking_urls ? tracking_urls_local_nonprim : NULL,
         start_time ? start_time->valuedouble : 0,
         end_time ? end_time->valuedouble : 0,
-        summary_status ? summary_status_local_nonprim : NULL,
         is_flexible_daily_budgets ? is_flexible_daily_budgets->valueint : 0,
         default_ad_group_budget_in_micro_currency ? default_ad_group_budget_in_micro_currency->valuedouble : 0,
         is_automated_campaign ? is_automated_campaign->valueint : 0,
@@ -492,7 +508,8 @@ campaign_create_response_data_t *campaign_create_response_data_parseFromJSON(cJS
         created_time ? created_time->valuedouble : 0,
         updated_time ? updated_time->valuedouble : 0,
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
-        is_campaign_budget_optimization ? is_campaign_budget_optimization->valueint : 0
+        is_campaign_budget_optimization ? is_campaign_budget_optimization->valueint : 0,
+        summary_status ? summary_status_local_nonprim : NULL
         );
 
     return campaign_create_response_data_local_var;
@@ -502,16 +519,16 @@ end:
         status_local_nonprim = NULL;
     }
     if (tracking_urls_local_nonprim) {
-        ad_common_tracking_urls_free(tracking_urls_local_nonprim);
+        tracking_urls_free(tracking_urls_local_nonprim);
         tracking_urls_local_nonprim = NULL;
-    }
-    if (summary_status_local_nonprim) {
-        campaign_summary_status_free(summary_status_local_nonprim);
-        summary_status_local_nonprim = NULL;
     }
     if (objective_type_local_nonprim) {
         objective_type_free(objective_type_local_nonprim);
         objective_type_local_nonprim = NULL;
+    }
+    if (summary_status_local_nonprim) {
+        campaign_summary_status_free(summary_status_local_nonprim);
+        summary_status_local_nonprim = NULL;
     }
     return NULL;
 

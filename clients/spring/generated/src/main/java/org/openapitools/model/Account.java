@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * Account
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Account {
 
   /**
@@ -92,7 +92,7 @@ public class Account {
   /**
    * Type of account
    * @return accountType
-  */
+   */
   
   @Schema(name = "account_type", description = "Type of account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("account_type")
@@ -112,7 +112,7 @@ public class Account {
   /**
    * User account ID.
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2783136121146311751", description = "User account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -132,7 +132,7 @@ public class Account {
   /**
    * Get profileImage
    * @return profileImage
-  */
+   */
   
   @Schema(name = "profile_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("profile_image")
@@ -152,7 +152,7 @@ public class Account {
   /**
    * Get websiteUrl
    * @return websiteUrl
-  */
+   */
   
   @Schema(name = "website_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("website_url")
@@ -172,7 +172,7 @@ public class Account {
   /**
    * Get username
    * @return username
-  */
+   */
   
   @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
@@ -192,7 +192,7 @@ public class Account {
   /**
    * Profile about description.
    * @return about
-  */
+   */
   
   @Schema(name = "about", description = "Profile about description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("about")
@@ -212,7 +212,7 @@ public class Account {
   /**
    * Get businessName
    * @return businessName
-  */
+   */
   
   @Schema(name = "business_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("business_name")
@@ -232,7 +232,7 @@ public class Account {
   /**
    * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
    * @return boardCount
-  */
+   */
   
   @Schema(name = "board_count", accessMode = Schema.AccessMode.READ_ONLY, example = "14", description = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_count")
@@ -252,7 +252,7 @@ public class Account {
   /**
    * User account pin count. This includes both created and saved pins.
    * @return pinCount
-  */
+   */
   
   @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "339", description = "User account pin count. This includes both created and saved pins.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_count")
@@ -272,7 +272,7 @@ public class Account {
   /**
    * User account follower count.
    * @return followerCount
-  */
+   */
   
   @Schema(name = "follower_count", accessMode = Schema.AccessMode.READ_ONLY, example = "10", description = "User account follower count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("follower_count")
@@ -292,7 +292,7 @@ public class Account {
   /**
    * User account following count.
    * @return followingCount
-  */
+   */
   
   @Schema(name = "following_count", accessMode = Schema.AccessMode.READ_ONLY, example = "347", description = "User account following count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("following_count")
@@ -312,7 +312,7 @@ public class Account {
   /**
    * User account monthly views.
    * @return monthlyViews
-  */
+   */
   
   @Schema(name = "monthly_views", accessMode = Schema.AccessMode.READ_ONLY, example = "163", description = "User account monthly views.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("monthly_views")

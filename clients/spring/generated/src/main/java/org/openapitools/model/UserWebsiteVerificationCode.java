@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * UserWebsiteVerificationCode
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserWebsiteVerificationCode {
 
   private String verificationCode;
@@ -39,7 +39,7 @@ public class UserWebsiteVerificationCode {
   /**
    * Code to check against the user claiming the website
    * @return verificationCode
-  */
+   */
   
   @Schema(name = "verification_code", example = "e1edcc1a43976c646367e9c6c9a9b7b6", description = "Code to check against the user claiming the website", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("verification_code")
@@ -59,7 +59,7 @@ public class UserWebsiteVerificationCode {
   /**
    * DNS TXT record to check against for the website to be claimed
    * @return dnsTxtRecord
-  */
+   */
   
   @Schema(name = "dns_txt_record", example = "pinterest-site-verification=e1edcc1a43976c646367e9c6c9a9b7b6", description = "DNS TXT record to check against for the website to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("dns_txt_record")
@@ -79,7 +79,7 @@ public class UserWebsiteVerificationCode {
   /**
    * Metatag the verification process searchs for the website to be claimed
    * @return metatag
-  */
+   */
   
   @Schema(name = "metatag", example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", description = "Metatag the verification process searchs for the website to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metatag")
@@ -99,7 +99,7 @@ public class UserWebsiteVerificationCode {
   /**
    * File expected to find on the website being claimed
    * @return filename
-  */
+   */
   
   @Schema(name = "filename", example = "pinterest-e1edc.html", description = "File expected to find on the website being claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("filename")
@@ -119,7 +119,7 @@ public class UserWebsiteVerificationCode {
   /**
    * A full html file to upload to the website in order for it to be claimed
    * @return fileContent
-  */
+   */
   
   @Schema(name = "file_content", description = "A full html file to upload to the website in order for it to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("file_content")

@@ -22,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
 @JsonTypeName("TopVideoPinsAnalyticsResponse_pins_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopVideoPinsAnalyticsResponsePinsInner   {
   private @Valid Map<String, BigDecimal> metrics = new HashMap<>();
   private @Valid Map<String, DataStatus> dataStatus = new HashMap<>();
-  private @Valid String pinId;
+  private String pinId;
 
   /**
    * The metric name and daily value for each requested metric
@@ -39,7 +39,7 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
   
   @ApiModelProperty(example = "{\"IMPRESSION\":7,\"QUARTILE_95_PERCENT_VIEW\":2,\"SAVE\":1,\"VIDEO_10S_VIEW\":5,\"VIDEO_AVG_WATCH_TIME\":86989,\"VIDEO_MRC_VIEW\":2,\"VIDEO_START\":2,\"VIDEO_V50_WATCH_TIME\":173979,\"OUTBOUND_CLICK\":2}", value = "The metric name and daily value for each requested metric")
   @JsonProperty("metrics")
-  public Map<String, BigDecimal> getMetrics() {
+  @Valid public Map<String, BigDecimal> getMetrics() {
     return metrics;
   }
 
@@ -57,9 +57,9 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     return this;
   }
 
-  public TopVideoPinsAnalyticsResponsePinsInner removeMetricsItem(BigDecimal metricsItem) {
-    if (metricsItem != null && this.metrics != null) {
-      this.metrics.remove(metricsItem);
+  public TopVideoPinsAnalyticsResponsePinsInner removeMetricsItem(String key) {
+    if (this.metrics != null) {
+      this.metrics.remove(key);
     }
 
     return this;
@@ -92,9 +92,9 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     return this;
   }
 
-  public TopVideoPinsAnalyticsResponsePinsInner removeDataStatusItem(DataStatus dataStatusItem) {
-    if (dataStatusItem != null && this.dataStatus != null) {
-      this.dataStatus.remove(dataStatusItem);
+  public TopVideoPinsAnalyticsResponsePinsInner removeDataStatusItem(String key) {
+    if (this.dataStatus != null) {
+      this.dataStatus.remove(key);
     }
 
     return this;

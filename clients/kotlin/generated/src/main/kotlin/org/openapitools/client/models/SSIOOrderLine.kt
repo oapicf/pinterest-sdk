@@ -137,5 +137,8 @@ data class SSIOOrderLine (
     @Json(name = "estimated_monthly_spend")
     val estimatedMonthlySpend: java.math.BigDecimal? = null
 
-)
+) {
+
+
+}
 

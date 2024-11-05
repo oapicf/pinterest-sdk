@@ -97,7 +97,7 @@ public enum LevelEnum {
 
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
-  private List<TargetingAdvertiserCountry> countries;
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
   /**
    * Name of the Marketing Mix Modeling (MMM) report

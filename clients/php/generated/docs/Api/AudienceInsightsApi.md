@@ -36,7 +36,7 @@ $apiInstance = new OpenAPI\Client\Api\AudienceInsightsApi(
     $config
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
-$audience_insight_type = new \OpenAPI\Client\Model\AudienceInsightType(); // AudienceInsightType | Type of audience insights.
+$audience_insight_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AudienceInsightType(); // \OpenAPI\Client\Model\AudienceInsightType | Type of audience insights.
 
 try {
     $result = $apiInstance->audienceInsightsGet($ad_account_id, $audience_insight_type);
@@ -51,7 +51,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
-| **audience_insight_type** | [**AudienceInsightType**](../Model/.md)| Type of audience insights. | |
+| **audience_insight_type** | [**\OpenAPI\Client\Model\AudienceInsightType**](../Model/.md)| Type of audience insights. | |
 
 ### Return type
 

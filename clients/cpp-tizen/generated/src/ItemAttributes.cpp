@@ -70,6 +70,7 @@ ItemAttributes::__init()
 	//new std::list()std::list> variant_values;
 	//new std::list()std::list> additional_image_link;
 	//new std::list()std::list> image_link;
+	//video_link = std::string();
 }
 
 void
@@ -309,6 +310,11 @@ ItemAttributes::__cleanup()
 	//image_link.RemoveAll(true);
 	//delete image_link;
 	//image_link = NULL;
+	//}
+	//if(video_link != NULL) {
+	//
+	//delete video_link;
+	//video_link = NULL;
 	//}
 	//
 }
@@ -882,6 +888,17 @@ ItemAttributes::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *video_linkKey = "video_link";
+	node = json_object_get_member(pJsonObject, video_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&video_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 ItemAttributes::ItemAttributes(char* json)
@@ -1346,6 +1363,15 @@ ItemAttributes::toJson()
 	
 	const gchar *image_linkKey = "image_link";
 	json_object_set_member(pJsonObject, image_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getVideoLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *video_linkKey = "video_link";
+	json_object_set_member(pJsonObject, video_linkKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -1916,6 +1942,18 @@ void
 ItemAttributes::setImageLink(std::list <std::string> image_link)
 {
 	this->image_link = image_link;
+}
+
+std::string
+ItemAttributes::getVideoLink()
+{
+	return video_link;
+}
+
+void
+ItemAttributes::setVideoLink(std::string  video_link)
+{
+	this->video_link = video_link;
 }
 
 

@@ -15,27 +15,23 @@ BrandFilter <- R6::R6Class(
   "BrandFilter",
   public = list(
     `BRAND` = NULL,
-    #' Initialize a new BrandFilter class.
-    #'
+
     #' @description
     #' Initialize a new BrandFilter class.
     #'
     #' @param BRAND BRAND
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`BRAND`, ...) {
       if (!missing(`BRAND`)) {
         stopifnot(R6::is.R6(`BRAND`))
         self$`BRAND` <- `BRAND`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BrandFilter in JSON format
-    #' @export
     toJSON = function() {
       BrandFilterObject <- list()
       if (!is.null(self$`BRAND`)) {
@@ -44,14 +40,12 @@ BrandFilter <- R6::R6Class(
       }
       BrandFilterObject
     },
-    #' Deserialize JSON string into an instance of BrandFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BrandFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of BrandFilter
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`BRAND`)) {
@@ -61,13 +55,11 @@ BrandFilter <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BrandFilter in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`BRAND`)) {
@@ -82,26 +74,22 @@ BrandFilter <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BrandFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BrandFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of BrandFilter
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`BRAND` <- CatalogsProductGroupMultipleStringCriteria$new()$fromJSON(jsonlite::toJSON(this_object$`BRAND`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to BrandFilter
-    #'
+
     #' @description
     #' Validate JSON input with respect to BrandFilter and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `BRAND`
@@ -111,23 +99,19 @@ BrandFilter <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for BrandFilter: the required field `BRAND` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BrandFilter
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `BRAND` is null
       if (is.null(self$`BRAND`)) {
@@ -136,13 +120,11 @@ BrandFilter <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `BRAND` is null
@@ -152,12 +134,9 @@ BrandFilter <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

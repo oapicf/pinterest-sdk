@@ -322,8 +322,9 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
                         throw IllegalArgumentException("userWebsiteVerifyRequest is required")
                     }
                     val userWebsiteVerifyRequest = Gson().fromJson(userWebsiteVerifyRequestParam.encode(), UserWebsiteVerifyRequest::class.java)
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.verifyWebsiteUpdate(userWebsiteVerifyRequest,context)
+                        val result = service.verifyWebsiteUpdate(userWebsiteVerifyRequest,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -333,6 +334,16 @@ class UserAccountApiVertxProxyHandler(private val vertx: Vertx, private val serv
                 }
         
                 "websiteVerificationGet" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.websiteVerificationGet(adAccountId,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
                 }
         
             }

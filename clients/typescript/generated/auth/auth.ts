@@ -86,12 +86,33 @@ export class BasicAuthentication implements SecurityAuthentication {
     }
 }
 
+/**
+ * Applies oauth2 authentication to the request context.
+ */
+export class ClientCredentialsAuthentication implements SecurityAuthentication {
+    /**
+     * Configures OAuth2 with the necessary properties
+     *
+     * @param accessToken: The access token to be used for every request
+     */
+    public constructor(private accessToken: string) {}
+
+    public getName(): string {
+        return "client_credentials";
+    }
+
+    public applySecurityAuthentication(context: RequestContext) {
+        context.setHeaderParam("Authorization", "Bearer " + this.accessToken);
+    }
+}
+
 
 export type AuthMethods = {
     "default"?: SecurityAuthentication,
     "pinterest_oauth2"?: SecurityAuthentication,
     "conversion_token"?: SecurityAuthentication,
-    "basic"?: SecurityAuthentication
+    "basic"?: SecurityAuthentication,
+    "client_credentials"?: SecurityAuthentication
 }
 
 export type ApiKeyConfiguration = string;
@@ -103,7 +124,8 @@ export type AuthMethodsConfiguration = {
     "default"?: SecurityAuthentication,
     "pinterest_oauth2"?: OAuth2Configuration,
     "conversion_token"?: HttpBearerConfiguration,
-    "basic"?: HttpBasicConfiguration
+    "basic"?: HttpBasicConfiguration,
+    "client_credentials"?: OAuth2Configuration
 }
 
 /**
@@ -134,6 +156,12 @@ export function configureAuthMethods(config: AuthMethodsConfiguration | undefine
         authMethods["basic"] = new BasicAuthentication(
             config["basic"]["username"],
             config["basic"]["password"]
+        );
+    }
+
+    if (config["client_credentials"]) {
+        authMethods["client_credentials"] = new ClientCredentialsAuthentication(
+            config["client_credentials"]["accessToken"]
         );
     }
 

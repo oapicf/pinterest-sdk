@@ -35,7 +35,7 @@ data class OptimizationGoalMetadata(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("scrollup_goal_metadata") val scrollupGoalMetadata: OptimizationGoalMetadataScrollupGoalMetadata? = null
-) {
+    ) {
 
 }
 

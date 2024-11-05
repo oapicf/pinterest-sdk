@@ -8,6 +8,7 @@ import com.prokarma.pkmst.model.CatalogsFeedCredentials;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingSchedule;
 import com.prokarma.pkmst.model.CatalogsFeedsCreateRequestDefaultLocale;
 import com.prokarma.pkmst.model.CatalogsFormat;
+import com.prokarma.pkmst.model.CatalogsStatus;
 import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.Country;
 import com.prokarma.pkmst.model.NullableCurrency;
@@ -25,7 +26,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a retail feed.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailFeedsCreateRequest   {
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;
@@ -57,15 +58,18 @@ public class CatalogsRetailFeedsCreateRequest   {
   @JsonProperty("default_availability")
   private ProductAvailabilityType defaultAvailability;
 
+  @JsonProperty("status")
+  private CatalogsStatus status;
+
   public CatalogsRetailFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -80,10 +84,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
   public String getName() {
     return name;
@@ -98,10 +102,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -116,10 +120,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultLocale
    * @return defaultLocale
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
@@ -134,10 +138,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -152,10 +156,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -170,10 +174,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -188,10 +192,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -206,10 +210,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCountry
    * @return defaultCountry
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Country getDefaultCountry() {
     return defaultCountry;
@@ -224,10 +228,10 @@ public class CatalogsRetailFeedsCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultAvailability
    * @return defaultAvailability
-  **/
+   */
   @ApiModelProperty(value = "")
   public ProductAvailabilityType getDefaultAvailability() {
     return defaultAvailability;
@@ -235,6 +239,24 @@ public class CatalogsRetailFeedsCreateRequest   {
 
   public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
     this.defaultAvailability = defaultAvailability;
+  }
+
+  public CatalogsRetailFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @ApiModelProperty(value = "")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
 
@@ -256,12 +278,13 @@ public class CatalogsRetailFeedsCreateRequest   {
         Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.catalogType, catalogsRetailFeedsCreateRequest.catalogType) &&
         Objects.equals(this.defaultCountry, catalogsRetailFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(this.defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability);
+        Objects.equals(this.defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(this.status, catalogsRetailFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -279,6 +302,7 @@ public class CatalogsRetailFeedsCreateRequest   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

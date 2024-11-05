@@ -5,10 +5,10 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.AdCommonTrackingUrls
 import org.openapitools.models.CampaignSummaryStatus
 import org.openapitools.models.EntityStatus
 import org.openapitools.models.ObjectiveType
+import org.openapitools.models.TrackingUrls
 
 /**
  * 
@@ -22,13 +22,13 @@ import org.openapitools.models.ObjectiveType
  * @param trackingUnderscoreurls 
  * @param startUnderscoretime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
  * @param endUnderscoretime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
- * @param summaryUnderscorestatus 
+ * @param isUnderscoreflexibleUnderscoredailyUnderscorebudgets Determine if a campaign has flexible daily budgets setup.
  * @param objectiveUnderscoretype 
  * @param createdUnderscoretime Campaign creation time. Unix timestamp in seconds.
  * @param updatedUnderscoretime UTC timestamp. Last update time.
  * @param _type Always \"campaign\".
- * @param isUnderscoreflexibleUnderscoredailyUnderscorebudgets Determines if a campaign has flexible daily budgets setup.
  * @param isUnderscorecampaignUnderscorebudgetUnderscoreoptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+ * @param summaryUnderscorestatus 
  */
 case class CampaignResponse(id: Option[String],
                 adUnderscoreaccountUnderscoreid: Option[String],
@@ -37,16 +37,16 @@ case class CampaignResponse(id: Option[String],
                 lifetimeUnderscorespendUnderscorecap: Option[Int],
                 dailyUnderscorespendUnderscorecap: Option[Int],
                 orderUnderscorelineUnderscoreid: Option[String],
-                trackingUnderscoreurls: Option[AdCommonTrackingUrls],
+                trackingUnderscoreurls: Option[TrackingUrls],
                 startUnderscoretime: Option[Int],
                 endUnderscoretime: Option[Int],
-                summaryUnderscorestatus: Option[CampaignSummaryStatus],
+                isUnderscoreflexibleUnderscoredailyUnderscorebudgets: Option[Boolean],
                 objectiveUnderscoretype: Option[ObjectiveType],
                 createdUnderscoretime: Option[Int],
                 updatedUnderscoretime: Option[Int],
                 _type: Option[String],
-                isUnderscoreflexibleUnderscoredailyUnderscorebudgets: Option[Boolean],
-                isUnderscorecampaignUnderscorebudgetUnderscoreoptimization: Option[Boolean]
+                isUnderscorecampaignUnderscorebudgetUnderscoreoptimization: Option[Boolean],
+                summaryUnderscorestatus: Option[CampaignSummaryStatus]
                 )
 
 object CampaignResponse {

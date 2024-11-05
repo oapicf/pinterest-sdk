@@ -47,5 +47,8 @@ data class MediaUpload (
     @Json(name = "upload_parameters")
     val uploadParameters: MediaUploadAllOfUploadParameters? = null
 
-)
+) {
+
+
+}
 

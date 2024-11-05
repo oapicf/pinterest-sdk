@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdUnderscoreat** | **string** |  | [optional] [default to null]
+**createdUnderscoreat** | **string** |  | [default to null]
 **id** | **string** |  | [default to null]
-**updatedUnderscoreat** | **string** |  | [optional] [default to null]
+**updatedUnderscoreat** | **string** |  | [default to null]
 **name** | **string** |  | [default to null]
 **catalogUnderscoretype** | [**CatalogsType**](CatalogsType.md) |  | [default to null]
 

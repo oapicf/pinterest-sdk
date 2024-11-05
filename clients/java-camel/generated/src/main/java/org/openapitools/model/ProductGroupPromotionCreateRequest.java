@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -22,13 +22,13 @@ import javax.annotation.Generated;
  * ProductGroupPromotionCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionCreateRequest {
 
   private String adGroupId;
 
   @Valid
-  private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
 
   public ProductGroupPromotionCreateRequest() {
     super();
@@ -37,7 +37,7 @@ public class ProductGroupPromotionCreateRequest {
   /**
    * Constructor with only required parameters
    */
-  public ProductGroupPromotionCreateRequest(String adGroupId, List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest(String adGroupId, List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.adGroupId = adGroupId;
     this.productGroupPromotion = productGroupPromotion;
   }
@@ -50,7 +50,7 @@ public class ProductGroupPromotionCreateRequest {
   /**
    * ID of the Ad Group the Product Group Promotion belongs to.
    * @return adGroupId
-  */
+   */
   @NotNull @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the Ad Group the Product Group Promotion belongs to.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ad_group_id")
@@ -62,12 +62,12 @@ public class ProductGroupPromotionCreateRequest {
     this.adGroupId = adGroupId;
   }
 
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
 
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
     if (this.productGroupPromotion == null) {
       this.productGroupPromotion = new ArrayList<>();
     }
@@ -78,15 +78,15 @@ public class ProductGroupPromotionCreateRequest {
   /**
    * Get productGroupPromotion
    * @return productGroupPromotion
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "product_group_promotion", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_group_promotion")
-  public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
+  public List<@Valid ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
-  public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public void setProductGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

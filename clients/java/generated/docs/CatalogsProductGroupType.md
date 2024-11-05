@@ -21,7 +21,7 @@
 
 * `SHOPIFY_COLLECTIONS` (value: `"SHOPIFY_COLLECTIONS"`)
 
-* `I2PC` (value: `"I2PC"`)
+* `I2_PC` (value: `"I2PC"`)
 
 
 

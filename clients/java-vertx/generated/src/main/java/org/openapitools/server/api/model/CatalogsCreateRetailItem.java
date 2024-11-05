@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.server.api.model.ItemAttributes;
+import org.openapitools.server.api.model.ItemAttributesRequest;
 
 /**
  * An item to be created
@@ -16,10 +16,7 @@ public class CatalogsCreateRetailItem   {
 
 
   public enum OperationEnum {
-    CREATE("CREATE"),
-    UPDATE("UPDATE"),
-    UPSERT("UPSERT"),
-    DELETE("DELETE");
+    CREATE("CREATE");
 
     private String value;
 
@@ -35,13 +32,13 @@ public class CatalogsCreateRetailItem   {
   }
 
   private OperationEnum operation;
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   public CatalogsCreateRetailItem () {
 
   }
 
-  public CatalogsCreateRetailItem (String itemId, OperationEnum operation, ItemAttributes attributes) {
+  public CatalogsCreateRetailItem (String itemId, OperationEnum operation, ItemAttributesRequest attributes) {
     this.itemId = itemId;
     this.operation = operation;
     this.attributes = attributes;
@@ -67,10 +64,10 @@ public class CatalogsCreateRetailItem   {
 
     
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

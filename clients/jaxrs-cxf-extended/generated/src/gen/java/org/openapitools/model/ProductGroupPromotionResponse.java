@@ -16,7 +16,7 @@ public class ProductGroupPromotionResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid ProductGroupPromotionResponseItem> items;
+  private List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
  /**
   * Get items
   * @return items

@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductGroupAnalyticsResponse_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object>  {
-  private @Valid String PRODUCT_GROUP_ID;
-  private @Valid LocalDate DATE;
+  private String PRODUCT_GROUP_ID;
+  private LocalDate DATE;
 
   /**
    * The ID of the product group that this metrics belongs to.
@@ -35,8 +35,7 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
   
   @ApiModelProperty(required = true, value = "The ID of the product group that this metrics belongs to.")
   @JsonProperty("PRODUCT_GROUP_ID")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getPRODUCTGROUPID() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getPRODUCTGROUPID() {
     return PRODUCT_GROUP_ID;
   }
 

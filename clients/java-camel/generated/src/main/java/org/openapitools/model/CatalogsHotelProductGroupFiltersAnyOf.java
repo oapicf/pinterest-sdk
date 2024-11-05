@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * CatalogsHotelProductGroupFiltersAnyOf
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupFiltersAnyOf {
 
   @Valid
@@ -55,7 +55,7 @@ public class CatalogsHotelProductGroupFiltersAnyOf {
   /**
    * Get anyOf
    * @return anyOf
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "any_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("any_of")

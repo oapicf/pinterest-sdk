@@ -13,7 +13,7 @@ public class RelatedTerms   {
   
   private String id;
   private Integer relatedTermCount;
-  private List<RelatedTermsRelatedTermsListInner> relatedTermsList;
+  private List<RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
 
   public RelatedTerms () {
 

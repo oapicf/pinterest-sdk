@@ -4,10 +4,10 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class Catalog (
-    _createdAt: Option[OffsetDateTime],
+    _createdAt: OffsetDateTime,
     /* ID of the catalog entity. */
     _id: String,
-    _updatedAt: Option[OffsetDateTime],
+    _updatedAt: OffsetDateTime,
     /* A human-friendly name associated to a catalog entity. */
     _name: String,
     _catalogType: CatalogsType

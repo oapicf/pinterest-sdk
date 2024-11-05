@@ -21,8 +21,8 @@ import io.kotlintest.specs.ShouldSpec
 import org.openapitools.client.models.Pin
 import org.openapitools.client.models.BoardOwner
 import org.openapitools.client.models.CreativeType
+import org.openapitools.client.models.PinMedia
 import org.openapitools.client.models.PinMediaSource
-import org.openapitools.client.models.SummaryPinMedia
 
 class PinTest : ShouldSpec() {
     init {
@@ -119,7 +119,7 @@ class PinTest : ShouldSpec() {
             //modelInstance.parentPinId shouldBe ("TODO")
         }
 
-        // to test the property `isStandard` - Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+        // to test the property `isStandard` - Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
         should("test isStandard") {
             // uncomment below to test the property
             //modelInstance.isStandard shouldBe ("TODO")

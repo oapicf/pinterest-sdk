@@ -47,5 +47,6 @@ data class PinMediaSourcePinURL (
     enum class SourceType(val value: kotlin.String) {
         @Json(name = "pin_url") pin_url("pin_url");
     }
+
 }
 

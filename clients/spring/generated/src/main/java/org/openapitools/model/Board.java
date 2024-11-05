@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Board", description = "Board")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Board {
 
   private String id;
@@ -110,7 +110,7 @@ public class Board {
   /**
    * Get id
    * @return id
-  */
+   */
   
   @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "549755885175", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -130,7 +130,7 @@ public class Board {
   /**
    * Date and time of board creation.
    * @return createdAt
-  */
+   */
   @Valid 
   @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", description = "Date and time of board creation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
@@ -150,7 +150,7 @@ public class Board {
   /**
    * Date and time of last board pins modified.
    * @return boardPinsModifiedAt
-  */
+   */
   @Valid 
   @Schema(name = "board_pins_modified_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", description = "Date and time of last board pins modified.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_pins_modified_at")
@@ -170,7 +170,7 @@ public class Board {
   /**
    * Get name
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", example = "Summer Recipes", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -190,7 +190,7 @@ public class Board {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", example = "My favorite summer recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -211,7 +211,7 @@ public class Board {
    * Count of collaborators on the board.
    * minimum: 0
    * @return collaboratorCount
-  */
+   */
   @Min(0) 
   @Schema(name = "collaborator_count", accessMode = Schema.AccessMode.READ_ONLY, example = "17", description = "Count of collaborators on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("collaborator_count")
@@ -232,7 +232,7 @@ public class Board {
    * Count of pins on the board.
    * minimum: 0
    * @return pinCount
-  */
+   */
   @Min(0) 
   @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "5", description = "Count of pins on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_count")
@@ -253,7 +253,7 @@ public class Board {
    * Board follower count.
    * minimum: 0
    * @return followerCount
-  */
+   */
   @Min(0) 
   @Schema(name = "follower_count", accessMode = Schema.AccessMode.READ_ONLY, example = "13", description = "Board follower count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("follower_count")
@@ -273,7 +273,7 @@ public class Board {
   /**
    * Get media
    * @return media
-  */
+   */
   @Valid 
   @Schema(name = "media", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media")
@@ -293,9 +293,9 @@ public class Board {
   /**
    * Get owner
    * @return owner
-  */
+   */
   @Valid 
-  @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "owner", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("owner")
   public BoardOwner getOwner() {
     return owner;
@@ -313,7 +313,7 @@ public class Board {
   /**
    * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
    * @return privacy
-  */
+   */
   
   @Schema(name = "privacy", description = "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy")

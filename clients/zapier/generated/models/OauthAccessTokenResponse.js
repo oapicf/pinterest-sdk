@@ -11,6 +11,7 @@ module.exports = {
                 choices: [
                     'authorization_code',
                     'refresh_token',
+                    'client_credentials',
                 ],
             },
             {

@@ -22,9 +22,9 @@ import java.time.OffsetDateTime
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. for example: ''null''
 */
 final case class CatalogsHotelFeed (
-  createdAt: Option[OffsetDateTime] = None,
-  id: Option[String] = None,
-  updatedAt: Option[OffsetDateTime] = None,
+  createdAt: OffsetDateTime,
+  id: String,
+  updatedAt: OffsetDateTime,
   name: String,
   format: CatalogsFormat,
   catalogType: CatalogsType,

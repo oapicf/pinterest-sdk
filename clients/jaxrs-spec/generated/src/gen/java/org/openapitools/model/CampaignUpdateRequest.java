@@ -3,10 +3,9 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,24 +19,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CampaignUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignUpdateRequest   {
-  private @Valid String id;
-  private @Valid String adAccountId;
-  private @Valid String name;
-  private @Valid EntityStatus status;
-  private @Valid Integer lifetimeSpendCap;
-  private @Valid Integer dailySpendCap;
-  private @Valid String orderLineId;
-  private @Valid AdCommonTrackingUrls trackingUrls;
-  private @Valid Integer startTime;
-  private @Valid Integer endTime;
-  private @Valid CampaignSummaryStatus summaryStatus;
-  private @Valid Boolean isFlexibleDailyBudgets;
-  private @Valid Integer defaultAdGroupBudgetInMicroCurrency;
-  private @Valid Boolean isAutomatedCampaign;
-  private @Valid Boolean isCampaignBudgetOptimization;
-  private @Valid ObjectiveType objectiveType;
+  private String id;
+  private String adAccountId;
+  private String name;
+  private EntityStatus status;
+  private Integer lifetimeSpendCap;
+  private Integer dailySpendCap;
+  private String orderLineId;
+  private TrackingUrls trackingUrls;
+  private Integer startTime;
+  private Integer endTime;
+  private Boolean isFlexibleDailyBudgets;
+  private Integer defaultAdGroupBudgetInMicroCurrency;
+  private Boolean isAutomatedCampaign;
+  private Boolean isCampaignBudgetOptimization;
+  private ObjectiveType objectiveType;
 
   /**
    * Campaign ID.
@@ -50,8 +48,7 @@ public class CampaignUpdateRequest   {
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Campaign ID.")
   @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -71,8 +68,7 @@ public class CampaignUpdateRequest   {
   
   @ApiModelProperty(example = "549755885175", required = true, value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
   @JsonProperty("ad_account_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
@@ -171,7 +167,7 @@ public class CampaignUpdateRequest   {
   
   @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
   @JsonProperty("order_line_id")
- @Pattern(regexp="^\\d+$")  public String getOrderLineId() {
+   @Pattern(regexp="^\\d+$")public String getOrderLineId() {
     return orderLineId;
   }
 
@@ -182,7 +178,7 @@ public class CampaignUpdateRequest   {
 
   /**
    **/
-  public CampaignUpdateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -190,12 +186,12 @@ public class CampaignUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  @Valid public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
   @JsonProperty("tracking_urls")
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -237,25 +233,6 @@ public class CampaignUpdateRequest   {
   @JsonProperty("end_time")
   public void setEndTime(Integer endTime) {
     this.endTime = endTime;
-  }
-
-  /**
-   **/
-  public CampaignUpdateRequest summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-
-  @JsonProperty("summary_status")
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
   }
 
   /**
@@ -377,7 +354,6 @@ public class CampaignUpdateRequest   {
         Objects.equals(this.trackingUrls, campaignUpdateRequest.trackingUrls) &&
         Objects.equals(this.startTime, campaignUpdateRequest.startTime) &&
         Objects.equals(this.endTime, campaignUpdateRequest.endTime) &&
-        Objects.equals(this.summaryStatus, campaignUpdateRequest.summaryStatus) &&
         Objects.equals(this.isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
         Objects.equals(this.defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(this.isAutomatedCampaign, campaignUpdateRequest.isAutomatedCampaign) &&
@@ -387,7 +363,7 @@ public class CampaignUpdateRequest   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, isCampaignBudgetOptimization, objectiveType);
+    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, isCampaignBudgetOptimization, objectiveType);
   }
 
   @Override
@@ -405,7 +381,6 @@ public class CampaignUpdateRequest   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

@@ -28,13 +28,13 @@ public class ItemProcessingRecord  {
  /**
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
   **/
-  private List<ItemValidationEvent> errors;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
 
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
  /**
    * Array with the validation warnings for the item processing record
   **/
-  private List<ItemValidationEvent> warnings;
+  private List<ItemValidationEvent> warnings = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   private ItemProcessingStatus status;

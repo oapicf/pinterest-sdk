@@ -54,7 +54,7 @@ public class SearchControllerTest {
      *
      * The method should: Search pins by a given search term
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -87,7 +87,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/partner/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@2498eb25");
         request.getParameters()
             .add("term", "example") // The query parameter format should be 
             .add("country_code", "US") // The query parameter format should be 
@@ -107,7 +107,7 @@ public class SearchControllerTest {
      *
      * The method should: Search user&#39;s boards
      *
-     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -139,7 +139,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@2dfafe6f");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -158,7 +158,7 @@ public class SearchControllerTest {
      *
      * The method should: Search user&#39;s Pins
      *
-     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -189,7 +189,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@3a456c10");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("query", "Plants") // The query parameter format should be 

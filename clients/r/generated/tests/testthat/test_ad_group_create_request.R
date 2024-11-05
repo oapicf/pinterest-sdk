@@ -38,7 +38,8 @@ test_that("bid_in_micro_currency", {
 })
 
 test_that("optimization_goal_metadata", {
-  # tests for the property `optimization_goal_metadata` (AdGroupCommonOptimizationGoalMetadata)
+  # tests for the property `optimization_goal_metadata` (OptimizationGoalMetadata)
+  # Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`optimization_goal_metadata`, "EXPECTED_RESULT")
@@ -76,14 +77,15 @@ test_that("targeting_spec", {
 
 test_that("lifetime_frequency_cap", {
   # tests for the property `lifetime_frequency_cap` (integer)
-  # Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
+  # Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`lifetime_frequency_cap`, "EXPECTED_RESULT")
 })
 
 test_that("tracking_urls", {
-  # tests for the property `tracking_urls` (AdGroupCommonTrackingUrls)
+  # tests for the property `tracking_urls` (TrackingUrls)
+  # Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`tracking_urls`, "EXPECTED_RESULT")
@@ -99,7 +101,7 @@ test_that("auto_targeting_enabled", {
 
 test_that("placement_group", {
   # tests for the property `placement_group` (PlacementGroupType)
-  # &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+  # &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`placement_group`, "EXPECTED_RESULT")
@@ -129,8 +131,16 @@ test_that("billable_event", {
 
 test_that("bid_strategy_type", {
   # tests for the property `bid_strategy_type` (character)
-  # Bid strategy type
+  # Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`bid_strategy_type`, "EXPECTED_RESULT")
+})
+
+test_that("targeting_template_ids", {
+  # tests for the property `targeting_template_ids` (array[character])
+  # Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;].
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`targeting_template_ids`, "EXPECTED_RESULT")
 })

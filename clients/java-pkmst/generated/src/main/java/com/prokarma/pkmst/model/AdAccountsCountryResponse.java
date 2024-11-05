@@ -18,7 +18,7 @@ import java.util.List;
  * AdAccountsCountryResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsCountryResponse   {
   @JsonProperty("items")
   
@@ -37,10 +37,10 @@ public class AdAccountsCountryResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get items
    * @return items
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<AdAccountsCountryResponseData> getItems() {
     return items;

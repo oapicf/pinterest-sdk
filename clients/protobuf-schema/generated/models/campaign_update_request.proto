@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,10 +14,9 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/ad_common_tracking_urls.proto";
-import public "models/campaign_summary_status.proto";
 import public "models/entity_status.proto";
 import public "models/objective_type.proto";
+import public "models/tracking_urls.proto";
 
 message CampaignUpdateRequest {
 
@@ -41,15 +40,13 @@ message CampaignUpdateRequest {
   // Order line ID that appears on the invoice.
   optional string order_line_id = 3191467;
 
-  AdCommonTrackingUrls tracking_urls = 127999343;
+  TrackingUrls tracking_urls = 127999343;
 
   // Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   optional int32 start_time = 499403640;
 
   // Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   optional int32 end_time = 114938804;
-
-  CampaignSummaryStatus summary_status = 8412845;
 
   // Determine if a campaign has flexible daily budgets setup.
   optional bool is_flexible_daily_budgets = 492936940;

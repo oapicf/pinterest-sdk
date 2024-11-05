@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BoardsApiServiceImpl implements BoardsApi {
       public Response boardSectionsCreate(String boardId,BoardSection boardSection,String adAccountId,SecurityContext securityContext) {
       // do some magic!

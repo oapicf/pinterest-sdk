@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * ProductGroupPromotionUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionUpdateRequest {
 
   private String adGroupId;
@@ -50,7 +50,7 @@ public class ProductGroupPromotionUpdateRequest {
   /**
    * ID of the ad group the product group belongs to.
    * @return adGroupId
-  */
+   */
   @NotNull @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group the product group belongs to.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ad_group_id")
@@ -78,7 +78,7 @@ public class ProductGroupPromotionUpdateRequest {
   /**
    * Get productGroupPromotion
    * @return productGroupPromotion
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "product_group_promotion", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_group_promotion")

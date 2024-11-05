@@ -15,7 +15,7 @@ test_that("ad_group_id", {
 
 test_that("android_deep_link", {
   # tests for the property `android_deep_link` (character)
-  # Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  # Deep link URL for Android devices.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`android_deep_link`, "EXPECTED_RESULT")
@@ -70,7 +70,7 @@ test_that("destination_url", {
 
 test_that("ios_deep_link", {
   # tests for the property `ios_deep_link` (character)
-  # Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  # Deep link URL for iOS devices.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ios_deep_link`, "EXPECTED_RESULT")
@@ -108,7 +108,7 @@ test_that("status", {
 })
 
 test_that("tracking_urls", {
-  # tests for the property `tracking_urls` (AdCommonTrackingUrls)
+  # tests for the property `tracking_urls` (TrackingUrls)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`tracking_urls`, "EXPECTED_RESULT")
@@ -139,14 +139,15 @@ test_that("grid_click_type", {
 
 test_that("customizable_cta_type", {
   # tests for the property `customizable_cta_type` (character)
-  # Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  # Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`customizable_cta_type`, "EXPECTED_RESULT")
 })
 
 test_that("quiz_pin_data", {
-  # tests for the property `quiz_pin_data` (AdCommonQuizPinData)
+  # tests for the property `quiz_pin_data` (QuizPinData)
+  # Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`quiz_pin_data`, "EXPECTED_RESULT")

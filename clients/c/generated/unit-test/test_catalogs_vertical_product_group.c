@@ -16,41 +16,45 @@
 #include "../model/catalogs_vertical_product_group.h"
 catalogs_vertical_product_group_t* instantiate_catalogs_vertical_product_group(int include_optional);
 
-#include "test_catalogs_product_group_filters.c"
+#include "test_catalogs_creative_assets_product_group_filters.c"
 
 
 catalogs_vertical_product_group_t* instantiate_catalogs_vertical_product_group(int include_optional) {
   catalogs_vertical_product_group_t* catalogs_vertical_product_group = NULL;
   if (include_optional) {
     catalogs_vertical_product_group = catalogs_vertical_product_group_create(
-      pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_RETAIL,
+      pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_CREATIVE_ASSETS,
       "443727193917",
       "Most Popular",
       "0",
        // false, not to have infinite recursion
-      instantiate_catalogs_product_group_filters(0),
-      1621350033000,
-      1622742155000,
-      "a",
+      instantiate_catalogs_creative_assets_product_group_filters(0),
       1,
       pinterest_rest_api_catalogs_vertical_product_group__"TOP_SELLERS",
       pinterest_rest_api_catalogs_vertical_product_group__ACTIVE,
-      pinterest_rest_api_catalogs_vertical_product_group_FEEDID_ERROR_TO_EXAMPLE_VALUE
+      1621350033000,
+      1622742155000,
+      "a",
+      "2680059592705",
+      "0",
+      "0"
     );
   } else {
     catalogs_vertical_product_group = catalogs_vertical_product_group_create(
-      pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_RETAIL,
+      pinterest_rest_api_catalogs_vertical_product_group_CATALOGTYPE_CREATIVE_ASSETS,
       "443727193917",
       "Most Popular",
       "0",
       NULL,
-      1621350033000,
-      1622742155000,
-      "a",
       1,
       pinterest_rest_api_catalogs_vertical_product_group__"TOP_SELLERS",
       pinterest_rest_api_catalogs_vertical_product_group__ACTIVE,
-      pinterest_rest_api_catalogs_vertical_product_group_FEEDID_ERROR_TO_EXAMPLE_VALUE
+      1621350033000,
+      1622742155000,
+      "a",
+      "2680059592705",
+      "0",
+      "0"
     );
   }
 

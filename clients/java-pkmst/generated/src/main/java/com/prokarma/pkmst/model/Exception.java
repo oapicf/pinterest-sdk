@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Exception
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Exception   {
   @JsonProperty("code")
   private Integer code;
@@ -27,10 +27,10 @@ public class Exception   {
     return this;
   }
 
-   /**
+  /**
    * Exception error code.
    * @return code
-  **/
+   */
   @ApiModelProperty(example = "2", value = "Exception error code.")
   public Integer getCode() {
     return code;
@@ -45,10 +45,10 @@ public class Exception   {
     return this;
   }
 
-   /**
+  /**
    * Exception message.
    * @return message
-  **/
+   */
   @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
   public String getMessage() {
     return message;

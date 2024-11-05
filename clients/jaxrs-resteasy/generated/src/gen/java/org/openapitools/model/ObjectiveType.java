@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum ObjectiveType {
-    AWARENESS, CONSIDERATION, VIDEO_VIEW, WEB_CONVERSION, CATALOG_SALES, WEB_SESSIONS
+    AWARENESS, CONSIDERATION, VIDEO_VIEW, WEB_CONVERSION, CATALOG_SALES, WEB_SESSIONS, VIDEO_COMPLETION
 }

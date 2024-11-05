@@ -26,5 +26,5 @@ class SSIOAccountItem {
     /* Insertion Order Type - Pinterest Paper or Agency Paper */
     String ioType
     /* Address information that is associated with this account. */
-    List<SSIOAccountAddress> addresses
+    List<SSIOAccountAddress> addresses = new ArrayList<>()
 }

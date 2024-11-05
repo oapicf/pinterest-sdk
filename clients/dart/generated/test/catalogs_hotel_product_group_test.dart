@@ -55,6 +55,7 @@ void main() {
       // TODO
     });
 
+    // Catalog id pertaining to the hotel product group.
     // String catalogId
     test('to test the property `catalogId`', () async {
       // TODO

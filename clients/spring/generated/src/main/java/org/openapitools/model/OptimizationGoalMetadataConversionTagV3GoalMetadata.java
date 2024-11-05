@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
   private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
@@ -95,9 +95,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   public enum LearningModeTypeEnum {
     NOT_ACTIVE("NOT_ACTIVE"),
     
-    ACTIVE("ACTIVE"),
-    
-    NULL("null");
+    ACTIVE("ACTIVE");
 
     private String value;
 
@@ -136,7 +134,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   /**
    * Get attributionWindows
    * @return attributionWindows
-  */
+   */
   @Valid 
   @Schema(name = "attribution_windows", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attribution_windows")
@@ -156,7 +154,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   /**
    * Get conversionEvent
    * @return conversionEvent
-  */
+   */
   
   @Schema(name = "conversion_event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_event")
@@ -176,7 +174,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   /**
    * Get conversionTagId
    * @return conversionTagId
-  */
+   */
   @Pattern(regexp = "^[0-9]+$") 
   @Schema(name = "conversion_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_tag_id")
@@ -196,7 +194,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   /**
    * Get cpaGoalValueInMicroCurrency
    * @return cpaGoalValueInMicroCurrency
-  */
+   */
   @Pattern(regexp = "^[0-9]+$") 
   @Schema(name = "cpa_goal_value_in_micro_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cpa_goal_value_in_micro_currency")
@@ -214,11 +212,11 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   }
 
   /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
    * @return isRoasOptimized
-  */
+   */
   
-  @Schema(name = "is_roas_optimized", description = "Ad group is ROAS optimized", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_roas_optimized", description = "ROAS optimization is not supported", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_roas_optimized")
   public JsonNullable<Boolean> getIsRoasOptimized() {
     return isRoasOptimized;
@@ -236,7 +234,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   /**
    * Conversion learning model type
    * @return learningModeType
-  */
+   */
   
   @Schema(name = "learning_mode_type", example = "ACTIVE", description = "Conversion learning model type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("learning_mode_type")

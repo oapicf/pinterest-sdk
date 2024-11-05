@@ -70,7 +70,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Get a list of the boards a user follows. The request returns a board summary object array.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to @(NO))
 ///
@@ -115,7 +115,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -142,7 +142,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 
 ///
 /// Follow user
-/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 ///  @param username A valid username 
 ///
 ///  @param followUserRequest Follow a user. 
@@ -228,7 +228,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Get a list of your followers.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIFollowersList200Response*
 ///
@@ -261,7 +261,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -313,7 +313,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -670,7 +670,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -826,7 +826,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -858,7 +858,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIUserAccountFollowedInterests200Response*
 ///
@@ -906,7 +906,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -933,7 +933,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 
 ///
 /// Get user account
-/// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+/// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @returns OAIAccount*
@@ -963,7 +963,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -993,7 +993,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Get a list of who a certain user follows.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
 ///
@@ -1044,7 +1044,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -1074,7 +1074,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Get user websites, claimed or not
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIUserWebsitesGet200Response*
 ///
@@ -1137,9 +1137,12 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 /// Verify a website as a signed-in user.
 ///  @param userWebsiteVerifyRequest Verify a website. 
 ///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
 ///  @returns OAIUserWebsiteSummary*
 ///
 -(NSURLSessionTask*) verifyWebsiteUpdateWithUserWebsiteVerifyRequest: (OAIUserWebsiteVerifyRequest*) userWebsiteVerifyRequest
+    adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(OAIUserWebsiteSummary* output, NSError* error)) handler {
     // verify the required parameter 'userWebsiteVerifyRequest' is set
     if (userWebsiteVerifyRequest == nil) {
@@ -1157,6 +1160,9 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`
@@ -1201,15 +1207,20 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 ///
 /// Get user verification code for website claiming
 /// Get verification code for user to install on the website to claim it.
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
 ///  @returns OAIUserWebsiteVerificationCode*
 ///
--(NSURLSessionTask*) websiteVerificationGetWithCompletionHandler: 
-    (void (^)(OAIUserWebsiteVerificationCode* output, NSError* error)) handler {
+-(NSURLSessionTask*) websiteVerificationGetWithAdAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAIUserWebsiteVerificationCode* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user_account/websites/verification"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`
@@ -1225,7 +1236,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];

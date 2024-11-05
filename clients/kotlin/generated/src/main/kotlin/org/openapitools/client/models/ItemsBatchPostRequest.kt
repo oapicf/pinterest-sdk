@@ -17,11 +17,10 @@ package org.openapitools.client.models
 
 import org.openapitools.client.models.BatchOperation
 import org.openapitools.client.models.CatalogsItemsBatchRequest
-import org.openapitools.client.models.CatalogsType
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsVerticalBatchRequest
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemDeleteBatchRecord
-import org.openapitools.client.models.Language
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -34,20 +33,20 @@ import com.squareup.moshi.JsonClass
  * @param language 
  * @param items Array with catalogs items
  * @param operation 
- * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 
 
 data class ItemsBatchPostRequest (
 
     @Json(name = "catalog_type")
-    override val catalogType: CatalogsType,
+    override val catalogType: ItemsBatchPostRequest.CatalogType,
 
     @Json(name = "country")
     val country: Country,
 
     @Json(name = "language")
-    val language: Language,
+    val language: CatalogsItemsRequestLanguage,
 
     /* Array with catalogs items */
     @Json(name = "items")
@@ -56,9 +55,12 @@ data class ItemsBatchPostRequest (
     @Json(name = "operation")
     val operation: BatchOperation,
 
-    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     @Json(name = "catalog_id")
     override val catalogId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -36,12 +36,12 @@ AdUpdateRequest::__init()
 	//is_removable = bool(false);
 	//name = std::string();
 	//status = new EntityStatus();
-	//tracking_urls = new AdCommon_tracking_urls();
+	//tracking_urls = null;
 	//view_tracking_url = std::string();
 	//lead_form_id = std::string();
 	//grid_click_type = new GridClickType();
 	//customizable_cta_type = std::string();
-	//quiz_pin_data = new AdCommon_quiz_pin_data();
+	//quiz_pin_data = null;
 	//id = std::string();
 	//pin_id = std::string();
 }
@@ -349,11 +349,11 @@ AdUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AdCommon_tracking_urls")) {
-			jsonToValue(&tracking_urls, node, "AdCommon_tracking_urls", "AdCommon_tracking_urls");
+		if (isprimitive("TrackingUrls")) {
+			jsonToValue(&tracking_urls, node, "TrackingUrls", "TrackingUrls");
 		} else {
 			
-			AdCommon_tracking_urls* obj = static_cast<AdCommon_tracking_urls*> (&tracking_urls);
+			TrackingUrls* obj = static_cast<TrackingUrls*> (&tracking_urls);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -410,11 +410,11 @@ AdUpdateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AdCommon_quiz_pin_data")) {
-			jsonToValue(&quiz_pin_data, node, "AdCommon_quiz_pin_data", "AdCommon_quiz_pin_data");
+		if (isprimitive("QuizPinData")) {
+			jsonToValue(&quiz_pin_data, node, "QuizPinData", "QuizPinData");
 		} else {
 			
-			AdCommon_quiz_pin_data* obj = static_cast<AdCommon_quiz_pin_data*> (&quiz_pin_data);
+			QuizPinData* obj = static_cast<QuizPinData*> (&quiz_pin_data);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -598,13 +598,13 @@ AdUpdateRequest::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
-	if (isprimitive("AdCommon_tracking_urls")) {
-		AdCommon_tracking_urls obj = getTrackingUrls();
-		node = converttoJson(&obj, "AdCommon_tracking_urls", "");
+	if (isprimitive("TrackingUrls")) {
+		TrackingUrls obj = getTrackingUrls();
+		node = converttoJson(&obj, "TrackingUrls", "");
 	}
 	else {
 		
-		AdCommon_tracking_urls obj = static_cast<AdCommon_tracking_urls> (getTrackingUrls());
+		TrackingUrls obj = static_cast<TrackingUrls> (getTrackingUrls());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -653,13 +653,13 @@ AdUpdateRequest::toJson()
 	}
 	const gchar *customizable_cta_typeKey = "customizable_cta_type";
 	json_object_set_member(pJsonObject, customizable_cta_typeKey, node);
-	if (isprimitive("AdCommon_quiz_pin_data")) {
-		AdCommon_quiz_pin_data obj = getQuizPinData();
-		node = converttoJson(&obj, "AdCommon_quiz_pin_data", "");
+	if (isprimitive("QuizPinData")) {
+		QuizPinData obj = getQuizPinData();
+		node = converttoJson(&obj, "QuizPinData", "");
 	}
 	else {
 		
-		AdCommon_quiz_pin_data obj = static_cast<AdCommon_quiz_pin_data> (getQuizPinData());
+		QuizPinData obj = static_cast<QuizPinData> (getQuizPinData());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -849,14 +849,14 @@ AdUpdateRequest::setStatus(EntityStatus  status)
 	this->status = status;
 }
 
-AdCommon_tracking_urls
+TrackingUrls
 AdUpdateRequest::getTrackingUrls()
 {
 	return tracking_urls;
 }
 
 void
-AdUpdateRequest::setTrackingUrls(AdCommon_tracking_urls  tracking_urls)
+AdUpdateRequest::setTrackingUrls(TrackingUrls  tracking_urls)
 {
 	this->tracking_urls = tracking_urls;
 }
@@ -909,14 +909,14 @@ AdUpdateRequest::setCustomizableCtaType(std::string  customizable_cta_type)
 	this->customizable_cta_type = customizable_cta_type;
 }
 
-AdCommon_quiz_pin_data
+QuizPinData
 AdUpdateRequest::getQuizPinData()
 {
 	return quiz_pin_data;
 }
 
 void
-AdUpdateRequest::setQuizPinData(AdCommon_quiz_pin_data  quiz_pin_data)
+AdUpdateRequest::setQuizPinData(QuizPinData  quiz_pin_data)
 {
 	this->quiz_pin_data = quiz_pin_data;
 }

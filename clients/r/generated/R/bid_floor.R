@@ -17,15 +17,13 @@ BidFloor <- R6::R6Class(
   public = list(
     `bid_floors` = NULL,
     `type` = NULL,
-    #' Initialize a new BidFloor class.
-    #'
+
     #' @description
     #' Initialize a new BidFloor class.
     #'
     #' @param bid_floors A list of bid floors in micro currency. For example, [100000, 200000]
     #' @param type Always the string 'bidfloor'. Default to "bidfloor".
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`bid_floors` = NULL, `type` = "bidfloor", ...) {
       if (!is.null(`bid_floors`)) {
         stopifnot(is.vector(`bid_floors`), length(`bid_floors`) != 0)
@@ -39,13 +37,11 @@ BidFloor <- R6::R6Class(
         self$`type` <- `type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BidFloor in JSON format
-    #' @export
     toJSON = function() {
       BidFloorObject <- list()
       if (!is.null(self$`bid_floors`)) {
@@ -58,14 +54,12 @@ BidFloor <- R6::R6Class(
       }
       BidFloorObject
     },
-    #' Deserialize JSON string into an instance of BidFloor
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BidFloor
     #'
     #' @param input_json the JSON input
     #' @return the instance of BidFloor
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`bid_floors`)) {
@@ -76,13 +70,11 @@ BidFloor <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BidFloor in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`bid_floors`)) {
@@ -105,67 +97,54 @@ BidFloor <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BidFloor
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BidFloor
     #'
     #' @param input_json the JSON input
     #' @return the instance of BidFloor
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`bid_floors` <- ApiClient$new()$deserializeObj(this_object$`bid_floors`, "array[integer]", loadNamespace("openapi"))
       self$`type` <- this_object$`type`
       self
     },
-    #' Validate JSON input with respect to BidFloor
-    #'
+
     #' @description
     #' Validate JSON input with respect to BidFloor and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BidFloor
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

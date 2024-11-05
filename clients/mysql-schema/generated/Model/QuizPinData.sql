@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `QuizPinData`
 --
-SELECT `questions`, `results` FROM `QuizPinData` WHERE 1;
+SELECT `questions`, `results`, `tie_breaker_type`, `tie_breaker_custom_result` FROM `QuizPinData` WHERE 1;
 
 --
 -- INSERT template for table `QuizPinData`
 --
-INSERT INTO `QuizPinData`(`questions`, `results`) VALUES (?, ?);
+INSERT INTO `QuizPinData`(`questions`, `results`, `tie_breaker_type`, `tie_breaker_custom_result`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `QuizPinData`
 --
-UPDATE `QuizPinData` SET `questions` = ?, `results` = ? WHERE 1;
+UPDATE `QuizPinData` SET `questions` = ?, `results` = ?, `tie_breaker_type` = ?, `tie_breaker_custom_result` = ? WHERE 1;
 
 --
 -- DELETE template for table `QuizPinData`

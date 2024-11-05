@@ -55,16 +55,14 @@ class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     String conversionTagId
     
     String cpaGoalValueInMicroCurrency
-    /* Ad group is ROAS optimized */
+    /* ROAS optimization is not supported */
     Boolean isRoasOptimized
 
     enum LearningModeTypeEnum {
     
         NOT_ACTIVE("NOT_ACTIVE"),
         
-        ACTIVE("ACTIVE"),
-        
-        NULL("null")
+        ACTIVE("ACTIVE")
     
         private final String value
     

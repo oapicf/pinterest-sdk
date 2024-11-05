@@ -17,15 +17,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionTagConfigs")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionTagConfigs   {
-  private @Valid Boolean aemEnabled = false;
-  private @Valid BigDecimal mdFrequency = new BigDecimal("1");
-  private @Valid Boolean aemFnlnEnabled = false;
-  private @Valid Boolean aemPhEnabled = false;
-  private @Valid Boolean aemGeEnabled = false;
-  private @Valid Boolean aemDbEnabled = false;
-  private @Valid Boolean aemLocEnabled = false;
+  private Boolean aemEnabled = false;
+  private BigDecimal mdFrequency = new BigDecimal("1");
+  private Boolean aemFnlnEnabled = false;
+  private Boolean aemPhEnabled = false;
+  private Boolean aemGeEnabled = false;
+  private Boolean aemDbEnabled = false;
+  private Boolean aemLocEnabled = false;
 
   /**
    * Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
@@ -58,7 +58,7 @@ public class ConversionTagConfigs   {
   
   @ApiModelProperty(example = "0.6", value = "Metadata ingestion frequency.")
   @JsonProperty("md_frequency")
-  public BigDecimal getMdFrequency() {
+  @Valid public BigDecimal getMdFrequency() {
     return mdFrequency;
   }
 

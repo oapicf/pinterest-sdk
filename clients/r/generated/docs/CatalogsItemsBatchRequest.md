@@ -6,7 +6,7 @@ Request object of catalogs items batch
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | [Enum: ] 
-**language** | [**Language**](Language.md) |  | [Enum: ] 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequest_language.md) |  | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | [Enum: ] 
 **items** | [**array[ItemDeleteBatchRecord]**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
 

@@ -19,7 +19,7 @@ Protected Class UpdatableItemAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+			The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 		#tag EndNote
 		age_group As Xoson.O.OptionalString
 	#tag EndProperty
@@ -27,7 +27,7 @@ Protected Class UpdatableItemAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+			The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
 		#tag EndNote
 		availability As Xoson.O.OptionalString
 	#tag EndProperty
@@ -139,7 +139,7 @@ Protected Class UpdatableItemAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+			The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
 		#tag EndNote
 		gender As Xoson.O.OptionalString
 	#tag EndProperty
@@ -315,7 +315,7 @@ Protected Class UpdatableItemAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+			Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
 		#tag EndNote
 		size_system As Xoson.O.OptionalString
 	#tag EndProperty
@@ -323,7 +323,7 @@ Protected Class UpdatableItemAttributes
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+			Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
 		#tag EndNote
 		size_type As Xoson.O.OptionalString
 	#tag EndProperty

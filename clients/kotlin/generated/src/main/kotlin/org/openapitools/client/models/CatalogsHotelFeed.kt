@@ -28,6 +28,9 @@ import com.squareup.moshi.JsonClass
 /**
  * Catalogs Hotel Feed object
  *
+ * @param createdAt 
+ * @param id 
+ * @param updatedAt 
  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
  * @param format 
  * @param catalogType 
@@ -38,13 +41,19 @@ import com.squareup.moshi.JsonClass
  * @param defaultCurrency 
  * @param defaultLocale The locale used within a feed for product descriptions.
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  */
 
 
 data class CatalogsHotelFeed (
+
+    @Json(name = "created_at")
+    val createdAt: java.time.OffsetDateTime,
+
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    @Json(name = "updated_at")
+    val updatedAt: java.time.OffsetDateTime,
 
     /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     @Json(name = "name")
@@ -78,16 +87,10 @@ data class CatalogsHotelFeed (
 
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     @Json(name = "catalog_id")
-    val catalogId: kotlin.String?,
+    val catalogId: kotlin.String?
 
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime? = null,
+) {
 
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
-    @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime? = null
-
-)
+}
 

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```powershell
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```powershell
@@ -86,7 +86,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # Get ads credit discounts
 try {
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```powershell
@@ -142,7 +142,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $IsActive = $true # Boolean | Return active billing profiles, if false return all billing profiles.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # Get billing profiles
 try {
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **IsActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -347,7 +347,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # Get insertion order status by ad account id.
 try {
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -453,7 +453,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $PinOrderId = "0Q01N0000015hekSVDFDC" # String | The pin order id associated with the ssio insertino order (optional)
 
 # Get Salesforce order lines by ad account id.
@@ -471,7 +471,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **PinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional] 
 
 ### Return type

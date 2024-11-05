@@ -14,6 +14,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsVerticalFeedsUpdateRequest.openapi_one_of
 # =>
 # [
+#   :'CatalogsCreativeAssetsFeedsUpdateRequest',
 #   :'CatalogsHotelFeedsUpdateRequest',
 #   :'CatalogsRetailFeedsUpdateRequest'
 # ]
@@ -44,6 +45,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsVerticalFeedsUpdateRequest.openapi_discriminator_mapping
 # =>
 # {
+#   :'CREATIVE_ASSETS' => :'CatalogsCreativeAssetsFeedsUpdateRequest',
 #   :'HOTEL' => :'CatalogsHotelFeedsUpdateRequest',
 #   :'RETAIL' => :'CatalogsRetailFeedsUpdateRequest'
 # }
@@ -59,7 +61,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::CatalogsVerticalFeedsUpdateRequest.build(data)
-# => #<CatalogsHotelFeedsUpdateRequest:0x00007fdd4aab02a0>
+# => #<CatalogsCreativeAssetsFeedsUpdateRequest:0x00007fdd4aab02a0>
 
 PinterestSdkClient::CatalogsVerticalFeedsUpdateRequest.build(data_that_doesnt_match)
 # => nil
@@ -73,6 +75,7 @@ PinterestSdkClient::CatalogsVerticalFeedsUpdateRequest.build(data_that_doesnt_ma
 
 #### Return type
 
+- `CatalogsCreativeAssetsFeedsUpdateRequest`
 - `CatalogsHotelFeedsUpdateRequest`
 - `CatalogsRetailFeedsUpdateRequest`
 - `nil` (if no type matches)

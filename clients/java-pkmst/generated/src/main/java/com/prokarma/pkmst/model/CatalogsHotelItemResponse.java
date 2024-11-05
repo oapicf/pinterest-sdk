@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object describing a hotel record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -43,10 +43,10 @@ public class CatalogsHotelItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -61,10 +61,10 @@ public class CatalogsHotelItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
   public String getHotelId() {
     return hotelId;
@@ -87,10 +87,10 @@ public class CatalogsHotelItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * The pins mapped to the item
    * @return pins
-  **/
+   */
   @ApiModelProperty(value = "The pins mapped to the item")
   public List<Pin> getPins() {
     return pins;
@@ -105,10 +105,10 @@ public class CatalogsHotelItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get attributes
    * @return attributes
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsHotelAttributes getAttributes() {
     return attributes;

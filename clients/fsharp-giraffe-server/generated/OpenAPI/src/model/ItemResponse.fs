@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CatalogsHotelAttributes
+open OpenAPI.Model.CatalogsCreativeAssetsAttributes
 open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.ItemResponseAnyOf
 open OpenAPI.Model.ItemResponseAnyOf1
@@ -19,5 +19,6 @@ module ItemResponse =
     ItemId : string;
     Errors : ItemValidationEvent[];
     HotelId : string;
+    CreativeAssetsId : string;
   }
   //#endregion

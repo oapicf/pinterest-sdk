@@ -33,7 +33,7 @@ data class IntegrationLogsInvalidLogResponseRejectedLogsInner(
 
     @Schema(example = "null", description = "Index of the log in the batch.")
     @get:JsonProperty("log_index") val logIndex: kotlin.Int? = null
-) {
+    ) {
 
 }
 

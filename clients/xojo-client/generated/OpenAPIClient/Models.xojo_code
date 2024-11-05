@@ -546,6 +546,80 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function AdsAnalyticsAdTargetingTypeToString(value As AdsAnalyticsAdTargetingType) As String
+		  Select Case value
+		    Case AdsAnalyticsAdTargetingType.Keyword
+		      Return "KEYWORD"
+		    Case AdsAnalyticsAdTargetingType.Apptype
+		      Return "APPTYPE"
+		    Case AdsAnalyticsAdTargetingType.Gender
+		      Return "GENDER"
+		    Case AdsAnalyticsAdTargetingType.Location
+		      Return "LOCATION"
+		    Case AdsAnalyticsAdTargetingType.Placement
+		      Return "PLACEMENT"
+		    Case AdsAnalyticsAdTargetingType.Country
+		      Return "COUNTRY"
+		    Case AdsAnalyticsAdTargetingType.TargetedInterest
+		      Return "TARGETED_INTEREST"
+		    Case AdsAnalyticsAdTargetingType.PinnerInterest
+		      Return "PINNER_INTEREST"
+		    Case AdsAnalyticsAdTargetingType.AudienceInclude
+		      Return "AUDIENCE_INCLUDE"
+		    Case AdsAnalyticsAdTargetingType.Geo
+		      Return "GEO"
+		    Case AdsAnalyticsAdTargetingType.AgeBucket
+		      Return "AGE_BUCKET"
+		    Case AdsAnalyticsAdTargetingType.Region
+		      Return "REGION"
+		    Case AdsAnalyticsAdTargetingType.QuizResult
+		      Return "QUIZ_RESULT"
+		    Case AdsAnalyticsAdTargetingType.AgeBucketAndGender
+		      Return "AGE_BUCKET_AND_GENDER"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function AdsAnalyticsCampaignTargetingTypeToString(value As AdsAnalyticsCampaignTargetingType) As String
+		  Select Case value
+		    Case AdsAnalyticsCampaignTargetingType.Keyword
+		      Return "KEYWORD"
+		    Case AdsAnalyticsCampaignTargetingType.Apptype
+		      Return "APPTYPE"
+		    Case AdsAnalyticsCampaignTargetingType.Gender
+		      Return "GENDER"
+		    Case AdsAnalyticsCampaignTargetingType.Location
+		      Return "LOCATION"
+		    Case AdsAnalyticsCampaignTargetingType.Placement
+		      Return "PLACEMENT"
+		    Case AdsAnalyticsCampaignTargetingType.Country
+		      Return "COUNTRY"
+		    Case AdsAnalyticsCampaignTargetingType.TargetedInterest
+		      Return "TARGETED_INTEREST"
+		    Case AdsAnalyticsCampaignTargetingType.PinnerInterest
+		      Return "PINNER_INTEREST"
+		    Case AdsAnalyticsCampaignTargetingType.AudienceInclude
+		      Return "AUDIENCE_INCLUDE"
+		    Case AdsAnalyticsCampaignTargetingType.Geo
+		      Return "GEO"
+		    Case AdsAnalyticsCampaignTargetingType.AgeBucket
+		      Return "AGE_BUCKET"
+		    Case AdsAnalyticsCampaignTargetingType.Region
+		      Return "REGION"
+		    Case AdsAnalyticsCampaignTargetingType.CreativeType
+		      Return "CREATIVE_TYPE"
+		    Case AdsAnalyticsCampaignTargetingType.AgeBucketAndGender
+		      Return "AGE_BUCKET_AND_GENDER"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function AdsAnalyticsFilterColumnToString(value As AdsAnalyticsFilterColumn) As String
 		  Select Case value
 		    Case AdsAnalyticsFilterColumn.SpendInDollar
@@ -598,6 +672,51 @@ Protected Module Models
 		      Return "AGE_BUCKET"
 		    Case AdsAnalyticsTargetingType.Region
 		      Return "REGION"
+		    Case AdsAnalyticsTargetingType.AgeBucketAndGender
+		      Return "AGE_BUCKET_AND_GENDER"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function AdvancedAuctionOperationToString(value As AdvancedAuctionOperation) As String
+		  Select Case value
+		    Case AdvancedAuctionOperation.Upsert
+		      Return "UPSERT"
+		    Case AdvancedAuctionOperation.Delete
+		      Return "DELETE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function AssetGroupTypeToString(value As AssetGroupType) As String
+		  Select Case value
+		    Case AssetGroupType.Brand
+		      Return "BRAND"
+		    Case AssetGroupType.LocationOrLanguage
+		      Return "LOCATION_OR_LANGUAGE"
+		    Case AssetGroupType.ProductLine
+		      Return "PRODUCT_LINE"
+		    Case AssetGroupType.Other
+		      Return "OTHER"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function AudienceAccountTypeToString(value As AudienceAccountType) As String
+		  Select Case value
+		    Case AudienceAccountType.AdAccount
+		      Return "AD_ACCOUNT"
+		    Case AudienceAccountType.BusinessAccount
+		      Return "BUSINESS_ACCOUNT"
 		    
 		  End Select
 		  Return ""
@@ -626,6 +745,19 @@ Protected Module Models
 		      Return "YOUR_ENGAGED_AUDIENCE"
 		    Case AudienceInsightType.PinterestTotalAudience
 		      Return "PINTEREST_TOTAL_AUDIENCE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function AudienceShareTypeToString(value As AudienceShareType) As String
+		  Select Case value
+		    Case AudienceShareType.Escapedshared
+		      Return "SHARED"
+		    Case AudienceShareType.Received
+		      Return "RECEIVED"
 		    
 		  End Select
 		  Return ""
@@ -703,6 +835,8 @@ Protected Module Models
 		      Return "PROCESSING"
 		    Case BatchOperationStatus.Completed
 		      Return "COMPLETED"
+		    Case BatchOperationStatus.Failed
+		      Return "FAILED"
 		    
 		  End Select
 		  Return ""
@@ -832,6 +966,47 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function BusinessRoleToString(value As BusinessRole) As String
+		  Select Case value
+		    Case BusinessRole.Employee
+		      Return "EMPLOYEE"
+		    Case BusinessRole.BizAdmin
+		      Return "BIZ_ADMIN"
+		    Case BusinessRole.Partner
+		      Return "PARTNER"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function BusinessRoleCheckModeToString(value As BusinessRoleCheckMode) As String
+		  Select Case value
+		    Case BusinessRoleCheckMode.Internal
+		      Return "INTERNAL"
+		    Case BusinessRoleCheckMode.External
+		      Return "EXTERNAL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function BusinessRoleForMembersToString(value As BusinessRoleForMembers) As String
+		  Select Case value
+		    Case BusinessRoleForMembers.Employee
+		      Return "EMPLOYEE"
+		    Case BusinessRoleForMembers.BizAdmin
+		      Return "BIZ_ADMIN"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function CampaignSummaryStatusToString(value As CampaignSummaryStatus) As String
 		  Select Case value
 		    Case CampaignSummaryStatus.Running
@@ -861,20 +1036,10 @@ Protected Module Models
 		  Select Case value
 		    Case CatalogsFeedProcessingStatus.Completed
 		      Return "COMPLETED"
-		    Case CatalogsFeedProcessingStatus.CompletedEarly
-		      Return "COMPLETED_EARLY"
-		    Case CatalogsFeedProcessingStatus.Disapproved
-		      Return "DISAPPROVED"
 		    Case CatalogsFeedProcessingStatus.Failed
 		      Return "FAILED"
 		    Case CatalogsFeedProcessingStatus.Processing
 		      Return "PROCESSING"
-		    Case CatalogsFeedProcessingStatus.QueuedForProcessing
-		      Return "QUEUED_FOR_PROCESSING"
-		    Case CatalogsFeedProcessingStatus.UnderAppeal
-		      Return "UNDER_APPEAL"
-		    Case CatalogsFeedProcessingStatus.UnderReview
-		      Return "UNDER_REVIEW"
 		    
 		  End Select
 		  Return ""
@@ -1200,6 +1365,8 @@ Protected Module Models
 		      Return "RETAIL"
 		    Case CatalogsType.Hotel
 		      Return "HOTEL"
+		    Case CatalogsType.CreativeAssets
+		      Return "CREATIVE_ASSETS"
 		    
 		  End Select
 		  Return ""
@@ -1777,6 +1944,19 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function CreativeAssetsVisibilityTypeToString(value As CreativeAssetsVisibilityType) As String
+		  Select Case value
+		    Case CreativeAssetsVisibilityType.Visible
+		      Return "VISIBLE"
+		    Case CreativeAssetsVisibilityType.Hidden
+		      Return "HIDDEN"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function CreativeTypeToString(value As CreativeType) As String
 		  Select Case value
 		    Case CreativeType.Regular
@@ -1858,6 +2038,10 @@ Protected Module Models
 		      Return "CLP"
 		    Case Currency.Cop
 		      Return "COP"
+		    Case Currency.Inr
+		      Return "INR"
+		    Case Currency.Escapedtry
+		      Return "TRY"
 		    
 		  End Select
 		  Return ""
@@ -1943,8 +2127,6 @@ Protected Module Models
 		      Return "VALIDATING_IN_PROGRESS"
 		    Case EnhancedMatchStatusType.ValidationComplete
 		      Return "VALIDATION_COMPLETE"
-		    Case EnhancedMatchStatusType.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -2011,6 +2193,23 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function GetBusinessAssetTypeResponseToString(value As GetBusinessAssetTypeResponse) As String
+		  Select Case value
+		    Case GetBusinessAssetTypeResponse.AdAccount
+		      Return "AD_ACCOUNT"
+		    Case GetBusinessAssetTypeResponse.Profile
+		      Return "PROFILE"
+		    Case GetBusinessAssetTypeResponse.AssetGroup
+		      Return "ASSET_GROUP"
+		    Case GetBusinessAssetTypeResponse.ConversionTag
+		      Return "CONVERSION_TAG"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function GranularityToString(value As Granularity) As String
 		  Select Case value
 		    Case Granularity.Total
@@ -2036,6 +2235,40 @@ Protected Module Models
 		      Return "CLOSEUP"
 		    Case GridClickType.DirectToDestination
 		      Return "DIRECT_TO_DESTINATION"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function InviteStatusToString(value As InviteStatus) As String
+		  Select Case value
+		    Case InviteStatus.Pending
+		      Return "PENDING"
+		    Case InviteStatus.Accepted
+		      Return "ACCEPTED"
+		    Case InviteStatus.Declined
+		      Return "DECLINED"
+		    Case InviteStatus.Cancelled
+		      Return "CANCELLED"
+		    Case InviteStatus.Expired
+		      Return "EXPIRED"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function InviteTypeToString(value As InviteType) As String
+		  Select Case value
+		    Case InviteType.MemberInvite
+		      Return "MEMBER_INVITE"
+		    Case InviteType.PartnerInvite
+		      Return "PARTNER_INVITE"
+		    Case InviteType.PartnerRequest
+		      Return "PARTNER_REQUEST"
 		    
 		  End Select
 		  Return ""
@@ -2199,8 +2432,6 @@ Protected Module Models
 		      Return "RADIO_LIST"
 		    Case LeadFormQuestionFieldType.Checkbox
 		      Return "CHECKBOX"
-		    Case LeadFormQuestionFieldType.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -2224,22 +2455,20 @@ Protected Module Models
 		      Return "PHONE_NUMBER"
 		    Case LeadFormQuestionType.ZipCode
 		      Return "ZIP_CODE"
-		    Case LeadFormQuestionType.Age
-		      Return "AGE"
 		    Case LeadFormQuestionType.Gender
 		      Return "GENDER"
 		    Case LeadFormQuestionType.City
 		      Return "CITY"
 		    Case LeadFormQuestionType.Country
 		      Return "COUNTRY"
-		    Case LeadFormQuestionType.PreferredContactMethod
-		      Return "PREFERRED_CONTACT_METHOD"
 		    Case LeadFormQuestionType.StateProvince
 		      Return "STATE_PROVINCE"
 		    Case LeadFormQuestionType.Address
 		      Return "ADDRESS"
 		    Case LeadFormQuestionType.DateOfBirth
 		      Return "DATE_OF_BIRTH"
+		    Case LeadFormQuestionType.Age
+		      Return "AGE"
 		    
 		  End Select
 		  Return ""
@@ -2253,6 +2482,21 @@ Protected Module Models
 		      Return "DRAFT"
 		    Case LeadFormStatus.Active
 		      Return "ACTIVE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function LeadsExportStatusToString(value As LeadsExportStatus) As String
+		  Select Case value
+		    Case LeadsExportStatus.InProgress
+		      Return "IN_PROGRESS"
+		    Case LeadsExportStatus.Finished
+		      Return "FINISHED"
+		    Case LeadsExportStatus.Failed
+		      Return "FAILED"
 		    
 		  End Select
 		  Return ""
@@ -2359,8 +2603,19 @@ Protected Module Models
 		      Return "EXACT_NEGATIVE"
 		    Case MatchTypeResponse.PhraseNegative
 		      Return "PHRASE_NEGATIVE"
-		    Case MatchTypeResponse.Null
-		      Return "null"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function MediaTypeToString(value As MediaType) As String
+		  Select Case value
+		    Case MediaType.Image
+		      Return "IMAGE"
+		    Case MediaType.Video
+		      Return "VIDEO"
 		    
 		  End Select
 		  Return ""
@@ -2396,6 +2651,19 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function MemberBusinessRoleToString(value As MemberBusinessRole) As String
+		  Select Case value
+		    Case MemberBusinessRole.Employee
+		      Return "EMPLOYEE"
+		    Case MemberBusinessRole.BizAdmin
+		      Return "BIZ_ADMIN"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function MetricsReportingLevelToString(value As MetricsReportingLevel) As String
 		  Select Case value
 		    Case MetricsReportingLevel.Advertiser
@@ -2422,6 +2690,8 @@ Protected Module Models
 		      Return "PRODUCT_GROUP_TARGETING"
 		    Case MetricsReportingLevel.ProductItem
 		      Return "PRODUCT_ITEM"
+		    Case MetricsReportingLevel.ProductItemTargeting
+		      Return "PRODUCT_ITEM_TARGETING"
 		    
 		  End Select
 		  Return ""
@@ -2893,8 +3163,6 @@ Protected Module Models
 		      Return "SHIPPING_WIDTH"
 		    Case NullableCatalogsItemFieldType.ShippingHeight
 		      Return "SHIPPING_HEIGHT"
-		    Case NullableCatalogsItemFieldType.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -3230,8 +3498,6 @@ Protected Module Models
 		      Return "ZMW"
 		    Case NullableCurrency.Zwd
 		      Return "ZWD"
-		    Case NullableCurrency.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -3253,6 +3519,21 @@ Protected Module Models
 		      Return "CATALOG_SALES"
 		    Case ObjectiveType.WebSessions
 		      Return "WEB_SESSIONS"
+		    Case ObjectiveType.VideoCompletion
+		      Return "VIDEO_COMPLETION"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function OperationTypeToString(value As OperationType) As String
+		  Select Case value
+		    Case OperationType.Share
+		      Return "SHARE"
+		    Case OperationType.Revoke
+		      Return "REVOKE"
 		    
 		  End Select
 		  Return ""
@@ -3270,8 +3551,6 @@ Protected Module Models
 		      Return "MAKE_GOOD"
 		    Case OrderLinePaidType.Test
 		      Return "TEST"
-		    Case OrderLinePaidType.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -3313,6 +3592,56 @@ Protected Module Models
 		      Return "INTERNAL"
 		    Case PartnerType.External
 		      Return "EXTERNAL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function PermissionsToString(value As Permissions) As String
+		  Select Case value
+		    Case Permissions.Admin
+		      Return "ADMIN"
+		    Case Permissions.Analyst
+		      Return "ANALYST"
+		    Case Permissions.FinanceManager
+		      Return "FINANCE_MANAGER"
+		    Case Permissions.AudienceManager
+		      Return "AUDIENCE_MANAGER"
+		    Case Permissions.CampaignManager
+		      Return "CAMPAIGN_MANAGER"
+		    Case Permissions.CatalogsManager
+		      Return "CATALOGS_MANAGER"
+		    Case Permissions.ProfilePublisher
+		      Return "PROFILE_PUBLISHER"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function PermissionsWithOwnerToString(value As PermissionsWithOwner) As String
+		  Select Case value
+		    Case PermissionsWithOwner.Admin
+		      Return "ADMIN"
+		    Case PermissionsWithOwner.Analyst
+		      Return "ANALYST"
+		    Case PermissionsWithOwner.FinanceManager
+		      Return "FINANCE_MANAGER"
+		    Case PermissionsWithOwner.AudienceManager
+		      Return "AUDIENCE_MANAGER"
+		    Case PermissionsWithOwner.CampaignManager
+		      Return "CAMPAIGN_MANAGER"
+		    Case PermissionsWithOwner.CatalogsManager
+		      Return "CATALOGS_MANAGER"
+		    Case PermissionsWithOwner.CatalogsViewer
+		      Return "CATALOGS_VIEWER"
+		    Case PermissionsWithOwner.ProfilePublisher
+		      Return "PROFILE_PUBLISHER"
+		    Case PermissionsWithOwner.Owner
+		      Return "OWNER"
 		    
 		  End Select
 		  Return ""
@@ -3370,8 +3699,6 @@ Protected Module Models
 		      Return "OUT_OF_STOCK"
 		    Case ProductAvailabilityType.Preorder
 		      Return "PREORDER"
-		    Case ProductAvailabilityType.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""
@@ -3932,8 +4259,16 @@ Protected Module Models
 		      Return "TOTAL_CHECKOUT"
 		    Case ReportingColumnAsync.TotalCustom
 		      Return "TOTAL_CUSTOM"
+		    Case ReportingColumnAsync.TotalAddToCart
+		      Return "TOTAL_ADD_TO_CART"
 		    Case ReportingColumnAsync.TotalLead
 		      Return "TOTAL_LEAD"
+		    Case ReportingColumnAsync.TotalSearch
+		      Return "TOTAL_SEARCH"
+		    Case ReportingColumnAsync.TotalWatchVideo
+		      Return "TOTAL_WATCH_VIDEO"
+		    Case ReportingColumnAsync.TotalViewCategory
+		      Return "TOTAL_VIEW_CATEGORY"
 		    Case ReportingColumnAsync.TotalAppInstall
 		      Return "TOTAL_APP_INSTALL"
 		    Case ReportingColumnAsync.TotalSignupValueInMicroDollar
@@ -3942,6 +4277,16 @@ Protected Module Models
 		      Return "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
 		    Case ReportingColumnAsync.TotalCustomValueInMicroDollar
 		      Return "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.TotalAddToCartValueInMicroDollar
+		      Return "TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.TotalLeadValueInMicroDollar
+		      Return "TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.TotalSearchValueInMicroDollar
+		      Return "TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.TotalWatchVideoValueInMicroDollar
+		      Return "TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR"
+		    Case ReportingColumnAsync.TotalViewCategoryValueInMicroDollar
+		      Return "TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR"
 		    Case ReportingColumnAsync.TotalAppInstallValueInMicroDollar
 		      Return "TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"
 		    Case ReportingColumnAsync.TotalCheckoutQuantity
@@ -3988,6 +4333,8 @@ Protected Module Models
 		      Return "VIDEO_P95_COMBINED_2"
 		    Case ReportingColumnAsync.VideoMrcViews2
 		      Return "VIDEO_MRC_VIEWS_2"
+		    Case ReportingColumnAsync.PaidVideoViewableRate
+		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ReportingColumnAsync.VideoLength
 		      Return "VIDEO_LENGTH"
 		    Case ReportingColumnAsync.CpvInMicroDollar
@@ -4024,6 +4371,8 @@ Protected Module Models
 		      Return "VIDEO_AVG_WATCHTIME_IN_SECOND_2"
 		    Case ReportingColumnAsync.TotalVideoAvgWatchtimeInSecond
 		      Return "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"
+		    Case ReportingColumnAsync.TotalDestinationViews
+		      Return "TOTAL_DESTINATION_VIEWS"
 		    Case ReportingColumnAsync.TotalRepinRate
 		      Return "TOTAL_REPIN_RATE"
 		    Case ReportingColumnAsync.WebCheckoutCostPerAction
@@ -4653,6 +5002,27 @@ Protected Module Models
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Protected Function TargetingSpecAppTypeToString(value As TargetingSpecAppType) As String
+		  Select Case value
+		    Case TargetingSpecAppType.AndroidMobile
+		      Return "android_mobile"
+		    Case TargetingSpecAppType.AndroidTablet
+		      Return "android_tablet"
+		    Case TargetingSpecAppType.Ipad
+		      Return "ipad"
+		    Case TargetingSpecAppType.Iphone
+		      Return "iphone"
+		    Case TargetingSpecAppType.Web
+		      Return "web"
+		    Case TargetingSpecAppType.WebMobile
+		      Return "web_mobile"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Protected Function TrendTypeToString(value As TrendType) As String
 		  Select Case value
 		    Case TrendType.Growing
@@ -4708,6 +5078,21 @@ Protected Module Models
 		      Return "MX+AR+CO+CL"
 		    Case TrendsSupportedRegion.AuPlusNz
 		      Return "AU+NZ"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Protected Function UpdateMaskBidOptionFieldToString(value As UpdateMaskBidOptionField) As String
+		  Select Case value
+		    Case UpdateMaskBidOptionField.Bid
+		      Return "BID"
+		    Case UpdateMaskBidOptionField.AppTypeBidMultiplierSet
+		      Return "APP_TYPE_BID_MULTIPLIER_SET"
+		    Case UpdateMaskBidOptionField.PlacementBidMultiplierSet
+		      Return "PLACEMENT_BID_MULTIPLIER_SET"
 		    
 		  End Select
 		  Return ""
@@ -5132,6 +5517,42 @@ Protected Module Models
 		DeletedDraft
 		
 	#tag EndEnum
+	#tag Enum, Name = AdsAnalyticsAdTargetingType, Type = Integer, Flags = &h1
+		
+		Keyword
+		Apptype
+		Gender
+		Location
+		Placement
+		Country
+		TargetedInterest
+		PinnerInterest
+		AudienceInclude
+		Geo
+		AgeBucket
+		Region
+		QuizResult
+		AgeBucketAndGender
+		
+	#tag EndEnum
+	#tag Enum, Name = AdsAnalyticsCampaignTargetingType, Type = Integer, Flags = &h1
+		
+		Keyword
+		Apptype
+		Gender
+		Location
+		Placement
+		Country
+		TargetedInterest
+		PinnerInterest
+		AudienceInclude
+		Geo
+		AgeBucket
+		Region
+		CreativeType
+		AgeBucketAndGender
+		
+	#tag EndEnum
 	#tag Enum, Name = AdsAnalyticsFilterColumn, Type = Integer, Flags = &h1
 		
 		SpendInDollar
@@ -5158,6 +5579,27 @@ Protected Module Models
 		Geo
 		AgeBucket
 		Region
+		AgeBucketAndGender
+		
+	#tag EndEnum
+	#tag Enum, Name = AdvancedAuctionOperation, Type = Integer, Flags = &h1
+		
+		Upsert
+		Delete
+		
+	#tag EndEnum
+	#tag Enum, Name = AssetGroupType, Type = Integer, Flags = &h1
+		
+		Brand
+		LocationOrLanguage
+		ProductLine
+		Other
+		
+	#tag EndEnum
+	#tag Enum, Name = AudienceAccountType, Type = Integer, Flags = &h1
+		
+		AdAccount
+		BusinessAccount
 		
 	#tag EndEnum
 	#tag Enum, Name = AudienceDataParty, Type = Integer, Flags = &h1
@@ -5171,6 +5613,12 @@ Protected Module Models
 		YourTotalAudience
 		YourEngagedAudience
 		PinterestTotalAudience
+		
+	#tag EndEnum
+	#tag Enum, Name = AudienceShareType, Type = Integer, Flags = &h1
+		
+		Escapedshared
+		Received
 		
 	#tag EndEnum
 	#tag Enum, Name = AudienceSharingType, Type = Integer, Flags = &h1
@@ -5207,6 +5655,7 @@ Protected Module Models
 		
 		Processing
 		Completed
+		Failed
 		
 	#tag EndEnum
 	#tag Enum, Name = BudgetType, Type = Integer, Flags = &h1
@@ -5267,6 +5716,25 @@ Protected Module Models
 		ResourceConversionTagsReader
 		
 	#tag EndEnum
+	#tag Enum, Name = BusinessRole, Type = Integer, Flags = &h1
+		
+		Employee
+		BizAdmin
+		Partner
+		
+	#tag EndEnum
+	#tag Enum, Name = BusinessRoleCheckMode, Type = Integer, Flags = &h1
+		
+		Internal
+		External
+		
+	#tag EndEnum
+	#tag Enum, Name = BusinessRoleForMembers, Type = Integer, Flags = &h1
+		
+		Employee
+		BizAdmin
+		
+	#tag EndEnum
 	#tag Enum, Name = CampaignSummaryStatus, Type = Integer, Flags = &h1
 		
 		Running
@@ -5282,13 +5750,8 @@ Protected Module Models
 	#tag Enum, Name = CatalogsFeedProcessingStatus, Type = Integer, Flags = &h1
 		
 		Completed
-		CompletedEarly
-		Disapproved
 		Failed
 		Processing
-		QueuedForProcessing
-		UnderAppeal
-		UnderReview
 		
 	#tag EndEnum
 	#tag Enum, Name = CatalogsFormat, Type = Integer, Flags = &h1
@@ -5448,6 +5911,7 @@ Protected Module Models
 		
 		Retail
 		Hotel
+		CreativeAssets
 		
 	#tag EndEnum
 	#tag Enum, Name = ConversionAttributionWindowDays, Type = Integer, Flags = &h1
@@ -5743,6 +6207,12 @@ Protected Module Models
 		Zw
 		
 	#tag EndEnum
+	#tag Enum, Name = CreativeAssetsVisibilityType, Type = Integer, Flags = &h1
+		
+		Visible
+		Hidden
+		
+	#tag EndEnum
 	#tag Enum, Name = CreativeType, Type = Integer, Flags = &h1
 		
 		Regular
@@ -5784,6 +6254,8 @@ Protected Module Models
 		Ars
 		Clp
 		Cop
+		Inr
+		Escapedtry
 		
 	#tag EndEnum
 	#tag Enum, Name = DataOutputFormat, Type = Integer, Flags = &h1
@@ -5825,7 +6297,6 @@ Protected Module Models
 		NotValidated
 		ValidatingInProgress
 		ValidationComplete
-		Null
 		
 	#tag EndEnum
 	#tag Enum, Name = EntityStatus, Type = Integer, Flags = &h1
@@ -5856,6 +6327,14 @@ Protected Module Models
 		Type
 		
 	#tag EndEnum
+	#tag Enum, Name = GetBusinessAssetTypeResponse, Type = Integer, Flags = &h1
+		
+		AdAccount
+		Profile
+		AssetGroup
+		ConversionTag
+		
+	#tag EndEnum
 	#tag Enum, Name = Granularity, Type = Integer, Flags = &h1
 		
 		Total
@@ -5869,6 +6348,22 @@ Protected Module Models
 		
 		Closeup
 		DirectToDestination
+		
+	#tag EndEnum
+	#tag Enum, Name = InviteStatus, Type = Integer, Flags = &h1
+		
+		Pending
+		Accepted
+		Declined
+		Cancelled
+		Expired
+		
+	#tag EndEnum
+	#tag Enum, Name = InviteType, Type = Integer, Flags = &h1
+		
+		MemberInvite
+		PartnerInvite
+		PartnerRequest
 		
 	#tag EndEnum
 	#tag Enum, Name = ItemProcessingStatus, Type = Integer, Flags = &h1
@@ -5949,7 +6444,6 @@ Protected Module Models
 		TextArea
 		RadioList
 		Checkbox
-		Null
 		
 	#tag EndEnum
 	#tag Enum, Name = LeadFormQuestionType, Type = Integer, Flags = &h1
@@ -5961,20 +6455,26 @@ Protected Module Models
 		Email
 		PhoneNumber
 		ZipCode
-		Age
 		Gender
 		City
 		Country
-		PreferredContactMethod
 		StateProvince
 		Address
 		DateOfBirth
+		Age
 		
 	#tag EndEnum
 	#tag Enum, Name = LeadFormStatus, Type = Integer, Flags = &h1
 		
 		Draft
 		Active
+		
+	#tag EndEnum
+	#tag Enum, Name = LeadsExportStatus, Type = Integer, Flags = &h1
+		
+		InProgress
+		Finished
+		Failed
 		
 	#tag EndEnum
 	#tag Enum, Name = MMMReportingColumn, Type = Integer, Flags = &h1
@@ -6026,7 +6526,12 @@ Protected Module Models
 		Exact
 		ExactNegative
 		PhraseNegative
-		Null
+		
+	#tag EndEnum
+	#tag Enum, Name = MediaType, Type = Integer, Flags = &h1
+		
+		Image
+		Video
 		
 	#tag EndEnum
 	#tag Enum, Name = MediaUploadStatus, Type = Integer, Flags = &h1
@@ -6040,6 +6545,12 @@ Protected Module Models
 	#tag Enum, Name = MediaUploadType, Type = Integer, Flags = &h1
 		
 		Video
+		
+	#tag EndEnum
+	#tag Enum, Name = MemberBusinessRole, Type = Integer, Flags = &h1
+		
+		Employee
+		BizAdmin
 		
 	#tag EndEnum
 	#tag Enum, Name = MetricsReportingLevel, Type = Integer, Flags = &h1
@@ -6056,6 +6567,7 @@ Protected Module Models
 		ProductGroup
 		ProductGroupTargeting
 		ProductItem
+		ProductItemTargeting
 		
 	#tag EndEnum
 	#tag Enum, Name = NonNullableCatalogsCurrency, Type = Integer, Flags = &h1
@@ -6290,7 +6802,6 @@ Protected Module Models
 		MinAdPrice
 		ShippingWidth
 		ShippingHeight
-		Null
 		
 	#tag EndEnum
 	#tag Enum, Name = NullableCurrency, Type = Integer, Flags = &h1
@@ -6458,7 +6969,6 @@ Protected Module Models
 		Zar
 		Zmw
 		Zwd
-		Null
 		
 	#tag EndEnum
 	#tag Enum, Name = ObjectiveType, Type = Integer, Flags = &h1
@@ -6469,6 +6979,13 @@ Protected Module Models
 		WebConversion
 		CatalogSales
 		WebSessions
+		VideoCompletion
+		
+	#tag EndEnum
+	#tag Enum, Name = OperationType, Type = Integer, Flags = &h1
+		
+		Share
+		Revoke
 		
 	#tag EndEnum
 	#tag Enum, Name = OrderLinePaidType, Type = Integer, Flags = &h1
@@ -6477,7 +6994,6 @@ Protected Module Models
 		Bonus
 		MakeGood
 		Test
-		Null
 		
 	#tag EndEnum
 	#tag Enum, Name = OrderLineStatus, Type = Integer, Flags = &h1
@@ -6497,6 +7013,30 @@ Protected Module Models
 		
 		Internal
 		External
+		
+	#tag EndEnum
+	#tag Enum, Name = Permissions, Type = Integer, Flags = &h1
+		
+		Admin
+		Analyst
+		FinanceManager
+		AudienceManager
+		CampaignManager
+		CatalogsManager
+		ProfilePublisher
+		
+	#tag EndEnum
+	#tag Enum, Name = PermissionsWithOwner, Type = Integer, Flags = &h1
+		
+		Admin
+		Analyst
+		FinanceManager
+		AudienceManager
+		CampaignManager
+		CatalogsManager
+		CatalogsViewer
+		ProfilePublisher
+		Owner
 		
 	#tag EndEnum
 	#tag Enum, Name = PinPromotionSummaryStatus, Type = Integer, Flags = &h1
@@ -6524,7 +7064,6 @@ Protected Module Models
 		InStock
 		OutOfStock
 		Preorder
-		Null
 		
 	#tag EndEnum
 	#tag Enum, Name = ProductGroupSummaryStatus, Type = Integer, Flags = &h1
@@ -6804,11 +7343,20 @@ Protected Module Models
 		TotalSignup
 		TotalCheckout
 		TotalCustom
+		TotalAddToCart
 		TotalLead
+		TotalSearch
+		TotalWatchVideo
+		TotalViewCategory
 		TotalAppInstall
 		TotalSignupValueInMicroDollar
 		TotalCheckoutValueInMicroDollar
 		TotalCustomValueInMicroDollar
+		TotalAddToCartValueInMicroDollar
+		TotalLeadValueInMicroDollar
+		TotalSearchValueInMicroDollar
+		TotalWatchVideoValueInMicroDollar
+		TotalViewCategoryValueInMicroDollar
 		TotalAppInstallValueInMicroDollar
 		TotalCheckoutQuantity
 		PageVisitCostPerAction
@@ -6832,6 +7380,7 @@ Protected Module Models
 		VideoP75Combined2
 		VideoP95Combined2
 		VideoMrcViews2
+		PaidVideoViewableRate
 		VideoLength
 		CpvInMicroDollar
 		EcpvInDollar
@@ -6850,6 +7399,7 @@ Protected Module Models
 		VideoAvgWatchtimeInSecond1
 		VideoAvgWatchtimeInSecond2
 		TotalVideoAvgWatchtimeInSecond
+		TotalDestinationViews
 		TotalRepinRate
 		WebCheckoutCostPerAction
 		WebCheckoutRoas
@@ -7162,6 +7712,16 @@ Protected Module Models
 		Co
 		
 	#tag EndEnum
+	#tag Enum, Name = TargetingSpecAppType, Type = Integer, Flags = &h1
+		
+		AndroidMobile
+		AndroidTablet
+		Ipad
+		Iphone
+		Web
+		WebMobile
+		
+	#tag EndEnum
 	#tag Enum, Name = TrendType, Type = Integer, Flags = &h1
 		
 		Growing
@@ -7190,6 +7750,13 @@ Protected Module Models
 		Mx
 		MxPlusArPlusCoPlusCl
 		AuPlusNz
+		
+	#tag EndEnum
+	#tag Enum, Name = UpdateMaskBidOptionField, Type = Integer, Flags = &h1
+		
+		Bid
+		AppTypeBidMultiplierSet
+		PlacementBidMultiplierSet
 		
 	#tag EndEnum
 	#tag Enum, Name = UpdateMaskFieldType, Type = Integer, Flags = &h1

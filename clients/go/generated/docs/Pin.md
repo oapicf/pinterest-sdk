@@ -14,12 +14,12 @@ Name | Type | Description | Notes
 **CreativeType** | Pointer to [**NullableCreativeType**](CreativeType.md) |  | [optional] [readonly] 
 **BoardId** | Pointer to **string** | The board to which this Pin belongs. | [optional] 
 **BoardSectionId** | Pointer to **NullableString** | The board section to which this Pin belongs. | [optional] 
-**BoardOwner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] 
+**BoardOwner** | Pointer to [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
 **IsOwner** | Pointer to **bool** | Whether the \&quot;operation user_account\&quot; is the Pin owner. | [optional] [readonly] 
-**Media** | Pointer to [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**Media** | Pointer to [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **MediaSource** | Pointer to [**PinMediaSource**](PinMediaSource.md) |  | [optional] 
 **ParentPinId** | Pointer to **NullableString** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
-**IsStandard** | Pointer to **bool** | Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/content/update/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information. | [optional] 
+**IsStandard** | Pointer to **bool** | Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information. | [optional] 
 **HasBeenPromoted** | Pointer to **bool** | Whether the Pin has been promoted or not. | [optional] [readonly] 
 **Note** | Pointer to **NullableString** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
 **PinMetrics** | Pointer to **map[string]interface{}** | Pin metrics with associated time intervals if any. | [optional] 
@@ -415,20 +415,20 @@ HasIsOwner returns a boolean if a field has been set.
 
 ### GetMedia
 
-`func (o *Pin) GetMedia() SummaryPinMedia`
+`func (o *Pin) GetMedia() PinMedia`
 
 GetMedia returns the Media field if non-nil, zero value otherwise.
 
 ### GetMediaOk
 
-`func (o *Pin) GetMediaOk() (*SummaryPinMedia, bool)`
+`func (o *Pin) GetMediaOk() (*PinMedia, bool)`
 
 GetMediaOk returns a tuple with the Media field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedia
 
-`func (o *Pin) SetMedia(v SummaryPinMedia)`
+`func (o *Pin) SetMedia(v PinMedia)`
 
 SetMedia sets Media field to given value.
 

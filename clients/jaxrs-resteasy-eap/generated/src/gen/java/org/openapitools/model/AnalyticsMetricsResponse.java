@@ -17,11 +17,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AnalyticsMetricsResponse   {
   
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
-  private List<@Valid AnalyticsDailyMetrics> dailyMetrics;
+  private List<@Valid AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
   /**
    * The metric name and value over the requested period for each requested metric

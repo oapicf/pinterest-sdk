@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ type Account struct {
 	// Type of account
 	AccountType *string `json:"account_type,omitempty"`
 	// User account ID.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	ProfileImage *string `json:"profile_image,omitempty"`
 	WebsiteUrl *string `json:"website_url,omitempty"`
 	Username *string `json:"username,omitempty"`

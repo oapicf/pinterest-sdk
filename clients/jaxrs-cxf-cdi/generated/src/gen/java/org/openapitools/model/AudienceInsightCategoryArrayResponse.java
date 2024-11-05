@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class AudienceInsightCategoryArrayResponse   {
   
-  private List<@Valid AudienceInsightCategoryCommon> items;
+  private List<@Valid AudienceInsightCategoryCommon> items = new ArrayList<>();
 
   /**
    **/

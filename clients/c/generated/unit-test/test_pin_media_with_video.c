@@ -16,7 +16,7 @@
 #include "../model/pin_media_with_video.h"
 pin_media_with_video_t* instantiate_pin_media_with_video(int include_optional);
 
-#include "test_image_metadata_images.c"
+#include "test_pin_media_with_image_all_of_images.c"
 
 
 pin_media_with_video_t* instantiate_pin_media_with_video(int include_optional) {
@@ -25,7 +25,7 @@ pin_media_with_video_t* instantiate_pin_media_with_video(int include_optional) {
     pin_media_with_video = pin_media_with_video_create(
       "0",
        // false, not to have infinite recursion
-      instantiate_image_metadata_images(0),
+      instantiate_pin_media_with_image_all_of_images(0),
       "0",
       "0",
       1.337,

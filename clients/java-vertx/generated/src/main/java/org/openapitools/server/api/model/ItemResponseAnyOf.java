@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.server.api.model.CatalogsHotelAttributes;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsAttributes;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsItemResponse;
 import org.openapitools.server.api.model.CatalogsHotelItemResponse;
 import org.openapitools.server.api.model.CatalogsRetailItemResponse;
 import org.openapitools.server.api.model.CatalogsType;
@@ -20,19 +21,21 @@ public class ItemResponseAnyOf   {
   private CatalogsType catalogType;
   private String itemId;
   private List<Pin> pins;
-  private CatalogsHotelAttributes attributes;
+  private CatalogsCreativeAssetsAttributes attributes;
   private String hotelId;
+  private String creativeAssetsId;
 
   public ItemResponseAnyOf () {
 
   }
 
-  public ItemResponseAnyOf (CatalogsType catalogType, String itemId, List<Pin> pins, CatalogsHotelAttributes attributes, String hotelId) {
+  public ItemResponseAnyOf (CatalogsType catalogType, String itemId, List<Pin> pins, CatalogsCreativeAssetsAttributes attributes, String hotelId, String creativeAssetsId) {
     this.catalogType = catalogType;
     this.itemId = itemId;
     this.pins = pins;
     this.attributes = attributes;
     this.hotelId = hotelId;
+    this.creativeAssetsId = creativeAssetsId;
   }
 
     
@@ -64,10 +67,10 @@ public class ItemResponseAnyOf   {
 
     
   @JsonProperty("attributes")
-  public CatalogsHotelAttributes getAttributes() {
+  public CatalogsCreativeAssetsAttributes getAttributes() {
     return attributes;
   }
-  public void setAttributes(CatalogsHotelAttributes attributes) {
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -78,6 +81,15 @@ public class ItemResponseAnyOf   {
   }
   public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
+  }
+
+    
+  @JsonProperty("creative_assets_id")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
   }
 
 
@@ -94,12 +106,13 @@ public class ItemResponseAnyOf   {
         Objects.equals(itemId, itemResponseAnyOf.itemId) &&
         Objects.equals(pins, itemResponseAnyOf.pins) &&
         Objects.equals(attributes, itemResponseAnyOf.attributes) &&
-        Objects.equals(hotelId, itemResponseAnyOf.hotelId);
+        Objects.equals(hotelId, itemResponseAnyOf.hotelId) &&
+        Objects.equals(creativeAssetsId, itemResponseAnyOf.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes, hotelId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -112,6 +125,7 @@ public class ItemResponseAnyOf   {
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -32,6 +32,7 @@ CatalogsHotelFeedsCreateRequest::__init()
 	//preferred_processing_schedule = new CatalogsFeedProcessingSchedule();
 	//catalog_type = new CatalogsType();
 	//catalog_id = std::string();
+	//status = std::string();
 }
 
 void
@@ -81,6 +82,11 @@ CatalogsHotelFeedsCreateRequest::__cleanup()
 	//
 	//delete catalog_id;
 	//catalog_id = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
 	//}
 	//
 }
@@ -203,6 +209,17 @@ CatalogsHotelFeedsCreateRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsStatus")) {
+			jsonToValue(&status, node, "CatalogsStatus", "CatalogsStatus");
 		} else {
 			
 		}
@@ -330,6 +347,15 @@ CatalogsHotelFeedsCreateRequest::toJson()
 	}
 	const gchar *catalog_idKey = "catalog_id";
 	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("CatalogsStatus")) {
+		CatalogsStatus obj = getStatus();
+		node = converttoJson(&obj, "CatalogsStatus", "");
+	}
+	else {
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -444,6 +470,18 @@ void
 CatalogsHotelFeedsCreateRequest::setCatalogId(std::string  catalog_id)
 {
 	this->catalog_id = catalog_id;
+}
+
+CatalogsStatus
+CatalogsHotelFeedsCreateRequest::getStatus()
+{
+	return status;
+}
+
+void
+CatalogsHotelFeedsCreateRequest::setStatus(CatalogsStatus  status)
+{
+	this->status = status;
 }
 
 

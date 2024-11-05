@@ -67,5 +67,8 @@ data class LineItem (
     @Json(name = "product_variant_id")
     val productVariantId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

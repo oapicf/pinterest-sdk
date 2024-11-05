@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * AdAccountsCountryResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsCountryResponseData {
 
   private AdCountry code;
@@ -40,7 +40,7 @@ public class AdAccountsCountryResponseData {
   /**
    * Get code
    * @return code
-  */
+   */
   @Valid 
   @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
@@ -60,7 +60,7 @@ public class AdAccountsCountryResponseData {
   /**
    * Country currency.
    * @return currency
-  */
+   */
   
   @Schema(name = "currency", example = "Dollars", description = "Country currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
@@ -80,7 +80,7 @@ public class AdAccountsCountryResponseData {
   /**
    * Country index
    * @return index
-  */
+   */
   @Valid 
   @Schema(name = "index", example = "1", description = "Country index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
@@ -100,7 +100,7 @@ public class AdAccountsCountryResponseData {
   /**
    * Country name
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "United States of America", description = "Country name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")

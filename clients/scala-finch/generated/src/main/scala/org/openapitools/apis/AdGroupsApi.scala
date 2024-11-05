@@ -89,7 +89,7 @@ object AdGroupsApi {
         * @return An endpoint representing a AdGroupAudienceSizingResponse
         */
         private def adGroups/audienceSizing(da: DataAccessor): Endpoint[AdGroupAudienceSizingResponse] =
-        get("ad_accounts" :: string :: "ad_groups" :: "audience_sizing" :: jsonBody[AdGroupAudienceSizingRequest]) { (adAccountId: String, adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest) =>
+        post("ad_accounts" :: string :: "ad_groups" :: "audience_sizing" :: jsonBody[AdGroupAudienceSizingRequest]) { (adAccountId: String, adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest) =>
           da.AdGroups_adGroups/audienceSizing(adAccountId, adGroupAudienceSizingRequest) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)

@@ -7,7 +7,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/ads_credit/redeem', {
   "nickname" => "ads_credit/redeem",
   "responseClass" => "AdsCreditRedeemResponse",
   "endpoint" => "/ad_accounts/{ad_account_id}/ads_credit/redeem",
-  "notes" => "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>",
+  "notes" => "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -35,7 +35,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ads_credit/discounts', {
   "nickname" => "ads_credits_discounts/get",
   "responseClass" => "ads_credits_discounts_get_200_response",
   "endpoint" => "/ad_accounts/{ad_account_id}/ads_credit/discounts",
-  "notes" => "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>",
+  "notes" => "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
   "parameters" => [
     {
       "name" => "bookmark",
@@ -46,7 +46,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ads_credit/discounts', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -72,7 +72,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/billing_profiles', {
   "nickname" => "billing_profiles/get",
   "responseClass" => "billing_profiles_get_200_response",
   "endpoint" => "/ad_accounts/{ad_account_id}/billing_profiles",
-  "notes" => "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>",
+  "notes" => "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
   "parameters" => [
     {
       "name" => "is_active",
@@ -90,7 +90,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/billing_profiles', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -205,7 +205,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/st
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -270,7 +270,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ssio/order_lines', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",

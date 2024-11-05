@@ -280,7 +280,7 @@ Get integration metadata list. Note: If you're interested in joining the beta, p
 import OpenAPIClient
 
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // Get integration metadata list
 IntegrationsAPI.integrationsGetList(bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -300,7 +300,7 @@ IntegrationsAPI.integrationsGetList(bookmark: bookmark, pageSize: pageSize) { (r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 

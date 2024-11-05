@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ItemId** | Pointer to **string** | The catalog item id in the merchant namespace | [optional] 
-**Attributes** | Pointer to [**ItemAttributes**](ItemAttributes.md) |  | [optional] 
+**Attributes** | Pointer to [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [optional] 
 **UpdateMask** | Pointer to [**[]UpdateMaskFieldType**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasItemId returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *ItemBatchRecord) GetAttributes() ItemAttributes`
+`func (o *ItemBatchRecord) GetAttributes() ItemAttributesRequest`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *ItemBatchRecord) GetAttributesOk() (*ItemAttributes, bool)`
+`func (o *ItemBatchRecord) GetAttributesOk() (*ItemAttributesRequest, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *ItemBatchRecord) SetAttributes(v ItemAttributes)`
+`func (o *ItemBatchRecord) SetAttributes(v ItemAttributesRequest)`
 
 SetAttributes sets Attributes field to given value.
 

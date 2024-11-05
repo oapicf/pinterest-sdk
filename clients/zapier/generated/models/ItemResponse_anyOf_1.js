@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const CatalogsCreativeAssetsItemErrorResponse = require('../models/CatalogsCreativeAssetsItemErrorResponse');
 const CatalogsHotelItemErrorResponse = require('../models/CatalogsHotelItemErrorResponse');
 const CatalogsRetailItemErrorResponse = require('../models/CatalogsRetailItemErrorResponse');
 const CatalogsType = require('../models/CatalogsType');
@@ -27,6 +28,11 @@ module.exports = {
                 label: `The catalog hotel id in the merchant namespace - [${labelPrefix}hotel_id]`,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}creative_assets_id`,
+                label: `The catalog creative assets id in the merchant namespace - [${labelPrefix}creative_assets_id]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -36,6 +42,7 @@ module.exports = {
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, ItemValidationEvent),
             'hotel_id': bundle.inputData?.[`${keyPrefix}hotel_id`],
+            'creative_assets_id': bundle.inputData?.[`${keyPrefix}creative_assets_id`],
         }
     },
 }

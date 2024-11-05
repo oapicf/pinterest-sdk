@@ -48,6 +48,187 @@ static gpointer __CatalogsManagerthreadFunc(gpointer data)
 }
 
 
+static bool catalogsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(Catalog, Error, void* )
+	= reinterpret_cast<void(*)(Catalog, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	Catalog out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("Catalog")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "Catalog", "Catalog");
+			json_node_free(pJson);
+
+			if ("Catalog" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool catalogsCreateHelper(char * accessToken,
+	std::shared_ptr<CatalogsCreateRequest> catalogsCreateRequest, std::string adAccountId, 
+	void(* handler)(Catalog, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("CatalogsCreateRequest")) {
+		node = converttoJson(&catalogsCreateRequest, "CatalogsCreateRequest", "");
+	}
+	
+	char *jsonStr =  catalogsCreateRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/catalogs");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = catalogsCreateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), catalogsCreateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::catalogsCreateAsync(char * accessToken,
+	std::shared_ptr<CatalogsCreateRequest> catalogsCreateRequest, std::string adAccountId, 
+	void(* handler)(Catalog, Error, void* )
+	, void* userData)
+{
+	return catalogsCreateHelper(accessToken,
+	catalogsCreateRequest, adAccountId, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::catalogsCreateSync(char * accessToken,
+	std::shared_ptr<CatalogsCreateRequest> catalogsCreateRequest, std::string adAccountId, 
+	void(* handler)(Catalog, Error, void* )
+	, void* userData)
+{
+	return catalogsCreateHelper(accessToken,
+	catalogsCreateRequest, adAccountId, 
+	handler, userData, false);
+}
+
 static bool catalogsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -306,7 +487,7 @@ static bool catalogsProductGroupPinsListProcessor(MemoryStruct_s p_chunk, long c
 }
 
 static bool catalogsProductGroupPinsListHelper(char * accessToken,
-	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Catalogs_product_group_pins_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -342,6 +523,13 @@ static bool catalogsProductGroupPinsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&pinMetrics, "bool");
+	queryParams.insert(pair<string, string>("pin_metrics", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("pin_metrics");
 	}
 
 	string mBody = "";
@@ -404,36 +592,36 @@ static bool catalogsProductGroupPinsListHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupPinsListAsync(char * accessToken,
-	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Catalogs_product_group_pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupPinsListHelper(accessToken,
-	productGroupId, bookmark, pageSize, adAccountId, 
+	productGroupId, bookmark, pageSize, adAccountId, pinMetrics, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupPinsListSync(char * accessToken,
-	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::string productGroupId, std::string bookmark, int pageSize, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Catalogs_product_group_pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupPinsListHelper(accessToken,
-	productGroupId, bookmark, pageSize, adAccountId, 
+	productGroupId, bookmark, pageSize, adAccountId, pinMetrics, 
 	handler, userData, false);
 }
 
 static bool catalogsProductGroupsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
-	= reinterpret_cast<void(*)(Catalogs_product_groups_create_201_response, Error, void* )> (voidHandler);
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsVerticalProductGroup, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Catalogs_product_groups_create_201_response out;
+	CatalogsVerticalProductGroup out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -441,12 +629,12 @@ static bool catalogsProductGroupsCreateProcessor(MemoryStruct_s p_chunk, long co
 
 
 
-		if (isprimitive("Catalogs_product_groups_create_201_response")) {
+		if (isprimitive("CatalogsVerticalProductGroup")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Catalogs_product_groups_create_201_response", "Catalogs_product_groups_create_201_response");
+			jsonToValue(&out, pJson, "CatalogsVerticalProductGroup", "CatalogsVerticalProductGroup");
 			json_node_free(pJson);
 
-			if ("Catalogs_product_groups_create_201_response" == "std::string") {
+			if ("CatalogsVerticalProductGroup" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -504,8 +692,8 @@ static bool catalogsProductGroupsCreateProcessor(MemoryStruct_s p_chunk, long co
 }
 
 static bool catalogsProductGroupsCreateHelper(char * accessToken,
-	std::shared_ptr<Catalogs_product_groups_create_request> catalogsProductGroupsCreateRequest, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	std::shared_ptr<Multiple_product_groups_inner> multipleProductGroupsInner, std::string adAccountId, 
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -532,11 +720,11 @@ static bool catalogsProductGroupsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("Catalogs_product_groups_create_request")) {
-		node = converttoJson(&catalogsProductGroupsCreateRequest, "Catalogs_product_groups_create_request", "");
+	if (isprimitive("Multiple_product_groups_inner")) {
+		node = converttoJson(&multipleProductGroupsInner, "Multiple_product_groups_inner", "");
 	}
 	
-	char *jsonStr =  catalogsProductGroupsCreateRequest.toJson();
+	char *jsonStr =  multipleProductGroupsInner.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -595,22 +783,192 @@ static bool catalogsProductGroupsCreateHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsCreateAsync(char * accessToken,
-	std::shared_ptr<Catalogs_product_groups_create_request> catalogsProductGroupsCreateRequest, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	std::shared_ptr<Multiple_product_groups_inner> multipleProductGroupsInner, std::string adAccountId, 
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsCreateHelper(accessToken,
-	catalogsProductGroupsCreateRequest, adAccountId, 
+	multipleProductGroupsInner, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsCreateSync(char * accessToken,
-	std::shared_ptr<Catalogs_product_groups_create_request> catalogsProductGroupsCreateRequest, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	std::shared_ptr<Multiple_product_groups_inner> multipleProductGroupsInner, std::string adAccountId, 
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsCreateHelper(accessToken,
-	catalogsProductGroupsCreateRequest, adAccountId, 
+	multipleProductGroupsInner, adAccountId, 
+	handler, userData, false);
+}
+
+static bool catalogsProductGroupsCreateManyProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(std::list<std::string>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<std::string>, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	std::list<std::string> out;
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+		pJson = json_from_string(data, NULL);
+		JsonArray * jsonarray = json_node_get_array (pJson);
+		guint length = json_array_get_length (jsonarray);
+		for(guint i = 0; i < length; i++){
+			JsonNode* myJson = json_array_get_element (jsonarray, i);
+			char * singlenodestr = json_to_string(myJson, false);
+			std::string singlemodel;
+			singlemodel.fromJson(singlenodestr);
+			out.push_front(singlemodel);
+			g_free(static_cast<gpointer>(singlenodestr));
+			json_node_free(myJson);
+		}
+		json_array_unref (jsonarray);
+		json_node_free(pJson);
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool catalogsProductGroupsCreateManyHelper(char * accessToken,
+	std::list<Multiple_product_groups_inner> multipleProductGroupsInner, std::string adAccountId, 
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+	//TODO: Map Container
+	if (isprimitive("Multiple_product_groups_inner")) {
+		node = converttoJson(&multipleProductGroupsInner, "Multiple_product_groups_inner", "array");
+	} else {
+		node = json_node_alloc();
+		json_array = json_array_new();
+		for (std::list
+			<Multiple_product_groups_inner>::iterator bodyIter = multipleProductGroupsInner.begin(); bodyIter != multipleProductGroupsInner.end(); ++bodyIter) {
+			Multiple_product_groups_inner itemAt = (*bodyIter);
+			char *jsonStr =  itemAt.toJson();
+			JsonNode *node_temp = json_from_string(jsonStr, NULL);
+			g_free(static_cast<gpointer>(jsonStr));
+			json_array_add_element(json_array, node_temp);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+	}
+	
+
+
+
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/catalogs/product_groups/multiple");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = catalogsProductGroupsCreateManyProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), catalogsProductGroupsCreateManyProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::catalogsProductGroupsCreateManyAsync(char * accessToken,
+	std::list<Multiple_product_groups_inner> multipleProductGroupsInner, std::string adAccountId, 
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData)
+{
+	return catalogsProductGroupsCreateManyHelper(accessToken,
+	multipleProductGroupsInner, adAccountId, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::catalogsProductGroupsCreateManySync(char * accessToken,
+	std::list<Multiple_product_groups_inner> multipleProductGroupsInner, std::string adAccountId, 
+	void(* handler)(std::list<std::string>, Error, void* )
+	, void* userData)
+{
+	return catalogsProductGroupsCreateManyHelper(accessToken,
+	multipleProductGroupsInner, adAccountId, 
 	handler, userData, false);
 }
 
@@ -751,17 +1109,154 @@ bool CatalogsManager::catalogsProductGroupsDeleteSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool catalogsProductGroupsDeleteManyProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+		handler(error, userData);
+		return true;
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		handler(error, userData);
+		return false;
+	}
+}
+
+static bool catalogsProductGroupsDeleteManyHelper(char * accessToken,
+	std::list<int> id, std::string adAccountId, 
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	for (std::list
+	<int>::iterator queryIter = id.begin(); queryIter != id.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "int");
+		queryParams.insert(pair<string, string>("id", itemAt));
+	}
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/catalogs/product_groups/multiple");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("DELETE");
+
+	if(strcmp("PUT", "DELETE") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = catalogsProductGroupsDeleteManyProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), catalogsProductGroupsDeleteManyProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::catalogsProductGroupsDeleteManyAsync(char * accessToken,
+	std::list<int> id, std::string adAccountId, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return catalogsProductGroupsDeleteManyHelper(accessToken,
+	id, adAccountId, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::catalogsProductGroupsDeleteManySync(char * accessToken,
+	std::list<int> id, std::string adAccountId, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return catalogsProductGroupsDeleteManyHelper(accessToken,
+	id, adAccountId, 
+	handler, userData, false);
+}
+
 static bool catalogsProductGroupsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
-	= reinterpret_cast<void(*)(Catalogs_product_groups_create_201_response, Error, void* )> (voidHandler);
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsVerticalProductGroup, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Catalogs_product_groups_create_201_response out;
+	CatalogsVerticalProductGroup out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -769,12 +1264,12 @@ static bool catalogsProductGroupsGetProcessor(MemoryStruct_s p_chunk, long code,
 
 
 
-		if (isprimitive("Catalogs_product_groups_create_201_response")) {
+		if (isprimitive("CatalogsVerticalProductGroup")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Catalogs_product_groups_create_201_response", "Catalogs_product_groups_create_201_response");
+			jsonToValue(&out, pJson, "CatalogsVerticalProductGroup", "CatalogsVerticalProductGroup");
 			json_node_free(pJson);
 
-			if ("Catalogs_product_groups_create_201_response" == "std::string") {
+			if ("CatalogsVerticalProductGroup" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -838,7 +1333,7 @@ static bool catalogsProductGroupsGetProcessor(MemoryStruct_s p_chunk, long code,
 
 static bool catalogsProductGroupsGetHelper(char * accessToken,
 	std::string productGroupId, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -922,7 +1417,7 @@ static bool catalogsProductGroupsGetHelper(char * accessToken,
 
 bool CatalogsManager::catalogsProductGroupsGetAsync(char * accessToken,
 	std::string productGroupId, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsGetHelper(accessToken,
@@ -932,7 +1427,7 @@ bool CatalogsManager::catalogsProductGroupsGetAsync(char * accessToken,
 
 bool CatalogsManager::catalogsProductGroupsGetSync(char * accessToken,
 	std::string productGroupId, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsGetHelper(accessToken,
@@ -1026,7 +1521,7 @@ static bool catalogsProductGroupsListProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool catalogsProductGroupsListHelper(char * accessToken,
-	std::string feedId, std::string catalogId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::list<int> id, std::string feedId, std::string catalogId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Catalogs_product_groups_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -1042,6 +1537,15 @@ static bool catalogsProductGroupsListHelper(char * accessToken,
 
 	map <string, string> queryParams;
 	string itemAtq;
+	
+	for (std::list
+	<int>::iterator queryIter = id.begin(); queryIter != id.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "int");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("id", itemAt));
+	}
 	
 
 	itemAtq = stringify(&feedId, "std::string");
@@ -1132,36 +1636,36 @@ static bool catalogsProductGroupsListHelper(char * accessToken,
 
 
 bool CatalogsManager::catalogsProductGroupsListAsync(char * accessToken,
-	std::string feedId, std::string catalogId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::list<int> id, std::string feedId, std::string catalogId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Catalogs_product_groups_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsListHelper(accessToken,
-	feedId, catalogId, bookmark, pageSize, adAccountId, 
+	id, feedId, catalogId, bookmark, pageSize, adAccountId, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::catalogsProductGroupsListSync(char * accessToken,
-	std::string feedId, std::string catalogId, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::list<int> id, std::string feedId, std::string catalogId, std::string bookmark, int pageSize, std::string adAccountId, 
 	void(* handler)(Catalogs_product_groups_list_200_response, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsListHelper(accessToken,
-	feedId, catalogId, bookmark, pageSize, adAccountId, 
+	id, feedId, catalogId, bookmark, pageSize, adAccountId, 
 	handler, userData, false);
 }
 
 static bool catalogsProductGroupsProductCountsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(CatalogsProductGroupProductCounts, Error, void* )
-	= reinterpret_cast<void(*)(CatalogsProductGroupProductCounts, Error, void* )> (voidHandler);
+	void(* handler)(CatalogsProductGroupProductCountsVertical, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsProductGroupProductCountsVertical, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	CatalogsProductGroupProductCounts out;
+	CatalogsProductGroupProductCountsVertical out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1169,12 +1673,12 @@ static bool catalogsProductGroupsProductCountsGetProcessor(MemoryStruct_s p_chun
 
 
 
-		if (isprimitive("CatalogsProductGroupProductCounts")) {
+		if (isprimitive("CatalogsProductGroupProductCountsVertical")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "CatalogsProductGroupProductCounts", "CatalogsProductGroupProductCounts");
+			jsonToValue(&out, pJson, "CatalogsProductGroupProductCountsVertical", "CatalogsProductGroupProductCountsVertical");
 			json_node_free(pJson);
 
-			if ("CatalogsProductGroupProductCounts" == "std::string") {
+			if ("CatalogsProductGroupProductCountsVertical" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -1223,7 +1727,7 @@ static bool catalogsProductGroupsProductCountsGetProcessor(MemoryStruct_s p_chun
 
 static bool catalogsProductGroupsProductCountsGetHelper(char * accessToken,
 	std::string productGroupId, std::string adAccountId, 
-	void(* handler)(CatalogsProductGroupProductCounts, Error, void* )
+	void(* handler)(CatalogsProductGroupProductCountsVertical, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1307,7 +1811,7 @@ static bool catalogsProductGroupsProductCountsGetHelper(char * accessToken,
 
 bool CatalogsManager::catalogsProductGroupsProductCountsGetAsync(char * accessToken,
 	std::string productGroupId, std::string adAccountId, 
-	void(* handler)(CatalogsProductGroupProductCounts, Error, void* )
+	void(* handler)(CatalogsProductGroupProductCountsVertical, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsProductCountsGetHelper(accessToken,
@@ -1317,7 +1821,7 @@ bool CatalogsManager::catalogsProductGroupsProductCountsGetAsync(char * accessTo
 
 bool CatalogsManager::catalogsProductGroupsProductCountsGetSync(char * accessToken,
 	std::string productGroupId, std::string adAccountId, 
-	void(* handler)(CatalogsProductGroupProductCounts, Error, void* )
+	void(* handler)(CatalogsProductGroupProductCountsVertical, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsProductCountsGetHelper(accessToken,
@@ -1328,14 +1832,14 @@ bool CatalogsManager::catalogsProductGroupsProductCountsGetSync(char * accessTok
 static bool catalogsProductGroupsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
-	= reinterpret_cast<void(*)(Catalogs_product_groups_create_201_response, Error, void* )> (voidHandler);
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsVerticalProductGroup, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Catalogs_product_groups_create_201_response out;
+	CatalogsVerticalProductGroup out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1343,12 +1847,12 @@ static bool catalogsProductGroupsUpdateProcessor(MemoryStruct_s p_chunk, long co
 
 
 
-		if (isprimitive("Catalogs_product_groups_create_201_response")) {
+		if (isprimitive("CatalogsVerticalProductGroup")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Catalogs_product_groups_create_201_response", "Catalogs_product_groups_create_201_response");
+			jsonToValue(&out, pJson, "CatalogsVerticalProductGroup", "CatalogsVerticalProductGroup");
 			json_node_free(pJson);
 
-			if ("Catalogs_product_groups_create_201_response" == "std::string") {
+			if ("CatalogsVerticalProductGroup" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -1412,7 +1916,7 @@ static bool catalogsProductGroupsUpdateProcessor(MemoryStruct_s p_chunk, long co
 
 static bool catalogsProductGroupsUpdateHelper(char * accessToken,
 	std::string productGroupId, std::shared_ptr<Catalogs_product_groups_update_request> catalogsProductGroupsUpdateRequest, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1509,7 +2013,7 @@ static bool catalogsProductGroupsUpdateHelper(char * accessToken,
 
 bool CatalogsManager::catalogsProductGroupsUpdateAsync(char * accessToken,
 	std::string productGroupId, std::shared_ptr<Catalogs_product_groups_update_request> catalogsProductGroupsUpdateRequest, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsUpdateHelper(accessToken,
@@ -1519,7 +2023,7 @@ bool CatalogsManager::catalogsProductGroupsUpdateAsync(char * accessToken,
 
 bool CatalogsManager::catalogsProductGroupsUpdateSync(char * accessToken,
 	std::string productGroupId, std::shared_ptr<Catalogs_product_groups_update_request> catalogsProductGroupsUpdateRequest, std::string adAccountId, 
-	void(* handler)(Catalogs_product_groups_create_201_response, Error, void* )
+	void(* handler)(CatalogsVerticalProductGroup, Error, void* )
 	, void* userData)
 {
 	return catalogsProductGroupsUpdateHelper(accessToken,
@@ -2233,6 +2737,185 @@ bool CatalogsManager::feedsGetSync(char * accessToken,
 	, void* userData)
 {
 	return feedsGetHelper(accessToken,
+	feedId, adAccountId, 
+	handler, userData, false);
+}
+
+static bool feedsIngestProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(CatalogsFeedIngestion, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsFeedIngestion, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	CatalogsFeedIngestion out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("CatalogsFeedIngestion")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "CatalogsFeedIngestion", "CatalogsFeedIngestion");
+			json_node_free(pJson);
+
+			if ("CatalogsFeedIngestion" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool feedsIngestHelper(char * accessToken,
+	std::string feedId, std::string adAccountId, 
+	void(* handler)(CatalogsFeedIngestion, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/catalogs/feeds/{feed_id}/ingest");
+	int pos;
+
+	string s_feedId("{");
+	s_feedId.append("feed_id");
+	s_feedId.append("}");
+	pos = url.find(s_feedId);
+	url.erase(pos, s_feedId.length());
+	url.insert(pos, stringify(&feedId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = feedsIngestProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), feedsIngestProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::feedsIngestAsync(char * accessToken,
+	std::string feedId, std::string adAccountId, 
+	void(* handler)(CatalogsFeedIngestion, Error, void* )
+	, void* userData)
+{
+	return feedsIngestHelper(accessToken,
+	feedId, adAccountId, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::feedsIngestSync(char * accessToken,
+	std::string feedId, std::string adAccountId, 
+	void(* handler)(CatalogsFeedIngestion, Error, void* )
+	, void* userData)
+{
+	return feedsIngestHelper(accessToken,
 	feedId, adAccountId, 
 	handler, userData, false);
 }
@@ -3394,6 +4077,192 @@ bool CatalogsManager::itemsIssuesListSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool itemsPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(CatalogsItems, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsItems, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	CatalogsItems out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("CatalogsItems")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "CatalogsItems", "CatalogsItems");
+			json_node_free(pJson);
+
+			if ("CatalogsItems" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool itemsPostHelper(char * accessToken,
+	std::shared_ptr<CatalogsItemsRequest> catalogsItemsRequest, std::string adAccountId, 
+	void(* handler)(CatalogsItems, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("CatalogsItemsRequest")) {
+		node = converttoJson(&catalogsItemsRequest, "CatalogsItemsRequest", "");
+	}
+	
+	char *jsonStr =  catalogsItemsRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/catalogs/items");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = itemsPostProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), itemsPostProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::itemsPostAsync(char * accessToken,
+	std::shared_ptr<CatalogsItemsRequest> catalogsItemsRequest, std::string adAccountId, 
+	void(* handler)(CatalogsItems, Error, void* )
+	, void* userData)
+{
+	return itemsPostHelper(accessToken,
+	catalogsItemsRequest, adAccountId, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::itemsPostSync(char * accessToken,
+	std::shared_ptr<CatalogsItemsRequest> catalogsItemsRequest, std::string adAccountId, 
+	void(* handler)(CatalogsItems, Error, void* )
+	, void* userData)
+{
+	return itemsPostHelper(accessToken,
+	catalogsItemsRequest, adAccountId, 
+	handler, userData, false);
+}
+
 static bool productsByProductGroupFilterListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -3465,7 +4334,7 @@ static bool productsByProductGroupFilterListProcessor(MemoryStruct_s p_chunk, lo
 }
 
 static bool productsByProductGroupFilterListHelper(char * accessToken,
-	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Catalogs_product_group_pins_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -3501,6 +4370,13 @@ static bool productsByProductGroupFilterListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&pinMetrics, "bool");
+	queryParams.insert(pair<string, string>("pin_metrics", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("pin_metrics");
 	}
 
 	string mBody = "";
@@ -3570,22 +4446,556 @@ static bool productsByProductGroupFilterListHelper(char * accessToken,
 
 
 bool CatalogsManager::productsByProductGroupFilterListAsync(char * accessToken,
-	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Catalogs_product_group_pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return productsByProductGroupFilterListHelper(accessToken,
-	catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, 
+	catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, 
 	handler, userData, true);
 }
 
 bool CatalogsManager::productsByProductGroupFilterListSync(char * accessToken,
-	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, 
+	std::shared_ptr<CatalogsListProductsByFilterRequest> catalogsListProductsByFilterRequest, std::string bookmark, int pageSize, std::string adAccountId, bool pinMetrics, 
 	void(* handler)(Catalogs_product_group_pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return productsByProductGroupFilterListHelper(accessToken,
-	catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, 
+	catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, 
+	handler, userData, false);
+}
+
+static bool reportsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(CatalogsCreateReportResponse, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsCreateReportResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	CatalogsCreateReportResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("CatalogsCreateReportResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "CatalogsCreateReportResponse", "CatalogsCreateReportResponse");
+			json_node_free(pJson);
+
+			if ("CatalogsCreateReportResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool reportsCreateHelper(char * accessToken,
+	std::shared_ptr<CatalogsReportParameters> catalogsReportParameters, std::string adAccountId, 
+	void(* handler)(CatalogsCreateReportResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("CatalogsReportParameters")) {
+		node = converttoJson(&catalogsReportParameters, "CatalogsReportParameters", "");
+	}
+	
+	char *jsonStr =  catalogsReportParameters.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/catalogs/reports");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = reportsCreateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), reportsCreateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::reportsCreateAsync(char * accessToken,
+	std::shared_ptr<CatalogsReportParameters> catalogsReportParameters, std::string adAccountId, 
+	void(* handler)(CatalogsCreateReportResponse, Error, void* )
+	, void* userData)
+{
+	return reportsCreateHelper(accessToken,
+	catalogsReportParameters, adAccountId, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::reportsCreateSync(char * accessToken,
+	std::shared_ptr<CatalogsReportParameters> catalogsReportParameters, std::string adAccountId, 
+	void(* handler)(CatalogsCreateReportResponse, Error, void* )
+	, void* userData)
+{
+	return reportsCreateHelper(accessToken,
+	catalogsReportParameters, adAccountId, 
+	handler, userData, false);
+}
+
+static bool reportsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(CatalogsReport, Error, void* )
+	= reinterpret_cast<void(*)(CatalogsReport, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	CatalogsReport out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("CatalogsReport")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "CatalogsReport", "CatalogsReport");
+			json_node_free(pJson);
+
+			if ("CatalogsReport" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool reportsGetHelper(char * accessToken,
+	std::string token, std::string adAccountId, 
+	void(* handler)(CatalogsReport, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&token, "std::string");
+	queryParams.insert(pair<string, string>("token", itemAtq));
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/catalogs/reports");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = reportsGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), reportsGetProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::reportsGetAsync(char * accessToken,
+	std::string token, std::string adAccountId, 
+	void(* handler)(CatalogsReport, Error, void* )
+	, void* userData)
+{
+	return reportsGetHelper(accessToken,
+	token, adAccountId, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::reportsGetSync(char * accessToken,
+	std::string token, std::string adAccountId, 
+	void(* handler)(CatalogsReport, Error, void* )
+	, void* userData)
+{
+	return reportsGetHelper(accessToken,
+	token, adAccountId, 
+	handler, userData, false);
+}
+
+static bool reportsStatsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(Reports_stats_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Reports_stats_200_response, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	Reports_stats_200_response out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("Reports_stats_200_response")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "Reports_stats_200_response", "Reports_stats_200_response");
+			json_node_free(pJson);
+
+			if ("Reports_stats_200_response" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool reportsStatsHelper(char * accessToken,
+	CatalogsReportParameters parameters, std::string adAccountId, int pageSize, std::string bookmark, 
+	void(* handler)(Reports_stats_200_response, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
+
+	itemAtq = stringify(&pageSize, "int");
+	queryParams.insert(pair<string, string>("page_size", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("page_size");
+	}
+
+
+	itemAtq = stringify(&bookmark, "std::string");
+	queryParams.insert(pair<string, string>("bookmark", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("bookmark");
+	}
+
+
+	itemAtq = stringify(&parameters, "CatalogsReportParameters");
+	queryParams.insert(pair<string, string>("parameters", itemAtq));
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/catalogs/reports/stats");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = reportsStatsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CatalogsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), reportsStatsProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CatalogsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CatalogsManager::reportsStatsAsync(char * accessToken,
+	CatalogsReportParameters parameters, std::string adAccountId, int pageSize, std::string bookmark, 
+	void(* handler)(Reports_stats_200_response, Error, void* )
+	, void* userData)
+{
+	return reportsStatsHelper(accessToken,
+	parameters, adAccountId, pageSize, bookmark, 
+	handler, userData, true);
+}
+
+bool CatalogsManager::reportsStatsSync(char * accessToken,
+	CatalogsReportParameters parameters, std::string adAccountId, int pageSize, std::string bookmark, 
+	void(* handler)(Reports_stats_200_response, Error, void* )
+	, void* userData)
+{
+	return reportsStatsHelper(accessToken,
+	parameters, adAccountId, pageSize, bookmark, 
 	handler, userData, false);
 }
 

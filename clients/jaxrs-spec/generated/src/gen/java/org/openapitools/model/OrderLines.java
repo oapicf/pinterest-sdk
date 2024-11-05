@@ -21,19 +21,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Order Line")
 @JsonTypeName("OrderLines")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLines   {
-  private @Valid String id;
-  private @Valid String type;
-  private @Valid String adAccountId;
-  private @Valid String purchaseOrderId;
-  private @Valid BigDecimal startTime;
-  private @Valid BigDecimal endTime;
-  private @Valid BigDecimal budget;
-  private @Valid BigDecimal paidBudget;
-  private @Valid OrderLineStatus status;
-  private @Valid String name;
-  private @Valid OrderLinePaidType paidType;
+  private String id;
+  private String type;
+  private String adAccountId;
+  private String purchaseOrderId;
+  private BigDecimal startTime;
+  private BigDecimal endTime;
+  private BigDecimal budget;
+  private BigDecimal paidBudget;
+  private OrderLineStatus status;
+  private String name;
+  private OrderLinePaidType paidType;
 
   /**
    * Order line ID.
@@ -46,7 +46,7 @@ public class OrderLines   {
   
   @ApiModelProperty(example = "2680059592705", value = "Order line ID.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -126,7 +126,7 @@ public class OrderLines   {
   
   @ApiModelProperty(example = "1452208622", value = "Start time. Unix timestamp.")
   @JsonProperty("start_time")
-  public BigDecimal getStartTime() {
+  @Valid public BigDecimal getStartTime() {
     return startTime;
   }
 
@@ -146,7 +146,7 @@ public class OrderLines   {
   
   @ApiModelProperty(example = "1461269616", value = "End time. Unix timestamp.")
   @JsonProperty("end_time")
-  public BigDecimal getEndTime() {
+  @Valid public BigDecimal getEndTime() {
     return endTime;
   }
 
@@ -166,7 +166,7 @@ public class OrderLines   {
   
   @ApiModelProperty(example = "5000000", value = "Order line budget in micro currency.")
   @JsonProperty("budget")
-  public BigDecimal getBudget() {
+  @Valid public BigDecimal getBudget() {
     return budget;
   }
 
@@ -186,7 +186,7 @@ public class OrderLines   {
   
   @ApiModelProperty(example = "5000000", value = "Order line paid budget in micro currency.")
   @JsonProperty("paid_budget")
-  public BigDecimal getPaidBudget() {
+  @Valid public BigDecimal getPaidBudget() {
     return paidBudget;
   }
 

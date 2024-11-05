@@ -46,7 +46,7 @@ class UserAccountApiTest : ShouldSpec() {
         should("test boardsUserFollowsList") {
             // uncomment below to test boardsUserFollowsList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : BoardsUserFollowsList200Response = apiInstance.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
@@ -66,7 +66,7 @@ class UserAccountApiTest : ShouldSpec() {
         should("test followersList") {
             // uncomment below to test followersList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : FollowersList200Response = apiInstance.followersList(bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -145,7 +145,7 @@ class UserAccountApiTest : ShouldSpec() {
             // uncomment below to test userAccountFollowedInterests
             //val username : kotlin.String = username // kotlin.String | A valid username
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : UserAccountFollowedInterests200Response = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -162,7 +162,7 @@ class UserAccountApiTest : ShouldSpec() {
         should("test userFollowingGet") {
             // uncomment below to test userFollowingGet
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val feedType : UserFollowingFeedType = feedType_example // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
             //val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
@@ -174,7 +174,7 @@ class UserAccountApiTest : ShouldSpec() {
         should("test userWebsitesGet") {
             // uncomment below to test userWebsitesGet
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : UserWebsitesGet200Response = apiInstance.userWebsitesGet(bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -183,14 +183,16 @@ class UserAccountApiTest : ShouldSpec() {
         should("test verifyWebsiteUpdate") {
             // uncomment below to test verifyWebsiteUpdate
             //val userWebsiteVerifyRequest : UserWebsiteVerifyRequest =  // UserWebsiteVerifyRequest | Verify a website.
-            //val result : UserWebsiteSummary = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest)
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val result : UserWebsiteSummary = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test websiteVerificationGet
         should("test websiteVerificationGet") {
             // uncomment below to test websiteVerificationGet
-            //val result : UserWebsiteVerificationCode = apiInstance.websiteVerificationGet()
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val result : UserWebsiteVerificationCode = apiInstance.websiteVerificationGet(adAccountId)
             //result shouldBe ("TODO")
         }
 

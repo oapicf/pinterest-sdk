@@ -94,7 +94,7 @@
         "type": "enum",
         "name": "CatalogsFeedValidationWarnings_FETCHUnderscoreSAMEUnderscoreSIGNATURE",
         "symbols": [
-          "1"
+          "_1"
         ]
       }],
       "doc": "Ingestion completed early because there are no changes to your feed since the last successful update.",

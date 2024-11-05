@@ -105,7 +105,7 @@ module AdGroupsApiHandlerTests =
       let body = obj() :?> AdGroupAudienceSizingRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
-        |> HttpGet client path
+        |> HttpPost client path
         |> isStatus (enum<HttpStatusCode>(200))
         |> readText
         |> shouldEqual "TESTME"
@@ -127,7 +127,7 @@ module AdGroupsApiHandlerTests =
       let body = obj() :?> AdGroupAudienceSizingRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
-        |> HttpGet client path
+        |> HttpPost client path
         |> isStatus (enum<HttpStatusCode>(400))
         |> readText
         |> shouldEqual "TESTME"
@@ -149,7 +149,7 @@ module AdGroupsApiHandlerTests =
       let body = obj() :?> AdGroupAudienceSizingRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
-        |> HttpGet client path
+        |> HttpPost client path
         |> isStatus (enum<HttpStatusCode>(403))
         |> readText
         |> shouldEqual "TESTME"
@@ -171,7 +171,7 @@ module AdGroupsApiHandlerTests =
       let body = obj() :?> AdGroupAudienceSizingRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
-        |> HttpGet client path
+        |> HttpPost client path
         |> isStatus (enum<HttpStatusCode>(0))
         |> readText
         |> shouldEqual "TESTME"

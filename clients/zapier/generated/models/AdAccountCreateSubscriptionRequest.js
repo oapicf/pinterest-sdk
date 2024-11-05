@@ -1,4 +1,5 @@
 const utils = require('../utils/utils');
+const AdAccountCreateSubscriptionRequest_partner_metadata = require('../models/AdAccountCreateSubscriptionRequest_partner_metadata');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -25,6 +26,7 @@ module.exports = {
                 label: `Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. - [${labelPrefix}partner_refresh_token]`,
                 type: 'string',
             },
+            ...AdAccountCreateSubscriptionRequest_partner_metadata.fields(`${keyPrefix}partner_metadata`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -34,6 +36,7 @@ module.exports = {
             'lead_form_id': bundle.inputData?.[`${keyPrefix}lead_form_id`],
             'partner_access_token': bundle.inputData?.[`${keyPrefix}partner_access_token`],
             'partner_refresh_token': bundle.inputData?.[`${keyPrefix}partner_refresh_token`],
+            'partner_metadata': utils.removeIfEmpty(AdAccountCreateSubscriptionRequest_partner_metadata.mapping(bundle, `${keyPrefix}partner_metadata`)),
         }
     },
 }

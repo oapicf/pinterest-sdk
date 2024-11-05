@@ -66,13 +66,13 @@ end:
 // Functions for enum PINFORMAT for UserAccountAPI_userAccountAnalytics
 
 static char* userAccountAnalytics_PINFORMAT_ToString(pinterest_rest_api_userAccountAnalytics_pin_format_e PINFORMAT){
-    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA", "PRODUCT", "REGULAR", "VIDEO" };
+    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" };
     return PINFORMATArray[PINFORMAT];
 }
 
 static pinterest_rest_api_userAccountAnalytics_pin_format_e userAccountAnalytics_PINFORMAT_FromString(char* PINFORMAT){
     int stringToReturn = 0;
-    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA", "PRODUCT", "REGULAR", "VIDEO" };
+    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" };
     size_t sizeofArray = sizeof(PINFORMATArray) / sizeof(PINFORMATArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(PINFORMAT, PINFORMATArray[stringToReturn]) == 0) {
@@ -473,13 +473,13 @@ end:
 // Functions for enum PINFORMAT for UserAccountAPI_userAccountAnalyticsTopPins
 
 static char* userAccountAnalyticsTopPins_PINFORMAT_ToString(pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e PINFORMAT){
-    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA", "PRODUCT", "REGULAR", "VIDEO" };
+    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" };
     return PINFORMATArray[PINFORMAT];
 }
 
 static pinterest_rest_api_userAccountAnalyticsTopPins_pin_format_e userAccountAnalyticsTopPins_PINFORMAT_FromString(char* PINFORMAT){
     int stringToReturn = 0;
-    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA", "PRODUCT", "REGULAR", "VIDEO" };
+    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" };
     size_t sizeofArray = sizeof(PINFORMATArray) / sizeof(PINFORMATArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(PINFORMAT, PINFORMATArray[stringToReturn]) == 0) {
@@ -871,13 +871,13 @@ end:
 // Functions for enum PINFORMAT for UserAccountAPI_userAccountAnalyticsTopVideoPins
 
 static char* userAccountAnalyticsTopVideoPins_PINFORMAT_ToString(pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e PINFORMAT){
-    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA", "PRODUCT", "REGULAR", "VIDEO" };
+    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" };
     return PINFORMATArray[PINFORMAT];
 }
 
 static pinterest_rest_api_userAccountAnalyticsTopVideoPins_pin_format_e userAccountAnalyticsTopVideoPins_PINFORMAT_FromString(char* PINFORMAT){
     int stringToReturn = 0;
-    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA", "PRODUCT", "REGULAR", "VIDEO" };
+    char *PINFORMATArray[] =  { "NULL", "ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA" };
     size_t sizeofArray = sizeof(PINFORMATArray) / sizeof(PINFORMATArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(PINFORMAT, PINFORMATArray[stringToReturn]) == 0) {
@@ -1386,7 +1386,7 @@ end:
 
 // Follow user
 //
-// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 //
 user_summary_t*
 UserAccountAPI_followUserUpdate(apiClient_t *apiClient, char *username, follow_user_request_t *follow_user_request)
@@ -2828,7 +2828,7 @@ end:
 
 // Get user account
 //
-// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+// Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 //
 account_t*
 UserAccountAPI_userAccountGet(apiClient_t *apiClient, char *ad_account_id)
@@ -3232,9 +3232,9 @@ end:
 // Verify a website as a signed-in user.
 //
 user_website_summary_t*
-UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_request_t *user_website_verify_request)
+UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_request_t *user_website_verify_request, char *ad_account_id)
 {
-    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
@@ -3248,6 +3248,18 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
 
 
 
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
 
     // Body Param
     cJSON *localVarSingleItemJSON_user_website_verify_request = NULL;
@@ -3291,7 +3303,7 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    
+    list_freeList(localVarQueryParameters);
     
     
     list_freeList(localVarHeaderType);
@@ -3302,6 +3314,18 @@ UserAccountAPI_verifyWebsiteUpdate(apiClient_t *apiClient, user_website_verify_r
         localVarSingleItemJSON_user_website_verify_request = NULL;
     }
     free(localVarBodyParameters);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -3314,9 +3338,9 @@ end:
 // Get verification code for user to install on the website to claim it.
 //
 user_website_verification_code_t*
-UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient)
+UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient, char *ad_account_id)
 {
-    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
@@ -3330,6 +3354,18 @@ UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient)
 
 
 
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -3367,12 +3403,24 @@ UserAccountAPI_websiteVerificationGet(apiClient_t *apiClient)
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    
+    list_freeList(localVarQueryParameters);
     
     
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);

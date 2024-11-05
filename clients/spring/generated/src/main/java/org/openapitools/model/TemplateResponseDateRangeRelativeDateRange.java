@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_relative_date_range", description = "The relative date range of the template")
 @JsonTypeName("TemplateResponse_date_range_relative_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeRelativeDateRange {
 
   private String type;
@@ -39,7 +39,7 @@ public class TemplateResponseDateRangeRelativeDateRange {
   /**
    * The date range type
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "relative", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -59,7 +59,7 @@ public class TemplateResponseDateRangeRelativeDateRange {
   /**
    * The start date of the date range
    * @return startDaysInPast
-  */
+   */
   @Valid 
   @Schema(name = "start_days_in_past", example = "14", description = "The start date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_days_in_past")
@@ -79,7 +79,7 @@ public class TemplateResponseDateRangeRelativeDateRange {
   /**
    * The end date of the date range
    * @return endDaysInPast
-  */
+   */
   @Valid 
   @Schema(name = "end_days_in_past", example = "7", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_days_in_past")

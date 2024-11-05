@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * CatalogsProductGroupMultipleCountriesCriteria
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupMultipleCountriesCriteria {
 
   @Valid
@@ -57,7 +57,7 @@ public class CatalogsProductGroupMultipleCountriesCriteria {
   /**
    * Get values
    * @return values
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "values", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
@@ -77,7 +77,7 @@ public class CatalogsProductGroupMultipleCountriesCriteria {
   /**
    * Get negated
    * @return negated
-  */
+   */
   
   @Schema(name = "negated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("negated")

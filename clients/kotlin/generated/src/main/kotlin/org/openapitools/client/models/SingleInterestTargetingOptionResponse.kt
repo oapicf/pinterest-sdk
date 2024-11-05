@@ -43,5 +43,8 @@ data class SingleInterestTargetingOptionResponse (
     @Json(name = "level")
     val level: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

@@ -9,10 +9,10 @@
 
 
 #include <string>
-#include "Board_owner.h"
+#include "BoardOwner.h"
 #include "CreativeType.h"
+#include "PinMedia.h"
 #include "PinMediaSource.h"
-#include "SummaryPin_media.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -121,11 +121,11 @@ public:
 	void setBoardSectionId(std::string  board_section_id);
 	/*! \brief Get 
 	 */
-	Board_owner getBoardOwner();
+	BoardOwner getBoardOwner();
 
 	/*! \brief Set 
 	 */
-	void setBoardOwner(Board_owner  board_owner);
+	void setBoardOwner(BoardOwner  board_owner);
 	/*! \brief Get Whether the \"operation user_account\" is the Pin owner.
 	 */
 	bool getIsOwner();
@@ -135,11 +135,11 @@ public:
 	void setIsOwner(bool  is_owner);
 	/*! \brief Get 
 	 */
-	SummaryPin_media getMedia();
+	PinMedia getMedia();
 
 	/*! \brief Set 
 	 */
-	void setMedia(SummaryPin_media  media);
+	void setMedia(PinMedia  media);
 	/*! \brief Get 
 	 */
 	PinMediaSource getMediaSource();
@@ -154,11 +154,11 @@ public:
 	/*! \brief Set The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
 	 */
 	void setParentPinId(std::string  parent_pin_id);
-	/*! \brief Get Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+	/*! \brief Get Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
 	 */
 	bool getIsStandard();
 
-	/*! \brief Set Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+	/*! \brief Set Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
 	 */
 	void setIsStandard(bool  is_standard);
 	/*! \brief Get Whether the Pin has been promoted or not.
@@ -194,9 +194,9 @@ private:
 	CreativeType creative_type;
 	std::string board_id;
 	std::string board_section_id;
-	Board_owner board_owner;
+	BoardOwner board_owner;
 	bool is_owner;
-	SummaryPin_media media;
+	PinMedia media;
 	PinMediaSource media_source;
 	std::string parent_pin_id;
 	bool is_standard;

@@ -66,7 +66,7 @@ export class OrderLinesApiRequestFactory extends BaseAPIRequestFactory {
      * List existing order lines associated with an ad account.
      * Get order lines
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param bookmark Cursor used to fetch the next page of items
      */

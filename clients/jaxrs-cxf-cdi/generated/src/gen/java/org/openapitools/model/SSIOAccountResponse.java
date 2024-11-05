@@ -24,11 +24,11 @@ public class SSIOAccountResponse   {
 
   private Boolean canEdit;
 
-  private List<@Valid SSIOAccountItem> billtoInfos;
+  private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
 
   private String currency;
 
-  private List<@Valid SSIOAccountPMPName> pmpNames;
+  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   private String error;
 

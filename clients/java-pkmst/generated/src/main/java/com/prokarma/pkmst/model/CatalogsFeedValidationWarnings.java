@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsFeedValidationWarnings
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationWarnings   {
   @JsonProperty("AD_LINK_FORMAT_WARNING")
   private Integer AD_LINK_FORMAT_WARNING;
@@ -198,10 +198,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have ad links that are formatted incorrectly.
    * @return AD_LINK_FORMAT_WARNING
-  **/
+   */
   @ApiModelProperty(value = "Some items have ad links that are formatted incorrectly.")
   public Integer getADLINKFORMATWARNING() {
     return AD_LINK_FORMAT_WARNING;
@@ -216,10 +216,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have ad link URLs that are duplicates of the link URLs for those items.
    * @return AD_LINK_SAME_AS_LINK
-  **/
+   */
   @ApiModelProperty(value = "Some items have ad link URLs that are duplicates of the link URLs for those items.")
   public Integer getADLINKSAMEASLINK() {
     return AD_LINK_SAME_AS_LINK;
@@ -234,10 +234,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * The title for some items were truncated because they contain too many characters.
    * @return TITLE_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "The title for some items were truncated because they contain too many characters.")
   public Integer getTITLELENGTHTOOLONG() {
     return TITLE_LENGTH_TOO_LONG;
@@ -252,10 +252,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * The description for some items were truncated because they contain too many characters.
    * @return DESCRIPTION_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "The description for some items were truncated because they contain too many characters.")
   public Integer getDESCRIPTIONLENGTHTOOLONG() {
     return DESCRIPTION_LENGTH_TOO_LONG;
@@ -270,10 +270,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return GENDER_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   public Integer getGENDERINVALID() {
     return GENDER_INVALID;
@@ -288,10 +288,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return AGE_GROUP_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   public Integer getAGEGROUPINVALID() {
     return AGE_GROUP_INVALID;
@@ -306,10 +306,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return SIZE_TYPE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   public Integer getSIZETYPEINVALID() {
     return SIZE_TYPE_INVALID;
@@ -324,10 +324,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have size system values which are not one of the supported size systems.
    * @return SIZE_SYSTEM_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have size system values which are not one of the supported size systems.")
   public Integer getSIZESYSTEMINVALID() {
     return SIZE_SYSTEM_INVALID;
@@ -342,10 +342,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have an invalid product link which contains invalid UTM tracking paramaters.
    * @return LINK_FORMAT_WARNING
-  **/
+   */
   @ApiModelProperty(value = "Some items have an invalid product link which contains invalid UTM tracking paramaters.")
   public Integer getLINKFORMATWARNING() {
     return LINK_FORMAT_WARNING;
@@ -360,10 +360,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have sale price values that are higher than the original price of the item.
    * @return SALES_PRICE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have sale price values that are higher than the original price of the item.")
   public Integer getSALESPRICEINVALID() {
     return SALES_PRICE_INVALID;
@@ -378,10 +378,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
    * @return PRODUCT_CATEGORY_DEPTH_WARNING
-  **/
+   */
   @ApiModelProperty(value = "Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.")
   public Integer getPRODUCTCATEGORYDEPTHWARNING() {
     return PRODUCT_CATEGORY_DEPTH_WARNING;
@@ -396,10 +396,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have adwords_redirect links that are formatted incorrectly.
    * @return ADWORDS_FORMAT_WARNING
-  **/
+   */
   @ApiModelProperty(value = "Some items have adwords_redirect links that are formatted incorrectly.")
   public Integer getADWORDSFORMATWARNING() {
     return ADWORDS_FORMAT_WARNING;
@@ -414,10 +414,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
    * @return ADWORDS_SAME_AS_LINK
-  **/
+   */
   @ApiModelProperty(value = "Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.")
   public Integer getADWORDSSAMEASLINK() {
     return ADWORDS_SAME_AS_LINK;
@@ -432,10 +432,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Your feed contains duplicate headers.
    * @return DUPLICATE_HEADERS
-  **/
+   */
   @ApiModelProperty(value = "Your feed contains duplicate headers.")
   public Integer getDUPLICATEHEADERS() {
     return DUPLICATE_HEADERS;
@@ -450,10 +450,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Ingestion completed early because there are no changes to your feed since the last successful update.
    * @return FETCH_SAME_SIGNATURE
-  **/
+   */
   @ApiModelProperty(value = "Ingestion completed early because there are no changes to your feed since the last successful update.")
   public FETCHSAMESIGNATUREEnum getFETCHSAMESIGNATURE() {
     return FETCH_SAME_SIGNATURE;
@@ -468,10 +468,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
    * @return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "Some items have additional_image_link URLs that contain too many characters, so those items will not be published.")
   public Integer getADDITIONALIMAGELINKLENGTHTOOLONG() {
     return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
@@ -486,10 +486,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
    * @return ADDITIONAL_IMAGE_LINK_WARNING
-  **/
+   */
   @ApiModelProperty(value = "Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.")
   public Integer getADDITIONALIMAGELINKWARNING() {
     return ADDITIONAL_IMAGE_LINK_WARNING;
@@ -504,10 +504,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
    * @return IMAGE_LINK_WARNING
-  **/
+   */
   @ApiModelProperty(value = "Some items have image_link URLs that are formatted incorrectly and will not be published with those items.")
   public Integer getIMAGELINKWARNING() {
     return IMAGE_LINK_WARNING;
@@ -522,10 +522,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have shipping values that are formatted incorrectly.
    * @return SHIPPING_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have shipping values that are formatted incorrectly.")
   public Integer getSHIPPINGINVALID() {
     return SHIPPING_INVALID;
@@ -540,10 +540,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have tax values that are formatted incorrectly.
    * @return TAX_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have tax values that are formatted incorrectly.")
   public Integer getTAXINVALID() {
     return TAX_INVALID;
@@ -558,10 +558,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have invalid shipping_weight values.
    * @return SHIPPING_WEIGHT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have invalid shipping_weight values.")
   public Integer getSHIPPINGWEIGHTINVALID() {
     return SHIPPING_WEIGHT_INVALID;
@@ -576,10 +576,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
    * @return EXPIRATION_DATE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.")
   public Integer getEXPIRATIONDATEINVALID() {
     return EXPIRATION_DATE_INVALID;
@@ -594,10 +594,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
    * @return AVAILABILITY_DATE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.")
   public Integer getAVAILABILITYDATEINVALID() {
     return AVAILABILITY_DATE_INVALID;
@@ -612,10 +612,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
    * @return SALE_DATE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.")
   public Integer getSALEDATEINVALID() {
     return SALE_DATE_INVALID;
@@ -630,10 +630,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
    * @return WEIGHT_UNIT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.")
   public Integer getWEIGHTUNITINVALID() {
     return WEIGHT_UNIT_INVALID;
@@ -648,10 +648,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
    * @return IS_BUNDLE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.")
   public Integer getISBUNDLEINVALID() {
     return IS_BUNDLE_INVALID;
@@ -666,10 +666,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
    * @return UPDATED_TIME_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.")
   public Integer getUPDATEDTIMEINVALID() {
     return UPDATED_TIME_INVALID;
@@ -684,10 +684,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have custom_label values that are too long, those items will be published without that custom label.
    * @return CUSTOM_LABEL_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "Some items have custom_label values that are too long, those items will be published without that custom label.")
   public Integer getCUSTOMLABELLENGTHTOOLONG() {
     return CUSTOM_LABEL_LENGTH_TOO_LONG;
@@ -702,10 +702,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have product_type values that are too long, those items will be published without that product type.
    * @return PRODUCT_TYPE_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "Some items have product_type values that are too long, those items will be published without that product type.")
   public Integer getPRODUCTTYPELENGTHTOOLONG() {
     return PRODUCT_TYPE_LENGTH_TOO_LONG;
@@ -720,10 +720,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
    * @return TOO_MANY_ADDITIONAL_IMAGE_LINKS
-  **/
+   */
   @ApiModelProperty(value = "Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.")
   public Integer getTOOMANYADDITIONALIMAGELINKS() {
     return TOO_MANY_ADDITIONAL_IMAGE_LINKS;
@@ -738,10 +738,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items have invalid multipack values.
    * @return MULTIPACK_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have invalid multipack values.")
   public Integer getMULTIPACKINVALID() {
     return MULTIPACK_INVALID;
@@ -756,10 +756,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * The product count has increased or decreased significantly compared to the last successful ingestion.
    * @return INDEXED_PRODUCT_COUNT_LARGE_DELTA
-  **/
+   */
   @ApiModelProperty(value = "The product count has increased or decreased significantly compared to the last successful ingestion.")
   public Integer getINDEXEDPRODUCTCOUNTLARGEDELTA() {
     return INDEXED_PRODUCT_COUNT_LARGE_DELTA;
@@ -774,10 +774,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include additional_image_links that can't be found.
    * @return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
-  **/
+   */
   @ApiModelProperty(value = "Some items include additional_image_links that can't be found.")
   public Integer getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
     return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
@@ -792,10 +792,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing a google_product_category.
    * @return OPTIONAL_PRODUCT_CATEGORY_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing a google_product_category.")
   public Integer getOPTIONALPRODUCTCATEGORYMISSING() {
     return OPTIONAL_PRODUCT_CATEGORY_MISSING;
@@ -810,10 +810,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
    * @return OPTIONAL_PRODUCT_CATEGORY_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.")
   public Integer getOPTIONALPRODUCTCATEGORYINVALID() {
     return OPTIONAL_PRODUCT_CATEGORY_INVALID;
@@ -828,10 +828,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.")
   public Integer getOPTIONALCONDITIONMISSING() {
     return OPTIONAL_CONDITION_MISSING;
@@ -846,10 +846,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
    * @return OPTIONAL_CONDITION_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
   public Integer getOPTIONALCONDITIONINVALID() {
     return OPTIONAL_CONDITION_INVALID;
@@ -864,10 +864,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include invalid ios_deep_link values.
    * @return IOS_DEEP_LINK_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include invalid ios_deep_link values.")
   public Integer getIOSDEEPLINKINVALID() {
     return IOS_DEEP_LINK_INVALID;
@@ -882,10 +882,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include invalid android_deep_link.
    * @return ANDROID_DEEP_LINK_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include invalid android_deep_link.")
   public Integer getANDROIDDEEPLINKINVALID() {
     return ANDROID_DEEP_LINK_INVALID;
@@ -900,10 +900,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
    * @return UTM_SOURCE_AUTO_CORRECTED
-  **/
+   */
   @ApiModelProperty(value = "Some items include utm_source values that are formatted incorrectly and have been automatically corrected.")
   public Integer getUTMSOURCEAUTOCORRECTED() {
     return UTM_SOURCE_AUTO_CORRECTED;
@@ -918,10 +918,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
    * @return COUNTRY_DOES_NOT_MAP_TO_CURRENCY
-  **/
+   */
   @ApiModelProperty(value = "Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.")
   public Integer getCOUNTRYDOESNOTMAPTOCURRENCY() {
     return COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
@@ -936,10 +936,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include min_ad_price values that are formatted incorrectly.
    * @return MIN_AD_PRICE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include min_ad_price values that are formatted incorrectly.")
   public Integer getMINADPRICEINVALID() {
     return MIN_AD_PRICE_INVALID;
@@ -954,10 +954,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include incorrectly formatted GTINs.
    * @return GTIN_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include incorrectly formatted GTINs.")
   public Integer getGTININVALID() {
     return GTIN_INVALID;
@@ -972,10 +972,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include inconsistent currencies in price fields.
    * @return INCONSISTENT_CURRENCY_VALUES
-  **/
+   */
   @ApiModelProperty(value = "Some items include inconsistent currencies in price fields.")
   public Integer getINCONSISTENTCURRENCYVALUES() {
     return INCONSISTENT_CURRENCY_VALUES;
@@ -990,10 +990,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include sales price that is much lower than the list price.
    * @return SALES_PRICE_TOO_LOW
-  **/
+   */
   @ApiModelProperty(value = "Some items include sales price that is much lower than the list price.")
   public Integer getSALESPRICETOOLOW() {
     return SALES_PRICE_TOO_LOW;
@@ -1008,10 +1008,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include incorrectly formatted shipping_width.
    * @return SHIPPING_WIDTH_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include incorrectly formatted shipping_width.")
   public Integer getSHIPPINGWIDTHINVALID() {
     return SHIPPING_WIDTH_INVALID;
@@ -1026,10 +1026,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include incorrectly formatted shipping_height.
    * @return SHIPPING_HEIGHT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include incorrectly formatted shipping_height.")
   public Integer getSHIPPINGHEIGHTINVALID() {
     return SHIPPING_HEIGHT_INVALID;
@@ -1044,10 +1044,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
    * @return SALES_PRICE_TOO_HIGH
-  **/
+   */
   @ApiModelProperty(value = "Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.")
   public Integer getSALESPRICETOOHIGH() {
     return SALES_PRICE_TOO_HIGH;
@@ -1062,10 +1062,10 @@ public class CatalogsFeedValidationWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Some items include incorrectly formatted MPNs.
    * @return MPN_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items include incorrectly formatted MPNs.")
   public Integer getMPNINVALID() {
     return MPN_INVALID;

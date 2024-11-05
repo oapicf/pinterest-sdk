@@ -11,9 +11,7 @@ enum EnhancedMatchStatusType {
     
     VALIDATING_IN_PROGRESS("VALIDATING_IN_PROGRESS"),
     
-    VALIDATION_COMPLETE("VALIDATION_COMPLETE"),
-    
-    NULL("null")
+    VALIDATION_COMPLETE("VALIDATION_COMPLETE")
 
     private final String value
 

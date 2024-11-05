@@ -21,7 +21,7 @@ openapi_keyword_update() ->
 openapi_keyword_update(Fields) ->
   Default = [ {'id', binary() }
             , {'archived', boolean() }
-            , {'bid', integer(1) }
+            , {'bid', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

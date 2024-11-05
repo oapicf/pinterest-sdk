@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CustomerListUpdateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomerListUpdateRequest   {
   @JsonProperty("records")
   private String records;
@@ -33,10 +33,10 @@ public class CustomerListUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
    * @return records
-  **/
+   */
   @ApiModelProperty(example = "email2@pinterest.com,email6@pinterest.com,", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
   public String getRecords() {
     return records;
@@ -51,10 +51,10 @@ public class CustomerListUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get operationType
    * @return operationType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public UserListOperationType getOperationType() {
     return operationType;
@@ -69,10 +69,10 @@ public class CustomerListUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get exceptions
    * @return exceptions
-  **/
+   */
   @ApiModelProperty(value = "")
   public Exception getExceptions() {
     return exceptions;

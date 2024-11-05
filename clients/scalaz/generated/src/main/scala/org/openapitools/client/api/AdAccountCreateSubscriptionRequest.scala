@@ -19,7 +19,8 @@ case class AdAccountCreateSubscriptionRequest (
 /* Partner access token. Only for clients that requires authentication. We recommend to avoid this param. */
   partnerAccessToken: Option[String],
 /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
-  partnerRefreshToken: Option[String])
+  partnerRefreshToken: Option[String],
+partnerMetadata: Option[AdAccountCreateSubscriptionRequestPartnerMetadata])
 
 object AdAccountCreateSubscriptionRequest {
   import DateTimeCodecs._

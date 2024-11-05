@@ -8,7 +8,7 @@ Protected Class CatalogsVerticalProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ID of the catalog product group.
+			ID of the creative assets product group.
 		#tag EndNote
 		id As String
 	#tag EndProperty
@@ -16,7 +16,7 @@ Protected Class CatalogsVerticalProductGroup
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Name of catalog product group
+			Name of creative assets product group
 		#tag EndNote
 		name As Xoson.O.OptionalString
 	#tag EndProperty
@@ -28,7 +28,25 @@ Protected Class CatalogsVerticalProductGroup
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsProductGroupFilters
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			boolean indicator of whether the product group is being featured or not
+		#tag EndNote
+		Attributes( Deprecated ) is_featured As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		status As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -49,42 +67,34 @@ Protected Class CatalogsVerticalProductGroup
 
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Catalog id pertaining to the creative assets product group.
+		#tag EndNote
 		catalog_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			boolean indicator of whether the product group is being featured or not
+			id of the catalogs feed belonging to this catalog product group
 		#tag EndNote
-		is_featured As Xoson.O.OptionalBoolean
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		status As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		feed_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		country As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		locale As Xoson.O.OptionalString
 	#tag EndProperty
 
 
     #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
         
-        Retail
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Feed_idEnum, Type = Integer, Flags = &h0
-        
-        Null
+        CreativeAssets
         
     #tag EndEnum
 
@@ -93,19 +103,8 @@ Protected Class CatalogsVerticalProductGroup
 		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
 		  Select Case value
 		    
-		    Case Catalog_typeEnum.Retail
-		      Return "RETAIL"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Feed_idEnumToString(value As Feed_idEnum) As String
-		  Select Case value
-		    
-		    Case Feed_idEnum.Null
-		      Return "null"
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
 		    
 		  End Select
 		  Return ""
@@ -175,7 +174,31 @@ Protected Class CatalogsVerticalProductGroup
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupFilters"
+			Type="CatalogsCreativeAssetsProductGroupFilters"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="is_featured"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupStatus"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -203,27 +226,27 @@ Protected Class CatalogsVerticalProductGroup
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="is_featured"
+			Name="feed_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="type"
+			Name="country"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupType"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="status"
+			Name="locale"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupStatus"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

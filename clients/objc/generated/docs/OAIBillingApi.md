@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```objc
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```objc
@@ -96,7 +96,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```objc
@@ -161,7 +161,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSNumber* isActive = @56; // Return active billing profiles, if false return all billing profiles.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **isActive** | **NSNumber***| Return active billing profiles, if false return all billing profiles. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -399,7 +399,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -522,7 +522,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* pinOrderId = 0Q01N0000015hekSVDFDC; // The pin order id associated with the ssio insertino order (optional)
 
 OAIBillingApi*apiInstance = [[OAIBillingApi alloc] init];
@@ -548,7 +548,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **pinOrderId** | **NSString***| The pin order id associated with the ssio insertino order | [optional] 
 
 ### Return type

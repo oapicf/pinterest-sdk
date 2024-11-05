@@ -17,15 +17,13 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
   public = list(
     `match_type` = NULL,
     `value` = NULL,
-    #' Initialize a new AdGroupAudienceSizingRequestKeywordsInner class.
-    #'
+
     #' @description
     #' Initialize a new AdGroupAudienceSizingRequestKeywordsInner class.
     #'
     #' @param match_type match_type
     #' @param value Keyword value (120 chars max).
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`match_type`, `value`, ...) {
       if (!missing(`match_type`)) {
         if (!(`match_type` %in% c())) {
@@ -41,13 +39,11 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
         self$`value` <- `value`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdGroupAudienceSizingRequestKeywordsInner in JSON format
-    #' @export
     toJSON = function() {
       AdGroupAudienceSizingRequestKeywordsInnerObject <- list()
       if (!is.null(self$`match_type`)) {
@@ -60,14 +56,12 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
       }
       AdGroupAudienceSizingRequestKeywordsInnerObject
     },
-    #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequestKeywordsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequestKeywordsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdGroupAudienceSizingRequestKeywordsInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`match_type`)) {
@@ -80,13 +74,11 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdGroupAudienceSizingRequestKeywordsInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`match_type`)) {
@@ -109,27 +101,23 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequestKeywordsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequestKeywordsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdGroupAudienceSizingRequestKeywordsInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`match_type` <- MatchTypeResponse$new()$fromJSON(jsonlite::toJSON(this_object$`match_type`, auto_unbox = TRUE, digits = NA))
       self$`value` <- this_object$`value`
       self
     },
-    #' Validate JSON input with respect to AdGroupAudienceSizingRequestKeywordsInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdGroupAudienceSizingRequestKeywordsInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `match_type`
@@ -147,23 +135,19 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for AdGroupAudienceSizingRequestKeywordsInner: the required field `value` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdGroupAudienceSizingRequestKeywordsInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `value` is null
       if (is.null(self$`value`)) {
@@ -172,13 +156,11 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `value` is null
@@ -188,12 +170,9 @@ AdGroupAudienceSizingRequestKeywordsInner <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

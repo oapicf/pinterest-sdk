@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,21 +21,21 @@ var _ MappedNullable = &AdAccountGetSubscriptionResponse{}
 // AdAccountGetSubscriptionResponse struct for AdAccountGetSubscriptionResponse
 type AdAccountGetSubscriptionResponse struct {
 	// Lead form ID.
-	LeadFormId NullableString `json:"lead_form_id,omitempty"`
+	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Standard HTTPS webhook URL.
 	WebhookUrl *string `json:"webhook_url,omitempty"`
 	// Subscription ID.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	// User account used to subscribe lead data.
-	UserAccountId *string `json:"user_account_id,omitempty"`
+	UserAccountId *string `json:"user_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// The Ad Account ID that this lead form belongs to.
-	AdAccountId *string `json:"ad_account_id,omitempty"`
+	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// API version.
 	ApiVersion *string `json:"api_version,omitempty"`
 	// Base64 encoded key for client to decrypt lead data.
-	CryptographicKey *string `json:"cryptographic_key,omitempty"`
+	CryptographicKey NullableString `json:"cryptographic_key,omitempty"`
 	// Lead data encryption algorithm.
-	CryptographicAlgorithm *string `json:"cryptographic_algorithm,omitempty"`
+	CryptographicAlgorithm NullableString `json:"cryptographic_algorithm,omitempty"`
 	// Lead form creation time. Unix timestamp in milliseconds.
 	CreatedTime *int32 `json:"created_time,omitempty"`
 }
@@ -259,68 +259,88 @@ func (o *AdAccountGetSubscriptionResponse) SetApiVersion(v string) {
 	o.ApiVersion = &v
 }
 
-// GetCryptographicKey returns the CryptographicKey field value if set, zero value otherwise.
+// GetCryptographicKey returns the CryptographicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdAccountGetSubscriptionResponse) GetCryptographicKey() string {
-	if o == nil || IsNil(o.CryptographicKey) {
+	if o == nil || IsNil(o.CryptographicKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CryptographicKey
+	return *o.CryptographicKey.Get()
 }
 
 // GetCryptographicKeyOk returns a tuple with the CryptographicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdAccountGetSubscriptionResponse) GetCryptographicKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.CryptographicKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CryptographicKey, true
+	return o.CryptographicKey.Get(), o.CryptographicKey.IsSet()
 }
 
 // HasCryptographicKey returns a boolean if a field has been set.
 func (o *AdAccountGetSubscriptionResponse) HasCryptographicKey() bool {
-	if o != nil && !IsNil(o.CryptographicKey) {
+	if o != nil && o.CryptographicKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCryptographicKey gets a reference to the given string and assigns it to the CryptographicKey field.
+// SetCryptographicKey gets a reference to the given NullableString and assigns it to the CryptographicKey field.
 func (o *AdAccountGetSubscriptionResponse) SetCryptographicKey(v string) {
-	o.CryptographicKey = &v
+	o.CryptographicKey.Set(&v)
+}
+// SetCryptographicKeyNil sets the value for CryptographicKey to be an explicit nil
+func (o *AdAccountGetSubscriptionResponse) SetCryptographicKeyNil() {
+	o.CryptographicKey.Set(nil)
 }
 
-// GetCryptographicAlgorithm returns the CryptographicAlgorithm field value if set, zero value otherwise.
+// UnsetCryptographicKey ensures that no value is present for CryptographicKey, not even an explicit nil
+func (o *AdAccountGetSubscriptionResponse) UnsetCryptographicKey() {
+	o.CryptographicKey.Unset()
+}
+
+// GetCryptographicAlgorithm returns the CryptographicAlgorithm field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdAccountGetSubscriptionResponse) GetCryptographicAlgorithm() string {
-	if o == nil || IsNil(o.CryptographicAlgorithm) {
+	if o == nil || IsNil(o.CryptographicAlgorithm.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CryptographicAlgorithm
+	return *o.CryptographicAlgorithm.Get()
 }
 
 // GetCryptographicAlgorithmOk returns a tuple with the CryptographicAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdAccountGetSubscriptionResponse) GetCryptographicAlgorithmOk() (*string, bool) {
-	if o == nil || IsNil(o.CryptographicAlgorithm) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CryptographicAlgorithm, true
+	return o.CryptographicAlgorithm.Get(), o.CryptographicAlgorithm.IsSet()
 }
 
 // HasCryptographicAlgorithm returns a boolean if a field has been set.
 func (o *AdAccountGetSubscriptionResponse) HasCryptographicAlgorithm() bool {
-	if o != nil && !IsNil(o.CryptographicAlgorithm) {
+	if o != nil && o.CryptographicAlgorithm.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCryptographicAlgorithm gets a reference to the given string and assigns it to the CryptographicAlgorithm field.
+// SetCryptographicAlgorithm gets a reference to the given NullableString and assigns it to the CryptographicAlgorithm field.
 func (o *AdAccountGetSubscriptionResponse) SetCryptographicAlgorithm(v string) {
-	o.CryptographicAlgorithm = &v
+	o.CryptographicAlgorithm.Set(&v)
+}
+// SetCryptographicAlgorithmNil sets the value for CryptographicAlgorithm to be an explicit nil
+func (o *AdAccountGetSubscriptionResponse) SetCryptographicAlgorithmNil() {
+	o.CryptographicAlgorithm.Set(nil)
+}
+
+// UnsetCryptographicAlgorithm ensures that no value is present for CryptographicAlgorithm, not even an explicit nil
+func (o *AdAccountGetSubscriptionResponse) UnsetCryptographicAlgorithm() {
+	o.CryptographicAlgorithm.Unset()
 }
 
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
@@ -383,11 +403,11 @@ func (o AdAccountGetSubscriptionResponse) ToMap() (map[string]interface{}, error
 	if !IsNil(o.ApiVersion) {
 		toSerialize["api_version"] = o.ApiVersion
 	}
-	if !IsNil(o.CryptographicKey) {
-		toSerialize["cryptographic_key"] = o.CryptographicKey
+	if o.CryptographicKey.IsSet() {
+		toSerialize["cryptographic_key"] = o.CryptographicKey.Get()
 	}
-	if !IsNil(o.CryptographicAlgorithm) {
-		toSerialize["cryptographic_algorithm"] = o.CryptographicAlgorithm
+	if o.CryptographicAlgorithm.IsSet() {
+		toSerialize["cryptographic_algorithm"] = o.CryptographicAlgorithm.Get()
 	}
 	if !IsNil(o.CreatedTime) {
 		toSerialize["created_time"] = o.CreatedTime

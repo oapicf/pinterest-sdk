@@ -4,9 +4,9 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.BatchOperation
+open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.Country
 open OpenAPI.Model.ItemDeleteDiscontinuedBatchRecord
-open OpenAPI.Model.Language
 
 module CatalogsItemsDeleteDiscontinuedBatchRequest =
 
@@ -17,7 +17,7 @@ module CatalogsItemsDeleteDiscontinuedBatchRequest =
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "language")>]
-    Language : Language;
+    Language : CatalogsItemsRequestLanguage;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : BatchOperation;
     [<JsonProperty(PropertyName = "items")>]

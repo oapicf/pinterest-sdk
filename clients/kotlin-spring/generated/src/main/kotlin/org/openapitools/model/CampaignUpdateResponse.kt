@@ -23,7 +23,7 @@ data class CampaignUpdateResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("items") val items: kotlin.collections.List<CampaignCreateResponseItem>? = null
-) {
+    ) {
 
 }
 

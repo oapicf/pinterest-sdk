@@ -27,8 +27,9 @@ public struct CatalogsHotelFeedsCreateRequest: Codable, JSONEncodable, Hashable 
     public var catalogType: CatalogsType
     /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
     public var catalogId: String?
+    public var status: CatalogsStatus?
 
-    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, catalogType: CatalogsType, catalogId: String? = nil) {
+    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, catalogType: CatalogsType, catalogId: String? = nil, status: CatalogsStatus? = nil) {
         self.defaultCurrency = defaultCurrency
         self.name = name
         self.format = format
@@ -38,6 +39,7 @@ public struct CatalogsHotelFeedsCreateRequest: Codable, JSONEncodable, Hashable 
         self.preferredProcessingSchedule = preferredProcessingSchedule
         self.catalogType = catalogType
         self.catalogId = catalogId
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -50,6 +52,7 @@ public struct CatalogsHotelFeedsCreateRequest: Codable, JSONEncodable, Hashable 
         case preferredProcessingSchedule = "preferred_processing_schedule"
         case catalogType = "catalog_type"
         case catalogId = "catalog_id"
+        case status
     }
 
     // Encodable protocol methods
@@ -65,6 +68,7 @@ public struct CatalogsHotelFeedsCreateRequest: Codable, JSONEncodable, Hashable 
         try container.encodeIfPresent(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encodeIfPresent(catalogId, forKey: .catalogId)
+        try container.encodeIfPresent(status, forKey: .status)
     }
 }
 

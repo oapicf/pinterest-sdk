@@ -193,8 +193,8 @@ open class AudiencesAPI {
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter ownershipType: (query) &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. (optional, default to .owned)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter ownershipType: (query) Filter audiences by ownership type. (optional, default to .owned)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -220,8 +220,8 @@ open class AudiencesAPI {
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     - parameter ownershipType: (query) &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. (optional, default to .owned)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter ownershipType: (query) Filter audiences by ownership type. (optional, default to .owned)
      - returns: RequestBuilder<AudiencesList200Response> 
      */
     open class func audiencesListWithRequestBuilder(adAccountId: String, bookmark: String? = nil, order: Order_audiencesList? = nil, pageSize: Int? = nil, ownershipType: OwnershipType_audiencesList? = nil) -> RequestBuilder<AudiencesList200Response> {

@@ -27,7 +27,6 @@ public struct OptimizationGoalMetadataConversionTagV3GoalMetadata: Codable, JSON
     public enum LearningModeType: String, Codable, CaseIterable {
         case notActive = "NOT_ACTIVE"
         case active = "ACTIVE"
-        case null = "null"
     }
     static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
     static let cpaGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[0-9]+$/")
@@ -35,7 +34,7 @@ public struct OptimizationGoalMetadataConversionTagV3GoalMetadata: Codable, JSON
     public var conversionEvent: ConversionEvent?
     public var conversionTagId: String?
     public var cpaGoalValueInMicroCurrency: String?
-    /** Ad group is ROAS optimized */
+    /** ROAS optimization is not supported */
     public var isRoasOptimized: Bool?
     /** Conversion learning model type */
     public var learningModeType: LearningModeType?

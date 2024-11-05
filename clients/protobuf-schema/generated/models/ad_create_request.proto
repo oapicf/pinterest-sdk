@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,18 +14,18 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/ad_common_quiz_pin_data.proto";
-import public "models/ad_common_tracking_urls.proto";
 import public "models/creative_type.proto";
 import public "models/entity_status.proto";
 import public "models/grid_click_type.proto";
+import public "models/quiz_pin_data.proto";
+import public "models/tracking_urls.proto";
 
 message AdCreateRequest {
 
   // ID of the ad group that contains the ad.
   string ad_group_id = 85224585;
 
-  // Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  // Deep link URL for Android devices.
   optional string android_deep_link = 414896541;
 
   // Comma-separated deep links for the carousel pin on Android.
@@ -45,7 +45,7 @@ message AdCreateRequest {
   // Destination URL.
   optional string destination_url = 151617093;
 
-  // Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  // Deep link URL for iOS devices.
   optional string ios_deep_link = 498419132;
 
   // Is original pin deleted?
@@ -59,7 +59,7 @@ message AdCreateRequest {
 
   EntityStatus status = 355610639;
 
-  AdCommonTrackingUrls tracking_urls = 127999343;
+  TrackingUrls tracking_urls = 127999343;
 
   // Tracking URL for ad impressions.
   optional string view_tracking_url = 388252482;
@@ -69,7 +69,7 @@ message AdCreateRequest {
 
   GridClickType grid_click_type = 474097112;
 
-  // Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  // Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
   enum Customizable_cta_typeEnum {
     Customizable_cta_typeEnum_GET_OFFER = 0;
     Customizable_cta_typeEnum_LEARN_MORE = 1;
@@ -80,7 +80,7 @@ message AdCreateRequest {
     Customizable_cta_typeEnum_BUY_NOW = 6;
     Customizable_cta_typeEnum_CONTACT_US = 7;
     Customizable_cta_typeEnum_GET_QUOTE = 8;
-    Customizable_cta_typeEnum_VISIT_WEBSITE = 9;
+    Customizable_cta_typeEnum_VISIT_SITE = 9;
     Customizable_cta_typeEnum_APPLY_NOW = 10;
     Customizable_cta_typeEnum_BOOK_NOW = 11;
     Customizable_cta_typeEnum_REQUEST_DEMO = 12;
@@ -89,12 +89,12 @@ message AdCreateRequest {
     Customizable_cta_typeEnum_ADD_TO_CART = 15;
     Customizable_cta_typeEnum_WATCH_NOW = 16;
     Customizable_cta_typeEnum_READ_MORE = 17;
-    Customizable_cta_typeEnum_NULL = 18;
   }
 
   Customizable_cta_typeEnum customizable_cta_type = 219496492;
 
-  AdCommonQuizPinData quiz_pin_data = 340363967;
+  // Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  QuizPinData quiz_pin_data = 340363967;
 
   // Pin ID.
   string pin_id = 451290108;

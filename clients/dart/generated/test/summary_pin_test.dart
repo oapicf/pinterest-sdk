@@ -16,7 +16,7 @@ void main() {
   // final instance = SummaryPin();
 
   group('test SummaryPin', () {
-    // SummaryPinMedia media
+    // PinMedia media
     test('to test the property `media`', () async {
       // TODO
     });

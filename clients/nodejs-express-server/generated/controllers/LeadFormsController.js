@@ -16,13 +16,23 @@ const lead_form_test/create = async (request, response) => {
   await Controller.handleRequest(request, response, service.lead_form_test/create);
 };
 
+const lead_forms/create = async (request, response) => {
+  await Controller.handleRequest(request, response, service.lead_forms/create);
+};
+
 const lead_forms/list = async (request, response) => {
   await Controller.handleRequest(request, response, service.lead_forms/list);
+};
+
+const lead_forms/update = async (request, response) => {
+  await Controller.handleRequest(request, response, service.lead_forms/update);
 };
 
 
 module.exports = {
   lead_form/get,
   lead_form_test/create,
+  lead_forms/create,
   lead_forms/list,
+  lead_forms/update,
 };

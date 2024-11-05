@@ -171,7 +171,6 @@ module NullableCurrency =
   let ZAREnum = "ZAR"
   let ZMWEnum = "ZMW"
   let ZWDEnum = "ZWD"
-  let NullEnum = "null"
   type NullableCurrency = string
 
   //#endregion

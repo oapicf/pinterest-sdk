@@ -57,8 +57,7 @@ SSIOOrderLine <- R6::R6Class(
     `accepted_terms_time` = NULL,
     `budget_amount` = NULL,
     `estimated_monthly_spend` = NULL,
-    #' Initialize a new SSIOOrderLine class.
-    #'
+
     #' @description
     #' Initialize a new SSIOOrderLine class.
     #'
@@ -85,7 +84,6 @@ SSIOOrderLine <- R6::R6Class(
     #' @param budget_amount If Budget order line, the budget amount.
     #' @param estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`salesforce_order_line_id` = NULL, `ads_manager_order_line_id` = NULL, `pin_order_id` = NULL, `last_modified_date_time` = NULL, `start_date` = NULL, `end_date` = NULL, `bill_to_company_name` = NULL, `billing_contact_firstname` = NULL, `billing_contact_lastname` = NULL, `billing_contact_email` = NULL, `media_contact_email` = NULL, `media_contact_firstname` = NULL, `media_contact_lastname` = NULL, `currency_info` = NULL, `agency_link` = NULL, `po_number` = NULL, `order_name` = NULL, `pmp_name` = NULL, `accepted_terms_id` = NULL, `accepted_terms_time` = NULL, `budget_amount` = NULL, `estimated_monthly_spend` = NULL, ...) {
       if (!is.null(`salesforce_order_line_id`)) {
         if (!(is.character(`salesforce_order_line_id`) && length(`salesforce_order_line_id`) == 1)) {
@@ -215,13 +213,11 @@ SSIOOrderLine <- R6::R6Class(
         self$`estimated_monthly_spend` <- `estimated_monthly_spend`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOOrderLine in JSON format
-    #' @export
     toJSON = function() {
       SSIOOrderLineObject <- list()
       if (!is.null(self$`salesforce_order_line_id`)) {
@@ -314,14 +310,12 @@ SSIOOrderLine <- R6::R6Class(
       }
       SSIOOrderLineObject
     },
-    #' Deserialize JSON string into an instance of SSIOOrderLine
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOOrderLine
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOOrderLine
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`salesforce_order_line_id`)) {
@@ -394,13 +388,11 @@ SSIOOrderLine <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOOrderLine in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`salesforce_order_line_id`)) {
@@ -583,14 +575,12 @@ SSIOOrderLine <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of SSIOOrderLine
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOOrderLine
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOOrderLine
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`salesforce_order_line_id` <- this_object$`salesforce_order_line_id`
@@ -617,33 +607,27 @@ SSIOOrderLine <- R6::R6Class(
       self$`estimated_monthly_spend` <- this_object$`estimated_monthly_spend`
       self
     },
-    #' Validate JSON input with respect to SSIOOrderLine
-    #'
+
     #' @description
     #' Validate JSON input with respect to SSIOOrderLine and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of SSIOOrderLine
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
         return(FALSE)
@@ -655,13 +639,11 @@ SSIOOrderLine <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`last_modified_date_time`, "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")) {
@@ -674,12 +656,9 @@ SSIOOrderLine <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

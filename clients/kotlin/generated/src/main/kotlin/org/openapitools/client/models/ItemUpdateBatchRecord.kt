@@ -43,5 +43,8 @@ data class ItemUpdateBatchRecord (
     @Json(name = "update_mask")
     val updateMask: kotlin.collections.List<UpdateMaskFieldType>? = null
 
-)
+) {
+
+
+}
 

@@ -27,13 +27,13 @@ void main() {
       // TODO
     });
 
-    // Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+    // Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
     // DateTime createdTime
     test('to test the property `createdTime`', () async {
       // TODO
     });
 
-    // Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+    // Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
     // DateTime completedTime
     test('to test the property `completedTime`', () async {
       // TODO
@@ -45,7 +45,7 @@ void main() {
     });
 
     // Array with the catalogs items processing records part of the catalogs items batch
-    // List<HotelProcessingRecord> items (default value: const [])
+    // List<CreativeAssetsProcessingRecord> items (default value: const [])
     test('to test the property `items`', () async {
       // TODO
     });

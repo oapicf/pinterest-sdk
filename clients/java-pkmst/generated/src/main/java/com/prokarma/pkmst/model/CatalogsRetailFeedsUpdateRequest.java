@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for updating a feed.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailFeedsUpdateRequest   {
   @JsonProperty("default_currency")
   private NullableCurrency defaultCurrency;
@@ -58,10 +58,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -76,10 +76,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed.
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
   public String getName() {
     return name;
@@ -94,10 +94,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -112,10 +112,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -130,10 +130,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -148,10 +148,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -166,10 +166,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsStatus getStatus() {
     return status;
@@ -184,10 +184,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -202,10 +202,10 @@ public class CatalogsRetailFeedsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultAvailability
    * @return defaultAvailability
-  **/
+   */
   @ApiModelProperty(value = "")
   public ProductAvailabilityType getDefaultAvailability() {
     return defaultAvailability;

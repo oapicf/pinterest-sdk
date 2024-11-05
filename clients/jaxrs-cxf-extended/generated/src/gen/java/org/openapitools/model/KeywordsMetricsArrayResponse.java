@@ -16,7 +16,7 @@ public class KeywordsMetricsArrayResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid KeywordMetricsResponse> data;
+  private List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
  /**
   * Get data
   * @return data

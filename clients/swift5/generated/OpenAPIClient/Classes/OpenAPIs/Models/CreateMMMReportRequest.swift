@@ -22,6 +22,7 @@ public struct CreateMMMReportRequest: Codable, JSONEncodable, Hashable {
     }
     static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
     /** Name of the Marketing Mix Modeling (MMM) report */
     public var reportName: String
     /** Metric report start date (UTC). Format: YYYY-MM-DD */

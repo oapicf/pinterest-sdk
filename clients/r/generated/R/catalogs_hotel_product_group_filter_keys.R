@@ -17,13 +17,11 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
     any_of = list("BrandFilter", "CountryFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "HotelIdFilter", "PriceFilter"),
-    #' Initialize a new CatalogsHotelProductGroupFilterKeys.
-    #'
+
     #' @description
     #' Initialize a new CatalogsHotelProductGroupFilterKeys.
     #'
     #' @param instance an instance of the object defined in the anyOf schemas: "BrandFilter", "CountryFilter", "CustomLabel0Filter", "CustomLabel1Filter", "CustomLabel2Filter", "CustomLabel3Filter", "CustomLabel4Filter", "HotelIdFilter", "PriceFilter"
-    #' @export
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -59,26 +57,24 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFilterKeys.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFilterKeys.
     #' An alias to the method `fromJSON`.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsHotelProductGroupFilterKeys.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFilterKeys.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFilterKeys.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsHotelProductGroupFilterKeys.
-    #' @export
     fromJSON = function(input) {
       error_messages <- list()
 
@@ -212,13 +208,11 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
       stop(paste("No match found when deserializing the input into CatalogsHotelProductGroupFilterKeys with anyOf schemas BrandFilter, CountryFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, HotelIdFilter, PriceFilter. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
-    #' Serialize CatalogsHotelProductGroupFilterKeys to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsHotelProductGroupFilterKeys to JSON string.
     #'
     #' @return JSON string representation of the CatalogsHotelProductGroupFilterKeys.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify((self$actual_instance$toJSONString())))
@@ -226,13 +220,11 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsHotelProductGroupFilterKeys to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsHotelProductGroupFilterKeys to JSON.
     #'
     #' @return JSON representation of the CatalogsHotelProductGroupFilterKeys.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -240,14 +232,12 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsHotelProductGroupFilterKeys.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsHotelProductGroupFilterKeys and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -260,13 +250,11 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -276,12 +264,9 @@ CatalogsHotelProductGroupFilterKeys <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

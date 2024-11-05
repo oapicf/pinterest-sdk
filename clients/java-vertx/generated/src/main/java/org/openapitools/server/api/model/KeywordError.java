@@ -12,7 +12,7 @@ import org.openapitools.server.api.model.Keyword;
 public class KeywordError   {
   
   private Keyword data;
-  private List<String> errorMessages;
+  private List<String> errorMessages = new ArrayList<>();
 
   public KeywordError () {
 

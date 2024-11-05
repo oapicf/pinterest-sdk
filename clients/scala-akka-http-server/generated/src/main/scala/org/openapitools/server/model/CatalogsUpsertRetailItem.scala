@@ -11,6 +11,6 @@ package org.openapitools.server.model
 final case class CatalogsUpsertRetailItem (
   itemId: String,
   operation: String,
-  attributes: ItemAttributes
+  attributes: ItemAttributesRequest
 )
 

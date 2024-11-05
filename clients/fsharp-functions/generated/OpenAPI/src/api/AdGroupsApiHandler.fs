@@ -44,7 +44,7 @@ module AdGroupsApiHandlers =
     /// </summary>
    [<FunctionName("AdGroupsAudienceSizing")>]
     let AdGroupsAudienceSizing
-        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "GET", Route = "/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing")>]
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing")>]
         req:HttpRequest ) =
 
       use reader = StreamReader(req.Body)

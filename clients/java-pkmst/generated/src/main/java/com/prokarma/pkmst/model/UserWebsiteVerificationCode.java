@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * UserWebsiteVerificationCode
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserWebsiteVerificationCode   {
   @JsonProperty("verification_code")
   private String verificationCode;
@@ -36,10 +36,10 @@ public class UserWebsiteVerificationCode   {
     return this;
   }
 
-   /**
+  /**
    * Code to check against the user claiming the website
    * @return verificationCode
-  **/
+   */
   @ApiModelProperty(example = "e1edcc1a43976c646367e9c6c9a9b7b6", value = "Code to check against the user claiming the website")
   public String getVerificationCode() {
     return verificationCode;
@@ -54,10 +54,10 @@ public class UserWebsiteVerificationCode   {
     return this;
   }
 
-   /**
+  /**
    * DNS TXT record to check against for the website to be claimed
    * @return dnsTxtRecord
-  **/
+   */
   @ApiModelProperty(example = "pinterest-site-verification=e1edcc1a43976c646367e9c6c9a9b7b6", value = "DNS TXT record to check against for the website to be claimed")
   public String getDnsTxtRecord() {
     return dnsTxtRecord;
@@ -72,10 +72,10 @@ public class UserWebsiteVerificationCode   {
     return this;
   }
 
-   /**
+  /**
    * Metatag the verification process searchs for the website to be claimed
    * @return metatag
-  **/
+   */
   @ApiModelProperty(example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", value = "Metatag the verification process searchs for the website to be claimed")
   public String getMetatag() {
     return metatag;
@@ -90,10 +90,10 @@ public class UserWebsiteVerificationCode   {
     return this;
   }
 
-   /**
+  /**
    * File expected to find on the website being claimed
    * @return filename
-  **/
+   */
   @ApiModelProperty(example = "pinterest-e1edc.html", value = "File expected to find on the website being claimed")
   public String getFilename() {
     return filename;
@@ -108,10 +108,10 @@ public class UserWebsiteVerificationCode   {
     return this;
   }
 
-   /**
+  /**
    * A full html file to upload to the website in order for it to be claimed
    * @return fileContent
-  **/
+   */
   @ApiModelProperty(value = "A full html file to upload to the website in order for it to be claimed")
   public String getFileContent() {
     return fileContent;

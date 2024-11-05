@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -165,7 +165,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>targeting_types</b>"
-     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.</p>
+     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.</p>
      * <p>
      * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;AdsAnalyticsTargetingType&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -331,7 +331,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -591,7 +591,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Delete ads data for ad account in API Sandbox</p>
      *
-     * <p>Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.</p>
+     * <p>Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/ad_accounts/{ad_account_id}/sandbox" (<i>privileged: true</i>)</p>
      *
@@ -641,7 +641,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -805,7 +805,7 @@ public interface PathHandlerInterface {
      *
      * <p>Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.</p>
      *
-     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing" (<i>privileged: true</i>)</p>
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing" (<i>privileged: true</i>)</p>
      *
      * <p><b>Request parameters</b>:</p>
      * <ul>
@@ -840,7 +840,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get bid floors</p>
      *
-     * <p>List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.</p>
+     * <p>List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/bid_floor" (<i>privileged: true</i>)</p>
      *
@@ -875,7 +875,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create ad groups</p>
      *
-     * <p>Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.</p>
+     * <p>Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/ad_groups" (<i>privileged: true</i>)</p>
      *
@@ -996,7 +996,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -1094,7 +1094,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>targeting_types</b>"
-     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.</p>
+     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.</p>
      * <p>
      * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;AdsAnalyticsTargetingType&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -1220,7 +1220,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create ad preview with pin or image</p>
      *
-     * <p>Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.</p>
+     * <p>Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/ad_previews" (<i>privileged: true</i>)</p>
      *
@@ -1300,9 +1300,9 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>targeting_types</b>"
-     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.</p>
+     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.</p>
      * <p>
-     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;AdsAnalyticsTargetingType&gt;}</b><br/>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;AdsAnalyticsAdTargetingType&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
      * - Required: <b>true</b>
      * </p>
@@ -1391,7 +1391,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get ad analytics</p>
      *
-     * <p>Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.</p>
+     * <p>Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/ads/analytics" (<i>privileged: true</i>)</p>
      *
@@ -1425,15 +1425,6 @@ public interface PathHandlerInterface {
      * </p>
      * </li>
      * <li>
-     * <p>"<b>ad_ids</b>"
-     * <p>List of Ad Ids to use to filter the results.</p>
-     * <p>
-     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
-     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
-     * - Required: <b>true</b>
-     * </p>
-     * </li>
-     * <li>
      * <p>"<b>columns</b>"
      * <p>Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned</p>
      * <p>
@@ -1449,6 +1440,15 @@ public interface PathHandlerInterface {
      * - Parameter type: <b>{@link Granularity}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
      * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>ad_ids</b>"
+     * <p>List of Ad Ids to use to filter the results.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
      * </p>
      * </li>
      * <li>
@@ -1488,6 +1488,24 @@ public interface PathHandlerInterface {
      * - Parameter type: <b>{@link String}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
      * - Default value: <b>TIME_OF_AD_ACTION</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>pin_ids</b>"
+     * <p>List of Pin IDs.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>campaign_ids</b>"
+     * <p>List of Campaign Ids to use to filter the results.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
      * - Required: <b>false</b>
      * </p>
      * </li>
@@ -1639,7 +1657,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -1716,6 +1734,84 @@ public interface PathHandlerInterface {
     HttpHandler adsUpdate();
 
     /**
+     * <p>Get item bid options (POST)</p>
+     *
+     * <p>Get the bid options for a batch of retail catalog items.  The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/advanced_auction/items/get" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link AdvancedAuctionItemsGetRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link AdvancedAuctionItems}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Response containing the bid option values for the requested retail catalog items. Items that don't exist or do not have bid options set won't be present in the response.</li>
+     * <li><b>400 (client error)</b>: Invalid request parameters.</li>
+     * <li><b>401 (client error)</b>: Not authenticated to get item bid options</li>
+     * <li><b>403 (client error)</b>: Not authorized to get item bid options</li>
+     * <li><b>500 (server error)</b>: Internal error</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler advancedAuctionItemsGetPost();
+
+    /**
+     * <p>Operate on item level bid options</p>
+     *
+     * <p>This endpoint supports multiple operations on a set of one or more bid options (bid price and bid adjustments for targeting categories) for retail catalog items. These advanced auction settings are applied in campaigns using objective_type `CATALOG_SALES` and ad groups using bid_strategy_type `MAX_BID`.  The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/modify-items-in-batch/\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/advanced_auction/items/submit" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link AdvancedAuctionItemsSubmitRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link AdvancedAuctionProcessedItems}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Response containing the results of the item bid options operations</li>
+     * <li><b>400 (client error)</b>: Invalid request parameters.</li>
+     * <li><b>401 (client error)</b>: Not authenticated to post item bid options</li>
+     * <li><b>403 (client error)</b>: Not authorized to post item bid options</li>
+     * <li><b>500 (server error)</b>: Internal error</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler advancedAuctionItemsSubmitPost();
+
+    /**
      * <p>Get audience insights</p>
      *
      * <p>Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.</p>
@@ -1788,6 +1884,355 @@ public interface PathHandlerInterface {
      */
     @javax.annotation.Nonnull
     HttpHandler audienceInsightsScopeAndTypeGet();
+
+    /**
+     * <p>List accounts with access to an audience owned by an ad account</p>
+     *
+     * <p>List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>audience_id</b>"
+     * <p>Unique identifier of the audience to use to filter the results.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>account_type</b>"
+     * <p>Filter accounts by account type.</p>
+     * <p>
+     * - Parameter type: <b>{@link AudienceAccountType}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>AD_ACCOUNT</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link AdAccountsAudiencesSharedAccountsList200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account audiences shared accounts parameters.</li>
+     * <li><b>404 (client error)</b>: Shared accounts not found.</li>
+     * <li><b>Default</b>: Unexpected error.</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler adAccountsAudiencesSharedAccountsList();
+
+    /**
+     * <p>List accounts with access to an audience owned by a business</p>
+     *
+     * <p>List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/audiences/shared/accounts" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>audience_id</b>"
+     * <p>Unique identifier of the audience to use to filter the results.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>account_type</b>"
+     * <p>Filter accounts by account type.</p>
+     * <p>
+     * - Parameter type: <b>{@link AudienceAccountType}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>AD_ACCOUNT</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link AdAccountsAudiencesSharedAccountsList200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid business audiences shared accounts parameters.</li>
+     * <li><b>404 (client error)</b>: Shared accounts not found.</li>
+     * <li><b>Default</b>: Unexpected error.</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessAccountAudiencesSharedAccountsList();
+
+    /**
+     * <p>List received audiences for a business</p>
+     *
+     * <p>Get a list of received audiences for the given business.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/audiences" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>order</b>"
+     * <p>The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link AudiencesList200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler sharedAudiencesForBusinessList();
+
+    /**
+     * <p>Update audience sharing between ad accounts</p>
+     *
+     * <p>From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link SharedAudience} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link SharedAudienceResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account id.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler updateAdAccountToAdAccountSharedAudience();
+
+    /**
+     * <p>Update audience sharing from an ad account to businesses</p>
+     *
+     * <p>From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/ad_accounts/{ad_account_id}/audiences/businesses/shared" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link BusinessSharedAudience} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link BusinessSharedAudienceResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account id.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler updateAdAccountToBusinessSharedAudience();
+
+    /**
+     * <p>Update audience sharing from a business to ad accounts</p>
+     *
+     * <p>From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/businesses/{business_id}/audiences/ad_accounts/shared" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link SharedAudience} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link SharedAudienceResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler updateBusinessToAdAccountSharedAudience();
+
+    /**
+     * <p>Update audience sharing between businesses</p>
+     *
+     * <p>From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/businesses/{business_id}/audiences/businesses/shared" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link BusinessSharedAudience} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link BusinessSharedAudienceResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler updateBusinessToBusinessSharedAudience();
 
     /**
      * <p>Create audience</p>
@@ -1939,7 +2384,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -1949,7 +2394,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>ownership_type</b>"
-     * <p><strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type.</p>
+     * <p>Filter audiences by ownership type.</p>
      * <p>
      * - Parameter type: <b>{@link String}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2019,7 +2464,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Redeem ad credits</p>
      *
-     * <p>Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/ads_credit/redeem" (<i>privileged: true</i>)</p>
      *
@@ -2055,7 +2500,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get ads credit discounts</p>
      *
-     * <p>Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/ads_credit/discounts" (<i>privileged: true</i>)</p>
      *
@@ -2081,7 +2526,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2106,7 +2551,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get billing profiles</p>
      *
-     * <p>Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/billing_profiles" (<i>privileged: true</i>)</p>
      *
@@ -2141,7 +2586,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2297,7 +2742,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2391,7 +2836,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2561,7 +3006,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2630,7 +3075,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2862,7 +3307,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -2922,7 +3367,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -3142,6 +3587,1232 @@ public interface PathHandlerInterface {
     HttpHandler bulkUpsertCreate();
 
     /**
+     * <p>Create a new asset group.</p>
+     *
+     * <p>Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/businesses/{business_id}/asset_groups" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CreateAssetGroupBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link CreateAssetGroupResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler assetGroupCreate();
+
+    /**
+     * <p>Delete asset groups.</p>
+     *
+     * <p>Delete a batch of asset groups.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/businesses/{business_id}/asset_groups" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link DeleteAssetGroupBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link DeleteAssetGroupResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler assetGroupDelete();
+
+    /**
+     * <p>Update asset groups.</p>
+     *
+     * <p>Update a batch of asset groups with the specified parameters.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/businesses/{business_id}/asset_groups" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link UpdateAssetGroupBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link UpdateAssetGroupResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler assetGroupUpdate();
+
+    /**
+     * <p>Get members with access to asset</p>
+     *
+     * <p>Get all the members the requesting business has granted access to on the given asset.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/assets/{asset_id}/members" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>asset_id</b>"
+     * <p>Unique identifier of a business asset.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_index</b>"
+     * <p>An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>0</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link BusinessAssetMembersGet200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Sucess</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessAssetMembersGet();
+
+    /**
+     * <p>Get partners with access to asset</p>
+     *
+     * <p>Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/assets/{asset_id}/partners" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>asset_id</b>"
+     * <p>Unique identifier of a business asset.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_index</b>"
+     * <p>An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>0</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link BusinessAssetPartnersGet200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Sucess</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessAssetPartnersGet();
+
+    /**
+     * <p>List business assets</p>
+     *
+     * <p>Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/assets" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>permissions</b>"
+     * <p>A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;PermissionsWithOwner&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>child_asset_id</b>"
+     * <p>A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>asset_group_id</b>"
+     * <p>An asset group unique identifier. Used to fetch assets contained within the specified asset group.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>asset_type</b>"
+     * <p>A resource type to filter the assets by. Only assets of the specified type will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>AD_ACCOUNT</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_index</b>"
+     * <p>An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>0</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link BusinessAssetsGet200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessAssetsGet();
+
+    /**
+     * <p>Get assets assigned to a member</p>
+     *
+     * <p>Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/members/{member_id}/assets" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>member_id</b>"
+     * <p>The member id to fetch assets for.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>asset_type</b>"
+     * <p>A resource type to filter the assets by. Only assets of the specified type will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>AD_ACCOUNT</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_index</b>"
+     * <p>An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>0</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link BusinessMemberAssetsGet200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessMemberAssetsGet();
+
+    /**
+     * <p>Delete member access to asset</p>
+     *
+     * <p>Terminate multiple members' access to an asset.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/businesses/{business_id}/members/assets/access" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link BusinessMembersAssetAccessDeleteRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link DeleteMemberAccessResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: response</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessMembersAssetAccessDelete();
+
+    /**
+     * <p>Assign/Update member asset permissions</p>
+     *
+     * <p>Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. </p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/businesses/{business_id}/members/assets/access" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link UpdateMemberAssetAccessBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link UpdateMemberAssetsResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: response</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessMembersAssetAccessUpdate();
+
+    /**
+     * <p>Get assets assigned to a partner or assets assigned by a partner</p>
+     *
+     * <p>Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/partners/{partner_id}/assets" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>partner_id</b>"
+     * <p>The partner id to be bound to the Business</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>partner_type</b>"
+     * <p>Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.</p>
+     * <p>
+     * - Parameter type: <b>{@link PartnerType}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>asset_type</b>"
+     * <p>A resource type to filter the assets by. Only assets of the specified type will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>AD_ACCOUNT</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_index</b>"
+     * <p>An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>0</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link BusinessPartnerAssetAccessGet200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler businessPartnerAssetAccessGet();
+
+    /**
+     * <p>Delete partner access to asset</p>
+     *
+     * <p>Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets. - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/businesses/{business_id}/partners/assets" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link DeletePartnerAssetAccessBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link DeletePartnerAssetsResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler deletePartnerAssetAccessHandlerImpl();
+
+    /**
+     * <p>Assign/Update partner asset permissions</p>
+     *
+     * <p>Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/businesses/{business_id}/partners/assets" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link UpdatePartnerAssetAccessBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link UpdatePartnerAssetsResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler updatePartnerAssetAccessHandlerImpl();
+
+    /**
+     * <p>Create a request to access an existing partner's assets.</p>
+     *
+     * <p>Create a request to access an existing partner's assets with the specified permissions. The request will be sent to the partner for approval. The assets that can be requested are ad accounts and profiles.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/businesses/{business_id}/requests/assets/access" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CreateAssetAccessRequestBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link CreateAssetAccessRequestResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler assetAccessRequestsCreate();
+
+    /**
+     * <p>Cancel invites/requests</p>
+     *
+     * <p>Cancel membership/partnership invites and/or requests.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/businesses/{business_id}/invites" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Business id</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CancelInvitesBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link DeleteInvitesResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler cancelInvitesOrRequests();
+
+    /**
+     * <p>Update invite/request with an asset permission</p>
+     *
+     * <p>Assign asset permissions information to an existing invite/request. Can be used to: - Request access to a partner's asset. Note: This is only for when no existing partnership exists. If an existing   partnership exists, use \"Create a request to access an existing partner's assets\" to request access to your   partner's assets.     - invite_type=\"PARTNER_REQUEST\" - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.   If there is an existing partnership, use \"Assign/Update partner asset permissions\" to assign a partner access to   new assets.     - invite_type=\"PARTNER_INVITE\" - Invite a member to access your business assets. Note: This is only for when there is no existing membership.   If there is an existing membership, use \"Assign/Update member asset permissions\" to assign a member access to new   assets.     - invite_type=\"MEMBER_INVITE\"  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/businesses/{business_id}/invites/assets/access" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CreateAssetInvitesRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link UpdateInvitesResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler createAssetInvites();
+
+    /**
+     * <p>Create invites or requests</p>
+     *
+     * <p>Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type=\"MEMBER_INVITE\"     - business_role=\"EMPLOYEE\" OR business_role=\"BIZ_ADMIN\" (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type=\"PARTNER_INVITE\"     - business_role=\"PARTNER\"     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type=\"PARTNER_REQUEST\"     - business_role=\"PARTNER\"     - partners</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/businesses/{business_id}/invites" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Business id</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CreateMembershipOrPartnershipInvitesBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link CreateInvitesResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler createMembershipOrPartnershipInvites();
+
+    /**
+     * <p>Get invites/requests</p>
+     *
+     * <p>Get the membership/partnership invites and/or requests for the authorized user.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/invites" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>is_member</b>"
+     * <p>A boolean field to indicate whether the invite is to create a partnership or a membership.</p>
+     * <p>
+     * - Parameter type: <b>{@link Boolean}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>true</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>invite_status</b>"
+     * <p>A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>invite_type</b>"
+     * <p>Invite type to filter invites by. Only invites of the specified type will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link InviteType}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link GetInvites200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler getInvites();
+
+    /**
+     * <p>Accept or decline an invite/request</p>
+     *
+     * <p>Accept or decline invites or requests.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/businesses/invites" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link AuthRespondInvitesBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link RespondToInvitesResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler respondBusinessAccessInvites();
+
+    /**
+     * <p>Terminate business memberships</p>
+     *
+     * <p>Terminate memberships between the specified members and your business.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/businesses/{business_id}/members" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Business id</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link MembersToDeleteBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link DeletedMembersResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler deleteBusinessMembership();
+
+    /**
+     * <p>Terminate business partnerships</p>
+     *
+     * <p>Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/businesses/{business_id}/partners" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link DeletePartnersRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link DeletePartnersResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>404 (client error)</b>: A supplied partner id doesn't exist</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler deleteBusinessPartners();
+
+    /**
+     * <p>List business employers for user</p>
+     *
+     * <p>Get all of the viewing user's business employers.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/employers" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link GetBusinessEmployers200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler getBusinessEmployers();
+
+    /**
+     * <p>Get business members</p>
+     *
+     * <p>Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/members" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>assets_summary</b>"
+     * <p>Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are</p>
+     * <p>
+     * - Parameter type: <b>{@link Boolean}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>false</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>business_roles</b>"
+     * <p>A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;MemberBusinessRole&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>member_ids</b>"
+     * <p>A list of business members ids separated by comma.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_index</b>"
+     * <p>An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>0</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link GetBusinessMembers200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler getBusinessMembers();
+
+    /**
+     * <p>Get business partners</p>
+     *
+     * <p>Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/businesses/{business_id}/partners" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Unique identifier of the requesting business.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>assets_summary</b>"
+     * <p>Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are</p>
+     * <p>
+     * - Parameter type: <b>{@link Boolean}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>false</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>partner_type</b>"
+     * <p>Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.</p>
+     * <p>
+     * - Parameter type: <b>{@link PartnerType}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>partner_ids</b>"
+     * <p>A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_index</b>"
+     * <p>An index to start fetching the results from. Only the results starting from this index will be returned.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>0</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link GetBusinessPartners200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler getBusinessPartners();
+
+    /**
+     * <p>Update member's business role</p>
+     *
+     * <p>Update a member's business role within the business.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/businesses/{business_id}/members" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>business_id</b>"
+     * <p>Business id</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link java.util.List List} of {@link UpdateMemberBusinessRoleBody} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link UpdateMemberResultsResponseArray}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: response</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler updateBusinessMemberships();
+
+    /**
      * <p>Get targeting analytics for campaigns</p>
      *
      * <p>Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.</p>
@@ -3188,9 +4859,9 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>targeting_types</b>"
-     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.</p>
+     * <p>Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.</p>
      * <p>
-     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;AdsAnalyticsTargetingType&gt;}</b><br/>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;AdsAnalyticsCampaignTargetingType&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
      * - Required: <b>true</b>
      * </p>
@@ -3397,7 +5068,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create campaigns</p>
      *
-     * <p>Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul></p>
+     * <p>Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/campaigns" (<i>privileged: true</i>)</p>
      *
@@ -3509,7 +5180,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -3553,7 +5224,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Update campaigns</p>
      *
-     * <p>Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/> - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul></p>
+     * <p>Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/ad_accounts/{ad_account_id}/campaigns" (<i>privileged: true</i>)</p>
      *
@@ -3586,9 +5257,46 @@ public interface PathHandlerInterface {
     HttpHandler campaignsUpdate();
 
     /**
+     * <p>Create catalog</p>
+     *
+     * <p>Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CatalogsCreateRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link Catalog}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid parameters.</li>
+     * <li><b>401 (client error)</b>: Unauthorized access.</li>
+     * <li><b>Default</b>: Unexpected error.</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler catalogsCreate();
+
+    /**
      * <p>List catalogs</p>
      *
-     * <p>Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs" (<i>privileged: true</i>)</p>
      *
@@ -3605,7 +5313,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -3639,9 +5347,9 @@ public interface PathHandlerInterface {
     HttpHandler catalogsList();
 
     /**
-     * <p>List products for a Product Group</p>
+     * <p>List products by product group</p>
      *
-     * <p>Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/product_groups/{product_group_id}/products" (<i>privileged: true</i>)</p>
      *
@@ -3667,7 +5375,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -3681,6 +5389,16 @@ public interface PathHandlerInterface {
      * <p>
      * - Parameter type: <b>{@link String}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>pin_metrics</b>"
+     * <p>Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</p>
+     * <p>
+     * - Parameter type: <b>{@link Boolean}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>false</b><br/>
      * - Required: <b>false</b>
      * </p>
      * </li>
@@ -3704,7 +5422,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create product group</p>
      *
-     * <p>Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/product_groups" (<i>privileged: true</i>)</p>
      *
@@ -3722,10 +5440,10 @@ public interface PathHandlerInterface {
      * </ul>
      *
      * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
-     * <p><b>Payload</b>: {@link CatalogsProductGroupsCreateRequest} (<i>required: true</i>)</p>
+     * <p><b>Payload</b>: {@link MultipleProductGroupsInner} (<i>required: true</i>)</p>
      *
      * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
-     * <p><b>Returns</b>: {@link CatalogsProductGroupsCreate201Response}</p>
+     * <p><b>Returns</b>: {@link CatalogsVerticalProductGroup}</p>
      *
      * <p><b>Responses</b>:</p>
      * <ul>
@@ -3741,9 +5459,48 @@ public interface PathHandlerInterface {
     HttpHandler catalogsProductGroupsCreate();
 
     /**
+     * <p>Create product groups</p>
+     *
+     * <p>Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/product_groups/multiple" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link java.util.List List} of {@link MultipleProductGroupsInner} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link java.util.List List} of {@link String}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>201 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid body.</li>
+     * <li><b>401 (client error)</b>: Unauthorized access.</li>
+     * <li><b>403 (client error)</b>: Forbidden. Account not approved for catalog product group mutations yet.</li>
+     * <li><b>409 (client error)</b>: Conflict. Can't create this catalogs product group with this value.</li>
+     * <li><b>Default</b>: Unexpected error.</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler catalogsProductGroupsCreateMany();
+
+    /**
      * <p>Delete product group</p>
      *
-     * <p>Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/catalogs/product_groups/{product_group_id}" (<i>privileged: true</i>)</p>
      *
@@ -3786,9 +5543,53 @@ public interface PathHandlerInterface {
     HttpHandler catalogsProductGroupsDelete();
 
     /**
+     * <p>Delete product groups</p>
+     *
+     * <p>Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/catalogs/product_groups/multiple" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>id</b>"
+     * <p>Comma-separated list of product group ids</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;Integer&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>204 (success)</b>: Catalogs Product Groups deleted successfully.</li>
+     * <li><b>401 (client error)</b>: Unauthorized access.</li>
+     * <li><b>403 (client error)</b>: Forbidden. Account not approved for catalog product group mutations yet.</li>
+     * <li><b>404 (client error)</b>: Catalogs product group not found.</li>
+     * <li><b>409 (client error)</b>: Conflict. Can't delete this catalogs product group.</li>
+     * <li><b>Default</b>: Unexpected error.</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler catalogsProductGroupsDeleteMany();
+
+    /**
      * <p>Get product group</p>
      *
-     * <p>Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/product_groups/{product_group_id}" (<i>privileged: true</i>)</p>
      *
@@ -3815,7 +5616,7 @@ public interface PathHandlerInterface {
      * </ul>
      *
      * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
-     * <p><b>Returns</b>: {@link CatalogsProductGroupsCreate201Response}</p>
+     * <p><b>Returns</b>: {@link CatalogsVerticalProductGroup}</p>
      *
      * <p><b>Responses</b>:</p>
      * <ul>
@@ -3834,12 +5635,21 @@ public interface PathHandlerInterface {
     /**
      * <p>List product groups</p>
      *
-     * <p>Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/product_groups" (<i>privileged: true</i>)</p>
      *
      * <p><b>Request parameters</b>:</p>
      * <ul>
+     * <li>
+     * <p>"<b>id</b>"
+     * <p>Comma-separated list of product group ids</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;Integer&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
      * <li>
      * <p>"<b>feed_id</b>"
      * <p>Filter entities for a given feed_id. If not given, all feeds are considered.</p>
@@ -3869,7 +5679,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -3906,9 +5716,9 @@ public interface PathHandlerInterface {
     HttpHandler catalogsProductGroupsList();
 
     /**
-     * <p>Get product counts for a Product Group</p>
+     * <p>Get product counts</p>
      *
-     * <p>Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/product_groups/{product_group_id}/product_counts" (<i>privileged: true</i>)</p>
      *
@@ -3935,7 +5745,7 @@ public interface PathHandlerInterface {
      * </ul>
      *
      * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
-     * <p><b>Returns</b>: {@link CatalogsProductGroupProductCounts}</p>
+     * <p><b>Returns</b>: {@link CatalogsProductGroupProductCountsVertical}</p>
      *
      * <p><b>Responses</b>:</p>
      * <ul>
@@ -3949,9 +5759,9 @@ public interface PathHandlerInterface {
     HttpHandler catalogsProductGroupsProductCountsGet();
 
     /**
-     * <p>Update product group</p>
+     * <p>Update single product group</p>
      *
-     * <p>Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/catalogs/product_groups/{product_group_id}" (<i>privileged: true</i>)</p>
      *
@@ -3981,7 +5791,7 @@ public interface PathHandlerInterface {
      * <p><b>Payload</b>: {@link CatalogsProductGroupsUpdateRequest} (<i>required: true</i>)</p>
      *
      * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
-     * <p><b>Returns</b>: {@link CatalogsProductGroupsCreate201Response}</p>
+     * <p><b>Returns</b>: {@link CatalogsVerticalProductGroup}</p>
      *
      * <p><b>Responses</b>:</p>
      * <ul>
@@ -3998,9 +5808,9 @@ public interface PathHandlerInterface {
     HttpHandler catalogsProductGroupsUpdate();
 
     /**
-     * <p>List processing results for a given feed</p>
+     * <p>List feed processing results</p>
      *
-     * <p>Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/feeds/{feed_id}/processing_results" (<i>privileged: true</i>)</p>
      *
@@ -4026,7 +5836,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -4063,7 +5873,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create feed</p>
      *
-     * <p>Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.</p>
+     * <p>Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/feeds" (<i>privileged: true</i>)</p>
      *
@@ -4104,7 +5914,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Delete feed</p>
      *
-     * <p>Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.</p>
+     * <p>Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/catalogs/feeds/{feed_id}" (<i>privileged: true</i>)</p>
      *
@@ -4148,7 +5958,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get feed</p>
      *
-     * <p>Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.</p>
+     * <p>Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/feeds/{feed_id}" (<i>privileged: true</i>)</p>
      *
@@ -4190,9 +6000,53 @@ public interface PathHandlerInterface {
     HttpHandler feedsGet();
 
     /**
+     * <p>Ingest feed items</p>
+     *
+     * <p>Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/feeds/{feed_id}/ingest" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>feed_id</b>"
+     * <p>Unique identifier of a feed</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link CatalogsFeedIngestion}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: The ingestion process was successfully started.</li>
+     * <li><b>400 (client error)</b>: Invalid feed parameters.</li>
+     * <li><b>403 (client error)</b>: Forbidden. Account not approved for feed mutations yet.</li>
+     * <li><b>404 (client error)</b>: Data feed not found.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler feedsIngest();
+
+    /**
      * <p>List feeds</p>
      *
-     * <p>Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.</p>
+     * <p>Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/feeds" (<i>privileged: true</i>)</p>
      *
@@ -4209,7 +6063,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -4254,7 +6108,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Update feed</p>
      *
-     * <p>Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.</p>
+     * <p>Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/catalogs/feeds/{feed_id}" (<i>privileged: true</i>)</p>
      *
@@ -4299,9 +6153,9 @@ public interface PathHandlerInterface {
     HttpHandler feedsUpdate();
 
     /**
-     * <p>Get catalogs item batch status</p>
+     * <p>Get item batch status</p>
      *
-     * <p>Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.</p>
+     * <p>Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/items/batch/{batch_id}" (<i>privileged: true</i>)</p>
      *
@@ -4346,7 +6200,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Operate on item batch</p>
      *
-     * <p>This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.</p>
+     * <p>This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/items/batch" (<i>privileged: true</i>)</p>
      *
@@ -4384,7 +6238,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get catalogs items</p>
      *
-     * <p>Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.</p>
+     * <p>Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/items" (<i>privileged: true</i>)</p>
      *
@@ -4450,12 +6304,13 @@ public interface PathHandlerInterface {
      * </ul>
      */
     @javax.annotation.Nonnull
+    @Deprecated
     HttpHandler itemsGet();
 
     /**
-     * <p>List item issues for a given processing result</p>
+     * <p>List item issues</p>
      *
-     * <p>List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/processing_results/{processing_result_id}/item_issues" (<i>privileged: true</i>)</p>
      *
@@ -4463,7 +6318,7 @@ public interface PathHandlerInterface {
      * <ul>
      * <li>
      * <p>"<b>processing_result_id</b>"
-     * <p>Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list).</p>
+     * <p>Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).</p>
      * <p>
      * - Parameter type: <b>{@link String}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
@@ -4481,7 +6336,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -4534,9 +6389,47 @@ public interface PathHandlerInterface {
     HttpHandler itemsIssuesList();
 
     /**
-     * <p>List filtered products</p>
+     * <p>Get catalogs items (POST)</p>
      *
-     * <p>List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a></p>
+     * <p>Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/items" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CatalogsItemsRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link CatalogsItems}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Response containing the requested catalogs items</li>
+     * <li><b>400 (client error)</b>: Invalid request</li>
+     * <li><b>401 (client error)</b>: Not authorized to access catalogs items</li>
+     * <li><b>403 (client error)</b>: Not authorized to access catalogs items</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler itemsPost();
+
+    /**
+     * <p>List products by filter</p>
+     *
+     * <p>List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/products/get_by_product_group_filters" (<i>privileged: true</i>)</p>
      *
@@ -4553,7 +6446,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -4567,6 +6460,16 @@ public interface PathHandlerInterface {
      * <p>
      * - Parameter type: <b>{@link String}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>pin_metrics</b>"
+     * <p>Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</p>
+     * <p>
+     * - Parameter type: <b>{@link Boolean}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>false</b><br/>
      * - Required: <b>false</b>
      * </p>
      * </li>
@@ -4590,9 +6493,150 @@ public interface PathHandlerInterface {
     HttpHandler productsByProductGroupFilterList();
 
     /**
+     * <p>Build catalogs report</p>
+     *
+     * <p>Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/catalogs/reports" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link CatalogsReportParameters} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link CatalogsCreateReportResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Response containing the report token</li>
+     * <li><b>404 (client error)</b>: Entity (e.g., catalog, feed or processing_result) not found</li>
+     * <li><b>409 (client error)</b>: Can't access this feature without an existing catalog.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler reportsCreate();
+
+    /**
+     * <p>Get catalogs report</p>
+     *
+     * <p>This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/reports" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>token</b>"
+     * <p>Token returned from async build report call</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link CatalogsReport}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Response that contains a link to download the report</li>
+     * <li><b>400 (client error)</b>: The token you provided is not valid or has expired.</li>
+     * <li><b>409 (client error)</b>: Can't access this feature without an existing catalog.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler reportsGet();
+
+    /**
+     * <p>List report stats</p>
+     *
+     * <p>List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/catalogs/reports/stats" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>parameters</b>"
+     * <p>Contains the parameters for report identification.</p>
+     * <p>
+     * - Parameter type: <b>{@link CatalogsReportParameters}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link ReportsStats200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Response containing the diagnostics aggregated counters</li>
+     * <li><b>401 (client error)</b>: Not authorized to access catalogs</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler reportsStats();
+
+    /**
      * <p>Send conversions</p>
      *
-     * <p>The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object. - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/conversions/conversions/\">Conversions Guide</a> for more details. - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)</p>
+     * <p>The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object. - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/api-features/conversion-overview/\">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>). - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/events" (<i>privileged: true</i>)</p>
      *
@@ -4642,7 +6686,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create conversion tag</p>
      *
-     * <p>Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/enhanced-match/\">Enhanced match</a></p>
+     * <p>Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/conversion_tags" (<i>privileged: true</i>)</p>
      *
@@ -4809,7 +6853,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -4852,7 +6896,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create customer lists</p>
      *
-     * <p><p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p></p>
+     * <p><p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>  <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/customer_lists" (<i>privileged: true</i>)</p>
      *
@@ -4928,7 +6972,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get customer lists</p>
      *
-     * <p><p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a> section of the ads management guide.</p></p>
+     * <p><p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/customer_lists" (<i>privileged: true</i>)</p>
      *
@@ -4945,7 +6989,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -4988,7 +7032,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Update customer list</p>
      *
-     * <p><p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a> section of the ads management guide.</p></p>
+     * <p><p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}" (<i>privileged: true</i>)</p>
      *
@@ -5212,7 +7256,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -5314,7 +7358,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create keywords</p>
      *
-     * <p><p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul> <p><b>Rate limit</b>: <a href=\"/docs/redoc/#tag/Rate-Limits\">WRITE</a>.</p></p>
+     * <p><p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul> <p><b>Rate limit</b>: <a href=\"/docs/reference/rate-limits/\">WRITE</a>.</p></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/keywords" (<i>privileged: true</i>)</p>
      *
@@ -5349,7 +7393,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get keywords</p>
      *
-     * <p><p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul></p>
+     * <p><p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/keywords" (<i>privileged: true</i>)</p>
      *
@@ -5384,7 +7428,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>match_types</b>"
-     * <p>Keyword <a target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type</a></p>
+     * <p>Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a></p>
      * <p>
      * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;MatchType&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -5393,7 +7437,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -5462,7 +7506,7 @@ public interface PathHandlerInterface {
     /**
      * <p>List trending keywords</p>
      *
-     * <p><p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>.</p>
+     * <p><p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>. </p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/trends/keywords/{region}/top/{trend_type}" (<i>privileged: true</i>)</p>
      *
@@ -5514,6 +7558,15 @@ public interface PathHandlerInterface {
      * </p>
      * </li>
      * <li>
+     * <p>"<b>include_keywords</b>"
+     * <p>If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
      * <p>"<b>normalize_against_group</b>"
      * <p>Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.</p>
      * <p>
@@ -5551,7 +7604,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Delete lead ads subscription</p>
      *
-     * <p>Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#DELETE DELETE} "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}" (<i>privileged: true</i>)</p>
      *
@@ -5594,7 +7647,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get lead ads subscription</p>
      *
-     * <p>Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}" (<i>privileged: true</i>)</p>
      *
@@ -5638,7 +7691,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get lead ads subscriptions</p>
      *
-     * <p>Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/leads/subscriptions" (<i>privileged: true</i>)</p>
      *
@@ -5655,7 +7708,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -5690,7 +7743,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create lead ads subscription</p>
      *
-     * <p>Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/leads/subscriptions" (<i>privileged: true</i>)</p>
      *
@@ -5727,7 +7780,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get lead form by id</p>
      *
-     * <p>Gets a lead form given it's ID. It must also be associated with the provided ad account ID. Retrieving an advertiser's lead form will only contain results if you're a part of the Lead ads beta. If you're interested in joining the beta, please reach out to your Pinterest account manager.</p>
+     * <p><strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}" (<i>privileged: true</i>)</p>
      *
@@ -5770,7 +7823,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create lead form test data</p>
      *
-     * <p>Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test" (<i>privileged: true</i>)</p>
      *
@@ -5814,9 +7867,45 @@ public interface PathHandlerInterface {
     HttpHandler leadFormTestCreate();
 
     /**
-     * <p>Get lead forms</p>
+     * <p>Create lead forms</p>
      *
-     * <p>Gets all Lead Forms associated with an ad account ID. Retrieving an advertiser's list of lead forms will only contain results if you're a part of the Lead ads beta.  If you're interested in joining the beta, please reach out to your Pinterest account manager.</p>
+     * <p><strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/lead_forms" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link java.util.List List} of {@link LeadFormCreateRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link LeadFormArrayResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account lead forms parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler leadFormsCreate();
+
+    /**
+     * <p>List lead forms</p>
+     *
+     * <p><strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/lead_forms" (<i>privileged: true</i>)</p>
      *
@@ -5833,7 +7922,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -5875,9 +7964,124 @@ public interface PathHandlerInterface {
     HttpHandler leadFormsList();
 
     /**
+     * <p>Update lead forms</p>
+     *
+     * <p><strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/ad_accounts/{ad_account_id}/lead_forms" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link java.util.List List} of {@link LeadFormUpdateRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link LeadFormArrayResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account lead forms parameters.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler leadFormsUpdate();
+
+    /**
+     * <p>Create a request to export leads collected from a lead ad</p>
+     *
+     * <p><strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/leads_export" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link LeadsExportCreateRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link LeadsExportCreateResponse}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account parameter.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler leadsExportCreate();
+
+    /**
+     * <p>Get the lead export from the lead export create call</p>
+     *
+     * <p><strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>leads_export_id</b>"
+     * <p>lead_export_id token returned from the create a lead export endpoint</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link LeadsExportResponseData}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account parameter.</li>
+     * <li><b>404 (client error)</b>: Invalid leads export id parameter.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler leadsExportGet();
+
+    /**
      * <p>Register media upload</p>
      *
-     * <p>Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.</p>
+     * <p>Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/media" (<i>privileged: true</i>)</p>
      *
@@ -5903,7 +8107,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get media upload details</p>
      *
-     * <p>Get details for a registered media upload, including its current status.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.</p>
+     * <p>Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/media/{media_id}" (<i>privileged: true</i>)</p>
      *
@@ -5936,7 +8140,7 @@ public interface PathHandlerInterface {
     /**
      * <p>List media uploads</p>
      *
-     * <p>List media uploads filtered by given parameters.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.</p>
+     * <p>List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/media" (<i>privileged: true</i>)</p>
      *
@@ -5953,7 +8157,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -5978,7 +8182,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Generate OAuth access token</p>
      *
-     * <p>Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/oauth/token" (<i>privileged: true</i>)</p>
      *
@@ -6069,7 +8273,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -6110,9 +8314,91 @@ public interface PathHandlerInterface {
     HttpHandler orderLinesList();
 
     /**
+     * <p>Get multiple Pin analytics</p>
+     *
+     * <p><strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/pins/analytics" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>pin_ids</b>"
+     * <p>List of Pin IDs.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>start_date</b>"
+     * <p>Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.</p>
+     * <p>
+     * - Parameter type: <b>{@link Date}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>end_date</b>"
+     * <p>Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.</p>
+     * <p>
+     * - Parameter type: <b>{@link Date}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>metric_types</b>"
+     * <p>Pin metric types to get data for.</p>
+     * <p>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;PinsAnalyticsMetricTypesParameterInner&gt;}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>app_types</b>"
+     * <p>Apps or devices to get data for, default is all.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>ALL</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link java.util.Map Map} of {@link Map}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: response</li>
+     * <li><b>400 (client error)</b>: Invalid pins analytics parameters.</li>
+     * <li><b>401 (client error)</b>: Not authorized to access board or Pin.</li>
+     * <li><b>404 (client error)</b>: Pin not found.</li>
+     * <li><b>429 (client error)</b>: This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler multiPinsAnalytics();
+
+    /**
      * <p>Get Pin analytics</p>
      *
-     * <p>Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</p>
+     * <p>Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/pins/{pin_id}/analytics" (<i>privileged: true</i>)</p>
      *
@@ -6147,7 +8433,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>metric_types</b>"
-     * <p>Pin metric types to get data for, default is all.</p>
+     * <p>Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.</p>
      * <p>
      * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;PinsAnalyticsMetricTypesParameterInner&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -6203,7 +8489,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Create Pin</p>
      *
-     * <p>Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/add-ons/save-button'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/content/content-creation/'>Content App Solutions Guide</a>.  <strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.</p>
+     * <p>Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/pins" (<i>privileged: true</i>)</p>
      *
@@ -6337,7 +8623,7 @@ public interface PathHandlerInterface {
     /**
      * <p>List Pins</p>
      *
-     * <p>Get a list of the Pins owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".</p>
+     * <p>Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/pins" (<i>privileged: true</i>)</p>
      *
@@ -6354,7 +8640,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -6482,7 +8768,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Update Pin</p>
      *
-     * <p>Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/pins/{pin_id}" (<i>privileged: true</i>)</p>
      *
@@ -6650,7 +8936,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -6844,51 +9130,6 @@ public interface PathHandlerInterface {
     HttpHandler productGroupsAnalytics();
 
     /**
-     * <p>Get catalog product groups</p>
-     *
-     * <p>This endpoint is completely deprecated. Please use <a href='/docs/api/v5/#operation/catalogs_product_groups/list'>List product groups</a> from Catalogs API instead.</p>
-     *
-     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/product_groups/catalogs" (<i>privileged: true</i>)</p>
-     *
-     * <p><b>Request parameters</b>:</p>
-     * <ul>
-     * <li>
-     * <p>"<b>ad_account_id</b>"
-     * <p>Unique identifier of an ad account.</p>
-     * <p>
-     * - Parameter type: <b>{@link String}</b><br/>
-     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
-     * - Required: <b>true</b>
-     * </p>
-     * </li>
-     * <li>
-     * <p>"<b>feed_profile_id</b>"
-     * <p>The feed profile id whose catalog product groups we want to return.</p>
-     * <p>
-     * - Parameter type: <b>{@link String}</b><br/>
-     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
-     * - Required: <b>false</b>
-     * </p>
-     * </li>
-     * </ul>
-     *
-     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
-     * <p><b>Returns</b>: {@link AdAccountsCatalogsProductGroupsList200Response}</p>
-     *
-     * <p><b>Responses</b>:</p>
-     * <ul>
-     * <li><b>200 (success)</b>: Success</li>
-     * <li><b>400 (client error)</b>: Invalid ad account ads parameters.</li>
-     * <li><b>401 (client error)</b>: Access Denied. This can happen if account is not yet approved to operate as Merchant on Pinterest.</li>
-     * <li><b>404 (client error)</b>: Merchant data not found.</li>
-     * <li><b>Default</b>: Unexpected error</li>
-     * </ul>
-     */
-    @javax.annotation.Nonnull
-    @Deprecated
-    HttpHandler adAccountsCatalogsProductGroupsList();
-
-    /**
      * <p>Get ad accounts countries</p>
      *
      * <p>Get Ad Accounts countries</p>
@@ -6910,7 +9151,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get available metrics' definitions</p>
      *
-     * <p>Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.</p>
+     * <p>Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/resources/delivery_metrics" (<i>privileged: true</i>)</p>
      *
@@ -6974,7 +9215,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get lead form questions</p>
      *
-     * <p>Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong></p>
+     * <p>Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong></p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/resources/lead_form_questions" (<i>privileged: true</i>)</p>
      *
@@ -7066,6 +9307,15 @@ public interface PathHandlerInterface {
      * - Required: <b>false</b>
      * </p>
      * </li>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
      * </ul>
      *
      * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
@@ -7083,7 +9333,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Search pins by a given search term</p>
      *
-     * <p><strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.</p>
+     * <p><strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/search/partner/pins" (<i>privileged: true</i>)</p>
      *
@@ -7153,7 +9403,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Search user's boards</p>
      *
-     * <p>Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.</p>
+     * <p>Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/search/boards" (<i>privileged: true</i>)</p>
      *
@@ -7179,7 +9429,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -7213,7 +9463,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Search user's Pins</p>
      *
-     * <p>Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.</p>
+     * <p>Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/search/pins" (<i>privileged: true</i>)</p>
      *
@@ -7260,6 +9510,157 @@ public interface PathHandlerInterface {
      */
     @javax.annotation.Nonnull
     HttpHandler searchUserPinsList();
+
+    /**
+     * <p>Create targeting templates</p>
+     *
+     * <p><p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p></p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/ad_accounts/{ad_account_id}/targeting_templates" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link TargetingTemplateCreate} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link TargetingTemplateGetResponseData}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account id.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler targetingTemplateCreate();
+
+    /**
+     * <p>List targeting templates</p>
+     *
+     * <p>Get a list of the targeting templates in the specified <code>ad_account_id</code></p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/ad_accounts/{ad_account_id}/targeting_templates" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>order</b>"
+     * <p>The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>include_sizing</b>"
+     * <p>Include audience sizing in result or not</p>
+     * <p>
+     * - Parameter type: <b>{@link Boolean}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>false</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>search_query</b>"
+     * <p>Search keyword for targeting templates</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>page_size</b>"
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
+     * <p>
+     * - Parameter type: <b>{@link Integer}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>25</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * <li>
+     * <p>"<b>bookmark</b>"
+     * <p>Cursor used to fetch the next page of items</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Returns</b>: {@link TargetingTemplateList200Response}</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account id.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler targetingTemplateList();
+
+    /**
+     * <p>Update targeting templates</p>
+     *
+     * <p><p>Update the targeting template given advertiser ID and targeting template ID</p></p>
+     *
+     * <p><b>Endpoint</b>: {@link Methods#PATCH PATCH} "/v5/ad_accounts/{ad_account_id}/targeting_templates" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getPathParameters Path}</b><br/>
+     * - Required: <b>true</b>
+     * </p>
+     * </li>
+     * </ul>
+     *
+     * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
+     * <p><b>Payload</b>: {@link TargetingTemplateUpdateRequest} (<i>required: true</i>)</p>
+     *
+     * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
+     *
+     * <p><b>Responses</b>:</p>
+     * <ul>
+     * <li><b>200 (success)</b>: Success</li>
+     * <li><b>400 (client error)</b>: Invalid ad account id.</li>
+     * <li><b>Default</b>: Unexpected error</li>
+     * </ul>
+     */
+    @javax.annotation.Nonnull
+    HttpHandler targetingTemplateUpdate();
 
     /**
      * <p>List related terms</p>
@@ -7408,7 +9809,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -7453,7 +9854,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Follow user</p>
      *
-     * <p><strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.</p>
+     * <p><strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#POST POST} "/v5/user_account/following/{username}" (<i>privileged: true</i>)</p>
      *
@@ -7506,7 +9907,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -8006,7 +10407,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -8034,7 +10435,7 @@ public interface PathHandlerInterface {
     /**
      * <p>Get user account</p>
      *
-     * <p>Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.</p>
+     * <p>Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/user_account" (<i>privileged: true</i>)</p>
      *
@@ -8084,7 +10485,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -8155,7 +10556,7 @@ public interface PathHandlerInterface {
      * </li>
      * <li>
      * <p>"<b>page_size</b>"
-     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.</p>
+     * <p>Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.</p>
      * <p>
      * - Parameter type: <b>{@link Integer}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
@@ -8187,6 +10588,15 @@ public interface PathHandlerInterface {
      *
      * <p><b>Request parameters</b>:</p>
      * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
      * </ul>
      *
      * <p><b>Consumes</b>: [{isJson=true, mediaType=application/json}]</p>
@@ -8210,6 +10620,19 @@ public interface PathHandlerInterface {
      * <p>Get verification code for user to install on the website to claim it.</p>
      *
      * <p><b>Endpoint</b>: {@link Methods#GET GET} "/v5/user_account/websites/verification" (<i>privileged: true</i>)</p>
+     *
+     * <p><b>Request parameters</b>:</p>
+     * <ul>
+     * <li>
+     * <p>"<b>ad_account_id</b>"
+     * <p>Unique identifier of an ad account.</p>
+     * <p>
+     * - Parameter type: <b>{@link String}</b><br/>
+     * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Required: <b>false</b>
+     * </p>
+     * </li>
+     * </ul>
      *
      * <p><b>Produces</b>: [{isJson=true, mediaType=application/json}]</p>
      * <p><b>Returns</b>: {@link UserWebsiteVerificationCode}</p>

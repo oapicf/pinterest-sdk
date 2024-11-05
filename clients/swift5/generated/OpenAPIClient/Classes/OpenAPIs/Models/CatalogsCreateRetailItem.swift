@@ -15,16 +15,13 @@ public struct CatalogsCreateRetailItem: Codable, JSONEncodable, Hashable {
 
     public enum Operation: String, Codable, CaseIterable {
         case create = "CREATE"
-        case update = "UPDATE"
-        case upsert = "UPSERT"
-        case delete = "DELETE"
     }
     /** The catalog item id in the merchant namespace */
     public var itemId: String
     public var operation: Operation
-    public var attributes: ItemAttributes
+    public var attributes: ItemAttributesRequest
 
-    public init(itemId: String, operation: Operation, attributes: ItemAttributes) {
+    public init(itemId: String, operation: Operation, attributes: ItemAttributesRequest) {
         self.itemId = itemId
         self.operation = operation
         self.attributes = attributes

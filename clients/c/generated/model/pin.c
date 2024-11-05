@@ -18,7 +18,7 @@ pin_t *pin_create(
     char *board_section_id,
     board_owner_t *board_owner,
     int is_owner,
-    summary_pin_media_t *media,
+    pin_media_t *media,
     pin_media_source_t *media_source,
     char *parent_pin_id,
     int is_standard,
@@ -104,7 +104,7 @@ void pin_free(pin_t *pin) {
         pin->board_owner = NULL;
     }
     if (pin->media) {
-        summary_pin_media_free(pin->media);
+        pin_media_free(pin->media);
         pin->media = NULL;
     }
     if (pin->media_source) {
@@ -237,7 +237,7 @@ cJSON *pin_convertToJSON(pin_t *pin) {
 
     // pin->media
     if(pin->media) {
-    cJSON *media_local_JSON = summary_pin_media_convertToJSON(pin->media);
+    cJSON *media_local_JSON = pin_media_convertToJSON(pin->media);
     if(media_local_JSON == NULL) {
     goto fail; //model
     }
@@ -324,7 +324,7 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     board_owner_t *board_owner_local_nonprim = NULL;
 
     // define the local variable for pin->media
-    summary_pin_media_t *media_local_nonprim = NULL;
+    pin_media_t *media_local_nonprim = NULL;
 
     // define the local variable for pin->media_source
     pin_media_source_t *media_source_local_nonprim = NULL;
@@ -434,7 +434,7 @@ pin_t *pin_parseFromJSON(cJSON *pinJSON){
     // pin->media
     cJSON *media = cJSON_GetObjectItemCaseSensitive(pinJSON, "media");
     if (media) { 
-    media_local_nonprim = summary_pin_media_parseFromJSON(media); //nonprimitive
+    media_local_nonprim = pin_media_parseFromJSON(media); //nonprimitive
     }
 
     // pin->media_source
@@ -520,7 +520,7 @@ end:
         board_owner_local_nonprim = NULL;
     }
     if (media_local_nonprim) {
-        summary_pin_media_free(media_local_nonprim);
+        pin_media_free(media_local_nonprim);
         media_local_nonprim = NULL;
     }
     if (media_source_local_nonprim) {

@@ -13,13 +13,14 @@ import AnyCodable
 /** Request object to create catalogs items */
 public struct CatalogsItemsCreateBatchRequest: Codable, JSONEncodable, Hashable {
 
+    static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     public var country: Country
-    public var language: Language
+    public var language: CatalogsItemsRequestLanguage
     public var operation: BatchOperation
     /** Array with catalogs items */
     public var items: [ItemCreateBatchRecord]
 
-    public init(country: Country, language: Language, operation: BatchOperation, items: [ItemCreateBatchRecord]) {
+    public init(country: Country, language: CatalogsItemsRequestLanguage, operation: BatchOperation, items: [ItemCreateBatchRecord]) {
         self.country = country
         self.language = language
         self.operation = operation

@@ -19,11 +19,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AdCommon
-import org.openapitools.client.models.AdCommonQuizPinData
-import org.openapitools.client.models.AdCommonTrackingUrls
 import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
+import org.openapitools.client.models.QuizPinData
+import org.openapitools.client.models.TrackingUrls
 
 class AdCommonTest : ShouldSpec() {
     init {
@@ -36,7 +36,7 @@ class AdCommonTest : ShouldSpec() {
             //modelInstance.adGroupId shouldBe ("TODO")
         }
 
-        // to test the property `androidDeepLink` - Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+        // to test the property `androidDeepLink` - Deep link URL for Android devices.
         should("test androidDeepLink") {
             // uncomment below to test the property
             //modelInstance.androidDeepLink shouldBe ("TODO")
@@ -78,7 +78,7 @@ class AdCommonTest : ShouldSpec() {
             //modelInstance.destinationUrl shouldBe ("TODO")
         }
 
-        // to test the property `iosDeepLink` - Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+        // to test the property `iosDeepLink` - Deep link URL for iOS devices.
         should("test iosDeepLink") {
             // uncomment below to test the property
             //modelInstance.iosDeepLink shouldBe ("TODO")
@@ -132,13 +132,13 @@ class AdCommonTest : ShouldSpec() {
             //modelInstance.gridClickType shouldBe ("TODO")
         }
 
-        // to test the property `customizableCtaType` - Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+        // to test the property `customizableCtaType` - Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
         should("test customizableCtaType") {
             // uncomment below to test the property
             //modelInstance.customizableCtaType shouldBe ("TODO")
         }
 
-        // to test the property `quizPinData`
+        // to test the property `quizPinData` - Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
         should("test quizPinData") {
             // uncomment below to test the property
             //modelInstance.quizPinData shouldBe ("TODO")

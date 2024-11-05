@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsProductGroupsList200Response
-import org.openapitools.client.models.CatalogsProductGroupsList200ResponseAllOfItemsInner
+import org.openapitools.client.models.CatalogsVerticalProductGroup
 
 class CatalogsProductGroupsList200ResponseTest : ShouldSpec() {
     init {

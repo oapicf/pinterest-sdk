@@ -18,6 +18,7 @@ package org.openapitools.server.model
  * @param CUSTOM_LABEL_4  for example: ''null''
  * @param ITEM_GROUP_ID  for example: ''null''
  * @param GENDER  for example: ''null''
+ * @param MEDIA_TYPE  for example: ''null''
  * @param PRODUCT_TYPE_4  for example: ''null''
  * @param PRODUCT_TYPE_3  for example: ''null''
  * @param PRODUCT_TYPE_2  for example: ''null''
@@ -30,6 +31,7 @@ package org.openapitools.server.model
  * @param GOOGLE_PRODUCT_CATEGORY_2  for example: ''null''
  * @param GOOGLE_PRODUCT_CATEGORY_1  for example: ''null''
  * @param GOOGLE_PRODUCT_CATEGORY_0  for example: ''null''
+ * @param PRODUCT_GROUP  for example: ''null''
 */
 final case class CatalogsProductGroupFilterKeys (
   MIN_PRICE: CatalogsProductGroupPricingCriteria,
@@ -46,6 +48,7 @@ final case class CatalogsProductGroupFilterKeys (
   CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
   ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria,
   GENDER: CatalogsProductGroupMultipleGenderCriteria,
+  MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
   PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria,
   PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria,
   PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria,
@@ -57,6 +60,7 @@ final case class CatalogsProductGroupFilterKeys (
   GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
   GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
-  GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+  GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
+  PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
 )
 

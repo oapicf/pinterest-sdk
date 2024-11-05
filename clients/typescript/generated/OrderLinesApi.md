@@ -17,22 +17,21 @@ Get a specific existing order line associated with an ad account.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, OrderLinesApi } from '';
+import type { OrderLinesApiOrderLinesGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .OrderLinesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new OrderLinesApi(configuration);
 
-let body:.OrderLinesApiOrderLinesGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: OrderLinesApiOrderLinesGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Unique identifier of an order line.
+    // Unique identifier of an order line.
   orderLineId: "4",
 };
 
-apiInstance.orderLinesGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.orderLinesGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -75,26 +74,25 @@ List existing order lines associated with an ad account.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, OrderLinesApi } from '';
+import type { OrderLinesApiOrderLinesListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .OrderLinesApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new OrderLinesApi(configuration);
 
-let body:.OrderLinesApiOrderLinesListRequest = {
-  // string | Unique identifier of an ad account.
+const request: OrderLinesApiOrderLinesListRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // 'ASCENDING' | 'DESCENDING' | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+    // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   order: "ASCENDING",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
 };
 
-apiInstance.orderLinesList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.orderLinesList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -103,7 +101,7 @@ apiInstance.orderLinesList(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
 

@@ -7,42 +7,42 @@ Protected Class CatalogsHotelProductGroupFilterKeys
 
 
 	#tag Property, Flags = &h0
-		HOTEL_ID As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+		HOTEL_ID As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		BRAND As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+		BRAND As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_0 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_0 As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_1 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_1 As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_2 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_2 As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_3 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_3 As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_4 As OpenAPIClient.Models.CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_4 As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		COUNTRY As OpenAPIClient.Models.CatalogsProductGroupMultipleCountriesCriteria
+		COUNTRY As CatalogsProductGroupMultipleCountriesCriteria
 	#tag EndProperty
 
 

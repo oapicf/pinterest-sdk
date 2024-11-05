@@ -43,5 +43,8 @@ data class CatalogsRetailItemErrorResponse (
     @Json(name = "errors")
     val errors: kotlin.collections.List<ItemValidationEvent>? = null
 
-)
+) {
+
+
+}
 

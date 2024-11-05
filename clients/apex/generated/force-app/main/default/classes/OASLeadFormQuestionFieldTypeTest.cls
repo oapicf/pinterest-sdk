@@ -6,8 +6,7 @@ private class OASLeadFormQuestionFieldTypeTest {
             OASLeadFormQuestionFieldType.TEXT_FIELD,
             OASLeadFormQuestionFieldType.TEXT_AREA,
             OASLeadFormQuestionFieldType.RADIO_LIST,
-            OASLeadFormQuestionFieldType.CHECKBOX,
-            OASLeadFormQuestionFieldType.NULL
+            OASLeadFormQuestionFieldType.CHECKBOX
         };
         Set<OASLeadFormQuestionFieldType> actual  = new Set<OASLeadFormQuestionFieldType>(OASLeadFormQuestionFieldType.values());
         System.assertEquals(expected, actual);

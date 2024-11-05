@@ -169,6 +169,5 @@ public enum NullableCurrency {
   YER,
   ZAR,
   ZMW,
-  ZWD,
-  NULL;
+  ZWD;
 }

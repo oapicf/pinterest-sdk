@@ -13,7 +13,7 @@ API.Client.PinMediaWithVideo = function() {}
 API.Client.PinMediaWithVideo.prototype.mediaType;
 
 /**
- * @type {!API.Client.ImageMetadata_images}
+ * @type {!API.Client.PinMediaWithImage_allOf_images}
  * @export
  */
 API.Client.PinMediaWithVideo.prototype.images;

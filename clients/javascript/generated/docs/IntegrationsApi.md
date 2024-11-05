@@ -285,7 +285,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.IntegrationsApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 };
 apiInstance.integrationsGetList(opts, (error, data, response) => {
   if (error) {
@@ -302,7 +302,7 @@ apiInstance.integrationsGetList(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 

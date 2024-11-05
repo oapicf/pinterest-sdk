@@ -13,6 +13,7 @@
 #include "BrandFilter.h"
 #include "CatalogsProductGroupCurrencyCriteria.h"
 #include "CatalogsProductGroupMultipleGenderCriteria.h"
+#include "CatalogsProductGroupMultipleMediaTypesCriteria.h"
 #include "CatalogsProductGroupMultipleStringCriteria.h"
 #include "CatalogsProductGroupMultipleStringListCriteria.h"
 #include "CatalogsProductGroupPricingCriteria.h"
@@ -34,7 +35,9 @@
 #include "ItemGroupIdFilter.h"
 #include "ItemIdFilter.h"
 #include "MaxPriceFilter.h"
+#include "MediaTypeFilter.h"
 #include "MinPriceFilter.h"
+#include "ProductGroupReferenceFilter.h"
 #include "ProductType0Filter.h"
 #include "ProductType1Filter.h"
 #include "ProductType2Filter.h"
@@ -176,6 +179,13 @@ public:
 	void setGENDER(CatalogsProductGroupMultipleGenderCriteria  gENDER);
 	/*! \brief Get 
 	 */
+	CatalogsProductGroupMultipleMediaTypesCriteria getMEDIATYPE();
+
+	/*! \brief Set 
+	 */
+	void setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria  mEDIA_TYPE);
+	/*! \brief Get 
+	 */
 	CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE4();
 
 	/*! \brief Set 
@@ -258,6 +268,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setGOOGLEPRODUCTCATEGORY0(CatalogsProductGroupMultipleStringListCriteria  gOOGLE_PRODUCT_CATEGORY_0);
+	/*! \brief Get 
+	 */
+	CatalogsProductGroupMultipleStringCriteria getPRODUCTGROUP();
+
+	/*! \brief Set 
+	 */
+	void setPRODUCTGROUP(CatalogsProductGroupMultipleStringCriteria  pRODUCT_GROUP);
 
 private:
 	CatalogsProductGroupPricingCriteria mIN_PRICE;
@@ -274,6 +291,7 @@ private:
 	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_4;
 	CatalogsProductGroupMultipleStringCriteria iTEM_GROUP_ID;
 	CatalogsProductGroupMultipleGenderCriteria gENDER;
+	CatalogsProductGroupMultipleMediaTypesCriteria mEDIA_TYPE;
 	CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_4;
 	CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_3;
 	CatalogsProductGroupMultipleStringListCriteria pRODUCT_TYPE_2;
@@ -286,6 +304,7 @@ private:
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_2;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_1;
 	CatalogsProductGroupMultipleStringListCriteria gOOGLE_PRODUCT_CATEGORY_0;
+	CatalogsProductGroupMultipleStringCriteria pRODUCT_GROUP;
 	void __init();
 	void __cleanup();
 

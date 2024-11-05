@@ -74,7 +74,7 @@ Protected Class Pin
 
 
 	#tag Property, Flags = &h0
-		media As OpenAPIClient.Models.SummaryPinMedia
+		media As OpenAPIClient.Models.PinMedia
 	#tag EndProperty
 
 
@@ -93,7 +93,7 @@ Protected Class Pin
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Whether the Pin is standard or not. See documentation on <a href="https://developers.pinterest.com/docs/content/update/">Changes to Pin creation</a> for more information.
+			Whether the Pin is standard or not. See documentation on <a href="/docs/api-features/content-overview/">Changes to Pin creation</a> for more information.
 		#tag EndNote
 		is_standard As Xoson.O.OptionalBoolean
 	#tag EndProperty
@@ -260,7 +260,7 @@ Protected Class Pin
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="SummaryPinMedia"
+			Type="PinMedia"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -65,5 +65,6 @@ data class PinMediaSourceImageBase64 (
         @Json(name = "image/jpeg") jpeg("image/jpeg"),
         @Json(name = "image/png") png("image/png");
     }
+
 }
 

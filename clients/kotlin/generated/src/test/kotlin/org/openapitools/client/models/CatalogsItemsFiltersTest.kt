@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsItemsFilters
+import org.openapitools.client.models.CatalogsCreativeAssetsItemsFilter
 import org.openapitools.client.models.CatalogsHotelItemsFilter
 import org.openapitools.client.models.CatalogsRetailItemsFilter
 import org.openapitools.client.models.CatalogsType
@@ -46,7 +47,13 @@ class CatalogsItemsFiltersTest : ShouldSpec() {
             //modelInstance.hotelIds shouldBe ("TODO")
         }
 
-        // to test the property `catalogId` - Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+        // to test the property `creativeAssetsIds`
+        should("test creativeAssetsIds") {
+            // uncomment below to test the property
+            //modelInstance.creativeAssetsIds shouldBe ("TODO")
+        }
+
+        // to test the property `catalogId` - Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")

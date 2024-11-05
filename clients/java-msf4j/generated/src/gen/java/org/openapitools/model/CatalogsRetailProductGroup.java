@@ -14,7 +14,7 @@ import org.openapitools.model.CatalogsProductGroupType;
 /**
  * CatalogsRetailProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailProductGroup   {
   /**
    * Gets or Sets catalogType
@@ -75,37 +75,17 @@ public class CatalogsRetailProductGroup   {
   @JsonProperty("updated_at")
   private Integer updatedAt;
 
-  /**
-   * Gets or Sets feedId
-   */
-  public enum FeedIdEnum {
-    NULL("null");
-
-    private String value;
-
-    FeedIdEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FeedIdEnum fromValue(String text) {
-      for (FeedIdEnum b : FeedIdEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  @JsonProperty("catalog_id")
+  private String catalogId;
 
   @JsonProperty("feed_id")
-  private FeedIdEnum feedId;
+  private String feedId;
+
+  @JsonProperty("country")
+  private String country;
+
+  @JsonProperty("locale")
+  private String locale;
 
   public CatalogsRetailProductGroup catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -287,22 +267,76 @@ public class CatalogsRetailProductGroup   {
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsRetailProductGroup feedId(FeedIdEnum feedId) {
+  public CatalogsRetailProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+   /**
+   * Catalog id pertaining to the retail product group.
+   * @return catalogId
+  **/
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the retail product group.")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsRetailProductGroup feedId(String feedId) {
     this.feedId = feedId;
     return this;
   }
 
    /**
-   * Get feedId
+   * id of the catalogs feed belonging to this catalog product group
    * @return feedId
   **/
-  @ApiModelProperty(required = true, value = "")
-  public FeedIdEnum getFeedId() {
+  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
+  public String getFeedId() {
     return feedId;
   }
 
-  public void setFeedId(FeedIdEnum feedId) {
+  public void setFeedId(String feedId) {
     this.feedId = feedId;
+  }
+
+  public CatalogsRetailProductGroup country(String country) {
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * Get country
+   * @return country
+  **/
+  @ApiModelProperty(value = "")
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public CatalogsRetailProductGroup locale(String locale) {
+    this.locale = locale;
+    return this;
+  }
+
+   /**
+   * Get locale
+   * @return locale
+  **/
+  @ApiModelProperty(value = "")
+  public String getLocale() {
+    return locale;
+  }
+
+  public void setLocale(String locale) {
+    this.locale = locale;
   }
 
 
@@ -325,12 +359,15 @@ public class CatalogsRetailProductGroup   {
         Objects.equals(this.status, catalogsRetailProductGroup.status) &&
         Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
         Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt) &&
-        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId);
+        Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
+        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+        Objects.equals(this.country, catalogsRetailProductGroup.country) &&
+        Objects.equals(this.locale, catalogsRetailProductGroup.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, feedId);
+    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
   }
 
   @Override
@@ -348,7 +385,10 @@ public class CatalogsRetailProductGroup   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

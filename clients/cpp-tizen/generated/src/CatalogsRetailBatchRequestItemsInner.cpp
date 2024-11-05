@@ -25,7 +25,7 @@ CatalogsRetailBatchRequest_items_inner::__init()
 {
 	//item_id = std::string();
 	//operation = std::string();
-	//attributes = new ItemAttributes();
+	//attributes = new ItemAttributesRequest();
 	//new std::list()std::list> update_mask;
 }
 
@@ -87,11 +87,11 @@ CatalogsRetailBatchRequest_items_inner::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("ItemAttributes")) {
-			jsonToValue(&attributes, node, "ItemAttributes", "ItemAttributes");
+		if (isprimitive("ItemAttributesRequest")) {
+			jsonToValue(&attributes, node, "ItemAttributesRequest", "ItemAttributesRequest");
 		} else {
 			
-			ItemAttributes* obj = static_cast<ItemAttributes*> (&attributes);
+			ItemAttributesRequest* obj = static_cast<ItemAttributesRequest*> (&attributes);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -150,13 +150,13 @@ CatalogsRetailBatchRequest_items_inner::toJson()
 	}
 	const gchar *operationKey = "operation";
 	json_object_set_member(pJsonObject, operationKey, node);
-	if (isprimitive("ItemAttributes")) {
-		ItemAttributes obj = getAttributes();
-		node = converttoJson(&obj, "ItemAttributes", "");
+	if (isprimitive("ItemAttributesRequest")) {
+		ItemAttributesRequest obj = getAttributes();
+		node = converttoJson(&obj, "ItemAttributesRequest", "");
 	}
 	else {
 		
-		ItemAttributes obj = static_cast<ItemAttributes> (getAttributes());
+		ItemAttributesRequest obj = static_cast<ItemAttributesRequest> (getAttributes());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -221,14 +221,14 @@ CatalogsRetailBatchRequest_items_inner::setOperation(std::string  operation)
 	this->operation = operation;
 }
 
-ItemAttributes
+ItemAttributesRequest
 CatalogsRetailBatchRequest_items_inner::getAttributes()
 {
 	return attributes;
 }
 
 void
-CatalogsRetailBatchRequest_items_inner::setAttributes(ItemAttributes  attributes)
+CatalogsRetailBatchRequest_items_inner::setAttributes(ItemAttributesRequest  attributes)
 {
 	this->attributes = attributes;
 }

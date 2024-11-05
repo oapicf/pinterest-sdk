@@ -103,12 +103,6 @@ API.Client.ProductGroupPromotion.prototype.catalogProductGroupId;
 API.Client.ProductGroupPromotion.prototype.catalogProductGroupName;
 
 /**
- * @type {!API.Client.CreativeType}
- * @export
- */
-API.Client.ProductGroupPromotion.prototype.creativeType;
-
-/**
  * Hero Pin ID if this PG is promoted as a Collection
  * @type {!string}
  * @export

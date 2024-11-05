@@ -2,7 +2,7 @@
 Protected Class CatalogsProductGroupsList200Response
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.CatalogsProductGroupsList200ResponseAllOfItemsInner
+		items() As OpenAPIClient.Models.CatalogsVerticalProductGroup
 	#tag EndProperty
 
 
@@ -52,7 +52,7 @@ Protected Class CatalogsProductGroupsList200Response
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupsList200ResponseAllOfItemsInner"
+			Type="CatalogsVerticalProductGroup"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

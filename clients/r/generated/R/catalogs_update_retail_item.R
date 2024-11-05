@@ -21,8 +21,7 @@ CatalogsUpdateRetailItem <- R6::R6Class(
     `operation` = NULL,
     `attributes` = NULL,
     `update_mask` = NULL,
-    #' Initialize a new CatalogsUpdateRetailItem class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsUpdateRetailItem class.
     #'
@@ -31,7 +30,6 @@ CatalogsUpdateRetailItem <- R6::R6Class(
     #' @param attributes attributes
     #' @param update_mask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`item_id`, `operation`, `attributes`, `update_mask` = NULL, ...) {
       if (!missing(`item_id`)) {
         if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
@@ -40,8 +38,8 @@ CatalogsUpdateRetailItem <- R6::R6Class(
         self$`item_id` <- `item_id`
       }
       if (!missing(`operation`)) {
-        if (!(`operation` %in% c("CREATE", "UPDATE", "UPSERT", "DELETE"))) {
-          stop(paste("Error! \"", `operation`, "\" cannot be assigned to `operation`. Must be \"CREATE\", \"UPDATE\", \"UPSERT\", \"DELETE\".", sep = ""))
+        if (!(`operation` %in% c("UPDATE"))) {
+          stop(paste("Error! \"", `operation`, "\" cannot be assigned to `operation`. Must be \"UPDATE\".", sep = ""))
         }
         if (!(is.character(`operation`) && length(`operation`) == 1)) {
           stop(paste("Error! Invalid data for `operation`. Must be a string:", `operation`))
@@ -58,13 +56,11 @@ CatalogsUpdateRetailItem <- R6::R6Class(
         self$`update_mask` <- `update_mask`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsUpdateRetailItem in JSON format
-    #' @export
     toJSON = function() {
       CatalogsUpdateRetailItemObject <- list()
       if (!is.null(self$`item_id`)) {
@@ -85,22 +81,20 @@ CatalogsUpdateRetailItem <- R6::R6Class(
       }
       CatalogsUpdateRetailItemObject
     },
-    #' Deserialize JSON string into an instance of CatalogsUpdateRetailItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsUpdateRetailItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsUpdateRetailItem
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`item_id`)) {
         self$`item_id` <- this_object$`item_id`
       }
       if (!is.null(this_object$`operation`)) {
-        if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("CREATE", "UPDATE", "UPSERT", "DELETE"))) {
-          stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"CREATE\", \"UPDATE\", \"UPSERT\", \"DELETE\".", sep = ""))
+        if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("UPDATE"))) {
+          stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"UPDATE\".", sep = ""))
         }
         self$`operation` <- this_object$`operation`
       }
@@ -114,13 +108,11 @@ CatalogsUpdateRetailItem <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsUpdateRetailItem in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`item_id`)) {
@@ -159,32 +151,28 @@ CatalogsUpdateRetailItem <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsUpdateRetailItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsUpdateRetailItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsUpdateRetailItem
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`item_id` <- this_object$`item_id`
-      if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("CREATE", "UPDATE", "UPSERT", "DELETE"))) {
-        stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"CREATE\", \"UPDATE\", \"UPSERT\", \"DELETE\".", sep = ""))
+      if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("UPDATE"))) {
+        stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"UPDATE\".", sep = ""))
       }
       self$`operation` <- this_object$`operation`
       self$`attributes` <- UpdatableItemAttributes$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
       self$`update_mask` <- ApiClient$new()$deserializeObj(this_object$`update_mask`, "array[UpdateMaskFieldType]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CatalogsUpdateRetailItem
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsUpdateRetailItem and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `item_id`
@@ -210,23 +198,19 @@ CatalogsUpdateRetailItem <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsUpdateRetailItem: the required field `attributes` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsUpdateRetailItem
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `item_id` is null
       if (is.null(self$`item_id`)) {
@@ -245,13 +229,11 @@ CatalogsUpdateRetailItem <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `item_id` is null
@@ -271,12 +253,9 @@ CatalogsUpdateRetailItem <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

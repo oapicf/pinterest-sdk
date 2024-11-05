@@ -5,13 +5,13 @@
 
 
 char* catalogs_items_batch_catalog_type_ToString(pinterest_rest_api_catalogs_items_batch__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_catalogs_items_batch__e catalogs_items_batch_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -22,13 +22,13 @@ pinterest_rest_api_catalogs_items_batch__e catalogs_items_batch_catalog_type_Fro
     return 0;
 }
 char* catalogs_items_batch_status_ToString(pinterest_rest_api_catalogs_items_batch__e status) {
-    char* statusArray[] =  { "NULL", "PROCESSING", "COMPLETED" };
+    char* statusArray[] =  { "NULL", "PROCESSING", "COMPLETED", "FAILED" };
     return statusArray[status];
 }
 
 pinterest_rest_api_catalogs_items_batch__e catalogs_items_batch_status_FromString(char* status){
     int stringToReturn = 0;
-    char *statusArray[] =  { "NULL", "PROCESSING", "COMPLETED" };
+    char *statusArray[] =  { "NULL", "PROCESSING", "COMPLETED", "FAILED" };
     size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(status, statusArray[stringToReturn]) == 0) {
@@ -89,7 +89,7 @@ void catalogs_items_batch_free(catalogs_items_batch_t *catalogs_items_batch) {
     }
     if (catalogs_items_batch->items) {
         list_ForEach(listEntry, catalogs_items_batch->items) {
-            hotel_processing_record_free(listEntry->data);
+            creative_assets_processing_record_free(listEntry->data);
         }
         list_freeList(catalogs_items_batch->items);
         catalogs_items_batch->items = NULL;
@@ -161,7 +161,7 @@ cJSON *catalogs_items_batch_convertToJSON(catalogs_items_batch_t *catalogs_items
     listEntry_t *itemsListEntry;
     if (catalogs_items_batch->items) {
     list_ForEach(itemsListEntry, catalogs_items_batch->items) {
-    cJSON *itemLocal = hotel_processing_record_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = creative_assets_processing_record_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -248,7 +248,7 @@ catalogs_items_batch_t *catalogs_items_batch_parseFromJSON(cJSON *catalogs_items
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        hotel_processing_record_t *itemsItem = hotel_processing_record_parseFromJSON(items_local_nonprimitive);
+        creative_assets_processing_record_t *itemsItem = creative_assets_processing_record_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
@@ -277,7 +277,7 @@ end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            hotel_processing_record_free(listEntry->data);
+            creative_assets_processing_record_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsFeedCredentials
@@ -69,7 +70,7 @@ data class CatalogsRetailFeedsUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("default_availability") val defaultAvailability: ProductAvailabilityType? = null
-) {
+    ) {
 
 }
 

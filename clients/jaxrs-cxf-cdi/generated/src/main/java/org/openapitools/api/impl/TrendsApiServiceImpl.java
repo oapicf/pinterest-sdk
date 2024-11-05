@@ -22,10 +22,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendsApiServiceImpl implements TrendsApiService {
       @Override
-      public Response trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, Boolean normalizeAgainstGroup, Integer limit, SecurityContext securityContext) {
+      public Response trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

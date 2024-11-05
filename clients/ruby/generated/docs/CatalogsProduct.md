@@ -1,20 +1,82 @@
 # PinterestSdkClient::CatalogsProduct
 
-## Properties
+## Class instance methods
 
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **metadata** | [**CatalogsProductMetadata**](CatalogsProductMetadata.md) |  |  |
-| **pin** | [**Pin**](Pin.md) |  |  |
+### `openapi_one_of`
 
-## Example
+Returns the list of classes defined in oneOf.
+
+#### Example
 
 ```ruby
 require 'pinterest_sdk'
 
-instance = PinterestSdkClient::CatalogsProduct.new(
-  metadata: null,
-  pin: null
-)
+PinterestSdkClient::CatalogsProduct.openapi_one_of
+# =>
+# [
+#   :'CatalogsCreativeAssetsProduct',
+#   :'CatalogsHotelProduct',
+#   :'CatalogsRetailProduct'
+# ]
 ```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's property name.
+
+#### Example
+
+```ruby
+require 'pinterest_sdk'
+
+PinterestSdkClient::CatalogsProduct.openapi_discriminator_name
+# => :'catalog_type'
+```
+
+### `openapi_discriminator_name`
+
+Returns the discriminator's mapping.
+
+#### Example
+
+```ruby
+require 'pinterest_sdk'
+
+PinterestSdkClient::CatalogsProduct.openapi_discriminator_mapping
+# =>
+# {
+#   :'CREATIVE_ASSETS' => :'CatalogsCreativeAssetsProduct',
+#   :'HOTEL' => :'CatalogsHotelProduct',
+#   :'RETAIL' => :'CatalogsRetailProduct'
+# }
+```
+
+### build
+
+Find the appropriate object from the `openapi_one_of` list and casts the data into it.
+
+#### Example
+
+```ruby
+require 'pinterest_sdk'
+
+PinterestSdkClient::CatalogsProduct.build(data)
+# => #<CatalogsCreativeAssetsProduct:0x00007fdd4aab02a0>
+
+PinterestSdkClient::CatalogsProduct.build(data_that_doesnt_match)
+# => nil
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| **data** | **Mixed** | data to be matched against the list of oneOf items |
+
+#### Return type
+
+- `CatalogsCreativeAssetsProduct`
+- `CatalogsHotelProduct`
+- `CatalogsRetailProduct`
+- `nil` (if no type matches)
 

@@ -17,6 +17,7 @@ public struct CatalogsProductGroupCreateRequest: Codable, JSONEncodable, Hashabl
     public var name: String
     public var description: String?
     /** boolean indicator of whether the product group is being featured or not */
+    @available(*, deprecated, message: "This property is deprecated.")
     public var isFeatured: Bool? = false
     public var filters: CatalogsProductGroupFiltersRequest
     /** Catalog Feed id pertaining to the catalog product group. */

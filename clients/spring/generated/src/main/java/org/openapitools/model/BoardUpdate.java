@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BoardUpdate", description = "Board fields for updates")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BoardUpdate {
 
   private String name;
@@ -75,7 +75,7 @@ public class BoardUpdate {
   /**
    * Get name
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "Summer Recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -95,7 +95,7 @@ public class BoardUpdate {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", example = "My favorite summer recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -115,7 +115,7 @@ public class BoardUpdate {
   /**
    * Get privacy
    * @return privacy
-  */
+   */
   
   @Schema(name = "privacy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy")

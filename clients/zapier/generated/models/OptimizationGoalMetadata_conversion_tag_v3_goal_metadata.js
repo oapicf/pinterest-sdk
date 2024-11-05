@@ -35,7 +35,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}is_roas_optimized`,
-                label: `Ad group is ROAS optimized - [${labelPrefix}is_roas_optimized]`,
+                label: `ROAS optimization is not supported - [${labelPrefix}is_roas_optimized]`,
                 type: 'boolean',
             },
             {
@@ -45,7 +45,6 @@ module.exports = {
                 choices: [
                     'NOT_ACTIVE',
                     'ACTIVE',
-                    'null',
                 ],
             },
         ]

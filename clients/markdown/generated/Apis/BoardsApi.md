@@ -90,7 +90,7 @@ List board sections
 | **board\_id** | **String**| Unique identifier of a board. | [default to null] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -98,7 +98,7 @@ List board sections
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -121,7 +121,7 @@ List Pins on board section
 | **section\_id** | **String**| Unique identifier of a board section. | [default to null] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -129,7 +129,7 @@ List Pins on board section
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -243,7 +243,7 @@ Get board
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -264,7 +264,7 @@ List boards
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **privacy** | **String**| Privacy setting for a board. | [optional] [default to null] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET] |
 
 ### Return type
@@ -273,7 +273,7 @@ List boards
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -294,7 +294,7 @@ List Pins on board
 |------------- | ------------- | ------------- | -------------|
 | **board\_id** | **String**| Unique identifier of a board. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creative\_types** | [**List**](../Models/String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA] |
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [optional] [default to null] |
 | **pin\_metrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
@@ -305,7 +305,7 @@ List Pins on board
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

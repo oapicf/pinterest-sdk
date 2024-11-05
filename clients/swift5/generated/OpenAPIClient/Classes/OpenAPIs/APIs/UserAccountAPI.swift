@@ -16,7 +16,7 @@ open class UserAccountAPI {
      List following boards
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -41,8 +41,11 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<BoardsUserFollowsList200Response> 
@@ -94,7 +97,7 @@ open class UserAccountAPI {
     /**
      Follow user
      - POST /user_account/following/{username}
-     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+     - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -127,7 +130,7 @@ open class UserAccountAPI {
      List followers
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -150,8 +153,11 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<FollowersList200Response> 
      */
     open class func followersListWithRequestBuilder(bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<FollowersList200Response> {
@@ -201,6 +207,9 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - returns: RequestBuilder<[LinkedBusiness]> 
      */
     open class func linkedBusinessAccountsGetWithRequestBuilder() -> RequestBuilder<[LinkedBusiness]> {
@@ -292,9 +301,6 @@ open class UserAccountAPI {
         case adsProduct = "ADS_PRODUCT"
         case adsVideo = "ADS_VIDEO"
         case adsIdea = "ADS_IDEA"
-        case product = "PRODUCT"
-        case regular = "REGULAR"
-        case video = "VIDEO"
     }
 
     /**
@@ -460,9 +466,6 @@ open class UserAccountAPI {
         case adsProduct = "ADS_PRODUCT"
         case adsVideo = "ADS_VIDEO"
         case adsIdea = "ADS_IDEA"
-        case product = "PRODUCT"
-        case regular = "REGULAR"
-        case video = "VIDEO"
     }
 
     /**
@@ -552,6 +555,9 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
      - parameter sortBy: (query) Specify sorting order for metrics 
@@ -634,9 +640,6 @@ open class UserAccountAPI {
         case adsProduct = "ADS_PRODUCT"
         case adsVideo = "ADS_VIDEO"
         case adsIdea = "ADS_IDEA"
-        case product = "PRODUCT"
-        case regular = "REGULAR"
-        case video = "VIDEO"
     }
 
     /**
@@ -726,6 +729,9 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
      - parameter sortBy: (query) Specify sorting order for video metrics 
@@ -777,7 +783,7 @@ open class UserAccountAPI {
      
      - parameter username: (path) A valid username 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -800,9 +806,12 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter username: (path) A valid username 
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<UserAccountFollowedInterests200Response> 
      */
     open class func userAccountFollowedInterestsWithRequestBuilder(username: String, bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<UserAccountFollowedInterests200Response> {
@@ -852,10 +861,13 @@ open class UserAccountAPI {
     /**
      Get user account
      - GET /user_account
-     - Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+     - Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<Account> 
      */
@@ -884,7 +896,7 @@ open class UserAccountAPI {
      List following
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter feedType: (query) Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
      - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
@@ -910,8 +922,11 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter feedType: (query) Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
      - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
@@ -946,7 +961,7 @@ open class UserAccountAPI {
      Get user websites
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -970,7 +985,7 @@ open class UserAccountAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - returns: RequestBuilder<UserWebsitesGet200Response> 
      */
     open class func userWebsitesGetWithRequestBuilder(bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<UserWebsitesGet200Response> {
@@ -999,12 +1014,13 @@ open class UserAccountAPI {
      Verify website
      
      - parameter userWebsiteVerifyRequest: (body) Verify a website. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserWebsiteSummary?, _ error: Error?) -> Void)) -> RequestTask {
-        return verifyWebsiteUpdateWithRequestBuilder(userWebsiteVerifyRequest: userWebsiteVerifyRequest).execute(apiResponseQueue) { result in
+    open class func verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserWebsiteSummary?, _ error: Error?) -> Void)) -> RequestTask {
+        return verifyWebsiteUpdateWithRequestBuilder(userWebsiteVerifyRequest: userWebsiteVerifyRequest, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1022,14 +1038,18 @@ open class UserAccountAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter userWebsiteVerifyRequest: (body) Verify a website. 
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<UserWebsiteSummary> 
      */
-    open class func verifyWebsiteUpdateWithRequestBuilder(userWebsiteVerifyRequest: UserWebsiteVerifyRequest) -> RequestBuilder<UserWebsiteSummary> {
+    open class func verifyWebsiteUpdateWithRequestBuilder(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: String? = nil) -> RequestBuilder<UserWebsiteSummary> {
         let localVariablePath = "/user_account/websites"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: userWebsiteVerifyRequest)
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             "Content-Type": "application/json",
@@ -1045,12 +1065,13 @@ open class UserAccountAPI {
     /**
      Get user verification code for website claiming
      
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func websiteVerificationGet(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserWebsiteVerificationCode?, _ error: Error?) -> Void)) -> RequestTask {
-        return websiteVerificationGetWithRequestBuilder().execute(apiResponseQueue) { result in
+    open class func websiteVerificationGet(adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserWebsiteVerificationCode?, _ error: Error?) -> Void)) -> RequestTask {
+        return websiteVerificationGetWithRequestBuilder(adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1067,14 +1088,21 @@ open class UserAccountAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
+     - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<UserWebsiteVerificationCode> 
      */
-    open class func websiteVerificationGetWithRequestBuilder() -> RequestBuilder<UserWebsiteVerificationCode> {
+    open class func websiteVerificationGetWithRequestBuilder(adAccountId: String? = nil) -> RequestBuilder<UserWebsiteVerificationCode> {
         let localVariablePath = "/user_account/websites/verification"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ad_account_id": (wrappedValue: adAccountId?.encodeToJSON(), isExplode: true),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :

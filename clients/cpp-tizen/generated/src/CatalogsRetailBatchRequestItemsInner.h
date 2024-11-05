@@ -13,7 +13,7 @@
 #include "CatalogsDeleteRetailItem.h"
 #include "CatalogsUpdateRetailItem.h"
 #include "CatalogsUpsertRetailItem.h"
-#include "ItemAttributes.h"
+#include "ItemAttributesRequest.h"
 #include "UpdateMaskFieldType.h"
 #include <list>
 #include "Object.h"
@@ -68,11 +68,11 @@ public:
 	void setOperation(std::string  operation);
 	/*! \brief Get 
 	 */
-	ItemAttributes getAttributes();
+	ItemAttributesRequest getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(ItemAttributes  attributes);
+	void setAttributes(ItemAttributesRequest  attributes);
 	/*! \brief Get The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	 */
 	std::list<UpdateMaskFieldType> getUpdateMask();
@@ -84,7 +84,7 @@ public:
 private:
 	std::string item_id;
 	std::string operation;
-	ItemAttributes attributes;
+	ItemAttributesRequest attributes;
 	std::list <UpdateMaskFieldType>update_mask;
 	void __init();
 	void __cleanup();

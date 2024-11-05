@@ -40,7 +40,7 @@ public class AdAccount  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<BusinessAccessRole> permissions;
+  private List<BusinessAccessRole> permissions = new ArrayList<>();
 
  /**
   * Creation time. Unix timestamp in seconds.

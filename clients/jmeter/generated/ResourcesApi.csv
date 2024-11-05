@@ -1,2 +1,2 @@
-testCase,httpStatusCode,reportType,interestId,date,targetingType,clientId,oauthSignature,timestamp
-Success,200,0,0,0,0,0,0,0
+testCase,httpStatusCode,reportType,interestId,date,targetingType,clientId,oauthSignature,timestamp,adAccountId
+Success,200,0,0,0,0,0,0,0,0

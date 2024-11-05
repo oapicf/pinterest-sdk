@@ -18,21 +18,21 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Schema used for creating the integration metadata.")
 @JsonTypeName("IntegrationRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationRequest   {
-  private @Valid String externalBusinessId;
-  private @Valid String connectedMerchantId;
-  private @Valid String connectedAdvertiserId;
-  private @Valid String connectedLbaId;
-  private @Valid String connectedTagId;
-  private @Valid String partnerAccessToken;
-  private @Valid String partnerRefreshToken;
-  private @Valid String partnerPrimaryEmail;
-  private @Valid Integer partnerAccessTokenExpiry;
-  private @Valid Integer partnerRefreshTokenExpiry;
-  private @Valid String scopes;
-  private @Valid String additionalId1;
-  private @Valid String partnerMetadata;
+  private String externalBusinessId;
+  private String connectedMerchantId;
+  private String connectedAdvertiserId;
+  private String connectedLbaId;
+  private String connectedTagId;
+  private String partnerAccessToken;
+  private String partnerRefreshToken;
+  private String partnerPrimaryEmail;
+  private Integer partnerAccessTokenExpiry;
+  private Integer partnerRefreshTokenExpiry;
+  private String scopes;
+  private String additionalId1;
+  private String partnerMetadata;
 
   /**
    * External business ID for the integration.

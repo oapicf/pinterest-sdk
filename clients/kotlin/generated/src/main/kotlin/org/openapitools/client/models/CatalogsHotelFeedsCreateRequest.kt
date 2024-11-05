@@ -19,6 +19,7 @@ import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
+import org.openapitools.client.models.CatalogsStatus
 import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.NullableCurrency
 
@@ -37,6 +38,7 @@ import com.squareup.moshi.JsonClass
  * @param credentials 
  * @param preferredProcessingSchedule 
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
  */
 
 
@@ -70,7 +72,13 @@ data class CatalogsHotelFeedsCreateRequest (
 
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
     @Json(name = "catalog_id")
-    val catalogId: kotlin.String? = null
+    val catalogId: kotlin.String? = null,
 
-)
+    @Json(name = "status")
+    val status: CatalogsStatus? = null
+
+) {
+
+
+}
 

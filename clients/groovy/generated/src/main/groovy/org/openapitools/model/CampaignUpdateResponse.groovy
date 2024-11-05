@@ -10,5 +10,5 @@ import org.openapitools.model.CampaignCreateResponseItem;
 @Canonical
 class CampaignUpdateResponse {
     
-    List<CampaignCreateResponseItem> items
+    List<CampaignCreateResponseItem> items = new ArrayList<>()
 }

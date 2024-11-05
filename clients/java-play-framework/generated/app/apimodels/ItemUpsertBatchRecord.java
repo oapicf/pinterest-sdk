@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.ItemAttributes;
+import apimodels.ItemAttributesRequest;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -10,7 +10,7 @@ import javax.validation.Valid;
 /**
  * Object describing an item batch record to upsert items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemUpsertBatchRecord   {
   @JsonProperty("item_id")
@@ -20,7 +20,7 @@ public class ItemUpsertBatchRecord   {
   @JsonProperty("attributes")
   @Valid
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   public ItemUpsertBatchRecord itemId(String itemId) {
     this.itemId = itemId;
@@ -39,7 +39,7 @@ public class ItemUpsertBatchRecord   {
     this.itemId = itemId;
   }
 
-  public ItemUpsertBatchRecord attributes(ItemAttributes attributes) {
+  public ItemUpsertBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -48,11 +48,11 @@ public class ItemUpsertBatchRecord   {
    * Get attributes
    * @return attributes
   **/
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

@@ -21,7 +21,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Examples
 
@@ -92,7 +92,7 @@ end
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Examples
 
@@ -109,7 +109,7 @@ api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -145,7 +145,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -167,7 +167,7 @@ end
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Examples
 
@@ -185,7 +185,7 @@ ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad ac
 is_active = true # Boolean | Return active billing profiles, if false return all billing profiles.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -222,7 +222,7 @@ end
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **is_active** | **Boolean** | Return active billing profiles, if false return all billing profiles. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -472,7 +472,7 @@ api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 }
 
 begin
@@ -508,7 +508,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 
 ### Return type
 
@@ -618,7 +618,7 @@ api_instance = PinterestSdkClient::BillingApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   pin_order_id: '0Q01N0000015hekSVDFDC' # String | The pin order id associated with the ssio insertino order
 }
 
@@ -655,7 +655,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **pin_order_id** | **String** | The pin order id associated with the ssio insertino order | [optional] |
 
 ### Return type

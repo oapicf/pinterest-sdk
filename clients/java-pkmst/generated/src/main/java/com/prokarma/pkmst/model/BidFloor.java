@@ -17,7 +17,7 @@ import java.util.List;
  * BidFloor
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BidFloor   {
   @JsonProperty("bid_floors")
   
@@ -39,10 +39,10 @@ public class BidFloor   {
     return this;
   }
 
-   /**
+  /**
    * A list of bid floors in micro currency. For example, [100000, 200000]
    * @return bidFloors
-  **/
+   */
   @ApiModelProperty(example = "[100000,200000]", value = "A list of bid floors in micro currency. For example, [100000, 200000]")
   public List<Integer> getBidFloors() {
     return bidFloors;
@@ -57,10 +57,10 @@ public class BidFloor   {
     return this;
   }
 
-   /**
+  /**
    * Always the string 'bidfloor'
    * @return type
-  **/
+   */
   @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
   public String getType() {
     return type;

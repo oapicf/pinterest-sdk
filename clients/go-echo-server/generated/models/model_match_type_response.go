@@ -9,5 +9,4 @@ const (
 	EXACT MatchTypeResponse = "EXACT"
 	EXACT_NEGATIVE MatchTypeResponse = "EXACT_NEGATIVE"
 	PHRASE_NEGATIVE MatchTypeResponse = "PHRASE_NEGATIVE"
-	NULL MatchTypeResponse = "null"
 )

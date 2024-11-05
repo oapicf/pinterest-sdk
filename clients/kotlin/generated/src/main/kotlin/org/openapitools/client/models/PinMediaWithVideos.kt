@@ -37,5 +37,8 @@ data class PinMediaWithVideos (
     @Json(name = "items")
     val items: kotlin.collections.List<VideoMetadata>? = null
 
-) : PinMedia
+) : PinMedia {
+
+
+}
 

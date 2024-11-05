@@ -12,13 +12,15 @@ import AnyCodable
 
 public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
 
+    static let questionsRule = ArrayRule(minItems: 0, maxItems: 10, uniqueItems: false)
+    static let policyLinksRule = ArrayRule(minItems: 0, maxItems: 3, uniqueItems: false)
     static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Internal name of the lead form. */
     public var name: String?
     /** A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */
     public var privacyPolicyLink: String?
-    /** Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad. */
+    /** Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO */
     public var hasAcceptedTerms: Bool?
     /** A message for people who complete the form to let them know what happens next. */
     public var completionMessage: String?
@@ -27,6 +29,8 @@ public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
     public var disclosureLanguage: String?
     /** List of questions to be displayed on the lead form. */
     public var questions: [LeadFormQuestion]?
+    /** List of additional policy links to be displayed on the lead form. */
+    public var policyLinks: [LeadFormCommonPolicyLinksInner]?
     /** The ID of this lead form */
     public var id: String?
     /** The Ad Account ID that this lead form belongs to. */
@@ -36,7 +40,7 @@ public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
     /** Last update time. Unix timestamp in seconds. */
     public var updatedTime: Int?
 
-    public init(name: String? = nil, privacyPolicyLink: String? = nil, hasAcceptedTerms: Bool? = nil, completionMessage: String? = nil, status: LeadFormStatus? = nil, disclosureLanguage: String? = nil, questions: [LeadFormQuestion]? = nil, id: String? = nil, adAccountId: String? = nil, createdTime: Int? = nil, updatedTime: Int? = nil) {
+    public init(name: String? = nil, privacyPolicyLink: String? = nil, hasAcceptedTerms: Bool? = nil, completionMessage: String? = nil, status: LeadFormStatus? = nil, disclosureLanguage: String? = nil, questions: [LeadFormQuestion]? = nil, policyLinks: [LeadFormCommonPolicyLinksInner]? = nil, id: String? = nil, adAccountId: String? = nil, createdTime: Int? = nil, updatedTime: Int? = nil) {
         self.name = name
         self.privacyPolicyLink = privacyPolicyLink
         self.hasAcceptedTerms = hasAcceptedTerms
@@ -44,6 +48,7 @@ public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
         self.status = status
         self.disclosureLanguage = disclosureLanguage
         self.questions = questions
+        self.policyLinks = policyLinks
         self.id = id
         self.adAccountId = adAccountId
         self.createdTime = createdTime
@@ -58,6 +63,7 @@ public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
         case status
         case disclosureLanguage = "disclosure_language"
         case questions
+        case policyLinks = "policy_links"
         case id
         case adAccountId = "ad_account_id"
         case createdTime = "created_time"
@@ -75,6 +81,7 @@ public struct LeadFormResponse: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(disclosureLanguage, forKey: .disclosureLanguage)
         try container.encodeIfPresent(questions, forKey: .questions)
+        try container.encodeIfPresent(policyLinks, forKey: .policyLinks)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encodeIfPresent(createdTime, forKey: .createdTime)

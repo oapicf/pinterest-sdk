@@ -11,8 +11,9 @@ import play.api.libs.json._
   * @param orderLineId Order line ID that appears on the invoice.
   * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CampaignCommon(
   adAccountId: Option[String],
   name: Option[String],
@@ -20,10 +21,10 @@ case class CampaignCommon(
   lifetimeSpendCap: Option[Int],
   dailySpendCap: Option[Int],
   orderLineId: Option[String],
-  trackingUrls: Option[AdCommonTrackingUrls],
+  trackingUrls: Option[TrackingUrls],
   startTime: Option[Int],
   endTime: Option[Int],
-  summaryStatus: Option[CampaignSummaryStatus]
+  isFlexibleDailyBudgets: Option[Boolean]
 )
 
 object CampaignCommon {

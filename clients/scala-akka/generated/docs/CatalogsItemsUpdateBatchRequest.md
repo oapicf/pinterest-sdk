@@ -9,7 +9,7 @@ Request object to update catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **Country** |  | 
-**language** | **Language** |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **operation** | **BatchOperation** |  | 
 **items** | [**Seq&lt;ItemUpdateBatchRecord&gt;**](ItemUpdateBatchRecord.md) | Array with catalogs items | 
 

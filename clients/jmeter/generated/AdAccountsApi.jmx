@@ -1128,7 +1128,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Delete ads data for ad account in API Sandbox Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.</stringProp>
+          <stringProp name="TestPlan.comments">Delete ads data for ad account in API Sandbox Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - sandbox/delete" enabled="true">

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -47,7 +47,7 @@ AdPreviewsCreate Create ad preview with pin or image
 
 Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/>
 If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href="https://help.pinterest.com/en/business/article/promoted-pins-overview" target="_blank">Ads Overview</a>.) <p/>
-You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -171,7 +171,7 @@ type ApiAdTargetingAnalyticsGetRequest struct {
 	adIds *[]string
 	startDate *string
 	endDate *string
-	targetingTypes *[]AdsAnalyticsTargetingType
+	targetingTypes *[]AdsAnalyticsAdTargetingType
 	columns *[]string
 	granularity *Granularity
 	clickWindowDays *int32
@@ -199,8 +199,8 @@ func (r ApiAdTargetingAnalyticsGetRequest) EndDate(endDate string) ApiAdTargetin
 	return r
 }
 
-// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
-func (r ApiAdTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsTargetingType) ApiAdTargetingAnalyticsGetRequest {
+// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+func (r ApiAdTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsAdTargetingType) ApiAdTargetingAnalyticsGetRequest {
 	r.targetingTypes = &targetingTypes
 	return r
 }
@@ -320,8 +320,8 @@ func (a *AdsAPIService) AdTargetingAnalyticsGetExecute(r ApiAdTargetingAnalytics
 	if len(*r.targetingTypes) < 1 {
 		return localVarReturnValue, nil, reportError("targetingTypes must have at least 1 elements")
 	}
-	if len(*r.targetingTypes) > 15 {
-		return localVarReturnValue, nil, reportError("targetingTypes must have less than 15 elements")
+	if len(*r.targetingTypes) > 14 {
+		return localVarReturnValue, nil, reportError("targetingTypes must have less than 14 elements")
 	}
 	if r.columns == nil {
 		return localVarReturnValue, nil, reportError("columns is required and must be specified")
@@ -335,43 +335,43 @@ func (a *AdsAPIService) AdTargetingAnalyticsGetExecute(r ApiAdTargetingAnalytics
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", t, "form", "multi")
 		}
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
 	}
 	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -441,13 +441,15 @@ type ApiAdsAnalyticsRequest struct {
 	adAccountId string
 	startDate *string
 	endDate *string
-	adIds *[]string
 	columns *[]string
 	granularity *Granularity
+	adIds *[]string
 	clickWindowDays *int32
 	engagementWindowDays *int32
 	viewWindowDays *int32
 	conversionReportTime *string
+	pinIds *[]string
+	campaignIds *[]string
 }
 
 // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -462,12 +464,6 @@ func (r ApiAdsAnalyticsRequest) EndDate(endDate string) ApiAdsAnalyticsRequest {
 	return r
 }
 
-// List of Ad Ids to use to filter the results.
-func (r ApiAdsAnalyticsRequest) AdIds(adIds []string) ApiAdsAnalyticsRequest {
-	r.adIds = &adIds
-	return r
-}
-
 // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
 func (r ApiAdsAnalyticsRequest) Columns(columns []string) ApiAdsAnalyticsRequest {
 	r.columns = &columns
@@ -477,6 +473,12 @@ func (r ApiAdsAnalyticsRequest) Columns(columns []string) ApiAdsAnalyticsRequest
 // TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
 func (r ApiAdsAnalyticsRequest) Granularity(granularity Granularity) ApiAdsAnalyticsRequest {
 	r.granularity = &granularity
+	return r
+}
+
+// List of Ad Ids to use to filter the results.
+func (r ApiAdsAnalyticsRequest) AdIds(adIds []string) ApiAdsAnalyticsRequest {
+	r.adIds = &adIds
 	return r
 }
 
@@ -504,6 +506,18 @@ func (r ApiAdsAnalyticsRequest) ConversionReportTime(conversionReportTime string
 	return r
 }
 
+// List of Pin IDs.
+func (r ApiAdsAnalyticsRequest) PinIds(pinIds []string) ApiAdsAnalyticsRequest {
+	r.pinIds = &pinIds
+	return r
+}
+
+// List of Campaign Ids to use to filter the results.
+func (r ApiAdsAnalyticsRequest) CampaignIds(campaignIds []string) ApiAdsAnalyticsRequest {
+	r.campaignIds = &campaignIds
+	return r
+}
+
 func (r ApiAdsAnalyticsRequest) Execute() ([]AdsAnalyticsResponseInner, *http.Response, error) {
 	return r.ApiService.AdsAnalyticsExecute(r)
 }
@@ -513,6 +527,7 @@ AdsAnalytics Get ad analytics
 
 Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
+- The request must contain either ad_ids or both campaign_ids and pin_ids.
 - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
 - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 
@@ -558,15 +573,6 @@ func (a *AdsAPIService) AdsAnalyticsExecute(r ApiAdsAnalyticsRequest) ([]AdsAnal
 	if r.endDate == nil {
 		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
 	}
-	if r.adIds == nil {
-		return localVarReturnValue, nil, reportError("adIds is required and must be specified")
-	}
-	if len(*r.adIds) < 1 {
-		return localVarReturnValue, nil, reportError("adIds must have at least 1 elements")
-	}
-	if len(*r.adIds) > 100 {
-		return localVarReturnValue, nil, reportError("adIds must have less than 100 elements")
-	}
 	if r.columns == nil {
 		return localVarReturnValue, nil, reportError("columns is required and must be specified")
 	}
@@ -574,44 +580,66 @@ func (a *AdsAPIService) AdsAnalyticsExecute(r ApiAdsAnalyticsRequest) ([]AdsAnal
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	{
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	if r.adIds != nil {
 		t := *r.adIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", t, "form", "multi")
 		}
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
+	}
+	if r.pinIds != nil {
+		t := *r.pinIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "pin_ids", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "pin_ids", t, "form", "multi")
+		}
+	}
+	if r.campaignIds != nil {
+		t := *r.campaignIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
+		}
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -834,8 +862,7 @@ AdsGet Get ad
 
 Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
 contain additional information from the Ad Review process.
-For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/"
-target="_blank">Pinterest advertising standards</a>.
+For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/" target="_blank">Pinterest advertising standards</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -979,7 +1006,7 @@ func (r ApiAdsListRequest) EntityStatuses(entityStatuses []string) ApiAdsListReq
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiAdsListRequest) PageSize(pageSize int32) ApiAdsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1055,10 +1082,10 @@ func (a *AdsAPIService) AdsListExecute(r ApiAdsListRequest) (*AdsList200Response
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
 		}
 	}
 	if r.adGroupIds != nil {
@@ -1066,10 +1093,10 @@ func (a *AdsAPIService) AdsListExecute(r ApiAdsListRequest) (*AdsList200Response
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_ids", t, "form", "multi")
 		}
 	}
 	if r.adIds != nil {
@@ -1077,10 +1104,10 @@ func (a *AdsAPIService) AdsListExecute(r ApiAdsListRequest) (*AdsList200Response
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ad_ids", t, "form", "multi")
 		}
 	}
 	if r.entityStatuses != nil {
@@ -1088,26 +1115,26 @@ func (a *AdsAPIService) AdsListExecute(r ApiAdsListRequest) (*AdsList200Response
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "form", "multi")
 		}
 	} else {
 		var defaultValue []string = ["ACTIVE","PAUSED"]
 		r.entityStatuses = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

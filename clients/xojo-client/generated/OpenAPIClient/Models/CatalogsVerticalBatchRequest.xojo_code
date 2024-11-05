@@ -12,27 +12,44 @@ Protected Class CatalogsVerticalBatchRequest
 
 
 	#tag Property, Flags = &h0
-		language As String
+		language As OpenAPIClient.Models.CatalogsItemsRequestLanguage
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Array with catalogs item operations
+			Array with creative assets item operations
 		#tag EndNote
-		items() As OpenAPIClient.Models.CatalogsHotelBatchItem
+		items() As OpenAPIClient.Models.CatalogsCreativeAssetsBatchItem
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+			Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 		#tag EndNote
 		catalog_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        CreativeAssets
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -69,14 +86,6 @@ Protected Class CatalogsVerticalBatchRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
@@ -89,7 +98,7 @@ Protected Class CatalogsVerticalBatchRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Language"
+			Type="CatalogsItemsRequestLanguage"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -97,7 +106,7 @@ Protected Class CatalogsVerticalBatchRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsHotelBatchItem"
+			Type="CatalogsCreativeAssetsBatchItem"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsFeedIngestionWarnings
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionWarnings   {
   @JsonProperty("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR")
   private Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
@@ -39,10 +39,10 @@ public class CatalogsFeedIngestionWarnings   {
     return this;
   }
 
-   /**
+  /**
    * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
    * @return ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
-  **/
+   */
   @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
   public Integer getADDITIONALIMAGELEVELINTERNALERROR() {
     return ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
@@ -57,10 +57,10 @@ public class CatalogsFeedIngestionWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Additional image files are unreadable. Please upload new files to continue.
    * @return ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE
-  **/
+   */
   @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
   public Integer getADDITIONALIMAGEFILENOTACCESSIBLE() {
     return ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
@@ -75,10 +75,10 @@ public class CatalogsFeedIngestionWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Additional image files are unreadable. Please check your link and upload new files to continue.
    * @return ADDITIONAL_IMAGE_MALFORMED_URL
-  **/
+   */
   @ApiModelProperty(value = "Additional image files are unreadable. Please check your link and upload new files to continue.")
   public Integer getADDITIONALIMAGEMALFORMEDURL() {
     return ADDITIONAL_IMAGE_MALFORMED_URL;
@@ -93,10 +93,10 @@ public class CatalogsFeedIngestionWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Additional image files are unreadable. Please upload new files to continue.
    * @return ADDITIONAL_IMAGE_FILE_NOT_FOUND
-  **/
+   */
   @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
   public Integer getADDITIONALIMAGEFILENOTFOUND() {
     return ADDITIONAL_IMAGE_FILE_NOT_FOUND;
@@ -111,10 +111,10 @@ public class CatalogsFeedIngestionWarnings   {
     return this;
   }
 
-   /**
+  /**
    * Additional image files are unreadable. Please upload new files to continue.
    * @return ADDITIONAL_IMAGE_INVALID_FILE
-  **/
+   */
   @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
   public Integer getADDITIONALIMAGEINVALIDFILE() {
     return ADDITIONAL_IMAGE_INVALID_FILE;
@@ -129,10 +129,10 @@ public class CatalogsFeedIngestionWarnings   {
     return this;
   }
 
-   /**
+  /**
    * price is not a supported column. Use base_price and sale_price instead.
    * @return HOTEL_PRICE_HEADER_IS_PRESENT
-  **/
+   */
   @ApiModelProperty(value = "price is not a supported column. Use base_price and sale_price instead.")
   public Integer getHOTELPRICEHEADERISPRESENT() {
     return HOTEL_PRICE_HEADER_IS_PRESENT;

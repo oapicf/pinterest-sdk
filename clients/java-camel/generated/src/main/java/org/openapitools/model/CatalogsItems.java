@@ -23,11 +23,11 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItems", description = "Response object of catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItems {
 
   @Valid
-  private List<@Valid ItemResponse> items;
+  private List<@Valid ItemResponse> items = new ArrayList<>();
 
   public CatalogsItems items(List<@Valid ItemResponse> items) {
     this.items = items;
@@ -45,7 +45,7 @@ public class CatalogsItems {
   /**
    * Array with catalogs items
    * @return items
-  */
+   */
   @Valid 
   @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")

@@ -14,7 +14,7 @@ import ItemBatchRecord._
 case class ItemBatchRecord (
   /* The catalog item id in the merchant namespace */
   itemId: Option[String],
-attributes: Option[ItemAttributes],
+attributes: Option[ItemAttributesRequest],
 /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
   updateMask: Option[List[UpdateMaskFieldType]])
 

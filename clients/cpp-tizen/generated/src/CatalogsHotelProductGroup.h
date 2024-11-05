@@ -95,11 +95,11 @@ public:
 	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	void setUpdatedAt(int  updated_at);
-	/*! \brief Get 
+	/*! \brief Get Catalog id pertaining to the hotel product group.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set 
+	/*! \brief Set Catalog id pertaining to the hotel product group.
 	 */
 	void setCatalogId(std::string  catalog_id);
 

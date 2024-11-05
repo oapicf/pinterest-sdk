@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import KeywordsCommon._
 
 case class KeywordsCommon (
-  /* Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+  /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
   bid: Option[Integer],
 matchType: MatchTypeResponse,
 /* Keyword value (120 chars max). */

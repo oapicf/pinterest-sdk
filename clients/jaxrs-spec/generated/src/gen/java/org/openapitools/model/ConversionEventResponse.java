@@ -16,12 +16,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionEventResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventResponse   {
-  private @Valid ConversionTagType conversionEvent;
-  private @Valid String conversionTagId;
-  private @Valid String adAccountId;
-  private @Valid Integer createdTime;
+  private ConversionTagType conversionEvent;
+  private String conversionTagId;
+  private String adAccountId;
+  private Integer createdTime;
 
   /**
    **/
@@ -53,7 +53,7 @@ public class ConversionEventResponse   {
   
   @ApiModelProperty(example = "2614324385652", value = "Id of the tag.")
   @JsonProperty("conversion_tag_id")
- @Pattern(regexp="^\\d+$")  public String getConversionTagId() {
+   @Pattern(regexp="^\\d+$")public String getConversionTagId() {
     return conversionTagId;
   }
 
@@ -73,7 +73,7 @@ public class ConversionEventResponse   {
   
   @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 

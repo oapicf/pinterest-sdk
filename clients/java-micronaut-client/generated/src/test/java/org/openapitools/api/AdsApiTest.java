@@ -6,8 +6,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsResponseInner;
-import org.openapitools.model.AdsAnalyticsTargetingType;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.ConversionReportAttributionType;
 import org.openapitools.model.Error;
@@ -39,7 +39,7 @@ public class AdsApiTest {
     /**
      * Create ad preview with pin or image
      *
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      */
     @Test
     @Disabled("Not Implemented")
@@ -69,7 +69,7 @@ public class AdsApiTest {
         List<@Pattern(regexp = "^\\d+$")String> adIds = Arrays.asList("example");
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<AdsAnalyticsTargetingType> targetingTypes = Arrays.asList();
+        List<AdsAnalyticsAdTargetingType> targetingTypes = Arrays.asList();
         List<String> columns = Arrays.asList("example");
         Granularity granularity = Granularity.fromValue("DAY");
         Integer clickWindowDays = 30;
@@ -89,7 +89,7 @@ public class AdsApiTest {
     /**
      * Get ad analytics
      *
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      */
     @Test
     @Disabled("Not Implemented")
@@ -98,16 +98,18 @@ public class AdsApiTest {
         String adAccountId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<@Pattern(regexp = "^\\d+$")String> adIds = Arrays.asList("example");
         List<String> columns = Arrays.asList("example");
         Granularity granularity = Granularity.fromValue("DAY");
+        List<@Pattern(regexp = "^\\d+$")String> adIds = Arrays.asList("example");
         Integer clickWindowDays = 30;
         Integer engagementWindowDays = 30;
         Integer viewWindowDays = 1;
         String conversionReportTime = "TIME_OF_AD_ACTION";
+        List<@Pattern(regexp = "^\\d+$")String> pinIds = Arrays.asList("example");
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = Arrays.asList("example");
 
         // when
-        List<AdsAnalyticsResponseInner> body = api.adsAnalytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime).block();
+        List<AdsAnalyticsResponseInner> body = api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds).block();
 
         // then
         // TODO implement the adsAnalyticsTest()
@@ -124,7 +126,7 @@ public class AdsApiTest {
     public void adsCreateTest() {
         // given
         String adAccountId = "example";
-        List<AdCreateRequest> adCreateRequest = Arrays.asList();
+        List<@Valid AdCreateRequest> adCreateRequest = Arrays.asList();
 
         // when
         AdArrayResponse body = api.adsCreate(adAccountId, adCreateRequest).block();
@@ -190,7 +192,7 @@ public class AdsApiTest {
     public void adsUpdateTest() {
         // given
         String adAccountId = "example";
-        List<AdUpdateRequest> adUpdateRequest = Arrays.asList();
+        List<@Valid AdUpdateRequest> adUpdateRequest = Arrays.asList();
 
         // when
         AdArrayResponse body = api.adsUpdate(adAccountId, adUpdateRequest).block();

@@ -16,12 +16,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}age_group`,
-                label: `The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. - [${labelPrefix}age_group]`,
+                label: `The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. - [${labelPrefix}age_group]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}availability`,
-                label: `The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. - [${labelPrefix}availability]`,
+                label: `The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’. - [${labelPrefix}availability]`,
                 type: 'string',
             },
             {
@@ -91,7 +91,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}gender`,
-                label: `The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. - [${labelPrefix}gender]`,
+                label: `The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’. - [${labelPrefix}gender]`,
                 type: 'string',
             },
             {
@@ -201,12 +201,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}size_system`,
-                label: `Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. - [${labelPrefix}size_system]`,
+                label: `Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’. - [${labelPrefix}size_system]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}size_type`,
-                label: `Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. - [${labelPrefix}size_type]`,
+                label: `Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’. - [${labelPrefix}size_type]`,
                 type: 'string',
             },
             {

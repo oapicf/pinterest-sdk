@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * AdsCreditRedeemRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditRedeemRequest {
 
   private String offerCodeHash;
@@ -45,7 +45,7 @@ public class AdsCreditRedeemRequest {
   /**
    * Takes in a SHA256 hash of the offerCode.
    * @return offerCodeHash
-  */
+   */
   @NotNull @Pattern(regexp = "^[a-z0-9]*$") 
   @Schema(name = "offerCodeHash", example = "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", description = "Takes in a SHA256 hash of the offerCode.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("offerCodeHash")
@@ -65,7 +65,7 @@ public class AdsCreditRedeemRequest {
   /**
    * If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
    * @return validateOnly
-  */
+   */
   @NotNull 
   @Schema(name = "validateOnly", example = "true", description = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("validateOnly")

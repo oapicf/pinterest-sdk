@@ -55,5 +55,9 @@
 
 * `COP` (value: `"COP"`)
 
+* `INR` (value: `"INR"`)
+
+* `TRY` (value: `"TRY"`)
+
 
 

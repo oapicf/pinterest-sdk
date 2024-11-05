@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -29,12 +29,12 @@ import org.openapitools.model.ItemValidationEvent;
  */
 
 @ApiModel(description = "Object describing an item processing record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemProcessingRecord   {
   
   private String itemId;
-  private List<ItemValidationEvent> errors;
-  private List<ItemValidationEvent> warnings;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
+  private List<ItemValidationEvent> warnings = new ArrayList<>();
   private ItemProcessingStatus status;
 
   /**

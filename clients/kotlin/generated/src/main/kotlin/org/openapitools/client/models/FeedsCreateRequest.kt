@@ -20,6 +20,7 @@ import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFeedsCreateRequest
 import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
+import org.openapitools.client.models.CatalogsStatus
 import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.CatalogsVerticalFeedsCreateRequest
 import org.openapitools.client.models.Country
@@ -42,7 +43,8 @@ import com.squareup.moshi.JsonClass
  * @param preferredProcessingSchedule 
  * @param defaultCountry 
  * @param defaultAvailability 
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
  */
 
 
@@ -80,9 +82,15 @@ data class FeedsCreateRequest (
     @Json(name = "default_availability")
     val defaultAvailability: ProductAvailabilityType? = null,
 
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
+    @Json(name = "status")
+    val status: CatalogsStatus? = null,
+
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
     @Json(name = "catalog_id")
     override val catalogId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

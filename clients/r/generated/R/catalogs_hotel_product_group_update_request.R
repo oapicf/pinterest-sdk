@@ -21,8 +21,7 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
     `name` = NULL,
     `description` = NULL,
     `filters` = NULL,
-    #' Initialize a new CatalogsHotelProductGroupUpdateRequest class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsHotelProductGroupUpdateRequest class.
     #'
@@ -31,7 +30,6 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
     #' @param description description
     #' @param filters filters
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`catalog_type` = NULL, `name` = NULL, `description` = NULL, `filters` = NULL, ...) {
       if (!is.null(`catalog_type`)) {
         if (!(`catalog_type` %in% c("HOTEL"))) {
@@ -59,13 +57,11 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
         self$`filters` <- `filters`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelProductGroupUpdateRequest in JSON format
-    #' @export
     toJSON = function() {
       CatalogsHotelProductGroupUpdateRequestObject <- list()
       if (!is.null(self$`catalog_type`)) {
@@ -86,14 +82,12 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
       }
       CatalogsHotelProductGroupUpdateRequestObject
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelProductGroupUpdateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`)) {
@@ -115,13 +109,11 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelProductGroupUpdateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`catalog_type`)) {
@@ -160,14 +152,12 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelProductGroupUpdateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("HOTEL"))) {
@@ -179,53 +169,42 @@ CatalogsHotelProductGroupUpdateRequest <- R6::R6Class(
       self$`filters` <- CatalogsHotelProductGroupFilters$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsHotelProductGroupUpdateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsHotelProductGroupUpdateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsHotelProductGroupUpdateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

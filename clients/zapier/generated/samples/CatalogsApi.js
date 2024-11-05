@@ -1,17 +1,19 @@
 module.exports = {
+    "CatalogSample": 
+        { data: {} },
     "catalogs_list_200_responseSample": 
         { data: {} },
     "catalogs_product_group_pins_list_200_responseSample": 
         { data: {} },
-    "catalogs_product_groups_create_201_responseSample": 
+    "CatalogsVerticalProductGroupSample": 
         { data: {} },
-    "catalogs_product_groups_create_201_responseSample": 
+    "CatalogsVerticalProductGroupSample": 
         { data: {} },
     "catalogs_product_groups_list_200_responseSample": 
         { data: {} },
-    "CatalogsProductGroupProductCountsSample": 
+    "CatalogsProductGroupProductCountsVerticalSample": 
         { data: {} },
-    "catalogs_product_groups_create_201_responseSample": 
+    "CatalogsVerticalProductGroupSample": 
         { data: {} },
     "feed_processing_results_list_200_responseSample": 
         { data: {} },
@@ -19,9 +21,13 @@ module.exports = {
         { data: {} },
     "CatalogsFeedSample": 
         { data: {} },
+    "CatalogsFeedIngestionSample": 
+        { data: {} },
     "feeds_list_200_responseSample": 
         { data: {} },
     "CatalogsFeedSample": 
+        { data: {} },
+    "CatalogsItemsSample": 
         { data: {} },
     "CatalogsItemsSample": 
         { data: {} },
@@ -32,5 +38,11 @@ module.exports = {
     "items_issues_list_200_responseSample": 
         { data: {} },
     "catalogs_product_group_pins_list_200_responseSample": 
+        { data: {} },
+    "CatalogsCreateReportResponseSample": 
+        { data: {} },
+    "CatalogsReportSample": 
+        { data: {} },
+    "reports_stats_200_responseSample": 
         { data: {} },
 }

@@ -138,7 +138,7 @@ Protected Class ResourcesApi
 		  // Invokes ResourcesApiCallbackHandler.DeliveryMetricsGetCallback(DeliveryMetricsResponse) on completion. 
 		  //
 		  // - GET /resources/delivery_metrics
-		  // - Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+		  // - Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -413,7 +413,7 @@ Protected Class ResourcesApi
 		  // Invokes ResourcesApiCallbackHandler.LeadFormQuestionsGetCallback() on completion. 
 		  //
 		  // - GET /resources/lead_form_questions
-		  // - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+		  // - Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
@@ -606,7 +606,7 @@ Protected Class ResourcesApi
 
 
 	#tag Method, Flags = &h0
-		Sub TargetingOptionsGet(, targetingType As Targeting_typeEnum_TargetingOptionsGet, Optional clientId As Xoson.O.OptionalString, Optional oauthSignature As Xoson.O.OptionalString, Optional timestamp As Xoson.O.OptionalString)
+		Sub TargetingOptionsGet(, targetingType As Targeting_typeEnum_TargetingOptionsGet, Optional clientId As Xoson.O.OptionalString, Optional oauthSignature As Xoson.O.OptionalString, Optional timestamp As Xoson.O.OptionalString, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation targeting_options/get
 		  // Get targeting options
 		  // - 
@@ -614,6 +614,7 @@ Protected Class ResourcesApi
 		  // - parameter clientId: (query) Client ID. (optional, default to Sample)
 		  // - parameter oauthSignature: (query) Oauth signature (optional, default to Sample)
 		  // - parameter timestamp: (query) Timestamp (optional, default to Sample)
+		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes ResourcesApiCallbackHandler.TargetingOptionsGetCallback(Object) on completion. 
 		  //
@@ -635,6 +636,8 @@ Protected Class ResourcesApi
 		  If oauthSignature <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("oauth_signature") + "=" + EncodeURLComponent(oauthSignature)
 		  
 		  If timestamp <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("timestamp") + "=" + EncodeURLComponent(timestamp)
+		  
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
 		  

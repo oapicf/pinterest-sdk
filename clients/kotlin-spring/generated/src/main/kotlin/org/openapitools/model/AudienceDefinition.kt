@@ -29,7 +29,7 @@ data class AudienceDefinition(
 
     @Schema(example = "null", description = "Generated audience scope to request.")
     @get:JsonProperty("scope") val scope: kotlin.String? = null
-) {
+    ) {
 
 }
 

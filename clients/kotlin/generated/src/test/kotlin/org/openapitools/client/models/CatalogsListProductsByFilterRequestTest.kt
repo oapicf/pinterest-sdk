@@ -19,8 +19,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsListProductsByFilterRequest
-import org.openapitools.client.models.CatalogsListProductsByFilterRequestOneOf
+import org.openapitools.client.models.CatalogsListProductsByFeedBasedFilter
+import org.openapitools.client.models.CatalogsLocale
 import org.openapitools.client.models.CatalogsProductGroupFilters
+import org.openapitools.client.models.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+import org.openapitools.client.models.Country
 
 class CatalogsListProductsByFilterRequestTest : ShouldSpec() {
     init {

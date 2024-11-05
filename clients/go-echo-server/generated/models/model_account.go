@@ -6,7 +6,7 @@ type Account struct {
 	AccountType string `json:"account_type,omitempty"`
 
 	// User account ID.
-	Id string `json:"id,omitempty"`
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	ProfileImage string `json:"profile_image,omitempty"`
 

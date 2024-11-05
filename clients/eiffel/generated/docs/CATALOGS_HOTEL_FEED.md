@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | [**DATE_TIME**](DATE_TIME.md) |  | [optional] [default to null]
-**id** | [**STRING_32**](STRING_32.md) |  | [optional] [default to null]
-**updated_at** | [**DATE_TIME**](DATE_TIME.md) |  | [optional] [default to null]
+**created_at** | [**DATE_TIME**](DATE_TIME.md) |  | [default to null]
+**id** | [**STRING_32**](STRING_32.md) |  | [default to null]
+**updated_at** | [**DATE_TIME**](DATE_TIME.md) |  | [default to null]
 **name** | [**STRING_32**](STRING_32.md) | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | [default to null]
 **format** | [**CATALOGS_FORMAT**](CatalogsFormat.md) |  | [default to null]
 **catalog_type** | [**CATALOGS_TYPE**](CatalogsType.md) |  | [default to null]

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**grant_type** | **string** |  |
 **code** | **string** |  |
 **redirect_uri** | **string** |  |
 

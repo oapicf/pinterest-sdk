@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * CustomerListRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomerListRequest {
 
   private String name;
@@ -51,7 +51,7 @@ public class CustomerListRequest {
   /**
    * Customer list name.
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", example = "The Glengarry Glen Ross leads", description = "Customer list name.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -71,7 +71,7 @@ public class CustomerListRequest {
   /**
    * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
    * @return records
-  */
+   */
   @NotNull 
   @Schema(name = "records", example = "email1@pinterest.com,email2@pinterest.com,..<more records>", description = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("records")
@@ -91,7 +91,7 @@ public class CustomerListRequest {
   /**
    * Get listType
    * @return listType
-  */
+   */
   @Valid 
   @Schema(name = "list_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("list_type")
@@ -111,7 +111,7 @@ public class CustomerListRequest {
   /**
    * Customer list errors.
    * @return exceptions
-  */
+   */
   
   @Schema(name = "exceptions", description = "Customer list errors.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")

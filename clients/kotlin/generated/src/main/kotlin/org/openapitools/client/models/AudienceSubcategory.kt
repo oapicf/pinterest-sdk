@@ -52,5 +52,8 @@ data class AudienceSubcategory (
     @Json(name = "id")
     val id: kotlin.String? = null
 
-)
+) {
+
+
+}
 

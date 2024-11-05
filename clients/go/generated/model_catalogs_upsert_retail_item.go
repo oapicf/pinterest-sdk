@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,7 @@ type CatalogsUpsertRetailItem struct {
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id"`
 	Operation string `json:"operation"`
-	Attributes ItemAttributes `json:"attributes"`
+	Attributes ItemAttributesRequest `json:"attributes"`
 }
 
 type _CatalogsUpsertRetailItem CatalogsUpsertRetailItem
@@ -34,7 +34,7 @@ type _CatalogsUpsertRetailItem CatalogsUpsertRetailItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsUpsertRetailItem(itemId string, operation string, attributes ItemAttributes) *CatalogsUpsertRetailItem {
+func NewCatalogsUpsertRetailItem(itemId string, operation string, attributes ItemAttributesRequest) *CatalogsUpsertRetailItem {
 	this := CatalogsUpsertRetailItem{}
 	this.ItemId = itemId
 	this.Operation = operation
@@ -99,9 +99,9 @@ func (o *CatalogsUpsertRetailItem) SetOperation(v string) {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *CatalogsUpsertRetailItem) GetAttributes() ItemAttributes {
+func (o *CatalogsUpsertRetailItem) GetAttributes() ItemAttributesRequest {
 	if o == nil {
-		var ret ItemAttributes
+		var ret ItemAttributesRequest
 		return ret
 	}
 
@@ -110,7 +110,7 @@ func (o *CatalogsUpsertRetailItem) GetAttributes() ItemAttributes {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsUpsertRetailItem) GetAttributesOk() (*ItemAttributes, bool) {
+func (o *CatalogsUpsertRetailItem) GetAttributesOk() (*ItemAttributesRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *CatalogsUpsertRetailItem) GetAttributesOk() (*ItemAttributes, bool) {
 }
 
 // SetAttributes sets field value
-func (o *CatalogsUpsertRetailItem) SetAttributes(v ItemAttributes) {
+func (o *CatalogsUpsertRetailItem) SetAttributes(v ItemAttributesRequest) {
 	o.Attributes = v
 }
 

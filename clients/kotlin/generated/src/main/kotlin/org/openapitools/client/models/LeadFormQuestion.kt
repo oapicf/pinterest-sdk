@@ -47,5 +47,8 @@ data class LeadFormQuestion (
     @Json(name = "custom_question_options")
     val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null
 
-)
+) {
+
+
+}
 

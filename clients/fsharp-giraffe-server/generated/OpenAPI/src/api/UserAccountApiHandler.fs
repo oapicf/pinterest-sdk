@@ -305,9 +305,10 @@ module UserAccountApiHandler =
     let VerifyWebsiteUpdate  : HttpHandler =
       fun (next : HttpFunc) (ctx : HttpContext) ->
         task {
+          let queryParams = ctx.TryBindQueryString<VerifyWebsiteUpdateQueryParams>()
           let! bodyParams =
             ctx.BindJsonAsync<VerifyWebsiteUpdateBodyParams>()
-          let serviceArgs = {     bodyParams=bodyParams } : VerifyWebsiteUpdateArgs
+          let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : VerifyWebsiteUpdateArgs
           let result = UserAccountApiService.VerifyWebsiteUpdate ctx serviceArgs
           return! (match result with
                       | VerifyWebsiteUpdateStatusCode200 resolved ->
@@ -326,7 +327,9 @@ module UserAccountApiHandler =
     let WebsiteVerificationGet  : HttpHandler =
       fun (next : HttpFunc) (ctx : HttpContext) ->
         task {
-          let result = UserAccountApiService.WebsiteVerificationGet ctx 
+          let queryParams = ctx.TryBindQueryString<WebsiteVerificationGetQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;    } : WebsiteVerificationGetArgs
+          let result = UserAccountApiService.WebsiteVerificationGet ctx serviceArgs
           return! (match result with
                       | WebsiteVerificationGetStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content

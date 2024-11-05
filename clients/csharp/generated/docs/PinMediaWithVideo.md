@@ -6,7 +6,7 @@ Pin with video.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MediaType** | **string** |  | [optional] 
-**Images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**Images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 **CoverImageUrl** | **string** |  | [optional] 
 **VideoUrl** | **string** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
 **Duration** | **decimal** | Duration (in milliseconds) | [optional] 

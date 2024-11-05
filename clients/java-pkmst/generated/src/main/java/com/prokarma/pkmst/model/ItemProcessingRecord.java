@@ -21,7 +21,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object describing an item processing record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemProcessingRecord   {
   @JsonProperty("item_id")
   private String itemId;
@@ -42,10 +42,10 @@ public class ItemProcessingRecord   {
     return this;
   }
 
-   /**
+  /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
   public String getItemId() {
     return itemId;
@@ -68,10 +68,10 @@ public class ItemProcessingRecord   {
     return this;
   }
 
-   /**
+  /**
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
    * @return errors
-  **/
+   */
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
   public List<ItemValidationEvent> getErrors() {
     return errors;
@@ -94,10 +94,10 @@ public class ItemProcessingRecord   {
     return this;
   }
 
-   /**
+  /**
    * Array with the validation warnings for the item processing record
    * @return warnings
-  **/
+   */
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
   public List<ItemValidationEvent> getWarnings() {
     return warnings;
@@ -112,10 +112,10 @@ public class ItemProcessingRecord   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "")
   public ItemProcessingStatus getStatus() {
     return status;

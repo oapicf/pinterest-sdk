@@ -10,22 +10,32 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Request object for updating a hotel product group. */
+/** Request object for updating a catalog based product group. */
 public enum CatalogsVerticalProductGroupUpdateRequest: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsProductGroupUpdateRequest(CatalogsCreativeAssetsProductGroupUpdateRequest)
     case typeCatalogsHotelProductGroupUpdateRequest(CatalogsHotelProductGroupUpdateRequest)
+    case typeCatalogsRetailProductGroupUpdateRequest(CatalogsRetailProductGroupUpdateRequest)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsCreativeAssetsProductGroupUpdateRequest(let value):
+            try container.encode(value)
         case .typeCatalogsHotelProductGroupUpdateRequest(let value):
+            try container.encode(value)
+        case .typeCatalogsRetailProductGroupUpdateRequest(let value):
             try container.encode(value)
         }
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsHotelProductGroupUpdateRequest.self) {
+        if let value = try? container.decode(CatalogsCreativeAssetsProductGroupUpdateRequest.self) {
+            self = .typeCatalogsCreativeAssetsProductGroupUpdateRequest(value)
+        } else if let value = try? container.decode(CatalogsHotelProductGroupUpdateRequest.self) {
             self = .typeCatalogsHotelProductGroupUpdateRequest(value)
+        } else if let value = try? container.decode(CatalogsRetailProductGroupUpdateRequest.self) {
+            self = .typeCatalogsRetailProductGroupUpdateRequest(value)
         } else {
             throw DecodingError.typeMismatch(Self.Type.self, .init(codingPath: decoder.codingPath, debugDescription: "Unable to decode instance of CatalogsVerticalProductGroupUpdateRequest"))
         }

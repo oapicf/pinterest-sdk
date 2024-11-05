@@ -5,7 +5,7 @@ Summarized pin information
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Media** | [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **AltText** | **string** |  | [optional] 
 **Link** | **string** |  | [optional] 
 **Title** | **string** |  | [optional] 

@@ -24,7 +24,7 @@ void
 ItemUpsertBatchRecord::__init()
 {
 	//item_id = std::string();
-	//attributes = new ItemAttributes();
+	//attributes = new ItemAttributesRequest();
 }
 
 void
@@ -64,11 +64,11 @@ ItemUpsertBatchRecord::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("ItemAttributes")) {
-			jsonToValue(&attributes, node, "ItemAttributes", "ItemAttributes");
+		if (isprimitive("ItemAttributesRequest")) {
+			jsonToValue(&attributes, node, "ItemAttributesRequest", "ItemAttributesRequest");
 		} else {
 			
-			ItemAttributes* obj = static_cast<ItemAttributes*> (&attributes);
+			ItemAttributesRequest* obj = static_cast<ItemAttributesRequest*> (&attributes);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -94,13 +94,13 @@ ItemUpsertBatchRecord::toJson()
 	}
 	const gchar *item_idKey = "item_id";
 	json_object_set_member(pJsonObject, item_idKey, node);
-	if (isprimitive("ItemAttributes")) {
-		ItemAttributes obj = getAttributes();
-		node = converttoJson(&obj, "ItemAttributes", "");
+	if (isprimitive("ItemAttributesRequest")) {
+		ItemAttributesRequest obj = getAttributes();
+		node = converttoJson(&obj, "ItemAttributesRequest", "");
 	}
 	else {
 		
-		ItemAttributes obj = static_cast<ItemAttributes> (getAttributes());
+		ItemAttributesRequest obj = static_cast<ItemAttributesRequest> (getAttributes());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -128,14 +128,14 @@ ItemUpsertBatchRecord::setItemId(std::string  item_id)
 	this->item_id = item_id;
 }
 
-ItemAttributes
+ItemAttributesRequest
 ItemUpsertBatchRecord::getAttributes()
 {
 	return attributes;
 }
 
 void
-ItemUpsertBatchRecord::setAttributes(ItemAttributes  attributes)
+ItemUpsertBatchRecord::setAttributes(ItemAttributesRequest  attributes)
 {
 	this->attributes = attributes;
 }

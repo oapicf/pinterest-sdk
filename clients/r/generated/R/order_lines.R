@@ -35,8 +35,7 @@ OrderLines <- R6::R6Class(
     `status` = NULL,
     `name` = NULL,
     `paid_type` = NULL,
-    #' Initialize a new OrderLines class.
-    #'
+
     #' @description
     #' Initialize a new OrderLines class.
     #'
@@ -52,7 +51,6 @@ OrderLines <- R6::R6Class(
     #' @param name Order line name.
     #' @param paid_type Order line paid type.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `type` = NULL, `ad_account_id` = NULL, `purchase_order_id` = NULL, `start_time` = NULL, `end_time` = NULL, `budget` = NULL, `paid_budget` = NULL, `status` = NULL, `name` = NULL, `paid_type` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -111,13 +109,11 @@ OrderLines <- R6::R6Class(
         self$`paid_type` <- `paid_type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OrderLines in JSON format
-    #' @export
     toJSON = function() {
       OrderLinesObject <- list()
       if (!is.null(self$`id`)) {
@@ -166,14 +162,12 @@ OrderLines <- R6::R6Class(
       }
       OrderLinesObject
     },
-    #' Deserialize JSON string into an instance of OrderLines
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OrderLines
     #'
     #' @param input_json the JSON input
     #' @return the instance of OrderLines
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -215,13 +209,11 @@ OrderLines <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OrderLines in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -316,14 +308,12 @@ OrderLines <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of OrderLines
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OrderLines
     #'
     #' @param input_json the JSON input
     #' @return the instance of OrderLines
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -339,33 +329,27 @@ OrderLines <- R6::R6Class(
       self$`paid_type` <- OrderLinePaidType$new()$fromJSON(jsonlite::toJSON(this_object$`paid_type`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to OrderLines
-    #'
+
     #' @description
     #' Validate JSON input with respect to OrderLines and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of OrderLines
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -373,13 +357,11 @@ OrderLines <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -388,12 +370,9 @@ OrderLines <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

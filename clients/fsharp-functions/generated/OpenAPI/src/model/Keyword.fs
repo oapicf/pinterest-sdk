@@ -12,6 +12,12 @@ module Keyword =
 
   [<CLIMutable>]
   type Keyword = {
+    [<JsonProperty(PropertyName = "bid")>]
+    Bid : int option;
+    [<JsonProperty(PropertyName = "match_type")>]
+    MatchType : MatchTypeResponse;
+    [<JsonProperty(PropertyName = "value")>]
+    Value : string;
     [<JsonProperty(PropertyName = "archived")>]
     Archived : bool;
     [<JsonProperty(PropertyName = "id")>]
@@ -22,12 +28,6 @@ module Keyword =
     ParentType : string;
     [<JsonProperty(PropertyName = "type")>]
     Type : string;
-    [<JsonProperty(PropertyName = "bid")>]
-    Bid : int option;
-    [<JsonProperty(PropertyName = "match_type")>]
-    MatchType : MatchTypeResponse;
-    [<JsonProperty(PropertyName = "value")>]
-    Value : string;
   }
 
   //#endregion

@@ -2,23 +2,27 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsHotelProductGroupUpdateRequest;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsRetailProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a hotel product group.
+  * Request object for updating a catalog based product group.
  **/
-@ApiModel(description="Request object for updating a hotel product group.")
+@ApiModel(description="Request object for updating a catalog based product group.")
 
 public class CatalogsVerticalProductGroupUpdateRequest  {
   
 public enum CatalogTypeEnum {
 
-HOTEL(String.valueOf("HOTEL"));
+CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
 
     private String value;
@@ -56,7 +60,13 @@ HOTEL(String.valueOf("HOTEL"));
   private String description;
 
   @ApiModelProperty(value = "")
-  private CatalogsHotelProductGroupFilters filters;
+  private CatalogsCreativeAssetsProductGroupFilters filters;
+
+  @ApiModelProperty(value = "")
+  private Country country;
+
+  @ApiModelProperty(value = "")
+  private CatalogsLocale locale;
  /**
    * Get catalogType
    * @return catalogType
@@ -119,16 +129,52 @@ HOTEL(String.valueOf("HOTEL"));
    * @return filters
   **/
   @JsonProperty("filters")
-  public CatalogsHotelProductGroupFilters getFilters() {
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
 
-  public void setFilters(CatalogsHotelProductGroupFilters filters) {
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
 
-  public CatalogsVerticalProductGroupUpdateRequest filters(CatalogsHotelProductGroupFilters filters) {
+  public CatalogsVerticalProductGroupUpdateRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
+    return this;
+  }
+
+ /**
+   * Get country
+   * @return country
+  **/
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
+  }
+
+  public void setCountry(Country country) {
+    this.country = country;
+  }
+
+  public CatalogsVerticalProductGroupUpdateRequest country(Country country) {
+    this.country = country;
+    return this;
+  }
+
+ /**
+   * Get locale
+   * @return locale
+  **/
+  @JsonProperty("locale")
+  public CatalogsLocale getLocale() {
+    return locale;
+  }
+
+  public void setLocale(CatalogsLocale locale) {
+    this.locale = locale;
+  }
+
+  public CatalogsVerticalProductGroupUpdateRequest locale(CatalogsLocale locale) {
+    this.locale = locale;
     return this;
   }
 
@@ -144,12 +190,14 @@ HOTEL(String.valueOf("HOTEL"));
     return Objects.equals(this.catalogType, catalogsVerticalProductGroupUpdateRequest.catalogType) &&
         Objects.equals(this.name, catalogsVerticalProductGroupUpdateRequest.name) &&
         Objects.equals(this.description, catalogsVerticalProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsVerticalProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsVerticalProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.country, catalogsVerticalProductGroupUpdateRequest.country) &&
+        Objects.equals(this.locale, catalogsVerticalProductGroupUpdateRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, name, description, filters, country, locale);
   }
 
   @Override
@@ -161,6 +209,8 @@ HOTEL(String.valueOf("HOTEL"));
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

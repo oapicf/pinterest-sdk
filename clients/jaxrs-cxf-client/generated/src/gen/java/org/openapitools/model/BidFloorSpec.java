@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BidFloorSpec  {
   
   @ApiModelProperty(value = "")
-  private List<Country> countries;
+  private List<Country> countries = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
   private Currency currency;

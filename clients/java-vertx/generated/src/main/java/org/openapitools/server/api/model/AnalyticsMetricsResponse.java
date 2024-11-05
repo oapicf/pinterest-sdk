@@ -15,7 +15,7 @@ import org.openapitools.server.api.model.AnalyticsDailyMetrics;
 public class AnalyticsMetricsResponse   {
   
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
-  private List<AnalyticsDailyMetrics> dailyMetrics;
+  private List<AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
   public AnalyticsMetricsResponse () {
 

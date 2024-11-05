@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,14 +28,13 @@ const (
 	EMAIL LeadFormQuestionType = "EMAIL"
 	PHONE_NUMBER LeadFormQuestionType = "PHONE_NUMBER"
 	ZIP_CODE LeadFormQuestionType = "ZIP_CODE"
-	AGE LeadFormQuestionType = "AGE"
 	GENDER LeadFormQuestionType = "GENDER"
 	CITY LeadFormQuestionType = "CITY"
 	COUNTRY LeadFormQuestionType = "COUNTRY"
-	PREFERRED_CONTACT_METHOD LeadFormQuestionType = "PREFERRED_CONTACT_METHOD"
 	STATE_PROVINCE LeadFormQuestionType = "STATE_PROVINCE"
 	ADDRESS LeadFormQuestionType = "ADDRESS"
 	DATE_OF_BIRTH LeadFormQuestionType = "DATE_OF_BIRTH"
+	AGE LeadFormQuestionType = "AGE"
 )
 
 // All allowed values of LeadFormQuestionType enum
@@ -47,14 +46,13 @@ var AllowedLeadFormQuestionTypeEnumValues = []LeadFormQuestionType{
 	"EMAIL",
 	"PHONE_NUMBER",
 	"ZIP_CODE",
-	"AGE",
 	"GENDER",
 	"CITY",
 	"COUNTRY",
-	"PREFERRED_CONTACT_METHOD",
 	"STATE_PROVINCE",
 	"ADDRESS",
 	"DATE_OF_BIRTH",
+	"AGE",
 }
 
 func (v *LeadFormQuestionType) UnmarshalJSON(src []byte) error {

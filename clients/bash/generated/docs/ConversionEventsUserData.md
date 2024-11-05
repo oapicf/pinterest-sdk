@@ -15,6 +15,10 @@ Name | Type | Description | Notes
 **externalUnderscoreid** | **array[string]** |  | [optional] [default to null]
 **clickUnderscoreid** | **string** |  | [optional] [default to null]
 **partnerUnderscoreid** | **string** |  | [optional] [default to null]
+**em** | **array[string]** |  | [default to null]
+**hashedUnderscoremaids** | **array[string]** |  | [default to null]
+**clientUnderscoreipUnderscoreaddress** | **string** |  | [default to null]
+**clientUnderscoreuserUnderscoreagent** | **string** |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

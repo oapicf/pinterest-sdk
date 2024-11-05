@@ -52,5 +52,8 @@ data class AudienceCreateRequest (
     @Json(name = "description")
     val description: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &AdPinId{}
 // AdPinId struct for AdPinId
 type AdPinId struct {
 	// Pin ID.
-	PinId *string `json:"pin_id,omitempty"`
+	PinId *string `json:"pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewAdPinId instantiates a new AdPinId object

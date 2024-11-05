@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * IntegrationLogsInvalidLogResponseRejectedLogsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   @JsonProperty("log_index")
   private Integer logIndex;
@@ -34,10 +34,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     return this;
   }
 
-   /**
+  /**
    * Index of the log in the batch.
    * @return logIndex
-  **/
+   */
   @ApiModelProperty(value = "Index of the log in the batch.")
   public Integer getLogIndex() {
     return logIndex;
@@ -52,10 +52,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     return this;
   }
 
-   /**
+  /**
    * The field name containing an invalid value.
    * @return field
-  **/
+   */
   @ApiModelProperty(required = true, value = "The field name containing an invalid value.")
   public String getField() {
     return field;
@@ -70,10 +70,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     return this;
   }
 
-   /**
+  /**
    * The value that is invalid.
    * @return value
-  **/
+   */
   @ApiModelProperty(required = true, value = "The value that is invalid.")
   public String getValue() {
     return value;
@@ -88,10 +88,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     return this;
   }
 
-   /**
+  /**
    * The reason the value is invalid.
    * @return reason
-  **/
+   */
   @ApiModelProperty(required = true, value = "The reason the value is invalid.")
   public String getReason() {
     return reason;

@@ -3,9 +3,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **System.DateTime** |  | [optional] 
+**CreatedAt** | **System.DateTime** |  | 
 **Id** | **String** | ID of the catalog entity. | 
-**UpdatedAt** | **System.DateTime** |  | [optional] 
+**UpdatedAt** | **System.DateTime** |  | 
 **Name** | **String** | A human-friendly name associated to a catalog entity. | 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 

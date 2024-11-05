@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * SSIOEditInsertionOrderRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOEditInsertionOrderRequest {
 
   private String startDate;
@@ -62,7 +62,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * Starting date of time period. Format: YYYY-MM-DD
    * @return startDate
-  */
+   */
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "start_date", example = "2020-12-20", description = "Starting date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
@@ -82,7 +82,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * End date of time period. Format: YYYY-MM-DD
    * @return endDate
-  */
+   */
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "end_date", example = "2020-12-20", description = "End date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
@@ -102,7 +102,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The po number
    * @return poNumber
-  */
+   */
   
   @Schema(name = "po_number", description = "The po number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("po_number")
@@ -122,7 +122,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * If Budget order line, the budget amount.
    * @return budgetAmount
-  */
+   */
   @Valid 
   @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_amount")
@@ -142,7 +142,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The billing contact first name
    * @return billingContactFirstname
-  */
+   */
   
   @Schema(name = "billing_contact_firstname", description = "The billing contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_firstname")
@@ -162,7 +162,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The billing contact last name
    * @return billingContactLastname
-  */
+   */
   
   @Schema(name = "billing_contact_lastname", description = "The billing contact last name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_lastname")
@@ -182,7 +182,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The billing contact email
    * @return billingContactEmail
-  */
+   */
   
   @Schema(name = "billing_contact_email", example = "test@example", description = "The billing contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_email")
@@ -202,7 +202,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The media contact first name
    * @return mediaContactFirstname
-  */
+   */
   
   @Schema(name = "media_contact_firstname", description = "The media contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_firstname")
@@ -222,7 +222,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The media contact last name
    * @return mediaContactLastname
-  */
+   */
   
   @Schema(name = "media_contact_lastname", description = "The media contact last name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_lastname")
@@ -242,7 +242,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The media contact email
    * @return mediaContactEmail
-  */
+   */
   
   @Schema(name = "media_contact_email", example = "test@example", description = "The media contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_email")
@@ -262,7 +262,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * URL link for agency
    * @return agencyLink
-  */
+   */
   
   @Schema(name = "agency_link", description = "URL link for agency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("agency_link")
@@ -282,7 +282,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * The email of user submitting the insertion order
    * @return userEmail
-  */
+   */
   
   @Schema(name = "user_email", example = "test@example", description = "The email of user submitting the insertion order", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user_email")
@@ -302,7 +302,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * LineId in the Oracle DB
    * @return oracleLineId
-  */
+   */
   
   @Schema(name = "oracle_line_id", description = "LineId in the Oracle DB", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("oracle_line_id")
@@ -322,7 +322,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * OrderId in SFDC
    * @return salesforceOrderId
-  */
+   */
   
   @Schema(name = "salesforce_order_id", description = "OrderId in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("salesforce_order_id")
@@ -342,7 +342,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * OrderLineId in SFDC
    * @return salesforceOrderLineId
-  */
+   */
   
   @Schema(name = "salesforce_order_line_id", description = "OrderLineId in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("salesforce_order_line_id")
@@ -362,7 +362,7 @@ public class SSIOEditInsertionOrderRequest {
   /**
    * Ads manager OrderLineId
    * @return adsManagerOrderLineId
-  */
+   */
   
   @Schema(name = "ads_manager_order_line_id", description = "Ads manager OrderLineId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ads_manager_order_line_id")

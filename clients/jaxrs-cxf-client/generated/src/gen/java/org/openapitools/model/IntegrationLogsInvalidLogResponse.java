@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IntegrationLogsInvalidLogResponse  {
   
   @ApiModelProperty(value = "")
-  private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs;
+  private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
  /**
    * Get rejectedLogs
    * @return rejectedLogs

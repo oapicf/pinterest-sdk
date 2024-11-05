@@ -25,8 +25,7 @@ IntegrationLogClientRequest <- R6::R6Class(
     `request_headers` = NULL,
     `response_headers` = NULL,
     `response_status_code` = NULL,
-    #' Initialize a new IntegrationLogClientRequest class.
-    #'
+
     #' @description
     #' Initialize a new IntegrationLogClientRequest class.
     #'
@@ -37,7 +36,6 @@ IntegrationLogClientRequest <- R6::R6Class(
     #' @param response_headers HTTP response headers as key-value pairs.
     #' @param response_status_code response_status_code
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`method`, `host`, `path`, `request_headers` = NULL, `response_headers` = NULL, `response_status_code` = NULL, ...) {
       if (!missing(`method`)) {
         if (!(`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
@@ -77,13 +75,11 @@ IntegrationLogClientRequest <- R6::R6Class(
         self$`response_status_code` <- `response_status_code`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationLogClientRequest in JSON format
-    #' @export
     toJSON = function() {
       IntegrationLogClientRequestObject <- list()
       if (!is.null(self$`method`)) {
@@ -112,14 +108,12 @@ IntegrationLogClientRequest <- R6::R6Class(
       }
       IntegrationLogClientRequestObject
     },
-    #' Deserialize JSON string into an instance of IntegrationLogClientRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationLogClientRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationLogClientRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`method`)) {
@@ -145,13 +139,11 @@ IntegrationLogClientRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationLogClientRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`method`)) {
@@ -181,7 +173,7 @@ IntegrationLogClientRequest <- R6::R6Class(
         if (!is.null(self$`request_headers`)) {
           sprintf(
           '"request_headers":
-            "%s"
+            %s
           ',
           jsonlite::toJSON(lapply(self$`request_headers`, function(x){ x }), auto_unbox = TRUE, digits = NA)
           )
@@ -189,7 +181,7 @@ IntegrationLogClientRequest <- R6::R6Class(
         if (!is.null(self$`response_headers`)) {
           sprintf(
           '"response_headers":
-            "%s"
+            %s
           ',
           jsonlite::toJSON(lapply(self$`response_headers`, function(x){ x }), auto_unbox = TRUE, digits = NA)
           )
@@ -206,14 +198,12 @@ IntegrationLogClientRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of IntegrationLogClientRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationLogClientRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationLogClientRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`method`) && !(this_object$`method` %in% c("GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"))) {
@@ -227,13 +217,11 @@ IntegrationLogClientRequest <- R6::R6Class(
       self$`response_status_code` <- this_object$`response_status_code`
       self
     },
-    #' Validate JSON input with respect to IntegrationLogClientRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to IntegrationLogClientRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `method`
@@ -261,23 +249,19 @@ IntegrationLogClientRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for IntegrationLogClientRequest: the required field `path` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of IntegrationLogClientRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `method` is null
       if (is.null(self$`method`)) {
@@ -296,13 +280,11 @@ IntegrationLogClientRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `method` is null
@@ -322,12 +304,9 @@ IntegrationLogClientRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

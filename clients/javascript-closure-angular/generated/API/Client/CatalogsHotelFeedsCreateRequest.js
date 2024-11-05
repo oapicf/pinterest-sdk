@@ -63,3 +63,9 @@ API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogType;
  */
 API.Client.CatalogsHotelFeedsCreateRequest.prototype.catalogId;
 
+/**
+ * @type {!API.Client.CatalogsStatus}
+ * @export
+ */
+API.Client.CatalogsHotelFeedsCreateRequest.prototype.status;
+

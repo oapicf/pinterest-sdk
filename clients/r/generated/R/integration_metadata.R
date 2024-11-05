@@ -41,8 +41,7 @@ IntegrationMetadata <- R6::R6Class(
     `updated_timestamp` = NULL,
     `additional_id_1` = NULL,
     `partner_metadata` = NULL,
-    #' Initialize a new IntegrationMetadata class.
-    #'
+
     #' @description
     #' Initialize a new IntegrationMetadata class.
     #'
@@ -61,7 +60,6 @@ IntegrationMetadata <- R6::R6Class(
     #' @param additional_id_1 additional_id_1
     #' @param partner_metadata partner_metadata
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `external_business_id` = NULL, `connected_merchant_id` = NULL, `connected_user_id` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_tag_id` = NULL, `partner_access_token_expiry` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `created_timestamp` = NULL, `updated_timestamp` = NULL, `additional_id_1` = NULL, `partner_metadata` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -136,13 +134,11 @@ IntegrationMetadata <- R6::R6Class(
         self$`partner_metadata` <- `partner_metadata`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationMetadata in JSON format
-    #' @export
     toJSON = function() {
       IntegrationMetadataObject <- list()
       if (!is.null(self$`id`)) {
@@ -203,14 +199,12 @@ IntegrationMetadata <- R6::R6Class(
       }
       IntegrationMetadataObject
     },
-    #' Deserialize JSON string into an instance of IntegrationMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationMetadata
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -257,13 +251,11 @@ IntegrationMetadata <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationMetadata in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -382,14 +374,12 @@ IntegrationMetadata <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of IntegrationMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationMetadata
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -408,33 +398,27 @@ IntegrationMetadata <- R6::R6Class(
       self$`partner_metadata` <- this_object$`partner_metadata`
       self
     },
-    #' Validate JSON input with respect to IntegrationMetadata
-    #'
+
     #' @description
     #' Validate JSON input with respect to IntegrationMetadata and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of IntegrationMetadata
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -442,13 +426,11 @@ IntegrationMetadata <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -457,12 +439,9 @@ IntegrationMetadata <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

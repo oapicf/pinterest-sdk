@@ -10,7 +10,7 @@ An item to be upserted
 |------------ | ------------- | ------------- | -------------|
 |**itemId** | **String** | The catalog item id in the merchant namespace |  |
 |**operation** | [**OperationEnum**](#OperationEnum) |  |  |
-|**attributes** | [**ItemAttributes**](ItemAttributes.md) |  |  |
+|**attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  |  |
 
 
 
@@ -18,10 +18,7 @@ An item to be upserted
 
 | Name | Value |
 |---- | -----|
-| CREATE | &quot;CREATE&quot; |
-| UPDATE | &quot;UPDATE&quot; |
 | UPSERT | &quot;UPSERT&quot; |
-| DELETE | &quot;DELETE&quot; |
 
 
 

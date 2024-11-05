@@ -6,7 +6,7 @@ Request object to discontinue catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | **Country** |  | 
-**Language** | **Language** |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Operation** | **BatchOperation** |  | 
 **Items** | [**List&lt;ItemDeleteDiscontinuedBatchRecord&gt;**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 

@@ -13,6 +13,7 @@
   | {'item_ids', list(binary()) }
   | {'catalog_id', binary() }
   | {'hotel_ids', list(binary()) }
+  | {'creative_assets_ids', list(binary()) }
   ].
 
 
@@ -24,6 +25,7 @@ openapi_catalogs_items_filters(Fields) ->
             , {'item_ids', list(binary(), 1, 100) }
             , {'catalog_id', binary() }
             , {'hotel_ids', list(binary(), 1, 100) }
+            , {'creative_assets_ids', list(binary(), 1, 100) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

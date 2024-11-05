@@ -6,8 +6,8 @@ import org.openapitools.vertxweb.server.model.AdPreviewRequest;
 import org.openapitools.vertxweb.server.model.AdPreviewURLResponse;
 import org.openapitools.vertxweb.server.model.AdResponse;
 import org.openapitools.vertxweb.server.model.AdUpdateRequest;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.vertxweb.server.model.AdsAnalyticsResponseInner;
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
 import org.openapitools.vertxweb.server.model.AdsList200Response;
 import org.openapitools.vertxweb.server.model.ConversionReportAttributionType;
 import org.openapitools.vertxweb.server.model.Error;
@@ -25,8 +25,8 @@ import java.util.Map;
 
 public interface AdsApi  {
     Future<ApiResponse<AdPreviewURLResponse>> adPreviewsCreate(String adAccountId, AdPreviewRequest adPreviewRequest);
-    Future<ApiResponse<MetricsResponse>> adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes);
-    Future<ApiResponse<List<AdsAnalyticsResponseInner>>> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> adIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime);
+    Future<ApiResponse<MetricsResponse>> adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes);
+    Future<ApiResponse<List<AdsAnalyticsResponseInner>>> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds);
     Future<ApiResponse<AdArrayResponse>> adsCreate(String adAccountId, List<AdCreateRequest> adCreateRequest);
     Future<ApiResponse<AdResponse>> adsGet(String adAccountId, String adId);
     Future<ApiResponse<AdsList200Response>> adsList(String adAccountId, List<String> campaignIds, List<String> adGroupIds, List<String> adIds, List<String> entityStatuses, Integer pageSize, String order, String bookmark);

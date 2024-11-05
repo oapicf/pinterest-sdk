@@ -33,6 +33,11 @@ Protected Class AdAccountCreateSubscriptionRequest
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		partner_metadata As OpenAPIClient.Models.AdAccountCreateSubscriptionRequestPartnerMetadata
+	#tag EndProperty
+
+
 
 
 
@@ -99,6 +104,14 @@ Protected Class AdAccountCreateSubscriptionRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="partner_metadata"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdAccountCreateSubscriptionRequestPartnerMetadata"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

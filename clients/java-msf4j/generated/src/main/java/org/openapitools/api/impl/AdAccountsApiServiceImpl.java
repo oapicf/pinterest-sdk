@@ -9,7 +9,7 @@ import org.openapitools.model.AdAccountCreateRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionResponse;
 import org.openapitools.model.AdAccountGetSubscriptionResponse;
-import org.openapitools.model.AdAccountsCatalogsProductGroupsList200Response;
+import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
 import org.openapitools.model.AdArrayResponse;
@@ -26,6 +26,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
@@ -36,6 +38,7 @@ import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.Audience;
+import org.openapitools.model.AudienceAccountType;
 import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
@@ -51,6 +54,8 @@ import org.openapitools.model.BulkDownloadResponse;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
 import org.openapitools.model.BulkUpsertStatusResponse;
+import org.openapitools.model.BusinessSharedAudience;
+import org.openapitools.model.BusinessSharedAudienceResponse;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.CampaignCreateResponse;
 import org.openapitools.model.CampaignResponse;
@@ -81,10 +86,16 @@ import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LeadFormArrayResponse;
+import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
 import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
+import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadsExportCreateRequest;
+import org.openapitools.model.LeadsExportCreateResponse;
+import org.openapitools.model.LeadsExportResponseData;
 import java.util.List;
 import java.util.Map;
 import org.openapitools.model.MatchType;
@@ -103,8 +114,14 @@ import org.openapitools.model.SSIOCreateInsertionOrderResponse;
 import org.openapitools.model.SSIOEditInsertionOrderRequest;
 import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SharedAudience;
+import org.openapitools.model.SharedAudienceResponse;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
+import org.openapitools.model.TargetingTemplateCreate;
+import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplateList200Response;
+import org.openapitools.model.TargetingTemplateUpdateRequest;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 
@@ -119,7 +136,7 @@ import org.wso2.msf4j.formparam.FileInfo;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     @Override
     public Response adAccountAnalytics(String adAccountId
@@ -152,8 +169,11 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response adAccountsCatalogsProductGroupsList(String adAccountId
-, String feedProfileId
+    public Response adAccountsAudiencesSharedAccountsList(String adAccountId
+, String audienceId
+, AudienceAccountType accountType
+, Integer pageSize
+, String bookmark
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -238,7 +258,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response adGroupsCreate(String adAccountId
-, List<AdGroupCreateRequest> adGroupCreateRequest
+, List<@Valid AdGroupCreateRequest> adGroupCreateRequest
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -282,7 +302,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response adGroupsUpdate(String adAccountId
-, List<AdGroupUpdateRequest> adGroupUpdateRequest
+, List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -299,7 +319,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
 , List<@Pattern(regexp = "^\\d+$")String> adIds
 , Date startDate
 , Date endDate
-, List<AdsAnalyticsTargetingType> targetingTypes
+, List<AdsAnalyticsAdTargetingType> targetingTypes
 , List<String> columns
 , Granularity granularity
 , Integer clickWindowDays
@@ -315,20 +335,22 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     public Response adsAnalytics(String adAccountId
 , Date startDate
 , Date endDate
-, List<@Pattern(regexp = "^\\d+$")String> adIds
 , List<String> columns
 , Granularity granularity
+, List<@Pattern(regexp = "^\\d+$")String> adIds
 , Integer clickWindowDays
 , Integer engagementWindowDays
 , Integer viewWindowDays
 , String conversionReportTime
+, List<@Pattern(regexp = "^\\d+$")String> pinIds
+, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
     public Response adsCreate(String adAccountId
-, List<AdCreateRequest> adCreateRequest
+, List<@Valid AdCreateRequest> adCreateRequest
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -370,7 +392,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     }
     @Override
     public Response adsUpdate(String adAccountId
-, List<AdUpdateRequest> adUpdateRequest
+, List<@Valid AdUpdateRequest> adUpdateRequest
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -501,7 +523,7 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
 , List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
 , Date startDate
 , Date endDate
-, List<AdsAnalyticsTargetingType> targetingTypes
+, List<AdsAnalyticsCampaignTargetingType> targetingTypes
 , List<String> columns
 , Granularity granularity
 , Integer clickWindowDays
@@ -669,10 +691,38 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response leadFormsCreate(String adAccountId
+, List<@Valid LeadFormCreateRequest> leadFormCreateRequest
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response leadFormsList(String adAccountId
 , Integer pageSize
 , String order
 , String bookmark
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response leadFormsUpdate(String adAccountId
+, List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response leadsExportCreate(String adAccountId
+, LeadsExportCreateRequest leadsExportCreateRequest
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response leadsExportGet(String adAccountId
+, String leadsExportId
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -807,6 +857,31 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response targetingTemplateCreate(String adAccountId
+, TargetingTemplateCreate targetingTemplateCreate
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response targetingTemplateList(String adAccountId
+, String order
+, Boolean includeSizing
+, String searchQuery
+, Integer pageSize
+, String bookmark
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response targetingTemplateUpdate(String adAccountId
+, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response templatesList(String adAccountId
 , Integer pageSize
 , String order
@@ -819,6 +894,20 @@ public class AdAccountsApiServiceImpl extends AdAccountsApiService {
     public Response termsOfServiceGet(String adAccountId
 , Boolean includeHtml
 , String tosType
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response updateAdAccountToAdAccountSharedAudience(String adAccountId
+, SharedAudience sharedAudience
+ ) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response updateAdAccountToBusinessSharedAudience(String adAccountId
+, BusinessSharedAudience businessSharedAudience
  ) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

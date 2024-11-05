@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsHotelBatchRequest');
 API.Client.CatalogsHotelBatchRequest = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelBatchRequest.prototype.catalogType;
@@ -19,7 +19,7 @@ API.Client.CatalogsHotelBatchRequest.prototype.catalogType;
 API.Client.CatalogsHotelBatchRequest.prototype.country;
 
 /**
- * @type {!API.Client.Language}
+ * @type {!API.Client.CatalogsItemsRequest_language}
  * @export
  */
 API.Client.CatalogsHotelBatchRequest.prototype.language;
@@ -38,3 +38,7 @@ API.Client.CatalogsHotelBatchRequest.prototype.items;
  */
 API.Client.CatalogsHotelBatchRequest.prototype.catalogId;
 
+/** @enum {string} */
+API.Client.CatalogsHotelBatchRequest.CatalogTypeEnum = { 
+  HOTEL: 'HOTEL',
+}

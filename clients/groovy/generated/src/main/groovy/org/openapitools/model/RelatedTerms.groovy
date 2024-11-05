@@ -14,5 +14,5 @@ class RelatedTerms {
     /* Total number of related terms returned */
     Integer relatedTermCount
     /* The id of the advertiser. */
-    List<RelatedTermsRelatedTermsListInner> relatedTermsList
+    List<RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>()
 }

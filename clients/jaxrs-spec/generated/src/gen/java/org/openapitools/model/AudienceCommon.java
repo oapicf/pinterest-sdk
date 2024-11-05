@@ -16,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceCommon")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCommon   {
-  private @Valid String adAccountId;
-  private @Valid String name;
-  private @Valid AudienceRule rule;
+  private String adAccountId;
+  private String name;
+  private AudienceRule rule;
 
   /**
    * Ad account ID.
@@ -33,7 +33,7 @@ public class AudienceCommon   {
   
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
@@ -72,7 +72,7 @@ public class AudienceCommon   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("rule")
-  public AudienceRule getRule() {
+  @Valid public AudienceRule getRule() {
     return rule;
   }
 

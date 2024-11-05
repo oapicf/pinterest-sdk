@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Keyword ID. | 
 **Archived** | Pointer to **bool** | Is keyword archived? | [optional] 
-**Bid** | Pointer to **NullableInt32** | Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
+**Bid** | Pointer to **NullableInt32** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
 
 ## Methods
 

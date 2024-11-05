@@ -37,7 +37,7 @@ data class UserWebsiteVerificationCode(
 
     @Schema(example = "null", description = "A full html file to upload to the website in order for it to be claimed")
     @get:JsonProperty("file_content") val fileContent: kotlin.String? = null
-) {
+    ) {
 
 }
 

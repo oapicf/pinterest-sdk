@@ -18,10 +18,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightsResponse   {
   
-  private List<@Valid AudienceCategory> categories;
+  private List<@Valid AudienceCategory> categories = new ArrayList<>();
   private AudienceDemographics demographics;
   private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
   private String date;

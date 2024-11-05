@@ -10,8 +10,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
-import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.CatalogsProductGroupStatus;
 import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
@@ -20,13 +21,13 @@ import org.openapitools.model.CatalogsRetailProductGroup;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsVerticalProductGroup   {
   /**
    * Gets or Sets catalogType
    */
   public enum CatalogTypeEnum {
-    RETAIL("RETAIL");
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
 
     private String value;
 
@@ -64,16 +65,7 @@ public class CatalogsVerticalProductGroup   {
   private String description;
 
   @JsonProperty("filters")
-  private CatalogsProductGroupFilters filters;
-
-  @JsonProperty("created_at")
-  private Integer createdAt;
-
-  @JsonProperty("updated_at")
-  private Integer updatedAt;
-
-  @JsonProperty("catalog_id")
-  private String catalogId;
+  private CatalogsCreativeAssetsProductGroupFilters filters;
 
   @JsonProperty("is_featured")
   private Boolean isFeatured;
@@ -84,37 +76,23 @@ public class CatalogsVerticalProductGroup   {
   @JsonProperty("status")
   private CatalogsProductGroupStatus status;
 
-  /**
-   * Gets or Sets feedId
-   */
-  public enum FeedIdEnum {
-    NULL("null");
+  @JsonProperty("created_at")
+  private Integer createdAt;
 
-    private String value;
+  @JsonProperty("updated_at")
+  private Integer updatedAt;
 
-    FeedIdEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FeedIdEnum fromValue(String text) {
-      for (FeedIdEnum b : FeedIdEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
+  @JsonProperty("catalog_id")
+  private String catalogId;
 
   @JsonProperty("feed_id")
-  private FeedIdEnum feedId;
+  private String feedId;
+
+  @JsonProperty("country")
+  private String country;
+
+  @JsonProperty("locale")
+  private String locale;
 
   /**
    **/
@@ -134,7 +112,7 @@ public class CatalogsVerticalProductGroup   {
   }
 
   /**
-   * ID of the catalog product group.
+   * ID of the creative assets product group.
    **/
   public CatalogsVerticalProductGroup id(String id) {
     this.id = id;
@@ -142,7 +120,7 @@ public class CatalogsVerticalProductGroup   {
   }
 
   
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the catalog product group.")
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -152,7 +130,7 @@ public class CatalogsVerticalProductGroup   {
   }
 
   /**
-   * Name of catalog product group
+   * Name of creative assets product group
    **/
   public CatalogsVerticalProductGroup name(String name) {
     this.name = name;
@@ -160,7 +138,7 @@ public class CatalogsVerticalProductGroup   {
   }
 
   
-  @ApiModelProperty(example = "Most Popular", value = "Name of catalog product group")
+  @ApiModelProperty(example = "Most Popular", value = "Name of creative assets product group")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -188,7 +166,7 @@ public class CatalogsVerticalProductGroup   {
 
   /**
    **/
-  public CatalogsVerticalProductGroup filters(CatalogsProductGroupFilters filters) {
+  public CatalogsVerticalProductGroup filters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -196,64 +174,11 @@ public class CatalogsVerticalProductGroup   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("filters")
-  public CatalogsProductGroupFilters getFilters() {
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
-  public void setFilters(CatalogsProductGroupFilters filters) {
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
-  }
-
-  /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   **/
-  public CatalogsVerticalProductGroup createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
-  @JsonProperty("created_at")
-  public Integer getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  /**
-   * Unix timestamp in seconds of last time catalog product group was updated.
-   **/
-  public CatalogsVerticalProductGroup updatedAt(Integer updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
-  @JsonProperty("updated_at")
-  public Integer getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Integer updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  /**
-   **/
-  public CatalogsVerticalProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
   }
 
   /**
@@ -309,20 +234,109 @@ public class CatalogsVerticalProductGroup   {
   }
 
   /**
+   * Unix timestamp in seconds of when catalog product group was created.
    **/
-  public CatalogsVerticalProductGroup feedId(FeedIdEnum feedId) {
+  public CatalogsVerticalProductGroup createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+  @JsonProperty("created_at")
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  /**
+   * Unix timestamp in seconds of last time catalog product group was updated.
+   **/
+  public CatalogsVerticalProductGroup updatedAt(Integer updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
+  @JsonProperty("updated_at")
+  public Integer getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Integer updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  /**
+   * Catalog id pertaining to the creative assets product group.
+   **/
+  public CatalogsVerticalProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * id of the catalogs feed belonging to this catalog product group
+   **/
+  public CatalogsVerticalProductGroup feedId(String feedId) {
     this.feedId = feedId;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
   @JsonProperty("feed_id")
-  public FeedIdEnum getFeedId() {
+  public String getFeedId() {
     return feedId;
   }
-  public void setFeedId(FeedIdEnum feedId) {
+  public void setFeedId(String feedId) {
     this.feedId = feedId;
+  }
+
+  /**
+   **/
+  public CatalogsVerticalProductGroup country(String country) {
+    this.country = country;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
+  }
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  /**
+   **/
+  public CatalogsVerticalProductGroup locale(String locale) {
+    this.locale = locale;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("locale")
+  public String getLocale() {
+    return locale;
+  }
+  public void setLocale(String locale) {
+    this.locale = locale;
   }
 
 
@@ -340,18 +354,20 @@ public class CatalogsVerticalProductGroup   {
         Objects.equals(name, catalogsVerticalProductGroup.name) &&
         Objects.equals(description, catalogsVerticalProductGroup.description) &&
         Objects.equals(filters, catalogsVerticalProductGroup.filters) &&
-        Objects.equals(createdAt, catalogsVerticalProductGroup.createdAt) &&
-        Objects.equals(updatedAt, catalogsVerticalProductGroup.updatedAt) &&
-        Objects.equals(catalogId, catalogsVerticalProductGroup.catalogId) &&
         Objects.equals(isFeatured, catalogsVerticalProductGroup.isFeatured) &&
         Objects.equals(type, catalogsVerticalProductGroup.type) &&
         Objects.equals(status, catalogsVerticalProductGroup.status) &&
-        Objects.equals(feedId, catalogsVerticalProductGroup.feedId);
+        Objects.equals(createdAt, catalogsVerticalProductGroup.createdAt) &&
+        Objects.equals(updatedAt, catalogsVerticalProductGroup.updatedAt) &&
+        Objects.equals(catalogId, catalogsVerticalProductGroup.catalogId) &&
+        Objects.equals(feedId, catalogsVerticalProductGroup.feedId) &&
+        Objects.equals(country, catalogsVerticalProductGroup.country) &&
+        Objects.equals(locale, catalogsVerticalProductGroup.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId, isFeatured, type, status, feedId);
+    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
   }
 
   @Override
@@ -364,13 +380,15 @@ public class CatalogsVerticalProductGroup   {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

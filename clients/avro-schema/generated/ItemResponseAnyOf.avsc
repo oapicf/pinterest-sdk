@@ -26,7 +26,7 @@
     },
     {
       "name": "attributes",
-      "type": ["null", "model.CatalogsHotelAttributes"],
+      "type": ["null", "model.CatalogsCreativeAssetsAttributes"],
       "doc": "",
       "default": null
     },
@@ -34,6 +34,12 @@
       "name": "hotel_id",
       "type": ["null", "string"],
       "doc": "The catalog hotel id in the merchant namespace",
+      "default": null
+    },
+    {
+      "name": "creative_assets_id",
+      "type": ["null", "string"],
+      "doc": "The catalog creative assets id in the merchant namespace",
       "default": null
     }
   ]

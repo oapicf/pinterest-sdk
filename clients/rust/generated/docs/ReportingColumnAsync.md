@@ -271,11 +271,20 @@
 | TotalSignup | TOTAL_SIGNUP |
 | TotalCheckout | TOTAL_CHECKOUT |
 | TotalCustom | TOTAL_CUSTOM |
+| TotalAddToCart | TOTAL_ADD_TO_CART |
 | TotalLead | TOTAL_LEAD |
+| TotalSearch | TOTAL_SEARCH |
+| TotalWatchVideo | TOTAL_WATCH_VIDEO |
+| TotalViewCategory | TOTAL_VIEW_CATEGORY |
 | TotalAppInstall | TOTAL_APP_INSTALL |
 | TotalSignupValueInMicroDollar | TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR |
 | TotalCheckoutValueInMicroDollar | TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR |
 | TotalCustomValueInMicroDollar | TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR |
+| TotalAddToCartValueInMicroDollar | TOTAL_ADD_TO_CART_VALUE_IN_MICRO_DOLLAR |
+| TotalLeadValueInMicroDollar | TOTAL_LEAD_VALUE_IN_MICRO_DOLLAR |
+| TotalSearchValueInMicroDollar | TOTAL_SEARCH_VALUE_IN_MICRO_DOLLAR |
+| TotalWatchVideoValueInMicroDollar | TOTAL_WATCH_VIDEO_VALUE_IN_MICRO_DOLLAR |
+| TotalViewCategoryValueInMicroDollar | TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR |
 | TotalAppInstallValueInMicroDollar | TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR |
 | TotalCheckoutQuantity | TOTAL_CHECKOUT_QUANTITY |
 | PageVisitCostPerAction | PAGE_VISIT_COST_PER_ACTION |
@@ -299,6 +308,7 @@
 | VideoP75Combined2 | VIDEO_P75_COMBINED_2 |
 | VideoP95Combined2 | VIDEO_P95_COMBINED_2 |
 | VideoMrcViews2 | VIDEO_MRC_VIEWS_2 |
+| PaidVideoViewableRate | PAID_VIDEO_VIEWABLE_RATE |
 | VideoLength | VIDEO_LENGTH |
 | CpvInMicroDollar | CPV_IN_MICRO_DOLLAR |
 | EcpvInDollar | ECPV_IN_DOLLAR |
@@ -317,6 +327,7 @@
 | VideoAvgWatchtimeInSecond1 | VIDEO_AVG_WATCHTIME_IN_SECOND_1 |
 | VideoAvgWatchtimeInSecond2 | VIDEO_AVG_WATCHTIME_IN_SECOND_2 |
 | TotalVideoAvgWatchtimeInSecond | TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND |
+| TotalDestinationViews | TOTAL_DESTINATION_VIEWS |
 | TotalRepinRate | TOTAL_REPIN_RATE |
 | WebCheckoutCostPerAction | WEB_CHECKOUT_COST_PER_ACTION |
 | WebCheckoutRoas | WEB_CHECKOUT_ROAS |

@@ -1,7 +1,7 @@
 /*
  * grid_click_type.h
  *
- * Where a user is taken after clicking on an ad in grid.
+ * Where a user is taken after clicking on an ad in grid. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt;  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
  */
 
 #ifndef _grid_click_type_H_

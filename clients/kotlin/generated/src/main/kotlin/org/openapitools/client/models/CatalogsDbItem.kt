@@ -31,13 +31,16 @@ import com.squareup.moshi.JsonClass
 data class CatalogsDbItem (
 
     @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime? = null,
+    val createdAt: java.time.OffsetDateTime,
 
     @Json(name = "id")
-    val id: kotlin.String? = null,
+    val id: kotlin.String,
 
     @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime? = null
+    val updatedAt: java.time.OffsetDateTime
 
-)
+) {
+
+
+}
 

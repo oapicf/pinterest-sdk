@@ -18,7 +18,7 @@ MyApp.add_route('GET', '/v5/user_account/following/boards', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -53,7 +53,7 @@ MyApp.add_route('POST', '/v5/user_account/following/{username}', {
   "nickname" => "follow_user/update",
   "responseClass" => "UserSummary",
   "endpoint" => "/user_account/following/{username}",
-  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.",
+  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.",
   "parameters" => [
     {
       "name" => "username",
@@ -92,7 +92,7 @@ MyApp.add_route('GET', '/v5/user_account/followers', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -179,7 +179,7 @@ MyApp.add_route('GET', '/v5/user_account/analytics', {
       "name" => "pin_format",
       "description" => "Pin formats to get data for, default is all.",
       "dataType" => "String",
-      "allowableValues" => "[ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]",
+      "allowableValues" => "[ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]",
       "defaultValue" => "'ALL'",
       "paramType" => "query",
     },
@@ -278,7 +278,7 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_pins', {
       "name" => "pin_format",
       "description" => "Pin formats to get data for, default is all.",
       "dataType" => "String",
-      "allowableValues" => "[ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]",
+      "allowableValues" => "[ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]",
       "defaultValue" => "'ALL'",
       "paramType" => "query",
     },
@@ -384,7 +384,7 @@ MyApp.add_route('GET', '/v5/user_account/analytics/top_video_pins', {
       "name" => "pin_format",
       "description" => "Pin formats to get data for, default is all.",
       "dataType" => "String",
-      "allowableValues" => "[ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]",
+      "allowableValues" => "[ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]",
       "defaultValue" => "'ALL'",
       "paramType" => "query",
     },
@@ -466,7 +466,7 @@ MyApp.add_route('GET', '/v5/users/{username}/interests/follow', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -492,7 +492,7 @@ MyApp.add_route('GET', '/v5/user_account', {
   "nickname" => "user_account/get",
   "responseClass" => "Account",
   "endpoint" => "/user_account",
-  "notes" => "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.",
+  "notes" => "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -526,7 +526,7 @@ MyApp.add_route('GET', '/v5/user_account/following', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -580,7 +580,7 @@ MyApp.add_route('GET', '/v5/user_account/websites', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -603,6 +603,13 @@ MyApp.add_route('POST', '/v5/user_account/websites', {
   "notes" => "Verify a website as a signed-in user.",
   "parameters" => [
     {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
       "name" => "body",
       "description" => "Verify a website.",
       "dataType" => "UserWebsiteVerifyRequest",
@@ -624,6 +631,13 @@ MyApp.add_route('GET', '/v5/user_account/websites/verification', {
   "endpoint" => "/user_account/websites/verification",
   "notes" => "Get verification code for user to install on the website to claim it.",
   "parameters" => [
+    {
+      "name" => "ad_account_id",
+      "description" => "Unique identifier of an ad account.",
+      "dataType" => "String",
+      "allowableValues" => "",
+      "paramType" => "query",
+    },
     ]}) do
   cross_origin
   # the guts live here

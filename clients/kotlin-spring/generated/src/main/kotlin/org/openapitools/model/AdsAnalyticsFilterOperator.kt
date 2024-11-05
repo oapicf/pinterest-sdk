@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Filter operator for sync reporting
 * Values: LESS_THAN,GREATER_THAN
 */
-enum class AdsAnalyticsFilterOperator(val value: kotlin.String) {
+enum class AdsAnalyticsFilterOperator(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("LESS_THAN") LESS_THAN("LESS_THAN"),
-    @JsonProperty("GREATER_THAN") GREATER_THAN("GREATER_THAN")
+    LESS_THAN("LESS_THAN"),
+    GREATER_THAN("GREATER_THAN");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): AdsAnalyticsFilterOperator {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

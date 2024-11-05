@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * ConversionTagConfigs
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionTagConfigs   {
   @JsonProperty("aem_enabled")
   private Boolean aemEnabled = false;
@@ -44,10 +44,10 @@ public class ConversionTagConfigs   {
     return this;
   }
 
-   /**
+  /**
    * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemEnabled
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
   public Boolean getAemEnabled() {
     return aemEnabled;
@@ -62,10 +62,10 @@ public class ConversionTagConfigs   {
     return this;
   }
 
-   /**
+  /**
    * Metadata ingestion frequency.
    * @return mdFrequency
-  **/
+   */
   @ApiModelProperty(example = "0.6", value = "Metadata ingestion frequency.")
   public BigDecimal getMdFrequency() {
     return mdFrequency;
@@ -80,10 +80,10 @@ public class ConversionTagConfigs   {
     return this;
   }
 
-   /**
+  /**
    * Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemFnlnEnabled
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
   public Boolean getAemFnlnEnabled() {
     return aemFnlnEnabled;
@@ -98,10 +98,10 @@ public class ConversionTagConfigs   {
     return this;
   }
 
-   /**
+  /**
    * Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemPhEnabled
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
   public Boolean getAemPhEnabled() {
     return aemPhEnabled;
@@ -116,10 +116,10 @@ public class ConversionTagConfigs   {
     return this;
   }
 
-   /**
+  /**
    * Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemGeEnabled
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
   public Boolean getAemGeEnabled() {
     return aemGeEnabled;
@@ -134,10 +134,10 @@ public class ConversionTagConfigs   {
     return this;
   }
 
-   /**
+  /**
    * Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemDbEnabled
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
   public Boolean getAemDbEnabled() {
     return aemDbEnabled;
@@ -152,10 +152,10 @@ public class ConversionTagConfigs   {
     return this;
   }
 
-   /**
+  /**
    * Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    * @return aemLocEnabled
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
   public Boolean getAemLocEnabled() {
     return aemLocEnabled;

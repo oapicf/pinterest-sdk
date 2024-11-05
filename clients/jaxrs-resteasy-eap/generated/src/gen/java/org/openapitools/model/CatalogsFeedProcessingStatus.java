@@ -7,11 +7,6 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum CatalogsFeedProcessingStatus {
   COMPLETED,
-  COMPLETED_EARLY,
-  DISAPPROVED,
   FAILED,
-  PROCESSING,
-  QUEUED_FOR_PROCESSING,
-  UNDER_APPEAL,
-  UNDER_REVIEW;
+  PROCESSING;
 }

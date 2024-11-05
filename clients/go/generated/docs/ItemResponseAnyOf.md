@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **ItemId** | Pointer to **string** | The catalog retail item id in the merchant namespace | [optional] 
 **Pins** | Pointer to [**[]Pin**](Pin.md) | The pins mapped to the item | [optional] 
-**Attributes** | Pointer to [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] 
+**Attributes** | Pointer to [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
 **HotelId** | Pointer to **string** | The catalog hotel id in the merchant namespace | [optional] 
+**CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
 
 ## Methods
 
@@ -111,20 +112,20 @@ HasPins returns a boolean if a field has been set.
 UnsetPins ensures that no value is present for Pins, not even an explicit nil
 ### GetAttributes
 
-`func (o *ItemResponseAnyOf) GetAttributes() CatalogsHotelAttributes`
+`func (o *ItemResponseAnyOf) GetAttributes() CatalogsCreativeAssetsAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *ItemResponseAnyOf) GetAttributesOk() (*CatalogsHotelAttributes, bool)`
+`func (o *ItemResponseAnyOf) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *ItemResponseAnyOf) SetAttributes(v CatalogsHotelAttributes)`
+`func (o *ItemResponseAnyOf) SetAttributes(v CatalogsCreativeAssetsAttributes)`
 
 SetAttributes sets Attributes field to given value.
 
@@ -158,6 +159,31 @@ SetHotelId sets HotelId field to given value.
 `func (o *ItemResponseAnyOf) HasHotelId() bool`
 
 HasHotelId returns a boolean if a field has been set.
+
+### GetCreativeAssetsId
+
+`func (o *ItemResponseAnyOf) GetCreativeAssetsId() string`
+
+GetCreativeAssetsId returns the CreativeAssetsId field if non-nil, zero value otherwise.
+
+### GetCreativeAssetsIdOk
+
+`func (o *ItemResponseAnyOf) GetCreativeAssetsIdOk() (*string, bool)`
+
+GetCreativeAssetsIdOk returns a tuple with the CreativeAssetsId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreativeAssetsId
+
+`func (o *ItemResponseAnyOf) SetCreativeAssetsId(v string)`
+
+SetCreativeAssetsId sets CreativeAssetsId field to given value.
+
+### HasCreativeAssetsId
+
+`func (o *ItemResponseAnyOf) HasCreativeAssetsId() bool`
+
+HasCreativeAssetsId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

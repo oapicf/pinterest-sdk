@@ -16,17 +16,18 @@ CatalogsFeed <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("CatalogsHotelFeed", "CatalogsRetailFeed"),
-    #' Initialize a new CatalogsFeed.
-    #'
+    one_of = list("CatalogsCreativeAssetsFeed", "CatalogsHotelFeed", "CatalogsRetailFeed"),
+
     #' @description
     #' Initialize a new CatalogsFeed.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsHotelFeed", "CatalogsRetailFeed"
-    #' @export
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsCreativeAssetsFeed", "CatalogsHotelFeed", "CatalogsRetailFeed"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsCreativeAssetsFeed") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsCreativeAssetsFeed"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsHotelFeed") {
         self$actual_instance <- instance
         self$actual_type <- "CatalogsHotelFeed"
@@ -34,30 +35,28 @@ CatalogsFeed <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "CatalogsRetailFeed"
       } else {
-        stop(paste("Failed to initialize CatalogsFeed with oneOf schemas CatalogsHotelFeed, CatalogsRetailFeed. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsFeed with oneOf schemas CatalogsCreativeAssetsFeed, CatalogsHotelFeed, CatalogsRetailFeed. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsFeed.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeed.
     #' An alias to the method `fromJSON` .
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsFeed.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsFeed.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeed.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsFeed.
-    #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
       matched_schemas <- list() #names of matched schemas
@@ -94,29 +93,42 @@ CatalogsFeed <- R6::R6Class(
         error_messages <- append(error_messages, `CatalogsHotelFeed_result`["message"])
       }
 
+      `CatalogsCreativeAssetsFeed_result` <- tryCatch({
+          `CatalogsCreativeAssetsFeed`$public_methods$validateJSON(input)
+          `CatalogsCreativeAssetsFeed_instance` <- `CatalogsCreativeAssetsFeed`$new()
+          instance <- `CatalogsCreativeAssetsFeed_instance`$fromJSON(input)
+          instance_type <- "CatalogsCreativeAssetsFeed"
+          matched_schemas <- append(matched_schemas, "CatalogsCreativeAssetsFeed")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsCreativeAssetsFeed_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsCreativeAssetsFeed_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into CatalogsFeed with oneOf schemas CatalogsHotelFeed, CatalogsRetailFeed. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into CatalogsFeed with oneOf schemas CatalogsCreativeAssetsFeed, CatalogsHotelFeed, CatalogsRetailFeed. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into CatalogsFeed with oneOf schemas CatalogsHotelFeed, CatalogsRetailFeed. Details: >>",
+        stop(paste("No match found when deserializing the input into CatalogsFeed with oneOf schemas CatalogsCreativeAssetsFeed, CatalogsHotelFeed, CatalogsRetailFeed. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 
       self
     },
-    #' Serialize CatalogsFeed to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsFeed to JSON string.
     #'
     #' @return JSON string representation of the CatalogsFeed.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify(self$actual_instance$toJSONString()))
@@ -124,13 +136,11 @@ CatalogsFeed <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsFeed to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsFeed to JSON.
     #'
     #' @return JSON representation of the CatalogsFeed.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -138,14 +148,12 @@ CatalogsFeed <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsFeed.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsFeed and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -158,13 +166,11 @@ CatalogsFeed <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -174,12 +180,9 @@ CatalogsFeed <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

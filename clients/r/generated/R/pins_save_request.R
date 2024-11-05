@@ -17,15 +17,13 @@ PinsSaveRequest <- R6::R6Class(
   public = list(
     `board_id` = NULL,
     `board_section_id` = NULL,
-    #' Initialize a new PinsSaveRequest class.
-    #'
+
     #' @description
     #' Initialize a new PinsSaveRequest class.
     #'
     #' @param board_id Unique identifier of the board to which the pin will be saved.
     #' @param board_section_id Unique identifier of the board section to which the pin will be saved.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`board_id` = NULL, `board_section_id` = NULL, ...) {
       if (!is.null(`board_id`)) {
         if (!(is.character(`board_id`) && length(`board_id`) == 1)) {
@@ -40,13 +38,11 @@ PinsSaveRequest <- R6::R6Class(
         self$`board_section_id` <- `board_section_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinsSaveRequest in JSON format
-    #' @export
     toJSON = function() {
       PinsSaveRequestObject <- list()
       if (!is.null(self$`board_id`)) {
@@ -59,14 +55,12 @@ PinsSaveRequest <- R6::R6Class(
       }
       PinsSaveRequestObject
     },
-    #' Deserialize JSON string into an instance of PinsSaveRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinsSaveRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinsSaveRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`board_id`)) {
@@ -77,13 +71,11 @@ PinsSaveRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinsSaveRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`board_id`)) {
@@ -106,47 +98,39 @@ PinsSaveRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of PinsSaveRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinsSaveRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinsSaveRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`board_id` <- this_object$`board_id`
       self$`board_section_id` <- this_object$`board_section_id`
       self
     },
-    #' Validate JSON input with respect to PinsSaveRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to PinsSaveRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of PinsSaveRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`board_id`, "^\\d+$")) {
         return(FALSE)
@@ -158,13 +142,11 @@ PinsSaveRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`board_id`, "^\\d+$")) {
@@ -177,12 +159,9 @@ PinsSaveRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

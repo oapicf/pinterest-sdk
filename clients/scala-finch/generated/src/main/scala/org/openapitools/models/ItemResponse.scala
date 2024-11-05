@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CatalogsHotelAttributes
+import org.openapitools.models.CatalogsCreativeAssetsAttributes
 import org.openapitools.models.CatalogsType
 import org.openapitools.models.ItemResponseAnyOf
 import org.openapitools.models.ItemResponseAnyOf1
@@ -20,13 +20,15 @@ import scala.collection.immutable.Seq
  * @param pins The pins mapped to the item
  * @param attributes 
  * @param hotelUnderscoreid The catalog hotel id in the merchant namespace
+ * @param creativeUnderscoreassetsUnderscoreid The catalog creative assets id in the merchant namespace
  * @param errors Array with the errors for the item id requested
  */
 case class ItemResponse(catalogUnderscoretype: CatalogsType,
                 itemUnderscoreid: Option[String],
                 pins: Option[Seq[Pin]],
-                attributes: Option[CatalogsHotelAttributes],
+                attributes: Option[CatalogsCreativeAssetsAttributes],
                 hotelUnderscoreid: Option[String],
+                creativeUnderscoreassetsUnderscoreid: Option[String],
                 errors: Option[Seq[ItemValidationEvent]]
                 )
 

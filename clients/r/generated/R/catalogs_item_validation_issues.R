@@ -21,8 +21,7 @@ CatalogsItemValidationIssues <- R6::R6Class(
     `item_id` = NULL,
     `errors` = NULL,
     `warnings` = NULL,
-    #' Initialize a new CatalogsItemValidationIssues class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsItemValidationIssues class.
     #'
@@ -31,7 +30,6 @@ CatalogsItemValidationIssues <- R6::R6Class(
     #' @param errors errors
     #' @param warnings warnings
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`item_number`, `item_id`, `errors`, `warnings`, ...) {
       if (!missing(`item_number`)) {
         if (!(is.numeric(`item_number`) && length(`item_number`) == 1)) {
@@ -54,13 +52,11 @@ CatalogsItemValidationIssues <- R6::R6Class(
         self$`warnings` <- `warnings`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemValidationIssues in JSON format
-    #' @export
     toJSON = function() {
       CatalogsItemValidationIssuesObject <- list()
       if (!is.null(self$`item_number`)) {
@@ -81,14 +77,12 @@ CatalogsItemValidationIssues <- R6::R6Class(
       }
       CatalogsItemValidationIssuesObject
     },
-    #' Deserialize JSON string into an instance of CatalogsItemValidationIssues
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemValidationIssues
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemValidationIssues
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`item_number`)) {
@@ -109,13 +103,11 @@ CatalogsItemValidationIssues <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemValidationIssues in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`item_number`)) {
@@ -154,14 +146,12 @@ CatalogsItemValidationIssues <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsItemValidationIssues
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemValidationIssues
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemValidationIssues
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`item_number` <- this_object$`item_number`
@@ -170,13 +160,11 @@ CatalogsItemValidationIssues <- R6::R6Class(
       self$`warnings` <- CatalogsItemValidationWarnings$new()$fromJSON(jsonlite::toJSON(this_object$`warnings`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsItemValidationIssues
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsItemValidationIssues and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `item_number`
@@ -208,23 +196,19 @@ CatalogsItemValidationIssues <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsItemValidationIssues: the required field `warnings` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsItemValidationIssues
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `item_number` is null
       if (is.null(self$`item_number`)) {
@@ -243,13 +227,11 @@ CatalogsItemValidationIssues <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `item_number` is null
@@ -269,12 +251,9 @@ CatalogsItemValidationIssues <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

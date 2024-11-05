@@ -31,5 +31,8 @@ data class MetricsResponse (
     @Json(name = "data")
     val `data`: kotlin.collections.List<kotlin.Any>? = null
 
-)
+) {
+
+
+}
 

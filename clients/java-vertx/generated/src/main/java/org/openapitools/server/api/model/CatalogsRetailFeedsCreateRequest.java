@@ -9,6 +9,7 @@ import org.openapitools.server.api.model.CatalogsFeedCredentials;
 import org.openapitools.server.api.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.server.api.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.server.api.model.CatalogsFormat;
+import org.openapitools.server.api.model.CatalogsStatus;
 import org.openapitools.server.api.model.CatalogsType;
 import org.openapitools.server.api.model.Country;
 import org.openapitools.server.api.model.NullableCurrency;
@@ -30,12 +31,13 @@ public class CatalogsRetailFeedsCreateRequest   {
   private CatalogsType catalogType;
   private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
+  private CatalogsStatus status;
 
   public CatalogsRetailFeedsCreateRequest () {
 
   }
 
-  public CatalogsRetailFeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsType catalogType, Country defaultCountry, ProductAvailabilityType defaultAvailability) {
+  public CatalogsRetailFeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsType catalogType, Country defaultCountry, ProductAvailabilityType defaultAvailability, CatalogsStatus status) {
     this.defaultCurrency = defaultCurrency;
     this.name = name;
     this.format = format;
@@ -46,6 +48,7 @@ public class CatalogsRetailFeedsCreateRequest   {
     this.catalogType = catalogType;
     this.defaultCountry = defaultCountry;
     this.defaultAvailability = defaultAvailability;
+    this.status = status;
   }
 
     
@@ -138,6 +141,15 @@ public class CatalogsRetailFeedsCreateRequest   {
     this.defaultAvailability = defaultAvailability;
   }
 
+    
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -157,12 +169,13 @@ public class CatalogsRetailFeedsCreateRequest   {
         Objects.equals(preferredProcessingSchedule, catalogsRetailFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(catalogType, catalogsRetailFeedsCreateRequest.catalogType) &&
         Objects.equals(defaultCountry, catalogsRetailFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability);
+        Objects.equals(defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(status, catalogsRetailFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -180,6 +193,7 @@ public class CatalogsRetailFeedsCreateRequest   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

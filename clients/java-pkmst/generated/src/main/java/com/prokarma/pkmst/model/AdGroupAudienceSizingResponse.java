@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * AdGroupAudienceSizingResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingResponse   {
   @JsonProperty("audience_size_lower_bound")
   private BigDecimal audienceSizeLowerBound;
@@ -28,10 +28,10 @@ public class AdGroupAudienceSizingResponse   {
     return this;
   }
 
-   /**
+  /**
    * The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
    * @return audienceSizeLowerBound
-  **/
+   */
   @ApiModelProperty(example = "100000", value = "The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.")
   public BigDecimal getAudienceSizeLowerBound() {
     return audienceSizeLowerBound;
@@ -46,10 +46,10 @@ public class AdGroupAudienceSizingResponse   {
     return this;
   }
 
-   /**
+  /**
    * The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
    * @return audienceSizeUpperBound
-  **/
+   */
   @ApiModelProperty(example = "150000", value = "The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.")
   public BigDecimal getAudienceSizeUpperBound() {
     return audienceSizeUpperBound;

@@ -9,8 +9,8 @@
 
 
 #include <string>
+#include "BoardOwner.h"
 #include "Board_media.h"
-#include "Board_owner.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -112,11 +112,11 @@ public:
 	void setMedia(Board_media  media);
 	/*! \brief Get 
 	 */
-	Board_owner getOwner();
+	BoardOwner getOwner();
 
 	/*! \brief Set 
 	 */
-	void setOwner(Board_owner  owner);
+	void setOwner(BoardOwner  owner);
 	/*! \brief Get Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
 	 */
 	std::string getPrivacy();
@@ -135,7 +135,7 @@ private:
 	int pin_count;
 	int follower_count;
 	Board_media media;
-	Board_owner owner;
+	BoardOwner owner;
 	std::string privacy;
 	void __init();
 	void __cleanup();

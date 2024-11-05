@@ -89,7 +89,7 @@ data class CatalogsUpdatableHotelAttributes(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("guest_ratings") val guestRatings: CatalogsHotelGuestRatings? = null
-) {
+    ) {
 
 }
 

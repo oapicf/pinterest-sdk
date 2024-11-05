@@ -45,4 +45,44 @@ public class KeywordTest {
         // TODO: test value
     }
 
+    /**
+     * Test the property 'archived'
+     */
+    @Test
+    public void archivedTest() {
+        // TODO: test archived
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'parentId'
+     */
+    @Test
+    public void parentIdTest() {
+        // TODO: test parentId
+    }
+
+    /**
+     * Test the property 'parentType'
+     */
+    @Test
+    public void parentTypeTest() {
+        // TODO: test parentType
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
 }

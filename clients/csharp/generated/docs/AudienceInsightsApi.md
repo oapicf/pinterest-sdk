@@ -36,7 +36,7 @@ namespace Example
 
             var apiInstance = new AudienceInsightsApi(config);
             var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var audienceInsightType = new AudienceInsightType(); // AudienceInsightType | Type of audience insights.
+            var audienceInsightType = (AudienceInsightType) "YOUR_TOTAL_AUDIENCE";  // AudienceInsightType | Type of audience insights.
 
             try
             {
@@ -80,7 +80,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **adAccountId** | **string** | Unique identifier of an ad account. |  |
-| **audienceInsightType** | [**AudienceInsightType**](AudienceInsightType.md) | Type of audience insights. |  |
+| **audienceInsightType** | **AudienceInsightType** | Type of audience insights. |  |
 
 ### Return type
 

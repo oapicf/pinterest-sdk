@@ -1,8 +1,13 @@
 
 <h2>CatalogsVerticalBatchRequest</h2>
 <ul class="parameter">
-  <li class="param-required-true">catalogUnderscoretype : CatalogsType
+  <li class="param-required-true">catalogUnderscoretype : String
     <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>CREATIVE_ASSETS</dd>
+        </dt>
+      </dl>
   </li>
 </ul>
 <ul class="parameter">
@@ -11,17 +16,17 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">language : Language
+  <li class="param-required-true">language : CatalogsItemsRequest_language
     <br/>
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-true">items : List
-    <br/>Array with catalogs item operations
+    <br/>Array with creative assets item operations
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-false">catalogUnderscoreid : String
-    <br/>Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+    <br/>Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   </li>
 </ul>

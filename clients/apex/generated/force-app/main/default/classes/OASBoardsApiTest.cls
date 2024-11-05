@@ -174,6 +174,23 @@ private class OASBoardsApiTest {
         expectedResponse = OASBoardSectionsList200Response.getExample();
         response = (OASBoardSectionsList200Response) api.boardSectionsList(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASBoardsApi(client);
+
+        js = JSON.serialize(OASBoardSectionsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardSectionsList200Response.getExample();
+        response = (OASBoardSectionsList200Response) api.boardSectionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardSectionsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardSectionsList200Response.getExample();
+        response = (OASBoardSectionsList200Response) api.boardSectionsList(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -202,6 +219,47 @@ private class OASBoardsApiTest {
         OASBoardsListPins200Response expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASBoardsApi(client);
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardSectionsListPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardSectionsListPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardSectionsListPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardSectionsListPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardSectionsListPins(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBoardsApi(client);
 
@@ -475,6 +533,31 @@ private class OASBoardsApiTest {
         expectedResponse = OASBoard.getExample();
         response = (OASBoard) api.boardsGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASBoardsApi(client);
+
+        js = JSON.serialize(OASBoard.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoard.getExample();
+        response = (OASBoard) api.boardsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoard.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoard.getExample();
+        response = (OASBoard) api.boardsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoard.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoard.getExample();
+        response = (OASBoard) api.boardsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -502,6 +585,23 @@ private class OASBoardsApiTest {
         OASBoardsList200Response expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASBoardsApi(client);
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsList(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBoardsApi(client);
 
@@ -548,6 +648,31 @@ private class OASBoardsApiTest {
         OASBoardsListPins200Response expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASBoardsApi(client);
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardsListPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardsListPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsListPins200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsListPins200Response.getExample();
+        response = (OASBoardsListPins200Response) api.boardsListPins(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBoardsApi(client);
 

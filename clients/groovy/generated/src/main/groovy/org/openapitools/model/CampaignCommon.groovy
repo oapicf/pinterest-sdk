@@ -4,9 +4,8 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.TrackingUrls;
 
 @Canonical
 class CampaignCommon {
@@ -23,11 +22,11 @@ class CampaignCommon {
     /* Order line ID that appears on the invoice. */
     String orderLineId
     
-    AdCommonTrackingUrls trackingUrls
+    TrackingUrls trackingUrls
     /* Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     Integer startTime
     /* Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     Integer endTime
-    
-    CampaignSummaryStatus summaryStatus
+    /* Determine if a campaign has flexible daily budgets setup. */
+    Boolean isFlexibleDailyBudgets
 }

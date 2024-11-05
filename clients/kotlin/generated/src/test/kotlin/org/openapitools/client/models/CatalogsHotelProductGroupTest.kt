@@ -44,7 +44,7 @@ class CatalogsHotelProductGroupTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `catalogId`
+        // to test the property `catalogId` - Catalog id pertaining to the hotel product group.
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")

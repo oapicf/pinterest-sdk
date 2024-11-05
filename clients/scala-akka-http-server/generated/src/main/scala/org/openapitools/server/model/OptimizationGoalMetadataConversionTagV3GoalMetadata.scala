@@ -6,7 +6,7 @@ package org.openapitools.server.model
  * @param conversionEvent  for example: ''null''
  * @param conversionTagId  for example: ''null''
  * @param cpaGoalValueInMicroCurrency  for example: ''null''
- * @param isRoasOptimized Ad group is ROAS optimized for example: ''null''
+ * @param isRoasOptimized ROAS optimization is not supported for example: ''null''
  * @param learningModeType Conversion learning model type for example: ''ACTIVE''
 */
 final case class OptimizationGoalMetadataConversionTagV3GoalMetadata (

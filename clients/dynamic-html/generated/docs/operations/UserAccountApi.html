@@ -34,7 +34,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
       </li>
       <li class="parameter">
       
@@ -62,7 +62,7 @@
   <h2><a name="followUser/update"></a>followUser/update</h2>
   <hr>
   <p></p>
-  <p>&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.</p>
+  <p>&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/user_account/following/{username}</code>
   <h3 class="section">HTTP Method</h3>
@@ -126,7 +126,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
       </li>
   </ul>
   <h2><a name="linkedBusinessAccounts/get"></a>linkedBusinessAccounts/get</h2>
@@ -622,13 +622,13 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
       </li>
   </ul>
   <h2><a name="userAccount/get"></a>userAccount/get</h2>
   <hr>
   <p></p>
-  <p>Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.</p>
+  <p>Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/user_account</code>
   <h3 class="section">HTTP Method</h3>
@@ -681,7 +681,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
       </li>
       <li class="parameter">
       
@@ -749,7 +749,7 @@
       <span class="param-name">page_size</span>
       <span class="param-type">Integer</span>
       
-      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
+      <p class="param-description">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.</p>
       </li>
   </ul>
   <h2><a name="verifyWebsite/update"></a>verifyWebsite/update</h2>
@@ -775,6 +775,17 @@
       
       <p class="param-description">Verify a website.</p>
       </li>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
   </ul>
   <h2><a name="websiteVerification/get"></a>websiteVerification/get</h2>
   <hr>
@@ -788,5 +799,16 @@
   <div class="model" data-model="UserWebsiteVerificationCode"><a href="">UserWebsiteVerificationCode</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
+      <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">ad_account_id</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Unique identifier of an ad account.</p>
+      </li>
   </ul>
 </div>

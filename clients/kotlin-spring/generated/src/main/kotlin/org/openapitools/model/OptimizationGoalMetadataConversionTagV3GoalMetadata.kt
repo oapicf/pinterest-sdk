@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
@@ -21,7 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param conversionEvent 
  * @param conversionTagId 
  * @param cpaGoalValueInMicroCurrency 
- * @param isRoasOptimized Ad group is ROAS optimized
+ * @param isRoasOptimized ROAS optimization is not supported
  * @param learningModeType Conversion learning model type
  */
 data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
@@ -41,40 +42,55 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
     @Schema(example = "null", description = "")
     @get:JsonProperty("cpa_goal_value_in_micro_currency") val cpaGoalValueInMicroCurrency: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Ad group is ROAS optimized")
+    @Schema(example = "null", description = "ROAS optimization is not supported")
     @get:JsonProperty("is_roas_optimized") val isRoasOptimized: kotlin.Boolean? = null,
 
     @Schema(example = "ACTIVE", description = "Conversion learning model type")
     @get:JsonProperty("learning_mode_type") val learningModeType: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType? = null
-) {
+    ) {
 
     /**
     * 
     * Values: PAGE_VISIT,SIGNUP,CHECKOUT,CUSTOM,VIEW_CATEGORY,SEARCH,ADD_TO_CART,WATCH_VIDEO,LEAD,APP_INSTALL
     */
-    enum class ConversionEvent(val value: kotlin.String) {
+    enum class ConversionEvent(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("PAGE_VISIT") PAGE_VISIT("PAGE_VISIT"),
-        @JsonProperty("SIGNUP") SIGNUP("SIGNUP"),
-        @JsonProperty("CHECKOUT") CHECKOUT("CHECKOUT"),
-        @JsonProperty("CUSTOM") CUSTOM("CUSTOM"),
-        @JsonProperty("VIEW_CATEGORY") VIEW_CATEGORY("VIEW_CATEGORY"),
-        @JsonProperty("SEARCH") SEARCH("SEARCH"),
-        @JsonProperty("ADD_TO_CART") ADD_TO_CART("ADD_TO_CART"),
-        @JsonProperty("WATCH_VIDEO") WATCH_VIDEO("WATCH_VIDEO"),
-        @JsonProperty("LEAD") LEAD("LEAD"),
-        @JsonProperty("APP_INSTALL") APP_INSTALL("APP_INSTALL")
+        PAGE_VISIT("PAGE_VISIT"),
+        SIGNUP("SIGNUP"),
+        CHECKOUT("CHECKOUT"),
+        CUSTOM("CUSTOM"),
+        VIEW_CATEGORY("VIEW_CATEGORY"),
+        SEARCH("SEARCH"),
+        ADD_TO_CART("ADD_TO_CART"),
+        WATCH_VIDEO("WATCH_VIDEO"),
+        LEAD("LEAD"),
+        APP_INSTALL("APP_INSTALL");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): ConversionEvent {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * Conversion learning model type
-    * Values: NOT_ACTIVE,ACTIVE,`null`
+    * Values: NOT_ACTIVE,ACTIVE
     */
-    enum class LearningModeType(val value: kotlin.String) {
+    enum class LearningModeType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("NOT_ACTIVE") NOT_ACTIVE("NOT_ACTIVE"),
-        @JsonProperty("ACTIVE") ACTIVE("ACTIVE"),
-        @JsonProperty("null") `null`("null")
+        NOT_ACTIVE("NOT_ACTIVE"),
+        ACTIVE("ACTIVE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): LearningModeType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

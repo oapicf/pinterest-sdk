@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -31,14 +31,14 @@ import org.openapitools.model.ProductGroupPromotionCreateRequest;
  */
 
 @ApiModel(description = "Request for creation of entities in bulk.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequestCreate   {
   
-  private List<CampaignCreateRequest> campaigns;
-  private List<AdGroupCreateRequest> adGroups;
-  private List<AdCreateRequest> ads;
-  private List<ProductGroupPromotionCreateRequest> productGroups;
-  private List<KeywordsRequest> keywords;
+  private List<CampaignCreateRequest> campaigns = new ArrayList<>();
+  private List<AdGroupCreateRequest> adGroups = new ArrayList<>();
+  private List<AdCreateRequest> ads = new ArrayList<>();
+  private List<ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
+  private List<KeywordsRequest> keywords = new ArrayList<>();
 
   /**
    */

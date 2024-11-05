@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &OptimizationGoalMetadataScrollupGoalMetadata{}
 
 // OptimizationGoalMetadataScrollupGoalMetadata struct for OptimizationGoalMetadataScrollupGoalMetadata
 type OptimizationGoalMetadataScrollupGoalMetadata struct {
-	ScrollupGoalValueInMicroCurrency NullableString `json:"scrollup_goal_value_in_micro_currency,omitempty"`
+	ScrollupGoalValueInMicroCurrency NullableString `json:"scrollup_goal_value_in_micro_currency,omitempty" validate:"regexp=^[0-9]+$"`
 }
 
 // NewOptimizationGoalMetadataScrollupGoalMetadata instantiates a new OptimizationGoalMetadataScrollupGoalMetadata object

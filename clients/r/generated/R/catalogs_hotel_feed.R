@@ -7,9 +7,9 @@
 #' @title CatalogsHotelFeed
 #' @description CatalogsHotelFeed Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character [optional]
-#' @field id  character [optional]
-#' @field updated_at  character [optional]
+#' @field created_at  character
+#' @field id  character
+#' @field updated_at  character
 #' @field name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. character
 #' @field format  \link{CatalogsFormat}
 #' @field catalog_type  \link{CatalogsType}
@@ -39,11 +39,13 @@ CatalogsHotelFeed <- R6::R6Class(
     `default_currency` = NULL,
     `default_locale` = NULL,
     `catalog_id` = NULL,
-    #' Initialize a new CatalogsHotelFeed class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsHotelFeed class.
     #'
+    #' @param created_at created_at
+    #' @param id id
+    #' @param updated_at updated_at
     #' @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
     #' @param format format
     #' @param catalog_type catalog_type
@@ -54,12 +56,26 @@ CatalogsHotelFeed <- R6::R6Class(
     #' @param default_currency default_currency
     #' @param default_locale The locale used within a feed for product descriptions.
     #' @param catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-    #' @param created_at created_at
-    #' @param id id
-    #' @param updated_at updated_at
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`name`, `format`, `catalog_type`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `default_currency`, `default_locale`, `catalog_id`, `created_at` = NULL, `id` = NULL, `updated_at` = NULL, ...) {
+    initialize = function(`created_at`, `id`, `updated_at`, `name`, `format`, `catalog_type`, `credentials`, `location`, `preferred_processing_schedule`, `status`, `default_currency`, `default_locale`, `catalog_id`, ...) {
+      if (!missing(`created_at`)) {
+        if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
+        }
+        self$`created_at` <- `created_at`
+      }
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
+      if (!missing(`updated_at`)) {
+        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
+        }
+        self$`updated_at` <- `updated_at`
+      }
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -120,32 +136,12 @@ CatalogsHotelFeed <- R6::R6Class(
         }
         self$`catalog_id` <- `catalog_id`
       }
-      if (!is.null(`created_at`)) {
-        if (!is.character(`created_at`)) {
-          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
-        }
-        self$`created_at` <- `created_at`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
-      }
-      if (!is.null(`updated_at`)) {
-        if (!is.character(`updated_at`)) {
-          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
-        }
-        self$`updated_at` <- `updated_at`
-      }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelFeed in JSON format
-    #' @export
     toJSON = function() {
       CatalogsHotelFeedObject <- list()
       if (!is.null(self$`created_at`)) {
@@ -202,14 +198,12 @@ CatalogsHotelFeed <- R6::R6Class(
       }
       CatalogsHotelFeedObject
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelFeed
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelFeed
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelFeed
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`created_at`)) {
@@ -265,13 +259,11 @@ CatalogsHotelFeed <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelFeed in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`created_at`)) {
@@ -382,14 +374,12 @@ CatalogsHotelFeed <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelFeed
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelFeed
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelFeed
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`created_at` <- this_object$`created_at`
@@ -407,15 +397,37 @@ CatalogsHotelFeed <- R6::R6Class(
       self$`catalog_id` <- this_object$`catalog_id`
       self
     },
-    #' Validate JSON input with respect to CatalogsHotelFeed
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsHotelFeed and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `created_at`
+      if (!is.null(input_json$`created_at`)) {
+        if (!(is.character(input_json$`created_at`) && length(input_json$`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", input_json$`created_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `created_at` is missing."))
+      }
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `id` is missing."))
+      }
+      # check the required field `updated_at`
+      if (!is.null(input_json$`updated_at`)) {
+        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `updated_at` is missing."))
+      }
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
         if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
@@ -485,24 +497,35 @@ CatalogsHotelFeed <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeed: the required field `catalog_id` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsHotelFeed
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        return(FALSE)
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        return(FALSE)
+      }
+
       # check if the required `format` is null
       if (is.null(self$`format`)) {
         return(FALSE)
@@ -534,15 +557,28 @@ CatalogsHotelFeed <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
+      }
+
       # check if the required `format` is null
       if (is.null(self$`format`)) {
         invalid_fields["format"] <- "Non-nullable required field `format` cannot be null."
@@ -574,12 +610,9 @@ CatalogsHotelFeed <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

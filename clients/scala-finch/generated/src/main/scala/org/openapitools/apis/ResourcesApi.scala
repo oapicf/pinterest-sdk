@@ -132,8 +132,8 @@ object ResourcesApi {
         * @return An endpoint representing a Seq[Object]
         */
         private def targetingOptions/get(da: DataAccessor): Endpoint[Seq[Object]] =
-        get("resources" :: "targeting" :: string :: paramOption("client_id") :: paramOption("oauth_signature") :: paramOption("timestamp")) { (targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String]) =>
-          da.Resources_targetingOptions/get(targetingType, clientId, oauthSignature, timestamp) match {
+        get("resources" :: "targeting" :: string :: paramOption("client_id") :: paramOption("oauth_signature") :: paramOption("timestamp") :: paramOption("ad_account_id")) { (targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String], adAccountId: Option[String]) =>
+          da.Resources_targetingOptions/get(targetingType, clientId, oauthSignature, timestamp, adAccountId) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

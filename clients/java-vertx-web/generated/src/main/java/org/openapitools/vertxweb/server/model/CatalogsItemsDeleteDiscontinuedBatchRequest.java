@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.vertxweb.server.model.BatchOperation;
+import org.openapitools.vertxweb.server.model.CatalogsItemsRequestLanguage;
 import org.openapitools.vertxweb.server.model.Country;
 import org.openapitools.vertxweb.server.model.ItemDeleteDiscontinuedBatchRecord;
-import org.openapitools.vertxweb.server.model.Language;
 
 /**
  * Request object to discontinue catalogs items
@@ -19,7 +19,7 @@ import org.openapitools.vertxweb.server.model.Language;
 public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   
   private Country country;
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
   private BatchOperation operation;
   private List<ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   }
 
-  public CatalogsItemsDeleteDiscontinuedBatchRequest (Country country, Language language, BatchOperation operation, List<ItemDeleteDiscontinuedBatchRecord> items) {
+  public CatalogsItemsDeleteDiscontinuedBatchRequest (Country country, CatalogsItemsRequestLanguage language, BatchOperation operation, List<ItemDeleteDiscontinuedBatchRecord> items) {
     this.country = country;
     this.language = language;
     this.operation = operation;
@@ -45,10 +45,10 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
     
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

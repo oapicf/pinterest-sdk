@@ -38,7 +38,7 @@ public:
 
 /*! \brief Redeem ad credits. *Synchronous*
  *
- * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param adsCreditRedeemRequest Redeem ad credits request. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -52,7 +52,7 @@ bool adsCreditRedeemSync(char * accessToken,
 
 /*! \brief Redeem ad credits. *Asynchronous*
  *
- * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param adsCreditRedeemRequest Redeem ad credits request. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -67,10 +67,10 @@ bool adsCreditRedeemAsync(char * accessToken,
 
 /*! \brief Get ads credit discounts. *Synchronous*
  *
- * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -82,10 +82,10 @@ bool adsCreditsDiscountsGetSync(char * accessToken,
 
 /*! \brief Get ads credit discounts. *Asynchronous*
  *
- * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -98,11 +98,11 @@ bool adsCreditsDiscountsGetAsync(char * accessToken,
 
 /*! \brief Get billing profiles. *Synchronous*
  *
- * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param isActive Return active billing profiles, if false return all billing profiles. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -114,11 +114,11 @@ bool billingProfilesGetSync(char * accessToken,
 
 /*! \brief Get billing profiles. *Asynchronous*
  *
- * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param isActive Return active billing profiles, if false return all billing profiles. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -219,7 +219,7 @@ bool ssioInsertionOrderEditAsync(char * accessToken,
  * Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -234,7 +234,7 @@ bool ssioInsertionOrdersStatusGetByAdAccountSync(char * accessToken,
  * Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -279,7 +279,7 @@ bool ssioInsertionOrdersStatusGetByPinOrderIdAsync(char * accessToken,
  * Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param pinOrderId The pin order id associated with the ssio insertino order
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -295,7 +295,7 @@ bool ssioOrderLinesGetByAdAccountSync(char * accessToken,
  * Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param pinOrderId The pin order id associated with the ssio insertino order
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*

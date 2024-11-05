@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**CatalogId** | Pointer to **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] 
+**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**CatalogId** | Pointer to **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] 
 
 ## Methods
 
@@ -295,6 +296,31 @@ HasDefaultAvailability returns a boolean if a field has been set.
 `func (o *CatalogsVerticalFeedsCreateRequest) UnsetDefaultAvailability()`
 
 UnsetDefaultAvailability ensures that no value is present for DefaultAvailability, not even an explicit nil
+### GetStatus
+
+`func (o *CatalogsVerticalFeedsCreateRequest) GetStatus() CatalogsStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsVerticalFeedsCreateRequest) GetStatusOk() (*CatalogsStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsVerticalFeedsCreateRequest) SetStatus(v CatalogsStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CatalogsVerticalFeedsCreateRequest) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
 ### GetCatalogId
 
 `func (o *CatalogsVerticalFeedsCreateRequest) GetCatalogId() string`

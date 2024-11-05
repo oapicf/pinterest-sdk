@@ -28,7 +28,7 @@ void main() {
       // TODO
     });
 
-    // Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+    // Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
     // bool hasAcceptedTerms
     test('to test the property `hasAcceptedTerms`', () async {
       // TODO
@@ -54,6 +54,12 @@ void main() {
     // List of questions to be displayed on the lead form.
     // List<LeadFormQuestion> questions (default value: const [])
     test('to test the property `questions`', () async {
+      // TODO
+    });
+
+    // List of additional policy links to be displayed on the lead form.
+    // List<LeadFormCommonPolicyLinksInner> policyLinks (default value: const [])
+    test('to test the property `policyLinks`', () async {
       // TODO
     });
 

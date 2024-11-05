@@ -11,7 +11,8 @@
        'completion_message' => binary(),
        'status' => openapi_lead_form_status:openapi_lead_form_status(),
        'disclosure_language' => binary(),
-       'questions' => list()
+       'questions' => list(),
+       'policy_links' => list()
      }.
 
 encode(#{ 'name' := Name,
@@ -20,7 +21,8 @@ encode(#{ 'name' := Name,
           'completion_message' := CompletionMessage,
           'status' := Status,
           'disclosure_language' := DisclosureLanguage,
-          'questions' := Questions
+          'questions' := Questions,
+          'policy_links' := PolicyLinks
         }) ->
     #{ 'name' => Name,
        'privacy_policy_link' => PrivacyPolicyLink,
@@ -28,5 +30,6 @@ encode(#{ 'name' := Name,
        'completion_message' => CompletionMessage,
        'status' => Status,
        'disclosure_language' => DisclosureLanguage,
-       'questions' => Questions
+       'questions' => Questions,
+       'policy_links' => PolicyLinks
      }.

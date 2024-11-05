@@ -33,7 +33,6 @@ public struct AdsCreditDiscountsResponse: Codable, JSONEncodable, Hashable {
         case invoiceSalesIncentiveCredit = "INVOICE_SALES_INCENTIVE_CREDIT"
         case invoiceSalesIncentiveCreditApplied = "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"
         case prepaidCreditRefund = "PREPAID_CREDIT_REFUND"
-        case null = "null"
     }
     static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** True if the offer code is currently active. */

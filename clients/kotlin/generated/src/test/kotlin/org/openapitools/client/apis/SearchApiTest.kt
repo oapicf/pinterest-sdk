@@ -46,7 +46,7 @@ class SearchApiTest : ShouldSpec() {
             // uncomment below to test searchUserBoardsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val query : kotlin.String = query_example // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
             //val result : SearchUserBoardsGet200Response = apiInstance.searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
             //result shouldBe ("TODO")

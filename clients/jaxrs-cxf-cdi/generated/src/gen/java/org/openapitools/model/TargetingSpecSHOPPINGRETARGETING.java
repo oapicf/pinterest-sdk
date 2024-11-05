@@ -21,7 +21,7 @@ public class TargetingSpecSHOPPINGRETARGETING   {
   
   private Integer lookbackWindow;
 
-  private List<Integer> tagTypes;
+  private List<Integer> tagTypes = new ArrayList<>();
 
   private Integer exclusionWindow;
 

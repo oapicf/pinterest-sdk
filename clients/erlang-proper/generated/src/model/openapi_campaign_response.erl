@@ -16,16 +16,16 @@
   | {'lifetime_spend_cap', integer() }
   | {'daily_spend_cap', integer() }
   | {'order_line_id', binary() }
-  | {'tracking_urls', openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls() }
+  | {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
   | {'start_time', integer() }
   | {'end_time', integer() }
-  | {'summary_status', openapi_campaign_summary_status:openapi_campaign_summary_status() }
+  | {'is_flexible_daily_budgets', boolean() }
   | {'objective_type', openapi_objective_type:openapi_objective_type() }
   | {'created_time', integer() }
   | {'updated_time', integer() }
   | {'type', binary() }
-  | {'is_flexible_daily_budgets', boolean() }
   | {'is_campaign_budget_optimization', boolean() }
+  | {'summary_status', openapi_campaign_summary_status:openapi_campaign_summary_status() }
   ].
 
 
@@ -40,16 +40,16 @@ openapi_campaign_response(Fields) ->
             , {'lifetime_spend_cap', integer() }
             , {'daily_spend_cap', integer() }
             , {'order_line_id', binary() }
-            , {'tracking_urls', openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls() }
+            , {'tracking_urls', openapi_tracking_urls:openapi_tracking_urls() }
             , {'start_time', integer() }
             , {'end_time', integer() }
-            , {'summary_status', openapi_campaign_summary_status:openapi_campaign_summary_status() }
+            , {'is_flexible_daily_budgets', boolean() }
             , {'objective_type', openapi_objective_type:openapi_objective_type() }
             , {'created_time', integer() }
             , {'updated_time', integer() }
             , {'type', binary() }
-            , {'is_flexible_daily_budgets', boolean() }
             , {'is_campaign_budget_optimization', boolean() }
+            , {'summary_status', openapi_campaign_summary_status:openapi_campaign_summary_status() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

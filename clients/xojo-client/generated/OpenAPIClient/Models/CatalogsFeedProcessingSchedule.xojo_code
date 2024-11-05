@@ -406,7 +406,6 @@ Protected Class CatalogsFeedProcessingSchedule
         PacificSlashWake
         PacificSlashWallis
         Wet
-        Null
         
     #tag EndEnum
 
@@ -1189,8 +1188,6 @@ Protected Class CatalogsFeedProcessingSchedule
 		      Return "Pacific/Wallis"
 		    Case TimezoneEnum.Wet
 		      Return "WET"
-		    Case TimezoneEnum.Null
-		      Return "null"
 		    
 		  End Select
 		  Return ""

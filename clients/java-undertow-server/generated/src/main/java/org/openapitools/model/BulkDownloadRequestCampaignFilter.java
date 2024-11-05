@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,14 +25,14 @@ import org.openapitools.model.ObjectiveType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequestCampaignFilter   {
   
   private String startTime;
   private String endTime;
   private String name;
-  private List<CampaignSummaryStatus> campaignStatus;
-  private List<ObjectiveType> objectiveType;
+  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
+  private List<ObjectiveType> objectiveType = new ArrayList<>();
 
   /**
    * Unix UTC timestamp.

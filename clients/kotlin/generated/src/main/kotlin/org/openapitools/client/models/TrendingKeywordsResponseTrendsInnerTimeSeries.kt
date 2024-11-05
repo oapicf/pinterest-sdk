@@ -31,5 +31,8 @@ data class TrendingKeywordsResponseTrendsInnerTimeSeries (
     @Json(name = "date")
     val date: java.time.LocalDate? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Int>()
+) : kotlin.collections.HashMap<String, kotlin.Int>() {
+
+
+}
 

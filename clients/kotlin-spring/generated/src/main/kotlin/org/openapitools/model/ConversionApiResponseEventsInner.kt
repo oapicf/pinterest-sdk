@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -30,16 +31,24 @@ data class ConversionApiResponseEventsInner(
 
     @Schema(example = "null", description = "Warning messages about any fields in the event which are not standard. These are not critical to event processing.")
     @get:JsonProperty("warning_message") val warningMessage: kotlin.String? = null
-) {
+    ) {
 
     /**
     * Whether the event was processed successfully.
     * Values: failed,processed
     */
-    enum class Status(val value: kotlin.String) {
+    enum class Status(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("failed") failed("failed"),
-        @JsonProperty("processed") processed("processed")
+        failed("failed"),
+        processed("processed");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Status {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

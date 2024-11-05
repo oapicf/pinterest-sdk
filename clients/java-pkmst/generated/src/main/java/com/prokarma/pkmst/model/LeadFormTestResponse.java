@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Response for lead data test API.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LeadFormTestResponse   {
   @JsonProperty("subscription_id")
   private String subscriptionId;
@@ -25,10 +25,10 @@ public class LeadFormTestResponse   {
     return this;
   }
 
-   /**
+  /**
    * Subscription ID.
    * @return subscriptionId
-  **/
+   */
   @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
   public String getSubscriptionId() {
     return subscriptionId;

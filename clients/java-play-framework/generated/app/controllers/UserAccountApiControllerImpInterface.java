@@ -270,12 +270,12 @@ public abstract class UserAccountApiControllerImpInterface {
 
     public abstract UserWebsitesGet200Response userWebsitesGet(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result verifyWebsiteUpdateHttp(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest) throws Exception {
+    public Result verifyWebsiteUpdateHttp(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        UserWebsiteSummary obj = verifyWebsiteUpdate(request, userWebsiteVerifyRequest);
+        UserWebsiteSummary obj = verifyWebsiteUpdate(request, userWebsiteVerifyRequest, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -287,14 +287,14 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract UserWebsiteSummary verifyWebsiteUpdate(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest) throws Exception;
+    public abstract UserWebsiteSummary verifyWebsiteUpdate(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result websiteVerificationGetHttp(Http.Request request) throws Exception {
+    public Result websiteVerificationGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        UserWebsiteVerificationCode obj = websiteVerificationGet(request);
+        UserWebsiteVerificationCode obj = websiteVerificationGet(request, adAccountId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -306,6 +306,6 @@ public abstract class UserAccountApiControllerImpInterface {
 
     }
 
-    public abstract UserWebsiteVerificationCode websiteVerificationGet(Http.Request request) throws Exception;
+    public abstract UserWebsiteVerificationCode websiteVerificationGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
 }

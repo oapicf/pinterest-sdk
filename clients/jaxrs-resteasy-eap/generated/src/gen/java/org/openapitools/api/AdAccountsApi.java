@@ -11,7 +11,7 @@ import org.openapitools.model.AdAccountCreateRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionResponse;
 import org.openapitools.model.AdAccountGetSubscriptionResponse;
-import org.openapitools.model.AdAccountsCatalogsProductGroupsList200Response;
+import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
 import org.openapitools.model.AdArrayResponse;
@@ -28,6 +28,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
@@ -38,6 +40,7 @@ import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.Audience;
+import org.openapitools.model.AudienceAccountType;
 import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
@@ -53,6 +56,8 @@ import org.openapitools.model.BulkDownloadResponse;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
 import org.openapitools.model.BulkUpsertStatusResponse;
+import org.openapitools.model.BusinessSharedAudience;
+import org.openapitools.model.BusinessSharedAudienceResponse;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.CampaignCreateResponse;
 import org.openapitools.model.CampaignResponse;
@@ -83,10 +88,16 @@ import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LeadFormArrayResponse;
+import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
 import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
+import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadsExportCreateRequest;
+import org.openapitools.model.LeadsExportCreateResponse;
+import org.openapitools.model.LeadsExportResponseData;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
@@ -104,8 +115,14 @@ import org.openapitools.model.SSIOCreateInsertionOrderResponse;
 import org.openapitools.model.SSIOEditInsertionOrderRequest;
 import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SharedAudience;
+import org.openapitools.model.SharedAudienceResponse;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
+import org.openapitools.model.TargetingTemplateCreate;
+import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplateList200Response;
+import org.openapitools.model.TargetingTemplateUpdateRequest;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 
@@ -125,7 +142,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the ad_accounts API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface AdAccountsApi  {
 
     @GET
@@ -159,25 +176,23 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response adAccountTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @Size(min=1,max=15) @QueryParam("targeting_types") List<AdsAnalyticsTargetingType> targetingTypes, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime,, allowableValues="INDIVIDUAL, HOUSEHOLD" @QueryParam("attribution_types") ConversionReportAttributionType attributionTypes,@Context SecurityContext securityContext);
     @GET
-    @Path("/{ad_account_id}/product_groups/catalogs")
+    @Path("/{ad_account_id}/audiences/shared/accounts")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get catalog product groups", notes = "This endpoint is completely deprecated. Please use <a href='/docs/api/v5/#operation/catalogs_product_groups/list'>List product groups</a> from Catalogs API instead.", response = AdAccountsCatalogsProductGroupsList200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "List accounts with access to an audience owned by an ad account", notes = "List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.", response = AdAccountsAudiencesSharedAccountsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
-            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
-    }, tags={ "product_groups", })
+    }, tags={ "audience_sharing", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = AdAccountsCatalogsProductGroupsList200Response.class),
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = AdAccountsAudiencesSharedAccountsList200Response.class),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account ads parameters.", response = Error.class),
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account audiences shared accounts parameters.", response = Error.class),
         
-        @io.swagger.annotations.ApiResponse(code = 401, message = "Access Denied. This can happen if account is not yet approved to operate as Merchant on Pinterest.", response = Error.class),
+        @io.swagger.annotations.ApiResponse(code = 404, message = "Shared accounts not found.", response = Error.class),
         
-        @io.swagger.annotations.ApiResponse(code = 404, message = "Merchant data not found.", response = Error.class),
-        
-        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adAccountsCatalogsProductGroupsList( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("feed_profile_id") String feedProfileId,@Context SecurityContext securityContext);
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
+    public Response adAccountsAudiencesSharedAccountsList( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("audience_id") String audienceId, @NotNull, allowableValues="AD_ACCOUNT, BUSINESS_ACCOUNT" @DefaultValue("AD_ACCOUNT") @QueryParam("account_type") AudienceAccountType accountType, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @QueryParam("bookmark") String bookmark,@Context SecurityContext securityContext);
     @POST
     
     @Consumes({ "application/json" })
@@ -224,7 +239,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/leads/subscriptions/{subscription_id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Delete lead ads subscription", notes = "Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Delete lead ads subscription", notes = "Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -244,7 +259,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/leads/subscriptions/{subscription_id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get lead ads subscription", notes = "Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = AdAccountGetSubscriptionResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get lead ads subscription", notes = "Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdAccountGetSubscriptionResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -264,7 +279,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/leads/subscriptions")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get lead ads subscriptions", notes = "Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = AdAccountsSubscriptionsGetList200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get lead ads subscriptions", notes = "Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdAccountsSubscriptionsGetList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -280,7 +295,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/leads/subscriptions")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create lead ads subscription", notes = "Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = AdAccountCreateSubscriptionResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create lead ads subscription", notes = "Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdAccountCreateSubscriptionResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -310,7 +325,7 @@ public interface AdAccountsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response adGroupsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @Size(min=1,max=100) @QueryParam("ad_group_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime,@Context SecurityContext securityContext);
-    @GET
+    @POST
     @Path("/{ad_account_id}/ad_groups/audience_sizing")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
@@ -332,7 +347,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/bid_floor")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get bid floors", notes = "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.", response = BidFloor.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get bid floors", notes = "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.", response = BidFloor.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -346,7 +361,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/ad_groups")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create ad groups", notes = "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.", response = AdGroupArrayResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create ad groups", notes = "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.", response = AdGroupArrayResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -355,7 +370,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = AdGroupArrayResponse.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ad groups to create, size limit [1, 30]." ,required=true) @NotNull @Valid List<AdGroupCreateRequest> adGroupCreateRequest,@Context SecurityContext securityContext);
+    public Response adGroupsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ad groups to create, size limit [1, 30]." ,required=true) @NotNull @Valid List<@Valid AdGroupCreateRequest> adGroupCreateRequest,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/ad_groups/{ad_group_id}")
     
@@ -413,12 +428,12 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = AdGroupArrayResponse.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adGroupsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ad groups to update, size limit [1, 30]." ,required=true) @NotNull @Valid List<AdGroupUpdateRequest> adGroupUpdateRequest,@Context SecurityContext securityContext);
+    public Response adGroupsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ad groups to update, size limit [1, 30]." ,required=true) @NotNull @Valid List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/ad_previews")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create ad preview with pin or image", notes = "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.", response = AdPreviewURLResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create ad preview with pin or image", notes = "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.", response = AdPreviewURLResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -443,12 +458,12 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = MetricsResponse.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @Size(min=1,max=100) @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @Size(min=1,max=15) @QueryParam("targeting_types") List<AdsAnalyticsTargetingType> targetingTypes, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime,, allowableValues="INDIVIDUAL, HOUSEHOLD" @QueryParam("attribution_types") ConversionReportAttributionType attributionTypes,@Context SecurityContext securityContext);
+    public Response adTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @Size(min=1,max=100) @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @Size(min=1,max=14) @QueryParam("targeting_types") List<AdsAnalyticsAdTargetingType> targetingTypes, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime,, allowableValues="INDIVIDUAL, HOUSEHOLD" @QueryParam("attribution_types") ConversionReportAttributionType attributionTypes,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/ads/analytics")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get ad analytics", notes = "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.", response = AdsAnalyticsResponseInner.class, responseContainer = "List", authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get ad analytics", notes = "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.", response = AdsAnalyticsResponseInner.class, responseContainer = "List", authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -459,7 +474,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @Size(min=1,max=100) @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime,@Context SecurityContext securityContext);
+    public Response adsAnalytics( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity, @Size(min=1,max=100) @QueryParam("ad_ids") List<@Pattern(regexp = "^\\d+$")String> adIds,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime, @Size(min=1,max=100) @QueryParam("pin_ids") List<@Pattern(regexp = "^\\d+$")String> pinIds, @Size(min=1,max=100) @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/ads")
     @Consumes({ "application/json" })
@@ -473,12 +488,12 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = AdArrayResponse.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ads to create, size limit [1, 30]." ,required=true) @NotNull @Valid List<AdCreateRequest> adCreateRequest,@Context SecurityContext securityContext);
+    public Response adsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ads to create, size limit [1, 30]." ,required=true) @NotNull @Valid List<@Valid AdCreateRequest> adCreateRequest,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/ads_credit/redeem")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Redeem ad credits", notes = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = AdsCreditRedeemResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Redeem ad credits", notes = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdsCreditRedeemResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc."),
             @io.swagger.annotations.AuthorizationScope(scope = "billing:write", description = "Create, update, or delete billing data, billing profiles, etc.")
@@ -495,7 +510,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/ads_credit/discounts")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get ads credit discounts", notes = "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = AdsCreditsDiscountsGet200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get ads credit discounts", notes = "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = AdsCreditsDiscountsGet200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @io.swagger.annotations.AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.")
@@ -549,7 +564,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = AdArrayResponse.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response adsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ads to update, size limit [1, 30]" ,required=true) @NotNull @Valid List<AdUpdateRequest> adUpdateRequest,@Context SecurityContext securityContext);
+    public Response adsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of ads to update, size limit [1, 30]" ,required=true) @NotNull @Valid List<@Valid AdUpdateRequest> adUpdateRequest,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/mmm_reports")
     @Consumes({ "application/json" })
@@ -736,7 +751,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/billing_profiles")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get billing profiles", notes = "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = BillingProfilesGet200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get billing profiles", notes = "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = BillingProfilesGet200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @io.swagger.annotations.AuthorizationScope(scope = "billing:read", description = "See all of your billing data, billing profile, etc.")
@@ -802,7 +817,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = MetricsResponse.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response campaignTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @Size(min=1,max=100) @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @Size(min=1,max=15) @QueryParam("targeting_types") List<AdsAnalyticsTargetingType> targetingTypes, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime,, allowableValues="INDIVIDUAL, HOUSEHOLD" @QueryParam("attribution_types") ConversionReportAttributionType attributionTypes,@Context SecurityContext securityContext);
+    public Response campaignTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @NotNull @Size(min=1,max=100) @QueryParam("campaign_ids") List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull @Size(min=1,max=14) @QueryParam("targeting_types") List<AdsAnalyticsCampaignTargetingType> targetingTypes, @NotNull @QueryParam("columns") List<String> columns, @NotNull, allowableValues="TOTAL, DAY, HOUR, WEEK, MONTH" @QueryParam("granularity") Granularity granularity,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("click_window_days") Integer clickWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("30") @QueryParam("engagement_window_days") Integer engagementWindowDays,, allowableValues="0, 1, 7, 14, 30, 60" @DefaultValue("1") @QueryParam("view_window_days") Integer viewWindowDays,, allowableValues="TIME_OF_AD_ACTION, TIME_OF_CONVERSION" @DefaultValue("TIME_OF_AD_ACTION") @QueryParam("conversion_report_time") String conversionReportTime,, allowableValues="INDIVIDUAL, HOUSEHOLD" @QueryParam("attribution_types") ConversionReportAttributionType attributionTypes,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/campaigns/analytics")
     
@@ -823,7 +838,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/campaigns")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create campaigns", notes = "Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>", response = CampaignCreateResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create campaigns", notes = "Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>", response = CampaignCreateResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -867,7 +882,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/campaigns")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Update campaigns", notes = "Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/> - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>", response = CampaignUpdateResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Update campaigns", notes = "Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>", response = CampaignUpdateResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -881,7 +896,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/conversion_tags")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create conversion tag", notes = "Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/enhanced-match/\">Enhanced match</a>", response = ConversionTagResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create conversion tag", notes = "Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>", response = ConversionTagResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -937,7 +952,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create customer lists", notes = "<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p>", response = CustomerList.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create customer lists", notes = "<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>  <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p>", response = CustomerList.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -965,7 +980,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get customer lists", notes = "<p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>", response = CustomerListsList200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get customer lists", notes = "<p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>", response = CustomerListsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -979,7 +994,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/customer_lists/{customer_list_id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Update customer list", notes = "<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/ads/targeting/#Audiences\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>", response = CustomerList.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Update customer list", notes = "<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>", response = CustomerList.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -993,7 +1008,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/events")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Send conversions", notes = "The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object. - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/conversions/conversions/\">Conversions Guide</a> for more details. - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)", response = ConversionApiResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Send conversions", notes = "The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object. - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/api-features/conversion-overview/\">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>). - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)", response = ConversionApiResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         }),
@@ -1020,7 +1035,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/keywords")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create keywords", notes = "<p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul> <p><b>Rate limit</b>: <a href=\"/docs/redoc/#tag/Rate-Limits\">WRITE</a>.</p>", response = KeywordsResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create keywords", notes = "<p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul> <p><b>Rate limit</b>: <a href=\"/docs/reference/rate-limits/\">WRITE</a>.</p>", response = KeywordsResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -1034,7 +1049,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/keywords")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get keywords", notes = "<p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>", response = KeywordsGet200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get keywords", notes = "<p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>", response = KeywordsGet200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -1062,7 +1077,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/lead_forms/{lead_form_id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get lead form by id", notes = "Gets a lead form given it's ID. It must also be associated with the provided ad account ID. Retrieving an advertiser's lead form will only contain results if you're a part of the Lead ads beta. If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = LeadFormResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get lead form by id", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -1080,7 +1095,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/lead_forms/{lead_form_id}/test")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Create lead form test data", notes = "Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = LeadFormTestResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Create lead form test data", notes = "Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = LeadFormTestResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -1094,11 +1109,27 @@ public interface AdAccountsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response leadFormTestCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @Pattern(regexp="^\\d+$") @PathParam("lead_form_id") String leadFormId,@ApiParam(value = "Subscription to create." ,required=true) @NotNull @Valid LeadFormTestRequest leadFormTestRequest,@Context SecurityContext securityContext);
+    @POST
+    @Path("/{ad_account_id}/lead_forms")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Create lead forms", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormArrayResponse.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "lead_forms", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = LeadFormArrayResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account lead forms parameters.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response leadFormsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of lead forms to create, size limit [1, 30]." ,required=true) @NotNull @Valid List<@Valid LeadFormCreateRequest> leadFormCreateRequest,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/lead_forms")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get lead forms", notes = "Gets all Lead Forms associated with an ad account ID. Retrieving an advertiser's list of lead forms will only contain results if you're a part of the Lead ads beta.  If you're interested in joining the beta, please reach out to your Pinterest account manager.", response = LeadFormsList200Response.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "List lead forms", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -1110,6 +1141,56 @@ public interface AdAccountsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response leadFormsList( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize,, allowableValues="ASCENDING, DESCENDING" @QueryParam("order") String order, @QueryParam("bookmark") String bookmark,@Context SecurityContext securityContext);
+    @PATCH
+    @Path("/{ad_account_id}/lead_forms")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Update lead forms", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadFormArrayResponse.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "lead_forms", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = LeadFormArrayResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account lead forms parameters.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response leadFormsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "List of lead forms to update, size limit [1, 30]." ,required=true) @NotNull @Valid List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest,@Context SecurityContext securityContext);
+    @POST
+    @Path("/{ad_account_id}/leads_export")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Create a request to export leads collected from a lead ad", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadsExportCreateResponse.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "leads_export", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = LeadsExportCreateResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account parameter.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response leadsExportCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid LeadsExportCreateRequest leadsExportCreateRequest,@Context SecurityContext securityContext);
+    @GET
+    @Path("/{ad_account_id}/leads_export/{leads_export_id}")
+    
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Get the lead export from the lead export create call", notes = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.", response = LeadsExportResponseData.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "leads_export", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = LeadsExportResponseData.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account parameter.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 404, message = "Invalid leads export id parameter.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response leadsExportGet( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @Pattern(regexp="^\\d+$") @PathParam("leads_export_id") String leadsExportId,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/conversion_tags/ocpm_eligible")
     
@@ -1242,7 +1323,7 @@ public interface AdAccountsApi  {
     @Path("/{ad_account_id}/sandbox")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Delete ads data for ad account in API Sandbox", notes = "Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.", response = String.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Delete ads data for ad account in API Sandbox", notes = "Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
         })
@@ -1350,6 +1431,54 @@ public interface AdAccountsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response ssioOrderLinesGetByAdAccount( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @QueryParam("bookmark") String bookmark, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @QueryParam("pin_order_id") String pinOrderId,@Context SecurityContext securityContext);
+    @POST
+    @Path("/{ad_account_id}/targeting_templates")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Create targeting templates", notes = "<p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>", response = TargetingTemplateGetResponseData.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "targeting_template", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = TargetingTemplateGetResponseData.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response targetingTemplateCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "targeting template creation entity" ,required=true) @NotNull @Valid TargetingTemplateCreate targetingTemplateCreate,@Context SecurityContext securityContext);
+    @GET
+    @Path("/{ad_account_id}/targeting_templates")
+    
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "List targeting templates", notes = "Get a list of the targeting templates in the specified <code>ad_account_id</code>", response = TargetingTemplateList200Response.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "targeting_template", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = TargetingTemplateList200Response.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response targetingTemplateList( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,, allowableValues="ASCENDING, DESCENDING" @QueryParam("order") String order, @DefaultValue("false") @QueryParam("include_sizing") Boolean includeSizing, @QueryParam("search_query") String searchQuery, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @QueryParam("bookmark") String bookmark,@Context SecurityContext securityContext);
+    @PATCH
+    @Path("/{ad_account_id}/targeting_templates")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Update targeting templates", notes = "<p>Update the targeting template given advertiser ID and targeting template ID</p>", response = Void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "targeting_template", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = Void.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response targetingTemplateUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "Operation type and targeting template ID" ,required=true) @NotNull @Valid TargetingTemplateUpdateRequest targetingTemplateUpdateRequest,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/templates")
     
@@ -1380,4 +1509,36 @@ public interface AdAccountsApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response termsOfServiceGet( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId, @DefaultValue("false") @QueryParam("include_html") Boolean includeHtml, @QueryParam("tos_type") String tosType,@Context SecurityContext securityContext);
+    @PATCH
+    @Path("/{ad_account_id}/audiences/ad_accounts/shared")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Update audience sharing between ad accounts", notes = "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "audience_sharing", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = SharedAudienceResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response updateAdAccountToAdAccountSharedAudience( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid SharedAudience sharedAudience,@Context SecurityContext securityContext);
+    @PATCH
+    @Path("/{ad_account_id}/audiences/businesses/shared")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Update audience sharing from an ad account to businesses", notes = "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "ads:write", description = "Create, update, or delete ads, ad groups, campaigns etc.")
+        })
+    }, tags={ "audience_sharing", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = BusinessSharedAudienceResponse.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid ad account id.", response = Error.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public Response updateAdAccountToBusinessSharedAudience( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid BusinessSharedAudience businessSharedAudience,@Context SecurityContext securityContext);
 }

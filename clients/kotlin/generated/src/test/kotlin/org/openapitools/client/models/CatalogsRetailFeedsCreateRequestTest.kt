@@ -23,6 +23,7 @@ import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.client.models.CatalogsFormat
+import org.openapitools.client.models.CatalogsStatus
 import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.NullableCurrency
@@ -91,6 +92,12 @@ class CatalogsRetailFeedsCreateRequestTest : ShouldSpec() {
         should("test defaultAvailability") {
             // uncomment below to test the property
             //modelInstance.defaultAvailability shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
         }
 
     }

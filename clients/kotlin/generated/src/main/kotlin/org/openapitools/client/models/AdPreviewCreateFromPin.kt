@@ -32,5 +32,8 @@ data class AdPreviewCreateFromPin (
     @Json(name = "pin_id")
     val pinId: kotlin.String
 
-)
+) {
+
+
+}
 

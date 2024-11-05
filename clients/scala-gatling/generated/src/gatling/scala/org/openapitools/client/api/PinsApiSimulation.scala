@@ -56,6 +56,7 @@ class PinsApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
+    val multiPinsAnalyticsPerSecond = config.getDouble("performance.operationsPerSecond.multiPinsAnalytics") * rateMultiplier * instanceMultiplier
     val pinsAnalyticsPerSecond = config.getDouble("performance.operationsPerSecond.pinsAnalytics") * rateMultiplier * instanceMultiplier
     val pinsCreatePerSecond = config.getDouble("performance.operationsPerSecond.pinsCreate") * rateMultiplier * instanceMultiplier
     val pinsDeletePerSecond = config.getDouble("performance.operationsPerSecond.pinsDelete") * rateMultiplier * instanceMultiplier
@@ -67,6 +68,7 @@ class PinsApiSimulation extends Simulation {
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
+    val multi_pins/analyticsQUERYFeeder = csv(userDataDirectory + File.separator + "multiPinsAnalytics-queryParams.csv").random
     val pins/analyticsQUERYFeeder = csv(userDataDirectory + File.separator + "pinsAnalytics-queryParams.csv").random
     val pins/analyticsPATHFeeder = csv(userDataDirectory + File.separator + "pinsAnalytics-pathParams.csv").random
     val pins/createQUERYFeeder = csv(userDataDirectory + File.separator + "pinsCreate-queryParams.csv").random
@@ -83,17 +85,37 @@ class PinsApiSimulation extends Simulation {
     // Setup all scenarios
 
     
+    val scnmultiPinsAnalytics = scenario("multiPinsAnalyticsSimulation")
+        .feed(multi_pins/analyticsQUERYFeeder)
+        .exec(http("multiPinsAnalytics")
+        .httpRequest("GET","/pins/analytics")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("pin_ids","${pin_ids}")
+        .queryParam("end_date","${end_date}")
+        .queryParam("app_types","${app_types}")
+        .queryParam("metric_types","${metric_types}")
+)
+
+    // Run scnmultiPinsAnalytics with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnmultiPinsAnalytics.inject(
+        rampUsersPerSec(1) to(multiPinsAnalyticsPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(multiPinsAnalyticsPerSecond) during(durationSeconds),
+        rampUsersPerSec(multiPinsAnalyticsPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnpinsAnalytics = scenario("pinsAnalyticsSimulation")
         .feed(pins/analyticsQUERYFeeder)
         .feed(pins/analyticsPATHFeeder)
         .exec(http("pinsAnalytics")
         .httpRequest("GET","/pins/${pin_id}/analytics")
-        .queryParam("app_types","${app_types}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("metric_types","${metric_types}")
-        .queryParam("split_field","${split_field}")
         .queryParam("start_date","${start_date}")
         .queryParam("end_date","${end_date}")
+        .queryParam("split_field","${split_field}")
+        .queryParam("metric_types","${metric_types}")
+        .queryParam("app_types","${app_types}")
 )
 
     // Run scnpinsAnalytics with warm up and reach a constant rate for entire duration
@@ -156,14 +178,14 @@ class PinsApiSimulation extends Simulation {
         .feed(pins/listQUERYFeeder)
         .exec(http("pinsList")
         .httpRequest("GET","/pins")
-        .queryParam("include_protected_pins","${include_protected_pins}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("pin_type","${pin_type}")
+        .queryParam("include_protected_pins","${include_protected_pins}")
+        .queryParam("pin_filter","${pin_filter}")
         .queryParam("creative_types","${creative_types}")
         .queryParam("pin_metrics","${pin_metrics}")
-        .queryParam("pin_filter","${pin_filter}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("pin_type","${pin_type}")
 )
 
     // Run scnpinsList with warm up and reach a constant rate for entire duration

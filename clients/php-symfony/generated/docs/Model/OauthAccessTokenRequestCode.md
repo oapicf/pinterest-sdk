@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**grantType** | **string** |  | 
 **code** | **string** |  | 
 **redirectUri** | **string** |  | 
 

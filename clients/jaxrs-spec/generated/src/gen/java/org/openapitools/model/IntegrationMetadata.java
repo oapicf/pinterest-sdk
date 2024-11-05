@@ -18,22 +18,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Integration metadata")
 @JsonTypeName("IntegrationMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationMetadata   {
-  private @Valid String id;
-  private @Valid String externalBusinessId;
-  private @Valid String connectedMerchantId;
-  private @Valid String connectedUserId;
-  private @Valid String connectedAdvertiserId;
-  private @Valid String connectedLbaId;
-  private @Valid String connectedTagId;
-  private @Valid BigDecimal partnerAccessTokenExpiry;
-  private @Valid BigDecimal partnerRefreshTokenExpiry;
-  private @Valid String scopes;
-  private @Valid BigDecimal createdTimestamp;
-  private @Valid BigDecimal updatedTimestamp;
-  private @Valid String additionalId1;
-  private @Valid String partnerMetadata;
+  private String id;
+  private String externalBusinessId;
+  private String connectedMerchantId;
+  private String connectedUserId;
+  private String connectedAdvertiserId;
+  private String connectedLbaId;
+  private String connectedTagId;
+  private BigDecimal partnerAccessTokenExpiry;
+  private BigDecimal partnerRefreshTokenExpiry;
+  private String scopes;
+  private BigDecimal createdTimestamp;
+  private BigDecimal updatedTimestamp;
+  private String additionalId1;
+  private String partnerMetadata;
 
   /**
    **/
@@ -45,7 +45,7 @@ public class IntegrationMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -178,7 +178,7 @@ public class IntegrationMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("partner_access_token_expiry")
-  public BigDecimal getPartnerAccessTokenExpiry() {
+  @Valid public BigDecimal getPartnerAccessTokenExpiry() {
     return partnerAccessTokenExpiry;
   }
 
@@ -197,7 +197,7 @@ public class IntegrationMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("partner_refresh_token_expiry")
-  public BigDecimal getPartnerRefreshTokenExpiry() {
+  @Valid public BigDecimal getPartnerRefreshTokenExpiry() {
     return partnerRefreshTokenExpiry;
   }
 
@@ -235,7 +235,7 @@ public class IntegrationMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("created_timestamp")
-  public BigDecimal getCreatedTimestamp() {
+  @Valid public BigDecimal getCreatedTimestamp() {
     return createdTimestamp;
   }
 
@@ -254,7 +254,7 @@ public class IntegrationMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("updated_timestamp")
-  public BigDecimal getUpdatedTimestamp() {
+  @Valid public BigDecimal getUpdatedTimestamp() {
     return updatedTimestamp;
   }
 

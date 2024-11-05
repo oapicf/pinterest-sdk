@@ -1,10 +1,12 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsCreativeAssetsFeed
 import org.openapitools.model.CatalogsFeedCredentials
 import org.openapitools.model.CatalogsFeedProcessingSchedule
 import org.openapitools.model.CatalogsFormat
@@ -28,6 +30,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Catalogs Feed object
+ * @param createdAt 
+ * @param id 
+ * @param updatedAt 
  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
  * @param format 
  * @param catalogType 
@@ -40,18 +45,25 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param defaultCountry 
  * @param defaultAvailability 
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  */
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes(
+      JsonSubTypes.Type(value = CatalogsCreativeAssetsFeed::class, name = "CREATIVE_ASSETS"),
       JsonSubTypes.Type(value = CatalogsHotelFeed::class, name = "HOTEL"),
       JsonSubTypes.Type(value = CatalogsRetailFeed::class, name = "RETAIL")
 )
 
 interface CatalogsFeed{
+                @get:Schema(example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val createdAt: java.time.OffsetDateTime
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val id: kotlin.String
+
+                @get:Schema(example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val updatedAt: java.time.OffsetDateTime
+
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
         val name: kotlin.String
 
@@ -87,15 +99,6 @@ interface CatalogsFeed{
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
         val catalogId: kotlin.String
-
-                @get:Schema(example = "2022-03-14T15:15:22Z", description = "")
-        val createdAt: java.time.OffsetDateTime? 
-
-                @get:Schema(example = "null", description = "")
-        val id: kotlin.String? 
-
-                @get:Schema(example = "2022-03-14T15:16:34Z", description = "")
-        val updatedAt: java.time.OffsetDateTime? 
 
 
 }

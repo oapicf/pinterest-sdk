@@ -8,6 +8,11 @@ import           TestImport
 spec :: Spec
 spec = withApp $ do
 
+    describe "getPinsAnalyticsR" $
+        it "returns 501 Not Implemented" $ do
+            get PinsAnalyticsR
+            statusIs 501
+
     describe "getPinsByTextAnalyticsR" $
         it "returns 501 Not Implemented" $ do
             get $ PinsByTextAnalyticsR "pinId_example"

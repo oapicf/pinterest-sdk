@@ -1,9 +1,9 @@
 const utils = require('../utils/utils');
-const AdCommon_quiz_pin_data = require('../models/AdCommon_quiz_pin_data');
-const AdCommon_tracking_urls = require('../models/AdCommon_tracking_urls');
 const CreativeType = require('../models/CreativeType');
 const EntityStatus = require('../models/EntityStatus');
 const GridClickType = require('../models/GridClickType');
+const QuizPinData = require('../models/QuizPinData');
+const TrackingUrls = require('../models/TrackingUrls');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -17,7 +17,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}android_deep_link`,
-                label: `Deep link URL for Android devices. Not currently available. Using this field will generate an error. - [${labelPrefix}android_deep_link]`,
+                label: `Deep link URL for Android devices. - [${labelPrefix}android_deep_link]`,
                 type: 'string',
             },
             {
@@ -54,7 +54,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}ios_deep_link`,
-                label: `Deep link URL for iOS devices. Not currently available. Using this field will generate an error. - [${labelPrefix}ios_deep_link]`,
+                label: `Deep link URL for iOS devices. - [${labelPrefix}ios_deep_link]`,
                 type: 'string',
             },
             {
@@ -76,7 +76,7 @@ module.exports = {
                 key: `${keyPrefix}status`,
                 ...EntityStatus.fields(`${keyPrefix}status`, isInput),
             },
-            ...AdCommon_tracking_urls.fields(`${keyPrefix}tracking_urls`, isInput),
+            ...TrackingUrls.fields(`${keyPrefix}tracking_urls`, isInput),
             {
                 key: `${keyPrefix}view_tracking_url`,
                 label: `Tracking URL for ad impressions. - [${labelPrefix}view_tracking_url]`,
@@ -93,7 +93,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}customizable_cta_type`,
-                label: `Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) - [${labelPrefix}customizable_cta_type]`,
+                label: `Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) - [${labelPrefix}customizable_cta_type]`,
                 type: 'string',
                 choices: [
                     'GET_OFFER',
@@ -105,7 +105,7 @@ module.exports = {
                     'BUY_NOW',
                     'CONTACT_US',
                     'GET_QUOTE',
-                    'VISIT_WEBSITE',
+                    'VISIT_SITE',
                     'APPLY_NOW',
                     'BOOK_NOW',
                     'REQUEST_DEMO',
@@ -114,10 +114,9 @@ module.exports = {
                     'ADD_TO_CART',
                     'WATCH_NOW',
                     'READ_MORE',
-                    'null',
                 ],
             },
-            ...AdCommon_quiz_pin_data.fields(`${keyPrefix}quiz_pin_data`, isInput),
+            ...QuizPinData.fields(`${keyPrefix}quiz_pin_data`, isInput),
             {
                 key: `${keyPrefix}pin_id`,
                 label: `Pin ID. - [${labelPrefix}pin_id]`,
@@ -142,12 +141,12 @@ module.exports = {
             'is_removable': bundle.inputData?.[`${keyPrefix}is_removable`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
-            'tracking_urls': utils.removeIfEmpty(AdCommon_tracking_urls.mapping(bundle, `${keyPrefix}tracking_urls`)),
+            'tracking_urls': utils.removeIfEmpty(TrackingUrls.mapping(bundle, `${keyPrefix}tracking_urls`)),
             'view_tracking_url': bundle.inputData?.[`${keyPrefix}view_tracking_url`],
             'lead_form_id': bundle.inputData?.[`${keyPrefix}lead_form_id`],
             'grid_click_type': bundle.inputData?.[`${keyPrefix}grid_click_type`],
             'customizable_cta_type': bundle.inputData?.[`${keyPrefix}customizable_cta_type`],
-            'quiz_pin_data': utils.removeIfEmpty(AdCommon_quiz_pin_data.mapping(bundle, `${keyPrefix}quiz_pin_data`)),
+            'quiz_pin_data': utils.removeIfEmpty(QuizPinData.mapping(bundle, `${keyPrefix}quiz_pin_data`)),
             'pin_id': bundle.inputData?.[`${keyPrefix}pin_id`],
         }
     },

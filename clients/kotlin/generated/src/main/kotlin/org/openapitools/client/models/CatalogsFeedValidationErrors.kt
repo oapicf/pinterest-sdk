@@ -192,5 +192,8 @@ data class CatalogsFeedValidationErrors (
     @Json(name = "PRICE_CANNOT_BE_DETERMINED")
     val PRICE_CANNOT_BE_DETERMINED: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

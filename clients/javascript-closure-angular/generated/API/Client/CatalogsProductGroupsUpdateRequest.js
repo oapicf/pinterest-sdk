@@ -25,7 +25,7 @@ API.Client.CatalogsProductGroupsUpdateRequest.prototype.description;
 API.Client.CatalogsProductGroupsUpdateRequest.prototype.isFeatured;
 
 /**
- * @type {!API.Client.CatalogsHotelProductGroupFilters}
+ * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
  * @export
  */
 API.Client.CatalogsProductGroupsUpdateRequest.prototype.filters;
@@ -36,7 +36,19 @@ API.Client.CatalogsProductGroupsUpdateRequest.prototype.filters;
  */
 API.Client.CatalogsProductGroupsUpdateRequest.prototype.catalogType;
 
+/**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.CatalogsProductGroupsUpdateRequest.prototype.country;
+
+/**
+ * @type {!API.Client.CatalogsLocale}
+ * @export
+ */
+API.Client.CatalogsProductGroupsUpdateRequest.prototype.locale;
+
 /** @enum {string} */
 API.Client.CatalogsProductGroupsUpdateRequest.CatalogTypeEnum = { 
-  HOTEL: 'HOTEL',
+  CREATIVE_ASSETS: 'CREATIVE_ASSETS',
 }

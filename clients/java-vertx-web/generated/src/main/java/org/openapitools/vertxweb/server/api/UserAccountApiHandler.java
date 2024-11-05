@@ -422,10 +422,12 @@ public class UserAccountApiHandler {
 
         RequestParameter body = requestParameters.body();
         UserWebsiteVerifyRequest userWebsiteVerifyRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<UserWebsiteVerifyRequest>(){}) : null;
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter userWebsiteVerifyRequest is {}", userWebsiteVerifyRequest);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.verifyWebsiteUpdate(userWebsiteVerifyRequest)
+        api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -443,9 +445,11 @@ public class UserAccountApiHandler {
         // Param extraction
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
+        logger.debug("Parameter adAccountId is {}", adAccountId);
 
-        api.websiteVerificationGet()
+        api.websiteVerificationGet(adAccountId)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

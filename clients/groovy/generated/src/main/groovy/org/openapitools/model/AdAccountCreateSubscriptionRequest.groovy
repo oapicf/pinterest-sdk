@@ -3,6 +3,7 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.AdAccountCreateSubscriptionRequestPartnerMetadata;
 
 @Canonical
 class AdAccountCreateSubscriptionRequest {
@@ -14,4 +15,6 @@ class AdAccountCreateSubscriptionRequest {
     String partnerAccessToken
     /* Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. */
     String partnerRefreshToken
+    
+    AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata
 }

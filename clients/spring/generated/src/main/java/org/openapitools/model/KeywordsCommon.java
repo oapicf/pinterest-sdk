@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * KeywordsCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsCommon {
 
   private JsonNullable<Integer> bid = JsonNullable.<Integer>undefined();
@@ -50,11 +50,11 @@ public class KeywordsCommon {
   }
 
   /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    * @return bid
-  */
+   */
   
-  @Schema(name = "bid", example = "200000", description = "Keyword custom bid in microcurrency - null if inherited from parent ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid")
   public JsonNullable<Integer> getBid() {
     return bid;
@@ -72,7 +72,7 @@ public class KeywordsCommon {
   /**
    * Get matchType
    * @return matchType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "match_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("match_type")
@@ -92,7 +92,7 @@ public class KeywordsCommon {
   /**
    * Keyword value (120 chars max).
    * @return value
-  */
+   */
   @NotNull 
   @Schema(name = "value", description = "Keyword value (120 chars max).", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("value")

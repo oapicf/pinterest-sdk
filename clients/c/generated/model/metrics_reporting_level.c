@@ -5,13 +5,13 @@
 
 
 char* metrics_reporting_level_metrics_reporting_level_ToString(pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level) {
-    char *metrics_reporting_levelArray[] =  { "NULL", "ADVERTISER", "ADVERTISER_TARGETING", "CAMPAIGN", "CAMPAIGN_TARGETING", "AD_GROUP", "AD_GROUP_TARGETING", "PIN_PROMOTION", "PIN_PROMOTION_TARGETING", "KEYWORD", "PRODUCT_GROUP", "PRODUCT_GROUP_TARGETING", "PRODUCT_ITEM" };
+    char *metrics_reporting_levelArray[] =  { "NULL", "ADVERTISER", "ADVERTISER_TARGETING", "CAMPAIGN", "CAMPAIGN_TARGETING", "AD_GROUP", "AD_GROUP_TARGETING", "PIN_PROMOTION", "PIN_PROMOTION_TARGETING", "KEYWORD", "PRODUCT_GROUP", "PRODUCT_GROUP_TARGETING", "PRODUCT_ITEM", "PRODUCT_ITEM_TARGETING" };
     return metrics_reporting_levelArray[metrics_reporting_level];
 }
 
 pinterest_rest_api_metrics_reporting_level__e metrics_reporting_level_metrics_reporting_level_FromString(char* metrics_reporting_level) {
     int stringToReturn = 0;
-    char *metrics_reporting_levelArray[] =  { "NULL", "ADVERTISER", "ADVERTISER_TARGETING", "CAMPAIGN", "CAMPAIGN_TARGETING", "AD_GROUP", "AD_GROUP_TARGETING", "PIN_PROMOTION", "PIN_PROMOTION_TARGETING", "KEYWORD", "PRODUCT_GROUP", "PRODUCT_GROUP_TARGETING", "PRODUCT_ITEM" };
+    char *metrics_reporting_levelArray[] =  { "NULL", "ADVERTISER", "ADVERTISER_TARGETING", "CAMPAIGN", "CAMPAIGN_TARGETING", "AD_GROUP", "AD_GROUP_TARGETING", "PIN_PROMOTION", "PIN_PROMOTION_TARGETING", "KEYWORD", "PRODUCT_GROUP", "PRODUCT_GROUP_TARGETING", "PRODUCT_ITEM", "PRODUCT_ITEM_TARGETING" };
     size_t sizeofArray = sizeof(metrics_reporting_levelArray) / sizeof(metrics_reporting_levelArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(metrics_reporting_level, metrics_reporting_levelArray[stringToReturn]) == 0) {

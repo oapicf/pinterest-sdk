@@ -1,7 +1,7 @@
 const utils = require('../utils/utils');
-const Board_owner = require('../models/Board_owner');
+const BoardOwner = require('../models/BoardOwner');
+const PinMedia = require('../models/PinMedia');
 const PinMediaSource = require('../models/PinMediaSource');
-const SummaryPin_media = require('../models/SummaryPin_media');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -52,8 +52,8 @@ module.exports = {
                 label: `The board section to which this Pin belongs. - [${labelPrefix}board_section_id]`,
                 type: 'string',
             },
-            ...Board_owner.fields(`${keyPrefix}board_owner`, isInput),
-            ...SummaryPin_media.fields(`${keyPrefix}media`, isInput),
+            ...BoardOwner.fields(`${keyPrefix}board_owner`, isInput),
+            ...PinMedia.fields(`${keyPrefix}media`, isInput),
             ...PinMediaSource.fields(`${keyPrefix}media_source`, isInput),
             {
                 key: `${keyPrefix}parent_pin_id`,
@@ -79,8 +79,8 @@ module.exports = {
             'alt_text': bundle.inputData?.[`${keyPrefix}alt_text`],
             'board_id': bundle.inputData?.[`${keyPrefix}board_id`],
             'board_section_id': bundle.inputData?.[`${keyPrefix}board_section_id`],
-            'board_owner': utils.removeIfEmpty(Board_owner.mapping(bundle, `${keyPrefix}board_owner`)),
-            'media': utils.removeIfEmpty(SummaryPin_media.mapping(bundle, `${keyPrefix}media`)),
+            'board_owner': utils.removeIfEmpty(BoardOwner.mapping(bundle, `${keyPrefix}board_owner`)),
+            'media': utils.removeIfEmpty(PinMedia.mapping(bundle, `${keyPrefix}media`)),
             'media_source': utils.removeIfEmpty(PinMediaSource.mapping(bundle, `${keyPrefix}media_source`)),
             'parent_pin_id': bundle.inputData?.[`${keyPrefix}parent_pin_id`],
             'note': bundle.inputData?.[`${keyPrefix}note`],

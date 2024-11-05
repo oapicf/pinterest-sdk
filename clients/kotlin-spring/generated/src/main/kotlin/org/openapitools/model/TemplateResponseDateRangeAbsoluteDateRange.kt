@@ -29,7 +29,7 @@ data class TemplateResponseDateRangeAbsoluteDateRange(
 
     @Schema(example = "6.027456183070403", description = "The end date of the date range")
     @get:JsonProperty("end_date") val endDate: java.math.BigDecimal? = null
-) {
+    ) {
 
 }
 

@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Interest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Interest   {
   @JsonProperty("canonical_url")
   private String canonicalUrl;
@@ -33,10 +33,10 @@ public class Interest   {
     return this;
   }
 
-   /**
+  /**
    * Get canonicalUrl
    * @return canonicalUrl
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getCanonicalUrl() {
     return canonicalUrl;
@@ -51,10 +51,10 @@ public class Interest   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "903972677830", value = "")
   public String getId() {
     return id;
@@ -69,10 +69,10 @@ public class Interest   {
     return this;
   }
 
-   /**
+  /**
    * Get key
    * @return key
-  **/
+   */
   @ApiModelProperty(example = "man cave", value = "")
   public String getKey() {
     return key;
@@ -87,10 +87,10 @@ public class Interest   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "Man cave", value = "")
   public String getName() {
     return name;

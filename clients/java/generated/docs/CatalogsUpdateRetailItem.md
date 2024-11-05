@@ -19,10 +19,7 @@ An item to be updated
 
 | Name | Value |
 |---- | -----|
-| CREATE | &quot;CREATE&quot; |
 | UPDATE | &quot;UPDATE&quot; |
-| UPSERT | &quot;UPSERT&quot; |
-| DELETE | &quot;DELETE&quot; |
 
 
 

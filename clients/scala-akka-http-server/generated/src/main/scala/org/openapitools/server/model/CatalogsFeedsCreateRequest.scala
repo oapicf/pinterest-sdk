@@ -15,6 +15,7 @@ package org.openapitools.server.model
  * @param preferredProcessingSchedule  for example: ''null''
  * @param defaultCountry  for example: ''null''
  * @param defaultAvailability  for example: ''null''
+ * @param status  for example: ''null''
 */
 final case class CatalogsFeedsCreateRequest (
   defaultCurrency: Option[NullableCurrency] = None,
@@ -25,6 +26,7 @@ final case class CatalogsFeedsCreateRequest (
   location: String,
   preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule] = None,
   defaultCountry: Option[Country] = None,
-  defaultAvailability: Option[ProductAvailabilityType] = None
+  defaultAvailability: Option[ProductAvailabilityType] = None,
+  status: Option[CatalogsStatus] = None
 )
 

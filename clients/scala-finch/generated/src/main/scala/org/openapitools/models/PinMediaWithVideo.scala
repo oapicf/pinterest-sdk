@@ -6,8 +6,8 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.BigDecimal
-import org.openapitools.models.ImageMetadataImages
 import org.openapitools.models.PinMedia
+import org.openapitools.models.PinMediaWithImageAllOfImages
 
 /**
  * Pin with video.
@@ -20,7 +20,7 @@ import org.openapitools.models.PinMedia
  * @param width Width (in pixels)
  */
 case class PinMediaWithVideo(mediaUnderscoretype: Option[String],
-                images: Option[ImageMetadataImages],
+                images: Option[PinMediaWithImageAllOfImages],
                 coverUnderscoreimageUnderscoreurl: Option[String],
                 videoUnderscoreurl: Option[String],
                 duration: Option[BigDecimal],

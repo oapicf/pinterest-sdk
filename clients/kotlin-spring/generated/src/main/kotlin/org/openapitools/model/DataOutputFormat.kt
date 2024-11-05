@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Format of generated report
 * Values: JSON,CSV
 */
-enum class DataOutputFormat(val value: kotlin.String) {
+enum class DataOutputFormat(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("JSON") JSON("JSON"),
-    @JsonProperty("CSV") CSV("CSV")
+    JSON("JSON"),
+    CSV("CSV");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): DataOutputFormat {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

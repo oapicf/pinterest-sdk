@@ -25,8 +25,7 @@ SSIOAccountResponse <- R6::R6Class(
     `currency` = NULL,
     `pmp_names` = NULL,
     `error` = NULL,
-    #' Initialize a new SSIOAccountResponse class.
-    #'
+
     #' @description
     #' Initialize a new SSIOAccountResponse class.
     #'
@@ -37,7 +36,6 @@ SSIOAccountResponse <- R6::R6Class(
     #' @param pmp_names pmp_names
     #' @param error Error indicator from Salesforce which could be \"No Error\"
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`eligible` = NULL, `can_edit` = NULL, `billto_infos` = NULL, `currency` = NULL, `pmp_names` = NULL, `error` = NULL, ...) {
       if (!is.null(`eligible`)) {
         if (!(is.logical(`eligible`) && length(`eligible`) == 1)) {
@@ -74,13 +72,11 @@ SSIOAccountResponse <- R6::R6Class(
         self$`error` <- `error`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOAccountResponse in JSON format
-    #' @export
     toJSON = function() {
       SSIOAccountResponseObject <- list()
       if (!is.null(self$`eligible`)) {
@@ -109,14 +105,12 @@ SSIOAccountResponse <- R6::R6Class(
       }
       SSIOAccountResponseObject
     },
-    #' Deserialize JSON string into an instance of SSIOAccountResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOAccountResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOAccountResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`eligible`)) {
@@ -139,13 +133,11 @@ SSIOAccountResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOAccountResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`eligible`)) {
@@ -200,14 +192,12 @@ SSIOAccountResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of SSIOAccountResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOAccountResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOAccountResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`eligible` <- this_object$`eligible`
@@ -218,53 +208,42 @@ SSIOAccountResponse <- R6::R6Class(
       self$`error` <- this_object$`error`
       self
     },
-    #' Validate JSON input with respect to SSIOAccountResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to SSIOAccountResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of SSIOAccountResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

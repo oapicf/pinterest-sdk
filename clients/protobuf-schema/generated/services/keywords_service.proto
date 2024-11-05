@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -63,9 +63,9 @@ message KeywordsGetRequest {
   string campaignId = 2;
   // Ad group Id.
   string adGroupId = 3;
-  // Keyword <a target=\"_blank\" href=\"/docs/ads/targeting/#Match%20type%20and%20targeting%20level\">match type</a>
+  // Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>
   repeated MatchType matchTypes = 4;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 5;
   // Cursor used to fetch the next page of items
   string bookmark = 6;
@@ -90,10 +90,12 @@ message TrendingKeywordsListRequest {
   repeated string genders = 4;
   // If set, filters the results to trends among users in the specified age range(s).<br /> If unset, trends among all age groups will be returned.
   repeated string ages = 5;
+  // If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.
+  repeated string includeKeywords = 6;
   // Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
-  bool normalizeAgainstGroup = 6;
+  bool normalizeAgainstGroup = 7;
   // The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.
-  int32 limit = 7;
+  int32 limit = 8;
 
 }
 

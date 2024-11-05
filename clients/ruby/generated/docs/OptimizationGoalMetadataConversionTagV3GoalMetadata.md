@@ -8,7 +8,7 @@
 | **conversion_event** | **String** |  | [optional] |
 | **conversion_tag_id** | **String** |  | [optional] |
 | **cpa_goal_value_in_micro_currency** | **String** |  | [optional] |
-| **is_roas_optimized** | **Boolean** | Ad group is ROAS optimized | [optional] |
+| **is_roas_optimized** | **Boolean** | ROAS optimization is not supported | [optional] |
 | **learning_mode_type** | **String** | Conversion learning model type | [optional] |
 
 ## Example

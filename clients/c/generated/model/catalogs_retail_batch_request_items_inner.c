@@ -5,13 +5,13 @@
 
 
 char* catalogs_retail_batch_request_items_inner_operation_ToString(pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation) {
-    char* operationArray[] =  { "NULL", "CREATE", "UPDATE", "UPSERT", "DELETE" };
+    char* operationArray[] =  { "NULL", "DELETE" };
     return operationArray[operation];
 }
 
 pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e catalogs_retail_batch_request_items_inner_operation_FromString(char* operation){
     int stringToReturn = 0;
-    char *operationArray[] =  { "NULL", "CREATE", "UPDATE", "UPSERT", "DELETE" };
+    char *operationArray[] =  { "NULL", "DELETE" };
     size_t sizeofArray = sizeof(operationArray) / sizeof(operationArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(operation, operationArray[stringToReturn]) == 0) {
@@ -42,7 +42,7 @@ pinterest_rest_api_catalogs_retail_batch_request_items_inner__e catalogs_retail_
 catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_create(
     char *item_id,
     pinterest_rest_api_catalogs_retail_batch_request_items_inner_OPERATION_e operation,
-    item_attributes_t *attributes,
+    item_attributes_request_t *attributes,
     list_t *update_mask
     ) {
     catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_local_var = malloc(sizeof(catalogs_retail_batch_request_items_inner_t));
@@ -68,7 +68,7 @@ void catalogs_retail_batch_request_items_inner_free(catalogs_retail_batch_reques
         catalogs_retail_batch_request_items_inner->item_id = NULL;
     }
     if (catalogs_retail_batch_request_items_inner->attributes) {
-        item_attributes_free(catalogs_retail_batch_request_items_inner->attributes);
+        item_attributes_request_free(catalogs_retail_batch_request_items_inner->attributes);
         catalogs_retail_batch_request_items_inner->attributes = NULL;
     }
     if (catalogs_retail_batch_request_items_inner->update_mask) {
@@ -107,7 +107,7 @@ cJSON *catalogs_retail_batch_request_items_inner_convertToJSON(catalogs_retail_b
     if (!catalogs_retail_batch_request_items_inner->attributes) {
         goto fail;
     }
-    cJSON *attributes_local_JSON = item_attributes_convertToJSON(catalogs_retail_batch_request_items_inner->attributes);
+    cJSON *attributes_local_JSON = item_attributes_request_convertToJSON(catalogs_retail_batch_request_items_inner->attributes);
     if(attributes_local_JSON == NULL) {
     goto fail; //model
     }
@@ -149,7 +149,7 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
     catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items_inner_local_var = NULL;
 
     // define the local variable for catalogs_retail_batch_request_items_inner->attributes
-    item_attributes_t *attributes_local_nonprim = NULL;
+    item_attributes_request_t *attributes_local_nonprim = NULL;
 
     // define the local list for catalogs_retail_batch_request_items_inner->update_mask
     list_t *update_maskList = NULL;
@@ -187,7 +187,7 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
     }
 
     
-    attributes_local_nonprim = item_attributes_parseFromJSON(attributes); //nonprimitive
+    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
 
     // catalogs_retail_batch_request_items_inner->update_mask
     cJSON *update_mask = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_request_items_innerJSON, "update_mask");
@@ -221,7 +221,7 @@ catalogs_retail_batch_request_items_inner_t *catalogs_retail_batch_request_items
     return catalogs_retail_batch_request_items_inner_local_var;
 end:
     if (attributes_local_nonprim) {
-        item_attributes_free(attributes_local_nonprim);
+        item_attributes_request_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
     }
     if (update_maskList) {

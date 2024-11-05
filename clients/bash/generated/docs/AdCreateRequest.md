@@ -16,12 +16,12 @@ Name | Type | Description | Notes
 **isUnderscoreremovable** | **boolean** |  | [optional] [default to null]
 **name** | **string** |  | [optional] [default to null]
 **status** | [**EntityStatus**](EntityStatus.md) |  | [optional] [default to null]
-**trackingUnderscoreurls** | [**AdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] [default to null]
+**trackingUnderscoreurls** | [**TrackingUrls**](TrackingUrls.md) |  | [optional] [default to null]
 **viewUnderscoretrackingUnderscoreurl** | **string** |  | [optional] [default to null]
 **leadUnderscoreformUnderscoreid** | **string** |  | [optional] [default to null]
 **gridUnderscoreclickUnderscoretype** | [**GridClickType**](GridClickType.md) |  | [optional] [default to null]
 **customizableUnderscorectaUnderscoretype** | **string** |  | [optional] [default to null]
-**quizUnderscorepinUnderscoredata** | [**AdCommonQuizPinData**](AdCommonQuizPinData.md) |  | [optional] [default to null]
+**quizUnderscorepinUnderscoredata** | [**QuizPinData**](QuizPinData.md) |  | [optional] [default to null]
 **pinUnderscoreid** | **string** |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

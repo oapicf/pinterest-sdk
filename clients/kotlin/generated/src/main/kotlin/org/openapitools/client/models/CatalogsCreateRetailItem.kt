@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ItemAttributes
+import org.openapitools.client.models.ItemAttributesRequest
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -39,21 +39,19 @@ data class CatalogsCreateRetailItem (
     val operation: CatalogsCreateRetailItem.Operation,
 
     @Json(name = "attributes")
-    val attributes: ItemAttributes
+    val attributes: ItemAttributesRequest
 
 ) {
 
     /**
      * 
      *
-     * Values: CREATE,UPDATE,UPSERT,DELETE
+     * Values: CREATE
      */
     @JsonClass(generateAdapter = false)
     enum class Operation(val value: kotlin.String) {
-        @Json(name = "CREATE") CREATE("CREATE"),
-        @Json(name = "UPDATE") UPDATE("UPDATE"),
-        @Json(name = "UPSERT") UPSERT("UPSERT"),
-        @Json(name = "DELETE") DELETE("DELETE");
+        @Json(name = "CREATE") CREATE("CREATE");
     }
+
 }
 

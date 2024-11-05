@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "CreativeType.h"
 #include "EntityStatus.h"
 #include "GridClickType.h"
 #include "Object.h"
@@ -146,13 +145,6 @@ public:
 	/*! \brief Set Catalogs product group name
 	 */
 	void setCatalogProductGroupName(std::string  catalog_product_group_name);
-	/*! \brief Get 
-	 */
-	CreativeType getCreativeType();
-
-	/*! \brief Set 
-	 */
-	void setCreativeType(CreativeType  creative_type);
 	/*! \brief Get Hero Pin ID if this PG is promoted as a Collection
 	 */
 	std::string getCollectionsHeroPinId();
@@ -190,7 +182,6 @@ private:
 	std::string tracking_url;
 	std::string catalog_product_group_id;
 	std::string catalog_product_group_name;
-	CreativeType creative_type;
 	std::string collections_hero_pin_id;
 	std::string collections_hero_destination_url;
 	GridClickType grid_click_type;

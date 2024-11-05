@@ -33,7 +33,7 @@ final case class PinCreate (
   boardId: Option[String] = None,
   boardSectionId: Option[String] = None,
   boardOwner: Option[BoardOwner] = None,
-  media: Option[SummaryPinMedia] = None,
+  media: Option[PinMedia] = None,
   mediaSource: Option[PinMediaSource] = None,
   parentPinId: Option[String] = None,
   note: Option[String] = None

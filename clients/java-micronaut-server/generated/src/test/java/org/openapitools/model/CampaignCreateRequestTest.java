@@ -1,10 +1,9 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.TrackingUrls;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -94,14 +93,6 @@ public class CampaignCreateRequestTest {
     @Test
     public void endTimeTest() {
         // TODO: test endTime
-    }
-
-    /**
-     * Test the property 'summaryStatus'
-     */
-    @Test
-    public void summaryStatusTest() {
-        // TODO: test summaryStatus
     }
 
     /**

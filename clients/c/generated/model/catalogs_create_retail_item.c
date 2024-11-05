@@ -5,13 +5,13 @@
 
 
 char* catalogs_create_retail_item_operation_ToString(pinterest_rest_api_catalogs_create_retail_item_OPERATION_e operation) {
-    char* operationArray[] =  { "NULL", "CREATE", "UPDATE", "UPSERT", "DELETE" };
+    char* operationArray[] =  { "NULL", "CREATE" };
     return operationArray[operation];
 }
 
 pinterest_rest_api_catalogs_create_retail_item_OPERATION_e catalogs_create_retail_item_operation_FromString(char* operation){
     int stringToReturn = 0;
-    char *operationArray[] =  { "NULL", "CREATE", "UPDATE", "UPSERT", "DELETE" };
+    char *operationArray[] =  { "NULL", "CREATE" };
     size_t sizeofArray = sizeof(operationArray) / sizeof(operationArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(operation, operationArray[stringToReturn]) == 0) {
@@ -25,7 +25,7 @@ pinterest_rest_api_catalogs_create_retail_item_OPERATION_e catalogs_create_retai
 catalogs_create_retail_item_t *catalogs_create_retail_item_create(
     char *item_id,
     pinterest_rest_api_catalogs_create_retail_item_OPERATION_e operation,
-    item_attributes_t *attributes
+    item_attributes_request_t *attributes
     ) {
     catalogs_create_retail_item_t *catalogs_create_retail_item_local_var = malloc(sizeof(catalogs_create_retail_item_t));
     if (!catalogs_create_retail_item_local_var) {
@@ -49,7 +49,7 @@ void catalogs_create_retail_item_free(catalogs_create_retail_item_t *catalogs_cr
         catalogs_create_retail_item->item_id = NULL;
     }
     if (catalogs_create_retail_item->attributes) {
-        item_attributes_free(catalogs_create_retail_item->attributes);
+        item_attributes_request_free(catalogs_create_retail_item->attributes);
         catalogs_create_retail_item->attributes = NULL;
     }
     free(catalogs_create_retail_item);
@@ -81,7 +81,7 @@ cJSON *catalogs_create_retail_item_convertToJSON(catalogs_create_retail_item_t *
     if (!catalogs_create_retail_item->attributes) {
         goto fail;
     }
-    cJSON *attributes_local_JSON = item_attributes_convertToJSON(catalogs_create_retail_item->attributes);
+    cJSON *attributes_local_JSON = item_attributes_request_convertToJSON(catalogs_create_retail_item->attributes);
     if(attributes_local_JSON == NULL) {
     goto fail; //model
     }
@@ -103,7 +103,7 @@ catalogs_create_retail_item_t *catalogs_create_retail_item_parseFromJSON(cJSON *
     catalogs_create_retail_item_t *catalogs_create_retail_item_local_var = NULL;
 
     // define the local variable for catalogs_create_retail_item->attributes
-    item_attributes_t *attributes_local_nonprim = NULL;
+    item_attributes_request_t *attributes_local_nonprim = NULL;
 
     // catalogs_create_retail_item->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_create_retail_itemJSON, "item_id");
@@ -138,7 +138,7 @@ catalogs_create_retail_item_t *catalogs_create_retail_item_parseFromJSON(cJSON *
     }
 
     
-    attributes_local_nonprim = item_attributes_parseFromJSON(attributes); //nonprimitive
+    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
 
 
     catalogs_create_retail_item_local_var = catalogs_create_retail_item_create (
@@ -150,7 +150,7 @@ catalogs_create_retail_item_t *catalogs_create_retail_item_parseFromJSON(cJSON *
     return catalogs_create_retail_item_local_var;
 end:
     if (attributes_local_nonprim) {
-        item_attributes_free(attributes_local_nonprim);
+        item_attributes_request_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
     }
     return NULL;

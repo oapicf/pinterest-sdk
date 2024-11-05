@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **TrackingUrl** | Pointer to **NullableString** | Tracking template for proudct group promotions. 4000 limit | [optional] 
 **CatalogProductGroupId** | Pointer to **NullableString** | ID of the catalogs product group that this product group promotion references | [optional] 
 **CatalogProductGroupName** | Pointer to **NullableString** | Catalogs product group name | [optional] 
-**CreativeType** | Pointer to [**CreativeType**](CreativeType.md) |  | [optional] 
 **CollectionsHeroPinId** | Pointer to **NullableString** | Hero Pin ID if this PG is promoted as a Collection | [optional] 
 **CollectionsHeroDestinationUrl** | Pointer to **NullableString** | Collections Hero Destination Url | [optional] 
 **GridClickType** | Pointer to [**NullableGridClickType**](GridClickType.md) |  | [optional] 
@@ -502,31 +501,6 @@ HasCatalogProductGroupName returns a boolean if a field has been set.
 `func (o *ProductGroupPromotion) UnsetCatalogProductGroupName()`
 
 UnsetCatalogProductGroupName ensures that no value is present for CatalogProductGroupName, not even an explicit nil
-### GetCreativeType
-
-`func (o *ProductGroupPromotion) GetCreativeType() CreativeType`
-
-GetCreativeType returns the CreativeType field if non-nil, zero value otherwise.
-
-### GetCreativeTypeOk
-
-`func (o *ProductGroupPromotion) GetCreativeTypeOk() (*CreativeType, bool)`
-
-GetCreativeTypeOk returns a tuple with the CreativeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreativeType
-
-`func (o *ProductGroupPromotion) SetCreativeType(v CreativeType)`
-
-SetCreativeType sets CreativeType field to given value.
-
-### HasCreativeType
-
-`func (o *ProductGroupPromotion) HasCreativeType() bool`
-
-HasCreativeType returns a boolean if a field has been set.
-
 ### GetCollectionsHeroPinId
 
 `func (o *ProductGroupPromotion) GetCollectionsHeroPinId() string`

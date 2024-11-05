@@ -35,11 +35,11 @@ public struct Pin: Codable, JSONEncodable, Hashable {
     public var boardOwner: BoardOwner?
     /** Whether the \"operation user_account\" is the Pin owner. */
     public var isOwner: Bool?
-    public var media: SummaryPinMedia?
+    public var media: PinMedia?
     public var mediaSource: PinMediaSource?
     /** The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
     public var parentPinId: String?
-    /** Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information. */
+    /** Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. */
     public var isStandard: Bool?
     /** Whether the Pin has been promoted or not. */
     public var hasBeenPromoted: Bool?
@@ -48,7 +48,7 @@ public struct Pin: Codable, JSONEncodable, Hashable {
     /** Pin metrics with associated time intervals if any. */
     public var pinMetrics: AnyCodable?
 
-    public init(id: String? = nil, createdAt: Date? = nil, link: String? = nil, title: String? = nil, description: String? = nil, dominantColor: String? = nil, altText: String? = nil, creativeType: CreativeType? = nil, boardId: String? = nil, boardSectionId: String? = nil, boardOwner: BoardOwner? = nil, isOwner: Bool? = nil, media: SummaryPinMedia? = nil, mediaSource: PinMediaSource? = nil, parentPinId: String? = nil, isStandard: Bool? = nil, hasBeenPromoted: Bool? = nil, note: String? = nil, pinMetrics: AnyCodable? = nil) {
+    public init(id: String? = nil, createdAt: Date? = nil, link: String? = nil, title: String? = nil, description: String? = nil, dominantColor: String? = nil, altText: String? = nil, creativeType: CreativeType? = nil, boardId: String? = nil, boardSectionId: String? = nil, boardOwner: BoardOwner? = nil, isOwner: Bool? = nil, media: PinMedia? = nil, mediaSource: PinMediaSource? = nil, parentPinId: String? = nil, isStandard: Bool? = nil, hasBeenPromoted: Bool? = nil, note: String? = nil, pinMetrics: AnyCodable? = nil) {
         self.id = id
         self.createdAt = createdAt
         self.link = link

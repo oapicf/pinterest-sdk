@@ -28,11 +28,11 @@ import javax.annotation.Generated;
  * BidFloorSpec
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BidFloorSpec {
 
   @Valid
-  private List<Country> countries;
+  private List<Country> countries = new ArrayList<>();
 
   private Currency currency;
 
@@ -72,7 +72,7 @@ public class BidFloorSpec {
   /**
    * Get countries
    * @return countries
-  */
+   */
   @Valid 
   @Schema(name = "countries", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("countries")
@@ -92,7 +92,7 @@ public class BidFloorSpec {
   /**
    * Get currency
    * @return currency
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "currency", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("currency")
@@ -112,7 +112,7 @@ public class BidFloorSpec {
   /**
    * Get objectiveType
    * @return objectiveType
-  */
+   */
   @Valid 
   @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
@@ -132,7 +132,7 @@ public class BidFloorSpec {
   /**
    * Get billableEvent
    * @return billableEvent
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "billable_event", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("billable_event")
@@ -152,7 +152,7 @@ public class BidFloorSpec {
   /**
    * Get optimizationGoalMetadata
    * @return optimizationGoalMetadata
-  */
+   */
   @Valid 
   @Schema(name = "optimization_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("optimization_goal_metadata")
@@ -172,7 +172,7 @@ public class BidFloorSpec {
   /**
    * Get creativeType
    * @return creativeType
-  */
+   */
   @Valid 
   @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")

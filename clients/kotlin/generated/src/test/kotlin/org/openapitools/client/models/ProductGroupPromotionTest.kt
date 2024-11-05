@@ -19,7 +19,6 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ProductGroupPromotion
-import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
 
@@ -110,12 +109,6 @@ class ProductGroupPromotionTest : ShouldSpec() {
         should("test catalogProductGroupName") {
             // uncomment below to test the property
             //modelInstance.catalogProductGroupName shouldBe ("TODO")
-        }
-
-        // to test the property `creativeType`
-        should("test creativeType") {
-            // uncomment below to test the property
-            //modelInstance.creativeType shouldBe ("TODO")
         }
 
         // to test the property `collectionsHeroPinId` - Hero Pin ID if this PG is promoted as a Collection

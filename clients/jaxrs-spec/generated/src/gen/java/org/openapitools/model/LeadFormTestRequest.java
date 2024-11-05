@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request to create test data for lead data test API.")
 @JsonTypeName("LeadFormTestRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LeadFormTestRequest   {
   private @Valid List<String> answers = new ArrayList<>();
 
@@ -35,8 +35,7 @@ public class LeadFormTestRequest   {
   
   @ApiModelProperty(example = "[\"John\",\"Doe\",\"abc@email.com\",\"987654321\"]", required = true, value = "Test lead answers. Should follow the creation order.")
   @JsonProperty("answers")
-  @NotNull
-  public List<String> getAnswers() {
+  @NotNull public List<String> getAnswers() {
     return answers;
   }
 

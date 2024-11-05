@@ -19,12 +19,11 @@ public enum LeadFormQuestionType: String, Codable, CaseIterable {
     case email = "EMAIL"
     case phoneNumber = "PHONE_NUMBER"
     case zipCode = "ZIP_CODE"
-    case age = "AGE"
     case gender = "GENDER"
     case city = "CITY"
     case country = "COUNTRY"
-    case preferredContactMethod = "PREFERRED_CONTACT_METHOD"
     case stateProvince = "STATE_PROVINCE"
     case address = "ADDRESS"
     case dateOfBirth = "DATE_OF_BIRTH"
+    case age = "AGE"
 }

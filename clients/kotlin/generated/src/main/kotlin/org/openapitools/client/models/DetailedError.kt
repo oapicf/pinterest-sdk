@@ -39,5 +39,8 @@ data class DetailedError (
     @Json(name = "details")
     val details: kotlin.Any
 
-)
+) {
+
+
+}
 

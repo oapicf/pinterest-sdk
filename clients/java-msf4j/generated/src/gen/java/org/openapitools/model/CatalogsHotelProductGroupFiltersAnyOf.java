@@ -13,7 +13,7 @@ import org.openapitools.model.CatalogsHotelProductGroupFilterKeys;
 /**
  * CatalogsHotelProductGroupFiltersAnyOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupFiltersAnyOf   {
   @JsonProperty("any_of")
   private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();

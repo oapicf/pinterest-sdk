@@ -9,10 +9,9 @@
 
 
 #include <string>
+#include "CatalogsItemsRequest_language.h"
 #include "CatalogsRetailBatchRequest_items_inner.h"
-#include "CatalogsType.h"
 #include "Country.h"
-#include "Language.h"
 #include <list>
 #include "Object.h"
 
@@ -52,11 +51,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
@@ -66,11 +65,11 @@ public:
 	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
-	Language getLanguage();
+	CatalogsItemsRequest_language getLanguage();
 
 	/*! \brief Set 
 	 */
-	void setLanguage(Language  language);
+	void setLanguage(CatalogsItemsRequest_language  language);
 	/*! \brief Get Array with catalogs item operations
 	 */
 	std::list<CatalogsRetailBatchRequest_items_inner> getItems();
@@ -80,9 +79,9 @@ public:
 	void setItems(std::list <CatalogsRetailBatchRequest_items_inner> items);
 
 private:
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	Country country;
-	Language language;
+	CatalogsItemsRequest_language language;
 	std::list <CatalogsRetailBatchRequest_items_inner>items;
 	void __init();
 	void __cleanup();

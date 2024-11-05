@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -21,10 +21,7 @@ message CatalogsDeleteRetailItem {
   string item_id = 505592266;
 
   enum OperationEnum {
-    OperationEnum_CREATE = 0;
-    OperationEnum_UPDATE = 1;
-    OperationEnum_UPSERT = 2;
-    OperationEnum_DELETE = 3;
+    OperationEnum_DELETE = 0;
   }
 
   OperationEnum operation = 52090218;

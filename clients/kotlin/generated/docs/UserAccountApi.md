@@ -2,22 +2,22 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**boardsUserFollowsList**](UserAccountApi.md#boardsUserFollowsList) | **GET** /user_account/following/boards | List following boards
-[**followUserUpdate**](UserAccountApi.md#followUserUpdate) | **POST** /user_account/following/{username} | Follow user
-[**followersList**](UserAccountApi.md#followersList) | **GET** /user_account/followers | List followers
-[**linkedBusinessAccountsGet**](UserAccountApi.md#linkedBusinessAccountsGet) | **GET** /user_account/businesses | List linked businesses
-[**unverifyWebsiteDelete**](UserAccountApi.md#unverifyWebsiteDelete) | **DELETE** /user_account/websites | Unverify website
-[**userAccountAnalytics**](UserAccountApi.md#userAccountAnalytics) | **GET** /user_account/analytics | Get user account analytics
-[**userAccountAnalyticsTopPins**](UserAccountApi.md#userAccountAnalyticsTopPins) | **GET** /user_account/analytics/top_pins | Get user account top pins analytics
-[**userAccountAnalyticsTopVideoPins**](UserAccountApi.md#userAccountAnalyticsTopVideoPins) | **GET** /user_account/analytics/top_video_pins | Get user account top video pins analytics
-[**userAccountFollowedInterests**](UserAccountApi.md#userAccountFollowedInterests) | **GET** /users/{username}/interests/follow | List following interests
-[**userAccountGet**](UserAccountApi.md#userAccountGet) | **GET** /user_account | Get user account
-[**userFollowingGet**](UserAccountApi.md#userFollowingGet) | **GET** /user_account/following | List following
-[**userWebsitesGet**](UserAccountApi.md#userWebsitesGet) | **GET** /user_account/websites | Get user websites
-[**verifyWebsiteUpdate**](UserAccountApi.md#verifyWebsiteUpdate) | **POST** /user_account/websites | Verify website
-[**websiteVerificationGet**](UserAccountApi.md#websiteVerificationGet) | **GET** /user_account/websites/verification | Get user verification code for website claiming
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**boardsUserFollowsList**](UserAccountApi.md#boardsUserFollowsList) | **GET** /user_account/following/boards | List following boards |
+| [**followUserUpdate**](UserAccountApi.md#followUserUpdate) | **POST** /user_account/following/{username} | Follow user |
+| [**followersList**](UserAccountApi.md#followersList) | **GET** /user_account/followers | List followers |
+| [**linkedBusinessAccountsGet**](UserAccountApi.md#linkedBusinessAccountsGet) | **GET** /user_account/businesses | List linked businesses |
+| [**unverifyWebsiteDelete**](UserAccountApi.md#unverifyWebsiteDelete) | **DELETE** /user_account/websites | Unverify website |
+| [**userAccountAnalytics**](UserAccountApi.md#userAccountAnalytics) | **GET** /user_account/analytics | Get user account analytics |
+| [**userAccountAnalyticsTopPins**](UserAccountApi.md#userAccountAnalyticsTopPins) | **GET** /user_account/analytics/top_pins | Get user account top pins analytics |
+| [**userAccountAnalyticsTopVideoPins**](UserAccountApi.md#userAccountAnalyticsTopVideoPins) | **GET** /user_account/analytics/top_video_pins | Get user account top video pins analytics |
+| [**userAccountFollowedInterests**](UserAccountApi.md#userAccountFollowedInterests) | **GET** /users/{username}/interests/follow | List following interests |
+| [**userAccountGet**](UserAccountApi.md#userAccountGet) | **GET** /user_account | Get user account |
+| [**userFollowingGet**](UserAccountApi.md#userFollowingGet) | **GET** /user_account/following | List following |
+| [**userWebsitesGet**](UserAccountApi.md#userWebsitesGet) | **GET** /user_account/websites | Get user websites |
+| [**verifyWebsiteUpdate**](UserAccountApi.md#verifyWebsiteUpdate) | **POST** /user_account/websites | Verify website |
+| [**websiteVerificationGet**](UserAccountApi.md#websiteVerificationGet) | **GET** /user_account/websites/verification | Get user verification code for website claiming |
 
 
 <a id="boardsUserFollowsList"></a>
@@ -36,7 +36,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 val apiInstance = UserAccountApi()
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
@@ -52,13 +52,12 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **explicitFollowing** | **kotlin.Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **explicitFollowing** | **kotlin.Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -68,6 +67,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -81,7 +82,7 @@ Configure pinterest_oauth2:
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```kotlin
@@ -105,11 +106,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **kotlin.String**| A valid username |
- **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. |
+| **username** | **kotlin.String**| A valid username | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **followUserRequest** | [**FollowUserRequest**](FollowUserRequest.md)| Follow a user. | |
 
 ### Return type
 
@@ -142,7 +142,7 @@ Get a list of your followers.
 
 val apiInstance = UserAccountApi()
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     val result : FollowersList200Response = apiInstance.followersList(bookmark, pageSize)
     println(result)
@@ -156,11 +156,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -170,6 +169,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -216,6 +217,8 @@ This endpoint does not need any parameter.
 
 Configure pinterest_oauth2:
     ApiClient.accessToken = ""
+Configure client_credentials:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -250,10 +253,9 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **website** | **kotlin.String**| Website with path or domain only |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **website** | **kotlin.String**| Website with path or domain only | |
 
 ### Return type
 
@@ -308,19 +310,18 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
- **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
- **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
- **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC]
- **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS]
- **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE]
- **splitField** | **kotlin.String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] [enum: NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT]
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
+| **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
+| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
+| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
+| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
+| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
+| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
+| **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
+| **splitField** | **kotlin.String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] [enum: NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -377,21 +378,20 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
- **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **sortBy** | **kotlin.String**| Specify sorting order for metrics | [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE]
- **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
- **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
- **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC]
- **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS]
- **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE]
- **numOfPins** | **kotlin.Int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **createdInLastNDays** | **kotlin.Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30]
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
+| **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
+| **sortBy** | **kotlin.String**| Specify sorting order for metrics | [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE] |
+| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
+| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
+| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
+| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
+| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
+| **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
+| **numOfPins** | **kotlin.Int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
+| **createdInLastNDays** | **kotlin.Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -401,6 +401,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -448,21 +450,20 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
- **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **sortBy** | **kotlin.String**| Specify sorting order for video metrics | [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START]
- **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
- **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
- **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC]
- **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS]
- **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get video data for, default is all.  | [optional] [enum: IMPRESSION, SAVE, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START, OUTBOUND_CLICK]
- **numOfPins** | **kotlin.Int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10]
- **createdInLastNDays** | **kotlin.Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30]
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
+| **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
+| **sortBy** | **kotlin.String**| Specify sorting order for video metrics | [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] |
+| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
+| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
+| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
+| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
+| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
+| **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get video data for, default is all.  | [optional] [enum: IMPRESSION, SAVE, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START, OUTBOUND_CLICK] |
+| **numOfPins** | **kotlin.Int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
+| **createdInLastNDays** | **kotlin.Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -472,6 +473,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -496,7 +499,7 @@ Get a list of a user&#39;s following interests in one place.
 val apiInstance = UserAccountApi()
 val username : kotlin.String = username // kotlin.String | A valid username
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     val result : UserAccountFollowedInterests200Response = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize)
     println(result)
@@ -510,12 +513,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **username** | **kotlin.String**| A valid username |
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+| **username** | **kotlin.String**| A valid username | |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -525,6 +527,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -538,7 +542,7 @@ Configure pinterest_oauth2:
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
 
 ### Example
 ```kotlin
@@ -561,10 +565,9 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -574,6 +577,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -597,7 +602,7 @@ Get a list of who a certain user follows.
 
 val apiInstance = UserAccountApi()
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 val feedType : UserFollowingFeedType = feedType_example // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
 val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
@@ -614,14 +619,13 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to ALL] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY]
- **explicitFollowing** | **kotlin.Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional]
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to ALL] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
+| **explicitFollowing** | **kotlin.Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -631,6 +635,8 @@ Name | Type | Description  | Notes
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -654,7 +660,7 @@ Get user websites, claimed or not
 
 val apiInstance = UserAccountApi()
 val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 try {
     val result : UserWebsitesGet200Response = apiInstance.userWebsitesGet(bookmark, pageSize)
     println(result)
@@ -668,11 +674,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -691,7 +696,7 @@ Configure pinterest_oauth2:
 
 <a id="verifyWebsiteUpdate"></a>
 # **verifyWebsiteUpdate**
-> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest)
+> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
 
 Verify website
 
@@ -705,8 +710,9 @@ Verify a website as a signed-in user.
 
 val apiInstance = UserAccountApi()
 val userWebsiteVerifyRequest : UserWebsiteVerifyRequest =  // UserWebsiteVerifyRequest | Verify a website.
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : UserWebsiteSummary = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest)
+    val result : UserWebsiteSummary = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserAccountApi#verifyWebsiteUpdate")
@@ -718,10 +724,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. |
+| **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -740,7 +746,7 @@ Configure pinterest_oauth2:
 
 <a id="websiteVerificationGet"></a>
 # **websiteVerificationGet**
-> UserWebsiteVerificationCode websiteVerificationGet()
+> UserWebsiteVerificationCode websiteVerificationGet(adAccountId)
 
 Get user verification code for website claiming
 
@@ -753,8 +759,9 @@ Get verification code for user to install on the website to claim it.
 //import org.openapitools.client.models.*
 
 val apiInstance = UserAccountApi()
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : UserWebsiteVerificationCode = apiInstance.websiteVerificationGet()
+    val result : UserWebsiteVerificationCode = apiInstance.websiteVerificationGet(adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserAccountApi#websiteVerificationGet")
@@ -766,7 +773,9 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -776,6 +785,8 @@ This endpoint does not need any parameter.
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers

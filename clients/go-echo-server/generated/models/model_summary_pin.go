@@ -3,7 +3,7 @@ package models
 // SummaryPin - Summarized pin information
 type SummaryPin struct {
 
-	Media SummaryPinMedia `json:"media,omitempty"`
+	Media PinMedia `json:"media,omitempty"`
 
 	AltText *string `json:"alt_text,omitempty"`
 

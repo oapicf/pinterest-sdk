@@ -22,11 +22,11 @@ import javax.annotation.Generated;
  * AdAccountsCountryResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsCountryResponse {
 
   @Valid
-  private List<@Valid AdAccountsCountryResponseData> items;
+  private List<@Valid AdAccountsCountryResponseData> items = new ArrayList<>();
 
   public AdAccountsCountryResponse items(List<@Valid AdAccountsCountryResponseData> items) {
     this.items = items;
@@ -44,7 +44,7 @@ public class AdAccountsCountryResponse {
   /**
    * Get items
    * @return items
-  */
+   */
   @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")

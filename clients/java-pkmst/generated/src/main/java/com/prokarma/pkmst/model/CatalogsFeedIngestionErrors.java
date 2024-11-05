@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsFeedIngestionErrors
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionErrors   {
   @JsonProperty("LINE_LEVEL_INTERNAL_ERROR")
   private Integer LINE_LEVEL_INTERNAL_ERROR;
@@ -75,10 +75,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
    * @return LINE_LEVEL_INTERNAL_ERROR
-  **/
+   */
   @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.")
   public Integer getLINELEVELINTERNALERROR() {
     return LINE_LEVEL_INTERNAL_ERROR;
@@ -93,10 +93,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * The product count has decreased by more than 99% compared to the last successful ingestion.
    * @return LARGE_PRODUCT_COUNT_DECREASE
-  **/
+   */
   @ApiModelProperty(value = "The product count has decreased by more than 99% compared to the last successful ingestion.")
   public LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
@@ -111,10 +111,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
    * @return ACCOUNT_FLAGGED
-  **/
+   */
   @ApiModelProperty(value = "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.")
   public Integer getACCOUNTFLAGGED() {
     return ACCOUNT_FLAGGED;
@@ -129,10 +129,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
    * @return IMAGE_LEVEL_INTERNAL_ERROR
-  **/
+   */
   @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.")
   public Integer getIMAGELEVELINTERNALERROR() {
     return IMAGE_LEVEL_INTERNAL_ERROR;
@@ -147,10 +147,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * Image files are unreadable. Please upload new files to continue.
    * @return IMAGE_FILE_NOT_ACCESSIBLE
-  **/
+   */
   @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
   public Integer getIMAGEFILENOTACCESSIBLE() {
     return IMAGE_FILE_NOT_ACCESSIBLE;
@@ -165,10 +165,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * Image files are unreadable. Please check your link and upload new files to continue.
    * @return IMAGE_MALFORMED_URL
-  **/
+   */
   @ApiModelProperty(value = "Image files are unreadable. Please check your link and upload new files to continue.")
   public Integer getIMAGEMALFORMEDURL() {
     return IMAGE_MALFORMED_URL;
@@ -183,10 +183,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * Image files are unreadable. Please upload new files to continue.
    * @return IMAGE_FILE_NOT_FOUND
-  **/
+   */
   @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
   public Integer getIMAGEFILENOTFOUND() {
     return IMAGE_FILE_NOT_FOUND;
@@ -201,10 +201,10 @@ public class CatalogsFeedIngestionErrors   {
     return this;
   }
 
-   /**
+  /**
    * Image files are unreadable. Please upload new files to continue.
    * @return IMAGE_INVALID_FILE
-  **/
+   */
   @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
   public Integer getIMAGEINVALIDFILE() {
     return IMAGE_INVALID_FILE;

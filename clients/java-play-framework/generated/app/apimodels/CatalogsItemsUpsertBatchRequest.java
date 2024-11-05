@@ -1,9 +1,9 @@
 package apimodels;
 
 import apimodels.BatchOperation;
+import apimodels.CatalogsItemsRequestLanguage;
 import apimodels.Country;
 import apimodels.ItemUpsertBatchRecord;
-import apimodels.Language;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ import javax.validation.Valid;
 /**
  * Request object to upsert catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsUpsertBatchRequest   {
   @JsonProperty("country")
@@ -29,7 +29,7 @@ public class CatalogsItemsUpsertBatchRequest   {
   @NotNull
 @Valid
 
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("operation")
   @NotNull
@@ -61,7 +61,7 @@ public class CatalogsItemsUpsertBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsItemsUpsertBatchRequest language(Language language) {
+  public CatalogsItemsUpsertBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -70,11 +70,11 @@ public class CatalogsItemsUpsertBatchRequest   {
    * Get language
    * @return language
   **/
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

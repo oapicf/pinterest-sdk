@@ -17,15 +17,13 @@ KeywordsRequest <- R6::R6Class(
   public = list(
     `keywords` = NULL,
     `parent_id` = NULL,
-    #' Initialize a new KeywordsRequest class.
-    #'
+
     #' @description
     #' Initialize a new KeywordsRequest class.
     #'
     #' @param keywords Keyword JSON array. Each array element has 3 fields
     #' @param parent_id Keyword parent entity ID (advertiser, campaign, ad group).
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`keywords`, `parent_id`, ...) {
       if (!missing(`keywords`)) {
         stopifnot(is.vector(`keywords`), length(`keywords`) != 0)
@@ -39,13 +37,11 @@ KeywordsRequest <- R6::R6Class(
         self$`parent_id` <- `parent_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordsRequest in JSON format
-    #' @export
     toJSON = function() {
       KeywordsRequestObject <- list()
       if (!is.null(self$`keywords`)) {
@@ -58,14 +54,12 @@ KeywordsRequest <- R6::R6Class(
       }
       KeywordsRequestObject
     },
-    #' Deserialize JSON string into an instance of KeywordsRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordsRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordsRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`keywords`)) {
@@ -76,13 +70,11 @@ KeywordsRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordsRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`keywords`)) {
@@ -105,27 +97,23 @@ KeywordsRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of KeywordsRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordsRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordsRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordsCommon]", loadNamespace("openapi"))
       self$`parent_id` <- this_object$`parent_id`
       self
     },
-    #' Validate JSON input with respect to KeywordsRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to KeywordsRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `keywords`
@@ -144,23 +132,19 @@ KeywordsRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for KeywordsRequest: the required field `parent_id` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of KeywordsRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `keywords` is null
       if (is.null(self$`keywords`)) {
@@ -178,13 +162,11 @@ KeywordsRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `keywords` is null
@@ -203,12 +185,9 @@ KeywordsRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

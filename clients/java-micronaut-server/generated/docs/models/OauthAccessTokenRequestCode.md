@@ -10,8 +10,17 @@ The class is defined in **[OauthAccessTokenRequestCode.java](../../src/main/java
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) |  | 
 **code** | `String` |  | 
 **redirectUri** | `String` |  | 
+
+## GrantTypeEnum
+
+Name | Value
+---- | -----
+AUTHORIZATION_CODE | `"authorization_code"`
+REFRESH_TOKEN | `"refresh_token"`
+CLIENT_CREDENTIALS | `"client_credentials"`
 
 
 

@@ -11,6 +11,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import java.util.NoSuchElementException;
@@ -32,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelFeedsCreateRequest", description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCreateRequest {
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
@@ -52,6 +53,8 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   private CatalogsType catalogType;
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> catalogId = JsonNullable.<String>undefined();
+
+  private CatalogsStatus status;
 
   public CatalogsHotelFeedsCreateRequest() {
     super();
@@ -76,7 +79,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * Get defaultCurrency
    * @return defaultCurrency
-  */
+   */
   @Valid 
   @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("default_currency")
@@ -96,7 +99,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * A human-friendly name associated to a given feed.
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", description = "A human-friendly name associated to a given feed.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -116,7 +119,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * Get format
    * @return format
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "format", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("format")
@@ -136,7 +139,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * Get defaultLocale
    * @return defaultLocale
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "default_locale", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("default_locale")
@@ -156,7 +159,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * Get credentials
    * @return credentials
-  */
+   */
   @Valid 
   @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("credentials")
@@ -176,7 +179,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  */
+   */
   @NotNull @Pattern(regexp = "^(http|https|ftp|sftp)://") 
   @Schema(name = "location", description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("location")
@@ -196,7 +199,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  */
+   */
   @Valid 
   @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("preferred_processing_schedule")
@@ -216,7 +219,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -236,7 +239,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
   /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
    * @return catalogId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")
@@ -246,6 +249,26 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
 
   public void setCatalogId(JsonNullable<String> catalogId) {
     this.catalogId = catalogId;
+  }
+
+  public CatalogsHotelFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
   @Override
@@ -265,7 +288,8 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
         Objects.equals(this.location, catalogsHotelFeedsCreateRequest.location) &&
         equalsNullable(this.preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.catalogType, catalogsHotelFeedsCreateRequest.catalogType) &&
-        equalsNullable(this.catalogId, catalogsHotelFeedsCreateRequest.catalogId);
+        equalsNullable(this.catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
+        Objects.equals(this.status, catalogsHotelFeedsCreateRequest.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -274,7 +298,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(defaultCurrency), name, format, defaultLocale, hashCodeNullable(credentials), location, hashCodeNullable(preferredProcessingSchedule), catalogType, hashCodeNullable(catalogId));
+    return Objects.hash(hashCodeNullable(defaultCurrency), name, format, defaultLocale, hashCodeNullable(credentials), location, hashCodeNullable(preferredProcessingSchedule), catalogType, hashCodeNullable(catalogId), status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -297,6 +321,7 @@ public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCre
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

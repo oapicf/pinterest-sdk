@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 **CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **UpdatedAt** | **Int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**CatalogId** | **String** |  | 
+**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
 
 ## Examples
 

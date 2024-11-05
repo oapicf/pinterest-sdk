@@ -13,6 +13,7 @@ import AnyCodable
 /** A list of events (one or more) encapsulated by a data object. */
 public struct ConversionEvents: Codable, JSONEncodable, Hashable {
 
+    static let dataRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     public var data: [ConversionEventsDataInner]
 
     public init(data: [ConversionEventsDataInner]) {

@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -16,9 +16,12 @@ package openapitools.services.leadformsservice;
 
 import "google/protobuf/empty.proto";
 import public "models/error.proto";
+import public "models/lead_form_array_response.proto";
+import public "models/lead_form_create_request.proto";
 import public "models/lead_form_response.proto";
 import public "models/lead_form_test_request.proto";
 import public "models/lead_form_test_response.proto";
+import public "models/lead_form_update_request.proto";
 import public "models/lead_forms_list200_response.proto";
 
 service LeadFormsService {
@@ -26,7 +29,11 @@ service LeadFormsService {
 
   rpc LeadFormTestCreate (LeadFormTestCreateRequest) returns (LeadFormTestResponse);
 
+  rpc LeadFormsCreate (LeadFormsCreateRequest) returns (LeadFormArrayResponse);
+
   rpc LeadFormsList (LeadFormsListRequest) returns (LeadFormsList200Response);
+
+  rpc LeadFormsUpdate (LeadFormsUpdateRequest) returns (LeadFormArrayResponse);
 
 }
 
@@ -48,15 +55,31 @@ message LeadFormTestCreateRequest {
 
 }
 
+message LeadFormsCreateRequest {
+  // Unique identifier of an ad account.
+  string adAccountId = 1;
+  // List of lead forms to create, size limit [1, 30].
+  repeated LeadFormCreateRequest leadFormCreateRequest = 2;
+
+}
+
 message LeadFormsListRequest {
   // Unique identifier of an ad account.
   string adAccountId = 1;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 2;
   // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
   string order = 3;
   // Cursor used to fetch the next page of items
   string bookmark = 4;
+
+}
+
+message LeadFormsUpdateRequest {
+  // Unique identifier of an ad account.
+  string adAccountId = 1;
+  // List of lead forms to update, size limit [1, 30].
+  repeated LeadFormUpdateRequest leadFormUpdateRequest = 2;
 
 }
 

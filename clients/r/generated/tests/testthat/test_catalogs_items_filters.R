@@ -21,7 +21,7 @@ test_that("item_ids", {
 
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
-  # Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  # Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
@@ -32,4 +32,11 @@ test_that("hotel_ids", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`hotel_ids`, "EXPECTED_RESULT")
+})
+
+test_that("creative_assets_ids", {
+  # tests for the property `creative_assets_ids` (array[character])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`creative_assets_ids`, "EXPECTED_RESULT")
 })

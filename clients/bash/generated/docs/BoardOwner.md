@@ -1,4 +1,4 @@
-# Board_owner
+# BoardOwner
 
 ## Properties
 Name | Type | Description | Notes

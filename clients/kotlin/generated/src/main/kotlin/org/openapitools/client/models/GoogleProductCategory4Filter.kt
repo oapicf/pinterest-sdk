@@ -32,5 +32,8 @@ data class GoogleProductCategory4Filter (
     @Json(name = "GOOGLE_PRODUCT_CATEGORY_4")
     val GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria
 
-)
+) {
+
+
+}
 

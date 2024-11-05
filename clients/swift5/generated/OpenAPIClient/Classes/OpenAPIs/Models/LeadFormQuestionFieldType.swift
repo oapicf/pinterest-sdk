@@ -16,5 +16,4 @@ public enum LeadFormQuestionFieldType: String, Codable, CaseIterable {
     case textArea = "TEXT_AREA"
     case radioList = "RADIO_LIST"
     case checkbox = "CHECKBOX"
-    case null = "null"
 }

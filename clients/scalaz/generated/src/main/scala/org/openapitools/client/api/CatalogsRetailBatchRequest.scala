@@ -12,14 +12,33 @@ import org.joda.time.DateTime
 import CatalogsRetailBatchRequest._
 
 case class CatalogsRetailBatchRequest (
-  catalogType: CatalogsType,
+  catalogType: CatalogType,
 country: Country,
-language: Language,
+language: CatalogsItemsRequestLanguage,
 /* Array with catalogs item operations */
   items: List[CatalogsRetailBatchRequestItemsInner])
 
 object CatalogsRetailBatchRequest {
   import DateTimeCodecs._
+  sealed trait CatalogType
+  case object RETAIL extends CatalogType
+
+  object CatalogType {
+    def toCatalogType(s: String): Option[CatalogType] = s match {
+      case "RETAIL" => Some(RETAIL)
+      case _ => None
+    }
+
+    def fromCatalogType(x: CatalogType): String = x match {
+      case RETAIL => "RETAIL"
+    }
+  }
+
+  implicit val CatalogTypeEnumEncoder: EncodeJson[CatalogType] =
+    EncodeJson[CatalogType](is => StringEncodeJson(CatalogType.fromCatalogType(is)))
+
+  implicit val CatalogTypeEnumDecoder: DecodeJson[CatalogType] =
+    DecodeJson.optionDecoder[CatalogType](n => n.string.flatMap(jStr => CatalogType.toCatalogType(jStr)), "CatalogType failed to de-serialize")
 
   implicit val CatalogsRetailBatchRequestCodecJson: CodecJson[CatalogsRetailBatchRequest] = CodecJson.derive[CatalogsRetailBatchRequest]
   implicit val CatalogsRetailBatchRequestDecoder: EntityDecoder[CatalogsRetailBatchRequest] = jsonOf[CatalogsRetailBatchRequest]

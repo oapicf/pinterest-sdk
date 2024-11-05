@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **Date** |  | [optional] 
-**id** | **String** |  | [optional] 
-**updatedAt** | **Date** |  | [optional] 
+**createdAt** | **Date** |  | 
+**id** | **String** |  | 
+**updatedAt** | **Date** |  | 
 **ingestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **productCounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 

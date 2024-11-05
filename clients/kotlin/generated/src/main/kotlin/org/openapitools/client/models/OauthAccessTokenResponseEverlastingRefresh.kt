@@ -15,7 +15,6 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.OauthAccessTokenResponse
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,30 +22,13 @@ import com.squareup.moshi.JsonClass
 /**
  * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
  *
- * @param accessToken 
- * @param tokenType 
- * @param expiresIn 
- * @param scope 
  * @param refreshToken 
  * @param refreshTokenExpiresIn 
  * @param refreshTokenExpiresAt 
- * @param responseType 
  */
 
 
 data class OauthAccessTokenResponseEverlastingRefresh (
-
-    @Json(name = "access_token")
-    override val accessToken: kotlin.String,
-
-    @Json(name = "token_type")
-    override val tokenType: kotlin.String = "bearer",
-
-    @Json(name = "expires_in")
-    override val expiresIn: kotlin.Int,
-
-    @Json(name = "scope")
-    override val scope: kotlin.String,
 
     @Json(name = "refresh_token")
     val refreshToken: kotlin.String,
@@ -55,10 +37,21 @@ data class OauthAccessTokenResponseEverlastingRefresh (
     val refreshTokenExpiresIn: kotlin.Int,
 
     @Json(name = "refresh_token_expires_at")
-    val refreshTokenExpiresAt: kotlin.Int,
+    val refreshTokenExpiresAt: kotlin.Int
 
-    @Json(name = "response_type")
-    override val responseType: OauthAccessTokenResponseEverlastingRefresh.ResponseType? = null
+) {
 
-) : OauthAccessTokenResponse
+    /**
+     * 
+     *
+     * Values: authorization_code,refresh_token,client_credentials
+     */
+    @JsonClass(generateAdapter = false)
+    enum class ResponseType(val value: kotlin.String) {
+        @Json(name = "authorization_code") authorization_code("authorization_code"),
+        @Json(name = "refresh_token") refresh_token("refresh_token"),
+        @Json(name = "client_credentials") client_credentials("client_credentials");
+    }
+
+}
 

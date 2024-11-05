@@ -37,8 +37,7 @@ Account <- R6::R6Class(
     `follower_count` = NULL,
     `following_count` = NULL,
     `monthly_views` = NULL,
-    #' Initialize a new Account class.
-    #'
+
     #' @description
     #' Initialize a new Account class.
     #'
@@ -55,7 +54,6 @@ Account <- R6::R6Class(
     #' @param following_count User account following count.
     #' @param monthly_views User account monthly views.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`account_type` = NULL, `id` = NULL, `profile_image` = NULL, `website_url` = NULL, `username` = NULL, `about` = NULL, `business_name` = NULL, `board_count` = NULL, `pin_count` = NULL, `follower_count` = NULL, `following_count` = NULL, `monthly_views` = NULL, ...) {
       if (!is.null(`account_type`)) {
         if (!(`account_type` %in% c("PINNER", "BUSINESS"))) {
@@ -133,13 +131,11 @@ Account <- R6::R6Class(
         self$`monthly_views` <- `monthly_views`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Account in JSON format
-    #' @export
     toJSON = function() {
       AccountObject <- list()
       if (!is.null(self$`account_type`)) {
@@ -192,14 +188,12 @@ Account <- R6::R6Class(
       }
       AccountObject
     },
-    #' Deserialize JSON string into an instance of Account
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Account
     #'
     #' @param input_json the JSON input
     #' @return the instance of Account
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`account_type`)) {
@@ -243,13 +237,11 @@ Account <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Account in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`account_type`)) {
@@ -352,14 +344,12 @@ Account <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of Account
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Account
     #'
     #' @param input_json the JSON input
     #' @return the instance of Account
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`account_type`) && !(this_object$`account_type` %in% c("PINNER", "BUSINESS"))) {
@@ -379,33 +369,27 @@ Account <- R6::R6Class(
       self$`monthly_views` <- this_object$`monthly_views`
       self
     },
-    #' Validate JSON input with respect to Account
-    #'
+
     #' @description
     #' Validate JSON input with respect to Account and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of Account
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -413,13 +397,11 @@ Account <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -428,12 +410,9 @@ Account <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

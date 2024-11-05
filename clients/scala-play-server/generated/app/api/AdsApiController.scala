@@ -10,8 +10,8 @@ import model.AdPreviewRequest
 import model.AdPreviewURLResponse
 import model.AdResponse
 import model.AdUpdateRequest
+import model.AdsAnalyticsAdTargetingType
 import model.AdsAnalyticsResponseInner
-import model.AdsAnalyticsTargetingType
 import model.AdsList200Response
 import model.ConversionReportAttributionType
 import model.Error
@@ -19,7 +19,7 @@ import model.Granularity
 import java.time.LocalDate
 import model.MetricsResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @Singleton
 class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends AbstractController(cc) {
   /**
@@ -105,7 +105,7 @@ class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends 
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/ads/analytics?startDate=[value]&endDate=[value]&adIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]
+    * GET /v5/ad_accounts/:adAccountId/ads/analytics?startDate=[value]&endDate=[value]&adIds=[value]&columns=[value]&granularity=[value]&clickWindowDays=[value]&engagementWindowDays=[value]&viewWindowDays=[value]&conversionReportTime=[value]&pinIds=[value]&campaignIds=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adsAnalytics(adAccountId: String): Action[AnyContent] = Action { request =>
@@ -124,9 +124,6 @@ class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends 
         
       val adIds = request.queryString.get("ad_ids")
         .map(_.toList)
-        .getOrElse {
-          throw new OpenApiExceptions.MissingRequiredParameterException("ad_ids", "query string")
-        }
         
       val columns = request.getQueryString("columns")
         .map(values => splitCollectionParam(values, "csv"))
@@ -151,7 +148,13 @@ class AdsApiController @Inject()(cc: ControllerComponents, api: AdsApi) extends 
         
       val conversionReportTime = request.getQueryString("conversion_report_time")
         
-      api.adsAnalytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+      val pinIds = request.queryString.get("pin_ids")
+        .map(_.toList)
+        
+      val campaignIds = request.queryString.get("campaign_ids")
+        .map(_.toList)
+        
+      api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds)
     }
 
     val result = executeApi()

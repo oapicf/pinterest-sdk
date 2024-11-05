@@ -20,8 +20,9 @@ import play.api.libs.json._
   * @param salesforceOrderId OrderId in SFDC
   * @param salesforceOrderLineId OrderLineId in SFDC
   * @param adsManagerOrderLineId Ads manager OrderLineId
+  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class SSIOEditInsertionOrderRequest(
   startDate: Option[String],
   endDate: Option[String],
@@ -39,9 +40,33 @@ case class SSIOEditInsertionOrderRequest(
   salesforceOrderId: Option[String],
   salesforceOrderLineId: Option[String],
   adsManagerOrderLineId: Option[String]
+  additionalProperties: 
 )
 
 object SSIOEditInsertionOrderRequest {
-  implicit lazy val sSIOEditInsertionOrderRequestJsonFormat: Format[SSIOEditInsertionOrderRequest] = Json.format[SSIOEditInsertionOrderRequest]
+  implicit lazy val sSIOEditInsertionOrderRequestJsonFormat: Format[SSIOEditInsertionOrderRequest] = {
+    val realJsonFormat = Json.format[SSIOEditInsertionOrderRequest]
+    val declaredPropNames = Set("startDate", "endDate", "poNumber", "budgetAmount", "billingContactFirstname", "billingContactLastname", "billingContactEmail", "mediaContactFirstname", "mediaContactLastname", "mediaContactEmail", "agencyLink", "userEmail", "oracleLineId", "salesforceOrderId", "salesforceOrderLineId", "adsManagerOrderLineId")
+    
+    Format(
+      Reads {
+        case JsObject(xs) =>
+          val declaredProps = xs.filterKeys(declaredPropNames)
+          val additionalProps = JsObject(xs -- declaredPropNames)
+          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
+          val newObj = JsObject(restructuredProps)
+          realJsonFormat.reads(newObj)
+        case _ =>
+          JsError("error.expected.jsobject")
+      },
+      Writes { sSIOEditInsertionOrderRequest =>
+        val jsObj = realJsonFormat.writes(sSIOEditInsertionOrderRequest)
+        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
+        val declaredProps = jsObj - "additionalProperties"
+        val newObj = declaredProps ++ additionalProps
+        newObj
+      }
+    )
+  }
 }
 

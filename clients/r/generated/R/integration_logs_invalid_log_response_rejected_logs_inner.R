@@ -21,8 +21,7 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
     `field` = NULL,
     `value` = NULL,
     `reason` = NULL,
-    #' Initialize a new IntegrationLogsInvalidLogResponseRejectedLogsInner class.
-    #'
+
     #' @description
     #' Initialize a new IntegrationLogsInvalidLogResponseRejectedLogsInner class.
     #'
@@ -31,7 +30,6 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
     #' @param reason The reason the value is invalid.
     #' @param log_index Index of the log in the batch.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`field`, `value`, `reason`, `log_index` = NULL, ...) {
       if (!missing(`field`)) {
         if (!(is.character(`field`) && length(`field`) == 1)) {
@@ -58,13 +56,11 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
         self$`log_index` <- `log_index`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationLogsInvalidLogResponseRejectedLogsInner in JSON format
-    #' @export
     toJSON = function() {
       IntegrationLogsInvalidLogResponseRejectedLogsInnerObject <- list()
       if (!is.null(self$`log_index`)) {
@@ -85,14 +81,12 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
       }
       IntegrationLogsInvalidLogResponseRejectedLogsInnerObject
     },
-    #' Deserialize JSON string into an instance of IntegrationLogsInvalidLogResponseRejectedLogsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationLogsInvalidLogResponseRejectedLogsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationLogsInvalidLogResponseRejectedLogsInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`log_index`)) {
@@ -109,13 +103,11 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationLogsInvalidLogResponseRejectedLogsInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`log_index`)) {
@@ -154,14 +146,12 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of IntegrationLogsInvalidLogResponseRejectedLogsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationLogsInvalidLogResponseRejectedLogsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationLogsInvalidLogResponseRejectedLogsInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`log_index` <- this_object$`log_index`
@@ -170,13 +160,11 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
       self$`reason` <- this_object$`reason`
       self
     },
-    #' Validate JSON input with respect to IntegrationLogsInvalidLogResponseRejectedLogsInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to IntegrationLogsInvalidLogResponseRejectedLogsInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `field`
@@ -204,23 +192,19 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for IntegrationLogsInvalidLogResponseRejectedLogsInner: the required field `reason` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of IntegrationLogsInvalidLogResponseRejectedLogsInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `field` is null
       if (is.null(self$`field`)) {
@@ -239,13 +223,11 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `field` is null
@@ -265,12 +247,9 @@ IntegrationLogsInvalidLogResponseRejectedLogsInner <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

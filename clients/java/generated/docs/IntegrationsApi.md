@@ -390,7 +390,7 @@ public class Example {
 
     IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       IntegrationsGetList200Response result = apiInstance.integrationsGetList(bookmark, pageSize);
       System.out.println(result);
@@ -410,7 +410,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 

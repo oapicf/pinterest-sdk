@@ -32,5 +32,8 @@ data class IntegrationLogsRequest (
     @Json(name = "logs")
     val logs: kotlin.collections.List<IntegrationLog>
 
-)
+) {
+
+
+}
 

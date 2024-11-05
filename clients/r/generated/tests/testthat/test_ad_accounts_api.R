@@ -33,7 +33,7 @@ test_that("AdAccountTargetingAnalyticsGet", {
   # @param ad_account_id character Unique identifier of an ad account.
   # @param start_date character Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param end_date character Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param targeting_types array[AdsAnalyticsTargetingType] Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+  # @param targeting_types array[AdsAnalyticsTargetingType] Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   # @param columns array[character] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
   # @param granularity Granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
   # @param click_window_days integer Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
@@ -77,7 +77,7 @@ test_that("AdAccountsList", {
   # List ad accounts
   # Get a list of the ad_accounts that the \&quot;operation user_account\&quot; has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param include_shared_accounts character Include shared ad accounts (optional)
   # @return [AdAccountsList200Response]
 
@@ -157,7 +157,7 @@ test_that("SandboxDelete", {
   # tests for SandboxDelete
   # base path: https://api.pinterest.com/v5
   # Delete ads data for ad account in API Sandbox
-  # Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+  # Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
   # @param ad_account_id character Unique identifier of an ad account.
   # @return [character]
 
@@ -171,7 +171,7 @@ test_that("TemplatesList", {
   # List templates
   # Gets all Templates associated with an ad account ID.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
   # @return [TemplatesList200Response]

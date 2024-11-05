@@ -3,9 +3,9 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.BatchOperation
+open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.Country
 open OpenAPI.Model.ItemDeleteBatchRecord
-open OpenAPI.Model.Language
 
 module CatalogsItemsDeleteBatchRequest =
 
@@ -14,7 +14,7 @@ module CatalogsItemsDeleteBatchRequest =
 
   type CatalogsItemsDeleteBatchRequest = {
     Country : Country;
-    Language : Language;
+    Language : CatalogsItemsRequestLanguage;
     Operation : BatchOperation;
     Items : ItemDeleteBatchRecord[];
   }

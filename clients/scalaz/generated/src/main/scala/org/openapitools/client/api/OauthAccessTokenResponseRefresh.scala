@@ -23,17 +23,20 @@ object OauthAccessTokenResponseRefresh {
   sealed trait ResponseType
   case object AuthorizationCode extends ResponseType
   case object RefreshToken extends ResponseType
+  case object ClientCredentials extends ResponseType
 
   object ResponseType {
     def toResponseType(s: String): Option[ResponseType] = s match {
       case "AuthorizationCode" => Some(AuthorizationCode)
       case "RefreshToken" => Some(RefreshToken)
+      case "ClientCredentials" => Some(ClientCredentials)
       case _ => None
     }
 
     def fromResponseType(x: ResponseType): String = x match {
       case AuthorizationCode => "AuthorizationCode"
       case RefreshToken => "RefreshToken"
+      case ClientCredentials => "ClientCredentials"
     }
   }
 

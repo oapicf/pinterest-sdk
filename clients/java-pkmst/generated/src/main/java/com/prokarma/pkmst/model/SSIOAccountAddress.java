@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * SSIOAccountAddress
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountAddress   {
   @JsonProperty("display")
   private String display;
@@ -33,10 +33,10 @@ public class SSIOAccountAddress   {
     return this;
   }
 
-   /**
+  /**
    * Address display
    * @return display
-  **/
+   */
   @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
   public String getDisplay() {
     return display;
@@ -51,10 +51,10 @@ public class SSIOAccountAddress   {
     return this;
   }
 
-   /**
+  /**
    * Purpose for which the address is used, usually Billing or Businness
    * @return purpose
-  **/
+   */
   @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
   public String getPurpose() {
     return purpose;
@@ -69,10 +69,10 @@ public class SSIOAccountAddress   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce id for address
    * @return addressId
-  **/
+   */
   @ApiModelProperty(example = "a1C1N000004MUrLUAW", value = "Salesforce id for address")
   public String getAddressId() {
     return addressId;
@@ -87,10 +87,10 @@ public class SSIOAccountAddress   {
     return this;
   }
 
-   /**
+  /**
    * Legal entity for this insertion order
    * @return orderLegalEntity
-  **/
+   */
   @ApiModelProperty(example = "PIN US OU", value = "Legal entity for this insertion order")
   public String getOrderLegalEntity() {
     return orderLegalEntity;

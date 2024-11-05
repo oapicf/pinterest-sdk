@@ -18,7 +18,7 @@ import java.util.List;
  * RelatedTermsRelatedTermsListInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RelatedTermsRelatedTermsListInner   {
   @JsonProperty("term")
   private String term;
@@ -32,10 +32,10 @@ public class RelatedTermsRelatedTermsListInner   {
     return this;
   }
 
-   /**
+  /**
    * Get term
    * @return term
-  **/
+   */
   @ApiModelProperty(example = "clothes", value = "")
   public String getTerm() {
     return term;
@@ -58,10 +58,10 @@ public class RelatedTermsRelatedTermsListInner   {
     return this;
   }
 
-   /**
+  /**
    * Get relatedTerms
    * @return relatedTerms
-  **/
+   */
   @ApiModelProperty(example = "[\"shoes\",\"cute clothes\"]", value = "")
   public List<String> getRelatedTerms() {
     return relatedTerms;

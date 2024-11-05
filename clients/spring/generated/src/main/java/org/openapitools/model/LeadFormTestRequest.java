@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "LeadFormTestRequest", description = "Request to create test data for lead data test API.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LeadFormTestRequest {
 
   @Valid
@@ -55,7 +55,7 @@ public class LeadFormTestRequest {
   /**
    * Test lead answers. Should follow the creation order.
    * @return answers
-  */
+   */
   @NotNull 
   @Schema(name = "answers", example = "[\"John\",\"Doe\",\"abc@email.com\",\"987654321\"]", description = "Test lead answers. Should follow the creation order.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("answers")

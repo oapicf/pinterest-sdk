@@ -26,6 +26,10 @@
         class = NSClassFromString(@"OAIOauthAccessTokenResponseCode");
     }
     else
+    if ([discriminatedClassName isEqualToString:@"client_credentials"]) {
+        class = NSClassFromString(@"OAIOauthAccessTokenResponseClientCredentials");
+    }
+    else
     if ([discriminatedClassName isEqualToString:@"everlasting_refresh"]) {
         class = NSClassFromString(@"OAIOauthAccessTokenResponseEverlastingRefresh");
     }

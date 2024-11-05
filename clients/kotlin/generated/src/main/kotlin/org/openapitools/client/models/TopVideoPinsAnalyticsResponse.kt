@@ -60,5 +60,6 @@ data class TopVideoPinsAnalyticsResponse (
         @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START");
     }
+
 }
 

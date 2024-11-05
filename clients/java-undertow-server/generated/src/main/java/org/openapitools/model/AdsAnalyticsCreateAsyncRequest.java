@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -38,7 +38,7 @@ import org.openapitools.model.ReportingColumnAsync;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   
   private String startDate;
@@ -48,22 +48,44 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private ConversionAttributionWindowDays engagementWindowDays = ConversionAttributionWindowDays.NUMBER_30;
   private ConversionAttributionWindowDays viewWindowDays = ConversionAttributionWindowDays.NUMBER_1;
   private ConversionReportTimeType conversionReportTime = "TIME_OF_AD_ACTION";
-  private List<ConversionReportAttributionType> attributionTypes;
-  private List<String> campaignIds;
-  private List<CampaignSummaryStatus> campaignStatuses;
-  private List<ObjectiveType> campaignObjectiveTypes;
-  private List<String> adGroupIds;
-  private List<AdGroupSummaryStatus> adGroupStatuses;
-  private List<String> adIds;
-  private List<PinPromotionSummaryStatus> adStatuses;
-  private List<String> productGroupIds;
-  private List<ProductGroupSummaryStatus> productGroupStatuses;
-  private List<String> productItemIds;
-  private List<AdsAnalyticsTargetingType> targetingTypes;
-  private List<AdsAnalyticsMetricsFilter> metricsFilters;
+  private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
+  private List<String> campaignIds = new ArrayList<>();
+  private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
+  private List<ObjectiveType> campaignObjectiveTypes = new ArrayList<>();
+  private List<String> adGroupIds = new ArrayList<>();
+  private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
+  private List<String> adIds = new ArrayList<>();
+  private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
+  private List<String> productGroupIds = new ArrayList<>();
+  private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
+  private List<String> productItemIds = new ArrayList<>();
+  private List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
+  private List<AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
   private List<ReportingColumnAsync> columns = new ArrayList<>();
   private MetricsReportingLevel level;
   private DataOutputFormat reportFormat = "JSON";
+
+
+  public enum PrimarySortEnum {
+    ID("BY_ID"),
+    DATE("BY_DATE");
+
+    private String value;
+
+    PrimarySortEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private PrimarySortEnum primarySort;
+  private Integer startHour;
+  private Integer endHour;
 
   /**
    * Metric report start date (UTC). Format: YYYY-MM-DD
@@ -390,7 +412,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   /**
-   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
    */
   public AdsAnalyticsCreateAsyncRequest targetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
@@ -398,7 +420,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
   @JsonProperty("targeting_types")
   public List<AdsAnalyticsTargetingType> getTargetingTypes() {
     return targetingTypes;
@@ -479,6 +501,64 @@ public class AdsAnalyticsCreateAsyncRequest   {
     this.reportFormat = reportFormat;
   }
 
+  /**
+   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+   */
+  public AdsAnalyticsCreateAsyncRequest primarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "BY_ID", value = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
+  @JsonProperty("primary_sort")
+  public PrimarySortEnum getPrimarySort() {
+    return primarySort;
+  }
+  public void setPrimarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+  }
+
+  /**
+   * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   */
+  public AdsAnalyticsCreateAsyncRequest startHour(Integer startHour) {
+    this.startHour = startHour;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
+  @JsonProperty("start_hour")
+  public Integer getStartHour() {
+    return startHour;
+  }
+  public void setStartHour(Integer startHour) {
+    this.startHour = startHour;
+  }
+
+  /**
+   * Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   */
+  public AdsAnalyticsCreateAsyncRequest endHour(Integer endHour) {
+    this.endHour = endHour;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
+  @JsonProperty("end_hour")
+  public Integer getEndHour() {
+    return endHour;
+  }
+  public void setEndHour(Integer endHour) {
+    this.endHour = endHour;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -511,12 +591,15 @@ public class AdsAnalyticsCreateAsyncRequest   {
         Objects.equals(metricsFilters, adsAnalyticsCreateAsyncRequest.metricsFilters) &&
         Objects.equals(columns, adsAnalyticsCreateAsyncRequest.columns) &&
         Objects.equals(level, adsAnalyticsCreateAsyncRequest.level) &&
-        Objects.equals(reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat);
+        Objects.equals(reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat) &&
+        Objects.equals(primarySort, adsAnalyticsCreateAsyncRequest.primarySort) &&
+        Objects.equals(startHour, adsAnalyticsCreateAsyncRequest.startHour) &&
+        Objects.equals(endHour, adsAnalyticsCreateAsyncRequest.endHour);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat);
+    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat, primarySort, startHour, endHour);
   }
 
   @Override
@@ -547,6 +630,9 @@ public class AdsAnalyticsCreateAsyncRequest   {
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    reportFormat: ").append(toIndentedString(reportFormat)).append("\n");
+    sb.append("    primarySort: ").append(toIndentedString(primarySort)).append("\n");
+    sb.append("    startHour: ").append(toIndentedString(startHour)).append("\n");
+    sb.append("    endHour: ").append(toIndentedString(endHour)).append("\n");
     sb.append("}");
     return sb.toString();
   }

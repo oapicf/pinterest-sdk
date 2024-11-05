@@ -19,7 +19,7 @@ import java.util.List;
  * CampaignCreateResponseItem
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignCreateResponseItem   {
   @JsonProperty("data")
   private CampaignCreateResponseData data;
@@ -33,10 +33,10 @@ public class CampaignCreateResponseItem   {
     return this;
   }
 
-   /**
+  /**
    * Get data
    * @return data
-  **/
+   */
   @ApiModelProperty(value = "")
   public CampaignCreateResponseData getData() {
     return data;
@@ -59,10 +59,10 @@ public class CampaignCreateResponseItem   {
     return this;
   }
 
-   /**
+  /**
    * Get exceptions
    * @return exceptions
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<Exception> getExceptions() {
     return exceptions;

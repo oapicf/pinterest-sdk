@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * SSIOInsertionOrderStatus
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOInsertionOrderStatus {
 
   private String pinOrderId;
@@ -38,7 +38,7 @@ public class SSIOInsertionOrderStatus {
   /**
    * Salesforce order id
    * @return pinOrderId
-  */
+   */
   
   @Schema(name = "pin_order_id", example = "0Q01N0000015hekSAB", description = "Salesforce order id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_order_id")
@@ -58,7 +58,7 @@ public class SSIOInsertionOrderStatus {
   /**
    * Salesforce insertion order status
    * @return status
-  */
+   */
   
   @Schema(name = "status", example = "Approved", description = "Salesforce insertion order status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -78,7 +78,7 @@ public class SSIOInsertionOrderStatus {
   /**
    * Salesforce insertion order creation time
    * @return creationTime
-  */
+   */
   
   @Schema(name = "creation_time", example = "2017-06-21T23:11:11.000Z", description = "Salesforce insertion order creation time", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creation_time")

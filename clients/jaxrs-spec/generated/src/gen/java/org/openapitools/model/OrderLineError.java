@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OrderLineError")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLineError   {
-  private @Valid OrderLine data;
-  private @Valid List<String> errorMessages;
+  private OrderLine data;
+  private @Valid List<String> errorMessages = new ArrayList<>();
 
   /**
    **/
@@ -34,7 +34,7 @@ public class OrderLineError   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public OrderLine getData() {
+  @Valid public OrderLine getData() {
     return data;
   }
 

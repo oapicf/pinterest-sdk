@@ -7,7 +7,7 @@ goog.provide('API.Client.SummaryPin');
 API.Client.SummaryPin = function() {}
 
 /**
- * @type {!API.Client.SummaryPin_media}
+ * @type {!API.Client.PinMedia}
  * @export
  */
 API.Client.SummaryPin.prototype.media;

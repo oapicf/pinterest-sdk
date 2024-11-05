@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemValidationEvent", description = "Object describing an item validation event")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemValidationEvent {
 
   private String attribute;
@@ -36,7 +36,7 @@ public class ItemValidationEvent {
   /**
    * The attribute that the item validation event references
    * @return attribute
-  */
+   */
   
   @Schema(name = "attribute", example = "title", description = "The attribute that the item validation event references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attribute")
@@ -56,7 +56,7 @@ public class ItemValidationEvent {
   /**
    * The event code that the item validation event references
    * @return code
-  */
+   */
   
   @Schema(name = "code", example = "106", description = "The event code that the item validation event references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
@@ -76,7 +76,7 @@ public class ItemValidationEvent {
   /**
    * Title message describing the item validation event
    * @return message
-  */
+   */
   
   @Schema(name = "message", example = "Title is missing from product metadata.", description = "Title message describing the item validation event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")

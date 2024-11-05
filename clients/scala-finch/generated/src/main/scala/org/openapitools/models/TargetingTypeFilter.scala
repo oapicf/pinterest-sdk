@@ -10,7 +10,7 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param targetingUnderscoretypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+ * @param targetingUnderscoretypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  */
 case class TargetingTypeFilter(targetingUnderscoretypes: Option[Seq[AdsAnalyticsTargetingType]]
                 )

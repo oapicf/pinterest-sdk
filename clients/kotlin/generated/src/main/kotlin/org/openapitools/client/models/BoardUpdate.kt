@@ -51,5 +51,6 @@ data class BoardUpdate (
         @Json(name = "PUBLIC") PUBLIC("PUBLIC"),
         @Json(name = "SECRET") SECRET("SECRET");
     }
+
 }
 

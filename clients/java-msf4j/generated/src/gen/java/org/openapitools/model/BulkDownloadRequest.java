@@ -17,7 +17,7 @@ import org.openapitools.model.BulkOutputFormat;
  * Ad entities to get in bulk request.
  */
 @ApiModel(description = "Ad entities to get in bulk request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequest   {
   @JsonProperty("entity_types")
   private List<BulkEntityType> entityTypes = null;
@@ -41,7 +41,7 @@ public class BulkDownloadRequest   {
 
   public BulkDownloadRequest addEntityTypesItem(BulkEntityType entityTypesItem) {
     if (this.entityTypes == null) {
-      this.entityTypes = ;
+      this.entityTypes = new ArrayList<>();
     }
     this.entityTypes.add(entityTypesItem);
     return this;
@@ -67,7 +67,7 @@ public class BulkDownloadRequest   {
 
   public BulkDownloadRequest addEntityIdsItem(String entityIdsItem) {
     if (this.entityIds == null) {
-      this.entityIds = ;
+      this.entityIds = new ArrayList<>();
     }
     this.entityIds.add(entityIdsItem);
     return this;

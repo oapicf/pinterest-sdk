@@ -15,7 +15,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * TermsOfService
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TermsOfService   {
   @JsonProperty("id")
   private String id;
@@ -34,10 +34,10 @@ public class TermsOfService   {
     return this;
   }
 
-   /**
+  /**
    * The ID of the terms of service
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
   public String getId() {
     return id;
@@ -52,10 +52,10 @@ public class TermsOfService   {
     return this;
   }
 
-   /**
+  /**
    * The terms of service content
    * @return html
-  **/
+   */
   @ApiModelProperty(example = "example test", value = "The terms of service content")
   public String getHtml() {
     return html;
@@ -70,10 +70,10 @@ public class TermsOfService   {
     return this;
   }
 
-   /**
+  /**
    * Whether the ad account has accepted terms of service.
    * @return hasAccepted
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Whether the ad account has accepted terms of service.")
   public Boolean getHasAccepted() {
     return hasAccepted;
@@ -88,10 +88,10 @@ public class TermsOfService   {
     return this;
   }
 
-   /**
+  /**
    * The ID of the ad account.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
   public String getAdAccountId() {
     return adAccountId;

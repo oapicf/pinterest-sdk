@@ -21,7 +21,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "MediaUpload_allOf_upload_parameters", description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
 @JsonTypeName("MediaUpload_allOf_upload_parameters")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadAllOfUploadParameters {
 
   private String xAmzDate;
@@ -48,7 +48,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get xAmzDate
    * @return xAmzDate
-  */
+   */
   
   @Schema(name = "x-amz-date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-date")
@@ -68,7 +68,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get xAmzSignature
    * @return xAmzSignature
-  */
+   */
   
   @Schema(name = "x-amz-signature", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-signature")
@@ -88,7 +88,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get xAmzSecurityToken
    * @return xAmzSecurityToken
-  */
+   */
   
   @Schema(name = "x-amz-security-token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-security-token")
@@ -108,7 +108,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get xAmzAlgorithm
    * @return xAmzAlgorithm
-  */
+   */
   
   @Schema(name = "x-amz-algorithm", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-algorithm")
@@ -128,7 +128,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get key
    * @return key
-  */
+   */
   
   @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
@@ -148,7 +148,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get policy
    * @return policy
-  */
+   */
   
   @Schema(name = "policy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("policy")
@@ -168,7 +168,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get xAmzCredential
    * @return xAmzCredential
-  */
+   */
   
   @Schema(name = "x-amz-credential", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-credential")
@@ -188,7 +188,7 @@ public class MediaUploadAllOfUploadParameters {
   /**
    * Get contentType
    * @return contentType
-  */
+   */
   
   @Schema(name = "Content-Type", example = "multipart/form-data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("Content-Type")

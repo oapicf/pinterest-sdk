@@ -1,9 +1,12 @@
 package org.openapitools.server.api.verticle;
 
 import org.openapitools.server.api.model.Error;
+import org.openapitools.server.api.model.LeadFormArrayResponse;
+import org.openapitools.server.api.model.LeadFormCreateRequest;
 import org.openapitools.server.api.model.LeadFormResponse;
 import org.openapitools.server.api.model.LeadFormTestRequest;
 import org.openapitools.server.api.model.LeadFormTestResponse;
+import org.openapitools.server.api.model.LeadFormUpdateRequest;
 import org.openapitools.server.api.model.LeadFormsList200Response;
 import org.openapitools.server.api.MainApiException;
 
@@ -20,7 +23,13 @@ public interface LeadFormsApi  {
     //lead_form_test/create
     void leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest, Handler<AsyncResult<LeadFormTestResponse>> handler);
 
+    //lead_forms/create
+    void leadFormsCreate(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest, Handler<AsyncResult<LeadFormArrayResponse>> handler);
+
     //lead_forms/list
     void leadFormsList(String adAccountId, Integer pageSize, String order, String bookmark, Handler<AsyncResult<LeadFormsList200Response>> handler);
+
+    //lead_forms/update
+    void leadFormsUpdate(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest, Handler<AsyncResult<LeadFormArrayResponse>> handler);
 
 }

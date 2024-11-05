@@ -10,9 +10,9 @@ package org.openapitools.server.model
  * @param items Array with catalogs item operations for example: ''null''
 */
 final case class CatalogsRetailBatchRequest (
-  catalogType: CatalogsType,
+  catalogType: String,
   country: Country,
-  language: Language,
+  language: CatalogsItemsRequestLanguage,
   items: Seq[CatalogsRetailBatchRequestItemsInner]
 )
 

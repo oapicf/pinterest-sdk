@@ -21,7 +21,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```java
@@ -92,7 +92,7 @@ public class Example {
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```java
@@ -116,7 +116,7 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       AdsCreditsDiscountsGet200Response result = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -137,7 +137,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -164,7 +164,7 @@ public class Example {
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```java
@@ -189,7 +189,7 @@ public class Example {
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     Boolean isActive = true; // Boolean | Return active billing profiles, if false return all billing profiles.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       BillingProfilesGet200Response result = apiInstance.billingProfilesGet(adAccountId, isActive, bookmark, pageSize);
       System.out.println(result);
@@ -211,7 +211,7 @@ public class Example {
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **isActive** | **Boolean**| Return active billing profiles, if false return all billing profiles. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -473,7 +473,7 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       SsioInsertionOrdersStatusGetByAdAccount200Response result = apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize);
       System.out.println(result);
@@ -494,7 +494,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -617,7 +617,7 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     String pinOrderId = "0Q01N0000015hekSVDFDC"; // String | The pin order id associated with the ssio insertino order
     try {
       SsioOrderLinesGetByAdAccount200Response result = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId);
@@ -639,7 +639,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **pinOrderId** | **String**| The pin order id associated with the ssio insertino order | [optional] |
 
 ### Return type

@@ -1,12 +1,14 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsFeedCredentials
 import org.openapitools.model.CatalogsFeedProcessingSchedule
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.model.CatalogsFormat
+import org.openapitools.model.CatalogsStatus
 import org.openapitools.model.CatalogsType
 import org.openapitools.model.NullableCurrency
 import javax.validation.constraints.DecimalMax
@@ -31,6 +33,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param credentials 
  * @param preferredProcessingSchedule 
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
  */
 data class CatalogsHotelFeedsCreateRequest(
 
@@ -67,8 +70,12 @@ data class CatalogsHotelFeedsCreateRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
-    @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
-) {
+    @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("status") val status: CatalogsStatus? = null
+    ) {
 
 }
 

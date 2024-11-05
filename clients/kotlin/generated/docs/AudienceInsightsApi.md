@@ -2,10 +2,10 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**audienceInsightsGet**](AudienceInsightsApi.md#audienceInsightsGet) | **GET** /ad_accounts/{ad_account_id}/audience_insights | Get audience insights
-[**audienceInsightsScopeAndTypeGet**](AudienceInsightsApi.md#audienceInsightsScopeAndTypeGet) | **GET** /ad_accounts/{ad_account_id}/insights/audiences | Get audience insights scope and type
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**audienceInsightsGet**](AudienceInsightsApi.md#audienceInsightsGet) | **GET** /ad_accounts/{ad_account_id}/audience_insights | Get audience insights |
+| [**audienceInsightsScopeAndTypeGet**](AudienceInsightsApi.md#audienceInsightsScopeAndTypeGet) | **GET** /ad_accounts/{ad_account_id}/insights/audiences | Get audience insights scope and type |
 
 
 <a id="audienceInsightsGet"></a>
@@ -38,11 +38,10 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. |
- **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to YOUR_TOTAL_AUDIENCE] [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE]
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to YOUR_TOTAL_AUDIENCE] [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE] |
 
 ### Return type
 
@@ -88,10 +87,9 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **kotlin.String**| Unique identifier of an ad account. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
 

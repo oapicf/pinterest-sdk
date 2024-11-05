@@ -37,7 +37,7 @@ data class QuizPinResult(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("result_id") val resultId: java.math.BigDecimal? = null
-) {
+    ) {
 
 }
 

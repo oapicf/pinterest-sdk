@@ -25,7 +25,7 @@ data class AdPreviewCreateFromImage(
 
     @Schema(example = "My Preview Image", required = true, description = "Title displayed below ad.")
     @get:JsonProperty("title", required = true) val title: kotlin.String
-) {
+    ) {
 
 }
 

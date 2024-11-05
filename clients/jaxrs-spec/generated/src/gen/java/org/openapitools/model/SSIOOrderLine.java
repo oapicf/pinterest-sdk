@@ -19,30 +19,30 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOOrderLine")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOOrderLine   {
-  private @Valid String salesforceOrderLineId;
-  private @Valid String adsManagerOrderLineId;
-  private @Valid String pinOrderId;
-  private @Valid String lastModifiedDateTime;
-  private @Valid LocalDate startDate;
-  private @Valid LocalDate endDate;
-  private @Valid String billToCompanyName;
-  private @Valid String billingContactFirstname;
-  private @Valid String billingContactLastname;
-  private @Valid String billingContactEmail;
-  private @Valid String mediaContactEmail;
-  private @Valid String mediaContactFirstname;
-  private @Valid String mediaContactLastname;
-  private @Valid Currency currencyInfo;
-  private @Valid String agencyLink;
-  private @Valid String poNumber;
-  private @Valid String orderName;
-  private @Valid String pmpName;
-  private @Valid String acceptedTermsId;
-  private @Valid String acceptedTermsTime;
-  private @Valid BigDecimal budgetAmount;
-  private @Valid BigDecimal estimatedMonthlySpend;
+  private String salesforceOrderLineId;
+  private String adsManagerOrderLineId;
+  private String pinOrderId;
+  private String lastModifiedDateTime;
+  private LocalDate startDate;
+  private LocalDate endDate;
+  private String billToCompanyName;
+  private String billingContactFirstname;
+  private String billingContactLastname;
+  private String billingContactEmail;
+  private String mediaContactEmail;
+  private String mediaContactFirstname;
+  private String mediaContactLastname;
+  private Currency currencyInfo;
+  private String agencyLink;
+  private String poNumber;
+  private String orderName;
+  private String pmpName;
+  private String acceptedTermsId;
+  private String acceptedTermsTime;
+  private BigDecimal budgetAmount;
+  private BigDecimal estimatedMonthlySpend;
 
   /**
    * OrderLineId in SFDC
@@ -115,7 +115,7 @@ public class SSIOOrderLine   {
   
   @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "Last modified date.")
   @JsonProperty("last_modified_date_time")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")  public String getLastModifiedDateTime() {
+   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")public String getLastModifiedDateTime() {
     return lastModifiedDateTime;
   }
 
@@ -434,7 +434,7 @@ public class SSIOOrderLine   {
   
   @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
   @JsonProperty("accepted_terms_time")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")  public String getAcceptedTermsTime() {
+   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")public String getAcceptedTermsTime() {
     return acceptedTermsTime;
   }
 
@@ -454,7 +454,7 @@ public class SSIOOrderLine   {
   
   @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
   @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
+  @Valid public BigDecimal getBudgetAmount() {
     return budgetAmount;
   }
 
@@ -474,7 +474,7 @@ public class SSIOOrderLine   {
   
   @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
   @JsonProperty("estimated_monthly_spend")
-  public BigDecimal getEstimatedMonthlySpend() {
+  @Valid public BigDecimal getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;
   }
 

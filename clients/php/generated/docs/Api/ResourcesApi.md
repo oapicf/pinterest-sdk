@@ -77,7 +77,7 @@ deliveryMetricsGet($report_type): \OpenAPI\Client\Model\DeliveryMetricsResponse
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 
@@ -197,7 +197,7 @@ leadFormQuestionsGet()
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 
@@ -308,7 +308,7 @@ try {
 ## `targetingOptionsGet()`
 
 ```php
-targetingOptionsGet($targeting_type, $client_id, $oauth_signature, $timestamp): object[]
+targetingOptionsGet($targeting_type, $client_id, $oauth_signature, $timestamp, $ad_account_id): object[]
 ```
 
 Get targeting options
@@ -336,9 +336,10 @@ $targeting_type = APPTYPE; // string | Public targeting type.
 $client_id = 1094834; // string | Client ID.
 $oauth_signature = 8209f; // string | Oauth signature
 $timestamp = 1618338184277; // string | Timestamp
+$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->targetingOptionsGet($targeting_type, $client_id, $oauth_signature, $timestamp);
+    $result = $apiInstance->targetingOptionsGet($targeting_type, $client_id, $oauth_signature, $timestamp, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ResourcesApi->targetingOptionsGet: ', $e->getMessage(), PHP_EOL;
@@ -353,6 +354,7 @@ try {
 | **client_id** | **string**| Client ID. | [optional] |
 | **oauth_signature** | **string**| Oauth signature | [optional] |
 | **timestamp** | **string**| Timestamp | [optional] |
+| **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 

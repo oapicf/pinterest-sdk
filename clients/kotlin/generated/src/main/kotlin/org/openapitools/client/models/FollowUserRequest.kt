@@ -32,5 +32,8 @@ data class FollowUserRequest (
     @Json(name = "auto_follow")
     val autoFollow: kotlin.Boolean? = false
 
-)
+) {
+
+
+}
 

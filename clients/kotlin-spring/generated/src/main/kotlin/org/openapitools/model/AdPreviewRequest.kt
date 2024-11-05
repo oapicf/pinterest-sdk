@@ -31,7 +31,7 @@ data class AdPreviewRequest(
 
     @Schema(example = "7389479023", required = true, description = "Pin ID.")
     @get:JsonProperty("pin_id", required = true) val pinId: kotlin.String
-) {
+    ) {
 
 }
 

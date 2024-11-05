@@ -8,5 +8,5 @@ type CatalogsCreateRetailItem struct {
 
 	Operation string `json:"operation"`
 
-	Attributes ItemAttributes `json:"attributes"`
+	Attributes ItemAttributesRequest `json:"attributes"`
 }

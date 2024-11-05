@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionResponseElement;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -25,15 +25,15 @@ import javax.annotation.Generated;
  * ProductGroupPromotionResponseItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionResponseItem {
 
-  private ProductGroupPromotion data;
+  private ProductGroupPromotionResponseElement data;
 
   @Valid
   private JsonNullable<List<@Valid Exception>> exceptions = JsonNullable.<List<@Valid Exception>>undefined();
 
-  public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
+  public ProductGroupPromotionResponseItem data(ProductGroupPromotionResponseElement data) {
     this.data = data;
     return this;
   }
@@ -41,15 +41,15 @@ public class ProductGroupPromotionResponseItem {
   /**
    * Get data
    * @return data
-  */
+   */
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public ProductGroupPromotion getData() {
+  public ProductGroupPromotionResponseElement getData() {
     return data;
   }
 
-  public void setData(ProductGroupPromotion data) {
+  public void setData(ProductGroupPromotionResponseElement data) {
     this.data = data;
   }
 
@@ -69,7 +69,7 @@ public class ProductGroupPromotionResponseItem {
   /**
    * Get exceptions
    * @return exceptions
-  */
+   */
   @Valid 
   @Schema(name = "exceptions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")

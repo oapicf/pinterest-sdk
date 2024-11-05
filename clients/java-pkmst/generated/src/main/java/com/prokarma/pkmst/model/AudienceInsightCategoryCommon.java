@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * AudienceInsightCategoryCommon
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightCategoryCommon   {
   @JsonProperty("key")
   private String key;
@@ -37,10 +37,10 @@ public class AudienceInsightCategoryCommon   {
     return this;
   }
 
-   /**
+  /**
    * Get key
    * @return key
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "")
   public String getKey() {
     return key;
@@ -55,10 +55,10 @@ public class AudienceInsightCategoryCommon   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "travel", value = "")
   public String getName() {
     return name;
@@ -73,10 +73,10 @@ public class AudienceInsightCategoryCommon   {
     return this;
   }
 
-   /**
+  /**
    * Get ratio
    * @return ratio
-  **/
+   */
   @ApiModelProperty(example = "0.551", value = "")
   public BigDecimal getRatio() {
     return ratio;
@@ -91,10 +91,10 @@ public class AudienceInsightCategoryCommon   {
     return this;
   }
 
-   /**
+  /**
    * Get index
    * @return index
-  **/
+   */
   @ApiModelProperty(example = "1.2", value = "")
   public BigDecimal getIndex() {
     return index;
@@ -109,10 +109,10 @@ public class AudienceInsightCategoryCommon   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "")
   public String getId() {
     return id;

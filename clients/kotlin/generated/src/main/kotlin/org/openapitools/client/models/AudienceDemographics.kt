@@ -53,5 +53,8 @@ data class AudienceDemographics (
     @Json(name = "countries")
     val countries: kotlin.collections.List<AudienceDemographicValue>? = null
 
-)
+) {
+
+
+}
 

@@ -27,7 +27,7 @@ public class CatalogsRetailItemErrorResponse   {
 
   private String itemId;
 
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   /**
    **/

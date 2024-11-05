@@ -11,7 +11,7 @@ import org.openapitools.server.api.model.DeliveryMetricsResponseItemsInner;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeliveryMetricsResponse   {
   
-  private List<DeliveryMetricsResponseItemsInner> items;
+  private List<DeliveryMetricsResponseItemsInner> items = new ArrayList<>();
 
   public DeliveryMetricsResponse () {
 

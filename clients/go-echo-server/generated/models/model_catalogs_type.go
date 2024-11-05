@@ -6,4 +6,5 @@ type CatalogsType string
 const (
 	RETAIL CatalogsType = "RETAIL"
 	HOTEL CatalogsType = "HOTEL"
+	CREATIVE_ASSETS CatalogsType = "CREATIVE_ASSETS"
 )

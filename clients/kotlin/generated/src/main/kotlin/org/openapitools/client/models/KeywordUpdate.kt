@@ -24,7 +24,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param id Keyword ID.
  * @param archived Is keyword archived?
- * @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
 
 
@@ -38,9 +38,12 @@ data class KeywordUpdate (
     @Json(name = "archived")
     val archived: kotlin.Boolean? = null,
 
-    /* Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+    /* </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     @Json(name = "bid")
     val bid: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

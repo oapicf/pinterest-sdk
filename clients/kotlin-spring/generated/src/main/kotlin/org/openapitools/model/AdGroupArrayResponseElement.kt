@@ -29,7 +29,7 @@ data class AdGroupArrayResponseElement(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("exceptions") val exceptions: kotlin.collections.List<Exception>? = null
-) {
+    ) {
 
 }
 

@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourcePinURL", description = "Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourcePinURL implements PinMediaSource {
 
   /**
@@ -85,7 +85,7 @@ public class PinMediaSourcePinURL implements PinMediaSource {
   /**
    * Get sourceType
    * @return sourceType
-  */
+   */
   @NotNull 
   @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("source_type")
@@ -105,7 +105,7 @@ public class PinMediaSourcePinURL implements PinMediaSource {
   /**
    * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
    * @return isAffiliateLink
-  */
+   */
   
   @Schema(name = "is_affiliate_link", description = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_affiliate_link")

@@ -37,13 +37,13 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.adult shouldBe ("TODO")
         }
 
-        // to test the property `ageGroup` - The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+        // to test the property `ageGroup` - The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
         should("test ageGroup") {
             // uncomment below to test the property
             //modelInstance.ageGroup shouldBe ("TODO")
         }
 
-        // to test the property `availability` - The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+        // to test the property `availability` - The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
         should("test availability") {
             // uncomment below to test the property
             //modelInstance.availability shouldBe ("TODO")
@@ -127,7 +127,7 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.freeShippingLimit shouldBe ("TODO")
         }
 
-        // to test the property `gender` - The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+        // to test the property `gender` - The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
         should("test gender") {
             // uncomment below to test the property
             //modelInstance.gender shouldBe ("TODO")
@@ -259,13 +259,13 @@ class UpdatableItemAttributesTest : ShouldSpec() {
             //modelInstance.propertySize shouldBe ("TODO")
         }
 
-        // to test the property `sizeSystem` - Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+        // to test the property `sizeSystem` - Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
         should("test sizeSystem") {
             // uncomment below to test the property
             //modelInstance.sizeSystem shouldBe ("TODO")
         }
 
-        // to test the property `sizeType` - Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+        // to test the property `sizeType` - Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
         should("test sizeType") {
             // uncomment below to test the property
             //modelInstance.sizeType shouldBe ("TODO")

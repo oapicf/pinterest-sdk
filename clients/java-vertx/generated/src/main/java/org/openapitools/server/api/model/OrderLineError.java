@@ -12,7 +12,7 @@ import org.openapitools.server.api.model.OrderLine;
 public class OrderLineError   {
   
   private OrderLine data;
-  private List<String> errorMessages;
+  private List<String> errorMessages = new ArrayList<>();
 
   public OrderLineError () {
 

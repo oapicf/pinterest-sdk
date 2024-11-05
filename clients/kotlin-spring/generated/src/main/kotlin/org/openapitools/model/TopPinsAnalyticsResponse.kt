@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability
@@ -34,19 +35,27 @@ data class TopPinsAnalyticsResponse(
 
     @Schema(example = "IMPRESSION", description = "")
     @get:JsonProperty("sort_by") val sortBy: TopPinsAnalyticsResponse.SortBy? = null
-) {
+    ) {
 
     /**
     * 
     * Values: ENGAGEMENT,SAVE,IMPRESSION,OUTBOUND_CLICK,PIN_CLICK
     */
-    enum class SortBy(val value: kotlin.String) {
+    enum class SortBy(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("ENGAGEMENT") ENGAGEMENT("ENGAGEMENT"),
-        @JsonProperty("SAVE") SAVE("SAVE"),
-        @JsonProperty("IMPRESSION") IMPRESSION("IMPRESSION"),
-        @JsonProperty("OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-        @JsonProperty("PIN_CLICK") PIN_CLICK("PIN_CLICK")
+        ENGAGEMENT("ENGAGEMENT"),
+        SAVE("SAVE"),
+        IMPRESSION("IMPRESSION"),
+        OUTBOUND_CLICK("OUTBOUND_CLICK"),
+        PIN_CLICK("PIN_CLICK");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): SortBy {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

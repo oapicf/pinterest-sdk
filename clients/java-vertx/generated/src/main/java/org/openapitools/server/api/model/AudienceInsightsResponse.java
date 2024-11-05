@@ -18,7 +18,7 @@ import org.openapitools.server.api.model.AudienceInsightType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceInsightsResponse   {
   
-  private List<AudienceCategory> categories;
+  private List<AudienceCategory> categories = new ArrayList<>();
   private AudienceDemographics demographics;
   private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
   private String date;

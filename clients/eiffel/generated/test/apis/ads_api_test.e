@@ -16,7 +16,7 @@ feature -- Test routines
     test_ad_previews_create
             -- Create ad preview with pin or image
             --
-            -- Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+            -- Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
         local
             l_response: AD_PREVIEW_URL_RESPONSE
             l_ad_account_id: STRING_32
@@ -40,7 +40,7 @@ feature -- Test routines
             l_ad_ids: LIST [STRING_32]
             l_start_date: DATE
             l_end_date: DATE
-            l_targeting_types: LIST [ADS_ANALYTICS_TARGETING_TYPE]
+            l_targeting_types: LIST [ADS_ANALYTICS_AD_TARGETING_TYPE]
             l_columns: LIST [STRING_32]
             l_granularity: GRANULARITY
             l_click_window_days: INTEGER_32
@@ -54,7 +54,7 @@ feature -- Test routines
             -- create {ARRAYED_LIST [STRING_32]} l_ad_ids.make (2)
             -- l_start_date
             -- l_end_date
-            -- create {ARRAYED_LIST [ADS_ANALYTICS_TARGETING_TYPE]} l_targeting_types.make (2)
+            -- create {ARRAYED_LIST [ADS_ANALYTICS_AD_TARGETING_TYPE]} l_targeting_types.make (2)
             -- create {ARRAYED_LIST [STRING_32]} l_columns.make (2)
             -- l_granularity
 
@@ -65,29 +65,30 @@ feature -- Test routines
     test_ads_analytics
             -- Get ad analytics
             --
-            -- Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+            -- Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
         local
             l_response: LIST [ADS_ANALYTICS_RESPONSE_INNER]
             l_ad_account_id: STRING_32
             l_start_date: DATE
             l_end_date: DATE
-            l_ad_ids: LIST [STRING_32]
             l_columns: LIST [STRING_32]
             l_granularity: GRANULARITY
+            l_ad_ids: LIST [STRING_32]
             l_click_window_days: INTEGER_32
             l_engagement_window_days: INTEGER_32
             l_view_window_days: INTEGER_32
             l_conversion_report_time: STRING_32
+            l_pin_ids: LIST [STRING_32]
+            l_campaign_ids: LIST [STRING_32]
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
             -- l_start_date
             -- l_end_date
-            -- create {ARRAYED_LIST [STRING_32]} l_ad_ids.make (2)
             -- create {ARRAYED_LIST [STRING_32]} l_columns.make (2)
             -- l_granularity
 
-            -- l_response := api.ads_analytics(l_ad_account_id, l_start_date, l_end_date, l_ad_ids, l_columns, l_granularity, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time)
+            -- l_response := api.ads_analytics(l_ad_account_id, l_start_date, l_end_date, l_columns, l_granularity, l_ad_ids, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time, l_pin_ids, l_campaign_ids)
             assert ("not_implemented", False)
         end
 

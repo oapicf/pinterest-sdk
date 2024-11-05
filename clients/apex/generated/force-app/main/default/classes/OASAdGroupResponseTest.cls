@@ -88,6 +88,7 @@ private class OASAdGroupResponseTest {
         System.assertEquals('campaignId', x-property-mappings.get('campaign_id'));
         System.assertEquals('billableEvent', x-property-mappings.get('billable_event'));
         System.assertEquals('bidStrategyType', x-property-mappings.get('bid_strategy_type'));
+        System.assertEquals('targetingTemplateIds', x-property-mappings.get('targeting_template_ids'));
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
         System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
@@ -100,6 +101,7 @@ private class OASAdGroupResponseTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASAdGroupResponse adGroupResponse = new OASAdGroupResponse();
+        System.assertEquals(new List<String>(), adGroupResponse.targetingTemplateIds);
         System.assertEquals('adgroup', adGroupResponse.type);
         System.assertEquals(null, adGroupResponse.name);
         System.assertEquals(null, adGroupResponse.status);

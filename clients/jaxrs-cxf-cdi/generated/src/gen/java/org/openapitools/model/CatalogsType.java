@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum CatalogsType {
 
-    @JsonProperty("RETAIL") RETAIL(String.valueOf("RETAIL")), @JsonProperty("HOTEL") HOTEL(String.valueOf("HOTEL"));
+    @JsonProperty("RETAIL") RETAIL(String.valueOf("RETAIL")), @JsonProperty("HOTEL") HOTEL(String.valueOf("HOTEL")), @JsonProperty("CREATIVE_ASSETS") CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
 
     private String value;

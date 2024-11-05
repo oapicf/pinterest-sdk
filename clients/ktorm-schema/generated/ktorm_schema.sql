@@ -72,8 +72,19 @@ CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionRequest` (
   `webhook_url` text NOT NULL /*Standard HTTPS webhook URL.*/,
   `lead_form_id` text /*Lead form ID.*/,
   `partner_access_token` text /*Partner access token. Only for clients that requires authentication. We recommend to avoid this param.*/,
-  `partner_refresh_token` text /*Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.*/
+  `partner_refresh_token` text /*Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.*/,
+  `partner_metadata` long
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdAccountCreateSubscriptionRequest_partner_metadata` generated from model 'adAccountCreateSubscriptionRequestPartnerMetadata'
+-- Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+--
+
+CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionRequest_partner_metadata` (
+  `subscriber_key` text /*Text field value that uniquely identifies a subscriber.*/
+);  /*Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.*/
 
 
 -- --------------------------------------------------------------------------
@@ -116,19 +127,19 @@ CREATE TABLE IF NOT EXISTS `Ad_account_owner` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ad_accounts_catalogs_product_groups_list_200_response` generated from model 'adAccountsCatalogsProductGroupsList200Response'
+-- Table structure for table `ad_accounts_audiences_shared_accounts_list_200_response` generated from model 'adAccountsAudiencesSharedAccountsList200Response'
 --
 
-CREATE TABLE IF NOT EXISTS `ad_accounts_catalogs_product_groups_list_200_response` (
+CREATE TABLE IF NOT EXISTS `ad_accounts_audiences_shared_accounts_list_200_response` (
   `bookmark` text
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdAccountsCatalogsProductGroupsList200ResponseCatalogProductGroup` generated from model 'AdAccountsCatalogsProductGroupsList200ResponseCatalogProductGroup'
+-- Table structure for table `AdAccountsAudiencesSharedAccountsList200ResponseSharedAudienceAccount` generated from model 'AdAccountsAudiencesSharedAccountsList200ResponseSharedAudienceAccount'
 
-CREATE TABLE IF NOT EXISTS `AdAccountsCatalogsProductGroupsList200ResponseCatalogProductGroup` (
-  `adAccountsCatalogsProductGroupsList200Response` long NOT NULL
-  `catalogProductGroup` long NOT NULL
+CREATE TABLE IF NOT EXISTS `AdAccountsAudiencesSharedAccountsList200ResponseSharedAudienceAccount` (
+  `adAccountsAudiencesSharedAccountsList200Response` long NOT NULL
+  `sharedAudienceAccount` long NOT NULL
 );
 
 
@@ -227,11 +238,11 @@ CREATE TABLE IF NOT EXISTS `AdArrayResponseElement` (
 
 CREATE TABLE IF NOT EXISTS `AdCommon` (
   `ad_group_id` text /*ID of the ad group that contains the ad.*/,
-  `android_deep_link` text /*Deep link URL for Android devices. Not currently available. Using this field will generate an error.*/,
+  `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
   `creative_type` long,
   `destination_url` text /*Destination URL.*/,
-  `ios_deep_link` text /*Deep link URL for iOS devices. Not currently available. Using this field will generate an error.*/,
+  `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
   `name` text /*Name of the ad - 255 chars max.*/,
@@ -240,8 +251,8 @@ CREATE TABLE IF NOT EXISTS `AdCommon` (
   `view_tracking_url` text /*Tracking URL for ad impressions.*/,
   `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long
+  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/
 );  /*Creation fields*/
 
 -- --------------------------------------------------------------------------
@@ -270,79 +281,6 @@ CREATE TABLE IF NOT EXISTS `AdCommonCarouselIosDeepLinks` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `AdCommon_quiz_pin_data` generated from model 'adCommonQuizPinData'
--- Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
---
-
-CREATE TABLE IF NOT EXISTS `AdCommon_quiz_pin_data` (
-);  /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommonQuizPinDataQuizPinQuestion` generated from model 'AdCommonQuizPinDataQuizPinQuestion'
-
-CREATE TABLE IF NOT EXISTS `AdCommonQuizPinDataQuizPinQuestion` (
-  `adCommonQuizPinData` long NOT NULL
-  `quizPinQuestion` long NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommonQuizPinDataQuizPinResult` generated from model 'AdCommonQuizPinDataQuizPinResult'
-
-CREATE TABLE IF NOT EXISTS `AdCommonQuizPinDataQuizPinResult` (
-  `adCommonQuizPinData` long NOT NULL
-  `quizPinResult` long NOT NULL
-);
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommon_tracking_urls` generated from model 'adCommonTrackingUrls'
---
-
-CREATE TABLE IF NOT EXISTS `AdCommon_tracking_urls` (
-); 
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommonTrackingUrlsImpression` generated from model 'AdCommonTrackingUrlsImpression'
-
-CREATE TABLE IF NOT EXISTS `AdCommonTrackingUrlsImpression` (
-  `adCommonTrackingUrls` long NOT NULL
-  `impression` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommonTrackingUrlsClick` generated from model 'AdCommonTrackingUrlsClick'
-
-CREATE TABLE IF NOT EXISTS `AdCommonTrackingUrlsClick` (
-  `adCommonTrackingUrls` long NOT NULL
-  `click` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommonTrackingUrlsEngagement` generated from model 'AdCommonTrackingUrlsEngagement'
-
-CREATE TABLE IF NOT EXISTS `AdCommonTrackingUrlsEngagement` (
-  `adCommonTrackingUrls` long NOT NULL
-  `engagement` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommonTrackingUrlsBuyableButton` generated from model 'AdCommonTrackingUrlsBuyableButton'
-
-CREATE TABLE IF NOT EXISTS `AdCommonTrackingUrlsBuyableButton` (
-  `adCommonTrackingUrls` long NOT NULL
-  `buyableButton` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdCommonTrackingUrlsAudienceVerification` generated from model 'AdCommonTrackingUrlsAudienceVerification'
-
-CREATE TABLE IF NOT EXISTS `AdCommonTrackingUrlsAudienceVerification` (
-  `adCommonTrackingUrls` long NOT NULL
-  `audienceVerification` text NOT NULL
-);
-
-
--- --------------------------------------------------------------------------
 -- Table structure for table `AdCreateRequest` generated from model 'adCreateRequest'
 --
 
@@ -350,10 +288,10 @@ CREATE TABLE IF NOT EXISTS `AdCreateRequest` (
   `ad_group_id` text NOT NULL /*ID of the ad group that contains the ad.*/,
   `creative_type` long NOT NULL,
   `pin_id` text NOT NULL /*Pin ID.*/,
-  `android_deep_link` text /*Deep link URL for Android devices. Not currently available. Using this field will generate an error.*/,
+  `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
   `destination_url` text /*Destination URL.*/,
-  `ios_deep_link` text /*Deep link URL for iOS devices. Not currently available. Using this field will generate an error.*/,
+  `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
   `name` text /*Name of the ad - 255 chars max.*/,
@@ -362,8 +300,8 @@ CREATE TABLE IF NOT EXISTS `AdCreateRequest` (
   `view_tracking_url` text /*Tracking URL for ad impressions.*/,
   `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long
+  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -488,80 +426,27 @@ CREATE TABLE IF NOT EXISTS `AdGroupCommon` (
   `status` long /*Ad group/entity status.*/,
   `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
   `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
   `budget_type` long,
   `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
   `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
   `targeting_spec` long,
-  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long,
+  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
   `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
   `pacing_delivery_type` long,
   `campaign_id` text /*Campaign ID of the ad group.*/,
   `billable_event` long,
-  `bid_strategy_type` text /*Bid strategy type*/
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
 ); 
 
-
 -- --------------------------------------------------------------------------
--- Table structure for table `AdGroupCommon_optimization_goal_metadata` generated from model 'adGroupCommonOptimizationGoalMetadata'
--- Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.
---
+-- Table structure for table `AdGroupCommonTargetingTemplateIds` generated from model 'AdGroupCommonTargetingTemplateIds'
 
-CREATE TABLE IF NOT EXISTS `AdGroupCommon_optimization_goal_metadata` (
-  `conversion_tag_v3_goal_metadata` long,
-  `frequency_goal_metadata` long,
-  `scrollup_goal_metadata` long
-);  /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdGroupCommon_tracking_urls` generated from model 'adGroupCommonTrackingUrls'
--- Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
---
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommon_tracking_urls` (
-);  /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdGroupCommonTrackingUrlsImpression` generated from model 'AdGroupCommonTrackingUrlsImpression'
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommonTrackingUrlsImpression` (
-  `adGroupCommonTrackingUrls` long NOT NULL
-  `impression` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdGroupCommonTrackingUrlsClick` generated from model 'AdGroupCommonTrackingUrlsClick'
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommonTrackingUrlsClick` (
-  `adGroupCommonTrackingUrls` long NOT NULL
-  `click` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdGroupCommonTrackingUrlsEngagement` generated from model 'AdGroupCommonTrackingUrlsEngagement'
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommonTrackingUrlsEngagement` (
-  `adGroupCommonTrackingUrls` long NOT NULL
-  `engagement` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdGroupCommonTrackingUrlsBuyableButton` generated from model 'AdGroupCommonTrackingUrlsBuyableButton'
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommonTrackingUrlsBuyableButton` (
-  `adGroupCommonTrackingUrls` long NOT NULL
-  `buyableButton` text NOT NULL
-);
-
--- --------------------------------------------------------------------------
--- Table structure for table `AdGroupCommonTrackingUrlsAudienceVerification` generated from model 'AdGroupCommonTrackingUrlsAudienceVerification'
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommonTrackingUrlsAudienceVerification` (
-  `adGroupCommonTrackingUrls` long NOT NULL
-  `audienceVerification` text NOT NULL
+CREATE TABLE IF NOT EXISTS `AdGroupCommonTargetingTemplateIds` (
+  `adGroupCommon` long NOT NULL
+  `targetingTemplateIds` text NOT NULL
 );
 
 
@@ -576,18 +461,26 @@ CREATE TABLE IF NOT EXISTS `AdGroupCreateRequest` (
   `status` long /*Ad group/entity status.*/,
   `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
   `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
   `budget_type` long,
   `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
   `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
   `targeting_spec` long,
-  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long,
+  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
   `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group.Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
   `pacing_delivery_type` long,
-  `bid_strategy_type` text /*Bid strategy type*/
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
 ); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdGroupCreateRequestTargetingTemplateIds` generated from model 'AdGroupCreateRequestTargetingTemplateIds'
+
+CREATE TABLE IF NOT EXISTS `AdGroupCreateRequestTargetingTemplateIds` (
+  `adGroupCreateRequest` long NOT NULL
+  `targetingTemplateIds` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -599,19 +492,19 @@ CREATE TABLE IF NOT EXISTS `AdGroupResponse` (
   `status` long /*Ad group/entity status.*/,
   `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
   `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
   `budget_type` long,
   `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
   `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
   `targeting_spec` long,
-  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long,
+  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
   `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
   `pacing_delivery_type` long,
   `campaign_id` text /*Campaign ID of the ad group.*/,
   `billable_event` long,
-  `bid_strategy_type` text /*Bid strategy type*/,
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
   `id` text PRIMARY KEY /*Ad group ID.*/,
   `ad_account_id` text /*Advertiser ID.*/,
   `created_time` int /*Ad group creation time. Unix timestamp in seconds.*/,
@@ -622,6 +515,14 @@ CREATE TABLE IF NOT EXISTS `AdGroupResponse` (
   `feed_profile_id` text /*Feed Profile ID associated to the adgroup.*/,
   `dca_assets` blob /*[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.*/
 ); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdGroupResponseTargetingTemplateIds` generated from model 'AdGroupResponseTargetingTemplateIds'
+
+CREATE TABLE IF NOT EXISTS `AdGroupResponseTargetingTemplateIds` (
+  `adGroupResponse` long NOT NULL
+  `targetingTemplateIds` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -634,20 +535,28 @@ CREATE TABLE IF NOT EXISTS `AdGroupUpdateRequest` (
   `status` long /*Ad group/entity status.*/,
   `budget_in_micro_currency` int /*Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.*/,
   `bid_in_micro_currency` int /*Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.*/,
-  `optimization_goal_metadata` long,
+  `optimization_goal_metadata` long /*Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.*/,
   `budget_type` long,
   `start_time` int /*Ad group start time. Unix timestamp in seconds. Defaults to current time.*/,
   `end_time` int /*Ad group end time. Unix timestamp in seconds.*/,
   `targeting_spec` long,
-  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
-  `tracking_urls` long,
+  `lifetime_frequency_cap` int /*Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.*/,
+  `tracking_urls` long /*Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.*/,
   `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
-  `placement_group` long /*&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
+  `placement_group` long /*&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.*/,
   `pacing_delivery_type` long,
   `campaign_id` text /*Campaign ID of the ad group.*/,
   `billable_event` long,
-  `bid_strategy_type` text /*Bid strategy type*/
+  `bid_strategy_type` text /*Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.*/,
 ); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdGroupUpdateRequestTargetingTemplateIds` generated from model 'AdGroupUpdateRequestTargetingTemplateIds'
+
+CREATE TABLE IF NOT EXISTS `AdGroupUpdateRequestTargetingTemplateIds` (
+  `adGroupUpdateRequest` long NOT NULL
+  `targetingTemplateIds` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -731,11 +640,11 @@ CREATE TABLE IF NOT EXISTS `AdPreviewURLResponse` (
 
 CREATE TABLE IF NOT EXISTS `AdResponse` (
   `ad_group_id` text /*ID of the ad group that contains the ad.*/,
-  `android_deep_link` text /*Deep link URL for Android devices. Not currently available. Using this field will generate an error.*/,
+  `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
   `creative_type` long,
   `destination_url` text /*Destination URL.*/,
-  `ios_deep_link` text /*Deep link URL for iOS devices. Not currently available. Using this field will generate an error.*/,
+  `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
   `name` text /*Name of the ad - 255 chars max.*/,
@@ -744,8 +653,8 @@ CREATE TABLE IF NOT EXISTS `AdResponse` (
   `view_tracking_url` text /*Tracking URL for ad impressions.*/,
   `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long,
+  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `pin_id` text /*Pin ID.*/,
   `ad_account_id` text /*The ID of the advertiser that this ad belongs to.*/,
   `campaign_id` text /*ID of the ad campaign that contains this ad.*/,
@@ -806,11 +715,11 @@ CREATE TABLE IF NOT EXISTS `AdResponseRejectionLabels` (
 CREATE TABLE IF NOT EXISTS `AdUpdateRequest` (
   `id` text NOT NULL PRIMARY KEY /*The ID of this ad.*/,
   `ad_group_id` text /*ID of the ad group that contains the ad.*/,
-  `android_deep_link` text /*Deep link URL for Android devices. Not currently available. Using this field will generate an error.*/,
+  `android_deep_link` text /*Deep link URL for Android devices.*/,
   `click_tracking_url` text /*Tracking url for the ad clicks.*/,
   `creative_type` long,
   `destination_url` text /*Destination URL.*/,
-  `ios_deep_link` text /*Deep link URL for iOS devices. Not currently available. Using this field will generate an error.*/,
+  `ios_deep_link` text /*Deep link URL for iOS devices.*/,
   `is_pin_deleted` boolean /*Is original pin deleted?*/,
   `is_removable` boolean /*Is pin repinnable?*/,
   `name` text /*Name of the ad - 255 chars max.*/,
@@ -819,8 +728,8 @@ CREATE TABLE IF NOT EXISTS `AdUpdateRequest` (
   `view_tracking_url` text /*Tracking URL for ad impressions.*/,
   `lead_form_id` text /*Lead form ID for lead ad generation.*/,
   `grid_click_type` long,
-  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
-  `quiz_pin_data` long,
+  `customizable_cta_type` text /*Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)*/,
+  `quiz_pin_data` long /*Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.*/,
   `pin_id` text /*Pin ID. This field may only be updated for draft ads.*/
 ); 
 
@@ -862,7 +771,10 @@ CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequest` (
   `engagement_window_days` long /*Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.*/,
   `view_window_days` long /*Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.*/,
   `conversion_report_time` long /*The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.*/,
-  `report_format` long /*Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.*/
+  `report_format` long /*Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.*/,
+  `primary_sort` text /*Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.*/,
+  `start_hour` int UNSIGNED /*Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.*/,
+  `end_hour` int UNSIGNED /*Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -1099,6 +1011,221 @@ CREATE TABLE IF NOT EXISTS `AdsList200ResponseAdResponse` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionBidOptions` generated from model 'advancedAuctionBidOptions'
+-- Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionBidOptions` (
+  `bid_in_micro_currency` long /*Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.*/,
+  `app_type_multipliers` long,
+  `placement_multipliers` long
+);  /*Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItem` generated from model 'advancedAuctionItem'
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItem` (
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `country` long NOT NULL,
+  `language` long NOT NULL,
+  `bid_options` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItems` generated from model 'advancedAuctionItems'
+-- Response object containing item bid options
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItems` (
+  `catalog_id` text /*Response object of item bid options*/,
+);  /*Response object containing item bid options*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsAdvancedAuctionItem` generated from model 'AdvancedAuctionItemsAdvancedAuctionItem'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsAdvancedAuctionItem` (
+  `advancedAuctionItems` long NOT NULL
+  `advancedAuctionItem` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsGetRecord` generated from model 'advancedAuctionItemsGetRecord'
+-- Object uniquely identifying a retail catalog item
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsGetRecord` (
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `country` long NOT NULL,
+  `language` long NOT NULL
+);  /*Object uniquely identifying a retail catalog item*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsGetRequest` generated from model 'advancedAuctionItemsGetRequest'
+-- Request object used to get bid options values for a batch of retail catalog items
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsGetRequest` (
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the retail item*/,
+);  /*Request object used to get bid options values for a batch of retail catalog items*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsGetRequestAdvancedAuctionItemsGetRecord` generated from model 'AdvancedAuctionItemsGetRequestAdvancedAuctionItemsGetRecord'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsGetRequestAdvancedAuctionItemsGetRecord` (
+  `advancedAuctionItemsGetRequest` long NOT NULL
+  `advancedAuctionItemsGetRecord` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitDeleteRecord` generated from model 'advancedAuctionItemsSubmitDeleteRecord'
+-- Object describing an item bid option deletion operation
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitDeleteRecord` (
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `country` long NOT NULL,
+  `language` long NOT NULL
+);  /*Object describing an item bid option deletion operation*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitRecord` generated from model 'advancedAuctionItemsSubmitRecord'
+-- Object describing an item bid option operation
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRecord` (
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `country` long NOT NULL,
+  `language` long NOT NULL,
+  `bid_options` long NOT NULL,
+);  /*Object describing an item bid option operation*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitRecordUpdateMaskBidOptionField` generated from model 'AdvancedAuctionItemsSubmitRecordUpdateMaskBidOptionField'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRecordUpdateMaskBidOptionField` (
+  `advancedAuctionItemsSubmitRecord` long NOT NULL
+  `updateMaskBidOptionField` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitRequest` generated from model 'advancedAuctionItemsSubmitRequest'
+-- Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRequest` (
+  `catalog_id` text NOT NULL /*Catalog id pertaining to all items*/,
+);  /*Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitRequestAdvancedAuctionItemsSubmitRecord` generated from model 'AdvancedAuctionItemsSubmitRequestAdvancedAuctionItemsSubmitRecord'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRequestAdvancedAuctionItemsSubmitRecord` (
+  `advancedAuctionItemsSubmitRequest` long NOT NULL
+  `advancedAuctionItemsSubmitRecord` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitUpsertRecord` generated from model 'advancedAuctionItemsSubmitUpsertRecord'
+-- Object describing an item bid option upsert operation
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitUpsertRecord` (
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `country` long NOT NULL,
+  `language` long NOT NULL,
+  `bid_options` long NOT NULL,
+);  /*Object describing an item bid option upsert operation*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionItemsSubmitUpsertRecordUpdateMaskBidOptionField` generated from model 'AdvancedAuctionItemsSubmitUpsertRecordUpdateMaskBidOptionField'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitUpsertRecordUpdateMaskBidOptionField` (
+  `advancedAuctionItemsSubmitUpsertRecord` long NOT NULL
+  `updateMaskBidOptionField` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionKey` generated from model 'advancedAuctionKey'
+-- Object uniquely identifying a retail catalog item
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionKey` (
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `country` long NOT NULL,
+  `language` long NOT NULL
+);  /*Object uniquely identifying a retail catalog item*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionOperationError` generated from model 'advancedAuctionOperationError'
+-- Error which occurred when applying a bid options operation to a specific item.
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionOperationError` (
+  `code` int /*The error code for the item bid option operation validation error*/,
+  `message` text /*Message describing the item bid option operation validation error*/
+);  /*Error which occurred when applying a bid options operation to a specific item.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionProcessedItem` generated from model 'advancedAuctionProcessedItem'
+-- Object describing the result of an operation on an item bid option
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItem` (
+  `operation` long NOT NULL,
+  `item_id` text NOT NULL /*The catalog retail item id in the merchant namespace*/,
+  `country` long NOT NULL,
+  `language` long NOT NULL,
+  `bid_options` long NOT NULL,
+);  /*Object describing the result of an operation on an item bid option*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionProcessedItemUpdateMaskBidOptionField` generated from model 'AdvancedAuctionProcessedItemUpdateMaskBidOptionField'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItemUpdateMaskBidOptionField` (
+  `advancedAuctionProcessedItem` long NOT NULL
+  `updateMaskBidOptionField` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionProcessedItemAdvancedAuctionOperationError` generated from model 'AdvancedAuctionProcessedItemAdvancedAuctionOperationError'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItemAdvancedAuctionOperationError` (
+  `advancedAuctionProcessedItem` long NOT NULL
+  `advancedAuctionOperationError` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionProcessedItems` generated from model 'advancedAuctionProcessedItems'
+-- Response object containing the results of an operation on an item bid option
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItems` (
+  `catalog_id` text /*Catalog id pertaining to all items*/,
+);  /*Response object containing the results of an operation on an item bid option*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AdvancedAuctionProcessedItemsAdvancedAuctionProcessedItem` generated from model 'AdvancedAuctionProcessedItemsAdvancedAuctionProcessedItem'
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItemsAdvancedAuctionProcessedItem` (
+  `advancedAuctionProcessedItems` long NOT NULL
+  `advancedAuctionProcessedItem` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `AnalyticsDailyMetrics` generated from model 'analyticsDailyMetrics'
 --
 
@@ -1123,6 +1250,75 @@ CREATE TABLE IF NOT EXISTS `AnalyticsMetricsResponse` (
 CREATE TABLE IF NOT EXISTS `AnalyticsMetricsResponseAnalyticsDailyMetrics` (
   `analyticsMetricsResponse` long NOT NULL
   `analyticsDailyMetrics` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AppTypeMultipliers` generated from model 'appTypeMultipliers'
+-- This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
+--
+
+CREATE TABLE IF NOT EXISTS `AppTypeMultipliers` (
+  `APP_TYPE` long
+);  /*This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AssetGroupBinding` generated from model 'assetGroupBinding'
+--
+
+CREATE TABLE IF NOT EXISTS `AssetGroupBinding` (
+  `id` text PRIMARY KEY /*Asset Group ID.*/,
+  `asset_group_name` text /*Asset Group name*/,
+  `asset_group_description` text /*Asset group description*/,
+  `created_time` int /*The creation time of the asset group*/,
+  `updated_time` int /*The last update time of the asset group*/,
+  `owner` long /*The data of the business that owns the asset group.*/,
+  `created_by` long /*The data of the user that created the asset group.*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AssetGroupBindingAssetGroupTypes` generated from model 'AssetGroupBindingAssetGroupTypes'
+
+CREATE TABLE IF NOT EXISTS `AssetGroupBindingAssetGroupTypes` (
+  `assetGroupBinding` long NOT NULL
+  `assetGroupTypes` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AssetGroupBindingAdAccountsIds` generated from model 'AssetGroupBindingAdAccountsIds'
+
+CREATE TABLE IF NOT EXISTS `AssetGroupBindingAdAccountsIds` (
+  `assetGroupBinding` long NOT NULL
+  `adAccountsIds` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AssetGroupBindingProfilesIds` generated from model 'AssetGroupBindingProfilesIds'
+
+CREATE TABLE IF NOT EXISTS `AssetGroupBindingProfilesIds` (
+  `assetGroupBinding` long NOT NULL
+  `profilesIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AssetIdPermissions` generated from model 'assetIdPermissions'
+-- An object containing the permissions a business member has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `AssetIdPermissions` (
+  `asset_id` text /*Unique identifier of a business asset.*/,
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
+  `asset_group_info` long
+);  /*An object containing the permissions a business member has on the asset.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AssetIdPermissionsPermissions` generated from model 'AssetIdPermissionsPermissions'
+
+CREATE TABLE IF NOT EXISTS `AssetIdPermissionsPermissions` (
+  `assetIdPermissions` long NOT NULL
+  `permissions` text NOT NULL
 );
 
 
@@ -1346,7 +1542,7 @@ CREATE TABLE IF NOT EXISTS `AudienceInsightsResponseAudienceCategory` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AudienceRule` generated from model 'audienceRule'
--- JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
+-- JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
 --
 
 CREATE TABLE IF NOT EXISTS `AudienceRule` (
@@ -1363,7 +1559,7 @@ CREATE TABLE IF NOT EXISTS `AudienceRule` (
   `ingestion_source` blob /*Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api*/,
   `engager_type` int /*Optional for ENGAGEMENT. Engager type value should be 1-2.*/,
   `ad_account_id` text /*Ad account ID.*/
-);  /*JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.*/
+);  /*JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.*/
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `AudienceRuleEngagementDomain` generated from model 'AudienceRuleEngagementDomain'
@@ -1466,12 +1662,75 @@ CREATE TABLE IF NOT EXISTS `AudiencesList200ResponseAudience` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `AuthRespondInvitesBody` generated from model 'authRespondInvitesBody'
+-- An object with a list of all the invites the user would like to respond to and the action to take.
+--
+
+CREATE TABLE IF NOT EXISTS `AuthRespondInvitesBody` (
+);  /*An object with a list of all the invites the user would like to respond to and the action to take.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AuthRespondInvitesBodyAuthRespondInvitesBodyInvitesInner` generated from model 'AuthRespondInvitesBodyAuthRespondInvitesBodyInvitesInner'
+
+CREATE TABLE IF NOT EXISTS `AuthRespondInvitesBodyAuthRespondInvitesBodyInvitesInner` (
+  `authRespondInvitesBody` long NOT NULL
+  `authRespondInvitesBodyInvitesInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AuthRespondInvitesBody_invites_inner` generated from model 'authRespondInvitesBodyInvitesInner'
+--
+
+CREATE TABLE IF NOT EXISTS `AuthRespondInvitesBody_invites_inner` (
+  `action` long NOT NULL,
+  `invite_id` text NOT NULL /*Unique identifier of an invite.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `AuthRespondInvitesBody_invites_inner_action` generated from model 'authRespondInvitesBodyInvitesInnerAction'
+--
+
+CREATE TABLE IF NOT EXISTS `AuthRespondInvitesBody_invites_inner_action` (
+  `accept_invite` boolean NOT NULL /*Whether the invite/request is accepted.*/,
+  `asset_id_to_permissions` blob /*An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `AvailabilityFilter` generated from model 'availabilityFilter'
 --
 
 CREATE TABLE IF NOT EXISTS `AvailabilityFilter` (
   `AVAILABILITY` long NOT NULL
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BaseInviteDataResponse` generated from model 'baseInviteDataResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `BaseInviteDataResponse` (
+  `id` text PRIMARY KEY /*Unique identifier of the invite/request.*/,
+  `invite_data` long,
+  `is_received_invite` boolean /*Indicates whether the invite/request was received.*/,
+  `user` long /*Metadata for the member/partner that was sent the invite/request.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BaseInviteDataResponse_invite_data` generated from model 'baseInviteDataResponseInviteData'
+-- Metadata for the invite/request.
+--
+
+CREATE TABLE IF NOT EXISTS `BaseInviteDataResponse_invite_data` (
+  `invite_expiration` int /*The date and time when the invite/request will expire. Returned in milliseconds.*/,
+  `invite_status` text /*The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.*/,
+  `invite_type` text /*The type of invite. &lt;br&gt;&#39;MEMBER_INVITE&#39; is to invite a member to access your business assets. &lt;br&gt;&#39;PARTNER_INVITE&#39; is to invite a partner to access your business assets. &lt;br&gt;&#39;PARTNER_REQUEST&#39; is to request access a partner&#39;s business assets.*/,
+  `last_updated_time` int /*The date and time the invite/request was last updated. Returned in milliseconds.*/,
+  `sent_at` int /*The date and time the invite/request was sent/created. Returned in milliseconds.*/
+);  /*Metadata for the invite/request.*/
 
 
 -- --------------------------------------------------------------------------
@@ -1598,10 +1857,10 @@ CREATE TABLE IF NOT EXISTS `BoardMediaPinThumbnailUrls` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `Board_owner` generated from model 'boardOwner'
+-- Table structure for table `BoardOwner` generated from model 'boardOwner'
 --
 
-CREATE TABLE IF NOT EXISTS `Board_owner` (
+CREATE TABLE IF NOT EXISTS `BoardOwner` (
   `username` text
 ); 
 
@@ -1912,6 +2171,241 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertStatusResponse` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `BusinessAccessError` generated from model 'businessAccessError'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessAccessError` (
+  `code` int NOT NULL,
+  `message` text NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessAccessUserSummary` generated from model 'businessAccessUserSummary'
+-- Metadata of the member/partner that has access to the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessAccessUserSummary` (
+  `email` text /*Email of the business member/partner.*/,
+  `id` text PRIMARY KEY /*Unique identifier of the business member/partner.*/,
+  `username` text /*Username of the business member/partner.*/
+);  /*Metadata of the member/partner that has access to the asset.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `business_asset_members_get_200_response` generated from model 'businessAssetMembersGet200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `business_asset_members_get_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessAssetMembersGet200ResponseUserSingleAssetBinding` generated from model 'BusinessAssetMembersGet200ResponseUserSingleAssetBinding'
+
+CREATE TABLE IF NOT EXISTS `BusinessAssetMembersGet200ResponseUserSingleAssetBinding` (
+  `businessAssetMembersGet200Response` long NOT NULL
+  `userSingleAssetBinding` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `business_asset_partners_get_200_response` generated from model 'businessAssetPartnersGet200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `business_asset_partners_get_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessAssetPartnersGet200ResponseUserSingleAssetBinding` generated from model 'BusinessAssetPartnersGet200ResponseUserSingleAssetBinding'
+
+CREATE TABLE IF NOT EXISTS `BusinessAssetPartnersGet200ResponseUserSingleAssetBinding` (
+  `businessAssetPartnersGet200Response` long NOT NULL
+  `userSingleAssetBinding` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `business_assets_get_200_response` generated from model 'businessAssetsGet200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `business_assets_get_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessAssetsGet200ResponseGetBusinessAssetsResponse` generated from model 'BusinessAssetsGet200ResponseGetBusinessAssetsResponse'
+
+CREATE TABLE IF NOT EXISTS `BusinessAssetsGet200ResponseGetBusinessAssetsResponse` (
+  `businessAssetsGet200Response` long NOT NULL
+  `getBusinessAssetsResponse` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `business_member_assets_get_200_response` generated from model 'businessMemberAssetsGet200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `business_member_assets_get_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsGet200ResponseAssetIdPermissions` generated from model 'BusinessMemberAssetsGet200ResponseAssetIdPermissions'
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsGet200ResponseAssetIdPermissions` (
+  `businessMemberAssetsGet200Response` long NOT NULL
+  `assetIdPermissions` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsSummary` generated from model 'businessMemberAssetsSummary'
+-- Ad accounts and profiles the business member/partner has access to.
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummary` (
+);  /*Ad accounts and profiles the business member/partner has access to.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsSummaryBusinessMemberAssetsSummaryAdAccountsInner` generated from model 'BusinessMemberAssetsSummaryBusinessMemberAssetsSummaryAdAccountsInner'
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummaryBusinessMemberAssetsSummaryAdAccountsInner` (
+  `businessMemberAssetsSummary` long NOT NULL
+  `businessMemberAssetsSummaryAdAccountsInner` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsSummaryBusinessMemberAssetsSummaryProfilesInner` generated from model 'BusinessMemberAssetsSummaryBusinessMemberAssetsSummaryProfilesInner'
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummaryBusinessMemberAssetsSummaryProfilesInner` (
+  `businessMemberAssetsSummary` long NOT NULL
+  `businessMemberAssetsSummaryProfilesInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsSummary_ad_accounts_inner` generated from model 'businessMemberAssetsSummaryAdAccountsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummary_ad_accounts_inner` (
+  `id` text PRIMARY KEY /*Unique identifier of a business ad account.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsSummaryAdAccountsInnerPermissions` generated from model 'BusinessMemberAssetsSummaryAdAccountsInnerPermissions'
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummaryAdAccountsInnerPermissions` (
+  `businessMemberAssetsSummaryAdAccountsInner` long NOT NULL
+  `permissions` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsSummary_profiles_inner` generated from model 'businessMemberAssetsSummaryProfilesInner'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummary_profiles_inner` (
+  `id` text PRIMARY KEY /*Unique identifier of a business profile.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMemberAssetsSummaryProfilesInnerPermissions` generated from model 'BusinessMemberAssetsSummaryProfilesInnerPermissions'
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummaryProfilesInnerPermissions` (
+  `businessMemberAssetsSummaryProfilesInner` long NOT NULL
+  `permissions` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `business_members_asset_access_delete_request` generated from model 'businessMembersAssetAccessDeleteRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `business_members_asset_access_delete_request` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessMembersAssetAccessDeleteRequestBusinessMembersAssetAccessDeleteRequestAccessesInner` generated from model 'BusinessMembersAssetAccessDeleteRequestBusinessMembersAssetAccessDeleteRequestAccessesInner'
+
+CREATE TABLE IF NOT EXISTS `BusinessMembersAssetAccessDeleteRequestBusinessMembersAssetAccessDeleteRequestAccessesInner` (
+  `businessMembersAssetAccessDeleteRequest` long NOT NULL
+  `businessMembersAssetAccessDeleteRequestAccessesInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `business_members_asset_access_delete_request_accesses_inner` generated from model 'businessMembersAssetAccessDeleteRequestAccessesInner'
+--
+
+CREATE TABLE IF NOT EXISTS `business_members_asset_access_delete_request_accesses_inner` (
+  `asset_id` text NOT NULL /*Id of the asset on which to remove member permissions.*/,
+  `member_id` text NOT NULL /*Unique identifier of the member on which to perform the asset permission removal*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `business_partner_asset_access_get_200_response` generated from model 'businessPartnerAssetAccessGet200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `business_partner_asset_access_get_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessPartnerAssetAccessGet200ResponseGetPartnerAssetsResponse` generated from model 'BusinessPartnerAssetAccessGet200ResponseGetPartnerAssetsResponse'
+
+CREATE TABLE IF NOT EXISTS `BusinessPartnerAssetAccessGet200ResponseGetPartnerAssetsResponse` (
+  `businessPartnerAssetAccessGet200Response` long NOT NULL
+  `getPartnerAssetsResponse` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessSharedAudience` generated from model 'businessSharedAudience'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessSharedAudience` (
+  `audience_id` text NOT NULL /*Unique identifier of an audience*/,
+  `operation_type` long NOT NULL,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessSharedAudienceRecipientBusinessIds` generated from model 'BusinessSharedAudienceRecipientBusinessIds'
+
+CREATE TABLE IF NOT EXISTS `BusinessSharedAudienceRecipientBusinessIds` (
+  `businessSharedAudience` long NOT NULL
+  `recipientBusinessIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessSharedAudienceResponse` generated from model 'businessSharedAudienceResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessSharedAudienceResponse` (
+  `audience_id` text /*Audience ID that was shared*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessSharedAudienceResponseRole` generated from model 'BusinessSharedAudienceResponseRole'
+
+CREATE TABLE IF NOT EXISTS `BusinessSharedAudienceResponseRole` (
+  `businessSharedAudienceResponse` long NOT NULL
+  `role` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `BusinessSharedAudienceResponseRecipientBusinessIds` generated from model 'BusinessSharedAudienceResponseRecipientBusinessIds'
+
+CREATE TABLE IF NOT EXISTS `BusinessSharedAudienceResponseRecipientBusinessIds` (
+  `businessSharedAudienceResponse` long NOT NULL
+  `recipientBusinessIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CampaignCommon` generated from model 'campaignCommon'
 -- Campaign Data
 --
@@ -1926,7 +2420,7 @@ CREATE TABLE IF NOT EXISTS `CampaignCommon` (
   `tracking_urls` long,
   `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
   `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `summary_status` long
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/
 );  /*Campaign Data*/
 
 
@@ -1944,7 +2438,6 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateCommon` (
   `tracking_urls` long,
   `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
   `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `summary_status` long,
   `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
   `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
   `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/
@@ -1966,7 +2459,6 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateRequest` (
   `tracking_urls` long,
   `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
   `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `summary_status` long,
   `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
   `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
   `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/
@@ -2003,8 +2495,7 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateResponseData` (
   `tracking_urls` long,
   `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
   `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `summary_status` long,
-  `is_flexible_daily_budgets` boolean /*Determines if a campaign has flexible daily budgets setup.*/,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
   `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
   `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
   `id` text PRIMARY KEY /*Campaign ID.*/,
@@ -2012,7 +2503,8 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateResponseData` (
   `created_time` int /*Campaign creation time. Unix timestamp in seconds.*/,
   `updated_time` int /*UTC timestamp. Last update time.*/,
   `type` text /*Always \&quot;campaign\&quot;.*/,
-  `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/
+  `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/,
+  `summary_status` long
 ); 
 
 
@@ -2057,13 +2549,13 @@ CREATE TABLE IF NOT EXISTS `CampaignResponse` (
   `tracking_urls` long,
   `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
   `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `summary_status` long,
+  `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
   `objective_type` long,
   `created_time` int /*Campaign creation time. Unix timestamp in seconds.*/,
   `updated_time` int /*UTC timestamp. Last update time.*/,
   `type` text /*Always \&quot;campaign\&quot;.*/,
-  `is_flexible_daily_budgets` boolean /*Determines if a campaign has flexible daily budgets setup.*/,
-  `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/
+  `is_campaign_budget_optimization` boolean /*Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.*/,
+  `summary_status` long
 ); 
 
 
@@ -2082,7 +2574,6 @@ CREATE TABLE IF NOT EXISTS `CampaignUpdateRequest` (
   `tracking_urls` long,
   `start_time` int /*Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
   `end_time` int /*Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.*/,
-  `summary_status` long,
   `is_flexible_daily_budgets` boolean /*Determine if a campaign has flexible daily budgets setup.*/,
   `default_ad_group_budget_in_micro_currency` int /*When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.*/,
   `is_automated_campaign` boolean /*Specifies whether the campaign was created in the automated campaign flow*/,
@@ -2135,38 +2626,46 @@ CREATE TABLE IF NOT EXISTS `CampaignsList200ResponseCampaignResponse` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CancelInvitesBody` generated from model 'cancelInvitesBody'
+-- Request body used to cancel invites
+--
+
+CREATE TABLE IF NOT EXISTS `CancelInvitesBody` (
+);  /*Request body used to cancel invites*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CancelInvitesBodyInviteIds` generated from model 'CancelInvitesBodyInviteIds'
+
+CREATE TABLE IF NOT EXISTS `CancelInvitesBodyInviteIds` (
+  `cancelInvitesBody` long NOT NULL
+  `inviteIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `Catalog` generated from model 'catalog'
 -- Catalog entity
 --
 
 CREATE TABLE IF NOT EXISTS `Catalog` (
+  `created_at` datetime NOT NULL,
   `id` text NOT NULL PRIMARY KEY /*ID of the catalog entity.*/,
+  `updated_at` datetime NOT NULL,
   `name` text NOT NULL /*A human-friendly name associated to a catalog entity.*/,
-  `catalog_type` long NOT NULL,
-  `created_at` datetime,
-  `updated_at` datetime
+  `catalog_type` long NOT NULL
 );  /*Catalog entity*/
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogProductGroup` generated from model 'catalogProductGroup'
--- non-promoted catalog product group entity
+-- Table structure for table `CatalogsCreateCreativeAssetsItem` generated from model 'catalogsCreateCreativeAssetsItem'
+-- A creative assets item to be created.
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogProductGroup` (
-  `id` text PRIMARY KEY /*ID of the catalog product group.*/,
-  `merchant_id` text /*Merchant ID pertaining to the owner of the catalog product group.*/,
-  `name` text /*Name of catalog product group*/,
-  `filters` blob /*Object holding a list of filters*/,
-  `filter_v2` blob /*Object holding a list of filters*/,
-  `type` long,
-  `status` long,
-  `feed_profile_id` text /*id of the feed profile belonging to this catalog product group*/,
-  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `last_update` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
-  `product_count` int /*Amount of products in the catalog product group*/,
-  `featured_position` int /*index of the featured position of the catalog product group*/
-);  /*non-promoted catalog product group entity*/
+CREATE TABLE IF NOT EXISTS `CatalogsCreateCreativeAssetsItem` (
+  `creative_assets_id` text NOT NULL /*The catalog creative assets id in the merchant namespace*/,
+  `operation` text NOT NULL,
+  `attributes` long NOT NULL
+);  /*A creative assets item to be created.*/
 
 
 -- --------------------------------------------------------------------------
@@ -2182,6 +2681,26 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreateHotelItem` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreateReportResponse` generated from model 'catalogsCreateReportResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreateReportResponse` (
+  `token` text /*Token to be used to get the report*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreateRequest` generated from model 'catalogsCreateRequest'
+-- Request object for creating a catalog.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreateRequest` (
+  `catalog_type` text NOT NULL /*Type of the catalog entity.*/,
+  `name` text NOT NULL /*A human-friendly name associated to a given catalog.*/
+);  /*Request object for creating a catalog.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsCreateRetailItem` generated from model 'catalogsCreateRetailItem'
 -- An item to be created
 --
@@ -2194,14 +2713,405 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreateRetailItem` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsAttributes` generated from model 'catalogsCreativeAssetsAttributes'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsAttributes` (
+  `title` text /*The name of the creative assets.*/,
+  `description` text /*Brief description of the creative assets.*/,
+  `link` text /*Link to the creative assets page.*/,
+  `ios_deep_link` text /*IOS deep link to the creative assets page.*/,
+  `android_deep_link` text /*Link to the creative assets page.*/,
+  `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
+  `custom_label_0` text /*Custom grouping of creative assets.*/,
+  `custom_label_1` text /*Custom grouping of creative assets.*/,
+  `custom_label_2` text /*Custom grouping of creative assets.*/,
+  `custom_label_3` text /*Custom grouping of creative assets.*/,
+  `custom_label_4` text /*Custom grouping of creative assets.*/,
+  `visibility` text /*Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.*/,
+  `image_link` text /*The creative assets image.*/,
+  `video_link` text /*The creative assets video.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsBatchItem` generated from model 'catalogsCreativeAssetsBatchItem'
+-- Creative assets batch item
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchItem` (
+  `creative_assets_id` text NOT NULL /*The catalog creative assets id in the merchant namespace*/,
+  `operation` text NOT NULL,
+  `attributes` long NOT NULL
+);  /*Creative assets batch item*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsBatchRequest` generated from model 'catalogsCreativeAssetsBatchRequest'
+-- Request object to update catalogs creative assets items
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchRequest` (
+  `catalog_type` text NOT NULL,
+  `country` long NOT NULL,
+  `language` long NOT NULL,
+  `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
+);  /*Request object to update catalogs creative assets items*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsBatchRequestCatalogsCreativeAssetsBatchItem` generated from model 'CatalogsCreativeAssetsBatchRequestCatalogsCreativeAssetsBatchItem'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchRequestCatalogsCreativeAssetsBatchItem` (
+  `catalogsCreativeAssetsBatchRequest` long NOT NULL
+  `catalogsCreativeAssetsBatchItem` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFeed` generated from model 'catalogsCreativeAssetsFeed'
+-- Catalogs Creative Asset Feed object
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeed` (
+  `created_at` datetime NOT NULL,
+  `id` text NOT NULL PRIMARY KEY,
+  `updated_at` datetime NOT NULL,
+  `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
+  `format` long NOT NULL,
+  `catalog_type` long NOT NULL,
+  `credentials` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `preferred_processing_schedule` long NOT NULL,
+  `status` long NOT NULL,
+  `default_currency` long NOT NULL,
+  `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
+  `default_country` long NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/
+);  /*Catalogs Creative Asset Feed object*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFeedsCreateRequest` generated from model 'catalogsCreativeAssetsFeedsCreateRequest'
+-- Request object for creating a feed.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsCreateRequest` (
+  `name` text NOT NULL /*A human-friendly name associated to a given feed.*/,
+  `format` long NOT NULL,
+  `default_locale` long NOT NULL,
+  `default_country` long NOT NULL,
+  `location` text NOT NULL /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `catalog_type` long NOT NULL,
+  `default_currency` long,
+  `credentials` long,
+  `preferred_processing_schedule` long,
+  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/,
+  `status` long
+);  /*Request object for creating a feed.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsFeedsUpdateRequest` generated from model 'catalogsCreativeAssetsFeedsUpdateRequest'
+-- Request object for updating a feed.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsUpdateRequest` (
+  `catalog_type` long NOT NULL,
+  `default_currency` long,
+  `name` text /*A human-friendly name associated to a given feed.*/,
+  `format` long,
+  `credentials` long,
+  `location` text /*The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.*/,
+  `preferred_processing_schedule` long,
+  `status` long
+);  /*Request object for updating a feed.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemErrorResponse` generated from model 'catalogsCreativeAssetsItemErrorResponse'
+-- Object describing a creative assets item error
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemErrorResponse` (
+  `catalog_type` long NOT NULL,
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
+);  /*Object describing a creative assets item error*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemErrorResponseItemValidationEvent` generated from model 'CatalogsCreativeAssetsItemErrorResponseItemValidationEvent'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemErrorResponseItemValidationEvent` (
+  `catalogsCreativeAssetsItemErrorResponse` long NOT NULL
+  `itemValidationEvent` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemResponse` generated from model 'catalogsCreativeAssetsItemResponse'
+-- Object describing a hotel record
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemResponse` (
+  `catalog_type` long NOT NULL,
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
+  `attributes` long
+);  /*Object describing a hotel record*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemResponsePin` generated from model 'CatalogsCreativeAssetsItemResponsePin'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemResponsePin` (
+  `catalogsCreativeAssetsItemResponse` long NOT NULL
+  `pin` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemsBatch` generated from model 'catalogsCreativeAssetsItemsBatch'
+-- Object describing the catalogs creative assets items batch
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsBatch` (
+  `catalog_type` long NOT NULL,
+  `batch_id` text /*Id of the catalogs items batch*/,
+  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
+  `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
+  `status` long,
+);  /*Object describing the catalogs creative assets items batch*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemsBatchCreativeAssetsProcessingRecord` generated from model 'CatalogsCreativeAssetsItemsBatchCreativeAssetsProcessingRecord'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsBatchCreativeAssetsProcessingRecord` (
+  `catalogsCreativeAssetsItemsBatch` long NOT NULL
+  `creativeAssetsProcessingRecord` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemsFilter` generated from model 'catalogsCreativeAssetsItemsFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsFilter` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemsFilterCreativeAssetsIds` generated from model 'CatalogsCreativeAssetsItemsFilterCreativeAssetsIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsFilterCreativeAssetsIds` (
+  `catalogsCreativeAssetsItemsFilter` long NOT NULL
+  `creativeAssetsIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemsPostFilter` generated from model 'catalogsCreativeAssetsItemsPostFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsPostFilter` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsItemsPostFilterCreativeAssetsIds` generated from model 'CatalogsCreativeAssetsItemsPostFilterCreativeAssetsIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsPostFilterCreativeAssetsIds` (
+  `catalogsCreativeAssetsItemsPostFilter` long NOT NULL
+  `creativeAssetsIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` generated from model 'catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given creative assets catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `filters` long NOT NULL
+);  /*Request object to list products for a given creative assets catalog_id and product group filter.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProduct` generated from model 'catalogsCreativeAssetsProduct'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProduct` (
+  `catalog_type` text NOT NULL,
+  `metadata` long NOT NULL,
+  `pin` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroup` generated from model 'catalogsCreativeAssetsProductGroup'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroup` (
+  `catalog_type` text NOT NULL,
+  `id` text NOT NULL PRIMARY KEY /*ID of the creative assets product group.*/,
+  `filters` long NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `name` text /*Name of creative assets product group*/,
+  `description` text,
+  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
+  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupCreateRequest` generated from model 'catalogsCreativeAssetsProductGroupCreateRequest'
+-- Request object for creating a creative assets product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupCreateRequest` (
+  `catalog_type` text NOT NULL,
+  `name` text NOT NULL,
+  `filters` long NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `description` text
+);  /*Request object for creating a creative assets product group.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFilterKeys` generated from model 'catalogsCreativeAssetsProductGroupFilterKeys'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFilterKeys` (
+  `CREATIVE_ASSETS_ID` long NOT NULL,
+  `CUSTOM_LABEL_0` long NOT NULL,
+  `CUSTOM_LABEL_1` long NOT NULL,
+  `CUSTOM_LABEL_2` long NOT NULL,
+  `CUSTOM_LABEL_3` long NOT NULL,
+  `CUSTOM_LABEL_4` long NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_6` long NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_5` long NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_4` long NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_3` long NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_2` long NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_1` long NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_0` long NOT NULL,
+  `MEDIA_TYPE` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFilters` generated from model 'catalogsCreativeAssetsProductGroupFilters'
+-- Object holding a group of filters for a creative assets product group
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFilters` (
+);  /*Object holding a group of filters for a creative assets product group*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersCatalogsCreativeAssetsProductGroupFilterKeys` generated from model 'CatalogsCreativeAssetsProductGroupFiltersCatalogsCreativeAssetsProductGroupFilterKeys'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersCatalogsCreativeAssetsProductGroupFilterKeys` (
+  `catalogsCreativeAssetsProductGroupFilters` long NOT NULL
+  `catalogsCreativeAssetsProductGroupFilterKeys` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersCatalogsCreativeAssetsProductGroupFilterKeys` generated from model 'CatalogsCreativeAssetsProductGroupFiltersCatalogsCreativeAssetsProductGroupFilterKeys'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersCatalogsCreativeAssetsProductGroupFilterKeys` (
+  `catalogsCreativeAssetsProductGroupFilters` long NOT NULL
+  `catalogsCreativeAssetsProductGroupFilterKeys` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersAllOf` generated from model 'catalogsCreativeAssetsProductGroupFiltersAllOf'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersAllOf` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersAllOfCatalogsCreativeAssetsProductGroupFilterKeys` generated from model 'CatalogsCreativeAssetsProductGroupFiltersAllOfCatalogsCreativeAssetsProductGroupFilterKeys'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersAllOfCatalogsCreativeAssetsProductGroupFilterKeys` (
+  `catalogsCreativeAssetsProductGroupFiltersAllOf` long NOT NULL
+  `catalogsCreativeAssetsProductGroupFilterKeys` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersAnyOf` generated from model 'catalogsCreativeAssetsProductGroupFiltersAnyOf'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersAnyOf` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersAnyOfCatalogsCreativeAssetsProductGroupFilterKeys` generated from model 'CatalogsCreativeAssetsProductGroupFiltersAnyOfCatalogsCreativeAssetsProductGroupFilterKeys'
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersAnyOfCatalogsCreativeAssetsProductGroupFilterKeys` (
+  `catalogsCreativeAssetsProductGroupFiltersAnyOf` long NOT NULL
+  `catalogsCreativeAssetsProductGroupFilterKeys` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupProductCounts` generated from model 'catalogsCreativeAssetsProductGroupProductCounts'
+-- Product counts for a Creative Assets CatalogsProductGroup
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupProductCounts` (
+  `catalog_type` text NOT NULL,
+  `total` decimal NOT NULL,
+  `videos` decimal NOT NULL
+);  /*Product counts for a Creative Assets CatalogsProductGroup*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductGroupUpdateRequest` generated from model 'catalogsCreativeAssetsProductGroupUpdateRequest'
+-- Request object for updating a creative assets product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupUpdateRequest` (
+  `catalog_type` text,
+  `name` text,
+  `description` text,
+  `filters` long
+);  /*Request object for updating a creative assets product group.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsCreativeAssetsProductMetadata` generated from model 'catalogsCreativeAssetsProductMetadata'
+-- Creative assets product metadata entity
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductMetadata` (
+  `creative_assets_id` text NOT NULL /*The user-created unique ID that represents the creative assets item.*/,
+  `visibility` long NOT NULL
+);  /*Creative assets product metadata entity*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsDbItem` generated from model 'catalogsDbItem'
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsDbItem` (
-  `created_at` datetime,
-  `id` text PRIMARY KEY,
-  `updated_at` datetime
+  `created_at` datetime NOT NULL,
+  `id` text NOT NULL PRIMARY KEY,
+  `updated_at` datetime NOT NULL
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsDeleteCreativeAssetsItem` generated from model 'catalogsDeleteCreativeAssetsItem'
+-- A creative assets item to be deleted
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsDeleteCreativeAssetsItem` (
+  `creative_assets_id` text NOT NULL /*The catalog creative assets id in the merchant namespace*/,
+  `operation` text NOT NULL
+);  /*A creative assets item to be deleted*/
 
 
 -- --------------------------------------------------------------------------
@@ -2232,6 +3142,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsDeleteRetailItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeed` (
+  `created_at` datetime NOT NULL,
+  `id` text NOT NULL PRIMARY KEY,
+  `updated_at` datetime NOT NULL,
   `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
   `format` long NOT NULL,
   `catalog_type` long NOT NULL,
@@ -2243,10 +3156,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeed` (
   `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
   `default_country` long NOT NULL,
   `default_availability` long NOT NULL,
-  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/,
-  `created_at` datetime,
-  `id` text PRIMARY KEY,
-  `updated_at` datetime
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/
 );  /*Catalogs Feed object*/
 
 
@@ -2259,6 +3169,18 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedCredentials` (
   `password` text NOT NULL /*The required password for downloading a feed.*/,
   `username` text NOT NULL /*The required username for downloading a feed.*/
 );  /*This field is **OPTIONAL**. Use this if your feed file requires username and password.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsFeedIngestion` generated from model 'catalogsFeedIngestion'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestion` (
+  `id` text NOT NULL PRIMARY KEY,
+  `feed_id` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `status` long NOT NULL
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -2318,13 +3240,13 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestionWarnings` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedProcessingResult` (
+  `created_at` datetime NOT NULL,
+  `id` text NOT NULL PRIMARY KEY,
+  `updated_at` datetime NOT NULL,
   `ingestion_details` long NOT NULL,
   `status` long NOT NULL,
   `product_counts` long NOT NULL,
-  `validation_details` long NOT NULL,
-  `created_at` datetime,
-  `id` text PRIMARY KEY,
-  `updated_at` datetime
+  `validation_details` long NOT NULL
 ); 
 
 
@@ -2472,7 +3394,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedsCreateRequest` (
   `credentials` long,
   `preferred_processing_schedule` long,
   `default_country` long,
-  `default_availability` long
+  `default_availability` long,
+  `status` long
 );  /*Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.*/
 
 
@@ -2583,7 +3506,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchRequest` (
-  `catalog_type` long NOT NULL,
+  `catalog_type` text NOT NULL,
   `country` long NOT NULL,
   `language` long NOT NULL,
   `catalog_id` text /*Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog*/
@@ -2604,6 +3527,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchRequestCatalogsHotelBatchItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelFeed` (
+  `created_at` datetime NOT NULL,
+  `id` text NOT NULL PRIMARY KEY,
+  `updated_at` datetime NOT NULL,
   `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
   `format` long NOT NULL,
   `catalog_type` long NOT NULL,
@@ -2613,10 +3539,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeed` (
   `status` long NOT NULL,
   `default_currency` long NOT NULL,
   `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
-  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/,
-  `created_at` datetime,
-  `id` text PRIMARY KEY,
-  `updated_at` datetime
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.*/
 );  /*Catalogs Hotel Feed object*/
 
 
@@ -2634,7 +3557,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeedsCreateRequest` (
   `default_currency` long,
   `credentials` long,
   `preferred_processing_schedule` long,
-  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.*/
+  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.*/,
+  `status` long
 );  /*Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.*/
 
 
@@ -2715,8 +3639,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelItemResponsePin` (
 CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsBatch` (
   `catalog_type` long NOT NULL,
   `batch_id` text /*Id of the catalogs items batch*/,
-  `created_time` datetime /*Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD*/,
-  `completed_time` datetime /*Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD*/,
+  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
+  `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `status` long,
 );  /*Object describing the catalogs hotel items batch*/
 
@@ -2748,6 +3672,47 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsFilterHotelIds` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelItemsPostFilter` generated from model 'catalogsHotelItemsPostFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsPostFilter` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text /*Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelItemsPostFilterHotelIds` generated from model 'CatalogsHotelItemsPostFilterHotelIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsPostFilterHotelIds` (
+  `catalogsHotelItemsPostFilter` long NOT NULL
+  `hotelIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelListProductsByCatalogBasedFilterRequest` generated from model 'catalogsHotelListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given hotel catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the hotel product group.*/,
+  `filters` long NOT NULL
+);  /*Request object to list products for a given hotel catalog_id and product group filter.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelProduct` generated from model 'catalogsHotelProduct'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelProduct` (
+  `catalog_type` text NOT NULL,
+  `metadata` long NOT NULL,
+  `pin` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsHotelProductGroup` generated from model 'catalogsHotelProductGroup'
 --
 
@@ -2755,7 +3720,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroup` (
   `catalog_type` text NOT NULL,
   `id` text NOT NULL PRIMARY KEY /*ID of the hotel product group.*/,
   `filters` long NOT NULL,
-  `catalog_id` text NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the hotel product group.*/,
   `name` text /*Name of hotel product group*/,
   `description` text,
   `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
@@ -2852,6 +3817,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupFiltersAnyOfCatalogsHotelPr
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelProductGroupProductCounts` generated from model 'catalogsHotelProductGroupProductCounts'
+-- Product counts for a Hotel CatalogsProductGroup
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupProductCounts` (
+  `catalog_type` text NOT NULL,
+  `total` decimal NOT NULL
+);  /*Product counts for a Hotel CatalogsProductGroup*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsHotelProductGroupUpdateRequest` generated from model 'catalogsHotelProductGroupUpdateRequest'
 -- Request object for updating a hotel product group.
 --
@@ -2862,6 +3838,39 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupUpdateRequest` (
   `description` text,
   `filters` long
 );  /*Request object for updating a hotel product group.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelProductMetadata` generated from model 'catalogsHotelProductMetadata'
+-- Hotel product metadata entity
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelProductMetadata` (
+  `hotel_id` text NOT NULL /*The user-created unique ID that represents the hotel item.*/
+);  /*Hotel product metadata entity*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelReportParameters` generated from model 'catalogsHotelReportParameters'
+-- Parameters for hotel report
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelReportParameters` (
+  `catalog_type` text NOT NULL,
+  `report` long NOT NULL
+);  /*Parameters for hotel report*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsHotelReportParameters_report` generated from model 'catalogsHotelReportParametersReport'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelReportParameters_report` (
+  `report_type` text NOT NULL,
+  `feed_id` text NOT NULL /*ID of the feed entity.*/,
+  `processing_result_id` text /*Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.*/,
+  `catalog_id` text /*Unique identifier of a catalog. If not given, oldest catalog will be used*/
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -2994,17 +4003,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsItemResponse` (
 CREATE TABLE IF NOT EXISTS `CatalogsItemsBatch` (
   `catalog_type` long NOT NULL,
   `batch_id` text /*Id of the catalogs items batch*/,
-  `created_time` datetime /*Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD*/,
-  `completed_time` datetime /*Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD*/,
+  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
+  `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `status` long,
 );  /*Object describing the catalogs items batch*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsItemsBatchHotelProcessingRecord` generated from model 'CatalogsItemsBatchHotelProcessingRecord'
+-- Table structure for table `CatalogsItemsBatchCreativeAssetsProcessingRecord` generated from model 'CatalogsItemsBatchCreativeAssetsProcessingRecord'
 
-CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchHotelProcessingRecord` (
+CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchCreativeAssetsProcessingRecord` (
   `catalogsItemsBatch` long NOT NULL
-  `hotelProcessingRecord` long NOT NULL
+  `creativeAssetsProcessingRecord` long NOT NULL
 );
 
 
@@ -3094,7 +4103,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteDiscontinuedBatchRequestItemDelet
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsFilters` (
   `catalog_type` text NOT NULL,
-  `catalog_id` text /*Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog*/
+  `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -3112,6 +4121,60 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsFiltersHotelIds` (
   `catalogsItemsFilters` long NOT NULL
   `hotelIds` text NOT NULL
 );
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsItemsFiltersCreativeAssetsIds` generated from model 'CatalogsItemsFiltersCreativeAssetsIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsFiltersCreativeAssetsIds` (
+  `catalogsItemsFilters` long NOT NULL
+  `creativeAssetsIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsItemsPostFilters` generated from model 'catalogsItemsPostFilters'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFilters` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsItemsPostFiltersItemIds` generated from model 'CatalogsItemsPostFiltersItemIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFiltersItemIds` (
+  `catalogsItemsPostFilters` long NOT NULL
+  `itemIds` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsItemsPostFiltersHotelIds` generated from model 'CatalogsItemsPostFiltersHotelIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFiltersHotelIds` (
+  `catalogsItemsPostFilters` long NOT NULL
+  `hotelIds` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsItemsPostFiltersCreativeAssetsIds` generated from model 'CatalogsItemsPostFiltersCreativeAssetsIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFiltersCreativeAssetsIds` (
+  `catalogsItemsPostFilters` long NOT NULL
+  `creativeAssetsIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsItemsRequest` generated from model 'catalogsItemsRequest'
+-- Request object of catalogs items
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
+  `country` long NOT NULL,
+  `language` long NOT NULL,
+  `filters` long NOT NULL
+);  /*Request object of catalogs items*/
 
 
 -- --------------------------------------------------------------------------
@@ -3172,55 +4235,41 @@ CREATE TABLE IF NOT EXISTS `CatalogsList200ResponseCatalog` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsListProductsByFilterRequest` generated from model 'catalogsListProductsByFilterRequest'
--- Request object to list products for a given product group filter.
---
-
-CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFilterRequest` (
-  `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group filter.*/,
-  `filters` long NOT NULL
-);  /*Request object to list products for a given product group filter.*/
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `CatalogsListProductsByFilterRequest_oneOf` generated from model 'catalogsListProductsByFilterRequestOneOf'
+-- Table structure for table `CatalogsListProductsByFeedBasedFilter` generated from model 'catalogsListProductsByFeedBasedFilter'
 -- Request object to list products for a given feed_id and product group filter.
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFilterRequest_oneOf` (
+CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFeedBasedFilter` (
   `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group filter.*/,
   `filters` long NOT NULL
 );  /*Request object to list products for a given feed_id and product group filter.*/
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProduct` generated from model 'catalogsProduct'
+-- Table structure for table `CatalogsListProductsByFilterRequest` generated from model 'catalogsListProductsByFilterRequest'
+-- Request object to list products for a given product group filter.
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogsProduct` (
-  `metadata` long NOT NULL,
-  `pin` long NOT NULL
-); 
+CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFilterRequest` (
+  `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group filter.*/,
+  `filters` long NOT NULL,
+  `catalog_type` text NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `country` long NOT NULL,
+  `locale` long NOT NULL
+);  /*Request object to list products for a given product group filter.*/
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductGroup` generated from model 'catalogsProductGroup'
--- catalog product group entity
+-- Table structure for table `CatalogsProduct` generated from model 'catalogsProduct'
+-- Catalogs product for all verticals
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroup` (
-  `id` text NOT NULL PRIMARY KEY /*ID of the catalog product group.*/,
-  `filters` long NOT NULL,
-  `feed_id` text NOT NULL /*id of the catalogs feed belonging to this catalog product group*/,
-  `name` text /*Name of catalog product group*/,
-  `description` text,
-  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
-  `type` long,
-  `status` long,
-  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
-  `catalog_type` text
-);  /*catalog product group entity*/
+CREATE TABLE IF NOT EXISTS `CatalogsProduct` (
+  `catalog_type` text NOT NULL,
+  `metadata` long NOT NULL,
+  `pin` long NOT NULL
+);  /*Catalogs product for all verticals*/
 
 
 -- --------------------------------------------------------------------------
@@ -3267,6 +4316,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFilterKeys` (
   `CUSTOM_LABEL_4` long NOT NULL,
   `ITEM_GROUP_ID` long NOT NULL,
   `GENDER` long NOT NULL,
+  `MEDIA_TYPE` long NOT NULL,
   `PRODUCT_TYPE_4` long NOT NULL,
   `PRODUCT_TYPE_3` long NOT NULL,
   `PRODUCT_TYPE_2` long NOT NULL,
@@ -3278,7 +4328,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFilterKeys` (
   `GOOGLE_PRODUCT_CATEGORY_3` long NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_2` long NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_1` long NOT NULL,
-  `GOOGLE_PRODUCT_CATEGORY_0` long NOT NULL
+  `GOOGLE_PRODUCT_CATEGORY_0` long NOT NULL,
+  `PRODUCT_GROUP` long NOT NULL
 ); 
 
 
@@ -3431,6 +4482,23 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupMultipleGenderCriteriaGender` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsProductGroupMultipleMediaTypesCriteria` generated from model 'catalogsProductGroupMultipleMediaTypesCriteria'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupMultipleMediaTypesCriteria` (
+  `negated` boolean
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsProductGroupMultipleMediaTypesCriteriaMediaType` generated from model 'CatalogsProductGroupMultipleMediaTypesCriteriaMediaType'
+
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupMultipleMediaTypesCriteriaMediaType` (
+  `catalogsProductGroupMultipleMediaTypesCriteria` long NOT NULL
+  `mediaType` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsProductGroupMultipleStringCriteria` generated from model 'catalogsProductGroupMultipleStringCriteria'
 --
 
@@ -3505,15 +4573,17 @@ CREATE TABLE IF NOT EXISTS `catalogs_product_group_pricing_currency_criteria` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductGroupProductCounts` generated from model 'catalogsProductGroupProductCounts'
+-- Table structure for table `CatalogsProductGroupProductCountsVertical` generated from model 'catalogsProductGroupProductCountsVertical'
 -- Product counts for a CatalogsProductGroup
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroupProductCounts` (
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupProductCountsVertical` (
+  `catalog_type` text NOT NULL,
   `in_stock` decimal NOT NULL,
   `out_of_stock` decimal NOT NULL,
   `preorder` decimal NOT NULL,
-  `total` decimal NOT NULL
+  `total` decimal NOT NULL,
+  `videos` decimal NOT NULL
 );  /*Product counts for a CatalogsProductGroup*/
 
 
@@ -3531,41 +4601,6 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupUpdateRequest` (
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `catalogs_product_groups_create_201_response` generated from model 'catalogsProductGroupsCreate201Response'
---
-
-CREATE TABLE IF NOT EXISTS `catalogs_product_groups_create_201_response` (
-  `id` text NOT NULL PRIMARY KEY /*ID of the catalog product group.*/,
-  `filters` long NOT NULL,
-  `feed_id` text NOT NULL /*id of the catalogs feed belonging to this catalog product group*/,
-  `catalog_id` text NOT NULL,
-  `name` text /*Name of catalog product group*/,
-  `description` text,
-  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
-  `type` long,
-  `status` long,
-  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
-  `catalog_type` text
-); 
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `catalogs_product_groups_create_request` generated from model 'catalogsProductGroupsCreateRequest'
---
-
-CREATE TABLE IF NOT EXISTS `catalogs_product_groups_create_request` (
-  `name` text NOT NULL,
-  `filters` long NOT NULL,
-  `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group.*/,
-  `catalog_type` text NOT NULL,
-  `catalog_id` text NOT NULL /*Catalog id pertaining to the hotel product group.*/,
-  `description` text,
-  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/
-); 
-
-
--- --------------------------------------------------------------------------
 -- Table structure for table `catalogs_product_groups_list_200_response` generated from model 'catalogsProductGroupsList200Response'
 --
 
@@ -3574,32 +4609,12 @@ CREATE TABLE IF NOT EXISTS `catalogs_product_groups_list_200_response` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductGroupsList200ResponseCatalogsProductGroupsList200ResponseAllOfItemsInner` generated from model 'CatalogsProductGroupsList200ResponseCatalogsProductGroupsList200ResponseAllOfItemsInner'
+-- Table structure for table `CatalogsProductGroupsList200ResponseCatalogsVerticalProductGroup` generated from model 'CatalogsProductGroupsList200ResponseCatalogsVerticalProductGroup'
 
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroupsList200ResponseCatalogsProductGroupsList200ResponseAllOfItemsInner` (
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupsList200ResponseCatalogsVerticalProductGroup` (
   `catalogsProductGroupsList200Response` long NOT NULL
-  `catalogsProductGroupsList200ResponseAllOfItemsInner` long NOT NULL
+  `catalogsVerticalProductGroup` long NOT NULL
 );
-
-
--- --------------------------------------------------------------------------
--- Table structure for table `catalogs_product_groups_list_200_response_allOf_items_inner` generated from model 'catalogsProductGroupsList200ResponseAllOfItemsInner'
---
-
-CREATE TABLE IF NOT EXISTS `catalogs_product_groups_list_200_response_allOf_items_inner` (
-  `id` text NOT NULL PRIMARY KEY /*ID of the catalog product group.*/,
-  `filters` long NOT NULL,
-  `feed_id` text NOT NULL /*id of the catalogs feed belonging to this catalog product group*/,
-  `catalog_id` text NOT NULL,
-  `name` text /*Name of catalog product group*/,
-  `description` text,
-  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
-  `type` long,
-  `status` long,
-  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
-  `catalog_type` text
-); 
 
 
 -- --------------------------------------------------------------------------
@@ -3611,23 +4626,102 @@ CREATE TABLE IF NOT EXISTS `catalogs_product_groups_update_request` (
   `description` text,
   `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
   `filters` long,
-  `catalog_type` text
+  `catalog_type` text,
+  `country` long,
+  `locale` long
 ); 
 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsProductMetadata` generated from model 'catalogsProductMetadata'
--- Product metadata entity
+-- Table structure for table `CatalogsReport` generated from model 'catalogsReport'
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogsProductMetadata` (
-  `item_id` text NOT NULL /*The user-created unique ID that represents the product.*/,
-  `item_group_id` text NOT NULL /*The parent ID of the product.*/,
-  `availability` long NOT NULL,
-  `price` decimal NOT NULL /*The price of the product.*/,
-  `sale_price` decimal NOT NULL /*The discounted price of the product.*/,
-  `currency` long NOT NULL
-);  /*Product metadata entity*/
+CREATE TABLE IF NOT EXISTS `CatalogsReport` (
+  `report_status` text,
+  `url` text /*URL to download the report*/,
+  `size` decimal /*Size of the report in bytes*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsReportDistributionIssueFilter` generated from model 'catalogsReportDistributionIssueFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportDistributionIssueFilter` (
+  `report_type` text NOT NULL,
+  `catalog_id` text /*Unique identifier of a catalog. If not given, oldest catalog will be used*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsReportDistributionStats` generated from model 'catalogsReportDistributionStats'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportDistributionStats` (
+  `report_type` text,
+  `catalog_id` text /*ID of the catalog entity.*/,
+  `code` int /*The event code that a diagnostics aggregated number references*/,
+  `code_label` text /*A human-friendly label for the event code (e.g, &#39;SPAM&#39;)*/,
+  `message` text /*Title message describing the diagnostic issue*/,
+  `occurrences` int /*Number of occurrences of the issue*/,
+  `ineligible_for_ads` boolean /*Indicates if issue makes items ineligible for ads distribution*/,
+  `ineligible_for_organic` boolean /*Indicates if issue makes items ineligible for organic distribution*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsReportFeedIngestionFilter` generated from model 'catalogsReportFeedIngestionFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportFeedIngestionFilter` (
+  `report_type` text NOT NULL,
+  `feed_id` text NOT NULL /*ID of the feed entity.*/,
+  `processing_result_id` text /*Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsReportFeedIngestionStats` generated from model 'catalogsReportFeedIngestionStats'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportFeedIngestionStats` (
+  `report_type` text,
+  `catalog_id` text /*ID of the catalog entity.*/,
+  `code` int /*The event code that a diagnostics aggregated number references*/,
+  `code_label` text /*A human-friendly label for the event code (e.g, &#39;AVAILABILITY_INVALID&#39;)*/,
+  `message` text /*Title message describing the diagnostic issue*/,
+  `occurrences` int /*Number of occurrences of the issue*/,
+  `severity` text /*An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsReportParameters` generated from model 'catalogsReportParameters'
+-- Report parameters
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportParameters` (
+  `catalog_type` text NOT NULL,
+  `report` long NOT NULL
+);  /*Report parameters*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsReportStats` generated from model 'catalogsReportStats'
+-- Diagnostics aggregated numbers
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportStats` (
+  `report_type` text NOT NULL,
+  `catalog_id` text /*ID of the catalog entity.*/,
+  `code` int /*The event code that a diagnostics aggregated number references*/,
+  `code_label` text /*A human-friendly label for the event code (e.g, &#39;SPAM&#39;)*/,
+  `message` text /*Title message describing the diagnostic issue*/,
+  `occurrences` int /*Number of occurrences of the issue*/,
+  `severity` text /*An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue*/,
+  `ineligible_for_ads` boolean /*Indicates if issue makes items ineligible for ads distribution*/,
+  `ineligible_for_organic` boolean /*Indicates if issue makes items ineligible for organic distribution*/
+);  /*Diagnostics aggregated numbers*/
 
 
 -- --------------------------------------------------------------------------
@@ -3636,7 +4730,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductMetadata` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest` (
-  `catalog_type` long NOT NULL,
+  `catalog_type` text NOT NULL,
   `country` long NOT NULL,
   `language` long NOT NULL,
 );  /*A request object that can have multiple operations on a single retail batch*/
@@ -3675,6 +4769,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequestItemsInnerUpdateMaskFieldT
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailFeed` (
+  `created_at` datetime NOT NULL,
+  `id` text NOT NULL PRIMARY KEY,
+  `updated_at` datetime NOT NULL,
   `name` text NOT NULL /*A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.*/,
   `format` long NOT NULL,
   `catalog_type` long NOT NULL,
@@ -3685,10 +4782,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeed` (
   `default_currency` long NOT NULL,
   `default_locale` text NOT NULL /*The locale used within a feed for product descriptions.*/,
   `default_country` long NOT NULL,
-  `default_availability` long NOT NULL,
-  `created_at` datetime,
-  `id` text PRIMARY KEY,
-  `updated_at` datetime
+  `default_availability` long NOT NULL
 );  /*Catalogs Retail Feed object*/
 
 
@@ -3707,7 +4801,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeedsCreateRequest` (
   `default_currency` long,
   `credentials` long,
   `preferred_processing_schedule` long,
-  `default_availability` long
+  `default_availability` long,
+  `status` long
 );  /*Request object for creating a retail feed.*/
 
 
@@ -3776,8 +4871,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailItemResponsePin` (
 CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsBatch` (
   `catalog_type` long NOT NULL,
   `batch_id` text /*Id of the catalogs items batch*/,
-  `created_time` datetime /*Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD*/,
-  `completed_time` datetime /*Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD*/,
+  `created_time` datetime /*Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
+  `completed_time` datetime /*Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss*/,
   `status` long,
 );  /*Object describing the catalogs retail items batch*/
 
@@ -3809,6 +4904,49 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsFilterItemIds` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailItemsPostFilter` generated from model 'catalogsRetailItemsPostFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsPostFilter` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text /*Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailItemsPostFilterItemIds` generated from model 'CatalogsRetailItemsPostFilterItemIds'
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsPostFilterItemIds` (
+  `catalogsRetailItemsPostFilter` long NOT NULL
+  `itemIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailListProductsByCatalogBasedFilterRequest` generated from model 'catalogsRetailListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given retail catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` text NOT NULL /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the retail product group.*/,
+  `filters` long NOT NULL,
+  `country` long NOT NULL,
+  `locale` long NOT NULL
+);  /*Request object to list products for a given retail catalog_id and product group filter.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailProduct` generated from model 'catalogsRetailProduct'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProduct` (
+  `catalog_type` text NOT NULL,
+  `metadata` long NOT NULL,
+  `pin` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsRetailProductGroup` generated from model 'catalogsRetailProductGroup'
 --
 
@@ -3816,14 +4954,109 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroup` (
   `catalog_type` text NOT NULL,
   `id` text NOT NULL PRIMARY KEY /*ID of the catalog product group.*/,
   `filters` long NOT NULL,
-  `feed_id` text NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the retail product group.*/,
+  `feed_id` text NOT NULL /*id of the catalogs feed belonging to this catalog product group*/,
   `name` text /*Name of catalog product group*/,
   `description` text,
   `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
   `type` long,
   `status` long,
   `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/
+  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
+  `country` text,
+  `locale` text
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailProductGroupCreateRequest` generated from model 'catalogsRetailProductGroupCreateRequest'
+-- Request object for creating a product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupCreateRequest` (
+  `catalog_type` text NOT NULL /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
+  `name` text NOT NULL,
+  `filters` long NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the retail product group.*/,
+  `country` long NOT NULL,
+  `locale` long NOT NULL,
+  `description` text
+);  /*Request object for creating a product group.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailProductGroupProductCounts` generated from model 'catalogsRetailProductGroupProductCounts'
+-- Product counts for a Retail CatalogsProductGroup
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupProductCounts` (
+  `catalog_type` text NOT NULL,
+  `in_stock` decimal NOT NULL,
+  `out_of_stock` decimal NOT NULL,
+  `preorder` decimal NOT NULL,
+  `total` decimal NOT NULL,
+  `videos` decimal
+);  /*Product counts for a Retail CatalogsProductGroup*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailProductGroupUpdateRequest` generated from model 'catalogsRetailProductGroupUpdateRequest'
+-- Request object for updating a retail product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupUpdateRequest` (
+  `catalog_type` text /*Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.*/,
+  `name` text,
+  `description` text,
+  `filters` long,
+  `country` long,
+  `locale` long
+);  /*Request object for updating a retail product group.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailProductMetadata` generated from model 'catalogsRetailProductMetadata'
+-- Retail product metadata entity
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductMetadata` (
+  `item_id` text NOT NULL /*The user-created unique ID that represents the product.*/,
+  `item_group_id` text NOT NULL /*The parent ID of the product.*/,
+  `availability` long NOT NULL,
+  `price` decimal NOT NULL /*The price of the product.*/,
+  `sale_price` decimal NOT NULL /*The discounted price of the product.*/,
+  `currency` long NOT NULL
+);  /*Retail product metadata entity*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsRetailReportParameters` generated from model 'catalogsRetailReportParameters'
+-- Parameters for retail report
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailReportParameters` (
+  `catalog_type` text NOT NULL,
+  `report` long NOT NULL
+);  /*Parameters for retail report*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsUpdatableCreativeAssetsAttributes` generated from model 'catalogsUpdatableCreativeAssetsAttributes'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsUpdatableCreativeAssetsAttributes` (
+  `title` text /*The name of the creative assets.*/,
+  `description` text /*Brief description of the creative assets.*/,
+  `link` text /*Link to the creative assets page.*/,
+  `ios_deep_link` text /*IOS deep link to the creative assets page.*/,
+  `android_deep_link` text /*Link to the creative assets page.*/,
+  `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
+  `custom_label_0` text /*Custom grouping of creative assets.*/,
+  `custom_label_1` text /*Custom grouping of creative assets.*/,
+  `custom_label_2` text /*Custom grouping of creative assets.*/,
+  `custom_label_3` text /*Custom grouping of creative assets.*/,
+  `custom_label_4` text /*Custom grouping of creative assets.*/,
+  `visibility` text /*Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.*/
 ); 
 
 
@@ -3860,6 +5093,18 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdatableHotelAttributesNeighborhood` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsUpdateCreativeAssetsItem` generated from model 'catalogsUpdateCreativeAssetsItem'
+-- A creative assets item to be updated.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsUpdateCreativeAssetsItem` (
+  `creative_assets_id` text NOT NULL /*The catalog creative assets item id in the merchant namespace*/,
+  `operation` text NOT NULL,
+  `attributes` long NOT NULL
+);  /*A creative assets item to be updated.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsUpdateHotelItem` generated from model 'catalogsUpdateHotelItem'
 -- Object describing an hotel item batch record
 --
@@ -3892,6 +5137,18 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdateRetailItemUpdateMaskFieldType` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsUpsertCreativeAssetsItem` generated from model 'catalogsUpsertCreativeAssetsItem'
+-- A creative assets item to be upserted.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsUpsertCreativeAssetsItem` (
+  `creative_assets_id` text NOT NULL /*The catalog creative assets id in the merchant namespace*/,
+  `operation` text NOT NULL,
+  `attributes` long NOT NULL
+);  /*A creative assets item to be upserted.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsUpsertHotelItem` generated from model 'catalogsUpsertHotelItem'
 -- A hotel item to be upserted.
 --
@@ -3921,18 +5178,18 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpsertRetailItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalBatchRequest` (
-  `catalog_type` long NOT NULL,
+  `catalog_type` text NOT NULL,
   `country` long NOT NULL,
   `language` long NOT NULL,
-  `catalog_id` text /*Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog*/
+  `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
 );  /*A request object that can have multiple operations on a single batch*/
 
 -- --------------------------------------------------------------------------
--- Table structure for table `CatalogsVerticalBatchRequestCatalogsHotelBatchItem` generated from model 'CatalogsVerticalBatchRequestCatalogsHotelBatchItem'
+-- Table structure for table `CatalogsVerticalBatchRequestCatalogsCreativeAssetsBatchItem` generated from model 'CatalogsVerticalBatchRequestCatalogsCreativeAssetsBatchItem'
 
-CREATE TABLE IF NOT EXISTS `CatalogsVerticalBatchRequestCatalogsHotelBatchItem` (
+CREATE TABLE IF NOT EXISTS `CatalogsVerticalBatchRequestCatalogsCreativeAssetsBatchItem` (
   `catalogsVerticalBatchRequest` long NOT NULL
-  `catalogsHotelBatchItem` long NOT NULL
+  `catalogsCreativeAssetsBatchItem` long NOT NULL
 );
 
 
@@ -3952,7 +5209,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsCreateRequest` (
   `credentials` long,
   `preferred_processing_schedule` long,
   `default_availability` long,
-  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.*/
+  `status` long,
+  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/
 );  /*Request object for creating a feed.*/
 
 
@@ -3980,45 +5238,65 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsUpdateRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroup` (
   `catalog_type` text NOT NULL,
-  `id` text NOT NULL PRIMARY KEY /*ID of the catalog product group.*/,
+  `id` text NOT NULL PRIMARY KEY /*ID of the creative assets product group.*/,
   `filters` long NOT NULL,
-  `catalog_id` text NOT NULL,
-  `feed_id` text NOT NULL,
-  `name` text /*Name of catalog product group*/,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `feed_id` text NOT NULL /*id of the catalogs feed belonging to this catalog product group*/,
+  `name` text /*Name of creative assets product group*/,
   `description` text,
-  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
-  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
   `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/,
   `type` long,
-  `status` long
+  `status` long,
+  `created_at` int /*Unix timestamp in seconds of when catalog product group was created.*/,
+  `updated_at` int /*Unix timestamp in seconds of last time catalog product group was updated.*/,
+  `country` text,
+  `locale` text
 ); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsVerticalProductGroupCreateRequest` generated from model 'catalogsVerticalProductGroupCreateRequest'
--- Request object for creating a hotel product group.
+-- Request object for creating a catalog based product group.
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupCreateRequest` (
   `catalog_type` text NOT NULL,
   `name` text NOT NULL,
   `filters` long NOT NULL,
-  `catalog_id` text NOT NULL /*Catalog id pertaining to the hotel product group.*/,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `country` long NOT NULL,
+  `locale` long NOT NULL,
   `description` text
-);  /*Request object for creating a hotel product group.*/
+);  /*Request object for creating a catalog based product group.*/
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `CatalogsVerticalProductGroupUpdateRequest` generated from model 'catalogsVerticalProductGroupUpdateRequest'
--- Request object for updating a hotel product group.
+-- Request object for updating a catalog based product group.
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupUpdateRequest` (
   `catalog_type` text,
   `name` text,
   `description` text,
-  `filters` long
-);  /*Request object for updating a hotel product group.*/
+  `filters` long,
+  `country` long,
+  `locale` long
+);  /*Request object for updating a catalog based product group.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CatalogsVerticalsListProductsByCatalogBasedFilterRequest` generated from model 'catalogsVerticalsListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsVerticalsListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` text NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `filters` long NOT NULL,
+  `country` long NOT NULL,
+  `locale` long NOT NULL
+);  /*Request object to list products for a given catalog_id and product group filter.*/
 
 
 -- --------------------------------------------------------------------------
@@ -4094,8 +5372,8 @@ CREATE TABLE IF NOT EXISTS `ConversionEventsConversionEventsDataInner` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner` (
-  `event_name` text NOT NULL /*The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt; &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt; &lt;li&gt;&lt;code&gt;custom&lt;/code&gt; &lt;li&gt;&lt;code&gt;lead&lt;/code&gt; &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt; &lt;li&gt;&lt;code&gt;search&lt;/code&gt; &lt;li&gt;&lt;code&gt;signup&lt;/code&gt; &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt; &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;*/,
-  `action_source` text NOT NULL /*The source indicating where the conversion event occurred. &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt; &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt; &lt;li&gt;&lt;code&gt;web&lt;/code&gt; &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;*/,
+  `event_name` text NOT NULL /*&lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; */,
+  `action_source` text NOT NULL /*&lt;p&gt;   The source indicating where the conversion event occurred.   &lt;ul&gt;     &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;web&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; */,
   `event_time` long NOT NULL /*The time when the event happened. Unix timestamp in seconds.*/,
   `event_id` text NOT NULL /*A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.*/,
   `user_data` long NOT NULL,
@@ -4130,7 +5408,7 @@ CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner_custom_data` (
   `num_items` long /*Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).*/,
   `order_id` text /*The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.*/,
   `search_string` text /*The search string related to the user conversion event.*/,
-  `opt_out_type` text /*Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.*/,
+  `opt_out_type` text /*Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.*/,
   `np` text /*Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.*/
 );  /*Object containing other custom data.*/
 
@@ -4171,7 +5449,103 @@ CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner_custom_data_contents_inn
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEventsUserData` (
+  `client_ip_address` text NOT NULL /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+  `client_user_agent` text NOT NULL /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/
 );  /*Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataEm` generated from model 'ConversionEventsUserDataEm'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataEm` (
+  `conversionEventsUserData` long NOT NULL
+  `em` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataHashedMaids` generated from model 'ConversionEventsUserDataHashedMaids'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataHashedMaids` (
+  `conversionEventsUserData` long NOT NULL
+  `hashedMaids` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserData_anyOf` generated from model 'conversionEventsUserDataAnyOf'
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf` (
+  `client_ip_address` text /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+  `client_user_agent` text /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataAnyOfEm` generated from model 'ConversionEventsUserDataAnyOfEm'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOfEm` (
+  `conversionEventsUserDataAnyOf` long NOT NULL
+  `em` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataAnyOfHashedMaids` generated from model 'ConversionEventsUserDataAnyOfHashedMaids'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOfHashedMaids` (
+  `conversionEventsUserDataAnyOf` long NOT NULL
+  `hashedMaids` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserData_anyOf_1` generated from model 'conversionEventsUserDataAnyOf1'
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf_1` (
+  `client_ip_address` text /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+  `client_user_agent` text /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataAnyOf1HashedMaids` generated from model 'ConversionEventsUserDataAnyOf1HashedMaids'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf1HashedMaids` (
+  `conversionEventsUserDataAnyOf1` long NOT NULL
+  `hashedMaids` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataAnyOf1Em` generated from model 'ConversionEventsUserDataAnyOf1Em'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf1Em` (
+  `conversionEventsUserDataAnyOf1` long NOT NULL
+  `em` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserData_anyOf_2` generated from model 'conversionEventsUserDataAnyOf2'
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf_2` (
+  `client_ip_address` text NOT NULL /*The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+  `client_user_agent` text NOT NULL /*The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataAnyOf2Em` generated from model 'ConversionEventsUserDataAnyOf2Em'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf2Em` (
+  `conversionEventsUserDataAnyOf2` long NOT NULL
+  `em` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ConversionEventsUserDataAnyOf2HashedMaids` generated from model 'ConversionEventsUserDataAnyOf2HashedMaids'
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserDataAnyOf2HashedMaids` (
+  `conversionEventsUserDataAnyOf2` long NOT NULL
+  `hashedMaids` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -4264,6 +5638,160 @@ CREATE TABLE IF NOT EXISTS `CountryFilter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetAccessRequestBody` generated from model 'createAssetAccessRequestBody'
+-- An object containing a list of all the asset access requests
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestBody` (
+);  /*An object containing a list of all the asset access requests*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetAccessRequestBodyCreateAssetAccessRequestBodyAssetRequestsInner` generated from model 'CreateAssetAccessRequestBodyCreateAssetAccessRequestBodyAssetRequestsInner'
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestBodyCreateAssetAccessRequestBodyAssetRequestsInner` (
+  `createAssetAccessRequestBody` long NOT NULL
+  `createAssetAccessRequestBodyAssetRequestsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetAccessRequestBody_asset_requests_inner` generated from model 'createAssetAccessRequestBodyAssetRequestsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestBody_asset_requests_inner` (
+  `partner_id` text NOT NULL /*Unique identifier of a business partner to request asset access to.*/,
+  `asset_id_to_permissions` blob NOT NULL /*An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetAccessRequestErrorMessage_inner` generated from model 'createAssetAccessRequestErrorMessageInner'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestErrorMessage_inner` (
+  `code` int /*Error code associated with the error in requesting asset access.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetAccessRequestErrorMessageInnerMessages` generated from model 'CreateAssetAccessRequestErrorMessageInnerMessages'
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestErrorMessageInnerMessages` (
+  `createAssetAccessRequestErrorMessageInner` long NOT NULL
+  `messages` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetAccessRequestResponse` generated from model 'createAssetAccessRequestResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestResponse` (
+  `invites` blob
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetAccessRequestResponseCreateAssetAccessRequestErrorMessageInner` generated from model 'CreateAssetAccessRequestResponseCreateAssetAccessRequestErrorMessageInner'
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestResponseCreateAssetAccessRequestErrorMessageInner` (
+  `createAssetAccessRequestResponse` long NOT NULL
+  `createAssetAccessRequestErrorMessageInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetGroupBody` generated from model 'createAssetGroupBody'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetGroupBody` (
+  `asset_group_name` text NOT NULL /*Asset Group name*/,
+  `asset_group_description` text NOT NULL /*Asset group description*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetGroupBodyAssetGroupType` generated from model 'CreateAssetGroupBodyAssetGroupType'
+
+CREATE TABLE IF NOT EXISTS `CreateAssetGroupBodyAssetGroupType` (
+  `createAssetGroupBody` long NOT NULL
+  `assetGroupType` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetGroupResponse` generated from model 'createAssetGroupResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetGroupResponse` (
+  `asset_group` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetInvitesRequest` generated from model 'createAssetInvitesRequest'
+-- Request body for updating asset roles for existing invites.
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetInvitesRequest` (
+);  /*Request body for updating asset roles for existing invites.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetInvitesRequestCreateAssetInvitesRequestItem` generated from model 'CreateAssetInvitesRequestCreateAssetInvitesRequestItem'
+
+CREATE TABLE IF NOT EXISTS `CreateAssetInvitesRequestCreateAssetInvitesRequestItem` (
+  `createAssetInvitesRequest` long NOT NULL
+  `createAssetInvitesRequestItem` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateAssetInvitesRequestItem` generated from model 'createAssetInvitesRequestItem'
+-- Object declaring an asset role update to an invite.
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetInvitesRequestItem` (
+  `invite_id` text NOT NULL /*Unique identifier of an invite.*/,
+  `invite_type` long NOT NULL,
+  `asset_id_to_permissions` blob NOT NULL /*An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */
+);  /*Object declaring an asset role update to an invite.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateInvitesResultsResponseArray` generated from model 'createInvitesResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateInvitesResultsResponseArrayCreateInvitesResultsResponseArrayItemsInner` generated from model 'CreateInvitesResultsResponseArrayCreateInvitesResultsResponseArrayItemsInner'
+
+CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArrayCreateInvitesResultsResponseArrayItemsInner` (
+  `createInvitesResultsResponseArray` long NOT NULL
+  `createInvitesResultsResponseArrayItemsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateInvitesResultsResponseArray_items_inner` generated from model 'createInvitesResultsResponseArrayItemsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray_items_inner` (
+  `exception` long,
+  `invite` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateInvitesResultsResponseArray_items_inner_invite` generated from model 'createInvitesResultsResponseArrayItemsInnerInvite'
+-- An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
+--
+
+CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray_items_inner_invite` (
+  `id` text PRIMARY KEY /*Unique identifier of the invite/request.*/,
+  `user` long /*Metadata for the member/partner that was sent the invite/request.*/
+);  /*An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `CreateMMMReportRequest` generated from model 'createMMMReportRequest'
 --
 
@@ -4299,6 +5827,69 @@ CREATE TABLE IF NOT EXISTS `CreateMMMReportResponseData` (
   `message` text,
   `status` text
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateMembershipOrPartnershipInvitesBody` generated from model 'createMembershipOrPartnershipInvitesBody'
+-- Body to be used on path to send Members or Partners Invite or Request
+--
+
+CREATE TABLE IF NOT EXISTS `CreateMembershipOrPartnershipInvitesBody` (
+  `business_role` text NOT NULL /*The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.*/,
+  `invite_type` long NOT NULL,
+);  /*Body to be used on path to send Members or Partners Invite or Request*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateMembershipOrPartnershipInvitesBodyMembers` generated from model 'CreateMembershipOrPartnershipInvitesBodyMembers'
+
+CREATE TABLE IF NOT EXISTS `CreateMembershipOrPartnershipInvitesBodyMembers` (
+  `createMembershipOrPartnershipInvitesBody` long NOT NULL
+  `members` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateMembershipOrPartnershipInvitesBodyPartners` generated from model 'CreateMembershipOrPartnershipInvitesBodyPartners'
+
+CREATE TABLE IF NOT EXISTS `CreateMembershipOrPartnershipInvitesBodyPartners` (
+  `createMembershipOrPartnershipInvitesBody` long NOT NULL
+  `partners` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreativeAssetsIdFilter` generated from model 'creativeAssetsIdFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CreativeAssetsIdFilter` (
+  `CREATIVE_ASSETS_ID` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreativeAssetsProcessingRecord` generated from model 'creativeAssetsProcessingRecord'
+-- Object describing an item processing record
+--
+
+CREATE TABLE IF NOT EXISTS `CreativeAssetsProcessingRecord` (
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
+  `status` long
+);  /*Object describing an item processing record*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreativeAssetsProcessingRecordItemValidationEvent` generated from model 'CreativeAssetsProcessingRecordItemValidationEvent'
+
+CREATE TABLE IF NOT EXISTS `CreativeAssetsProcessingRecordItemValidationEvent` (
+  `creativeAssetsProcessingRecord` long NOT NULL
+  `itemValidationEvent` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreativeAssetsProcessingRecordItemValidationEvent` generated from model 'CreativeAssetsProcessingRecordItemValidationEvent'
+
+CREATE TABLE IF NOT EXISTS `CreativeAssetsProcessingRecordItemValidationEvent` (
+  `creativeAssetsProcessingRecord` long NOT NULL
+  `itemValidationEvent` long NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -4415,6 +6006,238 @@ CREATE TABLE IF NOT EXISTS `CustomerListsList200ResponseCustomerList` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `DeleteAssetGroupBody` generated from model 'deleteAssetGroupBody'
+-- Request body used to delete asset groups
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupBody` (
+);  /*Request body used to delete asset groups*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteAssetGroupBodyAssetGroupsToDelete` generated from model 'DeleteAssetGroupBodyAssetGroupsToDelete'
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupBodyAssetGroupsToDelete` (
+  `deleteAssetGroupBody` long NOT NULL
+  `assetGroupsToDelete` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteAssetGroupResponse` generated from model 'deleteAssetGroupResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponse` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteAssetGroupResponseDeletedAssetGroups` generated from model 'DeleteAssetGroupResponseDeletedAssetGroups'
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponseDeletedAssetGroups` (
+  `deleteAssetGroupResponse` long NOT NULL
+  `deletedAssetGroups` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteAssetGroupResponseDeleteAssetGroupResponseExceptionsInner` generated from model 'DeleteAssetGroupResponseDeleteAssetGroupResponseExceptionsInner'
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponseDeleteAssetGroupResponseExceptionsInner` (
+  `deleteAssetGroupResponse` long NOT NULL
+  `deleteAssetGroupResponseExceptionsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteAssetGroupResponse_exceptions_inner` generated from model 'deleteAssetGroupResponseExceptionsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponse_exceptions_inner` (
+  `code` int /*Error code associated with the error deleting asset group.*/,
+  `message` text /*Error message associated with the error deleting asset group.*/,
+  `asset_group_id` text /*Asset group id of the exception.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteInvitesResultsResponseArray` generated from model 'deleteInvitesResultsResponseArray'
+-- Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteInvitesResultsResponseArray` (
+);  /*Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteInvitesResultsResponseArrayDeleteInvitesResultsResponseArrayItemsInner` generated from model 'DeleteInvitesResultsResponseArrayDeleteInvitesResultsResponseArrayItemsInner'
+
+CREATE TABLE IF NOT EXISTS `DeleteInvitesResultsResponseArrayDeleteInvitesResultsResponseArrayItemsInner` (
+  `deleteInvitesResultsResponseArray` long NOT NULL
+  `deleteInvitesResultsResponseArrayItemsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteInvitesResultsResponseArray_items_inner` generated from model 'deleteInvitesResultsResponseArrayItemsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteInvitesResultsResponseArray_items_inner` (
+  `exception` long,
+  `invite` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteInvitesResultsResponseArray_items_inner_exception` generated from model 'deleteInvitesResultsResponseArrayItemsInnerException'
+-- An exception object if there is an error performing the cancellation. It will only be provided if there is an error.
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteInvitesResultsResponseArray_items_inner_exception` (
+  `invite_id` text /*Unique identifier of an invite.*/,
+  `message` text /*Error message associated with the error in performing the action on the invite/request.*/
+);  /*An exception object if there is an error performing the cancellation. It will only be provided if there is an error.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteMemberAccessResult` generated from model 'deleteMemberAccessResult'
+-- The terminated asset access.
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteMemberAccessResult` (
+  `asset_id` text /*Unique identifier of the business asset.*/,
+  `member_id` text /*Unique identifier of the business member.*/
+);  /*The terminated asset access.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteMemberAccessResultsResponseArray` generated from model 'deleteMemberAccessResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteMemberAccessResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeleteMemberAccessResultsResponseArrayDeleteMemberAccessResult` generated from model 'DeleteMemberAccessResultsResponseArrayDeleteMemberAccessResult'
+
+CREATE TABLE IF NOT EXISTS `DeleteMemberAccessResultsResponseArrayDeleteMemberAccessResult` (
+  `deleteMemberAccessResultsResponseArray` long NOT NULL
+  `deleteMemberAccessResult` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnerAssetAccessBody` generated from model 'deletePartnerAssetAccessBody'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBody` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnerAssetAccessBodyDeletePartnerAssetAccessBodyAccessesInner` generated from model 'DeletePartnerAssetAccessBodyDeletePartnerAssetAccessBodyAccessesInner'
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBodyDeletePartnerAssetAccessBodyAccessesInner` (
+  `deletePartnerAssetAccessBody` long NOT NULL
+  `deletePartnerAssetAccessBodyAccessesInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnerAssetAccessBody_accesses_inner` generated from model 'deletePartnerAssetAccessBodyAccessesInner'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBody_accesses_inner` (
+  `partner_id` text NOT NULL /*Unique identifier of a business partner to update asset access to.*/,
+  `asset_id` text NOT NULL /*Unique identifier of the business asset.*/,
+  `partner_type` text /*If partner_type&#x3D;INTERNAL, the deleted asset access is for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the deleted asset access is for the access you have to the partner&#39;s business asset.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnerAssetsResult` generated from model 'deletePartnerAssetsResult'
+-- The terminated asset access.
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetsResult` (
+  `asset_id` text /*Unique identifier of a business asset.*/,
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
+  `is_shared_partner` boolean /*If is_shared_partner&#x3D;FALSE, you terminated a partner&#39;s asset access to your business asset.&lt;br&gt; If is_shared_partner&#x3D;TRUE, you terminated your asset access to your partner&#39;s business asset.*/,
+  `partner_id` text /*Unique identifier of a business partner.*/
+);  /*The terminated asset access.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnerAssetsResultPermissions` generated from model 'DeletePartnerAssetsResultPermissions'
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetsResultPermissions` (
+  `deletePartnerAssetsResult` long NOT NULL
+  `permissions` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnerAssetsResultsResponseArray` generated from model 'deletePartnerAssetsResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetsResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnerAssetsResultsResponseArrayDeletePartnerAssetsResult` generated from model 'DeletePartnerAssetsResultsResponseArrayDeletePartnerAssetsResult'
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetsResultsResponseArrayDeletePartnerAssetsResult` (
+  `deletePartnerAssetsResultsResponseArray` long NOT NULL
+  `deletePartnerAssetsResult` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnersRequest` generated from model 'deletePartnersRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnersRequest` (
+  `partner_type` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnersRequestPartnerIds` generated from model 'DeletePartnersRequestPartnerIds'
+
+CREATE TABLE IF NOT EXISTS `DeletePartnersRequestPartnerIds` (
+  `deletePartnersRequest` long NOT NULL
+  `partnerIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnersResponse` generated from model 'deletePartnersResponse'
+-- An object with a list of partners that were deleted.
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnersResponse` (
+);  /*An object with a list of partners that were deleted.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletePartnersResponseDeletedPartners` generated from model 'DeletePartnersResponseDeletedPartners'
+
+CREATE TABLE IF NOT EXISTS `DeletePartnersResponseDeletedPartners` (
+  `deletePartnersResponse` long NOT NULL
+  `deletedPartners` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletedMembersResponse` generated from model 'deletedMembersResponse'
+-- An object with a list of members that were deleted.
+--
+
+CREATE TABLE IF NOT EXISTS `DeletedMembersResponse` (
+);  /*An object with a list of members that were deleted.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `DeletedMembersResponseDeletedMembers` generated from model 'DeletedMembersResponseDeletedMembers'
+
+CREATE TABLE IF NOT EXISTS `DeletedMembersResponseDeletedMembers` (
+  `deletedMembersResponse` long NOT NULL
+  `deletedMembers` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `DeliveryMetricsResponse` generated from model 'deliveryMetricsResponse'
 --
 
@@ -4506,7 +6329,8 @@ CREATE TABLE IF NOT EXISTS `feeds_create_request` (
   `preferred_processing_schedule` long,
   `default_country` long,
   `default_availability` long,
-  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.*/
+  `status` long,
+  `catalog_id` text /*Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.*/
 ); 
 
 
@@ -4580,6 +6404,86 @@ CREATE TABLE IF NOT EXISTS `GenderFilter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `GetBusinessAssetsResponse` generated from model 'getBusinessAssetsResponse'
+-- An object containing the permissions a business has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `GetBusinessAssetsResponse` (
+  `asset_id` text /*Unique identifier of a business asset.*/,
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
+  `asset_group_info` long
+);  /*An object containing the permissions a business has on the asset.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `get_business_employers_200_response` generated from model 'getBusinessEmployers200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `get_business_employers_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `GetBusinessEmployers200ResponseUserBusinessRoleBinding` generated from model 'GetBusinessEmployers200ResponseUserBusinessRoleBinding'
+
+CREATE TABLE IF NOT EXISTS `GetBusinessEmployers200ResponseUserBusinessRoleBinding` (
+  `getBusinessEmployers200Response` long NOT NULL
+  `userBusinessRoleBinding` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `get_business_members_200_response` generated from model 'getBusinessMembers200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `get_business_members_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `GetBusinessMembers200ResponseUserBusinessRoleBinding` generated from model 'GetBusinessMembers200ResponseUserBusinessRoleBinding'
+
+CREATE TABLE IF NOT EXISTS `GetBusinessMembers200ResponseUserBusinessRoleBinding` (
+  `getBusinessMembers200Response` long NOT NULL
+  `userBusinessRoleBinding` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `get_business_partners_200_response` generated from model 'getBusinessPartners200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `get_business_partners_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `GetBusinessPartners200ResponseUserBusinessRoleBinding` generated from model 'GetBusinessPartners200ResponseUserBusinessRoleBinding'
+
+CREATE TABLE IF NOT EXISTS `GetBusinessPartners200ResponseUserBusinessRoleBinding` (
+  `getBusinessPartners200Response` long NOT NULL
+  `userBusinessRoleBinding` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `get_invites_200_response` generated from model 'getInvites200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `get_invites_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `GetInvites200ResponseInviteResponse` generated from model 'GetInvites200ResponseInviteResponse'
+
+CREATE TABLE IF NOT EXISTS `GetInvites200ResponseInviteResponse` (
+  `getInvites200Response` long NOT NULL
+  `inviteResponse` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `GetMMMReportResponse` generated from model 'getMMMReportResponse'
 --
 
@@ -4600,6 +6504,26 @@ CREATE TABLE IF NOT EXISTS `GetMMMReportResponseData` (
   `url` text,
   `size` decimal
 ); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `GetPartnerAssetsResponse` generated from model 'getPartnerAssetsResponse'
+-- An object containing the permissions a you/your business partner has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `GetPartnerAssetsResponse` (
+  `asset_id` text /*Unique identifier of a business asset.*/,
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
+  `asset_group_info` long
+);  /*An object containing the permissions a you/your business partner has on the asset.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `GetPartnerAssetsResponsePermissions` generated from model 'GetPartnerAssetsResponsePermissions'
+
+CREATE TABLE IF NOT EXISTS `GetPartnerAssetsResponsePermissions` (
+  `getPartnerAssetsResponse` long NOT NULL
+  `permissions` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -4970,14 +6894,118 @@ CREATE TABLE IF NOT EXISTS `Interest` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `InviteAssetsSummary` generated from model 'inviteAssetsSummary'
+-- Ad accounts and profiles the member/partner will be granted access to with this invite/request.
+--
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummary` (
+);  /*Ad accounts and profiles the member/partner will be granted access to with this invite/request.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteAssetsSummaryInviteAssetsSummaryAdAccountsInner` generated from model 'InviteAssetsSummaryInviteAssetsSummaryAdAccountsInner'
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummaryInviteAssetsSummaryAdAccountsInner` (
+  `inviteAssetsSummary` long NOT NULL
+  `inviteAssetsSummaryAdAccountsInner` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteAssetsSummaryInviteAssetsSummaryProfilesInner` generated from model 'InviteAssetsSummaryInviteAssetsSummaryProfilesInner'
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummaryInviteAssetsSummaryProfilesInner` (
+  `inviteAssetsSummary` long NOT NULL
+  `inviteAssetsSummaryProfilesInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteAssetsSummary_ad_accounts_inner` generated from model 'inviteAssetsSummaryAdAccountsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummary_ad_accounts_inner` (
+  `id` text PRIMARY KEY /*Unique identifier of a business ad account.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteAssetsSummaryAdAccountsInnerPermissions` generated from model 'InviteAssetsSummaryAdAccountsInnerPermissions'
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummaryAdAccountsInnerPermissions` (
+  `inviteAssetsSummaryAdAccountsInner` long NOT NULL
+  `permissions` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteAssetsSummary_profiles_inner` generated from model 'inviteAssetsSummaryProfilesInner'
+--
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummary_profiles_inner` (
+  `id` text PRIMARY KEY /*Unique identifier of a business profile.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteAssetsSummaryProfilesInnerPermissions` generated from model 'InviteAssetsSummaryProfilesInnerPermissions'
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummaryProfilesInnerPermissions` (
+  `inviteAssetsSummaryProfilesInner` long NOT NULL
+  `permissions` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteBusinessRoleBinding` generated from model 'inviteBusinessRoleBinding'
+-- An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+--
+
+CREATE TABLE IF NOT EXISTS `InviteBusinessRoleBinding` (
+  `id` text PRIMARY KEY /*Unique identifier of the invite/request.*/,
+  `invite_data` long,
+  `is_received_invite` boolean /*Indicates whether the invite/request was received.*/,
+  `user` long /*Metadata for the member/partner that was sent the invite/request.*/
+);  /*An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteExceptionResponse` generated from model 'inviteExceptionResponse'
+-- An exception object if there is an error performing the action. Will only be provided if there is an error.
+--
+
+CREATE TABLE IF NOT EXISTS `InviteExceptionResponse` (
+  `invite_or_request_id` text /*Unique identifier of the invite/request.*/,
+  `code` int /*Error code associated with the error in performing the action on the invite/request.*/,
+  `message` text /*Error message associated with the error in performing the action on the invite/request.*/,
+);  /*An exception object if there is an error performing the action. Will only be provided if there is an error.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteExceptionResponseUsersOrPartnerIds` generated from model 'InviteExceptionResponseUsersOrPartnerIds'
+
+CREATE TABLE IF NOT EXISTS `InviteExceptionResponseUsersOrPartnerIds` (
+  `inviteExceptionResponse` long NOT NULL
+  `usersOrPartnerIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteResponse` generated from model 'inviteResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `InviteResponse` (
+  `id` text PRIMARY KEY /*Unique identifier of the invite/request.*/,
+  `invite_data` long,
+  `is_received_invite` boolean /*Indicates whether the invite/request was received.*/,
+  `user` long /*Metadata for the member/partner that was sent the invite/request.*/
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `ItemAttributes` generated from model 'itemAttributes'
 --
 
 CREATE TABLE IF NOT EXISTS `ItemAttributes` (
   `ad_link` text /*Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.*/,
   `adult` boolean /*Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.*/,
-  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
-  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.*/,
+  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
+  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.*/,
   `average_review_rating` decimal /*Average reviews for the item. Can be a number from 1-5.*/,
   `brand` text /*The brand of the product.*/,
   `checkout_enabled` boolean /*This attribute is not supported anymore.*/,
@@ -4991,7 +7019,7 @@ CREATE TABLE IF NOT EXISTS `ItemAttributes` (
   `description` text /*&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;*/,
   `free_shipping_label` boolean /*The item is free to ship.*/,
   `free_shipping_limit` text /*The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.*/,
-  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.*/,
+  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.*/,
   `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
   `gtin` int /*The unique universal product identifier.*/,
   `id` text PRIMARY KEY /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;*/,
@@ -5013,10 +7041,11 @@ CREATE TABLE IF NOT EXISTS `ItemAttributes` (
   `shipping_weight` text /*The weight of the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_width` text /*The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `size` text /*The size of the product.*/,
-  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.*/,
-  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
+  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.*/,
+  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
   `tax` text /*Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.*/,
   `title` text /*&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;*/,
+  `video_link` text /*&lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -5049,6 +7078,83 @@ CREATE TABLE IF NOT EXISTS `ItemAttributesAdditionalImageLink` (
 CREATE TABLE IF NOT EXISTS `ItemAttributesImageLink` (
   `itemAttributes` long NOT NULL
   `imageLink` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ItemAttributesRequest` generated from model 'itemAttributesRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `ItemAttributesRequest` (
+  `ad_link` text /*Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.*/,
+  `adult` boolean /*Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.*/,
+  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
+  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.*/,
+  `average_review_rating` decimal /*Average reviews for the item. Can be a number from 1-5.*/,
+  `brand` text /*The brand of the product.*/,
+  `checkout_enabled` boolean /*This attribute is not supported anymore.*/,
+  `color` text /*The primary color of the product.*/,
+  `condition` text /*The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.*/,
+  `custom_label_0` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_1` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_2` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_3` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `custom_label_4` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;*/,
+  `description` text /*&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;*/,
+  `free_shipping_label` boolean /*The item is free to ship.*/,
+  `free_shipping_limit` text /*The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.*/,
+  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.*/,
+  `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
+  `gtin` int /*The unique universal product identifier.*/,
+  `id` text PRIMARY KEY /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;*/,
+  `item_group_id` text /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The parent ID of the product.&lt;/p&gt;*/,
+  `last_updated_time` long /*The millisecond timestamp when the item was lastly modified by the merchant.*/,
+  `link` text /*&lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;The landing page for the product.&lt;/p&gt;*/,
+  `material` text /*The material used to make the product.*/,
+  `min_ad_price` text /*The minimum advertised price of the product. It supports the following formats, \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars.*/,
+  `mobile_link` text /*The mobile-optimized version of your landing page. Must begin with http:// or https://.*/,
+  `mpn` text /*Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.*/,
+  `number_of_ratings` int /*The number of ratings for the item.*/,
+  `number_of_reviews` int /*The number of reviews available for the item.*/,
+  `pattern` text /*The description of the pattern used for the product.*/,
+  `price` text /*The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.*/,
+  `product_type` text /*&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.&lt;/p&gt;*/,
+  `sale_price` text /*The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.*/,
+  `shipping` text /*Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.*/,
+  `shipping_height` text /*The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
+  `shipping_weight` text /*The weight of the product. Ensure there is a space between the numeric string and the metric.*/,
+  `shipping_width` text /*The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
+  `size` text /*The size of the product.*/,
+  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.*/,
+  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
+  `tax` text /*Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.*/,
+  `title` text /*&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;*/,
+  `image_link` long,
+  `video_link` text /*&lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ItemAttributesRequestVariantNames` generated from model 'ItemAttributesRequestVariantNames'
+
+CREATE TABLE IF NOT EXISTS `ItemAttributesRequestVariantNames` (
+  `itemAttributesRequest` long NOT NULL
+  `variantNames` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ItemAttributesRequestVariantValues` generated from model 'ItemAttributesRequestVariantValues'
+
+CREATE TABLE IF NOT EXISTS `ItemAttributesRequestVariantValues` (
+  `itemAttributesRequest` long NOT NULL
+  `variantValues` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ItemAttributesRequestAdditionalImageLink` generated from model 'ItemAttributesRequestAdditionalImageLink'
+
+CREATE TABLE IF NOT EXISTS `ItemAttributesRequestAdditionalImageLink` (
+  `itemAttributesRequest` long NOT NULL
+  `additionalImageLink` text NOT NULL
 );
 
 
@@ -5157,6 +7263,7 @@ CREATE TABLE IF NOT EXISTS `ItemResponse` (
   `item_id` text /*The catalog item id in the merchant namespace*/,
   `attributes` long,
   `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/,
 );  /*Object describing an item record*/
 
 -- --------------------------------------------------------------------------
@@ -5184,7 +7291,8 @@ CREATE TABLE IF NOT EXISTS `ItemResponse_anyOf` (
   `catalog_type` long NOT NULL,
   `item_id` text /*The catalog retail item id in the merchant namespace*/,
   `attributes` long,
-  `hotel_id` text /*The catalog hotel id in the merchant namespace*/
+  `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -5203,7 +7311,8 @@ CREATE TABLE IF NOT EXISTS `ItemResponseAnyOfPin` (
 CREATE TABLE IF NOT EXISTS `ItemResponse_anyOf_1` (
   `catalog_type` long NOT NULL,
   `item_id` text /*The catalog item id in the merchant namespace*/,
-  `hotel_id` text /*The catalog hotel id in the merchant namespace*/
+  `hotel_id` text /*The catalog hotel id in the merchant namespace*/,
+  `creative_assets_id` text /*The catalog creative assets id in the merchant namespace*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -5262,11 +7371,11 @@ CREATE TABLE IF NOT EXISTS `ItemValidationEvent` (
 --
 
 CREATE TABLE IF NOT EXISTS `items_batch_post_request` (
-  `catalog_type` long NOT NULL,
+  `catalog_type` text NOT NULL,
   `country` long NOT NULL,
   `language` long NOT NULL,
   `operation` long NOT NULL,
-  `catalog_id` text /*Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog*/
+  `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
 ); 
 
 -- --------------------------------------------------------------------------
@@ -5302,7 +7411,12 @@ CREATE TABLE IF NOT EXISTS `ItemsIssuesList200ResponseCatalogsItemValidationIssu
 CREATE TABLE IF NOT EXISTS `Keyword` (
   `match_type` long NOT NULL,
   `value` text NOT NULL /*Keyword value (120 chars max).*/,
-  `bid` int /*Keyword custom bid in microcurrency - null if inherited from parent ad group.*/
+  `bid` int /*&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.*/,
+  `archived` boolean,
+  `id` text PRIMARY KEY /*Keyword ID .*/,
+  `parent_id` text /*Keyword parent entity ID (advertiser, campaign, ad group).*/,
+  `parent_type` text /*Parent entity type*/,
+  `type` text /*Always keyword*/
 ); 
 
 
@@ -5351,7 +7465,7 @@ CREATE TABLE IF NOT EXISTS `KeywordMetricsResponse` (
 CREATE TABLE IF NOT EXISTS `KeywordUpdate` (
   `id` text NOT NULL PRIMARY KEY /*Keyword ID.*/,
   `archived` boolean /*Is keyword archived?*/,
-  `bid` int UNSIGNED /*Keyword custom bid in microcurrency - null if inherited from parent ad group.*/
+  `bid` int /*&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.*/
 ); 
 
 
@@ -5378,7 +7492,7 @@ CREATE TABLE IF NOT EXISTS `KeywordUpdateBodyKeywordUpdate` (
 CREATE TABLE IF NOT EXISTS `KeywordsCommon` (
   `match_type` long NOT NULL,
   `value` text NOT NULL /*Keyword value (120 chars max).*/,
-  `bid` int /*Keyword custom bid in microcurrency - null if inherited from parent ad group.*/
+  `bid` int /*&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.*/
 ); 
 
 
@@ -5457,6 +7571,39 @@ CREATE TABLE IF NOT EXISTS `KeywordsResponseKeyword` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormArrayResponse` generated from model 'leadFormArrayResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormArrayResponse` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormArrayResponseLeadFormArrayResponseItemsInner` generated from model 'LeadFormArrayResponseLeadFormArrayResponseItemsInner'
+
+CREATE TABLE IF NOT EXISTS `LeadFormArrayResponseLeadFormArrayResponseItemsInner` (
+  `leadFormArrayResponse` long NOT NULL
+  `leadFormArrayResponseItemsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormArrayResponse_items_inner` generated from model 'leadFormArrayResponseItemsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormArrayResponse_items_inner` (
+  `data` long,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormArrayResponseItemsInnerException` generated from model 'LeadFormArrayResponseItemsInnerException'
+
+CREATE TABLE IF NOT EXISTS `LeadFormArrayResponseItemsInnerException` (
+  `leadFormArrayResponseItemsInner` long NOT NULL
+  `exception` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `LeadFormCommon` generated from model 'leadFormCommon'
 -- Creation fields
 --
@@ -5464,7 +7611,7 @@ CREATE TABLE IF NOT EXISTS `KeywordsResponseKeyword` (
 CREATE TABLE IF NOT EXISTS `LeadFormCommon` (
   `name` text /*Internal name of the lead form.*/,
   `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
-  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
   `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
   `status` long,
   `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
@@ -5476,6 +7623,54 @@ CREATE TABLE IF NOT EXISTS `LeadFormCommon` (
 CREATE TABLE IF NOT EXISTS `LeadFormCommonLeadFormQuestion` (
   `leadFormCommon` long NOT NULL
   `leadFormQuestion` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormCommonLeadFormCommonPolicyLinksInner` generated from model 'LeadFormCommonLeadFormCommonPolicyLinksInner'
+
+CREATE TABLE IF NOT EXISTS `LeadFormCommonLeadFormCommonPolicyLinksInner` (
+  `leadFormCommon` long NOT NULL
+  `leadFormCommonPolicyLinksInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormCommon_policy_links_inner` generated from model 'leadFormCommonPolicyLinksInner'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormCommon_policy_links_inner` (
+  `label` text /*Policy label for an additional policy link.*/,
+  `link` text /*Policy link for an additional policy link.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormCreateRequest` generated from model 'leadFormCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormCreateRequest` (
+  `name` text NOT NULL /*Internal name of the lead form.*/,
+  `privacy_policy_link` text NOT NULL /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
+  `has_accepted_terms` boolean NOT NULL /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
+  `completion_message` text NOT NULL /*A message for people who complete the form to let them know what happens next.*/,
+  `status` long,
+  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormCreateRequestLeadFormQuestion` generated from model 'LeadFormCreateRequestLeadFormQuestion'
+
+CREATE TABLE IF NOT EXISTS `LeadFormCreateRequestLeadFormQuestion` (
+  `leadFormCreateRequest` long NOT NULL
+  `leadFormQuestion` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormCreateRequestLeadFormCommonPolicyLinksInner` generated from model 'LeadFormCreateRequestLeadFormCommonPolicyLinksInner'
+
+CREATE TABLE IF NOT EXISTS `LeadFormCreateRequestLeadFormCommonPolicyLinksInner` (
+  `leadFormCreateRequest` long NOT NULL
+  `leadFormCommonPolicyLinksInner` long NOT NULL
 );
 
 
@@ -5505,7 +7700,7 @@ CREATE TABLE IF NOT EXISTS `LeadFormQuestionCustomQuestionOptions` (
 CREATE TABLE IF NOT EXISTS `LeadFormResponse` (
   `name` text /*Internal name of the lead form.*/,
   `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
-  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
   `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
   `status` long,
   `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
@@ -5521,6 +7716,14 @@ CREATE TABLE IF NOT EXISTS `LeadFormResponse` (
 CREATE TABLE IF NOT EXISTS `LeadFormResponseLeadFormQuestion` (
   `leadFormResponse` long NOT NULL
   `leadFormQuestion` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormResponseLeadFormCommonPolicyLinksInner` generated from model 'LeadFormResponseLeadFormCommonPolicyLinksInner'
+
+CREATE TABLE IF NOT EXISTS `LeadFormResponseLeadFormCommonPolicyLinksInner` (
+  `leadFormResponse` long NOT NULL
+  `leadFormCommonPolicyLinksInner` long NOT NULL
 );
 
 
@@ -5552,6 +7755,37 @@ CREATE TABLE IF NOT EXISTS `LeadFormTestResponse` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormUpdateRequest` generated from model 'leadFormUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequest` (
+  `id` text NOT NULL PRIMARY KEY /*The ID of this lead form to be updated*/,
+  `name` text /*Internal name of the lead form.*/,
+  `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
+  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
+  `status` long,
+  `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormUpdateRequestLeadFormQuestion` generated from model 'LeadFormUpdateRequestLeadFormQuestion'
+
+CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequestLeadFormQuestion` (
+  `leadFormUpdateRequest` long NOT NULL
+  `leadFormQuestion` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadFormUpdateRequestLeadFormCommonPolicyLinksInner` generated from model 'LeadFormUpdateRequestLeadFormCommonPolicyLinksInner'
+
+CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequestLeadFormCommonPolicyLinksInner` (
+  `leadFormUpdateRequest` long NOT NULL
+  `leadFormCommonPolicyLinksInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `lead_forms_list_200_response` generated from model 'leadFormsList200Response'
 --
 
@@ -5566,6 +7800,36 @@ CREATE TABLE IF NOT EXISTS `LeadFormsList200ResponseLeadFormResponse` (
   `leadFormsList200Response` long NOT NULL
   `leadFormResponse` long NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadsExportCreateRequest` generated from model 'leadsExportCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadsExportCreateRequest` (
+  `start_date` text NOT NULL /*Export leads collected on and after start date (UTC). Format: YYYY-MM-DD*/,
+  `end_date` text NOT NULL /*Export leads collected on and before end date (UTC). Format: YYYY-MM-DD*/,
+  `ad_id` text NOT NULL /*ID for the ad collecting leads*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadsExportCreateResponse` generated from model 'leadsExportCreateResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadsExportCreateResponse` (
+  `leads_export_id` text /*ID for the leads export job*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `LeadsExportResponseData` generated from model 'leadsExportResponseData'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadsExportResponseData` (
+  `export_status` long,
+  `download_url` text
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -5624,6 +7888,15 @@ CREATE TABLE IF NOT EXISTS `MediaList200ResponseMediaUploadDetails` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `MediaTypeFilter` generated from model 'mediaTypeFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `MediaTypeFilter` (
+  `MEDIA_TYPE` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `MediaUpload` generated from model 'mediaUpload'
 -- Media upload that has been registered but not uploaded/processed yet.
 --
@@ -5676,6 +7949,32 @@ CREATE TABLE IF NOT EXISTS `MediaUploadRequest` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `MembersToDeleteBody` generated from model 'membersToDeleteBody'
+--
+
+CREATE TABLE IF NOT EXISTS `MembersToDeleteBody` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `MembersToDeleteBodyMembersToDeleteBodyMembersInner` generated from model 'MembersToDeleteBodyMembersToDeleteBodyMembersInner'
+
+CREATE TABLE IF NOT EXISTS `MembersToDeleteBodyMembersToDeleteBodyMembersInner` (
+  `membersToDeleteBody` long NOT NULL
+  `membersToDeleteBodyMembersInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `MembersToDeleteBody_members_inner` generated from model 'membersToDeleteBodyMembersInner'
+--
+
+CREATE TABLE IF NOT EXISTS `MembersToDeleteBody_members_inner` (
+  `member_id` text NOT NULL /*Unique identifier of the member*/,
+  `business_role` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `MetricsResponse` generated from model 'metricsResponse'
 --
 
@@ -5701,12 +8000,38 @@ CREATE TABLE IF NOT EXISTS `MinPriceFilter` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `multiple_product_groups_inner` generated from model 'multipleProductGroupsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `multiple_product_groups_inner` (
+  `name` text NOT NULL,
+  `filters` long NOT NULL,
+  `feed_id` text NOT NULL /*Catalog Feed id pertaining to the catalog product group.*/,
+  `catalog_type` text NOT NULL,
+  `catalog_id` text NOT NULL /*Catalog id pertaining to the creative assets product group.*/,
+  `country` long NOT NULL,
+  `locale` long NOT NULL,
+  `description` text,
+  `is_featured` boolean /*boolean indicator of whether the product group is being featured or not*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `OauthAccessTokenRequestClientCredentials` generated from model 'oauthAccessTokenRequestClientCredentials'
+-- A request to receive a client token.
+--
+
+CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestClientCredentials` (
+  `scope` text NOT NULL
+);  /*A request to receive a client token.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenRequestCode` generated from model 'oauthAccessTokenRequestCode'
 -- A request to exchange an authorization code for an access token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestCode` (
-  `grant_type` text NOT NULL,
   `code` text NOT NULL,
   `redirect_uri` text NOT NULL
 );  /*A request to exchange an authorization code for an access token.*/
@@ -5718,7 +8043,6 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestCode` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestRefresh` (
-  `grant_type` text NOT NULL,
   `refresh_token` text NOT NULL,
   `scope` text,
   `refresh_on` boolean /*Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.*/
@@ -5740,18 +8064,27 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponse` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `OauthAccessTokenResponseClientCredentials` generated from model 'oauthAccessTokenResponseClientCredentials'
+-- A successful OAuth client token response for the client token flow.
+--
+
+CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseClientCredentials` (
+  `access_token` text NOT NULL,
+  `token_type` text NOT NULL,
+  `expires_in` int NOT NULL,
+  `scope` text NOT NULL,
+  `response_type` text
+);  /*A successful OAuth client token response for the client token flow.*/
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenResponseCode` generated from model 'oauthAccessTokenResponseCode'
 -- A successful OAuth access token response for the authorization code flow.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseCode` (
-  `access_token` text NOT NULL,
-  `token_type` text NOT NULL,
-  `expires_in` int NOT NULL,
-  `scope` text NOT NULL,
   `refresh_token` text NOT NULL,
-  `refresh_token_expires_in` int NOT NULL,
-  `response_type` text
+  `refresh_token_expires_in` int NOT NULL
 );  /*A successful OAuth access token response for the authorization code flow.*/
 
 
@@ -5761,14 +8094,9 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseCode` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseEverlastingRefresh` (
-  `access_token` text NOT NULL,
-  `token_type` text NOT NULL,
-  `expires_in` int NOT NULL,
-  `scope` text NOT NULL,
   `refresh_token` text NOT NULL,
   `refresh_token_expires_in` int NOT NULL,
-  `refresh_token_expires_at` int NOT NULL,
-  `response_type` text
+  `refresh_token_expires_at` int NOT NULL
 );  /*A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.*/
 
 
@@ -5778,14 +8106,23 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseEverlastingRefresh` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseIntegrationRefresh` (
+  `refresh_token` text NOT NULL,
+  `refresh_token_expires_in` int NOT NULL
+);  /*A successful OAuth access token response for the refresh token flow, with an added refresh token.*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `OauthAccessTokenResponseRefresh` generated from model 'oauthAccessTokenResponseRefresh'
+-- A successful OAuth access token response for the refresh token flow.
+--
+
+CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseRefresh` (
   `access_token` text NOT NULL,
   `token_type` text NOT NULL,
   `expires_in` int NOT NULL,
   `scope` text NOT NULL,
-  `refresh_token` text NOT NULL,
-  `refresh_token_expires_in` int NOT NULL,
   `response_type` text
-);  /*A successful OAuth access token response for the refresh token flow, with an added refresh token.*/
+);  /*A successful OAuth access token response for the refresh token flow.*/
 
 
 -- --------------------------------------------------------------------------
@@ -5808,7 +8145,7 @@ CREATE TABLE IF NOT EXISTS `OptimizationGoalMetadata_conversion_tag_v3_goal_meta
   `conversion_event` text,
   `conversion_tag_id` text,
   `cpa_goal_value_in_micro_currency` text,
-  `is_roas_optimized` boolean /*Ad group is ROAS optimized*/,
+  `is_roas_optimized` boolean /*ROAS optimization is not supported*/,
   `learning_mode_type` text /*Conversion learning model type*/
 ); 
 
@@ -6028,7 +8365,7 @@ CREATE TABLE IF NOT EXISTS `Pin` (
   `media` long,
   `media_source` long,
   `parent_pin_id` text /*The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;.*/,
-  `is_standard` boolean /*Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/content/update/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.*/,
+  `is_standard` boolean /*Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.*/,
   `has_been_promoted` boolean /*Whether the Pin has been promoted or not.*/,
   `note` text /*Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.*/,
   `pin_metrics` blob /*Pin metrics with associated time intervals if any.*/
@@ -6269,6 +8606,18 @@ CREATE TABLE IF NOT EXISTS `PinMediaWithImage` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `PinMediaWithImage_allOf_images` generated from model 'pinMediaWithImageAllOfImages'
+--
+
+CREATE TABLE IF NOT EXISTS `PinMediaWithImage_allOf_images` (
+  `150x150` blob,
+  `400x300` blob,
+  `600x` blob,
+  `1200x` blob
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `PinMediaWithImageAndVideo` generated from model 'pinMediaWithImageAndVideo'
 -- Pin with a mix of images and videos.
 --
@@ -6402,7 +8751,7 @@ CREATE TABLE IF NOT EXISTS `pins_save_request` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `PinterestTagEventData` generated from model 'pinterestTagEventData'
--- Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot;, \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
+-- Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
 --
 
 CREATE TABLE IF NOT EXISTS `PinterestTagEventData` (
@@ -6417,7 +8766,17 @@ CREATE TABLE IF NOT EXISTS `PinterestTagEventData` (
   `search_query` text /*Search query string. For example, \&quot;boots\&quot;.*/,
   `value` text /*Product value. For example, \&quot;199.98\&quot;*/,
   `video_title` text /*Video title. For example, \&quot;How to style your Parker Boots\&quot;.*/
-);  /*Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot;, \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }*/
+);  /*Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `PlacementMultipliers` generated from model 'placementMultipliers'
+-- This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
+--
+
+CREATE TABLE IF NOT EXISTS `PlacementMultipliers` (
+  `PLACEMENT` text
+);  /*This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).*/
 
 
 -- --------------------------------------------------------------------------
@@ -6458,7 +8817,6 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotion` (
   `tracking_url` text /*Tracking template for proudct group promotions. 4000 limit*/,
   `catalog_product_group_id` text /*ID of the catalogs product group that this product group promotion references*/,
   `catalog_product_group_name` text /*Catalogs product group name*/,
-  `creative_type` long,
   `collections_hero_pin_id` text /*Hero Pin ID if this PG is promoted as a Collection*/,
   `collections_hero_destination_url` text /*Collections Hero Destination Url*/,
   `grid_click_type` long
@@ -6474,12 +8832,38 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequest` (
 ); 
 
 -- --------------------------------------------------------------------------
--- Table structure for table `ProductGroupPromotionCreateRequestProductGroupPromotion` generated from model 'ProductGroupPromotionCreateRequestProductGroupPromotion'
+-- Table structure for table `ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement` generated from model 'ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement'
 
-CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequestProductGroupPromotion` (
+CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement` (
   `productGroupPromotionCreateRequest` long NOT NULL
-  `productGroupPromotion` long NOT NULL
+  `productGroupPromotionCreateRequestElement` long NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ProductGroupPromotionCreateRequestElement` generated from model 'productGroupPromotionCreateRequestElement'
+--
+
+CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequestElement` (
+  `id` text PRIMARY KEY /*ID of the product group promotion.*/,
+  `ad_group_id` text /*ID of the ad group the product group belongs to.*/,
+  `bid_in_micro_currency` int /*The bid in micro currency.*/,
+  `included` boolean /*True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.*/,
+  `definition` text /*The full product group definition path*/,
+  `relative_definition` text /*The definition of the product group, relative to its parent - an attribute name/value pair*/,
+  `parent_id` text /*The parent Product Group ID of this Product Group*/,
+  `slideshow_collections_title` text /*Slideshow Collections Title*/,
+  `slideshow_collections_description` text /*Slideshow Collections Description*/,
+  `is_mdl` boolean /*If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog*/,
+  `status` long,
+  `tracking_url` text /*Tracking template for proudct group promotions. 4000 limit*/,
+  `catalog_product_group_id` text /*ID of the catalogs product group that this product group promotion references*/,
+  `catalog_product_group_name` text /*Catalogs product group name*/,
+  `collections_hero_pin_id` text /*Hero Pin ID if this PG is promoted as a Collection*/,
+  `collections_hero_destination_url` text /*Collections Hero Destination Url*/,
+  `grid_click_type` long,
+  `creative_type` long
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -6496,6 +8880,32 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotionResponseProductGroupPromotionRe
   `productGroupPromotionResponse` long NOT NULL
   `productGroupPromotionResponseItem` long NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ProductGroupPromotionResponseElement` generated from model 'productGroupPromotionResponseElement'
+--
+
+CREATE TABLE IF NOT EXISTS `ProductGroupPromotionResponseElement` (
+  `id` text PRIMARY KEY /*ID of the product group promotion.*/,
+  `ad_group_id` text /*ID of the ad group the product group belongs to.*/,
+  `bid_in_micro_currency` int /*The bid in micro currency.*/,
+  `included` boolean /*True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.*/,
+  `definition` text /*The full product group definition path*/,
+  `relative_definition` text /*The definition of the product group, relative to its parent - an attribute name/value pair*/,
+  `parent_id` text /*The parent Product Group ID of this Product Group*/,
+  `slideshow_collections_title` text /*Slideshow Collections Title*/,
+  `slideshow_collections_description` text /*Slideshow Collections Description*/,
+  `is_mdl` boolean /*If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog*/,
+  `status` long,
+  `tracking_url` text /*Tracking template for proudct group promotions. 4000 limit*/,
+  `catalog_product_group_id` text /*ID of the catalogs product group that this product group promotion references*/,
+  `catalog_product_group_name` text /*Catalogs product group name*/,
+  `collections_hero_pin_id` text /*Hero Pin ID if this PG is promoted as a Collection*/,
+  `collections_hero_destination_url` text /*Collections Hero Destination Url*/,
+  `grid_click_type` long,
+  `creative_type` long
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -6550,6 +8960,15 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotionsList200ResponseProductGroupPro
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `ProductGroupReferenceFilter` generated from model 'productGroupReferenceFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `ProductGroupReferenceFilter` (
+  `PRODUCT_GROUP` long NOT NULL
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `ProductType0Filter` generated from model 'productType0Filter'
 --
 
@@ -6600,6 +9019,8 @@ CREATE TABLE IF NOT EXISTS `ProductType4Filter` (
 --
 
 CREATE TABLE IF NOT EXISTS `QuizPinData` (
+  `tie_breaker_type` text /*Quiz ad tie breaker type, default is RANDOM*/,
+  `tie_breaker_custom_result` long
 );  /*This field includes all quiz data including questions, options, and results.*/
 
 -- --------------------------------------------------------------------------
@@ -6696,6 +9117,49 @@ CREATE TABLE IF NOT EXISTS `RelatedTermsRelatedTermsListInnerRelatedTerms` (
   `relatedTermsRelatedTermsListInner` long NOT NULL
   `relatedTerms` text NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `reports_stats_200_response` generated from model 'reportsStats200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `reports_stats_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `ReportsStats200ResponseCatalogsReportStats` generated from model 'ReportsStats200ResponseCatalogsReportStats'
+
+CREATE TABLE IF NOT EXISTS `ReportsStats200ResponseCatalogsReportStats` (
+  `reportsStats200Response` long NOT NULL
+  `catalogsReportStats` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `RespondToInvitesResponseArray` generated from model 'respondToInvitesResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `RespondToInvitesResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `RespondToInvitesResponseArrayRespondToInvitesResponseArrayItemsInner` generated from model 'RespondToInvitesResponseArrayRespondToInvitesResponseArrayItemsInner'
+
+CREATE TABLE IF NOT EXISTS `RespondToInvitesResponseArrayRespondToInvitesResponseArrayItemsInner` (
+  `respondToInvitesResponseArray` long NOT NULL
+  `respondToInvitesResponseArrayItemsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `RespondToInvitesResponseArray_items_inner` generated from model 'respondToInvitesResponseArrayItemsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `RespondToInvitesResponseArray_items_inner` (
+  `exception` long,
+  `invite` long
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -6951,6 +9415,88 @@ CREATE TABLE IF NOT EXISTS `SearchUserBoardsGet200ResponseBoard` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudience` generated from model 'sharedAudience'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudience` (
+  `audience_id` text NOT NULL /*Unique identifier of an audience*/,
+  `operation_type` long NOT NULL,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceRecipientAccountIds` generated from model 'SharedAudienceRecipientAccountIds'
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceRecipientAccountIds` (
+  `sharedAudience` long NOT NULL
+  `recipientAccountIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceAccount` generated from model 'sharedAudienceAccount'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceAccount` (
+  `account_id` text NOT NULL /*Account ID (ad account or business ID).*/,
+  `account_name` text NOT NULL /*Account name.*/,
+  `account_type` text NOT NULL /*account type*/,
+  `shared_on_timestamp` int NOT NULL /*Epoch timestamp in seconds for the shared audience event*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceCommon` generated from model 'sharedAudienceCommon'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceCommon` (
+  `audience_id` text /*Unique identifier of an audience*/,
+  `operation_type` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceResponse` generated from model 'sharedAudienceResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceResponse` (
+  `audience_id` text /*Audience ID that was shared*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceResponseRole` generated from model 'SharedAudienceResponseRole'
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceResponseRole` (
+  `sharedAudienceResponse` long NOT NULL
+  `role` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceResponseRecipientAccountIds` generated from model 'SharedAudienceResponseRecipientAccountIds'
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceResponseRecipientAccountIds` (
+  `sharedAudienceResponse` long NOT NULL
+  `recipientAccountIds` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceResponseCommon` generated from model 'sharedAudienceResponseCommon'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceResponseCommon` (
+  `audience_id` text /*Audience ID that was shared*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `SharedAudienceResponseCommonRole` generated from model 'SharedAudienceResponseCommonRole'
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceResponseCommonRole` (
+  `sharedAudienceResponseCommon` long NOT NULL
+  `role` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `SingleInterestTargetingOptionResponse` generated from model 'singleInterestTargetingOptionResponse'
 --
 
@@ -7019,11 +9565,11 @@ CREATE TABLE IF NOT EXISTS `SummaryPin` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `TargetingSpec` generated from model 'targetingSpec'
--- Ad group targeting specification defining the ad group target audience. For example, {\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}
+-- Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingSpec` (
-);  /*Ad group targeting specification defining the ad group target audience. For example, {\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}*/
+);  /*Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;*/
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `TargetingSpecAGEBUCKET` generated from model 'TargetingSpecAGEBUCKET'
@@ -7050,11 +9596,11 @@ CREATE TABLE IF NOT EXISTS `TargetingSpecAUDIENCEEXCLUDE` (
 );
 
 -- --------------------------------------------------------------------------
--- Table structure for table `TargetingSpecAuDIENCEINCLUDEQuote` generated from model 'TargetingSpecAuDIENCEINCLUDEQuote'
+-- Table structure for table `TargetingSpecAUDIENCEINCLUDE` generated from model 'TargetingSpecAUDIENCEINCLUDE'
 
-CREATE TABLE IF NOT EXISTS `TargetingSpecAuDIENCEINCLUDEQuote` (
+CREATE TABLE IF NOT EXISTS `TargetingSpecAUDIENCEINCLUDE` (
   `targetingSpec` long NOT NULL
-  `auDIENCEINCLUDEQuote` text NOT NULL
+  `aUDIENCEINCLUDE` text NOT NULL
 );
 
 -- --------------------------------------------------------------------------
@@ -7130,6 +9676,161 @@ CREATE TABLE IF NOT EXISTS `TargetingSpecSHOPPINGRETARGETINGTagTypes` (
   `targetingSpecSHOPPINGRETARGETING` long NOT NULL
   `tagTypes` int NOT NULL
 );
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateAudienceSizing` generated from model 'targetingTemplateAudienceSizing'
+-- Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateAudienceSizing` (
+  `reach_estimate` long
+);  /*Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. */
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateAudienceSizing_reach_estimate` generated from model 'targetingTemplateAudienceSizingReachEstimate'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateAudienceSizing_reach_estimate` (
+  `estimate` long,
+  `lower_bound` long,
+  `upper_bound` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateCommon` generated from model 'targetingTemplateCommon'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateCommon` (
+  `name` text /*targeting template name*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
+  `targeting_attributes` long,
+  `placement_group` long,
+  `tracking_urls` long
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateCommonTargetingTemplateKeyword` generated from model 'TargetingTemplateCommonTargetingTemplateKeyword'
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateCommonTargetingTemplateKeyword` (
+  `targetingTemplateCommon` long NOT NULL
+  `targetingTemplateKeyword` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateCreate` generated from model 'targetingTemplateCreate'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateCreate` (
+  `name` text NOT NULL /*Name of targeting template.*/,
+  `targeting_attributes` long NOT NULL,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
+  `placement_group` long,
+  `tracking_urls` long
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateCreateTargetingTemplateKeyword` generated from model 'TargetingTemplateCreateTargetingTemplateKeyword'
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateCreateTargetingTemplateKeyword` (
+  `targetingTemplateCreate` long NOT NULL
+  `targetingTemplateKeyword` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateGetResponseData` generated from model 'targetingTemplateGetResponseData'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateGetResponseData` (
+  `name` text /*targeting template name*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
+  `targeting_attributes` long,
+  `placement_group` long,
+  `tracking_urls` long,
+  `id` text PRIMARY KEY /*Targeting template ID.*/,
+  `created_time` int /*Targeting template created time. Unix timestamp in seconds.*/,
+  `updated_time` int /*Targeting template updated time.Unix timestamp in seconds.*/,
+  `ad_account_id` text /*The ID of the advertiser that this targeting template belongs to.*/,
+  `status` text /*Indicate targeting template is active or Deleted*/,
+  `sizing` long,
+  `valid` boolean /*Inform if the targeting template is valid (ex. would be false if has revoked audience)*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateGetResponseDataTargetingTemplateKeyword` generated from model 'TargetingTemplateGetResponseDataTargetingTemplateKeyword'
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateGetResponseDataTargetingTemplateKeyword` (
+  `targetingTemplateGetResponseData` long NOT NULL
+  `targetingTemplateKeyword` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateKeyword` generated from model 'targetingTemplateKeyword'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateKeyword` (
+  `match_type` long,
+  `value` text /*The keyword targeting (120 chars max).*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `targeting_template_list_200_response` generated from model 'targetingTemplateList200Response'
+--
+
+CREATE TABLE IF NOT EXISTS `targeting_template_list_200_response` (
+  `bookmark` text
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateList200ResponseTargetingTemplateResponseData` generated from model 'TargetingTemplateList200ResponseTargetingTemplateResponseData'
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateList200ResponseTargetingTemplateResponseData` (
+  `targetingTemplateList200Response` long NOT NULL
+  `targetingTemplateResponseData` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateResponseData` generated from model 'targetingTemplateResponseData'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateResponseData` (
+  `name` text /*targeting template name*/,
+  `auto_targeting_enabled` boolean /*Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.*/,
+  `targeting_attributes` long,
+  `placement_group` long,
+  `tracking_urls` long,
+  `id` text PRIMARY KEY /*Targeting template ID.*/,
+  `created_time` int /*Targeting template created time. Unix timestamp in seconds.*/,
+  `updated_time` int /*Targeting template updated time.Unix timestamp in seconds.*/,
+  `ad_account_id` text /*The ID of the advertiser that this targeting template belongs to.*/,
+  `status` text /*Indicate targeting template is active or Deleted*/,
+  `sizing` long
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateResponseDataTargetingTemplateKeyword` generated from model 'TargetingTemplateResponseDataTargetingTemplateKeyword'
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateResponseDataTargetingTemplateKeyword` (
+  `targetingTemplateResponseData` long NOT NULL
+  `targetingTemplateKeyword` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `TargetingTemplateUpdateRequest` generated from model 'targetingTemplateUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateUpdateRequest` (
+  `operation_type` text NOT NULL,
+  `id` text NOT NULL PRIMARY KEY /*Targeting template ID*/
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -7450,8 +10151,8 @@ CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponse_trends_inner_time_series` (
 CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
   `ad_link` text /*Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.*/,
   `adult` boolean /*Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.*/,
-  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
-  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.*/,
+  `age_group` text /*The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.*/,
+  `availability` text /*The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.*/,
   `average_review_rating` decimal /*Average reviews for the item. Can be a number from 1-5.*/,
   `brand` text /*The brand of the product.*/,
   `checkout_enabled` boolean /*This attribute is not supported anymore.*/,
@@ -7465,7 +10166,7 @@ CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
   `description` text /*&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;*/,
   `free_shipping_label` boolean /*The item is free to ship.*/,
   `free_shipping_limit` text /*The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.*/,
-  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.*/,
+  `gender` text /*The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.*/,
   `google_product_category` text /*The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.*/,
   `gtin` int /*The unique universal product identifier.*/,
   `id` text PRIMARY KEY /*&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;*/,
@@ -7487,8 +10188,8 @@ CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
   `shipping_weight` text /*The weight of the product. Ensure there is a space between the numeric string and the metric.*/,
   `shipping_width` text /*The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.*/,
   `size` text /*The size of the product.*/,
-  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.*/,
-  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
+  `size_system` text /*Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.*/,
+  `size_type` text /*Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.*/,
   `tax` text /*Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.*/,
   `title` text /*&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;*/,
 ); 
@@ -7511,6 +10212,311 @@ CREATE TABLE IF NOT EXISTS `UpdatableItemAttributesVariantValues` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupBody` generated from model 'updateAssetGroupBody'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBody` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupBodyUpdateAssetGroupBodyAssetGroupsToUpdateInner` generated from model 'UpdateAssetGroupBodyUpdateAssetGroupBodyAssetGroupsToUpdateInner'
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBodyUpdateAssetGroupBodyAssetGroupsToUpdateInner` (
+  `updateAssetGroupBody` long NOT NULL
+  `updateAssetGroupBodyAssetGroupsToUpdateInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupBody_asset_groups_to_update_inner` generated from model 'updateAssetGroupBodyAssetGroupsToUpdateInner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBody_asset_groups_to_update_inner` (
+  `asset_group_id` text NOT NULL /*Unique identifier of the asset group to update.*/,
+  `name` text /*Asset Group name*/,
+  `description` text /*Asset group description*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetGroupType` generated from model 'UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetGroupType'
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetGroupType` (
+  `updateAssetGroupBodyAssetGroupsToUpdateInner` long NOT NULL
+  `assetGroupType` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToAdd` generated from model 'UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToAdd'
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToAdd` (
+  `updateAssetGroupBodyAssetGroupsToUpdateInner` long NOT NULL
+  `assetsToAdd` text NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToRemove` generated from model 'UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToRemove'
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBodyAssetGroupsToUpdateInnerAssetsToRemove` (
+  `updateAssetGroupBodyAssetGroupsToUpdateInner` long NOT NULL
+  `assetsToRemove` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupResponse` generated from model 'updateAssetGroupResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponse` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupResponseAssetGroupBinding` generated from model 'UpdateAssetGroupResponseAssetGroupBinding'
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponseAssetGroupBinding` (
+  `updateAssetGroupResponse` long NOT NULL
+  `assetGroupBinding` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupResponseUpdateAssetGroupResponseExceptionsInner` generated from model 'UpdateAssetGroupResponseUpdateAssetGroupResponseExceptionsInner'
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponseUpdateAssetGroupResponseExceptionsInner` (
+  `updateAssetGroupResponse` long NOT NULL
+  `updateAssetGroupResponseExceptionsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateAssetGroupResponse_exceptions_inner` generated from model 'updateAssetGroupResponseExceptionsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponse_exceptions_inner` (
+  `code` int /*Error code associated with the error editing asset group.*/,
+  `message` text /*Error message associated with the error editing asset group.*/,
+  `asset_group_id` text /*Asset group id of the exception.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateInvitesResultsResponseArray` generated from model 'updateInvitesResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateInvitesResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateInvitesResultsResponseArrayUpdateInvitesResultsResponseArrayItemsInner` generated from model 'UpdateInvitesResultsResponseArrayUpdateInvitesResultsResponseArrayItemsInner'
+
+CREATE TABLE IF NOT EXISTS `UpdateInvitesResultsResponseArrayUpdateInvitesResultsResponseArrayItemsInner` (
+  `updateInvitesResultsResponseArray` long NOT NULL
+  `updateInvitesResultsResponseArrayItemsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateInvitesResultsResponseArray_items_inner` generated from model 'updateInvitesResultsResponseArrayItemsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateInvitesResultsResponseArray_items_inner` (
+  `exception` long,
+  `invite` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberAssetAccessBody` generated from model 'updateMemberAssetAccessBody'
+-- An object with a list of all the new accesses.
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetAccessBody` (
+);  /*An object with a list of all the new accesses.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberAssetAccessBodyUpdateMemberAssetAccessBodyAccessesInner` generated from model 'UpdateMemberAssetAccessBodyUpdateMemberAssetAccessBodyAccessesInner'
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetAccessBodyUpdateMemberAssetAccessBodyAccessesInner` (
+  `updateMemberAssetAccessBody` long NOT NULL
+  `updateMemberAssetAccessBodyAccessesInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberAssetAccessBody_accesses_inner` generated from model 'updateMemberAssetAccessBodyAccessesInner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetAccessBody_accesses_inner` (
+  `asset_id` text NOT NULL /*Id of the asset to update.*/,
+  `member_id` text NOT NULL /*Unique identifier of the member on which to perform the update*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberAssetAccessBodyAccessesInnerPermissions` generated from model 'UpdateMemberAssetAccessBodyAccessesInnerPermissions'
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetAccessBodyAccessesInnerPermissions` (
+  `updateMemberAssetAccessBodyAccessesInner` long NOT NULL
+  `permissions` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberAssetsResultsResponseArray` generated from model 'updateMemberAssetsResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetsResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberAssetsResultsResponseArrayUpdateMemberAssetsResultsResponseArrayItemsInner` generated from model 'UpdateMemberAssetsResultsResponseArrayUpdateMemberAssetsResultsResponseArrayItemsInner'
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetsResultsResponseArrayUpdateMemberAssetsResultsResponseArrayItemsInner` (
+  `updateMemberAssetsResultsResponseArray` long NOT NULL
+  `updateMemberAssetsResultsResponseArrayItemsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberAssetsResultsResponseArray_items_inner` generated from model 'updateMemberAssetsResultsResponseArrayItemsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetsResultsResponseArray_items_inner` (
+  `response` long
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberBusinessRoleBody` generated from model 'updateMemberBusinessRoleBody'
+-- Single instance of a business member to have its role updated
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberBusinessRoleBody` (
+  `business_role` long NOT NULL,
+  `member_id` text NOT NULL /*Unique identifier of the member*/
+);  /*Single instance of a business member to have its role updated*/
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberResult` generated from model 'updateMemberResult'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberResult` (
+  `business_role` text /*The access level a member has to the business. Values are case-sensitive. &lt;br&gt; - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. &lt;br&gt; - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.*/,
+  `member_id` text /*Unique identifier of the business member.*/
+); 
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberResultsResponseArray` generated from model 'updateMemberResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdateMemberResultsResponseArrayUpdateMemberResult` generated from model 'UpdateMemberResultsResponseArrayUpdateMemberResult'
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberResultsResponseArrayUpdateMemberResult` (
+  `updateMemberResultsResponseArray` long NOT NULL
+  `updateMemberResult` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetAccessBody` generated from model 'updatePartnerAssetAccessBody'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBody` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccessBodyAccessesInner` generated from model 'UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccessBodyAccessesInner'
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBodyUpdatePartnerAssetAccessBodyAccessesInner` (
+  `updatePartnerAssetAccessBody` long NOT NULL
+  `updatePartnerAssetAccessBodyAccessesInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetAccessBody_accesses_inner` generated from model 'updatePartnerAssetAccessBodyAccessesInner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBody_accesses_inner` (
+  `partner_id` text NOT NULL /*Unique identifier of a business partner to update asset access to.*/,
+  `asset_id` text NOT NULL /*Unique identifier of the business asset.*/,
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetAccessBodyAccessesInnerPermissions` generated from model 'UpdatePartnerAssetAccessBodyAccessesInnerPermissions'
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBodyAccessesInnerPermissions` (
+  `updatePartnerAssetAccessBodyAccessesInner` long NOT NULL
+  `permissions` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetsResult` generated from model 'updatePartnerAssetsResult'
+-- An object containing the permissions a business partner has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetsResult` (
+  `asset_id` text /*Unique identifier of a business asset.*/,
+  `asset_type` text /*Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.*/,
+  `partner_id` text /*Unique identifier of a business partner.*/,
+);  /*An object containing the permissions a business partner has on the asset.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetsResultPermissions` generated from model 'UpdatePartnerAssetsResultPermissions'
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetsResultPermissions` (
+  `updatePartnerAssetsResult` long NOT NULL
+  `permissions` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetsResultsResponseArray` generated from model 'updatePartnerAssetsResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetsResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerAssetsResultsResponseArrayUpdatePartnerAssetsResult` generated from model 'UpdatePartnerAssetsResultsResponseArrayUpdatePartnerAssetsResult'
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetsResultsResponseArrayUpdatePartnerAssetsResult` (
+  `updatePartnerAssetsResultsResponseArray` long NOT NULL
+  `updatePartnerAssetsResult` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerResultsResponseArray` generated from model 'updatePartnerResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerResultsResponseArray` (
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerResultsResponseArrayUpdatePartnerResultsResponseArrayItemsInner` generated from model 'UpdatePartnerResultsResponseArrayUpdatePartnerResultsResponseArrayItemsInner'
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerResultsResponseArrayUpdatePartnerResultsResponseArrayItemsInner` (
+  `updatePartnerResultsResponseArray` long NOT NULL
+  `updatePartnerResultsResponseArrayItemsInner` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UpdatePartnerResultsResponseArray_items_inner` generated from model 'updatePartnerResultsResponseArrayItemsInner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerResultsResponseArray_items_inner` (
+  `exception` long,
+  `member_or_partner_id` text
+); 
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `user_account_followed_interests_200_response` generated from model 'userAccountFollowedInterests200Response'
 --
 
@@ -7528,6 +10534,29 @@ CREATE TABLE IF NOT EXISTS `UserAccountFollowedInterests200ResponseInterest` (
 
 
 -- --------------------------------------------------------------------------
+-- Table structure for table `UserBusinessRoleBinding` generated from model 'userBusinessRoleBinding'
+--
+
+CREATE TABLE IF NOT EXISTS `UserBusinessRoleBinding` (
+  `assets_summary` long,
+  `created_by_business` long /*Metadata for the business that created the business relationship.*/,
+  `created_by_user` long /*Metadata for the user that created the business relationship.*/,
+  `created_time` int /*The time the business relationship was created. Returned in milliseconds.*/,
+  `id` text PRIMARY KEY /*Unique identifier of the business member/business partner/employer.*/,
+  `is_shared_partner` boolean /*This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. &lt;br&gt;If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. &lt;br&gt;If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to.*/,
+  `user` long /*Metadata for the business member/business partner/employer.*/
+); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UserBusinessRoleBindingBusinessRoles` generated from model 'UserBusinessRoleBindingBusinessRoles'
+
+CREATE TABLE IF NOT EXISTS `UserBusinessRoleBindingBusinessRoles` (
+  `userBusinessRoleBinding` long NOT NULL
+  `businessRoles` text NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
 -- Table structure for table `user_following_get_200_response` generated from model 'userFollowingGet200Response'
 --
 
@@ -7541,6 +10570,24 @@ CREATE TABLE IF NOT EXISTS `user_following_get_200_response` (
 CREATE TABLE IF NOT EXISTS `UserFollowingGet200ResponseUserSummary` (
   `userFollowingGet200Response` long NOT NULL
   `userSummary` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UserSingleAssetBinding` generated from model 'userSingleAssetBinding'
+-- An object containing the permissions a business member/partner has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `UserSingleAssetBinding` (
+  `user` long
+);  /*An object containing the permissions a business member/partner has on the asset.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UserSingleAssetBindingPermissions` generated from model 'UserSingleAssetBindingPermissions'
+
+CREATE TABLE IF NOT EXISTS `UserSingleAssetBindingPermissions` (
+  `userSingleAssetBinding` long NOT NULL
+  `permissions` text NOT NULL
 );
 
 
@@ -7603,6 +10650,25 @@ CREATE TABLE IF NOT EXISTS `user_websites_get_200_response` (
 CREATE TABLE IF NOT EXISTS `UserWebsitesGet200ResponseUserWebsiteSummary` (
   `userWebsitesGet200Response` long NOT NULL
   `userWebsiteSummary` long NOT NULL
+);
+
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UsersForIndividualAssetResponse` generated from model 'usersForIndividualAssetResponse'
+-- An object containing the permissions a business member has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `UsersForIndividualAssetResponse` (
+  `asset_id` text /*Unique identifier of a business asset.*/,
+  `member_id` text /*Unique identifier of the business member with asset access.*/,
+);  /*An object containing the permissions a business member has on the asset.*/
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `UsersForIndividualAssetResponsePermissions` generated from model 'UsersForIndividualAssetResponsePermissions'
+
+CREATE TABLE IF NOT EXISTS `UsersForIndividualAssetResponsePermissions` (
+  `usersForIndividualAssetResponse` long NOT NULL
+  `permissions` text NOT NULL
 );
 
 

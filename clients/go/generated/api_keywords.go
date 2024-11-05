@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -105,8 +105,8 @@ func (a *KeywordsAPIService) CountryKeywordsMetricsGetExecute(r ApiCountryKeywor
 		return localVarReturnValue, nil, reportError("keywords must have less than 2000 elements")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "country_code", r.countryCode, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "keywords", r.keywords, "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "country_code", r.countryCode, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "keywords", r.keywords, "form", "csv")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -189,9 +189,9 @@ func (r ApiKeywordsCreateRequest) Execute() (*KeywordsResponse, *http.Response, 
 KeywordsCreate Create keywords
 
 <p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target="_blank" href="https://help.pinterest.com/en/business/article/keyword-targeting">Keyword targeting</a>.</p>
-<p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target="_blank" href="/docs/ads/targeting/#Match%20type%20and%20targeting%20level">match type enums</a>.</p>
+<p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target="_blank" href="/docs/api-features/targeting-overview/">match type enums</a>.</p>
 <p><b>Returns:</b></p> <ul style="list-style-type: square;"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class="last literal-block"> { "keywords": [], "errors": [ { "data": { "archived": null, "match_type": "EXACT", "parent_type": null, "value": "foobar", "parent_id": null, "type": "keyword", "id": null }, "error_messages": [ "Advertisers and Campaigns only accept excluded targeting attributes." ] } } </pre></li> </ul>
-<p><b>Rate limit</b>: <a href="/docs/redoc/#tag/Rate-Limits">WRITE</a>.</p>
+<p><b>Rate limit</b>: <a href="/docs/reference/rate-limits/">WRITE</a>.</p>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -320,13 +320,13 @@ func (r ApiKeywordsGetRequest) AdGroupId(adGroupId string) ApiKeywordsGetRequest
 	return r
 }
 
-// Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/ads/targeting/#Match%20type%20and%20targeting%20level\&quot;&gt;match type&lt;/a&gt;
+// Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt;
 func (r ApiKeywordsGetRequest) MatchTypes(matchTypes []MatchType) ApiKeywordsGetRequest {
 	r.matchTypes = &matchTypes
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiKeywordsGetRequest) PageSize(pageSize int32) ApiKeywordsGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -347,7 +347,7 @@ KeywordsGet Get keywords
 
 <p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p>
 <p>For more information, see <a target="_blank" href="https://help.pinterest.com/en/business/article/keyword-targeting">Keyword targeting</a>.</p>
-<p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target="_blank" href="/docs/ads/targeting/#Match%20type%20and%20targeting%20level">match type enums</a>.</p>
+<p><b>Notes:</b></p> <ul style="list-style-type: square;"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target="_blank" href="/docs/api-features/targeting-overview/">match type enums</a>.</p>
 <p><b>Returns:</b></p> <ul style="list-style-type: square;"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class="last literal-block"> { "keywords": [], "errors": [ { "data": { "archived": null, "match_type": "EXACT", "parent_type": null, "value": "foobar", "parent_id": null, "type": "keyword", "id": null }, "error_messages": [ "Advertisers and Campaigns only accept excluded targeting attributes." ] } } </pre></li> </ul>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -388,30 +388,30 @@ func (a *KeywordsAPIService) KeywordsGetExecute(r ApiKeywordsGetRequest) (*Keywo
 	}
 
 	if r.campaignId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_id", r.campaignId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_id", r.campaignId, "form", "")
 	}
 	if r.adGroupId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_id", r.adGroupId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_id", r.adGroupId, "form", "")
 	}
 	if r.matchTypes != nil {
 		t := *r.matchTypes
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "match_types", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "match_types", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "match_types", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "match_types", t, "form", "multi")
 		}
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -608,6 +608,7 @@ type ApiTrendingKeywordsListRequest struct {
 	interests *[]string
 	genders *[]string
 	ages *[]string
+	includeKeywords *[]string
 	normalizeAgainstGroup *bool
 	limit *int32
 }
@@ -630,6 +631,12 @@ func (r ApiTrendingKeywordsListRequest) Ages(ages []string) ApiTrendingKeywordsL
 	return r
 }
 
+// If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied.
+func (r ApiTrendingKeywordsListRequest) IncludeKeywords(includeKeywords []string) ApiTrendingKeywordsListRequest {
+	r.includeKeywords = &includeKeywords
+	return r
+}
+
 // Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
 func (r ApiTrendingKeywordsListRequest) NormalizeAgainstGroup(normalizeAgainstGroup bool) ApiTrendingKeywordsListRequest {
 	r.normalizeAgainstGroup = &normalizeAgainstGroup
@@ -649,10 +656,8 @@ func (r ApiTrendingKeywordsListRequest) Execute() (*TrendingKeywordsResponse, *h
 /*
 TrendingKeywordsList List trending keywords
 
-<p>Get the top trending search keywords among the Pinterest user audience.</p>
-<p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p>
-<p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p>
-<p>For an interactive way to explore this data, please visit <a href="https://trends.pinterest.com">trends.pinterest.com</a>.
+<p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href="https://trends.pinterest.com">trends.pinterest.com</a>.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param region The geographic region of interest. Only top trends within the specified region will be returned.<br /> The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`, corresponding to the following geographic areas: - `US` - United States - `CA` - Canada - `DE` - Germany - `FR` - France - `ES` - Spain - `IT` - Italy - `DE+AT+CH` - Germanic countries - `GB+IE` - Great Britain & Ireland - `IT+ES+PT+GR+MT` - Southern Europe - `PL+RO+HU+SK+CZ` - Eastern Europe - `SE+DK+FI+NO` - Nordic countries - `NL+BE+LU` - Benelux - `AR` - Argentina - `BR` - Brazil - `CO` - Colombia - `MX` - Mexico - `MX+AR+CO+CL` - Hispanic LatAm - `AU+NZ` - Australasia
@@ -696,10 +701,10 @@ func (a *KeywordsAPIService) TrendingKeywordsListExecute(r ApiTrendingKeywordsLi
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "interests", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "interests", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "interests", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "interests", t, "form", "multi")
 		}
 	}
 	if r.genders != nil {
@@ -707,10 +712,10 @@ func (a *KeywordsAPIService) TrendingKeywordsListExecute(r ApiTrendingKeywordsLi
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "genders", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "genders", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "genders", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "genders", t, "form", "multi")
 		}
 	}
 	if r.ages != nil {
@@ -718,20 +723,31 @@ func (a *KeywordsAPIService) TrendingKeywordsListExecute(r ApiTrendingKeywordsLi
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "ages", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "ages", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "ages", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "ages", t, "form", "multi")
+		}
+	}
+	if r.includeKeywords != nil {
+		t := *r.includeKeywords
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "include_keywords", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "include_keywords", t, "form", "multi")
 		}
 	}
 	if r.normalizeAgainstGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "normalize_against_group", r.normalizeAgainstGroup, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "normalize_against_group", r.normalizeAgainstGroup, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.normalizeAgainstGroup = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
 		var defaultValue int32 = 50
 		r.limit = &defaultValue

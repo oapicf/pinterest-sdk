@@ -17,7 +17,7 @@ import javax.validation.Valid;
 /**
  * Object describing the catalogs hotel items batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelItemsBatch   {
   @JsonProperty("batch_id")
@@ -73,7 +73,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
    /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    * @return createdTime
   **/
   public OffsetDateTime getCreatedTime() {
@@ -90,7 +90,7 @@ public class CatalogsHotelItemsBatch   {
   }
 
    /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    * @return completedTime
   **/
   public OffsetDateTime getCompletedTime() {

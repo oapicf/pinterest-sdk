@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **preferred_processing_schedule** | Option<[**models::CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md)> |  | [optional]
 **default_country** | Option<[**models::Country**](Country.md)> |  | [optional]
 **default_availability** | Option<[**models::ProductAvailabilityType**](ProductAvailabilityType.md)> |  | [optional]
+**status** | Option<[**models::CatalogsStatus**](CatalogsStatus.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

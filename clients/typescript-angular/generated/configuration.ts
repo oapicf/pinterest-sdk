@@ -113,6 +113,15 @@ export class Configuration {
                     : undefined;
             };
         }
+
+        // init default client_credentials credential
+        if (!this.credentials['client_credentials']) {
+            this.credentials['client_credentials'] = () => {
+                return typeof this.accessToken === 'function'
+                    ? this.accessToken()
+                    : this.accessToken;
+            };
+        }
     }
 
     /**

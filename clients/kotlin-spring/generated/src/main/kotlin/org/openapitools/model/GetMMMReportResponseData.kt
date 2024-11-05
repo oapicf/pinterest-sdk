@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -30,20 +31,28 @@ data class GetMMMReportResponseData(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("size") val propertySize: java.math.BigDecimal? = null
-) {
+    ) {
 
     /**
     * 
     * Values: DOES_NOT_EXIST,FINISHED,IN_PROGRESS,EXPIRED,FAILED,CANCELLED
     */
-    enum class ReportStatus(val value: kotlin.String) {
+    enum class ReportStatus(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("DOES_NOT_EXIST") DOES_NOT_EXIST("DOES_NOT_EXIST"),
-        @JsonProperty("FINISHED") FINISHED("FINISHED"),
-        @JsonProperty("IN_PROGRESS") IN_PROGRESS("IN_PROGRESS"),
-        @JsonProperty("EXPIRED") EXPIRED("EXPIRED"),
-        @JsonProperty("FAILED") FAILED("FAILED"),
-        @JsonProperty("CANCELLED") CANCELLED("CANCELLED")
+        DOES_NOT_EXIST("DOES_NOT_EXIST"),
+        FINISHED("FINISHED"),
+        IN_PROGRESS("IN_PROGRESS"),
+        EXPIRED("EXPIRED"),
+        FAILED("FAILED"),
+        CANCELLED("CANCELLED");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): ReportStatus {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

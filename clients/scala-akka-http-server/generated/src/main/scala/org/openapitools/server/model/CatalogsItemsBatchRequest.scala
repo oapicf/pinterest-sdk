@@ -13,7 +13,7 @@ package org.openapitools.server.model
 */
 final case class CatalogsItemsBatchRequest (
   country: Country,
-  language: Language,
+  language: CatalogsItemsRequestLanguage,
   operation: BatchOperation,
   items: Seq[ItemDeleteBatchRecord]
 )

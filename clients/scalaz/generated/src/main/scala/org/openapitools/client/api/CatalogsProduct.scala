@@ -12,7 +12,8 @@ import org.joda.time.DateTime
 import CatalogsProduct._
 
 case class CatalogsProduct (
-  metadata: CatalogsProductMetadata,
+  catalogType: CatalogsType,
+metadata: CatalogsCreativeAssetsProductMetadata,
 pin: Pin)
 
 object CatalogsProduct {

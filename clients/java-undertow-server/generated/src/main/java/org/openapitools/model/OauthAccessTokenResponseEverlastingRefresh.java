@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.OauthAccessTokenResponse;
 
 
 
@@ -25,12 +24,122 @@ import org.openapitools.model.OauthAccessTokenResponse;
  */
 
 @ApiModel(description = "A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
-public class OauthAccessTokenResponseEverlastingRefresh extends OauthAccessTokenResponse  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class OauthAccessTokenResponseEverlastingRefresh   {
   
+
+
+  public enum ResponseTypeEnum {
+    AUTHORIZATION_CODE("authorization_code"),
+    REFRESH_TOKEN("refresh_token"),
+    CLIENT_CREDENTIALS("client_credentials");
+
+    private String value;
+
+    ResponseTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private ResponseTypeEnum responseType;
+  private String accessToken;
+  private String tokenType = "bearer";
+  private Integer expiresIn;
+  private String scope;
   private String refreshToken;
   private Integer refreshTokenExpiresIn;
   private Integer refreshTokenExpiresAt;
+
+  /**
+   */
+  public OauthAccessTokenResponseEverlastingRefresh responseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("response_type")
+  public ResponseTypeEnum getResponseType() {
+    return responseType;
+  }
+  public void setResponseType(ResponseTypeEnum responseType) {
+    this.responseType = responseType;
+  }
+
+  /**
+   */
+  public OauthAccessTokenResponseEverlastingRefresh accessToken(String accessToken) {
+    this.accessToken = accessToken;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("access_token")
+  public String getAccessToken() {
+    return accessToken;
+  }
+  public void setAccessToken(String accessToken) {
+    this.accessToken = accessToken;
+  }
+
+  /**
+   */
+  public OauthAccessTokenResponseEverlastingRefresh tokenType(String tokenType) {
+    this.tokenType = tokenType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("token_type")
+  public String getTokenType() {
+    return tokenType;
+  }
+  public void setTokenType(String tokenType) {
+    this.tokenType = tokenType;
+  }
+
+  /**
+   */
+  public OauthAccessTokenResponseEverlastingRefresh expiresIn(Integer expiresIn) {
+    this.expiresIn = expiresIn;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("expires_in")
+  public Integer getExpiresIn() {
+    return expiresIn;
+  }
+  public void setExpiresIn(Integer expiresIn) {
+    this.expiresIn = expiresIn;
+  }
+
+  /**
+   */
+  public OauthAccessTokenResponseEverlastingRefresh scope(String scope) {
+    this.scope = scope;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("scope")
+  public String getScope() {
+    return scope;
+  }
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
 
   /**
    */
@@ -93,21 +202,31 @@ public class OauthAccessTokenResponseEverlastingRefresh extends OauthAccessToken
       return false;
     }
     OauthAccessTokenResponseEverlastingRefresh oauthAccessTokenResponseEverlastingRefresh = (OauthAccessTokenResponseEverlastingRefresh) o;
-    return Objects.equals(refreshToken, oauthAccessTokenResponseEverlastingRefresh.refreshToken) &&
+    return Objects.equals(responseType, oauthAccessTokenResponseEverlastingRefresh.responseType) &&
+        Objects.equals(accessToken, oauthAccessTokenResponseEverlastingRefresh.accessToken) &&
+        Objects.equals(tokenType, oauthAccessTokenResponseEverlastingRefresh.tokenType) &&
+        Objects.equals(expiresIn, oauthAccessTokenResponseEverlastingRefresh.expiresIn) &&
+        Objects.equals(scope, oauthAccessTokenResponseEverlastingRefresh.scope) &&
+        Objects.equals(refreshToken, oauthAccessTokenResponseEverlastingRefresh.refreshToken) &&
         Objects.equals(refreshTokenExpiresIn, oauthAccessTokenResponseEverlastingRefresh.refreshTokenExpiresIn) &&
         Objects.equals(refreshTokenExpiresAt, oauthAccessTokenResponseEverlastingRefresh.refreshTokenExpiresAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, refreshTokenExpiresIn, refreshTokenExpiresAt);
+    return Objects.hash(responseType, accessToken, tokenType, expiresIn, scope, refreshToken, refreshTokenExpiresIn, refreshTokenExpiresAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenResponseEverlastingRefresh {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
+    sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
+    sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
+    sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
     sb.append("    refreshTokenExpiresAt: ").append(toIndentedString(refreshTokenExpiresAt)).append("\n");

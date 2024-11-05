@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.ItemAttributes
+import org.openapitools.model.ItemAttributesRequest
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -26,8 +26,8 @@ data class ItemUpsertBatchRecord(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("attributes") val attributes: ItemAttributes? = null
-) {
+    @get:JsonProperty("attributes") val attributes: ItemAttributesRequest? = null
+    ) {
 
 }
 

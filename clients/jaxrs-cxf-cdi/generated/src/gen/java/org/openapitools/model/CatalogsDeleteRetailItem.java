@@ -23,7 +23,7 @@ public class CatalogsDeleteRetailItem   {
 
 public enum OperationEnum {
 
-    @JsonProperty("CREATE") CREATE(String.valueOf("CREATE")), @JsonProperty("UPDATE") UPDATE(String.valueOf("UPDATE")), @JsonProperty("UPSERT") UPSERT(String.valueOf("UPSERT")), @JsonProperty("DELETE") DELETE(String.valueOf("DELETE"));
+    @JsonProperty("DELETE") DELETE(String.valueOf("DELETE"));
 
 
     private String value;

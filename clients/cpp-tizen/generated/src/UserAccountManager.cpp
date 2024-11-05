@@ -2265,7 +2265,7 @@ static bool verifyWebsiteUpdateProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool verifyWebsiteUpdateHelper(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, 
+	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
 	void(* handler)(UserWebsiteSummary, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2282,6 +2282,13 @@ static bool verifyWebsiteUpdateHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -2349,22 +2356,22 @@ static bool verifyWebsiteUpdateHelper(char * accessToken,
 
 
 bool UserAccountManager::verifyWebsiteUpdateAsync(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, 
+	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
 	void(* handler)(UserWebsiteSummary, Error, void* )
 	, void* userData)
 {
 	return verifyWebsiteUpdateHelper(accessToken,
-	userWebsiteVerifyRequest, 
+	userWebsiteVerifyRequest, adAccountId, 
 	handler, userData, true);
 }
 
 bool UserAccountManager::verifyWebsiteUpdateSync(char * accessToken,
-	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, 
+	std::shared_ptr<UserWebsiteVerifyRequest> userWebsiteVerifyRequest, std::string adAccountId, 
 	void(* handler)(UserWebsiteSummary, Error, void* )
 	, void* userData)
 {
 	return verifyWebsiteUpdateHelper(accessToken,
-	userWebsiteVerifyRequest, 
+	userWebsiteVerifyRequest, adAccountId, 
 	handler, userData, false);
 }
 
@@ -2434,7 +2441,7 @@ static bool websiteVerificationGetProcessor(MemoryStruct_s p_chunk, long code, c
 }
 
 static bool websiteVerificationGetHelper(char * accessToken,
-	
+	std::string adAccountId, 
 	void(* handler)(UserWebsiteVerificationCode, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -2451,6 +2458,13 @@ static bool websiteVerificationGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -2505,22 +2519,22 @@ static bool websiteVerificationGetHelper(char * accessToken,
 
 
 bool UserAccountManager::websiteVerificationGetAsync(char * accessToken,
-	
+	std::string adAccountId, 
 	void(* handler)(UserWebsiteVerificationCode, Error, void* )
 	, void* userData)
 {
 	return websiteVerificationGetHelper(accessToken,
-	
+	adAccountId, 
 	handler, userData, true);
 }
 
 bool UserAccountManager::websiteVerificationGetSync(char * accessToken,
-	
+	std::string adAccountId, 
 	void(* handler)(UserWebsiteVerificationCode, Error, void* )
 	, void* userData)
 {
 	return websiteVerificationGetHelper(accessToken,
-	
+	adAccountId, 
 	handler, userData, false);
 }
 

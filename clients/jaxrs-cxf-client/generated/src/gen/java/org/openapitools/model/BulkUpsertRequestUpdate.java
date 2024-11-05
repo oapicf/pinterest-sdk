@@ -22,19 +22,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BulkUpsertRequestUpdate  {
   
   @ApiModelProperty(value = "")
-  private List<CampaignUpdateRequest> campaigns;
+  private List<CampaignUpdateRequest> campaigns = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<AdGroupUpdateRequest> adGroups;
+  private List<AdGroupUpdateRequest> adGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<AdUpdateRequest> ads;
+  private List<AdUpdateRequest> ads = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<ProductGroupPromotionUpdateRequest> productGroups;
+  private List<ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<KeywordUpdate> keywords;
+  private List<KeywordUpdate> keywords = new ArrayList<>();
  /**
    * Get campaigns
    * @return campaigns

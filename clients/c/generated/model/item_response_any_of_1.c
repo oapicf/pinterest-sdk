@@ -5,13 +5,13 @@
 
 
 char* item_response_any_of_1_catalog_type_ToString(pinterest_rest_api_item_response_any_of_1__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_item_response_any_of_1__e item_response_any_of_1_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -26,7 +26,8 @@ item_response_any_of_1_t *item_response_any_of_1_create(
     catalogs_type_t *catalog_type,
     char *item_id,
     list_t *errors,
-    char *hotel_id
+    char *hotel_id,
+    char *creative_assets_id
     ) {
     item_response_any_of_1_t *item_response_any_of_1_local_var = malloc(sizeof(item_response_any_of_1_t));
     if (!item_response_any_of_1_local_var) {
@@ -36,6 +37,7 @@ item_response_any_of_1_t *item_response_any_of_1_create(
     item_response_any_of_1_local_var->item_id = item_id;
     item_response_any_of_1_local_var->errors = errors;
     item_response_any_of_1_local_var->hotel_id = hotel_id;
+    item_response_any_of_1_local_var->creative_assets_id = creative_assets_id;
 
     return item_response_any_of_1_local_var;
 }
@@ -64,6 +66,10 @@ void item_response_any_of_1_free(item_response_any_of_1_t *item_response_any_of_
     if (item_response_any_of_1->hotel_id) {
         free(item_response_any_of_1->hotel_id);
         item_response_any_of_1->hotel_id = NULL;
+    }
+    if (item_response_any_of_1->creative_assets_id) {
+        free(item_response_any_of_1->creative_assets_id);
+        item_response_any_of_1->creative_assets_id = NULL;
     }
     free(item_response_any_of_1);
 }
@@ -116,6 +122,14 @@ cJSON *item_response_any_of_1_convertToJSON(item_response_any_of_1_t *item_respo
     // item_response_any_of_1->hotel_id
     if(item_response_any_of_1->hotel_id) {
     if(cJSON_AddStringToObject(item, "hotel_id", item_response_any_of_1->hotel_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_response_any_of_1->creative_assets_id
+    if(item_response_any_of_1->creative_assets_id) {
+    if(cJSON_AddStringToObject(item, "creative_assets_id", item_response_any_of_1->creative_assets_id) == NULL) {
     goto fail; //String
     }
     }
@@ -186,12 +200,22 @@ item_response_any_of_1_t *item_response_any_of_1_parseFromJSON(cJSON *item_respo
     }
     }
 
+    // item_response_any_of_1->creative_assets_id
+    cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(item_response_any_of_1JSON, "creative_assets_id");
+    if (creative_assets_id) { 
+    if(!cJSON_IsString(creative_assets_id) && !cJSON_IsNull(creative_assets_id))
+    {
+    goto end; //String
+    }
+    }
+
 
     item_response_any_of_1_local_var = item_response_any_of_1_create (
         catalog_type_local_nonprim,
         item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
         errors ? errorsList : NULL,
-        hotel_id && !cJSON_IsNull(hotel_id) ? strdup(hotel_id->valuestring) : NULL
+        hotel_id && !cJSON_IsNull(hotel_id) ? strdup(hotel_id->valuestring) : NULL,
+        creative_assets_id && !cJSON_IsNull(creative_assets_id) ? strdup(creative_assets_id->valuestring) : NULL
         );
 
     return item_response_any_of_1_local_var;

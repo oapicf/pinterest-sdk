@@ -19,7 +19,7 @@ import java.util.List;
  * AudienceCategory
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCategory   {
   @JsonProperty("key")
   private String key;
@@ -45,10 +45,10 @@ public class AudienceCategory   {
     return this;
   }
 
-   /**
+  /**
    * Interest unique key (same as ID).
    * @return key
-  **/
+   */
   @ApiModelProperty(example = "1234567", value = "Interest unique key (same as ID).")
   public String getKey() {
     return key;
@@ -63,10 +63,10 @@ public class AudienceCategory   {
     return this;
   }
 
-   /**
+  /**
    * Interest name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "travel", value = "Interest name.")
   public String getName() {
     return name;
@@ -81,10 +81,10 @@ public class AudienceCategory   {
     return this;
   }
 
-   /**
+  /**
    * Interest's percent of category's total audience.
    * @return ratio
-  **/
+   */
   @ApiModelProperty(example = "0.551", value = "Interest's percent of category's total audience.")
   public BigDecimal getRatio() {
     return ratio;
@@ -99,10 +99,10 @@ public class AudienceCategory   {
     return this;
   }
 
-   /**
+  /**
    * Interest affinity index.
    * @return index
-  **/
+   */
   @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
   public BigDecimal getIndex() {
     return index;
@@ -117,10 +117,10 @@ public class AudienceCategory   {
     return this;
   }
 
-   /**
+  /**
    * Interest ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "1234567", value = "Interest ID.")
   public String getId() {
     return id;
@@ -143,10 +143,10 @@ public class AudienceCategory   {
     return this;
   }
 
-   /**
+  /**
    * Subcategory interest distribution
    * @return subcategories
-  **/
+   */
   @ApiModelProperty(value = "Subcategory interest distribution")
   public List<AudienceSubcategory> getSubcategories() {
     return subcategories;

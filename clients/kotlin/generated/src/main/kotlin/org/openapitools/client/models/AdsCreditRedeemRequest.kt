@@ -37,5 +37,8 @@ data class AdsCreditRedeemRequest (
     @Json(name = "validateOnly")
     val validateOnly: kotlin.Boolean
 
-)
+) {
+
+
+}
 

@@ -110,7 +110,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&hOTEL_ID, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+			jsonToValue(&hOTEL_ID, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&hOTEL_ID);
@@ -124,7 +124,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&bRAND, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+			jsonToValue(&bRAND, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&bRAND);
@@ -138,7 +138,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_0, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+			jsonToValue(&cUSTOM_LABEL_0, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_0);
@@ -152,7 +152,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_1, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+			jsonToValue(&cUSTOM_LABEL_1, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_1);
@@ -166,7 +166,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_2, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+			jsonToValue(&cUSTOM_LABEL_2, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_2);
@@ -180,7 +180,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_3);
@@ -194,7 +194,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_4, node, "CatalogsProductGroupMultipleStringCriteria", "CatalogsProductGroupMultipleStringCriteria");
+			jsonToValue(&cUSTOM_LABEL_4, node, "CatalogsProductGroupMultipleStringCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_4);
@@ -208,7 +208,7 @@ CatalogsHotelProductGroupFilterKeys::fromJson(char* jsonStr)
 	
 
 		if (isprimitive("CatalogsProductGroupMultipleCountriesCriteria")) {
-			jsonToValue(&cOUNTRY, node, "CatalogsProductGroupMultipleCountriesCriteria", "CatalogsProductGroupMultipleCountriesCriteria");
+			jsonToValue(&cOUNTRY, node, "CatalogsProductGroupMultipleCountriesCriteria", "");
 		} else {
 			
 			CatalogsProductGroupMultipleCountriesCriteria* obj = static_cast<CatalogsProductGroupMultipleCountriesCriteria*> (&cOUNTRY);

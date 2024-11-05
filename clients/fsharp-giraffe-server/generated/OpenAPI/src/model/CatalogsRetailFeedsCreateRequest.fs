@@ -6,6 +6,7 @@ open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFeedsCreateRequestDefaultLocale
 open OpenAPI.Model.CatalogsFormat
+open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Country
 open OpenAPI.Model.NullableCurrency
@@ -27,5 +28,6 @@ module CatalogsRetailFeedsCreateRequest =
     CatalogType : CatalogsType;
     DefaultCountry : Country;
     DefaultAvailability : ProductAvailabilityType;
+    Status : CatalogsStatus;
   }
   //#endregion

@@ -29,6 +29,24 @@ class CatalogsFeedProcessingResultTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsFeedProcessingResult
         //val modelInstance = CatalogsFeedProcessingResult()
 
+        // to test the property `createdAt`
+        should("test createdAt") {
+            // uncomment below to test the property
+            //modelInstance.createdAt shouldBe ("TODO")
+        }
+
+        // to test the property `id`
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `updatedAt`
+        should("test updatedAt") {
+            // uncomment below to test the property
+            //modelInstance.updatedAt shouldBe ("TODO")
+        }
+
         // to test the property `ingestionDetails`
         should("test ingestionDetails") {
             // uncomment below to test the property
@@ -51,24 +69,6 @@ class CatalogsFeedProcessingResultTest : ShouldSpec() {
         should("test validationDetails") {
             // uncomment below to test the property
             //modelInstance.validationDetails shouldBe ("TODO")
-        }
-
-        // to test the property `createdAt`
-        should("test createdAt") {
-            // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
-        }
-
-        // to test the property `id`
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `updatedAt`
-        should("test updatedAt") {
-            // uncomment below to test the property
-            //modelInstance.updatedAt shouldBe ("TODO")
         }
 
     }

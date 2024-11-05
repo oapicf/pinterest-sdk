@@ -170,7 +170,7 @@ AMERICA_YAKUTAT | `"America/Yakutat"`
 AMERICA_YELLOWKNIFE | `"America/Yellowknife"`
 ANTARCTICA_CASEY | `"Antarctica/Casey"`
 ANTARCTICA_DAVIS | `"Antarctica/Davis"`
-ANTARCTICA_DUMONTDURVILLE | `"Antarctica/DumontDUrville"`
+ANTARCTICA_DUMONT_D_URVILLE | `"Antarctica/DumontDUrville"`
 ANTARCTICA_MACQUARIE | `"Antarctica/Macquarie"`
 ANTARCTICA_MAWSON | `"Antarctica/Mawson"`
 ANTARCTICA_PALMER | `"Antarctica/Palmer"`
@@ -277,10 +277,10 @@ AUSTRALIA_MELBOURNE | `"Australia/Melbourne"`
 AUSTRALIA_PERTH | `"Australia/Perth"`
 AUSTRALIA_SYDNEY | `"Australia/Sydney"`
 CET | `"CET"`
-CST6CDT | `"CST6CDT"`
+CST6_CDT | `"CST6CDT"`
 EET | `"EET"`
 EST | `"EST"`
-EST5EDT | `"EST5EDT"`
+EST5_EDT | `"EST5EDT"`
 ETC_GMT | `"Etc/GMT"`
 ETC_GMT_1 | `"Etc/GMT+1"`
 ETC_GMT_10 | `"Etc/GMT+10"`
@@ -366,8 +366,8 @@ INDIAN_MAURITIUS | `"Indian/Mauritius"`
 INDIAN_REUNION | `"Indian/Reunion"`
 MET | `"MET"`
 MST | `"MST"`
-MST7MDT | `"MST7MDT"`
-PST8PDT | `"PST8PDT"`
+MST7_MDT | `"MST7MDT"`
+PST8_PDT | `"PST8PDT"`
 PACIFIC_APIA | `"Pacific/Apia"`
 PACIFIC_AUCKLAND | `"Pacific/Auckland"`
 PACIFIC_BOUGAINVILLE | `"Pacific/Bougainville"`
@@ -405,6 +405,5 @@ PACIFIC_TONGATAPU | `"Pacific/Tongatapu"`
 PACIFIC_WAKE | `"Pacific/Wake"`
 PACIFIC_WALLIS | `"Pacific/Wallis"`
 WET | `"WET"`
-NULL | `"null"`
 
 

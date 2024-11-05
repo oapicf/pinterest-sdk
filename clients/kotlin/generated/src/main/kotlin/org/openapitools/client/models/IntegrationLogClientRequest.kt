@@ -74,5 +74,6 @@ data class IntegrationLogClientRequest (
         @Json(name = "TRACE") TRACE("TRACE"),
         @Json(name = "PATCH") PATCH("PATCH");
     }
+
 }
 

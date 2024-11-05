@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CatalogsHotelProductGroup{}
 type CatalogsHotelProductGroup struct {
 	CatalogType string `json:"catalog_type"`
 	// ID of the hotel product group.
-	Id string `json:"id"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 	// Name of hotel product group
 	Name *string `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
@@ -33,7 +33,8 @@ type CatalogsHotelProductGroup struct {
 	CreatedAt *int32 `json:"created_at,omitempty"`
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt *int32 `json:"updated_at,omitempty"`
-	CatalogId string `json:"catalog_id"`
+	// Catalog id pertaining to the hotel product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 }
 
 type _CatalogsHotelProductGroup CatalogsHotelProductGroup

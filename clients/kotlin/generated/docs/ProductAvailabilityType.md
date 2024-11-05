@@ -10,7 +10,5 @@
 
     * `PREORDER` (value: `"PREORDER"`)
 
-    * `&#x60;null&#x60;` (value: `"null"`)
-
 
 

@@ -21,7 +21,7 @@ import java.util.List;
  * CreateMMMReportRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateMMMReportRequest   {
   @JsonProperty("report_name")
   private String reportName;
@@ -117,10 +117,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * Name of the Marketing Mix Modeling (MMM) report
    * @return reportName
-  **/
+   */
   @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
   public String getReportName() {
     return reportName;
@@ -135,10 +135,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * Metric report start date (UTC). Format: YYYY-MM-DD
    * @return startDate
-  **/
+   */
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
   public String getStartDate() {
     return startDate;
@@ -153,10 +153,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * Metric report end date (UTC). Format: YYYY-MM-DD
    * @return endDate
-  **/
+   */
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
   public String getEndDate() {
     return endDate;
@@ -171,10 +171,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
    * @return granularity
-  **/
+   */
   @ApiModelProperty(required = true, value = "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.")
   public GranularityEnum getGranularity() {
     return granularity;
@@ -189,10 +189,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * Level of the report
    * @return level
-  **/
+   */
   @ApiModelProperty(required = true, value = "Level of the report")
   public LevelEnum getLevel() {
     return level;
@@ -215,10 +215,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * List of targeting types
    * @return targetingTypes
-  **/
+   */
   @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
   public List<MMMReportingTargetingType> getTargetingTypes() {
     return targetingTypes;
@@ -241,10 +241,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * Metric and entity columns
    * @return columns
-  **/
+   */
   @ApiModelProperty(required = true, value = "Metric and entity columns")
   public List<MMMReportingColumn> getColumns() {
     return columns;
@@ -267,10 +267,10 @@ public class CreateMMMReportRequest   {
     return this;
   }
 
-   /**
+  /**
    * A List of countries for filtering
    * @return countries
-  **/
+   */
   @ApiModelProperty(value = "A List of countries for filtering")
   public List<TargetingAdvertiserCountry> getCountries() {
     return countries;

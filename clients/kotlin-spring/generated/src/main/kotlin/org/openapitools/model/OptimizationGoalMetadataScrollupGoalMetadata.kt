@@ -22,7 +22,7 @@ data class OptimizationGoalMetadataScrollupGoalMetadata(
     @get:Pattern(regexp="^[0-9]+$")
     @Schema(example = "null", description = "")
     @get:JsonProperty("scrollup_goal_value_in_micro_currency") val scrollupGoalValueInMicroCurrency: kotlin.String? = null
-) {
+    ) {
 
 }
 

@@ -37,5 +37,8 @@ data class BookClosedResponse (
     @Json(name = "non_conversion_metrics_ready")
     val nonConversionMetricsReady: kotlin.Boolean? = null
 
-)
+) {
+
+
+}
 

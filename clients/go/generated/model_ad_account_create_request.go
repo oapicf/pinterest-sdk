@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,7 @@ type AdAccountCreateRequest struct {
 	// Ad Account name.
 	Name *string `json:"name,omitempty"`
 	// Advertiser's owning user ID.
-	OwnerUserId *string `json:"owner_user_id,omitempty"`
+	OwnerUserId *string `json:"owner_user_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewAdAccountCreateRequest instantiates a new AdAccountCreateRequest object

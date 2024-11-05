@@ -4,6 +4,7 @@ import org.openapitools.model.AvailabilityFilter;
 import org.openapitools.model.BrandFilter;
 import org.openapitools.model.CatalogsProductGroupCurrencyCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleGenderCriteria;
+import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 import org.openapitools.model.CatalogsProductGroupPricingCriteria;
@@ -25,7 +26,9 @@ import org.openapitools.model.GoogleProductCategory6Filter;
 import org.openapitools.model.ItemGroupIdFilter;
 import org.openapitools.model.ItemIdFilter;
 import org.openapitools.model.MaxPriceFilter;
+import org.openapitools.model.MediaTypeFilter;
 import org.openapitools.model.MinPriceFilter;
+import org.openapitools.model.ProductGroupReferenceFilter;
 import org.openapitools.model.ProductType0Filter;
 import org.openapitools.model.ProductType1Filter;
 import org.openapitools.model.ProductType2Filter;
@@ -163,6 +166,14 @@ public class CatalogsProductGroupFilterKeysTest {
     }
 
     /**
+     * Test the property 'MEDIA_TYPE'
+     */
+    @Test
+    public void MEDIA_TYPETest() {
+        // TODO: test MEDIA_TYPE
+    }
+
+    /**
      * Test the property 'PRODUCT_TYPE_4'
      */
     @Test
@@ -256,6 +267,14 @@ public class CatalogsProductGroupFilterKeysTest {
     @Test
     public void GOOGLE_PRODUCT_CATEGORY_0Test() {
         // TODO: test GOOGLE_PRODUCT_CATEGORY_0
+    }
+
+    /**
+     * Test the property 'PRODUCT_GROUP'
+     */
+    @Test
+    public void PRODUCT_GROUPTest() {
+        // TODO: test PRODUCT_GROUP
     }
 
 }

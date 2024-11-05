@@ -46,8 +46,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
 
   public enum LearningModeTypeEnum {
     NOT_ACTIVE("NOT_ACTIVE"),
-    ACTIVE("ACTIVE"),
-    NULL("null");
+    ACTIVE("ACTIVE");
 
     private String value;
 

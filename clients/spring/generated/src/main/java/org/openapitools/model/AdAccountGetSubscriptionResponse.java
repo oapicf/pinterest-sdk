@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * AdAccountGetSubscriptionResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountGetSubscriptionResponse {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> leadFormId = JsonNullable.<String>undefined();
@@ -36,9 +36,9 @@ public class AdAccountGetSubscriptionResponse {
 
   private String apiVersion;
 
-  private String cryptographicKey;
+  private JsonNullable<String> cryptographicKey = JsonNullable.<String>undefined();
 
-  private String cryptographicAlgorithm;
+  private JsonNullable<String> cryptographicAlgorithm = JsonNullable.<String>undefined();
 
   private Integer createdTime;
 
@@ -50,7 +50,7 @@ public class AdAccountGetSubscriptionResponse {
   /**
    * Lead form ID.
    * @return leadFormId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "lead_form_id", example = "383791336903426390", description = "Lead form ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lead_form_id")
@@ -70,7 +70,7 @@ public class AdAccountGetSubscriptionResponse {
   /**
    * Standard HTTPS webhook URL.
    * @return webhookUrl
-  */
+   */
   
   @Schema(name = "webhook_url", example = "https://webhook.example.com/xyz", description = "Standard HTTPS webhook URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("webhook_url")
@@ -90,7 +90,7 @@ public class AdAccountGetSubscriptionResponse {
   /**
    * Subscription ID.
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "8078432025948590686", description = "Subscription ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -110,7 +110,7 @@ public class AdAccountGetSubscriptionResponse {
   /**
    * User account used to subscribe lead data.
    * @return userAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "user_account_id", example = "549755885175", description = "User account used to subscribe lead data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user_account_id")
@@ -130,7 +130,7 @@ public class AdAccountGetSubscriptionResponse {
   /**
    * The Ad Account ID that this lead form belongs to.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885176", description = "The Ad Account ID that this lead form belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -150,7 +150,7 @@ public class AdAccountGetSubscriptionResponse {
   /**
    * API version.
    * @return apiVersion
-  */
+   */
   
   @Schema(name = "api_version", example = "v5", description = "API version.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("api_version")
@@ -163,42 +163,42 @@ public class AdAccountGetSubscriptionResponse {
   }
 
   public AdAccountGetSubscriptionResponse cryptographicKey(String cryptographicKey) {
-    this.cryptographicKey = cryptographicKey;
+    this.cryptographicKey = JsonNullable.of(cryptographicKey);
     return this;
   }
 
   /**
    * Base64 encoded key for client to decrypt lead data.
    * @return cryptographicKey
-  */
+   */
   
   @Schema(name = "cryptographic_key", example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", description = "Base64 encoded key for client to decrypt lead data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cryptographic_key")
-  public String getCryptographicKey() {
+  public JsonNullable<String> getCryptographicKey() {
     return cryptographicKey;
   }
 
-  public void setCryptographicKey(String cryptographicKey) {
+  public void setCryptographicKey(JsonNullable<String> cryptographicKey) {
     this.cryptographicKey = cryptographicKey;
   }
 
   public AdAccountGetSubscriptionResponse cryptographicAlgorithm(String cryptographicAlgorithm) {
-    this.cryptographicAlgorithm = cryptographicAlgorithm;
+    this.cryptographicAlgorithm = JsonNullable.of(cryptographicAlgorithm);
     return this;
   }
 
   /**
    * Lead data encryption algorithm.
    * @return cryptographicAlgorithm
-  */
+   */
   
   @Schema(name = "cryptographic_algorithm", example = "AES-256-GCM", description = "Lead data encryption algorithm.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cryptographic_algorithm")
-  public String getCryptographicAlgorithm() {
+  public JsonNullable<String> getCryptographicAlgorithm() {
     return cryptographicAlgorithm;
   }
 
-  public void setCryptographicAlgorithm(String cryptographicAlgorithm) {
+  public void setCryptographicAlgorithm(JsonNullable<String> cryptographicAlgorithm) {
     this.cryptographicAlgorithm = cryptographicAlgorithm;
   }
 
@@ -210,7 +210,7 @@ public class AdAccountGetSubscriptionResponse {
   /**
    * Lead form creation time. Unix timestamp in milliseconds.
    * @return createdTime
-  */
+   */
   
   @Schema(name = "created_time", example = "1699209842000", description = "Lead form creation time. Unix timestamp in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
@@ -237,8 +237,8 @@ public class AdAccountGetSubscriptionResponse {
         Objects.equals(this.userAccountId, adAccountGetSubscriptionResponse.userAccountId) &&
         Objects.equals(this.adAccountId, adAccountGetSubscriptionResponse.adAccountId) &&
         Objects.equals(this.apiVersion, adAccountGetSubscriptionResponse.apiVersion) &&
-        Objects.equals(this.cryptographicKey, adAccountGetSubscriptionResponse.cryptographicKey) &&
-        Objects.equals(this.cryptographicAlgorithm, adAccountGetSubscriptionResponse.cryptographicAlgorithm) &&
+        equalsNullable(this.cryptographicKey, adAccountGetSubscriptionResponse.cryptographicKey) &&
+        equalsNullable(this.cryptographicAlgorithm, adAccountGetSubscriptionResponse.cryptographicAlgorithm) &&
         Objects.equals(this.createdTime, adAccountGetSubscriptionResponse.createdTime);
   }
 
@@ -248,7 +248,7 @@ public class AdAccountGetSubscriptionResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(leadFormId), webhookUrl, id, userAccountId, adAccountId, apiVersion, cryptographicKey, cryptographicAlgorithm, createdTime);
+    return Objects.hash(hashCodeNullable(leadFormId), webhookUrl, id, userAccountId, adAccountId, apiVersion, hashCodeNullable(cryptographicKey), hashCodeNullable(cryptographicAlgorithm), createdTime);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {

@@ -14,13 +14,13 @@
 // Functions for enum GRANTTYPE for OauthAPI_oauthToken
 
 static char* oauthToken_GRANTTYPE_ToString(pinterest_rest_api_oauthToken_grant_type_e GRANTTYPE){
-    char *GRANTTYPEArray[] =  { "NULL", "authorization_code", "refresh_token" };
+    char *GRANTTYPEArray[] =  { "NULL", "authorization_code", "refresh_token", "client_credentials" };
     return GRANTTYPEArray[GRANTTYPE];
 }
 
 static pinterest_rest_api_oauthToken_grant_type_e oauthToken_GRANTTYPE_FromString(char* GRANTTYPE){
     int stringToReturn = 0;
-    char *GRANTTYPEArray[] =  { "NULL", "authorization_code", "refresh_token" };
+    char *GRANTTYPEArray[] =  { "NULL", "authorization_code", "refresh_token", "client_credentials" };
     size_t sizeofArray = sizeof(GRANTTYPEArray) / sizeof(GRANTTYPEArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(GRANTTYPE, GRANTTYPEArray[stringToReturn]) == 0) {
@@ -66,7 +66,7 @@ end:
 
 // Generate OAuth access token
 //
-// Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+// Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
 //
 oauth_access_token_response_t*
 OauthAPI_oauthToken(apiClient_t *apiClient, pinterest_rest_api_oauthToken_grant_type_e grant_type)

@@ -1,12 +1,13 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.AdCommonTrackingUrls
 import org.openapitools.model.CampaignSummaryStatus
 import org.openapitools.model.EntityStatus
 import org.openapitools.model.ObjectiveType
+import org.openapitools.model.TrackingUrls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -30,13 +31,13 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param trackingUrls 
  * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
  * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
- * @param summaryStatus 
+ * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup.
  * @param objectiveType 
  * @param createdTime Campaign creation time. Unix timestamp in seconds.
  * @param updatedTime UTC timestamp. Last update time.
  * @param type Always \"campaign\".
- * @param isFlexibleDailyBudgets Determines if a campaign has flexible daily budgets setup.
  * @param isCampaignBudgetOptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+ * @param summaryStatus 
  */
 data class CampaignResponse(
 
@@ -67,7 +68,7 @@ data class CampaignResponse(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("tracking_urls") val trackingUrls: AdCommonTrackingUrls? = null,
+    @get:JsonProperty("tracking_urls") val trackingUrls: TrackingUrls? = null,
 
     @Schema(example = "1580865126", description = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
     @get:JsonProperty("start_time") val startTime: kotlin.Int? = null,
@@ -75,9 +76,8 @@ data class CampaignResponse(
     @Schema(example = "1644023526", description = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
     @get:JsonProperty("end_time") val endTime: kotlin.Int? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("summary_status") val summaryStatus: CampaignSummaryStatus? = null,
+    @Schema(example = "true", description = "Determine if a campaign has flexible daily budgets setup.")
+    @get:JsonProperty("is_flexible_daily_budgets") val isFlexibleDailyBudgets: kotlin.Boolean? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -92,12 +92,13 @@ data class CampaignResponse(
     @Schema(example = "campaign", description = "Always \"campaign\".")
     @get:JsonProperty("type") val type: kotlin.String? = null,
 
-    @Schema(example = "true", description = "Determines if a campaign has flexible daily budgets setup.")
-    @get:JsonProperty("is_flexible_daily_budgets") val isFlexibleDailyBudgets: kotlin.Boolean? = null,
-
     @Schema(example = "true", description = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.")
-    @get:JsonProperty("is_campaign_budget_optimization") val isCampaignBudgetOptimization: kotlin.Boolean? = null
-) {
+    @get:JsonProperty("is_campaign_budget_optimization") val isCampaignBudgetOptimization: kotlin.Boolean? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("summary_status") val summaryStatus: CampaignSummaryStatus? = null
+    ) {
 
 }
 

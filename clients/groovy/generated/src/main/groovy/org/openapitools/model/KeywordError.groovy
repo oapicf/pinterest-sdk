@@ -12,5 +12,5 @@ class KeywordError {
     
     Keyword data
     
-    List<String> errorMessages
+    List<String> errorMessages = new ArrayList<>()
 }

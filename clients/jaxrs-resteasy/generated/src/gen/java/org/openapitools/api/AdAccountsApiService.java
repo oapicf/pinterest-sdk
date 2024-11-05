@@ -10,7 +10,7 @@ import org.openapitools.model.AdAccountCreateRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionResponse;
 import org.openapitools.model.AdAccountGetSubscriptionResponse;
-import org.openapitools.model.AdAccountsCatalogsProductGroupsList200Response;
+import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
 import org.openapitools.model.AdArrayResponse;
@@ -27,6 +27,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
@@ -37,6 +39,7 @@ import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.Audience;
+import org.openapitools.model.AudienceAccountType;
 import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
@@ -52,6 +55,8 @@ import org.openapitools.model.BulkDownloadResponse;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
 import org.openapitools.model.BulkUpsertStatusResponse;
+import org.openapitools.model.BusinessSharedAudience;
+import org.openapitools.model.BusinessSharedAudienceResponse;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.CampaignCreateResponse;
 import org.openapitools.model.CampaignResponse;
@@ -82,10 +87,16 @@ import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LeadFormArrayResponse;
+import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
 import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
+import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadsExportCreateRequest;
+import org.openapitools.model.LeadsExportCreateResponse;
+import org.openapitools.model.LeadsExportResponseData;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
@@ -103,8 +114,14 @@ import org.openapitools.model.SSIOCreateInsertionOrderResponse;
 import org.openapitools.model.SSIOEditInsertionOrderRequest;
 import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SharedAudience;
+import org.openapitools.model.SharedAudienceResponse;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
+import org.openapitools.model.TargetingTemplateCreate;
+import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplateList200Response;
+import org.openapitools.model.TargetingTemplateUpdateRequest;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 
@@ -118,13 +135,13 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface AdAccountsApiService {
       Response adAccountAnalytics(String adAccountId,Date startDate,Date endDate,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,SecurityContext securityContext)
       throws NotFoundException;
       Response adAccountTargetingAnalyticsGet(String adAccountId,Date startDate,Date endDate,List<AdsAnalyticsTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext)
       throws NotFoundException;
-      Response adAccountsCatalogsProductGroupsList(String adAccountId,String feedProfileId,SecurityContext securityContext)
+      Response adAccountsAudiencesSharedAccountsList(String adAccountId,String audienceId,AudienceAccountType accountType,Integer pageSize,String bookmark,SecurityContext securityContext)
       throws NotFoundException;
       Response adAccountsCreate(AdAccountCreateRequest adAccountCreateRequest,SecurityContext securityContext)
       throws NotFoundException;
@@ -146,7 +163,7 @@ public interface AdAccountsApiService {
       throws NotFoundException;
       Response adGroupsBidFloorGet(String adAccountId,BidFloorRequest bidFloorRequest,SecurityContext securityContext)
       throws NotFoundException;
-      Response adGroupsCreate(String adAccountId,List<AdGroupCreateRequest> adGroupCreateRequest,SecurityContext securityContext)
+      Response adGroupsCreate(String adAccountId,List<@Valid AdGroupCreateRequest> adGroupCreateRequest,SecurityContext securityContext)
       throws NotFoundException;
       Response adGroupsGet(String adAccountId,String adGroupId,SecurityContext securityContext)
       throws NotFoundException;
@@ -154,15 +171,15 @@ public interface AdAccountsApiService {
       throws NotFoundException;
       Response adGroupsTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,Date startDate,Date endDate,List<AdsAnalyticsTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext)
       throws NotFoundException;
-      Response adGroupsUpdate(String adAccountId,List<AdGroupUpdateRequest> adGroupUpdateRequest,SecurityContext securityContext)
+      Response adGroupsUpdate(String adAccountId,List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest,SecurityContext securityContext)
       throws NotFoundException;
       Response adPreviewsCreate(String adAccountId,AdPreviewRequest adPreviewRequest,SecurityContext securityContext)
       throws NotFoundException;
-      Response adTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")String> adIds,Date startDate,Date endDate,List<AdsAnalyticsTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext)
+      Response adTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")String> adIds,Date startDate,Date endDate,List<AdsAnalyticsAdTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext)
       throws NotFoundException;
-      Response adsAnalytics(String adAccountId,Date startDate,Date endDate,List<@Pattern(regexp = "^\\d+$")String> adIds,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,SecurityContext securityContext)
+      Response adsAnalytics(String adAccountId,Date startDate,Date endDate,List<String> columns,Granularity granularity,List<@Pattern(regexp = "^\\d+$")String> adIds,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,List<@Pattern(regexp = "^\\d+$")String> pinIds,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,SecurityContext securityContext)
       throws NotFoundException;
-      Response adsCreate(String adAccountId,List<AdCreateRequest> adCreateRequest,SecurityContext securityContext)
+      Response adsCreate(String adAccountId,List<@Valid AdCreateRequest> adCreateRequest,SecurityContext securityContext)
       throws NotFoundException;
       Response adsCreditRedeem(String adAccountId,AdsCreditRedeemRequest adsCreditRedeemRequest,SecurityContext securityContext)
       throws NotFoundException;
@@ -172,7 +189,7 @@ public interface AdAccountsApiService {
       throws NotFoundException;
       Response adsList(String adAccountId,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,List<@Pattern(regexp = "^\\d+$")String> adGroupIds,List<@Pattern(regexp = "^\\d+$")String> adIds,List<String> entityStatuses,Integer pageSize,String order,String bookmark,SecurityContext securityContext)
       throws NotFoundException;
-      Response adsUpdate(String adAccountId,List<AdUpdateRequest> adUpdateRequest,SecurityContext securityContext)
+      Response adsUpdate(String adAccountId,List<@Valid AdUpdateRequest> adUpdateRequest,SecurityContext securityContext)
       throws NotFoundException;
       Response analyticsCreateMmmReport(String adAccountId,CreateMMMReportRequest createMMMReportRequest,SecurityContext securityContext)
       throws NotFoundException;
@@ -206,7 +223,7 @@ public interface AdAccountsApiService {
       throws NotFoundException;
       Response bulkUpsertCreate(String adAccountId,BulkUpsertRequest bulkUpsertRequest,SecurityContext securityContext)
       throws NotFoundException;
-      Response campaignTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,Date startDate,Date endDate,List<AdsAnalyticsTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext)
+      Response campaignTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,Date startDate,Date endDate,List<AdsAnalyticsCampaignTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext)
       throws NotFoundException;
       Response campaignsAnalytics(String adAccountId,Date startDate,Date endDate,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,SecurityContext securityContext)
       throws NotFoundException;
@@ -246,7 +263,15 @@ public interface AdAccountsApiService {
       throws NotFoundException;
       Response leadFormTestCreate(String adAccountId,String leadFormId,LeadFormTestRequest leadFormTestRequest,SecurityContext securityContext)
       throws NotFoundException;
+      Response leadFormsCreate(String adAccountId,List<@Valid LeadFormCreateRequest> leadFormCreateRequest,SecurityContext securityContext)
+      throws NotFoundException;
       Response leadFormsList(String adAccountId,Integer pageSize,String order,String bookmark,SecurityContext securityContext)
+      throws NotFoundException;
+      Response leadFormsUpdate(String adAccountId,List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest,SecurityContext securityContext)
+      throws NotFoundException;
+      Response leadsExportCreate(String adAccountId,LeadsExportCreateRequest leadsExportCreateRequest,SecurityContext securityContext)
+      throws NotFoundException;
+      Response leadsExportGet(String adAccountId,String leadsExportId,SecurityContext securityContext)
       throws NotFoundException;
       Response ocpmEligibleConversionTagsGet(String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
@@ -280,8 +305,18 @@ public interface AdAccountsApiService {
       throws NotFoundException;
       Response ssioOrderLinesGetByAdAccount(String adAccountId,String bookmark,Integer pageSize,String pinOrderId,SecurityContext securityContext)
       throws NotFoundException;
+      Response targetingTemplateCreate(String adAccountId,TargetingTemplateCreate targetingTemplateCreate,SecurityContext securityContext)
+      throws NotFoundException;
+      Response targetingTemplateList(String adAccountId,String order,Boolean includeSizing,String searchQuery,Integer pageSize,String bookmark,SecurityContext securityContext)
+      throws NotFoundException;
+      Response targetingTemplateUpdate(String adAccountId,TargetingTemplateUpdateRequest targetingTemplateUpdateRequest,SecurityContext securityContext)
+      throws NotFoundException;
       Response templatesList(String adAccountId,Integer pageSize,String order,String bookmark,SecurityContext securityContext)
       throws NotFoundException;
       Response termsOfServiceGet(String adAccountId,Boolean includeHtml,String tosType,SecurityContext securityContext)
+      throws NotFoundException;
+      Response updateAdAccountToAdAccountSharedAudience(String adAccountId,SharedAudience sharedAudience,SecurityContext securityContext)
+      throws NotFoundException;
+      Response updateAdAccountToBusinessSharedAudience(String adAccountId,BusinessSharedAudience businessSharedAudience,SecurityContext securityContext)
       throws NotFoundException;
 }

@@ -37,5 +37,8 @@ data class BidFloor (
     @Json(name = "type")
     val type: kotlin.String? = "bidfloor"
 
-)
+) {
+
+
+}
 

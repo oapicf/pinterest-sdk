@@ -46,6 +46,27 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	 */
+	int getBid();
+
+	/*! \brief Set </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	 */
+	void setBid(int  bid);
+	/*! \brief Get 
+	 */
+	MatchTypeResponse getMatchType();
+
+	/*! \brief Set 
+	 */
+	void setMatchType(MatchTypeResponse  match_type);
+	/*! \brief Get Keyword value (120 chars max).
+	 */
+	std::string getValue();
+
+	/*! \brief Set Keyword value (120 chars max).
+	 */
+	void setValue(std::string  value);
 	/*! \brief Get 
 	 */
 	bool getArchived();
@@ -81,37 +102,16 @@ public:
 	/*! \brief Set Always keyword
 	 */
 	void setType(std::string  type);
-	/*! \brief Get Keyword custom bid in microcurrency - null if inherited from parent ad group.
-	 */
-	int getBid();
-
-	/*! \brief Set Keyword custom bid in microcurrency - null if inherited from parent ad group.
-	 */
-	void setBid(int  bid);
-	/*! \brief Get 
-	 */
-	MatchTypeResponse getMatchType();
-
-	/*! \brief Set 
-	 */
-	void setMatchType(MatchTypeResponse  match_type);
-	/*! \brief Get Keyword value (120 chars max).
-	 */
-	std::string getValue();
-
-	/*! \brief Set Keyword value (120 chars max).
-	 */
-	void setValue(std::string  value);
 
 private:
+	int bid;
+	MatchTypeResponse match_type;
+	std::string value;
 	bool archived;
 	std::string id;
 	std::string parent_id;
 	std::string parent_type;
 	std::string type;
-	int bid;
-	MatchTypeResponse match_type;
-	std::string value;
 	void __init();
 	void __cleanup();
 

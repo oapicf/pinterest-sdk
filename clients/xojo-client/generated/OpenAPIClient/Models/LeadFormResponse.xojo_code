@@ -19,7 +19,7 @@ Protected Class LeadFormResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+			Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href="https://policy.pinterest.com/en/lead-ad-terms">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href="https://business.pinterest.com/en/pinterest-advertising-services-agreement/">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
 		#tag EndNote
 		has_accepted_terms As Xoson.O.OptionalBoolean
 	#tag EndProperty
@@ -51,6 +51,14 @@ Protected Class LeadFormResponse
 			List of questions to be displayed on the lead form.
 		#tag EndNote
 		questions() As OpenAPIClient.Models.LeadFormQuestion
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			List of additional policy links to be displayed on the lead form.
+		#tag EndNote
+		policy_links() As OpenAPIClient.Models.LeadFormCommonPolicyLinksInner
 	#tag EndProperty
 
 
@@ -176,6 +184,14 @@ Protected Class LeadFormResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="LeadFormQuestion"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="policy_links"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="LeadFormCommonPolicyLinksInner"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

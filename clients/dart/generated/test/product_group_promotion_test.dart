@@ -99,11 +99,6 @@ void main() {
       // TODO
     });
 
-    // CreativeType creativeType
-    test('to test the property `creativeType`', () async {
-      // TODO
-    });
-
     // Hero Pin ID if this PG is promoted as a Collection
     // String collectionsHeroPinId
     test('to test the property `collectionsHeroPinId`', () async {

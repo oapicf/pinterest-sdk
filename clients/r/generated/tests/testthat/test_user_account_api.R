@@ -11,7 +11,7 @@ test_that("BoardsUserFollowsList", {
   # List following boards
   # Get a list of the boards a user follows. The request returns a board summary object array.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param explicit_following character Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [BoardsUserFollowsList200Response]
@@ -24,7 +24,7 @@ test_that("FollowUserUpdate", {
   # tests for FollowUserUpdate
   # base path: https://api.pinterest.com/v5
   # Follow user
-  # &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+  # &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
   # @param username character A valid username
   # @param follow_user_request FollowUserRequest Follow a user.
   # @return [UserSummary]
@@ -39,7 +39,7 @@ test_that("FollowersList", {
   # List followers
   # Get a list of your followers.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [FollowersList200Response]
 
   # uncomment below to test the operation
@@ -143,7 +143,7 @@ test_that("UserAccountFollowedInterests", {
   # Get a list of a user&#39;s following interests in one place.
   # @param username character A valid username
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [UserAccountFollowedInterests200Response]
 
   # uncomment below to test the operation
@@ -154,7 +154,7 @@ test_that("UserAccountGet", {
   # tests for UserAccountGet
   # base path: https://api.pinterest.com/v5
   # Get user account
-  # Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+  # Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [Account]
 
@@ -168,7 +168,7 @@ test_that("UserFollowingGet", {
   # List following
   # Get a list of who a certain user follows.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param feed_type UserFollowingFeedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
   # @param explicit_following character Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
@@ -184,7 +184,7 @@ test_that("UserWebsitesGet", {
   # Get user websites
   # Get user websites, claimed or not
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [UserWebsitesGet200Response]
 
   # uncomment below to test the operation
@@ -197,6 +197,7 @@ test_that("VerifyWebsiteUpdate", {
   # Verify website
   # Verify a website as a signed-in user.
   # @param user_website_verify_request UserWebsiteVerifyRequest Verify a website.
+  # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [UserWebsiteSummary]
 
   # uncomment below to test the operation
@@ -208,6 +209,7 @@ test_that("WebsiteVerificationGet", {
   # base path: https://api.pinterest.com/v5
   # Get user verification code for website claiming
   # Get verification code for user to install on the website to claim it.
+  # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [UserWebsiteVerificationCode]
 
   # uncomment below to test the operation

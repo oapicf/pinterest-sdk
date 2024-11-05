@@ -49,6 +49,7 @@ module AuthSchemes =
 
   let configureOAuth (settings:IConfiguration) services =
     (getOAuthBuilder settings "pinterest_oauth2") services "pinterest_oauth2" "https://www.pinterest.com/oauth/" ["ads:read";"ads:write";"billing:read";"billing:write";"biz_access:read";"biz_access:write";"boards:read";"boards:read_secret";"boards:write";"boards:write_secret";"catalogs:read";"catalogs:write";"pins:read";"pins:read_secret";"pins:write";"pins:write_secret";"user_accounts:read";"user_accounts:write";] settings
+    (getOAuthBuilder settings "client_credentials") services "client_credentials" "" ["ads:read";"ads:write";"billing:read";"billing:write";"biz_access:read";"biz_access:write";"boards:read";"boards:read_secret";"boards:write";"boards:write_secret";"catalogs:read";"catalogs:write";"pins:read";"pins:read_secret";"pins:write";"pins:write_secret";"user_accounts:read";"user_accounts:write";] settings
 
   let buildApiKeyAuth name (services:AuthenticationBuilder) =
     services.AddApiKey(fun options ->

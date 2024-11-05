@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.LeadFormCommonPolicyLinksInner
 import org.openapitools.client.models.LeadFormQuestion
 import org.openapitools.client.models.LeadFormStatus
 
@@ -26,11 +27,12 @@ import com.squareup.moshi.JsonClass
  *
  * @param name Internal name of the lead form.
  * @param privacyPolicyLink A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
- * @param hasAcceptedTerms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+ * @param hasAcceptedTerms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
  * @param completionMessage A message for people who complete the form to let them know what happens next.
  * @param status 
  * @param disclosureLanguage Additional disclosure language to be included in the lead form.
  * @param questions List of questions to be displayed on the lead form.
+ * @param policyLinks List of additional policy links to be displayed on the lead form.
  * @param id The ID of this lead form
  * @param adAccountId The Ad Account ID that this lead form belongs to.
  * @param createdTime Lead form creation time. Unix timestamp in seconds.
@@ -48,7 +50,7 @@ data class LeadFormResponse (
     @Json(name = "privacy_policy_link")
     val privacyPolicyLink: kotlin.String? = null,
 
-    /* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad. */
+    /* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO */
     @Json(name = "has_accepted_terms")
     val hasAcceptedTerms: kotlin.Boolean? = null,
 
@@ -67,6 +69,10 @@ data class LeadFormResponse (
     @Json(name = "questions")
     val questions: kotlin.collections.List<LeadFormQuestion>? = null,
 
+    /* List of additional policy links to be displayed on the lead form. */
+    @Json(name = "policy_links")
+    val policyLinks: kotlin.collections.List<LeadFormCommonPolicyLinksInner>? = null,
+
     /* The ID of this lead form */
     @Json(name = "id")
     val id: kotlin.String? = null,
@@ -83,5 +89,8 @@ data class LeadFormResponse (
     @Json(name = "updated_time")
     val updatedTime: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

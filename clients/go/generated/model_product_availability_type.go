@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,6 @@ const (
 	IN_STOCK ProductAvailabilityType = "IN_STOCK"
 	OUT_OF_STOCK ProductAvailabilityType = "OUT_OF_STOCK"
 	PREORDER ProductAvailabilityType = "PREORDER"
-	NULL ProductAvailabilityType = "null"
 )
 
 // All allowed values of ProductAvailabilityType enum
@@ -32,7 +31,6 @@ var AllowedProductAvailabilityTypeEnumValues = []ProductAvailabilityType{
 	"IN_STOCK",
 	"OUT_OF_STOCK",
 	"PREORDER",
-	"null",
 }
 
 func (v *ProductAvailabilityType) UnmarshalJSON(src []byte) error {

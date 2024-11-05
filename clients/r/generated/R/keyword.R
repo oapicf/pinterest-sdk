@@ -7,44 +7,42 @@
 #' @title Keyword
 #' @description Keyword Class
 #' @format An \code{R6Class} generator object
+#' @field bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. integer [optional]
+#' @field match_type  \link{MatchTypeResponse}
+#' @field value Keyword value (120 chars max). character
 #' @field archived  character [optional]
 #' @field id Keyword ID . character [optional]
 #' @field parent_id Keyword parent entity ID (advertiser, campaign, ad group). character [optional]
 #' @field parent_type Parent entity type character [optional]
 #' @field type Always keyword character [optional]
-#' @field bid Keyword custom bid in microcurrency - null if inherited from parent ad group. integer [optional]
-#' @field match_type  \link{MatchTypeResponse}
-#' @field value Keyword value (120 chars max). character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 Keyword <- R6::R6Class(
   "Keyword",
   public = list(
+    `bid` = NULL,
+    `match_type` = NULL,
+    `value` = NULL,
     `archived` = NULL,
     `id` = NULL,
     `parent_id` = NULL,
     `parent_type` = NULL,
     `type` = NULL,
-    `bid` = NULL,
-    `match_type` = NULL,
-    `value` = NULL,
-    #' Initialize a new Keyword class.
-    #'
+
     #' @description
     #' Initialize a new Keyword class.
     #'
     #' @param match_type match_type
     #' @param value Keyword value (120 chars max).
+    #' @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
     #' @param archived archived
     #' @param id Keyword ID .
     #' @param parent_id Keyword parent entity ID (advertiser, campaign, ad group).
     #' @param parent_type Parent entity type
     #' @param type Always keyword
-    #' @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`match_type`, `value`, `archived` = NULL, `id` = NULL, `parent_id` = NULL, `parent_type` = NULL, `type` = NULL, `bid` = NULL, ...) {
+    initialize = function(`match_type`, `value`, `bid` = NULL, `archived` = NULL, `id` = NULL, `parent_id` = NULL, `parent_type` = NULL, `type` = NULL, ...) {
       if (!missing(`match_type`)) {
         if (!(`match_type` %in% c())) {
           stop(paste("Error! \"", `match_type`, "\" cannot be assigned to `match_type`. Must be .", sep = ""))
@@ -57,6 +55,12 @@ Keyword <- R6::R6Class(
           stop(paste("Error! Invalid data for `value`. Must be a string:", `value`))
         }
         self$`value` <- `value`
+      }
+      if (!is.null(`bid`)) {
+        if (!(is.numeric(`bid`) && length(`bid`) == 1)) {
+          stop(paste("Error! Invalid data for `bid`. Must be an integer:", `bid`))
+        }
+        self$`bid` <- `bid`
       }
       if (!is.null(`archived`)) {
         if (!(is.logical(`archived`) && length(`archived`) == 1)) {
@@ -88,22 +92,26 @@ Keyword <- R6::R6Class(
         }
         self$`type` <- `type`
       }
-      if (!is.null(`bid`)) {
-        if (!(is.numeric(`bid`) && length(`bid`) == 1)) {
-          stop(paste("Error! Invalid data for `bid`. Must be an integer:", `bid`))
-        }
-        self$`bid` <- `bid`
-      }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Keyword in JSON format
-    #' @export
     toJSON = function() {
       KeywordObject <- list()
+      if (!is.null(self$`bid`)) {
+        KeywordObject[["bid"]] <-
+          self$`bid`
+      }
+      if (!is.null(self$`match_type`)) {
+        KeywordObject[["match_type"]] <-
+          self$`match_type`$toJSON()
+      }
+      if (!is.null(self$`value`)) {
+        KeywordObject[["value"]] <-
+          self$`value`
+      }
       if (!is.null(self$`archived`)) {
         KeywordObject[["archived"]] <-
           self$`archived`
@@ -124,30 +132,27 @@ Keyword <- R6::R6Class(
         KeywordObject[["type"]] <-
           self$`type`
       }
-      if (!is.null(self$`bid`)) {
-        KeywordObject[["bid"]] <-
-          self$`bid`
-      }
-      if (!is.null(self$`match_type`)) {
-        KeywordObject[["match_type"]] <-
-          self$`match_type`$toJSON()
-      }
-      if (!is.null(self$`value`)) {
-        KeywordObject[["value"]] <-
-          self$`value`
-      }
       KeywordObject
     },
-    #' Deserialize JSON string into an instance of Keyword
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Keyword
     #'
     #' @param input_json the JSON input
     #' @return the instance of Keyword
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`bid`)) {
+        self$`bid` <- this_object$`bid`
+      }
+      if (!is.null(this_object$`match_type`)) {
+        `match_type_object` <- MatchTypeResponse$new()
+        `match_type_object`$fromJSON(jsonlite::toJSON(this_object$`match_type`, auto_unbox = TRUE, digits = NA))
+        self$`match_type` <- `match_type_object`
+      }
+      if (!is.null(this_object$`value`)) {
+        self$`value` <- this_object$`value`
+      }
       if (!is.null(this_object$`archived`)) {
         self$`archived` <- this_object$`archived`
       }
@@ -163,28 +168,39 @@ Keyword <- R6::R6Class(
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
       }
-      if (!is.null(this_object$`bid`)) {
-        self$`bid` <- this_object$`bid`
-      }
-      if (!is.null(this_object$`match_type`)) {
-        `match_type_object` <- MatchTypeResponse$new()
-        `match_type_object`$fromJSON(jsonlite::toJSON(this_object$`match_type`, auto_unbox = TRUE, digits = NA))
-        self$`match_type` <- `match_type_object`
-      }
-      if (!is.null(this_object$`value`)) {
-        self$`value` <- this_object$`value`
-      }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Keyword in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
+        if (!is.null(self$`bid`)) {
+          sprintf(
+          '"bid":
+            %d
+                    ',
+          self$`bid`
+          )
+        },
+        if (!is.null(self$`match_type`)) {
+          sprintf(
+          '"match_type":
+          %s
+          ',
+          jsonlite::toJSON(self$`match_type`$toJSON(), auto_unbox = TRUE, digits = NA)
+          )
+        },
+        if (!is.null(self$`value`)) {
+          sprintf(
+          '"value":
+            "%s"
+                    ',
+          self$`value`
+          )
+        },
         if (!is.null(self$`archived`)) {
           sprintf(
           '"archived":
@@ -224,62 +240,34 @@ Keyword <- R6::R6Class(
                     ',
           self$`type`
           )
-        },
-        if (!is.null(self$`bid`)) {
-          sprintf(
-          '"bid":
-            %d
-                    ',
-          self$`bid`
-          )
-        },
-        if (!is.null(self$`match_type`)) {
-          sprintf(
-          '"match_type":
-          %s
-          ',
-          jsonlite::toJSON(self$`match_type`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`value`)) {
-          sprintf(
-          '"value":
-            "%s"
-                    ',
-          self$`value`
-          )
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of Keyword
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Keyword
     #'
     #' @param input_json the JSON input
     #' @return the instance of Keyword
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`bid` <- this_object$`bid`
+      self$`match_type` <- MatchTypeResponse$new()$fromJSON(jsonlite::toJSON(this_object$`match_type`, auto_unbox = TRUE, digits = NA))
+      self$`value` <- this_object$`value`
       self$`archived` <- this_object$`archived`
       self$`id` <- this_object$`id`
       self$`parent_id` <- this_object$`parent_id`
       self$`parent_type` <- this_object$`parent_type`
       self$`type` <- this_object$`type`
-      self$`bid` <- this_object$`bid`
-      self$`match_type` <- MatchTypeResponse$new()$fromJSON(jsonlite::toJSON(this_object$`match_type`, auto_unbox = TRUE, digits = NA))
-      self$`value` <- this_object$`value`
       self
     },
-    #' Validate JSON input with respect to Keyword
-    #'
+
     #' @description
     #' Validate JSON input with respect to Keyword and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `match_type`
@@ -297,24 +285,25 @@ Keyword <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for Keyword: the required field `value` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of Keyword
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
+      # check if the required `value` is null
+      if (is.null(self$`value`)) {
+        return(FALSE)
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
       }
@@ -323,22 +312,20 @@ Keyword <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `value` is null
-      if (is.null(self$`value`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `value` is null
+      if (is.null(self$`value`)) {
+        invalid_fields["value"] <- "Non-nullable required field `value` cannot be null."
+      }
+
       if (!str_detect(self$`id`, "^\\d+$")) {
         invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
       }
@@ -347,19 +334,11 @@ Keyword <- R6::R6Class(
         invalid_fields["parent_id"] <- "Invalid value for `parent_id`, must conform to the pattern ^\\d+$."
       }
 
-      # check if the required `value` is null
-      if (is.null(self$`value`)) {
-        invalid_fields["value"] <- "Non-nullable required field `value` cannot be null."
-      }
-
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

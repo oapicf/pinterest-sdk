@@ -23,8 +23,7 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
     `is_featured` = NULL,
     `filters` = NULL,
     `feed_id` = NULL,
-    #' Initialize a new CatalogsProductGroupCreateRequest class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsProductGroupCreateRequest class.
     #'
@@ -34,7 +33,6 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
     #' @param description description
     #' @param is_featured boolean indicator of whether the product group is being featured or not. Default to FALSE.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`name`, `filters`, `feed_id`, `description` = NULL, `is_featured` = FALSE, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
@@ -65,13 +63,11 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
         self$`is_featured` <- `is_featured`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupCreateRequest in JSON format
-    #' @export
     toJSON = function() {
       CatalogsProductGroupCreateRequestObject <- list()
       if (!is.null(self$`name`)) {
@@ -96,14 +92,12 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
       }
       CatalogsProductGroupCreateRequestObject
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupCreateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`name`)) {
@@ -125,13 +119,11 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupCreateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`name`)) {
@@ -178,14 +170,12 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupCreateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
@@ -195,13 +185,11 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
       self$`feed_id` <- this_object$`feed_id`
       self
     },
-    #' Validate JSON input with respect to CatalogsProductGroupCreateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsProductGroupCreateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `name`
@@ -227,23 +215,19 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupCreateRequest: the required field `feed_id` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsProductGroupCreateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `name` is null
       if (is.null(self$`name`)) {
@@ -266,13 +250,11 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `name` is null
@@ -296,12 +278,9 @@ CatalogsProductGroupCreateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

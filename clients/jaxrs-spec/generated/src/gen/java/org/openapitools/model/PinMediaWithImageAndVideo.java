@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Pin with a mix of images and videos.")
 @JsonTypeName("PinMediaWithImageAndVideo")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithImageAndVideo extends PinMedia  {
-  private @Valid List<@Valid PinMediaMetadata> items;
+  private @Valid List<@Valid PinMediaMetadata> items = new ArrayList<>();
 
   /**
    **/
@@ -36,7 +36,7 @@ public class PinMediaWithImageAndVideo extends PinMedia  {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<PinMediaMetadata> getItems() {
+  @Valid public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }
 

@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ImageMetadataImages
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageMetadataImages   {
   @JsonProperty("150x150")
   private ImageDetails _150x150;
@@ -35,10 +35,10 @@ public class ImageMetadataImages   {
     return this;
   }
 
-   /**
+  /**
    * Get _150x150
    * @return _150x150
-  **/
+   */
   @ApiModelProperty(value = "")
   public ImageDetails get150x150() {
     return _150x150;
@@ -53,10 +53,10 @@ public class ImageMetadataImages   {
     return this;
   }
 
-   /**
+  /**
    * Get _400x300
    * @return _400x300
-  **/
+   */
   @ApiModelProperty(value = "")
   public ImageDetails get400x300() {
     return _400x300;
@@ -71,10 +71,10 @@ public class ImageMetadataImages   {
     return this;
   }
 
-   /**
+  /**
    * Get _600x
    * @return _600x
-  **/
+   */
   @ApiModelProperty(value = "")
   public ImageDetails get600x() {
     return _600x;
@@ -89,10 +89,10 @@ public class ImageMetadataImages   {
     return this;
   }
 
-   /**
+  /**
    * Get _1200x
    * @return _1200x
-  **/
+   */
   @ApiModelProperty(value = "")
   public ImageDetails get1200x() {
     return _1200x;

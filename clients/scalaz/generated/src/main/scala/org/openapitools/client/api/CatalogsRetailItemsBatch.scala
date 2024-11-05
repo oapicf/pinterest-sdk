@@ -15,9 +15,9 @@ import CatalogsRetailItemsBatch._
 case class CatalogsRetailItemsBatch (
   /* Id of the catalogs items batch */
   batchId: Option[String],
-/* Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+/* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
   createdTime: Option[OffsetDateTime],
-/* Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+/* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
   completedTime: Option[OffsetDateTime],
 status: Option[BatchOperationStatus],
 catalogType: CatalogsType,

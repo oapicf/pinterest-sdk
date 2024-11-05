@@ -22,11 +22,14 @@ Name | Type | Description | Notes
 **product_group_ids** | Option<**Vec<String>**> | List of product group ids | [optional]
 **product_group_statuses** | Option<[**Vec<models::ProductGroupSummaryStatus>**](ProductGroupSummaryStatus.md)> | List of values for filtering | [optional]
 **product_item_ids** | Option<**Vec<String>**> | List of product item ids | [optional]
-**targeting_types** | Option<[**Vec<models::AdsAnalyticsTargetingType>**](AdsAnalyticsTargetingType.md)> | List of targeting types. Requires `level` to be a value ending in `_TARGETING`. | [optional]
+**targeting_types** | Option<[**Vec<models::AdsAnalyticsTargetingType>**](AdsAnalyticsTargetingType.md)> | List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. | [optional]
 **metrics_filters** | Option<[**Vec<models::AdsAnalyticsMetricsFilter>**](AdsAnalyticsMetricsFilter.md)> | List of metrics filters | [optional]
 **columns** | [**Vec<models::ReportingColumnAsync>**](ReportingColumnAsync.md) | Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. | 
 **level** | [**models::MetricsReportingLevel**](MetricsReportingLevel.md) | Level of the report | 
 **report_format** | Option<[**models::DataOutputFormat**](DataOutputFormat.md)> | Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. | [optional][default to Json]
+**primary_sort** | Option<**String**> | Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. | [optional]
+**start_hour** | Option<**i32**> | Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. | [optional]
+**end_hour** | Option<**i32**> | Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

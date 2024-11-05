@@ -25,7 +25,7 @@ data class AdAccountOwner(
 
     @Schema(example = "null", description = "The owning account's user ID.")
     @get:JsonProperty("id") val id: kotlin.String? = null
-) {
+    ) {
 
 }
 

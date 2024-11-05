@@ -15,18 +15,26 @@
 
 typedef struct campaign_response_t campaign_response_t;
 
-#include "ad_common_tracking_urls.h"
 #include "campaign_summary_status.h"
 #include "entity_status.h"
 #include "objective_type.h"
+#include "tracking_urls.h"
 
 // Enum  for campaign_response
 
-typedef enum  { pinterest_rest_api_campaign_response__NULL = 0, pinterest_rest_api_campaign_response__AWARENESS, pinterest_rest_api_campaign_response__CONSIDERATION, pinterest_rest_api_campaign_response__VIDEO_VIEW, pinterest_rest_api_campaign_response__WEB_CONVERSION, pinterest_rest_api_campaign_response__CATALOG_SALES, pinterest_rest_api_campaign_response__WEB_SESSIONS } pinterest_rest_api_campaign_response__e;
+typedef enum  { pinterest_rest_api_campaign_response__NULL = 0, pinterest_rest_api_campaign_response__AWARENESS, pinterest_rest_api_campaign_response__CONSIDERATION, pinterest_rest_api_campaign_response__VIDEO_VIEW, pinterest_rest_api_campaign_response__WEB_CONVERSION, pinterest_rest_api_campaign_response__CATALOG_SALES, pinterest_rest_api_campaign_response__WEB_SESSIONS, pinterest_rest_api_campaign_response__VIDEO_COMPLETION } pinterest_rest_api_campaign_response__e;
 
 char* campaign_response_objective_type_ToString(pinterest_rest_api_campaign_response__e objective_type);
 
 pinterest_rest_api_campaign_response__e campaign_response_objective_type_FromString(char* objective_type);
+
+// Enum  for campaign_response
+
+typedef enum  { pinterest_rest_api_campaign_response__NULL = 0, pinterest_rest_api_campaign_response__RUNNING, pinterest_rest_api_campaign_response__PAUSED, pinterest_rest_api_campaign_response__NOT_STARTED, pinterest_rest_api_campaign_response__COMPLETED, pinterest_rest_api_campaign_response__ADVERTISER_DISABLED, pinterest_rest_api_campaign_response__ARCHIVED, pinterest_rest_api_campaign_response__DRAFT, pinterest_rest_api_campaign_response__DELETED_DRAFT } pinterest_rest_api_campaign_response__e;
+
+char* campaign_response_summary_status_ToString(pinterest_rest_api_campaign_response__e summary_status);
+
+pinterest_rest_api_campaign_response__e campaign_response_summary_status_FromString(char* summary_status);
 
 
 
@@ -38,16 +46,16 @@ typedef struct campaign_response_t {
     int lifetime_spend_cap; //numeric
     int daily_spend_cap; //numeric
     char *order_line_id; // string
-    struct ad_common_tracking_urls_t *tracking_urls; //model
+    struct tracking_urls_t *tracking_urls; //model
     int start_time; //numeric
     int end_time; //numeric
-    campaign_summary_status_t *summary_status; // custom
+    int is_flexible_daily_budgets; //boolean
     objective_type_t *objective_type; // custom
     int created_time; //numeric
     int updated_time; //numeric
     char *type; // string
-    int is_flexible_daily_budgets; //boolean
     int is_campaign_budget_optimization; //boolean
+    campaign_summary_status_t *summary_status; // custom
 
 } campaign_response_t;
 
@@ -59,16 +67,16 @@ campaign_response_t *campaign_response_create(
     int lifetime_spend_cap,
     int daily_spend_cap,
     char *order_line_id,
-    ad_common_tracking_urls_t *tracking_urls,
+    tracking_urls_t *tracking_urls,
     int start_time,
     int end_time,
-    campaign_summary_status_t *summary_status,
+    int is_flexible_daily_budgets,
     objective_type_t *objective_type,
     int created_time,
     int updated_time,
     char *type,
-    int is_flexible_daily_budgets,
-    int is_campaign_budget_optimization
+    int is_campaign_budget_optimization,
+    campaign_summary_status_t *summary_status
 );
 
 void campaign_response_free(campaign_response_t *campaign_response);

@@ -3,12 +3,12 @@ package org.openapitools.client.model
 
 
 case class CatalogsVerticalBatchRequest (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _country: Country,
-    _language: Language,
-    /* Array with catalogs item operations */
-    _items: List[CatalogsHotelBatchItem],
-    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+    _language: CatalogsItemsRequestLanguage,
+    /* Array with creative assets item operations */
+    _items: List[CatalogsCreativeAssetsBatchItem],
+    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     _catalogId: Option[String]
 )
 object CatalogsVerticalBatchRequest {

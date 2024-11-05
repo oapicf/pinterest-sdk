@@ -10,6 +10,7 @@ import org.openapitools.models.CatalogsFeedProcessingSchedule
 import org.openapitools.models.CatalogsFeedsCreateRequest
 import org.openapitools.models.CatalogsFeedsCreateRequestDefaultLocale
 import org.openapitools.models.CatalogsFormat
+import org.openapitools.models.CatalogsStatus
 import org.openapitools.models.CatalogsType
 import org.openapitools.models.CatalogsVerticalFeedsCreateRequest
 import org.openapitools.models.Country
@@ -28,7 +29,8 @@ import org.openapitools.models.ProductAvailabilityType
  * @param catalogUnderscoretype 
  * @param defaultUnderscorecountry 
  * @param defaultUnderscoreavailability 
- * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+ * @param status 
+ * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
  */
 case class FeedsCreateRequest(defaultUnderscorecurrency: Option[NullableCurrency],
                 name: String,
@@ -40,6 +42,7 @@ case class FeedsCreateRequest(defaultUnderscorecurrency: Option[NullableCurrency
                 catalogUnderscoretype: CatalogsType,
                 defaultUnderscorecountry: Country,
                 defaultUnderscoreavailability: Option[ProductAvailabilityType],
+                status: Option[CatalogsStatus],
                 catalogUnderscoreid: Option[String]
                 )
 

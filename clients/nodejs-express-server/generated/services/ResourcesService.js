@@ -22,7 +22,7 @@ const ad_account_countries/get = () => new Promise(
 );
 /**
 * Get available metrics' definitions
-* Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+* Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 *
 * reportUnderscoretype String Report type. (optional)
 * returns DeliveryMetricsResponse
@@ -64,7 +64,7 @@ const interest_targeting_options/get = ({ interestUnderscoreid }) => new Promise
 );
 /**
 * Get lead form questions
-* Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+* Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 *
 * no response value expected for this operation
 * */
@@ -110,9 +110,10 @@ const metrics_ready_state/get = ({ date }) => new Promise(
 * clientUnderscoreid String Client ID. (optional)
 * oauthUnderscoresignature String Oauth signature (optional)
 * timestamp String Timestamp (optional)
+* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns List
 * */
-const targeting_options/get = ({ targetingUnderscoretype, clientUnderscoreid, oauthUnderscoresignature, timestamp }) => new Promise(
+const targeting_options/get = ({ targetingUnderscoretype, clientUnderscoreid, oauthUnderscoresignature, timestamp, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
@@ -120,6 +121,7 @@ const targeting_options/get = ({ targetingUnderscoretype, clientUnderscoreid, oa
         clientUnderscoreid,
         oauthUnderscoresignature,
         timestamp,
+        adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

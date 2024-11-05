@@ -21,7 +21,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object holding a group of filters for a catalog product group")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupFilters   {
   @JsonProperty("any_of")
   
@@ -44,10 +44,10 @@ public class CatalogsProductGroupFilters   {
     return this;
   }
 
-   /**
+  /**
    * Get anyOf
    * @return anyOf
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public List<CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
@@ -70,10 +70,10 @@ public class CatalogsProductGroupFilters   {
     return this;
   }
 
-   /**
+  /**
    * Get allOf
    * @return allOf
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public List<CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;

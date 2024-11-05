@@ -147,6 +147,111 @@ module IntegrationsApiHandlerTestsHelper =
     &quot;event_type&quot; : &quot;APP&quot;,
     &quot;tag_id&quot; : &quot;tag_id&quot;,
     &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+  }, {
+    &quot;client_timestamp&quot; : 0,
+    &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;request&quot; : {
+      &quot;path&quot; : &quot;path&quot;,
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;host&quot; : &quot;host&quot;,
+      &quot;request_headers&quot; : {
+        &quot;key&quot; : &quot;request_headers&quot;
+      },
+      &quot;response_status_code&quot; : 5
+    },
+    &quot;log_level&quot; : &quot;INFO&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;error&quot; : {
+      &quot;number&quot; : 5,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;
+    },
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;event_type&quot; : &quot;APP&quot;,
+    &quot;tag_id&quot; : &quot;tag_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+  }, {
+    &quot;client_timestamp&quot; : 0,
+    &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;request&quot; : {
+      &quot;path&quot; : &quot;path&quot;,
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;host&quot; : &quot;host&quot;,
+      &quot;request_headers&quot; : {
+        &quot;key&quot; : &quot;request_headers&quot;
+      },
+      &quot;response_status_code&quot; : 5
+    },
+    &quot;log_level&quot; : &quot;INFO&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;error&quot; : {
+      &quot;number&quot; : 5,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;
+    },
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;event_type&quot; : &quot;APP&quot;,
+    &quot;tag_id&quot; : &quot;tag_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+  }, {
+    &quot;client_timestamp&quot; : 0,
+    &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;request&quot; : {
+      &quot;path&quot; : &quot;path&quot;,
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;host&quot; : &quot;host&quot;,
+      &quot;request_headers&quot; : {
+        &quot;key&quot; : &quot;request_headers&quot;
+      },
+      &quot;response_status_code&quot; : 5
+    },
+    &quot;log_level&quot; : &quot;INFO&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;error&quot; : {
+      &quot;number&quot; : 5,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;
+    },
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;event_type&quot; : &quot;APP&quot;,
+    &quot;tag_id&quot; : &quot;tag_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
   } ]
 }"
   IntegrationsLogsPostExamples <- IntegrationsLogsPostExamples.Add("application/json", IntegrationsLogsPostBody)

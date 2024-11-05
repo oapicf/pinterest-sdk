@@ -23,8 +23,7 @@ TrackingUrls <- R6::R6Class(
     `engagement` = NULL,
     `buyable_button` = NULL,
     `audience_verification` = NULL,
-    #' Initialize a new TrackingUrls class.
-    #'
+
     #' @description
     #' Initialize a new TrackingUrls class.
     #'
@@ -34,7 +33,6 @@ TrackingUrls <- R6::R6Class(
     #' @param buyable_button buyable_button
     #' @param audience_verification audience_verification
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`impression` = NULL, `click` = NULL, `engagement` = NULL, `buyable_button` = NULL, `audience_verification` = NULL, ...) {
       if (!is.null(`impression`)) {
         stopifnot(is.vector(`impression`), length(`impression`) != 0)
@@ -62,13 +60,11 @@ TrackingUrls <- R6::R6Class(
         self$`audience_verification` <- `audience_verification`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TrackingUrls in JSON format
-    #' @export
     toJSON = function() {
       TrackingUrlsObject <- list()
       if (!is.null(self$`impression`)) {
@@ -93,14 +89,12 @@ TrackingUrls <- R6::R6Class(
       }
       TrackingUrlsObject
     },
-    #' Deserialize JSON string into an instance of TrackingUrls
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TrackingUrls
     #'
     #' @param input_json the JSON input
     #' @return the instance of TrackingUrls
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`impression`)) {
@@ -120,13 +114,11 @@ TrackingUrls <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TrackingUrls in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`impression`)) {
@@ -173,14 +165,12 @@ TrackingUrls <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of TrackingUrls
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TrackingUrls
     #'
     #' @param input_json the JSON input
     #' @return the instance of TrackingUrls
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`impression` <- ApiClient$new()$deserializeObj(this_object$`impression`, "array[character]", loadNamespace("openapi"))
@@ -190,53 +180,42 @@ TrackingUrls <- R6::R6Class(
       self$`audience_verification` <- ApiClient$new()$deserializeObj(this_object$`audience_verification`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to TrackingUrls
-    #'
+
     #' @description
     #' Validate JSON input with respect to TrackingUrls and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of TrackingUrls
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

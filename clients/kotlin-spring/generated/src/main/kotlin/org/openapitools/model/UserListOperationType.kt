@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * User list operation type (add or remove)
 * Values: ADD,REMOVE
 */
-enum class UserListOperationType(val value: kotlin.String) {
+enum class UserListOperationType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("ADD") ADD("ADD"),
-    @JsonProperty("REMOVE") REMOVE("REMOVE")
+    ADD("ADD"),
+    REMOVE("REMOVE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): UserListOperationType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

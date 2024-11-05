@@ -16,7 +16,7 @@ public class OrderLinesArrayResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid OrderLines> items;
+  private List<@Valid OrderLines> items = new ArrayList<>();
  /**
   * Get items
   * @return items

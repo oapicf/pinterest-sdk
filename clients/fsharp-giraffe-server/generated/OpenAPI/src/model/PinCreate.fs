@@ -3,8 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.BoardOwner
+open OpenAPI.Model.PinMedia
 open OpenAPI.Model.PinMediaSource
-open OpenAPI.Model.SummaryPinMedia
 open OpenAPI.Model.string option
 
 module PinCreate =
@@ -23,7 +23,7 @@ module PinCreate =
     BoardId : string;
     BoardSectionId : string option;
     BoardOwner : BoardOwner;
-    Media : SummaryPinMedia;
+    Media : PinMedia;
     MediaSource : PinMediaSource;
     ParentPinId : string option;
     Note : string option;

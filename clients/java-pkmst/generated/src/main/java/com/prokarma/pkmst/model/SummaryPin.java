@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.SummaryPinMedia;
+import com.prokarma.pkmst.model.PinMedia;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -17,10 +17,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Summarized pin information")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SummaryPin   {
   @JsonProperty("media")
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @JsonProperty("alt_text")
   private String altText;
@@ -34,21 +34,21 @@ public class SummaryPin   {
   @JsonProperty("description")
   private String description;
 
-  public SummaryPin media(SummaryPinMedia media) {
+  public SummaryPin media(PinMedia media) {
     this.media = media;
     return this;
   }
 
-   /**
+  /**
    * Get media
    * @return media
-  **/
-  @ApiModelProperty(value = "")
-  public SummaryPinMedia getMedia() {
+   */
+  @ApiModelProperty(readOnly = true, value = "")
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -57,10 +57,10 @@ public class SummaryPin   {
     return this;
   }
 
-   /**
+  /**
    * Get altText
    * @return altText
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAltText() {
     return altText;
@@ -75,10 +75,10 @@ public class SummaryPin   {
     return this;
   }
 
-   /**
+  /**
    * Get link
    * @return link
-  **/
+   */
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
   public String getLink() {
     return link;
@@ -93,10 +93,10 @@ public class SummaryPin   {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
@@ -111,10 +111,10 @@ public class SummaryPin   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;

@@ -29,8 +29,7 @@ AdAccount <- R6::R6Class(
     `permissions` = NULL,
     `created_time` = NULL,
     `updated_time` = NULL,
-    #' Initialize a new AdAccount class.
-    #'
+
     #' @description
     #' Initialize a new AdAccount class.
     #'
@@ -43,7 +42,6 @@ AdAccount <- R6::R6Class(
     #' @param created_time Creation time. Unix timestamp in seconds.
     #' @param updated_time Last update time. Unix timestamp in seconds.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `name` = NULL, `owner` = NULL, `country` = NULL, `currency` = NULL, `permissions` = NULL, `created_time` = NULL, `updated_time` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -93,13 +91,11 @@ AdAccount <- R6::R6Class(
         self$`updated_time` <- `updated_time`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdAccount in JSON format
-    #' @export
     toJSON = function() {
       AdAccountObject <- list()
       if (!is.null(self$`id`)) {
@@ -136,14 +132,12 @@ AdAccount <- R6::R6Class(
       }
       AdAccountObject
     },
-    #' Deserialize JSON string into an instance of AdAccount
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdAccount
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdAccount
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -178,13 +172,11 @@ AdAccount <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdAccount in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -255,14 +247,12 @@ AdAccount <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdAccount
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdAccount
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdAccount
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -275,53 +265,42 @@ AdAccount <- R6::R6Class(
       self$`updated_time` <- this_object$`updated_time`
       self
     },
-    #' Validate JSON input with respect to AdAccount
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdAccount and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdAccount
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

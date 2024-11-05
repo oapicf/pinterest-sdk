@@ -7,7 +7,7 @@ Protected Class CatalogsItemsBatchRequest
 
 
 	#tag Property, Flags = &h0
-		language As String
+		language As OpenAPIClient.Models.CatalogsItemsRequestLanguage
 	#tag EndProperty
 
 
@@ -73,7 +73,7 @@ Protected Class CatalogsItemsBatchRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Language"
+			Type="CatalogsItemsRequestLanguage"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

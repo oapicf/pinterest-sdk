@@ -19,10 +19,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CampaignCreateResponseData
-import org.openapitools.client.models.AdCommonTrackingUrls
 import org.openapitools.client.models.CampaignSummaryStatus
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.ObjectiveType
+import org.openapitools.client.models.TrackingUrls
 
 class CampaignCreateResponseDataTest : ShouldSpec() {
     init {
@@ -83,13 +83,7 @@ class CampaignCreateResponseDataTest : ShouldSpec() {
             //modelInstance.endTime shouldBe ("TODO")
         }
 
-        // to test the property `summaryStatus`
-        should("test summaryStatus") {
-            // uncomment below to test the property
-            //modelInstance.summaryStatus shouldBe ("TODO")
-        }
-
-        // to test the property `isFlexibleDailyBudgets` - Determines if a campaign has flexible daily budgets setup.
+        // to test the property `isFlexibleDailyBudgets` - Determine if a campaign has flexible daily budgets setup.
         should("test isFlexibleDailyBudgets") {
             // uncomment below to test the property
             //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
@@ -141,6 +135,12 @@ class CampaignCreateResponseDataTest : ShouldSpec() {
         should("test isCampaignBudgetOptimization") {
             // uncomment below to test the property
             //modelInstance.isCampaignBudgetOptimization shouldBe ("TODO")
+        }
+
+        // to test the property `summaryStatus`
+        should("test summaryStatus") {
+            // uncomment below to test the property
+            //modelInstance.summaryStatus shouldBe ("TODO")
         }
 
     }

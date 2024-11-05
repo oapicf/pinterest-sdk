@@ -7,7 +7,6 @@
     "UNKNOWN",
     "NOT_VALIDATED",
     "VALIDATING_IN_PROGRESS",
-    "VALIDATION_COMPLETE",
-    "null"
+    "VALIDATION_COMPLETE"
   ]
 }

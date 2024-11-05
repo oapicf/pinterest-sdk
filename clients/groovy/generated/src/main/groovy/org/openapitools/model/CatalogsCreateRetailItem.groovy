@@ -3,7 +3,7 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 
 @Canonical
 class CatalogsCreateRetailItem {
@@ -12,13 +12,7 @@ class CatalogsCreateRetailItem {
 
     enum OperationEnum {
     
-        CREATE("CREATE"),
-        
-        UPDATE("UPDATE"),
-        
-        UPSERT("UPSERT"),
-        
-        DELETE("DELETE")
+        CREATE("CREATE")
     
         private final String value
     
@@ -39,5 +33,5 @@ class CatalogsCreateRetailItem {
     
     OperationEnum operation
     
-    ItemAttributes attributes
+    ItemAttributesRequest attributes
 }

@@ -37,8 +37,7 @@ OrderLine <- R6::R6Class(
     `name` = NULL,
     `paid_type` = NULL,
     `campaign_ids` = NULL,
-    #' Initialize a new OrderLine class.
-    #'
+
     #' @description
     #' Initialize a new OrderLine class.
     #'
@@ -55,7 +54,6 @@ OrderLine <- R6::R6Class(
     #' @param name Order line name.
     #' @param paid_type Order line paid type.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`campaign_ids`, `id` = NULL, `type` = NULL, `ad_account_id` = NULL, `purchase_order_id` = NULL, `start_time` = NULL, `end_time` = NULL, `budget` = NULL, `paid_budget` = NULL, `status` = NULL, `name` = NULL, `paid_type` = NULL, ...) {
       if (!missing(`campaign_ids`)) {
         stopifnot(is.vector(`campaign_ids`), length(`campaign_ids`) != 0)
@@ -119,13 +117,11 @@ OrderLine <- R6::R6Class(
         self$`paid_type` <- `paid_type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OrderLine in JSON format
-    #' @export
     toJSON = function() {
       OrderLineObject <- list()
       if (!is.null(self$`id`)) {
@@ -178,14 +174,12 @@ OrderLine <- R6::R6Class(
       }
       OrderLineObject
     },
-    #' Deserialize JSON string into an instance of OrderLine
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OrderLine
     #'
     #' @param input_json the JSON input
     #' @return the instance of OrderLine
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -230,13 +224,11 @@ OrderLine <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OrderLine in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -339,14 +331,12 @@ OrderLine <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of OrderLine
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OrderLine
     #'
     #' @param input_json the JSON input
     #' @return the instance of OrderLine
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -363,13 +353,11 @@ OrderLine <- R6::R6Class(
       self$`campaign_ids` <- ApiClient$new()$deserializeObj(this_object$`campaign_ids`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to OrderLine
-    #'
+
     #' @description
     #' Validate JSON input with respect to OrderLine and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `campaign_ids`
@@ -380,23 +368,19 @@ OrderLine <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for OrderLine: the required field `campaign_ids` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of OrderLine
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -409,13 +393,11 @@ OrderLine <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -429,12 +411,9 @@ OrderLine <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

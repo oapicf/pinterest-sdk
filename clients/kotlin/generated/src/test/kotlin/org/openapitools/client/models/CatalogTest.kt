@@ -26,10 +26,22 @@ class CatalogTest : ShouldSpec() {
         // uncomment below to create an instance of Catalog
         //val modelInstance = Catalog()
 
+        // to test the property `createdAt`
+        should("test createdAt") {
+            // uncomment below to test the property
+            //modelInstance.createdAt shouldBe ("TODO")
+        }
+
         // to test the property `id` - ID of the catalog entity.
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `updatedAt`
+        should("test updatedAt") {
+            // uncomment below to test the property
+            //modelInstance.updatedAt shouldBe ("TODO")
         }
 
         // to test the property `name` - A human-friendly name associated to a catalog entity.
@@ -42,18 +54,6 @@ class CatalogTest : ShouldSpec() {
         should("test catalogType") {
             // uncomment below to test the property
             //modelInstance.catalogType shouldBe ("TODO")
-        }
-
-        // to test the property `createdAt`
-        should("test createdAt") {
-            // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
-        }
-
-        // to test the property `updatedAt`
-        should("test updatedAt") {
-            // uncomment below to test the property
-            //modelInstance.updatedAt shouldBe ("TODO")
         }
 
     }

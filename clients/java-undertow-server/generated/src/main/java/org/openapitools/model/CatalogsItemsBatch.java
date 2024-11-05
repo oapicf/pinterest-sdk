@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -22,10 +22,11 @@ import java.util.Date;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
+import org.openapitools.model.CatalogsCreativeAssetsItemsBatch;
 import org.openapitools.model.CatalogsHotelItemsBatch;
 import org.openapitools.model.CatalogsRetailItemsBatch;
 import org.openapitools.model.CatalogsType;
-import org.openapitools.model.HotelProcessingRecord;
+import org.openapitools.model.CreativeAssetsProcessingRecord;
 
 
 
@@ -34,7 +35,7 @@ import org.openapitools.model.HotelProcessingRecord;
  */
 
 @ApiModel(description = "Object describing the catalogs items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemsBatch   {
   
   private CatalogsType catalogType;
@@ -42,7 +43,7 @@ public class CatalogsItemsBatch   {
   private Date createdTime;
   private Date completedTime;
   private BatchOperationStatus status;
-  private List<HotelProcessingRecord> items;
+  private List<CreativeAssetsProcessingRecord> items = new ArrayList<>();
 
   /**
    */
@@ -80,7 +81,7 @@ public class CatalogsItemsBatch   {
   }
 
   /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    */
   public CatalogsItemsBatch createdTime(Date createdTime) {
     this.createdTime = createdTime;
@@ -88,7 +89,7 @@ public class CatalogsItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("created_time")
   public Date getCreatedTime() {
     return createdTime;
@@ -98,7 +99,7 @@ public class CatalogsItemsBatch   {
   }
 
   /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    */
   public CatalogsItemsBatch completedTime(Date completedTime) {
     this.completedTime = completedTime;
@@ -106,7 +107,7 @@ public class CatalogsItemsBatch   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonProperty("completed_time")
   public Date getCompletedTime() {
     return completedTime;
@@ -135,7 +136,7 @@ public class CatalogsItemsBatch   {
   /**
    * Array with the catalogs items processing records part of the catalogs items batch
    */
-  public CatalogsItemsBatch items(List<HotelProcessingRecord> items) {
+  public CatalogsItemsBatch items(List<CreativeAssetsProcessingRecord> items) {
     this.items = items;
     return this;
   }
@@ -143,10 +144,10 @@ public class CatalogsItemsBatch   {
   
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
   @JsonProperty("items")
-  public List<HotelProcessingRecord> getItems() {
+  public List<CreativeAssetsProcessingRecord> getItems() {
     return items;
   }
-  public void setItems(List<HotelProcessingRecord> items) {
+  public void setItems(List<CreativeAssetsProcessingRecord> items) {
     this.items = items;
   }
 

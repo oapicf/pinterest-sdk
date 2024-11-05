@@ -70,7 +70,7 @@ object AdGroupsApi {
 
     val path = "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
-    val httpMethod = Method.GET
+    val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
@@ -245,7 +245,7 @@ class HttpServiceAdGroupsApi(service: HttpService) {
 
     val path = "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
 
-    val httpMethod = Method.GET
+    val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )

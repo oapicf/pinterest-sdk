@@ -48,5 +48,8 @@ data class HotelProcessingRecord (
     @Json(name = "status")
     val status: ItemProcessingStatus? = null
 
-)
+) {
+
+
+}
 

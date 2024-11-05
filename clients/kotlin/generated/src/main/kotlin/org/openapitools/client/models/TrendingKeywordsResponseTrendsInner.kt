@@ -52,5 +52,8 @@ data class TrendingKeywordsResponseTrendsInner (
     @Json(name = "time_series")
     val timeSeries: TrendingKeywordsResponseTrendsInnerTimeSeries? = null
 
-)
+) {
+
+
+}
 

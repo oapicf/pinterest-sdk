@@ -1,6 +1,10 @@
 package models
 
-// CatalogsVerticalProductGroupUpdateRequest - Request object for updating a hotel product group.
+import (
+	"gopkg.in/validator.v2"
+)
+
+// CatalogsVerticalProductGroupUpdateRequest - Request object for updating a catalog based product group.
 type CatalogsVerticalProductGroupUpdateRequest struct {
 
 	CatalogType string `json:"catalog_type,omitempty"`
@@ -9,5 +13,9 @@ type CatalogsVerticalProductGroupUpdateRequest struct {
 
 	Description *string `json:"description,omitempty"`
 
-	Filters CatalogsHotelProductGroupFilters `json:"filters,omitempty"`
+	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters,omitempty"`
+
+	Country Country `json:"country,omitempty"`
+
+	Locale CatalogsLocale `json:"locale,omitempty"`
 }

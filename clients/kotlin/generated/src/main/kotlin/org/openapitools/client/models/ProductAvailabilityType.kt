@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Default availability for products in a feed.
  *
- * Values: IN_STOCK,OUT_OF_STOCK,PREORDER,`null`
+ * Values: IN_STOCK,OUT_OF_STOCK,PREORDER
  */
 
 @JsonClass(generateAdapter = false)
@@ -35,10 +35,7 @@ enum class ProductAvailabilityType(val value: kotlin.String) {
     OUT_OF_STOCK("OUT_OF_STOCK"),
 
     @Json(name = "PREORDER")
-    PREORDER("PREORDER"),
-
-    @Json(name = "null")
-    `null`("null");
+    PREORDER("PREORDER");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

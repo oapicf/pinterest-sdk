@@ -27,6 +27,8 @@
 
 * `PRODUCT_ITEM` (value: `"PRODUCT_ITEM"`)
 
+* `PRODUCT_ITEM_TARGETING` (value: `"PRODUCT_ITEM_TARGETING"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

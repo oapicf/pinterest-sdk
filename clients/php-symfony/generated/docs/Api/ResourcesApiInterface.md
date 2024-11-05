@@ -87,7 +87,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example Implementation
 ```php
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example Implementation
 ```php
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **targetingOptionsGet**
-> array targetingOptionsGet($targetingType, $clientId, $oauthSignature, $timestamp)
+> array targetingOptionsGet($targetingType, $clientId, $oauthSignature, $timestamp, $adAccountId)
 
 Get targeting options
 
@@ -359,7 +359,7 @@ class ResourcesApi implements ResourcesApiInterface
     /**
      * Implementation of ResourcesApiInterface#targetingOptionsGet
      */
-    public function targetingOptionsGet(string $targetingType, ?string $clientId, ?string $oauthSignature, ?string $timestamp, int &$responseCode, array &$responseHeaders): array|object|null
+    public function targetingOptionsGet(string $targetingType, ?string $clientId, ?string $oauthSignature, ?string $timestamp, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -376,6 +376,7 @@ Name | Type | Description  | Notes
  **clientId** | **string**| Client ID. | [optional]
  **oauthSignature** | **string**| Oauth signature | [optional]
  **timestamp** | **string**| Timestamp | [optional]
+ **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 

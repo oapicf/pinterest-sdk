@@ -14,9 +14,9 @@ import java.time.OffsetDateTime
  * @param catalogType  for example: ''null''
 */
 final case class Catalog (
-  createdAt: Option[OffsetDateTime] = None,
+  createdAt: OffsetDateTime,
   id: String,
-  updatedAt: Option[OffsetDateTime] = None,
+  updatedAt: OffsetDateTime,
   name: String,
   catalogType: CatalogsType
 )

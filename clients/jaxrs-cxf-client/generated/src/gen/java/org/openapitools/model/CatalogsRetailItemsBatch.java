@@ -27,15 +27,15 @@ public class CatalogsRetailItemsBatch  {
   **/
   private String batchId;
 
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
  /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
   **/
   private Date createdTime;
 
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
  /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   **/
   private Date completedTime;
 
@@ -49,7 +49,7 @@ public class CatalogsRetailItemsBatch  {
  /**
    * Array with the catalogs items processing records part of the catalogs items batch
   **/
-  private List<ItemProcessingRecord> items;
+  private List<ItemProcessingRecord> items = new ArrayList<>();
  /**
    * Id of the catalogs items batch
    * @return batchId
@@ -69,7 +69,7 @@ public class CatalogsRetailItemsBatch  {
   }
 
  /**
-   * Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    * @return createdTime
   **/
   @JsonProperty("created_time")
@@ -79,7 +79,7 @@ public class CatalogsRetailItemsBatch  {
 
 
  /**
-   * Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
    * @return completedTime
   **/
   @JsonProperty("completed_time")

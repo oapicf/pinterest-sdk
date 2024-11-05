@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**models::Country**](Country.md) |  | 
-**language** | [**models::Language**](Language.md) |  | 
+**language** | [**models::CatalogsItemsRequestLanguage**](CatalogsItemsRequest_language.md) |  | 
 **operation** | [**models::BatchOperation**](BatchOperation.md) |  | 
 **items** | [**Vec<models::ItemCreateBatchRecord>**](ItemCreateBatchRecord.md) | Array with catalogs items | 
 

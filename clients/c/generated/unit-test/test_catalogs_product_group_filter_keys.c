@@ -16,119 +16,71 @@
 #include "../model/catalogs_product_group_filter_keys.h"
 catalogs_product_group_filter_keys_t* instantiate_catalogs_product_group_filter_keys(int include_optional);
 
-#include "test_catalogs_product_group_pricing_criteria.c"
-#include "test_catalogs_product_group_pricing_criteria.c"
-#include "test_catalogs_product_group_currency_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_string_criteria.c"
-#include "test_catalogs_product_group_multiple_gender_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
-#include "test_catalogs_product_group_multiple_string_list_criteria.c"
 
 
 catalogs_product_group_filter_keys_t* instantiate_catalogs_product_group_filter_keys(int include_optional) {
   catalogs_product_group_filter_keys_t* catalogs_product_group_filter_keys = NULL;
   if (include_optional) {
     catalogs_product_group_filter_keys = catalogs_product_group_filter_keys_create(
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_pricing_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_pricing_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_currency_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_gender_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0),
-       // false, not to have infinite recursion
-      instantiate_catalogs_product_group_multiple_string_list_criteria(0)
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
     );
   } else {
     catalogs_product_group_filter_keys = catalogs_product_group_filter_keys_create(
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL,
-      NULL
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
     );
   }
 

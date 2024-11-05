@@ -32,7 +32,7 @@ case class ConversionEventsDataInnerCustomData (
   orderId: Option[String],
 /* The search string related to the user conversion event. */
   searchString: Option[String],
-/* Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up. */
+/* Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up. */
   optOutType: Option[String],
 /* Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided. */
   np: Option[String])

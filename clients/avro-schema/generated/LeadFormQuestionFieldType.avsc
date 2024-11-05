@@ -7,7 +7,6 @@
     "TEXT_FIELD",
     "TEXT_AREA",
     "RADIO_LIST",
-    "CHECKBOX",
-    "null"
+    "CHECKBOX"
   ]
 }

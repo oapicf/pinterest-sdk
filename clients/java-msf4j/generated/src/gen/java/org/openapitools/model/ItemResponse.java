@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemResponseAnyOf;
 import org.openapitools.model.ItemResponseAnyOf1;
@@ -21,7 +21,7 @@ import org.openapitools.model.Pin;
  * Object describing an item record
  */
 @ApiModel(description = "Object describing an item record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -34,6 +34,9 @@ public class ItemResponse   {
 
   @JsonProperty("hotel_id")
   private String hotelId;
+
+  @JsonProperty("creative_assets_id")
+  private String creativeAssetsId;
 
   public ItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -78,7 +81,7 @@ public class ItemResponse   {
 
   public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
     if (this.errors == null) {
-      this.errors = ;
+      this.errors = new ArrayList<>();
     }
     this.errors.add(errorsItem);
     return this;
@@ -115,6 +118,24 @@ public class ItemResponse   {
     this.hotelId = hotelId;
   }
 
+  public ItemResponse creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+   /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+  **/
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -128,12 +149,13 @@ public class ItemResponse   {
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
         Objects.equals(this.errors, itemResponse.errors) &&
-        Objects.equals(this.hotelId, itemResponse.hotelId);
+        Objects.equals(this.hotelId, itemResponse.hotelId) &&
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -145,6 +167,7 @@ public class ItemResponse   {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

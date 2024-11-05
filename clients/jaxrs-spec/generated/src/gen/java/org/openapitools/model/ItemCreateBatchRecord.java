@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,10 +18,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item batch record to create items")
 @JsonTypeName("ItemCreateBatchRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemCreateBatchRecord   {
-  private @Valid String itemId;
-  private @Valid ItemAttributes attributes;
+  private String itemId;
+  private ItemAttributesRequest attributes;
 
   /**
    * The catalog item id in the merchant namespace
@@ -45,7 +45,7 @@ public class ItemCreateBatchRecord   {
 
   /**
    **/
-  public ItemCreateBatchRecord attributes(ItemAttributes attributes) {
+  public ItemCreateBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -53,12 +53,12 @@ public class ItemCreateBatchRecord   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  @Valid public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
   @JsonProperty("attributes")
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

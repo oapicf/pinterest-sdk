@@ -14,9 +14,6 @@ module CatalogsRetailProductGroup =
   //#region enums
   type CatalogTypeEnum = RETAILEnum of string  
   //#endregion
-  //#region enums
-  type FeedIdEnum = NullEnum of string option  
-  //#endregion
 
   type CatalogsRetailProductGroup = {
     CatalogType : CatalogTypeEnum;
@@ -29,6 +26,9 @@ module CatalogsRetailProductGroup =
     Status : CatalogsProductGroupStatus;
     CreatedAt : int;
     UpdatedAt : int;
-    FeedId : FeedIdEnum;
+    CatalogId : string;
+    FeedId : string option;
+    Country : string option;
+    Locale : string option;
   }
   //#endregion

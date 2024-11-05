@@ -72,5 +72,8 @@ data class AdAccountGetSubscriptionResponse (
     @Json(name = "created_time")
     val createdTime: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

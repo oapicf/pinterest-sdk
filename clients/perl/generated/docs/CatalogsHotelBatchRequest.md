@@ -8,9 +8,9 @@ use WWW::OpenAPIClient::Object::CatalogsHotelBatchRequest;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalog_type** | **string** |  | 
 **country** | [**Country**](Country.md) |  | 
-**language** | [**Language**](Language.md) |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **items** | [**ARRAY[CatalogsHotelBatchItem]**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
 **catalog_id** | **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 

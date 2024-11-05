@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ProductType3Filter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductType3Filter   {
   @JsonProperty("PRODUCT_TYPE_3")
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3;
@@ -25,10 +25,10 @@ public class ProductType3Filter   {
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_TYPE_3
    * @return PRODUCT_TYPE_3
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringListCriteria getPRODUCTTYPE3() {
     return PRODUCT_TYPE_3;

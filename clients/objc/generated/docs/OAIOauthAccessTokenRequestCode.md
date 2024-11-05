@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**grantType** | **NSString*** |  | 
 **code** | **NSString*** |  | 
 **redirectUri** | **NSString*** |  | 
 

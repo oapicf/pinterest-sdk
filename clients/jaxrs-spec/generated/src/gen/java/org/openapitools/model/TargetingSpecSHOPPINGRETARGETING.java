@@ -19,11 +19,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TargetingSpec_SHOPPING_RETARGETING")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TargetingSpecSHOPPINGRETARGETING   {
-  private @Valid Integer lookbackWindow;
-  private @Valid List<Integer> tagTypes;
-  private @Valid Integer exclusionWindow;
+  private Integer lookbackWindow;
+  private @Valid List<Integer> tagTypes = new ArrayList<>();
+  private Integer exclusionWindow;
 
   /**
    * Number of days ago to start lookback timeframe for dynamic retargeting

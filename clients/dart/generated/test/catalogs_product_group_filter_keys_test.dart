@@ -86,6 +86,11 @@ void main() {
       // TODO
     });
 
+    // CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE
+    test('to test the property `MEDIA_TYPE`', () async {
+      // TODO
+    });
+
     // CatalogsProductGroupMultipleStringListCriteria pRODUCTTYPE4
     test('to test the property `pRODUCTTYPE4`', () async {
       // TODO
@@ -143,6 +148,11 @@ void main() {
 
     // CatalogsProductGroupMultipleStringListCriteria gOOGLEPRODUCTCATEGORY0
     test('to test the property `gOOGLEPRODUCTCATEGORY0`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP
+    test('to test the property `PRODUCT_GROUP`', () async {
       // TODO
     });
 

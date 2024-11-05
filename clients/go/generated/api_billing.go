@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -46,7 +46,7 @@ AdsCreditRedeem Redeem ad credits
 
 Redeem ads credit on behalf of the ad account id and apply it towards billing.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -177,7 +177,7 @@ func (r ApiAdsCreditsDiscountsGetRequest) Bookmark(bookmark string) ApiAdsCredit
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiAdsCreditsDiscountsGetRequest) PageSize(pageSize int32) ApiAdsCreditsDiscountsGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -192,7 +192,7 @@ AdsCreditsDiscountsGet Get ads credit discounts
 
 Returns the list of discounts applied to the account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -232,10 +232,10 @@ func (a *BillingAPIService) AdsCreditsDiscountsGetExecute(r ApiAdsCreditsDiscoun
 	}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -323,7 +323,7 @@ func (r ApiBillingProfilesGetRequest) Bookmark(bookmark string) ApiBillingProfil
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiBillingProfilesGetRequest) PageSize(pageSize int32) ApiBillingProfilesGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -338,7 +338,7 @@ BillingProfilesGet Get billing profiles
 
 Get billing profiles in the advertiser account.
 
-<strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -380,12 +380,12 @@ func (a *BillingAPIService) BillingProfilesGetExecute(r ApiBillingProfilesGetReq
 		return localVarReturnValue, nil, reportError("isActive is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "is_active", r.isActive, "form", "")
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -868,7 +868,7 @@ func (r ApiSsioInsertionOrdersStatusGetByAdAccountRequest) Bookmark(bookmark str
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiSsioInsertionOrdersStatusGetByAdAccountRequest) PageSize(pageSize int32) ApiSsioInsertionOrdersStatusGetByAdAccountRequest {
 	r.pageSize = &pageSize
 	return r
@@ -922,10 +922,10 @@ func (a *BillingAPIService) SsioInsertionOrdersStatusGetByAdAccountExecute(r Api
 	}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -1148,7 +1148,7 @@ func (r ApiSsioOrderLinesGetByAdAccountRequest) Bookmark(bookmark string) ApiSsi
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiSsioOrderLinesGetByAdAccountRequest) PageSize(pageSize int32) ApiSsioOrderLinesGetByAdAccountRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1208,16 +1208,16 @@ func (a *BillingAPIService) SsioOrderLinesGetByAdAccountExecute(r ApiSsioOrderLi
 	}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.pinOrderId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_order_id", r.pinOrderId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_order_id", r.pinOrderId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

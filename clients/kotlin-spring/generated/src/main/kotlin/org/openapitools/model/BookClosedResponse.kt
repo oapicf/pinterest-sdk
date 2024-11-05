@@ -25,7 +25,7 @@ data class BookClosedResponse(
 
     @Schema(example = "false", description = "Are non-conversion metrics ready?")
     @get:JsonProperty("non_conversion_metrics_ready") val nonConversionMetricsReady: kotlin.Boolean? = null
-) {
+    ) {
 
 }
 

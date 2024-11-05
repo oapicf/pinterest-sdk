@@ -13,9 +13,9 @@ import java.time.OffsetDateTime
 import CatalogsDbItem._
 
 case class CatalogsDbItem (
-  createdAt: Option[OffsetDateTime],
-id: Option[String],
-updatedAt: Option[OffsetDateTime])
+  createdAt: OffsetDateTime,
+id: String,
+updatedAt: OffsetDateTime)
 
 object CatalogsDbItem {
   import DateTimeCodecs._

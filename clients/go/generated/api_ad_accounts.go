@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -147,30 +147,30 @@ func (a *AdAccountsAPIService) AdAccountAnalyticsExecute(r ApiAdAccountAnalytics
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
@@ -276,7 +276,7 @@ func (r ApiAdAccountTargetingAnalyticsGetRequest) EndDate(endDate string) ApiAdA
 	return r
 }
 
-// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
 func (r ApiAdAccountTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsTargetingType) ApiAdAccountTargetingAnalyticsGetRequest {
 	r.targetingTypes = &targetingTypes
 	return r
@@ -398,37 +398,37 @@ func (a *AdAccountsAPIService) AdAccountTargetingAnalyticsGetExecute(r ApiAdAcco
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 30
 		r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
 		var defaultValue int32 = 1
 		r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
 		var defaultValue string = "TIME_OF_AD_ACTION"
 		r.conversionReportTime = &defaultValue
 	}
 	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -742,7 +742,7 @@ func (r ApiAdAccountsListRequest) Bookmark(bookmark string) ApiAdAccountsListReq
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiAdAccountsListRequest) PageSize(pageSize int32) ApiAdAccountsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -796,16 +796,16 @@ func (a *AdAccountsAPIService) AdAccountsListExecute(r ApiAdAccountsListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.includeSharedAccounts != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_shared_accounts", r.includeSharedAccounts, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_shared_accounts", r.includeSharedAccounts, "form", "")
 	} else {
 		var defaultValue bool = true
 		r.includeSharedAccounts = &defaultValue
@@ -1232,13 +1232,13 @@ func (a *AdAccountsAPIService) AnalyticsCreateTemplateReportExecute(r ApiAnalyti
 	}
 
 	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
 	}
 	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1376,7 +1376,7 @@ func (a *AdAccountsAPIService) AnalyticsGetMmmReportExecute(r ApiAnalyticsGetMmm
 		return localVarReturnValue, nil, reportError("token is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1513,7 +1513,7 @@ func (a *AdAccountsAPIService) AnalyticsGetReportExecute(r ApiAnalyticsGetReport
 		return localVarReturnValue, nil, reportError("token is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1600,11 +1600,11 @@ func (r ApiSandboxDeleteRequest) Execute() (string, *http.Response, error) {
 /*
 SandboxDelete Delete ads data for ad account in API Sandbox
 
-Delete an ad account and all the ads data associated with that account. 
+Delete an ad account and all the ads data associated with that account.
 A string message is returned indicating the status of the delete operation.
 
-Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). 
-Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).
+Go to /docs/developer-tools/sandbox/ for more information.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -1725,7 +1725,7 @@ type ApiTemplatesListRequest struct {
 	bookmark *string
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiTemplatesListRequest) PageSize(pageSize int32) ApiTemplatesListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1790,16 +1790,16 @@ func (a *AdAccountsAPIService) TemplatesListExecute(r ApiTemplatesListRequest) (
 	}
 
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

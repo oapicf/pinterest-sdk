@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsType
@@ -34,7 +35,7 @@ data class CatalogsHotelItemErrorResponse(
     @field:Valid
     @Schema(example = "null", description = "Array with the errors for the item id requested")
     @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null
-) {
+    ) {
 
 }
 

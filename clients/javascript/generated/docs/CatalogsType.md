@@ -7,4 +7,6 @@
 
 * `HOTEL` (value: `"HOTEL"`)
 
+* `CREATIVE_ASSETS` (value: `"CREATIVE_ASSETS"`)
+
 

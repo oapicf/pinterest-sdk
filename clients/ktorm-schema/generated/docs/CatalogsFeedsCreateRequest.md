@@ -14,6 +14,8 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **preferredProcessingSchedule** | preferred_processing_schedule | long |  | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  |  [optional] [foreignkey]
 **defaultCountry** | default_country | long |  | [**Country**](Country.md) |  |  [optional] [foreignkey]
 **defaultAvailability** | default_availability | long |  | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  |  [optional] [foreignkey]
+**status** | status | long |  | [**CatalogsStatus**](CatalogsStatus.md) |  |  [optional] [foreignkey]
+
 
 
 

@@ -62,6 +62,5 @@ public enum NullableCatalogsItemFieldType {
   VARIANT_VALUES,
   MIN_AD_PRICE,
   SHIPPING_WIDTH,
-  SHIPPING_HEIGHT,
-  NULL;
+  SHIPPING_HEIGHT;
 }

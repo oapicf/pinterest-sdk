@@ -5,9 +5,9 @@ Catalog entity
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **DateTime** |  | [optional] 
+**CreatedAt** | **DateTime** |  | 
 **Id** | **string** | ID of the catalog entity. | 
-**UpdatedAt** | **DateTime** |  | [optional] 
+**UpdatedAt** | **DateTime** |  | 
 **Name** | **string** | A human-friendly name associated to a catalog entity. | 
 **CatalogType** | **CatalogsType** |  | 
 

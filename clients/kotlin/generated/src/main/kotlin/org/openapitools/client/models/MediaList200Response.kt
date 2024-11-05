@@ -37,5 +37,8 @@ data class MediaList200Response (
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null
 
-)
+) {
+
+
+}
 

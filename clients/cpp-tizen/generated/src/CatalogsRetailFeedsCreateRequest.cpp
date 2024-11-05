@@ -33,6 +33,7 @@ CatalogsRetailFeedsCreateRequest::__init()
 	//catalog_type = new CatalogsType();
 	//default_country = new Country();
 	//default_availability = new ProductAvailabilityType();
+	//status = std::string();
 }
 
 void
@@ -87,6 +88,11 @@ CatalogsRetailFeedsCreateRequest::__cleanup()
 	//
 	//delete default_availability;
 	//default_availability = NULL;
+	//}
+	//if(status != NULL) {
+	//
+	//delete status;
+	//status = NULL;
 	//}
 	//
 }
@@ -227,6 +233,17 @@ CatalogsRetailFeedsCreateRequest::fromJson(char* jsonStr)
 			
 			ProductAvailabilityType* obj = static_cast<ProductAvailabilityType*> (&default_availability);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsStatus")) {
+			jsonToValue(&status, node, "CatalogsStatus", "CatalogsStatus");
+		} else {
 			
 		}
 	}
@@ -372,6 +389,15 @@ CatalogsRetailFeedsCreateRequest::toJson()
 	}
 	const gchar *default_availabilityKey = "default_availability";
 	json_object_set_member(pJsonObject, default_availabilityKey, node);
+	if (isprimitive("CatalogsStatus")) {
+		CatalogsStatus obj = getStatus();
+		node = converttoJson(&obj, "CatalogsStatus", "");
+	}
+	else {
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -498,6 +524,18 @@ void
 CatalogsRetailFeedsCreateRequest::setDefaultAvailability(ProductAvailabilityType  default_availability)
 {
 	this->default_availability = default_availability;
+}
+
+CatalogsStatus
+CatalogsRetailFeedsCreateRequest::getStatus()
+{
+	return status;
+}
+
+void
+CatalogsRetailFeedsCreateRequest::setStatus(CatalogsStatus  status)
+{
+	this->status = status;
 }
 
 

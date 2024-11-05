@@ -467,7 +467,7 @@ class UserAccountApi {
 
     }
 
-    def verifyWebsiteUpdate ( UserWebsiteVerifyRequest userWebsiteVerifyRequest, Closure onSuccess, Closure onFailure)  {
+    def verifyWebsiteUpdate ( UserWebsiteVerifyRequest userWebsiteVerifyRequest, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/user_account/websites"
 
         // params
@@ -481,6 +481,9 @@ class UserAccountApi {
             throw new RuntimeException("missing required params userWebsiteVerifyRequest")
         }
 
+        if (adAccountId != null) {
+            queryParams.put("ad_account_id", adAccountId)
+        }
 
 
         contentType = 'application/json';
@@ -493,7 +496,7 @@ class UserAccountApi {
 
     }
 
-    def websiteVerificationGet ( Closure onSuccess, Closure onFailure)  {
+    def websiteVerificationGet ( String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/user_account/websites/verification"
 
         // params
@@ -503,6 +506,9 @@ class UserAccountApi {
         def contentType
 
 
+        if (adAccountId != null) {
+            queryParams.put("ad_account_id", adAccountId)
+        }
 
 
 

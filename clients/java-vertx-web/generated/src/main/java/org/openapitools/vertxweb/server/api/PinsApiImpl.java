@@ -22,6 +22,10 @@ import java.util.Map;
 // Implement this class
 
 public class PinsApiImpl implements PinsApi {
+    public Future<ApiResponse<Map<String, Map<String, PinAnalyticsMetricsResponse>>>> multiPinsAnalytics(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId) {
+        return Future.failedFuture(new HttpException(501));
+    }
+
     public Future<ApiResponse<Map<String, PinAnalyticsMetricsResponse>>> pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }

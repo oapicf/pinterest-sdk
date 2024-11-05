@@ -6,7 +6,7 @@ context("Test ItemsBatchPostRequest")
 model_instance <- ItemsBatchPostRequest$new()
 
 test_that("catalog_type", {
-  # tests for the property `catalog_type` (CatalogsType)
+  # tests for the property `catalog_type` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
@@ -20,7 +20,7 @@ test_that("country", {
 })
 
 test_that("language", {
-  # tests for the property `language` (Language)
+  # tests for the property `language` (CatalogsItemsRequestLanguage)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
@@ -36,7 +36,7 @@ test_that("items", {
 
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
-  # Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  # Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")

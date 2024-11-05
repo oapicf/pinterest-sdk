@@ -21,7 +21,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-    Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 
@@ -49,7 +49,7 @@ Redeem ad credits
 
 Get ads credit discounts
 
-    Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 
@@ -57,7 +57,7 @@ Get ads credit discounts
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -78,7 +78,7 @@ Get ads credit discounts
 
 Get billing profiles
 
-    Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 
@@ -87,7 +87,7 @@ Get billing profiles
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **is\_active** | **Boolean**| Return active billing profiles, if false return all billing profiles. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -199,7 +199,7 @@ Get insertion order status by ad account id.
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -256,7 +256,7 @@ Get Salesforce order lines by ad account id.
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **pin\_order\_id** | **String**| The pin order id associated with the ssio insertino order | [optional] [default to null] |
 
 ### Return type

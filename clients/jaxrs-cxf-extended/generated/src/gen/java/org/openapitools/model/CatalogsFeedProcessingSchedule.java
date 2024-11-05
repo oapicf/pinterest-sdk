@@ -178,7 +178,7 @@ public enum TimezoneEnum {
     @JsonProperty("America/Yellowknife") AMERICA_YELLOWKNIFE(String.valueOf("America/Yellowknife")),
     @JsonProperty("Antarctica/Casey") ANTARCTICA_CASEY(String.valueOf("Antarctica/Casey")),
     @JsonProperty("Antarctica/Davis") ANTARCTICA_DAVIS(String.valueOf("Antarctica/Davis")),
-    @JsonProperty("Antarctica/DumontDUrville") ANTARCTICA_DUMONTDURVILLE(String.valueOf("Antarctica/DumontDUrville")),
+    @JsonProperty("Antarctica/DumontDUrville") ANTARCTICA_DUMONT_D_URVILLE(String.valueOf("Antarctica/DumontDUrville")),
     @JsonProperty("Antarctica/Macquarie") ANTARCTICA_MACQUARIE(String.valueOf("Antarctica/Macquarie")),
     @JsonProperty("Antarctica/Mawson") ANTARCTICA_MAWSON(String.valueOf("Antarctica/Mawson")),
     @JsonProperty("Antarctica/Palmer") ANTARCTICA_PALMER(String.valueOf("Antarctica/Palmer")),
@@ -285,10 +285,10 @@ public enum TimezoneEnum {
     @JsonProperty("Australia/Perth") AUSTRALIA_PERTH(String.valueOf("Australia/Perth")),
     @JsonProperty("Australia/Sydney") AUSTRALIA_SYDNEY(String.valueOf("Australia/Sydney")),
     @JsonProperty("CET") CET(String.valueOf("CET")),
-    @JsonProperty("CST6CDT") CST6CDT(String.valueOf("CST6CDT")),
+    @JsonProperty("CST6CDT") CST6_CDT(String.valueOf("CST6CDT")),
     @JsonProperty("EET") EET(String.valueOf("EET")),
     @JsonProperty("EST") EST(String.valueOf("EST")),
-    @JsonProperty("EST5EDT") EST5EDT(String.valueOf("EST5EDT")),
+    @JsonProperty("EST5EDT") EST5_EDT(String.valueOf("EST5EDT")),
     @JsonProperty("Etc/GMT") ETC_GMT(String.valueOf("Etc/GMT")),
     @JsonProperty("Etc/GMT+1") ETC_GMT_1(String.valueOf("Etc/GMT+1")),
     @JsonProperty("Etc/GMT+10") ETC_GMT_10(String.valueOf("Etc/GMT+10")),
@@ -374,8 +374,8 @@ public enum TimezoneEnum {
     @JsonProperty("Indian/Reunion") INDIAN_REUNION(String.valueOf("Indian/Reunion")),
     @JsonProperty("MET") MET(String.valueOf("MET")),
     @JsonProperty("MST") MST(String.valueOf("MST")),
-    @JsonProperty("MST7MDT") MST7MDT(String.valueOf("MST7MDT")),
-    @JsonProperty("PST8PDT") PST8PDT(String.valueOf("PST8PDT")),
+    @JsonProperty("MST7MDT") MST7_MDT(String.valueOf("MST7MDT")),
+    @JsonProperty("PST8PDT") PST8_PDT(String.valueOf("PST8PDT")),
     @JsonProperty("Pacific/Apia") PACIFIC_APIA(String.valueOf("Pacific/Apia")),
     @JsonProperty("Pacific/Auckland") PACIFIC_AUCKLAND(String.valueOf("Pacific/Auckland")),
     @JsonProperty("Pacific/Bougainville") PACIFIC_BOUGAINVILLE(String.valueOf("Pacific/Bougainville")),
@@ -412,8 +412,7 @@ public enum TimezoneEnum {
     @JsonProperty("Pacific/Tongatapu") PACIFIC_TONGATAPU(String.valueOf("Pacific/Tongatapu")),
     @JsonProperty("Pacific/Wake") PACIFIC_WAKE(String.valueOf("Pacific/Wake")),
     @JsonProperty("Pacific/Wallis") PACIFIC_WALLIS(String.valueOf("Pacific/Wallis")),
-    @JsonProperty("WET") WET(String.valueOf("WET")),
-    @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("WET") WET(String.valueOf("WET"));
 
     private String value;
 

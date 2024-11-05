@@ -9,6 +9,7 @@ import org.openapitools.models.AvailabilityFilter
 import org.openapitools.models.BrandFilter
 import org.openapitools.models.CatalogsProductGroupCurrencyCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleGenderCriteria
+import org.openapitools.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.models.CatalogsProductGroupPricingCriteria
@@ -30,7 +31,9 @@ import org.openapitools.models.GoogleProductCategory6Filter
 import org.openapitools.models.ItemGroupIdFilter
 import org.openapitools.models.ItemIdFilter
 import org.openapitools.models.MaxPriceFilter
+import org.openapitools.models.MediaTypeFilter
 import org.openapitools.models.MinPriceFilter
+import org.openapitools.models.ProductGroupReferenceFilter
 import org.openapitools.models.ProductType0Filter
 import org.openapitools.models.ProductType1Filter
 import org.openapitools.models.ProductType2Filter
@@ -53,6 +56,7 @@ import org.openapitools.models.ProductType4Filter
  * @param CUSTOMUnderscoreLABELUnderscore4 
  * @param ITEMUnderscoreGROUPUnderscoreID 
  * @param GENDER 
+ * @param MEDIAUnderscoreTYPE 
  * @param PRODUCTUnderscoreTYPEUnderscore4 
  * @param PRODUCTUnderscoreTYPEUnderscore3 
  * @param PRODUCTUnderscoreTYPEUnderscore2 
@@ -65,6 +69,7 @@ import org.openapitools.models.ProductType4Filter
  * @param GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore2 
  * @param GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1 
  * @param GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0 
+ * @param PRODUCTUnderscoreGROUP 
  */
 case class CatalogsProductGroupFilterKeys(MINUnderscorePRICE: CatalogsProductGroupPricingCriteria,
                 MAXUnderscorePRICE: CatalogsProductGroupPricingCriteria,
@@ -80,6 +85,7 @@ case class CatalogsProductGroupFilterKeys(MINUnderscorePRICE: CatalogsProductGro
                 CUSTOMUnderscoreLABELUnderscore4: CatalogsProductGroupMultipleStringCriteria,
                 ITEMUnderscoreGROUPUnderscoreID: CatalogsProductGroupMultipleStringCriteria,
                 GENDER: CatalogsProductGroupMultipleGenderCriteria,
+                MEDIAUnderscoreTYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
                 PRODUCTUnderscoreTYPEUnderscore4: CatalogsProductGroupMultipleStringListCriteria,
                 PRODUCTUnderscoreTYPEUnderscore3: CatalogsProductGroupMultipleStringListCriteria,
                 PRODUCTUnderscoreTYPEUnderscore2: CatalogsProductGroupMultipleStringListCriteria,
@@ -91,7 +97,8 @@ case class CatalogsProductGroupFilterKeys(MINUnderscorePRICE: CatalogsProductGro
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore3: CatalogsProductGroupMultipleStringListCriteria,
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore2: CatalogsProductGroupMultipleStringListCriteria,
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1: CatalogsProductGroupMultipleStringListCriteria,
-                GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0: CatalogsProductGroupMultipleStringListCriteria
+                GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0: CatalogsProductGroupMultipleStringListCriteria,
+                PRODUCTUnderscoreGROUP: CatalogsProductGroupMultipleStringCriteria
                 )
 
 object CatalogsProductGroupFilterKeys {

@@ -1,10 +1,9 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.TrackingUrls;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -53,7 +52,7 @@ public class CampaignUpdateRequest  {
   private String orderLineId;
 
   @ApiModelProperty(value = "")
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
@@ -66,9 +65,6 @@ public class CampaignUpdateRequest  {
    * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   **/
   private Integer endTime;
-
-  @ApiModelProperty(value = "")
-  private CampaignSummaryStatus summaryStatus;
 
   @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
  /**
@@ -227,15 +223,15 @@ public class CampaignUpdateRequest  {
    * @return trackingUrls
   **/
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
-  public CampaignUpdateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -273,24 +269,6 @@ public class CampaignUpdateRequest  {
 
   public CampaignUpdateRequest endTime(Integer endTime) {
     this.endTime = endTime;
-    return this;
-  }
-
- /**
-   * Get summaryStatus
-   * @return summaryStatus
-  **/
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-  }
-
-  public CampaignUpdateRequest summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
     return this;
   }
 
@@ -403,7 +381,6 @@ public class CampaignUpdateRequest  {
         Objects.equals(this.trackingUrls, campaignUpdateRequest.trackingUrls) &&
         Objects.equals(this.startTime, campaignUpdateRequest.startTime) &&
         Objects.equals(this.endTime, campaignUpdateRequest.endTime) &&
-        Objects.equals(this.summaryStatus, campaignUpdateRequest.summaryStatus) &&
         Objects.equals(this.isFlexibleDailyBudgets, campaignUpdateRequest.isFlexibleDailyBudgets) &&
         Objects.equals(this.defaultAdGroupBudgetInMicroCurrency, campaignUpdateRequest.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(this.isAutomatedCampaign, campaignUpdateRequest.isAutomatedCampaign) &&
@@ -413,7 +390,7 @@ public class CampaignUpdateRequest  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, isCampaignBudgetOptimization, objectiveType);
+    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, isCampaignBudgetOptimization, objectiveType);
   }
 
   @Override
@@ -431,7 +408,6 @@ public class CampaignUpdateRequest  {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

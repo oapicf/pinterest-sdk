@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Lead form question type
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public enum LeadFormQuestionType {
   
   CUSTOM("CUSTOM"),
@@ -37,21 +37,19 @@ public enum LeadFormQuestionType {
   
   ZIP_CODE("ZIP_CODE"),
   
-  AGE("AGE"),
-  
   GENDER("GENDER"),
   
   CITY("CITY"),
   
   COUNTRY("COUNTRY"),
   
-  PREFERRED_CONTACT_METHOD("PREFERRED_CONTACT_METHOD"),
-  
   STATE_PROVINCE("STATE_PROVINCE"),
   
   ADDRESS("ADDRESS"),
   
-  DATE_OF_BIRTH("DATE_OF_BIRTH");
+  DATE_OF_BIRTH("DATE_OF_BIRTH"),
+  
+  AGE("AGE");
 
   private String value;
 

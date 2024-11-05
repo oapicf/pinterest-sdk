@@ -4,11 +4,11 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.pkmst.model.AdCommonQuizPinData;
-import com.prokarma.pkmst.model.AdCommonTrackingUrls;
 import com.prokarma.pkmst.model.CreativeType;
 import com.prokarma.pkmst.model.EntityStatus;
 import com.prokarma.pkmst.model.GridClickType;
+import com.prokarma.pkmst.model.QuizPinData;
+import com.prokarma.pkmst.model.TrackingUrls;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdUpdateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdUpdateRequest   {
   @JsonProperty("ad_group_id")
   private String adGroupId;
@@ -69,7 +69,7 @@ public class AdUpdateRequest   {
   private EntityStatus status;
 
   @JsonProperty("tracking_urls")
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("view_tracking_url")
   private String viewTrackingUrl;
@@ -81,7 +81,7 @@ public class AdUpdateRequest   {
   private GridClickType gridClickType;
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    */
   public enum CustomizableCtaTypeEnum {
     GET_OFFER("GET_OFFER"),
@@ -102,7 +102,7 @@ public class AdUpdateRequest   {
     
     GET_QUOTE("GET_QUOTE"),
     
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     
     APPLY_NOW("APPLY_NOW"),
     
@@ -118,9 +118,7 @@ public class AdUpdateRequest   {
     
     WATCH_NOW("WATCH_NOW"),
     
-    READ_MORE("READ_MORE"),
-    
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private String value;
 
@@ -149,7 +147,7 @@ public class AdUpdateRequest   {
   private CustomizableCtaTypeEnum customizableCtaType;
 
   @JsonProperty("quiz_pin_data")
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
 
   @JsonProperty("id")
   private String id;
@@ -162,10 +160,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * ID of the ad group that contains the ad.
    * @return adGroupId
-  **/
+   */
   @ApiModelProperty(example = "2680059592705", value = "ID of the ad group that contains the ad.")
   public String getAdGroupId() {
     return adGroupId;
@@ -180,11 +178,11 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  /**
+   * Deep link URL for Android devices.
    * @return androidDeepLink
-  **/
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+   */
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
   public String getAndroidDeepLink() {
     return androidDeepLink;
   }
@@ -206,10 +204,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Comma-separated deep links for the carousel pin on Android.
    * @return carouselAndroidDeepLinks
-  **/
+   */
   @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on Android.")
   public List<String> getCarouselAndroidDeepLinks() {
     return carouselAndroidDeepLinks;
@@ -232,10 +230,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Comma-separated destination URLs for the carousel pin to promote.
    * @return carouselDestinationUrls
-  **/
+   */
   @ApiModelProperty(value = "Comma-separated destination URLs for the carousel pin to promote.")
   public List<String> getCarouselDestinationUrls() {
     return carouselDestinationUrls;
@@ -258,10 +256,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Comma-separated deep links for the carousel pin on iOS.
    * @return carouselIosDeepLinks
-  **/
+   */
   @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on iOS.")
   public List<String> getCarouselIosDeepLinks() {
     return carouselIosDeepLinks;
@@ -276,10 +274,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Tracking url for the ad clicks.
    * @return clickTrackingUrl
-  **/
+   */
   @ApiModelProperty(value = "Tracking url for the ad clicks.")
   public String getClickTrackingUrl() {
     return clickTrackingUrl;
@@ -294,10 +292,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get creativeType
    * @return creativeType
-  **/
+   */
   @ApiModelProperty(value = "")
   public CreativeType getCreativeType() {
     return creativeType;
@@ -312,10 +310,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Destination URL.
    * @return destinationUrl
-  **/
+   */
   @ApiModelProperty(value = "Destination URL.")
   public String getDestinationUrl() {
     return destinationUrl;
@@ -330,11 +328,11 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  /**
+   * Deep link URL for iOS devices.
    * @return iosDeepLink
-  **/
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+   */
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
   public String getIosDeepLink() {
     return iosDeepLink;
   }
@@ -348,10 +346,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Is original pin deleted?
    * @return isPinDeleted
-  **/
+   */
   @ApiModelProperty(example = "false", value = "Is original pin deleted?")
   public Boolean getIsPinDeleted() {
     return isPinDeleted;
@@ -366,10 +364,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Is pin repinnable?
    * @return isRemovable
-  **/
+   */
   @ApiModelProperty(example = "false", value = "Is pin repinnable?")
   public Boolean getIsRemovable() {
     return isRemovable;
@@ -384,10 +382,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Name of the ad - 255 chars max.
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "Name of the ad - 255 chars max.")
   public String getName() {
     return name;
@@ -402,10 +400,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "")
   public EntityStatus getStatus() {
     return status;
@@ -415,21 +413,21 @@ public class AdUpdateRequest   {
     this.status = status;
   }
 
-  public AdUpdateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
 
-   /**
+  /**
    * Get trackingUrls
    * @return trackingUrls
-  **/
+   */
   @ApiModelProperty(value = "")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -438,10 +436,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Tracking URL for ad impressions.
    * @return viewTrackingUrl
-  **/
+   */
   @ApiModelProperty(value = "Tracking URL for ad impressions.")
   public String getViewTrackingUrl() {
     return viewTrackingUrl;
@@ -456,10 +454,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Lead form ID for lead ad generation.
    * @return leadFormId
-  **/
+   */
   @ApiModelProperty(value = "Lead form ID for lead ad generation.")
   public String getLeadFormId() {
     return leadFormId;
@@ -474,10 +472,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get gridClickType
    * @return gridClickType
-  **/
+   */
   @ApiModelProperty(value = "")
   public GridClickType getGridClickType() {
     return gridClickType;
@@ -492,11 +490,11 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  /**
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    * @return customizableCtaType
-  **/
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+   */
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
   public CustomizableCtaTypeEnum getCustomizableCtaType() {
     return customizableCtaType;
   }
@@ -505,21 +503,21 @@ public class AdUpdateRequest   {
     this.customizableCtaType = customizableCtaType;
   }
 
-  public AdUpdateRequest quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdUpdateRequest quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
 
-   /**
-   * Get quizPinData
+  /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
-  **/
-  @ApiModelProperty(value = "")
-  public AdCommonQuizPinData getQuizPinData() {
+   */
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -528,10 +526,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * The ID of this ad.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "687195134316", required = true, value = "The ID of this ad.")
   public String getId() {
     return id;
@@ -546,10 +544,10 @@ public class AdUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Pin ID. This field may only be updated for draft ads.
    * @return pinId
-  **/
+   */
   @ApiModelProperty(example = "394205773611545468", value = "Pin ID. This field may only be updated for draft ads.")
   public String getPinId() {
     return pinId;

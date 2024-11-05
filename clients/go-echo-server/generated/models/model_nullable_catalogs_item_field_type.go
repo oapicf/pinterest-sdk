@@ -60,5 +60,4 @@ const (
 	MIN_AD_PRICE NullableCatalogsItemFieldType = "MIN_AD_PRICE"
 	SHIPPING_WIDTH NullableCatalogsItemFieldType = "SHIPPING_WIDTH"
 	SHIPPING_HEIGHT NullableCatalogsItemFieldType = "SHIPPING_HEIGHT"
-	NULL NullableCatalogsItemFieldType = "null"
 )

@@ -19,7 +19,7 @@ API.Client.CatalogsRetailBatchRequestItemsInner.prototype.itemId;
 API.Client.CatalogsRetailBatchRequestItemsInner.prototype.operation;
 
 /**
- * @type {!API.Client.ItemAttributes}
+ * @type {!API.Client.ItemAttributesRequest}
  * @export
  */
 API.Client.CatalogsRetailBatchRequestItemsInner.prototype.attributes;
@@ -33,8 +33,5 @@ API.Client.CatalogsRetailBatchRequestItemsInner.prototype.updateMask;
 
 /** @enum {string} */
 API.Client.CatalogsRetailBatchRequestItemsInner.OperationEnum = { 
-  CREATE: 'CREATE',
-  UPDATE: 'UPDATE',
-  UPSERT: 'UPSERT',
   DELETE: 'DELETE',
 }

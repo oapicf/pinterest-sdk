@@ -16,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows   {
-  private @Valid Integer clickWindowDays;
-  private @Valid Integer engagementWindowDays;
-  private @Valid Integer viewWindowDays;
+  private Integer clickWindowDays;
+  private Integer engagementWindowDays;
+  private Integer viewWindowDays;
 
   /**
    **/

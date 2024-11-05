@@ -37,5 +37,8 @@ data class AdGroupArrayResponseElement (
     @Json(name = "exceptions")
     val exceptions: kotlin.collections.List<Exception>? = null
 
-)
+) {
+
+
+}
 

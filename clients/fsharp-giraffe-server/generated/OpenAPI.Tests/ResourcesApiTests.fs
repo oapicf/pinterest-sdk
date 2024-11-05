@@ -206,7 +206,7 @@ module ResourcesApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/resources/targeting/{targeting_type}".Replace("targetingType", "ADDME") + "?clientId=ADDME&oauthSignature=ADDME&timestamp=ADDME"
+      let path = "/v5/resources/targeting/{targeting_type}".Replace("targetingType", "ADDME") + "?clientId=ADDME&oauthSignature=ADDME&timestamp=ADDME&adAccountId=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -223,7 +223,7 @@ module ResourcesApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/resources/targeting/{targeting_type}".Replace("targetingType", "ADDME") + "?clientId=ADDME&oauthSignature=ADDME&timestamp=ADDME"
+      let path = "/v5/resources/targeting/{targeting_type}".Replace("targetingType", "ADDME") + "?clientId=ADDME&oauthSignature=ADDME&timestamp=ADDME&adAccountId=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

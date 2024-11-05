@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BatchId** | Pointer to **string** | Id of the catalogs items batch | [optional] 
-**CreatedTime** | Pointer to **time.Time** | Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD | [optional] [readonly] 
-**CompletedTime** | Pointer to **NullableTime** | Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD | [optional] [readonly] 
+**CreatedTime** | Pointer to **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
 **Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **Items** | Pointer to [**[]ItemProcessingRecord**](ItemProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 

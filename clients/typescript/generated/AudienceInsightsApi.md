@@ -17,22 +17,21 @@ Get Audience Insights for an ad account. The response will return insights for 3
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, AudienceInsightsApi } from '';
+import type { AudienceInsightsApiAudienceInsightsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .AudienceInsightsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new AudienceInsightsApi(configuration);
 
-let body:.AudienceInsightsApiAudienceInsightsGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: AudienceInsightsApiAudienceInsightsGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // AudienceInsightType | Type of audience insights.
+    // Type of audience insights.
   audienceInsightType: "YOUR_TOTAL_AUDIENCE",
 };
 
-apiInstance.audienceInsightsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.audienceInsightsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -75,20 +74,19 @@ Get the scope and type of available audiences, which along with a date, is an au
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, AudienceInsightsApi } from '';
+import type { AudienceInsightsApiAudienceInsightsScopeAndTypeGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .AudienceInsightsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new AudienceInsightsApi(configuration);
 
-let body:.AudienceInsightsApiAudienceInsightsScopeAndTypeGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: AudienceInsightsApiAudienceInsightsScopeAndTypeGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
 };
 
-apiInstance.audienceInsightsScopeAndTypeGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.audienceInsightsScopeAndTypeGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

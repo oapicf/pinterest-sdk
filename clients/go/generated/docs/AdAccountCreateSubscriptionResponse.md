@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Subscription ID. | [optional] 
-**CryptographicKey** | Pointer to **string** | Base64 encoded key for client to decrypt lead data. | [optional] 
-**CryptographicAlgorithm** | Pointer to **string** | Lead data encryption algorithm. | [optional] 
+**CryptographicKey** | Pointer to **NullableString** | Base64 encoded key for client to decrypt lead data. | [optional] 
+**CryptographicAlgorithm** | Pointer to **NullableString** | Lead data encryption algorithm. | [optional] 
 **CreatedTime** | Pointer to **int32** | Subscription creation time. Unix timestamp in milliseconds. | [optional] 
 
 ## Methods
@@ -78,6 +78,16 @@ SetCryptographicKey sets CryptographicKey field to given value.
 
 HasCryptographicKey returns a boolean if a field has been set.
 
+### SetCryptographicKeyNil
+
+`func (o *AdAccountCreateSubscriptionResponse) SetCryptographicKeyNil(b bool)`
+
+ SetCryptographicKeyNil sets the value for CryptographicKey to be an explicit nil
+
+### UnsetCryptographicKey
+`func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicKey()`
+
+UnsetCryptographicKey ensures that no value is present for CryptographicKey, not even an explicit nil
 ### GetCryptographicAlgorithm
 
 `func (o *AdAccountCreateSubscriptionResponse) GetCryptographicAlgorithm() string`
@@ -103,6 +113,16 @@ SetCryptographicAlgorithm sets CryptographicAlgorithm field to given value.
 
 HasCryptographicAlgorithm returns a boolean if a field has been set.
 
+### SetCryptographicAlgorithmNil
+
+`func (o *AdAccountCreateSubscriptionResponse) SetCryptographicAlgorithmNil(b bool)`
+
+ SetCryptographicAlgorithmNil sets the value for CryptographicAlgorithm to be an explicit nil
+
+### UnsetCryptographicAlgorithm
+`func (o *AdAccountCreateSubscriptionResponse) UnsetCryptographicAlgorithm()`
+
+UnsetCryptographicAlgorithm ensures that no value is present for CryptographicAlgorithm, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *AdAccountCreateSubscriptionResponse) GetCreatedTime() int32`

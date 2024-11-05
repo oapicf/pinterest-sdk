@@ -60,7 +60,7 @@ class ResourcesApiController() {
         operationId = "deliveryMetricsGet",
         description = """Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints.
 The `display_name` attribute will match how the metric is named in our native tools like Ads Manager.
-See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.""",
+See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.""",
         responses = [
             ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = DeliveryMetricsResponse::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
@@ -98,7 +98,7 @@ See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/
         operationId = "leadFormQuestionsGet",
         description = """Get a list of all lead form question type names. Some questions might not be used.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>""",
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>""",
         responses = [
             ApiResponse(responseCode = "200", description = "Success"),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
@@ -146,7 +146,7 @@ See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/
         value = ["/resources/targeting/{targeting_type}"],
         produces = ["application/json"]
     )
-    fun targetingOptionsGet(@Parameter(description = "Public targeting type.", required = true, schema = Schema(allowableValues = ["\"APPTYPE\"", "\"GENDER\"", "\"LOCALE\"", "\"AGE_BUCKET\"", "\"LOCATION\"", "\"GEO\"", "\"INTEREST\"", "\"KEYWORD\"", "\"AUDIENCE_INCLUDE\"", "\"AUDIENCE_EXCLUDE\""])) @PathVariable("targeting_type") targetingType: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Client ID.") @Valid @RequestParam(value = "client_id", required = false) clientId: kotlin.String?,@Parameter(description = "Oauth signature") @Valid @RequestParam(value = "oauth_signature", required = false) oauthSignature: kotlin.String?,@Pattern(regexp="\\d+") @Parameter(description = "Timestamp") @Valid @RequestParam(value = "timestamp", required = false) timestamp: kotlin.String?): ResponseEntity<List<kotlin.Any>> {
+    fun targetingOptionsGet(@Parameter(description = "Public targeting type.", required = true, schema = Schema(allowableValues = ["\"APPTYPE\"", "\"GENDER\"", "\"LOCALE\"", "\"AGE_BUCKET\"", "\"LOCATION\"", "\"GEO\"", "\"INTEREST\"", "\"KEYWORD\"", "\"AUDIENCE_INCLUDE\"", "\"AUDIENCE_EXCLUDE\""])) @PathVariable("targeting_type") targetingType: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Client ID.") @Valid @RequestParam(value = "client_id", required = false) clientId: kotlin.String?,@Parameter(description = "Oauth signature") @Valid @RequestParam(value = "oauth_signature", required = false) oauthSignature: kotlin.String?,@Pattern(regexp="\\d+") @Parameter(description = "Timestamp") @Valid @RequestParam(value = "timestamp", required = false) timestamp: kotlin.String?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<List<kotlin.Any>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 }

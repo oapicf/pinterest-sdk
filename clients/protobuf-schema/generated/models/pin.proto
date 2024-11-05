@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -16,8 +16,8 @@ package openapitools;
 
 import public "models/board_owner.proto";
 import public "models/creative_type.proto";
+import public "models/pin_media.proto";
 import public "models/pin_media_source.proto";
-import public "models/summary_pin_media.proto";
 import public "models/todo_object_mapping.proto";
 
 message Pin {
@@ -50,14 +50,14 @@ message Pin {
   // Whether the \"operation user_account\" is the Pin owner.
   bool is_owner = 121133918;
 
-  SummaryPinMedia media = 103772132;
+  PinMedia media = 103772132;
 
   PinMediaSource media_source = 166857942;
 
   // The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
   optional string parent_pin_id = 7183675;
 
-  // Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+  // Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
   bool is_standard = 40727091;
 
   // Whether the Pin has been promoted or not.

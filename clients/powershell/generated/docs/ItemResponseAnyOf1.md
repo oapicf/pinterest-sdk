@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ItemId** | **String** | The catalog item id in the merchant namespace | [optional] 
 **Errors** | [**ItemValidationEvent[]**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] 
 **HotelId** | **String** | The catalog hotel id in the merchant namespace | [optional] 
+**CreativeAssetsId** | **String** | The catalog creative assets id in the merchant namespace | [optional] 
 
 ## Examples
 
@@ -15,7 +16,8 @@ Name | Type | Description | Notes
 $ItemResponseAnyOf1 = Initialize-PSOpenAPIToolsItemResponseAnyOf1  -CatalogType null `
  -ItemId DS0294-M `
  -Errors null `
- -HotelId DS0294-M
+ -HotelId DS0294-M `
+ -CreativeAssetsId DS0294-M
 ```
 
 - Convert the resource to JSON

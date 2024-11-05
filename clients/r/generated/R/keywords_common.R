@@ -7,7 +7,7 @@
 #' @title KeywordsCommon
 #' @description KeywordsCommon Class
 #' @format An \code{R6Class} generator object
-#' @field bid Keyword custom bid in microcurrency - null if inherited from parent ad group. integer [optional]
+#' @field bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. integer [optional]
 #' @field match_type  \link{MatchTypeResponse}
 #' @field value Keyword value (120 chars max). character
 #' @importFrom R6 R6Class
@@ -19,16 +19,14 @@ KeywordsCommon <- R6::R6Class(
     `bid` = NULL,
     `match_type` = NULL,
     `value` = NULL,
-    #' Initialize a new KeywordsCommon class.
-    #'
+
     #' @description
     #' Initialize a new KeywordsCommon class.
     #'
     #' @param match_type match_type
     #' @param value Keyword value (120 chars max).
-    #' @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
+    #' @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`match_type`, `value`, `bid` = NULL, ...) {
       if (!missing(`match_type`)) {
         if (!(`match_type` %in% c())) {
@@ -50,13 +48,11 @@ KeywordsCommon <- R6::R6Class(
         self$`bid` <- `bid`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordsCommon in JSON format
-    #' @export
     toJSON = function() {
       KeywordsCommonObject <- list()
       if (!is.null(self$`bid`)) {
@@ -73,14 +69,12 @@ KeywordsCommon <- R6::R6Class(
       }
       KeywordsCommonObject
     },
-    #' Deserialize JSON string into an instance of KeywordsCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordsCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordsCommon
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`bid`)) {
@@ -96,13 +90,11 @@ KeywordsCommon <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordsCommon in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`bid`)) {
@@ -133,14 +125,12 @@ KeywordsCommon <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of KeywordsCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordsCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordsCommon
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`bid` <- this_object$`bid`
@@ -148,13 +138,11 @@ KeywordsCommon <- R6::R6Class(
       self$`value` <- this_object$`value`
       self
     },
-    #' Validate JSON input with respect to KeywordsCommon
-    #'
+
     #' @description
     #' Validate JSON input with respect to KeywordsCommon and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `match_type`
@@ -172,23 +160,19 @@ KeywordsCommon <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for KeywordsCommon: the required field `value` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of KeywordsCommon
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `value` is null
       if (is.null(self$`value`)) {
@@ -197,13 +181,11 @@ KeywordsCommon <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `value` is null
@@ -213,12 +195,9 @@ KeywordsCommon <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

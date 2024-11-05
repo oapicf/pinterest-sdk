@@ -8,5 +8,5 @@ type AdAccountCreateRequest struct {
 	Name string `json:"name,omitempty"`
 
 	// Advertiser's owning user ID.
-	OwnerUserId string `json:"owner_user_id,omitempty"`
+	OwnerUserId string `json:"owner_user_id,omitempty" validate:"regexp=^\\\\d+$"`
 }

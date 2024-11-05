@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsFeedValidationDetails
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationDetails   {
   @JsonProperty("errors")
   private CatalogsFeedValidationErrors errors;
@@ -29,10 +29,10 @@ public class CatalogsFeedValidationDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get errors
    * @return errors
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedValidationErrors getErrors() {
     return errors;
@@ -47,10 +47,10 @@ public class CatalogsFeedValidationDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get warnings
    * @return warnings
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedValidationWarnings getWarnings() {
     return warnings;

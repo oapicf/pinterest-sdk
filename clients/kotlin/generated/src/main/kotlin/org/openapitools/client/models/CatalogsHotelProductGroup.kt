@@ -26,7 +26,7 @@ import com.squareup.moshi.JsonClass
  * @param catalogType 
  * @param id ID of the hotel product group.
  * @param filters 
- * @param catalogId 
+ * @param catalogId Catalog id pertaining to the hotel product group.
  * @param name Name of hotel product group
  * @param description 
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
@@ -46,6 +46,7 @@ data class CatalogsHotelProductGroup (
     @Json(name = "filters")
     val filters: CatalogsHotelProductGroupFilters,
 
+    /* Catalog id pertaining to the hotel product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String,
 
@@ -75,5 +76,6 @@ data class CatalogsHotelProductGroup (
     enum class CatalogType(val value: kotlin.String) {
         @Json(name = "HOTEL") HOTEL("HOTEL");
     }
+
 }
 

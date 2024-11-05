@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "The main hotel image")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelAttributesAllOfMainImage   {
   @JsonProperty("link")
   private String link;
@@ -34,10 +34,10 @@ public class CatalogsHotelAttributesAllOfMainImage   {
     return this;
   }
 
-   /**
+  /**
    * <p><= 2000 characters</p> <p>The link to the main hotel image. Image should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your hotel. The URL of your main_image.link must be accessible by the Pinterest user-agent, and send the accurate image. Please make sure there is no template or placeholder image at the link. Must start with http:// or https://.</p>
    * @return link
-  **/
+   */
   @ApiModelProperty(value = "<p><= 2000 characters</p> <p>The link to the main hotel image. Image should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your hotel. The URL of your main_image.link must be accessible by the Pinterest user-agent, and send the accurate image. Please make sure there is no template or placeholder image at the link. Must start with http:// or https://.</p>")
   public String getLink() {
     return link;
@@ -60,10 +60,10 @@ public class CatalogsHotelAttributesAllOfMainImage   {
     return this;
   }
 
-   /**
+  /**
    * Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image
    * @return tag
-  **/
+   */
   @ApiModelProperty(value = "Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image")
   public List<String> getTag() {
     return tag;

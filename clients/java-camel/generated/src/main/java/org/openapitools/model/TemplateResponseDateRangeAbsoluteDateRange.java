@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_absolute_date_range", description = "The absolute date range of the template")
 @JsonTypeName("TemplateResponse_date_range_absolute_date_range")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeAbsoluteDateRange {
 
   private String type;
@@ -39,7 +39,7 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
   /**
    * The date range type
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "absolute", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -59,7 +59,7 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
   /**
    * The start date of the date range
    * @return startDate
-  */
+   */
   @Valid 
   @Schema(name = "start_date", example = "0.8008281904610115", description = "The start date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
@@ -79,7 +79,7 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
   /**
    * The end date of the date range
    * @return endDate
-  */
+   */
   @Valid 
   @Schema(name = "end_date", example = "6.027456183070403", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")

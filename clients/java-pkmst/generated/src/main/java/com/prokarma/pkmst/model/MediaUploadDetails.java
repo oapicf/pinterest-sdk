@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Media upload details")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadDetails   {
   @JsonProperty("media_id")
   private String mediaId;
@@ -34,10 +34,10 @@ public class MediaUploadDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get mediaId
    * @return mediaId
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public String getMediaId() {
     return mediaId;
@@ -52,10 +52,10 @@ public class MediaUploadDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get mediaType
    * @return mediaType
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public MediaUploadType getMediaType() {
     return mediaType;
@@ -70,10 +70,10 @@ public class MediaUploadDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public MediaUploadStatus getStatus() {
     return status;

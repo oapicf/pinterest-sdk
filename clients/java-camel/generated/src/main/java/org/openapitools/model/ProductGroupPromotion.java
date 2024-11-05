@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import java.util.NoSuchElementException;
@@ -25,7 +24,7 @@ import javax.annotation.Generated;
  * ProductGroupPromotion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotion {
 
   private String id;
@@ -56,8 +55,6 @@ public class ProductGroupPromotion {
 
   private JsonNullable<String> catalogProductGroupName = JsonNullable.<String>undefined();
 
-  private CreativeType creativeType;
-
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> collectionsHeroPinId = JsonNullable.<String>undefined();
 
   private JsonNullable<String> collectionsHeroDestinationUrl = JsonNullable.<String>undefined();
@@ -72,7 +69,7 @@ public class ProductGroupPromotion {
   /**
    * ID of the product group promotion.
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2680059592705", description = "ID of the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -92,7 +89,7 @@ public class ProductGroupPromotion {
   /**
    * ID of the ad group the product group belongs to.
    * @return adGroupId
-  */
+   */
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group the product group belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
@@ -112,7 +109,7 @@ public class ProductGroupPromotion {
   /**
    * The bid in micro currency.
    * @return bidInMicroCurrency
-  */
+   */
   
   @Schema(name = "bid_in_micro_currency", example = "14000000", description = "The bid in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid_in_micro_currency")
@@ -132,7 +129,7 @@ public class ProductGroupPromotion {
   /**
    * True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
    * @return included
-  */
+   */
   
   @Schema(name = "included", example = "true", description = "True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("included")
@@ -152,7 +149,7 @@ public class ProductGroupPromotion {
   /**
    * The full product group definition path
    * @return definition
-  */
+   */
   
   @Schema(name = "definition", example = "*_/product_type_0='kitchen'/product_type_1='beverage appliances'", description = "The full product group definition path", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("definition")
@@ -172,7 +169,7 @@ public class ProductGroupPromotion {
   /**
    * The definition of the product group, relative to its parent - an attribute name/value pair
    * @return relativeDefinition
-  */
+   */
   
   @Schema(name = "relative_definition", example = "product_type_1='beverage appliances'", description = "The definition of the product group, relative to its parent - an attribute name/value pair", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("relative_definition")
@@ -192,7 +189,7 @@ public class ProductGroupPromotion {
   /**
    * The parent Product Group ID of this Product Group
    * @return parentId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "parent_id", example = "1231234", description = "The parent Product Group ID of this Product Group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent_id")
@@ -212,7 +209,7 @@ public class ProductGroupPromotion {
   /**
    * Slideshow Collections Title
    * @return slideshowCollectionsTitle
-  */
+   */
   
   @Schema(name = "slideshow_collections_title", example = "slideshow title", description = "Slideshow Collections Title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("slideshow_collections_title")
@@ -232,7 +229,7 @@ public class ProductGroupPromotion {
   /**
    * Slideshow Collections Description
    * @return slideshowCollectionsDescription
-  */
+   */
   
   @Schema(name = "slideshow_collections_description", example = "slideshow description", description = "Slideshow Collections Description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("slideshow_collections_description")
@@ -252,7 +249,7 @@ public class ProductGroupPromotion {
   /**
    * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
    * @return isMdl
-  */
+   */
   
   @Schema(name = "is_mdl", example = "true", description = "If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_mdl")
@@ -272,7 +269,7 @@ public class ProductGroupPromotion {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -292,7 +289,7 @@ public class ProductGroupPromotion {
   /**
    * Tracking template for proudct group promotions. 4000 limit
    * @return trackingUrl
-  */
+   */
   
   @Schema(name = "tracking_url", example = "https://www.pinterest.com", description = "Tracking template for proudct group promotions. 4000 limit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_url")
@@ -312,7 +309,7 @@ public class ProductGroupPromotion {
   /**
    * ID of the catalogs product group that this product group promotion references
    * @return catalogProductGroupId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_product_group_id", example = "1231235", description = "ID of the catalogs product group that this product group promotion references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_product_group_id")
@@ -332,7 +329,7 @@ public class ProductGroupPromotion {
   /**
    * Catalogs product group name
    * @return catalogProductGroupName
-  */
+   */
   
   @Schema(name = "catalog_product_group_name", example = "catalogProductGroupName", description = "Catalogs product group name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_product_group_name")
@@ -344,26 +341,6 @@ public class ProductGroupPromotion {
     this.catalogProductGroupName = catalogProductGroupName;
   }
 
-  public ProductGroupPromotion creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-  /**
-   * Get creativeType
-   * @return creativeType
-  */
-  @Valid 
-  @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
   public ProductGroupPromotion collectionsHeroPinId(String collectionsHeroPinId) {
     this.collectionsHeroPinId = JsonNullable.of(collectionsHeroPinId);
     return this;
@@ -372,7 +349,7 @@ public class ProductGroupPromotion {
   /**
    * Hero Pin ID if this PG is promoted as a Collection
    * @return collectionsHeroPinId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "collections_hero_pin_id", example = "123123", description = "Hero Pin ID if this PG is promoted as a Collection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("collections_hero_pin_id")
@@ -392,7 +369,7 @@ public class ProductGroupPromotion {
   /**
    * Collections Hero Destination Url
    * @return collectionsHeroDestinationUrl
-  */
+   */
   
   @Schema(name = "collections_hero_destination_url", example = "http://www.pinterest.com", description = "Collections Hero Destination Url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("collections_hero_destination_url")
@@ -412,7 +389,7 @@ public class ProductGroupPromotion {
   /**
    * Get gridClickType
    * @return gridClickType
-  */
+   */
   @Valid 
   @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("grid_click_type")
@@ -447,7 +424,6 @@ public class ProductGroupPromotion {
         equalsNullable(this.trackingUrl, productGroupPromotion.trackingUrl) &&
         equalsNullable(this.catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
         equalsNullable(this.catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
-        Objects.equals(this.creativeType, productGroupPromotion.creativeType) &&
         equalsNullable(this.collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         equalsNullable(this.collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         equalsNullable(this.gridClickType, productGroupPromotion.gridClickType);
@@ -459,7 +435,7 @@ public class ProductGroupPromotion {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adGroupId, hashCodeNullable(bidInMicroCurrency), hashCodeNullable(included), hashCodeNullable(definition), hashCodeNullable(relativeDefinition), hashCodeNullable(parentId), hashCodeNullable(slideshowCollectionsTitle), hashCodeNullable(slideshowCollectionsDescription), hashCodeNullable(isMdl), status, hashCodeNullable(trackingUrl), hashCodeNullable(catalogProductGroupId), hashCodeNullable(catalogProductGroupName), creativeType, hashCodeNullable(collectionsHeroPinId), hashCodeNullable(collectionsHeroDestinationUrl), hashCodeNullable(gridClickType));
+    return Objects.hash(id, adGroupId, hashCodeNullable(bidInMicroCurrency), hashCodeNullable(included), hashCodeNullable(definition), hashCodeNullable(relativeDefinition), hashCodeNullable(parentId), hashCodeNullable(slideshowCollectionsTitle), hashCodeNullable(slideshowCollectionsDescription), hashCodeNullable(isMdl), status, hashCodeNullable(trackingUrl), hashCodeNullable(catalogProductGroupId), hashCodeNullable(catalogProductGroupName), hashCodeNullable(collectionsHeroPinId), hashCodeNullable(collectionsHeroDestinationUrl), hashCodeNullable(gridClickType));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -487,7 +463,6 @@ public class ProductGroupPromotion {
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
     sb.append("    catalogProductGroupName: ").append(toIndentedString(catalogProductGroupName)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    collectionsHeroPinId: ").append(toIndentedString(collectionsHeroPinId)).append("\n");
     sb.append("    collectionsHeroDestinationUrl: ").append(toIndentedString(collectionsHeroDestinationUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");

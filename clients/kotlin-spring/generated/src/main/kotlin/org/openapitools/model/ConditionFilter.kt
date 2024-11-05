@@ -23,7 +23,7 @@ data class ConditionFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("CONDITION", required = true) val CONDITION: CatalogsProductGroupMultipleStringCriteria
-) {
+    ) {
 
 }
 

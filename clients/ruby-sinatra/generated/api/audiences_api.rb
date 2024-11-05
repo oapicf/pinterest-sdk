@@ -109,7 +109,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/audiences', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -117,7 +117,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/audiences', {
     },
     {
       "name" => "ownership_type",
-      "description" => "&lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type.",
+      "description" => "Filter audiences by ownership type.",
       "dataType" => "String",
       "allowableValues" => "[OWNED, RECEIVED]",
       "defaultValue" => "'OWNED'",

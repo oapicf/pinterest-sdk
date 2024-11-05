@@ -3,12 +3,12 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CatalogsHotelBatchItem
+open OpenAPI.Model.CatalogsCreativeAssetsBatchItem
+open OpenAPI.Model.CatalogsCreativeAssetsBatchRequest
 open OpenAPI.Model.CatalogsHotelBatchRequest
+open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.CatalogsRetailBatchRequest
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Country
-open OpenAPI.Model.Language
 
 module CatalogsVerticalBatchRequest =
 
@@ -17,13 +17,13 @@ module CatalogsVerticalBatchRequest =
   [<CLIMutable>]
   type CatalogsVerticalBatchRequest = {
     [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : CatalogsType;
+    CatalogType : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "language")>]
-    Language : Language;
+    Language : CatalogsItemsRequestLanguage;
     [<JsonProperty(PropertyName = "items")>]
-    Items : CatalogsHotelBatchItem[];
+    Items : CatalogsCreativeAssetsBatchItem[];
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
   }

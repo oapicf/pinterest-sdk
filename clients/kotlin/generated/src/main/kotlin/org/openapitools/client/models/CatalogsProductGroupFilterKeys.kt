@@ -19,6 +19,7 @@ import org.openapitools.client.models.AvailabilityFilter
 import org.openapitools.client.models.BrandFilter
 import org.openapitools.client.models.CatalogsProductGroupCurrencyCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleGenderCriteria
+import org.openapitools.client.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.client.models.CatalogsProductGroupPricingCriteria
@@ -40,7 +41,9 @@ import org.openapitools.client.models.GoogleProductCategory6Filter
 import org.openapitools.client.models.ItemGroupIdFilter
 import org.openapitools.client.models.ItemIdFilter
 import org.openapitools.client.models.MaxPriceFilter
+import org.openapitools.client.models.MediaTypeFilter
 import org.openapitools.client.models.MinPriceFilter
+import org.openapitools.client.models.ProductGroupReferenceFilter
 import org.openapitools.client.models.ProductType0Filter
 import org.openapitools.client.models.ProductType1Filter
 import org.openapitools.client.models.ProductType2Filter
@@ -67,6 +70,7 @@ import com.squareup.moshi.JsonClass
  * @param CUSTOM_LABEL_4 
  * @param ITEM_GROUP_ID 
  * @param GENDER 
+ * @param MEDIA_TYPE 
  * @param PRODUCT_TYPE_4 
  * @param PRODUCT_TYPE_3 
  * @param PRODUCT_TYPE_2 
@@ -79,6 +83,7 @@ import com.squareup.moshi.JsonClass
  * @param GOOGLE_PRODUCT_CATEGORY_2 
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  * @param GOOGLE_PRODUCT_CATEGORY_0 
+ * @param PRODUCT_GROUP 
  */
 
 
@@ -126,6 +131,9 @@ data class CatalogsProductGroupFilterKeys (
     @Json(name = "GENDER")
     val GENDER: CatalogsProductGroupMultipleGenderCriteria,
 
+    @Json(name = "MEDIA_TYPE")
+    val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
+
     @Json(name = "PRODUCT_TYPE_4")
     val PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria,
 
@@ -160,7 +168,13 @@ data class CatalogsProductGroupFilterKeys (
     val GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
 
     @Json(name = "GOOGLE_PRODUCT_CATEGORY_0")
-    val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+    val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
 
-)
+    @Json(name = "PRODUCT_GROUP")
+    val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
+
+) {
+
+
+}
 

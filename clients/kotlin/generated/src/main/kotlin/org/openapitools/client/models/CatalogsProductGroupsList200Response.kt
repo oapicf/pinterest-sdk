@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsProductGroupsList200ResponseAllOfItemsInner
+import org.openapitools.client.models.CatalogsVerticalProductGroup
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,10 +31,13 @@ import com.squareup.moshi.JsonClass
 data class CatalogsProductGroupsList200Response (
 
     @Json(name = "items")
-    val items: kotlin.collections.List<CatalogsProductGroupsList200ResponseAllOfItemsInner>,
+    val items: kotlin.collections.List<CatalogsVerticalProductGroup>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null
 
-)
+) {
+
+
+}
 

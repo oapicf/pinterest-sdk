@@ -49,7 +49,7 @@ data class LineItem(
 
     @Schema(example = "1414-34832", description = "Product variant ID. For example, \"1414-34832\".")
     @get:JsonProperty("product_variant_id") val productVariantId: kotlin.String? = null
-) {
+    ) {
 
 }
 

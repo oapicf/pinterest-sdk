@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.CatalogsCreativeAssetsItemErrorResponse;
 import org.openapitools.model.CatalogsHotelItemErrorResponse;
 import org.openapitools.model.CatalogsRetailItemErrorResponse;
 import org.openapitools.model.CatalogsType;
@@ -60,6 +61,14 @@ public class ItemResponseAnyOf1Test {
     @Test
     public void hotelIdTest() {
         // TODO: test hotelId
+    }
+
+    /**
+     * Test the property 'creativeAssetsId'
+     */
+    @Test
+    public void creativeAssetsIdTest() {
+        // TODO: test creativeAssetsId
     }
 
 }

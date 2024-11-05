@@ -3,7 +3,7 @@ package org.openapitools.apis
 import java.io._
 import org.openapitools._
 import org.openapitools.models._
-import org.openapitools.models.AdsAnalyticsTargetingType
+import org.openapitools.models.AdsAnalyticsCampaignTargetingType
 import org.openapitools.models.CampaignCreateRequest
 import org.openapitools.models.CampaignCreateResponse
 import org.openapitools.models.CampaignResponse
@@ -70,7 +70,7 @@ object CampaignsApi {
         * @return An endpoint representing a MetricsResponse
         */
         private def campaignTargetingAnalytics/get(da: DataAccessor): Endpoint[MetricsResponse] =
-        get("ad_accounts" :: string :: "campaigns" :: "targeting_analytics" :: params("campaign_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("attribution_types").map(_.map(_.toConversionReportAttributionType))) { (adAccountId: String, campaignIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]) =>
+        get("ad_accounts" :: string :: "campaigns" :: "targeting_analytics" :: params("campaign_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("attribution_types").map(_.map(_.toConversionReportAttributionType))) { (adAccountId: String, campaignIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsCampaignTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]) =>
           da.Campaigns_campaignTargetingAnalytics/get(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)

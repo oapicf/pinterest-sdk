@@ -26,16 +26,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("feeds_update_request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class FeedsUpdateRequest   {
-  private @Valid ProductAvailabilityType defaultAvailability;
-  private @Valid NullableCurrency defaultCurrency;
-  private @Valid String name;
-  private @Valid CatalogsFormat format;
-  private @Valid CatalogsFeedCredentials credentials;
-  private @Valid String location;
-  private @Valid CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private @Valid CatalogsStatus status;
+  private ProductAvailabilityType defaultAvailability;
+  private NullableCurrency defaultCurrency;
+  private String name;
+  private CatalogsFormat format;
+  private CatalogsFeedCredentials credentials;
+  private String location;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+  private CatalogsStatus status;
 
   /**
    **/
@@ -124,7 +124,7 @@ public class FeedsUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
+  @Valid public CatalogsFeedCredentials getCredentials() {
     return credentials;
   }
 
@@ -144,7 +144,7 @@ public class FeedsUpdateRequest   {
   
   @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   @JsonProperty("location")
- @Pattern(regexp="^(http|https|ftp|sftp)://")  public String getLocation() {
+   @Pattern(regexp="^(http|https|ftp|sftp)://")public String getLocation() {
     return location;
   }
 
@@ -163,7 +163,7 @@ public class FeedsUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("preferred_processing_schedule")
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+  @Valid public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
   }
 

@@ -21,7 +21,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object describing a retail item error")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemErrorResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -38,10 +38,10 @@ public class CatalogsRetailItemErrorResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -56,10 +56,10 @@ public class CatalogsRetailItemErrorResponse   {
     return this;
   }
 
-   /**
+  /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
   public String getItemId() {
     return itemId;
@@ -82,10 +82,10 @@ public class CatalogsRetailItemErrorResponse   {
     return this;
   }
 
-   /**
+  /**
    * Array with the errors for the item id requested
    * @return errors
-  **/
+   */
   @ApiModelProperty(value = "Array with the errors for the item id requested")
   public List<ItemValidationEvent> getErrors() {
     return errors;

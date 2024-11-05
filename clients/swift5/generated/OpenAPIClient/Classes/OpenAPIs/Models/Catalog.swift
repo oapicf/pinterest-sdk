@@ -14,15 +14,15 @@ import AnyCodable
 public struct Catalog: Codable, JSONEncodable, Hashable {
 
     static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var createdAt: Date?
+    public var createdAt: Date
     /** ID of the catalog entity. */
     public var id: String
-    public var updatedAt: Date?
+    public var updatedAt: Date
     /** A human-friendly name associated to a catalog entity. */
     public var name: String?
     public var catalogType: CatalogsType
 
-    public init(createdAt: Date? = nil, id: String, updatedAt: Date? = nil, name: String?, catalogType: CatalogsType) {
+    public init(createdAt: Date, id: String, updatedAt: Date, name: String?, catalogType: CatalogsType) {
         self.createdAt = createdAt
         self.id = id
         self.updatedAt = updatedAt
@@ -42,9 +42,9 @@ public struct Catalog: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encode(createdAt, forKey: .createdAt)
         try container.encode(id, forKey: .id)
-        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
+        try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(name, forKey: .name)
         try container.encode(catalogType, forKey: .catalogType)
     }

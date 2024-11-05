@@ -12,10 +12,10 @@ campaign_common_t *campaign_common_create(
     int lifetime_spend_cap,
     int daily_spend_cap,
     char *order_line_id,
-    ad_common_tracking_urls_t *tracking_urls,
+    tracking_urls_t *tracking_urls,
     int start_time,
     int end_time,
-    campaign_summary_status_t *summary_status
+    int is_flexible_daily_budgets
     ) {
     campaign_common_t *campaign_common_local_var = malloc(sizeof(campaign_common_t));
     if (!campaign_common_local_var) {
@@ -30,7 +30,7 @@ campaign_common_t *campaign_common_create(
     campaign_common_local_var->tracking_urls = tracking_urls;
     campaign_common_local_var->start_time = start_time;
     campaign_common_local_var->end_time = end_time;
-    campaign_common_local_var->summary_status = summary_status;
+    campaign_common_local_var->is_flexible_daily_budgets = is_flexible_daily_budgets;
 
     return campaign_common_local_var;
 }
@@ -58,12 +58,8 @@ void campaign_common_free(campaign_common_t *campaign_common) {
         campaign_common->order_line_id = NULL;
     }
     if (campaign_common->tracking_urls) {
-        ad_common_tracking_urls_free(campaign_common->tracking_urls);
+        tracking_urls_free(campaign_common->tracking_urls);
         campaign_common->tracking_urls = NULL;
-    }
-    if (campaign_common->summary_status) {
-        campaign_summary_status_free(campaign_common->summary_status);
-        campaign_common->summary_status = NULL;
     }
     free(campaign_common);
 }
@@ -126,7 +122,7 @@ cJSON *campaign_common_convertToJSON(campaign_common_t *campaign_common) {
 
     // campaign_common->tracking_urls
     if(campaign_common->tracking_urls) {
-    cJSON *tracking_urls_local_JSON = ad_common_tracking_urls_convertToJSON(campaign_common->tracking_urls);
+    cJSON *tracking_urls_local_JSON = tracking_urls_convertToJSON(campaign_common->tracking_urls);
     if(tracking_urls_local_JSON == NULL) {
     goto fail; //model
     }
@@ -153,15 +149,10 @@ cJSON *campaign_common_convertToJSON(campaign_common_t *campaign_common) {
     }
 
 
-    // campaign_common->summary_status
-    if(campaign_common->summary_status) {
-    cJSON *summary_status_local_JSON = campaign_summary_status_convertToJSON(campaign_common->summary_status);
-    if(summary_status_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "summary_status", summary_status_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
+    // campaign_common->is_flexible_daily_budgets
+    if(campaign_common->is_flexible_daily_budgets) {
+    if(cJSON_AddBoolToObject(item, "is_flexible_daily_budgets", campaign_common->is_flexible_daily_budgets) == NULL) {
+    goto fail; //Bool
     }
     }
 
@@ -181,10 +172,7 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
     entity_status_t *status_local_nonprim = NULL;
 
     // define the local variable for campaign_common->tracking_urls
-    ad_common_tracking_urls_t *tracking_urls_local_nonprim = NULL;
-
-    // define the local variable for campaign_common->summary_status
-    campaign_summary_status_t *summary_status_local_nonprim = NULL;
+    tracking_urls_t *tracking_urls_local_nonprim = NULL;
 
     // campaign_common->ad_account_id
     cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "ad_account_id");
@@ -240,7 +228,7 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
     // campaign_common->tracking_urls
     cJSON *tracking_urls = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "tracking_urls");
     if (tracking_urls) { 
-    tracking_urls_local_nonprim = ad_common_tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
+    tracking_urls_local_nonprim = tracking_urls_parseFromJSON(tracking_urls); //nonprimitive
     }
 
     // campaign_common->start_time
@@ -261,10 +249,13 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
     }
     }
 
-    // campaign_common->summary_status
-    cJSON *summary_status = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "summary_status");
-    if (summary_status) { 
-    summary_status_local_nonprim = campaign_summary_status_parseFromJSON(summary_status); //custom
+    // campaign_common->is_flexible_daily_budgets
+    cJSON *is_flexible_daily_budgets = cJSON_GetObjectItemCaseSensitive(campaign_commonJSON, "is_flexible_daily_budgets");
+    if (is_flexible_daily_budgets) { 
+    if(!cJSON_IsBool(is_flexible_daily_budgets))
+    {
+    goto end; //Bool
+    }
     }
 
 
@@ -278,7 +269,7 @@ campaign_common_t *campaign_common_parseFromJSON(cJSON *campaign_commonJSON){
         tracking_urls ? tracking_urls_local_nonprim : NULL,
         start_time ? start_time->valuedouble : 0,
         end_time ? end_time->valuedouble : 0,
-        summary_status ? summary_status_local_nonprim : NULL
+        is_flexible_daily_budgets ? is_flexible_daily_budgets->valueint : 0
         );
 
     return campaign_common_local_var;
@@ -288,12 +279,8 @@ end:
         status_local_nonprim = NULL;
     }
     if (tracking_urls_local_nonprim) {
-        ad_common_tracking_urls_free(tracking_urls_local_nonprim);
+        tracking_urls_free(tracking_urls_local_nonprim);
         tracking_urls_local_nonprim = NULL;
-    }
-    if (summary_status_local_nonprim) {
-        campaign_summary_status_free(summary_status_local_nonprim);
-        summary_status_local_nonprim = NULL;
     }
     return NULL;
 

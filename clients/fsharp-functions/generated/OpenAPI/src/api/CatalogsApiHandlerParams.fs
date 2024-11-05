@@ -1,18 +1,24 @@
 namespace OpenAPI
 
+open OpenAPI.Model.Catalog
+open OpenAPI.Model.CatalogsCreateReportResponse
+open OpenAPI.Model.CatalogsCreateRequest
 open OpenAPI.Model.CatalogsFeed
+open OpenAPI.Model.CatalogsFeedIngestion
 open OpenAPI.Model.CatalogsItemValidationIssue
 open OpenAPI.Model.CatalogsItems
 open OpenAPI.Model.CatalogsItemsBatch
 open OpenAPI.Model.CatalogsItemsFilters
+open OpenAPI.Model.CatalogsItemsRequest
 open OpenAPI.Model.CatalogsList200Response
 open OpenAPI.Model.CatalogsListProductsByFilterRequest
 open OpenAPI.Model.CatalogsProductGroupPinsList200Response
-open OpenAPI.Model.CatalogsProductGroupProductCounts
-open OpenAPI.Model.CatalogsProductGroupsCreate201Response
-open OpenAPI.Model.CatalogsProductGroupsCreateRequest
+open OpenAPI.Model.CatalogsProductGroupProductCountsVertical
 open OpenAPI.Model.CatalogsProductGroupsList200Response
 open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
+open OpenAPI.Model.CatalogsReport
+open OpenAPI.Model.CatalogsReportParameters
+open OpenAPI.Model.CatalogsVerticalProductGroup
 open OpenAPI.Model.Error
 open OpenAPI.Model.FeedProcessingResultsList200Response
 open OpenAPI.Model.FeedsCreateRequest
@@ -20,11 +26,53 @@ open OpenAPI.Model.FeedsList200Response
 open OpenAPI.Model.FeedsUpdateRequest
 open OpenAPI.Model.ItemsBatchPostRequest
 open OpenAPI.Model.ItemsIssuesList200Response
+open OpenAPI.Model.MultipleProductGroupsInner
+open OpenAPI.Model.ReportsStats200Response
 open System.Collections.Generic
 open System
 
 module CatalogsApiHandlerParams =
 
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type CatalogsCreateQueryParams = {
+      adAccountId : string option;
+
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type CatalogsCreateBodyParams = CatalogsCreateRequest
+    //#endregion
+
+
+    type CatalogsCreateStatusCode200Response = {
+      content:Catalog;
+      
+    }
+
+    type CatalogsCreateStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsCreateStatusCode401Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsCreateDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type CatalogsCreateResult = CatalogsCreateStatusCode200 of CatalogsCreateStatusCode200Response|CatalogsCreateStatusCode400 of CatalogsCreateStatusCode400Response|CatalogsCreateStatusCode401 of CatalogsCreateStatusCode401Response|CatalogsCreateDefaultStatusCode of CatalogsCreateDefaultStatusCodeResponse
+
+    type CatalogsCreateArgs = {
+      queryParams:Result<CatalogsCreateQueryParams,string>;
+      bodyParams:CatalogsCreateBodyParams
+    }
 
     //#region Query parameters
     [<CLIMutable>]
@@ -83,6 +131,9 @@ module CatalogsApiHandlerParams =
 
       adAccountId : string option;
 
+
+      pinMetrics : bool option;
+
     }
     //#endregion
 
@@ -128,12 +179,12 @@ module CatalogsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type CatalogsProductGroupsCreateBodyParams = CatalogsProductGroupsCreateRequest
+    type CatalogsProductGroupsCreateBodyParams = MultipleProductGroupsInner
     //#endregion
 
 
     type CatalogsProductGroupsCreateStatusCode201Response = {
-      content:CatalogsProductGroupsCreate201Response;
+      content:CatalogsVerticalProductGroup;
       
     }
 
@@ -166,6 +217,56 @@ module CatalogsApiHandlerParams =
     type CatalogsProductGroupsCreateArgs = {
       queryParams:Result<CatalogsProductGroupsCreateQueryParams,string>;
       bodyParams:CatalogsProductGroupsCreateBodyParams
+    }
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type CatalogsProductGroupsCreateManyQueryParams = {
+      adAccountId : string option;
+
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type CatalogsProductGroupsCreateManyBodyParams = MultipleProductGroupsInner[]
+    //#endregion
+
+
+    type CatalogsProductGroupsCreateManyStatusCode201Response = {
+      content:string[];
+      
+    }
+
+    type CatalogsProductGroupsCreateManyStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsCreateManyStatusCode401Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsCreateManyStatusCode403Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsCreateManyStatusCode409Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsCreateManyDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type CatalogsProductGroupsCreateManyResult = CatalogsProductGroupsCreateManyStatusCode201 of CatalogsProductGroupsCreateManyStatusCode201Response|CatalogsProductGroupsCreateManyStatusCode400 of CatalogsProductGroupsCreateManyStatusCode400Response|CatalogsProductGroupsCreateManyStatusCode401 of CatalogsProductGroupsCreateManyStatusCode401Response|CatalogsProductGroupsCreateManyStatusCode403 of CatalogsProductGroupsCreateManyStatusCode403Response|CatalogsProductGroupsCreateManyStatusCode409 of CatalogsProductGroupsCreateManyStatusCode409Response|CatalogsProductGroupsCreateManyDefaultStatusCode of CatalogsProductGroupsCreateManyDefaultStatusCodeResponse
+
+    type CatalogsProductGroupsCreateManyArgs = {
+      queryParams:Result<CatalogsProductGroupsCreateManyQueryParams,string>;
+      bodyParams:CatalogsProductGroupsCreateManyBodyParams
     }
     //#region Path parameters
     [<CLIMutable>]
@@ -223,6 +324,53 @@ module CatalogsApiHandlerParams =
       pathParams:CatalogsProductGroupsDeletePathParams;
       queryParams:Result<CatalogsProductGroupsDeleteQueryParams,string>;
     }
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type CatalogsProductGroupsDeleteManyQueryParams = {
+      id : int[] ;
+
+
+      adAccountId : string option;
+
+    }
+    //#endregion
+
+
+    type CatalogsProductGroupsDeleteManyStatusCode204Response = {
+      content:string;
+      
+    }
+
+    type CatalogsProductGroupsDeleteManyStatusCode401Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsDeleteManyStatusCode403Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsDeleteManyStatusCode404Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsDeleteManyStatusCode409Response = {
+      content:Error;
+      
+    }
+
+    type CatalogsProductGroupsDeleteManyDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type CatalogsProductGroupsDeleteManyResult = CatalogsProductGroupsDeleteManyStatusCode204 of CatalogsProductGroupsDeleteManyStatusCode204Response|CatalogsProductGroupsDeleteManyStatusCode401 of CatalogsProductGroupsDeleteManyStatusCode401Response|CatalogsProductGroupsDeleteManyStatusCode403 of CatalogsProductGroupsDeleteManyStatusCode403Response|CatalogsProductGroupsDeleteManyStatusCode404 of CatalogsProductGroupsDeleteManyStatusCode404Response|CatalogsProductGroupsDeleteManyStatusCode409 of CatalogsProductGroupsDeleteManyStatusCode409Response|CatalogsProductGroupsDeleteManyDefaultStatusCode of CatalogsProductGroupsDeleteManyDefaultStatusCodeResponse
+
+    type CatalogsProductGroupsDeleteManyArgs = {
+      queryParams:Result<CatalogsProductGroupsDeleteManyQueryParams,string>;
+    }
     //#region Path parameters
     [<CLIMutable>]
     type CatalogsProductGroupsGetPathParams = {
@@ -240,7 +388,7 @@ module CatalogsApiHandlerParams =
 
 
     type CatalogsProductGroupsGetStatusCode200Response = {
-      content:CatalogsProductGroupsCreate201Response;
+      content:CatalogsVerticalProductGroup;
       
     }
 
@@ -283,6 +431,9 @@ module CatalogsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type CatalogsProductGroupsListQueryParams = {
+      id : int[] option;
+
+
       feedId : string option;
 
 
@@ -357,7 +508,7 @@ module CatalogsApiHandlerParams =
 
 
     type CatalogsProductGroupsProductCountsGetStatusCode200Response = {
-      content:CatalogsProductGroupProductCounts;
+      content:CatalogsProductGroupProductCountsVertical;
       
     }
 
@@ -403,7 +554,7 @@ module CatalogsApiHandlerParams =
 
 
     type CatalogsProductGroupsUpdateStatusCode200Response = {
-      content:CatalogsProductGroupsCreate201Response;
+      content:CatalogsVerticalProductGroup;
       
     }
 
@@ -651,6 +802,52 @@ module CatalogsApiHandlerParams =
     type FeedsGetArgs = {
       pathParams:FeedsGetPathParams;
       queryParams:Result<FeedsGetQueryParams,string>;
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type FeedsIngestPathParams = {
+      feedId : string ;
+    }
+    //#endregion
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type FeedsIngestQueryParams = {
+      adAccountId : string option;
+
+    }
+    //#endregion
+
+
+    type FeedsIngestStatusCode200Response = {
+      content:CatalogsFeedIngestion;
+      
+    }
+
+    type FeedsIngestStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type FeedsIngestStatusCode403Response = {
+      content:Error;
+      
+    }
+
+    type FeedsIngestStatusCode404Response = {
+      content:Error;
+      
+    }
+
+    type FeedsIngestDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type FeedsIngestResult = FeedsIngestStatusCode200 of FeedsIngestStatusCode200Response|FeedsIngestStatusCode400 of FeedsIngestStatusCode400Response|FeedsIngestStatusCode403 of FeedsIngestStatusCode403Response|FeedsIngestStatusCode404 of FeedsIngestStatusCode404Response|FeedsIngestDefaultStatusCode of FeedsIngestDefaultStatusCodeResponse
+
+    type FeedsIngestArgs = {
+      pathParams:FeedsIngestPathParams;
+      queryParams:Result<FeedsIngestQueryParams,string>;
     }
 
     //#region Query parameters
@@ -955,6 +1152,51 @@ module CatalogsApiHandlerParams =
 
     //#region Query parameters
     [<CLIMutable>]
+    type ItemsPostQueryParams = {
+      adAccountId : string option;
+
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type ItemsPostBodyParams = CatalogsItemsRequest
+    //#endregion
+
+
+    type ItemsPostStatusCode200Response = {
+      content:CatalogsItems;
+      
+    }
+
+    type ItemsPostStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type ItemsPostStatusCode401Response = {
+      content:Error;
+      
+    }
+
+    type ItemsPostStatusCode403Response = {
+      content:Error;
+      
+    }
+
+    type ItemsPostDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type ItemsPostResult = ItemsPostStatusCode200 of ItemsPostStatusCode200Response|ItemsPostStatusCode400 of ItemsPostStatusCode400Response|ItemsPostStatusCode401 of ItemsPostStatusCode401Response|ItemsPostStatusCode403 of ItemsPostStatusCode403Response|ItemsPostDefaultStatusCode of ItemsPostDefaultStatusCodeResponse
+
+    type ItemsPostArgs = {
+      queryParams:Result<ItemsPostQueryParams,string>;
+      bodyParams:ItemsPostBodyParams
+    }
+
+    //#region Query parameters
+    [<CLIMutable>]
     type ProductsByProductGroupFilterListQueryParams = {
       bookmark : string option;
 
@@ -963,6 +1205,9 @@ module CatalogsApiHandlerParams =
 
 
       adAccountId : string option;
+
+
+      pinMetrics : bool option;
 
     }
     //#endregion
@@ -997,4 +1242,119 @@ module CatalogsApiHandlerParams =
     type ProductsByProductGroupFilterListArgs = {
       queryParams:Result<ProductsByProductGroupFilterListQueryParams,string>;
       bodyParams:ProductsByProductGroupFilterListBodyParams
+    }
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type ReportsCreateQueryParams = {
+      adAccountId : string option;
+
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type ReportsCreateBodyParams = CatalogsReportParameters
+    //#endregion
+
+
+    type ReportsCreateStatusCode200Response = {
+      content:CatalogsCreateReportResponse;
+      
+    }
+
+    type ReportsCreateStatusCode404Response = {
+      content:Error;
+      
+    }
+
+    type ReportsCreateStatusCode409Response = {
+      content:Error;
+      
+    }
+
+    type ReportsCreateDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type ReportsCreateResult = ReportsCreateStatusCode200 of ReportsCreateStatusCode200Response|ReportsCreateStatusCode404 of ReportsCreateStatusCode404Response|ReportsCreateStatusCode409 of ReportsCreateStatusCode409Response|ReportsCreateDefaultStatusCode of ReportsCreateDefaultStatusCodeResponse
+
+    type ReportsCreateArgs = {
+      queryParams:Result<ReportsCreateQueryParams,string>;
+      bodyParams:ReportsCreateBodyParams
+    }
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type ReportsGetQueryParams = {
+      adAccountId : string option;
+
+
+      token : string ;
+
+    }
+    //#endregion
+
+
+    type ReportsGetStatusCode200Response = {
+      content:CatalogsReport;
+      
+    }
+
+    type ReportsGetStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type ReportsGetStatusCode409Response = {
+      content:Error;
+      
+    }
+
+    type ReportsGetDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type ReportsGetResult = ReportsGetStatusCode200 of ReportsGetStatusCode200Response|ReportsGetStatusCode400 of ReportsGetStatusCode400Response|ReportsGetStatusCode409 of ReportsGetStatusCode409Response|ReportsGetDefaultStatusCode of ReportsGetDefaultStatusCodeResponse
+
+    type ReportsGetArgs = {
+      queryParams:Result<ReportsGetQueryParams,string>;
+    }
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type ReportsStatsQueryParams = {
+      adAccountId : string option;
+
+
+      pageSize : int option;
+
+
+      bookmark : string option;
+
+
+      parameters : CatalogsReportParameters ;
+
+    }
+    //#endregion
+
+
+    type ReportsStatsStatusCode200Response = {
+      content:ReportsStats200Response;
+      
+    }
+
+    type ReportsStatsStatusCode401Response = {
+      content:Error;
+      
+    }
+
+    type ReportsStatsDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type ReportsStatsResult = ReportsStatsStatusCode200 of ReportsStatsStatusCode200Response|ReportsStatsStatusCode401 of ReportsStatsStatusCode401Response|ReportsStatsDefaultStatusCode of ReportsStatsDefaultStatusCodeResponse
+
+    type ReportsStatsArgs = {
+      queryParams:Result<ReportsStatsQueryParams,string>;
     }

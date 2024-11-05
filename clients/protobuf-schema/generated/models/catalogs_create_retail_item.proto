@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,7 +14,7 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/item_attributes.proto";
+import public "models/item_attributes_request.proto";
 
 message CatalogsCreateRetailItem {
 
@@ -23,13 +23,10 @@ message CatalogsCreateRetailItem {
 
   enum OperationEnum {
     OperationEnum_CREATE = 0;
-    OperationEnum_UPDATE = 1;
-    OperationEnum_UPSERT = 2;
-    OperationEnum_DELETE = 3;
   }
 
   OperationEnum operation = 52090218;
 
-  ItemAttributes attributes = 405645655;
+  ItemAttributesRequest attributes = 405645655;
 
 }

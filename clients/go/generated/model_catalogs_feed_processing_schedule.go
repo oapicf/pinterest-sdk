@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CatalogsFeedProcessingSchedule{}
 // CatalogsFeedProcessingSchedule Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
 type CatalogsFeedProcessingSchedule struct {
 	// A time in format HH:MM with leading 0 (zero)
-	Time string `json:"time"`
+	Time string `json:"time" validate:"regexp=^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"`
 	// The timezone considered for the processing schedule time.
 	Timezone NullableString `json:"timezone"`
 }

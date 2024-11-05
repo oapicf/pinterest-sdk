@@ -6,7 +6,7 @@ case class CatalogsRetailBatchRequestItemsInner (
     /* The catalog item id in the merchant namespace */
     _itemId: String,
     _operation: String,
-    _attributes: ItemAttributes,
+    _attributes: ItemAttributesRequest,
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     _updateMask: Option[List[UpdateMaskFieldType]]
 )

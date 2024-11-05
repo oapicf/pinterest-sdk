@@ -18,12 +18,12 @@
        'is_removable' => boolean(),
        'name' => binary(),
        'status' => openapi_entity_status:openapi_entity_status(),
-       'tracking_urls' => openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls(),
+       'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls(),
        'view_tracking_url' => binary(),
        'lead_form_id' => binary(),
        'grid_click_type' => openapi_grid_click_type:openapi_grid_click_type(),
        'customizable_cta_type' => binary(),
-       'quiz_pin_data' => openapi_ad_common_quiz_pin_data:openapi_ad_common_quiz_pin_data(),
+       'quiz_pin_data' => openapi_quiz_pin_data:openapi_quiz_pin_data(),
        'id' := binary(),
        'pin_id' => binary()
      }.

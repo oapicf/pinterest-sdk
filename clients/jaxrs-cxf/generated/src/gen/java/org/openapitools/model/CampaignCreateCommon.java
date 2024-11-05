@@ -3,9 +3,8 @@ package org.openapitools.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -30,7 +29,7 @@ public class CampaignCreateCommon  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private EntityStatus status = "ACTIVE";
+  private EntityStatus status;
 
   @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
  /**
@@ -52,7 +51,7 @@ public class CampaignCreateCommon  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
@@ -66,15 +65,11 @@ public class CampaignCreateCommon  {
   **/
   private Integer endTime;
 
-  @ApiModelProperty(value = "")
-  @Valid
-  private CampaignSummaryStatus summaryStatus;
-
   @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
  /**
    * Determine if a campaign has flexible daily budgets setup.
   **/
-  private Boolean isFlexibleDailyBudgets = false;
+  private Boolean isFlexibleDailyBudgets;
 
   @ApiModelProperty(example = "0", value = "When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.")
  /**
@@ -86,7 +81,7 @@ public class CampaignCreateCommon  {
  /**
    * Specifies whether the campaign was created in the automated campaign flow
   **/
-  private Boolean isAutomatedCampaign = false;
+  private Boolean isAutomatedCampaign;
  /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
    * @return adAccountId
@@ -200,15 +195,15 @@ public class CampaignCreateCommon  {
    * @return trackingUrls
   **/
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
-  public CampaignCreateCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignCreateCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -246,24 +241,6 @@ public class CampaignCreateCommon  {
 
   public CampaignCreateCommon endTime(Integer endTime) {
     this.endTime = endTime;
-    return this;
-  }
-
- /**
-   * Get summaryStatus
-   * @return summaryStatus
-  **/
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-  }
-
-  public CampaignCreateCommon summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
     return this;
   }
 
@@ -339,7 +316,6 @@ public class CampaignCreateCommon  {
         Objects.equals(this.trackingUrls, campaignCreateCommon.trackingUrls) &&
         Objects.equals(this.startTime, campaignCreateCommon.startTime) &&
         Objects.equals(this.endTime, campaignCreateCommon.endTime) &&
-        Objects.equals(this.summaryStatus, campaignCreateCommon.summaryStatus) &&
         Objects.equals(this.isFlexibleDailyBudgets, campaignCreateCommon.isFlexibleDailyBudgets) &&
         Objects.equals(this.defaultAdGroupBudgetInMicroCurrency, campaignCreateCommon.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(this.isAutomatedCampaign, campaignCreateCommon.isAutomatedCampaign);
@@ -347,7 +323,7 @@ public class CampaignCreateCommon  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
   }
 
   @Override
@@ -364,7 +340,6 @@ public class CampaignCreateCommon  {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

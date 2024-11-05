@@ -12,7 +12,7 @@
     },
     {
       "name": "attributes",
-      "type": ["null", "model.ItemAttributes"],
+      "type": ["null", "model.ItemAttributesRequest"],
       "doc": "",
       "default": null
     }

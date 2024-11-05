@@ -38,7 +38,10 @@ export class TermsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (terms !== undefined) {
-            requestContext.setQueryParam("terms", ObjectSerializer.serialize(terms, "Array<string>", ""));
+            const serializedParams = ObjectSerializer.serialize(terms, "Array<string>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("terms", serializedParam);
+            }
         }
 
 

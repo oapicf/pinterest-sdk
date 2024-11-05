@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TemplateResponse_date_range")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRange {
 
   private JsonNullable<TemplateResponseDateRangeDynamicDateRange> dynamicDateRange = JsonNullable.<TemplateResponseDateRangeDynamicDateRange>undefined();
@@ -43,7 +43,7 @@ public class TemplateResponseDateRange {
   /**
    * Get dynamicDateRange
    * @return dynamicDateRange
-  */
+   */
   @Valid 
   @Schema(name = "dynamic_date_range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("dynamic_date_range")
@@ -63,7 +63,7 @@ public class TemplateResponseDateRange {
   /**
    * Get relativeDateRange
    * @return relativeDateRange
-  */
+   */
   @Valid 
   @Schema(name = "relative_date_range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("relative_date_range")
@@ -83,7 +83,7 @@ public class TemplateResponseDateRange {
   /**
    * Get absoluteDateRange
    * @return absoluteDateRange
-  */
+   */
   @Valid 
   @Schema(name = "absolute_date_range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("absolute_date_range")

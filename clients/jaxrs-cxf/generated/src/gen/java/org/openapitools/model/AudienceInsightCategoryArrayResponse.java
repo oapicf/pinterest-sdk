@@ -16,7 +16,7 @@ public class AudienceInsightCategoryArrayResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid AudienceInsightCategoryCommon> items;
+  private List<@Valid AudienceInsightCategoryCommon> items = new ArrayList<>();
  /**
    * Get items
    * @return items

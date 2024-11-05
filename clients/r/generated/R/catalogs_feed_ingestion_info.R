@@ -19,8 +19,7 @@ CatalogsFeedIngestionInfo <- R6::R6Class(
     `IN_STOCK` = NULL,
     `OUT_OF_STOCK` = NULL,
     `PREORDER` = NULL,
-    #' Initialize a new CatalogsFeedIngestionInfo class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedIngestionInfo class.
     #'
@@ -28,7 +27,6 @@ CatalogsFeedIngestionInfo <- R6::R6Class(
     #' @param OUT_OF_STOCK The number of ingested products that are in out of stock.
     #' @param PREORDER The number of ingested products that are in preorder.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`IN_STOCK` = NULL, `OUT_OF_STOCK` = NULL, `PREORDER` = NULL, ...) {
       if (!is.null(`IN_STOCK`)) {
         if (!(is.numeric(`IN_STOCK`) && length(`IN_STOCK`) == 1)) {
@@ -49,13 +47,11 @@ CatalogsFeedIngestionInfo <- R6::R6Class(
         self$`PREORDER` <- `PREORDER`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedIngestionInfo in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedIngestionInfoObject <- list()
       if (!is.null(self$`IN_STOCK`)) {
@@ -72,14 +68,12 @@ CatalogsFeedIngestionInfo <- R6::R6Class(
       }
       CatalogsFeedIngestionInfoObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedIngestionInfo
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedIngestionInfo
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedIngestionInfo
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`IN_STOCK`)) {
@@ -93,13 +87,11 @@ CatalogsFeedIngestionInfo <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedIngestionInfo in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`IN_STOCK`)) {
@@ -130,14 +122,12 @@ CatalogsFeedIngestionInfo <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedIngestionInfo
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedIngestionInfo
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedIngestionInfo
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`IN_STOCK` <- this_object$`IN_STOCK`
@@ -145,53 +135,42 @@ CatalogsFeedIngestionInfo <- R6::R6Class(
       self$`PREORDER` <- this_object$`PREORDER`
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedIngestionInfo
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedIngestionInfo and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedIngestionInfo
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

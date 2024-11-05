@@ -19,11 +19,11 @@ import org.openapitools.client.models.BatchOperation
 import org.openapitools.client.models.CatalogsItemsCreateBatchRequest
 import org.openapitools.client.models.CatalogsItemsDeleteBatchRequest
 import org.openapitools.client.models.CatalogsItemsDeleteDiscontinuedBatchRequest
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsItemsUpdateBatchRequest
 import org.openapitools.client.models.CatalogsItemsUpsertBatchRequest
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemDeleteBatchRecord
-import org.openapitools.client.models.Language
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -43,11 +43,12 @@ interface CatalogsItemsBatchRequest {
     @Json(name = "country")
     val country: Country
     @Json(name = "language")
-    val language: Language
+    val language: CatalogsItemsRequestLanguage
     @Json(name = "operation")
     val operation: BatchOperation
     /* Array with catalogs items */
     @Json(name = "items")
     val items: kotlin.collections.List<ItemDeleteBatchRecord>
+
 }
 

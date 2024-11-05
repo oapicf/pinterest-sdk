@@ -80,11 +80,11 @@ private class OASCampaignResponseTest {
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
-        System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
+        System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
         System.assertEquals('objectiveType', x-property-mappings.get('objective_type'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
         System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
-        System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
         System.assertEquals('isCampaignBudgetOptimization', x-property-mappings.get('is_campaign_budget_optimization'));
+        System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
     }
 }

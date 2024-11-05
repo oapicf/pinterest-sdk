@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CatalogsCreativeAssetsItemsFilter.h"
 #include "CatalogsHotelItemsFilter.h"
 #include "CatalogsRetailItemsFilter.h"
 #include "CatalogsType.h"
@@ -63,11 +64,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setItemIds(std::list <std::string> item_ids);
-	/*! \brief Get Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	/*! \brief Get Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
@@ -77,12 +78,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setHotelIds(std::list <std::string> hotel_ids);
+	/*! \brief Get 
+	 */
+	std::list<std::string> getCreativeAssetsIds();
+
+	/*! \brief Set 
+	 */
+	void setCreativeAssetsIds(std::list <std::string> creative_assets_ids);
 
 private:
 	CatalogsType catalog_type;
 	std::list <std::string>item_ids;
 	std::string catalog_id;
 	std::list <std::string>hotel_ids;
+	std::list <std::string>creative_assets_ids;
 	void __init();
 	void __cleanup();
 

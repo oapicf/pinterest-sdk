@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 
 
 
@@ -33,7 +33,7 @@ import org.openapitools.model.GridClickType;
  */
 
 @ApiModel(description = "Creation fields")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdCommon   {
   
   private String adGroupId;
@@ -49,7 +49,7 @@ public class AdCommon   {
   private Boolean isRemovable;
   private String name;
   private EntityStatus status;
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private String viewTrackingUrl;
   private String leadFormId;
   private GridClickType gridClickType;
@@ -65,7 +65,7 @@ public class AdCommon   {
     BUY_NOW("BUY_NOW"),
     CONTACT_US("CONTACT_US"),
     GET_QUOTE("GET_QUOTE"),
-    VISIT_WEBSITE("VISIT_WEBSITE"),
+    VISIT_SITE("VISIT_SITE"),
     APPLY_NOW("APPLY_NOW"),
     BOOK_NOW("BOOK_NOW"),
     REQUEST_DEMO("REQUEST_DEMO"),
@@ -73,8 +73,7 @@ public class AdCommon   {
     FIND_A_DEALER("FIND_A_DEALER"),
     ADD_TO_CART("ADD_TO_CART"),
     WATCH_NOW("WATCH_NOW"),
-    READ_MORE("READ_MORE"),
-    NULL("null");
+    READ_MORE("READ_MORE");
 
     private String value;
 
@@ -90,7 +89,7 @@ public class AdCommon   {
   }
 
   private CustomizableCtaTypeEnum customizableCtaType;
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
 
   /**
    * ID of the ad group that contains the ad.
@@ -111,7 +110,7 @@ public class AdCommon   {
   }
 
   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    */
   public AdCommon androidDeepLink(String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
@@ -119,7 +118,7 @@ public class AdCommon   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
   @JsonProperty("android_deep_link")
   public String getAndroidDeepLink() {
     return androidDeepLink;
@@ -236,7 +235,7 @@ public class AdCommon   {
   }
 
   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    */
   public AdCommon iosDeepLink(String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
@@ -244,7 +243,7 @@ public class AdCommon   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
   @JsonProperty("ios_deep_link")
   public String getIosDeepLink() {
     return iosDeepLink;
@@ -326,7 +325,7 @@ public class AdCommon   {
 
   /**
    */
-  public AdCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -334,10 +333,10 @@ public class AdCommon   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -395,7 +394,7 @@ public class AdCommon   {
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    */
   public AdCommon customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
@@ -403,7 +402,7 @@ public class AdCommon   {
   }
 
   
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
   @JsonProperty("customizable_cta_type")
   public CustomizableCtaTypeEnum getCustomizableCtaType() {
     return customizableCtaType;
@@ -413,19 +412,20 @@ public class AdCommon   {
   }
 
   /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    */
-  public AdCommon quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdCommon quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 

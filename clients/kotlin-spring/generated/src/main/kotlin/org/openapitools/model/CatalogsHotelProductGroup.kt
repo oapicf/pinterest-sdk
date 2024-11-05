@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsHotelProductGroupFilters
@@ -20,7 +21,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param catalogType 
  * @param id ID of the hotel product group.
  * @param filters 
- * @param catalogId 
+ * @param catalogId Catalog id pertaining to the hotel product group.
  * @param name Name of hotel product group
  * @param description 
  * @param createdAt Unix timestamp in seconds of when catalog product group was created.
@@ -40,7 +41,7 @@ data class CatalogsHotelProductGroup(
     @get:JsonProperty("filters", required = true) val filters: CatalogsHotelProductGroupFilters,
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", required = true, description = "")
+    @Schema(example = "null", required = true, description = "Catalog id pertaining to the hotel product group.")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
     @Schema(example = "Most Popular", description = "Name of hotel product group")
@@ -54,15 +55,23 @@ data class CatalogsHotelProductGroup(
 
     @Schema(example = "1622742155000", description = "Unix timestamp in seconds of last time catalog product group was updated.")
     @get:JsonProperty("updated_at") val updatedAt: kotlin.Int? = null
-) {
+    ) {
 
     /**
     * 
     * Values: HOTEL
     */
-    enum class CatalogType(val value: kotlin.String) {
+    enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("HOTEL") HOTEL("HOTEL")
+        HOTEL("HOTEL");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CatalogType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

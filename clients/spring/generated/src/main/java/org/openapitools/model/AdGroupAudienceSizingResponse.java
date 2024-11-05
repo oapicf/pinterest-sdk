@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * AdGroupAudienceSizingResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingResponse {
 
   private BigDecimal audienceSizeLowerBound;
@@ -34,7 +34,7 @@ public class AdGroupAudienceSizingResponse {
   /**
    * The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
    * @return audienceSizeLowerBound
-  */
+   */
   @Valid 
   @Schema(name = "audience_size_lower_bound", example = "100000", description = "The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_size_lower_bound")
@@ -54,7 +54,7 @@ public class AdGroupAudienceSizingResponse {
   /**
    * The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
    * @return audienceSizeUpperBound
-  */
+   */
   @Valid 
   @Schema(name = "audience_size_upper_bound", example = "150000", description = "The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_size_upper_bound")

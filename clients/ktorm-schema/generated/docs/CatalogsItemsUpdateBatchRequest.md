@@ -6,7 +6,7 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **country** | country | long NOT NULL |  | [**Country**](Country.md) |  |  [foreignkey]
-**language** | language | long NOT NULL |  | [**Language**](Language.md) |  |  [foreignkey]
+**language** | language | long NOT NULL |  | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  [foreignkey]
 **operation** | operation | long NOT NULL |  | [**BatchOperation**](BatchOperation.md) |  |  [foreignkey]
 **items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ItemUpdateBatchRecord&gt;**](ItemUpdateBatchRecord.md) | Array with catalogs items | 
 

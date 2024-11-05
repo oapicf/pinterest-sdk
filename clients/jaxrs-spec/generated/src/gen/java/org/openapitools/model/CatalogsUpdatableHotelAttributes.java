@@ -22,25 +22,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsUpdatableHotelAttributes")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpdatableHotelAttributes   {
-  private @Valid String name;
-  private @Valid String link;
-  private @Valid String description;
-  private @Valid String brand;
-  private @Valid BigDecimal latitude;
-  private @Valid BigDecimal longitude;
+  private String name;
+  private String link;
+  private String description;
+  private String brand;
+  private BigDecimal latitude;
+  private BigDecimal longitude;
   private @Valid List<String> neighborhood;
-  private @Valid CatalogsHotelAddress address;
-  private @Valid String customLabel0;
-  private @Valid String customLabel1;
-  private @Valid String customLabel2;
-  private @Valid String customLabel3;
-  private @Valid String customLabel4;
-  private @Valid String category;
-  private @Valid String basePrice;
-  private @Valid String salePrice;
-  private @Valid CatalogsHotelGuestRatings guestRatings;
+  private CatalogsHotelAddress address;
+  private String customLabel0;
+  private String customLabel1;
+  private String customLabel2;
+  private String customLabel3;
+  private String customLabel4;
+  private String category;
+  private String basePrice;
+  private String salePrice;
+  private CatalogsHotelGuestRatings guestRatings;
 
   /**
    * The hotel&#39;s name.
@@ -133,7 +133,7 @@ public class CatalogsUpdatableHotelAttributes   {
   
   @ApiModelProperty(value = "Latitude of the hotel.")
   @JsonProperty("latitude")
-  public BigDecimal getLatitude() {
+  @Valid public BigDecimal getLatitude() {
     return latitude;
   }
 
@@ -153,7 +153,7 @@ public class CatalogsUpdatableHotelAttributes   {
   
   @ApiModelProperty(value = "Longitude of the hotel.")
   @JsonProperty("longitude")
-  public BigDecimal getLongitude() {
+  @Valid public BigDecimal getLongitude() {
     return longitude;
   }
 
@@ -208,7 +208,7 @@ public class CatalogsUpdatableHotelAttributes   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("address")
-  public CatalogsHotelAddress getAddress() {
+  @Valid public CatalogsHotelAddress getAddress() {
     return address;
   }
 
@@ -387,7 +387,7 @@ public class CatalogsUpdatableHotelAttributes   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("guest_ratings")
-  public CatalogsHotelGuestRatings getGuestRatings() {
+  @Valid public CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
   }
 

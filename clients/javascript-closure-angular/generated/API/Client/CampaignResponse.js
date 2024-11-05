@@ -54,7 +54,7 @@ API.Client.CampaignResponse.prototype.dailySpendCap;
 API.Client.CampaignResponse.prototype.orderLineId;
 
 /**
- * @type {!API.Client.AdCommon_tracking_urls}
+ * @type {!API.Client.TrackingUrls}
  * @export
  */
 API.Client.CampaignResponse.prototype.trackingUrls;
@@ -74,10 +74,11 @@ API.Client.CampaignResponse.prototype.startTime;
 API.Client.CampaignResponse.prototype.endTime;
 
 /**
- * @type {!API.Client.CampaignSummaryStatus}
+ * Determine if a campaign has flexible daily budgets setup.
+ * @type {!boolean}
  * @export
  */
-API.Client.CampaignResponse.prototype.summaryStatus;
+API.Client.CampaignResponse.prototype.isFlexibleDailyBudgets;
 
 /**
  * @type {!API.Client.ObjectiveType}
@@ -107,16 +108,15 @@ API.Client.CampaignResponse.prototype.updatedTime;
 API.Client.CampaignResponse.prototype.type;
 
 /**
- * Determines if a campaign has flexible daily budgets setup.
- * @type {!boolean}
- * @export
- */
-API.Client.CampaignResponse.prototype.isFlexibleDailyBudgets;
-
-/**
  * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
  * @type {!boolean}
  * @export
  */
 API.Client.CampaignResponse.prototype.isCampaignBudgetOptimization;
+
+/**
+ * @type {!API.Client.CampaignSummaryStatus}
+ * @export
+ */
+API.Client.CampaignResponse.prototype.summaryStatus;
 

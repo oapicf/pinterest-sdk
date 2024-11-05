@@ -15,4 +15,6 @@
 
 * `WEB_SESSIONS` (value: `"WEB_SESSIONS"`)
 
+* `VIDEO_COMPLETION` (value: `"VIDEO_COMPLETION"`)
+
 

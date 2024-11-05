@@ -37,5 +37,8 @@ data class BoardMedia (
     @Json(name = "pin_thumbnail_urls")
     val pinThumbnailUrls: kotlin.collections.List<kotlin.String>? = null
 
-)
+) {
+
+
+}
 

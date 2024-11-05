@@ -72,5 +72,8 @@ data class IntegrationLogClientError (
     @Json(name = "stack_trace")
     val stackTrace: kotlin.String? = null
 
-)
+) {
+
+
+}
 

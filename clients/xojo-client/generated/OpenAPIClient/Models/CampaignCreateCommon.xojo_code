@@ -47,7 +47,7 @@ Protected Class CampaignCreateCommon
 
 
 	#tag Property, Flags = &h0
-		tracking_urls As OpenAPIClient.Models.AdCommonTrackingUrls
+		tracking_urls As OpenAPIClient.Models.TrackingUrls
 	#tag EndProperty
 
 
@@ -64,11 +64,6 @@ Protected Class CampaignCreateCommon
 			Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 		#tag EndNote
 		end_time As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		summary_status As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -185,7 +180,7 @@ Protected Class CampaignCreateCommon
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdCommonTrackingUrls"
+			Type="TrackingUrls"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -202,14 +197,6 @@ Protected Class CampaignCreateCommon
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="summary_status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CampaignSummaryStatus"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

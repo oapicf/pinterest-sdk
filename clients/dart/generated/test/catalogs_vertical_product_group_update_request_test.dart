@@ -31,8 +31,18 @@ void main() {
       // TODO
     });
 
-    // CatalogsHotelProductGroupFilters filters
+    // CatalogsCreativeAssetsProductGroupFilters filters
     test('to test the property `filters`', () async {
+      // TODO
+    });
+
+    // Country country
+    test('to test the property `country`', () async {
+      // TODO
+    });
+
+    // CatalogsLocale locale
+    test('to test the property `locale`', () async {
       // TODO
     });
 

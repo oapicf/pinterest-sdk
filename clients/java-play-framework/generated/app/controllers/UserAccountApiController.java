@@ -42,7 +42,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserAccountApiController extends Controller {
     private final UserAccountApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -500,12 +500,26 @@ public class UserAccountApiController extends Controller {
         } else {
             throw new IllegalArgumentException("'UserWebsiteVerifyRequest' parameter is required");
         }
-        return imp.verifyWebsiteUpdateHttp(request, userWebsiteVerifyRequest);
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
+        return imp.verifyWebsiteUpdateHttp(request, userWebsiteVerifyRequest, adAccountId);
     }
 
     @ApiAction
     public Result websiteVerificationGet(Http.Request request) throws Exception {
-        return imp.websiteVerificationGetHttp(request);
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
+        return imp.websiteVerificationGetHttp(request, adAccountId);
     }
 
 }

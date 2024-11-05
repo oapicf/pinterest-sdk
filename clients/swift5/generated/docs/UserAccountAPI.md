@@ -35,7 +35,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 import OpenAPIClient
 
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let explicitFollowing = true // Bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
@@ -57,7 +57,7 @@ UserAccountAPI.boardsUserFollowsList(bookmark: bookmark, pageSize: pageSize, exp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **explicitFollowing** | **Bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```swift
@@ -143,7 +143,7 @@ Get a list of your followers.
 import OpenAPIClient
 
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // List followers
 UserAccountAPI.followersList(bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -163,7 +163,7 @@ UserAccountAPI.followersList(bookmark: bookmark, pageSize: pageSize) { (response
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -217,7 +217,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -504,7 +504,7 @@ import OpenAPIClient
 
 let username = "username_example" // String | A valid username
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // List following interests
 UserAccountAPI.userAccountFollowedInterests(username: username, bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String** | A valid username | 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -533,7 +533,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```swift
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -607,7 +607,7 @@ Get a list of who a certain user follows.
 import OpenAPIClient
 
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let feedType = UserFollowingFeedType() // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
 let explicitFollowing = true // Bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
@@ -630,7 +630,7 @@ UserAccountAPI.userFollowingGet(bookmark: bookmark, pageSize: pageSize, feedType
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **feedType** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
  **explicitFollowing** | **Bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -665,7 +665,7 @@ Get user websites, claimed or not
 import OpenAPIClient
 
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 // Get user websites
 UserAccountAPI.userWebsitesGet(bookmark: bookmark, pageSize: pageSize) { (response, error) in
@@ -685,7 +685,7 @@ UserAccountAPI.userWebsitesGet(bookmark: bookmark, pageSize: pageSize) { (respon
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 
 # **verifyWebsiteUpdate**
 ```swift
-    open class func verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, completion: @escaping (_ data: UserWebsiteSummary?, _ error: Error?) -> Void)
+    open class func verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: String? = nil, completion: @escaping (_ data: UserWebsiteSummary?, _ error: Error?) -> Void)
 ```
 
 Verify website
@@ -717,9 +717,10 @@ Verify a website as a signed-in user.
 import OpenAPIClient
 
 let userWebsiteVerifyRequest = UserWebsiteVerifyRequest(website: "website_example", verificationMethod: "verificationMethod_example") // UserWebsiteVerifyRequest | Verify a website.
+let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Verify website
-UserAccountAPI.verifyWebsiteUpdate(userWebsiteVerifyRequest: userWebsiteVerifyRequest) { (response, error) in
+UserAccountAPI.verifyWebsiteUpdate(userWebsiteVerifyRequest: userWebsiteVerifyRequest, adAccountId: adAccountId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -736,6 +737,7 @@ UserAccountAPI.verifyWebsiteUpdate(userWebsiteVerifyRequest: userWebsiteVerifyRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. | 
+ **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -754,7 +756,7 @@ Name | Type | Description  | Notes
 
 # **websiteVerificationGet**
 ```swift
-    open class func websiteVerificationGet(completion: @escaping (_ data: UserWebsiteVerificationCode?, _ error: Error?) -> Void)
+    open class func websiteVerificationGet(adAccountId: String? = nil, completion: @escaping (_ data: UserWebsiteVerificationCode?, _ error: Error?) -> Void)
 ```
 
 Get user verification code for website claiming
@@ -766,9 +768,10 @@ Get verification code for user to install on the website to claim it.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
+let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get user verification code for website claiming
-UserAccountAPI.websiteVerificationGet() { (response, error) in
+UserAccountAPI.websiteVerificationGet(adAccountId: adAccountId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -781,7 +784,10 @@ UserAccountAPI.websiteVerificationGet() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -789,7 +795,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**Language**](Language.md) |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
 **Items** | [**ItemUpsertBatchRecord[]**](ItemUpsertBatchRecord.md) | Array with catalogs items | 
 

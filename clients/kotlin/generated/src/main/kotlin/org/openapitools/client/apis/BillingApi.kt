@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.AdsCreditRedeemRequest
@@ -49,7 +49,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -59,7 +59,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param adsCreditRedeemRequest Redeem ad credits request.
      * @return AdsCreditRedeemResponse
@@ -91,7 +91,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param adsCreditRedeemRequest Redeem ad credits request.
      * @return ApiResponse<AdsCreditRedeemResponse?>
@@ -134,10 +134,10 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return AdsCreditsDiscountsGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -167,10 +167,10 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<AdsCreditsDiscountsGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -190,7 +190,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun adsCreditsDiscountsGetRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -219,11 +219,11 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return BillingProfilesGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -253,11 +253,11 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
 
     /**
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<BillingProfilesGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -278,7 +278,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun billingProfilesGetRequestConfig(adAccountId: kotlin.String, isActive: kotlin.Boolean, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -532,7 +532,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return SsioInsertionOrdersStatusGetByAdAccount200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -565,7 +565,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<SsioInsertionOrdersStatusGetByAdAccount200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -585,7 +585,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun ssioInsertionOrdersStatusGetByAdAccountRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -691,7 +691,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param pinOrderId The pin order id associated with the ssio insertino order (optional)
      * @return SsioOrderLinesGetByAdAccount200Response
      * @throws IllegalStateException If the request is not correctly configured
@@ -725,7 +725,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param pinOrderId The pin order id associated with the ssio insertino order (optional)
      * @return ApiResponse<SsioOrderLinesGetByAdAccount200Response?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -746,7 +746,7 @@ class BillingApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param pinOrderId The pin order id associated with the ssio insertino order (optional)
      * @return RequestConfig
      */

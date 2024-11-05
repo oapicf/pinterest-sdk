@@ -7,9 +7,9 @@ case class ItemAttributes (
     _adLink: Option[String],
     /* Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest. */
     _adult: Option[Boolean],
-    /* The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. */
+    /* The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. */
     _ageGroup: Option[String],
-    /* The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. */
+    /* The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’. */
     _availability: Option[String],
     /* Average reviews for the item. Can be a number from 1-5. */
     _averageReviewRating: Option[Number],
@@ -37,7 +37,7 @@ case class ItemAttributes (
     _freeShippingLabel: Option[Boolean],
     /* The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. */
     _freeShippingLimit: Option[String],
-    /* The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. */
+    /* The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’. */
     _gender: Option[String],
     /* The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. */
     _googleProductCategory: Option[String],
@@ -81,9 +81,9 @@ case class ItemAttributes (
     _shippingWidth: Option[String],
     /* The size of the product. */
     _size: Option[String],
-    /* Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. */
+    /* Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’. */
     _sizeSystem: Option[String],
-    /* Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. */
+    /* Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’. */
     _sizeType: Option[String],
     /* Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. */
     _tax: Option[String],
@@ -96,13 +96,15 @@ case class ItemAttributes (
     /* <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p> */
     _additionalImageLink: Option[List[String]],
     /* <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p> */
-    _imageLink: Option[List[String]]
+    _imageLink: Option[List[String]],
+    /* <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p> */
+    _videoLink: Option[String]
 )
 object ItemAttributes {
-    def toStringBody(var_adLink: Object, var_adult: Object, var_ageGroup: Object, var_availability: Object, var_averageReviewRating: Object, var_brand: Object, var_checkoutEnabled: Object, var_color: Object, var_condition: Object, var_customLabel0: Object, var_customLabel1: Object, var_customLabel2: Object, var_customLabel3: Object, var_customLabel4: Object, var_description: Object, var_freeShippingLabel: Object, var_freeShippingLimit: Object, var_gender: Object, var_googleProductCategory: Object, var_gtin: Object, var_id: Object, var_itemGroupId: Object, var_lastUpdatedTime: Object, var_link: Object, var_material: Object, var_minAdPrice: Object, var_mobileLink: Object, var_mpn: Object, var_numberOfRatings: Object, var_numberOfReviews: Object, var_pattern: Object, var_price: Object, var_productType: Object, var_salePrice: Object, var_shipping: Object, var_shippingHeight: Object, var_shippingWeight: Object, var_shippingWidth: Object, var_size: Object, var_sizeSystem: Object, var_sizeType: Object, var_tax: Object, var_title: Object, var_variantNames: Object, var_variantValues: Object, var_additionalImageLink: Object, var_imageLink: Object) =
+    def toStringBody(var_adLink: Object, var_adult: Object, var_ageGroup: Object, var_availability: Object, var_averageReviewRating: Object, var_brand: Object, var_checkoutEnabled: Object, var_color: Object, var_condition: Object, var_customLabel0: Object, var_customLabel1: Object, var_customLabel2: Object, var_customLabel3: Object, var_customLabel4: Object, var_description: Object, var_freeShippingLabel: Object, var_freeShippingLimit: Object, var_gender: Object, var_googleProductCategory: Object, var_gtin: Object, var_id: Object, var_itemGroupId: Object, var_lastUpdatedTime: Object, var_link: Object, var_material: Object, var_minAdPrice: Object, var_mobileLink: Object, var_mpn: Object, var_numberOfRatings: Object, var_numberOfReviews: Object, var_pattern: Object, var_price: Object, var_productType: Object, var_salePrice: Object, var_shipping: Object, var_shippingHeight: Object, var_shippingWeight: Object, var_shippingWidth: Object, var_size: Object, var_sizeSystem: Object, var_sizeType: Object, var_tax: Object, var_title: Object, var_variantNames: Object, var_variantValues: Object, var_additionalImageLink: Object, var_imageLink: Object, var_videoLink: Object) =
         s"""
         | {
-        | "adLink":$var_adLink,"adult":$var_adult,"ageGroup":$var_ageGroup,"availability":$var_availability,"averageReviewRating":$var_averageReviewRating,"brand":$var_brand,"checkoutEnabled":$var_checkoutEnabled,"color":$var_color,"condition":$var_condition,"customLabel0":$var_customLabel0,"customLabel1":$var_customLabel1,"customLabel2":$var_customLabel2,"customLabel3":$var_customLabel3,"customLabel4":$var_customLabel4,"description":$var_description,"freeShippingLabel":$var_freeShippingLabel,"freeShippingLimit":$var_freeShippingLimit,"gender":$var_gender,"googleProductCategory":$var_googleProductCategory,"gtin":$var_gtin,"id":$var_id,"itemGroupId":$var_itemGroupId,"lastUpdatedTime":$var_lastUpdatedTime,"link":$var_link,"material":$var_material,"minAdPrice":$var_minAdPrice,"mobileLink":$var_mobileLink,"mpn":$var_mpn,"numberOfRatings":$var_numberOfRatings,"numberOfReviews":$var_numberOfReviews,"pattern":$var_pattern,"price":$var_price,"productType":$var_productType,"salePrice":$var_salePrice,"shipping":$var_shipping,"shippingHeight":$var_shippingHeight,"shippingWeight":$var_shippingWeight,"shippingWidth":$var_shippingWidth,"size":$var_size,"sizeSystem":$var_sizeSystem,"sizeType":$var_sizeType,"tax":$var_tax,"title":$var_title,"variantNames":$var_variantNames,"variantValues":$var_variantValues,"additionalImageLink":$var_additionalImageLink,"imageLink":$var_imageLink
+        | "adLink":$var_adLink,"adult":$var_adult,"ageGroup":$var_ageGroup,"availability":$var_availability,"averageReviewRating":$var_averageReviewRating,"brand":$var_brand,"checkoutEnabled":$var_checkoutEnabled,"color":$var_color,"condition":$var_condition,"customLabel0":$var_customLabel0,"customLabel1":$var_customLabel1,"customLabel2":$var_customLabel2,"customLabel3":$var_customLabel3,"customLabel4":$var_customLabel4,"description":$var_description,"freeShippingLabel":$var_freeShippingLabel,"freeShippingLimit":$var_freeShippingLimit,"gender":$var_gender,"googleProductCategory":$var_googleProductCategory,"gtin":$var_gtin,"id":$var_id,"itemGroupId":$var_itemGroupId,"lastUpdatedTime":$var_lastUpdatedTime,"link":$var_link,"material":$var_material,"minAdPrice":$var_minAdPrice,"mobileLink":$var_mobileLink,"mpn":$var_mpn,"numberOfRatings":$var_numberOfRatings,"numberOfReviews":$var_numberOfReviews,"pattern":$var_pattern,"price":$var_price,"productType":$var_productType,"salePrice":$var_salePrice,"shipping":$var_shipping,"shippingHeight":$var_shippingHeight,"shippingWeight":$var_shippingWeight,"shippingWidth":$var_shippingWidth,"size":$var_size,"sizeSystem":$var_sizeSystem,"sizeType":$var_sizeType,"tax":$var_tax,"title":$var_title,"variantNames":$var_variantNames,"variantValues":$var_variantValues,"additionalImageLink":$var_additionalImageLink,"imageLink":$var_imageLink,"videoLink":$var_videoLink
         | }
         """.stripMargin
 }

@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionInfo
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionInfo {
 
   private Integer IN_STOCK;
@@ -35,7 +35,7 @@ public class CatalogsFeedIngestionInfo {
   /**
    * The number of ingested products that are in stock.
    * @return IN_STOCK
-  */
+   */
   
   @Schema(name = "IN_STOCK", description = "The number of ingested products that are in stock.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IN_STOCK")
@@ -55,7 +55,7 @@ public class CatalogsFeedIngestionInfo {
   /**
    * The number of ingested products that are in out of stock.
    * @return OUT_OF_STOCK
-  */
+   */
   
   @Schema(name = "OUT_OF_STOCK", description = "The number of ingested products that are in out of stock.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OUT_OF_STOCK")
@@ -75,7 +75,7 @@ public class CatalogsFeedIngestionInfo {
   /**
    * The number of ingested products that are in preorder.
    * @return PREORDER
-  */
+   */
   
   @Schema(name = "PREORDER", description = "The number of ingested products that are in preorder.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PREORDER")

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Order Line Paid Type
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public enum OrderLinePaidType {
   
   PAID("PAID"),
@@ -29,9 +29,7 @@ public enum OrderLinePaidType {
   
   MAKE_GOOD("MAKE_GOOD"),
   
-  TEST("TEST"),
-  
-  NULL("null");
+  TEST("TEST");
 
   private String value;
 

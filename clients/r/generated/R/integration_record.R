@@ -47,8 +47,7 @@ IntegrationRecord <- R6::R6Class(
     `additional_id_1` = NULL,
     `created_time` = NULL,
     `updated_time` = NULL,
-    #' Initialize a new IntegrationRecord class.
-    #'
+
     #' @description
     #' Initialize a new IntegrationRecord class.
     #'
@@ -70,7 +69,6 @@ IntegrationRecord <- R6::R6Class(
     #' @param created_time created_time
     #' @param updated_time updated_time
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `external_business_id` = NULL, `connected_merchant_id` = NULL, `connected_user_id` = NULL, `connected_advertiser_id` = NULL, `connected_lba_id` = NULL, `connected_tag_id` = NULL, `partner_access_token` = NULL, `partner_refresh_token` = NULL, `partner_primary_email` = NULL, `partner_access_token_expiry` = NULL, `partner_refresh_token_expiry` = NULL, `scopes` = NULL, `partner_metadata` = NULL, `additional_id_1` = NULL, `created_time` = NULL, `updated_time` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -175,13 +173,11 @@ IntegrationRecord <- R6::R6Class(
         self$`updated_time` <- `updated_time`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationRecord in JSON format
-    #' @export
     toJSON = function() {
       IntegrationRecordObject <- list()
       if (!is.null(self$`id`)) {
@@ -254,14 +250,12 @@ IntegrationRecord <- R6::R6Class(
       }
       IntegrationRecordObject
     },
-    #' Deserialize JSON string into an instance of IntegrationRecord
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationRecord
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationRecord
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -317,13 +311,11 @@ IntegrationRecord <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return IntegrationRecord in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -466,14 +458,12 @@ IntegrationRecord <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of IntegrationRecord
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of IntegrationRecord
     #'
     #' @param input_json the JSON input
     #' @return the instance of IntegrationRecord
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -495,33 +485,27 @@ IntegrationRecord <- R6::R6Class(
       self$`updated_time` <- this_object$`updated_time`
       self
     },
-    #' Validate JSON input with respect to IntegrationRecord
-    #'
+
     #' @description
     #' Validate JSON input with respect to IntegrationRecord and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of IntegrationRecord
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -529,13 +513,11 @@ IntegrationRecord <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -544,12 +526,9 @@ IntegrationRecord <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

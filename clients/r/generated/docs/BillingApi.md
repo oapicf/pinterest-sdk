@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -84,7 +84,7 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```R
@@ -139,7 +139,7 @@ library(openapi)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_is_active <- "is_active_example" # character | Return active billing profiles, if false return all billing profiles.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **is_active** | **character**| Return active billing profiles, if false return all billing profiles. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -351,7 +351,7 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- BillingApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -459,7 +459,7 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_pin_order_id <- "0Q01N0000015hekSVDFDC" # character | The pin order id associated with the ssio insertino order (Optional)
 
 api_instance <- BillingApi$new()
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **pin_order_id** | **character**| The pin order id associated with the ssio insertino order | [optional] 
 
 ### Return type

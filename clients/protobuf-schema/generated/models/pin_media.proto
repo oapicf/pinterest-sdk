@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,7 +14,7 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/image_metadata_images.proto";
+import public "models/pin_media_with_image_all_of_images.proto";
 import public "models/pin_media_metadata.proto";
 import public "models/image_metadata.proto";
 import public "models/video_metadata.proto";
@@ -23,7 +23,7 @@ message PinMedia {
 
   string media_type = 329262776;
 
-  ImageMetadataImages images = 111508874;
+  PinMediaWithImageAllOfImages images = 111508874;
 
   repeated PinMediaMetadata items = 100526016;
 

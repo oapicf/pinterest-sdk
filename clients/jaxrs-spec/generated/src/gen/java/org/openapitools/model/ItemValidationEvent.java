@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item validation event")
 @JsonTypeName("ItemValidationEvent")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemValidationEvent   {
-  private @Valid String attribute;
-  private @Valid Integer code;
-  private @Valid String message;
+  private String attribute;
+  private Integer code;
+  private String message;
 
   /**
    * The attribute that the item validation event references

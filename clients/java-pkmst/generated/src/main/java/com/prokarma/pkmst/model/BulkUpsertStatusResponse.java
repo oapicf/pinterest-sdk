@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "ID of the bulk request.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertStatusResponse   {
   @JsonProperty("status")
   private BulkUpsertStatus status;
@@ -30,10 +30,10 @@ public class BulkUpsertStatusResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "")
   public BulkUpsertStatus getStatus() {
     return status;
@@ -48,10 +48,10 @@ public class BulkUpsertStatusResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get resultUrl
    * @return resultUrl
-  **/
+   */
   @ApiModelProperty(example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", value = "")
   public String getResultUrl() {
     return resultUrl;

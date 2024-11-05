@@ -96,40 +96,23 @@ RETAIL(String.valueOf("RETAIL"));
   **/
   private Integer updatedAt;
 
-public enum FeedIdEnum {
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the retail product group.")
+ /**
+   * Catalog id pertaining to the retail product group.
+  **/
+  private String catalogId;
 
-NULL(String.valueOf("null"));
+  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
+ /**
+   * id of the catalogs feed belonging to this catalog product group
+  **/
+  private String feedId;
 
+  @ApiModelProperty(value = "")
+  private String country;
 
-    private String value;
-
-    FeedIdEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FeedIdEnum fromValue(String value) {
-        for (FeedIdEnum b : FeedIdEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  @ApiModelProperty(required = true, value = "")
-  private FeedIdEnum feedId;
+  @ApiModelProperty(value = "")
+  private String locale;
  /**
    * Get catalogType
    * @return catalogType
@@ -317,24 +300,76 @@ NULL(String.valueOf("null"));
   }
 
  /**
-   * Get feedId
+   * Catalog id pertaining to the retail product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsRetailProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+ /**
+   * id of the catalogs feed belonging to this catalog product group
    * @return feedId
   **/
   @JsonProperty("feed_id")
   @NotNull
-  public String getFeedId() {
-    if (feedId == null) {
-      return null;
-    }
-    return feedId.value();
+ @Pattern(regexp="^\\d+$")  public String getFeedId() {
+    return feedId;
   }
 
-  public void setFeedId(FeedIdEnum feedId) {
+  public void setFeedId(String feedId) {
     this.feedId = feedId;
   }
 
-  public CatalogsRetailProductGroup feedId(FeedIdEnum feedId) {
+  public CatalogsRetailProductGroup feedId(String feedId) {
     this.feedId = feedId;
+    return this;
+  }
+
+ /**
+   * Get country
+   * @return country
+  **/
+  @JsonProperty("country")
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public CatalogsRetailProductGroup country(String country) {
+    this.country = country;
+    return this;
+  }
+
+ /**
+   * Get locale
+   * @return locale
+  **/
+  @JsonProperty("locale")
+  public String getLocale() {
+    return locale;
+  }
+
+  public void setLocale(String locale) {
+    this.locale = locale;
+  }
+
+  public CatalogsRetailProductGroup locale(String locale) {
+    this.locale = locale;
     return this;
   }
 
@@ -357,12 +392,15 @@ NULL(String.valueOf("null"));
         Objects.equals(this.status, catalogsRetailProductGroup.status) &&
         Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
         Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt) &&
-        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId);
+        Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
+        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+        Objects.equals(this.country, catalogsRetailProductGroup.country) &&
+        Objects.equals(this.locale, catalogsRetailProductGroup.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, feedId);
+    return Objects.hash(catalogType, id, name, description, filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, country, locale);
   }
 
   @Override
@@ -380,7 +418,10 @@ NULL(String.valueOf("null"));
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,9 +1,12 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.LeadFormArrayResponse
+import org.openapitools.server.api.model.LeadFormCreateRequest
 import org.openapitools.server.api.model.LeadFormResponse
 import org.openapitools.server.api.model.LeadFormTestRequest
 import org.openapitools.server.api.model.LeadFormTestResponse
+import org.openapitools.server.api.model.LeadFormUpdateRequest
 import org.openapitools.server.api.model.LeadFormsList200Response
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
@@ -27,9 +30,15 @@ interface LeadFormsApi  {
     /* leadFormTestCreate
      * Create lead form test data */
     suspend fun leadFormTestCreate(adAccountId:kotlin.String?,leadFormId:kotlin.String?,leadFormTestRequest:LeadFormTestRequest?,context:OperationRequest):Response<LeadFormTestResponse>
+    /* leadFormsCreate
+     * Create lead forms */
+    suspend fun leadFormsCreate(adAccountId:kotlin.String?,leadFormCreateRequest:kotlin.Array<LeadFormCreateRequest>?,context:OperationRequest):Response<LeadFormArrayResponse>
     /* leadFormsList
-     * Get lead forms */
+     * List lead forms */
     suspend fun leadFormsList(adAccountId:kotlin.String?,pageSize:kotlin.Int?,order:kotlin.String?,bookmark:kotlin.String?,context:OperationRequest):Response<LeadFormsList200Response>
+    /* leadFormsUpdate
+     * Update lead forms */
+    suspend fun leadFormsUpdate(adAccountId:kotlin.String?,leadFormUpdateRequest:kotlin.Array<LeadFormUpdateRequest>?,context:OperationRequest):Response<LeadFormArrayResponse>
     companion object {
         const val address = "LeadFormsApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

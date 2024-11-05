@@ -7,7 +7,7 @@ MyApp.add_route('GET', '/v5/search/partner/pins', {
   "nickname" => "search_partner_pins",
   "responseClass" => "search_partner_pins_200_response",
   "endpoint" => "/search/partner/pins",
-  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.",
+  "notes" => "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.",
   "parameters" => [
     {
       "name" => "term",
@@ -59,7 +59,7 @@ MyApp.add_route('GET', '/v5/search/boards', {
   "nickname" => "search_user_boards/get",
   "responseClass" => "search_user_boards_get_200_response",
   "endpoint" => "/search/boards",
-  "notes" => "Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.",
+  "notes" => "Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -77,7 +77,7 @@ MyApp.add_route('GET', '/v5/search/boards', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -104,7 +104,7 @@ MyApp.add_route('GET', '/v5/search/pins', {
   "nickname" => "search_user_pins/list",
   "responseClass" => "pins_list_200_response",
   "endpoint" => "/search/pins",
-  "notes" => "Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.",
+  "notes" => "Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.",
   "parameters" => [
     {
       "name" => "ad_account_id",

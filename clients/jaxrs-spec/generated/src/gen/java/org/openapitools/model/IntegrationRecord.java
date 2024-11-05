@@ -18,25 +18,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Integration record")
 @JsonTypeName("IntegrationRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationRecord   {
-  private @Valid String id;
-  private @Valid String externalBusinessId;
-  private @Valid String connectedMerchantId;
-  private @Valid String connectedUserId;
-  private @Valid String connectedAdvertiserId;
-  private @Valid String connectedLbaId;
-  private @Valid String connectedTagId;
-  private @Valid String partnerAccessToken;
-  private @Valid String partnerRefreshToken;
-  private @Valid String partnerPrimaryEmail;
-  private @Valid Integer partnerAccessTokenExpiry;
-  private @Valid Integer partnerRefreshTokenExpiry;
-  private @Valid String scopes;
-  private @Valid String partnerMetadata;
-  private @Valid String additionalId1;
-  private @Valid Integer createdTime;
-  private @Valid Integer updatedTime;
+  private String id;
+  private String externalBusinessId;
+  private String connectedMerchantId;
+  private String connectedUserId;
+  private String connectedAdvertiserId;
+  private String connectedLbaId;
+  private String connectedTagId;
+  private String partnerAccessToken;
+  private String partnerRefreshToken;
+  private String partnerPrimaryEmail;
+  private Integer partnerAccessTokenExpiry;
+  private Integer partnerRefreshTokenExpiry;
+  private String scopes;
+  private String partnerMetadata;
+  private String additionalId1;
+  private Integer createdTime;
+  private Integer updatedTime;
 
   /**
    **/
@@ -48,7 +48,7 @@ public class IntegrationRecord   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 

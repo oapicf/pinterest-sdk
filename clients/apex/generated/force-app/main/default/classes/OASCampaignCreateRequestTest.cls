@@ -80,7 +80,6 @@ private class OASCampaignCreateRequestTest {
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
-        System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
         System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
         System.assertEquals('defaultAdGroupBudgetInMicroCurrency', x-property-mappings.get('default_ad_group_budget_in_micro_currency'));
         System.assertEquals('isAutomatedCampaign', x-property-mappings.get('is_automated_campaign'));
@@ -101,7 +100,6 @@ private class OASCampaignCreateRequestTest {
         System.assertEquals(null, campaignCreateRequest.trackingUrls);
         System.assertEquals(null, campaignCreateRequest.startTime);
         System.assertEquals(null, campaignCreateRequest.endTime);
-        System.assertEquals(null, campaignCreateRequest.summaryStatus);
         System.assertEquals(null, campaignCreateRequest.defaultAdGroupBudgetInMicroCurrency);
         System.assertEquals(null, campaignCreateRequest.objectiveType);
     }

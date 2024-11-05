@@ -29,8 +29,8 @@
     },
     {
       "name": "optimization_goal_metadata",
-      "type": ["null", "model.AdGroupCommonOptimizationGoalMetadata"],
-      "doc": "",
+      "type": ["null", "model.OptimizationGoalMetadata"],
+      "doc": "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.",
       "default": null
     },
     {
@@ -60,13 +60,13 @@
     {
       "name": "lifetime_frequency_cap",
       "type": ["null", "int"],
-      "doc": "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.",
+      "doc": "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.",
       "default": null
     },
     {
       "name": "tracking_urls",
-      "type": ["null", "model.AdGroupCommonTrackingUrls"],
-      "doc": "",
+      "type": ["null", "model.TrackingUrls"],
+      "doc": "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.",
       "default": null
     },
     {
@@ -78,7 +78,7 @@
     {
       "name": "placement_group",
       "type": ["null", "model.PlacementGroupType"],
-      "doc": "<a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.",
+      "doc": "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.",
       "default": null
     },
     {
@@ -105,11 +105,19 @@
         "symbols": [
           "AUTOMATIC_BID",
           "MAX_BID",
-          "TARGET_AVG",
-          "null"
+          "TARGET_AVG"
         ]
       }],
-      "doc": "Bid strategy type",
+      "doc": "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.",
+      "default": null
+    },
+    {
+      "name": "targeting_template_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].",
       "default": null
     }
   ]

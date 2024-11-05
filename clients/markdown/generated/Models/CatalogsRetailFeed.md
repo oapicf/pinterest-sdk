@@ -3,9 +3,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **created\_at** | **Date** |  | [optional] [default to null] |
-| **id** | **String** |  | [optional] [default to null] |
-| **updated\_at** | **Date** |  | [optional] [default to null] |
+| **created\_at** | **Date** |  | [default to null] |
+| **id** | **String** |  | [default to null] |
+| **updated\_at** | **Date** |  | [default to null] |
 | **name** | **String** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | [default to null] |
 | **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [default to null] |
 | **catalog\_type** | [**CatalogsType**](CatalogsType.md) |  | [default to null] |

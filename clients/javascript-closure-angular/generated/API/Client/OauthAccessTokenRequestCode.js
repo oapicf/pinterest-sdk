@@ -28,4 +28,5 @@ API.Client.OauthAccessTokenRequestCode.prototype.redirectUri;
 API.Client.OauthAccessTokenRequestCode.GrantTypeEnum = { 
   authorization_code: 'authorization_code',
   refresh_token: 'refresh_token',
+  client_credentials: 'client_credentials',
 }

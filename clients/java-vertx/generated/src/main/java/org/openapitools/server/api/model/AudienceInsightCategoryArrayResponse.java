@@ -11,7 +11,7 @@ import org.openapitools.server.api.model.AudienceInsightCategoryCommon;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceInsightCategoryArrayResponse   {
   
-  private List<AudienceInsightCategoryCommon> items;
+  private List<AudienceInsightCategoryCommon> items = new ArrayList<>();
 
   public AudienceInsightCategoryArrayResponse () {
 

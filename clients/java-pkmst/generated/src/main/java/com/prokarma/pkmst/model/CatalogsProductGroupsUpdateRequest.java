@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsLocale;
 import com.prokarma.pkmst.model.CatalogsProductGroupFiltersRequest;
 import com.prokarma.pkmst.model.CatalogsProductGroupUpdateRequest;
 import com.prokarma.pkmst.model.CatalogsVerticalProductGroupUpdateRequest;
+import com.prokarma.pkmst.model.Country;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -20,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CatalogsProductGroupsUpdateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsUpdateRequest   {
   @JsonProperty("name")
   private String name;
@@ -39,10 +41,10 @@ public class CatalogsProductGroupsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getName() {
     return name;
@@ -57,10 +59,10 @@ public class CatalogsProductGroupsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -75,10 +77,10 @@ public class CatalogsProductGroupsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * boolean indicator of whether the product group is being featured or not
    * @return isFeatured
-  **/
+   */
   @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
   public Boolean getIsFeatured() {
     return isFeatured;
@@ -93,10 +95,10 @@ public class CatalogsProductGroupsUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;

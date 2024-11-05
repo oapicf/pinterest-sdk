@@ -14,7 +14,7 @@ import org.openapitools.model.SSIOAccountPMPName;
 /**
  * SSIOAccountResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountResponse   {
   @JsonProperty("eligible")
   private Boolean eligible;
@@ -77,7 +77,7 @@ public class SSIOAccountResponse   {
 
   public SSIOAccountResponse addBilltoInfosItem(SSIOAccountItem billtoInfosItem) {
     if (this.billtoInfos == null) {
-      this.billtoInfos = ;
+      this.billtoInfos = new ArrayList<>();
     }
     this.billtoInfos.add(billtoInfosItem);
     return this;
@@ -121,7 +121,7 @@ public class SSIOAccountResponse   {
 
   public SSIOAccountResponse addPmpNamesItem(SSIOAccountPMPName pmpNamesItem) {
     if (this.pmpNames == null) {
-      this.pmpNames = ;
+      this.pmpNames = new ArrayList<>();
     }
     this.pmpNames.add(pmpNamesItem);
     return this;

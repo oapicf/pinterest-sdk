@@ -33,7 +33,7 @@ data class CatalogsHotelGuestRatings(
 
     @Schema(example = "null", description = "System you use for guest reviews.")
     @get:JsonProperty("rating_system") val ratingSystem: kotlin.String? = null
-) {
+    ) {
 
 }
 

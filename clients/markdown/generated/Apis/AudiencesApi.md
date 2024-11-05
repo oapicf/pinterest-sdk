@@ -110,8 +110,8 @@ List audiences
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null] |
 | **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] [default to null] [enum: ASCENDING, DESCENDING] |
-| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **ownership\_type** | **String**| &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. | [optional] [default to OWNED] [enum: OWNED, RECEIVED] |
+| **page\_size** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **ownership\_type** | **String**| Filter audiences by ownership type. | [optional] [default to OWNED] [enum: OWNED, RECEIVED] |
 
 ### Return type
 

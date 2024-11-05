@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -15,6 +15,7 @@ import (
 	"encoding/json"
 	"fmt"
 )
+
 
 // CatalogsHotelProductGroupFilters Object holding a group of filters for a hotel product group
 type CatalogsHotelProductGroupFilters struct {
@@ -66,6 +67,7 @@ func (src *CatalogsHotelProductGroupFilters) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
+
 
 type NullableCatalogsHotelProductGroupFilters struct {
 	value *CatalogsHotelProductGroupFilters

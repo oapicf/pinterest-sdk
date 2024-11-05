@@ -25,7 +25,7 @@ data class CatalogsHotelAttributesAllOfMainImage(
 
     @Schema(example = "null", description = "Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image")
     @get:JsonProperty("tag") val tag: kotlin.collections.List<kotlin.String>? = null
-) {
+    ) {
 
 }
 

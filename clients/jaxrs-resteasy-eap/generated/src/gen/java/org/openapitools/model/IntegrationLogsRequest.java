@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Batch of logs sent from an integration application.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Batch of logs sent from an integration application.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsRequest   {
   
   private List<@Valid IntegrationLog> logs = new ArrayList<>();
@@ -25,7 +25,7 @@ public class IntegrationLogsRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("logs")
   @NotNull
-  public List<@Valid IntegrationLog> getLogs() {
+ @Size(min=1,max=250)  public List<@Valid IntegrationLog> getLogs() {
     return logs;
   }
   public void setLogs(List<@Valid IntegrationLog> logs) {

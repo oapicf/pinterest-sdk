@@ -45,53 +45,14 @@ module AdsApiHandlerTestsHelper =
   &quot;destination_url&quot; : &quot;destination_url&quot;,
   &quot;carousel_android_deep_links&quot; : [ &quot;carousel_android_deep_links&quot;, &quot;carousel_android_deep_links&quot; ],
   &quot;carousel_destination_urls&quot; : [ &quot;carousel_destination_urls&quot;, &quot;carousel_destination_urls&quot; ],
-  &quot;tracking_urls&quot; : {
-    &quot;engagement&quot; : [ &quot;engagement&quot;, &quot;engagement&quot; ],
-    &quot;audience_verification&quot; : [ &quot;audience_verification&quot;, &quot;audience_verification&quot; ],
-    &quot;impression&quot; : [ &quot;impression&quot;, &quot;impression&quot; ],
-    &quot;buyable_button&quot; : [ &quot;buyable_button&quot;, &quot;buyable_button&quot; ],
-    &quot;click&quot; : [ &quot;click&quot;, &quot;click&quot; ]
-  },
+  &quot;tracking_urls&quot; : &quot;{}&quot;,
   &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
   &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
   &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
   &quot;is_pin_deleted&quot; : false,
   &quot;creative_type&quot; : &quot;REGULAR&quot;,
   &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
-  &quot;quiz_pin_data&quot; : {
-    &quot;questions&quot; : [ {
-      &quot;question_id&quot; : 1,
-      &quot;question_text&quot; : &quot;Where do you thrive?&quot;,
-      &quot;options&quot; : [ {
-        &quot;text&quot; : &quot;Hangout vibes&quot;
-      }, {
-        &quot;text&quot; : &quot;Time to party!&quot;
-      }, {
-        &quot;text&quot; : &quot;Keeping it lowkey&quot;
-      } ]
-    }, {
-      &quot;question_id&quot; : 1,
-      &quot;question_text&quot; : &quot;Where do you thrive?&quot;,
-      &quot;options&quot; : [ {
-        &quot;text&quot; : &quot;Hangout vibes&quot;
-      }, {
-        &quot;text&quot; : &quot;Time to party!&quot;
-      }, {
-        &quot;text&quot; : &quot;Keeping it lowkey&quot;
-      } ]
-    } ],
-    &quot;results&quot; : [ {
-      &quot;organic_pin_id&quot; : &quot;pinId&quot;,
-      &quot;android_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;ios_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;destination_url&quot; : &quot;https://www.pinterest.com/&quot;
-    }, {
-      &quot;organic_pin_id&quot; : &quot;pinId&quot;,
-      &quot;android_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;ios_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;destination_url&quot; : &quot;https://www.pinterest.com/&quot;
-    } ]
-  },
+  &quot;quiz_pin_data&quot; : &quot;{}&quot;,
   &quot;name&quot; : &quot;name&quot;,
   &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
   &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
@@ -119,53 +80,14 @@ module AdsApiHandlerTestsHelper =
   &quot;destination_url&quot; : &quot;destination_url&quot;,
   &quot;carousel_android_deep_links&quot; : [ &quot;carousel_android_deep_links&quot;, &quot;carousel_android_deep_links&quot; ],
   &quot;carousel_destination_urls&quot; : [ &quot;carousel_destination_urls&quot;, &quot;carousel_destination_urls&quot; ],
-  &quot;tracking_urls&quot; : {
-    &quot;engagement&quot; : [ &quot;engagement&quot;, &quot;engagement&quot; ],
-    &quot;audience_verification&quot; : [ &quot;audience_verification&quot;, &quot;audience_verification&quot; ],
-    &quot;impression&quot; : [ &quot;impression&quot;, &quot;impression&quot; ],
-    &quot;buyable_button&quot; : [ &quot;buyable_button&quot;, &quot;buyable_button&quot; ],
-    &quot;click&quot; : [ &quot;click&quot;, &quot;click&quot; ]
-  },
+  &quot;tracking_urls&quot; : &quot;{}&quot;,
   &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
   &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
   &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
   &quot;is_pin_deleted&quot; : false,
   &quot;creative_type&quot; : &quot;REGULAR&quot;,
   &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
-  &quot;quiz_pin_data&quot; : {
-    &quot;questions&quot; : [ {
-      &quot;question_id&quot; : 1,
-      &quot;question_text&quot; : &quot;Where do you thrive?&quot;,
-      &quot;options&quot; : [ {
-        &quot;text&quot; : &quot;Hangout vibes&quot;
-      }, {
-        &quot;text&quot; : &quot;Time to party!&quot;
-      }, {
-        &quot;text&quot; : &quot;Keeping it lowkey&quot;
-      } ]
-    }, {
-      &quot;question_id&quot; : 1,
-      &quot;question_text&quot; : &quot;Where do you thrive?&quot;,
-      &quot;options&quot; : [ {
-        &quot;text&quot; : &quot;Hangout vibes&quot;
-      }, {
-        &quot;text&quot; : &quot;Time to party!&quot;
-      }, {
-        &quot;text&quot; : &quot;Keeping it lowkey&quot;
-      } ]
-    } ],
-    &quot;results&quot; : [ {
-      &quot;organic_pin_id&quot; : &quot;pinId&quot;,
-      &quot;android_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;ios_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;destination_url&quot; : &quot;https://www.pinterest.com/&quot;
-    }, {
-      &quot;organic_pin_id&quot; : &quot;pinId&quot;,
-      &quot;android_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;ios_deep_link&quot; : &quot;https://www.pinterest.com/&quot;,
-      &quot;destination_url&quot; : &quot;https://www.pinterest.com/&quot;
-    } ]
-  },
+  &quot;quiz_pin_data&quot; : &quot;{}&quot;,
   &quot;name&quot; : &quot;name&quot;,
   &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
   &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,

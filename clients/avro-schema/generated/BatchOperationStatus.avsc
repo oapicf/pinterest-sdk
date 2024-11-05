@@ -5,6 +5,7 @@
   "name": "BatchOperationStatus",
   "symbols": [
     "PROCESSING",
-    "COMPLETED"
+    "COMPLETED",
+    "FAILED"
   ]
 }

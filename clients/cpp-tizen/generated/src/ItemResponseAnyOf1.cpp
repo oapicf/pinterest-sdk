@@ -27,6 +27,7 @@ ItemResponse_anyOf_1::__init()
 	//item_id = std::string();
 	//new std::list()std::list> errors;
 	//hotel_id = std::string();
+	//creative_assets_id = std::string();
 }
 
 void
@@ -51,6 +52,11 @@ ItemResponse_anyOf_1::__cleanup()
 	//
 	//delete hotel_id;
 	//hotel_id = NULL;
+	//}
+	//if(creative_assets_id != NULL) {
+	//
+	//delete creative_assets_id;
+	//creative_assets_id = NULL;
 	//}
 	//
 }
@@ -116,6 +122,17 @@ ItemResponse_anyOf_1::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&hotel_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *creative_assets_idKey = "creative_assets_id";
+	node = json_object_get_member(pJsonObject, creative_assets_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&creative_assets_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -189,6 +206,15 @@ ItemResponse_anyOf_1::toJson()
 	}
 	const gchar *hotel_idKey = "hotel_id";
 	json_object_set_member(pJsonObject, hotel_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCreativeAssetsId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *creative_assets_idKey = "creative_assets_id";
+	json_object_set_member(pJsonObject, creative_assets_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -243,6 +269,18 @@ void
 ItemResponse_anyOf_1::setHotelId(std::string  hotel_id)
 {
 	this->hotel_id = hotel_id;
+}
+
+std::string
+ItemResponse_anyOf_1::getCreativeAssetsId()
+{
+	return creative_assets_id;
+}
+
+void
+ItemResponse_anyOf_1::setCreativeAssetsId(std::string  creative_assets_id)
+{
+	this->creative_assets_id = creative_assets_id;
 }
 
 

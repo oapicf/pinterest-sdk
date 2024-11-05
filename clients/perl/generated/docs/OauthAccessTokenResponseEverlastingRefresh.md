@@ -8,6 +8,11 @@ use WWW::OpenAPIClient::Object::OauthAccessTokenResponseEverlastingRefresh;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**response_type** | **string** |  | [optional] 
+**access_token** | **string** |  | 
+**token_type** | **string** |  | [default to &#39;bearer&#39;]
+**expires_in** | **int** |  | 
+**scope** | **string** |  | 
 **refresh_token** | **string** |  | 
 **refresh_token_expires_in** | **int** |  | 
 **refresh_token_expires_at** | **int** |  | 

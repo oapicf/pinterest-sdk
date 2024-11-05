@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &ConversionEventsDataInner{}
 
 // ConversionEventsDataInner struct for ConversionEventsDataInner
 type ConversionEventsDataInner struct {
-	// The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
+	// <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
 	EventName string `json:"event_name"`
-	// The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
+	// <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
 	ActionSource string `json:"action_source"`
 	// The time when the event happened. Unix timestamp in seconds.
 	EventTime int64 `json:"event_time"`
@@ -36,7 +36,7 @@ type ConversionEventsDataInner struct {
 	OptOut *bool `json:"opt_out,omitempty"`
 	// The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
 	PartnerName NullableString `json:"partner_name,omitempty"`
-	UserData NullableConversionEventsUserData `json:"user_data"`
+	UserData ConversionEventsUserData `json:"user_data"`
 	CustomData *ConversionEventsDataInnerCustomData `json:"custom_data,omitempty"`
 	// The app store app ID.
 	AppId NullableString `json:"app_id,omitempty"`
@@ -66,7 +66,7 @@ type _ConversionEventsDataInner ConversionEventsDataInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConversionEventsDataInner(eventName string, actionSource string, eventTime int64, eventId string, userData NullableConversionEventsUserData) *ConversionEventsDataInner {
+func NewConversionEventsDataInner(eventName string, actionSource string, eventTime int64, eventId string, userData ConversionEventsUserData) *ConversionEventsDataInner {
 	this := ConversionEventsDataInner{}
 	this.EventName = eventName
 	this.ActionSource = actionSource
@@ -297,29 +297,27 @@ func (o *ConversionEventsDataInner) UnsetPartnerName() {
 }
 
 // GetUserData returns the UserData field value
-// If the value is explicit nil, the zero value for ConversionEventsUserData will be returned
 func (o *ConversionEventsDataInner) GetUserData() ConversionEventsUserData {
-	if o == nil || o.UserData.Get() == nil {
+	if o == nil {
 		var ret ConversionEventsUserData
 		return ret
 	}
 
-	return *o.UserData.Get()
+	return o.UserData
 }
 
 // GetUserDataOk returns a tuple with the UserData field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConversionEventsDataInner) GetUserDataOk() (*ConversionEventsUserData, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.UserData.Get(), o.UserData.IsSet()
+	return &o.UserData, true
 }
 
 // SetUserData sets field value
 func (o *ConversionEventsDataInner) SetUserData(v ConversionEventsUserData) {
-	o.UserData.Set(&v)
+	o.UserData = v
 }
 
 // GetCustomData returns the CustomData field value if set, zero value otherwise.
@@ -787,7 +785,7 @@ func (o ConversionEventsDataInner) ToMap() (map[string]interface{}, error) {
 	if o.PartnerName.IsSet() {
 		toSerialize["partner_name"] = o.PartnerName.Get()
 	}
-	toSerialize["user_data"] = o.UserData.Get()
+	toSerialize["user_data"] = o.UserData
 	if !IsNil(o.CustomData) {
 		toSerialize["custom_data"] = o.CustomData
 	}

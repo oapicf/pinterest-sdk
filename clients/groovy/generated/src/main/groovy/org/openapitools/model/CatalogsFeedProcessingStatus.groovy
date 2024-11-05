@@ -6,19 +6,9 @@ enum CatalogsFeedProcessingStatus {
 
     COMPLETED("COMPLETED"),
     
-    COMPLETED_EARLY("COMPLETED_EARLY"),
-    
-    DISAPPROVED("DISAPPROVED"),
-    
     FAILED("FAILED"),
     
-    PROCESSING("PROCESSING"),
-    
-    QUEUED_FOR_PROCESSING("QUEUED_FOR_PROCESSING"),
-    
-    UNDER_APPEAL("UNDER_APPEAL"),
-    
-    UNDER_REVIEW("UNDER_REVIEW")
+    PROCESSING("PROCESSING")
 
     private final String value
 

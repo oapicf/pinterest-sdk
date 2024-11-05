@@ -21,6 +21,10 @@
   | {'external_id', list(binary()) }
   | {'click_id', binary() }
   | {'partner_id', binary() }
+  | {'em', list(binary()) }
+  | {'hashed_maids', list(binary()) }
+  | {'client_ip_address', binary() }
+  | {'client_user_agent', binary() }
   ].
 
 
@@ -40,6 +44,10 @@ openapi_conversion_events_user_data(Fields) ->
             , {'external_id', list(binary()) }
             , {'click_id', binary() }
             , {'partner_id', binary() }
+            , {'em', list(binary()) }
+            , {'hashed_maids', list(binary()) }
+            , {'client_ip_address', binary() }
+            , {'client_user_agent', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

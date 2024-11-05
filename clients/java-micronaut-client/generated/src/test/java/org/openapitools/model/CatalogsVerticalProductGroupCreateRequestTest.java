@@ -4,8 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupCreateRequest;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroupCreateRequest;
-import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsRetailProductGroupCreateRequest;
+import org.openapitools.model.Country;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -63,6 +67,22 @@ public class CatalogsVerticalProductGroupCreateRequestTest {
     @Test
     public void catalogIdTest() {
         // TODO: test catalogId
+    }
+
+    /**
+     * Test the property 'country'
+     */
+    @Test
+    public void countryTest() {
+        // TODO: test country
+    }
+
+    /**
+     * Test the property 'locale'
+     */
+    @Test
+    public void localeTest() {
+        // TODO: test locale
     }
 
 }

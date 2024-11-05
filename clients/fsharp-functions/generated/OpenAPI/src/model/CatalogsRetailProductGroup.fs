@@ -34,8 +34,14 @@ module CatalogsRetailProductGroup =
     CreatedAt : int;
     [<JsonProperty(PropertyName = "updated_at")>]
     UpdatedAt : int;
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "feed_id")>]
     FeedId : string option;
+    [<JsonProperty(PropertyName = "country")>]
+    Country : string option;
+    [<JsonProperty(PropertyName = "locale")>]
+    Locale : string option;
   }
 
   //#endregion

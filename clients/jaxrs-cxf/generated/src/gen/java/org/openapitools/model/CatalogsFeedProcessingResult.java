@@ -17,13 +17,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedProcessingResult  {
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   private Date createdAt;
 
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   private String id;
 
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   private Date updatedAt;
 
   @ApiModelProperty(required = true, value = "")
@@ -46,6 +46,7 @@ public class CatalogsFeedProcessingResult  {
    * @return createdAt
   **/
   @JsonProperty("created_at")
+  @NotNull
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -64,6 +65,7 @@ public class CatalogsFeedProcessingResult  {
    * @return id
   **/
   @JsonProperty("id")
+  @NotNull
   public String getId() {
     return id;
   }
@@ -82,6 +84,7 @@ public class CatalogsFeedProcessingResult  {
    * @return updatedAt
   **/
   @JsonProperty("updated_at")
+  @NotNull
   public Date getUpdatedAt() {
     return updatedAt;
   }

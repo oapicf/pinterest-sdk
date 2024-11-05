@@ -14,6 +14,7 @@ case class CatalogsHotelProductGroup (
     _createdAt: Option[Integer],
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     _updatedAt: Option[Integer],
+    /* Catalog id pertaining to the hotel product group. */
     _catalogId: String
 )
 object CatalogsHotelProductGroup {

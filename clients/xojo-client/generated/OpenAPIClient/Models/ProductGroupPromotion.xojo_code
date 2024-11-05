@@ -111,11 +111,6 @@ Protected Class ProductGroupPromotion
 
 
 	#tag Property, Flags = &h0
-		creative_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Hero Pin ID if this PG is promoted as a Collection
 		#tag EndNote
@@ -282,14 +277,6 @@ Protected Class ProductGroupPromotion
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="creative_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CreativeType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

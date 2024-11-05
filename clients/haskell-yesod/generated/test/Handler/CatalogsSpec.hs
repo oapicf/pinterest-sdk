@@ -8,6 +8,11 @@ import           TestImport
 spec :: Spec
 spec = withApp $ do
 
+    describe "postCatalogsR" $
+        it "returns 501 Not Implemented" $ do
+            post CatalogsR
+            statusIs 501
+
     describe "getCatalogsR" $
         it "returns 501 Not Implemented" $ do
             get CatalogsR
@@ -23,9 +28,19 @@ spec = withApp $ do
             post CatalogsProductGroupsR
             statusIs 501
 
+    describe "postCatalogsProductGroupsMultipleR" $
+        it "returns 501 Not Implemented" $ do
+            post CatalogsProductGroupsMultipleR
+            statusIs 501
+
     describe "deleteCatalogsProductGroupsByTextR" $
         it "returns 501 Not Implemented" $ do
             performMethod "DELETE" $ CatalogsProductGroupsByTextR "productGroupId_example"
+            statusIs 501
+
+    describe "deleteCatalogsProductGroupsMultipleR" $
+        it "returns 501 Not Implemented" $ do
+            performMethod "DELETE" CatalogsProductGroupsMultipleR
             statusIs 501
 
     describe "getCatalogsProductGroupsByTextR" $
@@ -68,6 +83,11 @@ spec = withApp $ do
             get $ CatalogsFeedsByTextR "feedId_example"
             statusIs 501
 
+    describe "postCatalogsFeedsByTextIngestR" $
+        it "returns 501 Not Implemented" $ do
+            post $ CatalogsFeedsByTextIngestR "feedId_example"
+            statusIs 501
+
     describe "getCatalogsFeedsR" $
         it "returns 501 Not Implemented" $ do
             get CatalogsFeedsR
@@ -81,6 +101,11 @@ spec = withApp $ do
     describe "getCatalogsItemsR" $
         it "returns 501 Not Implemented" $ do
             get CatalogsItemsR
+            statusIs 501
+
+    describe "postCatalogsItemsR" $
+        it "returns 501 Not Implemented" $ do
+            post CatalogsItemsR
             statusIs 501
 
     describe "getCatalogsItemsBatchByTextR" $
@@ -101,4 +126,19 @@ spec = withApp $ do
     describe "postCatalogsProductsGetByProductGroupFiltersR" $
         it "returns 501 Not Implemented" $ do
             post CatalogsProductsGetByProductGroupFiltersR
+            statusIs 501
+
+    describe "postCatalogsReportsR" $
+        it "returns 501 Not Implemented" $ do
+            post CatalogsReportsR
+            statusIs 501
+
+    describe "getCatalogsReportsR" $
+        it "returns 501 Not Implemented" $ do
+            get CatalogsReportsR
+            statusIs 501
+
+    describe "getCatalogsReportsStatsR" $
+        it "returns 501 Not Implemented" $ do
+            get CatalogsReportsStatsR
             statusIs 501

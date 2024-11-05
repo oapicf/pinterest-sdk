@@ -14,28 +14,27 @@ Method | HTTP request | Description
 # **conversionTagsCreate**
 > ConversionTagResponse conversionTagsCreate(conversionTagCreate)
 
-Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"https://developers.pinterest.com/docs/conversions/enhanced-match/\">Enhanced match</a>
+Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account\'s ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ConversionTagsApi } from '';
+import type { ConversionTagsApiConversionTagsCreateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ConversionTagsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ConversionTagsApi(configuration);
 
-let body:.ConversionTagsApiConversionTagsCreateRequest = {
-  // string | Unique identifier of an ad account.
+const request: ConversionTagsApiConversionTagsCreateRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // ConversionTagCreate | Conversion Tag to create
+    // Conversion Tag to create
   conversionTagCreate: ,
 };
 
-apiInstance.conversionTagsCreate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.conversionTagsCreate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -78,22 +77,21 @@ Get information about an existing conversion tag.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ConversionTagsApi } from '';
+import type { ConversionTagsApiConversionTagsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ConversionTagsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ConversionTagsApi(configuration);
 
-let body:.ConversionTagsApiConversionTagsGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: ConversionTagsApiConversionTagsGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Id of the conversion tag.
+    // Id of the conversion tag.
   conversionTagId: "2617998078212",
 };
 
-apiInstance.conversionTagsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.conversionTagsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -136,22 +134,21 @@ List conversion tags associated with an ad account.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ConversionTagsApi } from '';
+import type { ConversionTagsApiConversionTagsListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ConversionTagsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ConversionTagsApi(configuration);
 
-let body:.ConversionTagsApiConversionTagsListRequest = {
-  // string | Unique identifier of an ad account.
+const request: ConversionTagsApiConversionTagsListRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // boolean | Filter out deleted tags. (optional)
+    // Filter out deleted tags. (optional)
   filterDeleted: true,
 };
 
-apiInstance.conversionTagsList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.conversionTagsList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -194,20 +191,19 @@ Get Ocpm eligible conversion tag events for an ad account.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ConversionTagsApi } from '';
+import type { ConversionTagsApiOcpmEligibleConversionTagsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ConversionTagsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ConversionTagsApi(configuration);
 
-let body:.ConversionTagsApiOcpmEligibleConversionTagsGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: ConversionTagsApiOcpmEligibleConversionTagsGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
 };
 
-apiInstance.ocpmEligibleConversionTagsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.ocpmEligibleConversionTagsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -249,26 +245,25 @@ Get all page visit conversion tag events for an ad account.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, ConversionTagsApi } from '';
+import type { ConversionTagsApiPageVisitConversionTagsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .ConversionTagsApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new ConversionTagsApi(configuration);
 
-let body:.ConversionTagsApiPageVisitConversionTagsGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: ConversionTagsApiPageVisitConversionTagsGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // 'ASCENDING' | 'DESCENDING' | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+    // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   order: "ASCENDING",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
 };
 
-apiInstance.pageVisitConversionTagsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.pageVisitConversionTagsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -277,7 +272,7 @@ apiInstance.pageVisitConversionTagsGet(body).then((data:any) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **order** | [**&#39;ASCENDING&#39; | &#39;DESCENDING&#39;**]**Array<&#39;ASCENDING&#39; &#124; &#39;DESCENDING&#39;>** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | (optional) defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
 

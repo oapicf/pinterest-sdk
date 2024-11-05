@@ -25,8 +25,7 @@ AudienceCategory <- R6::R6Class(
     `index` = NULL,
     `id` = NULL,
     `subcategories` = NULL,
-    #' Initialize a new AudienceCategory class.
-    #'
+
     #' @description
     #' Initialize a new AudienceCategory class.
     #'
@@ -37,7 +36,6 @@ AudienceCategory <- R6::R6Class(
     #' @param id Interest ID.
     #' @param subcategories Subcategory interest distribution
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`key` = NULL, `name` = NULL, `ratio` = NULL, `index` = NULL, `id` = NULL, `subcategories` = NULL, ...) {
       if (!is.null(`key`)) {
         if (!(is.character(`key`) && length(`key`) == 1)) {
@@ -69,13 +67,11 @@ AudienceCategory <- R6::R6Class(
         self$`subcategories` <- `subcategories`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceCategory in JSON format
-    #' @export
     toJSON = function() {
       AudienceCategoryObject <- list()
       if (!is.null(self$`key`)) {
@@ -104,14 +100,12 @@ AudienceCategory <- R6::R6Class(
       }
       AudienceCategoryObject
     },
-    #' Deserialize JSON string into an instance of AudienceCategory
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceCategory
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceCategory
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`key`)) {
@@ -134,13 +128,11 @@ AudienceCategory <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceCategory in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`key`)) {
@@ -195,14 +187,12 @@ AudienceCategory <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AudienceCategory
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceCategory
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceCategory
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`key` <- this_object$`key`
@@ -213,53 +203,42 @@ AudienceCategory <- R6::R6Class(
       self$`subcategories` <- ApiClient$new()$deserializeObj(this_object$`subcategories`, "array[AudienceSubcategory]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to AudienceCategory
-    #'
+
     #' @description
     #' Validate JSON input with respect to AudienceCategory and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AudienceCategory
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

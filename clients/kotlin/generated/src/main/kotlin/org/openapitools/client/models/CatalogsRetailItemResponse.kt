@@ -48,5 +48,8 @@ data class CatalogsRetailItemResponse (
     @Json(name = "attributes")
     val attributes: ItemAttributes? = null
 
-)
+) {
+
+
+}
 

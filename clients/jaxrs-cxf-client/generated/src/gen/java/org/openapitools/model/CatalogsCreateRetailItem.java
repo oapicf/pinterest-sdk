@@ -1,7 +1,7 @@
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -22,7 +22,7 @@ public class CatalogsCreateRetailItem  {
 
 public enum OperationEnum {
 
-CREATE(String.valueOf("CREATE")), UPDATE(String.valueOf("UPDATE")), UPSERT(String.valueOf("UPSERT")), DELETE(String.valueOf("DELETE"));
+CREATE(String.valueOf("CREATE"));
 
 
     private String value;
@@ -54,7 +54,7 @@ CREATE(String.valueOf("CREATE")), UPDATE(String.valueOf("UPDATE")), UPSERT(Strin
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
  /**
    * The catalog item id in the merchant namespace
    * @return itemId
@@ -99,15 +99,15 @@ CREATE(String.valueOf("CREATE")), UPDATE(String.valueOf("UPDATE")), UPSERT(Strin
    * @return attributes
   **/
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
-  public CatalogsCreateRetailItem attributes(ItemAttributes attributes) {
+  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }

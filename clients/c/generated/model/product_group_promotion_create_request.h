@@ -15,7 +15,7 @@
 
 typedef struct product_group_promotion_create_request_t product_group_promotion_create_request_t;
 
-#include "product_group_promotion.h"
+#include "product_group_promotion_create_request_element.h"
 
 
 

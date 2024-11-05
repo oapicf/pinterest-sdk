@@ -41,11 +41,16 @@ object endpoint {
           AdAccountsApi.endpoints(da)  :+:
           AdGroupsApi.endpoints(da)  :+:
           AdsApi.endpoints(da)  :+:
+          AdvancedAuctionApi.endpoints(da)  :+:
           AudienceInsightsApi.endpoints(da)  :+:
+          AudienceSharingApi.endpoints(da)  :+:
           AudiencesApi.endpoints(da)  :+:
           BillingApi.endpoints(da)  :+:
           BoardsApi.endpoints(da)  :+:
           BulkApi.endpoints(da)  :+:
+          BusinessAccessAssetsApi.endpoints(da)  :+:
+          BusinessAccessInviteApi.endpoints(da)  :+:
+          BusinessAccessRelationshipsApi.endpoints(da)  :+:
           CampaignsApi.endpoints(da)  :+:
           CatalogsApi.endpoints(da)  :+:
           ConversionEventsApi.endpoints(da)  :+:
@@ -55,14 +60,15 @@ object endpoint {
           KeywordsApi.endpoints(da)  :+:
           LeadAdsApi.endpoints(da)  :+:
           LeadFormsApi.endpoints(da)  :+:
+          LeadsExportApi.endpoints(da)  :+:
           MediaApi.endpoints(da)  :+:
           OauthApi.endpoints(da)  :+:
           OrderLinesApi.endpoints(da)  :+:
           PinsApi.endpoints(da)  :+:
           ProductGroupPromotionsApi.endpoints(da)  :+:
-          ProductGroupsApi.endpoints(da)  :+:
           ResourcesApi.endpoints(da)  :+:
           SearchApi.endpoints(da)  :+:
+          TargetingTemplateApi.endpoints(da)  :+:
           TermsApi.endpoints(da)  :+:
           TermsOfServiceApi.endpoints(da)  :+:
           UserAccountApi.endpoints(da) 

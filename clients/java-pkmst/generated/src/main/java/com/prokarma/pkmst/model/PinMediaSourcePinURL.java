@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourcePinURL   {
   /**
    * Gets or Sets sourceType
@@ -58,10 +58,10 @@ public class PinMediaSourcePinURL   {
     return this;
   }
 
-   /**
+  /**
    * Get sourceType
    * @return sourceType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -76,10 +76,10 @@ public class PinMediaSourcePinURL   {
     return this;
   }
 
-   /**
+  /**
    * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
    * @return isAffiliateLink
-  **/
+   */
   @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
   public Boolean getIsAffiliateLink() {
     return isAffiliateLink;

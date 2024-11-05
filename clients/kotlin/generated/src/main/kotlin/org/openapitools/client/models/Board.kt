@@ -92,5 +92,6 @@ data class Board (
         @Json(name = "PROTECTED") PROTECTED("PROTECTED"),
         @Json(name = "SECRET") SECRET("SECRET");
     }
+
 }
 

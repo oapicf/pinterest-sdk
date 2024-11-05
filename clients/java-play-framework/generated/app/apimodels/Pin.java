@@ -2,8 +2,8 @@ package apimodels;
 
 import apimodels.BoardOwner;
 import apimodels.CreativeType;
+import apimodels.PinMedia;
 import apimodels.PinMediaSource;
-import apimodels.SummaryPinMedia;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * Pin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class Pin   {
   @JsonProperty("id")
@@ -77,7 +77,7 @@ public class Pin   {
   @JsonProperty("media")
   @Valid
 
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @JsonProperty("media_source")
   @Valid
@@ -309,7 +309,7 @@ public class Pin   {
     this.isOwner = isOwner;
   }
 
-  public Pin media(SummaryPinMedia media) {
+  public Pin media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -318,11 +318,11 @@ public class Pin   {
    * Get media
    * @return media
   **/
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -366,7 +366,7 @@ public class Pin   {
   }
 
    /**
-   * Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+   * Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
    * @return isStandard
   **/
   public Boolean getIsStandard() {

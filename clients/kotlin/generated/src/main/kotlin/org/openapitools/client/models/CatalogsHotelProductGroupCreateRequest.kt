@@ -60,5 +60,6 @@ data class CatalogsHotelProductGroupCreateRequest (
     enum class CatalogType(val value: kotlin.String) {
         @Json(name = "HOTEL") HOTEL("HOTEL");
     }
+
 }
 

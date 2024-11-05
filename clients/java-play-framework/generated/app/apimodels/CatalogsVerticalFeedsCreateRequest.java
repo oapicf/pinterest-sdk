@@ -1,11 +1,13 @@
 package apimodels;
 
+import apimodels.CatalogsCreativeAssetsFeedsCreateRequest;
 import apimodels.CatalogsFeedCredentials;
 import apimodels.CatalogsFeedProcessingSchedule;
 import apimodels.CatalogsFeedsCreateRequestDefaultLocale;
 import apimodels.CatalogsFormat;
 import apimodels.CatalogsHotelFeedsCreateRequest;
 import apimodels.CatalogsRetailFeedsCreateRequest;
+import apimodels.CatalogsStatus;
 import apimodels.CatalogsType;
 import apimodels.Country;
 import apimodels.NullableCurrency;
@@ -23,7 +25,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsVerticalFeedsCreateRequest   {
   @JsonProperty("default_currency")
@@ -80,6 +82,11 @@ public class CatalogsVerticalFeedsCreateRequest   {
   @Valid
 
   private ProductAvailabilityType defaultAvailability;
+
+  @JsonProperty("status")
+  @Valid
+
+  private CatalogsStatus status;
 
   @JsonProperty("catalog_id")
   @Pattern(regexp="^\\d+$")
@@ -256,13 +263,30 @@ public class CatalogsVerticalFeedsCreateRequest   {
     this.defaultAvailability = defaultAvailability;
   }
 
+  public CatalogsVerticalFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
   public CatalogsVerticalFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
 
    /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
    * @return catalogId
   **/
   public String getCatalogId() {
@@ -293,12 +317,13 @@ public class CatalogsVerticalFeedsCreateRequest   {
         Objects.equals(catalogType, catalogsVerticalFeedsCreateRequest.catalogType) &&
         Objects.equals(defaultCountry, catalogsVerticalFeedsCreateRequest.defaultCountry) &&
         Objects.equals(defaultAvailability, catalogsVerticalFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(status, catalogsVerticalFeedsCreateRequest.status) &&
         Objects.equals(catalogId, catalogsVerticalFeedsCreateRequest.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, catalogId);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, status, catalogId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -317,6 +342,7 @@ public class CatalogsVerticalFeedsCreateRequest   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();

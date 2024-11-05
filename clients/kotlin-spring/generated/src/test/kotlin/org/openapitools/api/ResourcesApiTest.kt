@@ -92,7 +92,8 @@ class ResourcesApiTest {
         val clientId: kotlin.String? = TODO()
         val oauthSignature: kotlin.String? = TODO()
         val timestamp: kotlin.String? = TODO()
-        val response: ResponseEntity<List<kotlin.Any>> = api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp)
+        val adAccountId: kotlin.String? = TODO()
+        val response: ResponseEntity<List<kotlin.Any>> = api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
 
         // TODO: test validations
     }

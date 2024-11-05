@@ -6,7 +6,7 @@ context("Test ProductGroupPromotionResponseItem")
 model_instance <- ProductGroupPromotionResponseItem$new()
 
 test_that("data", {
-  # tests for the property `data` (ProductGroupPromotion)
+  # tests for the property `data` (ProductGroupPromotionResponseElement)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`data`, "EXPECTED_RESULT")

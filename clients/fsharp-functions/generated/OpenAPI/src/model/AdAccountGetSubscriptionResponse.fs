@@ -24,9 +24,9 @@ module AdAccountGetSubscriptionResponse =
     [<JsonProperty(PropertyName = "api_version")>]
     ApiVersion : string;
     [<JsonProperty(PropertyName = "cryptographic_key")>]
-    CryptographicKey : string;
+    CryptographicKey : string option;
     [<JsonProperty(PropertyName = "cryptographic_algorithm")>]
-    CryptographicAlgorithm : string;
+    CryptographicAlgorithm : string option;
     [<JsonProperty(PropertyName = "created_time")>]
     CreatedTime : int;
   }

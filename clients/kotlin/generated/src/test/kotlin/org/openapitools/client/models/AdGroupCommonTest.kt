@@ -20,13 +20,13 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AdGroupCommon
 import org.openapitools.client.models.ActionType
-import org.openapitools.client.models.AdGroupCommonOptimizationGoalMetadata
-import org.openapitools.client.models.AdGroupCommonTrackingUrls
 import org.openapitools.client.models.BudgetType
 import org.openapitools.client.models.EntityStatus
+import org.openapitools.client.models.OptimizationGoalMetadata
 import org.openapitools.client.models.PacingDeliveryType
 import org.openapitools.client.models.PlacementGroupType
 import org.openapitools.client.models.TargetingSpec
+import org.openapitools.client.models.TrackingUrls
 
 class AdGroupCommonTest : ShouldSpec() {
     init {
@@ -57,7 +57,7 @@ class AdGroupCommonTest : ShouldSpec() {
             //modelInstance.bidInMicroCurrency shouldBe ("TODO")
         }
 
-        // to test the property `optimizationGoalMetadata`
+        // to test the property `optimizationGoalMetadata` - Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
         should("test optimizationGoalMetadata") {
             // uncomment below to test the property
             //modelInstance.optimizationGoalMetadata shouldBe ("TODO")
@@ -87,13 +87,13 @@ class AdGroupCommonTest : ShouldSpec() {
             //modelInstance.targetingSpec shouldBe ("TODO")
         }
 
-        // to test the property `lifetimeFrequencyCap` - Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+        // to test the property `lifetimeFrequencyCap` - Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
         should("test lifetimeFrequencyCap") {
             // uncomment below to test the property
             //modelInstance.lifetimeFrequencyCap shouldBe ("TODO")
         }
 
-        // to test the property `trackingUrls`
+        // to test the property `trackingUrls` - Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
         should("test trackingUrls") {
             // uncomment below to test the property
             //modelInstance.trackingUrls shouldBe ("TODO")
@@ -105,7 +105,7 @@ class AdGroupCommonTest : ShouldSpec() {
             //modelInstance.autoTargetingEnabled shouldBe ("TODO")
         }
 
-        // to test the property `placementGroup` - <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+        // to test the property `placementGroup` - <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
         should("test placementGroup") {
             // uncomment below to test the property
             //modelInstance.placementGroup shouldBe ("TODO")
@@ -129,10 +129,16 @@ class AdGroupCommonTest : ShouldSpec() {
             //modelInstance.billableEvent shouldBe ("TODO")
         }
 
-        // to test the property `bidStrategyType` - Bid strategy type
+        // to test the property `bidStrategyType` - Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
         should("test bidStrategyType") {
             // uncomment below to test the property
             //modelInstance.bidStrategyType shouldBe ("TODO")
+        }
+
+        // to test the property `targetingTemplateIds` - Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+        should("test targetingTemplateIds") {
+            // uncomment below to test the property
+            //modelInstance.targetingTemplateIds shouldBe ("TODO")
         }
 
     }

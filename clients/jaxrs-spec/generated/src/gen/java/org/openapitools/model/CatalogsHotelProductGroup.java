@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsHotelProductGroup")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroup   {
   public enum CatalogTypeEnum {
 
@@ -66,14 +66,14 @@ public class CatalogsHotelProductGroup   {
     }
 }
 
-  private @Valid CatalogTypeEnum catalogType;
-  private @Valid String id;
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid CatalogsHotelProductGroupFilters filters;
-  private @Valid Integer createdAt;
-  private @Valid Integer updatedAt;
-  private @Valid String catalogId;
+  private CatalogTypeEnum catalogType;
+  private String id;
+  private String name;
+  private String description;
+  private CatalogsHotelProductGroupFilters filters;
+  private Integer createdAt;
+  private Integer updatedAt;
+  private String catalogId;
 
   /**
    **/
@@ -85,8 +85,7 @@ public class CatalogsHotelProductGroup   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogTypeEnum getCatalogType() {
+  @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
@@ -106,8 +105,7 @@ public class CatalogsHotelProductGroup   {
   
   @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
   @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -165,8 +163,7 @@ public class CatalogsHotelProductGroup   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("filters")
-  @NotNull
-  public CatalogsHotelProductGroupFilters getFilters() {
+  @NotNull @Valid public CatalogsHotelProductGroupFilters getFilters() {
     return filters;
   }
 
@@ -216,6 +213,7 @@ public class CatalogsHotelProductGroup   {
   }
 
   /**
+   * Catalog id pertaining to the hotel product group.
    **/
   public CatalogsHotelProductGroup catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -223,10 +221,9 @@ public class CatalogsHotelProductGroup   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
   @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 

@@ -23,7 +23,7 @@ adsCreditRedeem($ad_account_id, $ads_credit_redeem_request): \OpenAPI\Client\Mod
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 
@@ -85,7 +85,7 @@ adsCreditsDiscountsGet($ad_account_id, $bookmark, $page_size): \OpenAPI\Client\M
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 
@@ -106,7 +106,7 @@ $apiInstance = new OpenAPI\Client\Api\BillingApi(
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->adsCreditsDiscountsGet($ad_account_id, $bookmark, $page_size);
@@ -122,7 +122,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -149,7 +149,7 @@ billingProfilesGet($ad_account_id, $is_active, $bookmark, $page_size): \OpenAPI\
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 
@@ -171,7 +171,7 @@ $apiInstance = new OpenAPI\Client\Api\BillingApi(
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $is_active = True; // bool | Return active billing profiles, if false return all billing profiles.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->billingProfilesGet($ad_account_id, $is_active, $bookmark, $page_size);
@@ -188,7 +188,7 @@ try {
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **is_active** | **bool**| Return active billing profiles, if false return all billing profiles. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -420,7 +420,7 @@ $apiInstance = new OpenAPI\Client\Api\BillingApi(
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->ssioInsertionOrdersStatusGetByAdAccount($ad_account_id, $bookmark, $page_size);
@@ -436,7 +436,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -546,7 +546,7 @@ $apiInstance = new OpenAPI\Client\Api\BillingApi(
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $pin_order_id = 0Q01N0000015hekSVDFDC; // string | The pin order id associated with the ssio insertino order
 
 try {
@@ -563,7 +563,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **pin_order_id** | **string**| The pin order id associated with the ssio insertino order | [optional] |
 
 ### Return type

@@ -1,7 +1,7 @@
 #' Create a new TargetingSpec
 #'
 #' @description
-#' Ad group targeting specification defining the ad group target audience. For example, {\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}
+#' Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
 #'
 #' @docType class
 #' @title TargetingSpec
@@ -10,12 +10,12 @@
 #' @field AGE_BUCKET Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted. list(character) [optional]
 #' @field APPTYPE Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. list(character) [optional]
 #' @field AUDIENCE_EXCLUDE Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**. list(character) [optional]
-#' @field AUDIENCE_INCLUDE&#39; Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**. list(character) [optional]
+#' @field AUDIENCE_INCLUDE Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**. list(character) [optional]
 #' @field GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. list(character) [optional]
-#' @field GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. If the GEO field is missing, the default behavior in terms of ad delivery is that **No geos will be selected**. list(character) [optional]
+#' @field GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below). list(character) [optional]
 #' @field INTEREST Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**. list(character) [optional]
-#' @field LOCALE 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be target, only english non-sublanguage will be targeted**. list(character) [optional]
-#' @field LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. If the LOCATION field is missing, the default behavior in terms of ad delivery is that **Selects default country if not specified (US) and all regions within that country**. list(character) [optional]
+#' @field LOCALE 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**. list(character) [optional]
+#' @field LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). list(character) [optional]
 #' @field SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting list(\link{TargetingSpecSHOPPINGRETARGETING}) [optional]
 #' @field TARGETING_STRATEGY  list(character) [optional]
 #' @importFrom R6 R6Class
@@ -27,7 +27,7 @@ TargetingSpec <- R6::R6Class(
     `AGE_BUCKET` = NULL,
     `APPTYPE` = NULL,
     `AUDIENCE_EXCLUDE` = NULL,
-    `AUDIENCE_INCLUDE'` = NULL,
+    `AUDIENCE_INCLUDE` = NULL,
     `GENDER` = NULL,
     `GEO` = NULL,
     `INTEREST` = NULL,
@@ -35,25 +35,23 @@ TargetingSpec <- R6::R6Class(
     `LOCATION` = NULL,
     `SHOPPING_RETARGETING` = NULL,
     `TARGETING_STRATEGY` = NULL,
-    #' Initialize a new TargetingSpec class.
-    #'
+
     #' @description
     #' Initialize a new TargetingSpec class.
     #'
     #' @param AGE_BUCKET Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
     #' @param APPTYPE Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
     #' @param AUDIENCE_EXCLUDE Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
-    #' @param AUDIENCE_INCLUDE&#39; Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
+    #' @param AUDIENCE_INCLUDE Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
     #' @param GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-    #' @param GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. If the GEO field is missing, the default behavior in terms of ad delivery is that **No geos will be selected**.
+    #' @param GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
     #' @param INTEREST Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
-    #' @param LOCALE 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be target, only english non-sublanguage will be targeted**.
-    #' @param LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. If the LOCATION field is missing, the default behavior in terms of ad delivery is that **Selects default country if not specified (US) and all regions within that country**.
+    #' @param LOCALE 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+    #' @param LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
     #' @param SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
     #' @param TARGETING_STRATEGY 
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`AGE_BUCKET` = NULL, `APPTYPE` = NULL, `AUDIENCE_EXCLUDE` = NULL, `AUDIENCE_INCLUDE&#39;` = NULL, `GENDER` = NULL, `GEO` = NULL, `INTEREST` = NULL, `LOCALE` = NULL, `LOCATION` = NULL, `SHOPPING_RETARGETING` = NULL, `TARGETING_STRATEGY` = NULL, ...) {
+    initialize = function(`AGE_BUCKET` = NULL, `APPTYPE` = NULL, `AUDIENCE_EXCLUDE` = NULL, `AUDIENCE_INCLUDE` = NULL, `GENDER` = NULL, `GEO` = NULL, `INTEREST` = NULL, `LOCALE` = NULL, `LOCATION` = NULL, `SHOPPING_RETARGETING` = NULL, `TARGETING_STRATEGY` = NULL, ...) {
       if (!is.null(`AGE_BUCKET`)) {
         stopifnot(is.vector(`AGE_BUCKET`), length(`AGE_BUCKET`) != 0)
         sapply(`AGE_BUCKET`, function(x) stopifnot(is.character(x)))
@@ -69,10 +67,10 @@ TargetingSpec <- R6::R6Class(
         sapply(`AUDIENCE_EXCLUDE`, function(x) stopifnot(is.character(x)))
         self$`AUDIENCE_EXCLUDE` <- `AUDIENCE_EXCLUDE`
       }
-      if (!is.null(`AUDIENCE_INCLUDE&#39;`)) {
-        stopifnot(is.vector(`AUDIENCE_INCLUDE&#39;`), length(`AUDIENCE_INCLUDE&#39;`) != 0)
-        sapply(`AUDIENCE_INCLUDE&#39;`, function(x) stopifnot(is.character(x)))
-        self$`AUDIENCE_INCLUDE&#39;` <- `AUDIENCE_INCLUDE&#39;`
+      if (!is.null(`AUDIENCE_INCLUDE`)) {
+        stopifnot(is.vector(`AUDIENCE_INCLUDE`), length(`AUDIENCE_INCLUDE`) != 0)
+        sapply(`AUDIENCE_INCLUDE`, function(x) stopifnot(is.character(x)))
+        self$`AUDIENCE_INCLUDE` <- `AUDIENCE_INCLUDE`
       }
       if (!is.null(`GENDER`)) {
         stopifnot(is.vector(`GENDER`), length(`GENDER`) != 0)
@@ -110,13 +108,11 @@ TargetingSpec <- R6::R6Class(
         self$`TARGETING_STRATEGY` <- `TARGETING_STRATEGY`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TargetingSpec in JSON format
-    #' @export
     toJSON = function() {
       TargetingSpecObject <- list()
       if (!is.null(self$`AGE_BUCKET`)) {
@@ -131,9 +127,9 @@ TargetingSpec <- R6::R6Class(
         TargetingSpecObject[["AUDIENCE_EXCLUDE"]] <-
           self$`AUDIENCE_EXCLUDE`
       }
-      if (!is.null(self$`AUDIENCE_INCLUDE&#39;`)) {
-        TargetingSpecObject[["AUDIENCE_INCLUDE&#39;"]] <-
-          self$`AUDIENCE_INCLUDE&#39;`
+      if (!is.null(self$`AUDIENCE_INCLUDE`)) {
+        TargetingSpecObject[["AUDIENCE_INCLUDE"]] <-
+          self$`AUDIENCE_INCLUDE`
       }
       if (!is.null(self$`GENDER`)) {
         TargetingSpecObject[["GENDER"]] <-
@@ -165,14 +161,12 @@ TargetingSpec <- R6::R6Class(
       }
       TargetingSpecObject
     },
-    #' Deserialize JSON string into an instance of TargetingSpec
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TargetingSpec
     #'
     #' @param input_json the JSON input
     #' @return the instance of TargetingSpec
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`AGE_BUCKET`)) {
@@ -184,8 +178,8 @@ TargetingSpec <- R6::R6Class(
       if (!is.null(this_object$`AUDIENCE_EXCLUDE`)) {
         self$`AUDIENCE_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_EXCLUDE`, "array[character]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`AUDIENCE_INCLUDE&#39;`)) {
-        self$`AUDIENCE_INCLUDE&#39;` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_INCLUDE&#39;`, "array[character]", loadNamespace("openapi"))
+      if (!is.null(this_object$`AUDIENCE_INCLUDE`)) {
+        self$`AUDIENCE_INCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_INCLUDE`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`GENDER`)) {
         self$`GENDER` <- ApiClient$new()$deserializeObj(this_object$`GENDER`, "array[character]", loadNamespace("openapi"))
@@ -210,13 +204,11 @@ TargetingSpec <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TargetingSpec in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`AGE_BUCKET`)) {
@@ -243,12 +235,12 @@ TargetingSpec <- R6::R6Class(
           paste(unlist(lapply(self$`AUDIENCE_EXCLUDE`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
-        if (!is.null(self$`AUDIENCE_INCLUDE&#39;`)) {
+        if (!is.null(self$`AUDIENCE_INCLUDE`)) {
           sprintf(
-          '"AUDIENCE_INCLUDE&#39;":
+          '"AUDIENCE_INCLUDE":
              [%s]
           ',
-          paste(unlist(lapply(self$`AUDIENCE_INCLUDE'`, function(x) paste0('"', x, '"'))), collapse = ",")
+          paste(unlist(lapply(self$`AUDIENCE_INCLUDE`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
         if (!is.null(self$`GENDER`)) {
@@ -311,20 +303,18 @@ TargetingSpec <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of TargetingSpec
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TargetingSpec
     #'
     #' @param input_json the JSON input
     #' @return the instance of TargetingSpec
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`AGE_BUCKET` <- ApiClient$new()$deserializeObj(this_object$`AGE_BUCKET`, "array[character]", loadNamespace("openapi"))
       self$`APPTYPE` <- ApiClient$new()$deserializeObj(this_object$`APPTYPE`, "array[character]", loadNamespace("openapi"))
       self$`AUDIENCE_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_EXCLUDE`, "array[character]", loadNamespace("openapi"))
-      self$`AUDIENCE_INCLUDE&#39;` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_INCLUDE&#39;`, "array[character]", loadNamespace("openapi"))
+      self$`AUDIENCE_INCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_INCLUDE`, "array[character]", loadNamespace("openapi"))
       self$`GENDER` <- ApiClient$new()$deserializeObj(this_object$`GENDER`, "array[character]", loadNamespace("openapi"))
       self$`GEO` <- ApiClient$new()$deserializeObj(this_object$`GEO`, "array[character]", loadNamespace("openapi"))
       self$`INTEREST` <- ApiClient$new()$deserializeObj(this_object$`INTEREST`, "array[character]", loadNamespace("openapi"))
@@ -334,53 +324,42 @@ TargetingSpec <- R6::R6Class(
       self$`TARGETING_STRATEGY` <- ApiClient$new()$deserializeObj(this_object$`TARGETING_STRATEGY`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to TargetingSpec
-    #'
+
     #' @description
     #' Validate JSON input with respect to TargetingSpec and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of TargetingSpec
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

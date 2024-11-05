@@ -4,6 +4,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**MultiPinsAnalytics**](PinsAPI.md#MultiPinsAnalytics) | **Get** /pins/analytics | Get multiple Pin analytics
 [**PinsAnalytics**](PinsAPI.md#PinsAnalytics) | **Get** /pins/{pin_id}/analytics | Get Pin analytics
 [**PinsCreate**](PinsAPI.md#PinsCreate) | **Post** /pins | Create Pin
 [**PinsDelete**](PinsAPI.md#PinsDelete) | **Delete** /pins/{pin_id} | Delete Pin
@@ -12,6 +13,83 @@ Method | HTTP request | Description
 [**PinsSave**](PinsAPI.md#PinsSave) | **Post** /pins/{pin_id}/save | Save Pin
 [**PinsUpdate**](PinsAPI.md#PinsUpdate) | **Patch** /pins/{pin_id} | Update Pin
 
+
+
+## MultiPinsAnalytics
+
+> map[string]map[string]PinAnalyticsMetricsResponse MultiPinsAnalytics(ctx).PinIds(pinIds).StartDate(startDate).EndDate(endDate).MetricTypes(metricTypes).AppTypes(appTypes).AdAccountId(adAccountId).Execute()
+
+Get multiple Pin analytics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	pinIds := []string{"Inner_example"} // []string | List of Pin IDs.
+	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+	metricTypes := []openapiclient.PinsAnalyticsMetricTypesParameterInner{openapiclient.pins_analytics_metric_types_parameter_inner{String: new(string)}} // []PinsAnalyticsMetricTypesParameterInner | Pin metric types to get data for.
+	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PinsAPI.MultiPinsAnalytics(context.Background()).PinIds(pinIds).StartDate(startDate).EndDate(endDate).MetricTypes(metricTypes).AppTypes(appTypes).AdAccountId(adAccountId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PinsAPI.MultiPinsAnalytics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `MultiPinsAnalytics`: map[string]map[string]PinAnalyticsMetricsResponse
+	fmt.Fprintf(os.Stdout, "Response from `PinsAPI.MultiPinsAnalytics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMultiPinsAnalyticsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pinIds** | **[]string** | List of Pin IDs. | 
+ **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
+ **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
+ **metricTypes** | [**[]PinsAnalyticsMetricTypesParameterInner**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. | 
+ **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
+ **adAccountId** | **string** | Unique identifier of an ad account. | 
+
+### Return type
+
+[**map[string]map[string]PinAnalyticsMetricsResponse**](map.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## PinsAnalytics
@@ -39,7 +117,7 @@ func main() {
 	pinId := "pinId_example" // string | Unique identifier of a Pin.
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-	metricTypes := []openapiclient.PinsAnalyticsMetricTypesParameterInner{openapiclient.pins_analytics_metric_types_parameter_inner{String: new(string)}} // []PinsAnalyticsMetricTypesParameterInner | Pin metric types to get data for, default is all.
+	metricTypes := []openapiclient.PinsAnalyticsMetricTypesParameterInner{openapiclient.pins_analytics_metric_types_parameter_inner{String: new(string)}} // []PinsAnalyticsMetricTypesParameterInner | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	splitField := "splitField_example" // string | How to split the data into groups. Not including this param means data won't be split. (optional) (default to "NO_SPLIT")
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
@@ -74,7 +152,7 @@ Name | Type | Description  | Notes
 
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | [**[]PinsAnalyticsMetricTypesParameterInner**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for, default is all. | 
+ **metricTypes** | [**[]PinsAnalyticsMetricTypesParameterInner**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **splitField** | **string** | How to split the data into groups. Not including this param means data won&#39;t be split. | [default to &quot;NO_SPLIT&quot;]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
@@ -85,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -297,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -331,7 +409,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	pinFilter := "pinFilter_example" // string | Pin filter. (optional)
 	includeProtectedPins := true // bool | Specify if return pins from protected boards (optional) (default to false)
 	pinType := "pinType_example" // string | The type of pins to return, currently only enabled for private pins (optional)
@@ -363,7 +441,7 @@ Other parameters are passed through a pointer to a apiPinsListRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **pinFilter** | **string** | Pin filter. | 
  **includeProtectedPins** | **bool** | Specify if return pins from protected boards | [default to false]
  **pinType** | **string** | The type of pins to return, currently only enabled for private pins | 
@@ -377,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

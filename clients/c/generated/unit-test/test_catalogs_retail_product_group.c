@@ -34,7 +34,10 @@ catalogs_retail_product_group_t* instantiate_catalogs_retail_product_group(int i
       pinterest_rest_api_catalogs_retail_product_group__ACTIVE,
       1621350033000,
       1622742155000,
-      pinterest_rest_api_catalogs_retail_product_group_FEEDID_ERROR_TO_EXAMPLE_VALUE
+      "a",
+      "2680059592705",
+      "0",
+      "0"
     );
   } else {
     catalogs_retail_product_group = catalogs_retail_product_group_create(
@@ -48,7 +51,10 @@ catalogs_retail_product_group_t* instantiate_catalogs_retail_product_group(int i
       pinterest_rest_api_catalogs_retail_product_group__ACTIVE,
       1621350033000,
       1622742155000,
-      pinterest_rest_api_catalogs_retail_product_group_FEEDID_ERROR_TO_EXAMPLE_VALUE
+      "a",
+      "2680059592705",
+      "0",
+      "0"
     );
   }
 

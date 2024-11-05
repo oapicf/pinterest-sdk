@@ -6,13 +6,13 @@ package org.openapitools.server.model
  * @param country  for example: ''null''
  * @param language  for example: ''null''
  * @param items Array with catalogs items for example: ''null''
- * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog for example: ''2680059592705''
+ * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog for example: ''2680059592705''
  * @param operation  for example: ''null''
 */
 final case class ItemsBatchPostRequest (
-  catalogType: CatalogsType,
+  catalogType: String,
   country: Country,
-  language: Language,
+  language: CatalogsItemsRequestLanguage,
   items: Seq[ItemDeleteBatchRecord],
   catalogId: Option[String] = None,
   operation: BatchOperation

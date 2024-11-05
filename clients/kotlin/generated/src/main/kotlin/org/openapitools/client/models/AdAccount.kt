@@ -65,5 +65,8 @@ data class AdAccount (
     @Json(name = "updated_time")
     val updatedTime: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

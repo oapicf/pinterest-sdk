@@ -1,10 +1,12 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsCreativeAssetsItemErrorResponse
 import org.openapitools.model.CatalogsHotelItemErrorResponse
 import org.openapitools.model.CatalogsRetailItemErrorResponse
 import org.openapitools.model.CatalogsType
@@ -26,10 +28,12 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param itemId The catalog item id in the merchant namespace
  * @param errors Array with the errors for the item id requested
  * @param hotelId The catalog hotel id in the merchant namespace
+ * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes(
+      JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse::class, name = "CREATIVE_ASSETS"),
       JsonSubTypes.Type(value = CatalogsHotelItemErrorResponse::class, name = "HOTEL"),
       JsonSubTypes.Type(value = CatalogsRetailItemErrorResponse::class, name = "RETAIL")
 )
@@ -46,6 +50,9 @@ interface ItemResponseAnyOf1{
 
                 @get:Schema(example = "DS0294-M", description = "The catalog hotel id in the merchant namespace")
         val hotelId: kotlin.String? 
+
+                @get:Schema(example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace")
+        val creativeAssetsId: kotlin.String? 
 
 
 }

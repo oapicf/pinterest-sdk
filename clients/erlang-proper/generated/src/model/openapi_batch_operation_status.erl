@@ -10,5 +10,5 @@
   binary().
 
 openapi_batch_operation_status() ->
-  elements([<<"PROCESSING">>, <<"COMPLETED">>]).
+  elements([<<"PROCESSING">>, <<"COMPLETED">>, <<"FAILED">>]).
 

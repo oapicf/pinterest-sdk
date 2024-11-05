@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.CatalogsHotelAttributes;
+import apimodels.CatalogsCreativeAssetsAttributes;
 import apimodels.CatalogsType;
 import apimodels.ItemResponseAnyOf;
 import apimodels.ItemResponseAnyOf1;
@@ -19,7 +19,7 @@ import javax.validation.Valid;
 /**
  * Object describing an item record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemResponse   {
   @JsonProperty("catalog_type")
@@ -40,6 +40,10 @@ public class ItemResponse   {
   @JsonProperty("hotel_id")
   
   private String hotelId;
+
+  @JsonProperty("creative_assets_id")
+  
+  private String creativeAssetsId;
 
   public ItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -117,6 +121,23 @@ public class ItemResponse   {
     this.hotelId = hotelId;
   }
 
+  public ItemResponse creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+   /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+  **/
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,12 +151,13 @@ public class ItemResponse   {
     return Objects.equals(catalogType, itemResponse.catalogType) &&
         Objects.equals(itemId, itemResponse.itemId) &&
         Objects.equals(errors, itemResponse.errors) &&
-        Objects.equals(hotelId, itemResponse.hotelId);
+        Objects.equals(hotelId, itemResponse.hotelId) &&
+        Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -148,6 +170,7 @@ public class ItemResponse   {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

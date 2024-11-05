@@ -9,9 +9,9 @@
 -export_type([openapi_catalogs_hotel_batch_request/0]).
 
 -type openapi_catalogs_hotel_batch_request() ::
-  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  [ {'catalog_type', binary() }
   | {'country', openapi_country:openapi_country() }
-  | {'language', openapi_language:openapi_language() }
+  | {'language', openapi_catalogs_items_request_language:openapi_catalogs_items_request_language() }
   | {'items', list(openapi_catalogs_hotel_batch_item:openapi_catalogs_hotel_batch_item()) }
   | {'catalog_id', binary() }
   ].
@@ -21,9 +21,9 @@ openapi_catalogs_hotel_batch_request() ->
     openapi_catalogs_hotel_batch_request([]).
 
 openapi_catalogs_hotel_batch_request(Fields) ->
-  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  Default = [ {'catalog_type', elements([<<"HOTEL">>]) }
             , {'country', openapi_country:openapi_country() }
-            , {'language', openapi_language:openapi_language() }
+            , {'language', openapi_catalogs_items_request_language:openapi_catalogs_items_request_language() }
             , {'items', list(openapi_catalogs_hotel_batch_item:openapi_catalogs_hotel_batch_item(), 1, 1000) }
             , {'catalog_id', binary() }
             ],

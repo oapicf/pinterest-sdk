@@ -24,7 +24,7 @@
     },
     {
       "name": "filters",
-      "type": ["null", "model.CatalogsHotelProductGroupFilters"],
+      "type": ["null", "model.CatalogsCreativeAssetsProductGroupFilters"],
       "doc": "",
       "default": null
     },
@@ -34,9 +34,21 @@
         "type": "enum",
         "name": "CatalogsProductGroupsUpdateRequest_catalogUnderscoretype",
         "symbols": [
-          "HOTEL"
+          "CREATIVE_ASSETS"
         ]
       }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "locale",
+      "type": ["null", "model.CatalogsLocale"],
       "doc": "",
       "default": null
     }

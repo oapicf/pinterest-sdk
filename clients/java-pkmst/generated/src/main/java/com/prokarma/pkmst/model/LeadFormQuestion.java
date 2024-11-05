@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * LeadFormQuestion
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LeadFormQuestion   {
   @JsonProperty("question_type")
   private LeadFormQuestionType questionType;
@@ -41,10 +41,10 @@ public class LeadFormQuestion   {
     return this;
   }
 
-   /**
+  /**
    * Get questionType
    * @return questionType
-  **/
+   */
   @ApiModelProperty(value = "")
   public LeadFormQuestionType getQuestionType() {
     return questionType;
@@ -59,10 +59,10 @@ public class LeadFormQuestion   {
     return this;
   }
 
-   /**
+  /**
    * Get customQuestionFieldType
    * @return customQuestionFieldType
-  **/
+   */
   @ApiModelProperty(value = "")
   public LeadFormQuestionFieldType getCustomQuestionFieldType() {
     return customQuestionFieldType;
@@ -77,10 +77,10 @@ public class LeadFormQuestion   {
     return this;
   }
 
-   /**
+  /**
    * Question label for a custom question.
    * @return customQuestionLabel
-  **/
+   */
   @ApiModelProperty(value = "Question label for a custom question.")
   public String getCustomQuestionLabel() {
     return customQuestionLabel;
@@ -103,10 +103,10 @@ public class LeadFormQuestion   {
     return this;
   }
 
-   /**
+  /**
    * Question options for a custom question.
    * @return customQuestionOptions
-  **/
+   */
   @ApiModelProperty(value = "Question options for a custom question.")
   public List<String> getCustomQuestionOptions() {
     return customQuestionOptions;

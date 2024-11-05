@@ -68,5 +68,4 @@ public enum NullableCatalogsItemFieldType: String, Codable, CaseIterable {
     case minAdPrice = "MIN_AD_PRICE"
     case shippingWidth = "SHIPPING_WIDTH"
     case shippingHeight = "SHIPPING_HEIGHT"
-    case null = "null"
 }

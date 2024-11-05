@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class PinMediaWithVideo (
     _mediaType: Option[String],
-    _images: Option[ImageMetadataImages],
+    _images: Option[PinMediaWithImageAllOfImages],
     _coverImageUrl: Option[String],
     /* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
     _videoUrl: Option[String],

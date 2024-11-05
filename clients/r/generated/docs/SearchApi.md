@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example
 ```R
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```R
@@ -84,12 +84,14 @@ library(openapi)
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_query <- "query_example" # character | Search query. Can contain pin description keywords or comma-separated pin IDs. (Optional)
 
 api_instance <- SearchApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$SearchUserBoardsGet(ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, query = var_querydata_file = "result.txt")
 result <- api_instance$SearchUserBoardsGet(ad_account_id = var_ad_account_id, bookmark = var_bookmark, page_size = var_page_size, query = var_query)
@@ -102,7 +104,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **query** | **character**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] 
 
 ### Return type
@@ -111,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -129,7 +131,7 @@ Name | Type | Description  | Notes
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```R

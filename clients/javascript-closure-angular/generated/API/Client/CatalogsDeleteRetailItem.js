@@ -21,8 +21,5 @@ API.Client.CatalogsDeleteRetailItem.prototype.operation;
 
 /** @enum {string} */
 API.Client.CatalogsDeleteRetailItem.OperationEnum = { 
-  CREATE: 'CREATE',
-  UPDATE: 'UPDATE',
-  UPSERT: 'UPSERT',
   DELETE: 'DELETE',
 }

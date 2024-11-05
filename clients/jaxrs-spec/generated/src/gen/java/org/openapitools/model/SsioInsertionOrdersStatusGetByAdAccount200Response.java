@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ssio_insertion_orders_status_get_by_ad_account_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
   private @Valid List<@Valid SSIOInsertionOrderStatus> items = new ArrayList<>();
-  private @Valid String bookmark;
+  private String bookmark;
 
   /**
    * Insertion orders status by ad acount id
@@ -37,8 +37,7 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
   
   @ApiModelProperty(required = true, value = "Insertion orders status by ad acount id")
   @JsonProperty("items")
-  @NotNull
-  public List<SSIOInsertionOrderStatus> getItems() {
+  @NotNull @Valid public List<@Valid SSIOInsertionOrderStatus> getItems() {
     return items;
   }
 

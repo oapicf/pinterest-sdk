@@ -168,7 +168,7 @@ TargetingSpec::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *aUDIENCE_INCLUDEKey = "AUDIENCE_INCLUDE&#39;";
+	const gchar *aUDIENCE_INCLUDEKey = "AUDIENCE_INCLUDE";
 	node = json_object_get_member(pJsonObject, aUDIENCE_INCLUDEKey);
 	if (node !=NULL) {
 	
@@ -416,7 +416,7 @@ TargetingSpec::toJson()
 
 
 	
-	const gchar *aUDIENCE_INCLUDEKey = "AUDIENCE_INCLUDE&#39;";
+	const gchar *aUDIENCE_INCLUDEKey = "AUDIENCE_INCLUDE";
 	json_object_set_member(pJsonObject, aUDIENCE_INCLUDEKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getGENDER());

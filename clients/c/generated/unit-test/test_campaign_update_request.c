@@ -16,7 +16,7 @@
 #include "../model/campaign_update_request.h"
 campaign_update_request_t* instantiate_campaign_update_request(int include_optional);
 
-#include "test_ad_common_tracking_urls.c"
+#include "test_tracking_urls.c"
 
 
 campaign_update_request_t* instantiate_campaign_update_request(int include_optional) {
@@ -30,11 +30,9 @@ campaign_update_request_t* instantiate_campaign_update_request(int include_optio
       1432744744,
       1432744744,
       "549755885175",
-       // false, not to have infinite recursion
-      instantiate_ad_common_tracking_urls(0),
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       1580865126,
       1644023526,
-      "RUNNING",
       true,
       0,
       true,
@@ -50,10 +48,9 @@ campaign_update_request_t* instantiate_campaign_update_request(int include_optio
       1432744744,
       1432744744,
       "549755885175",
-      NULL,
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       1580865126,
       1644023526,
-      "RUNNING",
       true,
       0,
       true,

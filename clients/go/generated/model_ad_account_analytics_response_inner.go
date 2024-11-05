@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &AdAccountAnalyticsResponseInner{}
 // AdAccountAnalyticsResponseInner struct for AdAccountAnalyticsResponseInner
 type AdAccountAnalyticsResponseInner struct {
 	// The ID of the advertiser that this metrics belongs to.
-	AD_ACCOUNT_ID string `json:"AD_ACCOUNT_ID"`
+	AD_ACCOUNT_ID string `json:"AD_ACCOUNT_ID" validate:"regexp=^\\\\d+$"`
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE *string `json:"DATE,omitempty"`
 	AdditionalProperties map[string]interface{}

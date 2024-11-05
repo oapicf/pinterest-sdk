@@ -27,8 +27,9 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface PinsApiService {
+      public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, SecurityContext securityContext);
       public Response pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, SecurityContext securityContext);
       public Response pinsCreate(PinCreate pinCreate, String adAccountId, SecurityContext securityContext);
       public Response pinsDelete(String pinId, String adAccountId, SecurityContext securityContext);

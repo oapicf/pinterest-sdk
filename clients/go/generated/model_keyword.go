@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,20 +22,20 @@ var _ MappedNullable = &Keyword{}
 
 // Keyword struct for Keyword
 type Keyword struct {
-	Archived *bool `json:"archived,omitempty"`
-	// Keyword ID .
-	Id *string `json:"id,omitempty"`
-	// Keyword parent entity ID (advertiser, campaign, ad group).
-	ParentId *string `json:"parent_id,omitempty"`
-	// Parent entity type
-	ParentType *string `json:"parent_type,omitempty"`
-	// Always keyword
-	Type *string `json:"type,omitempty"`
-	// Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 	Bid NullableInt32 `json:"bid,omitempty"`
 	MatchType NullableMatchTypeResponse `json:"match_type"`
 	// Keyword value (120 chars max).
 	Value string `json:"value"`
+	Archived *bool `json:"archived,omitempty"`
+	// Keyword ID .
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Keyword parent entity ID (advertiser, campaign, ad group).
+	ParentId *string `json:"parent_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Parent entity type
+	ParentType *string `json:"parent_type,omitempty"`
+	// Always keyword
+	Type *string `json:"type,omitempty"`
 }
 
 type _Keyword Keyword
@@ -57,6 +57,98 @@ func NewKeyword(matchType NullableMatchTypeResponse, value string) *Keyword {
 func NewKeywordWithDefaults() *Keyword {
 	this := Keyword{}
 	return &this
+}
+
+// GetBid returns the Bid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Keyword) GetBid() int32 {
+	if o == nil || IsNil(o.Bid.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Bid.Get()
+}
+
+// GetBidOk returns a tuple with the Bid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Keyword) GetBidOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Bid.Get(), o.Bid.IsSet()
+}
+
+// HasBid returns a boolean if a field has been set.
+func (o *Keyword) HasBid() bool {
+	if o != nil && o.Bid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBid gets a reference to the given NullableInt32 and assigns it to the Bid field.
+func (o *Keyword) SetBid(v int32) {
+	o.Bid.Set(&v)
+}
+// SetBidNil sets the value for Bid to be an explicit nil
+func (o *Keyword) SetBidNil() {
+	o.Bid.Set(nil)
+}
+
+// UnsetBid ensures that no value is present for Bid, not even an explicit nil
+func (o *Keyword) UnsetBid() {
+	o.Bid.Unset()
+}
+
+// GetMatchType returns the MatchType field value
+// If the value is explicit nil, the zero value for MatchTypeResponse will be returned
+func (o *Keyword) GetMatchType() MatchTypeResponse {
+	if o == nil || o.MatchType.Get() == nil {
+		var ret MatchTypeResponse
+		return ret
+	}
+
+	return *o.MatchType.Get()
+}
+
+// GetMatchTypeOk returns a tuple with the MatchType field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Keyword) GetMatchTypeOk() (*MatchTypeResponse, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MatchType.Get(), o.MatchType.IsSet()
+}
+
+// SetMatchType sets field value
+func (o *Keyword) SetMatchType(v MatchTypeResponse) {
+	o.MatchType.Set(&v)
+}
+
+// GetValue returns the Value field value
+func (o *Keyword) GetValue() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value
+// and a boolean to check if the value has been set.
+func (o *Keyword) GetValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Value, true
+}
+
+// SetValue sets field value
+func (o *Keyword) SetValue(v string) {
+	o.Value = v
 }
 
 // GetArchived returns the Archived field value if set, zero value otherwise.
@@ -219,98 +311,6 @@ func (o *Keyword) SetType(v string) {
 	o.Type = &v
 }
 
-// GetBid returns the Bid field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Keyword) GetBid() int32 {
-	if o == nil || IsNil(o.Bid.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.Bid.Get()
-}
-
-// GetBidOk returns a tuple with the Bid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Keyword) GetBidOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Bid.Get(), o.Bid.IsSet()
-}
-
-// HasBid returns a boolean if a field has been set.
-func (o *Keyword) HasBid() bool {
-	if o != nil && o.Bid.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBid gets a reference to the given NullableInt32 and assigns it to the Bid field.
-func (o *Keyword) SetBid(v int32) {
-	o.Bid.Set(&v)
-}
-// SetBidNil sets the value for Bid to be an explicit nil
-func (o *Keyword) SetBidNil() {
-	o.Bid.Set(nil)
-}
-
-// UnsetBid ensures that no value is present for Bid, not even an explicit nil
-func (o *Keyword) UnsetBid() {
-	o.Bid.Unset()
-}
-
-// GetMatchType returns the MatchType field value
-// If the value is explicit nil, the zero value for MatchTypeResponse will be returned
-func (o *Keyword) GetMatchType() MatchTypeResponse {
-	if o == nil || o.MatchType.Get() == nil {
-		var ret MatchTypeResponse
-		return ret
-	}
-
-	return *o.MatchType.Get()
-}
-
-// GetMatchTypeOk returns a tuple with the MatchType field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Keyword) GetMatchTypeOk() (*MatchTypeResponse, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.MatchType.Get(), o.MatchType.IsSet()
-}
-
-// SetMatchType sets field value
-func (o *Keyword) SetMatchType(v MatchTypeResponse) {
-	o.MatchType.Set(&v)
-}
-
-// GetValue returns the Value field value
-func (o *Keyword) GetValue() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Value
-}
-
-// GetValueOk returns a tuple with the Value field value
-// and a boolean to check if the value has been set.
-func (o *Keyword) GetValueOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Value, true
-}
-
-// SetValue sets field value
-func (o *Keyword) SetValue(v string) {
-	o.Value = v
-}
-
 func (o Keyword) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -321,6 +321,11 @@ func (o Keyword) MarshalJSON() ([]byte, error) {
 
 func (o Keyword) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Bid.IsSet() {
+		toSerialize["bid"] = o.Bid.Get()
+	}
+	toSerialize["match_type"] = o.MatchType.Get()
+	toSerialize["value"] = o.Value
 	if !IsNil(o.Archived) {
 		toSerialize["archived"] = o.Archived
 	}
@@ -336,11 +341,6 @@ func (o Keyword) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Bid.IsSet() {
-		toSerialize["bid"] = o.Bid.Get()
-	}
-	toSerialize["match_type"] = o.MatchType.Get()
-	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }
 

@@ -17,7 +17,7 @@
 #' @field num_items Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). integer [optional]
 #' @field order_id The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest. character [optional]
 #' @field search_string The search string related to the user conversion event. character [optional]
-#' @field opt_out_type Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding\%20Limited\%20Data\%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up. character [optional]
+#' @field opt_out_type Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up. character [optional]
 #' @field np Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -37,8 +37,7 @@ ConversionEventsDataInnerCustomData <- R6::R6Class(
     `search_string` = NULL,
     `opt_out_type` = NULL,
     `np` = NULL,
-    #' Initialize a new ConversionEventsDataInnerCustomData class.
-    #'
+
     #' @description
     #' Initialize a new ConversionEventsDataInnerCustomData class.
     #'
@@ -52,10 +51,9 @@ ConversionEventsDataInnerCustomData <- R6::R6Class(
     #' @param num_items Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
     #' @param order_id The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
     #' @param search_string The search string related to the user conversion event.
-    #' @param opt_out_type Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding\%20Limited\%20Data\%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
+    #' @param opt_out_type Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
     #' @param np Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`currency` = NULL, `value` = NULL, `content_ids` = NULL, `content_name` = NULL, `content_category` = NULL, `content_brand` = NULL, `contents` = NULL, `num_items` = NULL, `order_id` = NULL, `search_string` = NULL, `opt_out_type` = NULL, `np` = NULL, ...) {
       if (!is.null(`currency`)) {
         if (!(is.character(`currency`) && length(`currency`) == 1)) {
@@ -128,13 +126,11 @@ ConversionEventsDataInnerCustomData <- R6::R6Class(
         self$`np` <- `np`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionEventsDataInnerCustomData in JSON format
-    #' @export
     toJSON = function() {
       ConversionEventsDataInnerCustomDataObject <- list()
       if (!is.null(self$`currency`)) {
@@ -187,14 +183,12 @@ ConversionEventsDataInnerCustomData <- R6::R6Class(
       }
       ConversionEventsDataInnerCustomDataObject
     },
-    #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomData
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionEventsDataInnerCustomData
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`currency`)) {
@@ -235,13 +229,11 @@ ConversionEventsDataInnerCustomData <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionEventsDataInnerCustomData in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`currency`)) {
@@ -344,14 +336,12 @@ ConversionEventsDataInnerCustomData <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomData
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionEventsDataInnerCustomData
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`currency` <- this_object$`currency`
@@ -368,53 +358,42 @@ ConversionEventsDataInnerCustomData <- R6::R6Class(
       self$`np` <- this_object$`np`
       self
     },
-    #' Validate JSON input with respect to ConversionEventsDataInnerCustomData
-    #'
+
     #' @description
     #' Validate JSON input with respect to ConversionEventsDataInnerCustomData and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ConversionEventsDataInnerCustomData
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -15,14 +15,12 @@ LeadFormTestRequest <- R6::R6Class(
   "LeadFormTestRequest",
   public = list(
     `answers` = NULL,
-    #' Initialize a new LeadFormTestRequest class.
-    #'
+
     #' @description
     #' Initialize a new LeadFormTestRequest class.
     #'
     #' @param answers Test lead answers. Should follow the creation order.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`answers`, ...) {
       if (!missing(`answers`)) {
         stopifnot(is.vector(`answers`), length(`answers`) != 0)
@@ -30,13 +28,11 @@ LeadFormTestRequest <- R6::R6Class(
         self$`answers` <- `answers`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LeadFormTestRequest in JSON format
-    #' @export
     toJSON = function() {
       LeadFormTestRequestObject <- list()
       if (!is.null(self$`answers`)) {
@@ -45,14 +41,12 @@ LeadFormTestRequest <- R6::R6Class(
       }
       LeadFormTestRequestObject
     },
-    #' Deserialize JSON string into an instance of LeadFormTestRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LeadFormTestRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of LeadFormTestRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`answers`)) {
@@ -60,13 +54,11 @@ LeadFormTestRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LeadFormTestRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`answers`)) {
@@ -81,26 +73,22 @@ LeadFormTestRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of LeadFormTestRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LeadFormTestRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of LeadFormTestRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`answers` <- ApiClient$new()$deserializeObj(this_object$`answers`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to LeadFormTestRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to LeadFormTestRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `answers`
@@ -111,23 +99,19 @@ LeadFormTestRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for LeadFormTestRequest: the required field `answers` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of LeadFormTestRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `answers` is null
       if (is.null(self$`answers`)) {
@@ -136,13 +120,11 @@ LeadFormTestRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `answers` is null
@@ -152,12 +134,9 @@ LeadFormTestRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

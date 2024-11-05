@@ -24,7 +24,7 @@ public class CatalogsRetailItemsBatch   {
   private OffsetDateTime completedTime;
   private BatchOperationStatus status;
   private CatalogsType catalogType;
-  private List<ItemProcessingRecord> items;
+  private List<ItemProcessingRecord> items = new ArrayList<>();
 
   public CatalogsRetailItemsBatch () {
 

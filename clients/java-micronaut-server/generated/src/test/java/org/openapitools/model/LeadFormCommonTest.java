@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.LeadFormCommonPolicyLinksInner;
 import org.openapitools.model.LeadFormQuestion;
 import org.openapitools.model.LeadFormStatus;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -79,6 +80,14 @@ public class LeadFormCommonTest {
     @Test
     public void questionsTest() {
         // TODO: test questions
+    }
+
+    /**
+     * Test the property 'policyLinks'
+     */
+    @Test
+    public void policyLinksTest() {
+        // TODO: test policyLinks
     }
 
 }

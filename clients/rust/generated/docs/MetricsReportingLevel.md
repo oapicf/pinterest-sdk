@@ -16,6 +16,7 @@
 | ProductGroup | PRODUCT_GROUP |
 | ProductGroupTargeting | PRODUCT_GROUP_TARGETING |
 | ProductItem | PRODUCT_ITEM |
+| ProductItemTargeting | PRODUCT_ITEM_TARGETING |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

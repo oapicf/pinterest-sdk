@@ -37,11 +37,14 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   'explicitFollowing': false, // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
 };
@@ -60,7 +63,7 @@ apiInstance.boardsUserFollowsList(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
@@ -70,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -84,7 +87,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -96,7 +99,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-let username = username; // String | A valid username
+let username = "username"; // String | A valid username
 let followUserRequest = new PinterestSdk.FollowUserRequest(); // FollowUserRequest | Follow a user.
 apiInstance.followUserUpdate(username, followUserRequest, (error, data, response) => {
   if (error) {
@@ -145,11 +148,14 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 };
 apiInstance.followersList(opts, (error, data, response) => {
   if (error) {
@@ -166,7 +172,7 @@ apiInstance.followersList(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -174,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -198,6 +204,9 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 apiInstance.linkedBusinessAccountsGet((error, data, response) => {
@@ -219,7 +228,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -245,7 +254,7 @@ let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-let website = mysite.test; // String | Website with path or domain only
+let website = "mysite.test"; // String | Website with path or domain only
 apiInstance.unverifyWebsiteDelete(website, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -361,6 +370,9 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let startDate = new Date("2013-10-20"); // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -410,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -434,6 +446,9 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let startDate = new Date("2013-10-20"); // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -483,7 +498,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -507,12 +522,15 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-let username = username; // String | A valid username
+let username = "username"; // String | A valid username
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 };
 apiInstance.userAccountFollowedInterests(username, opts, (error, data, response) => {
   if (error) {
@@ -530,7 +548,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String**| A valid username | 
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -538,7 +556,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -552,7 +570,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
 
 ### Example
 
@@ -562,6 +580,9 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
@@ -589,7 +610,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -613,11 +634,14 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   'feedType': "feedType_example", // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
   'explicitFollowing': false, // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
   'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
@@ -637,7 +661,7 @@ apiInstance.userFollowingGet(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
  **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
@@ -648,7 +672,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -676,7 +700,7 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new PinterestSdk.UserAccountApi();
 let opts = {
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
-  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  'pageSize': 25 // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 };
 apiInstance.userWebsitesGet(opts, (error, data, response) => {
   if (error) {
@@ -693,7 +717,7 @@ apiInstance.userWebsitesGet(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -711,7 +735,7 @@ Name | Type | Description  | Notes
 
 ## verifyWebsiteUpdate
 
-> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest)
+> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest, opts)
 
 Verify website
 
@@ -728,7 +752,10 @@ pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
 let userWebsiteVerifyRequest = new PinterestSdk.UserWebsiteVerifyRequest(); // UserWebsiteVerifyRequest | Verify a website.
-apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, (error, data, response) => {
+let opts = {
+  'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
+};
+apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -743,6 +770,7 @@ apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, (error, data, response
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -760,7 +788,7 @@ Name | Type | Description  | Notes
 
 ## websiteVerificationGet
 
-> UserWebsiteVerificationCode websiteVerificationGet()
+> UserWebsiteVerificationCode websiteVerificationGet(opts)
 
 Get user verification code for website claiming
 
@@ -774,9 +802,15 @@ let defaultClient = PinterestSdk.ApiClient.instance;
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 let pinterest_oauth2 = defaultClient.authentications['pinterest_oauth2'];
 pinterest_oauth2.accessToken = 'YOUR ACCESS TOKEN';
+// Configure OAuth2 access token for authorization: client_credentials
+let client_credentials = defaultClient.authentications['client_credentials'];
+client_credentials.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new PinterestSdk.UserAccountApi();
-apiInstance.websiteVerificationGet((error, data, response) => {
+let opts = {
+  'adAccountId': "adAccountId_example" // String | Unique identifier of an ad account.
+};
+apiInstance.websiteVerificationGet(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -787,7 +821,10 @@ apiInstance.websiteVerificationGet((error, data, response) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -795,7 +832,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

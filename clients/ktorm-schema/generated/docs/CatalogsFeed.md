@@ -5,6 +5,9 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
+**createdAt** | created_at | datetime NOT NULL |  | [**java.time.LocalDateTime**](java.time.LocalDateTime.md) |  | 
+**id** | id | text NOT NULL PRIMARY KEY |  | **kotlin.String** |  | 
+**updatedAt** | updated_at | datetime NOT NULL |  | [**java.time.LocalDateTime**](java.time.LocalDateTime.md) |  | 
 **name** | name | text NOT NULL |  | **kotlin.String** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | format | long NOT NULL |  | [**CatalogsFormat**](CatalogsFormat.md) |  |  [foreignkey]
 **catalogType** | catalog_type | long NOT NULL |  | [**CatalogsType**](CatalogsType.md) |  |  [foreignkey]
@@ -17,9 +20,6 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **defaultCountry** | default_country | long NOT NULL |  | [**Country**](Country.md) |  |  [foreignkey]
 **defaultAvailability** | default_availability | long NOT NULL |  | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  |  [foreignkey]
 **catalogId** | catalog_id | text NOT NULL |  | **kotlin.String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
-**createdAt** | created_at | datetime |  | [**java.time.LocalDateTime**](java.time.LocalDateTime.md) |  |  [optional]
-**id** | id | text PRIMARY KEY |  | **kotlin.String** |  |  [optional]
-**updatedAt** | updated_at | datetime |  | [**java.time.LocalDateTime**](java.time.LocalDateTime.md) |  |  [optional]
 
 
 

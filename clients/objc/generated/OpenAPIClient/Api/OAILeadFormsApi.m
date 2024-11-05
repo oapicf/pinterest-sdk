@@ -2,9 +2,12 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAIError.h"
+#import "OAILeadFormArrayResponse.h"
+#import "OAILeadFormCreateRequest.h"
 #import "OAILeadFormResponse.h"
 #import "OAILeadFormTestRequest.h"
 #import "OAILeadFormTestResponse.h"
+#import "OAILeadFormUpdateRequest.h"
 #import "OAILeadFormsList200Response.h"
 
 
@@ -55,7 +58,7 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get lead form by id
-/// Gets a lead form given it's ID. It must also be associated with the provided ad account ID. Retrieving an advertiser's lead form will only contain results if you're a part of the Lead ads beta. If you're interested in joining the beta, please reach out to your Pinterest account manager.
+/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param leadFormId Unique identifier of a lead form. 
@@ -140,7 +143,7 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create lead form test data
-/// Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+/// Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
 ///  @param leadFormId Unique identifier of a lead form. 
@@ -239,11 +242,94 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Get lead forms
-/// Gets all Lead Forms associated with an ad account ID. Retrieving an advertiser's list of lead forms will only contain results if you're a part of the Lead ads beta.  If you're interested in joining the beta, please reach out to your Pinterest account manager.
+/// Create lead forms
+/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param leadFormCreateRequest List of lead forms to create, size limit [1, 30]. 
+///
+///  @returns OAILeadFormArrayResponse*
+///
+-(NSURLSessionTask*) leadFormsCreateWithAdAccountId: (NSString*) adAccountId
+    leadFormCreateRequest: (NSArray<OAILeadFormCreateRequest>*) leadFormCreateRequest
+    completionHandler: (void (^)(OAILeadFormArrayResponse* output, NSError* error)) handler {
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'leadFormCreateRequest' is set
+    if (leadFormCreateRequest == nil) {
+        NSParameterAssert(leadFormCreateRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormCreateRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/lead_forms"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = leadFormCreateRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAILeadFormArrayResponse*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAILeadFormArrayResponse*)data, error);
+                                }
+                            }];
+}
+
+///
+/// List lead forms
+/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+///  @param adAccountId Unique identifier of an ad account. 
+///
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 ///
@@ -320,6 +406,89 @@ NSInteger kOAILeadFormsApiMissingParamErrorCode = 234513;
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
                                     handler((OAILeadFormsList200Response*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Update lead forms
+/// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+///  @param adAccountId Unique identifier of an ad account. 
+///
+///  @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30]. 
+///
+///  @returns OAILeadFormArrayResponse*
+///
+-(NSURLSessionTask*) leadFormsUpdateWithAdAccountId: (NSString*) adAccountId
+    leadFormUpdateRequest: (NSArray<OAILeadFormUpdateRequest>*) leadFormUpdateRequest
+    completionHandler: (void (^)(OAILeadFormArrayResponse* output, NSError* error)) handler {
+    // verify the required parameter 'adAccountId' is set
+    if (adAccountId == nil) {
+        NSParameterAssert(adAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"adAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'leadFormUpdateRequest' is set
+    if (leadFormUpdateRequest == nil) {
+        NSParameterAssert(leadFormUpdateRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"leadFormUpdateRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAILeadFormsApiErrorDomain code:kOAILeadFormsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/ad_accounts/{ad_account_id}/lead_forms"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        pathParams[@"ad_account_id"] = adAccountId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = leadFormUpdateRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"PATCH"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAILeadFormArrayResponse*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAILeadFormArrayResponse*)data, error);
                                 }
                             }];
 }

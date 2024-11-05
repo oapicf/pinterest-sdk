@@ -19,8 +19,7 @@ AdAccountCreateRequest <- R6::R6Class(
     `country` = NULL,
     `name` = NULL,
     `owner_user_id` = NULL,
-    #' Initialize a new AdAccountCreateRequest class.
-    #'
+
     #' @description
     #' Initialize a new AdAccountCreateRequest class.
     #'
@@ -28,7 +27,6 @@ AdAccountCreateRequest <- R6::R6Class(
     #' @param name Ad Account name.
     #' @param owner_user_id Advertiser's owning user ID.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`country` = NULL, `name` = NULL, `owner_user_id` = NULL, ...) {
       if (!is.null(`country`)) {
         if (!(`country` %in% c())) {
@@ -50,13 +48,11 @@ AdAccountCreateRequest <- R6::R6Class(
         self$`owner_user_id` <- `owner_user_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdAccountCreateRequest in JSON format
-    #' @export
     toJSON = function() {
       AdAccountCreateRequestObject <- list()
       if (!is.null(self$`country`)) {
@@ -73,14 +69,12 @@ AdAccountCreateRequest <- R6::R6Class(
       }
       AdAccountCreateRequestObject
     },
-    #' Deserialize JSON string into an instance of AdAccountCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdAccountCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdAccountCreateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`country`)) {
@@ -96,13 +90,11 @@ AdAccountCreateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdAccountCreateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`country`)) {
@@ -133,14 +125,12 @@ AdAccountCreateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdAccountCreateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdAccountCreateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdAccountCreateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
@@ -148,33 +138,27 @@ AdAccountCreateRequest <- R6::R6Class(
       self$`owner_user_id` <- this_object$`owner_user_id`
       self
     },
-    #' Validate JSON input with respect to AdAccountCreateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdAccountCreateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdAccountCreateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (nchar(self$`name`) > 256) {
         return(FALSE)
@@ -186,13 +170,11 @@ AdAccountCreateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (nchar(self$`name`) > 256) {
@@ -205,12 +187,9 @@ AdAccountCreateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

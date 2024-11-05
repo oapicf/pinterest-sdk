@@ -6,6 +6,7 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import java.time.ZonedDateTime
+import org.openapitools.models.CatalogsCreativeAssetsFeed
 import org.openapitools.models.CatalogsFeedCredentials
 import org.openapitools.models.CatalogsFeedProcessingSchedule
 import org.openapitools.models.CatalogsFormat
@@ -35,9 +36,9 @@ import org.openapitools.models.ProductAvailabilityType
  * @param defaultUnderscoreavailability 
  * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  */
-case class CatalogsFeed(createdUnderscoreat: Option[ZonedDateTime],
-                id: Option[String],
-                updatedUnderscoreat: Option[ZonedDateTime],
+case class CatalogsFeed(createdUnderscoreat: ZonedDateTime,
+                id: String,
+                updatedUnderscoreat: ZonedDateTime,
                 name: String,
                 format: CatalogsFormat,
                 catalogUnderscoretype: CatalogsType,

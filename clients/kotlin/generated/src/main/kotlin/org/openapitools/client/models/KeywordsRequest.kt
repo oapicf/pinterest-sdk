@@ -38,5 +38,8 @@ data class KeywordsRequest (
     @Json(name = "parent_id")
     val parentId: kotlin.String
 
-)
+) {
+
+
+}
 

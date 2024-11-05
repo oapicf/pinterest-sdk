@@ -52,7 +52,7 @@
     {
       "name": "catalog_id",
       "type": "string",
-      "doc": ""
+      "doc": "Catalog id pertaining to the hotel product group."
     }
   ]
 

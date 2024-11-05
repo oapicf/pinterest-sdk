@@ -83,5 +83,8 @@ data class IntegrationMetadata (
     @Json(name = "partner_metadata")
     val partnerMetadata: kotlin.String? = null
 
-)
+) {
+
+
+}
 

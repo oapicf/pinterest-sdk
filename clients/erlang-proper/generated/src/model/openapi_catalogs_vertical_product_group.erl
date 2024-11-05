@@ -13,14 +13,16 @@
   | {'id', binary() }
   | {'name', binary() }
   | {'description', binary() }
-  | {'filters', openapi_catalogs_product_group_filters:openapi_catalogs_product_group_filters() }
-  | {'created_at', integer() }
-  | {'updated_at', integer() }
-  | {'catalog_id', binary() }
+  | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
   | {'is_featured', boolean() }
   | {'type', openapi_catalogs_product_group_type:openapi_catalogs_product_group_type() }
   | {'status', openapi_catalogs_product_group_status:openapi_catalogs_product_group_status() }
+  | {'created_at', integer() }
+  | {'updated_at', integer() }
+  | {'catalog_id', binary() }
   | {'feed_id', binary() }
+  | {'country', binary() }
+  | {'locale', binary() }
   ].
 
 
@@ -28,18 +30,20 @@ openapi_catalogs_vertical_product_group() ->
     openapi_catalogs_vertical_product_group([]).
 
 openapi_catalogs_vertical_product_group(Fields) ->
-  Default = [ {'catalog_type', elements([<<"RETAIL">>]) }
+  Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'id', binary() }
             , {'name', binary() }
             , {'description', binary() }
-            , {'filters', openapi_catalogs_product_group_filters:openapi_catalogs_product_group_filters() }
-            , {'created_at', integer() }
-            , {'updated_at', integer() }
-            , {'catalog_id', binary() }
+            , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
             , {'is_featured', boolean() }
             , {'type', openapi_catalogs_product_group_type:openapi_catalogs_product_group_type() }
             , {'status', openapi_catalogs_product_group_status:openapi_catalogs_product_group_status() }
-            , {'feed_id', elements([<<"">>]) }
+            , {'created_at', integer() }
+            , {'updated_at', integer() }
+            , {'catalog_id', binary() }
+            , {'feed_id', binary() }
+            , {'country', binary() }
+            , {'locale', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -35,8 +35,7 @@ CustomerList <- R6::R6Class(
     `type` = NULL,
     `updated_time` = NULL,
     `exceptions` = NULL,
-    #' Initialize a new CustomerList class.
-    #'
+
     #' @description
     #' Initialize a new CustomerList class.
     #'
@@ -52,7 +51,6 @@ CustomerList <- R6::R6Class(
     #' @param updated_time Last update time. Unix timestamp in seconds.
     #' @param exceptions Customer list errors
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`ad_account_id` = NULL, `created_time` = NULL, `id` = NULL, `name` = NULL, `num_batches` = NULL, `num_removed_user_records` = NULL, `num_uploaded_user_records` = NULL, `status` = NULL, `type` = NULL, `updated_time` = NULL, `exceptions` = NULL, ...) {
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
@@ -106,13 +104,11 @@ CustomerList <- R6::R6Class(
         self$`exceptions` <- `exceptions`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CustomerList in JSON format
-    #' @export
     toJSON = function() {
       CustomerListObject <- list()
       if (!is.null(self$`ad_account_id`)) {
@@ -161,14 +157,12 @@ CustomerList <- R6::R6Class(
       }
       CustomerListObject
     },
-    #' Deserialize JSON string into an instance of CustomerList
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CustomerList
     #'
     #' @param input_json the JSON input
     #' @return the instance of CustomerList
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_account_id`)) {
@@ -209,13 +203,11 @@ CustomerList <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CustomerList in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_account_id`)) {
@@ -310,14 +302,12 @@ CustomerList <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CustomerList
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CustomerList
     #'
     #' @param input_json the JSON input
     #' @return the instance of CustomerList
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
@@ -336,53 +326,42 @@ CustomerList <- R6::R6Class(
       self$`exceptions` <- this_object$`exceptions`
       self
     },
-    #' Validate JSON input with respect to CustomerList
-    #'
+
     #' @description
     #' Validate JSON input with respect to CustomerList and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CustomerList
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

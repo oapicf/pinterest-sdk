@@ -4,6 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**response_type** | **string** |  | [optional]
+**access_token** | **string** |  |
+**token_type** | **string** |  | [default to 'bearer']
+**expires_in** | **int** |  |
+**scope** | **string** |  |
 **refresh_token** | **string** |  |
 **refresh_token_expires_in** | **int** |  |
 

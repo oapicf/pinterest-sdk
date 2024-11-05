@@ -17,6 +17,7 @@ Request object for creating a feed. Please, be aware that \"default_country\" an
 |**preferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  |  [optional] |
 |**defaultCountry** | **Country** |  |  [optional] |
 |**defaultAvailability** | **ProductAvailabilityType** |  |  [optional] |
+|**status** | [**CatalogsStatus**](CatalogsStatus.md) |  |  [optional] |
 
 
 

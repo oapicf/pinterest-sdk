@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.AdAccountCreateSubscriptionRequestPartnerMetadata;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -49,6 +50,14 @@ public class AdAccountCreateSubscriptionRequestTest {
     @Test
     public void partnerRefreshTokenTest() {
         // TODO: test partnerRefreshToken
+    }
+
+    /**
+     * Test the property 'partnerMetadata'
+     */
+    @Test
+    public void partnerMetadataTest() {
+        // TODO: test partnerMetadata
     }
 
 }

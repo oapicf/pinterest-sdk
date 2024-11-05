@@ -11,5 +11,7 @@ The class is defined in **[BatchOperationStatus.java](../../src/main/java/org/op
 
 * `COMPLETED` (value: `"COMPLETED"`)
 
+* `FAILED` (value: `"FAILED"`)
+
 
 

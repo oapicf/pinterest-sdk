@@ -48,5 +48,8 @@ data class AudienceInsightCategoryCommon (
     @Json(name = "id")
     val id: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -8,19 +8,25 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
+import org.openapitools.server.model.Catalog
+import org.openapitools.server.model.CatalogsCreateReportResponse
+import org.openapitools.server.model.CatalogsCreateRequest
 import org.openapitools.server.model.CatalogsFeed
+import org.openapitools.server.model.CatalogsFeedIngestion
 import org.openapitools.server.model.CatalogsItemValidationIssue
 import org.openapitools.server.model.CatalogsItems
 import org.openapitools.server.model.CatalogsItemsBatch
 import org.openapitools.server.model.CatalogsItemsFilters
+import org.openapitools.server.model.CatalogsItemsRequest
 import org.openapitools.server.model.CatalogsList200Response
 import org.openapitools.server.model.CatalogsListProductsByFilterRequest
 import org.openapitools.server.model.CatalogsProductGroupPinsList200Response
-import org.openapitools.server.model.CatalogsProductGroupProductCounts
-import org.openapitools.server.model.CatalogsProductGroupsCreate201Response
-import org.openapitools.server.model.CatalogsProductGroupsCreateRequest
+import org.openapitools.server.model.CatalogsProductGroupProductCountsVertical
 import org.openapitools.server.model.CatalogsProductGroupsList200Response
 import org.openapitools.server.model.CatalogsProductGroupsUpdateRequest
+import org.openapitools.server.model.CatalogsReport
+import org.openapitools.server.model.CatalogsReportParameters
+import org.openapitools.server.model.CatalogsVerticalProductGroup
 import org.openapitools.server.model.Error
 import org.openapitools.server.model.FeedProcessingResultsList200Response
 import org.openapitools.server.model.FeedsCreateRequest
@@ -28,6 +34,8 @@ import org.openapitools.server.model.FeedsList200Response
 import org.openapitools.server.model.FeedsUpdateRequest
 import org.openapitools.server.model.ItemsBatchPostRequest
 import org.openapitools.server.model.ItemsIssuesList200Response
+import org.openapitools.server.model.MultipleProductGroupsInner
+import org.openapitools.server.model.ReportsStats200Response
 
 
 class CatalogsApi(
@@ -43,6 +51,15 @@ import CatalogsApiPatterns.feedIdPattern
 
   lazy val route: Route =
     path("catalogs") { 
+      post { 
+        parameters("ad_account_id".as[String].?) { (adAccountId) => 
+            entity(as[CatalogsCreateRequest]){ catalogsCreateRequest =>
+              catalogsService.catalogsCreate(catalogsCreateRequest = catalogsCreateRequest, adAccountId = adAccountId)
+            }
+        }
+      }
+    } ~
+    path("catalogs") { 
       get { 
         parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?) { (bookmark, pageSize, adAccountId) => 
             catalogsService.catalogsList(bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
@@ -51,16 +68,25 @@ import CatalogsApiPatterns.feedIdPattern
     } ~
     path("catalogs" / "product_groups" / productGroupIdPattern / "products") { (productGroupId) => 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?) { (bookmark, pageSize, adAccountId) => 
-            catalogsService.catalogsProductGroupPinsList(productGroupId = productGroupId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?, "pin_metrics".as[Boolean].?(false)) { (bookmark, pageSize, adAccountId, pinMetrics) => 
+            catalogsService.catalogsProductGroupPinsList(productGroupId = productGroupId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId, pinMetrics = pinMetrics)
         }
       }
     } ~
     path("catalogs" / "product_groups") { 
       post { 
         parameters("ad_account_id".as[String].?) { (adAccountId) => 
-            entity(as[CatalogsProductGroupsCreateRequest]){ catalogsProductGroupsCreateRequest =>
-              catalogsService.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequest = catalogsProductGroupsCreateRequest, adAccountId = adAccountId)
+            entity(as[MultipleProductGroupsInner]){ multipleProductGroupsInner =>
+              catalogsService.catalogsProductGroupsCreate(multipleProductGroupsInner = multipleProductGroupsInner, adAccountId = adAccountId)
+            }
+        }
+      }
+    } ~
+    path("catalogs" / "product_groups" / "multiple") { 
+      post { 
+        parameters("ad_account_id".as[String].?) { (adAccountId) => 
+            entity(as[Seq[MultipleProductGroupsInner]]){ multipleProductGroupsInner =>
+              catalogsService.catalogsProductGroupsCreateMany(multipleProductGroupsInner = multipleProductGroupsInner, adAccountId = adAccountId)
             }
         }
       }
@@ -69,6 +95,13 @@ import CatalogsApiPatterns.feedIdPattern
       delete { 
         parameters("ad_account_id".as[String].?) { (adAccountId) => 
             catalogsService.catalogsProductGroupsDelete(productGroupId = productGroupId, adAccountId = adAccountId)
+        }
+      }
+    } ~
+    path("catalogs" / "product_groups" / "multiple") { 
+      delete { 
+        parameters("id".as[String], "ad_account_id".as[String].?) { (id, adAccountId) => 
+            catalogsService.catalogsProductGroupsDeleteMany(id = id, adAccountId = adAccountId)
         }
       }
     } ~
@@ -81,8 +114,8 @@ import CatalogsApiPatterns.feedIdPattern
     } ~
     path("catalogs" / "product_groups") { 
       get { 
-        parameters("feed_id".as[String].?, "catalog_id".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?) { (feedId, catalogId, bookmark, pageSize, adAccountId) => 
-            catalogsService.catalogsProductGroupsList(feedId = feedId, catalogId = catalogId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+        parameters("id".as[String].?, "feed_id".as[String].?, "catalog_id".as[String].?, "bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?) { (id, feedId, catalogId, bookmark, pageSize, adAccountId) => 
+            catalogsService.catalogsProductGroupsList(id = id, feedId = feedId, catalogId = catalogId, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
         }
       }
     } ~
@@ -132,6 +165,13 @@ import CatalogsApiPatterns.feedIdPattern
         }
       }
     } ~
+    path("catalogs" / "feeds" / feedIdPattern / "ingest") { (feedId) => 
+      post { 
+        parameters("ad_account_id".as[String].?) { (adAccountId) => 
+            catalogsService.feedsIngest(feedId = feedId, adAccountId = adAccountId)
+        }
+      }
+    } ~
     path("catalogs" / "feeds") { 
       get { 
         parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "catalog_id".as[String].?, "ad_account_id".as[String].?) { (bookmark, pageSize, catalogId, adAccountId) => 
@@ -178,12 +218,44 @@ import CatalogsApiPatterns.feedIdPattern
         }
       }
     } ~
+    path("catalogs" / "items") { 
+      post { 
+        parameters("ad_account_id".as[String].?) { (adAccountId) => 
+            entity(as[CatalogsItemsRequest]){ catalogsItemsRequest =>
+              catalogsService.itemsPost(catalogsItemsRequest = catalogsItemsRequest, adAccountId = adAccountId)
+            }
+        }
+      }
+    } ~
     path("catalogs" / "products" / "get_by_product_group_filters") { 
       post { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?) { (bookmark, pageSize, adAccountId) => 
+        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "ad_account_id".as[String].?, "pin_metrics".as[Boolean].?(false)) { (bookmark, pageSize, adAccountId, pinMetrics) => 
             entity(as[CatalogsListProductsByFilterRequest]){ catalogsListProductsByFilterRequest =>
-              catalogsService.productsByProductGroupFilterList(catalogsListProductsByFilterRequest = catalogsListProductsByFilterRequest, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId)
+              catalogsService.productsByProductGroupFilterList(catalogsListProductsByFilterRequest = catalogsListProductsByFilterRequest, bookmark = bookmark, pageSize = pageSize, adAccountId = adAccountId, pinMetrics = pinMetrics)
             }
+        }
+      }
+    } ~
+    path("catalogs" / "reports") { 
+      post { 
+        parameters("ad_account_id".as[String].?) { (adAccountId) => 
+            entity(as[CatalogsReportParameters]){ catalogsReportParameters =>
+              catalogsService.reportsCreate(catalogsReportParameters = catalogsReportParameters, adAccountId = adAccountId)
+            }
+        }
+      }
+    } ~
+    path("catalogs" / "reports") { 
+      get { 
+        parameters("ad_account_id".as[String].?, "token".as[String]) { (adAccountId, token) => 
+            catalogsService.reportsGet(token = token, adAccountId = adAccountId)
+        }
+      }
+    } ~
+    path("catalogs" / "reports" / "stats") { 
+      get { 
+        parameters("ad_account_id".as[String].?, "page_size".as[Int].?(25), "bookmark".as[String].?, "parameters".as[String]) { (adAccountId, pageSize, bookmark, parameters) => 
+            catalogsService.reportsStats(parameters = parameters, adAccountId = adAccountId, pageSize = pageSize, bookmark = bookmark)
         }
       }
     }
@@ -197,6 +269,23 @@ val feedIdPattern: PathMatcher1[String] = PathMatcher("^\\d+$".r)
 }
 
 trait CatalogsApiService {
+
+  def catalogsCreate200(responseCatalog: Catalog)(implicit toEntityMarshallerCatalog: ToEntityMarshaller[Catalog]): Route =
+    complete((200, responseCatalog))
+  def catalogsCreate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def catalogsCreate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def catalogsCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Success, DataType: Catalog
+   * Code: 400, Message: Invalid parameters., DataType: Error
+   * Code: 401, Message: Unauthorized access., DataType: Error
+   * Code: 0, Message: Unexpected error., DataType: Error
+   */
+  def catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId: Option[String])
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerCatalog: ToEntityMarshaller[Catalog]): Route
 
   def catalogsList200(responseCatalogsList200Response: CatalogsList200Response)(implicit toEntityMarshallerCatalogsList200Response: ToEntityMarshaller[CatalogsList200Response]): Route =
     complete((200, responseCatalogsList200Response))
@@ -232,11 +321,11 @@ trait CatalogsApiService {
    * Code: 404, Message: Catalogs product group not found., DataType: Error
    * Code: 0, Message: Unexpected error., DataType: Error
    */
-  def catalogsProductGroupPinsList(productGroupId: String, bookmark: Option[String], pageSize: Int, adAccountId: Option[String])
+  def catalogsProductGroupPinsList(productGroupId: String, bookmark: Option[String], pageSize: Int, adAccountId: Option[String], pinMetrics: Boolean)
       (implicit toEntityMarshallerCatalogsProductGroupPinsList200Response: ToEntityMarshaller[CatalogsProductGroupPinsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def catalogsProductGroupsCreate201(responseCatalogsProductGroupsCreate201Response: CatalogsProductGroupsCreate201Response)(implicit toEntityMarshallerCatalogsProductGroupsCreate201Response: ToEntityMarshaller[CatalogsProductGroupsCreate201Response]): Route =
-    complete((201, responseCatalogsProductGroupsCreate201Response))
+  def catalogsProductGroupsCreate201(responseCatalogsVerticalProductGroup: CatalogsVerticalProductGroup)(implicit toEntityMarshallerCatalogsVerticalProductGroup: ToEntityMarshaller[CatalogsVerticalProductGroup]): Route =
+    complete((201, responseCatalogsVerticalProductGroup))
   def catalogsProductGroupsCreate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
   def catalogsProductGroupsCreate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -248,15 +337,38 @@ trait CatalogsApiService {
   def catalogsProductGroupsCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 201, Message: Success, DataType: CatalogsProductGroupsCreate201Response
+   * Code: 201, Message: Success, DataType: CatalogsVerticalProductGroup
    * Code: 400, Message: Invalid body., DataType: Error
    * Code: 401, Message: Unauthorized access., DataType: Error
    * Code: 403, Message: Forbidden. Account not approved for catalog product group mutations yet., DataType: Error
    * Code: 409, Message: Conflict. Can&#39;t create this catalogs product group with this value., DataType: Error
    * Code: 0, Message: Unexpected error., DataType: Error
    */
-  def catalogsProductGroupsCreate(catalogsProductGroupsCreateRequest: CatalogsProductGroupsCreateRequest, adAccountId: Option[String])
-      (implicit toEntityMarshallerCatalogsProductGroupsCreate201Response: ToEntityMarshaller[CatalogsProductGroupsCreate201Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+  def catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: Option[String])
+      (implicit toEntityMarshallerCatalogsVerticalProductGroup: ToEntityMarshaller[CatalogsVerticalProductGroup], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def catalogsProductGroupsCreateMany201(responseStringarray: Seq[String])(implicit toEntityMarshallerStringarray: ToEntityMarshaller[Seq[String]]): Route =
+    complete((201, responseStringarray))
+  def catalogsProductGroupsCreateMany400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def catalogsProductGroupsCreateMany401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def catalogsProductGroupsCreateMany403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def catalogsProductGroupsCreateMany409(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((409, responseError))
+  def catalogsProductGroupsCreateManyDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 201, Message: Success, DataType: Seq[String]
+   * Code: 400, Message: Invalid body., DataType: Error
+   * Code: 401, Message: Unauthorized access., DataType: Error
+   * Code: 403, Message: Forbidden. Account not approved for catalog product group mutations yet., DataType: Error
+   * Code: 409, Message: Conflict. Can&#39;t create this catalogs product group with this value., DataType: Error
+   * Code: 0, Message: Unexpected error., DataType: Error
+   */
+  def catalogsProductGroupsCreateMany(multipleProductGroupsInner: Seq[MultipleProductGroupsInner], adAccountId: Option[String])
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def catalogsProductGroupsDelete204: Route =
     complete((204, "Catalogs Product Group deleted successfully."))
@@ -284,8 +396,31 @@ trait CatalogsApiService {
   def catalogsProductGroupsDelete(productGroupId: String, adAccountId: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def catalogsProductGroupsGet200(responseCatalogsProductGroupsCreate201Response: CatalogsProductGroupsCreate201Response)(implicit toEntityMarshallerCatalogsProductGroupsCreate201Response: ToEntityMarshaller[CatalogsProductGroupsCreate201Response]): Route =
-    complete((200, responseCatalogsProductGroupsCreate201Response))
+  def catalogsProductGroupsDeleteMany204: Route =
+    complete((204, "Catalogs Product Groups deleted successfully."))
+  def catalogsProductGroupsDeleteMany401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def catalogsProductGroupsDeleteMany403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def catalogsProductGroupsDeleteMany404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def catalogsProductGroupsDeleteMany409(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((409, responseError))
+  def catalogsProductGroupsDeleteManyDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 204, Message: Catalogs Product Groups deleted successfully.
+   * Code: 401, Message: Unauthorized access., DataType: Error
+   * Code: 403, Message: Forbidden. Account not approved for catalog product group mutations yet., DataType: Error
+   * Code: 404, Message: Catalogs product group not found., DataType: Error
+   * Code: 409, Message: Conflict. Can&#39;t delete this catalogs product group., DataType: Error
+   * Code: 0, Message: Unexpected error., DataType: Error
+   */
+  def catalogsProductGroupsDeleteMany(id: String, adAccountId: Option[String])
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def catalogsProductGroupsGet200(responseCatalogsVerticalProductGroup: CatalogsVerticalProductGroup)(implicit toEntityMarshallerCatalogsVerticalProductGroup: ToEntityMarshaller[CatalogsVerticalProductGroup]): Route =
+    complete((200, responseCatalogsVerticalProductGroup))
   def catalogsProductGroupsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
   def catalogsProductGroupsGet401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -299,7 +434,7 @@ trait CatalogsApiService {
   def catalogsProductGroupsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: CatalogsProductGroupsCreate201Response
+   * Code: 200, Message: Success, DataType: CatalogsVerticalProductGroup
    * Code: 400, Message: Invalid catalogs product group id parameters., DataType: Error
    * Code: 401, Message: Unauthorized access., DataType: Error
    * Code: 403, Message: Forbidden. Account not approved for catalog product group mutations yet., DataType: Error
@@ -308,7 +443,7 @@ trait CatalogsApiService {
    * Code: 0, Message: Unexpected error., DataType: Error
    */
   def catalogsProductGroupsGet(productGroupId: String, adAccountId: Option[String])
-      (implicit toEntityMarshallerCatalogsProductGroupsCreate201Response: ToEntityMarshaller[CatalogsProductGroupsCreate201Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerCatalogsVerticalProductGroup: ToEntityMarshaller[CatalogsVerticalProductGroup], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def catalogsProductGroupsList200(responseCatalogsProductGroupsList200Response: CatalogsProductGroupsList200Response)(implicit toEntityMarshallerCatalogsProductGroupsList200Response: ToEntityMarshaller[CatalogsProductGroupsList200Response]): Route =
     complete((200, responseCatalogsProductGroupsList200Response))
@@ -333,11 +468,11 @@ trait CatalogsApiService {
    * Code: 409, Message: Conflict. Can&#39;t create this catalogs product group with this value., DataType: Error
    * Code: 0, Message: Unexpected error., DataType: Error
    */
-  def catalogsProductGroupsList(feedId: Option[String], catalogId: Option[String], bookmark: Option[String], pageSize: Int, adAccountId: Option[String])
+  def catalogsProductGroupsList(id: Option[String], feedId: Option[String], catalogId: Option[String], bookmark: Option[String], pageSize: Int, adAccountId: Option[String])
       (implicit toEntityMarshallerCatalogsProductGroupsList200Response: ToEntityMarshaller[CatalogsProductGroupsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def catalogsProductGroupsProductCountsGet200(responseCatalogsProductGroupProductCounts: CatalogsProductGroupProductCounts)(implicit toEntityMarshallerCatalogsProductGroupProductCounts: ToEntityMarshaller[CatalogsProductGroupProductCounts]): Route =
-    complete((200, responseCatalogsProductGroupProductCounts))
+  def catalogsProductGroupsProductCountsGet200(responseCatalogsProductGroupProductCountsVertical: CatalogsProductGroupProductCountsVertical)(implicit toEntityMarshallerCatalogsProductGroupProductCountsVertical: ToEntityMarshaller[CatalogsProductGroupProductCountsVertical]): Route =
+    complete((200, responseCatalogsProductGroupProductCountsVertical))
   def catalogsProductGroupsProductCountsGet404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
   def catalogsProductGroupsProductCountsGet409(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -345,16 +480,16 @@ trait CatalogsApiService {
   def catalogsProductGroupsProductCountsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: CatalogsProductGroupProductCounts
+   * Code: 200, Message: Success, DataType: CatalogsProductGroupProductCountsVertical
    * Code: 404, Message: Product Group Not Found., DataType: Error
    * Code: 409, Message: Can&#39;t access this feature without an existing catalog., DataType: Error
    * Code: 0, Message: Unexpected error., DataType: Error
    */
   def catalogsProductGroupsProductCountsGet(productGroupId: String, adAccountId: Option[String])
-      (implicit toEntityMarshallerCatalogsProductGroupProductCounts: ToEntityMarshaller[CatalogsProductGroupProductCounts], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerCatalogsProductGroupProductCountsVertical: ToEntityMarshaller[CatalogsProductGroupProductCountsVertical]): Route
 
-  def catalogsProductGroupsUpdate200(responseCatalogsProductGroupsCreate201Response: CatalogsProductGroupsCreate201Response)(implicit toEntityMarshallerCatalogsProductGroupsCreate201Response: ToEntityMarshaller[CatalogsProductGroupsCreate201Response]): Route =
-    complete((200, responseCatalogsProductGroupsCreate201Response))
+  def catalogsProductGroupsUpdate200(responseCatalogsVerticalProductGroup: CatalogsVerticalProductGroup)(implicit toEntityMarshallerCatalogsVerticalProductGroup: ToEntityMarshaller[CatalogsVerticalProductGroup]): Route =
+    complete((200, responseCatalogsVerticalProductGroup))
   def catalogsProductGroupsUpdate400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
   def catalogsProductGroupsUpdate401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -368,7 +503,7 @@ trait CatalogsApiService {
   def catalogsProductGroupsUpdateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: CatalogsProductGroupsCreate201Response
+   * Code: 200, Message: Success, DataType: CatalogsVerticalProductGroup
    * Code: 400, Message: Invalid parameters., DataType: Error
    * Code: 401, Message: Unauthorized access., DataType: Error
    * Code: 403, Message: Forbidden. Account not approved for catalog product group mutations yet., DataType: Error
@@ -377,7 +512,7 @@ trait CatalogsApiService {
    * Code: 0, Message: Unexpected error., DataType: Error
    */
   def catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: Option[String])
-      (implicit toEntityMarshallerCatalogsProductGroupsCreate201Response: ToEntityMarshaller[CatalogsProductGroupsCreate201Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerCatalogsVerticalProductGroup: ToEntityMarshaller[CatalogsVerticalProductGroup], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def feedProcessingResultsList200(responseFeedProcessingResultsList200Response: FeedProcessingResultsList200Response)(implicit toEntityMarshallerFeedProcessingResultsList200Response: ToEntityMarshaller[FeedProcessingResultsList200Response]): Route =
     complete((200, responseFeedProcessingResultsList200Response))
@@ -470,6 +605,26 @@ trait CatalogsApiService {
    */
   def feedsGet(feedId: String, adAccountId: Option[String])
       (implicit toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def feedsIngest200(responseCatalogsFeedIngestion: CatalogsFeedIngestion)(implicit toEntityMarshallerCatalogsFeedIngestion: ToEntityMarshaller[CatalogsFeedIngestion]): Route =
+    complete((200, responseCatalogsFeedIngestion))
+  def feedsIngest400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def feedsIngest403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def feedsIngest404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def feedsIngestDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: The ingestion process was successfully started., DataType: CatalogsFeedIngestion
+   * Code: 400, Message: Invalid feed parameters., DataType: Error
+   * Code: 403, Message: Forbidden. Account not approved for feed mutations yet., DataType: Error
+   * Code: 404, Message: Data feed not found., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def feedsIngest(feedId: String, adAccountId: Option[String])
+      (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerCatalogsFeedIngestion: ToEntityMarshaller[CatalogsFeedIngestion]): Route
 
   def feedsList200(responseFeedsList200Response: FeedsList200Response)(implicit toEntityMarshallerFeedsList200Response: ToEntityMarshaller[FeedsList200Response]): Route =
     complete((200, responseFeedsList200Response))
@@ -591,6 +746,26 @@ trait CatalogsApiService {
   def itemsIssuesList(processingResultId: String, bookmark: Option[String], pageSize: Int, itemNumbers: Option[String], itemValidationIssue: Option[String], adAccountId: Option[String])
       (implicit toEntityMarshallerItemsIssuesList200Response: ToEntityMarshaller[ItemsIssuesList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
+  def itemsPost200(responseCatalogsItems: CatalogsItems)(implicit toEntityMarshallerCatalogsItems: ToEntityMarshaller[CatalogsItems]): Route =
+    complete((200, responseCatalogsItems))
+  def itemsPost400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def itemsPost401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def itemsPost403(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((403, responseError))
+  def itemsPostDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Response containing the requested catalogs items, DataType: CatalogsItems
+   * Code: 400, Message: Invalid request, DataType: Error
+   * Code: 401, Message: Not authorized to access catalogs items, DataType: Error
+   * Code: 403, Message: Not authorized to access catalogs items, DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: Option[String])
+      (implicit toEntityMarshallerCatalogsItems: ToEntityMarshaller[CatalogsItems], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
   def productsByProductGroupFilterList200(responseCatalogsProductGroupPinsList200Response: CatalogsProductGroupPinsList200Response)(implicit toEntityMarshallerCatalogsProductGroupPinsList200Response: ToEntityMarshaller[CatalogsProductGroupPinsList200Response]): Route =
     complete((200, responseCatalogsProductGroupPinsList200Response))
   def productsByProductGroupFilterList401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -605,15 +780,65 @@ trait CatalogsApiService {
    * Code: 409, Message: Conflict. Can&#39;t get products., DataType: Error
    * Code: 0, Message: Unexpected error., DataType: Error
    */
-  def productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: Option[String], pageSize: Int, adAccountId: Option[String])
+  def productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: Option[String], pageSize: Int, adAccountId: Option[String], pinMetrics: Boolean)
       (implicit toEntityMarshallerCatalogsProductGroupPinsList200Response: ToEntityMarshaller[CatalogsProductGroupPinsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def reportsCreate200(responseCatalogsCreateReportResponse: CatalogsCreateReportResponse)(implicit toEntityMarshallerCatalogsCreateReportResponse: ToEntityMarshaller[CatalogsCreateReportResponse]): Route =
+    complete((200, responseCatalogsCreateReportResponse))
+  def reportsCreate404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((404, responseError))
+  def reportsCreate409(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((409, responseError))
+  def reportsCreateDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Response containing the report token, DataType: CatalogsCreateReportResponse
+   * Code: 404, Message: Entity (e.g., catalog, feed or processing_result) not found, DataType: Error
+   * Code: 409, Message: Can&#39;t access this feature without an existing catalog., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId: Option[String])
+      (implicit toEntityMarshallerCatalogsCreateReportResponse: ToEntityMarshaller[CatalogsCreateReportResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def reportsGet200(responseCatalogsReport: CatalogsReport)(implicit toEntityMarshallerCatalogsReport: ToEntityMarshaller[CatalogsReport]): Route =
+    complete((200, responseCatalogsReport))
+  def reportsGet400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((400, responseError))
+  def reportsGet409(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((409, responseError))
+  def reportsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Response that contains a link to download the report, DataType: CatalogsReport
+   * Code: 400, Message: The token you provided is not valid or has expired., DataType: Error
+   * Code: 409, Message: Can&#39;t access this feature without an existing catalog., DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def reportsGet(token: String, adAccountId: Option[String])
+      (implicit toEntityMarshallerCatalogsReport: ToEntityMarshaller[CatalogsReport], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+
+  def reportsStats200(responseReportsStats200Response: ReportsStats200Response)(implicit toEntityMarshallerReportsStats200Response: ToEntityMarshaller[ReportsStats200Response]): Route =
+    complete((200, responseReportsStats200Response))
+  def reportsStats401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((401, responseError))
+  def reportsStatsDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
+    complete((statusCode, responseError))
+  /**
+   * Code: 200, Message: Response containing the diagnostics aggregated counters, DataType: ReportsStats200Response
+   * Code: 401, Message: Not authorized to access catalogs, DataType: Error
+   * Code: 0, Message: Unexpected error, DataType: Error
+   */
+  def reportsStats(parameters: String, adAccountId: Option[String], pageSize: Int, bookmark: Option[String])
+      (implicit toEntityMarshallerReportsStats200Response: ToEntityMarshaller[ReportsStats200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait CatalogsApiMarshaller {
-  implicit def fromEntityUnmarshallerCatalogsProductGroupsCreateRequest: FromEntityUnmarshaller[CatalogsProductGroupsCreateRequest]
-
   implicit def fromEntityUnmarshallerCatalogsProductGroupsUpdateRequest: FromEntityUnmarshaller[CatalogsProductGroupsUpdateRequest]
+
+  implicit def fromEntityUnmarshallerCatalogsItemsRequest: FromEntityUnmarshaller[CatalogsItemsRequest]
+
+  implicit def fromEntityUnmarshallerMultipleProductGroupsInnerList: FromEntityUnmarshaller[Seq[MultipleProductGroupsInner]]
 
   implicit def fromEntityUnmarshallerFeedsCreateRequest: FromEntityUnmarshaller[FeedsCreateRequest]
 
@@ -621,33 +846,49 @@ trait CatalogsApiMarshaller {
 
   implicit def fromEntityUnmarshallerFeedsUpdateRequest: FromEntityUnmarshaller[FeedsUpdateRequest]
 
+  implicit def fromEntityUnmarshallerCatalogsReportParameters: FromEntityUnmarshaller[CatalogsReportParameters]
+
+  implicit def fromEntityUnmarshallerCatalogsCreateRequest: FromEntityUnmarshaller[CatalogsCreateRequest]
+
+  implicit def fromEntityUnmarshallerMultipleProductGroupsInner: FromEntityUnmarshaller[MultipleProductGroupsInner]
+
   implicit def fromEntityUnmarshallerItemsBatchPostRequest: FromEntityUnmarshaller[ItemsBatchPostRequest]
 
 
 
-  implicit def toEntityMarshallerCatalogsProductGroupsCreate201Response: ToEntityMarshaller[CatalogsProductGroupsCreate201Response]
-
   implicit def toEntityMarshallerCatalogsFeed: ToEntityMarshaller[CatalogsFeed]
-
-  implicit def toEntityMarshallerCatalogsItemsBatch: ToEntityMarshaller[CatalogsItemsBatch]
 
   implicit def toEntityMarshallerCatalogsList200Response: ToEntityMarshaller[CatalogsList200Response]
 
+  implicit def toEntityMarshallerFeedsList200Response: ToEntityMarshaller[FeedsList200Response]
+
+  implicit def toEntityMarshallerItemsIssuesList200Response: ToEntityMarshaller[ItemsIssuesList200Response]
+
+  implicit def toEntityMarshallerCatalogsFeedIngestion: ToEntityMarshaller[CatalogsFeedIngestion]
+
+  implicit def toEntityMarshallerCatalogsItemsBatch: ToEntityMarshaller[CatalogsItemsBatch]
+
+  implicit def toEntityMarshallerCatalogsVerticalProductGroup: ToEntityMarshaller[CatalogsVerticalProductGroup]
+
   implicit def toEntityMarshallerCatalogsProductGroupsList200Response: ToEntityMarshaller[CatalogsProductGroupsList200Response]
+
+  implicit def toEntityMarshallerCatalogsReport: ToEntityMarshaller[CatalogsReport]
 
   implicit def toEntityMarshallerCatalogsItems: ToEntityMarshaller[CatalogsItems]
 
   implicit def toEntityMarshallerCatalogsProductGroupPinsList200Response: ToEntityMarshaller[CatalogsProductGroupPinsList200Response]
 
-  implicit def toEntityMarshallerFeedsList200Response: ToEntityMarshaller[FeedsList200Response]
+  implicit def toEntityMarshallerCatalogsCreateReportResponse: ToEntityMarshaller[CatalogsCreateReportResponse]
 
-  implicit def toEntityMarshallerCatalogsProductGroupProductCounts: ToEntityMarshaller[CatalogsProductGroupProductCounts]
-
-  implicit def toEntityMarshallerItemsIssuesList200Response: ToEntityMarshaller[ItemsIssuesList200Response]
+  implicit def toEntityMarshallerReportsStats200Response: ToEntityMarshaller[ReportsStats200Response]
 
   implicit def toEntityMarshallerError: ToEntityMarshaller[Error]
 
+  implicit def toEntityMarshallerCatalog: ToEntityMarshaller[Catalog]
+
   implicit def toEntityMarshallerFeedProcessingResultsList200Response: ToEntityMarshaller[FeedProcessingResultsList200Response]
+
+  implicit def toEntityMarshallerCatalogsProductGroupProductCountsVertical: ToEntityMarshaller[CatalogsProductGroupProductCountsVertical]
 
 }
 

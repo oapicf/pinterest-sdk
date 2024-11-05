@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * OptimizationGoalMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadata {
 
   private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
@@ -38,7 +38,7 @@ public class OptimizationGoalMetadata {
   /**
    * Get conversionTagV3GoalMetadata
    * @return conversionTagV3GoalMetadata
-  */
+   */
   @Valid 
   @Schema(name = "conversion_tag_v3_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_tag_v3_goal_metadata")
@@ -58,7 +58,7 @@ public class OptimizationGoalMetadata {
   /**
    * Get frequencyGoalMetadata
    * @return frequencyGoalMetadata
-  */
+   */
   @Valid 
   @Schema(name = "frequency_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("frequency_goal_metadata")
@@ -78,7 +78,7 @@ public class OptimizationGoalMetadata {
   /**
    * Get scrollupGoalMetadata
    * @return scrollupGoalMetadata
-  */
+   */
   @Valid 
   @Schema(name = "scrollup_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scrollup_goal_metadata")

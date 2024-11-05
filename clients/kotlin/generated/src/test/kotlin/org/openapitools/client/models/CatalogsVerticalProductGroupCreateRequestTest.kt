@@ -19,8 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsVerticalProductGroupCreateRequest
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupCreateRequest
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupFilters
 import org.openapitools.client.models.CatalogsHotelProductGroupCreateRequest
-import org.openapitools.client.models.CatalogsHotelProductGroupFilters
+import org.openapitools.client.models.CatalogsLocale
+import org.openapitools.client.models.CatalogsRetailProductGroupCreateRequest
+import org.openapitools.client.models.Country
 
 class CatalogsVerticalProductGroupCreateRequestTest : ShouldSpec() {
     init {
@@ -45,10 +49,22 @@ class CatalogsVerticalProductGroupCreateRequestTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `catalogId` - Catalog id pertaining to the hotel product group.
+        // to test the property `catalogId` - Catalog id pertaining to the creative assets product group.
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")
+        }
+
+        // to test the property `country`
+        should("test country") {
+            // uncomment below to test the property
+            //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `locale`
+        should("test locale") {
+            // uncomment below to test the property
+            //modelInstance.locale shouldBe ("TODO")
         }
 
         // to test the property `description`

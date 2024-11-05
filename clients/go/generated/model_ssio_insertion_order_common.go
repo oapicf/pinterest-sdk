@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &SSIOInsertionOrderCommon{}
 // SSIOInsertionOrderCommon struct for SSIOInsertionOrderCommon
 type SSIOInsertionOrderCommon struct {
 	// Starting date of time period. Format: YYYY-MM-DD
-	StartDate *string `json:"start_date,omitempty"`
+	StartDate *string `json:"start_date,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// End date of time period. Format: YYYY-MM-DD
-	EndDate *string `json:"end_date,omitempty"`
+	EndDate *string `json:"end_date,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// The po number
 	PoNumber *string `json:"po_number,omitempty"`
 	// If Budget order line, the budget amount.

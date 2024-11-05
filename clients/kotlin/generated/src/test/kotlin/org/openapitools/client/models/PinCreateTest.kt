@@ -20,8 +20,8 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinCreate
 import org.openapitools.client.models.BoardOwner
+import org.openapitools.client.models.PinMedia
 import org.openapitools.client.models.PinMediaSource
-import org.openapitools.client.models.SummaryPinMedia
 
 class PinCreateTest : ShouldSpec() {
     init {

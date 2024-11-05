@@ -3,9 +3,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **System.DateTime** |  | [optional] 
-**Id** | **String** |  | [optional] 
-**UpdatedAt** | **System.DateTime** |  | [optional] 
+**CreatedAt** | **System.DateTime** |  | 
+**Id** | **String** |  | 
+**UpdatedAt** | **System.DateTime** |  | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **ProductCounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 

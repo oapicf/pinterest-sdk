@@ -51,7 +51,7 @@ class AudienceInsightsApi implements AudienceInsightsApiInterface
     /**
      * Implementation of AudienceInsightsApiInterface#audienceInsightsGet
      */
-    public function audienceInsightsGet(string $adAccountId, $audienceInsightType, int &$responseCode, array &$responseHeaders): array|object|null
+    public function audienceInsightsGet(string $adAccountId, AudienceInsightType $audienceInsightType, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -65,7 +65,7 @@ class AudienceInsightsApi implements AudienceInsightsApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. |
- **audienceInsightType** | [**AudienceInsightType**](../Model/.md)| Type of audience insights. |
+ **audienceInsightType** | [**OpenAPI\Server\Model\AudienceInsightType**](../Model/.md)| Type of audience insights. |
 
 ### Return type
 

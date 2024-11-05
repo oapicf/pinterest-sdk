@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * PinMediaSourceImagesBase64ItemsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImagesBase64ItemsInner   {
   @JsonProperty("title")
   private String title;
@@ -69,10 +69,10 @@ public class PinMediaSourceImagesBase64ItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
@@ -87,10 +87,10 @@ public class PinMediaSourceImagesBase64ItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -105,10 +105,10 @@ public class PinMediaSourceImagesBase64ItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Destination link for the image.
    * @return link
-  **/
+   */
   @ApiModelProperty(value = "Destination link for the image.")
   public String getLink() {
     return link;
@@ -123,10 +123,10 @@ public class PinMediaSourceImagesBase64ItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get contentType
    * @return contentType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public ContentTypeEnum getContentType() {
     return contentType;
@@ -141,10 +141,10 @@ public class PinMediaSourceImagesBase64ItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Image to upload as base64 string.
    * @return data
-  **/
+   */
   @ApiModelProperty(required = true, value = "Image to upload as base64 string.")
   public String getData() {
     return data;

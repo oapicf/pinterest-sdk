@@ -17,15 +17,13 @@ CatalogsDeleteHotelItem <- R6::R6Class(
   public = list(
     `hotel_id` = NULL,
     `operation` = NULL,
-    #' Initialize a new CatalogsDeleteHotelItem class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsDeleteHotelItem class.
     #'
     #' @param hotel_id The catalog hotel id in the merchant namespace
     #' @param operation operation
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`hotel_id`, `operation`, ...) {
       if (!missing(`hotel_id`)) {
         if (!(is.character(`hotel_id`) && length(`hotel_id`) == 1)) {
@@ -43,13 +41,11 @@ CatalogsDeleteHotelItem <- R6::R6Class(
         self$`operation` <- `operation`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsDeleteHotelItem in JSON format
-    #' @export
     toJSON = function() {
       CatalogsDeleteHotelItemObject <- list()
       if (!is.null(self$`hotel_id`)) {
@@ -62,14 +58,12 @@ CatalogsDeleteHotelItem <- R6::R6Class(
       }
       CatalogsDeleteHotelItemObject
     },
-    #' Deserialize JSON string into an instance of CatalogsDeleteHotelItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsDeleteHotelItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsDeleteHotelItem
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`hotel_id`)) {
@@ -83,13 +77,11 @@ CatalogsDeleteHotelItem <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsDeleteHotelItem in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`hotel_id`)) {
@@ -112,14 +104,12 @@ CatalogsDeleteHotelItem <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsDeleteHotelItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsDeleteHotelItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsDeleteHotelItem
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`hotel_id` <- this_object$`hotel_id`
@@ -129,13 +119,11 @@ CatalogsDeleteHotelItem <- R6::R6Class(
       self$`operation` <- this_object$`operation`
       self
     },
-    #' Validate JSON input with respect to CatalogsDeleteHotelItem
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsDeleteHotelItem and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `hotel_id`
@@ -155,23 +143,19 @@ CatalogsDeleteHotelItem <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsDeleteHotelItem: the required field `operation` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsDeleteHotelItem
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `hotel_id` is null
       if (is.null(self$`hotel_id`)) {
@@ -185,13 +169,11 @@ CatalogsDeleteHotelItem <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `hotel_id` is null
@@ -206,12 +188,9 @@ CatalogsDeleteHotelItem <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

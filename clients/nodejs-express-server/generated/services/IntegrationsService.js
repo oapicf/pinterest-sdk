@@ -27,7 +27,7 @@ const integrations/get_by_id = ({ id }) => new Promise(
 * Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * returns integrations_get_list_200_response
 * */
 const integrations/get_list = ({ bookmark, pageUnderscoresize }) => new Promise(

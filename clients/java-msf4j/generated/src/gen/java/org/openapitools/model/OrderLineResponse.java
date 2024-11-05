@@ -14,7 +14,7 @@ import org.openapitools.model.OrderLineError;
 /**
  * OrderLineResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLineResponse   {
   @JsonProperty("errors")
   private List<OrderLineError> errors = null;
@@ -29,7 +29,7 @@ public class OrderLineResponse   {
 
   public OrderLineResponse addErrorsItem(OrderLineError errorsItem) {
     if (this.errors == null) {
-      this.errors = ;
+      this.errors = new ArrayList<>();
     }
     this.errors.add(errorsItem);
     return this;
@@ -55,7 +55,7 @@ public class OrderLineResponse   {
 
   public OrderLineResponse addOrderLineItem(OrderLine orderLineItem) {
     if (this.orderLine == null) {
-      this.orderLine = ;
+      this.orderLine = new ArrayList<>();
     }
     this.orderLine.add(orderLineItem);
     return this;

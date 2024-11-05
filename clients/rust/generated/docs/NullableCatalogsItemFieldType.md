@@ -60,7 +60,6 @@
 | MinAdPrice | MIN_AD_PRICE |
 | ShippingWidth | SHIPPING_WIDTH |
 | ShippingHeight | SHIPPING_HEIGHT |
-| Null | null |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

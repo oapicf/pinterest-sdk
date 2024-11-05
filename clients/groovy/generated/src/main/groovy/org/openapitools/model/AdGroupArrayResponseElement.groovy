@@ -13,5 +13,5 @@ class AdGroupArrayResponseElement {
     
     AdGroupResponse data
     
-    List<Exception> exceptions
+    List<Exception> exceptions = new ArrayList<>()
 }

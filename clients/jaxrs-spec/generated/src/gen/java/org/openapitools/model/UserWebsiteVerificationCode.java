@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("UserWebsiteVerificationCode")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserWebsiteVerificationCode   {
-  private @Valid String verificationCode;
-  private @Valid String dnsTxtRecord;
-  private @Valid String metatag;
-  private @Valid String filename;
-  private @Valid String fileContent;
+  private String verificationCode;
+  private String dnsTxtRecord;
+  private String metatag;
+  private String filename;
+  private String fileContent;
 
   /**
    * Code to check against the user claiming the website

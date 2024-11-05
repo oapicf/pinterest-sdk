@@ -10,27 +10,54 @@ import org.openapitools.vertxweb.server.model.MatchTypeResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Keyword   {
   
+  private Integer bid;
+  private MatchTypeResponse matchType;
+  private String value;
   private Boolean archived;
   private String id;
   private String parentId;
   private String parentType;
   private String type;
-  private Integer bid;
-  private MatchTypeResponse matchType;
-  private String value;
 
   public Keyword () {
 
   }
 
-  public Keyword (Boolean archived, String id, String parentId, String parentType, String type, Integer bid, MatchTypeResponse matchType, String value) {
+  public Keyword (Integer bid, MatchTypeResponse matchType, String value, Boolean archived, String id, String parentId, String parentType, String type) {
+    this.bid = bid;
+    this.matchType = matchType;
+    this.value = value;
     this.archived = archived;
     this.id = id;
     this.parentId = parentId;
     this.parentType = parentType;
     this.type = type;
+  }
+
+    
+  @JsonProperty("bid")
+  public Integer getBid() {
+    return bid;
+  }
+  public void setBid(Integer bid) {
     this.bid = bid;
+  }
+
+    
+  @JsonProperty("match_type")
+  public MatchTypeResponse getMatchType() {
+    return matchType;
+  }
+  public void setMatchType(MatchTypeResponse matchType) {
     this.matchType = matchType;
+  }
+
+    
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
     this.value = value;
   }
 
@@ -79,33 +106,6 @@ public class Keyword   {
     this.type = type;
   }
 
-    
-  @JsonProperty("bid")
-  public Integer getBid() {
-    return bid;
-  }
-  public void setBid(Integer bid) {
-    this.bid = bid;
-  }
-
-    
-  @JsonProperty("match_type")
-  public MatchTypeResponse getMatchType() {
-    return matchType;
-  }
-  public void setMatchType(MatchTypeResponse matchType) {
-    this.matchType = matchType;
-  }
-
-    
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
-  }
-  public void setValue(String value) {
-    this.value = value;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,19 +116,19 @@ public class Keyword   {
       return false;
     }
     Keyword keyword = (Keyword) o;
-    return Objects.equals(archived, keyword.archived) &&
+    return Objects.equals(bid, keyword.bid) &&
+        Objects.equals(matchType, keyword.matchType) &&
+        Objects.equals(value, keyword.value) &&
+        Objects.equals(archived, keyword.archived) &&
         Objects.equals(id, keyword.id) &&
         Objects.equals(parentId, keyword.parentId) &&
         Objects.equals(parentType, keyword.parentType) &&
-        Objects.equals(type, keyword.type) &&
-        Objects.equals(bid, keyword.bid) &&
-        Objects.equals(matchType, keyword.matchType) &&
-        Objects.equals(value, keyword.value);
+        Objects.equals(type, keyword.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(archived, id, parentId, parentType, type, bid, matchType, value);
+    return Objects.hash(bid, matchType, value, archived, id, parentId, parentType, type);
   }
 
   @Override
@@ -136,14 +136,14 @@ public class Keyword   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keyword {\n");
     
+    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    parentType: ").append(toIndentedString(parentType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -37,7 +37,7 @@ data class LinkedBusiness(
 
     @Schema(example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_xlarge_url")
     @get:JsonProperty("image_xlarge_url") val imageXlargeUrl: kotlin.String? = null
-) {
+    ) {
 
 }
 

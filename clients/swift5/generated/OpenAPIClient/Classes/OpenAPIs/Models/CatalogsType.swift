@@ -14,4 +14,5 @@ import AnyCodable
 public enum CatalogsType: String, Codable, CaseIterable {
     case retail = "RETAIL"
     case hotel = "HOTEL"
+    case creativeAssets = "CREATIVE_ASSETS"
 }

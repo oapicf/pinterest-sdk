@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelProductGroupCreateRequest", description = "Request object for creating a hotel product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalProductGroupCreateRequest {
 
   /**
@@ -95,7 +95,7 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -115,7 +115,7 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   /**
    * Get name
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -135,7 +135,7 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -155,7 +155,7 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   /**
    * Get filters
    * @return filters
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "filters", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("filters")
@@ -175,7 +175,7 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   /**
    * Catalog id pertaining to the hotel product group.
    * @return catalogId
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", example = "2680059592705", description = "Catalog id pertaining to the hotel product group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_id")

@@ -8,10 +8,15 @@ A request object that can have multiple operations on a single retail batch
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | **CatalogsType** |  | 
+**catalogType** | [**CatalogType**](#CatalogType) |  | 
 **country** | **Country** |  | 
-**language** | **Language** |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **items** | [**Seq&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+
+
+## Enum: CatalogType
+Allowed values: [RETAIL]
+
 
 
 

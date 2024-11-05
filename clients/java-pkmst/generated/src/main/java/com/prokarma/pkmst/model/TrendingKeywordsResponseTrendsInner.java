@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * TrendingKeywordsResponseTrendsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendingKeywordsResponseTrendsInner   {
   @JsonProperty("keyword")
   private String keyword;
@@ -38,10 +38,10 @@ public class TrendingKeywordsResponseTrendsInner   {
     return this;
   }
 
-   /**
+  /**
    * The keyword that is trending.
    * @return keyword
-  **/
+   */
   @ApiModelProperty(example = "couples halloween costumes", value = "The keyword that is trending.")
   public String getKeyword() {
     return keyword;
@@ -56,10 +56,10 @@ public class TrendingKeywordsResponseTrendsInner   {
     return this;
   }
 
-   /**
+  /**
    * The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.
    * @return pctGrowthWow
-  **/
+   */
   @ApiModelProperty(example = "50", value = "The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.")
   public Integer getPctGrowthWow() {
     return pctGrowthWow;
@@ -74,10 +74,10 @@ public class TrendingKeywordsResponseTrendsInner   {
     return this;
   }
 
-   /**
+  /**
    * The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.
    * @return pctGrowthMom
-  **/
+   */
   @ApiModelProperty(example = "400", value = "The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.")
   public Integer getPctGrowthMom() {
     return pctGrowthMom;
@@ -92,10 +92,10 @@ public class TrendingKeywordsResponseTrendsInner   {
     return this;
   }
 
-   /**
+  /**
    * The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.
    * @return pctGrowthYoy
-  **/
+   */
   @ApiModelProperty(example = "-5", value = "The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.")
   public Integer getPctGrowthYoy() {
     return pctGrowthYoy;
@@ -110,10 +110,10 @@ public class TrendingKeywordsResponseTrendsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get timeSeries
    * @return timeSeries
-  **/
+   */
   @ApiModelProperty(value = "")
   public TrendingKeywordsResponseTrendsInnerTimeSeries getTimeSeries() {
     return timeSeries;

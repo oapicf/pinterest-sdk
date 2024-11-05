@@ -15,6 +15,60 @@ class PinsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
+    def multiPinsAnalytics ( List<String> pinIds, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/pins/analytics"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (pinIds == null) {
+            throw new RuntimeException("missing required params pinIds")
+        }
+        // verify required params are set
+        if (startDate == null) {
+            throw new RuntimeException("missing required params startDate")
+        }
+        // verify required params are set
+        if (endDate == null) {
+            throw new RuntimeException("missing required params endDate")
+        }
+        // verify required params are set
+        if (metricTypes == null) {
+            throw new RuntimeException("missing required params metricTypes")
+        }
+
+        if (pinIds != null) {
+            queryParams.put("pin_ids", pinIds)
+        }
+        if (startDate != null) {
+            queryParams.put("start_date", startDate)
+        }
+        if (endDate != null) {
+            queryParams.put("end_date", endDate)
+        }
+        if (appTypes != null) {
+            queryParams.put("app_types", appTypes)
+        }
+        if (metricTypes != null) {
+            queryParams.put("metric_types", metricTypes)
+        }
+        if (adAccountId != null) {
+            queryParams.put("ad_account_id", adAccountId)
+        }
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "map",
+                    Map.class )
+
+    }
+
     def pinsAnalytics ( String pinId, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins/${pin_id}/analytics"
 

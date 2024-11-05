@@ -49,7 +49,7 @@ data class MediaUploadAllOfUploadParameters(
 
     @Schema(example = "multipart/form-data", description = "")
     @get:JsonProperty("Content-Type") val contentType: kotlin.String? = null
-) {
+    ) {
 
 }
 

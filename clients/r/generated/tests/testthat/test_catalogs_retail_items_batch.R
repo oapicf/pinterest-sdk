@@ -15,7 +15,7 @@ test_that("batch_id", {
 
 test_that("created_time", {
   # tests for the property `created_time` (character)
-  # Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+  # Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
 
   # uncomment below to test the property
   #expect_equal(model.instance$`created_time`, "EXPECTED_RESULT")
@@ -23,7 +23,7 @@ test_that("created_time", {
 
 test_that("completed_time", {
   # tests for the property `completed_time` (character)
-  # Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+  # Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
 
   # uncomment below to test the property
   #expect_equal(model.instance$`completed_time`, "EXPECTED_RESULT")

@@ -17,15 +17,13 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
   public = list(
     `values` = NULL,
     `negated` = NULL,
-    #' Initialize a new CatalogsProductGroupMultipleStringListCriteria class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsProductGroupMultipleStringListCriteria class.
     #'
     #' @param values values
     #' @param negated negated. Default to FALSE.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`values`, `negated` = FALSE, ...) {
       if (!missing(`values`)) {
         stopifnot(is.vector(`values`), length(`values`) != 0)
@@ -39,13 +37,11 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
         self$`negated` <- `negated`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupMultipleStringListCriteria in JSON format
-    #' @export
     toJSON = function() {
       CatalogsProductGroupMultipleStringListCriteriaObject <- list()
       if (!is.null(self$`values`)) {
@@ -58,14 +54,12 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
       }
       CatalogsProductGroupMultipleStringListCriteriaObject
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupMultipleStringListCriteria
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupMultipleStringListCriteria
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupMultipleStringListCriteria
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`values`)) {
@@ -76,13 +70,11 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsProductGroupMultipleStringListCriteria in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`values`)) {
@@ -105,27 +97,23 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsProductGroupMultipleStringListCriteria
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsProductGroupMultipleStringListCriteria
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsProductGroupMultipleStringListCriteria
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[array[character]]", loadNamespace("openapi"))
       self$`negated` <- this_object$`negated`
       self
     },
-    #' Validate JSON input with respect to CatalogsProductGroupMultipleStringListCriteria
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsProductGroupMultipleStringListCriteria and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `values`
@@ -136,23 +124,19 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsProductGroupMultipleStringListCriteria: the required field `values` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsProductGroupMultipleStringListCriteria
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `values` is null
       if (is.null(self$`values`)) {
@@ -161,13 +145,11 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `values` is null
@@ -177,12 +159,9 @@ CatalogsProductGroupMultipleStringListCriteria <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

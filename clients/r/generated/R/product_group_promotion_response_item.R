@@ -7,7 +7,7 @@
 #' @title ProductGroupPromotionResponseItem
 #' @description ProductGroupPromotionResponseItem Class
 #' @format An \code{R6Class} generator object
-#' @field data  \link{ProductGroupPromotion} [optional]
+#' @field data  \link{ProductGroupPromotionResponseElement} [optional]
 #' @field exceptions  list(\link{Exception}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,15 +17,13 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
   public = list(
     `data` = NULL,
     `exceptions` = NULL,
-    #' Initialize a new ProductGroupPromotionResponseItem class.
-    #'
+
     #' @description
     #' Initialize a new ProductGroupPromotionResponseItem class.
     #'
     #' @param data data
     #' @param exceptions exceptions
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`data` = NULL, `exceptions` = NULL, ...) {
       if (!is.null(`data`)) {
         stopifnot(R6::is.R6(`data`))
@@ -37,13 +35,11 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
         self$`exceptions` <- `exceptions`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupPromotionResponseItem in JSON format
-    #' @export
     toJSON = function() {
       ProductGroupPromotionResponseItemObject <- list()
       if (!is.null(self$`data`)) {
@@ -56,18 +52,16 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
       }
       ProductGroupPromotionResponseItemObject
     },
-    #' Deserialize JSON string into an instance of ProductGroupPromotionResponseItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupPromotionResponseItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupPromotionResponseItem
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`data`)) {
-        `data_object` <- ProductGroupPromotion$new()
+        `data_object` <- ProductGroupPromotionResponseElement$new()
         `data_object`$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
         self$`data` <- `data_object`
       }
@@ -76,13 +70,11 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupPromotionResponseItem in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`data`)) {
@@ -105,67 +97,54 @@ ProductGroupPromotionResponseItem <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ProductGroupPromotionResponseItem
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupPromotionResponseItem
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupPromotionResponseItem
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`data` <- ProductGroupPromotion$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
+      self$`data` <- ProductGroupPromotionResponseElement$new()$fromJSON(jsonlite::toJSON(this_object$`data`, auto_unbox = TRUE, digits = NA))
       self$`exceptions` <- ApiClient$new()$deserializeObj(this_object$`exceptions`, "array[Exception]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to ProductGroupPromotionResponseItem
-    #'
+
     #' @description
     #' Validate JSON input with respect to ProductGroupPromotionResponseItem and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ProductGroupPromotionResponseItem
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

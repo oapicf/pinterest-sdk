@@ -19,7 +19,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * SSIOOrderLine
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOOrderLine   {
   @JsonProperty("salesforce_order_line_id")
   private String salesforceOrderLineId;
@@ -92,10 +92,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * OrderLineId in SFDC
    * @return salesforceOrderLineId
-  **/
+   */
   @ApiModelProperty(value = "OrderLineId in SFDC")
   public String getSalesforceOrderLineId() {
     return salesforceOrderLineId;
@@ -110,10 +110,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Ads manager OrderLineId
    * @return adsManagerOrderLineId
-  **/
+   */
   @ApiModelProperty(value = "Ads manager OrderLineId")
   public String getAdsManagerOrderLineId() {
     return adsManagerOrderLineId;
@@ -128,10 +128,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * The pin order id associated with the order line in SFDC
    * @return pinOrderId
-  **/
+   */
   @ApiModelProperty(value = "The pin order id associated with the order line in SFDC")
   public String getPinOrderId() {
     return pinOrderId;
@@ -146,10 +146,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Last modified date.
    * @return lastModifiedDateTime
-  **/
+   */
   @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "Last modified date.")
   public String getLastModifiedDateTime() {
     return lastModifiedDateTime;
@@ -164,10 +164,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Start date of the order line.
    * @return startDate
-  **/
+   */
   @ApiModelProperty(example = "Thu Mar 01 00:00:00 UTC 2018", value = "Start date of the order line.")
   public LocalDate getStartDate() {
     return startDate;
@@ -182,10 +182,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * End date of the order line.
    * @return endDate
-  **/
+   */
   @ApiModelProperty(example = "Mon Oct 05 00:00:00 UTC 2020", value = "End date of the order line.")
   public LocalDate getEndDate() {
     return endDate;
@@ -200,10 +200,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Bill To Company name
    * @return billToCompanyName
-  **/
+   */
   @ApiModelProperty(example = "Home Depot Inc.", value = "Bill To Company name")
   public String getBillToCompanyName() {
     return billToCompanyName;
@@ -218,10 +218,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Billing contact first name
    * @return billingContactFirstname
-  **/
+   */
   @ApiModelProperty(example = "Mary", value = "Billing contact first name")
   public String getBillingContactFirstname() {
     return billingContactFirstname;
@@ -236,10 +236,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Billing contact last name
    * @return billingContactLastname
-  **/
+   */
   @ApiModelProperty(example = "Smith", value = "Billing contact last name")
   public String getBillingContactLastname() {
     return billingContactLastname;
@@ -254,10 +254,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Billing contact email
    * @return billingContactEmail
-  **/
+   */
   @ApiModelProperty(example = "mail@test.com", value = "Billing contact email")
   public String getBillingContactEmail() {
     return billingContactEmail;
@@ -272,10 +272,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Billing media email
    * @return mediaContactEmail
-  **/
+   */
   @ApiModelProperty(example = "mail@test.com", value = "Billing media email")
   public String getMediaContactEmail() {
     return mediaContactEmail;
@@ -290,10 +290,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Billing contact first name
    * @return mediaContactFirstname
-  **/
+   */
   @ApiModelProperty(example = "John", value = "Billing contact first name")
   public String getMediaContactFirstname() {
     return mediaContactFirstname;
@@ -308,10 +308,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Billing contact first name
    * @return mediaContactLastname
-  **/
+   */
   @ApiModelProperty(example = "Doe", value = "Billing contact first name")
   public String getMediaContactLastname() {
     return mediaContactLastname;
@@ -326,10 +326,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Get currencyInfo
    * @return currencyInfo
-  **/
+   */
   @ApiModelProperty(value = "")
   public Currency getCurrencyInfo() {
     return currencyInfo;
@@ -344,10 +344,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * Agency link
    * @return agencyLink
-  **/
+   */
   @ApiModelProperty(example = "", value = "Agency link")
   public String getAgencyLink() {
     return agencyLink;
@@ -362,10 +362,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * The po number
    * @return poNumber
-  **/
+   */
   @ApiModelProperty(value = "The po number")
   public String getPoNumber() {
     return poNumber;
@@ -380,10 +380,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * The order name
    * @return orderName
-  **/
+   */
   @ApiModelProperty(value = "The order name")
   public String getOrderName() {
     return orderName;
@@ -398,10 +398,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * The Pinterest marketing partner name
    * @return pmpName
-  **/
+   */
   @ApiModelProperty(value = "The Pinterest marketing partner name")
   public String getPmpName() {
     return pmpName;
@@ -416,10 +416,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * The SFDC id for the terms
    * @return acceptedTermsId
-  **/
+   */
   @ApiModelProperty(value = "The SFDC id for the terms")
   public String getAcceptedTermsId() {
     return acceptedTermsId;
@@ -434,10 +434,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * The UTC timestamp (to the nearest sec) of when terms were accepted
    * @return acceptedTermsTime
-  **/
+   */
   @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
   public String getAcceptedTermsTime() {
     return acceptedTermsTime;
@@ -452,10 +452,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * If Budget order line, the budget amount.
    * @return budgetAmount
-  **/
+   */
   @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
   public BigDecimal getBudgetAmount() {
     return budgetAmount;
@@ -470,10 +470,10 @@ public class SSIOOrderLine   {
     return this;
   }
 
-   /**
+  /**
    * If Ongoing (perpetual) order line, the estimated monthly spend
    * @return estimatedMonthlySpend
-  **/
+   */
   @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
   public BigDecimal getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;

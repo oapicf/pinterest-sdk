@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A list of events (one or more) encapsulated by a data object.")
 @JsonTypeName("ConversionEvents")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEvents   {
   private @Valid List<@Valid ConversionEventsDataInner> data = new ArrayList<>();
 
@@ -35,8 +35,7 @@ public class ConversionEvents   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("data")
-  @NotNull
- @Size(min=1,max=1000)  public List<ConversionEventsDataInner> getData() {
+  @NotNull @Valid  @Size(min=1,max=1000)public List<@Valid ConversionEventsDataInner> getData() {
     return data;
   }
 

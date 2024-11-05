@@ -17,6 +17,7 @@ module.exports = {
                     'GEO',
                     'AGE_BUCKET',
                     'REGION',
+                    'AGE_BUCKET_AND_GENDER',
                 ],
             }
         )

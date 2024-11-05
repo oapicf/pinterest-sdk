@@ -16,14 +16,12 @@
 #' @export
 OauthAccessTokenRequestRefresh <- R6::R6Class(
   "OauthAccessTokenRequestRefresh",
-  inherit = OauthAccessTokenRequest,
   public = list(
     `grant_type` = NULL,
     `refresh_token` = NULL,
     `scope` = NULL,
     `refresh_on` = NULL,
-    #' Initialize a new OauthAccessTokenRequestRefresh class.
-    #'
+
     #' @description
     #' Initialize a new OauthAccessTokenRequestRefresh class.
     #'
@@ -32,11 +30,10 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
     #' @param scope scope
     #' @param refresh_on Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`grant_type`, `refresh_token`, `scope` = NULL, `refresh_on` = NULL, ...) {
       if (!missing(`grant_type`)) {
-        if (!(`grant_type` %in% c("authorization_code", "refresh_token"))) {
-          stop(paste("Error! \"", `grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\".", sep = ""))
+        if (!(`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
+          stop(paste("Error! \"", `grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
         }
         if (!(is.character(`grant_type`) && length(`grant_type`) == 1)) {
           stop(paste("Error! Invalid data for `grant_type`. Must be a string:", `grant_type`))
@@ -62,13 +59,11 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
         self$`refresh_on` <- `refresh_on`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OauthAccessTokenRequestRefresh in JSON format
-    #' @export
     toJSON = function() {
       OauthAccessTokenRequestRefreshObject <- list()
       if (!is.null(self$`grant_type`)) {
@@ -89,19 +84,17 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
       }
       OauthAccessTokenRequestRefreshObject
     },
-    #' Deserialize JSON string into an instance of OauthAccessTokenRequestRefresh
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OauthAccessTokenRequestRefresh
     #'
     #' @param input_json the JSON input
     #' @return the instance of OauthAccessTokenRequestRefresh
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`grant_type`)) {
-        if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token"))) {
-          stop(paste("Error! \"", this_object$`grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\".", sep = ""))
+        if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
+          stop(paste("Error! \"", this_object$`grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
         }
         self$`grant_type` <- this_object$`grant_type`
       }
@@ -116,13 +109,11 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OauthAccessTokenRequestRefresh in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`grant_type`)) {
@@ -161,18 +152,16 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of OauthAccessTokenRequestRefresh
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OauthAccessTokenRequestRefresh
     #'
     #' @param input_json the JSON input
     #' @return the instance of OauthAccessTokenRequestRefresh
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token"))) {
-        stop(paste("Error! \"", this_object$`grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\".", sep = ""))
+      if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
+        stop(paste("Error! \"", this_object$`grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
       }
       self$`grant_type` <- this_object$`grant_type`
       self$`refresh_token` <- this_object$`refresh_token`
@@ -180,13 +169,11 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
       self$`refresh_on` <- this_object$`refresh_on`
       self
     },
-    #' Validate JSON input with respect to OauthAccessTokenRequestRefresh
-    #'
+
     #' @description
     #' Validate JSON input with respect to OauthAccessTokenRequestRefresh and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `grant_type`
@@ -206,23 +193,19 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenRequestRefresh: the required field `refresh_token` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of OauthAccessTokenRequestRefresh
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `grant_type` is null
       if (is.null(self$`grant_type`)) {
@@ -236,13 +219,11 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `grant_type` is null
@@ -257,12 +238,9 @@ OauthAccessTokenRequestRefresh <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -7,7 +7,7 @@ type CatalogsRetailBatchRequestItemsInner struct {
 
 	Operation string `json:"operation"`
 
-	Attributes ItemAttributes `json:"attributes"`
+	Attributes ItemAttributesRequest `json:"attributes"`
 
 	// The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	UpdateMask *[]UpdateMaskFieldType `json:"update_mask,omitempty"`

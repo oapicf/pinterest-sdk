@@ -1,8 +1,8 @@
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,27 +20,27 @@ public class PinMediaWithImage extends PinMedia {
   
   @ApiModelProperty(value = "")
   @Valid
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
  /**
   * Get images
   * @return images
   */
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
   /**
    * Sets the <code>images</code> property.
    */
- public void setImages(ImageMetadataImages images) {
+ public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
   /**
    * Sets the <code>images</code> property.
    */
-  public PinMediaWithImage images(ImageMetadataImages images) {
+  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }

@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -63,7 +63,7 @@ message AdsCreditsDiscountsGetRequest {
   string adAccountId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
 
 }
@@ -75,7 +75,7 @@ message BillingProfilesGetRequest {
   bool isActive = 2;
   // Cursor used to fetch the next page of items
   string bookmark = 3;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 4;
 
 }
@@ -107,7 +107,7 @@ message SsioInsertionOrdersStatusGetByAdAccountRequest {
   string adAccountId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
 
 }
@@ -125,7 +125,7 @@ message SsioOrderLinesGetByAdAccountRequest {
   string adAccountId = 1;
   // Cursor used to fetch the next page of items
   string bookmark = 2;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 3;
   // The pin order id associated with the ssio insertino order
   string pinOrderId = 4;

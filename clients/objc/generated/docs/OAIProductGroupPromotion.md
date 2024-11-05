@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **trackingUrl** | **NSString*** | Tracking template for proudct group promotions. 4000 limit | [optional] 
 **catalogProductGroupId** | **NSString*** | ID of the catalogs product group that this product group promotion references | [optional] 
 **catalogProductGroupName** | **NSString*** | Catalogs product group name | [optional] 
-**creativeType** | [**OAICreativeType***](OAICreativeType.md) |  | [optional] 
 **collectionsHeroPinId** | **NSString*** | Hero Pin ID if this PG is promoted as a Collection | [optional] 
 **collectionsHeroDestinationUrl** | **NSString*** | Collections Hero Destination Url | [optional] 
 **gridClickType** | [**OAIGridClickType***](OAIGridClickType.md) |  | [optional] 

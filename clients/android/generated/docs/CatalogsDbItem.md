@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | [**Date**](Date.md) |  |  [optional]
-**id** | **String** |  |  [optional]
-**updatedAt** | [**Date**](Date.md) |  |  [optional]
+**createdAt** | [**Date**](Date.md) |  | 
+**id** | **String** |  | 
+**updatedAt** | [**Date**](Date.md) |  | 
 
 
 

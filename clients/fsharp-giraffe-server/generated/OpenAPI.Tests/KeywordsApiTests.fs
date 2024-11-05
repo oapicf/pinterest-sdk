@@ -197,7 +197,7 @@ module KeywordsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/trends/keywords/{region}/top/{trend_type}".Replace("region", "ADDME").Replace("trendType", "ADDME") + "?interests=ADDME&genders=ADDME&ages=ADDME&normalizeAgainstGroup=ADDME&limit=ADDME"
+      let path = "/v5/trends/keywords/{region}/top/{trend_type}".Replace("region", "ADDME").Replace("trendType", "ADDME") + "?interests=ADDME&genders=ADDME&ages=ADDME&includeKeywords=ADDME&normalizeAgainstGroup=ADDME&limit=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -214,7 +214,7 @@ module KeywordsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/trends/keywords/{region}/top/{trend_type}".Replace("region", "ADDME").Replace("trendType", "ADDME") + "?interests=ADDME&genders=ADDME&ages=ADDME&normalizeAgainstGroup=ADDME&limit=ADDME"
+      let path = "/v5/trends/keywords/{region}/top/{trend_type}".Replace("region", "ADDME").Replace("trendType", "ADDME") + "?interests=ADDME&genders=ADDME&ages=ADDME&includeKeywords=ADDME&normalizeAgainstGroup=ADDME&limit=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(400))
@@ -231,7 +231,7 @@ module KeywordsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/trends/keywords/{region}/top/{trend_type}".Replace("region", "ADDME").Replace("trendType", "ADDME") + "?interests=ADDME&genders=ADDME&ages=ADDME&normalizeAgainstGroup=ADDME&limit=ADDME"
+      let path = "/v5/trends/keywords/{region}/top/{trend_type}".Replace("region", "ADDME").Replace("trendType", "ADDME") + "?interests=ADDME&genders=ADDME&ages=ADDME&includeKeywords=ADDME&normalizeAgainstGroup=ADDME&limit=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

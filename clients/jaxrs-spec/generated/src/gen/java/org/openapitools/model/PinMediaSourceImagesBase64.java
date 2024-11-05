@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Multiple Base64-encoded images media source")
 @JsonTypeName("PinMediaSourceImagesBase64")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImagesBase64   {
   public enum SourceTypeEnum {
 
@@ -70,9 +70,9 @@ public class PinMediaSourceImagesBase64   {
     }
 }
 
-  private @Valid SourceTypeEnum sourceType;
+  private SourceTypeEnum sourceType;
   private @Valid List<@Valid PinMediaSourceImagesBase64ItemsInner> items = new ArrayList<>();
-  private @Valid Integer index;
+  private Integer index;
 
   /**
    **/
@@ -104,8 +104,7 @@ public class PinMediaSourceImagesBase64   {
   
   @ApiModelProperty(required = true, value = "Array with image objects.")
   @JsonProperty("items")
-  @NotNull
- @Size(min=2,max=5)  public List<PinMediaSourceImagesBase64ItemsInner> getItems() {
+  @NotNull @Valid  @Size(min=2,max=5)public List<@Valid PinMediaSourceImagesBase64ItemsInner> getItems() {
     return items;
   }
 
@@ -141,7 +140,7 @@ public class PinMediaSourceImagesBase64   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("index")
- @Min(0)  public Integer getIndex() {
+   @Min(0)public Integer getIndex() {
     return index;
   }
 

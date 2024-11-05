@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.AdCountry
@@ -36,7 +37,7 @@ data class AdAccountsCountryResponseData(
 
     @Schema(example = "United States of America", description = "Country name")
     @get:JsonProperty("name") val name: kotlin.String? = null
-) {
+    ) {
 
 }
 

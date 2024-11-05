@@ -6,8 +6,8 @@ import org.openapitools.vertxweb.server.model.AdPreviewRequest;
 import org.openapitools.vertxweb.server.model.AdPreviewURLResponse;
 import org.openapitools.vertxweb.server.model.AdResponse;
 import org.openapitools.vertxweb.server.model.AdUpdateRequest;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.vertxweb.server.model.AdsAnalyticsResponseInner;
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
 import org.openapitools.vertxweb.server.model.AdsList200Response;
 import org.openapitools.vertxweb.server.model.ConversionReportAttributionType;
 import org.openapitools.vertxweb.server.model.Error;
@@ -31,11 +31,11 @@ public class AdsApiImpl implements AdsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<MetricsResponse>> adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
+    public Future<ApiResponse<MetricsResponse>> adTargetingAnalyticsGet(String adAccountId, List<String> adIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<List<AdsAnalyticsResponseInner>>> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> adIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) {
+    public Future<ApiResponse<List<AdsAnalyticsResponseInner>>> adsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> columns, Granularity granularity, List<String> adIds, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<String> pinIds, List<String> campaignIds) {
         return Future.failedFuture(new HttpException(501));
     }
 

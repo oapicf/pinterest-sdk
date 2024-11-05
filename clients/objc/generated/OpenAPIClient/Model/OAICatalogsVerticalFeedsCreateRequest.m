@@ -21,6 +21,10 @@
     }
 
     Class class = nil;
+    if ([discriminatedClassName isEqualToString:@"CREATIVE_ASSETS"]) {
+        class = NSClassFromString(@"OAICatalogsCreativeAssetsFeedsCreateRequest");
+    }
+    else
     if ([discriminatedClassName isEqualToString:@"HOTEL"]) {
         class = NSClassFromString(@"OAICatalogsHotelFeedsCreateRequest");
     }
@@ -46,7 +50,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"defaultCurrency": @"default_currency", @"name": @"name", @"format": @"format", @"defaultLocale": @"default_locale", @"credentials": @"credentials", @"location": @"location", @"preferredProcessingSchedule": @"preferred_processing_schedule", @"catalogType": @"catalog_type", @"defaultCountry": @"default_country", @"defaultAvailability": @"default_availability", @"catalogId": @"catalog_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"defaultCurrency": @"default_currency", @"name": @"name", @"format": @"format", @"defaultLocale": @"default_locale", @"credentials": @"credentials", @"location": @"location", @"preferredProcessingSchedule": @"preferred_processing_schedule", @"catalogType": @"catalog_type", @"defaultCountry": @"default_country", @"defaultAvailability": @"default_availability", @"status": @"status", @"catalogId": @"catalog_id" }];
 }
 
 /**
@@ -56,7 +60,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"defaultCurrency", @"credentials", @"preferredProcessingSchedule", @"defaultAvailability", @"catalogId"];
+  NSArray *optionalProperties = @[@"defaultCurrency", @"credentials", @"preferredProcessingSchedule", @"defaultAvailability", @"status", @"catalogId"];
   return [optionalProperties containsObject:propertyName];
 }
 

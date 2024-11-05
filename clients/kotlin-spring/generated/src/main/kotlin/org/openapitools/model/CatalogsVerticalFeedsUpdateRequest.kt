@@ -1,10 +1,12 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.CatalogsCreativeAssetsFeedsUpdateRequest
 import org.openapitools.model.CatalogsFeedCredentials
 import org.openapitools.model.CatalogsFeedProcessingSchedule
 import org.openapitools.model.CatalogsFormat
@@ -40,6 +42,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes(
+      JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsUpdateRequest::class, name = "CREATIVE_ASSETS"),
       JsonSubTypes.Type(value = CatalogsHotelFeedsUpdateRequest::class, name = "HOTEL"),
       JsonSubTypes.Type(value = CatalogsRetailFeedsUpdateRequest::class, name = "RETAIL")
 )

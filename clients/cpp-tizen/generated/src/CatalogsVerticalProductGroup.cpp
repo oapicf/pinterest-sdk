@@ -27,14 +27,16 @@ CatalogsVerticalProductGroup::__init()
 	//id = std::string();
 	//name = std::string();
 	//description = std::string();
-	//filters = new CatalogsProductGroupFilters();
-	//created_at = int(0);
-	//updated_at = int(0);
-	//catalog_id = std::string();
+	//filters = new CatalogsCreativeAssetsProductGroupFilters();
 	//is_featured = bool(false);
 	//type = new CatalogsProductGroupType();
 	//status = new CatalogsProductGroupStatus();
+	//created_at = int(0);
+	//updated_at = int(0);
+	//catalog_id = std::string();
 	//feed_id = std::string();
+	//country = std::string();
+	//locale = std::string();
 }
 
 void
@@ -65,21 +67,6 @@ CatalogsVerticalProductGroup::__cleanup()
 	//delete filters;
 	//filters = NULL;
 	//}
-	//if(created_at != NULL) {
-	//
-	//delete created_at;
-	//created_at = NULL;
-	//}
-	//if(updated_at != NULL) {
-	//
-	//delete updated_at;
-	//updated_at = NULL;
-	//}
-	//if(catalog_id != NULL) {
-	//
-	//delete catalog_id;
-	//catalog_id = NULL;
-	//}
 	//if(is_featured != NULL) {
 	//
 	//delete is_featured;
@@ -95,10 +82,35 @@ CatalogsVerticalProductGroup::__cleanup()
 	//delete status;
 	//status = NULL;
 	//}
+	//if(created_at != NULL) {
+	//
+	//delete created_at;
+	//created_at = NULL;
+	//}
+	//if(updated_at != NULL) {
+	//
+	//delete updated_at;
+	//updated_at = NULL;
+	//}
+	//if(catalog_id != NULL) {
+	//
+	//delete catalog_id;
+	//catalog_id = NULL;
+	//}
 	//if(feed_id != NULL) {
 	//
 	//delete feed_id;
 	//feed_id = NULL;
+	//}
+	//if(country != NULL) {
+	//
+	//delete country;
+	//country = NULL;
+	//}
+	//if(locale != NULL) {
+	//
+	//delete locale;
+	//locale = NULL;
 	//}
 	//
 }
@@ -157,45 +169,12 @@ CatalogsVerticalProductGroup::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupFilters")) {
-			jsonToValue(&filters, node, "CatalogsProductGroupFilters", "CatalogsProductGroupFilters");
+		if (isprimitive("CatalogsCreativeAssetsProductGroupFilters")) {
+			jsonToValue(&filters, node, "CatalogsCreativeAssetsProductGroupFilters", "CatalogsCreativeAssetsProductGroupFilters");
 		} else {
 			
-			CatalogsProductGroupFilters* obj = static_cast<CatalogsProductGroupFilters*> (&filters);
+			CatalogsCreativeAssetsProductGroupFilters* obj = static_cast<CatalogsCreativeAssetsProductGroupFilters*> (&filters);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *created_atKey = "created_at";
-	node = json_object_get_member(pJsonObject, created_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&created_at, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *updated_atKey = "updated_at";
-	node = json_object_get_member(pJsonObject, updated_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&updated_at, node, "int", "");
-		} else {
-			
-		}
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
-		} else {
 			
 		}
 	}
@@ -238,6 +217,39 @@ CatalogsVerticalProductGroup::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *created_atKey = "created_at";
+	node = json_object_get_member(pJsonObject, created_atKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&created_at, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *updated_atKey = "updated_at";
+	node = json_object_get_member(pJsonObject, updated_atKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&updated_at, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *feed_idKey = "feed_id";
 	node = json_object_get_member(pJsonObject, feed_idKey);
 	if (node !=NULL) {
@@ -245,6 +257,28 @@ CatalogsVerticalProductGroup::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&feed_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *countryKey = "country";
+	node = json_object_get_member(pJsonObject, countryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&country, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *localeKey = "locale";
+	node = json_object_get_member(pJsonObject, localeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&locale, node, "std::string", "");
 		} else {
 			
 		}
@@ -297,13 +331,13 @@ CatalogsVerticalProductGroup::toJson()
 	}
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("CatalogsProductGroupFilters")) {
-		CatalogsProductGroupFilters obj = getFilters();
-		node = converttoJson(&obj, "CatalogsProductGroupFilters", "");
+	if (isprimitive("CatalogsCreativeAssetsProductGroupFilters")) {
+		CatalogsCreativeAssetsProductGroupFilters obj = getFilters();
+		node = converttoJson(&obj, "CatalogsCreativeAssetsProductGroupFilters", "");
 	}
 	else {
 		
-		CatalogsProductGroupFilters obj = static_cast<CatalogsProductGroupFilters> (getFilters());
+		CatalogsCreativeAssetsProductGroupFilters obj = static_cast<CatalogsCreativeAssetsProductGroupFilters> (getFilters());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -311,33 +345,6 @@ CatalogsVerticalProductGroup::toJson()
 	}
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
-	if (isprimitive("int")) {
-		int obj = getCreatedAt();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *created_atKey = "created_at";
-	json_object_set_member(pJsonObject, created_atKey, node);
-	if (isprimitive("int")) {
-		int obj = getUpdatedAt();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *updated_atKey = "updated_at";
-	json_object_set_member(pJsonObject, updated_atKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getIsFeatured();
 		node = converttoJson(&obj, "bool", "");
@@ -375,6 +382,33 @@ CatalogsVerticalProductGroup::toJson()
 	}
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
+	if (isprimitive("int")) {
+		int obj = getCreatedAt();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *created_atKey = "created_at";
+	json_object_set_member(pJsonObject, created_atKey, node);
+	if (isprimitive("int")) {
+		int obj = getUpdatedAt();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *updated_atKey = "updated_at";
+	json_object_set_member(pJsonObject, updated_atKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getFeedId();
 		node = converttoJson(&obj, "std::string", "");
@@ -384,6 +418,24 @@ CatalogsVerticalProductGroup::toJson()
 	}
 	const gchar *feed_idKey = "feed_id";
 	json_object_set_member(pJsonObject, feed_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCountry();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *countryKey = "country";
+	json_object_set_member(pJsonObject, countryKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getLocale();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *localeKey = "locale";
+	json_object_set_member(pJsonObject, localeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -440,52 +492,16 @@ CatalogsVerticalProductGroup::setDescription(std::string  description)
 	this->description = description;
 }
 
-CatalogsProductGroupFilters
+CatalogsCreativeAssetsProductGroupFilters
 CatalogsVerticalProductGroup::getFilters()
 {
 	return filters;
 }
 
 void
-CatalogsVerticalProductGroup::setFilters(CatalogsProductGroupFilters  filters)
+CatalogsVerticalProductGroup::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
 {
 	this->filters = filters;
-}
-
-int
-CatalogsVerticalProductGroup::getCreatedAt()
-{
-	return created_at;
-}
-
-void
-CatalogsVerticalProductGroup::setCreatedAt(int  created_at)
-{
-	this->created_at = created_at;
-}
-
-int
-CatalogsVerticalProductGroup::getUpdatedAt()
-{
-	return updated_at;
-}
-
-void
-CatalogsVerticalProductGroup::setUpdatedAt(int  updated_at)
-{
-	this->updated_at = updated_at;
-}
-
-std::string
-CatalogsVerticalProductGroup::getCatalogId()
-{
-	return catalog_id;
-}
-
-void
-CatalogsVerticalProductGroup::setCatalogId(std::string  catalog_id)
-{
-	this->catalog_id = catalog_id;
 }
 
 bool
@@ -524,6 +540,42 @@ CatalogsVerticalProductGroup::setStatus(CatalogsProductGroupStatus  status)
 	this->status = status;
 }
 
+int
+CatalogsVerticalProductGroup::getCreatedAt()
+{
+	return created_at;
+}
+
+void
+CatalogsVerticalProductGroup::setCreatedAt(int  created_at)
+{
+	this->created_at = created_at;
+}
+
+int
+CatalogsVerticalProductGroup::getUpdatedAt()
+{
+	return updated_at;
+}
+
+void
+CatalogsVerticalProductGroup::setUpdatedAt(int  updated_at)
+{
+	this->updated_at = updated_at;
+}
+
+std::string
+CatalogsVerticalProductGroup::getCatalogId()
+{
+	return catalog_id;
+}
+
+void
+CatalogsVerticalProductGroup::setCatalogId(std::string  catalog_id)
+{
+	this->catalog_id = catalog_id;
+}
+
 std::string
 CatalogsVerticalProductGroup::getFeedId()
 {
@@ -534,6 +586,30 @@ void
 CatalogsVerticalProductGroup::setFeedId(std::string  feed_id)
 {
 	this->feed_id = feed_id;
+}
+
+std::string
+CatalogsVerticalProductGroup::getCountry()
+{
+	return country;
+}
+
+void
+CatalogsVerticalProductGroup::setCountry(std::string  country)
+{
+	this->country = country;
+}
+
+std::string
+CatalogsVerticalProductGroup::getLocale()
+{
+	return locale;
+}
+
+void
+CatalogsVerticalProductGroup::setLocale(std::string  locale)
+{
+	this->locale = locale;
 }
 
 

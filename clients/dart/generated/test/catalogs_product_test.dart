@@ -16,7 +16,12 @@ void main() {
   // final instance = CatalogsProduct();
 
   group('test CatalogsProduct', () {
-    // CatalogsProductMetadata metadata
+    // CatalogsType catalogType
+    test('to test the property `catalogType`', () async {
+      // TODO
+    });
+
+    // CatalogsCreativeAssetsProductMetadata metadata
     test('to test the property `metadata`', () async {
       // TODO
     });

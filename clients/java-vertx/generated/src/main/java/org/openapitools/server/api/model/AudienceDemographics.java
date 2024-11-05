@@ -14,11 +14,11 @@ import org.openapitools.server.api.model.AudienceDemographicValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceDemographics   {
   
-  private List<AudienceDemographicValue> ages;
-  private List<AudienceDemographicValue> genders;
-  private List<AudienceDemographicValue> devices;
-  private List<AudienceDemographicValue> metros;
-  private List<AudienceDemographicValue> countries;
+  private List<AudienceDemographicValue> ages = new ArrayList<>();
+  private List<AudienceDemographicValue> genders = new ArrayList<>();
+  private List<AudienceDemographicValue> devices = new ArrayList<>();
+  private List<AudienceDemographicValue> metros = new ArrayList<>();
+  private List<AudienceDemographicValue> countries = new ArrayList<>();
 
   public AudienceDemographics () {
 

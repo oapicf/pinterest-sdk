@@ -101,8 +101,7 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     `TOO_MANY_ADDITIONAL_IMAGE_LINKS` = NULL,
     `UTM_SOURCE_AUTO_CORRECTED` = NULL,
     `WEIGHT_UNIT_INVALID` = NULL,
-    #' Initialize a new CatalogsItemValidationWarnings class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsItemValidationWarnings class.
     #'
@@ -151,7 +150,6 @@ CatalogsItemValidationWarnings <- R6::R6Class(
     #' @param UTM_SOURCE_AUTO_CORRECTED UTM_SOURCE_AUTO_CORRECTED
     #' @param WEIGHT_UNIT_INVALID WEIGHT_UNIT_INVALID
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`AD_LINK_FORMAT_WARNING` = NULL, `AD_LINK_SAME_AS_LINK` = NULL, `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `ADDITIONAL_IMAGE_LINK_WARNING` = NULL, `ADWORDS_FORMAT_WARNING` = NULL, `ADWORDS_SAME_AS_LINK` = NULL, `AGE_GROUP_INVALID` = NULL, `SIZE_SYSTEM_INVALID` = NULL, `ANDROID_DEEP_LINK_INVALID` = NULL, `AVAILABILITY_DATE_INVALID` = NULL, `COUNTRY_DOES_NOT_MAP_TO_CURRENCY` = NULL, `CUSTOM_LABEL_LENGTH_TOO_LONG` = NULL, `DESCRIPTION_LENGTH_TOO_LONG` = NULL, `EXPIRATION_DATE_INVALID` = NULL, `GENDER_INVALID` = NULL, `GTIN_INVALID` = NULL, `IMAGE_LINK_WARNING` = NULL, `IOS_DEEP_LINK_INVALID` = NULL, `IS_BUNDLE_INVALID` = NULL, `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` = NULL, `LINK_FORMAT_WARNING` = NULL, `MIN_AD_PRICE_INVALID` = NULL, `MPN_INVALID` = NULL, `MULTIPACK_INVALID` = NULL, `OPTIONAL_CONDITION_INVALID` = NULL, `OPTIONAL_CONDITION_MISSING` = NULL, `OPTIONAL_PRODUCT_CATEGORY_INVALID` = NULL, `OPTIONAL_PRODUCT_CATEGORY_MISSING` = NULL, `PRODUCT_CATEGORY_DEPTH_WARNING` = NULL, `PRODUCT_TYPE_LENGTH_TOO_LONG` = NULL, `SALES_PRICE_INVALID` = NULL, `SALES_PRICE_TOO_LOW` = NULL, `SALES_PRICE_TOO_HIGH` = NULL, `SALE_DATE_INVALID` = NULL, `SHIPPING_INVALID` = NULL, `SHIPPING_HEIGHT_INVALID` = NULL, `SHIPPING_WEIGHT_INVALID` = NULL, `SHIPPING_WIDTH_INVALID` = NULL, `SIZE_TYPE_INVALID` = NULL, `TAX_INVALID` = NULL, `TITLE_LENGTH_TOO_LONG` = NULL, `TOO_MANY_ADDITIONAL_IMAGE_LINKS` = NULL, `UTM_SOURCE_AUTO_CORRECTED` = NULL, `WEIGHT_UNIT_INVALID` = NULL, ...) {
       if (!is.null(`AD_LINK_FORMAT_WARNING`)) {
         stopifnot(R6::is.R6(`AD_LINK_FORMAT_WARNING`))
@@ -330,13 +328,11 @@ CatalogsItemValidationWarnings <- R6::R6Class(
         self$`WEIGHT_UNIT_INVALID` <- `WEIGHT_UNIT_INVALID`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemValidationWarnings in JSON format
-    #' @export
     toJSON = function() {
       CatalogsItemValidationWarningsObject <- list()
       if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
@@ -517,14 +513,12 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       }
       CatalogsItemValidationWarningsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsItemValidationWarnings
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemValidationWarnings
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemValidationWarnings
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`AD_LINK_FORMAT_WARNING`)) {
@@ -749,13 +743,11 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemValidationWarnings in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
@@ -1114,14 +1106,12 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsItemValidationWarnings
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemValidationWarnings
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemValidationWarnings
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`AD_LINK_FORMAT_WARNING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`AD_LINK_FORMAT_WARNING`, auto_unbox = TRUE, digits = NA))
@@ -1170,53 +1160,42 @@ CatalogsItemValidationWarnings <- R6::R6Class(
       self$`WEIGHT_UNIT_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`WEIGHT_UNIT_INVALID`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsItemValidationWarnings
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsItemValidationWarnings and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsItemValidationWarnings
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

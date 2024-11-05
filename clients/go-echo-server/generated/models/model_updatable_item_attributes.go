@@ -8,10 +8,10 @@ type UpdatableItemAttributes struct {
 	// Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
 	Adult *bool `json:"adult,omitempty"`
 
-	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 	AgeGroup *string `json:"age_group,omitempty"`
 
-	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
 	Availability string `json:"availability,omitempty"`
 
 	// Average reviews for the item. Can be a number from 1-5.
@@ -54,7 +54,7 @@ type UpdatableItemAttributes struct {
 	// The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
 	FreeShippingLimit *string `json:"free_shipping_limit,omitempty"`
 
-	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
 	Gender *string `json:"gender,omitempty"`
 
 	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
@@ -121,10 +121,10 @@ type UpdatableItemAttributes struct {
 	// The size of the product.
 	Size *string `json:"size,omitempty"`
 
-	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
 	SizeSystem *string `json:"size_system,omitempty"`
 
-	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
 	SizeType *string `json:"size_type,omitempty"`
 
 	// Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.

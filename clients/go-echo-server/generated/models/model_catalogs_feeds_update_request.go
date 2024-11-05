@@ -15,7 +15,7 @@ type CatalogsFeedsUpdateRequest struct {
 	Credentials *CatalogsFeedCredentials `json:"credentials,omitempty"`
 
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location,omitempty"`
+	Location string `json:"location,omitempty" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
 
 	PreferredProcessingSchedule *CatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
 

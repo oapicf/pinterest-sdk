@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsFeedIngestionDetails
@@ -20,15 +21,24 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param createdAt 
+ * @param id 
+ * @param updatedAt 
  * @param ingestionDetails 
  * @param status 
  * @param productCounts 
  * @param validationDetails 
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  */
 data class CatalogsFeedProcessingResult(
+
+    @Schema(example = "2022-03-14T15:15:22Z", required = true, description = "")
+    @get:JsonProperty("created_at", required = true) val createdAt: java.time.OffsetDateTime,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("id", required = true) val id: kotlin.String,
+
+    @Schema(example = "2022-03-14T15:16:34Z", required = true, description = "")
+    @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -44,17 +54,8 @@ data class CatalogsFeedProcessingResult(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("validation_details", required = true) val validationDetails: CatalogsFeedValidationDetails,
-
-    @Schema(example = "2022-03-14T15:15:22Z", description = "")
-    @get:JsonProperty("created_at") val createdAt: java.time.OffsetDateTime? = null,
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("id") val id: kotlin.String? = null,
-
-    @Schema(example = "2022-03-14T15:16:34Z", description = "")
-    @get:JsonProperty("updated_at") val updatedAt: java.time.OffsetDateTime? = null
-) {
+    @get:JsonProperty("validation_details", required = true) val validationDetails: CatalogsFeedValidationDetails
+    ) {
 
 }
 

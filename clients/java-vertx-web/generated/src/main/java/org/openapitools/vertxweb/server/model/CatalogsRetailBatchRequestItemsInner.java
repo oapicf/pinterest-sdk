@@ -12,7 +12,7 @@ import org.openapitools.vertxweb.server.model.CatalogsCreateRetailItem;
 import org.openapitools.vertxweb.server.model.CatalogsDeleteRetailItem;
 import org.openapitools.vertxweb.server.model.CatalogsUpdateRetailItem;
 import org.openapitools.vertxweb.server.model.CatalogsUpsertRetailItem;
-import org.openapitools.vertxweb.server.model.ItemAttributes;
+import org.openapitools.vertxweb.server.model.ItemAttributesRequest;
 import org.openapitools.vertxweb.server.model.UpdateMaskFieldType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -22,9 +22,6 @@ public class CatalogsRetailBatchRequestItemsInner   {
 
 
   public enum OperationEnum {
-    CREATE("CREATE"),
-    UPDATE("UPDATE"),
-    UPSERT("UPSERT"),
     DELETE("DELETE");
 
     private String value;
@@ -41,14 +38,14 @@ public class CatalogsRetailBatchRequestItemsInner   {
   }
 
   private OperationEnum operation;
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
   private List<UpdateMaskFieldType> updateMask;
 
   public CatalogsRetailBatchRequestItemsInner () {
 
   }
 
-  public CatalogsRetailBatchRequestItemsInner (String itemId, OperationEnum operation, ItemAttributes attributes, List<UpdateMaskFieldType> updateMask) {
+  public CatalogsRetailBatchRequestItemsInner (String itemId, OperationEnum operation, ItemAttributesRequest attributes, List<UpdateMaskFieldType> updateMask) {
     this.itemId = itemId;
     this.operation = operation;
     this.attributes = attributes;
@@ -75,10 +72,10 @@ public class CatalogsRetailBatchRequestItemsInner   {
 
     
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

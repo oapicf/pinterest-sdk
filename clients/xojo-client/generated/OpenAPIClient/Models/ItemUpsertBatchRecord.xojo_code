@@ -10,7 +10,7 @@ Protected Class ItemUpsertBatchRecord
 
 
 	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.ItemAttributes
+		Escapedattributes As OpenAPIClient.Models.ItemAttributesRequest
 	#tag EndProperty
 
 
@@ -63,7 +63,7 @@ Protected Class ItemUpsertBatchRecord
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ItemAttributes"
+			Type="ItemAttributesRequest"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

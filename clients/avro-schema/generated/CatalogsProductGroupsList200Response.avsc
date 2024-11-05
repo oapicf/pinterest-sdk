@@ -8,7 +8,7 @@
       "name": "items",
       "type": {
         "type": "array",
-        "items": "model.CatalogsProductGroupsList200ResponseAllOfItemsInner"
+        "items": "model.CatalogsVerticalProductGroup"
       },
       "doc": ""
     },

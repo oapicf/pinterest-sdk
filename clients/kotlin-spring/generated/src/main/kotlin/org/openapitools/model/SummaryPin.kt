@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.SummaryPinMedia
+import org.openapitools.model.PinMedia
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,8 +25,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class SummaryPin(
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("media") val media: SummaryPinMedia? = null,
+    @Schema(example = "null", readOnly = true, description = "")
+    @get:JsonProperty("media") val media: PinMedia? = null,
 
     @get:Size(max=500)
     @Schema(example = "null", description = "")
@@ -41,7 +41,7 @@ data class SummaryPin(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null
-) {
+    ) {
 
 }
 

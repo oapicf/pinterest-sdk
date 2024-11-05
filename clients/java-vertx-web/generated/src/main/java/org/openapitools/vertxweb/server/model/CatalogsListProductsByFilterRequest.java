@@ -3,8 +3,12 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.CatalogsListProductsByFilterRequestOneOf;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.CatalogsListProductsByFeedBasedFilter;
+import org.openapitools.vertxweb.server.model.CatalogsLocale;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupFilters;
+import org.openapitools.vertxweb.server.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest;
+import org.openapitools.vertxweb.server.model.Country;
 
 /**
  * Request object to list products for a given product group filter.

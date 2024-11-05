@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("KeywordsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsResponse   {
-  private @Valid List<@Valid KeywordError> errors;
-  private @Valid List<@Valid Keyword> keywords;
+  private @Valid List<@Valid KeywordError> errors = new ArrayList<>();
+  private @Valid List<@Valid Keyword> keywords = new ArrayList<>();
 
   /**
    **/
@@ -35,7 +35,7 @@ public class KeywordsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("errors")
-  public List<KeywordError> getErrors() {
+  @Valid public List<@Valid KeywordError> getErrors() {
     return errors;
   }
 
@@ -70,7 +70,7 @@ public class KeywordsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("keywords")
-  public List<Keyword> getKeywords() {
+  @Valid public List<@Valid Keyword> getKeywords() {
     return keywords;
   }
 

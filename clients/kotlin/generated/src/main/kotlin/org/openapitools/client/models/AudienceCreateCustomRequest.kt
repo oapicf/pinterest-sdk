@@ -56,5 +56,8 @@ data class AudienceCreateCustomRequest (
     @Json(name = "category")
     val category: kotlin.String? = null
 
-)
+) {
+
+
+}
 

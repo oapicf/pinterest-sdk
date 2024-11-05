@@ -14,7 +14,7 @@ test_that("catalog_type", {
 
 test_that("id", {
   # tests for the property `id` (character)
-  # ID of the catalog product group.
+  # ID of the creative assets product group.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
@@ -22,7 +22,7 @@ test_that("id", {
 
 test_that("name", {
   # tests for the property `name` (character)
-  # Name of catalog product group
+  # Name of creative assets product group
 
   # uncomment below to test the property
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
@@ -36,33 +36,10 @@ test_that("description", {
 })
 
 test_that("filters", {
-  # tests for the property `filters` (CatalogsProductGroupFilters)
+  # tests for the property `filters` (CatalogsCreativeAssetsProductGroupFilters)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
-})
-
-test_that("created_at", {
-  # tests for the property `created_at` (integer)
-  # Unix timestamp in seconds of when catalog product group was created.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
-})
-
-test_that("updated_at", {
-  # tests for the property `updated_at` (integer)
-  # Unix timestamp in seconds of last time catalog product group was updated.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`updated_at`, "EXPECTED_RESULT")
-})
-
-test_that("catalog_id", {
-  # tests for the property `catalog_id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
 })
 
 test_that("is_featured", {
@@ -87,9 +64,48 @@ test_that("status", {
   #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
+test_that("created_at", {
+  # tests for the property `created_at` (integer)
+  # Unix timestamp in seconds of when catalog product group was created.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+})
+
+test_that("updated_at", {
+  # tests for the property `updated_at` (integer)
+  # Unix timestamp in seconds of last time catalog product group was updated.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`updated_at`, "EXPECTED_RESULT")
+})
+
+test_that("catalog_id", {
+  # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the creative assets product group.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
 test_that("feed_id", {
   # tests for the property `feed_id` (character)
+  # id of the catalogs feed belonging to this catalog product group
 
   # uncomment below to test the property
   #expect_equal(model.instance$`feed_id`, "EXPECTED_RESULT")
+})
+
+test_that("country", {
+  # tests for the property `country` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+})
+
+test_that("locale", {
+  # tests for the property `locale` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`locale`, "EXPECTED_RESULT")
 })

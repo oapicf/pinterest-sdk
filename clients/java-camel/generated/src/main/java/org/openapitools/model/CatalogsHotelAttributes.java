@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * CatalogsHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelAttributes {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -78,7 +78,7 @@ public class CatalogsHotelAttributes {
   /**
    * The hotel's name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", description = "The hotel's name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -98,7 +98,7 @@ public class CatalogsHotelAttributes {
   /**
    * Link to the product page
    * @return link
-  */
+   */
   
   @Schema(name = "link", description = "Link to the product page", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -118,7 +118,7 @@ public class CatalogsHotelAttributes {
   /**
    * Brief description of the hotel.
    * @return description
-  */
+   */
   
   @Schema(name = "description", description = "Brief description of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -138,7 +138,7 @@ public class CatalogsHotelAttributes {
   /**
    * The brand to which this hotel belongs to.
    * @return brand
-  */
+   */
   
   @Schema(name = "brand", description = "The brand to which this hotel belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("brand")
@@ -158,7 +158,7 @@ public class CatalogsHotelAttributes {
   /**
    * Latitude of the hotel.
    * @return latitude
-  */
+   */
   @Valid 
   @Schema(name = "latitude", description = "Latitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("latitude")
@@ -178,7 +178,7 @@ public class CatalogsHotelAttributes {
   /**
    * Longitude of the hotel.
    * @return longitude
-  */
+   */
   @Valid 
   @Schema(name = "longitude", description = "Longitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("longitude")
@@ -206,7 +206,7 @@ public class CatalogsHotelAttributes {
   /**
    * A list of neighborhoods where the hotel is located
    * @return neighborhood
-  */
+   */
   
   @Schema(name = "neighborhood", description = "A list of neighborhoods where the hotel is located", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("neighborhood")
@@ -226,7 +226,7 @@ public class CatalogsHotelAttributes {
   /**
    * Get address
    * @return address
-  */
+   */
   @Valid 
   @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address")
@@ -246,7 +246,7 @@ public class CatalogsHotelAttributes {
   /**
    * Custom grouping of hotels
    * @return customLabel0
-  */
+   */
   
   @Schema(name = "custom_label_0", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_0")
@@ -266,7 +266,7 @@ public class CatalogsHotelAttributes {
   /**
    * Custom grouping of hotels
    * @return customLabel1
-  */
+   */
   
   @Schema(name = "custom_label_1", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_1")
@@ -286,7 +286,7 @@ public class CatalogsHotelAttributes {
   /**
    * Custom grouping of hotels
    * @return customLabel2
-  */
+   */
   
   @Schema(name = "custom_label_2", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_2")
@@ -306,7 +306,7 @@ public class CatalogsHotelAttributes {
   /**
    * Custom grouping of hotels
    * @return customLabel3
-  */
+   */
   
   @Schema(name = "custom_label_3", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_3")
@@ -326,7 +326,7 @@ public class CatalogsHotelAttributes {
   /**
    * Custom grouping of hotels
    * @return customLabel4
-  */
+   */
   
   @Schema(name = "custom_label_4", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_label_4")
@@ -346,7 +346,7 @@ public class CatalogsHotelAttributes {
   /**
    * The type of property. The category can be any type of internal description desired.
    * @return category
-  */
+   */
   
   @Schema(name = "category", description = "The type of property. The category can be any type of internal description desired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("category")
@@ -366,7 +366,7 @@ public class CatalogsHotelAttributes {
   /**
    * Base price of the hotel room per night followed by the ISO currency code
    * @return basePrice
-  */
+   */
   
   @Schema(name = "base_price", example = "100 USD", description = "Base price of the hotel room per night followed by the ISO currency code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("base_price")
@@ -386,7 +386,7 @@ public class CatalogsHotelAttributes {
   /**
    * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
    * @return salePrice
-  */
+   */
   
   @Schema(name = "sale_price", example = "90 USD", description = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sale_price")
@@ -406,7 +406,7 @@ public class CatalogsHotelAttributes {
   /**
    * Get guestRatings
    * @return guestRatings
-  */
+   */
   @Valid 
   @Schema(name = "guest_ratings", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("guest_ratings")
@@ -426,7 +426,7 @@ public class CatalogsHotelAttributes {
   /**
    * Get mainImage
    * @return mainImage
-  */
+   */
   @Valid 
   @Schema(name = "main_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("main_image")
@@ -454,7 +454,7 @@ public class CatalogsHotelAttributes {
   /**
    * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
    * @return additionalImageLink
-  */
+   */
   
   @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_image_link")

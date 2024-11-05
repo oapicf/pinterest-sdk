@@ -52,5 +52,6 @@ data class CatalogsUpdateHotelItem (
     enum class Operation(val value: kotlin.String) {
         @Json(name = "UPDATE") UPDATE("UPDATE");
     }
+
 }
 

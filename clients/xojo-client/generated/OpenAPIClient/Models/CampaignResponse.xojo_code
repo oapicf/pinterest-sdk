@@ -55,7 +55,7 @@ Protected Class CampaignResponse
 
 
 	#tag Property, Flags = &h0
-		tracking_urls As OpenAPIClient.Models.AdCommonTrackingUrls
+		tracking_urls As OpenAPIClient.Models.TrackingUrls
 	#tag EndProperty
 
 
@@ -76,7 +76,10 @@ Protected Class CampaignResponse
 
 
 	#tag Property, Flags = &h0
-		summary_status As Xoson.O.OptionalString
+		#tag Note
+			Determine if a campaign has flexible daily budgets setup.
+		#tag EndNote
+		is_flexible_daily_budgets As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -111,17 +114,14 @@ Protected Class CampaignResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Determines if a campaign has flexible daily budgets setup.
+			Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 		#tag EndNote
-		is_flexible_daily_budgets As Xoson.O.OptionalBoolean
+		is_campaign_budget_optimization As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
-		#tag EndNote
-		is_campaign_budget_optimization As Xoson.O.OptionalBoolean
+		summary_status As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -222,7 +222,7 @@ Protected Class CampaignResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdCommonTrackingUrls"
+			Type="TrackingUrls"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -242,11 +242,11 @@ Protected Class CampaignResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="summary_status"
+			Name="is_flexible_daily_budgets"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CampaignSummaryStatus"
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -282,7 +282,7 @@ Protected Class CampaignResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="is_flexible_daily_budgets"
+			Name="is_campaign_budget_optimization"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -290,11 +290,11 @@ Protected Class CampaignResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="is_campaign_budget_optimization"
+			Name="summary_status"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="CampaignSummaryStatus"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

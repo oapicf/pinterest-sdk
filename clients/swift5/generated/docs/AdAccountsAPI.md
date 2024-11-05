@@ -101,7 +101,7 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let startDate = Date() // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 let endDate = Date() // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-let targetingTypes = [AdsAnalyticsTargetingType()] // [AdsAnalyticsTargetingType] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+let targetingTypes = [AdsAnalyticsTargetingType()] // [AdsAnalyticsTargetingType] | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 let columns = ["columns_example"] // [String] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 let granularity = Granularity() // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 let clickWindowDays = 987 // Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to ._30)
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **startDate** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **targetingTypes** | [**[AdsAnalyticsTargetingType]**](AdsAnalyticsTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. | 
+ **targetingTypes** | [**[AdsAnalyticsTargetingType]**](AdsAnalyticsTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. | 
  **columns** | [**[String]**](String.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **clickWindowDays** | **Int** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to ._30]
@@ -269,7 +269,7 @@ Get a list of the ad_accounts that the \"operation user_account\" has access to.
 import OpenAPIClient
 
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let includeSharedAccounts = true // Bool | Include shared ad accounts (optional) (default to true)
 
 // List ad accounts
@@ -290,7 +290,7 @@ AdAccountsAPI.adAccountsList(bookmark: bookmark, pageSize: pageSize, includeShar
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **includeSharedAccounts** | **Bool** | Include shared ad accounts | [optional] [default to true]
 
 ### Return type
@@ -375,7 +375,7 @@ This returns a token that you can use to download the report when it is ready. N
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let adsAnalyticsCreateAsyncRequest = AdsAnalyticsCreateAsyncRequest(startDate: "startDate_example", endDate: "endDate_example", granularity: Granularity(), clickWindowDays: ConversionAttributionWindowDays(), engagementWindowDays: nil, viewWindowDays: nil, conversionReportTime: ConversionReportTimeType(), attributionTypes: [ConversionReportAttributionType()], campaignIds: ["campaignIds_example"], campaignStatuses: [CampaignSummaryStatus()], campaignObjectiveTypes: [ObjectiveType()], adGroupIds: ["adGroupIds_example"], adGroupStatuses: [AdGroupSummaryStatus()], adIds: ["adIds_example"], adStatuses: [PinPromotionSummaryStatus()], productGroupIds: ["productGroupIds_example"], productGroupStatuses: [ProductGroupSummaryStatus()], productItemIds: ["productItemIds_example"], targetingTypes: [AdsAnalyticsTargetingType()], metricsFilters: [AdsAnalyticsMetricsFilter(field: AdsAnalyticsFilterColumn(), _operator: AdsAnalyticsFilterOperator(), values: [123])], columns: [ReportingColumnAsync()], level: MetricsReportingLevel(), reportFormat: DataOutputFormat()) // AdsAnalyticsCreateAsyncRequest | 
+let adsAnalyticsCreateAsyncRequest = AdsAnalyticsCreateAsyncRequest(startDate: "startDate_example", endDate: "endDate_example", granularity: Granularity(), clickWindowDays: ConversionAttributionWindowDays(), engagementWindowDays: nil, viewWindowDays: nil, conversionReportTime: ConversionReportTimeType(), attributionTypes: [ConversionReportAttributionType()], campaignIds: ["campaignIds_example"], campaignStatuses: [CampaignSummaryStatus()], campaignObjectiveTypes: [ObjectiveType()], adGroupIds: ["adGroupIds_example"], adGroupStatuses: [AdGroupSummaryStatus()], adIds: ["adIds_example"], adStatuses: [PinPromotionSummaryStatus()], productGroupIds: ["productGroupIds_example"], productGroupStatuses: [ProductGroupSummaryStatus()], productItemIds: ["productItemIds_example"], targetingTypes: [AdsAnalyticsTargetingType()], metricsFilters: [AdsAnalyticsMetricsFilter(field: AdsAnalyticsFilterColumn(), _operator: AdsAnalyticsFilterOperator(), values: [123])], columns: [ReportingColumnAsync()], level: MetricsReportingLevel(), reportFormat: DataOutputFormat(), primarySort: "primarySort_example", startHour: 123, endHour: 123) // AdsAnalyticsCreateAsyncRequest | 
 
 // Create async request for an account analytics report
 AdAccountsAPI.analyticsCreateReport(adAccountId: adAccountId, adsAnalyticsCreateAsyncRequest: adsAnalyticsCreateAsyncRequest) { (response, error) in
@@ -581,7 +581,7 @@ Name | Type | Description  | Notes
 
 Delete ads data for ad account in API Sandbox
 
-Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
 
 ### Example
 ```swift
@@ -639,7 +639,7 @@ Gets all Templates associated with an ad account ID.
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let order = "order_example" // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
 
@@ -661,7 +661,7 @@ AdAccountsAPI.templatesList(adAccountId: adAccountId, pageSize: pageSize, order:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
 

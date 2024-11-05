@@ -52,5 +52,8 @@ data class BulkUpsertRequestUpdate (
     @Json(name = "keywords")
     val keywords: kotlin.collections.List<KeywordUpdate>? = null
 
-)
+) {
+
+
+}
 

@@ -1,6 +1,6 @@
 const utils = require('../utils/utils');
-const ImageMetadata_images = require('../models/ImageMetadata_images');
 const PinMedia = require('../models/PinMedia');
+const PinMediaWithImage_allOf_images = require('../models/PinMediaWithImage_allOf_images');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -11,14 +11,14 @@ module.exports = {
                 label: `[${labelPrefix}media_type]`,
                 type: 'string',
             },
-            ...ImageMetadata_images.fields(`${keyPrefix}images`, isInput),
+            ...PinMediaWithImage_allOf_images.fields(`${keyPrefix}images`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'media_type': bundle.inputData?.[`${keyPrefix}media_type`],
-            'images': utils.removeIfEmpty(ImageMetadata_images.mapping(bundle, `${keyPrefix}images`)),
+            'images': utils.removeIfEmpty(PinMediaWithImage_allOf_images.mapping(bundle, `${keyPrefix}images`)),
         }
     },
 }

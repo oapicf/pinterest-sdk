@@ -17,6 +17,7 @@ module.exports = {
                     'PRODUCT_GROUP',
                     'PRODUCT_GROUP_TARGETING',
                     'PRODUCT_ITEM',
+                    'PRODUCT_ITEM_TARGETING',
                 ],
             }
         )

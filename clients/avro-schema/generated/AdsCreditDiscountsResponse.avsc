@@ -41,8 +41,7 @@
           "REFERRAL_CREDIT",
           "INVOICE_SALES_INCENTIVE_CREDIT",
           "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED",
-          "PREPAID_CREDIT_REFUND",
-          "null"
+          "PREPAID_CREDIT_REFUND"
         ]
       }],
       "doc": "The type of discount of this credit",

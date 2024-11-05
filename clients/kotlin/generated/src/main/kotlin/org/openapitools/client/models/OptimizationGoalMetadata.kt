@@ -42,5 +42,8 @@ data class OptimizationGoalMetadata (
     @Json(name = "scrollup_goal_metadata")
     val scrollupGoalMetadata: OptimizationGoalMetadataScrollupGoalMetadata? = null
 
-)
+) {
+
+
+}
 

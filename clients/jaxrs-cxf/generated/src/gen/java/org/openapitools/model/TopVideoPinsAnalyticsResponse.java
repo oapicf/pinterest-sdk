@@ -23,11 +23,11 @@ public class TopVideoPinsAnalyticsResponse  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins;
+  private List<@Valid TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
 public enum SortByEnum {
 
-SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), VIDEO_MRC_VIEW(String.valueOf("VIDEO_MRC_VIEW")), VIDEO_AVG_WATCH_TIME(String.valueOf("VIDEO_AVG_WATCH_TIME")), VIDEO_V50_WATCH_TIME(String.valueOf("VIDEO_V50_WATCH_TIME")), QUARTILE_95_PERCENT_VIEW(String.valueOf("QUARTILE_95_PERCENT_VIEW")), VIDEO_10S_VIEW(String.valueOf("VIDEO_10S_VIEW")), VIDEO_START(String.valueOf("VIDEO_START"));
+SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND_CLICK(String.valueOf("OUTBOUND_CLICK")), VIDEO_MRC_VIEW(String.valueOf("VIDEO_MRC_VIEW")), VIDEO_AVG_WATCH_TIME(String.valueOf("VIDEO_AVG_WATCH_TIME")), VIDEO_V50_WATCH_TIME(String.valueOf("VIDEO_V50_WATCH_TIME")), QUARTILE_95_PERCENT_VIEW(String.valueOf("QUARTILE_95_PERCENT_VIEW")), VIDEO_10_S_VIEW(String.valueOf("VIDEO_10S_VIEW")), VIDEO_START(String.valueOf("VIDEO_START"));
 
 
     private String value;

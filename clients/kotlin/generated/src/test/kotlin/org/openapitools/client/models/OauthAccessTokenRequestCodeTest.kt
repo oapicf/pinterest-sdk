@@ -19,12 +19,17 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.OauthAccessTokenRequestCode
-import org.openapitools.client.models.OauthAccessTokenRequest
 
 class OauthAccessTokenRequestCodeTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of OauthAccessTokenRequestCode
         //val modelInstance = OauthAccessTokenRequestCode()
+
+        // to test the property `grantType`
+        should("test grantType") {
+            // uncomment below to test the property
+            //modelInstance.grantType shouldBe ("TODO")
+        }
 
         // to test the property `code`
         should("test code") {

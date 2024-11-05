@@ -3,11 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**Language**](Language.md) |  | 
-**Items** | [**CatalogsHotelBatchItem[]**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**CatalogId** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
+**Items** | [**CatalogsCreativeAssetsBatchItem[]**](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | 
+**CatalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 
 ## Examples
 

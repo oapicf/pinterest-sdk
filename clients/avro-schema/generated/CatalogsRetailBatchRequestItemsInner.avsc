@@ -15,9 +15,6 @@
         "type": "enum",
         "name": "CatalogsRetailBatchRequestItemsInner_operation",
         "symbols": [
-          "CREATE",
-          "UPDATE",
-          "UPSERT",
           "DELETE"
         ]
       },
@@ -25,7 +22,7 @@
     },
     {
       "name": "attributes",
-      "type": "model.ItemAttributes",
+      "type": "model.ItemAttributesRequest",
       "doc": ""
     },
     {

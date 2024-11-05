@@ -17,12 +17,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("GetMMMReportResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GetMMMReportResponse   {
-  private @Valid BigDecimal code;
-  private @Valid GetMMMReportResponseData data;
-  private @Valid String message;
-  private @Valid String status;
+  private BigDecimal code;
+  private GetMMMReportResponseData data;
+  private String message;
+  private String status;
 
   /**
    **/
@@ -34,7 +34,7 @@ public class GetMMMReportResponse   {
   
   @ApiModelProperty(example = "0", value = "")
   @JsonProperty("code")
-  public BigDecimal getCode() {
+  @Valid public BigDecimal getCode() {
     return code;
   }
 
@@ -53,7 +53,7 @@ public class GetMMMReportResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public GetMMMReportResponseData getData() {
+  @Valid public GetMMMReportResponseData getData() {
     return data;
   }
 

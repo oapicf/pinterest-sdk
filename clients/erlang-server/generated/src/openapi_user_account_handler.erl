@@ -1,709 +1,438 @@
-%% basic handler
 -module(openapi_user_account_handler).
+-moduledoc """
+Exposes the following operation IDs:
+
+- `GET` to `/user_account/following/boards`, OperationId: `boards_user_follows/list`:
+List following boards.
+Get a list of the boards a user follows. The request returns a board summary object array.
+
+- `POST` to `/user_account/following/:username`, OperationId: `follow_user/update`:
+Follow user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+
+- `GET` to `/user_account/followers`, OperationId: `followers/list`:
+List followers.
+Get a list of your followers.
+
+- `GET` to `/user_account/businesses`, OperationId: `linked_business_accounts/get`:
+List linked businesses.
+Get a list of your linked business accounts.
+
+- `DELETE` to `/user_account/websites`, OperationId: `unverify_website/delete`:
+Unverify website.
+Unverifu a website verified by the signed-in user.
+
+- `GET` to `/user_account/analytics`, OperationId: `user_account/analytics`:
+Get user account analytics.
+Get analytics for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
+
+- `GET` to `/user_account/analytics/top_pins`, OperationId: `user_account/analytics/top_pins`:
+Get user account top pins analytics.
+Gets analytics data about a user&#39;s top pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
+
+- `GET` to `/user_account/analytics/top_video_pins`, OperationId: `user_account/analytics/top_video_pins`:
+Get user account top video pins analytics.
+Gets analytics data about a user&#39;s top video pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
+
+- `GET` to `/users/:username/interests/follow`, OperationId: `user_account/followed_interests`:
+List following interests.
+Get a list of a user&#39;s following interests in one place.
+
+- `GET` to `/user_account`, OperationId: `user_account/get`:
+Get user account.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+
+- `GET` to `/user_account/following`, OperationId: `user_following/get`:
+List following.
+Get a list of who a certain user follows.
+
+- `GET` to `/user_account/websites`, OperationId: `user_websites/get`:
+Get user websites.
+Get user websites, claimed or not
+
+- `POST` to `/user_account/websites`, OperationId: `verify_website/update`:
+Verify website.
+Verify a website as a signed-in user.
+
+- `GET` to `/user_account/websites/verification`, OperationId: `website_verification/get`:
+Get user verification code for website claiming.
+Get verification code for user to install on the website to claim it.
+
+""".
+
+-behaviour(cowboy_rest).
+
+-include_lib("kernel/include/logger.hrl").
 
 %% Cowboy REST callbacks
--export([allowed_methods/2]).
 -export([init/2]).
--export([allow_missing_post/2]).
+-export([allowed_methods/2]).
 -export([content_types_accepted/2]).
 -export([content_types_provided/2]).
 -export([delete_resource/2]).
 -export([is_authorized/2]).
--export([known_content_type/2]).
--export([malformed_request/2]).
 -export([valid_content_headers/2]).
--export([valid_entity_length/2]).
+-export([handle_type_accepted/2, handle_type_provided/2]).
 
-%% Handlers
--export([handle_request_json/2]).
+-ignore_xref([handle_type_accepted/2, handle_type_provided/2]).
 
--record(state, {
-    operation_id :: openapi_api:operation_id(),
-    logic_handler :: atom(),
-    validator_state :: jesse_state:state(),
-    context=#{} :: #{}
-}).
+-export_type([class/0, operation_id/0]).
 
--type state() :: state().
+-type class() :: 'userAccount'.
 
--spec init(Req :: cowboy_req:req(), Opts :: openapi_router:init_opts()) ->
-    {cowboy_rest, Req :: cowboy_req:req(), State :: state()}.
+-type operation_id() ::
+    'boards_user_follows/list' %% List following boards
+    | 'follow_user/update' %% Follow user
+    | 'followers/list' %% List followers
+    | 'linked_business_accounts/get' %% List linked businesses
+    | 'unverify_website/delete' %% Unverify website
+    | 'user_account/analytics' %% Get user account analytics
+    | 'user_account/analytics/top_pins' %% Get user account top pins analytics
+    | 'user_account/analytics/top_video_pins' %% Get user account top video pins analytics
+    | 'user_account/followed_interests' %% List following interests
+    | 'user_account/get' %% Get user account
+    | 'user_following/get' %% List following
+    | 'user_websites/get' %% Get user websites
+    | 'verify_website/update' %% Verify website
+    | 'website_verification/get'. %% Get user verification code for website claiming
 
-init(Req, {Operations, LogicHandler, ValidatorMod}) ->
+
+-record(state,
+        {operation_id :: operation_id(),
+         accept_callback :: openapi_logic_handler:accept_callback(),
+         provide_callback :: openapi_logic_handler:provide_callback(),
+         api_key_handler :: openapi_logic_handler:api_key_callback(),
+         context = #{} :: openapi_logic_handler:context()}).
+
+-type state() :: #state{}.
+
+-spec init(cowboy_req:req(), openapi_router:init_opts()) ->
+    {cowboy_rest, cowboy_req:req(), state()}.
+init(Req, {Operations, Module}) ->
     Method = cowboy_req:method(Req),
     OperationID = maps:get(Method, Operations, undefined),
-
-    ValidatorState = ValidatorMod:get_validator_state(),
-
-    error_logger:info_msg("Attempt to process operation: ~p", [OperationID]),
-
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    },
+    ?LOG_INFO(#{what => "Attempt to process operation",
+                method => Method,
+                operation_id => OperationID}),
+    State = #state{operation_id = OperationID,
+                   accept_callback = fun Module:accept_callback/4,
+                   provide_callback = fun Module:provide_callback/4,
+                   api_key_handler = fun Module:authorize_api_key/2},
     {cowboy_rest, Req, State}.
 
--spec allowed_methods(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: [binary()], Req :: cowboy_req:req(), State :: state()}.
-
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardsUserFollowsList'
-    }
-) ->
+-spec allowed_methods(cowboy_req:req(), state()) ->
+    {[binary()], cowboy_req:req(), state()}.
+allowed_methods(Req, #state{operation_id = 'boards_user_follows/list'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'FollowUserUpdate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'follow_user/update'} = State) ->
     {[<<"POST">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'FollowersList'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'followers/list'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'LinkedBusinessAccountsGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'linked_business_accounts/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UnverifyWebsiteDelete'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'unverify_website/delete'} = State) ->
     {[<<"DELETE">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UserAccountAnalytics'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'user_account/analytics'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UserAccountAnalyticsTopPins'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'user_account/analytics/top_pins'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UserAccountAnalyticsTopVideoPins'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'user_account/analytics/top_video_pins'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UserAccountFollowedInterests'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'user_account/followed_interests'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UserAccountGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'user_account/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UserFollowingGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'user_following/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'UserWebsitesGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'user_websites/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'VerifyWebsiteUpdate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'verify_website/update'} = State) ->
     {[<<"POST">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'WebsiteVerificationGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'website_verification/get'} = State) ->
     {[<<"GET">>], Req, State};
-
 allowed_methods(Req, State) ->
     {[], Req, State}.
 
--spec is_authorized(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: true | {false, AuthHeader :: iodata()},
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsUserFollowsList' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+-spec is_authorized(cowboy_req:req(), state()) ->
+    {true | {false, iodata()}, cowboy_req:req(), state()}.
+is_authorized(Req0,
+              #state{operation_id = 'boards_user_follows/list' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'FollowUserUpdate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'follow_user/update' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'FollowersList' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'followers/list' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'LinkedBusinessAccountsGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'linked_business_accounts/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UnverifyWebsiteDelete' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'unverify_website/delete' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountAnalytics' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'user_account/analytics' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountAnalyticsTopPins' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'user_account/analytics/top_pins' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountAnalyticsTopVideoPins' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'user_account/analytics/top_video_pins' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountFollowedInterests' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'user_account/followed_interests' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'user_account/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UserFollowingGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'user_following/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'UserWebsitesGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'user_websites/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'VerifyWebsiteUpdate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'verify_website/update' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'WebsiteVerificationGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'website_verification/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
 is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
+    {true, Req, State}.
 
--spec content_types_accepted(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), AcceptResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_accepted(Req, State) ->
+-spec content_types_accepted(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_accepted(Req, #state{operation_id = 'boards_user_follows/list'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'follow_user/update'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'followers/list'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'linked_business_accounts/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'unverify_website/delete'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'user_account/analytics'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'user_account/analytics/top_pins'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'user_account/analytics/top_video_pins'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'user_account/followed_interests'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'user_account/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'user_following/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'user_websites/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'verify_website/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'website_verification/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, State) ->
+    {[], Req, State}.
 
--spec valid_content_headers(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: boolean(), Req :: cowboy_req:req(), State :: state()}.
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsUserFollowsList'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'FollowUserUpdate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'FollowersList'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'LinkedBusinessAccountsGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UnverifyWebsiteDelete'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountAnalytics'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountAnalyticsTopPins'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountAnalyticsTopVideoPins'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountFollowedInterests'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UserAccountGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UserFollowingGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'UserWebsitesGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'VerifyWebsiteUpdate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'WebsiteVerificationGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
+-spec valid_content_headers(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
+valid_content_headers(Req, #state{operation_id = 'boards_user_follows/list'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'follow_user/update'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'followers/list'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'linked_business_accounts/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'unverify_website/delete'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'user_account/analytics'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'user_account/analytics/top_pins'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'user_account/analytics/top_video_pins'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'user_account/followed_interests'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'user_account/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'user_following/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'user_websites/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'verify_website/update'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'website_verification/get'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, State) ->
     {false, Req, State}.
 
--spec content_types_provided(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), ProvideResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_provided(Req, State) ->
+-spec content_types_provided(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_provided(Req, #state{operation_id = 'boards_user_follows/list'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'follow_user/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'followers/list'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'linked_business_accounts/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'unverify_website/delete'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'user_account/analytics'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'user_account/analytics/top_pins'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'user_account/analytics/top_video_pins'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'user_account/followed_interests'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'user_account/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'user_following/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'user_websites/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'verify_website/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'website_verification/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, State) ->
+    {[], Req, State}.
 
--spec malformed_request(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-malformed_request(Req, State) ->
-    {false, Req, State}.
-
--spec allow_missing_post(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-allow_missing_post(Req, State) ->
-    {false, Req, State}.
-
--spec delete_resource(Req :: cowboy_req:req(), State :: state()) ->
-    processed_response().
-
+-spec delete_resource(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
 delete_resource(Req, State) ->
-    handle_request_json(Req, State).
+    {Res, Req1, State1} = handle_type_accepted(Req, State),
+    {true =:= Res, Req1, State1}.
 
--spec known_content_type(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
+-spec handle_type_accepted(cowboy_req:req(), state()) ->
+    { openapi_logic_handler:accept_callback_return(), cowboy_req:req(), state()}.
+handle_type_accepted(Req, #state{operation_id = OperationID,
+                                 accept_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(userAccount, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.
 
-known_content_type(Req, State) ->
-    {true, Req, State}.
-
--spec valid_entity_length(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
-
-valid_entity_length(Req, State) ->
-    %% @TODO check the length
-    {true, Req, State}.
-
-%%%%
--type result_ok() :: {
-    ok,
-    {Status :: cowboy:http_status(), Headers :: cowboy:http_headers(), Body :: iodata()}
-}.
-
--type result_error() :: {error, Reason :: any()}.
-
--type processed_response() :: {stop, cowboy_req:req(), state()}.
-
--spec process_response(result_ok() | result_error(), cowboy_req:req(), state()) ->
-    processed_response().
-
-process_response(Response, Req0, State = #state{operation_id = OperationID}) ->
-    case Response of
-        {ok, {Code, Headers, Body}} ->
-            Req = cowboy_req:reply(Code, Headers, Body, Req0),
-            {stop, Req, State};
-        {error, Message} ->
-            error_logger:error_msg("Unable to process request for ~p: ~p", [OperationID, Message]),
-
-            Req = cowboy_req:reply(400, Req0),
-            {stop, Req, State}
-    end.
-
--spec handle_request_json(cowboy_req:req(), state()) -> processed_response().
-
-handle_request_json(
-    Req0,
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    }
-) ->
-    case openapi_api:populate_request(OperationID, Req0, ValidatorState) of
-        {ok, Populated, Req1} ->
-            {Code, Headers, Body} = openapi_logic_handler:handle_request(
-                LogicHandler,
-                OperationID,
-                Req1,
-                maps:merge(State#state.context, Populated)
-            ),
-            _ = openapi_api:validate_response(
-                OperationID,
-                Code,
-                Body,
-                ValidatorState
-            ),
-            PreparedBody = prepare_body(Code, Body),
-            Response = {ok, {Code, Headers, PreparedBody}},
-            process_response(Response, Req1, State);
-        {error, Reason, Req1} ->
-            process_response({error, Reason}, Req1, State)
-    end.
-
-validate_headers(_, Req) -> {true, Req}.
-
-prepare_body(204, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(304, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(_Code, Body) ->
-    jsx:encode(Body).
+-spec handle_type_provided(cowboy_req:req(), state()) ->
+    {cowboy_req:resp_body(), cowboy_req:req(), state()}.
+handle_type_provided(Req, #state{operation_id = OperationID,
+                                 provide_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(userAccount, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.

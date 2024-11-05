@@ -10,7 +10,7 @@ import org.openapitools.model.AdAccountCreateRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionRequest;
 import org.openapitools.model.AdAccountCreateSubscriptionResponse;
 import org.openapitools.model.AdAccountGetSubscriptionResponse;
-import org.openapitools.model.AdAccountsCatalogsProductGroupsList200Response;
+import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
 import org.openapitools.model.AdArrayResponse;
@@ -27,6 +27,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
@@ -37,6 +39,7 @@ import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.Audience;
+import org.openapitools.model.AudienceAccountType;
 import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
@@ -52,6 +55,8 @@ import org.openapitools.model.BulkDownloadResponse;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
 import org.openapitools.model.BulkUpsertStatusResponse;
+import org.openapitools.model.BusinessSharedAudience;
+import org.openapitools.model.BusinessSharedAudienceResponse;
 import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.CampaignCreateResponse;
 import org.openapitools.model.CampaignResponse;
@@ -82,10 +87,16 @@ import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LeadFormArrayResponse;
+import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
 import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
+import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadsExportCreateRequest;
+import org.openapitools.model.LeadsExportCreateResponse;
+import org.openapitools.model.LeadsExportResponseData;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
@@ -103,8 +114,14 @@ import org.openapitools.model.SSIOCreateInsertionOrderResponse;
 import org.openapitools.model.SSIOEditInsertionOrderRequest;
 import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SharedAudience;
+import org.openapitools.model.SharedAudienceResponse;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
+import org.openapitools.model.TargetingTemplateCreate;
+import org.openapitools.model.TargetingTemplateGetResponseData;
+import org.openapitools.model.TargetingTemplateList200Response;
+import org.openapitools.model.TargetingTemplateUpdateRequest;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 
@@ -117,7 +134,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsApiServiceImpl implements AdAccountsApi {
       public Response adAccountAnalytics(String adAccountId,Date startDate,Date endDate,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,SecurityContext securityContext) {
       // do some magic!
@@ -127,7 +144,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adAccountsCatalogsProductGroupsList(String adAccountId,String feedProfileId,SecurityContext securityContext) {
+      public Response adAccountsAudiencesSharedAccountsList(String adAccountId,String audienceId,AudienceAccountType accountType,Integer pageSize,String bookmark,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -171,7 +188,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adGroupsCreate(String adAccountId,List<AdGroupCreateRequest> adGroupCreateRequest,SecurityContext securityContext) {
+      public Response adGroupsCreate(String adAccountId,List<@Valid AdGroupCreateRequest> adGroupCreateRequest,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -187,7 +204,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adGroupsUpdate(String adAccountId,List<AdGroupUpdateRequest> adGroupUpdateRequest,SecurityContext securityContext) {
+      public Response adGroupsUpdate(String adAccountId,List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -195,15 +212,15 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")String> adIds,Date startDate,Date endDate,List<AdsAnalyticsTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext) {
+      public Response adTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")String> adIds,Date startDate,Date endDate,List<AdsAnalyticsAdTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adsAnalytics(String adAccountId,Date startDate,Date endDate,List<@Pattern(regexp = "^\\d+$")String> adIds,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,SecurityContext securityContext) {
+      public Response adsAnalytics(String adAccountId,Date startDate,Date endDate,List<String> columns,Granularity granularity,List<@Pattern(regexp = "^\\d+$")String> adIds,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,List<@Pattern(regexp = "^\\d+$")String> pinIds,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adsCreate(String adAccountId,List<AdCreateRequest> adCreateRequest,SecurityContext securityContext) {
+      public Response adsCreate(String adAccountId,List<@Valid AdCreateRequest> adCreateRequest,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -223,7 +240,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adsUpdate(String adAccountId,List<AdUpdateRequest> adUpdateRequest,SecurityContext securityContext) {
+      public Response adsUpdate(String adAccountId,List<@Valid AdUpdateRequest> adUpdateRequest,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -291,7 +308,7 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response campaignTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,Date startDate,Date endDate,List<AdsAnalyticsTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext) {
+      public Response campaignTargetingAnalyticsGet(String adAccountId,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,Date startDate,Date endDate,List<AdsAnalyticsCampaignTargetingType> targetingTypes,List<String> columns,Granularity granularity,Integer clickWindowDays,Integer engagementWindowDays,Integer viewWindowDays,String conversionReportTime,ConversionReportAttributionType attributionTypes,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -371,7 +388,23 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
+      public Response leadFormsCreate(String adAccountId,List<@Valid LeadFormCreateRequest> leadFormCreateRequest,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
       public Response leadFormsList(String adAccountId,Integer pageSize,String order,String bookmark,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response leadFormsUpdate(String adAccountId,List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response leadsExportCreate(String adAccountId,LeadsExportCreateRequest leadsExportCreateRequest,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response leadsExportGet(String adAccountId,String leadsExportId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -439,11 +472,31 @@ public class AdAccountsApiServiceImpl implements AdAccountsApi {
       // do some magic!
       return Response.ok().build();
   }
+      public Response targetingTemplateCreate(String adAccountId,TargetingTemplateCreate targetingTemplateCreate,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response targetingTemplateList(String adAccountId,String order,Boolean includeSizing,String searchQuery,Integer pageSize,String bookmark,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response targetingTemplateUpdate(String adAccountId,TargetingTemplateUpdateRequest targetingTemplateUpdateRequest,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
       public Response templatesList(String adAccountId,Integer pageSize,String order,String bookmark,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
       public Response termsOfServiceGet(String adAccountId,Boolean includeHtml,String tosType,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response updateAdAccountToAdAccountSharedAudience(String adAccountId,SharedAudience sharedAudience,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response updateAdAccountToBusinessSharedAudience(String adAccountId,BusinessSharedAudience businessSharedAudience,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

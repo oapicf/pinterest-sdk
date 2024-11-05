@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct KeywordsCommon: Codable, JSONEncodable, Hashable {
 
-    /** Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+    /** </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     public var bid: Int?
     public var matchType: MatchTypeResponse?
     /** Keyword value (120 chars max). */

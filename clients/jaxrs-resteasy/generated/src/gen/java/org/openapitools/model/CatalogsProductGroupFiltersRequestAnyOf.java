@@ -14,9 +14,8 @@ import org.openapitools.model.CatalogsProductGroupFilterKeys;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupFiltersRequestAnyOf   {
   
   private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();

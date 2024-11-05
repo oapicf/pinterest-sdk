@@ -37,6 +37,27 @@ object PinsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
+  def multiPinsAnalytics(host: String, pinIds: List[String] = List.empty[String] , startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, adAccountId: String)(implicit pinIdsQuery: QueryParam[List[String]], startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], adAccountIdQuery: QueryParam[String]): Task[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = {
+    implicit val returnTypeDecoder: EntityDecoder[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = jsonOf[Map[String, Map[String, PinAnalyticsMetricsResponse]]]
+
+    val path = "/pins/analytics"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("pinIds", Some(pin_idsQuery.toParamString(pin_ids))), ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("appTypes", Some(app_typesQuery.toParamString(app_types))), ("metricTypes", Some(metric_typesQuery.toParamString(metric_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[Map[String, Map[String, PinAnalyticsMetricsResponse]]](req)
+
+    } yield resp
+  }
+
   def pinsAnalytics(host: String, pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, PinAnalyticsMetricsResponse]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, PinAnalyticsMetricsResponse]] = jsonOf[Map[String, PinAnalyticsMetricsResponse]]
 
@@ -188,6 +209,27 @@ class HttpServicePinsApi(service: HttpService) {
   val client = Client.fromHttpService(service)
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
+
+  def multiPinsAnalytics(pinIds: List[String] = List.empty[String] , startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, adAccountId: String)(implicit pinIdsQuery: QueryParam[List[String]], startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], adAccountIdQuery: QueryParam[String]): Task[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = {
+    implicit val returnTypeDecoder: EntityDecoder[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = jsonOf[Map[String, Map[String, PinAnalyticsMetricsResponse]]]
+
+    val path = "/pins/analytics"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("pinIds", Some(pin_idsQuery.toParamString(pin_ids))), ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("appTypes", Some(app_typesQuery.toParamString(app_types))), ("metricTypes", Some(metric_typesQuery.toParamString(metric_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[Map[String, Map[String, PinAnalyticsMetricsResponse]]](req)
+
+    } yield resp
+  }
 
   def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, PinAnalyticsMetricsResponse]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, PinAnalyticsMetricsResponse]] = jsonOf[Map[String, PinAnalyticsMetricsResponse]]

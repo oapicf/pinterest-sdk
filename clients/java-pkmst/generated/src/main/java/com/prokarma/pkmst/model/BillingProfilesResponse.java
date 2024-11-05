@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * BillingProfilesResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BillingProfilesResponse   {
   @JsonProperty("id")
   private String id;
@@ -162,10 +162,10 @@ public class BillingProfilesResponse   {
     return this;
   }
 
-   /**
+  /**
    * Billing ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "12312451231", value = "Billing ID.")
   public String getId() {
     return id;
@@ -180,10 +180,10 @@ public class BillingProfilesResponse   {
     return this;
   }
 
-   /**
+  /**
    * Type of the card.
    * @return cardType
-  **/
+   */
   @ApiModelProperty(example = "VISA", value = "Type of the card.")
   public CardTypeEnum getCardType() {
     return cardType;
@@ -198,10 +198,10 @@ public class BillingProfilesResponse   {
     return this;
   }
 
-   /**
+  /**
    * Status of the billing.
    * @return status
-  **/
+   */
   @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
   public StatusEnum getStatus() {
     return status;
@@ -216,10 +216,10 @@ public class BillingProfilesResponse   {
     return this;
   }
 
-   /**
+  /**
    * Advertiser ID of the billing.
    * @return advertiserId
-  **/
+   */
   @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
   public String getAdvertiserId() {
     return advertiserId;
@@ -234,10 +234,10 @@ public class BillingProfilesResponse   {
     return this;
   }
 
-   /**
+  /**
    * Brand of the payment method.
    * @return paymentMethodBrand
-  **/
+   */
   @ApiModelProperty(example = "VISA", value = "Brand of the payment method.")
   public PaymentMethodBrandEnum getPaymentMethodBrand() {
     return paymentMethodBrand;

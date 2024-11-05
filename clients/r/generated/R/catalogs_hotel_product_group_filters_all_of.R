@@ -15,14 +15,12 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
   "CatalogsHotelProductGroupFiltersAllOf",
   public = list(
     `all_of` = NULL,
-    #' Initialize a new CatalogsHotelProductGroupFiltersAllOf class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsHotelProductGroupFiltersAllOf class.
     #'
     #' @param all_of all_of
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`all_of`, ...) {
       if (!missing(`all_of`)) {
         stopifnot(is.vector(`all_of`), length(`all_of`) != 0)
@@ -30,13 +28,11 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
         self$`all_of` <- `all_of`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelProductGroupFiltersAllOf in JSON format
-    #' @export
     toJSON = function() {
       CatalogsHotelProductGroupFiltersAllOfObject <- list()
       if (!is.null(self$`all_of`)) {
@@ -45,14 +41,12 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
       }
       CatalogsHotelProductGroupFiltersAllOfObject
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFiltersAllOf
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFiltersAllOf
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelProductGroupFiltersAllOf
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`all_of`)) {
@@ -60,13 +54,11 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelProductGroupFiltersAllOf in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`all_of`)) {
@@ -81,26 +73,22 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFiltersAllOf
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelProductGroupFiltersAllOf
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelProductGroupFiltersAllOf
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`all_of` <- ApiClient$new()$deserializeObj(this_object$`all_of`, "array[CatalogsHotelProductGroupFilterKeys]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CatalogsHotelProductGroupFiltersAllOf
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsHotelProductGroupFiltersAllOf and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `all_of`
@@ -111,23 +99,19 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelProductGroupFiltersAllOf: the required field `all_of` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsHotelProductGroupFiltersAllOf
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `all_of` is null
       if (is.null(self$`all_of`)) {
@@ -136,13 +120,11 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `all_of` is null
@@ -152,12 +134,9 @@ CatalogsHotelProductGroupFiltersAllOf <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

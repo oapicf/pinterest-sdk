@@ -17,15 +17,13 @@ CatalogsFeedValidationDetails <- R6::R6Class(
   public = list(
     `errors` = NULL,
     `warnings` = NULL,
-    #' Initialize a new CatalogsFeedValidationDetails class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedValidationDetails class.
     #'
     #' @param errors errors
     #' @param warnings warnings
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`errors`, `warnings`, ...) {
       if (!missing(`errors`)) {
         stopifnot(R6::is.R6(`errors`))
@@ -36,13 +34,11 @@ CatalogsFeedValidationDetails <- R6::R6Class(
         self$`warnings` <- `warnings`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedValidationDetails in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedValidationDetailsObject <- list()
       if (!is.null(self$`errors`)) {
@@ -55,14 +51,12 @@ CatalogsFeedValidationDetails <- R6::R6Class(
       }
       CatalogsFeedValidationDetailsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedValidationDetails
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedValidationDetails
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedValidationDetails
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`errors`)) {
@@ -77,13 +71,11 @@ CatalogsFeedValidationDetails <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedValidationDetails in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`errors`)) {
@@ -106,27 +98,23 @@ CatalogsFeedValidationDetails <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedValidationDetails
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedValidationDetails
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedValidationDetails
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`errors` <- CatalogsFeedValidationErrors$new()$fromJSON(jsonlite::toJSON(this_object$`errors`, auto_unbox = TRUE, digits = NA))
       self$`warnings` <- CatalogsFeedValidationWarnings$new()$fromJSON(jsonlite::toJSON(this_object$`warnings`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedValidationDetails
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedValidationDetails and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `errors`
@@ -142,23 +130,19 @@ CatalogsFeedValidationDetails <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedValidationDetails: the required field `warnings` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedValidationDetails
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `errors` is null
       if (is.null(self$`errors`)) {
@@ -172,13 +156,11 @@ CatalogsFeedValidationDetails <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `errors` is null
@@ -193,12 +175,9 @@ CatalogsFeedValidationDetails <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

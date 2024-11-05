@@ -17,7 +17,7 @@ case class PinCreate (
     /* The board section to which this Pin belongs. */
     _boardSectionId: Option[String],
     _boardOwner: Option[BoardOwner],
-    _media: Option[SummaryPinMedia],
+    _media: Option[PinMedia],
     _mediaSource: Option[PinMediaSource],
     /* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
     _parentPinId: Option[String],

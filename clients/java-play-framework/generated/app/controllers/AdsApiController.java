@@ -6,8 +6,8 @@ import apimodels.AdPreviewRequest;
 import apimodels.AdPreviewURLResponse;
 import apimodels.AdResponse;
 import apimodels.AdUpdateRequest;
+import apimodels.AdsAnalyticsAdTargetingType;
 import apimodels.AdsAnalyticsResponseInner;
-import apimodels.AdsAnalyticsTargetingType;
 import apimodels.AdsList200Response;
 import apimodels.ConversionReportAttributionType;
 import apimodels.Error;
@@ -37,7 +37,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsApiController extends Controller {
     private final AdsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -98,7 +98,7 @@ public class AdsApiController extends Controller {
             throw new IllegalArgumentException("'targeting_types' parameter is required");
         }
         List<String> targetingTypesList = OpenAPIUtils.parametersToList("csv", targetingTypesArray);
-        List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
+        List<AdsAnalyticsAdTargetingType> targetingTypes = new ArrayList<>();
         for (String curParam : targetingTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -179,9 +179,6 @@ public class AdsApiController extends Controller {
             throw new IllegalArgumentException("'end_date' parameter is required");
         }
         String[] adIdsArray = request.queryString().get("ad_ids");
-        if (adIdsArray == null) {
-            throw new IllegalArgumentException("'ad_ids' parameter is required");
-        }
         List<String> adIdsList = OpenAPIUtils.parametersToList("multi", adIdsArray);
         List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
         for (String curParam : adIdsList) {
@@ -237,15 +234,33 @@ public class AdsApiController extends Controller {
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
         }
-        return imp.adsAnalyticsHttp(request, adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
+        String[] pinIdsArray = request.queryString().get("pin_ids");
+        List<String> pinIdsList = OpenAPIUtils.parametersToList("multi", pinIdsArray);
+        List<@Pattern(regexp = "^\\d+$")String> pinIds = new ArrayList<>();
+        for (String curParam : pinIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                pinIds.add(curParam);
+            }
+        }
+        String[] campaignIdsArray = request.queryString().get("campaign_ids");
+        List<String> campaignIdsList = OpenAPIUtils.parametersToList("multi", campaignIdsArray);
+        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = new ArrayList<>();
+        for (String curParam : campaignIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                campaignIds.add(curParam);
+            }
+        }
+        return imp.adsAnalyticsHttp(request, adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds);
     }
 
     @ApiAction
     public Result adsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         JsonNode nodeadCreateRequest = request.body().asJson();
-        List<AdCreateRequest> adCreateRequest;
+        List<@Valid AdCreateRequest> adCreateRequest;
         if (nodeadCreateRequest != null) {
-            adCreateRequest = mapper.readValue(nodeadCreateRequest.toString(), new TypeReference<List<AdCreateRequest>>(){});
+            adCreateRequest = mapper.readValue(nodeadCreateRequest.toString(), new TypeReference<List<@Valid AdCreateRequest>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
                 for (AdCreateRequest curItem : adCreateRequest) {
                     OpenAPIUtils.validate(curItem);
@@ -327,9 +342,9 @@ public class AdsApiController extends Controller {
     @ApiAction
     public Result adsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         JsonNode nodeadUpdateRequest = request.body().asJson();
-        List<AdUpdateRequest> adUpdateRequest;
+        List<@Valid AdUpdateRequest> adUpdateRequest;
         if (nodeadUpdateRequest != null) {
-            adUpdateRequest = mapper.readValue(nodeadUpdateRequest.toString(), new TypeReference<List<AdUpdateRequest>>(){});
+            adUpdateRequest = mapper.readValue(nodeadUpdateRequest.toString(), new TypeReference<List<@Valid AdUpdateRequest>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
                 for (AdUpdateRequest curItem : adUpdateRequest) {
                     OpenAPIUtils.validate(curItem);

@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::CatalogsProductGroupsList200Response;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**ARRAY[CatalogsProductGroupsList200ResponseAllOfItemsInner]**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**items** | [**ARRAY[CatalogsVerticalProductGroup]**](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

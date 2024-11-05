@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * UserWebsiteSummary
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserWebsiteSummary {
 
   private String website;
@@ -35,7 +35,7 @@ public class UserWebsiteSummary {
   /**
    * Website with path or domain only
    * @return website
-  */
+   */
   
   @Schema(name = "website", example = "mysite.test", description = "Website with path or domain only", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("website")
@@ -55,7 +55,7 @@ public class UserWebsiteSummary {
   /**
    * Status of the verification process
    * @return status
-  */
+   */
   
   @Schema(name = "status", example = "success", description = "Status of the verification process", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -75,7 +75,7 @@ public class UserWebsiteSummary {
   /**
    * UTC timestamp when the verification happened - sometimes missing
    * @return verifiedAt
-  */
+   */
   
   @Schema(name = "verified_at", example = "2022-12-14T21:03:01.602000", description = "UTC timestamp when the verification happened - sometimes missing", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("verified_at")

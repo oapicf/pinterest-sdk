@@ -15,7 +15,5 @@ The class is defined in **[EnhancedMatchStatusType.java](../../src/main/java/org
 
 * `VALIDATION_COMPLETE` (value: `"VALIDATION_COMPLETE"`)
 
-* `NULL` (value: `"null"`)
-
 
 

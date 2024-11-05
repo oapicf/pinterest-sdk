@@ -2,9 +2,9 @@
 # ConditionFilter
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
 
 
 

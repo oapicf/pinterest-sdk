@@ -13,6 +13,7 @@ import AnyCodable
 /** Object describing a retail item record */
 public struct CatalogsRetailItemResponse: Codable, JSONEncodable, Hashable {
 
+    static let pinsRule = ArrayRule(minItems: nil, maxItems: 11, uniqueItems: false)
     public var catalogType: CatalogsType
     /** The catalog retail item id in the merchant namespace */
     public var itemId: String?

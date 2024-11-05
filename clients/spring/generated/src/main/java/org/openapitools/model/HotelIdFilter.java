@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * HotelIdFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class HotelIdFilter {
 
   private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
@@ -43,7 +43,7 @@ public class HotelIdFilter {
   /**
    * Get HOTEL_ID
    * @return HOTEL_ID
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "HOTEL_ID", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("HOTEL_ID")

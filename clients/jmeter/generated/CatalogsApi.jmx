@@ -43,6 +43,11 @@
             <stringProp name="Argument.value">${__P(port,8080)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="testData.catalogs/createFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.catalogs/createFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.catalogs/createFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="testData.catalogs/listFile" elementType="Argument">
             <stringProp name="Argument.name">testData.catalogs/listFile</stringProp>
             <stringProp name="Argument.value">${__P(testData.catalogs/listFile,CatalogsApi.csv)}</stringProp>
@@ -58,9 +63,19 @@
             <stringProp name="Argument.value">${__P(testData.catalogsProductGroups/createFile,CatalogsApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="testData.catalogsProductGroups/createManyFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.catalogsProductGroups/createManyFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.catalogsProductGroups/createManyFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="testData.catalogsProductGroups/deleteFile" elementType="Argument">
             <stringProp name="Argument.name">testData.catalogsProductGroups/deleteFile</stringProp>
             <stringProp name="Argument.value">${__P(testData.catalogsProductGroups/deleteFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testData.catalogsProductGroups/deleteManyFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.catalogsProductGroups/deleteManyFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.catalogsProductGroups/deleteManyFile,CatalogsApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="testData.catalogsProductGroups/getFile" elementType="Argument">
@@ -103,6 +118,11 @@
             <stringProp name="Argument.value">${__P(testData.feeds/getFile,CatalogsApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="testData.feeds/ingestFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.feeds/ingestFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.feeds/ingestFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="testData.feeds/listFile" elementType="Argument">
             <stringProp name="Argument.name">testData.feeds/listFile</stringProp>
             <stringProp name="Argument.value">${__P(testData.feeds/listFile,CatalogsApi.csv)}</stringProp>
@@ -116,6 +136,11 @@
           <elementProp name="testData.items/getFile" elementType="Argument">
             <stringProp name="Argument.name">testData.items/getFile</stringProp>
             <stringProp name="Argument.value">${__P(testData.items/getFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testData.items/postFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.items/postFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.items/postFile,CatalogsApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="testData.itemsBatch/getFile" elementType="Argument">
@@ -138,6 +163,21 @@
             <stringProp name="Argument.value">${__P(testData.productsByProductGroupFilter/listFile,CatalogsApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="testData.reports/createFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.reports/createFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.reports/createFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testData.reports/getFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.reports/getFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.reports/getFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testData.reports/statsFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.reports/statsFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.reports/statsFile,CatalogsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -155,7 +195,98 @@
         <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
       </ConfigTestElement>
       <hashTree/>
-    <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - catalogs/list" enabled="true">
+    <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - catalogs/create" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="catalogs/create - ${testCase}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+              <elementProp name="catalogsCreateRequest" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${__javaScript("${catalogsCreateRequest}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Create catalog Create a new catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: this API only supports the catalog type of HOTEL for now.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogs/create" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.catalogs/createFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - catalogs/list" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -225,7 +356,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List catalogs Fetch catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">List catalogs Fetch catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogs/list" enabled="true">
@@ -304,6 +435,13 @@
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">adAccountId</stringProp>
               </elementProp>
+              <elementProp name="pinMetrics" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${pinMetrics}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">pinMetrics</stringProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
@@ -321,7 +459,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List products for a Product Group Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">List products by product group Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroupPins/list" enabled="true">
@@ -390,9 +528,9 @@
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">adAccountId</stringProp>
               </elementProp>
-              <elementProp name="catalogsProductGroupsCreateRequest" elementType="HTTPArgument">
+              <elementProp name="multipleProductGroupsInner" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${__javaScript("${catalogsProductGroupsCreateRequest}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.value">${__javaScript("${multipleProductGroupsInner}".replace(/'/g\, '"'),)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -412,13 +550,104 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Create product group Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Create product group Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/create" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${testData.catalogsProductGroups/createFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - catalogsProductGroups/createMany" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="catalogsProductGroups/createMany - ${testCase}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+              <elementProp name="multipleProductGroupsInner" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${__javaScript("${multipleProductGroupsInner}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs/product_groups/multiple</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Create product groups Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/createMany" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.catalogsProductGroups/createManyFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>
@@ -494,13 +723,102 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Delete product group Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Delete product group Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/delete" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${testData.catalogsProductGroups/deleteFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - catalogsProductGroups/deleteMany" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="catalogsProductGroups/deleteMany - ${testCase}" enabled="true">
+          
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${id}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">id</stringProp>
+              </elementProp>
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs/product_groups/multiple</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Delete product groups Delete product groups owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/deleteMany" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.catalogsProductGroups/deleteManyFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>
@@ -576,7 +894,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get product group Get a singe product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Get product group Get a singe product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/get" enabled="true">
@@ -634,6 +952,13 @@
           
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
+              <elementProp name="id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${id}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">id</stringProp>
+              </elementProp>
               <elementProp name="feedId" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">${feedId}</stringProp>
@@ -686,7 +1011,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List product groups Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">List product groups Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/list" enabled="true">
@@ -768,7 +1093,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get product counts for a Product Group Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Get product counts Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/productCountsGet" enabled="true">
@@ -859,7 +1184,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Update product group Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Update single product group Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - catalogsProductGroups/update" enabled="true">
@@ -955,7 +1280,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List processing results for a given feed Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">List feed processing results Fetch a feed processing results owned by the \&quot;operation user_account\&quot;. Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - feedProcessingResults/list" enabled="true">
@@ -1010,6 +1335,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1046,7 +1375,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Create feed Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
+          <stringProp name="TestPlan.comments">Create feed Create a new feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - feeds/create" enabled="true">
@@ -1097,6 +1426,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1128,7 +1461,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Delete feed Delete a feed owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
+          <stringProp name="TestPlan.comments">Delete feed Delete a feed owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - feeds/delete" enabled="true">
@@ -1179,6 +1512,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1210,13 +1547,95 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get feed Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
+          <stringProp name="TestPlan.comments">Get feed Get a single feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - feeds/get" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${testData.feeds/getFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - feeds/ingest" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="feeds/ingest - ${testCase}" enabled="true">
+          
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs/feeds/${feed_id}/ingest</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Ingest feed items Ingest items for a given feed owned by the \&quot;operation user_account\&quot;.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - feeds/ingest" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.feeds/ingestFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>
@@ -1256,6 +1675,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -1313,7 +1736,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List feeds Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
+          <stringProp name="TestPlan.comments">List feeds Fetch feeds owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - feeds/list" enabled="true">
@@ -1368,6 +1791,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1404,7 +1831,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Update feed Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.</stringProp>
+          <stringProp name="TestPlan.comments">Update feed Update a feed owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs&#39;&gt;Before you get started with Catalogs&lt;/a&gt;. For Hotel parterns, refer to &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Pinterest API for shopping&lt;/a&gt;.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - feeds/update" enabled="true">
@@ -1514,13 +1941,104 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get catalogs items Get the items of the catalog owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/shopping/catalog/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.</stringProp>
+          <stringProp name="TestPlan.comments">Get catalogs items Get the items of the catalog owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use &lt;a href&#x3D;&#39;/docs/api/v5/#operation/items/post&#39;&gt;Get catalogs items (POST)&lt;/a&gt; instead.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - items/get" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${testData.items/getFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - items/post" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="items/post - ${testCase}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+              <elementProp name="catalogsItemsRequest" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${__javaScript("${catalogsItemsRequest}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs/items</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Get catalogs items (POST) Get the items of the catalog owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - items/post" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.items/postFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>
@@ -1565,6 +2083,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1596,7 +2118,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get catalogs item batch status Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/shopping/catalog/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.</stringProp>
+          <stringProp name="TestPlan.comments">Get item batch status Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - itemsBatch/get" enabled="true">
@@ -1651,6 +2173,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1687,7 +2213,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Operate on item batch This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/shopping/catalog/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.</stringProp>
+          <stringProp name="TestPlan.comments">Operate on item batch This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - itemsBatch/post" enabled="true">
@@ -1797,7 +2323,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List item issues for a given processing result List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">List item issues List item validation issues for a given feed processing result owned by the \&quot;operation user_account\&quot;. Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters &#39;item_numbers&#39; and &#39;item_validation_issue&#39; cannot be used simultaneously until it is implemented in some release in the future. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/get&#39;&gt;Get catalogs report&lt;/a&gt; endpoints. Moreover, they support multiple types of catalogs.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - itemsIssues/list" enabled="true">
@@ -1880,6 +2406,13 @@
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">adAccountId</stringProp>
               </elementProp>
+              <elementProp name="pinMetrics" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${pinMetrics}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">pinMetrics</stringProp>
+              </elementProp>
               <elementProp name="catalogsListProductsByFilterRequest" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">${__javaScript("${catalogsListProductsByFilterRequest}".replace(/'/g\, '"'),)}</stringProp>
@@ -1902,13 +2435,296 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">List filtered products List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/shopping/catalog/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
+          <stringProp name="TestPlan.comments">List products by filter List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - productsByProductGroupFilter/list" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${testData.productsByProductGroupFilter/listFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - reports/create" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="reports/create - ${testCase}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+              <elementProp name="catalogsReportParameters" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${__javaScript("${catalogsReportParameters}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs/reports</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Build catalogs report Async request to create a report of the catalog owned by the \&quot;operation user_account\&quot;. This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - reports/create" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.reports/createFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - reports/get" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="reports/get - ${testCase}" enabled="true">
+          
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+              <elementProp name="token" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${token}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">token</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs/reports</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Get catalogs report This returns a URL to a report given a token returned from &lt;a href&#x3D;&#39;/docs/api/v5/#operation/reports/create&#39;&gt;Build catalogs report&lt;/a&gt;. You can use the URL to download the report. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - reports/get" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.reports/getFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - reports/stats" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="reports/stats - ${testCase}" enabled="true">
+          
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
+              <elementProp name="pageSize" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${pageSize}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">pageSize</stringProp>
+              </elementProp>
+              <elementProp name="bookmark" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${bookmark}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">bookmark</stringProp>
+              </elementProp>
+              <elementProp name="parameters" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${parameters}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">parameters</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/catalogs/reports/stats</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">List report stats List aggregated numbers of issues for a catalog owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - reports/stats" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.reports/statsFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>

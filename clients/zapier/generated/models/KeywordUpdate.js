@@ -17,7 +17,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}bid`,
-                label: `Keyword custom bid in microcurrency - null if inherited from parent ad group. - [${labelPrefix}bid]`,
+                label: `</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. - [${labelPrefix}bid]`,
                 type: 'integer',
             },
         ]

@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.AdAccountOwner
@@ -58,7 +59,7 @@ data class AdAccount(
 
     @Schema(example = "1451431341", description = "Last update time. Unix timestamp in seconds.")
     @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null
-) {
+    ) {
 
 }
 

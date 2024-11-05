@@ -15,7 +15,7 @@ import org.openapitools.model.CatalogsFeedValidationDetails;
 /**
  * CatalogsFeedProcessingResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedProcessingResult   {
   @JsonProperty("created_at")
   private Date createdAt;
@@ -47,7 +47,7 @@ public class CatalogsFeedProcessingResult   {
    * Get createdAt
    * @return createdAt
   **/
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -65,7 +65,7 @@ public class CatalogsFeedProcessingResult   {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public String getId() {
     return id;
   }
@@ -83,7 +83,7 @@ public class CatalogsFeedProcessingResult   {
    * Get updatedAt
    * @return updatedAt
   **/
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   public Date getUpdatedAt() {
     return updatedAt;
   }

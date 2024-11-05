@@ -23,7 +23,7 @@ data class KeywordsMetricsArrayResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("data") val `data`: kotlin.collections.List<KeywordMetricsResponse>? = null
-) {
+    ) {
 
 }
 

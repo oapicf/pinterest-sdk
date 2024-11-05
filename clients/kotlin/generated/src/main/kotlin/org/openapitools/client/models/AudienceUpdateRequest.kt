@@ -52,5 +52,8 @@ data class AudienceUpdateRequest (
     @Json(name = "operation_type")
     val operationType: AudienceUpdateOperationType? = AudienceUpdateOperationType.UPDATE
 
-)
+) {
+
+
+}
 

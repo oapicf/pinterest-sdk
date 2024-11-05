@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdGroupArrayResponse  {
   
   @ApiModelProperty(value = "")
-  private List<AdGroupArrayResponseElement> items;
+  private List<AdGroupArrayResponseElement> items = new ArrayList<>();
  /**
    * Get items
    * @return items

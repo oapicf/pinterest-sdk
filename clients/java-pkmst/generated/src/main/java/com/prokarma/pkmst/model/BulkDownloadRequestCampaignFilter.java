@@ -20,7 +20,7 @@ import java.util.List;
  * BulkDownloadRequestCampaignFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequestCampaignFilter   {
   @JsonProperty("start_time")
   private String startTime;
@@ -44,10 +44,10 @@ public class BulkDownloadRequestCampaignFilter   {
     return this;
   }
 
-   /**
+  /**
    * Unix UTC timestamp.
    * @return startTime
-  **/
+   */
   @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
   public String getStartTime() {
     return startTime;
@@ -62,10 +62,10 @@ public class BulkDownloadRequestCampaignFilter   {
     return this;
   }
 
-   /**
+  /**
    * Unix UTC timestamp.
    * @return endTime
-  **/
+   */
   @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
   public String getEndTime() {
     return endTime;
@@ -80,10 +80,10 @@ public class BulkDownloadRequestCampaignFilter   {
     return this;
   }
 
-   /**
+  /**
    * Campaign name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "campaign name", value = "Campaign name")
   public String getName() {
     return name;
@@ -106,10 +106,10 @@ public class BulkDownloadRequestCampaignFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get campaignStatus
    * @return campaignStatus
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<CampaignSummaryStatus> getCampaignStatus() {
     return campaignStatus;
@@ -132,10 +132,10 @@ public class BulkDownloadRequestCampaignFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get objectiveType
    * @return objectiveType
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<ObjectiveType> getObjectiveType() {
     return objectiveType;

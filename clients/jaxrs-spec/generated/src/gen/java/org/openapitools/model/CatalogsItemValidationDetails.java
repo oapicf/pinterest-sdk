@@ -16,10 +16,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsItemValidationDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationDetails   {
-  private @Valid NullableCatalogsItemFieldType attributeName;
-  private @Valid String providedValue;
+  private NullableCatalogsItemFieldType attributeName;
+  private String providedValue;
 
   /**
    **/
@@ -31,8 +31,7 @@ public class CatalogsItemValidationDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("attribute_name")
-  @NotNull
-  public NullableCatalogsItemFieldType getAttributeName() {
+  @NotNull public NullableCatalogsItemFieldType getAttributeName() {
     return attributeName;
   }
 
@@ -52,8 +51,7 @@ public class CatalogsItemValidationDetails   {
   
   @ApiModelProperty(required = true, value = "Provided value that caused the validation issue.")
   @JsonProperty("provided_value")
-  @NotNull
-  public String getProvidedValue() {
+  @NotNull public String getProvidedValue() {
     return providedValue;
   }
 

@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("AdGroupAudienceSizingRequest_keywords_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingRequestKeywordsInner {
 
   private JsonNullable<MatchTypeResponse> matchType = JsonNullable.<MatchTypeResponse>undefined();
@@ -49,7 +49,7 @@ public class AdGroupAudienceSizingRequestKeywordsInner {
   /**
    * Get matchType
    * @return matchType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "match_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("match_type")
@@ -69,7 +69,7 @@ public class AdGroupAudienceSizingRequestKeywordsInner {
   /**
    * Keyword value (120 chars max).
    * @return value
-  */
+   */
   @NotNull 
   @Schema(name = "value", description = "Keyword value (120 chars max).", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("value")

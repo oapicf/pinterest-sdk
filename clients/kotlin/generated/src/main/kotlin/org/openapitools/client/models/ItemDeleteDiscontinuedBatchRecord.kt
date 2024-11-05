@@ -32,5 +32,8 @@ data class ItemDeleteDiscontinuedBatchRecord (
     @Json(name = "item_id")
     val itemId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

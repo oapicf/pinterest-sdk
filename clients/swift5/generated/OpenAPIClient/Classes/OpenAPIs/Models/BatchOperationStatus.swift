@@ -14,4 +14,5 @@ import AnyCodable
 public enum BatchOperationStatus: String, Codable, CaseIterable {
     case processing = "PROCESSING"
     case completed = "COMPLETED"
+    case failed = "FAILED"
 }

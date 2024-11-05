@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.SummaryPinMedia;
+import org.openapitools.model.PinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,7 +20,7 @@ import java.util.Objects;
 @ApiModel(description = "Summarized pin information")
 public class SummaryPin   {
   
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   private String altText;
 
@@ -32,7 +32,7 @@ public class SummaryPin   {
 
   /**
    **/
-  public SummaryPin media(SummaryPinMedia media) {
+  public SummaryPin media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -40,10 +40,10 @@ public class SummaryPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 

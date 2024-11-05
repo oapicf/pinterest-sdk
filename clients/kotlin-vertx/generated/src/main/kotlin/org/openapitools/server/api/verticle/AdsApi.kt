@@ -6,8 +6,8 @@ import org.openapitools.server.api.model.AdPreviewRequest
 import org.openapitools.server.api.model.AdPreviewURLResponse
 import org.openapitools.server.api.model.AdResponse
 import org.openapitools.server.api.model.AdUpdateRequest
+import org.openapitools.server.api.model.AdsAnalyticsAdTargetingType
 import org.openapitools.server.api.model.AdsAnalyticsResponseInner
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType
 import org.openapitools.server.api.model.AdsList200Response
 import org.openapitools.server.api.model.ConversionReportAttributionType
 import org.openapitools.server.api.model.Error
@@ -34,10 +34,10 @@ interface AdsApi  {
     suspend fun adPreviewsCreate(adAccountId:kotlin.String?,adPreviewRequest:AdPreviewRequest?,context:OperationRequest):Response<AdPreviewURLResponse>
     /* adTargetingAnalyticsGet
      * Get targeting analytics for ads */
-    suspend fun adTargetingAnalyticsGet(adAccountId:kotlin.String?,adIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,targetingTypes:kotlin.Array<AdsAnalyticsTargetingType>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,attributionTypes:ConversionReportAttributionType?,context:OperationRequest):Response<MetricsResponse>
+    suspend fun adTargetingAnalyticsGet(adAccountId:kotlin.String?,adIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,targetingTypes:kotlin.Array<AdsAnalyticsAdTargetingType>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,attributionTypes:ConversionReportAttributionType?,context:OperationRequest):Response<MetricsResponse>
     /* adsAnalytics
      * Get ad analytics */
-    suspend fun adsAnalytics(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,adIds:kotlin.Array<kotlin.String>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,context:OperationRequest):Response<kotlin.Array<AdsAnalyticsResponseInner>>
+    suspend fun adsAnalytics(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,adIds:kotlin.Array<kotlin.String>?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,pinIds:kotlin.Array<kotlin.String>?,campaignIds:kotlin.Array<kotlin.String>?,context:OperationRequest):Response<kotlin.Array<AdsAnalyticsResponseInner>>
     /* adsCreate
      * Create ads */
     suspend fun adsCreate(adAccountId:kotlin.String?,adCreateRequest:kotlin.Array<AdCreateRequest>?,context:OperationRequest):Response<AdArrayResponse>

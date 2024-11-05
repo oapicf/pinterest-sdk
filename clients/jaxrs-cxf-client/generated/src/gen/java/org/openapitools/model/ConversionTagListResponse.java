@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConversionTagListResponse  {
   
   @ApiModelProperty(value = "")
-  private List<ConversionTagResponse> items;
+  private List<ConversionTagResponse> items = new ArrayList<>();
  /**
    * Get items
    * @return items

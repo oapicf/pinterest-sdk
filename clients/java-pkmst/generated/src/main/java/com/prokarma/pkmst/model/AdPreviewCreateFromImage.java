@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AdPreviewCreateFromImage
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdPreviewCreateFromImage   {
   @JsonProperty("image_url")
   private String imageUrl;
@@ -27,10 +27,10 @@ public class AdPreviewCreateFromImage   {
     return this;
   }
 
-   /**
+  /**
    * Image URL.
    * @return imageUrl
-  **/
+   */
   @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
   public String getImageUrl() {
     return imageUrl;
@@ -45,10 +45,10 @@ public class AdPreviewCreateFromImage   {
     return this;
   }
 
-   /**
+  /**
    * Title displayed below ad.
    * @return title
-  **/
+   */
   @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
   public String getTitle() {
     return title;

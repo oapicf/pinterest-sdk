@@ -42,5 +42,8 @@ data class ItemValidationEvent (
     @Json(name = "message")
     val message: kotlin.String? = null
 
-)
+) {
+
+
+}
 

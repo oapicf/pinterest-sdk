@@ -15,7 +15,7 @@ Method | HTTP request | Description
 > models::SearchPartnerPins200Response search_partner_pins(term, country_code, bookmark, locale, limit)
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Parameters
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Required | Notes
 > models::SearchUserBoardsGet200Response search_user_boards_slash_get(ad_account_id, bookmark, page_size, query)
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Parameters
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. |  |[default to 25]
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
 **query** | Option<**String**> | Search query. Can contain pin description keywords or comma-separated pin IDs. |  |
 
 ### Return type
@@ -67,7 +67,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Required | Notes
 > models::PinsList200Response search_user_pins_slash_list(query, ad_account_id, bookmark)
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Parameters
 

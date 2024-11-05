@@ -68,3 +68,9 @@ API.Client.CatalogsRetailFeedsCreateRequest.prototype.defaultCountry;
  */
 API.Client.CatalogsRetailFeedsCreateRequest.prototype.defaultAvailability;
 
+/**
+ * @type {!API.Client.CatalogsStatus}
+ * @export
+ */
+API.Client.CatalogsRetailFeedsCreateRequest.prototype.status;
+

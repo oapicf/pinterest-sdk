@@ -41,14 +41,12 @@ data class CatalogsDeleteRetailItem (
     /**
      * 
      *
-     * Values: CREATE,UPDATE,UPSERT,DELETE
+     * Values: DELETE
      */
     @JsonClass(generateAdapter = false)
     enum class Operation(val value: kotlin.String) {
-        @Json(name = "CREATE") CREATE("CREATE"),
-        @Json(name = "UPDATE") UPDATE("UPDATE"),
-        @Json(name = "UPSERT") UPSERT("UPSERT"),
         @Json(name = "DELETE") DELETE("DELETE");
     }
+
 }
 

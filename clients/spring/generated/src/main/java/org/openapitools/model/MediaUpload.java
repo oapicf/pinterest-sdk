@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MediaUpload", description = "Media upload that has been registered but not uploaded/processed yet.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUpload {
 
   private String mediaId;
@@ -41,7 +41,7 @@ public class MediaUpload {
   /**
    * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
    * @return mediaId
-  */
+   */
   
   @Schema(name = "media_id", description = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_id")
@@ -61,7 +61,7 @@ public class MediaUpload {
   /**
    * Get mediaType
    * @return mediaType
-  */
+   */
   @Valid 
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
@@ -81,7 +81,7 @@ public class MediaUpload {
   /**
    * The URL where you will POST your media file.
    * @return uploadUrl
-  */
+   */
   
   @Schema(name = "upload_url", example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", description = "The URL where you will POST your media file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("upload_url")
@@ -101,7 +101,7 @@ public class MediaUpload {
   /**
    * Get uploadParameters
    * @return uploadParameters
-  */
+   */
   @Valid 
   @Schema(name = "upload_parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("upload_parameters")

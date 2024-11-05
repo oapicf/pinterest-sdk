@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * Account
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Account   {
   /**
    * Type of account
@@ -90,10 +90,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * Type of account
    * @return accountType
-  **/
+   */
   @ApiModelProperty(value = "Type of account")
   public AccountTypeEnum getAccountType() {
     return accountType;
@@ -108,10 +108,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * User account ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "2783136121146311751", value = "User account ID.")
   public String getId() {
     return id;
@@ -126,10 +126,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * Get profileImage
    * @return profileImage
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getProfileImage() {
     return profileImage;
@@ -144,10 +144,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * Get websiteUrl
    * @return websiteUrl
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getWebsiteUrl() {
     return websiteUrl;
@@ -162,10 +162,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * Get username
    * @return username
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getUsername() {
     return username;
@@ -180,10 +180,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * Profile about description.
    * @return about
-  **/
+   */
   @ApiModelProperty(value = "Profile about description.")
   public String getAbout() {
     return about;
@@ -198,10 +198,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * Get businessName
    * @return businessName
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getBusinessName() {
     return businessName;
@@ -216,10 +216,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
    * @return boardCount
-  **/
+   */
   @ApiModelProperty(example = "14", readOnly = true, value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
   public Integer getBoardCount() {
     return boardCount;
@@ -234,10 +234,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * User account pin count. This includes both created and saved pins.
    * @return pinCount
-  **/
+   */
   @ApiModelProperty(example = "339", readOnly = true, value = "User account pin count. This includes both created and saved pins.")
   public Integer getPinCount() {
     return pinCount;
@@ -252,10 +252,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * User account follower count.
    * @return followerCount
-  **/
+   */
   @ApiModelProperty(example = "10", readOnly = true, value = "User account follower count.")
   public Integer getFollowerCount() {
     return followerCount;
@@ -270,10 +270,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * User account following count.
    * @return followingCount
-  **/
+   */
   @ApiModelProperty(example = "347", readOnly = true, value = "User account following count.")
   public Integer getFollowingCount() {
     return followingCount;
@@ -288,10 +288,10 @@ public class Account   {
     return this;
   }
 
-   /**
+  /**
    * User account monthly views.
    * @return monthlyViews
-  **/
+   */
   @ApiModelProperty(example = "163", readOnly = true, value = "User account monthly views.")
   public Integer getMonthlyViews() {
     return monthlyViews;

@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.AdAccountCreateSubscriptionRequestPartnerMetadata
 
 module AdAccountCreateSubscriptionRequest =
 
@@ -18,6 +19,8 @@ module AdAccountCreateSubscriptionRequest =
     PartnerAccessToken : string;
     [<JsonProperty(PropertyName = "partner_refresh_token")>]
     PartnerRefreshToken : string;
+    [<JsonProperty(PropertyName = "partner_metadata")>]
+    PartnerMetadata : AdAccountCreateSubscriptionRequestPartnerMetadata;
   }
 
   //#endregion

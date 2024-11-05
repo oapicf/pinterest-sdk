@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **catalogs_type_t \*** |  | 
+**catalog_type** | **pinterest_rest_api_catalogs_vertical_batch_request_CATALOGTYPE_e** |  | 
 **country** | **country_t \*** |  | 
-**language** | **language_t \*** |  | 
-**items** | [**list_t**](catalogs_hotel_batch_item.md) \* | Array with catalogs item operations | 
-**catalog_id** | **char \*** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**language** | [**catalogs_items_request_language_t**](catalogs_items_request_language.md) \* |  | 
+**items** | [**list_t**](catalogs_creative_assets_batch_item.md) \* | Array with creative assets item operations | 
+**catalog_id** | **char \*** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

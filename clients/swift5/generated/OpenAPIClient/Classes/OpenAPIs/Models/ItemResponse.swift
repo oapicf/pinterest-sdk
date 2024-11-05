@@ -13,23 +13,27 @@ import AnyCodable
 /** Object describing an item record */
 public struct ItemResponse: Codable, JSONEncodable, Hashable {
 
+    static let pinsRule = ArrayRule(minItems: nil, maxItems: 11, uniqueItems: false)
     public var catalogType: CatalogsType
     /** The catalog item id in the merchant namespace */
     public var itemId: String?
     /** The pins mapped to the item */
     public var pins: [Pin]?
-    public var attributes: CatalogsHotelAttributes?
+    public var attributes: CatalogsCreativeAssetsAttributes?
     /** The catalog hotel id in the merchant namespace */
     public var hotelId: String?
+    /** The catalog creative assets id in the merchant namespace */
+    public var creativeAssetsId: String?
     /** Array with the errors for the item id requested */
     public var errors: [ItemValidationEvent]?
 
-    public init(catalogType: CatalogsType, itemId: String? = nil, pins: [Pin]? = nil, attributes: CatalogsHotelAttributes? = nil, hotelId: String? = nil, errors: [ItemValidationEvent]? = nil) {
+    public init(catalogType: CatalogsType, itemId: String? = nil, pins: [Pin]? = nil, attributes: CatalogsCreativeAssetsAttributes? = nil, hotelId: String? = nil, creativeAssetsId: String? = nil, errors: [ItemValidationEvent]? = nil) {
         self.catalogType = catalogType
         self.itemId = itemId
         self.pins = pins
         self.attributes = attributes
         self.hotelId = hotelId
+        self.creativeAssetsId = creativeAssetsId
         self.errors = errors
     }
 
@@ -39,6 +43,7 @@ public struct ItemResponse: Codable, JSONEncodable, Hashable {
         case pins
         case attributes
         case hotelId = "hotel_id"
+        case creativeAssetsId = "creative_assets_id"
         case errors
     }
 
@@ -51,6 +56,7 @@ public struct ItemResponse: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(pins, forKey: .pins)
         try container.encodeIfPresent(attributes, forKey: .attributes)
         try container.encodeIfPresent(hotelId, forKey: .hotelId)
+        try container.encodeIfPresent(creativeAssetsId, forKey: .creativeAssetsId)
         try container.encodeIfPresent(errors, forKey: .errors)
     }
 }

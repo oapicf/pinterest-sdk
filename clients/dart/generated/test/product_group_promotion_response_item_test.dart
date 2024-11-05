@@ -16,7 +16,7 @@ void main() {
   // final instance = ProductGroupPromotionResponseItem();
 
   group('test ProductGroupPromotionResponseItem', () {
-    // ProductGroupPromotion data
+    // ProductGroupPromotionResponseElement data
     test('to test the property `data`', () async {
       // TODO
     });

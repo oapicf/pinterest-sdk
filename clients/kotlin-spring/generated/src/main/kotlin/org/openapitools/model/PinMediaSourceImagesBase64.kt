@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.PinMediaSourceImagesBase64ItemsInner
@@ -34,15 +35,23 @@ data class PinMediaSourceImagesBase64(
     @get:Min(0)
     @Schema(example = "null", description = "")
     @get:JsonProperty("index") val index: kotlin.Int? = null
-) {
+    ) {
 
     /**
     * 
     * Values: multiple_image_base64
     */
-    enum class SourceType(val value: kotlin.String) {
+    enum class SourceType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("multiple_image_base64") multiple_image_base64("multiple_image_base64")
+        multiple_image_base64("multiple_image_base64");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): SourceType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

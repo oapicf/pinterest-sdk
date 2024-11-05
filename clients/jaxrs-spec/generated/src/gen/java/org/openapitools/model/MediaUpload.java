@@ -19,12 +19,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Media upload that has been registered but not uploaded/processed yet.")
 @JsonTypeName("MediaUpload")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUpload   {
-  private @Valid String mediaId;
-  private @Valid MediaUploadType mediaType;
-  private @Valid String uploadUrl;
-  private @Valid MediaUploadAllOfUploadParameters uploadParameters;
+  private String mediaId;
+  private MediaUploadType mediaType;
+  private String uploadUrl;
+  private MediaUploadAllOfUploadParameters uploadParameters;
 
   /**
    * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
@@ -95,7 +95,7 @@ public class MediaUpload   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("upload_parameters")
-  public MediaUploadAllOfUploadParameters getUploadParameters() {
+  @Valid public MediaUploadAllOfUploadParameters getUploadParameters() {
     return uploadParameters;
   }
 

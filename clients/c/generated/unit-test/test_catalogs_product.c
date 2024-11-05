@@ -16,7 +16,7 @@
 #include "../model/catalogs_product.h"
 catalogs_product_t* instantiate_catalogs_product(int include_optional);
 
-#include "test_catalogs_product_metadata.c"
+#include "test_catalogs_creative_assets_product_metadata.c"
 #include "test_pin.c"
 
 
@@ -24,13 +24,15 @@ catalogs_product_t* instantiate_catalogs_product(int include_optional) {
   catalogs_product_t* catalogs_product = NULL;
   if (include_optional) {
     catalogs_product = catalogs_product_create(
+      pinterest_rest_api_catalogs_product__RETAIL,
        // false, not to have infinite recursion
-      instantiate_catalogs_product_metadata(0),
+      instantiate_catalogs_creative_assets_product_metadata(0),
        // false, not to have infinite recursion
       instantiate_pin(0)
     );
   } else {
     catalogs_product = catalogs_product_create(
+      pinterest_rest_api_catalogs_product__RETAIL,
       NULL,
       NULL
     );

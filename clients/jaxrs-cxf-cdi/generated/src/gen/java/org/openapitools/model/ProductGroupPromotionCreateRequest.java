@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,7 +21,7 @@ public class ProductGroupPromotionCreateRequest   {
   
   private String adGroupId;
 
-  private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
 
   /**
    * ID of the Ad Group the Product Group Promotion belongs to.
@@ -45,7 +45,7 @@ public class ProductGroupPromotionCreateRequest   {
 
   /**
    **/
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
@@ -54,14 +54,14 @@ public class ProductGroupPromotionCreateRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("product_group_promotion")
   @NotNull
-  public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
+  public List<@Valid ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
     return productGroupPromotion;
   }
-  public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public void setProductGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
     if (this.productGroupPromotion == null) {
       this.productGroupPromotion = new ArrayList<>();
     }

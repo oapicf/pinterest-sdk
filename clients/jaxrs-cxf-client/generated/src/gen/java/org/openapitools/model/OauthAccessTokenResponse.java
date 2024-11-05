@@ -15,7 +15,7 @@ public class OauthAccessTokenResponse  {
   
 public enum ResponseTypeEnum {
 
-AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.valueOf("refresh_token"));
+AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.valueOf("refresh_token")), CLIENT_CREDENTIALS(String.valueOf("client_credentials"));
 
 
     private String value;

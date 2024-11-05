@@ -5,7 +5,7 @@
 -export_type([openapi_product_group_promotion_response_item/0]).
 
 -type openapi_product_group_promotion_response_item() ::
-    #{ 'data' => openapi_product_group_promotion:openapi_product_group_promotion(),
+    #{ 'data' => openapi_product_group_promotion_response_element:openapi_product_group_promotion_response_element(),
        'exceptions' => list()
      }.
 

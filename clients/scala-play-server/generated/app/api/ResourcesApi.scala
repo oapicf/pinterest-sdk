@@ -8,7 +8,7 @@ import model.Error
 import model.JsObject
 import model.SingleInterestTargetingOptionResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 trait ResourcesApi {
   /**
     * Get ad accounts countries
@@ -18,7 +18,7 @@ trait ResourcesApi {
 
   /**
     * Get available metrics&#39; definitions
-    * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+    * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
     * @param reportType Report type.
     */
   def deliveryMetricsGet(reportType: Option[String]): DeliveryMetricsResponse
@@ -32,7 +32,7 @@ trait ResourcesApi {
 
   /**
     * Get lead form questions
-    * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+    * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
     */
   def leadFormQuestionsGet(): Unit
 
@@ -50,6 +50,7 @@ trait ResourcesApi {
     * @param clientId Client ID.
     * @param oauthSignature Oauth signature
     * @param timestamp Timestamp
+    * @param adAccountId Unique identifier of an ad account.
     */
-  def targetingOptionsGet(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String]): List[JsObject]
+  def targetingOptionsGet(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String], adAccountId: Option[String]): List[JsObject]
 }

@@ -22,15 +22,15 @@ import java.util.Objects;
 @ApiModel(description = "Audience demographics")
 public class AudienceDemographics   {
   
-  private List<@Valid AudienceDemographicValue> ages;
+  private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
 
-  private List<@Valid AudienceDemographicValue> genders;
+  private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
 
-  private List<@Valid AudienceDemographicValue> devices;
+  private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
 
-  private List<@Valid AudienceDemographicValue> metros;
+  private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
 
-  private List<@Valid AudienceDemographicValue> countries;
+  private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
   /**
    * Ages distribution.

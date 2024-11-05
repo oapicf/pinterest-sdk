@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "UserWebsiteVerifyRequest", description = "User website verification request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserWebsiteVerifyRequest {
 
   private String website;
@@ -72,7 +72,7 @@ public class UserWebsiteVerifyRequest {
   /**
    * Get website
    * @return website
-  */
+   */
   
   @Schema(name = "website", example = "pintest-website-12345678.test/test_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("website")
@@ -92,7 +92,7 @@ public class UserWebsiteVerifyRequest {
   /**
    * Get verificationMethod
    * @return verificationMethod
-  */
+   */
   
   @Schema(name = "verification_method", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("verification_method")

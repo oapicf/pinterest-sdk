@@ -77,8 +77,8 @@ const audiences/get = ({ adUnderscoreaccountUnderscoreid, audienceUnderscoreid }
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * bookmark String Cursor used to fetch the next page of items (optional)
 * order String The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
-* ownershipUnderscoretype String <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+* ownershipUnderscoretype String Filter audiences by ownership type. (optional)
 * returns audiences_list_200_response
 * */
 const audiences/list = ({ adUnderscoreaccountUnderscoreid, bookmark, order, pageUnderscoresize, ownershipUnderscoretype }) => new Promise(

@@ -6,7 +6,7 @@
 
 
 summary_pin_t *summary_pin_create(
-    summary_pin_media_t *media,
+    pin_media_t *media,
     char *alt_text,
     char *link,
     char *title,
@@ -32,7 +32,7 @@ void summary_pin_free(summary_pin_t *summary_pin) {
     }
     listEntry_t *listEntry;
     if (summary_pin->media) {
-        summary_pin_media_free(summary_pin->media);
+        pin_media_free(summary_pin->media);
         summary_pin->media = NULL;
     }
     if (summary_pin->alt_text) {
@@ -59,7 +59,7 @@ cJSON *summary_pin_convertToJSON(summary_pin_t *summary_pin) {
 
     // summary_pin->media
     if(summary_pin->media) {
-    cJSON *media_local_JSON = summary_pin_media_convertToJSON(summary_pin->media);
+    cJSON *media_local_JSON = pin_media_convertToJSON(summary_pin->media);
     if(media_local_JSON == NULL) {
     goto fail; //model
     }
@@ -114,12 +114,12 @@ summary_pin_t *summary_pin_parseFromJSON(cJSON *summary_pinJSON){
     summary_pin_t *summary_pin_local_var = NULL;
 
     // define the local variable for summary_pin->media
-    summary_pin_media_t *media_local_nonprim = NULL;
+    pin_media_t *media_local_nonprim = NULL;
 
     // summary_pin->media
     cJSON *media = cJSON_GetObjectItemCaseSensitive(summary_pinJSON, "media");
     if (media) { 
-    media_local_nonprim = summary_pin_media_parseFromJSON(media); //nonprimitive
+    media_local_nonprim = pin_media_parseFromJSON(media); //nonprimitive
     }
 
     // summary_pin->alt_text
@@ -170,7 +170,7 @@ summary_pin_t *summary_pin_parseFromJSON(cJSON *summary_pinJSON){
     return summary_pin_local_var;
 end:
     if (media_local_nonprim) {
-        summary_pin_media_free(media_local_nonprim);
+        pin_media_free(media_local_nonprim);
         media_local_nonprim = NULL;
     }
     return NULL;

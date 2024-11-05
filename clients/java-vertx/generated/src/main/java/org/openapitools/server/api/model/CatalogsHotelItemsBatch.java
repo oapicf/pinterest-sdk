@@ -24,7 +24,7 @@ public class CatalogsHotelItemsBatch   {
   private OffsetDateTime completedTime;
   private BatchOperationStatus status;
   private CatalogsType catalogType;
-  private List<HotelProcessingRecord> items;
+  private List<HotelProcessingRecord> items = new ArrayList<>();
 
   public CatalogsHotelItemsBatch () {
 

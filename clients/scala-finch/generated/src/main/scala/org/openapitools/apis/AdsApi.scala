@@ -9,8 +9,8 @@ import org.openapitools.models.AdPreviewRequest
 import org.openapitools.models.AdPreviewURLResponse
 import org.openapitools.models.AdResponse
 import org.openapitools.models.AdUpdateRequest
+import org.openapitools.models.AdsAnalyticsAdTargetingType
 import org.openapitools.models.AdsAnalyticsResponseInner
-import org.openapitools.models.AdsAnalyticsTargetingType
 import org.openapitools.models.AdsList200Response
 import org.openapitools.models.ConversionReportAttributionType
 import org.openapitools.models.Error
@@ -86,7 +86,7 @@ object AdsApi {
         * @return An endpoint representing a MetricsResponse
         */
         private def adTargetingAnalytics/get(da: DataAccessor): Endpoint[MetricsResponse] =
-        get("ad_accounts" :: string :: "ads" :: "targeting_analytics" :: params("ad_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("attribution_types").map(_.map(_.toConversionReportAttributionType))) { (adAccountId: String, adIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]) =>
+        get("ad_accounts" :: string :: "ads" :: "targeting_analytics" :: params("ad_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("targeting_types") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("attribution_types").map(_.map(_.toConversionReportAttributionType))) { (adAccountId: String, adIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, targetingTypes: Seq[AdsAnalyticsAdTargetingType], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]) =>
           da.Ads_adTargetingAnalytics/get(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
@@ -100,8 +100,8 @@ object AdsApi {
         * @return An endpoint representing a Seq[AdsAnalyticsResponseInner]
         */
         private def ads/analytics(da: DataAccessor): Endpoint[Seq[AdsAnalyticsResponseInner]] =
-        get("ad_accounts" :: string :: "ads" :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("ad_ids") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time")) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, adIds: Seq[String], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String]) =>
-          da.Ads_ads/analytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) match {
+        get("ad_accounts" :: string :: "ads" :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("columns") :: param("granularity").map(_.toGranularity) :: params("ad_ids") :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: params("pin_ids") :: params("campaign_ids")) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, columns: Seq[String], granularity: Granularity, adIds: Seq[String], clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], pinIds: Seq[String], campaignIds: Seq[String]) =>
+          da.Ads_ads/analytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

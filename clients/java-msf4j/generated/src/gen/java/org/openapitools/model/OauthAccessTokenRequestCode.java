@@ -6,19 +6,72 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.OauthAccessTokenRequest;
 
 /**
  * A request to exchange an authorization code for an access token.
  */
 @ApiModel(description = "A request to exchange an authorization code for an access token.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
-public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class OauthAccessTokenRequestCode   {
+  /**
+   * Gets or Sets grantType
+   */
+  public enum GrantTypeEnum {
+    AUTHORIZATION_CODE("authorization_code"),
+    
+    REFRESH_TOKEN("refresh_token"),
+    
+    CLIENT_CREDENTIALS("client_credentials");
+
+    private String value;
+
+    GrantTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static GrantTypeEnum fromValue(String text) {
+      for (GrantTypeEnum b : GrantTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("grant_type")
+  private GrantTypeEnum grantType;
+
   @JsonProperty("code")
   private String code;
 
   @JsonProperty("redirect_uri")
   private String redirectUri;
+
+  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+   /**
+   * Get grantType
+   * @return grantType
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
 
   public OauthAccessTokenRequestCode code(String code) {
     this.code = code;
@@ -66,21 +119,22 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
-        super.equals(o);
+    return Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType) &&
+        Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, redirectUri, super.hashCode());
+    return Objects.hash(grantType, code, redirectUri);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
     sb.append("}");

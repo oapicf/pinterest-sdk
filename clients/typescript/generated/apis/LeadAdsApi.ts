@@ -19,7 +19,7 @@ import { AdAccountsSubscriptionsGetList200Response } from '../models/AdAccountsS
 export class LeadAdsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Delete lead ads subscription
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
@@ -65,7 +65,7 @@ export class LeadAdsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Get lead ads subscription
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
@@ -111,10 +111,10 @@ export class LeadAdsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get the advertiser\'s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Get the advertiser\'s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Get lead ads subscriptions
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param bookmark Cursor used to fetch the next page of items
      */
     public async adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, _options?: Configuration): Promise<RequestContext> {
@@ -163,7 +163,7 @@ export class LeadAdsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Create lead ads subscription
      * @param adAccountId Unique identifier of an ad account.
      * @param adAccountCreateSubscriptionRequest Subscription to create.

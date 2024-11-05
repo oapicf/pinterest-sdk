@@ -6,4 +6,5 @@ type BatchOperationStatus string
 const (
 	PROCESSING BatchOperationStatus = "PROCESSING"
 	COMPLETED BatchOperationStatus = "COMPLETED"
+	FAILED BatchOperationStatus = "FAILED"
 )

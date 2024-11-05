@@ -15,7 +15,6 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
 
@@ -39,7 +38,6 @@ import com.squareup.moshi.JsonClass
  * @param trackingUrl Tracking template for proudct group promotions. 4000 limit
  * @param catalogProductGroupId ID of the catalogs product group that this product group promotion references
  * @param catalogProductGroupName Catalogs product group name
- * @param creativeType 
  * @param collectionsHeroPinId Hero Pin ID if this PG is promoted as a Collection
  * @param collectionsHeroDestinationUrl Collections Hero Destination Url
  * @param gridClickType 
@@ -103,9 +101,6 @@ data class ProductGroupPromotion (
     @Json(name = "catalog_product_group_name")
     val catalogProductGroupName: kotlin.String? = null,
 
-    @Json(name = "creative_type")
-    val creativeType: CreativeType? = null,
-
     /* Hero Pin ID if this PG is promoted as a Collection */
     @Json(name = "collections_hero_pin_id")
     val collectionsHeroPinId: kotlin.String? = null,
@@ -117,5 +112,8 @@ data class ProductGroupPromotion (
     @Json(name = "grid_click_type")
     val gridClickType: GridClickType? = null
 
-)
+) {
+
+
+}
 

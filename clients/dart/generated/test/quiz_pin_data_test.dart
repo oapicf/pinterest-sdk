@@ -26,6 +26,17 @@ void main() {
       // TODO
     });
 
+    // Quiz ad tie breaker type, default is RANDOM
+    // String tieBreakerType
+    test('to test the property `tieBreakerType`', () async {
+      // TODO
+    });
+
+    // QuizPinResult tieBreakerCustomResult
+    test('to test the property `tieBreakerCustomResult`', () async {
+      // TODO
+    });
+
 
   });
 

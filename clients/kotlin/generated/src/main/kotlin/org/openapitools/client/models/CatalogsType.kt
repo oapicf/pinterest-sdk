@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Type of the catalog entity.
  *
- * Values: RETAIL,HOTEL
+ * Values: RETAIL,HOTEL,CREATIVE_ASSETS
  */
 
 @JsonClass(generateAdapter = false)
@@ -32,7 +32,10 @@ enum class CatalogsType(val value: kotlin.String) {
     RETAIL("RETAIL"),
 
     @Json(name = "HOTEL")
-    HOTEL("HOTEL");
+    HOTEL("HOTEL"),
+
+    @Json(name = "CREATIVE_ASSETS")
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

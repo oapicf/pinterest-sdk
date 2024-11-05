@@ -110,5 +110,6 @@ data class IntegrationLog (
         @Json(name = "WARN") WARN("WARN"),
         @Json(name = "ERROR") ERROR("ERROR");
     }
+
 }
 

@@ -17,7 +17,7 @@ module TargetingSpec =
     APPTYPE : string[];
     [<JsonProperty(PropertyName = "AUDIENCE_EXCLUDE")>]
     AUDIENCE_EXCLUDE : string[];
-    [<JsonProperty(PropertyName = "AUDIENCE_INCLUDE&#39;")>]
+    [<JsonProperty(PropertyName = "AUDIENCE_INCLUDE")>]
     AUDIENCE_INCLUDE : string[];
     [<JsonProperty(PropertyName = "GENDER")>]
     GENDER : string[];

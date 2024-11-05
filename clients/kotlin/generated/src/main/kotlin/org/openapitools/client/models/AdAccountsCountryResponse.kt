@@ -32,5 +32,8 @@ data class AdAccountsCountryResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<AdAccountsCountryResponseData>? = null
 
-)
+) {
+
+
+}
 

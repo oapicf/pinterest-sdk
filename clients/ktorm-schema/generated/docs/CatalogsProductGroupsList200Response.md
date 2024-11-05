@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsProductGroupsList200ResponseAllOfItemsInner&gt;**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsVerticalProductGroup&gt;**](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `CatalogsProductGroupsList200ResponseCatalogsProductGroupsList200ResponseAllOfItemsInner`**
-(mapped from: CatalogsProductGroupsList200ResponseCatalogsProductGroupsList200ResponseAllOfItemsInner)
+# **Table `CatalogsProductGroupsList200ResponseCatalogsVerticalProductGroup`**
+(mapped from: CatalogsProductGroupsList200ResponseCatalogsVerticalProductGroup)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsProductGroupsList200Response | catalogsProductGroupsList200Response | long | | kotlin.Long | Primary Key | *one*
-catalogsProductGroupsList200ResponseAllOfItemsInner | catalogsProductGroupsList200ResponseAllOfItemsInner | long | | kotlin.Long | Foreign Key | *many*
+catalogsVerticalProductGroup | catalogsVerticalProductGroup | long | | kotlin.Long | Foreign Key | *many*
 
 
 

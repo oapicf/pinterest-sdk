@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  **/
 
 @ApiModel(description = "Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedProcessingSchedule   {
   @JsonProperty("time")
   private String time;
@@ -327,7 +327,7 @@ public class CatalogsFeedProcessingSchedule   {
     
     ANTARCTICA_DAVIS("Antarctica/Davis"),
     
-    ANTARCTICA_DUMONTDURVILLE("Antarctica/DumontDUrville"),
+    ANTARCTICA_DUMONT_D_URVILLE("Antarctica/DumontDUrville"),
     
     ANTARCTICA_MACQUARIE("Antarctica/Macquarie"),
     
@@ -541,13 +541,13 @@ public class CatalogsFeedProcessingSchedule   {
     
     CET("CET"),
     
-    CST6CDT("CST6CDT"),
+    CST6_CDT("CST6CDT"),
     
     EET("EET"),
     
     EST("EST"),
     
-    EST5EDT("EST5EDT"),
+    EST5_EDT("EST5EDT"),
     
     ETC_GMT("Etc/GMT"),
     
@@ -719,9 +719,9 @@ public class CatalogsFeedProcessingSchedule   {
     
     MST("MST"),
     
-    MST7MDT("MST7MDT"),
+    MST7_MDT("MST7MDT"),
     
-    PST8PDT("PST8PDT"),
+    PST8_PDT("PST8PDT"),
     
     PACIFIC_APIA("Pacific/Apia"),
     
@@ -795,9 +795,7 @@ public class CatalogsFeedProcessingSchedule   {
     
     PACIFIC_WALLIS("Pacific/Wallis"),
     
-    WET("WET"),
-    
-    NULL("null");
+    WET("WET");
 
     private String value;
 

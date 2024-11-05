@@ -1,6 +1,7 @@
 package apimodels;
 
-import apimodels.CatalogsHotelAttributes;
+import apimodels.CatalogsCreativeAssetsAttributes;
+import apimodels.CatalogsCreativeAssetsItemResponse;
 import apimodels.CatalogsHotelItemResponse;
 import apimodels.CatalogsRetailItemResponse;
 import apimodels.CatalogsType;
@@ -22,7 +23,7 @@ import javax.validation.Valid;
 /**
  * ItemResponseAnyOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemResponseAnyOf   {
   @JsonProperty("catalog_type")
@@ -44,11 +45,15 @@ public class ItemResponseAnyOf   {
   @JsonProperty("attributes")
   @Valid
 
-  private CatalogsHotelAttributes attributes;
+  private CatalogsCreativeAssetsAttributes attributes;
 
   @JsonProperty("hotel_id")
   
   private String hotelId;
+
+  @JsonProperty("creative_assets_id")
+  
+  private String creativeAssetsId;
 
   public ItemResponseAnyOf catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -109,7 +114,7 @@ public class ItemResponseAnyOf   {
     this.pins = pins;
   }
 
-  public ItemResponseAnyOf attributes(CatalogsHotelAttributes attributes) {
+  public ItemResponseAnyOf attributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -118,11 +123,11 @@ public class ItemResponseAnyOf   {
    * Get attributes
    * @return attributes
   **/
-  public CatalogsHotelAttributes getAttributes() {
+  public CatalogsCreativeAssetsAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(CatalogsHotelAttributes attributes) {
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -143,6 +148,23 @@ public class ItemResponseAnyOf   {
     this.hotelId = hotelId;
   }
 
+  public ItemResponseAnyOf creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+   /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+  **/
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -157,12 +179,13 @@ public class ItemResponseAnyOf   {
         Objects.equals(itemId, itemResponseAnyOf.itemId) &&
         Objects.equals(pins, itemResponseAnyOf.pins) &&
         Objects.equals(attributes, itemResponseAnyOf.attributes) &&
-        Objects.equals(hotelId, itemResponseAnyOf.hotelId);
+        Objects.equals(hotelId, itemResponseAnyOf.hotelId) &&
+        Objects.equals(creativeAssetsId, itemResponseAnyOf.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes, hotelId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -176,6 +199,7 @@ public class ItemResponseAnyOf   {
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

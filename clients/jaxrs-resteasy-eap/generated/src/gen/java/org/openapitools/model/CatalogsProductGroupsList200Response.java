@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.model.CatalogsVerticalProductGroup;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsList200Response   {
   
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<@Valid CatalogsVerticalProductGroup> items = new ArrayList<>();
   private String bookmark;
 
   /**
@@ -28,10 +28,10 @@ public class CatalogsProductGroupsList200Response   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
   @NotNull
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<@Valid CatalogsVerticalProductGroup> getItems() {
     return items;
   }
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 

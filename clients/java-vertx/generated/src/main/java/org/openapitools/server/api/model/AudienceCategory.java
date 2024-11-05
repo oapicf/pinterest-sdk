@@ -17,7 +17,7 @@ public class AudienceCategory   {
   private BigDecimal ratio;
   private BigDecimal index;
   private String id;
-  private List<AudienceSubcategory> subcategories;
+  private List<AudienceSubcategory> subcategories = new ArrayList<>();
 
   public AudienceCategory () {
 

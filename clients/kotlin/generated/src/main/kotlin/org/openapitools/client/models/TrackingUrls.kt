@@ -47,5 +47,8 @@ data class TrackingUrls (
     @Json(name = "audience_verification")
     val audienceVerification: kotlin.collections.List<kotlin.String>? = null
 
-)
+) {
+
+
+}
 

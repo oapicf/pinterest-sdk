@@ -4,6 +4,7 @@ import apimodels.CatalogsFeedCredentials;
 import apimodels.CatalogsFeedProcessingSchedule;
 import apimodels.CatalogsFeedsCreateRequestDefaultLocale;
 import apimodels.CatalogsFormat;
+import apimodels.CatalogsStatus;
 import apimodels.CatalogsType;
 import apimodels.NullableCurrency;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -16,7 +17,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelFeedsCreateRequest   {
   @JsonProperty("default_currency")
@@ -67,6 +68,11 @@ public class CatalogsHotelFeedsCreateRequest   {
   @Pattern(regexp="^\\d+$")
 
   private String catalogId;
+
+  @JsonProperty("status")
+  @Valid
+
+  private CatalogsStatus status;
 
   public CatalogsHotelFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
@@ -221,6 +227,23 @@ public class CatalogsHotelFeedsCreateRequest   {
     this.catalogId = catalogId;
   }
 
+  public CatalogsHotelFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -239,12 +262,13 @@ public class CatalogsHotelFeedsCreateRequest   {
         Objects.equals(location, catalogsHotelFeedsCreateRequest.location) &&
         Objects.equals(preferredProcessingSchedule, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(catalogType, catalogsHotelFeedsCreateRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsHotelFeedsCreateRequest.catalogId);
+        Objects.equals(catalogId, catalogsHotelFeedsCreateRequest.catalogId) &&
+        Objects.equals(status, catalogsHotelFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, catalogId, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -262,6 +286,7 @@ public class CatalogsHotelFeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

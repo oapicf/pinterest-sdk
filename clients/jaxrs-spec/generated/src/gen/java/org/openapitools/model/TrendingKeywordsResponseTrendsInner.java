@@ -17,13 +17,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TrendingKeywordsResponse_trends_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendingKeywordsResponseTrendsInner   {
-  private @Valid String keyword;
-  private @Valid Integer pctGrowthWow;
-  private @Valid Integer pctGrowthMom;
-  private @Valid Integer pctGrowthYoy;
-  private @Valid TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries;
+  private String keyword;
+  private Integer pctGrowthWow;
+  private Integer pctGrowthMom;
+  private Integer pctGrowthYoy;
+  private TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries;
 
   /**
    * The keyword that is trending.
@@ -36,7 +36,7 @@ public class TrendingKeywordsResponseTrendsInner   {
   
   @ApiModelProperty(example = "couples halloween costumes", value = "The keyword that is trending.")
   @JsonProperty("keyword")
- @Size(min=1)  public String getKeyword() {
+   @Size(min=1)public String getKeyword() {
     return keyword;
   }
 
@@ -115,7 +115,7 @@ public class TrendingKeywordsResponseTrendsInner   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("time_series")
-  public TrendingKeywordsResponseTrendsInnerTimeSeries getTimeSeries() {
+  @Valid public TrendingKeywordsResponseTrendsInnerTimeSeries getTimeSeries() {
     return timeSeries;
   }
 

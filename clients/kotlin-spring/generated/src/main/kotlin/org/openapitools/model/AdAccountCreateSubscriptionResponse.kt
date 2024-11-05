@@ -34,7 +34,7 @@ data class AdAccountCreateSubscriptionResponse(
 
     @Schema(example = "1699209842000", description = "Subscription creation time. Unix timestamp in milliseconds.")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null
-) {
+    ) {
 
 }
 

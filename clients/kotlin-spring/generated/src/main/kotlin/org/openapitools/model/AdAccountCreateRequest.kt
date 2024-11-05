@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.Country
@@ -34,7 +35,7 @@ data class AdAccountCreateRequest(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "383791336903426391", description = "Advertiser's owning user ID.")
     @get:JsonProperty("owner_user_id") val ownerUserId: kotlin.String? = null
-) {
+    ) {
 
 }
 

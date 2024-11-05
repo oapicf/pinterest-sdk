@@ -37,5 +37,8 @@ data class UserSummary (
     @Json(name = "type")
     val type: kotlin.String? = null
 
-)
+) {
+
+
+}
 

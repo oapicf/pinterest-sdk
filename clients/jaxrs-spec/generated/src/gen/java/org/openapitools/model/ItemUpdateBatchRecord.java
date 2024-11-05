@@ -23,10 +23,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item batch record to update items")
 @JsonTypeName("ItemUpdateBatchRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemUpdateBatchRecord   {
-  private @Valid String itemId;
-  private @Valid UpdatableItemAttributes attributes;
+  private String itemId;
+  private UpdatableItemAttributes attributes;
   private @Valid List<UpdateMaskFieldType> updateMask;
 
   /**
@@ -59,7 +59,7 @@ public class ItemUpdateBatchRecord   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("attributes")
-  public UpdatableItemAttributes getAttributes() {
+  @Valid public UpdatableItemAttributes getAttributes() {
     return attributes;
   }
 

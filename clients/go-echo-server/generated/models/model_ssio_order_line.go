@@ -12,7 +12,7 @@ type SsioOrderLine struct {
 	PinOrderId *string `json:"pin_order_id,omitempty"`
 
 	// Last modified date.
-	LastModifiedDateTime *string `json:"last_modified_date_time,omitempty"`
+	LastModifiedDateTime *string `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
 
 	// Start date of the order line.
 	StartDate *string `json:"start_date,omitempty"`
@@ -59,7 +59,7 @@ type SsioOrderLine struct {
 	AcceptedTermsId *string `json:"accepted_terms_id,omitempty"`
 
 	// The UTC timestamp (to the nearest sec) of when terms were accepted
-	AcceptedTermsTime *string `json:"accepted_terms_time,omitempty"`
+	AcceptedTermsTime *string `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
 
 	// If Budget order line, the budget amount.
 	BudgetAmount *float32 `json:"budget_amount,omitempty"`

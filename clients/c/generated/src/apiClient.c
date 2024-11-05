@@ -19,6 +19,7 @@ apiClient_t *apiClient_create() {
     apiClient->accessToken = NULL;
     apiClient->username = NULL;
     apiClient->password = NULL;
+    apiClient->accessToken = NULL;
 
     return apiClient;
 }
@@ -48,6 +49,7 @@ apiClient_t *apiClient_create_with_base_path(const char *basePath
     apiClient->accessToken = NULL;
     apiClient->username = NULL;
     apiClient->password = NULL;
+    apiClient->accessToken = NULL;
 
     return apiClient;
 }
@@ -67,6 +69,9 @@ void apiClient_free(apiClient_t *apiClient) {
     }
     if(apiClient->password) {
         free(apiClient->password);
+    }
+    if(apiClient->accessToken) {
+        free(apiClient->accessToken);
     }
     free(apiClient);
 }
@@ -430,6 +435,13 @@ void apiClient_invoke(apiClient_t    *apiClient,
             curl_easy_setopt(handle,
                              CURLOPT_USERPWD,
                              authenticationToken);
+        }
+        // this would only be generated for OAuth2 authentication
+        if(apiClient->accessToken != NULL) {
+            // curl_easy_setopt(handle, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
+            curl_easy_setopt(handle,
+                             CURLOPT_XOAUTH2_BEARER,
+                             apiClient->accessToken);
         }
 
         if(bodyParameters != NULL) {

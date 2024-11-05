@@ -25,7 +25,7 @@ public class AnalyticsMetricsResponse  {
  /**
    * Array with the requested daily metric records
   **/
-  private List<AnalyticsDailyMetrics> dailyMetrics;
+  private List<AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
  /**
    * The metric name and value over the requested period for each requested metric
    * @return summaryMetrics

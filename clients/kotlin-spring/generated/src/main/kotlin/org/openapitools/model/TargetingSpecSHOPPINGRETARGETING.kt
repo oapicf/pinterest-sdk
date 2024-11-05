@@ -29,7 +29,7 @@ data class TargetingSpecSHOPPINGRETARGETING(
 
     @Schema(example = "14", description = "Number of days ago to stop lookback timeframe for dynamic retargeting")
     @get:JsonProperty("exclusion_window") val exclusionWindow: kotlin.Int? = null
-) {
+    ) {
 
 }
 

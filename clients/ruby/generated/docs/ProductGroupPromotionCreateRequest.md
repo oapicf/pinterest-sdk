@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_group_id** | **String** | ID of the Ad Group the Product Group Promotion belongs to. |  |
-| **product_group_promotion** | [**Array&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  |  |
+| **product_group_promotion** | [**Array&lt;ProductGroupPromotionCreateRequestElement&gt;**](ProductGroupPromotionCreateRequestElement.md) |  |  |
 
 ## Example
 

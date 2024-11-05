@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsItemValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationErrors {
 
   private CatalogsItemValidationDetails ADULT_INVALID;
@@ -76,7 +76,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get ADULT_INVALID
    * @return ADULT_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "ADULT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADULT_INVALID")
@@ -96,7 +96,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get ADWORDS_FORMAT_INVALID
    * @return ADWORDS_FORMAT_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "ADWORDS_FORMAT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_INVALID")
@@ -116,7 +116,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get AVAILABILITY_INVALID
    * @return AVAILABILITY_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "AVAILABILITY_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_INVALID")
@@ -136,7 +136,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get BLOCKLISTED_IMAGE_SIGNATURE
    * @return BLOCKLISTED_IMAGE_SIGNATURE
-  */
+   */
   @Valid 
   @Schema(name = "BLOCKLISTED_IMAGE_SIGNATURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("BLOCKLISTED_IMAGE_SIGNATURE")
@@ -156,7 +156,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get DESCRIPTION_MISSING
    * @return DESCRIPTION_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "DESCRIPTION_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_MISSING")
@@ -176,7 +176,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get DUPLICATE_PRODUCTS
    * @return DUPLICATE_PRODUCTS
-  */
+   */
   @Valid 
   @Schema(name = "DUPLICATE_PRODUCTS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DUPLICATE_PRODUCTS")
@@ -196,7 +196,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get IMAGE_LINK_INVALID
    * @return IMAGE_LINK_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "IMAGE_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_INVALID")
@@ -216,7 +216,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get IMAGE_LINK_LENGTH_TOO_LONG
    * @return IMAGE_LINK_LENGTH_TOO_LONG
-  */
+   */
   @Valid 
   @Schema(name = "IMAGE_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_LENGTH_TOO_LONG")
@@ -236,7 +236,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get IMAGE_LINK_MISSING
    * @return IMAGE_LINK_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "IMAGE_LINK_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_MISSING")
@@ -256,7 +256,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get INVALID_DOMAIN
    * @return INVALID_DOMAIN
-  */
+   */
   @Valid 
   @Schema(name = "INVALID_DOMAIN", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INVALID_DOMAIN")
@@ -276,7 +276,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get ITEMID_MISSING
    * @return ITEMID_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "ITEMID_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEMID_MISSING")
@@ -296,7 +296,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
    * @return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
-  */
+   */
   @Valid 
   @Schema(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
@@ -316,7 +316,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get LINK_FORMAT_INVALID
    * @return LINK_FORMAT_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "LINK_FORMAT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_INVALID")
@@ -336,7 +336,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get LINK_LENGTH_TOO_LONG
    * @return LINK_LENGTH_TOO_LONG
-  */
+   */
   @Valid 
   @Schema(name = "LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_LENGTH_TOO_LONG")
@@ -356,7 +356,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get LIST_PRICE_INVALID
    * @return LIST_PRICE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "LIST_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LIST_PRICE_INVALID")
@@ -376,7 +376,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
    * @return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
-  */
+   */
   @Valid 
   @Schema(name = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
@@ -396,7 +396,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get PARSE_LINE_ERROR
    * @return PARSE_LINE_ERROR
-  */
+   */
   @Valid 
   @Schema(name = "PARSE_LINE_ERROR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PARSE_LINE_ERROR")
@@ -416,7 +416,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get PINJOIN_CONTENT_UNSAFE
    * @return PINJOIN_CONTENT_UNSAFE
-  */
+   */
   @Valid 
   @Schema(name = "PINJOIN_CONTENT_UNSAFE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PINJOIN_CONTENT_UNSAFE")
@@ -436,7 +436,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get PRICE_CANNOT_BE_DETERMINED
    * @return PRICE_CANNOT_BE_DETERMINED
-  */
+   */
   @Valid 
   @Schema(name = "PRICE_CANNOT_BE_DETERMINED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_CANNOT_BE_DETERMINED")
@@ -456,7 +456,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get PRICE_MISSING
    * @return PRICE_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "PRICE_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_MISSING")
@@ -476,7 +476,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get PRODUCT_LINK_MISSING
    * @return PRODUCT_LINK_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "PRODUCT_LINK_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_LINK_MISSING")
@@ -496,7 +496,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get PRODUCT_PRICE_INVALID
    * @return PRODUCT_PRICE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "PRODUCT_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_PRICE_INVALID")
@@ -516,7 +516,7 @@ public class CatalogsItemValidationErrors {
   /**
    * Get TITLE_MISSING
    * @return TITLE_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "TITLE_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_MISSING")

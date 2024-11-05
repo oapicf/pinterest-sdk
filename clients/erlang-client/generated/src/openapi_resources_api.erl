@@ -31,7 +31,7 @@ ad_account_countries/get(Ctx, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get available metrics' definitions
-%% Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+%% Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 -spec delivery_metrics/get(ctx:ctx()) -> {ok, openapi_delivery_metrics_response:openapi_delivery_metrics_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 delivery_metrics/get(Ctx) ->
     delivery_metrics/get(Ctx, #{}).
@@ -73,7 +73,7 @@ interest_targeting_options/get(Ctx, InterestId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get lead form questions
-%% Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+%% Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 -spec lead_form_questions/get(ctx:ctx()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 lead_form_questions/get(Ctx) ->
     lead_form_questions/get(Ctx, #{}).
@@ -127,7 +127,7 @@ targeting_options/get(Ctx, TargetingType, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/resources/targeting/", TargetingType, ""],
-    QS = lists:flatten([])++openapi_utils:optional_params(['client_id', 'oauth_signature', 'timestamp'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['client_id', 'oauth_signature', 'timestamp', 'ad_account_id'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

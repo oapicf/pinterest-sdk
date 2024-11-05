@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &BillingProfilesResponse{}
 // BillingProfilesResponse struct for BillingProfilesResponse
 type BillingProfilesResponse struct {
 	// Billing ID.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Type of the card.
 	CardType *string `json:"card_type,omitempty"`
 	// Status of the billing.
 	Status *string `json:"status,omitempty"`
 	// Advertiser ID of the billing.
-	AdvertiserId *string `json:"advertiser_id,omitempty"`
+	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Brand of the payment method.
 	PaymentMethodBrand *string `json:"payment_method_brand,omitempty"`
 }

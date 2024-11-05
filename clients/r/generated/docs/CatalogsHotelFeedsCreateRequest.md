@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [Enum: ] 
 **catalog_id** | **character** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] [Pattern: ^\\d+$] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 

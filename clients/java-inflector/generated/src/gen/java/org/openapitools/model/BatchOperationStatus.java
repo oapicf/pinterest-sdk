@@ -18,7 +18,9 @@ public enum BatchOperationStatus {
   
   PROCESSING("PROCESSING"),
   
-  COMPLETED("COMPLETED");
+  COMPLETED("COMPLETED"),
+  
+  FAILED("FAILED");
 
   private String value;
 

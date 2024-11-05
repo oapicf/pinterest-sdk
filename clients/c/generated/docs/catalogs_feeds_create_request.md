@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **preferred_processing_schedule** | [**catalogs_feed_processing_schedule_t**](catalogs_feed_processing_schedule.md) \* |  | [optional] 
 **default_country** | **country_t \*** |  | [optional] 
 **default_availability** | **product_availability_type_t \*** |  | [optional] 
+**status** | [**catalogs_status_t**](catalogs_status.md) \* |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

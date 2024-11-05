@@ -169,7 +169,9 @@ public class ResourcesApiVerticle extends AbstractVerticle {
                 String oauthSignature = (oauthSignatureParam == null) ? null : oauthSignatureParam;
                 String timestampParam = message.body().getString("timestamp");
                 String timestamp = (timestampParam == null) ? null : timestampParam;
-                service.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, result -> {
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId, result -> {
                     if (result.succeeded())
                         message.reply(new JsonArray(Json.encode(result.result())).encodePrettily());
                     else {

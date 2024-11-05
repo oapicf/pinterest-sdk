@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * LineItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LineItem {
 
   private String productBrand;
@@ -45,7 +45,7 @@ public class LineItem {
   /**
    * Product brand. For example, \"Parker\".
    * @return productBrand
-  */
+   */
   
   @Schema(name = "product_brand", example = "Parker", description = "Product brand. For example, \"Parker\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_brand")
@@ -65,7 +65,7 @@ public class LineItem {
   /**
    * Product category. For example, \"Shoes\".
    * @return productCategory
-  */
+   */
   
   @Schema(name = "product_category", example = "Shoes", description = "Product category. For example, \"Shoes\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_category")
@@ -85,7 +85,7 @@ public class LineItem {
   /**
    * Product ID. For example, 1414.
    * @return productId
-  */
+   */
   
   @Schema(name = "product_id", example = "1414", description = "Product ID. For example, 1414.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_id")
@@ -105,7 +105,7 @@ public class LineItem {
   /**
    * Product name. For example, \"Parker Boots\".
    * @return productName
-  */
+   */
   
   @Schema(name = "product_name", example = "Parker Boots", description = "Product name. For example, \"Parker Boots\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_name")
@@ -125,7 +125,7 @@ public class LineItem {
   /**
    * Product price. For example, \"99.99\".
    * @return productPrice
-  */
+   */
   
   @Schema(name = "product_price", example = "99.99", description = "Product price. For example, \"99.99\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_price")
@@ -145,7 +145,7 @@ public class LineItem {
   /**
    * Product quantity. For example, 2.
    * @return productQuantity
-  */
+   */
   
   @Schema(name = "product_quantity", example = "2", description = "Product quantity. For example, 2.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_quantity")
@@ -165,7 +165,7 @@ public class LineItem {
   /**
    * Product variant. For example, \"Red\".
    * @return productVariant
-  */
+   */
   
   @Schema(name = "product_variant", example = "Red", description = "Product variant. For example, \"Red\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_variant")
@@ -185,7 +185,7 @@ public class LineItem {
   /**
    * Product variant ID. For example, \"1414-34832\".
    * @return productVariantId
-  */
+   */
   
   @Schema(name = "product_variant_id", example = "1414-34832", description = "Product variant ID. For example, \"1414-34832\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_variant_id")

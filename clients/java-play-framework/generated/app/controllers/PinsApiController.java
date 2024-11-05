@@ -33,7 +33,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinsApiController extends Controller {
     private final PinsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -44,6 +44,63 @@ public class PinsApiController extends Controller {
         this.imp = imp;
         mapper = new ObjectMapper();
         this.configuration = configuration;
+    }
+
+    @ApiAction
+    public Result multiPinsAnalytics(Http.Request request) throws Exception {
+        String[] pinIdsArray = request.queryString().get("pin_ids");
+        if (pinIdsArray == null) {
+            throw new IllegalArgumentException("'pin_ids' parameter is required");
+        }
+        List<String> pinIdsList = OpenAPIUtils.parametersToList("multi", pinIdsArray);
+        List<@Pattern(regexp = "^\\d+$")String> pinIds = new ArrayList<>();
+        for (String curParam : pinIdsList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                pinIds.add(curParam);
+            }
+        }
+        String valuestartDate = request.getQueryString("start_date");
+        LocalDate startDate;
+        if (valuestartDate != null) {
+            startDate = LocalDate.parse(valuestartDate);
+        } else {
+            throw new IllegalArgumentException("'start_date' parameter is required");
+        }
+        String valueendDate = request.getQueryString("end_date");
+        LocalDate endDate;
+        if (valueendDate != null) {
+            endDate = LocalDate.parse(valueendDate);
+        } else {
+            throw new IllegalArgumentException("'end_date' parameter is required");
+        }
+        String valueappTypes = request.getQueryString("app_types");
+        String appTypes;
+        if (valueappTypes != null) {
+            appTypes = valueappTypes;
+        } else {
+            appTypes = "ALL";
+        }
+        String[] metricTypesArray = request.queryString().get("metric_types");
+        if (metricTypesArray == null) {
+            throw new IllegalArgumentException("'metric_types' parameter is required");
+        }
+        List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
+        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = new ArrayList<>();
+        for (String curParam : metricTypesList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                metricTypes.add(curParam);
+            }
+        }
+        String valueadAccountId = request.getQueryString("ad_account_id");
+        String adAccountId;
+        if (valueadAccountId != null) {
+            adAccountId = valueadAccountId;
+        } else {
+            adAccountId = null;
+        }
+        return imp.multiPinsAnalyticsHttp(request, pinIds, startDate, endDate, metricTypes, appTypes, adAccountId);
     }
 
     @ApiAction

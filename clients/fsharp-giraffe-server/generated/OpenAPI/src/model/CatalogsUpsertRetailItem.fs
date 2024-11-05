@@ -2,19 +2,19 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ItemAttributes
+open OpenAPI.Model.ItemAttributesRequest
 
 module CatalogsUpsertRetailItem =
 
   //#region CatalogsUpsertRetailItem
 
   //#region enums
-  type OperationEnum = CREATEEnum of string  |  UPDATEEnum of string  |  UPSERTEnum of string  |  DELETEEnum of string  
+  type OperationEnum = UPSERTEnum of string  
   //#endregion
 
   type CatalogsUpsertRetailItem = {
     ItemId : string;
     Operation : OperationEnum;
-    Attributes : ItemAttributes;
+    Attributes : ItemAttributesRequest;
   }
   //#endregion

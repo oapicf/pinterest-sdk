@@ -7,6 +7,7 @@ module.exports = {
                 choices: [
                     'RETAIL',
                     'HOTEL',
+                    'CREATIVE_ASSETS',
                 ],
             }
         )

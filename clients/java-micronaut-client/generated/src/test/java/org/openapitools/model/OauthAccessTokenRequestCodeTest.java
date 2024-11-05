@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import org.openapitools.model.OauthAccessTokenRequest;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -18,14 +17,6 @@ public class OauthAccessTokenRequestCodeTest {
     @Test
     public void testOauthAccessTokenRequestCode() {
         // TODO: test OauthAccessTokenRequestCode
-    }
-
-    /**
-     * Test the property 'grantType'
-     */
-    @Test
-    public void grantTypeTest() {
-        // TODO: test grantType
     }
 
     /**

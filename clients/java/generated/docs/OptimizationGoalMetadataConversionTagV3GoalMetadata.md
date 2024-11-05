@@ -11,7 +11,7 @@
 |**conversionEvent** | [**ConversionEventEnum**](#ConversionEventEnum) |  |  [optional] |
 |**conversionTagId** | **String** |  |  [optional] |
 |**cpaGoalValueInMicroCurrency** | **String** |  |  [optional] |
-|**isRoasOptimized** | **Boolean** | Ad group is ROAS optimized |  [optional] |
+|**isRoasOptimized** | **Boolean** | ROAS optimization is not supported |  [optional] |
 |**learningModeType** | [**LearningModeTypeEnum**](#LearningModeTypeEnum) | Conversion learning model type |  [optional] |
 
 
@@ -39,7 +39,6 @@
 |---- | -----|
 | NOT_ACTIVE | &quot;NOT_ACTIVE&quot; |
 | ACTIVE | &quot;ACTIVE&quot; |
-| NULL | &quot;null&quot; |
 
 
 

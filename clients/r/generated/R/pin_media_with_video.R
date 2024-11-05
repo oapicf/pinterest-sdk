@@ -8,7 +8,7 @@
 #' @description PinMediaWithVideo Class
 #' @format An \code{R6Class} generator object
 #' @field media_type  character [optional]
-#' @field images  \link{ImageMetadataImages} [optional]
+#' @field images  \link{PinMediaWithImageAllOfImages} [optional]
 #' @field cover_image_url  character [optional]
 #' @field video_url Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. character [optional]
 #' @field duration Duration (in milliseconds) numeric [optional]
@@ -28,8 +28,7 @@ PinMediaWithVideo <- R6::R6Class(
     `duration` = NULL,
     `height` = NULL,
     `width` = NULL,
-    #' Initialize a new PinMediaWithVideo class.
-    #'
+
     #' @description
     #' Initialize a new PinMediaWithVideo class.
     #'
@@ -41,7 +40,6 @@ PinMediaWithVideo <- R6::R6Class(
     #' @param height Height (in pixels)
     #' @param width Width (in pixels)
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`media_type` = NULL, `images` = NULL, `cover_image_url` = NULL, `video_url` = NULL, `duration` = NULL, `height` = NULL, `width` = NULL, ...) {
       if (!is.null(`media_type`)) {
         if (!(is.character(`media_type`) && length(`media_type`) == 1)) {
@@ -81,13 +79,11 @@ PinMediaWithVideo <- R6::R6Class(
         self$`width` <- `width`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinMediaWithVideo in JSON format
-    #' @export
     toJSON = function() {
       PinMediaWithVideoObject <- list()
       if (!is.null(self$`media_type`)) {
@@ -120,21 +116,19 @@ PinMediaWithVideo <- R6::R6Class(
       }
       PinMediaWithVideoObject
     },
-    #' Deserialize JSON string into an instance of PinMediaWithVideo
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinMediaWithVideo
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinMediaWithVideo
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`media_type`)) {
         self$`media_type` <- this_object$`media_type`
       }
       if (!is.null(this_object$`images`)) {
-        `images_object` <- ImageMetadataImages$new()
+        `images_object` <- PinMediaWithImageAllOfImages$new()
         `images_object`$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
         self$`images` <- `images_object`
       }
@@ -155,13 +149,11 @@ PinMediaWithVideo <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinMediaWithVideo in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`media_type`)) {
@@ -224,18 +216,16 @@ PinMediaWithVideo <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of PinMediaWithVideo
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinMediaWithVideo
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinMediaWithVideo
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`media_type` <- this_object$`media_type`
-      self$`images` <- ImageMetadataImages$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
+      self$`images` <- PinMediaWithImageAllOfImages$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
       self$`cover_image_url` <- this_object$`cover_image_url`
       self$`video_url` <- this_object$`video_url`
       self$`duration` <- this_object$`duration`
@@ -243,53 +233,42 @@ PinMediaWithVideo <- R6::R6Class(
       self$`width` <- this_object$`width`
       self
     },
-    #' Validate JSON input with respect to PinMediaWithVideo
-    #'
+
     #' @description
     #' Validate JSON input with respect to PinMediaWithVideo and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of PinMediaWithVideo
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

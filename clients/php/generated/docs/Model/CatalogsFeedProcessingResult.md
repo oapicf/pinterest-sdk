@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **\DateTime** |  | [optional]
-**id** | **string** |  | [optional]
-**updated_at** | **\DateTime** |  | [optional]
+**created_at** | **\DateTime** |  |
+**id** | **string** |  |
+**updated_at** | **\DateTime** |  |
 **ingestion_details** | [**\OpenAPI\Client\Model\CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  |
 **status** | [**\OpenAPI\Client\Model\CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  |
 **product_counts** | [**\OpenAPI\Client\Model\CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  |

@@ -15,5 +15,5 @@ class CatalogsRetailItemErrorResponse {
     /* The catalog item id in the merchant namespace */
     String itemId
     /* Array with the errors for the item id requested */
-    List<ItemValidationEvent> errors
+    List<ItemValidationEvent> errors = new ArrayList<>()
 }

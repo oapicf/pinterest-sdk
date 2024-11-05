@@ -9,7 +9,7 @@ import org.openapitools.models.CatalogsCreateRetailItem
 import org.openapitools.models.CatalogsDeleteRetailItem
 import org.openapitools.models.CatalogsUpdateRetailItem
 import org.openapitools.models.CatalogsUpsertRetailItem
-import org.openapitools.models.ItemAttributes
+import org.openapitools.models.ItemAttributesRequest
 import org.openapitools.models.UpdateMaskFieldType
 import scala.collection.immutable.Seq
 
@@ -22,7 +22,7 @@ import scala.collection.immutable.Seq
  */
 case class CatalogsRetailBatchRequestItemsInner(itemUnderscoreid: String,
                 operation: String,
-                attributes: ItemAttributes,
+                attributes: ItemAttributesRequest,
                 updateUnderscoremask: Option[Seq[UpdateMaskFieldType]]
                 )
 

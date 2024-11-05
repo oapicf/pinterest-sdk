@@ -14,7 +14,7 @@ import org.openapitools.model.CatalogsCreateRetailItem;
 import org.openapitools.model.CatalogsDeleteRetailItem;
 import org.openapitools.model.CatalogsUpdateRetailItem;
 import org.openapitools.model.CatalogsUpsertRetailItem;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.UpdateMaskFieldType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -41,9 +41,6 @@ public class CatalogsRetailBatchRequestItemsInner  {
 
 public enum OperationEnum {
 
-    @JsonProperty("CREATE") CREATE(String.valueOf("CREATE")),
-    @JsonProperty("UPDATE") UPDATE(String.valueOf("UPDATE")),
-    @JsonProperty("UPSERT") UPSERT(String.valueOf("UPSERT")),
     @JsonProperty("DELETE") DELETE(String.valueOf("DELETE"));
 
     private String value;
@@ -76,7 +73,7 @@ public enum OperationEnum {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
  /**
   * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
@@ -140,21 +137,21 @@ public enum OperationEnum {
   */
   @JsonProperty("attributes")
   @NotNull
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
   /**
    * Sets the <code>attributes</code> property.
    */
- public void setAttributes(ItemAttributes attributes) {
+ public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
   /**
    * Sets the <code>attributes</code> property.
    */
-  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributes attributes) {
+  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }

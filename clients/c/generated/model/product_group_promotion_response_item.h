@@ -16,18 +16,18 @@
 typedef struct product_group_promotion_response_item_t product_group_promotion_response_item_t;
 
 #include "exception.h"
-#include "product_group_promotion.h"
+#include "product_group_promotion_response_element.h"
 
 
 
 typedef struct product_group_promotion_response_item_t {
-    struct product_group_promotion_t *data; //model
+    struct product_group_promotion_response_element_t *data; //model
     list_t *exceptions; //nonprimitive container
 
 } product_group_promotion_response_item_t;
 
 product_group_promotion_response_item_t *product_group_promotion_response_item_create(
-    product_group_promotion_t *data,
+    product_group_promotion_response_element_t *data,
     list_t *exceptions
 );
 

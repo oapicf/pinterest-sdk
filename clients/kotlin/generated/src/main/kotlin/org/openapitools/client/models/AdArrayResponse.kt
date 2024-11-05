@@ -32,5 +32,8 @@ data class AdArrayResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<AdArrayResponseElement>? = null
 
-)
+) {
+
+
+}
 

@@ -88,5 +88,29 @@ private class OASAdGroupCommonTest {
         System.assertEquals('campaignId', x-property-mappings.get('campaign_id'));
         System.assertEquals('billableEvent', x-property-mappings.get('billable_event'));
         System.assertEquals('bidStrategyType', x-property-mappings.get('bid_strategy_type'));
+        System.assertEquals('targetingTemplateIds', x-property-mappings.get('targeting_template_ids'));
+    }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASAdGroupCommon adGroupCommon = new OASAdGroupCommon();
+        System.assertEquals(new List<String>(), adGroupCommon.targetingTemplateIds);
+        System.assertEquals(null, adGroupCommon.name);
+        System.assertEquals(null, adGroupCommon.status);
+        System.assertEquals(null, adGroupCommon.budgetInMicroCurrency);
+        System.assertEquals(null, adGroupCommon.bidInMicroCurrency);
+        System.assertEquals(null, adGroupCommon.optimizationGoalMetadata);
+        System.assertEquals(null, adGroupCommon.budgetType);
+        System.assertEquals(null, adGroupCommon.startTime);
+        System.assertEquals(null, adGroupCommon.endTime);
+        System.assertEquals(null, adGroupCommon.targetingSpec);
+        System.assertEquals(null, adGroupCommon.lifetimeFrequencyCap);
+        System.assertEquals(null, adGroupCommon.trackingUrls);
+        System.assertEquals(null, adGroupCommon.autoTargetingEnabled);
+        System.assertEquals(null, adGroupCommon.placementGroup);
+        System.assertEquals(null, adGroupCommon.pacingDeliveryType);
+        System.assertEquals(null, adGroupCommon.campaignId);
+        System.assertEquals(null, adGroupCommon.billableEvent);
+        System.assertEquals(null, adGroupCommon.bidStrategyType);
     }
 }

@@ -15,7 +15,10 @@
        'status' => openapi_catalogs_product_group_status:openapi_catalogs_product_group_status(),
        'created_at' => integer(),
        'updated_at' => integer(),
-       'feed_id' := binary()
+       'catalog_id' := binary(),
+       'feed_id' := binary(),
+       'country' => binary(),
+       'locale' => binary()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,
@@ -28,7 +31,10 @@ encode(#{ 'catalog_type' := CatalogType,
           'status' := Status,
           'created_at' := CreatedAt,
           'updated_at' := UpdatedAt,
-          'feed_id' := FeedId
+          'catalog_id' := CatalogId,
+          'feed_id' := FeedId,
+          'country' := Country,
+          'locale' := Locale
         }) ->
     #{ 'catalog_type' => CatalogType,
        'id' => Id,
@@ -40,5 +46,8 @@ encode(#{ 'catalog_type' := CatalogType,
        'status' => Status,
        'created_at' => CreatedAt,
        'updated_at' => UpdatedAt,
-       'feed_id' => FeedId
+       'catalog_id' => CatalogId,
+       'feed_id' => FeedId,
+       'country' => Country,
+       'locale' => Locale
      }.

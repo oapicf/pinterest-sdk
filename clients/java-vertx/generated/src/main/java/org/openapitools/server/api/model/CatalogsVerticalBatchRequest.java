@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.server.api.model.CatalogsHotelBatchItem;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsBatchItem;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsBatchRequest;
 import org.openapitools.server.api.model.CatalogsHotelBatchRequest;
+import org.openapitools.server.api.model.CatalogsItemsRequestLanguage;
 import org.openapitools.server.api.model.CatalogsRetailBatchRequest;
-import org.openapitools.server.api.model.CatalogsType;
 import org.openapitools.server.api.model.Country;
-import org.openapitools.server.api.model.Language;
 
 /**
  * A request object that can have multiple operations on a single batch
@@ -20,17 +20,35 @@ import org.openapitools.server.api.model.Language;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsVerticalBatchRequest   {
   
-  private CatalogsType catalogType;
+
+
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private Country country;
-  private Language language;
-  private List<CatalogsHotelBatchItem> items = new ArrayList<>();
+  private CatalogsItemsRequestLanguage language;
+  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
   private String catalogId;
 
   public CatalogsVerticalBatchRequest () {
 
   }
 
-  public CatalogsVerticalBatchRequest (CatalogsType catalogType, Country country, Language language, List<CatalogsHotelBatchItem> items, String catalogId) {
+  public CatalogsVerticalBatchRequest (CatalogTypeEnum catalogType, Country country, CatalogsItemsRequestLanguage language, List<CatalogsCreativeAssetsBatchItem> items, String catalogId) {
     this.catalogType = catalogType;
     this.country = country;
     this.language = language;
@@ -40,10 +58,10 @@ public class CatalogsVerticalBatchRequest   {
 
     
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -58,19 +76,19 @@ public class CatalogsVerticalBatchRequest   {
 
     
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
     
   @JsonProperty("items")
-  public List<CatalogsHotelBatchItem> getItems() {
+  public List<CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
   }
-  public void setItems(List<CatalogsHotelBatchItem> items) {
+  public void setItems(List<CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
   }
 

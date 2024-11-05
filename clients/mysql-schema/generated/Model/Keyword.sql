@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `Keyword`
 --
-SELECT `archived`, `id`, `parent_id`, `parent_type`, `type`, `bid`, `match_type`, `value` FROM `Keyword` WHERE 1;
+SELECT `bid`, `match_type`, `value`, `archived`, `id`, `parent_id`, `parent_type`, `type` FROM `Keyword` WHERE 1;
 
 --
 -- INSERT template for table `Keyword`
 --
-INSERT INTO `Keyword`(`archived`, `id`, `parent_id`, `parent_type`, `type`, `bid`, `match_type`, `value`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `Keyword`(`bid`, `match_type`, `value`, `archived`, `id`, `parent_id`, `parent_type`, `type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `Keyword`
 --
-UPDATE `Keyword` SET `archived` = ?, `id` = ?, `parent_id` = ?, `parent_type` = ?, `type` = ?, `bid` = ?, `match_type` = ?, `value` = ? WHERE 1;
+UPDATE `Keyword` SET `bid` = ?, `match_type` = ?, `value` = ?, `archived` = ?, `id` = ?, `parent_id` = ?, `parent_type` = ?, `type` = ? WHERE 1;
 
 --
 -- DELETE template for table `Keyword`

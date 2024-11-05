@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsItemValidationErrors
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationErrors   {
   @JsonProperty("ADULT_INVALID")
   private CatalogsItemValidationDetails ADULT_INVALID;
@@ -91,10 +91,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get ADULT_INVALID
    * @return ADULT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getADULTINVALID() {
     return ADULT_INVALID;
@@ -109,10 +109,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get ADWORDS_FORMAT_INVALID
    * @return ADWORDS_FORMAT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getADWORDSFORMATINVALID() {
     return ADWORDS_FORMAT_INVALID;
@@ -127,10 +127,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get AVAILABILITY_INVALID
    * @return AVAILABILITY_INVALID
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getAVAILABILITYINVALID() {
     return AVAILABILITY_INVALID;
@@ -145,10 +145,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get BLOCKLISTED_IMAGE_SIGNATURE
    * @return BLOCKLISTED_IMAGE_SIGNATURE
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getBLOCKLISTEDIMAGESIGNATURE() {
     return BLOCKLISTED_IMAGE_SIGNATURE;
@@ -163,10 +163,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get DESCRIPTION_MISSING
    * @return DESCRIPTION_MISSING
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getDESCRIPTIONMISSING() {
     return DESCRIPTION_MISSING;
@@ -181,10 +181,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get DUPLICATE_PRODUCTS
    * @return DUPLICATE_PRODUCTS
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getDUPLICATEPRODUCTS() {
     return DUPLICATE_PRODUCTS;
@@ -199,10 +199,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get IMAGE_LINK_INVALID
    * @return IMAGE_LINK_INVALID
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getIMAGELINKINVALID() {
     return IMAGE_LINK_INVALID;
@@ -217,10 +217,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get IMAGE_LINK_LENGTH_TOO_LONG
    * @return IMAGE_LINK_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getIMAGELINKLENGTHTOOLONG() {
     return IMAGE_LINK_LENGTH_TOO_LONG;
@@ -235,10 +235,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get IMAGE_LINK_MISSING
    * @return IMAGE_LINK_MISSING
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getIMAGELINKMISSING() {
     return IMAGE_LINK_MISSING;
@@ -253,10 +253,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get INVALID_DOMAIN
    * @return INVALID_DOMAIN
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getINVALIDDOMAIN() {
     return INVALID_DOMAIN;
@@ -271,10 +271,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get ITEMID_MISSING
    * @return ITEMID_MISSING
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getITEMIDMISSING() {
     return ITEMID_MISSING;
@@ -289,10 +289,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
    * @return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE() {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
@@ -307,10 +307,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get LINK_FORMAT_INVALID
    * @return LINK_FORMAT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getLINKFORMATINVALID() {
     return LINK_FORMAT_INVALID;
@@ -325,10 +325,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get LINK_LENGTH_TOO_LONG
    * @return LINK_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getLINKLENGTHTOOLONG() {
     return LINK_LENGTH_TOO_LONG;
@@ -343,10 +343,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get LIST_PRICE_INVALID
    * @return LIST_PRICE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getLISTPRICEINVALID() {
     return LIST_PRICE_INVALID;
@@ -361,10 +361,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
    * @return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED() {
     return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
@@ -379,10 +379,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get PARSE_LINE_ERROR
    * @return PARSE_LINE_ERROR
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getPARSELINEERROR() {
     return PARSE_LINE_ERROR;
@@ -397,10 +397,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get PINJOIN_CONTENT_UNSAFE
    * @return PINJOIN_CONTENT_UNSAFE
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getPINJOINCONTENTUNSAFE() {
     return PINJOIN_CONTENT_UNSAFE;
@@ -415,10 +415,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get PRICE_CANNOT_BE_DETERMINED
    * @return PRICE_CANNOT_BE_DETERMINED
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED() {
     return PRICE_CANNOT_BE_DETERMINED;
@@ -433,10 +433,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get PRICE_MISSING
    * @return PRICE_MISSING
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getPRICEMISSING() {
     return PRICE_MISSING;
@@ -451,10 +451,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_LINK_MISSING
    * @return PRODUCT_LINK_MISSING
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getPRODUCTLINKMISSING() {
     return PRODUCT_LINK_MISSING;
@@ -469,10 +469,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get PRODUCT_PRICE_INVALID
    * @return PRODUCT_PRICE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getPRODUCTPRICEINVALID() {
     return PRODUCT_PRICE_INVALID;
@@ -487,10 +487,10 @@ public class CatalogsItemValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Get TITLE_MISSING
    * @return TITLE_MISSING
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsItemValidationDetails getTITLEMISSING() {
     return TITLE_MISSING;

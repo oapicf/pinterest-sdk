@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdArrayResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdArrayResponse   {
-  private @Valid List<@Valid AdArrayResponseElement> items;
+  private @Valid List<@Valid AdArrayResponseElement> items = new ArrayList<>();
 
   /**
    **/
@@ -33,7 +33,7 @@ public class AdArrayResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<AdArrayResponseElement> getItems() {
+  @Valid public List<@Valid AdArrayResponseElement> getItems() {
     return items;
   }
 

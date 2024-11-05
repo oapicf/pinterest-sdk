@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.LeadFormQuestionFieldType
@@ -39,7 +40,7 @@ data class LeadFormQuestion(
     @get:Size(min=0,max=5) 
     @Schema(example = "null", description = "Question options for a custom question.")
     @get:JsonProperty("custom_question_options") val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null
-) {
+    ) {
 
 }
 

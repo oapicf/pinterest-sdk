@@ -37,5 +37,8 @@ data class CatalogsFeedCredentials (
     @Json(name = "username")
     val username: kotlin.String
 
-)
+) {
+
+
+}
 

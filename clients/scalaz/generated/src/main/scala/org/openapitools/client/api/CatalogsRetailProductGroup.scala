@@ -27,7 +27,12 @@ status: Option[CatalogsProductGroupStatus],
   createdAt: Option[Integer],
 /* Unix timestamp in seconds of last time catalog product group was updated. */
   updatedAt: Option[Integer],
-feedId: FeedId)
+/* Catalog id pertaining to the retail product group. */
+  catalogId: String,
+/* id of the catalogs feed belonging to this catalog product group */
+  feedId: String,
+country: Option[String],
+locale: Option[String])
 
 object CatalogsRetailProductGroup {
   import DateTimeCodecs._
@@ -50,25 +55,6 @@ object CatalogsRetailProductGroup {
 
   implicit val CatalogTypeEnumDecoder: DecodeJson[CatalogType] =
     DecodeJson.optionDecoder[CatalogType](n => n.string.flatMap(jStr => CatalogType.toCatalogType(jStr)), "CatalogType failed to de-serialize")
-  sealed trait FeedId
-  case object `Null` extends FeedId
-
-  object FeedId {
-    def toFeedId(s: String): Option[FeedId] = s match {
-      case "`Null`" => Some(`Null`)
-      case _ => None
-    }
-
-    def fromFeedId(x: FeedId): String = x match {
-      case `Null` => "`Null`"
-    }
-  }
-
-  implicit val FeedIdEnumEncoder: EncodeJson[FeedId] =
-    EncodeJson[FeedId](is => StringEncodeJson(FeedId.fromFeedId(is)))
-
-  implicit val FeedIdEnumDecoder: DecodeJson[FeedId] =
-    DecodeJson.optionDecoder[FeedId](n => n.string.flatMap(jStr => FeedId.toFeedId(jStr)), "FeedId failed to de-serialize")
 
   implicit val CatalogsRetailProductGroupCodecJson: CodecJson[CatalogsRetailProductGroup] = CodecJson.derive[CatalogsRetailProductGroup]
   implicit val CatalogsRetailProductGroupDecoder: EntityDecoder[CatalogsRetailProductGroup] = jsonOf[CatalogsRetailProductGroup]

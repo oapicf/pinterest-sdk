@@ -21,7 +21,7 @@ data class BulkDownloadResponse(
 
     @Schema(example = "2680059592705", description = "ID of the bulk request.")
     @get:JsonProperty("request_id") val requestId: kotlin.String? = null
-) {
+    ) {
 
 }
 

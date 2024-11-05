@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **media_type** | Option<**String**> |  | [optional]
-**images** | Option<[**models::ImageMetadataImages**](ImageMetadata_images.md)> |  | [optional]
+**images** | Option<[**models::PinMediaWithImageAllOfImages**](PinMediaWithImage_allOf_images.md)> |  | [optional]
 **cover_image_url** | Option<**String**> |  | [optional]
 **video_url** | Option<**String**> | Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. | [optional]
 **duration** | Option<**f64**> | Duration (in milliseconds) | [optional]

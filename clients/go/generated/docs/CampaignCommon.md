@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **LifetimeSpendCap** | Pointer to **NullableInt32** | Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **DailySpendCap** | Pointer to **NullableInt32** | Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time. | [optional] 
 **OrderLineId** | Pointer to **NullableString** | Order line ID that appears on the invoice. | [optional] 
-**TrackingUrls** | Pointer to [**NullableAdCommonTrackingUrls**](AdCommonTrackingUrls.md) |  | [optional] 
+**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) |  | [optional] 
 **StartTime** | Pointer to **NullableInt32** | Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
 **EndTime** | Pointer to **NullableInt32** | Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. | [optional] 
-**SummaryStatus** | Pointer to [**CampaignSummaryStatus**](CampaignSummaryStatus.md) |  | [optional] 
+**IsFlexibleDailyBudgets** | Pointer to **NullableBool** | Determine if a campaign has flexible daily budgets setup. | [optional] 
 
 ## Methods
 
@@ -216,20 +216,20 @@ HasOrderLineId returns a boolean if a field has been set.
 UnsetOrderLineId ensures that no value is present for OrderLineId, not even an explicit nil
 ### GetTrackingUrls
 
-`func (o *CampaignCommon) GetTrackingUrls() AdCommonTrackingUrls`
+`func (o *CampaignCommon) GetTrackingUrls() TrackingUrls`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *CampaignCommon) GetTrackingUrlsOk() (*AdCommonTrackingUrls, bool)`
+`func (o *CampaignCommon) GetTrackingUrlsOk() (*TrackingUrls, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *CampaignCommon) SetTrackingUrls(v AdCommonTrackingUrls)`
+`func (o *CampaignCommon) SetTrackingUrls(v TrackingUrls)`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -319,31 +319,41 @@ HasEndTime returns a boolean if a field has been set.
 `func (o *CampaignCommon) UnsetEndTime()`
 
 UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
-### GetSummaryStatus
+### GetIsFlexibleDailyBudgets
 
-`func (o *CampaignCommon) GetSummaryStatus() CampaignSummaryStatus`
+`func (o *CampaignCommon) GetIsFlexibleDailyBudgets() bool`
 
-GetSummaryStatus returns the SummaryStatus field if non-nil, zero value otherwise.
+GetIsFlexibleDailyBudgets returns the IsFlexibleDailyBudgets field if non-nil, zero value otherwise.
 
-### GetSummaryStatusOk
+### GetIsFlexibleDailyBudgetsOk
 
-`func (o *CampaignCommon) GetSummaryStatusOk() (*CampaignSummaryStatus, bool)`
+`func (o *CampaignCommon) GetIsFlexibleDailyBudgetsOk() (*bool, bool)`
 
-GetSummaryStatusOk returns a tuple with the SummaryStatus field if it's non-nil, zero value otherwise
+GetIsFlexibleDailyBudgetsOk returns a tuple with the IsFlexibleDailyBudgets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSummaryStatus
+### SetIsFlexibleDailyBudgets
 
-`func (o *CampaignCommon) SetSummaryStatus(v CampaignSummaryStatus)`
+`func (o *CampaignCommon) SetIsFlexibleDailyBudgets(v bool)`
 
-SetSummaryStatus sets SummaryStatus field to given value.
+SetIsFlexibleDailyBudgets sets IsFlexibleDailyBudgets field to given value.
 
-### HasSummaryStatus
+### HasIsFlexibleDailyBudgets
 
-`func (o *CampaignCommon) HasSummaryStatus() bool`
+`func (o *CampaignCommon) HasIsFlexibleDailyBudgets() bool`
 
-HasSummaryStatus returns a boolean if a field has been set.
+HasIsFlexibleDailyBudgets returns a boolean if a field has been set.
 
+### SetIsFlexibleDailyBudgetsNil
+
+`func (o *CampaignCommon) SetIsFlexibleDailyBudgetsNil(b bool)`
+
+ SetIsFlexibleDailyBudgetsNil sets the value for IsFlexibleDailyBudgets to be an explicit nil
+
+### UnsetIsFlexibleDailyBudgets
+`func (o *CampaignCommon) UnsetIsFlexibleDailyBudgets()`
+
+UnsetIsFlexibleDailyBudgets ensures that no value is present for IsFlexibleDailyBudgets, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

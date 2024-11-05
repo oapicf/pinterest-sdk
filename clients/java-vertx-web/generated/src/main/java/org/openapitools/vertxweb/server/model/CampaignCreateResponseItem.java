@@ -13,7 +13,7 @@ import org.openapitools.vertxweb.server.model.Exception;
 public class CampaignCreateResponseItem   {
   
   private CampaignCreateResponseData data;
-  private List<Exception> exceptions;
+  private List<Exception> exceptions = new ArrayList<>();
 
   public CampaignCreateResponseItem () {
 

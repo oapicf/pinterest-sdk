@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **created_at** | **Time** |  | [optional] |
+| **created_at** | **Time** |  |  |
 | **id** | **String** | ID of the catalog entity. |  |
-| **updated_at** | **Time** |  | [optional] |
+| **updated_at** | **Time** |  |  |
 | **name** | **String** | A human-friendly name associated to a catalog entity. |  |
 | **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 

@@ -22,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdGroupAudienceSizingRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingRequest   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled = true;
@@ -93,10 +93,10 @@ public class AdGroupAudienceSizingRequest   {
     return this;
   }
 
-   /**
+  /**
    * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
    * @return autoTargetingEnabled
-  **/
+   */
   @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
@@ -111,10 +111,10 @@ public class AdGroupAudienceSizingRequest   {
     return this;
   }
 
-   /**
+  /**
    * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
    * @return placementGroup
-  **/
+   */
   @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
   public PlacementGroupType getPlacementGroup() {
     return placementGroup;
@@ -137,10 +137,10 @@ public class AdGroupAudienceSizingRequest   {
     return this;
   }
 
-   /**
+  /**
    * Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
    * @return creativeTypes
-  **/
+   */
   @ApiModelProperty(value = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")
   public List<CreativeTypesEnum> getCreativeTypes() {
     return creativeTypes;
@@ -155,10 +155,10 @@ public class AdGroupAudienceSizingRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get targetingSpec
    * @return targetingSpec
-  **/
+   */
   @ApiModelProperty(value = "")
   public TargetingSpec getTargetingSpec() {
     return targetingSpec;
@@ -181,10 +181,10 @@ public class AdGroupAudienceSizingRequest   {
     return this;
   }
 
-   /**
+  /**
    * Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
    * @return productGroupIds
-  **/
+   */
   @ApiModelProperty(value = "Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.")
   public List<String> getProductGroupIds() {
     return productGroupIds;
@@ -207,10 +207,10 @@ public class AdGroupAudienceSizingRequest   {
     return this;
   }
 
-   /**
+  /**
    * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    * @return keywords
-  **/
+   */
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
   public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
     return keywords;

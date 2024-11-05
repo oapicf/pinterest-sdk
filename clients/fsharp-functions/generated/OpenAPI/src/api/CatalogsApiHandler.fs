@@ -14,6 +14,45 @@ module CatalogsApiHandlers =
     /// 
     /// </summary>
 
+    //#region CatalogsCreate
+    /// <summary>
+    /// Create catalog
+    /// </summary>
+   [<FunctionName("CatalogsCreate")>]
+    let CatalogsCreate
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/catalogs")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<CatalogsCreateBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = CatalogsApiService.CatalogsCreate bodyParams
+      match result with
+      | CatalogsCreateStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | CatalogsCreateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | CatalogsCreateStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | CatalogsCreateDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region CatalogsList
     /// <summary>
     /// List catalogs
@@ -44,7 +83,7 @@ module CatalogsApiHandlers =
 
     //#region CatalogsProductGroupPinsList
     /// <summary>
-    /// List products for a Product Group
+    /// List products by product group
     /// </summary>
    [<FunctionName("CatalogsProductGroupPinsList")>]
     let CatalogsProductGroupPinsList
@@ -121,6 +160,53 @@ module CatalogsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
 
+    //#region CatalogsProductGroupsCreateMany
+    /// <summary>
+    /// Create product groups
+    /// </summary>
+   [<FunctionName("CatalogsProductGroupsCreateMany")>]
+    let CatalogsProductGroupsCreateMany
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/catalogs/product_groups/multiple")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<CatalogsProductGroupsCreateManyBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = CatalogsApiService.CatalogsProductGroupsCreateMany bodyParams
+      match result with
+      | CatalogsProductGroupsCreateManyStatusCode201 resolved ->
+          let content = resolved.content
+          let responseContentType = "text/plain"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(201))
+      | CatalogsProductGroupsCreateManyStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | CatalogsProductGroupsCreateManyStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | CatalogsProductGroupsCreateManyStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | CatalogsProductGroupsCreateManyStatusCode409 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+      | CatalogsProductGroupsCreateManyDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region CatalogsProductGroupsDelete
     /// <summary>
     /// Delete product group
@@ -157,6 +243,42 @@ module CatalogsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
       | CatalogsProductGroupsDeleteDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region CatalogsProductGroupsDeleteMany
+    /// <summary>
+    /// Delete product groups
+    /// </summary>
+   [<FunctionName("CatalogsProductGroupsDeleteMany")>]
+    let CatalogsProductGroupsDeleteMany
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "DELETE", Route = "/v5/catalogs/product_groups/multiple")>]
+        req:HttpRequest ) =
+
+      let result = CatalogsApiService.CatalogsProductGroupsDeleteMany ()
+      match result with
+      | CatalogsProductGroupsDeleteManyStatusCode204 resolved ->
+          let content = resolved.content
+          let responseContentType = "text/plain"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(204))
+      | CatalogsProductGroupsDeleteManyStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | CatalogsProductGroupsDeleteManyStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | CatalogsProductGroupsDeleteManyStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | CatalogsProductGroupsDeleteManyStatusCode409 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+      | CatalogsProductGroupsDeleteManyDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
@@ -243,7 +365,7 @@ module CatalogsApiHandlers =
 
     //#region CatalogsProductGroupsProductCountsGet
     /// <summary>
-    /// Get product counts for a Product Group
+    /// Get product counts
     /// </summary>
    [<FunctionName("CatalogsProductGroupsProductCountsGet")>]
     let CatalogsProductGroupsProductCountsGet
@@ -271,7 +393,7 @@ module CatalogsApiHandlers =
 
     //#region CatalogsProductGroupsUpdate
     /// <summary>
-    /// Update product group
+    /// Update single product group
     /// </summary>
    [<FunctionName("CatalogsProductGroupsUpdate")>]
     let CatalogsProductGroupsUpdate
@@ -322,7 +444,7 @@ module CatalogsApiHandlers =
 
     //#region FeedProcessingResultsList
     /// <summary>
-    /// List processing results for a given feed
+    /// List feed processing results
     /// </summary>
    [<FunctionName("FeedProcessingResultsList")>]
     let FeedProcessingResultsList
@@ -475,6 +597,38 @@ module CatalogsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
 
+    //#region FeedsIngest
+    /// <summary>
+    /// Ingest feed items
+    /// </summary>
+   [<FunctionName("FeedsIngest")>]
+    let FeedsIngest
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/catalogs/feeds/{feed_id}/ingest")>]
+        req:HttpRequest ) =
+
+      let result = CatalogsApiService.FeedsIngest ()
+      match result with
+      | FeedsIngestStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | FeedsIngestStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | FeedsIngestStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | FeedsIngestStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | FeedsIngestDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region FeedsList
     /// <summary>
     /// List feeds
@@ -548,7 +702,7 @@ module CatalogsApiHandlers =
 
     //#region ItemsBatchGet
     /// <summary>
-    /// Get catalogs item batch status
+    /// Get item batch status
     /// </summary>
    [<FunctionName("ItemsBatchGet")>]
     let ItemsBatchGet
@@ -659,7 +813,7 @@ module CatalogsApiHandlers =
 
     //#region ItemsIssuesList
     /// <summary>
-    /// List item issues for a given processing result
+    /// List item issues
     /// </summary>
    [<FunctionName("ItemsIssuesList")>]
     let ItemsIssuesList
@@ -689,9 +843,52 @@ module CatalogsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
 
+    //#region ItemsPost
+    /// <summary>
+    /// Get catalogs items (POST)
+    /// </summary>
+   [<FunctionName("ItemsPost")>]
+    let ItemsPost
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/catalogs/items")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<ItemsPostBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = CatalogsApiService.ItemsPost bodyParams
+      match result with
+      | ItemsPostStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | ItemsPostStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | ItemsPostStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | ItemsPostStatusCode403 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(403))
+      | ItemsPostDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region ProductsByProductGroupFilterList
     /// <summary>
-    /// List filtered products
+    /// List products by filter
     /// </summary>
    [<FunctionName("ProductsByProductGroupFilterList")>]
     let ProductsByProductGroupFilterList
@@ -724,6 +921,97 @@ module CatalogsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
       | ProductsByProductGroupFilterListDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region ReportsCreate
+    /// <summary>
+    /// Build catalogs report
+    /// </summary>
+   [<FunctionName("ReportsCreate")>]
+    let ReportsCreate
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/catalogs/reports")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<ReportsCreateBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = CatalogsApiService.ReportsCreate bodyParams
+      match result with
+      | ReportsCreateStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | ReportsCreateStatusCode404 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(404))
+      | ReportsCreateStatusCode409 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+      | ReportsCreateDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region ReportsGet
+    /// <summary>
+    /// Get catalogs report
+    /// </summary>
+   [<FunctionName("ReportsGet")>]
+    let ReportsGet
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "GET", Route = "/v5/catalogs/reports")>]
+        req:HttpRequest ) =
+
+      let result = CatalogsApiService.ReportsGet ()
+      match result with
+      | ReportsGetStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | ReportsGetStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | ReportsGetStatusCode409 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(409))
+      | ReportsGetDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region ReportsStats
+    /// <summary>
+    /// List report stats
+    /// </summary>
+   [<FunctionName("ReportsStats")>]
+    let ReportsStats
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "GET", Route = "/v5/catalogs/reports/stats")>]
+        req:HttpRequest ) =
+
+      let result = CatalogsApiService.ReportsStats ()
+      match result with
+      | ReportsStatsStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | ReportsStatsStatusCode401 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(401))
+      | ReportsStatsDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))

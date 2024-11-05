@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  **/
 
 @ApiModel(description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadAllOfUploadParameters   {
   @JsonProperty("x-amz-date")
   private String xAmzDate;

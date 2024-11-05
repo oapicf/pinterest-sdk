@@ -7,9 +7,9 @@
 #' @title CatalogsFeedProcessingResult
 #' @description CatalogsFeedProcessingResult Class
 #' @format An \code{R6Class} generator object
-#' @field created_at  character [optional]
-#' @field id  character [optional]
-#' @field updated_at  character [optional]
+#' @field created_at  character
+#' @field id  character
+#' @field updated_at  character
 #' @field ingestion_details  \link{CatalogsFeedIngestionDetails}
 #' @field status  \link{CatalogsFeedProcessingStatus}
 #' @field product_counts  \link{CatalogsFeedProductCounts}
@@ -27,21 +27,37 @@ CatalogsFeedProcessingResult <- R6::R6Class(
     `status` = NULL,
     `product_counts` = NULL,
     `validation_details` = NULL,
-    #' Initialize a new CatalogsFeedProcessingResult class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedProcessingResult class.
     #'
+    #' @param created_at created_at
+    #' @param id id
+    #' @param updated_at updated_at
     #' @param ingestion_details ingestion_details
     #' @param status status
     #' @param product_counts product_counts
     #' @param validation_details validation_details
-    #' @param created_at created_at
-    #' @param id id
-    #' @param updated_at updated_at
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`ingestion_details`, `status`, `product_counts`, `validation_details`, `created_at` = NULL, `id` = NULL, `updated_at` = NULL, ...) {
+    initialize = function(`created_at`, `id`, `updated_at`, `ingestion_details`, `status`, `product_counts`, `validation_details`, ...) {
+      if (!missing(`created_at`)) {
+        if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
+        }
+        self$`created_at` <- `created_at`
+      }
+      if (!missing(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
+      }
+      if (!missing(`updated_at`)) {
+        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
+        }
+        self$`updated_at` <- `updated_at`
+      }
       if (!missing(`ingestion_details`)) {
         stopifnot(R6::is.R6(`ingestion_details`))
         self$`ingestion_details` <- `ingestion_details`
@@ -61,32 +77,12 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         stopifnot(R6::is.R6(`validation_details`))
         self$`validation_details` <- `validation_details`
       }
-      if (!is.null(`created_at`)) {
-        if (!is.character(`created_at`)) {
-          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
-        }
-        self$`created_at` <- `created_at`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
-      }
-      if (!is.null(`updated_at`)) {
-        if (!is.character(`updated_at`)) {
-          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
-        }
-        self$`updated_at` <- `updated_at`
-      }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedProcessingResult in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedProcessingResultObject <- list()
       if (!is.null(self$`created_at`)) {
@@ -119,14 +115,12 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       }
       CatalogsFeedProcessingResultObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedProcessingResult
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedProcessingResult
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedProcessingResult
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`created_at`)) {
@@ -160,13 +154,11 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedProcessingResult in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`created_at`)) {
@@ -229,14 +221,12 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedProcessingResult
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedProcessingResult
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedProcessingResult
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`created_at` <- this_object$`created_at`
@@ -248,15 +238,37 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       self$`validation_details` <- CatalogsFeedValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`validation_details`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedProcessingResult
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedProcessingResult and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `created_at`
+      if (!is.null(input_json$`created_at`)) {
+        if (!(is.character(input_json$`created_at`) && length(input_json$`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", input_json$`created_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `created_at` is missing."))
+      }
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `id` is missing."))
+      }
+      # check the required field `updated_at`
+      if (!is.null(input_json$`updated_at`)) {
+        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `updated_at` is missing."))
+      }
       # check the required field `ingestion_details`
       if (!is.null(input_json$`ingestion_details`)) {
         stopifnot(R6::is.R6(input_json$`ingestion_details`))
@@ -282,24 +294,35 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `validation_details` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedProcessingResult
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        return(FALSE)
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        return(FALSE)
+      }
+
       # check if the required `ingestion_details` is null
       if (is.null(self$`ingestion_details`)) {
         return(FALSE)
@@ -317,15 +340,28 @@ CatalogsFeedProcessingResult <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
+      }
+
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
+      }
+
       # check if the required `ingestion_details` is null
       if (is.null(self$`ingestion_details`)) {
         invalid_fields["ingestion_details"] <- "Non-nullable required field `ingestion_details` cannot be null."
@@ -343,12 +379,9 @@ CatalogsFeedProcessingResult <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -20,7 +20,7 @@ openapi_oauth_access_token_request_refresh() ->
     openapi_oauth_access_token_request_refresh([]).
 
 openapi_oauth_access_token_request_refresh(Fields) ->
-  Default = [ {'grant_type', elements([<<"authorization_code">>, <<"refresh_token">>]) }
+  Default = [ {'grant_type', elements([<<"authorization_code">>, <<"refresh_token">>, <<"client_credentials">>]) }
             , {'refresh_token', binary() }
             , {'scope', binary() }
             , {'refresh_on', boolean() }

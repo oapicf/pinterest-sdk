@@ -13,7 +13,5 @@
 
 * `CHECKBOX` (value: `"CHECKBOX"`)
 
-* `NULL` (value: `"null"`)
-
 
 

@@ -17,9 +17,11 @@ case class ItemResponseAnyOf (
   itemId: Option[String],
 /* The pins mapped to the item */
   pins: Option[List[Pin]],
-attributes: Option[CatalogsHotelAttributes],
+attributes: Option[CatalogsCreativeAssetsAttributes],
 /* The catalog hotel id in the merchant namespace */
-  hotelId: Option[String])
+  hotelId: Option[String],
+/* The catalog creative assets id in the merchant namespace */
+  creativeAssetsId: Option[String])
 
 object ItemResponseAnyOf {
   import DateTimeCodecs._

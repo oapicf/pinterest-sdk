@@ -93,12 +93,30 @@ public class MainApiVerticle extends AbstractVerticle {
             }
         });
         
+        vertx.deployVerticle("org.openapitools.server.api.verticle.AdvancedAuctionApiVerticle", res -> {
+            if (res.succeeded()) {
+                LOGGER.info("AdvancedAuctionApiVerticle : Deployed");
+            } else {
+                startFuture.fail(res.cause());
+                LOGGER.error("AdvancedAuctionApiVerticle : Deployment failed");
+            }
+        });
+        
         vertx.deployVerticle("org.openapitools.server.api.verticle.AudienceInsightsApiVerticle", res -> {
             if (res.succeeded()) {
                 LOGGER.info("AudienceInsightsApiVerticle : Deployed");
             } else {
                 startFuture.fail(res.cause());
                 LOGGER.error("AudienceInsightsApiVerticle : Deployment failed");
+            }
+        });
+        
+        vertx.deployVerticle("org.openapitools.server.api.verticle.AudienceSharingApiVerticle", res -> {
+            if (res.succeeded()) {
+                LOGGER.info("AudienceSharingApiVerticle : Deployed");
+            } else {
+                startFuture.fail(res.cause());
+                LOGGER.error("AudienceSharingApiVerticle : Deployment failed");
             }
         });
         
@@ -135,6 +153,33 @@ public class MainApiVerticle extends AbstractVerticle {
             } else {
                 startFuture.fail(res.cause());
                 LOGGER.error("BulkApiVerticle : Deployment failed");
+            }
+        });
+        
+        vertx.deployVerticle("org.openapitools.server.api.verticle.BusinessAccessAssetsApiVerticle", res -> {
+            if (res.succeeded()) {
+                LOGGER.info("BusinessAccessAssetsApiVerticle : Deployed");
+            } else {
+                startFuture.fail(res.cause());
+                LOGGER.error("BusinessAccessAssetsApiVerticle : Deployment failed");
+            }
+        });
+        
+        vertx.deployVerticle("org.openapitools.server.api.verticle.BusinessAccessInviteApiVerticle", res -> {
+            if (res.succeeded()) {
+                LOGGER.info("BusinessAccessInviteApiVerticle : Deployed");
+            } else {
+                startFuture.fail(res.cause());
+                LOGGER.error("BusinessAccessInviteApiVerticle : Deployment failed");
+            }
+        });
+        
+        vertx.deployVerticle("org.openapitools.server.api.verticle.BusinessAccessRelationshipsApiVerticle", res -> {
+            if (res.succeeded()) {
+                LOGGER.info("BusinessAccessRelationshipsApiVerticle : Deployed");
+            } else {
+                startFuture.fail(res.cause());
+                LOGGER.error("BusinessAccessRelationshipsApiVerticle : Deployment failed");
             }
         });
         
@@ -219,6 +264,15 @@ public class MainApiVerticle extends AbstractVerticle {
             }
         });
         
+        vertx.deployVerticle("org.openapitools.server.api.verticle.LeadsExportApiVerticle", res -> {
+            if (res.succeeded()) {
+                LOGGER.info("LeadsExportApiVerticle : Deployed");
+            } else {
+                startFuture.fail(res.cause());
+                LOGGER.error("LeadsExportApiVerticle : Deployment failed");
+            }
+        });
+        
         vertx.deployVerticle("org.openapitools.server.api.verticle.MediaApiVerticle", res -> {
             if (res.succeeded()) {
                 LOGGER.info("MediaApiVerticle : Deployed");
@@ -264,15 +318,6 @@ public class MainApiVerticle extends AbstractVerticle {
             }
         });
         
-        vertx.deployVerticle("org.openapitools.server.api.verticle.ProductGroupsApiVerticle", res -> {
-            if (res.succeeded()) {
-                LOGGER.info("ProductGroupsApiVerticle : Deployed");
-            } else {
-                startFuture.fail(res.cause());
-                LOGGER.error("ProductGroupsApiVerticle : Deployment failed");
-            }
-        });
-        
         vertx.deployVerticle("org.openapitools.server.api.verticle.ResourcesApiVerticle", res -> {
             if (res.succeeded()) {
                 LOGGER.info("ResourcesApiVerticle : Deployed");
@@ -288,6 +333,15 @@ public class MainApiVerticle extends AbstractVerticle {
             } else {
                 startFuture.fail(res.cause());
                 LOGGER.error("SearchApiVerticle : Deployment failed");
+            }
+        });
+        
+        vertx.deployVerticle("org.openapitools.server.api.verticle.TargetingTemplateApiVerticle", res -> {
+            if (res.succeeded()) {
+                LOGGER.info("TargetingTemplateApiVerticle : Deployed");
+            } else {
+                startFuture.fail(res.cause());
+                LOGGER.error("TargetingTemplateApiVerticle : Deployment failed");
             }
         });
         

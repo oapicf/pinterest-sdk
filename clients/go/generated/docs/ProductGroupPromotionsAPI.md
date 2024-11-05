@@ -34,7 +34,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	productGroupPromotionCreateRequest := *openapiclient.NewProductGroupPromotionCreateRequest("2680059592705", []openapiclient.ProductGroupPromotion{*openapiclient.NewProductGroupPromotion()}) // ProductGroupPromotionCreateRequest | List of Product Group Promotions to create, size limit [1, 30].
+	productGroupPromotionCreateRequest := *openapiclient.NewProductGroupPromotionCreateRequest("2680059592705", []openapiclient.ProductGroupPromotionCreateRequestElement{*openapiclient.NewProductGroupPromotionCreateRequestElement()}) // ProductGroupPromotionCreateRequest | List of Product Group Promotions to create, size limit [1, 30].
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -182,7 +182,7 @@ func main() {
 	productGroupPromotionIds := []string{"Inner_example"} // []string | List of Product group promotion Ids. (optional)
 	entityStatuses := []string{"ACTIVE"} // []string | Entity status (optional) (default to ["ACTIVE","PAUSED"])
 	adGroupId := "123123123" // string | Ad group Id. (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
  **productGroupPromotionIds** | **[]string** | List of Product group promotion Ids. | 
  **entityStatuses** | **[]string** | Entity status | [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
  **adGroupId** | **string** | Ad group Id. | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
 

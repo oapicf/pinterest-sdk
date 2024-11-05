@@ -86,7 +86,7 @@ Class | Method | HTTP request | Description
 *OASAdAccountsApi* | [**sandboxDelete**](OASAdAccountsApi.md#sandboxDelete) | **DELETE** /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox
 *OASAdAccountsApi* | [**templatesList**](OASAdAccountsApi.md#templatesList) | **GET** /ad_accounts/{ad_account_id}/templates | List templates
 *OASAdGroupsApi* | [**adGroupsAnalytics**](OASAdGroupsApi.md#adGroupsAnalytics) | **GET** /ad_accounts/{ad_account_id}/ad_groups/analytics | Get ad group analytics
-*OASAdGroupsApi* | [**adGroupsAudienceSizing**](OASAdGroupsApi.md#adGroupsAudienceSizing) | **GET** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
+*OASAdGroupsApi* | [**adGroupsAudienceSizing**](OASAdGroupsApi.md#adGroupsAudienceSizing) | **POST** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
 *OASAdGroupsApi* | [**adGroupsBidFloorGet**](OASAdGroupsApi.md#adGroupsBidFloorGet) | **POST** /ad_accounts/{ad_account_id}/bid_floor | Get bid floors
 *OASAdGroupsApi* | [**adGroupsCreate**](OASAdGroupsApi.md#adGroupsCreate) | **POST** /ad_accounts/{ad_account_id}/ad_groups | Create ad groups
 *OASAdGroupsApi* | [**adGroupsGet**](OASAdGroupsApi.md#adGroupsGet) | **GET** /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id} | Get ad group
@@ -100,8 +100,17 @@ Class | Method | HTTP request | Description
 *OASAdsApi* | [**adsGet**](OASAdsApi.md#adsGet) | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad
 *OASAdsApi* | [**adsList**](OASAdsApi.md#adsList) | **GET** /ad_accounts/{ad_account_id}/ads | List ads
 *OASAdsApi* | [**adsUpdate**](OASAdsApi.md#adsUpdate) | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads
+*OASAdvancedAuctionApi* | [**advancedAuctionItemsGetPost**](OASAdvancedAuctionApi.md#advancedAuctionItemsGetPost) | **POST** /advanced_auction/items/get | Get item bid options (POST)
+*OASAdvancedAuctionApi* | [**advancedAuctionItemsSubmitPost**](OASAdvancedAuctionApi.md#advancedAuctionItemsSubmitPost) | **POST** /advanced_auction/items/submit | Operate on item level bid options
 *OASAudienceInsightsApi* | [**audienceInsightsGet**](OASAudienceInsightsApi.md#audienceInsightsGet) | **GET** /ad_accounts/{ad_account_id}/audience_insights | Get audience insights
 *OASAudienceInsightsApi* | [**audienceInsightsScopeAndTypeGet**](OASAudienceInsightsApi.md#audienceInsightsScopeAndTypeGet) | **GET** /ad_accounts/{ad_account_id}/insights/audiences | Get audience insights scope and type
+*OASAudienceSharingApi* | [**adAccountsAudiencesSharedAccountsList**](OASAudienceSharingApi.md#adAccountsAudiencesSharedAccountsList) | **GET** /ad_accounts/{ad_account_id}/audiences/shared/accounts | List accounts with access to an audience owned by an ad account
+*OASAudienceSharingApi* | [**businessAccountAudiencesSharedAccountsList**](OASAudienceSharingApi.md#businessAccountAudiencesSharedAccountsList) | **GET** /businesses/{business_id}/audiences/shared/accounts | List accounts with access to an audience owned by a business
+*OASAudienceSharingApi* | [**sharedAudiencesForBusinessList**](OASAudienceSharingApi.md#sharedAudiencesForBusinessList) | **GET** /businesses/{business_id}/audiences | List received audiences for a business
+*OASAudienceSharingApi* | [**updateAdAccountToAdAccountSharedAudience**](OASAudienceSharingApi.md#updateAdAccountToAdAccountSharedAudience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared | Update audience sharing between ad accounts
+*OASAudienceSharingApi* | [**updateAdAccountToBusinessSharedAudience**](OASAudienceSharingApi.md#updateAdAccountToBusinessSharedAudience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/businesses/shared | Update audience sharing from an ad account to businesses
+*OASAudienceSharingApi* | [**updateBusinessToAdAccountSharedAudience**](OASAudienceSharingApi.md#updateBusinessToAdAccountSharedAudience) | **PATCH** /businesses/{business_id}/audiences/ad_accounts/shared | Update audience sharing from a business to ad accounts
+*OASAudienceSharingApi* | [**updateBusinessToBusinessSharedAudience**](OASAudienceSharingApi.md#updateBusinessToBusinessSharedAudience) | **PATCH** /businesses/{business_id}/audiences/businesses/shared | Update audience sharing between businesses
 *OASAudiencesApi* | [**audiencesCreate**](OASAudiencesApi.md#audiencesCreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
 *OASAudiencesApi* | [**audiencesCreateCustom**](OASAudiencesApi.md#audiencesCreateCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 *OASAudiencesApi* | [**audiencesGet**](OASAudiencesApi.md#audiencesGet) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
@@ -130,31 +139,63 @@ Class | Method | HTTP request | Description
 *OASBulkApi* | [**bulkDownloadCreate**](OASBulkApi.md#bulkDownloadCreate) | **POST** /ad_accounts/{ad_account_id}/bulk/download | Get advertiser entities in bulk
 *OASBulkApi* | [**bulkRequestGet**](OASBulkApi.md#bulkRequestGet) | **GET** /ad_accounts/{ad_account_id}/bulk/{bulk_request_id} | Download advertiser entities in bulk
 *OASBulkApi* | [**bulkUpsertCreate**](OASBulkApi.md#bulkUpsertCreate) | **POST** /ad_accounts/{ad_account_id}/bulk/upsert | Create/update ad entities in bulk
+*OASBusinessAccessAssetsApi* | [**assetGroupCreate**](OASBusinessAccessAssetsApi.md#assetGroupCreate) | **POST** /businesses/{business_id}/asset_groups | Create a new asset group.
+*OASBusinessAccessAssetsApi* | [**assetGroupDelete**](OASBusinessAccessAssetsApi.md#assetGroupDelete) | **DELETE** /businesses/{business_id}/asset_groups | Delete asset groups.
+*OASBusinessAccessAssetsApi* | [**assetGroupUpdate**](OASBusinessAccessAssetsApi.md#assetGroupUpdate) | **PATCH** /businesses/{business_id}/asset_groups | Update asset groups.
+*OASBusinessAccessAssetsApi* | [**businessAssetMembersGet**](OASBusinessAccessAssetsApi.md#businessAssetMembersGet) | **GET** /businesses/{business_id}/assets/{asset_id}/members | Get members with access to asset
+*OASBusinessAccessAssetsApi* | [**businessAssetPartnersGet**](OASBusinessAccessAssetsApi.md#businessAssetPartnersGet) | **GET** /businesses/{business_id}/assets/{asset_id}/partners | Get partners with access to asset
+*OASBusinessAccessAssetsApi* | [**businessAssetsGet**](OASBusinessAccessAssetsApi.md#businessAssetsGet) | **GET** /businesses/{business_id}/assets | List business assets
+*OASBusinessAccessAssetsApi* | [**businessMemberAssetsGet**](OASBusinessAccessAssetsApi.md#businessMemberAssetsGet) | **GET** /businesses/{business_id}/members/{member_id}/assets | Get assets assigned to a member
+*OASBusinessAccessAssetsApi* | [**businessMembersAssetAccessDelete**](OASBusinessAccessAssetsApi.md#businessMembersAssetAccessDelete) | **DELETE** /businesses/{business_id}/members/assets/access | Delete member access to asset
+*OASBusinessAccessAssetsApi* | [**businessMembersAssetAccessUpdate**](OASBusinessAccessAssetsApi.md#businessMembersAssetAccessUpdate) | **PATCH** /businesses/{business_id}/members/assets/access | Assign/Update member asset permissions
+*OASBusinessAccessAssetsApi* | [**businessPartnerAssetAccessGet**](OASBusinessAccessAssetsApi.md#businessPartnerAssetAccessGet) | **GET** /businesses/{business_id}/partners/{partner_id}/assets | Get assets assigned to a partner or assets assigned by a partner
+*OASBusinessAccessAssetsApi* | [**deletePartnerAssetAccessHandlerImpl**](OASBusinessAccessAssetsApi.md#deletePartnerAssetAccessHandlerImpl) | **DELETE** /businesses/{business_id}/partners/assets | Delete partner access to asset
+*OASBusinessAccessAssetsApi* | [**updatePartnerAssetAccessHandlerImpl**](OASBusinessAccessAssetsApi.md#updatePartnerAssetAccessHandlerImpl) | **PATCH** /businesses/{business_id}/partners/assets | Assign/Update partner asset permissions
+*OASBusinessAccessInviteApi* | [**assetAccessRequestsCreate**](OASBusinessAccessInviteApi.md#assetAccessRequestsCreate) | **POST** /businesses/{business_id}/requests/assets/access | Create a request to access an existing partner\&#39;s assets.
+*OASBusinessAccessInviteApi* | [**cancelInvitesOrRequests**](OASBusinessAccessInviteApi.md#cancelInvitesOrRequests) | **DELETE** /businesses/{business_id}/invites | Cancel invites/requests
+*OASBusinessAccessInviteApi* | [**createAssetInvites**](OASBusinessAccessInviteApi.md#createAssetInvites) | **POST** /businesses/{business_id}/invites/assets/access | Update invite/request with an asset permission
+*OASBusinessAccessInviteApi* | [**createMembershipOrPartnershipInvites**](OASBusinessAccessInviteApi.md#createMembershipOrPartnershipInvites) | **POST** /businesses/{business_id}/invites | Create invites or requests
+*OASBusinessAccessInviteApi* | [**getInvites**](OASBusinessAccessInviteApi.md#getInvites) | **GET** /businesses/{business_id}/invites | Get invites/requests
+*OASBusinessAccessInviteApi* | [**respondBusinessAccessInvites**](OASBusinessAccessInviteApi.md#respondBusinessAccessInvites) | **PATCH** /businesses/invites | Accept or decline an invite/request
+*OASBusinessAccessRelationshipsApi* | [**deleteBusinessMembership**](OASBusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
+*OASBusinessAccessRelationshipsApi* | [**deleteBusinessPartners**](OASBusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
+*OASBusinessAccessRelationshipsApi* | [**getBusinessEmployers**](OASBusinessAccessRelationshipsApi.md#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user
+*OASBusinessAccessRelationshipsApi* | [**getBusinessMembers**](OASBusinessAccessRelationshipsApi.md#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
+*OASBusinessAccessRelationshipsApi* | [**getBusinessPartners**](OASBusinessAccessRelationshipsApi.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+*OASBusinessAccessRelationshipsApi* | [**updateBusinessMemberships**](OASBusinessAccessRelationshipsApi.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member\&#39;s business role
 *OASCampaignsApi* | [**campaignTargetingAnalyticsGet**](OASCampaignsApi.md#campaignTargetingAnalyticsGet) | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns
 *OASCampaignsApi* | [**campaignsAnalytics**](OASCampaignsApi.md#campaignsAnalytics) | **GET** /ad_accounts/{ad_account_id}/campaigns/analytics | Get campaign analytics
 *OASCampaignsApi* | [**campaignsCreate**](OASCampaignsApi.md#campaignsCreate) | **POST** /ad_accounts/{ad_account_id}/campaigns | Create campaigns
 *OASCampaignsApi* | [**campaignsGet**](OASCampaignsApi.md#campaignsGet) | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign
 *OASCampaignsApi* | [**campaignsList**](OASCampaignsApi.md#campaignsList) | **GET** /ad_accounts/{ad_account_id}/campaigns | List campaigns
 *OASCampaignsApi* | [**campaignsUpdate**](OASCampaignsApi.md#campaignsUpdate) | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns
+*OASCatalogsApi* | [**catalogsCreate**](OASCatalogsApi.md#catalogsCreate) | **POST** /catalogs | Create catalog
 *OASCatalogsApi* | [**catalogsList**](OASCatalogsApi.md#catalogsList) | **GET** /catalogs | List catalogs
-*OASCatalogsApi* | [**catalogsProductGroupPinsList**](OASCatalogsApi.md#catalogsProductGroupPinsList) | **GET** /catalogs/product_groups/{product_group_id}/products | List products for a Product Group
+*OASCatalogsApi* | [**catalogsProductGroupPinsList**](OASCatalogsApi.md#catalogsProductGroupPinsList) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group
 *OASCatalogsApi* | [**catalogsProductGroupsCreate**](OASCatalogsApi.md#catalogsProductGroupsCreate) | **POST** /catalogs/product_groups | Create product group
+*OASCatalogsApi* | [**catalogsProductGroupsCreateMany**](OASCatalogsApi.md#catalogsProductGroupsCreateMany) | **POST** /catalogs/product_groups/multiple | Create product groups
 *OASCatalogsApi* | [**catalogsProductGroupsDelete**](OASCatalogsApi.md#catalogsProductGroupsDelete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group
+*OASCatalogsApi* | [**catalogsProductGroupsDeleteMany**](OASCatalogsApi.md#catalogsProductGroupsDeleteMany) | **DELETE** /catalogs/product_groups/multiple | Delete product groups
 *OASCatalogsApi* | [**catalogsProductGroupsGet**](OASCatalogsApi.md#catalogsProductGroupsGet) | **GET** /catalogs/product_groups/{product_group_id} | Get product group
 *OASCatalogsApi* | [**catalogsProductGroupsList**](OASCatalogsApi.md#catalogsProductGroupsList) | **GET** /catalogs/product_groups | List product groups
-*OASCatalogsApi* | [**catalogsProductGroupsProductCountsGet**](OASCatalogsApi.md#catalogsProductGroupsProductCountsGet) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts for a Product Group
-*OASCatalogsApi* | [**catalogsProductGroupsUpdate**](OASCatalogsApi.md#catalogsProductGroupsUpdate) | **PATCH** /catalogs/product_groups/{product_group_id} | Update product group
-*OASCatalogsApi* | [**feedProcessingResultsList**](OASCatalogsApi.md#feedProcessingResultsList) | **GET** /catalogs/feeds/{feed_id}/processing_results | List processing results for a given feed
+*OASCatalogsApi* | [**catalogsProductGroupsProductCountsGet**](OASCatalogsApi.md#catalogsProductGroupsProductCountsGet) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts
+*OASCatalogsApi* | [**catalogsProductGroupsUpdate**](OASCatalogsApi.md#catalogsProductGroupsUpdate) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group
+*OASCatalogsApi* | [**feedProcessingResultsList**](OASCatalogsApi.md#feedProcessingResultsList) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results
 *OASCatalogsApi* | [**feedsCreate**](OASCatalogsApi.md#feedsCreate) | **POST** /catalogs/feeds | Create feed
 *OASCatalogsApi* | [**feedsDelete**](OASCatalogsApi.md#feedsDelete) | **DELETE** /catalogs/feeds/{feed_id} | Delete feed
 *OASCatalogsApi* | [**feedsGet**](OASCatalogsApi.md#feedsGet) | **GET** /catalogs/feeds/{feed_id} | Get feed
+*OASCatalogsApi* | [**feedsIngest**](OASCatalogsApi.md#feedsIngest) | **POST** /catalogs/feeds/{feed_id}/ingest | Ingest feed items
 *OASCatalogsApi* | [**feedsList**](OASCatalogsApi.md#feedsList) | **GET** /catalogs/feeds | List feeds
 *OASCatalogsApi* | [**feedsUpdate**](OASCatalogsApi.md#feedsUpdate) | **PATCH** /catalogs/feeds/{feed_id} | Update feed
-*OASCatalogsApi* | [**itemsBatchGet**](OASCatalogsApi.md#itemsBatchGet) | **GET** /catalogs/items/batch/{batch_id} | Get catalogs item batch status
+*OASCatalogsApi* | [**itemsBatchGet**](OASCatalogsApi.md#itemsBatchGet) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status
 *OASCatalogsApi* | [**itemsBatchPost**](OASCatalogsApi.md#itemsBatchPost) | **POST** /catalogs/items/batch | Operate on item batch
 *OASCatalogsApi* | [**itemsGet**](OASCatalogsApi.md#itemsGet) | **GET** /catalogs/items | Get catalogs items
-*OASCatalogsApi* | [**itemsIssuesList**](OASCatalogsApi.md#itemsIssuesList) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues for a given processing result
-*OASCatalogsApi* | [**productsByProductGroupFilterList**](OASCatalogsApi.md#productsByProductGroupFilterList) | **POST** /catalogs/products/get_by_product_group_filters | List filtered products
+*OASCatalogsApi* | [**itemsIssuesList**](OASCatalogsApi.md#itemsIssuesList) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues
+*OASCatalogsApi* | [**itemsPost**](OASCatalogsApi.md#itemsPost) | **POST** /catalogs/items | Get catalogs items (POST)
+*OASCatalogsApi* | [**productsByProductGroupFilterList**](OASCatalogsApi.md#productsByProductGroupFilterList) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter
+*OASCatalogsApi* | [**reportsCreate**](OASCatalogsApi.md#reportsCreate) | **POST** /catalogs/reports | Build catalogs report
+*OASCatalogsApi* | [**reportsGet**](OASCatalogsApi.md#reportsGet) | **GET** /catalogs/reports | Get catalogs report
+*OASCatalogsApi* | [**reportsStats**](OASCatalogsApi.md#reportsStats) | **GET** /catalogs/reports/stats | List report stats
 *OASConversionEventsApi* | [**eventsCreate**](OASConversionEventsApi.md#eventsCreate) | **POST** /ad_accounts/{ad_account_id}/events | Send conversions
 *OASConversionTagsApi* | [**conversionTagsCreate**](OASConversionTagsApi.md#conversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 *OASConversionTagsApi* | [**conversionTagsGet**](OASConversionTagsApi.md#conversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
@@ -183,13 +224,18 @@ Class | Method | HTTP request | Description
 *OASLeadAdsApi* | [**adAccountsSubscriptionsPost**](OASLeadAdsApi.md#adAccountsSubscriptionsPost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 *OASLeadFormsApi* | [**leadFormGet**](OASLeadFormsApi.md#leadFormGet) | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id
 *OASLeadFormsApi* | [**leadFormTestCreate**](OASLeadFormsApi.md#leadFormTestCreate) | **POST** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test | Create lead form test data
-*OASLeadFormsApi* | [**leadFormsList**](OASLeadFormsApi.md#leadFormsList) | **GET** /ad_accounts/{ad_account_id}/lead_forms | Get lead forms
+*OASLeadFormsApi* | [**leadFormsCreate**](OASLeadFormsApi.md#leadFormsCreate) | **POST** /ad_accounts/{ad_account_id}/lead_forms | Create lead forms
+*OASLeadFormsApi* | [**leadFormsList**](OASLeadFormsApi.md#leadFormsList) | **GET** /ad_accounts/{ad_account_id}/lead_forms | List lead forms
+*OASLeadFormsApi* | [**leadFormsUpdate**](OASLeadFormsApi.md#leadFormsUpdate) | **PATCH** /ad_accounts/{ad_account_id}/lead_forms | Update lead forms
+*OASLeadsExportApi* | [**leadsExportCreate**](OASLeadsExportApi.md#leadsExportCreate) | **POST** /ad_accounts/{ad_account_id}/leads_export | Create a request to export leads collected from a lead ad
+*OASLeadsExportApi* | [**leadsExportGet**](OASLeadsExportApi.md#leadsExportGet) | **GET** /ad_accounts/{ad_account_id}/leads_export/{leads_export_id} | Get the lead export from the lead export create call
 *OASMediaApi* | [**mediaCreate**](OASMediaApi.md#mediaCreate) | **POST** /media | Register media upload
 *OASMediaApi* | [**mediaGet**](OASMediaApi.md#mediaGet) | **GET** /media/{media_id} | Get media upload details
 *OASMediaApi* | [**mediaList**](OASMediaApi.md#mediaList) | **GET** /media | List media uploads
 *OASOauthApi* | [**oauthToken**](OASOauthApi.md#oauthToken) | **POST** /oauth/token | Generate OAuth access token
 *OASOrderLinesApi* | [**orderLinesGet**](OASOrderLinesApi.md#orderLinesGet) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
 *OASOrderLinesApi* | [**orderLinesList**](OASOrderLinesApi.md#orderLinesList) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+*OASPinsApi* | [**multiPinsAnalytics**](OASPinsApi.md#multiPinsAnalytics) | **GET** /pins/analytics | Get multiple Pin analytics
 *OASPinsApi* | [**pinsAnalytics**](OASPinsApi.md#pinsAnalytics) | **GET** /pins/{pin_id}/analytics | Get Pin analytics
 *OASPinsApi* | [**pinsCreate**](OASPinsApi.md#pinsCreate) | **POST** /pins | Create Pin
 *OASPinsApi* | [**pinsDelete**](OASPinsApi.md#pinsDelete) | **DELETE** /pins/{pin_id} | Delete Pin
@@ -202,7 +248,6 @@ Class | Method | HTTP request | Description
 *OASProductGroupPromotionsApi* | [**productGroupPromotionsList**](OASProductGroupPromotionsApi.md#productGroupPromotionsList) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions
 *OASProductGroupPromotionsApi* | [**productGroupPromotionsUpdate**](OASProductGroupPromotionsApi.md#productGroupPromotionsUpdate) | **PATCH** /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions
 *OASProductGroupPromotionsApi* | [**productGroupsAnalytics**](OASProductGroupPromotionsApi.md#productGroupsAnalytics) | **GET** /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics
-*OASProductGroupsApi* | [**adAccountsCatalogsProductGroupsList**](OASProductGroupsApi.md#adAccountsCatalogsProductGroupsList) | **GET** /ad_accounts/{ad_account_id}/product_groups/catalogs | Get catalog product groups
 *OASResourcesApi* | [**adAccountCountriesGet**](OASResourcesApi.md#adAccountCountriesGet) | **GET** /resources/ad_account_countries | Get ad accounts countries
 *OASResourcesApi* | [**deliveryMetricsGet**](OASResourcesApi.md#deliveryMetricsGet) | **GET** /resources/delivery_metrics | Get available metrics\&#39; definitions
 *OASResourcesApi* | [**interestTargetingOptionsGet**](OASResourcesApi.md#interestTargetingOptionsGet) | **GET** /resources/targeting/interests/{interest_id} | Get interest details
@@ -212,6 +257,9 @@ Class | Method | HTTP request | Description
 *OASSearchApi* | [**searchPartnerPins**](OASSearchApi.md#searchPartnerPins) | **GET** /search/partner/pins | Search pins by a given search term
 *OASSearchApi* | [**searchUserBoardsGet**](OASSearchApi.md#searchUserBoardsGet) | **GET** /search/boards | Search user\&#39;s boards
 *OASSearchApi* | [**searchUserPinsList**](OASSearchApi.md#searchUserPinsList) | **GET** /search/pins | Search user\&#39;s Pins
+*OASTargetingTemplateApi* | [**targetingTemplateCreate**](OASTargetingTemplateApi.md#targetingTemplateCreate) | **POST** /ad_accounts/{ad_account_id}/targeting_templates | Create targeting templates
+*OASTargetingTemplateApi* | [**targetingTemplateList**](OASTargetingTemplateApi.md#targetingTemplateList) | **GET** /ad_accounts/{ad_account_id}/targeting_templates | List targeting templates
+*OASTargetingTemplateApi* | [**targetingTemplateUpdate**](OASTargetingTemplateApi.md#targetingTemplateUpdate) | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates
 *OASTermsApi* | [**termsRelatedList**](OASTermsApi.md#termsRelatedList) | **GET** /terms/related | List related terms
 *OASTermsApi* | [**termsSuggestedList**](OASTermsApi.md#termsSuggestedList) | **GET** /terms/suggested | List suggested terms
 *OASTermsOfServiceApi* | [**termsOfServiceGet**](OASTermsOfServiceApi.md#termsOfServiceGet) | **GET** /ad_accounts/{ad_account_id}/terms_of_service | Get terms of service
@@ -242,7 +290,7 @@ Class | Method | HTTP request | Description
  - [OASAdAccountCreateSubscriptionRespon](OASAdAccountCreateSubscriptionRespon.md)
  - [OASAdAccountGetSubscriptionResponse](OASAdAccountGetSubscriptionResponse.md)
  - [OASAdAccountOwner](OASAdAccountOwner.md)
- - [OASAdAccountsCatalogsProductGroupsLi](OASAdAccountsCatalogsProductGroupsLi.md)
+ - [OASAdAccountsAudiencesSharedAccounts](OASAdAccountsAudiencesSharedAccounts.md)
  - [OASAdAccountsCountryResponse](OASAdAccountsCountryResponse.md)
  - [OASAdAccountsCountryResponseData](OASAdAccountsCountryResponseData.md)
  - [OASAdAccountsList200Response](OASAdAccountsList200Response.md)
@@ -250,8 +298,6 @@ Class | Method | HTTP request | Description
  - [OASAdArrayResponse](OASAdArrayResponse.md)
  - [OASAdArrayResponseElement](OASAdArrayResponseElement.md)
  - [OASAdCommon](OASAdCommon.md)
- - [OASAdCommonQuizPinData](OASAdCommonQuizPinData.md)
- - [OASAdCommonTrackingUrls](OASAdCommonTrackingUrls.md)
  - [OASAdCountry](OASAdCountry.md)
  - [OASAdCreateRequest](OASAdCreateRequest.md)
  - [OASAdGroupArrayResponse](OASAdGroupArrayResponse.md)
@@ -260,8 +306,6 @@ Class | Method | HTTP request | Description
  - [OASAdGroupAudienceSizingRequestKeywo](OASAdGroupAudienceSizingRequestKeywo.md)
  - [OASAdGroupAudienceSizingResponse](OASAdGroupAudienceSizingResponse.md)
  - [OASAdGroupCommon](OASAdGroupCommon.md)
- - [OASAdGroupCommonOptimizationGoalMeta](OASAdGroupCommonOptimizationGoalMeta.md)
- - [OASAdGroupCommonTrackingUrls](OASAdGroupCommonTrackingUrls.md)
  - [OASAdGroupCreateRequest](OASAdGroupCreateRequest.md)
  - [OASAdGroupResponse](OASAdGroupResponse.md)
  - [OASAdGroupSummaryStatus](OASAdGroupSummaryStatus.md)
@@ -275,6 +319,8 @@ Class | Method | HTTP request | Description
  - [OASAdPreviewURLResponse](OASAdPreviewURLResponse.md)
  - [OASAdResponse](OASAdResponse.md)
  - [OASAdUpdateRequest](OASAdUpdateRequest.md)
+ - [OASAdsAnalyticsAdTargetingType](OASAdsAnalyticsAdTargetingType.md)
+ - [OASAdsAnalyticsCampaignTargetingType](OASAdsAnalyticsCampaignTargetingType.md)
  - [OASAdsAnalyticsCreateAsyncRequest](OASAdsAnalyticsCreateAsyncRequest.md)
  - [OASAdsAnalyticsCreateAsyncResponse](OASAdsAnalyticsCreateAsyncResponse.md)
  - [OASAdsAnalyticsFilterColumn](OASAdsAnalyticsFilterColumn.md)
@@ -288,9 +334,28 @@ Class | Method | HTTP request | Description
  - [OASAdsCreditRedeemResponse](OASAdsCreditRedeemResponse.md)
  - [OASAdsCreditsDiscountsGet200Response](OASAdsCreditsDiscountsGet200Response.md)
  - [OASAdsList200Response](OASAdsList200Response.md)
+ - [OASAdvancedAuctionBidOptions](OASAdvancedAuctionBidOptions.md)
+ - [OASAdvancedAuctionItem](OASAdvancedAuctionItem.md)
+ - [OASAdvancedAuctionItems](OASAdvancedAuctionItems.md)
+ - [OASAdvancedAuctionItemsGetRecord](OASAdvancedAuctionItemsGetRecord.md)
+ - [OASAdvancedAuctionItemsGetRequest](OASAdvancedAuctionItemsGetRequest.md)
+ - [OASAdvancedAuctionItemsSubmitDeleteR](OASAdvancedAuctionItemsSubmitDeleteR.md)
+ - [OASAdvancedAuctionItemsSubmitRecord](OASAdvancedAuctionItemsSubmitRecord.md)
+ - [OASAdvancedAuctionItemsSubmitRequest](OASAdvancedAuctionItemsSubmitRequest.md)
+ - [OASAdvancedAuctionItemsSubmitUpsertR](OASAdvancedAuctionItemsSubmitUpsertR.md)
+ - [OASAdvancedAuctionKey](OASAdvancedAuctionKey.md)
+ - [OASAdvancedAuctionOperation](OASAdvancedAuctionOperation.md)
+ - [OASAdvancedAuctionOperationError](OASAdvancedAuctionOperationError.md)
+ - [OASAdvancedAuctionProcessedItem](OASAdvancedAuctionProcessedItem.md)
+ - [OASAdvancedAuctionProcessedItems](OASAdvancedAuctionProcessedItems.md)
  - [OASAnalyticsDailyMetrics](OASAnalyticsDailyMetrics.md)
  - [OASAnalyticsMetricsResponse](OASAnalyticsMetricsResponse.md)
+ - [OASAppTypeMultipliers](OASAppTypeMultipliers.md)
+ - [OASAssetGroupBinding](OASAssetGroupBinding.md)
+ - [OASAssetGroupType](OASAssetGroupType.md)
+ - [OASAssetIdPermissions](OASAssetIdPermissions.md)
  - [OASAudience](OASAudience.md)
+ - [OASAudienceAccountType](OASAudienceAccountType.md)
  - [OASAudienceCategory](OASAudienceCategory.md)
  - [OASAudienceCommon](OASAudienceCommon.md)
  - [OASAudienceCreateCustomRequest](OASAudienceCreateCustomRequest.md)
@@ -306,13 +371,18 @@ Class | Method | HTTP request | Description
  - [OASAudienceInsightType](OASAudienceInsightType.md)
  - [OASAudienceInsightsResponse](OASAudienceInsightsResponse.md)
  - [OASAudienceRule](OASAudienceRule.md)
+ - [OASAudienceShareType](OASAudienceShareType.md)
  - [OASAudienceSharingType](OASAudienceSharingType.md)
  - [OASAudienceSubcategory](OASAudienceSubcategory.md)
  - [OASAudienceType](OASAudienceType.md)
  - [OASAudienceUpdateOperationType](OASAudienceUpdateOperationType.md)
  - [OASAudienceUpdateRequest](OASAudienceUpdateRequest.md)
  - [OASAudiencesList200Response](OASAudiencesList200Response.md)
+ - [OASAuthRespondInvitesBody](OASAuthRespondInvitesBody.md)
+ - [OASAuthRespondInvitesBodyInvitesInne](OASAuthRespondInvitesBodyInvitesInne.md)
  - [OASAvailabilityFilter](OASAvailabilityFilter.md)
+ - [OASBaseInviteDataResponse](OASBaseInviteDataResponse.md)
+ - [OASBaseInviteDataResponseInviteData](OASBaseInviteDataResponseInviteData.md)
  - [OASBatchOperation](OASBatchOperation.md)
  - [OASBatchOperationStatus](OASBatchOperationStatus.md)
  - [OASBidFloor](OASBidFloor.md)
@@ -344,7 +414,23 @@ Class | Method | HTTP request | Description
  - [OASBulkUpsertResponse](OASBulkUpsertResponse.md)
  - [OASBulkUpsertStatus](OASBulkUpsertStatus.md)
  - [OASBulkUpsertStatusResponse](OASBulkUpsertStatusResponse.md)
+ - [OASBusinessAccessError](OASBusinessAccessError.md)
  - [OASBusinessAccessRole](OASBusinessAccessRole.md)
+ - [OASBusinessAccessUserSummary](OASBusinessAccessUserSummary.md)
+ - [OASBusinessAssetMembersGet200Respons](OASBusinessAssetMembersGet200Respons.md)
+ - [OASBusinessAssetPartnersGet200Respon](OASBusinessAssetPartnersGet200Respon.md)
+ - [OASBusinessAssetsGet200Response](OASBusinessAssetsGet200Response.md)
+ - [OASBusinessMemberAssetsGet200Respons](OASBusinessMemberAssetsGet200Respons.md)
+ - [OASBusinessMemberAssetsSummary](OASBusinessMemberAssetsSummary.md)
+ - [OASBusinessMemberAssetsSummaryAdAcco](OASBusinessMemberAssetsSummaryAdAcco.md)
+ - [OASBusinessMemberAssetsSummaryProfil](OASBusinessMemberAssetsSummaryProfil.md)
+ - [OASBusinessMembersAssetAccessDeleteR](OASBusinessMembersAssetAccessDeleteR.md)
+ - [OASBusinessPartnerAssetAccessGet200R](OASBusinessPartnerAssetAccessGet200R.md)
+ - [OASBusinessRole](OASBusinessRole.md)
+ - [OASBusinessRoleCheckMode](OASBusinessRoleCheckMode.md)
+ - [OASBusinessRoleForMembers](OASBusinessRoleForMembers.md)
+ - [OASBusinessSharedAudience](OASBusinessSharedAudience.md)
+ - [OASBusinessSharedAudienceResponse](OASBusinessSharedAudienceResponse.md)
  - [OASCampaignCommon](OASCampaignCommon.md)
  - [OASCampaignCreateCommon](OASCampaignCreateCommon.md)
  - [OASCampaignCreateRequest](OASCampaignCreateRequest.md)
@@ -358,15 +444,35 @@ Class | Method | HTTP request | Description
  - [OASCampaignUpdateResponse](OASCampaignUpdateResponse.md)
  - [OASCampaignsAnalyticsResponseInner](OASCampaignsAnalyticsResponseInner.md)
  - [OASCampaignsList200Response](OASCampaignsList200Response.md)
+ - [OASCancelInvitesBody](OASCancelInvitesBody.md)
  - [OASCatalog](OASCatalog.md)
- - [OASCatalogProductGroup](OASCatalogProductGroup.md)
+ - [OASCatalogsCreateCreativeAssetsItem](OASCatalogsCreateCreativeAssetsItem.md)
  - [OASCatalogsCreateHotelItem](OASCatalogsCreateHotelItem.md)
+ - [OASCatalogsCreateReportResponse](OASCatalogsCreateReportResponse.md)
+ - [OASCatalogsCreateRequest](OASCatalogsCreateRequest.md)
  - [OASCatalogsCreateRetailItem](OASCatalogsCreateRetailItem.md)
+ - [OASCatalogsCreativeAssetsAttributes](OASCatalogsCreativeAssetsAttributes.md)
+ - [OASCatalogsCreativeAssetsBatchItem](OASCatalogsCreativeAssetsBatchItem.md)
+ - [OASCatalogsCreativeAssetsBatchReques](OASCatalogsCreativeAssetsBatchReques.md)
+ - [OASCatalogsCreativeAssetsFeed](OASCatalogsCreativeAssetsFeed.md)
+ - [OASCatalogsCreativeAssetsFeedsCreate](OASCatalogsCreativeAssetsFeedsCreate.md)
+ - [OASCatalogsCreativeAssetsFeedsUpdate](OASCatalogsCreativeAssetsFeedsUpdate.md)
+ - [OASCatalogsCreativeAssetsItemErrorRe](OASCatalogsCreativeAssetsItemErrorRe.md)
+ - [OASCatalogsCreativeAssetsItemRespons](OASCatalogsCreativeAssetsItemRespons.md)
+ - [OASCatalogsCreativeAssetsItemsBatch](OASCatalogsCreativeAssetsItemsBatch.md)
+ - [OASCatalogsCreativeAssetsItemsFilter](OASCatalogsCreativeAssetsItemsFilter.md)
+ - [OASCatalogsCreativeAssetsItemsPostFi](OASCatalogsCreativeAssetsItemsPostFi.md)
+ - [OASCatalogsCreativeAssetsListProduct](OASCatalogsCreativeAssetsListProduct.md)
+ - [OASCatalogsCreativeAssetsProduct](OASCatalogsCreativeAssetsProduct.md)
+ - [OASCatalogsCreativeAssetsProductGrou](OASCatalogsCreativeAssetsProductGrou.md)
+ - [OASCatalogsCreativeAssetsProductMeta](OASCatalogsCreativeAssetsProductMeta.md)
  - [OASCatalogsDbItem](OASCatalogsDbItem.md)
+ - [OASCatalogsDeleteCreativeAssetsItem](OASCatalogsDeleteCreativeAssetsItem.md)
  - [OASCatalogsDeleteHotelItem](OASCatalogsDeleteHotelItem.md)
  - [OASCatalogsDeleteRetailItem](OASCatalogsDeleteRetailItem.md)
  - [OASCatalogsFeed](OASCatalogsFeed.md)
  - [OASCatalogsFeedCredentials](OASCatalogsFeedCredentials.md)
+ - [OASCatalogsFeedIngestion](OASCatalogsFeedIngestion.md)
  - [OASCatalogsFeedIngestionDetails](OASCatalogsFeedIngestionDetails.md)
  - [OASCatalogsFeedIngestionErrors](OASCatalogsFeedIngestionErrors.md)
  - [OASCatalogsFeedIngestionInfo](OASCatalogsFeedIngestionInfo.md)
@@ -395,12 +501,19 @@ Class | Method | HTTP request | Description
  - [OASCatalogsHotelItemResponse](OASCatalogsHotelItemResponse.md)
  - [OASCatalogsHotelItemsBatch](OASCatalogsHotelItemsBatch.md)
  - [OASCatalogsHotelItemsFilter](OASCatalogsHotelItemsFilter.md)
+ - [OASCatalogsHotelItemsPostFilter](OASCatalogsHotelItemsPostFilter.md)
+ - [OASCatalogsHotelListProductsByCatalo](OASCatalogsHotelListProductsByCatalo.md)
+ - [OASCatalogsHotelProduct](OASCatalogsHotelProduct.md)
  - [OASCatalogsHotelProductGroup](OASCatalogsHotelProductGroup.md)
  - [OASCatalogsHotelProductGroupCreateRe](OASCatalogsHotelProductGroupCreateRe.md)
  - [OASCatalogsHotelProductGroupFilterKe](OASCatalogsHotelProductGroupFilterKe.md)
  - [OASCatalogsHotelProductGroupFilters](OASCatalogsHotelProductGroupFilters.md)
  - [OASCatalogsHotelProductGroupFiltersA](OASCatalogsHotelProductGroupFiltersA.md)
+ - [OASCatalogsHotelProductGroupProductC](OASCatalogsHotelProductGroupProductC.md)
  - [OASCatalogsHotelProductGroupUpdateRe](OASCatalogsHotelProductGroupUpdateRe.md)
+ - [OASCatalogsHotelProductMetadata](OASCatalogsHotelProductMetadata.md)
+ - [OASCatalogsHotelReportParameters](OASCatalogsHotelReportParameters.md)
+ - [OASCatalogsHotelReportParametersRepo](OASCatalogsHotelReportParametersRepo.md)
  - [OASCatalogsItemValidationDetails](OASCatalogsItemValidationDetails.md)
  - [OASCatalogsItemValidationErrors](OASCatalogsItemValidationErrors.md)
  - [OASCatalogsItemValidationIssue](OASCatalogsItemValidationIssue.md)
@@ -413,13 +526,16 @@ Class | Method | HTTP request | Description
  - [OASCatalogsItemsDeleteBatchRequest](OASCatalogsItemsDeleteBatchRequest.md)
  - [OASCatalogsItemsDeleteDiscontinuedBa](OASCatalogsItemsDeleteDiscontinuedBa.md)
  - [OASCatalogsItemsFilters](OASCatalogsItemsFilters.md)
+ - [OASCatalogsItemsPostFilters](OASCatalogsItemsPostFilters.md)
+ - [OASCatalogsItemsRequest](OASCatalogsItemsRequest.md)
+ - [OASCatalogsItemsRequestLanguage](OASCatalogsItemsRequestLanguage.md)
  - [OASCatalogsItemsUpdateBatchRequest](OASCatalogsItemsUpdateBatchRequest.md)
  - [OASCatalogsItemsUpsertBatchRequest](OASCatalogsItemsUpsertBatchRequest.md)
  - [OASCatalogsList200Response](OASCatalogsList200Response.md)
+ - [OASCatalogsListProductsByFeedBasedFi](OASCatalogsListProductsByFeedBasedFi.md)
  - [OASCatalogsListProductsByFilterReque](OASCatalogsListProductsByFilterReque.md)
  - [OASCatalogsLocale](OASCatalogsLocale.md)
  - [OASCatalogsProduct](OASCatalogsProduct.md)
- - [OASCatalogsProductGroup](OASCatalogsProductGroup.md)
  - [OASCatalogsProductGroupCreateRequest](OASCatalogsProductGroupCreateRequest.md)
  - [OASCatalogsProductGroupCurrencyCrite](OASCatalogsProductGroupCurrencyCrite.md)
  - [OASCatalogsProductGroupFilterKeys](OASCatalogsProductGroupFilterKeys.md)
@@ -429,6 +545,7 @@ Class | Method | HTTP request | Description
  - [OASCatalogsProductGroupFiltersReques](OASCatalogsProductGroupFiltersReques.md)
  - [OASCatalogsProductGroupMultipleCount](OASCatalogsProductGroupMultipleCount.md)
  - [OASCatalogsProductGroupMultipleGende](OASCatalogsProductGroupMultipleGende.md)
+ - [OASCatalogsProductGroupMultipleMedia](OASCatalogsProductGroupMultipleMedia.md)
  - [OASCatalogsProductGroupMultipleStrin](OASCatalogsProductGroupMultipleStrin.md)
  - [OASCatalogsProductGroupPinsList200Re](OASCatalogsProductGroupPinsList200Re.md)
  - [OASCatalogsProductGroupPricingCriter](OASCatalogsProductGroupPricingCriter.md)
@@ -437,11 +554,15 @@ Class | Method | HTTP request | Description
  - [OASCatalogsProductGroupStatus](OASCatalogsProductGroupStatus.md)
  - [OASCatalogsProductGroupType](OASCatalogsProductGroupType.md)
  - [OASCatalogsProductGroupUpdateRequest](OASCatalogsProductGroupUpdateRequest.md)
- - [OASCatalogsProductGroupsCreate201Res](OASCatalogsProductGroupsCreate201Res.md)
- - [OASCatalogsProductGroupsCreateReques](OASCatalogsProductGroupsCreateReques.md)
  - [OASCatalogsProductGroupsList200Respo](OASCatalogsProductGroupsList200Respo.md)
  - [OASCatalogsProductGroupsUpdateReques](OASCatalogsProductGroupsUpdateReques.md)
- - [OASCatalogsProductMetadata](OASCatalogsProductMetadata.md)
+ - [OASCatalogsReport](OASCatalogsReport.md)
+ - [OASCatalogsReportDistributionIssueFi](OASCatalogsReportDistributionIssueFi.md)
+ - [OASCatalogsReportDistributionStats](OASCatalogsReportDistributionStats.md)
+ - [OASCatalogsReportFeedIngestionFilter](OASCatalogsReportFeedIngestionFilter.md)
+ - [OASCatalogsReportFeedIngestionStats](OASCatalogsReportFeedIngestionStats.md)
+ - [OASCatalogsReportParameters](OASCatalogsReportParameters.md)
+ - [OASCatalogsReportStats](OASCatalogsReportStats.md)
  - [OASCatalogsRetailBatchRequest](OASCatalogsRetailBatchRequest.md)
  - [OASCatalogsRetailBatchRequestItemsIn](OASCatalogsRetailBatchRequestItemsIn.md)
  - [OASCatalogsRetailFeed](OASCatalogsRetailFeed.md)
@@ -451,12 +572,23 @@ Class | Method | HTTP request | Description
  - [OASCatalogsRetailItemResponse](OASCatalogsRetailItemResponse.md)
  - [OASCatalogsRetailItemsBatch](OASCatalogsRetailItemsBatch.md)
  - [OASCatalogsRetailItemsFilter](OASCatalogsRetailItemsFilter.md)
+ - [OASCatalogsRetailItemsPostFilter](OASCatalogsRetailItemsPostFilter.md)
+ - [OASCatalogsRetailListProductsByCatal](OASCatalogsRetailListProductsByCatal.md)
+ - [OASCatalogsRetailProduct](OASCatalogsRetailProduct.md)
  - [OASCatalogsRetailProductGroup](OASCatalogsRetailProductGroup.md)
+ - [OASCatalogsRetailProductGroupCreateR](OASCatalogsRetailProductGroupCreateR.md)
+ - [OASCatalogsRetailProductGroupProduct](OASCatalogsRetailProductGroupProduct.md)
+ - [OASCatalogsRetailProductGroupUpdateR](OASCatalogsRetailProductGroupUpdateR.md)
+ - [OASCatalogsRetailProductMetadata](OASCatalogsRetailProductMetadata.md)
+ - [OASCatalogsRetailReportParameters](OASCatalogsRetailReportParameters.md)
  - [OASCatalogsStatus](OASCatalogsStatus.md)
  - [OASCatalogsType](OASCatalogsType.md)
+ - [OASCatalogsUpdatableCreativeAssetsAt](OASCatalogsUpdatableCreativeAssetsAt.md)
  - [OASCatalogsUpdatableHotelAttributes](OASCatalogsUpdatableHotelAttributes.md)
+ - [OASCatalogsUpdateCreativeAssetsItem](OASCatalogsUpdateCreativeAssetsItem.md)
  - [OASCatalogsUpdateHotelItem](OASCatalogsUpdateHotelItem.md)
  - [OASCatalogsUpdateRetailItem](OASCatalogsUpdateRetailItem.md)
+ - [OASCatalogsUpsertCreativeAssetsItem](OASCatalogsUpsertCreativeAssetsItem.md)
  - [OASCatalogsUpsertHotelItem](OASCatalogsUpsertHotelItem.md)
  - [OASCatalogsUpsertRetailItem](OASCatalogsUpsertRetailItem.md)
  - [OASCatalogsVerticalBatchRequest](OASCatalogsVerticalBatchRequest.md)
@@ -465,6 +597,7 @@ Class | Method | HTTP request | Description
  - [OASCatalogsVerticalProductGroup](OASCatalogsVerticalProductGroup.md)
  - [OASCatalogsVerticalProductGroupCreat](OASCatalogsVerticalProductGroupCreat.md)
  - [OASCatalogsVerticalProductGroupUpdat](OASCatalogsVerticalProductGroupUpdat.md)
+ - [OASCatalogsVerticalsListProductsByCa](OASCatalogsVerticalsListProductsByCa.md)
  - [OASConditionFilter](OASConditionFilter.md)
  - [OASConversionApiResponse](OASConversionApiResponse.md)
  - [OASConversionApiResponseEventsInner](OASConversionApiResponseEventsInner.md)
@@ -474,6 +607,9 @@ Class | Method | HTTP request | Description
  - [OASConversionEventsDataInner](OASConversionEventsDataInner.md)
  - [OASConversionEventsDataInnerCustomDa](OASConversionEventsDataInnerCustomDa.md)
  - [OASConversionEventsUserData](OASConversionEventsUserData.md)
+ - [OASConversionEventsUserDataAnyOf](OASConversionEventsUserDataAnyOf.md)
+ - [OASConversionEventsUserDataAnyOf1](OASConversionEventsUserDataAnyOf1.md)
+ - [OASConversionEventsUserDataAnyOf2](OASConversionEventsUserDataAnyOf2.md)
  - [OASConversionReportAttributionType](OASConversionReportAttributionType.md)
  - [OASConversionReportTimeType](OASConversionReportTimeType.md)
  - [OASConversionTagCommon](OASConversionTagCommon.md)
@@ -484,9 +620,22 @@ Class | Method | HTTP request | Description
  - [OASConversionTagType](OASConversionTagType.md)
  - [OASCountry](OASCountry.md)
  - [OASCountryFilter](OASCountryFilter.md)
+ - [OASCreateAssetAccessRequestBody](OASCreateAssetAccessRequestBody.md)
+ - [OASCreateAssetAccessRequestBodyAsset](OASCreateAssetAccessRequestBodyAsset.md)
+ - [OASCreateAssetAccessRequestErrorMess](OASCreateAssetAccessRequestErrorMess.md)
+ - [OASCreateAssetAccessRequestResponse](OASCreateAssetAccessRequestResponse.md)
+ - [OASCreateAssetGroupBody](OASCreateAssetGroupBody.md)
+ - [OASCreateAssetGroupResponse](OASCreateAssetGroupResponse.md)
+ - [OASCreateAssetInvitesRequest](OASCreateAssetInvitesRequest.md)
+ - [OASCreateAssetInvitesRequestItem](OASCreateAssetInvitesRequestItem.md)
+ - [OASCreateInvitesResultsResponseArray](OASCreateInvitesResultsResponseArray.md)
  - [OASCreateMMMReportRequest](OASCreateMMMReportRequest.md)
  - [OASCreateMMMReportResponse](OASCreateMMMReportResponse.md)
  - [OASCreateMMMReportResponseData](OASCreateMMMReportResponseData.md)
+ - [OASCreateMembershipOrPartnershipInvi](OASCreateMembershipOrPartnershipInvi.md)
+ - [OASCreativeAssetsIdFilter](OASCreativeAssetsIdFilter.md)
+ - [OASCreativeAssetsProcessingRecord](OASCreativeAssetsProcessingRecord.md)
+ - [OASCreativeAssetsVisibilityType](OASCreativeAssetsVisibilityType.md)
  - [OASCreativeType](OASCreativeType.md)
  - [OASCurrency](OASCurrency.md)
  - [OASCurrencyFilter](OASCurrencyFilter.md)
@@ -501,6 +650,19 @@ Class | Method | HTTP request | Description
  - [OASCustomerListsList200Response](OASCustomerListsList200Response.md)
  - [OASDataOutputFormat](OASDataOutputFormat.md)
  - [OASDataStatus](OASDataStatus.md)
+ - [OASDeleteAssetGroupBody](OASDeleteAssetGroupBody.md)
+ - [OASDeleteAssetGroupResponse](OASDeleteAssetGroupResponse.md)
+ - [OASDeleteAssetGroupResponseException](OASDeleteAssetGroupResponseException.md)
+ - [OASDeleteInvitesResultsResponseArray](OASDeleteInvitesResultsResponseArray.md)
+ - [OASDeleteMemberAccessResult](OASDeleteMemberAccessResult.md)
+ - [OASDeleteMemberAccessResultsResponse](OASDeleteMemberAccessResultsResponse.md)
+ - [OASDeletePartnerAssetAccessBody](OASDeletePartnerAssetAccessBody.md)
+ - [OASDeletePartnerAssetAccessBodyAcces](OASDeletePartnerAssetAccessBodyAcces.md)
+ - [OASDeletePartnerAssetsResult](OASDeletePartnerAssetsResult.md)
+ - [OASDeletePartnerAssetsResultsRespons](OASDeletePartnerAssetsResultsRespons.md)
+ - [OASDeletePartnersRequest](OASDeletePartnersRequest.md)
+ - [OASDeletePartnersResponse](OASDeletePartnersResponse.md)
+ - [OASDeletedMembersResponse](OASDeletedMembersResponse.md)
  - [OASDeliveryMetricsResponse](OASDeliveryMetricsResponse.md)
  - [OASDeliveryMetricsResponseItemsInner](OASDeliveryMetricsResponseItemsInner.md)
  - [OASDetailedError](OASDetailedError.md)
@@ -517,8 +679,15 @@ Class | Method | HTTP request | Description
  - [OASGender](OASGender.md)
  - [OASGenderFilter](OASGenderFilter.md)
  - [OASGetAudiencesOrderBy](OASGetAudiencesOrderBy.md)
+ - [OASGetBusinessAssetTypeResponse](OASGetBusinessAssetTypeResponse.md)
+ - [OASGetBusinessAssetsResponse](OASGetBusinessAssetsResponse.md)
+ - [OASGetBusinessEmployers200Response](OASGetBusinessEmployers200Response.md)
+ - [OASGetBusinessMembers200Response](OASGetBusinessMembers200Response.md)
+ - [OASGetBusinessPartners200Response](OASGetBusinessPartners200Response.md)
+ - [OASGetInvites200Response](OASGetInvites200Response.md)
  - [OASGetMMMReportResponse](OASGetMMMReportResponse.md)
  - [OASGetMMMReportResponseData](OASGetMMMReportResponseData.md)
+ - [OASGetPartnerAssetsResponse](OASGetPartnerAssetsResponse.md)
  - [OASGoogleProductCategory0Filter](OASGoogleProductCategory0Filter.md)
  - [OASGoogleProductCategory1Filter](OASGoogleProductCategory1Filter.md)
  - [OASGoogleProductCategory2Filter](OASGoogleProductCategory2Filter.md)
@@ -545,7 +714,17 @@ Class | Method | HTTP request | Description
  - [OASIntegrationRequestPatch](OASIntegrationRequestPatch.md)
  - [OASIntegrationsGetList200Response](OASIntegrationsGetList200Response.md)
  - [OASInterest](OASInterest.md)
+ - [OASInviteAssetsSummary](OASInviteAssetsSummary.md)
+ - [OASInviteAssetsSummaryAdAccountsInne](OASInviteAssetsSummaryAdAccountsInne.md)
+ - [OASInviteAssetsSummaryProfilesInner](OASInviteAssetsSummaryProfilesInner.md)
+ - [OASInviteBusinessRoleBinding](OASInviteBusinessRoleBinding.md)
+ - [OASInviteExceptionResponse](OASInviteExceptionResponse.md)
+ - [OASInviteResponse](OASInviteResponse.md)
+ - [OASInviteStatus](OASInviteStatus.md)
+ - [OASInviteType](OASInviteType.md)
  - [OASItemAttributes](OASItemAttributes.md)
+ - [OASItemAttributesRequest](OASItemAttributesRequest.md)
+ - [OASItemAttributesRequestAllOfImageLi](OASItemAttributesRequestAllOfImageLi.md)
  - [OASItemBatchRecord](OASItemBatchRecord.md)
  - [OASItemCreateBatchRecord](OASItemCreateBatchRecord.md)
  - [OASItemDeleteBatchRecord](OASItemDeleteBatchRecord.md)
@@ -574,7 +753,11 @@ Class | Method | HTTP request | Description
  - [OASKeywordsRequest](OASKeywordsRequest.md)
  - [OASKeywordsResponse](OASKeywordsResponse.md)
  - [OASLanguage](OASLanguage.md)
+ - [OASLeadFormArrayResponse](OASLeadFormArrayResponse.md)
+ - [OASLeadFormArrayResponseItemsInner](OASLeadFormArrayResponseItemsInner.md)
  - [OASLeadFormCommon](OASLeadFormCommon.md)
+ - [OASLeadFormCommonPolicyLinksInner](OASLeadFormCommonPolicyLinksInner.md)
+ - [OASLeadFormCreateRequest](OASLeadFormCreateRequest.md)
  - [OASLeadFormQuestion](OASLeadFormQuestion.md)
  - [OASLeadFormQuestionFieldType](OASLeadFormQuestionFieldType.md)
  - [OASLeadFormQuestionType](OASLeadFormQuestionType.md)
@@ -582,7 +765,12 @@ Class | Method | HTTP request | Description
  - [OASLeadFormStatus](OASLeadFormStatus.md)
  - [OASLeadFormTestRequest](OASLeadFormTestRequest.md)
  - [OASLeadFormTestResponse](OASLeadFormTestResponse.md)
+ - [OASLeadFormUpdateRequest](OASLeadFormUpdateRequest.md)
  - [OASLeadFormsList200Response](OASLeadFormsList200Response.md)
+ - [OASLeadsExportCreateRequest](OASLeadsExportCreateRequest.md)
+ - [OASLeadsExportCreateResponse](OASLeadsExportCreateResponse.md)
+ - [OASLeadsExportResponseData](OASLeadsExportResponseData.md)
+ - [OASLeadsExportStatus](OASLeadsExportStatus.md)
  - [OASLineItem](OASLineItem.md)
  - [OASLinkedBusiness](OASLinkedBusiness.md)
  - [OASMMMReportingColumn](OASMMMReportingColumn.md)
@@ -591,27 +779,36 @@ Class | Method | HTTP request | Description
  - [OASMatchTypeResponse](OASMatchTypeResponse.md)
  - [OASMaxPriceFilter](OASMaxPriceFilter.md)
  - [OASMediaList200Response](OASMediaList200Response.md)
+ - [OASMediaType](OASMediaType.md)
+ - [OASMediaTypeFilter](OASMediaTypeFilter.md)
  - [OASMediaUpload](OASMediaUpload.md)
  - [OASMediaUploadAllOfUploadParameters](OASMediaUploadAllOfUploadParameters.md)
  - [OASMediaUploadDetails](OASMediaUploadDetails.md)
  - [OASMediaUploadRequest](OASMediaUploadRequest.md)
  - [OASMediaUploadStatus](OASMediaUploadStatus.md)
  - [OASMediaUploadType](OASMediaUploadType.md)
+ - [OASMemberBusinessRole](OASMemberBusinessRole.md)
+ - [OASMembersToDeleteBody](OASMembersToDeleteBody.md)
+ - [OASMembersToDeleteBodyMembersInner](OASMembersToDeleteBodyMembersInner.md)
  - [OASMetricsReportingLevel](OASMetricsReportingLevel.md)
  - [OASMetricsResponse](OASMetricsResponse.md)
  - [OASMinPriceFilter](OASMinPriceFilter.md)
+ - [OASMultipleProductGroupsInner](OASMultipleProductGroupsInner.md)
  - [OASNonNullableCatalogsCurrency](OASNonNullableCatalogsCurrency.md)
  - [OASNonNullableProductAvailabilityTyp](OASNonNullableProductAvailabilityTyp.md)
  - [OASNullableCatalogsItemFieldType](OASNullableCatalogsItemFieldType.md)
  - [OASNullableCurrency](OASNullableCurrency.md)
+ - [OASOauthAccessTokenRequestClientCred](OASOauthAccessTokenRequestClientCred.md)
  - [OASOauthAccessTokenRequestCode](OASOauthAccessTokenRequestCode.md)
  - [OASOauthAccessTokenRequestRefresh](OASOauthAccessTokenRequestRefresh.md)
  - [OASOauthAccessTokenResponse](OASOauthAccessTokenResponse.md)
+ - [OASOauthAccessTokenResponseClientCre](OASOauthAccessTokenResponseClientCre.md)
  - [OASOauthAccessTokenResponseCode](OASOauthAccessTokenResponseCode.md)
  - [OASOauthAccessTokenResponseEverlasti](OASOauthAccessTokenResponseEverlasti.md)
  - [OASOauthAccessTokenResponseIntegrati](OASOauthAccessTokenResponseIntegrati.md)
  - [OASOauthAccessTokenResponseRefresh](OASOauthAccessTokenResponseRefresh.md)
  - [OASObjectiveType](OASObjectiveType.md)
+ - [OASOperationType](OASOperationType.md)
  - [OASOptimizationGoalMetadata](OASOptimizationGoalMetadata.md)
  - [OASOptimizationGoalMetadataConversio](OASOptimizationGoalMetadataConversio.md)
  - [OASOptimizationGoalMetadataFrequency](OASOptimizationGoalMetadataFrequency.md)
@@ -629,6 +826,8 @@ Class | Method | HTTP request | Description
  - [OASPageVisitConversionTagsGet200Resp](OASPageVisitConversionTagsGet200Resp.md)
  - [OASPaginated](OASPaginated.md)
  - [OASPartnerType](OASPartnerType.md)
+ - [OASPermissions](OASPermissions.md)
+ - [OASPermissionsWithOwner](OASPermissionsWithOwner.md)
  - [OASPin](OASPin.md)
  - [OASPinAnalyticsMetricsResponse](OASPinAnalyticsMetricsResponse.md)
  - [OASPinAnalyticsMetricsResponseDailyM](OASPinAnalyticsMetricsResponseDailyM.md)
@@ -645,6 +844,7 @@ Class | Method | HTTP request | Description
  - [OASPinMediaSourcePinURL](OASPinMediaSourcePinURL.md)
  - [OASPinMediaSourceVideoID](OASPinMediaSourceVideoID.md)
  - [OASPinMediaWithImage](OASPinMediaWithImage.md)
+ - [OASPinMediaWithImageAllOfImages](OASPinMediaWithImageAllOfImages.md)
  - [OASPinMediaWithImageAndVideo](OASPinMediaWithImageAndVideo.md)
  - [OASPinMediaWithImages](OASPinMediaWithImages.md)
  - [OASPinMediaWithVideo](OASPinMediaWithVideo.md)
@@ -657,15 +857,18 @@ Class | Method | HTTP request | Description
  - [OASPinsSaveRequest](OASPinsSaveRequest.md)
  - [OASPinterestTagEventData](OASPinterestTagEventData.md)
  - [OASPlacementGroupType](OASPlacementGroupType.md)
+ - [OASPlacementMultipliers](OASPlacementMultipliers.md)
  - [OASPriceFilter](OASPriceFilter.md)
  - [OASProductAvailabilityType](OASProductAvailabilityType.md)
  - [OASProductGroupAnalyticsResponseInne](OASProductGroupAnalyticsResponseInne.md)
  - [OASProductGroupPromotion](OASProductGroupPromotion.md)
  - [OASProductGroupPromotionCreateReques](OASProductGroupPromotionCreateReques.md)
  - [OASProductGroupPromotionResponse](OASProductGroupPromotionResponse.md)
+ - [OASProductGroupPromotionResponseElem](OASProductGroupPromotionResponseElem.md)
  - [OASProductGroupPromotionResponseItem](OASProductGroupPromotionResponseItem.md)
  - [OASProductGroupPromotionUpdateReques](OASProductGroupPromotionUpdateReques.md)
  - [OASProductGroupPromotionsList200Resp](OASProductGroupPromotionsList200Resp.md)
+ - [OASProductGroupReferenceFilter](OASProductGroupReferenceFilter.md)
  - [OASProductGroupSummaryStatus](OASProductGroupSummaryStatus.md)
  - [OASProductType0Filter](OASProductType0Filter.md)
  - [OASProductType1Filter](OASProductType1Filter.md)
@@ -679,6 +882,9 @@ Class | Method | HTTP request | Description
  - [OASRelatedTerms](OASRelatedTerms.md)
  - [OASRelatedTermsRelatedTermsListInner](OASRelatedTermsRelatedTermsListInner.md)
  - [OASReportingColumnAsync](OASReportingColumnAsync.md)
+ - [OASReportsStats200Response](OASReportsStats200Response.md)
+ - [OASRespondToInvitesResponseArray](OASRespondToInvitesResponseArray.md)
+ - [OASRespondToInvitesResponseArrayItem](OASRespondToInvitesResponseArrayItem.md)
  - [OASRole](OASRole.md)
  - [OASSSIOAccountAddress](OASSSIOAccountAddress.md)
  - [OASSSIOAccountItem](OASSSIOAccountItem.md)
@@ -694,14 +900,28 @@ Class | Method | HTTP request | Description
  - [OASSSIOOrderLine](OASSSIOOrderLine.md)
  - [OASSearchPartnerPins200Response](OASSearchPartnerPins200Response.md)
  - [OASSearchUserBoardsGet200Response](OASSearchUserBoardsGet200Response.md)
+ - [OASSharedAudience](OASSharedAudience.md)
+ - [OASSharedAudienceAccount](OASSharedAudienceAccount.md)
+ - [OASSharedAudienceCommon](OASSharedAudienceCommon.md)
+ - [OASSharedAudienceResponse](OASSharedAudienceResponse.md)
+ - [OASSharedAudienceResponseCommon](OASSharedAudienceResponseCommon.md)
  - [OASSingleInterestTargetingOptionResp](OASSingleInterestTargetingOptionResp.md)
  - [OASSsioInsertionOrdersStatusGetByAdA](OASSsioInsertionOrdersStatusGetByAdA.md)
  - [OASSsioOrderLinesGetByAdAccount200Re](OASSsioOrderLinesGetByAdAccount200Re.md)
  - [OASSummaryPin](OASSummaryPin.md)
- - [OASSummaryPinMedia](OASSummaryPinMedia.md)
  - [OASTargetingAdvertiserCountry](OASTargetingAdvertiserCountry.md)
  - [OASTargetingSpec](OASTargetingSpec.md)
+ - [OASTargetingSpecAppType](OASTargetingSpecAppType.md)
  - [OASTargetingSpecSHOPPINGRETARGETING](OASTargetingSpecSHOPPINGRETARGETING.md)
+ - [OASTargetingTemplateAudienceSizing](OASTargetingTemplateAudienceSizing.md)
+ - [OASTargetingTemplateAudienceSizingRe](OASTargetingTemplateAudienceSizingRe.md)
+ - [OASTargetingTemplateCommon](OASTargetingTemplateCommon.md)
+ - [OASTargetingTemplateCreate](OASTargetingTemplateCreate.md)
+ - [OASTargetingTemplateGetResponseData](OASTargetingTemplateGetResponseData.md)
+ - [OASTargetingTemplateKeyword](OASTargetingTemplateKeyword.md)
+ - [OASTargetingTemplateList200Response](OASTargetingTemplateList200Response.md)
+ - [OASTargetingTemplateResponseData](OASTargetingTemplateResponseData.md)
+ - [OASTargetingTemplateUpdateRequest](OASTargetingTemplateUpdateRequest.md)
  - [OASTargetingTypeFilter](OASTargetingTypeFilter.md)
  - [OASTemplateResponse](OASTemplateResponse.md)
  - [OASTemplateResponseDateRange](OASTemplateResponseDateRange.md)
@@ -721,17 +941,37 @@ Class | Method | HTTP request | Description
  - [OASTrendingKeywordsResponseTrendsInn](OASTrendingKeywordsResponseTrendsInn.md)
  - [OASTrendsSupportedRegion](OASTrendsSupportedRegion.md)
  - [OASUpdatableItemAttributes](OASUpdatableItemAttributes.md)
+ - [OASUpdateAssetGroupBody](OASUpdateAssetGroupBody.md)
+ - [OASUpdateAssetGroupBodyAssetGroupsTo](OASUpdateAssetGroupBodyAssetGroupsTo.md)
+ - [OASUpdateAssetGroupResponse](OASUpdateAssetGroupResponse.md)
+ - [OASUpdateAssetGroupResponseException](OASUpdateAssetGroupResponseException.md)
+ - [OASUpdateInvitesResultsResponseArray](OASUpdateInvitesResultsResponseArray.md)
+ - [OASUpdateMaskBidOptionField](OASUpdateMaskBidOptionField.md)
  - [OASUpdateMaskFieldType](OASUpdateMaskFieldType.md)
+ - [OASUpdateMemberAssetAccessBody](OASUpdateMemberAssetAccessBody.md)
+ - [OASUpdateMemberAssetAccessBodyAccess](OASUpdateMemberAssetAccessBodyAccess.md)
+ - [OASUpdateMemberAssetsResultsResponse](OASUpdateMemberAssetsResultsResponse.md)
+ - [OASUpdateMemberBusinessRoleBody](OASUpdateMemberBusinessRoleBody.md)
+ - [OASUpdateMemberResult](OASUpdateMemberResult.md)
+ - [OASUpdateMemberResultsResponseArray](OASUpdateMemberResultsResponseArray.md)
+ - [OASUpdatePartnerAssetAccessBody](OASUpdatePartnerAssetAccessBody.md)
+ - [OASUpdatePartnerAssetAccessBodyAcces](OASUpdatePartnerAssetAccessBodyAcces.md)
+ - [OASUpdatePartnerAssetsResult](OASUpdatePartnerAssetsResult.md)
+ - [OASUpdatePartnerAssetsResultsRespons](OASUpdatePartnerAssetsResultsRespons.md)
+ - [OASUpdatePartnerResultsResponseArray](OASUpdatePartnerResultsResponseArray.md)
  - [OASUserAccountFollowedInterests200Re](OASUserAccountFollowedInterests200Re.md)
+ - [OASUserBusinessRoleBinding](OASUserBusinessRoleBinding.md)
  - [OASUserFollowingFeedType](OASUserFollowingFeedType.md)
  - [OASUserFollowingGet200Response](OASUserFollowingGet200Response.md)
  - [OASUserListOperationType](OASUserListOperationType.md)
  - [OASUserListType](OASUserListType.md)
+ - [OASUserSingleAssetBinding](OASUserSingleAssetBinding.md)
  - [OASUserSummary](OASUserSummary.md)
  - [OASUserWebsiteSummary](OASUserWebsiteSummary.md)
  - [OASUserWebsiteVerificationCode](OASUserWebsiteVerificationCode.md)
  - [OASUserWebsiteVerifyRequest](OASUserWebsiteVerifyRequest.md)
  - [OASUserWebsitesGet200Response](OASUserWebsitesGet200Response.md)
+ - [OASUsersForIndividualAssetResponse](OASUsersForIndividualAssetResponse.md)
  - [OASVideoMetadata](OASVideoMetadata.md)
 
 
@@ -771,6 +1011,31 @@ Authentication schemes defined for the API:
 ### basic
 
 - **Type**: HTTP basic authentication
+
+### client_credentials
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: 
+  - ads:read: See all of your advertising data, including ads, ad groups, campaigns etc.
+  - ads:write: Create, update, or delete ads, ad groups, campaigns etc.
+  - billing:read: See all of your billing data, billing profile, etc.
+  - billing:write: Create, update, or delete billing data, billing profiles, etc.
+  - biz_access:read: See business access data
+  - biz_access:write: Create, update, or delete business access data
+  - boards:read: See your public boards, including group boards you join
+  - boards:read_secret: See your secret boards
+  - boards:write: Create, update, or delete your public boards
+  - boards:write_secret: Create, update, or delete your secret boards
+  - catalogs:read: See all of your catalogs data
+  - catalogs:write: Create, update, or delete your catalogs data
+  - pins:read: See your public Pins
+  - pins:read_secret: See your secret Pins
+  - pins:write: Create, update, or delete your public Pins
+  - pins:write_secret: Create, update, or delete your secret Pins
+  - user_accounts:read: See your user accounts and followers
+  - user_accounts:write: Update your user accounts and followers
 
 
 ## Author

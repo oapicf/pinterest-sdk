@@ -18,7 +18,7 @@ your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:pinterest_restapi, "~> 5.12.0"}]
+  [{:pinterest_restapi, "~> 1.0.0"}]
 end
 ```
 

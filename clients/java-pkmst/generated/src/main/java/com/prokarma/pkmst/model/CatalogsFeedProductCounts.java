@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "The counts can be null early in the process.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedProductCounts   {
   @JsonProperty("original")
   private Integer original;
@@ -28,10 +28,10 @@ public class CatalogsFeedProductCounts   {
     return this;
   }
 
-   /**
+  /**
    * The number of products in the feed file.
    * @return original
-  **/
+   */
   @ApiModelProperty(value = "The number of products in the feed file.")
   public Integer getOriginal() {
     return original;
@@ -46,10 +46,10 @@ public class CatalogsFeedProductCounts   {
     return this;
   }
 
-   /**
+  /**
    * The number of products successfully ingested from the feed file.
    * @return ingested
-  **/
+   */
   @ApiModelProperty(value = "The number of products successfully ingested from the feed file.")
   public Integer getIngested() {
     return ingested;

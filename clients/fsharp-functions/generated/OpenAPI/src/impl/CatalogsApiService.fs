@@ -1,17 +1,23 @@
 namespace OpenAPI
+open OpenAPI.Model.Catalog
+open OpenAPI.Model.CatalogsCreateReportResponse
+open OpenAPI.Model.CatalogsCreateRequest
 open OpenAPI.Model.CatalogsFeed
+open OpenAPI.Model.CatalogsFeedIngestion
 open OpenAPI.Model.CatalogsItemValidationIssue
 open OpenAPI.Model.CatalogsItems
 open OpenAPI.Model.CatalogsItemsBatch
 open OpenAPI.Model.CatalogsItemsFilters
+open OpenAPI.Model.CatalogsItemsRequest
 open OpenAPI.Model.CatalogsList200Response
 open OpenAPI.Model.CatalogsListProductsByFilterRequest
 open OpenAPI.Model.CatalogsProductGroupPinsList200Response
-open OpenAPI.Model.CatalogsProductGroupProductCounts
-open OpenAPI.Model.CatalogsProductGroupsCreate201Response
-open OpenAPI.Model.CatalogsProductGroupsCreateRequest
+open OpenAPI.Model.CatalogsProductGroupProductCountsVertical
 open OpenAPI.Model.CatalogsProductGroupsList200Response
 open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
+open OpenAPI.Model.CatalogsReport
+open OpenAPI.Model.CatalogsReportParameters
+open OpenAPI.Model.CatalogsVerticalProductGroup
 open OpenAPI.Model.Error
 open OpenAPI.Model.FeedProcessingResultsList200Response
 open OpenAPI.Model.FeedsCreateRequest
@@ -19,6 +25,8 @@ open OpenAPI.Model.FeedsList200Response
 open OpenAPI.Model.FeedsUpdateRequest
 open OpenAPI.Model.ItemsBatchPostRequest
 open OpenAPI.Model.ItemsIssuesList200Response
+open OpenAPI.Model.MultipleProductGroupsInner
+open OpenAPI.Model.ReportsStats200Response
 open CatalogsApiHandlerParams
 open CatalogsApiServiceInterface
 open System.Collections.Generic
@@ -29,6 +37,20 @@ module CatalogsApiServiceImplementation =
     //#region Service implementation
     type CatalogsApiServiceImpl() =
       interface ICatalogsApiService with
+
+        member this.CatalogsCreate (parameters:CatalogsCreateBodyParams) =
+          if true then
+            let content = "Success" :> obj :?> Catalog // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsCreateStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsCreateStatusCode400 { content = content }
+          else if true then
+            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsCreateStatusCode401 { content = content }
+          else
+            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsCreateDefaultStatusCode { content = content }
 
         member this.CatalogsList () =
           if true then
@@ -63,7 +85,7 @@ module CatalogsApiServiceImplementation =
 
         member this.CatalogsProductGroupsCreate (parameters:CatalogsProductGroupsCreateBodyParams) =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupsCreate201Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Success" :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateStatusCode201 { content = content }
           else if true then
             let content = "Invalid body." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
@@ -80,6 +102,26 @@ module CatalogsApiServiceImplementation =
           else
             let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsCreateDefaultStatusCode { content = content }
+
+        member this.CatalogsProductGroupsCreateMany (parameters:CatalogsProductGroupsCreateManyBodyParams) =
+          if true then
+            let content = "Success" :> obj :?> string[] // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyStatusCode201 { content = content }
+          else if true then
+            let content = "Invalid body." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyStatusCode400 { content = content }
+          else if true then
+            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyStatusCode401 { content = content }
+          else if true then
+            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyStatusCode403 { content = content }
+          else if true then
+            let content = "Conflict. Can&#39;t create this catalogs product group with this value." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyStatusCode409 { content = content }
+          else
+            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsCreateManyDefaultStatusCode { content = content }
 
         member this.CatalogsProductGroupsDelete () =
           if true then
@@ -104,9 +146,29 @@ module CatalogsApiServiceImplementation =
             let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsDeleteDefaultStatusCode { content = content }
 
+        member this.CatalogsProductGroupsDeleteMany () =
+          if true then
+            let content = "Catalogs Product Groups deleted successfully." 
+            CatalogsProductGroupsDeleteManyStatusCode204 { content = content }
+          else if true then
+            let content = "Unauthorized access." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteManyStatusCode401 { content = content }
+          else if true then
+            let content = "Forbidden. Account not approved for catalog product group mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteManyStatusCode403 { content = content }
+          else if true then
+            let content = "Catalogs product group not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteManyStatusCode404 { content = content }
+          else if true then
+            let content = "Conflict. Can&#39;t delete this catalogs product group." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteManyStatusCode409 { content = content }
+          else
+            let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            CatalogsProductGroupsDeleteManyDefaultStatusCode { content = content }
+
         member this.CatalogsProductGroupsGet () =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupsCreate201Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Success" :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsGetStatusCode200 { content = content }
           else if true then
             let content = "Invalid catalogs product group id parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
@@ -152,7 +214,7 @@ module CatalogsApiServiceImplementation =
 
         member this.CatalogsProductGroupsProductCountsGet () =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupProductCounts // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Success" :> obj :?> CatalogsProductGroupProductCountsVertical // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsProductCountsGetStatusCode200 { content = content }
           else if true then
             let content = "Product Group Not Found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
@@ -166,7 +228,7 @@ module CatalogsApiServiceImplementation =
 
         member this.CatalogsProductGroupsUpdate (parameters:CatalogsProductGroupsUpdateBodyParams) =
           if true then
-            let content = "Success" :> obj :?> CatalogsProductGroupsCreate201Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Success" :> obj :?> CatalogsVerticalProductGroup // this cast is obviously wrong, and is only intended to allow generated project to compile   
             CatalogsProductGroupsUpdateStatusCode200 { content = content }
           else if true then
             let content = "Invalid parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
@@ -266,6 +328,23 @@ module CatalogsApiServiceImplementation =
           else
             let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             FeedsGetDefaultStatusCode { content = content }
+
+        member this.FeedsIngest () =
+          if true then
+            let content = "The ingestion process was successfully started." :> obj :?> CatalogsFeedIngestion // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            FeedsIngestStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid feed parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            FeedsIngestStatusCode400 { content = content }
+          else if true then
+            let content = "Forbidden. Account not approved for feed mutations yet." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            FeedsIngestStatusCode403 { content = content }
+          else if true then
+            let content = "Data feed not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            FeedsIngestStatusCode404 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            FeedsIngestDefaultStatusCode { content = content }
 
         member this.FeedsList () =
           if true then
@@ -369,6 +448,23 @@ module CatalogsApiServiceImplementation =
             let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             ItemsIssuesListDefaultStatusCode { content = content }
 
+        member this.ItemsPost (parameters:ItemsPostBodyParams) =
+          if true then
+            let content = "Response containing the requested catalogs items" :> obj :?> CatalogsItems // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ItemsPostStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid request" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ItemsPostStatusCode400 { content = content }
+          else if true then
+            let content = "Not authorized to access catalogs items" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ItemsPostStatusCode401 { content = content }
+          else if true then
+            let content = "Not authorized to access catalogs items" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ItemsPostStatusCode403 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ItemsPostDefaultStatusCode { content = content }
+
         member this.ProductsByProductGroupFilterList (parameters:ProductsByProductGroupFilterListBodyParams) =
           if true then
             let content = "Success" :> obj :?> CatalogsProductGroupPinsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
@@ -382,6 +478,45 @@ module CatalogsApiServiceImplementation =
           else
             let content = "Unexpected error." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             ProductsByProductGroupFilterListDefaultStatusCode { content = content }
+
+        member this.ReportsCreate (parameters:ReportsCreateBodyParams) =
+          if true then
+            let content = "Response containing the report token" :> obj :?> CatalogsCreateReportResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsCreateStatusCode200 { content = content }
+          else if true then
+            let content = "Entity (e.g., catalog, feed or processing_result) not found" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsCreateStatusCode404 { content = content }
+          else if true then
+            let content = "Can&#39;t access this feature without an existing catalog." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsCreateStatusCode409 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsCreateDefaultStatusCode { content = content }
+
+        member this.ReportsGet () =
+          if true then
+            let content = "Response that contains a link to download the report" :> obj :?> CatalogsReport // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsGetStatusCode200 { content = content }
+          else if true then
+            let content = "The token you provided is not valid or has expired." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsGetStatusCode400 { content = content }
+          else if true then
+            let content = "Can&#39;t access this feature without an existing catalog." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsGetStatusCode409 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsGetDefaultStatusCode { content = content }
+
+        member this.ReportsStats () =
+          if true then
+            let content = "Response containing the diagnostics aggregated counters" :> obj :?> ReportsStats200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsStatsStatusCode200 { content = content }
+          else if true then
+            let content = "Not authorized to access catalogs" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsStatsStatusCode401 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            ReportsStatsDefaultStatusCode { content = content }
 
       //#endregion
 

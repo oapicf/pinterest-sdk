@@ -22,23 +22,23 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "TrackingUrls", description = "Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrackingUrls {
 
   @Valid
-  private List<String> impression;
+  private List<String> impression = new ArrayList<>();
 
   @Valid
-  private List<String> click;
+  private List<String> click = new ArrayList<>();
 
   @Valid
-  private List<String> engagement;
+  private List<String> engagement = new ArrayList<>();
 
   @Valid
-  private List<String> buyableButton;
+  private List<String> buyableButton = new ArrayList<>();
 
   @Valid
-  private List<String> audienceVerification;
+  private List<String> audienceVerification = new ArrayList<>();
 
   public TrackingUrls impression(List<String> impression) {
     this.impression = impression;
@@ -56,7 +56,7 @@ public class TrackingUrls {
   /**
    * Get impression
    * @return impression
-  */
+   */
   
   @Schema(name = "impression", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("impression")
@@ -84,7 +84,7 @@ public class TrackingUrls {
   /**
    * Get click
    * @return click
-  */
+   */
   
   @Schema(name = "click", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("click")
@@ -112,7 +112,7 @@ public class TrackingUrls {
   /**
    * Get engagement
    * @return engagement
-  */
+   */
   
   @Schema(name = "engagement", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("engagement")
@@ -140,7 +140,7 @@ public class TrackingUrls {
   /**
    * Get buyableButton
    * @return buyableButton
-  */
+   */
   
   @Schema(name = "buyable_button", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("buyable_button")
@@ -168,7 +168,7 @@ public class TrackingUrls {
   /**
    * Get audienceVerification
    * @return audienceVerification
-  */
+   */
   
   @Schema(name = "audience_verification", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_verification")

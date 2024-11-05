@@ -56,8 +56,8 @@ class ResourcesApi(
     } ~
     path("resources" / "targeting" / Segment) { (targetingType) => 
       get { 
-        parameters("client_id".as[String].?, "oauth_signature".as[String].?, "timestamp".as[String].?) { (clientId, oauthSignature, timestamp) => 
-            resourcesService.targetingOptionsGet(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp)
+        parameters("client_id".as[String].?, "oauth_signature".as[String].?, "timestamp".as[String].?, "ad_account_id".as[String].?) { (clientId, oauthSignature, timestamp, adAccountId) => 
+            resourcesService.targetingOptionsGet(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp, adAccountId = adAccountId)
         }
       }
     }
@@ -133,7 +133,7 @@ trait ResourcesApiService {
    * Code: 200, Message: Success, DataType: Seq[Any]
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def targetingOptionsGet(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String])
+  def targetingOptionsGet(targetingType: String, clientId: Option[String], oauthSignature: Option[String], timestamp: Option[String], adAccountId: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }

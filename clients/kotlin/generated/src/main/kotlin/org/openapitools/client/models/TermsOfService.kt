@@ -47,5 +47,8 @@ data class TermsOfService (
     @Json(name = "ad_account_id")
     val adAccountId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

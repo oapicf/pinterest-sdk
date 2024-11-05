@@ -29,7 +29,7 @@ data class AdsCreditRedeemResponse(
 
     @Schema(example = "The offer has already been redeemed by this advertiser", description = "Reason for failure")
     @get:JsonProperty("errorMessage") val errorMessage: kotlin.String? = null
-) {
+    ) {
 
 }
 

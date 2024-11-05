@@ -14,7 +14,7 @@ import ItemUpsertBatchRecord._
 case class ItemUpsertBatchRecord (
   /* The catalog item id in the merchant namespace */
   itemId: Option[String],
-attributes: Option[ItemAttributes])
+attributes: Option[ItemAttributesRequest])
 
 object ItemUpsertBatchRecord {
   import DateTimeCodecs._

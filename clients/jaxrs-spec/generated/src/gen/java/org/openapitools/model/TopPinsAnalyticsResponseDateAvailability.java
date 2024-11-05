@@ -17,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TopPinsAnalyticsResponse_date_availability")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TopPinsAnalyticsResponseDateAvailability   {
-  private @Valid BigDecimal latestAvailableTimestamp;
-  private @Valid Boolean isRealtime;
+  private BigDecimal latestAvailableTimestamp;
+  private Boolean isRealtime;
 
   /**
    **/
@@ -32,7 +32,7 @@ public class TopPinsAnalyticsResponseDateAvailability   {
   
   @ApiModelProperty(example = "1649116799000", value = "")
   @JsonProperty("latest_available_timestamp")
-  public BigDecimal getLatestAvailableTimestamp() {
+  @Valid public BigDecimal getLatestAvailableTimestamp() {
     return latestAvailableTimestamp;
   }
 

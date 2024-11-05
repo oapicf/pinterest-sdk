@@ -1,6 +1,5 @@
 package apimodels;
 
-import apimodels.CreativeType;
 import apimodels.EntityStatus;
 import apimodels.GridClickType;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -13,7 +12,7 @@ import javax.validation.Valid;
 /**
  * ProductGroupPromotion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ProductGroupPromotion   {
   @JsonProperty("id")
@@ -76,11 +75,6 @@ public class ProductGroupPromotion   {
   @JsonProperty("catalog_product_group_name")
   
   private String catalogProductGroupName;
-
-  @JsonProperty("creative_type")
-  @Valid
-
-  private CreativeType creativeType;
 
   @JsonProperty("collections_hero_pin_id")
   @Pattern(regexp="^\\d+$")
@@ -334,23 +328,6 @@ public class ProductGroupPromotion   {
     this.catalogProductGroupName = catalogProductGroupName;
   }
 
-  public ProductGroupPromotion creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-   /**
-   * Get creativeType
-   * @return creativeType
-  **/
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
   public ProductGroupPromotion collectionsHeroPinId(String collectionsHeroPinId) {
     this.collectionsHeroPinId = collectionsHeroPinId;
     return this;
@@ -426,7 +403,6 @@ public class ProductGroupPromotion   {
         Objects.equals(trackingUrl, productGroupPromotion.trackingUrl) &&
         Objects.equals(catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
         Objects.equals(catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
-        Objects.equals(creativeType, productGroupPromotion.creativeType) &&
         Objects.equals(collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         Objects.equals(collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         Objects.equals(gridClickType, productGroupPromotion.gridClickType);
@@ -434,7 +410,7 @@ public class ProductGroupPromotion   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, creativeType, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
+    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -457,7 +433,6 @@ public class ProductGroupPromotion   {
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
     sb.append("    catalogProductGroupName: ").append(toIndentedString(catalogProductGroupName)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    collectionsHeroPinId: ").append(toIndentedString(collectionsHeroPinId)).append("\n");
     sb.append("    collectionsHeroDestinationUrl: ").append(toIndentedString(collectionsHeroDestinationUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");

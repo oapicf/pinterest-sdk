@@ -118,9 +118,7 @@ public enum NullableCatalogsItemFieldType {
   
   SHIPPING_WIDTH("SHIPPING_WIDTH"),
   
-  SHIPPING_HEIGHT("SHIPPING_HEIGHT"),
-  
-  NULL("null");
+  SHIPPING_HEIGHT("SHIPPING_HEIGHT");
 
   private String value;
 

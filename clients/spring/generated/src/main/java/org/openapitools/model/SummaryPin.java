@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.SummaryPinMedia;
+import org.openapitools.model.PinMedia;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -23,10 +23,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SummaryPin", description = "Summarized pin information")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SummaryPin {
 
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
@@ -36,7 +36,7 @@ public class SummaryPin {
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  public SummaryPin media(SummaryPinMedia media) {
+  public SummaryPin media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -44,15 +44,15 @@ public class SummaryPin {
   /**
    * Get media
    * @return media
-  */
+   */
   @Valid 
-  @Schema(name = "media", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -64,7 +64,7 @@ public class SummaryPin {
   /**
    * Get altText
    * @return altText
-  */
+   */
   @Size(max = 500) 
   @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("alt_text")
@@ -84,7 +84,7 @@ public class SummaryPin {
   /**
    * Get link
    * @return link
-  */
+   */
   @Size(max = 2048) 
   @Schema(name = "link", example = "https://www.pinterest.com/", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -104,7 +104,7 @@ public class SummaryPin {
   /**
    * Get title
    * @return title
-  */
+   */
   
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -124,7 +124,7 @@ public class SummaryPin {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")

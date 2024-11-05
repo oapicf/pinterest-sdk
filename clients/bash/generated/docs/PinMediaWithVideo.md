@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mediaUnderscoretype** | **string** |  | [optional] [default to null]
-**images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] [default to null]
+**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] [default to null]
 **coverUnderscoreimageUnderscoreurl** | **string** |  | [optional] [default to null]
 **videoUnderscoreurl** | **string** |  | [optional] [default to null]
 **duration** | **integer** |  | [optional] [default to null]

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**OpenAPI\Server\Model\ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**images** | [**OpenAPI\Server\Model\PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

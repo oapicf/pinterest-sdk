@@ -55,9 +55,123 @@ end:
 */
 
 
+// Create catalog
+//
+// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.
+//
+catalog_t*
+CatalogsAPI_catalogsCreate(apiClient_t *apiClient, catalogs_create_request_t *catalogs_create_request, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs");
+
+
+
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_catalogs_create_request = NULL;
+    if (catalogs_create_request != NULL)
+    {
+        //string
+        localVarSingleItemJSON_catalogs_create_request = catalogs_create_request_convertToJSON(catalogs_create_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_create_request);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Success");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid parameters.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized access.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error.");
+    //}
+    //nonprimitive not container
+    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    catalog_t *elementToReturn = catalog_parseFromJSON(CatalogsAPIlocalVarJSON);
+    cJSON_Delete(CatalogsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    if (localVarSingleItemJSON_catalogs_create_request) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_create_request);
+        localVarSingleItemJSON_catalogs_create_request = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // List catalogs
 //
-// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
 catalogs_list_200_response_t*
 CatalogsAPI_catalogsList(apiClient_t *apiClient, char *bookmark, int *page_size, char *ad_account_id)
@@ -203,12 +317,12 @@ end:
 
 }
 
-// List products for a Product Group
+// List products by product group
 //
-// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
 catalogs_product_group_pins_list_200_response_t*
-CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_group_id, char *bookmark, int *page_size, char *ad_account_id)
+CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_group_id, char *bookmark, int *page_size, char *ad_account_id, int *pin_metrics)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -270,6 +384,19 @@ CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_g
         valueQuery_ad_account_id = strdup((ad_account_id));
         keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
         list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
+    char *keyQuery_pin_metrics = NULL;
+    char * valueQuery_pin_metrics = NULL;
+    keyValuePair_t *keyPairQuery_pin_metrics = 0;
+    if (pin_metrics)
+    {
+        keyQuery_pin_metrics = strdup("pin_metrics");
+        valueQuery_pin_metrics = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_pin_metrics, MAX_NUMBER_LENGTH, "%d", *pin_metrics);
+        keyPairQuery_pin_metrics = keyValuePair_create(keyQuery_pin_metrics, valueQuery_pin_metrics);
+        list_addElement(localVarQueryParameters,keyPairQuery_pin_metrics);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -359,6 +486,18 @@ CatalogsAPI_catalogsProductGroupPinsList(apiClient_t *apiClient, char *product_g
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
     }
+    if(keyQuery_pin_metrics){
+        free(keyQuery_pin_metrics);
+        keyQuery_pin_metrics = NULL;
+    }
+    if(valueQuery_pin_metrics){
+        free(valueQuery_pin_metrics);
+        valueQuery_pin_metrics = NULL;
+    }
+    if(keyPairQuery_pin_metrics){
+        keyValuePair_free(keyPairQuery_pin_metrics);
+        keyPairQuery_pin_metrics = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -368,10 +507,10 @@ end:
 
 // Create product group
 //
-// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
-catalogs_product_groups_create_201_response_t*
-CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, catalogs_product_groups_create_request_t *catalogs_product_groups_create_request, char *ad_account_id)
+catalogs_vertical_product_group_t*
+CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, multiple_product_groups_inner_t *multiple_product_groups_inner, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -401,12 +540,12 @@ CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, catalogs_product
     }
 
     // Body Param
-    cJSON *localVarSingleItemJSON_catalogs_product_groups_create_request = NULL;
-    if (catalogs_product_groups_create_request != NULL)
+    cJSON *localVarSingleItemJSON_multiple_product_groups_inner = NULL;
+    if (multiple_product_groups_inner != NULL)
     {
         //string
-        localVarSingleItemJSON_catalogs_product_groups_create_request = catalogs_product_groups_create_request_convertToJSON(catalogs_product_groups_create_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_product_groups_create_request);
+        localVarSingleItemJSON_multiple_product_groups_inner = multiple_product_groups_inner_convertToJSON(multiple_product_groups_inner);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_multiple_product_groups_inner);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -446,7 +585,7 @@ CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, catalogs_product
     //}
     //nonprimitive not container
     cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_groups_create_201_response_t *elementToReturn = catalogs_product_groups_create_201_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+    catalogs_vertical_product_group_t *elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
     cJSON_Delete(CatalogsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;
@@ -464,9 +603,160 @@ CatalogsAPI_catalogsProductGroupsCreate(apiClient_t *apiClient, catalogs_product
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_catalogs_product_groups_create_request) {
-        cJSON_Delete(localVarSingleItemJSON_catalogs_product_groups_create_request);
-        localVarSingleItemJSON_catalogs_product_groups_create_request = NULL;
+    if (localVarSingleItemJSON_multiple_product_groups_inner) {
+        cJSON_Delete(localVarSingleItemJSON_multiple_product_groups_inner);
+        localVarSingleItemJSON_multiple_product_groups_inner = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Create product groups
+//
+// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+//
+list_t*
+CatalogsAPI_catalogsProductGroupsCreateMany(apiClient_t *apiClient, list_t *multiple_product_groups_inner, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs/product_groups/multiple")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/multiple");
+
+
+
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // Body Param
+    //notstring
+    cJSON *localVar_multiple_product_groups_inner = NULL;
+    cJSON *localVarItemJSON_multiple_product_groups_inner = NULL;
+    cJSON *localVarSingleItemJSON_multiple_product_groups_inner = NULL;
+    if (multiple_product_groups_inner != NULL)
+    {
+        localVarItemJSON_multiple_product_groups_inner = cJSON_CreateObject();
+        localVarSingleItemJSON_multiple_product_groups_inner = cJSON_AddArrayToObject(localVarItemJSON_multiple_product_groups_inner, "multiple_product_groups_inner");
+        if (localVarSingleItemJSON_multiple_product_groups_inner == NULL)
+        {
+            // nonprimitive container
+
+            goto end;
+        }
+    }
+
+    listEntry_t *multiple_product_groups_innerBodyListEntry;
+    list_ForEach(multiple_product_groups_innerBodyListEntry, multiple_product_groups_inner)
+    {
+        localVar_multiple_product_groups_inner = multiple_product_groups_inner_convertToJSON(multiple_product_groups_innerBodyListEntry->data);
+        if(localVar_multiple_product_groups_inner == NULL)
+        {
+            goto end;
+        }
+        cJSON_AddItemToArray(localVarSingleItemJSON_multiple_product_groups_inner, localVar_multiple_product_groups_inner);
+        localVarBodyParameters = cJSON_Print(localVarItemJSON_multiple_product_groups_inner);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 201) {
+    //    printf("%s\n","Success");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid body.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized access.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 409) {
+    //    printf("%s\n","Conflict. Can&#39;t create this catalogs product group with this value.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error.");
+    //}
+    //primitive return type not simple
+    cJSON *localVarJSON = cJSON_Parse(apiClient->dataReceived);
+    cJSON *VarJSON;
+    list_t *elementToReturn = list_createList();
+    cJSON_ArrayForEach(VarJSON, localVarJSON){
+        keyValuePair_t *keyPair = keyValuePair_create(strdup(VarJSON->string), cJSON_Print(VarJSON));
+        list_addElement(elementToReturn, keyPair);
+    }
+    cJSON_Delete(localVarJSON);
+
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    if (localVarItemJSON_multiple_product_groups_inner) {
+        cJSON_Delete(localVarItemJSON_multiple_product_groups_inner);
+        localVarItemJSON_multiple_product_groups_inner = NULL;
+    }
+    if (localVarSingleItemJSON_multiple_product_groups_inner) {
+        cJSON_Delete(localVarSingleItemJSON_multiple_product_groups_inner);
+        localVarSingleItemJSON_multiple_product_groups_inner = NULL;
+    }
+    if (localVar_multiple_product_groups_inner) {
+        cJSON_Delete(localVar_multiple_product_groups_inner);
+        localVar_multiple_product_groups_inner = NULL;
     }
     free(localVarBodyParameters);
     if(keyQuery_ad_account_id){
@@ -490,7 +780,7 @@ end:
 
 // Delete product group
 //
-// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
 void
 CatalogsAPI_catalogsProductGroupsDelete(apiClient_t *apiClient, char *product_group_id, char *ad_account_id)
@@ -607,11 +897,121 @@ end:
 
 }
 
+// Delete product groups
+//
+// Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+//
+void
+CatalogsAPI_catalogsProductGroupsDeleteMany(apiClient_t *apiClient, list_t *id, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs/product_groups/multiple")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs/product_groups/multiple");
+
+
+
+
+    // query parameters
+    if (id)
+    {
+        list_addElement(localVarQueryParameters,id);
+    }
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "DELETE");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 204) {
+    //    printf("%s\n","Catalogs Product Groups deleted successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized access.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden. Account not approved for catalog product group mutations yet.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Catalogs product group not found.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 409) {
+    //    printf("%s\n","Conflict. Can&#39;t delete this catalogs product group.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error.");
+    //}
+    //No return type
+end:
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+
+}
+
 // Get product group
 //
-// Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
-catalogs_product_groups_create_201_response_t*
+catalogs_vertical_product_group_t*
 CatalogsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *product_group_id, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -691,7 +1091,7 @@ CatalogsAPI_catalogsProductGroupsGet(apiClient_t *apiClient, char *product_group
     //}
     //nonprimitive not container
     cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_groups_create_201_response_t *elementToReturn = catalogs_product_groups_create_201_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+    catalogs_vertical_product_group_t *elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
     cJSON_Delete(CatalogsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;
@@ -731,10 +1131,10 @@ end:
 
 // List product groups
 //
-// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
 catalogs_product_groups_list_200_response_t*
-CatalogsAPI_catalogsProductGroupsList(apiClient_t *apiClient, char *feed_id, char *catalog_id, char *bookmark, int *page_size, char *ad_account_id)
+CatalogsAPI_catalogsProductGroupsList(apiClient_t *apiClient, list_t *id, char *feed_id, char *catalog_id, char *bookmark, int *page_size, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -750,6 +1150,12 @@ CatalogsAPI_catalogsProductGroupsList(apiClient_t *apiClient, char *feed_id, cha
 
 
 
+
+    // query parameters
+    if (id)
+    {
+        list_addElement(localVarQueryParameters,id);
+    }
 
     // query parameters
     char *keyQuery_feed_id = NULL;
@@ -937,11 +1343,11 @@ end:
 
 }
 
-// Get product counts for a Product Group
+// Get product counts
 //
-// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
-catalogs_product_group_product_counts_t*
+catalogs_product_group_product_counts_vertical_t*
 CatalogsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiClient, char *product_group_id, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -1009,7 +1415,7 @@ CatalogsAPI_catalogsProductGroupsProductCountsGet(apiClient_t *apiClient, char *
     //}
     //nonprimitive not container
     cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_group_product_counts_t *elementToReturn = catalogs_product_group_product_counts_parseFromJSON(CatalogsAPIlocalVarJSON);
+    catalogs_product_group_product_counts_vertical_t *elementToReturn = catalogs_product_group_product_counts_vertical_parseFromJSON(CatalogsAPIlocalVarJSON);
     cJSON_Delete(CatalogsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;
@@ -1047,11 +1453,11 @@ end:
 
 }
 
-// Update product group
+// Update single product group
 //
-// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
-catalogs_product_groups_create_201_response_t*
+catalogs_vertical_product_group_t*
 CatalogsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_group_id, catalogs_product_groups_update_request_t *catalogs_product_groups_update_request, char *ad_account_id)
 {
     list_t    *localVarQueryParameters = list_createList();
@@ -1141,7 +1547,7 @@ CatalogsAPI_catalogsProductGroupsUpdate(apiClient_t *apiClient, char *product_gr
     //}
     //nonprimitive not container
     cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    catalogs_product_groups_create_201_response_t *elementToReturn = catalogs_product_groups_create_201_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+    catalogs_vertical_product_group_t *elementToReturn = catalogs_vertical_product_group_parseFromJSON(CatalogsAPIlocalVarJSON);
     cJSON_Delete(CatalogsAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;
@@ -1184,9 +1590,9 @@ end:
 
 }
 
-// List processing results for a given feed
+// List feed processing results
 //
-// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
 feed_processing_results_list_200_response_t*
 CatalogsAPI_feedProcessingResultsList(apiClient_t *apiClient, char *feed_id, char *bookmark, int *page_size, char *ad_account_id)
@@ -1349,7 +1755,7 @@ end:
 
 // Create feed
 //
-// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalogs_feed_t*
 CatalogsAPI_feedsCreate(apiClient_t *apiClient, feeds_create_request_t *feeds_create_request, char *ad_account_id)
@@ -1479,7 +1885,7 @@ end:
 
 // Delete feed
 //
-// Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+// Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 //
 void
 CatalogsAPI_feedsDelete(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
@@ -1594,7 +2000,7 @@ end:
 
 // Get feed
 //
-// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 //
 catalogs_feed_t*
 CatalogsAPI_feedsGet(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
@@ -1706,9 +2112,123 @@ end:
 
 }
 
+// Ingest feed items
+//
+// Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+//
+catalogs_feed_ingestion_t*
+CatalogsAPI_feedsIngest(apiClient_t *apiClient, char *feed_id, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs/feeds/{feed_id}/ingest")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs/feeds/{feed_id}/ingest");
+
+
+    // Path Params
+    long sizeOfPathParams_feed_id = strlen(feed_id)+3 + strlen("{ feed_id }");
+    if(feed_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_feed_id = malloc(sizeOfPathParams_feed_id);
+    sprintf(localVarToReplace_feed_id, "{%s}", "feed_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_feed_id, feed_id);
+
+
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The ingestion process was successfully started.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid feed parameters.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Forbidden. Account not approved for feed mutations yet.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Data feed not found.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //nonprimitive not container
+    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    catalogs_feed_ingestion_t *elementToReturn = catalogs_feed_ingestion_parseFromJSON(CatalogsAPIlocalVarJSON);
+    cJSON_Delete(CatalogsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    free(localVarToReplace_feed_id);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // List feeds
 //
-// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 //
 feeds_list_200_response_t*
 CatalogsAPI_feedsList(apiClient_t *apiClient, char *bookmark, int *page_size, char *catalog_id, char *ad_account_id)
@@ -1880,7 +2400,7 @@ end:
 
 // Update feed
 //
-// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 //
 catalogs_feed_t*
 CatalogsAPI_feedsUpdate(apiClient_t *apiClient, char *feed_id, feeds_update_request_t *feeds_update_request, char *ad_account_id)
@@ -2007,9 +2527,9 @@ end:
 
 }
 
-// Get catalogs item batch status
+// Get item batch status
 //
-// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 //
 catalogs_items_batch_t*
 CatalogsAPI_itemsBatchGet(apiClient_t *apiClient, char *batch_id, char *ad_account_id)
@@ -2127,7 +2647,7 @@ end:
 
 // Operate on item batch
 //
-// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
 //
 catalogs_items_batch_t*
 CatalogsAPI_itemsBatchPost(apiClient_t *apiClient, items_batch_post_request_t *items_batch_post_request, char *ad_account_id)
@@ -2245,7 +2765,7 @@ end:
 
 // Get catalogs items
 //
-// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.
 //
 catalogs_items_t*
 CatalogsAPI_itemsGet(apiClient_t *apiClient, char *country, char *language, char *ad_account_id, list_t *item_ids, catalogs_items_filters_t *filters)
@@ -2420,9 +2940,9 @@ end:
 
 }
 
-// List item issues for a given processing result
+// List item issues
 //
-// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
 items_issues_list_200_response_t*
 CatalogsAPI_itemsIssuesList(apiClient_t *apiClient, char *processing_result_id, char *bookmark, int *page_size, list_t *item_numbers, catalogs_item_validation_issue_e item_validation_issue, char *ad_account_id)
@@ -2610,12 +3130,130 @@ end:
 
 }
 
-// List filtered products
+// Get catalogs items (POST)
 //
-// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+//
+catalogs_items_t*
+CatalogsAPI_itemsPost(apiClient_t *apiClient, catalogs_items_request_t *catalogs_items_request, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs/items")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs/items");
+
+
+
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_catalogs_items_request = NULL;
+    if (catalogs_items_request != NULL)
+    {
+        //string
+        localVarSingleItemJSON_catalogs_items_request = catalogs_items_request_convertToJSON(catalogs_items_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_items_request);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Response containing the requested catalogs items");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid request");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Not authorized to access catalogs items");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Not authorized to access catalogs items");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //nonprimitive not container
+    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    catalogs_items_t *elementToReturn = catalogs_items_parseFromJSON(CatalogsAPIlocalVarJSON);
+    cJSON_Delete(CatalogsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    if (localVarSingleItemJSON_catalogs_items_request) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_items_request);
+        localVarSingleItemJSON_catalogs_items_request = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// List products by filter
+//
+// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 //
 catalogs_product_group_pins_list_200_response_t*
-CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_request, char *bookmark, int *page_size, char *ad_account_id)
+CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_request, char *bookmark, int *page_size, char *ad_account_id, int *pin_metrics)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -2667,6 +3305,19 @@ CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_li
         valueQuery_ad_account_id = strdup((ad_account_id));
         keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
         list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
+    char *keyQuery_pin_metrics = NULL;
+    char * valueQuery_pin_metrics = NULL;
+    keyValuePair_t *keyPairQuery_pin_metrics = 0;
+    if (pin_metrics)
+    {
+        keyQuery_pin_metrics = strdup("pin_metrics");
+        valueQuery_pin_metrics = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_pin_metrics, MAX_NUMBER_LENGTH, "%d", *pin_metrics);
+        keyPairQuery_pin_metrics = keyValuePair_create(keyQuery_pin_metrics, valueQuery_pin_metrics);
+        list_addElement(localVarQueryParameters,keyPairQuery_pin_metrics);
     }
 
     // Body Param
@@ -2765,6 +3416,419 @@ CatalogsAPI_productsByProductGroupFilterList(apiClient_t *apiClient, catalogs_li
     if(keyPairQuery_ad_account_id){
         keyValuePair_free(keyPairQuery_ad_account_id);
         keyPairQuery_ad_account_id = NULL;
+    }
+    if(keyQuery_pin_metrics){
+        free(keyQuery_pin_metrics);
+        keyQuery_pin_metrics = NULL;
+    }
+    if(valueQuery_pin_metrics){
+        free(valueQuery_pin_metrics);
+        valueQuery_pin_metrics = NULL;
+    }
+    if(keyPairQuery_pin_metrics){
+        keyValuePair_free(keyPairQuery_pin_metrics);
+        keyPairQuery_pin_metrics = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Build catalogs report
+//
+// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+//
+catalogs_create_report_response_t*
+CatalogsAPI_reportsCreate(apiClient_t *apiClient, catalogs_report_parameters_t *catalogs_report_parameters, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs/reports")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs/reports");
+
+
+
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_catalogs_report_parameters = NULL;
+    if (catalogs_report_parameters != NULL)
+    {
+        //string
+        localVarSingleItemJSON_catalogs_report_parameters = catalogs_report_parameters_convertToJSON(catalogs_report_parameters);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_catalogs_report_parameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Response containing the report token");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Entity (e.g., catalog, feed or processing_result) not found");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 409) {
+    //    printf("%s\n","Can&#39;t access this feature without an existing catalog.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //nonprimitive not container
+    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    catalogs_create_report_response_t *elementToReturn = catalogs_create_report_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+    cJSON_Delete(CatalogsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    if (localVarSingleItemJSON_catalogs_report_parameters) {
+        cJSON_Delete(localVarSingleItemJSON_catalogs_report_parameters);
+        localVarSingleItemJSON_catalogs_report_parameters = NULL;
+    }
+    free(localVarBodyParameters);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Get catalogs report
+//
+// This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+//
+catalogs_report_t*
+CatalogsAPI_reportsGet(apiClient_t *apiClient, char *token, char *ad_account_id)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs/reports")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs/reports");
+
+
+
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
+    char *keyQuery_token = NULL;
+    char * valueQuery_token = NULL;
+    keyValuePair_t *keyPairQuery_token = 0;
+    if (token)
+    {
+        keyQuery_token = strdup("token");
+        valueQuery_token = strdup((token));
+        keyPairQuery_token = keyValuePair_create(keyQuery_token, valueQuery_token);
+        list_addElement(localVarQueryParameters,keyPairQuery_token);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Response that contains a link to download the report");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The token you provided is not valid or has expired.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 409) {
+    //    printf("%s\n","Can&#39;t access this feature without an existing catalog.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //nonprimitive not container
+    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    catalogs_report_t *elementToReturn = catalogs_report_parseFromJSON(CatalogsAPIlocalVarJSON);
+    cJSON_Delete(CatalogsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    if(keyQuery_token){
+        free(keyQuery_token);
+        keyQuery_token = NULL;
+    }
+    if(valueQuery_token){
+        free(valueQuery_token);
+        valueQuery_token = NULL;
+    }
+    if(keyPairQuery_token){
+        keyValuePair_free(keyPairQuery_token);
+        keyPairQuery_token = NULL;
+    }
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// List report stats
+//
+// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+//
+reports_stats_200_response_t*
+CatalogsAPI_reportsStats(apiClient_t *apiClient, catalogs_report_parameters_t *parameters, char *ad_account_id, int *page_size, char *bookmark)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+
+    // create the path
+    long sizeOfPath = strlen("/catalogs/reports/stats")+1;
+    char *localVarPath = malloc(sizeOfPath);
+    snprintf(localVarPath, sizeOfPath, "/catalogs/reports/stats");
+
+
+
+
+    // query parameters
+    char *keyQuery_ad_account_id = NULL;
+    char * valueQuery_ad_account_id = NULL;
+    keyValuePair_t *keyPairQuery_ad_account_id = 0;
+    if (ad_account_id)
+    {
+        keyQuery_ad_account_id = strdup("ad_account_id");
+        valueQuery_ad_account_id = strdup((ad_account_id));
+        keyPairQuery_ad_account_id = keyValuePair_create(keyQuery_ad_account_id, valueQuery_ad_account_id);
+        list_addElement(localVarQueryParameters,keyPairQuery_ad_account_id);
+    }
+
+    // query parameters
+    char *keyQuery_page_size = NULL;
+    char * valueQuery_page_size = NULL;
+    keyValuePair_t *keyPairQuery_page_size = 0;
+    if (page_size)
+    {
+        keyQuery_page_size = strdup("page_size");
+        valueQuery_page_size = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_page_size, MAX_NUMBER_LENGTH, "%d", *page_size);
+        keyPairQuery_page_size = keyValuePair_create(keyQuery_page_size, valueQuery_page_size);
+        list_addElement(localVarQueryParameters,keyPairQuery_page_size);
+    }
+
+    // query parameters
+    char *keyQuery_bookmark = NULL;
+    char * valueQuery_bookmark = NULL;
+    keyValuePair_t *keyPairQuery_bookmark = 0;
+    if (bookmark)
+    {
+        keyQuery_bookmark = strdup("bookmark");
+        valueQuery_bookmark = strdup((bookmark));
+        keyPairQuery_bookmark = keyValuePair_create(keyQuery_bookmark, valueQuery_bookmark);
+        list_addElement(localVarQueryParameters,keyPairQuery_bookmark);
+    }
+
+    // query parameters
+    char *keyQuery_parameters = NULL;
+    catalogs_report_parameters_t * valueQuery_parameters ;
+    keyValuePair_t *keyPairQuery_parameters = 0;
+    if (parameters)
+    {
+        keyQuery_parameters = strdup("parameters");
+        valueQuery_parameters = (parameters);
+        keyPairQuery_parameters = keyValuePair_create(keyQuery_parameters, &valueQuery_parameters);
+        list_addElement(localVarQueryParameters,keyPairQuery_parameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Response containing the diagnostics aggregated counters");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Not authorized to access catalogs");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //nonprimitive not container
+    cJSON *CatalogsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+    reports_stats_200_response_t *elementToReturn = reports_stats_200_response_parseFromJSON(CatalogsAPIlocalVarJSON);
+    cJSON_Delete(CatalogsAPIlocalVarJSON);
+    if(elementToReturn == NULL) {
+        // return 0;
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if(keyQuery_ad_account_id){
+        free(keyQuery_ad_account_id);
+        keyQuery_ad_account_id = NULL;
+    }
+    if(valueQuery_ad_account_id){
+        free(valueQuery_ad_account_id);
+        valueQuery_ad_account_id = NULL;
+    }
+    if(keyPairQuery_ad_account_id){
+        keyValuePair_free(keyPairQuery_ad_account_id);
+        keyPairQuery_ad_account_id = NULL;
+    }
+    if(keyQuery_page_size){
+        free(keyQuery_page_size);
+        keyQuery_page_size = NULL;
+    }
+    if(valueQuery_page_size){
+        free(valueQuery_page_size);
+        valueQuery_page_size = NULL;
+    }
+    if(keyPairQuery_page_size){
+        keyValuePair_free(keyPairQuery_page_size);
+        keyPairQuery_page_size = NULL;
+    }
+    if(keyQuery_bookmark){
+        free(keyQuery_bookmark);
+        keyQuery_bookmark = NULL;
+    }
+    if(valueQuery_bookmark){
+        free(valueQuery_bookmark);
+        valueQuery_bookmark = NULL;
+    }
+    if(keyPairQuery_bookmark){
+        keyValuePair_free(keyPairQuery_bookmark);
+        keyPairQuery_bookmark = NULL;
+    }
+    if(keyQuery_parameters){
+        free(keyQuery_parameters);
+        keyQuery_parameters = NULL;
+    }
+    if(keyPairQuery_parameters){
+        keyValuePair_free(keyPairQuery_parameters);
+        keyPairQuery_parameters = NULL;
     }
     return elementToReturn;
 end:

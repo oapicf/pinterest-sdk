@@ -17,16 +17,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionTagCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionTagCreate   {
-  private @Valid String name;
-  private @Valid Boolean aemEnabled = false;
-  private @Valid BigDecimal mdFrequency = new BigDecimal("1");
-  private @Valid Boolean aemFnlnEnabled = false;
-  private @Valid Boolean aemPhEnabled = false;
-  private @Valid Boolean aemGeEnabled = false;
-  private @Valid Boolean aemDbEnabled = false;
-  private @Valid Boolean aemLocEnabled = false;
+  private String name;
+  private Boolean aemEnabled = false;
+  private BigDecimal mdFrequency = new BigDecimal("1");
+  private Boolean aemFnlnEnabled = false;
+  private Boolean aemPhEnabled = false;
+  private Boolean aemGeEnabled = false;
+  private Boolean aemDbEnabled = false;
+  private Boolean aemLocEnabled = false;
 
   /**
    * Conversion tag name.
@@ -39,8 +39,7 @@ public class ConversionTagCreate   {
   
   @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
   @JsonProperty("name")
-  @NotNull
-  public String getName() {
+  @NotNull public String getName() {
     return name;
   }
 
@@ -80,7 +79,7 @@ public class ConversionTagCreate   {
   
   @ApiModelProperty(example = "0.6", value = "Metadata ingestion frequency.")
   @JsonProperty("md_frequency")
-  public BigDecimal getMdFrequency() {
+  @Valid public BigDecimal getMdFrequency() {
     return mdFrequency;
   }
 

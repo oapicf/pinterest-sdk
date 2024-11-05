@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "The absolute date range of the template")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeAbsoluteDateRange   {
   @JsonProperty("type")
   private String type;
@@ -33,10 +33,10 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The date range type
    * @return type
-  **/
+   */
   @ApiModelProperty(example = "absolute", value = "The date range type")
   public String getType() {
     return type;
@@ -51,10 +51,10 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The start date of the date range
    * @return startDate
-  **/
+   */
   @ApiModelProperty(example = "0.8008281904610115", value = "The start date of the date range")
   public BigDecimal getStartDate() {
     return startDate;
@@ -69,10 +69,10 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The end date of the date range
    * @return endDate
-  **/
+   */
   @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
   public BigDecimal getEndDate() {
     return endDate;

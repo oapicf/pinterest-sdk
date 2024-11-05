@@ -16,52 +16,52 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsItemValidationWarnings")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationWarnings   {
-  private @Valid CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
-  private @Valid CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK;
-  private @Valid CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
-  private @Valid CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING;
-  private @Valid CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING;
-  private @Valid CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK;
-  private @Valid CatalogsItemValidationDetails AGE_GROUP_INVALID;
-  private @Valid CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
-  private @Valid CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID;
-  private @Valid CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID;
-  private @Valid CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
-  private @Valid CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG;
-  private @Valid CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG;
-  private @Valid CatalogsItemValidationDetails EXPIRATION_DATE_INVALID;
-  private @Valid CatalogsItemValidationDetails GENDER_INVALID;
-  private @Valid CatalogsItemValidationDetails GTIN_INVALID;
-  private @Valid CatalogsItemValidationDetails IMAGE_LINK_WARNING;
-  private @Valid CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID;
-  private @Valid CatalogsItemValidationDetails IS_BUNDLE_INVALID;
-  private @Valid CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
-  private @Valid CatalogsItemValidationDetails LINK_FORMAT_WARNING;
-  private @Valid CatalogsItemValidationDetails MIN_AD_PRICE_INVALID;
-  private @Valid CatalogsItemValidationDetails MPN_INVALID;
-  private @Valid CatalogsItemValidationDetails MULTIPACK_INVALID;
-  private @Valid CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID;
-  private @Valid CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING;
-  private @Valid CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID;
-  private @Valid CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING;
-  private @Valid CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING;
-  private @Valid CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG;
-  private @Valid CatalogsItemValidationDetails SALES_PRICE_INVALID;
-  private @Valid CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
-  private @Valid CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
-  private @Valid CatalogsItemValidationDetails SALE_DATE_INVALID;
-  private @Valid CatalogsItemValidationDetails SHIPPING_INVALID;
-  private @Valid CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID;
-  private @Valid CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID;
-  private @Valid CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID;
-  private @Valid CatalogsItemValidationDetails SIZE_TYPE_INVALID;
-  private @Valid CatalogsItemValidationDetails TAX_INVALID;
-  private @Valid CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG;
-  private @Valid CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS;
-  private @Valid CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED;
-  private @Valid CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
+  private CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
+  private CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK;
+  private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING;
+  private CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING;
+  private CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK;
+  private CatalogsItemValidationDetails AGE_GROUP_INVALID;
+  private CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
+  private CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID;
+  private CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID;
+  private CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
+  private CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails EXPIRATION_DATE_INVALID;
+  private CatalogsItemValidationDetails GENDER_INVALID;
+  private CatalogsItemValidationDetails GTIN_INVALID;
+  private CatalogsItemValidationDetails IMAGE_LINK_WARNING;
+  private CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID;
+  private CatalogsItemValidationDetails IS_BUNDLE_INVALID;
+  private CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
+  private CatalogsItemValidationDetails LINK_FORMAT_WARNING;
+  private CatalogsItemValidationDetails MIN_AD_PRICE_INVALID;
+  private CatalogsItemValidationDetails MPN_INVALID;
+  private CatalogsItemValidationDetails MULTIPACK_INVALID;
+  private CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID;
+  private CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING;
+  private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID;
+  private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING;
+  private CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING;
+  private CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails SALES_PRICE_INVALID;
+  private CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
+  private CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
+  private CatalogsItemValidationDetails SALE_DATE_INVALID;
+  private CatalogsItemValidationDetails SHIPPING_INVALID;
+  private CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID;
+  private CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID;
+  private CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID;
+  private CatalogsItemValidationDetails SIZE_TYPE_INVALID;
+  private CatalogsItemValidationDetails TAX_INVALID;
+  private CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS;
+  private CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED;
+  private CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
 
   /**
    **/
@@ -73,7 +73,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("AD_LINK_FORMAT_WARNING")
-  public CatalogsItemValidationDetails getADLINKFORMATWARNING() {
+  @Valid public CatalogsItemValidationDetails getADLINKFORMATWARNING() {
     return AD_LINK_FORMAT_WARNING;
   }
 
@@ -92,7 +92,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("AD_LINK_SAME_AS_LINK")
-  public CatalogsItemValidationDetails getADLINKSAMEASLINK() {
+  @Valid public CatalogsItemValidationDetails getADLINKSAMEASLINK() {
     return AD_LINK_SAME_AS_LINK;
   }
 
@@ -111,7 +111,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getADDITIONALIMAGELINKLENGTHTOOLONG() {
+  @Valid public CatalogsItemValidationDetails getADDITIONALIMAGELINKLENGTHTOOLONG() {
     return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
@@ -130,7 +130,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ADDITIONAL_IMAGE_LINK_WARNING")
-  public CatalogsItemValidationDetails getADDITIONALIMAGELINKWARNING() {
+  @Valid public CatalogsItemValidationDetails getADDITIONALIMAGELINKWARNING() {
     return ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
@@ -149,7 +149,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ADWORDS_FORMAT_WARNING")
-  public CatalogsItemValidationDetails getADWORDSFORMATWARNING() {
+  @Valid public CatalogsItemValidationDetails getADWORDSFORMATWARNING() {
     return ADWORDS_FORMAT_WARNING;
   }
 
@@ -168,7 +168,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ADWORDS_SAME_AS_LINK")
-  public CatalogsItemValidationDetails getADWORDSSAMEASLINK() {
+  @Valid public CatalogsItemValidationDetails getADWORDSSAMEASLINK() {
     return ADWORDS_SAME_AS_LINK;
   }
 
@@ -187,7 +187,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("AGE_GROUP_INVALID")
-  public CatalogsItemValidationDetails getAGEGROUPINVALID() {
+  @Valid public CatalogsItemValidationDetails getAGEGROUPINVALID() {
     return AGE_GROUP_INVALID;
   }
 
@@ -206,7 +206,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SIZE_SYSTEM_INVALID")
-  public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
+  @Valid public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
     return SIZE_SYSTEM_INVALID;
   }
 
@@ -225,7 +225,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ANDROID_DEEP_LINK_INVALID")
-  public CatalogsItemValidationDetails getANDROIDDEEPLINKINVALID() {
+  @Valid public CatalogsItemValidationDetails getANDROIDDEEPLINKINVALID() {
     return ANDROID_DEEP_LINK_INVALID;
   }
 
@@ -244,7 +244,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("AVAILABILITY_DATE_INVALID")
-  public CatalogsItemValidationDetails getAVAILABILITYDATEINVALID() {
+  @Valid public CatalogsItemValidationDetails getAVAILABILITYDATEINVALID() {
     return AVAILABILITY_DATE_INVALID;
   }
 
@@ -263,7 +263,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
-  public CatalogsItemValidationDetails getCOUNTRYDOESNOTMAPTOCURRENCY() {
+  @Valid public CatalogsItemValidationDetails getCOUNTRYDOESNOTMAPTOCURRENCY() {
     return COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
@@ -282,7 +282,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("CUSTOM_LABEL_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getCUSTOMLABELLENGTHTOOLONG() {
+  @Valid public CatalogsItemValidationDetails getCUSTOMLABELLENGTHTOOLONG() {
     return CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
@@ -301,7 +301,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("DESCRIPTION_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getDESCRIPTIONLENGTHTOOLONG() {
+  @Valid public CatalogsItemValidationDetails getDESCRIPTIONLENGTHTOOLONG() {
     return DESCRIPTION_LENGTH_TOO_LONG;
   }
 
@@ -320,7 +320,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("EXPIRATION_DATE_INVALID")
-  public CatalogsItemValidationDetails getEXPIRATIONDATEINVALID() {
+  @Valid public CatalogsItemValidationDetails getEXPIRATIONDATEINVALID() {
     return EXPIRATION_DATE_INVALID;
   }
 
@@ -339,7 +339,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("GENDER_INVALID")
-  public CatalogsItemValidationDetails getGENDERINVALID() {
+  @Valid public CatalogsItemValidationDetails getGENDERINVALID() {
     return GENDER_INVALID;
   }
 
@@ -358,7 +358,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("GTIN_INVALID")
-  public CatalogsItemValidationDetails getGTININVALID() {
+  @Valid public CatalogsItemValidationDetails getGTININVALID() {
     return GTIN_INVALID;
   }
 
@@ -377,7 +377,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("IMAGE_LINK_WARNING")
-  public CatalogsItemValidationDetails getIMAGELINKWARNING() {
+  @Valid public CatalogsItemValidationDetails getIMAGELINKWARNING() {
     return IMAGE_LINK_WARNING;
   }
 
@@ -396,7 +396,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("IOS_DEEP_LINK_INVALID")
-  public CatalogsItemValidationDetails getIOSDEEPLINKINVALID() {
+  @Valid public CatalogsItemValidationDetails getIOSDEEPLINKINVALID() {
     return IOS_DEEP_LINK_INVALID;
   }
 
@@ -415,7 +415,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("IS_BUNDLE_INVALID")
-  public CatalogsItemValidationDetails getISBUNDLEINVALID() {
+  @Valid public CatalogsItemValidationDetails getISBUNDLEINVALID() {
     return IS_BUNDLE_INVALID;
   }
 
@@ -434,7 +434,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
-  public CatalogsItemValidationDetails getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
+  @Valid public CatalogsItemValidationDetails getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
     return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
@@ -453,7 +453,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("LINK_FORMAT_WARNING")
-  public CatalogsItemValidationDetails getLINKFORMATWARNING() {
+  @Valid public CatalogsItemValidationDetails getLINKFORMATWARNING() {
     return LINK_FORMAT_WARNING;
   }
 
@@ -472,7 +472,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("MIN_AD_PRICE_INVALID")
-  public CatalogsItemValidationDetails getMINADPRICEINVALID() {
+  @Valid public CatalogsItemValidationDetails getMINADPRICEINVALID() {
     return MIN_AD_PRICE_INVALID;
   }
 
@@ -491,7 +491,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("MPN_INVALID")
-  public CatalogsItemValidationDetails getMPNINVALID() {
+  @Valid public CatalogsItemValidationDetails getMPNINVALID() {
     return MPN_INVALID;
   }
 
@@ -510,7 +510,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("MULTIPACK_INVALID")
-  public CatalogsItemValidationDetails getMULTIPACKINVALID() {
+  @Valid public CatalogsItemValidationDetails getMULTIPACKINVALID() {
     return MULTIPACK_INVALID;
   }
 
@@ -529,7 +529,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("OPTIONAL_CONDITION_INVALID")
-  public CatalogsItemValidationDetails getOPTIONALCONDITIONINVALID() {
+  @Valid public CatalogsItemValidationDetails getOPTIONALCONDITIONINVALID() {
     return OPTIONAL_CONDITION_INVALID;
   }
 
@@ -548,7 +548,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("OPTIONAL_CONDITION_MISSING")
-  public CatalogsItemValidationDetails getOPTIONALCONDITIONMISSING() {
+  @Valid public CatalogsItemValidationDetails getOPTIONALCONDITIONMISSING() {
     return OPTIONAL_CONDITION_MISSING;
   }
 
@@ -567,7 +567,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_INVALID")
-  public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYINVALID() {
+  @Valid public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYINVALID() {
     return OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
@@ -586,7 +586,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_MISSING")
-  public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYMISSING() {
+  @Valid public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYMISSING() {
     return OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
@@ -605,7 +605,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("PRODUCT_CATEGORY_DEPTH_WARNING")
-  public CatalogsItemValidationDetails getPRODUCTCATEGORYDEPTHWARNING() {
+  @Valid public CatalogsItemValidationDetails getPRODUCTCATEGORYDEPTHWARNING() {
     return PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
@@ -624,7 +624,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("PRODUCT_TYPE_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getPRODUCTTYPELENGTHTOOLONG() {
+  @Valid public CatalogsItemValidationDetails getPRODUCTTYPELENGTHTOOLONG() {
     return PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
@@ -643,7 +643,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SALES_PRICE_INVALID")
-  public CatalogsItemValidationDetails getSALESPRICEINVALID() {
+  @Valid public CatalogsItemValidationDetails getSALESPRICEINVALID() {
     return SALES_PRICE_INVALID;
   }
 
@@ -662,7 +662,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SALES_PRICE_TOO_LOW")
-  public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
+  @Valid public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
     return SALES_PRICE_TOO_LOW;
   }
 
@@ -681,7 +681,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SALES_PRICE_TOO_HIGH")
-  public CatalogsItemValidationDetails getSALESPRICETOOHIGH() {
+  @Valid public CatalogsItemValidationDetails getSALESPRICETOOHIGH() {
     return SALES_PRICE_TOO_HIGH;
   }
 
@@ -700,7 +700,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SALE_DATE_INVALID")
-  public CatalogsItemValidationDetails getSALEDATEINVALID() {
+  @Valid public CatalogsItemValidationDetails getSALEDATEINVALID() {
     return SALE_DATE_INVALID;
   }
 
@@ -719,7 +719,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SHIPPING_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGINVALID() {
+  @Valid public CatalogsItemValidationDetails getSHIPPINGINVALID() {
     return SHIPPING_INVALID;
   }
 
@@ -738,7 +738,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SHIPPING_HEIGHT_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID() {
+  @Valid public CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID() {
     return SHIPPING_HEIGHT_INVALID;
   }
 
@@ -757,7 +757,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SHIPPING_WEIGHT_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID() {
+  @Valid public CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID() {
     return SHIPPING_WEIGHT_INVALID;
   }
 
@@ -776,7 +776,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SHIPPING_WIDTH_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID() {
+  @Valid public CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID() {
     return SHIPPING_WIDTH_INVALID;
   }
 
@@ -795,7 +795,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("SIZE_TYPE_INVALID")
-  public CatalogsItemValidationDetails getSIZETYPEINVALID() {
+  @Valid public CatalogsItemValidationDetails getSIZETYPEINVALID() {
     return SIZE_TYPE_INVALID;
   }
 
@@ -814,7 +814,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("TAX_INVALID")
-  public CatalogsItemValidationDetails getTAXINVALID() {
+  @Valid public CatalogsItemValidationDetails getTAXINVALID() {
     return TAX_INVALID;
   }
 
@@ -833,7 +833,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("TITLE_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getTITLELENGTHTOOLONG() {
+  @Valid public CatalogsItemValidationDetails getTITLELENGTHTOOLONG() {
     return TITLE_LENGTH_TOO_LONG;
   }
 
@@ -852,7 +852,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
-  public CatalogsItemValidationDetails getTOOMANYADDITIONALIMAGELINKS() {
+  @Valid public CatalogsItemValidationDetails getTOOMANYADDITIONALIMAGELINKS() {
     return TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
@@ -871,7 +871,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("UTM_SOURCE_AUTO_CORRECTED")
-  public CatalogsItemValidationDetails getUTMSOURCEAUTOCORRECTED() {
+  @Valid public CatalogsItemValidationDetails getUTMSOURCEAUTOCORRECTED() {
     return UTM_SOURCE_AUTO_CORRECTED;
   }
 
@@ -890,7 +890,7 @@ public class CatalogsItemValidationWarnings   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("WEIGHT_UNIT_INVALID")
-  public CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
+  @Valid public CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
     return WEIGHT_UNIT_INVALID;
   }
 

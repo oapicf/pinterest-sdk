@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * OrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLine {
 
   private String id;
@@ -74,7 +74,7 @@ public class OrderLine {
   /**
    * Order line ID.
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2680059592705", description = "Order line ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -94,7 +94,7 @@ public class OrderLine {
   /**
    * Always \"orderline\".
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "orderline", description = "Always \"orderline\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -114,7 +114,7 @@ public class OrderLine {
   /**
    * Ad account ID.
    * @return adAccountId
-  */
+   */
   
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -134,7 +134,7 @@ public class OrderLine {
   /**
    * Purchase order ID.
    * @return purchaseOrderId
-  */
+   */
   
   @Schema(name = "purchase_order_id", example = "PO12345", description = "Purchase order ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("purchase_order_id")
@@ -154,7 +154,7 @@ public class OrderLine {
   /**
    * Start time. Unix timestamp.
    * @return startTime
-  */
+   */
   @Valid 
   @Schema(name = "start_time", example = "1452208622", description = "Start time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_time")
@@ -174,7 +174,7 @@ public class OrderLine {
   /**
    * End time. Unix timestamp.
    * @return endTime
-  */
+   */
   @Valid 
   @Schema(name = "end_time", example = "1461269616", description = "End time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_time")
@@ -194,7 +194,7 @@ public class OrderLine {
   /**
    * Order line budget in micro currency.
    * @return budget
-  */
+   */
   @Valid 
   @Schema(name = "budget", example = "5000000", description = "Order line budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget")
@@ -214,7 +214,7 @@ public class OrderLine {
   /**
    * Order line paid budget in micro currency.
    * @return paidBudget
-  */
+   */
   @Valid 
   @Schema(name = "paid_budget", example = "5000000", description = "Order line paid budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("paid_budget")
@@ -234,7 +234,7 @@ public class OrderLine {
   /**
    * Order line status.
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", description = "Order line status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -254,7 +254,7 @@ public class OrderLine {
   /**
    * Order line name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "Order Line Name 1", description = "Order line name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -274,7 +274,7 @@ public class OrderLine {
   /**
    * Order line paid type.
    * @return paidType
-  */
+   */
   @Valid 
   @Schema(name = "paid_type", description = "Order line paid type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("paid_type")
@@ -302,7 +302,7 @@ public class OrderLine {
   /**
    * Associated List of campaign IDs.
    * @return campaignIds
-  */
+   */
   @NotNull 
   @Schema(name = "campaign_ids", example = "[\"626735565838\"]", description = "Associated List of campaign IDs.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("campaign_ids")

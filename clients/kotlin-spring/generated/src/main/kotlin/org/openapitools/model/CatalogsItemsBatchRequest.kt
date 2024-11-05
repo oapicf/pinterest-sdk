@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -9,11 +10,11 @@ import org.openapitools.model.BatchOperation
 import org.openapitools.model.CatalogsItemsCreateBatchRequest
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest
+import org.openapitools.model.CatalogsItemsRequestLanguage
 import org.openapitools.model.CatalogsItemsUpdateBatchRequest
 import org.openapitools.model.CatalogsItemsUpsertBatchRequest
 import org.openapitools.model.Country
 import org.openapitools.model.ItemDeleteBatchRecord
-import org.openapitools.model.Language
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -47,7 +48,7 @@ interface CatalogsItemsBatchRequest{
         val country: Country
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val language: Language
+        val language: CatalogsItemsRequestLanguage
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val operation: BatchOperation

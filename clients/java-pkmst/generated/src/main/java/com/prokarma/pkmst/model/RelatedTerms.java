@@ -18,7 +18,7 @@ import java.util.List;
  * RelatedTerms
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RelatedTerms   {
   @JsonProperty("id")
   private String id;
@@ -35,10 +35,10 @@ public class RelatedTerms   {
     return this;
   }
 
-   /**
+  /**
    * First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "clothes", value = "First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"")
   public String getId() {
     return id;
@@ -53,10 +53,10 @@ public class RelatedTerms   {
     return this;
   }
 
-   /**
+  /**
    * Total number of related terms returned
    * @return relatedTermCount
-  **/
+   */
   @ApiModelProperty(example = "2", value = "Total number of related terms returned")
   public Integer getRelatedTermCount() {
     return relatedTermCount;
@@ -79,10 +79,10 @@ public class RelatedTerms   {
     return this;
   }
 
-   /**
+  /**
    * The id of the advertiser.
    * @return relatedTermsList
-  **/
+   */
   @ApiModelProperty(value = "The id of the advertiser.")
   public List<RelatedTermsRelatedTermsListInner> getRelatedTermsList() {
     return relatedTermsList;

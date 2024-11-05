@@ -32,3 +32,10 @@ API.Client.ItemResponseAnyOf1.prototype.errors;
  */
 API.Client.ItemResponseAnyOf1.prototype.hotelId;
 
+/**
+ * The catalog creative assets id in the merchant namespace
+ * @type {!string}
+ * @export
+ */
+API.Client.ItemResponseAnyOf1.prototype.creativeAssetsId;
+

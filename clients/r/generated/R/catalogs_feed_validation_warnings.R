@@ -111,8 +111,7 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
     `SHIPPING_HEIGHT_INVALID` = NULL,
     `SALES_PRICE_TOO_HIGH` = NULL,
     `MPN_INVALID` = NULL,
-    #' Initialize a new CatalogsFeedValidationWarnings class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedValidationWarnings class.
     #'
@@ -166,7 +165,6 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
     #' @param SALES_PRICE_TOO_HIGH Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
     #' @param MPN_INVALID Some items include incorrectly formatted MPNs.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`AD_LINK_FORMAT_WARNING` = NULL, `AD_LINK_SAME_AS_LINK` = NULL, `TITLE_LENGTH_TOO_LONG` = NULL, `DESCRIPTION_LENGTH_TOO_LONG` = NULL, `GENDER_INVALID` = NULL, `AGE_GROUP_INVALID` = NULL, `SIZE_TYPE_INVALID` = NULL, `SIZE_SYSTEM_INVALID` = NULL, `LINK_FORMAT_WARNING` = NULL, `SALES_PRICE_INVALID` = NULL, `PRODUCT_CATEGORY_DEPTH_WARNING` = NULL, `ADWORDS_FORMAT_WARNING` = NULL, `ADWORDS_SAME_AS_LINK` = NULL, `DUPLICATE_HEADERS` = NULL, `FETCH_SAME_SIGNATURE` = NULL, `ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `ADDITIONAL_IMAGE_LINK_WARNING` = NULL, `IMAGE_LINK_WARNING` = NULL, `SHIPPING_INVALID` = NULL, `TAX_INVALID` = NULL, `SHIPPING_WEIGHT_INVALID` = NULL, `EXPIRATION_DATE_INVALID` = NULL, `AVAILABILITY_DATE_INVALID` = NULL, `SALE_DATE_INVALID` = NULL, `WEIGHT_UNIT_INVALID` = NULL, `IS_BUNDLE_INVALID` = NULL, `UPDATED_TIME_INVALID` = NULL, `CUSTOM_LABEL_LENGTH_TOO_LONG` = NULL, `PRODUCT_TYPE_LENGTH_TOO_LONG` = NULL, `TOO_MANY_ADDITIONAL_IMAGE_LINKS` = NULL, `MULTIPACK_INVALID` = NULL, `INDEXED_PRODUCT_COUNT_LARGE_DELTA` = NULL, `ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE` = NULL, `OPTIONAL_PRODUCT_CATEGORY_MISSING` = NULL, `OPTIONAL_PRODUCT_CATEGORY_INVALID` = NULL, `OPTIONAL_CONDITION_MISSING` = NULL, `OPTIONAL_CONDITION_INVALID` = NULL, `IOS_DEEP_LINK_INVALID` = NULL, `ANDROID_DEEP_LINK_INVALID` = NULL, `UTM_SOURCE_AUTO_CORRECTED` = NULL, `COUNTRY_DOES_NOT_MAP_TO_CURRENCY` = NULL, `MIN_AD_PRICE_INVALID` = NULL, `GTIN_INVALID` = NULL, `INCONSISTENT_CURRENCY_VALUES` = NULL, `SALES_PRICE_TOO_LOW` = NULL, `SHIPPING_WIDTH_INVALID` = NULL, `SHIPPING_HEIGHT_INVALID` = NULL, `SALES_PRICE_TOO_HIGH` = NULL, `MPN_INVALID` = NULL, ...) {
       if (!is.null(`AD_LINK_FORMAT_WARNING`)) {
         if (!(is.numeric(`AD_LINK_FORMAT_WARNING`) && length(`AD_LINK_FORMAT_WARNING`) == 1)) {
@@ -466,13 +464,11 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
         self$`MPN_INVALID` <- `MPN_INVALID`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedValidationWarnings in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedValidationWarningsObject <- list()
       if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
@@ -673,14 +669,12 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
       }
       CatalogsFeedValidationWarningsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedValidationWarnings
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedValidationWarnings
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedValidationWarnings
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`AD_LINK_FORMAT_WARNING`)) {
@@ -835,13 +829,11 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedValidationWarnings in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`AD_LINK_FORMAT_WARNING`)) {
@@ -1240,14 +1232,12 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedValidationWarnings
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedValidationWarnings
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedValidationWarnings
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`AD_LINK_FORMAT_WARNING` <- this_object$`AD_LINK_FORMAT_WARNING`
@@ -1304,53 +1294,42 @@ CatalogsFeedValidationWarnings <- R6::R6Class(
       self$`MPN_INVALID` <- this_object$`MPN_INVALID`
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedValidationWarnings
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedValidationWarnings and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedValidationWarnings
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -26,7 +26,10 @@ import com.squareup.moshi.JsonClass
  */
 
 
-data class CatalogsFeedsCreateRequestDefaultLocale (
+class CatalogsFeedsCreateRequestDefaultLocale (
 
-)
+) {
+
+
+}
 

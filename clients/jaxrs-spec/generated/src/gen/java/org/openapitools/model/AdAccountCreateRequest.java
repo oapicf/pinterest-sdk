@@ -16,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateRequest   {
-  private @Valid Country country;
-  private @Valid String name;
-  private @Valid String ownerUserId;
+  private Country country;
+  private String name;
+  private String ownerUserId;
 
   /**
    **/
@@ -52,7 +52,7 @@ public class AdAccountCreateRequest   {
   
   @ApiModelProperty(example = "ACME Tools", value = "Ad Account name.")
   @JsonProperty("name")
- @Size(max=256)  public String getName() {
+   @Size(max=256)public String getName() {
     return name;
   }
 
@@ -72,7 +72,7 @@ public class AdAccountCreateRequest   {
   
   @ApiModelProperty(example = "383791336903426391", value = "Advertiser's owning user ID.")
   @JsonProperty("owner_user_id")
- @Pattern(regexp="^\\d+$")  public String getOwnerUserId() {
+   @Pattern(regexp="^\\d+$")public String getOwnerUserId() {
     return ownerUserId;
   }
 

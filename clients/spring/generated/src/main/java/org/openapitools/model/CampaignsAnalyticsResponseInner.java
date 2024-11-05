@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
  */
 
 @JsonTypeName("CampaignsAnalyticsResponse_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignsAnalyticsResponseInner {
 
   private String CAMPAIGN_ID;
@@ -53,7 +53,7 @@ public class CampaignsAnalyticsResponseInner {
   /**
    * The ID of the campaing that this metrics belongs to.
    * @return CAMPAIGN_ID
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "CAMPAIGN_ID", description = "The ID of the campaing that this metrics belongs to.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CAMPAIGN_ID")
@@ -73,7 +73,7 @@ public class CampaignsAnalyticsResponseInner {
   /**
    * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
    * @return DATE
-  */
+   */
   @Valid 
   @Schema(name = "DATE", description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DATE")

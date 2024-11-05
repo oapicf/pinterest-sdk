@@ -19,11 +19,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "The absolute date range of the template")
 @JsonTypeName("TemplateResponse_date_range_absolute_date_range")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeAbsoluteDateRange   {
-  private @Valid String type;
-  private @Valid BigDecimal startDate;
-  private @Valid BigDecimal endDate;
+  private String type;
+  private BigDecimal startDate;
+  private BigDecimal endDate;
 
   /**
    * The date range type
@@ -56,7 +56,7 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
   
   @ApiModelProperty(example = "0.8008281904610115", value = "The start date of the date range")
   @JsonProperty("start_date")
-  public BigDecimal getStartDate() {
+  @Valid public BigDecimal getStartDate() {
     return startDate;
   }
 
@@ -76,7 +76,7 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
   
   @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
   @JsonProperty("end_date")
-  public BigDecimal getEndDate() {
+  @Valid public BigDecimal getEndDate() {
     return endDate;
   }
 

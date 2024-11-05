@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **NSDate*** |  | [optional] 
+**createdAt** | **NSDate*** |  | 
 **_id** | **NSString*** | ID of the catalog entity. | 
-**updatedAt** | **NSDate*** |  | [optional] 
+**updatedAt** | **NSDate*** |  | 
 **name** | **NSString*** | A human-friendly name associated to a catalog entity. | 
 **catalogType** | [**OAICatalogsType***](OAICatalogsType.md) |  | 
 

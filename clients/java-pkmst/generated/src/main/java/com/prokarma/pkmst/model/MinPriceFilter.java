@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * MinPriceFilter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MinPriceFilter   {
   @JsonProperty("MIN_PRICE")
   private CatalogsProductGroupPricingCriteria MIN_PRICE;
@@ -25,10 +25,10 @@ public class MinPriceFilter   {
     return this;
   }
 
-   /**
+  /**
    * Get MIN_PRICE
    * @return MIN_PRICE
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupPricingCriteria getMINPRICE() {
     return MIN_PRICE;

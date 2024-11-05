@@ -13,9 +13,9 @@ module CatalogsFeedProcessingResult =
 
 
   type CatalogsFeedProcessingResult = {
-    CreatedAt : Nullable<DateTime>;
+    CreatedAt : DateTime;
     Id : string;
-    UpdatedAt : Nullable<DateTime>;
+    UpdatedAt : DateTime;
     IngestionDetails : CatalogsFeedIngestionDetails;
     Status : CatalogsFeedProcessingStatus;
     ProductCounts : CatalogsFeedProductCounts;

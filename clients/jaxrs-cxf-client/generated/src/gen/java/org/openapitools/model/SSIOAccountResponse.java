@@ -29,13 +29,13 @@ public class SSIOAccountResponse  {
  /**
    * An array of Salesforce account information that includes address, io terms, etc.
   **/
-  private List<SSIOAccountItem> billtoInfos;
+  private List<SSIOAccountItem> billtoInfos = new ArrayList<>();
 
   @ApiModelProperty(example = "USD", value = "")
   private String currency;
 
   @ApiModelProperty(value = "")
-  private List<SSIOAccountPMPName> pmpNames;
+  private List<SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   @ApiModelProperty(example = "No Error", value = "Error indicator from Salesforce which could be \"No Error\"")
  /**

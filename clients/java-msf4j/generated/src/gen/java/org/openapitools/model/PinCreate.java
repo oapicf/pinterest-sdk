@@ -8,14 +8,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 
 /**
  * Pin
  */
 @ApiModel(description = "Pin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinCreate   {
   @JsonProperty("id")
   private String id;
@@ -48,7 +48,7 @@ public class PinCreate   {
   private BoardOwner boardOwner;
 
   @JsonProperty("media")
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @JsonProperty("media_source")
   private PinMediaSource mediaSource;
@@ -203,11 +203,6 @@ public class PinCreate   {
     this.boardSectionId = boardSectionId;
   }
 
-  public PinCreate boardOwner(BoardOwner boardOwner) {
-    this.boardOwner = boardOwner;
-    return this;
-  }
-
    /**
    * Get boardOwner
    * @return boardOwner
@@ -217,26 +212,13 @@ public class PinCreate   {
     return boardOwner;
   }
 
-  public void setBoardOwner(BoardOwner boardOwner) {
-    this.boardOwner = boardOwner;
-  }
-
-  public PinCreate media(SummaryPinMedia media) {
-    this.media = media;
-    return this;
-  }
-
    /**
    * Get media
    * @return media
   **/
   @ApiModelProperty(value = "")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
-  }
-
-  public void setMedia(SummaryPinMedia media) {
-    this.media = media;
   }
 
   public PinCreate mediaSource(PinMediaSource mediaSource) {

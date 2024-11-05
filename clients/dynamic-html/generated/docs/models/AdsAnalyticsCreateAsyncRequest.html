@@ -92,7 +92,7 @@
 </ul>
 <ul class="parameter">
   <li class="param-required-false">targetingUnderscoretypes : List
-    <br/>List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;.
+    <br/>List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
   </li>
 </ul>
 <ul class="parameter">
@@ -113,5 +113,26 @@
 <ul class="parameter">
   <li class="param-required-false">reportUnderscoreformat : DataOutputFormat
     <br/>Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">primaryUnderscoresort : String
+    <br/>Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>BY_ID</dd>
+            <dd>BY_DATE</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">startUnderscorehour : Integer
+    <br/>Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">endUnderscorehour : Integer
+    <br/>Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
   </li>
 </ul>

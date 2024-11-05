@@ -16,7 +16,7 @@ pin_create_t *pin_create_create(
     char *board_id,
     char *board_section_id,
     board_owner_t *board_owner,
-    summary_pin_media_t *media,
+    pin_media_t *media,
     pin_media_source_t *media_source,
     char *parent_pin_id,
     char *note
@@ -90,7 +90,7 @@ void pin_create_free(pin_create_t *pin_create) {
         pin_create->board_owner = NULL;
     }
     if (pin_create->media) {
-        summary_pin_media_free(pin_create->media);
+        pin_media_free(pin_create->media);
         pin_create->media = NULL;
     }
     if (pin_create->media_source) {
@@ -198,7 +198,7 @@ cJSON *pin_create_convertToJSON(pin_create_t *pin_create) {
 
     // pin_create->media
     if(pin_create->media) {
-    cJSON *media_local_JSON = summary_pin_media_convertToJSON(pin_create->media);
+    cJSON *media_local_JSON = pin_media_convertToJSON(pin_create->media);
     if(media_local_JSON == NULL) {
     goto fail; //model
     }
@@ -253,7 +253,7 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
     board_owner_t *board_owner_local_nonprim = NULL;
 
     // define the local variable for pin_create->media
-    summary_pin_media_t *media_local_nonprim = NULL;
+    pin_media_t *media_local_nonprim = NULL;
 
     // define the local variable for pin_create->media_source
     pin_media_source_t *media_source_local_nonprim = NULL;
@@ -348,7 +348,7 @@ pin_create_t *pin_create_parseFromJSON(cJSON *pin_createJSON){
     // pin_create->media
     cJSON *media = cJSON_GetObjectItemCaseSensitive(pin_createJSON, "media");
     if (media) { 
-    media_local_nonprim = summary_pin_media_parseFromJSON(media); //nonprimitive
+    media_local_nonprim = pin_media_parseFromJSON(media); //nonprimitive
     }
 
     // pin_create->media_source
@@ -400,7 +400,7 @@ end:
         board_owner_local_nonprim = NULL;
     }
     if (media_local_nonprim) {
-        summary_pin_media_free(media_local_nonprim);
+        pin_media_free(media_local_nonprim);
         media_local_nonprim = NULL;
     }
     if (media_source_local_nonprim) {

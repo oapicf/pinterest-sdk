@@ -4,15 +4,15 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.ActionType
-open OpenAPI.Model.AdGroupCommonOptimizationGoalMetadata
-open OpenAPI.Model.AdGroupCommonTrackingUrls
 open OpenAPI.Model.AdGroupSummaryStatus
 open OpenAPI.Model.AnyType
 open OpenAPI.Model.BudgetType
 open OpenAPI.Model.EntityStatus
+open OpenAPI.Model.OptimizationGoalMetadata
 open OpenAPI.Model.PacingDeliveryType
 open OpenAPI.Model.PlacementGroupType
 open OpenAPI.Model.TargetingSpec
+open OpenAPI.Model.TrackingUrls
 open OpenAPI.Model.bool option
 open OpenAPI.Model.int option
 open OpenAPI.Model.string option
@@ -32,7 +32,7 @@ module AdGroupResponse =
     [<JsonProperty(PropertyName = "bid_in_micro_currency")>]
     BidInMicroCurrency : int option;
     [<JsonProperty(PropertyName = "optimization_goal_metadata")>]
-    OptimizationGoalMetadata : AdGroupCommonOptimizationGoalMetadata;
+    OptimizationGoalMetadata : OptimizationGoalMetadata;
     [<JsonProperty(PropertyName = "budget_type")>]
     BudgetType : BudgetType;
     [<JsonProperty(PropertyName = "start_time")>]
@@ -44,7 +44,7 @@ module AdGroupResponse =
     [<JsonProperty(PropertyName = "lifetime_frequency_cap")>]
     LifetimeFrequencyCap : int;
     [<JsonProperty(PropertyName = "tracking_urls")>]
-    TrackingUrls : AdGroupCommonTrackingUrls;
+    TrackingUrls : TrackingUrls;
     [<JsonProperty(PropertyName = "auto_targeting_enabled")>]
     AutoTargetingEnabled : bool option;
     [<JsonProperty(PropertyName = "placement_group")>]
@@ -57,6 +57,8 @@ module AdGroupResponse =
     BillableEvent : ActionType;
     [<JsonProperty(PropertyName = "bid_strategy_type")>]
     BidStrategyType : string option;
+    [<JsonProperty(PropertyName = "targeting_template_ids")>]
+    TargetingTemplateIds : string[];
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "ad_account_id")>]

@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.SummaryPinMedia
+open OpenAPI.Model.PinMedia
 open OpenAPI.Model.string option
 
 module SummaryPin =
@@ -11,7 +11,7 @@ module SummaryPin =
 
 
   type SummaryPin = {
-    Media : SummaryPinMedia;
+    Media : PinMedia;
     AltText : string option;
     Link : string option;
     Title : string option;

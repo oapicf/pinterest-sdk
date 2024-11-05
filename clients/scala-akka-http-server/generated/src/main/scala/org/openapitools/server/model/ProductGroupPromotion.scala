@@ -18,7 +18,6 @@ package org.openapitools.server.model
  * @param trackingUrl Tracking template for proudct group promotions. 4000 limit for example: ''https://www.pinterest.com''
  * @param catalogProductGroupId ID of the catalogs product group that this product group promotion references for example: ''1231235''
  * @param catalogProductGroupName Catalogs product group name for example: ''catalogProductGroupName''
- * @param creativeType  for example: ''null''
  * @param collectionsHeroPinId Hero Pin ID if this PG is promoted as a Collection for example: ''123123''
  * @param collectionsHeroDestinationUrl Collections Hero Destination Url for example: ''http://www.pinterest.com''
  * @param gridClickType  for example: ''null''
@@ -38,7 +37,6 @@ final case class ProductGroupPromotion (
   trackingUrl: Option[String] = None,
   catalogProductGroupId: Option[String] = None,
   catalogProductGroupName: Option[String] = None,
-  creativeType: Option[CreativeType] = None,
   collectionsHeroPinId: Option[String] = None,
   collectionsHeroDestinationUrl: Option[String] = None,
   gridClickType: Option[GridClickType] = None

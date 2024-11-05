@@ -2,9 +2,11 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.model.CatalogsProductGroupUpdateRequest;
 import org.openapitools.model.CatalogsVerticalProductGroupUpdateRequest;
+import org.openapitools.model.Country;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -62,6 +64,22 @@ public class CatalogsProductGroupsUpdateRequestTest {
     @Test
     public void catalogTypeTest() {
         // TODO: test catalogType
+    }
+
+    /**
+     * Test the property 'country'
+     */
+    @Test
+    public void countryTest() {
+        // TODO: test country
+    }
+
+    /**
+     * Test the property 'locale'
+     */
+    @Test
+    public void localeTest() {
+        // TODO: test locale
     }
 
 }

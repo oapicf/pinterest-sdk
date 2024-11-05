@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.AdCommonTrackingUrls;
 import org.openapitools.vertxweb.server.model.CampaignSummaryStatus;
 import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.ObjectiveType;
+import org.openapitools.vertxweb.server.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CampaignCreateResponseData   {
@@ -19,25 +19,25 @@ public class CampaignCreateResponseData   {
   private Integer lifetimeSpendCap;
   private Integer dailySpendCap;
   private String orderLineId;
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private Integer startTime;
   private Integer endTime;
-  private CampaignSummaryStatus summaryStatus;
   private Boolean isFlexibleDailyBudgets;
   private Integer defaultAdGroupBudgetInMicroCurrency;
-  private Boolean isAutomatedCampaign = false;
+  private Boolean isAutomatedCampaign;
   private String id;
   private ObjectiveType objectiveType;
   private Integer createdTime;
   private Integer updatedTime;
   private String type;
   private Boolean isCampaignBudgetOptimization;
+  private CampaignSummaryStatus summaryStatus;
 
   public CampaignCreateResponseData () {
 
   }
 
-  public CampaignCreateResponseData (String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, AdCommonTrackingUrls trackingUrls, Integer startTime, Integer endTime, CampaignSummaryStatus summaryStatus, Boolean isFlexibleDailyBudgets, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isAutomatedCampaign, String id, ObjectiveType objectiveType, Integer createdTime, Integer updatedTime, String type, Boolean isCampaignBudgetOptimization) {
+  public CampaignCreateResponseData (String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, TrackingUrls trackingUrls, Integer startTime, Integer endTime, Boolean isFlexibleDailyBudgets, Integer defaultAdGroupBudgetInMicroCurrency, Boolean isAutomatedCampaign, String id, ObjectiveType objectiveType, Integer createdTime, Integer updatedTime, String type, Boolean isCampaignBudgetOptimization, CampaignSummaryStatus summaryStatus) {
     this.adAccountId = adAccountId;
     this.name = name;
     this.status = status;
@@ -47,7 +47,6 @@ public class CampaignCreateResponseData   {
     this.trackingUrls = trackingUrls;
     this.startTime = startTime;
     this.endTime = endTime;
-    this.summaryStatus = summaryStatus;
     this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     this.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency;
     this.isAutomatedCampaign = isAutomatedCampaign;
@@ -57,6 +56,7 @@ public class CampaignCreateResponseData   {
     this.updatedTime = updatedTime;
     this.type = type;
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+    this.summaryStatus = summaryStatus;
   }
 
     
@@ -115,10 +115,10 @@ public class CampaignCreateResponseData   {
 
     
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -138,15 +138,6 @@ public class CampaignCreateResponseData   {
   }
   public void setEndTime(Integer endTime) {
     this.endTime = endTime;
-  }
-
-    
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
   }
 
     
@@ -230,6 +221,15 @@ public class CampaignCreateResponseData   {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
   }
 
+    
+  @JsonProperty("summary_status")
+  public CampaignSummaryStatus getSummaryStatus() {
+    return summaryStatus;
+  }
+  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -249,7 +249,6 @@ public class CampaignCreateResponseData   {
         Objects.equals(trackingUrls, campaignCreateResponseData.trackingUrls) &&
         Objects.equals(startTime, campaignCreateResponseData.startTime) &&
         Objects.equals(endTime, campaignCreateResponseData.endTime) &&
-        Objects.equals(summaryStatus, campaignCreateResponseData.summaryStatus) &&
         Objects.equals(isFlexibleDailyBudgets, campaignCreateResponseData.isFlexibleDailyBudgets) &&
         Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignCreateResponseData.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(isAutomatedCampaign, campaignCreateResponseData.isAutomatedCampaign) &&
@@ -258,12 +257,13 @@ public class CampaignCreateResponseData   {
         Objects.equals(createdTime, campaignCreateResponseData.createdTime) &&
         Objects.equals(updatedTime, campaignCreateResponseData.updatedTime) &&
         Objects.equals(type, campaignCreateResponseData.type) &&
-        Objects.equals(isCampaignBudgetOptimization, campaignCreateResponseData.isCampaignBudgetOptimization);
+        Objects.equals(isCampaignBudgetOptimization, campaignCreateResponseData.isCampaignBudgetOptimization) &&
+        Objects.equals(summaryStatus, campaignCreateResponseData.summaryStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, id, objectiveType, createdTime, updatedTime, type, isCampaignBudgetOptimization);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign, id, objectiveType, createdTime, updatedTime, type, isCampaignBudgetOptimization, summaryStatus);
   }
 
   @Override
@@ -280,7 +280,6 @@ public class CampaignCreateResponseData   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");
@@ -290,6 +289,7 @@ public class CampaignCreateResponseData   {
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
+    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

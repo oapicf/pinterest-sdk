@@ -20,9 +20,9 @@ import java.util.Objects;
 
 public class KeywordsResponse   {
   
-  private List<@Valid KeywordError> errors;
+  private List<@Valid KeywordError> errors = new ArrayList<>();
 
-  private List<@Valid Keyword> keywords;
+  private List<@Valid Keyword> keywords = new ArrayList<>();
 
   /**
    **/

@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Request object for updating a hotel product group.",
+  "doc": "Request object for updating a catalog based product group.",
   "name": "CatalogsVerticalProductGroupUpdateRequest",
   "fields": [
     {
@@ -10,7 +10,7 @@
         "type": "enum",
         "name": "CatalogsVerticalProductGroupUpdateRequest_catalogUnderscoretype",
         "symbols": [
-          "HOTEL"
+          "CREATIVE_ASSETS"
         ]
       }],
       "doc": "",
@@ -30,7 +30,19 @@
     },
     {
       "name": "filters",
-      "type": ["null", "model.CatalogsHotelProductGroupFilters"],
+      "type": ["null", "model.CatalogsCreativeAssetsProductGroupFilters"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "country",
+      "type": ["null", "model.Country"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "locale",
+      "type": ["null", "model.CatalogsLocale"],
       "doc": "",
       "default": null
     }

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CatalogsProductGroupsList200ResponseAllOfItemsInner[]**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**Items** | [**CatalogsVerticalProductGroup[]**](CatalogsVerticalProductGroup.md) |  | 
 **Bookmark** | **String** |  | [optional] 
 
 ## Examples

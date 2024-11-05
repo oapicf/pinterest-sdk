@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
 
 Get available metrics&#39; definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
 
 ### Example
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## targetingOptionsGet
 
-> List&lt;Object&gt; targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp)
+> List&lt;Object&gt; targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
 
 Get targeting options
 
@@ -253,8 +253,9 @@ String targetingType = APPTYPE; // String | Public targeting type.
 String clientId = 1094834; // String | Client ID.
 String oauthSignature = 8209f; // String | Oauth signature
 String timestamp = 1618338184277; // String | Timestamp
+String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    List<Object> result = apiInstance.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp);
+    List<Object> result = apiInstance.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ResourcesApi#targetingOptionsGet");
@@ -271,6 +272,7 @@ Name | Type | Description  | Notes
  **clientId** | **String**| Client ID. | [optional] [default to null]
  **oauthSignature** | **String**| Oauth signature | [optional] [default to null]
  **timestamp** | **String**| Timestamp | [optional] [default to null]
+ **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 

@@ -198,6 +198,7 @@ public enum CatalogTypeEnum {
 
 
   /**
+   * Catalog id pertaining to the hotel product group.
    **/
   public CatalogsHotelProductGroup catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -205,7 +206,7 @@ public enum CatalogTypeEnum {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
   @JsonProperty("catalog_id")
   @NotNull
  @Pattern(regexp="^\\d+$")  public String getCatalogId() {

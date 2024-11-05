@@ -12,11 +12,6 @@ import AnyCodable
 
 public enum CatalogsFeedProcessingStatus: String, Codable, CaseIterable {
     case completed = "COMPLETED"
-    case completedEarly = "COMPLETED_EARLY"
-    case disapproved = "DISAPPROVED"
     case failed = "FAILED"
     case processing = "PROCESSING"
-    case queuedForProcessing = "QUEUED_FOR_PROCESSING"
-    case underAppeal = "UNDER_APPEAL"
-    case underReview = "UNDER_REVIEW"
 }

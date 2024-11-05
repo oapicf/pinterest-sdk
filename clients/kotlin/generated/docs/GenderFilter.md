@@ -2,9 +2,9 @@
 # GenderFilter
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](.md) |  |  |
 
 
 

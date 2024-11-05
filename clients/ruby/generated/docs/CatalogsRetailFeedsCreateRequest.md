@@ -14,6 +14,7 @@
 | **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 | **default_country** | [**Country**](Country.md) |  |  |
 | **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] |
+| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = PinterestSdkClient::CatalogsRetailFeedsCreateRequest.new(
   preferred_processing_schedule: null,
   catalog_type: null,
   default_country: null,
-  default_availability: null
+  default_availability: null,
+  status: null
 )
 ```
 

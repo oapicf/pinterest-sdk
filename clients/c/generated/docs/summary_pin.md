@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**summary_pin_media_t**](summary_pin_media.md) \* |  | [optional] 
+**media** | [**pin_media_t**](pin_media.md) \* |  | [optional] [readonly] 
 **alt_text** | **char \*** |  | [optional] 
 **link** | **char \*** |  | [optional] 
 **title** | **char \*** |  | [optional] 

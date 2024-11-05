@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionResponseElement;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,14 +21,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductGroupPromotionResponseItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionResponseItem   {
-  private @Valid ProductGroupPromotion data;
+  private ProductGroupPromotionResponseElement data;
   private @Valid List<@Valid Exception> exceptions;
 
   /**
    **/
-  public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
+  public ProductGroupPromotionResponseItem data(ProductGroupPromotionResponseElement data) {
     this.data = data;
     return this;
   }
@@ -36,12 +36,12 @@ public class ProductGroupPromotionResponseItem   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public ProductGroupPromotion getData() {
+  @Valid public ProductGroupPromotionResponseElement getData() {
     return data;
   }
 
   @JsonProperty("data")
-  public void setData(ProductGroupPromotion data) {
+  public void setData(ProductGroupPromotionResponseElement data) {
     this.data = data;
   }
 
@@ -55,7 +55,7 @@ public class ProductGroupPromotionResponseItem   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("exceptions")
-  public List<Exception> getExceptions() {
+  @Valid public List<@Valid Exception> getExceptions() {
     return exceptions;
   }
 

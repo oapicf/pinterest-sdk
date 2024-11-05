@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows   {
   @JsonProperty("click_window_days")
   private Integer clickWindowDays;
@@ -31,10 +31,10 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
     return this;
   }
 
-   /**
+  /**
    * Get clickWindowDays
    * @return clickWindowDays
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getClickWindowDays() {
     return clickWindowDays;
@@ -49,10 +49,10 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
     return this;
   }
 
-   /**
+  /**
    * Get engagementWindowDays
    * @return engagementWindowDays
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getEngagementWindowDays() {
     return engagementWindowDays;
@@ -67,10 +67,10 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
     return this;
   }
 
-   /**
+  /**
    * Get viewWindowDays
    * @return viewWindowDays
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getViewWindowDays() {
     return viewWindowDays;

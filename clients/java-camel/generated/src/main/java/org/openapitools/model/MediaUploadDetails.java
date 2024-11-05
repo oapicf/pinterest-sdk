@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MediaUploadDetails", description = "Media upload details")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadDetails {
 
   private String mediaId;
@@ -39,7 +39,7 @@ public class MediaUploadDetails {
   /**
    * Get mediaId
    * @return mediaId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "media_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_id")
@@ -59,7 +59,7 @@ public class MediaUploadDetails {
   /**
    * Get mediaType
    * @return mediaType
-  */
+   */
   @Valid 
   @Schema(name = "media_type", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
@@ -79,7 +79,7 @@ public class MediaUploadDetails {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")

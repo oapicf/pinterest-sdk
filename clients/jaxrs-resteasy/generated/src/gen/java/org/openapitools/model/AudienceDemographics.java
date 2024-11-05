@@ -13,16 +13,15 @@ import org.openapitools.model.AudienceDemographicValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Audience demographics")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Audience demographics")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDemographics   {
   
-  private List<@Valid AudienceDemographicValue> ages;
-  private List<@Valid AudienceDemographicValue> genders;
-  private List<@Valid AudienceDemographicValue> devices;
-  private List<@Valid AudienceDemographicValue> metros;
-  private List<@Valid AudienceDemographicValue> countries;
+  private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
+  private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
+  private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
+  private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
+  private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
   /**
    * Ages distribution.

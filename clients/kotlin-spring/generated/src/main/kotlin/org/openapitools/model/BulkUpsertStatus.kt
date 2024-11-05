@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,10 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: RUNNING,SUCCEEDED,FAILED
 */
-enum class BulkUpsertStatus(val value: kotlin.String) {
+enum class BulkUpsertStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("RUNNING") RUNNING("RUNNING"),
-    @JsonProperty("SUCCEEDED") SUCCEEDED("SUCCEEDED"),
-    @JsonProperty("FAILED") FAILED("FAILED")
+    RUNNING("RUNNING"),
+    SUCCEEDED("SUCCEEDED"),
+    FAILED("FAILED");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): BulkUpsertStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

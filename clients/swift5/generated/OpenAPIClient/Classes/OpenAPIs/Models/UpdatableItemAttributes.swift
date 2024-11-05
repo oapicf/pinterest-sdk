@@ -16,9 +16,9 @@ public struct UpdatableItemAttributes: Codable, JSONEncodable, Hashable {
     public var adLink: String?
     /** Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest. */
     public var adult: Bool?
-    /** The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. */
+    /** The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. */
     public var ageGroup: String?
-    /** The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. */
+    /** The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’. */
     public var availability: String?
     /** Average reviews for the item. Can be a number from 1-5. */
     public var averageReviewRating: Double?
@@ -47,7 +47,7 @@ public struct UpdatableItemAttributes: Codable, JSONEncodable, Hashable {
     public var freeShippingLabel: Bool?
     /** The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered. */
     public var freeShippingLimit: String?
-    /** The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. */
+    /** The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’. */
     public var gender: String?
     /** The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. */
     public var googleProductCategory: String?
@@ -92,9 +92,9 @@ public struct UpdatableItemAttributes: Codable, JSONEncodable, Hashable {
     public var shippingWidth: String?
     /** The size of the product. */
     public var size: String?
-    /** Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. */
+    /** Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’. */
     public var sizeSystem: String?
-    /** Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. */
+    /** Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’. */
     public var sizeType: String?
     /** Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required. */
     public var tax: String?

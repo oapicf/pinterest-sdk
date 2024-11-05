@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Object describing an item validation event")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemValidationEvent   {
   @JsonProperty("attribute")
   private String attribute;
@@ -31,10 +31,10 @@ public class ItemValidationEvent   {
     return this;
   }
 
-   /**
+  /**
    * The attribute that the item validation event references
    * @return attribute
-  **/
+   */
   @ApiModelProperty(example = "title", value = "The attribute that the item validation event references")
   public String getAttribute() {
     return attribute;
@@ -49,10 +49,10 @@ public class ItemValidationEvent   {
     return this;
   }
 
-   /**
+  /**
    * The event code that the item validation event references
    * @return code
-  **/
+   */
   @ApiModelProperty(example = "106", value = "The event code that the item validation event references")
   public Integer getCode() {
     return code;
@@ -67,10 +67,10 @@ public class ItemValidationEvent   {
     return this;
   }
 
-   /**
+  /**
    * Title message describing the item validation event
    * @return message
-  **/
+   */
   @ApiModelProperty(example = "Title is missing from product metadata.", value = "Title message describing the item validation event")
   public String getMessage() {
     return message;

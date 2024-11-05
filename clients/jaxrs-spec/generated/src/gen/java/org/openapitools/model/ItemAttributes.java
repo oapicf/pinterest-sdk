@@ -20,55 +20,56 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ItemAttributes")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemAttributes   {
-  private @Valid String adLink;
-  private @Valid Boolean adult;
-  private @Valid String ageGroup;
-  private @Valid String availability;
-  private @Valid BigDecimal averageReviewRating;
-  private @Valid String brand;
-  private @Valid Boolean checkoutEnabled;
-  private @Valid String color;
-  private @Valid String condition;
-  private @Valid String customLabel0;
-  private @Valid String customLabel1;
-  private @Valid String customLabel2;
-  private @Valid String customLabel3;
-  private @Valid String customLabel4;
-  private @Valid String description;
-  private @Valid Boolean freeShippingLabel;
-  private @Valid String freeShippingLimit;
-  private @Valid String gender;
-  private @Valid String googleProductCategory;
-  private @Valid Integer gtin;
-  private @Valid String id;
-  private @Valid String itemGroupId;
-  private @Valid Long lastUpdatedTime;
-  private @Valid String link;
-  private @Valid String material;
-  private @Valid String minAdPrice;
-  private @Valid String mobileLink;
-  private @Valid String mpn;
-  private @Valid Integer numberOfRatings;
-  private @Valid Integer numberOfReviews;
-  private @Valid String pattern;
-  private @Valid String price;
-  private @Valid String productType;
-  private @Valid String salePrice;
-  private @Valid String shipping;
-  private @Valid String shippingHeight;
-  private @Valid String shippingWeight;
-  private @Valid String shippingWidth;
-  private @Valid String size;
-  private @Valid String sizeSystem;
-  private @Valid String sizeType;
-  private @Valid String tax;
-  private @Valid String title;
+  private String adLink;
+  private Boolean adult;
+  private String ageGroup;
+  private String availability;
+  private BigDecimal averageReviewRating;
+  private String brand;
+  private Boolean checkoutEnabled;
+  private String color;
+  private String condition;
+  private String customLabel0;
+  private String customLabel1;
+  private String customLabel2;
+  private String customLabel3;
+  private String customLabel4;
+  private String description;
+  private Boolean freeShippingLabel;
+  private String freeShippingLimit;
+  private String gender;
+  private String googleProductCategory;
+  private Integer gtin;
+  private String id;
+  private String itemGroupId;
+  private Long lastUpdatedTime;
+  private String link;
+  private String material;
+  private String minAdPrice;
+  private String mobileLink;
+  private String mpn;
+  private Integer numberOfRatings;
+  private Integer numberOfReviews;
+  private String pattern;
+  private String price;
+  private String productType;
+  private String salePrice;
+  private String shipping;
+  private String shippingHeight;
+  private String shippingWeight;
+  private String shippingWidth;
+  private String size;
+  private String sizeSystem;
+  private String sizeType;
+  private String tax;
+  private String title;
   private @Valid List<String> variantNames;
   private @Valid List<String> variantValues;
   private @Valid List<String> additionalImageLink;
-  private @Valid List<String> imageLink;
+  private @Valid List<String> imageLink = new ArrayList<>();
+  private String videoLink;
 
   /**
    * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
@@ -111,7 +112,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
    **/
   public ItemAttributes ageGroup(String ageGroup) {
     this.ageGroup = ageGroup;
@@ -119,7 +120,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
+  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
   @JsonProperty("age_group")
   public String getAgeGroup() {
     return ageGroup;
@@ -131,7 +132,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
    **/
   public ItemAttributes availability(String availability) {
     this.availability = availability;
@@ -139,7 +140,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.")
+  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.")
   @JsonProperty("availability")
   public String getAvailability() {
     return availability;
@@ -161,7 +162,7 @@ public class ItemAttributes   {
   
   @ApiModelProperty(example = "5", value = "Average reviews for the item. Can be a number from 1-5.")
   @JsonProperty("average_review_rating")
-  public BigDecimal getAverageReviewRating() {
+  @Valid public BigDecimal getAverageReviewRating() {
     return averageReviewRating;
   }
 
@@ -411,7 +412,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
    **/
   public ItemAttributes gender(String gender) {
     this.gender = gender;
@@ -419,7 +420,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.")
+  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.")
   @JsonProperty("gender")
   public String getGender() {
     return gender;
@@ -851,7 +852,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
    **/
   public ItemAttributes sizeSystem(String sizeSystem) {
     this.sizeSystem = sizeSystem;
@@ -859,7 +860,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "US", value = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.")
+  @ApiModelProperty(example = "US", value = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.")
   @JsonProperty("size_system")
   public String getSizeSystem() {
     return sizeSystem;
@@ -871,7 +872,7 @@ public class ItemAttributes   {
   }
 
   /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
    **/
   public ItemAttributes sizeType(String sizeType) {
     this.sizeType = sizeType;
@@ -879,7 +880,7 @@ public class ItemAttributes   {
   }
 
   
-  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.")
+  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.")
   @JsonProperty("size_type")
   public String getSizeType() {
     return sizeType;
@@ -1049,7 +1050,7 @@ public class ItemAttributes   {
   
   @ApiModelProperty(example = "[\"https://scene.example.com/image/image.jpg\"]", value = "<p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>")
   @JsonProperty("image_link")
- @Size(min=1)  public List<String> getImageLink() {
+   @Size(min=1)public List<String> getImageLink() {
     return imageLink;
   }
 
@@ -1074,6 +1075,26 @@ public class ItemAttributes   {
 
     return this;
   }
+  /**
+   * &lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;
+   **/
+  public ItemAttributes videoLink(String videoLink) {
+    this.videoLink = videoLink;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4", value = "<p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>")
+  @JsonProperty("video_link")
+  public String getVideoLink() {
+    return videoLink;
+  }
+
+  @JsonProperty("video_link")
+  public void setVideoLink(String videoLink) {
+    this.videoLink = videoLink;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -1130,12 +1151,13 @@ public class ItemAttributes   {
         Objects.equals(this.variantNames, itemAttributes.variantNames) &&
         Objects.equals(this.variantValues, itemAttributes.variantValues) &&
         Objects.equals(this.additionalImageLink, itemAttributes.additionalImageLink) &&
-        Objects.equals(this.imageLink, itemAttributes.imageLink);
+        Objects.equals(this.imageLink, itemAttributes.imageLink) &&
+        Objects.equals(this.videoLink, itemAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink);
+    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
   }
 
   @Override
@@ -1190,6 +1212,7 @@ public class ItemAttributes   {
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
+    sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }

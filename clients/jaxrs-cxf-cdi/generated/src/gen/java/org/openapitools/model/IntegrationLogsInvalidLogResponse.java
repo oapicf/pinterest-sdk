@@ -22,7 +22,7 @@ import java.util.Objects;
 @ApiModel(description = "Schema describing the response when a log has invalid fields.")
 public class IntegrationLogsInvalidLogResponse   {
   
-  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs;
+  private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
 
   /**
    **/

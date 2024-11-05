@@ -18,11 +18,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OptimizationGoalMetadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadata   {
-  private @Valid OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
-  private @Valid OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
-  private @Valid OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
+  private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
+  private OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
+  private OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
 
   /**
    **/
@@ -34,7 +34,7 @@ public class OptimizationGoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("conversion_tag_v3_goal_metadata")
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
+  @Valid public OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
     return conversionTagV3GoalMetadata;
   }
 
@@ -53,7 +53,7 @@ public class OptimizationGoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("frequency_goal_metadata")
-  public OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
+  @Valid public OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
     return frequencyGoalMetadata;
   }
 
@@ -72,7 +72,7 @@ public class OptimizationGoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("scrollup_goal_metadata")
-  public OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
+  @Valid public OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
     return scrollupGoalMetadata;
   }
 

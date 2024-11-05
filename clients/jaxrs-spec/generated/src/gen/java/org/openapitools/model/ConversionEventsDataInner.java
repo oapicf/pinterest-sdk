@@ -19,30 +19,30 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionEvents_data_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInner   {
-  private @Valid String eventName;
-  private @Valid String actionSource;
-  private @Valid Long eventTime;
-  private @Valid String eventId;
-  private @Valid String eventSourceUrl;
-  private @Valid Boolean optOut;
-  private @Valid String partnerName;
-  private @Valid ConversionEventsUserData userData;
-  private @Valid ConversionEventsDataInnerCustomData customData;
-  private @Valid String appId;
-  private @Valid String appName;
-  private @Valid String appVersion;
-  private @Valid String deviceBrand;
-  private @Valid String deviceCarrier;
-  private @Valid String deviceModel;
-  private @Valid String deviceType;
-  private @Valid String osVersion;
-  private @Valid Boolean wifi;
-  private @Valid String language;
+  private String eventName;
+  private String actionSource;
+  private Long eventTime;
+  private String eventId;
+  private String eventSourceUrl;
+  private Boolean optOut;
+  private String partnerName;
+  private ConversionEventsUserData userData;
+  private ConversionEventsDataInnerCustomData customData;
+  private String appId;
+  private String appName;
+  private String appVersion;
+  private String deviceBrand;
+  private String deviceCarrier;
+  private String deviceModel;
+  private String deviceType;
+  private String osVersion;
+  private Boolean wifi;
+  private String language;
 
   /**
-   * The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt; &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt; &lt;li&gt;&lt;code&gt;custom&lt;/code&gt; &lt;li&gt;&lt;code&gt;lead&lt;/code&gt; &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt; &lt;li&gt;&lt;code&gt;search&lt;/code&gt; &lt;li&gt;&lt;code&gt;signup&lt;/code&gt; &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt; &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;
+   * &lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; 
    **/
   public ConversionEventsDataInner eventName(String eventName) {
     this.eventName = eventName;
@@ -50,10 +50,9 @@ public class ConversionEventsDataInner   {
   }
 
   
-  @ApiModelProperty(example = "checkout", required = true, value = "The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>")
+  @ApiModelProperty(example = "checkout", required = true, value = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ")
   @JsonProperty("event_name")
-  @NotNull
-  public String getEventName() {
+  @NotNull public String getEventName() {
     return eventName;
   }
 
@@ -63,7 +62,7 @@ public class ConversionEventsDataInner   {
   }
 
   /**
-   * The source indicating where the conversion event occurred. &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt; &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt; &lt;li&gt;&lt;code&gt;web&lt;/code&gt; &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;
+   * &lt;p&gt;   The source indicating where the conversion event occurred.   &lt;ul&gt;     &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;web&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; 
    **/
   public ConversionEventsDataInner actionSource(String actionSource) {
     this.actionSource = actionSource;
@@ -71,10 +70,9 @@ public class ConversionEventsDataInner   {
   }
 
   
-  @ApiModelProperty(example = "app_ios", required = true, value = "The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>")
+  @ApiModelProperty(example = "app_ios", required = true, value = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ")
   @JsonProperty("action_source")
-  @NotNull
-  public String getActionSource() {
+  @NotNull public String getActionSource() {
     return actionSource;
   }
 
@@ -94,8 +92,7 @@ public class ConversionEventsDataInner   {
   
   @ApiModelProperty(example = "1451431341", required = true, value = "The time when the event happened. Unix timestamp in seconds.")
   @JsonProperty("event_time")
-  @NotNull
-  public Long getEventTime() {
+  @NotNull public Long getEventTime() {
     return eventTime;
   }
 
@@ -115,8 +112,7 @@ public class ConversionEventsDataInner   {
   
   @ApiModelProperty(example = "eventId0001", required = true, value = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.")
   @JsonProperty("event_id")
-  @NotNull
-  public String getEventId() {
+  @NotNull public String getEventId() {
     return eventId;
   }
 
@@ -195,8 +191,7 @@ public class ConversionEventsDataInner   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("user_data")
-  @NotNull
-  public ConversionEventsUserData getUserData() {
+  @NotNull @Valid public ConversionEventsUserData getUserData() {
     return userData;
   }
 
@@ -215,7 +210,7 @@ public class ConversionEventsDataInner   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("custom_data")
-  public ConversionEventsDataInnerCustomData getCustomData() {
+  @Valid public ConversionEventsDataInnerCustomData getCustomData() {
     return customData;
   }
 

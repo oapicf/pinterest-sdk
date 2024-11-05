@@ -23,11 +23,11 @@ import org.openapitools.client.models.BatchOperation
 import org.openapitools.client.models.CatalogsItemsCreateBatchRequest
 import org.openapitools.client.models.CatalogsItemsDeleteBatchRequest
 import org.openapitools.client.models.CatalogsItemsDeleteDiscontinuedBatchRequest
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsItemsUpdateBatchRequest
 import org.openapitools.client.models.CatalogsItemsUpsertBatchRequest
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemDeleteBatchRecord
-import org.openapitools.client.models.Language
 
 class CatalogsItemsBatchRequestTest : ShouldSpec() {
     init {

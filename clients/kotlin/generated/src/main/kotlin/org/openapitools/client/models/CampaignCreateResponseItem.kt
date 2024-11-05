@@ -37,5 +37,8 @@ data class CampaignCreateResponseItem (
     @Json(name = "exceptions")
     val exceptions: kotlin.collections.List<Exception>? = null
 
-)
+) {
+
+
+}
 

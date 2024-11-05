@@ -27,7 +27,7 @@ public class QuizPinQuestion   {
 
   private String questionText;
 
-  private List<@Valid QuizPinOption> options;
+  private List<@Valid QuizPinOption> options = new ArrayList<>();
 
   /**
    **/

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &MediaUploadDetails{}
 
 // MediaUploadDetails Media upload details
 type MediaUploadDetails struct {
-	MediaId *string `json:"media_id,omitempty"`
+	MediaId *string `json:"media_id,omitempty" validate:"regexp=^\\\\d+$"`
 	MediaType *MediaUploadType `json:"media_type,omitempty"`
 	Status *MediaUploadStatus `json:"status,omitempty"`
 }

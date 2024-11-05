@@ -13,7 +13,7 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Redeem ad credits
-%% Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+%% Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 -spec ads_credit/redeem(ctx:ctx(), binary(), openapi_ads_credit_redeem_request:openapi_ads_credit_redeem_request()) -> {ok, openapi_ads_credit_redeem_response:openapi_ads_credit_redeem_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 ads_credit/redeem(Ctx, AdAccountId, OpenapiAdsCreditRedeemRequest) ->
     ads_credit/redeem(Ctx, AdAccountId, OpenapiAdsCreditRedeemRequest, #{}).
@@ -34,7 +34,7 @@ ads_credit/redeem(Ctx, AdAccountId, OpenapiAdsCreditRedeemRequest, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get ads credit discounts
-%% Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+%% Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 -spec ads_credits_discounts/get(ctx:ctx(), binary()) -> {ok, openapi_ads_credits_discounts_get_200_response:openapi_ads_credits_discounts_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 ads_credits_discounts/get(Ctx, AdAccountId) ->
     ads_credits_discounts/get(Ctx, AdAccountId, #{}).
@@ -55,7 +55,7 @@ ads_credits_discounts/get(Ctx, AdAccountId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get billing profiles
-%% Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+%% Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 -spec billing_profiles/get(ctx:ctx(), binary(), boolean()) -> {ok, openapi_billing_profiles_get_200_response:openapi_billing_profiles_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 billing_profiles/get(Ctx, AdAccountId, IsActive) ->
     billing_profiles/get(Ctx, AdAccountId, IsActive, #{}).

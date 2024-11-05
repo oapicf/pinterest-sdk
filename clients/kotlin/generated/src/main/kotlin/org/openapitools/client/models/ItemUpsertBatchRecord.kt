@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ItemAttributes
+import org.openapitools.client.models.ItemAttributesRequest
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -35,7 +35,10 @@ data class ItemUpsertBatchRecord (
     val itemId: kotlin.String? = null,
 
     @Json(name = "attributes")
-    val attributes: ItemAttributes? = null
+    val attributes: ItemAttributesRequest? = null
 
-)
+) {
+
+
+}
 

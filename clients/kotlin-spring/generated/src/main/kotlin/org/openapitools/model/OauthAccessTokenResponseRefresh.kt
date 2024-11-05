@@ -1,9 +1,9 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.OauthAccessTokenResponse
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -17,24 +17,48 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * A successful OAuth access token response for the refresh token flow.
+ * @param accessToken 
+ * @param tokenType 
+ * @param expiresIn 
+ * @param scope 
+ * @param responseType 
  */
-class OauthAccessTokenResponseRefresh(
+data class OauthAccessTokenResponseRefresh(
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("access_token", required = true) override val accessToken: kotlin.String,
+    @get:JsonProperty("access_token", required = true) val accessToken: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("token_type", required = true) override val tokenType: kotlin.String = "bearer",
+    @get:JsonProperty("token_type", required = true) val tokenType: kotlin.String = "bearer",
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("expires_in", required = true) override val expiresIn: kotlin.Int,
+    @get:JsonProperty("expires_in", required = true) val expiresIn: kotlin.Int,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("scope", required = true) override val scope: kotlin.String,
+    @get:JsonProperty("scope", required = true) val scope: kotlin.String,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("response_type") override val responseType: OauthAccessTokenResponseRefresh.ResponseType? = null
-) : OauthAccessTokenResponse{
+    @get:JsonProperty("response_type") val responseType: OauthAccessTokenResponseRefresh.ResponseType? = null
+    ) {
+
+    /**
+    * 
+    * Values: authorization_code,refresh_token,client_credentials
+    */
+    enum class ResponseType(@get:JsonValue val value: kotlin.String) {
+
+        authorization_code("authorization_code"),
+        refresh_token("refresh_token"),
+        client_credentials("client_credentials");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): ResponseType {
+                return values().first{it -> it.value == value}
+            }
+        }
+    }
 
 }
 

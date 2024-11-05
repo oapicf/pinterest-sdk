@@ -47,5 +47,8 @@ data class SSIOAccountAddress (
     @Json(name = "order_legal_entity")
     val orderLegalEntity: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -28,7 +28,7 @@ void main() {
       // TODO
     });
 
-    // EntityStatus status (default value: 'ACTIVE')
+    // EntityStatus status
     test('to test the property `status`', () async {
       // TODO
     });
@@ -51,7 +51,7 @@ void main() {
       // TODO
     });
 
-    // AdCommonTrackingUrls trackingUrls
+    // TrackingUrls trackingUrls
     test('to test the property `trackingUrls`', () async {
       // TODO
     });
@@ -68,13 +68,8 @@ void main() {
       // TODO
     });
 
-    // CampaignSummaryStatus summaryStatus
-    test('to test the property `summaryStatus`', () async {
-      // TODO
-    });
-
     // Determine if a campaign has flexible daily budgets setup.
-    // bool isFlexibleDailyBudgets (default value: false)
+    // bool isFlexibleDailyBudgets
     test('to test the property `isFlexibleDailyBudgets`', () async {
       // TODO
     });
@@ -86,7 +81,7 @@ void main() {
     });
 
     // Specifies whether the campaign was created in the automated campaign flow
-    // bool isAutomatedCampaign (default value: false)
+    // bool isAutomatedCampaign
     test('to test the property `isAutomatedCampaign`', () async {
       // TODO
     });

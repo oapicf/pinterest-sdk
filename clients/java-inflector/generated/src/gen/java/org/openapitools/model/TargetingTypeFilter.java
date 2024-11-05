@@ -14,13 +14,13 @@ import org.openapitools.model.AdsAnalyticsTargetingType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TargetingTypeFilter   {
   @JsonProperty("targeting_types")
   private List<AdsAnalyticsTargetingType> targetingTypes = null;
 
   /**
-   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
    **/
   public TargetingTypeFilter targetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
@@ -28,7 +28,7 @@ public class TargetingTypeFilter   {
   }
 
   
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
   @JsonProperty("targeting_types")
   public List<AdsAnalyticsTargetingType> getTargetingTypes() {
     return targetingTypes;

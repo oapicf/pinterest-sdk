@@ -44,7 +44,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the user_account API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserAccountApi  {
 
     @Inject UserAccountApiService service;
@@ -55,6 +55,9 @@ public class UserAccountApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List following boards", notes = "Get a list of the boards a user follows. The request returns a board summary object array.", response = BoardsUserFollowsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -72,7 +75,7 @@ public class UserAccountApi  {
     @Path("/following/{username}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Follow user", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.", response = UserSummary.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Follow user", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.", response = UserSummary.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:write", description = "Update your user accounts and followers")
         })
@@ -94,6 +97,9 @@ public class UserAccountApi  {
     @io.swagger.annotations.ApiOperation(value = "List followers", notes = "Get a list of your followers.", response = FollowersList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = { 
@@ -112,6 +118,9 @@ public class UserAccountApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List linked businesses", notes = "Get a list of your linked business accounts.", response = LinkedBusiness.class, responseContainer = "List", authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -159,7 +168,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user account analytics.", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response userAccountAnalytics( @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate,, allowableValues="OTHER, CLAIMED, BOTH" @DefaultValue("BOTH") @QueryParam("from_claimed_content") String fromClaimedContent,, allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO" @DefaultValue("ALL") @QueryParam("pin_format") String pinFormat,, allowableValues="ALL, MOBILE, TABLET, WEB" @DefaultValue("ALL") @QueryParam("app_types") String appTypes,, allowableValues="ALL, PAID, ORGANIC" @DefaultValue("ALL") @QueryParam("content_type") String contentType,, allowableValues="ALL, YOUR_PINS, OTHER_PINS" @DefaultValue("ALL") @QueryParam("source") String source, @QueryParam("metric_types") List<String> metricTypes,, allowableValues="NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT" @DefaultValue("NO_SPLIT") @QueryParam("split_field") String splitField, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
+    public Response userAccountAnalytics( @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate,, allowableValues="OTHER, CLAIMED, BOTH" @DefaultValue("BOTH") @QueryParam("from_claimed_content") String fromClaimedContent,, allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA" @DefaultValue("ALL") @QueryParam("pin_format") String pinFormat,, allowableValues="ALL, MOBILE, TABLET, WEB" @DefaultValue("ALL") @QueryParam("app_types") String appTypes,, allowableValues="ALL, PAID, ORGANIC" @DefaultValue("ALL") @QueryParam("content_type") String contentType,, allowableValues="ALL, YOUR_PINS, OTHER_PINS" @DefaultValue("ALL") @QueryParam("source") String source, @QueryParam("metric_types") List<String> metricTypes,, allowableValues="NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT" @DefaultValue("NO_SPLIT") @QueryParam("split_field") String splitField, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.userAccountAnalytics(startDate,endDate,fromClaimedContent,pinFormat,appTypes,contentType,source,metricTypes,splitField,adAccountId,securityContext);
     }
@@ -171,6 +180,10 @@ public class UserAccountApi  {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = { 
@@ -179,7 +192,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user account analytics.", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response userAccountAnalyticsTopPins( @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull, allowableValues="ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE" @QueryParam("sort_by") String sortBy,, allowableValues="OTHER, CLAIMED, BOTH" @DefaultValue("BOTH") @QueryParam("from_claimed_content") String fromClaimedContent,, allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO" @DefaultValue("ALL") @QueryParam("pin_format") String pinFormat,, allowableValues="ALL, MOBILE, TABLET, WEB" @DefaultValue("ALL") @QueryParam("app_types") String appTypes,, allowableValues="ALL, PAID, ORGANIC" @DefaultValue("ALL") @QueryParam("content_type") String contentType,, allowableValues="ALL, YOUR_PINS, OTHER_PINS" @DefaultValue("ALL") @QueryParam("source") String source, @QueryParam("metric_types") List<String> metricTypes, @Min(1) @Max(50) @DefaultValue("10") @QueryParam("num_of_pins") Integer numOfPins,, allowableValues="30" @QueryParam("created_in_last_n_days") Integer createdInLastNDays, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
+    public Response userAccountAnalyticsTopPins( @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull, allowableValues="ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE" @QueryParam("sort_by") String sortBy,, allowableValues="OTHER, CLAIMED, BOTH" @DefaultValue("BOTH") @QueryParam("from_claimed_content") String fromClaimedContent,, allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA" @DefaultValue("ALL") @QueryParam("pin_format") String pinFormat,, allowableValues="ALL, MOBILE, TABLET, WEB" @DefaultValue("ALL") @QueryParam("app_types") String appTypes,, allowableValues="ALL, PAID, ORGANIC" @DefaultValue("ALL") @QueryParam("content_type") String contentType,, allowableValues="ALL, YOUR_PINS, OTHER_PINS" @DefaultValue("ALL") @QueryParam("source") String source, @QueryParam("metric_types") List<String> metricTypes, @Min(1) @Max(50) @DefaultValue("10") @QueryParam("num_of_pins") Integer numOfPins,, allowableValues="30" @QueryParam("created_in_last_n_days") Integer createdInLastNDays, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.userAccountAnalyticsTopPins(startDate,endDate,sortBy,fromClaimedContent,pinFormat,appTypes,contentType,source,metricTypes,numOfPins,createdInLastNDays,adAccountId,securityContext);
     }
@@ -191,6 +204,10 @@ public class UserAccountApi  {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = { 
@@ -199,7 +216,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user account analytics.", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response userAccountAnalyticsTopVideoPins( @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull, allowableValues="IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START" @QueryParam("sort_by") String sortBy,, allowableValues="OTHER, CLAIMED, BOTH" @DefaultValue("BOTH") @QueryParam("from_claimed_content") String fromClaimedContent,, allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO" @DefaultValue("ALL") @QueryParam("pin_format") String pinFormat,, allowableValues="ALL, MOBILE, TABLET, WEB" @DefaultValue("ALL") @QueryParam("app_types") String appTypes,, allowableValues="ALL, PAID, ORGANIC" @DefaultValue("ALL") @QueryParam("content_type") String contentType,, allowableValues="ALL, YOUR_PINS, OTHER_PINS" @DefaultValue("ALL") @QueryParam("source") String source, @QueryParam("metric_types") List<String> metricTypes, @Min(1) @Max(50) @DefaultValue("10") @QueryParam("num_of_pins") Integer numOfPins,, allowableValues="30" @QueryParam("created_in_last_n_days") Integer createdInLastNDays, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
+    public Response userAccountAnalyticsTopVideoPins( @NotNull @QueryParam("start_date") Date startDate, @NotNull @QueryParam("end_date") Date endDate, @NotNull, allowableValues="IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START" @QueryParam("sort_by") String sortBy,, allowableValues="OTHER, CLAIMED, BOTH" @DefaultValue("BOTH") @QueryParam("from_claimed_content") String fromClaimedContent,, allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA" @DefaultValue("ALL") @QueryParam("pin_format") String pinFormat,, allowableValues="ALL, MOBILE, TABLET, WEB" @DefaultValue("ALL") @QueryParam("app_types") String appTypes,, allowableValues="ALL, PAID, ORGANIC" @DefaultValue("ALL") @QueryParam("content_type") String contentType,, allowableValues="ALL, YOUR_PINS, OTHER_PINS" @DefaultValue("ALL") @QueryParam("source") String source, @QueryParam("metric_types") List<String> metricTypes, @Min(1) @Max(50) @DefaultValue("10") @QueryParam("num_of_pins") Integer numOfPins,, allowableValues="30" @QueryParam("created_in_last_n_days") Integer createdInLastNDays, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.userAccountAnalyticsTopVideoPins(startDate,endDate,sortBy,fromClaimedContent,pinFormat,appTypes,contentType,source,metricTypes,numOfPins,createdInLastNDays,adAccountId,securityContext);
     }
@@ -207,8 +224,11 @@ public class UserAccountApi  {
     
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get user account", notes = "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.", response = Account.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get user account", notes = "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.", response = Account.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -228,6 +248,9 @@ public class UserAccountApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List following", notes = "Get a list of who a certain user follows.", response = UserFollowingGet200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -271,9 +294,9 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = UserWebsiteSummary.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response verifyWebsiteUpdate(@ApiParam(value = "Verify a website." ,required=true) @NotNull @Valid UserWebsiteVerifyRequest userWebsiteVerifyRequest,@Context SecurityContext securityContext)
+    public Response verifyWebsiteUpdate(@ApiParam(value = "Verify a website." ,required=true) @NotNull @Valid UserWebsiteVerifyRequest userWebsiteVerifyRequest, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.verifyWebsiteUpdate(userWebsiteVerifyRequest,securityContext);
+        return service.verifyWebsiteUpdate(userWebsiteVerifyRequest,adAccountId,securityContext);
     }
     @GET
     @Path("/websites/verification")
@@ -281,6 +304,9 @@ public class UserAccountApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get user verification code for website claiming", notes = "Get verification code for user to install on the website to claim it.", response = UserWebsiteVerificationCode.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -290,8 +316,8 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user verification code for website claiming.", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response websiteVerificationGet(@Context SecurityContext securityContext)
+    public Response websiteVerificationGet( @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.websiteVerificationGet(securityContext);
+        return service.websiteVerificationGet(adAccountId,securityContext);
     }
 }

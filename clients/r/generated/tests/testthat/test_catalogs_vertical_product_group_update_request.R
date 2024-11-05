@@ -27,8 +27,22 @@ test_that("description", {
 })
 
 test_that("filters", {
-  # tests for the property `filters` (CatalogsHotelProductGroupFilters)
+  # tests for the property `filters` (CatalogsCreativeAssetsProductGroupFilters)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
+})
+
+test_that("country", {
+  # tests for the property `country` (Country)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+})
+
+test_that("locale", {
+  # tests for the property `locale` (CatalogsLocale)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`locale`, "EXPECTED_RESULT")
 })

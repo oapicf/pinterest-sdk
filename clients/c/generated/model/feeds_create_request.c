@@ -39,13 +39,13 @@ pinterest_rest_api_feeds_create_request__e feeds_create_request_format_FromStrin
     return 0;
 }
 char* feeds_create_request_catalog_type_ToString(pinterest_rest_api_feeds_create_request__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_feeds_create_request__e feeds_create_request_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -101,6 +101,7 @@ feeds_create_request_t *feeds_create_request_create(
     catalogs_type_t *catalog_type,
     country_t *default_country,
     product_availability_type_t *default_availability,
+    catalogs_status_t *status,
     char *catalog_id
     ) {
     feeds_create_request_t *feeds_create_request_local_var = malloc(sizeof(feeds_create_request_t));
@@ -117,6 +118,7 @@ feeds_create_request_t *feeds_create_request_create(
     feeds_create_request_local_var->catalog_type = catalog_type;
     feeds_create_request_local_var->default_country = default_country;
     feeds_create_request_local_var->default_availability = default_availability;
+    feeds_create_request_local_var->status = status;
     feeds_create_request_local_var->catalog_id = catalog_id;
 
     return feeds_create_request_local_var;
@@ -167,6 +169,10 @@ void feeds_create_request_free(feeds_create_request_t *feeds_create_request) {
     if (feeds_create_request->default_availability) {
         product_availability_type_free(feeds_create_request->default_availability);
         feeds_create_request->default_availability = NULL;
+    }
+    if (feeds_create_request->status) {
+        catalogs_status_free(feeds_create_request->status);
+        feeds_create_request->status = NULL;
     }
     if (feeds_create_request->catalog_id) {
         free(feeds_create_request->catalog_id);
@@ -304,6 +310,19 @@ cJSON *feeds_create_request_convertToJSON(feeds_create_request_t *feeds_create_r
     }
 
 
+    // feeds_create_request->status
+    if(feeds_create_request->status) {
+    cJSON *status_local_JSON = catalogs_status_convertToJSON(feeds_create_request->status);
+    if(status_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
     // feeds_create_request->catalog_id
     if(feeds_create_request->catalog_id) {
     if(cJSON_AddStringToObject(item, "catalog_id", feeds_create_request->catalog_id) == NULL) {
@@ -346,6 +365,9 @@ feeds_create_request_t *feeds_create_request_parseFromJSON(cJSON *feeds_create_r
 
     // define the local variable for feeds_create_request->default_availability
     product_availability_type_t *default_availability_local_nonprim = NULL;
+
+    // define the local variable for feeds_create_request->status
+    catalogs_status_t *status_local_nonprim = NULL;
 
     // feeds_create_request->default_currency
     cJSON *default_currency = cJSON_GetObjectItemCaseSensitive(feeds_create_requestJSON, "default_currency");
@@ -431,6 +453,12 @@ feeds_create_request_t *feeds_create_request_parseFromJSON(cJSON *feeds_create_r
     default_availability_local_nonprim = product_availability_type_parseFromJSON(default_availability); //custom
     }
 
+    // feeds_create_request->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(feeds_create_requestJSON, "status");
+    if (status) { 
+    status_local_nonprim = catalogs_status_parseFromJSON(status); //nonprimitive
+    }
+
     // feeds_create_request->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(feeds_create_requestJSON, "catalog_id");
     if (catalog_id) { 
@@ -452,6 +480,7 @@ feeds_create_request_t *feeds_create_request_parseFromJSON(cJSON *feeds_create_r
         catalog_type_local_nonprim,
         default_country_local_nonprim,
         default_availability ? default_availability_local_nonprim : NULL,
+        status ? status_local_nonprim : NULL,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL
         );
 
@@ -488,6 +517,10 @@ end:
     if (default_availability_local_nonprim) {
         product_availability_type_free(default_availability_local_nonprim);
         default_availability_local_nonprim = NULL;
+    }
+    if (status_local_nonprim) {
+        catalogs_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
     }
     return NULL;
 

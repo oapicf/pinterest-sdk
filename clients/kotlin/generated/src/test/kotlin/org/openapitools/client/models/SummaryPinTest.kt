@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.SummaryPin
-import org.openapitools.client.models.SummaryPinMedia
+import org.openapitools.client.models.PinMedia
 
 class SummaryPinTest : ShouldSpec() {
     init {

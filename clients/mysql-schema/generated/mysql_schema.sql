@@ -66,8 +66,18 @@ CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionRequest` (
   `webhook_url` TEXT NOT NULL COMMENT 'Standard HTTPS webhook URL.',
   `lead_form_id` TEXT DEFAULT NULL COMMENT 'Lead form ID.',
   `partner_access_token` TEXT DEFAULT NULL COMMENT 'Partner access token. Only for clients that requires authentication. We recommend to avoid this param.',
-  `partner_refresh_token` TEXT DEFAULT NULL COMMENT 'Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.'
+  `partner_refresh_token` TEXT DEFAULT NULL COMMENT 'Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.',
+  `partner_metadata` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `AdAccountCreateSubscriptionRequest_partner_metadata` generated from model 'AdAccountCreateSubscriptionRequestUnderscorepartnerUnderscoremetadata'
+-- Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+--
+
+CREATE TABLE IF NOT EXISTS `AdAccountCreateSubscriptionRequest_partner_metadata` (
+  `subscriber_key` TEXT DEFAULT NULL COMMENT 'Text field value that uniquely identifies a subscriber.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.';
 
 --
 -- Table structure for table `AdAccountCreateSubscriptionResponse` generated from model 'AdAccountCreateSubscriptionResponse'
@@ -106,10 +116,10 @@ CREATE TABLE IF NOT EXISTS `Ad_account_owner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Table structure for table `ad_accounts_catalogs_product_groups_list_200_response` generated from model 'adUnderscoreaccountsUnderscorecatalogsUnderscoreproductUnderscoregroupsUnderscorelistUnderscore200Underscoreresponse'
+-- Table structure for table `ad_accounts_audiences_shared_accounts_list_200_response` generated from model 'adUnderscoreaccountsUnderscoreaudiencesUnderscoresharedUnderscoreaccountsUnderscorelistUnderscore200Underscoreresponse'
 --
 
-CREATE TABLE IF NOT EXISTS `ad_accounts_catalogs_product_groups_list_200_response` (
+CREATE TABLE IF NOT EXISTS `ad_accounts_audiences_shared_accounts_list_200_response` (
   `items` JSON NOT NULL,
   `bookmark` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -175,14 +185,14 @@ CREATE TABLE IF NOT EXISTS `AdArrayResponseElement` (
 
 CREATE TABLE IF NOT EXISTS `AdCommon` (
   `ad_group_id` TEXT DEFAULT NULL COMMENT 'ID of the ad group that contains the ad.',
-  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices. Not currently available. Using this field will generate an error.',
+  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices.',
   `carousel_android_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on Android.',
   `carousel_destination_urls` JSON DEFAULT NULL COMMENT 'Comma-separated destination URLs for the carousel pin to promote.',
   `carousel_ios_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on iOS.',
   `click_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking url for the ad clicks.',
   `creative_type` TEXT DEFAULT NULL,
   `destination_url` TEXT DEFAULT NULL COMMENT 'Destination URL.',
-  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices. Not currently available. Using this field will generate an error.',
+  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices.',
   `is_pin_deleted` TINYINT(1) DEFAULT NULL COMMENT 'Is original pin deleted?',
   `is_removable` TINYINT(1) DEFAULT NULL COMMENT 'Is pin repinnable?',
   `name` TEXT DEFAULT NULL COMMENT 'Name of the ad - 255 chars max.',
@@ -191,31 +201,9 @@ CREATE TABLE IF NOT EXISTS `AdCommon` (
   `view_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking URL for ad impressions.',
   `lead_form_id` TEXT DEFAULT NULL COMMENT 'Lead form ID for lead ad generation.',
   `grid_click_type` TEXT DEFAULT NULL,
-  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_WEBSITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
-  `quiz_pin_data` TEXT DEFAULT NULL
+  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_SITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
+  `quiz_pin_data` TEXT DEFAULT NULL COMMENT 'Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Creation fields';
-
---
--- Table structure for table `AdCommon_quiz_pin_data` generated from model 'AdCommonUnderscorequizUnderscorepinUnderscoredata'
--- Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
---
-
-CREATE TABLE IF NOT EXISTS `AdCommon_quiz_pin_data` (
-  `questions` JSON DEFAULT NULL,
-  `results` JSON DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.';
-
---
--- Table structure for table `AdCommon_tracking_urls` generated from model 'AdCommonUnderscoretrackingUnderscoreurls'
---
-
-CREATE TABLE IF NOT EXISTS `AdCommon_tracking_urls` (
-  `impression` JSON DEFAULT NULL,
-  `click` JSON DEFAULT NULL,
-  `engagement` JSON DEFAULT NULL,
-  `buyable_button` JSON DEFAULT NULL,
-  `audience_verification` JSON DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `AdCreateRequest` generated from model 'AdCreateRequest'
@@ -223,14 +211,14 @@ CREATE TABLE IF NOT EXISTS `AdCommon_tracking_urls` (
 
 CREATE TABLE IF NOT EXISTS `AdCreateRequest` (
   `ad_group_id` TEXT NOT NULL COMMENT 'ID of the ad group that contains the ad.',
-  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices. Not currently available. Using this field will generate an error.',
+  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices.',
   `carousel_android_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on Android.',
   `carousel_destination_urls` JSON DEFAULT NULL COMMENT 'Comma-separated destination URLs for the carousel pin to promote.',
   `carousel_ios_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on iOS.',
   `click_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking url for the ad clicks.',
   `creative_type` TEXT NOT NULL,
   `destination_url` TEXT DEFAULT NULL COMMENT 'Destination URL.',
-  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices. Not currently available. Using this field will generate an error.',
+  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices.',
   `is_pin_deleted` TINYINT(1) DEFAULT NULL COMMENT 'Is original pin deleted?',
   `is_removable` TINYINT(1) DEFAULT NULL COMMENT 'Is pin repinnable?',
   `name` TEXT DEFAULT NULL COMMENT 'Name of the ad - 255 chars max.',
@@ -239,8 +227,8 @@ CREATE TABLE IF NOT EXISTS `AdCreateRequest` (
   `view_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking URL for ad impressions.',
   `lead_form_id` TEXT DEFAULT NULL COMMENT 'Lead form ID for lead ad generation.',
   `grid_click_type` TEXT DEFAULT NULL,
-  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_WEBSITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
-  `quiz_pin_data` TEXT DEFAULT NULL,
+  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_SITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
+  `quiz_pin_data` TEXT DEFAULT NULL COMMENT 'Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.',
   `pin_id` TEXT NOT NULL COMMENT 'Pin ID.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -301,44 +289,21 @@ CREATE TABLE IF NOT EXISTS `AdGroupCommon` (
   `status` TEXT DEFAULT NULL COMMENT 'Ad group/entity status.',
   `budget_in_micro_currency` INT DEFAULT NULL COMMENT 'Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.',
   `bid_in_micro_currency` INT DEFAULT NULL COMMENT 'Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.',
-  `optimization_goal_metadata` TEXT DEFAULT NULL,
+  `optimization_goal_metadata` TEXT DEFAULT NULL COMMENT 'Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.',
   `budget_type` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Ad group start time. Unix timestamp in seconds. Defaults to current time.',
   `end_time` INT DEFAULT NULL COMMENT 'Ad group end time. Unix timestamp in seconds.',
   `targeting_spec` TEXT DEFAULT NULL,
-  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
-  `tracking_urls` TEXT DEFAULT NULL,
+  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
+  `tracking_urls` TEXT DEFAULT NULL COMMENT 'Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.',
   `auto_targeting_enabled` TINYINT(1) DEFAULT NULL COMMENT 'Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
-  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
+  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
   `pacing_delivery_type` TEXT DEFAULT NULL,
   `campaign_id` TEXT DEFAULT NULL COMMENT 'Campaign ID of the ad group.',
   `billable_event` TEXT DEFAULT NULL,
-  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type'
+  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.',
+  `targeting_template_ids` JSON DEFAULT NULL COMMENT 'Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;].'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Table structure for table `AdGroupCommon_optimization_goal_metadata` generated from model 'AdGroupCommonUnderscoreoptimizationUnderscoregoalUnderscoremetadata'
--- Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.
---
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommon_optimization_goal_metadata` (
-  `conversion_tag_v3_goal_metadata` TEXT DEFAULT NULL,
-  `frequency_goal_metadata` TEXT DEFAULT NULL,
-  `scrollup_goal_metadata` TEXT DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.';
-
---
--- Table structure for table `AdGroupCommon_tracking_urls` generated from model 'AdGroupCommonUnderscoretrackingUnderscoreurls'
--- Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
---
-
-CREATE TABLE IF NOT EXISTS `AdGroupCommon_tracking_urls` (
-  `impression` JSON DEFAULT NULL,
-  `click` JSON DEFAULT NULL,
-  `engagement` JSON DEFAULT NULL,
-  `buyable_button` JSON DEFAULT NULL,
-  `audience_verification` JSON DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.';
 
 --
 -- Table structure for table `AdGroupCreateRequest` generated from model 'AdGroupCreateRequest'
@@ -349,19 +314,20 @@ CREATE TABLE IF NOT EXISTS `AdGroupCreateRequest` (
   `status` TEXT DEFAULT NULL COMMENT 'Ad group/entity status.',
   `budget_in_micro_currency` INT DEFAULT NULL COMMENT 'Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.',
   `bid_in_micro_currency` INT DEFAULT NULL COMMENT 'Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.',
-  `optimization_goal_metadata` TEXT DEFAULT NULL,
+  `optimization_goal_metadata` TEXT DEFAULT NULL COMMENT 'Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.',
   `budget_type` TEXT,
   `start_time` INT DEFAULT NULL COMMENT 'Ad group start time. Unix timestamp in seconds. Defaults to current time.',
   `end_time` INT DEFAULT NULL COMMENT 'Ad group end time. Unix timestamp in seconds.',
   `targeting_spec` TEXT DEFAULT NULL,
-  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
-  `tracking_urls` TEXT DEFAULT NULL,
+  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
+  `tracking_urls` TEXT DEFAULT NULL COMMENT 'Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.',
   `auto_targeting_enabled` TINYINT(1) DEFAULT NULL COMMENT 'Enable auto-targeting for ad group.Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
-  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
+  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
   `pacing_delivery_type` TEXT,
   `campaign_id` TEXT NOT NULL COMMENT 'Campaign ID of the ad group.',
   `billable_event` TEXT NOT NULL,
-  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type'
+  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.',
+  `targeting_template_ids` JSON DEFAULT NULL COMMENT 'Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;].'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -373,19 +339,20 @@ CREATE TABLE IF NOT EXISTS `AdGroupResponse` (
   `status` TEXT DEFAULT NULL COMMENT 'Ad group/entity status.',
   `budget_in_micro_currency` INT DEFAULT NULL COMMENT 'Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.',
   `bid_in_micro_currency` INT DEFAULT NULL COMMENT 'Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.',
-  `optimization_goal_metadata` TEXT DEFAULT NULL,
+  `optimization_goal_metadata` TEXT DEFAULT NULL COMMENT 'Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.',
   `budget_type` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Ad group start time. Unix timestamp in seconds. Defaults to current time.',
   `end_time` INT DEFAULT NULL COMMENT 'Ad group end time. Unix timestamp in seconds.',
   `targeting_spec` TEXT DEFAULT NULL,
-  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
-  `tracking_urls` TEXT DEFAULT NULL,
+  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
+  `tracking_urls` TEXT DEFAULT NULL COMMENT 'Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.',
   `auto_targeting_enabled` TINYINT(1) DEFAULT NULL COMMENT 'Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
-  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
+  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
   `pacing_delivery_type` TEXT DEFAULT NULL,
   `campaign_id` TEXT DEFAULT NULL COMMENT 'Campaign ID of the ad group.',
   `billable_event` TEXT DEFAULT NULL,
-  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type',
+  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.',
+  `targeting_template_ids` JSON DEFAULT NULL COMMENT 'Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;].',
   `id` TEXT DEFAULT NULL COMMENT 'Ad group ID.',
   `ad_account_id` TEXT DEFAULT NULL COMMENT 'Advertiser ID.',
   `created_time` INT DEFAULT NULL COMMENT 'Ad group creation time. Unix timestamp in seconds.',
@@ -406,19 +373,20 @@ CREATE TABLE IF NOT EXISTS `AdGroupUpdateRequest` (
   `status` TEXT DEFAULT NULL COMMENT 'Ad group/entity status.',
   `budget_in_micro_currency` INT DEFAULT NULL COMMENT 'Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.',
   `bid_in_micro_currency` INT DEFAULT NULL COMMENT 'Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.',
-  `optimization_goal_metadata` TEXT DEFAULT NULL,
+  `optimization_goal_metadata` TEXT DEFAULT NULL COMMENT 'Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.',
   `budget_type` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Ad group start time. Unix timestamp in seconds. Defaults to current time.',
   `end_time` INT DEFAULT NULL COMMENT 'Ad group end time. Unix timestamp in seconds.',
   `targeting_spec` TEXT DEFAULT NULL,
-  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
-  `tracking_urls` TEXT DEFAULT NULL,
+  `lifetime_frequency_cap` INT DEFAULT NULL COMMENT 'Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.',
+  `tracking_urls` TEXT DEFAULT NULL COMMENT 'Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.',
   `auto_targeting_enabled` TINYINT(1) DEFAULT NULL COMMENT 'Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
-  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
+  `placement_group` TEXT DEFAULT NULL COMMENT '&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.',
   `pacing_delivery_type` TEXT DEFAULT NULL,
   `campaign_id` TEXT DEFAULT NULL COMMENT 'Campaign ID of the ad group.',
   `billable_event` TEXT DEFAULT NULL,
-  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type',
+  `bid_strategy_type` ENUM('AUTOMATIC_BID', 'MAX_BID', 'TARGET_AVG', 'null') DEFAULT NULL COMMENT 'Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.',
+  `targeting_template_ids` JSON DEFAULT NULL COMMENT 'Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;].',
   `id` TEXT NOT NULL COMMENT 'Ad group ID.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -489,14 +457,14 @@ CREATE TABLE IF NOT EXISTS `AdPreviewURLResponse` (
 
 CREATE TABLE IF NOT EXISTS `AdResponse` (
   `ad_group_id` TEXT DEFAULT NULL COMMENT 'ID of the ad group that contains the ad.',
-  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices. Not currently available. Using this field will generate an error.',
+  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices.',
   `carousel_android_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on Android.',
   `carousel_destination_urls` JSON DEFAULT NULL COMMENT 'Comma-separated destination URLs for the carousel pin to promote.',
   `carousel_ios_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on iOS.',
   `click_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking url for the ad clicks.',
   `creative_type` TEXT DEFAULT NULL,
   `destination_url` TEXT DEFAULT NULL COMMENT 'Destination URL.',
-  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices. Not currently available. Using this field will generate an error.',
+  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices.',
   `is_pin_deleted` TINYINT(1) DEFAULT NULL COMMENT 'Is original pin deleted?',
   `is_removable` TINYINT(1) DEFAULT NULL COMMENT 'Is pin repinnable?',
   `name` TEXT DEFAULT NULL COMMENT 'Name of the ad - 255 chars max.',
@@ -505,8 +473,8 @@ CREATE TABLE IF NOT EXISTS `AdResponse` (
   `view_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking URL for ad impressions.',
   `lead_form_id` TEXT DEFAULT NULL COMMENT 'Lead form ID for lead ad generation.',
   `grid_click_type` TEXT DEFAULT NULL,
-  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_WEBSITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
-  `quiz_pin_data` TEXT DEFAULT NULL,
+  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_SITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
+  `quiz_pin_data` TEXT DEFAULT NULL COMMENT 'Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.',
   `pin_id` TEXT DEFAULT NULL COMMENT 'Pin ID.',
   `ad_account_id` TEXT DEFAULT NULL COMMENT 'The ID of the advertiser that this ad belongs to.',
   `campaign_id` TEXT DEFAULT NULL COMMENT 'ID of the ad campaign that contains this ad.',
@@ -527,14 +495,14 @@ CREATE TABLE IF NOT EXISTS `AdResponse` (
 
 CREATE TABLE IF NOT EXISTS `AdUpdateRequest` (
   `ad_group_id` TEXT DEFAULT NULL COMMENT 'ID of the ad group that contains the ad.',
-  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices. Not currently available. Using this field will generate an error.',
+  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for Android devices.',
   `carousel_android_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on Android.',
   `carousel_destination_urls` JSON DEFAULT NULL COMMENT 'Comma-separated destination URLs for the carousel pin to promote.',
   `carousel_ios_deep_links` JSON DEFAULT NULL COMMENT 'Comma-separated deep links for the carousel pin on iOS.',
   `click_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking url for the ad clicks.',
   `creative_type` TEXT DEFAULT NULL,
   `destination_url` TEXT DEFAULT NULL COMMENT 'Destination URL.',
-  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices. Not currently available. Using this field will generate an error.',
+  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'Deep link URL for iOS devices.',
   `is_pin_deleted` TINYINT(1) DEFAULT NULL COMMENT 'Is original pin deleted?',
   `is_removable` TINYINT(1) DEFAULT NULL COMMENT 'Is pin repinnable?',
   `name` TEXT DEFAULT NULL COMMENT 'Name of the ad - 255 chars max.',
@@ -543,8 +511,8 @@ CREATE TABLE IF NOT EXISTS `AdUpdateRequest` (
   `view_tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking URL for ad impressions.',
   `lead_form_id` TEXT DEFAULT NULL COMMENT 'Lead form ID for lead ad generation.',
   `grid_click_type` TEXT DEFAULT NULL,
-  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_WEBSITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
-  `quiz_pin_data` TEXT DEFAULT NULL,
+  `customizable_cta_type` ENUM('GET_OFFER', 'LEARN_MORE', 'ORDER_NOW', 'SHOP_NOW', 'SIGN_UP', 'SUBSCRIBE', 'BUY_NOW', 'CONTACT_US', 'GET_QUOTE', 'VISIT_SITE', 'APPLY_NOW', 'BOOK_NOW', 'REQUEST_DEMO', 'REGISTER_NOW', 'FIND_A_DEALER', 'ADD_TO_CART', 'WATCH_NOW', 'READ_MORE', 'null') DEFAULT NULL COMMENT 'Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)',
+  `quiz_pin_data` TEXT DEFAULT NULL COMMENT 'Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.',
   `id` TEXT NOT NULL COMMENT 'The ID of this ad.',
   `pin_id` TEXT DEFAULT NULL COMMENT 'Pin ID. This field may only be updated for draft ads.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -572,11 +540,14 @@ CREATE TABLE IF NOT EXISTS `AdsAnalyticsCreateAsyncRequest` (
   `product_group_ids` JSON DEFAULT NULL COMMENT 'List of product group ids',
   `product_group_statuses` JSON DEFAULT NULL COMMENT 'List of values for filtering',
   `product_item_ids` JSON DEFAULT NULL COMMENT 'List of product item ids',
-  `targeting_types` JSON DEFAULT NULL COMMENT 'List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;.',
+  `targeting_types` JSON DEFAULT NULL COMMENT 'List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.',
   `metrics_filters` JSON DEFAULT NULL COMMENT 'List of metrics filters',
   `columns` JSON NOT NULL COMMENT 'Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.',
   `level` TEXT NOT NULL COMMENT 'Level of the report',
-  `report_format` TEXT COMMENT 'Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.'
+  `report_format` TEXT COMMENT 'Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.',
+  `primary_sort` ENUM('BY_ID', 'BY_DATE') DEFAULT NULL COMMENT 'Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.',
+  `start_hour` TINYINT UNSIGNED DEFAULT NULL COMMENT 'Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.',
+  `end_hour` TINYINT UNSIGNED DEFAULT NULL COMMENT 'Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -670,6 +641,153 @@ CREATE TABLE IF NOT EXISTS `ads_list_200_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `AdvancedAuctionBidOptions` generated from model 'AdvancedAuctionBidOptions'
+-- Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionBidOptions` (
+  `bid_in_micro_currency` BIGINT DEFAULT NULL COMMENT 'Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.',
+  `app_type_multipliers` TEXT DEFAULT NULL,
+  `placement_multipliers` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).';
+
+--
+-- Table structure for table `AdvancedAuctionItem` generated from model 'AdvancedAuctionItem'
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItem` (
+  `item_id` TEXT NOT NULL COMMENT 'The catalog retail item id in the merchant namespace',
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL,
+  `bid_options` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `AdvancedAuctionItems` generated from model 'AdvancedAuctionItems'
+-- Response object containing item bid options
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItems` (
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Response object of item bid options',
+  `items` JSON DEFAULT NULL COMMENT 'Array with item bid options'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Response object containing item bid options';
+
+--
+-- Table structure for table `AdvancedAuctionItemsGetRecord` generated from model 'AdvancedAuctionItemsGetRecord'
+-- Object uniquely identifying a retail catalog item
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsGetRecord` (
+  `item_id` TEXT NOT NULL COMMENT 'The catalog retail item id in the merchant namespace',
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object uniquely identifying a retail catalog item';
+
+--
+-- Table structure for table `AdvancedAuctionItemsGetRequest` generated from model 'AdvancedAuctionItemsGetRequest'
+-- Request object used to get bid options values for a batch of retail catalog items
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsGetRequest` (
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the retail item',
+  `items` JSON NOT NULL COMMENT 'A list of retail catalog items to fetch bid options for'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object used to get bid options values for a batch of retail catalog items';
+
+--
+-- Table structure for table `AdvancedAuctionItemsSubmitDeleteRecord` generated from model 'AdvancedAuctionItemsSubmitDeleteRecord'
+-- Object describing an item bid option deletion operation
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitDeleteRecord` (
+  `item_id` TEXT NOT NULL COMMENT 'The catalog retail item id in the merchant namespace',
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing an item bid option deletion operation';
+
+--
+-- Table structure for table `AdvancedAuctionItemsSubmitRecord` generated from model 'AdvancedAuctionItemsSubmitRecord'
+-- Object describing an item bid option operation
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRecord` (
+  `operation` TEXT NOT NULL,
+  `item_id` TEXT NOT NULL COMMENT 'The catalog retail item id in the merchant namespace',
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL,
+  `bid_options` TEXT NOT NULL,
+  `update_mask` JSON NOT NULL COMMENT 'The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing an item bid option operation';
+
+--
+-- Table structure for table `AdvancedAuctionItemsSubmitRequest` generated from model 'AdvancedAuctionItemsSubmitRequest'
+-- Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitRequest` (
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to all items',
+  `items` JSON NOT NULL COMMENT 'Array of item bid option operations'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items';
+
+--
+-- Table structure for table `AdvancedAuctionItemsSubmitUpsertRecord` generated from model 'AdvancedAuctionItemsSubmitUpsertRecord'
+-- Object describing an item bid option upsert operation
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionItemsSubmitUpsertRecord` (
+  `item_id` TEXT NOT NULL COMMENT 'The catalog retail item id in the merchant namespace',
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL,
+  `bid_options` TEXT NOT NULL,
+  `update_mask` JSON NOT NULL COMMENT 'The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing an item bid option upsert operation';
+
+--
+-- Table structure for table `AdvancedAuctionKey` generated from model 'AdvancedAuctionKey'
+-- Object uniquely identifying a retail catalog item
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionKey` (
+  `item_id` TEXT NOT NULL COMMENT 'The catalog retail item id in the merchant namespace',
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object uniquely identifying a retail catalog item';
+
+--
+-- Table structure for table `AdvancedAuctionOperationError` generated from model 'AdvancedAuctionOperationError'
+-- Error which occurred when applying a bid options operation to a specific item.
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionOperationError` (
+  `code` INT DEFAULT NULL COMMENT 'The error code for the item bid option operation validation error',
+  `message` TEXT DEFAULT NULL COMMENT 'Message describing the item bid option operation validation error'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Error which occurred when applying a bid options operation to a specific item.';
+
+--
+-- Table structure for table `AdvancedAuctionProcessedItem` generated from model 'AdvancedAuctionProcessedItem'
+-- Object describing the result of an operation on an item bid option
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItem` (
+  `operation` TEXT NOT NULL,
+  `item_id` TEXT NOT NULL COMMENT 'The catalog retail item id in the merchant namespace',
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL,
+  `bid_options` TEXT NOT NULL,
+  `update_mask` JSON NOT NULL COMMENT 'The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;.',
+  `errors` JSON DEFAULT NULL COMMENT 'Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing the result of an operation on an item bid option';
+
+--
+-- Table structure for table `AdvancedAuctionProcessedItems` generated from model 'AdvancedAuctionProcessedItems'
+-- Response object containing the results of an operation on an item bid option
+--
+
+CREATE TABLE IF NOT EXISTS `AdvancedAuctionProcessedItems` (
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to all items',
+  `items` JSON DEFAULT NULL COMMENT 'Array of advanced auction processed items'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Response object containing the results of an operation on an item bid option';
+
+--
 -- Table structure for table `AnalyticsDailyMetrics` generated from model 'AnalyticsDailyMetrics'
 --
 
@@ -687,6 +805,44 @@ CREATE TABLE IF NOT EXISTS `AnalyticsMetricsResponse` (
   `summary_metrics` JSON DEFAULT NULL COMMENT 'The metric name and value over the requested period for each requested metric',
   `daily_metrics` JSON DEFAULT NULL COMMENT 'Array with the requested daily metric records'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `AppTypeMultipliers` generated from model 'AppTypeMultipliers'
+-- This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
+--
+
+CREATE TABLE IF NOT EXISTS `AppTypeMultipliers` (
+  `APP_TYPE` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).';
+
+--
+-- Table structure for table `AssetGroupBinding` generated from model 'AssetGroupBinding'
+--
+
+CREATE TABLE IF NOT EXISTS `AssetGroupBinding` (
+  `id` TEXT DEFAULT NULL COMMENT 'Asset Group ID.',
+  `asset_group_name` TEXT DEFAULT NULL COMMENT 'Asset Group name',
+  `asset_group_description` TEXT DEFAULT NULL COMMENT 'Asset group description',
+  `asset_group_types` JSON DEFAULT NULL COMMENT 'Asset group types',
+  `ad_accounts_ids` JSON DEFAULT NULL COMMENT 'A list of ad account IDs under the asset group',
+  `profiles_ids` JSON DEFAULT NULL COMMENT 'A list of profile IDs under asset group',
+  `created_time` INT DEFAULT NULL COMMENT 'The creation time of the asset group',
+  `updated_time` INT DEFAULT NULL COMMENT 'The last update time of the asset group',
+  `owner` TEXT DEFAULT NULL COMMENT 'The data of the business that owns the asset group.',
+  `created_by` TEXT DEFAULT NULL COMMENT 'The data of the user that created the asset group.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `AssetIdPermissions` generated from model 'AssetIdPermissions'
+-- An object containing the permissions a business member has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `AssetIdPermissions` (
+  `asset_id` VARCHAR(20) DEFAULT NULL COMMENT 'Unique identifier of a business asset.',
+  `asset_type` TEXT DEFAULT NULL COMMENT 'Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.',
+  `asset_group_info` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object containing the permissions a business member has on the asset.';
 
 --
 -- Table structure for table `Audience` generated from model 'Audience'
@@ -833,7 +989,7 @@ CREATE TABLE IF NOT EXISTS `AudienceInsightsResponse` (
 
 --
 -- Table structure for table `AudienceRule` generated from model 'AudienceRule'
--- JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
+-- JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
 --
 
 CREATE TABLE IF NOT EXISTS `AudienceRule` (
@@ -857,7 +1013,7 @@ CREATE TABLE IF NOT EXISTS `AudienceRule` (
   `ad_id` JSON DEFAULT NULL COMMENT 'Ad ID for engagement audience filter.',
   `objective_type` JSON DEFAULT NULL COMMENT 'Objective for engagement audience filter.',
   `ad_account_id` TEXT DEFAULT NULL COMMENT 'Ad account ID.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.';
 
 --
 -- Table structure for table `AudienceSubcategory` generated from model 'AudienceSubcategory'
@@ -893,12 +1049,63 @@ CREATE TABLE IF NOT EXISTS `audiences_list_200_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `AuthRespondInvitesBody` generated from model 'AuthRespondInvitesBody'
+-- An object with a list of all the invites the user would like to respond to and the action to take.
+--
+
+CREATE TABLE IF NOT EXISTS `AuthRespondInvitesBody` (
+  `invites` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object with a list of all the invites the user would like to respond to and the action to take.';
+
+--
+-- Table structure for table `AuthRespondInvitesBody_invites_inner` generated from model 'AuthRespondInvitesBodyUnderscoreinvitesUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `AuthRespondInvitesBody_invites_inner` (
+  `action` TEXT NOT NULL,
+  `invite_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of an invite.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `AuthRespondInvitesBody_invites_inner_action` generated from model 'AuthRespondInvitesBodyUnderscoreinvitesUnderscoreinnerUnderscoreaction'
+--
+
+CREATE TABLE IF NOT EXISTS `AuthRespondInvitesBody_invites_inner_action` (
+  `accept_invite` TINYINT(1) NOT NULL COMMENT 'Whether the invite/request is accepted.',
+  `asset_id_to_permissions` JSON DEFAULT NULL COMMENT 'An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `AvailabilityFilter` generated from model 'AvailabilityFilter'
 --
 
 CREATE TABLE IF NOT EXISTS `AvailabilityFilter` (
   `AVAILABILITY` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `BaseInviteDataResponse` generated from model 'BaseInviteDataResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `BaseInviteDataResponse` (
+  `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the invite/request.',
+  `invite_data` TEXT DEFAULT NULL,
+  `is_received_invite` TINYINT(1) DEFAULT NULL COMMENT 'Indicates whether the invite/request was received.',
+  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the member/partner that was sent the invite/request.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `BaseInviteDataResponse_invite_data` generated from model 'BaseInviteDataResponseUnderscoreinviteUnderscoredata'
+-- Metadata for the invite/request.
+--
+
+CREATE TABLE IF NOT EXISTS `BaseInviteDataResponse_invite_data` (
+  `invite_expiration` INT DEFAULT NULL COMMENT 'The date and time when the invite/request will expire. Returned in milliseconds.',
+  `invite_status` TEXT DEFAULT NULL COMMENT 'The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.',
+  `invite_type` TEXT DEFAULT NULL COMMENT 'The type of invite. &lt;br&gt;&#39;MEMBER_INVITE&#39; is to invite a member to access your business assets. &lt;br&gt;&#39;PARTNER_INVITE&#39; is to invite a partner to access your business assets. &lt;br&gt;&#39;PARTNER_REQUEST&#39; is to request access a partner&#39;s business assets.',
+  `last_updated_time` INT DEFAULT NULL COMMENT 'The date and time the invite/request was last updated. Returned in milliseconds.',
+  `sent_at` INT DEFAULT NULL COMMENT 'The date and time the invite/request was sent/created. Returned in milliseconds.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Metadata for the invite/request.';
 
 --
 -- Table structure for table `BidFloor` generated from model 'BidFloor'
@@ -982,10 +1189,10 @@ CREATE TABLE IF NOT EXISTS `Board_media` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Board media.';
 
 --
--- Table structure for table `Board_owner` generated from model 'BoardUnderscoreowner'
+-- Table structure for table `BoardOwner` generated from model 'BoardOwner'
 --
 
-CREATE TABLE IF NOT EXISTS `Board_owner` (
+CREATE TABLE IF NOT EXISTS `BoardOwner` (
   `username` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1153,6 +1360,136 @@ CREATE TABLE IF NOT EXISTS `BulkUpsertStatusResponse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='ID of the bulk request.';
 
 --
+-- Table structure for table `BusinessAccessError` generated from model 'BusinessAccessError'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessAccessError` (
+  `code` INT NOT NULL,
+  `message` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `BusinessAccessUserSummary` generated from model 'BusinessAccessUserSummary'
+-- Metadata of the member/partner that has access to the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessAccessUserSummary` (
+  `email` TEXT DEFAULT NULL COMMENT 'Email of the business member/partner.',
+  `id` VARCHAR(20) DEFAULT NULL COMMENT 'Unique identifier of the business member/partner.',
+  `username` TEXT DEFAULT NULL COMMENT 'Username of the business member/partner.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Metadata of the member/partner that has access to the asset.';
+
+--
+-- Table structure for table `business_asset_members_get_200_response` generated from model 'businessUnderscoreassetUnderscoremembersUnderscoregetUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `business_asset_members_get_200_response` (
+  `items` JSON NOT NULL COMMENT 'List of members with permissions to the asset.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `business_asset_partners_get_200_response` generated from model 'businessUnderscoreassetUnderscorepartnersUnderscoregetUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `business_asset_partners_get_200_response` (
+  `items` JSON NOT NULL COMMENT 'List of partners with permissions to the asset.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `business_assets_get_200_response` generated from model 'businessUnderscoreassetsUnderscoregetUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `business_assets_get_200_response` (
+  `items` JSON NOT NULL COMMENT 'List of assets the requesting business has access to.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `business_member_assets_get_200_response` generated from model 'businessUnderscorememberUnderscoreassetsUnderscoregetUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `business_member_assets_get_200_response` (
+  `items` JSON NOT NULL COMMENT 'List asset permissions the given member was granted.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `BusinessMemberAssetsSummary` generated from model 'BusinessMemberAssetsSummary'
+-- Ad accounts and profiles the business member/partner has access to.
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummary` (
+  `ad_accounts` JSON DEFAULT NULL COMMENT 'List of ad account IDs and respective permission levels.',
+  `profiles` JSON DEFAULT NULL COMMENT 'List of profile IDs and respective permission levels.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Ad accounts and profiles the business member/partner has access to.';
+
+--
+-- Table structure for table `BusinessMemberAssetsSummary_ad_accounts_inner` generated from model 'BusinessMemberAssetsSummaryUnderscoreadUnderscoreaccountsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummary_ad_accounts_inner` (
+  `id` VARCHAR(20) DEFAULT NULL COMMENT 'Unique identifier of a business ad account.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `BusinessMemberAssetsSummary_profiles_inner` generated from model 'BusinessMemberAssetsSummaryUnderscoreprofilesUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessMemberAssetsSummary_profiles_inner` (
+  `id` VARCHAR(20) DEFAULT NULL COMMENT 'Unique identifier of a business profile.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `business_members_asset_access_delete_request` generated from model 'businessUnderscoremembersUnderscoreassetUnderscoreaccessUnderscoredeleteUnderscorerequest'
+--
+
+CREATE TABLE IF NOT EXISTS `business_members_asset_access_delete_request` (
+  `accesses` JSON NOT NULL COMMENT 'List of members asset access to be deleted'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `business_members_asset_access_delete_request_accesses_inner` generated from model 'businessUnderscoremembersUnderscoreassetUnderscoreaccessUnderscoredeleteUnderscorerequestUnderscoreaccessesUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `business_members_asset_access_delete_request_accesses_inner` (
+  `asset_id` VARCHAR(25) NOT NULL COMMENT 'Id of the asset on which to remove member permissions.',
+  `member_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of the member on which to perform the asset permission removal'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `business_partner_asset_access_get_200_response` generated from model 'businessUnderscorepartnerUnderscoreassetUnderscoreaccessUnderscoregetUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `business_partner_asset_access_get_200_response` (
+  `items` JSON NOT NULL COMMENT 'List assets on which you granted access to your partner or assets on which your partner has granted you access.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `BusinessSharedAudience` generated from model 'BusinessSharedAudience'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessSharedAudience` (
+  `audience_id` TEXT NOT NULL COMMENT 'Unique identifier of an audience',
+  `operation_type` TEXT NOT NULL,
+  `recipient_business_ids` JSON NOT NULL COMMENT 'List of business IDs to share with or revoke from.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `BusinessSharedAudienceResponse` generated from model 'BusinessSharedAudienceResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `BusinessSharedAudienceResponse` (
+  `audience_id` TEXT DEFAULT NULL COMMENT 'Audience ID that was shared',
+  `permissions` JSON DEFAULT NULL,
+  `recipient_business_ids` JSON DEFAULT NULL COMMENT 'Business IDs that received the audience'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `CampaignCommon` generated from model 'CampaignCommon'
 -- Campaign Data
 --
@@ -1167,7 +1504,7 @@ CREATE TABLE IF NOT EXISTS `CampaignCommon` (
   `tracking_urls` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
   `end_time` INT DEFAULT NULL COMMENT 'Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
-  `summary_status` TEXT DEFAULT NULL
+  `is_flexible_daily_budgets` TINYINT(1) DEFAULT NULL COMMENT 'Determine if a campaign has flexible daily budgets setup.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Campaign Data';
 
 --
@@ -1177,17 +1514,16 @@ CREATE TABLE IF NOT EXISTS `CampaignCommon` (
 CREATE TABLE IF NOT EXISTS `CampaignCreateCommon` (
   `ad_account_id` TEXT DEFAULT NULL COMMENT 'Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.',
   `name` TEXT DEFAULT NULL COMMENT 'Campaign name.',
-  `status` TEXT,
+  `status` TEXT DEFAULT NULL,
   `lifetime_spend_cap` INT DEFAULT NULL COMMENT 'Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.',
   `daily_spend_cap` INT DEFAULT NULL COMMENT 'Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.',
   `order_line_id` TEXT DEFAULT NULL COMMENT 'Order line ID that appears on the invoice.',
   `tracking_urls` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
   `end_time` INT DEFAULT NULL COMMENT 'Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
-  `summary_status` TEXT DEFAULT NULL,
-  `is_flexible_daily_budgets` TINYINT(1) DEFAULT false COMMENT 'Determine if a campaign has flexible daily budgets setup.',
+  `is_flexible_daily_budgets` TINYINT(1) DEFAULT NULL COMMENT 'Determine if a campaign has flexible daily budgets setup.',
   `default_ad_group_budget_in_micro_currency` INT DEFAULT NULL COMMENT 'When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.',
-  `is_automated_campaign` TINYINT(1) DEFAULT false COMMENT 'Specifies whether the campaign was created in the automated campaign flow'
+  `is_automated_campaign` TINYINT(1) DEFAULT NULL COMMENT 'Specifies whether the campaign was created in the automated campaign flow'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1204,7 +1540,6 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateRequest` (
   `tracking_urls` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
   `end_time` INT DEFAULT NULL COMMENT 'Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
-  `summary_status` TEXT DEFAULT NULL,
   `is_flexible_daily_budgets` TINYINT(1) DEFAULT false COMMENT 'Determine if a campaign has flexible daily budgets setup.',
   `default_ad_group_budget_in_micro_currency` INT DEFAULT NULL COMMENT 'When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.',
   `is_automated_campaign` TINYINT(1) DEFAULT false COMMENT 'Specifies whether the campaign was created in the automated campaign flow',
@@ -1233,16 +1568,16 @@ CREATE TABLE IF NOT EXISTS `CampaignCreateResponseData` (
   `tracking_urls` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
   `end_time` INT DEFAULT NULL COMMENT 'Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
-  `summary_status` TEXT DEFAULT NULL,
-  `is_flexible_daily_budgets` TINYINT(1) DEFAULT NULL COMMENT 'Determines if a campaign has flexible daily budgets setup.',
+  `is_flexible_daily_budgets` TINYINT(1) DEFAULT NULL COMMENT 'Determine if a campaign has flexible daily budgets setup.',
   `default_ad_group_budget_in_micro_currency` INT DEFAULT NULL COMMENT 'When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.',
-  `is_automated_campaign` TINYINT(1) DEFAULT false COMMENT 'Specifies whether the campaign was created in the automated campaign flow',
+  `is_automated_campaign` TINYINT(1) DEFAULT NULL COMMENT 'Specifies whether the campaign was created in the automated campaign flow',
   `id` TEXT DEFAULT NULL COMMENT 'Campaign ID.',
   `objective_type` TEXT DEFAULT NULL,
   `created_time` INT DEFAULT NULL COMMENT 'Campaign creation time. Unix timestamp in seconds.',
   `updated_time` INT DEFAULT NULL COMMENT 'UTC timestamp. Last update time.',
   `type` TEXT DEFAULT NULL COMMENT 'Always \&quot;campaign\&quot;.',
-  `is_campaign_budget_optimization` TINYINT(1) DEFAULT NULL COMMENT 'Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.'
+  `is_campaign_budget_optimization` TINYINT(1) DEFAULT NULL COMMENT 'Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.',
+  `summary_status` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1277,13 +1612,13 @@ CREATE TABLE IF NOT EXISTS `CampaignResponse` (
   `tracking_urls` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
   `end_time` INT DEFAULT NULL COMMENT 'Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
-  `summary_status` TEXT DEFAULT NULL,
+  `is_flexible_daily_budgets` TINYINT(1) DEFAULT NULL COMMENT 'Determine if a campaign has flexible daily budgets setup.',
   `objective_type` TEXT DEFAULT NULL,
   `created_time` INT DEFAULT NULL COMMENT 'Campaign creation time. Unix timestamp in seconds.',
   `updated_time` INT DEFAULT NULL COMMENT 'UTC timestamp. Last update time.',
   `type` TEXT DEFAULT NULL COMMENT 'Always \&quot;campaign\&quot;.',
-  `is_flexible_daily_budgets` TINYINT(1) DEFAULT NULL COMMENT 'Determines if a campaign has flexible daily budgets setup.',
-  `is_campaign_budget_optimization` TINYINT(1) DEFAULT NULL COMMENT 'Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.'
+  `is_campaign_budget_optimization` TINYINT(1) DEFAULT NULL COMMENT 'Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.',
+  `summary_status` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1301,7 +1636,6 @@ CREATE TABLE IF NOT EXISTS `CampaignUpdateRequest` (
   `tracking_urls` TEXT DEFAULT NULL,
   `start_time` INT DEFAULT NULL COMMENT 'Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
   `end_time` INT DEFAULT NULL COMMENT 'Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.',
-  `summary_status` TEXT DEFAULT NULL,
   `is_flexible_daily_budgets` TINYINT(1) DEFAULT NULL COMMENT 'Determine if a campaign has flexible daily budgets setup.',
   `default_ad_group_budget_in_micro_currency` INT DEFAULT NULL COMMENT 'When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.',
   `is_automated_campaign` TINYINT(1) DEFAULT NULL COMMENT 'Specifies whether the campaign was created in the automated campaign flow',
@@ -1336,37 +1670,37 @@ CREATE TABLE IF NOT EXISTS `campaigns_list_200_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `CancelInvitesBody` generated from model 'CancelInvitesBody'
+-- Request body used to cancel invites
+--
+
+CREATE TABLE IF NOT EXISTS `CancelInvitesBody` (
+  `invite_ids` JSON NOT NULL COMMENT 'List of invite/request ids to be cancelled'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request body used to cancel invites';
+
+--
 -- Table structure for table `Catalog` generated from model 'Catalog'
 -- Catalog entity
 --
 
 CREATE TABLE IF NOT EXISTS `Catalog` (
-  `created_at` DATETIME DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
   `id` TEXT NOT NULL COMMENT 'ID of the catalog entity.',
-  `updated_at` DATETIME DEFAULT NULL,
+  `updated_at` DATETIME NOT NULL,
   `name` TEXT NOT NULL COMMENT 'A human-friendly name associated to a catalog entity.',
   `catalog_type` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Catalog entity';
 
 --
--- Table structure for table `CatalogProductGroup` generated from model 'CatalogProductGroup'
--- non-promoted catalog product group entity
+-- Table structure for table `CatalogsCreateCreativeAssetsItem` generated from model 'CatalogsCreateCreativeAssetsItem'
+-- A creative assets item to be created.
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogProductGroup` (
-  `id` TEXT DEFAULT NULL COMMENT 'ID of the catalog product group.',
-  `merchant_id` TEXT DEFAULT NULL COMMENT 'Merchant ID pertaining to the owner of the catalog product group.',
-  `name` TEXT DEFAULT NULL COMMENT 'Name of catalog product group',
-  `filters` JSON DEFAULT NULL COMMENT 'Object holding a list of filters',
-  `filter_v2` JSON DEFAULT NULL COMMENT 'Object holding a list of filters',
-  `type` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL,
-  `feed_profile_id` TEXT DEFAULT NULL COMMENT 'id of the feed profile belonging to this catalog product group',
-  `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
-  `last_update` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
-  `product_count` INT DEFAULT NULL COMMENT 'Amount of products in the catalog product group',
-  `featured_position` INT DEFAULT NULL COMMENT 'index of the featured position of the catalog product group'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='non-promoted catalog product group entity';
+CREATE TABLE IF NOT EXISTS `CatalogsCreateCreativeAssetsItem` (
+  `creative_assets_id` TEXT NOT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
+  `operation` ENUM('CREATE') NOT NULL,
+  `attributes` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A creative assets item to be created.';
 
 --
 -- Table structure for table `CatalogsCreateHotelItem` generated from model 'CatalogsCreateHotelItem'
@@ -1380,25 +1714,341 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreateHotelItem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A hotel item to be created.';
 
 --
+-- Table structure for table `CatalogsCreateReportResponse` generated from model 'CatalogsCreateReportResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreateReportResponse` (
+  `token` TEXT DEFAULT NULL COMMENT 'Token to be used to get the report'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreateRequest` generated from model 'CatalogsCreateRequest'
+-- Request object for creating a catalog.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreateRequest` (
+  `catalog_type` ENUM('HOTEL') NOT NULL COMMENT 'Type of the catalog entity.',
+  `name` TEXT NOT NULL COMMENT 'A human-friendly name associated to a given catalog.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a catalog.';
+
+--
 -- Table structure for table `CatalogsCreateRetailItem` generated from model 'CatalogsCreateRetailItem'
 -- An item to be created
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsCreateRetailItem` (
   `item_id` TEXT NOT NULL COMMENT 'The catalog item id in the merchant namespace',
-  `operation` ENUM('CREATE', 'UPDATE', 'UPSERT', 'DELETE') NOT NULL,
+  `operation` ENUM('CREATE') NOT NULL,
   `attributes` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An item to be created';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsAttributes` generated from model 'CatalogsCreativeAssetsAttributes'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsAttributes` (
+  `title` TEXT DEFAULT NULL COMMENT 'The name of the creative assets.',
+  `description` TEXT DEFAULT NULL COMMENT 'Brief description of the creative assets.',
+  `link` TEXT DEFAULT NULL COMMENT 'Link to the creative assets page.',
+  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'IOS deep link to the creative assets page.',
+  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Link to the creative assets page.',
+  `google_product_category` TEXT DEFAULT NULL COMMENT 'The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.',
+  `custom_label_0` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_1` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_2` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_3` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_4` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `visibility` TEXT DEFAULT NULL COMMENT 'Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.',
+  `image_link` TEXT DEFAULT NULL COMMENT 'The creative assets image.',
+  `video_link` TEXT DEFAULT NULL COMMENT 'The creative assets video.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsBatchItem` generated from model 'CatalogsCreativeAssetsBatchItem'
+-- Creative assets batch item
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchItem` (
+  `creative_assets_id` TEXT NOT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
+  `operation` ENUM('DELETE') NOT NULL,
+  `attributes` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Creative assets batch item';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsBatchRequest` generated from model 'CatalogsCreativeAssetsBatchRequest'
+-- Request object to update catalogs creative assets items
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchRequest` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL,
+  `items` JSON NOT NULL COMMENT 'Array with creative assets item operations',
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to update catalogs creative assets items';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsFeed` generated from model 'CatalogsCreativeAssetsFeed'
+-- Catalogs Creative Asset Feed object
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeed` (
+  `created_at` DATETIME NOT NULL,
+  `id` TEXT NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  `name` TEXT NOT NULL COMMENT 'A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.',
+  `format` TEXT NOT NULL,
+  `catalog_type` TEXT NOT NULL,
+  `credentials` TEXT NOT NULL,
+  `location` TEXT NOT NULL COMMENT 'The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.',
+  `preferred_processing_schedule` TEXT NOT NULL,
+  `status` TEXT NOT NULL,
+  `default_currency` TEXT NOT NULL,
+  `default_locale` TEXT NOT NULL COMMENT 'The locale used within a feed for product descriptions.',
+  `default_country` TEXT NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Catalogs Creative Asset Feed object';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsFeedsCreateRequest` generated from model 'CatalogsCreativeAssetsFeedsCreateRequest'
+-- Request object for creating a feed.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsCreateRequest` (
+  `default_currency` TEXT DEFAULT NULL,
+  `name` TEXT NOT NULL COMMENT 'A human-friendly name associated to a given feed.',
+  `format` TEXT NOT NULL,
+  `default_locale` TEXT NOT NULL,
+  `default_country` TEXT NOT NULL,
+  `credentials` TEXT DEFAULT NULL,
+  `location` TEXT NOT NULL COMMENT 'The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.',
+  `preferred_processing_schedule` TEXT DEFAULT NULL,
+  `catalog_type` TEXT NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.',
+  `status` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed.';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsFeedsUpdateRequest` generated from model 'CatalogsCreativeAssetsFeedsUpdateRequest'
+-- Request object for updating a feed.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsUpdateRequest` (
+  `default_currency` TEXT DEFAULT NULL,
+  `name` TEXT DEFAULT NULL COMMENT 'A human-friendly name associated to a given feed.',
+  `format` TEXT DEFAULT NULL,
+  `credentials` TEXT DEFAULT NULL,
+  `location` TEXT DEFAULT NULL COMMENT 'The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.',
+  `preferred_processing_schedule` TEXT DEFAULT NULL,
+  `status` TEXT DEFAULT NULL,
+  `catalog_type` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for updating a feed.';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsItemErrorResponse` generated from model 'CatalogsCreativeAssetsItemErrorResponse'
+-- Object describing a creative assets item error
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemErrorResponse` (
+  `catalog_type` TEXT NOT NULL,
+  `creative_assets_id` TEXT DEFAULT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
+  `errors` JSON DEFAULT NULL COMMENT 'Array with the errors for the item id requested'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing a creative assets item error';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsItemResponse` generated from model 'CatalogsCreativeAssetsItemResponse'
+-- Object describing a hotel record
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemResponse` (
+  `catalog_type` TEXT NOT NULL,
+  `creative_assets_id` TEXT DEFAULT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
+  `pins` JSON DEFAULT NULL COMMENT 'The pins mapped to the item',
+  `attributes` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing a hotel record';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsItemsBatch` generated from model 'CatalogsCreativeAssetsItemsBatch'
+-- Object describing the catalogs creative assets items batch
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsBatch` (
+  `batch_id` TEXT DEFAULT NULL COMMENT 'Id of the catalogs items batch',
+  `created_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
+  `completed_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
+  `status` TEXT DEFAULT NULL,
+  `catalog_type` TEXT NOT NULL,
+  `items` JSON DEFAULT NULL COMMENT 'Array with the catalogs items processing records part of the catalogs items batch'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing the catalogs creative assets items batch';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsItemsFilter` generated from model 'CatalogsCreativeAssetsItemsFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsFilter` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `creative_assets_ids` JSON NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsItemsPostFilter` generated from model 'CatalogsCreativeAssetsItemsPostFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsItemsPostFilter` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `creative_assets_ids` JSON NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` generated from model 'CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given creative assets catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.',
+  `filters` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to list products for a given creative assets catalog_id and product group filter.';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProduct` generated from model 'CatalogsCreativeAssetsProduct'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProduct` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `metadata` TEXT NOT NULL,
+  `pin` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroup` generated from model 'CatalogsCreativeAssetsProductGroup'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroup` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `id` TEXT NOT NULL COMMENT 'ID of the creative assets product group.',
+  `name` TEXT DEFAULT NULL COMMENT 'Name of creative assets product group',
+  `description` TEXT DEFAULT NULL,
+  `filters` TEXT NOT NULL,
+  `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
+  `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroupCreateRequest` generated from model 'CatalogsCreativeAssetsProductGroupCreateRequest'
+-- Request object for creating a creative assets product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupCreateRequest` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `name` TEXT NOT NULL,
+  `description` TEXT DEFAULT NULL,
+  `filters` TEXT NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a creative assets product group.';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFilterKeys` generated from model 'CatalogsCreativeAssetsProductGroupFilterKeys'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFilterKeys` (
+  `CREATIVE_ASSETS_ID` TEXT NOT NULL,
+  `CUSTOM_LABEL_0` TEXT NOT NULL,
+  `CUSTOM_LABEL_1` TEXT NOT NULL,
+  `CUSTOM_LABEL_2` TEXT NOT NULL,
+  `CUSTOM_LABEL_3` TEXT NOT NULL,
+  `CUSTOM_LABEL_4` TEXT NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_6` TEXT NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_5` TEXT NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_4` TEXT NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_3` TEXT NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_2` TEXT NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_1` TEXT NOT NULL,
+  `GOOGLE_PRODUCT_CATEGORY_0` TEXT NOT NULL,
+  `MEDIA_TYPE` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFilters` generated from model 'CatalogsCreativeAssetsProductGroupFilters'
+-- Object holding a group of filters for a creative assets product group
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFilters` (
+  `any_of` JSON NOT NULL,
+  `all_of` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object holding a group of filters for a creative assets product group';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersAllOf` generated from model 'CatalogsCreativeAssetsProductGroupFiltersAllOf'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersAllOf` (
+  `all_of` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroupFiltersAnyOf` generated from model 'CatalogsCreativeAssetsProductGroupFiltersAnyOf'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupFiltersAnyOf` (
+  `any_of` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroupProductCounts` generated from model 'CatalogsCreativeAssetsProductGroupProductCounts'
+-- Product counts for a Creative Assets CatalogsProductGroup
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupProductCounts` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `total` DECIMAL(20, 9) UNSIGNED NOT NULL,
+  `videos` DECIMAL(20, 9) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Product counts for a Creative Assets CatalogsProductGroup';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductGroupUpdateRequest` generated from model 'CatalogsCreativeAssetsProductGroupUpdateRequest'
+-- Request object for updating a creative assets product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductGroupUpdateRequest` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') DEFAULT NULL,
+  `name` TEXT DEFAULT NULL,
+  `description` TEXT DEFAULT NULL,
+  `filters` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for updating a creative assets product group.';
+
+--
+-- Table structure for table `CatalogsCreativeAssetsProductMetadata` generated from model 'CatalogsCreativeAssetsProductMetadata'
+-- Creative assets product metadata entity
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsProductMetadata` (
+  `creative_assets_id` TEXT NOT NULL COMMENT 'The user-created unique ID that represents the creative assets item.',
+  `visibility` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Creative assets product metadata entity';
 
 --
 -- Table structure for table `CatalogsDbItem` generated from model 'CatalogsDbItem'
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsDbItem` (
-  `created_at` DATETIME DEFAULT NULL,
-  `id` TEXT DEFAULT NULL,
-  `updated_at` DATETIME DEFAULT NULL
+  `created_at` DATETIME NOT NULL,
+  `id` TEXT NOT NULL,
+  `updated_at` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsDeleteCreativeAssetsItem` generated from model 'CatalogsDeleteCreativeAssetsItem'
+-- A creative assets item to be deleted
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsDeleteCreativeAssetsItem` (
+  `creative_assets_id` TEXT NOT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
+  `operation` ENUM('DELETE') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A creative assets item to be deleted';
 
 --
 -- Table structure for table `CatalogsDeleteHotelItem` generated from model 'CatalogsDeleteHotelItem'
@@ -1417,7 +2067,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsDeleteHotelItem` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsDeleteRetailItem` (
   `item_id` TEXT NOT NULL COMMENT 'The catalog item id in the merchant namespace',
-  `operation` ENUM('CREATE', 'UPDATE', 'UPSERT', 'DELETE') NOT NULL
+  `operation` ENUM('DELETE') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An item to be deleted';
 
 --
@@ -1426,9 +2076,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsDeleteRetailItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeed` (
-  `created_at` DATETIME DEFAULT NULL,
-  `id` TEXT DEFAULT NULL,
-  `updated_at` DATETIME DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
+  `id` TEXT NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `name` TEXT NOT NULL COMMENT 'A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.',
   `format` TEXT NOT NULL,
   `catalog_type` TEXT NOT NULL,
@@ -1452,6 +2102,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedCredentials` (
   `password` TEXT NOT NULL COMMENT 'The required password for downloading a feed.',
   `username` TEXT NOT NULL COMMENT 'The required username for downloading a feed.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This field is **OPTIONAL**. Use this if your feed file requires username and password.';
+
+--
+-- Table structure for table `CatalogsFeedIngestion` generated from model 'CatalogsFeedIngestion'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestion` (
+  `id` TEXT NOT NULL,
+  `feed_id` TEXT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `status` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `CatalogsFeedIngestionDetails` generated from model 'CatalogsFeedIngestionDetails'
@@ -1506,9 +2167,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedIngestionWarnings` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsFeedProcessingResult` (
-  `created_at` DATETIME DEFAULT NULL,
-  `id` TEXT DEFAULT NULL,
-  `updated_at` DATETIME DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
+  `id` TEXT NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `ingestion_details` TEXT NOT NULL,
   `status` TEXT NOT NULL,
   `product_counts` TEXT NOT NULL,
@@ -1654,7 +2315,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedsCreateRequest` (
   `location` TEXT NOT NULL COMMENT 'The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.',
   `preferred_processing_schedule` TEXT DEFAULT NULL,
   `default_country` TEXT DEFAULT NULL,
-  `default_availability` TEXT DEFAULT NULL
+  `default_availability` TEXT DEFAULT NULL,
+  `status` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.';
 
 --
@@ -1738,7 +2400,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchRequest` (
-  `catalog_type` TEXT NOT NULL,
+  `catalog_type` ENUM('HOTEL') NOT NULL,
   `country` TEXT NOT NULL,
   `language` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs item operations',
@@ -1751,9 +2413,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelFeed` (
-  `created_at` DATETIME DEFAULT NULL,
-  `id` TEXT DEFAULT NULL,
-  `updated_at` DATETIME DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
+  `id` TEXT NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `name` TEXT NOT NULL COMMENT 'A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.',
   `format` TEXT NOT NULL,
   `catalog_type` TEXT NOT NULL,
@@ -1780,7 +2442,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeedsCreateRequest` (
   `location` TEXT NOT NULL COMMENT 'The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.',
   `preferred_processing_schedule` TEXT DEFAULT NULL,
   `catalog_type` TEXT NOT NULL,
-  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.'
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.',
+  `status` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.';
 
 --
@@ -1841,8 +2504,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelItemResponse` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsBatch` (
   `batch_id` TEXT DEFAULT NULL COMMENT 'Id of the catalogs items batch',
-  `created_time` DATETIME DEFAULT NULL COMMENT 'Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD',
-  `completed_time` DATETIME DEFAULT NULL COMMENT 'Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD',
+  `created_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
+  `completed_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
   `status` TEXT DEFAULT NULL,
   `catalog_type` TEXT NOT NULL,
   `items` JSON DEFAULT NULL COMMENT 'Array with the catalogs items processing records part of the catalogs items batch'
@@ -1859,6 +2522,37 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsFilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `CatalogsHotelItemsPostFilter` generated from model 'CatalogsHotelItemsPostFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelItemsPostFilter` (
+  `catalog_type` ENUM('HOTEL') NOT NULL,
+  `hotel_ids` JSON NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsHotelListProductsByCatalogBasedFilterRequest` generated from model 'CatalogsHotelListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given hotel catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` ENUM('HOTEL') NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the hotel product group.',
+  `filters` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to list products for a given hotel catalog_id and product group filter.';
+
+--
+-- Table structure for table `CatalogsHotelProduct` generated from model 'CatalogsHotelProduct'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelProduct` (
+  `catalog_type` ENUM('HOTEL') NOT NULL,
+  `metadata` TEXT NOT NULL,
+  `pin` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `CatalogsHotelProductGroup` generated from model 'CatalogsHotelProductGroup'
 --
 
@@ -1870,7 +2564,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroup` (
   `filters` TEXT NOT NULL,
   `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
   `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
-  `catalog_id` TEXT NOT NULL
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the hotel product group.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1929,6 +2623,16 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupFiltersAnyOf` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `CatalogsHotelProductGroupProductCounts` generated from model 'CatalogsHotelProductGroupProductCounts'
+-- Product counts for a Hotel CatalogsProductGroup
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupProductCounts` (
+  `catalog_type` ENUM('HOTEL') NOT NULL,
+  `total` DECIMAL(20, 9) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Product counts for a Hotel CatalogsProductGroup';
+
+--
 -- Table structure for table `CatalogsHotelProductGroupUpdateRequest` generated from model 'CatalogsHotelProductGroupUpdateRequest'
 -- Request object for updating a hotel product group.
 --
@@ -1939,6 +2643,36 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelProductGroupUpdateRequest` (
   `description` TEXT DEFAULT NULL,
   `filters` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for updating a hotel product group.';
+
+--
+-- Table structure for table `CatalogsHotelProductMetadata` generated from model 'CatalogsHotelProductMetadata'
+-- Hotel product metadata entity
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelProductMetadata` (
+  `hotel_id` TEXT NOT NULL COMMENT 'The user-created unique ID that represents the hotel item.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Hotel product metadata entity';
+
+--
+-- Table structure for table `CatalogsHotelReportParameters` generated from model 'CatalogsHotelReportParameters'
+-- Parameters for hotel report
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelReportParameters` (
+  `catalog_type` ENUM('HOTEL') NOT NULL,
+  `report` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Parameters for hotel report';
+
+--
+-- Table structure for table `CatalogsHotelReportParameters_report` generated from model 'CatalogsHotelReportParametersUnderscorereport'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsHotelReportParameters_report` (
+  `report_type` ENUM('FEED_INGESTION_ISSUES', 'DISTRIBUTION_ISSUES') DEFAULT NULL,
+  `feed_id` TEXT NOT NULL COMMENT 'ID of the feed entity.',
+  `processing_result_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.',
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a catalog. If not given, oldest catalog will be used'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `CatalogsItemValidationDetails` generated from model 'CatalogsItemValidationDetails'
@@ -2058,8 +2792,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsItems` (
 CREATE TABLE IF NOT EXISTS `CatalogsItemsBatch` (
   `catalog_type` TEXT NOT NULL,
   `batch_id` TEXT DEFAULT NULL COMMENT 'Id of the catalogs items batch',
-  `created_time` DATETIME DEFAULT NULL COMMENT 'Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD',
-  `completed_time` DATETIME DEFAULT NULL COMMENT 'Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD',
+  `created_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
+  `completed_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
   `status` TEXT DEFAULT NULL,
   `items` JSON DEFAULT NULL COMMENT 'Array with the catalogs items processing records part of the catalogs items batch'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing the catalogs items batch';
@@ -2119,9 +2853,33 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteDiscontinuedBatchRequest` (
 CREATE TABLE IF NOT EXISTS `CatalogsItemsFilters` (
   `catalog_type` TEXT NOT NULL,
   `item_ids` JSON NOT NULL,
-  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog',
-  `hotel_ids` JSON NOT NULL
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog',
+  `hotel_ids` JSON NOT NULL,
+  `creative_assets_ids` JSON NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsItemsPostFilters` generated from model 'CatalogsItemsPostFilters'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFilters` (
+  `catalog_type` TEXT NOT NULL,
+  `item_ids` JSON NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog',
+  `hotel_ids` JSON NOT NULL,
+  `creative_assets_ids` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsItemsRequest` generated from model 'CatalogsItemsRequest'
+-- Request object of catalogs items
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
+  `country` TEXT NOT NULL,
+  `language` TEXT NOT NULL,
+  `filters` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object of catalogs items';
 
 --
 -- Table structure for table `CatalogsItemsUpdateBatchRequest` generated from model 'CatalogsItemsUpdateBatchRequest'
@@ -2157,52 +2915,39 @@ CREATE TABLE IF NOT EXISTS `catalogs_list_200_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `CatalogsListProductsByFeedBasedFilter` generated from model 'CatalogsListProductsByFeedBasedFilter'
+-- Request object to list products for a given feed_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFeedBasedFilter` (
+  `feed_id` TEXT NOT NULL COMMENT 'Catalog Feed id pertaining to the catalog product group filter.',
+  `filters` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to list products for a given feed_id and product group filter.';
+
+--
 -- Table structure for table `CatalogsListProductsByFilterRequest` generated from model 'CatalogsListProductsByFilterRequest'
 -- Request object to list products for a given product group filter.
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFilterRequest` (
   `feed_id` TEXT NOT NULL COMMENT 'Catalog Feed id pertaining to the catalog product group filter.',
-  `filters` TEXT NOT NULL
+  `filters` TEXT NOT NULL,
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.',
+  `country` TEXT NOT NULL,
+  `locale` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to list products for a given product group filter.';
 
 --
--- Table structure for table `CatalogsListProductsByFilterRequest_oneOf` generated from model 'CatalogsListProductsByFilterRequestUnderscoreoneOf'
--- Request object to list products for a given feed_id and product group filter.
---
-
-CREATE TABLE IF NOT EXISTS `CatalogsListProductsByFilterRequest_oneOf` (
-  `feed_id` TEXT NOT NULL COMMENT 'Catalog Feed id pertaining to the catalog product group filter.',
-  `filters` TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to list products for a given feed_id and product group filter.';
-
---
 -- Table structure for table `CatalogsProduct` generated from model 'CatalogsProduct'
+-- Catalogs product for all verticals
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsProduct` (
+  `catalog_type` TEXT NOT NULL,
   `metadata` TEXT NOT NULL,
   `pin` TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Table structure for table `CatalogsProductGroup` generated from model 'CatalogsProductGroup'
--- catalog product group entity
---
-
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroup` (
-  `id` TEXT NOT NULL COMMENT 'ID of the catalog product group.',
-  `name` TEXT DEFAULT NULL COMMENT 'Name of catalog product group',
-  `description` TEXT DEFAULT NULL,
-  `filters` TEXT NOT NULL,
-  `is_featured` TINYINT(1) DEFAULT NULL COMMENT 'boolean indicator of whether the product group is being featured or not',
-  `type` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL,
-  `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
-  `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
-  `feed_id` TEXT NOT NULL COMMENT 'id of the catalogs feed belonging to this catalog product group',
-  `catalog_type` ENUM('RETAIL') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='catalog product group entity';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Catalogs product for all verticals';
 
 --
 -- Table structure for table `CatalogsProductGroupCreateRequest` generated from model 'CatalogsProductGroupCreateRequest'
@@ -2246,6 +2991,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFilterKeys` (
   `CUSTOM_LABEL_4` TEXT NOT NULL,
   `ITEM_GROUP_ID` TEXT NOT NULL,
   `GENDER` TEXT NOT NULL,
+  `MEDIA_TYPE` TEXT NOT NULL,
   `PRODUCT_TYPE_4` TEXT NOT NULL,
   `PRODUCT_TYPE_3` TEXT NOT NULL,
   `PRODUCT_TYPE_2` TEXT NOT NULL,
@@ -2257,7 +3003,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupFilterKeys` (
   `GOOGLE_PRODUCT_CATEGORY_3` TEXT NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_2` TEXT NOT NULL,
   `GOOGLE_PRODUCT_CATEGORY_1` TEXT NOT NULL,
-  `GOOGLE_PRODUCT_CATEGORY_0` TEXT NOT NULL
+  `GOOGLE_PRODUCT_CATEGORY_0` TEXT NOT NULL,
+  `PRODUCT_GROUP` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2331,6 +3078,15 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupMultipleGenderCriteria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `CatalogsProductGroupMultipleMediaTypesCriteria` generated from model 'CatalogsProductGroupMultipleMediaTypesCriteria'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupMultipleMediaTypesCriteria` (
+  `values` JSON NOT NULL,
+  `negated` TINYINT(1) DEFAULT false
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `CatalogsProductGroupMultipleStringCriteria` generated from model 'CatalogsProductGroupMultipleStringCriteria'
 --
 
@@ -2379,15 +3135,17 @@ CREATE TABLE IF NOT EXISTS `catalogs_product_group_pricing_currency_criteria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Table structure for table `CatalogsProductGroupProductCounts` generated from model 'CatalogsProductGroupProductCounts'
+-- Table structure for table `CatalogsProductGroupProductCountsVertical` generated from model 'CatalogsProductGroupProductCountsVertical'
 -- Product counts for a CatalogsProductGroup
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogsProductGroupProductCounts` (
+CREATE TABLE IF NOT EXISTS `CatalogsProductGroupProductCountsVertical` (
+  `catalog_type` TEXT NOT NULL,
   `in_stock` DECIMAL(20, 9) UNSIGNED NOT NULL,
   `out_of_stock` DECIMAL(20, 9) UNSIGNED NOT NULL,
   `preorder` DECIMAL(20, 9) UNSIGNED NOT NULL,
-  `total` DECIMAL(20, 9) UNSIGNED NOT NULL
+  `total` DECIMAL(20, 9) UNSIGNED NOT NULL,
+  `videos` DECIMAL(20, 9) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Product counts for a CatalogsProductGroup';
 
 --
@@ -2403,64 +3161,12 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductGroupUpdateRequest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for updating a product group.';
 
 --
--- Table structure for table `catalogs_product_groups_create_201_response` generated from model 'catalogsUnderscoreproductUnderscoregroupsUnderscorecreateUnderscore201Underscoreresponse'
---
-
-CREATE TABLE IF NOT EXISTS `catalogs_product_groups_create_201_response` (
-  `id` TEXT NOT NULL COMMENT 'ID of the catalog product group.',
-  `name` TEXT DEFAULT NULL COMMENT 'Name of catalog product group',
-  `description` TEXT DEFAULT NULL,
-  `filters` TEXT NOT NULL,
-  `is_featured` TINYINT(1) DEFAULT NULL COMMENT 'boolean indicator of whether the product group is being featured or not',
-  `type` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL,
-  `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
-  `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
-  `feed_id` ENUM('null') NOT NULL,
-  `catalog_type` ENUM('RETAIL') NOT NULL,
-  `catalog_id` TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Table structure for table `catalogs_product_groups_create_request` generated from model 'catalogsUnderscoreproductUnderscoregroupsUnderscorecreateUnderscorerequest'
---
-
-CREATE TABLE IF NOT EXISTS `catalogs_product_groups_create_request` (
-  `name` TEXT NOT NULL,
-  `description` TEXT DEFAULT NULL,
-  `is_featured` TINYINT(1) DEFAULT false COMMENT 'boolean indicator of whether the product group is being featured or not',
-  `filters` TEXT NOT NULL,
-  `feed_id` TEXT NOT NULL COMMENT 'Catalog Feed id pertaining to the catalog product group.',
-  `catalog_type` ENUM('HOTEL') NOT NULL,
-  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the hotel product group.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
 -- Table structure for table `catalogs_product_groups_list_200_response` generated from model 'catalogsUnderscoreproductUnderscoregroupsUnderscorelistUnderscore200Underscoreresponse'
 --
 
 CREATE TABLE IF NOT EXISTS `catalogs_product_groups_list_200_response` (
   `items` JSON NOT NULL,
   `bookmark` TEXT DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Table structure for table `catalogs_product_groups_list_200_response_allOf_items_inner` generated from model 'catalogsUnderscoreproductUnderscoregroupsUnderscorelistUnderscore200UnderscoreresponseUnderscoreallOfUnderscoreitemsUnderscoreinner'
---
-
-CREATE TABLE IF NOT EXISTS `catalogs_product_groups_list_200_response_allOf_items_inner` (
-  `id` TEXT NOT NULL COMMENT 'ID of the catalog product group.',
-  `name` TEXT DEFAULT NULL COMMENT 'Name of catalog product group',
-  `description` TEXT DEFAULT NULL,
-  `filters` TEXT NOT NULL,
-  `is_featured` TINYINT(1) DEFAULT NULL COMMENT 'boolean indicator of whether the product group is being featured or not',
-  `type` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL,
-  `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
-  `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
-  `feed_id` ENUM('null') NOT NULL,
-  `catalog_type` ENUM('RETAIL') NOT NULL,
-  `catalog_id` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2472,22 +3178,95 @@ CREATE TABLE IF NOT EXISTS `catalogs_product_groups_update_request` (
   `description` TEXT DEFAULT NULL,
   `is_featured` TINYINT(1) DEFAULT NULL COMMENT 'boolean indicator of whether the product group is being featured or not',
   `filters` TEXT DEFAULT NULL,
-  `catalog_type` ENUM('HOTEL') DEFAULT NULL
+  `catalog_type` ENUM('CREATIVE_ASSETS') DEFAULT NULL,
+  `country` TEXT DEFAULT NULL,
+  `locale` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Table structure for table `CatalogsProductMetadata` generated from model 'CatalogsProductMetadata'
--- Product metadata entity
+-- Table structure for table `CatalogsReport` generated from model 'CatalogsReport'
 --
 
-CREATE TABLE IF NOT EXISTS `CatalogsProductMetadata` (
-  `item_id` TEXT NOT NULL COMMENT 'The user-created unique ID that represents the product.',
-  `item_group_id` TEXT NOT NULL COMMENT 'The parent ID of the product.',
-  `availability` TEXT NOT NULL,
-  `price` DECIMAL(20, 9) NOT NULL COMMENT 'The price of the product.',
-  `sale_price` DECIMAL(20, 9) NOT NULL COMMENT 'The discounted price of the product.',
-  `currency` TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Product metadata entity';
+CREATE TABLE IF NOT EXISTS `CatalogsReport` (
+  `report_status` ENUM('FINISHED', 'IN_PROGRESS') DEFAULT NULL,
+  `url` TEXT DEFAULT NULL COMMENT 'URL to download the report',
+  `size` DECIMAL(20, 9) DEFAULT NULL COMMENT 'Size of the report in bytes'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsReportDistributionIssueFilter` generated from model 'CatalogsReportDistributionIssueFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportDistributionIssueFilter` (
+  `report_type` ENUM('DISTRIBUTION_ISSUES') NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a catalog. If not given, oldest catalog will be used'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsReportDistributionStats` generated from model 'CatalogsReportDistributionStats'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportDistributionStats` (
+  `report_type` ENUM('DISTRIBUTION_ISSUES') DEFAULT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'ID of the catalog entity.',
+  `code` INT DEFAULT NULL COMMENT 'The event code that a diagnostics aggregated number references',
+  `code_label` TEXT DEFAULT NULL COMMENT 'A human-friendly label for the event code (e.g, &#39;SPAM&#39;)',
+  `message` TEXT DEFAULT NULL COMMENT 'Title message describing the diagnostic issue',
+  `occurrences` INT DEFAULT NULL COMMENT 'Number of occurrences of the issue',
+  `ineligible_for_ads` TINYINT(1) DEFAULT NULL COMMENT 'Indicates if issue makes items ineligible for ads distribution',
+  `ineligible_for_organic` TINYINT(1) DEFAULT NULL COMMENT 'Indicates if issue makes items ineligible for organic distribution'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsReportFeedIngestionFilter` generated from model 'CatalogsReportFeedIngestionFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportFeedIngestionFilter` (
+  `report_type` ENUM('FEED_INGESTION_ISSUES') NOT NULL,
+  `feed_id` TEXT NOT NULL COMMENT 'ID of the feed entity.',
+  `processing_result_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsReportFeedIngestionStats` generated from model 'CatalogsReportFeedIngestionStats'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportFeedIngestionStats` (
+  `report_type` ENUM('FEED_INGESTION_ISSUES') DEFAULT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'ID of the catalog entity.',
+  `code` INT DEFAULT NULL COMMENT 'The event code that a diagnostics aggregated number references',
+  `code_label` TEXT DEFAULT NULL COMMENT 'A human-friendly label for the event code (e.g, &#39;AVAILABILITY_INVALID&#39;)',
+  `message` TEXT DEFAULT NULL COMMENT 'Title message describing the diagnostic issue',
+  `occurrences` INT DEFAULT NULL COMMENT 'Number of occurrences of the issue',
+  `severity` ENUM('WARN', 'ERROR') DEFAULT NULL COMMENT 'An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsReportParameters` generated from model 'CatalogsReportParameters'
+-- Report parameters
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportParameters` (
+  `catalog_type` TEXT NOT NULL,
+  `report` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Report parameters';
+
+--
+-- Table structure for table `CatalogsReportStats` generated from model 'CatalogsReportStats'
+-- Diagnostics aggregated numbers
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsReportStats` (
+  `report_type` ENUM('FEED_INGESTION_ISSUES', 'DISTRIBUTION_ISSUES') NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'ID of the catalog entity.',
+  `code` INT DEFAULT NULL COMMENT 'The event code that a diagnostics aggregated number references',
+  `code_label` TEXT DEFAULT NULL COMMENT 'A human-friendly label for the event code (e.g, &#39;SPAM&#39;)',
+  `message` TEXT DEFAULT NULL COMMENT 'Title message describing the diagnostic issue',
+  `occurrences` INT DEFAULT NULL COMMENT 'Number of occurrences of the issue',
+  `severity` ENUM('WARN', 'ERROR') DEFAULT NULL COMMENT 'An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue',
+  `ineligible_for_ads` TINYINT(1) DEFAULT NULL COMMENT 'Indicates if issue makes items ineligible for ads distribution',
+  `ineligible_for_organic` TINYINT(1) DEFAULT NULL COMMENT 'Indicates if issue makes items ineligible for organic distribution'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Diagnostics aggregated numbers';
 
 --
 -- Table structure for table `CatalogsRetailBatchRequest` generated from model 'CatalogsRetailBatchRequest'
@@ -2495,7 +3274,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsProductMetadata` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest` (
-  `catalog_type` TEXT NOT NULL,
+  `catalog_type` ENUM('RETAIL') NOT NULL,
   `country` TEXT NOT NULL,
   `language` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs item operations'
@@ -2507,7 +3286,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest_items_inner` (
   `item_id` TEXT NOT NULL COMMENT 'The catalog item id in the merchant namespace',
-  `operation` ENUM('CREATE', 'UPDATE', 'UPSERT', 'DELETE') NOT NULL,
+  `operation` ENUM('DELETE') NOT NULL,
   `attributes` TEXT NOT NULL,
   `update_mask` JSON DEFAULT NULL COMMENT 'The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2518,9 +3297,9 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest_items_inner` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailFeed` (
-  `created_at` DATETIME DEFAULT NULL,
-  `id` TEXT DEFAULT NULL,
-  `updated_at` DATETIME DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
+  `id` TEXT NOT NULL,
+  `updated_at` DATETIME NOT NULL,
   `name` TEXT NOT NULL COMMENT 'A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.',
   `format` TEXT NOT NULL,
   `catalog_type` TEXT NOT NULL,
@@ -2549,7 +3328,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeedsCreateRequest` (
   `preferred_processing_schedule` TEXT DEFAULT NULL,
   `catalog_type` TEXT NOT NULL,
   `default_country` TEXT NOT NULL,
-  `default_availability` TEXT DEFAULT NULL
+  `default_availability` TEXT DEFAULT NULL,
+  `status` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a retail feed.';
 
 --
@@ -2599,8 +3379,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailItemResponse` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsBatch` (
   `batch_id` TEXT DEFAULT NULL COMMENT 'Id of the catalogs items batch',
-  `created_time` DATETIME DEFAULT NULL COMMENT 'Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD',
-  `completed_time` DATETIME DEFAULT NULL COMMENT 'Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD',
+  `created_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
+  `completed_time` DATETIME DEFAULT NULL COMMENT 'Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss',
   `status` TEXT DEFAULT NULL,
   `catalog_type` TEXT NOT NULL,
   `items` JSON DEFAULT NULL COMMENT 'Array with the catalogs items processing records part of the catalogs items batch'
@@ -2614,6 +3394,39 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsFilter` (
   `catalog_type` ENUM('RETAIL') NOT NULL,
   `item_ids` JSON NOT NULL,
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsRetailItemsPostFilter` generated from model 'CatalogsRetailItemsPostFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailItemsPostFilter` (
+  `catalog_type` ENUM('RETAIL') NOT NULL,
+  `item_ids` JSON NOT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsRetailListProductsByCatalogBasedFilterRequest` generated from model 'CatalogsRetailListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given retail catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` ENUM('RETAIL') NOT NULL COMMENT 'Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.',
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the retail product group.',
+  `filters` TEXT NOT NULL,
+  `country` TEXT NOT NULL,
+  `locale` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to list products for a given retail catalog_id and product group filter.';
+
+--
+-- Table structure for table `CatalogsRetailProduct` generated from model 'CatalogsRetailProduct'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProduct` (
+  `catalog_type` ENUM('RETAIL') NOT NULL,
+  `metadata` TEXT NOT NULL,
+  `pin` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2631,7 +3444,96 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroup` (
   `status` TEXT DEFAULT NULL,
   `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
   `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
-  `feed_id` ENUM('null') NOT NULL
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the retail product group.',
+  `feed_id` TEXT NOT NULL COMMENT 'id of the catalogs feed belonging to this catalog product group',
+  `country` TEXT DEFAULT NULL,
+  `locale` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CatalogsRetailProductGroupCreateRequest` generated from model 'CatalogsRetailProductGroupCreateRequest'
+-- Request object for creating a product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupCreateRequest` (
+  `catalog_type` ENUM('RETAIL') NOT NULL COMMENT 'Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.',
+  `name` TEXT NOT NULL,
+  `description` TEXT DEFAULT NULL,
+  `filters` TEXT NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the retail product group.',
+  `country` TEXT NOT NULL,
+  `locale` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a product group.';
+
+--
+-- Table structure for table `CatalogsRetailProductGroupProductCounts` generated from model 'CatalogsRetailProductGroupProductCounts'
+-- Product counts for a Retail CatalogsProductGroup
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupProductCounts` (
+  `catalog_type` ENUM('RETAIL') NOT NULL,
+  `in_stock` DECIMAL(20, 9) UNSIGNED NOT NULL,
+  `out_of_stock` DECIMAL(20, 9) UNSIGNED NOT NULL,
+  `preorder` DECIMAL(20, 9) UNSIGNED NOT NULL,
+  `total` DECIMAL(20, 9) UNSIGNED NOT NULL,
+  `videos` DECIMAL(20, 9) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Product counts for a Retail CatalogsProductGroup';
+
+--
+-- Table structure for table `CatalogsRetailProductGroupUpdateRequest` generated from model 'CatalogsRetailProductGroupUpdateRequest'
+-- Request object for updating a retail product group.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductGroupUpdateRequest` (
+  `catalog_type` ENUM('RETAIL') DEFAULT NULL COMMENT 'Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.',
+  `name` TEXT DEFAULT NULL,
+  `description` TEXT DEFAULT NULL,
+  `filters` TEXT DEFAULT NULL,
+  `country` TEXT DEFAULT NULL,
+  `locale` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for updating a retail product group.';
+
+--
+-- Table structure for table `CatalogsRetailProductMetadata` generated from model 'CatalogsRetailProductMetadata'
+-- Retail product metadata entity
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailProductMetadata` (
+  `item_id` TEXT NOT NULL COMMENT 'The user-created unique ID that represents the product.',
+  `item_group_id` TEXT NOT NULL COMMENT 'The parent ID of the product.',
+  `availability` TEXT NOT NULL,
+  `price` DECIMAL(20, 9) NOT NULL COMMENT 'The price of the product.',
+  `sale_price` DECIMAL(20, 9) NOT NULL COMMENT 'The discounted price of the product.',
+  `currency` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Retail product metadata entity';
+
+--
+-- Table structure for table `CatalogsRetailReportParameters` generated from model 'CatalogsRetailReportParameters'
+-- Parameters for retail report
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsRetailReportParameters` (
+  `catalog_type` ENUM('RETAIL') NOT NULL,
+  `report` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Parameters for retail report';
+
+--
+-- Table structure for table `CatalogsUpdatableCreativeAssetsAttributes` generated from model 'CatalogsUpdatableCreativeAssetsAttributes'
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsUpdatableCreativeAssetsAttributes` (
+  `title` TEXT DEFAULT NULL COMMENT 'The name of the creative assets.',
+  `description` TEXT DEFAULT NULL COMMENT 'Brief description of the creative assets.',
+  `link` TEXT DEFAULT NULL COMMENT 'Link to the creative assets page.',
+  `ios_deep_link` TEXT DEFAULT NULL COMMENT 'IOS deep link to the creative assets page.',
+  `android_deep_link` TEXT DEFAULT NULL COMMENT 'Link to the creative assets page.',
+  `google_product_category` TEXT DEFAULT NULL COMMENT 'The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.',
+  `custom_label_0` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_1` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_2` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_3` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `custom_label_4` TEXT DEFAULT NULL COMMENT 'Custom grouping of creative assets.',
+  `visibility` TEXT DEFAULT NULL COMMENT 'Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2659,6 +3561,17 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdatableHotelAttributes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `CatalogsUpdateCreativeAssetsItem` generated from model 'CatalogsUpdateCreativeAssetsItem'
+-- A creative assets item to be updated.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsUpdateCreativeAssetsItem` (
+  `creative_assets_id` TEXT NOT NULL COMMENT 'The catalog creative assets item id in the merchant namespace',
+  `operation` ENUM('UPDATE') NOT NULL,
+  `attributes` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A creative assets item to be updated.';
+
+--
 -- Table structure for table `CatalogsUpdateHotelItem` generated from model 'CatalogsUpdateHotelItem'
 -- Object describing an hotel item batch record
 --
@@ -2676,10 +3589,21 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpdateHotelItem` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpdateRetailItem` (
   `item_id` TEXT NOT NULL COMMENT 'The catalog item id in the merchant namespace',
-  `operation` ENUM('CREATE', 'UPDATE', 'UPSERT', 'DELETE') NOT NULL,
+  `operation` ENUM('UPDATE') NOT NULL,
   `attributes` TEXT NOT NULL,
   `update_mask` JSON DEFAULT NULL COMMENT 'The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An item to be updated';
+
+--
+-- Table structure for table `CatalogsUpsertCreativeAssetsItem` generated from model 'CatalogsUpsertCreativeAssetsItem'
+-- A creative assets item to be upserted.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsUpsertCreativeAssetsItem` (
+  `creative_assets_id` TEXT NOT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
+  `operation` ENUM('UPSERT') NOT NULL,
+  `attributes` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A creative assets item to be upserted.';
 
 --
 -- Table structure for table `CatalogsUpsertHotelItem` generated from model 'CatalogsUpsertHotelItem'
@@ -2699,7 +3623,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpsertHotelItem` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsUpsertRetailItem` (
   `item_id` TEXT NOT NULL COMMENT 'The catalog item id in the merchant namespace',
-  `operation` ENUM('CREATE', 'UPDATE', 'UPSERT', 'DELETE') NOT NULL,
+  `operation` ENUM('UPSERT') NOT NULL,
   `attributes` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An item to be upserted';
 
@@ -2709,11 +3633,11 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpsertRetailItem` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalBatchRequest` (
-  `catalog_type` TEXT NOT NULL,
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
   `country` TEXT NOT NULL,
   `language` TEXT NOT NULL,
-  `items` JSON NOT NULL COMMENT 'Array with catalogs item operations',
-  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog'
+  `items` JSON NOT NULL COMMENT 'Array with creative assets item operations',
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request object that can have multiple operations on a single batch';
 
 --
@@ -2732,7 +3656,8 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsCreateRequest` (
   `catalog_type` TEXT NOT NULL,
   `default_country` TEXT NOT NULL,
   `default_availability` TEXT DEFAULT NULL,
-  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.'
+  `status` TEXT DEFAULT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed.';
 
 --
@@ -2757,44 +3682,63 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsUpdateRequest` (
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroup` (
-  `catalog_type` ENUM('RETAIL') NOT NULL,
-  `id` TEXT NOT NULL COMMENT 'ID of the catalog product group.',
-  `name` TEXT DEFAULT NULL COMMENT 'Name of catalog product group',
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `id` TEXT NOT NULL COMMENT 'ID of the creative assets product group.',
+  `name` TEXT DEFAULT NULL COMMENT 'Name of creative assets product group',
   `description` TEXT DEFAULT NULL,
   `filters` TEXT NOT NULL,
-  `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
-  `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
-  `catalog_id` TEXT NOT NULL,
   `is_featured` TINYINT(1) DEFAULT NULL COMMENT 'boolean indicator of whether the product group is being featured or not',
   `type` TEXT DEFAULT NULL,
   `status` TEXT DEFAULT NULL,
-  `feed_id` ENUM('null') NOT NULL
+  `created_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of when catalog product group was created.',
+  `updated_at` INT DEFAULT NULL COMMENT 'Unix timestamp in seconds of last time catalog product group was updated.',
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.',
+  `feed_id` TEXT NOT NULL COMMENT 'id of the catalogs feed belonging to this catalog product group',
+  `country` TEXT DEFAULT NULL,
+  `locale` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `CatalogsVerticalProductGroupCreateRequest` generated from model 'CatalogsVerticalProductGroupCreateRequest'
--- Request object for creating a hotel product group.
+-- Request object for creating a catalog based product group.
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupCreateRequest` (
-  `catalog_type` ENUM('HOTEL') NOT NULL,
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
   `name` TEXT NOT NULL,
   `description` TEXT DEFAULT NULL,
   `filters` TEXT NOT NULL,
-  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the hotel product group.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a hotel product group.';
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.',
+  `country` TEXT NOT NULL,
+  `locale` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a catalog based product group.';
 
 --
 -- Table structure for table `CatalogsVerticalProductGroupUpdateRequest` generated from model 'CatalogsVerticalProductGroupUpdateRequest'
--- Request object for updating a hotel product group.
+-- Request object for updating a catalog based product group.
 --
 
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalProductGroupUpdateRequest` (
-  `catalog_type` ENUM('HOTEL') DEFAULT NULL,
+  `catalog_type` ENUM('CREATIVE_ASSETS') DEFAULT NULL,
   `name` TEXT DEFAULT NULL,
   `description` TEXT DEFAULT NULL,
-  `filters` TEXT DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for updating a hotel product group.';
+  `filters` TEXT DEFAULT NULL,
+  `country` TEXT DEFAULT NULL,
+  `locale` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for updating a catalog based product group.';
+
+--
+-- Table structure for table `CatalogsVerticalsListProductsByCatalogBasedFilterRequest` generated from model 'CatalogsVerticalsListProductsByCatalogBasedFilterRequest'
+-- Request object to list products for a given catalog_id and product group filter.
+--
+
+CREATE TABLE IF NOT EXISTS `CatalogsVerticalsListProductsByCatalogBasedFilterRequest` (
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.',
+  `filters` TEXT NOT NULL,
+  `country` TEXT NOT NULL,
+  `locale` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to list products for a given catalog_id and product group filter.';
 
 --
 -- Table structure for table `ConditionFilter` generated from model 'ConditionFilter'
@@ -2850,8 +3794,8 @@ CREATE TABLE IF NOT EXISTS `ConversionEvents` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner` (
-  `event_name` TEXT NOT NULL COMMENT 'The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt; &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt; &lt;li&gt;&lt;code&gt;custom&lt;/code&gt; &lt;li&gt;&lt;code&gt;lead&lt;/code&gt; &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt; &lt;li&gt;&lt;code&gt;search&lt;/code&gt; &lt;li&gt;&lt;code&gt;signup&lt;/code&gt; &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt; &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;',
-  `action_source` TEXT NOT NULL COMMENT 'The source indicating where the conversion event occurred. &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt; &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt; &lt;li&gt;&lt;code&gt;web&lt;/code&gt; &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;',
+  `event_name` TEXT NOT NULL COMMENT '&lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; ',
+  `action_source` TEXT NOT NULL COMMENT '&lt;p&gt;   The source indicating where the conversion event occurred.   &lt;ul&gt;     &lt;li&gt;&lt;code&gt;app_android&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;app_ios&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;web&lt;/code&gt;&lt;/li&gt;     &lt;li&gt;&lt;code&gt;offline&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; ',
   `event_time` BIGINT NOT NULL COMMENT 'The time when the event happened. Unix timestamp in seconds.',
   `event_id` TEXT NOT NULL COMMENT 'A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event&#39;s data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.',
   `event_source_url` TEXT DEFAULT NULL COMMENT 'URL of the web conversion event.',
@@ -2887,7 +3831,7 @@ CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner_custom_data` (
   `num_items` BIGINT DEFAULT NULL COMMENT 'Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).',
   `order_id` TEXT DEFAULT NULL COMMENT 'The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.',
   `search_string` TEXT DEFAULT NULL COMMENT 'The search string related to the user conversion event.',
-  `opt_out_type` TEXT DEFAULT NULL COMMENT 'Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.',
+  `opt_out_type` TEXT DEFAULT NULL COMMENT 'Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.',
   `np` TEXT DEFAULT NULL COMMENT 'Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object containing other custom data.';
 
@@ -2910,19 +3854,56 @@ CREATE TABLE IF NOT EXISTS `ConversionEvents_data_inner_custom_data_contents_inn
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionEventsUserData` (
-  `ph` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.',
-  `ge` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender.',
-  `db` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s date of birthday, given as year, month, and day.',
-  `ln` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.',
-  `fn` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.',
-  `ct` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s city, in lowercase, and without spaces or punctuation. User residency city (mostly billing).',
-  `st` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s state, given as a two-letter code in lowercase. User residency state (mostly billing).',
-  `zp` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s zipcode, only digits. User residency zipcode (mostly billing).',
-  `country` JSON DEFAULT NULL COMMENT 'Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase.',
-  `external_id` JSON DEFAULT NULL COMMENT 'Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA.',
+  `ph` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `ge` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s gender, in lowercase. Either \&quot;f\&quot; or \&quot;m\&quot; or \&quot;n\&quot; for non-binary gender. The string should be in the UTF-8 format.',
+  `db` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s date of birthday, given as year, month, and day. The string should be in the UTF-8 format.',
+  `ln` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `fn` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `ct` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format.',
+  `st` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s state, given as a two-letter code in lowercase. User residency state (mostly billing). The string should be in the UTF-8 format.',
+  `zp` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s zipcode, only digits. User residency zipcode (mostly billing). The string should be in the UTF-8 format.',
+  `country` JSON DEFAULT NULL COMMENT 'Sha256 hashes of two-character ISO-3166 country code indicating the user&#39;s country, in lowercase. The string should be in the UTF-8 format.',
+  `external_id` JSON DEFAULT NULL COMMENT 'Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
   `click_id` TEXT DEFAULT NULL COMMENT 'The unique identifier stored in _epik cookie on your domain or &amp;epik&#x3D; query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.',
-  `partner_id` TEXT DEFAULT NULL COMMENT 'A unique identifier of visitors&#39; information defined by third party partners. e.g RampID'
+  `partner_id` TEXT DEFAULT NULL COMMENT 'A unique identifier of visitors&#39; information defined by third party partners. e.g RampID',
+  `em` JSON NOT NULL COMMENT 'Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `hashed_maids` JSON NOT NULL COMMENT 'Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `client_ip_address` TEXT NOT NULL COMMENT 'The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.',
+  `client_user_agent` TEXT NOT NULL COMMENT 'The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.';
+
+--
+-- Table structure for table `ConversionEventsUserData_anyOf` generated from model 'ConversionEventsUserDataUnderscoreanyOf'
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf` (
+  `em` JSON NOT NULL COMMENT 'Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `hashed_maids` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `client_ip_address` TEXT DEFAULT NULL COMMENT 'The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.',
+  `client_user_agent` TEXT DEFAULT NULL COMMENT 'The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `ConversionEventsUserData_anyOf_1` generated from model 'ConversionEventsUserDataUnderscoreanyOfUnderscore1'
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf_1` (
+  `em` JSON DEFAULT NULL COMMENT 'Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `hashed_maids` JSON NOT NULL COMMENT 'Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `client_ip_address` TEXT DEFAULT NULL COMMENT 'The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.',
+  `client_user_agent` TEXT DEFAULT NULL COMMENT 'The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `ConversionEventsUserData_anyOf_2` generated from model 'ConversionEventsUserDataUnderscoreanyOfUnderscore2'
+--
+
+CREATE TABLE IF NOT EXISTS `ConversionEventsUserData_anyOf_2` (
+  `em` JSON DEFAULT NULL COMMENT 'Sha256 hashes of lowercase version of user&#39;s email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `hashed_maids` JSON DEFAULT NULL COMMENT 'Sha256 hashes of user&#39;s \&quot;Google Advertising IDs\&quot; (GAIDs) or \&quot;Apple&#39;s Identifier for Advertisers\&quot; (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.',
+  `client_ip_address` TEXT NOT NULL COMMENT 'The user&#39;s IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.',
+  `client_user_agent` TEXT NOT NULL COMMENT 'The user agent string of the user&#39;s web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `ConversionTagCommon` generated from model 'ConversionTagCommon'
@@ -3002,6 +3983,107 @@ CREATE TABLE IF NOT EXISTS `CountryFilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `CreateAssetAccessRequestBody` generated from model 'CreateAssetAccessRequestBody'
+-- An object containing a list of all the asset access requests
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestBody` (
+  `asset_requests` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object containing a list of all the asset access requests';
+
+--
+-- Table structure for table `CreateAssetAccessRequestBody_asset_requests_inner` generated from model 'CreateAssetAccessRequestBodyUnderscoreassetUnderscorerequestsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestBody_asset_requests_inner` (
+  `partner_id` TEXT NOT NULL COMMENT 'Unique identifier of a business partner to request asset access to.',
+  `asset_id_to_permissions` JSON NOT NULL COMMENT 'An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateAssetAccessRequestErrorMessage_inner` generated from model 'CreateAssetAccessRequestErrorMessageUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestErrorMessage_inner` (
+  `code` INT DEFAULT NULL COMMENT 'Error code associated with the error in requesting asset access.',
+  `messages` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateAssetAccessRequestResponse` generated from model 'CreateAssetAccessRequestResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetAccessRequestResponse` (
+  `exceptions` JSON DEFAULT NULL COMMENT 'A list of errors associated with the asset access requests. Will be returned if there is an error.',
+  `invites` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateAssetGroupBody` generated from model 'CreateAssetGroupBody'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetGroupBody` (
+  `asset_group_name` TEXT NOT NULL COMMENT 'Asset Group name',
+  `asset_group_description` TEXT NOT NULL COMMENT 'Asset group description',
+  `asset_group_types` JSON NOT NULL COMMENT 'Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateAssetGroupResponse` generated from model 'CreateAssetGroupResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetGroupResponse` (
+  `asset_group` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateAssetInvitesRequest` generated from model 'CreateAssetInvitesRequest'
+-- Request body for updating asset roles for existing invites.
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetInvitesRequest` (
+  `invites` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request body for updating asset roles for existing invites.';
+
+--
+-- Table structure for table `CreateAssetInvitesRequestItem` generated from model 'CreateAssetInvitesRequestItem'
+-- Object declaring an asset role update to an invite.
+--
+
+CREATE TABLE IF NOT EXISTS `CreateAssetInvitesRequestItem` (
+  `invite_id` TEXT NOT NULL COMMENT 'Unique identifier of an invite.',
+  `invite_type` TEXT NOT NULL,
+  `asset_id_to_permissions` JSON NOT NULL COMMENT 'An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. '
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object declaring an asset role update to an invite.';
+
+--
+-- Table structure for table `CreateInvitesResultsResponseArray` generated from model 'CreateInvitesResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateInvitesResultsResponseArray_items_inner` generated from model 'CreateInvitesResultsResponseArrayUnderscoreitemsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray_items_inner` (
+  `exception` TEXT DEFAULT NULL,
+  `invite` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateInvitesResultsResponseArray_items_inner_invite` generated from model 'CreateInvitesResultsResponseArrayUnderscoreitemsUnderscoreinnerUnderscoreinvite'
+-- An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
+--
+
+CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray_items_inner_invite` (
+  `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the invite/request.',
+  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the member/partner that was sent the invite/request.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.';
+
+--
 -- Table structure for table `CreateMMMReportRequest` generated from model 'CreateMMMReportRequest'
 --
 
@@ -3035,6 +4117,38 @@ CREATE TABLE IF NOT EXISTS `CreateMMMReportResponseData` (
   `message` TEXT DEFAULT NULL,
   `status` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreateMembershipOrPartnershipInvitesBody` generated from model 'CreateMembershipOrPartnershipInvitesBody'
+-- Body to be used on path to send Members or Partners Invite or Request
+--
+
+CREATE TABLE IF NOT EXISTS `CreateMembershipOrPartnershipInvitesBody` (
+  `business_role` ENUM('EMPLOYEE', 'BIZ_ADMIN', 'PARTNER') NOT NULL COMMENT 'The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.',
+  `invite_type` TEXT NOT NULL,
+  `members` JSON DEFAULT NULL COMMENT 'A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE',
+  `partners` JSON DEFAULT NULL COMMENT 'A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Body to be used on path to send Members or Partners Invite or Request';
+
+--
+-- Table structure for table `CreativeAssetsIdFilter` generated from model 'CreativeAssetsIdFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `CreativeAssetsIdFilter` (
+  `CREATIVE_ASSETS_ID` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `CreativeAssetsProcessingRecord` generated from model 'CreativeAssetsProcessingRecord'
+-- Object describing an item processing record
+--
+
+CREATE TABLE IF NOT EXISTS `CreativeAssetsProcessingRecord` (
+  `creative_assets_id` TEXT DEFAULT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
+  `errors` JSON DEFAULT NULL COMMENT 'Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.',
+  `warnings` JSON DEFAULT NULL COMMENT 'Array with the validation warnings for the item processing record',
+  `status` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing an item processing record';
 
 --
 -- Table structure for table `CurrencyFilter` generated from model 'CurrencyFilter'
@@ -3133,6 +4247,146 @@ CREATE TABLE IF NOT EXISTS `customer_lists_list_200_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `DeleteAssetGroupBody` generated from model 'DeleteAssetGroupBody'
+-- Request body used to delete asset groups
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupBody` (
+  `asset_groups_to_delete` JSON NOT NULL COMMENT 'List of ids of asset groups to be deleted'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request body used to delete asset groups';
+
+--
+-- Table structure for table `DeleteAssetGroupResponse` generated from model 'DeleteAssetGroupResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponse` (
+  `deleted_asset_groups` JSON DEFAULT NULL COMMENT 'A list of ids of successfully deleted asset groups.',
+  `exceptions` JSON DEFAULT NULL COMMENT 'A list of errors associated with the asset groups. Will be returned if there is an error.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeleteAssetGroupResponse_exceptions_inner` generated from model 'DeleteAssetGroupResponseUnderscoreexceptionsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteAssetGroupResponse_exceptions_inner` (
+  `code` INT DEFAULT NULL COMMENT 'Error code associated with the error deleting asset group.',
+  `message` TEXT DEFAULT NULL COMMENT 'Error message associated with the error deleting asset group.',
+  `asset_group_id` TEXT DEFAULT NULL COMMENT 'Asset group id of the exception.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeleteInvitesResultsResponseArray` generated from model 'DeleteInvitesResultsResponseArray'
+-- Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteInvitesResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id';
+
+--
+-- Table structure for table `DeleteInvitesResultsResponseArray_items_inner` generated from model 'DeleteInvitesResultsResponseArrayUnderscoreitemsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteInvitesResultsResponseArray_items_inner` (
+  `exception` TEXT DEFAULT NULL,
+  `invite` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeleteInvitesResultsResponseArray_items_inner_exception` generated from model 'DeleteInvitesResultsResponseArrayUnderscoreitemsUnderscoreinnerUnderscoreexception'
+-- An exception object if there is an error performing the cancellation. It will only be provided if there is an error.
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteInvitesResultsResponseArray_items_inner_exception` (
+  `invite_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of an invite.',
+  `message` TEXT DEFAULT NULL COMMENT 'Error message associated with the error in performing the action on the invite/request.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An exception object if there is an error performing the cancellation. It will only be provided if there is an error.';
+
+--
+-- Table structure for table `DeleteMemberAccessResult` generated from model 'DeleteMemberAccessResult'
+-- The terminated asset access.
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteMemberAccessResult` (
+  `asset_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the business asset.',
+  `member_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the business member.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='The terminated asset access.';
+
+--
+-- Table structure for table `DeleteMemberAccessResultsResponseArray` generated from model 'DeleteMemberAccessResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `DeleteMemberAccessResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of member asset permissions that were deleted.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeletePartnerAssetAccessBody` generated from model 'DeletePartnerAssetAccessBody'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBody` (
+  `accesses` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeletePartnerAssetAccessBody_accesses_inner` generated from model 'DeletePartnerAssetAccessBodyUnderscoreaccessesUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetAccessBody_accesses_inner` (
+  `partner_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of a business partner to update asset access to.',
+  `asset_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of the business asset.',
+  `partner_type` ENUM('INTERNAL', 'EXTERNAL') DEFAULT 'INTERNAL' COMMENT 'If partner_type&#x3D;INTERNAL, the deleted asset access is for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the deleted asset access is for the access you have to the partner&#39;s business asset.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeletePartnerAssetsResult` generated from model 'DeletePartnerAssetsResult'
+-- The terminated asset access.
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetsResult` (
+  `asset_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a business asset.',
+  `asset_type` TEXT DEFAULT NULL COMMENT 'Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.',
+  `is_shared_partner` TINYINT(1) DEFAULT NULL COMMENT 'If is_shared_partner&#x3D;FALSE, you terminated a partner&#39;s asset access to your business asset.&lt;br&gt; If is_shared_partner&#x3D;TRUE, you terminated your asset access to your partner&#39;s business asset.',
+  `partner_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a business partner.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='The terminated asset access.';
+
+--
+-- Table structure for table `DeletePartnerAssetsResultsResponseArray` generated from model 'DeletePartnerAssetsResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnerAssetsResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of terminated asset access.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeletePartnersRequest` generated from model 'DeletePartnersRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnersRequest` (
+  `partner_ids` JSON NOT NULL,
+  `partner_type` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `DeletePartnersResponse` generated from model 'DeletePartnersResponse'
+-- An object with a list of partners that were deleted.
+--
+
+CREATE TABLE IF NOT EXISTS `DeletePartnersResponse` (
+  `deleted_partners` JSON DEFAULT NULL COMMENT 'List of partners whose business partnership have been terminated.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object with a list of partners that were deleted.';
+
+--
+-- Table structure for table `DeletedMembersResponse` generated from model 'DeletedMembersResponse'
+-- An object with a list of members that were deleted.
+--
+
+CREATE TABLE IF NOT EXISTS `DeletedMembersResponse` (
+  `deleted_members` JSON DEFAULT NULL COMMENT 'List of members whose business membership have been terminated.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object with a list of members that were deleted.';
+
+--
 -- Table structure for table `DeliveryMetricsResponse` generated from model 'DeliveryMetricsResponse'
 --
 
@@ -3204,7 +4458,8 @@ CREATE TABLE IF NOT EXISTS `feeds_create_request` (
   `catalog_type` TEXT NOT NULL,
   `default_country` TEXT NOT NULL,
   `default_availability` TEXT DEFAULT NULL,
-  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.'
+  `status` TEXT DEFAULT NULL,
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3258,6 +4513,53 @@ CREATE TABLE IF NOT EXISTS `GenderFilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `GetBusinessAssetsResponse` generated from model 'GetBusinessAssetsResponse'
+-- An object containing the permissions a business has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `GetBusinessAssetsResponse` (
+  `asset_id` VARCHAR(20) DEFAULT NULL COMMENT 'Unique identifier of a business asset.',
+  `asset_type` TEXT DEFAULT NULL COMMENT 'Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.',
+  `asset_group_info` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object containing the permissions a business has on the asset.';
+
+--
+-- Table structure for table `get_business_employers_200_response` generated from model 'getUnderscorebusinessUnderscoreemployersUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `get_business_employers_200_response` (
+  `items` JSON NOT NULL COMMENT 'List of employers.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `get_business_members_200_response` generated from model 'getUnderscorebusinessUnderscoremembersUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `get_business_members_200_response` (
+  `items` JSON NOT NULL COMMENT 'List of business members.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `get_business_partners_200_response` generated from model 'getUnderscorebusinessUnderscorepartnersUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `get_business_partners_200_response` (
+  `items` JSON NOT NULL COMMENT 'List of business partners.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `get_invites_200_response` generated from model 'getUnderscoreinvitesUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `get_invites_200_response` (
+  `items` JSON NOT NULL COMMENT 'List of invite and request data.',
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `GetMMMReportResponse` generated from model 'GetMMMReportResponse'
 --
 
@@ -3277,6 +4579,18 @@ CREATE TABLE IF NOT EXISTS `GetMMMReportResponseData` (
   `url` TEXT DEFAULT NULL,
   `size` DECIMAL(20, 9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `GetPartnerAssetsResponse` generated from model 'GetPartnerAssetsResponse'
+-- An object containing the permissions a you/your business partner has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `GetPartnerAssetsResponse` (
+  `asset_id` VARCHAR(20) DEFAULT NULL COMMENT 'Unique identifier of a business asset.',
+  `asset_type` TEXT DEFAULT NULL COMMENT 'Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.',
+  `permissions` JSON DEFAULT NULL COMMENT 'The permissions you or your partner has on the asset. If partner_type&#x3D;INTERNAL, the permission levels are for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the permission levels are for the access you have to the partner&#39;s business asset.',
+  `asset_group_info` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object containing the permissions a you/your business partner has on the asset.';
 
 --
 -- Table structure for table `GoogleProductCategory0Filter` generated from model 'GoogleProductCategory0Filter'
@@ -3586,14 +4900,84 @@ CREATE TABLE IF NOT EXISTS `Interest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `InviteAssetsSummary` generated from model 'InviteAssetsSummary'
+-- Ad accounts and profiles the member/partner will be granted access to with this invite/request.
+--
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummary` (
+  `ad_accounts` JSON DEFAULT NULL COMMENT 'List of ad account IDs and respective permission levels that will be assigned.',
+  `profiles` JSON DEFAULT NULL COMMENT 'List of profile IDs and respective permission levels that will be assigned.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Ad accounts and profiles the member/partner will be granted access to with this invite/request.';
+
+--
+-- Table structure for table `InviteAssetsSummary_ad_accounts_inner` generated from model 'InviteAssetsSummaryUnderscoreadUnderscoreaccountsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummary_ad_accounts_inner` (
+  `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a business ad account.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `InviteAssetsSummary_profiles_inner` generated from model 'InviteAssetsSummaryUnderscoreprofilesUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `InviteAssetsSummary_profiles_inner` (
+  `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a business profile.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `InviteBusinessRoleBinding` generated from model 'InviteBusinessRoleBinding'
+-- An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+--
+
+CREATE TABLE IF NOT EXISTS `InviteBusinessRoleBinding` (
+  `created_by_business_id` TEXT DEFAULT NULL COMMENT 'Unique identifier for the business that created the invite/request.',
+  `created_by_user_id` TEXT DEFAULT NULL COMMENT 'Unique identifier for the user that created the invite/request.',
+  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the user that updated the invite/request.',
+  `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the invite/request.',
+  `invite_data` TEXT DEFAULT NULL,
+  `is_received_invite` TINYINT(1) DEFAULT NULL COMMENT 'Indicates whether the invite/request was received.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.';
+
+--
+-- Table structure for table `InviteExceptionResponse` generated from model 'InviteExceptionResponse'
+-- An exception object if there is an error performing the action. Will only be provided if there is an error.
+--
+
+CREATE TABLE IF NOT EXISTS `InviteExceptionResponse` (
+  `invite_or_request_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the invite/request.',
+  `code` INT DEFAULT NULL COMMENT 'Error code associated with the error in performing the action on the invite/request.',
+  `message` TEXT DEFAULT NULL COMMENT 'Error message associated with the error in performing the action on the invite/request.',
+  `users_or_partner_ids` JSON DEFAULT NULL COMMENT 'A list of users&#39; usernames or emails OR a list of partner ids that caused the error.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An exception object if there is an error performing the action. Will only be provided if there is an error.';
+
+--
+-- Table structure for table `InviteResponse` generated from model 'InviteResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `InviteResponse` (
+  `assets_summary` TEXT DEFAULT NULL,
+  `business_roles` JSON DEFAULT NULL COMMENT 'The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.',
+  `created_by_business` TEXT DEFAULT NULL COMMENT 'Metadata for the business that created the invite/request.',
+  `created_by_user` TEXT DEFAULT NULL COMMENT 'Metadata for the user that created the invite/request.',
+  `created_time` INT DEFAULT NULL COMMENT 'The time the invite/request was created. Returned in milliseconds.',
+  `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the invite/request.',
+  `invite_data` TEXT DEFAULT NULL,
+  `is_received_invite` TINYINT(1) DEFAULT NULL COMMENT 'Indicates whether the invite/request was received.',
+  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the member/partner that was sent the invite/request.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `ItemAttributes` generated from model 'ItemAttributes'
 --
 
 CREATE TABLE IF NOT EXISTS `ItemAttributes` (
   `ad_link` TEXT DEFAULT NULL COMMENT 'Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.',
   `adult` TINYINT(1) DEFAULT NULL COMMENT 'Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.',
-  `age_group` TEXT DEFAULT NULL COMMENT 'The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.',
-  `availability` TEXT DEFAULT NULL COMMENT 'The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.',
+  `age_group` TEXT DEFAULT NULL COMMENT 'The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.',
+  `availability` TEXT DEFAULT NULL COMMENT 'The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.',
   `average_review_rating` DECIMAL(20, 9) DEFAULT NULL COMMENT 'Average reviews for the item. Can be a number from 1-5.',
   `brand` TEXT DEFAULT NULL COMMENT 'The brand of the product.',
   `checkout_enabled` TINYINT(1) DEFAULT NULL COMMENT 'This attribute is not supported anymore.',
@@ -3607,7 +4991,7 @@ CREATE TABLE IF NOT EXISTS `ItemAttributes` (
   `description` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;',
   `free_shipping_label` TINYINT(1) DEFAULT NULL COMMENT 'The item is free to ship.',
   `free_shipping_limit` TEXT DEFAULT NULL COMMENT 'The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.',
-  `gender` TEXT DEFAULT NULL COMMENT 'The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.',
+  `gender` TEXT DEFAULT NULL COMMENT 'The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.',
   `google_product_category` TEXT DEFAULT NULL COMMENT 'The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.',
   `gtin` INT DEFAULT NULL COMMENT 'The unique universal product identifier.',
   `id` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;',
@@ -3629,14 +5013,70 @@ CREATE TABLE IF NOT EXISTS `ItemAttributes` (
   `shipping_weight` TEXT DEFAULT NULL COMMENT 'The weight of the product. Ensure there is a space between the numeric string and the metric.',
   `shipping_width` TEXT DEFAULT NULL COMMENT 'The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.',
   `size` TEXT DEFAULT NULL COMMENT 'The size of the product.',
-  `size_system` TEXT DEFAULT NULL COMMENT 'Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.',
-  `size_type` TEXT DEFAULT NULL COMMENT 'Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.',
+  `size_system` TEXT DEFAULT NULL COMMENT 'Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.',
+  `size_type` TEXT DEFAULT NULL COMMENT 'Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.',
   `tax` TEXT DEFAULT NULL COMMENT 'Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.',
   `title` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;',
   `variant_names` JSON DEFAULT NULL COMMENT 'Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.',
   `variant_values` JSON DEFAULT NULL COMMENT 'Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.',
   `additional_image_link` JSON DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.&lt;/p&gt;',
-  `image_link` JSON DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.&lt;/p&gt;'
+  `image_link` JSON DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.&lt;/p&gt;',
+  `video_link` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `ItemAttributesRequest` generated from model 'ItemAttributesRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `ItemAttributesRequest` (
+  `ad_link` TEXT DEFAULT NULL COMMENT 'Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.',
+  `adult` TINYINT(1) DEFAULT NULL COMMENT 'Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.',
+  `age_group` TEXT DEFAULT NULL COMMENT 'The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.',
+  `availability` TEXT DEFAULT NULL COMMENT 'The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.',
+  `average_review_rating` DECIMAL(20, 9) DEFAULT NULL COMMENT 'Average reviews for the item. Can be a number from 1-5.',
+  `brand` TEXT DEFAULT NULL COMMENT 'The brand of the product.',
+  `checkout_enabled` TINYINT(1) DEFAULT NULL COMMENT 'This attribute is not supported anymore.',
+  `color` TEXT DEFAULT NULL COMMENT 'The primary color of the product.',
+  `condition` TEXT DEFAULT NULL COMMENT 'The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.',
+  `custom_label_0` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;',
+  `custom_label_1` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;',
+  `custom_label_2` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;',
+  `custom_label_3` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;',
+  `custom_label_4` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;Custom grouping of products.&lt;/p&gt;',
+  `description` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;',
+  `free_shipping_label` TINYINT(1) DEFAULT NULL COMMENT 'The item is free to ship.',
+  `free_shipping_limit` TEXT DEFAULT NULL COMMENT 'The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.',
+  `gender` TEXT DEFAULT NULL COMMENT 'The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.',
+  `google_product_category` TEXT DEFAULT NULL COMMENT 'The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.',
+  `gtin` INT DEFAULT NULL COMMENT 'The unique universal product identifier.',
+  `id` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;',
+  `item_group_id` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The parent ID of the product.&lt;/p&gt;',
+  `last_updated_time` BIGINT DEFAULT NULL COMMENT 'The millisecond timestamp when the item was lastly modified by the merchant.',
+  `link` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 511 characters&lt;/p&gt; &lt;p&gt;The landing page for the product.&lt;/p&gt;',
+  `material` TEXT DEFAULT NULL COMMENT 'The material used to make the product.',
+  `min_ad_price` TEXT DEFAULT NULL COMMENT 'The minimum advertised price of the product. It supports the following formats, \&quot;19.99 USD\&quot;, \&quot;19.99USD\&quot; and \&quot;19.99\&quot;. If the currency is not included, we default to US dollars.',
+  `mobile_link` TEXT DEFAULT NULL COMMENT 'The mobile-optimized version of your landing page. Must begin with http:// or https://.',
+  `mpn` TEXT DEFAULT NULL COMMENT 'Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.',
+  `number_of_ratings` INT DEFAULT NULL COMMENT 'The number of ratings for the item.',
+  `number_of_reviews` INT DEFAULT NULL COMMENT 'The number of reviews available for the item.',
+  `pattern` TEXT DEFAULT NULL COMMENT 'The description of the pattern used for the product.',
+  `price` TEXT DEFAULT NULL COMMENT 'The price of the product. It supports the following formats, \&quot;24.99 USD\&quot;, \&quot;24.99USD\&quot; and \&quot;24.99\&quot;. If the currency is not included, we default to US dollars.',
+  `product_type` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 1000 characters&lt;/p&gt; &lt;p&gt;The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ &gt; “. The &gt; must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.&lt;/p&gt;',
+  `sale_price` TEXT DEFAULT NULL COMMENT 'The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \&quot;14.99 USD\&quot;, \&quot;14.99USD\&quot; and \&quot;14.99\&quot;. If the currency is not included, we default to US dollars.',
+  `shipping` TEXT DEFAULT NULL COMMENT 'Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.',
+  `shipping_height` TEXT DEFAULT NULL COMMENT 'The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.',
+  `shipping_weight` TEXT DEFAULT NULL COMMENT 'The weight of the product. Ensure there is a space between the numeric string and the metric.',
+  `shipping_width` TEXT DEFAULT NULL COMMENT 'The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.',
+  `size` TEXT DEFAULT NULL COMMENT 'The size of the product.',
+  `size_system` TEXT DEFAULT NULL COMMENT 'Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.',
+  `size_type` TEXT DEFAULT NULL COMMENT 'Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.',
+  `tax` TEXT DEFAULT NULL COMMENT 'Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.',
+  `title` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;',
+  `variant_names` JSON DEFAULT NULL COMMENT 'Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.',
+  `variant_values` JSON DEFAULT NULL COMMENT 'Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.',
+  `additional_image_link` JSON DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.&lt;/p&gt;',
+  `image_link` TEXT DEFAULT NULL,
+  `video_link` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3717,6 +5157,7 @@ CREATE TABLE IF NOT EXISTS `ItemResponse` (
   `pins` JSON DEFAULT NULL COMMENT 'The pins mapped to the item',
   `attributes` TEXT DEFAULT NULL,
   `hotel_id` TEXT DEFAULT NULL COMMENT 'The catalog hotel id in the merchant namespace',
+  `creative_assets_id` TEXT DEFAULT NULL COMMENT 'The catalog creative assets id in the merchant namespace',
   `errors` JSON DEFAULT NULL COMMENT 'Array with the errors for the item id requested'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Object describing an item record';
 
@@ -3729,7 +5170,8 @@ CREATE TABLE IF NOT EXISTS `ItemResponse_anyOf` (
   `item_id` TEXT DEFAULT NULL COMMENT 'The catalog retail item id in the merchant namespace',
   `pins` JSON DEFAULT NULL COMMENT 'The pins mapped to the item',
   `attributes` TEXT DEFAULT NULL,
-  `hotel_id` TEXT DEFAULT NULL COMMENT 'The catalog hotel id in the merchant namespace'
+  `hotel_id` TEXT DEFAULT NULL COMMENT 'The catalog hotel id in the merchant namespace',
+  `creative_assets_id` TEXT DEFAULT NULL COMMENT 'The catalog creative assets id in the merchant namespace'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3740,7 +5182,8 @@ CREATE TABLE IF NOT EXISTS `ItemResponse_anyOf_1` (
   `catalog_type` TEXT NOT NULL,
   `item_id` TEXT DEFAULT NULL COMMENT 'The catalog item id in the merchant namespace',
   `errors` JSON DEFAULT NULL COMMENT 'Array with the errors for the item id requested',
-  `hotel_id` TEXT DEFAULT NULL COMMENT 'The catalog hotel id in the merchant namespace'
+  `hotel_id` TEXT DEFAULT NULL COMMENT 'The catalog hotel id in the merchant namespace',
+  `creative_assets_id` TEXT DEFAULT NULL COMMENT 'The catalog creative assets id in the merchant namespace'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3780,11 +5223,11 @@ CREATE TABLE IF NOT EXISTS `ItemValidationEvent` (
 --
 
 CREATE TABLE IF NOT EXISTS `items_batch_post_request` (
-  `catalog_type` TEXT NOT NULL,
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
   `country` TEXT NOT NULL,
   `language` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs items',
-  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog',
+  `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog',
   `operation` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -3802,14 +5245,14 @@ CREATE TABLE IF NOT EXISTS `items_issues_list_200_response` (
 --
 
 CREATE TABLE IF NOT EXISTS `Keyword` (
+  `bid` INT DEFAULT NULL COMMENT '&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.',
+  `match_type` TEXT NOT NULL,
+  `value` TEXT NOT NULL COMMENT 'Keyword value (120 chars max).',
   `archived` TINYINT(1) DEFAULT NULL,
   `id` TEXT DEFAULT NULL COMMENT 'Keyword ID .',
   `parent_id` TEXT DEFAULT NULL COMMENT 'Keyword parent entity ID (advertiser, campaign, ad group).',
   `parent_type` TEXT DEFAULT NULL COMMENT 'Parent entity type',
-  `type` TEXT DEFAULT NULL COMMENT 'Always keyword',
-  `bid` INT DEFAULT NULL COMMENT 'Keyword custom bid in microcurrency - null if inherited from parent ad group.',
-  `match_type` TEXT NOT NULL,
-  `value` TEXT NOT NULL COMMENT 'Keyword value (120 chars max).'
+  `type` TEXT DEFAULT NULL COMMENT 'Always keyword'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3847,7 +5290,7 @@ CREATE TABLE IF NOT EXISTS `KeywordMetricsResponse` (
 CREATE TABLE IF NOT EXISTS `KeywordUpdate` (
   `id` TEXT NOT NULL COMMENT 'Keyword ID.',
   `archived` TINYINT(1) DEFAULT NULL COMMENT 'Is keyword archived?',
-  `bid` INT UNSIGNED DEFAULT NULL COMMENT 'Keyword custom bid in microcurrency - null if inherited from parent ad group.'
+  `bid` INT DEFAULT NULL COMMENT '&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3855,7 +5298,7 @@ CREATE TABLE IF NOT EXISTS `KeywordUpdate` (
 --
 
 CREATE TABLE IF NOT EXISTS `KeywordUpdateBody` (
-  `keywords` JSON NOT NULL COMMENT 'Keywords to update. Object array. Each object has 3 possible fields:&lt;br&gt;1. \&quot;id\&quot;: (required) keyword ID&lt;br&gt;2. \&quot;archived\&quot;: boolean. Should keyword be archived?&lt;br&gt;3. \&quot;bid\&quot;: number&lt;br&gt;For example: [{\&quot;id\&quot;:\&quot;2886610576653\&quot;, \&quot;archived\&quot;: false, \&quot;bid\&quot;: 20000}, {\&quot;id\&quot;:\&quot;2886610576654\&quot;,  \&quot;archived\&quot;: true, \&quot;bid\&quot;: 20000}, ...]'
+  `keywords` JSON NOT NULL COMMENT 'Keywords to update. Object array. Each object has 2 possible fields:&lt;br&gt;1. \&quot;id\&quot;: (required) keyword ID&lt;br&gt;2. \&quot;archived\&quot;: boolean. Should keyword be archived?&lt;br&gt;For example: [{\&quot;id\&quot;:\&quot;2886610576653\&quot;, \&quot;archived\&quot;: false}, {\&quot;id\&quot;:\&quot;2886610576654\&quot;,  \&quot;archived\&quot;: true}, ...]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -3863,7 +5306,7 @@ CREATE TABLE IF NOT EXISTS `KeywordUpdateBody` (
 --
 
 CREATE TABLE IF NOT EXISTS `KeywordsCommon` (
-  `bid` INT DEFAULT NULL COMMENT 'Keyword custom bid in microcurrency - null if inherited from parent ad group.',
+  `bid` INT DEFAULT NULL COMMENT '&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.',
   `match_type` TEXT NOT NULL,
   `value` TEXT NOT NULL COMMENT 'Keyword value (120 chars max).'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -3904,6 +5347,23 @@ CREATE TABLE IF NOT EXISTS `KeywordsResponse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `LeadFormArrayResponse` generated from model 'LeadFormArrayResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormArrayResponse` (
+  `items` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `LeadFormArrayResponse_items_inner` generated from model 'LeadFormArrayResponseUnderscoreitemsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormArrayResponse_items_inner` (
+  `data` TEXT DEFAULT NULL,
+  `exceptions` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `LeadFormCommon` generated from model 'LeadFormCommon'
 -- Creation fields
 --
@@ -3911,12 +5371,37 @@ CREATE TABLE IF NOT EXISTS `KeywordsResponse` (
 CREATE TABLE IF NOT EXISTS `LeadFormCommon` (
   `name` TEXT DEFAULT NULL COMMENT 'Internal name of the lead form.',
   `privacy_policy_link` TEXT DEFAULT NULL COMMENT 'A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.',
-  `has_accepted_terms` TINYINT(1) DEFAULT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.',
+  `has_accepted_terms` TINYINT(1) DEFAULT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO',
   `completion_message` TEXT DEFAULT NULL COMMENT 'A message for people who complete the form to let them know what happens next.',
   `status` TEXT DEFAULT NULL,
   `disclosure_language` TEXT DEFAULT NULL COMMENT 'Additional disclosure language to be included in the lead form.',
-  `questions` JSON DEFAULT NULL COMMENT 'List of questions to be displayed on the lead form.'
+  `questions` JSON DEFAULT NULL COMMENT 'List of questions to be displayed on the lead form.',
+  `policy_links` JSON DEFAULT NULL COMMENT 'List of additional policy links to be displayed on the lead form.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Creation fields';
+
+--
+-- Table structure for table `LeadFormCommon_policy_links_inner` generated from model 'LeadFormCommonUnderscorepolicyUnderscorelinksUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormCommon_policy_links_inner` (
+  `label` TEXT DEFAULT NULL COMMENT 'Policy label for an additional policy link.',
+  `link` TEXT DEFAULT NULL COMMENT 'Policy link for an additional policy link.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `LeadFormCreateRequest` generated from model 'LeadFormCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormCreateRequest` (
+  `name` TEXT NOT NULL COMMENT 'Internal name of the lead form.',
+  `privacy_policy_link` TEXT NOT NULL COMMENT 'A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.',
+  `has_accepted_terms` TINYINT(1) NOT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO',
+  `completion_message` TEXT NOT NULL COMMENT 'A message for people who complete the form to let them know what happens next.',
+  `status` TEXT DEFAULT NULL,
+  `disclosure_language` TEXT DEFAULT NULL COMMENT 'Additional disclosure language to be included in the lead form.',
+  `questions` JSON NOT NULL COMMENT 'List of questions to be displayed on the lead form.',
+  `policy_links` JSON DEFAULT NULL COMMENT 'List of additional policy links to be displayed on the lead form.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `LeadFormQuestion` generated from model 'LeadFormQuestion'
@@ -3936,11 +5421,12 @@ CREATE TABLE IF NOT EXISTS `LeadFormQuestion` (
 CREATE TABLE IF NOT EXISTS `LeadFormResponse` (
   `name` TEXT DEFAULT NULL COMMENT 'Internal name of the lead form.',
   `privacy_policy_link` TEXT DEFAULT NULL COMMENT 'A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.',
-  `has_accepted_terms` TINYINT(1) DEFAULT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.',
+  `has_accepted_terms` TINYINT(1) DEFAULT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO',
   `completion_message` TEXT DEFAULT NULL COMMENT 'A message for people who complete the form to let them know what happens next.',
   `status` TEXT DEFAULT NULL,
   `disclosure_language` TEXT DEFAULT NULL COMMENT 'Additional disclosure language to be included in the lead form.',
   `questions` JSON DEFAULT NULL COMMENT 'List of questions to be displayed on the lead form.',
+  `policy_links` JSON DEFAULT NULL COMMENT 'List of additional policy links to be displayed on the lead form.',
   `id` TEXT DEFAULT NULL COMMENT 'The ID of this lead form',
   `ad_account_id` TEXT DEFAULT NULL COMMENT 'The Ad Account ID that this lead form belongs to.',
   `created_time` INT DEFAULT NULL COMMENT 'Lead form creation time. Unix timestamp in seconds.',
@@ -3966,12 +5452,55 @@ CREATE TABLE IF NOT EXISTS `LeadFormTestResponse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Response for lead data test API.';
 
 --
+-- Table structure for table `LeadFormUpdateRequest` generated from model 'LeadFormUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadFormUpdateRequest` (
+  `name` TEXT DEFAULT NULL COMMENT 'Internal name of the lead form.',
+  `privacy_policy_link` TEXT DEFAULT NULL COMMENT 'A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.',
+  `has_accepted_terms` TINYINT(1) DEFAULT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO',
+  `completion_message` TEXT DEFAULT NULL COMMENT 'A message for people who complete the form to let them know what happens next.',
+  `status` TEXT DEFAULT NULL,
+  `disclosure_language` TEXT DEFAULT NULL COMMENT 'Additional disclosure language to be included in the lead form.',
+  `questions` JSON DEFAULT NULL COMMENT 'List of questions to be displayed on the lead form.',
+  `policy_links` JSON DEFAULT NULL COMMENT 'List of additional policy links to be displayed on the lead form.',
+  `id` TEXT NOT NULL COMMENT 'The ID of this lead form to be updated'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `lead_forms_list_200_response` generated from model 'leadUnderscoreformsUnderscorelistUnderscore200Underscoreresponse'
 --
 
 CREATE TABLE IF NOT EXISTS `lead_forms_list_200_response` (
   `items` JSON NOT NULL,
   `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `LeadsExportCreateRequest` generated from model 'LeadsExportCreateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadsExportCreateRequest` (
+  `start_date` TEXT NOT NULL COMMENT 'Export leads collected on and after start date (UTC). Format: YYYY-MM-DD',
+  `end_date` TEXT NOT NULL COMMENT 'Export leads collected on and before end date (UTC). Format: YYYY-MM-DD',
+  `ad_id` TEXT NOT NULL COMMENT 'ID for the ad collecting leads'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `LeadsExportCreateResponse` generated from model 'LeadsExportCreateResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadsExportCreateResponse` (
+  `leads_export_id` TEXT DEFAULT NULL COMMENT 'ID for the leads export job'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `LeadsExportResponseData` generated from model 'LeadsExportResponseData'
+--
+
+CREATE TABLE IF NOT EXISTS `LeadsExportResponseData` (
+  `export_status` TEXT DEFAULT NULL,
+  `download_url` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4016,6 +5545,14 @@ CREATE TABLE IF NOT EXISTS `MaxPriceFilter` (
 CREATE TABLE IF NOT EXISTS `media_list_200_response` (
   `items` JSON NOT NULL COMMENT 'Media',
   `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `MediaTypeFilter` generated from model 'MediaTypeFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `MediaTypeFilter` (
+  `MEDIA_TYPE` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4067,6 +5604,23 @@ CREATE TABLE IF NOT EXISTS `MediaUploadRequest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Media upload request';
 
 --
+-- Table structure for table `MembersToDeleteBody` generated from model 'MembersToDeleteBody'
+--
+
+CREATE TABLE IF NOT EXISTS `MembersToDeleteBody` (
+  `members` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `MembersToDeleteBody_members_inner` generated from model 'MembersToDeleteBodyUnderscoremembersUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `MembersToDeleteBody_members_inner` (
+  `member_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of the member',
+  `business_role` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `MetricsResponse` generated from model 'MetricsResponse'
 --
 
@@ -4083,12 +5637,38 @@ CREATE TABLE IF NOT EXISTS `MinPriceFilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `multiple_product_groups_inner` generated from model 'multipleUnderscoreproductUnderscoregroupsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `multiple_product_groups_inner` (
+  `name` TEXT NOT NULL,
+  `description` TEXT DEFAULT NULL,
+  `is_featured` TINYINT(1) DEFAULT false COMMENT 'boolean indicator of whether the product group is being featured or not',
+  `filters` TEXT NOT NULL,
+  `feed_id` TEXT NOT NULL COMMENT 'Catalog Feed id pertaining to the catalog product group.',
+  `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
+  `catalog_id` TEXT NOT NULL COMMENT 'Catalog id pertaining to the creative assets product group.',
+  `country` TEXT NOT NULL,
+  `locale` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `OauthAccessTokenRequestClientCredentials` generated from model 'OauthAccessTokenRequestClientCredentials'
+-- A request to receive a client token.
+--
+
+CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestClientCredentials` (
+  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL,
+  `scope` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request to receive a client token.';
+
+--
 -- Table structure for table `OauthAccessTokenRequestCode` generated from model 'OauthAccessTokenRequestCode'
 -- A request to exchange an authorization code for an access token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestCode` (
-  `grant_type` ENUM('authorization_code', 'refresh_token') NOT NULL,
+  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL,
   `code` TEXT NOT NULL,
   `redirect_uri` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request to exchange an authorization code for an access token.';
@@ -4099,7 +5679,7 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestCode` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestRefresh` (
-  `grant_type` ENUM('authorization_code', 'refresh_token') NOT NULL,
+  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL,
   `refresh_token` TEXT NOT NULL,
   `scope` TEXT DEFAULT NULL,
   `refresh_on` TINYINT(1) DEFAULT NULL COMMENT 'Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.'
@@ -4111,7 +5691,7 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestRefresh` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponse` (
-  `response_type` ENUM('authorization_code', 'refresh_token') DEFAULT NULL,
+  `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
@@ -4119,12 +5699,25 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A successful OAuth access token response.';
 
 --
+-- Table structure for table `OauthAccessTokenResponseClientCredentials` generated from model 'OauthAccessTokenResponseClientCredentials'
+-- A successful OAuth client token response for the client token flow.
+--
+
+CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseClientCredentials` (
+  `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
+  `access_token` TEXT NOT NULL,
+  `token_type` TEXT NOT NULL,
+  `expires_in` INT NOT NULL,
+  `scope` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A successful OAuth client token response for the client token flow.';
+
+--
 -- Table structure for table `OauthAccessTokenResponseCode` generated from model 'OauthAccessTokenResponseCode'
 -- A successful OAuth access token response for the authorization code flow.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseCode` (
-  `response_type` ENUM('authorization_code', 'refresh_token') DEFAULT NULL,
+  `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
@@ -4139,7 +5732,7 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseCode` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseEverlastingRefresh` (
-  `response_type` ENUM('authorization_code', 'refresh_token') DEFAULT NULL,
+  `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
@@ -4155,7 +5748,7 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseEverlastingRefresh` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseIntegrationRefresh` (
-  `response_type` ENUM('authorization_code', 'refresh_token') DEFAULT NULL,
+  `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
@@ -4170,7 +5763,7 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseIntegrationRefresh` (
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseRefresh` (
-  `response_type` ENUM('authorization_code', 'refresh_token') DEFAULT NULL,
+  `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
@@ -4196,7 +5789,7 @@ CREATE TABLE IF NOT EXISTS `OptimizationGoalMetadata_conversion_tag_v3_goal_meta
   `conversion_event` ENUM('PAGE_VISIT', 'SIGNUP', 'CHECKOUT', 'CUSTOM', 'VIEW_CATEGORY', 'SEARCH', 'ADD_TO_CART', 'WATCH_VIDEO', 'LEAD', 'APP_INSTALL') DEFAULT NULL,
   `conversion_tag_id` TEXT DEFAULT NULL,
   `cpa_goal_value_in_micro_currency` TEXT DEFAULT NULL,
-  `is_roas_optimized` TINYINT(1) DEFAULT NULL COMMENT 'Ad group is ROAS optimized',
+  `is_roas_optimized` TINYINT(1) DEFAULT NULL COMMENT 'ROAS optimization is not supported',
   `learning_mode_type` ENUM('NOT_ACTIVE', 'ACTIVE', 'null') DEFAULT NULL COMMENT 'Conversion learning model type'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -4347,7 +5940,7 @@ CREATE TABLE IF NOT EXISTS `Pin` (
   `media` TEXT DEFAULT NULL,
   `media_source` TEXT DEFAULT NULL,
   `parent_pin_id` TEXT DEFAULT NULL COMMENT 'The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;.',
-  `is_standard` TINYINT(1) DEFAULT NULL COMMENT 'Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/content/update/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.',
+  `is_standard` TINYINT(1) DEFAULT NULL COMMENT 'Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.',
   `has_been_promoted` TINYINT(1) DEFAULT NULL COMMENT 'Whether the Pin has been promoted or not.',
   `note` TEXT DEFAULT NULL COMMENT 'Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.',
   `pin_metrics` JSON DEFAULT NULL COMMENT 'Pin metrics with associated time intervals if any.'
@@ -4544,6 +6137,17 @@ CREATE TABLE IF NOT EXISTS `PinMediaWithImage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Pin with image.';
 
 --
+-- Table structure for table `PinMediaWithImage_allOf_images` generated from model 'PinMediaWithImageUnderscoreallOfUnderscoreimages'
+--
+
+CREATE TABLE IF NOT EXISTS `PinMediaWithImage_allOf_images` (
+  `150x150` JSON DEFAULT NULL,
+  `400x300` JSON DEFAULT NULL,
+  `600x` JSON DEFAULT NULL,
+  `1200x` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `PinMediaWithImageAndVideo` generated from model 'PinMediaWithImageAndVideo'
 -- Pin with a mix of images and videos.
 --
@@ -4634,7 +6238,7 @@ CREATE TABLE IF NOT EXISTS `pins_save_request` (
 
 --
 -- Table structure for table `PinterestTagEventData` generated from model 'PinterestTagEventData'
--- Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot;, \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
+-- Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
 --
 
 CREATE TABLE IF NOT EXISTS `PinterestTagEventData` (
@@ -4649,7 +6253,16 @@ CREATE TABLE IF NOT EXISTS `PinterestTagEventData` (
   `search_query` TEXT DEFAULT NULL COMMENT 'Search query string. For example, \&quot;boots\&quot;.',
   `value` TEXT DEFAULT NULL COMMENT 'Product value. For example, \&quot;199.98\&quot;',
   `video_title` TEXT DEFAULT NULL COMMENT 'Video title. For example, \&quot;How to style your Parker Boots\&quot;.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot;, \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }';
+
+--
+-- Table structure for table `PlacementMultipliers` generated from model 'PlacementMultipliers'
+-- This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
+--
+
+CREATE TABLE IF NOT EXISTS `PlacementMultipliers` (
+  `PLACEMENT` ENUM('SEARCH', 'BROWSE') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).';
 
 --
 -- Table structure for table `PriceFilter` generated from model 'PriceFilter'
@@ -4687,7 +6300,6 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotion` (
   `tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking template for proudct group promotions. 4000 limit',
   `catalog_product_group_id` TEXT DEFAULT NULL COMMENT 'ID of the catalogs product group that this product group promotion references',
   `catalog_product_group_name` TEXT DEFAULT NULL COMMENT 'Catalogs product group name',
-  `creative_type` TEXT DEFAULT NULL,
   `collections_hero_pin_id` TEXT DEFAULT NULL COMMENT 'Hero Pin ID if this PG is promoted as a Collection',
   `collections_hero_destination_url` TEXT DEFAULT NULL COMMENT 'Collections Hero Destination Url',
   `grid_click_type` TEXT DEFAULT NULL
@@ -4703,11 +6315,61 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `ProductGroupPromotionCreateRequestElement` generated from model 'ProductGroupPromotionCreateRequestElement'
+--
+
+CREATE TABLE IF NOT EXISTS `ProductGroupPromotionCreateRequestElement` (
+  `id` TEXT DEFAULT NULL COMMENT 'ID of the product group promotion.',
+  `ad_group_id` TEXT DEFAULT NULL COMMENT 'ID of the ad group the product group belongs to.',
+  `bid_in_micro_currency` INT DEFAULT NULL COMMENT 'The bid in micro currency.',
+  `included` TINYINT(1) DEFAULT NULL COMMENT 'True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.',
+  `definition` TEXT DEFAULT NULL COMMENT 'The full product group definition path',
+  `relative_definition` TEXT DEFAULT NULL COMMENT 'The definition of the product group, relative to its parent - an attribute name/value pair',
+  `parent_id` TEXT DEFAULT NULL COMMENT 'The parent Product Group ID of this Product Group',
+  `slideshow_collections_title` TEXT DEFAULT NULL COMMENT 'Slideshow Collections Title',
+  `slideshow_collections_description` TEXT DEFAULT NULL COMMENT 'Slideshow Collections Description',
+  `is_mdl` TINYINT(1) DEFAULT NULL COMMENT 'If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog',
+  `status` TEXT DEFAULT NULL,
+  `tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking template for proudct group promotions. 4000 limit',
+  `catalog_product_group_id` TEXT DEFAULT NULL COMMENT 'ID of the catalogs product group that this product group promotion references',
+  `catalog_product_group_name` TEXT DEFAULT NULL COMMENT 'Catalogs product group name',
+  `collections_hero_pin_id` TEXT DEFAULT NULL COMMENT 'Hero Pin ID if this PG is promoted as a Collection',
+  `collections_hero_destination_url` TEXT DEFAULT NULL COMMENT 'Collections Hero Destination Url',
+  `grid_click_type` TEXT DEFAULT NULL,
+  `creative_type` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `ProductGroupPromotionResponse` generated from model 'ProductGroupPromotionResponse'
 --
 
 CREATE TABLE IF NOT EXISTS `ProductGroupPromotionResponse` (
   `items` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `ProductGroupPromotionResponseElement` generated from model 'ProductGroupPromotionResponseElement'
+--
+
+CREATE TABLE IF NOT EXISTS `ProductGroupPromotionResponseElement` (
+  `id` TEXT DEFAULT NULL COMMENT 'ID of the product group promotion.',
+  `ad_group_id` TEXT DEFAULT NULL COMMENT 'ID of the ad group the product group belongs to.',
+  `bid_in_micro_currency` INT DEFAULT NULL COMMENT 'The bid in micro currency.',
+  `included` TINYINT(1) DEFAULT NULL COMMENT 'True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.',
+  `definition` TEXT DEFAULT NULL COMMENT 'The full product group definition path',
+  `relative_definition` TEXT DEFAULT NULL COMMENT 'The definition of the product group, relative to its parent - an attribute name/value pair',
+  `parent_id` TEXT DEFAULT NULL COMMENT 'The parent Product Group ID of this Product Group',
+  `slideshow_collections_title` TEXT DEFAULT NULL COMMENT 'Slideshow Collections Title',
+  `slideshow_collections_description` TEXT DEFAULT NULL COMMENT 'Slideshow Collections Description',
+  `is_mdl` TINYINT(1) DEFAULT NULL COMMENT 'If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog',
+  `status` TEXT DEFAULT NULL,
+  `tracking_url` TEXT DEFAULT NULL COMMENT 'Tracking template for proudct group promotions. 4000 limit',
+  `catalog_product_group_id` TEXT DEFAULT NULL COMMENT 'ID of the catalogs product group that this product group promotion references',
+  `catalog_product_group_name` TEXT DEFAULT NULL COMMENT 'Catalogs product group name',
+  `collections_hero_pin_id` TEXT DEFAULT NULL COMMENT 'Hero Pin ID if this PG is promoted as a Collection',
+  `collections_hero_destination_url` TEXT DEFAULT NULL COMMENT 'Collections Hero Destination Url',
+  `grid_click_type` TEXT DEFAULT NULL,
+  `creative_type` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4735,6 +6397,14 @@ CREATE TABLE IF NOT EXISTS `ProductGroupPromotionUpdateRequest` (
 CREATE TABLE IF NOT EXISTS `product_group_promotions_list_200_response` (
   `items` JSON NOT NULL,
   `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `ProductGroupReferenceFilter` generated from model 'ProductGroupReferenceFilter'
+--
+
+CREATE TABLE IF NOT EXISTS `ProductGroupReferenceFilter` (
+  `PRODUCT_GROUP` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4784,7 +6454,9 @@ CREATE TABLE IF NOT EXISTS `ProductType4Filter` (
 
 CREATE TABLE IF NOT EXISTS `QuizPinData` (
   `questions` JSON DEFAULT NULL,
-  `results` JSON DEFAULT NULL
+  `results` JSON DEFAULT NULL,
+  `tie_breaker_type` ENUM('RANDOM', 'CUSTOM') DEFAULT NULL COMMENT 'Quiz ad tie breaker type, default is RANDOM',
+  `tie_breaker_custom_result` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This field includes all quiz data including questions, options, and results.';
 
 --
@@ -4838,6 +6510,32 @@ CREATE TABLE IF NOT EXISTS `RelatedTerms` (
 CREATE TABLE IF NOT EXISTS `RelatedTerms_related_terms_list_inner` (
   `term` TEXT DEFAULT NULL,
   `related_terms` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `reports_stats_200_response` generated from model 'reportsUnderscorestatsUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `reports_stats_200_response` (
+  `items` JSON NOT NULL,
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `RespondToInvitesResponseArray` generated from model 'RespondToInvitesResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `RespondToInvitesResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `RespondToInvitesResponseArray_items_inner` generated from model 'RespondToInvitesResponseArrayUnderscoreitemsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `RespondToInvitesResponseArray_items_inner` (
+  `exception` TEXT DEFAULT NULL,
+  `invite` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5044,6 +6742,55 @@ CREATE TABLE IF NOT EXISTS `search_user_boards_get_200_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `SharedAudience` generated from model 'SharedAudience'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudience` (
+  `audience_id` TEXT NOT NULL COMMENT 'Unique identifier of an audience',
+  `operation_type` TEXT NOT NULL,
+  `recipient_account_ids` JSON NOT NULL COMMENT 'List of ad account IDs to share with or revoke from.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `SharedAudienceAccount` generated from model 'SharedAudienceAccount'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceAccount` (
+  `account_id` TEXT NOT NULL COMMENT 'Account ID (ad account or business ID).',
+  `account_name` TEXT NOT NULL COMMENT 'Account name.',
+  `account_type` ENUM('AD_ACCOUNT', 'BUSINESS_ACCOUNT') NOT NULL COMMENT 'account type',
+  `shared_on_timestamp` INT NOT NULL COMMENT 'Epoch timestamp in seconds for the shared audience event'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `SharedAudienceCommon` generated from model 'SharedAudienceCommon'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceCommon` (
+  `audience_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of an audience',
+  `operation_type` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `SharedAudienceResponse` generated from model 'SharedAudienceResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceResponse` (
+  `audience_id` TEXT DEFAULT NULL COMMENT 'Audience ID that was shared',
+  `permissions` JSON DEFAULT NULL,
+  `recipient_account_ids` JSON DEFAULT NULL COMMENT 'Account IDs that received the audience'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `SharedAudienceResponseCommon` generated from model 'SharedAudienceResponseCommon'
+--
+
+CREATE TABLE IF NOT EXISTS `SharedAudienceResponseCommon` (
+  `audience_id` TEXT DEFAULT NULL COMMENT 'Audience ID that was shared',
+  `permissions` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `SingleInterestTargetingOptionResponse` generated from model 'SingleInterestTargetingOptionResponse'
 --
 
@@ -5086,31 +6833,23 @@ CREATE TABLE IF NOT EXISTS `SummaryPin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Summarized pin information';
 
 --
--- Table structure for table `SummaryPin_media` generated from model 'SummaryPinUnderscoremedia'
---
-
-CREATE TABLE IF NOT EXISTS `SummaryPin_media` (
-  `media_type` TEXT DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
 -- Table structure for table `TargetingSpec` generated from model 'TargetingSpec'
--- Ad group targeting specification defining the ad group target audience. For example, {\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}
+-- Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingSpec` (
   `AGE_BUCKET` JSON DEFAULT NULL COMMENT 'Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.',
   `APPTYPE` JSON DEFAULT NULL COMMENT 'Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.',
   `AUDIENCE_EXCLUDE` JSON DEFAULT NULL COMMENT 'Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\&quot;2542620905475\&quot;]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.',
-  `AUDIENCE_INCLUDE&#39;` JSON DEFAULT NULL COMMENT 'Targeted customer list IDs. For example: [\&quot;2542620905473\&quot;]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.',
+  `AUDIENCE_INCLUDE` JSON DEFAULT NULL COMMENT 'Targeted customer list IDs. For example: [\&quot;2542620905473\&quot;]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.',
   `GENDER` JSON DEFAULT NULL COMMENT 'Targeted genders. Values: [\&quot;unknown\&quot;,\&quot;male\&quot;,\&quot;female\&quot;]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.',
-  `GEO` JSON DEFAULT NULL COMMENT 'Location region codes, e.g., \&quot;BE-VOV\&quot; (East Flanders, Belgium) For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt; or postal codes, e.g., \&quot;US-94107\&quot;. Use either region codes or postal codes but not both. If the GEO field is missing, the default behavior in terms of ad delivery is that **No geos will be selected**.',
+  `GEO` JSON DEFAULT NULL COMMENT 'Location region codes, e.g., \&quot;BE-VOV\&quot; (East Flanders, Belgium) For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt; or postal codes, e.g., \&quot;US-94107\&quot;. Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).',
   `INTEREST` JSON DEFAULT NULL COMMENT 'Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.',
-  `LOCALE` JSON DEFAULT NULL COMMENT '24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be target, only english non-sublanguage will be targeted**.',
-  `LOCATION` JSON DEFAULT NULL COMMENT '22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, click here. Location-Country and Location-Metro codes apply. If the LOCATION field is missing, the default behavior in terms of ad delivery is that **Selects default country if not specified (US) and all regions within that country**.',
+  `LOCALE` JSON DEFAULT NULL COMMENT '24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.',
+  `LOCATION` JSON DEFAULT NULL COMMENT '22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).',
   `SHOPPING_RETARGETING` JSON DEFAULT NULL COMMENT 'Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting',
   `TARGETING_STRATEGY` JSON DEFAULT NULL COMMENT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Ad group targeting specification defining the ad group target audience. For example, {\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;';
 
 --
 -- Table structure for table `TargetingSpec_SHOPPING_RETARGETING` generated from model 'TargetingSpecUnderscoreSHOPPINGUnderscoreRETARGETING'
@@ -5123,11 +6862,122 @@ CREATE TABLE IF NOT EXISTS `TargetingSpec_SHOPPING_RETARGETING` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `TargetingTemplateAudienceSizing` generated from model 'TargetingTemplateAudienceSizing'
+-- Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateAudienceSizing` (
+  `reach_estimate` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. ';
+
+--
+-- Table structure for table `TargetingTemplateAudienceSizing_reach_estimate` generated from model 'TargetingTemplateAudienceSizingUnderscorereachUnderscoreestimate'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateAudienceSizing_reach_estimate` (
+  `estimate` BIGINT DEFAULT NULL,
+  `lower_bound` BIGINT DEFAULT NULL,
+  `upper_bound` BIGINT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `TargetingTemplateCommon` generated from model 'TargetingTemplateCommon'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateCommon` (
+  `name` TEXT DEFAULT NULL COMMENT 'targeting template name',
+  `auto_targeting_enabled` TINYINT(1) DEFAULT true COMMENT 'Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
+  `targeting_attributes` TEXT DEFAULT NULL,
+  `placement_group` TEXT DEFAULT NULL,
+  `keywords` JSON DEFAULT NULL,
+  `tracking_urls` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `TargetingTemplateCreate` generated from model 'TargetingTemplateCreate'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateCreate` (
+  `name` TEXT NOT NULL COMMENT 'Name of targeting template.',
+  `auto_targeting_enabled` TINYINT(1) DEFAULT true COMMENT 'Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
+  `targeting_attributes` TEXT NOT NULL,
+  `placement_group` TEXT DEFAULT NULL,
+  `keywords` JSON DEFAULT NULL,
+  `tracking_urls` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `TargetingTemplateGetResponseData` generated from model 'TargetingTemplateGetResponseData'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateGetResponseData` (
+  `name` TEXT DEFAULT NULL COMMENT 'targeting template name',
+  `auto_targeting_enabled` TINYINT(1) DEFAULT true COMMENT 'Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
+  `targeting_attributes` TEXT DEFAULT NULL,
+  `placement_group` TEXT DEFAULT NULL,
+  `keywords` JSON DEFAULT NULL,
+  `tracking_urls` TEXT DEFAULT NULL,
+  `id` TEXT DEFAULT NULL COMMENT 'Targeting template ID.',
+  `created_time` INT DEFAULT NULL COMMENT 'Targeting template created time. Unix timestamp in seconds.',
+  `updated_time` INT DEFAULT NULL COMMENT 'Targeting template updated time.Unix timestamp in seconds.',
+  `ad_account_id` TEXT DEFAULT NULL COMMENT 'The ID of the advertiser that this targeting template belongs to.',
+  `status` ENUM('ACTIVE', 'DELETED') DEFAULT 'ACTIVE' COMMENT 'Indicate targeting template is active or Deleted',
+  `sizing` TEXT DEFAULT NULL,
+  `valid` TINYINT(1) DEFAULT NULL COMMENT 'Inform if the targeting template is valid (ex. would be false if has revoked audience)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `TargetingTemplateKeyword` generated from model 'TargetingTemplateKeyword'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateKeyword` (
+  `match_type` TEXT DEFAULT NULL,
+  `value` TEXT DEFAULT NULL COMMENT 'The keyword targeting (120 chars max).'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `targeting_template_list_200_response` generated from model 'targetingUnderscoretemplateUnderscorelistUnderscore200Underscoreresponse'
+--
+
+CREATE TABLE IF NOT EXISTS `targeting_template_list_200_response` (
+  `items` JSON NOT NULL,
+  `bookmark` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `TargetingTemplateResponseData` generated from model 'TargetingTemplateResponseData'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateResponseData` (
+  `name` TEXT DEFAULT NULL COMMENT 'targeting template name',
+  `auto_targeting_enabled` TINYINT(1) DEFAULT true COMMENT 'Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.',
+  `targeting_attributes` TEXT DEFAULT NULL,
+  `placement_group` TEXT DEFAULT NULL,
+  `keywords` JSON DEFAULT NULL,
+  `tracking_urls` TEXT DEFAULT NULL,
+  `id` TEXT DEFAULT NULL COMMENT 'Targeting template ID.',
+  `created_time` INT DEFAULT NULL COMMENT 'Targeting template created time. Unix timestamp in seconds.',
+  `updated_time` INT DEFAULT NULL COMMENT 'Targeting template updated time.Unix timestamp in seconds.',
+  `ad_account_id` TEXT DEFAULT NULL COMMENT 'The ID of the advertiser that this targeting template belongs to.',
+  `status` ENUM('ACTIVE', 'DELETED') DEFAULT 'ACTIVE' COMMENT 'Indicate targeting template is active or Deleted',
+  `sizing` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `TargetingTemplateUpdateRequest` generated from model 'TargetingTemplateUpdateRequest'
+--
+
+CREATE TABLE IF NOT EXISTS `TargetingTemplateUpdateRequest` (
+  `operation_type` ENUM('REMOVE') NOT NULL,
+  `id` TEXT NOT NULL COMMENT 'Targeting template ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `TargetingTypeFilter` generated from model 'TargetingTypeFilter'
 --
 
 CREATE TABLE IF NOT EXISTS `TargetingTypeFilter` (
-  `targeting_types` JSON DEFAULT NULL COMMENT 'List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;.'
+  `targeting_types` JSON DEFAULT NULL COMMENT 'List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5325,8 +7175,8 @@ CREATE TABLE IF NOT EXISTS `TrendingKeywordsResponse_trends_inner_time_series` (
 CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
   `ad_link` TEXT DEFAULT NULL COMMENT 'Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.',
   `adult` TINYINT(1) DEFAULT NULL COMMENT 'Set this attribute to TRUE if you&#39;re submitting items that are considered “adult”. These will not be shown on Pinterest.',
-  `age_group` TEXT DEFAULT NULL COMMENT 'The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.',
-  `availability` TEXT DEFAULT NULL COMMENT 'The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.',
+  `age_group` TEXT DEFAULT NULL COMMENT 'The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.',
+  `availability` TEXT DEFAULT NULL COMMENT 'The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.',
   `average_review_rating` DECIMAL(20, 9) DEFAULT NULL COMMENT 'Average reviews for the item. Can be a number from 1-5.',
   `brand` TEXT DEFAULT NULL COMMENT 'The brand of the product.',
   `checkout_enabled` TINYINT(1) DEFAULT NULL COMMENT 'This attribute is not supported anymore.',
@@ -5340,7 +7190,7 @@ CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
   `description` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 10000 characters&lt;/p&gt; &lt;p&gt;The description of the product.&lt;/p&gt;',
   `free_shipping_label` TINYINT(1) DEFAULT NULL COMMENT 'The item is free to ship.',
   `free_shipping_limit` TEXT DEFAULT NULL COMMENT 'The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.',
-  `gender` TEXT DEFAULT NULL COMMENT 'The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.',
+  `gender` TEXT DEFAULT NULL COMMENT 'The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.',
   `google_product_category` TEXT DEFAULT NULL COMMENT 'The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.',
   `gtin` INT DEFAULT NULL COMMENT 'The unique universal product identifier.',
   `id` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 127 characters&lt;/p&gt; &lt;p&gt;The user-created unique ID that represents the product. Only Unicode characters are accepted.&lt;/p&gt;',
@@ -5362,12 +7212,186 @@ CREATE TABLE IF NOT EXISTS `UpdatableItemAttributes` (
   `shipping_weight` TEXT DEFAULT NULL COMMENT 'The weight of the product. Ensure there is a space between the numeric string and the metric.',
   `shipping_width` TEXT DEFAULT NULL COMMENT 'The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.',
   `size` TEXT DEFAULT NULL COMMENT 'The size of the product.',
-  `size_system` TEXT DEFAULT NULL COMMENT 'Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.',
-  `size_type` TEXT DEFAULT NULL COMMENT 'Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.',
+  `size_system` TEXT DEFAULT NULL COMMENT 'Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.',
+  `size_type` TEXT DEFAULT NULL COMMENT 'Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.',
   `tax` TEXT DEFAULT NULL COMMENT 'Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.',
   `title` TEXT DEFAULT NULL COMMENT '&lt;p&gt;&lt;&#x3D; 500 characters&lt;/p&gt; &lt;p&gt;The name of the product.&lt;/p&gt;',
   `variant_names` JSON DEFAULT NULL COMMENT 'Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.',
   `variant_values` JSON DEFAULT NULL COMMENT 'Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateAssetGroupBody` generated from model 'UpdateAssetGroupBody'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBody` (
+  `asset_groups_to_update` JSON DEFAULT NULL COMMENT 'A list of asset groups and the data that will be used to update them.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateAssetGroupBody_asset_groups_to_update_inner` generated from model 'UpdateAssetGroupBodyUnderscoreassetUnderscoregroupsUnderscoretoUnderscoreupdateUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupBody_asset_groups_to_update_inner` (
+  `asset_group_id` TEXT NOT NULL COMMENT 'Unique identifier of the asset group to update.',
+  `name` TEXT DEFAULT NULL COMMENT 'Asset Group name',
+  `description` TEXT DEFAULT NULL COMMENT 'Asset group description',
+  `asset_group_types` JSON DEFAULT NULL COMMENT 'Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.',
+  `assets_to_add` JSON DEFAULT NULL COMMENT 'A list of asset ids to add to the asset group.',
+  `assets_to_remove` JSON DEFAULT NULL COMMENT 'A list of asset ids to remove from the asset group.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateAssetGroupResponse` generated from model 'UpdateAssetGroupResponse'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponse` (
+  `updated_asset_groups` JSON DEFAULT NULL COMMENT 'A list of successfully edited asset groups.',
+  `exceptions` JSON DEFAULT NULL COMMENT 'A list of errors associated with the asset groups. Will be returned if there is an error.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateAssetGroupResponse_exceptions_inner` generated from model 'UpdateAssetGroupResponseUnderscoreexceptionsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateAssetGroupResponse_exceptions_inner` (
+  `code` INT DEFAULT NULL COMMENT 'Error code associated with the error editing asset group.',
+  `message` TEXT DEFAULT NULL COMMENT 'Error message associated with the error editing asset group.',
+  `asset_group_id` TEXT DEFAULT NULL COMMENT 'Asset group id of the exception.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateInvitesResultsResponseArray` generated from model 'UpdateInvitesResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateInvitesResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateInvitesResultsResponseArray_items_inner` generated from model 'UpdateInvitesResultsResponseArrayUnderscoreitemsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateInvitesResultsResponseArray_items_inner` (
+  `exception` TEXT DEFAULT NULL,
+  `invite` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateMemberAssetAccessBody` generated from model 'UpdateMemberAssetAccessBody'
+-- An object with a list of all the new accesses.
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetAccessBody` (
+  `accesses` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object with a list of all the new accesses.';
+
+--
+-- Table structure for table `UpdateMemberAssetAccessBody_accesses_inner` generated from model 'UpdateMemberAssetAccessBodyUnderscoreaccessesUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetAccessBody_accesses_inner` (
+  `asset_id` VARCHAR(25) NOT NULL COMMENT 'Id of the asset to update.',
+  `member_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of the member on which to perform the update',
+  `permissions` JSON NOT NULL COMMENT 'A non-empty array of permissions to assign to the member.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateMemberAssetsResultsResponseArray` generated from model 'UpdateMemberAssetsResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetsResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateMemberAssetsResultsResponseArray_items_inner` generated from model 'UpdateMemberAssetsResultsResponseArrayUnderscoreitemsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberAssetsResultsResponseArray_items_inner` (
+  `response` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateMemberBusinessRoleBody` generated from model 'UpdateMemberBusinessRoleBody'
+-- Single instance of a business member to have its role updated
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberBusinessRoleBody` (
+  `business_role` TEXT NOT NULL,
+  `member_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of the member'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Single instance of a business member to have its role updated';
+
+--
+-- Table structure for table `UpdateMemberResult` generated from model 'UpdateMemberResult'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberResult` (
+  `business_role` TEXT DEFAULT NULL COMMENT 'The access level a member has to the business. Values are case-sensitive. &lt;br&gt; - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. &lt;br&gt; - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.',
+  `member_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the business member.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdateMemberResultsResponseArray` generated from model 'UpdateMemberResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdateMemberResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of members with updated business access role.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdatePartnerAssetAccessBody` generated from model 'UpdatePartnerAssetAccessBody'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBody` (
+  `accesses` JSON NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdatePartnerAssetAccessBody_accesses_inner` generated from model 'UpdatePartnerAssetAccessBodyUnderscoreaccessesUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetAccessBody_accesses_inner` (
+  `partner_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of a business partner to update asset access to.',
+  `asset_id` VARCHAR(25) NOT NULL COMMENT 'Unique identifier of the business asset.',
+  `permissions` JSON NOT NULL COMMENT 'A non-empty array of permissions to assign to the partner.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdatePartnerAssetsResult` generated from model 'UpdatePartnerAssetsResult'
+-- An object containing the permissions a business partner has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetsResult` (
+  `asset_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a business asset.',
+  `asset_type` TEXT DEFAULT NULL COMMENT 'Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.',
+  `partner_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a business partner.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object containing the permissions a business partner has on the asset.';
+
+--
+-- Table structure for table `UpdatePartnerAssetsResultsResponseArray` generated from model 'UpdatePartnerAssetsResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerAssetsResultsResponseArray` (
+  `items` JSON DEFAULT NULL COMMENT 'List of assigned/updated partner asset access.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdatePartnerResultsResponseArray` generated from model 'UpdatePartnerResultsResponseArray'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerResultsResponseArray` (
+  `items` JSON DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UpdatePartnerResultsResponseArray_items_inner` generated from model 'UpdatePartnerResultsResponseArrayUnderscoreitemsUnderscoreinner'
+--
+
+CREATE TABLE IF NOT EXISTS `UpdatePartnerResultsResponseArray_items_inner` (
+  `exception` TEXT DEFAULT NULL,
+  `member_or_partner_id` VARCHAR(18) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5380,6 +7404,21 @@ CREATE TABLE IF NOT EXISTS `user_account_followed_interests_200_response` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Table structure for table `UserBusinessRoleBinding` generated from model 'UserBusinessRoleBinding'
+--
+
+CREATE TABLE IF NOT EXISTS `UserBusinessRoleBinding` (
+  `assets_summary` TEXT DEFAULT NULL,
+  `business_roles` JSON DEFAULT NULL COMMENT 'The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.',
+  `created_by_business` TEXT DEFAULT NULL COMMENT 'Metadata for the business that created the business relationship.',
+  `created_by_user` TEXT DEFAULT NULL COMMENT 'Metadata for the user that created the business relationship.',
+  `created_time` INT DEFAULT NULL COMMENT 'The time the business relationship was created. Returned in milliseconds.',
+  `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the business member/business partner/employer.',
+  `is_shared_partner` TINYINT(1) DEFAULT NULL COMMENT 'This field is only relevant when business_role&#x3D;\&quot;PARTNER\&quot;. &lt;br&gt;If is_shared_partner&#x3D;FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. &lt;br&gt;If is_shared_partner&#x3D;TRUE, you can access the partner&#39;s business asset. If assets_summary is not empty, the assets listed are the partner&#39;s business assets you have access to.',
+  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the business member/business partner/employer.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Table structure for table `user_following_get_200_response` generated from model 'userUnderscorefollowingUnderscoregetUnderscore200Underscoreresponse'
 --
 
@@ -5387,6 +7426,16 @@ CREATE TABLE IF NOT EXISTS `user_following_get_200_response` (
   `items` JSON NOT NULL COMMENT 'Users',
   `bookmark` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UserSingleAssetBinding` generated from model 'UserSingleAssetBinding'
+-- An object containing the permissions a business member/partner has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `UserSingleAssetBinding` (
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.',
+  `user` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object containing the permissions a business member/partner has on the asset.';
 
 --
 -- Table structure for table `UserSummary` generated from model 'UserSummary'
@@ -5437,6 +7486,17 @@ CREATE TABLE IF NOT EXISTS `user_websites_get_200_response` (
   `items` JSON NOT NULL,
   `bookmark` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `UsersForIndividualAssetResponse` generated from model 'UsersForIndividualAssetResponse'
+-- An object containing the permissions a business member has on the asset.
+--
+
+CREATE TABLE IF NOT EXISTS `UsersForIndividualAssetResponse` (
+  `asset_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of a business asset.',
+  `member_id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the business member with asset access.',
+  `permissions` JSON DEFAULT NULL COMMENT 'Permission levels member or partner has on an asset.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An object containing the permissions a business member has on the asset.';
 
 --
 -- Table structure for table `VideoMetadata` generated from model 'VideoMetadata'

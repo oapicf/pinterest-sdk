@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
 * Values: ACTIVE,INACTIVE
 */
-enum class CatalogsStatus(val value: kotlin.String) {
+enum class CatalogsStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("ACTIVE") ACTIVE("ACTIVE"),
-    @JsonProperty("INACTIVE") INACTIVE("INACTIVE")
+    ACTIVE("ACTIVE"),
+    INACTIVE("INACTIVE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): CatalogsStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

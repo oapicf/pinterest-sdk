@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct ProductGroupPromotionResponseItem: Codable, JSONEncodable, Hashable {
 
-    public var data: ProductGroupPromotion?
+    public var data: ProductGroupPromotionResponseElement?
     public var exceptions: [Exception]?
 
-    public init(data: ProductGroupPromotion? = nil, exceptions: [Exception]? = nil) {
+    public init(data: ProductGroupPromotionResponseElement? = nil, exceptions: [Exception]? = nil) {
         self.data = data
         self.exceptions = exceptions
     }

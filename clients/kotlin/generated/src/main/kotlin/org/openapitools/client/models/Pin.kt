@@ -17,8 +17,8 @@ package org.openapitools.client.models
 
 import org.openapitools.client.models.BoardOwner
 import org.openapitools.client.models.CreativeType
+import org.openapitools.client.models.PinMedia
 import org.openapitools.client.models.PinMediaSource
-import org.openapitools.client.models.SummaryPinMedia
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -41,7 +41,7 @@ import com.squareup.moshi.JsonClass
  * @param media 
  * @param mediaSource 
  * @param parentPinId The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
- * @param isStandard Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+ * @param isStandard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
  * @param hasBeenPromoted Whether the Pin has been promoted or not.
  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
  * @param pinMetrics Pin metrics with associated time intervals if any.
@@ -91,7 +91,7 @@ data class Pin (
     val isOwner: kotlin.Boolean? = null,
 
     @Json(name = "media")
-    val media: SummaryPinMedia? = null,
+    val media: PinMedia? = null,
 
     @Json(name = "media_source")
     val mediaSource: PinMediaSource? = null,
@@ -100,7 +100,7 @@ data class Pin (
     @Json(name = "parent_pin_id")
     val parentPinId: kotlin.String? = null,
 
-    /* Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information. */
+    /* Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. */
     @Json(name = "is_standard")
     val isStandard: kotlin.Boolean? = null,
 
@@ -116,5 +116,8 @@ data class Pin (
     @Json(name = "pin_metrics")
     val pinMetrics: kotlin.Any? = null
 
-)
+) {
+
+
+}
 

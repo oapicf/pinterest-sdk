@@ -5,6 +5,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -96,6 +97,14 @@ public class CatalogsHotelFeedsCreateRequestTest {
     @Test
     public void catalogIdTest() {
         // TODO: test catalogId
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

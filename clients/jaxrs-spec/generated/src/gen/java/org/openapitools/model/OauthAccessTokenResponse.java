@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "response_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = OauthAccessTokenResponseCode.class, name = "authorization_code"),
+  @JsonSubTypes.Type(value = OauthAccessTokenResponseClientCredentials.class, name = "client_credentials"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseEverlastingRefresh.class, name = "everlasting_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseIntegrationRefresh.class, name = "integration_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseRefresh.class, name = "refresh_token"),
@@ -27,11 +28,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A successful OAuth access token response.")
 @JsonTypeName("OauthAccessTokenResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OauthAccessTokenResponse   {
   public enum ResponseTypeEnum {
 
-    AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.valueOf("refresh_token"));
+    AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.valueOf("refresh_token")), CLIENT_CREDENTIALS(String.valueOf("client_credentials"));
 
 
     private String value;
@@ -76,11 +77,11 @@ public class OauthAccessTokenResponse   {
     }
 }
 
-  private @Valid ResponseTypeEnum responseType;
-  private @Valid String accessToken;
-  private @Valid String tokenType = "bearer";
-  private @Valid Integer expiresIn;
-  private @Valid String scope;
+  private ResponseTypeEnum responseType;
+  private String accessToken;
+  private String tokenType = "bearer";
+  private Integer expiresIn;
+  private String scope;
 
   /**
    **/
@@ -111,8 +112,7 @@ public class OauthAccessTokenResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("access_token")
-  @NotNull
-  public String getAccessToken() {
+  @NotNull public String getAccessToken() {
     return accessToken;
   }
 
@@ -131,8 +131,7 @@ public class OauthAccessTokenResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("token_type")
-  @NotNull
-  public String getTokenType() {
+  @NotNull public String getTokenType() {
     return tokenType;
   }
 
@@ -151,8 +150,7 @@ public class OauthAccessTokenResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("expires_in")
-  @NotNull
-  public Integer getExpiresIn() {
+  @NotNull public Integer getExpiresIn() {
     return expiresIn;
   }
 
@@ -171,8 +169,7 @@ public class OauthAccessTokenResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("scope")
-  @NotNull
-  public String getScope() {
+  @NotNull public String getScope() {
     return scope;
   }
 

@@ -27,7 +27,7 @@ import org.openapitools.model.ReportingColumnAsync;
 /**
  * AdsAnalyticsCreateAsyncRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("start_date")
   private String startDate;
@@ -97,6 +97,46 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   @JsonProperty("report_format")
   private DataOutputFormat reportFormat = "JSON";
+
+  /**
+   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+   */
+  public enum PrimarySortEnum {
+    ID("BY_ID"),
+    
+    DATE("BY_DATE");
+
+    private String value;
+
+    PrimarySortEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PrimarySortEnum fromValue(String text) {
+      for (PrimarySortEnum b : PrimarySortEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("primary_sort")
+  private PrimarySortEnum primarySort;
+
+  @JsonProperty("start_hour")
+  private Integer startHour;
+
+  @JsonProperty("end_hour")
+  private Integer endHour;
 
   public AdsAnalyticsCreateAsyncRequest startDate(String startDate) {
     this.startDate = startDate;
@@ -231,7 +271,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addAttributionTypesItem(ConversionReportAttributionType attributionTypesItem) {
     if (this.attributionTypes == null) {
-      this.attributionTypes = ;
+      this.attributionTypes = new ArrayList<>();
     }
     this.attributionTypes.add(attributionTypesItem);
     return this;
@@ -257,7 +297,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addCampaignIdsItem(String campaignIdsItem) {
     if (this.campaignIds == null) {
-      this.campaignIds = ;
+      this.campaignIds = new ArrayList<>();
     }
     this.campaignIds.add(campaignIdsItem);
     return this;
@@ -283,7 +323,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addCampaignStatusesItem(CampaignSummaryStatus campaignStatusesItem) {
     if (this.campaignStatuses == null) {
-      this.campaignStatuses = ;
+      this.campaignStatuses = new ArrayList<>();
     }
     this.campaignStatuses.add(campaignStatusesItem);
     return this;
@@ -309,7 +349,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addCampaignObjectiveTypesItem(ObjectiveType campaignObjectiveTypesItem) {
     if (this.campaignObjectiveTypes == null) {
-      this.campaignObjectiveTypes = ;
+      this.campaignObjectiveTypes = new ArrayList<>();
     }
     this.campaignObjectiveTypes.add(campaignObjectiveTypesItem);
     return this;
@@ -335,7 +375,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addAdGroupIdsItem(String adGroupIdsItem) {
     if (this.adGroupIds == null) {
-      this.adGroupIds = ;
+      this.adGroupIds = new ArrayList<>();
     }
     this.adGroupIds.add(adGroupIdsItem);
     return this;
@@ -361,7 +401,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addAdGroupStatusesItem(AdGroupSummaryStatus adGroupStatusesItem) {
     if (this.adGroupStatuses == null) {
-      this.adGroupStatuses = ;
+      this.adGroupStatuses = new ArrayList<>();
     }
     this.adGroupStatuses.add(adGroupStatusesItem);
     return this;
@@ -387,7 +427,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addAdIdsItem(String adIdsItem) {
     if (this.adIds == null) {
-      this.adIds = ;
+      this.adIds = new ArrayList<>();
     }
     this.adIds.add(adIdsItem);
     return this;
@@ -413,7 +453,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addAdStatusesItem(PinPromotionSummaryStatus adStatusesItem) {
     if (this.adStatuses == null) {
-      this.adStatuses = ;
+      this.adStatuses = new ArrayList<>();
     }
     this.adStatuses.add(adStatusesItem);
     return this;
@@ -439,7 +479,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addProductGroupIdsItem(String productGroupIdsItem) {
     if (this.productGroupIds == null) {
-      this.productGroupIds = ;
+      this.productGroupIds = new ArrayList<>();
     }
     this.productGroupIds.add(productGroupIdsItem);
     return this;
@@ -465,7 +505,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addProductGroupStatusesItem(ProductGroupSummaryStatus productGroupStatusesItem) {
     if (this.productGroupStatuses == null) {
-      this.productGroupStatuses = ;
+      this.productGroupStatuses = new ArrayList<>();
     }
     this.productGroupStatuses.add(productGroupStatusesItem);
     return this;
@@ -491,7 +531,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addProductItemIdsItem(String productItemIdsItem) {
     if (this.productItemIds == null) {
-      this.productItemIds = ;
+      this.productItemIds = new ArrayList<>();
     }
     this.productItemIds.add(productItemIdsItem);
     return this;
@@ -517,17 +557,17 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addTargetingTypesItem(AdsAnalyticsTargetingType targetingTypesItem) {
     if (this.targetingTypes == null) {
-      this.targetingTypes = ;
+      this.targetingTypes = new ArrayList<>();
     }
     this.targetingTypes.add(targetingTypesItem);
     return this;
   }
 
    /**
-   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
    * @return targetingTypes
   **/
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
   public List<AdsAnalyticsTargetingType> getTargetingTypes() {
     return targetingTypes;
   }
@@ -543,7 +583,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public AdsAnalyticsCreateAsyncRequest addMetricsFiltersItem(AdsAnalyticsMetricsFilter metricsFiltersItem) {
     if (this.metricsFilters == null) {
-      this.metricsFilters = ;
+      this.metricsFilters = new ArrayList<>();
     }
     this.metricsFilters.add(metricsFiltersItem);
     return this;
@@ -621,6 +661,64 @@ public class AdsAnalyticsCreateAsyncRequest   {
     this.reportFormat = reportFormat;
   }
 
+  public AdsAnalyticsCreateAsyncRequest primarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+    return this;
+  }
+
+   /**
+   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+   * @return primarySort
+  **/
+  @ApiModelProperty(example = "BY_ID", value = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
+  public PrimarySortEnum getPrimarySort() {
+    return primarySort;
+  }
+
+  public void setPrimarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+  }
+
+  public AdsAnalyticsCreateAsyncRequest startHour(Integer startHour) {
+    this.startHour = startHour;
+    return this;
+  }
+
+   /**
+   * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   * @return startHour
+  **/
+  @ApiModelProperty(value = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
+  public Integer getStartHour() {
+    return startHour;
+  }
+
+  public void setStartHour(Integer startHour) {
+    this.startHour = startHour;
+  }
+
+  public AdsAnalyticsCreateAsyncRequest endHour(Integer endHour) {
+    this.endHour = endHour;
+    return this;
+  }
+
+   /**
+   * Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   * @return endHour
+  **/
+  @ApiModelProperty(value = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
+  public Integer getEndHour() {
+    return endHour;
+  }
+
+  public void setEndHour(Integer endHour) {
+    this.endHour = endHour;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -653,12 +751,15 @@ public class AdsAnalyticsCreateAsyncRequest   {
         Objects.equals(this.metricsFilters, adsAnalyticsCreateAsyncRequest.metricsFilters) &&
         Objects.equals(this.columns, adsAnalyticsCreateAsyncRequest.columns) &&
         Objects.equals(this.level, adsAnalyticsCreateAsyncRequest.level) &&
-        Objects.equals(this.reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat);
+        Objects.equals(this.reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat) &&
+        Objects.equals(this.primarySort, adsAnalyticsCreateAsyncRequest.primarySort) &&
+        Objects.equals(this.startHour, adsAnalyticsCreateAsyncRequest.startHour) &&
+        Objects.equals(this.endHour, adsAnalyticsCreateAsyncRequest.endHour);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat);
+    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat, primarySort, startHour, endHour);
   }
 
   @Override
@@ -689,6 +790,9 @@ public class AdsAnalyticsCreateAsyncRequest   {
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    reportFormat: ").append(toIndentedString(reportFormat)).append("\n");
+    sb.append("    primarySort: ").append(toIndentedString(primarySort)).append("\n");
+    sb.append("    startHour: ").append(toIndentedString(startHour)).append("\n");
+    sb.append("    endHour: ").append(toIndentedString(endHour)).append("\n");
     sb.append("}");
     return sb.toString();
   }

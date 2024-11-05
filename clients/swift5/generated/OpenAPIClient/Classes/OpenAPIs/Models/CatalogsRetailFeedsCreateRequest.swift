@@ -26,8 +26,9 @@ public struct CatalogsRetailFeedsCreateRequest: Codable, JSONEncodable, Hashable
     public var catalogType: CatalogsType
     public var defaultCountry: Country
     public var defaultAvailability: ProductAvailabilityType?
+    public var status: CatalogsStatus?
 
-    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, catalogType: CatalogsType, defaultCountry: Country, defaultAvailability: ProductAvailabilityType? = nil) {
+    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, catalogType: CatalogsType, defaultCountry: Country, defaultAvailability: ProductAvailabilityType? = nil, status: CatalogsStatus? = nil) {
         self.defaultCurrency = defaultCurrency
         self.name = name
         self.format = format
@@ -38,6 +39,7 @@ public struct CatalogsRetailFeedsCreateRequest: Codable, JSONEncodable, Hashable
         self.catalogType = catalogType
         self.defaultCountry = defaultCountry
         self.defaultAvailability = defaultAvailability
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -51,6 +53,7 @@ public struct CatalogsRetailFeedsCreateRequest: Codable, JSONEncodable, Hashable
         case catalogType = "catalog_type"
         case defaultCountry = "default_country"
         case defaultAvailability = "default_availability"
+        case status
     }
 
     // Encodable protocol methods
@@ -67,6 +70,7 @@ public struct CatalogsRetailFeedsCreateRequest: Codable, JSONEncodable, Hashable
         try container.encode(catalogType, forKey: .catalogType)
         try container.encode(defaultCountry, forKey: .defaultCountry)
         try container.encodeIfPresent(defaultAvailability, forKey: .defaultAvailability)
+        try container.encodeIfPresent(status, forKey: .status)
     }
 }
 

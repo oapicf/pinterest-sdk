@@ -33,7 +33,7 @@ data class SSIOAccountAddress(
 
     @Schema(example = "PIN US OU", description = "Legal entity for this insertion order")
     @get:JsonProperty("order_legal_entity") val orderLegalEntity: kotlin.String? = null
-) {
+    ) {
 
 }
 

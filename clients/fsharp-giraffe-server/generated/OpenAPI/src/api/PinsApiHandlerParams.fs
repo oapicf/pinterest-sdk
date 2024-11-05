@@ -14,6 +14,65 @@ open System
 
 module PinsApiHandlerParams =
 
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type MultiPinsAnalyticsQueryParams = {
+      pinIds : string[] ;
+
+
+      startDate : DateTime ;
+
+
+      endDate : DateTime ;
+
+
+      appTypes : string option;
+
+
+      metricTypes : PinsAnalyticsMetricTypesParameterInner[] ;
+
+
+      adAccountId : string option;
+
+    }
+    //#endregion
+
+
+    type MultiPinsAnalyticsStatusCode200Response = {
+      content:IDictionary<string, IDictionary>;
+      
+    }
+
+    type MultiPinsAnalyticsStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type MultiPinsAnalyticsStatusCode401Response = {
+      content:Error;
+      
+    }
+
+    type MultiPinsAnalyticsStatusCode404Response = {
+      content:Error;
+      
+    }
+
+    type MultiPinsAnalyticsStatusCode429Response = {
+      content:Error;
+      
+    }
+
+    type MultiPinsAnalyticsDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type MultiPinsAnalyticsResult = MultiPinsAnalyticsStatusCode200 of MultiPinsAnalyticsStatusCode200Response|MultiPinsAnalyticsStatusCode400 of MultiPinsAnalyticsStatusCode400Response|MultiPinsAnalyticsStatusCode401 of MultiPinsAnalyticsStatusCode401Response|MultiPinsAnalyticsStatusCode404 of MultiPinsAnalyticsStatusCode404Response|MultiPinsAnalyticsStatusCode429 of MultiPinsAnalyticsStatusCode429Response|MultiPinsAnalyticsDefaultStatusCode of MultiPinsAnalyticsDefaultStatusCodeResponse
+
+    type MultiPinsAnalyticsArgs = {
+      queryParams:Result<MultiPinsAnalyticsQueryParams,string>;
+    }
     //#region Path parameters
     [<CLIMutable>]
     type PinsAnalyticsPathParams = {

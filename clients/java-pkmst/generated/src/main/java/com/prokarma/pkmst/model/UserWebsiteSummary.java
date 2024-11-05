@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * UserWebsiteSummary
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserWebsiteSummary   {
   @JsonProperty("website")
   private String website;
@@ -30,10 +30,10 @@ public class UserWebsiteSummary   {
     return this;
   }
 
-   /**
+  /**
    * Website with path or domain only
    * @return website
-  **/
+   */
   @ApiModelProperty(example = "mysite.test", value = "Website with path or domain only")
   public String getWebsite() {
     return website;
@@ -48,10 +48,10 @@ public class UserWebsiteSummary   {
     return this;
   }
 
-   /**
+  /**
    * Status of the verification process
    * @return status
-  **/
+   */
   @ApiModelProperty(example = "success", value = "Status of the verification process")
   public String getStatus() {
     return status;
@@ -66,10 +66,10 @@ public class UserWebsiteSummary   {
     return this;
   }
 
-   /**
+  /**
    * UTC timestamp when the verification happened - sometimes missing
    * @return verifiedAt
-  **/
+   */
   @ApiModelProperty(example = "2022-12-14T21:03:01.602000", value = "UTC timestamp when the verification happened - sometimes missing")
   public String getVerifiedAt() {
     return verifiedAt;

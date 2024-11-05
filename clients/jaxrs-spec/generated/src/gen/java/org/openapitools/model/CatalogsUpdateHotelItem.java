@@ -18,9 +18,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an hotel item batch record")
 @JsonTypeName("CatalogsUpdateHotelItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsUpdateHotelItem   {
-  private @Valid String hotelId;
+  private String hotelId;
   public enum OperationEnum {
 
     UPDATE(String.valueOf("UPDATE"));
@@ -68,8 +68,8 @@ public class CatalogsUpdateHotelItem   {
     }
 }
 
-  private @Valid OperationEnum operation;
-  private @Valid CatalogsUpdatableHotelAttributes attributes;
+  private OperationEnum operation;
+  private CatalogsUpdatableHotelAttributes attributes;
 
   /**
    * The catalog hotel item id in the merchant namespace
@@ -82,8 +82,7 @@ public class CatalogsUpdateHotelItem   {
   
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel item id in the merchant namespace")
   @JsonProperty("hotel_id")
-  @NotNull
-  public String getHotelId() {
+  @NotNull public String getHotelId() {
     return hotelId;
   }
 
@@ -102,8 +101,7 @@ public class CatalogsUpdateHotelItem   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation")
-  @NotNull
-  public OperationEnum getOperation() {
+  @NotNull public OperationEnum getOperation() {
     return operation;
   }
 
@@ -122,8 +120,7 @@ public class CatalogsUpdateHotelItem   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
-  @NotNull
-  public CatalogsUpdatableHotelAttributes getAttributes() {
+  @NotNull @Valid public CatalogsUpdatableHotelAttributes getAttributes() {
     return attributes;
   }
 

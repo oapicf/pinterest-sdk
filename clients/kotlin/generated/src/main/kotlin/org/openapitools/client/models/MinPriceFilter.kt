@@ -32,5 +32,8 @@ data class MinPriceFilter (
     @Json(name = "MIN_PRICE")
     val MIN_PRICE: CatalogsProductGroupPricingCriteria
 
-)
+) {
+
+
+}
 

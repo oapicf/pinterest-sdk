@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * CustomerList
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomerList {
 
   private String adAccountId;
@@ -92,7 +92,7 @@ public class CustomerList {
   /**
    * Associated ad account ID.
    * @return adAccountId
-  */
+   */
   
   @Schema(name = "ad_account_id", example = "549756359984", description = "Associated ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -112,7 +112,7 @@ public class CustomerList {
   /**
    * Creation time. Unix timestamp in seconds.
    * @return createdTime
-  */
+   */
   @Valid 
   @Schema(name = "created_time", example = "1452208622", description = "Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
@@ -132,7 +132,7 @@ public class CustomerList {
   /**
    * Customer list ID.
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "643", description = "Customer list ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -152,7 +152,7 @@ public class CustomerList {
   /**
    * Customer list name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "The Glengarry Glen Ross leads", description = "Customer list name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -172,7 +172,7 @@ public class CustomerList {
   /**
    * Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
    * @return numBatches
-  */
+   */
   @Valid 
   @Schema(name = "num_batches", example = "2", description = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_batches")
@@ -192,7 +192,7 @@ public class CustomerList {
   /**
    * Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
    * @return numRemovedUserRecords
-  */
+   */
   @Valid 
   @Schema(name = "num_removed_user_records", example = "0", description = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_removed_user_records")
@@ -212,7 +212,7 @@ public class CustomerList {
   /**
    * Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
    * @return numUploadedUserRecords
-  */
+   */
   @Valid 
   @Schema(name = "num_uploaded_user_records", example = "11", description = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_uploaded_user_records")
@@ -232,7 +232,7 @@ public class CustomerList {
   /**
    * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
    * @return status
-  */
+   */
   
   @Schema(name = "status", example = "PROCESSING", description = "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -252,7 +252,7 @@ public class CustomerList {
   /**
    * Always \"customerlist\".
    * @return type
-  */
+   */
   
   @Schema(name = "type", example = "customerlist", description = "Always \"customerlist\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -272,7 +272,7 @@ public class CustomerList {
   /**
    * Last update time. Unix timestamp in seconds.
    * @return updatedTime
-  */
+   */
   @Valid 
   @Schema(name = "updated_time", example = "1461269616", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
@@ -292,7 +292,7 @@ public class CustomerList {
   /**
    * Customer list errors
    * @return exceptions
-  */
+   */
   
   @Schema(name = "exceptions", description = "Customer list errors", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")

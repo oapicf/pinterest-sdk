@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -18,4 +18,5 @@ package openapitools;
 enum CatalogsType {
   CatalogsType_RETAIL = 0;
   CatalogsType_HOTEL = 1;
+  CatalogsType_CREATIVE_ASSETS = 2;
 }

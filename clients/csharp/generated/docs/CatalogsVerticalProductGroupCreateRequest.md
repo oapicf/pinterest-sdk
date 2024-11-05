@@ -1,5 +1,5 @@
 # Org.OpenAPITools.Model.CatalogsVerticalProductGroupCreateRequest
-Request object for creating a hotel product group.
+Request object for creating a catalog based product group.
 
 ## Properties
 
@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **CatalogType** | **string** |  | 
 **Name** | **string** |  | 
 **Description** | **string** |  | [optional] 
-**Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**Country** | **Country** |  | 
+**Locale** | **CatalogsLocale** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

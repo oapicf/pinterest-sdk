@@ -15,19 +15,19 @@
 
 typedef struct item_create_batch_record_t item_create_batch_record_t;
 
-#include "item_attributes.h"
+#include "item_attributes_request.h"
 
 
 
 typedef struct item_create_batch_record_t {
     char *item_id; // string
-    struct item_attributes_t *attributes; //model
+    struct item_attributes_request_t *attributes; //model
 
 } item_create_batch_record_t;
 
 item_create_batch_record_t *item_create_batch_record_create(
     char *item_id,
-    item_attributes_t *attributes
+    item_attributes_request_t *attributes
 );
 
 void item_create_batch_record_free(item_create_batch_record_t *item_create_batch_record);

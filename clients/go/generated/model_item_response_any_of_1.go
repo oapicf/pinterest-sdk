@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,13 +13,22 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // ItemResponseAnyOf1 - struct for ItemResponseAnyOf1
 type ItemResponseAnyOf1 struct {
+	CatalogsCreativeAssetsItemErrorResponse *CatalogsCreativeAssetsItemErrorResponse
 	CatalogsHotelItemErrorResponse *CatalogsHotelItemErrorResponse
 	CatalogsRetailItemErrorResponse *CatalogsRetailItemErrorResponse
+}
+
+// CatalogsCreativeAssetsItemErrorResponseAsItemResponseAnyOf1 is a convenience function that returns CatalogsCreativeAssetsItemErrorResponse wrapped in ItemResponseAnyOf1
+func CatalogsCreativeAssetsItemErrorResponseAsItemResponseAnyOf1(v *CatalogsCreativeAssetsItemErrorResponse) ItemResponseAnyOf1 {
+	return ItemResponseAnyOf1{
+		CatalogsCreativeAssetsItemErrorResponse: v,
+	}
 }
 
 // CatalogsHotelItemErrorResponseAsItemResponseAnyOf1 is a convenience function that returns CatalogsHotelItemErrorResponse wrapped in ItemResponseAnyOf1
@@ -41,6 +50,23 @@ func CatalogsRetailItemErrorResponseAsItemResponseAnyOf1(v *CatalogsRetailItemEr
 func (dst *ItemResponseAnyOf1) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsItemErrorResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsItemErrorResponse)
+	if err == nil {
+		jsonCatalogsCreativeAssetsItemErrorResponse, _ := json.Marshal(dst.CatalogsCreativeAssetsItemErrorResponse)
+		if string(jsonCatalogsCreativeAssetsItemErrorResponse) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsItemErrorResponse = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsItemErrorResponse); err != nil {
+				dst.CatalogsCreativeAssetsItemErrorResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsCreativeAssetsItemErrorResponse = nil
+	}
+
 	// try to unmarshal data into CatalogsHotelItemErrorResponse
 	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelItemErrorResponse)
 	if err == nil {
@@ -48,7 +74,11 @@ func (dst *ItemResponseAnyOf1) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsHotelItemErrorResponse) == "{}" { // empty struct
 			dst.CatalogsHotelItemErrorResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsHotelItemErrorResponse); err != nil {
+				dst.CatalogsHotelItemErrorResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsHotelItemErrorResponse = nil
@@ -61,7 +91,11 @@ func (dst *ItemResponseAnyOf1) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsRetailItemErrorResponse) == "{}" { // empty struct
 			dst.CatalogsRetailItemErrorResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsRetailItemErrorResponse); err != nil {
+				dst.CatalogsRetailItemErrorResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsRetailItemErrorResponse = nil
@@ -69,6 +103,7 @@ func (dst *ItemResponseAnyOf1) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.CatalogsCreativeAssetsItemErrorResponse = nil
 		dst.CatalogsHotelItemErrorResponse = nil
 		dst.CatalogsRetailItemErrorResponse = nil
 
@@ -82,6 +117,10 @@ func (dst *ItemResponseAnyOf1) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ItemResponseAnyOf1) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsItemErrorResponse != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsItemErrorResponse)
+	}
+
 	if src.CatalogsHotelItemErrorResponse != nil {
 		return json.Marshal(&src.CatalogsHotelItemErrorResponse)
 	}
@@ -98,6 +137,10 @@ func (obj *ItemResponseAnyOf1) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.CatalogsCreativeAssetsItemErrorResponse != nil {
+		return obj.CatalogsCreativeAssetsItemErrorResponse
+	}
+
 	if obj.CatalogsHotelItemErrorResponse != nil {
 		return obj.CatalogsHotelItemErrorResponse
 	}

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &PinCreate{}
 
 // PinCreate Pin
 type PinCreate struct {
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	Link NullableString `json:"link,omitempty"`
 	Title NullableString `json:"title,omitempty"`
@@ -30,14 +30,14 @@ type PinCreate struct {
 	DominantColor NullableString `json:"dominant_color,omitempty"`
 	AltText NullableString `json:"alt_text,omitempty"`
 	// The board to which this Pin belongs.
-	BoardId *string `json:"board_id,omitempty"`
+	BoardId *string `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// The board section to which this Pin belongs.
-	BoardSectionId NullableString `json:"board_section_id,omitempty"`
+	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
 	BoardOwner *BoardOwner `json:"board_owner,omitempty"`
-	Media *SummaryPinMedia `json:"media,omitempty"`
+	Media *PinMedia `json:"media,omitempty"`
 	MediaSource *PinMediaSource `json:"media_source,omitempty"`
 	// The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-	ParentPinId NullableString `json:"parent_pin_id,omitempty"`
+	ParentPinId NullableString `json:"parent_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
 	Note NullableString `json:"note,omitempty"`
 }
@@ -440,9 +440,9 @@ func (o *PinCreate) SetBoardOwner(v BoardOwner) {
 }
 
 // GetMedia returns the Media field value if set, zero value otherwise.
-func (o *PinCreate) GetMedia() SummaryPinMedia {
+func (o *PinCreate) GetMedia() PinMedia {
 	if o == nil || IsNil(o.Media) {
-		var ret SummaryPinMedia
+		var ret PinMedia
 		return ret
 	}
 	return *o.Media
@@ -450,7 +450,7 @@ func (o *PinCreate) GetMedia() SummaryPinMedia {
 
 // GetMediaOk returns a tuple with the Media field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PinCreate) GetMediaOk() (*SummaryPinMedia, bool) {
+func (o *PinCreate) GetMediaOk() (*PinMedia, bool) {
 	if o == nil || IsNil(o.Media) {
 		return nil, false
 	}
@@ -466,8 +466,8 @@ func (o *PinCreate) HasMedia() bool {
 	return false
 }
 
-// SetMedia gets a reference to the given SummaryPinMedia and assigns it to the Media field.
-func (o *PinCreate) SetMedia(v SummaryPinMedia) {
+// SetMedia gets a reference to the given PinMedia and assigns it to the Media field.
+func (o *PinCreate) SetMedia(v PinMedia) {
 	o.Media = &v
 }
 

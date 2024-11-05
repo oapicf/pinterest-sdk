@@ -35,7 +35,7 @@ public class SSIOAccountItem   {
 
   private String ioType;
 
-  private List<@Valid SSIOAccountAddress> addresses;
+  private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
 
   /**
    * Salesforce id for billto_info

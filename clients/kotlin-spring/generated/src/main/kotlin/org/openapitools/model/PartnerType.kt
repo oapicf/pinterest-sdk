@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: INTERNAL,EXTERNAL
 */
-enum class PartnerType(val value: kotlin.String) {
+enum class PartnerType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("INTERNAL") INTERNAL("INTERNAL"),
-    @JsonProperty("EXTERNAL") EXTERNAL("EXTERNAL")
+    INTERNAL("INTERNAL"),
+    EXTERNAL("EXTERNAL");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): PartnerType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

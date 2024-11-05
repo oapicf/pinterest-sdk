@@ -5,23 +5,25 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **string** |  | 
-**Id** | **string** | ID of the catalog product group. | 
-**Name** | Pointer to **string** | Name of catalog product group | [optional] 
+**Id** | **string** | ID of the creative assets product group. | 
+**Name** | Pointer to **string** | Name of creative assets product group | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  | 
-**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
-**UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**CatalogId** | **string** |  | 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
 **IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Type** | Pointer to [**CatalogsProductGroupType**](CatalogsProductGroupType.md) |  | [optional] 
 **Status** | Pointer to [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
-**FeedId** | **NullableString** |  | 
+**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
+**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**FeedId** | **NullableString** | id of the catalogs feed belonging to this catalog product group | 
+**Country** | Pointer to **NullableString** |  | [optional] 
+**Locale** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewCatalogsVerticalProductGroup
 
-`func NewCatalogsVerticalProductGroup(catalogType string, id string, filters CatalogsProductGroupFilters, catalogId string, feedId NullableString, ) *CatalogsVerticalProductGroup`
+`func NewCatalogsVerticalProductGroup(catalogType string, id string, filters CatalogsCreativeAssetsProductGroupFilters, catalogId string, feedId NullableString, ) *CatalogsVerticalProductGroup`
 
 NewCatalogsVerticalProductGroup instantiates a new CatalogsVerticalProductGroup object
 This constructor will assign default values to properties that have it defined,
@@ -138,92 +140,22 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetFilters
 
-`func (o *CatalogsVerticalProductGroup) GetFilters() CatalogsProductGroupFilters`
+`func (o *CatalogsVerticalProductGroup) GetFilters() CatalogsCreativeAssetsProductGroupFilters`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *CatalogsVerticalProductGroup) GetFiltersOk() (*CatalogsProductGroupFilters, bool)`
+`func (o *CatalogsVerticalProductGroup) GetFiltersOk() (*CatalogsCreativeAssetsProductGroupFilters, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *CatalogsVerticalProductGroup) SetFilters(v CatalogsProductGroupFilters)`
+`func (o *CatalogsVerticalProductGroup) SetFilters(v CatalogsCreativeAssetsProductGroupFilters)`
 
 SetFilters sets Filters field to given value.
-
-
-### GetCreatedAt
-
-`func (o *CatalogsVerticalProductGroup) GetCreatedAt() int32`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *CatalogsVerticalProductGroup) GetCreatedAtOk() (*int32, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *CatalogsVerticalProductGroup) SetCreatedAt(v int32)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-### HasCreatedAt
-
-`func (o *CatalogsVerticalProductGroup) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
-
-### GetUpdatedAt
-
-`func (o *CatalogsVerticalProductGroup) GetUpdatedAt() int32`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *CatalogsVerticalProductGroup) GetUpdatedAtOk() (*int32, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *CatalogsVerticalProductGroup) SetUpdatedAt(v int32)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
-
-### HasUpdatedAt
-
-`func (o *CatalogsVerticalProductGroup) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
-
-### GetCatalogId
-
-`func (o *CatalogsVerticalProductGroup) GetCatalogId() string`
-
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
-
-### GetCatalogIdOk
-
-`func (o *CatalogsVerticalProductGroup) GetCatalogIdOk() (*string, bool)`
-
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogId
-
-`func (o *CatalogsVerticalProductGroup) SetCatalogId(v string)`
-
-SetCatalogId sets CatalogId field to given value.
 
 
 ### GetIsFeatured
@@ -301,6 +233,76 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### GetCreatedAt
+
+`func (o *CatalogsVerticalProductGroup) GetCreatedAt() int32`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *CatalogsVerticalProductGroup) GetCreatedAtOk() (*int32, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *CatalogsVerticalProductGroup) SetCreatedAt(v int32)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *CatalogsVerticalProductGroup) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *CatalogsVerticalProductGroup) GetUpdatedAt() int32`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *CatalogsVerticalProductGroup) GetUpdatedAtOk() (*int32, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *CatalogsVerticalProductGroup) SetUpdatedAt(v int32)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *CatalogsVerticalProductGroup) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
+
+### GetCatalogId
+
+`func (o *CatalogsVerticalProductGroup) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsVerticalProductGroup) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsVerticalProductGroup) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
+
 ### GetFeedId
 
 `func (o *CatalogsVerticalProductGroup) GetFeedId() string`
@@ -331,6 +333,76 @@ SetFeedId sets FeedId field to given value.
 `func (o *CatalogsVerticalProductGroup) UnsetFeedId()`
 
 UnsetFeedId ensures that no value is present for FeedId, not even an explicit nil
+### GetCountry
+
+`func (o *CatalogsVerticalProductGroup) GetCountry() string`
+
+GetCountry returns the Country field if non-nil, zero value otherwise.
+
+### GetCountryOk
+
+`func (o *CatalogsVerticalProductGroup) GetCountryOk() (*string, bool)`
+
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountry
+
+`func (o *CatalogsVerticalProductGroup) SetCountry(v string)`
+
+SetCountry sets Country field to given value.
+
+### HasCountry
+
+`func (o *CatalogsVerticalProductGroup) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
+
+### SetCountryNil
+
+`func (o *CatalogsVerticalProductGroup) SetCountryNil(b bool)`
+
+ SetCountryNil sets the value for Country to be an explicit nil
+
+### UnsetCountry
+`func (o *CatalogsVerticalProductGroup) UnsetCountry()`
+
+UnsetCountry ensures that no value is present for Country, not even an explicit nil
+### GetLocale
+
+`func (o *CatalogsVerticalProductGroup) GetLocale() string`
+
+GetLocale returns the Locale field if non-nil, zero value otherwise.
+
+### GetLocaleOk
+
+`func (o *CatalogsVerticalProductGroup) GetLocaleOk() (*string, bool)`
+
+GetLocaleOk returns a tuple with the Locale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocale
+
+`func (o *CatalogsVerticalProductGroup) SetLocale(v string)`
+
+SetLocale sets Locale field to given value.
+
+### HasLocale
+
+`func (o *CatalogsVerticalProductGroup) HasLocale() bool`
+
+HasLocale returns a boolean if a field has been set.
+
+### SetLocaleNil
+
+`func (o *CatalogsVerticalProductGroup) SetLocaleNil(b bool)`
+
+ SetLocaleNil sets the value for Locale to be an explicit nil
+
+### UnsetLocale
+`func (o *CatalogsVerticalProductGroup) UnsetLocale()`
+
+UnsetLocale ensures that no value is present for Locale, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -104,11 +104,35 @@ public class CatalogsRetailProductGroupTest {
     }
 
     /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'feedId'
      */
     @Test
     public void feedIdTest() {
         // TODO: test feedId
+    }
+
+    /**
+     * Test the property 'country'
+     */
+    @Test
+    public void countryTest() {
+        // TODO: test country
+    }
+
+    /**
+     * Test the property 'locale'
+     */
+    @Test
+    public void localeTest() {
+        // TODO: test locale
     }
 
 }

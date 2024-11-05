@@ -64,6 +64,11 @@ void main() {
       // TODO
     });
 
+    // CatalogsStatus status
+    test('to test the property `status`', () async {
+      // TODO
+    });
+
 
   });
 

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -53,7 +53,7 @@ public class AdCommon   {
 
   private EntityStatus status;
 
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   private String viewTrackingUrl;
 
@@ -64,7 +64,7 @@ public class AdCommon   {
 
 public enum CustomizableCtaTypeEnum {
 
-    @JsonProperty("GET_OFFER") GET_OFFER(String.valueOf("GET_OFFER")), @JsonProperty("LEARN_MORE") LEARN_MORE(String.valueOf("LEARN_MORE")), @JsonProperty("ORDER_NOW") ORDER_NOW(String.valueOf("ORDER_NOW")), @JsonProperty("SHOP_NOW") SHOP_NOW(String.valueOf("SHOP_NOW")), @JsonProperty("SIGN_UP") SIGN_UP(String.valueOf("SIGN_UP")), @JsonProperty("SUBSCRIBE") SUBSCRIBE(String.valueOf("SUBSCRIBE")), @JsonProperty("BUY_NOW") BUY_NOW(String.valueOf("BUY_NOW")), @JsonProperty("CONTACT_US") CONTACT_US(String.valueOf("CONTACT_US")), @JsonProperty("GET_QUOTE") GET_QUOTE(String.valueOf("GET_QUOTE")), @JsonProperty("VISIT_WEBSITE") VISIT_WEBSITE(String.valueOf("VISIT_WEBSITE")), @JsonProperty("APPLY_NOW") APPLY_NOW(String.valueOf("APPLY_NOW")), @JsonProperty("BOOK_NOW") BOOK_NOW(String.valueOf("BOOK_NOW")), @JsonProperty("REQUEST_DEMO") REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), @JsonProperty("REGISTER_NOW") REGISTER_NOW(String.valueOf("REGISTER_NOW")), @JsonProperty("FIND_A_DEALER") FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), @JsonProperty("ADD_TO_CART") ADD_TO_CART(String.valueOf("ADD_TO_CART")), @JsonProperty("WATCH_NOW") WATCH_NOW(String.valueOf("WATCH_NOW")), @JsonProperty("READ_MORE") READ_MORE(String.valueOf("READ_MORE")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("GET_OFFER") GET_OFFER(String.valueOf("GET_OFFER")), @JsonProperty("LEARN_MORE") LEARN_MORE(String.valueOf("LEARN_MORE")), @JsonProperty("ORDER_NOW") ORDER_NOW(String.valueOf("ORDER_NOW")), @JsonProperty("SHOP_NOW") SHOP_NOW(String.valueOf("SHOP_NOW")), @JsonProperty("SIGN_UP") SIGN_UP(String.valueOf("SIGN_UP")), @JsonProperty("SUBSCRIBE") SUBSCRIBE(String.valueOf("SUBSCRIBE")), @JsonProperty("BUY_NOW") BUY_NOW(String.valueOf("BUY_NOW")), @JsonProperty("CONTACT_US") CONTACT_US(String.valueOf("CONTACT_US")), @JsonProperty("GET_QUOTE") GET_QUOTE(String.valueOf("GET_QUOTE")), @JsonProperty("VISIT_SITE") VISIT_SITE(String.valueOf("VISIT_SITE")), @JsonProperty("APPLY_NOW") APPLY_NOW(String.valueOf("APPLY_NOW")), @JsonProperty("BOOK_NOW") BOOK_NOW(String.valueOf("BOOK_NOW")), @JsonProperty("REQUEST_DEMO") REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), @JsonProperty("REGISTER_NOW") REGISTER_NOW(String.valueOf("REGISTER_NOW")), @JsonProperty("FIND_A_DEALER") FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), @JsonProperty("ADD_TO_CART") ADD_TO_CART(String.valueOf("ADD_TO_CART")), @JsonProperty("WATCH_NOW") WATCH_NOW(String.valueOf("WATCH_NOW")), @JsonProperty("READ_MORE") READ_MORE(String.valueOf("READ_MORE"));
 
 
     private String value;
@@ -94,7 +94,7 @@ public enum CustomizableCtaTypeEnum {
 
   private CustomizableCtaTypeEnum customizableCtaType;
 
-  private AdCommonQuizPinData quizPinData;
+  private QuizPinData quizPinData;
 
   /**
    * ID of the ad group that contains the ad.
@@ -116,7 +116,7 @@ public enum CustomizableCtaTypeEnum {
 
 
   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    **/
   public AdCommon androidDeepLink(String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
@@ -124,7 +124,7 @@ public enum CustomizableCtaTypeEnum {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
   @JsonProperty("android_deep_link")
   public String getAndroidDeepLink() {
     return androidDeepLink;
@@ -272,7 +272,7 @@ public enum CustomizableCtaTypeEnum {
 
 
   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    **/
   public AdCommon iosDeepLink(String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
@@ -280,7 +280,7 @@ public enum CustomizableCtaTypeEnum {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
   @JsonProperty("ios_deep_link")
   public String getIosDeepLink() {
     return iosDeepLink;
@@ -367,7 +367,7 @@ public enum CustomizableCtaTypeEnum {
 
   /**
    **/
-  public AdCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -375,10 +375,10 @@ public enum CustomizableCtaTypeEnum {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -440,7 +440,7 @@ public enum CustomizableCtaTypeEnum {
 
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    **/
   public AdCommon customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
@@ -448,7 +448,7 @@ public enum CustomizableCtaTypeEnum {
   }
 
   
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
   @JsonProperty("customizable_cta_type")
   public CustomizableCtaTypeEnum getCustomizableCtaType() {
     return customizableCtaType;
@@ -459,19 +459,20 @@ public enum CustomizableCtaTypeEnum {
 
 
   /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    **/
-  public AdCommon quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdCommon quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 

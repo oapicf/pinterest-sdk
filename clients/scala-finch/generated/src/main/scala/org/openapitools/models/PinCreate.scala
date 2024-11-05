@@ -7,8 +7,8 @@ import io.circe.java8.time._
 import org.openapitools._
 import java.time.ZonedDateTime
 import org.openapitools.models.BoardOwner
+import org.openapitools.models.PinMedia
 import org.openapitools.models.PinMediaSource
-import org.openapitools.models.SummaryPinMedia
 
 /**
  * Pin
@@ -37,7 +37,7 @@ case class PinCreate(id: Option[String],
                 boardUnderscoreid: Option[String],
                 boardUnderscoresectionUnderscoreid: Option[String],
                 boardUnderscoreowner: Option[BoardOwner],
-                media: Option[SummaryPinMedia],
+                media: Option[PinMedia],
                 mediaUnderscoresource: Option[PinMediaSource],
                 parentUnderscorepinUnderscoreid: Option[String],
                 note: Option[String]

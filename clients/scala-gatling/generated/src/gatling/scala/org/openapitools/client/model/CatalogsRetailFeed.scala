@@ -4,9 +4,9 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class CatalogsRetailFeed (
-    _createdAt: Option[OffsetDateTime],
-    _id: Option[String],
-    _updatedAt: Option[OffsetDateTime],
+    _createdAt: OffsetDateTime,
+    _id: String,
+    _updatedAt: OffsetDateTime,
     /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     _name: String,
     _format: CatalogsFormat,

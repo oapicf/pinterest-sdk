@@ -42,5 +42,8 @@ data class AudienceDefinition (
     @Json(name = "scope")
     val scope: kotlin.String? = null
 
-)
+) {
+
+
+}
 

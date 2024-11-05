@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CatalogsLocale;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupUpdateRequest;
 import org.openapitools.vertxweb.server.model.CatalogsVerticalProductGroupUpdateRequest;
+import org.openapitools.vertxweb.server.model.Country;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupsUpdateRequest   {

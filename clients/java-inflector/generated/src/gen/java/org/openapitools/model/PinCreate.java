@@ -8,8 +8,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 
 
 
@@ -18,7 +18,7 @@ import org.openapitools.model.SummaryPinMedia;
  **/
 
 @ApiModel(description = "Pin")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinCreate   {
   @JsonProperty("id")
   private String id;
@@ -51,7 +51,7 @@ public class PinCreate   {
   private BoardOwner boardOwner;
 
   @JsonProperty("media")
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @JsonProperty("media_source")
   private PinMediaSource mediaSource;
@@ -237,7 +237,7 @@ public class PinCreate   {
 
   /**
    **/
-  public PinCreate media(SummaryPinMedia media) {
+  public PinCreate media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -245,10 +245,10 @@ public class PinCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 

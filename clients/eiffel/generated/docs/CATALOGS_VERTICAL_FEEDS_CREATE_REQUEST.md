@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **catalog_type** | [**CATALOGS_TYPE**](CatalogsType.md) |  | [default to null]
 **default_country** | [**COUNTRY**](Country.md) |  | [default to null]
 **default_availability** | [**PRODUCT_AVAILABILITY_TYPE**](ProductAvailabilityType.md) |  | [optional] [default to null]
-**catalog_id** | [**STRING_32**](STRING_32.md) | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] [default to null]
+**status** | [**CATALOGS_STATUS**](CatalogsStatus.md) |  | [optional] [default to null]
+**catalog_id** | [**STRING_32**](STRING_32.md) | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

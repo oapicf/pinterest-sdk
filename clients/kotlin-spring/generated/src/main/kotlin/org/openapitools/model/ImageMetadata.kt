@@ -39,7 +39,7 @@ data class ImageMetadata(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("images") val images: ImageMetadataImages? = null
-) {
+    ) {
 
 }
 

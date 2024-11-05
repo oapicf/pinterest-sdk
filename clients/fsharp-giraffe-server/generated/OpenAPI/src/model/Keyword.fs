@@ -11,13 +11,13 @@ module Keyword =
 
 
   type Keyword = {
+    Bid : int option;
+    MatchType : MatchTypeResponse;
+    Value : string;
     Archived : bool;
     Id : string;
     ParentId : string;
     ParentType : string;
     Type : string;
-    Bid : int option;
-    MatchType : MatchTypeResponse;
-    Value : string;
   }
   //#endregion

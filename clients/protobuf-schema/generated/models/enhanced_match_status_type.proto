@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -20,5 +20,4 @@ enum EnhancedMatchStatusType {
   EnhancedMatchStatusType_NOT_VALIDATED = 1;
   EnhancedMatchStatusType_VALIDATING_IN_PROGRESS = 2;
   EnhancedMatchStatusType_VALIDATION_COMPLETE = 3;
-  EnhancedMatchStatusType_NULL = 4;
 }

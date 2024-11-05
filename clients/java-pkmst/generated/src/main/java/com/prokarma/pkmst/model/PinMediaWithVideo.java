@@ -3,8 +3,8 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.ImageMetadataImages;
 import com.prokarma.pkmst.model.PinMedia;
+import com.prokarma.pkmst.model.PinMediaWithImageAllOfImages;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -19,10 +19,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Pin with video.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithVideo extends PinMedia  {
   @JsonProperty("images")
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   @JsonProperty("cover_image_url")
   private String coverImageUrl;
@@ -39,21 +39,21 @@ public class PinMediaWithVideo extends PinMedia  {
   @JsonProperty("width")
   private Integer width;
 
-  public PinMediaWithVideo images(ImageMetadataImages images) {
+  public PinMediaWithVideo images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
 
-   /**
+  /**
    * Get images
    * @return images
-  **/
+   */
   @ApiModelProperty(value = "")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
@@ -62,10 +62,10 @@ public class PinMediaWithVideo extends PinMedia  {
     return this;
   }
 
-   /**
+  /**
    * Get coverImageUrl
    * @return coverImageUrl
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getCoverImageUrl() {
     return coverImageUrl;
@@ -80,10 +80,10 @@ public class PinMediaWithVideo extends PinMedia  {
     return this;
   }
 
-   /**
+  /**
    * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
    * @return videoUrl
-  **/
+   */
   @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
   public String getVideoUrl() {
     return videoUrl;
@@ -98,10 +98,10 @@ public class PinMediaWithVideo extends PinMedia  {
     return this;
   }
 
-   /**
+  /**
    * Duration (in milliseconds)
    * @return duration
-  **/
+   */
   @ApiModelProperty(value = "Duration (in milliseconds)")
   public BigDecimal getDuration() {
     return duration;
@@ -116,10 +116,10 @@ public class PinMediaWithVideo extends PinMedia  {
     return this;
   }
 
-   /**
+  /**
    * Height (in pixels)
    * @return height
-  **/
+   */
   @ApiModelProperty(value = "Height (in pixels)")
   public Integer getHeight() {
     return height;
@@ -134,10 +134,10 @@ public class PinMediaWithVideo extends PinMedia  {
     return this;
   }
 
-   /**
+  /**
    * Width (in pixels)
    * @return width
-  **/
+   */
   @ApiModelProperty(value = "Width (in pixels)")
   public Integer getWidth() {
     return width;

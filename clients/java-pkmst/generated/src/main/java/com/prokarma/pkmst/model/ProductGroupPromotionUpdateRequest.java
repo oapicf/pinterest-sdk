@@ -18,7 +18,7 @@ import java.util.List;
  * ProductGroupPromotionUpdateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionUpdateRequest   {
   @JsonProperty("ad_group_id")
   private String adGroupId;
@@ -32,10 +32,10 @@ public class ProductGroupPromotionUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * ID of the ad group the product group belongs to.
    * @return adGroupId
-  **/
+   */
   @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group the product group belongs to.")
   public String getAdGroupId() {
     return adGroupId;
@@ -58,10 +58,10 @@ public class ProductGroupPromotionUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get productGroupPromotion
    * @return productGroupPromotion
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public List<ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;

@@ -32,7 +32,7 @@ class SpringDocConfiguration {
                             .name("MIT")
                             .url("https://spdx.org/licenses/MIT")
                     )
-                    .version("5.12.0")
+                    .version("5.14.0")
             )
             .components(
                 Components()
@@ -46,6 +46,9 @@ class SpringDocConfiguration {
                     .addSecuritySchemes("basic", SecurityScheme()
                         .type(SecurityScheme.Type.HTTP)
                         .scheme("basic")
+                    )
+                    .addSecuritySchemes("client_credentials", SecurityScheme()
+                        .type(SecurityScheme.Type.OAUTH2)
                     )
             )
     }

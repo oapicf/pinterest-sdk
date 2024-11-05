@@ -14,14 +14,14 @@ import org.openapitools.model.ItemProcessingRecord;
 class CatalogsRetailItemsBatch {
     /* Id of the catalogs items batch */
     String batchId
-    /* Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
     Date createdTime
-    /* Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     Date completedTime
     
     BatchOperationStatus status
     
     CatalogsType catalogType
     /* Array with the catalogs items processing records part of the catalogs items batch */
-    List<ItemProcessingRecord> items
+    List<ItemProcessingRecord> items = new ArrayList<>()
 }

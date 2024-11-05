@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**OAICatalogsType***](OAICatalogsType.md) |  | 
+**catalogType** | **NSString*** |  | 
 **country** | [**OAICountry***](OAICountry.md) |  | 
-**language** | [**OAILanguage***](OAILanguage.md) |  | 
+**language** | [**OAICatalogsItemsRequestLanguage***](OAICatalogsItemsRequestLanguage.md) |  | 
 **items** | [**NSArray&lt;OAICatalogsHotelBatchItem&gt;***](OAICatalogsHotelBatchItem.md) | Array with catalogs item operations | 
 **catalogId** | **NSString*** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 

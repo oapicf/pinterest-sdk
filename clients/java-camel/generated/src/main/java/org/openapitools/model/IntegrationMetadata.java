@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationMetadata", description = "Integration metadata")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationMetadata {
 
   private String id;
@@ -59,7 +59,7 @@ public class IntegrationMetadata {
   /**
    * Get id
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -79,7 +79,7 @@ public class IntegrationMetadata {
   /**
    * Get externalBusinessId
    * @return externalBusinessId
-  */
+   */
   
   @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("external_business_id")
@@ -99,7 +99,7 @@ public class IntegrationMetadata {
   /**
    * Get connectedMerchantId
    * @return connectedMerchantId
-  */
+   */
   
   @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_merchant_id")
@@ -119,7 +119,7 @@ public class IntegrationMetadata {
   /**
    * Get connectedUserId
    * @return connectedUserId
-  */
+   */
   
   @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_user_id")
@@ -139,7 +139,7 @@ public class IntegrationMetadata {
   /**
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
-  */
+   */
   
   @Schema(name = "connected_advertiser_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
@@ -159,7 +159,7 @@ public class IntegrationMetadata {
   /**
    * Get connectedLbaId
    * @return connectedLbaId
-  */
+   */
   
   @Schema(name = "connected_lba_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_lba_id")
@@ -179,7 +179,7 @@ public class IntegrationMetadata {
   /**
    * Get connectedTagId
    * @return connectedTagId
-  */
+   */
   
   @Schema(name = "connected_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_tag_id")
@@ -199,7 +199,7 @@ public class IntegrationMetadata {
   /**
    * Get partnerAccessTokenExpiry
    * @return partnerAccessTokenExpiry
-  */
+   */
   @Valid 
   @Schema(name = "partner_access_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token_expiry")
@@ -219,7 +219,7 @@ public class IntegrationMetadata {
   /**
    * Get partnerRefreshTokenExpiry
    * @return partnerRefreshTokenExpiry
-  */
+   */
   @Valid 
   @Schema(name = "partner_refresh_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token_expiry")
@@ -239,7 +239,7 @@ public class IntegrationMetadata {
   /**
    * Get scopes
    * @return scopes
-  */
+   */
   
   @Schema(name = "scopes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scopes")
@@ -259,7 +259,7 @@ public class IntegrationMetadata {
   /**
    * Get createdTimestamp
    * @return createdTimestamp
-  */
+   */
   @Valid 
   @Schema(name = "created_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_timestamp")
@@ -279,7 +279,7 @@ public class IntegrationMetadata {
   /**
    * Get updatedTimestamp
    * @return updatedTimestamp
-  */
+   */
   @Valid 
   @Schema(name = "updated_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_timestamp")
@@ -299,7 +299,7 @@ public class IntegrationMetadata {
   /**
    * Get additionalId1
    * @return additionalId1
-  */
+   */
   
   @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_id_1")
@@ -319,7 +319,7 @@ public class IntegrationMetadata {
   /**
    * Get partnerMetadata
    * @return partnerMetadata
-  */
+   */
   
   @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_metadata")

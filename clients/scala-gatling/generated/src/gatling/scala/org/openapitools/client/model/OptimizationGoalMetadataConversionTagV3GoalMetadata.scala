@@ -7,7 +7,7 @@ case class OptimizationGoalMetadataConversionTagV3GoalMetadata (
     _conversionEvent: Option[String],
     _conversionTagId: Option[String],
     _cpaGoalValueInMicroCurrency: Option[String],
-    /* Ad group is ROAS optimized */
+    /* ROAS optimization is not supported */
     _isRoasOptimized: Option[Boolean],
     /* Conversion learning model type */
     _learningModeType: Option[String]

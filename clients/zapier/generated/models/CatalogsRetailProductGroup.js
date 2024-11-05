@@ -57,13 +57,26 @@ module.exports = {
                 type: 'integer',
             },
             {
-                key: `${keyPrefix}feed_id`,
-                label: `[${labelPrefix}feed_id]`,
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the retail product group. - [${labelPrefix}catalog_id]`,
                 required: true,
                 type: 'string',
-                choices: [
-                    'null',
-                ],
+            },
+            {
+                key: `${keyPrefix}feed_id`,
+                label: `id of the catalogs feed belonging to this catalog product group - [${labelPrefix}feed_id]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}country`,
+                label: `[${labelPrefix}country]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}locale`,
+                label: `[${labelPrefix}locale]`,
+                type: 'string',
             },
         ]
     },
@@ -80,7 +93,10 @@ module.exports = {
             'status': bundle.inputData?.[`${keyPrefix}status`],
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
             'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
+            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'feed_id': bundle.inputData?.[`${keyPrefix}feed_id`],
+            'country': bundle.inputData?.[`${keyPrefix}country`],
+            'locale': bundle.inputData?.[`${keyPrefix}locale`],
         }
     },
 }

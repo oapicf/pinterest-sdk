@@ -16,9 +16,7 @@ public enum OrderLinePaidType {
   
   MAKE_GOOD("MAKE_GOOD"),
   
-  TEST("TEST"),
-  
-  NULL("null");
+  TEST("TEST");
 
   private final String value;
 

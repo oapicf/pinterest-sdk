@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **defaultCountry** | [**Country**](Country.md) |  | 
 **defaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 

@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Pin fields for updates")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdate   {
   @JsonProperty("alt_text")
   private String altText;
@@ -52,10 +52,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Pin's alternative text.
    * @return altText
-  **/
+   */
   @ApiModelProperty(value = "Pin's alternative text.")
   public String getAltText() {
     return altText;
@@ -70,10 +70,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * The id of the board to move the Pin onto.
    * @return boardId
-  **/
+   */
   @ApiModelProperty(value = "The id of the board to move the Pin onto.")
   public String getBoardId() {
     return boardId;
@@ -88,10 +88,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
    * @return boardSectionId
-  **/
+   */
   @ApiModelProperty(value = "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.")
   public String getBoardSectionId() {
     return boardSectionId;
@@ -106,10 +106,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Pin description - 800 characters maximum.
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "Pin description - 800 characters maximum.")
   public String getDescription() {
     return description;
@@ -124,10 +124,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * URL viewer is taken to when they click pin.
    * @return link
-  **/
+   */
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "URL viewer is taken to when they click pin.")
   public String getLink() {
     return link;
@@ -142,10 +142,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * The native pin title that creators explicitly prefer to display.
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "The native pin title that creators explicitly prefer to display.")
   public String getTitle() {
     return title;
@@ -168,10 +168,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Carousel Pin slots data.
    * @return carouselSlots
-  **/
+   */
   @ApiModelProperty(value = "Carousel Pin slots data.")
   public List<PinUpdateCarouselSlotsInner> getCarouselSlots() {
     return carouselSlots;
@@ -186,10 +186,10 @@ public class PinUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
    * @return note
-  **/
+   */
   @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
   public String getNote() {
     return note;

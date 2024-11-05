@@ -8,24 +8,24 @@
 #' @description AdCommon Class
 #' @format An \code{R6Class} generator object
 #' @field ad_group_id ID of the ad group that contains the ad. character [optional]
-#' @field android_deep_link Deep link URL for Android devices. Not currently available. Using this field will generate an error. character [optional]
+#' @field android_deep_link Deep link URL for Android devices. character [optional]
 #' @field carousel_android_deep_links Comma-separated deep links for the carousel pin on Android. list(character) [optional]
 #' @field carousel_destination_urls Comma-separated destination URLs for the carousel pin to promote. list(character) [optional]
 #' @field carousel_ios_deep_links Comma-separated deep links for the carousel pin on iOS. list(character) [optional]
 #' @field click_tracking_url Tracking url for the ad clicks. character [optional]
 #' @field creative_type  \link{CreativeType} [optional]
 #' @field destination_url Destination URL. character [optional]
-#' @field ios_deep_link Deep link URL for iOS devices. Not currently available. Using this field will generate an error. character [optional]
+#' @field ios_deep_link Deep link URL for iOS devices. character [optional]
 #' @field is_pin_deleted Is original pin deleted? character [optional]
 #' @field is_removable Is pin repinnable? character [optional]
 #' @field name Name of the ad - 255 chars max. character [optional]
 #' @field status  \link{EntityStatus} [optional]
-#' @field tracking_urls  \link{AdCommonTrackingUrls} [optional]
+#' @field tracking_urls  \link{TrackingUrls} [optional]
 #' @field view_tracking_url Tracking URL for ad impressions. character [optional]
 #' @field lead_form_id Lead form ID for lead ad generation. character [optional]
 #' @field grid_click_type  \link{GridClickType} [optional]
-#' @field customizable_cta_type Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) character [optional]
-#' @field quiz_pin_data  \link{AdCommonQuizPinData} [optional]
+#' @field customizable_cta_type Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) character [optional]
+#' @field quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. \link{QuizPinData} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -51,20 +51,19 @@ AdCommon <- R6::R6Class(
     `grid_click_type` = NULL,
     `customizable_cta_type` = NULL,
     `quiz_pin_data` = NULL,
-    #' Initialize a new AdCommon class.
-    #'
+
     #' @description
     #' Initialize a new AdCommon class.
     #'
     #' @param ad_group_id ID of the ad group that contains the ad.
-    #' @param android_deep_link Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+    #' @param android_deep_link Deep link URL for Android devices.
     #' @param carousel_android_deep_links Comma-separated deep links for the carousel pin on Android.
     #' @param carousel_destination_urls Comma-separated destination URLs for the carousel pin to promote.
     #' @param carousel_ios_deep_links Comma-separated deep links for the carousel pin on iOS.
     #' @param click_tracking_url Tracking url for the ad clicks.
     #' @param creative_type creative_type
     #' @param destination_url Destination URL.
-    #' @param ios_deep_link Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+    #' @param ios_deep_link Deep link URL for iOS devices.
     #' @param is_pin_deleted Is original pin deleted?
     #' @param is_removable Is pin repinnable?
     #' @param name Name of the ad - 255 chars max.
@@ -73,10 +72,9 @@ AdCommon <- R6::R6Class(
     #' @param view_tracking_url Tracking URL for ad impressions.
     #' @param lead_form_id Lead form ID for lead ad generation.
     #' @param grid_click_type grid_click_type
-    #' @param customizable_cta_type Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-    #' @param quiz_pin_data quiz_pin_data
+    #' @param customizable_cta_type Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+    #' @param quiz_pin_data Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`ad_group_id` = NULL, `android_deep_link` = NULL, `carousel_android_deep_links` = NULL, `carousel_destination_urls` = NULL, `carousel_ios_deep_links` = NULL, `click_tracking_url` = NULL, `creative_type` = NULL, `destination_url` = NULL, `ios_deep_link` = NULL, `is_pin_deleted` = NULL, `is_removable` = NULL, `name` = NULL, `status` = NULL, `tracking_urls` = NULL, `view_tracking_url` = NULL, `lead_form_id` = NULL, `grid_click_type` = NULL, `customizable_cta_type` = NULL, `quiz_pin_data` = NULL, ...) {
       if (!is.null(`ad_group_id`)) {
         if (!(is.character(`ad_group_id`) && length(`ad_group_id`) == 1)) {
@@ -179,8 +177,8 @@ AdCommon <- R6::R6Class(
         self$`grid_click_type` <- `grid_click_type`
       }
       if (!is.null(`customizable_cta_type`)) {
-        if (!(`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_WEBSITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "null"))) {
-          stop(paste("Error! \"", `customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_WEBSITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\", \"null\".", sep = ""))
+        if (!(`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"))) {
+          stop(paste("Error! \"", `customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_SITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\".", sep = ""))
         }
         if (!(is.character(`customizable_cta_type`) && length(`customizable_cta_type`) == 1)) {
           stop(paste("Error! Invalid data for `customizable_cta_type`. Must be a string:", `customizable_cta_type`))
@@ -192,13 +190,11 @@ AdCommon <- R6::R6Class(
         self$`quiz_pin_data` <- `quiz_pin_data`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdCommon in JSON format
-    #' @export
     toJSON = function() {
       AdCommonObject <- list()
       if (!is.null(self$`ad_group_id`)) {
@@ -279,14 +275,12 @@ AdCommon <- R6::R6Class(
       }
       AdCommonObject
     },
-    #' Deserialize JSON string into an instance of AdCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdCommon
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_group_id`)) {
@@ -333,7 +327,7 @@ AdCommon <- R6::R6Class(
         self$`status` <- `status_object`
       }
       if (!is.null(this_object$`tracking_urls`)) {
-        `tracking_urls_object` <- AdCommonTrackingUrls$new()
+        `tracking_urls_object` <- TrackingUrls$new()
         `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
         self$`tracking_urls` <- `tracking_urls_object`
       }
@@ -349,25 +343,23 @@ AdCommon <- R6::R6Class(
         self$`grid_click_type` <- `grid_click_type_object`
       }
       if (!is.null(this_object$`customizable_cta_type`)) {
-        if (!is.null(this_object$`customizable_cta_type`) && !(this_object$`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_WEBSITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "null"))) {
-          stop(paste("Error! \"", this_object$`customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_WEBSITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\", \"null\".", sep = ""))
+        if (!is.null(this_object$`customizable_cta_type`) && !(this_object$`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"))) {
+          stop(paste("Error! \"", this_object$`customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_SITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\".", sep = ""))
         }
         self$`customizable_cta_type` <- this_object$`customizable_cta_type`
       }
       if (!is.null(this_object$`quiz_pin_data`)) {
-        `quiz_pin_data_object` <- AdCommonQuizPinData$new()
+        `quiz_pin_data_object` <- QuizPinData$new()
         `quiz_pin_data_object`$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
         self$`quiz_pin_data` <- `quiz_pin_data_object`
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdCommon in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_group_id`)) {
@@ -526,14 +518,12 @@ AdCommon <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdCommon
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_group_id` <- this_object$`ad_group_id`
@@ -549,44 +539,38 @@ AdCommon <- R6::R6Class(
       self$`is_removable` <- this_object$`is_removable`
       self$`name` <- this_object$`name`
       self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-      self$`tracking_urls` <- AdCommonTrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
+      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self$`view_tracking_url` <- this_object$`view_tracking_url`
       self$`lead_form_id` <- this_object$`lead_form_id`
       self$`grid_click_type` <- GridClickType$new()$fromJSON(jsonlite::toJSON(this_object$`grid_click_type`, auto_unbox = TRUE, digits = NA))
-      if (!is.null(this_object$`customizable_cta_type`) && !(this_object$`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_WEBSITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE", "null"))) {
-        stop(paste("Error! \"", this_object$`customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_WEBSITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\", \"null\".", sep = ""))
+      if (!is.null(this_object$`customizable_cta_type`) && !(this_object$`customizable_cta_type` %in% c("GET_OFFER", "LEARN_MORE", "ORDER_NOW", "SHOP_NOW", "SIGN_UP", "SUBSCRIBE", "BUY_NOW", "CONTACT_US", "GET_QUOTE", "VISIT_SITE", "APPLY_NOW", "BOOK_NOW", "REQUEST_DEMO", "REGISTER_NOW", "FIND_A_DEALER", "ADD_TO_CART", "WATCH_NOW", "READ_MORE"))) {
+        stop(paste("Error! \"", this_object$`customizable_cta_type`, "\" cannot be assigned to `customizable_cta_type`. Must be \"GET_OFFER\", \"LEARN_MORE\", \"ORDER_NOW\", \"SHOP_NOW\", \"SIGN_UP\", \"SUBSCRIBE\", \"BUY_NOW\", \"CONTACT_US\", \"GET_QUOTE\", \"VISIT_SITE\", \"APPLY_NOW\", \"BOOK_NOW\", \"REQUEST_DEMO\", \"REGISTER_NOW\", \"FIND_A_DEALER\", \"ADD_TO_CART\", \"WATCH_NOW\", \"READ_MORE\".", sep = ""))
       }
       self$`customizable_cta_type` <- this_object$`customizable_cta_type`
-      self$`quiz_pin_data` <- AdCommonQuizPinData$new()$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
+      self$`quiz_pin_data` <- QuizPinData$new()$fromJSON(jsonlite::toJSON(this_object$`quiz_pin_data`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to AdCommon
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdCommon and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdCommon
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`ad_group_id`, "^(AG)?\\d+$")) {
         return(FALSE)
@@ -598,13 +582,11 @@ AdCommon <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`ad_group_id`, "^(AG)?\\d+$")) {
@@ -617,12 +599,9 @@ AdCommon <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -22,7 +22,7 @@ import java.util.List;
  */
 @ApiModel(description = "Ad entities to get in bulk request.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequest   {
   @JsonProperty("entity_types")
   
@@ -54,10 +54,10 @@ public class BulkDownloadRequest   {
     return this;
   }
 
-   /**
+  /**
    * All entity types specified will be downloaded. Fewer types result in faster downloads.
    * @return entityTypes
-  **/
+   */
   @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
   public List<BulkEntityType> getEntityTypes() {
     return entityTypes;
@@ -80,10 +80,10 @@ public class BulkDownloadRequest   {
     return this;
   }
 
-   /**
+  /**
    * All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
    * @return entityIds
-  **/
+   */
   @ApiModelProperty(value = "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.")
   public List<String> getEntityIds() {
     return entityIds;
@@ -98,10 +98,10 @@ public class BulkDownloadRequest   {
     return this;
   }
 
-   /**
+  /**
    * Unix UTC timestamp to retrieve all entities that have changed since this time.
    * @return updatedSince
-  **/
+   */
   @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp to retrieve all entities that have changed since this time.")
   public String getUpdatedSince() {
     return updatedSince;
@@ -116,10 +116,10 @@ public class BulkDownloadRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get campaignFilter
    * @return campaignFilter
-  **/
+   */
   @ApiModelProperty(value = "")
   public BulkDownloadRequestCampaignFilter getCampaignFilter() {
     return campaignFilter;
@@ -134,10 +134,10 @@ public class BulkDownloadRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get outputFormat
    * @return outputFormat
-  **/
+   */
   @ApiModelProperty(value = "")
   public BulkOutputFormat getOutputFormat() {
     return outputFormat;

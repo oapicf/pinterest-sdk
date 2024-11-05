@@ -17,13 +17,23 @@ Protected Class CatalogsVerticalProductGroupUpdateRequest
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsHotelProductGroupFilters
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		country As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		locale As Xoson.O.OptionalString
 	#tag EndProperty
 
 
     #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
         
-        Hotel
+        CreativeAssets
         
     #tag EndEnum
 
@@ -32,8 +42,8 @@ Protected Class CatalogsVerticalProductGroupUpdateRequest
 		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
 		  Select Case value
 		    
-		    Case Catalog_typeEnum.Hotel
-		      Return "HOTEL"
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
 		    
 		  End Select
 		  Return ""
@@ -95,7 +105,23 @@ Protected Class CatalogsVerticalProductGroupUpdateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsHotelProductGroupFilters"
+			Type="CatalogsCreativeAssetsProductGroupFilters"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="locale"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsLocale"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

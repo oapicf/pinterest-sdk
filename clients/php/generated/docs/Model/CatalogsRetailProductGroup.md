@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **status** | [**\OpenAPI\Client\Model\CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional]
 **created_at** | **int** | Unix timestamp in seconds of when catalog product group was created. | [optional]
 **updated_at** | **int** | Unix timestamp in seconds of last time catalog product group was updated. | [optional]
-**feed_id** | **string** |  |
+**catalog_id** | **string** | Catalog id pertaining to the retail product group. |
+**feed_id** | **string** | id of the catalogs feed belonging to this catalog product group |
+**country** | **string** |  | [optional]
+**locale** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

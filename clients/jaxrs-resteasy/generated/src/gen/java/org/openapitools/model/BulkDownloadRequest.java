@@ -16,13 +16,12 @@ import org.openapitools.model.BulkOutputFormat;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Ad entities to get in bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Ad entities to get in bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequest   {
   
-  private List<BulkEntityType> entityTypes;
-  private List<@Pattern(regexp = "^\\d+$")String> entityIds;
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
   private String updatedSince;
   private BulkDownloadRequestCampaignFilter campaignFilter;
   private BulkOutputFormat outputFormat = "JSON";

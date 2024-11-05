@@ -25,6 +25,7 @@ import java.util.Map;
 public class PinsApiVerticle extends AbstractVerticle {
     static final Logger LOGGER = LoggerFactory.getLogger(PinsApiVerticle.class);
 
+    static final String MULTI_PINS/ANALYTICS_SERVICE_ID = "multi_pins/analytics";
     static final String PINS/ANALYTICS_SERVICE_ID = "pins/analytics";
     static final String PINS/CREATE_SERVICE_ID = "pins/create";
     static final String PINS/DELETE_SERVICE_ID = "pins/delete";
@@ -47,6 +48,55 @@ public class PinsApiVerticle extends AbstractVerticle {
 
     @Override
     public void start() throws Exception {
+        
+        //Consumer for multi_pins/analytics
+        vertx.eventBus().<JsonObject> consumer(MULTI_PINS/ANALYTICS_SERVICE_ID).handler(message -> {
+            try {
+                // Workaround for #allParams section clearing the vendorExtensions map
+                String serviceId = "multi_pins/analytics";
+                JsonArray pinIdsParam = message.body().getJsonArray("pin_ids");
+                if(pinIdsParam == null) {
+                    manageError(message, new MainApiException(400, "pin_ids is required"), serviceId);
+                    return;
+                }
+                List<String> pinIds = Json.mapper.readValue(pinIdsParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, String.class));
+                String startDateParam = message.body().getString("start_date");
+                if(startDateParam == null) {
+                    manageError(message, new MainApiException(400, "start_date is required"), serviceId);
+                    return;
+                }
+                LocalDate startDate = Json.mapper.readValue(startDateParam, LocalDate.class);
+                String endDateParam = message.body().getString("end_date");
+                if(endDateParam == null) {
+                    manageError(message, new MainApiException(400, "end_date is required"), serviceId);
+                    return;
+                }
+                LocalDate endDate = Json.mapper.readValue(endDateParam, LocalDate.class);
+                JsonArray metricTypesParam = message.body().getJsonArray("metric_types");
+                if(metricTypesParam == null) {
+                    manageError(message, new MainApiException(400, "metric_types is required"), serviceId);
+                    return;
+                }
+                List<PinsAnalyticsMetricTypesParameterInner> metricTypes = Json.mapper.readValue(metricTypesParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, PinsAnalyticsMetricTypesParameterInner.class));
+                String appTypesParam = message.body().getString("app_types");
+                String appTypes = (appTypesParam == null) ? "ALL" : appTypesParam;
+                String adAccountIdParam = message.body().getString("ad_account_id");
+                String adAccountId = (adAccountIdParam == null) ? null : adAccountIdParam;
+                service.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, result -> {
+                    if (result.succeeded())
+                        message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
+                    else {
+                        Throwable cause = result.cause();
+                        manageError(message, cause, "multi_pins/analytics");
+                    }
+                });
+            } catch (Exception e) {
+                logUnexpectedError("multi_pins/analytics", e);
+                message.fail(MainApiException.INTERNAL_SERVER_ERROR.getStatusCode(), MainApiException.INTERNAL_SERVER_ERROR.getStatusMessage());
+            }
+        });
         
         //Consumer for pins/analytics
         vertx.eventBus().<JsonObject> consumer(PINS/ANALYTICS_SERVICE_ID).handler(message -> {

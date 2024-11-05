@@ -5,7 +5,7 @@ type CatalogsHotelProductGroup struct {
 	CatalogType string `json:"catalog_type"`
 
 	// ID of the hotel product group.
-	Id string `json:"id"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 
 	// Name of hotel product group
 	Name string `json:"name,omitempty"`
@@ -20,5 +20,6 @@ type CatalogsHotelProductGroup struct {
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt int32 `json:"updated_at,omitempty"`
 
-	CatalogId string `json:"catalog_id"`
+	// Catalog id pertaining to the hotel product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 }

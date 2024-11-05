@@ -6,7 +6,7 @@ An item to be upserted
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **item_id** | **character** | The catalog item id in the merchant namespace | 
-**operation** | **character** |  | [Enum: [CREATE, UPDATE, UPSERT, DELETE]] 
-**attributes** | [**ItemAttributes**](ItemAttributes.md) |  | 
+**operation** | **character** |  | [Enum: [UPSERT]] 
+**attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 
 

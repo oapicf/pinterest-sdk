@@ -5,9 +5,8 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.AdCommonTrackingUrls
-import org.openapitools.models.CampaignSummaryStatus
 import org.openapitools.models.EntityStatus
+import org.openapitools.models.TrackingUrls
 
 /**
  * Campaign Data
@@ -20,7 +19,7 @@ import org.openapitools.models.EntityStatus
  * @param trackingUnderscoreurls 
  * @param startUnderscoretime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
  * @param endUnderscoretime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
- * @param summaryUnderscorestatus 
+ * @param isUnderscoreflexibleUnderscoredailyUnderscorebudgets Determine if a campaign has flexible daily budgets setup.
  */
 case class CampaignCommon(adUnderscoreaccountUnderscoreid: Option[String],
                 name: Option[String],
@@ -28,10 +27,10 @@ case class CampaignCommon(adUnderscoreaccountUnderscoreid: Option[String],
                 lifetimeUnderscorespendUnderscorecap: Option[Int],
                 dailyUnderscorespendUnderscorecap: Option[Int],
                 orderUnderscorelineUnderscoreid: Option[String],
-                trackingUnderscoreurls: Option[AdCommonTrackingUrls],
+                trackingUnderscoreurls: Option[TrackingUrls],
                 startUnderscoretime: Option[Int],
                 endUnderscoretime: Option[Int],
-                summaryUnderscorestatus: Option[CampaignSummaryStatus]
+                isUnderscoreflexibleUnderscoredailyUnderscorebudgets: Option[Boolean]
                 )
 
 object CampaignCommon {

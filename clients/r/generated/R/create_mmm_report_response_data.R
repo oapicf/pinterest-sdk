@@ -21,8 +21,7 @@ CreateMMMReportResponseData <- R6::R6Class(
     `token` = NULL,
     `message` = NULL,
     `status` = NULL,
-    #' Initialize a new CreateMMMReportResponseData class.
-    #'
+
     #' @description
     #' Initialize a new CreateMMMReportResponseData class.
     #'
@@ -31,7 +30,6 @@ CreateMMMReportResponseData <- R6::R6Class(
     #' @param message message
     #' @param status status
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`report_status` = NULL, `token` = NULL, `message` = NULL, `status` = NULL, ...) {
       if (!is.null(`report_status`)) {
         if (!(`report_status` %in% c())) {
@@ -59,13 +57,11 @@ CreateMMMReportResponseData <- R6::R6Class(
         self$`status` <- `status`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CreateMMMReportResponseData in JSON format
-    #' @export
     toJSON = function() {
       CreateMMMReportResponseDataObject <- list()
       if (!is.null(self$`report_status`)) {
@@ -86,14 +82,12 @@ CreateMMMReportResponseData <- R6::R6Class(
       }
       CreateMMMReportResponseDataObject
     },
-    #' Deserialize JSON string into an instance of CreateMMMReportResponseData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CreateMMMReportResponseData
     #'
     #' @param input_json the JSON input
     #' @return the instance of CreateMMMReportResponseData
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`report_status`)) {
@@ -112,13 +106,11 @@ CreateMMMReportResponseData <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CreateMMMReportResponseData in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`report_status`)) {
@@ -157,14 +149,12 @@ CreateMMMReportResponseData <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CreateMMMReportResponseData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CreateMMMReportResponseData
     #'
     #' @param input_json the JSON input
     #' @return the instance of CreateMMMReportResponseData
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`report_status` <- BulkReportingJobStatus$new()$fromJSON(jsonlite::toJSON(this_object$`report_status`, auto_unbox = TRUE, digits = NA))
@@ -173,53 +163,42 @@ CreateMMMReportResponseData <- R6::R6Class(
       self$`status` <- this_object$`status`
       self
     },
-    #' Validate JSON input with respect to CreateMMMReportResponseData
-    #'
+
     #' @description
     #' Validate JSON input with respect to CreateMMMReportResponseData and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CreateMMMReportResponseData
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

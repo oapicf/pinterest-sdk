@@ -18,7 +18,7 @@ typedef struct batch_operation_status_t batch_operation_status_t;
 
 // Enum  for batch_operation_status
 
-typedef enum { pinterest_rest_api_batch_operation_status__NULL = 0, pinterest_rest_api_batch_operation_status__PROCESSING, pinterest_rest_api_batch_operation_status__COMPLETED } pinterest_rest_api_batch_operation_status__e;
+typedef enum { pinterest_rest_api_batch_operation_status__NULL = 0, pinterest_rest_api_batch_operation_status__PROCESSING, pinterest_rest_api_batch_operation_status__COMPLETED, pinterest_rest_api_batch_operation_status__FAILED } pinterest_rest_api_batch_operation_status__e;
 
 char* batch_operation_status_batch_operation_status_ToString(pinterest_rest_api_batch_operation_status__e batch_operation_status);
 

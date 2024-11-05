@@ -23,8 +23,7 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
     `name` = NULL,
     `campaign_status` = NULL,
     `objective_type` = NULL,
-    #' Initialize a new BulkDownloadRequestCampaignFilter class.
-    #'
+
     #' @description
     #' Initialize a new BulkDownloadRequestCampaignFilter class.
     #'
@@ -34,7 +33,6 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
     #' @param campaign_status campaign_status
     #' @param objective_type objective_type
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`start_time` = NULL, `end_time` = NULL, `name` = NULL, `campaign_status` = NULL, `objective_type` = NULL, ...) {
       if (!is.null(`start_time`)) {
         if (!(is.character(`start_time`) && length(`start_time`) == 1)) {
@@ -65,13 +63,11 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
         self$`objective_type` <- `objective_type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkDownloadRequestCampaignFilter in JSON format
-    #' @export
     toJSON = function() {
       BulkDownloadRequestCampaignFilterObject <- list()
       if (!is.null(self$`start_time`)) {
@@ -96,14 +92,12 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
       }
       BulkDownloadRequestCampaignFilterObject
     },
-    #' Deserialize JSON string into an instance of BulkDownloadRequestCampaignFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkDownloadRequestCampaignFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkDownloadRequestCampaignFilter
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`start_time`)) {
@@ -123,13 +117,11 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkDownloadRequestCampaignFilter in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`start_time`)) {
@@ -176,14 +168,12 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BulkDownloadRequestCampaignFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkDownloadRequestCampaignFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkDownloadRequestCampaignFilter
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`start_time` <- this_object$`start_time`
@@ -193,33 +183,27 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
       self$`objective_type` <- ApiClient$new()$deserializeObj(this_object$`objective_type`, "array[ObjectiveType]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to BulkDownloadRequestCampaignFilter
-    #'
+
     #' @description
     #' Validate JSON input with respect to BulkDownloadRequestCampaignFilter and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BulkDownloadRequestCampaignFilter
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`start_time`, "^\\d+$")) {
         return(FALSE)
@@ -231,13 +215,11 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`start_time`, "^\\d+$")) {
@@ -250,12 +232,9 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

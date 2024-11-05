@@ -15,7 +15,7 @@ import model.TrendType
 import model.TrendingKeywordsResponse
 import model.TrendsSupportedRegion
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @Singleton
 class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi) extends AbstractController(cc) {
   /**
@@ -105,7 +105,7 @@ class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi
   }
 
   /**
-    * GET /v5/trends/keywords/:region/top/:trendType?interests=[value]&genders=[value]&ages=[value]&normalizeAgainstGroup=[value]&limit=[value]
+    * GET /v5/trends/keywords/:region/top/:trendType?interests=[value]&genders=[value]&ages=[value]&includeKeywords=[value]&normalizeAgainstGroup=[value]&limit=[value]
     * @param region The geographic region of interest. Only top trends within the specified region will be returned.&lt;br /&gt; The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;, corresponding to the following geographic areas: - &#x60;US&#x60; - United States - &#x60;CA&#x60; - Canada - &#x60;DE&#x60; - Germany - &#x60;FR&#x60; - France - &#x60;ES&#x60; - Spain - &#x60;IT&#x60; - Italy - &#x60;DE+AT+CH&#x60; - Germanic countries - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland - &#x60;IT+ES+PT+GR+MT&#x60; - Southern Europe - &#x60;PL+RO+HU+SK+CZ&#x60; - Eastern Europe - &#x60;SE+DK+FI+NO&#x60; - Nordic countries - &#x60;NL+BE+LU&#x60; - Benelux - &#x60;AR&#x60; - Argentina - &#x60;BR&#x60; - Brazil - &#x60;CO&#x60; - Colombia - &#x60;MX&#x60; - Mexico - &#x60;MX+AR+CO+CL&#x60; - Hispanic LatAm - &#x60;AU+NZ&#x60; - Australasia
     * @param trendType The methodology used to rank how trendy a keyword is. - &#x60;growing&#x60; trends have high upward growth in search volume over the last quarter - &#x60;monthly&#x60; trends have high search volume in the last month - &#x60;yearly&#x60; trends have high search volume in the last year - &#x60;seasonal&#x60; trends have high upward growth in search volume over the last month and exhibit a seasonal recurring pattern (typically annual)
     */
@@ -120,13 +120,16 @@ class KeywordsApiController @Inject()(cc: ControllerComponents, api: KeywordsApi
       val ages = request.queryString.get("ages")
         .map(_.toList)
         
+      val includeKeywords = request.queryString.get("include_keywords")
+        .map(_.toList)
+        
       val normalizeAgainstGroup = request.getQueryString("normalize_against_group")
         .map(value => value.toBoolean)
         
       val limit = request.getQueryString("limit")
         .map(value => value.toInt)
         
-      api.trendingKeywordsList(region, trendType, interests, genders, ages, normalizeAgainstGroup, limit)
+      api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit)
     }
 
     val result = executeApi()

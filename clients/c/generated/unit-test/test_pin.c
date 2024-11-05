@@ -17,7 +17,7 @@
 pin_t* instantiate_pin(int include_optional);
 
 #include "test_board_owner.c"
-#include "test_summary_pin_media.c"
+#include "test_pin_media.c"
 #include "test_pin_media_source.c"
 
 
@@ -39,13 +39,13 @@ pin_t* instantiate_pin(int include_optional) {
       instantiate_board_owner(0),
       1,
        // false, not to have infinite recursion
-      instantiate_summary_pin_media(0),
+      instantiate_pin_media(0),
       null,
       "a",
       1,
       1,
       "0",
-      {"pin_metrics":[{"90d":{"pin_click":7,"impression":2,"clickthrough":3},"all_time":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}},null]}
+      {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}}
     );
   } else {
     pin = pin_create(
@@ -67,7 +67,7 @@ pin_t* instantiate_pin(int include_optional) {
       1,
       1,
       "0",
-      {"pin_metrics":[{"90d":{"pin_click":7,"impression":2,"clickthrough":3},"all_time":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}},null]}
+      {"90d":{"pin_click":7,"impression":2,"clickthrough":3},"lifetime_metrics":{"pin_click":7,"impression":2,"clickthrough":3,"reaction":10,"comment":2}}
     );
   }
 

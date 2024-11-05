@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -29,11 +29,12 @@ type CatalogsRetailFeedsCreateRequest struct {
 	DefaultLocale CatalogsFeedsCreateRequestDefaultLocale `json:"default_locale"`
 	Credentials NullableCatalogsFeedCredentials `json:"credentials,omitempty"`
 	// The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	Location string `json:"location"`
+	Location string `json:"location" validate:"regexp=^(http|https|ftp|sftp):\\/\\/"`
 	PreferredProcessingSchedule NullableCatalogsFeedProcessingSchedule `json:"preferred_processing_schedule,omitempty"`
 	CatalogType CatalogsType `json:"catalog_type"`
 	DefaultCountry Country `json:"default_country"`
 	DefaultAvailability NullableProductAvailabilityType `json:"default_availability,omitempty"`
+	Status *CatalogsStatus `json:"status,omitempty"`
 }
 
 type _CatalogsRetailFeedsCreateRequest CatalogsRetailFeedsCreateRequest
@@ -373,6 +374,38 @@ func (o *CatalogsRetailFeedsCreateRequest) UnsetDefaultAvailability() {
 	o.DefaultAvailability.Unset()
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *CatalogsRetailFeedsCreateRequest) GetStatus() CatalogsStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret CatalogsStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailFeedsCreateRequest) GetStatusOk() (*CatalogsStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *CatalogsRetailFeedsCreateRequest) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given CatalogsStatus and assigns it to the Status field.
+func (o *CatalogsRetailFeedsCreateRequest) SetStatus(v CatalogsStatus) {
+	o.Status = &v
+}
+
 func (o CatalogsRetailFeedsCreateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -400,6 +433,9 @@ func (o CatalogsRetailFeedsCreateRequest) ToMap() (map[string]interface{}, error
 	toSerialize["default_country"] = o.DefaultCountry
 	if o.DefaultAvailability.IsSet() {
 		toSerialize["default_availability"] = o.DefaultAvailability.Get()
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

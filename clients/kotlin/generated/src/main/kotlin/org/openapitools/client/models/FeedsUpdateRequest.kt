@@ -74,5 +74,8 @@ data class FeedsUpdateRequest (
     @Json(name = "default_availability")
     val defaultAvailability: ProductAvailabilityType? = null
 
-)
+) {
+
+
+}
 

@@ -13,6 +13,7 @@
   | {'item_id', binary() }
   | {'errors', list(openapi_item_validation_event:openapi_item_validation_event()) }
   | {'hotel_id', binary() }
+  | {'creative_assets_id', binary() }
   ].
 
 
@@ -24,6 +25,7 @@ openapi_item_response_any_of_1(Fields) ->
             , {'item_id', binary() }
             , {'errors', list(openapi_item_validation_event:openapi_item_validation_event()) }
             , {'hotel_id', binary() }
+            , {'creative_assets_id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

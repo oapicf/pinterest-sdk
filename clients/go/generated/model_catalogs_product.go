@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,141 +13,144 @@ package openapi
 
 import (
 	"encoding/json"
-	"bytes"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
-// checks if the CatalogsProduct type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CatalogsProduct{}
-
-// CatalogsProduct struct for CatalogsProduct
+// CatalogsProduct - Catalogs product for all verticals
 type CatalogsProduct struct {
-	Metadata CatalogsProductMetadata `json:"metadata"`
-	Pin NullablePin `json:"pin"`
+	CatalogsCreativeAssetsProduct *CatalogsCreativeAssetsProduct
+	CatalogsHotelProduct *CatalogsHotelProduct
+	CatalogsRetailProduct *CatalogsRetailProduct
 }
 
-type _CatalogsProduct CatalogsProduct
-
-// NewCatalogsProduct instantiates a new CatalogsProduct object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewCatalogsProduct(metadata CatalogsProductMetadata, pin NullablePin) *CatalogsProduct {
-	this := CatalogsProduct{}
-	this.Metadata = metadata
-	this.Pin = pin
-	return &this
-}
-
-// NewCatalogsProductWithDefaults instantiates a new CatalogsProduct object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewCatalogsProductWithDefaults() *CatalogsProduct {
-	this := CatalogsProduct{}
-	return &this
-}
-
-// GetMetadata returns the Metadata field value
-func (o *CatalogsProduct) GetMetadata() CatalogsProductMetadata {
-	if o == nil {
-		var ret CatalogsProductMetadata
-		return ret
+// CatalogsCreativeAssetsProductAsCatalogsProduct is a convenience function that returns CatalogsCreativeAssetsProduct wrapped in CatalogsProduct
+func CatalogsCreativeAssetsProductAsCatalogsProduct(v *CatalogsCreativeAssetsProduct) CatalogsProduct {
+	return CatalogsProduct{
+		CatalogsCreativeAssetsProduct: v,
 	}
-
-	return o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProduct) GetMetadataOk() (*CatalogsProductMetadata, bool) {
-	if o == nil {
-		return nil, false
+// CatalogsHotelProductAsCatalogsProduct is a convenience function that returns CatalogsHotelProduct wrapped in CatalogsProduct
+func CatalogsHotelProductAsCatalogsProduct(v *CatalogsHotelProduct) CatalogsProduct {
+	return CatalogsProduct{
+		CatalogsHotelProduct: v,
 	}
-	return &o.Metadata, true
 }
 
-// SetMetadata sets field value
-func (o *CatalogsProduct) SetMetadata(v CatalogsProductMetadata) {
-	o.Metadata = v
-}
-
-// GetPin returns the Pin field value
-// If the value is explicit nil, the zero value for Pin will be returned
-func (o *CatalogsProduct) GetPin() Pin {
-	if o == nil || o.Pin.Get() == nil {
-		var ret Pin
-		return ret
+// CatalogsRetailProductAsCatalogsProduct is a convenience function that returns CatalogsRetailProduct wrapped in CatalogsProduct
+func CatalogsRetailProductAsCatalogsProduct(v *CatalogsRetailProduct) CatalogsProduct {
+	return CatalogsProduct{
+		CatalogsRetailProduct: v,
 	}
-
-	return *o.Pin.Get()
 }
 
-// GetPinOk returns a tuple with the Pin field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsProduct) GetPinOk() (*Pin, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Pin.Get(), o.Pin.IsSet()
-}
 
-// SetPin sets field value
-func (o *CatalogsProduct) SetPin(v Pin) {
-	o.Pin.Set(&v)
-}
-
-func (o CatalogsProduct) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o CatalogsProduct) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["metadata"] = o.Metadata
-	toSerialize["pin"] = o.Pin.Get()
-	return toSerialize, nil
-}
-
-func (o *CatalogsProduct) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"metadata",
-		"pin",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *CatalogsProduct) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsProduct
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsProduct)
+	if err == nil {
+		jsonCatalogsCreativeAssetsProduct, _ := json.Marshal(dst.CatalogsCreativeAssetsProduct)
+		if string(jsonCatalogsCreativeAssetsProduct) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsProduct = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsProduct); err != nil {
+				dst.CatalogsCreativeAssetsProduct = nil
+			} else {
+				match++
+			}
 		}
+	} else {
+		dst.CatalogsCreativeAssetsProduct = nil
 	}
 
-	varCatalogsProduct := _CatalogsProduct{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCatalogsProduct)
-
-	if err != nil {
-		return err
+	// try to unmarshal data into CatalogsHotelProduct
+	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelProduct)
+	if err == nil {
+		jsonCatalogsHotelProduct, _ := json.Marshal(dst.CatalogsHotelProduct)
+		if string(jsonCatalogsHotelProduct) == "{}" { // empty struct
+			dst.CatalogsHotelProduct = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsHotelProduct); err != nil {
+				dst.CatalogsHotelProduct = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsHotelProduct = nil
 	}
 
-	*o = CatalogsProduct(varCatalogsProduct)
+	// try to unmarshal data into CatalogsRetailProduct
+	err = newStrictDecoder(data).Decode(&dst.CatalogsRetailProduct)
+	if err == nil {
+		jsonCatalogsRetailProduct, _ := json.Marshal(dst.CatalogsRetailProduct)
+		if string(jsonCatalogsRetailProduct) == "{}" { // empty struct
+			dst.CatalogsRetailProduct = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsRetailProduct); err != nil {
+				dst.CatalogsRetailProduct = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsRetailProduct = nil
+	}
 
-	return err
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CatalogsCreativeAssetsProduct = nil
+		dst.CatalogsHotelProduct = nil
+		dst.CatalogsRetailProduct = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(CatalogsProduct)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProduct)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src CatalogsProduct) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsProduct != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsProduct)
+	}
+
+	if src.CatalogsHotelProduct != nil {
+		return json.Marshal(&src.CatalogsHotelProduct)
+	}
+
+	if src.CatalogsRetailProduct != nil {
+		return json.Marshal(&src.CatalogsRetailProduct)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *CatalogsProduct) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.CatalogsCreativeAssetsProduct != nil {
+		return obj.CatalogsCreativeAssetsProduct
+	}
+
+	if obj.CatalogsHotelProduct != nil {
+		return obj.CatalogsHotelProduct
+	}
+
+	if obj.CatalogsRetailProduct != nil {
+		return obj.CatalogsRetailProduct
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableCatalogsProduct struct {

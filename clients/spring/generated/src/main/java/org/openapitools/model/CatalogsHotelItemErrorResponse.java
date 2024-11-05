@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemErrorResponse", description = "Object describing a hotel item error")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
 
   private CatalogsType catalogType;
@@ -37,7 +37,7 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
   private String hotelId;
 
   @Valid
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   public CatalogsHotelItemErrorResponse() {
     super();
@@ -58,7 +58,7 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -78,7 +78,7 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  */
+   */
   
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hotel_id")
@@ -106,7 +106,7 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * Array with the errors for the item id requested
    * @return errors
-  */
+   */
   @Valid 
   @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")

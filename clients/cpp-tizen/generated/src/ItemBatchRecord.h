@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "ItemAttributes.h"
+#include "ItemAttributesRequest.h"
 #include "ItemCreateBatchRecord.h"
 #include "ItemDeleteBatchRecord.h"
 #include "ItemDeleteDiscontinuedBatchRecord.h"
@@ -62,11 +62,11 @@ public:
 	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
-	ItemAttributes getAttributes();
+	ItemAttributesRequest getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(ItemAttributes  attributes);
+	void setAttributes(ItemAttributesRequest  attributes);
 	/*! \brief Get The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	 */
 	std::list<UpdateMaskFieldType> getUpdateMask();
@@ -77,7 +77,7 @@ public:
 
 private:
 	std::string item_id;
-	ItemAttributes attributes;
+	ItemAttributesRequest attributes;
 	std::list <UpdateMaskFieldType>update_mask;
 	void __init();
 	void __cleanup();

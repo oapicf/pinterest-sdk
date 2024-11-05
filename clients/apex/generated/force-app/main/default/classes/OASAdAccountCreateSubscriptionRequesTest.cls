@@ -2,80 +2,77 @@
 private class OASAdAccountCreateSubscriptionRequesTest {
     @isTest
     private static void equalsSameInstance() {
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest1 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest2 = adAccountCreateSubscriptionRequest1;
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest3 = new OASAdAccountCreateSubscriptionReques();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest4 = adAccountCreateSubscriptionRequest3;
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata1 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata2 = adAccountCreateSubscriptionRequestPartnerMetadata1;
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata3 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata4 = adAccountCreateSubscriptionRequestPartnerMetadata3;
 
-        System.assert(adAccountCreateSubscriptionRequest1.equals(adAccountCreateSubscriptionRequest2));
-        System.assert(adAccountCreateSubscriptionRequest2.equals(adAccountCreateSubscriptionRequest1));
-        System.assert(adAccountCreateSubscriptionRequest1.equals(adAccountCreateSubscriptionRequest1));
-        System.assert(adAccountCreateSubscriptionRequest3.equals(adAccountCreateSubscriptionRequest4));
-        System.assert(adAccountCreateSubscriptionRequest4.equals(adAccountCreateSubscriptionRequest3));
-        System.assert(adAccountCreateSubscriptionRequest3.equals(adAccountCreateSubscriptionRequest3));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata1.equals(adAccountCreateSubscriptionRequestPartnerMetadata2));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata2.equals(adAccountCreateSubscriptionRequestPartnerMetadata1));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata1.equals(adAccountCreateSubscriptionRequestPartnerMetadata1));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata3.equals(adAccountCreateSubscriptionRequestPartnerMetadata4));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata4.equals(adAccountCreateSubscriptionRequestPartnerMetadata3));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata3.equals(adAccountCreateSubscriptionRequestPartnerMetadata3));
     }
 
     @isTest
     private static void equalsIdenticalInstance() {
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest1 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest2 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest3 = new OASAdAccountCreateSubscriptionReques();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest4 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata1 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata2 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata3 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata4 = new OASAdAccountCreateSubscriptionReques();
 
-        System.assert(adAccountCreateSubscriptionRequest1.equals(adAccountCreateSubscriptionRequest2));
-        System.assert(adAccountCreateSubscriptionRequest2.equals(adAccountCreateSubscriptionRequest1));
-        System.assert(adAccountCreateSubscriptionRequest3.equals(adAccountCreateSubscriptionRequest4));
-        System.assert(adAccountCreateSubscriptionRequest4.equals(adAccountCreateSubscriptionRequest3));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata1.equals(adAccountCreateSubscriptionRequestPartnerMetadata2));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata2.equals(adAccountCreateSubscriptionRequestPartnerMetadata1));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata3.equals(adAccountCreateSubscriptionRequestPartnerMetadata4));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata4.equals(adAccountCreateSubscriptionRequestPartnerMetadata3));
     }
 
     @isTest
     private static void notEqualsDifferentType() {
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest1 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest2 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata1 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata2 = new OASAdAccountCreateSubscriptionReques();
 
-        System.assertEquals(false, adAccountCreateSubscriptionRequest1.equals('foo'));
-        System.assertEquals(false, adAccountCreateSubscriptionRequest2.equals('foo'));
+        System.assertEquals(false, adAccountCreateSubscriptionRequestPartnerMetadata1.equals('foo'));
+        System.assertEquals(false, adAccountCreateSubscriptionRequestPartnerMetadata2.equals('foo'));
     }
 
     @isTest
     private static void notEqualsNull() {
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest1 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest2 = new OASAdAccountCreateSubscriptionReques();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest3;
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata1 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata2 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata3;
 
-        System.assertEquals(false, adAccountCreateSubscriptionRequest1.equals(adAccountCreateSubscriptionRequest3));
-        System.assertEquals(false, adAccountCreateSubscriptionRequest2.equals(adAccountCreateSubscriptionRequest3));
+        System.assertEquals(false, adAccountCreateSubscriptionRequestPartnerMetadata1.equals(adAccountCreateSubscriptionRequestPartnerMetadata3));
+        System.assertEquals(false, adAccountCreateSubscriptionRequestPartnerMetadata2.equals(adAccountCreateSubscriptionRequestPartnerMetadata3));
     }
 
     @isTest
     private static void consistentHashCodeValue() {
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest1 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest2 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata1 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata2 = new OASAdAccountCreateSubscriptionReques();
 
-        System.assertEquals(adAccountCreateSubscriptionRequest1.hashCode(), adAccountCreateSubscriptionRequest1.hashCode());
-        System.assertEquals(adAccountCreateSubscriptionRequest2.hashCode(), adAccountCreateSubscriptionRequest2.hashCode());
+        System.assertEquals(adAccountCreateSubscriptionRequestPartnerMetadata1.hashCode(), adAccountCreateSubscriptionRequestPartnerMetadata1.hashCode());
+        System.assertEquals(adAccountCreateSubscriptionRequestPartnerMetadata2.hashCode(), adAccountCreateSubscriptionRequestPartnerMetadata2.hashCode());
     }
 
     @isTest
     private static void equalInstancesHaveSameHashCode() {
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest1 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest2 = OASAdAccountCreateSubscriptionReques.getExample();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest3 = new OASAdAccountCreateSubscriptionReques();
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest4 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata1 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata2 = OASAdAccountCreateSubscriptionReques.getExample();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata3 = new OASAdAccountCreateSubscriptionReques();
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata4 = new OASAdAccountCreateSubscriptionReques();
 
-        System.assert(adAccountCreateSubscriptionRequest1.equals(adAccountCreateSubscriptionRequest2));
-        System.assert(adAccountCreateSubscriptionRequest3.equals(adAccountCreateSubscriptionRequest4));
-        System.assertEquals(adAccountCreateSubscriptionRequest1.hashCode(), adAccountCreateSubscriptionRequest2.hashCode());
-        System.assertEquals(adAccountCreateSubscriptionRequest3.hashCode(), adAccountCreateSubscriptionRequest4.hashCode());
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata1.equals(adAccountCreateSubscriptionRequestPartnerMetadata2));
+        System.assert(adAccountCreateSubscriptionRequestPartnerMetadata3.equals(adAccountCreateSubscriptionRequestPartnerMetadata4));
+        System.assertEquals(adAccountCreateSubscriptionRequestPartnerMetadata1.hashCode(), adAccountCreateSubscriptionRequestPartnerMetadata2.hashCode());
+        System.assertEquals(adAccountCreateSubscriptionRequestPartnerMetadata3.hashCode(), adAccountCreateSubscriptionRequestPartnerMetadata4.hashCode());
     }
 
     @isTest
     private static void maintainRenamedProperties() {
-        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequest = new OASAdAccountCreateSubscriptionReques();
-        Map<String, String> x-property-mappings = adAccountCreateSubscriptionRequest.getx-property-mappings();
-        System.assertEquals('webhookUrl', x-property-mappings.get('webhook_url'));
-        System.assertEquals('leadFormId', x-property-mappings.get('lead_form_id'));
-        System.assertEquals('partnerAccessToken', x-property-mappings.get('partner_access_token'));
-        System.assertEquals('partnerRefreshToken', x-property-mappings.get('partner_refresh_token'));
+        OASAdAccountCreateSubscriptionReques adAccountCreateSubscriptionRequestPartnerMetadata = new OASAdAccountCreateSubscriptionReques();
+        Map<String, String> x-property-mappings = adAccountCreateSubscriptionRequestPartnerMetadata.getx-property-mappings();
+        System.assertEquals('subscriberKey', x-property-mappings.get('subscriber_key'));
     }
 }

@@ -47,7 +47,7 @@ API.Client.CampaignCreateCommon.prototype.dailySpendCap;
 API.Client.CampaignCreateCommon.prototype.orderLineId;
 
 /**
- * @type {!API.Client.AdCommon_tracking_urls}
+ * @type {!API.Client.TrackingUrls}
  * @export
  */
 API.Client.CampaignCreateCommon.prototype.trackingUrls;
@@ -65,12 +65,6 @@ API.Client.CampaignCreateCommon.prototype.startTime;
  * @export
  */
 API.Client.CampaignCreateCommon.prototype.endTime;
-
-/**
- * @type {!API.Client.CampaignSummaryStatus}
- * @export
- */
-API.Client.CampaignCreateCommon.prototype.summaryStatus;
 
 /**
  * Determine if a campaign has flexible daily budgets setup.

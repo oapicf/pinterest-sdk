@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemDeleteBatchRecord", description = "Object describing an item batch record to delete items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemDeleteBatchRecord implements ItemBatchRecord {
 
   private String itemId;
@@ -37,7 +37,7 @@ public class ItemDeleteBatchRecord implements ItemBatchRecord {
   /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  */
+   */
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")

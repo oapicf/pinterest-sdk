@@ -122,8 +122,8 @@ bool audiencesGetAsync(char * accessToken,
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
  * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
- * \param ownershipType <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param ownershipType Filter audiences by ownership type.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -139,8 +139,8 @@ bool audiencesListSync(char * accessToken,
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bookmark Cursor used to fetch the next page of items
  * \param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
- * \param ownershipType <strong>This feature is currently in beta and not available to all apps.</strong> Filter audiences by ownership type.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+ * \param ownershipType Filter audiences by ownership type.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.

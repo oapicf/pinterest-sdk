@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsHotelItemsFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemsFilter   {
   public enum CatalogTypeEnum {
 
@@ -67,9 +67,9 @@ public class CatalogsHotelItemsFilter   {
     }
 }
 
-  private @Valid CatalogTypeEnum catalogType;
+  private CatalogTypeEnum catalogType;
   private @Valid List<String> hotelIds = new ArrayList<>();
-  private @Valid String catalogId;
+  private String catalogId;
 
   /**
    **/
@@ -81,8 +81,7 @@ public class CatalogsHotelItemsFilter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogTypeEnum getCatalogType() {
+  @NotNull public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
@@ -101,8 +100,7 @@ public class CatalogsHotelItemsFilter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("hotel_ids")
-  @NotNull
- @Size(min=1,max=100)  public List<String> getHotelIds() {
+  @NotNull  @Size(min=1,max=100)public List<String> getHotelIds() {
     return hotelIds;
   }
 
@@ -138,7 +136,7 @@ public class CatalogsHotelItemsFilter   {
   
   @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
   @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+   @Pattern(regexp="^\\d+$")public String getCatalogId() {
     return catalogId;
   }
 

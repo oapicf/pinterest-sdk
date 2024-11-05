@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.MediaUploadType
@@ -24,7 +25,7 @@ data class MediaUploadRequest(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("media_type", required = true) val mediaType: MediaUploadType
-) {
+    ) {
 
 }
 

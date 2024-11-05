@@ -36,5 +36,8 @@ data class OrderLineError (
     @Json(name = "error_messages")
     val errorMessages: kotlin.collections.List<kotlin.String>? = null
 
-)
+) {
+
+
+}
 

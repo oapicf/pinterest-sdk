@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &Interest{}
 // Interest struct for Interest
 type Interest struct {
 	CanonicalUrl *string `json:"canonical_url,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	Key *string `json:"key,omitempty"`
 	Name *string `json:"name,omitempty"`
 }

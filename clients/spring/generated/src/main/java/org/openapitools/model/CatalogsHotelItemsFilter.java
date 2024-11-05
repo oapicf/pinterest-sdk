@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * CatalogsHotelItemsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
 
   /**
@@ -88,7 +88,7 @@ public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -116,7 +116,7 @@ public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
   /**
    * Get hotelIds
    * @return hotelIds
-  */
+   */
   @NotNull @Size(min = 1, max = 100) 
   @Schema(name = "hotel_ids", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hotel_ids")
@@ -136,7 +136,7 @@ public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
   /**
    * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
    * @return catalogId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")

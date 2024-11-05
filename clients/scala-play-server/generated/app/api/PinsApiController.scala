@@ -14,9 +14,51 @@ import model.PinsAnalyticsMetricTypesParameterInner
 import model.PinsList200Response
 import model.PinsSaveRequest
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @Singleton
 class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extends AbstractController(cc) {
+  /**
+    * GET /v5/pins/analytics?pinIds=[value]&startDate=[value]&endDate=[value]&appTypes=[value]&metricTypes=[value]&adAccountId=[value]
+    */
+  def multiPinsAnalytics(): Action[AnyContent] = Action { request =>
+    def executeApi(): Map[String, Map[String, PinAnalyticsMetricsResponse]] = {
+      val pinIds = request.queryString.get("pin_ids")
+        .map(_.toList)
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("pin_ids", "query string")
+        }
+        
+      val startDate = request.getQueryString("start_date")
+        .map(value => LocalDate.parse(value))
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("start_date", "query string")
+        }
+        
+      val endDate = request.getQueryString("end_date")
+        .map(value => LocalDate.parse(value))
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("end_date", "query string")
+        }
+        
+      val appTypes = request.getQueryString("app_types")
+        
+      val metricTypes = request.getQueryString("metric_types")
+        .map(values => splitCollectionParam(values, "csv"))
+        .map(_.map(value => )
+        .getOrElse {
+          throw new OpenApiExceptions.MissingRequiredParameterException("metric_types", "query string")
+        }
+        
+      val adAccountId = request.getQueryString("ad_account_id")
+        
+      api.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
   /**
     * GET /v5/pins/:pinId/analytics?startDate=[value]&endDate=[value]&appTypes=[value]&metricTypes=[value]&splitField=[value]&adAccountId=[value]
     * @param pinId Unique identifier of a Pin.

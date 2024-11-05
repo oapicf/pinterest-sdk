@@ -11,7 +11,7 @@ The class is defined in **[CatalogsItemsDeleteBatchRequest.java](../../src/main/
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | `Country` |  | 
-**language** | `Language` |  | 
+**language** | [`CatalogsItemsRequestLanguage`](CatalogsItemsRequestLanguage.md) |  | 
 **operation** | `BatchOperation` |  | 
 **items** | [`List&lt;ItemDeleteBatchRecord&gt;`](ItemDeleteBatchRecord.md) | Array with catalogs items | 
 

@@ -19,11 +19,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Media upload details")
 @JsonTypeName("MediaUploadDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadDetails   {
-  private @Valid String mediaId;
-  private @Valid MediaUploadType mediaType;
-  private @Valid MediaUploadStatus status;
+  private String mediaId;
+  private MediaUploadType mediaType;
+  private MediaUploadStatus status;
 
   /**
    **/
@@ -35,7 +35,7 @@ public class MediaUploadDetails   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media_id")
- @Pattern(regexp="^\\d+$")  public String getMediaId() {
+   @Pattern(regexp="^\\d+$")public String getMediaId() {
     return mediaId;
   }
 

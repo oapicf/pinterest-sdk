@@ -31,7 +31,7 @@ data class ConversionApiResponse(
     @field:Valid
     @Schema(example = "null", required = true, description = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
     @get:JsonProperty("events", required = true) val events: kotlin.collections.List<ConversionApiResponseEventsInner>
-) {
+    ) {
 
 }
 

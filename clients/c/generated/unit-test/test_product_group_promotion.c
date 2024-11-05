@@ -36,7 +36,6 @@ product_group_promotion_t* instantiate_product_group_promotion(int include_optio
       "https://www.pinterest.com",
       "1231235",
       "catalogProductGroupName",
-      pinterest_rest_api_product_group_promotion__"REGULAR",
       "123123",
       "http://www.pinterest.com",
       pinterest_rest_api_product_group_promotion__"CLOSEUP"
@@ -57,7 +56,6 @@ product_group_promotion_t* instantiate_product_group_promotion(int include_optio
       "https://www.pinterest.com",
       "1231235",
       "catalogProductGroupName",
-      pinterest_rest_api_product_group_promotion__"REGULAR",
       "123123",
       "http://www.pinterest.com",
       pinterest_rest_api_product_group_promotion__"CLOSEUP"

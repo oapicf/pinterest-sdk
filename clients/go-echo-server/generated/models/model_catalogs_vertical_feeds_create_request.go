@@ -1,5 +1,9 @@
 package models
 
+import (
+	"gopkg.in/validator.v2"
+)
+
 // CatalogsVerticalFeedsCreateRequest - Request object for creating a feed.
 type CatalogsVerticalFeedsCreateRequest struct {
 
@@ -25,6 +29,8 @@ type CatalogsVerticalFeedsCreateRequest struct {
 
 	DefaultAvailability *ProductAvailabilityType `json:"default_availability,omitempty"`
 
-	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+	Status CatalogsStatus `json:"status,omitempty"`
+
+	// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
 	CatalogId *string `json:"catalog_id,omitempty"`
 }

@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.AdAccountCreateSubscriptionRequestPartnerMetadata
 
 module AdAccountCreateSubscriptionRequest =
 
@@ -13,5 +14,6 @@ module AdAccountCreateSubscriptionRequest =
     LeadFormId : string;
     PartnerAccessToken : string;
     PartnerRefreshToken : string;
+    PartnerMetadata : AdAccountCreateSubscriptionRequestPartnerMetadata;
   }
   //#endregion

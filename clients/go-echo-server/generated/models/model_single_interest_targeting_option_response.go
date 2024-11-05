@@ -2,7 +2,7 @@ package models
 
 type SingleInterestTargetingOptionResponse struct {
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"id,omitempty" validate:"regexp=\\\\d+"`
 
 	Name string `json:"name,omitempty"`
 

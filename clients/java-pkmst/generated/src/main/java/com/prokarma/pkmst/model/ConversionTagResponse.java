@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * ConversionTagResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionTagResponse   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -54,10 +54,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Ad account ID.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   public String getAdAccountId() {
     return adAccountId;
@@ -72,10 +72,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Tag code snippet.
    * @return codeSnippet
-  **/
+   */
   @ApiModelProperty(example = "<script type=text/javascript> [...]", value = "Tag code snippet.")
   public String getCodeSnippet() {
     return codeSnippet;
@@ -90,10 +90,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get enhancedMatchStatus
    * @return enhancedMatchStatus
-  **/
+   */
   @ApiModelProperty(value = "")
   public EnhancedMatchStatusType getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -108,10 +108,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Tag ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "2617998078212", value = "Tag ID.")
   public String getId() {
     return id;
@@ -126,10 +126,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Time for the last event fired.
    * @return lastFiredTimeMs
-  **/
+   */
   @ApiModelProperty(example = "1599030000000", value = "Time for the last event fired.")
   public BigDecimal getLastFiredTimeMs() {
     return lastFiredTimeMs;
@@ -144,10 +144,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Conversion tag name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "ACME Checkout Test Tag", value = "Conversion tag name.")
   public String getName() {
     return name;
@@ -162,10 +162,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "")
   public EntityStatus getStatus() {
     return status;
@@ -180,10 +180,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Version number.
    * @return version
-  **/
+   */
   @ApiModelProperty(example = "3", value = "Version number.")
   public String getVersion() {
     return version;
@@ -198,10 +198,10 @@ public class ConversionTagResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get configs
    * @return configs
-  **/
+   */
   @ApiModelProperty(value = "")
   public ConversionTagConfigs getConfigs() {
     return configs;

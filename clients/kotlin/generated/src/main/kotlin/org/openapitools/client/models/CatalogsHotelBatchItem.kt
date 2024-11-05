@@ -51,5 +51,6 @@ interface CatalogsHotelBatchItem {
     enum class Operation(val value: kotlin.String) {
         @Json(name = "DELETE") DELETE("DELETE");
     }
+
 }
 

@@ -64,9 +64,9 @@ public interface UserAccountApi  {
     void userWebsitesGet(String bookmark, Integer pageSize, Handler<AsyncResult<UserWebsitesGet200Response>> handler);
 
     //verify_website/update
-    void verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, Handler<AsyncResult<UserWebsiteSummary>> handler);
+    void verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, String adAccountId, Handler<AsyncResult<UserWebsiteSummary>> handler);
 
     //website_verification/get
-    void websiteVerificationGet(Handler<AsyncResult<UserWebsiteVerificationCode>> handler);
+    void websiteVerificationGet(String adAccountId, Handler<AsyncResult<UserWebsiteVerificationCode>> handler);
 
 }

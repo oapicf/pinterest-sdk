@@ -8,9 +8,9 @@ Catalogs Hotel Feed object
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **OffsetDateTime** |  |  [optional]
-**id** | **String** |  |  [optional]
-**updatedAt** | **OffsetDateTime** |  |  [optional]
+**createdAt** | **OffsetDateTime** |  | 
+**id** | **String** |  | 
+**updatedAt** | **OffsetDateTime** |  | 
 **name** | **String** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | **CatalogsFormat** |  | 
 **catalogType** | **CatalogsType** |  | 

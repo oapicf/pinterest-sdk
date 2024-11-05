@@ -46,7 +46,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the user_account API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-03-14T23:04:30.273794609Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2024-11-05T02:20:07.425136412Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserAccountApi  {
    private final UserAccountApiService delegate;
 
@@ -57,7 +57,7 @@ public class UserAccountApi  {
          String implClass = servletContext.getInitParameter("UserAccountApi.implementation");
          if (implClass != null && !"".equals(implClass.trim())) {
             try {
-               delegate = (UserAccountApiService) Class.forName(implClass).newInstance();
+               delegate = (UserAccountApiService) Class.forName(implClass).getDeclaredConstructor().newInstance();
             } catch (Exception e) {
                throw new RuntimeException(e);
             }
@@ -78,6 +78,9 @@ public class UserAccountApi  {
     @io.swagger.annotations.ApiOperation(value = "List following boards", notes = "Get a list of the boards a user follows. The request returns a board summary object array.", response = BoardsUserFollowsList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = {
@@ -85,7 +88,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid user id", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response boardsUserFollowsList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@ApiParam(value = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", defaultValue = "false") @DefaultValue("false") @QueryParam("explicit_following")  Boolean explicitFollowing,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response boardsUserFollowsList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@ApiParam(value = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", defaultValue = "false") @DefaultValue("false") @QueryParam("explicit_following")  Boolean explicitFollowing,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId, securityContext);
     }
@@ -93,7 +96,7 @@ public class UserAccountApi  {
     @Path("/following/{username}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Follow user", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.", response = UserSummary.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Follow user", notes = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.", response = UserSummary.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:write", description = "Update your user accounts and followers")
         })
@@ -114,6 +117,9 @@ public class UserAccountApi  {
     @io.swagger.annotations.ApiOperation(value = "List followers", notes = "Get a list of your followers.", response = FollowersList200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = {
@@ -121,7 +127,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid user id", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response followersList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
+    public Response followersList(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.followersList(bookmark, pageSize, securityContext);
     }
@@ -131,6 +137,9 @@ public class UserAccountApi  {
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "List linked businesses", notes = "Get a list of your linked business accounts.", response = LinkedBusiness.class, responseContainer = "List", authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -175,7 +184,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user account analytics.", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response userAccountAnalytics(@ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @QueryParam("start_date") @NotNull  Date startDate,@ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @QueryParam("end_date") @NotNull  Date endDate,@ApiParam(value = "Filter on Pins that match your claimed domain.", allowableValues="OTHER, CLAIMED, BOTH", defaultValue = "BOTH") @DefaultValue("BOTH") @QueryParam("from_claimed_content")  String fromClaimedContent,@ApiParam(value = "Pin formats to get data for, default is all.", allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("pin_format")  String pinFormat,@ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("app_types")  String appTypes,@ApiParam(value = "Filter to paid or organic data. Default is all.", allowableValues="ALL, PAID, ORGANIC", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("content_type")  String contentType,@ApiParam(value = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", allowableValues="ALL, YOUR_PINS, OTHER_PINS", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("source")  String source,@ApiParam(value = "Metric types to get data for, default is all. ") @QueryParam("metric_types") @Valid  List<String> metricTypes,@ApiParam(value = "How to split the data into groups. Not including this param means data won't be split.", allowableValues="NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT", defaultValue = "NO_SPLIT") @DefaultValue("NO_SPLIT") @QueryParam("split_field")  String splitField,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response userAccountAnalytics(@ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @QueryParam("start_date") @NotNull  Date startDate,@ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @QueryParam("end_date") @NotNull  Date endDate,@ApiParam(value = "Filter on Pins that match your claimed domain.", allowableValues="OTHER, CLAIMED, BOTH", defaultValue = "BOTH") @DefaultValue("BOTH") @QueryParam("from_claimed_content")  String fromClaimedContent,@ApiParam(value = "Pin formats to get data for, default is all.", allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("pin_format")  String pinFormat,@ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("app_types")  String appTypes,@ApiParam(value = "Filter to paid or organic data. Default is all.", allowableValues="ALL, PAID, ORGANIC", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("content_type")  String contentType,@ApiParam(value = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", allowableValues="ALL, YOUR_PINS, OTHER_PINS", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("source")  String source,@ApiParam(value = "Metric types to get data for, default is all. ") @QueryParam("metric_types")  List<String> metricTypes,@ApiParam(value = "How to split the data into groups. Not including this param means data won't be split.", allowableValues="NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT", defaultValue = "NO_SPLIT") @DefaultValue("NO_SPLIT") @QueryParam("split_field")  String splitField,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.userAccountAnalytics(startDate, endDate, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, splitField, adAccountId, securityContext);
     }
@@ -187,6 +196,10 @@ public class UserAccountApi  {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = {
@@ -194,7 +207,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user account analytics.", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response userAccountAnalyticsTopPins(@ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @QueryParam("start_date") @NotNull  Date startDate,@ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @QueryParam("end_date") @NotNull  Date endDate,@ApiParam(value = "Specify sorting order for metrics", required = true, allowableValues="ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE") @QueryParam("sort_by") @NotNull  String sortBy,@ApiParam(value = "Filter on Pins that match your claimed domain.", allowableValues="OTHER, CLAIMED, BOTH", defaultValue = "BOTH") @DefaultValue("BOTH") @QueryParam("from_claimed_content")  String fromClaimedContent,@ApiParam(value = "Pin formats to get data for, default is all.", allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("pin_format")  String pinFormat,@ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("app_types")  String appTypes,@ApiParam(value = "Filter to paid or organic data. Default is all.", allowableValues="ALL, PAID, ORGANIC", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("content_type")  String contentType,@ApiParam(value = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", allowableValues="ALL, YOUR_PINS, OTHER_PINS", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("source")  String source,@ApiParam(value = "Metric types to get data for, default is all. ") @QueryParam("metric_types") @Valid  List<String> metricTypes,@ApiParam(value = "Number of pins to include, default is 10. Max is 50.", defaultValue = "10") @DefaultValue("10") @QueryParam("num_of_pins")  @Min(1) @Max(50) Integer numOfPins,@ApiParam(value = "Get metrics for pins created in the last \"n\" days.", allowableValues="30") @QueryParam("created_in_last_n_days")  Integer createdInLastNDays,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response userAccountAnalyticsTopPins(@ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @QueryParam("start_date") @NotNull  Date startDate,@ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @QueryParam("end_date") @NotNull  Date endDate,@ApiParam(value = "Specify sorting order for metrics", required = true, allowableValues="ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE") @QueryParam("sort_by") @NotNull  String sortBy,@ApiParam(value = "Filter on Pins that match your claimed domain.", allowableValues="OTHER, CLAIMED, BOTH", defaultValue = "BOTH") @DefaultValue("BOTH") @QueryParam("from_claimed_content")  String fromClaimedContent,@ApiParam(value = "Pin formats to get data for, default is all.", allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("pin_format")  String pinFormat,@ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("app_types")  String appTypes,@ApiParam(value = "Filter to paid or organic data. Default is all.", allowableValues="ALL, PAID, ORGANIC", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("content_type")  String contentType,@ApiParam(value = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", allowableValues="ALL, YOUR_PINS, OTHER_PINS", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("source")  String source,@ApiParam(value = "Metric types to get data for, default is all. ") @QueryParam("metric_types")  List<String> metricTypes,@ApiParam(value = "Number of pins to include, default is 10. Max is 50.", defaultValue = "10") @DefaultValue("10") @QueryParam("num_of_pins")  @Min(1) @Max(50) Integer numOfPins,@ApiParam(value = "Get metrics for pins created in the last \"n\" days.", allowableValues="30") @QueryParam("created_in_last_n_days")  Integer createdInLastNDays,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.userAccountAnalyticsTopPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId, securityContext);
     }
@@ -206,6 +219,10 @@ public class UserAccountApi  {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = {
@@ -213,7 +230,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user account analytics.", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response userAccountAnalyticsTopVideoPins(@ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @QueryParam("start_date") @NotNull  Date startDate,@ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @QueryParam("end_date") @NotNull  Date endDate,@ApiParam(value = "Specify sorting order for video metrics", required = true, allowableValues="IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START") @QueryParam("sort_by") @NotNull  String sortBy,@ApiParam(value = "Filter on Pins that match your claimed domain.", allowableValues="OTHER, CLAIMED, BOTH", defaultValue = "BOTH") @DefaultValue("BOTH") @QueryParam("from_claimed_content")  String fromClaimedContent,@ApiParam(value = "Pin formats to get data for, default is all.", allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("pin_format")  String pinFormat,@ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("app_types")  String appTypes,@ApiParam(value = "Filter to paid or organic data. Default is all.", allowableValues="ALL, PAID, ORGANIC", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("content_type")  String contentType,@ApiParam(value = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", allowableValues="ALL, YOUR_PINS, OTHER_PINS", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("source")  String source,@ApiParam(value = "Metric types to get video data for, default is all. ") @QueryParam("metric_types") @Valid  List<String> metricTypes,@ApiParam(value = "Number of pins to include, default is 10. Max is 50.", defaultValue = "10") @DefaultValue("10") @QueryParam("num_of_pins")  @Min(1) @Max(50) Integer numOfPins,@ApiParam(value = "Get metrics for pins created in the last \"n\" days.", allowableValues="30") @QueryParam("created_in_last_n_days")  Integer createdInLastNDays,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response userAccountAnalyticsTopVideoPins(@ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @QueryParam("start_date") @NotNull  Date startDate,@ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @QueryParam("end_date") @NotNull  Date endDate,@ApiParam(value = "Specify sorting order for video metrics", required = true, allowableValues="IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START") @QueryParam("sort_by") @NotNull  String sortBy,@ApiParam(value = "Filter on Pins that match your claimed domain.", allowableValues="OTHER, CLAIMED, BOTH", defaultValue = "BOTH") @DefaultValue("BOTH") @QueryParam("from_claimed_content")  String fromClaimedContent,@ApiParam(value = "Pin formats to get data for, default is all.", allowableValues="ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("pin_format")  String pinFormat,@ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("app_types")  String appTypes,@ApiParam(value = "Filter to paid or organic data. Default is all.", allowableValues="ALL, PAID, ORGANIC", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("content_type")  String contentType,@ApiParam(value = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", allowableValues="ALL, YOUR_PINS, OTHER_PINS", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("source")  String source,@ApiParam(value = "Metric types to get video data for, default is all. ") @QueryParam("metric_types")  List<String> metricTypes,@ApiParam(value = "Number of pins to include, default is 10. Max is 50.", defaultValue = "10") @DefaultValue("10") @QueryParam("num_of_pins")  @Min(1) @Max(50) Integer numOfPins,@ApiParam(value = "Get metrics for pins created in the last \"n\" days.", allowableValues="30") @QueryParam("created_in_last_n_days")  Integer createdInLastNDays,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.userAccountAnalyticsTopVideoPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId, securityContext);
     }
@@ -221,8 +238,11 @@ public class UserAccountApi  {
     
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get user account", notes = "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.", response = Account.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get user account", notes = "Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.", response = Account.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
@@ -242,13 +262,16 @@ public class UserAccountApi  {
     @io.swagger.annotations.ApiOperation(value = "List following", notes = "Get a list of who a certain user follows.", response = UserFollowingGet200Response.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = {
         @io.swagger.annotations.ApiResponse(code = 200, message = "response", response = UserFollowingGet200Response.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response userFollowingGet(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@ApiParam(value = "Thrift param specifying what type of followees will be kept. Default to include all followees.", allowableValues="ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("feed_type")  UserFollowingFeedType feedType,@ApiParam(value = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", defaultValue = "false") @DefaultValue("false") @QueryParam("explicit_following")  Boolean explicitFollowing,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response userFollowingGet(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@ApiParam(value = "Thrift param specifying what type of followees will be kept. Default to include all followees.", allowableValues="ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY", defaultValue = "ALL") @DefaultValue("ALL") @QueryParam("feed_type")  UserFollowingFeedType feedType,@ApiParam(value = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", defaultValue = "false") @DefaultValue("false") @QueryParam("explicit_following")  Boolean explicitFollowing,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId, securityContext);
     }
@@ -266,7 +289,7 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user website list.", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response userWebsitesGet(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
+    public Response userWebsitesGet(@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark")  String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25") @DefaultValue("25") @QueryParam("page_size")  @Min(1) @Max(250) Integer pageSize,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.userWebsitesGet(bookmark, pageSize, securityContext);
     }
@@ -283,9 +306,9 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = UserWebsiteSummary.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response verifyWebsiteUpdate(@ApiParam(value = "Verify a website.", required = true) @NotNull @Valid  UserWebsiteVerifyRequest userWebsiteVerifyRequest,@Context SecurityContext securityContext)
+    public Response verifyWebsiteUpdate(@ApiParam(value = "Verify a website.", required = true) @NotNull @Valid  UserWebsiteVerifyRequest userWebsiteVerifyRequest,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.verifyWebsiteUpdate(userWebsiteVerifyRequest, securityContext);
+        return delegate.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId, securityContext);
     }
     @javax.ws.rs.GET
     @Path("/websites/verification")
@@ -294,6 +317,9 @@ public class UserAccountApi  {
     @io.swagger.annotations.ApiOperation(value = "Get user verification code for website claiming", notes = "Get verification code for user to install on the website to claim it.", response = UserWebsiteVerificationCode.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
+        }),
+        @io.swagger.annotations.Authorization(value = "client_credentials", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
     }, tags={ "user_account", })
     @io.swagger.annotations.ApiResponses(value = {
@@ -301,8 +327,8 @@ public class UserAccountApi  {
         @io.swagger.annotations.ApiResponse(code = 403, message = "Not authorized to access the user verification code for website claiming.", response = Error.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response websiteVerificationGet(@Context SecurityContext securityContext)
+    public Response websiteVerificationGet(@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.websiteVerificationGet(securityContext);
+        return delegate.websiteVerificationGet(adAccountId, securityContext);
     }
 }

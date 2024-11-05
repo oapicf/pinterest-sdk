@@ -77,6 +77,7 @@ private class OASCatalogsRetailProductGroupTest {
         System.assertEquals('isFeatured', x-property-mappings.get('is_featured'));
         System.assertEquals('createdAt', x-property-mappings.get('created_at'));
         System.assertEquals('updatedAt', x-property-mappings.get('updated_at'));
+        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('feedId', x-property-mappings.get('feed_id'));
     }
 }

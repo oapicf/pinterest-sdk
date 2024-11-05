@@ -67,7 +67,7 @@ public class SSIOAccountItem  {
   */
   @ApiModelProperty(value = "Address information that is associated with this account.")
   @Valid
-  private List<@Valid SSIOAccountAddress> addresses;
+  private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
  /**
   * Salesforce id for billto_info
   * @return id

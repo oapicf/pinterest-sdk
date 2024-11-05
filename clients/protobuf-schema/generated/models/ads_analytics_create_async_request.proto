@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -85,7 +85,7 @@ message AdsAnalyticsCreateAsyncRequest {
   // List of product item ids
   repeated string product_item_ids = 480116516;
 
-  // List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+  // List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   repeated AdsAnalyticsTargetingType targeting_types = 251011950;
 
   // List of metrics filters
@@ -99,5 +99,19 @@ message AdsAnalyticsCreateAsyncRequest {
 
   // Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
   DataOutputFormat report_format = 39379616;
+
+  // Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+  enum Primary_sortEnum {
+    Primary_sortEnum_ID = 0;
+    Primary_sortEnum_DATE = 1;
+  }
+
+  Primary_sortEnum primary_sort = 40496711;
+
+  // Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+  int32 start_hour = 499755105;
+
+  // Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+  int32 end_hour = 114587339;
 
 }

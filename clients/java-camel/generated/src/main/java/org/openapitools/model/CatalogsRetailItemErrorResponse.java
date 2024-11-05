@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailItemErrorResponse", description = "Object describing a retail item error")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
 
   private CatalogsType catalogType;
@@ -37,7 +37,7 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
   private String itemId;
 
   @Valid
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   public CatalogsRetailItemErrorResponse() {
     super();
@@ -58,7 +58,7 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -78,7 +78,7 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  */
+   */
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
@@ -106,7 +106,7 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * Array with the errors for the item id requested
    * @return errors
-  */
+   */
   @Valid 
   @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")

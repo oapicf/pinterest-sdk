@@ -20,9 +20,8 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsHotelBatchRequest
 import org.openapitools.client.models.CatalogsHotelBatchItem
-import org.openapitools.client.models.CatalogsType
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
-import org.openapitools.client.models.Language
 
 class CatalogsHotelBatchRequestTest : ShouldSpec() {
     init {

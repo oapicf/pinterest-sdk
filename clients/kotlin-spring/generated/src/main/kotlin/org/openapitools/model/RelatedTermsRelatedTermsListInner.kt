@@ -25,7 +25,7 @@ data class RelatedTermsRelatedTermsListInner(
 
     @Schema(example = "[\"shoes\",\"cute clothes\"]", description = "")
     @get:JsonProperty("related_terms") val relatedTerms: kotlin.collections.List<kotlin.String>? = null
-) {
+    ) {
 
 }
 

@@ -14,7 +14,7 @@ test_that("ad_group_id", {
 })
 
 test_that("product_group_promotion", {
-  # tests for the property `product_group_promotion` (array[ProductGroupPromotion])
+  # tests for the property `product_group_promotion` (array[ProductGroupPromotionCreateRequestElement])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`product_group_promotion`, "EXPECTED_RESULT")

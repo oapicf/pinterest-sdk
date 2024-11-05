@@ -25,8 +25,8 @@ import org.openapitools.client.models.AdPreviewRequest
 import org.openapitools.client.models.AdPreviewURLResponse
 import org.openapitools.client.models.AdResponse
 import org.openapitools.client.models.AdUpdateRequest
+import org.openapitools.client.models.AdsAnalyticsAdTargetingType
 import org.openapitools.client.models.AdsAnalyticsResponseInner
-import org.openapitools.client.models.AdsAnalyticsTargetingType
 import org.openapitools.client.models.AdsList200Response
 import org.openapitools.client.models.ConversionReportAttributionType
 import org.openapitools.client.models.Error
@@ -54,7 +54,7 @@ class AdsApiTest : ShouldSpec() {
             //val adIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad Ids to use to filter the results.
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val targetingTypes : kotlin.collections.List<AdsAnalyticsTargetingType> =  // kotlin.collections.List<AdsAnalyticsTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+            //val targetingTypes : kotlin.collections.List<AdsAnalyticsAdTargetingType> =  // kotlin.collections.List<AdsAnalyticsAdTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
             //val columns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
             //val granularity : Granularity = DAY // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
             //val clickWindowDays : kotlin.Int = 1 // kotlin.Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
@@ -72,14 +72,16 @@ class AdsApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val adIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad Ids to use to filter the results.
             //val columns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
             //val granularity : Granularity = DAY // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+            //val adIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad Ids to use to filter the results.
             //val clickWindowDays : kotlin.Int = 1 // kotlin.Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
             //val engagementWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
             //val viewWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
             //val conversionReportTime : kotlin.String = TIME_OF_AD_ACTION // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-            //val result : kotlin.collections.List<AdsAnalyticsResponseInner> = apiInstance.adsAnalytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+            //val pinIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Pin IDs.
+            //val campaignIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Campaign Ids to use to filter the results.
+            //val result : kotlin.collections.List<AdsAnalyticsResponseInner> = apiInstance.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds)
             //result shouldBe ("TODO")
         }
 
@@ -109,7 +111,7 @@ class AdsApiTest : ShouldSpec() {
             //val adGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad group Ids to use to filter the results.
             //val adIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad Ids to use to filter the results.
             //val entityStatuses : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Entity status
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val result : AdsList200Response = apiInstance.adsList(adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark)

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,7 @@ type LeadFormCommon struct {
 	Name NullableString `json:"name,omitempty"`
 	// A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
 	PrivacyPolicyLink NullableString `json:"privacy_policy_link,omitempty"`
-	// Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+	// Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
 	HasAcceptedTerms *bool `json:"has_accepted_terms,omitempty"`
 	// A message for people who complete the form to let them know what happens next.
 	CompletionMessage NullableString `json:"completion_message,omitempty"`
@@ -33,6 +33,8 @@ type LeadFormCommon struct {
 	DisclosureLanguage NullableString `json:"disclosure_language,omitempty"`
 	// List of questions to be displayed on the lead form.
 	Questions []LeadFormQuestion `json:"questions,omitempty"`
+	// List of additional policy links to be displayed on the lead form.
+	PolicyLinks []LeadFormCommonPolicyLinksInner `json:"policy_links,omitempty"`
 }
 
 // NewLeadFormCommon instantiates a new LeadFormCommon object
@@ -316,6 +318,38 @@ func (o *LeadFormCommon) SetQuestions(v []LeadFormQuestion) {
 	o.Questions = v
 }
 
+// GetPolicyLinks returns the PolicyLinks field value if set, zero value otherwise.
+func (o *LeadFormCommon) GetPolicyLinks() []LeadFormCommonPolicyLinksInner {
+	if o == nil || IsNil(o.PolicyLinks) {
+		var ret []LeadFormCommonPolicyLinksInner
+		return ret
+	}
+	return o.PolicyLinks
+}
+
+// GetPolicyLinksOk returns a tuple with the PolicyLinks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LeadFormCommon) GetPolicyLinksOk() ([]LeadFormCommonPolicyLinksInner, bool) {
+	if o == nil || IsNil(o.PolicyLinks) {
+		return nil, false
+	}
+	return o.PolicyLinks, true
+}
+
+// HasPolicyLinks returns a boolean if a field has been set.
+func (o *LeadFormCommon) HasPolicyLinks() bool {
+	if o != nil && !IsNil(o.PolicyLinks) {
+		return true
+	}
+
+	return false
+}
+
+// SetPolicyLinks gets a reference to the given []LeadFormCommonPolicyLinksInner and assigns it to the PolicyLinks field.
+func (o *LeadFormCommon) SetPolicyLinks(v []LeadFormCommonPolicyLinksInner) {
+	o.PolicyLinks = v
+}
+
 func (o LeadFormCommon) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -346,6 +380,9 @@ func (o LeadFormCommon) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Questions) {
 		toSerialize["questions"] = o.Questions
+	}
+	if !IsNil(o.PolicyLinks) {
+		toSerialize["policy_links"] = o.PolicyLinks
 	}
 	return toSerialize, nil
 }

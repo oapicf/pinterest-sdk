@@ -6,8 +6,8 @@ open OpenAPI.Model.AdPreviewRequest
 open OpenAPI.Model.AdPreviewURLResponse
 open OpenAPI.Model.AdResponse
 open OpenAPI.Model.AdUpdateRequest
+open OpenAPI.Model.AdsAnalyticsAdTargetingType
 open OpenAPI.Model.AdsAnalyticsResponseInner
-open OpenAPI.Model.AdsAnalyticsTargetingType
 open OpenAPI.Model.AdsList200Response
 open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
@@ -70,7 +70,7 @@ module AdsApiHandlerParams =
       endDate : DateTime ;
 
 
-      targetingTypes : AdsAnalyticsTargetingType[] ;
+      targetingTypes : AdsAnalyticsAdTargetingType[] ;
 
 
       columns : string[] ;
@@ -128,7 +128,7 @@ module AdsApiHandlerParams =
       endDate : DateTime ;
 
 
-      adIds : string[] ;
+      adIds : string[] option;
 
 
       columns : string[] ;
@@ -147,6 +147,12 @@ module AdsApiHandlerParams =
 
 
       conversionReportTime : string option;
+
+
+      pinIds : string[] option;
+
+
+      campaignIds : string[] option;
 
     }
     //#endregion

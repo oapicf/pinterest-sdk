@@ -4,8 +4,8 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.prokarma.pkmst.model.BoardOwner;
+import com.prokarma.pkmst.model.PinMedia;
 import com.prokarma.pkmst.model.PinMediaSource;
-import com.prokarma.pkmst.model.SummaryPinMedia;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Pin")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinCreate   {
   @JsonProperty("id")
   private String id;
@@ -53,7 +53,7 @@ public class PinCreate   {
   private BoardOwner boardOwner;
 
   @JsonProperty("media")
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @JsonProperty("media_source")
   private PinMediaSource mediaSource;
@@ -69,10 +69,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "813744226420795884", readOnly = true, value = "")
   public String getId() {
     return id;
@@ -87,10 +87,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get createdAt
    * @return createdAt
-  **/
+   */
   @ApiModelProperty(example = "2020-01-01T20:10:40Z", readOnly = true, value = "")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -105,10 +105,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get link
    * @return link
-  **/
+   */
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
   public String getLink() {
     return link;
@@ -123,10 +123,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
@@ -141,10 +141,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -159,10 +159,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
    * @return dominantColor
-  **/
+   */
   @ApiModelProperty(example = "#6E7874", value = "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".")
   public String getDominantColor() {
     return dominantColor;
@@ -177,10 +177,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get altText
    * @return altText
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAltText() {
     return altText;
@@ -195,10 +195,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * The board to which this Pin belongs.
    * @return boardId
-  **/
+   */
   @ApiModelProperty(value = "The board to which this Pin belongs.")
   public String getBoardId() {
     return boardId;
@@ -213,10 +213,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * The board section to which this Pin belongs.
    * @return boardSectionId
-  **/
+   */
   @ApiModelProperty(value = "The board section to which this Pin belongs.")
   public String getBoardSectionId() {
     return boardSectionId;
@@ -231,11 +231,11 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get boardOwner
    * @return boardOwner
-  **/
-  @ApiModelProperty(value = "")
+   */
+  @ApiModelProperty(readOnly = true, value = "")
   public BoardOwner getBoardOwner() {
     return boardOwner;
   }
@@ -244,21 +244,21 @@ public class PinCreate   {
     this.boardOwner = boardOwner;
   }
 
-  public PinCreate media(SummaryPinMedia media) {
+  public PinCreate media(PinMedia media) {
     this.media = media;
     return this;
   }
 
-   /**
+  /**
    * Get media
    * @return media
-  **/
-  @ApiModelProperty(value = "")
-  public SummaryPinMedia getMedia() {
+   */
+  @ApiModelProperty(readOnly = true, value = "")
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 
@@ -267,10 +267,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Get mediaSource
    * @return mediaSource
-  **/
+   */
   @ApiModelProperty(value = "")
   public PinMediaSource getMediaSource() {
     return mediaSource;
@@ -285,10 +285,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
    * @return parentPinId
-  **/
+   */
   @ApiModelProperty(value = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.")
   public String getParentPinId() {
     return parentPinId;
@@ -303,10 +303,10 @@ public class PinCreate   {
     return this;
   }
 
-   /**
+  /**
    * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
    * @return note
-  **/
+   */
   @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
   public String getNote() {
     return note;

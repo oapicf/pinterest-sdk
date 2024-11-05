@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **defaultCountry** | [**Country**](Country.md) |  | 
 **defaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

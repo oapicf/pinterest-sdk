@@ -22,7 +22,7 @@ data class CampaignId(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", description = "Campaign ID.")
     @get:JsonProperty("id") val id: kotlin.String? = null
-) {
+    ) {
 
 }
 

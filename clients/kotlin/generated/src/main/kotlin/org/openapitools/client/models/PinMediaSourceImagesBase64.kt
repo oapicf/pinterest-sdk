@@ -52,5 +52,6 @@ data class PinMediaSourceImagesBase64 (
     enum class SourceType(val value: kotlin.String) {
         @Json(name = "multiple_image_base64") multiple_image_base64("multiple_image_base64");
     }
+
 }
 

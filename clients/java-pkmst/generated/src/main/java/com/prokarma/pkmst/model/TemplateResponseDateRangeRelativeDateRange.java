@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "The relative date range of the template")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRangeRelativeDateRange   {
   @JsonProperty("type")
   private String type;
@@ -33,10 +33,10 @@ public class TemplateResponseDateRangeRelativeDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The date range type
    * @return type
-  **/
+   */
   @ApiModelProperty(example = "relative", value = "The date range type")
   public String getType() {
     return type;
@@ -51,10 +51,10 @@ public class TemplateResponseDateRangeRelativeDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The start date of the date range
    * @return startDaysInPast
-  **/
+   */
   @ApiModelProperty(example = "14", value = "The start date of the date range")
   public BigDecimal getStartDaysInPast() {
     return startDaysInPast;
@@ -69,10 +69,10 @@ public class TemplateResponseDateRangeRelativeDateRange   {
     return this;
   }
 
-   /**
+  /**
    * The end date of the date range
    * @return endDaysInPast
-  **/
+   */
   @ApiModelProperty(example = "7", value = "The end date of the date range")
   public BigDecimal getEndDaysInPast() {
     return endDaysInPast;

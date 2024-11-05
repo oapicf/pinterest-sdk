@@ -23,8 +23,7 @@ AudienceDemographics <- R6::R6Class(
     `devices` = NULL,
     `metros` = NULL,
     `countries` = NULL,
-    #' Initialize a new AudienceDemographics class.
-    #'
+
     #' @description
     #' Initialize a new AudienceDemographics class.
     #'
@@ -34,7 +33,6 @@ AudienceDemographics <- R6::R6Class(
     #' @param metros Geographic metro area distribution.
     #' @param countries Country area distribution.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`ages` = NULL, `genders` = NULL, `devices` = NULL, `metros` = NULL, `countries` = NULL, ...) {
       if (!is.null(`ages`)) {
         stopifnot(is.vector(`ages`), length(`ages`) != 0)
@@ -62,13 +60,11 @@ AudienceDemographics <- R6::R6Class(
         self$`countries` <- `countries`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceDemographics in JSON format
-    #' @export
     toJSON = function() {
       AudienceDemographicsObject <- list()
       if (!is.null(self$`ages`)) {
@@ -93,14 +89,12 @@ AudienceDemographics <- R6::R6Class(
       }
       AudienceDemographicsObject
     },
-    #' Deserialize JSON string into an instance of AudienceDemographics
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceDemographics
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceDemographics
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ages`)) {
@@ -120,13 +114,11 @@ AudienceDemographics <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AudienceDemographics in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ages`)) {
@@ -173,14 +165,12 @@ AudienceDemographics <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AudienceDemographics
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AudienceDemographics
     #'
     #' @param input_json the JSON input
     #' @return the instance of AudienceDemographics
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ages` <- ApiClient$new()$deserializeObj(this_object$`ages`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
@@ -190,53 +180,42 @@ AudienceDemographics <- R6::R6Class(
       self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to AudienceDemographics
-    #'
+
     #' @description
     #' Validate JSON input with respect to AudienceDemographics and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AudienceDemographics
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

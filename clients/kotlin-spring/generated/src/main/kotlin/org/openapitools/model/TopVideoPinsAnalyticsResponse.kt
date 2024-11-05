@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.TopPinsAnalyticsResponseDateAvailability
@@ -34,23 +35,31 @@ data class TopVideoPinsAnalyticsResponse(
 
     @Schema(example = "IMPRESSION", description = "")
     @get:JsonProperty("sort_by") val sortBy: TopVideoPinsAnalyticsResponse.SortBy? = null
-) {
+    ) {
 
     /**
     * 
     * Values: SAVE,IMPRESSION,OUTBOUND_CLICK,VIDEO_MRC_VIEW,VIDEO_AVG_WATCH_TIME,VIDEO_V50_WATCH_TIME,QUARTILE_95_PERCENT_VIEW,VIDEO_10S_VIEW,VIDEO_START
     */
-    enum class SortBy(val value: kotlin.String) {
+    enum class SortBy(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("SAVE") SAVE("SAVE"),
-        @JsonProperty("IMPRESSION") IMPRESSION("IMPRESSION"),
-        @JsonProperty("OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
-        @JsonProperty("VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
-        @JsonProperty("VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
-        @JsonProperty("VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
-        @JsonProperty("QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-        @JsonProperty("VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
-        @JsonProperty("VIDEO_START") VIDEO_START("VIDEO_START")
+        SAVE("SAVE"),
+        IMPRESSION("IMPRESSION"),
+        OUTBOUND_CLICK("OUTBOUND_CLICK"),
+        VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
+        VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
+        VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
+        QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
+        VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+        VIDEO_START("VIDEO_START");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): SortBy {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

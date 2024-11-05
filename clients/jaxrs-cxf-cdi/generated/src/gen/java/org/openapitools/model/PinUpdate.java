@@ -35,7 +35,7 @@ public class PinUpdate   {
 
   private String title;
 
-  private List<@Valid PinUpdateCarouselSlotsInner> carouselSlots;
+  private List<@Valid PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
 
   private String note;
 

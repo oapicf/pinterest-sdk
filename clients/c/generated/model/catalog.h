@@ -19,7 +19,7 @@ typedef struct catalog_t catalog_t;
 
 // Enum  for catalog
 
-typedef enum  { pinterest_rest_api_catalog__NULL = 0, pinterest_rest_api_catalog__RETAIL, pinterest_rest_api_catalog__HOTEL } pinterest_rest_api_catalog__e;
+typedef enum  { pinterest_rest_api_catalog__NULL = 0, pinterest_rest_api_catalog__RETAIL, pinterest_rest_api_catalog__HOTEL, pinterest_rest_api_catalog__CREATIVE_ASSETS } pinterest_rest_api_catalog__e;
 
 char* catalog_catalog_type_ToString(pinterest_rest_api_catalog__e catalog_type);
 

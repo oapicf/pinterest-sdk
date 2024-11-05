@@ -19,6 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.LeadFormResponse
+import org.openapitools.client.models.LeadFormCommonPolicyLinksInner
 import org.openapitools.client.models.LeadFormQuestion
 import org.openapitools.client.models.LeadFormStatus
 
@@ -39,7 +40,7 @@ class LeadFormResponseTest : ShouldSpec() {
             //modelInstance.privacyPolicyLink shouldBe ("TODO")
         }
 
-        // to test the property `hasAcceptedTerms` - Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+        // to test the property `hasAcceptedTerms` - Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
         should("test hasAcceptedTerms") {
             // uncomment below to test the property
             //modelInstance.hasAcceptedTerms shouldBe ("TODO")
@@ -67,6 +68,12 @@ class LeadFormResponseTest : ShouldSpec() {
         should("test questions") {
             // uncomment below to test the property
             //modelInstance.questions shouldBe ("TODO")
+        }
+
+        // to test the property `policyLinks` - List of additional policy links to be displayed on the lead form.
+        should("test policyLinks") {
+            // uncomment below to test the property
+            //modelInstance.policyLinks shouldBe ("TODO")
         }
 
         // to test the property `id` - The ID of this lead form

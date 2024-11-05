@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -26,15 +27,23 @@ data class PinMediaSourcePinURL(
 
     @Schema(example = "null", description = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
     @get:JsonProperty("is_affiliate_link") val isAffiliateLink: kotlin.Boolean? = false
-) {
+    ) {
 
     /**
     * 
     * Values: pin_url
     */
-    enum class SourceType(val value: kotlin.String) {
+    enum class SourceType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("pin_url") pin_url("pin_url")
+        pin_url("pin_url");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): SourceType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

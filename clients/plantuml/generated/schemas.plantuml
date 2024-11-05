@@ -47,6 +47,11 @@ entity AdAccountCreateSubscriptionRequest {
     lead_form_id: String
     partner_access_token: String
     partner_refresh_token: String
+    partner_metadata: AdAccountCreateSubscriptionRequestPartnerMetadata
+}
+
+entity AdAccountCreateSubscriptionRequestPartnerMetadata {
+    subscriber_key: String
 }
 
 entity AdAccountCreateSubscriptionResponse {
@@ -73,7 +78,7 @@ entity AdAccountOwner {
     id: String
 }
 
-entity AdAccountsCatalogsProductGroupsList200Response {
+entity AdAccountsAudiencesSharedAccountsList200Response {
 }
 
 entity AdAccountsCountryResponse {
@@ -116,18 +121,12 @@ entity AdCommon {
     is_removable: Boolean
     name: String
     status: EntityStatus
-    tracking_urls: AdCommonTrackingUrls
+    tracking_urls: TrackingUrls
     view_tracking_url: String
     lead_form_id: String
     grid_click_type: GridClickType
     customizable_cta_type: String
-    quiz_pin_data: AdCommonQuizPinData
-}
-
-entity AdCommonQuizPinData {
-}
-
-entity AdCommonTrackingUrls {
+    quiz_pin_data: QuizPinData
 }
 
 entity AdCountry {
@@ -169,25 +168,20 @@ entity AdGroupCommon {
     status: EntityStatus
     budget_in_micro_currency: Integer
     bid_in_micro_currency: Integer
-    optimization_goal_metadata: AdGroupCommonOptimizationGoalMetadata
+    optimization_goal_metadata: OptimizationGoalMetadata
     budget_type: BudgetType
     start_time: Integer
     end_time: Integer
     targeting_spec: TargetingSpec
     lifetime_frequency_cap: Integer
-    tracking_urls: AdGroupCommonTrackingUrls
+    tracking_urls: TrackingUrls
     auto_targeting_enabled: Boolean
     placement_group: PlacementGroupType
     pacing_delivery_type: PacingDeliveryType
     campaign_id: String
     billable_event: ActionType
     bid_strategy_type: String
-}
-
-entity AdGroupCommonOptimizationGoalMetadata {
-}
-
-entity AdGroupCommonTrackingUrls {
+    targeting_template_ids: List<String>
 }
 
 entity AdGroupCreateRequest {
@@ -239,6 +233,12 @@ entity AdResponse {
 entity AdUpdateRequest {
 }
 
+entity AdsAnalyticsAdTargetingType {
+}
+
+entity AdsAnalyticsCampaignTargetingType {
+}
+
 entity AdsAnalyticsCreateAsyncRequest {
     * start_date: String
     * end_date: String
@@ -263,6 +263,9 @@ entity AdsAnalyticsCreateAsyncRequest {
     * columns: List<ReportingColumnAsync>
     * level: MetricsReportingLevel
     report_format: DataOutputFormat
+    primary_sort: String
+    start_hour: Integer
+    end_hour: Integer
 }
 
 entity AdsAnalyticsCreateAsyncResponse {
@@ -324,6 +327,70 @@ entity AdsCreditsDiscountsGet200Response {
 entity AdsList200Response {
 }
 
+entity AdvancedAuctionBidOptions {
+    bid_in_micro_currency: Long
+    app_type_multipliers: AppTypeMultipliers
+    placement_multipliers: PlacementMultipliers
+}
+
+entity AdvancedAuctionItem {
+}
+
+entity AdvancedAuctionItems {
+    catalog_id: String
+    items: List<AdvancedAuctionItem>
+}
+
+entity AdvancedAuctionItemsGetRecord {
+}
+
+entity AdvancedAuctionItemsGetRequest {
+    * catalog_id: String
+    * items: List<AdvancedAuctionItemsGetRecord>
+}
+
+entity AdvancedAuctionItemsSubmitDeleteRecord {
+}
+
+entity AdvancedAuctionItemsSubmitRecord {
+    * operation: AdvancedAuctionOperation
+    * item_id: String
+    * country: Country
+    * language: Language
+    * bid_options: AdvancedAuctionBidOptions
+    * update_mask: List<UpdateMaskBidOptionField>
+}
+
+entity AdvancedAuctionItemsSubmitRequest {
+    * catalog_id: String
+    * items: List<AdvancedAuctionItemsSubmitRecord>
+}
+
+entity AdvancedAuctionItemsSubmitUpsertRecord {
+}
+
+entity AdvancedAuctionKey {
+    * item_id: String
+    * country: Country
+    * language: Language
+}
+
+entity AdvancedAuctionOperation {
+}
+
+entity AdvancedAuctionOperationError {
+    code: Integer
+    message: String
+}
+
+entity AdvancedAuctionProcessedItem {
+}
+
+entity AdvancedAuctionProcessedItems {
+    catalog_id: String
+    items: List<AdvancedAuctionProcessedItem>
+}
+
 entity AnalyticsDailyMetrics {
     data_status: DataStatus
     date: String
@@ -333,6 +400,33 @@ entity AnalyticsDailyMetrics {
 entity AnalyticsMetricsResponse {
     summary_metrics: Map
     daily_metrics: List<AnalyticsDailyMetrics>
+}
+
+entity AppTypeMultipliers {
+    APP_TYPE: TargetingSpecAppType
+}
+
+entity AssetGroupBinding {
+    id: String
+    asset_group_name: String
+    asset_group_description: String
+    asset_group_types: List<String>
+    ad_accounts_ids: List<String>
+    profiles_ids: List<String>
+    created_time: Integer
+    updated_time: Integer
+    owner: BusinessAccessUserSummary
+    created_by: BusinessAccessUserSummary
+}
+
+entity AssetGroupType {
+}
+
+entity AssetIdPermissions {
+    asset_id: String
+    asset_type: String
+    permissions: List<String>
+    asset_group_info: AssetGroupBinding
 }
 
 entity Audience {
@@ -347,6 +441,9 @@ entity Audience {
     type: String
     created_timestamp: Integer
     updated_timestamp: Integer
+}
+
+entity AudienceAccountType {
 }
 
 entity AudienceCategory {
@@ -447,6 +544,9 @@ entity AudienceRule {
     ad_account_id: String
 }
 
+entity AudienceShareType {
+}
+
 entity AudienceSharingType {
 }
 
@@ -470,8 +570,37 @@ entity AudienceUpdateRequest {
 entity AudiencesList200Response {
 }
 
+entity AuthRespondInvitesBody {
+    * invites: List<AuthRespondInvitesBodyInvitesInner>
+}
+
+entity AuthRespondInvitesBodyInvitesInner {
+    * action: AuthRespondInvitesBodyInvitesInnerAction
+    * invite_id: String
+}
+
+entity AuthRespondInvitesBodyInvitesInnerAction {
+    * accept_invite: Boolean
+    asset_id_to_permissions: Map
+}
+
 entity AvailabilityFilter {
     * AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity BaseInviteDataResponse {
+    id: String
+    invite_data: BaseInviteDataResponseInviteData
+    is_received_invite: Boolean
+    user: BusinessAccessUserSummary
+}
+
+entity BaseInviteDataResponseInviteData {
+    invite_expiration: Integer
+    invite_status: String
+    invite_type: String
+    last_updated_time: Integer
+    sent_at: Integer
 }
 
 entity BatchOperation {
@@ -530,6 +659,7 @@ entity BoardMedia {
 }
 
 entity BoardOwner {
+    username: String
 }
 
 entity BoardSection {
@@ -629,7 +759,72 @@ entity BulkUpsertStatusResponse {
     result_url: String
 }
 
+entity BusinessAccessError {
+    * code: Integer
+    * message: String
+}
+
 entity BusinessAccessRole {
+}
+
+entity BusinessAccessUserSummary {
+    email: String
+    id: String
+    username: String
+}
+
+entity BusinessAssetMembersGet200Response {
+}
+
+entity BusinessAssetPartnersGet200Response {
+}
+
+entity BusinessAssetsGet200Response {
+}
+
+entity BusinessMemberAssetsGet200Response {
+}
+
+entity BusinessMemberAssetsSummary {
+    ad_accounts: List<BusinessMemberAssetsSummaryAdAccountsInner>
+    profiles: List<BusinessMemberAssetsSummaryProfilesInner>
+}
+
+entity BusinessMemberAssetsSummaryAdAccountsInner {
+    id: String
+    permissions: List<String>
+}
+
+entity BusinessMemberAssetsSummaryProfilesInner {
+    id: String
+    permissions: List<String>
+}
+
+entity BusinessMembersAssetAccessDeleteRequest {
+    * accesses: List<BusinessMembersAssetAccessDeleteRequestAccessesInner>
+}
+
+entity BusinessMembersAssetAccessDeleteRequestAccessesInner {
+    * asset_id: String
+    * member_id: String
+}
+
+entity BusinessPartnerAssetAccessGet200Response {
+}
+
+entity BusinessRole {
+}
+
+entity BusinessRoleCheckMode {
+}
+
+entity BusinessRoleForMembers {
+}
+
+entity BusinessSharedAudience {
+}
+
+entity BusinessSharedAudienceResponse {
 }
 
 entity CampaignCommon {
@@ -639,10 +834,10 @@ entity CampaignCommon {
     lifetime_spend_cap: Integer
     daily_spend_cap: Integer
     order_line_id: String
-    tracking_urls: AdCommonTrackingUrls
+    tracking_urls: TrackingUrls
     start_time: Integer
     end_time: Integer
-    summary_status: CampaignSummaryStatus
+    is_flexible_daily_budgets: Boolean
 }
 
 entity CampaignCreateCommon {
@@ -687,22 +882,17 @@ entity CampaignsAnalyticsResponseInner {
 entity CampaignsList200Response {
 }
 
+entity CancelInvitesBody {
+    * invite_ids: List<String>
+}
+
 entity Catalog {
 }
 
-entity CatalogProductGroup {
-    id: String
-    merchant_id: String
-    name: String
-    filters: Object
-    filter_v2: Object
-    type: Board
-    status: EntityStatus
-    feed_profile_id: String
-    created_at: Integer
-    last_update: Integer
-    product_count: Integer
-    featured_position: Integer
+entity CatalogsCreateCreativeAssetsItem {
+    * creative_assets_id: String
+    * operation: String
+    * attributes: CatalogsCreativeAssetsAttributes
 }
 
 entity CatalogsCreateHotelItem {
@@ -711,16 +901,184 @@ entity CatalogsCreateHotelItem {
     * attributes: CatalogsHotelAttributes
 }
 
+entity CatalogsCreateReportResponse {
+    token: String
+}
+
+entity CatalogsCreateRequest {
+    * catalog_type: String
+    * name: String
+}
+
 entity CatalogsCreateRetailItem {
     * item_id: String
     * operation: String
-    * attributes: ItemAttributes
+    * attributes: ItemAttributesRequest
+}
+
+entity CatalogsCreativeAssetsAttributes {
+}
+
+entity CatalogsCreativeAssetsBatchItem {
+    * creative_assets_id: String
+    * operation: String
+    * attributes: CatalogsUpdatableCreativeAssetsAttributes
+}
+
+entity CatalogsCreativeAssetsBatchRequest {
+    * catalog_type: String
+    * country: Country
+    * language: CatalogsItemsRequestLanguage
+    * items: List<CatalogsCreativeAssetsBatchItem>
+    catalog_id: String
+}
+
+entity CatalogsCreativeAssetsFeed {
+}
+
+entity CatalogsCreativeAssetsFeedsCreateRequest {
+    default_currency: NullableCurrency
+    * name: String
+    * format: CatalogsFormat
+    * default_locale: CatalogsFeedsCreateRequestDefaultLocale
+    * default_country: Country
+    credentials: CatalogsFeedCredentials
+    * location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    * catalog_type: CatalogsType
+    catalog_id: String
+    status: CatalogsStatus
+}
+
+entity CatalogsCreativeAssetsFeedsUpdateRequest {
+    default_currency: NullableCurrency
+    name: String
+    format: CatalogsFormat
+    credentials: CatalogsFeedCredentials
+    location: String
+    preferred_processing_schedule: CatalogsFeedProcessingSchedule
+    status: CatalogsStatus
+    * catalog_type: CatalogsType
+}
+
+entity CatalogsCreativeAssetsItemErrorResponse {
+    * catalog_type: CatalogsType
+    creative_assets_id: String
+    errors: List<ItemValidationEvent>
+}
+
+entity CatalogsCreativeAssetsItemResponse {
+    * catalog_type: CatalogsType
+    creative_assets_id: String
+    pins: List<Pin>
+    attributes: CatalogsCreativeAssetsAttributes
+}
+
+entity CatalogsCreativeAssetsItemsBatch {
+    batch_id: String
+    created_time: Date
+    completed_time: Date
+    status: BatchOperationStatus
+    * catalog_type: CatalogsType
+    items: List<CreativeAssetsProcessingRecord>
+}
+
+entity CatalogsCreativeAssetsItemsFilter {
+    * catalog_type: String
+    * creative_assets_ids: List<String>
+    catalog_id: String
+}
+
+entity CatalogsCreativeAssetsItemsPostFilter {
+    * catalog_type: String
+    * creative_assets_ids: List<String>
+    catalog_id: String
+}
+
+entity CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
+    * catalog_type: String
+    * catalog_id: String
+    * filters: CatalogsCreativeAssetsProductGroupFilters
+}
+
+entity CatalogsCreativeAssetsProduct {
+    * catalog_type: String
+    * metadata: CatalogsCreativeAssetsProductMetadata
+    * pin: Pin
+}
+
+entity CatalogsCreativeAssetsProductGroup {
+    * catalog_type: String
+    * id: String
+    name: String
+    description: String
+    * filters: CatalogsCreativeAssetsProductGroupFilters
+    created_at: Integer
+    updated_at: Integer
+    * catalog_id: String
+}
+
+entity CatalogsCreativeAssetsProductGroupCreateRequest {
+    * catalog_type: String
+    * name: String
+    description: String
+    * filters: CatalogsCreativeAssetsProductGroupFilters
+    * catalog_id: String
+}
+
+entity CatalogsCreativeAssetsProductGroupFilterKeys {
+    * CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria
+    * CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
+    * GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria
+    * GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+    * MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
+}
+
+entity CatalogsCreativeAssetsProductGroupFilters {
+    * any_of: List<CatalogsCreativeAssetsProductGroupFilterKeys>
+    * all_of: List<CatalogsCreativeAssetsProductGroupFilterKeys>
+}
+
+entity CatalogsCreativeAssetsProductGroupFiltersAnyOf {
+    * any_of: List<CatalogsCreativeAssetsProductGroupFilterKeys>
+}
+
+entity CatalogsCreativeAssetsProductGroupProductCounts {
+    * catalog_type: String
+    * total: BigDecimal
+    * videos: BigDecimal
+}
+
+entity CatalogsCreativeAssetsProductGroupUpdateRequest {
+    catalog_type: String
+    name: String
+    description: String
+    filters: CatalogsCreativeAssetsProductGroupFilters
+}
+
+entity CatalogsCreativeAssetsProductMetadata {
+    * creative_assets_id: String
+    * visibility: CreativeAssetsVisibilityType
 }
 
 entity CatalogsDbItem {
-    created_at: Date
-    id: String
-    updated_at: Date
+    * created_at: Date
+    * id: String
+    * updated_at: Date
+}
+
+entity CatalogsDeleteCreativeAssetsItem {
+    * creative_assets_id: String
+    * operation: String
 }
 
 entity CatalogsDeleteHotelItem {
@@ -734,9 +1092,9 @@ entity CatalogsDeleteRetailItem {
 }
 
 entity CatalogsFeed {
-    created_at: Date
-    id: String
-    updated_at: Date
+    * created_at: Date
+    * id: String
+    * updated_at: Date
     * name: String
     * format: CatalogsFormat
     * catalog_type: CatalogsType
@@ -754,6 +1112,13 @@ entity CatalogsFeed {
 entity CatalogsFeedCredentials {
     * password: String
     * username: String
+}
+
+entity CatalogsFeedIngestion {
+    * id: String
+    * feed_id: String
+    * created_at: Date
+    * status: CatalogsFeedProcessingStatus
 }
 
 entity CatalogsFeedIngestionDetails {
@@ -907,6 +1272,7 @@ entity CatalogsFeedsCreateRequest {
     preferred_processing_schedule: CatalogsFeedProcessingSchedule
     default_country: Country
     default_availability: ProductAvailabilityType
+    status: CatalogsStatus
 }
 
 entity CatalogsFeedsCreateRequestDefaultLocale {
@@ -949,9 +1315,9 @@ entity CatalogsHotelBatchItem {
 }
 
 entity CatalogsHotelBatchRequest {
-    * catalog_type: CatalogsType
+    * catalog_type: String
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * items: List<CatalogsHotelBatchItem>
     catalog_id: String
 }
@@ -969,6 +1335,7 @@ entity CatalogsHotelFeedsCreateRequest {
     preferred_processing_schedule: CatalogsFeedProcessingSchedule
     * catalog_type: CatalogsType
     catalog_id: String
+    status: CatalogsStatus
 }
 
 entity CatalogsHotelFeedsUpdateRequest {
@@ -1017,6 +1384,24 @@ entity CatalogsHotelItemsFilter {
     catalog_id: String
 }
 
+entity CatalogsHotelItemsPostFilter {
+    * catalog_type: String
+    * hotel_ids: List<String>
+    catalog_id: String
+}
+
+entity CatalogsHotelListProductsByCatalogBasedFilterRequest {
+    * catalog_type: String
+    * catalog_id: String
+    * filters: CatalogsHotelProductGroupFilters
+}
+
+entity CatalogsHotelProduct {
+    * catalog_type: String
+    * metadata: CatalogsHotelProductMetadata
+    * pin: Pin
+}
+
 entity CatalogsHotelProductGroup {
     * catalog_type: String
     * id: String
@@ -1057,11 +1442,32 @@ entity CatalogsHotelProductGroupFiltersAnyOf {
     * any_of: List<CatalogsHotelProductGroupFilterKeys>
 }
 
+entity CatalogsHotelProductGroupProductCounts {
+    * catalog_type: String
+    * total: BigDecimal
+}
+
 entity CatalogsHotelProductGroupUpdateRequest {
     catalog_type: String
     name: String
     description: String
     filters: CatalogsHotelProductGroupFilters
+}
+
+entity CatalogsHotelProductMetadata {
+    * hotel_id: String
+}
+
+entity CatalogsHotelReportParameters {
+    * catalog_type: String
+    * report: CatalogsHotelReportParametersReport
+}
+
+entity CatalogsHotelReportParametersReport {
+    report_type: String
+    * feed_id: String
+    processing_result_id: String
+    catalog_id: String
 }
 
 entity CatalogsItemValidationDetails {
@@ -1162,33 +1568,33 @@ entity CatalogsItemsBatch {
     created_time: Date
     completed_time: Date
     status: BatchOperationStatus
-    items: List<HotelProcessingRecord>
+    items: List<CreativeAssetsProcessingRecord>
 }
 
 entity CatalogsItemsBatchRequest {
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * operation: BatchOperation
     * items: List<ItemDeleteBatchRecord>
 }
 
 entity CatalogsItemsCreateBatchRequest {
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * operation: BatchOperation
     * items: List<ItemCreateBatchRecord>
 }
 
 entity CatalogsItemsDeleteBatchRequest {
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * operation: BatchOperation
     * items: List<ItemDeleteBatchRecord>
 }
 
 entity CatalogsItemsDeleteDiscontinuedBatchRequest {
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * operation: BatchOperation
     * items: List<ItemDeleteDiscontinuedBatchRecord>
 }
@@ -1198,18 +1604,36 @@ entity CatalogsItemsFilters {
     * item_ids: List<String>
     catalog_id: String
     * hotel_ids: List<String>
+    * creative_assets_ids: List<String>
+}
+
+entity CatalogsItemsPostFilters {
+    * catalog_type: CatalogsType
+    * item_ids: List<String>
+    catalog_id: String
+    * hotel_ids: List<String>
+    * creative_assets_ids: List<String>
+}
+
+entity CatalogsItemsRequest {
+    * country: Country
+    * language: CatalogsItemsRequestLanguage
+    * filters: CatalogsItemsPostFilters
+}
+
+entity CatalogsItemsRequestLanguage {
 }
 
 entity CatalogsItemsUpdateBatchRequest {
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * operation: BatchOperation
     * items: List<ItemUpdateBatchRecord>
 }
 
 entity CatalogsItemsUpsertBatchRequest {
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * operation: BatchOperation
     * items: List<ItemUpsertBatchRecord>
 }
@@ -1217,36 +1641,27 @@ entity CatalogsItemsUpsertBatchRequest {
 entity CatalogsList200Response {
 }
 
-entity CatalogsListProductsByFilterRequest {
+entity CatalogsListProductsByFeedBasedFilter {
     * feed_id: String
     * filters: CatalogsProductGroupFilters
 }
 
-entity CatalogsListProductsByFilterRequestOneOf {
+entity CatalogsListProductsByFilterRequest {
     * feed_id: String
-    * filters: CatalogsProductGroupFilters
+    * filters: CatalogsCreativeAssetsProductGroupFilters
+    * catalog_type: String
+    * catalog_id: String
+    * country: Country
+    * locale: CatalogsLocale
 }
 
 entity CatalogsLocale {
 }
 
 entity CatalogsProduct {
-    * metadata: CatalogsProductMetadata
+    * catalog_type: CatalogsType
+    * metadata: CatalogsCreativeAssetsProductMetadata
     * pin: Pin
-}
-
-entity CatalogsProductGroup {
-    * id: String
-    name: String
-    description: String
-    * filters: CatalogsProductGroupFilters
-    is_featured: Boolean
-    type: CatalogsProductGroupType
-    status: CatalogsProductGroupStatus
-    created_at: Integer
-    updated_at: Integer
-    * feed_id: String
-    catalog_type: String
 }
 
 entity CatalogsProductGroupCreateRequest {
@@ -1277,6 +1692,7 @@ entity CatalogsProductGroupFilterKeys {
     * CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria
     * ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
     * GENDER: CatalogsProductGroupMultipleGenderCriteria
+    * MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
     * PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria
     * PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria
     * PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria
@@ -1289,6 +1705,7 @@ entity CatalogsProductGroupFilterKeys {
     * GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
     * GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria
     * GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
+    * PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
 }
 
 entity CatalogsProductGroupFilters {
@@ -1323,6 +1740,11 @@ entity CatalogsProductGroupMultipleGenderCriteria {
     negated: Boolean
 }
 
+entity CatalogsProductGroupMultipleMediaTypesCriteria {
+    * values: List<MediaType>
+    negated: Boolean
+}
+
 entity CatalogsProductGroupMultipleStringCriteria {
     * values: List<String>
     negated: Boolean
@@ -1349,11 +1771,13 @@ entity CatalogsProductGroupPricingCurrencyCriteria {
     negated: Boolean
 }
 
-entity CatalogsProductGroupProductCounts {
+entity CatalogsProductGroupProductCountsVertical {
+    * catalog_type: CatalogsType
     * in_stock: BigDecimal
     * out_of_stock: BigDecimal
     * preorder: BigDecimal
     * total: BigDecimal
+    * videos: BigDecimal
 }
 
 entity CatalogsProductGroupStatus {
@@ -1369,77 +1793,85 @@ entity CatalogsProductGroupUpdateRequest {
     filters: CatalogsProductGroupFiltersRequest
 }
 
-entity CatalogsProductGroupsCreate201Response {
-    * id: String
-    name: String
-    description: String
-    * filters: CatalogsProductGroupFilters
-    is_featured: Boolean
-    type: CatalogsProductGroupType
-    status: CatalogsProductGroupStatus
-    created_at: Integer
-    updated_at: Integer
-    * feed_id: String
-    * catalog_type: String
-    * catalog_id: String
-}
-
-entity CatalogsProductGroupsCreateRequest {
-    * name: String
-    description: String
-    is_featured: Boolean
-    * filters: CatalogsHotelProductGroupFilters
-    * feed_id: String
-    * catalog_type: String
-    * catalog_id: String
-}
-
 entity CatalogsProductGroupsList200Response {
-}
-
-entity CatalogsProductGroupsList200ResponseAllOfItemsInner {
-    * id: String
-    name: String
-    description: String
-    * filters: CatalogsProductGroupFilters
-    is_featured: Boolean
-    type: CatalogsProductGroupType
-    status: CatalogsProductGroupStatus
-    created_at: Integer
-    updated_at: Integer
-    * feed_id: String
-    * catalog_type: String
-    * catalog_id: String
 }
 
 entity CatalogsProductGroupsUpdateRequest {
     name: String
     description: String
     is_featured: Boolean
-    filters: CatalogsHotelProductGroupFilters
+    filters: CatalogsCreativeAssetsProductGroupFilters
     catalog_type: String
+    country: Country
+    locale: CatalogsLocale
 }
 
-entity CatalogsProductMetadata {
-    * item_id: String
-    * item_group_id: String
-    * availability: NonNullableProductAvailabilityType
-    * price: BigDecimal
-    * sale_price: BigDecimal
-    * currency: NonNullableCatalogsCurrency
+entity CatalogsReport {
+    report_status: String
+    url: String
+    size: BigDecimal
+}
+
+entity CatalogsReportDistributionIssueFilter {
+    * report_type: String
+    catalog_id: String
+}
+
+entity CatalogsReportDistributionStats {
+    report_type: String
+    catalog_id: String
+    code: Integer
+    code_label: String
+    message: String
+    occurrences: Integer
+    ineligible_for_ads: Boolean
+    ineligible_for_organic: Boolean
+}
+
+entity CatalogsReportFeedIngestionFilter {
+    * report_type: String
+    * feed_id: String
+    processing_result_id: String
+}
+
+entity CatalogsReportFeedIngestionStats {
+    report_type: String
+    catalog_id: String
+    code: Integer
+    code_label: String
+    message: String
+    occurrences: Integer
+    severity: String
+}
+
+entity CatalogsReportParameters {
+    * catalog_type: CatalogsType
+    * report: CatalogsHotelReportParametersReport
+}
+
+entity CatalogsReportStats {
+    * report_type: String
+    catalog_id: String
+    code: Integer
+    code_label: String
+    message: String
+    occurrences: Integer
+    severity: String
+    ineligible_for_ads: Boolean
+    ineligible_for_organic: Boolean
 }
 
 entity CatalogsRetailBatchRequest {
-    * catalog_type: CatalogsType
+    * catalog_type: String
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * items: List<CatalogsRetailBatchRequestItemsInner>
 }
 
 entity CatalogsRetailBatchRequestItemsInner {
     * item_id: String
     * operation: String
-    * attributes: ItemAttributes
+    * attributes: ItemAttributesRequest
     update_mask: List<UpdateMaskFieldType>
 }
 
@@ -1457,6 +1889,7 @@ entity CatalogsRetailFeedsCreateRequest {
     * catalog_type: CatalogsType
     * default_country: Country
     default_availability: ProductAvailabilityType
+    status: CatalogsStatus
 }
 
 entity CatalogsRetailFeedsUpdateRequest {
@@ -1499,6 +1932,26 @@ entity CatalogsRetailItemsFilter {
     catalog_id: String
 }
 
+entity CatalogsRetailItemsPostFilter {
+    * catalog_type: String
+    * item_ids: List<String>
+    catalog_id: String
+}
+
+entity CatalogsRetailListProductsByCatalogBasedFilterRequest {
+    * catalog_type: String
+    * catalog_id: String
+    * filters: CatalogsProductGroupFilters
+    * country: Country
+    * locale: CatalogsLocale
+}
+
+entity CatalogsRetailProduct {
+    * catalog_type: String
+    * metadata: CatalogsRetailProductMetadata
+    * pin: Pin
+}
+
 entity CatalogsRetailProductGroup {
     * catalog_type: String
     * id: String
@@ -1510,13 +1963,73 @@ entity CatalogsRetailProductGroup {
     status: CatalogsProductGroupStatus
     created_at: Integer
     updated_at: Integer
+    * catalog_id: String
     * feed_id: String
+    country: String
+    locale: String
+}
+
+entity CatalogsRetailProductGroupCreateRequest {
+    * catalog_type: String
+    * name: String
+    description: String
+    * filters: CatalogsProductGroupFiltersRequest
+    * catalog_id: String
+    * country: Country
+    * locale: CatalogsLocale
+}
+
+entity CatalogsRetailProductGroupProductCounts {
+    * catalog_type: String
+    * in_stock: BigDecimal
+    * out_of_stock: BigDecimal
+    * preorder: BigDecimal
+    * total: BigDecimal
+    videos: BigDecimal
+}
+
+entity CatalogsRetailProductGroupUpdateRequest {
+    catalog_type: String
+    name: String
+    description: String
+    filters: CatalogsProductGroupFiltersRequest
+    country: Country
+    locale: CatalogsLocale
+}
+
+entity CatalogsRetailProductMetadata {
+    * item_id: String
+    * item_group_id: String
+    * availability: NonNullableProductAvailabilityType
+    * price: BigDecimal
+    * sale_price: BigDecimal
+    * currency: NonNullableCatalogsCurrency
+}
+
+entity CatalogsRetailReportParameters {
+    * catalog_type: String
+    * report: CatalogsHotelReportParametersReport
 }
 
 entity CatalogsStatus {
 }
 
 entity CatalogsType {
+}
+
+entity CatalogsUpdatableCreativeAssetsAttributes {
+    title: String
+    description: String
+    link: String
+    ios_deep_link: String
+    android_deep_link: String
+    google_product_category: String
+    custom_label_0: String
+    custom_label_1: String
+    custom_label_2: String
+    custom_label_3: String
+    custom_label_4: String
+    visibility: String
 }
 
 entity CatalogsUpdatableHotelAttributes {
@@ -1539,6 +2052,12 @@ entity CatalogsUpdatableHotelAttributes {
     guest_ratings: CatalogsHotelGuestRatings
 }
 
+entity CatalogsUpdateCreativeAssetsItem {
+    * creative_assets_id: String
+    * operation: String
+    * attributes: CatalogsUpdatableCreativeAssetsAttributes
+}
+
 entity CatalogsUpdateHotelItem {
     * hotel_id: String
     * operation: String
@@ -1552,6 +2071,12 @@ entity CatalogsUpdateRetailItem {
     update_mask: List<UpdateMaskFieldType>
 }
 
+entity CatalogsUpsertCreativeAssetsItem {
+    * creative_assets_id: String
+    * operation: String
+    * attributes: CatalogsCreativeAssetsAttributes
+}
+
 entity CatalogsUpsertHotelItem {
     * hotel_id: String
     * operation: String
@@ -1561,14 +2086,14 @@ entity CatalogsUpsertHotelItem {
 entity CatalogsUpsertRetailItem {
     * item_id: String
     * operation: String
-    * attributes: ItemAttributes
+    * attributes: ItemAttributesRequest
 }
 
 entity CatalogsVerticalBatchRequest {
-    * catalog_type: CatalogsType
+    * catalog_type: String
     * country: Country
-    * language: Language
-    * items: List<CatalogsHotelBatchItem>
+    * language: CatalogsItemsRequestLanguage
+    * items: List<CatalogsCreativeAssetsBatchItem>
     catalog_id: String
 }
 
@@ -1583,6 +2108,7 @@ entity CatalogsVerticalFeedsCreateRequest {
     * catalog_type: CatalogsType
     * default_country: Country
     default_availability: ProductAvailabilityType
+    status: CatalogsStatus
     catalog_id: String
 }
 
@@ -1603,29 +2129,43 @@ entity CatalogsVerticalProductGroup {
     * id: String
     name: String
     description: String
-    * filters: CatalogsProductGroupFilters
-    created_at: Integer
-    updated_at: Integer
-    * catalog_id: String
+    * filters: CatalogsCreativeAssetsProductGroupFilters
     is_featured: Boolean
     type: CatalogsProductGroupType
     status: CatalogsProductGroupStatus
+    created_at: Integer
+    updated_at: Integer
+    * catalog_id: String
     * feed_id: String
+    country: String
+    locale: String
 }
 
 entity CatalogsVerticalProductGroupCreateRequest {
     * catalog_type: String
     * name: String
     description: String
-    * filters: CatalogsHotelProductGroupFilters
+    * filters: CatalogsCreativeAssetsProductGroupFilters
     * catalog_id: String
+    * country: Country
+    * locale: CatalogsLocale
 }
 
 entity CatalogsVerticalProductGroupUpdateRequest {
     catalog_type: String
     name: String
     description: String
-    filters: CatalogsHotelProductGroupFilters
+    filters: CatalogsCreativeAssetsProductGroupFilters
+    country: Country
+    locale: CatalogsLocale
+}
+
+entity CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
+    * catalog_type: String
+    * catalog_id: String
+    * filters: CatalogsCreativeAssetsProductGroupFilters
+    * country: Country
+    * locale: CatalogsLocale
 }
 
 entity ConditionFilter {
@@ -1717,6 +2257,31 @@ entity ConversionEventsUserData {
     external_id: List<String>
     click_id: String
     partner_id: String
+    * em: List<String>
+    * hashed_maids: List<String>
+    * client_ip_address: String
+    * client_user_agent: String
+}
+
+entity ConversionEventsUserDataAnyOf {
+    * em: List<String>
+    hashed_maids: List<String>
+    client_ip_address: String
+    client_user_agent: String
+}
+
+entity ConversionEventsUserDataAnyOf1 {
+    em: List<String>
+    * hashed_maids: List<String>
+    client_ip_address: String
+    client_user_agent: String
+}
+
+entity ConversionEventsUserDataAnyOf2 {
+    em: List<String>
+    hashed_maids: List<String>
+    * client_ip_address: String
+    * client_user_agent: String
 }
 
 entity ConversionReportAttributionType {
@@ -1767,6 +2332,59 @@ entity CountryFilter {
     * COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
 }
 
+entity CreateAssetAccessRequestBody {
+    * asset_requests: List<CreateAssetAccessRequestBodyAssetRequestsInner>
+}
+
+entity CreateAssetAccessRequestBodyAssetRequestsInner {
+    * partner_id: String
+    * asset_id_to_permissions: Map
+}
+
+entity CreateAssetAccessRequestErrorMessageInner {
+    code: Integer
+    messages: List<String>
+}
+
+entity CreateAssetAccessRequestResponse {
+    exceptions: List<CreateAssetAccessRequestErrorMessageInner>
+    invites: Map
+}
+
+entity CreateAssetGroupBody {
+    * asset_group_name: String
+    * asset_group_description: String
+    * asset_group_types: List<AssetGroupType>
+}
+
+entity CreateAssetGroupResponse {
+    asset_group: AssetGroupBinding
+}
+
+entity CreateAssetInvitesRequest {
+    * invites: List<CreateAssetInvitesRequestItem>
+}
+
+entity CreateAssetInvitesRequestItem {
+    * invite_id: String
+    * invite_type: InviteType
+    * asset_id_to_permissions: Map
+}
+
+entity CreateInvitesResultsResponseArray {
+    items: List<CreateInvitesResultsResponseArrayItemsInner>
+}
+
+entity CreateInvitesResultsResponseArrayItemsInner {
+    exception: InviteExceptionResponse
+    invite: CreateInvitesResultsResponseArrayItemsInnerInvite
+}
+
+entity CreateInvitesResultsResponseArrayItemsInnerInvite {
+    id: String
+    user: BusinessAccessUserSummary
+}
+
 entity CreateMMMReportRequest {
     * report_name: String
     * start_date: String
@@ -1788,6 +2406,27 @@ entity CreateMMMReportResponseData {
     token: String
     message: String
     status: String
+}
+
+entity CreateMembershipOrPartnershipInvitesBody {
+    * business_role: String
+    * invite_type: InviteType
+    members: List<String>
+    partners: List<String>
+}
+
+entity CreativeAssetsIdFilter {
+    * CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria
+}
+
+entity CreativeAssetsProcessingRecord {
+    creative_assets_id: String
+    errors: List<ItemValidationEvent>
+    warnings: List<ItemValidationEvent>
+    status: ItemProcessingStatus
+}
+
+entity CreativeAssetsVisibilityType {
 }
 
 entity CreativeType {
@@ -1856,6 +2495,79 @@ entity DataOutputFormat {
 entity DataStatus {
 }
 
+entity DeleteAssetGroupBody {
+    * asset_groups_to_delete: List<String>
+}
+
+entity DeleteAssetGroupResponse {
+    deleted_asset_groups: List<String>
+    exceptions: List<DeleteAssetGroupResponseExceptionsInner>
+}
+
+entity DeleteAssetGroupResponseExceptionsInner {
+    code: Integer
+    message: String
+    asset_group_id: String
+}
+
+entity DeleteInvitesResultsResponseArray {
+    items: List<DeleteInvitesResultsResponseArrayItemsInner>
+}
+
+entity DeleteInvitesResultsResponseArrayItemsInner {
+    exception: DeleteInvitesResultsResponseArrayItemsInnerException
+    invite: BaseInviteDataResponse
+}
+
+entity DeleteInvitesResultsResponseArrayItemsInnerException {
+    invite_id: String
+    message: String
+}
+
+entity DeleteMemberAccessResult {
+    asset_id: String
+    member_id: String
+}
+
+entity DeleteMemberAccessResultsResponseArray {
+    items: List<DeleteMemberAccessResult>
+}
+
+entity DeletePartnerAssetAccessBody {
+    * accesses: List<DeletePartnerAssetAccessBodyAccessesInner>
+}
+
+entity DeletePartnerAssetAccessBodyAccessesInner {
+    * partner_id: String
+    * asset_id: String
+    partner_type: String
+}
+
+entity DeletePartnerAssetsResult {
+    asset_id: String
+    asset_type: String
+    permissions: List<String>
+    is_shared_partner: Boolean
+    partner_id: String
+}
+
+entity DeletePartnerAssetsResultsResponseArray {
+    items: List<DeletePartnerAssetsResult>
+}
+
+entity DeletePartnersRequest {
+    * partner_ids: List<String>
+    partner_type: String
+}
+
+entity DeletePartnersResponse {
+    deleted_partners: List<String>
+}
+
+entity DeletedMembersResponse {
+    deleted_members: List<String>
+}
+
 entity DeliveryMetricsResponse {
     items: List<DeliveryMetricsResponseItemsInner>
 }
@@ -1903,6 +2615,7 @@ entity FeedsCreateRequest {
     * catalog_type: CatalogsType
     * default_country: Country
     default_availability: ProductAvailabilityType
+    status: CatalogsStatus
     catalog_id: String
 }
 
@@ -1938,6 +2651,27 @@ entity GenderFilter {
 entity GetAudiencesOrderBy {
 }
 
+entity GetBusinessAssetTypeResponse {
+}
+
+entity GetBusinessAssetsResponse {
+    asset_id: String
+    asset_type: String
+    asset_group_info: AssetGroupBinding
+}
+
+entity GetBusinessEmployers200Response {
+}
+
+entity GetBusinessMembers200Response {
+}
+
+entity GetBusinessPartners200Response {
+}
+
+entity GetInvites200Response {
+}
+
 entity GetMMMReportResponse {
     code: BigDecimal
     data: GetMMMReportResponseData
@@ -1949,6 +2683,13 @@ entity GetMMMReportResponseData {
     report_status: String
     url: String
     size: BigDecimal
+}
+
+entity GetPartnerAssetsResponse {
+    asset_id: String
+    asset_type: String
+    permissions: List<String>
+    asset_group_info: AssetGroupBinding
 }
 
 entity GoogleProductCategory0Filter {
@@ -2151,18 +2892,58 @@ entity Interest {
     name: String
 }
 
+entity InviteAssetsSummary {
+    ad_accounts: List<InviteAssetsSummaryAdAccountsInner>
+    profiles: List<InviteAssetsSummaryProfilesInner>
+}
+
+entity InviteAssetsSummaryAdAccountsInner {
+    id: String
+    permissions: List<String>
+}
+
+entity InviteAssetsSummaryProfilesInner {
+    id: String
+    permissions: List<String>
+}
+
+entity InviteBusinessRoleBinding {
+}
+
+entity InviteExceptionResponse {
+    invite_or_request_id: String
+    code: Integer
+    message: String
+    users_or_partner_ids: List<String>
+}
+
+entity InviteResponse {
+}
+
+entity InviteStatus {
+}
+
+entity InviteType {
+}
+
 entity ItemAttributes {
+}
+
+entity ItemAttributesRequest {
+}
+
+entity ItemAttributesRequestAllOfImageLink {
 }
 
 entity ItemBatchRecord {
     item_id: String
-    attributes: ItemAttributes
+    attributes: ItemAttributesRequest
     update_mask: List<UpdateMaskFieldType>
 }
 
 entity ItemCreateBatchRecord {
     item_id: String
-    attributes: ItemAttributes
+    attributes: ItemAttributesRequest
 }
 
 entity ItemDeleteBatchRecord {
@@ -2195,8 +2976,9 @@ entity ItemResponse {
     * catalog_type: CatalogsType
     item_id: String
     pins: List<Pin>
-    attributes: CatalogsHotelAttributes
+    attributes: CatalogsCreativeAssetsAttributes
     hotel_id: String
+    creative_assets_id: String
     errors: List<ItemValidationEvent>
 }
 
@@ -2204,8 +2986,9 @@ entity ItemResponseAnyOf {
     * catalog_type: CatalogsType
     item_id: String
     pins: List<Pin>
-    attributes: CatalogsHotelAttributes
+    attributes: CatalogsCreativeAssetsAttributes
     hotel_id: String
+    creative_assets_id: String
 }
 
 entity ItemResponseAnyOf1 {
@@ -2213,6 +2996,7 @@ entity ItemResponseAnyOf1 {
     item_id: String
     errors: List<ItemValidationEvent>
     hotel_id: String
+    creative_assets_id: String
 }
 
 entity ItemUpdateBatchRecord {
@@ -2223,7 +3007,7 @@ entity ItemUpdateBatchRecord {
 
 entity ItemUpsertBatchRecord {
     item_id: String
-    attributes: ItemAttributes
+    attributes: ItemAttributesRequest
 }
 
 entity ItemValidationEvent {
@@ -2233,9 +3017,9 @@ entity ItemValidationEvent {
 }
 
 entity ItemsBatchPostRequest {
-    * catalog_type: CatalogsType
+    * catalog_type: String
     * country: Country
-    * language: Language
+    * language: CatalogsItemsRequestLanguage
     * items: List<ItemDeleteBatchRecord>
     catalog_id: String
     * operation: BatchOperation
@@ -2298,6 +3082,15 @@ entity KeywordsResponse {
 entity Language {
 }
 
+entity LeadFormArrayResponse {
+    items: List<LeadFormArrayResponseItemsInner>
+}
+
+entity LeadFormArrayResponseItemsInner {
+    data: LeadFormResponse
+    exceptions: List<Exception>
+}
+
 entity LeadFormCommon {
     name: String
     privacy_policy_link: String
@@ -2306,6 +3099,15 @@ entity LeadFormCommon {
     status: LeadFormStatus
     disclosure_language: String
     questions: List<LeadFormQuestion>
+    policy_links: List<LeadFormCommonPolicyLinksInner>
+}
+
+entity LeadFormCommonPolicyLinksInner {
+    label: String
+    link: String
+}
+
+entity LeadFormCreateRequest {
 }
 
 entity LeadFormQuestion {
@@ -2335,7 +3137,28 @@ entity LeadFormTestResponse {
     subscription_id: String
 }
 
+entity LeadFormUpdateRequest {
+}
+
 entity LeadFormsList200Response {
+}
+
+entity LeadsExportCreateRequest {
+    * start_date: String
+    * end_date: String
+    * ad_id: String
+}
+
+entity LeadsExportCreateResponse {
+    leads_export_id: String
+}
+
+entity LeadsExportResponseData {
+    export_status: LeadsExportStatus
+    download_url: String
+}
+
+entity LeadsExportStatus {
 }
 
 entity LineItem {
@@ -2376,6 +3199,13 @@ entity MaxPriceFilter {
 entity MediaList200Response {
 }
 
+entity MediaType {
+}
+
+entity MediaTypeFilter {
+    * MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
+}
+
 entity MediaUpload {
     media_id: String
     media_type: MediaUploadType
@@ -2410,6 +3240,18 @@ entity MediaUploadStatus {
 entity MediaUploadType {
 }
 
+entity MemberBusinessRole {
+}
+
+entity MembersToDeleteBody {
+    * members: List<MembersToDeleteBodyMembersInner>
+}
+
+entity MembersToDeleteBodyMembersInner {
+    * member_id: String
+    * business_role: BusinessRoleForMembers
+}
+
 entity MetricsReportingLevel {
 }
 
@@ -2419,6 +3261,18 @@ entity MetricsResponse {
 
 entity MinPriceFilter {
     * MIN_PRICE: CatalogsProductGroupPricingCriteria
+}
+
+entity MultipleProductGroupsInner {
+    * name: String
+    description: String
+    is_featured: Boolean
+    * filters: CatalogsCreativeAssetsProductGroupFilters
+    * feed_id: String
+    * catalog_type: String
+    * catalog_id: String
+    * country: Country
+    * locale: CatalogsLocale
 }
 
 entity NonNullableCatalogsCurrency {
@@ -2433,10 +3287,22 @@ entity NullableCatalogsItemFieldType {
 entity NullableCurrency {
 }
 
+entity OauthAccessTokenRequestClientCredentials {
+    * grant_type: String
+    * scope: String
+}
+
 entity OauthAccessTokenRequestCode {
+    * grant_type: String
+    * code: String
+    * redirect_uri: String
 }
 
 entity OauthAccessTokenRequestRefresh {
+    * grant_type: String
+    * refresh_token: String
+    scope: String
+    refresh_on: Boolean
 }
 
 entity OauthAccessTokenResponse {
@@ -2447,19 +3313,57 @@ entity OauthAccessTokenResponse {
     * scope: String
 }
 
+entity OauthAccessTokenResponseClientCredentials {
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
+}
+
 entity OauthAccessTokenResponseCode {
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
+    * refresh_token: String
+    * refresh_token_expires_in: Integer
 }
 
 entity OauthAccessTokenResponseEverlastingRefresh {
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
+    * refresh_token: String
+    * refresh_token_expires_in: Integer
+    * refresh_token_expires_at: Integer
 }
 
 entity OauthAccessTokenResponseIntegrationRefresh {
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
+    * refresh_token: String
+    * refresh_token_expires_in: Integer
 }
 
 entity OauthAccessTokenResponseRefresh {
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
 }
 
 entity ObjectiveType {
+}
+
+entity OperationType {
 }
 
 entity OptimizationGoalMetadata {
@@ -2550,6 +3454,12 @@ entity Paginated {
 entity PartnerType {
 }
 
+entity Permissions {
+}
+
+entity PermissionsWithOwner {
+}
+
 entity Pin {
     id: String
     created_at: Date
@@ -2563,7 +3473,7 @@ entity Pin {
     board_section_id: String
     board_owner: BoardOwner
     is_owner: Boolean
-    media: SummaryPinMedia
+    media: PinMedia
     media_source: PinMediaSource
     parent_pin_id: String
     is_standard: Boolean
@@ -2595,7 +3505,7 @@ entity PinCreate {
     board_id: String
     board_section_id: String
     board_owner: BoardOwner
-    media: SummaryPinMedia
+    media: PinMedia
     media_source: PinMediaSource
     parent_pin_id: String
     note: String
@@ -2690,6 +3600,13 @@ entity PinMediaSourceVideoID {
 entity PinMediaWithImage {
 }
 
+entity PinMediaWithImageAllOfImages {
+    150x150: Object
+    400x300: Object
+    600x: Object
+    1200x: Object
+}
+
 entity PinMediaWithImageAndVideo {
 }
 
@@ -2750,6 +3667,10 @@ entity PinterestTagEventData {
 entity PlacementGroupType {
 }
 
+entity PlacementMultipliers {
+    PLACEMENT: String
+}
+
 entity PriceFilter {
     * PRICE: CatalogsProductGroupPricingCurrencyCriteria
 }
@@ -2777,7 +3698,6 @@ entity ProductGroupPromotion {
     tracking_url: String
     catalog_product_group_id: String
     catalog_product_group_name: String
-    creative_type: CreativeType
     collections_hero_pin_id: String
     collections_hero_destination_url: String
     grid_click_type: GridClickType
@@ -2785,15 +3705,21 @@ entity ProductGroupPromotion {
 
 entity ProductGroupPromotionCreateRequest {
     * ad_group_id: String
-    * product_group_promotion: List<ProductGroupPromotion>
+    * product_group_promotion: List<ProductGroupPromotionCreateRequestElement>
+}
+
+entity ProductGroupPromotionCreateRequestElement {
 }
 
 entity ProductGroupPromotionResponse {
     items: List<ProductGroupPromotionResponseItem>
 }
 
+entity ProductGroupPromotionResponseElement {
+}
+
 entity ProductGroupPromotionResponseItem {
-    data: ProductGroupPromotion
+    data: ProductGroupPromotionResponseElement
     exceptions: List<Exception>
 }
 
@@ -2803,6 +3729,10 @@ entity ProductGroupPromotionUpdateRequest {
 }
 
 entity ProductGroupPromotionsList200Response {
+}
+
+entity ProductGroupReferenceFilter {
+    * PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
 }
 
 entity ProductGroupSummaryStatus {
@@ -2831,6 +3761,8 @@ entity ProductType4Filter {
 entity QuizPinData {
     questions: List<QuizPinQuestion>
     results: List<QuizPinResult>
+    tie_breaker_type: String
+    tie_breaker_custom_result: QuizPinResult
 }
 
 entity QuizPinOption {
@@ -2864,6 +3796,18 @@ entity RelatedTermsRelatedTermsListInner {
 }
 
 entity ReportingColumnAsync {
+}
+
+entity ReportsStats200Response {
+}
+
+entity RespondToInvitesResponseArray {
+    items: List<RespondToInvitesResponseArrayItemsInner>
+}
+
+entity RespondToInvitesResponseArrayItemsInner {
+    exception: InviteExceptionResponse
+    invite: BaseInviteDataResponse
 }
 
 entity Role {
@@ -2971,6 +3915,29 @@ entity SearchPartnerPins200Response {
 entity SearchUserBoardsGet200Response {
 }
 
+entity SharedAudience {
+}
+
+entity SharedAudienceAccount {
+    * account_id: String
+    * account_name: String
+    * account_type: String
+    * shared_on_timestamp: Integer
+}
+
+entity SharedAudienceCommon {
+    audience_id: String
+    operation_type: OperationType
+}
+
+entity SharedAudienceResponse {
+}
+
+entity SharedAudienceResponseCommon {
+    audience_id: String
+    permissions: List<Role>
+}
+
 entity SingleInterestTargetingOptionResponse {
     id: String
     name: String
@@ -2985,14 +3952,11 @@ entity SsioOrderLinesGetByAdAccount200Response {
 }
 
 entity SummaryPin {
-    media: SummaryPinMedia
+    media: PinMedia
     alt_text: String
     link: String
     title: String
     description: String
-}
-
-entity SummaryPinMedia {
 }
 
 entity TargetingAdvertiserCountry {
@@ -3002,7 +3966,7 @@ entity TargetingSpec {
     AGE_BUCKET: List<String>
     APPTYPE: List<String>
     AUDIENCE_EXCLUDE: List<String>
-    AUDIENCE_INCLUDE': List<String>
+    AUDIENCE_INCLUDE: List<String>
     GENDER: List<String>
     GEO: List<String>
     INTEREST: List<String>
@@ -3012,10 +3976,54 @@ entity TargetingSpec {
     TARGETING_STRATEGY: List<String>
 }
 
+entity TargetingSpecAppType {
+}
+
 entity TargetingSpecSHOPPINGRETARGETING {
     lookback_window: Integer
     tag_types: List<Integer>
     exclusion_window: Integer
+}
+
+entity TargetingTemplateAudienceSizing {
+    reach_estimate: TargetingTemplateAudienceSizingReachEstimate
+}
+
+entity TargetingTemplateAudienceSizingReachEstimate {
+    estimate: Long
+    lower_bound: Long
+    upper_bound: Long
+}
+
+entity TargetingTemplateCommon {
+    name: String
+    auto_targeting_enabled: Boolean
+    targeting_attributes: TargetingSpec
+    placement_group: PlacementGroupType
+    keywords: List<TargetingTemplateKeyword>
+    tracking_urls: TrackingUrls
+}
+
+entity TargetingTemplateCreate {
+}
+
+entity TargetingTemplateGetResponseData {
+}
+
+entity TargetingTemplateKeyword {
+    match_type: MatchType
+    value: String
+}
+
+entity TargetingTemplateList200Response {
+}
+
+entity TargetingTemplateResponseData {
+}
+
+entity TargetingTemplateUpdateRequest {
+    * operation_type: String
+    * id: String
 }
 
 entity TargetingTypeFilter {
@@ -3190,10 +4198,119 @@ entity UpdatableItemAttributes {
     variant_values: List<String>
 }
 
+entity UpdateAssetGroupBody {
+    asset_groups_to_update: List<UpdateAssetGroupBodyAssetGroupsToUpdateInner>
+}
+
+entity UpdateAssetGroupBodyAssetGroupsToUpdateInner {
+    * asset_group_id: String
+    name: String
+    description: String
+    asset_group_types: List<AssetGroupType>
+    assets_to_add: List<String>
+    assets_to_remove: List<String>
+}
+
+entity UpdateAssetGroupResponse {
+    updated_asset_groups: List<AssetGroupBinding>
+    exceptions: List<UpdateAssetGroupResponseExceptionsInner>
+}
+
+entity UpdateAssetGroupResponseExceptionsInner {
+    code: Integer
+    message: String
+    asset_group_id: String
+}
+
+entity UpdateInvitesResultsResponseArray {
+    items: List<UpdateInvitesResultsResponseArrayItemsInner>
+}
+
+entity UpdateInvitesResultsResponseArrayItemsInner {
+    exception: InviteExceptionResponse
+    invite: InviteBusinessRoleBinding
+}
+
+entity UpdateMaskBidOptionField {
+}
+
 entity UpdateMaskFieldType {
 }
 
+entity UpdateMemberAssetAccessBody {
+    * accesses: List<UpdateMemberAssetAccessBodyAccessesInner>
+}
+
+entity UpdateMemberAssetAccessBodyAccessesInner {
+    * asset_id: String
+    * member_id: String
+    * permissions: List<Permissions>
+}
+
+entity UpdateMemberAssetsResultsResponseArray {
+    items: List<UpdateMemberAssetsResultsResponseArrayItemsInner>
+}
+
+entity UpdateMemberAssetsResultsResponseArrayItemsInner {
+    response: UsersForIndividualAssetResponse
+}
+
+entity UpdateMemberBusinessRoleBody {
+    * business_role: BusinessRoleForMembers
+    * member_id: String
+}
+
+entity UpdateMemberResult {
+    business_role: String
+    member_id: String
+}
+
+entity UpdateMemberResultsResponseArray {
+    items: List<UpdateMemberResult>
+}
+
+entity UpdatePartnerAssetAccessBody {
+    * accesses: List<UpdatePartnerAssetAccessBodyAccessesInner>
+}
+
+entity UpdatePartnerAssetAccessBodyAccessesInner {
+    * partner_id: String
+    * asset_id: String
+    * permissions: List<Permissions>
+}
+
+entity UpdatePartnerAssetsResult {
+    asset_id: String
+    asset_type: String
+    partner_id: String
+    permissions: List<String>
+}
+
+entity UpdatePartnerAssetsResultsResponseArray {
+    items: List<UpdatePartnerAssetsResult>
+}
+
+entity UpdatePartnerResultsResponseArray {
+    items: List<UpdatePartnerResultsResponseArrayItemsInner>
+}
+
+entity UpdatePartnerResultsResponseArrayItemsInner {
+    exception: BusinessAccessError
+    member_or_partner_id: String
+}
+
 entity UserAccountFollowedInterests200Response {
+}
+
+entity UserBusinessRoleBinding {
+    assets_summary: BusinessMemberAssetsSummary
+    business_roles: List<String>
+    created_by_business: BusinessAccessUserSummary
+    created_by_user: BusinessAccessUserSummary
+    created_time: Integer
+    id: String
+    is_shared_partner: Boolean
+    user: BusinessAccessUserSummary
 }
 
 entity UserFollowingFeedType {
@@ -3206,6 +4323,11 @@ entity UserListOperationType {
 }
 
 entity UserListType {
+}
+
+entity UserSingleAssetBinding {
+    permissions: List<String>
+    user: BusinessAccessUserSummary
 }
 
 entity UserSummary {
@@ -3235,6 +4357,12 @@ entity UserWebsiteVerifyRequest {
 entity UserWebsitesGet200Response {
 }
 
+entity UsersForIndividualAssetResponse {
+    asset_id: String
+    member_id: String
+    permissions: List<String>
+}
+
 entity VideoMetadata {
     item_type: String
     cover_image_url: String
@@ -3244,15 +4372,11 @@ entity VideoMetadata {
     width: Integer
 }
 
-Paginated <|--- AdAccountsCatalogsProductGroupsList200Response
+Paginated <|--- AdAccountsAudiencesSharedAccountsList200Response
 Paginated <|--- AdAccountsList200Response
 Paginated <|--- AdAccountsSubscriptionsGetList200Response
-QuizPinData <|--- AdCommonQuizPinData
-TrackingUrls <|--- AdCommonTrackingUrls
 AdCommon <|--- AdCreateRequest
 AdPinId <|--- AdCreateRequest
-OptimizationGoalMetadata <|--- AdGroupCommonOptimizationGoalMetadata
-TrackingUrls <|--- AdGroupCommonTrackingUrls
 AdGroupCommon <|--- AdGroupCreateRequest
 AdGroupCommon <|--- AdGroupResponse
 AdGroupCommon <|--- AdGroupUpdateRequest
@@ -3262,17 +4386,28 @@ AdPinId <|--- AdResponse
 AdCommon <|--- AdUpdateRequest
 Paginated <|--- AdsCreditsDiscountsGet200Response
 Paginated <|--- AdsList200Response
+AdvancedAuctionKey <|--- AdvancedAuctionItem
+AdvancedAuctionKey <|--- AdvancedAuctionItemsGetRecord
+AdvancedAuctionKey <|--- AdvancedAuctionItemsSubmitDeleteRecord
+AdvancedAuctionItem <|--- AdvancedAuctionItemsSubmitUpsertRecord
+AdvancedAuctionItemsSubmitRecord <|--- AdvancedAuctionProcessedItem
 AudienceCommon <|--- AudienceCreateCustomRequest
 AudienceCommon <|--- AudienceCreateRequest
 AudienceType <|--- AudienceCreateRequest1AudienceType
 AudienceCommon <|--- AudienceUpdateRequest
 Paginated <|--- AudiencesList200Response
 Paginated <|--- BillingProfilesGet200Response
-BoardOwner <|--- BoardOwner
 Paginated <|--- BoardSectionsList200Response
 Paginated <|--- BoardsList200Response
 Paginated <|--- BoardsListPins200Response
 Paginated <|--- BoardsUserFollowsList200Response
+Paginated <|--- BusinessAssetMembersGet200Response
+Paginated <|--- BusinessAssetPartnersGet200Response
+Paginated <|--- BusinessAssetsGet200Response
+Paginated <|--- BusinessMemberAssetsGet200Response
+Paginated <|--- BusinessPartnerAssetAccessGet200Response
+SharedAudienceCommon <|--- BusinessSharedAudience
+SharedAudienceResponseCommon <|--- BusinessSharedAudienceResponse
 CampaignCommon <|--- CampaignCreateCommon
 CampaignCreateCommon <|--- CampaignCreateRequest
 CampaignCreateCommon <|--- CampaignCreateResponseData
@@ -3280,11 +4415,12 @@ CampaignResponse <|--- CampaignCreateResponseData
 CampaignId <|--- CampaignResponse
 CampaignCommon <|--- CampaignResponse
 CampaignId <|--- CampaignUpdateRequest
-CampaignCommon <|--- CampaignUpdateRequest
 CampaignCreateCommon <|--- CampaignUpdateRequest
 CampaignCreateResponse <|--- CampaignUpdateResponse
 Paginated <|--- CampaignsList200Response
 CatalogsDbItem <|--- Catalog
+CatalogsUpdatableCreativeAssetsAttributes <|--- CatalogsCreativeAssetsAttributes
+CatalogsDbItem <|--- CatalogsCreativeAssetsFeed
 CatalogsDbItem <|--- CatalogsFeedProcessingResult
 CatalogsUpdatableHotelAttributes <|--- CatalogsHotelAttributes
 CatalogsDbItem <|--- CatalogsHotelFeed
@@ -3298,20 +4434,23 @@ Paginated <|--- CustomerListsList200Response
 Paginated <|--- FeedProcessingResultsList200Response
 Paginated <|--- FeedsList200Response
 Paginated <|--- FollowersList200Response
+Paginated <|--- GetBusinessEmployers200Response
+Paginated <|--- GetBusinessMembers200Response
+Paginated <|--- GetBusinessPartners200Response
+Paginated <|--- GetInvites200Response
 Paginated <|--- IntegrationsGetList200Response
+BaseInviteDataResponse <|--- InviteBusinessRoleBinding
+BaseInviteDataResponse <|--- InviteResponse
 UpdatableItemAttributes <|--- ItemAttributes
+UpdatableItemAttributes <|--- ItemAttributesRequest
 Paginated <|--- ItemsIssuesList200Response
 KeywordsCommon <|--- Keyword
 Paginated <|--- KeywordsGet200Response
+LeadFormCommon <|--- LeadFormCreateRequest
 LeadFormCommon <|--- LeadFormResponse
+LeadFormCommon <|--- LeadFormUpdateRequest
 Paginated <|--- LeadFormsList200Response
 Paginated <|--- MediaList200Response
-OauthAccessTokenRequest <|--- OauthAccessTokenRequestCode
-OauthAccessTokenRequest <|--- OauthAccessTokenRequestRefresh
-OauthAccessTokenResponse <|--- OauthAccessTokenResponseCode
-OauthAccessTokenResponse <|--- OauthAccessTokenResponseEverlastingRefresh
-OauthAccessTokenResponse <|--- OauthAccessTokenResponseIntegrationRefresh
-OauthAccessTokenResponse <|--- OauthAccessTokenResponseRefresh
 OrderLines <|--- OrderLine
 Paginated <|--- OrderLinesList200Response
 Paginated <|--- PageVisitConversionTagsGet200Response
@@ -3321,139 +4460,170 @@ PinMedia <|--- PinMediaWithImages
 PinMedia <|--- PinMediaWithVideo
 PinMedia <|--- PinMediaWithVideos
 Paginated <|--- PinsList200Response
+ProductGroupPromotion <|--- ProductGroupPromotionCreateRequestElement
+ProductGroupPromotion <|--- ProductGroupPromotionResponseElement
 Paginated <|--- ProductGroupPromotionsList200Response
+Paginated <|--- ReportsStats200Response
 SSIOInsertionOrderCommon <|--- SSIOCreateInsertionOrderRequest
 SSIOInsertionOrderCommon <|--- SSIOEditInsertionOrderRequest
 SSIOInsertionOrderStatus <|--- SSIOInsertionOrderStatusResponse
 Paginated <|--- SearchPartnerPins200Response
 Paginated <|--- SearchUserBoardsGet200Response
+SharedAudienceCommon <|--- SharedAudience
+SharedAudienceResponseCommon <|--- SharedAudienceResponse
 Paginated <|--- SsioInsertionOrdersStatusGetByAdAccount200Response
 Paginated <|--- SsioOrderLinesGetByAdAccount200Response
-PinMedia <|--- SummaryPinMedia
+TargetingTemplateCommon <|--- TargetingTemplateCreate
+TargetingTemplateResponseData <|--- TargetingTemplateGetResponseData
+Paginated <|--- TargetingTemplateList200Response
+TargetingTemplateCommon <|--- TargetingTemplateResponseData
 Paginated <|--- TemplatesList200Response
 Paginated <|--- UserAccountFollowedInterests200Response
 Paginated <|--- UserFollowingGet200Response
 Paginated <|--- UserWebsitesGet200Response
 
+CreativeAssetsProcessingRecord -- "0..*" ItemValidationEvent : errors
+CreativeAssetsProcessingRecord -- "0..*" ItemValidationEvent : warnings
+CatalogsCreativeAssetsItemErrorResponse -- "0..*" ItemValidationEvent : errors
+CatalogsCreativeAssetsProduct -- CatalogsCreativeAssetsProductMetadata : metadata
+CatalogsCreativeAssetsProduct -- Pin : pin
+CreateAssetInvitesRequest -- "0..*" CreateAssetInvitesRequestItem : invites
+CatalogsHotelProduct -- CatalogsHotelProductMetadata : metadata
+CatalogsHotelProduct -- Pin : pin
 AdsAnalyticsCreateAsyncRequest -- "0..*" AdsAnalyticsMetricsFilter : metrics_filters
+DeleteAssetGroupResponse -- "0..*" DeleteAssetGroupResponseExceptionsInner : exceptions
 AudienceCategory -- "0..*" AudienceSubcategory : subcategories
 CatalogsHotelFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
 CatalogsHotelFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
 CatalogsRetailItemResponse -- "0..*" Pin : pins
 CatalogsRetailItemResponse -- ItemAttributes : attributes
 CatalogsHotelBatchItem -- CatalogsUpdatableHotelAttributes : attributes
+UpdatePartnerResultsResponseArrayItemsInner -- BusinessAccessError : exception
 KeywordError -- Keyword : data
 Audience -- AudienceRule : rule
 AudienceInsightCategoryArrayResponse -- "0..*" AudienceInsightCategoryCommon : items
-SummaryPin -- SummaryPinMedia : media
+SummaryPin -- PinMedia : media
 CatalogsHotelProductGroupFilters -- "0..*" CatalogsHotelProductGroupFilterKeys : any_of
 CatalogsHotelProductGroupFilters -- "0..*" CatalogsHotelProductGroupFilterKeys : all_of
-CatalogsCreateRetailItem -- ItemAttributes : attributes
+CatalogsRetailProductGroupUpdateRequest -- CatalogsProductGroupFiltersRequest : filters
+CatalogsCreateRetailItem -- ItemAttributesRequest : attributes
+AdvancedAuctionItemsSubmitRecord -- AdvancedAuctionBidOptions : bid_options
 AudienceInsightsResponse -- "0..*" AudienceCategory : categories
 AudienceInsightsResponse -- AudienceDemographics : demographics
 SSIOAccountItem -- "0..*" SSIOAccountAddress : addresses
 OptimizationGoalMetadata -- OptimizationGoalMetadataConversionTagV3GoalMetadata : conversion_tag_v3_goal_metadata
 OptimizationGoalMetadata -- OptimizationGoalMetadataFrequencyGoalMetadata : frequency_goal_metadata
 OptimizationGoalMetadata -- OptimizationGoalMetadataScrollupGoalMetadata : scrollup_goal_metadata
+CatalogsRetailListProductsByCatalogBasedFilterRequest -- CatalogsProductGroupFilters : filters
 TrendingKeywordsResponse -- "0..*" TrendingKeywordsResponseTrendsInner : trends
 CatalogsUpdatableHotelAttributes -- CatalogsHotelAddress : address
 CatalogsUpdatableHotelAttributes -- CatalogsHotelGuestRatings : guest_ratings
-CatalogsVerticalProductGroup -- CatalogsProductGroupFilters : filters
+CatalogsCreativeAssetsBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsCreativeAssetsBatchRequest -- "0..*" CatalogsCreativeAssetsBatchItem : items
+CatalogsVerticalProductGroup -- CatalogsCreativeAssetsProductGroupFilters : filters
 CatalogsProductGroupCreateRequest -- CatalogsProductGroupFiltersRequest : filters
-CatalogsVerticalProductGroupUpdateRequest -- CatalogsHotelProductGroupFilters : filters
+DeleteMemberAccessResultsResponseArray -- "0..*" DeleteMemberAccessResult : items
+UserSingleAssetBinding -- BusinessAccessUserSummary : user
+CatalogsVerticalProductGroupUpdateRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
+UpdateMemberAssetsResultsResponseArrayItemsInner -- UsersForIndividualAssetResponse : response
+GetPartnerAssetsResponse -- AssetGroupBinding : asset_group_info
 TemplateResponseDateRange -- TemplateResponseDateRangeDynamicDateRange : dynamic_date_range
 TemplateResponseDateRange -- TemplateResponseDateRangeRelativeDateRange : relative_date_range
 TemplateResponseDateRange -- TemplateResponseDateRangeAbsoluteDateRange : absolute_date_range
 CatalogsRetailProductGroup -- CatalogsProductGroupFilters : filters
+CatalogsRetailReportParameters -- CatalogsHotelReportParametersReport : report
+CatalogsItemsBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsItemsBatchRequest -- "0..*" ItemDeleteBatchRecord : items
 MediaUpload -- MediaUploadAllOfUploadParameters : upload_parameters
 FeedsUpdateRequest -- CatalogsFeedCredentials : credentials
 FeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsCreativeAssetsProductGroupUpdateRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
+CatalogsItemsUpsertBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsItemsUpsertBatchRequest -- "0..*" ItemUpsertBatchRecord : items
-CatalogsItemsBatch -- "0..*" HotelProcessingRecord : items
-AdGroupCommon -- AdGroupCommonOptimizationGoalMetadata : optimization_goal_metadata
+CatalogsItemsBatch -- "0..*" CreativeAssetsProcessingRecord : items
+AdGroupCommon -- OptimizationGoalMetadata : optimization_goal_metadata
 AdGroupCommon -- TargetingSpec : targeting_spec
-AdGroupCommon -- AdGroupCommonTrackingUrls : tracking_urls
+AdGroupCommon -- TrackingUrls : tracking_urls
+ItemsBatchPostRequest -- CatalogsItemsRequestLanguage : language
 ItemsBatchPostRequest -- "0..*" ItemDeleteBatchRecord : items
-CatalogsListProductsByFilterRequestOneOf -- CatalogsProductGroupFilters : filters
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupPricingCriteria : MIN_PRICE
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupPricingCriteria : MAX_PRICE
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupCurrencyCriteria : CURRENCY
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : ITEM_ID
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : AVAILABILITY
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : BRAND
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CONDITION
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_0
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_1
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_2
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_3
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_4
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : ITEM_GROUP_ID
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleGenderCriteria : GENDER
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_4
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_3
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_2
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_1
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : PRODUCT_TYPE_0
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_6
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_5
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_4
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_3
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_2
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_1
-CatalogsProductGroupFilterKeys -- CatalogsProductGroupMultipleStringListCriteria : GOOGLE_PRODUCT_CATEGORY_0
-CatalogsProductGroupsCreate201Response -- CatalogsProductGroupFilters : filters
+CatalogsUpdateCreativeAssetsItem -- CatalogsUpdatableCreativeAssetsAttributes : attributes
 CampaignCreateResponseItem -- CampaignCreateResponseData : data
 CampaignCreateResponseItem -- "0..*" Exception : exceptions
 CatalogsFeedIngestionDetails -- CatalogsFeedIngestionErrors : errors
 CatalogsFeedIngestionDetails -- CatalogsFeedIngestionInfo : info
 CatalogsFeedIngestionDetails -- CatalogsFeedIngestionWarnings : warnings
+CreateInvitesResultsResponseArrayItemsInner -- InviteExceptionResponse : exception
+CreateInvitesResultsResponseArrayItemsInner -- CreateInvitesResultsResponseArrayItemsInnerInvite : invite
+BusinessMembersAssetAccessDeleteRequest -- "0..*" BusinessMembersAssetAccessDeleteRequestAccessesInner : accesses
+MembersToDeleteBody -- "0..*" MembersToDeleteBodyMembersInner : members
 BulkDownloadRequest -- BulkDownloadRequestCampaignFilter : campaign_filter
+AuthRespondInvitesBody -- "0..*" AuthRespondInvitesBodyInvitesInner : invites
 Board -- BoardMedia : media
 Board -- BoardOwner : owner
-CatalogsProductGroupsList200ResponseAllOfItemsInner -- CatalogsProductGroupFilters : filters
+CatalogsCreateCreativeAssetsItem -- CatalogsCreativeAssetsAttributes : attributes
+RespondToInvitesResponseArray -- "0..*" RespondToInvitesResponseArrayItemsInner : items
+DeletePartnerAssetAccessBody -- "0..*" DeletePartnerAssetAccessBodyAccessesInner : accesses
+UpdateMemberResultsResponseArray -- "0..*" UpdateMemberResult : items
 KeywordUpdateBody -- "0..*" KeywordUpdate : keywords
+CatalogsItemsCreateBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsItemsCreateBatchRequest -- "0..*" ItemCreateBatchRecord : items
+InviteAssetsSummary -- "0..*" InviteAssetsSummaryAdAccountsInner : ad_accounts
+InviteAssetsSummary -- "0..*" InviteAssetsSummaryProfilesInner : profiles
+AdvancedAuctionItems -- "0..*" AdvancedAuctionItem : items
 ConversionApiResponse -- "0..*" ConversionApiResponseEventsInner : events
-CampaignCommon -- AdCommonTrackingUrls : tracking_urls
+CatalogsCreativeAssetsItemsBatch -- "0..*" CreativeAssetsProcessingRecord : items
+CampaignCommon -- TrackingUrls : tracking_urls
 CatalogsRetailFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
 CatalogsRetailFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsItemsRequest -- CatalogsItemsRequestLanguage : language
+CatalogsItemsRequest -- CatalogsItemsPostFilters : filters
 HotelProcessingRecord -- "0..*" ItemValidationEvent : errors
 HotelProcessingRecord -- "0..*" ItemValidationEvent : warnings
+DeleteInvitesResultsResponseArrayItemsInner -- DeleteInvitesResultsResponseArrayItemsInnerException : exception
+DeleteInvitesResultsResponseArrayItemsInner -- BaseInviteDataResponse : invite
 CatalogsHotelProductGroupUpdateRequest -- CatalogsHotelProductGroupFilters : filters
-CatalogsVerticalProductGroupCreateRequest -- CatalogsHotelProductGroupFilters : filters
+CatalogsVerticalProductGroupCreateRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
 AdGroupAudienceSizingRequest -- TargetingSpec : targeting_spec
 AdGroupAudienceSizingRequest -- "0..*" AdGroupAudienceSizingRequestKeywordsInner : keywords
 ConversionTagCommon -- ConversionTagConfigs : configs
+CreateAssetGroupResponse -- AssetGroupBinding : asset_group
 ProductGroupPromotionUpdateRequest -- "0..*" ProductGroupPromotion : product_group_promotion
 AudienceDefinitionResponse -- "0..*" AudienceDefinition : items
 AdArrayResponseElement -- AdResponse : data
 AdArrayResponseElement -- Exception : exceptions
 DeliveryMetricsResponse -- "0..*" DeliveryMetricsResponseItemsInner : items
 Pin -- BoardOwner : board_owner
-Pin -- SummaryPinMedia : media
+Pin -- PinMedia : media
 Pin -- PinMediaSource : media_source
 PinMediaMetadata -- ImageMetadataImages : images
 AudienceCommon -- AudienceRule : rule
 CatalogsHotelProductGroup -- CatalogsHotelProductGroupFilters : filters
-ProductGroupPromotionResponseItem -- ProductGroupPromotion : data
+ProductGroupPromotionResponseItem -- ProductGroupPromotionResponseElement : data
 ProductGroupPromotionResponseItem -- "0..*" Exception : exceptions
 LeadFormCommon -- "0..*" LeadFormQuestion : questions
+LeadFormCommon -- "0..*" LeadFormCommonPolicyLinksInner : policy_links
 AudienceRule -- PinterestTagEventData : event_data
 PinUpdate -- "0..*" PinUpdateCarouselSlotsInner : carousel_slots
+GetBusinessAssetsResponse -- AssetGroupBinding : asset_group_info
 IntegrationLog -- IntegrationLogClientError : error
 IntegrationLog -- IntegrationLogClientRequest : request
 ConversionTagListResponse -- "0..*" ConversionTagResponse : items
+CatalogsVerticalsListProductsByCatalogBasedFilterRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
+LeadFormArrayResponseItemsInner -- LeadFormResponse : data
+LeadFormArrayResponseItemsInner -- "0..*" Exception : exceptions
 BulkUpsertRequestCreate -- "0..*" CampaignCreateRequest : campaigns
 BulkUpsertRequestCreate -- "0..*" AdGroupCreateRequest : ad_groups
 BulkUpsertRequestCreate -- "0..*" AdCreateRequest : ads
 BulkUpsertRequestCreate -- "0..*" ProductGroupPromotionCreateRequest : product_groups
 BulkUpsertRequestCreate -- "0..*" KeywordsRequest : keywords
 OptimizationGoalMetadataConversionTagV3GoalMetadata -- OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows : attribution_windows
+UpdateMemberAssetsResultsResponseArray -- "0..*" UpdateMemberAssetsResultsResponseArrayItemsInner : items
 CatalogsHotelItemsBatch -- "0..*" HotelProcessingRecord : items
-ProductGroupPromotionCreateRequest -- "0..*" ProductGroupPromotion : product_group_promotion
+ProductGroupPromotionCreateRequest -- "0..*" ProductGroupPromotionCreateRequestElement : product_group_promotion
+CatalogsUpsertCreativeAssetsItem -- CatalogsCreativeAssetsAttributes : attributes
 CatalogsFeedValidationDetails -- CatalogsFeedValidationErrors : errors
 CatalogsFeedValidationDetails -- CatalogsFeedValidationWarnings : warnings
+CatalogsHotelBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsHotelBatchRequest -- "0..*" CatalogsHotelBatchItem : items
 CatalogsHotelItemErrorResponse -- "0..*" ItemValidationEvent : errors
 ItemProcessingRecord -- "0..*" ItemValidationEvent : errors
@@ -3461,30 +4631,29 @@ ItemProcessingRecord -- "0..*" ItemValidationEvent : warnings
 FeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 FeedsCreateRequest -- CatalogsFeedCredentials : credentials
 FeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+FeedsCreateRequest -- CatalogsStatus : status
 CampaignCreateResponse -- "0..*" CampaignCreateResponseItem : items
 AdGroupArrayResponseElement -- AdGroupResponse : data
 AdGroupArrayResponseElement -- "0..*" Exception : exceptions
+CatalogsCreativeAssetsBatchItem -- CatalogsUpdatableCreativeAssetsAttributes : attributes
 CatalogsCreateHotelItem -- CatalogsHotelAttributes : attributes
-ItemUpsertBatchRecord -- ItemAttributes : attributes
+ItemUpsertBatchRecord -- ItemAttributesRequest : attributes
 SSIOAccountResponse -- "0..*" SSIOAccountItem : billto_infos
 SSIOAccountResponse -- "0..*" SSIOAccountPMPName : pmp_names
 BulkUpsertRequest -- BulkUpsertRequestCreate : create
 BulkUpsertRequest -- BulkUpsertRequestUpdate : update
 CatalogsProductGroupUpdateRequest -- CatalogsProductGroupFiltersRequest : filters
+AuthRespondInvitesBodyInvitesInner -- AuthRespondInvitesBodyInvitesInnerAction : action
 PinMediaSource -- "0..*" PinMediaSourceImagesURLItemsInner : items
 CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupPricingCurrencyCriteria : PRICE
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : HOTEL_ID
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : BRAND
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_0
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_1
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_2
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_3
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleStringCriteria : CUSTOM_LABEL_4
-CatalogsHotelProductGroupFilterKeys -- CatalogsProductGroupMultipleCountriesCriteria : COUNTRY
 AdAccount -- AdAccountOwner : owner
+CatalogsCreativeAssetsProductGroupCreateRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
 PinAnalyticsMetricsResponse -- "0..*" PinAnalyticsMetricsResponseDailyMetricsInner : daily_metrics
+UpdateAssetGroupResponse -- "0..*" AssetGroupBinding : updated_asset_groups
+UpdateAssetGroupResponse -- "0..*" UpdateAssetGroupResponseExceptionsInner : exceptions
 PinMediaSourceImagesBase64 -- "0..*" PinMediaSourceImagesBase64ItemsInner : items
-CatalogsProduct -- CatalogsProductMetadata : metadata
+UpdatePartnerResultsResponseArray -- "0..*" UpdatePartnerResultsResponseArrayItemsInner : items
+CatalogsProduct -- CatalogsCreativeAssetsProductMetadata : metadata
 CatalogsProduct -- Pin : pin
 BidFloorSpec -- OptimizationGoalMetadata : optimization_goal_metadata
 CatalogsItemValidationIssues -- CatalogsItemValidationErrors : errors
@@ -3492,27 +4661,41 @@ CatalogsItemValidationIssues -- CatalogsItemValidationWarnings : warnings
 CatalogsRetailFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsRetailFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsRetailFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsRetailFeedsCreateRequest -- CatalogsStatus : status
 CatalogsFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsFeedsCreateRequest -- CatalogsStatus : status
 ProductGroupPromotionResponse -- "0..*" ProductGroupPromotionResponseItem : items
+CatalogsCreativeAssetsItemResponse -- "0..*" Pin : pins
+CatalogsCreativeAssetsItemResponse -- CatalogsCreativeAssetsAttributes : attributes
 QuizPinData -- "0..*" QuizPinQuestion : questions
 QuizPinData -- "0..*" QuizPinResult : results
+QuizPinData -- QuizPinResult : tie_breaker_custom_result
 CatalogsFeed -- CatalogsFeedCredentials : credentials
 CatalogsFeed -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-ItemCreateBatchRecord -- ItemAttributes : attributes
+ItemCreateBatchRecord -- ItemAttributesRequest : attributes
 IntegrationLogsInvalidLogResponse -- "0..*" IntegrationLogsInvalidLogResponseRejectedLogsInner : rejected_logs
 PinterestTagEventData -- LineItem : line_items
+CatalogsItemsUpdateBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsItemsUpdateBatchRequest -- "0..*" ItemUpdateBatchRecord : items
 AdGroupArrayResponse -- "0..*" AdGroupArrayResponseElement : items
 TargetingSpec -- "0..*" TargetingSpecSHOPPINGRETARGETING : SHOPPING_RETARGETING
+CatalogsCreativeAssetsProductGroupFilters -- "0..*" CatalogsCreativeAssetsProductGroupFilterKeys : any_of
+CatalogsCreativeAssetsProductGroupFilters -- "0..*" CatalogsCreativeAssetsProductGroupFilterKeys : all_of
+TargetingTemplateAudienceSizing -- TargetingTemplateAudienceSizingReachEstimate : reach_estimate
 RelatedTerms -- "0..*" RelatedTermsRelatedTermsListInner : related_terms_list
 ItemResponse -- "0..*" Pin : pins
-ItemResponse -- CatalogsHotelAttributes : attributes
+ItemResponse -- CatalogsCreativeAssetsAttributes : attributes
 ItemResponse -- "0..*" ItemValidationEvent : errors
 ConversionEventsDataInner -- ConversionEventsUserData : user_data
 ConversionEventsDataInner -- ConversionEventsDataInnerCustomData : custom_data
+AssetGroupBinding -- BusinessAccessUserSummary : owner
+AssetGroupBinding -- BusinessAccessUserSummary : created_by
 QuizPinQuestion -- "0..*" QuizPinOption : options
+AdvancedAuctionItemsSubmitRequest -- "0..*" AdvancedAuctionItemsSubmitRecord : items
+UpdateInvitesResultsResponseArrayItemsInner -- InviteExceptionResponse : exception
+UpdateInvitesResultsResponseArrayItemsInner -- InviteBusinessRoleBinding : invite
 KeywordMetricsResponse -- KeywordMetrics : metrics
 CatalogsItemValidationErrors -- CatalogsItemValidationDetails : ADULT_INVALID
 CatalogsItemValidationErrors -- CatalogsItemValidationDetails : ADWORDS_FORMAT_INVALID
@@ -3537,31 +4720,43 @@ CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PRICE_MISSING
 CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PRODUCT_LINK_MISSING
 CatalogsItemValidationErrors -- CatalogsItemValidationDetails : PRODUCT_PRICE_INVALID
 CatalogsItemValidationErrors -- CatalogsItemValidationDetails : TITLE_MISSING
+AdvancedAuctionProcessedItems -- "0..*" AdvancedAuctionProcessedItem : items
 CatalogsHotelItemResponse -- "0..*" Pin : pins
 CatalogsHotelItemResponse -- CatalogsHotelAttributes : attributes
 PriceFilter -- CatalogsProductGroupPricingCurrencyCriteria : PRICE
-CatalogsProductGroup -- CatalogsProductGroupFilters : filters
+UpdateInvitesResultsResponseArray -- "0..*" UpdateInvitesResultsResponseArrayItemsInner : items
 CatalogsVerticalFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsVerticalFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsVerticalFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsVerticalFeedsCreateRequest -- CatalogsStatus : status
 CatalogsUpsertHotelItem -- CatalogsHotelAttributes : attributes
 PinCreate -- BoardOwner : board_owner
-PinCreate -- SummaryPinMedia : media
+PinCreate -- PinMedia : media
 PinCreate -- PinMediaSource : media_source
+CatalogsRetailBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsRetailBatchRequest -- "0..*" CatalogsRetailBatchRequestItemsInner : items
-AdCommon -- AdCommonTrackingUrls : tracking_urls
-AdCommon -- AdCommonQuizPinData : quiz_pin_data
+AdCommon -- TrackingUrls : tracking_urls
+AdCommon -- QuizPinData : quiz_pin_data
+CreateAssetAccessRequestBody -- "0..*" CreateAssetAccessRequestBodyAssetRequestsInner : asset_requests
+CatalogsRetailProductGroupCreateRequest -- CatalogsProductGroupFiltersRequest : filters
+CreateInvitesResultsResponseArray -- "0..*" CreateInvitesResultsResponseArrayItemsInner : items
 TopVideoPinsAnalyticsResponse -- TopPinsAnalyticsResponseDateAvailability : date_availability
 TopVideoPinsAnalyticsResponse -- "0..*" TopVideoPinsAnalyticsResponsePinsInner : pins
 KeywordsResponse -- "0..*" KeywordError : errors
 KeywordsResponse -- "0..*" Keyword : keywords
 CatalogsHotelProductGroupCreateRequest -- CatalogsHotelProductGroupFilters : filters
+UserBusinessRoleBinding -- BusinessMemberAssetsSummary : assets_summary
+UserBusinessRoleBinding -- BusinessAccessUserSummary : created_by_business
+UserBusinessRoleBinding -- BusinessAccessUserSummary : created_by_user
+UserBusinessRoleBinding -- BusinessAccessUserSummary : user
 CatalogsHotelFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsHotelFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsHotelFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsRetailBatchRequestItemsInner -- ItemAttributes : attributes
-CatalogsVerticalBatchRequest -- "0..*" CatalogsHotelBatchItem : items
-CatalogProductGroup -- Board : type
+CatalogsHotelFeedsCreateRequest -- CatalogsStatus : status
+CatalogsRetailBatchRequestItemsInner -- ItemAttributesRequest : attributes
+AssetIdPermissions -- AssetGroupBinding : asset_group_info
+CatalogsVerticalBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsVerticalBatchRequest -- "0..*" CatalogsCreativeAssetsBatchItem : items
 CatalogsItems -- "0..*" ItemResponse : items
 CatalogsProductGroupFiltersRequest -- "0..*" CatalogsProductGroupFilterKeys : any_of
 CatalogsProductGroupFiltersRequest -- "0..*" CatalogsProductGroupFilterKeys : all_of
@@ -3571,8 +4766,11 @@ AudienceDemographics -- "0..*" AudienceDemographicValue : devices
 AudienceDemographics -- "0..*" AudienceDemographicValue : metros
 AudienceDemographics -- "0..*" AudienceDemographicValue : countries
 CatalogsRetailItemsBatch -- "0..*" ItemProcessingRecord : items
+CatalogsReportParameters -- CatalogsHotelReportParametersReport : report
+CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
 IntegrationLogsRequest -- "0..*" IntegrationLog : logs
 ConversionEvents -- "0..*" ConversionEventsDataInner : data
+AdAccountCreateSubscriptionRequest -- AdAccountCreateSubscriptionRequestPartnerMetadata : partner_metadata
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : AD_LINK_FORMAT_WARNING
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : AD_LINK_SAME_AS_LINK
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
@@ -3617,46 +4815,78 @@ CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : TITLE_LENGTH_T
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : TOO_MANY_ADDITIONAL_IMAGE_LINKS
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : UTM_SOURCE_AUTO_CORRECTED
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : WEIGHT_UNIT_INVALID
+CatalogsItemsDeleteDiscontinuedBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsItemsDeleteDiscontinuedBatchRequest -- "0..*" ItemDeleteDiscontinuedBatchRecord : items
+RespondToInvitesResponseArrayItemsInner -- InviteExceptionResponse : exception
+RespondToInvitesResponseArrayItemsInner -- BaseInviteDataResponse : invite
+UpdateAssetGroupBody -- "0..*" UpdateAssetGroupBodyAssetGroupsToUpdateInner : asset_groups_to_update
 TopPinsAnalyticsResponse -- TopPinsAnalyticsResponseDateAvailability : date_availability
 TopPinsAnalyticsResponse -- "0..*" TopPinsAnalyticsResponsePinsInner : pins
+UpdatePartnerAssetAccessBody -- "0..*" UpdatePartnerAssetAccessBodyAccessesInner : accesses
+CatalogsItemsDeleteBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsItemsDeleteBatchRequest -- "0..*" ItemDeleteBatchRecord : items
 GetMMMReportResponse -- GetMMMReportResponseData : data
+TargetingTemplateCommon -- TargetingSpec : targeting_attributes
+TargetingTemplateCommon -- "0..*" TargetingTemplateKeyword : keywords
+TargetingTemplateCommon -- TrackingUrls : tracking_urls
 ConversionEventsDataInnerCustomData -- "0..*" ConversionEventsDataInnerCustomDataContentsInner : contents
 PinMediaSourceImagesURL -- "0..*" PinMediaSourceImagesURLItemsInner : items
+DeleteInvitesResultsResponseArray -- "0..*" DeleteInvitesResultsResponseArrayItemsInner : items
 BulkUpsertRequestUpdate -- "0..*" CampaignUpdateRequest : campaigns
 BulkUpsertRequestUpdate -- "0..*" AdGroupUpdateRequest : ad_groups
 BulkUpsertRequestUpdate -- "0..*" AdUpdateRequest : ads
 BulkUpsertRequestUpdate -- "0..*" ProductGroupPromotionUpdateRequest : product_groups
 BulkUpsertRequestUpdate -- "0..*" KeywordUpdate : keywords
+DeletePartnersRequest -- String : partner_type
+AdvancedAuctionItemsGetRequest -- "0..*" AdvancedAuctionItemsGetRecord : items
+UpdateMemberAssetAccessBody -- "0..*" UpdateMemberAssetAccessBodyAccessesInner : accesses
 TemplateResponse -- TemplateResponseDateRange : date_range
 CatalogsVerticalFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
 CatalogsVerticalFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
 ItemUpdateBatchRecord -- UpdatableItemAttributes : attributes
 CatalogsProductGroupFilters -- "0..*" CatalogsProductGroupFilterKeys : any_of
 CatalogsProductGroupFilters -- "0..*" CatalogsProductGroupFilterKeys : all_of
+CatalogsHotelReportParameters -- CatalogsHotelReportParametersReport : report
+CreateAssetAccessRequestResponse -- "0..*" CreateAssetAccessRequestErrorMessageInner : exceptions
 BidFloorRequest -- "0..*" BidFloorSpec : bid_floor_specs
 BidFloorRequest -- TargetingSpec : targeting_spec
-CatalogsProductGroupsCreateRequest -- CatalogsHotelProductGroupFilters : filters
 AdArrayResponse -- "0..*" AdArrayResponseElement : items
+BaseInviteDataResponse -- BaseInviteDataResponseInviteData : invite_data
+BaseInviteDataResponse -- BusinessAccessUserSummary : user
 CatalogsUpdateRetailItem -- UpdatableItemAttributes : attributes
-ItemBatchRecord -- ItemAttributes : attributes
+ItemBatchRecord -- ItemAttributesRequest : attributes
 CatalogsFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
 CatalogsFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsUpsertRetailItem -- ItemAttributes : attributes
+CatalogsUpsertRetailItem -- ItemAttributesRequest : attributes
+LeadFormArrayResponse -- "0..*" LeadFormArrayResponseItemsInner : items
 KeywordsMetricsArrayResponse -- "0..*" KeywordMetricsResponse : data
+CatalogsCreativeAssetsFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
+CatalogsCreativeAssetsFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
 ImageMetadata -- ImageMetadataImages : images
+MultipleProductGroupsInner -- CatalogsCreativeAssetsProductGroupFilters : filters
 CatalogsUpdateHotelItem -- CatalogsUpdatableHotelAttributes : attributes
+CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
+CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsFeedCredentials : credentials
+CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
+CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsStatus : status
+CatalogsListProductsByFeedBasedFilter -- CatalogsProductGroupFilters : filters
 CreateMMMReportResponse -- CreateMMMReportResponseData : data
 ItemResponseAnyOf -- "0..*" Pin : pins
-ItemResponseAnyOf -- CatalogsHotelAttributes : attributes
-CatalogsListProductsByFilterRequest -- CatalogsProductGroupFilters : filters
+ItemResponseAnyOf -- CatalogsCreativeAssetsAttributes : attributes
+CatalogsHotelListProductsByCatalogBasedFilterRequest -- CatalogsHotelProductGroupFilters : filters
+BusinessMemberAssetsSummary -- "0..*" BusinessMemberAssetsSummaryAdAccountsInner : ad_accounts
+BusinessMemberAssetsSummary -- "0..*" BusinessMemberAssetsSummaryProfilesInner : profiles
+CatalogsListProductsByFilterRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
 CatalogsRetailItemErrorResponse -- "0..*" ItemValidationEvent : errors
 OrderLinesArrayResponse -- "0..*" OrderLines : items
 AdAccountsCountryResponse -- "0..*" AdAccountsCountryResponseData : items
 ItemResponseAnyOf1 -- "0..*" ItemValidationEvent : errors
+CatalogsCreativeAssetsProductGroup -- CatalogsCreativeAssetsProductGroupFilters : filters
+CatalogsRetailProduct -- CatalogsRetailProductMetadata : metadata
+CatalogsRetailProduct -- Pin : pin
+CreateInvitesResultsResponseArrayItemsInnerInvite -- BusinessAccessUserSummary : user
 KeywordsRequest -- "0..*" KeywordsCommon : keywords
 AnalyticsMetricsResponse -- "0..*" AnalyticsDailyMetrics : daily_metrics
-CatalogsProductGroupsUpdateRequest -- CatalogsHotelProductGroupFilters : filters
+CatalogsProductGroupsUpdateRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
 
 @enduml

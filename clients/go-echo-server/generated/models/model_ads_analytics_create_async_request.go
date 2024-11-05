@@ -3,10 +3,10 @@ package models
 type AdsAnalyticsCreateAsyncRequest struct {
 
 	// Metric report start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date"`
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 
 	// Metric report end date (UTC). Format: YYYY-MM-DD
-	EndDate string `json:"end_date"`
+	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 
 	// TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 	Granularity Granularity `json:"granularity"`
@@ -56,7 +56,7 @@ type AdsAnalyticsCreateAsyncRequest struct {
 	// List of product item ids
 	ProductItemIds []string `json:"product_item_ids,omitempty"`
 
-	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 	TargetingTypes []AdsAnalyticsTargetingType `json:"targeting_types,omitempty"`
 
 	// List of metrics filters
@@ -70,4 +70,13 @@ type AdsAnalyticsCreateAsyncRequest struct {
 
 	// Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
 	ReportFormat DataOutputFormat `json:"report_format,omitempty"`
+
+	// Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+	PrimarySort string `json:"primary_sort,omitempty"`
+
+	// Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+	StartHour int32 `json:"start_hour,omitempty"`
+
+	// Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+	EndHour int32 `json:"end_hour,omitempty"`
 }

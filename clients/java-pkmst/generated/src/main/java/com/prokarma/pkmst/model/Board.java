@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Board")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Board   {
   @JsonProperty("id")
   private String id;
@@ -93,10 +93,10 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "549755885175", readOnly = true, value = "")
   public String getId() {
     return id;
@@ -111,10 +111,10 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Date and time of board creation.
    * @return createdAt
-  **/
+   */
   @ApiModelProperty(example = "2020-01-01T20:10:40Z", readOnly = true, value = "Date and time of board creation.")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -129,10 +129,10 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Date and time of last board pins modified.
    * @return boardPinsModifiedAt
-  **/
+   */
   @ApiModelProperty(example = "2020-01-01T20:10:40Z", readOnly = true, value = "Date and time of last board pins modified.")
   public OffsetDateTime getBoardPinsModifiedAt() {
     return boardPinsModifiedAt;
@@ -147,10 +147,10 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "Summer Recipes", required = true, value = "")
   public String getName() {
     return name;
@@ -165,10 +165,10 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(example = "My favorite summer recipes", value = "")
   public String getDescription() {
     return description;
@@ -183,11 +183,11 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Count of collaborators on the board.
    * minimum: 0
    * @return collaboratorCount
-  **/
+   */
   @ApiModelProperty(example = "17", readOnly = true, value = "Count of collaborators on the board.")
   public Integer getCollaboratorCount() {
     return collaboratorCount;
@@ -202,11 +202,11 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Count of pins on the board.
    * minimum: 0
    * @return pinCount
-  **/
+   */
   @ApiModelProperty(example = "5", readOnly = true, value = "Count of pins on the board.")
   public Integer getPinCount() {
     return pinCount;
@@ -221,11 +221,11 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Board follower count.
    * minimum: 0
    * @return followerCount
-  **/
+   */
   @ApiModelProperty(example = "13", readOnly = true, value = "Board follower count.")
   public Integer getFollowerCount() {
     return followerCount;
@@ -240,10 +240,10 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Get media
    * @return media
-  **/
+   */
   @ApiModelProperty(value = "")
   public BoardMedia getMedia() {
     return media;
@@ -258,11 +258,11 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Get owner
    * @return owner
-  **/
-  @ApiModelProperty(value = "")
+   */
+  @ApiModelProperty(readOnly = true, value = "")
   public BoardOwner getOwner() {
     return owner;
   }
@@ -276,10 +276,10 @@ public class Board   {
     return this;
   }
 
-   /**
+  /**
    * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
    * @return privacy
-  **/
+   */
   @ApiModelProperty(value = "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>")
   public PrivacyEnum getPrivacy() {
     return privacy;

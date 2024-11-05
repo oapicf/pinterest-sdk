@@ -5,6 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
+import org.openapitools.models.CatalogsCreativeAssetsFeedsUpdateRequest
 import org.openapitools.models.CatalogsFeedCredentials
 import org.openapitools.models.CatalogsFeedProcessingSchedule
 import org.openapitools.models.CatalogsFormat

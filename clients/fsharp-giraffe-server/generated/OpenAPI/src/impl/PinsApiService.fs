@@ -20,6 +20,26 @@ module PinsApiServiceImplementation =
     type PinsApiServiceImpl() =
       interface IPinsApiService with
 
+        member this.MultiPinsAnalytics ctx args =
+          if true then
+            let content = "response" :> obj :?> IDictionary<string, IDictionary> // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            MultiPinsAnalyticsStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid pins analytics parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            MultiPinsAnalyticsStatusCode400 { content = content }
+          else if true then
+            let content = "Not authorized to access board or Pin." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            MultiPinsAnalyticsStatusCode401 { content = content }
+          else if true then
+            let content = "Pin not found." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            MultiPinsAnalyticsStatusCode404 { content = content }
+          else if true then
+            let content = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            MultiPinsAnalyticsStatusCode429 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            MultiPinsAnalyticsDefaultStatusCode { content = content }
+
         member this.PinsAnalytics ctx args =
           if true then
             let content = "response" :> obj :?> IDictionary<string, PinAnalyticsMetricsResponse> // this cast is obviously wrong, and is only intended to allow generated project to compile   

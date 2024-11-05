@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Bid** | Pointer to **NullableInt32** | Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
+**Bid** | Pointer to **NullableInt32** | &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. | [optional] 
 **MatchType** | [**NullableMatchTypeResponse**](MatchTypeResponse.md) |  | 
 **Value** | **string** | Keyword value (120 chars max). | 
 

@@ -37,5 +37,8 @@ data class ProductGroupPromotionUpdateRequest (
     @Json(name = "product_group_promotion")
     val productGroupPromotion: kotlin.collections.List<ProductGroupPromotion>
 
-)
+) {
+
+
+}
 

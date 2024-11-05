@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | Option<[**models::SummaryPinMedia**](SummaryPin_media.md)> |  | [optional]
+**media** | Option<[**models::PinMedia**](PinMedia.md)> |  | [optional][readonly]
 **alt_text** | Option<**String**> |  | [optional]
 **link** | Option<**String**> |  | [optional]
 **title** | Option<**String**> |  | [optional]

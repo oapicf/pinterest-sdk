@@ -22,7 +22,7 @@ data class LeadFormTestResponse(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "8078432025948590686", description = "Subscription ID.")
     @get:JsonProperty("subscription_id") val subscriptionId: kotlin.String? = null
-) {
+    ) {
 
 }
 

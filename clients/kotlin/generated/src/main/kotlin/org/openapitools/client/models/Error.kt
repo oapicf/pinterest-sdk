@@ -35,5 +35,8 @@ data class Error (
     @Json(name = "message")
     val message: kotlin.String
 
-)
+) {
+
+
+}
 

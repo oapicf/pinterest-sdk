@@ -56,9 +56,12 @@ import com.squareup.moshi.JsonClass
  * @param productGroupIds List of product group ids
  * @param productGroupStatuses List of values for filtering
  * @param productItemIds List of product item ids
- * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+ * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  * @param metricsFilters List of metrics filters
  * @param reportFormat Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+ * @param primarySort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+ * @param startHour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+ * @param endHour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
  */
 
 
@@ -144,7 +147,7 @@ data class AdsAnalyticsCreateAsyncRequest (
     @Json(name = "product_item_ids")
     val productItemIds: kotlin.collections.List<kotlin.String>? = null,
 
-    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
+    /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
     @Json(name = "targeting_types")
     val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>? = null,
 
@@ -154,7 +157,32 @@ data class AdsAnalyticsCreateAsyncRequest (
 
     /* Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. */
     @Json(name = "report_format")
-    val reportFormat: DataOutputFormat? = "JSON"
+    val reportFormat: DataOutputFormat? = "JSON",
 
-)
+    /* Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. */
+    @Json(name = "primary_sort")
+    val primarySort: AdsAnalyticsCreateAsyncRequest.PrimarySort? = null,
+
+    /* Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. */
+    @Json(name = "start_hour")
+    val startHour: kotlin.Int? = null,
+
+    /* Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. */
+    @Json(name = "end_hour")
+    val endHour: kotlin.Int? = null
+
+) {
+
+    /**
+     * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+     *
+     * Values: ID,DATE
+     */
+    @JsonClass(generateAdapter = false)
+    enum class PrimarySort(val value: kotlin.String) {
+        @Json(name = "BY_ID") ID("BY_ID"),
+        @Json(name = "BY_DATE") DATE("BY_DATE");
+    }
+
+}
 

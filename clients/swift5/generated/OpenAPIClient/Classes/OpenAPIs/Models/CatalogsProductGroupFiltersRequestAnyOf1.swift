@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct CatalogsProductGroupFiltersRequestAnyOf1: Codable, JSONEncodable, Hashable {
 
+    static let allOfRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     public var allOf: [CatalogsProductGroupFilterKeys]
 
     public init(allOf: [CatalogsProductGroupFilterKeys]) {

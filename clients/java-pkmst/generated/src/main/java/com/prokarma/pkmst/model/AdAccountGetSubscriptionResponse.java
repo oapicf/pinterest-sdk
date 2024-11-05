@@ -15,7 +15,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * AdAccountGetSubscriptionResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountGetSubscriptionResponse   {
   @JsonProperty("lead_form_id")
   private String leadFormId;
@@ -49,10 +49,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Lead form ID.
    * @return leadFormId
-  **/
+   */
   @ApiModelProperty(example = "383791336903426390", value = "Lead form ID.")
   public String getLeadFormId() {
     return leadFormId;
@@ -67,10 +67,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Standard HTTPS webhook URL.
    * @return webhookUrl
-  **/
+   */
   @ApiModelProperty(example = "https://webhook.example.com/xyz", value = "Standard HTTPS webhook URL.")
   public String getWebhookUrl() {
     return webhookUrl;
@@ -85,10 +85,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Subscription ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
   public String getId() {
     return id;
@@ -103,10 +103,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * User account used to subscribe lead data.
    * @return userAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "User account used to subscribe lead data.")
   public String getUserAccountId() {
     return userAccountId;
@@ -121,10 +121,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * The Ad Account ID that this lead form belongs to.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885176", value = "The Ad Account ID that this lead form belongs to.")
   public String getAdAccountId() {
     return adAccountId;
@@ -139,10 +139,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * API version.
    * @return apiVersion
-  **/
+   */
   @ApiModelProperty(example = "v5", value = "API version.")
   public String getApiVersion() {
     return apiVersion;
@@ -157,10 +157,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Base64 encoded key for client to decrypt lead data.
    * @return cryptographicKey
-  **/
+   */
   @ApiModelProperty(example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", value = "Base64 encoded key for client to decrypt lead data.")
   public String getCryptographicKey() {
     return cryptographicKey;
@@ -175,10 +175,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Lead data encryption algorithm.
    * @return cryptographicAlgorithm
-  **/
+   */
   @ApiModelProperty(example = "AES-256-GCM", value = "Lead data encryption algorithm.")
   public String getCryptographicAlgorithm() {
     return cryptographicAlgorithm;
@@ -193,10 +193,10 @@ public class AdAccountGetSubscriptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Lead form creation time. Unix timestamp in milliseconds.
    * @return createdTime
-  **/
+   */
   @ApiModelProperty(example = "1699209842000", value = "Lead form creation time. Unix timestamp in milliseconds.")
   public Integer getCreatedTime() {
     return createdTime;

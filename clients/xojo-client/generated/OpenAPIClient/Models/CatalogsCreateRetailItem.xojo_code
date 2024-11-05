@@ -15,16 +15,13 @@ Protected Class CatalogsCreateRetailItem
 
 
 	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.ItemAttributes
+		Escapedattributes As OpenAPIClient.Models.ItemAttributesRequest
 	#tag EndProperty
 
 
     #tag Enum, Name = OperationEnum, Type = Integer, Flags = &h0
         
         Create
-        Update
-        Upsert
-        Delete
         
     #tag EndEnum
 
@@ -35,12 +32,6 @@ Protected Class CatalogsCreateRetailItem
 		    
 		    Case OperationEnum.Create
 		      Return "CREATE"
-		    Case OperationEnum.Update
-		      Return "UPDATE"
-		    Case OperationEnum.Upsert
-		      Return "UPSERT"
-		    Case OperationEnum.Delete
-		      Return "DELETE"
 		    
 		  End Select
 		  Return ""
@@ -94,7 +85,7 @@ Protected Class CatalogsCreateRetailItem
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ItemAttributes"
+			Type="ItemAttributesRequest"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

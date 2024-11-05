@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AudienceInsightCategoryArrayResponse  {
   
   @ApiModelProperty(value = "")
-  private List<AudienceInsightCategoryCommon> items;
+  private List<AudienceInsightCategoryCommon> items = new ArrayList<>();
  /**
    * Get items
    * @return items

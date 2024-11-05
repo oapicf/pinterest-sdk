@@ -1,7 +1,14 @@
 package apimodels;
 
-import apimodels.CatalogsProductMetadata;
+import apimodels.CatalogsCreativeAssetsProduct;
+import apimodels.CatalogsCreativeAssetsProductMetadata;
+import apimodels.CatalogsHotelProduct;
+import apimodels.CatalogsRetailProduct;
+import apimodels.CatalogsType;
 import apimodels.Pin;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -9,16 +16,22 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * CatalogsProduct
+ * Catalogs product for all verticals
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProduct   {
+  @JsonProperty("catalog_type")
+  @NotNull
+@Valid
+
+  private CatalogsType catalogType;
+
   @JsonProperty("metadata")
   @NotNull
 @Valid
 
-  private CatalogsProductMetadata metadata;
+  private CatalogsCreativeAssetsProductMetadata metadata;
 
   @JsonProperty("pin")
   @NotNull
@@ -26,7 +39,24 @@ public class CatalogsProduct   {
 
   private Pin pin;
 
-  public CatalogsProduct metadata(CatalogsProductMetadata metadata) {
+  public CatalogsProduct catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+   /**
+   * Get catalogType
+   * @return catalogType
+  **/
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  public CatalogsProduct metadata(CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -35,11 +65,11 @@ public class CatalogsProduct   {
    * Get metadata
    * @return metadata
   **/
-  public CatalogsProductMetadata getMetadata() {
+  public CatalogsCreativeAssetsProductMetadata getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(CatalogsProductMetadata metadata) {
+  public void setMetadata(CatalogsCreativeAssetsProductMetadata metadata) {
     this.metadata = metadata;
   }
 
@@ -70,13 +100,14 @@ public class CatalogsProduct   {
       return false;
     }
     CatalogsProduct catalogsProduct = (CatalogsProduct) o;
-    return Objects.equals(metadata, catalogsProduct.metadata) &&
+    return Objects.equals(catalogType, catalogsProduct.catalogType) &&
+        Objects.equals(metadata, catalogsProduct.metadata) &&
         Objects.equals(pin, catalogsProduct.pin);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, pin);
+    return Objects.hash(catalogType, metadata, pin);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -85,6 +116,7 @@ public class CatalogsProduct   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProduct {\n");
     
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    pin: ").append(toIndentedString(pin)).append("\n");
     sb.append("}");

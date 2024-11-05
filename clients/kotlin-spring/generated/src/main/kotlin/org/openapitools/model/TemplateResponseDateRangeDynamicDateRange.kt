@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -26,18 +27,26 @@ data class TemplateResponseDateRangeDynamicDateRange(
 
     @Schema(example = "YEAR_TO_DATE", description = "The dynamic range type")
     @get:JsonProperty("range") val range: TemplateResponseDateRangeDynamicDateRange.Range? = null
-) {
+    ) {
 
     /**
     * The dynamic range type
     * Values: YEAR_TO_DATE,QUARTER_TO_DATE,MONTH_TO_DATE,LAST_MONTH
     */
-    enum class Range(val value: kotlin.String) {
+    enum class Range(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("YEAR_TO_DATE") YEAR_TO_DATE("YEAR_TO_DATE"),
-        @JsonProperty("QUARTER_TO_DATE") QUARTER_TO_DATE("QUARTER_TO_DATE"),
-        @JsonProperty("MONTH_TO_DATE") MONTH_TO_DATE("MONTH_TO_DATE"),
-        @JsonProperty("LAST_MONTH") LAST_MONTH("LAST_MONTH")
+        YEAR_TO_DATE("YEAR_TO_DATE"),
+        QUARTER_TO_DATE("QUARTER_TO_DATE"),
+        MONTH_TO_DATE("MONTH_TO_DATE"),
+        LAST_MONTH("LAST_MONTH");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Range {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

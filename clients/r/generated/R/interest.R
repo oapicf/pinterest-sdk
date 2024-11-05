@@ -21,8 +21,7 @@ Interest <- R6::R6Class(
     `id` = NULL,
     `key` = NULL,
     `name` = NULL,
-    #' Initialize a new Interest class.
-    #'
+
     #' @description
     #' Initialize a new Interest class.
     #'
@@ -31,7 +30,6 @@ Interest <- R6::R6Class(
     #' @param key key
     #' @param name name
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`canonical_url` = NULL, `id` = NULL, `key` = NULL, `name` = NULL, ...) {
       if (!is.null(`canonical_url`)) {
         if (!(is.character(`canonical_url`) && length(`canonical_url`) == 1)) {
@@ -58,13 +56,11 @@ Interest <- R6::R6Class(
         self$`name` <- `name`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Interest in JSON format
-    #' @export
     toJSON = function() {
       InterestObject <- list()
       if (!is.null(self$`canonical_url`)) {
@@ -85,14 +81,12 @@ Interest <- R6::R6Class(
       }
       InterestObject
     },
-    #' Deserialize JSON string into an instance of Interest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Interest
     #'
     #' @param input_json the JSON input
     #' @return the instance of Interest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`canonical_url`)) {
@@ -109,13 +103,11 @@ Interest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Interest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`canonical_url`)) {
@@ -154,14 +146,12 @@ Interest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of Interest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Interest
     #'
     #' @param input_json the JSON input
     #' @return the instance of Interest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`canonical_url` <- this_object$`canonical_url`
@@ -170,33 +160,27 @@ Interest <- R6::R6Class(
       self$`name` <- this_object$`name`
       self
     },
-    #' Validate JSON input with respect to Interest
-    #'
+
     #' @description
     #' Validate JSON input with respect to Interest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of Interest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -204,13 +188,11 @@ Interest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -219,12 +201,9 @@ Interest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

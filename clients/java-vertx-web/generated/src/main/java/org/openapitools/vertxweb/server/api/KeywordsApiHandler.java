@@ -167,6 +167,7 @@ public class KeywordsApiHandler {
         List<String> interests = requestParameters.queryParameter("interests") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("interests").get(), new TypeReference<List<String>>(){}) : null;
         List<String> genders = requestParameters.queryParameter("genders") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("genders").get(), new TypeReference<List<String>>(){}) : null;
         List<String> ages = requestParameters.queryParameter("ages") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("ages").get(), new TypeReference<List<String>>(){}) : null;
+        List<String> includeKeywords = requestParameters.queryParameter("include_keywords") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("include_keywords").get(), new TypeReference<List<String>>(){}) : null;
         Boolean normalizeAgainstGroup = requestParameters.queryParameter("normalize_against_group") != null ? requestParameters.queryParameter("normalize_against_group").getBoolean() : false;
         Integer limit = requestParameters.queryParameter("limit") != null ? requestParameters.queryParameter("limit").getInteger() : 50;
 
@@ -175,10 +176,11 @@ public class KeywordsApiHandler {
         logger.debug("Parameter interests is {}", interests);
         logger.debug("Parameter genders is {}", genders);
         logger.debug("Parameter ages is {}", ages);
+        logger.debug("Parameter includeKeywords is {}", includeKeywords);
         logger.debug("Parameter normalizeAgainstGroup is {}", normalizeAgainstGroup);
         logger.debug("Parameter limit is {}", limit);
 
-        api.trendingKeywordsList(region, trendType, interests, genders, ages, normalizeAgainstGroup, limit)
+        api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

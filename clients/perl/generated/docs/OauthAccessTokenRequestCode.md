@@ -8,6 +8,7 @@ use WWW::OpenAPIClient::Object::OauthAccessTokenRequestCode;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**grant_type** | **string** |  | 
 **code** | **string** |  | 
 **redirect_uri** | **string** |  | 
 

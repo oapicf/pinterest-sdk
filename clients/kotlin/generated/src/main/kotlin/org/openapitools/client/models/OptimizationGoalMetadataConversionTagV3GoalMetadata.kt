@@ -27,7 +27,7 @@ import com.squareup.moshi.JsonClass
  * @param conversionEvent 
  * @param conversionTagId 
  * @param cpaGoalValueInMicroCurrency 
- * @param isRoasOptimized Ad group is ROAS optimized
+ * @param isRoasOptimized ROAS optimization is not supported
  * @param learningModeType Conversion learning model type
  */
 
@@ -46,7 +46,7 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata (
     @Json(name = "cpa_goal_value_in_micro_currency")
     val cpaGoalValueInMicroCurrency: kotlin.String? = null,
 
-    /* Ad group is ROAS optimized */
+    /* ROAS optimization is not supported */
     @Json(name = "is_roas_optimized")
     val isRoasOptimized: kotlin.Boolean? = null,
 
@@ -77,13 +77,13 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata (
     /**
      * Conversion learning model type
      *
-     * Values: NOT_ACTIVE,ACTIVE,`null`
+     * Values: NOT_ACTIVE,ACTIVE
      */
     @JsonClass(generateAdapter = false)
     enum class LearningModeType(val value: kotlin.String) {
         @Json(name = "NOT_ACTIVE") NOT_ACTIVE("NOT_ACTIVE"),
-        @Json(name = "ACTIVE") ACTIVE("ACTIVE"),
-        @Json(name = "null") `null`("null");
+        @Json(name = "ACTIVE") ACTIVE("ACTIVE");
     }
+
 }
 

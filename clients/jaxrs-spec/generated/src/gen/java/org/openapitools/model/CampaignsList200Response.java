@@ -21,14 +21,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("campaigns_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignsList200Response   {
-  private @Valid List<CampaignResponse> items = new ArrayList<>();
-  private @Valid String bookmark;
+  private @Valid List<@Valid CampaignResponse> items = new ArrayList<>();
+  private String bookmark;
 
   /**
    **/
-  public CampaignsList200Response items(List<CampaignResponse> items) {
+  public CampaignsList200Response items(List<@Valid CampaignResponse> items) {
     this.items = items;
     return this;
   }
@@ -36,13 +36,12 @@ public class CampaignsList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  @NotNull
-  public List<CampaignResponse> getItems() {
+  @NotNull @Valid public List<@Valid CampaignResponse> getItems() {
     return items;
   }
 
   @JsonProperty("items")
-  public void setItems(List<CampaignResponse> items) {
+  public void setItems(List<@Valid CampaignResponse> items) {
     this.items = items;
   }
 

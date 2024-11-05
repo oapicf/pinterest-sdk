@@ -40,6 +40,7 @@ public class PinsApiHandler {
     }
 
     public void mount(RouterBuilder builder) {
+        builder.operation("multiPinsAnalytics").handler(this::multiPinsAnalytics);
         builder.operation("pinsAnalytics").handler(this::pinsAnalytics);
         builder.operation("pinsCreate").handler(this::pinsCreate);
         builder.operation("pinsDelete").handler(this::pinsDelete);
@@ -47,6 +48,38 @@ public class PinsApiHandler {
         builder.operation("pinsList").handler(this::pinsList);
         builder.operation("pinsSave").handler(this::pinsSave);
         builder.operation("pinsUpdate").handler(this::pinsUpdate);
+    }
+
+    private void multiPinsAnalytics(RoutingContext routingContext) {
+        logger.info("multiPinsAnalytics()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        List<String> pinIds = requestParameters.queryParameter("pin_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("pin_ids").get(), new TypeReference<List<String>>(){}) : null;
+        LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
+        LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
+        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<PinsAnalyticsMetricTypesParameterInner>>(){}) : null;
+        String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
+        String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
+
+        logger.debug("Parameter pinIds is {}", pinIds);
+        logger.debug("Parameter startDate is {}", startDate);
+        logger.debug("Parameter endDate is {}", endDate);
+        logger.debug("Parameter metricTypes is {}", metricTypes);
+        logger.debug("Parameter appTypes is {}", appTypes);
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+
+        api.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
     }
 
     private void pinsAnalytics(RoutingContext routingContext) {

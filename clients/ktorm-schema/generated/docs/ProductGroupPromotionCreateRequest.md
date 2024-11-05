@@ -6,18 +6,18 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **adGroupId** | ad_group_id | text NOT NULL |  | **kotlin.String** | ID of the Ad Group the Product Group Promotion belongs to. | 
-**productGroupPromotion** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  | 
+**productGroupPromotion** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotionCreateRequestElement&gt;**](ProductGroupPromotionCreateRequestElement.md) |  | 
 
 
 
-# **Table `ProductGroupPromotionCreateRequestProductGroupPromotion`**
-(mapped from: ProductGroupPromotionCreateRequestProductGroupPromotion)
+# **Table `ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement`**
+(mapped from: ProductGroupPromotionCreateRequestProductGroupPromotionCreateRequestElement)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 productGroupPromotionCreateRequest | productGroupPromotionCreateRequest | long | | kotlin.Long | Primary Key | *one*
-productGroupPromotion | productGroupPromotion | long | | kotlin.Long | Foreign Key | *many*
+productGroupPromotionCreateRequestElement | productGroupPromotionCreateRequestElement | long | | kotlin.Long | Foreign Key | *many*
 
 
 

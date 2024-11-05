@@ -4,10 +4,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsItemsRequestLanguage;
 import com.prokarma.pkmst.model.CatalogsRetailBatchRequestItemsInner;
-import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.Country;
-import com.prokarma.pkmst.model.Language;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -23,36 +22,65 @@ import java.util.List;
  */
 @ApiModel(description = "A request object that can have multiple operations on a single retail batch")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailBatchRequest   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("country")
   private Country country;
 
   @JsonProperty("language")
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("items")
   
   private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
-  public CatalogsRetailBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsRetailBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -61,10 +89,10 @@ public class CatalogsRetailBatchRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get country
    * @return country
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Country getCountry() {
     return country;
@@ -74,21 +102,21 @@ public class CatalogsRetailBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsRetailBatchRequest language(Language language) {
+  public CatalogsRetailBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
 
-   /**
+  /**
    * Get language
    * @return language
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
@@ -105,10 +133,10 @@ public class CatalogsRetailBatchRequest   {
     return this;
   }
 
-   /**
+  /**
    * Array with catalogs item operations
    * @return items
-  **/
+   */
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
   public List<CatalogsRetailBatchRequestItemsInner> getItems() {
     return items;

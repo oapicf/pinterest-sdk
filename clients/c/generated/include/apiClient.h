@@ -31,6 +31,7 @@ typedef struct apiClient_t {
     char *accessToken;
     char *username;
     char *password;
+    char *accessToken;
 } apiClient_t;
 
 apiClient_t* apiClient_create();

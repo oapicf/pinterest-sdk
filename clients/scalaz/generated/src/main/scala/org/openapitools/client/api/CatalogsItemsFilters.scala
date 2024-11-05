@@ -14,9 +14,10 @@ import CatalogsItemsFilters._
 case class CatalogsItemsFilters (
   catalogType: CatalogsType,
 itemIds: List[String],
-/* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+/* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
   catalogId: Option[String],
-hotelIds: List[String])
+hotelIds: List[String],
+creativeAssetsIds: List[String])
 
 object CatalogsItemsFilters {
   import DateTimeCodecs._

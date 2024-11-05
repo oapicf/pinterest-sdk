@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsFeedIngestionInfo
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionInfo   {
   @JsonProperty("IN_STOCK")
   private Integer IN_STOCK;
@@ -30,10 +30,10 @@ public class CatalogsFeedIngestionInfo   {
     return this;
   }
 
-   /**
+  /**
    * The number of ingested products that are in stock.
    * @return IN_STOCK
-  **/
+   */
   @ApiModelProperty(value = "The number of ingested products that are in stock.")
   public Integer getINSTOCK() {
     return IN_STOCK;
@@ -48,10 +48,10 @@ public class CatalogsFeedIngestionInfo   {
     return this;
   }
 
-   /**
+  /**
    * The number of ingested products that are in out of stock.
    * @return OUT_OF_STOCK
-  **/
+   */
   @ApiModelProperty(value = "The number of ingested products that are in out of stock.")
   public Integer getOUTOFSTOCK() {
     return OUT_OF_STOCK;
@@ -66,10 +66,10 @@ public class CatalogsFeedIngestionInfo   {
     return this;
   }
 
-   /**
+  /**
    * The number of ingested products that are in preorder.
    * @return PREORDER
-  **/
+   */
   @ApiModelProperty(value = "The number of ingested products that are in preorder.")
   public Integer getPREORDER() {
     return PREORDER;

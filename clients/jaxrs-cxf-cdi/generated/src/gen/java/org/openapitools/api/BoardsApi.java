@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @Api(description = "the boards API")
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 
 public class BoardsApi  {
 
@@ -87,12 +87,14 @@ public class BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List board sections", notes = "Get a list of all board sections from a board owned by the \"operation user_account\" - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = BoardSectionsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") })
          }, tags={ "boards" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "response", response = BoardSectionsList200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response boardSectionsList( @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board.",required=true) @PathParam("board_id") String boardId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+    public Response boardSectionsList( @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board.",required=true) @PathParam("board_id") String boardId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.boardSectionsList(boardId, adAccountId, bookmark, pageSize, securityContext);
     }
 
@@ -103,6 +105,9 @@ public class BoardsApi  {
     @ApiOperation(value = "List Pins on board section", notes = "Get a list of the Pins on a board section of a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = BoardsListPins200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
+            @AuthorizationScope(scope = "pins:read", description = "See your public Pins") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
          }, tags={ "boards" })
     @ApiResponses(value = { 
@@ -111,7 +116,7 @@ public class BoardsApi  {
         @ApiResponse(code = 404, message = "Board or section not found.", response = Error.class),
         @ApiResponse(code = 409, message = "Board section conflict.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response boardSectionsListPins( @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board.",required=true) @PathParam("board_id") String boardId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board section.",required=true) @PathParam("section_id") String sectionId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
+    public Response boardSectionsListPins( @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board.",required=true) @PathParam("board_id") String boardId,  @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board section.",required=true) @PathParam("section_id") String sectionId,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize) {
         return delegate.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize, securityContext);
     }
 
@@ -177,6 +182,8 @@ public class BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get board", notes = "Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = Board.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") })
          }, tags={ "boards" })
     @ApiResponses(value = { 
@@ -193,12 +200,14 @@ public class BoardsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List boards", notes = "Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.", response = BoardsList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") }),
+        @Authorization(value = "client_credentials", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join") })
          }, tags={ "boards" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "response", response = BoardsList200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response boardsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Privacy setting for a board.", allowableValues="ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET")  @QueryParam("privacy") String privacy) {
+    public Response boardsList( @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Privacy setting for a board.", allowableValues="ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET")  @QueryParam("privacy") String privacy) {
         return delegate.boardsList(adAccountId, bookmark, pageSize, privacy, securityContext);
     }
 
@@ -209,13 +218,16 @@ public class BoardsApi  {
     @ApiOperation(value = "List Pins on board", notes = "Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.", response = BoardsListPins200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
+            @AuthorizationScope(scope = "pins:read", description = "See your public Pins") }),
+        @Authorization(value = "client_credentials", scopes = {
+            @AuthorizationScope(scope = "boards:read", description = "See your public boards, including group boards you join"),
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
          }, tags={ "boards" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "response", response = BoardsListPins200Response.class),
         @ApiResponse(code = 404, message = "Board not found.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response boardsListPins( @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board.",required=true) @PathParam("board_id") String boardId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")  @QueryParam("creative_types") List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue="false") @DefaultValue("false")  @QueryParam("pin_metrics") Boolean pinMetrics) {
+    public Response boardsListPins( @Pattern(regexp="^\\d+$")@ApiParam(value = "Unique identifier of a board.",required=true) @PathParam("board_id") String boardId, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")  @QueryParam("creative_types") List<String> creativeTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId, @ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue="false") @DefaultValue("false")  @QueryParam("pin_metrics") Boolean pinMetrics) {
         return delegate.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics, securityContext);
     }
 

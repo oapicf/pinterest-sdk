@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.ItemCreateBatchRecord;
 import org.openapitools.model.ItemDeleteBatchRecord;
 import org.openapitools.model.ItemDeleteDiscontinuedBatchRecord;
@@ -20,13 +20,12 @@ import org.openapitools.model.UpdateMaskFieldType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Object describing an item batch record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Object describing an item batch record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemBatchRecord   {
   
   private String itemId;
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
   private List<UpdateMaskFieldType> updateMask;
 
   /**
@@ -48,10 +47,10 @@ public class ItemBatchRecord   {
   @ApiModelProperty(value = "")
   @JsonProperty("attributes")
   @Valid
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

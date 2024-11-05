@@ -12,7 +12,7 @@ import play.api.libs.json._
   * @param title Human readable title of the offer code.
   * @param remainingDiscountInMicroCurrency The credits left to spend.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class AdsCreditDiscountsResponse(
   active: Option[Boolean],
   advertiserId: Option[String],
@@ -48,7 +48,6 @@ object AdsCreditDiscountsResponse {
     val INVOICESALESINCENTIVECREDIT = Value("INVOICE_SALES_INCENTIVE_CREDIT")
     val INVOICESALESINCENTIVECREDITAPPLIED = Value("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")
     val PREPAIDCREDITREFUND = Value("PREPAID_CREDIT_REFUND")
-    val Null = Value("null")
 
     type DiscountType = Value
     implicit lazy val DiscountTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])

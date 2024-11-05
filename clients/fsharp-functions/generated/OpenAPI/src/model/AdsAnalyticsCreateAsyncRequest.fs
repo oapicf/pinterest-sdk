@@ -70,6 +70,12 @@ module AdsAnalyticsCreateAsyncRequest =
     Level : MetricsReportingLevel;
     [<JsonProperty(PropertyName = "report_format")>]
     ReportFormat : DataOutputFormat;
+    [<JsonProperty(PropertyName = "primary_sort")>]
+    PrimarySort : string;
+    [<JsonProperty(PropertyName = "start_hour")>]
+    StartHour : int;
+    [<JsonProperty(PropertyName = "end_hour")>]
+    EndHour : int;
   }
 
   //#endregion

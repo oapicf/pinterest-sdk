@@ -16,9 +16,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("DeliveryMetricsResponse_items_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class DeliveryMetricsResponseItemsInner   {
-  private @Valid String name;
+  private String name;
   public enum CategoryEnum {
 
     ADS(String.valueOf("ADS")), ORGANIC(String.valueOf("ORGANIC"));
@@ -66,9 +66,9 @@ public class DeliveryMetricsResponseItemsInner   {
     }
 }
 
-  private @Valid CategoryEnum category;
-  private @Valid String definition;
-  private @Valid String displayName;
+  private CategoryEnum category;
+  private String definition;
+  private String displayName;
 
   /**
    * Metric&#39;s name.

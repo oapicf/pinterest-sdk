@@ -7,7 +7,7 @@
 | **conversion\_event** | **String** |  | [optional] [default to null] |
 | **conversion\_tag\_id** | **String** |  | [optional] [default to null] |
 | **cpa\_goal\_value\_in\_micro\_currency** | **String** |  | [optional] [default to null] |
-| **is\_roas\_optimized** | **Boolean** | Ad group is ROAS optimized | [optional] [default to null] |
+| **is\_roas\_optimized** | **Boolean** | ROAS optimization is not supported | [optional] [default to null] |
 | **learning\_mode\_type** | **String** | Conversion learning model type | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

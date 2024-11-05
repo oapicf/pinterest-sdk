@@ -33,6 +33,8 @@ module Currency =
   let ARSEnum = "ARS"
   let CLPEnum = "CLP"
   let COPEnum = "COP"
+  let INREnum = "INR"
+  let TRYEnum = "TRY"
   type Currency = string
 
   //#endregion

@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for updating a hotel product group.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupUpdateRequest   {
   /**
    * Gets or Sets catalogType
@@ -66,10 +66,10 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogTypeEnum getCatalogType() {
     return catalogType;
@@ -84,10 +84,10 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getName() {
     return name;
@@ -102,10 +102,10 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -120,10 +120,10 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsHotelProductGroupFilters getFilters() {
     return filters;

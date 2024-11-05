@@ -19,8 +19,7 @@ PinUpdateCarouselSlotsInner <- R6::R6Class(
     `title` = NULL,
     `description` = NULL,
     `link` = NULL,
-    #' Initialize a new PinUpdateCarouselSlotsInner class.
-    #'
+
     #' @description
     #' Initialize a new PinUpdateCarouselSlotsInner class.
     #'
@@ -28,7 +27,6 @@ PinUpdateCarouselSlotsInner <- R6::R6Class(
     #' @param description Carousel Pin slot description.
     #' @param link Carousel Pin slot link.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`title` = NULL, `description` = NULL, `link` = NULL, ...) {
       if (!is.null(`title`)) {
         if (!(is.character(`title`) && length(`title`) == 1)) {
@@ -49,13 +47,11 @@ PinUpdateCarouselSlotsInner <- R6::R6Class(
         self$`link` <- `link`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinUpdateCarouselSlotsInner in JSON format
-    #' @export
     toJSON = function() {
       PinUpdateCarouselSlotsInnerObject <- list()
       if (!is.null(self$`title`)) {
@@ -72,14 +68,12 @@ PinUpdateCarouselSlotsInner <- R6::R6Class(
       }
       PinUpdateCarouselSlotsInnerObject
     },
-    #' Deserialize JSON string into an instance of PinUpdateCarouselSlotsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinUpdateCarouselSlotsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinUpdateCarouselSlotsInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`title`)) {
@@ -93,13 +87,11 @@ PinUpdateCarouselSlotsInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinUpdateCarouselSlotsInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`title`)) {
@@ -130,14 +122,12 @@ PinUpdateCarouselSlotsInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of PinUpdateCarouselSlotsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinUpdateCarouselSlotsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinUpdateCarouselSlotsInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`title` <- this_object$`title`
@@ -145,53 +135,42 @@ PinUpdateCarouselSlotsInner <- R6::R6Class(
       self$`link` <- this_object$`link`
       self
     },
-    #' Validate JSON input with respect to PinUpdateCarouselSlotsInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to PinUpdateCarouselSlotsInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of PinUpdateCarouselSlotsInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

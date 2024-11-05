@@ -19,8 +19,7 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
     `lookback_window` = NULL,
     `tag_types` = NULL,
     `exclusion_window` = NULL,
-    #' Initialize a new TargetingSpecSHOPPINGRETARGETING class.
-    #'
+
     #' @description
     #' Initialize a new TargetingSpecSHOPPINGRETARGETING class.
     #'
@@ -28,7 +27,6 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
     #' @param tag_types Event types to target for dynamic retargeting
     #' @param exclusion_window Number of days ago to stop lookback timeframe for dynamic retargeting
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`lookback_window` = NULL, `tag_types` = NULL, `exclusion_window` = NULL, ...) {
       if (!is.null(`lookback_window`)) {
         if (!(is.numeric(`lookback_window`) && length(`lookback_window`) == 1)) {
@@ -48,13 +46,11 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
         self$`exclusion_window` <- `exclusion_window`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TargetingSpecSHOPPINGRETARGETING in JSON format
-    #' @export
     toJSON = function() {
       TargetingSpecSHOPPINGRETARGETINGObject <- list()
       if (!is.null(self$`lookback_window`)) {
@@ -71,14 +67,12 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
       }
       TargetingSpecSHOPPINGRETARGETINGObject
     },
-    #' Deserialize JSON string into an instance of TargetingSpecSHOPPINGRETARGETING
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TargetingSpecSHOPPINGRETARGETING
     #'
     #' @param input_json the JSON input
     #' @return the instance of TargetingSpecSHOPPINGRETARGETING
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`lookback_window`)) {
@@ -92,13 +86,11 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return TargetingSpecSHOPPINGRETARGETING in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`lookback_window`)) {
@@ -129,14 +121,12 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of TargetingSpecSHOPPINGRETARGETING
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of TargetingSpecSHOPPINGRETARGETING
     #'
     #' @param input_json the JSON input
     #' @return the instance of TargetingSpecSHOPPINGRETARGETING
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`lookback_window` <- this_object$`lookback_window`
@@ -144,53 +134,42 @@ TargetingSpecSHOPPINGRETARGETING <- R6::R6Class(
       self$`exclusion_window` <- this_object$`exclusion_window`
       self
     },
-    #' Validate JSON input with respect to TargetingSpecSHOPPINGRETARGETING
-    #'
+
     #' @description
     #' Validate JSON input with respect to TargetingSpecSHOPPINGRETARGETING and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of TargetingSpecSHOPPINGRETARGETING
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

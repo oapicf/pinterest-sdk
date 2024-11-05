@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **CatalogId** | Pointer to **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. | [optional] 
+**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -273,6 +274,31 @@ HasCatalogId returns a boolean if a field has been set.
 `func (o *CatalogsHotelFeedsCreateRequest) UnsetCatalogId()`
 
 UnsetCatalogId ensures that no value is present for CatalogId, not even an explicit nil
+### GetStatus
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetStatus() CatalogsStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsHotelFeedsCreateRequest) GetStatusOk() (*CatalogsStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsHotelFeedsCreateRequest) SetStatus(v CatalogsStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CatalogsHotelFeedsCreateRequest) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

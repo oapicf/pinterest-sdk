@@ -28,11 +28,11 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceInsightsResponse", description = "Audience interests and demographics.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceInsightsResponse {
 
   @Valid
-  private List<@Valid AudienceCategory> categories;
+  private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
   private AudienceDemographics demographics;
 
@@ -60,7 +60,7 @@ public class AudienceInsightsResponse {
   /**
    * Category interest distribution
    * @return categories
-  */
+   */
   @Valid 
   @Schema(name = "categories", description = "Category interest distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("categories")
@@ -80,7 +80,7 @@ public class AudienceInsightsResponse {
   /**
    * Get demographics
    * @return demographics
-  */
+   */
   @Valid 
   @Schema(name = "demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("demographics")
@@ -100,7 +100,7 @@ public class AudienceInsightsResponse {
   /**
    * Get type
    * @return type
-  */
+   */
   @Valid 
   @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
@@ -120,7 +120,7 @@ public class AudienceInsightsResponse {
   /**
    * Generation date
    * @return date
-  */
+   */
   @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") 
   @Schema(name = "date", example = "2022-10-09", description = "Generation date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date")
@@ -140,7 +140,7 @@ public class AudienceInsightsResponse {
   /**
    * Population count.
    * @return size
-  */
+   */
   
   @Schema(name = "size", example = "10000", description = "Population count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("size")
@@ -160,7 +160,7 @@ public class AudienceInsightsResponse {
   /**
    * Indicates whether the audience size has been rounded up to the next highest upper boundary.
    * @return sizeIsUpperBound
-  */
+   */
   
   @Schema(name = "size_is_upper_bound", example = "true", description = "Indicates whether the audience size has been rounded up to the next highest upper boundary.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("size_is_upper_bound")

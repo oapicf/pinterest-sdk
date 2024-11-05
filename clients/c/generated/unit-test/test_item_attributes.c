@@ -68,7 +68,8 @@ item_attributes_t* instantiate_item_attributes(int include_optional) {
       [Color, Size],
       [Red, Small],
       ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"],
-      ["https://scene.example.com/image/image.jpg"]
+      ["https://scene.example.com/image/image.jpg"],
+      "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4"
     );
   } else {
     item_attributes = item_attributes_create(
@@ -118,7 +119,8 @@ item_attributes_t* instantiate_item_attributes(int include_optional) {
       [Color, Size],
       [Red, Small],
       ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"],
-      ["https://scene.example.com/image/image.jpg"]
+      ["https://scene.example.com/image/image.jpg"],
+      "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4"
     );
   }
 

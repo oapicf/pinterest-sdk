@@ -68,5 +68,8 @@ data class PinUpdate (
     @Json(name = "note")
     val note: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -15,7 +15,7 @@
 
 typedef struct catalogs_product_groups_list_200_response_t catalogs_product_groups_list_200_response_t;
 
-#include "catalogs_product_groups_list_200_response_all_of_items_inner.h"
+#include "catalogs_vertical_product_group.h"
 
 
 

@@ -8,19 +8,20 @@ Name | Type | Description | Notes
 **Status** | Pointer to [**EntityStatus**](EntityStatus.md) | Ad group/entity status. | [optional] 
 **BudgetInMicroCurrency** | Pointer to **NullableInt32** | Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. | [optional] 
 **BidInMicroCurrency** | Pointer to **NullableInt32** | Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC. | [optional] 
-**OptimizationGoalMetadata** | Pointer to [**NullableAdGroupCommonOptimizationGoalMetadata**](AdGroupCommonOptimizationGoalMetadata.md) |  | [optional] 
+**OptimizationGoalMetadata** | Pointer to [**NullableOptimizationGoalMetadata**](OptimizationGoalMetadata.md) | Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;. | [optional] 
 **BudgetType** | Pointer to [**BudgetType**](BudgetType.md) |  | [optional] [default to DAILY]
 **StartTime** | Pointer to **NullableInt32** | Ad group start time. Unix timestamp in seconds. Defaults to current time. | [optional] 
 **EndTime** | Pointer to **NullableInt32** | Ad group end time. Unix timestamp in seconds. | [optional] 
 **TargetingSpec** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
-**LifetimeFrequencyCap** | Pointer to **int32** | Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field. | [optional] 
-**TrackingUrls** | Pointer to [**NullableAdGroupCommonTrackingUrls**](AdGroupCommonTrackingUrls.md) |  | [optional] 
+**LifetimeFrequencyCap** | Pointer to **int32** | Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field. | [optional] 
+**TrackingUrls** | Pointer to [**NullableTrackingUrls**](TrackingUrls.md) | Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;. | [optional] 
 **AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group.Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] 
-**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) | &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;. | [optional] 
+**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) | &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;. | [optional] 
 **PacingDeliveryType** | Pointer to [**PacingDeliveryType**](PacingDeliveryType.md) |  | [optional] [default to STANDARD]
 **CampaignId** | **string** | Campaign ID of the ad group. | 
 **BillableEvent** | [**ActionType**](ActionType.md) |  | 
-**BidStrategyType** | Pointer to **NullableString** | Bid strategy type | [optional] 
+**BidStrategyType** | Pointer to **NullableString** | Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID. | [optional] 
+**TargetingTemplateIds** | Pointer to **[]string** | Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to [&#39;0&#39;]. | [optional] 
 
 ## Methods
 
@@ -158,20 +159,20 @@ HasBidInMicroCurrency returns a boolean if a field has been set.
 UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
 ### GetOptimizationGoalMetadata
 
-`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadata() AdGroupCommonOptimizationGoalMetadata`
+`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadata() OptimizationGoalMetadata`
 
 GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field if non-nil, zero value otherwise.
 
 ### GetOptimizationGoalMetadataOk
 
-`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadataOk() (*AdGroupCommonOptimizationGoalMetadata, bool)`
+`func (o *AdGroupCreateRequest) GetOptimizationGoalMetadataOk() (*OptimizationGoalMetadata, bool)`
 
 GetOptimizationGoalMetadataOk returns a tuple with the OptimizationGoalMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptimizationGoalMetadata
 
-`func (o *AdGroupCreateRequest) SetOptimizationGoalMetadata(v AdGroupCommonOptimizationGoalMetadata)`
+`func (o *AdGroupCreateRequest) SetOptimizationGoalMetadata(v OptimizationGoalMetadata)`
 
 SetOptimizationGoalMetadata sets OptimizationGoalMetadata field to given value.
 
@@ -338,20 +339,20 @@ HasLifetimeFrequencyCap returns a boolean if a field has been set.
 
 ### GetTrackingUrls
 
-`func (o *AdGroupCreateRequest) GetTrackingUrls() AdGroupCommonTrackingUrls`
+`func (o *AdGroupCreateRequest) GetTrackingUrls() TrackingUrls`
 
 GetTrackingUrls returns the TrackingUrls field if non-nil, zero value otherwise.
 
 ### GetTrackingUrlsOk
 
-`func (o *AdGroupCreateRequest) GetTrackingUrlsOk() (*AdGroupCommonTrackingUrls, bool)`
+`func (o *AdGroupCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool)`
 
 GetTrackingUrlsOk returns a tuple with the TrackingUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingUrls
 
-`func (o *AdGroupCreateRequest) SetTrackingUrls(v AdGroupCommonTrackingUrls)`
+`func (o *AdGroupCreateRequest) SetTrackingUrls(v TrackingUrls)`
 
 SetTrackingUrls sets TrackingUrls field to given value.
 
@@ -521,6 +522,41 @@ HasBidStrategyType returns a boolean if a field has been set.
 `func (o *AdGroupCreateRequest) UnsetBidStrategyType()`
 
 UnsetBidStrategyType ensures that no value is present for BidStrategyType, not even an explicit nil
+### GetTargetingTemplateIds
+
+`func (o *AdGroupCreateRequest) GetTargetingTemplateIds() []string`
+
+GetTargetingTemplateIds returns the TargetingTemplateIds field if non-nil, zero value otherwise.
+
+### GetTargetingTemplateIdsOk
+
+`func (o *AdGroupCreateRequest) GetTargetingTemplateIdsOk() (*[]string, bool)`
+
+GetTargetingTemplateIdsOk returns a tuple with the TargetingTemplateIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetingTemplateIds
+
+`func (o *AdGroupCreateRequest) SetTargetingTemplateIds(v []string)`
+
+SetTargetingTemplateIds sets TargetingTemplateIds field to given value.
+
+### HasTargetingTemplateIds
+
+`func (o *AdGroupCreateRequest) HasTargetingTemplateIds() bool`
+
+HasTargetingTemplateIds returns a boolean if a field has been set.
+
+### SetTargetingTemplateIdsNil
+
+`func (o *AdGroupCreateRequest) SetTargetingTemplateIdsNil(b bool)`
+
+ SetTargetingTemplateIdsNil sets the value for TargetingTemplateIds to be an explicit nil
+
+### UnsetTargetingTemplateIds
+`func (o *AdGroupCreateRequest) UnsetTargetingTemplateIds()`
+
+UnsetTargetingTemplateIds ensures that no value is present for TargetingTemplateIds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

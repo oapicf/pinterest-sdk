@@ -69,7 +69,7 @@ void main() {
       // TODO
     });
 
-    // SummaryPinMedia media
+    // PinMedia media
     test('to test the property `media`', () async {
       // TODO
     });

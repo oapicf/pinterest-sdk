@@ -37,5 +37,8 @@ data class KeywordMetricsResponse (
     @Json(name = "metrics")
     val metrics: KeywordMetrics? = null
 
-)
+) {
+
+
+}
 

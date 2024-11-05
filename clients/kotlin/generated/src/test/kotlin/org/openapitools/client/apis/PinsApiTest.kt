@@ -33,13 +33,26 @@ class PinsApiTest : ShouldSpec() {
         // uncomment below to create an instance of PinsApi
         //val apiInstance = PinsApi()
 
+        // to test multiPinsAnalytics
+        should("test multiPinsAnalytics") {
+            // uncomment below to test multiPinsAnalytics
+            //val pinIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Pin IDs.
+            //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+            //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+            //val metricTypes : kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner> =  // kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner> | Pin metric types to get data for.
+            //val appTypes : kotlin.String = appTypes_example // kotlin.String | Apps or devices to get data for, default is all.
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val result : kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>> = apiInstance.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId)
+            //result shouldBe ("TODO")
+        }
+
         // to test pinsAnalytics
         should("test pinsAnalytics") {
             // uncomment below to test pinsAnalytics
             //val pinId : kotlin.String = pinId_example // kotlin.String | Unique identifier of a Pin.
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val metricTypes : kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner> =  // kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner> | Pin metric types to get data for, default is all.
+            //val metricTypes : kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner> =  // kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner> | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
             //val appTypes : kotlin.String = appTypes_example // kotlin.String | Apps or devices to get data for, default is all.
             //val splitField : kotlin.String = splitField_example // kotlin.String | How to split the data into groups. Not including this param means data won't be split.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
@@ -78,7 +91,7 @@ class PinsApiTest : ShouldSpec() {
         should("test pinsList") {
             // uncomment below to test pinsList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val pinFilter : kotlin.String = pinFilter_example // kotlin.String | Pin filter.
             //val includeProtectedPins : kotlin.Boolean = true // kotlin.Boolean | Specify if return pins from protected boards
             //val pinType : kotlin.String = pinType_example // kotlin.String | The type of pins to return, currently only enabled for private pins

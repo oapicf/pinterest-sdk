@@ -17,15 +17,13 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
   public = list(
     `term` = NULL,
     `related_terms` = NULL,
-    #' Initialize a new RelatedTermsRelatedTermsListInner class.
-    #'
+
     #' @description
     #' Initialize a new RelatedTermsRelatedTermsListInner class.
     #'
     #' @param term term
     #' @param related_terms related_terms
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`term` = NULL, `related_terms` = NULL, ...) {
       if (!is.null(`term`)) {
         if (!(is.character(`term`) && length(`term`) == 1)) {
@@ -39,13 +37,11 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
         self$`related_terms` <- `related_terms`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return RelatedTermsRelatedTermsListInner in JSON format
-    #' @export
     toJSON = function() {
       RelatedTermsRelatedTermsListInnerObject <- list()
       if (!is.null(self$`term`)) {
@@ -58,14 +54,12 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
       }
       RelatedTermsRelatedTermsListInnerObject
     },
-    #' Deserialize JSON string into an instance of RelatedTermsRelatedTermsListInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of RelatedTermsRelatedTermsListInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of RelatedTermsRelatedTermsListInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`term`)) {
@@ -76,13 +70,11 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return RelatedTermsRelatedTermsListInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`term`)) {
@@ -105,67 +97,54 @@ RelatedTermsRelatedTermsListInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of RelatedTermsRelatedTermsListInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of RelatedTermsRelatedTermsListInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of RelatedTermsRelatedTermsListInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`term` <- this_object$`term`
       self$`related_terms` <- ApiClient$new()$deserializeObj(this_object$`related_terms`, "array[character]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to RelatedTermsRelatedTermsListInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to RelatedTermsRelatedTermsListInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of RelatedTermsRelatedTermsListInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

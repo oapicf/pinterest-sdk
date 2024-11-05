@@ -6,6 +6,7 @@ import org.openapitools.model.AvailabilityFilter
 import org.openapitools.model.BrandFilter
 import org.openapitools.model.CatalogsProductGroupCurrencyCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleGenderCriteria
+import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.model.CatalogsProductGroupPricingCriteria
@@ -27,7 +28,9 @@ import org.openapitools.model.GoogleProductCategory6Filter
 import org.openapitools.model.ItemGroupIdFilter
 import org.openapitools.model.ItemIdFilter
 import org.openapitools.model.MaxPriceFilter
+import org.openapitools.model.MediaTypeFilter
 import org.openapitools.model.MinPriceFilter
+import org.openapitools.model.ProductGroupReferenceFilter
 import org.openapitools.model.ProductType0Filter
 import org.openapitools.model.ProductType1Filter
 import org.openapitools.model.ProductType2Filter
@@ -60,6 +63,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param CUSTOM_LABEL_4 
  * @param ITEM_GROUP_ID 
  * @param GENDER 
+ * @param MEDIA_TYPE 
  * @param PRODUCT_TYPE_4 
  * @param PRODUCT_TYPE_3 
  * @param PRODUCT_TYPE_2 
@@ -72,6 +76,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param GOOGLE_PRODUCT_CATEGORY_2 
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  * @param GOOGLE_PRODUCT_CATEGORY_0 
+ * @param PRODUCT_GROUP 
  */
 data class CatalogsProductGroupFilterKeys(
 
@@ -133,6 +138,10 @@ data class CatalogsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("PRODUCT_TYPE_4", required = true) val PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
@@ -177,8 +186,12 @@ data class CatalogsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0", required = true) val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria
-) {
+    @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0", required = true) val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("PRODUCT_GROUP", required = true) val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
+    ) {
 
 }
 

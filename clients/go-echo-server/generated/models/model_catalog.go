@@ -7,12 +7,12 @@ import (
 // Catalog - Catalog entity
 type Catalog struct {
 
-	CreatedAt time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 
 	// ID of the catalog entity.
-	Id string `json:"id"`
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 
-	UpdatedAt time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 
 	// A human-friendly name associated to a catalog entity.
 	Name *string `json:"name"`

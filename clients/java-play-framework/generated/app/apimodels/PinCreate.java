@@ -1,8 +1,8 @@
 package apimodels;
 
 import apimodels.BoardOwner;
+import apimodels.PinMedia;
 import apimodels.PinMediaSource;
-import apimodels.SummaryPinMedia;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 /**
  * Pin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinCreate   {
   @JsonProperty("id")
@@ -69,7 +69,7 @@ public class PinCreate   {
   @JsonProperty("media")
   @Valid
 
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @JsonProperty("media_source")
   @Valid
@@ -255,7 +255,7 @@ public class PinCreate   {
     this.boardOwner = boardOwner;
   }
 
-  public PinCreate media(SummaryPinMedia media) {
+  public PinCreate media(PinMedia media) {
     this.media = media;
     return this;
   }
@@ -264,11 +264,11 @@ public class PinCreate   {
    * Get media
    * @return media
   **/
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 

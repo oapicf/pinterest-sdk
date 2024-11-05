@@ -142,12 +142,14 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 eval {
     my $result = $api_instance->board_sections_list(board_id => $board_id, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
@@ -165,7 +167,7 @@ Name | Type | Description  | Notes
  **board_id** | **string**| Unique identifier of a board. | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -173,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -197,13 +199,15 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
 my $section_id = "section_id_example"; # string | Unique identifier of a board section.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 eval {
     my $result = $api_instance->board_sections_list_pins(board_id => $board_id, section_id => $section_id, ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size);
@@ -222,7 +226,7 @@ Name | Type | Description  | Notes
  **section_id** | **string**| Unique identifier of a board section. | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -230,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -410,6 +414,8 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
@@ -437,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -461,11 +467,13 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $privacy = "privacy_example"; # string | Privacy setting for a board.
 
 eval {
@@ -483,7 +491,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **privacy** | **string**| Privacy setting for a board. | [optional] 
 
 ### Return type
@@ -492,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -516,11 +524,13 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $creative_types = [("REGULAR")]; # ARRAY[string] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 my $pin_metrics = false; # boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -540,7 +550,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **board_id** | **string**| Unique identifier of a board. | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creative_types** | [**ARRAY[string]**](string.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
  **pin_metrics** | **boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
@@ -551,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

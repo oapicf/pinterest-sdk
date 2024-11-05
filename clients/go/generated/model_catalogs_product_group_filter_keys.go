@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -15,6 +15,7 @@ import (
 	"encoding/json"
 	"fmt"
 )
+
 
 // CatalogsProductGroupFilterKeys struct for CatalogsProductGroupFilterKeys
 type CatalogsProductGroupFilterKeys struct {
@@ -38,7 +39,9 @@ type CatalogsProductGroupFilterKeys struct {
 	ItemGroupIdFilter *ItemGroupIdFilter
 	ItemIdFilter *ItemIdFilter
 	MaxPriceFilter *MaxPriceFilter
+	MediaTypeFilter *MediaTypeFilter
 	MinPriceFilter *MinPriceFilter
+	ProductGroupReferenceFilter *ProductGroupReferenceFilter
 	ProductType0Filter *ProductType0Filter
 	ProductType1Filter *ProductType1Filter
 	ProductType2Filter *ProductType2Filter
@@ -309,6 +312,19 @@ func (dst *CatalogsProductGroupFilterKeys) UnmarshalJSON(data []byte) error {
 		dst.MaxPriceFilter = nil
 	}
 
+	// try to unmarshal JSON data into MediaTypeFilter
+	err = json.Unmarshal(data, &dst.MediaTypeFilter);
+	if err == nil {
+		jsonMediaTypeFilter, _ := json.Marshal(dst.MediaTypeFilter)
+		if string(jsonMediaTypeFilter) == "{}" { // empty struct
+			dst.MediaTypeFilter = nil
+		} else {
+			return nil // data stored in dst.MediaTypeFilter, return on the first match
+		}
+	} else {
+		dst.MediaTypeFilter = nil
+	}
+
 	// try to unmarshal JSON data into MinPriceFilter
 	err = json.Unmarshal(data, &dst.MinPriceFilter);
 	if err == nil {
@@ -320,6 +336,19 @@ func (dst *CatalogsProductGroupFilterKeys) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.MinPriceFilter = nil
+	}
+
+	// try to unmarshal JSON data into ProductGroupReferenceFilter
+	err = json.Unmarshal(data, &dst.ProductGroupReferenceFilter);
+	if err == nil {
+		jsonProductGroupReferenceFilter, _ := json.Marshal(dst.ProductGroupReferenceFilter)
+		if string(jsonProductGroupReferenceFilter) == "{}" { // empty struct
+			dst.ProductGroupReferenceFilter = nil
+		} else {
+			return nil // data stored in dst.ProductGroupReferenceFilter, return on the first match
+		}
+	} else {
+		dst.ProductGroupReferenceFilter = nil
 	}
 
 	// try to unmarshal JSON data into ProductType0Filter
@@ -472,8 +501,16 @@ func (src *CatalogsProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.MaxPriceFilter)
 	}
 
+	if src.MediaTypeFilter != nil {
+		return json.Marshal(&src.MediaTypeFilter)
+	}
+
 	if src.MinPriceFilter != nil {
 		return json.Marshal(&src.MinPriceFilter)
+	}
+
+	if src.ProductGroupReferenceFilter != nil {
+		return json.Marshal(&src.ProductGroupReferenceFilter)
 	}
 
 	if src.ProductType0Filter != nil {
@@ -498,6 +535,7 @@ func (src *CatalogsProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
+
 
 type NullableCatalogsProductGroupFilterKeys struct {
 	value *CatalogsProductGroupFilterKeys

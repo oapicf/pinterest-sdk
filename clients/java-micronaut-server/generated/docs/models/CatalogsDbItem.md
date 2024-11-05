@@ -8,9 +8,9 @@ The class is defined in **[CatalogsDbItem.java](../../src/main/java/org/openapit
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | `OffsetDateTime` |  |  [optional property]
-**id** | `String` |  |  [optional property]
-**updatedAt** | `OffsetDateTime` |  |  [optional property]
+**createdAt** | `OffsetDateTime` |  | 
+**id** | `String` |  | 
+**updatedAt** | `OffsetDateTime` |  | 
 
 
 

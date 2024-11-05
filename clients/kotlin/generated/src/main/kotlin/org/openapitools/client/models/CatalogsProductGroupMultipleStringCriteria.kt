@@ -35,5 +35,8 @@ data class CatalogsProductGroupMultipleStringCriteria (
     @Json(name = "negated")
     val negated: kotlin.Boolean? = false
 
-)
+) {
+
+
+}
 

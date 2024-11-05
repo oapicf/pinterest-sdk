@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,13 +13,22 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // ItemResponseAnyOf - struct for ItemResponseAnyOf
 type ItemResponseAnyOf struct {
+	CatalogsCreativeAssetsItemResponse *CatalogsCreativeAssetsItemResponse
 	CatalogsHotelItemResponse *CatalogsHotelItemResponse
 	CatalogsRetailItemResponse *CatalogsRetailItemResponse
+}
+
+// CatalogsCreativeAssetsItemResponseAsItemResponseAnyOf is a convenience function that returns CatalogsCreativeAssetsItemResponse wrapped in ItemResponseAnyOf
+func CatalogsCreativeAssetsItemResponseAsItemResponseAnyOf(v *CatalogsCreativeAssetsItemResponse) ItemResponseAnyOf {
+	return ItemResponseAnyOf{
+		CatalogsCreativeAssetsItemResponse: v,
+	}
 }
 
 // CatalogsHotelItemResponseAsItemResponseAnyOf is a convenience function that returns CatalogsHotelItemResponse wrapped in ItemResponseAnyOf
@@ -41,6 +50,23 @@ func CatalogsRetailItemResponseAsItemResponseAnyOf(v *CatalogsRetailItemResponse
 func (dst *ItemResponseAnyOf) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsItemResponse
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsItemResponse)
+	if err == nil {
+		jsonCatalogsCreativeAssetsItemResponse, _ := json.Marshal(dst.CatalogsCreativeAssetsItemResponse)
+		if string(jsonCatalogsCreativeAssetsItemResponse) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsItemResponse = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsItemResponse); err != nil {
+				dst.CatalogsCreativeAssetsItemResponse = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsCreativeAssetsItemResponse = nil
+	}
+
 	// try to unmarshal data into CatalogsHotelItemResponse
 	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelItemResponse)
 	if err == nil {
@@ -48,7 +74,11 @@ func (dst *ItemResponseAnyOf) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsHotelItemResponse) == "{}" { // empty struct
 			dst.CatalogsHotelItemResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsHotelItemResponse); err != nil {
+				dst.CatalogsHotelItemResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsHotelItemResponse = nil
@@ -61,7 +91,11 @@ func (dst *ItemResponseAnyOf) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsRetailItemResponse) == "{}" { // empty struct
 			dst.CatalogsRetailItemResponse = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsRetailItemResponse); err != nil {
+				dst.CatalogsRetailItemResponse = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsRetailItemResponse = nil
@@ -69,6 +103,7 @@ func (dst *ItemResponseAnyOf) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.CatalogsCreativeAssetsItemResponse = nil
 		dst.CatalogsHotelItemResponse = nil
 		dst.CatalogsRetailItemResponse = nil
 
@@ -82,6 +117,10 @@ func (dst *ItemResponseAnyOf) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ItemResponseAnyOf) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsItemResponse != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsItemResponse)
+	}
+
 	if src.CatalogsHotelItemResponse != nil {
 		return json.Marshal(&src.CatalogsHotelItemResponse)
 	}
@@ -98,6 +137,10 @@ func (obj *ItemResponseAnyOf) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.CatalogsCreativeAssetsItemResponse != nil {
+		return obj.CatalogsCreativeAssetsItemResponse
+	}
+
 	if obj.CatalogsHotelItemResponse != nil {
 		return obj.CatalogsHotelItemResponse
 	}

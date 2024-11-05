@@ -30,6 +30,9 @@ import com.squareup.moshi.JsonClass
 /**
  * Catalogs Retail Feed object
  *
+ * @param createdAt 
+ * @param id 
+ * @param updatedAt 
  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
  * @param format 
  * @param catalogType 
@@ -41,13 +44,19 @@ import com.squareup.moshi.JsonClass
  * @param defaultLocale The locale used within a feed for product descriptions.
  * @param defaultCountry 
  * @param defaultAvailability 
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  */
 
 
 data class CatalogsRetailFeed (
+
+    @Json(name = "created_at")
+    val createdAt: java.time.OffsetDateTime,
+
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    @Json(name = "updated_at")
+    val updatedAt: java.time.OffsetDateTime,
 
     /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     @Json(name = "name")
@@ -83,16 +92,10 @@ data class CatalogsRetailFeed (
     val defaultCountry: Country,
 
     @Json(name = "default_availability")
-    val defaultAvailability: ProductAvailabilityType?,
+    val defaultAvailability: ProductAvailabilityType?
 
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime? = null,
+) {
 
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
-    @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime? = null
-
-)
+}
 

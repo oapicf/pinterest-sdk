@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**data** | data | long |  | [**ProductGroupPromotion**](ProductGroupPromotion.md) |  |  [optional] [foreignkey]
+**data** | data | long |  | [**ProductGroupPromotionResponseElement**](ProductGroupPromotionResponseElement.md) |  |  [optional] [foreignkey]
 **exceptions** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;Exception&gt;**](Exception.md) |  |  [optional]
 
 

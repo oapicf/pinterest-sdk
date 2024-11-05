@@ -3,7 +3,7 @@ Protected Class KeywordsCommon
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Keyword custom bid in microcurrency - null if inherited from parent ad group.
+			</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 		#tag EndNote
 		bid As Xoson.O.OptionalInteger
 	#tag EndProperty

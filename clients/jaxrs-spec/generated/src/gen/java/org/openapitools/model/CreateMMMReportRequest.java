@@ -21,11 +21,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CreateMMMReportRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateMMMReportRequest   {
-  private @Valid String reportName;
-  private @Valid String startDate;
-  private @Valid String endDate;
+  private String reportName;
+  private String startDate;
+  private String endDate;
   public enum GranularityEnum {
 
     DAY(String.valueOf("DAY")), WEEK(String.valueOf("WEEK"));
@@ -73,7 +73,7 @@ public class CreateMMMReportRequest   {
     }
 }
 
-  private @Valid GranularityEnum granularity;
+  private GranularityEnum granularity;
   public enum LevelEnum {
 
     CAMPAIGN_TARGETING(String.valueOf("CAMPAIGN_TARGETING")), AD_GROUP_TARGETING(String.valueOf("AD_GROUP_TARGETING"));
@@ -121,10 +121,10 @@ public class CreateMMMReportRequest   {
     }
 }
 
-  private @Valid LevelEnum level;
+  private LevelEnum level;
   private @Valid List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
   private @Valid List<MMMReportingColumn> columns = new ArrayList<>();
-  private @Valid List<TargetingAdvertiserCountry> countries;
+  private @Valid List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
   /**
    * Name of the Marketing Mix Modeling (MMM) report
@@ -137,8 +137,7 @@ public class CreateMMMReportRequest   {
   
   @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
   @JsonProperty("report_name")
-  @NotNull
-  public String getReportName() {
+  @NotNull public String getReportName() {
     return reportName;
   }
 
@@ -158,8 +157,7 @@ public class CreateMMMReportRequest   {
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
   @JsonProperty("start_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
+  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
@@ -179,8 +177,7 @@ public class CreateMMMReportRequest   {
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
   @JsonProperty("end_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getEndDate() {
+  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getEndDate() {
     return endDate;
   }
 
@@ -200,8 +197,7 @@ public class CreateMMMReportRequest   {
   
   @ApiModelProperty(required = true, value = "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.")
   @JsonProperty("granularity")
-  @NotNull
-  public GranularityEnum getGranularity() {
+  @NotNull public GranularityEnum getGranularity() {
     return granularity;
   }
 
@@ -221,8 +217,7 @@ public class CreateMMMReportRequest   {
   
   @ApiModelProperty(required = true, value = "Level of the report")
   @JsonProperty("level")
-  @NotNull
-  public LevelEnum getLevel() {
+  @NotNull public LevelEnum getLevel() {
     return level;
   }
 
@@ -242,8 +237,7 @@ public class CreateMMMReportRequest   {
   
   @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
   @JsonProperty("targeting_types")
-  @NotNull
- @Size(min=1,max=5)  public List<MMMReportingTargetingType> getTargetingTypes() {
+  @NotNull  @Size(min=1,max=5)public List<MMMReportingTargetingType> getTargetingTypes() {
     return targetingTypes;
   }
 
@@ -279,8 +273,7 @@ public class CreateMMMReportRequest   {
   
   @ApiModelProperty(required = true, value = "Metric and entity columns")
   @JsonProperty("columns")
-  @NotNull
-  public List<MMMReportingColumn> getColumns() {
+  @NotNull public List<MMMReportingColumn> getColumns() {
     return columns;
   }
 

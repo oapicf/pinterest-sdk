@@ -28,11 +28,11 @@ import javax.annotation.Generated;
 
 @Schema(name = "PinMediaWithImages", description = "Pin with multiple images.")
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithImages extends PinMedia {
 
   @Valid
-  private List<@Valid ImageMetadata> items;
+  private List<@Valid ImageMetadata> items = new ArrayList<>();
 
   public PinMediaWithImages items(List<@Valid ImageMetadata> items) {
     this.items = items;
@@ -50,7 +50,7 @@ public class PinMediaWithImages extends PinMedia {
   /**
    * Get items
    * @return items
-  */
+   */
   @Valid 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")

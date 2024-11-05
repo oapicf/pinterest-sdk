@@ -10,5 +10,5 @@ import org.openapitools.model.AdAccountsCountryResponseData;
 @Canonical
 class AdAccountsCountryResponse {
     
-    List<AdAccountsCountryResponseData> items
+    List<AdAccountsCountryResponseData> items = new ArrayList<>()
 }

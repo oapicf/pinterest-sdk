@@ -125,6 +125,13 @@
                        @"key": @"Authorization",
                        @"value": [self getBasicAuthToken]
                    },
+               @"client_credentials":
+                   @{
+                       @"type": @"oauth",
+                       @"in": @"header",
+                       @"key": @"Authorization",
+                       @"value": [self getAccessToken]
+                   },
                };
 }
 

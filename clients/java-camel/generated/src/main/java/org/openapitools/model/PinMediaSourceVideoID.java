@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceVideoID", description = "Video ID-based media source")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceVideoID implements PinMediaSource {
 
   /**
@@ -129,7 +129,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   /**
    * Get sourceType
    * @return sourceType
-  */
+   */
   @NotNull 
   @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("source_type")
@@ -149,7 +149,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   /**
    * Cover image url.
    * @return coverImageUrl
-  */
+   */
   
   @Schema(name = "cover_image_url", description = "Cover image url.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_url")
@@ -169,7 +169,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   /**
    * Content type for cover image Base64.
    * @return coverImageContentType
-  */
+   */
   
   @Schema(name = "cover_image_content_type", description = "Content type for cover image Base64.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_content_type")
@@ -189,7 +189,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   /**
    * Cover image Base64.
    * @return coverImageData
-  */
+   */
   
   @Schema(name = "cover_image_data", description = "Cover image Base64.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_data")
@@ -209,7 +209,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   /**
    * Get mediaId
    * @return mediaId
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "media_id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_id")
@@ -229,7 +229,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   /**
    * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
    * @return isStandard
-  */
+   */
   
   @Schema(name = "is_standard", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_standard")

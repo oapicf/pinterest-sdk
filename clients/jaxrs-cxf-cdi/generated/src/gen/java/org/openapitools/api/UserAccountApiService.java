@@ -35,7 +35,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-03-14T23:04:18.835425768Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2024-11-05T02:19:42.400563355Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface UserAccountApiService {
       public Response boardsUserFollowsList(String bookmark, Integer pageSize, Boolean explicitFollowing, String adAccountId, SecurityContext securityContext);
       public Response followUserUpdate(String username, FollowUserRequest followUserRequest, SecurityContext securityContext);
@@ -48,6 +48,6 @@ public interface UserAccountApiService {
       public Response userAccountGet(String adAccountId, SecurityContext securityContext);
       public Response userFollowingGet(String bookmark, Integer pageSize, UserFollowingFeedType feedType, Boolean explicitFollowing, String adAccountId, SecurityContext securityContext);
       public Response userWebsitesGet(String bookmark, Integer pageSize, SecurityContext securityContext);
-      public Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, SecurityContext securityContext);
-      public Response websiteVerificationGet(SecurityContext securityContext);
+      public Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, String adAccountId, SecurityContext securityContext);
+      public Response websiteVerificationGet(String adAccountId, SecurityContext securityContext);
 }

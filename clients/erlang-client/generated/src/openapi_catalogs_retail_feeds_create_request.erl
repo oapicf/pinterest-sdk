@@ -14,7 +14,8 @@
        'preferred_processing_schedule' => openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule(),
        'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'default_country' := openapi_country:openapi_country(),
-       'default_availability' => openapi_product_availability_type:openapi_product_availability_type()
+       'default_availability' => openapi_product_availability_type:openapi_product_availability_type(),
+       'status' => openapi_catalogs_status:openapi_catalogs_status()
      }.
 
 encode(#{ 'default_currency' := DefaultCurrency,
@@ -26,7 +27,8 @@ encode(#{ 'default_currency' := DefaultCurrency,
           'preferred_processing_schedule' := PreferredProcessingSchedule,
           'catalog_type' := CatalogType,
           'default_country' := DefaultCountry,
-          'default_availability' := DefaultAvailability
+          'default_availability' := DefaultAvailability,
+          'status' := Status
         }) ->
     #{ 'default_currency' => DefaultCurrency,
        'name' => Name,
@@ -37,5 +39,6 @@ encode(#{ 'default_currency' := DefaultCurrency,
        'preferred_processing_schedule' => PreferredProcessingSchedule,
        'catalog_type' => CatalogType,
        'default_country' => DefaultCountry,
-       'default_availability' => DefaultAvailability
+       'default_availability' => DefaultAvailability,
+       'status' => Status
      }.

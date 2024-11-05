@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * OptimizationGoalMetadataFrequencyGoalMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   @JsonProperty("frequency")
   private Integer frequency;
@@ -68,10 +68,10 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get frequency
    * @return frequency
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getFrequency() {
     return frequency;
@@ -86,10 +86,10 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
     return this;
   }
 
-   /**
+  /**
    * User entity counts time range
    * @return timerange
-  **/
+   */
   @ApiModelProperty(example = "DAY", value = "User entity counts time range")
   public TimerangeEnum getTimerange() {
     return timerange;

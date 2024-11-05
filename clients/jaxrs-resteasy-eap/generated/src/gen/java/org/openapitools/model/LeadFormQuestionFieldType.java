@@ -10,6 +10,5 @@ public enum LeadFormQuestionFieldType {
   TEXT_FIELD,
   TEXT_AREA,
   RADIO_LIST,
-  CHECKBOX,
-  NULL;
+  CHECKBOX;
 }

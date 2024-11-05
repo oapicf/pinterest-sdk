@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CatalogsFeedValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationErrors {
 
   private Integer FETCH_ERROR;
@@ -95,7 +95,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Pinterest couldn't download your feed.
    * @return FETCH_ERROR
-  */
+   */
   
   @Schema(name = "FETCH_ERROR", description = "Pinterest couldn't download your feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_ERROR")
@@ -115,7 +115,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
    * @return FETCH_INACTIVE_FEED_ERROR
-  */
+   */
   
   @Schema(name = "FETCH_INACTIVE_FEED_ERROR", description = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_INACTIVE_FEED_ERROR")
@@ -135,7 +135,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed includes data with an unsupported encoding format.
    * @return ENCODING_ERROR
-  */
+   */
   
   @Schema(name = "ENCODING_ERROR", description = "Your feed includes data with an unsupported encoding format.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ENCODING_ERROR")
@@ -155,7 +155,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed includes data with formatting errors.
    * @return DELIMITER_ERROR
-  */
+   */
   
   @Schema(name = "DELIMITER_ERROR", description = "Your feed includes data with formatting errors.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DELIMITER_ERROR")
@@ -175,7 +175,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed is missing some required column headers.
    * @return REQUIRED_COLUMNS_MISSING
-  */
+   */
   
   @Schema(name = "REQUIRED_COLUMNS_MISSING", description = "Your feed is missing some required column headers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("REQUIRED_COLUMNS_MISSING")
@@ -195,7 +195,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some products are duplicated.
    * @return DUPLICATE_PRODUCTS
-  */
+   */
   
   @Schema(name = "DUPLICATE_PRODUCTS", description = "Some products are duplicated.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DUPLICATE_PRODUCTS")
@@ -215,7 +215,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some image links are formatted incorrectly.
    * @return IMAGE_LINK_INVALID
-  */
+   */
   
   @Schema(name = "IMAGE_LINK_INVALID", description = "Some image links are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_INVALID")
@@ -235,7 +235,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items are missing an item id in their product metadata, those items will not be published.
    * @return ITEMID_MISSING
-  */
+   */
   
   @Schema(name = "ITEMID_MISSING", description = "Some items are missing an item id in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEMID_MISSING")
@@ -255,7 +255,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items are missing a title in their product metadata, those items will not be published.
    * @return TITLE_MISSING
-  */
+   */
   
   @Schema(name = "TITLE_MISSING", description = "Some items are missing a title in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_MISSING")
@@ -275,7 +275,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items are missing a description in their product metadata, those items will not be published.
    * @return DESCRIPTION_MISSING
-  */
+   */
   
   @Schema(name = "DESCRIPTION_MISSING", description = "Some items are missing a description in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_MISSING")
@@ -295,7 +295,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items are missing a link URL in their product metadata, those items will not be published.
    * @return PRODUCT_LINK_MISSING
-  */
+   */
   
   @Schema(name = "PRODUCT_LINK_MISSING", description = "Some items are missing a link URL in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_LINK_MISSING")
@@ -315,7 +315,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items are missing an image link URL in their product metadata, those items will not be published.
    * @return IMAGE_LINK_MISSING
-  */
+   */
   
   @Schema(name = "IMAGE_LINK_MISSING", description = "Some items are missing an image link URL in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_MISSING")
@@ -335,7 +335,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items are missing an availability value in their product metadata, those items will not be published.
    * @return AVAILABILITY_INVALID
-  */
+   */
   
   @Schema(name = "AVAILABILITY_INVALID", description = "Some items are missing an availability value in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_INVALID")
@@ -355,7 +355,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items have price formatting errors in their product metadata, those items will not be published.
    * @return PRODUCT_PRICE_INVALID
-  */
+   */
   
   @Schema(name = "PRODUCT_PRICE_INVALID", description = "Some items have price formatting errors in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_PRICE_INVALID")
@@ -375,7 +375,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some link values are formatted incorrectly.
    * @return LINK_FORMAT_INVALID
-  */
+   */
   
   @Schema(name = "LINK_FORMAT_INVALID", description = "Some link values are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_INVALID")
@@ -395,7 +395,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed contains formatting errors for some items.
    * @return PARSE_LINE_ERROR
-  */
+   */
   
   @Schema(name = "PARSE_LINE_ERROR", description = "Your feed contains formatting errors for some items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PARSE_LINE_ERROR")
@@ -415,7 +415,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some adwords links contain too many characters.
    * @return ADWORDS_FORMAT_INVALID
-  */
+   */
   
   @Schema(name = "ADWORDS_FORMAT_INVALID", description = "Some adwords links contain too many characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_INVALID")
@@ -435,7 +435,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.
    * @return INTERNAL_SERVICE_ERROR
-  */
+   */
   
   @Schema(name = "INTERNAL_SERVICE_ERROR", description = "We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INTERNAL_SERVICE_ERROR")
@@ -455,7 +455,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your merchant domain needs to be claimed.
    * @return NO_VERIFIED_DOMAIN
-  */
+   */
   
   @Schema(name = "NO_VERIFIED_DOMAIN", description = "Your merchant domain needs to be claimed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("NO_VERIFIED_DOMAIN")
@@ -475,7 +475,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items have invalid adult values.
    * @return ADULT_INVALID
-  */
+   */
   
   @Schema(name = "ADULT_INVALID", description = "Some items have invalid adult values.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADULT_INVALID")
@@ -495,7 +495,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items have image_link URLs that contain too many characters, so those items will not be published.
    * @return IMAGE_LINK_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "IMAGE_LINK_LENGTH_TOO_LONG", description = "Some items have image_link URLs that contain too many characters, so those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_LENGTH_TOO_LONG")
@@ -515,7 +515,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some of your product link values don't match the verified domain associated with this account.
    * @return INVALID_DOMAIN
-  */
+   */
   
   @Schema(name = "INVALID_DOMAIN", description = "Some of your product link values don't match the verified domain associated with this account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INVALID_DOMAIN")
@@ -535,7 +535,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed contains too many items, some items will not be published.
    * @return FEED_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "FEED_LENGTH_TOO_LONG", description = "Your feed contains too many items, some items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FEED_LENGTH_TOO_LONG")
@@ -555,7 +555,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some product links contain too many characters, those items will not be published.
    * @return LINK_LENGTH_TOO_LONG
-  */
+   */
   
   @Schema(name = "LINK_LENGTH_TOO_LONG", description = "Some product links contain too many characters, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_LENGTH_TOO_LONG")
@@ -575,7 +575,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed couldn't be validated because the xml file is formatted incorrectly.
    * @return MALFORMED_XML
-  */
+   */
   
   @Schema(name = "MALFORMED_XML", description = "Your feed couldn't be validated because the xml file is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MALFORMED_XML")
@@ -595,7 +595,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some products are missing a price, those items will not be published.
    * @return PRICE_MISSING
-  */
+   */
   
   @Schema(name = "PRICE_MISSING", description = "Some products are missing a price, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_MISSING")
@@ -615,7 +615,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
    * @return FEED_TOO_SMALL
-  */
+   */
   
   @Schema(name = "FEED_TOO_SMALL", description = "Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FEED_TOO_SMALL")
@@ -635,7 +635,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items exceed the maximum number of items per item group, those items will not be published.
    * @return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
-  */
+   */
   
   @Schema(name = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", description = "Some items exceed the maximum number of items per item group, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
@@ -655,7 +655,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items' main images can't be found.
    * @return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
-  */
+   */
   
   @Schema(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", description = "Some items' main images can't be found.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
@@ -675,7 +675,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
    * @return PINJOIN_CONTENT_UNSAFE
-  */
+   */
   
   @Schema(name = "PINJOIN_CONTENT_UNSAFE", description = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PINJOIN_CONTENT_UNSAFE")
@@ -695,7 +695,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
    * @return BLOCKLISTED_IMAGE_SIGNATURE
-  */
+   */
   
   @Schema(name = "BLOCKLISTED_IMAGE_SIGNATURE", description = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("BLOCKLISTED_IMAGE_SIGNATURE")
@@ -715,7 +715,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items have list price formatting errors in their product metadata, those items will not be published.
    * @return LIST_PRICE_INVALID
-  */
+   */
   
   @Schema(name = "LIST_PRICE_INVALID", description = "Some items have list price formatting errors in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LIST_PRICE_INVALID")
@@ -735,7 +735,7 @@ public class CatalogsFeedValidationErrors {
   /**
    * Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
    * @return PRICE_CANNOT_BE_DETERMINED
-  */
+   */
   
   @Schema(name = "PRICE_CANNOT_BE_DETERMINED", description = "Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_CANNOT_BE_DETERMINED")

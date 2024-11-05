@@ -2,8 +2,9 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsCreativeAssetsProductGroup
+open OpenAPI.Model.CatalogsCreativeAssetsProductGroupFilters
 open OpenAPI.Model.CatalogsHotelProductGroup
-open OpenAPI.Model.CatalogsProductGroupFilters
 open OpenAPI.Model.CatalogsProductGroupStatus
 open OpenAPI.Model.CatalogsProductGroupType
 open OpenAPI.Model.CatalogsRetailProductGroup
@@ -14,10 +15,7 @@ module CatalogsVerticalProductGroup =
   //#region CatalogsVerticalProductGroup
 
   //#region enums
-  type CatalogTypeEnum = RETAILEnum of string  
-  //#endregion
-  //#region enums
-  type FeedIdEnum = NullEnum of string option  
+  type CatalogTypeEnum = CREATIVEASSETSEnum of string  
   //#endregion
 
   type CatalogsVerticalProductGroup = {
@@ -25,13 +23,15 @@ module CatalogsVerticalProductGroup =
     Id : string;
     Name : string;
     Description : string option;
-    Filters : CatalogsProductGroupFilters;
-    CreatedAt : int;
-    UpdatedAt : int;
-    CatalogId : string;
+    Filters : CatalogsCreativeAssetsProductGroupFilters;
     IsFeatured : bool;
     Type : CatalogsProductGroupType;
     Status : CatalogsProductGroupStatus;
-    FeedId : FeedIdEnum;
+    CreatedAt : int;
+    UpdatedAt : int;
+    CatalogId : string;
+    FeedId : string option;
+    Country : string option;
+    Locale : string option;
   }
   //#endregion

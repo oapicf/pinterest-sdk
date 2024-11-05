@@ -12,7 +12,5 @@
 
     * `TEST` (value: `"TEST"`)
 
-    * `null` (value: `"null"`)
-
 
 

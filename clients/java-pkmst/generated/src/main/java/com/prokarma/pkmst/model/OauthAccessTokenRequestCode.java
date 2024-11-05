@@ -4,7 +4,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.pkmst.model.OauthAccessTokenRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -17,23 +16,77 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "A request to exchange an authorization code for an access token.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
-public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class OauthAccessTokenRequestCode   {
+  /**
+   * Gets or Sets grantType
+   */
+  public enum GrantTypeEnum {
+    AUTHORIZATION_CODE("authorization_code"),
+    
+    REFRESH_TOKEN("refresh_token"),
+    
+    CLIENT_CREDENTIALS("client_credentials");
+
+    private String value;
+
+    GrantTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static GrantTypeEnum fromValue(String text) {
+      for (GrantTypeEnum b : GrantTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
+  @JsonProperty("grant_type")
+  private GrantTypeEnum grantType;
+
   @JsonProperty("code")
   private String code;
 
   @JsonProperty("redirect_uri")
   private String redirectUri;
 
+  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   */
+  @ApiModelProperty(required = true, value = "")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
   public OauthAccessTokenRequestCode code(String code) {
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * Get code
    * @return code
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getCode() {
     return code;
@@ -48,10 +101,10 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
     return this;
   }
 
-   /**
+  /**
    * Get redirectUri
    * @return redirectUri
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getRedirectUri() {
     return redirectUri;
@@ -71,21 +124,22 @@ public class OauthAccessTokenRequestCode extends OauthAccessTokenRequest  {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
-        super.equals(o);
+    return Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType) &&
+        Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, redirectUri, super.hashCode());
+    return Objects.hash(grantType, code, redirectUri);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
     sb.append("}");

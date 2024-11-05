@@ -29,7 +29,7 @@ data class BidFloorRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("targeting_spec") val targetingSpec: TargetingSpec? = null
-) {
+    ) {
 
 }
 

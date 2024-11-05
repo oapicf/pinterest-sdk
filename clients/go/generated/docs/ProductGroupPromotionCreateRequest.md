@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdGroupId** | **string** | ID of the Ad Group the Product Group Promotion belongs to. | 
-**ProductGroupPromotion** | [**[]ProductGroupPromotion**](ProductGroupPromotion.md) |  | 
+**ProductGroupPromotion** | [**[]ProductGroupPromotionCreateRequestElement**](ProductGroupPromotionCreateRequestElement.md) |  | 
 
 ## Methods
 
 ### NewProductGroupPromotionCreateRequest
 
-`func NewProductGroupPromotionCreateRequest(adGroupId string, productGroupPromotion []ProductGroupPromotion, ) *ProductGroupPromotionCreateRequest`
+`func NewProductGroupPromotionCreateRequest(adGroupId string, productGroupPromotion []ProductGroupPromotionCreateRequestElement, ) *ProductGroupPromotionCreateRequest`
 
 NewProductGroupPromotionCreateRequest instantiates a new ProductGroupPromotionCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetAdGroupId sets AdGroupId field to given value.
 
 ### GetProductGroupPromotion
 
-`func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotion() []ProductGroupPromotion`
+`func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotion() []ProductGroupPromotionCreateRequestElement`
 
 GetProductGroupPromotion returns the ProductGroupPromotion field if non-nil, zero value otherwise.
 
 ### GetProductGroupPromotionOk
 
-`func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotionOk() (*[]ProductGroupPromotion, bool)`
+`func (o *ProductGroupPromotionCreateRequest) GetProductGroupPromotionOk() (*[]ProductGroupPromotionCreateRequestElement, bool)`
 
 GetProductGroupPromotionOk returns a tuple with the ProductGroupPromotion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProductGroupPromotion
 
-`func (o *ProductGroupPromotionCreateRequest) SetProductGroupPromotion(v []ProductGroupPromotion)`
+`func (o *ProductGroupPromotionCreateRequest) SetProductGroupPromotion(v []ProductGroupPromotionCreateRequestElement)`
 
 SetProductGroupPromotion sets ProductGroupPromotion field to given value.
 

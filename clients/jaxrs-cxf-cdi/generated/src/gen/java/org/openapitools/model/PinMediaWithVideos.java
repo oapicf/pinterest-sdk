@@ -23,7 +23,7 @@ import java.util.Objects;
 @ApiModel(description = "Pin with multiple videos.")
 public class PinMediaWithVideos extends PinMedia  {
   
-  private List<@Valid VideoMetadata> items;
+  private List<@Valid VideoMetadata> items = new ArrayList<>();
 
   /**
    **/

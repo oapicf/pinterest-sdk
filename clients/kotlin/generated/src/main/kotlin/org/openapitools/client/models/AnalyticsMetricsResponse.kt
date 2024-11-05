@@ -38,5 +38,8 @@ data class AnalyticsMetricsResponse (
     @Json(name = "daily_metrics")
     val dailyMetrics: kotlin.collections.List<AnalyticsDailyMetrics>? = null
 
-)
+) {
+
+
+}
 

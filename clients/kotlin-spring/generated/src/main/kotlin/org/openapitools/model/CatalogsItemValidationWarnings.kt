@@ -238,7 +238,7 @@ data class CatalogsItemValidationWarnings(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("WEIGHT_UNIT_INVALID") val WEIGHT_UNIT_INVALID: CatalogsItemValidationDetails? = null
-) {
+    ) {
 
 }
 

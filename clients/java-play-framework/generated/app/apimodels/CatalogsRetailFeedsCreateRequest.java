@@ -4,6 +4,7 @@ import apimodels.CatalogsFeedCredentials;
 import apimodels.CatalogsFeedProcessingSchedule;
 import apimodels.CatalogsFeedsCreateRequestDefaultLocale;
 import apimodels.CatalogsFormat;
+import apimodels.CatalogsStatus;
 import apimodels.CatalogsType;
 import apimodels.Country;
 import apimodels.NullableCurrency;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a retail feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailFeedsCreateRequest   {
   @JsonProperty("default_currency")
@@ -75,6 +76,11 @@ public class CatalogsRetailFeedsCreateRequest   {
   @Valid
 
   private ProductAvailabilityType defaultAvailability;
+
+  @JsonProperty("status")
+  @Valid
+
+  private CatalogsStatus status;
 
   public CatalogsRetailFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;
@@ -246,6 +252,23 @@ public class CatalogsRetailFeedsCreateRequest   {
     this.defaultAvailability = defaultAvailability;
   }
 
+  public CatalogsRetailFeedsCreateRequest status(CatalogsStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -265,12 +288,13 @@ public class CatalogsRetailFeedsCreateRequest   {
         Objects.equals(preferredProcessingSchedule, catalogsRetailFeedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(catalogType, catalogsRetailFeedsCreateRequest.catalogType) &&
         Objects.equals(defaultCountry, catalogsRetailFeedsCreateRequest.defaultCountry) &&
-        Objects.equals(defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability);
+        Objects.equals(defaultAvailability, catalogsRetailFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(status, catalogsRetailFeedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -289,6 +313,7 @@ public class CatalogsRetailFeedsCreateRequest   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum CatalogsProductGroupType {
 
-    @JsonProperty("MERCHANT_CREATED") MERCHANT_CREATED(String.valueOf("MERCHANT_CREATED")), @JsonProperty("ALL_PRODUCTS") ALL_PRODUCTS(String.valueOf("ALL_PRODUCTS")), @JsonProperty("BEST_DEALS") BEST_DEALS(String.valueOf("BEST_DEALS")), @JsonProperty("PINNER_FAVORITES") PINNER_FAVORITES(String.valueOf("PINNER_FAVORITES")), @JsonProperty("TOP_SELLERS") TOP_SELLERS(String.valueOf("TOP_SELLERS")), @JsonProperty("BACK_IN_STOCK") BACK_IN_STOCK(String.valueOf("BACK_IN_STOCK")), @JsonProperty("NEW_ARRIVALS") NEW_ARRIVALS(String.valueOf("NEW_ARRIVALS")), @JsonProperty("SHOPIFY_COLLECTIONS") SHOPIFY_COLLECTIONS(String.valueOf("SHOPIFY_COLLECTIONS")), @JsonProperty("I2PC") I2PC(String.valueOf("I2PC"));
+    @JsonProperty("MERCHANT_CREATED") MERCHANT_CREATED(String.valueOf("MERCHANT_CREATED")), @JsonProperty("ALL_PRODUCTS") ALL_PRODUCTS(String.valueOf("ALL_PRODUCTS")), @JsonProperty("BEST_DEALS") BEST_DEALS(String.valueOf("BEST_DEALS")), @JsonProperty("PINNER_FAVORITES") PINNER_FAVORITES(String.valueOf("PINNER_FAVORITES")), @JsonProperty("TOP_SELLERS") TOP_SELLERS(String.valueOf("TOP_SELLERS")), @JsonProperty("BACK_IN_STOCK") BACK_IN_STOCK(String.valueOf("BACK_IN_STOCK")), @JsonProperty("NEW_ARRIVALS") NEW_ARRIVALS(String.valueOf("NEW_ARRIVALS")), @JsonProperty("SHOPIFY_COLLECTIONS") SHOPIFY_COLLECTIONS(String.valueOf("SHOPIFY_COLLECTIONS")), @JsonProperty("I2PC") I2_PC(String.valueOf("I2PC"));
 
 
     private String value;

@@ -23,7 +23,7 @@ public class RelatedTerms   {
 
   private Integer relatedTermCount;
 
-  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList;
+  private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
 
   /**
    * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;

@@ -94,7 +94,7 @@ test_that("is_owner", {
 })
 
 test_that("media", {
-  # tests for the property `media` (SummaryPinMedia)
+  # tests for the property `media` (PinMedia)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`media`, "EXPECTED_RESULT")
@@ -117,7 +117,7 @@ test_that("parent_pin_id", {
 
 test_that("is_standard", {
   # tests for the property `is_standard` (character)
-  # Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/content/update/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.
+  # Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_standard`, "EXPECTED_RESULT")

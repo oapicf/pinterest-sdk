@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Audience
@@ -42,7 +42,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -279,7 +279,16 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
      enum class OrderAudiencesList(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -287,7 +296,16 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
      enum class OwnershipTypeAudiencesList(val value: kotlin.String) {
          @Json(name = "OWNED") OWNED("OWNED"),
-         @Json(name = "RECEIVED") RECEIVED("RECEIVED")
+         @Json(name = "RECEIVED") RECEIVED("RECEIVED");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -296,8 +314,8 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. (optional, default to OWNED)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param ownershipType Filter audiences by ownership type. (optional, default to OWNED)
      * @return AudiencesList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -331,8 +349,8 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. (optional, default to OWNED)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param ownershipType Filter audiences by ownership type. (optional, default to OWNED)
      * @return ApiResponse<AudiencesList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -353,8 +371,8 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType &lt;strong&gt;This feature is currently in beta and not available to all apps.&lt;/strong&gt; Filter audiences by ownership type. (optional, default to OWNED)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param ownershipType Filter audiences by ownership type. (optional, default to OWNED)
      * @return RequestConfig
      */
     fun audiencesListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, order: OrderAudiencesList?, pageSize: kotlin.Int?, ownershipType: OwnershipTypeAudiencesList?) : RequestConfig<Unit> {

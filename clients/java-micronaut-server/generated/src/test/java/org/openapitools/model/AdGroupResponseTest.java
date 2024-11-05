@@ -1,15 +1,18 @@
 package org.openapitools.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ActionType;
-import org.openapitools.model.AdGroupCommonOptimizationGoalMetadata;
-import org.openapitools.model.AdGroupCommonTrackingUrls;
 import org.openapitools.model.AdGroupSummaryStatus;
 import org.openapitools.model.BudgetType;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.OptimizationGoalMetadata;
 import org.openapitools.model.PacingDeliveryType;
 import org.openapitools.model.PlacementGroupType;
 import org.openapitools.model.TargetingSpec;
+import org.openapitools.model.TrackingUrls;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -163,6 +166,14 @@ public class AdGroupResponseTest {
     @Test
     public void bidStrategyTypeTest() {
         // TODO: test bidStrategyType
+    }
+
+    /**
+     * Test the property 'targetingTemplateIds'
+     */
+    @Test
+    public void targetingTemplateIdsTest() {
+        // TODO: test targetingTemplateIds
     }
 
     /**

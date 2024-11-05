@@ -38,7 +38,7 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      */
     public AdsCreditRedeemResponse adsCreditRedeem(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) {
@@ -50,7 +50,7 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      */
     public AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet(String adAccountId, String bookmark, Integer pageSize) {
@@ -62,7 +62,7 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      */
     public BillingProfilesGet200Response billingProfilesGet(String adAccountId, Boolean isActive, String bookmark, Integer pageSize) {

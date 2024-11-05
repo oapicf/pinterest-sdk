@@ -44,14 +44,14 @@ class UsersApiController() {
             ApiResponse(responseCode = "401", description = "Authorization failed", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "404", description = "User not found", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "user_accounts:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "user_accounts:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "user_accounts:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
         value = ["/users/{username}/interests/follow"],
         produces = ["application/json"]
     )
-    fun userAccountFollowedInterests(@Pattern(regexp="(?!^\\d+$)^.+$") @Parameter(description = "A valid username", required = true) @PathVariable("username") username: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<UserAccountFollowedInterests200Response> {
+    fun userAccountFollowedInterests(@Pattern(regexp="(?!^\\d+$)^.+$") @Parameter(description = "A valid username", required = true) @PathVariable("username") username: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<UserAccountFollowedInterests200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 }

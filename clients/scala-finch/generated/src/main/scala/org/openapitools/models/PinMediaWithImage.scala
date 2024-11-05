@@ -5,8 +5,8 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ImageMetadataImages
 import org.openapitools.models.PinMedia
+import org.openapitools.models.PinMediaWithImageAllOfImages
 
 /**
  * Pin with image.
@@ -14,7 +14,7 @@ import org.openapitools.models.PinMedia
  * @param images 
  */
 case class PinMediaWithImage(mediaUnderscoretype: Option[String],
-                images: Option[ImageMetadataImages]
+                images: Option[PinMediaWithImageAllOfImages]
                 )
 
 object PinMediaWithImage {

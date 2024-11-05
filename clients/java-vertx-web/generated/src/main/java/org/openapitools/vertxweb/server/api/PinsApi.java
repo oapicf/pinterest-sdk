@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface PinsApi  {
+    Future<ApiResponse<Map<String, Map<String, PinAnalyticsMetricsResponse>>>> multiPinsAnalytics(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId);
     Future<ApiResponse<Map<String, PinAnalyticsMetricsResponse>>> pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId);
     Future<ApiResponse<Pin>> pinsCreate(PinCreate pinCreate, String adAccountId);
     Future<ApiResponse<Void>> pinsDelete(String pinId, String adAccountId);

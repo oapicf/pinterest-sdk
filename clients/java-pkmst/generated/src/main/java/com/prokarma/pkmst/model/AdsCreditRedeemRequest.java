@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AdsCreditRedeemRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsCreditRedeemRequest   {
   @JsonProperty("offerCodeHash")
   private String offerCodeHash;
@@ -27,10 +27,10 @@ public class AdsCreditRedeemRequest   {
     return this;
   }
 
-   /**
+  /**
    * Takes in a SHA256 hash of the offerCode.
    * @return offerCodeHash
-  **/
+   */
   @ApiModelProperty(example = "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", required = true, value = "Takes in a SHA256 hash of the offerCode.")
   public String getOfferCodeHash() {
     return offerCodeHash;
@@ -45,10 +45,10 @@ public class AdsCreditRedeemRequest   {
     return this;
   }
 
-   /**
+  /**
    * If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
    * @return validateOnly
-  **/
+   */
   @ApiModelProperty(example = "true", required = true, value = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account")
   public Boolean getValidateOnly() {
     return validateOnly;

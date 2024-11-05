@@ -20,9 +20,9 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsItemsCreateBatchRequest
 import org.openapitools.client.models.BatchOperation
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemCreateBatchRecord
-import org.openapitools.client.models.Language
 
 class CatalogsItemsCreateBatchRequestTest : ShouldSpec() {
     init {

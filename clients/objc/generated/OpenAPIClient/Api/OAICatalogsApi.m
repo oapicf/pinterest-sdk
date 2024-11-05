@@ -1,19 +1,25 @@
 #import "OAICatalogsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
+#import "OAICatalog.h"
+#import "OAICatalogsCreateReportResponse.h"
+#import "OAICatalogsCreateRequest.h"
 #import "OAICatalogsFeed.h"
+#import "OAICatalogsFeedIngestion.h"
 #import "OAICatalogsItemValidationIssue.h"
 #import "OAICatalogsItems.h"
 #import "OAICatalogsItemsBatch.h"
 #import "OAICatalogsItemsFilters.h"
+#import "OAICatalogsItemsRequest.h"
 #import "OAICatalogsList200Response.h"
 #import "OAICatalogsListProductsByFilterRequest.h"
 #import "OAICatalogsProductGroupPinsList200Response.h"
-#import "OAICatalogsProductGroupProductCounts.h"
-#import "OAICatalogsProductGroupsCreate201Response.h"
-#import "OAICatalogsProductGroupsCreateRequest.h"
+#import "OAICatalogsProductGroupProductCountsVertical.h"
 #import "OAICatalogsProductGroupsList200Response.h"
 #import "OAICatalogsProductGroupsUpdateRequest.h"
+#import "OAICatalogsReport.h"
+#import "OAICatalogsReportParameters.h"
+#import "OAICatalogsVerticalProductGroup.h"
 #import "OAIError.h"
 #import "OAIFeedProcessingResultsList200Response.h"
 #import "OAIFeedsCreateRequest.h"
@@ -21,6 +27,8 @@
 #import "OAIFeedsUpdateRequest.h"
 #import "OAIItemsBatchPostRequest.h"
 #import "OAIItemsIssuesList200Response.h"
+#import "OAIMultipleProductGroupsInner.h"
+#import "OAIReportsStats200Response.h"
 
 
 @interface OAICatalogsApi ()
@@ -69,11 +77,83 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
+/// Create catalog
+/// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.
+///  @param catalogsCreateRequest Request object used to created a feed. 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns OAICatalog*
+///
+-(NSURLSessionTask*) catalogsCreateWithCatalogsCreateRequest: (OAICatalogsCreateRequest*) catalogsCreateRequest
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAICatalog* output, NSError* error)) handler {
+    // verify the required parameter 'catalogsCreateRequest' is set
+    if (catalogsCreateRequest == nil) {
+        NSParameterAssert(catalogsCreateRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"catalogsCreateRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = catalogsCreateRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAICatalog*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAICatalog*)data, error);
+                                }
+                            }];
+}
+
+///
 /// List catalogs
-/// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
@@ -138,15 +218,17 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// List products for a Product Group
-/// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// List products by product group
+/// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 ///  @param productGroupId Unique identifier of a product group 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to @(NO))
 ///
 ///  @returns OAICatalogsProductGroupPinsList200Response*
 ///
@@ -154,6 +236,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
     adAccountId: (NSString*) adAccountId
+    pinMetrics: (NSNumber*) pinMetrics
     completionHandler: (void (^)(OAICatalogsProductGroupPinsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'productGroupId' is set
     if (productGroupId == nil) {
@@ -182,6 +265,9 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     }
     if (adAccountId != nil) {
         queryParams[@"ad_account_id"] = adAccountId;
+    }
+    if (pinMetrics != nil) {
+        queryParams[@"pin_metrics"] = [pinMetrics isEqual:@(YES)] ? @"true" : @"false";
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -225,21 +311,21 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create product group
-/// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
-///  @param catalogsProductGroupsCreateRequest Request object used to created a catalogs product group. 
+/// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+///  @param multipleProductGroupsInner Request object used to create a single catalogs product groups. 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAICatalogsProductGroupsCreate201Response*
+///  @returns OAICatalogsVerticalProductGroup*
 ///
--(NSURLSessionTask*) catalogsProductGroupsCreateWithCatalogsProductGroupsCreateRequest: (OAICatalogsProductGroupsCreateRequest*) catalogsProductGroupsCreateRequest
+-(NSURLSessionTask*) catalogsProductGroupsCreateWithMultipleProductGroupsInner: (OAIMultipleProductGroupsInner*) multipleProductGroupsInner
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAICatalogsProductGroupsCreate201Response* output, NSError* error)) handler {
-    // verify the required parameter 'catalogsProductGroupsCreateRequest' is set
-    if (catalogsProductGroupsCreateRequest == nil) {
-        NSParameterAssert(catalogsProductGroupsCreateRequest);
+    completionHandler: (void (^)(OAICatalogsVerticalProductGroup* output, NSError* error)) handler {
+    // verify the required parameter 'multipleProductGroupsInner' is set
+    if (multipleProductGroupsInner == nil) {
+        NSParameterAssert(multipleProductGroupsInner);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"catalogsProductGroupsCreateRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"multipleProductGroupsInner"] };
             NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -274,7 +360,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = catalogsProductGroupsCreateRequest;
+    bodyParam = multipleProductGroupsInner;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -287,17 +373,89 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICatalogsProductGroupsCreate201Response*"
+                              responseType: @"OAICatalogsVerticalProductGroup*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICatalogsProductGroupsCreate201Response*)data, error);
+                                    handler((OAICatalogsVerticalProductGroup*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Create product groups
+/// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+///  @param multipleProductGroupsInner Request object used to create one or more catalogs product groups. 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns NSArray<NSString*>*
+///
+-(NSURLSessionTask*) catalogsProductGroupsCreateManyWithMultipleProductGroupsInner: (NSArray<OAIMultipleProductGroupsInner>*) multipleProductGroupsInner
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(NSArray<NSString*>* output, NSError* error)) handler {
+    // verify the required parameter 'multipleProductGroupsInner' is set
+    if (multipleProductGroupsInner == nil) {
+        NSParameterAssert(multipleProductGroupsInner);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"multipleProductGroupsInner"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs/product_groups/multiple"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = multipleProductGroupsInner;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"NSArray<NSString*>*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((NSArray<NSString*>*)data, error);
                                 }
                             }];
 }
 
 ///
 /// Delete product group
-/// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 ///  @param productGroupId Unique identifier of a product group 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -370,17 +528,91 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 }
 
 ///
+/// Delete product groups
+/// Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+///  @param _id Comma-separated list of product group ids 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns void
+///
+-(NSURLSessionTask*) catalogsProductGroupsDeleteManyWithId: (NSArray<NSNumber*>*) _id
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(NSError* error)) handler {
+    // verify the required parameter '_id' is set
+    if (_id == nil) {
+        NSParameterAssert(_id);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"_id"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs/product_groups/multiple"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (_id != nil) {
+        queryParams[@"id"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: _id format: @"csv"];
+    }
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"DELETE"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: nil
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler(error);
+                                }
+                            }];
+}
+
+///
 /// Get product group
-/// Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 ///  @param productGroupId Unique identifier of a product group 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAICatalogsProductGroupsCreate201Response*
+///  @returns OAICatalogsVerticalProductGroup*
 ///
 -(NSURLSessionTask*) catalogsProductGroupsGetWithProductGroupId: (NSString*) productGroupId
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAICatalogsProductGroupsCreate201Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAICatalogsVerticalProductGroup* output, NSError* error)) handler {
     // verify the required parameter 'productGroupId' is set
     if (productGroupId == nil) {
         NSParameterAssert(productGroupId);
@@ -435,30 +667,33 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICatalogsProductGroupsCreate201Response*"
+                              responseType: @"OAICatalogsVerticalProductGroup*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICatalogsProductGroupsCreate201Response*)data, error);
+                                    handler((OAICatalogsVerticalProductGroup*)data, error);
                                 }
                             }];
 }
 
 ///
 /// List product groups
-/// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+///  @param _id Comma-separated list of product group ids (optional)
+///
 ///  @param feedId Filter entities for a given feed_id. If not given, all feeds are considered. (optional)
 ///
 ///  @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
 ///  @returns OAICatalogsProductGroupsList200Response*
 ///
--(NSURLSessionTask*) catalogsProductGroupsListWithFeedId: (NSString*) feedId
+-(NSURLSessionTask*) catalogsProductGroupsListWithId: (NSArray<NSNumber*>*) _id
+    feedId: (NSString*) feedId
     catalogId: (NSString*) catalogId
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
@@ -469,6 +704,9 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (_id != nil) {
+        queryParams[@"id"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: _id format: @"csv"];
+    }
     if (feedId != nil) {
         queryParams[@"feed_id"] = feedId;
     }
@@ -525,17 +763,17 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Get product counts for a Product Group
-/// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// Get product counts
+/// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 ///  @param productGroupId Unique identifier of a product group 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAICatalogsProductGroupProductCounts*
+///  @returns OAICatalogsProductGroupProductCountsVertical*
 ///
 -(NSURLSessionTask*) catalogsProductGroupsProductCountsGetWithProductGroupId: (NSString*) productGroupId
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAICatalogsProductGroupProductCounts* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAICatalogsProductGroupProductCountsVertical* output, NSError* error)) handler {
     // verify the required parameter 'productGroupId' is set
     if (productGroupId == nil) {
         NSParameterAssert(productGroupId);
@@ -590,29 +828,29 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICatalogsProductGroupProductCounts*"
+                              responseType: @"OAICatalogsProductGroupProductCountsVertical*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICatalogsProductGroupProductCounts*)data, error);
+                                    handler((OAICatalogsProductGroupProductCountsVertical*)data, error);
                                 }
                             }];
 }
 
 ///
-/// Update product group
-/// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// Update single product group
+/// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 ///  @param productGroupId Unique identifier of a product group 
 ///
 ///  @param catalogsProductGroupsUpdateRequest Request object used to Update a catalogs product group. 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
-///  @returns OAICatalogsProductGroupsCreate201Response*
+///  @returns OAICatalogsVerticalProductGroup*
 ///
 -(NSURLSessionTask*) catalogsProductGroupsUpdateWithProductGroupId: (NSString*) productGroupId
     catalogsProductGroupsUpdateRequest: (OAICatalogsProductGroupsUpdateRequest*) catalogsProductGroupsUpdateRequest
     adAccountId: (NSString*) adAccountId
-    completionHandler: (void (^)(OAICatalogsProductGroupsCreate201Response* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAICatalogsVerticalProductGroup* output, NSError* error)) handler {
     // verify the required parameter 'productGroupId' is set
     if (productGroupId == nil) {
         NSParameterAssert(productGroupId);
@@ -679,22 +917,22 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICatalogsProductGroupsCreate201Response*"
+                              responseType: @"OAICatalogsVerticalProductGroup*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICatalogsProductGroupsCreate201Response*)data, error);
+                                    handler((OAICatalogsVerticalProductGroup*)data, error);
                                 }
                             }];
 }
 
 ///
-/// List processing results for a given feed
-/// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// List feed processing results
+/// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 ///  @param feedId Unique identifier of a feed 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
 ///
@@ -775,7 +1013,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create feed
-/// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+/// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 ///  @param feedsCreateRequest Request object used to created a feed. 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -819,7 +1057,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -847,7 +1085,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 
 ///
 /// Delete feed
-/// Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+/// Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 ///  @param feedId Unique identifier of a feed 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -894,7 +1132,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -921,7 +1159,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get feed
-/// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+/// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 ///  @param feedId Unique identifier of a feed 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -968,7 +1206,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -994,11 +1232,85 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 }
 
 ///
+/// Ingest feed items
+/// Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+///  @param feedId Unique identifier of a feed 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns OAICatalogsFeedIngestion*
+///
+-(NSURLSessionTask*) feedsIngestWithFeedId: (NSString*) feedId
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAICatalogsFeedIngestion* output, NSError* error)) handler {
+    // verify the required parameter 'feedId' is set
+    if (feedId == nil) {
+        NSParameterAssert(feedId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"feedId"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs/feeds/{feed_id}/ingest"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (feedId != nil) {
+        pathParams[@"feed_id"] = feedId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAICatalogsFeedIngestion*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAICatalogsFeedIngestion*)data, error);
+                                }
+                            }];
+}
+
+///
 /// List feeds
-/// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+/// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param catalogId Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional)
 ///
@@ -1043,7 +1355,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -1070,7 +1382,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 
 ///
 /// Update feed
-/// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+/// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 ///  @param feedId Unique identifier of a feed 
 ///
 ///  @param feedsUpdateRequest Request object used to update a feed. 
@@ -1131,7 +1443,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -1158,8 +1470,8 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Get catalogs item batch status
-/// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+/// Get item batch status
+/// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 ///  @param batchId Id of a catalogs items batch to fetch 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -1206,7 +1518,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -1233,7 +1545,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 
 ///
 /// Operate on item batch
-/// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+/// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
 ///  @param itemsBatchPostRequest Request object used to create catalogs items in a batch 
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
@@ -1277,7 +1589,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -1305,7 +1617,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 
 ///
 /// Get catalogs items
-/// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/shopping/catalog/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+/// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.
 ///  @param country Country for the Catalogs Items 
 ///
 ///  @param language Language for the Catalogs Items 
@@ -1407,13 +1719,13 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// List item issues for a given processing result
-/// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
-///  @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list). 
+/// List item issues
+/// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
+///  @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param itemNumbers Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. (optional)
 ///
@@ -1505,15 +1817,89 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// List filtered products
-/// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/shopping/catalog/'>Learn more</a>
+/// Get catalogs items (POST)
+/// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+///  @param catalogsItemsRequest Request object used to get catalogs items 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns OAICatalogsItems*
+///
+-(NSURLSessionTask*) itemsPostWithCatalogsItemsRequest: (OAICatalogsItemsRequest*) catalogsItemsRequest
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAICatalogsItems* output, NSError* error)) handler {
+    // verify the required parameter 'catalogsItemsRequest' is set
+    if (catalogsItemsRequest == nil) {
+        NSParameterAssert(catalogsItemsRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"catalogsItemsRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs/items"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = catalogsItemsRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAICatalogsItems*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAICatalogsItems*)data, error);
+                                }
+                            }];
+}
+
+///
+/// List products by filter
+/// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 ///  @param catalogsListProductsByFilterRequest Object holding a group of filters for a catalog product group 
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to @(NO))
 ///
 ///  @returns OAICatalogsProductGroupPinsList200Response*
 ///
@@ -1521,6 +1907,7 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     bookmark: (NSString*) bookmark
     pageSize: (NSNumber*) pageSize
     adAccountId: (NSString*) adAccountId
+    pinMetrics: (NSNumber*) pinMetrics
     completionHandler: (void (^)(OAICatalogsProductGroupPinsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'catalogsListProductsByFilterRequest' is set
     if (catalogsListProductsByFilterRequest == nil) {
@@ -1546,6 +1933,9 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
     }
     if (adAccountId != nil) {
         queryParams[@"ad_account_id"] = adAccountId;
+    }
+    if (pinMetrics != nil) {
+        queryParams[@"pin_metrics"] = [pinMetrics isEqual:@(YES)] ? @"true" : @"false";
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -1584,6 +1974,238 @@ NSInteger kOAICatalogsApiMissingParamErrorCode = 234513;
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
                                     handler((OAICatalogsProductGroupPinsList200Response*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Build catalogs report
+/// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+///  @param catalogsReportParameters Request object to asynchronously create a report. 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns OAICatalogsCreateReportResponse*
+///
+-(NSURLSessionTask*) reportsCreateWithCatalogsReportParameters: (OAICatalogsReportParameters*) catalogsReportParameters
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAICatalogsCreateReportResponse* output, NSError* error)) handler {
+    // verify the required parameter 'catalogsReportParameters' is set
+    if (catalogsReportParameters == nil) {
+        NSParameterAssert(catalogsReportParameters);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"catalogsReportParameters"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs/reports"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = catalogsReportParameters;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAICatalogsCreateReportResponse*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAICatalogsCreateReportResponse*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Get catalogs report
+/// This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+///  @param token Token returned from async build report call 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @returns OAICatalogsReport*
+///
+-(NSURLSessionTask*) reportsGetWithToken: (NSString*) token
+    adAccountId: (NSString*) adAccountId
+    completionHandler: (void (^)(OAICatalogsReport* output, NSError* error)) handler {
+    // verify the required parameter 'token' is set
+    if (token == nil) {
+        NSParameterAssert(token);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"token"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs/reports"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    if (token != nil) {
+        queryParams[@"token"] = token;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"GET"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAICatalogsReport*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAICatalogsReport*)data, error);
+                                }
+                            }];
+}
+
+///
+/// List report stats
+/// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+///  @param parameters Contains the parameters for report identification. 
+///
+///  @param adAccountId Unique identifier of an ad account. (optional)
+///
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///
+///  @param bookmark Cursor used to fetch the next page of items (optional)
+///
+///  @returns OAIReportsStats200Response*
+///
+-(NSURLSessionTask*) reportsStatsWithParameters: (OAICatalogsReportParameters) parameters
+    adAccountId: (NSString*) adAccountId
+    pageSize: (NSNumber*) pageSize
+    bookmark: (NSString*) bookmark
+    completionHandler: (void (^)(OAIReportsStats200Response* output, NSError* error)) handler {
+    // verify the required parameter 'parameters' is set
+    if (parameters == nil) {
+        NSParameterAssert(parameters);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"parameters"] };
+            NSError* error = [NSError errorWithDomain:kOAICatalogsApiErrorDomain code:kOAICatalogsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/catalogs/reports/stats"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (adAccountId != nil) {
+        queryParams[@"ad_account_id"] = adAccountId;
+    }
+    if (pageSize != nil) {
+        queryParams[@"page_size"] = pageSize;
+    }
+    if (bookmark != nil) {
+        queryParams[@"bookmark"] = bookmark;
+    }
+    if (parameters != nil) {
+        queryParams[@"parameters"] = parameters;
+    }
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"GET"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAIReportsStats200Response*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAIReportsStats200Response*)data, error);
                                 }
                             }];
 }

@@ -24,13 +24,13 @@ keyword_update_t* instantiate_keyword_update(int include_optional) {
     keyword_update = keyword_update_create(
       "2886364308355",
       false,
-      200000
+      56
     );
   } else {
     keyword_update = keyword_update_create(
       "2886364308355",
       false,
-      200000
+      56
     );
   }
 

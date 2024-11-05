@@ -6,6 +6,6 @@ An item to be deleted
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **item_id** | **character** | The catalog item id in the merchant namespace | 
-**operation** | **character** |  | [Enum: [CREATE, UPDATE, UPSERT, DELETE]] 
+**operation** | **character** |  | [Enum: [DELETE]] 
 
 

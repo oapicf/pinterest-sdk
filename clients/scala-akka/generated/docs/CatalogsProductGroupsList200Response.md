@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;CatalogsProductGroupsList200ResponseAllOfItemsInner&gt;**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**items** | [**Seq&lt;CatalogsVerticalProductGroup&gt;**](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | **String** |  |  [optional]
 
 

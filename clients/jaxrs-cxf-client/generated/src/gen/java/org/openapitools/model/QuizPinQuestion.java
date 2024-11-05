@@ -25,7 +25,7 @@ public class QuizPinQuestion  {
   private String questionText;
 
   @ApiModelProperty(value = "")
-  private List<QuizPinOption> options;
+  private List<QuizPinOption> options = new ArrayList<>();
  /**
    * Get questionId
    * @return questionId

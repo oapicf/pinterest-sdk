@@ -7,5 +7,5 @@ type CatalogsHotelItemsFilter struct {
 	HotelIds []string `json:"hotel_ids"`
 
 	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-	CatalogId string `json:"catalog_id,omitempty"`
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 }

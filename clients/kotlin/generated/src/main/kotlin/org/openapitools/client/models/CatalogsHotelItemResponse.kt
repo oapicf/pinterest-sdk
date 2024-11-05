@@ -48,5 +48,8 @@ data class CatalogsHotelItemResponse (
     @Json(name = "attributes")
     val attributes: CatalogsHotelAttributes? = null
 
-)
+) {
+
+
+}
 

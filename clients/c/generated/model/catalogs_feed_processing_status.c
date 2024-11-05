@@ -5,13 +5,13 @@
 
 
 char* catalogs_feed_processing_status_catalogs_feed_processing_status_ToString(pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_status) {
-    char *catalogs_feed_processing_statusArray[] =  { "NULL", "COMPLETED", "COMPLETED_EARLY", "DISAPPROVED", "FAILED", "PROCESSING", "QUEUED_FOR_PROCESSING", "UNDER_APPEAL", "UNDER_REVIEW" };
+    char *catalogs_feed_processing_statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
     return catalogs_feed_processing_statusArray[catalogs_feed_processing_status];
 }
 
 pinterest_rest_api_catalogs_feed_processing_status__e catalogs_feed_processing_status_catalogs_feed_processing_status_FromString(char* catalogs_feed_processing_status) {
     int stringToReturn = 0;
-    char *catalogs_feed_processing_statusArray[] =  { "NULL", "COMPLETED", "COMPLETED_EARLY", "DISAPPROVED", "FAILED", "PROCESSING", "QUEUED_FOR_PROCESSING", "UNDER_APPEAL", "UNDER_REVIEW" };
+    char *catalogs_feed_processing_statusArray[] =  { "NULL", "COMPLETED", "FAILED", "PROCESSING" };
     size_t sizeofArray = sizeof(catalogs_feed_processing_statusArray) / sizeof(catalogs_feed_processing_statusArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalogs_feed_processing_status, catalogs_feed_processing_statusArray[stringToReturn]) == 0) {

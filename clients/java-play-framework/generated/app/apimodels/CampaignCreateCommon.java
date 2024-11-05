@@ -1,8 +1,7 @@
 package apimodels;
 
-import apimodels.AdCommonTrackingUrls;
-import apimodels.CampaignSummaryStatus;
 import apimodels.EntityStatus;
+import apimodels.TrackingUrls;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -13,7 +12,7 @@ import javax.validation.Valid;
 /**
  * CampaignCreateCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CampaignCreateCommon   {
   @JsonProperty("ad_account_id")
@@ -28,7 +27,7 @@ public class CampaignCreateCommon   {
   @JsonProperty("status")
   @Valid
 
-  private EntityStatus status = "ACTIVE";
+  private EntityStatus status;
 
   @JsonProperty("lifetime_spend_cap")
   
@@ -46,7 +45,7 @@ public class CampaignCreateCommon   {
   @JsonProperty("tracking_urls")
   @Valid
 
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("start_time")
   
@@ -56,14 +55,9 @@ public class CampaignCreateCommon   {
   
   private Integer endTime;
 
-  @JsonProperty("summary_status")
-  @Valid
-
-  private CampaignSummaryStatus summaryStatus;
-
   @JsonProperty("is_flexible_daily_budgets")
   
-  private Boolean isFlexibleDailyBudgets = false;
+  private Boolean isFlexibleDailyBudgets;
 
   @JsonProperty("default_ad_group_budget_in_micro_currency")
   
@@ -71,7 +65,7 @@ public class CampaignCreateCommon   {
 
   @JsonProperty("is_automated_campaign")
   
-  private Boolean isAutomatedCampaign = false;
+  private Boolean isAutomatedCampaign;
 
   public CampaignCreateCommon adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -175,7 +169,7 @@ public class CampaignCreateCommon   {
     this.orderLineId = orderLineId;
   }
 
-  public CampaignCreateCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignCreateCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -184,11 +178,11 @@ public class CampaignCreateCommon   {
    * Get trackingUrls
    * @return trackingUrls
   **/
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -224,23 +218,6 @@ public class CampaignCreateCommon   {
 
   public void setEndTime(Integer endTime) {
     this.endTime = endTime;
-  }
-
-  public CampaignCreateCommon summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
-    return this;
-  }
-
-   /**
-   * Get summaryStatus
-   * @return summaryStatus
-  **/
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
-  }
-
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
   }
 
   public CampaignCreateCommon isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
@@ -313,7 +290,6 @@ public class CampaignCreateCommon   {
         Objects.equals(trackingUrls, campaignCreateCommon.trackingUrls) &&
         Objects.equals(startTime, campaignCreateCommon.startTime) &&
         Objects.equals(endTime, campaignCreateCommon.endTime) &&
-        Objects.equals(summaryStatus, campaignCreateCommon.summaryStatus) &&
         Objects.equals(isFlexibleDailyBudgets, campaignCreateCommon.isFlexibleDailyBudgets) &&
         Objects.equals(defaultAdGroupBudgetInMicroCurrency, campaignCreateCommon.defaultAdGroupBudgetInMicroCurrency) &&
         Objects.equals(isAutomatedCampaign, campaignCreateCommon.isAutomatedCampaign);
@@ -321,7 +297,7 @@ public class CampaignCreateCommon   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, defaultAdGroupBudgetInMicroCurrency, isAutomatedCampaign);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -339,7 +315,6 @@ public class CampaignCreateCommon   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    defaultAdGroupBudgetInMicroCurrency: ").append(toIndentedString(defaultAdGroupBudgetInMicroCurrency)).append("\n");
     sb.append("    isAutomatedCampaign: ").append(toIndentedString(isAutomatedCampaign)).append("\n");

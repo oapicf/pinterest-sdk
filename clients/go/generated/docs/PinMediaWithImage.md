@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Images** | Pointer to [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**Images** | Pointer to [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetImages
 
-`func (o *PinMediaWithImage) GetImages() ImageMetadataImages`
+`func (o *PinMediaWithImage) GetImages() PinMediaWithImageAllOfImages`
 
 GetImages returns the Images field if non-nil, zero value otherwise.
 
 ### GetImagesOk
 
-`func (o *PinMediaWithImage) GetImagesOk() (*ImageMetadataImages, bool)`
+`func (o *PinMediaWithImage) GetImagesOk() (*PinMediaWithImageAllOfImages, bool)`
 
 GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImages
 
-`func (o *PinMediaWithImage) SetImages(v ImageMetadataImages)`
+`func (o *PinMediaWithImage) SetImages(v PinMediaWithImageAllOfImages)`
 
 SetImages sets Images field to given value.
 

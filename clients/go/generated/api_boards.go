@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -94,7 +94,7 @@ func (a *BoardsAPIService) BoardSectionsCreateExecute(r ApiBoardSectionsCreateRe
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -265,7 +265,7 @@ func (a *BoardsAPIService) BoardSectionsDeleteExecute(r ApiBoardSectionsDeleteRe
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -374,7 +374,7 @@ func (r ApiBoardSectionsListRequest) Bookmark(bookmark string) ApiBoardSectionsL
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiBoardSectionsListRequest) PageSize(pageSize int32) ApiBoardSectionsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -426,13 +426,13 @@ func (a *BoardsAPIService) BoardSectionsListExecute(r ApiBoardSectionsListReques
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -521,7 +521,7 @@ func (r ApiBoardSectionsListPinsRequest) Bookmark(bookmark string) ApiBoardSecti
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiBoardSectionsListPinsRequest) PageSize(pageSize int32) ApiBoardSectionsListPinsRequest {
 	r.pageSize = &pageSize
 	return r
@@ -576,13 +576,13 @@ func (a *BoardsAPIService) BoardSectionsListPinsExecute(r ApiBoardSectionsListPi
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -755,7 +755,7 @@ func (a *BoardsAPIService) BoardSectionsUpdateExecute(r ApiBoardSectionsUpdateRe
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -919,7 +919,7 @@ func (a *BoardsAPIService) BoardsCreateExecute(r ApiBoardsCreateRequest) (*Board
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1053,7 +1053,7 @@ func (a *BoardsAPIService) BoardsDeleteExecute(r ApiBoardsDeleteRequest) (*http.
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1211,7 +1211,7 @@ func (a *BoardsAPIService) BoardsGetExecute(r ApiBoardsGetRequest) (*Board, *htt
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1307,7 +1307,7 @@ func (r ApiBoardsListRequest) Bookmark(bookmark string) ApiBoardsListRequest {
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiBoardsListRequest) PageSize(pageSize int32) ApiBoardsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1363,19 +1363,19 @@ func (a *BoardsAPIService) BoardsListExecute(r ApiBoardsListRequest) (*BoardsLis
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.privacy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "privacy", r.privacy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "privacy", r.privacy, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1456,7 +1456,7 @@ func (r ApiBoardsListPinsRequest) Bookmark(bookmark string) ApiBoardsListPinsReq
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiBoardsListPinsRequest) PageSize(pageSize int32) ApiBoardsListPinsRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1526,10 +1526,10 @@ func (a *BoardsAPIService) BoardsListPinsExecute(r ApiBoardsListPinsRequest) (*B
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -1539,17 +1539,17 @@ func (a *BoardsAPIService) BoardsListPinsExecute(r ApiBoardsListPinsRequest) (*B
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "creative_types", t, "form", "multi")
 		}
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	if r.pinMetrics != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.pinMetrics = &defaultValue
@@ -1696,7 +1696,7 @@ func (a *BoardsAPIService) BoardsUpdateExecute(r ApiBoardsUpdateRequest) (*Board
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

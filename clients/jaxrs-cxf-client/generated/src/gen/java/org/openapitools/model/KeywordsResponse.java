@@ -14,10 +14,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class KeywordsResponse  {
   
   @ApiModelProperty(value = "")
-  private List<KeywordError> errors;
+  private List<KeywordError> errors = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  private List<Keyword> keywords;
+  private List<Keyword> keywords = new ArrayList<>();
  /**
    * Get errors
    * @return errors

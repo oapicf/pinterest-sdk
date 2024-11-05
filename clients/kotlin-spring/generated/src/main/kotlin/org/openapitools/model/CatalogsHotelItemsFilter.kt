@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -32,15 +33,23 @@ data class CatalogsHotelItemsFilter(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
-) {
+    ) {
 
     /**
     * 
     * Values: HOTEL
     */
-    enum class CatalogType(val value: kotlin.String) {
+    enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("HOTEL") HOTEL("HOTEL")
+        HOTEL("HOTEL");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CatalogType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

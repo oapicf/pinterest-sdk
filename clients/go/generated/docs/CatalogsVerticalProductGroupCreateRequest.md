@@ -7,14 +7,16 @@ Name | Type | Description | Notes
 **CatalogType** | **string** |  | 
 **Name** | **string** |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
+**Country** | [**Country**](Country.md) |  | 
+**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
 
 ## Methods
 
 ### NewCatalogsVerticalProductGroupCreateRequest
 
-`func NewCatalogsVerticalProductGroupCreateRequest(catalogType string, name string, filters CatalogsHotelProductGroupFilters, catalogId string, ) *CatalogsVerticalProductGroupCreateRequest`
+`func NewCatalogsVerticalProductGroupCreateRequest(catalogType string, name string, filters CatalogsCreativeAssetsProductGroupFilters, catalogId string, country Country, locale CatalogsLocale, ) *CatalogsVerticalProductGroupCreateRequest`
 
 NewCatalogsVerticalProductGroupCreateRequest instantiates a new CatalogsVerticalProductGroupCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -106,20 +108,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetFilters
 
-`func (o *CatalogsVerticalProductGroupCreateRequest) GetFilters() CatalogsHotelProductGroupFilters`
+`func (o *CatalogsVerticalProductGroupCreateRequest) GetFilters() CatalogsCreativeAssetsProductGroupFilters`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *CatalogsVerticalProductGroupCreateRequest) GetFiltersOk() (*CatalogsHotelProductGroupFilters, bool)`
+`func (o *CatalogsVerticalProductGroupCreateRequest) GetFiltersOk() (*CatalogsCreativeAssetsProductGroupFilters, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *CatalogsVerticalProductGroupCreateRequest) SetFilters(v CatalogsHotelProductGroupFilters)`
+`func (o *CatalogsVerticalProductGroupCreateRequest) SetFilters(v CatalogsCreativeAssetsProductGroupFilters)`
 
 SetFilters sets Filters field to given value.
 
@@ -142,6 +144,46 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsVerticalProductGroupCreateRequest) SetCatalogId(v string)`
 
 SetCatalogId sets CatalogId field to given value.
+
+
+### GetCountry
+
+`func (o *CatalogsVerticalProductGroupCreateRequest) GetCountry() Country`
+
+GetCountry returns the Country field if non-nil, zero value otherwise.
+
+### GetCountryOk
+
+`func (o *CatalogsVerticalProductGroupCreateRequest) GetCountryOk() (*Country, bool)`
+
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountry
+
+`func (o *CatalogsVerticalProductGroupCreateRequest) SetCountry(v Country)`
+
+SetCountry sets Country field to given value.
+
+
+### GetLocale
+
+`func (o *CatalogsVerticalProductGroupCreateRequest) GetLocale() CatalogsLocale`
+
+GetLocale returns the Locale field if non-nil, zero value otherwise.
+
+### GetLocaleOk
+
+`func (o *CatalogsVerticalProductGroupCreateRequest) GetLocaleOk() (*CatalogsLocale, bool)`
+
+GetLocaleOk returns a tuple with the Locale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocale
+
+`func (o *CatalogsVerticalProductGroupCreateRequest) SetLocale(v CatalogsLocale)`
+
+SetLocale sets Locale field to given value.
 
 
 

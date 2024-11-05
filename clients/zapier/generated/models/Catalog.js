@@ -8,6 +8,7 @@ module.exports = {
             {
                 key: `${keyPrefix}created_at`,
                 label: `[${labelPrefix}created_at]`,
+                required: true,
                 type: 'string',
             },
             {
@@ -19,6 +20,7 @@ module.exports = {
             {
                 key: `${keyPrefix}updated_at`,
                 label: `[${labelPrefix}updated_at]`,
+                required: true,
                 type: 'string',
             },
             {

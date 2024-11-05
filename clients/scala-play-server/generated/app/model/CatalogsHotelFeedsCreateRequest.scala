@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CatalogsHotelFeedsCreateRequest(
   defaultCurrency: Option[NullableCurrency],
   name: String,
@@ -18,7 +18,8 @@ case class CatalogsHotelFeedsCreateRequest(
   location: String,
   preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule],
   catalogType: CatalogsType,
-  catalogId: Option[String]
+  catalogId: Option[String],
+  status: Option[CatalogsStatus]
 )
 
 object CatalogsHotelFeedsCreateRequest {

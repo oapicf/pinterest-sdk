@@ -80,27 +80,8 @@ private class OASCampaignCreateCommonTest {
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
-        System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
         System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
         System.assertEquals('defaultAdGroupBudgetInMicroCurrency', x-property-mappings.get('default_ad_group_budget_in_micro_currency'));
         System.assertEquals('isAutomatedCampaign', x-property-mappings.get('is_automated_campaign'));
-    }
-
-    @isTest
-    private static void defaultValuesPopulated() {
-        OASCampaignCreateCommon campaignCreateCommon = new OASCampaignCreateCommon();
-        System.assertEquals('ACTIVE', campaignCreateCommon.status);
-        System.assertEquals(false, campaignCreateCommon.isFlexibleDailyBudgets);
-        System.assertEquals(false, campaignCreateCommon.isAutomatedCampaign);
-        System.assertEquals(null, campaignCreateCommon.adAccountId);
-        System.assertEquals(null, campaignCreateCommon.name);
-        System.assertEquals(null, campaignCreateCommon.lifetimeSpendCap);
-        System.assertEquals(null, campaignCreateCommon.dailySpendCap);
-        System.assertEquals(null, campaignCreateCommon.orderLineId);
-        System.assertEquals(null, campaignCreateCommon.trackingUrls);
-        System.assertEquals(null, campaignCreateCommon.startTime);
-        System.assertEquals(null, campaignCreateCommon.endTime);
-        System.assertEquals(null, campaignCreateCommon.summaryStatus);
-        System.assertEquals(null, campaignCreateCommon.defaultAdGroupBudgetInMicroCurrency);
     }
 }

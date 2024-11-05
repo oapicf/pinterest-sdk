@@ -21,7 +21,7 @@ GET     /v5/ad_accounts/:adAccountId/templates                     controllers.A
 
 #Functions for AdGroups API
 GET     /v5/ad_accounts/:adAccountId/ad_groups/analytics                     controllers.AdGroupsApiController.adGroupsAnalytics(request: Request, adAccountId: String)
-GET     /v5/ad_accounts/:adAccountId/ad_groups/audience_sizing                     controllers.AdGroupsApiController.adGroupsAudienceSizing(request: Request, adAccountId: String)
+POST     /v5/ad_accounts/:adAccountId/ad_groups/audience_sizing                     controllers.AdGroupsApiController.adGroupsAudienceSizing(request: Request, adAccountId: String)
 POST     /v5/ad_accounts/:adAccountId/bid_floor                     controllers.AdGroupsApiController.adGroupsBidFloorGet(request: Request, adAccountId: String)
 POST     /v5/ad_accounts/:adAccountId/ad_groups                     controllers.AdGroupsApiController.adGroupsCreate(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/ad_groups/:adGroupId                     controllers.AdGroupsApiController.adGroupsGet(request: Request, adAccountId: String, adGroupId: String)
@@ -38,9 +38,22 @@ GET     /v5/ad_accounts/:adAccountId/ads/:adId                     controllers.A
 GET     /v5/ad_accounts/:adAccountId/ads                     controllers.AdsApiController.adsList(request: Request, adAccountId: String)
 PATCH     /v5/ad_accounts/:adAccountId/ads                     controllers.AdsApiController.adsUpdate(request: Request, adAccountId: String)
 
+#Functions for AdvancedAuction API
+POST     /v5/advanced_auction/items/get                     controllers.AdvancedAuctionApiController.advancedAuctionItemsGetPost(request: Request)
+POST     /v5/advanced_auction/items/submit                     controllers.AdvancedAuctionApiController.advancedAuctionItemsSubmitPost(request: Request)
+
 #Functions for AudienceInsights API
 GET     /v5/ad_accounts/:adAccountId/audience_insights                     controllers.AudienceInsightsApiController.audienceInsightsGet(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/insights/audiences                     controllers.AudienceInsightsApiController.audienceInsightsScopeAndTypeGet(request: Request, adAccountId: String)
+
+#Functions for AudienceSharing API
+GET     /v5/ad_accounts/:adAccountId/audiences/shared/accounts                     controllers.AudienceSharingApiController.adAccountsAudiencesSharedAccountsList(request: Request, adAccountId: String)
+GET     /v5/businesses/:businessId/audiences/shared/accounts                     controllers.AudienceSharingApiController.businessAccountAudiencesSharedAccountsList(request: Request, businessId: String)
+GET     /v5/businesses/:businessId/audiences                     controllers.AudienceSharingApiController.sharedAudiencesForBusinessList(request: Request, businessId: String)
+PATCH     /v5/ad_accounts/:adAccountId/audiences/ad_accounts/shared                     controllers.AudienceSharingApiController.updateAdAccountToAdAccountSharedAudience(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/audiences/businesses/shared                     controllers.AudienceSharingApiController.updateAdAccountToBusinessSharedAudience(request: Request, adAccountId: String)
+PATCH     /v5/businesses/:businessId/audiences/ad_accounts/shared                     controllers.AudienceSharingApiController.updateBusinessToAdAccountSharedAudience(request: Request, businessId: String)
+PATCH     /v5/businesses/:businessId/audiences/businesses/shared                     controllers.AudienceSharingApiController.updateBusinessToBusinessSharedAudience(request: Request, businessId: String)
 
 #Functions for Audiences API
 POST     /v5/ad_accounts/:adAccountId/audiences                     controllers.AudiencesApiController.audiencesCreate(request: Request, adAccountId: String)
@@ -78,6 +91,36 @@ POST     /v5/ad_accounts/:adAccountId/bulk/download                     controll
 GET     /v5/ad_accounts/:adAccountId/bulk/:bulkRequestId                     controllers.BulkApiController.bulkRequestGet(request: Request, adAccountId: String, bulkRequestId: String)
 POST     /v5/ad_accounts/:adAccountId/bulk/upsert                     controllers.BulkApiController.bulkUpsertCreate(request: Request, adAccountId: String)
 
+#Functions for BusinessAccessAssets API
+POST     /v5/businesses/:businessId/asset_groups                     controllers.BusinessAccessAssetsApiController.assetGroupCreate(request: Request, businessId: String)
+DELETE     /v5/businesses/:businessId/asset_groups                     controllers.BusinessAccessAssetsApiController.assetGroupDelete(request: Request, businessId: String)
+PATCH     /v5/businesses/:businessId/asset_groups                     controllers.BusinessAccessAssetsApiController.assetGroupUpdate(request: Request, businessId: String)
+GET     /v5/businesses/:businessId/assets/:assetId/members                     controllers.BusinessAccessAssetsApiController.businessAssetMembersGet(request: Request, businessId: String, assetId: String)
+GET     /v5/businesses/:businessId/assets/:assetId/partners                     controllers.BusinessAccessAssetsApiController.businessAssetPartnersGet(request: Request, businessId: String, assetId: String)
+GET     /v5/businesses/:businessId/assets                     controllers.BusinessAccessAssetsApiController.businessAssetsGet(request: Request, businessId: String)
+GET     /v5/businesses/:businessId/members/:memberId/assets                     controllers.BusinessAccessAssetsApiController.businessMemberAssetsGet(request: Request, businessId: String, memberId: String)
+DELETE     /v5/businesses/:businessId/members/assets/access                     controllers.BusinessAccessAssetsApiController.businessMembersAssetAccessDelete(request: Request, businessId: String)
+PATCH     /v5/businesses/:businessId/members/assets/access                     controllers.BusinessAccessAssetsApiController.businessMembersAssetAccessUpdate(request: Request, businessId: String)
+GET     /v5/businesses/:businessId/partners/:partnerId/assets                     controllers.BusinessAccessAssetsApiController.businessPartnerAssetAccessGet(request: Request, businessId: String, partnerId: String)
+DELETE     /v5/businesses/:businessId/partners/assets                     controllers.BusinessAccessAssetsApiController.deletePartnerAssetAccessHandlerImpl(request: Request, businessId: String)
+PATCH     /v5/businesses/:businessId/partners/assets                     controllers.BusinessAccessAssetsApiController.updatePartnerAssetAccessHandlerImpl(request: Request, businessId: String)
+
+#Functions for BusinessAccessInvite API
+POST     /v5/businesses/:businessId/requests/assets/access                     controllers.BusinessAccessInviteApiController.assetAccessRequestsCreate(request: Request, businessId: String)
+DELETE     /v5/businesses/:businessId/invites                     controllers.BusinessAccessInviteApiController.cancelInvitesOrRequests(request: Request, businessId: String)
+POST     /v5/businesses/:businessId/invites/assets/access                     controllers.BusinessAccessInviteApiController.createAssetInvites(request: Request, businessId: String)
+POST     /v5/businesses/:businessId/invites                     controllers.BusinessAccessInviteApiController.createMembershipOrPartnershipInvites(request: Request, businessId: String)
+GET     /v5/businesses/:businessId/invites                     controllers.BusinessAccessInviteApiController.getInvites(request: Request, businessId: String)
+PATCH     /v5/businesses/invites                     controllers.BusinessAccessInviteApiController.respondBusinessAccessInvites(request: Request)
+
+#Functions for BusinessAccessRelationships API
+DELETE     /v5/businesses/:businessId/members                     controllers.BusinessAccessRelationshipsApiController.deleteBusinessMembership(request: Request, businessId: String)
+DELETE     /v5/businesses/:businessId/partners                     controllers.BusinessAccessRelationshipsApiController.deleteBusinessPartners(request: Request, businessId: String)
+GET     /v5/businesses/employers                     controllers.BusinessAccessRelationshipsApiController.getBusinessEmployers(request: Request)
+GET     /v5/businesses/:businessId/members                     controllers.BusinessAccessRelationshipsApiController.getBusinessMembers(request: Request, businessId: String)
+GET     /v5/businesses/:businessId/partners                     controllers.BusinessAccessRelationshipsApiController.getBusinessPartners(request: Request, businessId: String)
+PATCH     /v5/businesses/:businessId/members                     controllers.BusinessAccessRelationshipsApiController.updateBusinessMemberships(request: Request, businessId: String)
+
 #Functions for Campaigns API
 GET     /v5/ad_accounts/:adAccountId/campaigns/targeting_analytics                     controllers.CampaignsApiController.campaignTargetingAnalyticsGet(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/campaigns/analytics                     controllers.CampaignsApiController.campaignsAnalytics(request: Request, adAccountId: String)
@@ -87,10 +130,13 @@ GET     /v5/ad_accounts/:adAccountId/campaigns                     controllers.C
 PATCH     /v5/ad_accounts/:adAccountId/campaigns                     controllers.CampaignsApiController.campaignsUpdate(request: Request, adAccountId: String)
 
 #Functions for Catalogs API
+POST     /v5/catalogs                     controllers.CatalogsApiController.catalogsCreate(request: Request)
 GET     /v5/catalogs                     controllers.CatalogsApiController.catalogsList(request: Request)
 GET     /v5/catalogs/product_groups/:productGroupId/products                     controllers.CatalogsApiController.catalogsProductGroupPinsList(request: Request, productGroupId: String)
 POST     /v5/catalogs/product_groups                     controllers.CatalogsApiController.catalogsProductGroupsCreate(request: Request)
+POST     /v5/catalogs/product_groups/multiple                     controllers.CatalogsApiController.catalogsProductGroupsCreateMany(request: Request)
 DELETE     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsDelete(request: Request, productGroupId: String)
+DELETE     /v5/catalogs/product_groups/multiple                     controllers.CatalogsApiController.catalogsProductGroupsDeleteMany(request: Request)
 GET     /v5/catalogs/product_groups/:productGroupId                     controllers.CatalogsApiController.catalogsProductGroupsGet(request: Request, productGroupId: String)
 GET     /v5/catalogs/product_groups                     controllers.CatalogsApiController.catalogsProductGroupsList(request: Request)
 GET     /v5/catalogs/product_groups/:productGroupId/product_counts                     controllers.CatalogsApiController.catalogsProductGroupsProductCountsGet(request: Request, productGroupId: String)
@@ -99,13 +145,18 @@ GET     /v5/catalogs/feeds/:feedId/processing_results                     contro
 POST     /v5/catalogs/feeds                     controllers.CatalogsApiController.feedsCreate(request: Request)
 DELETE     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsDelete(request: Request, feedId: String)
 GET     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsGet(request: Request, feedId: String)
+POST     /v5/catalogs/feeds/:feedId/ingest                     controllers.CatalogsApiController.feedsIngest(request: Request, feedId: String)
 GET     /v5/catalogs/feeds                     controllers.CatalogsApiController.feedsList(request: Request)
 PATCH     /v5/catalogs/feeds/:feedId                     controllers.CatalogsApiController.feedsUpdate(request: Request, feedId: String)
 GET     /v5/catalogs/items/batch/:batchId                     controllers.CatalogsApiController.itemsBatchGet(request: Request, batchId: String)
 POST     /v5/catalogs/items/batch                     controllers.CatalogsApiController.itemsBatchPost(request: Request)
 GET     /v5/catalogs/items                     controllers.CatalogsApiController.itemsGet(request: Request)
 GET     /v5/catalogs/processing_results/:processingResultId/item_issues                     controllers.CatalogsApiController.itemsIssuesList(request: Request, processingResultId: String)
+POST     /v5/catalogs/items                     controllers.CatalogsApiController.itemsPost(request: Request)
 POST     /v5/catalogs/products/get_by_product_group_filters                     controllers.CatalogsApiController.productsByProductGroupFilterList(request: Request)
+POST     /v5/catalogs/reports                     controllers.CatalogsApiController.reportsCreate(request: Request)
+GET     /v5/catalogs/reports                     controllers.CatalogsApiController.reportsGet(request: Request)
+GET     /v5/catalogs/reports/stats                     controllers.CatalogsApiController.reportsStats(request: Request)
 
 #Functions for ConversionEvents API
 POST     /v5/ad_accounts/:adAccountId/events                     controllers.ConversionEventsApiController.eventsCreate(request: Request, adAccountId: String)
@@ -148,7 +199,13 @@ POST     /v5/ad_accounts/:adAccountId/leads/subscriptions                     co
 #Functions for LeadForms API
 GET     /v5/ad_accounts/:adAccountId/lead_forms/:leadFormId                     controllers.LeadFormsApiController.leadFormGet(request: Request, adAccountId: String, leadFormId: String)
 POST     /v5/ad_accounts/:adAccountId/lead_forms/:leadFormId/test                     controllers.LeadFormsApiController.leadFormTestCreate(request: Request, adAccountId: String, leadFormId: String)
+POST     /v5/ad_accounts/:adAccountId/lead_forms                     controllers.LeadFormsApiController.leadFormsCreate(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/lead_forms                     controllers.LeadFormsApiController.leadFormsList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/lead_forms                     controllers.LeadFormsApiController.leadFormsUpdate(request: Request, adAccountId: String)
+
+#Functions for LeadsExport API
+POST     /v5/ad_accounts/:adAccountId/leads_export                     controllers.LeadsExportApiController.leadsExportCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/leads_export/:leadsExportId                     controllers.LeadsExportApiController.leadsExportGet(request: Request, adAccountId: String, leadsExportId: String)
 
 #Functions for Media API
 POST     /v5/media                     controllers.MediaApiController.mediaCreate(request: Request)
@@ -163,6 +220,7 @@ GET     /v5/ad_accounts/:adAccountId/order_lines/:orderLineId                   
 GET     /v5/ad_accounts/:adAccountId/order_lines                     controllers.OrderLinesApiController.orderLinesList(request: Request, adAccountId: String)
 
 #Functions for Pins API
+GET     /v5/pins/analytics                     controllers.PinsApiController.multiPinsAnalytics(request: Request)
 GET     /v5/pins/:pinId/analytics                     controllers.PinsApiController.pinsAnalytics(request: Request, pinId: String)
 POST     /v5/pins                     controllers.PinsApiController.pinsCreate(request: Request)
 DELETE     /v5/pins/:pinId                     controllers.PinsApiController.pinsDelete(request: Request, pinId: String)
@@ -178,9 +236,6 @@ GET     /v5/ad_accounts/:adAccountId/product_group_promotions                   
 PATCH     /v5/ad_accounts/:adAccountId/product_group_promotions                     controllers.ProductGroupPromotionsApiController.productGroupPromotionsUpdate(request: Request, adAccountId: String)
 GET     /v5/ad_accounts/:adAccountId/product_groups/analytics                     controllers.ProductGroupPromotionsApiController.productGroupsAnalytics(request: Request, adAccountId: String)
 
-#Functions for ProductGroups API
-GET     /v5/ad_accounts/:adAccountId/product_groups/catalogs                     controllers.ProductGroupsApiController.adAccountsCatalogsProductGroupsList(request: Request, adAccountId: String)
-
 #Functions for Resources API
 GET     /v5/resources/ad_account_countries                     controllers.ResourcesApiController.adAccountCountriesGet(request: Request)
 GET     /v5/resources/delivery_metrics                     controllers.ResourcesApiController.deliveryMetricsGet(request: Request)
@@ -193,6 +248,11 @@ GET     /v5/resources/targeting/:targetingType                     controllers.R
 GET     /v5/search/partner/pins                     controllers.SearchApiController.searchPartnerPins(request: Request)
 GET     /v5/search/boards                     controllers.SearchApiController.searchUserBoardsGet(request: Request)
 GET     /v5/search/pins                     controllers.SearchApiController.searchUserPinsList(request: Request)
+
+#Functions for TargetingTemplate API
+POST     /v5/ad_accounts/:adAccountId/targeting_templates                     controllers.TargetingTemplateApiController.targetingTemplateCreate(request: Request, adAccountId: String)
+GET     /v5/ad_accounts/:adAccountId/targeting_templates                     controllers.TargetingTemplateApiController.targetingTemplateList(request: Request, adAccountId: String)
+PATCH     /v5/ad_accounts/:adAccountId/targeting_templates                     controllers.TargetingTemplateApiController.targetingTemplateUpdate(request: Request, adAccountId: String)
 
 #Functions for Terms API
 GET     /v5/terms/related                     controllers.TermsApiController.termsRelatedList(request: Request)

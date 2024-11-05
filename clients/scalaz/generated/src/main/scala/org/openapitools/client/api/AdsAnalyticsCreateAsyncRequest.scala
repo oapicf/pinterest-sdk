@@ -48,7 +48,7 @@ case class AdsAnalyticsCreateAsyncRequest (
   productGroupStatuses: Option[List[ProductGroupSummaryStatus]],
 /* List of product item ids */
   productItemIds: Option[List[String]],
-/* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
+/* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
   targetingTypes: Option[List[AdsAnalyticsTargetingType]],
 /* List of metrics filters */
   metricsFilters: Option[List[AdsAnalyticsMetricsFilter]],
@@ -57,10 +57,38 @@ case class AdsAnalyticsCreateAsyncRequest (
 /* Level of the report */
   level: MetricsReportingLevel,
 /* Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. */
-  reportFormat: Option[DataOutputFormat])
+  reportFormat: Option[DataOutputFormat],
+/* Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. */
+  primarySort: Option[PrimarySort],
+/* Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. */
+  startHour: Option[Integer],
+/* Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. */
+  endHour: Option[Integer])
 
 object AdsAnalyticsCreateAsyncRequest {
   import DateTimeCodecs._
+  sealed trait PrimarySort
+  case object BYID extends PrimarySort
+  case object BYDATE extends PrimarySort
+
+  object PrimarySort {
+    def toPrimarySort(s: String): Option[PrimarySort] = s match {
+      case "BYID" => Some(BYID)
+      case "BYDATE" => Some(BYDATE)
+      case _ => None
+    }
+
+    def fromPrimarySort(x: PrimarySort): String = x match {
+      case BYID => "BYID"
+      case BYDATE => "BYDATE"
+    }
+  }
+
+  implicit val PrimarySortEnumEncoder: EncodeJson[PrimarySort] =
+    EncodeJson[PrimarySort](is => StringEncodeJson(PrimarySort.fromPrimarySort(is)))
+
+  implicit val PrimarySortEnumDecoder: DecodeJson[PrimarySort] =
+    DecodeJson.optionDecoder[PrimarySort](n => n.string.flatMap(jStr => PrimarySort.toPrimarySort(jStr)), "PrimarySort failed to de-serialize")
 
   implicit val AdsAnalyticsCreateAsyncRequestCodecJson: CodecJson[AdsAnalyticsCreateAsyncRequest] = CodecJson.derive[AdsAnalyticsCreateAsyncRequest]
   implicit val AdsAnalyticsCreateAsyncRequestDecoder: EntityDecoder[AdsAnalyticsCreateAsyncRequest] = jsonOf[AdsAnalyticsCreateAsyncRequest]

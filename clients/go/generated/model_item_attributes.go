@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,9 +24,9 @@ type ItemAttributes struct {
 	AdLink NullableString `json:"ad_link,omitempty"`
 	// Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
 	Adult NullableBool `json:"adult,omitempty"`
-	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+	// The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 	AgeGroup NullableString `json:"age_group,omitempty"`
-	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+	// The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
 	Availability *string `json:"availability,omitempty"`
 	// Average reviews for the item. Can be a number from 1-5.
 	AverageReviewRating NullableFloat32 `json:"average_review_rating,omitempty"`
@@ -55,7 +55,7 @@ type ItemAttributes struct {
 	FreeShippingLabel NullableBool `json:"free_shipping_label,omitempty"`
 	// The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
 	FreeShippingLimit NullableString `json:"free_shipping_limit,omitempty"`
-	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+	// The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
 	Gender NullableString `json:"gender,omitempty"`
 	// The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
 	GoogleProductCategory NullableString `json:"google_product_category,omitempty"`
@@ -100,9 +100,9 @@ type ItemAttributes struct {
 	ShippingWidth NullableString `json:"shipping_width,omitempty"`
 	// The size of the product.
 	Size NullableString `json:"size,omitempty"`
-	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+	// Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
 	SizeSystem NullableString `json:"size_system,omitempty"`
-	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+	// Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
 	SizeType NullableString `json:"size_type,omitempty"`
 	// Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
 	Tax NullableString `json:"tax,omitempty"`
@@ -116,6 +116,8 @@ type ItemAttributes struct {
 	AdditionalImageLink []string `json:"additional_image_link,omitempty"`
 	// <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
 	ImageLink []string `json:"image_link,omitempty"`
+	// <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+	VideoLink NullableString `json:"video_link,omitempty"`
 }
 
 // NewItemAttributes instantiates a new ItemAttributes object
@@ -2018,6 +2020,48 @@ func (o *ItemAttributes) SetImageLink(v []string) {
 	o.ImageLink = v
 }
 
+// GetVideoLink returns the VideoLink field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ItemAttributes) GetVideoLink() string {
+	if o == nil || IsNil(o.VideoLink.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VideoLink.Get()
+}
+
+// GetVideoLinkOk returns a tuple with the VideoLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ItemAttributes) GetVideoLinkOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VideoLink.Get(), o.VideoLink.IsSet()
+}
+
+// HasVideoLink returns a boolean if a field has been set.
+func (o *ItemAttributes) HasVideoLink() bool {
+	if o != nil && o.VideoLink.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVideoLink gets a reference to the given NullableString and assigns it to the VideoLink field.
+func (o *ItemAttributes) SetVideoLink(v string) {
+	o.VideoLink.Set(&v)
+}
+// SetVideoLinkNil sets the value for VideoLink to be an explicit nil
+func (o *ItemAttributes) SetVideoLinkNil() {
+	o.VideoLink.Set(nil)
+}
+
+// UnsetVideoLink ensures that no value is present for VideoLink, not even an explicit nil
+func (o *ItemAttributes) UnsetVideoLink() {
+	o.VideoLink.Unset()
+}
+
 func (o ItemAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -2168,6 +2212,9 @@ func (o ItemAttributes) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ImageLink) {
 		toSerialize["image_link"] = o.ImageLink
+	}
+	if o.VideoLink.IsSet() {
+		toSerialize["video_link"] = o.VideoLink.Get()
 	}
 	return toSerialize, nil
 }

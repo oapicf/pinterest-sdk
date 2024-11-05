@@ -39,13 +39,13 @@ pinterest_rest_api_catalogs_vertical_feeds_create_request__e catalogs_vertical_f
     return 0;
 }
 char* catalogs_vertical_feeds_create_request_catalog_type_ToString(pinterest_rest_api_catalogs_vertical_feeds_create_request__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_catalogs_vertical_feeds_create_request__e catalogs_vertical_feeds_create_request_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -101,6 +101,7 @@ catalogs_vertical_feeds_create_request_t *catalogs_vertical_feeds_create_request
     catalogs_type_t *catalog_type,
     country_t *default_country,
     product_availability_type_t *default_availability,
+    catalogs_status_t *status,
     char *catalog_id
     ) {
     catalogs_vertical_feeds_create_request_t *catalogs_vertical_feeds_create_request_local_var = malloc(sizeof(catalogs_vertical_feeds_create_request_t));
@@ -117,6 +118,7 @@ catalogs_vertical_feeds_create_request_t *catalogs_vertical_feeds_create_request
     catalogs_vertical_feeds_create_request_local_var->catalog_type = catalog_type;
     catalogs_vertical_feeds_create_request_local_var->default_country = default_country;
     catalogs_vertical_feeds_create_request_local_var->default_availability = default_availability;
+    catalogs_vertical_feeds_create_request_local_var->status = status;
     catalogs_vertical_feeds_create_request_local_var->catalog_id = catalog_id;
 
     return catalogs_vertical_feeds_create_request_local_var;
@@ -167,6 +169,10 @@ void catalogs_vertical_feeds_create_request_free(catalogs_vertical_feeds_create_
     if (catalogs_vertical_feeds_create_request->default_availability) {
         product_availability_type_free(catalogs_vertical_feeds_create_request->default_availability);
         catalogs_vertical_feeds_create_request->default_availability = NULL;
+    }
+    if (catalogs_vertical_feeds_create_request->status) {
+        catalogs_status_free(catalogs_vertical_feeds_create_request->status);
+        catalogs_vertical_feeds_create_request->status = NULL;
     }
     if (catalogs_vertical_feeds_create_request->catalog_id) {
         free(catalogs_vertical_feeds_create_request->catalog_id);
@@ -304,6 +310,19 @@ cJSON *catalogs_vertical_feeds_create_request_convertToJSON(catalogs_vertical_fe
     }
 
 
+    // catalogs_vertical_feeds_create_request->status
+    if(catalogs_vertical_feeds_create_request->status) {
+    cJSON *status_local_JSON = catalogs_status_convertToJSON(catalogs_vertical_feeds_create_request->status);
+    if(status_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
     // catalogs_vertical_feeds_create_request->catalog_id
     if(catalogs_vertical_feeds_create_request->catalog_id) {
     if(cJSON_AddStringToObject(item, "catalog_id", catalogs_vertical_feeds_create_request->catalog_id) == NULL) {
@@ -346,6 +365,9 @@ catalogs_vertical_feeds_create_request_t *catalogs_vertical_feeds_create_request
 
     // define the local variable for catalogs_vertical_feeds_create_request->default_availability
     product_availability_type_t *default_availability_local_nonprim = NULL;
+
+    // define the local variable for catalogs_vertical_feeds_create_request->status
+    catalogs_status_t *status_local_nonprim = NULL;
 
     // catalogs_vertical_feeds_create_request->default_currency
     cJSON *default_currency = cJSON_GetObjectItemCaseSensitive(catalogs_vertical_feeds_create_requestJSON, "default_currency");
@@ -431,6 +453,12 @@ catalogs_vertical_feeds_create_request_t *catalogs_vertical_feeds_create_request
     default_availability_local_nonprim = product_availability_type_parseFromJSON(default_availability); //custom
     }
 
+    // catalogs_vertical_feeds_create_request->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(catalogs_vertical_feeds_create_requestJSON, "status");
+    if (status) { 
+    status_local_nonprim = catalogs_status_parseFromJSON(status); //nonprimitive
+    }
+
     // catalogs_vertical_feeds_create_request->catalog_id
     cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_vertical_feeds_create_requestJSON, "catalog_id");
     if (catalog_id) { 
@@ -452,6 +480,7 @@ catalogs_vertical_feeds_create_request_t *catalogs_vertical_feeds_create_request
         catalog_type_local_nonprim,
         default_country_local_nonprim,
         default_availability ? default_availability_local_nonprim : NULL,
+        status ? status_local_nonprim : NULL,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL
         );
 
@@ -488,6 +517,10 @@ end:
     if (default_availability_local_nonprim) {
         product_availability_type_free(default_availability_local_nonprim);
         default_availability_local_nonprim = NULL;
+    }
+    if (status_local_nonprim) {
+        catalogs_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
     }
     return NULL;
 

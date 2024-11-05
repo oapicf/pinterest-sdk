@@ -16,7 +16,7 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType
+import org.openapitools.server.api.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.server.api.model.CampaignCreateRequest
 import org.openapitools.server.api.model.CampaignCreateResponse
 import org.openapitools.server.api.model.CampaignResponse
@@ -99,8 +99,8 @@ class CampaignsApiVertxProxyHandler(private val vertx: Vertx, private val servic
                     if(targetingTypesParam == null){
                          throw IllegalArgumentException("targetingTypes is required")
                     }
-                    val targetingTypes:kotlin.Array<AdsAnalyticsTargetingType> = Gson().fromJson(targetingTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsTargetingType>>(){}.type)
+                    val targetingTypes:kotlin.Array<AdsAnalyticsCampaignTargetingType> = Gson().fromJson(targetingTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<AdsAnalyticsCampaignTargetingType>>(){}.type)
                     val columnsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"columns")
                     if(columnsParam == null){
                          throw IllegalArgumentException("columns is required")

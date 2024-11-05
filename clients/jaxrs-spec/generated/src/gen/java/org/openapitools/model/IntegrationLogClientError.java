@@ -17,17 +17,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "System error details included in the log sent by the client.")
 @JsonTypeName("IntegrationLogClientError")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogClientError   {
-  private @Valid String cause;
-  private @Valid Integer columnNumber;
-  private @Valid String fileName;
-  private @Valid Integer lineNumber;
-  private @Valid String message;
-  private @Valid String messageDetail;
-  private @Valid String name;
-  private @Valid Integer number;
-  private @Valid String stackTrace;
+  private String cause;
+  private Integer columnNumber;
+  private String fileName;
+  private Integer lineNumber;
+  private String message;
+  private String messageDetail;
+  private String name;
+  private Integer number;
+  private String stackTrace;
 
   /**
    * Original cause of the error.
@@ -40,7 +40,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "Original cause of the error.")
   @JsonProperty("cause")
- @Size(max=512)  public String getCause() {
+   @Size(max=512)public String getCause() {
     return cause;
   }
 
@@ -80,7 +80,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "Filename where the error happened.")
   @JsonProperty("file_name")
- @Size(max=256)  public String getFileName() {
+   @Size(max=256)public String getFileName() {
     return fileName;
   }
 
@@ -120,7 +120,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "Human-readable description of the error.")
   @JsonProperty("message")
- @Size(max=512)  public String getMessage() {
+   @Size(max=512)public String getMessage() {
     return message;
   }
 
@@ -140,7 +140,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "More detail about the message.")
   @JsonProperty("message_detail")
- @Size(max=1024)  public String getMessageDetail() {
+   @Size(max=1024)public String getMessageDetail() {
     return messageDetail;
   }
 
@@ -160,7 +160,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "Filename where the error happened.")
   @JsonProperty("name")
- @Size(max=256)  public String getName() {
+   @Size(max=256)public String getName() {
     return name;
   }
 

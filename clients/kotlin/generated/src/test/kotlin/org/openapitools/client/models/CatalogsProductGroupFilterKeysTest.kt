@@ -23,6 +23,7 @@ import org.openapitools.client.models.AvailabilityFilter
 import org.openapitools.client.models.BrandFilter
 import org.openapitools.client.models.CatalogsProductGroupCurrencyCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleGenderCriteria
+import org.openapitools.client.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringListCriteria
 import org.openapitools.client.models.CatalogsProductGroupPricingCriteria
@@ -44,7 +45,9 @@ import org.openapitools.client.models.GoogleProductCategory6Filter
 import org.openapitools.client.models.ItemGroupIdFilter
 import org.openapitools.client.models.ItemIdFilter
 import org.openapitools.client.models.MaxPriceFilter
+import org.openapitools.client.models.MediaTypeFilter
 import org.openapitools.client.models.MinPriceFilter
+import org.openapitools.client.models.ProductGroupReferenceFilter
 import org.openapitools.client.models.ProductType0Filter
 import org.openapitools.client.models.ProductType1Filter
 import org.openapitools.client.models.ProductType2Filter
@@ -140,6 +143,12 @@ class CatalogsProductGroupFilterKeysTest : ShouldSpec() {
             //modelInstance.GENDER shouldBe ("TODO")
         }
 
+        // to test the property `MEDIA_TYPE`
+        should("test MEDIA_TYPE") {
+            // uncomment below to test the property
+            //modelInstance.MEDIA_TYPE shouldBe ("TODO")
+        }
+
         // to test the property `PRODUCT_TYPE_4`
         should("test PRODUCT_TYPE_4") {
             // uncomment below to test the property
@@ -210,6 +219,12 @@ class CatalogsProductGroupFilterKeysTest : ShouldSpec() {
         should("test GOOGLE_PRODUCT_CATEGORY_0") {
             // uncomment below to test the property
             //modelInstance.GOOGLE_PRODUCT_CATEGORY_0 shouldBe ("TODO")
+        }
+
+        // to test the property `PRODUCT_GROUP`
+        should("test PRODUCT_GROUP") {
+            // uncomment below to test the property
+            //modelInstance.PRODUCT_GROUP shouldBe ("TODO")
         }
 
     }

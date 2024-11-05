@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.OauthAccessTokenRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,11 +17,78 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "A request to exchange a refresh token for a new access token.")
 @JsonTypeName("OauthAccessTokenRequestRefresh")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
-public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest  {
-  private @Valid String refreshToken;
-  private @Valid String scope;
-  private @Valid Boolean refreshOn;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class OauthAccessTokenRequestRefresh   {
+  public enum GrantTypeEnum {
+
+    AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.valueOf("refresh_token")), CLIENT_CREDENTIALS(String.valueOf("client_credentials"));
+
+
+    private String value;
+
+    GrantTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static GrantTypeEnum fromString(String s) {
+        for (GrantTypeEnum b : GrantTypeEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static GrantTypeEnum fromValue(String value) {
+        for (GrantTypeEnum b : GrantTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private GrantTypeEnum grantType;
+  private String refreshToken;
+  private String scope;
+  private Boolean refreshOn;
+
+  /**
+   **/
+  public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("grant_type")
+  @NotNull public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  @JsonProperty("grant_type")
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
 
   /**
    **/
@@ -34,8 +100,7 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest  {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("refresh_token")
-  @NotNull
-  public String getRefreshToken() {
+  @NotNull public String getRefreshToken() {
     return refreshToken;
   }
 
@@ -93,22 +158,23 @@ public class OauthAccessTokenRequestRefresh extends OauthAccessTokenRequest  {
       return false;
     }
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
-    return Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
+    return Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType) &&
+        Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(this.scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
-        super.equals(o);
+        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, scope, refreshOn, super.hashCode());
+    return Objects.hash(grantType, refreshToken, scope, refreshOn);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestRefresh {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");

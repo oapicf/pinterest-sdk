@@ -16,7 +16,7 @@ import org.openapitools.model.ConversionEventsDataInnerCustomDataContentsInner;
  * Object containing other custom data.
  */
 @ApiModel(description = "Object containing other custom data.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInnerCustomData   {
   @JsonProperty("currency")
   private String currency;
@@ -97,7 +97,7 @@ public class ConversionEventsDataInnerCustomData   {
 
   public ConversionEventsDataInnerCustomData addContentIdsItem(String contentIdsItem) {
     if (this.contentIds == null) {
-      this.contentIds = ;
+      this.contentIds = new ArrayList<>();
     }
     this.contentIds.add(contentIdsItem);
     return this;
@@ -177,7 +177,7 @@ public class ConversionEventsDataInnerCustomData   {
 
   public ConversionEventsDataInnerCustomData addContentsItem(ConversionEventsDataInnerCustomDataContentsInner contentsItem) {
     if (this.contents == null) {
-      this.contents = ;
+      this.contents = new ArrayList<>();
     }
     this.contents.add(contentsItem);
     return this;
@@ -256,10 +256,10 @@ public class ConversionEventsDataInnerCustomData   {
   }
 
    /**
-   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
+   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
    * @return optOutType
   **/
-  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.")
+  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.")
   public String getOptOutType() {
     return optOutType;
   }

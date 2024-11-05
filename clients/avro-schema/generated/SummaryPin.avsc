@@ -6,7 +6,7 @@
   "fields": [
     {
       "name": "media",
-      "type": ["null", "model.SummaryPinMedia"],
+      "type": ["null", "model.PinMedia"],
       "doc": "",
       "default": null
     },

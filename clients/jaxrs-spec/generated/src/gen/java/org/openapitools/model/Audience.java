@@ -17,19 +17,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("Audience")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Audience   {
-  private @Valid String adAccountId;
-  private @Valid String id;
-  private @Valid String name;
-  private @Valid String audienceType;
-  private @Valid String description;
-  private @Valid AudienceRule rule;
-  private @Valid Integer size;
-  private @Valid String status;
-  private @Valid String type;
-  private @Valid Integer createdTimestamp;
-  private @Valid Integer updatedTimestamp;
+  private String adAccountId;
+  private String id;
+  private String name;
+  private String audienceType;
+  private String description;
+  private AudienceRule rule;
+  private Integer size;
+  private String status;
+  private String type;
+  private Integer createdTimestamp;
+  private Integer updatedTimestamp;
 
   /**
    * Ad account ID.
@@ -42,7 +42,7 @@ public class Audience   {
   
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
@@ -62,7 +62,7 @@ public class Audience   {
   
   @ApiModelProperty(example = "1234", value = "Audience ID.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -141,7 +141,7 @@ public class Audience   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("rule")
-  public AudienceRule getRule() {
+  @Valid public AudienceRule getRule() {
     return rule;
   }
 

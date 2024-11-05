@@ -112,5 +112,8 @@ data class CatalogsUpdatableHotelAttributes (
     @Json(name = "guest_ratings")
     val guestRatings: CatalogsHotelGuestRatings? = null
 
-)
+) {
+
+
+}
 

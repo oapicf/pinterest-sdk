@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 
 ### Parameters
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 
 ### Parameters
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **targeting_options_get**
-> targeting_options_get (targeting_type: STRING_32 ; client_id:  detachable STRING_32 ; oauth_signature:  detachable STRING_32 ; timestamp:  detachable STRING_32 ): detachable LIST [ANY]
+> targeting_options_get (targeting_type: STRING_32 ; client_id:  detachable STRING_32 ; oauth_signature:  detachable STRING_32 ; timestamp:  detachable STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable LIST [ANY]
 
 
 Get targeting options
@@ -173,6 +173,7 @@ Name | Type | Description  | Notes
  **client_id** | **STRING_32**| Client ID. | [optional] [default to null]
  **oauth_signature** | **STRING_32**| Oauth signature | [optional] [default to null]
  **timestamp** | **STRING_32**| Timestamp | [optional] [default to null]
+ **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 

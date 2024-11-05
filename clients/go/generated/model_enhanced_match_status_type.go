@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,6 @@ const (
 	NOT_VALIDATED EnhancedMatchStatusType = "NOT_VALIDATED"
 	VALIDATING_IN_PROGRESS EnhancedMatchStatusType = "VALIDATING_IN_PROGRESS"
 	VALIDATION_COMPLETE EnhancedMatchStatusType = "VALIDATION_COMPLETE"
-	NULL EnhancedMatchStatusType = "null"
 )
 
 // All allowed values of EnhancedMatchStatusType enum
@@ -34,7 +33,6 @@ var AllowedEnhancedMatchStatusTypeEnumValues = []EnhancedMatchStatusType{
 	"NOT_VALIDATED",
 	"VALIDATING_IN_PROGRESS",
 	"VALIDATION_COMPLETE",
-	"null",
 }
 
 func (v *EnhancedMatchStatusType) UnmarshalJSON(src []byte) error {

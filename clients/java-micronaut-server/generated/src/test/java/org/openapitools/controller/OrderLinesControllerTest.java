@@ -87,7 +87,7 @@ public class OrderLinesControllerTest {
             put("order_line_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@5e4a40d8");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, OrderLine.class);
@@ -136,7 +136,7 @@ public class OrderLinesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@3d927175");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 

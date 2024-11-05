@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Request object for creating a hotel product group.",
+  "doc": "Request object for creating a catalog based product group.",
   "name": "CatalogsVerticalProductGroupCreateRequest",
   "fields": [
     {
@@ -10,7 +10,7 @@
         "type": "enum",
         "name": "CatalogsVerticalProductGroupCreateRequest_catalogUnderscoretype",
         "symbols": [
-          "HOTEL"
+          "CREATIVE_ASSETS"
         ]
       },
       "doc": ""
@@ -28,13 +28,23 @@
     },
     {
       "name": "filters",
-      "type": "model.CatalogsHotelProductGroupFilters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
       "doc": ""
     },
     {
       "name": "catalog_id",
       "type": "string",
-      "doc": "Catalog id pertaining to the hotel product group."
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "locale",
+      "type": "model.CatalogsLocale",
+      "doc": ""
     }
   ]
 

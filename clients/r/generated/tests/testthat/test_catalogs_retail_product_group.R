@@ -80,9 +80,32 @@ test_that("updated_at", {
   #expect_equal(model.instance$`updated_at`, "EXPECTED_RESULT")
 })
 
+test_that("catalog_id", {
+  # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the retail product group.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
 test_that("feed_id", {
   # tests for the property `feed_id` (character)
+  # id of the catalogs feed belonging to this catalog product group
 
   # uncomment below to test the property
   #expect_equal(model.instance$`feed_id`, "EXPECTED_RESULT")
+})
+
+test_that("country", {
+  # tests for the property `country` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+})
+
+test_that("locale", {
+  # tests for the property `locale` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`locale`, "EXPECTED_RESULT")
 })

@@ -76,6 +76,9 @@ private class OASConversionEventsUserDataTest {
         System.assertEquals('externalId', x-property-mappings.get('external_id'));
         System.assertEquals('clickId', x-property-mappings.get('click_id'));
         System.assertEquals('partnerId', x-property-mappings.get('partner_id'));
+        System.assertEquals('hashedMaids', x-property-mappings.get('hashed_maids'));
+        System.assertEquals('clientIpAddress', x-property-mappings.get('client_ip_address'));
+        System.assertEquals('clientUserAgent', x-property-mappings.get('client_user_agent'));
     }
 
     @isTest
@@ -91,7 +94,11 @@ private class OASConversionEventsUserDataTest {
         System.assertEquals(new List<String>(), conversionEventsUserData.zp);
         System.assertEquals(new List<String>(), conversionEventsUserData.country);
         System.assertEquals(new List<String>(), conversionEventsUserData.externalId);
+        System.assertEquals(new List<String>(), conversionEventsUserData.em);
+        System.assertEquals(new List<String>(), conversionEventsUserData.hashedMaids);
         System.assertEquals(null, conversionEventsUserData.clickId);
         System.assertEquals(null, conversionEventsUserData.partnerId);
+        System.assertEquals(null, conversionEventsUserData.clientIpAddress);
+        System.assertEquals(null, conversionEventsUserData.clientUserAgent);
     }
 }

@@ -12,9 +12,9 @@ import java.time.OffsetDateTime
  * @param validationDetails  for example: ''null''
 */
 final case class CatalogsFeedProcessingResult (
-  createdAt: Option[OffsetDateTime] = None,
-  id: Option[String] = None,
-  updatedAt: Option[OffsetDateTime] = None,
+  createdAt: OffsetDateTime,
+  id: String,
+  updatedAt: OffsetDateTime,
   ingestionDetails: CatalogsFeedIngestionDetails,
   status: CatalogsFeedProcessingStatus,
   productCounts: CatalogsFeedProductCounts,

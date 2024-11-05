@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ItemId** | **string** | The catalog item id in the merchant namespace | 
 **Operation** | **string** |  | 
-**Attributes** | [**ItemAttributes**](ItemAttributes.md) |  | 
+**Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 
 ## Methods
 
 ### NewCatalogsUpsertRetailItem
 
-`func NewCatalogsUpsertRetailItem(itemId string, operation string, attributes ItemAttributes, ) *CatalogsUpsertRetailItem`
+`func NewCatalogsUpsertRetailItem(itemId string, operation string, attributes ItemAttributesRequest, ) *CatalogsUpsertRetailItem`
 
 NewCatalogsUpsertRetailItem instantiates a new CatalogsUpsertRetailItem object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetOperation sets Operation field to given value.
 
 ### GetAttributes
 
-`func (o *CatalogsUpsertRetailItem) GetAttributes() ItemAttributes`
+`func (o *CatalogsUpsertRetailItem) GetAttributes() ItemAttributesRequest`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *CatalogsUpsertRetailItem) GetAttributesOk() (*ItemAttributes, bool)`
+`func (o *CatalogsUpsertRetailItem) GetAttributesOk() (*ItemAttributesRequest, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *CatalogsUpsertRetailItem) SetAttributes(v ItemAttributes)`
+`func (o *CatalogsUpsertRetailItem) SetAttributes(v ItemAttributesRequest)`
 
 SetAttributes sets Attributes field to given value.
 

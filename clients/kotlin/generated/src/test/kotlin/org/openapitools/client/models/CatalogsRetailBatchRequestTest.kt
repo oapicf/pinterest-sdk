@@ -19,10 +19,9 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsRetailBatchRequest
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsRetailBatchRequestItemsInner
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
-import org.openapitools.client.models.Language
 
 class CatalogsRetailBatchRequestTest : ShouldSpec() {
     init {

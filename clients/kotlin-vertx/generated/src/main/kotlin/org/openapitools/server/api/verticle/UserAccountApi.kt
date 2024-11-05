@@ -71,10 +71,10 @@ interface UserAccountApi  {
     suspend fun userWebsitesGet(bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<UserWebsitesGet200Response>
     /* verifyWebsiteUpdate
      * Verify website */
-    suspend fun verifyWebsiteUpdate(userWebsiteVerifyRequest:UserWebsiteVerifyRequest?,context:OperationRequest):Response<UserWebsiteSummary>
+    suspend fun verifyWebsiteUpdate(userWebsiteVerifyRequest:UserWebsiteVerifyRequest?,adAccountId:kotlin.String?,context:OperationRequest):Response<UserWebsiteSummary>
     /* websiteVerificationGet
      * Get user verification code for website claiming */
-    suspend fun websiteVerificationGet(context:OperationRequest):Response<UserWebsiteVerificationCode>
+    suspend fun websiteVerificationGet(adAccountId:kotlin.String?,context:OperationRequest):Response<UserWebsiteVerificationCode>
     companion object {
         const val address = "UserAccountApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

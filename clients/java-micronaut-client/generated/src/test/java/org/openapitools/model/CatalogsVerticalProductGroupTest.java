@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
-import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.CatalogsProductGroupStatus;
 import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
@@ -69,30 +70,6 @@ public class CatalogsVerticalProductGroupTest {
     }
 
     /**
-     * Test the property 'createdAt'
-     */
-    @Test
-    public void createdAtTest() {
-        // TODO: test createdAt
-    }
-
-    /**
-     * Test the property 'updatedAt'
-     */
-    @Test
-    public void updatedAtTest() {
-        // TODO: test updatedAt
-    }
-
-    /**
-     * Test the property 'catalogId'
-     */
-    @Test
-    public void catalogIdTest() {
-        // TODO: test catalogId
-    }
-
-    /**
      * Test the property 'isFeatured'
      */
     @Test
@@ -117,11 +94,51 @@ public class CatalogsVerticalProductGroupTest {
     }
 
     /**
+     * Test the property 'createdAt'
+     */
+    @Test
+    public void createdAtTest() {
+        // TODO: test createdAt
+    }
+
+    /**
+     * Test the property 'updatedAt'
+     */
+    @Test
+    public void updatedAtTest() {
+        // TODO: test updatedAt
+    }
+
+    /**
+     * Test the property 'catalogId'
+     */
+    @Test
+    public void catalogIdTest() {
+        // TODO: test catalogId
+    }
+
+    /**
      * Test the property 'feedId'
      */
     @Test
     public void feedIdTest() {
         // TODO: test feedId
+    }
+
+    /**
+     * Test the property 'country'
+     */
+    @Test
+    public void countryTest() {
+        // TODO: test country
+    }
+
+    /**
+     * Test the property 'locale'
+     */
+    @Test
+    public void localeTest() {
+        // TODO: test locale
     }
 
 }

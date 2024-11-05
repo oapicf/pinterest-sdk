@@ -30,6 +30,14 @@ Protected Class ItemResponseAnyOf1
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			The catalog creative assets id in the merchant namespace
+		#tag EndNote
+		creative_assets_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
 
 
 
@@ -92,6 +100,14 @@ Protected Class ItemResponseAnyOf1
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="hotel_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="creative_assets_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

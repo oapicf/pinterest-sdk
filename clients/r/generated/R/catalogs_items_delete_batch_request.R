@@ -8,7 +8,7 @@
 #' @description CatalogsItemsDeleteBatchRequest Class
 #' @format An \code{R6Class} generator object
 #' @field country  \link{Country}
-#' @field language  \link{Language}
+#' @field language  \link{CatalogsItemsRequestLanguage}
 #' @field operation  \link{BatchOperation}
 #' @field items Array with catalogs items list(\link{ItemDeleteBatchRecord})
 #' @importFrom R6 R6Class
@@ -21,8 +21,7 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
     `language` = NULL,
     `operation` = NULL,
     `items` = NULL,
-    #' Initialize a new CatalogsItemsDeleteBatchRequest class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsItemsDeleteBatchRequest class.
     #'
@@ -31,7 +30,6 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
     #' @param operation operation
     #' @param items Array with catalogs items
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`country`, `language`, `operation`, `items`, ...) {
       if (!missing(`country`)) {
         if (!(`country` %in% c())) {
@@ -41,9 +39,6 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
         self$`country` <- `country`
       }
       if (!missing(`language`)) {
-        if (!(`language` %in% c())) {
-          stop(paste("Error! \"", `language`, "\" cannot be assigned to `language`. Must be .", sep = ""))
-        }
         stopifnot(R6::is.R6(`language`))
         self$`language` <- `language`
       }
@@ -60,13 +55,11 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
         self$`items` <- `items`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemsDeleteBatchRequest in JSON format
-    #' @export
     toJSON = function() {
       CatalogsItemsDeleteBatchRequestObject <- list()
       if (!is.null(self$`country`)) {
@@ -87,14 +80,12 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
       }
       CatalogsItemsDeleteBatchRequestObject
     },
-    #' Deserialize JSON string into an instance of CatalogsItemsDeleteBatchRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemsDeleteBatchRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemsDeleteBatchRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`country`)) {
@@ -103,7 +94,7 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
         self$`country` <- `country_object`
       }
       if (!is.null(this_object$`language`)) {
-        `language_object` <- Language$new()
+        `language_object` <- CatalogsItemsRequestLanguage$new()
         `language_object`$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
         self$`language` <- `language_object`
       }
@@ -117,13 +108,11 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsItemsDeleteBatchRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`country`)) {
@@ -162,29 +151,25 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsItemsDeleteBatchRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsItemsDeleteBatchRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsItemsDeleteBatchRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
-      self$`language` <- Language$new()$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
+      self$`language` <- CatalogsItemsRequestLanguage$new()$fromJSON(jsonlite::toJSON(this_object$`language`, auto_unbox = TRUE, digits = NA))
       self$`operation` <- BatchOperation$new()$fromJSON(jsonlite::toJSON(this_object$`operation`, auto_unbox = TRUE, digits = NA))
       self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemDeleteBatchRecord]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CatalogsItemsDeleteBatchRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsItemsDeleteBatchRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `country`
@@ -213,23 +198,19 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsItemsDeleteBatchRequest: the required field `items` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsItemsDeleteBatchRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `country` is null
       if (is.null(self$`country`)) {
@@ -253,13 +234,11 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `country` is null
@@ -284,12 +263,9 @@ CatalogsItemsDeleteBatchRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

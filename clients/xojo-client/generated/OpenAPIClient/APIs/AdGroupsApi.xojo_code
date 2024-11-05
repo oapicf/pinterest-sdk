@@ -376,6 +376,8 @@ Protected Class AdGroupsApi
 		      Return "VIDEO_P95_COMBINED_2"
 		    Case ColumnsEnum_AdGroupsAnalytics.VideoMrcViews2
 		      Return "VIDEO_MRC_VIEWS_2"
+		    Case ColumnsEnum_AdGroupsAnalytics.PaidVideoViewableRate
+		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdGroupsAnalytics.VideoLength
 		      Return "VIDEO_LENGTH"
 		    Case ColumnsEnum_AdGroupsAnalytics.EcpvInDollar
@@ -440,6 +442,8 @@ Protected Class AdGroupsApi
 		      Return "COST_PER_LEAD"
 		    Case ColumnsEnum_AdGroupsAnalytics.QuizCompleted
 		      Return "QUIZ_COMPLETED"
+		    Case ColumnsEnum_AdGroupsAnalytics.QuizPinResultOpen
+		      Return "QUIZ_PIN_RESULT_OPEN"
 		    Case ColumnsEnum_AdGroupsAnalytics.QuizCompletionRate
 		      Return "QUIZ_COMPLETION_RATE"
 		    Case ColumnsEnum_AdGroupsAnalytics.ShowcasePinClickthrough
@@ -521,7 +525,7 @@ Protected Class AdGroupsApi
 		  //
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsAudienceSizingCallback(AdGroupAudienceSizingResponse) on completion. 
 		  //
-		  // - GET /ad_accounts/{ad_account_id}/ad_groups/audience_sizing
+		  // - POST /ad_accounts/{ad_account_id}/ad_groups/audience_sizing
 		  // - Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
 		  // - defaultResponse: Nil
 		  //
@@ -549,7 +553,7 @@ Protected Class AdGroupsApi
 		  AddHandler localVarHTTPSocket.Error, addressof Me.AdGroupsAudienceSizing_error
 		  
 		  
-		  localVarHTTPSocket.SendRequest("GET", Me.BasePath + localVarPath)
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
 		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
 			Raise localVarException
@@ -655,7 +659,7 @@ Protected Class AdGroupsApi
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsBidFloorGetCallback(BidFloor) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/bid_floor
-		  // - List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class="reference external" href="https://help.pinterest.com/en/business/article/set-your-bid"> Set your bid</a>.
+		  // - List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class="reference external" href="https://help.pinterest.com/en/business/article/set-your-bid"> Set your bid</a>.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -788,7 +792,7 @@ Protected Class AdGroupsApi
 		  // Invokes AdGroupsApiCallbackHandler.AdGroupsCreateCallback(AdGroupArrayResponse) on completion. 
 		  //
 		  // - POST /ad_accounts/{ad_account_id}/ad_groups
-		  // - Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href="https://help.pinterest.com/en/business/article/campaign-structure" target="_blank"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+		  // - Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href="https://help.pinterest.com/en/business/article/campaign-structure" target="_blank"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -1055,7 +1059,7 @@ Protected Class AdGroupsApi
 		  // - parameter campaignIds: (query) List of Campaign Ids to use to filter the results. (optional, default to Nil)
 		  // - parameter adGroupIds: (query) List of Ad group Ids to use to filter the results. (optional, default to Nil)
 		  // - parameter entityStatuses: (query) Entity status (optional, default to ["ACTIVE","PAUSED"])
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  // - parameter translateInterestsToNames: (query) Return interests as text names (if value is true) rather than topic IDs. (optional, default to false)
@@ -1289,7 +1293,7 @@ Protected Class AdGroupsApi
 		  // - parameter adGroupIds: (query) List of Ad group Ids to use to filter the results. 
 		  // - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
 		  // - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-		  // - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. 
+		  // - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [&quot;AGE_BUCKET_AND_GENDER&quot;] is in BETA and not yet available to all users. 
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -1681,6 +1685,8 @@ Protected Class AdGroupsApi
 		      Return "VIDEO_P95_COMBINED_2"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.VideoMrcViews2
 		      Return "VIDEO_MRC_VIEWS_2"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.PaidVideoViewableRate
+		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.VideoLength
 		      Return "VIDEO_LENGTH"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.EcpvInDollar
@@ -1745,6 +1751,8 @@ Protected Class AdGroupsApi
 		      Return "COST_PER_LEAD"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.QuizCompleted
 		      Return "QUIZ_COMPLETED"
+		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.QuizPinResultOpen
+		      Return "QUIZ_PIN_RESULT_OPEN"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.QuizCompletionRate
 		      Return "QUIZ_COMPLETION_RATE"
 		    Case ColumnsEnum_AdGroupsTargetingAnalyticsGet.ShowcasePinClickthrough
@@ -2118,6 +2126,7 @@ Protected Class AdGroupsApi
         VideoP75Combined2
         VideoP95Combined2
         VideoMrcViews2
+        PaidVideoViewableRate
         VideoLength
         EcpvInDollar
         EcpcvInDollar
@@ -2150,6 +2159,7 @@ Protected Class AdGroupsApi
         Leads
         CostPerLead
         QuizCompleted
+        QuizPinResultOpen
         QuizCompletionRate
         ShowcasePinClickthrough
         ShowcaseSubpageClickthrough
@@ -2329,6 +2339,7 @@ Protected Class AdGroupsApi
         VideoP75Combined2
         VideoP95Combined2
         VideoMrcViews2
+        PaidVideoViewableRate
         VideoLength
         EcpvInDollar
         EcpcvInDollar
@@ -2361,6 +2372,7 @@ Protected Class AdGroupsApi
         Leads
         CostPerLead
         QuizCompleted
+        QuizPinResultOpen
         QuizCompletionRate
         ShowcasePinClickthrough
         ShowcaseSubpageClickthrough

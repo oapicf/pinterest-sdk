@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Board fields for updates")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BoardUpdate   {
   @JsonProperty("name")
   private String name;
@@ -64,10 +64,10 @@ public class BoardUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "Summer Recipes", value = "")
   public String getName() {
     return name;
@@ -82,10 +82,10 @@ public class BoardUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(example = "My favorite summer recipes", value = "")
   public String getDescription() {
     return description;
@@ -100,10 +100,10 @@ public class BoardUpdate   {
     return this;
   }
 
-   /**
+  /**
    * Get privacy
    * @return privacy
-  **/
+   */
   @ApiModelProperty(value = "")
   public PrivacyEnum getPrivacy() {
     return privacy;

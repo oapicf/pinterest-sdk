@@ -13,7 +13,7 @@ test_that("media_type", {
 })
 
 test_that("images", {
-  # tests for the property `images` (ImageMetadataImages)
+  # tests for the property `images` (PinMediaWithImageAllOfImages)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`images`, "EXPECTED_RESULT")

@@ -6,9 +6,9 @@ import (
 
 type CatalogsDbItem struct {
 
-	CreatedAt time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 
-	Id string `json:"id,omitempty"`
+	Id string `json:"id"`
 
-	UpdatedAt time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 }

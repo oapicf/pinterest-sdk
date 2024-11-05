@@ -19,7 +19,7 @@ public class TrendingKeywordsResponse  {
  /**
    * The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
   **/
-  private List<@Valid TrendingKeywordsResponseTrendsInner> trends;
+  private List<@Valid TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
  /**
    * The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.
    * @return trends

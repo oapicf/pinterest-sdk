@@ -209,11 +209,14 @@ public class KeywordsApiVerticle extends AbstractVerticle {
                 JsonArray agesParam = message.body().getJsonArray("ages");
                 List<String> ages = (agesParam == null) ? null : Json.mapper.readValue(agesParam.encode(),
                     Json.mapper.getTypeFactory().constructCollectionType(List.class, String.class));
+                JsonArray includeKeywordsParam = message.body().getJsonArray("include_keywords");
+                List<String> includeKeywords = (includeKeywordsParam == null) ? null : Json.mapper.readValue(includeKeywordsParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, String.class));
                 String normalizeAgainstGroupParam = message.body().getString("normalize_against_group");
                 Boolean normalizeAgainstGroup = (normalizeAgainstGroupParam == null) ? false : Json.mapper.readValue(normalizeAgainstGroupParam, Boolean.class);
                 String limitParam = message.body().getString("limit");
                 Integer limit = (limitParam == null) ? 50 : Json.mapper.readValue(limitParam, Integer.class);
-                service.trendingKeywordsList(region, trendType, interests, genders, ages, normalizeAgainstGroup, limit, result -> {
+                service.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, result -> {
                     if (result.succeeded())
                         message.reply(new JsonObject(Json.encode(result.result())).encodePrettily());
                     else {

@@ -3,12 +3,12 @@ package org.openapitools.client.model
 
 
 case class ItemsBatchPostRequest (
-    _catalogType: CatalogsType,
+    _catalogType: String,
     _country: Country,
-    _language: Language,
+    _language: CatalogsItemsRequestLanguage,
     /* Array with catalogs items */
     _items: List[ItemDeleteBatchRecord],
-    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     _catalogId: Option[String],
     _operation: BatchOperation
 )

@@ -5,9 +5,9 @@
 -export_type([openapi_catalog/0]).
 
 -type openapi_catalog() ::
-    #{ 'created_at' => openapi_date_time:openapi_date_time(),
+    #{ 'created_at' := openapi_date_time:openapi_date_time(),
        'id' := binary(),
-       'updated_at' => openapi_date_time:openapi_date_time(),
+       'updated_at' := openapi_date_time:openapi_date_time(),
        'name' := binary(),
        'catalog_type' := openapi_catalogs_type:openapi_catalogs_type()
      }.

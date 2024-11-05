@@ -29,7 +29,7 @@ public class QuizPinQuestion  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid QuizPinOption> options;
+  private List<@Valid QuizPinOption> options = new ArrayList<>();
  /**
    * Get questionId
    * @return questionId

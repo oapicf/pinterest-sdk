@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**Language**](Language.md) |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Items** | [**[]CatalogsHotelBatchItem**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
 **CatalogId** | Pointer to **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsHotelBatchRequest
 
-`func NewCatalogsHotelBatchRequest(catalogType CatalogsType, country Country, language Language, items []CatalogsHotelBatchItem, ) *CatalogsHotelBatchRequest`
+`func NewCatalogsHotelBatchRequest(catalogType string, country Country, language CatalogsItemsRequestLanguage, items []CatalogsHotelBatchItem, ) *CatalogsHotelBatchRequest`
 
 NewCatalogsHotelBatchRequest instantiates a new CatalogsHotelBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogType
 
-`func (o *CatalogsHotelBatchRequest) GetCatalogType() CatalogsType`
+`func (o *CatalogsHotelBatchRequest) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsHotelBatchRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsHotelBatchRequest) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsHotelBatchRequest) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsHotelBatchRequest) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 
@@ -71,20 +71,20 @@ SetCountry sets Country field to given value.
 
 ### GetLanguage
 
-`func (o *CatalogsHotelBatchRequest) GetLanguage() Language`
+`func (o *CatalogsHotelBatchRequest) GetLanguage() CatalogsItemsRequestLanguage`
 
 GetLanguage returns the Language field if non-nil, zero value otherwise.
 
 ### GetLanguageOk
 
-`func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*Language, bool)`
+`func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool)`
 
 GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguage
 
-`func (o *CatalogsHotelBatchRequest) SetLanguage(v Language)`
+`func (o *CatalogsHotelBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage)`
 
 SetLanguage sets Language field to given value.
 

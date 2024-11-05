@@ -489,7 +489,7 @@ private class OASAdAccountsApiTest {
     /**
      * Delete ads data for ad account in API Sandbox
      *
-     * Delete an ad account and all the ads data associated with that account. \nA string message is returned indicating the status of the delete operation.\n\nNote: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). \nGo to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+     * Delete an ad account and all the ads data associated with that account.\nA string message is returned indicating the status of the delete operation.\n\nNote: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).\nGo to /docs/developer-tools/sandbox/ for more information.
      */
     @isTest
     private static void sandboxDeleteTest() {

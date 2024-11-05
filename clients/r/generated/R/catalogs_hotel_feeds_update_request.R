@@ -29,8 +29,7 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
     `preferred_processing_schedule` = NULL,
     `status` = NULL,
     `catalog_type` = NULL,
-    #' Initialize a new CatalogsHotelFeedsUpdateRequest class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsHotelFeedsUpdateRequest class.
     #'
@@ -43,7 +42,6 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
     #' @param preferred_processing_schedule preferred_processing_schedule
     #' @param status status
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`catalog_type`, `default_currency` = NULL, `name` = NULL, `format` = NULL, `credentials` = NULL, `location` = NULL, `preferred_processing_schedule` = NULL, `status` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
@@ -94,13 +92,11 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
         self$`status` <- `status`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelFeedsUpdateRequest in JSON format
-    #' @export
     toJSON = function() {
       CatalogsHotelFeedsUpdateRequestObject <- list()
       if (!is.null(self$`default_currency`)) {
@@ -137,14 +133,12 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
       }
       CatalogsHotelFeedsUpdateRequestObject
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelFeedsUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelFeedsUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelFeedsUpdateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`default_currency`)) {
@@ -185,13 +179,11 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsHotelFeedsUpdateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`default_currency`)) {
@@ -262,14 +254,12 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsHotelFeedsUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsHotelFeedsUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsHotelFeedsUpdateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`default_currency` <- NullableCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
@@ -282,13 +272,11 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CatalogsHotelFeedsUpdateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsHotelFeedsUpdateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
@@ -298,23 +286,19 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelFeedsUpdateRequest: the required field `catalog_type` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsHotelFeedsUpdateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`location`, "^(http|https|ftp|sftp):/")) {
         return(FALSE)
@@ -327,13 +311,11 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`location`, "^(http|https|ftp|sftp):/")) {
@@ -347,12 +329,9 @@ CatalogsHotelFeedsUpdateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

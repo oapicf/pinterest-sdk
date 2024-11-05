@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class BidFloor   {
   
-  private List<Integer> bidFloors;
+  private List<Integer> bidFloors = new ArrayList<>();
 
   private String type = "bidfloor";
 

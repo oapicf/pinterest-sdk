@@ -15,6 +15,9 @@
 
 typedef struct conversion_events_user_data_t conversion_events_user_data_t;
 
+#include "conversion_events_user_data_any_of.h"
+#include "conversion_events_user_data_any_of_1.h"
+#include "conversion_events_user_data_any_of_2.h"
 
 
 
@@ -31,6 +34,10 @@ typedef struct conversion_events_user_data_t {
     list_t *external_id; //primitive container
     char *click_id; // string
     char *partner_id; // string
+    list_t *em; //primitive container
+    list_t *hashed_maids; //primitive container
+    char *client_ip_address; // string
+    char *client_user_agent; // string
 
 } conversion_events_user_data_t;
 
@@ -46,7 +53,11 @@ conversion_events_user_data_t *conversion_events_user_data_create(
     list_t *country,
     list_t *external_id,
     char *click_id,
-    char *partner_id
+    char *partner_id,
+    list_t *em,
+    list_t *hashed_maids,
+    char *client_ip_address,
+    char *client_user_agent
 );
 
 void conversion_events_user_data_free(conversion_events_user_data_t *conversion_events_user_data);

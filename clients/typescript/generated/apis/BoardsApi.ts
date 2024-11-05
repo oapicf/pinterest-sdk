@@ -142,7 +142,7 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
      * @param boardId Unique identifier of a board.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async boardSectionsList(boardId: string, adAccountId?: string, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -186,6 +186,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -202,7 +207,7 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
      * @param sectionId Unique identifier of a board section.
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async boardSectionsListPins(boardId: string, sectionId: string, adAccountId?: string, bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -250,6 +255,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -469,6 +479,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -483,7 +498,7 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
      * List boards
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param privacy Privacy setting for a board.
      */
     public async boardsList(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', _options?: Configuration): Promise<RequestContext> {
@@ -527,6 +542,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -541,7 +561,7 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
      * List Pins on board
      * @param boardId Unique identifier of a board.
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
      * @param adAccountId Unique identifier of an ad account.
      * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -580,7 +600,10 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (creativeTypes !== undefined) {
-            requestContext.setQueryParam("creative_types", ObjectSerializer.serialize(creativeTypes, "Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>", ""));
+            const serializedParams = ObjectSerializer.serialize(creativeTypes, "Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("creative_types", serializedParam);
+            }
         }
 
         // Query Params
@@ -597,6 +620,11 @@ export class BoardsApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }

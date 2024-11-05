@@ -350,6 +350,7 @@ public enum PrivacyEnum {
 
   /**
    * Sets the <code>owner</code> property.
+   * <br><em>N.B. <code>owner</code> is <b>read only</b>; client code should not call this method</em>.
    */
  public void setOwner(BoardOwner owner) {
     this.owner = owner;
@@ -357,6 +358,7 @@ public enum PrivacyEnum {
 
   /**
    * Sets the <code>owner</code> property.
+   * <br><em>N.B. <code>owner</code> is <b>read only</b>; client code should not call this method</em>.
    */
   public Board owner(BoardOwner owner) {
     this.owner = owner;

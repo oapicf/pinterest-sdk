@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | [default to null]
-**language** | [**Language**](Language.md) |  | [default to null]
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | [default to null]
 **operation** | [**BatchOperation**](BatchOperation.md) |  | [default to null]
 **items** | [**array[ItemDeleteBatchRecord]**](ItemDeleteBatchRecord.md) |  | [default to null]
 

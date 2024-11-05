@@ -1,12 +1,13 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.BoardOwner
 import org.openapitools.model.CreativeType
+import org.openapitools.model.PinMedia
 import org.openapitools.model.PinMediaSource
-import org.openapitools.model.SummaryPinMedia
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -35,7 +36,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param media 
  * @param mediaSource 
  * @param parentPinId The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
- * @param isStandard Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+ * @param isStandard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
  * @param hasBeenPromoted Whether the Pin has been promoted or not.
  * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
  * @param pinMetrics Pin metrics with associated time intervals if any.
@@ -79,15 +80,15 @@ data class Pin(
     @get:JsonProperty("board_section_id") val boardSectionId: kotlin.String? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(example = "null", readOnly = true, description = "")
     @get:JsonProperty("board_owner") val boardOwner: BoardOwner? = null,
 
     @Schema(example = "null", readOnly = true, description = "Whether the \"operation user_account\" is the Pin owner.")
     @get:JsonProperty("is_owner") val isOwner: kotlin.Boolean? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("media") val media: SummaryPinMedia? = null,
+    @Schema(example = "null", readOnly = true, description = "")
+    @get:JsonProperty("media") val media: PinMedia? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -97,7 +98,7 @@ data class Pin(
     @Schema(example = "null", description = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.")
     @get:JsonProperty("parent_pin_id") val parentPinId: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.")
+    @Schema(example = "null", description = "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = null,
 
     @Schema(example = "null", readOnly = true, description = "Whether the Pin has been promoted or not.")
@@ -107,9 +108,9 @@ data class Pin(
     @get:JsonProperty("note") val note: kotlin.String? = null,
 
     @field:Valid
-    @Schema(example = "{\"pin_metrics\":[{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"all_time\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}},null]}", description = "Pin metrics with associated time intervals if any.")
+    @Schema(example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", description = "Pin metrics with associated time intervals if any.")
     @get:JsonProperty("pin_metrics") val pinMetrics: kotlin.Any? = null
-) {
+    ) {
 
 }
 

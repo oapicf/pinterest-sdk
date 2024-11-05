@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsCreativeAssetsFeed
 open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFormat
@@ -22,11 +23,11 @@ module CatalogsFeed =
   [<CLIMutable>]
   type CatalogsFeed = {
     [<JsonProperty(PropertyName = "created_at")>]
-    CreatedAt : Nullable<DateTime>;
+    CreatedAt : DateTime;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "updated_at")>]
-    UpdatedAt : Nullable<DateTime>;
+    UpdatedAt : DateTime;
     [<JsonProperty(PropertyName = "name")>]
     Name : string option;
     [<JsonProperty(PropertyName = "format")>]

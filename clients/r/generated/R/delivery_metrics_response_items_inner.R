@@ -21,8 +21,7 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
     `category` = NULL,
     `definition` = NULL,
     `display_name` = NULL,
-    #' Initialize a new DeliveryMetricsResponseItemsInner class.
-    #'
+
     #' @description
     #' Initialize a new DeliveryMetricsResponseItemsInner class.
     #'
@@ -31,7 +30,6 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
     #' @param definition How the metric is defined.
     #' @param display_name Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`name` = NULL, `category` = NULL, `definition` = NULL, `display_name` = NULL, ...) {
       if (!is.null(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
@@ -61,13 +59,11 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
         self$`display_name` <- `display_name`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return DeliveryMetricsResponseItemsInner in JSON format
-    #' @export
     toJSON = function() {
       DeliveryMetricsResponseItemsInnerObject <- list()
       if (!is.null(self$`name`)) {
@@ -88,14 +84,12 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
       }
       DeliveryMetricsResponseItemsInnerObject
     },
-    #' Deserialize JSON string into an instance of DeliveryMetricsResponseItemsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of DeliveryMetricsResponseItemsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of DeliveryMetricsResponseItemsInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`name`)) {
@@ -115,13 +109,11 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return DeliveryMetricsResponseItemsInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`name`)) {
@@ -160,14 +152,12 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of DeliveryMetricsResponseItemsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of DeliveryMetricsResponseItemsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of DeliveryMetricsResponseItemsInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
@@ -179,53 +169,42 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
       self$`display_name` <- this_object$`display_name`
       self
     },
-    #' Validate JSON input with respect to DeliveryMetricsResponseItemsInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to DeliveryMetricsResponseItemsInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of DeliveryMetricsResponseItemsInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

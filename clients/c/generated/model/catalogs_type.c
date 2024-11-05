@@ -5,13 +5,13 @@
 
 
 char* catalogs_type_catalogs_type_ToString(pinterest_rest_api_catalogs_type__e catalogs_type) {
-    char *catalogs_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalogs_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalogs_typeArray[catalogs_type];
 }
 
 pinterest_rest_api_catalogs_type__e catalogs_type_catalogs_type_FromString(char* catalogs_type) {
     int stringToReturn = 0;
-    char *catalogs_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalogs_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalogs_typeArray) / sizeof(catalogs_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalogs_type, catalogs_typeArray[stringToReturn]) == 0) {

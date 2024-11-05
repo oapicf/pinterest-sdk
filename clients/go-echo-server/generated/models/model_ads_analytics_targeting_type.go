@@ -16,4 +16,5 @@ const (
 	GEO AdsAnalyticsTargetingType = "GEO"
 	AGE_BUCKET AdsAnalyticsTargetingType = "AGE_BUCKET"
 	REGION AdsAnalyticsTargetingType = "REGION"
+	AGE_BUCKET_AND_GENDER AdsAnalyticsTargetingType = "AGE_BUCKET_AND_GENDER"
 )

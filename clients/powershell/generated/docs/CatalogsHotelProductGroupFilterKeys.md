@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
-**HOTELID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](CatalogsProductGroupMultipleCountriesCriteria.md) |  | 
+**HOTELID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  | 
 
 ## Examples
 

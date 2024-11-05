@@ -15,11 +15,11 @@ module CatalogsFeedProcessingResult =
   [<CLIMutable>]
   type CatalogsFeedProcessingResult = {
     [<JsonProperty(PropertyName = "created_at")>]
-    CreatedAt : Nullable<DateTime>;
+    CreatedAt : DateTime;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "updated_at")>]
-    UpdatedAt : Nullable<DateTime>;
+    UpdatedAt : DateTime;
     [<JsonProperty(PropertyName = "ingestion_details")>]
     IngestionDetails : CatalogsFeedIngestionDetails;
     [<JsonProperty(PropertyName = "status")>]

@@ -8,8 +8,8 @@
 #' @description CatalogsRetailItemsBatch Class
 #' @format An \code{R6Class} generator object
 #' @field batch_id Id of the catalogs items batch character [optional]
-#' @field created_time Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD character [optional]
-#' @field completed_time Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD character [optional]
+#' @field created_time Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss character [optional]
+#' @field completed_time Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss character [optional]
 #' @field status  \link{BatchOperationStatus} [optional]
 #' @field catalog_type  \link{CatalogsType}
 #' @field items Array with the catalogs items processing records part of the catalogs items batch list(\link{ItemProcessingRecord}) [optional]
@@ -25,19 +25,17 @@ CatalogsRetailItemsBatch <- R6::R6Class(
     `status` = NULL,
     `catalog_type` = NULL,
     `items` = NULL,
-    #' Initialize a new CatalogsRetailItemsBatch class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsRetailItemsBatch class.
     #'
     #' @param catalog_type catalog_type
     #' @param batch_id Id of the catalogs items batch
-    #' @param created_time Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
-    #' @param completed_time Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+    #' @param created_time Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+    #' @param completed_time Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
     #' @param status status
     #' @param items Array with the catalogs items processing records part of the catalogs items batch
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`catalog_type`, `batch_id` = NULL, `created_time` = NULL, `completed_time` = NULL, `status` = NULL, `items` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
@@ -77,13 +75,11 @@ CatalogsRetailItemsBatch <- R6::R6Class(
         self$`items` <- `items`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailItemsBatch in JSON format
-    #' @export
     toJSON = function() {
       CatalogsRetailItemsBatchObject <- list()
       if (!is.null(self$`batch_id`)) {
@@ -112,14 +108,12 @@ CatalogsRetailItemsBatch <- R6::R6Class(
       }
       CatalogsRetailItemsBatchObject
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailItemsBatch
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailItemsBatch
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailItemsBatch
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`batch_id`)) {
@@ -146,13 +140,11 @@ CatalogsRetailItemsBatch <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailItemsBatch in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`batch_id`)) {
@@ -207,14 +199,12 @@ CatalogsRetailItemsBatch <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailItemsBatch
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailItemsBatch
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailItemsBatch
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`batch_id` <- this_object$`batch_id`
@@ -225,13 +215,11 @@ CatalogsRetailItemsBatch <- R6::R6Class(
       self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ItemProcessingRecord]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CatalogsRetailItemsBatch
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsRetailItemsBatch and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
@@ -241,23 +229,19 @@ CatalogsRetailItemsBatch <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailItemsBatch: the required field `catalog_type` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsRetailItemsBatch
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
@@ -266,13 +250,11 @@ CatalogsRetailItemsBatch <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `catalog_type` is null
@@ -282,12 +264,9 @@ CatalogsRetailItemsBatch <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

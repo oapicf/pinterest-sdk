@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.Account
@@ -53,7 +53,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -65,7 +65,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * List following boards
      * Get a list of the boards a user follows. The request returns a board summary object array.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return BoardsUserFollowsList200Response
@@ -99,7 +99,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * List following boards
      * Get a list of the boards a user follows. The request returns a board summary object array.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<BoardsUserFollowsList200Response?>
@@ -120,7 +120,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * To obtain the request config of the operation boardsUserFollowsList
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
@@ -157,7 +157,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
 
     /**
      * Follow user
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
      * @param followUserRequest Follow a user.
      * @return UserSummary
@@ -189,7 +189,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
 
     /**
      * Follow user
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
      * @param username A valid username
      * @param followUserRequest Follow a user.
      * @return ApiResponse<UserSummary?>
@@ -234,7 +234,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * List followers
      * Get a list of your followers.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return FollowersList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -266,7 +266,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * List followers
      * Get a list of your followers.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<FollowersList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -285,7 +285,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * To obtain the request config of the operation followersList
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun followersListRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -458,7 +458,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class FromClaimedContentUserAccountAnalytics(val value: kotlin.String) {
          @Json(name = "OTHER") OTHER("OTHER"),
          @Json(name = "CLAIMED") CLAIMED("CLAIMED"),
-         @Json(name = "BOTH") BOTH("BOTH")
+         @Json(name = "BOTH") BOTH("BOTH");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -472,10 +481,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "ADS_STANDARD") ADS_STANDARD("ADS_STANDARD"),
          @Json(name = "ADS_PRODUCT") ADS_PRODUCT("ADS_PRODUCT"),
          @Json(name = "ADS_VIDEO") ADS_VIDEO("ADS_VIDEO"),
-         @Json(name = "ADS_IDEA") ADS_IDEA("ADS_IDEA"),
-         @Json(name = "PRODUCT") PRODUCT("PRODUCT"),
-         @Json(name = "REGULAR") REGULAR("REGULAR"),
-         @Json(name = "VIDEO") VIDEO("VIDEO")
+         @Json(name = "ADS_IDEA") ADS_IDEA("ADS_IDEA");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -485,7 +500,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "MOBILE") MOBILE("MOBILE"),
          @Json(name = "TABLET") TABLET("TABLET"),
-         @Json(name = "WEB") WEB("WEB")
+         @Json(name = "WEB") WEB("WEB");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -494,7 +518,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class ContentTypeUserAccountAnalytics(val value: kotlin.String) {
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "PAID") PAID("PAID"),
-         @Json(name = "ORGANIC") ORGANIC("ORGANIC")
+         @Json(name = "ORGANIC") ORGANIC("ORGANIC");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -503,7 +536,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class SourceUserAccountAnalytics(val value: kotlin.String) {
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "YOUR_PINS") YOUR_PINS("YOUR_PINS"),
-         @Json(name = "OTHER_PINS") OTHER_PINS("OTHER_PINS")
+         @Json(name = "OTHER_PINS") OTHER_PINS("OTHER_PINS");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -518,7 +560,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
          @Json(name = "PIN_CLICK_RATE") PIN_CLICK_RATE("PIN_CLICK_RATE"),
          @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE")
+         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -529,7 +580,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "APP_TYPE") APP_TYPE("APP_TYPE"),
          @Json(name = "OWNED_CONTENT") OWNED_CONTENT("OWNED_CONTENT"),
          @Json(name = "SOURCE") SOURCE("SOURCE"),
-         @Json(name = "PIN_FORMAT") PIN_FORMAT("PIN_FORMAT")
+         @Json(name = "PIN_FORMAT") PIN_FORMAT("PIN_FORMAT");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -666,7 +726,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
          @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
          @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
-         @Json(name = "SAVE") SAVE("SAVE")
+         @Json(name = "SAVE") SAVE("SAVE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -675,7 +744,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class FromClaimedContentUserAccountAnalyticsTopPins(val value: kotlin.String) {
          @Json(name = "OTHER") OTHER("OTHER"),
          @Json(name = "CLAIMED") CLAIMED("CLAIMED"),
-         @Json(name = "BOTH") BOTH("BOTH")
+         @Json(name = "BOTH") BOTH("BOTH");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -689,10 +767,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "ADS_STANDARD") ADS_STANDARD("ADS_STANDARD"),
          @Json(name = "ADS_PRODUCT") ADS_PRODUCT("ADS_PRODUCT"),
          @Json(name = "ADS_VIDEO") ADS_VIDEO("ADS_VIDEO"),
-         @Json(name = "ADS_IDEA") ADS_IDEA("ADS_IDEA"),
-         @Json(name = "PRODUCT") PRODUCT("PRODUCT"),
-         @Json(name = "REGULAR") REGULAR("REGULAR"),
-         @Json(name = "VIDEO") VIDEO("VIDEO")
+         @Json(name = "ADS_IDEA") ADS_IDEA("ADS_IDEA");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -702,7 +786,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "MOBILE") MOBILE("MOBILE"),
          @Json(name = "TABLET") TABLET("TABLET"),
-         @Json(name = "WEB") WEB("WEB")
+         @Json(name = "WEB") WEB("WEB");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -711,7 +804,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class ContentTypeUserAccountAnalyticsTopPins(val value: kotlin.String) {
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "PAID") PAID("PAID"),
-         @Json(name = "ORGANIC") ORGANIC("ORGANIC")
+         @Json(name = "ORGANIC") ORGANIC("ORGANIC");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -720,7 +822,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class SourceUserAccountAnalyticsTopPins(val value: kotlin.String) {
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "YOUR_PINS") YOUR_PINS("YOUR_PINS"),
-         @Json(name = "OTHER_PINS") OTHER_PINS("OTHER_PINS")
+         @Json(name = "OTHER_PINS") OTHER_PINS("OTHER_PINS");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -735,14 +846,32 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
          @Json(name = "PIN_CLICK_RATE") PIN_CLICK_RATE("PIN_CLICK_RATE"),
          @Json(name = "SAVE") SAVE("SAVE"),
-         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE")
+         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
      * enum for parameter createdInLastNDays
      */
      enum class CreatedInLastNDaysUserAccountAnalyticsTopPins(val value: kotlin.Int) {
-         @Json(name = "30") _30(30)
+         @Json(name = "30") _30(30);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -893,7 +1022,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
          @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
          @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
-         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START")
+         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -902,7 +1040,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class FromClaimedContentUserAccountAnalyticsTopVideoPins(val value: kotlin.String) {
          @Json(name = "OTHER") OTHER("OTHER"),
          @Json(name = "CLAIMED") CLAIMED("CLAIMED"),
-         @Json(name = "BOTH") BOTH("BOTH")
+         @Json(name = "BOTH") BOTH("BOTH");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -916,10 +1063,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "ADS_STANDARD") ADS_STANDARD("ADS_STANDARD"),
          @Json(name = "ADS_PRODUCT") ADS_PRODUCT("ADS_PRODUCT"),
          @Json(name = "ADS_VIDEO") ADS_VIDEO("ADS_VIDEO"),
-         @Json(name = "ADS_IDEA") ADS_IDEA("ADS_IDEA"),
-         @Json(name = "PRODUCT") PRODUCT("PRODUCT"),
-         @Json(name = "REGULAR") REGULAR("REGULAR"),
-         @Json(name = "VIDEO") VIDEO("VIDEO")
+         @Json(name = "ADS_IDEA") ADS_IDEA("ADS_IDEA");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -929,7 +1082,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "MOBILE") MOBILE("MOBILE"),
          @Json(name = "TABLET") TABLET("TABLET"),
-         @Json(name = "WEB") WEB("WEB")
+         @Json(name = "WEB") WEB("WEB");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -938,7 +1100,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class ContentTypeUserAccountAnalyticsTopVideoPins(val value: kotlin.String) {
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "PAID") PAID("PAID"),
-         @Json(name = "ORGANIC") ORGANIC("ORGANIC")
+         @Json(name = "ORGANIC") ORGANIC("ORGANIC");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -947,7 +1118,16 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      enum class SourceUserAccountAnalyticsTopVideoPins(val value: kotlin.String) {
          @Json(name = "ALL") ALL("ALL"),
          @Json(name = "YOUR_PINS") YOUR_PINS("YOUR_PINS"),
-         @Json(name = "OTHER_PINS") OTHER_PINS("OTHER_PINS")
+         @Json(name = "OTHER_PINS") OTHER_PINS("OTHER_PINS");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -962,14 +1142,32 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
          @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
          @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
          @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START"),
-         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK")
+         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
      * enum for parameter createdInLastNDays
      */
      enum class CreatedInLastNDaysUserAccountAnalyticsTopVideoPins(val value: kotlin.Int) {
-         @Json(name = "30") _30(30)
+         @Json(name = "30") _30(30);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -1113,7 +1311,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * Get a list of a user&#39;s following interests in one place.
      * @param username A valid username
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return UserAccountFollowedInterests200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1146,7 +1344,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * Get a list of a user&#39;s following interests in one place.
      * @param username A valid username
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<UserAccountFollowedInterests200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1166,7 +1364,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      *
      * @param username A valid username
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun userAccountFollowedInterestsRequestConfig(username: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -1195,7 +1393,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
 
     /**
      * Get user account
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return Account
      * @throws IllegalStateException If the request is not correctly configured
@@ -1226,7 +1424,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
 
     /**
      * Get user account
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<Account?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -1273,7 +1471,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * List following
      * Get a list of who a certain user follows.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to ALL)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1308,7 +1506,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * List following
      * Get a list of who a certain user follows.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to ALL)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1330,7 +1528,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * To obtain the request config of the operation userFollowingGet
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to ALL)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
@@ -1373,7 +1571,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * Get user websites
      * Get user websites, claimed or not
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return UserWebsitesGet200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1405,7 +1603,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * Get user websites
      * Get user websites, claimed or not
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return ApiResponse<UserWebsitesGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1424,7 +1622,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * To obtain the request config of the operation userWebsitesGet
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun userWebsitesGetRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
@@ -1455,6 +1653,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * Verify website
      * Verify a website as a signed-in user.
      * @param userWebsiteVerifyRequest Verify a website.
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return UserWebsiteSummary
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1464,8 +1663,8 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest) : UserWebsiteSummary {
-        val localVarResponse = verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest = userWebsiteVerifyRequest)
+    fun verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: kotlin.String? = null) : UserWebsiteSummary {
+        val localVarResponse = verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest = userWebsiteVerifyRequest, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as UserWebsiteSummary
@@ -1486,14 +1685,15 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * Verify website
      * Verify a website as a signed-in user.
      * @param userWebsiteVerifyRequest Verify a website.
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<UserWebsiteSummary?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest: UserWebsiteVerifyRequest) : ApiResponse<UserWebsiteSummary?> {
-        val localVariableConfig = verifyWebsiteUpdateRequestConfig(userWebsiteVerifyRequest = userWebsiteVerifyRequest)
+    fun verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: kotlin.String?) : ApiResponse<UserWebsiteSummary?> {
+        val localVariableConfig = verifyWebsiteUpdateRequestConfig(userWebsiteVerifyRequest = userWebsiteVerifyRequest, adAccountId = adAccountId)
 
         return request<UserWebsiteVerifyRequest, UserWebsiteSummary>(
             localVariableConfig
@@ -1504,11 +1704,17 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      * To obtain the request config of the operation verifyWebsiteUpdate
      *
      * @param userWebsiteVerifyRequest Verify a website.
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun verifyWebsiteUpdateRequestConfig(userWebsiteVerifyRequest: UserWebsiteVerifyRequest) : RequestConfig<UserWebsiteVerifyRequest> {
+    fun verifyWebsiteUpdateRequestConfig(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: kotlin.String?) : RequestConfig<UserWebsiteVerifyRequest> {
         val localVariableBody = userWebsiteVerifyRequest
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
         localVariableHeaders["Accept"] = "application/json"
@@ -1526,6 +1732,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     /**
      * Get user verification code for website claiming
      * Get verification code for user to install on the website to claim it.
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return UserWebsiteVerificationCode
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1535,8 +1742,8 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun websiteVerificationGet() : UserWebsiteVerificationCode {
-        val localVarResponse = websiteVerificationGetWithHttpInfo()
+    fun websiteVerificationGet(adAccountId: kotlin.String? = null) : UserWebsiteVerificationCode {
+        val localVarResponse = websiteVerificationGetWithHttpInfo(adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as UserWebsiteVerificationCode
@@ -1556,14 +1763,15 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     /**
      * Get user verification code for website claiming
      * Get verification code for user to install on the website to claim it.
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<UserWebsiteVerificationCode?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun websiteVerificationGetWithHttpInfo() : ApiResponse<UserWebsiteVerificationCode?> {
-        val localVariableConfig = websiteVerificationGetRequestConfig()
+    fun websiteVerificationGetWithHttpInfo(adAccountId: kotlin.String?) : ApiResponse<UserWebsiteVerificationCode?> {
+        val localVariableConfig = websiteVerificationGetRequestConfig(adAccountId = adAccountId)
 
         return request<Unit, UserWebsiteVerificationCode>(
             localVariableConfig
@@ -1573,11 +1781,17 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCl
     /**
      * To obtain the request config of the operation websiteVerificationGet
      *
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun websiteVerificationGetRequestConfig() : RequestConfig<Unit> {
+    fun websiteVerificationGetRequestConfig(adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 

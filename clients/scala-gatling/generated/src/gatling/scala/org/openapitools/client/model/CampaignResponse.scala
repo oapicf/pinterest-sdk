@@ -16,12 +16,13 @@ case class CampaignResponse (
     _dailySpendCap: Option[Integer],
     /* Order line ID that appears on the invoice. */
     _orderLineId: Option[String],
-    _trackingUrls: Option[AdCommonTrackingUrls],
+    _trackingUrls: Option[TrackingUrls],
     /* Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     _startTime: Option[Integer],
     /* Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     _endTime: Option[Integer],
-    _summaryStatus: Option[CampaignSummaryStatus],
+    /* Determine if a campaign has flexible daily budgets setup. */
+    _isFlexibleDailyBudgets: Option[Boolean],
     _objectiveType: Option[ObjectiveType],
     /* Campaign creation time. Unix timestamp in seconds. */
     _createdTime: Option[Integer],
@@ -29,16 +30,15 @@ case class CampaignResponse (
     _updatedTime: Option[Integer],
     /* Always \"campaign\". */
     _type: Option[String],
-    /* Determines if a campaign has flexible daily budgets setup. */
-    _isFlexibleDailyBudgets: Option[Boolean],
     /* Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. */
-    _isCampaignBudgetOptimization: Option[Boolean]
+    _isCampaignBudgetOptimization: Option[Boolean],
+    _summaryStatus: Option[CampaignSummaryStatus]
 )
 object CampaignResponse {
-    def toStringBody(var_id: Object, var_adAccountId: Object, var_name: Object, var_status: Object, var_lifetimeSpendCap: Object, var_dailySpendCap: Object, var_orderLineId: Object, var_trackingUrls: Object, var_startTime: Object, var_endTime: Object, var_summaryStatus: Object, var_objectiveType: Object, var_createdTime: Object, var_updatedTime: Object, var_type: Object, var_isFlexibleDailyBudgets: Object, var_isCampaignBudgetOptimization: Object) =
+    def toStringBody(var_id: Object, var_adAccountId: Object, var_name: Object, var_status: Object, var_lifetimeSpendCap: Object, var_dailySpendCap: Object, var_orderLineId: Object, var_trackingUrls: Object, var_startTime: Object, var_endTime: Object, var_isFlexibleDailyBudgets: Object, var_objectiveType: Object, var_createdTime: Object, var_updatedTime: Object, var_type: Object, var_isCampaignBudgetOptimization: Object, var_summaryStatus: Object) =
         s"""
         | {
-        | "id":$var_id,"adAccountId":$var_adAccountId,"name":$var_name,"status":$var_status,"lifetimeSpendCap":$var_lifetimeSpendCap,"dailySpendCap":$var_dailySpendCap,"orderLineId":$var_orderLineId,"trackingUrls":$var_trackingUrls,"startTime":$var_startTime,"endTime":$var_endTime,"summaryStatus":$var_summaryStatus,"objectiveType":$var_objectiveType,"createdTime":$var_createdTime,"updatedTime":$var_updatedTime,"type":$var_type,"isFlexibleDailyBudgets":$var_isFlexibleDailyBudgets,"isCampaignBudgetOptimization":$var_isCampaignBudgetOptimization
+        | "id":$var_id,"adAccountId":$var_adAccountId,"name":$var_name,"status":$var_status,"lifetimeSpendCap":$var_lifetimeSpendCap,"dailySpendCap":$var_dailySpendCap,"orderLineId":$var_orderLineId,"trackingUrls":$var_trackingUrls,"startTime":$var_startTime,"endTime":$var_endTime,"isFlexibleDailyBudgets":$var_isFlexibleDailyBudgets,"objectiveType":$var_objectiveType,"createdTime":$var_createdTime,"updatedTime":$var_updatedTime,"type":$var_type,"isCampaignBudgetOptimization":$var_isCampaignBudgetOptimization,"summaryStatus":$var_summaryStatus
         | }
         """.stripMargin
 }

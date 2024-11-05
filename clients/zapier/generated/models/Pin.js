@@ -1,8 +1,8 @@
 const utils = require('../utils/utils');
-const Board_owner = require('../models/Board_owner');
+const BoardOwner = require('../models/BoardOwner');
 const CreativeType = require('../models/CreativeType');
+const PinMedia = require('../models/PinMedia');
 const PinMediaSource = require('../models/PinMediaSource');
-const SummaryPin_media = require('../models/SummaryPin_media');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -57,13 +57,13 @@ module.exports = {
                 label: `The board section to which this Pin belongs. - [${labelPrefix}board_section_id]`,
                 type: 'string',
             },
-            ...Board_owner.fields(`${keyPrefix}board_owner`, isInput),
+            ...BoardOwner.fields(`${keyPrefix}board_owner`, isInput),
             {
                 key: `${keyPrefix}is_owner`,
                 label: `Whether the \"operation user_account\" is the Pin owner. - [${labelPrefix}is_owner]`,
                 type: 'boolean',
             },
-            ...SummaryPin_media.fields(`${keyPrefix}media`, isInput),
+            ...PinMedia.fields(`${keyPrefix}media`, isInput),
             ...PinMediaSource.fields(`${keyPrefix}media_source`, isInput),
             {
                 key: `${keyPrefix}parent_pin_id`,
@@ -72,7 +72,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}is_standard`,
-                label: `Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information. - [${labelPrefix}is_standard]`,
+                label: `Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. - [${labelPrefix}is_standard]`,
                 type: 'boolean',
             },
             {
@@ -105,9 +105,9 @@ module.exports = {
             'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
             'board_id': bundle.inputData?.[`${keyPrefix}board_id`],
             'board_section_id': bundle.inputData?.[`${keyPrefix}board_section_id`],
-            'board_owner': utils.removeIfEmpty(Board_owner.mapping(bundle, `${keyPrefix}board_owner`)),
+            'board_owner': utils.removeIfEmpty(BoardOwner.mapping(bundle, `${keyPrefix}board_owner`)),
             'is_owner': bundle.inputData?.[`${keyPrefix}is_owner`],
-            'media': utils.removeIfEmpty(SummaryPin_media.mapping(bundle, `${keyPrefix}media`)),
+            'media': utils.removeIfEmpty(PinMedia.mapping(bundle, `${keyPrefix}media`)),
             'media_source': utils.removeIfEmpty(PinMediaSource.mapping(bundle, `${keyPrefix}media_source`)),
             'parent_pin_id': bundle.inputData?.[`${keyPrefix}parent_pin_id`],
             'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],

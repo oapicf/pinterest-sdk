@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -15,6 +15,7 @@ import (
 	"encoding/json"
 	"fmt"
 )
+
 
 // CatalogsProductGroupFiltersRequest Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
 type CatalogsProductGroupFiltersRequest struct {
@@ -66,6 +67,7 @@ func (src *CatalogsProductGroupFiltersRequest) MarshalJSON() ([]byte, error) {
 
 	return nil, nil // no data in anyOf schemas
 }
+
 
 type NullableCatalogsProductGroupFiltersRequest struct {
 	value *CatalogsProductGroupFiltersRequest

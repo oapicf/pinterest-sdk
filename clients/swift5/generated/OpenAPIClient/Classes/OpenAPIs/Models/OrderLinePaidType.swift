@@ -16,5 +16,4 @@ public enum OrderLinePaidType: String, Codable, CaseIterable {
     case bonus = "BONUS"
     case makeGood = "MAKE_GOOD"
     case test = "TEST"
-    case null = "null"
 }

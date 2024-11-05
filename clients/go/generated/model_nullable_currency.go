@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -184,7 +184,6 @@ const (
 	ZAR NullableCurrency = "ZAR"
 	ZMW NullableCurrency = "ZMW"
 	ZWD NullableCurrency = "ZWD"
-	NULL NullableCurrency = "null"
 )
 
 // All allowed values of NullableCurrency enum
@@ -352,7 +351,6 @@ var AllowedNullableCurrencyEnumValues = []NullableCurrency{
 	"ZAR",
 	"ZMW",
 	"ZWD",
-	"null",
 }
 
 func (v *NullableCurrency) UnmarshalJSON(src []byte) error {

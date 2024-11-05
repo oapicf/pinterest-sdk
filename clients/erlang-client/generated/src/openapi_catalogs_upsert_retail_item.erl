@@ -7,7 +7,7 @@
 -type openapi_catalogs_upsert_retail_item() ::
     #{ 'item_id' := binary(),
        'operation' := binary(),
-       'attributes' := openapi_item_attributes:openapi_item_attributes()
+       'attributes' := openapi_item_attributes_request:openapi_item_attributes_request()
      }.
 
 encode(#{ 'item_id' := ItemId,

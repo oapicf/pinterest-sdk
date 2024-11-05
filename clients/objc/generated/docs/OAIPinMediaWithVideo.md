@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**OAIImageMetadataImages***](OAIImageMetadataImages.md) |  | [optional] 
+**images** | [**OAIPinMediaWithImageAllOfImages***](OAIPinMediaWithImageAllOfImages.md) |  | [optional] 
 **coverImageUrl** | **NSString*** |  | [optional] 
 **videoUrl** | **NSString*** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
 **duration** | **NSNumber*** | Duration (in milliseconds) | [optional] 

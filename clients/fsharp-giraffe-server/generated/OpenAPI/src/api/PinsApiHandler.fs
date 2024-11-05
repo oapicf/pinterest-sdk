@@ -23,6 +23,34 @@ module PinsApiHandler =
     /// 
     /// </summary>
 
+    //#region MultiPinsAnalytics
+    /// <summary>
+    /// Get multiple Pin analytics
+    /// </summary>
+
+    let MultiPinsAnalytics  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<MultiPinsAnalyticsQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;    } : MultiPinsAnalyticsArgs
+          let result = PinsApiService.MultiPinsAnalytics ctx serviceArgs
+          return! (match result with
+                      | MultiPinsAnalyticsStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | MultiPinsAnalyticsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | MultiPinsAnalyticsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | MultiPinsAnalyticsStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | MultiPinsAnalyticsStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
+                      | MultiPinsAnalyticsDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
     //#region PinsAnalytics
     /// <summary>
     /// Get Pin analytics

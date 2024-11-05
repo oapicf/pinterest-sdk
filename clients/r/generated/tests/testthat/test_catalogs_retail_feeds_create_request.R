@@ -76,3 +76,10 @@ test_that("default_availability", {
   # uncomment below to test the property
   #expect_equal(model.instance$`default_availability`, "EXPECTED_RESULT")
 })
+
+test_that("status", {
+  # tests for the property `status` (CatalogsStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})

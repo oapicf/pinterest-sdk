@@ -17,15 +17,13 @@ AdPreviewCreateFromImage <- R6::R6Class(
   public = list(
     `image_url` = NULL,
     `title` = NULL,
-    #' Initialize a new AdPreviewCreateFromImage class.
-    #'
+
     #' @description
     #' Initialize a new AdPreviewCreateFromImage class.
     #'
     #' @param image_url Image URL.
     #' @param title Title displayed below ad.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`image_url`, `title`, ...) {
       if (!missing(`image_url`)) {
         if (!(is.character(`image_url`) && length(`image_url`) == 1)) {
@@ -40,13 +38,11 @@ AdPreviewCreateFromImage <- R6::R6Class(
         self$`title` <- `title`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdPreviewCreateFromImage in JSON format
-    #' @export
     toJSON = function() {
       AdPreviewCreateFromImageObject <- list()
       if (!is.null(self$`image_url`)) {
@@ -59,14 +55,12 @@ AdPreviewCreateFromImage <- R6::R6Class(
       }
       AdPreviewCreateFromImageObject
     },
-    #' Deserialize JSON string into an instance of AdPreviewCreateFromImage
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdPreviewCreateFromImage
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdPreviewCreateFromImage
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`image_url`)) {
@@ -77,13 +71,11 @@ AdPreviewCreateFromImage <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdPreviewCreateFromImage in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`image_url`)) {
@@ -106,27 +98,23 @@ AdPreviewCreateFromImage <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdPreviewCreateFromImage
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdPreviewCreateFromImage
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdPreviewCreateFromImage
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`image_url` <- this_object$`image_url`
       self$`title` <- this_object$`title`
       self
     },
-    #' Validate JSON input with respect to AdPreviewCreateFromImage
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdPreviewCreateFromImage and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `image_url`
@@ -146,23 +134,19 @@ AdPreviewCreateFromImage <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for AdPreviewCreateFromImage: the required field `title` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdPreviewCreateFromImage
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `image_url` is null
       if (is.null(self$`image_url`)) {
@@ -176,13 +160,11 @@ AdPreviewCreateFromImage <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `image_url` is null
@@ -197,12 +179,9 @@ AdPreviewCreateFromImage <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

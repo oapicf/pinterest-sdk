@@ -12,12 +12,15 @@ import AnyCodable
 
 /** A request object that can have multiple operations on a single batch */
 public enum CatalogsVerticalBatchRequest: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsBatchRequest(CatalogsCreativeAssetsBatchRequest)
     case typeCatalogsHotelBatchRequest(CatalogsHotelBatchRequest)
     case typeCatalogsRetailBatchRequest(CatalogsRetailBatchRequest)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsCreativeAssetsBatchRequest(let value):
+            try container.encode(value)
         case .typeCatalogsHotelBatchRequest(let value):
             try container.encode(value)
         case .typeCatalogsRetailBatchRequest(let value):
@@ -27,7 +30,9 @@ public enum CatalogsVerticalBatchRequest: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsHotelBatchRequest.self) {
+        if let value = try? container.decode(CatalogsCreativeAssetsBatchRequest.self) {
+            self = .typeCatalogsCreativeAssetsBatchRequest(value)
+        } else if let value = try? container.decode(CatalogsHotelBatchRequest.self) {
             self = .typeCatalogsHotelBatchRequest(value)
         } else if let value = try? container.decode(CatalogsRetailBatchRequest.self) {
             self = .typeCatalogsRetailBatchRequest(value)

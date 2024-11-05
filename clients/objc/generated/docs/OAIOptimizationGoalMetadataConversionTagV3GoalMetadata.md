@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **conversionEvent** | **NSString*** |  | [optional] 
 **conversionTagId** | **NSString*** |  | [optional] 
 **cpaGoalValueInMicroCurrency** | **NSString*** |  | [optional] 
-**isRoasOptimized** | **NSNumber*** | Ad group is ROAS optimized | [optional] 
+**isRoasOptimized** | **NSNumber*** | ROAS optimization is not supported | [optional] 
 **learningModeType** | **NSString*** | Conversion learning model type | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

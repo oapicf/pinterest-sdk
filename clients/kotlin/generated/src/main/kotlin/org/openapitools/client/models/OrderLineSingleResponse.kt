@@ -32,5 +32,8 @@ data class OrderLineSingleResponse (
     @Json(name = "data")
     val `data`: OrderLineResponse? = null
 
-)
+) {
+
+
+}
 

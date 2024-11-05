@@ -35,5 +35,8 @@ data class TopPinsAnalyticsResponseDateAvailability (
     @Json(name = "is_realtime")
     val isRealtime: kotlin.Boolean? = null
 
-)
+) {
+
+
+}
 

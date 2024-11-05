@@ -12,34 +12,33 @@ Method | HTTP request | Description
 # **searchPartnerPins**
 > SearchPartnerPins200Response searchPartnerPins()
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, SearchApi } from '';
+import type { SearchApiSearchPartnerPinsRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .SearchApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new SearchApi(configuration);
 
-let body:.SearchApiSearchPartnerPinsRequest = {
-  // string | Search term to look up pins.
+const request: SearchApiSearchPartnerPinsRequest = {
+    // Search term to look up pins.
   term: "term_example",
-  // string | Two letter country code (ISO 3166-1 alpha-2)
+    // Two letter country code (ISO 3166-1 alpha-2)
   countryCode: "US",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // string | Search locale. (optional)
+    // Search locale. (optional)
   locale: "locale_example",
-  // number | Max search result size (optional)
+    // Max search result size (optional)
   limit: 4,
 };
 
-apiInstance.searchPartnerPins(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.searchPartnerPins(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -80,32 +79,31 @@ Name | Type | Description  | Notes
 # **searchUserBoardsGet**
 > SearchUserBoardsGet200Response searchUserBoardsGet()
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/reference/business-access/\'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/getting-started/using-business-access/\'>Understanding Business Access</a> for more information.
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, SearchApi } from '';
+import type { SearchApiSearchUserBoardsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .SearchApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new SearchApi(configuration);
 
-let body:.SearchApiSearchUserBoardsGetRequest = {
-  // string | Unique identifier of an ad account. (optional)
+const request: SearchApiSearchUserBoardsGetRequest = {
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // string | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
+    // Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
   query: "query_example",
 };
 
-apiInstance.searchUserBoardsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.searchUserBoardsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -115,7 +113,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | (optional) defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **query** | [**string**] | Search query. Can contain pin description keywords or comma-separated pin IDs. | (optional) defaults to undefined
 
 
@@ -125,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -144,30 +142,29 @@ Name | Type | Description  | Notes
 # **searchUserPinsList**
 > PinsList200Response searchUserPinsList()
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/reference/business-access/\'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/getting-started/using-business-access/\'>Understanding Business Access</a> for more information.
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, SearchApi } from '';
+import type { SearchApiSearchUserPinsListRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .SearchApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new SearchApi(configuration);
 
-let body:.SearchApiSearchUserPinsListRequest = {
-  // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
+const request: SearchApiSearchUserPinsListRequest = {
+    // Search query. Can contain pin description keywords or comma-separated pin IDs.
   query: "Plants",
-  // string | Unique identifier of an ad account. (optional)
+    // Unique identifier of an ad account. (optional)
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
 };
 
-apiInstance.searchUserPinsList(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.searchUserPinsList(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

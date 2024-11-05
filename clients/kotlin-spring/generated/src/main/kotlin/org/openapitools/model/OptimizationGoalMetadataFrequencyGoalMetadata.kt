@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -26,20 +27,28 @@ data class OptimizationGoalMetadataFrequencyGoalMetadata(
 
     @Schema(example = "DAY", description = "User entity counts time range")
     @get:JsonProperty("timerange") val timerange: OptimizationGoalMetadataFrequencyGoalMetadata.Timerange? = null
-) {
+    ) {
 
     /**
     * User entity counts time range
     * Values: THIRTY_DAY,DAY,SEVEN_DAY,TWENTY_MINUTE,TEN_MINUTE,TWENTY_FOUR_HOUR
     */
-    enum class Timerange(val value: kotlin.String) {
+    enum class Timerange(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("THIRTY_DAY") THIRTY_DAY("THIRTY_DAY"),
-        @JsonProperty("DAY") DAY("DAY"),
-        @JsonProperty("SEVEN_DAY") SEVEN_DAY("SEVEN_DAY"),
-        @JsonProperty("TWENTY_MINUTE") TWENTY_MINUTE("TWENTY_MINUTE"),
-        @JsonProperty("TEN_MINUTE") TEN_MINUTE("TEN_MINUTE"),
-        @JsonProperty("TWENTY_FOUR_HOUR") TWENTY_FOUR_HOUR("TWENTY_FOUR_HOUR")
+        THIRTY_DAY("THIRTY_DAY"),
+        DAY("DAY"),
+        SEVEN_DAY("SEVEN_DAY"),
+        TWENTY_MINUTE("TWENTY_MINUTE"),
+        TEN_MINUTE("TEN_MINUTE"),
+        TWENTY_FOUR_HOUR("TWENTY_FOUR_HOUR");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Timerange {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

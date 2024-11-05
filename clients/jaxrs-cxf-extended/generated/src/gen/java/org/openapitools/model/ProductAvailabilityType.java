@@ -16,9 +16,7 @@ public enum ProductAvailabilityType {
   
   OUT_OF_STOCK("OUT_OF_STOCK"),
   
-  PREORDER("PREORDER"),
-  
-  NULL("null");
+  PREORDER("PREORDER");
 
   private String value;
 

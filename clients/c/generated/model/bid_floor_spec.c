@@ -22,13 +22,13 @@ pinterest_rest_api_bid_floor_spec__e bid_floor_spec_countries_FromString(char* c
     return 0;
 }
 char* bid_floor_spec_currency_ToString(pinterest_rest_api_bid_floor_spec__e currency) {
-    char* currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP" };
+    char* currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP", "INR", "TRY" };
     return currencyArray[currency];
 }
 
 pinterest_rest_api_bid_floor_spec__e bid_floor_spec_currency_FromString(char* currency){
     int stringToReturn = 0;
-    char *currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP" };
+    char *currencyArray[] =  { "NULL", "UNK", "USD", "GBP", "CAD", "EUR", "AUD", "NZD", "SEK", "ILS", "CHF", "HKD", "JPY", "SGD", "KRW", "NOK", "DKK", "PLN", "RON", "HUF", "CZK", "BRL", "MXN", "ARS", "CLP", "COP", "INR", "TRY" };
     size_t sizeofArray = sizeof(currencyArray) / sizeof(currencyArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(currency, currencyArray[stringToReturn]) == 0) {
@@ -39,13 +39,13 @@ pinterest_rest_api_bid_floor_spec__e bid_floor_spec_currency_FromString(char* cu
     return 0;
 }
 char* bid_floor_spec_objective_type_ToString(pinterest_rest_api_bid_floor_spec__e objective_type) {
-    char* objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS" };
+    char* objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
     return objective_typeArray[objective_type];
 }
 
 pinterest_rest_api_bid_floor_spec__e bid_floor_spec_objective_type_FromString(char* objective_type){
     int stringToReturn = 0;
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
     size_t sizeofArray = sizeof(objective_typeArray) / sizeof(objective_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(objective_type, objective_typeArray[stringToReturn]) == 0) {

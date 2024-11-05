@@ -8,19 +8,22 @@
     #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'item_id' => binary(),
        'pins' => list(),
-       'attributes' => openapi_catalogs_hotel_attributes:openapi_catalogs_hotel_attributes(),
-       'hotel_id' => binary()
+       'attributes' => openapi_catalogs_creative_assets_attributes:openapi_catalogs_creative_assets_attributes(),
+       'hotel_id' => binary(),
+       'creative_assets_id' => binary()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,
           'item_id' := ItemId,
           'pins' := Pins,
           'attributes' := Attributes,
-          'hotel_id' := HotelId
+          'hotel_id' := HotelId,
+          'creative_assets_id' := CreativeAssetsId
         }) ->
     #{ 'catalog_type' => CatalogType,
        'item_id' => ItemId,
        'pins' => Pins,
        'attributes' => Attributes,
-       'hotel_id' => HotelId
+       'hotel_id' => HotelId,
+       'creative_assets_id' => CreativeAssetsId
      }.

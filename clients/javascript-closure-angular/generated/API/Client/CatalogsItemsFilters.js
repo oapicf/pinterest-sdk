@@ -18,7 +18,7 @@ API.Client.CatalogsItemsFilters.prototype.catalogType;
 API.Client.CatalogsItemsFilters.prototype.itemIds;
 
 /**
- * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  * @type {!string}
  * @export
  */
@@ -29,4 +29,10 @@ API.Client.CatalogsItemsFilters.prototype.catalogId;
  * @export
  */
 API.Client.CatalogsItemsFilters.prototype.hotelIds;
+
+/**
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.CatalogsItemsFilters.prototype.creativeAssetsIds;
 

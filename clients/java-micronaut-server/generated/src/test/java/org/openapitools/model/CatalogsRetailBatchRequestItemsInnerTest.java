@@ -12,7 +12,7 @@ import org.openapitools.model.CatalogsCreateRetailItem;
 import org.openapitools.model.CatalogsDeleteRetailItem;
 import org.openapitools.model.CatalogsUpdateRetailItem;
 import org.openapitools.model.CatalogsUpsertRetailItem;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.UpdateMaskFieldType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;

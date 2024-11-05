@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ItemAttributes
+open OpenAPI.Model.ItemAttributesRequest
 open OpenAPI.Model.ItemCreateBatchRecord
 open OpenAPI.Model.ItemDeleteBatchRecord
 open OpenAPI.Model.ItemDeleteDiscontinuedBatchRecord
@@ -17,7 +17,7 @@ module ItemBatchRecord =
 
   type ItemBatchRecord = {
     ItemId : string;
-    Attributes : ItemAttributes;
+    Attributes : ItemAttributesRequest;
     UpdateMask : UpdateMaskFieldType[];
   }
   //#endregion

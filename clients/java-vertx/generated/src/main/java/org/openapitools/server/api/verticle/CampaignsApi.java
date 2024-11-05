@@ -1,6 +1,6 @@
 package org.openapitools.server.api.verticle;
 
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType;
+import org.openapitools.server.api.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.server.api.model.CampaignCreateRequest;
 import org.openapitools.server.api.model.CampaignCreateResponse;
 import org.openapitools.server.api.model.CampaignResponse;
@@ -23,7 +23,7 @@ import java.util.Map;
 
 public interface CampaignsApi  {
     //campaign_targeting_analytics/get
-    void campaignTargetingAnalyticsGet(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Handler<AsyncResult<MetricsResponse>> handler);
+    void campaignTargetingAnalyticsGet(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Handler<AsyncResult<MetricsResponse>> handler);
 
     //campaigns/analytics
     void campaignsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Handler<AsyncResult<List<CampaignsAnalyticsResponseInner>>> handler);

@@ -15,9 +15,8 @@ import org.openapitools.model.TargetingSpecSHOPPINGRETARGETING;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Ad group targeting specification defining the ad group target audience. For example, {\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TargetingSpec   {
   
 
@@ -85,7 +84,7 @@ public class TargetingSpec   {
 
   private List<APPTYPEEnum> APPTYPE;
   private List<@Pattern(regexp = "^\\d+$")String> AUDIENCE_EXCLUDE;
-  private List<@Pattern(regexp = "^\\d+$")String> auDIENCEINCLUDEQuote;
+  private List<@Pattern(regexp = "^\\d+$")String> AUDIENCE_INCLUDE;
 
   /**
    * Gets or Sets GENDER
@@ -111,7 +110,7 @@ public class TargetingSpec   {
 
   private List<GENDEREnum> GENDER;
   private List<String> GEO;
-  private List<String> INTEREST;
+  private List<String> INTEREST = new ArrayList<>();
   private List<String> LOCALE;
   private List<String> LOCATION;
   private List<@Valid TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING;
@@ -184,12 +183,12 @@ public class TargetingSpec   {
    **/
   
   @ApiModelProperty(value = "Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.")
-  @JsonProperty("AUDIENCE_INCLUDE&#39;")
-  public List<@Pattern(regexp = "^\\d+$")String> getAuDIENCEINCLUDEQuote() {
-    return auDIENCEINCLUDEQuote;
+  @JsonProperty("AUDIENCE_INCLUDE")
+  public List<@Pattern(regexp = "^\\d+$")String> getAUDIENCEINCLUDE() {
+    return AUDIENCE_INCLUDE;
   }
-  public void setAuDIENCEINCLUDEQuote(List<@Pattern(regexp = "^\\d+$")String> auDIENCEINCLUDEQuote) {
-    this.auDIENCEINCLUDEQuote = auDIENCEINCLUDEQuote;
+  public void setAUDIENCEINCLUDE(List<@Pattern(regexp = "^\\d+$")String> AUDIENCE_INCLUDE) {
+    this.AUDIENCE_INCLUDE = AUDIENCE_INCLUDE;
   }
 
   /**
@@ -206,10 +205,10 @@ public class TargetingSpec   {
   }
 
   /**
-   * Location region codes, e.g., \&quot;BE-VOV\&quot; (East Flanders, Belgium) For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt; or postal codes, e.g., \&quot;US-94107\&quot;. Use either region codes or postal codes but not both. If the GEO field is missing, the default behavior in terms of ad delivery is that **No geos will be selected**.
+   * Location region codes, e.g., \&quot;BE-VOV\&quot; (East Flanders, Belgium) For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt; or postal codes, e.g., \&quot;US-94107\&quot;. Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
    **/
   
-  @ApiModelProperty(value = "Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. If the GEO field is missing, the default behavior in terms of ad delivery is that **No geos will be selected**.")
+  @ApiModelProperty(value = "Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).")
   @JsonProperty("GEO")
   public List<String> getGEO() {
     return GEO;
@@ -232,10 +231,10 @@ public class TargetingSpec   {
   }
 
   /**
-   * 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be target, only english non-sublanguage will be targeted**.
+   * 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
    **/
   
-  @ApiModelProperty(value = "24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be target, only english non-sublanguage will be targeted**.")
+  @ApiModelProperty(value = "24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.")
   @JsonProperty("LOCALE")
   public List<String> getLOCALE() {
     return LOCALE;
@@ -245,10 +244,10 @@ public class TargetingSpec   {
   }
 
   /**
-   * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, click here. Location-Country and Location-Metro codes apply. If the LOCATION field is missing, the default behavior in terms of ad delivery is that **Selects default country if not specified (US) and all regions within that country**.
+   * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
    **/
   
-  @ApiModelProperty(value = "22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. If the LOCATION field is missing, the default behavior in terms of ad delivery is that **Selects default country if not specified (US) and all regions within that country**.")
+  @ApiModelProperty(value = "22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).")
   @JsonProperty("LOCATION")
   public List<String> getLOCATION() {
     return LOCATION;
@@ -297,7 +296,7 @@ public class TargetingSpec   {
     return Objects.equals(this.AGE_BUCKET, targetingSpec.AGE_BUCKET) &&
         Objects.equals(this.APPTYPE, targetingSpec.APPTYPE) &&
         Objects.equals(this.AUDIENCE_EXCLUDE, targetingSpec.AUDIENCE_EXCLUDE) &&
-        Objects.equals(this.auDIENCEINCLUDEQuote, targetingSpec.auDIENCEINCLUDEQuote) &&
+        Objects.equals(this.AUDIENCE_INCLUDE, targetingSpec.AUDIENCE_INCLUDE) &&
         Objects.equals(this.GENDER, targetingSpec.GENDER) &&
         Objects.equals(this.GEO, targetingSpec.GEO) &&
         Objects.equals(this.INTEREST, targetingSpec.INTEREST) &&
@@ -309,7 +308,7 @@ public class TargetingSpec   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, auDIENCEINCLUDEQuote, GENDER, GEO, INTEREST, LOCALE, LOCATION, SHOPPING_RETARGETING, TARGETING_STRATEGY);
+    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, INTEREST, LOCALE, LOCATION, SHOPPING_RETARGETING, TARGETING_STRATEGY);
   }
 
   @Override
@@ -320,7 +319,7 @@ public class TargetingSpec   {
     sb.append("    AGE_BUCKET: ").append(toIndentedString(AGE_BUCKET)).append("\n");
     sb.append("    APPTYPE: ").append(toIndentedString(APPTYPE)).append("\n");
     sb.append("    AUDIENCE_EXCLUDE: ").append(toIndentedString(AUDIENCE_EXCLUDE)).append("\n");
-    sb.append("    auDIENCEINCLUDEQuote: ").append(toIndentedString(auDIENCEINCLUDEQuote)).append("\n");
+    sb.append("    AUDIENCE_INCLUDE: ").append(toIndentedString(AUDIENCE_INCLUDE)).append("\n");
     sb.append("    GENDER: ").append(toIndentedString(GENDER)).append("\n");
     sb.append("    GEO: ").append(toIndentedString(GEO)).append("\n");
     sb.append("    INTEREST: ").append(toIndentedString(INTEREST)).append("\n");

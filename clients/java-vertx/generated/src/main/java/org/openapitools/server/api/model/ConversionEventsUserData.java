@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.server.api.model.ConversionEventsUserDataAnyOf;
+import org.openapitools.server.api.model.ConversionEventsUserDataAnyOf1;
+import org.openapitools.server.api.model.ConversionEventsUserDataAnyOf2;
 
 /**
  * Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
@@ -14,24 +17,28 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConversionEventsUserData   {
   
-  private List<String> ph;
-  private List<String> ge;
-  private List<String> db;
-  private List<String> ln;
-  private List<String> fn;
-  private List<String> ct;
-  private List<String> st;
-  private List<String> zp;
-  private List<String> country;
-  private List<String> externalId;
+  private List<String> ph = new ArrayList<>();
+  private List<String> ge = new ArrayList<>();
+  private List<String> db = new ArrayList<>();
+  private List<String> ln = new ArrayList<>();
+  private List<String> fn = new ArrayList<>();
+  private List<String> ct = new ArrayList<>();
+  private List<String> st = new ArrayList<>();
+  private List<String> zp = new ArrayList<>();
+  private List<String> country = new ArrayList<>();
+  private List<String> externalId = new ArrayList<>();
   private String clickId;
   private String partnerId;
+  private List<String> em = new ArrayList<>();
+  private List<String> hashedMaids = new ArrayList<>();
+  private String clientIpAddress;
+  private String clientUserAgent;
 
   public ConversionEventsUserData () {
 
   }
 
-  public ConversionEventsUserData (List<String> ph, List<String> ge, List<String> db, List<String> ln, List<String> fn, List<String> ct, List<String> st, List<String> zp, List<String> country, List<String> externalId, String clickId, String partnerId) {
+  public ConversionEventsUserData (List<String> ph, List<String> ge, List<String> db, List<String> ln, List<String> fn, List<String> ct, List<String> st, List<String> zp, List<String> country, List<String> externalId, String clickId, String partnerId, List<String> em, List<String> hashedMaids, String clientIpAddress, String clientUserAgent) {
     this.ph = ph;
     this.ge = ge;
     this.db = db;
@@ -44,6 +51,10 @@ public class ConversionEventsUserData   {
     this.externalId = externalId;
     this.clickId = clickId;
     this.partnerId = partnerId;
+    this.em = em;
+    this.hashedMaids = hashedMaids;
+    this.clientIpAddress = clientIpAddress;
+    this.clientUserAgent = clientUserAgent;
   }
 
     
@@ -154,6 +165,42 @@ public class ConversionEventsUserData   {
     this.partnerId = partnerId;
   }
 
+    
+  @JsonProperty("em")
+  public List<String> getEm() {
+    return em;
+  }
+  public void setEm(List<String> em) {
+    this.em = em;
+  }
+
+    
+  @JsonProperty("hashed_maids")
+  public List<String> getHashedMaids() {
+    return hashedMaids;
+  }
+  public void setHashedMaids(List<String> hashedMaids) {
+    this.hashedMaids = hashedMaids;
+  }
+
+    
+  @JsonProperty("client_ip_address")
+  public String getClientIpAddress() {
+    return clientIpAddress;
+  }
+  public void setClientIpAddress(String clientIpAddress) {
+    this.clientIpAddress = clientIpAddress;
+  }
+
+    
+  @JsonProperty("client_user_agent")
+  public String getClientUserAgent() {
+    return clientUserAgent;
+  }
+  public void setClientUserAgent(String clientUserAgent) {
+    this.clientUserAgent = clientUserAgent;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -175,12 +222,16 @@ public class ConversionEventsUserData   {
         Objects.equals(country, conversionEventsUserData.country) &&
         Objects.equals(externalId, conversionEventsUserData.externalId) &&
         Objects.equals(clickId, conversionEventsUserData.clickId) &&
-        Objects.equals(partnerId, conversionEventsUserData.partnerId);
+        Objects.equals(partnerId, conversionEventsUserData.partnerId) &&
+        Objects.equals(em, conversionEventsUserData.em) &&
+        Objects.equals(hashedMaids, conversionEventsUserData.hashedMaids) &&
+        Objects.equals(clientIpAddress, conversionEventsUserData.clientIpAddress) &&
+        Objects.equals(clientUserAgent, conversionEventsUserData.clientUserAgent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ph, ge, db, ln, fn, ct, st, zp, country, externalId, clickId, partnerId);
+    return Objects.hash(ph, ge, db, ln, fn, ct, st, zp, country, externalId, clickId, partnerId, em, hashedMaids, clientIpAddress, clientUserAgent);
   }
 
   @Override
@@ -200,6 +251,10 @@ public class ConversionEventsUserData   {
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    clickId: ").append(toIndentedString(clickId)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    em: ").append(toIndentedString(em)).append("\n");
+    sb.append("    hashedMaids: ").append(toIndentedString(hashedMaids)).append("\n");
+    sb.append("    clientIpAddress: ").append(toIndentedString(clientIpAddress)).append("\n");
+    sb.append("    clientUserAgent: ").append(toIndentedString(clientUserAgent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -13,9 +13,8 @@ import org.openapitools.model.IntegrationLog;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Batch of logs sent from an integration application.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Batch of logs sent from an integration application.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsRequest   {
   
   private List<@Valid IntegrationLog> logs = new ArrayList<>();
@@ -26,7 +25,7 @@ public class IntegrationLogsRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("logs")
   @NotNull
-  @Valid
+ @Size(min=1,max=250)  @Valid
   public List<@Valid IntegrationLog> getLogs() {
     return logs;
   }

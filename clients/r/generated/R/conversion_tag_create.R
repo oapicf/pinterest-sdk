@@ -29,8 +29,7 @@ ConversionTagCreate <- R6::R6Class(
     `aem_ge_enabled` = NULL,
     `aem_db_enabled` = NULL,
     `aem_loc_enabled` = NULL,
-    #' Initialize a new ConversionTagCreate class.
-    #'
+
     #' @description
     #' Initialize a new ConversionTagCreate class.
     #'
@@ -43,7 +42,6 @@ ConversionTagCreate <- R6::R6Class(
     #' @param aem_db_enabled Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
     #' @param aem_loc_enabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.. Default to FALSE.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`name`, `aem_enabled` = FALSE, `md_frequency` = 1, `aem_fnln_enabled` = FALSE, `aem_ph_enabled` = FALSE, `aem_ge_enabled` = FALSE, `aem_db_enabled` = FALSE, `aem_loc_enabled` = FALSE, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
@@ -91,13 +89,11 @@ ConversionTagCreate <- R6::R6Class(
         self$`aem_loc_enabled` <- `aem_loc_enabled`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionTagCreate in JSON format
-    #' @export
     toJSON = function() {
       ConversionTagCreateObject <- list()
       if (!is.null(self$`name`)) {
@@ -134,14 +130,12 @@ ConversionTagCreate <- R6::R6Class(
       }
       ConversionTagCreateObject
     },
-    #' Deserialize JSON string into an instance of ConversionTagCreate
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionTagCreate
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionTagCreate
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`name`)) {
@@ -170,13 +164,11 @@ ConversionTagCreate <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionTagCreate in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`name`)) {
@@ -247,14 +239,12 @@ ConversionTagCreate <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ConversionTagCreate
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionTagCreate
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionTagCreate
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
@@ -267,13 +257,11 @@ ConversionTagCreate <- R6::R6Class(
       self$`aem_loc_enabled` <- this_object$`aem_loc_enabled`
       self
     },
-    #' Validate JSON input with respect to ConversionTagCreate
-    #'
+
     #' @description
     #' Validate JSON input with respect to ConversionTagCreate and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `name`
@@ -285,23 +273,19 @@ ConversionTagCreate <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for ConversionTagCreate: the required field `name` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ConversionTagCreate
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `name` is null
       if (is.null(self$`name`)) {
@@ -310,13 +294,11 @@ ConversionTagCreate <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `name` is null
@@ -326,12 +308,9 @@ ConversionTagCreate <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceImageBase64", description = "Base64-encoded image media source")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImageBase64 implements PinMediaSource {
 
   /**
@@ -126,7 +126,7 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
   /**
    * Get sourceType
    * @return sourceType
-  */
+   */
   @NotNull 
   @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("source_type")
@@ -146,7 +146,7 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
   /**
    * Get contentType
    * @return contentType
-  */
+   */
   @NotNull 
   @Schema(name = "content_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("content_type")
@@ -166,7 +166,7 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
   /**
    * Get data
    * @return data
-  */
+   */
   @NotNull @Pattern(regexp = "[a-zA-Z0-9+/=]+") 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("data")
@@ -186,7 +186,7 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
   /**
    * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
    * @return isStandard
-  */
+   */
   
   @Schema(name = "is_standard", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_standard")

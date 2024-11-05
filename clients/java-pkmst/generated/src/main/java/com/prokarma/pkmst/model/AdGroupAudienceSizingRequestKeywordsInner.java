@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AdGroupAudienceSizingRequestKeywordsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupAudienceSizingRequestKeywordsInner   {
   @JsonProperty("match_type")
   private MatchTypeResponse matchType;
@@ -30,10 +30,10 @@ public class AdGroupAudienceSizingRequestKeywordsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get matchType
    * @return matchType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public MatchTypeResponse getMatchType() {
     return matchType;
@@ -48,10 +48,10 @@ public class AdGroupAudienceSizingRequestKeywordsInner   {
     return this;
   }
 
-   /**
+  /**
    * Keyword value (120 chars max).
    * @return value
-  **/
+   */
   @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
   public String getValue() {
     return value;

@@ -29,7 +29,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserAccountApiControllerImp extends UserAccountApiControllerImpInterface {
     @Override
     public BoardsUserFollowsList200Response boardsUserFollowsList(Http.Request request, String bookmark,  @Min(1) @Max(250)Integer pageSize, Boolean explicitFollowing,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
@@ -103,13 +103,13 @@ public class UserAccountApiControllerImp extends UserAccountApiControllerImpInte
     }
 
     @Override
-    public UserWebsiteSummary verifyWebsiteUpdate(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest) throws Exception {
+    public UserWebsiteSummary verifyWebsiteUpdate(Http.Request request, UserWebsiteVerifyRequest userWebsiteVerifyRequest,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new UserWebsiteSummary();
     }
 
     @Override
-    public UserWebsiteVerificationCode websiteVerificationGet(Http.Request request) throws Exception {
+    public UserWebsiteVerificationCode websiteVerificationGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new UserWebsiteVerificationCode();
     }

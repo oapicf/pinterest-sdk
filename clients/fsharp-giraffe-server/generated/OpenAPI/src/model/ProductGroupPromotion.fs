@@ -2,7 +2,6 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.CreativeType
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.GridClickType
 open OpenAPI.Model.bool option
@@ -29,7 +28,6 @@ module ProductGroupPromotion =
     TrackingUrl : string option;
     CatalogProductGroupId : string option;
     CatalogProductGroupName : string option;
-    CreativeType : CreativeType;
     CollectionsHeroPinId : string option;
     CollectionsHeroDestinationUrl : string option;
     GridClickType : GridClickType;

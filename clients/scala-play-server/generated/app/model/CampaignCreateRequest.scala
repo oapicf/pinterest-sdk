@@ -16,7 +16,7 @@ import play.api.libs.json._
   * @param isAutomatedCampaign Specifies whether the campaign was created in the automated campaign flow
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CampaignCreateRequest(
   adAccountId: String,
   name: String,
@@ -24,10 +24,9 @@ case class CampaignCreateRequest(
   lifetimeSpendCap: Option[Int],
   dailySpendCap: Option[Int],
   orderLineId: Option[String],
-  trackingUrls: Option[AdCommonTrackingUrls],
+  trackingUrls: Option[TrackingUrls],
   startTime: Option[Int],
   endTime: Option[Int],
-  summaryStatus: Option[CampaignSummaryStatus],
   isFlexibleDailyBudgets: Option[Boolean],
   defaultAdGroupBudgetInMicroCurrency: Option[Int],
   isAutomatedCampaign: Option[Boolean],
@@ -38,7 +37,7 @@ case class CampaignCreateRequest(
 object CampaignCreateRequest {
   implicit lazy val campaignCreateRequestJsonFormat: Format[CampaignCreateRequest] = {
     val realJsonFormat = Json.format[CampaignCreateRequest]
-    val declaredPropNames = Set("adAccountId", "name", "status", "lifetimeSpendCap", "dailySpendCap", "orderLineId", "trackingUrls", "startTime", "endTime", "summaryStatus", "isFlexibleDailyBudgets", "defaultAdGroupBudgetInMicroCurrency", "isAutomatedCampaign", "objectiveType")
+    val declaredPropNames = Set("adAccountId", "name", "status", "lifetimeSpendCap", "dailySpendCap", "orderLineId", "trackingUrls", "startTime", "endTime", "isFlexibleDailyBudgets", "defaultAdGroupBudgetInMicroCurrency", "isAutomatedCampaign", "objectiveType")
     
     Format(
       Reads {

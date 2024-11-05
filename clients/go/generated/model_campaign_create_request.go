@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ var _ MappedNullable = &CampaignCreateRequest{}
 // CampaignCreateRequest struct for CampaignCreateRequest
 type CampaignCreateRequest struct {
 	// Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
-	AdAccountId string `json:"ad_account_id"`
+	AdAccountId string `json:"ad_account_id" validate:"regexp=^\\\\d+$"`
 	// Campaign name.
 	Name string `json:"name"`
 	Status *EntityStatus `json:"status,omitempty"`
@@ -32,19 +32,18 @@ type CampaignCreateRequest struct {
 	// Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
 	DailySpendCap NullableInt32 `json:"daily_spend_cap,omitempty"`
 	// Order line ID that appears on the invoice.
-	OrderLineId NullableString `json:"order_line_id,omitempty"`
-	TrackingUrls NullableAdCommonTrackingUrls `json:"tracking_urls,omitempty"`
+	OrderLineId NullableString `json:"order_line_id,omitempty" validate:"regexp=^\\\\d+$"`
+	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
 	// Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	StartTime NullableInt32 `json:"start_time,omitempty"`
 	// Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	EndTime NullableInt32 `json:"end_time,omitempty"`
-	SummaryStatus *CampaignSummaryStatus `json:"summary_status,omitempty"`
 	// Determine if a campaign has flexible daily budgets setup.
-	IsFlexibleDailyBudgets *bool `json:"is_flexible_daily_budgets,omitempty"`
+	IsFlexibleDailyBudgets NullableBool `json:"is_flexible_daily_budgets,omitempty"`
 	// When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
 	DefaultAdGroupBudgetInMicroCurrency NullableInt32 `json:"default_ad_group_budget_in_micro_currency,omitempty"`
 	// Specifies whether the campaign was created in the automated campaign flow
-	IsAutomatedCampaign *bool `json:"is_automated_campaign,omitempty"`
+	IsAutomatedCampaign NullableBool `json:"is_automated_campaign,omitempty"`
 	ObjectiveType ObjectiveType `json:"objective_type"`
 }
 
@@ -61,9 +60,9 @@ func NewCampaignCreateRequest(adAccountId string, name string, objectiveType Obj
 	var status EntityStatus = ACTIVE
 	this.Status = &status
 	var isFlexibleDailyBudgets bool = false
-	this.IsFlexibleDailyBudgets = &isFlexibleDailyBudgets
+	this.IsFlexibleDailyBudgets = *NewNullableBool(&isFlexibleDailyBudgets)
 	var isAutomatedCampaign bool = false
-	this.IsAutomatedCampaign = &isAutomatedCampaign
+	this.IsAutomatedCampaign = *NewNullableBool(&isAutomatedCampaign)
 	this.ObjectiveType = objectiveType
 	return &this
 }
@@ -76,9 +75,9 @@ func NewCampaignCreateRequestWithDefaults() *CampaignCreateRequest {
 	var status EntityStatus = ACTIVE
 	this.Status = &status
 	var isFlexibleDailyBudgets bool = false
-	this.IsFlexibleDailyBudgets = &isFlexibleDailyBudgets
+	this.IsFlexibleDailyBudgets = *NewNullableBool(&isFlexibleDailyBudgets)
 	var isAutomatedCampaign bool = false
-	this.IsAutomatedCampaign = &isAutomatedCampaign
+	this.IsAutomatedCampaign = *NewNullableBool(&isAutomatedCampaign)
 	return &this
 }
 
@@ -289,9 +288,9 @@ func (o *CampaignCreateRequest) UnsetOrderLineId() {
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CampaignCreateRequest) GetTrackingUrls() AdCommonTrackingUrls {
+func (o *CampaignCreateRequest) GetTrackingUrls() TrackingUrls {
 	if o == nil || IsNil(o.TrackingUrls.Get()) {
-		var ret AdCommonTrackingUrls
+		var ret TrackingUrls
 		return ret
 	}
 	return *o.TrackingUrls.Get()
@@ -300,7 +299,7 @@ func (o *CampaignCreateRequest) GetTrackingUrls() AdCommonTrackingUrls {
 // GetTrackingUrlsOk returns a tuple with the TrackingUrls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CampaignCreateRequest) GetTrackingUrlsOk() (*AdCommonTrackingUrls, bool) {
+func (o *CampaignCreateRequest) GetTrackingUrlsOk() (*TrackingUrls, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -316,8 +315,8 @@ func (o *CampaignCreateRequest) HasTrackingUrls() bool {
 	return false
 }
 
-// SetTrackingUrls gets a reference to the given NullableAdCommonTrackingUrls and assigns it to the TrackingUrls field.
-func (o *CampaignCreateRequest) SetTrackingUrls(v AdCommonTrackingUrls) {
+// SetTrackingUrls gets a reference to the given NullableTrackingUrls and assigns it to the TrackingUrls field.
+func (o *CampaignCreateRequest) SetTrackingUrls(v TrackingUrls) {
 	o.TrackingUrls.Set(&v)
 }
 // SetTrackingUrlsNil sets the value for TrackingUrls to be an explicit nil
@@ -414,68 +413,46 @@ func (o *CampaignCreateRequest) UnsetEndTime() {
 	o.EndTime.Unset()
 }
 
-// GetSummaryStatus returns the SummaryStatus field value if set, zero value otherwise.
-func (o *CampaignCreateRequest) GetSummaryStatus() CampaignSummaryStatus {
-	if o == nil || IsNil(o.SummaryStatus) {
-		var ret CampaignSummaryStatus
-		return ret
-	}
-	return *o.SummaryStatus
-}
-
-// GetSummaryStatusOk returns a tuple with the SummaryStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CampaignCreateRequest) GetSummaryStatusOk() (*CampaignSummaryStatus, bool) {
-	if o == nil || IsNil(o.SummaryStatus) {
-		return nil, false
-	}
-	return o.SummaryStatus, true
-}
-
-// HasSummaryStatus returns a boolean if a field has been set.
-func (o *CampaignCreateRequest) HasSummaryStatus() bool {
-	if o != nil && !IsNil(o.SummaryStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetSummaryStatus gets a reference to the given CampaignSummaryStatus and assigns it to the SummaryStatus field.
-func (o *CampaignCreateRequest) SetSummaryStatus(v CampaignSummaryStatus) {
-	o.SummaryStatus = &v
-}
-
-// GetIsFlexibleDailyBudgets returns the IsFlexibleDailyBudgets field value if set, zero value otherwise.
+// GetIsFlexibleDailyBudgets returns the IsFlexibleDailyBudgets field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignCreateRequest) GetIsFlexibleDailyBudgets() bool {
-	if o == nil || IsNil(o.IsFlexibleDailyBudgets) {
+	if o == nil || IsNil(o.IsFlexibleDailyBudgets.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsFlexibleDailyBudgets
+	return *o.IsFlexibleDailyBudgets.Get()
 }
 
 // GetIsFlexibleDailyBudgetsOk returns a tuple with the IsFlexibleDailyBudgets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignCreateRequest) GetIsFlexibleDailyBudgetsOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsFlexibleDailyBudgets) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsFlexibleDailyBudgets, true
+	return o.IsFlexibleDailyBudgets.Get(), o.IsFlexibleDailyBudgets.IsSet()
 }
 
 // HasIsFlexibleDailyBudgets returns a boolean if a field has been set.
 func (o *CampaignCreateRequest) HasIsFlexibleDailyBudgets() bool {
-	if o != nil && !IsNil(o.IsFlexibleDailyBudgets) {
+	if o != nil && o.IsFlexibleDailyBudgets.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsFlexibleDailyBudgets gets a reference to the given bool and assigns it to the IsFlexibleDailyBudgets field.
+// SetIsFlexibleDailyBudgets gets a reference to the given NullableBool and assigns it to the IsFlexibleDailyBudgets field.
 func (o *CampaignCreateRequest) SetIsFlexibleDailyBudgets(v bool) {
-	o.IsFlexibleDailyBudgets = &v
+	o.IsFlexibleDailyBudgets.Set(&v)
+}
+// SetIsFlexibleDailyBudgetsNil sets the value for IsFlexibleDailyBudgets to be an explicit nil
+func (o *CampaignCreateRequest) SetIsFlexibleDailyBudgetsNil() {
+	o.IsFlexibleDailyBudgets.Set(nil)
+}
+
+// UnsetIsFlexibleDailyBudgets ensures that no value is present for IsFlexibleDailyBudgets, not even an explicit nil
+func (o *CampaignCreateRequest) UnsetIsFlexibleDailyBudgets() {
+	o.IsFlexibleDailyBudgets.Unset()
 }
 
 // GetDefaultAdGroupBudgetInMicroCurrency returns the DefaultAdGroupBudgetInMicroCurrency field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -520,36 +497,46 @@ func (o *CampaignCreateRequest) UnsetDefaultAdGroupBudgetInMicroCurrency() {
 	o.DefaultAdGroupBudgetInMicroCurrency.Unset()
 }
 
-// GetIsAutomatedCampaign returns the IsAutomatedCampaign field value if set, zero value otherwise.
+// GetIsAutomatedCampaign returns the IsAutomatedCampaign field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignCreateRequest) GetIsAutomatedCampaign() bool {
-	if o == nil || IsNil(o.IsAutomatedCampaign) {
+	if o == nil || IsNil(o.IsAutomatedCampaign.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsAutomatedCampaign
+	return *o.IsAutomatedCampaign.Get()
 }
 
 // GetIsAutomatedCampaignOk returns a tuple with the IsAutomatedCampaign field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignCreateRequest) GetIsAutomatedCampaignOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAutomatedCampaign) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsAutomatedCampaign, true
+	return o.IsAutomatedCampaign.Get(), o.IsAutomatedCampaign.IsSet()
 }
 
 // HasIsAutomatedCampaign returns a boolean if a field has been set.
 func (o *CampaignCreateRequest) HasIsAutomatedCampaign() bool {
-	if o != nil && !IsNil(o.IsAutomatedCampaign) {
+	if o != nil && o.IsAutomatedCampaign.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsAutomatedCampaign gets a reference to the given bool and assigns it to the IsAutomatedCampaign field.
+// SetIsAutomatedCampaign gets a reference to the given NullableBool and assigns it to the IsAutomatedCampaign field.
 func (o *CampaignCreateRequest) SetIsAutomatedCampaign(v bool) {
-	o.IsAutomatedCampaign = &v
+	o.IsAutomatedCampaign.Set(&v)
+}
+// SetIsAutomatedCampaignNil sets the value for IsAutomatedCampaign to be an explicit nil
+func (o *CampaignCreateRequest) SetIsAutomatedCampaignNil() {
+	o.IsAutomatedCampaign.Set(nil)
+}
+
+// UnsetIsAutomatedCampaign ensures that no value is present for IsAutomatedCampaign, not even an explicit nil
+func (o *CampaignCreateRequest) UnsetIsAutomatedCampaign() {
+	o.IsAutomatedCampaign.Unset()
 }
 
 // GetObjectiveType returns the ObjectiveType field value
@@ -609,17 +596,14 @@ func (o CampaignCreateRequest) ToMap() (map[string]interface{}, error) {
 	if o.EndTime.IsSet() {
 		toSerialize["end_time"] = o.EndTime.Get()
 	}
-	if !IsNil(o.SummaryStatus) {
-		toSerialize["summary_status"] = o.SummaryStatus
-	}
-	if !IsNil(o.IsFlexibleDailyBudgets) {
-		toSerialize["is_flexible_daily_budgets"] = o.IsFlexibleDailyBudgets
+	if o.IsFlexibleDailyBudgets.IsSet() {
+		toSerialize["is_flexible_daily_budgets"] = o.IsFlexibleDailyBudgets.Get()
 	}
 	if o.DefaultAdGroupBudgetInMicroCurrency.IsSet() {
 		toSerialize["default_ad_group_budget_in_micro_currency"] = o.DefaultAdGroupBudgetInMicroCurrency.Get()
 	}
-	if !IsNil(o.IsAutomatedCampaign) {
-		toSerialize["is_automated_campaign"] = o.IsAutomatedCampaign
+	if o.IsAutomatedCampaign.IsSet() {
+		toSerialize["is_automated_campaign"] = o.IsAutomatedCampaign.Get()
 	}
 	toSerialize["objective_type"] = o.ObjectiveType
 	return toSerialize, nil

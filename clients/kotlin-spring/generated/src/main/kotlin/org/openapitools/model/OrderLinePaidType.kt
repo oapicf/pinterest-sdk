@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,14 +17,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Order Line Paid Type
-* Values: PAID,BONUS,MAKE_GOOD,TEST,`null`
+* Values: PAID,BONUS,MAKE_GOOD,TEST
 */
-enum class OrderLinePaidType(val value: kotlin.String) {
+enum class OrderLinePaidType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("PAID") PAID("PAID"),
-    @JsonProperty("BONUS") BONUS("BONUS"),
-    @JsonProperty("MAKE_GOOD") MAKE_GOOD("MAKE_GOOD"),
-    @JsonProperty("TEST") TEST("TEST"),
-    @JsonProperty("null") `null`("null")
+    PAID("PAID"),
+    BONUS("BONUS"),
+    MAKE_GOOD("MAKE_GOOD"),
+    TEST("TEST");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): OrderLinePaidType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

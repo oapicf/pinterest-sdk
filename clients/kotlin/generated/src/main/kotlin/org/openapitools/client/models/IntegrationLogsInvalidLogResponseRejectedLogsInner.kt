@@ -47,5 +47,8 @@ data class IntegrationLogsInvalidLogResponseRejectedLogsInner (
     @Json(name = "log_index")
     val logIndex: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

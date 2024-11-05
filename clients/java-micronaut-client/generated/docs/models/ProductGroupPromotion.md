@@ -22,11 +22,9 @@ Name | Type | Description | Notes
 **trackingUrl** | `String` | Tracking template for proudct group promotions. 4000 limit |  [optional property]
 **catalogProductGroupId** | `String` | ID of the catalogs product group that this product group promotion references |  [optional property]
 **catalogProductGroupName** | `String` | Catalogs product group name |  [optional property]
-**creativeType** | `CreativeType` |  |  [optional property]
 **collectionsHeroPinId** | `String` | Hero Pin ID if this PG is promoted as a Collection |  [optional property]
 **collectionsHeroDestinationUrl** | `String` | Collections Hero Destination Url |  [optional property]
 **gridClickType** | `GridClickType` |  |  [optional property]
-
 
 
 

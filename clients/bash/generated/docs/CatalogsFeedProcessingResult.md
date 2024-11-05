@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdUnderscoreat** | **string** |  | [optional] [default to null]
-**id** | **string** |  | [optional] [default to null]
-**updatedUnderscoreat** | **string** |  | [optional] [default to null]
+**createdUnderscoreat** | **string** |  | [default to null]
+**id** | **string** |  | [default to null]
+**updatedUnderscoreat** | **string** |  | [default to null]
 **ingestionUnderscoredetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | [default to null]
 **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | [default to null]
 **productUnderscorecounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | [default to null]

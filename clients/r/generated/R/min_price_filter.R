@@ -15,27 +15,23 @@ MinPriceFilter <- R6::R6Class(
   "MinPriceFilter",
   public = list(
     `MIN_PRICE` = NULL,
-    #' Initialize a new MinPriceFilter class.
-    #'
+
     #' @description
     #' Initialize a new MinPriceFilter class.
     #'
     #' @param MIN_PRICE MIN_PRICE
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`MIN_PRICE`, ...) {
       if (!missing(`MIN_PRICE`)) {
         stopifnot(R6::is.R6(`MIN_PRICE`))
         self$`MIN_PRICE` <- `MIN_PRICE`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return MinPriceFilter in JSON format
-    #' @export
     toJSON = function() {
       MinPriceFilterObject <- list()
       if (!is.null(self$`MIN_PRICE`)) {
@@ -44,14 +40,12 @@ MinPriceFilter <- R6::R6Class(
       }
       MinPriceFilterObject
     },
-    #' Deserialize JSON string into an instance of MinPriceFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of MinPriceFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of MinPriceFilter
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`MIN_PRICE`)) {
@@ -61,13 +55,11 @@ MinPriceFilter <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return MinPriceFilter in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`MIN_PRICE`)) {
@@ -82,26 +74,22 @@ MinPriceFilter <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of MinPriceFilter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of MinPriceFilter
     #'
     #' @param input_json the JSON input
     #' @return the instance of MinPriceFilter
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`MIN_PRICE` <- CatalogsProductGroupPricingCriteria$new()$fromJSON(jsonlite::toJSON(this_object$`MIN_PRICE`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to MinPriceFilter
-    #'
+
     #' @description
     #' Validate JSON input with respect to MinPriceFilter and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `MIN_PRICE`
@@ -111,23 +99,19 @@ MinPriceFilter <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for MinPriceFilter: the required field `MIN_PRICE` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of MinPriceFilter
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `MIN_PRICE` is null
       if (is.null(self$`MIN_PRICE`)) {
@@ -136,13 +120,11 @@ MinPriceFilter <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `MIN_PRICE` is null
@@ -152,12 +134,9 @@ MinPriceFilter <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

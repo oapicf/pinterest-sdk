@@ -10,21 +10,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BatchOperation;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteDiscontinuedBatchRecord;
-import org.openapitools.model.Language;
 
 /**
  * Request object to discontinue catalogs items
  */
 @ApiModel(description = "Request object to discontinue catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   @JsonProperty("country")
   private Country country;
 
   @JsonProperty("language")
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("operation")
   private BatchOperation operation;
@@ -50,7 +50,7 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsItemsDeleteDiscontinuedBatchRequest language(Language language) {
+  public CatalogsItemsDeleteDiscontinuedBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -60,11 +60,11 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
    * @return language
   **/
   @ApiModelProperty(required = true, value = "")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

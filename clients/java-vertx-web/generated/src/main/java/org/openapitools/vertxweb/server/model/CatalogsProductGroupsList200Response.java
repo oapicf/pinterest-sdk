@@ -7,29 +7,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.vertxweb.server.model.CatalogsVerticalProductGroup;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupsList200Response   {
   
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<CatalogsVerticalProductGroup> items = new ArrayList<>();
   private String bookmark;
 
   public CatalogsProductGroupsList200Response () {
 
   }
 
-  public CatalogsProductGroupsList200Response (List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items, String bookmark) {
+  public CatalogsProductGroupsList200Response (List<CatalogsVerticalProductGroup> items, String bookmark) {
     this.items = items;
     this.bookmark = bookmark;
   }
 
     
   @JsonProperty("items")
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<CatalogsVerticalProductGroup> getItems() {
     return items;
   }
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 

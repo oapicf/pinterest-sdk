@@ -26,7 +26,7 @@ public enum CatalogsProductGroupType {
   
   SHOPIFY_COLLECTIONS("SHOPIFY_COLLECTIONS"),
   
-  I2PC("I2PC");
+  I2_PC("I2PC");
 
   private final String value;
 

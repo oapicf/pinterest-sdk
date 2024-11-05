@@ -400,4 +400,12 @@ public class ItemAttributesTest {
         // TODO: test imageLink
     }
 
+    /**
+     * Test the property 'videoLink'
+     */
+    @Test
+    public void videoLinkTest() {
+        // TODO: test videoLink
+    }
+
 }

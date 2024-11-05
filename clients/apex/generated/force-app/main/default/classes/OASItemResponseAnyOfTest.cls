@@ -76,6 +76,7 @@ private class OASItemResponseAnyOfTest {
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('itemId', x-property-mappings.get('item_id'));
         System.assertEquals('hotelId', x-property-mappings.get('hotel_id'));
+        System.assertEquals('creativeAssetsId', x-property-mappings.get('creative_assets_id'));
     }
 
     @isTest
@@ -86,5 +87,6 @@ private class OASItemResponseAnyOfTest {
         System.assertEquals(null, itemResponseAnyOf.itemId);
         System.assertEquals(null, itemResponseAnyOf.attributes);
         System.assertEquals(null, itemResponseAnyOf.hotelId);
+        System.assertEquals(null, itemResponseAnyOf.creativeAssetsId);
     }
 }

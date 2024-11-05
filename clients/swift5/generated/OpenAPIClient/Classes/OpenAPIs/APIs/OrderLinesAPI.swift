@@ -79,7 +79,7 @@ open class OrderLinesAPI {
      Get order lines
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -105,7 +105,7 @@ open class OrderLinesAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - returns: RequestBuilder<OrderLinesList200Response> 

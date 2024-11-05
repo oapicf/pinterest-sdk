@@ -37,5 +37,8 @@ data class AdGroupAudienceSizingResponse (
     @Json(name = "audience_size_upper_bound")
     val audienceSizeUpperBound: java.math.BigDecimal? = null
 
-)
+) {
+
+
+}
 

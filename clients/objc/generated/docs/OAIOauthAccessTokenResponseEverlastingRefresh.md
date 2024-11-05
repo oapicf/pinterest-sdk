@@ -3,6 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**responseType** | **NSString*** |  | [optional] 
+**accessToken** | **NSString*** |  | 
+**tokenType** | **NSString*** |  | [default to @"bearer"]
+**expiresIn** | **NSNumber*** |  | 
+**scope** | **NSString*** |  | 
 **refreshToken** | **NSString*** |  | 
 **refreshTokenExpiresIn** | **NSNumber*** |  | 
 **refreshTokenExpiresAt** | **NSNumber*** |  | 

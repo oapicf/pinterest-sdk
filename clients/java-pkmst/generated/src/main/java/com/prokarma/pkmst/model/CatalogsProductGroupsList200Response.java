@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.prokarma.pkmst.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import com.prokarma.pkmst.model.CatalogsVerticalProductGroup;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -20,21 +20,21 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CatalogsProductGroupsList200Response
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsList200Response   {
   @JsonProperty("items")
   
-  private List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
+  private List<CatalogsVerticalProductGroup> items = new ArrayList<>();
 
   @JsonProperty("bookmark")
   private String bookmark;
 
-  public CatalogsProductGroupsList200Response items(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response items(List<CatalogsVerticalProductGroup> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsProductGroupsList200Response addItemsItem(CatalogsProductGroupsList200ResponseAllOfItemsInner itemsItem) {
+  public CatalogsProductGroupsList200Response addItemsItem(CatalogsVerticalProductGroup itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -42,16 +42,16 @@ public class CatalogsProductGroupsList200Response   {
     return this;
   }
 
-   /**
+  /**
    * Get items
    * @return items
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  public List<CatalogsVerticalProductGroup> getItems() {
     return items;
   }
 
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 
@@ -60,10 +60,10 @@ public class CatalogsProductGroupsList200Response   {
     return this;
   }
 
-   /**
+  /**
    * Get bookmark
    * @return bookmark
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getBookmark() {
     return bookmark;

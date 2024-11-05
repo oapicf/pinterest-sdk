@@ -42,5 +42,8 @@ data class PinAnalyticsMetricsResponseDailyMetricsInner (
     @Json(name = "metrics")
     val metrics: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>? = null
 
-)
+) {
+
+
+}
 

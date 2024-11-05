@@ -11,7 +11,7 @@ import org.openapitools.model.OrderLineError;
 @Canonical
 class OrderLineResponse {
     /* Error list if update(s) fail. */
-    List<OrderLineError> errors
+    List<OrderLineError> errors = new ArrayList<>()
     /* Order Line object array. */
-    List<OrderLine> orderLine
+    List<OrderLine> orderLine = new ArrayList<>()
 }

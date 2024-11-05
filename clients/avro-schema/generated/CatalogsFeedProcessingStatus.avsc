@@ -5,12 +5,7 @@
   "name": "CatalogsFeedProcessingStatus",
   "symbols": [
     "COMPLETED",
-    "COMPLETED_EARLY",
-    "DISAPPROVED",
     "FAILED",
-    "PROCESSING",
-    "QUEUED_FOR_PROCESSING",
-    "UNDER_APPEAL",
-    "UNDER_REVIEW"
+    "PROCESSING"
   ]
 }

@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * CatalogsFeedProcessingResult
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedProcessingResult {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -51,7 +51,10 @@ public class CatalogsFeedProcessingResult {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsFeedProcessingResult(CatalogsFeedIngestionDetails ingestionDetails, CatalogsFeedProcessingStatus status, CatalogsFeedProductCounts productCounts, CatalogsFeedValidationDetails validationDetails) {
+  public CatalogsFeedProcessingResult(Date createdAt, String id, Date updatedAt, CatalogsFeedIngestionDetails ingestionDetails, CatalogsFeedProcessingStatus status, CatalogsFeedProductCounts productCounts, CatalogsFeedValidationDetails validationDetails) {
+    this.createdAt = createdAt;
+    this.id = id;
+    this.updatedAt = updatedAt;
     this.ingestionDetails = ingestionDetails;
     this.status = status;
     this.productCounts = JsonNullable.of(productCounts);
@@ -66,9 +69,9 @@ public class CatalogsFeedProcessingResult {
   /**
    * Get createdAt
    * @return createdAt
-  */
-  @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -86,9 +89,9 @@ public class CatalogsFeedProcessingResult {
   /**
    * Get id
    * @return id
-  */
-  
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull 
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -106,9 +109,9 @@ public class CatalogsFeedProcessingResult {
   /**
    * Get updatedAt
    * @return updatedAt
-  */
-  @Valid 
-  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -126,7 +129,7 @@ public class CatalogsFeedProcessingResult {
   /**
    * Get ingestionDetails
    * @return ingestionDetails
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "ingestion_details", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ingestion_details")
@@ -146,7 +149,7 @@ public class CatalogsFeedProcessingResult {
   /**
    * Get status
    * @return status
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("status")
@@ -166,7 +169,7 @@ public class CatalogsFeedProcessingResult {
   /**
    * Get productCounts
    * @return productCounts
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "product_counts", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_counts")
@@ -186,7 +189,7 @@ public class CatalogsFeedProcessingResult {
   /**
    * Get validationDetails
    * @return validationDetails
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "validation_details", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("validation_details")

@@ -7,7 +7,7 @@ goog.provide('API.Client.CatalogsRetailBatchRequest');
 API.Client.CatalogsRetailBatchRequest = function() {}
 
 /**
- * @type {!API.Client.CatalogsType}
+ * @type {!string}
  * @export
  */
 API.Client.CatalogsRetailBatchRequest.prototype.catalogType;
@@ -19,7 +19,7 @@ API.Client.CatalogsRetailBatchRequest.prototype.catalogType;
 API.Client.CatalogsRetailBatchRequest.prototype.country;
 
 /**
- * @type {!API.Client.Language}
+ * @type {!API.Client.CatalogsItemsRequest_language}
  * @export
  */
 API.Client.CatalogsRetailBatchRequest.prototype.language;
@@ -31,3 +31,7 @@ API.Client.CatalogsRetailBatchRequest.prototype.language;
  */
 API.Client.CatalogsRetailBatchRequest.prototype.items;
 
+/** @enum {string} */
+API.Client.CatalogsRetailBatchRequest.CatalogTypeEnum = { 
+  RETAIL: 'RETAIL',
+}

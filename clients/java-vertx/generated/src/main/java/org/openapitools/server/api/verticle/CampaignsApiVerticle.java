@@ -8,7 +8,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType;
+import org.openapitools.server.api.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.server.api.model.CampaignCreateRequest;
 import org.openapitools.server.api.model.CampaignCreateResponse;
 import org.openapitools.server.api.model.CampaignResponse;
@@ -86,8 +86,8 @@ public class CampaignsApiVerticle extends AbstractVerticle {
                     manageError(message, new MainApiException(400, "targeting_types is required"), serviceId);
                     return;
                 }
-                List<AdsAnalyticsTargetingType> targetingTypes = Json.mapper.readValue(targetingTypesParam.encode(),
-                    Json.mapper.getTypeFactory().constructCollectionType(List.class, AdsAnalyticsTargetingType.class));
+                List<AdsAnalyticsCampaignTargetingType> targetingTypes = Json.mapper.readValue(targetingTypesParam.encode(),
+                    Json.mapper.getTypeFactory().constructCollectionType(List.class, AdsAnalyticsCampaignTargetingType.class));
                 JsonArray columnsParam = message.body().getJsonArray("columns");
                 if(columnsParam == null) {
                     manageError(message, new MainApiException(400, "columns is required"), serviceId);

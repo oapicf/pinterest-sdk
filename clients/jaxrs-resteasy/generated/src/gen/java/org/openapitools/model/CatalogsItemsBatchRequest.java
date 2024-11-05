@@ -17,17 +17,16 @@ import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsItemsUpdateBatchRequest;
 import org.openapitools.model.CatalogsItemsUpsertBatchRequest;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
-import org.openapitools.model.Language;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Request object of catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@ApiModel(description="Request object of catalogs items batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsItemsCreateBatchRequest.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsItemsDeleteBatchRequest.class, name = "DELETE"),
@@ -39,7 +38,7 @@ import javax.validation.Valid;
 public class CatalogsItemsBatchRequest   {
   
   private Country country;
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
   private BatchOperation operation;
   private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
@@ -64,10 +63,10 @@ public class CatalogsItemsBatchRequest   {
   @JsonProperty("language")
   @NotNull
   @Valid
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

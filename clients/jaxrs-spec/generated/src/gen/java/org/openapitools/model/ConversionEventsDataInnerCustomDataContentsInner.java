@@ -16,14 +16,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ConversionEvents_data_inner_custom_data_contents_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInnerCustomDataContentsInner   {
-  private @Valid String id;
-  private @Valid String itemPrice;
-  private @Valid Long quantity;
-  private @Valid String itemName;
-  private @Valid String itemCategory;
-  private @Valid String itemBrand;
+  private String id;
+  private String itemPrice;
+  private Long quantity;
+  private String itemName;
+  private String itemCategory;
+  private String itemBrand;
 
   /**
    * The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).

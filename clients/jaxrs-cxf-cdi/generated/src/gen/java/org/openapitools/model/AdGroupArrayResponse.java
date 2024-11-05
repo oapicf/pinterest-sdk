@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class AdGroupArrayResponse   {
   
-  private List<@Valid AdGroupArrayResponseElement> items;
+  private List<@Valid AdGroupArrayResponseElement> items = new ArrayList<>();
 
   /**
    **/

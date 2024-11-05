@@ -16,7 +16,7 @@
 #include "../model/product_group_promotion_response_item.h"
 product_group_promotion_response_item_t* instantiate_product_group_promotion_response_item(int include_optional);
 
-#include "test_product_group_promotion.c"
+#include "test_product_group_promotion_response_element.c"
 
 
 product_group_promotion_response_item_t* instantiate_product_group_promotion_response_item(int include_optional) {
@@ -24,7 +24,7 @@ product_group_promotion_response_item_t* instantiate_product_group_promotion_res
   if (include_optional) {
     product_group_promotion_response_item = product_group_promotion_response_item_create(
        // false, not to have infinite recursion
-      instantiate_product_group_promotion(0),
+      instantiate_product_group_promotion_response_element(0),
       list_createList()
     );
   } else {

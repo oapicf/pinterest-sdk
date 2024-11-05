@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.AdCommonTrackingUrls;
-import org.openapitools.vertxweb.server.model.CampaignSummaryStatus;
 import org.openapitools.vertxweb.server.model.EntityStatus;
+import org.openapitools.vertxweb.server.model.TrackingUrls;
 
 /**
  * Campaign Data
@@ -21,16 +20,16 @@ public class CampaignCommon   {
   private Integer lifetimeSpendCap;
   private Integer dailySpendCap;
   private String orderLineId;
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private Integer startTime;
   private Integer endTime;
-  private CampaignSummaryStatus summaryStatus;
+  private Boolean isFlexibleDailyBudgets;
 
   public CampaignCommon () {
 
   }
 
-  public CampaignCommon (String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, AdCommonTrackingUrls trackingUrls, Integer startTime, Integer endTime, CampaignSummaryStatus summaryStatus) {
+  public CampaignCommon (String adAccountId, String name, EntityStatus status, Integer lifetimeSpendCap, Integer dailySpendCap, String orderLineId, TrackingUrls trackingUrls, Integer startTime, Integer endTime, Boolean isFlexibleDailyBudgets) {
     this.adAccountId = adAccountId;
     this.name = name;
     this.status = status;
@@ -40,7 +39,7 @@ public class CampaignCommon   {
     this.trackingUrls = trackingUrls;
     this.startTime = startTime;
     this.endTime = endTime;
-    this.summaryStatus = summaryStatus;
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
     
@@ -99,10 +98,10 @@ public class CampaignCommon   {
 
     
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -125,12 +124,12 @@ public class CampaignCommon   {
   }
 
     
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  @JsonProperty("is_flexible_daily_budgets")
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
   }
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
 
@@ -152,12 +151,12 @@ public class CampaignCommon   {
         Objects.equals(trackingUrls, campaignCommon.trackingUrls) &&
         Objects.equals(startTime, campaignCommon.startTime) &&
         Objects.equals(endTime, campaignCommon.endTime) &&
-        Objects.equals(summaryStatus, campaignCommon.summaryStatus);
+        Objects.equals(isFlexibleDailyBudgets, campaignCommon.isFlexibleDailyBudgets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets);
   }
 
   @Override
@@ -174,7 +173,7 @@ public class CampaignCommon   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("}");
     return sb.toString();
   }

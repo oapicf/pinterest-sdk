@@ -31,7 +31,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the resources API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ResourcesApi  {
 
     @Inject ResourcesApiService service;
@@ -57,7 +57,7 @@ public class ResourcesApi  {
     @Path("/delivery_metrics")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get available metrics' definitions", notes = "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.", response = DeliveryMetricsResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get available metrics' definitions", notes = "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.", response = DeliveryMetricsResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @io.swagger.annotations.AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
@@ -93,7 +93,7 @@ public class ResourcesApi  {
     @Path("/lead_form_questions")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get lead form questions", notes = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get lead form questions", notes = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.")
         })
@@ -136,8 +136,8 @@ public class ResourcesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = Object.class, responseContainer = "List"),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response targetingOptionsGet( @PathParam("targeting_type") String targetingType, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("client_id") String clientId, @QueryParam("oauth_signature") String oauthSignature, @Pattern(regexp="\\d+") @QueryParam("timestamp") String timestamp,@Context SecurityContext securityContext)
+    public Response targetingOptionsGet( @PathParam("targeting_type") String targetingType, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("client_id") String clientId, @QueryParam("oauth_signature") String oauthSignature, @Pattern(regexp="\\d+") @QueryParam("timestamp") String timestamp, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.targetingOptionsGet(targetingType,clientId,oauthSignature,timestamp,securityContext);
+        return service.targetingOptionsGet(targetingType,clientId,oauthSignature,timestamp,adAccountId,securityContext);
     }
 }

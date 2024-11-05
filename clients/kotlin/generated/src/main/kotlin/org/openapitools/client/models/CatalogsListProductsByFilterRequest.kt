@@ -15,8 +15,11 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsListProductsByFilterRequestOneOf
+import org.openapitools.client.models.CatalogsListProductsByFeedBasedFilter
+import org.openapitools.client.models.CatalogsLocale
 import org.openapitools.client.models.CatalogsProductGroupFilters
+import org.openapitools.client.models.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+import org.openapitools.client.models.Country
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -26,6 +29,10 @@ import com.squareup.moshi.JsonClass
  *
  * @param feedId Catalog Feed id pertaining to the catalog product group filter.
  * @param filters 
+ * @param catalogType 
+ * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param country 
+ * @param locale 
  */
 
 
@@ -36,7 +43,23 @@ data class CatalogsListProductsByFilterRequest (
     val feedId: kotlin.String,
 
     @Json(name = "filters")
-    val filters: CatalogsProductGroupFilters
+    val filters: CatalogsProductGroupFilters,
 
-)
+    @Json(name = "catalog_type")
+    override val catalogType: CatalogsListProductsByFilterRequest.CatalogType,
+
+    /* Catalog id pertaining to the creative assets product group. */
+    @Json(name = "catalog_id")
+    override val catalogId: kotlin.String,
+
+    @Json(name = "country")
+    override val country: Country,
+
+    @Json(name = "locale")
+    override val locale: CatalogsLocale
+
+) {
+
+
+}
 

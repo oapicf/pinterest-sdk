@@ -25,8 +25,10 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface PinsApiService {
+      Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds,Date startDate,Date endDate,List<PinsAnalyticsMetricTypesParameterInner> metricTypes,String appTypes,String adAccountId,SecurityContext securityContext)
+      throws NotFoundException;
       Response pinsAnalytics(String pinId,Date startDate,Date endDate,List<PinsAnalyticsMetricTypesParameterInner> metricTypes,String appTypes,String splitField,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
       Response pinsCreate(PinCreate pinCreate,String adAccountId,SecurityContext securityContext)

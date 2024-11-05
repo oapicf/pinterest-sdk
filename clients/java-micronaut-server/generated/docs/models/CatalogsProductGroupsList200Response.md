@@ -8,7 +8,7 @@ The class is defined in **[CatalogsProductGroupsList200Response.java](../../src/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;CatalogsProductGroupsList200ResponseAllOfItemsInner&gt;`](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**items** | [`List&lt;CatalogsVerticalProductGroup&gt;`](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | `String` |  |  [optional property]
 
 

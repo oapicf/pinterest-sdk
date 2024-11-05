@@ -6,7 +6,7 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **mediaType** | media_type | text |  | **kotlin.String** |  |  [optional]
-**images** | images | long |  | [**ImageMetadataImages**](ImageMetadataImages.md) |  |  [optional] [foreignkey]
+**images** | images | long |  | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  |  [optional] [foreignkey]
 
 
 

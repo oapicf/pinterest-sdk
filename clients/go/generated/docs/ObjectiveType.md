@@ -15,6 +15,8 @@
 
 * `WEB_SESSIONS` (value: `"WEB_SESSIONS"`)
 
+* `VIDEO_COMPLETION` (value: `"VIDEO_COMPLETION"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

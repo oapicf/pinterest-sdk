@@ -13,6 +13,7 @@
 #include "CatalogsFeedProcessingSchedule.h"
 #include "CatalogsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFormat.h"
+#include "CatalogsStatus.h"
 #include "CatalogsType.h"
 #include "NullableCurrency.h"
 #include "Object.h"
@@ -114,6 +115,13 @@ public:
 	/*! \brief Set Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
 	 */
 	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get 
+	 */
+	CatalogsStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(CatalogsStatus  status);
 
 private:
 	NullableCurrency default_currency;
@@ -125,6 +133,7 @@ private:
 	CatalogsFeedProcessingSchedule preferred_processing_schedule;
 	CatalogsType catalog_type;
 	std::string catalog_id;
+	CatalogsStatus status;
 	void __init();
 	void __cleanup();
 

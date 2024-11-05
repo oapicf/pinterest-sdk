@@ -12,8 +12,8 @@ import org.openapitools.server.api.model.OrderLineError;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderLineResponse   {
   
-  private List<OrderLineError> errors;
-  private List<OrderLine> orderLine;
+  private List<OrderLineError> errors = new ArrayList<>();
+  private List<OrderLine> orderLine = new ArrayList<>();
 
   public OrderLineResponse () {
 

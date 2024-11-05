@@ -58,6 +58,14 @@ class UserAccountApi implements UserAccountApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -77,7 +85,7 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **explicitFollowing** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
@@ -87,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -101,7 +109,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example Implementation
 ```php
@@ -186,6 +194,14 @@ class UserAccountApi implements UserAccountApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -205,7 +221,7 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -213,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -249,6 +265,14 @@ class UserAccountApi implements UserAccountApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -272,7 +296,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -441,6 +465,14 @@ class UserAccountApi implements UserAccountApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -478,7 +510,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -510,6 +542,14 @@ class UserAccountApi implements UserAccountApiInterface
      * Configure OAuth2 access token for authorization: pinterest_oauth2
      */
     public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
     {
         // Retrieve logged in user from $oauthToken ...
     }
@@ -551,7 +591,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -587,6 +627,14 @@ class UserAccountApi implements UserAccountApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -607,7 +655,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **string**| A valid username |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -615,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -629,7 +677,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example Implementation
 ```php
@@ -647,6 +695,14 @@ class UserAccountApi implements UserAccountApiInterface
      * Configure OAuth2 access token for authorization: pinterest_oauth2
      */
     public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
     {
         // Retrieve logged in user from $oauthToken ...
     }
@@ -677,7 +733,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -713,12 +769,20 @@ class UserAccountApi implements UserAccountApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
      * Implementation of UserAccountApiInterface#userFollowingGet
      */
-    public function userFollowingGet(?string $bookmark, int $pageSize, ?$feedType, bool $explicitFollowing, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
+    public function userFollowingGet(?string $bookmark, int $pageSize, ?UserFollowingFeedType $feedType, bool $explicitFollowing, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -732,8 +796,8 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **feedType** | **OpenAPI\Server\Model\UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional]
  **explicitFollowing** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
@@ -743,7 +807,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -798,7 +862,7 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -816,7 +880,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **verifyWebsiteUpdate**
-> OpenAPI\Server\Model\UserWebsiteSummary verifyWebsiteUpdate($userWebsiteVerifyRequest)
+> OpenAPI\Server\Model\UserWebsiteSummary verifyWebsiteUpdate($userWebsiteVerifyRequest, $adAccountId)
 
 Verify website
 
@@ -847,7 +911,7 @@ class UserAccountApi implements UserAccountApiInterface
     /**
      * Implementation of UserAccountApiInterface#verifyWebsiteUpdate
      */
-    public function verifyWebsiteUpdate(UserWebsiteVerifyRequest $userWebsiteVerifyRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function verifyWebsiteUpdate(UserWebsiteVerifyRequest $userWebsiteVerifyRequest, ?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -861,6 +925,7 @@ class UserAccountApi implements UserAccountApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | [**OpenAPI\Server\Model\UserWebsiteVerifyRequest**](../Model/UserWebsiteVerifyRequest.md)| Verify a website. |
+ **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 
@@ -878,7 +943,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **websiteVerificationGet**
-> OpenAPI\Server\Model\UserWebsiteVerificationCode websiteVerificationGet()
+> OpenAPI\Server\Model\UserWebsiteVerificationCode websiteVerificationGet($adAccountId)
 
 Get user verification code for website claiming
 
@@ -904,12 +969,20 @@ class UserAccountApi implements UserAccountApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
      * Implementation of UserAccountApiInterface#websiteVerificationGet
      */
-    public function websiteVerificationGet(int &$responseCode, array &$responseHeaders): array|object|null
+    public function websiteVerificationGet(?string $adAccountId, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -919,7 +992,10 @@ class UserAccountApi implements UserAccountApiInterface
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 
@@ -927,7 +1003,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "An item to be deleted")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsDeleteRetailItem   {
   @JsonProperty("item_id")
   private String itemId;
@@ -25,12 +25,6 @@ public class CatalogsDeleteRetailItem   {
    * Gets or Sets operation
    */
   public enum OperationEnum {
-    CREATE("CREATE"),
-    
-    UPDATE("UPDATE"),
-    
-    UPSERT("UPSERT"),
-    
     DELETE("DELETE");
 
     private String value;
@@ -64,10 +58,10 @@ public class CatalogsDeleteRetailItem   {
     return this;
   }
 
-   /**
+  /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
   public String getItemId() {
     return itemId;
@@ -82,10 +76,10 @@ public class CatalogsDeleteRetailItem   {
     return this;
   }
 
-   /**
+  /**
    * Get operation
    * @return operation
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public OperationEnum getOperation() {
     return operation;

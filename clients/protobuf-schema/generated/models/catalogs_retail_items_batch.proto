@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -23,10 +23,10 @@ message CatalogsRetailItemsBatch {
   // Id of the catalogs items batch
   string batch_id = 83519427;
 
-  // Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+  // Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
   string created_time = 392535495;
 
-  // Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+  // Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   optional string completed_time = 490032195;
 
   BatchOperationStatus status = 355610639;

@@ -3,10 +3,10 @@ package org.openapitools.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -59,7 +59,7 @@ public class CampaignResponse  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
  /**
   * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
@@ -73,9 +73,11 @@ public class CampaignResponse  {
   @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
   private Integer endTime;
 
-  @ApiModelProperty(value = "")
-  @Valid
-  private CampaignSummaryStatus summaryStatus;
+ /**
+  * Determine if a campaign has flexible daily budgets setup.
+  */
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
+  private Boolean isFlexibleDailyBudgets;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -100,16 +102,14 @@ public class CampaignResponse  {
   private String type;
 
  /**
-  * Determines if a campaign has flexible daily budgets setup.
-  */
-  @ApiModelProperty(example = "true", value = "Determines if a campaign has flexible daily budgets setup.")
-  private Boolean isFlexibleDailyBudgets;
-
- /**
   * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
   */
   @ApiModelProperty(example = "true", value = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.")
   private Boolean isCampaignBudgetOptimization;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private CampaignSummaryStatus summaryStatus;
  /**
   * Campaign ID.
   * @return id
@@ -283,21 +283,21 @@ public class CampaignResponse  {
   * @return trackingUrls
   */
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
- public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+ public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
   /**
    * Sets the <code>trackingUrls</code> property.
    */
-  public CampaignResponse trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -351,26 +351,26 @@ public class CampaignResponse  {
   }
 
  /**
-  * Get summaryStatus
-  * @return summaryStatus
+  * Determine if a campaign has flexible daily budgets setup.
+  * @return isFlexibleDailyBudgets
   */
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  @JsonProperty("is_flexible_daily_budgets")
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
   }
 
   /**
-   * Sets the <code>summaryStatus</code> property.
+   * Sets the <code>isFlexibleDailyBudgets</code> property.
    */
- public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+ public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
   /**
-   * Sets the <code>summaryStatus</code> property.
+   * Sets the <code>isFlexibleDailyBudgets</code> property.
    */
-  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
 
@@ -471,30 +471,6 @@ public class CampaignResponse  {
   }
 
  /**
-  * Determines if a campaign has flexible daily budgets setup.
-  * @return isFlexibleDailyBudgets
-  */
-  @JsonProperty("is_flexible_daily_budgets")
-  public Boolean getIsFlexibleDailyBudgets() {
-    return isFlexibleDailyBudgets;
-  }
-
-  /**
-   * Sets the <code>isFlexibleDailyBudgets</code> property.
-   */
- public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-  }
-
-  /**
-   * Sets the <code>isFlexibleDailyBudgets</code> property.
-   */
-  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-    return this;
-  }
-
- /**
   * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
   * @return isCampaignBudgetOptimization
   */
@@ -518,6 +494,30 @@ public class CampaignResponse  {
     return this;
   }
 
+ /**
+  * Get summaryStatus
+  * @return summaryStatus
+  */
+  @JsonProperty("summary_status")
+  public CampaignSummaryStatus getSummaryStatus() {
+    return summaryStatus;
+  }
+
+  /**
+   * Sets the <code>summaryStatus</code> property.
+   */
+ public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+  }
+
+  /**
+   * Sets the <code>summaryStatus</code> property.
+   */
+  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -538,18 +538,18 @@ public class CampaignResponse  {
         Objects.equals(this.trackingUrls, campaignResponse.trackingUrls) &&
         Objects.equals(this.startTime, campaignResponse.startTime) &&
         Objects.equals(this.endTime, campaignResponse.endTime) &&
-        Objects.equals(this.summaryStatus, campaignResponse.summaryStatus) &&
+        Objects.equals(this.isFlexibleDailyBudgets, campaignResponse.isFlexibleDailyBudgets) &&
         Objects.equals(this.objectiveType, campaignResponse.objectiveType) &&
         Objects.equals(this.createdTime, campaignResponse.createdTime) &&
         Objects.equals(this.updatedTime, campaignResponse.updatedTime) &&
         Objects.equals(this.type, campaignResponse.type) &&
-        Objects.equals(this.isFlexibleDailyBudgets, campaignResponse.isFlexibleDailyBudgets) &&
-        Objects.equals(this.isCampaignBudgetOptimization, campaignResponse.isCampaignBudgetOptimization);
+        Objects.equals(this.isCampaignBudgetOptimization, campaignResponse.isCampaignBudgetOptimization) &&
+        Objects.equals(this.summaryStatus, campaignResponse.summaryStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, objectiveType, createdTime, updatedTime, type, isFlexibleDailyBudgets, isCampaignBudgetOptimization);
+    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, objectiveType, createdTime, updatedTime, type, isCampaignBudgetOptimization, summaryStatus);
   }
 
   @Override
@@ -567,13 +567,13 @@ public class CampaignResponse  {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
+    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

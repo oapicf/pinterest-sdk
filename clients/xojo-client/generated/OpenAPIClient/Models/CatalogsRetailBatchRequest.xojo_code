@@ -12,7 +12,7 @@ Protected Class CatalogsRetailBatchRequest
 
 
 	#tag Property, Flags = &h0
-		language As String
+		language As OpenAPIClient.Models.CatalogsItemsRequestLanguage
 	#tag EndProperty
 
 
@@ -24,7 +24,24 @@ Protected Class CatalogsRetailBatchRequest
 	#tag EndProperty
 
 
+    #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
+        
+        Retail
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
+		  Select Case value
+		    
+		    Case Catalog_typeEnum.Retail
+		      Return "RETAIL"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -61,14 +78,6 @@ Protected Class CatalogsRetailBatchRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
@@ -81,7 +90,7 @@ Protected Class CatalogsRetailBatchRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Language"
+			Type="CatalogsItemsRequestLanguage"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

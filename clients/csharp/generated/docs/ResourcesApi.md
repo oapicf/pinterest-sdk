@@ -107,7 +107,7 @@ This endpoint does not need any parameter.
 
 Get available metrics' definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 ```csharp
@@ -297,7 +297,7 @@ catch (ApiException e)
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 ```csharp
@@ -474,7 +474,7 @@ catch (ApiException e)
 
 <a id="targetingoptionsget"></a>
 # **TargetingOptionsGet**
-> List&lt;Object&gt; TargetingOptionsGet (string targetingType, string? clientId = null, string? oauthSignature = null, string? timestamp = null)
+> List&lt;Object&gt; TargetingOptionsGet (string targetingType, string? clientId = null, string? oauthSignature = null, string? timestamp = null, string? adAccountId = null)
 
 Get targeting options
 
@@ -504,11 +504,12 @@ namespace Example
             var clientId = 1094834;  // string? | Client ID. (optional) 
             var oauthSignature = 8209f;  // string? | Oauth signature (optional) 
             var timestamp = 1618338184277;  // string? | Timestamp (optional) 
+            var adAccountId = "adAccountId_example";  // string? | Unique identifier of an ad account. (optional) 
 
             try
             {
                 // Get targeting options
-                List<Object> result = apiInstance.TargetingOptionsGet(targetingType, clientId, oauthSignature, timestamp);
+                List<Object> result = apiInstance.TargetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -529,7 +530,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get targeting options
-    ApiResponse<List<Object>> response = apiInstance.TargetingOptionsGetWithHttpInfo(targetingType, clientId, oauthSignature, timestamp);
+    ApiResponse<List<Object>> response = apiInstance.TargetingOptionsGetWithHttpInfo(targetingType, clientId, oauthSignature, timestamp, adAccountId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -550,6 +551,7 @@ catch (ApiException e)
 | **clientId** | **string?** | Client ID. | [optional]  |
 | **oauthSignature** | **string?** | Oauth signature | [optional]  |
 | **timestamp** | **string?** | Timestamp | [optional]  |
+| **adAccountId** | **string?** | Unique identifier of an ad account. | [optional]  |
 
 ### Return type
 

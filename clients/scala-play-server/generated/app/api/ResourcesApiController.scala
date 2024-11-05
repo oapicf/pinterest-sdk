@@ -11,7 +11,7 @@ import model.Error
 import model.JsObject
 import model.SingleInterestTargetingOptionResponse
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @Singleton
 class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesApi) extends AbstractController(cc) {
   /**
@@ -87,7 +87,7 @@ class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesA
   }
 
   /**
-    * GET /v5/resources/targeting/:targetingType?clientId=[value]&oauthSignature=[value]&timestamp=[value]
+    * GET /v5/resources/targeting/:targetingType?clientId=[value]&oauthSignature=[value]&timestamp=[value]&adAccountId=[value]
     * @param targetingType Public targeting type.
     */
   def targetingOptionsGet(targetingType: String): Action[AnyContent] = Action { request =>
@@ -98,7 +98,9 @@ class ResourcesApiController @Inject()(cc: ControllerComponents, api: ResourcesA
         
       val timestamp = request.getQueryString("timestamp")
         
-      api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp)
+      val adAccountId = request.getQueryString("ad_account_id")
+        
+      api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
     }
 
     val result = executeApi()

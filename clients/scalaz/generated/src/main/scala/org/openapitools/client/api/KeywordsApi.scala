@@ -122,7 +122,7 @@ object KeywordsApi {
     } yield resp
   }
 
-  def trendingKeywordsList(host: String, region: TrendsSupportedRegion, trendType: TrendType, interests: List[String] = List.empty[String] , genders: List[String] = List.empty[String] , ages: List[String] = List.empty[String] , normalizeAgainstGroup: Boolean = false, limit: Integer = 50)(implicit interestsQuery: QueryParam[List[String]], gendersQuery: QueryParam[List[String]], agesQuery: QueryParam[List[String]], normalizeAgainstGroupQuery: QueryParam[Boolean], limitQuery: QueryParam[Integer]): Task[TrendingKeywordsResponse] = {
+  def trendingKeywordsList(host: String, region: TrendsSupportedRegion, trendType: TrendType, interests: List[String] = List.empty[String] , genders: List[String] = List.empty[String] , ages: List[String] = List.empty[String] , includeKeywords: List[String] = List.empty[String] , normalizeAgainstGroup: Boolean = false, limit: Integer = 50)(implicit interestsQuery: QueryParam[List[String]], gendersQuery: QueryParam[List[String]], agesQuery: QueryParam[List[String]], includeKeywordsQuery: QueryParam[List[String]], normalizeAgainstGroupQuery: QueryParam[Boolean], limitQuery: QueryParam[Integer]): Task[TrendingKeywordsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TrendingKeywordsResponse] = jsonOf[TrendingKeywordsResponse]
 
     val path = "/trends/keywords/{region}/top/{trend_type}".replaceAll("\\{" + "region" + "\\}",escape(region.toString)).replaceAll("\\{" + "trend_type" + "\\}",escape(trendType.toString))
@@ -132,7 +132,7 @@ object KeywordsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("interests", Some(interestsQuery.toParamString(interests))), ("genders", Some(gendersQuery.toParamString(genders))), ("ages", Some(agesQuery.toParamString(ages))), ("normalizeAgainstGroup", Some(normalize_against_groupQuery.toParamString(normalize_against_group))), ("limit", Some(limitQuery.toParamString(limit))))
+      ("interests", Some(interestsQuery.toParamString(interests))), ("genders", Some(gendersQuery.toParamString(genders))), ("ages", Some(agesQuery.toParamString(ages))), ("includeKeywords", Some(include_keywordsQuery.toParamString(include_keywords))), ("normalizeAgainstGroup", Some(normalize_against_groupQuery.toParamString(normalize_against_group))), ("limit", Some(limitQuery.toParamString(limit))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -234,7 +234,7 @@ class HttpServiceKeywordsApi(service: HttpService) {
     } yield resp
   }
 
-  def trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: List[String] = List.empty[String] , genders: List[String] = List.empty[String] , ages: List[String] = List.empty[String] , normalizeAgainstGroup: Boolean = false, limit: Integer = 50)(implicit interestsQuery: QueryParam[List[String]], gendersQuery: QueryParam[List[String]], agesQuery: QueryParam[List[String]], normalizeAgainstGroupQuery: QueryParam[Boolean], limitQuery: QueryParam[Integer]): Task[TrendingKeywordsResponse] = {
+  def trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: List[String] = List.empty[String] , genders: List[String] = List.empty[String] , ages: List[String] = List.empty[String] , includeKeywords: List[String] = List.empty[String] , normalizeAgainstGroup: Boolean = false, limit: Integer = 50)(implicit interestsQuery: QueryParam[List[String]], gendersQuery: QueryParam[List[String]], agesQuery: QueryParam[List[String]], includeKeywordsQuery: QueryParam[List[String]], normalizeAgainstGroupQuery: QueryParam[Boolean], limitQuery: QueryParam[Integer]): Task[TrendingKeywordsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TrendingKeywordsResponse] = jsonOf[TrendingKeywordsResponse]
 
     val path = "/trends/keywords/{region}/top/{trend_type}".replaceAll("\\{" + "region" + "\\}",escape(region.toString)).replaceAll("\\{" + "trend_type" + "\\}",escape(trendType.toString))
@@ -244,7 +244,7 @@ class HttpServiceKeywordsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("interests", Some(interestsQuery.toParamString(interests))), ("genders", Some(gendersQuery.toParamString(genders))), ("ages", Some(agesQuery.toParamString(ages))), ("normalizeAgainstGroup", Some(normalize_against_groupQuery.toParamString(normalize_against_group))), ("limit", Some(limitQuery.toParamString(limit))))
+      ("interests", Some(interestsQuery.toParamString(interests))), ("genders", Some(gendersQuery.toParamString(genders))), ("ages", Some(agesQuery.toParamString(ages))), ("includeKeywords", Some(include_keywordsQuery.toParamString(include_keywords))), ("normalizeAgainstGroup", Some(normalize_against_groupQuery.toParamString(normalize_against_group))), ("limit", Some(limitQuery.toParamString(limit))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

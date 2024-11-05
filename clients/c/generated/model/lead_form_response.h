@@ -15,6 +15,7 @@
 
 typedef struct lead_form_response_t lead_form_response_t;
 
+#include "lead_form_common_policy_links_inner.h"
 #include "lead_form_question.h"
 #include "lead_form_status.h"
 
@@ -36,6 +37,7 @@ typedef struct lead_form_response_t {
     lead_form_status_t *status; // custom
     char *disclosure_language; // string
     list_t *questions; //nonprimitive container
+    list_t *policy_links; //nonprimitive container
     char *id; // string
     char *ad_account_id; // string
     int created_time; //numeric
@@ -51,6 +53,7 @@ lead_form_response_t *lead_form_response_create(
     lead_form_status_t *status,
     char *disclosure_language,
     list_t *questions,
+    list_t *policy_links,
     char *id,
     char *ad_account_id,
     int created_time,

@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class AdArrayResponse   {
   
-  private List<@Valid AdArrayResponseElement> items;
+  private List<@Valid AdArrayResponseElement> items = new ArrayList<>();
 
   /**
    **/

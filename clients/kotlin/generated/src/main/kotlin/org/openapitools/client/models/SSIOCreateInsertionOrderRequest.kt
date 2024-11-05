@@ -149,5 +149,6 @@ data class SSIOCreateInsertionOrderRequest (
         @Json(name = "BUDGET") BUDGET("BUDGET"),
         @Json(name = "PERPETUALS") PERPETUALS("PERPETUALS");
     }
+
 }
 

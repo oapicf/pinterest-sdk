@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AdAccountOwner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountOwner   {
   @JsonProperty("username")
   private String username;
@@ -28,10 +28,10 @@ public class AdAccountOwner   {
     return this;
   }
 
-   /**
+  /**
    * Public username for the user account
    * @return username
-  **/
+   */
   @ApiModelProperty(value = "Public username for the user account")
   public String getUsername() {
     return username;
@@ -46,10 +46,10 @@ public class AdAccountOwner   {
     return this;
   }
 
-   /**
+  /**
    * The owning account's user ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(value = "The owning account's user ID.")
   public String getId() {
     return id;

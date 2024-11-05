@@ -19,7 +19,7 @@ import org.openapitools.model.HotelProcessingRecord;
  * Object describing the catalogs hotel items batch
  */
 @ApiModel(description = "Object describing the catalogs hotel items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelItemsBatch   {
   @JsonProperty("batch_id")
   private String batchId;
@@ -58,19 +58,19 @@ public class CatalogsHotelItemsBatch   {
   }
 
    /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    * @return createdTime
   **/
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   public Date getCreatedTime() {
     return createdTime;
   }
 
    /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    * @return completedTime
   **/
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   public Date getCompletedTime() {
     return completedTime;
   }
@@ -118,7 +118,7 @@ public class CatalogsHotelItemsBatch   {
 
   public CatalogsHotelItemsBatch addItemsItem(HotelProcessingRecord itemsItem) {
     if (this.items == null) {
-      this.items = ;
+      this.items = new ArrayList<>();
     }
     this.items.add(itemsItem);
     return this;

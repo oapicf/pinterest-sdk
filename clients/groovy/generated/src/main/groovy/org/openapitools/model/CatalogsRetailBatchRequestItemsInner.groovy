@@ -10,7 +10,7 @@ import org.openapitools.model.CatalogsCreateRetailItem;
 import org.openapitools.model.CatalogsDeleteRetailItem;
 import org.openapitools.model.CatalogsUpdateRetailItem;
 import org.openapitools.model.CatalogsUpsertRetailItem;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.UpdateMaskFieldType;
 
 @Canonical
@@ -20,12 +20,6 @@ class CatalogsRetailBatchRequestItemsInner {
 
     enum OperationEnum {
     
-        CREATE("CREATE"),
-        
-        UPDATE("UPDATE"),
-        
-        UPSERT("UPSERT"),
-        
         DELETE("DELETE")
     
         private final String value
@@ -47,7 +41,7 @@ class CatalogsRetailBatchRequestItemsInner {
     
     OperationEnum operation
     
-    ItemAttributes attributes
+    ItemAttributesRequest attributes
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     List<UpdateMaskFieldType> updateMask
 }

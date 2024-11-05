@@ -13,11 +13,10 @@
 #' @field lifetime_spend_cap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. integer [optional]
 #' @field daily_spend_cap Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time. integer [optional]
 #' @field order_line_id Order line ID that appears on the invoice. character [optional]
-#' @field tracking_urls  \link{AdCommonTrackingUrls} [optional]
+#' @field tracking_urls  \link{TrackingUrls} [optional]
 #' @field start_time Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. integer [optional]
 #' @field end_time Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. integer [optional]
-#' @field summary_status  \link{CampaignSummaryStatus} [optional]
-#' @field is_flexible_daily_budgets Determines if a campaign has flexible daily budgets setup. character [optional]
+#' @field is_flexible_daily_budgets Determine if a campaign has flexible daily budgets setup. character [optional]
 #' @field default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. integer [optional]
 #' @field is_automated_campaign Specifies whether the campaign was created in the automated campaign flow character [optional]
 #' @field id Campaign ID. character [optional]
@@ -26,6 +25,7 @@
 #' @field updated_time UTC timestamp. Last update time. integer [optional]
 #' @field type Always \"campaign\". character [optional]
 #' @field is_campaign_budget_optimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. character [optional]
+#' @field summary_status  \link{CampaignSummaryStatus} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -41,7 +41,6 @@ CampaignCreateResponseData <- R6::R6Class(
     `tracking_urls` = NULL,
     `start_time` = NULL,
     `end_time` = NULL,
-    `summary_status` = NULL,
     `is_flexible_daily_budgets` = NULL,
     `default_ad_group_budget_in_micro_currency` = NULL,
     `is_automated_campaign` = NULL,
@@ -51,8 +50,8 @@ CampaignCreateResponseData <- R6::R6Class(
     `updated_time` = NULL,
     `type` = NULL,
     `is_campaign_budget_optimization` = NULL,
-    #' Initialize a new CampaignCreateResponseData class.
-    #'
+    `summary_status` = NULL,
+
     #' @description
     #' Initialize a new CampaignCreateResponseData class.
     #'
@@ -65,19 +64,18 @@ CampaignCreateResponseData <- R6::R6Class(
     #' @param tracking_urls tracking_urls
     #' @param start_time Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
     #' @param end_time Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-    #' @param summary_status summary_status
-    #' @param is_flexible_daily_budgets Determines if a campaign has flexible daily budgets setup.
+    #' @param is_flexible_daily_budgets Determine if a campaign has flexible daily budgets setup.
     #' @param default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-    #' @param is_automated_campaign Specifies whether the campaign was created in the automated campaign flow. Default to FALSE.
+    #' @param is_automated_campaign Specifies whether the campaign was created in the automated campaign flow
     #' @param id Campaign ID.
     #' @param objective_type objective_type
     #' @param created_time Campaign creation time. Unix timestamp in seconds.
     #' @param updated_time UTC timestamp. Last update time.
     #' @param type Always \"campaign\".
     #' @param is_campaign_budget_optimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+    #' @param summary_status summary_status
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`ad_account_id` = NULL, `name` = NULL, `status` = NULL, `lifetime_spend_cap` = NULL, `daily_spend_cap` = NULL, `order_line_id` = NULL, `tracking_urls` = NULL, `start_time` = NULL, `end_time` = NULL, `summary_status` = NULL, `is_flexible_daily_budgets` = NULL, `default_ad_group_budget_in_micro_currency` = NULL, `is_automated_campaign` = FALSE, `id` = NULL, `objective_type` = NULL, `created_time` = NULL, `updated_time` = NULL, `type` = NULL, `is_campaign_budget_optimization` = NULL, ...) {
+    initialize = function(`ad_account_id` = NULL, `name` = NULL, `status` = NULL, `lifetime_spend_cap` = NULL, `daily_spend_cap` = NULL, `order_line_id` = NULL, `tracking_urls` = NULL, `start_time` = NULL, `end_time` = NULL, `is_flexible_daily_budgets` = NULL, `default_ad_group_budget_in_micro_currency` = NULL, `is_automated_campaign` = NULL, `id` = NULL, `objective_type` = NULL, `created_time` = NULL, `updated_time` = NULL, `type` = NULL, `is_campaign_budget_optimization` = NULL, `summary_status` = NULL, ...) {
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
@@ -130,13 +128,6 @@ CampaignCreateResponseData <- R6::R6Class(
           stop(paste("Error! Invalid data for `end_time`. Must be an integer:", `end_time`))
         }
         self$`end_time` <- `end_time`
-      }
-      if (!is.null(`summary_status`)) {
-        if (!(`summary_status` %in% c())) {
-          stop(paste("Error! \"", `summary_status`, "\" cannot be assigned to `summary_status`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`summary_status`))
-        self$`summary_status` <- `summary_status`
       }
       if (!is.null(`is_flexible_daily_budgets`)) {
         if (!(is.logical(`is_flexible_daily_budgets`) && length(`is_flexible_daily_budgets`) == 1)) {
@@ -193,14 +184,19 @@ CampaignCreateResponseData <- R6::R6Class(
         }
         self$`is_campaign_budget_optimization` <- `is_campaign_budget_optimization`
       }
+      if (!is.null(`summary_status`)) {
+        if (!(`summary_status` %in% c())) {
+          stop(paste("Error! \"", `summary_status`, "\" cannot be assigned to `summary_status`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`summary_status`))
+        self$`summary_status` <- `summary_status`
+      }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CampaignCreateResponseData in JSON format
-    #' @export
     toJSON = function() {
       CampaignCreateResponseDataObject <- list()
       if (!is.null(self$`ad_account_id`)) {
@@ -239,10 +235,6 @@ CampaignCreateResponseData <- R6::R6Class(
         CampaignCreateResponseDataObject[["end_time"]] <-
           self$`end_time`
       }
-      if (!is.null(self$`summary_status`)) {
-        CampaignCreateResponseDataObject[["summary_status"]] <-
-          self$`summary_status`$toJSON()
-      }
       if (!is.null(self$`is_flexible_daily_budgets`)) {
         CampaignCreateResponseDataObject[["is_flexible_daily_budgets"]] <-
           self$`is_flexible_daily_budgets`
@@ -279,16 +271,18 @@ CampaignCreateResponseData <- R6::R6Class(
         CampaignCreateResponseDataObject[["is_campaign_budget_optimization"]] <-
           self$`is_campaign_budget_optimization`
       }
+      if (!is.null(self$`summary_status`)) {
+        CampaignCreateResponseDataObject[["summary_status"]] <-
+          self$`summary_status`$toJSON()
+      }
       CampaignCreateResponseDataObject
     },
-    #' Deserialize JSON string into an instance of CampaignCreateResponseData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CampaignCreateResponseData
     #'
     #' @param input_json the JSON input
     #' @return the instance of CampaignCreateResponseData
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_account_id`)) {
@@ -312,7 +306,7 @@ CampaignCreateResponseData <- R6::R6Class(
         self$`order_line_id` <- this_object$`order_line_id`
       }
       if (!is.null(this_object$`tracking_urls`)) {
-        `tracking_urls_object` <- AdCommonTrackingUrls$new()
+        `tracking_urls_object` <- TrackingUrls$new()
         `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
         self$`tracking_urls` <- `tracking_urls_object`
       }
@@ -321,11 +315,6 @@ CampaignCreateResponseData <- R6::R6Class(
       }
       if (!is.null(this_object$`end_time`)) {
         self$`end_time` <- this_object$`end_time`
-      }
-      if (!is.null(this_object$`summary_status`)) {
-        `summary_status_object` <- CampaignSummaryStatus$new()
-        `summary_status_object`$fromJSON(jsonlite::toJSON(this_object$`summary_status`, auto_unbox = TRUE, digits = NA))
-        self$`summary_status` <- `summary_status_object`
       }
       if (!is.null(this_object$`is_flexible_daily_budgets`)) {
         self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
@@ -356,15 +345,18 @@ CampaignCreateResponseData <- R6::R6Class(
       if (!is.null(this_object$`is_campaign_budget_optimization`)) {
         self$`is_campaign_budget_optimization` <- this_object$`is_campaign_budget_optimization`
       }
+      if (!is.null(this_object$`summary_status`)) {
+        `summary_status_object` <- CampaignSummaryStatus$new()
+        `summary_status_object`$fromJSON(jsonlite::toJSON(this_object$`summary_status`, auto_unbox = TRUE, digits = NA))
+        self$`summary_status` <- `summary_status_object`
+      }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CampaignCreateResponseData in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_account_id`)) {
@@ -439,14 +431,6 @@ CampaignCreateResponseData <- R6::R6Class(
           self$`end_time`
           )
         },
-        if (!is.null(self$`summary_status`)) {
-          sprintf(
-          '"summary_status":
-          %s
-          ',
-          jsonlite::toJSON(self$`summary_status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
         if (!is.null(self$`is_flexible_daily_budgets`)) {
           sprintf(
           '"is_flexible_daily_budgets":
@@ -518,19 +502,25 @@ CampaignCreateResponseData <- R6::R6Class(
                     ',
           tolower(self$`is_campaign_budget_optimization`)
           )
+        },
+        if (!is.null(self$`summary_status`)) {
+          sprintf(
+          '"summary_status":
+          %s
+          ',
+          jsonlite::toJSON(self$`summary_status`$toJSON(), auto_unbox = TRUE, digits = NA)
+          )
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CampaignCreateResponseData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CampaignCreateResponseData
     #'
     #' @param input_json the JSON input
     #' @return the instance of CampaignCreateResponseData
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
@@ -539,10 +529,9 @@ CampaignCreateResponseData <- R6::R6Class(
       self$`lifetime_spend_cap` <- this_object$`lifetime_spend_cap`
       self$`daily_spend_cap` <- this_object$`daily_spend_cap`
       self$`order_line_id` <- this_object$`order_line_id`
-      self$`tracking_urls` <- AdCommonTrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
+      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self$`start_time` <- this_object$`start_time`
       self$`end_time` <- this_object$`end_time`
-      self$`summary_status` <- CampaignSummaryStatus$new()$fromJSON(jsonlite::toJSON(this_object$`summary_status`, auto_unbox = TRUE, digits = NA))
       self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
       self$`default_ad_group_budget_in_micro_currency` <- this_object$`default_ad_group_budget_in_micro_currency`
       self$`is_automated_campaign` <- this_object$`is_automated_campaign`
@@ -552,35 +541,30 @@ CampaignCreateResponseData <- R6::R6Class(
       self$`updated_time` <- this_object$`updated_time`
       self$`type` <- this_object$`type`
       self$`is_campaign_budget_optimization` <- this_object$`is_campaign_budget_optimization`
+      self$`summary_status` <- CampaignSummaryStatus$new()$fromJSON(jsonlite::toJSON(this_object$`summary_status`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CampaignCreateResponseData
-    #'
+
     #' @description
     #' Validate JSON input with respect to CampaignCreateResponseData and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CampaignCreateResponseData
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
         return(FALSE)
@@ -596,13 +580,11 @@ CampaignCreateResponseData <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
@@ -619,12 +601,9 @@ CampaignCreateResponseData <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

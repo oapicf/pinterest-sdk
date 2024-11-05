@@ -32,7 +32,7 @@ data class TopPinsAnalyticsResponsePinsInner(
 
     @Schema(example = "642396334344813594", description = "The pin id")
     @get:JsonProperty("pin_id") val pinId: kotlin.String? = null
-) {
+    ) {
 
 }
 

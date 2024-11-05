@@ -26,14 +26,15 @@ public struct CampaignCommon: Codable, JSONEncodable, Hashable {
     public var dailySpendCap: Int?
     /** Order line ID that appears on the invoice. */
     public var orderLineId: String?
-    public var trackingUrls: AdCommonTrackingUrls?
+    public var trackingUrls: TrackingUrls?
     /** Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     public var startTime: Int?
     /** Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     public var endTime: Int?
-    public var summaryStatus: CampaignSummaryStatus?
+    /** Determine if a campaign has flexible daily budgets setup. */
+    public var isFlexibleDailyBudgets: Bool?
 
-    public init(adAccountId: String? = nil, name: String? = nil, status: EntityStatus? = nil, lifetimeSpendCap: Int? = nil, dailySpendCap: Int? = nil, orderLineId: String? = nil, trackingUrls: AdCommonTrackingUrls? = nil, startTime: Int? = nil, endTime: Int? = nil, summaryStatus: CampaignSummaryStatus? = nil) {
+    public init(adAccountId: String? = nil, name: String? = nil, status: EntityStatus? = nil, lifetimeSpendCap: Int? = nil, dailySpendCap: Int? = nil, orderLineId: String? = nil, trackingUrls: TrackingUrls? = nil, startTime: Int? = nil, endTime: Int? = nil, isFlexibleDailyBudgets: Bool? = nil) {
         self.adAccountId = adAccountId
         self.name = name
         self.status = status
@@ -43,7 +44,7 @@ public struct CampaignCommon: Codable, JSONEncodable, Hashable {
         self.trackingUrls = trackingUrls
         self.startTime = startTime
         self.endTime = endTime
-        self.summaryStatus = summaryStatus
+        self.isFlexibleDailyBudgets = isFlexibleDailyBudgets
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,7 +57,7 @@ public struct CampaignCommon: Codable, JSONEncodable, Hashable {
         case trackingUrls = "tracking_urls"
         case startTime = "start_time"
         case endTime = "end_time"
-        case summaryStatus = "summary_status"
+        case isFlexibleDailyBudgets = "is_flexible_daily_budgets"
     }
 
     // Encodable protocol methods
@@ -72,7 +73,7 @@ public struct CampaignCommon: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
         try container.encodeIfPresent(startTime, forKey: .startTime)
         try container.encodeIfPresent(endTime, forKey: .endTime)
-        try container.encodeIfPresent(summaryStatus, forKey: .summaryStatus)
+        try container.encodeIfPresent(isFlexibleDailyBudgets, forKey: .isFlexibleDailyBudgets)
     }
 }
 

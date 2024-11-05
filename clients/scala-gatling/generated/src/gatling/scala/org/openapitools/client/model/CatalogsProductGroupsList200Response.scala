@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class CatalogsProductGroupsList200Response (
-    _items: List[CatalogsProductGroupsList200ResponseAllOfItemsInner],
+    _items: List[CatalogsVerticalProductGroup],
     _bookmark: Option[String]
 )
 object CatalogsProductGroupsList200Response {

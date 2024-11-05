@@ -23,7 +23,6 @@
   | {'tracking_url', binary() }
   | {'catalog_product_group_id', binary() }
   | {'catalog_product_group_name', binary() }
-  | {'creative_type', openapi_creative_type:openapi_creative_type() }
   | {'collections_hero_pin_id', binary() }
   | {'collections_hero_destination_url', binary() }
   | {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }
@@ -48,7 +47,6 @@ openapi_product_group_promotion(Fields) ->
             , {'tracking_url', binary() }
             , {'catalog_product_group_id', binary() }
             , {'catalog_product_group_name', binary() }
-            , {'creative_type', openapi_creative_type:openapi_creative_type() }
             , {'collections_hero_pin_id', binary() }
             , {'collections_hero_destination_url', binary() }
             , {'grid_click_type', openapi_grid_click_type:openapi_grid_click_type() }

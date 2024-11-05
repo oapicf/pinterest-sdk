@@ -23,7 +23,7 @@ import model.UserWebsiteVerificationCode
 import model.UserWebsiteVerifyRequest
 import model.UserWebsitesGet200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @Singleton
 class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAccountApi) extends AbstractController(cc) {
   /**
@@ -336,14 +336,16 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
   }
 
   /**
-    * POST /v5/user_account/websites
+    * POST /v5/user_account/websites?adAccountId=[value]
     */
   def verifyWebsiteUpdate(): Action[AnyContent] = Action { request =>
     def executeApi(): UserWebsiteSummary = {
       val userWebsiteVerifyRequest = request.body.asJson.map(_.as[UserWebsiteVerifyRequest]).getOrElse {
         throw new OpenApiExceptions.MissingRequiredParameterException("body", "userWebsiteVerifyRequest")
       }
-      api.verifyWebsiteUpdate(userWebsiteVerifyRequest)
+      val adAccountId = request.getQueryString("ad_account_id")
+        
+      api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
     }
 
     val result = executeApi()
@@ -352,11 +354,13 @@ class UserAccountApiController @Inject()(cc: ControllerComponents, api: UserAcco
   }
 
   /**
-    * GET /v5/user_account/websites/verification
+    * GET /v5/user_account/websites/verification?adAccountId=[value]
     */
   def websiteVerificationGet(): Action[AnyContent] = Action { request =>
     def executeApi(): UserWebsiteVerificationCode = {
-      api.websiteVerificationGet()
+      val adAccountId = request.getQueryString("ad_account_id")
+        
+      api.websiteVerificationGet(adAccountId)
     }
 
     val result = executeApi()

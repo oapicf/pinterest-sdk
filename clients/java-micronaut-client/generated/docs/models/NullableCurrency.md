@@ -333,7 +333,5 @@ The class is defined in **[NullableCurrency.java](../../src/main/java/org/openap
 
 * `ZWD` (value: `"ZWD"`)
 
-* `NULL` (value: `"null"`)
-
 
 

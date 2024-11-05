@@ -5,16 +5,18 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ActionType;
-import org.openapitools.model.AdGroupCommonOptimizationGoalMetadata;
-import org.openapitools.model.AdGroupCommonTrackingUrls;
 import org.openapitools.model.BudgetType;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.OptimizationGoalMetadata;
 import org.openapitools.model.PacingDeliveryType;
 import org.openapitools.model.PlacementGroupType;
 import org.openapitools.model.TargetingSpec;
+import org.openapitools.model.TrackingUrls;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -30,7 +32,7 @@ import javax.annotation.Generated;
  * AdGroupUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupUpdateRequest {
 
   private String name;
@@ -41,7 +43,7 @@ public class AdGroupUpdateRequest {
 
   private JsonNullable<Integer> bidInMicroCurrency = JsonNullable.<Integer>undefined();
 
-  private JsonNullable<AdGroupCommonOptimizationGoalMetadata> optimizationGoalMetadata = JsonNullable.<AdGroupCommonOptimizationGoalMetadata>undefined();
+  private JsonNullable<OptimizationGoalMetadata> optimizationGoalMetadata = JsonNullable.<OptimizationGoalMetadata>undefined();
 
   private BudgetType budgetType;
 
@@ -53,7 +55,7 @@ public class AdGroupUpdateRequest {
 
   private Integer lifetimeFrequencyCap;
 
-  private JsonNullable<AdGroupCommonTrackingUrls> trackingUrls = JsonNullable.<AdGroupCommonTrackingUrls>undefined();
+  private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
   private JsonNullable<Boolean> autoTargetingEnabled = JsonNullable.<Boolean>undefined();
 
@@ -66,16 +68,14 @@ public class AdGroupUpdateRequest {
   private ActionType billableEvent;
 
   /**
-   * Bid strategy type
+   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
    */
   public enum BidStrategyTypeEnum {
     AUTOMATIC_BID("AUTOMATIC_BID"),
     
     MAX_BID("MAX_BID"),
     
-    TARGET_AVG("TARGET_AVG"),
-    
-    NULL("null");
+    TARGET_AVG("TARGET_AVG");
 
     private String value;
 
@@ -106,6 +106,9 @@ public class AdGroupUpdateRequest {
 
   private JsonNullable<BidStrategyTypeEnum> bidStrategyType = JsonNullable.<BidStrategyTypeEnum>undefined();
 
+  @Valid
+  private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> targetingTemplateIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
+
   private String id;
 
   public AdGroupUpdateRequest() {
@@ -127,7 +130,7 @@ public class AdGroupUpdateRequest {
   /**
    * Ad group name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "Ad Group For Pin: 687195905986", description = "Ad group name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -147,7 +150,7 @@ public class AdGroupUpdateRequest {
   /**
    * Ad group/entity status.
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", description = "Ad group/entity status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -167,7 +170,7 @@ public class AdGroupUpdateRequest {
   /**
    * Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
    * @return budgetInMicroCurrency
-  */
+   */
   
   @Schema(name = "budget_in_micro_currency", example = "5000000", description = "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_in_micro_currency")
@@ -187,7 +190,7 @@ public class AdGroupUpdateRequest {
   /**
    * Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
    * @return bidInMicroCurrency
-  */
+   */
   
   @Schema(name = "bid_in_micro_currency", example = "5000000", description = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid_in_micro_currency")
@@ -199,23 +202,23 @@ public class AdGroupUpdateRequest {
     this.bidInMicroCurrency = bidInMicroCurrency;
   }
 
-  public AdGroupUpdateRequest optimizationGoalMetadata(AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata) {
+  public AdGroupUpdateRequest optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = JsonNullable.of(optimizationGoalMetadata);
     return this;
   }
 
   /**
-   * Get optimizationGoalMetadata
+   * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
    * @return optimizationGoalMetadata
-  */
+   */
   @Valid 
-  @Schema(name = "optimization_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "optimization_goal_metadata", description = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("optimization_goal_metadata")
-  public JsonNullable<AdGroupCommonOptimizationGoalMetadata> getOptimizationGoalMetadata() {
+  public JsonNullable<OptimizationGoalMetadata> getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 
-  public void setOptimizationGoalMetadata(JsonNullable<AdGroupCommonOptimizationGoalMetadata> optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(JsonNullable<OptimizationGoalMetadata> optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
@@ -227,7 +230,7 @@ public class AdGroupUpdateRequest {
   /**
    * Get budgetType
    * @return budgetType
-  */
+   */
   @Valid 
   @Schema(name = "budget_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_type")
@@ -247,7 +250,7 @@ public class AdGroupUpdateRequest {
   /**
    * Ad group start time. Unix timestamp in seconds. Defaults to current time.
    * @return startTime
-  */
+   */
   
   @Schema(name = "start_time", example = "5686848000", description = "Ad group start time. Unix timestamp in seconds. Defaults to current time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_time")
@@ -267,7 +270,7 @@ public class AdGroupUpdateRequest {
   /**
    * Ad group end time. Unix timestamp in seconds.
    * @return endTime
-  */
+   */
   
   @Schema(name = "end_time", example = "5705424000", description = "Ad group end time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_time")
@@ -287,7 +290,7 @@ public class AdGroupUpdateRequest {
   /**
    * Get targetingSpec
    * @return targetingSpec
-  */
+   */
   @Valid 
   @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_spec")
@@ -305,11 +308,11 @@ public class AdGroupUpdateRequest {
   }
 
   /**
-   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
    * @return lifetimeFrequencyCap
-  */
+   */
   
-  @Schema(name = "lifetime_frequency_cap", example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "lifetime_frequency_cap", example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lifetime_frequency_cap")
   public Integer getLifetimeFrequencyCap() {
     return lifetimeFrequencyCap;
@@ -319,23 +322,23 @@ public class AdGroupUpdateRequest {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
   }
 
-  public AdGroupUpdateRequest trackingUrls(AdGroupCommonTrackingUrls trackingUrls) {
+  public AdGroupUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = JsonNullable.of(trackingUrls);
     return this;
   }
 
   /**
-   * Get trackingUrls
+   * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
    * @return trackingUrls
-  */
+   */
   @Valid 
-  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tracking_urls", description = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tracking_urls")
-  public JsonNullable<AdGroupCommonTrackingUrls> getTrackingUrls() {
+  public JsonNullable<TrackingUrls> getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(JsonNullable<AdGroupCommonTrackingUrls> trackingUrls) {
+  public void setTrackingUrls(JsonNullable<TrackingUrls> trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -347,7 +350,7 @@ public class AdGroupUpdateRequest {
   /**
    * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
    * @return autoTargetingEnabled
-  */
+   */
   
   @Schema(name = "auto_targeting_enabled", example = "true", description = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("auto_targeting_enabled")
@@ -365,11 +368,11 @@ public class AdGroupUpdateRequest {
   }
 
   /**
-   * <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+   * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
    * @return placementGroup
-  */
+   */
   @Valid 
-  @Schema(name = "placement_group", description = "<a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "placement_group", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("placement_group")
   public PlacementGroupType getPlacementGroup() {
     return placementGroup;
@@ -387,7 +390,7 @@ public class AdGroupUpdateRequest {
   /**
    * Get pacingDeliveryType
    * @return pacingDeliveryType
-  */
+   */
   @Valid 
   @Schema(name = "pacing_delivery_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pacing_delivery_type")
@@ -407,7 +410,7 @@ public class AdGroupUpdateRequest {
   /**
    * Campaign ID of the ad group.
    * @return campaignId
-  */
+   */
   @Pattern(regexp = "^[C]?\\d+$") 
   @Schema(name = "campaign_id", example = "626736533506", description = "Campaign ID of the ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_id")
@@ -427,7 +430,7 @@ public class AdGroupUpdateRequest {
   /**
    * Get billableEvent
    * @return billableEvent
-  */
+   */
   @Valid 
   @Schema(name = "billable_event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billable_event")
@@ -445,11 +448,11 @@ public class AdGroupUpdateRequest {
   }
 
   /**
-   * Bid strategy type
+   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
    * @return bidStrategyType
-  */
+   */
   
-  @Schema(name = "bid_strategy_type", example = "MAX_BID", description = "Bid strategy type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_strategy_type", example = "MAX_BID", description = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid_strategy_type")
   public JsonNullable<BidStrategyTypeEnum> getBidStrategyType() {
     return bidStrategyType;
@@ -457,6 +460,34 @@ public class AdGroupUpdateRequest {
 
   public void setBidStrategyType(JsonNullable<BidStrategyTypeEnum> bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
+  }
+
+  public AdGroupUpdateRequest targetingTemplateIds(List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds) {
+    this.targetingTemplateIds = JsonNullable.of(targetingTemplateIds);
+    return this;
+  }
+
+  public AdGroupUpdateRequest addTargetingTemplateIdsItem(String targetingTemplateIdsItem) {
+    if (this.targetingTemplateIds == null || !this.targetingTemplateIds.isPresent()) {
+      this.targetingTemplateIds = JsonNullable.of(new ArrayList<>());
+    }
+    this.targetingTemplateIds.get().add(targetingTemplateIdsItem);
+    return this;
+  }
+
+  /**
+   * Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+   * @return targetingTemplateIds
+   */
+  @Size(max = 1) 
+  @Schema(name = "targeting_template_ids", description = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("targeting_template_ids")
+  public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getTargetingTemplateIds() {
+    return targetingTemplateIds;
+  }
+
+  public void setTargetingTemplateIds(JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> targetingTemplateIds) {
+    this.targetingTemplateIds = targetingTemplateIds;
   }
 
   public AdGroupUpdateRequest id(String id) {
@@ -467,7 +498,7 @@ public class AdGroupUpdateRequest {
   /**
    * Ad group ID.
    * @return id
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2680060704746", description = "Ad group ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
@@ -505,6 +536,7 @@ public class AdGroupUpdateRequest {
         Objects.equals(this.campaignId, adGroupUpdateRequest.campaignId) &&
         Objects.equals(this.billableEvent, adGroupUpdateRequest.billableEvent) &&
         equalsNullable(this.bidStrategyType, adGroupUpdateRequest.bidStrategyType) &&
+        equalsNullable(this.targetingTemplateIds, adGroupUpdateRequest.targetingTemplateIds) &&
         Objects.equals(this.id, adGroupUpdateRequest.id);
   }
 
@@ -514,7 +546,7 @@ public class AdGroupUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, hashCodeNullable(budgetInMicroCurrency), hashCodeNullable(bidInMicroCurrency), hashCodeNullable(optimizationGoalMetadata), budgetType, hashCodeNullable(startTime), hashCodeNullable(endTime), targetingSpec, lifetimeFrequencyCap, hashCodeNullable(trackingUrls), hashCodeNullable(autoTargetingEnabled), placementGroup, pacingDeliveryType, campaignId, billableEvent, hashCodeNullable(bidStrategyType), id);
+    return Objects.hash(name, status, hashCodeNullable(budgetInMicroCurrency), hashCodeNullable(bidInMicroCurrency), hashCodeNullable(optimizationGoalMetadata), budgetType, hashCodeNullable(startTime), hashCodeNullable(endTime), targetingSpec, lifetimeFrequencyCap, hashCodeNullable(trackingUrls), hashCodeNullable(autoTargetingEnabled), placementGroup, pacingDeliveryType, campaignId, billableEvent, hashCodeNullable(bidStrategyType), hashCodeNullable(targetingTemplateIds), id);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -545,6 +577,7 @@ public class AdGroupUpdateRequest {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
+    sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();

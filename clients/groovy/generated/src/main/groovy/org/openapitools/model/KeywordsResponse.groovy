@@ -11,7 +11,7 @@ import org.openapitools.model.KeywordError;
 @Canonical
 class KeywordsResponse {
     
-    List<KeywordError> errors
+    List<KeywordError> errors = new ArrayList<>()
     
-    List<Keyword> keywords
+    List<Keyword> keywords = new ArrayList<>()
 }

@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * AudienceCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCreateRequest {
 
   private String adAccountId;
@@ -54,7 +54,7 @@ public class AudienceCreateRequest {
   /**
    * Ad account ID.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -74,7 +74,7 @@ public class AudienceCreateRequest {
   /**
    * Audience name.
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", example = "string", description = "Audience name.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -94,7 +94,7 @@ public class AudienceCreateRequest {
   /**
    * Get rule
    * @return rule
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "rule", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("rule")
@@ -114,7 +114,7 @@ public class AudienceCreateRequest {
   /**
    * Audience description.
    * @return description
-  */
+   */
   
   @Schema(name = "description", example = "string", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -134,7 +134,7 @@ public class AudienceCreateRequest {
   /**
    * Get audienceType
    * @return audienceType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "audience_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("audience_type")

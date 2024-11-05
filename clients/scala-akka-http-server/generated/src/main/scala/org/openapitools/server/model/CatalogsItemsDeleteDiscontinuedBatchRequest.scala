@@ -11,7 +11,7 @@ package org.openapitools.server.model
 */
 final case class CatalogsItemsDeleteDiscontinuedBatchRequest (
   country: Country,
-  language: Language,
+  language: CatalogsItemsRequestLanguage,
   operation: BatchOperation,
   items: Seq[ItemDeleteDiscontinuedBatchRecord]
 )

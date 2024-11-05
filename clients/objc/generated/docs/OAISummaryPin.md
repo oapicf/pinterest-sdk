@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**OAISummaryPinMedia***](OAISummaryPinMedia.md) |  | [optional] 
+**media** | [**OAIPinMedia***](OAIPinMedia.md) |  | [optional] [readonly] 
 **altText** | **NSString*** |  | [optional] 
 **link** | **NSString*** |  | [optional] 
 **title** | **NSString*** |  | [optional] 

@@ -29,7 +29,7 @@ public class AnalyticsMetricsResponse  {
   */
   @ApiModelProperty(value = "Array with the requested daily metric records")
   @Valid
-  private List<@Valid AnalyticsDailyMetrics> dailyMetrics;
+  private List<@Valid AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
  /**
   * The metric name and value over the requested period for each requested metric
   * @return summaryMetrics

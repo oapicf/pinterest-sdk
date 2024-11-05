@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * AudienceUpdateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceUpdateRequest   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -39,10 +39,10 @@ public class AudienceUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Ad account ID.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   public String getAdAccountId() {
     return adAccountId;
@@ -57,10 +57,10 @@ public class AudienceUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Audience name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "string", value = "Audience name.")
   public String getName() {
     return name;
@@ -75,10 +75,10 @@ public class AudienceUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get rule
    * @return rule
-  **/
+   */
   @ApiModelProperty(value = "")
   public AudienceRule getRule() {
     return rule;
@@ -93,10 +93,10 @@ public class AudienceUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Audience description.
    * @return description
-  **/
+   */
   @ApiModelProperty(example = "string", value = "Audience description.")
   public String getDescription() {
     return description;
@@ -111,10 +111,10 @@ public class AudienceUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get operationType
    * @return operationType
-  **/
+   */
   @ApiModelProperty(value = "")
   public AudienceUpdateOperationType getOperationType() {
     return operationType;

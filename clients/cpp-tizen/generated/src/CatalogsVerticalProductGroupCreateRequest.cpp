@@ -26,8 +26,10 @@ CatalogsVerticalProductGroupCreateRequest::__init()
 	//catalog_type = std::string();
 	//name = std::string();
 	//description = std::string();
-	//filters = new CatalogsHotelProductGroupFilters();
+	//filters = new CatalogsCreativeAssetsProductGroupFilters();
 	//catalog_id = std::string();
+	//country = new Country();
+	//locale = new CatalogsLocale();
 }
 
 void
@@ -57,6 +59,16 @@ CatalogsVerticalProductGroupCreateRequest::__cleanup()
 	//
 	//delete catalog_id;
 	//catalog_id = NULL;
+	//}
+	//if(country != NULL) {
+	//
+	//delete country;
+	//country = NULL;
+	//}
+	//if(locale != NULL) {
+	//
+	//delete locale;
+	//locale = NULL;
 	//}
 	//
 }
@@ -104,11 +116,11 @@ CatalogsVerticalProductGroupCreateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsHotelProductGroupFilters")) {
-			jsonToValue(&filters, node, "CatalogsHotelProductGroupFilters", "CatalogsHotelProductGroupFilters");
+		if (isprimitive("CatalogsCreativeAssetsProductGroupFilters")) {
+			jsonToValue(&filters, node, "CatalogsCreativeAssetsProductGroupFilters", "CatalogsCreativeAssetsProductGroupFilters");
 		} else {
 			
-			CatalogsHotelProductGroupFilters* obj = static_cast<CatalogsHotelProductGroupFilters*> (&filters);
+			CatalogsCreativeAssetsProductGroupFilters* obj = static_cast<CatalogsCreativeAssetsProductGroupFilters*> (&filters);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -121,6 +133,34 @@ CatalogsVerticalProductGroupCreateRequest::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_id, node, "std::string", "");
 		} else {
+			
+		}
+	}
+	const gchar *countryKey = "country";
+	node = json_object_get_member(pJsonObject, countryKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Country")) {
+			jsonToValue(&country, node, "Country", "Country");
+		} else {
+			
+			Country* obj = static_cast<Country*> (&country);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *localeKey = "locale";
+	node = json_object_get_member(pJsonObject, localeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsLocale")) {
+			jsonToValue(&locale, node, "CatalogsLocale", "CatalogsLocale");
+		} else {
+			
+			CatalogsLocale* obj = static_cast<CatalogsLocale*> (&locale);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -163,13 +203,13 @@ CatalogsVerticalProductGroupCreateRequest::toJson()
 	}
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("CatalogsHotelProductGroupFilters")) {
-		CatalogsHotelProductGroupFilters obj = getFilters();
-		node = converttoJson(&obj, "CatalogsHotelProductGroupFilters", "");
+	if (isprimitive("CatalogsCreativeAssetsProductGroupFilters")) {
+		CatalogsCreativeAssetsProductGroupFilters obj = getFilters();
+		node = converttoJson(&obj, "CatalogsCreativeAssetsProductGroupFilters", "");
 	}
 	else {
 		
-		CatalogsHotelProductGroupFilters obj = static_cast<CatalogsHotelProductGroupFilters> (getFilters());
+		CatalogsCreativeAssetsProductGroupFilters obj = static_cast<CatalogsCreativeAssetsProductGroupFilters> (getFilters());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -186,6 +226,34 @@ CatalogsVerticalProductGroupCreateRequest::toJson()
 	}
 	const gchar *catalog_idKey = "catalog_id";
 	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("Country")) {
+		Country obj = getCountry();
+		node = converttoJson(&obj, "Country", "");
+	}
+	else {
+		
+		Country obj = static_cast<Country> (getCountry());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *countryKey = "country";
+	json_object_set_member(pJsonObject, countryKey, node);
+	if (isprimitive("CatalogsLocale")) {
+		CatalogsLocale obj = getLocale();
+		node = converttoJson(&obj, "CatalogsLocale", "");
+	}
+	else {
+		
+		CatalogsLocale obj = static_cast<CatalogsLocale> (getLocale());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *localeKey = "locale";
+	json_object_set_member(pJsonObject, localeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -230,14 +298,14 @@ CatalogsVerticalProductGroupCreateRequest::setDescription(std::string  descripti
 	this->description = description;
 }
 
-CatalogsHotelProductGroupFilters
+CatalogsCreativeAssetsProductGroupFilters
 CatalogsVerticalProductGroupCreateRequest::getFilters()
 {
 	return filters;
 }
 
 void
-CatalogsVerticalProductGroupCreateRequest::setFilters(CatalogsHotelProductGroupFilters  filters)
+CatalogsVerticalProductGroupCreateRequest::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
 {
 	this->filters = filters;
 }
@@ -252,6 +320,30 @@ void
 CatalogsVerticalProductGroupCreateRequest::setCatalogId(std::string  catalog_id)
 {
 	this->catalog_id = catalog_id;
+}
+
+Country
+CatalogsVerticalProductGroupCreateRequest::getCountry()
+{
+	return country;
+}
+
+void
+CatalogsVerticalProductGroupCreateRequest::setCountry(Country  country)
+{
+	this->country = country;
+}
+
+CatalogsLocale
+CatalogsVerticalProductGroupCreateRequest::getLocale()
+{
+	return locale;
+}
+
+void
+CatalogsVerticalProductGroupCreateRequest::setLocale(CatalogsLocale  locale)
+{
+	this->locale = locale;
 }
 
 

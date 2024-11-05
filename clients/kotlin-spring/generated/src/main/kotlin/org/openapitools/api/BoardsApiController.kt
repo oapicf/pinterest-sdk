@@ -96,14 +96,14 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
         responses = [
             ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = BoardSectionsList200Response::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "boards:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
         value = ["/boards/{board_id}/sections"],
         produces = ["application/json"]
     )
-    fun boardSectionsList(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BoardSectionsList200Response> {
+    fun boardSectionsList(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BoardSectionsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -119,14 +119,14 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
             ApiResponse(responseCode = "404", description = "Board or section not found.", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "409", description = "Board section conflict.", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "pins:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "pins:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "boards:read", "pins:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
         value = ["/boards/{board_id}/sections/{section_id}/pins"],
         produces = ["application/json"]
     )
-    fun boardSectionsListPins(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BoardsListPins200Response> {
+    fun boardSectionsListPins(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BoardsListPins200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -210,7 +210,7 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
             ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = Board::class))]),
             ApiResponse(responseCode = "404", description = "Board not found.", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "boards:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
@@ -231,14 +231,14 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
         responses = [
             ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = BoardsList200Response::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "boards:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
         value = ["/boards"],
         produces = ["application/json"]
     )
-    fun boardsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Privacy setting for a board.", schema = Schema(allowableValues = ["ALL", "PROTECTED", "PUBLIC", "SECRET", "PUBLIC_AND_SECRET"])) @Valid @RequestParam(value = "privacy", required = false) privacy: kotlin.String?): ResponseEntity<BoardsList200Response> {
+    fun boardsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Privacy setting for a board.", schema = Schema(allowableValues = ["ALL", "PROTECTED", "PUBLIC", "SECRET", "PUBLIC_AND_SECRET"])) @Valid @RequestParam(value = "privacy", required = false) privacy: kotlin.String?): ResponseEntity<BoardsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -252,14 +252,14 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
             ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = BoardsListPins200Response::class))]),
             ApiResponse(responseCode = "404", description = "Board not found.", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
-        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "pins:read" ]) ]
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "pins:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "boards:read", "pins:read" ]) ]
     )
     @RequestMapping(
         method = [RequestMethod.GET],
         value = ["/boards/{board_id}/pins"],
         produces = ["application/json"]
     )
-    fun boardsListPins(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", schema = Schema(allowableValues = ["REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA"])) @Valid @RequestParam(value = "creative_types", required = false) creativeTypes: kotlin.collections.List<kotlin.String>?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean): ResponseEntity<BoardsListPins200Response> {
+    fun boardsListPins(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", schema = Schema(allowableValues = ["REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA"])) @Valid @RequestParam(value = "creative_types", required = false) creativeTypes: kotlin.collections.List<kotlin.String>?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean): ResponseEntity<BoardsListPins200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 

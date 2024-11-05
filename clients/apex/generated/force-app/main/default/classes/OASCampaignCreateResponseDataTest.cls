@@ -80,7 +80,6 @@ private class OASCampaignCreateResponseDataTest {
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
-        System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
         System.assertEquals('isFlexibleDailyBudgets', x-property-mappings.get('is_flexible_daily_budgets'));
         System.assertEquals('defaultAdGroupBudgetInMicroCurrency', x-property-mappings.get('default_ad_group_budget_in_micro_currency'));
         System.assertEquals('isAutomatedCampaign', x-property-mappings.get('is_automated_campaign'));
@@ -88,29 +87,6 @@ private class OASCampaignCreateResponseDataTest {
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
         System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
         System.assertEquals('isCampaignBudgetOptimization', x-property-mappings.get('is_campaign_budget_optimization'));
-    }
-
-    @isTest
-    private static void defaultValuesPopulated() {
-        OASCampaignCreateResponseData campaignCreateResponseData = new OASCampaignCreateResponseData();
-        System.assertEquals(false, campaignCreateResponseData.isAutomatedCampaign);
-        System.assertEquals(null, campaignCreateResponseData.adAccountId);
-        System.assertEquals(null, campaignCreateResponseData.name);
-        System.assertEquals(null, campaignCreateResponseData.status);
-        System.assertEquals(null, campaignCreateResponseData.lifetimeSpendCap);
-        System.assertEquals(null, campaignCreateResponseData.dailySpendCap);
-        System.assertEquals(null, campaignCreateResponseData.orderLineId);
-        System.assertEquals(null, campaignCreateResponseData.trackingUrls);
-        System.assertEquals(null, campaignCreateResponseData.startTime);
-        System.assertEquals(null, campaignCreateResponseData.endTime);
-        System.assertEquals(null, campaignCreateResponseData.summaryStatus);
-        System.assertEquals(null, campaignCreateResponseData.isFlexibleDailyBudgets);
-        System.assertEquals(null, campaignCreateResponseData.defaultAdGroupBudgetInMicroCurrency);
-        System.assertEquals(null, campaignCreateResponseData.id);
-        System.assertEquals(null, campaignCreateResponseData.objectiveType);
-        System.assertEquals(null, campaignCreateResponseData.createdTime);
-        System.assertEquals(null, campaignCreateResponseData.updatedTime);
-        System.assertEquals(null, campaignCreateResponseData.type);
-        System.assertEquals(null, campaignCreateResponseData.isCampaignBudgetOptimization);
+        System.assertEquals('summaryStatus', x-property-mappings.get('summary_status'));
     }
 }

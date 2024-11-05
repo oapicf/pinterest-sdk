@@ -15,12 +15,12 @@
 
 typedef struct ad_response_t ad_response_t;
 
-#include "ad_common_quiz_pin_data.h"
-#include "ad_common_tracking_urls.h"
 #include "creative_type.h"
 #include "entity_status.h"
 #include "grid_click_type.h"
 #include "pin_promotion_summary_status.h"
+#include "quiz_pin_data.h"
+#include "tracking_urls.h"
 
 // Enum  for ad_response
 
@@ -48,7 +48,7 @@ pinterest_rest_api_ad_response__e ad_response_grid_click_type_FromString(char* g
 
 // Enum CUSTOMIZABLECTATYPE for ad_response
 
-typedef enum  { pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_NULL = 0, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_GET_OFFER, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_LEARN_MORE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_ORDER_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_SHOP_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_SIGN_UP, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_SUBSCRIBE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_BUY_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_CONTACT_US, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_GET_QUOTE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_VISIT_WEBSITE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_APPLY_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_BOOK_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_REQUEST_DEMO, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_REGISTER_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_FIND_A_DEALER, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_ADD_TO_CART, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_WATCH_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_READ_MORE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_null } pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_e;
+typedef enum  { pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_NULL = 0, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_GET_OFFER, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_LEARN_MORE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_ORDER_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_SHOP_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_SIGN_UP, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_SUBSCRIBE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_BUY_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_CONTACT_US, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_GET_QUOTE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_VISIT_SITE, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_APPLY_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_BOOK_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_REQUEST_DEMO, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_REGISTER_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_FIND_A_DEALER, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_ADD_TO_CART, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_WATCH_NOW, pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_READ_MORE } pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_e;
 
 char* ad_response_customizable_cta_type_ToString(pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_e customizable_cta_type);
 
@@ -86,12 +86,12 @@ typedef struct ad_response_t {
     int is_removable; //boolean
     char *name; // string
     entity_status_t *status; // custom
-    struct ad_common_tracking_urls_t *tracking_urls; //model
+    struct tracking_urls_t *tracking_urls; //model
     char *view_tracking_url; // string
     char *lead_form_id; // string
     grid_click_type_t *grid_click_type; // custom
     pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_e customizable_cta_type; //enum
-    struct ad_common_quiz_pin_data_t *quiz_pin_data; //model
+    struct quiz_pin_data_t *quiz_pin_data; //model
     char *pin_id; // string
     char *ad_account_id; // string
     char *campaign_id; // string
@@ -121,12 +121,12 @@ ad_response_t *ad_response_create(
     int is_removable,
     char *name,
     entity_status_t *status,
-    ad_common_tracking_urls_t *tracking_urls,
+    tracking_urls_t *tracking_urls,
     char *view_tracking_url,
     char *lead_form_id,
     grid_click_type_t *grid_click_type,
     pinterest_rest_api_ad_response_CUSTOMIZABLECTATYPE_e customizable_cta_type,
-    ad_common_quiz_pin_data_t *quiz_pin_data,
+    quiz_pin_data_t *quiz_pin_data,
     char *pin_id,
     char *ad_account_id,
     char *campaign_id,

@@ -5,13 +5,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 
 @Canonical
 class PinMediaWithVideo {
     
-    ImageMetadataImages images
+    PinMediaWithImageAllOfImages images
     
     String coverImageUrl
     /* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */

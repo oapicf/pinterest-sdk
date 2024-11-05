@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.LeadFormCommonPolicyLinksInner
 open OpenAPI.Model.LeadFormQuestion
 open OpenAPI.Model.LeadFormStatus
 open OpenAPI.Model.string option
@@ -27,6 +28,8 @@ module LeadFormResponse =
     DisclosureLanguage : string option;
     [<JsonProperty(PropertyName = "questions")>]
     Questions : LeadFormQuestion[];
+    [<JsonProperty(PropertyName = "policy_links")>]
+    PolicyLinks : LeadFormCommonPolicyLinksInner[];
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "ad_account_id")>]

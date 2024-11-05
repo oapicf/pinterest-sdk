@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -14,6 +14,8 @@ package openapi
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CatalogsDbItem type satisfies the MappedNullable interface at compile time
@@ -21,17 +23,22 @@ var _ MappedNullable = &CatalogsDbItem{}
 
 // CatalogsDbItem struct for CatalogsDbItem
 type CatalogsDbItem struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Id *string `json:"id,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
+	Id string `json:"id"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
+
+type _CatalogsDbItem CatalogsDbItem
 
 // NewCatalogsDbItem instantiates a new CatalogsDbItem object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsDbItem() *CatalogsDbItem {
+func NewCatalogsDbItem(createdAt time.Time, id string, updatedAt time.Time) *CatalogsDbItem {
 	this := CatalogsDbItem{}
+	this.CreatedAt = createdAt
+	this.Id = id
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -43,100 +50,76 @@ func NewCatalogsDbItemWithDefaults() *CatalogsDbItem {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *CatalogsDbItem) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *CatalogsDbItem) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CatalogsDbItem) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *CatalogsDbItem) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *CatalogsDbItem) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *CatalogsDbItem) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CatalogsDbItem) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *CatalogsDbItem) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+// GetUpdatedAt returns the UpdatedAt field value
 func (o *CatalogsDbItem) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
 func (o *CatalogsDbItem) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *CatalogsDbItem) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+// SetUpdatedAt sets field value
 func (o *CatalogsDbItem) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
+	o.UpdatedAt = v
 }
 
 func (o CatalogsDbItem) MarshalJSON() ([]byte, error) {
@@ -149,16 +132,49 @@ func (o CatalogsDbItem) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsDbItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["id"] = o.Id
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *CatalogsDbItem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"created_at",
+		"id",
+		"updated_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCatalogsDbItem := _CatalogsDbItem{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCatalogsDbItem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogsDbItem(varCatalogsDbItem)
+
+	return err
 }
 
 type NullableCatalogsDbItem struct {

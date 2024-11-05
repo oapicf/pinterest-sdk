@@ -234,7 +234,7 @@ export class IntegrationsApiRequestFactory extends BaseAPIRequestFactory {
      * Get integration metadata list. Note: If you\'re interested in joining the beta, please reach out to your Pinterest account manager.
      * Get integration metadata list
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public async integrationsGetList(bookmark?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;

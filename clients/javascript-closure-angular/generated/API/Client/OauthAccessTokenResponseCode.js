@@ -52,4 +52,5 @@ API.Client.OauthAccessTokenResponseCode.prototype.refreshTokenExpiresIn;
 API.Client.OauthAccessTokenResponseCode.ResponseTypeEnum = { 
   authorization_code: 'authorization_code',
   refresh_token: 'refresh_token',
+  client_credentials: 'client_credentials',
 }

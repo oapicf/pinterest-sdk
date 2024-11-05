@@ -81,6 +81,7 @@ module CustomHandlers =
             a [_href "/login-with-pinterest_oauth2"] [ str "Login with pinterest_oauth2" ]
             a [_href "/login-with-conversion_token"] [ str "Login with conversion_token" ]
             a [_href "/login-with-basic"] [ str "Login with basic" ]
+            a [_href "/login-with-client_credentials"] [ str "Login with client_credentials" ]
         ]
     ]
 
@@ -95,6 +96,7 @@ module CustomHandlers =
         route "/login-with-pinterest_oauth2" >=> challenge "pinterest_oauth2"
         route "/login-with-conversion_token" >=> challenge "conversion_token"
         route "/login-with-basic" >=> challenge "basic"
+        route "/login-with-client_credentials" >=> challenge "client_credentials"
         route "/logout" >=> logout
       ]
   ]

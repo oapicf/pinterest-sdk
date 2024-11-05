@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Catalogs Hotel Feed object")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Catalogs Hotel Feed object")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelFeed   {
   
   private Date createdAt;
@@ -38,8 +38,9 @@ public class CatalogsHotelFeed   {
   /**
    **/
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonProperty("created_at")
+  @NotNull
   public Date getCreatedAt() {
     return createdAt;
   }
@@ -50,8 +51,9 @@ public class CatalogsHotelFeed   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
+  @NotNull
   public String getId() {
     return id;
   }
@@ -62,8 +64,9 @@ public class CatalogsHotelFeed   {
   /**
    **/
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonProperty("updated_at")
+  @NotNull
   public Date getUpdatedAt() {
     return updatedAt;
   }

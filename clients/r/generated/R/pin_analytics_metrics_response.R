@@ -19,8 +19,7 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
     `lifetime_metrics` = NULL,
     `daily_metrics` = NULL,
     `summary_metrics` = NULL,
-    #' Initialize a new PinAnalyticsMetricsResponse class.
-    #'
+
     #' @description
     #' Initialize a new PinAnalyticsMetricsResponse class.
     #'
@@ -28,7 +27,6 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
     #' @param daily_metrics Array with the requested daily metric records
     #' @param summary_metrics The metric name and value over the requested period for each requested metric
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`lifetime_metrics` = NULL, `daily_metrics` = NULL, `summary_metrics` = NULL, ...) {
       if (!is.null(`lifetime_metrics`)) {
         stopifnot(is.vector(`lifetime_metrics`), length(`lifetime_metrics`) != 0)
@@ -46,13 +44,11 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
         self$`summary_metrics` <- `summary_metrics`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinAnalyticsMetricsResponse in JSON format
-    #' @export
     toJSON = function() {
       PinAnalyticsMetricsResponseObject <- list()
       if (!is.null(self$`lifetime_metrics`)) {
@@ -69,14 +65,12 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
       }
       PinAnalyticsMetricsResponseObject
     },
-    #' Deserialize JSON string into an instance of PinAnalyticsMetricsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinAnalyticsMetricsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinAnalyticsMetricsResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`lifetime_metrics`)) {
@@ -90,19 +84,17 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinAnalyticsMetricsResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`lifetime_metrics`)) {
           sprintf(
           '"lifetime_metrics":
-            "%s"
+            %s
           ',
           jsonlite::toJSON(lapply(self$`lifetime_metrics`, function(x){ x }), auto_unbox = TRUE, digits = NA)
           )
@@ -118,7 +110,7 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
         if (!is.null(self$`summary_metrics`)) {
           sprintf(
           '"summary_metrics":
-            "%s"
+            %s
           ',
           jsonlite::toJSON(lapply(self$`summary_metrics`, function(x){ x }), auto_unbox = TRUE, digits = NA)
           )
@@ -127,14 +119,12 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of PinAnalyticsMetricsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinAnalyticsMetricsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinAnalyticsMetricsResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`lifetime_metrics` <- ApiClient$new()$deserializeObj(this_object$`lifetime_metrics`, "map(integer)", loadNamespace("openapi"))
@@ -142,53 +132,42 @@ PinAnalyticsMetricsResponse <- R6::R6Class(
       self$`summary_metrics` <- ApiClient$new()$deserializeObj(this_object$`summary_metrics`, "map(numeric)", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to PinAnalyticsMetricsResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to PinAnalyticsMetricsResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of PinAnalyticsMetricsResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

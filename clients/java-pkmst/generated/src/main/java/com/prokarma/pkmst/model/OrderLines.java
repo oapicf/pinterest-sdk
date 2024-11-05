@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Order Line")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLines   {
   @JsonProperty("id")
   private String id;
@@ -60,10 +60,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Order line ID.
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "2680059592705", value = "Order line ID.")
   public String getId() {
     return id;
@@ -78,10 +78,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Always \"orderline\".
    * @return type
-  **/
+   */
   @ApiModelProperty(example = "orderline", value = "Always \"orderline\".")
   public String getType() {
     return type;
@@ -96,10 +96,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Ad account ID.
    * @return adAccountId
-  **/
+   */
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   public String getAdAccountId() {
     return adAccountId;
@@ -114,10 +114,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Purchase order ID.
    * @return purchaseOrderId
-  **/
+   */
   @ApiModelProperty(example = "PO12345", value = "Purchase order ID.")
   public String getPurchaseOrderId() {
     return purchaseOrderId;
@@ -132,10 +132,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Start time. Unix timestamp.
    * @return startTime
-  **/
+   */
   @ApiModelProperty(example = "1452208622", value = "Start time. Unix timestamp.")
   public BigDecimal getStartTime() {
     return startTime;
@@ -150,10 +150,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * End time. Unix timestamp.
    * @return endTime
-  **/
+   */
   @ApiModelProperty(example = "1461269616", value = "End time. Unix timestamp.")
   public BigDecimal getEndTime() {
     return endTime;
@@ -168,10 +168,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Order line budget in micro currency.
    * @return budget
-  **/
+   */
   @ApiModelProperty(example = "5000000", value = "Order line budget in micro currency.")
   public BigDecimal getBudget() {
     return budget;
@@ -186,10 +186,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Order line paid budget in micro currency.
    * @return paidBudget
-  **/
+   */
   @ApiModelProperty(example = "5000000", value = "Order line paid budget in micro currency.")
   public BigDecimal getPaidBudget() {
     return paidBudget;
@@ -204,10 +204,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Order line status.
    * @return status
-  **/
+   */
   @ApiModelProperty(value = "Order line status.")
   public OrderLineStatus getStatus() {
     return status;
@@ -222,10 +222,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Order line name.
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "Order Line Name 1", value = "Order line name.")
   public String getName() {
     return name;
@@ -240,10 +240,10 @@ public class OrderLines   {
     return this;
   }
 
-   /**
+  /**
    * Order line paid type.
    * @return paidType
-  **/
+   */
   @ApiModelProperty(value = "Order line paid type.")
   public OrderLinePaidType getPaidType() {
     return paidType;

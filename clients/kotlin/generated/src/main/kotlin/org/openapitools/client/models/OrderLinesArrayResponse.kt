@@ -32,5 +32,8 @@ data class OrderLinesArrayResponse (
     @Json(name = "items")
     val items: kotlin.collections.List<OrderLines>? = null
 
-)
+) {
+
+
+}
 

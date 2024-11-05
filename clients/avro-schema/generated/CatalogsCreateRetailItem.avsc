@@ -15,17 +15,14 @@
         "type": "enum",
         "name": "CatalogsCreateRetailItem_operation",
         "symbols": [
-          "CREATE",
-          "UPDATE",
-          "UPSERT",
-          "DELETE"
+          "CREATE"
         ]
       },
       "doc": ""
     },
     {
       "name": "attributes",
-      "type": "model.ItemAttributes",
+      "type": "model.ItemAttributesRequest",
       "doc": ""
     }
   ]

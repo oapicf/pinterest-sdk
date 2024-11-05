@@ -6,7 +6,7 @@ import org.openapitools.model.AdAccountCreateRequest
 import org.openapitools.model.AdAccountCreateSubscriptionRequest
 import org.openapitools.model.AdAccountCreateSubscriptionResponse
 import org.openapitools.model.AdAccountGetSubscriptionResponse
-import org.openapitools.model.AdAccountsCatalogsProductGroupsList200Response
+import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.model.AdAccountsList200Response
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response
 import org.openapitools.model.AdArrayResponse
@@ -23,6 +23,8 @@ import org.openapitools.model.AdPreviewRequest
 import org.openapitools.model.AdPreviewURLResponse
 import org.openapitools.model.AdResponse
 import org.openapitools.model.AdUpdateRequest
+import org.openapitools.model.AdsAnalyticsAdTargetingType
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse
@@ -33,6 +35,7 @@ import org.openapitools.model.AdsCreditRedeemResponse
 import org.openapitools.model.AdsCreditsDiscountsGet200Response
 import org.openapitools.model.AdsList200Response
 import org.openapitools.model.Audience
+import org.openapitools.model.AudienceAccountType
 import org.openapitools.model.AudienceCreateCustomRequest
 import org.openapitools.model.AudienceCreateRequest
 import org.openapitools.model.AudienceDefinitionResponse
@@ -48,6 +51,8 @@ import org.openapitools.model.BulkDownloadResponse
 import org.openapitools.model.BulkUpsertRequest
 import org.openapitools.model.BulkUpsertResponse
 import org.openapitools.model.BulkUpsertStatusResponse
+import org.openapitools.model.BusinessSharedAudience
+import org.openapitools.model.BusinessSharedAudienceResponse
 import org.openapitools.model.CampaignCreateRequest
 import org.openapitools.model.CampaignCreateResponse
 import org.openapitools.model.CampaignResponse
@@ -77,10 +82,16 @@ import org.openapitools.model.KeywordsGet200Response
 import org.openapitools.model.KeywordsMetricsArrayResponse
 import org.openapitools.model.KeywordsRequest
 import org.openapitools.model.KeywordsResponse
+import org.openapitools.model.LeadFormArrayResponse
+import org.openapitools.model.LeadFormCreateRequest
 import org.openapitools.model.LeadFormResponse
 import org.openapitools.model.LeadFormTestRequest
 import org.openapitools.model.LeadFormTestResponse
+import org.openapitools.model.LeadFormUpdateRequest
 import org.openapitools.model.LeadFormsList200Response
+import org.openapitools.model.LeadsExportCreateRequest
+import org.openapitools.model.LeadsExportCreateResponse
+import org.openapitools.model.LeadsExportResponseData
 import org.openapitools.model.MatchType
 import org.openapitools.model.MetricsResponse
 import org.openapitools.model.OrderLine
@@ -97,8 +108,14 @@ import org.openapitools.model.SSIOCreateInsertionOrderResponse
 import org.openapitools.model.SSIOEditInsertionOrderRequest
 import org.openapitools.model.SSIOEditInsertionOrderResponse
 import org.openapitools.model.SSIOInsertionOrderStatusResponse
+import org.openapitools.model.SharedAudience
+import org.openapitools.model.SharedAudienceResponse
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response
+import org.openapitools.model.TargetingTemplateCreate
+import org.openapitools.model.TargetingTemplateGetResponseData
+import org.openapitools.model.TargetingTemplateList200Response
+import org.openapitools.model.TargetingTemplateUpdateRequest
 import org.openapitools.model.TemplatesList200Response
 import org.openapitools.model.TermsOfService
 import org.junit.jupiter.api.Test
@@ -155,16 +172,19 @@ class AdAccountsApiTest {
     }
 
     /**
-     * To test AdAccountsApiController.adAccountsCatalogsProductGroupsList
+     * To test AdAccountsApiController.adAccountsAudiencesSharedAccountsList
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    fun adAccountsCatalogsProductGroupsListTest() {
+    fun adAccountsAudiencesSharedAccountsListTest() {
         val adAccountId: kotlin.String = TODO()
-        val feedProfileId: kotlin.String? = TODO()
-        val response: ResponseEntity<AdAccountsCatalogsProductGroupsList200Response> = api.adAccountsCatalogsProductGroupsList(adAccountId, feedProfileId)
+        val audienceId: kotlin.String = TODO()
+        val accountType: AudienceAccountType = TODO()
+        val pageSize: kotlin.Int = TODO()
+        val bookmark: kotlin.String? = TODO()
+        val response: ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> = api.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
 
         // TODO: test validations
     }
@@ -445,7 +465,7 @@ class AdAccountsApiTest {
         val adIds: kotlin.collections.List<kotlin.String> = TODO()
         val startDate: java.time.LocalDate = TODO()
         val endDate: java.time.LocalDate = TODO()
-        val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType> = TODO()
+        val targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType> = TODO()
         val columns: kotlin.collections.List<kotlin.String> = TODO()
         val granularity: Granularity = TODO()
         val clickWindowDays: kotlin.Int = TODO()
@@ -469,14 +489,16 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val startDate: java.time.LocalDate = TODO()
         val endDate: java.time.LocalDate = TODO()
-        val adIds: kotlin.collections.List<kotlin.String> = TODO()
         val columns: kotlin.collections.List<kotlin.String> = TODO()
         val granularity: Granularity = TODO()
+        val adIds: kotlin.collections.List<kotlin.String>? = TODO()
         val clickWindowDays: kotlin.Int = TODO()
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
-        val response: ResponseEntity<List<AdsAnalyticsResponseInner>> = api.adsAnalytics(adAccountId, startDate, endDate, adIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+        val pinIds: kotlin.collections.List<kotlin.String>? = TODO()
+        val campaignIds: kotlin.collections.List<kotlin.String>? = TODO()
+        val response: ResponseEntity<List<AdsAnalyticsResponseInner>> = api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds)
 
         // TODO: test validations
     }
@@ -839,7 +861,7 @@ class AdAccountsApiTest {
         val campaignIds: kotlin.collections.List<kotlin.String> = TODO()
         val startDate: java.time.LocalDate = TODO()
         val endDate: java.time.LocalDate = TODO()
-        val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType> = TODO()
+        val targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType> = TODO()
         val columns: kotlin.collections.List<kotlin.String> = TODO()
         val granularity: Granularity = TODO()
         val clickWindowDays: kotlin.Int = TODO()
@@ -1160,6 +1182,21 @@ class AdAccountsApiTest {
     }
 
     /**
+     * To test AdAccountsApiController.leadFormsCreate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun leadFormsCreateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest> = TODO()
+        val response: ResponseEntity<LeadFormArrayResponse> = api.leadFormsCreate(adAccountId, leadFormCreateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
      * To test AdAccountsApiController.leadFormsList
      *
      * @throws ApiException
@@ -1172,6 +1209,51 @@ class AdAccountsApiTest {
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
         val response: ResponseEntity<LeadFormsList200Response> = api.leadFormsList(adAccountId, pageSize, order, bookmark)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.leadFormsUpdate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun leadFormsUpdateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest> = TODO()
+        val response: ResponseEntity<LeadFormArrayResponse> = api.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.leadsExportCreate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun leadsExportCreateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val leadsExportCreateRequest: LeadsExportCreateRequest = TODO()
+        val response: ResponseEntity<LeadsExportCreateResponse> = api.leadsExportCreate(adAccountId, leadsExportCreateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.leadsExportGet
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun leadsExportGetTest() {
+        val adAccountId: kotlin.String = TODO()
+        val leadsExportId: kotlin.String = TODO()
+        val response: ResponseEntity<LeadsExportResponseData> = api.leadsExportGet(adAccountId, leadsExportId)
 
         // TODO: test validations
     }
@@ -1434,6 +1516,55 @@ class AdAccountsApiTest {
     }
 
     /**
+     * To test AdAccountsApiController.targetingTemplateCreate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun targetingTemplateCreateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val targetingTemplateCreate: TargetingTemplateCreate = TODO()
+        val response: ResponseEntity<TargetingTemplateGetResponseData> = api.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.targetingTemplateList
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun targetingTemplateListTest() {
+        val adAccountId: kotlin.String = TODO()
+        val order: kotlin.String? = TODO()
+        val includeSizing: kotlin.Boolean = TODO()
+        val searchQuery: kotlin.String? = TODO()
+        val pageSize: kotlin.Int = TODO()
+        val bookmark: kotlin.String? = TODO()
+        val response: ResponseEntity<TargetingTemplateList200Response> = api.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.targetingTemplateUpdate
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun targetingTemplateUpdateTest() {
+        val adAccountId: kotlin.String = TODO()
+        val targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest = TODO()
+        val response: ResponseEntity<Unit> = api.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+
+        // TODO: test validations
+    }
+
+    /**
      * To test AdAccountsApiController.templatesList
      *
      * @throws ApiException
@@ -1462,6 +1593,36 @@ class AdAccountsApiTest {
         val includeHtml: kotlin.Boolean = TODO()
         val tosType: kotlin.String? = TODO()
         val response: ResponseEntity<TermsOfService> = api.termsOfServiceGet(adAccountId, includeHtml, tosType)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.updateAdAccountToAdAccountSharedAudience
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun updateAdAccountToAdAccountSharedAudienceTest() {
+        val adAccountId: kotlin.String = TODO()
+        val sharedAudience: SharedAudience = TODO()
+        val response: ResponseEntity<SharedAudienceResponse> = api.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+
+        // TODO: test validations
+    }
+
+    /**
+     * To test AdAccountsApiController.updateAdAccountToBusinessSharedAudience
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    fun updateAdAccountToBusinessSharedAudienceTest() {
+        val adAccountId: kotlin.String = TODO()
+        val businessSharedAudience: BusinessSharedAudience = TODO()
+        val response: ResponseEntity<BusinessSharedAudienceResponse> = api.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
 
         // TODO: test validations
     }

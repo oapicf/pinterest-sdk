@@ -58,7 +58,7 @@ public class PinUpdate  {
  /**
    * Carousel Pin slots data.
   **/
-  private List<PinUpdateCarouselSlotsInner> carouselSlots;
+  private List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
 
   @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
  /**

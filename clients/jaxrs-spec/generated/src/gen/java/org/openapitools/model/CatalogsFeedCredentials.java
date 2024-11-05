@@ -17,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "This field is **OPTIONAL**. Use this if your feed file requires username and password.")
 @JsonTypeName("CatalogsFeedCredentials")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedCredentials   {
-  private @Valid String password;
-  private @Valid String username;
+  private String password;
+  private String username;
 
   /**
    * The required password for downloading a feed.
@@ -33,8 +33,7 @@ public class CatalogsFeedCredentials   {
   
   @ApiModelProperty(required = true, value = "The required password for downloading a feed.")
   @JsonProperty("password")
-  @NotNull
-  public String getPassword() {
+  @NotNull public String getPassword() {
     return password;
   }
 
@@ -54,8 +53,7 @@ public class CatalogsFeedCredentials   {
   
   @ApiModelProperty(required = true, value = "The required username for downloading a feed.")
   @JsonProperty("username")
-  @NotNull
-  public String getUsername() {
+  @NotNull public String getUsername() {
     return username;
   }
 

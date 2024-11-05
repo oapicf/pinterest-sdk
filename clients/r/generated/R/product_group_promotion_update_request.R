@@ -17,15 +17,13 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
   public = list(
     `ad_group_id` = NULL,
     `product_group_promotion` = NULL,
-    #' Initialize a new ProductGroupPromotionUpdateRequest class.
-    #'
+
     #' @description
     #' Initialize a new ProductGroupPromotionUpdateRequest class.
     #'
     #' @param ad_group_id ID of the ad group the product group belongs to.
     #' @param product_group_promotion product_group_promotion
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`ad_group_id`, `product_group_promotion`, ...) {
       if (!missing(`ad_group_id`)) {
         if (!(is.character(`ad_group_id`) && length(`ad_group_id`) == 1)) {
@@ -39,13 +37,11 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
         self$`product_group_promotion` <- `product_group_promotion`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupPromotionUpdateRequest in JSON format
-    #' @export
     toJSON = function() {
       ProductGroupPromotionUpdateRequestObject <- list()
       if (!is.null(self$`ad_group_id`)) {
@@ -58,14 +54,12 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
       }
       ProductGroupPromotionUpdateRequestObject
     },
-    #' Deserialize JSON string into an instance of ProductGroupPromotionUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupPromotionUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupPromotionUpdateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_group_id`)) {
@@ -76,13 +70,11 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductGroupPromotionUpdateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_group_id`)) {
@@ -105,27 +97,23 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ProductGroupPromotionUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductGroupPromotionUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductGroupPromotionUpdateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_group_id` <- this_object$`ad_group_id`
       self$`product_group_promotion` <- ApiClient$new()$deserializeObj(this_object$`product_group_promotion`, "array[ProductGroupPromotion]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to ProductGroupPromotionUpdateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to ProductGroupPromotionUpdateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `ad_group_id`
@@ -144,23 +132,19 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for ProductGroupPromotionUpdateRequest: the required field `product_group_promotion` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ProductGroupPromotionUpdateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `ad_group_id` is null
       if (is.null(self$`ad_group_id`)) {
@@ -178,13 +162,11 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `ad_group_id` is null
@@ -203,12 +185,9 @@ ProductGroupPromotionUpdateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -23,13 +23,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TargetingSpec_SHOPPING_RETARGETING")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TargetingSpecSHOPPINGRETARGETING {
 
   private Integer lookbackWindow;
 
   @Valid
-  private List<Integer> tagTypes;
+  private List<Integer> tagTypes = new ArrayList<>();
 
   private Integer exclusionWindow;
 
@@ -41,7 +41,7 @@ public class TargetingSpecSHOPPINGRETARGETING {
   /**
    * Number of days ago to start lookback timeframe for dynamic retargeting
    * @return lookbackWindow
-  */
+   */
   
   @Schema(name = "lookback_window", example = "30", description = "Number of days ago to start lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lookback_window")
@@ -69,7 +69,7 @@ public class TargetingSpecSHOPPINGRETARGETING {
   /**
    * Event types to target for dynamic retargeting
    * @return tagTypes
-  */
+   */
   
   @Schema(name = "tag_types", example = "[0,6]", description = "Event types to target for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tag_types")
@@ -89,7 +89,7 @@ public class TargetingSpecSHOPPINGRETARGETING {
   /**
    * Number of days ago to stop lookback timeframe for dynamic retargeting
    * @return exclusionWindow
-  */
+   */
   
   @Schema(name = "exclusion_window", example = "14", description = "Number of days ago to stop lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exclusion_window")

@@ -17,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("pins_save_request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinsSaveRequest   {
-  private @Valid String boardId;
-  private @Valid String boardSectionId;
+  private String boardId;
+  private String boardSectionId;
 
   /**
    * Unique identifier of the board to which the pin will be saved.
@@ -33,7 +33,7 @@ public class PinsSaveRequest   {
   
   @ApiModelProperty(value = "Unique identifier of the board to which the pin will be saved.")
   @JsonProperty("board_id")
- @Pattern(regexp="^\\d+$")  public String getBoardId() {
+   @Pattern(regexp="^\\d+$")public String getBoardId() {
     return boardId;
   }
 
@@ -53,7 +53,7 @@ public class PinsSaveRequest   {
   
   @ApiModelProperty(value = "Unique identifier of the board section to which the pin will be saved.")
   @JsonProperty("board_section_id")
- @Pattern(regexp="^\\d+$")  public String getBoardSectionId() {
+   @Pattern(regexp="^\\d+$")public String getBoardSectionId() {
     return boardSectionId;
   }
 

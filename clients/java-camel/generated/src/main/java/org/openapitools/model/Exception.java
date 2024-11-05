@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * Exception
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Exception {
 
   private Integer code;
@@ -33,7 +33,7 @@ public class Exception {
   /**
    * Exception error code.
    * @return code
-  */
+   */
   
   @Schema(name = "code", example = "2", description = "Exception error code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
@@ -53,7 +53,7 @@ public class Exception {
   /**
    * Exception message.
    * @return message
-  */
+   */
   
   @Schema(name = "message", example = "Advertiser not found.", description = "Exception message.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")

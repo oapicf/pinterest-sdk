@@ -2,9 +2,9 @@
 # PinMedia
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**mediaType** | **kotlin.String** |  |  [optional]
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **mediaType** | **kotlin.String** |  |  [optional] |
 
 
 

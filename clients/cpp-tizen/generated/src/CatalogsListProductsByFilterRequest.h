@@ -9,8 +9,11 @@
 
 
 #include <string>
-#include "CatalogsListProductsByFilterRequest_oneOf.h"
-#include "CatalogsProductGroupFilters.h"
+#include "CatalogsCreativeAssetsProductGroupFilters.h"
+#include "CatalogsListProductsByFeedBasedFilter.h"
+#include "CatalogsLocale.h"
+#include "CatalogsVerticalsListProductsByCatalogBasedFilterRequest.h"
+#include "Country.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -56,15 +59,47 @@ public:
 	void setFeedId(std::string  feed_id);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupFilters getFilters();
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFilters  filters);
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	/*! \brief Get 
+	 */
+	std::string getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(std::string  catalog_type);
+	/*! \brief Get Catalog id pertaining to the creative assets product group.
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the creative assets product group.
+	 */
+	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get 
+	 */
+	Country getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(Country  country);
+	/*! \brief Get 
+	 */
+	CatalogsLocale getLocale();
+
+	/*! \brief Set 
+	 */
+	void setLocale(CatalogsLocale  locale);
 
 private:
 	std::string feed_id;
-	CatalogsProductGroupFilters filters;
+	CatalogsCreativeAssetsProductGroupFilters filters;
+	std::string catalog_type;
+	std::string catalog_id;
+	Country country;
+	CatalogsLocale locale;
 	void __init();
 	void __cleanup();
 

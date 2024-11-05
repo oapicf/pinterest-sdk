@@ -20,7 +20,7 @@ import play.api.libs.json._
   * @param collectionsHeroPinId Hero Pin ID if this PG is promoted as a Collection
   * @param collectionsHeroDestinationUrl Collections Hero Destination Url
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class ProductGroupPromotion(
   id: Option[String],
   adGroupId: Option[String],
@@ -36,7 +36,6 @@ case class ProductGroupPromotion(
   trackingUrl: Option[String],
   catalogProductGroupId: Option[String],
   catalogProductGroupName: Option[String],
-  creativeType: Option[CreativeType],
   collectionsHeroPinId: Option[String],
   collectionsHeroDestinationUrl: Option[String],
   gridClickType: Option[GridClickType]

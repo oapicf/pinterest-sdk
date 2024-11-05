@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsCreativeAssetsFeedsUpdateRequest
 open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFormat

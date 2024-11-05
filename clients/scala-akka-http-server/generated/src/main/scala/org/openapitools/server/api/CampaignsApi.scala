@@ -8,7 +8,7 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
-import org.openapitools.server.model.AdsAnalyticsTargetingType
+import org.openapitools.server.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.server.model.CampaignCreateRequest
 import org.openapitools.server.model.CampaignCreateResponse
 import org.openapitools.server.model.CampaignResponse

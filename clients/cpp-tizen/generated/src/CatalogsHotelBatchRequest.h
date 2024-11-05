@@ -10,9 +10,8 @@
 
 #include <string>
 #include "CatalogsHotelBatchItem.h"
-#include "CatalogsType.h"
+#include "CatalogsItemsRequest_language.h"
 #include "Country.h"
-#include "Language.h"
 #include <list>
 #include "Object.h"
 
@@ -52,11 +51,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
@@ -66,11 +65,11 @@ public:
 	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
-	Language getLanguage();
+	CatalogsItemsRequest_language getLanguage();
 
 	/*! \brief Set 
 	 */
-	void setLanguage(Language  language);
+	void setLanguage(CatalogsItemsRequest_language  language);
 	/*! \brief Get Array with catalogs item operations
 	 */
 	std::list<CatalogsHotelBatchItem> getItems();
@@ -87,9 +86,9 @@ public:
 	void setCatalogId(std::string  catalog_id);
 
 private:
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	Country country;
-	Language language;
+	CatalogsItemsRequest_language language;
 	std::list <CatalogsHotelBatchItem>items;
 	std::string catalog_id;
 	void __init();

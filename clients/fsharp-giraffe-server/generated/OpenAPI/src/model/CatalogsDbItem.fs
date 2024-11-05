@@ -9,8 +9,8 @@ module CatalogsDbItem =
 
 
   type CatalogsDbItem = {
-    CreatedAt : Nullable<DateTime>;
+    CreatedAt : DateTime;
     Id : string;
-    UpdatedAt : Nullable<DateTime>;
+    UpdatedAt : DateTime;
   }
   //#endregion

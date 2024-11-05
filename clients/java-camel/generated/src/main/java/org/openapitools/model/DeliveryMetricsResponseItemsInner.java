@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("DeliveryMetricsResponse_items_inner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class DeliveryMetricsResponseItemsInner {
 
   private String name;
@@ -75,7 +75,7 @@ public class DeliveryMetricsResponseItemsInner {
   /**
    * Metric's name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "AD_GROUP_ID", description = "Metric's name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -95,7 +95,7 @@ public class DeliveryMetricsResponseItemsInner {
   /**
    * Category name
    * @return category
-  */
+   */
   
   @Schema(name = "category", example = "ADS", description = "Category name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("category")
@@ -115,7 +115,7 @@ public class DeliveryMetricsResponseItemsInner {
   /**
    * How the metric is defined.
    * @return definition
-  */
+   */
   
   @Schema(name = "definition", example = "Unique ID for your ad group", description = "How the metric is defined.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("definition")
@@ -135,7 +135,7 @@ public class DeliveryMetricsResponseItemsInner {
   /**
    * Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
    * @return displayName
-  */
+   */
   
   @Schema(name = "display_name", example = "Ad group ID", description = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("display_name")

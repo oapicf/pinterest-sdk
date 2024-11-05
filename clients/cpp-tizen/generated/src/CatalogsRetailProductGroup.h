@@ -118,13 +118,34 @@ public:
 	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	void setUpdatedAt(int  updated_at);
-	/*! \brief Get 
+	/*! \brief Get Catalog id pertaining to the retail product group.
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the retail product group.
+	 */
+	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get id of the catalogs feed belonging to this catalog product group
 	 */
 	std::string getFeedId();
 
-	/*! \brief Set 
+	/*! \brief Set id of the catalogs feed belonging to this catalog product group
 	 */
 	void setFeedId(std::string  feed_id);
+	/*! \brief Get 
+	 */
+	std::string getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(std::string  country);
+	/*! \brief Get 
+	 */
+	std::string getLocale();
+
+	/*! \brief Set 
+	 */
+	void setLocale(std::string  locale);
 
 private:
 	std::string catalog_type;
@@ -137,7 +158,10 @@ private:
 	CatalogsProductGroupStatus status;
 	int created_at;
 	int updated_at;
+	std::string catalog_id;
 	std::string feed_id;
+	std::string country;
+	std::string locale;
 	void __init();
 	void __cleanup();
 

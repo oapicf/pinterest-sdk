@@ -407,7 +407,6 @@ object CatalogsFeedProcessingSchedule {
   case object PacificWake extends Timezone
   case object PacificWallis extends Timezone
   case object WET extends Timezone
-  case object `Null` extends Timezone
 
   object Timezone {
     def toTimezone(s: String): Option[Timezone] = s match {
@@ -798,7 +797,6 @@ object CatalogsFeedProcessingSchedule {
       case "PacificWake" => Some(PacificWake)
       case "PacificWallis" => Some(PacificWallis)
       case "WET" => Some(WET)
-      case "`Null`" => Some(`Null`)
       case _ => None
     }
 
@@ -1190,7 +1188,6 @@ object CatalogsFeedProcessingSchedule {
       case PacificWake => "PacificWake"
       case PacificWallis => "PacificWallis"
       case WET => "WET"
-      case `Null` => "`Null`"
     }
   }
 

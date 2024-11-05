@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class ConversionTagListResponse   {
   
-  private List<@Valid ConversionTagResponse> items;
+  private List<@Valid ConversionTagResponse> items = new ArrayList<>();
 
   /**
    **/

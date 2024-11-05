@@ -22,16 +22,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Pin fields for updates")
 @JsonTypeName("PinUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdate   {
-  private @Valid String altText;
-  private @Valid String boardId;
-  private @Valid String boardSectionId;
-  private @Valid String description;
-  private @Valid String link;
-  private @Valid String title;
-  private @Valid List<@Valid PinUpdateCarouselSlotsInner> carouselSlots;
-  private @Valid String note;
+  private String altText;
+  private String boardId;
+  private String boardSectionId;
+  private String description;
+  private String link;
+  private String title;
+  private @Valid List<@Valid PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
+  private String note;
 
   /**
    * Pin&#39;s alternative text.
@@ -44,7 +44,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(value = "Pin's alternative text.")
   @JsonProperty("alt_text")
- @Size(max=500)  public String getAltText() {
+   @Size(max=500)public String getAltText() {
     return altText;
   }
 
@@ -64,7 +64,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(value = "The id of the board to move the Pin onto.")
   @JsonProperty("board_id")
- @Pattern(regexp="^\\d+$")  public String getBoardId() {
+   @Pattern(regexp="^\\d+$")public String getBoardId() {
     return boardId;
   }
 
@@ -84,7 +84,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(value = "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.")
   @JsonProperty("board_section_id")
- @Pattern(regexp="^\\d+$")  public String getBoardSectionId() {
+   @Pattern(regexp="^\\d+$")public String getBoardSectionId() {
     return boardSectionId;
   }
 
@@ -104,7 +104,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(value = "Pin description - 800 characters maximum.")
   @JsonProperty("description")
- @Size(max=800)  public String getDescription() {
+   @Size(max=800)public String getDescription() {
     return description;
   }
 
@@ -124,7 +124,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "URL viewer is taken to when they click pin.")
   @JsonProperty("link")
- @Size(max=2048)  public String getLink() {
+   @Size(max=2048)public String getLink() {
     return link;
   }
 
@@ -144,7 +144,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(value = "The native pin title that creators explicitly prefer to display.")
   @JsonProperty("title")
- @Size(max=100)  public String getTitle() {
+   @Size(max=100)public String getTitle() {
     return title;
   }
 
@@ -164,7 +164,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(value = "Carousel Pin slots data.")
   @JsonProperty("carousel_slots")
-  public List<PinUpdateCarouselSlotsInner> getCarouselSlots() {
+  @Valid public List<@Valid PinUpdateCarouselSlotsInner> getCarouselSlots() {
     return carouselSlots;
   }
 

@@ -13,7 +13,7 @@ import org.openapitools.server.api.model.Exception;
 public class AdGroupArrayResponseElement   {
   
   private AdGroupResponse data;
-  private List<Exception> exceptions;
+  private List<Exception> exceptions = new ArrayList<>();
 
   public AdGroupArrayResponseElement () {
 

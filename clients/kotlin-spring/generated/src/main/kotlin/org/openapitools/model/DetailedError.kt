@@ -30,7 +30,7 @@ data class DetailedError(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("details", required = true) val details: kotlin.Any
-) {
+    ) {
 
 }
 

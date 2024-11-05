@@ -58,5 +58,8 @@ data class AudienceCategory (
     @Json(name = "subcategories")
     val subcategories: kotlin.collections.List<AudienceSubcategory>? = null
 
-)
+) {
+
+
+}
 

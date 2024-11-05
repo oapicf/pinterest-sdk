@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object describing a retail item record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -43,10 +43,10 @@ public class CatalogsRetailItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -61,10 +61,10 @@ public class CatalogsRetailItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * The catalog retail item id in the merchant namespace
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog retail item id in the merchant namespace")
   public String getItemId() {
     return itemId;
@@ -87,10 +87,10 @@ public class CatalogsRetailItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * The pins mapped to the item
    * @return pins
-  **/
+   */
   @ApiModelProperty(value = "The pins mapped to the item")
   public List<Pin> getPins() {
     return pins;
@@ -105,10 +105,10 @@ public class CatalogsRetailItemResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get attributes
    * @return attributes
-  **/
+   */
   @ApiModelProperty(value = "")
   public ItemAttributes getAttributes() {
     return attributes;

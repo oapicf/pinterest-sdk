@@ -15,41 +15,41 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CatalogsFeedValidationErrors")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationErrors   {
-  private @Valid Integer FETCH_ERROR;
-  private @Valid Integer FETCH_INACTIVE_FEED_ERROR;
-  private @Valid Integer ENCODING_ERROR;
-  private @Valid Integer DELIMITER_ERROR;
-  private @Valid Integer REQUIRED_COLUMNS_MISSING;
-  private @Valid Integer DUPLICATE_PRODUCTS;
-  private @Valid Integer IMAGE_LINK_INVALID;
-  private @Valid Integer ITEMID_MISSING;
-  private @Valid Integer TITLE_MISSING;
-  private @Valid Integer DESCRIPTION_MISSING;
-  private @Valid Integer PRODUCT_LINK_MISSING;
-  private @Valid Integer IMAGE_LINK_MISSING;
-  private @Valid Integer AVAILABILITY_INVALID;
-  private @Valid Integer PRODUCT_PRICE_INVALID;
-  private @Valid Integer LINK_FORMAT_INVALID;
-  private @Valid Integer PARSE_LINE_ERROR;
-  private @Valid Integer ADWORDS_FORMAT_INVALID;
-  private @Valid Integer INTERNAL_SERVICE_ERROR;
-  private @Valid Integer NO_VERIFIED_DOMAIN;
-  private @Valid Integer ADULT_INVALID;
-  private @Valid Integer IMAGE_LINK_LENGTH_TOO_LONG;
-  private @Valid Integer INVALID_DOMAIN;
-  private @Valid Integer FEED_LENGTH_TOO_LONG;
-  private @Valid Integer LINK_LENGTH_TOO_LONG;
-  private @Valid Integer MALFORMED_XML;
-  private @Valid Integer PRICE_MISSING;
-  private @Valid Integer FEED_TOO_SMALL;
-  private @Valid Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
-  private @Valid Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
-  private @Valid Integer PINJOIN_CONTENT_UNSAFE;
-  private @Valid Integer BLOCKLISTED_IMAGE_SIGNATURE;
-  private @Valid Integer LIST_PRICE_INVALID;
-  private @Valid Integer PRICE_CANNOT_BE_DETERMINED;
+  private Integer FETCH_ERROR;
+  private Integer FETCH_INACTIVE_FEED_ERROR;
+  private Integer ENCODING_ERROR;
+  private Integer DELIMITER_ERROR;
+  private Integer REQUIRED_COLUMNS_MISSING;
+  private Integer DUPLICATE_PRODUCTS;
+  private Integer IMAGE_LINK_INVALID;
+  private Integer ITEMID_MISSING;
+  private Integer TITLE_MISSING;
+  private Integer DESCRIPTION_MISSING;
+  private Integer PRODUCT_LINK_MISSING;
+  private Integer IMAGE_LINK_MISSING;
+  private Integer AVAILABILITY_INVALID;
+  private Integer PRODUCT_PRICE_INVALID;
+  private Integer LINK_FORMAT_INVALID;
+  private Integer PARSE_LINE_ERROR;
+  private Integer ADWORDS_FORMAT_INVALID;
+  private Integer INTERNAL_SERVICE_ERROR;
+  private Integer NO_VERIFIED_DOMAIN;
+  private Integer ADULT_INVALID;
+  private Integer IMAGE_LINK_LENGTH_TOO_LONG;
+  private Integer INVALID_DOMAIN;
+  private Integer FEED_LENGTH_TOO_LONG;
+  private Integer LINK_LENGTH_TOO_LONG;
+  private Integer MALFORMED_XML;
+  private Integer PRICE_MISSING;
+  private Integer FEED_TOO_SMALL;
+  private Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
+  private Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+  private Integer PINJOIN_CONTENT_UNSAFE;
+  private Integer BLOCKLISTED_IMAGE_SIGNATURE;
+  private Integer LIST_PRICE_INVALID;
+  private Integer PRICE_CANNOT_BE_DETERMINED;
 
   /**
    * Pinterest couldn&#39;t download your feed.

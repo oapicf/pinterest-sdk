@@ -32,31 +32,81 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsAnalyticsCreateAsyncRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsCreateAsyncRequest   {
-  private @Valid String startDate;
-  private @Valid String endDate;
-  private @Valid Granularity granularity;
-  private @Valid ConversionAttributionWindowDays clickWindowDays = ConversionAttributionWindowDays.NUMBER_30;
-  private @Valid ConversionAttributionWindowDays engagementWindowDays = ConversionAttributionWindowDays.NUMBER_30;
-  private @Valid ConversionAttributionWindowDays viewWindowDays = ConversionAttributionWindowDays.NUMBER_1;
-  private @Valid ConversionReportTimeType conversionReportTime = "TIME_OF_AD_ACTION";
-  private @Valid List<ConversionReportAttributionType> attributionTypes;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> campaignIds;
-  private @Valid List<CampaignSummaryStatus> campaignStatuses;
-  private @Valid List<ObjectiveType> campaignObjectiveTypes;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> adGroupIds;
-  private @Valid List<AdGroupSummaryStatus> adGroupStatuses;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> adIds;
-  private @Valid List<PinPromotionSummaryStatus> adStatuses;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> productGroupIds;
-  private @Valid List<ProductGroupSummaryStatus> productGroupStatuses;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> productItemIds;
-  private @Valid List<AdsAnalyticsTargetingType> targetingTypes;
-  private @Valid List<@Valid AdsAnalyticsMetricsFilter> metricsFilters;
+  private String startDate;
+  private String endDate;
+  private Granularity granularity;
+  private ConversionAttributionWindowDays clickWindowDays = ConversionAttributionWindowDays.NUMBER_30;
+  private ConversionAttributionWindowDays engagementWindowDays = ConversionAttributionWindowDays.NUMBER_30;
+  private ConversionAttributionWindowDays viewWindowDays = ConversionAttributionWindowDays.NUMBER_1;
+  private ConversionReportTimeType conversionReportTime = "TIME_OF_AD_ACTION";
+  private @Valid List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
+  private @Valid List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
+  private @Valid List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
+  private @Valid List<ObjectiveType> campaignObjectiveTypes = new ArrayList<>();
+  private @Valid List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
+  private @Valid List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
+  private @Valid List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
+  private @Valid List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
+  private @Valid List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
+  private @Valid List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
+  private @Valid List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
+  private @Valid List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
+  private @Valid List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
   private @Valid List<ReportingColumnAsync> columns = new ArrayList<>();
-  private @Valid MetricsReportingLevel level;
-  private @Valid DataOutputFormat reportFormat = "JSON";
+  private MetricsReportingLevel level;
+  private DataOutputFormat reportFormat = "JSON";
+  public enum PrimarySortEnum {
+
+    ID(String.valueOf("BY_ID")), DATE(String.valueOf("BY_DATE"));
+
+
+    private String value;
+
+    PrimarySortEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static PrimarySortEnum fromString(String s) {
+        for (PrimarySortEnum b : PrimarySortEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static PrimarySortEnum fromValue(String value) {
+        for (PrimarySortEnum b : PrimarySortEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private PrimarySortEnum primarySort;
+  private Integer startHour;
+  private Integer endHour;
 
   /**
    * Metric report start date (UTC). Format: YYYY-MM-DD
@@ -69,8 +119,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
   @JsonProperty("start_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
+  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
@@ -90,8 +139,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
   @JsonProperty("end_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getEndDate() {
+  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getEndDate() {
     return endDate;
   }
 
@@ -111,8 +159,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(required = true, value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly")
   @JsonProperty("granularity")
-  @NotNull
-  public Granularity getGranularity() {
+  @NotNull public Granularity getGranularity() {
     return granularity;
   }
 
@@ -248,7 +295,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"12345678\"]", value = "List of campaign ids")
   @JsonProperty("campaign_ids")
- @Size(min=1,max=500)  public List< @Pattern(regexp="^\\d+$")String> getCampaignIds() {
+   @Size(min=1,max=500)public List< @Pattern(regexp="^\\d+$")String> getCampaignIds() {
     return campaignIds;
   }
 
@@ -284,7 +331,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of status values for filtering")
   @JsonProperty("campaign_statuses")
- @Size(min=1,max=6)  public List<CampaignSummaryStatus> getCampaignStatuses() {
+   @Size(min=1,max=6)public List<CampaignSummaryStatus> getCampaignStatuses() {
     return campaignStatuses;
   }
 
@@ -320,7 +367,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"AWARENESS\",\"VIDEO_VIEW\"]", value = "List of values for filtering. [\"WEB_SESSIONS\"] in BETA.")
   @JsonProperty("campaign_objective_types")
- @Size(min=1,max=6)  public List<ObjectiveType> getCampaignObjectiveTypes() {
+   @Size(min=1,max=7)public List<ObjectiveType> getCampaignObjectiveTypes() {
     return campaignObjectiveTypes;
   }
 
@@ -356,7 +403,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad group ids")
   @JsonProperty("ad_group_ids")
- @Size(min=1,max=500)  public List< @Pattern(regexp="^\\d+$")String> getAdGroupIds() {
+   @Size(min=1,max=500)public List< @Pattern(regexp="^\\d+$")String> getAdGroupIds() {
     return adGroupIds;
   }
 
@@ -392,7 +439,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
   @JsonProperty("ad_group_statuses")
- @Size(min=1,max=6)  public List<AdGroupSummaryStatus> getAdGroupStatuses() {
+   @Size(min=1,max=6)public List<AdGroupSummaryStatus> getAdGroupStatuses() {
     return adGroupStatuses;
   }
 
@@ -428,7 +475,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad ids [This parameter is no supported for Product Item Level Reports]")
   @JsonProperty("ad_ids")
- @Size(min=1,max=500)  public List< @Pattern(regexp="^\\d+$")String> getAdIds() {
+   @Size(min=1,max=500)public List< @Pattern(regexp="^\\d+$")String> getAdIds() {
     return adIds;
   }
 
@@ -464,7 +511,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"APPROVED\",\"PAUSED\"]", value = "List of values for filtering [This parameter is not supported for Product Item Level Reports]")
   @JsonProperty("ad_statuses")
- @Size(min=1,max=6)  public List<PinPromotionSummaryStatus> getAdStatuses() {
+   @Size(min=1,max=6)public List<PinPromotionSummaryStatus> getAdStatuses() {
     return adStatuses;
   }
 
@@ -500,7 +547,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"12345678\"]", value = "List of product group ids")
   @JsonProperty("product_group_ids")
- @Size(min=1,max=500)  public List< @Pattern(regexp="^\\d+$")String> getProductGroupIds() {
+   @Size(min=1,max=500)public List< @Pattern(regexp="^\\d+$")String> getProductGroupIds() {
     return productGroupIds;
   }
 
@@ -536,7 +583,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
   @JsonProperty("product_group_statuses")
- @Size(min=1,max=6)  public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
+   @Size(min=1,max=6)public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
     return productGroupStatuses;
   }
 
@@ -572,7 +619,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(example = "[\"12345678\"]", value = "List of product item ids")
   @JsonProperty("product_item_ids")
- @Size(min=1,max=500)  public List< @Pattern(regexp="^\\d+$")String> getProductItemIds() {
+   @Size(min=1,max=500)public List< @Pattern(regexp="^\\d+$")String> getProductItemIds() {
     return productItemIds;
   }
 
@@ -598,7 +645,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
     return this;
   }
   /**
-   * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;.
+   * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
    **/
   public AdsAnalyticsCreateAsyncRequest targetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
@@ -606,9 +653,9 @@ public class AdsAnalyticsCreateAsyncRequest   {
   }
 
   
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
   @JsonProperty("targeting_types")
- @Size(min=1,max=5)  public List<AdsAnalyticsTargetingType> getTargetingTypes() {
+   @Size(min=1,max=5)public List<AdsAnalyticsTargetingType> getTargetingTypes() {
     return targetingTypes;
   }
 
@@ -644,7 +691,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of metrics filters")
   @JsonProperty("metrics_filters")
- @Size(min=1)  public List<AdsAnalyticsMetricsFilter> getMetricsFilters() {
+  @Valid  @Size(min=1)public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
     return metricsFilters;
   }
 
@@ -680,8 +727,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(required = true, value = "Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.")
   @JsonProperty("columns")
-  @NotNull
-  public List<ReportingColumnAsync> getColumns() {
+  @NotNull public List<ReportingColumnAsync> getColumns() {
     return columns;
   }
 
@@ -717,8 +763,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(required = true, value = "Level of the report")
   @JsonProperty("level")
-  @NotNull
-  public MetricsReportingLevel getLevel() {
+  @NotNull public MetricsReportingLevel getLevel() {
     return level;
   }
 
@@ -745,6 +790,70 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("report_format")
   public void setReportFormat(DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
+  }
+
+  /**
+   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+   **/
+  public AdsAnalyticsCreateAsyncRequest primarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "BY_ID", value = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
+  @JsonProperty("primary_sort")
+  public PrimarySortEnum getPrimarySort() {
+    return primarySort;
+  }
+
+  @JsonProperty("primary_sort")
+  public void setPrimarySort(PrimarySortEnum primarySort) {
+    this.primarySort = primarySort;
+  }
+
+  /**
+   * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   **/
+  public AdsAnalyticsCreateAsyncRequest startHour(Integer startHour) {
+    this.startHour = startHour;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
+  @JsonProperty("start_hour")
+   @Min(0) @Max(23)public Integer getStartHour() {
+    return startHour;
+  }
+
+  @JsonProperty("start_hour")
+  public void setStartHour(Integer startHour) {
+    this.startHour = startHour;
+  }
+
+  /**
+   * Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+   * minimum: 0
+   * maximum: 23
+   **/
+  public AdsAnalyticsCreateAsyncRequest endHour(Integer endHour) {
+    this.endHour = endHour;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
+  @JsonProperty("end_hour")
+   @Min(0) @Max(23)public Integer getEndHour() {
+    return endHour;
+  }
+
+  @JsonProperty("end_hour")
+  public void setEndHour(Integer endHour) {
+    this.endHour = endHour;
   }
 
 
@@ -779,12 +888,15 @@ public class AdsAnalyticsCreateAsyncRequest   {
         Objects.equals(this.metricsFilters, adsAnalyticsCreateAsyncRequest.metricsFilters) &&
         Objects.equals(this.columns, adsAnalyticsCreateAsyncRequest.columns) &&
         Objects.equals(this.level, adsAnalyticsCreateAsyncRequest.level) &&
-        Objects.equals(this.reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat);
+        Objects.equals(this.reportFormat, adsAnalyticsCreateAsyncRequest.reportFormat) &&
+        Objects.equals(this.primarySort, adsAnalyticsCreateAsyncRequest.primarySort) &&
+        Objects.equals(this.startHour, adsAnalyticsCreateAsyncRequest.startHour) &&
+        Objects.equals(this.endHour, adsAnalyticsCreateAsyncRequest.endHour);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat);
+    return Objects.hash(startDate, endDate, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, campaignIds, campaignStatuses, campaignObjectiveTypes, adGroupIds, adGroupStatuses, adIds, adStatuses, productGroupIds, productGroupStatuses, productItemIds, targetingTypes, metricsFilters, columns, level, reportFormat, primarySort, startHour, endHour);
   }
 
   @Override
@@ -815,6 +927,9 @@ public class AdsAnalyticsCreateAsyncRequest   {
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    reportFormat: ").append(toIndentedString(reportFormat)).append("\n");
+    sb.append("    primarySort: ").append(toIndentedString(primarySort)).append("\n");
+    sb.append("    startHour: ").append(toIndentedString(startHour)).append("\n");
+    sb.append("    endHour: ").append(toIndentedString(endHour)).append("\n");
     sb.append("}");
     return sb.toString();
   }

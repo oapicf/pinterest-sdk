@@ -25,7 +25,7 @@ value. Send the media file's contents as the request's <tt>file</tt>
 parameter and also include all of the parameters from
 <tt>upload_parameters</tt>.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 
 ### Example
 
@@ -62,7 +62,7 @@ Get media upload details
 
 Get details for a registered media upload, including its current status.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 
 ### Example
 
@@ -99,7 +99,7 @@ List media uploads
 
 List media uploads filtered by given parameters.
 
-<strong><a href='/docs/content/content-creation/#Creating%20video%20Pins'>Learn more</a></strong> about video Pin creation.
+<strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 
 ### Example
 
@@ -113,7 +113,7 @@ List media uploads filtered by given parameters.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
 
 ### Return type
 

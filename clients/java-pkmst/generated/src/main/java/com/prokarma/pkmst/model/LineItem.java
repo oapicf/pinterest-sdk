@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * LineItem
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LineItem   {
   @JsonProperty("product_brand")
   private String productBrand;
@@ -45,10 +45,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product brand. For example, \"Parker\".
    * @return productBrand
-  **/
+   */
   @ApiModelProperty(example = "Parker", value = "Product brand. For example, \"Parker\".")
   public String getProductBrand() {
     return productBrand;
@@ -63,10 +63,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product category. For example, \"Shoes\".
    * @return productCategory
-  **/
+   */
   @ApiModelProperty(example = "Shoes", value = "Product category. For example, \"Shoes\".")
   public String getProductCategory() {
     return productCategory;
@@ -81,10 +81,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product ID. For example, 1414.
    * @return productId
-  **/
+   */
   @ApiModelProperty(example = "1414", value = "Product ID. For example, 1414.")
   public Integer getProductId() {
     return productId;
@@ -99,10 +99,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product name. For example, \"Parker Boots\".
    * @return productName
-  **/
+   */
   @ApiModelProperty(example = "Parker Boots", value = "Product name. For example, \"Parker Boots\".")
   public String getProductName() {
     return productName;
@@ -117,10 +117,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product price. For example, \"99.99\".
    * @return productPrice
-  **/
+   */
   @ApiModelProperty(example = "99.99", value = "Product price. For example, \"99.99\".")
   public String getProductPrice() {
     return productPrice;
@@ -135,10 +135,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product quantity. For example, 2.
    * @return productQuantity
-  **/
+   */
   @ApiModelProperty(example = "2", value = "Product quantity. For example, 2.")
   public Integer getProductQuantity() {
     return productQuantity;
@@ -153,10 +153,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product variant. For example, \"Red\".
    * @return productVariant
-  **/
+   */
   @ApiModelProperty(example = "Red", value = "Product variant. For example, \"Red\".")
   public String getProductVariant() {
     return productVariant;
@@ -171,10 +171,10 @@ public class LineItem   {
     return this;
   }
 
-   /**
+  /**
    * Product variant ID. For example, \"1414-34832\".
    * @return productVariantId
-  **/
+   */
   @ApiModelProperty(example = "1414-34832", value = "Product variant ID. For example, \"1414-34832\".")
   public String getProductVariantId() {
     return productVariantId;

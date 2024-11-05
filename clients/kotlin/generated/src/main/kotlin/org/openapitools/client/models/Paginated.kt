@@ -35,5 +35,8 @@ data class Paginated (
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null
 
-)
+) {
+
+
+}
 

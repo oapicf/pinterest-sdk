@@ -20,11 +20,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TemplateResponse_date_range")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TemplateResponseDateRange   {
-  private @Valid TemplateResponseDateRangeDynamicDateRange dynamicDateRange;
-  private @Valid TemplateResponseDateRangeRelativeDateRange relativeDateRange;
-  private @Valid TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
+  private TemplateResponseDateRangeDynamicDateRange dynamicDateRange;
+  private TemplateResponseDateRangeRelativeDateRange relativeDateRange;
+  private TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
 
   /**
    **/
@@ -36,7 +36,7 @@ public class TemplateResponseDateRange   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("dynamic_date_range")
-  public TemplateResponseDateRangeDynamicDateRange getDynamicDateRange() {
+  @Valid public TemplateResponseDateRangeDynamicDateRange getDynamicDateRange() {
     return dynamicDateRange;
   }
 
@@ -55,7 +55,7 @@ public class TemplateResponseDateRange   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("relative_date_range")
-  public TemplateResponseDateRangeRelativeDateRange getRelativeDateRange() {
+  @Valid public TemplateResponseDateRangeRelativeDateRange getRelativeDateRange() {
     return relativeDateRange;
   }
 
@@ -74,7 +74,7 @@ public class TemplateResponseDateRange   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("absolute_date_range")
-  public TemplateResponseDateRangeAbsoluteDateRange getAbsoluteDateRange() {
+  @Valid public TemplateResponseDateRangeAbsoluteDateRange getAbsoluteDateRange() {
     return absoluteDateRange;
   }
 

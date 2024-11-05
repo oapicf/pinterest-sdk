@@ -11,7 +11,7 @@ import play.api.libs.json._
   * @param orderLineId Order line ID that appears on the invoice.
   * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  * @param isFlexibleDailyBudgets Determines if a campaign has flexible daily budgets setup.
+  * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup.
   * @param defaultAdGroupBudgetInMicroCurrency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
   * @param isAutomatedCampaign Specifies whether the campaign was created in the automated campaign flow
   * @param id Campaign ID.
@@ -21,7 +21,7 @@ import play.api.libs.json._
   * @param isCampaignBudgetOptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CampaignCreateResponseData(
   adAccountId: Option[String],
   name: Option[String],
@@ -29,10 +29,9 @@ case class CampaignCreateResponseData(
   lifetimeSpendCap: Option[Int],
   dailySpendCap: Option[Int],
   orderLineId: Option[String],
-  trackingUrls: Option[AdCommonTrackingUrls],
+  trackingUrls: Option[TrackingUrls],
   startTime: Option[Int],
   endTime: Option[Int],
-  summaryStatus: Option[CampaignSummaryStatus],
   isFlexibleDailyBudgets: Option[Boolean],
   defaultAdGroupBudgetInMicroCurrency: Option[Int],
   isAutomatedCampaign: Option[Boolean],
@@ -41,14 +40,15 @@ case class CampaignCreateResponseData(
   createdTime: Option[Int],
   updatedTime: Option[Int],
   `type`: Option[String],
-  isCampaignBudgetOptimization: Option[Boolean]
+  isCampaignBudgetOptimization: Option[Boolean],
+  summaryStatus: Option[CampaignSummaryStatus]
   additionalProperties: 
 )
 
 object CampaignCreateResponseData {
   implicit lazy val campaignCreateResponseDataJsonFormat: Format[CampaignCreateResponseData] = {
     val realJsonFormat = Json.format[CampaignCreateResponseData]
-    val declaredPropNames = Set("adAccountId", "name", "status", "lifetimeSpendCap", "dailySpendCap", "orderLineId", "trackingUrls", "startTime", "endTime", "summaryStatus", "isFlexibleDailyBudgets", "defaultAdGroupBudgetInMicroCurrency", "isAutomatedCampaign", "id", "objectiveType", "createdTime", "updatedTime", "`type`", "isCampaignBudgetOptimization")
+    val declaredPropNames = Set("adAccountId", "name", "status", "lifetimeSpendCap", "dailySpendCap", "orderLineId", "trackingUrls", "startTime", "endTime", "isFlexibleDailyBudgets", "defaultAdGroupBudgetInMicroCurrency", "isAutomatedCampaign", "id", "objectiveType", "createdTime", "updatedTime", "`type`", "isCampaignBudgetOptimization", "summaryStatus")
     
     Format(
       Reads {

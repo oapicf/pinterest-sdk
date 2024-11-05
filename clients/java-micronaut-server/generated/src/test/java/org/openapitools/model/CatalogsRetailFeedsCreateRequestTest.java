@@ -5,6 +5,7 @@ import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
@@ -106,6 +107,14 @@ public class CatalogsRetailFeedsCreateRequestTest {
     @Test
     public void defaultAvailabilityTest() {
         // TODO: test defaultAvailability
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

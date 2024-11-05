@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.MediaUploadStatus
@@ -35,7 +36,7 @@ data class MediaUploadDetails(
     @field:Valid
     @Schema(example = "null", readOnly = true, description = "")
     @get:JsonProperty("status") val status: MediaUploadStatus? = null
-) {
+    ) {
 
 }
 

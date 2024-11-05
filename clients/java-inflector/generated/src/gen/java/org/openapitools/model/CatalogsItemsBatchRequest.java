@@ -16,11 +16,11 @@ import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsItemsUpdateBatchRequest;
 import org.openapitools.model.CatalogsItemsUpsertBatchRequest;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
-import org.openapitools.model.Language;
 
 
 
@@ -29,13 +29,13 @@ import org.openapitools.model.Language;
  **/
 
 @ApiModel(description = "Request object of catalogs items batch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemsBatchRequest   {
   @JsonProperty("country")
   private Country country;
 
   @JsonProperty("language")
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("operation")
   private BatchOperation operation;
@@ -62,7 +62,7 @@ public class CatalogsItemsBatchRequest   {
 
   /**
    **/
-  public CatalogsItemsBatchRequest language(Language language) {
+  public CatalogsItemsBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -70,10 +70,10 @@ public class CatalogsItemsBatchRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

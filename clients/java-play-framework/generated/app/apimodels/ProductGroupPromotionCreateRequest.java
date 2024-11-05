@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.ProductGroupPromotion;
+import apimodels.ProductGroupPromotionCreateRequestElement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * ProductGroupPromotionCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ProductGroupPromotionCreateRequest   {
   @JsonProperty("ad_group_id")
@@ -26,7 +26,7 @@ public class ProductGroupPromotionCreateRequest   {
   @NotNull
 @Valid
 
-  private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
 
   public ProductGroupPromotionCreateRequest adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
@@ -45,12 +45,12 @@ public class ProductGroupPromotionCreateRequest   {
     this.adGroupId = adGroupId;
   }
 
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
 
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
     if (this.productGroupPromotion == null) {
       this.productGroupPromotion = new ArrayList<>();
     }
@@ -62,11 +62,11 @@ public class ProductGroupPromotionCreateRequest   {
    * Get productGroupPromotion
    * @return productGroupPromotion
   **/
-  public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
+  public List<@Valid ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
-  public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public void setProductGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

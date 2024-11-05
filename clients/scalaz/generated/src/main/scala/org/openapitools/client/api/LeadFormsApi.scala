@@ -22,9 +22,12 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Error
+import org.openapitools.client.api.LeadFormArrayResponse
+import org.openapitools.client.api.LeadFormCreateRequest
 import org.openapitools.client.api.LeadFormResponse
 import org.openapitools.client.api.LeadFormTestRequest
 import org.openapitools.client.api.LeadFormTestResponse
+import org.openapitools.client.api.LeadFormUpdateRequest
 import org.openapitools.client.api.LeadFormsList200Response
 
 object LeadFormsApi {
@@ -75,6 +78,27 @@ object LeadFormsApi {
     } yield resp
   }
 
+  def leadFormsCreate(host: String, adAccountId: String, leadFormCreateRequest: List[LeadFormCreateRequest]): Task[LeadFormArrayResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadFormArrayResponse] = jsonOf[LeadFormArrayResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/lead_forms".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadFormCreateRequest)
+      resp          <- client.expect[LeadFormArrayResponse](req)
+
+    } yield resp
+  }
+
   def leadFormsList(host: String, adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[LeadFormsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[LeadFormsList200Response] = jsonOf[LeadFormsList200Response]
 
@@ -92,6 +116,27 @@ object LeadFormsApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[LeadFormsList200Response](req)
+
+    } yield resp
+  }
+
+  def leadFormsUpdate(host: String, adAccountId: String, leadFormUpdateRequest: List[LeadFormUpdateRequest]): Task[LeadFormArrayResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadFormArrayResponse] = jsonOf[LeadFormArrayResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/lead_forms".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadFormUpdateRequest)
+      resp          <- client.expect[LeadFormArrayResponse](req)
 
     } yield resp
   }
@@ -145,6 +190,27 @@ class HttpServiceLeadFormsApi(service: HttpService) {
     } yield resp
   }
 
+  def leadFormsCreate(adAccountId: String, leadFormCreateRequest: List[LeadFormCreateRequest]): Task[LeadFormArrayResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadFormArrayResponse] = jsonOf[LeadFormArrayResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/lead_forms".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadFormCreateRequest)
+      resp          <- client.expect[LeadFormArrayResponse](req)
+
+    } yield resp
+  }
+
   def leadFormsList(adAccountId: String, pageSize: Integer = 25, order: String, bookmark: String)(implicit pageSizeQuery: QueryParam[Integer], orderQuery: QueryParam[String], bookmarkQuery: QueryParam[String]): Task[LeadFormsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[LeadFormsList200Response] = jsonOf[LeadFormsList200Response]
 
@@ -162,6 +228,27 @@ class HttpServiceLeadFormsApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[LeadFormsList200Response](req)
+
+    } yield resp
+  }
+
+  def leadFormsUpdate(adAccountId: String, leadFormUpdateRequest: List[LeadFormUpdateRequest]): Task[LeadFormArrayResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[LeadFormArrayResponse] = jsonOf[LeadFormArrayResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/lead_forms".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(leadFormUpdateRequest)
+      resp          <- client.expect[LeadFormArrayResponse](req)
 
     } yield resp
   }

@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceCategory")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCategory   {
-  private @Valid String key;
-  private @Valid String name;
-  private @Valid BigDecimal ratio;
-  private @Valid BigDecimal index;
-  private @Valid String id;
-  private @Valid List<@Valid AudienceSubcategory> subcategories;
+  private String key;
+  private String name;
+  private BigDecimal ratio;
+  private BigDecimal index;
+  private String id;
+  private @Valid List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
 
   /**
    * Interest unique key (same as ID).
@@ -80,7 +80,7 @@ public class AudienceCategory   {
   
   @ApiModelProperty(example = "0.551", value = "Interest's percent of category's total audience.")
   @JsonProperty("ratio")
-  public BigDecimal getRatio() {
+  @Valid public BigDecimal getRatio() {
     return ratio;
   }
 
@@ -100,7 +100,7 @@ public class AudienceCategory   {
   
   @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
   @JsonProperty("index")
-  public BigDecimal getIndex() {
+  @Valid public BigDecimal getIndex() {
     return index;
   }
 
@@ -140,7 +140,7 @@ public class AudienceCategory   {
   
   @ApiModelProperty(value = "Subcategory interest distribution")
   @JsonProperty("subcategories")
-  public List<AudienceSubcategory> getSubcategories() {
+  @Valid public List<@Valid AudienceSubcategory> getSubcategories() {
     return subcategories;
   }
 

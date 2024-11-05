@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Questions** | Pointer to [**[]QuizPinQuestion**](QuizPinQuestion.md) |  | [optional] 
 **Results** | Pointer to [**[]QuizPinResult**](QuizPinResult.md) |  | [optional] 
+**TieBreakerType** | Pointer to **string** | Quiz ad tie breaker type, default is RANDOM | [optional] 
+**TieBreakerCustomResult** | Pointer to [**NullableQuizPinResult**](QuizPinResult.md) |  | [optional] 
 
 ## Methods
 
@@ -76,6 +78,66 @@ SetResults sets Results field to given value.
 
 HasResults returns a boolean if a field has been set.
 
+### GetTieBreakerType
+
+`func (o *QuizPinData) GetTieBreakerType() string`
+
+GetTieBreakerType returns the TieBreakerType field if non-nil, zero value otherwise.
+
+### GetTieBreakerTypeOk
+
+`func (o *QuizPinData) GetTieBreakerTypeOk() (*string, bool)`
+
+GetTieBreakerTypeOk returns a tuple with the TieBreakerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTieBreakerType
+
+`func (o *QuizPinData) SetTieBreakerType(v string)`
+
+SetTieBreakerType sets TieBreakerType field to given value.
+
+### HasTieBreakerType
+
+`func (o *QuizPinData) HasTieBreakerType() bool`
+
+HasTieBreakerType returns a boolean if a field has been set.
+
+### GetTieBreakerCustomResult
+
+`func (o *QuizPinData) GetTieBreakerCustomResult() QuizPinResult`
+
+GetTieBreakerCustomResult returns the TieBreakerCustomResult field if non-nil, zero value otherwise.
+
+### GetTieBreakerCustomResultOk
+
+`func (o *QuizPinData) GetTieBreakerCustomResultOk() (*QuizPinResult, bool)`
+
+GetTieBreakerCustomResultOk returns a tuple with the TieBreakerCustomResult field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTieBreakerCustomResult
+
+`func (o *QuizPinData) SetTieBreakerCustomResult(v QuizPinResult)`
+
+SetTieBreakerCustomResult sets TieBreakerCustomResult field to given value.
+
+### HasTieBreakerCustomResult
+
+`func (o *QuizPinData) HasTieBreakerCustomResult() bool`
+
+HasTieBreakerCustomResult returns a boolean if a field has been set.
+
+### SetTieBreakerCustomResultNil
+
+`func (o *QuizPinData) SetTieBreakerCustomResultNil(b bool)`
+
+ SetTieBreakerCustomResultNil sets the value for TieBreakerCustomResult to be an explicit nil
+
+### UnsetTieBreakerCustomResult
+`func (o *QuizPinData) UnsetTieBreakerCustomResult()`
+
+UnsetTieBreakerCustomResult ensures that no value is present for TieBreakerCustomResult, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

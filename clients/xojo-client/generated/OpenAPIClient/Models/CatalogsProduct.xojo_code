@@ -2,7 +2,12 @@
 Protected Class CatalogsProduct
 
 	#tag Property, Flags = &h0
-		metadata As OpenAPIClient.Models.CatalogsProductMetadata
+		catalog_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		metadata As OpenAPIClient.Models.CatalogsCreativeAssetsProductMetadata
 	#tag EndProperty
 
 
@@ -48,11 +53,19 @@ Protected Class CatalogsProduct
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="catalog_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="metadata"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductMetadata"
+			Type="CatalogsCreativeAssetsProductMetadata"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

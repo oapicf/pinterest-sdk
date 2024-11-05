@@ -27,6 +27,7 @@ AdAccountCreateSubscriptionRequest::__init()
 	//lead_form_id = std::string();
 	//partner_access_token = std::string();
 	//partner_refresh_token = std::string();
+	//partner_metadata = new AdAccountCreateSubscriptionRequest_partner_metadata();
 }
 
 void
@@ -51,6 +52,11 @@ AdAccountCreateSubscriptionRequest::__cleanup()
 	//
 	//delete partner_refresh_token;
 	//partner_refresh_token = NULL;
+	//}
+	//if(partner_metadata != NULL) {
+	//
+	//delete partner_metadata;
+	//partner_metadata = NULL;
 	//}
 	//
 }
@@ -104,6 +110,20 @@ AdAccountCreateSubscriptionRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *partner_metadataKey = "partner_metadata";
+	node = json_object_get_member(pJsonObject, partner_metadataKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AdAccountCreateSubscriptionRequest_partner_metadata")) {
+			jsonToValue(&partner_metadata, node, "AdAccountCreateSubscriptionRequest_partner_metadata", "AdAccountCreateSubscriptionRequest_partner_metadata");
+		} else {
+			
+			AdAccountCreateSubscriptionRequest_partner_metadata* obj = static_cast<AdAccountCreateSubscriptionRequest_partner_metadata*> (&partner_metadata);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 AdAccountCreateSubscriptionRequest::AdAccountCreateSubscriptionRequest(char* json)
@@ -152,6 +172,20 @@ AdAccountCreateSubscriptionRequest::toJson()
 	}
 	const gchar *partner_refresh_tokenKey = "partner_refresh_token";
 	json_object_set_member(pJsonObject, partner_refresh_tokenKey, node);
+	if (isprimitive("AdAccountCreateSubscriptionRequest_partner_metadata")) {
+		AdAccountCreateSubscriptionRequest_partner_metadata obj = getPartnerMetadata();
+		node = converttoJson(&obj, "AdAccountCreateSubscriptionRequest_partner_metadata", "");
+	}
+	else {
+		
+		AdAccountCreateSubscriptionRequest_partner_metadata obj = static_cast<AdAccountCreateSubscriptionRequest_partner_metadata> (getPartnerMetadata());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *partner_metadataKey = "partner_metadata";
+	json_object_set_member(pJsonObject, partner_metadataKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -206,6 +240,18 @@ void
 AdAccountCreateSubscriptionRequest::setPartnerRefreshToken(std::string  partner_refresh_token)
 {
 	this->partner_refresh_token = partner_refresh_token;
+}
+
+AdAccountCreateSubscriptionRequest_partner_metadata
+AdAccountCreateSubscriptionRequest::getPartnerMetadata()
+{
+	return partner_metadata;
+}
+
+void
+AdAccountCreateSubscriptionRequest::setPartnerMetadata(AdAccountCreateSubscriptionRequest_partner_metadata  partner_metadata)
+{
+	this->partner_metadata = partner_metadata;
 }
 
 

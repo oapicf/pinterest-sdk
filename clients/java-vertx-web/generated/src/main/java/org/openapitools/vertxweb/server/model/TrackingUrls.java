@@ -13,11 +13,11 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TrackingUrls   {
   
-  private List<String> impression;
-  private List<String> click;
-  private List<String> engagement;
-  private List<String> buyableButton;
-  private List<String> audienceVerification;
+  private List<String> impression = new ArrayList<>();
+  private List<String> click = new ArrayList<>();
+  private List<String> engagement = new ArrayList<>();
+  private List<String> buyableButton = new ArrayList<>();
+  private List<String> audienceVerification = new ArrayList<>();
 
   public TrackingUrls () {
 

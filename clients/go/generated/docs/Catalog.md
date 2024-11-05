@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **time.Time** |  | [optional] 
+**CreatedAt** | **time.Time** |  | 
 **Id** | **string** | ID of the catalog entity. | 
-**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
+**UpdatedAt** | **time.Time** |  | 
 **Name** | **NullableString** | A human-friendly name associated to a catalog entity. | 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewCatalog
 
-`func NewCatalog(id string, name NullableString, catalogType CatalogsType, ) *Catalog`
+`func NewCatalog(createdAt time.Time, id string, updatedAt time.Time, name NullableString, catalogType CatalogsType, ) *Catalog`
 
 NewCatalog instantiates a new Catalog object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *Catalog) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetId
 
@@ -93,11 +88,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *Catalog) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetName
 

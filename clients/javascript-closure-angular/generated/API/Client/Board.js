@@ -66,7 +66,7 @@ API.Client.Board.prototype.followerCount;
 API.Client.Board.prototype.media;
 
 /**
- * @type {!API.Client.Board_owner}
+ * @type {!API.Client.BoardOwner}
  * @export
  */
 API.Client.Board.prototype.owner;

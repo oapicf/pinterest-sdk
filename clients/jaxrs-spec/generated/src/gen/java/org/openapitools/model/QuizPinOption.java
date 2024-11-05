@@ -18,10 +18,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = " This field contains multiple options to a quiz question.")
 @JsonTypeName("QuizPinOption")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QuizPinOption   {
-  private @Valid BigDecimal id;
-  private @Valid String text;
+  private BigDecimal id;
+  private String text;
 
   /**
    **/
@@ -33,7 +33,7 @@ public class QuizPinOption   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("id")
-  public BigDecimal getId() {
+  @Valid public BigDecimal getId() {
     return id;
   }
 

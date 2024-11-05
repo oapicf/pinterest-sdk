@@ -19,8 +19,7 @@ RelatedTerms <- R6::R6Class(
     `id` = NULL,
     `related_term_count` = NULL,
     `related_terms_list` = NULL,
-    #' Initialize a new RelatedTerms class.
-    #'
+
     #' @description
     #' Initialize a new RelatedTerms class.
     #'
@@ -28,7 +27,6 @@ RelatedTerms <- R6::R6Class(
     #' @param related_term_count Total number of related terms returned
     #' @param related_terms_list The id of the advertiser.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `related_term_count` = NULL, `related_terms_list` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -48,13 +46,11 @@ RelatedTerms <- R6::R6Class(
         self$`related_terms_list` <- `related_terms_list`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return RelatedTerms in JSON format
-    #' @export
     toJSON = function() {
       RelatedTermsObject <- list()
       if (!is.null(self$`id`)) {
@@ -71,14 +67,12 @@ RelatedTerms <- R6::R6Class(
       }
       RelatedTermsObject
     },
-    #' Deserialize JSON string into an instance of RelatedTerms
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of RelatedTerms
     #'
     #' @param input_json the JSON input
     #' @return the instance of RelatedTerms
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -92,13 +86,11 @@ RelatedTerms <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return RelatedTerms in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -129,14 +121,12 @@ RelatedTerms <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of RelatedTerms
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of RelatedTerms
     #'
     #' @param input_json the JSON input
     #' @return the instance of RelatedTerms
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -144,53 +134,42 @@ RelatedTerms <- R6::R6Class(
       self$`related_terms_list` <- ApiClient$new()$deserializeObj(this_object$`related_terms_list`, "array[RelatedTermsRelatedTermsListInner]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to RelatedTerms
-    #'
+
     #' @description
     #' Validate JSON input with respect to RelatedTerms and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of RelatedTerms
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

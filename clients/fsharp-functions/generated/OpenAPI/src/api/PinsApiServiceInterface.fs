@@ -8,6 +8,7 @@ module PinsApiServiceInterface =
 
     //#region Service interface
     type IPinsApiService =
+      abstract member MultiPinsAnalytics : unit -> MultiPinsAnalyticsResult
       abstract member PinsAnalytics : unit -> PinsAnalyticsResult
       abstract member PinsCreate : PinsCreateBodyParams -> PinsCreateResult
       abstract member PinsDelete : unit -> PinsDeleteResult

@@ -21,6 +21,7 @@ import java.util.Objects;
 @ApiModel(description = "A successful OAuth access token response.")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "response_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = OauthAccessTokenResponseCode.class, name = "authorization_code"),
+  @JsonSubTypes.Type(value = OauthAccessTokenResponseClientCredentials.class, name = "client_credentials"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseEverlastingRefresh.class, name = "everlasting_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseIntegrationRefresh.class, name = "integration_refresh"),
   @JsonSubTypes.Type(value = OauthAccessTokenResponseRefresh.class, name = "refresh_token"),
@@ -31,7 +32,7 @@ public class OauthAccessTokenResponse   {
 
 public enum ResponseTypeEnum {
 
-    @JsonProperty("authorization_code") AUTHORIZATION_CODE(String.valueOf("authorization_code")), @JsonProperty("refresh_token") REFRESH_TOKEN(String.valueOf("refresh_token"));
+    @JsonProperty("authorization_code") AUTHORIZATION_CODE(String.valueOf("authorization_code")), @JsonProperty("refresh_token") REFRESH_TOKEN(String.valueOf("refresh_token")), @JsonProperty("client_credentials") CLIENT_CREDENTIALS(String.valueOf("client_credentials"));
 
 
     private String value;

@@ -7,7 +7,7 @@ Protected Class CatalogsHotelFeed
 
 
 	#tag Property, Flags = &h0
-		id As Xoson.O.OptionalString
+		id As String
 	#tag EndProperty
 
 

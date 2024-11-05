@@ -13,9 +13,9 @@ class ItemProcessingRecord {
     /* The catalog item id in the merchant namespace */
     String itemId
     /* Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
-    List<ItemValidationEvent> errors
+    List<ItemValidationEvent> errors = new ArrayList<>()
     /* Array with the validation warnings for the item processing record */
-    List<ItemValidationEvent> warnings
+    List<ItemValidationEvent> warnings = new ArrayList<>()
     
     ItemProcessingStatus status
 }

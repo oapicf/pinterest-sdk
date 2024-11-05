@@ -6,7 +6,7 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.Exception
-import org.openapitools.models.ProductGroupPromotion
+import org.openapitools.models.ProductGroupPromotionResponseElement
 import scala.collection.immutable.Seq
 
 /**
@@ -14,7 +14,7 @@ import scala.collection.immutable.Seq
  * @param data 
  * @param exceptions 
  */
-case class ProductGroupPromotionResponseItem(data: Option[ProductGroupPromotion],
+case class ProductGroupPromotionResponseItem(data: Option[ProductGroupPromotionResponseElement],
                 exceptions: Option[Seq[Exception]]
                 )
 

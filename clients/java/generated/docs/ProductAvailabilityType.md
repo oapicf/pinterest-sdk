@@ -11,7 +11,5 @@
 
 * `PREORDER` (value: `"PREORDER"`)
 
-* `NULL` (value: `"null"`)
-
 
 

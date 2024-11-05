@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * AudienceUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceUpdateRequest {
 
   private String adAccountId;
@@ -42,7 +42,7 @@ public class AudienceUpdateRequest {
   /**
    * Ad account ID.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -62,7 +62,7 @@ public class AudienceUpdateRequest {
   /**
    * Audience name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "string", description = "Audience name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -82,7 +82,7 @@ public class AudienceUpdateRequest {
   /**
    * Get rule
    * @return rule
-  */
+   */
   @Valid 
   @Schema(name = "rule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rule")
@@ -102,7 +102,7 @@ public class AudienceUpdateRequest {
   /**
    * Audience description.
    * @return description
-  */
+   */
   
   @Schema(name = "description", example = "string", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -122,7 +122,7 @@ public class AudienceUpdateRequest {
   /**
    * Get operationType
    * @return operationType
-  */
+   */
   @Valid 
   @Schema(name = "operation_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("operation_type")

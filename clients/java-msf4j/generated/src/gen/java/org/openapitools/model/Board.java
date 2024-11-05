@@ -15,7 +15,7 @@ import org.openapitools.model.BoardOwner;
  * Board
  */
 @ApiModel(description = "Board")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Board   {
   @JsonProperty("id")
   private String id;
@@ -194,11 +194,6 @@ public class Board   {
     this.media = media;
   }
 
-  public Board owner(BoardOwner owner) {
-    this.owner = owner;
-    return this;
-  }
-
    /**
    * Get owner
    * @return owner
@@ -206,10 +201,6 @@ public class Board   {
   @ApiModelProperty(value = "")
   public BoardOwner getOwner() {
     return owner;
-  }
-
-  public void setOwner(BoardOwner owner) {
-    this.owner = owner;
   }
 
   public Board privacy(PrivacyEnum privacy) {

@@ -315,7 +315,7 @@ class CatalogsFeedProcessingSchedule {
         
         ANTARCTICA_DAVIS("Antarctica/Davis"),
         
-        ANTARCTICA_DUMONTDURVILLE("Antarctica/DumontDUrville"),
+        ANTARCTICA_DUMONT_D_URVILLE("Antarctica/DumontDUrville"),
         
         ANTARCTICA_MACQUARIE("Antarctica/Macquarie"),
         
@@ -529,13 +529,13 @@ class CatalogsFeedProcessingSchedule {
         
         CET("CET"),
         
-        CST6CDT("CST6CDT"),
+        CST6_CDT("CST6CDT"),
         
         EET("EET"),
         
         EST("EST"),
         
-        EST5EDT("EST5EDT"),
+        EST5_EDT("EST5EDT"),
         
         ETC_GMT("Etc/GMT"),
         
@@ -707,9 +707,9 @@ class CatalogsFeedProcessingSchedule {
         
         MST("MST"),
         
-        MST7MDT("MST7MDT"),
+        MST7_MDT("MST7MDT"),
         
-        PST8PDT("PST8PDT"),
+        PST8_PDT("PST8PDT"),
         
         PACIFIC_APIA("Pacific/Apia"),
         
@@ -783,9 +783,7 @@ class CatalogsFeedProcessingSchedule {
         
         PACIFIC_WALLIS("Pacific/Wallis"),
         
-        WET("WET"),
-        
-        NULL("null")
+        WET("WET")
     
         private final String value
     

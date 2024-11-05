@@ -16,24 +16,23 @@ Get the text of the terms of service and see whether the advertiser has accepted
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, TermsOfServiceApi } from '';
+import type { TermsOfServiceApiTermsOfServiceGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .TermsOfServiceApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new TermsOfServiceApi(configuration);
 
-let body:.TermsOfServiceApiTermsOfServiceGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: TermsOfServiceApiTermsOfServiceGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // boolean | Return HTML in TOS text. (optional)
+    // Return HTML in TOS text. (optional)
   includeHtml: false,
-  // string | Request type. (optional)
+    // Request type. (optional)
   tosType: "tos_type_example",
 };
 
-apiInstance.termsOfServiceGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.termsOfServiceGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 

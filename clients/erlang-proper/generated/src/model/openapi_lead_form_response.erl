@@ -16,6 +16,7 @@
   | {'status', openapi_lead_form_status:openapi_lead_form_status() }
   | {'disclosure_language', binary() }
   | {'questions', list(openapi_lead_form_question:openapi_lead_form_question()) }
+  | {'policy_links', list(openapi_lead_form_common_policy_links_inner:openapi_lead_form_common_policy_links_inner()) }
   | {'id', binary() }
   | {'ad_account_id', binary() }
   | {'created_time', integer() }
@@ -34,6 +35,7 @@ openapi_lead_form_response(Fields) ->
             , {'status', openapi_lead_form_status:openapi_lead_form_status() }
             , {'disclosure_language', binary() }
             , {'questions', list(openapi_lead_form_question:openapi_lead_form_question(), 0, 10) }
+            , {'policy_links', list(openapi_lead_form_common_policy_links_inner:openapi_lead_form_common_policy_links_inner(), 0, 3) }
             , {'id', binary() }
             , {'ad_account_id', binary() }
             , {'created_time', integer() }

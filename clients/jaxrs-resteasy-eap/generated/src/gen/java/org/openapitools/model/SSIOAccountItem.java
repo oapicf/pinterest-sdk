@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountItem   {
   
   private String id;
@@ -25,7 +25,7 @@ public class SSIOAccountItem   {
   private String rowTermsId;
   private String rowTerms;
   private String ioType;
-  private List<@Valid SSIOAccountAddress> addresses;
+  private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
 
   /**
    * Salesforce id for billto_info

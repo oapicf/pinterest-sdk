@@ -17,21 +17,31 @@ Protected Class CatalogsVerticalProductGroupCreateRequest
 
 
 	#tag Property, Flags = &h0
-		filters As OpenAPIClient.Models.CatalogsHotelProductGroupFilters
+		filters As OpenAPIClient.Models.CatalogsCreativeAssetsProductGroupFilters
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Catalog id pertaining to the hotel product group.
+			Catalog id pertaining to the creative assets product group.
 		#tag EndNote
 		catalog_id As String
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		country As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		locale As String
+	#tag EndProperty
+
+
     #tag Enum, Name = Catalog_typeEnum, Type = Integer, Flags = &h0
         
-        Hotel
+        CreativeAssets
         
     #tag EndEnum
 
@@ -40,8 +50,8 @@ Protected Class CatalogsVerticalProductGroupCreateRequest
 		Shared Function Catalog_typeEnumToString(value As Catalog_typeEnum) As String
 		  Select Case value
 		    
-		    Case Catalog_typeEnum.Hotel
-		      Return "HOTEL"
+		    Case Catalog_typeEnum.CreativeAssets
+		      Return "CREATIVE_ASSETS"
 		    
 		  End Select
 		  Return ""
@@ -103,7 +113,7 @@ Protected Class CatalogsVerticalProductGroupCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsHotelProductGroupFilters"
+			Type="CatalogsCreativeAssetsProductGroupFilters"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -112,6 +122,22 @@ Protected Class CatalogsVerticalProductGroupCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="country"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="locale"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsLocale"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

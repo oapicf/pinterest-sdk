@@ -74,11 +74,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setCpaGoalValueInMicroCurrency(std::string  cpa_goal_value_in_micro_currency);
-	/*! \brief Get Ad group is ROAS optimized
+	/*! \brief Get ROAS optimization is not supported
 	 */
 	bool getIsRoasOptimized();
 
-	/*! \brief Set Ad group is ROAS optimized
+	/*! \brief Set ROAS optimization is not supported
 	 */
 	void setIsRoasOptimized(bool  is_roas_optimized);
 	/*! \brief Get Conversion learning model type

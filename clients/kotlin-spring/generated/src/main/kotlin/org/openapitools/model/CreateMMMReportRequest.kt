@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.MMMReportingColumn
@@ -59,26 +60,42 @@ data class CreateMMMReportRequest(
     @field:Valid
     @Schema(example = "null", description = "A List of countries for filtering")
     @get:JsonProperty("countries") val countries: kotlin.collections.List<TargetingAdvertiserCountry>? = null
-) {
+    ) {
 
     /**
     * DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
     * Values: DAY,WEEK
     */
-    enum class Granularity(val value: kotlin.String) {
+    enum class Granularity(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("DAY") DAY("DAY"),
-        @JsonProperty("WEEK") WEEK("WEEK")
+        DAY("DAY"),
+        WEEK("WEEK");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Granularity {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * Level of the report
     * Values: CAMPAIGN_TARGETING,AD_GROUP_TARGETING
     */
-    enum class Level(val value: kotlin.String) {
+    enum class Level(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("CAMPAIGN_TARGETING") CAMPAIGN_TARGETING("CAMPAIGN_TARGETING"),
-        @JsonProperty("AD_GROUP_TARGETING") AD_GROUP_TARGETING("AD_GROUP_TARGETING")
+        CAMPAIGN_TARGETING("CAMPAIGN_TARGETING"),
+        AD_GROUP_TARGETING("AD_GROUP_TARGETING");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Level {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

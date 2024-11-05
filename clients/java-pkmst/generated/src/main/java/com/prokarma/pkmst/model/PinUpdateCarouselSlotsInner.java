@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * PinUpdateCarouselSlotsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinUpdateCarouselSlotsInner   {
   @JsonProperty("title")
   private String title;
@@ -31,10 +31,10 @@ public class PinUpdateCarouselSlotsInner   {
     return this;
   }
 
-   /**
+  /**
    * Carousel Pin slot title.
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "Carousel Pin slot title.")
   public String getTitle() {
     return title;
@@ -49,10 +49,10 @@ public class PinUpdateCarouselSlotsInner   {
     return this;
   }
 
-   /**
+  /**
    * Carousel Pin slot description.
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "Carousel Pin slot description.")
   public String getDescription() {
     return description;
@@ -67,10 +67,10 @@ public class PinUpdateCarouselSlotsInner   {
     return this;
   }
 
-   /**
+  /**
    * Carousel Pin slot link.
    * @return link
-  **/
+   */
   @ApiModelProperty(value = "Carousel Pin slot link.")
   public String getLink() {
     return link;

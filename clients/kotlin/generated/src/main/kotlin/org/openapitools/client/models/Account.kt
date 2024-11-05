@@ -95,5 +95,6 @@ data class Account (
         @Json(name = "PINNER") PINNER("PINNER"),
         @Json(name = "BUSINESS") BUSINESS("BUSINESS");
     }
+
 }
 

@@ -17,11 +17,11 @@ public class KeywordsResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid KeywordError> errors;
+  private List<@Valid KeywordError> errors = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid Keyword> keywords;
+  private List<@Valid Keyword> keywords = new ArrayList<>();
  /**
   * Get errors
   * @return errors

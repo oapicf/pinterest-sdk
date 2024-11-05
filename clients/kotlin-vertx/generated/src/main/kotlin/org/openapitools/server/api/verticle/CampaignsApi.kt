@@ -1,6 +1,6 @@
 package org.openapitools.server.api.verticle
 
-import org.openapitools.server.api.model.AdsAnalyticsTargetingType
+import org.openapitools.server.api.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.server.api.model.CampaignCreateRequest
 import org.openapitools.server.api.model.CampaignCreateResponse
 import org.openapitools.server.api.model.CampaignResponse
@@ -30,7 +30,7 @@ interface CampaignsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* campaignTargetingAnalyticsGet
      * Get targeting analytics for campaigns */
-    suspend fun campaignTargetingAnalyticsGet(adAccountId:kotlin.String?,campaignIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,targetingTypes:kotlin.Array<AdsAnalyticsTargetingType>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,attributionTypes:ConversionReportAttributionType?,context:OperationRequest):Response<MetricsResponse>
+    suspend fun campaignTargetingAnalyticsGet(adAccountId:kotlin.String?,campaignIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,targetingTypes:kotlin.Array<AdsAnalyticsCampaignTargetingType>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,attributionTypes:ConversionReportAttributionType?,context:OperationRequest):Response<MetricsResponse>
     /* campaignsAnalytics
      * Get campaign analytics */
     suspend fun campaignsAnalytics(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,campaignIds:kotlin.Array<kotlin.String>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,context:OperationRequest):Response<kotlin.Array<CampaignsAnalyticsResponseInner>>

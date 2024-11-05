@@ -39,7 +39,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupsApiController extends Controller {
     private final AdGroupsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -163,9 +163,9 @@ public class AdGroupsApiController extends Controller {
     @ApiAction
     public Result adGroupsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         JsonNode nodeadGroupCreateRequest = request.body().asJson();
-        List<AdGroupCreateRequest> adGroupCreateRequest;
+        List<@Valid AdGroupCreateRequest> adGroupCreateRequest;
         if (nodeadGroupCreateRequest != null) {
-            adGroupCreateRequest = mapper.readValue(nodeadGroupCreateRequest.toString(), new TypeReference<List<AdGroupCreateRequest>>(){});
+            adGroupCreateRequest = mapper.readValue(nodeadGroupCreateRequest.toString(), new TypeReference<List<@Valid AdGroupCreateRequest>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
                 for (AdGroupCreateRequest curItem : adGroupCreateRequest) {
                     OpenAPIUtils.validate(curItem);
@@ -342,9 +342,9 @@ public class AdGroupsApiController extends Controller {
     @ApiAction
     public Result adGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         JsonNode nodeadGroupUpdateRequest = request.body().asJson();
-        List<AdGroupUpdateRequest> adGroupUpdateRequest;
+        List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest;
         if (nodeadGroupUpdateRequest != null) {
-            adGroupUpdateRequest = mapper.readValue(nodeadGroupUpdateRequest.toString(), new TypeReference<List<AdGroupUpdateRequest>>(){});
+            adGroupUpdateRequest = mapper.readValue(nodeadGroupUpdateRequest.toString(), new TypeReference<List<@Valid AdGroupUpdateRequest>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
                 for (AdGroupUpdateRequest curItem : adGroupUpdateRequest) {
                     OpenAPIUtils.validate(curItem);

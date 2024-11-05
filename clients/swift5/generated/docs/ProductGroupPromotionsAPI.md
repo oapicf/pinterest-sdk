@@ -26,7 +26,7 @@ Add one or more product groups from your catalog to an existing ad group. (Produ
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let productGroupPromotionCreateRequest = ProductGroupPromotionCreateRequest(adGroupId: "adGroupId_example", productGroupPromotion: [ProductGroupPromotion(id: "id_example", adGroupId: "adGroupId_example", bidInMicroCurrency: 123, included: true, definition: "definition_example", relativeDefinition: "relativeDefinition_example", parentId: "parentId_example", slideshowCollectionsTitle: "slideshowCollectionsTitle_example", slideshowCollectionsDescription: "slideshowCollectionsDescription_example", isMdl: true, status: EntityStatus(), trackingUrl: "trackingUrl_example", catalogProductGroupId: "catalogProductGroupId_example", catalogProductGroupName: "catalogProductGroupName_example", creativeType: CreativeType(), collectionsHeroPinId: "collectionsHeroPinId_example", collectionsHeroDestinationUrl: "collectionsHeroDestinationUrl_example", gridClickType: GridClickType())]) // ProductGroupPromotionCreateRequest | List of Product Group Promotions to create, size limit [1, 30].
+let productGroupPromotionCreateRequest = ProductGroupPromotionCreateRequest(adGroupId: "adGroupId_example", productGroupPromotion: [ProductGroupPromotionCreateRequestElement(id: "id_example", adGroupId: "adGroupId_example", bidInMicroCurrency: 123, included: true, definition: "definition_example", relativeDefinition: "relativeDefinition_example", parentId: "parentId_example", slideshowCollectionsTitle: "slideshowCollectionsTitle_example", slideshowCollectionsDescription: "slideshowCollectionsDescription_example", isMdl: true, status: EntityStatus(), trackingUrl: "trackingUrl_example", catalogProductGroupId: "catalogProductGroupId_example", catalogProductGroupName: "catalogProductGroupName_example", collectionsHeroPinId: "collectionsHeroPinId_example", collectionsHeroDestinationUrl: "collectionsHeroDestinationUrl_example", gridClickType: GridClickType(), creativeType: CreativeType())]) // ProductGroupPromotionCreateRequest | List of Product Group Promotions to create, size limit [1, 30].
 
 // Create product group promotions
 ProductGroupPromotionsAPI.productGroupPromotionsCreate(adAccountId: adAccountId, productGroupPromotionCreateRequest: productGroupPromotionCreateRequest) { (response, error) in
@@ -133,7 +133,7 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let productGroupPromotionIds = ["inner_example"] // [String] | List of Product group promotion Ids. (optional)
 let entityStatuses = ["entityStatuses_example"] // [String] | Entity status (optional)
 let adGroupId = "adGroupId_example" // String | Ad group Id. (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 let order = "order_example" // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
  **productGroupPromotionIds** | [**[String]**](String.md) | List of Product group promotion Ids. | [optional] 
  **entityStatuses** | [**[String]**](String.md) | Entity status | [optional] 
  **adGroupId** | **String** | Ad group Id. | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **order** | **String** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
 
@@ -192,7 +192,7 @@ Update multiple existing Product Group Promotions (by product_group_id)
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let productGroupPromotionUpdateRequest = ProductGroupPromotionUpdateRequest(adGroupId: "adGroupId_example", productGroupPromotion: [ProductGroupPromotion(id: "id_example", adGroupId: "adGroupId_example", bidInMicroCurrency: 123, included: true, definition: "definition_example", relativeDefinition: "relativeDefinition_example", parentId: "parentId_example", slideshowCollectionsTitle: "slideshowCollectionsTitle_example", slideshowCollectionsDescription: "slideshowCollectionsDescription_example", isMdl: true, status: EntityStatus(), trackingUrl: "trackingUrl_example", catalogProductGroupId: "catalogProductGroupId_example", catalogProductGroupName: "catalogProductGroupName_example", creativeType: CreativeType(), collectionsHeroPinId: "collectionsHeroPinId_example", collectionsHeroDestinationUrl: "collectionsHeroDestinationUrl_example", gridClickType: GridClickType())]) // ProductGroupPromotionUpdateRequest | Parameters to update Product group promotions
+let productGroupPromotionUpdateRequest = ProductGroupPromotionUpdateRequest(adGroupId: "adGroupId_example", productGroupPromotion: [ProductGroupPromotion(id: "id_example", adGroupId: "adGroupId_example", bidInMicroCurrency: 123, included: true, definition: "definition_example", relativeDefinition: "relativeDefinition_example", parentId: "parentId_example", slideshowCollectionsTitle: "slideshowCollectionsTitle_example", slideshowCollectionsDescription: "slideshowCollectionsDescription_example", isMdl: true, status: EntityStatus(), trackingUrl: "trackingUrl_example", catalogProductGroupId: "catalogProductGroupId_example", catalogProductGroupName: "catalogProductGroupName_example", collectionsHeroPinId: "collectionsHeroPinId_example", collectionsHeroDestinationUrl: "collectionsHeroDestinationUrl_example", gridClickType: GridClickType())]) // ProductGroupPromotionUpdateRequest | Parameters to update Product group promotions
 
 // Update product group promotions
 ProductGroupPromotionsAPI.productGroupPromotionsUpdate(adAccountId: adAccountId, productGroupPromotionUpdateRequest: productGroupPromotionUpdateRequest) { (response, error) in

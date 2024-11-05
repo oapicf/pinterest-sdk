@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,7 +14,7 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/item_attributes.proto";
+import public "models/item_attributes_request.proto";
 import public "models/item_create_batch_record.proto";
 import public "models/item_delete_batch_record.proto";
 import public "models/item_delete_discontinued_batch_record.proto";
@@ -27,7 +27,7 @@ message ItemBatchRecord {
   // The catalog item id in the merchant namespace
   string item_id = 505592266;
 
-  ItemAttributes attributes = 405645655;
+  ItemAttributesRequest attributes = 405645655;
 
   // The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
   repeated UpdateMaskFieldType update_mask = 36791135;

@@ -1,7 +1,7 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
-import org.openapitools.model.AdsAnalyticsTargetingType
+import org.openapitools.model.AdsAnalyticsCampaignTargetingType
 import org.openapitools.model.CampaignCreateRequest
 import org.openapitools.model.CampaignCreateResponse
 import org.openapitools.model.CampaignResponse
@@ -19,7 +19,7 @@ class CampaignsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def campaignTargetingAnalyticsGet ( String adAccountId, List<String> campaignIds, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
+    def campaignTargetingAnalyticsGet ( String adAccountId, List<String> campaignIds, Date startDate, Date endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/campaigns/targeting_analytics"
 
         // params

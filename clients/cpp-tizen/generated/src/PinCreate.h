@@ -9,9 +9,9 @@
 
 
 #include <string>
-#include "Board_owner.h"
+#include "BoardOwner.h"
+#include "PinMedia.h"
 #include "PinMediaSource.h"
-#include "SummaryPin_media.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -113,18 +113,18 @@ public:
 	void setBoardSectionId(std::string  board_section_id);
 	/*! \brief Get 
 	 */
-	Board_owner getBoardOwner();
+	BoardOwner getBoardOwner();
 
 	/*! \brief Set 
 	 */
-	void setBoardOwner(Board_owner  board_owner);
+	void setBoardOwner(BoardOwner  board_owner);
 	/*! \brief Get 
 	 */
-	SummaryPin_media getMedia();
+	PinMedia getMedia();
 
 	/*! \brief Set 
 	 */
-	void setMedia(SummaryPin_media  media);
+	void setMedia(PinMedia  media);
 	/*! \brief Get 
 	 */
 	PinMediaSource getMediaSource();
@@ -157,8 +157,8 @@ private:
 	std::string alt_text;
 	std::string board_id;
 	std::string board_section_id;
-	Board_owner board_owner;
-	SummaryPin_media media;
+	BoardOwner board_owner;
+	PinMedia media;
 	PinMediaSource media_source;
 	std::string parent_pin_id;
 	std::string note;

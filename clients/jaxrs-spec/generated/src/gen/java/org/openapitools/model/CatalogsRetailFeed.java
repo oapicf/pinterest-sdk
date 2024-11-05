@@ -26,22 +26,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Catalogs Retail Feed object")
 @JsonTypeName("CatalogsRetailFeed")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailFeed   {
-  private @Valid Date createdAt;
-  private @Valid String id;
-  private @Valid Date updatedAt;
-  private @Valid String name;
-  private @Valid CatalogsFormat format;
-  private @Valid CatalogsType catalogType;
-  private @Valid CatalogsFeedCredentials credentials;
-  private @Valid String location;
-  private @Valid CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private @Valid CatalogsStatus status;
-  private @Valid NullableCurrency defaultCurrency;
-  private @Valid String defaultLocale;
-  private @Valid Country defaultCountry;
-  private @Valid ProductAvailabilityType defaultAvailability;
+  private Date createdAt;
+  private String id;
+  private Date updatedAt;
+  private String name;
+  private CatalogsFormat format;
+  private CatalogsType catalogType;
+  private CatalogsFeedCredentials credentials;
+  private String location;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+  private CatalogsStatus status;
+  private NullableCurrency defaultCurrency;
+  private String defaultLocale;
+  private Country defaultCountry;
+  private ProductAvailabilityType defaultAvailability;
 
   /**
    **/
@@ -51,9 +51,9 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonProperty("created_at")
-  public Date getCreatedAt() {
+  @NotNull public Date getCreatedAt() {
     return createdAt;
   }
 
@@ -70,9 +70,9 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
-  public String getId() {
+  @NotNull public String getId() {
     return id;
   }
 
@@ -89,9 +89,9 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
+  @NotNull public Date getUpdatedAt() {
     return updatedAt;
   }
 
@@ -111,8 +111,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
   @JsonProperty("name")
-  @NotNull
-  public String getName() {
+  @NotNull public String getName() {
     return name;
   }
 
@@ -131,8 +130,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("format")
-  @NotNull
-  public CatalogsFormat getFormat() {
+  @NotNull public CatalogsFormat getFormat() {
     return format;
   }
 
@@ -151,8 +149,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
+  @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
@@ -171,8 +168,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("credentials")
-  @NotNull
-  public CatalogsFeedCredentials getCredentials() {
+  @NotNull @Valid public CatalogsFeedCredentials getCredentials() {
     return credentials;
   }
 
@@ -192,8 +188,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   @JsonProperty("location")
-  @NotNull
-  public String getLocation() {
+  @NotNull public String getLocation() {
     return location;
   }
 
@@ -212,8 +207,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("preferred_processing_schedule")
-  @NotNull
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+  @NotNull @Valid public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
   }
 
@@ -232,8 +226,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("status")
-  @NotNull
-  public CatalogsStatus getStatus() {
+  @NotNull public CatalogsStatus getStatus() {
     return status;
   }
 
@@ -252,8 +245,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("default_currency")
-  @NotNull
-  public NullableCurrency getDefaultCurrency() {
+  @NotNull public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
   }
 
@@ -273,8 +265,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
   @JsonProperty("default_locale")
-  @NotNull
-  public String getDefaultLocale() {
+  @NotNull public String getDefaultLocale() {
     return defaultLocale;
   }
 
@@ -293,8 +284,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("default_country")
-  @NotNull
-  public Country getDefaultCountry() {
+  @NotNull public Country getDefaultCountry() {
     return defaultCountry;
   }
 
@@ -313,8 +303,7 @@ public class CatalogsRetailFeed   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("default_availability")
-  @NotNull
-  public ProductAvailabilityType getDefaultAvailability() {
+  @NotNull public ProductAvailabilityType getDefaultAvailability() {
     return defaultAvailability;
   }
 

@@ -16,10 +16,10 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.AdsAnalyticsTargetingType
+import org.openapitools.client.models.AdsAnalyticsCampaignTargetingType
 import org.openapitools.client.models.CampaignCreateRequest
 import org.openapitools.client.models.CampaignCreateResponse
 import org.openapitools.client.models.CampaignResponse
@@ -48,7 +48,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -151,6 +151,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -183,6 +184,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -208,7 +210,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -220,7 +231,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -232,7 +252,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -244,7 +273,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -252,7 +290,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
      enum class ConversionReportTimeCampaignTargetingAnalyticsGet(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -262,7 +309,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param campaignIds List of Campaign Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -279,7 +326,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun campaignTargetingAnalyticsGet(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet? = ClickWindowDaysCampaignTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet? = EngagementWindowDaysCampaignTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet? = ViewWindowDaysCampaignTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet? = ConversionReportTimeCampaignTargetingAnalyticsGet.AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
+    fun campaignTargetingAnalyticsGet(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet? = ClickWindowDaysCampaignTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet? = EngagementWindowDaysCampaignTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet? = ViewWindowDaysCampaignTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet? = ConversionReportTimeCampaignTargetingAnalyticsGet.AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
         val localVarResponse = campaignTargetingAnalyticsGetWithHttpInfo(adAccountId = adAccountId, campaignIds = campaignIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
 
         return when (localVarResponse.responseType) {
@@ -304,7 +351,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param campaignIds List of Campaign Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -318,7 +365,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun campaignTargetingAnalyticsGetWithHttpInfo(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : ApiResponse<MetricsResponse?> {
+    fun campaignTargetingAnalyticsGetWithHttpInfo(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : ApiResponse<MetricsResponse?> {
         val localVariableConfig = campaignTargetingAnalyticsGetRequestConfig(adAccountId = adAccountId, campaignIds = campaignIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
 
         return request<Unit, MetricsResponse>(
@@ -333,7 +380,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param campaignIds List of Campaign Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -343,7 +390,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param attributionTypes List of types of attribution for the conversion report (optional)
      * @return RequestConfig
      */
-    fun campaignTargetingAnalyticsGetRequestConfig(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : RequestConfig<Unit> {
+    fun campaignTargetingAnalyticsGetRequestConfig(adAccountId: kotlin.String, campaignIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>, columns: kotlin.collections.List<ColumnsCampaignTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysCampaignTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysCampaignTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysCampaignTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeCampaignTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -477,6 +524,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -509,6 +557,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -534,7 +583,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -546,7 +604,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -558,7 +625,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -570,7 +646,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -578,7 +663,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
      enum class ConversionReportTimeCampaignsAnalytics(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -700,7 +794,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Create campaigns
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignCreateRequest Array of campaigns.
      * @return CampaignCreateResponse
@@ -732,7 +826,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Create campaigns
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignCreateRequest Array of campaigns.
      * @return ApiResponse<CampaignCreateResponse?>
@@ -855,7 +949,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "PAUSED") PAUSED("PAUSED"),
          @Json(name = "ARCHIVED") ARCHIVED("ARCHIVED"),
          @Json(name = "DRAFT") DRAFT("DRAFT"),
-         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT")
+         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -863,7 +966,16 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
      enum class OrderCampaignsList(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -872,7 +984,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return CampaignsList200Response
@@ -908,7 +1020,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<CampaignsList200Response?>
@@ -931,7 +1043,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig
@@ -971,7 +1083,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Update campaigns
-     * Update multiple ad campaigns based on campaign_ids. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt; - &lt;p&gt;The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Update multiple ad campaigns based on campaign_ids. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt;  - &lt;p&gt;The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignUpdateRequest Array of campaigns.
      * @return CampaignUpdateResponse
@@ -1003,7 +1115,7 @@ class CampaignsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Update campaigns
-     * Update multiple ad campaigns based on campaign_ids. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt; - &lt;p&gt;The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Update multiple ad campaigns based on campaign_ids. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt;  - &lt;p&gt;The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignUpdateRequest Array of campaigns.
      * @return ApiResponse<CampaignUpdateResponse?>

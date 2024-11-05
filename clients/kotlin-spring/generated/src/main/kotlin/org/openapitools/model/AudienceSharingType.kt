@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Audience sharing type: [\"CUSTOM\", \"SYNDICATED\"]
 * Values: CUSTOM,SYNDICATED
 */
-enum class AudienceSharingType(val value: kotlin.String) {
+enum class AudienceSharingType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("CUSTOM") CUSTOM("CUSTOM"),
-    @JsonProperty("SYNDICATED") SYNDICATED("SYNDICATED")
+    CUSTOM("CUSTOM"),
+    SYNDICATED("SYNDICATED");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): AudienceSharingType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

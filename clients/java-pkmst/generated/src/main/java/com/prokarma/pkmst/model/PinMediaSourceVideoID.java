@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Video ID-based media source")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceVideoID   {
   /**
    * Gets or Sets sourceType
@@ -101,10 +101,10 @@ public class PinMediaSourceVideoID   {
     return this;
   }
 
-   /**
+  /**
    * Get sourceType
    * @return sourceType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -119,10 +119,10 @@ public class PinMediaSourceVideoID   {
     return this;
   }
 
-   /**
+  /**
    * Cover image url.
    * @return coverImageUrl
-  **/
+   */
   @ApiModelProperty(value = "Cover image url.")
   public String getCoverImageUrl() {
     return coverImageUrl;
@@ -137,10 +137,10 @@ public class PinMediaSourceVideoID   {
     return this;
   }
 
-   /**
+  /**
    * Content type for cover image Base64.
    * @return coverImageContentType
-  **/
+   */
   @ApiModelProperty(value = "Content type for cover image Base64.")
   public CoverImageContentTypeEnum getCoverImageContentType() {
     return coverImageContentType;
@@ -155,10 +155,10 @@ public class PinMediaSourceVideoID   {
     return this;
   }
 
-   /**
+  /**
    * Cover image Base64.
    * @return coverImageData
-  **/
+   */
   @ApiModelProperty(value = "Cover image Base64.")
   public String getCoverImageData() {
     return coverImageData;
@@ -173,10 +173,10 @@ public class PinMediaSourceVideoID   {
     return this;
   }
 
-   /**
+  /**
    * Get mediaId
    * @return mediaId
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getMediaId() {
     return mediaId;
@@ -191,10 +191,10 @@ public class PinMediaSourceVideoID   {
     return this;
   }
 
-   /**
+  /**
    * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
    * @return isStandard
-  **/
+   */
   @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
   public Boolean getIsStandard() {
     return isStandard;

@@ -51,7 +51,7 @@ Get available metrics' definitions
 
 Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints.
 The 'display_name' attribute will match how the metric is named in our native tools like Ads Manager.
-See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
 ### Example
 
@@ -123,7 +123,7 @@ Get lead form questions
 
 Get a list of all lead form question type names. Some questions might not be used.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 ### Example
 
@@ -196,7 +196,7 @@ Get targeting options
 ### Example
 
 ```bash
- targetingOptionsGet targeting_type=value  client_id=value  oauth_signature=value  timestamp=value
+ targetingOptionsGet targeting_type=value  client_id=value  oauth_signature=value  timestamp=value  ad_account_id=value
 ```
 
 ### Parameters
@@ -208,6 +208,7 @@ Name | Type | Description  | Notes
  **clientId** | **string** | Client ID. | [optional] [default to null]
  **oauthSignature** | **string** | Oauth signature | [optional] [default to null]
  **timestamp** | **string** | Timestamp | [optional] [default to null]
+ **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 

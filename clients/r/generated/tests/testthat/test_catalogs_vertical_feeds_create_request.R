@@ -77,9 +77,16 @@ test_that("default_availability", {
   #expect_equal(model.instance$`default_availability`, "EXPECTED_RESULT")
 })
 
+test_that("status", {
+  # tests for the property `status` (CatalogsStatus)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
-  # Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  # Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")

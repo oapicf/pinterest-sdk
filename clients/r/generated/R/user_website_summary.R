@@ -19,8 +19,7 @@ UserWebsiteSummary <- R6::R6Class(
     `website` = NULL,
     `status` = NULL,
     `verified_at` = NULL,
-    #' Initialize a new UserWebsiteSummary class.
-    #'
+
     #' @description
     #' Initialize a new UserWebsiteSummary class.
     #'
@@ -28,7 +27,6 @@ UserWebsiteSummary <- R6::R6Class(
     #' @param status Status of the verification process
     #' @param verified_at UTC timestamp when the verification happened - sometimes missing
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`website` = NULL, `status` = NULL, `verified_at` = NULL, ...) {
       if (!is.null(`website`)) {
         if (!(is.character(`website`) && length(`website`) == 1)) {
@@ -49,13 +47,11 @@ UserWebsiteSummary <- R6::R6Class(
         self$`verified_at` <- `verified_at`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return UserWebsiteSummary in JSON format
-    #' @export
     toJSON = function() {
       UserWebsiteSummaryObject <- list()
       if (!is.null(self$`website`)) {
@@ -72,14 +68,12 @@ UserWebsiteSummary <- R6::R6Class(
       }
       UserWebsiteSummaryObject
     },
-    #' Deserialize JSON string into an instance of UserWebsiteSummary
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of UserWebsiteSummary
     #'
     #' @param input_json the JSON input
     #' @return the instance of UserWebsiteSummary
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`website`)) {
@@ -93,13 +87,11 @@ UserWebsiteSummary <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return UserWebsiteSummary in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`website`)) {
@@ -130,14 +122,12 @@ UserWebsiteSummary <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of UserWebsiteSummary
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of UserWebsiteSummary
     #'
     #' @param input_json the JSON input
     #' @return the instance of UserWebsiteSummary
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`website` <- this_object$`website`
@@ -145,53 +135,42 @@ UserWebsiteSummary <- R6::R6Class(
       self$`verified_at` <- this_object$`verified_at`
       self
     },
-    #' Validate JSON input with respect to UserWebsiteSummary
-    #'
+
     #' @description
     #' Validate JSON input with respect to UserWebsiteSummary and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of UserWebsiteSummary
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

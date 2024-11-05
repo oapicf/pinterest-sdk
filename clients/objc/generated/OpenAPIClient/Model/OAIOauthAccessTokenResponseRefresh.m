@@ -6,6 +6,7 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
+    self.tokenType = @"bearer";
     
   }
   return self;
@@ -17,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{  }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"responseType": @"response_type", @"accessToken": @"access_token", @"tokenType": @"token_type", @"expiresIn": @"expires_in", @"scope": @"scope" }];
 }
 
 /**
@@ -27,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[];
+  NSArray *optionalProperties = @[@"responseType", ];
   return [optionalProperties containsObject:propertyName];
 }
 

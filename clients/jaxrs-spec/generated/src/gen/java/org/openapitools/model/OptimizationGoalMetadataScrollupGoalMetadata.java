@@ -17,9 +17,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("OptimizationGoalMetadata_scrollup_goal_metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OptimizationGoalMetadataScrollupGoalMetadata   {
-  private @Valid String scrollupGoalValueInMicroCurrency;
+  private String scrollupGoalValueInMicroCurrency;
 
   /**
    **/
@@ -31,7 +31,7 @@ public class OptimizationGoalMetadataScrollupGoalMetadata   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("scrollup_goal_value_in_micro_currency")
- @Pattern(regexp="^[0-9]+$")  public String getScrollupGoalValueInMicroCurrency() {
+   @Pattern(regexp="^[0-9]+$")public String getScrollupGoalValueInMicroCurrency() {
     return scrollupGoalValueInMicroCurrency;
   }
 

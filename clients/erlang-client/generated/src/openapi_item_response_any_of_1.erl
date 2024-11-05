@@ -8,16 +8,19 @@
     #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
        'item_id' => binary(),
        'errors' => list(),
-       'hotel_id' => binary()
+       'hotel_id' => binary(),
+       'creative_assets_id' => binary()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,
           'item_id' := ItemId,
           'errors' := Errors,
-          'hotel_id' := HotelId
+          'hotel_id' := HotelId,
+          'creative_assets_id' := CreativeAssetsId
         }) ->
     #{ 'catalog_type' => CatalogType,
        'item_id' => ItemId,
        'errors' => Errors,
-       'hotel_id' => HotelId
+       'hotel_id' => HotelId,
+       'creative_assets_id' => CreativeAssetsId
      }.

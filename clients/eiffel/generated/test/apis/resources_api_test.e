@@ -29,7 +29,7 @@ feature -- Test routines
     test_delivery_metrics_get
             -- Get available metrics&#39; definitions
             --
-            -- Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+            -- Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
         local
             l_response: DELIVERY_METRICS_RESPONSE
             l_report_type: STRING_32
@@ -58,7 +58,7 @@ feature -- Test routines
     test_lead_form_questions_get
             -- Get lead form questions
             --
-            -- Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+            -- Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
         local
         do
             -- TODO: Initialize required params.
@@ -92,11 +92,12 @@ feature -- Test routines
             l_client_id: STRING_32
             l_oauth_signature: STRING_32
             l_timestamp: STRING_32
+            l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_targeting_type
 
-            -- l_response := api.targeting_options_get(l_targeting_type, l_client_id, l_oauth_signature, l_timestamp)
+            -- l_response := api.targeting_options_get(l_targeting_type, l_client_id, l_oauth_signature, l_timestamp, l_ad_account_id)
             assert ("not_implemented", False)
         end
 

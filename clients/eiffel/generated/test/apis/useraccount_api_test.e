@@ -33,7 +33,7 @@ feature -- Test routines
     test_follow_user_update
             -- Follow user
             --
-            -- &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+            -- &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
         local
             l_response: USER_SUMMARY
             l_username: STRING_32
@@ -190,7 +190,7 @@ feature -- Test routines
     test_user_account_get
             -- Get user account
             --
-            -- Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+            -- Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
         local
             l_response: ACCOUNT
             l_ad_account_id: STRING_32
@@ -241,11 +241,12 @@ feature -- Test routines
         local
             l_response: USER_WEBSITE_SUMMARY
             l_user_website_verify_request: USER_WEBSITE_VERIFY_REQUEST
+            l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_user_website_verify_request
 
-            -- l_response := api.verify_website_update(l_user_website_verify_request)
+            -- l_response := api.verify_website_update(l_user_website_verify_request, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -255,10 +256,11 @@ feature -- Test routines
             -- Get verification code for user to install on the website to claim it.
         local
             l_response: USER_WEBSITE_VERIFICATION_CODE
+            l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
 
-            -- l_response := api.website_verification_get
+            -- l_response := api.website_verification_get(l_ad_account_id)
             assert ("not_implemented", False)
         end
 

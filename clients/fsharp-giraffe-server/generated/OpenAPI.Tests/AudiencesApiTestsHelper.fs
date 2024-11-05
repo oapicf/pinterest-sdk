@@ -84,6 +84,7 @@ module AudiencesApiHandlerTestsHelper =
   let mutable AudiencesCreateCustomBody = ""
 
   AudiencesCreateCustomBody <- WebUtility.HtmlDecode "{
+  &quot;data_party&quot; : &quot;1p&quot;,
   &quot;name&quot; : &quot;string&quot;,
   &quot;rule&quot; : {
     &quot;country&quot; : &quot;US&quot;,
@@ -133,6 +134,7 @@ module AudiencesApiHandlerTestsHelper =
     &quot;campaign_id&quot; : [ &quot;626744528398&quot; ]
   },
   &quot;category&quot; : &quot;DLX Demographics&quot;,
+  &quot;sharing_type&quot; : &quot;CUSTOM&quot;,
   &quot;ad_account_id&quot; : &quot;549755885175&quot;
 }"
   AudiencesCreateCustomExamples <- AudiencesCreateCustomExamples.Add("application/json", AudiencesCreateCustomBody)

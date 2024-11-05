@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,13 +22,13 @@ var _ MappedNullable = &CatalogsHotelBatchRequest{}
 
 // CatalogsHotelBatchRequest Request object to update catalogs hotel items
 type CatalogsHotelBatchRequest struct {
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 	Country Country `json:"country"`
-	Language Language `json:"language"`
+	Language CatalogsItemsRequestLanguage `json:"language"`
 	// Array with catalogs item operations
 	Items []CatalogsHotelBatchItem `json:"items"`
 	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-	CatalogId *string `json:"catalog_id,omitempty"`
+	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 type _CatalogsHotelBatchRequest CatalogsHotelBatchRequest
@@ -37,7 +37,7 @@ type _CatalogsHotelBatchRequest CatalogsHotelBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsHotelBatchRequest(catalogType CatalogsType, country Country, language Language, items []CatalogsHotelBatchItem) *CatalogsHotelBatchRequest {
+func NewCatalogsHotelBatchRequest(catalogType string, country Country, language CatalogsItemsRequestLanguage, items []CatalogsHotelBatchItem) *CatalogsHotelBatchRequest {
 	this := CatalogsHotelBatchRequest{}
 	this.CatalogType = catalogType
 	this.Country = country
@@ -55,9 +55,9 @@ func NewCatalogsHotelBatchRequestWithDefaults() *CatalogsHotelBatchRequest {
 }
 
 // GetCatalogType returns the CatalogType field value
-func (o *CatalogsHotelBatchRequest) GetCatalogType() CatalogsType {
+func (o *CatalogsHotelBatchRequest) GetCatalogType() string {
 	if o == nil {
-		var ret CatalogsType
+		var ret string
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *CatalogsHotelBatchRequest) GetCatalogType() CatalogsType {
 
 // GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelBatchRequest) GetCatalogTypeOk() (*CatalogsType, bool) {
+func (o *CatalogsHotelBatchRequest) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *CatalogsHotelBatchRequest) GetCatalogTypeOk() (*CatalogsType, bool) {
 }
 
 // SetCatalogType sets field value
-func (o *CatalogsHotelBatchRequest) SetCatalogType(v CatalogsType) {
+func (o *CatalogsHotelBatchRequest) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
@@ -103,9 +103,9 @@ func (o *CatalogsHotelBatchRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsHotelBatchRequest) GetLanguage() Language {
+func (o *CatalogsHotelBatchRequest) GetLanguage() CatalogsItemsRequestLanguage {
 	if o == nil {
-		var ret Language
+		var ret CatalogsItemsRequestLanguage
 		return ret
 	}
 
@@ -114,7 +114,7 @@ func (o *CatalogsHotelBatchRequest) GetLanguage() Language {
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*Language, bool) {
+func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*Language, bool) {
 }
 
 // SetLanguage sets field value
-func (o *CatalogsHotelBatchRequest) SetLanguage(v Language) {
+func (o *CatalogsHotelBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
 	o.Language = v
 }
 

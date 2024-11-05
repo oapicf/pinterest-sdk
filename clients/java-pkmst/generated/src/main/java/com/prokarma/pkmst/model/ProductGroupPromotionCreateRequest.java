@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.ProductGroupPromotion;
+import com.prokarma.pkmst.model.ProductGroupPromotionCreateRequestElement;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,24 +18,24 @@ import java.util.List;
  * ProductGroupPromotionCreateRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionCreateRequest   {
   @JsonProperty("ad_group_id")
   private String adGroupId;
 
   @JsonProperty("product_group_promotion")
   
-  private List<ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
+  private List<ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
 
   public ProductGroupPromotionCreateRequest adGroupId(String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
 
-   /**
+  /**
    * ID of the Ad Group the Product Group Promotion belongs to.
    * @return adGroupId
-  **/
+   */
   @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
   public String getAdGroupId() {
     return adGroupId;
@@ -45,12 +45,12 @@ public class ProductGroupPromotionCreateRequest   {
     this.adGroupId = adGroupId;
   }
 
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<ProductGroupPromotion> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
 
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
     if (this.productGroupPromotion == null) {
       this.productGroupPromotion = new ArrayList<>();
     }
@@ -58,16 +58,16 @@ public class ProductGroupPromotionCreateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get productGroupPromotion
    * @return productGroupPromotion
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
-  public List<ProductGroupPromotion> getProductGroupPromotion() {
+  public List<ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
-  public void setProductGroupPromotion(List<ProductGroupPromotion> productGroupPromotion) {
+  public void setProductGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

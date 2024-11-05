@@ -14,8 +14,8 @@ import scala.collection.immutable.Seq
 /**
  * Object describing the catalogs hotel items batch
  * @param batchUnderscoreid Id of the catalogs items batch
- * @param createdUnderscoretime Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
- * @param completedUnderscoretime Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+ * @param createdUnderscoretime Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+ * @param completedUnderscoretime Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
  * @param status 
  * @param catalogUnderscoretype 
  * @param items Array with the catalogs items processing records part of the catalogs items batch

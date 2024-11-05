@@ -31,7 +31,7 @@ boards_user_follows/list() ->
   openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 
 %% @doc Follow user
-%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 -spec follow_user/update(binary(), openapi_follow_user_request:openapi_follow_user_request()) ->
   openapi_utils:response().
 follow_user/update(Username, OpenapiFollowUserRequest) ->
@@ -127,7 +127,7 @@ user_account/followed_interests(Username) ->
   openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 
 %% @doc Get user account
-%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+%% Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 -spec user_account/get() ->
   openapi_utils:response().
 user_account/get() ->
@@ -172,8 +172,9 @@ verify_website/update(OpenapiUserWebsiteVerifyRequest) ->
   Path        = ["/user_account/websites"],
   Body        = OpenapiUserWebsiteVerifyRequest,
   ContentType = hd(["application/json"]),
+  QueryString = [<<"ad_account_id=">>, AdAccountId, <<"&">>],
 
-  openapi_utils:request(Method, [Host, ?BASE_URL, Path], jsx:encode(Body), ContentType).
+  openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString], jsx:encode(Body), ContentType).
 
 %% @doc Get user verification code for website claiming
 %% Get verification code for user to install on the website to claim it.
@@ -183,6 +184,7 @@ website_verification/get() ->
   Method      = get,
   Host        = application:get_env(openapi, host, "http://localhost:8080"),
   Path        = ["/user_account/websites/verification"],
+  QueryString = [<<"ad_account_id=">>, AdAccountId, <<"&">>],
 
-  openapi_utils:request(Method, [Host, ?BASE_URL, Path]).
+  openapi_utils:request(Method, [Host, ?BASE_URL, Path, <<"?">>, QueryString]).
 

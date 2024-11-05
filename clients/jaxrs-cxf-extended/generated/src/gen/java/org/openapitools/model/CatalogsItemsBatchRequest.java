@@ -13,11 +13,11 @@ import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsItemsUpdateBatchRequest;
 import org.openapitools.model.CatalogsItemsUpsertBatchRequest;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
-import org.openapitools.model.Language;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -47,7 +47,7 @@ public class CatalogsItemsBatchRequest  {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -90,21 +90,21 @@ public class CatalogsItemsBatchRequest  {
   */
   @JsonProperty("language")
   @NotNull
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
   /**
    * Sets the <code>language</code> property.
    */
- public void setLanguage(Language language) {
+ public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
   /**
    * Sets the <code>language</code> property.
    */
-  public CatalogsItemsBatchRequest language(Language language) {
+  public CatalogsItemsBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }

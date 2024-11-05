@@ -3,8 +3,8 @@ package org.openapitools.model
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.model.BoardOwner
+import org.openapitools.model.PinMedia
 import org.openapitools.model.PinMediaSource
-import org.openapitools.model.SummaryPinMedia
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -70,12 +70,12 @@ data class PinCreate(
     @get:JsonProperty("board_section_id") val boardSectionId: kotlin.String? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(example = "null", readOnly = true, description = "")
     @get:JsonProperty("board_owner") val boardOwner: BoardOwner? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("media") val media: SummaryPinMedia? = null,
+    @Schema(example = "null", readOnly = true, description = "")
+    @get:JsonProperty("media") val media: PinMedia? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -87,7 +87,7 @@ data class PinCreate(
 
     @Schema(example = "null", description = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
     @get:JsonProperty("note") val note: kotlin.String? = null
-) {
+    ) {
 
 }
 

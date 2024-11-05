@@ -10,5 +10,5 @@ import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner
 @Canonical
 class IntegrationLogsInvalidLogResponse {
     
-    List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs
+    List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>()
 }

@@ -29,7 +29,7 @@ data class SSIOInsertionOrderStatusResponse(
 
     @Schema(example = "2017-06-21T23:11:11.000Z", description = "Salesforce insertion order creation time")
     @get:JsonProperty("creation_time") val creationTime: kotlin.String? = null
-) {
+    ) {
 
 }
 

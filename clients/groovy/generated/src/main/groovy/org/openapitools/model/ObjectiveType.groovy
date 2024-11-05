@@ -15,7 +15,9 @@ enum ObjectiveType {
     
     CATALOG_SALES("CATALOG_SALES"),
     
-    WEB_SESSIONS("WEB_SESSIONS")
+    WEB_SESSIONS("WEB_SESSIONS"),
+    
+    VIDEO_COMPLETION("VIDEO_COMPLETION")
 
     private final String value
 

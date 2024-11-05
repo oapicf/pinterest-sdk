@@ -6,9 +6,9 @@ import java.time.OffsetDateTime
 case class CatalogsHotelItemsBatch (
     /* Id of the catalogs items batch */
     _batchId: Option[String],
-    /* Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
     _createdTime: Option[OffsetDateTime],
-    /* Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     _completedTime: Option[OffsetDateTime],
     _status: Option[BatchOperationStatus],
     _catalogType: CatalogsType,

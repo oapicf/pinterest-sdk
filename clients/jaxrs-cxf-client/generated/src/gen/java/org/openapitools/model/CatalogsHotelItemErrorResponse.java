@@ -31,7 +31,7 @@ public class CatalogsHotelItemErrorResponse  {
  /**
    * Array with the errors for the item id requested
   **/
-  private List<ItemValidationEvent> errors;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
  /**
    * Get catalogType
    * @return catalogType

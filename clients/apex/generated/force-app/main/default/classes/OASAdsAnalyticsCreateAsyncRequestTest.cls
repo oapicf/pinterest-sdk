@@ -93,6 +93,9 @@ private class OASAdsAnalyticsCreateAsyncRequestTest {
         System.assertEquals('targetingTypes', x-property-mappings.get('targeting_types'));
         System.assertEquals('metricsFilters', x-property-mappings.get('metrics_filters'));
         System.assertEquals('reportFormat', x-property-mappings.get('report_format'));
+        System.assertEquals('primarySort', x-property-mappings.get('primary_sort'));
+        System.assertEquals('startHour', x-property-mappings.get('start_hour'));
+        System.assertEquals('endHour', x-property-mappings.get('end_hour'));
     }
 
     @isTest
@@ -121,5 +124,8 @@ private class OASAdsAnalyticsCreateAsyncRequestTest {
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.endDate);
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.granularity);
         System.assertEquals(null, adsAnalyticsCreateAsyncRequest.level);
+        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.primarySort);
+        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.startHour);
+        System.assertEquals(null, adsAnalyticsCreateAsyncRequest.endHour);
     }
 }

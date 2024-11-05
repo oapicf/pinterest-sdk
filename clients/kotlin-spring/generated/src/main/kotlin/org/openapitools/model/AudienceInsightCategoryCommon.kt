@@ -37,7 +37,7 @@ data class AudienceInsightCategoryCommon(
 
     @Schema(example = "549755885175", description = "")
     @get:JsonProperty("id") val id: kotlin.String? = null
-) {
+    ) {
 
 }
 

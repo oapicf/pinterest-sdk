@@ -116,7 +116,7 @@ Get a list of all board sections from a board owned by the \&quot;operation user
 | **boardId** | `String`| Unique identifier of a board. | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -124,6 +124,7 @@ Get a list of all board sections from a board owned by the \&quot;operation user
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `boards:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -146,7 +147,7 @@ Get a list of the Pins on a board section of a board owned by the \&quot;operati
 | **sectionId** | `String`| Unique identifier of a board section. | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -154,6 +155,7 @@ Get a list of the Pins on a board section of a board owned by the \&quot;operati
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`, `pins:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `boards:read`, `pins:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -263,6 +265,7 @@ Get a board owned by the operation user_account - or a group board that has been
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `boards:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -283,7 +286,7 @@ Get a list of the boards owned by the \&quot;operation user_account\&quot; + gro
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 | **privacy** | `String`| Privacy setting for a board. | [optional parameter] [enum: `ALL`, `PROTECTED`, `PUBLIC`, `SECRET`, `PUBLIC_AND_SECRET`] |
 
 
@@ -292,6 +295,7 @@ Get a list of the boards owned by the \&quot;operation user_account\&quot; + gro
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `boards:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -312,7 +316,7 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 |------------- | ------------- | ------------- | -------------|
 | **boardId** | `String`| Unique identifier of a board. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 | **creativeTypes** | [**List&lt;String&gt;**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional parameter] [enum: `REGULAR`, `VIDEO`, `SHOPPING`, `CAROUSEL`, `MAX_VIDEO`, `SHOP_THE_PIN`, `COLLECTION`, `IDEA`] |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 | **pinMetrics** | `Boolean`| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional parameter] [default to `false`] |
@@ -323,6 +327,7 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`, `pins:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `boards:read`, `pins:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined

@@ -32,5 +32,8 @@ data class CountryFilter (
     @Json(name = "COUNTRY")
     val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
 
-)
+) {
+
+
+}
 

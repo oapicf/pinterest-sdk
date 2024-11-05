@@ -22,14 +22,17 @@ import play.api.libs.json._
   * @param productGroupIds List of product group ids
   * @param productGroupStatuses List of values for filtering
   * @param productItemIds List of product item ids
-  * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+  * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   * @param metricsFilters List of metrics filters
   * @param columns Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
   * @param level Level of the report
   * @param reportFormat Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+  * @param primarySort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+  * @param startHour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+  * @param endHour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class AdsAnalyticsCreateAsyncRequest(
   startDate: String,
   endDate: String,
@@ -53,14 +56,17 @@ case class AdsAnalyticsCreateAsyncRequest(
   metricsFilters: Option[List[AdsAnalyticsMetricsFilter]],
   columns: List[ReportingColumnAsync],
   level: MetricsReportingLevel,
-  reportFormat: Option[DataOutputFormat]
+  reportFormat: Option[DataOutputFormat],
+  primarySort: Option[AdsAnalyticsCreateAsyncRequest.PrimarySort.Value],
+  startHour: Option[Int],
+  endHour: Option[Int]
   additionalProperties: 
 )
 
 object AdsAnalyticsCreateAsyncRequest {
   implicit lazy val adsAnalyticsCreateAsyncRequestJsonFormat: Format[AdsAnalyticsCreateAsyncRequest] = {
     val realJsonFormat = Json.format[AdsAnalyticsCreateAsyncRequest]
-    val declaredPropNames = Set("startDate", "endDate", "granularity", "clickWindowDays", "engagementWindowDays", "viewWindowDays", "conversionReportTime", "attributionTypes", "campaignIds", "campaignStatuses", "campaignObjectiveTypes", "adGroupIds", "adGroupStatuses", "adIds", "adStatuses", "productGroupIds", "productGroupStatuses", "productItemIds", "targetingTypes", "metricsFilters", "columns", "level", "reportFormat")
+    val declaredPropNames = Set("startDate", "endDate", "granularity", "clickWindowDays", "engagementWindowDays", "viewWindowDays", "conversionReportTime", "attributionTypes", "campaignIds", "campaignStatuses", "campaignObjectiveTypes", "adGroupIds", "adGroupStatuses", "adIds", "adStatuses", "productGroupIds", "productGroupStatuses", "productItemIds", "targetingTypes", "metricsFilters", "columns", "level", "reportFormat", "primarySort", "startHour", "endHour")
     
     Format(
       Reads {
@@ -81,6 +87,15 @@ object AdsAnalyticsCreateAsyncRequest {
         newObj
       }
     )
+  }
+
+  // noinspection TypeAnnotation
+  object PrimarySort extends Enumeration {
+    val ID = Value("BY_ID")
+    val DATE = Value("BY_DATE")
+
+    type PrimarySort = Value
+    implicit lazy val PrimarySortJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

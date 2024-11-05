@@ -19,8 +19,7 @@ AdsCreditRedeemResponse <- R6::R6Class(
     `success` = NULL,
     `errorCode` = NULL,
     `errorMessage` = NULL,
-    #' Initialize a new AdsCreditRedeemResponse class.
-    #'
+
     #' @description
     #' Initialize a new AdsCreditRedeemResponse class.
     #'
@@ -28,7 +27,6 @@ AdsCreditRedeemResponse <- R6::R6Class(
     #' @param errorCode Error code type if error occurs
     #' @param errorMessage Reason for failure
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`success` = NULL, `errorCode` = NULL, `errorMessage` = NULL, ...) {
       if (!is.null(`success`)) {
         if (!(is.logical(`success`) && length(`success`) == 1)) {
@@ -49,13 +47,11 @@ AdsCreditRedeemResponse <- R6::R6Class(
         self$`errorMessage` <- `errorMessage`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsCreditRedeemResponse in JSON format
-    #' @export
     toJSON = function() {
       AdsCreditRedeemResponseObject <- list()
       if (!is.null(self$`success`)) {
@@ -72,14 +68,12 @@ AdsCreditRedeemResponse <- R6::R6Class(
       }
       AdsCreditRedeemResponseObject
     },
-    #' Deserialize JSON string into an instance of AdsCreditRedeemResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsCreditRedeemResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsCreditRedeemResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`success`)) {
@@ -93,13 +87,11 @@ AdsCreditRedeemResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsCreditRedeemResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`success`)) {
@@ -130,14 +122,12 @@ AdsCreditRedeemResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdsCreditRedeemResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsCreditRedeemResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsCreditRedeemResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`success` <- this_object$`success`
@@ -145,53 +135,42 @@ AdsCreditRedeemResponse <- R6::R6Class(
       self$`errorMessage` <- this_object$`errorMessage`
       self
     },
-    #' Validate JSON input with respect to AdsCreditRedeemResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdsCreditRedeemResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdsCreditRedeemResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

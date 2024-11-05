@@ -29,13 +29,13 @@ public class BulkDownloadRequest  {
   */
   @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
   @Valid
-  private List<BulkEntityType> entityTypes;
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
 
  /**
   * All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
   */
   @ApiModelProperty(value = "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.")
-  private List<@Pattern(regexp = "^\\d+$")String> entityIds;
+  private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
 
  /**
   * Unix UTC timestamp to retrieve all entities that have changed since this time.

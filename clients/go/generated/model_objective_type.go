@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ObjectiveType Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] in BETA. For update, only draft campaigns may update objective type.
+// ObjectiveType Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
 type ObjectiveType string
 
 // List of ObjectiveType
@@ -27,6 +27,7 @@ const (
 	WEB_CONVERSION ObjectiveType = "WEB_CONVERSION"
 	CATALOG_SALES ObjectiveType = "CATALOG_SALES"
 	WEB_SESSIONS ObjectiveType = "WEB_SESSIONS"
+	VIDEO_COMPLETION ObjectiveType = "VIDEO_COMPLETION"
 )
 
 // All allowed values of ObjectiveType enum
@@ -37,6 +38,7 @@ var AllowedObjectiveTypeEnumValues = []ObjectiveType{
 	"WEB_CONVERSION",
 	"CATALOG_SALES",
 	"WEB_SESSIONS",
+	"VIDEO_COMPLETION",
 }
 
 func (v *ObjectiveType) UnmarshalJSON(src []byte) error {

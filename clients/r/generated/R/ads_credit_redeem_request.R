@@ -17,15 +17,13 @@ AdsCreditRedeemRequest <- R6::R6Class(
   public = list(
     `offerCodeHash` = NULL,
     `validateOnly` = NULL,
-    #' Initialize a new AdsCreditRedeemRequest class.
-    #'
+
     #' @description
     #' Initialize a new AdsCreditRedeemRequest class.
     #'
     #' @param offerCodeHash Takes in a SHA256 hash of the offerCode.
     #' @param validateOnly If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`offerCodeHash`, `validateOnly`, ...) {
       if (!missing(`offerCodeHash`)) {
         if (!(is.character(`offerCodeHash`) && length(`offerCodeHash`) == 1)) {
@@ -40,13 +38,11 @@ AdsCreditRedeemRequest <- R6::R6Class(
         self$`validateOnly` <- `validateOnly`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsCreditRedeemRequest in JSON format
-    #' @export
     toJSON = function() {
       AdsCreditRedeemRequestObject <- list()
       if (!is.null(self$`offerCodeHash`)) {
@@ -59,14 +55,12 @@ AdsCreditRedeemRequest <- R6::R6Class(
       }
       AdsCreditRedeemRequestObject
     },
-    #' Deserialize JSON string into an instance of AdsCreditRedeemRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsCreditRedeemRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsCreditRedeemRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`offerCodeHash`)) {
@@ -77,13 +71,11 @@ AdsCreditRedeemRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdsCreditRedeemRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`offerCodeHash`)) {
@@ -106,27 +98,23 @@ AdsCreditRedeemRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdsCreditRedeemRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdsCreditRedeemRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdsCreditRedeemRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`offerCodeHash` <- this_object$`offerCodeHash`
       self$`validateOnly` <- this_object$`validateOnly`
       self
     },
-    #' Validate JSON input with respect to AdsCreditRedeemRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdsCreditRedeemRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `offerCodeHash`
@@ -146,23 +134,19 @@ AdsCreditRedeemRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for AdsCreditRedeemRequest: the required field `validateOnly` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdsCreditRedeemRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `offerCodeHash` is null
       if (is.null(self$`offerCodeHash`)) {
@@ -180,13 +164,11 @@ AdsCreditRedeemRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `offerCodeHash` is null
@@ -205,12 +187,9 @@ AdsCreditRedeemRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

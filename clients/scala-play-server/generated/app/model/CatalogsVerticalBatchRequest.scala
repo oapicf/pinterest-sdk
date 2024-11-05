@@ -4,16 +4,16 @@ import play.api.libs.json._
 
 /**
   * A request object that can have multiple operations on a single batch
-  * @param items Array with catalogs item operations
-  * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  * @param items Array with creative assets item operations
+  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class CatalogsVerticalBatchRequest(
-  catalogType: CatalogsType,
+  catalogType: CatalogsVerticalBatchRequest.CatalogType.Value,
   country: Country,
-  language: Language,
-  items: List[CatalogsHotelBatchItem],
+  language: CatalogsItemsRequestLanguage,
+  items: List[CatalogsCreativeAssetsBatchItem],
   catalogId: Option[String]
   additionalProperties: 
 )
@@ -42,6 +42,14 @@ object CatalogsVerticalBatchRequest {
         newObj
       }
     )
+  }
+
+  // noinspection TypeAnnotation
+  object CatalogType extends Enumeration {
+    val CREATIVEASSETS = Value("CREATIVE_ASSETS")
+
+    type CatalogType = Value
+    implicit lazy val CatalogTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

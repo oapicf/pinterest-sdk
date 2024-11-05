@@ -4,7 +4,6 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 
@@ -38,8 +37,6 @@ class ProductGroupPromotion {
     String catalogProductGroupId
     /* Catalogs product group name */
     String catalogProductGroupName
-    
-    CreativeType creativeType
     /* Hero Pin ID if this PG is promoted as a Collection */
     String collectionsHeroPinId
     /* Collections Hero Destination Url */

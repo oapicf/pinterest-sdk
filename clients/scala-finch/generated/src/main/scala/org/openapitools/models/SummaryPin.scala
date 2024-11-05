@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.SummaryPinMedia
+import org.openapitools.models.PinMedia
 
 /**
  * Summarized pin information
@@ -15,7 +15,7 @@ import org.openapitools.models.SummaryPinMedia
  * @param title 
  * @param description 
  */
-case class SummaryPin(media: Option[SummaryPinMedia],
+case class SummaryPin(media: Option[PinMedia],
                 altUnderscoretext: Option[String],
                 link: Option[String],
                 title: Option[String],

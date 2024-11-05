@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **\DateTime** |  | [optional] 
-**id** | **string** |  | [optional] 
-**updatedAt** | **\DateTime** |  | [optional] 
+**createdAt** | **\DateTime** |  | 
+**id** | **string** |  | 
+**updatedAt** | **\DateTime** |  | 
 **ingestionDetails** | [**OpenAPI\Server\Model\CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **status** | [**OpenAPI\Server\Model\CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **productCounts** | [**OpenAPI\Server\Model\CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 

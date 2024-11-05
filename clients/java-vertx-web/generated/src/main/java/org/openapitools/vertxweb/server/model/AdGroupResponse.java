@@ -4,16 +4,19 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.ActionType;
-import org.openapitools.vertxweb.server.model.AdGroupCommonOptimizationGoalMetadata;
-import org.openapitools.vertxweb.server.model.AdGroupCommonTrackingUrls;
 import org.openapitools.vertxweb.server.model.AdGroupSummaryStatus;
 import org.openapitools.vertxweb.server.model.BudgetType;
 import org.openapitools.vertxweb.server.model.EntityStatus;
+import org.openapitools.vertxweb.server.model.OptimizationGoalMetadata;
 import org.openapitools.vertxweb.server.model.PacingDeliveryType;
 import org.openapitools.vertxweb.server.model.PlacementGroupType;
 import org.openapitools.vertxweb.server.model.TargetingSpec;
+import org.openapitools.vertxweb.server.model.TrackingUrls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdGroupResponse   {
@@ -22,13 +25,13 @@ public class AdGroupResponse   {
   private EntityStatus status;
   private Integer budgetInMicroCurrency;
   private Integer bidInMicroCurrency;
-  private AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata;
+  private OptimizationGoalMetadata optimizationGoalMetadata;
   private BudgetType budgetType;
   private Integer startTime;
   private Integer endTime;
   private TargetingSpec targetingSpec;
   private Integer lifetimeFrequencyCap;
-  private AdGroupCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
   private Boolean autoTargetingEnabled;
   private PlacementGroupType placementGroup;
   private PacingDeliveryType pacingDeliveryType;
@@ -39,8 +42,7 @@ public class AdGroupResponse   {
   public enum BidStrategyTypeEnum {
     AUTOMATIC_BID("AUTOMATIC_BID"),
     MAX_BID("MAX_BID"),
-    TARGET_AVG("TARGET_AVG"),
-    NULL("null");
+    TARGET_AVG("TARGET_AVG");
 
     private String value;
 
@@ -56,6 +58,7 @@ public class AdGroupResponse   {
   }
 
   private BidStrategyTypeEnum bidStrategyType;
+  private List<String> targetingTemplateIds;
   private String id;
   private String adAccountId;
   private Integer createdTime;
@@ -65,8 +68,7 @@ public class AdGroupResponse   {
 
   public enum ConversionLearningModeTypeEnum {
     NOT_ACTIVE("NOT_ACTIVE"),
-    ACTIVE("ACTIVE"),
-    NULL("null");
+    ACTIVE("ACTIVE");
 
     private String value;
 
@@ -90,7 +92,7 @@ public class AdGroupResponse   {
 
   }
 
-  public AdGroupResponse (String name, EntityStatus status, Integer budgetInMicroCurrency, Integer bidInMicroCurrency, AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata, BudgetType budgetType, Integer startTime, Integer endTime, TargetingSpec targetingSpec, Integer lifetimeFrequencyCap, AdGroupCommonTrackingUrls trackingUrls, Boolean autoTargetingEnabled, PlacementGroupType placementGroup, PacingDeliveryType pacingDeliveryType, String campaignId, ActionType billableEvent, BidStrategyTypeEnum bidStrategyType, String id, String adAccountId, Integer createdTime, Integer updatedTime, String type, ConversionLearningModeTypeEnum conversionLearningModeType, AdGroupSummaryStatus summaryStatus, String feedProfileId, Object dcaAssets) {
+  public AdGroupResponse (String name, EntityStatus status, Integer budgetInMicroCurrency, Integer bidInMicroCurrency, OptimizationGoalMetadata optimizationGoalMetadata, BudgetType budgetType, Integer startTime, Integer endTime, TargetingSpec targetingSpec, Integer lifetimeFrequencyCap, TrackingUrls trackingUrls, Boolean autoTargetingEnabled, PlacementGroupType placementGroup, PacingDeliveryType pacingDeliveryType, String campaignId, ActionType billableEvent, BidStrategyTypeEnum bidStrategyType, List<String> targetingTemplateIds, String id, String adAccountId, Integer createdTime, Integer updatedTime, String type, ConversionLearningModeTypeEnum conversionLearningModeType, AdGroupSummaryStatus summaryStatus, String feedProfileId, Object dcaAssets) {
     this.name = name;
     this.status = status;
     this.budgetInMicroCurrency = budgetInMicroCurrency;
@@ -108,6 +110,7 @@ public class AdGroupResponse   {
     this.campaignId = campaignId;
     this.billableEvent = billableEvent;
     this.bidStrategyType = bidStrategyType;
+    this.targetingTemplateIds = targetingTemplateIds;
     this.id = id;
     this.adAccountId = adAccountId;
     this.createdTime = createdTime;
@@ -157,10 +160,10 @@ public class AdGroupResponse   {
 
     
   @JsonProperty("optimization_goal_metadata")
-  public AdGroupCommonOptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
-  public void setOptimizationGoalMetadata(AdGroupCommonOptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
@@ -211,10 +214,10 @@ public class AdGroupResponse   {
 
     
   @JsonProperty("tracking_urls")
-  public AdGroupCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
-  public void setTrackingUrls(AdGroupCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -270,6 +273,15 @@ public class AdGroupResponse   {
   }
   public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
     this.bidStrategyType = bidStrategyType;
+  }
+
+    
+  @JsonProperty("targeting_template_ids")
+  public List<String> getTargetingTemplateIds() {
+    return targetingTemplateIds;
+  }
+  public void setTargetingTemplateIds(List<String> targetingTemplateIds) {
+    this.targetingTemplateIds = targetingTemplateIds;
   }
 
     
@@ -380,6 +392,7 @@ public class AdGroupResponse   {
         Objects.equals(campaignId, adGroupResponse.campaignId) &&
         Objects.equals(billableEvent, adGroupResponse.billableEvent) &&
         Objects.equals(bidStrategyType, adGroupResponse.bidStrategyType) &&
+        Objects.equals(targetingTemplateIds, adGroupResponse.targetingTemplateIds) &&
         Objects.equals(id, adGroupResponse.id) &&
         Objects.equals(adAccountId, adGroupResponse.adAccountId) &&
         Objects.equals(createdTime, adGroupResponse.createdTime) &&
@@ -393,7 +406,7 @@ public class AdGroupResponse   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, id, adAccountId, createdTime, updatedTime, type, conversionLearningModeType, summaryStatus, feedProfileId, dcaAssets);
+    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, targetingTemplateIds, id, adAccountId, createdTime, updatedTime, type, conversionLearningModeType, summaryStatus, feedProfileId, dcaAssets);
   }
 
   @Override
@@ -418,6 +431,7 @@ public class AdGroupResponse   {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
+    sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");

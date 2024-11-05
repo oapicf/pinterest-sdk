@@ -2,20 +2,22 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.CatalogsRetailBatchRequestItemsInner
-open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.Country
-open OpenAPI.Model.Language
 
 module CatalogsRetailBatchRequest =
 
   //#region CatalogsRetailBatchRequest
 
+  //#region enums
+  type CatalogTypeEnum = RETAILEnum of string  
+  //#endregion
 
   type CatalogsRetailBatchRequest = {
-    CatalogType : CatalogsType;
+    CatalogType : CatalogTypeEnum;
     Country : Country;
-    Language : Language;
+    Language : CatalogsItemsRequestLanguage;
     Items : CatalogsRetailBatchRequestItemsInner[];
   }
   //#endregion

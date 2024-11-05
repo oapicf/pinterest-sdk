@@ -19,13 +19,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for creating a product group.")
 @JsonTypeName("CatalogsProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupCreateRequest   {
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid Boolean isFeatured = false;
-  private @Valid CatalogsProductGroupFiltersRequest filters;
-  private @Valid String feedId;
+  private String name;
+  private String description;
+  private Boolean isFeatured = false;
+  private CatalogsProductGroupFiltersRequest filters;
+  private String feedId;
 
   /**
    **/
@@ -37,8 +37,7 @@ public class CatalogsProductGroupCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("name")
-  @NotNull
-  public String getName() {
+  @NotNull public String getName() {
     return name;
   }
 
@@ -96,8 +95,7 @@ public class CatalogsProductGroupCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("filters")
-  @NotNull
-  public CatalogsProductGroupFiltersRequest getFilters() {
+  @NotNull @Valid public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
   }
 
@@ -117,8 +115,7 @@ public class CatalogsProductGroupCreateRequest   {
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
   @JsonProperty("feed_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getFeedId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
     return feedId;
   }
 

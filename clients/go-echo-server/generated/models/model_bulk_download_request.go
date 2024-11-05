@@ -10,7 +10,7 @@ type BulkDownloadRequest struct {
 	EntityIds []string `json:"entity_ids,omitempty"`
 
 	// Unix UTC timestamp to retrieve all entities that have changed since this time.
-	UpdatedSince string `json:"updated_since,omitempty"`
+	UpdatedSince string `json:"updated_since,omitempty" validate:"regexp=^\\\\d+$"`
 
 	CampaignFilter BulkDownloadRequestCampaignFilter `json:"campaign_filter,omitempty"`
 

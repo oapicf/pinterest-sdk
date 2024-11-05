@@ -8,8 +8,8 @@ import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BoardOwner;
 import org.openapitools.vertxweb.server.model.CreativeType;
+import org.openapitools.vertxweb.server.model.PinMedia;
 import org.openapitools.vertxweb.server.model.PinMediaSource;
-import org.openapitools.vertxweb.server.model.SummaryPinMedia;
 
 /**
  * Pin
@@ -29,7 +29,7 @@ public class Pin   {
   private String boardSectionId;
   private BoardOwner boardOwner;
   private Boolean isOwner;
-  private SummaryPinMedia media;
+  private PinMedia media;
   private PinMediaSource mediaSource;
   private String parentPinId;
   private Boolean isStandard;
@@ -41,7 +41,7 @@ public class Pin   {
 
   }
 
-  public Pin (String id, OffsetDateTime createdAt, String link, String title, String description, String dominantColor, String altText, CreativeType creativeType, String boardId, String boardSectionId, BoardOwner boardOwner, Boolean isOwner, SummaryPinMedia media, PinMediaSource mediaSource, String parentPinId, Boolean isStandard, Boolean hasBeenPromoted, String note, Object pinMetrics) {
+  public Pin (String id, OffsetDateTime createdAt, String link, String title, String description, String dominantColor, String altText, CreativeType creativeType, String boardId, String boardSectionId, BoardOwner boardOwner, Boolean isOwner, PinMedia media, PinMediaSource mediaSource, String parentPinId, Boolean isStandard, Boolean hasBeenPromoted, String note, Object pinMetrics) {
     this.id = id;
     this.createdAt = createdAt;
     this.link = link;
@@ -173,10 +173,10 @@ public class Pin   {
 
     
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 

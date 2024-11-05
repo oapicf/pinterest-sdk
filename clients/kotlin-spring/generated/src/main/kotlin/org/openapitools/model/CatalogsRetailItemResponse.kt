@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsType
@@ -41,7 +42,7 @@ data class CatalogsRetailItemResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("attributes") val attributes: ItemAttributes? = null
-) {
+    ) {
 
 }
 

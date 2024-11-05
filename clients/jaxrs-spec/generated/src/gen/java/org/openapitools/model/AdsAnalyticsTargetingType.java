@@ -34,7 +34,9 @@ public enum AdsAnalyticsTargetingType {
   
   AGE_BUCKET("AGE_BUCKET"),
   
-  REGION("REGION");
+  REGION("REGION"),
+  
+  AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER");
 
   private String value;
 

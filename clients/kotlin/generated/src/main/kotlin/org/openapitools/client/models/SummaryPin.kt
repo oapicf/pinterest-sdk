@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.SummaryPinMedia
+import org.openapitools.client.models.PinMedia
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -34,7 +34,7 @@ import com.squareup.moshi.JsonClass
 data class SummaryPin (
 
     @Json(name = "media")
-    val media: SummaryPinMedia? = null,
+    val media: PinMedia? = null,
 
     @Json(name = "alt_text")
     val altText: kotlin.String? = null,
@@ -48,5 +48,8 @@ data class SummaryPin (
     @Json(name = "description")
     val description: kotlin.String? = null
 
-)
+) {
+
+
+}
 

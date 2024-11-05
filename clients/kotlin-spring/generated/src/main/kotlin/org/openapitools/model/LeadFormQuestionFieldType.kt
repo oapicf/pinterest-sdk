@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,14 +17,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Lead form question field type
-* Values: TEXT_FIELD,TEXT_AREA,RADIO_LIST,CHECKBOX,`null`
+* Values: TEXT_FIELD,TEXT_AREA,RADIO_LIST,CHECKBOX
 */
-enum class LeadFormQuestionFieldType(val value: kotlin.String) {
+enum class LeadFormQuestionFieldType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("TEXT_FIELD") TEXT_FIELD("TEXT_FIELD"),
-    @JsonProperty("TEXT_AREA") TEXT_AREA("TEXT_AREA"),
-    @JsonProperty("RADIO_LIST") RADIO_LIST("RADIO_LIST"),
-    @JsonProperty("CHECKBOX") CHECKBOX("CHECKBOX"),
-    @JsonProperty("null") `null`("null")
+    TEXT_FIELD("TEXT_FIELD"),
+    TEXT_AREA("TEXT_AREA"),
+    RADIO_LIST("RADIO_LIST"),
+    CHECKBOX("CHECKBOX");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): LeadFormQuestionFieldType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

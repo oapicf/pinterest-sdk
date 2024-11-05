@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsHotelProductGroupFilterKeys
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupFilterKeys   {
   @JsonProperty("PRICE")
   private CatalogsProductGroupPricingCurrencyCriteria PRICE;
@@ -60,10 +60,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get PRICE
    * @return PRICE
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupPricingCurrencyCriteria getPRICE() {
     return PRICE;
@@ -78,10 +78,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get HOTEL_ID
    * @return HOTEL_ID
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getHOTELID() {
     return HOTEL_ID;
@@ -96,10 +96,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get BRAND
    * @return BRAND
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getBRAND() {
     return BRAND;
@@ -114,10 +114,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_0
    * @return CUSTOM_LABEL_0
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
     return CUSTOM_LABEL_0;
@@ -132,10 +132,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_1
    * @return CUSTOM_LABEL_1
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1() {
     return CUSTOM_LABEL_1;
@@ -150,10 +150,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_2
    * @return CUSTOM_LABEL_2
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
@@ -168,10 +168,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_3
    * @return CUSTOM_LABEL_3
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
@@ -186,10 +186,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get CUSTOM_LABEL_4
    * @return CUSTOM_LABEL_4
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4() {
     return CUSTOM_LABEL_4;
@@ -204,10 +204,10 @@ public class CatalogsHotelProductGroupFilterKeys   {
     return this;
   }
 
-   /**
+  /**
    * Get COUNTRY
    * @return COUNTRY
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupMultipleCountriesCriteria getCOUNTRY() {
     return COUNTRY;

@@ -150,9 +150,10 @@ class ResourcesApiSimulation extends Simulation {
         .feed(targeting_options/getPATHFeeder)
         .exec(http("targetingOptionsGet")
         .httpRequest("GET","/resources/targeting/${targeting_type}")
-        .queryParam("oauth_signature","${oauth_signature}")
         .queryParam("timestamp","${timestamp}")
+        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("client_id","${client_id}")
+        .queryParam("oauth_signature","${oauth_signature}")
 )
 
     // Run scntargetingOptionsGet with warm up and reach a constant rate for entire duration

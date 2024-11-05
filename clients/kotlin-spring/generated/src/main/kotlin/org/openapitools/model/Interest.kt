@@ -34,7 +34,7 @@ data class Interest(
 
     @Schema(example = "Man cave", description = "")
     @get:JsonProperty("name") val name: kotlin.String? = null
-) {
+    ) {
 
 }
 

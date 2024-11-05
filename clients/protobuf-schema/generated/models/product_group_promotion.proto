@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,7 +14,6 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/creative_type.proto";
 import public "models/entity_status.proto";
 import public "models/grid_click_type.proto";
 
@@ -60,8 +59,6 @@ message ProductGroupPromotion {
 
   // Catalogs product group name
   optional string catalog_product_group_name = 170768258;
-
-  CreativeType creative_type = 165851703;
 
   // Hero Pin ID if this PG is promoted as a Collection
   optional string collections_hero_pin_id = 517486530;

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 @JsonTypeName("IntegrationLogClientRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogClientRequest   {
   public enum MethodEnum {
 
@@ -68,12 +68,12 @@ public class IntegrationLogClientRequest   {
     }
 }
 
-  private @Valid MethodEnum method;
-  private @Valid String host;
-  private @Valid String path;
+  private MethodEnum method;
+  private String host;
+  private String path;
   private @Valid Map<String, String> requestHeaders = new HashMap<>();
   private @Valid Map<String, String> responseHeaders = new HashMap<>();
-  private @Valid Integer responseStatusCode;
+  private Integer responseStatusCode;
 
   /**
    **/
@@ -85,8 +85,7 @@ public class IntegrationLogClientRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("method")
-  @NotNull
-  public MethodEnum getMethod() {
+  @NotNull public MethodEnum getMethod() {
     return method;
   }
 
@@ -106,8 +105,7 @@ public class IntegrationLogClientRequest   {
   
   @ApiModelProperty(required = true, value = "HTTP request host from host header.")
   @JsonProperty("host")
-  @NotNull
-  public String getHost() {
+  @NotNull public String getHost() {
     return host;
   }
 
@@ -127,8 +125,7 @@ public class IntegrationLogClientRequest   {
   
   @ApiModelProperty(required = true, value = "HTTP request path.")
   @JsonProperty("path")
-  @NotNull
-  public String getPath() {
+  @NotNull public String getPath() {
     return path;
   }
 
@@ -166,9 +163,9 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-  public IntegrationLogClientRequest removeRequestHeadersItem(String requestHeadersItem) {
-    if (requestHeadersItem != null && this.requestHeaders != null) {
-      this.requestHeaders.remove(requestHeadersItem);
+  public IntegrationLogClientRequest removeRequestHeadersItem(String key) {
+    if (this.requestHeaders != null) {
+      this.requestHeaders.remove(key);
     }
 
     return this;
@@ -202,9 +199,9 @@ public class IntegrationLogClientRequest   {
     return this;
   }
 
-  public IntegrationLogClientRequest removeResponseHeadersItem(String responseHeadersItem) {
-    if (responseHeadersItem != null && this.responseHeaders != null) {
-      this.responseHeaders.remove(responseHeadersItem);
+  public IntegrationLogClientRequest removeResponseHeadersItem(String key) {
+    if (this.responseHeaders != null) {
+      this.responseHeaders.remove(key);
     }
 
     return this;

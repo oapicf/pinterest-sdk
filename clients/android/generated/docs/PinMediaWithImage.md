@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mediaType** | **String** |  |  [optional]
-**images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  |  [optional]
+**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  |  [optional]
 
 
 

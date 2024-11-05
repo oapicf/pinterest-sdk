@@ -17,19 +17,18 @@ typedef struct items_batch_post_request_t items_batch_post_request_t;
 
 #include "batch_operation.h"
 #include "catalogs_items_batch_request.h"
-#include "catalogs_type.h"
+#include "catalogs_items_request_language.h"
 #include "catalogs_vertical_batch_request.h"
 #include "country.h"
 #include "item_delete_batch_record.h"
-#include "language.h"
 
-// Enum  for items_batch_post_request
+// Enum CATALOGTYPE for items_batch_post_request
 
-typedef enum  { pinterest_rest_api_items_batch_post_request__NULL = 0, pinterest_rest_api_items_batch_post_request__RETAIL, pinterest_rest_api_items_batch_post_request__HOTEL } pinterest_rest_api_items_batch_post_request__e;
+typedef enum  { pinterest_rest_api_items_batch_post_request_CATALOGTYPE_NULL = 0, pinterest_rest_api_items_batch_post_request_CATALOGTYPE_CREATIVE_ASSETS } pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e;
 
-char* items_batch_post_request_catalog_type_ToString(pinterest_rest_api_items_batch_post_request__e catalog_type);
+char* items_batch_post_request_catalog_type_ToString(pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type);
 
-pinterest_rest_api_items_batch_post_request__e items_batch_post_request_catalog_type_FromString(char* catalog_type);
+pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e items_batch_post_request_catalog_type_FromString(char* catalog_type);
 
 // Enum  for items_batch_post_request
 
@@ -38,14 +37,6 @@ typedef enum  { pinterest_rest_api_items_batch_post_request__NULL = 0, pinterest
 char* items_batch_post_request_country_ToString(pinterest_rest_api_items_batch_post_request__e country);
 
 pinterest_rest_api_items_batch_post_request__e items_batch_post_request_country_FromString(char* country);
-
-// Enum  for items_batch_post_request
-
-typedef enum  { pinterest_rest_api_items_batch_post_request__NULL = 0, pinterest_rest_api_items_batch_post_request__AM, pinterest_rest_api_items_batch_post_request__AR, pinterest_rest_api_items_batch_post_request__AZ, pinterest_rest_api_items_batch_post_request__BG, pinterest_rest_api_items_batch_post_request__BN, pinterest_rest_api_items_batch_post_request__BS, pinterest_rest_api_items_batch_post_request__CA, pinterest_rest_api_items_batch_post_request__CS, pinterest_rest_api_items_batch_post_request__DA, pinterest_rest_api_items_batch_post_request__DV, pinterest_rest_api_items_batch_post_request__DZ, pinterest_rest_api_items_batch_post_request__DE, pinterest_rest_api_items_batch_post_request__EL, pinterest_rest_api_items_batch_post_request__EN, pinterest_rest_api_items_batch_post_request__ES, pinterest_rest_api_items_batch_post_request__ET, pinterest_rest_api_items_batch_post_request__FA, pinterest_rest_api_items_batch_post_request__FI, pinterest_rest_api_items_batch_post_request__FR, pinterest_rest_api_items_batch_post_request__HE, pinterest_rest_api_items_batch_post_request__HI, pinterest_rest_api_items_batch_post_request__HR, pinterest_rest_api_items_batch_post_request__HU, pinterest_rest_api_items_batch_post_request__HY, pinterest_rest_api_items_batch_post_request__ID, pinterest_rest_api_items_batch_post_request__IN, pinterest_rest_api_items_batch_post_request__IS, pinterest_rest_api_items_batch_post_request__IT, pinterest_rest_api_items_batch_post_request__IW, pinterest_rest_api_items_batch_post_request__JA, pinterest_rest_api_items_batch_post_request__KA, pinterest_rest_api_items_batch_post_request__KM, pinterest_rest_api_items_batch_post_request__KO, pinterest_rest_api_items_batch_post_request__LO, pinterest_rest_api_items_batch_post_request__LT, pinterest_rest_api_items_batch_post_request__LV, pinterest_rest_api_items_batch_post_request__MK, pinterest_rest_api_items_batch_post_request__MN, pinterest_rest_api_items_batch_post_request__MS, pinterest_rest_api_items_batch_post_request__MY, pinterest_rest_api_items_batch_post_request__NB, pinterest_rest_api_items_batch_post_request__NE, pinterest_rest_api_items_batch_post_request__NL, pinterest_rest_api_items_batch_post_request__NO, pinterest_rest_api_items_batch_post_request__PL, pinterest_rest_api_items_batch_post_request__PT, pinterest_rest_api_items_batch_post_request__RO, pinterest_rest_api_items_batch_post_request__RU, pinterest_rest_api_items_batch_post_request__SK, pinterest_rest_api_items_batch_post_request__SL, pinterest_rest_api_items_batch_post_request__SQ, pinterest_rest_api_items_batch_post_request__SR, pinterest_rest_api_items_batch_post_request__SV, pinterest_rest_api_items_batch_post_request__TL, pinterest_rest_api_items_batch_post_request__UK, pinterest_rest_api_items_batch_post_request__VI, pinterest_rest_api_items_batch_post_request__TE, pinterest_rest_api_items_batch_post_request__TH, pinterest_rest_api_items_batch_post_request__TR, pinterest_rest_api_items_batch_post_request__XX, pinterest_rest_api_items_batch_post_request__ZH } pinterest_rest_api_items_batch_post_request__e;
-
-char* items_batch_post_request_language_ToString(pinterest_rest_api_items_batch_post_request__e language);
-
-pinterest_rest_api_items_batch_post_request__e items_batch_post_request_language_FromString(char* language);
 
 // Enum  for items_batch_post_request
 
@@ -58,9 +49,9 @@ pinterest_rest_api_items_batch_post_request__e items_batch_post_request_operatio
 
 
 typedef struct items_batch_post_request_t {
-    catalogs_type_t *catalog_type; // custom
+    pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type; //enum
     country_t *country; // custom
-    language_t *language; // custom
+    struct catalogs_items_request_language_t *language; //model
     list_t *items; //nonprimitive container
     char *catalog_id; // string
     batch_operation_t *operation; // custom
@@ -68,9 +59,9 @@ typedef struct items_batch_post_request_t {
 } items_batch_post_request_t;
 
 items_batch_post_request_t *items_batch_post_request_create(
-    catalogs_type_t *catalog_type,
+    pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type,
     country_t *country,
-    language_t *language,
+    catalogs_items_request_language_t *language,
     list_t *items,
     char *catalog_id,
     batch_operation_t *operation

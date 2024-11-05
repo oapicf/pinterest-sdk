@@ -39,8 +39,11 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $ExplicitFollowing = $true # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to $false)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
@@ -58,7 +61,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **ExplicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to $false]
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
@@ -68,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -85,7 +88,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```powershell
@@ -145,8 +148,11 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # List followers
 try {
@@ -162,7 +168,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -170,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -194,6 +200,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 
 # List linked businesses
 try {
@@ -213,7 +222,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -372,6 +381,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 $SortBy = "ENGAGEMENT" # String | Specify sorting order for metrics
@@ -417,7 +429,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -451,6 +463,9 @@ Gets analytics data about a user's top video pins (limited to the top 50). - By 
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+# Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -498,7 +513,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -525,9 +540,12 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $Username = "username" # String | A valid username
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # List following interests
 try {
@@ -544,7 +562,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Username** | **String**| A valid username | 
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -552,7 +570,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -568,13 +586,16 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the ""operation user_account"" - By default, the ""operation user_account"" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the ""operation user_account"" - By default, the ""operation user_account"" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the ""operation user_account"". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```powershell
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+# Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
@@ -600,7 +621,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -629,8 +650,11 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $FeedType = "ALL" # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
 $ExplicitFollowing = $true # Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to $false)
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
@@ -649,7 +673,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **FeedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
  **ExplicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to $false]
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
@@ -660,7 +684,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -687,7 +711,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 # Get user websites
 try {
@@ -703,7 +727,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -724,6 +748,7 @@ Name | Type | Description  | Notes
 # **Test-WebsiteUpdate**
 > UserWebsiteSummary Test-WebsiteUpdate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-UserWebsiteVerifyRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Verify website
 
@@ -737,10 +762,11 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $UserWebsiteVerifyRequest = Initialize-UserWebsiteVerifyRequest -Website "pintest-website-12345678.test/test_1" -VerificationMethod "FILENAME" # UserWebsiteVerifyRequest | Verify a website.
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Verify website
 try {
-    $Result = Test-WebsiteUpdate -UserWebsiteVerifyRequest $UserWebsiteVerifyRequest
+    $Result = Test-WebsiteUpdate -UserWebsiteVerifyRequest $UserWebsiteVerifyRequest -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Test-WebsiteUpdate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -752,6 +778,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **UserWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -771,6 +798,7 @@ Name | Type | Description  | Notes
 <a id="Invoke-WebsiteVerificationGet"></a>
 # **Invoke-WebsiteVerificationGet**
 > UserWebsiteVerificationCode Invoke-WebsiteVerificationGet<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
 Get user verification code for website claiming
 
@@ -783,10 +811,14 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Get user verification code for website claiming
 try {
-    $Result = Invoke-WebsiteVerificationGet
+    $Result = Invoke-WebsiteVerificationGet -AdAccountId $AdAccountId
 } catch {
     Write-Host ("Exception occurred when calling Invoke-WebsiteVerificationGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -794,7 +826,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -802,7 +837,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

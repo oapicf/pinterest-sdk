@@ -41,7 +41,7 @@ data class VideoMetadata(
 
     @Schema(example = "null", description = "Width (in pixels)")
     @get:JsonProperty("width") val width: kotlin.Int? = null
-) {
+    ) {
 
 }
 

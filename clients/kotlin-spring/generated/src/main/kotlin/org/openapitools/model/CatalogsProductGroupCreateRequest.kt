@@ -39,8 +39,9 @@ data class CatalogsProductGroupCreateRequest(
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @Schema(example = "null", description = "boolean indicator of whether the product group is being featured or not")
+    @Deprecated(message = "")
     @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = false
-) {
+    ) {
 
 }
 

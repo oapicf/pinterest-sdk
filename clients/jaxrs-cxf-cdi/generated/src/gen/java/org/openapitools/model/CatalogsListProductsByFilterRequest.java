@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsListProductsByFilterRequestOneOf;
+import org.openapitools.model.CatalogsListProductsByFeedBasedFilter;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFilters;
+import org.openapitools.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest;
+import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 

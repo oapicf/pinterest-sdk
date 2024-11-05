@@ -37,5 +37,8 @@ data class KeywordsResponse (
     @Json(name = "keywords")
     val keywords: kotlin.collections.List<Keyword>? = null
 
-)
+) {
+
+
+}
 

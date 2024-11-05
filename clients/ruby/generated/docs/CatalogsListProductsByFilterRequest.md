@@ -14,7 +14,8 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsListProductsByFilterRequest.openapi_one_of
 # =>
 # [
-#   :'CatalogsListProductsByFilterRequestOneOf'
+#   :'CatalogsListProductsByFeedBasedFilter',
+#   :'CatalogsVerticalsListProductsByCatalogBasedFilterRequest'
 # ]
 ```
 
@@ -28,7 +29,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::CatalogsListProductsByFilterRequest.build(data)
-# => #<CatalogsListProductsByFilterRequestOneOf:0x00007fdd4aab02a0>
+# => #<CatalogsListProductsByFeedBasedFilter:0x00007fdd4aab02a0>
 
 PinterestSdkClient::CatalogsListProductsByFilterRequest.build(data_that_doesnt_match)
 # => nil
@@ -42,6 +43,7 @@ PinterestSdkClient::CatalogsListProductsByFilterRequest.build(data_that_doesnt_m
 
 #### Return type
 
-- `CatalogsListProductsByFilterRequestOneOf`
+- `CatalogsListProductsByFeedBasedFilter`
+- `CatalogsVerticalsListProductsByCatalogBasedFilterRequest`
 - `nil` (if no type matches)
 

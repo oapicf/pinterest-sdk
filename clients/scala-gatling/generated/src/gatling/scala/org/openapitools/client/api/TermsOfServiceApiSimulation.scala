@@ -72,8 +72,8 @@ class TermsOfServiceApiSimulation extends Simulation {
         .feed(terms_of_service/getPATHFeeder)
         .exec(http("termsOfServiceGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/terms_of_service")
-        .queryParam("include_html","${include_html}")
         .queryParam("tos_type","${tos_type}")
+        .queryParam("include_html","${include_html}")
 )
 
     // Run scntermsOfServiceGet with warm up and reach a constant rate for entire duration

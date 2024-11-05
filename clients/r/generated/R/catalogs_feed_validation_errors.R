@@ -79,8 +79,7 @@ CatalogsFeedValidationErrors <- R6::R6Class(
     `BLOCKLISTED_IMAGE_SIGNATURE` = NULL,
     `LIST_PRICE_INVALID` = NULL,
     `PRICE_CANNOT_BE_DETERMINED` = NULL,
-    #' Initialize a new CatalogsFeedValidationErrors class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedValidationErrors class.
     #'
@@ -118,7 +117,6 @@ CatalogsFeedValidationErrors <- R6::R6Class(
     #' @param LIST_PRICE_INVALID Some items have list price formatting errors in their product metadata, those items will not be published.
     #' @param PRICE_CANNOT_BE_DETERMINED Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`FETCH_ERROR` = NULL, `FETCH_INACTIVE_FEED_ERROR` = NULL, `ENCODING_ERROR` = NULL, `DELIMITER_ERROR` = NULL, `REQUIRED_COLUMNS_MISSING` = NULL, `DUPLICATE_PRODUCTS` = NULL, `IMAGE_LINK_INVALID` = NULL, `ITEMID_MISSING` = NULL, `TITLE_MISSING` = NULL, `DESCRIPTION_MISSING` = NULL, `PRODUCT_LINK_MISSING` = NULL, `IMAGE_LINK_MISSING` = NULL, `AVAILABILITY_INVALID` = NULL, `PRODUCT_PRICE_INVALID` = NULL, `LINK_FORMAT_INVALID` = NULL, `PARSE_LINE_ERROR` = NULL, `ADWORDS_FORMAT_INVALID` = NULL, `INTERNAL_SERVICE_ERROR` = NULL, `NO_VERIFIED_DOMAIN` = NULL, `ADULT_INVALID` = NULL, `IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `INVALID_DOMAIN` = NULL, `FEED_LENGTH_TOO_LONG` = NULL, `LINK_LENGTH_TOO_LONG` = NULL, `MALFORMED_XML` = NULL, `PRICE_MISSING` = NULL, `FEED_TOO_SMALL` = NULL, `MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED` = NULL, `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` = NULL, `PINJOIN_CONTENT_UNSAFE` = NULL, `BLOCKLISTED_IMAGE_SIGNATURE` = NULL, `LIST_PRICE_INVALID` = NULL, `PRICE_CANNOT_BE_DETERMINED` = NULL, ...) {
       if (!is.null(`FETCH_ERROR`)) {
         if (!(is.numeric(`FETCH_ERROR`) && length(`FETCH_ERROR`) == 1)) {
@@ -319,13 +317,11 @@ CatalogsFeedValidationErrors <- R6::R6Class(
         self$`PRICE_CANNOT_BE_DETERMINED` <- `PRICE_CANNOT_BE_DETERMINED`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedValidationErrors in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedValidationErrorsObject <- list()
       if (!is.null(self$`FETCH_ERROR`)) {
@@ -462,14 +458,12 @@ CatalogsFeedValidationErrors <- R6::R6Class(
       }
       CatalogsFeedValidationErrorsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedValidationErrors
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedValidationErrors
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedValidationErrors
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`FETCH_ERROR`)) {
@@ -573,13 +567,11 @@ CatalogsFeedValidationErrors <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedValidationErrors in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`FETCH_ERROR`)) {
@@ -850,14 +842,12 @@ CatalogsFeedValidationErrors <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedValidationErrors
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedValidationErrors
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedValidationErrors
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`FETCH_ERROR` <- this_object$`FETCH_ERROR`
@@ -895,53 +885,42 @@ CatalogsFeedValidationErrors <- R6::R6Class(
       self$`PRICE_CANNOT_BE_DETERMINED` <- this_object$`PRICE_CANNOT_BE_DETERMINED`
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedValidationErrors
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedValidationErrors and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedValidationErrors
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

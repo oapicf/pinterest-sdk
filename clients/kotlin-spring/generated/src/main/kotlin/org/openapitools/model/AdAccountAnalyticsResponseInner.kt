@@ -27,7 +27,7 @@ data class AdAccountAnalyticsResponseInner(
     @field:Valid
     @Schema(example = "null", description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
     @get:JsonProperty("DATE") val DATE: java.time.LocalDate? = null
-) : kotlin.collections.HashMap<String, kotlin.Any>{
+    ) : kotlin.collections.HashMap<String, kotlin.Any>{
 
 }
 

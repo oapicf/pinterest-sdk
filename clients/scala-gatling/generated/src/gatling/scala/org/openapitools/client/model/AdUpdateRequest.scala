@@ -5,7 +5,7 @@ package org.openapitools.client.model
 case class AdUpdateRequest (
     /* ID of the ad group that contains the ad. */
     _adGroupId: Option[String],
-    /* Deep link URL for Android devices. Not currently available. Using this field will generate an error. */
+    /* Deep link URL for Android devices. */
     _androidDeepLink: Option[String],
     /* Comma-separated deep links for the carousel pin on Android. */
     _carouselAndroidDeepLinks: Option[List[String]],
@@ -18,7 +18,7 @@ case class AdUpdateRequest (
     _creativeType: Option[CreativeType],
     /* Destination URL. */
     _destinationUrl: Option[String],
-    /* Deep link URL for iOS devices. Not currently available. Using this field will generate an error. */
+    /* Deep link URL for iOS devices. */
     _iosDeepLink: Option[String],
     /* Is original pin deleted? */
     _isPinDeleted: Option[Boolean],
@@ -27,15 +27,16 @@ case class AdUpdateRequest (
     /* Name of the ad - 255 chars max. */
     _name: Option[String],
     _status: Option[EntityStatus],
-    _trackingUrls: Option[AdCommonTrackingUrls],
+    _trackingUrls: Option[TrackingUrls],
     /* Tracking URL for ad impressions. */
     _viewTrackingUrl: Option[String],
     /* Lead form ID for lead ad generation. */
     _leadFormId: Option[String],
     _gridClickType: Option[GridClickType],
-    /* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
+    /* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
     _customizableCtaType: Option[String],
-    _quizPinData: Option[AdCommonQuizPinData],
+    /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
+    _quizPinData: Option[QuizPinData],
     /* The ID of this ad. */
     _id: String,
     /* Pin ID. This field may only be updated for draft ads. */

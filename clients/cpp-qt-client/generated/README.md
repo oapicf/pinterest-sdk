@@ -4,8 +4,8 @@
 
 Pinterest REST API
 
-- API version: 5.12.0
-- Generator version: 7.4.0
+- API version: 5.14.0
+- Generator version: 7.9.0
 
 Pinterest's REST API
 
@@ -131,7 +131,7 @@ void Example::exampleFunction1(){
           loop.quit();
       });
 
-      QList<OAIAdsAnalyticsTargetingType> targeting_types = create(); // QList<OAIAdsAnalyticsTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+      QList<OAIAdsAnalyticsTargetingType> targeting_types = create(); // QList<OAIAdsAnalyticsTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 
       QEventLoop loop;
       connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
@@ -305,6 +305,32 @@ Authentication schemes defined for the API:
 
 
 - **Type**: HTTP basic authentication
+
+### client_credentials
+
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: 
+  - ads:read: See all of your advertising data, including ads, ad groups, campaigns etc.
+  - ads:write: Create, update, or delete ads, ad groups, campaigns etc.
+  - billing:read: See all of your billing data, billing profile, etc.
+  - billing:write: Create, update, or delete billing data, billing profiles, etc.
+  - biz_access:read: See business access data
+  - biz_access:write: Create, update, or delete business access data
+  - boards:read: See your public boards, including group boards you join
+  - boards:read_secret: See your secret boards
+  - boards:write: Create, update, or delete your public boards
+  - boards:write_secret: Create, update, or delete your secret boards
+  - catalogs:read: See all of your catalogs data
+  - catalogs:write: Create, update, or delete your catalogs data
+  - pins:read: See your public Pins
+  - pins:read_secret: See your secret Pins
+  - pins:write: Create, update, or delete your public Pins
+  - pins:write_secret: Create, update, or delete your secret Pins
+  - user_accounts:read: See your user accounts and followers
+  - user_accounts:write: Update your user accounts and followers
 
 
 ## Author

@@ -31,7 +31,7 @@ data class ImageDetails(
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("url", required = true) val url: kotlin.String
-) {
+    ) {
 
 }
 

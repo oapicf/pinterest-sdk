@@ -1,598 +1,370 @@
-%% basic handler
 -module(openapi_boards_handler).
+-moduledoc """
+Exposes the following operation IDs:
+
+- `POST` to `/boards/:board_id/sections`, OperationId: `board_sections/create`:
+Create board section.
+Create a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `DELETE` to `/boards/:board_id/sections/:section_id`, OperationId: `board_sections/delete`:
+Delete board section.
+Delete a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `GET` to `/boards/:board_id/sections`, OperationId: `board_sections/list`:
+List board sections.
+Get a list of all board sections from a board owned by the \&quot;operation user_account\&quot; - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `GET` to `/boards/:board_id/sections/:section_id/pins`, OperationId: `board_sections/list_pins`:
+List Pins on board section.
+Get a list of the Pins on a board section of a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `PATCH` to `/boards/:board_id/sections/:section_id`, OperationId: `board_sections/update`:
+Update board section.
+Update a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `POST` to `/boards`, OperationId: `boards/create`:
+Create board.
+Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `DELETE` to `/boards/:board_id`, OperationId: `boards/delete`:
+Delete board.
+Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `GET` to `/boards/:board_id`, OperationId: `boards/get`:
+Get board.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `GET` to `/boards`, OperationId: `boards/list`:
+List boards.
+Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+
+- `GET` to `/boards/:board_id/pins`, OperationId: `boards/list_pins`:
+List Pins on board.
+Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+- `PATCH` to `/boards/:board_id`, OperationId: `boards/update`:
+Update board.
+Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+""".
+
+-behaviour(cowboy_rest).
+
+-include_lib("kernel/include/logger.hrl").
 
 %% Cowboy REST callbacks
--export([allowed_methods/2]).
 -export([init/2]).
--export([allow_missing_post/2]).
+-export([allowed_methods/2]).
 -export([content_types_accepted/2]).
 -export([content_types_provided/2]).
 -export([delete_resource/2]).
 -export([is_authorized/2]).
--export([known_content_type/2]).
--export([malformed_request/2]).
 -export([valid_content_headers/2]).
--export([valid_entity_length/2]).
+-export([handle_type_accepted/2, handle_type_provided/2]).
 
-%% Handlers
--export([handle_request_json/2]).
+-ignore_xref([handle_type_accepted/2, handle_type_provided/2]).
 
--record(state, {
-    operation_id :: openapi_api:operation_id(),
-    logic_handler :: atom(),
-    validator_state :: jesse_state:state(),
-    context=#{} :: #{}
-}).
+-export_type([class/0, operation_id/0]).
 
--type state() :: state().
+-type class() :: 'boards'.
 
--spec init(Req :: cowboy_req:req(), Opts :: openapi_router:init_opts()) ->
-    {cowboy_rest, Req :: cowboy_req:req(), State :: state()}.
+-type operation_id() ::
+    'board_sections/create' %% Create board section
+    | 'board_sections/delete' %% Delete board section
+    | 'board_sections/list' %% List board sections
+    | 'board_sections/list_pins' %% List Pins on board section
+    | 'board_sections/update' %% Update board section
+    | 'boards/create' %% Create board
+    | 'boards/delete' %% Delete board
+    | 'boards/get' %% Get board
+    | 'boards/list' %% List boards
+    | 'boards/list_pins' %% List Pins on board
+    | 'boards/update'. %% Update board
 
-init(Req, {Operations, LogicHandler, ValidatorMod}) ->
+
+-record(state,
+        {operation_id :: operation_id(),
+         accept_callback :: openapi_logic_handler:accept_callback(),
+         provide_callback :: openapi_logic_handler:provide_callback(),
+         api_key_handler :: openapi_logic_handler:api_key_callback(),
+         context = #{} :: openapi_logic_handler:context()}).
+
+-type state() :: #state{}.
+
+-spec init(cowboy_req:req(), openapi_router:init_opts()) ->
+    {cowboy_rest, cowboy_req:req(), state()}.
+init(Req, {Operations, Module}) ->
     Method = cowboy_req:method(Req),
     OperationID = maps:get(Method, Operations, undefined),
-
-    ValidatorState = ValidatorMod:get_validator_state(),
-
-    error_logger:info_msg("Attempt to process operation: ~p", [OperationID]),
-
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    },
+    ?LOG_INFO(#{what => "Attempt to process operation",
+                method => Method,
+                operation_id => OperationID}),
+    State = #state{operation_id = OperationID,
+                   accept_callback = fun Module:accept_callback/4,
+                   provide_callback = fun Module:provide_callback/4,
+                   api_key_handler = fun Module:authorize_api_key/2},
     {cowboy_rest, Req, State}.
 
--spec allowed_methods(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: [binary()], Req :: cowboy_req:req(), State :: state()}.
-
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardSectionsCreate'
-    }
-) ->
+-spec allowed_methods(cowboy_req:req(), state()) ->
+    {[binary()], cowboy_req:req(), state()}.
+allowed_methods(Req, #state{operation_id = 'board_sections/create'} = State) ->
     {[<<"POST">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardSectionsDelete'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'board_sections/delete'} = State) ->
     {[<<"DELETE">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardSectionsList'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'board_sections/list'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardSectionsListPins'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'board_sections/list_pins'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardSectionsUpdate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'board_sections/update'} = State) ->
     {[<<"PATCH">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardsCreate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'boards/create'} = State) ->
     {[<<"POST">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardsDelete'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'boards/delete'} = State) ->
     {[<<"DELETE">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardsGet'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'boards/get'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardsList'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'boards/list'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardsListPins'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'boards/list_pins'} = State) ->
     {[<<"GET">>], Req, State};
-
-allowed_methods(
-    Req,
-    State = #state{
-        operation_id = 'BoardsUpdate'
-    }
-) ->
+allowed_methods(Req, #state{operation_id = 'boards/update'} = State) ->
     {[<<"PATCH">>], Req, State};
-
 allowed_methods(Req, State) ->
     {[], Req, State}.
 
--spec is_authorized(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: true | {false, AuthHeader :: iodata()},
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsCreate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+-spec is_authorized(cowboy_req:req(), state()) ->
+    {true | {false, iodata()}, cowboy_req:req(), state()}.
+is_authorized(Req0,
+              #state{operation_id = 'board_sections/create' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsDelete' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'board_sections/delete' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsList' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'board_sections/list' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsListPins' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'board_sections/list_pins' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsUpdate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'board_sections/update' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsCreate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'boards/create' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsDelete' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'boards/delete' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsGet' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'boards/get' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsList' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'boards/list' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsListPins' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'boards/list_pins' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
-is_authorized(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsUpdate' = OperationID,
-        logic_handler = LogicHandler
-    }
-) ->
-    From = header,
-    Result = openapi_auth:authorize_api_key(
-        LogicHandler,
-        OperationID,
-        From,
-        "Authorization",
-        Req0
-    ),
-    case Result of
-        {true, Context, Req} ->  {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->  {{false, AuthHeader}, Req, State}
+is_authorized(Req0,
+              #state{operation_id = 'boards/update' = OperationID,
+                     api_key_handler = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, "authorization", Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
     end;
 is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
-is_authorized(Req, State) ->
-    {{false, <<"">>}, Req, State}.
+    {true, Req, State}.
 
--spec content_types_accepted(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), AcceptResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_accepted(Req, State) ->
+-spec content_types_accepted(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_accepted(Req, #state{operation_id = 'board_sections/create'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'board_sections/delete'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'board_sections/list'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'board_sections/list_pins'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'board_sections/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'boards/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'boards/delete'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'boards/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'boards/list'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'boards/list_pins'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'boards/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, State) ->
+    {[], Req, State}.
 
--spec valid_content_headers(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: boolean(), Req :: cowboy_req:req(), State :: state()}.
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsCreate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsDelete'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsList'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsListPins'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardSectionsUpdate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsCreate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsDelete'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsGet'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsList'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsListPins'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
-valid_content_headers(
-    Req0,
-    State = #state{
-        operation_id = 'BoardsUpdate'
-    }
-) ->
-    Headers = [],
-    {Result, Req} = validate_headers(Headers, Req0),
-    {Result, Req, State};
-
+-spec valid_content_headers(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
+valid_content_headers(Req, #state{operation_id = 'board_sections/create'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'board_sections/delete'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'board_sections/list'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'board_sections/list_pins'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'board_sections/update'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'boards/create'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'boards/delete'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'boards/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'boards/list'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'boards/list_pins'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'boards/update'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, State) ->
     {false, Req, State}.
 
--spec content_types_provided(Req :: cowboy_req:req(), State :: state()) ->
-    {
-        Value :: [{binary(), ProvideResource :: atom()}],
-        Req :: cowboy_req:req(),
-        State :: state()
-    }.
-
-content_types_provided(Req, State) ->
+-spec content_types_provided(cowboy_req:req(), state()) ->
+    {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_provided(Req, #state{operation_id = 'board_sections/create'} = State) ->
     {[
-        {<<"application/json">>, handle_request_json}
-    ], Req, State}.
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'board_sections/delete'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'board_sections/list'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'board_sections/list_pins'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'board_sections/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'boards/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'boards/delete'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'boards/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'boards/list'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'boards/list_pins'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'boards/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, State) ->
+    {[], Req, State}.
 
--spec malformed_request(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-malformed_request(Req, State) ->
-    {false, Req, State}.
-
--spec allow_missing_post(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: false, Req :: cowboy_req:req(), State :: state()}.
-
-allow_missing_post(Req, State) ->
-    {false, Req, State}.
-
--spec delete_resource(Req :: cowboy_req:req(), State :: state()) ->
-    processed_response().
-
+-spec delete_resource(cowboy_req:req(), state()) ->
+    {boolean(), cowboy_req:req(), state()}.
 delete_resource(Req, State) ->
-    handle_request_json(Req, State).
+    {Res, Req1, State1} = handle_type_accepted(Req, State),
+    {true =:= Res, Req1, State1}.
 
--spec known_content_type(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
+-spec handle_type_accepted(cowboy_req:req(), state()) ->
+    { openapi_logic_handler:accept_callback_return(), cowboy_req:req(), state()}.
+handle_type_accepted(Req, #state{operation_id = OperationID,
+                                 accept_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(boards, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.
 
-known_content_type(Req, State) ->
-    {true, Req, State}.
-
--spec valid_entity_length(Req :: cowboy_req:req(), State :: state()) ->
-    {Value :: true, Req :: cowboy_req:req(), State :: state()}.
-
-valid_entity_length(Req, State) ->
-    %% @TODO check the length
-    {true, Req, State}.
-
-%%%%
--type result_ok() :: {
-    ok,
-    {Status :: cowboy:http_status(), Headers :: cowboy:http_headers(), Body :: iodata()}
-}.
-
--type result_error() :: {error, Reason :: any()}.
-
--type processed_response() :: {stop, cowboy_req:req(), state()}.
-
--spec process_response(result_ok() | result_error(), cowboy_req:req(), state()) ->
-    processed_response().
-
-process_response(Response, Req0, State = #state{operation_id = OperationID}) ->
-    case Response of
-        {ok, {Code, Headers, Body}} ->
-            Req = cowboy_req:reply(Code, Headers, Body, Req0),
-            {stop, Req, State};
-        {error, Message} ->
-            error_logger:error_msg("Unable to process request for ~p: ~p", [OperationID, Message]),
-
-            Req = cowboy_req:reply(400, Req0),
-            {stop, Req, State}
-    end.
-
--spec handle_request_json(cowboy_req:req(), state()) -> processed_response().
-
-handle_request_json(
-    Req0,
-    State = #state{
-        operation_id = OperationID,
-        logic_handler = LogicHandler,
-        validator_state = ValidatorState
-    }
-) ->
-    case openapi_api:populate_request(OperationID, Req0, ValidatorState) of
-        {ok, Populated, Req1} ->
-            {Code, Headers, Body} = openapi_logic_handler:handle_request(
-                LogicHandler,
-                OperationID,
-                Req1,
-                maps:merge(State#state.context, Populated)
-            ),
-            _ = openapi_api:validate_response(
-                OperationID,
-                Code,
-                Body,
-                ValidatorState
-            ),
-            PreparedBody = prepare_body(Code, Body),
-            Response = {ok, {Code, Headers, PreparedBody}},
-            process_response(Response, Req1, State);
-        {error, Reason, Req1} ->
-            process_response({error, Reason}, Req1, State)
-    end.
-
-validate_headers(_, Req) -> {true, Req}.
-
-prepare_body(204, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(304, Body) when map_size(Body) == 0; length(Body) == 0 ->
-    <<>>;
-prepare_body(_Code, Body) ->
-    jsx:encode(Body).
+-spec handle_type_provided(cowboy_req:req(), state()) ->
+    {cowboy_req:resp_body(), cowboy_req:req(), state()}.
+handle_type_provided(Req, #state{operation_id = OperationID,
+                                 provide_callback = Handler,
+                                 context = Context} = State) ->
+    {Res, Req1, Context1} = Handler(boards, OperationID, Req, Context),
+    {Res, Req1, State#state{context = Context1}}.

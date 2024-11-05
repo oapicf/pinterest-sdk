@@ -29,7 +29,7 @@ import java.util.List;
  */
 @ApiModel(description = "Pin media source.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaSourceImageBase64.class, name = "image_base64"),
@@ -174,10 +174,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Get sourceType
    * @return sourceType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -192,10 +192,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Get contentType
    * @return contentType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public ContentTypeEnum getContentType() {
     return contentType;
@@ -210,10 +210,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Get data
    * @return data
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getData() {
     return data;
@@ -228,10 +228,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
    * @return isStandard
-  **/
+   */
   @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
   public Boolean getIsStandard() {
     return isStandard;
@@ -246,10 +246,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Get url
    * @return url
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getUrl() {
     return url;
@@ -264,10 +264,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Cover image url.
    * @return coverImageUrl
-  **/
+   */
   @ApiModelProperty(value = "Cover image url.")
   public String getCoverImageUrl() {
     return coverImageUrl;
@@ -282,10 +282,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Content type for cover image Base64.
    * @return coverImageContentType
-  **/
+   */
   @ApiModelProperty(value = "Content type for cover image Base64.")
   public CoverImageContentTypeEnum getCoverImageContentType() {
     return coverImageContentType;
@@ -300,10 +300,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Cover image Base64.
    * @return coverImageData
-  **/
+   */
   @ApiModelProperty(value = "Cover image Base64.")
   public String getCoverImageData() {
     return coverImageData;
@@ -318,10 +318,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Get mediaId
    * @return mediaId
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getMediaId() {
     return mediaId;
@@ -344,10 +344,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Array with image objects.
    * @return items
-  **/
+   */
   @ApiModelProperty(required = true, value = "Array with image objects.")
   public List<PinMediaSourceImagesURLItemsInner> getItems() {
     return items;
@@ -362,11 +362,11 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * Get index
    * minimum: 0
    * @return index
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getIndex() {
     return index;
@@ -381,10 +381,10 @@ public class PinMediaSource   {
     return this;
   }
 
-   /**
+  /**
    * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
    * @return isAffiliateLink
-  **/
+   */
   @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
   public Boolean getIsAffiliateLink() {
     return isAffiliateLink;

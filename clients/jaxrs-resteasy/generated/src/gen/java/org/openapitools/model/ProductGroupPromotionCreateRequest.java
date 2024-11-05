@@ -9,17 +9,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotionCreateRequest   {
   
   private String adGroupId;
-  private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
 
   /**
    * ID of the Ad Group the Product Group Promotion belongs to.
@@ -42,10 +41,10 @@ public class ProductGroupPromotionCreateRequest   {
   @JsonProperty("product_group_promotion")
   @NotNull
   @Valid
-  public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
+  public List<@Valid ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
     return productGroupPromotion;
   }
-  public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public void setProductGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

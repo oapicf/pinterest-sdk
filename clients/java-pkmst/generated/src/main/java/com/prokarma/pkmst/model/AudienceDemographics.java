@@ -19,7 +19,7 @@ import java.util.List;
  */
 @ApiModel(description = "Audience demographics")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDemographics   {
   @JsonProperty("ages")
   
@@ -54,10 +54,10 @@ public class AudienceDemographics   {
     return this;
   }
 
-   /**
+  /**
    * Ages distribution.
    * @return ages
-  **/
+   */
   @ApiModelProperty(value = "Ages distribution.")
   public List<AudienceDemographicValue> getAges() {
     return ages;
@@ -80,10 +80,10 @@ public class AudienceDemographics   {
     return this;
   }
 
-   /**
+  /**
    * Gender distribution.
    * @return genders
-  **/
+   */
   @ApiModelProperty(value = "Gender distribution.")
   public List<AudienceDemographicValue> getGenders() {
     return genders;
@@ -106,10 +106,10 @@ public class AudienceDemographics   {
     return this;
   }
 
-   /**
+  /**
    * Device usage distribution.
    * @return devices
-  **/
+   */
   @ApiModelProperty(value = "Device usage distribution.")
   public List<AudienceDemographicValue> getDevices() {
     return devices;
@@ -132,10 +132,10 @@ public class AudienceDemographics   {
     return this;
   }
 
-   /**
+  /**
    * Geographic metro area distribution.
    * @return metros
-  **/
+   */
   @ApiModelProperty(value = "Geographic metro area distribution.")
   public List<AudienceDemographicValue> getMetros() {
     return metros;
@@ -158,10 +158,10 @@ public class AudienceDemographics   {
     return this;
   }
 
-   /**
+  /**
    * Country area distribution.
    * @return countries
-  **/
+   */
   @ApiModelProperty(value = "Country area distribution.")
   public List<AudienceDemographicValue> getCountries() {
     return countries;

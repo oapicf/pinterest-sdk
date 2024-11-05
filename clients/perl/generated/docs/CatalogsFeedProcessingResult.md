@@ -8,9 +8,9 @@ use WWW::OpenAPIClient::Object::CatalogsFeedProcessingResult;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **DATE_TIME** |  | [optional] 
-**id** | **string** |  | [optional] 
-**updated_at** | **DATE_TIME** |  | [optional] 
+**created_at** | **DATE_TIME** |  | 
+**id** | **string** |  | 
+**updated_at** | **DATE_TIME** |  | 
 **ingestion_details** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
 **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **product_counts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 

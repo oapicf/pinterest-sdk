@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  * KeywordUpdate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordUpdate {
 
   private String id;
 
   private Boolean archived;
 
-  private JsonNullable<@Min(1) Integer> bid = JsonNullable.<Integer>undefined();
+  private JsonNullable<Integer> bid = JsonNullable.<Integer>undefined();
 
   public KeywordUpdate() {
     super();
@@ -49,7 +49,7 @@ public class KeywordUpdate {
   /**
    * Keyword ID.
    * @return id
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2886364308355", description = "Keyword ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
@@ -69,7 +69,7 @@ public class KeywordUpdate {
   /**
    * Is keyword archived?
    * @return archived
-  */
+   */
   
   @Schema(name = "archived", example = "false", description = "Is keyword archived?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("archived")
@@ -87,14 +87,13 @@ public class KeywordUpdate {
   }
 
   /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * minimum: 1
+   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    * @return bid
-  */
-  @Min(1) 
-  @Schema(name = "bid", example = "200000", description = "Keyword custom bid in microcurrency - null if inherited from parent ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  
+  @Schema(name = "bid", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bid")
-  public JsonNullable<@Min(1) Integer> getBid() {
+  public JsonNullable<Integer> getBid() {
     return bid;
   }
 

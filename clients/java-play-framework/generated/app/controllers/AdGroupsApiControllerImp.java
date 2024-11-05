@@ -26,7 +26,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupsApiControllerImp extends AdGroupsApiControllerImpInterface {
     @Override
     public List<AdGroupsAnalyticsResponseInner> adGroupsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) throws Exception {
@@ -47,7 +47,7 @@ public class AdGroupsApiControllerImp extends AdGroupsApiControllerImpInterface 
     }
 
     @Override
-    public AdGroupArrayResponse adGroupsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdGroupCreateRequest> adGroupCreateRequest) throws Exception {
+    public AdGroupArrayResponse adGroupsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdGroupCreateRequest> adGroupCreateRequest) throws Exception {
         //Do your magic!!!
         return new AdGroupArrayResponse();
     }
@@ -71,7 +71,7 @@ public class AdGroupsApiControllerImp extends AdGroupsApiControllerImpInterface 
     }
 
     @Override
-    public AdGroupArrayResponse adGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<AdGroupUpdateRequest> adGroupUpdateRequest) throws Exception {
+    public AdGroupArrayResponse adGroupsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest) throws Exception {
         //Do your magic!!!
         return new AdGroupArrayResponse();
     }

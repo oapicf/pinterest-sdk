@@ -10,5 +10,5 @@ import org.openapitools.model.AudienceDefinition;
 @Canonical
 class AudienceDefinitionResponse {
     
-    List<AudienceDefinition> items
+    List<AudienceDefinition> items = new ArrayList<>()
 }

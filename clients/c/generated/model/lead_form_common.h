@@ -15,6 +15,7 @@
 
 typedef struct lead_form_common_t lead_form_common_t;
 
+#include "lead_form_common_policy_links_inner.h"
 #include "lead_form_question.h"
 #include "lead_form_status.h"
 
@@ -36,6 +37,7 @@ typedef struct lead_form_common_t {
     lead_form_status_t *status; // custom
     char *disclosure_language; // string
     list_t *questions; //nonprimitive container
+    list_t *policy_links; //nonprimitive container
 
 } lead_form_common_t;
 
@@ -46,7 +48,8 @@ lead_form_common_t *lead_form_common_create(
     char *completion_message,
     lead_form_status_t *status,
     char *disclosure_language,
-    list_t *questions
+    list_t *questions,
+    list_t *policy_links
 );
 
 void lead_form_common_free(lead_form_common_t *lead_form_common);

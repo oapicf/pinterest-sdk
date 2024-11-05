@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,7 @@ type BulkDownloadRequest struct {
 	// All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
 	EntityIds []string `json:"entity_ids,omitempty"`
 	// Unix UTC timestamp to retrieve all entities that have changed since this time.
-	UpdatedSince *string `json:"updated_since,omitempty"`
+	UpdatedSince *string `json:"updated_since,omitempty" validate:"regexp=^\\\\d+$"`
 	CampaignFilter *BulkDownloadRequestCampaignFilter `json:"campaign_filter,omitempty"`
 	OutputFormat *BulkOutputFormat `json:"output_format,omitempty"`
 }

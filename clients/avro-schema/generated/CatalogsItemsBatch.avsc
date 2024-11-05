@@ -18,13 +18,13 @@
     {
       "name": "created_time",
       "type": ["null", "string"],
-      "doc": "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD",
+      "doc": "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss",
       "default": null
     },
     {
       "name": "completed_time",
       "type": ["null", "string"],
-      "doc": "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD",
+      "doc": "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss",
       "default": null
     },
     {
@@ -37,7 +37,7 @@
       "name": "items",
       "type": ["null", {
         "type": "array",
-        "items": "model.HotelProcessingRecord"
+        "items": "model.CreativeAssetsProcessingRecord"
       }],
       "doc": "Array with the catalogs items processing records part of the catalogs items batch",
       "default": null

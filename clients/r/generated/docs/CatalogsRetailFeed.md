@@ -5,9 +5,9 @@ Catalogs Retail Feed object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **character** |  | [optional] 
-**id** | **character** |  | [optional] 
-**updated_at** | **character** |  | [optional] 
+**created_at** | **character** |  | 
+**id** | **character** |  | 
+**updated_at** | **character** |  | 
 **name** | **character** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [Enum: ] 
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [Enum: ] 

@@ -42,5 +42,8 @@ data class AdAccountCreateRequest (
     @Json(name = "owner_user_id")
     val ownerUserId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

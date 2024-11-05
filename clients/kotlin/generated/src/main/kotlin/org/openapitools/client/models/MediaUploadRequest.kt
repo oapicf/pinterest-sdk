@@ -32,5 +32,8 @@ data class MediaUploadRequest (
     @Json(name = "media_type")
     val mediaType: MediaUploadType
 
-)
+) {
+
+
+}
 

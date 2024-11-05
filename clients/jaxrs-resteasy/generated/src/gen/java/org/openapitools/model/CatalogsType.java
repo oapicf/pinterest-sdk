@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum CatalogsType {
-    RETAIL, HOTEL
+    RETAIL, HOTEL, CREATIVE_ASSETS
 }

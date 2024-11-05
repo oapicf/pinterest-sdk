@@ -15,31 +15,22 @@ case class CatalogsRetailBatchRequestItemsInner (
   /* The catalog item id in the merchant namespace */
   itemId: String,
 operation: Operation,
-attributes: ItemAttributes,
+attributes: ItemAttributesRequest,
 /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
   updateMask: Option[List[UpdateMaskFieldType]])
 
 object CatalogsRetailBatchRequestItemsInner {
   import DateTimeCodecs._
   sealed trait Operation
-  case object CREATE extends Operation
-  case object UPDATE extends Operation
-  case object UPSERT extends Operation
   case object DELETE extends Operation
 
   object Operation {
     def toOperation(s: String): Option[Operation] = s match {
-      case "CREATE" => Some(CREATE)
-      case "UPDATE" => Some(UPDATE)
-      case "UPSERT" => Some(UPSERT)
       case "DELETE" => Some(DELETE)
       case _ => None
     }
 
     def fromOperation(x: Operation): String = x match {
-      case CREATE => "CREATE"
-      case UPDATE => "UPDATE"
-      case UPSERT => "UPSERT"
       case DELETE => "DELETE"
     }
   }

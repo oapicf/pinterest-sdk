@@ -3,7 +3,7 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.ItemAttributes;
+import com.prokarma.pkmst.model.ItemAttributesRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -16,23 +16,23 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Object describing an item batch record to upsert items")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemUpsertBatchRecord   {
   @JsonProperty("item_id")
   private String itemId;
 
   @JsonProperty("attributes")
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   public ItemUpsertBatchRecord itemId(String itemId) {
     this.itemId = itemId;
     return this;
   }
 
-   /**
+  /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  **/
+   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
   public String getItemId() {
     return itemId;
@@ -42,21 +42,21 @@ public class ItemUpsertBatchRecord   {
     this.itemId = itemId;
   }
 
-  public ItemUpsertBatchRecord attributes(ItemAttributes attributes) {
+  public ItemUpsertBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Get attributes
    * @return attributes
-  **/
+   */
   @ApiModelProperty(value = "")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

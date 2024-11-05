@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,7 +25,7 @@ type KeywordsRequest struct {
 	// Keyword JSON array. Each array element has 3 fields
 	Keywords []KeywordsCommon `json:"keywords"`
 	// Keyword parent entity ID (advertiser, campaign, ad group).
-	ParentId string `json:"parent_id"`
+	ParentId string `json:"parent_id" validate:"regexp=^((AG)|C)?\\\\d+$"`
 }
 
 type _KeywordsRequest KeywordsRequest

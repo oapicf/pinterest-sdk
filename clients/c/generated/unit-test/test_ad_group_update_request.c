@@ -16,9 +16,9 @@
 #include "../model/ad_group_update_request.h"
 ad_group_update_request_t* instantiate_ad_group_update_request(int include_optional);
 
-#include "test_ad_group_common_optimization_goal_metadata.c"
+#include "test_optimization_goal_metadata.c"
 #include "test_targeting_spec.c"
-#include "test_ad_group_common_tracking_urls.c"
+#include "test_tracking_urls.c"
 
 
 ad_group_update_request_t* instantiate_ad_group_update_request(int include_optional) {
@@ -30,21 +30,21 @@ ad_group_update_request_t* instantiate_ad_group_update_request(int include_optio
       5000000,
       5000000,
        // false, not to have infinite recursion
-      instantiate_ad_group_common_optimization_goal_metadata(0),
+      instantiate_optimization_goal_metadata(0),
       "DAILY",
       5686848000,
       5705424000,
        // false, not to have infinite recursion
       instantiate_targeting_spec(0),
       100,
-       // false, not to have infinite recursion
-      instantiate_ad_group_common_tracking_urls(0),
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       true,
       "ALL",
       "STANDARD",
       "626736533506",
       pinterest_rest_api_ad_group_update_request__"CLICKTHROUGH",
       pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_"MAX_BID",
+      list_createList(),
       "2680060704746"
     );
   } else {
@@ -59,13 +59,14 @@ ad_group_update_request_t* instantiate_ad_group_update_request(int include_optio
       5705424000,
       NULL,
       100,
-      NULL,
+      {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]},
       true,
       "ALL",
       "STANDARD",
       "626736533506",
       pinterest_rest_api_ad_group_update_request__"CLICKTHROUGH",
       pinterest_rest_api_ad_group_update_request_BIDSTRATEGYTYPE_"MAX_BID",
+      list_createList(),
       "2680060704746"
     );
   }

@@ -3,7 +3,6 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import javax.validation.constraints.*;
@@ -19,26 +18,25 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ProductGroupPromotion")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductGroupPromotion   {
-  private @Valid String id;
-  private @Valid String adGroupId;
-  private @Valid Integer bidInMicroCurrency;
-  private @Valid Boolean included;
-  private @Valid String definition;
-  private @Valid String relativeDefinition;
-  private @Valid String parentId;
-  private @Valid String slideshowCollectionsTitle;
-  private @Valid String slideshowCollectionsDescription;
-  private @Valid Boolean isMdl;
-  private @Valid EntityStatus status;
-  private @Valid String trackingUrl;
-  private @Valid String catalogProductGroupId;
-  private @Valid String catalogProductGroupName;
-  private @Valid CreativeType creativeType;
-  private @Valid String collectionsHeroPinId;
-  private @Valid String collectionsHeroDestinationUrl;
-  private @Valid GridClickType gridClickType;
+  private String id;
+  private String adGroupId;
+  private Integer bidInMicroCurrency;
+  private Boolean included;
+  private String definition;
+  private String relativeDefinition;
+  private String parentId;
+  private String slideshowCollectionsTitle;
+  private String slideshowCollectionsDescription;
+  private Boolean isMdl;
+  private EntityStatus status;
+  private String trackingUrl;
+  private String catalogProductGroupId;
+  private String catalogProductGroupName;
+  private String collectionsHeroPinId;
+  private String collectionsHeroDestinationUrl;
+  private GridClickType gridClickType;
 
   /**
    * ID of the product group promotion.
@@ -51,7 +49,7 @@ public class ProductGroupPromotion   {
   
   @ApiModelProperty(example = "2680059592705", value = "ID of the product group promotion.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -71,7 +69,7 @@ public class ProductGroupPromotion   {
   
   @ApiModelProperty(example = "2680059592705", value = "ID of the ad group the product group belongs to.")
   @JsonProperty("ad_group_id")
- @Pattern(regexp="^(AG)?\\d+$")  public String getAdGroupId() {
+   @Pattern(regexp="^(AG)?\\d+$")public String getAdGroupId() {
     return adGroupId;
   }
 
@@ -171,7 +169,7 @@ public class ProductGroupPromotion   {
   
   @ApiModelProperty(example = "1231234", value = "The parent Product Group ID of this Product Group")
   @JsonProperty("parent_id")
- @Pattern(regexp="^\\d+$")  public String getParentId() {
+   @Pattern(regexp="^\\d+$")public String getParentId() {
     return parentId;
   }
 
@@ -290,7 +288,7 @@ public class ProductGroupPromotion   {
   
   @ApiModelProperty(example = "1231235", value = "ID of the catalogs product group that this product group promotion references")
   @JsonProperty("catalog_product_group_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogProductGroupId() {
+   @Pattern(regexp="^\\d+$")public String getCatalogProductGroupId() {
     return catalogProductGroupId;
   }
 
@@ -320,25 +318,6 @@ public class ProductGroupPromotion   {
   }
 
   /**
-   **/
-  public ProductGroupPromotion creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-
-  @JsonProperty("creative_type")
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
-  /**
    * Hero Pin ID if this PG is promoted as a Collection
    **/
   public ProductGroupPromotion collectionsHeroPinId(String collectionsHeroPinId) {
@@ -349,7 +328,7 @@ public class ProductGroupPromotion   {
   
   @ApiModelProperty(example = "123123", value = "Hero Pin ID if this PG is promoted as a Collection")
   @JsonProperty("collections_hero_pin_id")
- @Pattern(regexp="^\\d+$")  public String getCollectionsHeroPinId() {
+   @Pattern(regexp="^\\d+$")public String getCollectionsHeroPinId() {
     return collectionsHeroPinId;
   }
 
@@ -421,7 +400,6 @@ public class ProductGroupPromotion   {
         Objects.equals(this.trackingUrl, productGroupPromotion.trackingUrl) &&
         Objects.equals(this.catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
         Objects.equals(this.catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
-        Objects.equals(this.creativeType, productGroupPromotion.creativeType) &&
         Objects.equals(this.collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         Objects.equals(this.collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         Objects.equals(this.gridClickType, productGroupPromotion.gridClickType);
@@ -429,7 +407,7 @@ public class ProductGroupPromotion   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, creativeType, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
+    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
   }
 
   @Override
@@ -451,7 +429,6 @@ public class ProductGroupPromotion   {
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
     sb.append("    catalogProductGroupName: ").append(toIndentedString(catalogProductGroupName)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    collectionsHeroPinId: ").append(toIndentedString(collectionsHeroPinId)).append("\n");
     sb.append("    collectionsHeroDestinationUrl: ").append(toIndentedString(collectionsHeroDestinationUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");

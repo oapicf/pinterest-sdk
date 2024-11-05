@@ -1,10 +1,11 @@
 package apimodels;
 
 import apimodels.BatchOperationStatus;
+import apimodels.CatalogsCreativeAssetsItemsBatch;
 import apimodels.CatalogsHotelItemsBatch;
 import apimodels.CatalogsRetailItemsBatch;
 import apimodels.CatalogsType;
-import apimodels.HotelProcessingRecord;
+import apimodels.CreativeAssetsProcessingRecord;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -22,7 +23,7 @@ import javax.validation.Valid;
 /**
  * Object describing the catalogs items batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsBatch   {
   @JsonProperty("catalog_type")
@@ -53,7 +54,7 @@ public class CatalogsItemsBatch   {
   @JsonProperty("items")
   @Valid
 
-  private List<@Valid HotelProcessingRecord> items = null;
+  private List<@Valid CreativeAssetsProcessingRecord> items = null;
 
   public CatalogsItemsBatch catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -95,7 +96,7 @@ public class CatalogsItemsBatch   {
   }
 
    /**
-   * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
    * @return createdTime
   **/
   public OffsetDateTime getCreatedTime() {
@@ -112,7 +113,7 @@ public class CatalogsItemsBatch   {
   }
 
    /**
-   * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
    * @return completedTime
   **/
   public OffsetDateTime getCompletedTime() {
@@ -140,12 +141,12 @@ public class CatalogsItemsBatch   {
     this.status = status;
   }
 
-  public CatalogsItemsBatch items(List<@Valid HotelProcessingRecord> items) {
+  public CatalogsItemsBatch items(List<@Valid CreativeAssetsProcessingRecord> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsItemsBatch addItemsItem(HotelProcessingRecord itemsItem) {
+  public CatalogsItemsBatch addItemsItem(CreativeAssetsProcessingRecord itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -157,11 +158,11 @@ public class CatalogsItemsBatch   {
    * Array with the catalogs items processing records part of the catalogs items batch
    * @return items
   **/
-  public List<@Valid HotelProcessingRecord> getItems() {
+  public List<@Valid CreativeAssetsProcessingRecord> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid HotelProcessingRecord> items) {
+  public void setItems(List<@Valid CreativeAssetsProcessingRecord> items) {
     this.items = items;
   }
 

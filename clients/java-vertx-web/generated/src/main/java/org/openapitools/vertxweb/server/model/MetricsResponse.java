@@ -10,7 +10,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MetricsResponse   {
   
-  private List<Object> data;
+  private List<Object> data = new ArrayList<>();
 
   public MetricsResponse () {
 

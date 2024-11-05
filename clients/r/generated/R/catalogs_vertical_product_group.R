@@ -16,17 +16,18 @@ CatalogsVerticalProductGroup <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("CatalogsHotelProductGroup", "CatalogsRetailProductGroup"),
-    #' Initialize a new CatalogsVerticalProductGroup.
-    #'
+    one_of = list("CatalogsCreativeAssetsProductGroup", "CatalogsHotelProductGroup", "CatalogsRetailProductGroup"),
+
     #' @description
     #' Initialize a new CatalogsVerticalProductGroup.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsHotelProductGroup", "CatalogsRetailProductGroup"
-    #' @export
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsCreativeAssetsProductGroup", "CatalogsHotelProductGroup", "CatalogsRetailProductGroup"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsCreativeAssetsProductGroup") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsCreativeAssetsProductGroup"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsHotelProductGroup") {
         self$actual_instance <- instance
         self$actual_type <- "CatalogsHotelProductGroup"
@@ -34,50 +35,33 @@ CatalogsVerticalProductGroup <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "CatalogsRetailProductGroup"
       } else {
-        stop(paste("Failed to initialize CatalogsVerticalProductGroup with oneOf schemas CatalogsHotelProductGroup, CatalogsRetailProductGroup. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsVerticalProductGroup with oneOf schemas CatalogsCreativeAssetsProductGroup, CatalogsHotelProductGroup, CatalogsRetailProductGroup. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsVerticalProductGroup.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsVerticalProductGroup.
     #' An alias to the method `fromJSON` .
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsVerticalProductGroup.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsVerticalProductGroup.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsVerticalProductGroup.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsVerticalProductGroup.
-    #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
       matched_schemas <- list() #names of matched schemas
       error_messages <- list()
       instance <- NULL
-
-      `CatalogsHotelProductGroup_result` <- tryCatch({
-          `CatalogsHotelProductGroup`$public_methods$validateJSON(input)
-          `CatalogsHotelProductGroup_instance` <- `CatalogsHotelProductGroup`$new()
-          instance <- `CatalogsHotelProductGroup_instance`$fromJSON(input)
-          instance_type <- "CatalogsHotelProductGroup"
-          matched_schemas <- append(matched_schemas, "CatalogsHotelProductGroup")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`CatalogsHotelProductGroup_result`["error"])) {
-        error_messages <- append(error_messages, `CatalogsHotelProductGroup_result`["message"])
-      }
 
       `CatalogsRetailProductGroup_result` <- tryCatch({
           `CatalogsRetailProductGroup`$public_methods$validateJSON(input)
@@ -94,29 +78,57 @@ CatalogsVerticalProductGroup <- R6::R6Class(
         error_messages <- append(error_messages, `CatalogsRetailProductGroup_result`["message"])
       }
 
+      `CatalogsHotelProductGroup_result` <- tryCatch({
+          `CatalogsHotelProductGroup`$public_methods$validateJSON(input)
+          `CatalogsHotelProductGroup_instance` <- `CatalogsHotelProductGroup`$new()
+          instance <- `CatalogsHotelProductGroup_instance`$fromJSON(input)
+          instance_type <- "CatalogsHotelProductGroup"
+          matched_schemas <- append(matched_schemas, "CatalogsHotelProductGroup")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsHotelProductGroup_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsHotelProductGroup_result`["message"])
+      }
+
+      `CatalogsCreativeAssetsProductGroup_result` <- tryCatch({
+          `CatalogsCreativeAssetsProductGroup`$public_methods$validateJSON(input)
+          `CatalogsCreativeAssetsProductGroup_instance` <- `CatalogsCreativeAssetsProductGroup`$new()
+          instance <- `CatalogsCreativeAssetsProductGroup_instance`$fromJSON(input)
+          instance_type <- "CatalogsCreativeAssetsProductGroup"
+          matched_schemas <- append(matched_schemas, "CatalogsCreativeAssetsProductGroup")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsCreativeAssetsProductGroup_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsCreativeAssetsProductGroup_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into CatalogsVerticalProductGroup with oneOf schemas CatalogsHotelProductGroup, CatalogsRetailProductGroup. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into CatalogsVerticalProductGroup with oneOf schemas CatalogsCreativeAssetsProductGroup, CatalogsHotelProductGroup, CatalogsRetailProductGroup. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into CatalogsVerticalProductGroup with oneOf schemas CatalogsHotelProductGroup, CatalogsRetailProductGroup. Details: >>",
+        stop(paste("No match found when deserializing the input into CatalogsVerticalProductGroup with oneOf schemas CatalogsCreativeAssetsProductGroup, CatalogsHotelProductGroup, CatalogsRetailProductGroup. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 
       self
     },
-    #' Serialize CatalogsVerticalProductGroup to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsVerticalProductGroup to JSON string.
     #'
     #' @return JSON string representation of the CatalogsVerticalProductGroup.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify(self$actual_instance$toJSONString()))
@@ -124,13 +136,11 @@ CatalogsVerticalProductGroup <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsVerticalProductGroup to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsVerticalProductGroup to JSON.
     #'
     #' @return JSON representation of the CatalogsVerticalProductGroup.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -138,14 +148,12 @@ CatalogsVerticalProductGroup <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsVerticalProductGroup.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsVerticalProductGroup and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -158,13 +166,11 @@ CatalogsVerticalProductGroup <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -174,12 +180,9 @@ CatalogsVerticalProductGroup <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

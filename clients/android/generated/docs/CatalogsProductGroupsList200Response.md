@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;CatalogsProductGroupsList200ResponseAllOfItemsInner&gt;**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**items** | [**List&lt;CatalogsVerticalProductGroup&gt;**](CatalogsVerticalProductGroup.md) |  | 
 **bookmark** | **String** |  |  [optional]
 
 

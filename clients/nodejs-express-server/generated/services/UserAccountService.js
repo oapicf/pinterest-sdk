@@ -6,7 +6,7 @@ const Service = require('./Service');
 * Get a list of the boards a user follows. The request returns a board summary object array.
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * explicitUnderscorefollowing Boolean Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns boards_user_follows_list_200_response
@@ -30,7 +30,7 @@ const boards_user_follows/list = ({ bookmark, pageUnderscoresize, explicitUnders
 );
 /**
 * Follow user
-* <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+* <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 *
 * username String A valid username
 * followUserRequest FollowUserRequest Follow a user.
@@ -56,7 +56,7 @@ const follow_user/update = ({ username, followUserRequest }) => new Promise(
 * Get a list of your followers.
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * returns followers_list_200_response
 * */
 const followers/list = ({ bookmark, pageUnderscoresize }) => new Promise(
@@ -245,7 +245,7 @@ const user_account/analytics/top_video_pins = ({ startUnderscoredate, endUndersc
 *
 * username String A valid username
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * returns user_account_followed_interests_200_response
 * */
 const user_account/followed_interests = ({ username, bookmark, pageUnderscoresize }) => new Promise(
@@ -266,7 +266,7 @@ const user_account/followed_interests = ({ username, bookmark, pageUnderscoresiz
 );
 /**
 * Get user account
-* Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+* Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns Account
@@ -290,7 +290,7 @@ const user_account/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
 * Get a list of who a certain user follows.
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * feedUnderscoretype UserFollowingFeedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
 * explicitUnderscorefollowing Boolean Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
@@ -319,7 +319,7 @@ const user_following/get = ({ bookmark, pageUnderscoresize, feedUnderscoretype, 
 * Get user websites, claimed or not
 *
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * returns user_websites_get_200_response
 * */
 const user_websites/get = ({ bookmark, pageUnderscoresize }) => new Promise(
@@ -342,13 +342,15 @@ const user_websites/get = ({ bookmark, pageUnderscoresize }) => new Promise(
 * Verify a website as a signed-in user.
 *
 * userWebsiteVerifyRequest UserWebsiteVerifyRequest Verify a website.
+* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns UserWebsiteSummary
 * */
-const verify_website/update = ({ userWebsiteVerifyRequest }) => new Promise(
+const verify_website/update = ({ userWebsiteVerifyRequest, adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
         userWebsiteVerifyRequest,
+        adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -362,12 +364,14 @@ const verify_website/update = ({ userWebsiteVerifyRequest }) => new Promise(
 * Get user verification code for website claiming
 * Get verification code for user to install on the website to claim it.
 *
+* adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * returns UserWebsiteVerificationCode
 * */
-const website_verification/get = () => new Promise(
+const website_verification/get = ({ adUnderscoreaccountUnderscoreid }) => new Promise(
   async (resolve, reject) => {
     try {
       resolve(Service.successResponse({
+        adUnderscoreaccountUnderscoreid,
       }));
     } catch (e) {
       reject(Service.rejectResponse(

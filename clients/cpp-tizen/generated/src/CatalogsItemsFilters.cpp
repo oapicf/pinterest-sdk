@@ -27,6 +27,7 @@ CatalogsItemsFilters::__init()
 	//new std::list()std::list> item_ids;
 	//catalog_id = std::string();
 	//new std::list()std::list> hotel_ids;
+	//new std::list()std::list> creative_assets_ids;
 }
 
 void
@@ -51,6 +52,11 @@ CatalogsItemsFilters::__cleanup()
 	//hotel_ids.RemoveAll(true);
 	//delete hotel_ids;
 	//hotel_ids = NULL;
+	//}
+	//if(creative_assets_ids != NULL) {
+	//creative_assets_ids.RemoveAll(true);
+	//delete creative_assets_ids;
+	//creative_assets_ids = NULL;
 	//}
 	//
 }
@@ -129,6 +135,28 @@ CatalogsItemsFilters::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *creative_assets_idsKey = "creative_assets_ids";
+	node = json_object_get_member(pJsonObject, creative_assets_idsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			creative_assets_ids = new_list;
+		}
+		
+	}
 }
 
 CatalogsItemsFilters::CatalogsItemsFilters(char* json)
@@ -194,6 +222,21 @@ CatalogsItemsFilters::toJson()
 	
 	const gchar *hotel_idsKey = "hotel_ids";
 	json_object_set_member(pJsonObject, hotel_idsKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getCreativeAssetsIds());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getCreativeAssetsIds());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *creative_assets_idsKey = "creative_assets_ids";
+	json_object_set_member(pJsonObject, creative_assets_idsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -248,6 +291,18 @@ void
 CatalogsItemsFilters::setHotelIds(std::list <std::string> hotel_ids)
 {
 	this->hotel_ids = hotel_ids;
+}
+
+std::list<std::string>
+CatalogsItemsFilters::getCreativeAssetsIds()
+{
+	return creative_assets_ids;
+}
+
+void
+CatalogsItemsFilters::setCreativeAssetsIds(std::list <std::string> creative_assets_ids)
+{
+	this->creative_assets_ids = creative_assets_ids;
 }
 
 

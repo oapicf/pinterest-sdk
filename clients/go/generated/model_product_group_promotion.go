@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &ProductGroupPromotion{}
 // ProductGroupPromotion struct for ProductGroupPromotion
 type ProductGroupPromotion struct {
 	// ID of the product group promotion.
-	Id *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	// ID of the ad group the product group belongs to.
-	AdGroupId *string `json:"ad_group_id,omitempty"`
+	AdGroupId *string `json:"ad_group_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
 	// The bid in micro currency.
 	BidInMicroCurrency NullableInt32 `json:"bid_in_micro_currency,omitempty"`
 	// True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
@@ -33,7 +33,7 @@ type ProductGroupPromotion struct {
 	// The definition of the product group, relative to its parent - an attribute name/value pair
 	RelativeDefinition NullableString `json:"relative_definition,omitempty"`
 	// The parent Product Group ID of this Product Group
-	ParentId NullableString `json:"parent_id,omitempty"`
+	ParentId NullableString `json:"parent_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Slideshow Collections Title
 	SlideshowCollectionsTitle NullableString `json:"slideshow_collections_title,omitempty"`
 	// Slideshow Collections Description
@@ -44,12 +44,11 @@ type ProductGroupPromotion struct {
 	// Tracking template for proudct group promotions. 4000 limit
 	TrackingUrl NullableString `json:"tracking_url,omitempty"`
 	// ID of the catalogs product group that this product group promotion references
-	CatalogProductGroupId NullableString `json:"catalog_product_group_id,omitempty"`
+	CatalogProductGroupId NullableString `json:"catalog_product_group_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Catalogs product group name
 	CatalogProductGroupName NullableString `json:"catalog_product_group_name,omitempty"`
-	CreativeType *CreativeType `json:"creative_type,omitempty"`
 	// Hero Pin ID if this PG is promoted as a Collection
-	CollectionsHeroPinId NullableString `json:"collections_hero_pin_id,omitempty"`
+	CollectionsHeroPinId NullableString `json:"collections_hero_pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Collections Hero Destination Url
 	CollectionsHeroDestinationUrl NullableString `json:"collections_hero_destination_url,omitempty"`
 	GridClickType NullableGridClickType `json:"grid_click_type,omitempty"`
@@ -630,38 +629,6 @@ func (o *ProductGroupPromotion) UnsetCatalogProductGroupName() {
 	o.CatalogProductGroupName.Unset()
 }
 
-// GetCreativeType returns the CreativeType field value if set, zero value otherwise.
-func (o *ProductGroupPromotion) GetCreativeType() CreativeType {
-	if o == nil || IsNil(o.CreativeType) {
-		var ret CreativeType
-		return ret
-	}
-	return *o.CreativeType
-}
-
-// GetCreativeTypeOk returns a tuple with the CreativeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductGroupPromotion) GetCreativeTypeOk() (*CreativeType, bool) {
-	if o == nil || IsNil(o.CreativeType) {
-		return nil, false
-	}
-	return o.CreativeType, true
-}
-
-// HasCreativeType returns a boolean if a field has been set.
-func (o *ProductGroupPromotion) HasCreativeType() bool {
-	if o != nil && !IsNil(o.CreativeType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreativeType gets a reference to the given CreativeType and assigns it to the CreativeType field.
-func (o *ProductGroupPromotion) SetCreativeType(v CreativeType) {
-	o.CreativeType = &v
-}
-
 // GetCollectionsHeroPinId returns the CollectionsHeroPinId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductGroupPromotion) GetCollectionsHeroPinId() string {
 	if o == nil || IsNil(o.CollectionsHeroPinId.Get()) {
@@ -839,9 +806,6 @@ func (o ProductGroupPromotion) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CatalogProductGroupName.IsSet() {
 		toSerialize["catalog_product_group_name"] = o.CatalogProductGroupName.Get()
-	}
-	if !IsNil(o.CreativeType) {
-		toSerialize["creative_type"] = o.CreativeType
 	}
 	if o.CollectionsHeroPinId.IsSet() {
 		toSerialize["collections_hero_pin_id"] = o.CollectionsHeroPinId.Get()

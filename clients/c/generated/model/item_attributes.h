@@ -66,6 +66,7 @@ typedef struct item_attributes_t {
     list_t *variant_values; //primitive container
     list_t *additional_image_link; //primitive container
     list_t *image_link; //primitive container
+    char *video_link; // string
 
 } item_attributes_t;
 
@@ -116,7 +117,8 @@ item_attributes_t *item_attributes_create(
     list_t *variant_names,
     list_t *variant_values,
     list_t *additional_image_link,
-    list_t *image_link
+    list_t *image_link,
+    char *video_link
 );
 
 void item_attributes_free(item_attributes_t *item_attributes);

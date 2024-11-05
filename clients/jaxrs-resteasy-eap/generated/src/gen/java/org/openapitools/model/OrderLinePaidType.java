@@ -10,6 +10,5 @@ public enum OrderLinePaidType {
   PAID,
   BONUS,
   MAKE_GOOD,
-  TEST,
-  NULL;
+  TEST;
 }

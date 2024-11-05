@@ -31,5 +31,7 @@ The class is defined in **[AdsAnalyticsTargetingType.java](../../src/main/java/o
 
 * `REGION` (value: `"REGION"`)
 
+* `AGE_BUCKET_AND_GENDER` (value: `"AGE_BUCKET_AND_GENDER"`)
+
 
 

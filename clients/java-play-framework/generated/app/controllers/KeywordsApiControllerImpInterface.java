@@ -112,12 +112,12 @@ public abstract class KeywordsApiControllerImpInterface {
 
     public abstract KeywordsResponse keywordsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, KeywordUpdateBody keywordUpdateBody) throws Exception;
 
-    public Result trendingKeywordsListHttp(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit) throws Exception {
+    public Result trendingKeywordsListHttp(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        TrendingKeywordsResponse obj = trendingKeywordsList(request, region, trendType, interests, genders, ages, normalizeAgainstGroup, limit);
+        TrendingKeywordsResponse obj = trendingKeywordsList(request, region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -129,6 +129,6 @@ public abstract class KeywordsApiControllerImpInterface {
 
     }
 
-    public abstract TrendingKeywordsResponse trendingKeywordsList(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit) throws Exception;
+    public abstract TrendingKeywordsResponse trendingKeywordsList(Http.Request request, TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages,  @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup,  @Min(1) @Max(50)Integer limit) throws Exception;
 
 }

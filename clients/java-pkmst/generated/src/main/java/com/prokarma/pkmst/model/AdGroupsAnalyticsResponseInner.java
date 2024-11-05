@@ -18,7 +18,7 @@ import java.util.Map;
  * AdGroupsAnalyticsResponseInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   @JsonProperty("AD_GROUP_ID")
   private String AD_GROUP_ID;
@@ -31,10 +31,10 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
     return this;
   }
 
-   /**
+  /**
    * The ID of the ad group that this metrics belongs to.
    * @return AD_GROUP_ID
-  **/
+   */
   @ApiModelProperty(required = true, value = "The ID of the ad group that this metrics belongs to.")
   public String getADGROUPID() {
     return AD_GROUP_ID;
@@ -49,10 +49,10 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
     return this;
   }
 
-   /**
+  /**
    * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
    * @return DATE
-  **/
+   */
   @ApiModelProperty(value = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
   public LocalDate getDATE() {
     return DATE;

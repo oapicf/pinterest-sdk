@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum CatalogsFeedProcessingStatus {
 
-    @JsonProperty("COMPLETED") COMPLETED(String.valueOf("COMPLETED")), @JsonProperty("COMPLETED_EARLY") COMPLETED_EARLY(String.valueOf("COMPLETED_EARLY")), @JsonProperty("DISAPPROVED") DISAPPROVED(String.valueOf("DISAPPROVED")), @JsonProperty("FAILED") FAILED(String.valueOf("FAILED")), @JsonProperty("PROCESSING") PROCESSING(String.valueOf("PROCESSING")), @JsonProperty("QUEUED_FOR_PROCESSING") QUEUED_FOR_PROCESSING(String.valueOf("QUEUED_FOR_PROCESSING")), @JsonProperty("UNDER_APPEAL") UNDER_APPEAL(String.valueOf("UNDER_APPEAL")), @JsonProperty("UNDER_REVIEW") UNDER_REVIEW(String.valueOf("UNDER_REVIEW"));
+    @JsonProperty("COMPLETED") COMPLETED(String.valueOf("COMPLETED")), @JsonProperty("FAILED") FAILED(String.valueOf("FAILED")), @JsonProperty("PROCESSING") PROCESSING(String.valueOf("PROCESSING"));
 
 
     private String value;

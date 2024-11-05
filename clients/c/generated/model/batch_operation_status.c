@@ -5,13 +5,13 @@
 
 
 char* batch_operation_status_batch_operation_status_ToString(pinterest_rest_api_batch_operation_status__e batch_operation_status) {
-    char *batch_operation_statusArray[] =  { "NULL", "PROCESSING", "COMPLETED" };
+    char *batch_operation_statusArray[] =  { "NULL", "PROCESSING", "COMPLETED", "FAILED" };
     return batch_operation_statusArray[batch_operation_status];
 }
 
 pinterest_rest_api_batch_operation_status__e batch_operation_status_batch_operation_status_FromString(char* batch_operation_status) {
     int stringToReturn = 0;
-    char *batch_operation_statusArray[] =  { "NULL", "PROCESSING", "COMPLETED" };
+    char *batch_operation_statusArray[] =  { "NULL", "PROCESSING", "COMPLETED", "FAILED" };
     size_t sizeofArray = sizeof(batch_operation_statusArray) / sizeof(batch_operation_statusArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(batch_operation_status, batch_operation_statusArray[stringToReturn]) == 0) {

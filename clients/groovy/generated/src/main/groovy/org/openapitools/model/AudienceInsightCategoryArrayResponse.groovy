@@ -10,5 +10,5 @@ import org.openapitools.model.AudienceInsightCategoryCommon;
 @Canonical
 class AudienceInsightCategoryArrayResponse {
     
-    List<AudienceInsightCategoryCommon> items
+    List<AudienceInsightCategoryCommon> items = new ArrayList<>()
 }

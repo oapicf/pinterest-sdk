@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**Language**](Language.md) |  | 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
 **Items** | [**[]ItemDeleteDiscontinuedBatchRecord**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsItemsDeleteDiscontinuedBatchRequest
 
-`func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, language Language, operation BatchOperation, items []ItemDeleteDiscontinuedBatchRecord, ) *CatalogsItemsDeleteDiscontinuedBatchRequest`
+`func NewCatalogsItemsDeleteDiscontinuedBatchRequest(country Country, language CatalogsItemsRequestLanguage, operation BatchOperation, items []ItemDeleteDiscontinuedBatchRecord, ) *CatalogsItemsDeleteDiscontinuedBatchRequest`
 
 NewCatalogsItemsDeleteDiscontinuedBatchRequest instantiates a new CatalogsItemsDeleteDiscontinuedBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetCountry sets Country field to given value.
 
 ### GetLanguage
 
-`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguage() Language`
+`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguage() CatalogsItemsRequestLanguage`
 
 GetLanguage returns the Language field if non-nil, zero value otherwise.
 
 ### GetLanguageOk
 
-`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguageOk() (*Language, bool)`
+`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool)`
 
 GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguage
 
-`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetLanguage(v Language)`
+`func (o *CatalogsItemsDeleteDiscontinuedBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage)`
 
 SetLanguage sets Language field to given value.
 

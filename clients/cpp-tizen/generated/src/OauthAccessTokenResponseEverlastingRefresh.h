@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "OauthAccessTokenResponse.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API

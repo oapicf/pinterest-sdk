@@ -18,11 +18,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Demographic detail for a single audience demographic")
 @JsonTypeName("AudienceDemographicValue")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDemographicValue   {
-  private @Valid String key;
-  private @Valid String name;
-  private @Valid BigDecimal ratio;
+  private String key;
+  private String name;
+  private BigDecimal ratio;
 
   /**
    * Unique key for demographic item
@@ -75,7 +75,7 @@ public class AudienceDemographicValue   {
   
   @ApiModelProperty(example = "0.551", value = "Value of demographic item as a percent of total audience")
   @JsonProperty("ratio")
-  public BigDecimal getRatio() {
+  @Valid public BigDecimal getRatio() {
     return ratio;
   }
 

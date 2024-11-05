@@ -17,13 +17,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCreateRequest   {
-  private @Valid String adAccountId;
-  private @Valid String name;
-  private @Valid AudienceRule rule;
-  private @Valid String description;
-  private @Valid AudienceCreateRequest1AudienceType audienceType;
+  private String adAccountId;
+  private String name;
+  private AudienceRule rule;
+  private String description;
+  private AudienceCreateRequest1AudienceType audienceType;
 
   /**
    * Ad account ID.
@@ -36,7 +36,7 @@ public class AudienceCreateRequest   {
   
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
@@ -56,8 +56,7 @@ public class AudienceCreateRequest   {
   
   @ApiModelProperty(example = "string", required = true, value = "Audience name.")
   @JsonProperty("name")
-  @NotNull
-  public String getName() {
+  @NotNull public String getName() {
     return name;
   }
 
@@ -76,8 +75,7 @@ public class AudienceCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("rule")
-  @NotNull
-  public AudienceRule getRule() {
+  @NotNull @Valid public AudienceRule getRule() {
     return rule;
   }
 
@@ -116,8 +114,7 @@ public class AudienceCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("audience_type")
-  @NotNull
-  public AudienceCreateRequest1AudienceType getAudienceType() {
+  @NotNull @Valid public AudienceCreateRequest1AudienceType getAudienceType() {
     return audienceType;
   }
 

@@ -11,7 +11,7 @@ import java.time.OffsetDateTime
   * @param parentPinId The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
   * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 case class PinCreate(
   id: Option[String],
   createdAt: Option[OffsetDateTime],
@@ -23,7 +23,7 @@ case class PinCreate(
   boardId: Option[String],
   boardSectionId: Option[String],
   boardOwner: Option[BoardOwner],
-  media: Option[SummaryPinMedia],
+  media: Option[PinMedia],
   mediaSource: Option[PinMediaSource],
   parentPinId: Option[String],
   note: Option[String]

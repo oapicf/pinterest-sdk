@@ -23,7 +23,7 @@ import java.time.OffsetDateTime;
  */
 @ApiModel(description = "Catalogs Hotel Feed object")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelFeed   {
   @JsonProperty("created_at")
   private OffsetDateTime createdAt;
@@ -69,11 +69,11 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get createdAt
    * @return createdAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -87,11 +87,11 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
-  @ApiModelProperty(value = "")
+   */
+  @ApiModelProperty(required = true, value = "")
   public String getId() {
     return id;
   }
@@ -105,11 +105,11 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get updatedAt
    * @return updatedAt
-  **/
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+   */
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -123,10 +123,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
    * @return name
-  **/
+   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
   public String getName() {
     return name;
@@ -141,10 +141,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get format
    * @return format
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFormat getFormat() {
     return format;
@@ -159,10 +159,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsType getCatalogType() {
     return catalogType;
@@ -177,10 +177,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get credentials
    * @return credentials
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedCredentials getCredentials() {
     return credentials;
@@ -195,10 +195,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  **/
+   */
   @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
   public String getLocation() {
     return location;
@@ -213,10 +213,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;
@@ -231,10 +231,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsStatus getStatus() {
     return status;
@@ -249,10 +249,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Get defaultCurrency
    * @return defaultCurrency
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public NullableCurrency getDefaultCurrency() {
     return defaultCurrency;
@@ -267,10 +267,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * The locale used within a feed for product descriptions.
    * @return defaultLocale
-  **/
+   */
   @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
   public String getDefaultLocale() {
     return defaultLocale;
@@ -285,10 +285,10 @@ public class CatalogsHotelFeed   {
     return this;
   }
 
-   /**
+  /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    * @return catalogId
-  **/
+   */
   @ApiModelProperty(required = true, value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
   public String getCatalogId() {
     return catalogId;

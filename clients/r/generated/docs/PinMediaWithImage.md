@@ -6,6 +6,6 @@ Pin with image.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **media_type** | **character** |  | [optional] 
-**images** | [**ImageMetadataImages**](ImageMetadata_images.md) |  | [optional] 
+**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImage_allOf_images.md) |  | [optional] 
 
 

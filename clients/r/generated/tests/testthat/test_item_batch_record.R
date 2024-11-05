@@ -14,7 +14,7 @@ test_that("item_id", {
 })
 
 test_that("attributes", {
-  # tests for the property `attributes` (ItemAttributes)
+  # tests for the property `attributes` (ItemAttributesRequest)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")

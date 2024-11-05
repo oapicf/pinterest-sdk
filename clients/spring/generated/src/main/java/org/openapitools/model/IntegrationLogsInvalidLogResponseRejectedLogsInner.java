@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("IntegrationLogsInvalidLogResponse_rejected_logs_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
 
   private Integer logIndex;
@@ -52,7 +52,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
   /**
    * Index of the log in the batch.
    * @return logIndex
-  */
+   */
   
   @Schema(name = "log_index", description = "Index of the log in the batch.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("log_index")
@@ -72,7 +72,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
   /**
    * The field name containing an invalid value.
    * @return field
-  */
+   */
   @NotNull 
   @Schema(name = "field", description = "The field name containing an invalid value.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("field")
@@ -92,7 +92,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
   /**
    * The value that is invalid.
    * @return value
-  */
+   */
   @NotNull 
   @Schema(name = "value", description = "The value that is invalid.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("value")
@@ -112,7 +112,7 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner {
   /**
    * The reason the value is invalid.
    * @return reason
-  */
+   */
   @NotNull 
   @Schema(name = "reason", description = "The reason the value is invalid.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("reason")

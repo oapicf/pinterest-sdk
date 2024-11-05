@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsFeedValidationErrors
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedValidationErrors   {
   @JsonProperty("FETCH_ERROR")
   private Integer FETCH_ERROR;
@@ -120,10 +120,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Pinterest couldn't download your feed.
    * @return FETCH_ERROR
-  **/
+   */
   @ApiModelProperty(value = "Pinterest couldn't download your feed.")
   public Integer getFETCHERROR() {
     return FETCH_ERROR;
@@ -138,10 +138,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
    * @return FETCH_INACTIVE_FEED_ERROR
-  **/
+   */
   @ApiModelProperty(value = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.")
   public Integer getFETCHINACTIVEFEEDERROR() {
     return FETCH_INACTIVE_FEED_ERROR;
@@ -156,10 +156,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed includes data with an unsupported encoding format.
    * @return ENCODING_ERROR
-  **/
+   */
   @ApiModelProperty(value = "Your feed includes data with an unsupported encoding format.")
   public Integer getENCODINGERROR() {
     return ENCODING_ERROR;
@@ -174,10 +174,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed includes data with formatting errors.
    * @return DELIMITER_ERROR
-  **/
+   */
   @ApiModelProperty(value = "Your feed includes data with formatting errors.")
   public Integer getDELIMITERERROR() {
     return DELIMITER_ERROR;
@@ -192,10 +192,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed is missing some required column headers.
    * @return REQUIRED_COLUMNS_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Your feed is missing some required column headers.")
   public Integer getREQUIREDCOLUMNSMISSING() {
     return REQUIRED_COLUMNS_MISSING;
@@ -210,10 +210,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some products are duplicated.
    * @return DUPLICATE_PRODUCTS
-  **/
+   */
   @ApiModelProperty(value = "Some products are duplicated.")
   public Integer getDUPLICATEPRODUCTS() {
     return DUPLICATE_PRODUCTS;
@@ -228,10 +228,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some image links are formatted incorrectly.
    * @return IMAGE_LINK_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some image links are formatted incorrectly.")
   public Integer getIMAGELINKINVALID() {
     return IMAGE_LINK_INVALID;
@@ -246,10 +246,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing an item id in their product metadata, those items will not be published.
    * @return ITEMID_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing an item id in their product metadata, those items will not be published.")
   public Integer getITEMIDMISSING() {
     return ITEMID_MISSING;
@@ -264,10 +264,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing a title in their product metadata, those items will not be published.
    * @return TITLE_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing a title in their product metadata, those items will not be published.")
   public Integer getTITLEMISSING() {
     return TITLE_MISSING;
@@ -282,10 +282,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing a description in their product metadata, those items will not be published.
    * @return DESCRIPTION_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing a description in their product metadata, those items will not be published.")
   public Integer getDESCRIPTIONMISSING() {
     return DESCRIPTION_MISSING;
@@ -300,10 +300,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing a link URL in their product metadata, those items will not be published.
    * @return PRODUCT_LINK_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing a link URL in their product metadata, those items will not be published.")
   public Integer getPRODUCTLINKMISSING() {
     return PRODUCT_LINK_MISSING;
@@ -318,10 +318,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing an image link URL in their product metadata, those items will not be published.
    * @return IMAGE_LINK_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing an image link URL in their product metadata, those items will not be published.")
   public Integer getIMAGELINKMISSING() {
     return IMAGE_LINK_MISSING;
@@ -336,10 +336,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items are missing an availability value in their product metadata, those items will not be published.
    * @return AVAILABILITY_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items are missing an availability value in their product metadata, those items will not be published.")
   public Integer getAVAILABILITYINVALID() {
     return AVAILABILITY_INVALID;
@@ -354,10 +354,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items have price formatting errors in their product metadata, those items will not be published.
    * @return PRODUCT_PRICE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have price formatting errors in their product metadata, those items will not be published.")
   public Integer getPRODUCTPRICEINVALID() {
     return PRODUCT_PRICE_INVALID;
@@ -372,10 +372,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some link values are formatted incorrectly.
    * @return LINK_FORMAT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some link values are formatted incorrectly.")
   public Integer getLINKFORMATINVALID() {
     return LINK_FORMAT_INVALID;
@@ -390,10 +390,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed contains formatting errors for some items.
    * @return PARSE_LINE_ERROR
-  **/
+   */
   @ApiModelProperty(value = "Your feed contains formatting errors for some items.")
   public Integer getPARSELINEERROR() {
     return PARSE_LINE_ERROR;
@@ -408,10 +408,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some adwords links contain too many characters.
    * @return ADWORDS_FORMAT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some adwords links contain too many characters.")
   public Integer getADWORDSFORMATINVALID() {
     return ADWORDS_FORMAT_INVALID;
@@ -426,10 +426,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.
    * @return INTERNAL_SERVICE_ERROR
-  **/
+   */
   @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.")
   public Integer getINTERNALSERVICEERROR() {
     return INTERNAL_SERVICE_ERROR;
@@ -444,10 +444,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your merchant domain needs to be claimed.
    * @return NO_VERIFIED_DOMAIN
-  **/
+   */
   @ApiModelProperty(value = "Your merchant domain needs to be claimed.")
   public Integer getNOVERIFIEDDOMAIN() {
     return NO_VERIFIED_DOMAIN;
@@ -462,10 +462,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items have invalid adult values.
    * @return ADULT_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have invalid adult values.")
   public Integer getADULTINVALID() {
     return ADULT_INVALID;
@@ -480,10 +480,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items have image_link URLs that contain too many characters, so those items will not be published.
    * @return IMAGE_LINK_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "Some items have image_link URLs that contain too many characters, so those items will not be published.")
   public Integer getIMAGELINKLENGTHTOOLONG() {
     return IMAGE_LINK_LENGTH_TOO_LONG;
@@ -498,10 +498,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some of your product link values don't match the verified domain associated with this account.
    * @return INVALID_DOMAIN
-  **/
+   */
   @ApiModelProperty(value = "Some of your product link values don't match the verified domain associated with this account.")
   public Integer getINVALIDDOMAIN() {
     return INVALID_DOMAIN;
@@ -516,10 +516,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed contains too many items, some items will not be published.
    * @return FEED_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "Your feed contains too many items, some items will not be published.")
   public Integer getFEEDLENGTHTOOLONG() {
     return FEED_LENGTH_TOO_LONG;
@@ -534,10 +534,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some product links contain too many characters, those items will not be published.
    * @return LINK_LENGTH_TOO_LONG
-  **/
+   */
   @ApiModelProperty(value = "Some product links contain too many characters, those items will not be published.")
   public Integer getLINKLENGTHTOOLONG() {
     return LINK_LENGTH_TOO_LONG;
@@ -552,10 +552,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed couldn't be validated because the xml file is formatted incorrectly.
    * @return MALFORMED_XML
-  **/
+   */
   @ApiModelProperty(value = "Your feed couldn't be validated because the xml file is formatted incorrectly.")
   public Integer getMALFORMEDXML() {
     return MALFORMED_XML;
@@ -570,10 +570,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some products are missing a price, those items will not be published.
    * @return PRICE_MISSING
-  **/
+   */
   @ApiModelProperty(value = "Some products are missing a price, those items will not be published.")
   public Integer getPRICEMISSING() {
     return PRICE_MISSING;
@@ -588,10 +588,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
    * @return FEED_TOO_SMALL
-  **/
+   */
   @ApiModelProperty(value = "Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.")
   public Integer getFEEDTOOSMALL() {
     return FEED_TOO_SMALL;
@@ -606,10 +606,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items exceed the maximum number of items per item group, those items will not be published.
    * @return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED
-  **/
+   */
   @ApiModelProperty(value = "Some items exceed the maximum number of items per item group, those items will not be published.")
   public Integer getMAXITEMSPERITEMGROUPEXCEEDED() {
     return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
@@ -624,10 +624,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items' main images can't be found.
    * @return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
-  **/
+   */
   @ApiModelProperty(value = "Some items' main images can't be found.")
   public Integer getITEMMAINIMAGEDOWNLOADFAILURE() {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
@@ -642,10 +642,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
    * @return PINJOIN_CONTENT_UNSAFE
-  **/
+   */
   @ApiModelProperty(value = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.")
   public Integer getPINJOINCONTENTUNSAFE() {
     return PINJOIN_CONTENT_UNSAFE;
@@ -660,10 +660,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
    * @return BLOCKLISTED_IMAGE_SIGNATURE
-  **/
+   */
   @ApiModelProperty(value = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.")
   public Integer getBLOCKLISTEDIMAGESIGNATURE() {
     return BLOCKLISTED_IMAGE_SIGNATURE;
@@ -678,10 +678,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items have list price formatting errors in their product metadata, those items will not be published.
    * @return LIST_PRICE_INVALID
-  **/
+   */
   @ApiModelProperty(value = "Some items have list price formatting errors in their product metadata, those items will not be published.")
   public Integer getLISTPRICEINVALID() {
     return LIST_PRICE_INVALID;
@@ -696,10 +696,10 @@ public class CatalogsFeedValidationErrors   {
     return this;
   }
 
-   /**
+  /**
    * Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
    * @return PRICE_CANNOT_BE_DETERMINED
-  **/
+   */
   @ApiModelProperty(value = "Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.")
   public Integer getPRICECANNOTBEDETERMINED() {
     return PRICE_CANNOT_BE_DETERMINED;

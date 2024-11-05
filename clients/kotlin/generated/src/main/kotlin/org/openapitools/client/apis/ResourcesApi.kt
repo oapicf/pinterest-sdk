@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.AdAccountsCountryResponse
@@ -41,7 +41,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -122,12 +122,21 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
      enum class ReportTypeDeliveryMetricsGet(val value: kotlin.String) {
          @Json(name = "SYNC") SYNC("SYNC"),
-         @Json(name = "ASYNC") ASYNC("ASYNC")
+         @Json(name = "ASYNC") ASYNC("ASYNC");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
      * Get available metrics&#39; definitions
-     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
      * @param reportType Report type. (optional)
      * @return DeliveryMetricsResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -158,7 +167,7 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Get available metrics&#39; definitions
-     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
      * @param reportType Report type. (optional)
      * @return ApiResponse<DeliveryMetricsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -274,7 +283,7 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Get lead form questions
-     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -303,7 +312,7 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
 
     /**
      * Get lead form questions
-     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -425,7 +434,16 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
          @Json(name = "INTEREST") INTEREST("INTEREST"),
          @Json(name = "KEYWORD") KEYWORD("KEYWORD"),
          @Json(name = "AUDIENCE_INCLUDE") AUDIENCE_INCLUDE("AUDIENCE_INCLUDE"),
-         @Json(name = "AUDIENCE_EXCLUDE") AUDIENCE_EXCLUDE("AUDIENCE_EXCLUDE")
+         @Json(name = "AUDIENCE_EXCLUDE") AUDIENCE_EXCLUDE("AUDIENCE_EXCLUDE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -435,6 +453,7 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param clientId Client ID. (optional)
      * @param oauthSignature Oauth signature (optional)
      * @param timestamp Timestamp (optional)
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return kotlin.collections.List<kotlin.Any>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -444,8 +463,8 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun targetingOptionsGet(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String? = null, oauthSignature: kotlin.String? = null, timestamp: kotlin.String? = null) : kotlin.collections.List<kotlin.Any> {
-        val localVarResponse = targetingOptionsGetWithHttpInfo(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp)
+    fun targetingOptionsGet(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String? = null, oauthSignature: kotlin.String? = null, timestamp: kotlin.String? = null, adAccountId: kotlin.String? = null) : kotlin.collections.List<kotlin.Any> {
+        val localVarResponse = targetingOptionsGetWithHttpInfo(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<kotlin.Any>
@@ -469,14 +488,15 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param clientId Client ID. (optional)
      * @param oauthSignature Oauth signature (optional)
      * @param timestamp Timestamp (optional)
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<kotlin.collections.List<kotlin.Any>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun targetingOptionsGetWithHttpInfo(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?) : ApiResponse<kotlin.collections.List<kotlin.Any>?> {
-        val localVariableConfig = targetingOptionsGetRequestConfig(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp)
+    fun targetingOptionsGetWithHttpInfo(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.List<kotlin.Any>?> {
+        val localVariableConfig = targetingOptionsGetRequestConfig(targetingType = targetingType, clientId = clientId, oauthSignature = oauthSignature, timestamp = timestamp, adAccountId = adAccountId)
 
         return request<Unit, kotlin.collections.List<kotlin.Any>>(
             localVariableConfig
@@ -490,9 +510,10 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
      * @param clientId Client ID. (optional)
      * @param oauthSignature Oauth signature (optional)
      * @param timestamp Timestamp (optional)
+     * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun targetingOptionsGetRequestConfig(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?) : RequestConfig<Unit> {
+    fun targetingOptionsGetRequestConfig(targetingType: TargetingTypeTargetingOptionsGet, clientId: kotlin.String?, oauthSignature: kotlin.String?, timestamp: kotlin.String?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -504,6 +525,9 @@ class ResourcesApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClie
                 }
                 if (timestamp != null) {
                     put("timestamp", listOf(timestamp.toString()))
+                }
+                if (adAccountId != null) {
+                    put("ad_account_id", listOf(adAccountId.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

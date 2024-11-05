@@ -16,6 +16,7 @@ public struct OauthAccessTokenResponseEverlastingRefresh: Codable, JSONEncodable
     public enum ResponseType: String, Codable, CaseIterable {
         case authorizationCode = "authorization_code"
         case refreshToken = "refresh_token"
+        case clientCredentials = "client_credentials"
     }
     public var responseType: ResponseType?
     public var accessToken: String

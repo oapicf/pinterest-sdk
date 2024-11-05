@@ -10,7 +10,7 @@
 
 #include <string>
 #include "Exception.h"
-#include "ProductGroupPromotion.h"
+#include "ProductGroupPromotionResponseElement.h"
 #include <list>
 #include "Object.h"
 
@@ -50,11 +50,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	ProductGroupPromotion getData();
+	ProductGroupPromotionResponseElement getData();
 
 	/*! \brief Set 
 	 */
-	void setData(ProductGroupPromotion  data);
+	void setData(ProductGroupPromotionResponseElement  data);
 	/*! \brief Get 
 	 */
 	std::list<Exception> getExceptions();
@@ -64,7 +64,7 @@ public:
 	void setExceptions(std::list <Exception> exceptions);
 
 private:
-	ProductGroupPromotion data;
+	ProductGroupPromotionResponseElement data;
 	std::list <Exception>exceptions;
 	void __init();
 	void __cleanup();

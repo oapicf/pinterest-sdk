@@ -23,20 +23,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object containing other custom data.")
 @JsonTypeName("ConversionEvents_data_inner_custom_data")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInnerCustomData   {
-  private @Valid String currency;
-  private @Valid String value;
-  private @Valid List<String> contentIds;
-  private @Valid String contentName;
-  private @Valid String contentCategory;
-  private @Valid String contentBrand;
-  private @Valid List<@Valid ConversionEventsDataInnerCustomDataContentsInner> contents;
-  private @Valid Long numItems;
-  private @Valid String orderId;
-  private @Valid String searchString;
-  private @Valid String optOutType;
-  private @Valid String np;
+  private String currency;
+  private String value;
+  private @Valid List<String> contentIds = new ArrayList<>();
+  private String contentName;
+  private String contentCategory;
+  private String contentBrand;
+  private @Valid List<@Valid ConversionEventsDataInnerCustomDataContentsInner> contents = new ArrayList<>();
+  private Long numItems;
+  private String orderId;
+  private String searchString;
+  private String optOutType;
+  private String np;
 
   /**
    * The ISO-4217 currency code. If not provided, we will default to the advertiser&#39;s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
@@ -185,7 +185,7 @@ public class ConversionEventsDataInnerCustomData   {
   
   @ApiModelProperty(value = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   @JsonProperty("contents")
-  public List<ConversionEventsDataInnerCustomDataContentsInner> getContents() {
+  @Valid public List<@Valid ConversionEventsDataInnerCustomDataContentsInner> getContents() {
     return contents;
   }
 
@@ -271,7 +271,7 @@ public class ConversionEventsDataInnerCustomData   {
   }
 
   /**
-   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.
+   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.
    **/
   public ConversionEventsDataInnerCustomData optOutType(String optOutType) {
     this.optOutType = optOutType;
@@ -279,7 +279,7 @@ public class ConversionEventsDataInnerCustomData   {
   }
 
   
-  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.")
+  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.")
   @JsonProperty("opt_out_type")
   public String getOptOutType() {
     return optOutType;

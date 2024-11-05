@@ -3,8 +3,8 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.ImageMetadataImages;
 import org.openapitools.vertxweb.server.model.PinMedia;
+import org.openapitools.vertxweb.server.model.PinMediaWithImageAllOfImages;
 
 /**
  * Pin with image.
@@ -12,22 +12,22 @@ import org.openapitools.vertxweb.server.model.PinMedia;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaWithImage extends PinMedia  {
   
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
   public PinMediaWithImage () {
 
   }
 
-  public PinMediaWithImage (ImageMetadataImages images) {
+  public PinMediaWithImage (PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
     
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

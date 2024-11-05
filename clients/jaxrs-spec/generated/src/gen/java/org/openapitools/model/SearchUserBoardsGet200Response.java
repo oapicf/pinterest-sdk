@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("search_user_boards_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SearchUserBoardsGet200Response   {
   private @Valid List<@Valid Board> items = new ArrayList<>();
-  private @Valid String bookmark;
+  private String bookmark;
 
   /**
    * items
@@ -37,8 +37,7 @@ public class SearchUserBoardsGet200Response   {
   
   @ApiModelProperty(required = true, value = "items")
   @JsonProperty("items")
-  @NotNull
-  public List<Board> getItems() {
+  @NotNull @Valid public List<@Valid Board> getItems() {
     return items;
   }
 

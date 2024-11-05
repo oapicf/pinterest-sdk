@@ -48,8 +48,26 @@ services:
          - [setContainer,  ['@service_container']]
         tags: ['controller.service_arguments']
 
+    open_api_server.controller.advancedAuction:
+        class: OpenAPI\Server\Controller\AdvancedAuctionController
+        calls:
+         - [setSerializer, ['@open_api_server.service.serializer']]
+         - [setValidator,  ['@open_api_server.service.validator']]
+         - [setApiServer,  ['@open_api_server.api.api_server']]
+         - [setContainer,  ['@service_container']]
+        tags: ['controller.service_arguments']
+
     open_api_server.controller.audienceInsights:
         class: OpenAPI\Server\Controller\AudienceInsightsController
+        calls:
+         - [setSerializer, ['@open_api_server.service.serializer']]
+         - [setValidator,  ['@open_api_server.service.validator']]
+         - [setApiServer,  ['@open_api_server.api.api_server']]
+         - [setContainer,  ['@service_container']]
+        tags: ['controller.service_arguments']
+
+    open_api_server.controller.audienceSharing:
+        class: OpenAPI\Server\Controller\AudienceSharingController
         calls:
          - [setSerializer, ['@open_api_server.service.serializer']]
          - [setValidator,  ['@open_api_server.service.validator']]
@@ -86,6 +104,33 @@ services:
 
     open_api_server.controller.bulk:
         class: OpenAPI\Server\Controller\BulkController
+        calls:
+         - [setSerializer, ['@open_api_server.service.serializer']]
+         - [setValidator,  ['@open_api_server.service.validator']]
+         - [setApiServer,  ['@open_api_server.api.api_server']]
+         - [setContainer,  ['@service_container']]
+        tags: ['controller.service_arguments']
+
+    open_api_server.controller.businessAccessAssets:
+        class: OpenAPI\Server\Controller\BusinessAccessAssetsController
+        calls:
+         - [setSerializer, ['@open_api_server.service.serializer']]
+         - [setValidator,  ['@open_api_server.service.validator']]
+         - [setApiServer,  ['@open_api_server.api.api_server']]
+         - [setContainer,  ['@service_container']]
+        tags: ['controller.service_arguments']
+
+    open_api_server.controller.businessAccessInvite:
+        class: OpenAPI\Server\Controller\BusinessAccessInviteController
+        calls:
+         - [setSerializer, ['@open_api_server.service.serializer']]
+         - [setValidator,  ['@open_api_server.service.validator']]
+         - [setApiServer,  ['@open_api_server.api.api_server']]
+         - [setContainer,  ['@service_container']]
+        tags: ['controller.service_arguments']
+
+    open_api_server.controller.businessAccessRelationships:
+        class: OpenAPI\Server\Controller\BusinessAccessRelationshipsController
         calls:
          - [setSerializer, ['@open_api_server.service.serializer']]
          - [setValidator,  ['@open_api_server.service.validator']]
@@ -174,6 +219,15 @@ services:
          - [setContainer,  ['@service_container']]
         tags: ['controller.service_arguments']
 
+    open_api_server.controller.leadsExport:
+        class: OpenAPI\Server\Controller\LeadsExportController
+        calls:
+         - [setSerializer, ['@open_api_server.service.serializer']]
+         - [setValidator,  ['@open_api_server.service.validator']]
+         - [setApiServer,  ['@open_api_server.api.api_server']]
+         - [setContainer,  ['@service_container']]
+        tags: ['controller.service_arguments']
+
     open_api_server.controller.media:
         class: OpenAPI\Server\Controller\MediaController
         calls:
@@ -219,15 +273,6 @@ services:
          - [setContainer,  ['@service_container']]
         tags: ['controller.service_arguments']
 
-    open_api_server.controller.productGroups:
-        class: OpenAPI\Server\Controller\ProductGroupsController
-        calls:
-         - [setSerializer, ['@open_api_server.service.serializer']]
-         - [setValidator,  ['@open_api_server.service.validator']]
-         - [setApiServer,  ['@open_api_server.api.api_server']]
-         - [setContainer,  ['@service_container']]
-        tags: ['controller.service_arguments']
-
     open_api_server.controller.resources:
         class: OpenAPI\Server\Controller\ResourcesController
         calls:
@@ -239,6 +284,15 @@ services:
 
     open_api_server.controller.search:
         class: OpenAPI\Server\Controller\SearchController
+        calls:
+         - [setSerializer, ['@open_api_server.service.serializer']]
+         - [setValidator,  ['@open_api_server.service.validator']]
+         - [setApiServer,  ['@open_api_server.api.api_server']]
+         - [setContainer,  ['@service_container']]
+        tags: ['controller.service_arguments']
+
+    open_api_server.controller.targetingTemplate:
+        class: OpenAPI\Server\Controller\TargetingTemplateController
         calls:
          - [setSerializer, ['@open_api_server.service.serializer']]
          - [setValidator,  ['@open_api_server.service.validator']]

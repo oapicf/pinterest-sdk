@@ -3,9 +3,8 @@ package org.openapitools.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
-import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,18 +20,18 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Campaign Data")
 @JsonTypeName("CampaignCommon")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CampaignCommon   {
-  private @Valid String adAccountId;
-  private @Valid String name;
-  private @Valid EntityStatus status;
-  private @Valid Integer lifetimeSpendCap;
-  private @Valid Integer dailySpendCap;
-  private @Valid String orderLineId;
-  private @Valid AdCommonTrackingUrls trackingUrls;
-  private @Valid Integer startTime;
-  private @Valid Integer endTime;
-  private @Valid CampaignSummaryStatus summaryStatus;
+  private String adAccountId;
+  private String name;
+  private EntityStatus status;
+  private Integer lifetimeSpendCap;
+  private Integer dailySpendCap;
+  private String orderLineId;
+  private TrackingUrls trackingUrls;
+  private Integer startTime;
+  private Integer endTime;
+  private Boolean isFlexibleDailyBudgets;
 
   /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
@@ -45,7 +44,7 @@ public class CampaignCommon   {
   
   @ApiModelProperty(example = "549755885175", value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
@@ -144,7 +143,7 @@ public class CampaignCommon   {
   
   @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
   @JsonProperty("order_line_id")
- @Pattern(regexp="^\\d+$")  public String getOrderLineId() {
+   @Pattern(regexp="^\\d+$")public String getOrderLineId() {
     return orderLineId;
   }
 
@@ -155,7 +154,7 @@ public class CampaignCommon   {
 
   /**
    **/
-  public CampaignCommon trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignCommon trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -163,12 +162,12 @@ public class CampaignCommon   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  @Valid public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
   @JsonProperty("tracking_urls")
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -213,22 +212,23 @@ public class CampaignCommon   {
   }
 
   /**
+   * Determine if a campaign has flexible daily budgets setup.
    **/
-  public CampaignCommon summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public CampaignCommon isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
+  @JsonProperty("is_flexible_daily_budgets")
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
   }
 
-  @JsonProperty("summary_status")
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  @JsonProperty("is_flexible_daily_budgets")
+  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
 
@@ -250,12 +250,12 @@ public class CampaignCommon   {
         Objects.equals(this.trackingUrls, campaignCommon.trackingUrls) &&
         Objects.equals(this.startTime, campaignCommon.startTime) &&
         Objects.equals(this.endTime, campaignCommon.endTime) &&
-        Objects.equals(this.summaryStatus, campaignCommon.summaryStatus);
+        Objects.equals(this.isFlexibleDailyBudgets, campaignCommon.isFlexibleDailyBudgets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus);
+    return Objects.hash(adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets);
   }
 
   @Override
@@ -272,7 +272,7 @@ public class CampaignCommon   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("}");
     return sb.toString();
   }

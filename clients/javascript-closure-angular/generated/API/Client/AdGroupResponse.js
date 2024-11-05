@@ -34,7 +34,8 @@ API.Client.AdGroupResponse.prototype.budgetInMicroCurrency;
 API.Client.AdGroupResponse.prototype.bidInMicroCurrency;
 
 /**
- * @type {!API.Client.AdGroupCommon_optimization_goal_metadata}
+ * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+ * @type {!API.Client.OptimizationGoalMetadata}
  * @export
  */
 API.Client.AdGroupResponse.prototype.optimizationGoalMetadata;
@@ -66,14 +67,15 @@ API.Client.AdGroupResponse.prototype.endTime;
 API.Client.AdGroupResponse.prototype.targetingSpec;
 
 /**
- * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+ * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
  * @type {!number}
  * @export
  */
 API.Client.AdGroupResponse.prototype.lifetimeFrequencyCap;
 
 /**
- * @type {!API.Client.AdGroupCommon_tracking_urls}
+ * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+ * @type {!API.Client.TrackingUrls}
  * @export
  */
 API.Client.AdGroupResponse.prototype.trackingUrls;
@@ -86,7 +88,7 @@ API.Client.AdGroupResponse.prototype.trackingUrls;
 API.Client.AdGroupResponse.prototype.autoTargetingEnabled;
 
 /**
- * <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+ * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
  * @type {!API.Client.PlacementGroupType}
  * @export
  */
@@ -112,11 +114,18 @@ API.Client.AdGroupResponse.prototype.campaignId;
 API.Client.AdGroupResponse.prototype.billableEvent;
 
 /**
- * Bid strategy type
+ * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
  * @type {!string}
  * @export
  */
 API.Client.AdGroupResponse.prototype.bidStrategyType;
+
+/**
+ * Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.AdGroupResponse.prototype.targetingTemplateIds;
 
 /**
  * Ad group ID.

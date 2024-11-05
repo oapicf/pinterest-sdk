@@ -15,14 +15,12 @@ CampaignId <- R6::R6Class(
   "CampaignId",
   public = list(
     `id` = NULL,
-    #' Initialize a new CampaignId class.
-    #'
+
     #' @description
     #' Initialize a new CampaignId class.
     #'
     #' @param id Campaign ID.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -31,13 +29,11 @@ CampaignId <- R6::R6Class(
         self$`id` <- `id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CampaignId in JSON format
-    #' @export
     toJSON = function() {
       CampaignIdObject <- list()
       if (!is.null(self$`id`)) {
@@ -46,14 +42,12 @@ CampaignId <- R6::R6Class(
       }
       CampaignIdObject
     },
-    #' Deserialize JSON string into an instance of CampaignId
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CampaignId
     #'
     #' @param input_json the JSON input
     #' @return the instance of CampaignId
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -61,13 +55,11 @@ CampaignId <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CampaignId in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -82,46 +74,38 @@ CampaignId <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CampaignId
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CampaignId
     #'
     #' @param input_json the JSON input
     #' @return the instance of CampaignId
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
       self
     },
-    #' Validate JSON input with respect to CampaignId
-    #'
+
     #' @description
     #' Validate JSON input with respect to CampaignId and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CampaignId
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -129,13 +113,11 @@ CampaignId <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -144,12 +126,9 @@ CampaignId <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

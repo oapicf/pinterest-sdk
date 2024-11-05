@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- * = catalog_based_product_group =
+ * = hotel_product_group =
  *
  * @param catalogType  for example: ''null''
  * @param id ID of the hotel product group. for example: ''443727193917''
@@ -11,7 +11,7 @@ package org.openapitools.server.model
  * @param filters  for example: ''null''
  * @param createdAt Unix timestamp in seconds of when catalog product group was created. for example: ''1621350033000''
  * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated. for example: ''1622742155000''
- * @param catalogId  for example: ''null''
+ * @param catalogId Catalog id pertaining to the hotel product group. for example: ''null''
 */
 final case class CatalogsHotelProductGroup (
   catalogType: String,

@@ -5,13 +5,13 @@
 
 
 char* item_response_catalog_type_ToString(pinterest_rest_api_item_response__e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char* catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     return catalog_typeArray[catalog_type];
 }
 
 pinterest_rest_api_item_response__e item_response_catalog_type_FromString(char* catalog_type){
     int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL" };
+    char *catalog_typeArray[] =  { "NULL", "RETAIL", "HOTEL", "CREATIVE_ASSETS" };
     size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
@@ -26,8 +26,9 @@ item_response_t *item_response_create(
     catalogs_type_t *catalog_type,
     char *item_id,
     list_t *pins,
-    catalogs_hotel_attributes_t *attributes,
+    catalogs_creative_assets_attributes_t *attributes,
     char *hotel_id,
+    char *creative_assets_id,
     list_t *errors
     ) {
     item_response_t *item_response_local_var = malloc(sizeof(item_response_t));
@@ -39,6 +40,7 @@ item_response_t *item_response_create(
     item_response_local_var->pins = pins;
     item_response_local_var->attributes = attributes;
     item_response_local_var->hotel_id = hotel_id;
+    item_response_local_var->creative_assets_id = creative_assets_id;
     item_response_local_var->errors = errors;
 
     return item_response_local_var;
@@ -66,12 +68,16 @@ void item_response_free(item_response_t *item_response) {
         item_response->pins = NULL;
     }
     if (item_response->attributes) {
-        catalogs_hotel_attributes_free(item_response->attributes);
+        catalogs_creative_assets_attributes_free(item_response->attributes);
         item_response->attributes = NULL;
     }
     if (item_response->hotel_id) {
         free(item_response->hotel_id);
         item_response->hotel_id = NULL;
+    }
+    if (item_response->creative_assets_id) {
+        free(item_response->creative_assets_id);
+        item_response->creative_assets_id = NULL;
     }
     if (item_response->errors) {
         list_ForEach(listEntry, item_response->errors) {
@@ -130,7 +136,7 @@ cJSON *item_response_convertToJSON(item_response_t *item_response) {
 
     // item_response->attributes
     if(item_response->attributes) {
-    cJSON *attributes_local_JSON = catalogs_hotel_attributes_convertToJSON(item_response->attributes);
+    cJSON *attributes_local_JSON = catalogs_creative_assets_attributes_convertToJSON(item_response->attributes);
     if(attributes_local_JSON == NULL) {
     goto fail; //model
     }
@@ -144,6 +150,14 @@ cJSON *item_response_convertToJSON(item_response_t *item_response) {
     // item_response->hotel_id
     if(item_response->hotel_id) {
     if(cJSON_AddStringToObject(item, "hotel_id", item_response->hotel_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // item_response->creative_assets_id
+    if(item_response->creative_assets_id) {
+    if(cJSON_AddStringToObject(item, "creative_assets_id", item_response->creative_assets_id) == NULL) {
     goto fail; //String
     }
     }
@@ -187,7 +201,7 @@ item_response_t *item_response_parseFromJSON(cJSON *item_responseJSON){
     list_t *pinsList = NULL;
 
     // define the local variable for item_response->attributes
-    catalogs_hotel_attributes_t *attributes_local_nonprim = NULL;
+    catalogs_creative_assets_attributes_t *attributes_local_nonprim = NULL;
 
     // define the local list for item_response->errors
     list_t *errorsList = NULL;
@@ -234,13 +248,22 @@ item_response_t *item_response_parseFromJSON(cJSON *item_responseJSON){
     // item_response->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_responseJSON, "attributes");
     if (attributes) { 
-    attributes_local_nonprim = catalogs_hotel_attributes_parseFromJSON(attributes); //nonprimitive
+    attributes_local_nonprim = catalogs_creative_assets_attributes_parseFromJSON(attributes); //nonprimitive
     }
 
     // item_response->hotel_id
     cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(item_responseJSON, "hotel_id");
     if (hotel_id) { 
     if(!cJSON_IsString(hotel_id) && !cJSON_IsNull(hotel_id))
+    {
+    goto end; //String
+    }
+    }
+
+    // item_response->creative_assets_id
+    cJSON *creative_assets_id = cJSON_GetObjectItemCaseSensitive(item_responseJSON, "creative_assets_id");
+    if (creative_assets_id) { 
+    if(!cJSON_IsString(creative_assets_id) && !cJSON_IsNull(creative_assets_id))
     {
     goto end; //String
     }
@@ -274,6 +297,7 @@ item_response_t *item_response_parseFromJSON(cJSON *item_responseJSON){
         pins ? pinsList : NULL,
         attributes ? attributes_local_nonprim : NULL,
         hotel_id && !cJSON_IsNull(hotel_id) ? strdup(hotel_id->valuestring) : NULL,
+        creative_assets_id && !cJSON_IsNull(creative_assets_id) ? strdup(creative_assets_id->valuestring) : NULL,
         errors ? errorsList : NULL
         );
 
@@ -293,7 +317,7 @@ end:
         pinsList = NULL;
     }
     if (attributes_local_nonprim) {
-        catalogs_hotel_attributes_free(attributes_local_nonprim);
+        catalogs_creative_assets_attributes_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
     }
     if (errorsList) {

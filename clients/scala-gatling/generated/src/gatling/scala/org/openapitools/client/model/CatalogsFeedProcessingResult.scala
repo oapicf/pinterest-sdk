@@ -4,9 +4,9 @@ package org.openapitools.client.model
 import java.time.OffsetDateTime
 
 case class CatalogsFeedProcessingResult (
-    _createdAt: Option[OffsetDateTime],
-    _id: Option[String],
-    _updatedAt: Option[OffsetDateTime],
+    _createdAt: OffsetDateTime,
+    _id: String,
+    _updatedAt: OffsetDateTime,
     _ingestionDetails: CatalogsFeedIngestionDetails,
     _status: CatalogsFeedProcessingStatus,
     _productCounts: CatalogsFeedProductCounts,

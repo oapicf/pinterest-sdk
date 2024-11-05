@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("BulkDownloadRequest_campaign_filter")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequestCampaignFilter {
 
   private String startTime;
@@ -35,10 +35,10 @@ public class BulkDownloadRequestCampaignFilter {
   private String name;
 
   @Valid
-  private List<CampaignSummaryStatus> campaignStatus;
+  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
 
   @Valid
-  private List<ObjectiveType> objectiveType;
+  private List<ObjectiveType> objectiveType = new ArrayList<>();
 
   public BulkDownloadRequestCampaignFilter startTime(String startTime) {
     this.startTime = startTime;
@@ -48,7 +48,7 @@ public class BulkDownloadRequestCampaignFilter {
   /**
    * Unix UTC timestamp.
    * @return startTime
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "start_time", example = "1622848072", description = "Unix UTC timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_time")
@@ -68,7 +68,7 @@ public class BulkDownloadRequestCampaignFilter {
   /**
    * Unix UTC timestamp.
    * @return endTime
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "end_time", example = "1622848072", description = "Unix UTC timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_time")
@@ -88,7 +88,7 @@ public class BulkDownloadRequestCampaignFilter {
   /**
    * Campaign name
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "campaign name", description = "Campaign name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -116,7 +116,7 @@ public class BulkDownloadRequestCampaignFilter {
   /**
    * Get campaignStatus
    * @return campaignStatus
-  */
+   */
   @Valid 
   @Schema(name = "campaign_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_status")
@@ -144,7 +144,7 @@ public class BulkDownloadRequestCampaignFilter {
   /**
    * Get objectiveType
    * @return objectiveType
-  */
+   */
   @Valid 
   @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")

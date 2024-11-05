@@ -21,7 +21,7 @@ void main() {
       // TODO
     });
 
-    // Language language
+    // CatalogsItemsRequestLanguage language
     test('to test the property `language`', () async {
       // TODO
     });

@@ -3,7 +3,7 @@ const CatalogsCreateRetailItem = require('../models/CatalogsCreateRetailItem');
 const CatalogsDeleteRetailItem = require('../models/CatalogsDeleteRetailItem');
 const CatalogsUpdateRetailItem = require('../models/CatalogsUpdateRetailItem');
 const CatalogsUpsertRetailItem = require('../models/CatalogsUpsertRetailItem');
-const ItemAttributes = require('../models/ItemAttributes');
+const ItemAttributesRequest = require('../models/ItemAttributesRequest');
 const UpdateMaskFieldType = require('../models/UpdateMaskFieldType');
 
 module.exports = {
@@ -22,13 +22,10 @@ module.exports = {
                 required: true,
                 type: 'string',
                 choices: [
-                    'CREATE',
-                    'UPDATE',
-                    'UPSERT',
                     'DELETE',
                 ],
             },
-            ...ItemAttributes.fields(`${keyPrefix}attributes`, isInput),
+            ...ItemAttributesRequest.fields(`${keyPrefix}attributes`, isInput),
             {
                 key: `${keyPrefix}update_mask`,
                 list: true,
@@ -42,7 +39,7 @@ module.exports = {
         return {
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'operation': bundle.inputData?.[`${keyPrefix}operation`],
-            'attributes': utils.removeIfEmpty(ItemAttributes.mapping(bundle, `${keyPrefix}attributes`)),
+            'attributes': utils.removeIfEmpty(ItemAttributesRequest.mapping(bundle, `${keyPrefix}attributes`)),
             'update_mask': utils.childMapping(bundle.inputData?.[`${keyPrefix}update_mask`], `${keyPrefix}update_mask`, UpdateMaskFieldType),
         }
     },

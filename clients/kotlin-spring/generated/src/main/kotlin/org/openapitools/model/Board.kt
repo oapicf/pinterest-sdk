@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.BoardMedia
@@ -64,22 +65,30 @@ data class Board(
     @get:JsonProperty("media") val media: BoardMedia? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
+    @Schema(example = "null", readOnly = true, description = "")
     @get:JsonProperty("owner") val owner: BoardOwner? = null,
 
     @Schema(example = "null", description = "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>")
     @get:JsonProperty("privacy") val privacy: Board.Privacy? = Privacy.PUBLIC
-) {
+    ) {
 
     /**
     * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
     * Values: PUBLIC,PROTECTED,SECRET
     */
-    enum class Privacy(val value: kotlin.String) {
+    enum class Privacy(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("PUBLIC") PUBLIC("PUBLIC"),
-        @JsonProperty("PROTECTED") PROTECTED("PROTECTED"),
-        @JsonProperty("SECRET") SECRET("SECRET")
+        PUBLIC("PUBLIC"),
+        PROTECTED("PROTECTED"),
+        SECRET("SECRET");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Privacy {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 /*
  * CatalogsVerticalProductGroupUpdateRequest.h
  *
- * Request object for updating a hotel product group.
+ * Request object for updating a catalog based product group.
  */
 
 #ifndef _CatalogsVerticalProductGroupUpdateRequest_H_
@@ -9,8 +9,12 @@
 
 
 #include <string>
-#include "CatalogsHotelProductGroupFilters.h"
+#include "CatalogsCreativeAssetsProductGroupFilters.h"
+#include "CatalogsCreativeAssetsProductGroupUpdateRequest.h"
 #include "CatalogsHotelProductGroupUpdateRequest.h"
+#include "CatalogsLocale.h"
+#include "CatalogsRetailProductGroupUpdateRequest.h"
+#include "Country.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -22,7 +26,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Request object for updating a hotel product group.
+/*! \brief Request object for updating a catalog based product group.
  *
  *  \ingroup Models
  *
@@ -70,17 +74,33 @@ public:
 	void setDescription(std::string  description);
 	/*! \brief Get 
 	 */
-	CatalogsHotelProductGroupFilters getFilters();
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsHotelProductGroupFilters  filters);
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	/*! \brief Get 
+	 */
+	Country getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(Country  country);
+	/*! \brief Get 
+	 */
+	CatalogsLocale getLocale();
+
+	/*! \brief Set 
+	 */
+	void setLocale(CatalogsLocale  locale);
 
 private:
 	std::string catalog_type;
 	std::string name;
 	std::string description;
-	CatalogsHotelProductGroupFilters filters;
+	CatalogsCreativeAssetsProductGroupFilters filters;
+	Country country;
+	CatalogsLocale locale;
 	void __init();
 	void __cleanup();
 

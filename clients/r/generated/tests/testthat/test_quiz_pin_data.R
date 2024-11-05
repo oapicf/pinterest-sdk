@@ -18,3 +18,18 @@ test_that("results", {
   # uncomment below to test the property
   #expect_equal(model.instance$`results`, "EXPECTED_RESULT")
 })
+
+test_that("tie_breaker_type", {
+  # tests for the property `tie_breaker_type` (character)
+  # Quiz ad tie breaker type, default is RANDOM
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`tie_breaker_type`, "EXPECTED_RESULT")
+})
+
+test_that("tie_breaker_custom_result", {
+  # tests for the property `tie_breaker_custom_result` (QuizPinResult)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`tie_breaker_custom_result`, "EXPECTED_RESULT")
+})

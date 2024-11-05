@@ -28,6 +28,7 @@ Protected Class OauthAccessTokenRequestRefresh
         
         AuthorizationCode
         RefreshToken
+        ClientCredentials
         
     #tag EndEnum
 
@@ -40,6 +41,8 @@ Protected Class OauthAccessTokenRequestRefresh
 		      Return "authorization_code"
 		    Case Grant_typeEnum.RefreshToken
 		      Return "refresh_token"
+		    Case Grant_typeEnum.ClientCredentials
+		      Return "client_credentials"
 		    
 		  End Select
 		  Return ""

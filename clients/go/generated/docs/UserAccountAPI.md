@@ -43,7 +43,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	explicitFollowing := true // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
@@ -71,7 +71,7 @@ Other parameters are passed through a pointer to a apiBoardsUserFollowsListReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [default to false]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -187,7 +187,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -213,7 +213,7 @@ Other parameters are passed through a pointer to a apiFollowersListRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
 
 ### Return type
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -282,7 +282,7 @@ Other parameters are passed through a pointer to a apiLinkedBusinessAccountsGetR
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -520,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -609,7 +609,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -644,7 +644,7 @@ import (
 func main() {
 	username := "username" // string | A valid username
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -675,7 +675,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
 
 ### Return type
 
@@ -683,7 +683,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -783,7 +783,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	feedType := "feedType_example" // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (optional) (default to "ALL")
 	explicitFollowing := true // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to false)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
@@ -812,7 +812,7 @@ Other parameters are passed through a pointer to a apiUserFollowingGetRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **feedType** | **UserFollowingFeedType** | Thrift param specifying what type of followees will be kept. Default to include all followees. | [default to &quot;ALL&quot;]
  **explicitFollowing** | **bool** | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [default to false]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
@@ -823,7 +823,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -857,7 +857,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -883,7 +883,7 @@ Other parameters are passed through a pointer to a apiUserWebsitesGetRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
 
 ### Return type
 
@@ -905,7 +905,7 @@ Name | Type | Description  | Notes
 
 ## VerifyWebsiteUpdate
 
-> UserWebsiteSummary VerifyWebsiteUpdate(ctx).UserWebsiteVerifyRequest(userWebsiteVerifyRequest).Execute()
+> UserWebsiteSummary VerifyWebsiteUpdate(ctx).UserWebsiteVerifyRequest(userWebsiteVerifyRequest).AdAccountId(adAccountId).Execute()
 
 Verify website
 
@@ -925,10 +925,11 @@ import (
 
 func main() {
 	userWebsiteVerifyRequest := *openapiclient.NewUserWebsiteVerifyRequest() // UserWebsiteVerifyRequest | Verify a website.
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserAccountAPI.VerifyWebsiteUpdate(context.Background()).UserWebsiteVerifyRequest(userWebsiteVerifyRequest).Execute()
+	resp, r, err := apiClient.UserAccountAPI.VerifyWebsiteUpdate(context.Background()).UserWebsiteVerifyRequest(userWebsiteVerifyRequest).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.VerifyWebsiteUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -950,6 +951,7 @@ Other parameters are passed through a pointer to a apiVerifyWebsiteUpdateRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md) | Verify a website. | 
+ **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
 
@@ -971,7 +973,7 @@ Name | Type | Description  | Notes
 
 ## WebsiteVerificationGet
 
-> UserWebsiteVerificationCode WebsiteVerificationGet(ctx).Execute()
+> UserWebsiteVerificationCode WebsiteVerificationGet(ctx).AdAccountId(adAccountId).Execute()
 
 Get user verification code for website claiming
 
@@ -990,10 +992,11 @@ import (
 )
 
 func main() {
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserAccountAPI.WebsiteVerificationGet(context.Background()).Execute()
+	resp, r, err := apiClient.UserAccountAPI.WebsiteVerificationGet(context.Background()).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAccountAPI.WebsiteVerificationGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1005,12 +1008,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiWebsiteVerificationGetRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
 
@@ -1018,7 +1025,7 @@ Other parameters are passed through a pointer to a apiWebsiteVerificationGetRequ
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

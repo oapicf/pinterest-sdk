@@ -34,14 +34,14 @@ public struct PinCreate: Codable, JSONEncodable, Hashable {
     /** The board section to which this Pin belongs. */
     public var boardSectionId: String?
     public var boardOwner: BoardOwner?
-    public var media: SummaryPinMedia?
+    public var media: PinMedia?
     public var mediaSource: PinMediaSource?
     /** The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
     public var parentPinId: String?
     /** Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
     public var note: String?
 
-    public init(id: String? = nil, createdAt: Date? = nil, link: String? = nil, title: String? = nil, description: String? = nil, dominantColor: String? = nil, altText: String? = nil, boardId: String? = nil, boardSectionId: String? = nil, boardOwner: BoardOwner? = nil, media: SummaryPinMedia? = nil, mediaSource: PinMediaSource? = nil, parentPinId: String? = nil, note: String? = nil) {
+    public init(id: String? = nil, createdAt: Date? = nil, link: String? = nil, title: String? = nil, description: String? = nil, dominantColor: String? = nil, altText: String? = nil, boardId: String? = nil, boardSectionId: String? = nil, boardOwner: BoardOwner? = nil, media: PinMedia? = nil, mediaSource: PinMediaSource? = nil, parentPinId: String? = nil, note: String? = nil) {
         self.id = id
         self.createdAt = createdAt
         self.link = link

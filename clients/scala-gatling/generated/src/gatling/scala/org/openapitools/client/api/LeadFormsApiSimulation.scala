@@ -58,15 +58,19 @@ class LeadFormsApiSimulation extends Simulation {
     // Setup all the operations per second for the test to ultimately be generated from configs
     val leadFormGetPerSecond = config.getDouble("performance.operationsPerSecond.leadFormGet") * rateMultiplier * instanceMultiplier
     val leadFormTestCreatePerSecond = config.getDouble("performance.operationsPerSecond.leadFormTestCreate") * rateMultiplier * instanceMultiplier
+    val leadFormsCreatePerSecond = config.getDouble("performance.operationsPerSecond.leadFormsCreate") * rateMultiplier * instanceMultiplier
     val leadFormsListPerSecond = config.getDouble("performance.operationsPerSecond.leadFormsList") * rateMultiplier * instanceMultiplier
+    val leadFormsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.leadFormsUpdate") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
     val lead_form/getPATHFeeder = csv(userDataDirectory + File.separator + "leadFormGet-pathParams.csv").random
     val lead_form_test/createPATHFeeder = csv(userDataDirectory + File.separator + "leadFormTestCreate-pathParams.csv").random
+    val lead_forms/createPATHFeeder = csv(userDataDirectory + File.separator + "leadFormsCreate-pathParams.csv").random
     val lead_forms/listQUERYFeeder = csv(userDataDirectory + File.separator + "leadFormsList-queryParams.csv").random
     val lead_forms/listPATHFeeder = csv(userDataDirectory + File.separator + "leadFormsList-pathParams.csv").random
+    val lead_forms/updatePATHFeeder = csv(userDataDirectory + File.separator + "leadFormsUpdate-pathParams.csv").random
 
     // Setup all scenarios
 
@@ -99,14 +103,28 @@ class LeadFormsApiSimulation extends Simulation {
     )
 
     
+    val scnleadFormsCreate = scenario("leadFormsCreateSimulation")
+        .feed(lead_forms/createPATHFeeder)
+        .exec(http("leadFormsCreate")
+        .httpRequest("POST","/ad_accounts/${ad_account_id}/lead_forms")
+)
+
+    // Run scnleadFormsCreate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnleadFormsCreate.inject(
+        rampUsersPerSec(1) to(leadFormsCreatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(leadFormsCreatePerSecond) during(durationSeconds),
+        rampUsersPerSec(leadFormsCreatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnleadFormsList = scenario("leadFormsListSimulation")
         .feed(lead_forms/listQUERYFeeder)
         .feed(lead_forms/listPATHFeeder)
         .exec(http("leadFormsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/lead_forms")
+        .queryParam("page_size","${page_size}")
         .queryParam("order","${order}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
 )
 
     // Run scnleadFormsList with warm up and reach a constant rate for entire duration
@@ -114,6 +132,20 @@ class LeadFormsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(leadFormsListPerSecond) during(rampUpSeconds),
         constantUsersPerSec(leadFormsListPerSecond) during(durationSeconds),
         rampUsersPerSec(leadFormsListPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnleadFormsUpdate = scenario("leadFormsUpdateSimulation")
+        .feed(lead_forms/updatePATHFeeder)
+        .exec(http("leadFormsUpdate")
+        .httpRequest("PATCH","/ad_accounts/${ad_account_id}/lead_forms")
+)
+
+    // Run scnleadFormsUpdate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnleadFormsUpdate.inject(
+        rampUsersPerSec(1) to(leadFormsUpdatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(leadFormsUpdatePerSecond) during(durationSeconds),
+        rampUsersPerSec(leadFormsUpdatePerSecond) to(1) during(rampDownSeconds)
     )
 
     setUp(

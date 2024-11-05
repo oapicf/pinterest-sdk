@@ -6,7 +6,7 @@ open OpenAPI.Model.CatalogsCreateRetailItem
 open OpenAPI.Model.CatalogsDeleteRetailItem
 open OpenAPI.Model.CatalogsUpdateRetailItem
 open OpenAPI.Model.CatalogsUpsertRetailItem
-open OpenAPI.Model.ItemAttributes
+open OpenAPI.Model.ItemAttributesRequest
 open OpenAPI.Model.UpdateMaskFieldType
 
 module CatalogsRetailBatchRequestItemsInner =
@@ -14,13 +14,13 @@ module CatalogsRetailBatchRequestItemsInner =
   //#region CatalogsRetailBatchRequestItemsInner
 
   //#region enums
-  type OperationEnum = CREATEEnum of string  |  UPDATEEnum of string  |  UPSERTEnum of string  |  DELETEEnum of string  
+  type OperationEnum = DELETEEnum of string  
   //#endregion
 
   type CatalogsRetailBatchRequest_items_inner = {
     ItemId : string;
     Operation : OperationEnum;
-    Attributes : ItemAttributes;
+    Attributes : ItemAttributesRequest;
     UpdateMask : UpdateMaskFieldType[];
   }
   //#endregion

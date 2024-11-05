@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &ItemUpsertBatchRecord{}
 type ItemUpsertBatchRecord struct {
 	// The catalog item id in the merchant namespace
 	ItemId *string `json:"item_id,omitempty"`
-	Attributes *ItemAttributes `json:"attributes,omitempty"`
+	Attributes *ItemAttributesRequest `json:"attributes,omitempty"`
 }
 
 // NewItemUpsertBatchRecord instantiates a new ItemUpsertBatchRecord object
@@ -75,9 +75,9 @@ func (o *ItemUpsertBatchRecord) SetItemId(v string) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *ItemUpsertBatchRecord) GetAttributes() ItemAttributes {
+func (o *ItemUpsertBatchRecord) GetAttributes() ItemAttributesRequest {
 	if o == nil || IsNil(o.Attributes) {
-		var ret ItemAttributes
+		var ret ItemAttributesRequest
 		return ret
 	}
 	return *o.Attributes
@@ -85,7 +85,7 @@ func (o *ItemUpsertBatchRecord) GetAttributes() ItemAttributes {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ItemUpsertBatchRecord) GetAttributesOk() (*ItemAttributes, bool) {
+func (o *ItemUpsertBatchRecord) GetAttributesOk() (*ItemAttributesRequest, bool) {
 	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *ItemUpsertBatchRecord) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given ItemAttributes and assigns it to the Attributes field.
-func (o *ItemUpsertBatchRecord) SetAttributes(v ItemAttributes) {
+// SetAttributes gets a reference to the given ItemAttributesRequest and assigns it to the Attributes field.
+func (o *ItemUpsertBatchRecord) SetAttributes(v ItemAttributesRequest) {
 	o.Attributes = &v
 }
 

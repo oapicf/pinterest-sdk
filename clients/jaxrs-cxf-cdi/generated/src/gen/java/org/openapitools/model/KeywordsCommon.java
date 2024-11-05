@@ -24,7 +24,7 @@ public class KeywordsCommon   {
   private String value;
 
   /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
+   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    **/
   public KeywordsCommon bid(Integer bid) {
     this.bid = bid;
@@ -32,7 +32,7 @@ public class KeywordsCommon   {
   }
 
   
-  @ApiModelProperty(example = "200000", value = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
   @JsonProperty("bid")
   public Integer getBid() {
     return bid;

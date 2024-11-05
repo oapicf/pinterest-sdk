@@ -14,14 +14,14 @@ API.Client.CatalogsHotelItemsBatch = function() {}
 API.Client.CatalogsHotelItemsBatch.prototype.batchId;
 
 /**
- * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+ * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
  * @type {!Date}
  * @export
  */
 API.Client.CatalogsHotelItemsBatch.prototype.createdTime;
 
 /**
- * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+ * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
  * @type {!Date}
  * @export
  */

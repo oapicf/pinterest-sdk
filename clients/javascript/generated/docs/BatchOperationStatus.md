@@ -7,4 +7,6 @@
 
 * `COMPLETED` (value: `"COMPLETED"`)
 
+* `FAILED` (value: `"FAILED"`)
+
 

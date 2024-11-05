@@ -32,5 +32,8 @@ data class SSIOEditInsertionOrderResponse (
     @Json(name = "pin_order_id")
     val pinOrderId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

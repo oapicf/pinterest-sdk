@@ -29,7 +29,7 @@ data class KeywordsResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("keywords") val keywords: kotlin.collections.List<Keyword>? = null
-) {
+    ) {
 
 }
 

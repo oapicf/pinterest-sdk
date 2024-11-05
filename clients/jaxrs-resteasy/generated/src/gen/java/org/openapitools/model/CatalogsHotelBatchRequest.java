@@ -11,20 +11,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.CatalogsHotelBatchItem;
-import org.openapitools.model.CatalogsType;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@ApiModel(description="Request object to update catalogs hotel items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Request object to update catalogs hotel items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelBatchRequest   {
   
-  private CatalogsType catalogType;
+
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    HOTEL("HOTEL");
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private Country country;
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
   private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
   private String catalogId;
 
@@ -34,11 +51,10 @@ public class CatalogsHotelBatchRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
   @NotNull
-  @Valid
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -63,10 +79,10 @@ public class CatalogsHotelBatchRequest   {
   @JsonProperty("language")
   @NotNull
   @Valid
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 

@@ -2,10 +2,10 @@
 # CatalogsFeedValidationDetails
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**errors** | [**CatalogsFeedValidationErrors**](CatalogsFeedValidationErrors.md) |  | 
-**warnings** | [**CatalogsFeedValidationWarnings**](CatalogsFeedValidationWarnings.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **errors** | [**CatalogsFeedValidationErrors**](CatalogsFeedValidationErrors.md) |  |  |
+| **warnings** | [**CatalogsFeedValidationWarnings**](CatalogsFeedValidationWarnings.md) |  |  |
 
 
 

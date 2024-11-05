@@ -39,7 +39,6 @@ module.exports = {
                     'INVOICE_SALES_INCENTIVE_CREDIT',
                     'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED',
                     'PREPAID_CREDIT_REFUND',
-                    'null',
                 ],
             },
             {

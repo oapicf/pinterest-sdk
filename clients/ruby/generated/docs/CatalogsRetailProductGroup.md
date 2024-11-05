@@ -14,7 +14,10 @@
 | **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] |
 | **created_at** | **Integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] |
 | **updated_at** | **Integer** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] |
-| **feed_id** | **String** |  |  |
+| **catalog_id** | **String** | Catalog id pertaining to the retail product group. |  |
+| **feed_id** | **String** | id of the catalogs feed belonging to this catalog product group |  |
+| **country** | **String** |  | [optional] |
+| **locale** | **String** |  | [optional] |
 
 ## Example
 
@@ -32,7 +35,10 @@ instance = PinterestSdkClient::CatalogsRetailProductGroup.new(
   status: null,
   created_at: 1621350033000,
   updated_at: 1622742155000,
-  feed_id: null
+  catalog_id: null,
+  feed_id: 2680059592705,
+  country: null,
+  locale: null
 )
 ```
 

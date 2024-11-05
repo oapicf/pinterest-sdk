@@ -21,6 +21,10 @@
     }
 
     Class class = nil;
+    if ([discriminatedClassName isEqualToString:@"CREATIVE_ASSETS"]) {
+        class = NSClassFromString(@"OAICatalogsCreativeAssetsItemsFilter");
+    }
+    else
     if ([discriminatedClassName isEqualToString:@"HOTEL"]) {
         class = NSClassFromString(@"OAICatalogsHotelItemsFilter");
     }
@@ -46,7 +50,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"itemIds": @"item_ids", @"catalogId": @"catalog_id", @"hotelIds": @"hotel_ids" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"itemIds": @"item_ids", @"catalogId": @"catalog_id", @"hotelIds": @"hotel_ids", @"creativeAssetsIds": @"creative_assets_ids" }];
 }
 
 /**

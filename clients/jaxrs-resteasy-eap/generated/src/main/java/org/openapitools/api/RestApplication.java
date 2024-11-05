@@ -7,7 +7,9 @@ import java.util.Set;
 import java.util.HashSet;
 
 import org.openapitools.api.impl.AdAccountsApiServiceImpl;
+import org.openapitools.api.impl.AdvancedAuctionApiServiceImpl;
 import org.openapitools.api.impl.BoardsApiServiceImpl;
+import org.openapitools.api.impl.BusinessesApiServiceImpl;
 import org.openapitools.api.impl.CatalogsApiServiceImpl;
 import org.openapitools.api.impl.IntegrationsApiServiceImpl;
 import org.openapitools.api.impl.MediaApiServiceImpl;
@@ -27,7 +29,9 @@ public class RestApplication extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new HashSet<Class<?>>();
         resources.add(AdAccountsApiServiceImpl.class);
+        resources.add(AdvancedAuctionApiServiceImpl.class);
         resources.add(BoardsApiServiceImpl.class);
+        resources.add(BusinessesApiServiceImpl.class);
         resources.add(CatalogsApiServiceImpl.class);
         resources.add(IntegrationsApiServiceImpl.class);
         resources.add(MediaApiServiceImpl.class);

@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,15 +17,22 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Keyword match type
-* Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE,`null`
+* Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE
 */
-enum class MatchTypeResponse(val value: kotlin.String) {
+enum class MatchTypeResponse(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("BROAD") BROAD("BROAD"),
-    @JsonProperty("PHRASE") PHRASE("PHRASE"),
-    @JsonProperty("EXACT") EXACT("EXACT"),
-    @JsonProperty("EXACT_NEGATIVE") EXACT_NEGATIVE("EXACT_NEGATIVE"),
-    @JsonProperty("PHRASE_NEGATIVE") PHRASE_NEGATIVE("PHRASE_NEGATIVE"),
-    @JsonProperty("null") `null`("null")
+    BROAD("BROAD"),
+    PHRASE("PHRASE"),
+    EXACT("EXACT"),
+    EXACT_NEGATIVE("EXACT_NEGATIVE"),
+    PHRASE_NEGATIVE("PHRASE_NEGATIVE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): MatchTypeResponse {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

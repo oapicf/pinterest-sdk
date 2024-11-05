@@ -11,7 +11,7 @@ The class is defined in **[CatalogsItemsCreateBatchRequest.java](../../src/main/
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | `Country` |  | 
-**language** | `Language` |  | 
+**language** | [`CatalogsItemsRequestLanguage`](CatalogsItemsRequestLanguage.md) |  | 
 **operation** | `BatchOperation` |  | 
 **items** | [`List&lt;ItemCreateBatchRecord&gt;`](ItemCreateBatchRecord.md) | Array with catalogs items | 
 

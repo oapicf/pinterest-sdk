@@ -35,13 +35,15 @@ library(openapi)
 #
 # prepare function argument(s)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_explicit_following <- FALSE # character | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$BoardsUserFollowsList(bookmark = var_bookmark, page_size = var_page_size, explicit_following = var_explicit_following, ad_account_id = var_ad_account_iddata_file = "result.txt")
 result <- api_instance$BoardsUserFollowsList(bookmark = var_bookmark, page_size = var_page_size, explicit_following = var_explicit_following, ad_account_id = var_ad_account_id)
@@ -53,7 +55,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **explicit_following** | **character**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to FALSE]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
@@ -63,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -82,7 +84,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```R
@@ -145,11 +147,13 @@ library(openapi)
 #
 # prepare function argument(s)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$FollowersList(bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
 result <- api_instance$FollowersList(bookmark = var_bookmark, page_size = var_page_size)
@@ -161,7 +165,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -169,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -200,6 +204,8 @@ library(openapi)
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$LinkedBusinessAccountsGet(data_file = "result.txt")
 result <- api_instance$LinkedBusinessAccountsGet()
@@ -215,7 +221,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -317,7 +323,7 @@ Name | Type | Description  | Notes
  **start_date** | **character**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
  **from_claimed_content** | Enum [OTHER, CLAIMED, BOTH] | Filter on Pins that match your claimed domain. | [optional] [default to &quot;BOTH&quot;]
- **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
+ **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **content_type** | Enum [ALL, PAID, ORGANIC] | Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **source** | Enum [ALL, YOUR_PINS, OTHER_PINS] | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
@@ -376,6 +382,8 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$UserAccountAnalyticsTopPins(var_start_date, var_end_date, var_sort_by, from_claimed_content = var_from_claimed_content, pin_format = var_pin_format, app_types = var_app_types, content_type = var_content_type, source = var_source, metric_types = var_metric_types, num_of_pins = var_num_of_pins, created_in_last_n_days = var_created_in_last_n_days, ad_account_id = var_ad_account_iddata_file = "result.txt")
 result <- api_instance$UserAccountAnalyticsTopPins(var_start_date, var_end_date, var_sort_by, from_claimed_content = var_from_claimed_content, pin_format = var_pin_format, app_types = var_app_types, content_type = var_content_type, source = var_source, metric_types = var_metric_types, num_of_pins = var_num_of_pins, created_in_last_n_days = var_created_in_last_n_days, ad_account_id = var_ad_account_id)
@@ -390,7 +398,7 @@ Name | Type | Description  | Notes
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
  **sort_by** | Enum [ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE] | Specify sorting order for metrics | 
  **from_claimed_content** | Enum [OTHER, CLAIMED, BOTH] | Filter on Pins that match your claimed domain. | [optional] [default to &quot;BOTH&quot;]
- **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
+ **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **content_type** | Enum [ALL, PAID, ORGANIC] | Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **source** | Enum [ALL, YOUR_PINS, OTHER_PINS] | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
@@ -405,7 +413,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -449,6 +457,8 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$UserAccountAnalyticsTopVideoPins(var_start_date, var_end_date, var_sort_by, from_claimed_content = var_from_claimed_content, pin_format = var_pin_format, app_types = var_app_types, content_type = var_content_type, source = var_source, metric_types = var_metric_types, num_of_pins = var_num_of_pins, created_in_last_n_days = var_created_in_last_n_days, ad_account_id = var_ad_account_iddata_file = "result.txt")
 result <- api_instance$UserAccountAnalyticsTopVideoPins(var_start_date, var_end_date, var_sort_by, from_claimed_content = var_from_claimed_content, pin_format = var_pin_format, app_types = var_app_types, content_type = var_content_type, source = var_source, metric_types = var_metric_types, num_of_pins = var_num_of_pins, created_in_last_n_days = var_created_in_last_n_days, ad_account_id = var_ad_account_id)
@@ -463,7 +473,7 @@ Name | Type | Description  | Notes
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
  **sort_by** | Enum [IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] | Specify sorting order for video metrics | 
  **from_claimed_content** | Enum [OTHER, CLAIMED, BOTH] | Filter on Pins that match your claimed domain. | [optional] [default to &quot;BOTH&quot;]
- **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
+ **pin_format** | Enum [ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] | Pin formats to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **content_type** | Enum [ALL, PAID, ORGANIC] | Filter to paid or organic data. Default is all. | [optional] [default to &quot;ALL&quot;]
  **source** | Enum [ALL, YOUR_PINS, OTHER_PINS] | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to &quot;ALL&quot;]
@@ -478,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -508,11 +518,13 @@ library(openapi)
 # prepare function argument(s)
 var_username <- "username" # character | A valid username
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$UserAccountFollowedInterests(var_username, bookmark = var_bookmark, page_size = var_page_sizedata_file = "result.txt")
 result <- api_instance$UserAccountFollowedInterests(var_username, bookmark = var_bookmark, page_size = var_page_size)
@@ -525,7 +537,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **character**| A valid username | 
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -533,7 +545,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -554,7 +566,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```R
@@ -568,6 +580,8 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$UserAccountGet(ad_account_id = var_ad_account_iddata_file = "result.txt")
 result <- api_instance$UserAccountGet(ad_account_id = var_ad_account_id)
@@ -586,7 +600,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -615,7 +629,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_feed_type <- UserFollowingFeedType$new() # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees. (Optional)
 var_explicit_following <- FALSE # character | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
@@ -623,6 +637,8 @@ var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$UserFollowingGet(bookmark = var_bookmark, page_size = var_page_size, feed_type = var_feed_type, explicit_following = var_explicit_following, ad_account_id = var_ad_account_iddata_file = "result.txt")
 result <- api_instance$UserFollowingGet(bookmark = var_bookmark, page_size = var_page_size, feed_type = var_feed_type, explicit_following = var_explicit_following, ad_account_id = var_ad_account_id)
@@ -634,7 +650,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **feed_type** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
  **explicit_following** | **character**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to FALSE]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
@@ -645,7 +661,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -673,7 +689,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -689,7 +705,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -712,7 +728,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **VerifyWebsiteUpdate**
-> UserWebsiteSummary VerifyWebsiteUpdate(user_website_verify_request)
+> UserWebsiteSummary VerifyWebsiteUpdate(user_website_verify_request, ad_account_id = var.ad_account_id)
 
 Verify website
 
@@ -726,13 +742,14 @@ library(openapi)
 #
 # prepare function argument(s)
 var_user_website_verify_request <- UserWebsiteVerifyRequest$new("website_example", "FILENAME") # UserWebsiteVerifyRequest | Verify a website.
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$VerifyWebsiteUpdate(var_user_website_verify_requestdata_file = "result.txt")
-result <- api_instance$VerifyWebsiteUpdate(var_user_website_verify_request)
+# result <- api_instance$VerifyWebsiteUpdate(var_user_website_verify_request, ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$VerifyWebsiteUpdate(var_user_website_verify_request, ad_account_id = var_ad_account_id)
 dput(result)
 ```
 
@@ -741,6 +758,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_website_verify_request** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -762,7 +780,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **WebsiteVerificationGet**
-> UserWebsiteVerificationCode WebsiteVerificationGet()
+> UserWebsiteVerificationCode WebsiteVerificationGet(ad_account_id = var.ad_account_id)
 
 Get user verification code for website claiming
 
@@ -774,18 +792,25 @@ library(openapi)
 
 # Get user verification code for website claiming
 #
+# prepare function argument(s)
+var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- UserAccountApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$WebsiteVerificationGet(data_file = "result.txt")
-result <- api_instance$WebsiteVerificationGet()
+# result <- api_instance$WebsiteVerificationGet(ad_account_id = var_ad_account_iddata_file = "result.txt")
+result <- api_instance$WebsiteVerificationGet(ad_account_id = var_ad_account_id)
 dput(result)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -793,7 +818,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

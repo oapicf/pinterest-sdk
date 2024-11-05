@@ -17,7 +17,7 @@ import java.util.List;
  * SingleInterestTargetingOptionResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SingleInterestTargetingOptionResponse   {
   @JsonProperty("id")
   private String id;
@@ -37,10 +37,10 @@ public class SingleInterestTargetingOptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "945391946569", value = "")
   public String getId() {
     return id;
@@ -55,10 +55,10 @@ public class SingleInterestTargetingOptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "Dress", value = "")
   public String getName() {
     return name;
@@ -81,10 +81,10 @@ public class SingleInterestTargetingOptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get childInterests
    * @return childInterests
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<String> getChildInterests() {
     return childInterests;
@@ -99,10 +99,10 @@ public class SingleInterestTargetingOptionResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get level
    * @return level
-  **/
+   */
   @ApiModelProperty(example = "2", value = "")
   public Integer getLevel() {
     return level;

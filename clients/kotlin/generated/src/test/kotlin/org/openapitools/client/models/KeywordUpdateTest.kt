@@ -37,7 +37,7 @@ class KeywordUpdateTest : ShouldSpec() {
             //modelInstance.archived shouldBe ("TODO")
         }
 
-        // to test the property `bid` - Keyword custom bid in microcurrency - null if inherited from parent ad group.
+        // to test the property `bid` - </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
         should("test bid") {
             // uncomment below to test the property
             //modelInstance.bid shouldBe ("TODO")

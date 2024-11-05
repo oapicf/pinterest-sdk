@@ -21,8 +21,24 @@ func (c *Container) LeadFormTestCreate(ctx echo.Context) error {
 }
 
 
-// LeadFormsList - Get lead forms
+// LeadFormsCreate - Create lead forms
+func (c *Container) LeadFormsCreate(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// LeadFormsList - List lead forms
 func (c *Container) LeadFormsList(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
+// LeadFormsUpdate - Update lead forms
+func (c *Container) LeadFormsUpdate(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",
 	})

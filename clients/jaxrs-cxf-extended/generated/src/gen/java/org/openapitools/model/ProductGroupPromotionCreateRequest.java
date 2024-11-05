@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionCreateRequestElement;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,7 +22,7 @@ public class ProductGroupPromotionCreateRequest  {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
  /**
   * ID of the Ad Group the Product Group Promotion belongs to.
   * @return adGroupId
@@ -54,21 +54,21 @@ public class ProductGroupPromotionCreateRequest  {
   */
   @JsonProperty("product_group_promotion")
   @NotNull
-  public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {
+  public List<@Valid ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
     return productGroupPromotion;
   }
 
   /**
    * Sets the <code>productGroupPromotion</code> property.
    */
- public void setProductGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+ public void setProductGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 
   /**
    * Sets the <code>productGroupPromotion</code> property.
    */
-  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotion> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest productGroupPromotion(List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
     return this;
   }
@@ -76,7 +76,7 @@ public class ProductGroupPromotionCreateRequest  {
   /**
    * Adds a new item to the <code>productGroupPromotion</code> list.
    */
-  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotion productGroupPromotionItem) {
+  public ProductGroupPromotionCreateRequest addProductGroupPromotionItem(ProductGroupPromotionCreateRequestElement productGroupPromotionItem) {
     this.productGroupPromotion.add(productGroupPromotionItem);
     return this;
   }

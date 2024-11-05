@@ -407,6 +407,193 @@ bool LeadFormsManager::leadFormTestCreateSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool leadFormsCreateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	= reinterpret_cast<void(*)(LeadFormArrayResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	LeadFormArrayResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("LeadFormArrayResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "LeadFormArrayResponse", "LeadFormArrayResponse");
+			json_node_free(pJson);
+
+			if ("LeadFormArrayResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool leadFormsCreateHelper(char * accessToken,
+	std::string adAccountId, std::list<LeadFormCreateRequest> leadFormCreateRequest, 
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+	//TODO: Map Container
+	if (isprimitive("LeadFormCreateRequest")) {
+		node = converttoJson(&leadFormCreateRequest, "LeadFormCreateRequest", "array");
+	} else {
+		node = json_node_alloc();
+		json_array = json_array_new();
+		for (std::list
+			<LeadFormCreateRequest>::iterator bodyIter = leadFormCreateRequest.begin(); bodyIter != leadFormCreateRequest.end(); ++bodyIter) {
+			LeadFormCreateRequest itemAt = (*bodyIter);
+			char *jsonStr =  itemAt.toJson();
+			JsonNode *node_temp = json_from_string(jsonStr, NULL);
+			g_free(static_cast<gpointer>(jsonStr));
+			json_array_add_element(json_array, node_temp);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+	}
+	
+
+
+
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts/{ad_account_id}/lead_forms");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(LeadFormsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = leadFormsCreateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (LeadFormsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), leadFormsCreateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __LeadFormsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool LeadFormsManager::leadFormsCreateAsync(char * accessToken,
+	std::string adAccountId, std::list<LeadFormCreateRequest> leadFormCreateRequest, 
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	, void* userData)
+{
+	return leadFormsCreateHelper(accessToken,
+	adAccountId, leadFormCreateRequest, 
+	handler, userData, true);
+}
+
+bool LeadFormsManager::leadFormsCreateSync(char * accessToken,
+	std::string adAccountId, std::list<LeadFormCreateRequest> leadFormCreateRequest, 
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	, void* userData)
+{
+	return leadFormsCreateHelper(accessToken,
+	adAccountId, leadFormCreateRequest, 
+	handler, userData, false);
+}
+
 static bool leadFormsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -587,6 +774,193 @@ bool LeadFormsManager::leadFormsListSync(char * accessToken,
 {
 	return leadFormsListHelper(accessToken,
 	adAccountId, pageSize, order, bookmark, 
+	handler, userData, false);
+}
+
+static bool leadFormsUpdateProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	= reinterpret_cast<void(*)(LeadFormArrayResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	LeadFormArrayResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("LeadFormArrayResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "LeadFormArrayResponse", "LeadFormArrayResponse");
+			json_node_free(pJson);
+
+			if ("LeadFormArrayResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool leadFormsUpdateHelper(char * accessToken,
+	std::string adAccountId, std::list<LeadFormUpdateRequest> leadFormUpdateRequest, 
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+	//TODO: Map Container
+	if (isprimitive("LeadFormUpdateRequest")) {
+		node = converttoJson(&leadFormUpdateRequest, "LeadFormUpdateRequest", "array");
+	} else {
+		node = json_node_alloc();
+		json_array = json_array_new();
+		for (std::list
+			<LeadFormUpdateRequest>::iterator bodyIter = leadFormUpdateRequest.begin(); bodyIter != leadFormUpdateRequest.end(); ++bodyIter) {
+			LeadFormUpdateRequest itemAt = (*bodyIter);
+			char *jsonStr =  itemAt.toJson();
+			JsonNode *node_temp = json_from_string(jsonStr, NULL);
+			g_free(static_cast<gpointer>(jsonStr));
+			json_array_add_element(json_array, node_temp);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+	}
+	
+
+
+
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts/{ad_account_id}/lead_forms");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("PATCH");
+
+	if(strcmp("PUT", "PATCH") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(LeadFormsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = leadFormsUpdateProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (LeadFormsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), leadFormsUpdateProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __LeadFormsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool LeadFormsManager::leadFormsUpdateAsync(char * accessToken,
+	std::string adAccountId, std::list<LeadFormUpdateRequest> leadFormUpdateRequest, 
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	, void* userData)
+{
+	return leadFormsUpdateHelper(accessToken,
+	adAccountId, leadFormUpdateRequest, 
+	handler, userData, true);
+}
+
+bool LeadFormsManager::leadFormsUpdateSync(char * accessToken,
+	std::string adAccountId, std::list<LeadFormUpdateRequest> leadFormUpdateRequest, 
+	void(* handler)(LeadFormArrayResponse, Error, void* )
+	, void* userData)
+{
+	return leadFormsUpdateHelper(accessToken,
+	adAccountId, leadFormUpdateRequest, 
 	handler, userData, false);
 }
 

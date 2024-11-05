@@ -60,5 +60,6 @@ module ItemAttributes =
     VariantValues : string[];
     AdditionalImageLink : string[];
     ImageLink : string[];
+    VideoLink : string option;
   }
   //#endregion

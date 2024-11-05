@@ -9,8 +9,9 @@
 
 
 #include <string>
+#include "CatalogsCreativeAssetsProductGroup.h"
+#include "CatalogsCreativeAssetsProductGroupFilters.h"
 #include "CatalogsHotelProductGroup.h"
-#include "CatalogsProductGroupFilters.h"
 #include "CatalogsProductGroupStatus.h"
 #include "CatalogsProductGroupType.h"
 #include "CatalogsRetailProductGroup.h"
@@ -57,18 +58,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(std::string  catalog_type);
-	/*! \brief Get ID of the catalog product group.
+	/*! \brief Get ID of the creative assets product group.
 	 */
 	std::string getId();
 
-	/*! \brief Set ID of the catalog product group.
+	/*! \brief Set ID of the creative assets product group.
 	 */
 	void setId(std::string  id);
-	/*! \brief Get Name of catalog product group
+	/*! \brief Get Name of creative assets product group
 	 */
 	std::string getName();
 
-	/*! \brief Set Name of catalog product group
+	/*! \brief Set Name of creative assets product group
 	 */
 	void setName(std::string  name);
 	/*! \brief Get 
@@ -80,32 +81,11 @@ public:
 	void setDescription(std::string  description);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupFilters getFilters();
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsProductGroupFilters  filters);
-	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
-	 */
-	int getCreatedAt();
-
-	/*! \brief Set Unix timestamp in seconds of when catalog product group was created.
-	 */
-	void setCreatedAt(int  created_at);
-	/*! \brief Get Unix timestamp in seconds of last time catalog product group was updated.
-	 */
-	int getUpdatedAt();
-
-	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
-	 */
-	void setUpdatedAt(int  updated_at);
-	/*! \brief Get 
-	 */
-	std::string getCatalogId();
-
-	/*! \brief Set 
-	 */
-	void setCatalogId(std::string  catalog_id);
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
 	/*! \brief Get boolean indicator of whether the product group is being featured or not
 	 */
 	bool getIsFeatured();
@@ -127,27 +107,64 @@ public:
 	/*! \brief Set 
 	 */
 	void setStatus(CatalogsProductGroupStatus  status);
-	/*! \brief Get 
+	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
+	 */
+	int getCreatedAt();
+
+	/*! \brief Set Unix timestamp in seconds of when catalog product group was created.
+	 */
+	void setCreatedAt(int  created_at);
+	/*! \brief Get Unix timestamp in seconds of last time catalog product group was updated.
+	 */
+	int getUpdatedAt();
+
+	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
+	 */
+	void setUpdatedAt(int  updated_at);
+	/*! \brief Get Catalog id pertaining to the creative assets product group.
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the creative assets product group.
+	 */
+	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get id of the catalogs feed belonging to this catalog product group
 	 */
 	std::string getFeedId();
 
-	/*! \brief Set 
+	/*! \brief Set id of the catalogs feed belonging to this catalog product group
 	 */
 	void setFeedId(std::string  feed_id);
+	/*! \brief Get 
+	 */
+	std::string getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(std::string  country);
+	/*! \brief Get 
+	 */
+	std::string getLocale();
+
+	/*! \brief Set 
+	 */
+	void setLocale(std::string  locale);
 
 private:
 	std::string catalog_type;
 	std::string id;
 	std::string name;
 	std::string description;
-	CatalogsProductGroupFilters filters;
-	int created_at;
-	int updated_at;
-	std::string catalog_id;
+	CatalogsCreativeAssetsProductGroupFilters filters;
 	bool is_featured;
 	CatalogsProductGroupType type;
 	CatalogsProductGroupStatus status;
+	int created_at;
+	int updated_at;
+	std::string catalog_id;
 	std::string feed_id;
+	std::string country;
+	std::string locale;
 	void __init();
 	void __cleanup();
 

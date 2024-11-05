@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
@@ -15,10 +14,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 
-@JsonTypeName("Board_owner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@JsonTypeName("BoardOwner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BoardOwner   {
-  private @Valid String username;
+  private String username;
 
   /**
    **/

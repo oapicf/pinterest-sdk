@@ -86,6 +86,8 @@ class UserAccountApiSimulation extends Simulation {
     val user_account/getQUERYFeeder = csv(userDataDirectory + File.separator + "userAccountGet-queryParams.csv").random
     val user_following/getQUERYFeeder = csv(userDataDirectory + File.separator + "userFollowingGet-queryParams.csv").random
     val user_websites/getQUERYFeeder = csv(userDataDirectory + File.separator + "userWebsitesGet-queryParams.csv").random
+    val verify_website/updateQUERYFeeder = csv(userDataDirectory + File.separator + "verifyWebsiteUpdate-queryParams.csv").random
+    val website_verification/getQUERYFeeder = csv(userDataDirectory + File.separator + "websiteVerificationGet-queryParams.csv").random
 
     // Setup all scenarios
 
@@ -95,9 +97,9 @@ class UserAccountApiSimulation extends Simulation {
         .exec(http("boardsUserFollowsList")
         .httpRequest("GET","/user_account/following/boards")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("explicit_following","${explicit_following}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnboardsUserFollowsList with warm up and reach a constant rate for entire duration
@@ -126,8 +128,8 @@ class UserAccountApiSimulation extends Simulation {
         .feed(followers/listQUERYFeeder)
         .exec(http("followersList")
         .httpRequest("GET","/user_account/followers")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnfollowersList with warm up and reach a constant rate for entire duration
@@ -170,16 +172,16 @@ class UserAccountApiSimulation extends Simulation {
         .feed(user_account/analyticsQUERYFeeder)
         .exec(http("userAccountAnalytics")
         .httpRequest("GET","/user_account/analytics")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("source","${source}")
         .queryParam("metric_types","${metric_types}")
+        .queryParam("end_date","${end_date}")
+        .queryParam("split_field","${split_field}")
+        .queryParam("from_claimed_content","${from_claimed_content}")
+        .queryParam("pin_format","${pin_format}")
         .queryParam("app_types","${app_types}")
         .queryParam("content_type","${content_type}")
-        .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("pin_format","${pin_format}")
-        .queryParam("source","${source}")
-        .queryParam("start_date","${start_date}")
-        .queryParam("end_date","${end_date}")
-        .queryParam("from_claimed_content","${from_claimed_content}")
-        .queryParam("split_field","${split_field}")
 )
 
     // Run scnuserAccountAnalytics with warm up and reach a constant rate for entire duration
@@ -194,18 +196,18 @@ class UserAccountApiSimulation extends Simulation {
         .feed(user_account/analytics/top_pinsQUERYFeeder)
         .exec(http("userAccountAnalyticsTopPins")
         .httpRequest("GET","/user_account/analytics/top_pins")
-        .queryParam("metric_types","${metric_types}")
-        .queryParam("app_types","${app_types}")
-        .queryParam("content_type","${content_type}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("created_in_last_n_days","${created_in_last_n_days}")
-        .queryParam("num_of_pins","${num_of_pins}")
-        .queryParam("sort_by","${sort_by}")
-        .queryParam("pin_format","${pin_format}")
-        .queryParam("source","${source}")
         .queryParam("start_date","${start_date}")
+        .queryParam("source","${source}")
+        .queryParam("metric_types","${metric_types}")
+        .queryParam("created_in_last_n_days","${created_in_last_n_days}")
         .queryParam("end_date","${end_date}")
         .queryParam("from_claimed_content","${from_claimed_content}")
+        .queryParam("pin_format","${pin_format}")
+        .queryParam("app_types","${app_types}")
+        .queryParam("content_type","${content_type}")
+        .queryParam("num_of_pins","${num_of_pins}")
+        .queryParam("sort_by","${sort_by}")
 )
 
     // Run scnuserAccountAnalyticsTopPins with warm up and reach a constant rate for entire duration
@@ -220,18 +222,18 @@ class UserAccountApiSimulation extends Simulation {
         .feed(user_account/analytics/top_video_pinsQUERYFeeder)
         .exec(http("userAccountAnalyticsTopVideoPins")
         .httpRequest("GET","/user_account/analytics/top_video_pins")
-        .queryParam("app_types","${app_types}")
-        .queryParam("content_type","${content_type}")
         .queryParam("metric_types","${metric_types}")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("created_in_last_n_days","${created_in_last_n_days}")
-        .queryParam("sort_by","${sort_by}")
-        .queryParam("num_of_pins","${num_of_pins}")
-        .queryParam("pin_format","${pin_format}")
-        .queryParam("source","${source}")
         .queryParam("start_date","${start_date}")
+        .queryParam("source","${source}")
+        .queryParam("created_in_last_n_days","${created_in_last_n_days}")
         .queryParam("end_date","${end_date}")
         .queryParam("from_claimed_content","${from_claimed_content}")
+        .queryParam("pin_format","${pin_format}")
+        .queryParam("app_types","${app_types}")
+        .queryParam("content_type","${content_type}")
+        .queryParam("sort_by","${sort_by}")
+        .queryParam("num_of_pins","${num_of_pins}")
 )
 
     // Run scnuserAccountAnalyticsTopVideoPins with warm up and reach a constant rate for entire duration
@@ -247,8 +249,8 @@ class UserAccountApiSimulation extends Simulation {
         .feed(user_account/followed_interestsPATHFeeder)
         .exec(http("userAccountFollowedInterests")
         .httpRequest("GET","/users/${username}/interests/follow")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnuserAccountFollowedInterests with warm up and reach a constant rate for entire duration
@@ -279,10 +281,10 @@ class UserAccountApiSimulation extends Simulation {
         .exec(http("userFollowingGet")
         .httpRequest("GET","/user_account/following")
         .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("explicit_following","${explicit_following}")
         .queryParam("feed_type","${feed_type}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnuserFollowingGet with warm up and reach a constant rate for entire duration
@@ -297,8 +299,8 @@ class UserAccountApiSimulation extends Simulation {
         .feed(user_websites/getQUERYFeeder)
         .exec(http("userWebsitesGet")
         .httpRequest("GET","/user_account/websites")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnuserWebsitesGet with warm up and reach a constant rate for entire duration
@@ -310,8 +312,10 @@ class UserAccountApiSimulation extends Simulation {
 
     
     val scnverifyWebsiteUpdate = scenario("verifyWebsiteUpdateSimulation")
+        .feed(verify_website/updateQUERYFeeder)
         .exec(http("verifyWebsiteUpdate")
         .httpRequest("POST","/user_account/websites")
+        .queryParam("ad_account_id","${ad_account_id}")
 )
 
     // Run scnverifyWebsiteUpdate with warm up and reach a constant rate for entire duration
@@ -323,8 +327,10 @@ class UserAccountApiSimulation extends Simulation {
 
     
     val scnwebsiteVerificationGet = scenario("websiteVerificationGetSimulation")
+        .feed(website_verification/getQUERYFeeder)
         .exec(http("websiteVerificationGet")
         .httpRequest("GET","/user_account/websites/verification")
+        .queryParam("ad_account_id","${ad_account_id}")
 )
 
     // Run scnwebsiteVerificationGet with warm up and reach a constant rate for entire duration

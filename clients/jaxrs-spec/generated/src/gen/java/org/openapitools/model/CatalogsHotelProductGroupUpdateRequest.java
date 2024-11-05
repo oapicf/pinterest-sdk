@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request object for updating a hotel product group.")
 @JsonTypeName("CatalogsHotelProductGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroupUpdateRequest   {
   public enum CatalogTypeEnum {
 
@@ -68,10 +68,10 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     }
 }
 
-  private @Valid CatalogTypeEnum catalogType;
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid CatalogsHotelProductGroupFilters filters;
+  private CatalogTypeEnum catalogType;
+  private String name;
+  private String description;
+  private CatalogsHotelProductGroupFilters filters;
 
   /**
    **/
@@ -140,7 +140,7 @@ public class CatalogsHotelProductGroupUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filters")
-  public CatalogsHotelProductGroupFilters getFilters() {
+  @Valid public CatalogsHotelProductGroupFilters getFilters() {
     return filters;
   }
 

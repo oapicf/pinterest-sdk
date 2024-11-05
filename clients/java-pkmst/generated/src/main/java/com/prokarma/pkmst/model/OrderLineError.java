@@ -18,7 +18,7 @@ import java.util.List;
  * OrderLineError
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLineError   {
   @JsonProperty("data")
   private OrderLine data;
@@ -32,10 +32,10 @@ public class OrderLineError   {
     return this;
   }
 
-   /**
+  /**
    * Get data
    * @return data
-  **/
+   */
   @ApiModelProperty(value = "")
   public OrderLine getData() {
     return data;
@@ -58,10 +58,10 @@ public class OrderLineError   {
     return this;
   }
 
-   /**
+  /**
    * Get errorMessages
    * @return errorMessages
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<String> getErrorMessages() {
     return errorMessages;

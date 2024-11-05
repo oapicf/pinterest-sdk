@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -31,9 +31,7 @@ public enum LeadFormQuestionFieldType {
         
         RADIO_LIST("RADIO_LIST"),
         
-        CHECKBOX("CHECKBOX"),
-        
-        NULL("null");
+        CHECKBOX("CHECKBOX");
 
 private String value;
 

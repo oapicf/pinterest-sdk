@@ -33,7 +33,7 @@ public class AdAccount   {
 
   private Currency currency;
 
-  private List<BusinessAccessRole> permissions;
+  private List<BusinessAccessRole> permissions = new ArrayList<>();
 
   private Integer createdTime;
 

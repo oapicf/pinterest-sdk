@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import javax.validation.constraints.*;
@@ -46,8 +45,6 @@ public class ProductGroupPromotion   {
   private String catalogProductGroupId;
 
   private String catalogProductGroupName;
-
-  private CreativeType creativeType;
 
   private String collectionsHeroPinId;
 
@@ -321,24 +318,6 @@ public class ProductGroupPromotion   {
 
 
   /**
-   **/
-  public ProductGroupPromotion creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
-
-  /**
    * Hero Pin ID if this PG is promoted as a Collection
    **/
   public ProductGroupPromotion collectionsHeroPinId(String collectionsHeroPinId) {
@@ -418,7 +397,6 @@ public class ProductGroupPromotion   {
         Objects.equals(this.trackingUrl, productGroupPromotion.trackingUrl) &&
         Objects.equals(this.catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
         Objects.equals(this.catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
-        Objects.equals(this.creativeType, productGroupPromotion.creativeType) &&
         Objects.equals(this.collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         Objects.equals(this.collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         Objects.equals(this.gridClickType, productGroupPromotion.gridClickType);
@@ -426,7 +404,7 @@ public class ProductGroupPromotion   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, creativeType, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
+    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
   }
 
   @Override
@@ -448,7 +426,6 @@ public class ProductGroupPromotion   {
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
     sb.append("    catalogProductGroupName: ").append(toIndentedString(catalogProductGroupName)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    collectionsHeroPinId: ").append(toIndentedString(collectionsHeroPinId)).append("\n");
     sb.append("    collectionsHeroDestinationUrl: ").append(toIndentedString(collectionsHeroDestinationUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");

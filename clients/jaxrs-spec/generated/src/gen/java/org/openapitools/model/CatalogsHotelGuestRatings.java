@@ -18,12 +18,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "If specified, you must provide all properties")
 @JsonTypeName("CatalogsHotelGuestRatings")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelGuestRatings   {
-  private @Valid BigDecimal score;
-  private @Valid Integer numberOfReviewers;
-  private @Valid BigDecimal maxScore;
-  private @Valid String ratingSystem;
+  private BigDecimal score;
+  private Integer numberOfReviewers;
+  private BigDecimal maxScore;
+  private String ratingSystem;
 
   /**
    * Your hotel&#39;s rating.
@@ -36,7 +36,7 @@ public class CatalogsHotelGuestRatings   {
   
   @ApiModelProperty(value = "Your hotel's rating.")
   @JsonProperty("score")
-  public BigDecimal getScore() {
+  @Valid public BigDecimal getScore() {
     return score;
   }
 
@@ -76,7 +76,7 @@ public class CatalogsHotelGuestRatings   {
   
   @ApiModelProperty(value = "Max value for the hotel rating score.")
   @JsonProperty("max_score")
-  public BigDecimal getMaxScore() {
+  @Valid public BigDecimal getMaxScore() {
     return maxScore;
   }
 

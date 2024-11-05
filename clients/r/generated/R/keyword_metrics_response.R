@@ -17,15 +17,13 @@ KeywordMetricsResponse <- R6::R6Class(
   public = list(
     `keyword` = NULL,
     `metrics` = NULL,
-    #' Initialize a new KeywordMetricsResponse class.
-    #'
+
     #' @description
     #' Initialize a new KeywordMetricsResponse class.
     #'
     #' @param keyword Keyword name, e.g., \"keyword\":\"fashion outfits\"
     #' @param metrics metrics
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`keyword` = NULL, `metrics` = NULL, ...) {
       if (!is.null(`keyword`)) {
         if (!(is.character(`keyword`) && length(`keyword`) == 1)) {
@@ -38,13 +36,11 @@ KeywordMetricsResponse <- R6::R6Class(
         self$`metrics` <- `metrics`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordMetricsResponse in JSON format
-    #' @export
     toJSON = function() {
       KeywordMetricsResponseObject <- list()
       if (!is.null(self$`keyword`)) {
@@ -57,14 +53,12 @@ KeywordMetricsResponse <- R6::R6Class(
       }
       KeywordMetricsResponseObject
     },
-    #' Deserialize JSON string into an instance of KeywordMetricsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordMetricsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordMetricsResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`keyword`)) {
@@ -77,13 +71,11 @@ KeywordMetricsResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordMetricsResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`keyword`)) {
@@ -106,67 +98,54 @@ KeywordMetricsResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of KeywordMetricsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordMetricsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordMetricsResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`keyword` <- this_object$`keyword`
       self$`metrics` <- KeywordMetrics$new()$fromJSON(jsonlite::toJSON(this_object$`metrics`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to KeywordMetricsResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to KeywordMetricsResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of KeywordMetricsResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

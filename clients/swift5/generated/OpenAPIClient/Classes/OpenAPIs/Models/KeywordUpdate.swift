@@ -13,12 +13,11 @@ import AnyCodable
 public struct KeywordUpdate: Codable, JSONEncodable, Hashable {
 
     static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    static let bidRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     /** Keyword ID. */
     public var id: String
     /** Is keyword archived? */
     public var archived: Bool?
-    /** Keyword custom bid in microcurrency - null if inherited from parent ad group. */
+    /** </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     public var bid: Int?
 
     public init(id: String, archived: Bool? = nil, bid: Int? = nil) {

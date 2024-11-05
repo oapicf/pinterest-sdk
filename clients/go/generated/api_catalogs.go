@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,6 +25,164 @@ import (
 // CatalogsAPIService CatalogsAPI service
 type CatalogsAPIService service
 
+type ApiCatalogsCreateRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	catalogsCreateRequest *CatalogsCreateRequest
+	adAccountId *string
+}
+
+// Request object used to created a feed.
+func (r ApiCatalogsCreateRequest) CatalogsCreateRequest(catalogsCreateRequest CatalogsCreateRequest) ApiCatalogsCreateRequest {
+	r.catalogsCreateRequest = &catalogsCreateRequest
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiCatalogsCreateRequest) AdAccountId(adAccountId string) ApiCatalogsCreateRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiCatalogsCreateRequest) Execute() (*Catalog, *http.Response, error) {
+	return r.ApiService.CatalogsCreateExecute(r)
+}
+
+/*
+CatalogsCreate Create catalog
+
+Create a new catalog owned by the "operation user_account".
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: this API only supports the catalog type of HOTEL for now.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCatalogsCreateRequest
+*/
+func (a *CatalogsAPIService) CatalogsCreate(ctx context.Context) ApiCatalogsCreateRequest {
+	return ApiCatalogsCreateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return Catalog
+func (a *CatalogsAPIService) CatalogsCreateExecute(r ApiCatalogsCreateRequest) (*Catalog, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Catalog
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.CatalogsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.catalogsCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("catalogsCreateRequest is required and must be specified")
+	}
+
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.catalogsCreateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCatalogsListRequest struct {
 	ctx context.Context
 	ApiService *CatalogsAPIService
@@ -39,7 +197,7 @@ func (r ApiCatalogsListRequest) Bookmark(bookmark string) ApiCatalogsListRequest
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiCatalogsListRequest) PageSize(pageSize int32) ApiCatalogsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -63,7 +221,7 @@ Fetch catalogs owned by the "operation user_account".
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCatalogsListRequest
@@ -97,16 +255,16 @@ func (a *CatalogsAPIService) CatalogsListExecute(r ApiCatalogsListRequest) (*Cat
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -199,6 +357,7 @@ type ApiCatalogsProductGroupPinsListRequest struct {
 	bookmark *string
 	pageSize *int32
 	adAccountId *string
+	pinMetrics *bool
 }
 
 // Cursor used to fetch the next page of items
@@ -207,7 +366,7 @@ func (r ApiCatalogsProductGroupPinsListRequest) Bookmark(bookmark string) ApiCat
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiCatalogsProductGroupPinsListRequest) PageSize(pageSize int32) ApiCatalogsProductGroupPinsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -219,19 +378,25 @@ func (r ApiCatalogsProductGroupPinsListRequest) AdAccountId(adAccountId string) 
 	return r
 }
 
+// Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+func (r ApiCatalogsProductGroupPinsListRequest) PinMetrics(pinMetrics bool) ApiCatalogsProductGroupPinsListRequest {
+	r.pinMetrics = &pinMetrics
+	return r
+}
+
 func (r ApiCatalogsProductGroupPinsListRequest) Execute() (*CatalogsProductGroupPinsList200Response, *http.Response, error) {
 	return r.ApiService.CatalogsProductGroupPinsListExecute(r)
 }
 
 /*
-CatalogsProductGroupPinsList List products for a Product Group
+CatalogsProductGroupPinsList List products by product group
 
 Get a list of product pins for a given Catalogs Product Group Id owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -268,16 +433,22 @@ func (a *CatalogsAPIService) CatalogsProductGroupPinsListExecute(r ApiCatalogsPr
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	if r.pinMetrics != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -377,13 +548,13 @@ func (a *CatalogsAPIService) CatalogsProductGroupPinsListExecute(r ApiCatalogsPr
 type ApiCatalogsProductGroupsCreateRequest struct {
 	ctx context.Context
 	ApiService *CatalogsAPIService
-	catalogsProductGroupsCreateRequest *CatalogsProductGroupsCreateRequest
+	multipleProductGroupsInner *MultipleProductGroupsInner
 	adAccountId *string
 }
 
-// Request object used to created a catalogs product group.
-func (r ApiCatalogsProductGroupsCreateRequest) CatalogsProductGroupsCreateRequest(catalogsProductGroupsCreateRequest CatalogsProductGroupsCreateRequest) ApiCatalogsProductGroupsCreateRequest {
-	r.catalogsProductGroupsCreateRequest = &catalogsProductGroupsCreateRequest
+// Request object used to create a single catalogs product groups.
+func (r ApiCatalogsProductGroupsCreateRequest) MultipleProductGroupsInner(multipleProductGroupsInner MultipleProductGroupsInner) ApiCatalogsProductGroupsCreateRequest {
+	r.multipleProductGroupsInner = &multipleProductGroupsInner
 	return r
 }
 
@@ -393,7 +564,7 @@ func (r ApiCatalogsProductGroupsCreateRequest) AdAccountId(adAccountId string) A
 	return r
 }
 
-func (r ApiCatalogsProductGroupsCreateRequest) Execute() (*CatalogsProductGroupsCreate201Response, *http.Response, error) {
+func (r ApiCatalogsProductGroupsCreateRequest) Execute() (*CatalogsVerticalProductGroup, *http.Response, error) {
 	return r.ApiService.CatalogsProductGroupsCreateExecute(r)
 }
 
@@ -405,7 +576,10 @@ Create product group to use in Catalogs owned by the "operation user_account".
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCatalogsProductGroupsCreateRequest
@@ -418,13 +592,13 @@ func (a *CatalogsAPIService) CatalogsProductGroupsCreate(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return CatalogsProductGroupsCreate201Response
-func (a *CatalogsAPIService) CatalogsProductGroupsCreateExecute(r ApiCatalogsProductGroupsCreateRequest) (*CatalogsProductGroupsCreate201Response, *http.Response, error) {
+//  @return CatalogsVerticalProductGroup
+func (a *CatalogsAPIService) CatalogsProductGroupsCreateExecute(r ApiCatalogsProductGroupsCreateRequest) (*CatalogsVerticalProductGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CatalogsProductGroupsCreate201Response
+		localVarReturnValue  *CatalogsVerticalProductGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.CatalogsProductGroupsCreate")
@@ -437,12 +611,12 @@ func (a *CatalogsAPIService) CatalogsProductGroupsCreateExecute(r ApiCatalogsPro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.catalogsProductGroupsCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("catalogsProductGroupsCreateRequest is required and must be specified")
+	if r.multipleProductGroupsInner == nil {
+		return localVarReturnValue, nil, reportError("multipleProductGroupsInner is required and must be specified")
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -462,7 +636,188 @@ func (a *CatalogsAPIService) CatalogsProductGroupsCreateExecute(r ApiCatalogsPro
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.catalogsProductGroupsCreateRequest
+	localVarPostBody = r.multipleProductGroupsInner
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCatalogsProductGroupsCreateManyRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	multipleProductGroupsInner *[]MultipleProductGroupsInner
+	adAccountId *string
+}
+
+// Request object used to create one or more catalogs product groups.
+func (r ApiCatalogsProductGroupsCreateManyRequest) MultipleProductGroupsInner(multipleProductGroupsInner []MultipleProductGroupsInner) ApiCatalogsProductGroupsCreateManyRequest {
+	r.multipleProductGroupsInner = &multipleProductGroupsInner
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiCatalogsProductGroupsCreateManyRequest) AdAccountId(adAccountId string) ApiCatalogsProductGroupsCreateManyRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiCatalogsProductGroupsCreateManyRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.CatalogsProductGroupsCreateManyExecute(r)
+}
+
+/*
+CatalogsProductGroupsCreateMany Create product groups
+
+Create product group to use in Catalogs owned by the "operation user_account".
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCatalogsProductGroupsCreateManyRequest
+*/
+func (a *CatalogsAPIService) CatalogsProductGroupsCreateMany(ctx context.Context) ApiCatalogsProductGroupsCreateManyRequest {
+	return ApiCatalogsProductGroupsCreateManyRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []string
+func (a *CatalogsAPIService) CatalogsProductGroupsCreateManyExecute(r ApiCatalogsProductGroupsCreateManyRequest) ([]string, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.CatalogsProductGroupsCreateMany")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs/product_groups/multiple"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.multipleProductGroupsInner == nil {
+		return localVarReturnValue, nil, reportError("multipleProductGroupsInner is required and must be specified")
+	}
+
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.multipleProductGroupsInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -577,7 +932,7 @@ Delete a product group owned by the "operation user_account" from being in use i
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -612,7 +967,7 @@ func (a *CatalogsAPIService) CatalogsProductGroupsDeleteExecute(r ApiCatalogsPro
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -722,6 +1077,178 @@ func (a *CatalogsAPIService) CatalogsProductGroupsDeleteExecute(r ApiCatalogsPro
 	return localVarHTTPResponse, nil
 }
 
+type ApiCatalogsProductGroupsDeleteManyRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	id *[]int32
+	adAccountId *string
+}
+
+// Comma-separated list of product group ids
+func (r ApiCatalogsProductGroupsDeleteManyRequest) Id(id []int32) ApiCatalogsProductGroupsDeleteManyRequest {
+	r.id = &id
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiCatalogsProductGroupsDeleteManyRequest) AdAccountId(adAccountId string) ApiCatalogsProductGroupsDeleteManyRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiCatalogsProductGroupsDeleteManyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CatalogsProductGroupsDeleteManyExecute(r)
+}
+
+/*
+CatalogsProductGroupsDeleteMany Delete product groups
+
+Delete product groups owned by the "operation user_account".
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCatalogsProductGroupsDeleteManyRequest
+*/
+func (a *CatalogsAPIService) CatalogsProductGroupsDeleteMany(ctx context.Context) ApiCatalogsProductGroupsDeleteManyRequest {
+	return ApiCatalogsProductGroupsDeleteManyRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *CatalogsAPIService) CatalogsProductGroupsDeleteManyExecute(r ApiCatalogsProductGroupsDeleteManyRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.CatalogsProductGroupsDeleteMany")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs/product_groups/multiple"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.id == nil {
+		return nil, reportError("id is required and must be specified")
+	}
+	if len(*r.id) < 1 {
+		return nil, reportError("id must have at least 1 elements")
+	}
+	if len(*r.id) > 1000 {
+		return nil, reportError("id must have less than 1000 elements")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "csv")
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiCatalogsProductGroupsGetRequest struct {
 	ctx context.Context
 	ApiService *CatalogsAPIService
@@ -735,7 +1262,7 @@ func (r ApiCatalogsProductGroupsGetRequest) AdAccountId(adAccountId string) ApiC
 	return r
 }
 
-func (r ApiCatalogsProductGroupsGetRequest) Execute() (*CatalogsProductGroupsCreate201Response, *http.Response, error) {
+func (r ApiCatalogsProductGroupsGetRequest) Execute() (*CatalogsVerticalProductGroup, *http.Response, error) {
 	return r.ApiService.CatalogsProductGroupsGetExecute(r)
 }
 
@@ -747,7 +1274,7 @@ Get a singe product group for a given Catalogs Product Group Id owned by the "op
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -762,13 +1289,13 @@ func (a *CatalogsAPIService) CatalogsProductGroupsGet(ctx context.Context, produ
 }
 
 // Execute executes the request
-//  @return CatalogsProductGroupsCreate201Response
-func (a *CatalogsAPIService) CatalogsProductGroupsGetExecute(r ApiCatalogsProductGroupsGetRequest) (*CatalogsProductGroupsCreate201Response, *http.Response, error) {
+//  @return CatalogsVerticalProductGroup
+func (a *CatalogsAPIService) CatalogsProductGroupsGetExecute(r ApiCatalogsProductGroupsGetRequest) (*CatalogsVerticalProductGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CatalogsProductGroupsCreate201Response
+		localVarReturnValue  *CatalogsVerticalProductGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.CatalogsProductGroupsGet")
@@ -784,7 +1311,7 @@ func (a *CatalogsAPIService) CatalogsProductGroupsGetExecute(r ApiCatalogsProduc
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -906,11 +1433,18 @@ func (a *CatalogsAPIService) CatalogsProductGroupsGetExecute(r ApiCatalogsProduc
 type ApiCatalogsProductGroupsListRequest struct {
 	ctx context.Context
 	ApiService *CatalogsAPIService
+	id *[]int32
 	feedId *string
 	catalogId *string
 	bookmark *string
 	pageSize *int32
 	adAccountId *string
+}
+
+// Comma-separated list of product group ids
+func (r ApiCatalogsProductGroupsListRequest) Id(id []int32) ApiCatalogsProductGroupsListRequest {
+	r.id = &id
+	return r
 }
 
 // Filter entities for a given feed_id. If not given, all feeds are considered.
@@ -931,7 +1465,7 @@ func (r ApiCatalogsProductGroupsListRequest) Bookmark(bookmark string) ApiCatalo
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiCatalogsProductGroupsListRequest) PageSize(pageSize int32) ApiCatalogsProductGroupsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -955,7 +1489,7 @@ Get a list of product groups for a given Catalogs Feed Id owned by the "operatio
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCatalogsProductGroupsListRequest
@@ -988,23 +1522,26 @@ func (a *CatalogsAPIService) CatalogsProductGroupsListExecute(r ApiCatalogsProdu
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "csv")
+	}
 	if r.feedId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_id", r.feedId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_id", r.feedId, "form", "")
 	}
 	if r.catalogId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "catalog_id", r.catalogId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "catalog_id", r.catalogId, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1136,19 +1673,19 @@ func (r ApiCatalogsProductGroupsProductCountsGetRequest) AdAccountId(adAccountId
 	return r
 }
 
-func (r ApiCatalogsProductGroupsProductCountsGetRequest) Execute() (*CatalogsProductGroupProductCounts, *http.Response, error) {
+func (r ApiCatalogsProductGroupsProductCountsGetRequest) Execute() (*CatalogsProductGroupProductCountsVertical, *http.Response, error) {
 	return r.ApiService.CatalogsProductGroupsProductCountsGetExecute(r)
 }
 
 /*
-CatalogsProductGroupsProductCountsGet Get product counts for a Product Group
+CatalogsProductGroupsProductCountsGet Get product counts
 
 Get a product counts for a given Catalogs Product Group owned by the "operation user_account".
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -1163,13 +1700,13 @@ func (a *CatalogsAPIService) CatalogsProductGroupsProductCountsGet(ctx context.C
 }
 
 // Execute executes the request
-//  @return CatalogsProductGroupProductCounts
-func (a *CatalogsAPIService) CatalogsProductGroupsProductCountsGetExecute(r ApiCatalogsProductGroupsProductCountsGetRequest) (*CatalogsProductGroupProductCounts, *http.Response, error) {
+//  @return CatalogsProductGroupProductCountsVertical
+func (a *CatalogsAPIService) CatalogsProductGroupsProductCountsGetExecute(r ApiCatalogsProductGroupsProductCountsGetRequest) (*CatalogsProductGroupProductCountsVertical, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CatalogsProductGroupProductCounts
+		localVarReturnValue  *CatalogsProductGroupProductCountsVertical
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.CatalogsProductGroupsProductCountsGet")
@@ -1185,7 +1722,7 @@ func (a *CatalogsAPIService) CatalogsProductGroupsProductCountsGetExecute(r ApiC
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1291,19 +1828,22 @@ func (r ApiCatalogsProductGroupsUpdateRequest) AdAccountId(adAccountId string) A
 	return r
 }
 
-func (r ApiCatalogsProductGroupsUpdateRequest) Execute() (*CatalogsProductGroupsCreate201Response, *http.Response, error) {
+func (r ApiCatalogsProductGroupsUpdateRequest) Execute() (*CatalogsVerticalProductGroup, *http.Response, error) {
 	return r.ApiService.CatalogsProductGroupsUpdateExecute(r)
 }
 
 /*
-CatalogsProductGroupsUpdate Update product group
+CatalogsProductGroupsUpdate Update single product group
 
 Update product group owned by the "operation user_account" to use in Catalogs.
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param productGroupId Unique identifier of a product group
@@ -1318,13 +1858,13 @@ func (a *CatalogsAPIService) CatalogsProductGroupsUpdate(ctx context.Context, pr
 }
 
 // Execute executes the request
-//  @return CatalogsProductGroupsCreate201Response
-func (a *CatalogsAPIService) CatalogsProductGroupsUpdateExecute(r ApiCatalogsProductGroupsUpdateRequest) (*CatalogsProductGroupsCreate201Response, *http.Response, error) {
+//  @return CatalogsVerticalProductGroup
+func (a *CatalogsAPIService) CatalogsProductGroupsUpdateExecute(r ApiCatalogsProductGroupsUpdateRequest) (*CatalogsVerticalProductGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CatalogsProductGroupsCreate201Response
+		localVarReturnValue  *CatalogsVerticalProductGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.CatalogsProductGroupsUpdate")
@@ -1343,7 +1883,7 @@ func (a *CatalogsAPIService) CatalogsProductGroupsUpdateExecute(r ApiCatalogsPro
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1479,7 +2019,7 @@ func (r ApiFeedProcessingResultsListRequest) Bookmark(bookmark string) ApiFeedPr
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiFeedProcessingResultsListRequest) PageSize(pageSize int32) ApiFeedProcessingResultsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1496,14 +2036,14 @@ func (r ApiFeedProcessingResultsListRequest) Execute() (*FeedProcessingResultsLi
 }
 
 /*
-FeedProcessingResultsList List processing results for a given feed
+FeedProcessingResultsList List feed processing results
 
 Fetch a feed processing results owned by the "operation user_account". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future.
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param feedId Unique identifier of a feed
@@ -1540,16 +2080,16 @@ func (a *CatalogsAPIService) FeedProcessingResultsListExecute(r ApiFeedProcessin
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1681,7 +2221,10 @@ but for now the API will not accept requests without those fields.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFeedsCreateRequest
@@ -1718,7 +2261,7 @@ func (a *CatalogsAPIService) FeedsCreateExecute(r ApiFeedsCreateRequest) (*Catal
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1875,7 +2418,7 @@ Delete a feed owned by the "operating user_account".
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param feedId Unique identifier of a feed
@@ -1910,7 +2453,7 @@ func (a *CatalogsAPIService) FeedsDeleteExecute(r ApiFeedsDeleteRequest) (*http.
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2034,7 +2577,7 @@ Get a single feed owned by the "operation user_account".
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param feedId Unique identifier of a feed
@@ -2071,7 +2614,7 @@ func (a *CatalogsAPIService) FeedsGetExecute(r ApiFeedsGetRequest) (*CatalogsFee
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2168,6 +2711,166 @@ func (a *CatalogsAPIService) FeedsGetExecute(r ApiFeedsGetRequest) (*CatalogsFee
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiFeedsIngestRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	feedId string
+	adAccountId *string
+}
+
+// Unique identifier of an ad account.
+func (r ApiFeedsIngestRequest) AdAccountId(adAccountId string) ApiFeedsIngestRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiFeedsIngestRequest) Execute() (*CatalogsFeedIngestion, *http.Response, error) {
+	return r.ApiService.FeedsIngestExecute(r)
+}
+
+/*
+FeedsIngest Ingest feed items
+
+Ingest items for a given feed owned by the "operation user_account".
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
+
+Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param feedId Unique identifier of a feed
+ @return ApiFeedsIngestRequest
+*/
+func (a *CatalogsAPIService) FeedsIngest(ctx context.Context, feedId string) ApiFeedsIngestRequest {
+	return ApiFeedsIngestRequest{
+		ApiService: a,
+		ctx: ctx,
+		feedId: feedId,
+	}
+}
+
+// Execute executes the request
+//  @return CatalogsFeedIngestion
+func (a *CatalogsAPIService) FeedsIngestExecute(r ApiFeedsIngestRequest) (*CatalogsFeedIngestion, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CatalogsFeedIngestion
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.FeedsIngest")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs/feeds/{feed_id}/ingest"
+	localVarPath = strings.Replace(localVarPath, "{"+"feed_id"+"}", url.PathEscape(parameterValueToString(r.feedId, "feedId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiFeedsListRequest struct {
 	ctx context.Context
 	ApiService *CatalogsAPIService
@@ -2183,7 +2886,7 @@ func (r ApiFeedsListRequest) Bookmark(bookmark string) ApiFeedsListRequest {
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiFeedsListRequest) PageSize(pageSize int32) ApiFeedsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -2213,7 +2916,7 @@ Fetch feeds owned by the "operation user_account".
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFeedsListRequest
@@ -2247,19 +2950,19 @@ func (a *CatalogsAPIService) FeedsListExecute(r ApiFeedsListRequest) (*FeedsList
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.catalogId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "catalog_id", r.catalogId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "catalog_id", r.catalogId, "form", "")
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2377,7 +3080,10 @@ Update a feed owned by the "operation user_account".
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/shopping/catalog/'>Pinterest API for shopping</a>.
+For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param feedId Unique identifier of a feed
@@ -2417,7 +3123,7 @@ func (a *CatalogsAPIService) FeedsUpdateExecute(r ApiFeedsUpdateRequest) (*Catal
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2534,9 +3240,9 @@ func (r ApiItemsBatchGetRequest) Execute() (*CatalogsItemsBatch, *http.Response,
 }
 
 /*
-ItemsBatchGet Get catalogs item batch status
+ItemsBatchGet Get item batch status
 
-Get a single catalogs items batch owned by the "operating user_account". <a href="/docs/shopping/catalog/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+Get a single catalogs items batch owned by the "operating user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
@@ -2576,7 +3282,7 @@ func (a *CatalogsAPIService) ItemsBatchGetExecute(r ApiItemsBatchGetRequest) (*C
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2710,10 +3416,15 @@ func (r ApiItemsBatchPostRequest) Execute() (*CatalogsItemsBatch, *http.Response
 /*
 ItemsBatchPost Operate on item batch
 
-This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". <a href="/docs/shopping/catalog/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+This endpoint supports multiple operations on a set of one or more catalog items owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+Note:
+- Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
+- The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiItemsBatchPostRequest
@@ -2750,7 +3461,7 @@ func (a *CatalogsAPIService) ItemsBatchPostExecute(r ApiItemsBatchPostRequest) (
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2897,13 +3608,17 @@ func (r ApiItemsGetRequest) Execute() (*CatalogsItems, *http.Response, error) {
 /*
 ItemsGet Get catalogs items
 
-Get the items of the catalog owned by the "operation user_account". <a href="/docs/shopping/catalog/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+Get the items of the catalog owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
+Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiItemsGetRequest
+
+Deprecated
 */
 func (a *CatalogsAPIService) ItemsGet(ctx context.Context) ApiItemsGetRequest {
 	return ApiItemsGetRequest{
@@ -2914,6 +3629,7 @@ func (a *CatalogsAPIService) ItemsGet(ctx context.Context) ApiItemsGetRequest {
 
 // Execute executes the request
 //  @return CatalogsItems
+// Deprecated
 func (a *CatalogsAPIService) ItemsGetExecute(r ApiItemsGetRequest) (*CatalogsItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2940,23 +3656,23 @@ func (a *CatalogsAPIService) ItemsGetExecute(r ApiItemsGetRequest) (*CatalogsIte
 	}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "language", r.language, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "country", r.country, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "language", r.language, "form", "")
 	if r.itemIds != nil {
 		t := *r.itemIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "item_ids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "item_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "item_ids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "item_ids", t, "form", "multi")
 		}
 	}
 	if r.filters != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "deepObject", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3070,7 +3786,7 @@ func (r ApiItemsIssuesListRequest) Bookmark(bookmark string) ApiItemsIssuesListR
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiItemsIssuesListRequest) PageSize(pageSize int32) ApiItemsIssuesListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -3099,17 +3815,19 @@ func (r ApiItemsIssuesListRequest) Execute() (*ItemsIssuesList200Response, *http
 }
 
 /*
-ItemsIssuesList List item issues for a given processing result
+ItemsIssuesList List item issues
 
 List item validation issues for a given feed processing result owned by the "operation user_account". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future.
 - By default, the "operation user_account" is the token user_account.
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](https://developers.pinterest.com/docs/api/v5/#operation/feed_processing_results/list).
+ @param processingResultId Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
  @return ApiItemsIssuesListRequest
 */
 func (a *CatalogsAPIService) ItemsIssuesList(ctx context.Context, processingResultId string) ApiItemsIssuesListRequest {
@@ -3143,10 +3861,10 @@ func (a *CatalogsAPIService) ItemsIssuesListExecute(r ApiItemsIssuesListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -3156,17 +3874,17 @@ func (a *CatalogsAPIService) ItemsIssuesListExecute(r ApiItemsIssuesListRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "item_numbers", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "item_numbers", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "item_numbers", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "item_numbers", t, "form", "multi")
 		}
 	}
 	if r.itemValidationIssue != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "item_validation_issue", r.itemValidationIssue, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "item_validation_issue", r.itemValidationIssue, "form", "")
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3263,6 +3981,174 @@ func (a *CatalogsAPIService) ItemsIssuesListExecute(r ApiItemsIssuesListRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiItemsPostRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	catalogsItemsRequest *CatalogsItemsRequest
+	adAccountId *string
+}
+
+// Request object used to get catalogs items
+func (r ApiItemsPostRequest) CatalogsItemsRequest(catalogsItemsRequest CatalogsItemsRequest) ApiItemsPostRequest {
+	r.catalogsItemsRequest = &catalogsItemsRequest
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiItemsPostRequest) AdAccountId(adAccountId string) ApiItemsPostRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiItemsPostRequest) Execute() (*CatalogsItems, *http.Response, error) {
+	return r.ApiService.ItemsPostExecute(r)
+}
+
+/*
+ItemsPost Get catalogs items (POST)
+
+Get the items of the catalog owned by the "operation user_account". <a href="/docs/api-features/shopping-overview/#Update%20items%20in%20batch" target="_blank">See detailed documentation here.</a>
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+Note: Access to the Creative Assets catalog type is restricted to a specific group of users.
+If you require access, please reach out to your partner manager.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiItemsPostRequest
+*/
+func (a *CatalogsAPIService) ItemsPost(ctx context.Context) ApiItemsPostRequest {
+	return ApiItemsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CatalogsItems
+func (a *CatalogsAPIService) ItemsPostExecute(r ApiItemsPostRequest) (*CatalogsItems, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CatalogsItems
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.ItemsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs/items"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.catalogsItemsRequest == nil {
+		return localVarReturnValue, nil, reportError("catalogsItemsRequest is required and must be specified")
+	}
+
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.catalogsItemsRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiProductsByProductGroupFilterListRequest struct {
 	ctx context.Context
 	ApiService *CatalogsAPIService
@@ -3270,6 +4156,7 @@ type ApiProductsByProductGroupFilterListRequest struct {
 	bookmark *string
 	pageSize *int32
 	adAccountId *string
+	pinMetrics *bool
 }
 
 // Object holding a group of filters for a catalog product group
@@ -3284,7 +4171,7 @@ func (r ApiProductsByProductGroupFilterListRequest) Bookmark(bookmark string) Ap
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiProductsByProductGroupFilterListRequest) PageSize(pageSize int32) ApiProductsByProductGroupFilterListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -3296,12 +4183,18 @@ func (r ApiProductsByProductGroupFilterListRequest) AdAccountId(adAccountId stri
 	return r
 }
 
+// Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+func (r ApiProductsByProductGroupFilterListRequest) PinMetrics(pinMetrics bool) ApiProductsByProductGroupFilterListRequest {
+	r.pinMetrics = &pinMetrics
+	return r
+}
+
 func (r ApiProductsByProductGroupFilterListRequest) Execute() (*CatalogsProductGroupPinsList200Response, *http.Response, error) {
 	return r.ApiService.ProductsByProductGroupFilterListExecute(r)
 }
 
 /*
-ProductsByProductGroupFilterList List filtered products
+ProductsByProductGroupFilterList List products by filter
 
 List products Pins owned by the "operation user_account" that meet the criteria specified in the Catalogs Product Group Filter given in the request.
 - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent.
@@ -3309,7 +4202,9 @@ List products Pins owned by the "operation user_account" that meet the criteria 
 
 Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 
-<a href='/docs/shopping/catalog/'>Learn more</a>
+Note: This endpoint only supports RETAIL catalog at the moment.
+
+<a href='/docs/api-features/shopping-overview/'>Learn more</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProductsByProductGroupFilterListRequest
@@ -3346,16 +4241,22 @@ func (a *CatalogsAPIService) ProductsByProductGroupFilterListExecute(r ApiProduc
 	}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	if r.pinMetrics != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3410,6 +4311,478 @@ func (a *CatalogsAPIService) ProductsByProductGroupFilterListExecute(r ApiProduc
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReportsCreateRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	catalogsReportParameters *CatalogsReportParameters
+	adAccountId *string
+}
+
+// Request object to asynchronously create a report.
+func (r ApiReportsCreateRequest) CatalogsReportParameters(catalogsReportParameters CatalogsReportParameters) ApiReportsCreateRequest {
+	r.catalogsReportParameters = &catalogsReportParameters
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiReportsCreateRequest) AdAccountId(adAccountId string) ApiReportsCreateRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiReportsCreateRequest) Execute() (*CatalogsCreateReportResponse, *http.Response, error) {
+	return r.ApiService.ReportsCreateExecute(r)
+}
+
+/*
+ReportsCreate Build catalogs report
+
+Async request to create a report of the catalog owned by the "operation user_account". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed.
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiReportsCreateRequest
+*/
+func (a *CatalogsAPIService) ReportsCreate(ctx context.Context) ApiReportsCreateRequest {
+	return ApiReportsCreateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CatalogsCreateReportResponse
+func (a *CatalogsAPIService) ReportsCreateExecute(r ApiReportsCreateRequest) (*CatalogsCreateReportResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CatalogsCreateReportResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.ReportsCreate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs/reports"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.catalogsReportParameters == nil {
+		return localVarReturnValue, nil, reportError("catalogsReportParameters is required and must be specified")
+	}
+
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.catalogsReportParameters
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReportsGetRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	token *string
+	adAccountId *string
+}
+
+// Token returned from async build report call
+func (r ApiReportsGetRequest) Token(token string) ApiReportsGetRequest {
+	r.token = &token
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiReportsGetRequest) AdAccountId(adAccountId string) ApiReportsGetRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+func (r ApiReportsGetRequest) Execute() (*CatalogsReport, *http.Response, error) {
+	return r.ApiService.ReportsGetExecute(r)
+}
+
+/*
+ReportsGet Get catalogs report
+
+This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report.
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiReportsGetRequest
+*/
+func (a *CatalogsAPIService) ReportsGet(ctx context.Context) ApiReportsGetRequest {
+	return ApiReportsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CatalogsReport
+func (a *CatalogsAPIService) ReportsGetExecute(r ApiReportsGetRequest) (*CatalogsReport, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CatalogsReport
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.ReportsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs/reports"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.token == nil {
+		return localVarReturnValue, nil, reportError("token is required and must be specified")
+	}
+
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReportsStatsRequest struct {
+	ctx context.Context
+	ApiService *CatalogsAPIService
+	parameters *CatalogsReportParameters
+	adAccountId *string
+	pageSize *int32
+	bookmark *string
+}
+
+// Contains the parameters for report identification.
+func (r ApiReportsStatsRequest) Parameters(parameters CatalogsReportParameters) ApiReportsStatsRequest {
+	r.parameters = &parameters
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiReportsStatsRequest) AdAccountId(adAccountId string) ApiReportsStatsRequest {
+	r.adAccountId = &adAccountId
+	return r
+}
+
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+func (r ApiReportsStatsRequest) PageSize(pageSize int32) ApiReportsStatsRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Cursor used to fetch the next page of items
+func (r ApiReportsStatsRequest) Bookmark(bookmark string) ApiReportsStatsRequest {
+	r.bookmark = &bookmark
+	return r
+}
+
+func (r ApiReportsStatsRequest) Execute() (*ReportsStats200Response, *http.Response, error) {
+	return r.ApiService.ReportsStatsExecute(r)
+}
+
+/*
+ReportsStats List report stats
+
+List aggregated numbers of issues for a catalog owned by the "operation user_account".
+- By default, the "operation user_account" is the token user_account.
+
+Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the "operation user_account". In order to do this, the token user_account must have one of the following <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiReportsStatsRequest
+*/
+func (a *CatalogsAPIService) ReportsStats(ctx context.Context) ApiReportsStatsRequest {
+	return ApiReportsStatsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ReportsStats200Response
+func (a *CatalogsAPIService) ReportsStatsExecute(r ApiReportsStatsRequest) (*ReportsStats200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ReportsStats200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogsAPIService.ReportsStats")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/catalogs/reports/stats"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.parameters == nil {
+		return localVarReturnValue, nil, reportError("parameters is required and must be specified")
+	}
+
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
+	} else {
+		var defaultValue int32 = 25
+		r.pageSize = &defaultValue
+	}
+	if r.bookmark != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "parameters", r.parameters, "deepObject", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

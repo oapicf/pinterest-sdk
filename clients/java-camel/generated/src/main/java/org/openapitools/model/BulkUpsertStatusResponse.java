@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertStatusResponse", description = "ID of the bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertStatusResponse {
 
   private BulkUpsertStatus status;
@@ -36,7 +36,7 @@ public class BulkUpsertStatusResponse {
   /**
    * Get status
    * @return status
-  */
+   */
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
@@ -56,7 +56,7 @@ public class BulkUpsertStatusResponse {
   /**
    * Get resultUrl
    * @return resultUrl
-  */
+   */
   
   @Schema(name = "result_url", example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("result_url")

@@ -167,5 +167,4 @@ const (
 	ZAR NullableCurrency = "ZAR"
 	ZMW NullableCurrency = "ZMW"
 	ZWD NullableCurrency = "ZWD"
-	NULL NullableCurrency = "null"
 )

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemResponseAnyOf;
 import org.openapitools.model.ItemResponseAnyOf1;
@@ -39,13 +39,14 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemErrorResponse.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailItemErrorResponse.class, name = "RETAIL"),
   @JsonSubTypes.Type(value = ItemResponseAnyOf.class, name = "ItemResponse_anyOf"),
   @JsonSubTypes.Type(value = ItemResponseAnyOf1.class, name = "ItemResponse_anyOf_1")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemResponse {
 
   private CatalogsType catalogType;
@@ -53,9 +54,11 @@ public class ItemResponse {
   private String itemId;
 
   @Valid
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   private String hotelId;
+
+  private String creativeAssetsId;
 
   public ItemResponse() {
     super();
@@ -76,7 +79,7 @@ public class ItemResponse {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -96,7 +99,7 @@ public class ItemResponse {
   /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  */
+   */
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
@@ -124,7 +127,7 @@ public class ItemResponse {
   /**
    * Array with the errors for the item id requested
    * @return errors
-  */
+   */
   @Valid 
   @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")
@@ -144,7 +147,7 @@ public class ItemResponse {
   /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
-  */
+   */
   
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hotel_id")
@@ -154,6 +157,26 @@ public class ItemResponse {
 
   public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
+  }
+
+  public ItemResponse creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+  /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+   */
+  
+  @Schema(name = "creative_assets_id", example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("creative_assets_id")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
   }
 
   @Override
@@ -168,7 +191,8 @@ public class ItemResponse {
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
         Objects.equals(this.errors, itemResponse.errors) &&
-        Objects.equals(this.hotelId, itemResponse.hotelId);
+        Objects.equals(this.hotelId, itemResponse.hotelId) &&
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +201,7 @@ public class ItemResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,6 +219,7 @@ public class ItemResponse {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,7 +23,7 @@ import org.openapitools.model.ProductAvailabilityType;
  **/
 
 @ApiModel(description = "Catalogs Retail Feed object")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailFeed   {
   @JsonProperty("created_at")
   private Date createdAt;
@@ -75,7 +75,7 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:15:22Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -92,7 +92,7 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -109,7 +109,7 @@ public class CatalogsRetailFeed   {
   }
 
   
-  @ApiModelProperty(example = "2022-03-14T15:16:34Z", value = "")
+  @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;

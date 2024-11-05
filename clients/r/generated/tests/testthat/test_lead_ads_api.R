@@ -9,7 +9,7 @@ test_that("AdAccountsSubscriptionsDelById", {
   # tests for AdAccountsSubscriptionsDelById
   # base path: https://api.pinterest.com/v5
   # Delete lead ads subscription
-  # Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param subscription_id character Unique identifier of a subscription.
   # @return [Void]
@@ -22,7 +22,7 @@ test_that("AdAccountsSubscriptionsGetById", {
   # tests for AdAccountsSubscriptionsGetById
   # base path: https://api.pinterest.com/v5
   # Get lead ads subscription
-  # Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param subscription_id character Unique identifier of a subscription.
   # @return [AdAccountGetSubscriptionResponse]
@@ -35,9 +35,9 @@ test_that("AdAccountsSubscriptionsGetList", {
   # tests for AdAccountsSubscriptionsGetList
   # base path: https://api.pinterest.com/v5
   # Get lead ads subscriptions
-  # Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
   # @return [AdAccountsSubscriptionsGetList200Response]
 
@@ -49,7 +49,7 @@ test_that("AdAccountsSubscriptionsPost", {
   # tests for AdAccountsSubscriptionsPost
   # base path: https://api.pinterest.com/v5
   # Create lead ads subscription
-  # Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param ad_account_create_subscription_request AdAccountCreateSubscriptionRequest Subscription to create.
   # @return [AdAccountCreateSubscriptionResponse]

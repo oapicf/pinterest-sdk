@@ -7,19 +7,25 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open CatalogsApiHandlerParams
 open CatalogsApiServiceInterface
 open CatalogsApiServiceImplementation
+open OpenAPI.Model.Catalog
+open OpenAPI.Model.CatalogsCreateReportResponse
+open OpenAPI.Model.CatalogsCreateRequest
 open OpenAPI.Model.CatalogsFeed
+open OpenAPI.Model.CatalogsFeedIngestion
 open OpenAPI.Model.CatalogsItemValidationIssue
 open OpenAPI.Model.CatalogsItems
 open OpenAPI.Model.CatalogsItemsBatch
 open OpenAPI.Model.CatalogsItemsFilters
+open OpenAPI.Model.CatalogsItemsRequest
 open OpenAPI.Model.CatalogsList200Response
 open OpenAPI.Model.CatalogsListProductsByFilterRequest
 open OpenAPI.Model.CatalogsProductGroupPinsList200Response
-open OpenAPI.Model.CatalogsProductGroupProductCounts
-open OpenAPI.Model.CatalogsProductGroupsCreate201Response
-open OpenAPI.Model.CatalogsProductGroupsCreateRequest
+open OpenAPI.Model.CatalogsProductGroupProductCountsVertical
 open OpenAPI.Model.CatalogsProductGroupsList200Response
 open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
+open OpenAPI.Model.CatalogsReport
+open OpenAPI.Model.CatalogsReportParameters
+open OpenAPI.Model.CatalogsVerticalProductGroup
 open OpenAPI.Model.Error
 open OpenAPI.Model.FeedProcessingResultsList200Response
 open OpenAPI.Model.FeedsCreateRequest
@@ -27,12 +33,40 @@ open OpenAPI.Model.FeedsList200Response
 open OpenAPI.Model.FeedsUpdateRequest
 open OpenAPI.Model.ItemsBatchPostRequest
 open OpenAPI.Model.ItemsIssuesList200Response
+open OpenAPI.Model.MultipleProductGroupsInner
+open OpenAPI.Model.ReportsStats200Response
 
 module CatalogsApiHandler =
 
     /// <summary>
     /// 
     /// </summary>
+
+    //#region CatalogsCreate
+    /// <summary>
+    /// Create catalog
+    /// </summary>
+
+    let CatalogsCreate  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<CatalogsCreateQueryParams>()
+          let! bodyParams =
+            ctx.BindJsonAsync<CatalogsCreateBodyParams>()
+          let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : CatalogsCreateArgs
+          let result = CatalogsApiService.CatalogsCreate ctx serviceArgs
+          return! (match result with
+                      | CatalogsCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | CatalogsCreateStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CatalogsCreateStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CatalogsCreateDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
 
     //#region CatalogsList
     /// <summary>
@@ -60,7 +94,7 @@ module CatalogsApiHandler =
 
     //#region CatalogsProductGroupPinsList
     /// <summary>
-    /// List products for a Product Group
+    /// List products by product group
     /// </summary>
 
     let CatalogsProductGroupPinsList (pathParams:CatalogsProductGroupPinsListPathParams) : HttpHandler =
@@ -114,6 +148,36 @@ module CatalogsApiHandler =
         }
     //#endregion
 
+    //#region CatalogsProductGroupsCreateMany
+    /// <summary>
+    /// Create product groups
+    /// </summary>
+
+    let CatalogsProductGroupsCreateMany  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<CatalogsProductGroupsCreateManyQueryParams>()
+          let! bodyParams =
+            ctx.BindJsonAsync<CatalogsProductGroupsCreateManyBodyParams>()
+          let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : CatalogsProductGroupsCreateManyArgs
+          let result = CatalogsApiService.CatalogsProductGroupsCreateMany ctx serviceArgs
+          return! (match result with
+                      | CatalogsProductGroupsCreateManyStatusCode201 resolved ->
+                            setStatusCode 201 >=> text resolved.content
+                      | CatalogsProductGroupsCreateManyStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | CatalogsProductGroupsCreateManyStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CatalogsProductGroupsCreateManyStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CatalogsProductGroupsCreateManyStatusCode409 resolved ->
+                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsCreateManyDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
     //#region CatalogsProductGroupsDelete
     /// <summary>
     /// Delete product group
@@ -139,6 +203,34 @@ module CatalogsApiHandler =
                       | CatalogsProductGroupsDeleteStatusCode409 resolved ->
                             setStatusCode 409 >=> json resolved.content
                       | CatalogsProductGroupsDeleteDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region CatalogsProductGroupsDeleteMany
+    /// <summary>
+    /// Delete product groups
+    /// </summary>
+
+    let CatalogsProductGroupsDeleteMany  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<CatalogsProductGroupsDeleteManyQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;    } : CatalogsProductGroupsDeleteManyArgs
+          let result = CatalogsApiService.CatalogsProductGroupsDeleteMany ctx serviceArgs
+          return! (match result with
+                      | CatalogsProductGroupsDeleteManyStatusCode204 resolved ->
+                            setStatusCode 204 >=> text resolved.content
+                      | CatalogsProductGroupsDeleteManyStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | CatalogsProductGroupsDeleteManyStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | CatalogsProductGroupsDeleteManyStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | CatalogsProductGroupsDeleteManyStatusCode409 resolved ->
+                            setStatusCode 409 >=> json resolved.content
+                      | CatalogsProductGroupsDeleteManyDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }
@@ -206,7 +298,7 @@ module CatalogsApiHandler =
 
     //#region CatalogsProductGroupsProductCountsGet
     /// <summary>
-    /// Get product counts for a Product Group
+    /// Get product counts
     /// </summary>
 
     let CatalogsProductGroupsProductCountsGet (pathParams:CatalogsProductGroupsProductCountsGetPathParams) : HttpHandler =
@@ -230,7 +322,7 @@ module CatalogsApiHandler =
 
     //#region CatalogsProductGroupsUpdate
     /// <summary>
-    /// Update product group
+    /// Update single product group
     /// </summary>
 
     let CatalogsProductGroupsUpdate (pathParams:CatalogsProductGroupsUpdatePathParams) : HttpHandler =
@@ -262,7 +354,7 @@ module CatalogsApiHandler =
 
     //#region FeedProcessingResultsList
     /// <summary>
-    /// List processing results for a given feed
+    /// List feed processing results
     /// </summary>
 
     let FeedProcessingResultsList (pathParams:FeedProcessingResultsListPathParams) : HttpHandler =
@@ -374,6 +466,32 @@ module CatalogsApiHandler =
         }
     //#endregion
 
+    //#region FeedsIngest
+    /// <summary>
+    /// Ingest feed items
+    /// </summary>
+
+    let FeedsIngest (pathParams:FeedsIngestPathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<FeedsIngestQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : FeedsIngestArgs
+          let result = CatalogsApiService.FeedsIngest ctx serviceArgs
+          return! (match result with
+                      | FeedsIngestStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | FeedsIngestStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | FeedsIngestStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | FeedsIngestStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | FeedsIngestDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
     //#region FeedsList
     /// <summary>
     /// List feeds
@@ -428,7 +546,7 @@ module CatalogsApiHandler =
 
     //#region ItemsBatchGet
     /// <summary>
-    /// Get catalogs item batch status
+    /// Get item batch status
     /// </summary>
 
     let ItemsBatchGet (pathParams:ItemsBatchGetPathParams) : HttpHandler =
@@ -510,7 +628,7 @@ module CatalogsApiHandler =
 
     //#region ItemsIssuesList
     /// <summary>
-    /// List item issues for a given processing result
+    /// List item issues
     /// </summary>
 
     let ItemsIssuesList (pathParams:ItemsIssuesListPathParams) : HttpHandler =
@@ -534,9 +652,37 @@ module CatalogsApiHandler =
         }
     //#endregion
 
+    //#region ItemsPost
+    /// <summary>
+    /// Get catalogs items (POST)
+    /// </summary>
+
+    let ItemsPost  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<ItemsPostQueryParams>()
+          let! bodyParams =
+            ctx.BindJsonAsync<ItemsPostBodyParams>()
+          let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : ItemsPostArgs
+          let result = CatalogsApiService.ItemsPost ctx serviceArgs
+          return! (match result with
+                      | ItemsPostStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | ItemsPostStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | ItemsPostStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | ItemsPostStatusCode403 resolved ->
+                            setStatusCode 403 >=> json resolved.content
+                      | ItemsPostDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
     //#region ProductsByProductGroupFilterList
     /// <summary>
-    /// List filtered products
+    /// List products by filter
     /// </summary>
 
     let ProductsByProductGroupFilterList  : HttpHandler =
@@ -555,6 +701,78 @@ module CatalogsApiHandler =
                       | ProductsByProductGroupFilterListStatusCode409 resolved ->
                             setStatusCode 409 >=> json resolved.content
                       | ProductsByProductGroupFilterListDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region ReportsCreate
+    /// <summary>
+    /// Build catalogs report
+    /// </summary>
+
+    let ReportsCreate  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<ReportsCreateQueryParams>()
+          let! bodyParams =
+            ctx.BindJsonAsync<ReportsCreateBodyParams>()
+          let serviceArgs = {  queryParams=queryParams;   bodyParams=bodyParams } : ReportsCreateArgs
+          let result = CatalogsApiService.ReportsCreate ctx serviceArgs
+          return! (match result with
+                      | ReportsCreateStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | ReportsCreateStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | ReportsCreateStatusCode409 resolved ->
+                            setStatusCode 409 >=> json resolved.content
+                      | ReportsCreateDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region ReportsGet
+    /// <summary>
+    /// Get catalogs report
+    /// </summary>
+
+    let ReportsGet  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<ReportsGetQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;    } : ReportsGetArgs
+          let result = CatalogsApiService.ReportsGet ctx serviceArgs
+          return! (match result with
+                      | ReportsGetStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | ReportsGetStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | ReportsGetStatusCode409 resolved ->
+                            setStatusCode 409 >=> json resolved.content
+                      | ReportsGetDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
+
+    //#region ReportsStats
+    /// <summary>
+    /// List report stats
+    /// </summary>
+
+    let ReportsStats  : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<ReportsStatsQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;    } : ReportsStatsArgs
+          let result = CatalogsApiService.ReportsStats ctx serviceArgs
+          return! (match result with
+                      | ReportsStatsStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | ReportsStatsStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
+                      | ReportsStatsDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
         }

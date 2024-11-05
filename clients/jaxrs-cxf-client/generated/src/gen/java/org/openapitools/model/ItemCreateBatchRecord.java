@@ -1,7 +1,7 @@
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -21,7 +21,7 @@ public class ItemCreateBatchRecord  {
   private String itemId;
 
   @ApiModelProperty(value = "")
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
  /**
    * The catalog item id in the merchant namespace
    * @return itemId
@@ -45,15 +45,15 @@ public class ItemCreateBatchRecord  {
    * @return attributes
   **/
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
-  public ItemCreateBatchRecord attributes(ItemAttributes attributes) {
+  public ItemCreateBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }

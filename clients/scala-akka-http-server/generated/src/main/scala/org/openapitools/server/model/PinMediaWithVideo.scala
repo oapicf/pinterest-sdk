@@ -16,7 +16,7 @@ package org.openapitools.server.model
 */
 final case class PinMediaWithVideo (
   mediaType: Option[String] = None,
-  images: Option[ImageMetadataImages] = None,
+  images: Option[PinMediaWithImageAllOfImages] = None,
   coverImageUrl: Option[String] = None,
   videoUrl: Option[String] = None,
   duration: Option[Double] = None,

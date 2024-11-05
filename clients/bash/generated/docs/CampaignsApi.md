@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
  **campaignIds** | [**array[string]**](string.md) | List of Campaign Ids to use to filter the results. | [default to null]
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **targetingTypes** | [**array[AdsAnalyticsTargetingType]**](AdsAnalyticsTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. | [default to null]
+ **targetingTypes** | [**array[AdsAnalyticsCampaignTargetingType]**](AdsAnalyticsCampaignTargetingType.md) | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. | [default to null]
  **columns** | [**array[string]**](string.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned | [default to null]
  **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly | [default to null]
  **clickWindowDays** | **integer** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to '30' days. | [optional] [default to 30]
@@ -123,7 +123,7 @@ For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-yo
 - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
 <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
-<p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+ <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
   <li>1 microdollar = $0.000001 </li>
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
  **adAccountId** | **string** | Unique identifier of an ad account. | [default to null]
  **campaignIds** | [**array[string]**](string.md) | List of Campaign Ids to use to filter the results. | [optional] [default to null]
  **entityStatuses** | [**array[string]**](string.md) | Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
 items. | [optional] [default to null]
@@ -249,9 +249,9 @@ Update campaigns
 
 Update multiple ad campaigns based on campaign_ids. <p/>
 <strong>Note:</strong><p/>
-- <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
+ - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
+<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
 <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>

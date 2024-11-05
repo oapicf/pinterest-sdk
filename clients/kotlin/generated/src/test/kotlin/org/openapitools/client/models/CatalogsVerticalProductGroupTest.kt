@@ -19,8 +19,9 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsVerticalProductGroup
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroup
+import org.openapitools.client.models.CatalogsCreativeAssetsProductGroupFilters
 import org.openapitools.client.models.CatalogsHotelProductGroup
-import org.openapitools.client.models.CatalogsProductGroupFilters
 import org.openapitools.client.models.CatalogsProductGroupStatus
 import org.openapitools.client.models.CatalogsProductGroupType
 import org.openapitools.client.models.CatalogsRetailProductGroup
@@ -36,7 +37,7 @@ class CatalogsVerticalProductGroupTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
-        // to test the property `id` - ID of the catalog product group.
+        // to test the property `id` - ID of the creative assets product group.
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
@@ -48,19 +49,19 @@ class CatalogsVerticalProductGroupTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `catalogId`
+        // to test the property `catalogId` - Catalog id pertaining to the creative assets product group.
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")
         }
 
-        // to test the property `feedId`
+        // to test the property `feedId` - id of the catalogs feed belonging to this catalog product group
         should("test feedId") {
             // uncomment below to test the property
             //modelInstance.feedId shouldBe ("TODO")
         }
 
-        // to test the property `name` - Name of catalog product group
+        // to test the property `name` - Name of creative assets product group
         should("test name") {
             // uncomment below to test the property
             //modelInstance.name shouldBe ("TODO")
@@ -70,18 +71,6 @@ class CatalogsVerticalProductGroupTest : ShouldSpec() {
         should("test description") {
             // uncomment below to test the property
             //modelInstance.description shouldBe ("TODO")
-        }
-
-        // to test the property `createdAt` - Unix timestamp in seconds of when catalog product group was created.
-        should("test createdAt") {
-            // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
-        }
-
-        // to test the property `updatedAt` - Unix timestamp in seconds of last time catalog product group was updated.
-        should("test updatedAt") {
-            // uncomment below to test the property
-            //modelInstance.updatedAt shouldBe ("TODO")
         }
 
         // to test the property `isFeatured` - boolean indicator of whether the product group is being featured or not
@@ -100,6 +89,30 @@ class CatalogsVerticalProductGroupTest : ShouldSpec() {
         should("test status") {
             // uncomment below to test the property
             //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `createdAt` - Unix timestamp in seconds of when catalog product group was created.
+        should("test createdAt") {
+            // uncomment below to test the property
+            //modelInstance.createdAt shouldBe ("TODO")
+        }
+
+        // to test the property `updatedAt` - Unix timestamp in seconds of last time catalog product group was updated.
+        should("test updatedAt") {
+            // uncomment below to test the property
+            //modelInstance.updatedAt shouldBe ("TODO")
+        }
+
+        // to test the property `country`
+        should("test country") {
+            // uncomment below to test the property
+            //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `locale`
+        should("test locale") {
+            // uncomment below to test the property
+            //modelInstance.locale shouldBe ("TODO")
         }
 
     }

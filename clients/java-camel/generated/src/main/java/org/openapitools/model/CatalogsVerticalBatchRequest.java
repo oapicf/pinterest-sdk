@@ -11,12 +11,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsHotelBatchItem;
+import org.openapitools.model.CatalogsCreativeAssetsBatchItem;
+import org.openapitools.model.CatalogsCreativeAssetsBatchRequest;
 import org.openapitools.model.CatalogsHotelBatchRequest;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsRetailBatchRequest;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -35,13 +35,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsBatchRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelBatchRequest.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailBatchRequest.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsBatchRequest.class, name = "CatalogsCreativeAssetsBatchRequest"),
   @JsonSubTypes.Type(value = CatalogsHotelBatchRequest.class, name = "CatalogsHotelBatchRequest"),
   @JsonSubTypes.Type(value = CatalogsRetailBatchRequest.class, name = "CatalogsRetailBatchRequest")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface CatalogsVerticalBatchRequest extends ItemsBatchPostRequest {
     public String getCatalogType();
 }

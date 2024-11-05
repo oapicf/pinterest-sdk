@@ -11,7 +11,7 @@ import org.openapitools.vertxweb.server.model.AdAccountsCountryResponseData;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdAccountsCountryResponse   {
   
-  private List<AdAccountsCountryResponseData> items;
+  private List<AdAccountsCountryResponseData> items = new ArrayList<>();
 
   public AdAccountsCountryResponse () {
 

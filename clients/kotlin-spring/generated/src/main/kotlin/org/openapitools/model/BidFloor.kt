@@ -25,7 +25,7 @@ data class BidFloor(
 
     @Schema(example = "bidfloor", description = "Always the string 'bidfloor'")
     @get:JsonProperty("type") val type: kotlin.String? = "bidfloor"
-) {
+    ) {
 
 }
 

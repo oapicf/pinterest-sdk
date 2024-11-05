@@ -25,7 +25,7 @@ CatalogsCreateRetailItem::__init()
 {
 	//item_id = std::string();
 	//operation = std::string();
-	//attributes = new ItemAttributes();
+	//attributes = new ItemAttributesRequest();
 }
 
 void
@@ -81,11 +81,11 @@ CatalogsCreateRetailItem::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("ItemAttributes")) {
-			jsonToValue(&attributes, node, "ItemAttributes", "ItemAttributes");
+		if (isprimitive("ItemAttributesRequest")) {
+			jsonToValue(&attributes, node, "ItemAttributesRequest", "ItemAttributesRequest");
 		} else {
 			
-			ItemAttributes* obj = static_cast<ItemAttributes*> (&attributes);
+			ItemAttributesRequest* obj = static_cast<ItemAttributesRequest*> (&attributes);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -120,13 +120,13 @@ CatalogsCreateRetailItem::toJson()
 	}
 	const gchar *operationKey = "operation";
 	json_object_set_member(pJsonObject, operationKey, node);
-	if (isprimitive("ItemAttributes")) {
-		ItemAttributes obj = getAttributes();
-		node = converttoJson(&obj, "ItemAttributes", "");
+	if (isprimitive("ItemAttributesRequest")) {
+		ItemAttributesRequest obj = getAttributes();
+		node = converttoJson(&obj, "ItemAttributesRequest", "");
 	}
 	else {
 		
-		ItemAttributes obj = static_cast<ItemAttributes> (getAttributes());
+		ItemAttributesRequest obj = static_cast<ItemAttributesRequest> (getAttributes());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -166,14 +166,14 @@ CatalogsCreateRetailItem::setOperation(std::string  operation)
 	this->operation = operation;
 }
 
-ItemAttributes
+ItemAttributesRequest
 CatalogsCreateRetailItem::getAttributes()
 {
 	return attributes;
 }
 
 void
-CatalogsCreateRetailItem::setAttributes(ItemAttributes  attributes)
+CatalogsCreateRetailItem::setAttributes(ItemAttributesRequest  attributes)
 {
 	this->attributes = attributes;
 }

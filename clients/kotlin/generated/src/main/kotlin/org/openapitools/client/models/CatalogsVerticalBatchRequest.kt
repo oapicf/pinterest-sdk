@@ -15,12 +15,12 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsHotelBatchItem
+import org.openapitools.client.models.CatalogsCreativeAssetsBatchItem
+import org.openapitools.client.models.CatalogsCreativeAssetsBatchRequest
 import org.openapitools.client.models.CatalogsHotelBatchRequest
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsRetailBatchRequest
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
-import org.openapitools.client.models.Language
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,24 +31,34 @@ import com.squareup.moshi.JsonClass
  * @param catalogType 
  * @param country 
  * @param language 
- * @param items Array with catalogs item operations
- * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @param items Array with creative assets item operations
+ * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 
 
 interface CatalogsVerticalBatchRequest {
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val catalogType: CatalogsVerticalBatchRequest.CatalogType
     @Json(name = "country")
     val country: Country
     @Json(name = "language")
-    val language: Language
-    /* Array with catalogs item operations */
+    val language: CatalogsItemsRequestLanguage
+    /* Array with creative assets item operations */
     @Json(name = "items")
-    val items: kotlin.collections.List<CatalogsHotelBatchItem>
-    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+    val items: kotlin.collections.List<CatalogsCreativeAssetsBatchItem>
+    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String?
+    /**
+     * 
+     *
+     * Values: CREATIVE_ASSETS
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "CREATIVE_ASSETS") CREATIVE_ASSETS("CREATIVE_ASSETS");
+    }
+
 }
 

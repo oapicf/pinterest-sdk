@@ -19,6 +19,7 @@
   | {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
   | {'default_country', openapi_country:openapi_country() }
   | {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
+  | {'status', openapi_catalogs_status:openapi_catalogs_status() }
   | {'catalog_id', binary() }
   ].
 
@@ -37,6 +38,7 @@ openapi_catalogs_vertical_feeds_create_request(Fields) ->
             , {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
             , {'default_country', openapi_country:openapi_country() }
             , {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
+            , {'status', binary() }
             , {'catalog_id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

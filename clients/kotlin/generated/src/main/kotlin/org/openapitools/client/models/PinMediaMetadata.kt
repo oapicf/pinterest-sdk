@@ -74,5 +74,8 @@ data class PinMediaMetadata (
     @Json(name = "width")
     val width: kotlin.Int? = null
 
-)
+) {
+
+
+}
 

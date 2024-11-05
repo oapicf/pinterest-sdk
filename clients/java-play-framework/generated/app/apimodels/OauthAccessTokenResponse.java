@@ -12,7 +12,7 @@ import javax.validation.Valid;
 /**
  * A successful OAuth access token response.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class OauthAccessTokenResponse   {
   /**
@@ -21,7 +21,9 @@ public class OauthAccessTokenResponse   {
   public enum ResponseTypeEnum {
     AUTHORIZATION_CODE("authorization_code"),
     
-    REFRESH_TOKEN("refresh_token");
+    REFRESH_TOKEN("refresh_token"),
+    
+    CLIENT_CREDENTIALS("client_credentials");
 
     private final String value;
 

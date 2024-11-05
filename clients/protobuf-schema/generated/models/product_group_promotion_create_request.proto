@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,13 +14,13 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/product_group_promotion.proto";
+import public "models/product_group_promotion_create_request_element.proto";
 
 message ProductGroupPromotionCreateRequest {
 
   // ID of the Ad Group the Product Group Promotion belongs to.
   string ad_group_id = 85224585;
 
-  repeated ProductGroupPromotion product_group_promotion = 85622894;
+  repeated ProductGroupPromotionCreateRequestElement product_group_promotion = 85622894;
 
 }

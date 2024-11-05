@@ -17,15 +17,13 @@ CatalogsFeedCredentials <- R6::R6Class(
   public = list(
     `password` = NULL,
     `username` = NULL,
-    #' Initialize a new CatalogsFeedCredentials class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedCredentials class.
     #'
     #' @param password The required password for downloading a feed.
     #' @param username The required username for downloading a feed.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`password`, `username`, ...) {
       if (!missing(`password`)) {
         if (!(is.character(`password`) && length(`password`) == 1)) {
@@ -40,13 +38,11 @@ CatalogsFeedCredentials <- R6::R6Class(
         self$`username` <- `username`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedCredentials in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedCredentialsObject <- list()
       if (!is.null(self$`password`)) {
@@ -59,14 +55,12 @@ CatalogsFeedCredentials <- R6::R6Class(
       }
       CatalogsFeedCredentialsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedCredentials
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedCredentials
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedCredentials
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`password`)) {
@@ -77,13 +71,11 @@ CatalogsFeedCredentials <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedCredentials in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`password`)) {
@@ -106,27 +98,23 @@ CatalogsFeedCredentials <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedCredentials
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedCredentials
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedCredentials
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`password` <- this_object$`password`
       self$`username` <- this_object$`username`
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedCredentials
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedCredentials and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `password`
@@ -146,23 +134,19 @@ CatalogsFeedCredentials <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedCredentials: the required field `username` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedCredentials
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `password` is null
       if (is.null(self$`password`)) {
@@ -176,13 +160,11 @@ CatalogsFeedCredentials <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `password` is null
@@ -197,12 +179,9 @@ CatalogsFeedCredentials <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

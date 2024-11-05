@@ -21,7 +21,7 @@ data class LeadFormTestRequest(
 
     @Schema(example = "[\"John\",\"Doe\",\"abc@email.com\",\"987654321\"]", required = true, description = "Test lead answers. Should follow the creation order.")
     @get:JsonProperty("answers", required = true) val answers: kotlin.collections.List<kotlin.String>
-) {
+    ) {
 
 }
 

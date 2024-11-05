@@ -32,5 +32,8 @@ data class ItemGroupIdFilter (
     @Json(name = "ITEM_GROUP_ID")
     val ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
 
-)
+) {
+
+
+}
 

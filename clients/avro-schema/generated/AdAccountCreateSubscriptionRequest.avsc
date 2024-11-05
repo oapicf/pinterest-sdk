@@ -26,6 +26,12 @@
       "type": ["null", "string"],
       "doc": "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.",
       "default": null
+    },
+    {
+      "name": "partner_metadata",
+      "type": ["null", "model.AdAccountCreateSubscriptionRequestPartnerMetadata"],
+      "doc": "",
+      "default": null
     }
   ]
 

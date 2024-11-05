@@ -23,7 +23,7 @@ SummaryPin::~SummaryPin()
 void
 SummaryPin::__init()
 {
-	//media = new SummaryPin_media();
+	//media = null;
 	//alt_text = std::string();
 	//link = std::string();
 	//title = std::string();
@@ -71,11 +71,11 @@ SummaryPin::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("SummaryPin_media")) {
-			jsonToValue(&media, node, "SummaryPin_media", "SummaryPin_media");
+		if (isprimitive("PinMedia")) {
+			jsonToValue(&media, node, "PinMedia", "PinMedia");
 		} else {
 			
-			SummaryPin_media* obj = static_cast<SummaryPin_media*> (&media);
+			PinMedia* obj = static_cast<PinMedia*> (&media);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -136,13 +136,13 @@ SummaryPin::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("SummaryPin_media")) {
-		SummaryPin_media obj = getMedia();
-		node = converttoJson(&obj, "SummaryPin_media", "");
+	if (isprimitive("PinMedia")) {
+		PinMedia obj = getMedia();
+		node = converttoJson(&obj, "PinMedia", "");
 	}
 	else {
 		
-		SummaryPin_media obj = static_cast<SummaryPin_media> (getMedia());
+		PinMedia obj = static_cast<PinMedia> (getMedia());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -194,14 +194,14 @@ SummaryPin::toJson()
 	return ret;
 }
 
-SummaryPin_media
+PinMedia
 SummaryPin::getMedia()
 {
 	return media;
 }
 
 void
-SummaryPin::setMedia(SummaryPin_media  media)
+SummaryPin::setMedia(PinMedia  media)
 {
 	this->media = media;
 }

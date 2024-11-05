@@ -32,5 +32,8 @@ data class ConversionEvents (
     @Json(name = "data")
     val `data`: kotlin.collections.List<ConversionEventsDataInner>
 
-)
+) {
+
+
+}
 

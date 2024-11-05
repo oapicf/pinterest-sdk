@@ -73,8 +73,8 @@ private class OASKeywordTest {
     private static void maintainRenamedProperties() {
         OASKeyword keyword = new OASKeyword();
         Map<String, String> x-property-mappings = keyword.getx-property-mappings();
+        System.assertEquals('matchType', x-property-mappings.get('match_type'));
         System.assertEquals('parentId', x-property-mappings.get('parent_id'));
         System.assertEquals('parentType', x-property-mappings.get('parent_type'));
-        System.assertEquals('matchType', x-property-mappings.get('match_type'));
     }
 }

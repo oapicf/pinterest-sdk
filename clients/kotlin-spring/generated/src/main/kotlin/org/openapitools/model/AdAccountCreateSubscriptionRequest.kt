@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.openapitools.model.AdAccountCreateSubscriptionRequestPartnerMetadata
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -19,6 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param leadFormId Lead form ID.
  * @param partnerAccessToken Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
  * @param partnerRefreshToken Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+ * @param partnerMetadata 
  */
 data class AdAccountCreateSubscriptionRequest(
 
@@ -33,8 +35,12 @@ data class AdAccountCreateSubscriptionRequest(
     @get:JsonProperty("partner_access_token") val partnerAccessToken: kotlin.String? = null,
 
     @Schema(example = "null", description = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.")
-    @get:JsonProperty("partner_refresh_token") val partnerRefreshToken: kotlin.String? = null
-) {
+    @get:JsonProperty("partner_refresh_token") val partnerRefreshToken: kotlin.String? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("partner_metadata") val partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = null
+    ) {
 
 }
 

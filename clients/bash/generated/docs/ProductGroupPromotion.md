@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **trackingUnderscoreurl** | **string** | tracking_url | [optional] [default to null]
 **catalogUnderscoreproductUnderscoregroupUnderscoreid** | **string** | catalog_product_group_id | [optional] [default to null]
 **catalogUnderscoreproductUnderscoregroupUnderscorename** | **string** | product_group_promotion_name | [optional] [default to null]
-**creativeUnderscoretype** | [**CreativeType**](CreativeType.md) |  | [optional] [default to null]
 **collectionsUnderscoreheroUnderscorepinUnderscoreid** | **string** | collections_hero_pin_id | [optional] [default to null]
 **collectionsUnderscoreheroUnderscoredestinationUnderscoreurl** | **string** | collections_hero_destination_url | [optional] [default to null]
 **gridUnderscoreclickUnderscoretype** | [**GridClickType**](GridClickType.md) |  | [optional] [default to null]

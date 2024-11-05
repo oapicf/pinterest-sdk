@@ -45,7 +45,7 @@ data class ConversionTagConfigs(
 
     @Schema(example = "true", description = "Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.")
     @get:JsonProperty("aem_loc_enabled") val aemLocEnabled: kotlin.Boolean? = false
-) {
+    ) {
 
 }
 

@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * CustomerListUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomerListUpdateRequest {
 
   private String records;
@@ -50,7 +50,7 @@ public class CustomerListUpdateRequest {
   /**
    * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
    * @return records
-  */
+   */
   @NotNull 
   @Schema(name = "records", example = "email2@pinterest.com,email6@pinterest.com,", description = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("records")
@@ -70,7 +70,7 @@ public class CustomerListUpdateRequest {
   /**
    * Get operationType
    * @return operationType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "operation_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation_type")
@@ -90,7 +90,7 @@ public class CustomerListUpdateRequest {
   /**
    * Get exceptions
    * @return exceptions
-  */
+   */
   @Valid 
   @Schema(name = "exceptions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")

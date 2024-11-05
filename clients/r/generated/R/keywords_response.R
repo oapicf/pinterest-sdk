@@ -17,15 +17,13 @@ KeywordsResponse <- R6::R6Class(
   public = list(
     `errors` = NULL,
     `keywords` = NULL,
-    #' Initialize a new KeywordsResponse class.
-    #'
+
     #' @description
     #' Initialize a new KeywordsResponse class.
     #'
     #' @param errors errors
     #' @param keywords keywords
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`errors` = NULL, `keywords` = NULL, ...) {
       if (!is.null(`errors`)) {
         stopifnot(is.vector(`errors`), length(`errors`) != 0)
@@ -38,13 +36,11 @@ KeywordsResponse <- R6::R6Class(
         self$`keywords` <- `keywords`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordsResponse in JSON format
-    #' @export
     toJSON = function() {
       KeywordsResponseObject <- list()
       if (!is.null(self$`errors`)) {
@@ -57,14 +53,12 @@ KeywordsResponse <- R6::R6Class(
       }
       KeywordsResponseObject
     },
-    #' Deserialize JSON string into an instance of KeywordsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordsResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`errors`)) {
@@ -75,13 +69,11 @@ KeywordsResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return KeywordsResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`errors`)) {
@@ -104,67 +96,54 @@ KeywordsResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of KeywordsResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of KeywordsResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of KeywordsResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[KeywordError]", loadNamespace("openapi"))
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[Keyword]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to KeywordsResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to KeywordsResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of KeywordsResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -25,7 +25,7 @@ import java.util.Objects;
 @ApiModel(description = "Audience interests and demographics.")
 public class AudienceInsightsResponse   {
   
-  private List<@Valid AudienceCategory> categories;
+  private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
   private AudienceDemographics demographics;
 

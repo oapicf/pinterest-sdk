@@ -4,7 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.SummaryPinMedia;
+import org.openapitools.vertxweb.server.model.PinMedia;
 
 /**
  * Summarized pin information
@@ -12,7 +12,7 @@ import org.openapitools.vertxweb.server.model.SummaryPinMedia;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SummaryPin   {
   
-  private SummaryPinMedia media;
+  private PinMedia media;
   private String altText;
   private String link;
   private String title;
@@ -22,7 +22,7 @@ public class SummaryPin   {
 
   }
 
-  public SummaryPin (SummaryPinMedia media, String altText, String link, String title, String description) {
+  public SummaryPin (PinMedia media, String altText, String link, String title, String description) {
     this.media = media;
     this.altText = altText;
     this.link = link;
@@ -32,10 +32,10 @@ public class SummaryPin   {
 
     
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 

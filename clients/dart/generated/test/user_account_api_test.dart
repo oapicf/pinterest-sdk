@@ -28,7 +28,7 @@ void main() {
 
     // Follow user
     //
-    // <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+    // <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
     //
     //Future<UserSummary> followUserUpdate(String username, FollowUserRequest followUserRequest) async
     test('test followUserUpdate', () async {
@@ -100,7 +100,7 @@ void main() {
 
     // Get user account
     //
-    // Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+    // Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
     //
     //Future<Account> userAccountGet({ String adAccountId }) async
     test('test userAccountGet', () async {
@@ -129,7 +129,7 @@ void main() {
     //
     // Verify a website as a signed-in user.
     //
-    //Future<UserWebsiteSummary> verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest) async
+    //Future<UserWebsiteSummary> verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest, { String adAccountId }) async
     test('test verifyWebsiteUpdate', () async {
       // TODO
     });
@@ -138,7 +138,7 @@ void main() {
     //
     // Get verification code for user to install on the website to claim it.
     //
-    //Future<UserWebsiteVerificationCode> websiteVerificationGet() async
+    //Future<UserWebsiteVerificationCode> websiteVerificationGet({ String adAccountId }) async
     test('test websiteVerificationGet', () async {
       // TODO
     });

@@ -36,7 +36,7 @@ void main() {
       // TODO
     });
 
-    // Ad group is ROAS optimized
+    // ROAS optimization is not supported
     // bool isRoasOptimized
     test('to test the property `isRoasOptimized`', () async {
       // TODO

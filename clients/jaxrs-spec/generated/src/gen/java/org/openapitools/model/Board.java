@@ -21,18 +21,18 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Board")
 @JsonTypeName("Board")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Board   {
-  private @Valid String id;
-  private @Valid Date createdAt;
-  private @Valid Date boardPinsModifiedAt;
-  private @Valid String name;
-  private @Valid String description;
-  private @Valid Integer collaboratorCount;
-  private @Valid Integer pinCount;
-  private @Valid Integer followerCount;
-  private @Valid BoardMedia media;
-  private @Valid BoardOwner owner;
+  private String id;
+  private Date createdAt;
+  private Date boardPinsModifiedAt;
+  private String name;
+  private String description;
+  private Integer collaboratorCount;
+  private Integer pinCount;
+  private Integer followerCount;
+  private BoardMedia media;
+  private BoardOwner owner;
   public enum PrivacyEnum {
 
     PUBLIC(String.valueOf("PUBLIC")), PROTECTED(String.valueOf("PROTECTED")), SECRET(String.valueOf("SECRET"));
@@ -80,7 +80,7 @@ public class Board   {
     }
 }
 
-  private @Valid PrivacyEnum privacy = PrivacyEnum.PUBLIC;
+  private PrivacyEnum privacy = PrivacyEnum.PUBLIC;
 
   /**
    **/
@@ -151,8 +151,7 @@ public class Board   {
   
   @ApiModelProperty(example = "Summer Recipes", required = true, value = "")
   @JsonProperty("name")
-  @NotNull
-  public String getName() {
+  @NotNull public String getName() {
     return name;
   }
 
@@ -192,7 +191,7 @@ public class Board   {
   
   @ApiModelProperty(example = "17", value = "Count of collaborators on the board.")
   @JsonProperty("collaborator_count")
- @Min(0)  public Integer getCollaboratorCount() {
+   @Min(0)public Integer getCollaboratorCount() {
     return collaboratorCount;
   }
 
@@ -213,7 +212,7 @@ public class Board   {
   
   @ApiModelProperty(example = "5", value = "Count of pins on the board.")
   @JsonProperty("pin_count")
- @Min(0)  public Integer getPinCount() {
+   @Min(0)public Integer getPinCount() {
     return pinCount;
   }
 
@@ -234,7 +233,7 @@ public class Board   {
   
   @ApiModelProperty(example = "13", value = "Board follower count.")
   @JsonProperty("follower_count")
- @Min(0)  public Integer getFollowerCount() {
+   @Min(0)public Integer getFollowerCount() {
     return followerCount;
   }
 
@@ -253,7 +252,7 @@ public class Board   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media")
-  public BoardMedia getMedia() {
+  @Valid public BoardMedia getMedia() {
     return media;
   }
 
@@ -272,7 +271,7 @@ public class Board   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("owner")
-  public BoardOwner getOwner() {
+  @Valid public BoardOwner getOwner() {
     return owner;
   }
 

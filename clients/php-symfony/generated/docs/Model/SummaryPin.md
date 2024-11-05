@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**OpenAPI\Server\Model\SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**media** | [**OpenAPI\Server\Model\PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **altText** | **string** |  | [optional] 
 **link** | **string** |  | [optional] 
 **title** | **string** |  | [optional] 

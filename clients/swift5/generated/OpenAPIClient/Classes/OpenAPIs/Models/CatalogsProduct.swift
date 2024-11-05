@@ -10,27 +10,35 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CatalogsProduct: Codable, JSONEncodable, Hashable {
-
-    public var metadata: CatalogsProductMetadata
-    public var pin: Pin?
-
-    public init(metadata: CatalogsProductMetadata, pin: Pin?) {
-        self.metadata = metadata
-        self.pin = pin
-    }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable {
-        case metadata
-        case pin
-    }
-
-    // Encodable protocol methods
+/** Catalogs product for all verticals */
+public enum CatalogsProduct: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsProduct(CatalogsCreativeAssetsProduct)
+    case typeCatalogsHotelProduct(CatalogsHotelProduct)
+    case typeCatalogsRetailProduct(CatalogsRetailProduct)
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(metadata, forKey: .metadata)
-        try container.encode(pin, forKey: .pin)
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .typeCatalogsCreativeAssetsProduct(let value):
+            try container.encode(value)
+        case .typeCatalogsHotelProduct(let value):
+            try container.encode(value)
+        case .typeCatalogsRetailProduct(let value):
+            try container.encode(value)
+        }
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(CatalogsCreativeAssetsProduct.self) {
+            self = .typeCatalogsCreativeAssetsProduct(value)
+        } else if let value = try? container.decode(CatalogsHotelProduct.self) {
+            self = .typeCatalogsHotelProduct(value)
+        } else if let value = try? container.decode(CatalogsRetailProduct.self) {
+            self = .typeCatalogsRetailProduct(value)
+        } else {
+            throw DecodingError.typeMismatch(Self.Type.self, .init(codingPath: decoder.codingPath, debugDescription: "Unable to decode instance of CatalogsProduct"))
+        }
     }
 }
 

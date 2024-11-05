@@ -21,5 +21,5 @@ class AudienceCategory {
     /* Interest ID. */
     String id
     /* Subcategory interest distribution */
-    List<AudienceSubcategory> subcategories
+    List<AudienceSubcategory> subcategories = new ArrayList<>()
 }

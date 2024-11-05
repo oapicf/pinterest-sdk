@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * ProductType2Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProductType2Filter {
 
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_2;
@@ -43,7 +43,7 @@ public class ProductType2Filter {
   /**
    * Get PRODUCT_TYPE_2
    * @return PRODUCT_TYPE_2
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "PRODUCT_TYPE_2", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("PRODUCT_TYPE_2")

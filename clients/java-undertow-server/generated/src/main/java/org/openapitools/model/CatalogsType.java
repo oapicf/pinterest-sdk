@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -27,7 +27,9 @@ public enum CatalogsType {
     
         RETAIL("RETAIL"),
         
-        HOTEL("HOTEL");
+        HOTEL("HOTEL"),
+        
+        CREATIVE_ASSETS("CREATIVE_ASSETS");
 
 private String value;
 

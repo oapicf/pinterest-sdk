@@ -105,7 +105,7 @@ Method | HTTP request | Description
 [**Sandbox_Delete**](AdAccountsApi.md#Sandbox_Delete) | **DELETE** /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox
 [**Templates_List**](AdAccountsApi.md#Templates_List) | **GET** /ad_accounts/{ad_account_id}/templates | List templates
 [**Ad_Groups_Analytics**](AdGroupsApi.md#Ad_Groups_Analytics) | **GET** /ad_accounts/{ad_account_id}/ad_groups/analytics | Get ad group analytics
-[**Ad_Groups_Audience_Sizing**](AdGroupsApi.md#Ad_Groups_Audience_Sizing) | **GET** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
+[**Ad_Groups_Audience_Sizing**](AdGroupsApi.md#Ad_Groups_Audience_Sizing) | **POST** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing
 [**Ad_Groups_Bid_Floor_Get**](AdGroupsApi.md#Ad_Groups_Bid_Floor_Get) | **POST** /ad_accounts/{ad_account_id}/bid_floor | Get bid floors
 [**Ad_Groups_Create**](AdGroupsApi.md#Ad_Groups_Create) | **POST** /ad_accounts/{ad_account_id}/ad_groups | Create ad groups
 [**Ad_Groups_Get**](AdGroupsApi.md#Ad_Groups_Get) | **GET** /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id} | Get ad group
@@ -119,8 +119,17 @@ Method | HTTP request | Description
 [**Ads_Get**](AdsApi.md#Ads_Get) | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad
 [**Ads_List**](AdsApi.md#Ads_List) | **GET** /ad_accounts/{ad_account_id}/ads | List ads
 [**Ads_Update**](AdsApi.md#Ads_Update) | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads
+[**Advanced_Auction_Items_Get_Post**](AdvancedAuctionApi.md#Advanced_Auction_Items_Get_Post) | **POST** /advanced_auction/items/get | Get item bid options (POST)
+[**Advanced_Auction_Items_Submit_Post**](AdvancedAuctionApi.md#Advanced_Auction_Items_Submit_Post) | **POST** /advanced_auction/items/submit | Operate on item level bid options
 [**Audience_Insights_Get**](AudienceInsightsApi.md#Audience_Insights_Get) | **GET** /ad_accounts/{ad_account_id}/audience_insights | Get audience insights
 [**Audience_Insights_Scope_And_Type_Get**](AudienceInsightsApi.md#Audience_Insights_Scope_And_Type_Get) | **GET** /ad_accounts/{ad_account_id}/insights/audiences | Get audience insights scope and type
+[**Ad_Accounts_Audiences_Shared_Accounts_List**](AudienceSharingApi.md#Ad_Accounts_Audiences_Shared_Accounts_List) | **GET** /ad_accounts/{ad_account_id}/audiences/shared/accounts | List accounts with access to an audience owned by an ad account
+[**Business_Account_Audiences_Shared_Accounts_List**](AudienceSharingApi.md#Business_Account_Audiences_Shared_Accounts_List) | **GET** /businesses/{business_id}/audiences/shared/accounts | List accounts with access to an audience owned by a business
+[**Shared_Audiences_For_Business_List**](AudienceSharingApi.md#Shared_Audiences_For_Business_List) | **GET** /businesses/{business_id}/audiences | List received audiences for a business
+[**Update_Ad_Account_To_Ad_Account_Shared_Audience**](AudienceSharingApi.md#Update_Ad_Account_To_Ad_Account_Shared_Audience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared | Update audience sharing between ad accounts
+[**Update_Ad_Account_To_Business_Shared_Audience**](AudienceSharingApi.md#Update_Ad_Account_To_Business_Shared_Audience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/businesses/shared | Update audience sharing from an ad account to businesses
+[**Update_Business_To_Ad_Account_Shared_Audience**](AudienceSharingApi.md#Update_Business_To_Ad_Account_Shared_Audience) | **PATCH** /businesses/{business_id}/audiences/ad_accounts/shared | Update audience sharing from a business to ad accounts
+[**Update_Business_To_Business_Shared_Audience**](AudienceSharingApi.md#Update_Business_To_Business_Shared_Audience) | **PATCH** /businesses/{business_id}/audiences/businesses/shared | Update audience sharing between businesses
 [**Audiences_Create**](AudiencesApi.md#Audiences_Create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
 [**Audiences_Create_Custom**](AudiencesApi.md#Audiences_Create_Custom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 [**Audiences_Get**](AudiencesApi.md#Audiences_Get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
@@ -149,31 +158,63 @@ Method | HTTP request | Description
 [**Bulk_Download_Create**](BulkApi.md#Bulk_Download_Create) | **POST** /ad_accounts/{ad_account_id}/bulk/download | Get advertiser entities in bulk
 [**Bulk_Request_Get**](BulkApi.md#Bulk_Request_Get) | **GET** /ad_accounts/{ad_account_id}/bulk/{bulk_request_id} | Download advertiser entities in bulk
 [**Bulk_Upsert_Create**](BulkApi.md#Bulk_Upsert_Create) | **POST** /ad_accounts/{ad_account_id}/bulk/upsert | Create/update ad entities in bulk
+[**Asset_Group_Create**](BusinessAccessAssetsApi.md#Asset_Group_Create) | **POST** /businesses/{business_id}/asset_groups | Create a new asset group.
+[**Asset_Group_Delete**](BusinessAccessAssetsApi.md#Asset_Group_Delete) | **DELETE** /businesses/{business_id}/asset_groups | Delete asset groups.
+[**Asset_Group_Update**](BusinessAccessAssetsApi.md#Asset_Group_Update) | **PATCH** /businesses/{business_id}/asset_groups | Update asset groups.
+[**Business_Asset_Members_Get**](BusinessAccessAssetsApi.md#Business_Asset_Members_Get) | **GET** /businesses/{business_id}/assets/{asset_id}/members | Get members with access to asset
+[**Business_Asset_Partners_Get**](BusinessAccessAssetsApi.md#Business_Asset_Partners_Get) | **GET** /businesses/{business_id}/assets/{asset_id}/partners | Get partners with access to asset
+[**Business_Assets_Get**](BusinessAccessAssetsApi.md#Business_Assets_Get) | **GET** /businesses/{business_id}/assets | List business assets
+[**Business_Member_Assets_Get**](BusinessAccessAssetsApi.md#Business_Member_Assets_Get) | **GET** /businesses/{business_id}/members/{member_id}/assets | Get assets assigned to a member
+[**Business_Members_Asset_Access_Delete**](BusinessAccessAssetsApi.md#Business_Members_Asset_Access_Delete) | **DELETE** /businesses/{business_id}/members/assets/access | Delete member access to asset
+[**Business_Members_Asset_Access_Update**](BusinessAccessAssetsApi.md#Business_Members_Asset_Access_Update) | **PATCH** /businesses/{business_id}/members/assets/access | Assign/Update member asset permissions
+[**Business_Partner_Asset_Access_Get**](BusinessAccessAssetsApi.md#Business_Partner_Asset_Access_Get) | **GET** /businesses/{business_id}/partners/{partner_id}/assets | Get assets assigned to a partner or assets assigned by a partner
+[**Delete_Partner_Asset_Access_Handler_Impl**](BusinessAccessAssetsApi.md#Delete_Partner_Asset_Access_Handler_Impl) | **DELETE** /businesses/{business_id}/partners/assets | Delete partner access to asset
+[**Update_Partner_Asset_Access_Handler_Impl**](BusinessAccessAssetsApi.md#Update_Partner_Asset_Access_Handler_Impl) | **PATCH** /businesses/{business_id}/partners/assets | Assign/Update partner asset permissions
+[**Asset_Access_Requests_Create**](BusinessAccessInviteApi.md#Asset_Access_Requests_Create) | **POST** /businesses/{business_id}/requests/assets/access | Create a request to access an existing partner's assets.
+[**Cancel_Invites_Or_Requests**](BusinessAccessInviteApi.md#Cancel_Invites_Or_Requests) | **DELETE** /businesses/{business_id}/invites | Cancel invites/requests
+[**Create_Asset_Invites**](BusinessAccessInviteApi.md#Create_Asset_Invites) | **POST** /businesses/{business_id}/invites/assets/access | Update invite/request with an asset permission
+[**Create_Membership_Or_Partnership_Invites**](BusinessAccessInviteApi.md#Create_Membership_Or_Partnership_Invites) | **POST** /businesses/{business_id}/invites | Create invites or requests
+[**Get_Invites**](BusinessAccessInviteApi.md#Get_Invites) | **GET** /businesses/{business_id}/invites | Get invites/requests
+[**Respond_Business_Access_Invites**](BusinessAccessInviteApi.md#Respond_Business_Access_Invites) | **PATCH** /businesses/invites | Accept or decline an invite/request
+[**Delete_Business_Membership**](BusinessAccessRelationshipsApi.md#Delete_Business_Membership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
+[**Delete_Business_Partners**](BusinessAccessRelationshipsApi.md#Delete_Business_Partners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
+[**Get_Business_Employers**](BusinessAccessRelationshipsApi.md#Get_Business_Employers) | **GET** /businesses/employers | List business employers for user
+[**Get_Business_Members**](BusinessAccessRelationshipsApi.md#Get_Business_Members) | **GET** /businesses/{business_id}/members | Get business members
+[**Get_Business_Partners**](BusinessAccessRelationshipsApi.md#Get_Business_Partners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**Update_Business_Memberships**](BusinessAccessRelationshipsApi.md#Update_Business_Memberships) | **PATCH** /businesses/{business_id}/members | Update member's business role
 [**Campaign_Targeting_Analytics_Get**](CampaignsApi.md#Campaign_Targeting_Analytics_Get) | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns
 [**Campaigns_Analytics**](CampaignsApi.md#Campaigns_Analytics) | **GET** /ad_accounts/{ad_account_id}/campaigns/analytics | Get campaign analytics
 [**Campaigns_Create**](CampaignsApi.md#Campaigns_Create) | **POST** /ad_accounts/{ad_account_id}/campaigns | Create campaigns
 [**Campaigns_Get**](CampaignsApi.md#Campaigns_Get) | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign
 [**Campaigns_List**](CampaignsApi.md#Campaigns_List) | **GET** /ad_accounts/{ad_account_id}/campaigns | List campaigns
 [**Campaigns_Update**](CampaignsApi.md#Campaigns_Update) | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns
+[**Catalogs_Create**](CatalogsApi.md#Catalogs_Create) | **POST** /catalogs | Create catalog
 [**Catalogs_List**](CatalogsApi.md#Catalogs_List) | **GET** /catalogs | List catalogs
-[**Catalogs_Product_Group_Pins_List**](CatalogsApi.md#Catalogs_Product_Group_Pins_List) | **GET** /catalogs/product_groups/{product_group_id}/products | List products for a Product Group
+[**Catalogs_Product_Group_Pins_List**](CatalogsApi.md#Catalogs_Product_Group_Pins_List) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group
 [**Catalogs_Product_Groups_Create**](CatalogsApi.md#Catalogs_Product_Groups_Create) | **POST** /catalogs/product_groups | Create product group
+[**Catalogs_Product_Groups_Create_Many**](CatalogsApi.md#Catalogs_Product_Groups_Create_Many) | **POST** /catalogs/product_groups/multiple | Create product groups
 [**Catalogs_Product_Groups_Delete**](CatalogsApi.md#Catalogs_Product_Groups_Delete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group
+[**Catalogs_Product_Groups_Delete_Many**](CatalogsApi.md#Catalogs_Product_Groups_Delete_Many) | **DELETE** /catalogs/product_groups/multiple | Delete product groups
 [**Catalogs_Product_Groups_Get**](CatalogsApi.md#Catalogs_Product_Groups_Get) | **GET** /catalogs/product_groups/{product_group_id} | Get product group
 [**Catalogs_Product_Groups_List**](CatalogsApi.md#Catalogs_Product_Groups_List) | **GET** /catalogs/product_groups | List product groups
-[**Catalogs_Product_Groups_Product_Counts_Get**](CatalogsApi.md#Catalogs_Product_Groups_Product_Counts_Get) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts for a Product Group
-[**Catalogs_Product_Groups_Update**](CatalogsApi.md#Catalogs_Product_Groups_Update) | **PATCH** /catalogs/product_groups/{product_group_id} | Update product group
-[**Feed_Processing_Results_List**](CatalogsApi.md#Feed_Processing_Results_List) | **GET** /catalogs/feeds/{feed_id}/processing_results | List processing results for a given feed
+[**Catalogs_Product_Groups_Product_Counts_Get**](CatalogsApi.md#Catalogs_Product_Groups_Product_Counts_Get) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts
+[**Catalogs_Product_Groups_Update**](CatalogsApi.md#Catalogs_Product_Groups_Update) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group
+[**Feed_Processing_Results_List**](CatalogsApi.md#Feed_Processing_Results_List) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results
 [**Feeds_Create**](CatalogsApi.md#Feeds_Create) | **POST** /catalogs/feeds | Create feed
 [**Feeds_Delete**](CatalogsApi.md#Feeds_Delete) | **DELETE** /catalogs/feeds/{feed_id} | Delete feed
 [**Feeds_Get**](CatalogsApi.md#Feeds_Get) | **GET** /catalogs/feeds/{feed_id} | Get feed
+[**Feeds_Ingest**](CatalogsApi.md#Feeds_Ingest) | **POST** /catalogs/feeds/{feed_id}/ingest | Ingest feed items
 [**Feeds_List**](CatalogsApi.md#Feeds_List) | **GET** /catalogs/feeds | List feeds
 [**Feeds_Update**](CatalogsApi.md#Feeds_Update) | **PATCH** /catalogs/feeds/{feed_id} | Update feed
-[**Items_Batch_Get**](CatalogsApi.md#Items_Batch_Get) | **GET** /catalogs/items/batch/{batch_id} | Get catalogs item batch status
+[**Items_Batch_Get**](CatalogsApi.md#Items_Batch_Get) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status
 [**Items_Batch_Post**](CatalogsApi.md#Items_Batch_Post) | **POST** /catalogs/items/batch | Operate on item batch
 [**Items_Get**](CatalogsApi.md#Items_Get) | **GET** /catalogs/items | Get catalogs items
-[**Items_Issues_List**](CatalogsApi.md#Items_Issues_List) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues for a given processing result
-[**Products_By_Product_Group_Filter_List**](CatalogsApi.md#Products_By_Product_Group_Filter_List) | **POST** /catalogs/products/get_by_product_group_filters | List filtered products
+[**Items_Issues_List**](CatalogsApi.md#Items_Issues_List) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues
+[**Items_Post**](CatalogsApi.md#Items_Post) | **POST** /catalogs/items | Get catalogs items (POST)
+[**Products_By_Product_Group_Filter_List**](CatalogsApi.md#Products_By_Product_Group_Filter_List) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter
+[**Reports_Create**](CatalogsApi.md#Reports_Create) | **POST** /catalogs/reports | Build catalogs report
+[**Reports_Get**](CatalogsApi.md#Reports_Get) | **GET** /catalogs/reports | Get catalogs report
+[**Reports_Stats**](CatalogsApi.md#Reports_Stats) | **GET** /catalogs/reports/stats | List report stats
 [**Events_Create**](ConversionEventsApi.md#Events_Create) | **POST** /ad_accounts/{ad_account_id}/events | Send conversions
 [**Conversion_Tags_Create**](ConversionTagsApi.md#Conversion_Tags_Create) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**Conversion_Tags_Get**](ConversionTagsApi.md#Conversion_Tags_Get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
@@ -202,13 +243,18 @@ Method | HTTP request | Description
 [**Ad_Accounts_Subscriptions_Post**](LeadAdsApi.md#Ad_Accounts_Subscriptions_Post) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 [**Lead_Form_Get**](LeadFormsApi.md#Lead_Form_Get) | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id
 [**Lead_Form_Test_Create**](LeadFormsApi.md#Lead_Form_Test_Create) | **POST** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test | Create lead form test data
-[**Lead_Forms_List**](LeadFormsApi.md#Lead_Forms_List) | **GET** /ad_accounts/{ad_account_id}/lead_forms | Get lead forms
+[**Lead_Forms_Create**](LeadFormsApi.md#Lead_Forms_Create) | **POST** /ad_accounts/{ad_account_id}/lead_forms | Create lead forms
+[**Lead_Forms_List**](LeadFormsApi.md#Lead_Forms_List) | **GET** /ad_accounts/{ad_account_id}/lead_forms | List lead forms
+[**Lead_Forms_Update**](LeadFormsApi.md#Lead_Forms_Update) | **PATCH** /ad_accounts/{ad_account_id}/lead_forms | Update lead forms
+[**Leads_Export_Create**](LeadsExportApi.md#Leads_Export_Create) | **POST** /ad_accounts/{ad_account_id}/leads_export | Create a request to export leads collected from a lead ad
+[**Leads_Export_Get**](LeadsExportApi.md#Leads_Export_Get) | **GET** /ad_accounts/{ad_account_id}/leads_export/{leads_export_id} | Get the lead export from the lead export create call
 [**Media_Create**](MediaApi.md#Media_Create) | **POST** /media | Register media upload
 [**Media_Get**](MediaApi.md#Media_Get) | **GET** /media/{media_id} | Get media upload details
 [**Media_List**](MediaApi.md#Media_List) | **GET** /media | List media uploads
 [**Oauth_Token**](OauthApi.md#Oauth_Token) | **POST** /oauth/token | Generate OAuth access token
 [**Order_Lines_Get**](OrderLinesApi.md#Order_Lines_Get) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
 [**Order_Lines_List**](OrderLinesApi.md#Order_Lines_List) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
+[**Multi_Pins_Analytics**](PinsApi.md#Multi_Pins_Analytics) | **GET** /pins/analytics | Get multiple Pin analytics
 [**Pins_Analytics**](PinsApi.md#Pins_Analytics) | **GET** /pins/{pin_id}/analytics | Get Pin analytics
 [**Pins_Create**](PinsApi.md#Pins_Create) | **POST** /pins | Create Pin
 [**Pins_Delete**](PinsApi.md#Pins_Delete) | **DELETE** /pins/{pin_id} | Delete Pin
@@ -221,7 +267,6 @@ Method | HTTP request | Description
 [**Product_Group_Promotions_List**](ProductGroupPromotionsApi.md#Product_Group_Promotions_List) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions
 [**Product_Group_Promotions_Update**](ProductGroupPromotionsApi.md#Product_Group_Promotions_Update) | **PATCH** /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions
 [**Product_Groups_Analytics**](ProductGroupPromotionsApi.md#Product_Groups_Analytics) | **GET** /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics
-[**Ad_Accounts_Catalogs_Product_Groups_List**](ProductGroupsApi.md#Ad_Accounts_Catalogs_Product_Groups_List) | **GET** /ad_accounts/{ad_account_id}/product_groups/catalogs | Get catalog product groups
 [**Ad_Account_Countries_Get**](ResourcesApi.md#Ad_Account_Countries_Get) | **GET** /resources/ad_account_countries | Get ad accounts countries
 [**Delivery_Metrics_Get**](ResourcesApi.md#Delivery_Metrics_Get) | **GET** /resources/delivery_metrics | Get available metrics' definitions
 [**Interest_Targeting_Options_Get**](ResourcesApi.md#Interest_Targeting_Options_Get) | **GET** /resources/targeting/interests/{interest_id} | Get interest details
@@ -231,6 +276,9 @@ Method | HTTP request | Description
 [**Search_Partner_Pins**](SearchApi.md#Search_Partner_Pins) | **GET** /search/partner/pins | Search pins by a given search term
 [**Search_User_Boards_Get**](SearchApi.md#Search_User_Boards_Get) | **GET** /search/boards | Search user's boards
 [**Search_User_Pins_List**](SearchApi.md#Search_User_Pins_List) | **GET** /search/pins | Search user's Pins
+[**Targeting_Template_Create**](TargetingTemplateApi.md#Targeting_Template_Create) | **POST** /ad_accounts/{ad_account_id}/targeting_templates | Create targeting templates
+[**Targeting_Template_List**](TargetingTemplateApi.md#Targeting_Template_List) | **GET** /ad_accounts/{ad_account_id}/targeting_templates | List targeting templates
+[**Targeting_Template_Update**](TargetingTemplateApi.md#Targeting_Template_Update) | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates
 [**Terms_Related_List**](TermsApi.md#Terms_Related_List) | **GET** /terms/related | List related terms
 [**Terms_Suggested_List**](TermsApi.md#Terms_Suggested_List) | **GET** /terms/suggested | List suggested terms
 [**Terms_Of_Service_Get**](TermsOfServiceApi.md#Terms_Of_Service_Get) | **GET** /ad_accounts/{ad_account_id}/terms_of_service | Get terms of service
@@ -256,20 +304,19 @@ Method | HTTP request | Description
  - [.Models.ActionType_Type](ActionType_Type.md)
  - [.Models.AdAccountAnalyticsResponseInner_Type](AdAccountAnalyticsResponseInner_Type.md)
  - [.Models.AdAccountCreateRequest_Type](AdAccountCreateRequest_Type.md)
+ - [.Models.AdAccountCreateSubscriptionRequestPartnerMetadata_Type](AdAccountCreateSubscriptionRequestPartnerMetadata_Type.md)
  - [.Models.AdAccountCreateSubscriptionRequest_Type](AdAccountCreateSubscriptionRequest_Type.md)
  - [.Models.AdAccountCreateSubscriptionResponse_Type](AdAccountCreateSubscriptionResponse_Type.md)
  - [.Models.AdAccountGetSubscriptionResponse_Type](AdAccountGetSubscriptionResponse_Type.md)
  - [.Models.AdAccountOwner_Type](AdAccountOwner_Type.md)
  - [.Models.AdAccount_Type](AdAccount_Type.md)
- - [.Models.AdAccountsCatalogsProductGroupsList200Response_Type](AdAccountsCatalogsProductGroupsList200Response_Type.md)
+ - [.Models.AdAccountsAudiencesSharedAccountsList200Response_Type](AdAccountsAudiencesSharedAccountsList200Response_Type.md)
  - [.Models.AdAccountsCountryResponseData_Type](AdAccountsCountryResponseData_Type.md)
  - [.Models.AdAccountsCountryResponse_Type](AdAccountsCountryResponse_Type.md)
  - [.Models.AdAccountsList200Response_Type](AdAccountsList200Response_Type.md)
  - [.Models.AdAccountsSubscriptionsGetList200Response_Type](AdAccountsSubscriptionsGetList200Response_Type.md)
  - [.Models.AdArrayResponseElement_Type](AdArrayResponseElement_Type.md)
  - [.Models.AdArrayResponse_Type](AdArrayResponse_Type.md)
- - [.Models.AdCommonQuizPinData_Type](AdCommonQuizPinData_Type.md)
- - [.Models.AdCommonTrackingUrls_Type](AdCommonTrackingUrls_Type.md)
  - [.Models.AdCommon_Type](AdCommon_Type.md)
  - [.Models.AdCountry_Type](AdCountry_Type.md)
  - [.Models.AdCreateRequest_Type](AdCreateRequest_Type.md)
@@ -278,8 +325,6 @@ Method | HTTP request | Description
  - [.Models.AdGroupAudienceSizingRequestKeywordsInner_Type](AdGroupAudienceSizingRequestKeywordsInner_Type.md)
  - [.Models.AdGroupAudienceSizingRequest_Type](AdGroupAudienceSizingRequest_Type.md)
  - [.Models.AdGroupAudienceSizingResponse_Type](AdGroupAudienceSizingResponse_Type.md)
- - [.Models.AdGroupCommonOptimizationGoalMetadata_Type](AdGroupCommonOptimizationGoalMetadata_Type.md)
- - [.Models.AdGroupCommonTrackingUrls_Type](AdGroupCommonTrackingUrls_Type.md)
  - [.Models.AdGroupCommon_Type](AdGroupCommon_Type.md)
  - [.Models.AdGroupCreateRequest_Type](AdGroupCreateRequest_Type.md)
  - [.Models.AdGroupResponse_Type](AdGroupResponse_Type.md)
@@ -294,6 +339,8 @@ Method | HTTP request | Description
  - [.Models.AdPreviewURLResponse_Type](AdPreviewURLResponse_Type.md)
  - [.Models.AdResponse_Type](AdResponse_Type.md)
  - [.Models.AdUpdateRequest_Type](AdUpdateRequest_Type.md)
+ - [.Models.AdsAnalyticsAdTargetingType_Type](AdsAnalyticsAdTargetingType_Type.md)
+ - [.Models.AdsAnalyticsCampaignTargetingType_Type](AdsAnalyticsCampaignTargetingType_Type.md)
  - [.Models.AdsAnalyticsCreateAsyncRequest_Type](AdsAnalyticsCreateAsyncRequest_Type.md)
  - [.Models.AdsAnalyticsCreateAsyncResponse_Type](AdsAnalyticsCreateAsyncResponse_Type.md)
  - [.Models.AdsAnalyticsFilterColumn_Type](AdsAnalyticsFilterColumn_Type.md)
@@ -307,8 +354,27 @@ Method | HTTP request | Description
  - [.Models.AdsCreditRedeemResponse_Type](AdsCreditRedeemResponse_Type.md)
  - [.Models.AdsCreditsDiscountsGet200Response_Type](AdsCreditsDiscountsGet200Response_Type.md)
  - [.Models.AdsList200Response_Type](AdsList200Response_Type.md)
+ - [.Models.AdvancedAuctionBidOptions_Type](AdvancedAuctionBidOptions_Type.md)
+ - [.Models.AdvancedAuctionItem_Type](AdvancedAuctionItem_Type.md)
+ - [.Models.AdvancedAuctionItemsGetRecord_Type](AdvancedAuctionItemsGetRecord_Type.md)
+ - [.Models.AdvancedAuctionItemsGetRequest_Type](AdvancedAuctionItemsGetRequest_Type.md)
+ - [.Models.AdvancedAuctionItemsSubmitDeleteRecord_Type](AdvancedAuctionItemsSubmitDeleteRecord_Type.md)
+ - [.Models.AdvancedAuctionItemsSubmitRecord_Type](AdvancedAuctionItemsSubmitRecord_Type.md)
+ - [.Models.AdvancedAuctionItemsSubmitRequest_Type](AdvancedAuctionItemsSubmitRequest_Type.md)
+ - [.Models.AdvancedAuctionItemsSubmitUpsertRecord_Type](AdvancedAuctionItemsSubmitUpsertRecord_Type.md)
+ - [.Models.AdvancedAuctionItems_Type](AdvancedAuctionItems_Type.md)
+ - [.Models.AdvancedAuctionKey_Type](AdvancedAuctionKey_Type.md)
+ - [.Models.AdvancedAuctionOperationError_Type](AdvancedAuctionOperationError_Type.md)
+ - [.Models.AdvancedAuctionOperation_Type](AdvancedAuctionOperation_Type.md)
+ - [.Models.AdvancedAuctionProcessedItem_Type](AdvancedAuctionProcessedItem_Type.md)
+ - [.Models.AdvancedAuctionProcessedItems_Type](AdvancedAuctionProcessedItems_Type.md)
  - [.Models.AnalyticsDailyMetrics_Type](AnalyticsDailyMetrics_Type.md)
  - [.Models.AnalyticsMetricsResponse_Type](AnalyticsMetricsResponse_Type.md)
+ - [.Models.AppTypeMultipliers_Type](AppTypeMultipliers_Type.md)
+ - [.Models.AssetGroupBinding_Type](AssetGroupBinding_Type.md)
+ - [.Models.AssetGroupType_Type](AssetGroupType_Type.md)
+ - [.Models.AssetIdPermissions_Type](AssetIdPermissions_Type.md)
+ - [.Models.AudienceAccountType_Type](AudienceAccountType_Type.md)
  - [.Models.AudienceCategory_Type](AudienceCategory_Type.md)
  - [.Models.AudienceCommon_Type](AudienceCommon_Type.md)
  - [.Models.AudienceCreateCustomRequest_Type](AudienceCreateCustomRequest_Type.md)
@@ -324,6 +390,7 @@ Method | HTTP request | Description
  - [.Models.AudienceInsightType_Type](AudienceInsightType_Type.md)
  - [.Models.AudienceInsightsResponse_Type](AudienceInsightsResponse_Type.md)
  - [.Models.AudienceRule_Type](AudienceRule_Type.md)
+ - [.Models.AudienceShareType_Type](AudienceShareType_Type.md)
  - [.Models.AudienceSharingType_Type](AudienceSharingType_Type.md)
  - [.Models.AudienceSubcategory_Type](AudienceSubcategory_Type.md)
  - [.Models.AudienceType_Type](AudienceType_Type.md)
@@ -331,7 +398,12 @@ Method | HTTP request | Description
  - [.Models.AudienceUpdateRequest_Type](AudienceUpdateRequest_Type.md)
  - [.Models.Audience_Type](Audience_Type.md)
  - [.Models.AudiencesList200Response_Type](AudiencesList200Response_Type.md)
+ - [.Models.AuthRespondInvitesBodyInvitesInnerAction_Type](AuthRespondInvitesBodyInvitesInnerAction_Type.md)
+ - [.Models.AuthRespondInvitesBodyInvitesInner_Type](AuthRespondInvitesBodyInvitesInner_Type.md)
+ - [.Models.AuthRespondInvitesBody_Type](AuthRespondInvitesBody_Type.md)
  - [.Models.AvailabilityFilter_Type](AvailabilityFilter_Type.md)
+ - [.Models.BaseInviteDataResponseInviteData_Type](BaseInviteDataResponseInviteData_Type.md)
+ - [.Models.BaseInviteDataResponse_Type](BaseInviteDataResponse_Type.md)
  - [.Models.BatchOperationStatus_Type](BatchOperationStatus_Type.md)
  - [.Models.BatchOperation_Type](BatchOperation_Type.md)
  - [.Models.BidFloorRequest_Type](BidFloorRequest_Type.md)
@@ -363,7 +435,24 @@ Method | HTTP request | Description
  - [.Models.BulkUpsertResponse_Type](BulkUpsertResponse_Type.md)
  - [.Models.BulkUpsertStatusResponse_Type](BulkUpsertStatusResponse_Type.md)
  - [.Models.BulkUpsertStatus_Type](BulkUpsertStatus_Type.md)
+ - [.Models.BusinessAccessError_Type](BusinessAccessError_Type.md)
  - [.Models.BusinessAccessRole_Type](BusinessAccessRole_Type.md)
+ - [.Models.BusinessAccessUserSummary_Type](BusinessAccessUserSummary_Type.md)
+ - [.Models.BusinessAssetMembersGet200Response_Type](BusinessAssetMembersGet200Response_Type.md)
+ - [.Models.BusinessAssetPartnersGet200Response_Type](BusinessAssetPartnersGet200Response_Type.md)
+ - [.Models.BusinessAssetsGet200Response_Type](BusinessAssetsGet200Response_Type.md)
+ - [.Models.BusinessMemberAssetsGet200Response_Type](BusinessMemberAssetsGet200Response_Type.md)
+ - [.Models.BusinessMemberAssetsSummaryAdAccountsInner_Type](BusinessMemberAssetsSummaryAdAccountsInner_Type.md)
+ - [.Models.BusinessMemberAssetsSummaryProfilesInner_Type](BusinessMemberAssetsSummaryProfilesInner_Type.md)
+ - [.Models.BusinessMemberAssetsSummary_Type](BusinessMemberAssetsSummary_Type.md)
+ - [.Models.BusinessMembersAssetAccessDeleteRequestAccessesInner_Type](BusinessMembersAssetAccessDeleteRequestAccessesInner_Type.md)
+ - [.Models.BusinessMembersAssetAccessDeleteRequest_Type](BusinessMembersAssetAccessDeleteRequest_Type.md)
+ - [.Models.BusinessPartnerAssetAccessGet200Response_Type](BusinessPartnerAssetAccessGet200Response_Type.md)
+ - [.Models.BusinessRoleCheckMode_Type](BusinessRoleCheckMode_Type.md)
+ - [.Models.BusinessRoleForMembers_Type](BusinessRoleForMembers_Type.md)
+ - [.Models.BusinessRole_Type](BusinessRole_Type.md)
+ - [.Models.BusinessSharedAudienceResponse_Type](BusinessSharedAudienceResponse_Type.md)
+ - [.Models.BusinessSharedAudience_Type](BusinessSharedAudience_Type.md)
  - [.Models.CampaignCommon_Type](CampaignCommon_Type.md)
  - [.Models.CampaignCreateCommon_Type](CampaignCreateCommon_Type.md)
  - [.Models.CampaignCreateRequest_Type](CampaignCreateRequest_Type.md)
@@ -377,11 +466,37 @@ Method | HTTP request | Description
  - [.Models.CampaignUpdateResponse_Type](CampaignUpdateResponse_Type.md)
  - [.Models.CampaignsAnalyticsResponseInner_Type](CampaignsAnalyticsResponseInner_Type.md)
  - [.Models.CampaignsList200Response_Type](CampaignsList200Response_Type.md)
- - [.Models.CatalogProductGroup_Type](CatalogProductGroup_Type.md)
+ - [.Models.CancelInvitesBody_Type](CancelInvitesBody_Type.md)
  - [.Models.Catalog_Type](Catalog_Type.md)
+ - [.Models.CatalogsCreateCreativeAssetsItem_Type](CatalogsCreateCreativeAssetsItem_Type.md)
  - [.Models.CatalogsCreateHotelItem_Type](CatalogsCreateHotelItem_Type.md)
+ - [.Models.CatalogsCreateReportResponse_Type](CatalogsCreateReportResponse_Type.md)
+ - [.Models.CatalogsCreateRequest_Type](CatalogsCreateRequest_Type.md)
  - [.Models.CatalogsCreateRetailItem_Type](CatalogsCreateRetailItem_Type.md)
+ - [.Models.CatalogsCreativeAssetsAttributes_Type](CatalogsCreativeAssetsAttributes_Type.md)
+ - [.Models.CatalogsCreativeAssetsBatchItem_Type](CatalogsCreativeAssetsBatchItem_Type.md)
+ - [.Models.CatalogsCreativeAssetsBatchRequest_Type](CatalogsCreativeAssetsBatchRequest_Type.md)
+ - [.Models.CatalogsCreativeAssetsFeed_Type](CatalogsCreativeAssetsFeed_Type.md)
+ - [.Models.CatalogsCreativeAssetsFeedsCreateRequest_Type](CatalogsCreativeAssetsFeedsCreateRequest_Type.md)
+ - [.Models.CatalogsCreativeAssetsFeedsUpdateRequest_Type](CatalogsCreativeAssetsFeedsUpdateRequest_Type.md)
+ - [.Models.CatalogsCreativeAssetsItemErrorResponse_Type](CatalogsCreativeAssetsItemErrorResponse_Type.md)
+ - [.Models.CatalogsCreativeAssetsItemResponse_Type](CatalogsCreativeAssetsItemResponse_Type.md)
+ - [.Models.CatalogsCreativeAssetsItemsBatch_Type](CatalogsCreativeAssetsItemsBatch_Type.md)
+ - [.Models.CatalogsCreativeAssetsItemsFilter_Type](CatalogsCreativeAssetsItemsFilter_Type.md)
+ - [.Models.CatalogsCreativeAssetsItemsPostFilter_Type](CatalogsCreativeAssetsItemsPostFilter_Type.md)
+ - [.Models.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest_Type](CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroupCreateRequest_Type](CatalogsCreativeAssetsProductGroupCreateRequest_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroupFilterKeys_Type](CatalogsCreativeAssetsProductGroupFilterKeys_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroupFiltersAllOf_Type](CatalogsCreativeAssetsProductGroupFiltersAllOf_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroupFiltersAnyOf_Type](CatalogsCreativeAssetsProductGroupFiltersAnyOf_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroupFilters_Type](CatalogsCreativeAssetsProductGroupFilters_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroupProductCounts_Type](CatalogsCreativeAssetsProductGroupProductCounts_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroupUpdateRequest_Type](CatalogsCreativeAssetsProductGroupUpdateRequest_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductGroup_Type](CatalogsCreativeAssetsProductGroup_Type.md)
+ - [.Models.CatalogsCreativeAssetsProductMetadata_Type](CatalogsCreativeAssetsProductMetadata_Type.md)
+ - [.Models.CatalogsCreativeAssetsProduct_Type](CatalogsCreativeAssetsProduct_Type.md)
  - [.Models.CatalogsDbItem_Type](CatalogsDbItem_Type.md)
+ - [.Models.CatalogsDeleteCreativeAssetsItem_Type](CatalogsDeleteCreativeAssetsItem_Type.md)
  - [.Models.CatalogsDeleteHotelItem_Type](CatalogsDeleteHotelItem_Type.md)
  - [.Models.CatalogsDeleteRetailItem_Type](CatalogsDeleteRetailItem_Type.md)
  - [.Models.CatalogsFeedCredentials_Type](CatalogsFeedCredentials_Type.md)
@@ -389,6 +504,7 @@ Method | HTTP request | Description
  - [.Models.CatalogsFeedIngestionErrors_Type](CatalogsFeedIngestionErrors_Type.md)
  - [.Models.CatalogsFeedIngestionInfo_Type](CatalogsFeedIngestionInfo_Type.md)
  - [.Models.CatalogsFeedIngestionWarnings_Type](CatalogsFeedIngestionWarnings_Type.md)
+ - [.Models.CatalogsFeedIngestion_Type](CatalogsFeedIngestion_Type.md)
  - [.Models.CatalogsFeedProcessingResult_Type](CatalogsFeedProcessingResult_Type.md)
  - [.Models.CatalogsFeedProcessingSchedule_Type](CatalogsFeedProcessingSchedule_Type.md)
  - [.Models.CatalogsFeedProcessingStatus_Type](CatalogsFeedProcessingStatus_Type.md)
@@ -414,13 +530,20 @@ Method | HTTP request | Description
  - [.Models.CatalogsHotelItemResponse_Type](CatalogsHotelItemResponse_Type.md)
  - [.Models.CatalogsHotelItemsBatch_Type](CatalogsHotelItemsBatch_Type.md)
  - [.Models.CatalogsHotelItemsFilter_Type](CatalogsHotelItemsFilter_Type.md)
+ - [.Models.CatalogsHotelItemsPostFilter_Type](CatalogsHotelItemsPostFilter_Type.md)
+ - [.Models.CatalogsHotelListProductsByCatalogBasedFilterRequest_Type](CatalogsHotelListProductsByCatalogBasedFilterRequest_Type.md)
  - [.Models.CatalogsHotelProductGroupCreateRequest_Type](CatalogsHotelProductGroupCreateRequest_Type.md)
  - [.Models.CatalogsHotelProductGroupFilterKeys_Type](CatalogsHotelProductGroupFilterKeys_Type.md)
  - [.Models.CatalogsHotelProductGroupFiltersAllOf_Type](CatalogsHotelProductGroupFiltersAllOf_Type.md)
  - [.Models.CatalogsHotelProductGroupFiltersAnyOf_Type](CatalogsHotelProductGroupFiltersAnyOf_Type.md)
  - [.Models.CatalogsHotelProductGroupFilters_Type](CatalogsHotelProductGroupFilters_Type.md)
+ - [.Models.CatalogsHotelProductGroupProductCounts_Type](CatalogsHotelProductGroupProductCounts_Type.md)
  - [.Models.CatalogsHotelProductGroupUpdateRequest_Type](CatalogsHotelProductGroupUpdateRequest_Type.md)
  - [.Models.CatalogsHotelProductGroup_Type](CatalogsHotelProductGroup_Type.md)
+ - [.Models.CatalogsHotelProductMetadata_Type](CatalogsHotelProductMetadata_Type.md)
+ - [.Models.CatalogsHotelProduct_Type](CatalogsHotelProduct_Type.md)
+ - [.Models.CatalogsHotelReportParametersReport_Type](CatalogsHotelReportParametersReport_Type.md)
+ - [.Models.CatalogsHotelReportParameters_Type](CatalogsHotelReportParameters_Type.md)
  - [.Models.CatalogsItemValidationDetails_Type](CatalogsItemValidationDetails_Type.md)
  - [.Models.CatalogsItemValidationErrors_Type](CatalogsItemValidationErrors_Type.md)
  - [.Models.CatalogsItemValidationIssue_Type](CatalogsItemValidationIssue_Type.md)
@@ -432,11 +555,14 @@ Method | HTTP request | Description
  - [.Models.CatalogsItemsDeleteBatchRequest_Type](CatalogsItemsDeleteBatchRequest_Type.md)
  - [.Models.CatalogsItemsDeleteDiscontinuedBatchRequest_Type](CatalogsItemsDeleteDiscontinuedBatchRequest_Type.md)
  - [.Models.CatalogsItemsFilters_Type](CatalogsItemsFilters_Type.md)
+ - [.Models.CatalogsItemsPostFilters_Type](CatalogsItemsPostFilters_Type.md)
+ - [.Models.CatalogsItemsRequestLanguage_Type](CatalogsItemsRequestLanguage_Type.md)
+ - [.Models.CatalogsItemsRequest_Type](CatalogsItemsRequest_Type.md)
  - [.Models.CatalogsItemsUpdateBatchRequest_Type](CatalogsItemsUpdateBatchRequest_Type.md)
  - [.Models.CatalogsItemsUpsertBatchRequest_Type](CatalogsItemsUpsertBatchRequest_Type.md)
  - [.Models.CatalogsItems_Type](CatalogsItems_Type.md)
  - [.Models.CatalogsList200Response_Type](CatalogsList200Response_Type.md)
- - [.Models.CatalogsListProductsByFilterRequestOneOf_Type](CatalogsListProductsByFilterRequestOneOf_Type.md)
+ - [.Models.CatalogsListProductsByFeedBasedFilter_Type](CatalogsListProductsByFeedBasedFilter_Type.md)
  - [.Models.CatalogsListProductsByFilterRequest_Type](CatalogsListProductsByFilterRequest_Type.md)
  - [.Models.CatalogsLocale_Type](CatalogsLocale_Type.md)
  - [.Models.CatalogsProductGroupCreateRequest_Type](CatalogsProductGroupCreateRequest_Type.md)
@@ -450,23 +576,26 @@ Method | HTTP request | Description
  - [.Models.CatalogsProductGroupFilters_Type](CatalogsProductGroupFilters_Type.md)
  - [.Models.CatalogsProductGroupMultipleCountriesCriteria_Type](CatalogsProductGroupMultipleCountriesCriteria_Type.md)
  - [.Models.CatalogsProductGroupMultipleGenderCriteria_Type](CatalogsProductGroupMultipleGenderCriteria_Type.md)
+ - [.Models.CatalogsProductGroupMultipleMediaTypesCriteria_Type](CatalogsProductGroupMultipleMediaTypesCriteria_Type.md)
  - [.Models.CatalogsProductGroupMultipleStringCriteria_Type](CatalogsProductGroupMultipleStringCriteria_Type.md)
  - [.Models.CatalogsProductGroupMultipleStringListCriteria_Type](CatalogsProductGroupMultipleStringListCriteria_Type.md)
  - [.Models.CatalogsProductGroupPinsList200Response_Type](CatalogsProductGroupPinsList200Response_Type.md)
  - [.Models.CatalogsProductGroupPricingCriteria_Type](CatalogsProductGroupPricingCriteria_Type.md)
  - [.Models.CatalogsProductGroupPricingCurrencyCriteria_Type](CatalogsProductGroupPricingCurrencyCriteria_Type.md)
- - [.Models.CatalogsProductGroupProductCounts_Type](CatalogsProductGroupProductCounts_Type.md)
+ - [.Models.CatalogsProductGroupProductCountsVertical_Type](CatalogsProductGroupProductCountsVertical_Type.md)
  - [.Models.CatalogsProductGroupStatus_Type](CatalogsProductGroupStatus_Type.md)
  - [.Models.CatalogsProductGroupType_Type](CatalogsProductGroupType_Type.md)
  - [.Models.CatalogsProductGroupUpdateRequest_Type](CatalogsProductGroupUpdateRequest_Type.md)
- - [.Models.CatalogsProductGroup_Type](CatalogsProductGroup_Type.md)
- - [.Models.CatalogsProductGroupsCreate201Response_Type](CatalogsProductGroupsCreate201Response_Type.md)
- - [.Models.CatalogsProductGroupsCreateRequest_Type](CatalogsProductGroupsCreateRequest_Type.md)
- - [.Models.CatalogsProductGroupsList200ResponseAllOfItemsInner_Type](CatalogsProductGroupsList200ResponseAllOfItemsInner_Type.md)
  - [.Models.CatalogsProductGroupsList200Response_Type](CatalogsProductGroupsList200Response_Type.md)
  - [.Models.CatalogsProductGroupsUpdateRequest_Type](CatalogsProductGroupsUpdateRequest_Type.md)
- - [.Models.CatalogsProductMetadata_Type](CatalogsProductMetadata_Type.md)
  - [.Models.CatalogsProduct_Type](CatalogsProduct_Type.md)
+ - [.Models.CatalogsReportDistributionIssueFilter_Type](CatalogsReportDistributionIssueFilter_Type.md)
+ - [.Models.CatalogsReportDistributionStats_Type](CatalogsReportDistributionStats_Type.md)
+ - [.Models.CatalogsReportFeedIngestionFilter_Type](CatalogsReportFeedIngestionFilter_Type.md)
+ - [.Models.CatalogsReportFeedIngestionStats_Type](CatalogsReportFeedIngestionStats_Type.md)
+ - [.Models.CatalogsReportParameters_Type](CatalogsReportParameters_Type.md)
+ - [.Models.CatalogsReportStats_Type](CatalogsReportStats_Type.md)
+ - [.Models.CatalogsReport_Type](CatalogsReport_Type.md)
  - [.Models.CatalogsRetailBatchRequestItemsInner_Type](CatalogsRetailBatchRequestItemsInner_Type.md)
  - [.Models.CatalogsRetailBatchRequest_Type](CatalogsRetailBatchRequest_Type.md)
  - [.Models.CatalogsRetailFeed_Type](CatalogsRetailFeed_Type.md)
@@ -476,12 +605,23 @@ Method | HTTP request | Description
  - [.Models.CatalogsRetailItemResponse_Type](CatalogsRetailItemResponse_Type.md)
  - [.Models.CatalogsRetailItemsBatch_Type](CatalogsRetailItemsBatch_Type.md)
  - [.Models.CatalogsRetailItemsFilter_Type](CatalogsRetailItemsFilter_Type.md)
+ - [.Models.CatalogsRetailItemsPostFilter_Type](CatalogsRetailItemsPostFilter_Type.md)
+ - [.Models.CatalogsRetailListProductsByCatalogBasedFilterRequest_Type](CatalogsRetailListProductsByCatalogBasedFilterRequest_Type.md)
+ - [.Models.CatalogsRetailProductGroupCreateRequest_Type](CatalogsRetailProductGroupCreateRequest_Type.md)
+ - [.Models.CatalogsRetailProductGroupProductCounts_Type](CatalogsRetailProductGroupProductCounts_Type.md)
+ - [.Models.CatalogsRetailProductGroupUpdateRequest_Type](CatalogsRetailProductGroupUpdateRequest_Type.md)
  - [.Models.CatalogsRetailProductGroup_Type](CatalogsRetailProductGroup_Type.md)
+ - [.Models.CatalogsRetailProductMetadata_Type](CatalogsRetailProductMetadata_Type.md)
+ - [.Models.CatalogsRetailProduct_Type](CatalogsRetailProduct_Type.md)
+ - [.Models.CatalogsRetailReportParameters_Type](CatalogsRetailReportParameters_Type.md)
  - [.Models.CatalogsStatus_Type](CatalogsStatus_Type.md)
  - [.Models.CatalogsType_Type](CatalogsType_Type.md)
+ - [.Models.CatalogsUpdatableCreativeAssetsAttributes_Type](CatalogsUpdatableCreativeAssetsAttributes_Type.md)
  - [.Models.CatalogsUpdatableHotelAttributes_Type](CatalogsUpdatableHotelAttributes_Type.md)
+ - [.Models.CatalogsUpdateCreativeAssetsItem_Type](CatalogsUpdateCreativeAssetsItem_Type.md)
  - [.Models.CatalogsUpdateHotelItem_Type](CatalogsUpdateHotelItem_Type.md)
  - [.Models.CatalogsUpdateRetailItem_Type](CatalogsUpdateRetailItem_Type.md)
+ - [.Models.CatalogsUpsertCreativeAssetsItem_Type](CatalogsUpsertCreativeAssetsItem_Type.md)
  - [.Models.CatalogsUpsertHotelItem_Type](CatalogsUpsertHotelItem_Type.md)
  - [.Models.CatalogsUpsertRetailItem_Type](CatalogsUpsertRetailItem_Type.md)
  - [.Models.CatalogsVerticalBatchRequest_Type](CatalogsVerticalBatchRequest_Type.md)
@@ -490,6 +630,7 @@ Method | HTTP request | Description
  - [.Models.CatalogsVerticalProductGroupCreateRequest_Type](CatalogsVerticalProductGroupCreateRequest_Type.md)
  - [.Models.CatalogsVerticalProductGroupUpdateRequest_Type](CatalogsVerticalProductGroupUpdateRequest_Type.md)
  - [.Models.CatalogsVerticalProductGroup_Type](CatalogsVerticalProductGroup_Type.md)
+ - [.Models.CatalogsVerticalsListProductsByCatalogBasedFilterRequest_Type](CatalogsVerticalsListProductsByCatalogBasedFilterRequest_Type.md)
  - [.Models.ConditionFilter_Type](ConditionFilter_Type.md)
  - [.Models.ConversionApiResponseEventsInner_Type](ConversionApiResponseEventsInner_Type.md)
  - [.Models.ConversionApiResponse_Type](ConversionApiResponse_Type.md)
@@ -498,6 +639,9 @@ Method | HTTP request | Description
  - [.Models.ConversionEventsDataInnerCustomDataContentsInner_Type](ConversionEventsDataInnerCustomDataContentsInner_Type.md)
  - [.Models.ConversionEventsDataInnerCustomData_Type](ConversionEventsDataInnerCustomData_Type.md)
  - [.Models.ConversionEventsDataInner_Type](ConversionEventsDataInner_Type.md)
+ - [.Models.ConversionEventsUserDataAnyOf1_Type](ConversionEventsUserDataAnyOf1_Type.md)
+ - [.Models.ConversionEventsUserDataAnyOf2_Type](ConversionEventsUserDataAnyOf2_Type.md)
+ - [.Models.ConversionEventsUserDataAnyOf_Type](ConversionEventsUserDataAnyOf_Type.md)
  - [.Models.ConversionEventsUserData_Type](ConversionEventsUserData_Type.md)
  - [.Models.ConversionEvents_Type](ConversionEvents_Type.md)
  - [.Models.ConversionReportAttributionType_Type](ConversionReportAttributionType_Type.md)
@@ -510,9 +654,24 @@ Method | HTTP request | Description
  - [.Models.ConversionTagType_Type](ConversionTagType_Type.md)
  - [.Models.CountryFilter_Type](CountryFilter_Type.md)
  - [.Models.Country_Type](Country_Type.md)
+ - [.Models.CreateAssetAccessRequestBodyAssetRequestsInner_Type](CreateAssetAccessRequestBodyAssetRequestsInner_Type.md)
+ - [.Models.CreateAssetAccessRequestBody_Type](CreateAssetAccessRequestBody_Type.md)
+ - [.Models.CreateAssetAccessRequestErrorMessageInner_Type](CreateAssetAccessRequestErrorMessageInner_Type.md)
+ - [.Models.CreateAssetAccessRequestResponse_Type](CreateAssetAccessRequestResponse_Type.md)
+ - [.Models.CreateAssetGroupBody_Type](CreateAssetGroupBody_Type.md)
+ - [.Models.CreateAssetGroupResponse_Type](CreateAssetGroupResponse_Type.md)
+ - [.Models.CreateAssetInvitesRequestItem_Type](CreateAssetInvitesRequestItem_Type.md)
+ - [.Models.CreateAssetInvitesRequest_Type](CreateAssetInvitesRequest_Type.md)
+ - [.Models.CreateInvitesResultsResponseArrayItemsInnerInvite_Type](CreateInvitesResultsResponseArrayItemsInnerInvite_Type.md)
+ - [.Models.CreateInvitesResultsResponseArrayItemsInner_Type](CreateInvitesResultsResponseArrayItemsInner_Type.md)
+ - [.Models.CreateInvitesResultsResponseArray_Type](CreateInvitesResultsResponseArray_Type.md)
  - [.Models.CreateMMMReportRequest_Type](CreateMMMReportRequest_Type.md)
  - [.Models.CreateMMMReportResponseData_Type](CreateMMMReportResponseData_Type.md)
  - [.Models.CreateMMMReportResponse_Type](CreateMMMReportResponse_Type.md)
+ - [.Models.CreateMembershipOrPartnershipInvitesBody_Type](CreateMembershipOrPartnershipInvitesBody_Type.md)
+ - [.Models.CreativeAssetsIdFilter_Type](CreativeAssetsIdFilter_Type.md)
+ - [.Models.CreativeAssetsProcessingRecord_Type](CreativeAssetsProcessingRecord_Type.md)
+ - [.Models.CreativeAssetsVisibilityType_Type](CreativeAssetsVisibilityType_Type.md)
  - [.Models.CreativeType_Type](CreativeType_Type.md)
  - [.Models.CurrencyFilter_Type](CurrencyFilter_Type.md)
  - [.Models.Currency_Type](Currency_Type.md)
@@ -527,6 +686,21 @@ Method | HTTP request | Description
  - [.Models.CustomerListsList200Response_Type](CustomerListsList200Response_Type.md)
  - [.Models.DataOutputFormat_Type](DataOutputFormat_Type.md)
  - [.Models.DataStatus_Type](DataStatus_Type.md)
+ - [.Models.DeleteAssetGroupBody_Type](DeleteAssetGroupBody_Type.md)
+ - [.Models.DeleteAssetGroupResponseExceptionsInner_Type](DeleteAssetGroupResponseExceptionsInner_Type.md)
+ - [.Models.DeleteAssetGroupResponse_Type](DeleteAssetGroupResponse_Type.md)
+ - [.Models.DeleteInvitesResultsResponseArrayItemsInnerException_Type](DeleteInvitesResultsResponseArrayItemsInnerException_Type.md)
+ - [.Models.DeleteInvitesResultsResponseArrayItemsInner_Type](DeleteInvitesResultsResponseArrayItemsInner_Type.md)
+ - [.Models.DeleteInvitesResultsResponseArray_Type](DeleteInvitesResultsResponseArray_Type.md)
+ - [.Models.DeleteMemberAccessResult_Type](DeleteMemberAccessResult_Type.md)
+ - [.Models.DeleteMemberAccessResultsResponseArray_Type](DeleteMemberAccessResultsResponseArray_Type.md)
+ - [.Models.DeletePartnerAssetAccessBodyAccessesInner_Type](DeletePartnerAssetAccessBodyAccessesInner_Type.md)
+ - [.Models.DeletePartnerAssetAccessBody_Type](DeletePartnerAssetAccessBody_Type.md)
+ - [.Models.DeletePartnerAssetsResult_Type](DeletePartnerAssetsResult_Type.md)
+ - [.Models.DeletePartnerAssetsResultsResponseArray_Type](DeletePartnerAssetsResultsResponseArray_Type.md)
+ - [.Models.DeletePartnersRequest_Type](DeletePartnersRequest_Type.md)
+ - [.Models.DeletePartnersResponse_Type](DeletePartnersResponse_Type.md)
+ - [.Models.DeletedMembersResponse_Type](DeletedMembersResponse_Type.md)
  - [.Models.DeliveryMetricsResponseItemsInner_Type](DeliveryMetricsResponseItemsInner_Type.md)
  - [.Models.DeliveryMetricsResponse_Type](DeliveryMetricsResponse_Type.md)
  - [.Models.DetailedError_Type](DetailedError_Type.md)
@@ -542,8 +716,15 @@ Method | HTTP request | Description
  - [.Models.GenderFilter_Type](GenderFilter_Type.md)
  - [.Models.Gender_Type](Gender_Type.md)
  - [.Models.GetAudiencesOrderBy_Type](GetAudiencesOrderBy_Type.md)
+ - [.Models.GetBusinessAssetTypeResponse_Type](GetBusinessAssetTypeResponse_Type.md)
+ - [.Models.GetBusinessAssetsResponse_Type](GetBusinessAssetsResponse_Type.md)
+ - [.Models.GetBusinessEmployers200Response_Type](GetBusinessEmployers200Response_Type.md)
+ - [.Models.GetBusinessMembers200Response_Type](GetBusinessMembers200Response_Type.md)
+ - [.Models.GetBusinessPartners200Response_Type](GetBusinessPartners200Response_Type.md)
+ - [.Models.GetInvites200Response_Type](GetInvites200Response_Type.md)
  - [.Models.GetMMMReportResponseData_Type](GetMMMReportResponseData_Type.md)
  - [.Models.GetMMMReportResponse_Type](GetMMMReportResponse_Type.md)
+ - [.Models.GetPartnerAssetsResponse_Type](GetPartnerAssetsResponse_Type.md)
  - [.Models.GoogleProductCategory0Filter_Type](GoogleProductCategory0Filter_Type.md)
  - [.Models.GoogleProductCategory1Filter_Type](GoogleProductCategory1Filter_Type.md)
  - [.Models.GoogleProductCategory2Filter_Type](GoogleProductCategory2Filter_Type.md)
@@ -571,6 +752,16 @@ Method | HTTP request | Description
  - [.Models.IntegrationRequest_Type](IntegrationRequest_Type.md)
  - [.Models.IntegrationsGetList200Response_Type](IntegrationsGetList200Response_Type.md)
  - [.Models.Interest_Type](Interest_Type.md)
+ - [.Models.InviteAssetsSummaryAdAccountsInner_Type](InviteAssetsSummaryAdAccountsInner_Type.md)
+ - [.Models.InviteAssetsSummaryProfilesInner_Type](InviteAssetsSummaryProfilesInner_Type.md)
+ - [.Models.InviteAssetsSummary_Type](InviteAssetsSummary_Type.md)
+ - [.Models.InviteBusinessRoleBinding_Type](InviteBusinessRoleBinding_Type.md)
+ - [.Models.InviteExceptionResponse_Type](InviteExceptionResponse_Type.md)
+ - [.Models.InviteResponse_Type](InviteResponse_Type.md)
+ - [.Models.InviteStatus_Type](InviteStatus_Type.md)
+ - [.Models.InviteType_Type](InviteType_Type.md)
+ - [.Models.ItemAttributesRequestAllOfImageLink_Type](ItemAttributesRequestAllOfImageLink_Type.md)
+ - [.Models.ItemAttributesRequest_Type](ItemAttributesRequest_Type.md)
  - [.Models.ItemAttributes_Type](ItemAttributes_Type.md)
  - [.Models.ItemBatchRecord_Type](ItemBatchRecord_Type.md)
  - [.Models.ItemCreateBatchRecord_Type](ItemCreateBatchRecord_Type.md)
@@ -600,7 +791,11 @@ Method | HTTP request | Description
  - [.Models.KeywordsRequest_Type](KeywordsRequest_Type.md)
  - [.Models.KeywordsResponse_Type](KeywordsResponse_Type.md)
  - [.Models.Language_Type](Language_Type.md)
+ - [.Models.LeadFormArrayResponseItemsInner_Type](LeadFormArrayResponseItemsInner_Type.md)
+ - [.Models.LeadFormArrayResponse_Type](LeadFormArrayResponse_Type.md)
+ - [.Models.LeadFormCommonPolicyLinksInner_Type](LeadFormCommonPolicyLinksInner_Type.md)
  - [.Models.LeadFormCommon_Type](LeadFormCommon_Type.md)
+ - [.Models.LeadFormCreateRequest_Type](LeadFormCreateRequest_Type.md)
  - [.Models.LeadFormQuestionFieldType_Type](LeadFormQuestionFieldType_Type.md)
  - [.Models.LeadFormQuestionType_Type](LeadFormQuestionType_Type.md)
  - [.Models.LeadFormQuestion_Type](LeadFormQuestion_Type.md)
@@ -608,7 +803,12 @@ Method | HTTP request | Description
  - [.Models.LeadFormStatus_Type](LeadFormStatus_Type.md)
  - [.Models.LeadFormTestRequest_Type](LeadFormTestRequest_Type.md)
  - [.Models.LeadFormTestResponse_Type](LeadFormTestResponse_Type.md)
+ - [.Models.LeadFormUpdateRequest_Type](LeadFormUpdateRequest_Type.md)
  - [.Models.LeadFormsList200Response_Type](LeadFormsList200Response_Type.md)
+ - [.Models.LeadsExportCreateRequest_Type](LeadsExportCreateRequest_Type.md)
+ - [.Models.LeadsExportCreateResponse_Type](LeadsExportCreateResponse_Type.md)
+ - [.Models.LeadsExportResponseData_Type](LeadsExportResponseData_Type.md)
+ - [.Models.LeadsExportStatus_Type](LeadsExportStatus_Type.md)
  - [.Models.LineItem_Type](LineItem_Type.md)
  - [.Models.LinkedBusiness_Type](LinkedBusiness_Type.md)
  - [.Models.MMMReportingColumn_Type](MMMReportingColumn_Type.md)
@@ -617,28 +817,37 @@ Method | HTTP request | Description
  - [.Models.MatchType_Type](MatchType_Type.md)
  - [.Models.MaxPriceFilter_Type](MaxPriceFilter_Type.md)
  - [.Models.MediaList200Response_Type](MediaList200Response_Type.md)
+ - [.Models.MediaTypeFilter_Type](MediaTypeFilter_Type.md)
+ - [.Models.MediaType_Type](MediaType_Type.md)
  - [.Models.MediaUploadAllOfUploadParameters_Type](MediaUploadAllOfUploadParameters_Type.md)
  - [.Models.MediaUploadDetails_Type](MediaUploadDetails_Type.md)
  - [.Models.MediaUploadRequest_Type](MediaUploadRequest_Type.md)
  - [.Models.MediaUploadStatus_Type](MediaUploadStatus_Type.md)
  - [.Models.MediaUploadType_Type](MediaUploadType_Type.md)
  - [.Models.MediaUpload_Type](MediaUpload_Type.md)
+ - [.Models.MemberBusinessRole_Type](MemberBusinessRole_Type.md)
+ - [.Models.MembersToDeleteBodyMembersInner_Type](MembersToDeleteBodyMembersInner_Type.md)
+ - [.Models.MembersToDeleteBody_Type](MembersToDeleteBody_Type.md)
  - [.Models.MetricsReportingLevel_Type](MetricsReportingLevel_Type.md)
  - [.Models.MetricsResponse_Type](MetricsResponse_Type.md)
  - [.Models.MinPriceFilter_Type](MinPriceFilter_Type.md)
  - [.Models.Model_Exception](Model_Exception.md)
+ - [.Models.MultipleProductGroupsInner_Type](MultipleProductGroupsInner_Type.md)
  - [.Models.NonNullableCatalogsCurrency_Type](NonNullableCatalogsCurrency_Type.md)
  - [.Models.NonNullableProductAvailabilityType_Type](NonNullableProductAvailabilityType_Type.md)
  - [.Models.NullableCatalogsItemFieldType_Type](NullableCatalogsItemFieldType_Type.md)
  - [.Models.NullableCurrency_Type](NullableCurrency_Type.md)
+ - [.Models.OauthAccessTokenRequestClientCredentials_Type](OauthAccessTokenRequestClientCredentials_Type.md)
  - [.Models.OauthAccessTokenRequestCode_Type](OauthAccessTokenRequestCode_Type.md)
  - [.Models.OauthAccessTokenRequestRefresh_Type](OauthAccessTokenRequestRefresh_Type.md)
+ - [.Models.OauthAccessTokenResponseClientCredentials_Type](OauthAccessTokenResponseClientCredentials_Type.md)
  - [.Models.OauthAccessTokenResponseCode_Type](OauthAccessTokenResponseCode_Type.md)
  - [.Models.OauthAccessTokenResponseEverlastingRefresh_Type](OauthAccessTokenResponseEverlastingRefresh_Type.md)
  - [.Models.OauthAccessTokenResponseIntegrationRefresh_Type](OauthAccessTokenResponseIntegrationRefresh_Type.md)
  - [.Models.OauthAccessTokenResponseRefresh_Type](OauthAccessTokenResponseRefresh_Type.md)
  - [.Models.OauthAccessTokenResponse_Type](OauthAccessTokenResponse_Type.md)
  - [.Models.ObjectiveType_Type](ObjectiveType_Type.md)
+ - [.Models.OperationType_Type](OperationType_Type.md)
  - [.Models.OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows_Type](OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows_Type.md)
  - [.Models.OptimizationGoalMetadataConversionTagV3GoalMetadata_Type](OptimizationGoalMetadataConversionTagV3GoalMetadata_Type.md)
  - [.Models.OptimizationGoalMetadataFrequencyGoalMetadata_Type](OptimizationGoalMetadataFrequencyGoalMetadata_Type.md)
@@ -657,6 +866,8 @@ Method | HTTP request | Description
  - [.Models.PageVisitConversionTagsGet200Response_Type](PageVisitConversionTagsGet200Response_Type.md)
  - [.Models.Paginated_Type](Paginated_Type.md)
  - [.Models.PartnerType_Type](PartnerType_Type.md)
+ - [.Models.PermissionsWithOwner_Type](PermissionsWithOwner_Type.md)
+ - [.Models.Permissions_Type](Permissions_Type.md)
  - [.Models.PinAnalyticsMetricsResponseDailyMetricsInner_Type](PinAnalyticsMetricsResponseDailyMetricsInner_Type.md)
  - [.Models.PinAnalyticsMetricsResponse_Type](PinAnalyticsMetricsResponse_Type.md)
  - [.Models.PinCreate_Type](PinCreate_Type.md)
@@ -670,6 +881,7 @@ Method | HTTP request | Description
  - [.Models.PinMediaSourcePinURL_Type](PinMediaSourcePinURL_Type.md)
  - [.Models.PinMediaSourceVideoID_Type](PinMediaSourceVideoID_Type.md)
  - [.Models.PinMediaSource_Type](PinMediaSource_Type.md)
+ - [.Models.PinMediaWithImageAllOfImages_Type](PinMediaWithImageAllOfImages_Type.md)
  - [.Models.PinMediaWithImageAndVideo_Type](PinMediaWithImageAndVideo_Type.md)
  - [.Models.PinMediaWithImage_Type](PinMediaWithImage_Type.md)
  - [.Models.PinMediaWithImages_Type](PinMediaWithImages_Type.md)
@@ -685,15 +897,19 @@ Method | HTTP request | Description
  - [.Models.PinsSaveRequest_Type](PinsSaveRequest_Type.md)
  - [.Models.PinterestTagEventData_Type](PinterestTagEventData_Type.md)
  - [.Models.PlacementGroupType_Type](PlacementGroupType_Type.md)
+ - [.Models.PlacementMultipliers_Type](PlacementMultipliers_Type.md)
  - [.Models.PriceFilter_Type](PriceFilter_Type.md)
  - [.Models.ProductAvailabilityType_Type](ProductAvailabilityType_Type.md)
  - [.Models.ProductGroupAnalyticsResponseInner_Type](ProductGroupAnalyticsResponseInner_Type.md)
+ - [.Models.ProductGroupPromotionCreateRequestElement_Type](ProductGroupPromotionCreateRequestElement_Type.md)
  - [.Models.ProductGroupPromotionCreateRequest_Type](ProductGroupPromotionCreateRequest_Type.md)
+ - [.Models.ProductGroupPromotionResponseElement_Type](ProductGroupPromotionResponseElement_Type.md)
  - [.Models.ProductGroupPromotionResponseItem_Type](ProductGroupPromotionResponseItem_Type.md)
  - [.Models.ProductGroupPromotionResponse_Type](ProductGroupPromotionResponse_Type.md)
  - [.Models.ProductGroupPromotionUpdateRequest_Type](ProductGroupPromotionUpdateRequest_Type.md)
  - [.Models.ProductGroupPromotion_Type](ProductGroupPromotion_Type.md)
  - [.Models.ProductGroupPromotionsList200Response_Type](ProductGroupPromotionsList200Response_Type.md)
+ - [.Models.ProductGroupReferenceFilter_Type](ProductGroupReferenceFilter_Type.md)
  - [.Models.ProductGroupSummaryStatus_Type](ProductGroupSummaryStatus_Type.md)
  - [.Models.ProductType0Filter_Type](ProductType0Filter_Type.md)
  - [.Models.ProductType1Filter_Type](ProductType1Filter_Type.md)
@@ -707,6 +923,9 @@ Method | HTTP request | Description
  - [.Models.RelatedTermsRelatedTermsListInner_Type](RelatedTermsRelatedTermsListInner_Type.md)
  - [.Models.RelatedTerms_Type](RelatedTerms_Type.md)
  - [.Models.ReportingColumnAsync_Type](ReportingColumnAsync_Type.md)
+ - [.Models.ReportsStats200Response_Type](ReportsStats200Response_Type.md)
+ - [.Models.RespondToInvitesResponseArrayItemsInner_Type](RespondToInvitesResponseArrayItemsInner_Type.md)
+ - [.Models.RespondToInvitesResponseArray_Type](RespondToInvitesResponseArray_Type.md)
  - [.Models.Role_Type](Role_Type.md)
  - [.Models.SSIOAccountAddress_Type](SSIOAccountAddress_Type.md)
  - [.Models.SSIOAccountItem_Type](SSIOAccountItem_Type.md)
@@ -722,14 +941,28 @@ Method | HTTP request | Description
  - [.Models.SSIOOrderLine_Type](SSIOOrderLine_Type.md)
  - [.Models.SearchPartnerPins200Response_Type](SearchPartnerPins200Response_Type.md)
  - [.Models.SearchUserBoardsGet200Response_Type](SearchUserBoardsGet200Response_Type.md)
+ - [.Models.SharedAudienceAccount_Type](SharedAudienceAccount_Type.md)
+ - [.Models.SharedAudienceCommon_Type](SharedAudienceCommon_Type.md)
+ - [.Models.SharedAudienceResponseCommon_Type](SharedAudienceResponseCommon_Type.md)
+ - [.Models.SharedAudienceResponse_Type](SharedAudienceResponse_Type.md)
+ - [.Models.SharedAudience_Type](SharedAudience_Type.md)
  - [.Models.SingleInterestTargetingOptionResponse_Type](SingleInterestTargetingOptionResponse_Type.md)
  - [.Models.SsioInsertionOrdersStatusGetByAdAccount200Response_Type](SsioInsertionOrdersStatusGetByAdAccount200Response_Type.md)
  - [.Models.SsioOrderLinesGetByAdAccount200Response_Type](SsioOrderLinesGetByAdAccount200Response_Type.md)
- - [.Models.SummaryPinMedia_Type](SummaryPinMedia_Type.md)
  - [.Models.SummaryPin_Type](SummaryPin_Type.md)
  - [.Models.TargetingAdvertiserCountry_Type](TargetingAdvertiserCountry_Type.md)
+ - [.Models.TargetingSpecAppType_Type](TargetingSpecAppType_Type.md)
  - [.Models.TargetingSpecSHOPPINGRETARGETING_Type](TargetingSpecSHOPPINGRETARGETING_Type.md)
  - [.Models.TargetingSpec_Type](TargetingSpec_Type.md)
+ - [.Models.TargetingTemplateAudienceSizingReachEstimate_Type](TargetingTemplateAudienceSizingReachEstimate_Type.md)
+ - [.Models.TargetingTemplateAudienceSizing_Type](TargetingTemplateAudienceSizing_Type.md)
+ - [.Models.TargetingTemplateCommon_Type](TargetingTemplateCommon_Type.md)
+ - [.Models.TargetingTemplateCreate_Type](TargetingTemplateCreate_Type.md)
+ - [.Models.TargetingTemplateGetResponseData_Type](TargetingTemplateGetResponseData_Type.md)
+ - [.Models.TargetingTemplateKeyword_Type](TargetingTemplateKeyword_Type.md)
+ - [.Models.TargetingTemplateList200Response_Type](TargetingTemplateList200Response_Type.md)
+ - [.Models.TargetingTemplateResponseData_Type](TargetingTemplateResponseData_Type.md)
+ - [.Models.TargetingTemplateUpdateRequest_Type](TargetingTemplateUpdateRequest_Type.md)
  - [.Models.TargetingTypeFilter_Type](TargetingTypeFilter_Type.md)
  - [.Models.TemplateResponseDateRangeAbsoluteDateRange_Type](TemplateResponseDateRangeAbsoluteDateRange_Type.md)
  - [.Models.TemplateResponseDateRangeDynamicDateRange_Type](TemplateResponseDateRangeDynamicDateRange_Type.md)
@@ -750,17 +983,40 @@ Method | HTTP request | Description
  - [.Models.TrendingKeywordsResponse_Type](TrendingKeywordsResponse_Type.md)
  - [.Models.TrendsSupportedRegion_Type](TrendsSupportedRegion_Type.md)
  - [.Models.UpdatableItemAttributes_Type](UpdatableItemAttributes_Type.md)
+ - [.Models.UpdateAssetGroupBodyAssetGroupsToUpdateInner_Type](UpdateAssetGroupBodyAssetGroupsToUpdateInner_Type.md)
+ - [.Models.UpdateAssetGroupBody_Type](UpdateAssetGroupBody_Type.md)
+ - [.Models.UpdateAssetGroupResponseExceptionsInner_Type](UpdateAssetGroupResponseExceptionsInner_Type.md)
+ - [.Models.UpdateAssetGroupResponse_Type](UpdateAssetGroupResponse_Type.md)
+ - [.Models.UpdateInvitesResultsResponseArrayItemsInner_Type](UpdateInvitesResultsResponseArrayItemsInner_Type.md)
+ - [.Models.UpdateInvitesResultsResponseArray_Type](UpdateInvitesResultsResponseArray_Type.md)
+ - [.Models.UpdateMaskBidOptionField_Type](UpdateMaskBidOptionField_Type.md)
  - [.Models.UpdateMaskFieldType_Type](UpdateMaskFieldType_Type.md)
+ - [.Models.UpdateMemberAssetAccessBodyAccessesInner_Type](UpdateMemberAssetAccessBodyAccessesInner_Type.md)
+ - [.Models.UpdateMemberAssetAccessBody_Type](UpdateMemberAssetAccessBody_Type.md)
+ - [.Models.UpdateMemberAssetsResultsResponseArrayItemsInner_Type](UpdateMemberAssetsResultsResponseArrayItemsInner_Type.md)
+ - [.Models.UpdateMemberAssetsResultsResponseArray_Type](UpdateMemberAssetsResultsResponseArray_Type.md)
+ - [.Models.UpdateMemberBusinessRoleBody_Type](UpdateMemberBusinessRoleBody_Type.md)
+ - [.Models.UpdateMemberResult_Type](UpdateMemberResult_Type.md)
+ - [.Models.UpdateMemberResultsResponseArray_Type](UpdateMemberResultsResponseArray_Type.md)
+ - [.Models.UpdatePartnerAssetAccessBodyAccessesInner_Type](UpdatePartnerAssetAccessBodyAccessesInner_Type.md)
+ - [.Models.UpdatePartnerAssetAccessBody_Type](UpdatePartnerAssetAccessBody_Type.md)
+ - [.Models.UpdatePartnerAssetsResult_Type](UpdatePartnerAssetsResult_Type.md)
+ - [.Models.UpdatePartnerAssetsResultsResponseArray_Type](UpdatePartnerAssetsResultsResponseArray_Type.md)
+ - [.Models.UpdatePartnerResultsResponseArrayItemsInner_Type](UpdatePartnerResultsResponseArrayItemsInner_Type.md)
+ - [.Models.UpdatePartnerResultsResponseArray_Type](UpdatePartnerResultsResponseArray_Type.md)
  - [.Models.UserAccountFollowedInterests200Response_Type](UserAccountFollowedInterests200Response_Type.md)
+ - [.Models.UserBusinessRoleBinding_Type](UserBusinessRoleBinding_Type.md)
  - [.Models.UserFollowingFeedType_Type](UserFollowingFeedType_Type.md)
  - [.Models.UserFollowingGet200Response_Type](UserFollowingGet200Response_Type.md)
  - [.Models.UserListOperationType_Type](UserListOperationType_Type.md)
  - [.Models.UserListType_Type](UserListType_Type.md)
+ - [.Models.UserSingleAssetBinding_Type](UserSingleAssetBinding_Type.md)
  - [.Models.UserSummary_Type](UserSummary_Type.md)
  - [.Models.UserWebsiteSummary_Type](UserWebsiteSummary_Type.md)
  - [.Models.UserWebsiteVerificationCode_Type](UserWebsiteVerificationCode_Type.md)
  - [.Models.UserWebsiteVerifyRequest_Type](UserWebsiteVerifyRequest_Type.md)
  - [.Models.UserWebsitesGet200Response_Type](UserWebsitesGet200Response_Type.md)
+ - [.Models.UsersForIndividualAssetResponse_Type](UsersForIndividualAssetResponse_Type.md)
  - [.Models.VideoMetadata_Type](VideoMetadata_Type.md)
 
 
@@ -802,4 +1058,30 @@ Method | HTTP request | Description
 
 
 - **Type**: HTTP basic authentication
+
+## clientCredentials
+
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: 
+  - **ads:read**: See all of your advertising data, including ads, ad groups, campaigns etc.
+  - **ads:write**: Create, update, or delete ads, ad groups, campaigns etc.
+  - **billing:read**: See all of your billing data, billing profile, etc.
+  - **billing:write**: Create, update, or delete billing data, billing profiles, etc.
+  - **biz_access:read**: See business access data
+  - **biz_access:write**: Create, update, or delete business access data
+  - **boards:read**: See your public boards, including group boards you join
+  - **boards:read_secret**: See your secret boards
+  - **boards:write**: Create, update, or delete your public boards
+  - **boards:write_secret**: Create, update, or delete your secret boards
+  - **catalogs:read**: See all of your catalogs data
+  - **catalogs:write**: Create, update, or delete your catalogs data
+  - **pins:read**: See your public Pins
+  - **pins:read_secret**: See your secret Pins
+  - **pins:write**: Create, update, or delete your public Pins
+  - **pins:write_secret**: Create, update, or delete your secret Pins
+  - **user_accounts:read**: See your user accounts and followers
+  - **user_accounts:write**: Update your user accounts and followers
 

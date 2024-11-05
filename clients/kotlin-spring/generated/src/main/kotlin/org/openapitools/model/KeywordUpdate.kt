@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param id Keyword ID.
  * @param archived Is keyword archived?
- * @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
 data class KeywordUpdate(
 
@@ -28,10 +28,9 @@ data class KeywordUpdate(
     @Schema(example = "false", description = "Is keyword archived?")
     @get:JsonProperty("archived") val archived: kotlin.Boolean? = null,
 
-    @get:Min(1)
-    @Schema(example = "200000", description = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+    @Schema(example = "null", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
     @get:JsonProperty("bid") val bid: kotlin.Int? = null
-) {
+    ) {
 
 }
 

@@ -25,8 +25,7 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
     `item_name` = NULL,
     `item_category` = NULL,
     `item_brand` = NULL,
-    #' Initialize a new ConversionEventsDataInnerCustomDataContentsInner class.
-    #'
+
     #' @description
     #' Initialize a new ConversionEventsDataInnerCustomDataContentsInner class.
     #'
@@ -37,7 +36,6 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
     #' @param item_category The category of a product.
     #' @param item_brand The brand of a product.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `item_price` = NULL, `quantity` = NULL, `item_name` = NULL, `item_category` = NULL, `item_brand` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -76,13 +74,11 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
         self$`item_brand` <- `item_brand`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionEventsDataInnerCustomDataContentsInner in JSON format
-    #' @export
     toJSON = function() {
       ConversionEventsDataInnerCustomDataContentsInnerObject <- list()
       if (!is.null(self$`id`)) {
@@ -111,14 +107,12 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
       }
       ConversionEventsDataInnerCustomDataContentsInnerObject
     },
-    #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomDataContentsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomDataContentsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionEventsDataInnerCustomDataContentsInner
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -141,13 +135,11 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionEventsDataInnerCustomDataContentsInner in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -202,14 +194,12 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomDataContentsInner
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionEventsDataInnerCustomDataContentsInner
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionEventsDataInnerCustomDataContentsInner
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -220,53 +210,42 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
       self$`item_brand` <- this_object$`item_brand`
       self
     },
-    #' Validate JSON input with respect to ConversionEventsDataInnerCustomDataContentsInner
-    #'
+
     #' @description
     #' Validate JSON input with respect to ConversionEventsDataInnerCustomDataContentsInner and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ConversionEventsDataInnerCustomDataContentsInner
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.AdArrayResponse
@@ -25,8 +25,8 @@ import org.openapitools.client.models.AdPreviewRequest
 import org.openapitools.client.models.AdPreviewURLResponse
 import org.openapitools.client.models.AdResponse
 import org.openapitools.client.models.AdUpdateRequest
+import org.openapitools.client.models.AdsAnalyticsAdTargetingType
 import org.openapitools.client.models.AdsAnalyticsResponseInner
-import org.openapitools.client.models.AdsAnalyticsTargetingType
 import org.openapitools.client.models.AdsList200Response
 import org.openapitools.client.models.ConversionReportAttributionType
 import org.openapitools.client.models.Error
@@ -49,7 +49,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class AdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -59,7 +59,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
 
     /**
      * Create ad preview with pin or image
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      * @param adAccountId Unique identifier of an ad account.
      * @param adPreviewRequest Create ad preview with pin or image.
      * @return AdPreviewURLResponse
@@ -91,7 +91,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
 
     /**
      * Create ad preview with pin or image
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      * @param adAccountId Unique identifier of an ad account.
      * @param adPreviewRequest Create ad preview with pin or image.
      * @return ApiResponse<AdPreviewURLResponse?>
@@ -227,6 +227,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -259,6 +260,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -284,7 +286,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -296,7 +307,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -308,7 +328,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -320,7 +349,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -328,7 +366,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
      enum class ConversionReportTimeAdTargetingAnalyticsGet(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -338,7 +385,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param adIds List of Ad Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -355,7 +402,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adTargetingAnalyticsGet(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet? = ClickWindowDaysAdTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet? = EngagementWindowDaysAdTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet? = ViewWindowDaysAdTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet? = ConversionReportTimeAdTargetingAnalyticsGet.AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
+    fun adTargetingAnalyticsGet(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet? = ClickWindowDaysAdTargetingAnalyticsGet._30, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet? = EngagementWindowDaysAdTargetingAnalyticsGet._30, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet? = ViewWindowDaysAdTargetingAnalyticsGet._1, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet? = ConversionReportTimeAdTargetingAnalyticsGet.AD_ACTION, attributionTypes: ConversionReportAttributionType? = null) : MetricsResponse {
         val localVarResponse = adTargetingAnalyticsGetWithHttpInfo(adAccountId = adAccountId, adIds = adIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
 
         return when (localVarResponse.responseType) {
@@ -380,7 +427,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param adIds List of Ad Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -394,7 +441,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adTargetingAnalyticsGetWithHttpInfo(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : ApiResponse<MetricsResponse?> {
+    fun adTargetingAnalyticsGetWithHttpInfo(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : ApiResponse<MetricsResponse?> {
         val localVariableConfig = adTargetingAnalyticsGetRequestConfig(adAccountId = adAccountId, adIds = adIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
 
         return request<Unit, MetricsResponse>(
@@ -409,7 +456,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param adIds List of Ad Ids to use to filter the results.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -419,7 +466,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param attributionTypes List of types of attribution for the conversion report (optional)
      * @return RequestConfig
      */
-    fun adTargetingAnalyticsGetRequestConfig(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : RequestConfig<Unit> {
+    fun adTargetingAnalyticsGetRequestConfig(adAccountId: kotlin.String, adIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>, columns: kotlin.collections.List<ColumnsAdTargetingAnalyticsGet>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdTargetingAnalyticsGet?, engagementWindowDays: EngagementWindowDaysAdTargetingAnalyticsGet?, viewWindowDays: ViewWindowDaysAdTargetingAnalyticsGet?, conversionReportTime: ConversionReportTimeAdTargetingAnalyticsGet?, attributionTypes: ConversionReportAttributionType?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -553,6 +600,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -585,6 +633,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -610,7 +659,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -622,7 +680,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -634,7 +701,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -646,7 +722,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -654,22 +739,33 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
      enum class ConversionReportTimeAdsAnalytics(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
      * Get ad analytics
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param adIds List of Ad Ids to use to filter the results.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param adIds List of Ad Ids to use to filter the results. (optional)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
      * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @param pinIds List of Pin IDs. (optional)
+     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @return kotlin.collections.List<AdsAnalyticsResponseInner>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -679,8 +775,8 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, adIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdsAnalytics? = ClickWindowDaysAdsAnalytics._30, engagementWindowDays: EngagementWindowDaysAdsAnalytics? = EngagementWindowDaysAdsAnalytics._30, viewWindowDays: ViewWindowDaysAdsAnalytics? = ViewWindowDaysAdsAnalytics._1, conversionReportTime: ConversionReportTimeAdsAnalytics? = ConversionReportTimeAdsAnalytics.AD_ACTION) : kotlin.collections.List<AdsAnalyticsResponseInner> {
-        val localVarResponse = adsAnalyticsWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, adIds = adIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+    fun adsAnalytics(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, adIds: kotlin.collections.List<kotlin.String>? = null, clickWindowDays: ClickWindowDaysAdsAnalytics? = ClickWindowDaysAdsAnalytics._30, engagementWindowDays: EngagementWindowDaysAdsAnalytics? = EngagementWindowDaysAdsAnalytics._30, viewWindowDays: ViewWindowDaysAdsAnalytics? = ViewWindowDaysAdsAnalytics._1, conversionReportTime: ConversionReportTimeAdsAnalytics? = ConversionReportTimeAdsAnalytics.AD_ACTION, pinIds: kotlin.collections.List<kotlin.String>? = null, campaignIds: kotlin.collections.List<kotlin.String>? = null) : kotlin.collections.List<AdsAnalyticsResponseInner> {
+        val localVarResponse = adsAnalyticsWithHttpInfo(adAccountId = adAccountId, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, adIds = adIds, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, pinIds = pinIds, campaignIds = campaignIds)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<AdsAnalyticsResponseInner>
@@ -699,25 +795,27 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
 
     /**
      * Get ad analytics
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param adIds List of Ad Ids to use to filter the results.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param adIds List of Ad Ids to use to filter the results. (optional)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
      * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @param pinIds List of Pin IDs. (optional)
+     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @return ApiResponse<kotlin.collections.List<AdsAnalyticsResponseInner>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adsAnalyticsWithHttpInfo(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, adIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdsAnalytics?, engagementWindowDays: EngagementWindowDaysAdsAnalytics?, viewWindowDays: ViewWindowDaysAdsAnalytics?, conversionReportTime: ConversionReportTimeAdsAnalytics?) : ApiResponse<kotlin.collections.List<AdsAnalyticsResponseInner>?> {
-        val localVariableConfig = adsAnalyticsRequestConfig(adAccountId = adAccountId, startDate = startDate, endDate = endDate, adIds = adIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+    fun adsAnalyticsWithHttpInfo(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, adIds: kotlin.collections.List<kotlin.String>?, clickWindowDays: ClickWindowDaysAdsAnalytics?, engagementWindowDays: EngagementWindowDaysAdsAnalytics?, viewWindowDays: ViewWindowDaysAdsAnalytics?, conversionReportTime: ConversionReportTimeAdsAnalytics?, pinIds: kotlin.collections.List<kotlin.String>?, campaignIds: kotlin.collections.List<kotlin.String>?) : ApiResponse<kotlin.collections.List<AdsAnalyticsResponseInner>?> {
+        val localVariableConfig = adsAnalyticsRequestConfig(adAccountId = adAccountId, startDate = startDate, endDate = endDate, columns = columns, granularity = granularity, adIds = adIds, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, pinIds = pinIds, campaignIds = campaignIds)
 
         return request<Unit, kotlin.collections.List<AdsAnalyticsResponseInner>>(
             localVariableConfig
@@ -730,22 +828,26 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param adIds List of Ad Ids to use to filter the results.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+     * @param adIds List of Ad Ids to use to filter the results. (optional)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
      * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @param pinIds List of Pin IDs. (optional)
+     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
      * @return RequestConfig
      */
-    fun adsAnalyticsRequestConfig(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, adIds: kotlin.collections.List<kotlin.String>, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, clickWindowDays: ClickWindowDaysAdsAnalytics?, engagementWindowDays: EngagementWindowDaysAdsAnalytics?, viewWindowDays: ViewWindowDaysAdsAnalytics?, conversionReportTime: ConversionReportTimeAdsAnalytics?) : RequestConfig<Unit> {
+    fun adsAnalyticsRequestConfig(adAccountId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, columns: kotlin.collections.List<ColumnsAdsAnalytics>, granularity: Granularity, adIds: kotlin.collections.List<kotlin.String>?, clickWindowDays: ClickWindowDaysAdsAnalytics?, engagementWindowDays: EngagementWindowDaysAdsAnalytics?, viewWindowDays: ViewWindowDaysAdsAnalytics?, conversionReportTime: ConversionReportTimeAdsAnalytics?, pinIds: kotlin.collections.List<kotlin.String>?, campaignIds: kotlin.collections.List<kotlin.String>?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 put("start_date", listOf(parseDateToQueryString(startDate)))
                 put("end_date", listOf(parseDateToQueryString(endDate)))
-                put("ad_ids", toMultiValue(adIds.toList(), "multi"))
+                if (adIds != null) {
+                    put("ad_ids", toMultiValue(adIds.toList(), "multi"))
+                }
                 put("columns", toMultiValue(columns.toList(), "csv"))
                 put("granularity", listOf(granularity.toString()))
                 if (clickWindowDays != null) {
@@ -759,6 +861,12 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
                 }
                 if (conversionReportTime != null) {
                     put("conversion_report_time", listOf(conversionReportTime.value))
+                }
+                if (pinIds != null) {
+                    put("pin_ids", toMultiValue(pinIds.toList(), "multi"))
+                }
+                if (campaignIds != null) {
+                    put("campaign_ids", toMultiValue(campaignIds.toList(), "multi"))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -931,7 +1039,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
          @Json(name = "PAUSED") PAUSED("PAUSED"),
          @Json(name = "ARCHIVED") ARCHIVED("ARCHIVED"),
          @Json(name = "DRAFT") DRAFT("DRAFT"),
-         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT")
+         @Json(name = "DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -939,7 +1056,16 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      */
      enum class OrderAdsList(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -950,7 +1076,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param adGroupIds List of Ad group Ids to use to filter the results. (optional)
      * @param adIds List of Ad Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return AdsList200Response
@@ -988,7 +1114,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param adGroupIds List of Ad group Ids to use to filter the results. (optional)
      * @param adIds List of Ad Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<AdsList200Response?>
@@ -1013,7 +1139,7 @@ class AdsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = A
      * @param adGroupIds List of Ad group Ids to use to filter the results. (optional)
      * @param adIds List of Ad Ids to use to filter the results. (optional)
      * @param entityStatuses Entity status (optional, default to arrayListOf(EntityStatuses.ACTIVE,EntityStatuses.PAUSED))
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig

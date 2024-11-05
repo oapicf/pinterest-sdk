@@ -16,15 +16,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+ * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  */
 data class TargetingTypeFilter(
 
     @field:Valid
     @get:Size(min=1,max=5) 
-    @Schema(example = "null", description = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
+    @Schema(example = "null", description = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
     @get:JsonProperty("targeting_types") val targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>? = null
-) {
+    ) {
 
 }
 

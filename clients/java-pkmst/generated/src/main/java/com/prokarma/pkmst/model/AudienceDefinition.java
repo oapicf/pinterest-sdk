@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Queryable audience representation.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDefinition   {
   @JsonProperty("date")
   private String date;
@@ -32,10 +32,10 @@ public class AudienceDefinition   {
     return this;
   }
 
-   /**
+  /**
    * Generation date
    * @return date
-  **/
+   */
   @ApiModelProperty(example = "2022-10-09", value = "Generation date")
   public String getDate() {
     return date;
@@ -50,10 +50,10 @@ public class AudienceDefinition   {
     return this;
   }
 
-   /**
+  /**
    * Generated audience type to request.
    * @return type
-  **/
+   */
   @ApiModelProperty(value = "Generated audience type to request.")
   public String getType() {
     return type;
@@ -68,10 +68,10 @@ public class AudienceDefinition   {
     return this;
   }
 
-   /**
+  /**
    * Generated audience scope to request.
    * @return scope
-  **/
+   */
   @ApiModelProperty(value = "Generated audience scope to request.")
   public String getScope() {
     return scope;

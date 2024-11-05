@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * ImageMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageMetadata {
 
   private String itemType;
@@ -43,7 +43,7 @@ public class ImageMetadata {
   /**
    * Get itemType
    * @return itemType
-  */
+   */
   
   @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_type")
@@ -63,7 +63,7 @@ public class ImageMetadata {
   /**
    * Get title
    * @return title
-  */
+   */
   
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -83,7 +83,7 @@ public class ImageMetadata {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -103,7 +103,7 @@ public class ImageMetadata {
   /**
    * Get link
    * @return link
-  */
+   */
   
   @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -123,7 +123,7 @@ public class ImageMetadata {
   /**
    * Get images
    * @return images
-  */
+   */
   @Valid 
   @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("images")

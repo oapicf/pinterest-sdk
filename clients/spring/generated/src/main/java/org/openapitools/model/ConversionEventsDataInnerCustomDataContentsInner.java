@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionEvents_data_inner_custom_data_contents_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInnerCustomDataContentsInner {
 
   private String id;
@@ -43,7 +43,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   /**
    * The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return id
-  */
+   */
   
   @Schema(name = "id", example = "red-pinterest-shirt-logo-1", description = "The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -63,7 +63,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   /**
    * The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return itemPrice
-  */
+   */
   
   @Schema(name = "item_price", example = "1325.12", description = "The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_price")
@@ -83,7 +83,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   /**
    * The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return quantity
-  */
+   */
   
   @Schema(name = "quantity", example = "5", description = "The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("quantity")
@@ -103,7 +103,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   /**
    * The name of a product.
    * @return itemName
-  */
+   */
   
   @Schema(name = "item_name", example = "pinterest-clothing-shirt", description = "The name of a product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_name")
@@ -123,7 +123,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   /**
    * The category of a product.
    * @return itemCategory
-  */
+   */
   
   @Schema(name = "item_category", example = "pinterest-entertainment", description = "The category of a product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_category")
@@ -143,7 +143,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   /**
    * The brand of a product.
    * @return itemBrand
-  */
+   */
   
   @Schema(name = "item_brand", example = "pinterest", description = "The brand of a product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_brand")

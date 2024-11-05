@@ -17,11 +17,11 @@ public class ConversionEventsDataInnerCustomData   {
   
   private String currency;
   private String value;
-  private List<String> contentIds;
+  private List<String> contentIds = new ArrayList<>();
   private String contentName;
   private String contentCategory;
   private String contentBrand;
-  private List<ConversionEventsDataInnerCustomDataContentsInner> contents;
+  private List<ConversionEventsDataInnerCustomDataContentsInner> contents = new ArrayList<>();
   private Long numItems;
   private String orderId;
   private String searchString;

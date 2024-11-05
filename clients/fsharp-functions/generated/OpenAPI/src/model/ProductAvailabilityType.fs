@@ -11,7 +11,6 @@ module ProductAvailabilityType =
   let INSTOCKEnum = "IN_STOCK"
   let OUTOFSTOCKEnum = "OUT_OF_STOCK"
   let PREORDEREnum = "PREORDER"
-  let NullEnum = "null"
   type ProductAvailabilityType = string
 
   //#endregion

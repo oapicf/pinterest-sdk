@@ -3,5 +3,5 @@ package models
 type AdPinId struct {
 
 	// Pin ID.
-	PinId string `json:"pin_id,omitempty"`
+	PinId string `json:"pin_id,omitempty" validate:"regexp=^\\\\d+$"`
 }

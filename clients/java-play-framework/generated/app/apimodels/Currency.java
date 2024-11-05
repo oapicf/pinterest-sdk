@@ -58,7 +58,11 @@ public enum Currency {
   
   CLP("CLP"),
   
-  COP("COP");
+  COP("COP"),
+  
+  INR("INR"),
+  
+  TRY("TRY");
 
   private final String value;
 

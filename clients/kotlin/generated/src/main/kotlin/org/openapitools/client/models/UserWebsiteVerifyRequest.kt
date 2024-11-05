@@ -48,5 +48,6 @@ data class UserWebsiteVerifyRequest (
         @Json(name = "METATAG") METATAG("METATAG"),
         @Json(name = "DNSTXT") DNSTXT("DNSTXT");
     }
+
 }
 

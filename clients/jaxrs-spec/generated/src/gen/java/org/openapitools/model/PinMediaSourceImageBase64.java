@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Base64-encoded image media source")
 @JsonTypeName("PinMediaSourceImageBase64")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImageBase64   {
   public enum SourceTypeEnum {
 
@@ -66,7 +66,7 @@ public class PinMediaSourceImageBase64   {
     }
 }
 
-  private @Valid SourceTypeEnum sourceType;
+  private SourceTypeEnum sourceType;
   public enum ContentTypeEnum {
 
     JPEG(String.valueOf("image/jpeg")), PNG(String.valueOf("image/png"));
@@ -114,9 +114,9 @@ public class PinMediaSourceImageBase64   {
     }
 }
 
-  private @Valid ContentTypeEnum contentType;
-  private @Valid String data;
-  private @Valid Boolean isStandard = true;
+  private ContentTypeEnum contentType;
+  private String data;
+  private Boolean isStandard = true;
 
   /**
    **/
@@ -128,8 +128,7 @@ public class PinMediaSourceImageBase64   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("source_type")
-  @NotNull
-  public SourceTypeEnum getSourceType() {
+  @NotNull public SourceTypeEnum getSourceType() {
     return sourceType;
   }
 
@@ -148,8 +147,7 @@ public class PinMediaSourceImageBase64   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("content_type")
-  @NotNull
-  public ContentTypeEnum getContentType() {
+  @NotNull public ContentTypeEnum getContentType() {
     return contentType;
   }
 
@@ -168,8 +166,7 @@ public class PinMediaSourceImageBase64   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("data")
-  @NotNull
- @Pattern(regexp="[a-zA-Z0-9+/=]+")  public String getData() {
+  @NotNull  @Pattern(regexp="[a-zA-Z0-9+/=]+")public String getData() {
     return data;
   }
 

@@ -28,5 +28,7 @@
 
     * `PRODUCT_ITEM` (value: `"PRODUCT_ITEM"`)
 
+    * `PRODUCT_ITEM_TARGETING` (value: `"PRODUCT_ITEM_TARGETING"`)
+
 
 

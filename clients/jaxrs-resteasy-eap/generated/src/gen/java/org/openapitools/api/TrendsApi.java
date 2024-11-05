@@ -26,14 +26,14 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the trends API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface TrendsApi  {
 
     @GET
     
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "List trending keywords", notes = "<p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>.", response = TrendingKeywordsResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "List trending keywords", notes = "<p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>. ", response = TrendingKeywordsResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "user_accounts:read", description = "See your user accounts and followers")
         })
@@ -44,5 +44,5 @@ public interface TrendsApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid trending keywords request parameters", response = Error.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response trendingKeywordsList( @PathParam("region") TrendsSupportedRegion region, @PathParam("trend_type") TrendType trendType, @QueryParam("interests") List<String> interests, @QueryParam("genders") List<String> genders, @QueryParam("ages") List<String> ages, @DefaultValue("false") @QueryParam("normalize_against_group") Boolean normalizeAgainstGroup, @Min(1) @Max(50) @DefaultValue("50") @QueryParam("limit") Integer limit,@Context SecurityContext securityContext);
+    public Response trendingKeywordsList( @PathParam("region") TrendsSupportedRegion region, @PathParam("trend_type") TrendType trendType, @QueryParam("interests") List<String> interests, @QueryParam("genders") List<String> genders, @QueryParam("ages") List<String> ages, @Size(min=1,max=50) @QueryParam("include_keywords") List<@Size(min = 1, max = 100)String> includeKeywords, @DefaultValue("false") @QueryParam("normalize_against_group") Boolean normalizeAgainstGroup, @Min(1) @Max(50) @DefaultValue("50") @QueryParam("limit") Integer limit,@Context SecurityContext securityContext);
 }

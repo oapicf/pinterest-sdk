@@ -10,10 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BatchOperationStatus;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsItemsBatch;
 import org.openapitools.vertxweb.server.model.CatalogsHotelItemsBatch;
 import org.openapitools.vertxweb.server.model.CatalogsRetailItemsBatch;
 import org.openapitools.vertxweb.server.model.CatalogsType;
-import org.openapitools.vertxweb.server.model.HotelProcessingRecord;
+import org.openapitools.vertxweb.server.model.CreativeAssetsProcessingRecord;
 
 /**
  * Object describing the catalogs items batch
@@ -26,13 +27,13 @@ public class CatalogsItemsBatch   {
   private OffsetDateTime createdTime;
   private OffsetDateTime completedTime;
   private BatchOperationStatus status;
-  private List<HotelProcessingRecord> items;
+  private List<CreativeAssetsProcessingRecord> items = new ArrayList<>();
 
   public CatalogsItemsBatch () {
 
   }
 
-  public CatalogsItemsBatch (CatalogsType catalogType, String batchId, OffsetDateTime createdTime, OffsetDateTime completedTime, BatchOperationStatus status, List<HotelProcessingRecord> items) {
+  public CatalogsItemsBatch (CatalogsType catalogType, String batchId, OffsetDateTime createdTime, OffsetDateTime completedTime, BatchOperationStatus status, List<CreativeAssetsProcessingRecord> items) {
     this.catalogType = catalogType;
     this.batchId = batchId;
     this.createdTime = createdTime;
@@ -88,10 +89,10 @@ public class CatalogsItemsBatch   {
 
     
   @JsonProperty("items")
-  public List<HotelProcessingRecord> getItems() {
+  public List<CreativeAssetsProcessingRecord> getItems() {
     return items;
   }
-  public void setItems(List<HotelProcessingRecord> items) {
+  public void setItems(List<CreativeAssetsProcessingRecord> items) {
     this.items = items;
   }
 

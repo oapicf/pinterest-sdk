@@ -16,20 +16,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOInsertionOrderCommon")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOInsertionOrderCommon   {
-  private @Valid String startDate;
-  private @Valid String endDate;
-  private @Valid String poNumber;
-  private @Valid BigDecimal budgetAmount;
-  private @Valid String billingContactFirstname;
-  private @Valid String billingContactLastname;
-  private @Valid String billingContactEmail;
-  private @Valid String mediaContactFirstname;
-  private @Valid String mediaContactLastname;
-  private @Valid String mediaContactEmail;
-  private @Valid String agencyLink;
-  private @Valid String userEmail;
+  private String startDate;
+  private String endDate;
+  private String poNumber;
+  private BigDecimal budgetAmount;
+  private String billingContactFirstname;
+  private String billingContactLastname;
+  private String billingContactEmail;
+  private String mediaContactFirstname;
+  private String mediaContactLastname;
+  private String mediaContactEmail;
+  private String agencyLink;
+  private String userEmail;
 
   /**
    * Starting date of time period. Format: YYYY-MM-DD
@@ -42,7 +42,7 @@ public class SSIOInsertionOrderCommon   {
   
   @ApiModelProperty(example = "2020-12-20", value = "Starting date of time period. Format: YYYY-MM-DD")
   @JsonProperty("start_date")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
+   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
@@ -62,7 +62,7 @@ public class SSIOInsertionOrderCommon   {
   
   @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
   @JsonProperty("end_date")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getEndDate() {
+   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getEndDate() {
     return endDate;
   }
 
@@ -102,7 +102,7 @@ public class SSIOInsertionOrderCommon   {
   
   @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
   @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
+  @Valid public BigDecimal getBudgetAmount() {
     return budgetAmount;
   }
 

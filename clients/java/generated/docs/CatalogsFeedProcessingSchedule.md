@@ -169,7 +169,7 @@ Daily processing schedule. This field is **OPTIONAL**. Use this to configure the
 | AMERICA_YELLOWKNIFE | &quot;America/Yellowknife&quot; |
 | ANTARCTICA_CASEY | &quot;Antarctica/Casey&quot; |
 | ANTARCTICA_DAVIS | &quot;Antarctica/Davis&quot; |
-| ANTARCTICA_DUMONTDURVILLE | &quot;Antarctica/DumontDUrville&quot; |
+| ANTARCTICA_DUMONT_D_URVILLE | &quot;Antarctica/DumontDUrville&quot; |
 | ANTARCTICA_MACQUARIE | &quot;Antarctica/Macquarie&quot; |
 | ANTARCTICA_MAWSON | &quot;Antarctica/Mawson&quot; |
 | ANTARCTICA_PALMER | &quot;Antarctica/Palmer&quot; |
@@ -276,10 +276,10 @@ Daily processing schedule. This field is **OPTIONAL**. Use this to configure the
 | AUSTRALIA_PERTH | &quot;Australia/Perth&quot; |
 | AUSTRALIA_SYDNEY | &quot;Australia/Sydney&quot; |
 | CET | &quot;CET&quot; |
-| CST6CDT | &quot;CST6CDT&quot; |
+| CST6_CDT | &quot;CST6CDT&quot; |
 | EET | &quot;EET&quot; |
 | EST | &quot;EST&quot; |
-| EST5EDT | &quot;EST5EDT&quot; |
+| EST5_EDT | &quot;EST5EDT&quot; |
 | ETC_GMT | &quot;Etc/GMT&quot; |
 | ETC_GMT_1 | &quot;Etc/GMT+1&quot; |
 | ETC_GMT_10 | &quot;Etc/GMT+10&quot; |
@@ -365,8 +365,8 @@ Daily processing schedule. This field is **OPTIONAL**. Use this to configure the
 | INDIAN_REUNION | &quot;Indian/Reunion&quot; |
 | MET | &quot;MET&quot; |
 | MST | &quot;MST&quot; |
-| MST7MDT | &quot;MST7MDT&quot; |
-| PST8PDT | &quot;PST8PDT&quot; |
+| MST7_MDT | &quot;MST7MDT&quot; |
+| PST8_PDT | &quot;PST8PDT&quot; |
 | PACIFIC_APIA | &quot;Pacific/Apia&quot; |
 | PACIFIC_AUCKLAND | &quot;Pacific/Auckland&quot; |
 | PACIFIC_BOUGAINVILLE | &quot;Pacific/Bougainville&quot; |
@@ -404,7 +404,6 @@ Daily processing schedule. This field is **OPTIONAL**. Use this to configure the
 | PACIFIC_WAKE | &quot;Pacific/Wake&quot; |
 | PACIFIC_WALLIS | &quot;Pacific/Wallis&quot; |
 | WET | &quot;WET&quot; |
-| NULL | &quot;null&quot; |
 
 
 

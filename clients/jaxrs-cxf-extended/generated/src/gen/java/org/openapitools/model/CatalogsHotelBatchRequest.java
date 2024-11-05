@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.CatalogsHotelBatchItem;
-import org.openapitools.model.CatalogsType;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -25,9 +24,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelBatchRequest  {
   
+public enum CatalogTypeEnum {
+
+    @JsonProperty("HOTEL") HOTEL(String.valueOf("HOTEL"));
+
+    private String value;
+
+    CatalogTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CatalogTypeEnum fromValue(String value) {
+        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -35,7 +62,7 @@ public class CatalogsHotelBatchRequest  {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
  /**
   * Array with catalogs item operations
@@ -55,21 +82,21 @@ public class CatalogsHotelBatchRequest  {
   */
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
+  public String getCatalogType() {
+    return catalogType == null ? null : catalogType.value();
   }
 
   /**
    * Sets the <code>catalogType</code> property.
    */
- public void setCatalogType(CatalogsType catalogType) {
+ public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
   /**
    * Sets the <code>catalogType</code> property.
    */
-  public CatalogsHotelBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsHotelBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -105,21 +132,21 @@ public class CatalogsHotelBatchRequest  {
   */
   @JsonProperty("language")
   @NotNull
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
   /**
    * Sets the <code>language</code> property.
    */
- public void setLanguage(Language language) {
+ public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
   /**
    * Sets the <code>language</code> property.
    */
-  public CatalogsHotelBatchRequest language(Language language) {
+  public CatalogsHotelBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }

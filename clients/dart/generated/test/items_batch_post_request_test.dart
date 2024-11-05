@@ -16,7 +16,7 @@ void main() {
   // final instance = ItemsBatchPostRequest();
 
   group('test ItemsBatchPostRequest', () {
-    // CatalogsType catalogType
+    // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
     });
@@ -26,7 +26,7 @@ void main() {
       // TODO
     });
 
-    // Language language
+    // CatalogsItemsRequestLanguage language
     test('to test the property `language`', () async {
       // TODO
     });
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
     // String catalogId
     test('to test the property `catalogId`', () async {
       // TODO

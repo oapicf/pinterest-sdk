@@ -27,7 +27,7 @@ void catalogs_product_groups_list_200_response_free(catalogs_product_groups_list
     listEntry_t *listEntry;
     if (catalogs_product_groups_list_200_response->items) {
         list_ForEach(listEntry, catalogs_product_groups_list_200_response->items) {
-            catalogs_product_groups_list_200_response_all_of_items_inner_free(listEntry->data);
+            catalogs_vertical_product_group_free(listEntry->data);
         }
         list_freeList(catalogs_product_groups_list_200_response->items);
         catalogs_product_groups_list_200_response->items = NULL;
@@ -54,7 +54,7 @@ cJSON *catalogs_product_groups_list_200_response_convertToJSON(catalogs_product_
     listEntry_t *itemsListEntry;
     if (catalogs_product_groups_list_200_response->items) {
     list_ForEach(itemsListEntry, catalogs_product_groups_list_200_response->items) {
-    cJSON *itemLocal = catalogs_product_groups_list_200_response_all_of_items_inner_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = catalogs_vertical_product_group_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -104,7 +104,7 @@ catalogs_product_groups_list_200_response_t *catalogs_product_groups_list_200_re
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        catalogs_product_groups_list_200_response_all_of_items_inner_t *itemsItem = catalogs_product_groups_list_200_response_all_of_items_inner_parseFromJSON(items_local_nonprimitive);
+        catalogs_vertical_product_group_t *itemsItem = catalogs_vertical_product_group_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
@@ -129,7 +129,7 @@ end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            catalogs_product_groups_list_200_response_all_of_items_inner_free(listEntry->data);
+            catalogs_vertical_product_group_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

@@ -23,7 +23,7 @@ ProductGroupPromotionResponseItem::~ProductGroupPromotionResponseItem()
 void
 ProductGroupPromotionResponseItem::__init()
 {
-	//data = new ProductGroupPromotion();
+	//data = new ProductGroupPromotionResponseElement();
 	//new std::list()std::list> exceptions;
 }
 
@@ -53,11 +53,11 @@ ProductGroupPromotionResponseItem::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("ProductGroupPromotion")) {
-			jsonToValue(&data, node, "ProductGroupPromotion", "ProductGroupPromotion");
+		if (isprimitive("ProductGroupPromotionResponseElement")) {
+			jsonToValue(&data, node, "ProductGroupPromotionResponseElement", "ProductGroupPromotionResponseElement");
 		} else {
 			
-			ProductGroupPromotion* obj = static_cast<ProductGroupPromotion*> (&data);
+			ProductGroupPromotionResponseElement* obj = static_cast<ProductGroupPromotionResponseElement*> (&data);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -98,13 +98,13 @@ ProductGroupPromotionResponseItem::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("ProductGroupPromotion")) {
-		ProductGroupPromotion obj = getData();
-		node = converttoJson(&obj, "ProductGroupPromotion", "");
+	if (isprimitive("ProductGroupPromotionResponseElement")) {
+		ProductGroupPromotionResponseElement obj = getData();
+		node = converttoJson(&obj, "ProductGroupPromotionResponseElement", "");
 	}
 	else {
 		
-		ProductGroupPromotion obj = static_cast<ProductGroupPromotion> (getData());
+		ProductGroupPromotionResponseElement obj = static_cast<ProductGroupPromotionResponseElement> (getData());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -145,14 +145,14 @@ ProductGroupPromotionResponseItem::toJson()
 	return ret;
 }
 
-ProductGroupPromotion
+ProductGroupPromotionResponseElement
 ProductGroupPromotionResponseItem::getData()
 {
 	return data;
 }
 
 void
-ProductGroupPromotionResponseItem::setData(ProductGroupPromotion  data)
+ProductGroupPromotionResponseItem::setData(ProductGroupPromotionResponseElement  data)
 {
 	this->data = data;
 }

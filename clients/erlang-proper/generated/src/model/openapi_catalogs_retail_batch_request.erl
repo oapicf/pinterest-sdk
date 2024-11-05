@@ -9,9 +9,9 @@
 -export_type([openapi_catalogs_retail_batch_request/0]).
 
 -type openapi_catalogs_retail_batch_request() ::
-  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  [ {'catalog_type', binary() }
   | {'country', openapi_country:openapi_country() }
-  | {'language', openapi_language:openapi_language() }
+  | {'language', openapi_catalogs_items_request_language:openapi_catalogs_items_request_language() }
   | {'items', list(openapi_catalogs_retail_batch_request_items_inner:openapi_catalogs_retail_batch_request_items_inner()) }
   ].
 
@@ -20,9 +20,9 @@ openapi_catalogs_retail_batch_request() ->
     openapi_catalogs_retail_batch_request([]).
 
 openapi_catalogs_retail_batch_request(Fields) ->
-  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
+  Default = [ {'catalog_type', elements([<<"RETAIL">>]) }
             , {'country', openapi_country:openapi_country() }
-            , {'language', openapi_language:openapi_language() }
+            , {'language', openapi_catalogs_items_request_language:openapi_catalogs_items_request_language() }
             , {'items', list(openapi_catalogs_retail_batch_request_items_inner:openapi_catalogs_retail_batch_request_items_inner(), 1, 1000) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

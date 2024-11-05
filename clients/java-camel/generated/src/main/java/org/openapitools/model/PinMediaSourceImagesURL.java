@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceImagesURL", description = "Multiple images urls-based media source")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImagesURL implements PinMediaSource {
 
   /**
@@ -89,7 +89,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
   /**
    * Get sourceType
    * @return sourceType
-  */
+   */
   
   @Schema(name = "source_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("source_type")
@@ -117,7 +117,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
   /**
    * Array with image objects.
    * @return items
-  */
+   */
   @NotNull @Valid @Size(min = 2, max = 5) 
   @Schema(name = "items", description = "Array with image objects.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
@@ -138,7 +138,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
    * Get index
    * minimum: 0
    * @return index
-  */
+   */
   @Min(0) 
   @Schema(name = "index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")

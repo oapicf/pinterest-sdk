@@ -9,7 +9,7 @@ test_that("AdsCreditRedeem", {
   # tests for AdsCreditRedeem
   # base path: https://api.pinterest.com/v5
   # Redeem ad credits
-  # Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param ads_credit_redeem_request AdsCreditRedeemRequest Redeem ad credits request.
   # @return [AdsCreditRedeemResponse]
@@ -22,10 +22,10 @@ test_that("AdsCreditsDiscountsGet", {
   # tests for AdsCreditsDiscountsGet
   # base path: https://api.pinterest.com/v5
   # Get ads credit discounts
-  # Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [AdsCreditsDiscountsGet200Response]
 
   # uncomment below to test the operation
@@ -36,11 +36,11 @@ test_that("BillingProfilesGet", {
   # tests for BillingProfilesGet
   # base path: https://api.pinterest.com/v5
   # Get billing profiles
-  # Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param is_active character Return active billing profiles, if false return all billing profiles.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [BillingProfilesGet200Response]
 
   # uncomment below to test the operation
@@ -92,7 +92,7 @@ test_that("SsioInsertionOrdersStatusGetByAdAccount", {
   # Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @return [SsioInsertionOrdersStatusGetByAdAccount200Response]
 
   # uncomment below to test the operation
@@ -119,7 +119,7 @@ test_that("SsioOrderLinesGetByAdAccount", {
   # Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param pin_order_id character The pin order id associated with the ssio insertino order (optional)
   # @return [SsioOrderLinesGetByAdAccount200Response]
 

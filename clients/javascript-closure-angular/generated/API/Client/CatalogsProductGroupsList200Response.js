@@ -6,7 +6,7 @@ goog.provide('API.Client.catalogs_product_groups_list_200_response');
 API.Client.CatalogsProductGroupsList200Response = function() {}
 
 /**
- * @type {!Array<!API.Client.catalogs_product_groups_list_200_response_allOf_items_inner>}
+ * @type {!Array<!API.Client.CatalogsVerticalProductGroup>}
  * @export
  */
 API.Client.CatalogsProductGroupsList200Response.prototype.items;

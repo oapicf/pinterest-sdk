@@ -13,7 +13,7 @@ package org.openapitools.server.model
  * @param description  for example: ''null''
 */
 final case class SummaryPin (
-  media: Option[SummaryPinMedia] = None,
+  media: Option[PinMedia] = None,
   altText: Option[String] = None,
   link: Option[String] = None,
   title: Option[String] = None,

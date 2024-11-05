@@ -58,7 +58,7 @@ const board_sections/delete = ({ boardUnderscoreid, sectionUnderscoreid, adUnder
 * boardUnderscoreid String Unique identifier of a board.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * returns board_sections_list_200_response
 * */
 const board_sections/list = ({ boardUnderscoreid, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
@@ -86,7 +86,7 @@ const board_sections/list = ({ boardUnderscoreid, adUnderscoreaccountUnderscorei
 * sectionUnderscoreid String Unique identifier of a board section.
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * returns boards_list_pins_200_response
 * */
 const board_sections/list_pins = ({ boardUnderscoreid, sectionUnderscoreid, adUnderscoreaccountUnderscoreid, bookmark, pageUnderscoresize }) => new Promise(
@@ -209,7 +209,7 @@ const boards/get = ({ boardUnderscoreid, adUnderscoreaccountUnderscoreid }) => n
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * privacy String Privacy setting for a board. (optional)
 * returns boards_list_200_response
 * */
@@ -236,7 +236,7 @@ const boards/list = ({ adUnderscoreaccountUnderscoreid, bookmark, pageUnderscore
 *
 * boardUnderscoreid String Unique identifier of a board.
 * bookmark String Cursor used to fetch the next page of items (optional)
-* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+* pageUnderscoresize Integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
 * creativeUnderscoretypes List Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account. (optional)
 * pinUnderscoremetrics Boolean Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)

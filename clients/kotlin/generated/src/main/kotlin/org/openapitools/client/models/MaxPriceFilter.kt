@@ -32,5 +32,8 @@ data class MaxPriceFilter (
     @Json(name = "MAX_PRICE")
     val MAX_PRICE: CatalogsProductGroupPricingCriteria
 
-)
+) {
+
+
+}
 

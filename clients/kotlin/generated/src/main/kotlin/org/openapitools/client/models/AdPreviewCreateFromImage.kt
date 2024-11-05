@@ -37,5 +37,8 @@ data class AdPreviewCreateFromImage (
     @Json(name = "title")
     val title: kotlin.String
 
-)
+) {
+
+
+}
 

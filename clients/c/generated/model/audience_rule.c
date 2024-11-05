@@ -5,13 +5,13 @@
 
 
 char* audience_rule_objective_type_ToString(pinterest_rest_api_audience_rule__e objective_type) {
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
     return objective_typeArray[objective_type - 1];
 }
 
 pinterest_rest_api_audience_rule__e audience_rule_objective_type_FromString(char* objective_type) {
     int stringToReturn = 0;
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
     size_t sizeofArray = sizeof(objective_typeArray) / sizeof(objective_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(objective_type, objective_typeArray[stringToReturn]) == 0) {

@@ -55,7 +55,7 @@ data class SSIOAccountItem(
     @field:Valid
     @Schema(example = "null", description = "Address information that is associated with this account.")
     @get:JsonProperty("addresses") val addresses: kotlin.collections.List<SSIOAccountAddress>? = null
-) {
+    ) {
 
 }
 

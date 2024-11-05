@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsFeedsCreateRequest;
 import org.openapitools.server.api.model.CatalogsFeedCredentials;
 import org.openapitools.server.api.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.server.api.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.server.api.model.CatalogsFormat;
 import org.openapitools.server.api.model.CatalogsHotelFeedsCreateRequest;
 import org.openapitools.server.api.model.CatalogsRetailFeedsCreateRequest;
+import org.openapitools.server.api.model.CatalogsStatus;
 import org.openapitools.server.api.model.CatalogsType;
 import org.openapitools.server.api.model.Country;
 import org.openapitools.server.api.model.NullableCurrency;
@@ -32,13 +34,14 @@ public class CatalogsVerticalFeedsCreateRequest   {
   private CatalogsType catalogType;
   private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
+  private CatalogsStatus status;
   private String catalogId;
 
   public CatalogsVerticalFeedsCreateRequest () {
 
   }
 
-  public CatalogsVerticalFeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsType catalogType, Country defaultCountry, ProductAvailabilityType defaultAvailability, String catalogId) {
+  public CatalogsVerticalFeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsType catalogType, Country defaultCountry, ProductAvailabilityType defaultAvailability, CatalogsStatus status, String catalogId) {
     this.defaultCurrency = defaultCurrency;
     this.name = name;
     this.format = format;
@@ -49,6 +52,7 @@ public class CatalogsVerticalFeedsCreateRequest   {
     this.catalogType = catalogType;
     this.defaultCountry = defaultCountry;
     this.defaultAvailability = defaultAvailability;
+    this.status = status;
     this.catalogId = catalogId;
   }
 
@@ -143,6 +147,15 @@ public class CatalogsVerticalFeedsCreateRequest   {
   }
 
     
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
+    
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;
@@ -171,12 +184,13 @@ public class CatalogsVerticalFeedsCreateRequest   {
         Objects.equals(catalogType, catalogsVerticalFeedsCreateRequest.catalogType) &&
         Objects.equals(defaultCountry, catalogsVerticalFeedsCreateRequest.defaultCountry) &&
         Objects.equals(defaultAvailability, catalogsVerticalFeedsCreateRequest.defaultAvailability) &&
+        Objects.equals(status, catalogsVerticalFeedsCreateRequest.status) &&
         Objects.equals(catalogId, catalogsVerticalFeedsCreateRequest.catalogId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, catalogId);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, catalogType, defaultCountry, defaultAvailability, status, catalogId);
   }
 
   @Override
@@ -194,6 +208,7 @@ public class CatalogsVerticalFeedsCreateRequest   {
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();

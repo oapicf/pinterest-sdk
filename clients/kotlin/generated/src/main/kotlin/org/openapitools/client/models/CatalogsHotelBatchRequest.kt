@@ -16,9 +16,8 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.CatalogsHotelBatchItem
-import org.openapitools.client.models.CatalogsType
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
-import org.openapitools.client.models.Language
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -37,13 +36,13 @@ import com.squareup.moshi.JsonClass
 data class CatalogsHotelBatchRequest (
 
     @Json(name = "catalog_type")
-    val catalogType: CatalogsType,
+    val catalogType: CatalogsHotelBatchRequest.CatalogType,
 
     @Json(name = "country")
     val country: Country,
 
     @Json(name = "language")
-    val language: Language,
+    val language: CatalogsItemsRequestLanguage,
 
     /* Array with catalogs item operations */
     @Json(name = "items")
@@ -53,5 +52,17 @@ data class CatalogsHotelBatchRequest (
     @Json(name = "catalog_id")
     val catalogId: kotlin.String? = null
 
-)
+) {
+
+    /**
+     * 
+     *
+     * Values: HOTEL
+     */
+    @JsonClass(generateAdapter = false)
+    enum class CatalogType(val value: kotlin.String) {
+        @Json(name = "HOTEL") HOTEL("HOTEL");
+    }
+
+}
 

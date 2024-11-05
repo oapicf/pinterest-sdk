@@ -31,8 +31,7 @@ ConversionTagResponse <- R6::R6Class(
     `status` = NULL,
     `version` = NULL,
     `configs` = NULL,
-    #' Initialize a new ConversionTagResponse class.
-    #'
+
     #' @description
     #' Initialize a new ConversionTagResponse class.
     #'
@@ -46,7 +45,6 @@ ConversionTagResponse <- R6::R6Class(
     #' @param version Version number.
     #' @param configs configs
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`ad_account_id` = NULL, `code_snippet` = NULL, `enhanced_match_status` = NULL, `id` = NULL, `last_fired_time_ms` = NULL, `name` = NULL, `status` = NULL, `version` = NULL, `configs` = NULL, ...) {
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
@@ -100,13 +98,11 @@ ConversionTagResponse <- R6::R6Class(
         self$`configs` <- `configs`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionTagResponse in JSON format
-    #' @export
     toJSON = function() {
       ConversionTagResponseObject <- list()
       if (!is.null(self$`ad_account_id`)) {
@@ -147,14 +143,12 @@ ConversionTagResponse <- R6::R6Class(
       }
       ConversionTagResponseObject
     },
-    #' Deserialize JSON string into an instance of ConversionTagResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionTagResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionTagResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_account_id`)) {
@@ -192,13 +186,11 @@ ConversionTagResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionTagResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_account_id`)) {
@@ -277,14 +269,12 @@ ConversionTagResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ConversionTagResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionTagResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionTagResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
@@ -298,53 +288,42 @@ ConversionTagResponse <- R6::R6Class(
       self$`configs` <- ConversionTagConfigs$new()$fromJSON(jsonlite::toJSON(this_object$`configs`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to ConversionTagResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to ConversionTagResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ConversionTagResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

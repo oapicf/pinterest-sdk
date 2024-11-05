@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * ConversionEventsDataInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInner   {
   @JsonProperty("event_name")
   private String eventName;
@@ -82,11 +82,11 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
-   * The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
+  /**
+   * <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
    * @return eventName
-  **/
-  @ApiModelProperty(example = "checkout", required = true, value = "The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>")
+   */
+  @ApiModelProperty(example = "checkout", required = true, value = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ")
   public String getEventName() {
     return eventName;
   }
@@ -100,11 +100,11 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
-   * The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
+  /**
+   * <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
    * @return actionSource
-  **/
-  @ApiModelProperty(example = "app_ios", required = true, value = "The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>")
+   */
+  @ApiModelProperty(example = "app_ios", required = true, value = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ")
   public String getActionSource() {
     return actionSource;
   }
@@ -118,10 +118,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * The time when the event happened. Unix timestamp in seconds.
    * @return eventTime
-  **/
+   */
   @ApiModelProperty(example = "1451431341", required = true, value = "The time when the event happened. Unix timestamp in seconds.")
   public Long getEventTime() {
     return eventTime;
@@ -136,10 +136,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
    * @return eventId
-  **/
+   */
   @ApiModelProperty(example = "eventId0001", required = true, value = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.")
   public String getEventId() {
     return eventId;
@@ -154,10 +154,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * URL of the web conversion event.
    * @return eventSourceUrl
-  **/
+   */
   @ApiModelProperty(example = "https://www.my-clothing-shop.org/", value = "URL of the web conversion event.")
   public String getEventSourceUrl() {
     return eventSourceUrl;
@@ -172,10 +172,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
    * @return optOut
-  **/
+   */
   @ApiModelProperty(example = "false", value = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.")
   public Boolean getOptOut() {
     return optOut;
@@ -190,10 +190,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
    * @return partnerName
-  **/
+   */
   @ApiModelProperty(example = "ss-partnername", value = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’")
   public String getPartnerName() {
     return partnerName;
@@ -208,10 +208,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Get userData
    * @return userData
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public ConversionEventsUserData getUserData() {
     return userData;
@@ -226,10 +226,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Get customData
    * @return customData
-  **/
+   */
   @ApiModelProperty(value = "")
   public ConversionEventsDataInnerCustomData getCustomData() {
     return customData;
@@ -244,10 +244,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * The app store app ID.
    * @return appId
-  **/
+   */
   @ApiModelProperty(example = "429047995", value = "The app store app ID.")
   public String getAppId() {
     return appId;
@@ -262,10 +262,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Name of the app.
    * @return appName
-  **/
+   */
   @ApiModelProperty(example = "Pinterest", value = "Name of the app.")
   public String getAppName() {
     return appName;
@@ -280,10 +280,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Version of the app.
    * @return appVersion
-  **/
+   */
   @ApiModelProperty(example = "7.9", value = "Version of the app.")
   public String getAppVersion() {
     return appVersion;
@@ -298,10 +298,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Brand of the user device.
    * @return deviceBrand
-  **/
+   */
   @ApiModelProperty(example = "Apple", value = "Brand of the user device.")
   public String getDeviceBrand() {
     return deviceBrand;
@@ -316,10 +316,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * User device's mobile carrier.
    * @return deviceCarrier
-  **/
+   */
   @ApiModelProperty(example = "T-Mobile", value = "User device's mobile carrier.")
   public String getDeviceCarrier() {
     return deviceCarrier;
@@ -334,10 +334,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Model of the user device.
    * @return deviceModel
-  **/
+   */
   @ApiModelProperty(example = "iPhone X", value = "Model of the user device.")
   public String getDeviceModel() {
     return deviceModel;
@@ -352,10 +352,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Type of the user device.
    * @return deviceType
-  **/
+   */
   @ApiModelProperty(example = "iPhone", value = "Type of the user device.")
   public String getDeviceType() {
     return deviceType;
@@ -370,10 +370,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Version of the device operating system.
    * @return osVersion
-  **/
+   */
   @ApiModelProperty(example = "12.1.4", value = "Version of the device operating system.")
   public String getOsVersion() {
     return osVersion;
@@ -388,10 +388,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Whether the event occurred when the user device was connected to wifi.
    * @return wifi
-  **/
+   */
   @ApiModelProperty(example = "false", value = "Whether the event occurred when the user device was connected to wifi.")
   public Boolean getWifi() {
     return wifi;
@@ -406,10 +406,10 @@ public class ConversionEventsDataInner   {
     return this;
   }
 
-   /**
+  /**
    * Two-character ISO-639-1 language code indicating the user's language.
    * @return language
-  **/
+   */
   @ApiModelProperty(example = "en", value = "Two-character ISO-639-1 language code indicating the user's language.")
   public String getLanguage() {
     return language;

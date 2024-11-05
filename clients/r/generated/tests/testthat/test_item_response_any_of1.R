@@ -35,3 +35,11 @@ test_that("hotel_id", {
   # uncomment below to test the property
   #expect_equal(model.instance$`hotel_id`, "EXPECTED_RESULT")
 })
+
+test_that("creative_assets_id", {
+  # tests for the property `creative_assets_id` (character)
+  # The catalog creative assets id in the merchant namespace
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`creative_assets_id`, "EXPECTED_RESULT")
+})

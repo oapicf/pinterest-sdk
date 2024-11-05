@@ -8,16 +8,22 @@
     #{ 'catalog_type' => binary(),
        'name' => binary(),
        'description' => binary(),
-       'filters' => openapi_catalogs_hotel_product_group_filters:openapi_catalogs_hotel_product_group_filters()
+       'filters' => openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters(),
+       'country' => openapi_country:openapi_country(),
+       'locale' => openapi_catalogs_locale:openapi_catalogs_locale()
      }.
 
 encode(#{ 'catalog_type' := CatalogType,
           'name' := Name,
           'description' := Description,
-          'filters' := Filters
+          'filters' := Filters,
+          'country' := Country,
+          'locale' := Locale
         }) ->
     #{ 'catalog_type' => CatalogType,
        'name' => Name,
        'description' => Description,
-       'filters' => Filters
+       'filters' => Filters,
+       'country' => Country,
+       'locale' => Locale
      }.

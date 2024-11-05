@@ -37,5 +37,8 @@ data class KeywordMetrics (
     @Json(name = "keyword_query_volume")
     val keywordQueryVolume: kotlin.String? = null
 
-)
+) {
+
+
+}
 

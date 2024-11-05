@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.prokarma.pkmst.model.CatalogsHotelBatchItem;
+import com.prokarma.pkmst.model.CatalogsCreativeAssetsBatchItem;
+import com.prokarma.pkmst.model.CatalogsCreativeAssetsBatchRequest;
 import com.prokarma.pkmst.model.CatalogsHotelBatchRequest;
+import com.prokarma.pkmst.model.CatalogsItemsRequestLanguage;
 import com.prokarma.pkmst.model.CatalogsRetailBatchRequest;
-import com.prokarma.pkmst.model.CatalogsType;
 import com.prokarma.pkmst.model.Country;
-import com.prokarma.pkmst.model.Language;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -28,45 +28,75 @@ import java.util.List;
  */
 @ApiModel(description = "A request object that can have multiple operations on a single batch")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsBatchRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelBatchRequest.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailBatchRequest.class, name = "RETAIL"),
 })
 
 public class CatalogsVerticalBatchRequest   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String text) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + text + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("country")
   private Country country;
 
   @JsonProperty("language")
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("items")
   
-  private List<CatalogsHotelBatchItem> items = new ArrayList<>();
+  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
   @JsonProperty("catalog_id")
   private String catalogId;
 
-  public CatalogsVerticalBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsVerticalBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
-   /**
+  /**
    * Get catalogType
    * @return catalogType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -75,10 +105,10 @@ public class CatalogsVerticalBatchRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get country
    * @return country
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Country getCountry() {
     return country;
@@ -88,30 +118,30 @@ public class CatalogsVerticalBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsVerticalBatchRequest language(Language language) {
+  public CatalogsVerticalBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
 
-   /**
+  /**
    * Get language
    * @return language
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
-  public CatalogsVerticalBatchRequest items(List<CatalogsHotelBatchItem> items) {
+  public CatalogsVerticalBatchRequest items(List<CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsVerticalBatchRequest addItemsItem(CatalogsHotelBatchItem itemsItem) {
+  public CatalogsVerticalBatchRequest addItemsItem(CatalogsCreativeAssetsBatchItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -119,16 +149,16 @@ public class CatalogsVerticalBatchRequest   {
     return this;
   }
 
-   /**
-   * Array with catalogs item operations
+  /**
+   * Array with creative assets item operations
    * @return items
-  **/
-  @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  public List<CatalogsHotelBatchItem> getItems() {
+   */
+  @ApiModelProperty(required = true, value = "Array with creative assets item operations")
+  public List<CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
   }
 
-  public void setItems(List<CatalogsHotelBatchItem> items) {
+  public void setItems(List<CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
   }
 
@@ -137,11 +167,11 @@ public class CatalogsVerticalBatchRequest   {
     return this;
   }
 
-   /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
    * @return catalogId
-  **/
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+   */
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
   public String getCatalogId() {
     return catalogId;
   }

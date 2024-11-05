@@ -13,7 +13,7 @@ import CatalogsItemsCreateBatchRequest._
 
 case class CatalogsItemsCreateBatchRequest (
   country: Country,
-language: Language,
+language: CatalogsItemsRequestLanguage,
 operation: BatchOperation,
 /* Array with catalogs items */
   items: List[ItemCreateBatchRecord])

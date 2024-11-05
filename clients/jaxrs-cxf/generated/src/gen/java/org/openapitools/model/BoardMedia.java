@@ -30,7 +30,7 @@ public class BoardMedia  {
  /**
    * Board pin thumbnail urls.
   **/
-  private List<String> pinThumbnailUrls;
+  private List<String> pinThumbnailUrls = new ArrayList<>();
  /**
    * Board cover image.
    * @return imageCoverUrl

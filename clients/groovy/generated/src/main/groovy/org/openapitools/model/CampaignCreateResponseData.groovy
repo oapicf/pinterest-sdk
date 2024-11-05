@@ -4,10 +4,10 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.ObjectiveType;
+import org.openapitools.model.TrackingUrls;
 
 @Canonical
 class CampaignCreateResponseData {
@@ -24,19 +24,17 @@ class CampaignCreateResponseData {
     /* Order line ID that appears on the invoice. */
     String orderLineId
     
-    AdCommonTrackingUrls trackingUrls
+    TrackingUrls trackingUrls
     /* Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     Integer startTime
     /* Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     Integer endTime
-    
-    CampaignSummaryStatus summaryStatus
-    /* Determines if a campaign has flexible daily budgets setup. */
+    /* Determine if a campaign has flexible daily budgets setup. */
     Boolean isFlexibleDailyBudgets
     /* When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */
     Integer defaultAdGroupBudgetInMicroCurrency
     /* Specifies whether the campaign was created in the automated campaign flow */
-    Boolean isAutomatedCampaign = false
+    Boolean isAutomatedCampaign
     /* Campaign ID. */
     String id
     
@@ -49,4 +47,6 @@ class CampaignCreateResponseData {
     String type
     /* Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. */
     Boolean isCampaignBudgetOptimization
+    
+    CampaignSummaryStatus summaryStatus
 }

@@ -6,7 +6,7 @@ Protected Class UserAccountApi
 		  // List following boards
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
@@ -19,6 +19,9 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -34,6 +37,7 @@ Protected Class UserAccountApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -152,7 +156,7 @@ Protected Class UserAccountApi
 		  // Invokes UserAccountApiCallbackHandler.FollowUserUpdateCallback(UserSummary) on completion. 
 		  //
 		  // - POST /user_account/following/{username}
-		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -280,7 +284,7 @@ Protected Class UserAccountApi
 		  // List followers
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.FollowersListCallback(FollowersList200Response) on completion. 
 		  //
@@ -291,6 +295,9 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -302,6 +309,7 @@ Protected Class UserAccountApi
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -424,10 +432,14 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  
 		  
 		  
 		  
@@ -817,12 +829,6 @@ Protected Class UserAccountApi
 		      Return "ADS_VIDEO"
 		    Case Pin_formatEnum_UserAccountAnalytics.AdsIdea
 		      Return "ADS_IDEA"
-		    Case Pin_formatEnum_UserAccountAnalytics.Product
-		      Return "PRODUCT"
-		    Case Pin_formatEnum_UserAccountAnalytics.Regular
-		      Return "REGULAR"
-		    Case Pin_formatEnum_UserAccountAnalytics.Video
-		      Return "VIDEO"
 		    
 		  End Select
 		  Return ""
@@ -949,6 +955,9 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -997,6 +1006,7 @@ Protected Class UserAccountApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -1157,12 +1167,6 @@ Protected Class UserAccountApi
 		      Return "ADS_VIDEO"
 		    Case Pin_formatEnum_UserAccountAnalyticsTopPins.AdsIdea
 		      Return "ADS_IDEA"
-		    Case Pin_formatEnum_UserAccountAnalyticsTopPins.Product
-		      Return "PRODUCT"
-		    Case Pin_formatEnum_UserAccountAnalyticsTopPins.Regular
-		      Return "REGULAR"
-		    Case Pin_formatEnum_UserAccountAnalyticsTopPins.Video
-		      Return "VIDEO"
 		    
 		  End Select
 		  Return ""
@@ -1270,6 +1274,9 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1318,6 +1325,7 @@ Protected Class UserAccountApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -1486,12 +1494,6 @@ Protected Class UserAccountApi
 		      Return "ADS_VIDEO"
 		    Case Pin_formatEnum_UserAccountAnalyticsTopVideoPins.AdsIdea
 		      Return "ADS_IDEA"
-		    Case Pin_formatEnum_UserAccountAnalyticsTopVideoPins.Product
-		      Return "PRODUCT"
-		    Case Pin_formatEnum_UserAccountAnalyticsTopVideoPins.Regular
-		      Return "REGULAR"
-		    Case Pin_formatEnum_UserAccountAnalyticsTopVideoPins.Video
-		      Return "VIDEO"
 		    
 		  End Select
 		  Return ""
@@ -1579,7 +1581,7 @@ Protected Class UserAccountApi
 		  // - 
 		  // - parameter username: (path) A valid username 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.UserAccountFollowedInterestsCallback(UserAccountFollowedInterests200Response) on completion. 
 		  //
@@ -1590,6 +1592,9 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1601,6 +1606,7 @@ Protected Class UserAccountApi
 		  If pageSize <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("page_size") + "=" + EncodeURLComponent(pageSize.ToString)
 		  
 
+		  
 		  
 		  
 
@@ -1721,12 +1727,15 @@ Protected Class UserAccountApi
 		  // Invokes UserAccountApiCallbackHandler.UserAccountGetCallback(Account) on completion. 
 		  //
 		  // - GET /user_account
-		  // - Get account information for the "operation user_account" - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+		  // - Get account information for the "operation user_account" - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1736,6 +1745,7 @@ Protected Class UserAccountApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -1849,7 +1859,7 @@ Protected Class UserAccountApi
 		  // List following
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter feedType: (query) Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to Sample)
 		  // - parameter explicitFollowing: (query) Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
@@ -1863,6 +1873,9 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -1880,6 +1893,7 @@ Protected Class UserAccountApi
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
+		  
 		  
 		  
 
@@ -1993,7 +2007,7 @@ Protected Class UserAccountApi
 		  // Get user websites
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.UserWebsitesGetCallback(UserWebsitesGet200Response) on completion. 
 		  //
@@ -2123,11 +2137,12 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h0
-		Sub VerifyWebsiteUpdate(, userWebsiteVerifyRequest As OpenAPIClient.Models.UserWebsiteVerifyRequest)
+		Sub VerifyWebsiteUpdate(, userWebsiteVerifyRequest As OpenAPIClient.Models.UserWebsiteVerifyRequest, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation verify_website/update
 		  // Verify website
 		  // - 
 		  // - parameter userWebsiteVerifyRequest: (body) Verify a website. 
+		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.VerifyWebsiteUpdateCallback(UserWebsiteSummary) on completion. 
 		  //
@@ -2143,7 +2158,10 @@ Protected Class UserAccountApi
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(userWebsiteVerifyRequest), "application/json")
+		  Dim localVarQueryParams As String = "?"
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
+
 		  
 		  
 
@@ -2156,7 +2174,7 @@ Protected Class UserAccountApi
 		  AddHandler localVarHTTPSocket.Error, addressof Me.VerifyWebsiteUpdate_error
 		  
 		  
-		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath + localVarQueryParams)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
 		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
 			Raise localVarException
@@ -2252,10 +2270,11 @@ Protected Class UserAccountApi
 
 
 	#tag Method, Flags = &h0
-		Sub WebsiteVerificationGet()
+		Sub WebsiteVerificationGet(, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation website_verification/get
 		  // Get user verification code for website claiming
 		  // - 
+		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  //
 		  // Invokes UserAccountApiCallbackHandler.WebsiteVerificationGetCallback(UserWebsiteVerificationCode) on completion. 
 		  //
@@ -2266,11 +2285,18 @@ Protected Class UserAccountApi
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
+		  Dim localVarQueryParams As String = "?"
+		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
+		  
+
 		  
 		  
 		  
@@ -2284,7 +2310,7 @@ Protected Class UserAccountApi
 		  AddHandler localVarHTTPSocket.Error, addressof Me.WebsiteVerificationGet_error
 		  
 		  
-		  localVarHTTPSocket.SendRequest("GET", Me.BasePath + localVarPath)
+		  localVarHTTPSocket.SendRequest("GET", Me.BasePath + localVarPath + localVarQueryParams)
 		  if localVarHTTPSocket.LastErrorCode <> 0 then
 		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
 			Raise localVarException
@@ -2473,9 +2499,6 @@ Protected Class UserAccountApi
         AdsProduct
         AdsVideo
         AdsIdea
-        Product
-        Regular
-        Video
 		
 	#tag EndEnum
 
@@ -2556,9 +2579,6 @@ Protected Class UserAccountApi
         AdsProduct
         AdsVideo
         AdsIdea
-        Product
-        Regular
-        Video
 		
 	#tag EndEnum
 
@@ -2639,9 +2659,6 @@ Protected Class UserAccountApi
         AdsProduct
         AdsVideo
         AdsIdea
-        Product
-        Regular
-        Video
 		
 	#tag EndEnum
 

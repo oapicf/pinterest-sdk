@@ -74,7 +74,8 @@ class ResourcesApiTest : ShouldSpec() {
             //val clientId : kotlin.String = 1094834 // kotlin.String | Client ID.
             //val oauthSignature : kotlin.String = 8209f // kotlin.String | Oauth signature
             //val timestamp : kotlin.String = 1618338184277 // kotlin.String | Timestamp
-            //val result : kotlin.collections.List<kotlin.Any> = apiInstance.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp)
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val result : kotlin.collections.List<kotlin.Any> = apiInstance.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
             //result shouldBe ("TODO")
         }
 

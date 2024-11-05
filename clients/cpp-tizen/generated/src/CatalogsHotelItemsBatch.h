@@ -56,18 +56,18 @@ public:
 	/*! \brief Set Id of the catalogs items batch
 	 */
 	void setBatchId(std::string  batch_id);
-	/*! \brief Get Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Get Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	std::string getCreatedTime();
 
-	/*! \brief Set Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Set Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	void setCreatedTime(std::string  created_time);
-	/*! \brief Get Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Get Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	std::string getCompletedTime();
 
-	/*! \brief Set Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+	/*! \brief Set Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	void setCompletedTime(std::string  completed_time);
 	/*! \brief Get 

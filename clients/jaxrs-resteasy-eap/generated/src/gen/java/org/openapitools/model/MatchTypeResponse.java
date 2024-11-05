@@ -11,6 +11,5 @@ public enum MatchTypeResponse {
   PHRASE,
   EXACT,
   EXACT_NEGATIVE,
-  PHRASE_NEGATIVE,
-  NULL;
+  PHRASE_NEGATIVE;
 }

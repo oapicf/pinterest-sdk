@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.IntegrationLogClientError
@@ -82,27 +83,43 @@ data class IntegrationLog(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("request") val request: IntegrationLogClientRequest? = null
-) {
+    ) {
 
     /**
     * Log event type
     * Values: APP,API
     */
-    enum class EventType(val value: kotlin.String) {
+    enum class EventType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("APP") APP("APP"),
-        @JsonProperty("API") API("API")
+        APP("APP"),
+        API("API");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): EventType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * Log level type
     * Values: INFO,WARN,ERROR
     */
-    enum class LogLevel(val value: kotlin.String) {
+    enum class LogLevel(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("INFO") INFO("INFO"),
-        @JsonProperty("WARN") WARN("WARN"),
-        @JsonProperty("ERROR") ERROR("ERROR")
+        INFO("INFO"),
+        WARN("WARN"),
+        ERROR("ERROR");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): LogLevel {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

@@ -24,4 +24,5 @@ public enum AdsAnalyticsTargetingType: String, Codable, CaseIterable {
     case geo = "GEO"
     case ageBucket = "AGE_BUCKET"
     case region = "REGION"
+    case ageBucketAndGender = "AGE_BUCKET_AND_GENDER"
 }

@@ -15,27 +15,33 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsProductMetadata
+import org.openapitools.client.models.CatalogsCreativeAssetsProduct
+import org.openapitools.client.models.CatalogsCreativeAssetsProductMetadata
+import org.openapitools.client.models.CatalogsHotelProduct
+import org.openapitools.client.models.CatalogsRetailProduct
+import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Pin
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * 
+ * Catalogs product for all verticals
  *
+ * @param catalogType 
  * @param metadata 
  * @param pin 
  */
 
 
-data class CatalogsProduct (
+interface CatalogsProduct {
 
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsType
     @Json(name = "metadata")
-    val metadata: CatalogsProductMetadata,
-
+    val metadata: CatalogsCreativeAssetsProductMetadata
     @Json(name = "pin")
     val pin: Pin?
 
-)
+}
 

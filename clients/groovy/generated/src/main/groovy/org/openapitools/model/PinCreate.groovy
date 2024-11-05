@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
+import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.openapitools.model.SummaryPinMedia;
 
 @Canonical
 class PinCreate {
@@ -31,7 +31,7 @@ class PinCreate {
     
     BoardOwner boardOwner
     
-    SummaryPinMedia media
+    PinMedia media
     
     PinMediaSource mediaSource
     /* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */

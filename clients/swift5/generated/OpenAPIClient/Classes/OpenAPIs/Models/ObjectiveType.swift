@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Campaign objective type. If set as one of [\&quot;AWARENESS\&quot;, \&quot;CONSIDERATION\&quot;, \&quot;WEB_CONVERSION\&quot;, \&quot;CATALOG_SALES\&quot;] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\&quot;WEB_SESSIONS\&quot;] in BETA. For update, only draft campaigns may update objective type. */
+/** Campaign objective type. If set as one of [\&quot;AWARENESS\&quot;, \&quot;CONSIDERATION\&quot;, \&quot;WEB_CONVERSION\&quot;, \&quot;CATALOG_SALES\&quot;, \&quot;VIDEO_COMPLETION\&quot;] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\&quot;WEB_SESSIONS\&quot;] is DEPRECATED. For update, only draft campaigns may update objective type. */
 public enum ObjectiveType: String, Codable, CaseIterable {
     case awareness = "AWARENESS"
     case consideration = "CONSIDERATION"
@@ -18,4 +18,5 @@ public enum ObjectiveType: String, Codable, CaseIterable {
     case webConversion = "WEB_CONVERSION"
     case catalogSales = "CATALOG_SALES"
     case webSessions = "WEB_SESSIONS"
+    case videoCompletion = "VIDEO_COMPLETION"
 }

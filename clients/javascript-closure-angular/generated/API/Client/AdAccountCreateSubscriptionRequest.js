@@ -33,3 +33,9 @@ API.Client.AdAccountCreateSubscriptionRequest.prototype.partnerAccessToken;
  */
 API.Client.AdAccountCreateSubscriptionRequest.prototype.partnerRefreshToken;
 
+/**
+ * @type {!API.Client.AdAccountCreateSubscriptionRequest_partner_metadata}
+ * @export
+ */
+API.Client.AdAccountCreateSubscriptionRequest.prototype.partnerMetadata;
+

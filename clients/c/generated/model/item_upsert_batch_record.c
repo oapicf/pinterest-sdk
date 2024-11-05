@@ -7,7 +7,7 @@
 
 item_upsert_batch_record_t *item_upsert_batch_record_create(
     char *item_id,
-    item_attributes_t *attributes
+    item_attributes_request_t *attributes
     ) {
     item_upsert_batch_record_t *item_upsert_batch_record_local_var = malloc(sizeof(item_upsert_batch_record_t));
     if (!item_upsert_batch_record_local_var) {
@@ -30,7 +30,7 @@ void item_upsert_batch_record_free(item_upsert_batch_record_t *item_upsert_batch
         item_upsert_batch_record->item_id = NULL;
     }
     if (item_upsert_batch_record->attributes) {
-        item_attributes_free(item_upsert_batch_record->attributes);
+        item_attributes_request_free(item_upsert_batch_record->attributes);
         item_upsert_batch_record->attributes = NULL;
     }
     free(item_upsert_batch_record);
@@ -49,7 +49,7 @@ cJSON *item_upsert_batch_record_convertToJSON(item_upsert_batch_record_t *item_u
 
     // item_upsert_batch_record->attributes
     if(item_upsert_batch_record->attributes) {
-    cJSON *attributes_local_JSON = item_attributes_convertToJSON(item_upsert_batch_record->attributes);
+    cJSON *attributes_local_JSON = item_attributes_request_convertToJSON(item_upsert_batch_record->attributes);
     if(attributes_local_JSON == NULL) {
     goto fail; //model
     }
@@ -72,7 +72,7 @@ item_upsert_batch_record_t *item_upsert_batch_record_parseFromJSON(cJSON *item_u
     item_upsert_batch_record_t *item_upsert_batch_record_local_var = NULL;
 
     // define the local variable for item_upsert_batch_record->attributes
-    item_attributes_t *attributes_local_nonprim = NULL;
+    item_attributes_request_t *attributes_local_nonprim = NULL;
 
     // item_upsert_batch_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(item_upsert_batch_recordJSON, "item_id");
@@ -86,7 +86,7 @@ item_upsert_batch_record_t *item_upsert_batch_record_parseFromJSON(cJSON *item_u
     // item_upsert_batch_record->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_upsert_batch_recordJSON, "attributes");
     if (attributes) { 
-    attributes_local_nonprim = item_attributes_parseFromJSON(attributes); //nonprimitive
+    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
     }
 
 
@@ -98,7 +98,7 @@ item_upsert_batch_record_t *item_upsert_batch_record_parseFromJSON(cJSON *item_u
     return item_upsert_batch_record_local_var;
 end:
     if (attributes_local_nonprim) {
-        item_attributes_free(attributes_local_nonprim);
+        item_attributes_request_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
     }
     return NULL;

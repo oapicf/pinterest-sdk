@@ -60,18 +60,18 @@ public:
 	/*! \brief Set Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
 	 */
 	void setAdult(bool  adult);
-	/*! \brief Get The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+	/*! \brief Get The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 	 */
 	std::string getAgeGroup();
 
-	/*! \brief Set The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+	/*! \brief Set The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 	 */
 	void setAgeGroup(std::string  age_group);
-	/*! \brief Get The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+	/*! \brief Get The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
 	 */
 	std::string getAvailability();
 
-	/*! \brief Set The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+	/*! \brief Set The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
 	 */
 	void setAvailability(std::string  availability);
 	/*! \brief Get Average reviews for the item. Can be a number from 1-5.
@@ -165,11 +165,11 @@ public:
 	/*! \brief Set The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
 	 */
 	void setFreeShippingLimit(std::string  free_shipping_limit);
-	/*! \brief Get The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+	/*! \brief Get The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
 	 */
 	std::string getGender();
 
-	/*! \brief Set The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+	/*! \brief Set The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
 	 */
 	void setGender(std::string  gender);
 	/*! \brief Get The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
@@ -319,18 +319,18 @@ public:
 	/*! \brief Set The size of the product.
 	 */
 	void setSize(std::string  size);
-	/*! \brief Get Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+	/*! \brief Get Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
 	 */
 	std::string getSizeSystem();
 
-	/*! \brief Set Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+	/*! \brief Set Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
 	 */
 	void setSizeSystem(std::string  size_system);
-	/*! \brief Get Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+	/*! \brief Get Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
 	 */
 	std::string getSizeType();
 
-	/*! \brief Set Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+	/*! \brief Set Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
 	 */
 	void setSizeType(std::string  size_type);
 	/*! \brief Get Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
@@ -375,6 +375,13 @@ public:
 	/*! \brief Set <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
 	 */
 	void setImageLink(std::list <std::string> image_link);
+	/*! \brief Get <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+	 */
+	std::string getVideoLink();
+
+	/*! \brief Set <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+	 */
+	void setVideoLink(std::string  video_link);
 
 private:
 	std::string ad_link;
@@ -424,6 +431,7 @@ private:
 	std::list <std::string>variant_values;
 	std::list <std::string>additional_image_link;
 	std::list <std::string>image_link;
+	std::string video_link;
 	void __init();
 	void __cleanup();
 

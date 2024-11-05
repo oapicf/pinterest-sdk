@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BoardOwner;
+import org.openapitools.vertxweb.server.model.PinMedia;
 import org.openapitools.vertxweb.server.model.PinMediaSource;
-import org.openapitools.vertxweb.server.model.SummaryPinMedia;
 
 /**
  * Pin
@@ -25,7 +25,7 @@ public class PinCreate   {
   private String boardId;
   private String boardSectionId;
   private BoardOwner boardOwner;
-  private SummaryPinMedia media;
+  private PinMedia media;
   private PinMediaSource mediaSource;
   private String parentPinId;
   private String note;
@@ -34,7 +34,7 @@ public class PinCreate   {
 
   }
 
-  public PinCreate (String id, OffsetDateTime createdAt, String link, String title, String description, String dominantColor, String altText, String boardId, String boardSectionId, BoardOwner boardOwner, SummaryPinMedia media, PinMediaSource mediaSource, String parentPinId, String note) {
+  public PinCreate (String id, OffsetDateTime createdAt, String link, String title, String description, String dominantColor, String altText, String boardId, String boardSectionId, BoardOwner boardOwner, PinMedia media, PinMediaSource mediaSource, String parentPinId, String note) {
     this.id = id;
     this.createdAt = createdAt;
     this.link = link;
@@ -143,10 +143,10 @@ public class PinCreate   {
 
     
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
-  public void setMedia(SummaryPinMedia media) {
+  public void setMedia(PinMedia media) {
     this.media = media;
   }
 

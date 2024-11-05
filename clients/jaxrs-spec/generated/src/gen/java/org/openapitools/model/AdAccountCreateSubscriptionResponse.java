@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,12 +16,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountCreateSubscriptionResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateSubscriptionResponse   {
-  private @Valid String id;
-  private @Valid String cryptographicKey;
-  private @Valid String cryptographicAlgorithm;
-  private @Valid Integer createdTime;
+  private String id;
+  private String cryptographicKey;
+  private String cryptographicAlgorithm;
+  private Integer createdTime;
 
   /**
    * Subscription ID.
@@ -33,7 +34,7 @@ public class AdAccountCreateSubscriptionResponse   {
   
   @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 

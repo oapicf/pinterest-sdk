@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.LeadFormCommonPolicyLinksInner;
 import org.openapitools.vertxweb.server.model.LeadFormQuestion;
 import org.openapitools.vertxweb.server.model.LeadFormStatus;
 
@@ -20,7 +21,8 @@ public class LeadFormResponse   {
   private String completionMessage;
   private LeadFormStatus status;
   private String disclosureLanguage;
-  private List<LeadFormQuestion> questions;
+  private List<LeadFormQuestion> questions = new ArrayList<>();
+  private List<LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
   private String id;
   private String adAccountId;
   private Integer createdTime;
@@ -30,7 +32,7 @@ public class LeadFormResponse   {
 
   }
 
-  public LeadFormResponse (String name, String privacyPolicyLink, Boolean hasAcceptedTerms, String completionMessage, LeadFormStatus status, String disclosureLanguage, List<LeadFormQuestion> questions, String id, String adAccountId, Integer createdTime, Integer updatedTime) {
+  public LeadFormResponse (String name, String privacyPolicyLink, Boolean hasAcceptedTerms, String completionMessage, LeadFormStatus status, String disclosureLanguage, List<LeadFormQuestion> questions, List<LeadFormCommonPolicyLinksInner> policyLinks, String id, String adAccountId, Integer createdTime, Integer updatedTime) {
     this.name = name;
     this.privacyPolicyLink = privacyPolicyLink;
     this.hasAcceptedTerms = hasAcceptedTerms;
@@ -38,6 +40,7 @@ public class LeadFormResponse   {
     this.status = status;
     this.disclosureLanguage = disclosureLanguage;
     this.questions = questions;
+    this.policyLinks = policyLinks;
     this.id = id;
     this.adAccountId = adAccountId;
     this.createdTime = createdTime;
@@ -108,6 +111,15 @@ public class LeadFormResponse   {
   }
 
     
+  @JsonProperty("policy_links")
+  public List<LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+  public void setPolicyLinks(List<LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+  }
+
+    
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -160,6 +172,7 @@ public class LeadFormResponse   {
         Objects.equals(status, leadFormResponse.status) &&
         Objects.equals(disclosureLanguage, leadFormResponse.disclosureLanguage) &&
         Objects.equals(questions, leadFormResponse.questions) &&
+        Objects.equals(policyLinks, leadFormResponse.policyLinks) &&
         Objects.equals(id, leadFormResponse.id) &&
         Objects.equals(adAccountId, leadFormResponse.adAccountId) &&
         Objects.equals(createdTime, leadFormResponse.createdTime) &&
@@ -168,7 +181,7 @@ public class LeadFormResponse   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, id, adAccountId, createdTime, updatedTime);
+    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks, id, adAccountId, createdTime, updatedTime);
   }
 
   @Override
@@ -183,6 +196,7 @@ public class LeadFormResponse   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");

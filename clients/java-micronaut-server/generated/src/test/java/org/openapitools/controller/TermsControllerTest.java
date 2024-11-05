@@ -81,7 +81,7 @@ public class TermsControllerTest {
         // given
         String uri = UriTemplate.of("/terms/related").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@78f1c9f5");
         request.getParameters()
             .add("terms", Arrays.asList("example")); // The query format should be multi
 
@@ -127,7 +127,7 @@ public class TermsControllerTest {
         // given
         String uri = UriTemplate.of("/terms/suggested").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@61fdb541");
         request.getParameters()
             .add("term", "sports") // The query parameter format should be 
             .add("limit", String.valueOf(4)); // The query parameter format should be 

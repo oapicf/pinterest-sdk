@@ -68,15 +68,26 @@
       "default": null
     },
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the retail product group."
+    },
+    {
       "name": "feed_id",
-      "type": {
-        "type": "enum",
-        "name": "CatalogsRetailProductGroup_feedUnderscoreid",
-        "symbols": [
-          "null"
-        ]
-      },
-      "doc": ""
+      "type": "string",
+      "doc": "id of the catalogs feed belonging to this catalog product group"
+    },
+    {
+      "name": "country",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "locale",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
     }
   ]
 

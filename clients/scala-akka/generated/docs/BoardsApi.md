@@ -245,7 +245,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     
     val request = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
  **boardId** | **String**| Unique identifier of a board. |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
 
 ### Return type
 
@@ -338,7 +338,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     
     val request = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
  **sectionId** | **String**| Unique identifier of a board section. |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
 
 ### Return type
 
@@ -784,7 +784,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
     val privacy: String = privacy_example // String | Privacy setting for a board.
     
@@ -818,7 +818,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **privacy** | **String**| Privacy setting for a board. | [optional] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET]
 
 ### Return type
@@ -875,7 +875,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
     val creativeTypes: Seq[String] =  // Seq[String] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 
@@ -913,7 +913,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **String**| Unique identifier of a board. |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **creativeTypes** | [**Seq[String]**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
  **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional]

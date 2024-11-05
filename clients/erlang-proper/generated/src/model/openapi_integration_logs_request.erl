@@ -17,7 +17,7 @@ openapi_integration_logs_request() ->
     openapi_integration_logs_request([]).
 
 openapi_integration_logs_request(Fields) ->
-  Default = [ {'logs', list(openapi_integration_log:openapi_integration_log()) }
+  Default = [ {'logs', list(openapi_integration_log:openapi_integration_log(), 1, 250) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -47,5 +47,8 @@ data class CustomerListRequest (
     @Json(name = "exceptions")
     val exceptions: kotlin.Any? = null
 
-)
+) {
+
+
+}
 

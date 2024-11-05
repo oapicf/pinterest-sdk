@@ -28,7 +28,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @Controller
 public class ResourcesApiController implements ResourcesApi {
     private final ObjectMapper objectMapper;
@@ -114,6 +114,7 @@ public class ResourcesApiController implements ResourcesApi {
         @ApiParam(value = "Client ID.")  @RequestParam(value = "client_id", required = false) String clientId,
         @ApiParam(value = "Oauth signature")  @RequestParam(value = "oauth_signature", required = false) String oauthSignature,
         @ApiParam(value = "Timestamp")  @RequestParam(value = "timestamp", required = false) String timestamp,
+        @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 

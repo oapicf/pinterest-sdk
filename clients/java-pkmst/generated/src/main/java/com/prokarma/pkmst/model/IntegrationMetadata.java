@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = "Integration metadata")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationMetadata   {
   @JsonProperty("id")
   private String id;
@@ -65,10 +65,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getId() {
     return id;
@@ -83,10 +83,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get externalBusinessId
    * @return externalBusinessId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getExternalBusinessId() {
     return externalBusinessId;
@@ -101,10 +101,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedMerchantId
    * @return connectedMerchantId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getConnectedMerchantId() {
     return connectedMerchantId;
@@ -119,10 +119,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedUserId
    * @return connectedUserId
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public String getConnectedUserId() {
     return connectedUserId;
@@ -137,10 +137,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
-  **/
+   */
   @ApiModelProperty(readOnly = true, value = "")
   public String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
@@ -155,10 +155,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedLbaId
    * @return connectedLbaId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getConnectedLbaId() {
     return connectedLbaId;
@@ -173,10 +173,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get connectedTagId
    * @return connectedTagId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getConnectedTagId() {
     return connectedTagId;
@@ -191,10 +191,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerAccessTokenExpiry
    * @return partnerAccessTokenExpiry
-  **/
+   */
   @ApiModelProperty(value = "")
   public BigDecimal getPartnerAccessTokenExpiry() {
     return partnerAccessTokenExpiry;
@@ -209,10 +209,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerRefreshTokenExpiry
    * @return partnerRefreshTokenExpiry
-  **/
+   */
   @ApiModelProperty(value = "")
   public BigDecimal getPartnerRefreshTokenExpiry() {
     return partnerRefreshTokenExpiry;
@@ -227,10 +227,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get scopes
    * @return scopes
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getScopes() {
     return scopes;
@@ -245,10 +245,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get createdTimestamp
    * @return createdTimestamp
-  **/
+   */
   @ApiModelProperty(value = "")
   public BigDecimal getCreatedTimestamp() {
     return createdTimestamp;
@@ -263,10 +263,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get updatedTimestamp
    * @return updatedTimestamp
-  **/
+   */
   @ApiModelProperty(value = "")
   public BigDecimal getUpdatedTimestamp() {
     return updatedTimestamp;
@@ -281,10 +281,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get additionalId1
    * @return additionalId1
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAdditionalId1() {
     return additionalId1;
@@ -299,10 +299,10 @@ public class IntegrationMetadata   {
     return this;
   }
 
-   /**
+  /**
    * Get partnerMetadata
    * @return partnerMetadata
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getPartnerMetadata() {
     return partnerMetadata;

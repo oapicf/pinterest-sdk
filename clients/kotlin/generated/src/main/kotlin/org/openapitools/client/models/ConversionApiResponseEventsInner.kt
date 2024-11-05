@@ -54,5 +54,6 @@ data class ConversionApiResponseEventsInner (
         @Json(name = "failed") failed("failed"),
         @Json(name = "processed") processed("processed");
     }
+
 }
 

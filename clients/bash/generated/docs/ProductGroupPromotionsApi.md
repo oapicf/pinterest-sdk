@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
  **productGroupPromotionIds** | [**array[string]**](string.md) | List of Product group promotion Ids. | [optional] [default to null]
  **entityStatuses** | [**array[string]**](string.md) | Entity status | [optional] [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
  **adGroupId** | **string** | Ad group Id. | [optional] [default to null]
- **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
+ **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]
  **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
 by ID. Note that higher-value IDs are associated with more-recently added
 items. | [optional] [default to null]

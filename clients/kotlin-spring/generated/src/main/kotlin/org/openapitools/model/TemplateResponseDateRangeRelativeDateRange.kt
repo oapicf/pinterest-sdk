@@ -29,7 +29,7 @@ data class TemplateResponseDateRangeRelativeDateRange(
 
     @Schema(example = "7", description = "The end date of the date range")
     @get:JsonProperty("end_days_in_past") val endDaysInPast: java.math.BigDecimal? = null
-) {
+    ) {
 
 }
 

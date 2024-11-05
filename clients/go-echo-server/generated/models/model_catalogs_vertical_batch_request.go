@@ -1,17 +1,21 @@
 package models
 
+import (
+	"gopkg.in/validator.v2"
+)
+
 // CatalogsVerticalBatchRequest - A request object that can have multiple operations on a single batch
 type CatalogsVerticalBatchRequest struct {
 
-	CatalogType CatalogsType `json:"catalog_type"`
+	CatalogType string `json:"catalog_type"`
 
 	Country Country `json:"country"`
 
-	Language Language `json:"language"`
+	Language CatalogsItemsRequestLanguage `json:"language"`
 
-	// Array with catalogs item operations
-	Items []CatalogsHotelBatchItem `json:"items"`
+	// Array with creative assets item operations
+	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
 
-	// Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	CatalogId string `json:"catalog_id,omitempty"`
 }

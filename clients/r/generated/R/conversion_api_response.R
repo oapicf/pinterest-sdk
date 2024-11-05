@@ -19,8 +19,7 @@ ConversionApiResponse <- R6::R6Class(
     `num_events_received` = NULL,
     `num_events_processed` = NULL,
     `events` = NULL,
-    #' Initialize a new ConversionApiResponse class.
-    #'
+
     #' @description
     #' Initialize a new ConversionApiResponse class.
     #'
@@ -28,7 +27,6 @@ ConversionApiResponse <- R6::R6Class(
     #' @param num_events_processed Number of events that were successfully processed from the events.
     #' @param events Specific messages for each event received. The order will match the order in which the events were received in the request.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`num_events_received`, `num_events_processed`, `events`, ...) {
       if (!missing(`num_events_received`)) {
         if (!(is.numeric(`num_events_received`) && length(`num_events_received`) == 1)) {
@@ -48,13 +46,11 @@ ConversionApiResponse <- R6::R6Class(
         self$`events` <- `events`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionApiResponse in JSON format
-    #' @export
     toJSON = function() {
       ConversionApiResponseObject <- list()
       if (!is.null(self$`num_events_received`)) {
@@ -71,14 +67,12 @@ ConversionApiResponse <- R6::R6Class(
       }
       ConversionApiResponseObject
     },
-    #' Deserialize JSON string into an instance of ConversionApiResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionApiResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionApiResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`num_events_received`)) {
@@ -92,13 +86,11 @@ ConversionApiResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ConversionApiResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`num_events_received`)) {
@@ -129,14 +121,12 @@ ConversionApiResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ConversionApiResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ConversionApiResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of ConversionApiResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`num_events_received` <- this_object$`num_events_received`
@@ -144,13 +134,11 @@ ConversionApiResponse <- R6::R6Class(
       self$`events` <- ApiClient$new()$deserializeObj(this_object$`events`, "array[ConversionApiResponseEventsInner]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to ConversionApiResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to ConversionApiResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `num_events_received`
@@ -177,23 +165,19 @@ ConversionApiResponse <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for ConversionApiResponse: the required field `events` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ConversionApiResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `num_events_received` is null
       if (is.null(self$`num_events_received`)) {
@@ -212,13 +196,11 @@ ConversionApiResponse <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `num_events_received` is null
@@ -238,12 +220,9 @@ ConversionApiResponse <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

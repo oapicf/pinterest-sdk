@@ -21,13 +21,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("BulkDownloadRequest_campaign_filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequestCampaignFilter   {
-  private @Valid String startTime;
-  private @Valid String endTime;
-  private @Valid String name;
-  private @Valid List<CampaignSummaryStatus> campaignStatus;
-  private @Valid List<ObjectiveType> objectiveType;
+  private String startTime;
+  private String endTime;
+  private String name;
+  private @Valid List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
+  private @Valid List<ObjectiveType> objectiveType = new ArrayList<>();
 
   /**
    * Unix UTC timestamp.
@@ -40,7 +40,7 @@ public class BulkDownloadRequestCampaignFilter   {
   
   @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
   @JsonProperty("start_time")
- @Pattern(regexp="^\\d+$")  public String getStartTime() {
+   @Pattern(regexp="^\\d+$")public String getStartTime() {
     return startTime;
   }
 
@@ -60,7 +60,7 @@ public class BulkDownloadRequestCampaignFilter   {
   
   @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
   @JsonProperty("end_time")
- @Pattern(regexp="^\\d+$")  public String getEndTime() {
+   @Pattern(regexp="^\\d+$")public String getEndTime() {
     return endTime;
   }
 

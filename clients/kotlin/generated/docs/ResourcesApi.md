@@ -2,14 +2,14 @@
 
 All URIs are relative to *https://api.pinterest.com/v5*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**adAccountCountriesGet**](ResourcesApi.md#adAccountCountriesGet) | **GET** /resources/ad_account_countries | Get ad accounts countries
-[**deliveryMetricsGet**](ResourcesApi.md#deliveryMetricsGet) | **GET** /resources/delivery_metrics | Get available metrics&#39; definitions
-[**interestTargetingOptionsGet**](ResourcesApi.md#interestTargetingOptionsGet) | **GET** /resources/targeting/interests/{interest_id} | Get interest details
-[**leadFormQuestionsGet**](ResourcesApi.md#leadFormQuestionsGet) | **GET** /resources/lead_form_questions | Get lead form questions
-[**metricsReadyStateGet**](ResourcesApi.md#metricsReadyStateGet) | **GET** /resources/metrics_ready_state | Get metrics ready state
-[**targetingOptionsGet**](ResourcesApi.md#targetingOptionsGet) | **GET** /resources/targeting/{targeting_type} | Get targeting options
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**adAccountCountriesGet**](ResourcesApi.md#adAccountCountriesGet) | **GET** /resources/ad_account_countries | Get ad accounts countries |
+| [**deliveryMetricsGet**](ResourcesApi.md#deliveryMetricsGet) | **GET** /resources/delivery_metrics | Get available metrics&#39; definitions |
+| [**interestTargetingOptionsGet**](ResourcesApi.md#interestTargetingOptionsGet) | **GET** /resources/targeting/interests/{interest_id} | Get interest details |
+| [**leadFormQuestionsGet**](ResourcesApi.md#leadFormQuestionsGet) | **GET** /resources/lead_form_questions | Get lead form questions |
+| [**metricsReadyStateGet**](ResourcesApi.md#metricsReadyStateGet) | **GET** /resources/metrics_ready_state | Get metrics ready state |
+| [**targetingOptionsGet**](ResourcesApi.md#targetingOptionsGet) | **GET** /resources/targeting/{targeting_type} | Get targeting options |
 
 
 <a id="adAccountCountriesGet"></a>
@@ -63,7 +63,7 @@ Configure pinterest_oauth2:
 
 Get available metrics&#39; definitions
 
-Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/content/analytics/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/ads/ad-analytics-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
 
 ### Example
 ```kotlin
@@ -86,10 +86,9 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reportType** | **kotlin.String**| Report type. | [optional] [enum: SYNC, ASYNC]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **reportType** | **kotlin.String**| Report type. | [optional] [enum: SYNC, ASYNC] |
 
 ### Return type
 
@@ -135,10 +134,9 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **interestId** | **kotlin.String**| Unique identifier of an interest. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **interestId** | **kotlin.String**| Unique identifier of an interest. | |
 
 ### Return type
 
@@ -161,7 +159,7 @@ Configure pinterest_oauth2:
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -228,10 +226,9 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **kotlin.String**| Analytics reports request date (UTC). Format: YYYY-MM-DD |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **date** | **kotlin.String**| Analytics reports request date (UTC). Format: YYYY-MM-DD | |
 
 ### Return type
 
@@ -250,7 +247,7 @@ Configure pinterest_oauth2:
 
 <a id="targetingOptionsGet"></a>
 # **targetingOptionsGet**
-> kotlin.collections.List&lt;kotlin.Any&gt; targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp)
+> kotlin.collections.List&lt;kotlin.Any&gt; targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
 
 Get targeting options
 
@@ -267,8 +264,9 @@ val targetingType : kotlin.String = APPTYPE // kotlin.String | Public targeting 
 val clientId : kotlin.String = 1094834 // kotlin.String | Client ID.
 val oauthSignature : kotlin.String = 8209f // kotlin.String | Oauth signature
 val timestamp : kotlin.String = 1618338184277 // kotlin.String | Timestamp
+val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 try {
-    val result : kotlin.collections.List<kotlin.Any> = apiInstance.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp)
+    val result : kotlin.collections.List<kotlin.Any> = apiInstance.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ResourcesApi#targetingOptionsGet")
@@ -280,13 +278,13 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **targetingType** | **kotlin.String**| Public targeting type. | [enum: APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE]
- **clientId** | **kotlin.String**| Client ID. | [optional]
- **oauthSignature** | **kotlin.String**| Oauth signature | [optional]
- **timestamp** | **kotlin.String**| Timestamp | [optional]
+| **targetingType** | **kotlin.String**| Public targeting type. | [enum: APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE] |
+| **clientId** | **kotlin.String**| Client ID. | [optional] |
+| **oauthSignature** | **kotlin.String**| Oauth signature | [optional] |
+| **timestamp** | **kotlin.String**| Timestamp | [optional] |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 

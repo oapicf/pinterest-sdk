@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsProductGroupsList200ResponseAllOfItemsInner;
+import org.openapitools.model.CatalogsVerticalProductGroup;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,14 +21,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("catalogs_product_groups_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupsList200Response   {
-  private @Valid List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items = new ArrayList<>();
-  private @Valid String bookmark;
+  private @Valid List<@Valid CatalogsVerticalProductGroup> items = new ArrayList<>();
+  private String bookmark;
 
   /**
    **/
-  public CatalogsProductGroupsList200Response items(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public CatalogsProductGroupsList200Response items(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
     return this;
   }
@@ -36,17 +36,16 @@ public class CatalogsProductGroupsList200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  @NotNull
-  public List<CatalogsProductGroupsList200ResponseAllOfItemsInner> getItems() {
+  @NotNull @Valid public List<@Valid CatalogsVerticalProductGroup> getItems() {
     return items;
   }
 
   @JsonProperty("items")
-  public void setItems(List<CatalogsProductGroupsList200ResponseAllOfItemsInner> items) {
+  public void setItems(List<@Valid CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 
-  public CatalogsProductGroupsList200Response addItemsItem(CatalogsProductGroupsList200ResponseAllOfItemsInner itemsItem) {
+  public CatalogsProductGroupsList200Response addItemsItem(CatalogsVerticalProductGroup itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -55,7 +54,7 @@ public class CatalogsProductGroupsList200Response   {
     return this;
   }
 
-  public CatalogsProductGroupsList200Response removeItemsItem(CatalogsProductGroupsList200ResponseAllOfItemsInner itemsItem) {
+  public CatalogsProductGroupsList200Response removeItemsItem(CatalogsVerticalProductGroup itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }

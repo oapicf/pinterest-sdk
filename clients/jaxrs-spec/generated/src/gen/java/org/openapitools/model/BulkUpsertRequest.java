@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.")
 @JsonTypeName("BulkUpsertRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequest   {
-  private @Valid BulkUpsertRequestCreate create;
-  private @Valid BulkUpsertRequestUpdate update;
+  private BulkUpsertRequestCreate create;
+  private BulkUpsertRequestUpdate update;
 
   /**
    **/
@@ -34,7 +34,7 @@ public class BulkUpsertRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("create")
-  public BulkUpsertRequestCreate getCreate() {
+  @Valid public BulkUpsertRequestCreate getCreate() {
     return create;
   }
 
@@ -53,7 +53,7 @@ public class BulkUpsertRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("update")
-  public BulkUpsertRequestUpdate getUpdate() {
+  @Valid public BulkUpsertRequestUpdate getUpdate() {
     return update;
   }
 

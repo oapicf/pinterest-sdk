@@ -23,7 +23,7 @@ data class MaxPriceFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("MAX_PRICE", required = true) val MAX_PRICE: CatalogsProductGroupPricingCriteria
-) {
+    ) {
 
 }
 

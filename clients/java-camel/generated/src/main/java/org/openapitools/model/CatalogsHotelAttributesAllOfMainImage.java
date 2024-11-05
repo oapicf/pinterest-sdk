@@ -26,7 +26,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "CatalogsHotelAttributes_allOf_main_image", description = "The main hotel image")
 @JsonTypeName("CatalogsHotelAttributes_allOf_main_image")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelAttributesAllOfMainImage {
 
   private String link;
@@ -42,7 +42,7 @@ public class CatalogsHotelAttributesAllOfMainImage {
   /**
    * <p><= 2000 characters</p> <p>The link to the main hotel image. Image should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your hotel. The URL of your main_image.link must be accessible by the Pinterest user-agent, and send the accurate image. Please make sure there is no template or placeholder image at the link. Must start with http:// or https://.</p>
    * @return link
-  */
+   */
   
   @Schema(name = "link", description = "<p><= 2000 characters</p> <p>The link to the main hotel image. Image should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your hotel. The URL of your main_image.link must be accessible by the Pinterest user-agent, and send the accurate image. Please make sure there is no template or placeholder image at the link. Must start with http:// or https://.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -70,7 +70,7 @@ public class CatalogsHotelAttributesAllOfMainImage {
   /**
    * Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image
    * @return tag
-  */
+   */
   
   @Schema(name = "tag", description = "Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tag")

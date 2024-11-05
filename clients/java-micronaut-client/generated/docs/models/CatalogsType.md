@@ -11,5 +11,7 @@ The class is defined in **[CatalogsType.java](../../src/main/java/org/openapitoo
 
 * `HOTEL` (value: `"HOTEL"`)
 
+* `CREATIVE_ASSETS` (value: `"CREATIVE_ASSETS"`)
+
 
 

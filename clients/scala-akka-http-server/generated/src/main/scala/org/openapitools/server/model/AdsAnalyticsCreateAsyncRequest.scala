@@ -20,11 +20,14 @@ package org.openapitools.server.model
  * @param productGroupIds List of product group ids for example: ''["12345678"]''
  * @param productGroupStatuses List of values for filtering for example: ''["RUNNING","PAUSED"]''
  * @param productItemIds List of product item ids for example: ''["12345678"]''
- * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. for example: ''null''
+ * @param targetingTypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. for example: ''null''
  * @param metricsFilters List of metrics filters for example: ''null''
  * @param columns Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. for example: ''null''
  * @param level Level of the report for example: ''null''
  * @param reportFormat Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. for example: ''null''
+ * @param primarySort Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. for example: ''BY_ID''
+ * @param startHour Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. for example: ''null''
+ * @param endHour Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. for example: ''null''
 */
 final case class AdsAnalyticsCreateAsyncRequest (
   startDate: String,
@@ -49,6 +52,9 @@ final case class AdsAnalyticsCreateAsyncRequest (
   metricsFilters: Option[Seq[AdsAnalyticsMetricsFilter]] = None,
   columns: Seq[ReportingColumnAsync],
   level: MetricsReportingLevel,
-  reportFormat: Option[DataOutputFormat] = None
+  reportFormat: Option[DataOutputFormat] = None,
+  primarySort: Option[String] = None,
+  startHour: Option[Int] = None,
+  endHour: Option[Int] = None
 )
 

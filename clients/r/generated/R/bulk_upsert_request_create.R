@@ -23,8 +23,7 @@ BulkUpsertRequestCreate <- R6::R6Class(
     `ads` = NULL,
     `product_groups` = NULL,
     `keywords` = NULL,
-    #' Initialize a new BulkUpsertRequestCreate class.
-    #'
+
     #' @description
     #' Initialize a new BulkUpsertRequestCreate class.
     #'
@@ -34,7 +33,6 @@ BulkUpsertRequestCreate <- R6::R6Class(
     #' @param product_groups product_groups
     #' @param keywords keywords
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`campaigns` = NULL, `ad_groups` = NULL, `ads` = NULL, `product_groups` = NULL, `keywords` = NULL, ...) {
       if (!is.null(`campaigns`)) {
         stopifnot(is.vector(`campaigns`), length(`campaigns`) != 0)
@@ -62,13 +60,11 @@ BulkUpsertRequestCreate <- R6::R6Class(
         self$`keywords` <- `keywords`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkUpsertRequestCreate in JSON format
-    #' @export
     toJSON = function() {
       BulkUpsertRequestCreateObject <- list()
       if (!is.null(self$`campaigns`)) {
@@ -93,14 +89,12 @@ BulkUpsertRequestCreate <- R6::R6Class(
       }
       BulkUpsertRequestCreateObject
     },
-    #' Deserialize JSON string into an instance of BulkUpsertRequestCreate
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkUpsertRequestCreate
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkUpsertRequestCreate
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`campaigns`)) {
@@ -120,13 +114,11 @@ BulkUpsertRequestCreate <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkUpsertRequestCreate in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`campaigns`)) {
@@ -173,14 +165,12 @@ BulkUpsertRequestCreate <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BulkUpsertRequestCreate
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkUpsertRequestCreate
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkUpsertRequestCreate
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`campaigns` <- ApiClient$new()$deserializeObj(this_object$`campaigns`, "array[CampaignCreateRequest]", loadNamespace("openapi"))
@@ -190,53 +180,42 @@ BulkUpsertRequestCreate <- R6::R6Class(
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[KeywordsRequest]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to BulkUpsertRequestCreate
-    #'
+
     #' @description
     #' Validate JSON input with respect to BulkUpsertRequestCreate and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BulkUpsertRequestCreate
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

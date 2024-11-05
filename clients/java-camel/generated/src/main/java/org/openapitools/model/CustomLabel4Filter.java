@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CustomLabel4Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomLabel4Filter {
 
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4;
@@ -43,7 +43,7 @@ public class CustomLabel4Filter {
   /**
    * Get CUSTOM_LABEL_4
    * @return CUSTOM_LABEL_4
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "CUSTOM_LABEL_4", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CUSTOM_LABEL_4")

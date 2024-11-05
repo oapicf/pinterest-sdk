@@ -17,7 +17,7 @@ import org.openapitools.model.IntegrationLog;
  **/
 
 @ApiModel(description = "Batch of logs sent from an integration application.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-03-14T23:01:39.171456580Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2024-11-05T02:02:36.960464654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogsRequest   {
   @JsonProperty("logs")
   private List<IntegrationLog> logs = new ArrayList<>();

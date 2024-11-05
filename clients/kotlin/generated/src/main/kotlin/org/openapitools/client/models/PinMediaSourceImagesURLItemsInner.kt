@@ -45,5 +45,8 @@ data class PinMediaSourceImagesURLItemsInner (
     @Json(name = "link")
     val link: kotlin.String? = null
 
-)
+) {
+
+
+}
 

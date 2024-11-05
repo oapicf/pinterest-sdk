@@ -155,6 +155,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -291,7 +295,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Follow user &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.</stringProp>
+          <stringProp name="TestPlan.comments">Follow user &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - followUser/update" enabled="true">
@@ -337,6 +341,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -426,6 +434,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -733,6 +745,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -887,6 +903,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -1051,6 +1071,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1140,6 +1164,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1171,7 +1199,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get user account Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.</stringProp>
+          <stringProp name="TestPlan.comments">Get user account Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - userAccount/get" enabled="true">
@@ -1217,6 +1245,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -1432,6 +1464,13 @@
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
               <elementProp name="userWebsiteVerifyRequest" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">${__javaScript("${userWebsiteVerifyRequest}".replace(/'/g\, '"'),)}</stringProp>
@@ -1505,6 +1544,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -1512,6 +1555,13 @@
           
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
+              <elementProp name="adAccountId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${adAccountId}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">adAccountId</stringProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>

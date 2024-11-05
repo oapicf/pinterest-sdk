@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **TrackingUrl** | **String** | Tracking template for proudct group promotions. 4000 limit | [optional] 
 **CatalogProductGroupId** | **String** | ID of the catalogs product group that this product group promotion references | [optional] 
 **CatalogProductGroupName** | **String** | Catalogs product group name | [optional] 
-**CreativeType** | [**CreativeType**](CreativeType.md) |  | [optional] 
 **CollectionsHeroPinId** | **String** | Hero Pin ID if this PG is promoted as a Collection | [optional] 
 **CollectionsHeroDestinationUrl** | **String** | Collections Hero Destination Url | [optional] 
 **GridClickType** | [**GridClickType**](GridClickType.md) |  | [optional] 
@@ -40,7 +39,6 @@ $ProductGroupPromotion = Initialize-PSOpenAPIToolsProductGroupPromotion  -Id 268
  -TrackingUrl https://www.pinterest.com `
  -CatalogProductGroupId 1231235 `
  -CatalogProductGroupName catalogProductGroupName `
- -CreativeType null `
  -CollectionsHeroPinId 123123 `
  -CollectionsHeroDestinationUrl http://www.pinterest.com `
  -GridClickType null

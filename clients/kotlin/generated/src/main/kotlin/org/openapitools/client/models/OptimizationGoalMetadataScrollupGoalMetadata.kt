@@ -31,5 +31,8 @@ data class OptimizationGoalMetadataScrollupGoalMetadata (
     @Json(name = "scrollup_goal_value_in_micro_currency")
     val scrollupGoalValueInMicroCurrency: kotlin.String? = null
 
-)
+) {
+
+
+}
 

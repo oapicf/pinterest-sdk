@@ -11,7 +11,7 @@ import org.openapitools.server.api.model.ProductGroupPromotionResponseItem;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductGroupPromotionResponse   {
   
-  private List<ProductGroupPromotionResponseItem> items;
+  private List<ProductGroupPromotionResponseItem> items = new ArrayList<>();
 
   public ProductGroupPromotionResponse () {
 

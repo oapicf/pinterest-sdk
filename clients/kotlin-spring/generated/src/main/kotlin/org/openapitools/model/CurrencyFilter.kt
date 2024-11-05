@@ -23,7 +23,7 @@ data class CurrencyFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("CURRENCY", required = true) val CURRENCY: CatalogsProductGroupCurrencyCriteria
-) {
+    ) {
 
 }
 

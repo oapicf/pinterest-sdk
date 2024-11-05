@@ -164,6 +164,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -174,7 +177,7 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
 $board_id = 'board_id_example'; // string | Unique identifier of a board.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->boardSectionsList($board_id, $ad_account_id, $bookmark, $page_size);
@@ -191,7 +194,7 @@ try {
 | **board_id** | **string**| Unique identifier of a board. | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -199,7 +202,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -230,6 +233,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -241,7 +247,7 @@ $board_id = 'board_id_example'; // string | Unique identifier of a board.
 $section_id = 'section_id_example'; // string | Unique identifier of a board section.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->boardSectionsListPins($board_id, $section_id, $ad_account_id, $bookmark, $page_size);
@@ -259,7 +265,7 @@ try {
 | **section_id** | **string**| Unique identifier of a board section. | |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -267,7 +273,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -487,6 +493,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -518,7 +527,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -549,6 +558,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -558,7 +570,7 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
 );
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $privacy = 'privacy_example'; // string | Privacy setting for a board.
 
 try {
@@ -575,7 +587,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **privacy** | **string**| Privacy setting for a board. | [optional] |
 
 ### Return type
@@ -584,7 +596,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -615,6 +627,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\BoardsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -624,7 +639,7 @@ $apiInstance = new OpenAPI\Client\Api\BoardsApi(
 );
 $board_id = 'board_id_example'; // string | Unique identifier of a board.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $creative_types = array('creative_types_example'); // string[] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $pin_metrics = false; // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -643,7 +658,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **board_id** | **string**| Unique identifier of a board. | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **creative_types** | [**string[]**](../Model/string.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 | **pin_metrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
@@ -654,7 +669,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

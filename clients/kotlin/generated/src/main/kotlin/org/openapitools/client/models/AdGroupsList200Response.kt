@@ -36,5 +36,8 @@ data class AdGroupsList200Response (
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null
 
-)
+) {
+
+
+}
 

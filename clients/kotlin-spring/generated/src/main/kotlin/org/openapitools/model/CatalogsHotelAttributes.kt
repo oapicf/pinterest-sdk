@@ -99,7 +99,7 @@ data class CatalogsHotelAttributes(
 
     @Schema(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>")
     @get:JsonProperty("additional_image_link") val additionalImageLink: kotlin.collections.List<kotlin.String>? = null
-) {
+    ) {
 
 }
 

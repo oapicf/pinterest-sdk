@@ -32,7 +32,7 @@ data class CatalogsProductGroupFiltersRequest(
     @get:Size(min=1)
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("all_of", required = true) val allOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
-) {
+    ) {
 
 }
 

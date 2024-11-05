@@ -841,7 +841,7 @@ static bool targetingOptionsGetProcessor(MemoryStruct_s p_chunk, long code, char
 }
 
 static bool targetingOptionsGetHelper(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, 
+	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -877,6 +877,13 @@ static bool targetingOptionsGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("timestamp", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("timestamp");
+	}
+
+
+	itemAtq = stringify(&adAccountId, "std::string");
+	queryParams.insert(pair<string, string>("ad_account_id", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ad_account_id");
 	}
 
 	string mBody = "";
@@ -939,22 +946,22 @@ static bool targetingOptionsGetHelper(char * accessToken,
 
 
 bool ResourcesManager::targetingOptionsGetAsync(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, 
+	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData)
 {
 	return targetingOptionsGetHelper(accessToken,
-	targetingType, clientId, oauthSignature, timestamp, 
+	targetingType, clientId, oauthSignature, timestamp, adAccountId, 
 	handler, userData, true);
 }
 
 bool ResourcesManager::targetingOptionsGetSync(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, 
+	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData)
 {
 	return targetingOptionsGetHelper(accessToken,
-	targetingType, clientId, oauthSignature, timestamp, 
+	targetingType, clientId, oauthSignature, timestamp, adAccountId, 
 	handler, userData, false);
 }
 

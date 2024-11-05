@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **filters** | [**models::CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
 **created_at** | Option<**i32**> | Unix timestamp in seconds of when catalog product group was created. | [optional]
 **updated_at** | Option<**i32**> | Unix timestamp in seconds of last time catalog product group was updated. | [optional]
-**catalog_id** | **String** |  | 
+**catalog_id** | **String** | Catalog id pertaining to the hotel product group. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

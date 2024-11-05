@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinMediaWithImageAndVideo extends PinMedia {
   
   @ApiModelProperty(value = "")
-  private List<PinMediaMetadata> items;
+  private List<PinMediaMetadata> items = new ArrayList<>();
  /**
    * Get items
    * @return items

@@ -83,7 +83,7 @@ data class SSIOEditInsertionOrderRequest(
 
     @Schema(example = "null", description = "Ads manager OrderLineId")
     @get:JsonProperty("ads_manager_order_line_id") val adsManagerOrderLineId: kotlin.String? = null
-) {
+    ) {
 
 }
 

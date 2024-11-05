@@ -12,7 +12,5 @@
 
     * `TEST` (value: `"TEST"`)
 
-    * `&#x60;null&#x60;` (value: `"null"`)
-
 
 

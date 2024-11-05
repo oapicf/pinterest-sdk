@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct AdsAnalyticsMetricsFilter: Codable, JSONEncodable, Hashable {
 
+    static let valuesRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     public var field: AdsAnalyticsFilterColumn
     public var _operator: AdsAnalyticsFilterOperator
     /** List of values for filtering */

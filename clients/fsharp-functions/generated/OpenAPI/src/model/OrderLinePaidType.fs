@@ -12,7 +12,6 @@ module OrderLinePaidType =
   let BONUSEnum = "BONUS"
   let MAKEGOODEnum = "MAKE_GOOD"
   let TESTEnum = "TEST"
-  let NullEnum = "null"
   type OrderLinePaidType = string
 
   //#endregion

@@ -15,14 +15,12 @@ AdPinId <- R6::R6Class(
   "AdPinId",
   public = list(
     `pin_id` = NULL,
-    #' Initialize a new AdPinId class.
-    #'
+
     #' @description
     #' Initialize a new AdPinId class.
     #'
     #' @param pin_id Pin ID.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`pin_id` = NULL, ...) {
       if (!is.null(`pin_id`)) {
         if (!(is.character(`pin_id`) && length(`pin_id`) == 1)) {
@@ -31,13 +29,11 @@ AdPinId <- R6::R6Class(
         self$`pin_id` <- `pin_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdPinId in JSON format
-    #' @export
     toJSON = function() {
       AdPinIdObject <- list()
       if (!is.null(self$`pin_id`)) {
@@ -46,14 +42,12 @@ AdPinId <- R6::R6Class(
       }
       AdPinIdObject
     },
-    #' Deserialize JSON string into an instance of AdPinId
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdPinId
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdPinId
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`pin_id`)) {
@@ -61,13 +55,11 @@ AdPinId <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdPinId in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`pin_id`)) {
@@ -82,46 +74,38 @@ AdPinId <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdPinId
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdPinId
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdPinId
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`pin_id` <- this_object$`pin_id`
       self
     },
-    #' Validate JSON input with respect to AdPinId
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdPinId and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdPinId
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`pin_id`, "^\\d+$")) {
         return(FALSE)
@@ -129,13 +113,11 @@ AdPinId <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`pin_id`, "^\\d+$")) {
@@ -144,12 +126,9 @@ AdPinId <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -5,6 +5,7 @@
   "name": "CatalogsType",
   "symbols": [
     "RETAIL",
-    "HOTEL"
+    "HOTEL",
+    "CREATIVE_ASSETS"
   ]
 }

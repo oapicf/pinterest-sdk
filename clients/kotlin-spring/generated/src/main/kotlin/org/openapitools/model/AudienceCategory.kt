@@ -43,7 +43,7 @@ data class AudienceCategory(
     @field:Valid
     @Schema(example = "null", description = "Subcategory interest distribution")
     @get:JsonProperty("subcategories") val subcategories: kotlin.collections.List<AudienceSubcategory>? = null
-) {
+    ) {
 
 }
 

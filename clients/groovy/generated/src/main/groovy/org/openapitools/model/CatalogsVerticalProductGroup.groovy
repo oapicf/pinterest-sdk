@@ -4,8 +4,9 @@ import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
-import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.CatalogsProductGroupStatus;
 import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
@@ -15,7 +16,7 @@ class CatalogsVerticalProductGroup {
 
     enum CatalogTypeEnum {
     
-        RETAIL("RETAIL")
+        CREATIVE_ASSETS("CREATIVE_ASSETS")
     
         private final String value
     
@@ -35,47 +36,30 @@ class CatalogsVerticalProductGroup {
 
     
     CatalogTypeEnum catalogType
-    /* ID of the catalog product group. */
+    /* ID of the creative assets product group. */
     String id
-    /* Name of catalog product group */
+    /* Name of creative assets product group */
     String name
     
     String description
     
-    CatalogsProductGroupFilters filters
-    /* Unix timestamp in seconds of when catalog product group was created. */
-    Integer createdAt
-    /* Unix timestamp in seconds of last time catalog product group was updated. */
-    Integer updatedAt
-    
-    String catalogId
+    CatalogsCreativeAssetsProductGroupFilters filters
     /* boolean indicator of whether the product group is being featured or not */
     Boolean isFeatured
     
     CatalogsProductGroupType type
     
     CatalogsProductGroupStatus status
-
-    enum FeedIdEnum {
+    /* Unix timestamp in seconds of when catalog product group was created. */
+    Integer createdAt
+    /* Unix timestamp in seconds of last time catalog product group was updated. */
+    Integer updatedAt
+    /* Catalog id pertaining to the creative assets product group. */
+    String catalogId
+    /* id of the catalogs feed belonging to this catalog product group */
+    String feedId
     
-        NULL("null")
+    String country
     
-        private final String value
-    
-        FeedIdEnum(String value) {
-            this.value = value
-        }
-    
-        String getValue() {
-            value
-        }
-    
-        @Override
-        String toString() {
-            String.valueOf(value)
-        }
-    }
-
-    
-    FeedIdEnum feedId
+    String locale
 }

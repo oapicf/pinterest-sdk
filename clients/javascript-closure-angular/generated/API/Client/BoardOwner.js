@@ -1,4 +1,4 @@
-goog.provide('API.Client.Board_owner');
+goog.provide('API.Client.BoardOwner');
 
 /**
  * @record

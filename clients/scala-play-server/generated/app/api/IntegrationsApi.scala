@@ -11,7 +11,7 @@ import model.IntegrationRequest
 import model.IntegrationRequestPatch
 import model.IntegrationsGetList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-03-14T23:15:00.394859410Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2024-11-05T03:04:47.577040925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 trait IntegrationsApi {
   /**
     * Delete commerce integration
@@ -53,7 +53,7 @@ trait IntegrationsApi {
     * Get integration metadata list
     * Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
     * @param bookmark Cursor used to fetch the next page of items
-    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+    * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
     */
   def integrationsGetList(bookmark: Option[String], pageSize: Option[Int]): IntegrationsGetList200Response
 

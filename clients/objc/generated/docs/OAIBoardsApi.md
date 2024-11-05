@@ -160,11 +160,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
@@ -190,7 +193,7 @@ Name | Type | Description  | Notes
  **boardId** | **NSString***| Unique identifier of a board. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -198,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -228,12 +231,15 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* sectionId = @"sectionId_example"; // Unique identifier of a board section.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
 
@@ -261,7 +267,7 @@ Name | Type | Description  | Notes
  **sectionId** | **NSString***| Unique identifier of a board section. | 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -269,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -478,6 +484,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
@@ -510,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -539,10 +548,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSString* privacy = @"privacy_example"; // Privacy setting for a board. (optional)
 
 OAIBoardsApi*apiInstance = [[OAIBoardsApi alloc] init];
@@ -568,7 +580,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **privacy** | **NSString***| Privacy setting for a board. | [optional] 
 
 ### Return type
@@ -577,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -608,10 +620,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* boardId = @"boardId_example"; // Unique identifier of a board.
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSArray<NSString*>* creativeTypes = @[@"creativeTypes_example"]; // Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 NSNumber* pinMetrics = @(NO); // Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to @(NO))
@@ -641,7 +656,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **NSString***| Unique identifier of a board. | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **creativeTypes** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
  **pinMetrics** | **NSNumber***| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to @(NO)]
@@ -652,7 +667,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

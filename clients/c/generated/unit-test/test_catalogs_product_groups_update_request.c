@@ -16,7 +16,7 @@
 #include "../model/catalogs_product_groups_update_request.h"
 catalogs_product_groups_update_request_t* instantiate_catalogs_product_groups_update_request(int include_optional);
 
-#include "test_catalogs_hotel_product_group_filters.c"
+#include "test_catalogs_creative_assets_product_group_filters.c"
 
 
 catalogs_product_groups_update_request_t* instantiate_catalogs_product_groups_update_request(int include_optional) {
@@ -27,8 +27,10 @@ catalogs_product_groups_update_request_t* instantiate_catalogs_product_groups_up
       "0",
       1,
        // false, not to have infinite recursion
-      instantiate_catalogs_hotel_product_group_filters(0),
-      pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_HOTEL
+      instantiate_catalogs_creative_assets_product_group_filters(0),
+      pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_CREATIVE_ASSETS,
+      pinterest_rest_api_catalogs_product_groups_update_request__"US",
+      pinterest_rest_api_catalogs_product_groups_update_request__af-ZA
     );
   } else {
     catalogs_product_groups_update_request = catalogs_product_groups_update_request_create(
@@ -36,7 +38,9 @@ catalogs_product_groups_update_request_t* instantiate_catalogs_product_groups_up
       "0",
       1,
       NULL,
-      pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_HOTEL
+      pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_CREATIVE_ASSETS,
+      pinterest_rest_api_catalogs_product_groups_update_request__"US",
+      pinterest_rest_api_catalogs_product_groups_update_request__af-ZA
     );
   }
 

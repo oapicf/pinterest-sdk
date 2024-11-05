@@ -1,9 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.LeadFormArrayResponse;
+import org.openapitools.vertxweb.server.model.LeadFormCreateRequest;
 import org.openapitools.vertxweb.server.model.LeadFormResponse;
 import org.openapitools.vertxweb.server.model.LeadFormTestRequest;
 import org.openapitools.vertxweb.server.model.LeadFormTestResponse;
+import org.openapitools.vertxweb.server.model.LeadFormUpdateRequest;
 import org.openapitools.vertxweb.server.model.LeadFormsList200Response;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -38,7 +41,9 @@ public class LeadFormsApiHandler {
     public void mount(RouterBuilder builder) {
         builder.operation("leadFormGet").handler(this::leadFormGet);
         builder.operation("leadFormTestCreate").handler(this::leadFormTestCreate);
+        builder.operation("leadFormsCreate").handler(this::leadFormsCreate);
         builder.operation("leadFormsList").handler(this::leadFormsList);
+        builder.operation("leadFormsUpdate").handler(this::leadFormsUpdate);
     }
 
     private void leadFormGet(RoutingContext routingContext) {
@@ -92,6 +97,31 @@ public class LeadFormsApiHandler {
             .onFailure(routingContext::fail);
     }
 
+    private void leadFormsCreate(RoutingContext routingContext) {
+        logger.info("leadFormsCreate()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        RequestParameter body = requestParameters.body();
+        List<LeadFormCreateRequest> leadFormCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<LeadFormCreateRequest>>(){}) : null;
+
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter leadFormCreateRequest is {}", leadFormCreateRequest);
+
+        api.leadFormsCreate(adAccountId, leadFormCreateRequest)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
     private void leadFormsList(RoutingContext routingContext) {
         logger.info("leadFormsList()");
 
@@ -109,6 +139,31 @@ public class LeadFormsApiHandler {
         logger.debug("Parameter bookmark is {}", bookmark);
 
         api.leadFormsList(adAccountId, pageSize, order, bookmark)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void leadFormsUpdate(RoutingContext routingContext) {
+        logger.info("leadFormsUpdate()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        RequestParameter body = requestParameters.body();
+        List<LeadFormUpdateRequest> leadFormUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<LeadFormUpdateRequest>>(){}) : null;
+
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter leadFormUpdateRequest is {}", leadFormUpdateRequest);
+
+        api.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

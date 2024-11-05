@@ -19,8 +19,7 @@ SSIOInsertionOrderStatusResponse <- R6::R6Class(
     `pin_order_id` = NULL,
     `status` = NULL,
     `creation_time` = NULL,
-    #' Initialize a new SSIOInsertionOrderStatusResponse class.
-    #'
+
     #' @description
     #' Initialize a new SSIOInsertionOrderStatusResponse class.
     #'
@@ -28,7 +27,6 @@ SSIOInsertionOrderStatusResponse <- R6::R6Class(
     #' @param status Salesforce insertion order status
     #' @param creation_time Salesforce insertion order creation time
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`pin_order_id` = NULL, `status` = NULL, `creation_time` = NULL, ...) {
       if (!is.null(`pin_order_id`)) {
         if (!(is.character(`pin_order_id`) && length(`pin_order_id`) == 1)) {
@@ -49,13 +47,11 @@ SSIOInsertionOrderStatusResponse <- R6::R6Class(
         self$`creation_time` <- `creation_time`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOInsertionOrderStatusResponse in JSON format
-    #' @export
     toJSON = function() {
       SSIOInsertionOrderStatusResponseObject <- list()
       if (!is.null(self$`pin_order_id`)) {
@@ -72,14 +68,12 @@ SSIOInsertionOrderStatusResponse <- R6::R6Class(
       }
       SSIOInsertionOrderStatusResponseObject
     },
-    #' Deserialize JSON string into an instance of SSIOInsertionOrderStatusResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOInsertionOrderStatusResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOInsertionOrderStatusResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`pin_order_id`)) {
@@ -93,13 +87,11 @@ SSIOInsertionOrderStatusResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOInsertionOrderStatusResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`pin_order_id`)) {
@@ -130,14 +122,12 @@ SSIOInsertionOrderStatusResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of SSIOInsertionOrderStatusResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOInsertionOrderStatusResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOInsertionOrderStatusResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`pin_order_id` <- this_object$`pin_order_id`
@@ -145,53 +135,42 @@ SSIOInsertionOrderStatusResponse <- R6::R6Class(
       self$`creation_time` <- this_object$`creation_time`
       self
     },
-    #' Validate JSON input with respect to SSIOInsertionOrderStatusResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to SSIOInsertionOrderStatusResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of SSIOInsertionOrderStatusResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

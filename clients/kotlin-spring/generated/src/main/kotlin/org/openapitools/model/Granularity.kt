@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,12 +19,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Granularity
 * Values: TOTAL,DAY,HOUR,WEEK,MONTH
 */
-enum class Granularity(val value: kotlin.String) {
+enum class Granularity(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("TOTAL") TOTAL("TOTAL"),
-    @JsonProperty("DAY") DAY("DAY"),
-    @JsonProperty("HOUR") HOUR("HOUR"),
-    @JsonProperty("WEEK") WEEK("WEEK"),
-    @JsonProperty("MONTH") MONTH("MONTH")
+    TOTAL("TOTAL"),
+    DAY("DAY"),
+    HOUR("HOUR"),
+    WEEK("WEEK"),
+    MONTH("MONTH");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): Granularity {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

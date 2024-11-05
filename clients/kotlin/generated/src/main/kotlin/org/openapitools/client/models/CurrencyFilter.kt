@@ -32,5 +32,8 @@ data class CurrencyFilter (
     @Json(name = "CURRENCY")
     val CURRENCY: CatalogsProductGroupCurrencyCriteria
 
-)
+) {
+
+
+}
 

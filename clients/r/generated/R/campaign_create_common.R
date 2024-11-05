@@ -13,10 +13,9 @@
 #' @field lifetime_spend_cap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. integer [optional]
 #' @field daily_spend_cap Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time. integer [optional]
 #' @field order_line_id Order line ID that appears on the invoice. character [optional]
-#' @field tracking_urls  \link{AdCommonTrackingUrls} [optional]
+#' @field tracking_urls  \link{TrackingUrls} [optional]
 #' @field start_time Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. integer [optional]
 #' @field end_time Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. integer [optional]
-#' @field summary_status  \link{CampaignSummaryStatus} [optional]
 #' @field is_flexible_daily_budgets Determine if a campaign has flexible daily budgets setup. character [optional]
 #' @field default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. integer [optional]
 #' @field is_automated_campaign Specifies whether the campaign was created in the automated campaign flow character [optional]
@@ -35,31 +34,27 @@ CampaignCreateCommon <- R6::R6Class(
     `tracking_urls` = NULL,
     `start_time` = NULL,
     `end_time` = NULL,
-    `summary_status` = NULL,
     `is_flexible_daily_budgets` = NULL,
     `default_ad_group_budget_in_micro_currency` = NULL,
     `is_automated_campaign` = NULL,
-    #' Initialize a new CampaignCreateCommon class.
-    #'
+
     #' @description
     #' Initialize a new CampaignCreateCommon class.
     #'
     #' @param ad_account_id Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
     #' @param name Campaign name.
-    #' @param status status. Default to "ACTIVE".
+    #' @param status status
     #' @param lifetime_spend_cap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
     #' @param daily_spend_cap Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
     #' @param order_line_id Order line ID that appears on the invoice.
     #' @param tracking_urls tracking_urls
     #' @param start_time Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
     #' @param end_time Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-    #' @param summary_status summary_status
-    #' @param is_flexible_daily_budgets Determine if a campaign has flexible daily budgets setup.. Default to FALSE.
+    #' @param is_flexible_daily_budgets Determine if a campaign has flexible daily budgets setup.
     #' @param default_ad_group_budget_in_micro_currency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-    #' @param is_automated_campaign Specifies whether the campaign was created in the automated campaign flow. Default to FALSE.
+    #' @param is_automated_campaign Specifies whether the campaign was created in the automated campaign flow
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`ad_account_id` = NULL, `name` = NULL, `status` = "ACTIVE", `lifetime_spend_cap` = NULL, `daily_spend_cap` = NULL, `order_line_id` = NULL, `tracking_urls` = NULL, `start_time` = NULL, `end_time` = NULL, `summary_status` = NULL, `is_flexible_daily_budgets` = FALSE, `default_ad_group_budget_in_micro_currency` = NULL, `is_automated_campaign` = FALSE, ...) {
+    initialize = function(`ad_account_id` = NULL, `name` = NULL, `status` = NULL, `lifetime_spend_cap` = NULL, `daily_spend_cap` = NULL, `order_line_id` = NULL, `tracking_urls` = NULL, `start_time` = NULL, `end_time` = NULL, `is_flexible_daily_budgets` = NULL, `default_ad_group_budget_in_micro_currency` = NULL, `is_automated_campaign` = NULL, ...) {
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
@@ -113,13 +108,6 @@ CampaignCreateCommon <- R6::R6Class(
         }
         self$`end_time` <- `end_time`
       }
-      if (!is.null(`summary_status`)) {
-        if (!(`summary_status` %in% c())) {
-          stop(paste("Error! \"", `summary_status`, "\" cannot be assigned to `summary_status`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`summary_status`))
-        self$`summary_status` <- `summary_status`
-      }
       if (!is.null(`is_flexible_daily_budgets`)) {
         if (!(is.logical(`is_flexible_daily_budgets`) && length(`is_flexible_daily_budgets`) == 1)) {
           stop(paste("Error! Invalid data for `is_flexible_daily_budgets`. Must be a boolean:", `is_flexible_daily_budgets`))
@@ -139,13 +127,11 @@ CampaignCreateCommon <- R6::R6Class(
         self$`is_automated_campaign` <- `is_automated_campaign`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CampaignCreateCommon in JSON format
-    #' @export
     toJSON = function() {
       CampaignCreateCommonObject <- list()
       if (!is.null(self$`ad_account_id`)) {
@@ -184,10 +170,6 @@ CampaignCreateCommon <- R6::R6Class(
         CampaignCreateCommonObject[["end_time"]] <-
           self$`end_time`
       }
-      if (!is.null(self$`summary_status`)) {
-        CampaignCreateCommonObject[["summary_status"]] <-
-          self$`summary_status`$toJSON()
-      }
       if (!is.null(self$`is_flexible_daily_budgets`)) {
         CampaignCreateCommonObject[["is_flexible_daily_budgets"]] <-
           self$`is_flexible_daily_budgets`
@@ -202,14 +184,12 @@ CampaignCreateCommon <- R6::R6Class(
       }
       CampaignCreateCommonObject
     },
-    #' Deserialize JSON string into an instance of CampaignCreateCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CampaignCreateCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of CampaignCreateCommon
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ad_account_id`)) {
@@ -233,7 +213,7 @@ CampaignCreateCommon <- R6::R6Class(
         self$`order_line_id` <- this_object$`order_line_id`
       }
       if (!is.null(this_object$`tracking_urls`)) {
-        `tracking_urls_object` <- AdCommonTrackingUrls$new()
+        `tracking_urls_object` <- TrackingUrls$new()
         `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
         self$`tracking_urls` <- `tracking_urls_object`
       }
@@ -242,11 +222,6 @@ CampaignCreateCommon <- R6::R6Class(
       }
       if (!is.null(this_object$`end_time`)) {
         self$`end_time` <- this_object$`end_time`
-      }
-      if (!is.null(this_object$`summary_status`)) {
-        `summary_status_object` <- CampaignSummaryStatus$new()
-        `summary_status_object`$fromJSON(jsonlite::toJSON(this_object$`summary_status`, auto_unbox = TRUE, digits = NA))
-        self$`summary_status` <- `summary_status_object`
       }
       if (!is.null(this_object$`is_flexible_daily_budgets`)) {
         self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
@@ -259,13 +234,11 @@ CampaignCreateCommon <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CampaignCreateCommon in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`ad_account_id`)) {
@@ -340,14 +313,6 @@ CampaignCreateCommon <- R6::R6Class(
           self$`end_time`
           )
         },
-        if (!is.null(self$`summary_status`)) {
-          sprintf(
-          '"summary_status":
-          %s
-          ',
-          jsonlite::toJSON(self$`summary_status`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
         if (!is.null(self$`is_flexible_daily_budgets`)) {
           sprintf(
           '"is_flexible_daily_budgets":
@@ -376,14 +341,12 @@ CampaignCreateCommon <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CampaignCreateCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CampaignCreateCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of CampaignCreateCommon
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
@@ -392,42 +355,35 @@ CampaignCreateCommon <- R6::R6Class(
       self$`lifetime_spend_cap` <- this_object$`lifetime_spend_cap`
       self$`daily_spend_cap` <- this_object$`daily_spend_cap`
       self$`order_line_id` <- this_object$`order_line_id`
-      self$`tracking_urls` <- AdCommonTrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
+      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self$`start_time` <- this_object$`start_time`
       self$`end_time` <- this_object$`end_time`
-      self$`summary_status` <- CampaignSummaryStatus$new()$fromJSON(jsonlite::toJSON(this_object$`summary_status`, auto_unbox = TRUE, digits = NA))
       self$`is_flexible_daily_budgets` <- this_object$`is_flexible_daily_budgets`
       self$`default_ad_group_budget_in_micro_currency` <- this_object$`default_ad_group_budget_in_micro_currency`
       self$`is_automated_campaign` <- this_object$`is_automated_campaign`
       self
     },
-    #' Validate JSON input with respect to CampaignCreateCommon
-    #'
+
     #' @description
     #' Validate JSON input with respect to CampaignCreateCommon and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CampaignCreateCommon
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
         return(FALSE)
@@ -439,13 +395,11 @@ CampaignCreateCommon <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`ad_account_id`, "^\\d+$")) {
@@ -458,12 +412,9 @@ CampaignCreateCommon <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

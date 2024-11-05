@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -17,11 +17,6 @@ package openapitools;
 
 enum CatalogsFeedProcessingStatus {
   CatalogsFeedProcessingStatus_COMPLETED = 0;
-  CatalogsFeedProcessingStatus_COMPLETED_EARLY = 1;
-  CatalogsFeedProcessingStatus_DISAPPROVED = 2;
-  CatalogsFeedProcessingStatus_FAILED = 3;
-  CatalogsFeedProcessingStatus_PROCESSING = 4;
-  CatalogsFeedProcessingStatus_QUEUED_FOR_PROCESSING = 5;
-  CatalogsFeedProcessingStatus_UNDER_APPEAL = 6;
-  CatalogsFeedProcessingStatus_UNDER_REVIEW = 7;
+  CatalogsFeedProcessingStatus_FAILED = 1;
+  CatalogsFeedProcessingStatus_PROCESSING = 2;
 }

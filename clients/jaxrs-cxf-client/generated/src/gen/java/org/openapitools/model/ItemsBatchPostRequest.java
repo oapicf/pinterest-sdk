@@ -5,11 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsBatchRequest;
-import org.openapitools.model.CatalogsType;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsVerticalBatchRequest;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
-import org.openapitools.model.Language;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -22,7 +21,7 @@ public class ItemsBatchPostRequest  {
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @ApiModelProperty(required = true, value = "")
   private BatchOperation operation;
@@ -55,15 +54,15 @@ public class ItemsBatchPostRequest  {
    * @return language
   **/
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
-  public ItemsBatchPostRequest language(Language language) {
+  public ItemsBatchPostRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }

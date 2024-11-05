@@ -51,7 +51,8 @@
        'variant_names' => list(),
        'variant_values' => list(),
        'additional_image_link' => list(),
-       'image_link' => list()
+       'image_link' => list(),
+       'video_link' => binary()
      }.
 
 encode(#{ 'ad_link' := AdLink,
@@ -100,7 +101,8 @@ encode(#{ 'ad_link' := AdLink,
           'variant_names' := VariantNames,
           'variant_values' := VariantValues,
           'additional_image_link' := AdditionalImageLink,
-          'image_link' := ImageLink
+          'image_link' := ImageLink,
+          'video_link' := VideoLink
         }) ->
     #{ 'ad_link' => AdLink,
        'adult' => Adult,
@@ -148,5 +150,6 @@ encode(#{ 'ad_link' := AdLink,
        'variant_names' => VariantNames,
        'variant_values' => VariantValues,
        'additional_image_link' => AdditionalImageLink,
-       'image_link' => ImageLink
+       'image_link' => ImageLink,
+       'video_link' => VideoLink
      }.

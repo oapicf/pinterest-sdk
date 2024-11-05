@@ -1,11 +1,11 @@
 package apimodels;
 
-import apimodels.CatalogsHotelBatchItem;
+import apimodels.CatalogsCreativeAssetsBatchItem;
+import apimodels.CatalogsCreativeAssetsBatchRequest;
 import apimodels.CatalogsHotelBatchRequest;
+import apimodels.CatalogsItemsRequestLanguage;
 import apimodels.CatalogsRetailBatchRequest;
-import apimodels.CatalogsType;
 import apimodels.Country;
-import apimodels.Language;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -21,14 +21,42 @@ import javax.validation.Valid;
 /**
  * A request object that can have multiple operations on a single batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsVerticalBatchRequest   {
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+    private final String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("catalog_type")
   @NotNull
-@Valid
 
-  private CatalogsType catalogType;
+  private CatalogTypeEnum catalogType;
 
   @JsonProperty("country")
   @NotNull
@@ -40,21 +68,21 @@ public class CatalogsVerticalBatchRequest   {
   @NotNull
 @Valid
 
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @JsonProperty("items")
   @NotNull
 @Size(min=1,max=1000)
 @Valid
 
-  private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
+  private List<@Valid CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
   @JsonProperty("catalog_id")
   @Pattern(regexp="^\\d+$")
 
   private String catalogId;
 
-  public CatalogsVerticalBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsVerticalBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -63,11 +91,11 @@ public class CatalogsVerticalBatchRequest   {
    * Get catalogType
    * @return catalogType
   **/
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -88,7 +116,7 @@ public class CatalogsVerticalBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsVerticalBatchRequest language(Language language) {
+  public CatalogsVerticalBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -97,20 +125,20 @@ public class CatalogsVerticalBatchRequest   {
    * Get language
    * @return language
   **/
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
-  public CatalogsVerticalBatchRequest items(List<@Valid CatalogsHotelBatchItem> items) {
+  public CatalogsVerticalBatchRequest items(List<@Valid CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
     return this;
   }
 
-  public CatalogsVerticalBatchRequest addItemsItem(CatalogsHotelBatchItem itemsItem) {
+  public CatalogsVerticalBatchRequest addItemsItem(CatalogsCreativeAssetsBatchItem itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -119,14 +147,14 @@ public class CatalogsVerticalBatchRequest   {
   }
 
    /**
-   * Array with catalogs item operations
+   * Array with creative assets item operations
    * @return items
   **/
-  public List<@Valid CatalogsHotelBatchItem> getItems() {
+  public List<@Valid CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid CatalogsHotelBatchItem> items) {
+  public void setItems(List<@Valid CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
   }
 
@@ -136,7 +164,7 @@ public class CatalogsVerticalBatchRequest   {
   }
 
    /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
    * @return catalogId
   **/
   public String getCatalogId() {

@@ -15,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("LinkedBusiness")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LinkedBusiness   {
-  private @Valid String username;
-  private @Valid String imageSmallUrl;
-  private @Valid String imageMediumUrl;
-  private @Valid String imageLargeUrl;
-  private @Valid String imageXlargeUrl;
+  private String username;
+  private String imageSmallUrl;
+  private String imageMediumUrl;
+  private String imageLargeUrl;
+  private String imageXlargeUrl;
 
   /**
    * Username

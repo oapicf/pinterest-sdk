@@ -17,15 +17,13 @@ CatalogsFeedProductCounts <- R6::R6Class(
   public = list(
     `original` = NULL,
     `ingested` = NULL,
-    #' Initialize a new CatalogsFeedProductCounts class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsFeedProductCounts class.
     #'
     #' @param original The number of products in the feed file.
     #' @param ingested The number of products successfully ingested from the feed file.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`original` = NULL, `ingested` = NULL, ...) {
       if (!is.null(`original`)) {
         if (!(is.numeric(`original`) && length(`original`) == 1)) {
@@ -40,13 +38,11 @@ CatalogsFeedProductCounts <- R6::R6Class(
         self$`ingested` <- `ingested`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedProductCounts in JSON format
-    #' @export
     toJSON = function() {
       CatalogsFeedProductCountsObject <- list()
       if (!is.null(self$`original`)) {
@@ -59,14 +55,12 @@ CatalogsFeedProductCounts <- R6::R6Class(
       }
       CatalogsFeedProductCountsObject
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedProductCounts
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedProductCounts
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedProductCounts
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`original`)) {
@@ -77,13 +71,11 @@ CatalogsFeedProductCounts <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsFeedProductCounts in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`original`)) {
@@ -106,67 +98,54 @@ CatalogsFeedProductCounts <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsFeedProductCounts
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsFeedProductCounts
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsFeedProductCounts
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`original` <- this_object$`original`
       self$`ingested` <- this_object$`ingested`
       self
     },
-    #' Validate JSON input with respect to CatalogsFeedProductCounts
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsFeedProductCounts and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsFeedProductCounts
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

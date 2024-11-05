@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MediaUploadRequest", description = "Media upload request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadRequest {
 
   private MediaUploadType mediaType;
@@ -45,7 +45,7 @@ public class MediaUploadRequest {
   /**
    * Get mediaType
    * @return mediaType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("media_type")

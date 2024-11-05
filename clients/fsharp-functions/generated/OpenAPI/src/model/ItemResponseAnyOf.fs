@@ -3,7 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.CatalogsHotelAttributes
+open OpenAPI.Model.CatalogsCreativeAssetsAttributes
+open OpenAPI.Model.CatalogsCreativeAssetsItemResponse
 open OpenAPI.Model.CatalogsHotelItemResponse
 open OpenAPI.Model.CatalogsRetailItemResponse
 open OpenAPI.Model.CatalogsType
@@ -22,9 +23,11 @@ module ItemResponseAnyOf =
     [<JsonProperty(PropertyName = "pins")>]
     Pins : Pin[];
     [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : CatalogsHotelAttributes;
+    Attributes : CatalogsCreativeAssetsAttributes;
     [<JsonProperty(PropertyName = "hotel_id")>]
     HotelId : string;
+    [<JsonProperty(PropertyName = "creative_assets_id")>]
+    CreativeAssetsId : string;
   }
 
   //#endregion

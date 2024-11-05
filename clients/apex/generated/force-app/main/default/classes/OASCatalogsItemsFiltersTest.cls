@@ -77,6 +77,7 @@ private class OASCatalogsItemsFiltersTest {
         System.assertEquals('itemIds', x-property-mappings.get('item_ids'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('hotelIds', x-property-mappings.get('hotel_ids'));
+        System.assertEquals('creativeAssetsIds', x-property-mappings.get('creative_assets_ids'));
     }
 
     @isTest
@@ -84,6 +85,7 @@ private class OASCatalogsItemsFiltersTest {
         OASCatalogsItemsFilters catalogsItemsFilters = new OASCatalogsItemsFilters();
         System.assertEquals(new List<String>(), catalogsItemsFilters.itemIds);
         System.assertEquals(new List<String>(), catalogsItemsFilters.hotelIds);
+        System.assertEquals(new List<String>(), catalogsItemsFilters.creativeAssetsIds);
         System.assertEquals(null, catalogsItemsFilters.catalogType);
         System.assertEquals(null, catalogsItemsFilters.catalogId);
     }

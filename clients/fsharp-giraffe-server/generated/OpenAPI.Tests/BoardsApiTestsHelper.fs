@@ -54,9 +54,7 @@ module BoardsApiHandlerTestsHelper =
   let mutable BoardsCreateBody = ""
 
   BoardsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;owner&quot; : {
-    &quot;username&quot; : &quot;username&quot;
-  },
+  &quot;owner&quot; : &quot;{}&quot;,
   &quot;board_pins_modified_at&quot; : &quot;2020-01-01T20:10:40Z&quot;,
   &quot;name&quot; : &quot;Summer Recipes&quot;,
   &quot;pin_count&quot; : 5,

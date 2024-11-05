@@ -10,7 +10,7 @@ package org.openapitools.server.model
 */
 final case class ItemBatchRecord (
   itemId: Option[String] = None,
-  attributes: Option[ItemAttributes] = None,
+  attributes: Option[ItemAttributesRequest] = None,
   updateMask: Option[Seq[UpdateMaskFieldType]] = None
 )
 

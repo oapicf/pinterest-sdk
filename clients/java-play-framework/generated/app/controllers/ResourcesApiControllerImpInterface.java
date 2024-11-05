@@ -119,18 +119,18 @@ public abstract class ResourcesApiControllerImpInterface {
 
     public abstract BookClosedResponse metricsReadyStateGet(Http.Request request, @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")String date) throws Exception;
 
-    public Result targetingOptionsGetHttp(Http.Request request, String targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp) throws Exception {
+    public Result targetingOptionsGetHttp(Http.Request request, String targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        List<Object> obj = targetingOptionsGet(request, targetingType, clientId, oauthSignature, timestamp);
+        List<Object> obj = targetingOptionsGet(request, targetingType, clientId, oauthSignature, timestamp, adAccountId);
         JsonNode result = mapper.valueToTree(obj);
 
         return ok(result);
 
     }
 
-    public abstract List<Object> targetingOptionsGet(Http.Request request, String targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp) throws Exception;
+    public abstract List<Object> targetingOptionsGet(Http.Request request, String targetingType,  @Pattern(regexp="^\\d+$") @Size(max=18)String clientId, String oauthSignature,  @Pattern(regexp="\\d+")String timestamp,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
 }

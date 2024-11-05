@@ -31,6 +31,24 @@ class CatalogsHotelFeedTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsHotelFeed
         //val modelInstance = CatalogsHotelFeed()
 
+        // to test the property `createdAt`
+        should("test createdAt") {
+            // uncomment below to test the property
+            //modelInstance.createdAt shouldBe ("TODO")
+        }
+
+        // to test the property `id`
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `updatedAt`
+        should("test updatedAt") {
+            // uncomment below to test the property
+            //modelInstance.updatedAt shouldBe ("TODO")
+        }
+
         // to test the property `name` - A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
         should("test name") {
             // uncomment below to test the property
@@ -89,24 +107,6 @@ class CatalogsHotelFeedTest : ShouldSpec() {
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")
-        }
-
-        // to test the property `createdAt`
-        should("test createdAt") {
-            // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
-        }
-
-        // to test the property `id`
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `updatedAt`
-        should("test updatedAt") {
-            // uncomment below to test the property
-            //modelInstance.updatedAt shouldBe ("TODO")
         }
 
     }

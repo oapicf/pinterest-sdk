@@ -60,15 +60,15 @@ PAGE_VISIT(String.valueOf("PAGE_VISIT")), SIGNUP(String.valueOf("SIGNUP")), CHEC
   @ApiModelProperty(value = "")
   private String cpaGoalValueInMicroCurrency;
 
-  @ApiModelProperty(value = "Ad group is ROAS optimized")
+  @ApiModelProperty(value = "ROAS optimization is not supported")
  /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
   **/
   private Boolean isRoasOptimized;
 
 public enum LearningModeTypeEnum {
 
-NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), ACTIVE(String.valueOf("ACTIVE")), NULL(String.valueOf("null"));
+NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), ACTIVE(String.valueOf("ACTIVE"));
 
 
     private String value;
@@ -179,7 +179,7 @@ NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), ACTIVE(String.valueOf("ACTIVE")), NULL
   }
 
  /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
    * @return isRoasOptimized
   **/
   @JsonProperty("is_roas_optimized")

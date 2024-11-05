@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsAnalyticsCreateAsyncResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsCreateAsyncResponse   {
-  private @Valid BulkReportingJobStatus reportStatus;
-  private @Valid String token;
-  private @Valid String message;
+  private BulkReportingJobStatus reportStatus;
+  private String token;
+  private String message;
 
   /**
    **/

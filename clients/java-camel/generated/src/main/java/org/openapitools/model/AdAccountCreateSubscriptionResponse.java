@@ -4,6 +4,9 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,14 +21,14 @@ import javax.annotation.Generated;
  * AdAccountCreateSubscriptionResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountCreateSubscriptionResponse {
 
   private String id;
 
-  private String cryptographicKey;
+  private JsonNullable<String> cryptographicKey = JsonNullable.<String>undefined();
 
-  private String cryptographicAlgorithm;
+  private JsonNullable<String> cryptographicAlgorithm = JsonNullable.<String>undefined();
 
   private Integer createdTime;
 
@@ -37,7 +40,7 @@ public class AdAccountCreateSubscriptionResponse {
   /**
    * Subscription ID.
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "8078432025948590686", description = "Subscription ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -50,42 +53,42 @@ public class AdAccountCreateSubscriptionResponse {
   }
 
   public AdAccountCreateSubscriptionResponse cryptographicKey(String cryptographicKey) {
-    this.cryptographicKey = cryptographicKey;
+    this.cryptographicKey = JsonNullable.of(cryptographicKey);
     return this;
   }
 
   /**
    * Base64 encoded key for client to decrypt lead data.
    * @return cryptographicKey
-  */
+   */
   
   @Schema(name = "cryptographic_key", example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", description = "Base64 encoded key for client to decrypt lead data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cryptographic_key")
-  public String getCryptographicKey() {
+  public JsonNullable<String> getCryptographicKey() {
     return cryptographicKey;
   }
 
-  public void setCryptographicKey(String cryptographicKey) {
+  public void setCryptographicKey(JsonNullable<String> cryptographicKey) {
     this.cryptographicKey = cryptographicKey;
   }
 
   public AdAccountCreateSubscriptionResponse cryptographicAlgorithm(String cryptographicAlgorithm) {
-    this.cryptographicAlgorithm = cryptographicAlgorithm;
+    this.cryptographicAlgorithm = JsonNullable.of(cryptographicAlgorithm);
     return this;
   }
 
   /**
    * Lead data encryption algorithm.
    * @return cryptographicAlgorithm
-  */
+   */
   
   @Schema(name = "cryptographic_algorithm", example = "AES-256-GCM", description = "Lead data encryption algorithm.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cryptographic_algorithm")
-  public String getCryptographicAlgorithm() {
+  public JsonNullable<String> getCryptographicAlgorithm() {
     return cryptographicAlgorithm;
   }
 
-  public void setCryptographicAlgorithm(String cryptographicAlgorithm) {
+  public void setCryptographicAlgorithm(JsonNullable<String> cryptographicAlgorithm) {
     this.cryptographicAlgorithm = cryptographicAlgorithm;
   }
 
@@ -97,7 +100,7 @@ public class AdAccountCreateSubscriptionResponse {
   /**
    * Subscription creation time. Unix timestamp in milliseconds.
    * @return createdTime
-  */
+   */
   
   @Schema(name = "created_time", example = "1699209842000", description = "Subscription creation time. Unix timestamp in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
@@ -119,14 +122,25 @@ public class AdAccountCreateSubscriptionResponse {
     }
     AdAccountCreateSubscriptionResponse adAccountCreateSubscriptionResponse = (AdAccountCreateSubscriptionResponse) o;
     return Objects.equals(this.id, adAccountCreateSubscriptionResponse.id) &&
-        Objects.equals(this.cryptographicKey, adAccountCreateSubscriptionResponse.cryptographicKey) &&
-        Objects.equals(this.cryptographicAlgorithm, adAccountCreateSubscriptionResponse.cryptographicAlgorithm) &&
+        equalsNullable(this.cryptographicKey, adAccountCreateSubscriptionResponse.cryptographicKey) &&
+        equalsNullable(this.cryptographicAlgorithm, adAccountCreateSubscriptionResponse.cryptographicAlgorithm) &&
         Objects.equals(this.createdTime, adAccountCreateSubscriptionResponse.createdTime);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cryptographicKey, cryptographicAlgorithm, createdTime);
+    return Objects.hash(id, hashCodeNullable(cryptographicKey), hashCodeNullable(cryptographicAlgorithm), createdTime);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

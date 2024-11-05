@@ -19,7 +19,7 @@ public class OrderLineError  {
   private OrderLine data;
 
   @ApiModelProperty(value = "")
-  private List<String> errorMessages;
+  private List<String> errorMessages = new ArrayList<>();
  /**
   * Get data
   * @return data

@@ -7,6 +7,7 @@ open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFeedsCreateRequest
 open OpenAPI.Model.CatalogsFeedsCreateRequestDefaultLocale
 open OpenAPI.Model.CatalogsFormat
+open OpenAPI.Model.CatalogsStatus
 open OpenAPI.Model.CatalogsType
 open OpenAPI.Model.CatalogsVerticalFeedsCreateRequest
 open OpenAPI.Model.Country
@@ -29,5 +30,6 @@ module FeedsCreateRequest =
     PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     DefaultCountry : Country;
     DefaultAvailability : ProductAvailabilityType;
+    Status : CatalogsStatus;
   }
   //#endregion

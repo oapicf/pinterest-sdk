@@ -10,10 +10,10 @@ type CatalogsHotelItemsBatch struct {
 	// Id of the catalogs items batch
 	BatchId string `json:"batch_id,omitempty"`
 
-	// Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+	// Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 	CreatedTime time.Time `json:"created_time,omitempty"`
 
-	// Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+	// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	CompletedTime *time.Time `json:"completed_time,omitempty"`
 
 	Status BatchOperationStatus `json:"status,omitempty"`

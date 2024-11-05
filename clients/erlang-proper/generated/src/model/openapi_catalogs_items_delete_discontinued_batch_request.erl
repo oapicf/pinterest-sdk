@@ -10,7 +10,7 @@
 
 -type openapi_catalogs_items_delete_discontinued_batch_request() ::
   [ {'country', openapi_country:openapi_country() }
-  | {'language', openapi_language:openapi_language() }
+  | {'language', openapi_catalogs_items_request_language:openapi_catalogs_items_request_language() }
   | {'operation', openapi_batch_operation:openapi_batch_operation() }
   | {'items', list(openapi_item_delete_discontinued_batch_record:openapi_item_delete_discontinued_batch_record()) }
   ].
@@ -21,7 +21,7 @@ openapi_catalogs_items_delete_discontinued_batch_request() ->
 
 openapi_catalogs_items_delete_discontinued_batch_request(Fields) ->
   Default = [ {'country', openapi_country:openapi_country() }
-            , {'language', openapi_language:openapi_language() }
+            , {'language', openapi_catalogs_items_request_language:openapi_catalogs_items_request_language() }
             , {'operation', openapi_batch_operation:openapi_batch_operation() }
             , {'items', list(openapi_item_delete_discontinued_batch_record:openapi_item_delete_discontinued_batch_record()) }
             ],

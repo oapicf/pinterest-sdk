@@ -62,10 +62,26 @@ public:
 	/*! \brief Set 
 	 */
 	void setResults(std::list <QuizPinResult> results);
+	/*! \brief Get Quiz ad tie breaker type, default is RANDOM
+	 */
+	std::string getTieBreakerType();
+
+	/*! \brief Set Quiz ad tie breaker type, default is RANDOM
+	 */
+	void setTieBreakerType(std::string  tie_breaker_type);
+	/*! \brief Get 
+	 */
+	QuizPinResult getTieBreakerCustomResult();
+
+	/*! \brief Set 
+	 */
+	void setTieBreakerCustomResult(QuizPinResult  tie_breaker_custom_result);
 
 private:
 	std::list <QuizPinQuestion>questions;
 	std::list <QuizPinResult>results;
+	std::string tie_breaker_type;
+	QuizPinResult tie_breaker_custom_result;
 	void __init();
 	void __cleanup();
 

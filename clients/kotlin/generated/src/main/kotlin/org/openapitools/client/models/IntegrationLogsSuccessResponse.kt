@@ -31,5 +31,8 @@ data class IntegrationLogsSuccessResponse (
     @Json(name = "message")
     val message: kotlin.String? = null
 
-)
+) {
+
+
+}
 

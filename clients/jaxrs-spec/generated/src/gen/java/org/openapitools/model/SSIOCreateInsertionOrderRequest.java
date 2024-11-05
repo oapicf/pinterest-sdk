@@ -17,23 +17,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("SSIOCreateInsertionOrderRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOCreateInsertionOrderRequest   {
-  private @Valid String startDate;
-  private @Valid String endDate;
-  private @Valid String poNumber;
-  private @Valid BigDecimal budgetAmount;
-  private @Valid String billingContactFirstname;
-  private @Valid String billingContactLastname;
-  private @Valid String billingContactEmail;
-  private @Valid String mediaContactFirstname;
-  private @Valid String mediaContactLastname;
-  private @Valid String mediaContactEmail;
-  private @Valid String agencyLink;
-  private @Valid String userEmail;
-  private @Valid Integer acceptedTermsTime;
-  private @Valid String pmpId;
-  private @Valid String orderName;
+  private String startDate;
+  private String endDate;
+  private String poNumber;
+  private BigDecimal budgetAmount;
+  private String billingContactFirstname;
+  private String billingContactLastname;
+  private String billingContactEmail;
+  private String mediaContactFirstname;
+  private String mediaContactLastname;
+  private String mediaContactEmail;
+  private String agencyLink;
+  private String userEmail;
+  private Integer acceptedTermsTime;
+  private String pmpId;
+  private String orderName;
   public enum OrderLineTypeEnum {
 
     BUDGET(String.valueOf("BUDGET")), PERPETUALS(String.valueOf("PERPETUALS"));
@@ -81,13 +81,13 @@ public class SSIOCreateInsertionOrderRequest   {
     }
 }
 
-  private @Valid OrderLineTypeEnum orderLineType;
-  private @Valid String acceptedTermsId;
-  private @Valid String billtoCompanyId;
-  private @Valid String billtoBusinessAddressId;
-  private @Valid String billtoBillingAddressId;
-  private @Valid BigDecimal estimatedMonthlySpend;
-  private @Valid Currency currencyInfo;
+  private OrderLineTypeEnum orderLineType;
+  private String acceptedTermsId;
+  private String billtoCompanyId;
+  private String billtoBusinessAddressId;
+  private String billtoBillingAddressId;
+  private BigDecimal estimatedMonthlySpend;
+  private Currency currencyInfo;
 
   /**
    * Starting date of time period. Format: YYYY-MM-DD
@@ -100,8 +100,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(example = "2020-12-20", required = true, value = "Starting date of time period. Format: YYYY-MM-DD")
   @JsonProperty("start_date")
-  @NotNull
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
+  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
     return startDate;
   }
 
@@ -121,7 +120,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
   @JsonProperty("end_date")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getEndDate() {
+   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getEndDate() {
     return endDate;
   }
 
@@ -141,8 +140,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The po number")
   @JsonProperty("po_number")
-  @NotNull
-  public String getPoNumber() {
+  @NotNull public String getPoNumber() {
     return poNumber;
   }
 
@@ -162,7 +160,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
   @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
+  @Valid public BigDecimal getBudgetAmount() {
     return budgetAmount;
   }
 
@@ -182,8 +180,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The billing contact first name")
   @JsonProperty("billing_contact_firstname")
-  @NotNull
-  public String getBillingContactFirstname() {
+  @NotNull public String getBillingContactFirstname() {
     return billingContactFirstname;
   }
 
@@ -203,8 +200,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The billing contact last name")
   @JsonProperty("billing_contact_lastname")
-  @NotNull
-  public String getBillingContactLastname() {
+  @NotNull public String getBillingContactLastname() {
     return billingContactLastname;
   }
 
@@ -224,8 +220,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(example = "test@example", required = true, value = "The billing contact email")
   @JsonProperty("billing_contact_email")
-  @NotNull
-  public String getBillingContactEmail() {
+  @NotNull public String getBillingContactEmail() {
     return billingContactEmail;
   }
 
@@ -245,8 +240,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The media contact first name")
   @JsonProperty("media_contact_firstname")
-  @NotNull
-  public String getMediaContactFirstname() {
+  @NotNull public String getMediaContactFirstname() {
     return mediaContactFirstname;
   }
 
@@ -266,8 +260,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The media contact last name")
   @JsonProperty("media_contact_lastname")
-  @NotNull
-  public String getMediaContactLastname() {
+  @NotNull public String getMediaContactLastname() {
     return mediaContactLastname;
   }
 
@@ -287,8 +280,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(example = "test@example", required = true, value = "The media contact email")
   @JsonProperty("media_contact_email")
-  @NotNull
-  public String getMediaContactEmail() {
+  @NotNull public String getMediaContactEmail() {
     return mediaContactEmail;
   }
 
@@ -368,8 +360,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The pmp id")
   @JsonProperty("pmp_id")
-  @NotNull
-  public String getPmpId() {
+  @NotNull public String getPmpId() {
     return pmpId;
   }
 
@@ -389,8 +380,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The order name")
   @JsonProperty("order_name")
-  @NotNull
-  public String getOrderName() {
+  @NotNull public String getOrderName() {
     return orderName;
   }
 
@@ -410,8 +400,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "Type can be Budget or Perpetual")
   @JsonProperty("order_line_type")
-  @NotNull
-  public OrderLineTypeEnum getOrderLineType() {
+  @NotNull public OrderLineTypeEnum getOrderLineType() {
     return orderLineType;
   }
 
@@ -431,8 +420,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The SFDC id for the terms")
   @JsonProperty("accepted_terms_id")
-  @NotNull
-  public String getAcceptedTermsId() {
+  @NotNull public String getAcceptedTermsId() {
     return acceptedTermsId;
   }
 
@@ -452,8 +440,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The bill-to company id")
   @JsonProperty("billto_company_id")
-  @NotNull
-  public String getBilltoCompanyId() {
+  @NotNull public String getBilltoCompanyId() {
     return billtoCompanyId;
   }
 
@@ -473,8 +460,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The bill-to business address id")
   @JsonProperty("billto_business_address_id")
-  @NotNull
-  public String getBilltoBusinessAddressId() {
+  @NotNull public String getBilltoBusinessAddressId() {
     return billtoBusinessAddressId;
   }
 
@@ -494,8 +480,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "The bill-to billing address id")
   @JsonProperty("billto_billing_address_id")
-  @NotNull
-  public String getBilltoBillingAddressId() {
+  @NotNull public String getBilltoBillingAddressId() {
     return billtoBillingAddressId;
   }
 
@@ -515,7 +500,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
   @JsonProperty("estimated_monthly_spend")
-  public BigDecimal getEstimatedMonthlySpend() {
+  @Valid public BigDecimal getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;
   }
 
@@ -534,8 +519,7 @@ public class SSIOCreateInsertionOrderRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("currency_info")
-  @NotNull
-  public Currency getCurrencyInfo() {
+  @NotNull public Currency getCurrencyInfo() {
     return currencyInfo;
   }
 

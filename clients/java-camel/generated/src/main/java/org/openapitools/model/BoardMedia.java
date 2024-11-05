@@ -26,13 +26,13 @@ import javax.annotation.Generated;
 
 @Schema(name = "Board_media", description = "Board media.")
 @JsonTypeName("Board_media")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BoardMedia {
 
   private JsonNullable<String> imageCoverUrl = JsonNullable.<String>undefined();
 
   @Valid
-  private List<String> pinThumbnailUrls;
+  private List<String> pinThumbnailUrls = new ArrayList<>();
 
   public BoardMedia imageCoverUrl(String imageCoverUrl) {
     this.imageCoverUrl = JsonNullable.of(imageCoverUrl);
@@ -42,7 +42,7 @@ public class BoardMedia {
   /**
    * Board cover image.
    * @return imageCoverUrl
-  */
+   */
   
   @Schema(name = "image_cover_url", example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", description = "Board cover image.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_cover_url")
@@ -70,7 +70,7 @@ public class BoardMedia {
   /**
    * Board pin thumbnail urls.
    * @return pinThumbnailUrls
-  */
+   */
   
   @Schema(name = "pin_thumbnail_urls", example = "[\"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\",\"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\",\"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\",\"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\"]", description = "Board pin thumbnail urls.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_thumbnail_urls")

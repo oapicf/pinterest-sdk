@@ -33,16 +33,16 @@ public class CatalogsHotelItemsBatch  {
   private String batchId;
 
  /**
-  * Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+  * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
   */
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date createdTime;
 
  /**
-  * Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+  * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   */
-  @ApiModelProperty(example = "2022-03-10T15:37:10Z", value = "Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD")
+  @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date completedTime;
 
@@ -59,7 +59,7 @@ public class CatalogsHotelItemsBatch  {
   */
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
   @Valid
-  private List<@Valid HotelProcessingRecord> items;
+  private List<@Valid HotelProcessingRecord> items = new ArrayList<>();
  /**
   * Id of the catalogs items batch
   * @return batchId
@@ -85,7 +85,7 @@ public class CatalogsHotelItemsBatch  {
   }
 
  /**
-  * Time of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+  * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
   * @return createdTime
   */
   @JsonProperty("created_time")
@@ -111,7 +111,7 @@ public class CatalogsHotelItemsBatch  {
   }
 
  /**
-  * Time of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ssTZD
+  * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
   * @return completedTime
   */
   @JsonProperty("completed_time")

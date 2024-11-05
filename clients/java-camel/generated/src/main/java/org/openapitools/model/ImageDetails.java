@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * ImageDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageDetails {
 
   private Integer width;
@@ -49,7 +49,7 @@ public class ImageDetails {
    * Get width
    * minimum: 100
    * @return width
-  */
+   */
   @NotNull @Min(100) 
   @Schema(name = "width", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("width")
@@ -70,7 +70,7 @@ public class ImageDetails {
    * Get height
    * minimum: 100
    * @return height
-  */
+   */
   @NotNull @Min(100) 
   @Schema(name = "height", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("height")
@@ -90,7 +90,7 @@ public class ImageDetails {
   /**
    * Get url
    * @return url
-  */
+   */
   @NotNull 
   @Schema(name = "url", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("url")

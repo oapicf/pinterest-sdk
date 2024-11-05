@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("CatalogsProductGroupFiltersRequest_anyOf_1")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupFiltersRequestAnyOf1 {
 
   @Valid
@@ -57,7 +57,7 @@ public class CatalogsProductGroupFiltersRequestAnyOf1 {
   /**
    * Get allOf
    * @return allOf
-  */
+   */
   @NotNull @Valid @Size(min = 1) 
   @Schema(name = "all_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("all_of")

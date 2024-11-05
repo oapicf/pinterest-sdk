@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ConversionEvent** | **String** |  | [optional] 
 **ConversionTagId** | **String** |  | [optional] 
 **CpaGoalValueInMicroCurrency** | **String** |  | [optional] 
-**IsRoasOptimized** | **Boolean** | Ad group is ROAS optimized | [optional] 
+**IsRoasOptimized** | **Boolean** | ROAS optimization is not supported | [optional] 
 **LearningModeType** | **String** | Conversion learning model type | [optional] 
 
 ## Examples

@@ -1,8 +1,11 @@
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
-import org.openapitools.model.CatalogsListProductsByFilterRequestOneOf;
+import org.openapitools.model.CatalogsListProductsByFeedBasedFilter;
+import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFilters;
+import org.openapitools.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest;
+import org.openapitools.model.Country;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;

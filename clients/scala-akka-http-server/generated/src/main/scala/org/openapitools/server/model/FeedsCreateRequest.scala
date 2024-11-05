@@ -12,7 +12,8 @@ package org.openapitools.server.model
  * @param catalogType  for example: ''null''
  * @param defaultCountry  for example: ''null''
  * @param defaultAvailability  for example: ''null''
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. for example: ''null''
+ * @param status  for example: ''null''
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. for example: ''null''
 */
 final case class FeedsCreateRequest (
   defaultCurrency: Option[NullableCurrency] = None,
@@ -25,6 +26,7 @@ final case class FeedsCreateRequest (
   catalogType: CatalogsType,
   defaultCountry: Country,
   defaultAvailability: Option[ProductAvailabilityType] = None,
+  status: Option[CatalogsStatus] = None,
   catalogId: Option[String] = None
 )
 

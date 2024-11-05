@@ -25,9 +25,9 @@ public class HotelProcessingRecord   {
   
   private String hotelId;
 
-  private List<@Valid ItemValidationEvent> errors;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
-  private List<@Valid ItemValidationEvent> warnings;
+  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   private ItemProcessingStatus status;
 

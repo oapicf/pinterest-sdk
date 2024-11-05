@@ -77,6 +77,7 @@ private class OASLeadFormResponseTest {
         System.assertEquals('hasAcceptedTerms', x-property-mappings.get('has_accepted_terms'));
         System.assertEquals('completionMessage', x-property-mappings.get('completion_message'));
         System.assertEquals('disclosureLanguage', x-property-mappings.get('disclosure_language'));
+        System.assertEquals('policyLinks', x-property-mappings.get('policy_links'));
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
         System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
@@ -86,6 +87,7 @@ private class OASLeadFormResponseTest {
     private static void defaultValuesPopulated() {
         OASLeadFormResponse leadFormResponse = new OASLeadFormResponse();
         System.assertEquals(new List<OASLeadFormQuestion>(), leadFormResponse.questions);
+        System.assertEquals(new List<OASLeadFormCommonPolicyLinksInner>(), leadFormResponse.policyLinks);
         System.assertEquals(null, leadFormResponse.name);
         System.assertEquals(null, leadFormResponse.privacyPolicyLink);
         System.assertEquals(null, leadFormResponse.hasAcceptedTerms);

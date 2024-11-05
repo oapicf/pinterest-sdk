@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] in BETA. For update, only draft campaigns may update objective type.
+ * Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
  *
- * Values: AWARENESS,CONSIDERATION,VIDEO_VIEW,WEB_CONVERSION,CATALOG_SALES,WEB_SESSIONS
+ * Values: AWARENESS,CONSIDERATION,VIDEO_VIEW,WEB_CONVERSION,CATALOG_SALES,WEB_SESSIONS,VIDEO_COMPLETION
  */
 
 @JsonClass(generateAdapter = false)
@@ -44,7 +44,10 @@ enum class ObjectiveType(val value: kotlin.String) {
     CATALOG_SALES("CATALOG_SALES"),
 
     @Json(name = "WEB_SESSIONS")
-    WEB_SESSIONS("WEB_SESSIONS");
+    WEB_SESSIONS("WEB_SESSIONS"),
+
+    @Json(name = "VIDEO_COMPLETION")
+    VIDEO_COMPLETION("VIDEO_COMPLETION");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -43,7 +43,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Pinterest REST API API v5.12.0
+// APIClient manages communication with the Pinterest REST API API v5.14.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -57,7 +57,11 @@ type APIClient struct {
 
 	AdsAPI *AdsAPIService
 
+	AdvancedAuctionAPI *AdvancedAuctionAPIService
+
 	AudienceInsightsAPI *AudienceInsightsAPIService
+
+	AudienceSharingAPI *AudienceSharingAPIService
 
 	AudiencesAPI *AudiencesAPIService
 
@@ -66,6 +70,12 @@ type APIClient struct {
 	BoardsAPI *BoardsAPIService
 
 	BulkAPI *BulkAPIService
+
+	BusinessAccessAssetsAPI *BusinessAccessAssetsAPIService
+
+	BusinessAccessInviteAPI *BusinessAccessInviteAPIService
+
+	BusinessAccessRelationshipsAPI *BusinessAccessRelationshipsAPIService
 
 	CampaignsAPI *CampaignsAPIService
 
@@ -85,6 +95,8 @@ type APIClient struct {
 
 	LeadFormsAPI *LeadFormsAPIService
 
+	LeadsExportAPI *LeadsExportAPIService
+
 	MediaAPI *MediaAPIService
 
 	OauthAPI *OauthAPIService
@@ -95,11 +107,11 @@ type APIClient struct {
 
 	ProductGroupPromotionsAPI *ProductGroupPromotionsAPIService
 
-	ProductGroupsAPI *ProductGroupsAPIService
-
 	ResourcesAPI *ResourcesAPIService
 
 	SearchAPI *SearchAPIService
+
+	TargetingTemplateAPI *TargetingTemplateAPIService
 
 	TermsAPI *TermsAPIService
 
@@ -127,11 +139,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AdAccountsAPI = (*AdAccountsAPIService)(&c.common)
 	c.AdGroupsAPI = (*AdGroupsAPIService)(&c.common)
 	c.AdsAPI = (*AdsAPIService)(&c.common)
+	c.AdvancedAuctionAPI = (*AdvancedAuctionAPIService)(&c.common)
 	c.AudienceInsightsAPI = (*AudienceInsightsAPIService)(&c.common)
+	c.AudienceSharingAPI = (*AudienceSharingAPIService)(&c.common)
 	c.AudiencesAPI = (*AudiencesAPIService)(&c.common)
 	c.BillingAPI = (*BillingAPIService)(&c.common)
 	c.BoardsAPI = (*BoardsAPIService)(&c.common)
 	c.BulkAPI = (*BulkAPIService)(&c.common)
+	c.BusinessAccessAssetsAPI = (*BusinessAccessAssetsAPIService)(&c.common)
+	c.BusinessAccessInviteAPI = (*BusinessAccessInviteAPIService)(&c.common)
+	c.BusinessAccessRelationshipsAPI = (*BusinessAccessRelationshipsAPIService)(&c.common)
 	c.CampaignsAPI = (*CampaignsAPIService)(&c.common)
 	c.CatalogsAPI = (*CatalogsAPIService)(&c.common)
 	c.ConversionEventsAPI = (*ConversionEventsAPIService)(&c.common)
@@ -141,14 +158,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.KeywordsAPI = (*KeywordsAPIService)(&c.common)
 	c.LeadAdsAPI = (*LeadAdsAPIService)(&c.common)
 	c.LeadFormsAPI = (*LeadFormsAPIService)(&c.common)
+	c.LeadsExportAPI = (*LeadsExportAPIService)(&c.common)
 	c.MediaAPI = (*MediaAPIService)(&c.common)
 	c.OauthAPI = (*OauthAPIService)(&c.common)
 	c.OrderLinesAPI = (*OrderLinesAPIService)(&c.common)
 	c.PinsAPI = (*PinsAPIService)(&c.common)
 	c.ProductGroupPromotionsAPI = (*ProductGroupPromotionsAPIService)(&c.common)
-	c.ProductGroupsAPI = (*ProductGroupsAPIService)(&c.common)
 	c.ResourcesAPI = (*ResourcesAPIService)(&c.common)
 	c.SearchAPI = (*SearchAPIService)(&c.common)
+	c.TargetingTemplateAPI = (*TargetingTemplateAPIService)(&c.common)
 	c.TermsAPI = (*TermsAPIService)(&c.common)
 	c.TermsOfServiceAPI = (*TermsOfServiceAPIService)(&c.common)
 	c.UserAccountAPI = (*UserAccountAPIService)(&c.common)
@@ -225,7 +243,7 @@ func parameterValueToString( obj interface{}, key string ) string {
 
 // parameterAddToHeaderOrQuery adds the provided object to the request header or url query
 // supporting deep object syntax
-func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
+func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, style string, collectionType string) {
 	var v = reflect.ValueOf(obj)
 	var value = ""
 	if v == reflect.ValueOf(nil) {
@@ -241,11 +259,11 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 					if err != nil {
 						return
 					}
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, collectionType)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, style, collectionType)
 					return
 				}
 				if t, ok := obj.(time.Time); ok {
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339Nano), style, collectionType)
 					return
 				}
 				value = v.Type().String() + " value"
@@ -257,7 +275,11 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 				var lenIndValue = indValue.Len()
 				for i:=0;i<lenIndValue;i++ {
 					var arrayValue = indValue.Index(i)
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
+					var keyPrefixForCollectionType = keyPrefix
+					if style == "deepObject" {
+						keyPrefixForCollectionType = keyPrefix + "[" + strconv.Itoa(i) + "]"
+					}
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefixForCollectionType, arrayValue.Interface(), style, collectionType)
 				}
 				return
 
@@ -269,14 +291,14 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 				iter := indValue.MapRange()
 				for iter.Next() {
 					k,v := iter.Key(), iter.Value()
-					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), style, collectionType)
 				}
 				return
 
 			case reflect.Interface:
 				fallthrough
 			case reflect.Ptr:
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), style, collectionType)
 				return
 
 			case reflect.Int, reflect.Int8, reflect.Int16,
@@ -595,18 +617,6 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	_, err = io.Copy(part, file)
 
 	return err
-}
-
-// Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) error {
-	return fmt.Errorf(format, a...)
-}
-
-// A wrapper for strict JSON decoding
-func newStrictDecoder(data []byte) *json.Decoder {
-	dec := json.NewDecoder(bytes.NewBuffer(data))
-	dec.DisallowUnknownFields()
-	return dec
 }
 
 // Set request body from an interface{}

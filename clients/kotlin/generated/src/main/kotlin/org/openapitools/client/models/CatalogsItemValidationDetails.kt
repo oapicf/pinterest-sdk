@@ -37,5 +37,8 @@ data class CatalogsItemValidationDetails (
     @Json(name = "provided_value")
     val providedValue: kotlin.String?
 
-)
+) {
+
+
+}
 

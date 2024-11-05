@@ -7,8 +7,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupCreateRequest;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroupCreateRequest;
-import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsLocale;
+import org.openapitools.model.CatalogsRetailProductGroupCreateRequest;
+import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,19 +21,21 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a hotel product group.
+  * Request object for creating a catalog based product group.
  **/
-@ApiModel(description="Request object for creating a hotel product group.")
+@ApiModel(description="Request object for creating a catalog based product group.")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupCreateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroupCreateRequest.class, name = "HOTEL"),
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroupCreateRequest.class, name = "RETAIL"),
 })
 
 public class CatalogsVerticalProductGroupCreateRequest  {
   
 public enum CatalogTypeEnum {
 
-HOTEL(String.valueOf("HOTEL"));
+CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
 
     private String value;
@@ -70,13 +76,21 @@ HOTEL(String.valueOf("HOTEL"));
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private CatalogsHotelProductGroupFilters filters;
+  private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
  /**
-   * Catalog id pertaining to the hotel product group.
+   * Catalog id pertaining to the creative assets product group.
   **/
   private String catalogId;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private Country country;
+
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsLocale locale;
  /**
    * Get catalogType
    * @return catalogType
@@ -142,21 +156,21 @@ HOTEL(String.valueOf("HOTEL"));
   **/
   @JsonProperty("filters")
   @NotNull
-  public CatalogsHotelProductGroupFilters getFilters() {
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
 
-  public void setFilters(CatalogsHotelProductGroupFilters filters) {
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
 
-  public CatalogsVerticalProductGroupCreateRequest filters(CatalogsHotelProductGroupFilters filters) {
+  public CatalogsVerticalProductGroupCreateRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
 
  /**
-   * Catalog id pertaining to the hotel product group.
+   * Catalog id pertaining to the creative assets product group.
    * @return catalogId
   **/
   @JsonProperty("catalog_id")
@@ -174,6 +188,44 @@ HOTEL(String.valueOf("HOTEL"));
     return this;
   }
 
+ /**
+   * Get country
+   * @return country
+  **/
+  @JsonProperty("country")
+  @NotNull
+  public Country getCountry() {
+    return country;
+  }
+
+  public void setCountry(Country country) {
+    this.country = country;
+  }
+
+  public CatalogsVerticalProductGroupCreateRequest country(Country country) {
+    this.country = country;
+    return this;
+  }
+
+ /**
+   * Get locale
+   * @return locale
+  **/
+  @JsonProperty("locale")
+  @NotNull
+  public CatalogsLocale getLocale() {
+    return locale;
+  }
+
+  public void setLocale(CatalogsLocale locale) {
+    this.locale = locale;
+  }
+
+  public CatalogsVerticalProductGroupCreateRequest locale(CatalogsLocale locale) {
+    this.locale = locale;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -187,12 +239,14 @@ HOTEL(String.valueOf("HOTEL"));
         Objects.equals(this.name, catalogsVerticalProductGroupCreateRequest.name) &&
         Objects.equals(this.description, catalogsVerticalProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsVerticalProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsVerticalProductGroupCreateRequest.catalogId);
+        Objects.equals(this.catalogId, catalogsVerticalProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.country, catalogsVerticalProductGroupCreateRequest.country) &&
+        Objects.equals(this.locale, catalogsVerticalProductGroupCreateRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
   }
 
   @Override
@@ -205,6 +259,8 @@ HOTEL(String.valueOf("HOTEL"));
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

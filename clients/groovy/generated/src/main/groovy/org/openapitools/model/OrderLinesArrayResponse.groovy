@@ -10,5 +10,5 @@ import org.openapitools.model.OrderLines;
 @Canonical
 class OrderLinesArrayResponse {
     
-    List<OrderLines> items
+    List<OrderLines> items = new ArrayList<>()
 }

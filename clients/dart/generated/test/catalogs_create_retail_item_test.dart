@@ -27,7 +27,7 @@ void main() {
       // TODO
     });
 
-    // ItemAttributes attributes
+    // ItemAttributesRequest attributes
     test('to test the property `attributes`', () async {
       // TODO
     });

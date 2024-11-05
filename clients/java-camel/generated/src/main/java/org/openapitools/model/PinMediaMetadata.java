@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * PinMediaMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaMetadata {
 
   private String itemType;
@@ -56,7 +56,7 @@ public class PinMediaMetadata {
   /**
    * Get itemType
    * @return itemType
-  */
+   */
   
   @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_type")
@@ -76,7 +76,7 @@ public class PinMediaMetadata {
   /**
    * Get title
    * @return title
-  */
+   */
   
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
@@ -96,7 +96,7 @@ public class PinMediaMetadata {
   /**
    * Get description
    * @return description
-  */
+   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
@@ -116,7 +116,7 @@ public class PinMediaMetadata {
   /**
    * Get link
    * @return link
-  */
+   */
   
   @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
@@ -136,7 +136,7 @@ public class PinMediaMetadata {
   /**
    * Get images
    * @return images
-  */
+   */
   @Valid 
   @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("images")
@@ -156,7 +156,7 @@ public class PinMediaMetadata {
   /**
    * Get coverImageUrl
    * @return coverImageUrl
-  */
+   */
   
   @Schema(name = "cover_image_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_url")
@@ -176,7 +176,7 @@ public class PinMediaMetadata {
   /**
    * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
    * @return videoUrl
-  */
+   */
   
   @Schema(name = "video_url", description = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("video_url")
@@ -196,7 +196,7 @@ public class PinMediaMetadata {
   /**
    * Duration (in milliseconds)
    * @return duration
-  */
+   */
   @Valid 
   @Schema(name = "duration", description = "Duration (in milliseconds)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("duration")
@@ -216,7 +216,7 @@ public class PinMediaMetadata {
   /**
    * Height (in pixels)
    * @return height
-  */
+   */
   
   @Schema(name = "height", description = "Height (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("height")
@@ -236,7 +236,7 @@ public class PinMediaMetadata {
   /**
    * Width (in pixels)
    * @return width
-  */
+   */
   
   @Schema(name = "width", description = "Width (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("width")

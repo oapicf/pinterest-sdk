@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.AudienceDataParty
@@ -49,7 +50,7 @@ data class AudienceCreateCustomRequest(
 
     @Schema(example = "DLX Demographics", description = "")
     @get:JsonProperty("category") val category: kotlin.String? = null
-) {
+    ) {
 
 }
 

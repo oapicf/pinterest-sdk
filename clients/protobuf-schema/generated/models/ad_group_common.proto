@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -15,13 +15,13 @@ syntax = "proto3";
 package openapitools;
 
 import public "models/action_type.proto";
-import public "models/ad_group_common_optimization_goal_metadata.proto";
-import public "models/ad_group_common_tracking_urls.proto";
 import public "models/budget_type.proto";
 import public "models/entity_status.proto";
+import public "models/optimization_goal_metadata.proto";
 import public "models/pacing_delivery_type.proto";
 import public "models/placement_group_type.proto";
 import public "models/targeting_spec.proto";
+import public "models/tracking_urls.proto";
 
 message AdGroupCommon {
 
@@ -37,7 +37,8 @@ message AdGroupCommon {
   // Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
   optional int32 bid_in_micro_currency = 240774461;
 
-  AdGroupCommonOptimizationGoalMetadata optimization_goal_metadata = 408245129;
+  // Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+  OptimizationGoalMetadata optimization_goal_metadata = 408245129;
 
   BudgetType budget_type = 95050740;
 
@@ -49,15 +50,16 @@ message AdGroupCommon {
 
   TargetingSpec targeting_spec = 390265209;
 
-  // Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  // Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
   int32 lifetime_frequency_cap = 56772729;
 
-  AdGroupCommonTrackingUrls tracking_urls = 127999343;
+  // Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+  TrackingUrls tracking_urls = 127999343;
 
   // Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
   optional bool auto_targeting_enabled = 198163236;
 
-  // <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+  // <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
   PlacementGroupType placement_group = 377023656;
 
   PacingDeliveryType pacing_delivery_type = 275366071;
@@ -67,14 +69,16 @@ message AdGroupCommon {
 
   ActionType billable_event = 97486524;
 
-  // Bid strategy type
+  // Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
   enum Bid_strategy_typeEnum {
     Bid_strategy_typeEnum_AUTOMATIC_BID = 0;
     Bid_strategy_typeEnum_MAX_BID = 1;
     Bid_strategy_typeEnum_TARGET_AVG = 2;
-    Bid_strategy_typeEnum_NULL = 3;
   }
 
   Bid_strategy_typeEnum bid_strategy_type = 390800580;
+
+  // Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+  repeated string targeting_template_ids = 75703873;
 
 }

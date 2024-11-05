@@ -19,8 +19,7 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
     `catalog_type` = NULL,
     `item_id` = NULL,
     `errors` = NULL,
-    #' Initialize a new CatalogsRetailItemErrorResponse class.
-    #'
+
     #' @description
     #' Initialize a new CatalogsRetailItemErrorResponse class.
     #'
@@ -28,7 +27,6 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
     #' @param item_id The catalog item id in the merchant namespace
     #' @param errors Array with the errors for the item id requested
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`catalog_type`, `item_id` = NULL, `errors` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
@@ -49,13 +47,11 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
         self$`errors` <- `errors`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailItemErrorResponse in JSON format
-    #' @export
     toJSON = function() {
       CatalogsRetailItemErrorResponseObject <- list()
       if (!is.null(self$`catalog_type`)) {
@@ -72,14 +68,12 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
       }
       CatalogsRetailItemErrorResponseObject
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailItemErrorResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailItemErrorResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailItemErrorResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`catalog_type`)) {
@@ -95,13 +89,11 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CatalogsRetailItemErrorResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`catalog_type`)) {
@@ -132,14 +124,12 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CatalogsRetailItemErrorResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsRetailItemErrorResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of CatalogsRetailItemErrorResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
@@ -147,13 +137,11 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
       self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CatalogsRetailItemErrorResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to CatalogsRetailItemErrorResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `catalog_type`
@@ -163,23 +151,19 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailItemErrorResponse: the required field `catalog_type` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CatalogsRetailItemErrorResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
@@ -188,13 +172,11 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `catalog_type` is null
@@ -204,12 +186,9 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

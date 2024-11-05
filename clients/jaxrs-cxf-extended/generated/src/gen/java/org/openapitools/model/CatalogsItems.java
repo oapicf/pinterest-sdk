@@ -25,7 +25,7 @@ public class CatalogsItems  {
   */
   @ApiModelProperty(value = "Array with catalogs items")
   @Valid
-  private List<@Valid ItemResponse> items;
+  private List<@Valid ItemResponse> items = new ArrayList<>();
  /**
   * Array with catalogs items
   * @return items

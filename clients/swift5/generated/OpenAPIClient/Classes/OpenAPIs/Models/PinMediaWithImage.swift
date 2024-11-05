@@ -14,9 +14,9 @@ import AnyCodable
 public struct PinMediaWithImage: Codable, JSONEncodable, Hashable {
 
     public var mediaType: String?
-    public var images: ImageMetadataImages?
+    public var images: PinMediaWithImageAllOfImages?
 
-    public init(mediaType: String? = nil, images: ImageMetadataImages? = nil) {
+    public init(mediaType: String? = nil, images: PinMediaWithImageAllOfImages? = nil) {
         self.mediaType = mediaType
         self.images = images
     }

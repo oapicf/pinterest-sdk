@@ -49,11 +49,11 @@ public class TargetingSpecTest {
     }
 
     /**
-     * Test the property 'auDIENCEINCLUDEQuote'
+     * Test the property 'AUDIENCE_INCLUDE'
      */
     @Test
-    public void auDIENCEINCLUDEQuoteTest() {
-        // TODO: test auDIENCEINCLUDEQuote
+    public void AUDIENCE_INCLUDETest() {
+        // TODO: test AUDIENCE_INCLUDE
     }
 
     /**

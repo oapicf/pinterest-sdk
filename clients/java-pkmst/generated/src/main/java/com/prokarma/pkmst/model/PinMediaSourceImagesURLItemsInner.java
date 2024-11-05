@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * PinMediaSourceImagesURLItemsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImagesURLItemsInner   {
   @JsonProperty("title")
   private String title;
@@ -34,10 +34,10 @@ public class PinMediaSourceImagesURLItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTitle() {
     return title;
@@ -52,10 +52,10 @@ public class PinMediaSourceImagesURLItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -70,10 +70,10 @@ public class PinMediaSourceImagesURLItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * Destination link for the image.
    * @return link
-  **/
+   */
   @ApiModelProperty(value = "Destination link for the image.")
   public String getLink() {
     return link;
@@ -88,10 +88,10 @@ public class PinMediaSourceImagesURLItemsInner   {
     return this;
   }
 
-   /**
+  /**
    * URL of image to upload.
    * @return url
-  **/
+   */
   @ApiModelProperty(required = true, value = "URL of image to upload.")
   public String getUrl() {
     return url;

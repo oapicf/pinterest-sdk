@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -67,16 +68,24 @@ data class Account(
 
     @Schema(example = "163", readOnly = true, description = "User account monthly views.")
     @get:JsonProperty("monthly_views") val monthlyViews: kotlin.Int? = null
-) {
+    ) {
 
     /**
     * Type of account
     * Values: PINNER,BUSINESS
     */
-    enum class AccountType(val value: kotlin.String) {
+    enum class AccountType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("PINNER") PINNER("PINNER"),
-        @JsonProperty("BUSINESS") BUSINESS("BUSINESS")
+        PINNER("PINNER"),
+        BUSINESS("BUSINESS");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): AccountType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

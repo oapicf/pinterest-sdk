@@ -16,7 +16,7 @@ public class DeliveryMetricsResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid DeliveryMetricsResponseItemsInner> items;
+  private List<@Valid DeliveryMetricsResponseItemsInner> items = new ArrayList<>();
  /**
    * Get items
    * @return items

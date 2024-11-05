@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **pinCount** | `Integer` | Count of pins on the board. |  [optional property] [readonly property]
 **followerCount** | `Integer` | Board follower count. |  [optional property] [readonly property]
 **media** | [`BoardMedia`](BoardMedia.md) |  |  [optional property]
-**owner** | [`BoardOwner`](BoardOwner.md) |  |  [optional property]
+**owner** | [`BoardOwner`](BoardOwner.md) |  |  [optional property] [readonly property]
 **privacy** | [**PrivacyEnum**](#PrivacyEnum) | Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt; |  [optional property]
 
 

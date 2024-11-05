@@ -18,7 +18,7 @@ import java.util.List;
  * SSIOAccountItem
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountItem   {
   @JsonProperty("id")
   private String id;
@@ -53,10 +53,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce id for billto_info
    * @return id
-  **/
+   */
   @ApiModelProperty(example = "0011N00001LW8kAQAT", value = "Salesforce id for billto_info")
   public String getId() {
     return id;
@@ -71,10 +71,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce id for IO Terms and Conditions
    * @return ioTermsId
-  **/
+   */
   @ApiModelProperty(example = "a2S1N000000bKHgUAM", value = "Salesforce id for IO Terms and Conditions")
   public String getIoTermsId() {
     return ioTermsId;
@@ -89,10 +89,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce text for IO Terms and Conditions
    * @return ioTerms
-  **/
+   */
   @ApiModelProperty(example = "The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", value = "Salesforce text for IO Terms and Conditions")
   public String getIoTerms() {
     return ioTerms;
@@ -107,10 +107,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce id for US Terms and Conditions
    * @return usTermsId
-  **/
+   */
   @ApiModelProperty(example = "a2S1N000000bKIOUA2", value = "Salesforce id for US Terms and Conditions")
   public String getUsTermsId() {
     return usTermsId;
@@ -125,10 +125,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce text for US Terms and Conditions
    * @return usTerms
-  **/
+   */
   @ApiModelProperty(example = "This Insertion Order (\"IO\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", value = "Salesforce text for US Terms and Conditions")
   public String getUsTerms() {
     return usTerms;
@@ -143,10 +143,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce id for Rest of the World Terms and Conditions
    * @return rowTermsId
-  **/
+   */
   @ApiModelProperty(example = "a2S1N000000bKHhUAM", value = "Salesforce id for Rest of the World Terms and Conditions")
   public String getRowTermsId() {
     return rowTermsId;
@@ -161,10 +161,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Salesforce text for Rest of the World Terms and Conditions
    * @return rowTerms
-  **/
+   */
   @ApiModelProperty(example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
   public String getRowTerms() {
     return rowTerms;
@@ -179,10 +179,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Insertion Order Type - Pinterest Paper or Agency Paper
    * @return ioType
-  **/
+   */
   @ApiModelProperty(example = "Pinterest Paper", value = "Insertion Order Type - Pinterest Paper or Agency Paper")
   public String getIoType() {
     return ioType;
@@ -205,10 +205,10 @@ public class SSIOAccountItem   {
     return this;
   }
 
-   /**
+  /**
    * Address information that is associated with this account.
    * @return addresses
-  **/
+   */
   @ApiModelProperty(value = "Address information that is associated with this account.")
   public List<SSIOAccountAddress> getAddresses() {
     return addresses;

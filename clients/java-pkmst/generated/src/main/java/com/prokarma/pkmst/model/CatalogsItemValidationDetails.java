@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsItemValidationDetails
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationDetails   {
   @JsonProperty("attribute_name")
   private NullableCatalogsItemFieldType attributeName;
@@ -29,10 +29,10 @@ public class CatalogsItemValidationDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get attributeName
    * @return attributeName
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public NullableCatalogsItemFieldType getAttributeName() {
     return attributeName;
@@ -47,10 +47,10 @@ public class CatalogsItemValidationDetails   {
     return this;
   }
 
-   /**
+  /**
    * Provided value that caused the validation issue.
    * @return providedValue
-  **/
+   */
   @ApiModelProperty(required = true, value = "Provided value that caused the validation issue.")
   public String getProvidedValue() {
     return providedValue;

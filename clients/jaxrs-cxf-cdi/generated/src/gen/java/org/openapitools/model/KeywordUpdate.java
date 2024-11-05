@@ -62,8 +62,7 @@ public class KeywordUpdate   {
 
 
   /**
-   * Keyword custom bid in microcurrency - null if inherited from parent ad group.
-   * minimum: 1
+   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
    **/
   public KeywordUpdate bid(Integer bid) {
     this.bid = bid;
@@ -71,9 +70,9 @@ public class KeywordUpdate   {
   }
 
   
-  @ApiModelProperty(example = "200000", value = "Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
   @JsonProperty("bid")
- @Min(1)  public Integer getBid() {
+  public Integer getBid() {
     return bid;
   }
   public void setBid(Integer bid) {

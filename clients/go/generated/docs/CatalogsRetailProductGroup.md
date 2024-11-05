@@ -14,13 +14,16 @@ Name | Type | Description | Notes
 **Status** | Pointer to [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] 
 **CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**FeedId** | **NullableString** |  | 
+**CatalogId** | **string** | Catalog id pertaining to the retail product group. | 
+**FeedId** | **NullableString** | id of the catalogs feed belonging to this catalog product group | 
+**Country** | Pointer to **NullableString** |  | [optional] 
+**Locale** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewCatalogsRetailProductGroup
 
-`func NewCatalogsRetailProductGroup(catalogType string, id string, filters CatalogsProductGroupFilters, feedId NullableString, ) *CatalogsRetailProductGroup`
+`func NewCatalogsRetailProductGroup(catalogType string, id string, filters CatalogsProductGroupFilters, catalogId string, feedId NullableString, ) *CatalogsRetailProductGroup`
 
 NewCatalogsRetailProductGroup instantiates a new CatalogsRetailProductGroup object
 This constructor will assign default values to properties that have it defined,
@@ -280,6 +283,26 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
+### GetCatalogId
+
+`func (o *CatalogsRetailProductGroup) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsRetailProductGroup) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsRetailProductGroup) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
+
 ### GetFeedId
 
 `func (o *CatalogsRetailProductGroup) GetFeedId() string`
@@ -310,6 +333,76 @@ SetFeedId sets FeedId field to given value.
 `func (o *CatalogsRetailProductGroup) UnsetFeedId()`
 
 UnsetFeedId ensures that no value is present for FeedId, not even an explicit nil
+### GetCountry
+
+`func (o *CatalogsRetailProductGroup) GetCountry() string`
+
+GetCountry returns the Country field if non-nil, zero value otherwise.
+
+### GetCountryOk
+
+`func (o *CatalogsRetailProductGroup) GetCountryOk() (*string, bool)`
+
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountry
+
+`func (o *CatalogsRetailProductGroup) SetCountry(v string)`
+
+SetCountry sets Country field to given value.
+
+### HasCountry
+
+`func (o *CatalogsRetailProductGroup) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
+
+### SetCountryNil
+
+`func (o *CatalogsRetailProductGroup) SetCountryNil(b bool)`
+
+ SetCountryNil sets the value for Country to be an explicit nil
+
+### UnsetCountry
+`func (o *CatalogsRetailProductGroup) UnsetCountry()`
+
+UnsetCountry ensures that no value is present for Country, not even an explicit nil
+### GetLocale
+
+`func (o *CatalogsRetailProductGroup) GetLocale() string`
+
+GetLocale returns the Locale field if non-nil, zero value otherwise.
+
+### GetLocaleOk
+
+`func (o *CatalogsRetailProductGroup) GetLocaleOk() (*string, bool)`
+
+GetLocaleOk returns a tuple with the Locale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocale
+
+`func (o *CatalogsRetailProductGroup) SetLocale(v string)`
+
+SetLocale sets Locale field to given value.
+
+### HasLocale
+
+`func (o *CatalogsRetailProductGroup) HasLocale() bool`
+
+HasLocale returns a boolean if a field has been set.
+
+### SetLocaleNil
+
+`func (o *CatalogsRetailProductGroup) SetLocaleNil(b bool)`
+
+ SetLocaleNil sets the value for Locale to be an explicit nil
+
+### UnsetLocale
+`func (o *CatalogsRetailProductGroup) UnsetLocale()`
+
+UnsetLocale ensures that no value is present for Locale, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

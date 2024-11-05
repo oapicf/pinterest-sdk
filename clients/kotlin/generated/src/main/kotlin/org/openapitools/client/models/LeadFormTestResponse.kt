@@ -32,5 +32,8 @@ data class LeadFormTestResponse (
     @Json(name = "subscription_id")
     val subscriptionId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

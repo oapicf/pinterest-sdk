@@ -5,8 +5,8 @@ open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.BoardOwner
 open OpenAPI.Model.CreativeType
+open OpenAPI.Model.PinMedia
 open OpenAPI.Model.PinMediaSource
-open OpenAPI.Model.SummaryPinMedia
 open OpenAPI.Model.string option
 
 module Pin =
@@ -40,7 +40,7 @@ module Pin =
     [<JsonProperty(PropertyName = "is_owner")>]
     IsOwner : bool;
     [<JsonProperty(PropertyName = "media")>]
-    Media : SummaryPinMedia;
+    Media : PinMedia;
     [<JsonProperty(PropertyName = "media_source")>]
     MediaSource : PinMediaSource;
     [<JsonProperty(PropertyName = "parent_pin_id")>]

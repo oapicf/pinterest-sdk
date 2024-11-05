@@ -18,7 +18,7 @@ import java.math.BigDecimal;
  * CatalogsProductGroupPricingCurrencyCriteria
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupPricingCurrencyCriteria   {
   /**
    * Gets or Sets operator
@@ -72,10 +72,10 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get operator
    * @return operator
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public OperatorEnum getOperator() {
     return operator;
@@ -90,11 +90,11 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get value
    * minimum: 0
    * @return value
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public BigDecimal getValue() {
     return value;
@@ -109,10 +109,10 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get currency
    * @return currency
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public NonNullableCatalogsCurrency getCurrency() {
     return currency;
@@ -127,10 +127,10 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     return this;
   }
 
-   /**
+  /**
    * Get negated
    * @return negated
-  **/
+   */
   @ApiModelProperty(value = "")
   public Boolean getNegated() {
     return negated;

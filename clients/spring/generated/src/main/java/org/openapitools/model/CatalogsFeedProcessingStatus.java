@@ -20,24 +20,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets CatalogsFeedProcessingStatus
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public enum CatalogsFeedProcessingStatus {
   
   COMPLETED("COMPLETED"),
   
-  COMPLETED_EARLY("COMPLETED_EARLY"),
-  
-  DISAPPROVED("DISAPPROVED"),
-  
   FAILED("FAILED"),
   
-  PROCESSING("PROCESSING"),
-  
-  QUEUED_FOR_PROCESSING("QUEUED_FOR_PROCESSING"),
-  
-  UNDER_APPEAL("UNDER_APPEAL"),
-  
-  UNDER_REVIEW("UNDER_REVIEW");
+  PROCESSING("PROCESSING");
 
   private String value;
 

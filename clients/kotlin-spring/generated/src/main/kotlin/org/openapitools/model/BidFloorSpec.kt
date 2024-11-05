@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.ActionType
@@ -54,7 +55,7 @@ data class BidFloorSpec(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("creative_type") val creativeType: CreativeType? = null
-) {
+    ) {
 
 }
 

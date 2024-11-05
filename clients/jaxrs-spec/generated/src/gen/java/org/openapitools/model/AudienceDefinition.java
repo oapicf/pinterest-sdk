@@ -18,11 +18,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Queryable audience representation.")
 @JsonTypeName("AudienceDefinition")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceDefinition   {
-  private @Valid String date;
-  private @Valid String type;
-  private @Valid String scope;
+  private String date;
+  private String type;
+  private String scope;
 
   /**
    * Generation date

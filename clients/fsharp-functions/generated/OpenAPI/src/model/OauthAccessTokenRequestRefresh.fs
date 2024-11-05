@@ -3,7 +3,6 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.OauthAccessTokenRequest
 
 module OauthAccessTokenRequestRefresh =
 
@@ -11,6 +10,8 @@ module OauthAccessTokenRequestRefresh =
 
   [<CLIMutable>]
   type OauthAccessTokenRequestRefresh = {
+    [<JsonProperty(PropertyName = "grant_type")>]
+    GrantType : string;
     [<JsonProperty(PropertyName = "refresh_token")>]
     RefreshToken : string;
     [<JsonProperty(PropertyName = "scope")>]

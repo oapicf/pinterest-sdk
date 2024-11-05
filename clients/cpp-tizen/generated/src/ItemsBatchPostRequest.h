@@ -11,11 +11,10 @@
 #include <string>
 #include "BatchOperation.h"
 #include "CatalogsItemsBatchRequest.h"
-#include "CatalogsType.h"
+#include "CatalogsItemsRequest_language.h"
 #include "CatalogsVerticalBatchRequest.h"
 #include "Country.h"
 #include "ItemDeleteBatchRecord.h"
-#include "Language.h"
 #include <list>
 #include "Object.h"
 
@@ -55,11 +54,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsType getCatalogType();
+	std::string getCatalogType();
 
 	/*! \brief Set 
 	 */
-	void setCatalogType(CatalogsType  catalog_type);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
@@ -69,11 +68,11 @@ public:
 	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
-	Language getLanguage();
+	CatalogsItemsRequest_language getLanguage();
 
 	/*! \brief Set 
 	 */
-	void setLanguage(Language  language);
+	void setLanguage(CatalogsItemsRequest_language  language);
 	/*! \brief Get Array with catalogs items
 	 */
 	std::list<ItemDeleteBatchRecord> getItems();
@@ -81,11 +80,11 @@ public:
 	/*! \brief Set Array with catalogs items
 	 */
 	void setItems(std::list <ItemDeleteBatchRecord> items);
-	/*! \brief Get Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	/*! \brief Get Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	/*! \brief Set Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	 */
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
@@ -97,9 +96,9 @@ public:
 	void setOperation(BatchOperation  operation);
 
 private:
-	CatalogsType catalog_type;
+	std::string catalog_type;
 	Country country;
-	Language language;
+	CatalogsItemsRequest_language language;
 	std::list <ItemDeleteBatchRecord>items;
 	std::string catalog_id;
 	BatchOperation operation;

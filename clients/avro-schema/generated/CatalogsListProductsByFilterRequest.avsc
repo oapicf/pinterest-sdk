@@ -11,7 +11,33 @@
     },
     {
       "name": "filters",
-      "type": "model.CatalogsProductGroupFilters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsListProductsByFilterRequest_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "locale",
+      "type": "model.CatalogsLocale",
       "doc": ""
     }
   ]

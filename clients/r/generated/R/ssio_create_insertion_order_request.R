@@ -57,8 +57,7 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     `billto_billing_address_id` = NULL,
     `estimated_monthly_spend` = NULL,
     `currency_info` = NULL,
-    #' Initialize a new SSIOCreateInsertionOrderRequest class.
-    #'
+
     #' @description
     #' Initialize a new SSIOCreateInsertionOrderRequest class.
     #'
@@ -85,7 +84,6 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
     #' @param accepted_terms_time The UTC timestamp (to the nearest sec) of when terms were accepted
     #' @param estimated_monthly_spend If Ongoing (perpetual) order line, the estimated monthly spend
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`start_date`, `po_number`, `billing_contact_firstname`, `billing_contact_lastname`, `billing_contact_email`, `media_contact_firstname`, `media_contact_lastname`, `media_contact_email`, `pmp_id`, `order_name`, `order_line_type`, `accepted_terms_id`, `billto_company_id`, `billto_business_address_id`, `billto_billing_address_id`, `currency_info`, `end_date` = NULL, `budget_amount` = NULL, `agency_link` = NULL, `user_email` = NULL, `accepted_terms_time` = NULL, `estimated_monthly_spend` = NULL, ...) {
       if (!missing(`start_date`)) {
         if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
@@ -218,13 +216,11 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         self$`estimated_monthly_spend` <- `estimated_monthly_spend`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOCreateInsertionOrderRequest in JSON format
-    #' @export
     toJSON = function() {
       SSIOCreateInsertionOrderRequestObject <- list()
       if (!is.null(self$`start_date`)) {
@@ -317,14 +313,12 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       }
       SSIOCreateInsertionOrderRequestObject
     },
-    #' Deserialize JSON string into an instance of SSIOCreateInsertionOrderRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOCreateInsertionOrderRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOCreateInsertionOrderRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`start_date`)) {
@@ -400,13 +394,11 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOCreateInsertionOrderRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`start_date`)) {
@@ -589,14 +581,12 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of SSIOCreateInsertionOrderRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOCreateInsertionOrderRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOCreateInsertionOrderRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`start_date` <- this_object$`start_date`
@@ -626,13 +616,11 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
       self$`currency_info` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency_info`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to SSIOCreateInsertionOrderRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to SSIOCreateInsertionOrderRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `start_date`
@@ -762,23 +750,19 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for SSIOCreateInsertionOrderRequest: the required field `currency_info` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of SSIOCreateInsertionOrderRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `start_date` is null
       if (is.null(self$`start_date`)) {
@@ -870,13 +854,11 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `start_date` is null
@@ -969,12 +951,9 @@ SSIOCreateInsertionOrderRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

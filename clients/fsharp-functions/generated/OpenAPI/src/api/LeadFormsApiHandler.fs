@@ -81,9 +81,44 @@ module LeadFormsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
 
+    //#region LeadFormsCreate
+    /// <summary>
+    /// Create lead forms
+    /// </summary>
+   [<FunctionName("LeadFormsCreate")>]
+    let LeadFormsCreate
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "POST", Route = "/v5/ad_accounts/{ad_account_id}/lead_forms")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<LeadFormsCreateBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = LeadFormsApiService.LeadFormsCreate bodyParams
+      match result with
+      | LeadFormsCreateStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | LeadFormsCreateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | LeadFormsCreateDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
     //#region LeadFormsList
     /// <summary>
-    /// Get lead forms
+    /// List lead forms
     /// </summary>
    [<FunctionName("LeadFormsList")>]
     let LeadFormsList
@@ -101,6 +136,41 @@ module LeadFormsApiHandlers =
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
       | LeadFormsListDefaultStatusCode resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))
+
+    //#region LeadFormsUpdate
+    /// <summary>
+    /// Update lead forms
+    /// </summary>
+   [<FunctionName("LeadFormsUpdate")>]
+    let LeadFormsUpdate
+        ([<HttpTrigger(Extensions.Http.AuthorizationLevel.Anonymous, "PATCH", Route = "/v5/ad_accounts/{ad_account_id}/lead_forms")>]
+        req:HttpRequest ) =
+
+      use reader = StreamReader(req.Body)
+
+      let mediaTypes = ["application/json";] // currently unused
+
+      let bind (contentType:string) body  =
+        match (contentType.ToLower()) with
+        | "application/json" ->
+          body |> JsonConvert.DeserializeObject<LeadFormsUpdateBodyParams>
+        | _ -> failwith (sprintf "TODO - ContentType %s not currently supported" contentType)
+
+      let bodyParams = reader.ReadToEnd() |> bind req.ContentType
+      let result = LeadFormsApiService.LeadFormsUpdate bodyParams
+      match result with
+      | LeadFormsUpdateStatusCode200 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(200))
+      | LeadFormsUpdateStatusCode400 resolved ->
+          let content = JsonConvert.SerializeObject resolved.content
+          let responseContentType = "application/json"
+          ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(400))
+      | LeadFormsUpdateDefaultStatusCode resolved ->
           let content = JsonConvert.SerializeObject resolved.content
           let responseContentType = "application/json"
           ContentResult(Content = content, ContentType = responseContentType, StatusCode = System.Nullable(0))

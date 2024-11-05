@@ -13,7 +13,7 @@ API.Client.CatalogsItemsBatchRequest = function() {}
 API.Client.CatalogsItemsBatchRequest.prototype.country;
 
 /**
- * @type {!API.Client.Language}
+ * @type {!API.Client.CatalogsItemsRequest_language}
  * @export
  */
 API.Client.CatalogsItemsBatchRequest.prototype.language;

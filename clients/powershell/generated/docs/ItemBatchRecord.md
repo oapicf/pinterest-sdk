@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ItemId** | **String** | The catalog item id in the merchant namespace | [optional] 
-**Attributes** | [**ItemAttributes**](ItemAttributes.md) |  | [optional] 
+**Attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [optional] 
 **UpdateMask** | [**UpdateMaskFieldType[]**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. | [optional] 
 
 ## Examples

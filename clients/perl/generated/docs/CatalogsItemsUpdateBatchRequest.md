@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::CatalogsItemsUpdateBatchRequest;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | 
-**language** | [**Language**](Language.md) |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | 
 **items** | [**ARRAY[ItemUpdateBatchRecord]**](ItemUpdateBatchRecord.md) | Array with catalogs items | 
 

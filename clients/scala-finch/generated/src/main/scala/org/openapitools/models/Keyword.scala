@@ -9,23 +9,23 @@ import org.openapitools.models.MatchTypeResponse
 
 /**
  * 
+ * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+ * @param matchUnderscoretype 
+ * @param value Keyword value (120 chars max).
  * @param archived 
  * @param id Keyword ID .
  * @param parentUnderscoreid Keyword parent entity ID (advertiser, campaign, ad group).
  * @param parentUnderscoretype Parent entity type
  * @param _type Always keyword
- * @param bid Keyword custom bid in microcurrency - null if inherited from parent ad group.
- * @param matchUnderscoretype 
- * @param value Keyword value (120 chars max).
  */
-case class Keyword(archived: Option[Boolean],
+case class Keyword(bid: Option[Int],
+                matchUnderscoretype: MatchTypeResponse,
+                value: String,
+                archived: Option[Boolean],
                 id: Option[String],
                 parentUnderscoreid: Option[String],
                 parentUnderscoretype: Option[String],
-                _type: Option[String],
-                bid: Option[Int],
-                matchUnderscoretype: MatchTypeResponse,
-                value: String
+                _type: Option[String]
                 )
 
 object Keyword {

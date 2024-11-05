@@ -22,7 +22,7 @@ public class PinMediaWithVideos extends PinMedia {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid VideoMetadata> items;
+  private List<@Valid VideoMetadata> items = new ArrayList<>();
  /**
    * Get items
    * @return items

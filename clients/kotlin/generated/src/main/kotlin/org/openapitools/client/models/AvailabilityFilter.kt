@@ -32,5 +32,8 @@ data class AvailabilityFilter (
     @Json(name = "AVAILABILITY")
     val AVAILABILITY: CatalogsProductGroupMultipleStringCriteria
 
-)
+) {
+
+
+}
 

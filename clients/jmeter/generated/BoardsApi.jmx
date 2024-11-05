@@ -313,6 +313,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -404,6 +408,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -769,6 +777,10 @@
               <stringProp name="Header.name"></stringProp>
               <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -846,6 +858,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>
@@ -949,6 +965,10 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">accept</stringProp>
               <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name"></stringProp>

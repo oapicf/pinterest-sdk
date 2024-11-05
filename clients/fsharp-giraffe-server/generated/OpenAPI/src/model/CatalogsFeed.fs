@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CatalogsCreativeAssetsFeed
 open OpenAPI.Model.CatalogsFeedCredentials
 open OpenAPI.Model.CatalogsFeedProcessingSchedule
 open OpenAPI.Model.CatalogsFormat
@@ -20,9 +21,9 @@ module CatalogsFeed =
 
 
   type CatalogsFeed = {
-    CreatedAt : Nullable<DateTime>;
+    CreatedAt : DateTime;
     Id : string;
-    UpdatedAt : Nullable<DateTime>;
+    UpdatedAt : DateTime;
     Name : string option;
     Format : CatalogsFormat;
     CatalogType : CatalogsType;

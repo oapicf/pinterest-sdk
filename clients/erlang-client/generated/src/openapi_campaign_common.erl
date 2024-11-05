@@ -11,10 +11,10 @@
        'lifetime_spend_cap' => integer(),
        'daily_spend_cap' => integer(),
        'order_line_id' => binary(),
-       'tracking_urls' => openapi_ad_common_tracking_urls:openapi_ad_common_tracking_urls(),
+       'tracking_urls' => openapi_tracking_urls:openapi_tracking_urls(),
        'start_time' => integer(),
        'end_time' => integer(),
-       'summary_status' => openapi_campaign_summary_status:openapi_campaign_summary_status()
+       'is_flexible_daily_budgets' => boolean()
      }.
 
 encode(#{ 'ad_account_id' := AdAccountId,
@@ -26,7 +26,7 @@ encode(#{ 'ad_account_id' := AdAccountId,
           'tracking_urls' := TrackingUrls,
           'start_time' := StartTime,
           'end_time' := EndTime,
-          'summary_status' := SummaryStatus
+          'is_flexible_daily_budgets' := IsFlexibleDailyBudgets
         }) ->
     #{ 'ad_account_id' => AdAccountId,
        'name' => Name,
@@ -37,5 +37,5 @@ encode(#{ 'ad_account_id' := AdAccountId,
        'tracking_urls' => TrackingUrls,
        'start_time' => StartTime,
        'end_time' => EndTime,
-       'summary_status' => SummaryStatus
+       'is_flexible_daily_budgets' => IsFlexibleDailyBudgets
      }.

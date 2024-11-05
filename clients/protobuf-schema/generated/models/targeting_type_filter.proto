@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -18,7 +18,7 @@ import public "models/ads_analytics_targeting_type.proto";
 
 message TargetingTypeFilter {
 
-  // List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+  // List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   repeated AdsAnalyticsTargetingType targeting_types = 251011950;
 
 }

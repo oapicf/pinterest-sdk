@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionApiResponse_events_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionApiResponseEventsInner {
 
   /**
@@ -87,7 +87,7 @@ public class ConversionApiResponseEventsInner {
   /**
    * Whether the event was processed successfully.
    * @return status
-  */
+   */
   @NotNull 
   @Schema(name = "status", example = "processed", description = "Whether the event was processed successfully.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("status")
@@ -107,7 +107,7 @@ public class ConversionApiResponseEventsInner {
   /**
    * Error message containing more information about why the event failed to be processed.
    * @return errorMessage
-  */
+   */
   
   @Schema(name = "error_message", description = "Error message containing more information about why the event failed to be processed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("error_message")
@@ -127,7 +127,7 @@ public class ConversionApiResponseEventsInner {
   /**
    * Warning messages about any fields in the event which are not standard. These are not critical to event processing.
    * @return warningMessage
-  */
+   */
   
   @Schema(name = "warning_message", description = "Warning messages about any fields in the event which are not standard. These are not critical to event processing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("warning_message")

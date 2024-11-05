@@ -67,7 +67,7 @@ data class SSIOInsertionOrderCommon(
 
     @Schema(example = "test@example", description = "The email of user submitting the insertion order")
     @get:JsonProperty("user_email") val userEmail: kotlin.String? = null
-) {
+    ) {
 
 }
 

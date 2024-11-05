@@ -82,7 +82,7 @@ private class OASCatalogsItemsBatchTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsItemsBatch catalogsItemsBatch = new OASCatalogsItemsBatch();
-        System.assertEquals(new List<OASHotelProcessingRecord>(), catalogsItemsBatch.items);
+        System.assertEquals(new List<OASCreativeAssetsProcessingRecord>(), catalogsItemsBatch.items);
         System.assertEquals(null, catalogsItemsBatch.catalogType);
         System.assertEquals(null, catalogsItemsBatch.batchId);
         System.assertEquals(null, catalogsItemsBatch.createdTime);

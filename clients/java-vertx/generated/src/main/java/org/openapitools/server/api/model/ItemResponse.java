@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.server.api.model.CatalogsHotelAttributes;
+import org.openapitools.server.api.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.server.api.model.CatalogsType;
 import org.openapitools.server.api.model.ItemResponseAnyOf;
 import org.openapitools.server.api.model.ItemResponseAnyOf1;
@@ -23,18 +23,20 @@ public class ItemResponse   {
   
   private CatalogsType catalogType;
   private String itemId;
-  private List<ItemValidationEvent> errors;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
   private String hotelId;
+  private String creativeAssetsId;
 
   public ItemResponse () {
 
   }
 
-  public ItemResponse (CatalogsType catalogType, String itemId, List<ItemValidationEvent> errors, String hotelId) {
+  public ItemResponse (CatalogsType catalogType, String itemId, List<ItemValidationEvent> errors, String hotelId, String creativeAssetsId) {
     this.catalogType = catalogType;
     this.itemId = itemId;
     this.errors = errors;
     this.hotelId = hotelId;
+    this.creativeAssetsId = creativeAssetsId;
   }
 
     
@@ -73,6 +75,15 @@ public class ItemResponse   {
     this.hotelId = hotelId;
   }
 
+    
+  @JsonProperty("creative_assets_id")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -86,12 +97,13 @@ public class ItemResponse   {
     return Objects.equals(catalogType, itemResponse.catalogType) &&
         Objects.equals(itemId, itemResponse.itemId) &&
         Objects.equals(errors, itemResponse.errors) &&
-        Objects.equals(hotelId, itemResponse.hotelId);
+        Objects.equals(hotelId, itemResponse.hotelId) &&
+        Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -103,6 +115,7 @@ public class ItemResponse   {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

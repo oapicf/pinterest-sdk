@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -19,6 +19,7 @@ import public "models/catalogs_feed_processing_schedule.proto";
 import public "models/catalogs_feeds_create_request.proto";
 import public "models/catalogs_feeds_create_request_default_locale.proto";
 import public "models/catalogs_format.proto";
+import public "models/catalogs_status.proto";
 import public "models/catalogs_type.proto";
 import public "models/catalogs_vertical_feeds_create_request.proto";
 import public "models/country.proto";
@@ -49,7 +50,9 @@ message FeedsCreateRequest {
 
   ProductAvailabilityType default_availability = 195585384;
 
-  // Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  CatalogsStatus status = 355610639;
+
+  // Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
   optional string catalog_id = 500076802;
 
 }

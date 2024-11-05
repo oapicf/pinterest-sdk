@@ -42,5 +42,8 @@ data class AudienceDemographicValue (
     @Json(name = "ratio")
     val ratio: java.math.BigDecimal? = null
 
-)
+) {
+
+
+}
 

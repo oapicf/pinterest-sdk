@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * ConversionApiResponseEventsInner
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionApiResponseEventsInner   {
   /**
    * Whether the event was processed successfully.
@@ -64,10 +64,10 @@ public class ConversionApiResponseEventsInner   {
     return this;
   }
 
-   /**
+  /**
    * Whether the event was processed successfully.
    * @return status
-  **/
+   */
   @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
   public StatusEnum getStatus() {
     return status;
@@ -82,10 +82,10 @@ public class ConversionApiResponseEventsInner   {
     return this;
   }
 
-   /**
+  /**
    * Error message containing more information about why the event failed to be processed.
    * @return errorMessage
-  **/
+   */
   @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
   public String getErrorMessage() {
     return errorMessage;
@@ -100,10 +100,10 @@ public class ConversionApiResponseEventsInner   {
     return this;
   }
 
-   /**
+  /**
    * Warning messages about any fields in the event which are not standard. These are not critical to event processing.
    * @return warningMessage
-  **/
+   */
   @ApiModelProperty(value = "Warning messages about any fields in the event which are not standard. These are not critical to event processing.")
   public String getWarningMessage() {
     return warningMessage;

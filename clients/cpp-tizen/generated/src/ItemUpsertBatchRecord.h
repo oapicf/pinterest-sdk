@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "ItemAttributes.h"
+#include "ItemAttributesRequest.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -55,15 +55,15 @@ public:
 	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
-	ItemAttributes getAttributes();
+	ItemAttributesRequest getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(ItemAttributes  attributes);
+	void setAttributes(ItemAttributesRequest  attributes);
 
 private:
 	std::string item_id;
-	ItemAttributes attributes;
+	ItemAttributesRequest attributes;
 	void __init();
 	void __cleanup();
 

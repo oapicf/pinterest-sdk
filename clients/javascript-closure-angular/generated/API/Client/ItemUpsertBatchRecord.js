@@ -14,7 +14,7 @@ API.Client.ItemUpsertBatchRecord = function() {}
 API.Client.ItemUpsertBatchRecord.prototype.itemId;
 
 /**
- * @type {!API.Client.ItemAttributes}
+ * @type {!API.Client.ItemAttributesRequest}
  * @export
  */
 API.Client.ItemUpsertBatchRecord.prototype.attributes;

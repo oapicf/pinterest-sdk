@@ -28,7 +28,7 @@ void main() {
       // TODO
     });
 
-    // Keyword custom bid in microcurrency - null if inherited from parent ad group.
+    // </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
     // int bid
     test('to test the property `bid`', () async {
       // TODO

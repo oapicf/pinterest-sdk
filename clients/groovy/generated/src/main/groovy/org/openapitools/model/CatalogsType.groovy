@@ -7,7 +7,9 @@ enum CatalogsType {
 
     RETAIL("RETAIL"),
     
-    HOTEL("HOTEL")
+    HOTEL("HOTEL"),
+    
+    CREATIVE_ASSETS("CREATIVE_ASSETS")
 
     private final String value
 

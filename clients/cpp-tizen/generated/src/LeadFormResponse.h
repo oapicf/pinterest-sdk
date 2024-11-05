@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "LeadFormCommon_policy_links_inner.h"
 #include "LeadFormQuestion.h"
 #include "LeadFormStatus.h"
 #include <list>
@@ -62,11 +63,11 @@ public:
 	/*! \brief Set A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
 	 */
 	void setPrivacyPolicyLink(std::string  privacy_policy_link);
-	/*! \brief Get Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+	/*! \brief Get Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
 	 */
 	bool getHasAcceptedTerms();
 
-	/*! \brief Set Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+	/*! \brief Set Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
 	 */
 	void setHasAcceptedTerms(bool  has_accepted_terms);
 	/*! \brief Get A message for people who complete the form to let them know what happens next.
@@ -97,6 +98,13 @@ public:
 	/*! \brief Set List of questions to be displayed on the lead form.
 	 */
 	void setQuestions(std::list <LeadFormQuestion> questions);
+	/*! \brief Get List of additional policy links to be displayed on the lead form.
+	 */
+	std::list<LeadFormCommon_policy_links_inner> getPolicyLinks();
+
+	/*! \brief Set List of additional policy links to be displayed on the lead form.
+	 */
+	void setPolicyLinks(std::list <LeadFormCommon_policy_links_inner> policy_links);
 	/*! \brief Get The ID of this lead form
 	 */
 	std::string getId();
@@ -134,6 +142,7 @@ private:
 	LeadFormStatus status;
 	std::string disclosure_language;
 	std::list <LeadFormQuestion>questions;
+	std::list <LeadFormCommon_policy_links_inner>policy_links;
 	std::string id;
 	std::string ad_account_id;
 	int created_time;

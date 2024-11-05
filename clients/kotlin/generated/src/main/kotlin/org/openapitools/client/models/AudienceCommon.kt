@@ -42,5 +42,8 @@ data class AudienceCommon (
     @Json(name = "rule")
     val rule: AudienceRule? = null
 
-)
+) {
+
+
+}
 

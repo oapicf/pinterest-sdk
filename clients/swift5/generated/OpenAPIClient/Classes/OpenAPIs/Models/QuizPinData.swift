@@ -13,17 +13,28 @@ import AnyCodable
 /** This field includes all quiz data including questions, options, and results. */
 public struct QuizPinData: Codable, JSONEncodable, Hashable {
 
+    public enum TieBreakerType: String, Codable, CaseIterable {
+        case random = "RANDOM"
+        case custom = "CUSTOM"
+    }
     public var questions: [QuizPinQuestion]?
     public var results: [QuizPinResult]?
+    /** Quiz ad tie breaker type, default is RANDOM */
+    public var tieBreakerType: TieBreakerType?
+    public var tieBreakerCustomResult: QuizPinResult?
 
-    public init(questions: [QuizPinQuestion]? = nil, results: [QuizPinResult]? = nil) {
+    public init(questions: [QuizPinQuestion]? = nil, results: [QuizPinResult]? = nil, tieBreakerType: TieBreakerType? = nil, tieBreakerCustomResult: QuizPinResult? = nil) {
         self.questions = questions
         self.results = results
+        self.tieBreakerType = tieBreakerType
+        self.tieBreakerCustomResult = tieBreakerCustomResult
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case questions
         case results
+        case tieBreakerType = "tie_breaker_type"
+        case tieBreakerCustomResult = "tie_breaker_custom_result"
     }
 
     // Encodable protocol methods
@@ -32,6 +43,8 @@ public struct QuizPinData: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(questions, forKey: .questions)
         try container.encodeIfPresent(results, forKey: .results)
+        try container.encodeIfPresent(tieBreakerType, forKey: .tieBreakerType)
+        try container.encodeIfPresent(tieBreakerCustomResult, forKey: .tieBreakerCustomResult)
     }
 }
 

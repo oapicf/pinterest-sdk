@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum CatalogsProductGroupType {
-    MERCHANT_CREATED, ALL_PRODUCTS, BEST_DEALS, PINNER_FAVORITES, TOP_SELLERS, BACK_IN_STOCK, NEW_ARRIVALS, SHOPIFY_COLLECTIONS, I2PC
+    MERCHANT_CREATED, ALL_PRODUCTS, BEST_DEALS, PINNER_FAVORITES, TOP_SELLERS, BACK_IN_STOCK, NEW_ARRIVALS, SHOPIFY_COLLECTIONS, I2_PC
 }

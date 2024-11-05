@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.UpdatableItemAttributes
@@ -38,18 +39,23 @@ data class CatalogsUpdateRetailItem(
     @field:Valid
     @Schema(example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\"]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
     @get:JsonProperty("update_mask") val updateMask: kotlin.collections.List<UpdateMaskFieldType>? = null
-) {
+    ) {
 
     /**
     * 
-    * Values: CREATE,UPDATE,UPSERT,DELETE
+    * Values: UPDATE
     */
-    enum class Operation(val value: kotlin.String) {
+    enum class Operation(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("CREATE") CREATE("CREATE"),
-        @JsonProperty("UPDATE") UPDATE("UPDATE"),
-        @JsonProperty("UPSERT") UPSERT("UPSERT"),
-        @JsonProperty("DELETE") DELETE("DELETE")
+        UPDATE("UPDATE");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Operation {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

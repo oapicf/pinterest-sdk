@@ -16,7 +16,7 @@ Protected Class CatalogsItemsBatch
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
+			Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 		#tag EndNote
 		created_time As Date
 	#tag EndProperty
@@ -24,7 +24,7 @@ Protected Class CatalogsItemsBatch
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+			Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 		#tag EndNote
 		completed_time As Date
 	#tag EndProperty
@@ -39,7 +39,7 @@ Protected Class CatalogsItemsBatch
 		#tag Note
 			Array with the catalogs items processing records part of the catalogs items batch
 		#tag EndNote
-		items() As OpenAPIClient.Models.HotelProcessingRecord
+		items() As OpenAPIClient.Models.CreativeAssetsProcessingRecord
 	#tag EndProperty
 
 
@@ -124,7 +124,7 @@ Protected Class CatalogsItemsBatch
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="HotelProcessingRecord"
+			Type="CreativeAssetsProcessingRecord"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

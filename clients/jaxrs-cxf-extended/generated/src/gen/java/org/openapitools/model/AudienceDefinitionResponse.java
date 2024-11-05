@@ -16,7 +16,7 @@ public class AudienceDefinitionResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid AudienceDefinition> items;
+  private List<@Valid AudienceDefinition> items = new ArrayList<>();
  /**
   * Get items
   * @return items

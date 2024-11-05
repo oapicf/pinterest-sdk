@@ -1,2 +1,2 @@
-testCase,httpStatusCode,pinId,startDate,endDate,metricTypes,appTypes,splitField,adAccountId,pinCreate,adAccountId,pinId,adAccountId,pinId,pinMetrics,adAccountId,bookmark,pageSize,pinFilter,includeProtectedPins,pinType,creativeTypes,adAccountId,pinMetrics,pinId,pinsSaveRequest,adAccountId,pinId,pinUpdate,adAccountId
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,pinIds,startDate,endDate,metricTypes,appTypes,adAccountId,pinId,startDate,endDate,metricTypes,appTypes,splitField,adAccountId,pinCreate,adAccountId,pinId,adAccountId,pinId,pinMetrics,adAccountId,bookmark,pageSize,pinFilter,includeProtectedPins,pinType,creativeTypes,adAccountId,pinMetrics,pinId,pinsSaveRequest,adAccountId,pinId,pinUpdate,adAccountId
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

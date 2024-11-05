@@ -17,13 +17,13 @@ public class OrderLineResponse  {
  /**
    * Error list if update(s) fail.
   **/
-  private List<OrderLineError> errors;
+  private List<OrderLineError> errors = new ArrayList<>();
 
   @ApiModelProperty(value = "Order Line object array.")
  /**
    * Order Line object array.
   **/
-  private List<OrderLine> orderLine;
+  private List<OrderLine> orderLine = new ArrayList<>();
  /**
    * Error list if update(s) fail.
    * @return errors

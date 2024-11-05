@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"_id": @"id", @"name": @"name", @"_description": @"description", @"filters": @"filters", @"isFeatured": @"is_featured", @"type": @"type", @"status": @"status", @"createdAt": @"created_at", @"updatedAt": @"updated_at", @"feedId": @"feed_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"catalogType": @"catalog_type", @"_id": @"id", @"name": @"name", @"_description": @"description", @"filters": @"filters", @"isFeatured": @"is_featured", @"type": @"type", @"status": @"status", @"createdAt": @"created_at", @"updatedAt": @"updated_at", @"catalogId": @"catalog_id", @"feedId": @"feed_id", @"country": @"country", @"locale": @"locale" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"name", @"_description", @"isFeatured", @"type", @"status", @"createdAt", @"updatedAt", ];
+  NSArray *optionalProperties = @[@"name", @"_description", @"isFeatured", @"type", @"status", @"createdAt", @"updatedAt", @"country", @"locale"];
   return [optionalProperties containsObject:propertyName];
 }
 

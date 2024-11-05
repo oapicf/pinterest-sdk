@@ -67,16 +67,15 @@ public enum ConversionEventEnum {
   private String cpaGoalValueInMicroCurrency;
 
  /**
-  * Ad group is ROAS optimized
+  * ROAS optimization is not supported
   */
-  @ApiModelProperty(value = "Ad group is ROAS optimized")
+  @ApiModelProperty(value = "ROAS optimization is not supported")
   private Boolean isRoasOptimized;
 
 public enum LearningModeTypeEnum {
 
     @JsonProperty("NOT_ACTIVE") NOT_ACTIVE(String.valueOf("NOT_ACTIVE")),
-    @JsonProperty("ACTIVE") ACTIVE(String.valueOf("ACTIVE")),
-    @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("ACTIVE") ACTIVE(String.valueOf("ACTIVE"));
 
     private String value;
 
@@ -205,7 +204,7 @@ public enum LearningModeTypeEnum {
   }
 
  /**
-  * Ad group is ROAS optimized
+  * ROAS optimization is not supported
   * @return isRoasOptimized
   */
   @JsonProperty("is_roas_optimized")

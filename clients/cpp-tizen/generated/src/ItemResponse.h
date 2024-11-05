@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "CatalogsHotelAttributes.h"
+#include "CatalogsCreativeAssetsAttributes.h"
 #include "CatalogsType.h"
 #include "ItemResponse_anyOf.h"
 #include "ItemResponse_anyOf_1.h"
@@ -75,11 +75,11 @@ public:
 	void setPins(std::list <Pin> pins);
 	/*! \brief Get 
 	 */
-	CatalogsHotelAttributes getAttributes();
+	CatalogsCreativeAssetsAttributes getAttributes();
 
 	/*! \brief Set 
 	 */
-	void setAttributes(CatalogsHotelAttributes  attributes);
+	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
 	/*! \brief Get The catalog hotel id in the merchant namespace
 	 */
 	std::string getHotelId();
@@ -87,6 +87,13 @@ public:
 	/*! \brief Set The catalog hotel id in the merchant namespace
 	 */
 	void setHotelId(std::string  hotel_id);
+	/*! \brief Get The catalog creative assets id in the merchant namespace
+	 */
+	std::string getCreativeAssetsId();
+
+	/*! \brief Set The catalog creative assets id in the merchant namespace
+	 */
+	void setCreativeAssetsId(std::string  creative_assets_id);
 	/*! \brief Get Array with the errors for the item id requested
 	 */
 	std::list<ItemValidationEvent> getErrors();
@@ -99,8 +106,9 @@ private:
 	CatalogsType catalog_type;
 	std::string item_id;
 	std::list <Pin>pins;
-	CatalogsHotelAttributes attributes;
+	CatalogsCreativeAssetsAttributes attributes;
 	std::string hotel_id;
+	std::string creative_assets_id;
 	std::list <ItemValidationEvent>errors;
 	void __init();
 	void __cleanup();

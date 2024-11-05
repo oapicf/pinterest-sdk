@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class KeywordsMetricsArrayResponse   {
   
-  private List<@Valid KeywordMetricsResponse> data;
+  private List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
 
   /**
    **/

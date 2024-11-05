@@ -6,7 +6,7 @@ context("Test CatalogsProductGroupsList200Response")
 model_instance <- CatalogsProductGroupsList200Response$new()
 
 test_that("items", {
-  # tests for the property `items` (array[CatalogsProductGroupsList200ResponseAllOfItemsInner])
+  # tests for the property `items` (array[CatalogsVerticalProductGroup])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`items`, "EXPECTED_RESULT")

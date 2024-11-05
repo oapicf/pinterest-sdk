@@ -42,5 +42,8 @@ data class TopPinsAnalyticsResponsePinsInner (
     @Json(name = "pin_id")
     val pinId: kotlin.String? = null
 
-)
+) {
+
+
+}
 

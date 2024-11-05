@@ -42,5 +42,8 @@ data class TemplateResponseDateRange (
     @Json(name = "absolute_date_range")
     val absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = null
 
-)
+) {
+
+
+}
 

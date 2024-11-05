@@ -14,10 +14,11 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
+import org.openapitools.model.CatalogsCreativeAssetsItemsBatch;
 import org.openapitools.model.CatalogsHotelItemsBatch;
 import org.openapitools.model.CatalogsRetailItemsBatch;
 import org.openapitools.model.CatalogsType;
-import org.openapitools.model.HotelProcessingRecord;
+import org.openapitools.model.CreativeAssetsProcessingRecord;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -37,13 +38,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemsBatch.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemsBatch.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailItemsBatch.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemsBatch.class, name = "CatalogsCreativeAssetsItemsBatch"),
   @JsonSubTypes.Type(value = CatalogsHotelItemsBatch.class, name = "CatalogsHotelItemsBatch"),
   @JsonSubTypes.Type(value = CatalogsRetailItemsBatch.class, name = "CatalogsRetailItemsBatch")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface CatalogsItemsBatch {
     public CatalogsType getCatalogType();
 }

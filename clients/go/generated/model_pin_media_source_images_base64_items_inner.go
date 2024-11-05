@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,7 +28,7 @@ type PinMediaSourceImagesBase64ItemsInner struct {
 	Link *string `json:"link,omitempty"`
 	ContentType string `json:"content_type"`
 	// Image to upload as base64 string.
-	Data string `json:"data"`
+	Data string `json:"data" validate:"regexp=[a-zA-Z0-9+\\/=]+"`
 }
 
 type _PinMediaSourceImagesBase64ItemsInner PinMediaSourceImagesBase64ItemsInner

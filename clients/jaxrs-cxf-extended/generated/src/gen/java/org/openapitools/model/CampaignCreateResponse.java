@@ -16,7 +16,7 @@ public class CampaignCreateResponse  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private List<@Valid CampaignCreateResponseItem> items;
+  private List<@Valid CampaignCreateResponseItem> items = new ArrayList<>();
  /**
   * Get items
   * @return items

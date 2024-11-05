@@ -25,13 +25,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Request for creation of entities in bulk.")
 @JsonTypeName("BulkUpsertRequestUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequestUpdate   {
-  private @Valid List<@Valid CampaignUpdateRequest> campaigns;
-  private @Valid List<AdGroupUpdateRequest> adGroups;
-  private @Valid List<AdUpdateRequest> ads;
-  private @Valid List<@Valid ProductGroupPromotionUpdateRequest> productGroups;
-  private @Valid List<@Valid KeywordUpdate> keywords;
+  private @Valid List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
+  private @Valid List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
+  private @Valid List<@Valid AdUpdateRequest> ads = new ArrayList<>();
+  private @Valid List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
+  private @Valid List<@Valid KeywordUpdate> keywords = new ArrayList<>();
 
   /**
    **/
@@ -43,7 +43,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("campaigns")
-  public List<CampaignUpdateRequest> getCampaigns() {
+  @Valid public List<@Valid CampaignUpdateRequest> getCampaigns() {
     return campaigns;
   }
 
@@ -70,7 +70,7 @@ public class BulkUpsertRequestUpdate   {
   }
   /**
    **/
-  public BulkUpsertRequestUpdate adGroups(List<AdGroupUpdateRequest> adGroups) {
+  public BulkUpsertRequestUpdate adGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
     return this;
   }
@@ -78,12 +78,12 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ad_groups")
-  public List<AdGroupUpdateRequest> getAdGroups() {
+  @Valid public List<@Valid AdGroupUpdateRequest> getAdGroups() {
     return adGroups;
   }
 
   @JsonProperty("ad_groups")
-  public void setAdGroups(List<AdGroupUpdateRequest> adGroups) {
+  public void setAdGroups(List<@Valid AdGroupUpdateRequest> adGroups) {
     this.adGroups = adGroups;
   }
 
@@ -105,7 +105,7 @@ public class BulkUpsertRequestUpdate   {
   }
   /**
    **/
-  public BulkUpsertRequestUpdate ads(List<AdUpdateRequest> ads) {
+  public BulkUpsertRequestUpdate ads(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
     return this;
   }
@@ -113,12 +113,12 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ads")
-  public List<AdUpdateRequest> getAds() {
+  @Valid public List<@Valid AdUpdateRequest> getAds() {
     return ads;
   }
 
   @JsonProperty("ads")
-  public void setAds(List<AdUpdateRequest> ads) {
+  public void setAds(List<@Valid AdUpdateRequest> ads) {
     this.ads = ads;
   }
 
@@ -148,7 +148,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("product_groups")
-  public List<ProductGroupPromotionUpdateRequest> getProductGroups() {
+  @Valid public List<@Valid ProductGroupPromotionUpdateRequest> getProductGroups() {
     return productGroups;
   }
 
@@ -183,7 +183,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("keywords")
-  public List<KeywordUpdate> getKeywords() {
+  @Valid public List<@Valid KeywordUpdate> getKeywords() {
     return keywords;
   }
 

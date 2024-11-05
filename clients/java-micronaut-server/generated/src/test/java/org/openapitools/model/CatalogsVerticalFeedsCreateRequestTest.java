@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequest;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.model.CatalogsFormat;
 import org.openapitools.model.CatalogsHotelFeedsCreateRequest;
 import org.openapitools.model.CatalogsRetailFeedsCreateRequest;
+import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
@@ -111,6 +113,14 @@ public class CatalogsVerticalFeedsCreateRequestTest {
     @Test
     public void defaultAvailabilityTest() {
         // TODO: test defaultAvailability
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
     /**

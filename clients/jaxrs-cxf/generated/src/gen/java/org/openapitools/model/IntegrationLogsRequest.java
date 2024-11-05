@@ -28,7 +28,7 @@ public class IntegrationLogsRequest  {
   **/
   @JsonProperty("logs")
   @NotNull
-  public List<@Valid IntegrationLog> getLogs() {
+ @Size(min=1,max=250)  public List<@Valid IntegrationLog> getLogs() {
     return logs;
   }
 

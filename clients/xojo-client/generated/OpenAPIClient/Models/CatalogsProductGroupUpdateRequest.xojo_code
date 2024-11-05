@@ -15,7 +15,7 @@ Protected Class CatalogsProductGroupUpdateRequest
 		#tag Note
 			boolean indicator of whether the product group is being featured or not
 		#tag EndNote
-		is_featured As Xoson.O.OptionalBoolean
+		Attributes( Deprecated ) is_featured As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 

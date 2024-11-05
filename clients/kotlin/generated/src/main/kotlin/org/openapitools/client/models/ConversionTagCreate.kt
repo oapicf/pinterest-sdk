@@ -62,5 +62,8 @@ data class ConversionTagCreate (
     @Json(name = "aem_loc_enabled")
     val aemLocEnabled: kotlin.Boolean? = false
 
-)
+) {
+
+
+}
 

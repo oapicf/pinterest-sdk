@@ -12,5 +12,5 @@ class OrderLineError {
     
     OrderLine data
     
-    List<String> errorMessages
+    List<String> errorMessages = new ArrayList<>()
 }

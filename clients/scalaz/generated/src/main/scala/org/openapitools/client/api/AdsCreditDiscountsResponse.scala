@@ -50,7 +50,6 @@ object AdsCreditDiscountsResponse {
   case object INVOICESALESINCENTIVECREDIT extends DiscountType
   case object INVOICESALESINCENTIVECREDITAPPLIED extends DiscountType
   case object PREPAIDCREDITREFUND extends DiscountType
-  case object `Null` extends DiscountType
 
   object DiscountType {
     def toDiscountType(s: String): Option[DiscountType] = s match {
@@ -74,7 +73,6 @@ object AdsCreditDiscountsResponse {
       case "INVOICESALESINCENTIVECREDIT" => Some(INVOICESALESINCENTIVECREDIT)
       case "INVOICESALESINCENTIVECREDITAPPLIED" => Some(INVOICESALESINCENTIVECREDITAPPLIED)
       case "PREPAIDCREDITREFUND" => Some(PREPAIDCREDITREFUND)
-      case "`Null`" => Some(`Null`)
       case _ => None
     }
 
@@ -99,7 +97,6 @@ object AdsCreditDiscountsResponse {
       case INVOICESALESINCENTIVECREDIT => "INVOICESALESINCENTIVECREDIT"
       case INVOICESALESINCENTIVECREDITAPPLIED => "INVOICESALESINCENTIVECREDITAPPLIED"
       case PREPAIDCREDITREFUND => "PREPAIDCREDITREFUND"
-      case `Null` => "`Null`"
     }
   }
 

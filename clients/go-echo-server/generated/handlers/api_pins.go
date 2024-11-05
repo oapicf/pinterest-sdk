@@ -5,6 +5,14 @@ import (
 	"net/http"
 )
 
+// MultiPinsAnalytics - Get multiple Pin analytics
+func (c *Container) MultiPinsAnalytics(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.HelloWorld {
+		Message: "Hello World",
+	})
+}
+
+
 // PinsAnalytics - Get Pin analytics
 func (c *Container) PinsAnalytics(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {

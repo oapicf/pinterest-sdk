@@ -8,10 +8,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -30,14 +29,47 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailBatchRequest", description = "A request object that can have multiple operations on a single retail batch")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest {
 
-  private CatalogsType catalogType;
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    RETAIL("RETAIL");
+
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CatalogTypeEnum fromValue(String value) {
+      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
 
   private Country country;
 
-  private Language language;
+  private CatalogsItemsRequestLanguage language;
 
   @Valid
   private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
@@ -49,14 +81,14 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailBatchRequest(CatalogsType catalogType, Country country, Language language, List<CatalogsRetailBatchRequestItemsInner> items) {
+  public CatalogsRetailBatchRequest(CatalogTypeEnum catalogType, Country country, CatalogsItemsRequestLanguage language, List<CatalogsRetailBatchRequestItemsInner> items) {
     this.catalogType = catalogType;
     this.country = country;
     this.language = language;
     this.items = items;
   }
 
-  public CatalogsRetailBatchRequest catalogType(CatalogsType catalogType) {
+  public CatalogsRetailBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -64,15 +96,15 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   /**
    * Get catalogType
    * @return catalogType
-  */
-  @NotNull @Valid 
+   */
+  @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -84,7 +116,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   /**
    * Get country
    * @return country
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "country", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("country")
@@ -96,7 +128,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
     this.country = country;
   }
 
-  public CatalogsRetailBatchRequest language(Language language) {
+  public CatalogsRetailBatchRequest language(CatalogsItemsRequestLanguage language) {
     this.language = language;
     return this;
   }
@@ -104,15 +136,15 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   /**
    * Get language
    * @return language
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("language")
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
@@ -132,7 +164,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
   /**
    * Array with catalogs item operations
    * @return items
-  */
+   */
   @NotNull @Valid @Size(min = 1, max = 1000) 
   @Schema(name = "items", description = "Array with catalogs item operations", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")

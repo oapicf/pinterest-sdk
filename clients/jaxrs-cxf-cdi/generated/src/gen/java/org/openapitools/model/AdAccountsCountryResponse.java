@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class AdAccountsCountryResponse   {
   
-  private List<@Valid AdAccountsCountryResponseData> items;
+  private List<@Valid AdAccountsCountryResponseData> items = new ArrayList<>();
 
   /**
    **/

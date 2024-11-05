@@ -60,8 +60,8 @@ class KeywordsApi(
     } ~
     path("trends" / "keywords" / Segment / "top" / Segment) { (region, trendType) => 
       get { 
-        parameters("interests".as[String].?, "genders".as[String].?, "ages".as[String].?, "normalize_against_group".as[Boolean].?(false), "limit".as[Int].?(50)) { (interests, genders, ages, normalizeAgainstGroup, limit) => 
-            keywordsService.trendingKeywordsList(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit)
+        parameters("interests".as[String].?, "genders".as[String].?, "ages".as[String].?, "include_keywords".as[String].?, "normalize_against_group".as[Boolean].?(false), "limit".as[Int].?(50)) { (interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit) => 
+            keywordsService.trendingKeywordsList(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, includeKeywords = includeKeywords, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit)
         }
       }
     }
@@ -129,7 +129,7 @@ trait KeywordsApiService {
    * Code: 400, Message: Invalid trending keywords request parameters, DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def trendingKeywordsList(region: String, trendType: String, interests: Option[String], genders: Option[String], ages: Option[String], normalizeAgainstGroup: Boolean, limit: Int)
+  def trendingKeywordsList(region: String, trendType: String, interests: Option[String], genders: Option[String], ages: Option[String], includeKeywords: Option[String], normalizeAgainstGroup: Boolean, limit: Int)
       (implicit toEntityMarshallerTrendingKeywordsResponse: ToEntityMarshaller[TrendingKeywordsResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }

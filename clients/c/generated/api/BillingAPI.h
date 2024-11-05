@@ -22,7 +22,7 @@
 
 // Redeem ad credits
 //
-// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 //
 ads_credit_redeem_response_t*
 BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_credit_redeem_request_t *ads_credit_redeem_request);
@@ -30,7 +30,7 @@ BillingAPI_adsCreditRedeem(apiClient_t *apiClient, char *ad_account_id, ads_cred
 
 // Get ads credit discounts
 //
-// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 //
 ads_credits_discounts_get_200_response_t*
 BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, char *bookmark, int *page_size);
@@ -38,7 +38,7 @@ BillingAPI_adsCreditsDiscountsGet(apiClient_t *apiClient, char *ad_account_id, c
 
 // Get billing profiles
 //
-// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 //
 billing_profiles_get_200_response_t*
 BillingAPI_billingProfilesGet(apiClient_t *apiClient, char *ad_account_id, int *is_active, char *bookmark, int *page_size);

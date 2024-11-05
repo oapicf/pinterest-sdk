@@ -4,7 +4,7 @@ package org.openapitools.client.model
 
 case class PinMediaWithImage (
     _mediaType: Option[String],
-    _images: Option[ImageMetadataImages]
+    _images: Option[PinMediaWithImageAllOfImages]
 )
 object PinMediaWithImage {
     def toStringBody(var_mediaType: Object, var_images: Object) =

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -72,7 +73,11 @@ func (dst *CatalogsItemsBatchRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsItemsCreateBatchRequest) == "{}" { // empty struct
 			dst.CatalogsItemsCreateBatchRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsItemsCreateBatchRequest); err != nil {
+				dst.CatalogsItemsCreateBatchRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsItemsCreateBatchRequest = nil
@@ -85,7 +90,11 @@ func (dst *CatalogsItemsBatchRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsItemsDeleteBatchRequest) == "{}" { // empty struct
 			dst.CatalogsItemsDeleteBatchRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsItemsDeleteBatchRequest); err != nil {
+				dst.CatalogsItemsDeleteBatchRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsItemsDeleteBatchRequest = nil
@@ -98,7 +107,11 @@ func (dst *CatalogsItemsBatchRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsItemsDeleteDiscontinuedBatchRequest) == "{}" { // empty struct
 			dst.CatalogsItemsDeleteDiscontinuedBatchRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsItemsDeleteDiscontinuedBatchRequest); err != nil {
+				dst.CatalogsItemsDeleteDiscontinuedBatchRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsItemsDeleteDiscontinuedBatchRequest = nil
@@ -111,7 +124,11 @@ func (dst *CatalogsItemsBatchRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsItemsUpdateBatchRequest) == "{}" { // empty struct
 			dst.CatalogsItemsUpdateBatchRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsItemsUpdateBatchRequest); err != nil {
+				dst.CatalogsItemsUpdateBatchRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsItemsUpdateBatchRequest = nil
@@ -124,7 +141,11 @@ func (dst *CatalogsItemsBatchRequest) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsItemsUpsertBatchRequest) == "{}" { // empty struct
 			dst.CatalogsItemsUpsertBatchRequest = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsItemsUpsertBatchRequest); err != nil {
+				dst.CatalogsItemsUpsertBatchRequest = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsItemsUpsertBatchRequest = nil

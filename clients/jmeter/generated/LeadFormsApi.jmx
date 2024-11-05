@@ -53,9 +53,19 @@
             <stringProp name="Argument.value">${__P(testData.leadFormTest/createFile,LeadFormsApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="testData.leadForms/createFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.leadForms/createFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.leadForms/createFile,LeadFormsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="testData.leadForms/listFile" elementType="Argument">
             <stringProp name="Argument.name">testData.leadForms/listFile</stringProp>
             <stringProp name="Argument.value">${__P(testData.leadForms/listFile,LeadFormsApi.csv)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testData.leadForms/updateFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.leadForms/updateFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.leadForms/updateFile,LeadFormsApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -124,7 +134,7 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get lead form by id Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID. Retrieving an advertiser&#39;s lead form will only contain results if you&#39;re a part of the Lead ads beta. If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</stringProp>
+          <stringProp name="TestPlan.comments">Get lead form by id &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - leadForm/get" enabled="true">
@@ -208,13 +218,97 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Create lead form test data Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
+          <stringProp name="TestPlan.comments">Create lead form test data Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - leadFormTest/create" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${testData.leadFormTest/createFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - leadForms/create" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="leadForms/create - ${testCase}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="leadFormCreateRequest" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${__javaScript("${leadFormCreateRequest}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/ad_accounts/${ad_account_id}/lead_forms</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Create lead forms &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - leadForms/create" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.leadForms/createFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>
@@ -304,13 +398,97 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Get lead forms Gets all Lead Forms associated with an ad account ID. Retrieving an advertiser&#39;s list of lead forms will only contain results if you&#39;re a part of the Lead ads beta.  If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.</stringProp>
+          <stringProp name="TestPlan.comments">List lead forms &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - leadForms/list" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${testData.leadForms/listFile}</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="HTTP Status Assertion" enabled="true">
+          <collectionProp name="Assertion.test_strings">
+            <stringProp name="812696575">${httpStatusCode}</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+      </hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - leadForms/update" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testCases}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1448391617000</longProp>
+        <longProp name="ThreadGroup.end_time">1448391617000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${duration}</stringProp>
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name"></stringProp>
+              <stringProp name="Header.value">Bearer ${__P(oathToken,token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="leadForms/update - ${testCase}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="leadFormUpdateRequest" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${__javaScript("${leadFormUpdateRequest}".replace(/'/g\, '"'),)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v5/ad_accounts/${ad_account_id}/lead_forms</stringProp>
+          <stringProp name="HTTPSampler.method">PATCH</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">Update lead forms &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - leadForms/update" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${testData.leadForms/updateFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>

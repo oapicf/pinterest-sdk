@@ -22,7 +22,7 @@ import java.util.Objects;
 @ApiModel(description = "Response object of catalogs items")
 public class CatalogsItems   {
   
-  private List<@Valid ItemResponse> items;
+  private List<@Valid ItemResponse> items = new ArrayList<>();
 
   /**
    * Array with catalogs items

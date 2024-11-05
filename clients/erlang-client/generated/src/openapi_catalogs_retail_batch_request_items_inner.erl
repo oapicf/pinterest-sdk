@@ -7,7 +7,7 @@
 -type openapi_catalogs_retail_batch_request_items_inner() ::
     #{ 'item_id' := binary(),
        'operation' := binary(),
-       'attributes' := openapi_item_attributes:openapi_item_attributes(),
+       'attributes' := openapi_item_attributes_request:openapi_item_attributes_request(),
        'update_mask' => list()
      }.
 

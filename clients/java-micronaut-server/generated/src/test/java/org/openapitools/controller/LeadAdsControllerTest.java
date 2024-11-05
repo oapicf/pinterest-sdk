@@ -55,7 +55,7 @@ public class LeadAdsControllerTest {
      *
      * The method should: Delete lead ads subscription
      *
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -89,7 +89,7 @@ public class LeadAdsControllerTest {
             put("subscription_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@25600e60");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
@@ -103,7 +103,7 @@ public class LeadAdsControllerTest {
      *
      * The method should: Get lead ads subscription
      *
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -137,7 +137,7 @@ public class LeadAdsControllerTest {
             put("subscription_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@416a9223");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountGetSubscriptionResponse.class);
@@ -151,7 +151,7 @@ public class LeadAdsControllerTest {
      *
      * The method should: Get lead ads subscriptions
      *
-     * Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -185,7 +185,7 @@ public class LeadAdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@3687bc0d");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("bookmark", "example"); // The query parameter format should be 
@@ -202,7 +202,7 @@ public class LeadAdsControllerTest {
      *
      * The method should: Create lead ads subscription
      *
-     * Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -236,7 +236,7 @@ public class LeadAdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@1a4451cb");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountCreateSubscriptionResponse.class);

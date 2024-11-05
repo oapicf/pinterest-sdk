@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdsAnalyticsMetricsFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdsAnalyticsMetricsFilter   {
-  private @Valid AdsAnalyticsFilterColumn field;
-  private @Valid AdsAnalyticsFilterOperator operator;
+  private AdsAnalyticsFilterColumn field;
+  private AdsAnalyticsFilterOperator operator;
   private @Valid List<BigDecimal> values = new ArrayList<>();
 
   /**
@@ -37,8 +37,7 @@ public class AdsAnalyticsMetricsFilter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("field")
-  @NotNull
-  public AdsAnalyticsFilterColumn getField() {
+  @NotNull public AdsAnalyticsFilterColumn getField() {
     return field;
   }
 
@@ -57,8 +56,7 @@ public class AdsAnalyticsMetricsFilter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operator")
-  @NotNull
-  public AdsAnalyticsFilterOperator getOperator() {
+  @NotNull public AdsAnalyticsFilterOperator getOperator() {
     return operator;
   }
 
@@ -78,8 +76,7 @@ public class AdsAnalyticsMetricsFilter   {
   
   @ApiModelProperty(required = true, value = "List of values for filtering")
   @JsonProperty("values")
-  @NotNull
- @Size(min=1)  public List<BigDecimal> getValues() {
+  @NotNull @Valid  @Size(min=1)public List<@Valid BigDecimal> getValues() {
     return values;
   }
 

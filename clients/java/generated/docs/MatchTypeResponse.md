@@ -15,7 +15,5 @@
 
 * `PHRASE_NEGATIVE` (value: `"PHRASE_NEGATIVE"`)
 
-* `NULL` (value: `"null"`)
-
 
 

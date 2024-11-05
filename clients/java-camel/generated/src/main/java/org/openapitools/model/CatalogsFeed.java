@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Date;
+import org.openapitools.model.CatalogsCreativeAssetsFeed;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.model.CatalogsFormat;
@@ -37,13 +38,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeed.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeed.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailFeed.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeed.class, name = "CatalogsCreativeAssetsFeed"),
   @JsonSubTypes.Type(value = CatalogsHotelFeed.class, name = "CatalogsHotelFeed"),
   @JsonSubTypes.Type(value = CatalogsRetailFeed.class, name = "CatalogsRetailFeed")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface CatalogsFeed {
     public String getCatalogType();
 }

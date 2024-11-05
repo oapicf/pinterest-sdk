@@ -6,9 +6,9 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.BatchOperation
+import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.Country
 import org.openapitools.models.ItemDeleteDiscontinuedBatchRecord
-import org.openapitools.models.Language
 import scala.collection.immutable.Seq
 
 /**
@@ -19,7 +19,7 @@ import scala.collection.immutable.Seq
  * @param items Array with catalogs items
  */
 case class CatalogsItemsDeleteDiscontinuedBatchRequest(country: Country,
-                language: Language,
+                language: CatalogsItemsRequestLanguage,
                 operation: BatchOperation,
                 items: Seq[ItemDeleteDiscontinuedBatchRecord]
                 )

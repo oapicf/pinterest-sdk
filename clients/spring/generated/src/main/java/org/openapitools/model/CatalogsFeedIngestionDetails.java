@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionDetails {
 
   private CatalogsFeedIngestionErrors errors;
@@ -51,7 +51,7 @@ public class CatalogsFeedIngestionDetails {
   /**
    * Get errors
    * @return errors
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "errors", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("errors")
@@ -71,7 +71,7 @@ public class CatalogsFeedIngestionDetails {
   /**
    * Get info
    * @return info
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "info", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("info")
@@ -91,7 +91,7 @@ public class CatalogsFeedIngestionDetails {
   /**
    * Get warnings
    * @return warnings
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "warnings", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("warnings")

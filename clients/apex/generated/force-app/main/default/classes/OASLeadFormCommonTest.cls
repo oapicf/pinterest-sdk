@@ -77,12 +77,14 @@ private class OASLeadFormCommonTest {
         System.assertEquals('hasAcceptedTerms', x-property-mappings.get('has_accepted_terms'));
         System.assertEquals('completionMessage', x-property-mappings.get('completion_message'));
         System.assertEquals('disclosureLanguage', x-property-mappings.get('disclosure_language'));
+        System.assertEquals('policyLinks', x-property-mappings.get('policy_links'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASLeadFormCommon leadFormCommon = new OASLeadFormCommon();
         System.assertEquals(new List<OASLeadFormQuestion>(), leadFormCommon.questions);
+        System.assertEquals(new List<OASLeadFormCommonPolicyLinksInner>(), leadFormCommon.policyLinks);
         System.assertEquals(null, leadFormCommon.name);
         System.assertEquals(null, leadFormCommon.privacyPolicyLink);
         System.assertEquals(null, leadFormCommon.hasAcceptedTerms);

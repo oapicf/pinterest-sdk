@@ -10,6 +10,7 @@ import org.openapitools.vertxweb.server.model.CatalogsFeedProcessingSchedule;
 import org.openapitools.vertxweb.server.model.CatalogsFeedsCreateRequest;
 import org.openapitools.vertxweb.server.model.CatalogsFeedsCreateRequestDefaultLocale;
 import org.openapitools.vertxweb.server.model.CatalogsFormat;
+import org.openapitools.vertxweb.server.model.CatalogsStatus;
 import org.openapitools.vertxweb.server.model.CatalogsType;
 import org.openapitools.vertxweb.server.model.CatalogsVerticalFeedsCreateRequest;
 import org.openapitools.vertxweb.server.model.Country;
@@ -28,12 +29,13 @@ public class FeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
+  private CatalogsStatus status;
 
   public FeedsCreateRequest () {
 
   }
 
-  public FeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, Country defaultCountry, ProductAvailabilityType defaultAvailability) {
+  public FeedsCreateRequest (NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, Country defaultCountry, ProductAvailabilityType defaultAvailability, CatalogsStatus status) {
     this.defaultCurrency = defaultCurrency;
     this.name = name;
     this.format = format;
@@ -43,6 +45,7 @@ public class FeedsCreateRequest   {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
     this.defaultCountry = defaultCountry;
     this.defaultAvailability = defaultAvailability;
+    this.status = status;
   }
 
     
@@ -126,6 +129,15 @@ public class FeedsCreateRequest   {
     this.defaultAvailability = defaultAvailability;
   }
 
+    
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -144,12 +156,13 @@ public class FeedsCreateRequest   {
         Objects.equals(location, feedsCreateRequest.location) &&
         Objects.equals(preferredProcessingSchedule, feedsCreateRequest.preferredProcessingSchedule) &&
         Objects.equals(defaultCountry, feedsCreateRequest.defaultCountry) &&
-        Objects.equals(defaultAvailability, feedsCreateRequest.defaultAvailability);
+        Objects.equals(defaultAvailability, feedsCreateRequest.defaultAvailability) &&
+        Objects.equals(status, feedsCreateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability);
+    return Objects.hash(defaultCurrency, name, format, defaultLocale, credentials, location, preferredProcessingSchedule, defaultCountry, defaultAvailability, status);
   }
 
   @Override
@@ -166,6 +179,7 @@ public class FeedsCreateRequest   {
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

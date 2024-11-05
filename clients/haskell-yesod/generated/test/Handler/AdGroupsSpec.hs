@@ -13,9 +13,9 @@ spec = withApp $ do
             get $ AdAccountsByTextAdGroupsAnalyticsR "adAccountId_example"
             statusIs 501
 
-    describe "getAdAccountsByTextAdGroupsAudienceSizingR" $
+    describe "postAdAccountsByTextAdGroupsAudienceSizingR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextAdGroupsAudienceSizingR "adAccountId_example"
+            post $ AdAccountsByTextAdGroupsAudienceSizingR "adAccountId_example"
             statusIs 501
 
     describe "postAdAccountsByTextAdGroupsR" $

@@ -23,7 +23,8 @@ filters: CatalogsHotelProductGroupFilters,
   createdAt: Option[Integer],
 /* Unix timestamp in seconds of last time catalog product group was updated. */
   updatedAt: Option[Integer],
-catalogId: String)
+/* Catalog id pertaining to the hotel product group. */
+  catalogId: String)
 
 object CatalogsHotelProductGroup {
   import DateTimeCodecs._

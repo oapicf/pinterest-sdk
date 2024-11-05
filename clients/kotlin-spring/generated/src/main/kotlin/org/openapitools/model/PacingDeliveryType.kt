@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Ad group pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day. When using CBO, only the STANDARD pacing delivery type is allowed.
 * Values: STANDARD,ACCELERATED
 */
-enum class PacingDeliveryType(val value: kotlin.String) {
+enum class PacingDeliveryType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("STANDARD") STANDARD("STANDARD"),
-    @JsonProperty("ACCELERATED") ACCELERATED("ACCELERATED")
+    STANDARD("STANDARD"),
+    ACCELERATED("ACCELERATED");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): PacingDeliveryType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

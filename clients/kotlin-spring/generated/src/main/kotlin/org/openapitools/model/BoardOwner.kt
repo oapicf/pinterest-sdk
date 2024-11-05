@@ -21,7 +21,7 @@ data class BoardOwner(
 
     @Schema(example = "null", readOnly = true, description = "")
     @get:JsonProperty("username") val username: kotlin.String? = null
-) {
+    ) {
 
 }
 

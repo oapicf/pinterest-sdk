@@ -8,6 +8,10 @@
 
 const Controller = require('./Controller');
 const service = require('../services/PinsService');
+const multi_pins/analytics = async (request, response) => {
+  await Controller.handleRequest(request, response, service.multi_pins/analytics);
+};
+
 const pins/analytics = async (request, response) => {
   await Controller.handleRequest(request, response, service.pins/analytics);
 };
@@ -38,6 +42,7 @@ const pins/update = async (request, response) => {
 
 
 module.exports = {
+  multi_pins/analytics,
   pins/analytics,
   pins/create,
   pins/delete,

@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,14 +14,14 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/image_metadata_images.proto";
 import public "models/pin_media.proto";
+import public "models/pin_media_with_image_all_of_images.proto";
 
 message PinMediaWithVideo {
 
   string media_type = 329262776;
 
-  ImageMetadataImages images = 111508874;
+  PinMediaWithImageAllOfImages images = 111508874;
 
   string cover_image_url = 155569670;
 

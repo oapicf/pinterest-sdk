@@ -17,11 +17,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Ad entities to get in bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@ApiModel(description="Ad entities to get in bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkDownloadRequest   {
   
-  private List<BulkEntityType> entityTypes;
-  private List<@Pattern(regexp = "^\\d+$")String> entityIds;
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
   private String updatedSince;
   private BulkDownloadRequestCampaignFilter campaignFilter;
   private BulkOutputFormat outputFormat = "JSON";

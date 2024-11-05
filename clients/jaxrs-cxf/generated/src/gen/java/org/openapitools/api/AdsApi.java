@@ -6,8 +6,8 @@ import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsResponseInner;
-import org.openapitools.model.AdsAnalyticsTargetingType;
 import org.openapitools.model.AdsList200Response;
 import org.openapitools.model.ConversionReportAttributionType;
 import org.openapitools.model.Error;
@@ -45,7 +45,7 @@ public interface AdsApi  {
     /**
      * Create ad preview with pin or image
      *
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      *
      */
     @POST
@@ -72,12 +72,12 @@ public interface AdsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = MetricsResponse.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public MetricsResponse adTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("ad_ids") @NotNull @Size(min=1,max=100) List<@Pattern(regexp = "^\\d+$")String> adIds, @QueryParam("start_date") @NotNull LocalDate startDate, @QueryParam("end_date") @NotNull LocalDate endDate, @QueryParam("targeting_types") @NotNull @Size(min=1,max=15) List<AdsAnalyticsTargetingType> targetingTypes, @QueryParam("columns") @NotNull List<String> columns, @QueryParam("granularity") @NotNull Granularity granularity, @QueryParam("click_window_days") @DefaultValue("30")Integer clickWindowDays, @QueryParam("engagement_window_days") @DefaultValue("30")Integer engagementWindowDays, @QueryParam("view_window_days") @DefaultValue("1")Integer viewWindowDays, @QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")String conversionReportTime, @QueryParam("attribution_types") ConversionReportAttributionType attributionTypes);
+    public MetricsResponse adTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("ad_ids") @NotNull @Size(min=1,max=100) List<@Pattern(regexp = "^\\d+$")String> adIds, @QueryParam("start_date") @NotNull LocalDate startDate, @QueryParam("end_date") @NotNull LocalDate endDate, @QueryParam("targeting_types") @NotNull @Size(min=1,max=14) List<AdsAnalyticsAdTargetingType> targetingTypes, @QueryParam("columns") @NotNull List<String> columns, @QueryParam("granularity") @NotNull Granularity granularity, @QueryParam("click_window_days") @DefaultValue("30")Integer clickWindowDays, @QueryParam("engagement_window_days") @DefaultValue("30")Integer engagementWindowDays, @QueryParam("view_window_days") @DefaultValue("1")Integer viewWindowDays, @QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")String conversionReportTime, @QueryParam("attribution_types") ConversionReportAttributionType attributionTypes);
 
     /**
      * Get ad analytics
      *
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      *
      */
     @GET
@@ -88,7 +88,7 @@ public interface AdsApi  {
         @ApiResponse(code = 200, message = "Success", response = AdsAnalyticsResponseInner.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Invalid ad account ads analytics parameters.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public List<AdsAnalyticsResponseInner> adsAnalytics(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("start_date") @NotNull LocalDate startDate, @QueryParam("end_date") @NotNull LocalDate endDate, @QueryParam("ad_ids") @NotNull @Size(min=1,max=100) List<@Pattern(regexp = "^\\d+$")String> adIds, @QueryParam("columns") @NotNull List<String> columns, @QueryParam("granularity") @NotNull Granularity granularity, @QueryParam("click_window_days") @DefaultValue("30")Integer clickWindowDays, @QueryParam("engagement_window_days") @DefaultValue("30")Integer engagementWindowDays, @QueryParam("view_window_days") @DefaultValue("1")Integer viewWindowDays, @QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")String conversionReportTime);
+    public List<AdsAnalyticsResponseInner> adsAnalytics(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @QueryParam("start_date") @NotNull LocalDate startDate, @QueryParam("end_date") @NotNull LocalDate endDate, @QueryParam("columns") @NotNull List<String> columns, @QueryParam("granularity") @NotNull Granularity granularity, @QueryParam("ad_ids") @Size(min=1,max=100) List<@Pattern(regexp = "^\\d+$")String> adIds, @QueryParam("click_window_days") @DefaultValue("30")Integer clickWindowDays, @QueryParam("engagement_window_days") @DefaultValue("30")Integer engagementWindowDays, @QueryParam("view_window_days") @DefaultValue("1")Integer viewWindowDays, @QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")String conversionReportTime, @QueryParam("pin_ids") @Size(min=1,max=100) List<@Pattern(regexp = "^\\d+$")String> pinIds, @QueryParam("campaign_ids") @Size(min=1,max=100) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds);
 
     /**
      * Create ads
@@ -104,7 +104,7 @@ public interface AdsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = AdArrayResponse.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public AdArrayResponse adsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<AdCreateRequest> adCreateRequest);
+    public AdArrayResponse adsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid AdCreateRequest> adCreateRequest);
 
     /**
      * Get ad
@@ -151,5 +151,5 @@ public interface AdsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = AdArrayResponse.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public AdArrayResponse adsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<AdUpdateRequest> adUpdateRequest);
+    public AdArrayResponse adsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid AdUpdateRequest> adUpdateRequest);
 }

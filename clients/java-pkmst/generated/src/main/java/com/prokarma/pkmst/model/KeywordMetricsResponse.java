@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * KeywordMetricsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordMetricsResponse   {
   @JsonProperty("keyword")
   private String keyword;
@@ -28,10 +28,10 @@ public class KeywordMetricsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Keyword name, e.g., \"keyword\":\"fashion outfits\"
    * @return keyword
-  **/
+   */
   @ApiModelProperty(example = "animals", value = "Keyword name, e.g., \"keyword\":\"fashion outfits\"")
   public String getKeyword() {
     return keyword;
@@ -46,10 +46,10 @@ public class KeywordMetricsResponse   {
     return this;
   }
 
-   /**
+  /**
    * Get metrics
    * @return metrics
-  **/
+   */
   @ApiModelProperty(value = "")
   public KeywordMetrics getMetrics() {
     return metrics;

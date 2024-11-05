@@ -52,6 +52,11 @@ Protected Class CatalogsFeedsCreateRequest
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		status As OpenAPIClient.Models.CatalogsStatus
+	#tag EndProperty
+
+
 
 
 
@@ -158,6 +163,14 @@ Protected Class CatalogsFeedsCreateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="ProductAvailabilityType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsStatus"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

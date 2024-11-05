@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -152,7 +152,7 @@ DeliveryMetricsGet Get available metrics' definitions
 
 Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints.
 The `display_name` attribute will match how the metric is named in our native tools like Ads Manager.
-See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeliveryMetricsGetRequest
@@ -186,7 +186,7 @@ func (a *ResourcesAPIService) DeliveryMetricsGetExecute(r ApiDeliveryMetricsGetR
 	localVarFormParams := url.Values{}
 
 	if r.reportType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "report_type", r.reportType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "report_type", r.reportType, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -378,7 +378,7 @@ LeadFormQuestionsGet Get lead form questions
 
 Get a list of all lead form question type names. Some questions might not be used.
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLeadFormQuestionsGetRequest
@@ -517,7 +517,7 @@ func (a *ResourcesAPIService) MetricsReadyStateGetExecute(r ApiMetricsReadyState
 		return localVarReturnValue, nil, reportError("date is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "date", r.date, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "date", r.date, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -587,6 +587,7 @@ type ApiTargetingOptionsGetRequest struct {
 	clientId *string
 	oauthSignature *string
 	timestamp *string
+	adAccountId *string
 }
 
 // Client ID.
@@ -604,6 +605,12 @@ func (r ApiTargetingOptionsGetRequest) OauthSignature(oauthSignature string) Api
 // Timestamp
 func (r ApiTargetingOptionsGetRequest) Timestamp(timestamp string) ApiTargetingOptionsGetRequest {
 	r.timestamp = &timestamp
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiTargetingOptionsGetRequest) AdAccountId(adAccountId string) ApiTargetingOptionsGetRequest {
+	r.adAccountId = &adAccountId
 	return r
 }
 
@@ -652,13 +659,16 @@ func (a *ResourcesAPIService) TargetingOptionsGetExecute(r ApiTargetingOptionsGe
 	localVarFormParams := url.Values{}
 
 	if r.clientId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "client_id", r.clientId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client_id", r.clientId, "form", "")
 	}
 	if r.oauthSignature != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "oauth_signature", r.oauthSignature, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "oauth_signature", r.oauthSignature, "form", "")
 	}
 	if r.timestamp != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "timestamp", r.timestamp, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "timestamp", r.timestamp, "form", "")
+	}
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -6,10 +6,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **country** | [**Country**](Country.md) |  | 
-**language** | [**Language**](Language.md) |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **items** | [**List&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | 
+
+
+## Enum: CatalogTypeEnum
+
+Name | Value
+---- | -----
 
 
 

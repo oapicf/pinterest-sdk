@@ -17,7 +17,7 @@ import org.openapitools.model.CatalogsCreateRetailItem;
 import org.openapitools.model.CatalogsDeleteRetailItem;
 import org.openapitools.model.CatalogsUpdateRetailItem;
 import org.openapitools.model.CatalogsUpsertRetailItem;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.UpdateMaskFieldType;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -50,7 +50,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsUpsertRetailItem.class, name = "CatalogsUpsertRetailItem")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailBatchRequestItemsInner {
 
   private String itemId;
@@ -59,12 +59,6 @@ public class CatalogsRetailBatchRequestItemsInner {
    * Gets or Sets operation
    */
   public enum OperationEnum {
-    CREATE("CREATE"),
-    
-    UPDATE("UPDATE"),
-    
-    UPSERT("UPSERT"),
-    
     DELETE("DELETE");
 
     private String value;
@@ -96,7 +90,7 @@ public class CatalogsRetailBatchRequestItemsInner {
 
   private OperationEnum operation;
 
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
   @Valid
   private JsonNullable<List<UpdateMaskFieldType>> updateMask = JsonNullable.<List<UpdateMaskFieldType>>undefined();
@@ -108,7 +102,7 @@ public class CatalogsRetailBatchRequestItemsInner {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailBatchRequestItemsInner(String itemId, OperationEnum operation, ItemAttributes attributes) {
+  public CatalogsRetailBatchRequestItemsInner(String itemId, OperationEnum operation, ItemAttributesRequest attributes) {
     this.itemId = itemId;
     this.operation = operation;
     this.attributes = attributes;
@@ -122,7 +116,7 @@ public class CatalogsRetailBatchRequestItemsInner {
   /**
    * The catalog item id in the merchant namespace
    * @return itemId
-  */
+   */
   @NotNull 
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("item_id")
@@ -142,7 +136,7 @@ public class CatalogsRetailBatchRequestItemsInner {
   /**
    * Get operation
    * @return operation
-  */
+   */
   @NotNull 
   @Schema(name = "operation", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation")
@@ -154,7 +148,7 @@ public class CatalogsRetailBatchRequestItemsInner {
     this.operation = operation;
   }
 
-  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributes attributes) {
+  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -162,15 +156,15 @@ public class CatalogsRetailBatchRequestItemsInner {
   /**
    * Get attributes
    * @return attributes
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
@@ -190,7 +184,7 @@ public class CatalogsRetailBatchRequestItemsInner {
   /**
    * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
    * @return updateMask
-  */
+   */
   @Valid 
   @Schema(name = "update_mask", example = "[ad_link, adult, age_group, availability, average_review_rating, brand, checkout_enabled, color, condition, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, description, free_shipping_label, free_shipping_limit, gender, google_product_category, gtin, item_group_id, last_updated_time, link, material, min_ad_price, mpn, number_of_ratings, number_of_reviews, pattern, price, product_type, sale_price, shipping, shipping_height, shipping_weight, shipping_width, size, size_system, size_type, tax, title, variant_names, variant_values]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("update_mask")

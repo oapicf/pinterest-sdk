@@ -21,11 +21,11 @@ import javax.annotation.Generated;
  * MetricsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MetricsResponse {
 
   @Valid
-  private List<Object> data;
+  private List<Object> data = new ArrayList<>();
 
   public MetricsResponse data(List<Object> data) {
     this.data = data;
@@ -43,7 +43,7 @@ public class MetricsResponse {
   /**
    * Get data
    * @return data
-  */
+   */
   
   @Schema(name = "data", example = "[{\"targeting_type\":\"KEYWORD\",\"targeting_value\":\"christmas decor ideas\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"iphone\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"ipad\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"web\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"web_mobile\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"android_mobile\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"APPTYPE\",\"targeting_value\":\"android_tablet\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"GENDER\",\"targeting_value\":\"female\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"LOCATION\",\"targeting_value\":500,\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"PLACEMENT\",\"targeting_value\":\"SEARCH\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"COUNTRY\",\"targeting_value\":\"US\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"TARGETED_INTEREST\",\"targeting_value\":\"Food and Drinks\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"PINNER_INTEREST\",\"targeting_value\":\"Chocolate Cookies\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"AUDIENCE_INCLUDE\",\"targeting_value\":254261234567,\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"GEO\",\"targeting_value\":\"US:94102\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"AGE_BUCKET\",\"targeting_value\":\"45-49\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}},{\"targeting_type\":\"REGION\",\"targeting_value\":\"US-CA\",\"metrics\":{\"AD_GROUP_ID\":2680067996745,\"DATE\":\"2022-04-26\",\"SPEND_IN_DOLLAR\":240}}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")

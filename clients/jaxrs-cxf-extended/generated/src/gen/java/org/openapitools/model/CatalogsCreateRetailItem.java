@@ -3,7 +3,7 @@ package org.openapitools.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -27,10 +27,7 @@ public class CatalogsCreateRetailItem  {
 
 public enum OperationEnum {
 
-    @JsonProperty("CREATE") CREATE(String.valueOf("CREATE")),
-    @JsonProperty("UPDATE") UPDATE(String.valueOf("UPDATE")),
-    @JsonProperty("UPSERT") UPSERT(String.valueOf("UPSERT")),
-    @JsonProperty("DELETE") DELETE(String.valueOf("DELETE"));
+    @JsonProperty("CREATE") CREATE(String.valueOf("CREATE"));
 
     private String value;
 
@@ -62,7 +59,7 @@ public enum OperationEnum {
 
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
  /**
   * The catalog item id in the merchant namespace
   * @return itemId
@@ -119,21 +116,21 @@ public enum OperationEnum {
   */
   @JsonProperty("attributes")
   @NotNull
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
   /**
    * Sets the <code>attributes</code> property.
    */
- public void setAttributes(ItemAttributes attributes) {
+ public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
   /**
    * Sets the <code>attributes</code> property.
    */
-  public CatalogsCreateRetailItem attributes(ItemAttributes attributes) {
+  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }

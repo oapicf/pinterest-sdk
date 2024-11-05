@@ -25,7 +25,7 @@ data class CatalogsFeedCredentials(
 
     @Schema(example = "null", required = true, description = "The required username for downloading a feed.")
     @get:JsonProperty("username", required = true) val username: kotlin.String
-) {
+    ) {
 
 }
 

@@ -27,7 +27,7 @@ API.Client.ItemResponse.prototype.itemId;
 API.Client.ItemResponse.prototype.pins;
 
 /**
- * @type {!API.Client.CatalogsHotelAttributes}
+ * @type {!API.Client.CatalogsCreativeAssetsAttributes}
  * @export
  */
 API.Client.ItemResponse.prototype.attributes;
@@ -38,6 +38,13 @@ API.Client.ItemResponse.prototype.attributes;
  * @export
  */
 API.Client.ItemResponse.prototype.hotelId;
+
+/**
+ * The catalog creative assets id in the merchant namespace
+ * @type {!string}
+ * @export
+ */
+API.Client.ItemResponse.prototype.creativeAssetsId;
 
 /**
  * Array with the errors for the item id requested

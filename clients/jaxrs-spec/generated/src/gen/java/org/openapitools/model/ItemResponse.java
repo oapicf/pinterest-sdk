@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.CatalogsHotelAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemResponseAnyOf;
 import org.openapitools.model.ItemResponseAnyOf1;
@@ -27,12 +27,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "Object describing an item record")
 @JsonTypeName("ItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ItemResponse   {
-  private @Valid CatalogsType catalogType;
-  private @Valid String itemId;
-  private @Valid List<@Valid ItemValidationEvent> errors;
-  private @Valid String hotelId;
+  private CatalogsType catalogType;
+  private String itemId;
+  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private String hotelId;
+  private String creativeAssetsId;
 
   /**
    **/
@@ -44,8 +45,7 @@ public class ItemResponse   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
+  @NotNull public CatalogsType getCatalogType() {
     return catalogType;
   }
 
@@ -85,7 +85,7 @@ public class ItemResponse   {
   
   @ApiModelProperty(value = "Array with the errors for the item id requested")
   @JsonProperty("errors")
-  public List<ItemValidationEvent> getErrors() {
+  @Valid public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
 
@@ -130,6 +130,26 @@ public class ItemResponse   {
     this.hotelId = hotelId;
   }
 
+  /**
+   * The catalog creative assets id in the merchant namespace
+   **/
+  public ItemResponse creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+  @JsonProperty("creative_assets_id")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  @JsonProperty("creative_assets_id")
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,12 +163,13 @@ public class ItemResponse   {
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
         Objects.equals(this.errors, itemResponse.errors) &&
-        Objects.equals(this.hotelId, itemResponse.hotelId);
+        Objects.equals(this.hotelId, itemResponse.hotelId) &&
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId);
+    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
   }
 
   @Override
@@ -160,6 +181,7 @@ public class ItemResponse   {
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

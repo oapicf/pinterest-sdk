@@ -9,7 +9,7 @@ test_that("SearchPartnerPins", {
   # tests for SearchPartnerPins
   # base path: https://api.pinterest.com/v5
   # Search pins by a given search term
-  # &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+  # &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
   # @param term character Search term to look up pins.
   # @param country_code character Two letter country code (ISO 3166-1 alpha-2)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
@@ -25,10 +25,10 @@ test_that("SearchUserBoardsGet", {
   # tests for SearchUserBoardsGet
   # base path: https://api.pinterest.com/v5
   # Search user&#39;s boards
-  # Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+  # Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param query character Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
   # @return [SearchUserBoardsGet200Response]
 
@@ -40,7 +40,7 @@ test_that("SearchUserPinsList", {
   # tests for SearchUserPinsList
   # base path: https://api.pinterest.com/v5
   # Search user&#39;s Pins
-  # Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+  # Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
   # @param query character Search query. Can contain pin description keywords or comma-separated pin IDs.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)

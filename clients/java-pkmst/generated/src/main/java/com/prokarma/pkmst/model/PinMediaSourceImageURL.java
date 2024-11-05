@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Image URL-based media source")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImageURL   {
   /**
    * Gets or Sets sourceType
@@ -61,10 +61,10 @@ public class PinMediaSourceImageURL   {
     return this;
   }
 
-   /**
+  /**
    * Get sourceType
    * @return sourceType
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -79,10 +79,10 @@ public class PinMediaSourceImageURL   {
     return this;
   }
 
-   /**
+  /**
    * Get url
    * @return url
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public String getUrl() {
     return url;
@@ -97,10 +97,10 @@ public class PinMediaSourceImageURL   {
     return this;
   }
 
-   /**
+  /**
    * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
    * @return isStandard
-  **/
+   */
   @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
   public Boolean getIsStandard() {
     return isStandard;

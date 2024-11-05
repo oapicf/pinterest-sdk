@@ -72,7 +72,7 @@ private class OASCatalogsProductGroupsList200RespoTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsProductGroupsList200Respo catalogsProductGroupsList200Response = new OASCatalogsProductGroupsList200Respo();
-        System.assertEquals(new List<OASCatalogsProductGroupsList200Respo>(), catalogsProductGroupsList200Response.items);
+        System.assertEquals(new List<OASCatalogsVerticalProductGroup>(), catalogsProductGroupsList200Response.items);
         System.assertEquals(null, catalogsProductGroupsList200Response.bookmark);
     }
 }

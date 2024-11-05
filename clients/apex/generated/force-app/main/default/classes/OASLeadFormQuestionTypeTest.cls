@@ -10,14 +10,13 @@ private class OASLeadFormQuestionTypeTest {
             OASLeadFormQuestionType.EMAIL,
             OASLeadFormQuestionType.PHONE_NUMBER,
             OASLeadFormQuestionType.ZIP_CODE,
-            OASLeadFormQuestionType.AGE,
             OASLeadFormQuestionType.GENDER,
             OASLeadFormQuestionType.CITY,
             OASLeadFormQuestionType.COUNTRY,
-            OASLeadFormQuestionType.PREFERRED_CONTACT_METHOD,
             OASLeadFormQuestionType.STATE_PROVINCE,
             OASLeadFormQuestionType.ADDRESS,
-            OASLeadFormQuestionType.DATE_OF_BIRTH
+            OASLeadFormQuestionType.DATE_OF_BIRTH,
+            OASLeadFormQuestionType.AGE
         };
         Set<OASLeadFormQuestionType> actual  = new Set<OASLeadFormQuestionType>(OASLeadFormQuestionType.values());
         System.assertEquals(expected, actual);

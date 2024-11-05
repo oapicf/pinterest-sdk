@@ -57,7 +57,7 @@ func main() {
 	e.GET("/v5/ad_accounts/:ad_account_id/ad_groups/analytics", c.AdGroupsAnalytics)
 
 	// AdGroupsAudienceSizing - Get audience sizing
-	e.GET("/v5/ad_accounts/:ad_account_id/ad_groups/audience_sizing", c.AdGroupsAudienceSizing)
+	e.POST("/v5/ad_accounts/:ad_account_id/ad_groups/audience_sizing", c.AdGroupsAudienceSizing)
 
 	// AdGroupsBidFloorGet - Get bid floors
 	e.POST("/v5/ad_accounts/:ad_account_id/bid_floor", c.AdGroupsBidFloorGet)
@@ -98,11 +98,38 @@ func main() {
 	// AdsUpdate - Update ads
 	e.PATCH("/v5/ad_accounts/:ad_account_id/ads", c.AdsUpdate)
 
+	// AdvancedAuctionItemsGetPost - Get item bid options (POST)
+	e.POST("/v5/advanced_auction/items/get", c.AdvancedAuctionItemsGetPost)
+
+	// AdvancedAuctionItemsSubmitPost - Operate on item level bid options
+	e.POST("/v5/advanced_auction/items/submit", c.AdvancedAuctionItemsSubmitPost)
+
 	// AudienceInsightsGet - Get audience insights
 	e.GET("/v5/ad_accounts/:ad_account_id/audience_insights", c.AudienceInsightsGet)
 
 	// AudienceInsightsScopeAndTypeGet - Get audience insights scope and type
 	e.GET("/v5/ad_accounts/:ad_account_id/insights/audiences", c.AudienceInsightsScopeAndTypeGet)
+
+	// AdAccountsAudiencesSharedAccountsList - List accounts with access to an audience owned by an ad account
+	e.GET("/v5/ad_accounts/:ad_account_id/audiences/shared/accounts", c.AdAccountsAudiencesSharedAccountsList)
+
+	// BusinessAccountAudiencesSharedAccountsList - List accounts with access to an audience owned by a business
+	e.GET("/v5/businesses/:business_id/audiences/shared/accounts", c.BusinessAccountAudiencesSharedAccountsList)
+
+	// SharedAudiencesForBusinessList - List received audiences for a business
+	e.GET("/v5/businesses/:business_id/audiences", c.SharedAudiencesForBusinessList)
+
+	// UpdateAdAccountToAdAccountSharedAudience - Update audience sharing between ad accounts
+	e.PATCH("/v5/ad_accounts/:ad_account_id/audiences/ad_accounts/shared", c.UpdateAdAccountToAdAccountSharedAudience)
+
+	// UpdateAdAccountToBusinessSharedAudience - Update audience sharing from an ad account to businesses
+	e.PATCH("/v5/ad_accounts/:ad_account_id/audiences/businesses/shared", c.UpdateAdAccountToBusinessSharedAudience)
+
+	// UpdateBusinessToAdAccountSharedAudience - Update audience sharing from a business to ad accounts
+	e.PATCH("/v5/businesses/:business_id/audiences/ad_accounts/shared", c.UpdateBusinessToAdAccountSharedAudience)
+
+	// UpdateBusinessToBusinessSharedAudience - Update audience sharing between businesses
+	e.PATCH("/v5/businesses/:business_id/audiences/businesses/shared", c.UpdateBusinessToBusinessSharedAudience)
 
 	// AudiencesCreate - Create audience
 	e.POST("/v5/ad_accounts/:ad_account_id/audiences", c.AudiencesCreate)
@@ -188,6 +215,78 @@ func main() {
 	// BulkUpsertCreate - Create/update ad entities in bulk
 	e.POST("/v5/ad_accounts/:ad_account_id/bulk/upsert", c.BulkUpsertCreate)
 
+	// AssetGroupCreate - Create a new asset group.
+	e.POST("/v5/businesses/:business_id/asset_groups", c.AssetGroupCreate)
+
+	// AssetGroupDelete - Delete asset groups.
+	e.DELETE("/v5/businesses/:business_id/asset_groups", c.AssetGroupDelete)
+
+	// AssetGroupUpdate - Update asset groups.
+	e.PATCH("/v5/businesses/:business_id/asset_groups", c.AssetGroupUpdate)
+
+	// BusinessAssetMembersGet - Get members with access to asset
+	e.GET("/v5/businesses/:business_id/assets/:asset_id/members", c.BusinessAssetMembersGet)
+
+	// BusinessAssetPartnersGet - Get partners with access to asset
+	e.GET("/v5/businesses/:business_id/assets/:asset_id/partners", c.BusinessAssetPartnersGet)
+
+	// BusinessAssetsGet - List business assets
+	e.GET("/v5/businesses/:business_id/assets", c.BusinessAssetsGet)
+
+	// BusinessMemberAssetsGet - Get assets assigned to a member
+	e.GET("/v5/businesses/:business_id/members/:member_id/assets", c.BusinessMemberAssetsGet)
+
+	// BusinessMembersAssetAccessDelete - Delete member access to asset
+	e.DELETE("/v5/businesses/:business_id/members/assets/access", c.BusinessMembersAssetAccessDelete)
+
+	// BusinessMembersAssetAccessUpdate - Assign/Update member asset permissions
+	e.PATCH("/v5/businesses/:business_id/members/assets/access", c.BusinessMembersAssetAccessUpdate)
+
+	// BusinessPartnerAssetAccessGet - Get assets assigned to a partner or assets assigned by a partner
+	e.GET("/v5/businesses/:business_id/partners/:partner_id/assets", c.BusinessPartnerAssetAccessGet)
+
+	// DeletePartnerAssetAccessHandlerImpl - Delete partner access to asset
+	e.DELETE("/v5/businesses/:business_id/partners/assets", c.DeletePartnerAssetAccessHandlerImpl)
+
+	// UpdatePartnerAssetAccessHandlerImpl - Assign/Update partner asset permissions
+	e.PATCH("/v5/businesses/:business_id/partners/assets", c.UpdatePartnerAssetAccessHandlerImpl)
+
+	// AssetAccessRequestsCreate - Create a request to access an existing partner's assets.
+	e.POST("/v5/businesses/:business_id/requests/assets/access", c.AssetAccessRequestsCreate)
+
+	// CancelInvitesOrRequests - Cancel invites/requests
+	e.DELETE("/v5/businesses/:business_id/invites", c.CancelInvitesOrRequests)
+
+	// CreateAssetInvites - Update invite/request with an asset permission
+	e.POST("/v5/businesses/:business_id/invites/assets/access", c.CreateAssetInvites)
+
+	// CreateMembershipOrPartnershipInvites - Create invites or requests
+	e.POST("/v5/businesses/:business_id/invites", c.CreateMembershipOrPartnershipInvites)
+
+	// GetInvites - Get invites/requests
+	e.GET("/v5/businesses/:business_id/invites", c.GetInvites)
+
+	// RespondBusinessAccessInvites - Accept or decline an invite/request
+	e.PATCH("/v5/businesses/invites", c.RespondBusinessAccessInvites)
+
+	// DeleteBusinessMembership - Terminate business memberships
+	e.DELETE("/v5/businesses/:business_id/members", c.DeleteBusinessMembership)
+
+	// DeleteBusinessPartners - Terminate business partnerships
+	e.DELETE("/v5/businesses/:business_id/partners", c.DeleteBusinessPartners)
+
+	// GetBusinessEmployers - List business employers for user
+	e.GET("/v5/businesses/employers", c.GetBusinessEmployers)
+
+	// GetBusinessMembers - Get business members
+	e.GET("/v5/businesses/:business_id/members", c.GetBusinessMembers)
+
+	// GetBusinessPartners - Get business partners
+	e.GET("/v5/businesses/:business_id/partners", c.GetBusinessPartners)
+
+	// UpdateBusinessMemberships - Update member's business role
+	e.PATCH("/v5/businesses/:business_id/members", c.UpdateBusinessMemberships)
+
 	// CampaignTargetingAnalyticsGet - Get targeting analytics for campaigns
 	e.GET("/v5/ad_accounts/:ad_account_id/campaigns/targeting_analytics", c.CampaignTargetingAnalyticsGet)
 
@@ -206,17 +305,26 @@ func main() {
 	// CampaignsUpdate - Update campaigns
 	e.PATCH("/v5/ad_accounts/:ad_account_id/campaigns", c.CampaignsUpdate)
 
+	// CatalogsCreate - Create catalog
+	e.POST("/v5/catalogs", c.CatalogsCreate)
+
 	// CatalogsList - List catalogs
 	e.GET("/v5/catalogs", c.CatalogsList)
 
-	// CatalogsProductGroupPinsList - List products for a Product Group
+	// CatalogsProductGroupPinsList - List products by product group
 	e.GET("/v5/catalogs/product_groups/:product_group_id/products", c.CatalogsProductGroupPinsList)
 
 	// CatalogsProductGroupsCreate - Create product group
 	e.POST("/v5/catalogs/product_groups", c.CatalogsProductGroupsCreate)
 
+	// CatalogsProductGroupsCreateMany - Create product groups
+	e.POST("/v5/catalogs/product_groups/multiple", c.CatalogsProductGroupsCreateMany)
+
 	// CatalogsProductGroupsDelete - Delete product group
 	e.DELETE("/v5/catalogs/product_groups/:product_group_id", c.CatalogsProductGroupsDelete)
+
+	// CatalogsProductGroupsDeleteMany - Delete product groups
+	e.DELETE("/v5/catalogs/product_groups/multiple", c.CatalogsProductGroupsDeleteMany)
 
 	// CatalogsProductGroupsGet - Get product group
 	e.GET("/v5/catalogs/product_groups/:product_group_id", c.CatalogsProductGroupsGet)
@@ -224,13 +332,13 @@ func main() {
 	// CatalogsProductGroupsList - List product groups
 	e.GET("/v5/catalogs/product_groups", c.CatalogsProductGroupsList)
 
-	// CatalogsProductGroupsProductCountsGet - Get product counts for a Product Group
+	// CatalogsProductGroupsProductCountsGet - Get product counts
 	e.GET("/v5/catalogs/product_groups/:product_group_id/product_counts", c.CatalogsProductGroupsProductCountsGet)
 
-	// CatalogsProductGroupsUpdate - Update product group
+	// CatalogsProductGroupsUpdate - Update single product group
 	e.PATCH("/v5/catalogs/product_groups/:product_group_id", c.CatalogsProductGroupsUpdate)
 
-	// FeedProcessingResultsList - List processing results for a given feed
+	// FeedProcessingResultsList - List feed processing results
 	e.GET("/v5/catalogs/feeds/:feed_id/processing_results", c.FeedProcessingResultsList)
 
 	// FeedsCreate - Create feed
@@ -242,26 +350,41 @@ func main() {
 	// FeedsGet - Get feed
 	e.GET("/v5/catalogs/feeds/:feed_id", c.FeedsGet)
 
+	// FeedsIngest - Ingest feed items
+	e.POST("/v5/catalogs/feeds/:feed_id/ingest", c.FeedsIngest)
+
 	// FeedsList - List feeds
 	e.GET("/v5/catalogs/feeds", c.FeedsList)
 
 	// FeedsUpdate - Update feed
 	e.PATCH("/v5/catalogs/feeds/:feed_id", c.FeedsUpdate)
 
-	// ItemsBatchGet - Get catalogs item batch status
+	// ItemsBatchGet - Get item batch status
 	e.GET("/v5/catalogs/items/batch/:batch_id", c.ItemsBatchGet)
 
 	// ItemsBatchPost - Operate on item batch
 	e.POST("/v5/catalogs/items/batch", c.ItemsBatchPost)
 
-	// ItemsGet - Get catalogs items
+	// ItemsGet - Get catalogs items (deprecated)
 	e.GET("/v5/catalogs/items", c.ItemsGet)
 
-	// ItemsIssuesList - List item issues for a given processing result
+	// ItemsIssuesList - List item issues
 	e.GET("/v5/catalogs/processing_results/:processing_result_id/item_issues", c.ItemsIssuesList)
 
-	// ProductsByProductGroupFilterList - List filtered products
+	// ItemsPost - Get catalogs items (POST)
+	e.POST("/v5/catalogs/items", c.ItemsPost)
+
+	// ProductsByProductGroupFilterList - List products by filter
 	e.POST("/v5/catalogs/products/get_by_product_group_filters", c.ProductsByProductGroupFilterList)
+
+	// ReportsCreate - Build catalogs report
+	e.POST("/v5/catalogs/reports", c.ReportsCreate)
+
+	// ReportsGet - Get catalogs report
+	e.GET("/v5/catalogs/reports", c.ReportsGet)
+
+	// ReportsStats - List report stats
+	e.GET("/v5/catalogs/reports/stats", c.ReportsStats)
 
 	// EventsCreate - Send conversions
 	e.POST("/v5/ad_accounts/:ad_account_id/events", c.EventsCreate)
@@ -347,8 +470,20 @@ func main() {
 	// LeadFormTestCreate - Create lead form test data
 	e.POST("/v5/ad_accounts/:ad_account_id/lead_forms/:lead_form_id/test", c.LeadFormTestCreate)
 
-	// LeadFormsList - Get lead forms
+	// LeadFormsCreate - Create lead forms
+	e.POST("/v5/ad_accounts/:ad_account_id/lead_forms", c.LeadFormsCreate)
+
+	// LeadFormsList - List lead forms
 	e.GET("/v5/ad_accounts/:ad_account_id/lead_forms", c.LeadFormsList)
+
+	// LeadFormsUpdate - Update lead forms
+	e.PATCH("/v5/ad_accounts/:ad_account_id/lead_forms", c.LeadFormsUpdate)
+
+	// LeadsExportCreate - Create a request to export leads collected from a lead ad
+	e.POST("/v5/ad_accounts/:ad_account_id/leads_export", c.LeadsExportCreate)
+
+	// LeadsExportGet - Get the lead export from the lead export create call
+	e.GET("/v5/ad_accounts/:ad_account_id/leads_export/:leads_export_id", c.LeadsExportGet)
 
 	// MediaCreate - Register media upload
 	e.POST("/v5/media", c.MediaCreate)
@@ -367,6 +502,9 @@ func main() {
 
 	// OrderLinesList - Get order lines
 	e.GET("/v5/ad_accounts/:ad_account_id/order_lines", c.OrderLinesList)
+
+	// MultiPinsAnalytics - Get multiple Pin analytics
+	e.GET("/v5/pins/analytics", c.MultiPinsAnalytics)
 
 	// PinsAnalytics - Get Pin analytics
 	e.GET("/v5/pins/:pin_id/analytics", c.PinsAnalytics)
@@ -404,9 +542,6 @@ func main() {
 	// ProductGroupsAnalytics - Get product group analytics
 	e.GET("/v5/ad_accounts/:ad_account_id/product_groups/analytics", c.ProductGroupsAnalytics)
 
-	// AdAccountsCatalogsProductGroupsList - Get catalog product groups (deprecated)
-	e.GET("/v5/ad_accounts/:ad_account_id/product_groups/catalogs", c.AdAccountsCatalogsProductGroupsList)
-
 	// AdAccountCountriesGet - Get ad accounts countries
 	e.GET("/v5/resources/ad_account_countries", c.AdAccountCountriesGet)
 
@@ -433,6 +568,15 @@ func main() {
 
 	// SearchUserPinsList - Search user's Pins
 	e.GET("/v5/search/pins", c.SearchUserPinsList)
+
+	// TargetingTemplateCreate - Create targeting templates
+	e.POST("/v5/ad_accounts/:ad_account_id/targeting_templates", c.TargetingTemplateCreate)
+
+	// TargetingTemplateList - List targeting templates
+	e.GET("/v5/ad_accounts/:ad_account_id/targeting_templates", c.TargetingTemplateList)
+
+	// TargetingTemplateUpdate - Update targeting templates
+	e.PATCH("/v5/ad_accounts/:ad_account_id/targeting_templates", c.TargetingTemplateUpdate)
 
 	// TermsRelatedList - List related terms
 	e.GET("/v5/terms/related", c.TermsRelatedList)

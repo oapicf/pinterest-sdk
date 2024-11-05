@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object containing other custom data.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConversionEventsDataInnerCustomData   {
   @JsonProperty("currency")
   private String currency;
@@ -66,10 +66,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
    * @return currency
-  **/
+   */
   @ApiModelProperty(example = "USD", value = "The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.")
   public String getCurrency() {
     return currency;
@@ -84,10 +84,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
    * @return value
-  **/
+   */
   @ApiModelProperty(example = "72.39", value = "Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.")
   public String getValue() {
     return value;
@@ -110,10 +110,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return contentIds
-  **/
+   */
   @ApiModelProperty(example = "[\"red-pinterest-shirt-logo-1\",\"purple-pinterest-shirt-logo-3\"]", value = "List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public List<String> getContentIds() {
     return contentIds;
@@ -128,10 +128,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * The name of the page or product associated with the event.
    * @return contentName
-  **/
+   */
   @ApiModelProperty(example = "pinterest-themed-clothing", value = "The name of the page or product associated with the event.")
   public String getContentName() {
     return contentName;
@@ -146,10 +146,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * The category of the content associated with the event.
    * @return contentCategory
-  **/
+   */
   @ApiModelProperty(example = "shirts", value = "The category of the content associated with the event.")
   public String getContentCategory() {
     return contentCategory;
@@ -164,10 +164,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * The brand of the content associated with the event.
    * @return contentBrand
-  **/
+   */
   @ApiModelProperty(example = "pinterest-brand", value = "The brand of the content associated with the event.")
   public String getContentBrand() {
     return contentBrand;
@@ -190,10 +190,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return contents
-  **/
+   */
   @ApiModelProperty(value = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public List<ConversionEventsDataInnerCustomDataContentsInner> getContents() {
     return contents;
@@ -208,10 +208,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return numItems
-  **/
+   */
   @ApiModelProperty(example = "2", value = "Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public Long getNumItems() {
     return numItems;
@@ -226,10 +226,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
    * @return orderId
-  **/
+   */
   @ApiModelProperty(example = "my_order_id", value = "The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.")
   public String getOrderId() {
     return orderId;
@@ -244,10 +244,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * The search string related to the user conversion event.
    * @return searchString
-  **/
+   */
   @ApiModelProperty(example = "sample string", value = "The search string related to the user conversion event.")
   public String getSearchString() {
     return searchString;
@@ -262,11 +262,11 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
-   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
+  /**
+   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
    * @return optOutType
-  **/
-  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.")
+   */
+  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.")
   public String getOptOutType() {
     return optOutType;
   }
@@ -280,10 +280,10 @@ public class ConversionEventsDataInnerCustomData   {
     return this;
   }
 
-   /**
+  /**
    * Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
    * @return np
-  **/
+   */
   @ApiModelProperty(example = "ss-company", value = "Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.")
   public String getNp() {
     return np;

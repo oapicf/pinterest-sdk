@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,8 +19,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 * 
 * Values: video
 */
-enum class MediaUploadType(val value: kotlin.String) {
+enum class MediaUploadType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("video") video("video")
+    video("video");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): MediaUploadType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

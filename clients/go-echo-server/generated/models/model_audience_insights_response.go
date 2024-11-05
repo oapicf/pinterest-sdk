@@ -11,7 +11,7 @@ type AudienceInsightsResponse struct {
 	Type AudienceInsightType `json:"type,omitempty"`
 
 	// Generation date
-	Date *string `json:"date,omitempty"`
+	Date *string `json:"date,omitempty" validate:"regexp=^\\\\d{4}-\\\\d{2}-\\\\d{2}$"`
 
 	// Population count.
 	Size int32 `json:"size,omitempty"`

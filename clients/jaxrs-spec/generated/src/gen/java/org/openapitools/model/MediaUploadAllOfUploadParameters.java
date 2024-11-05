@@ -18,16 +18,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  **/
 @ApiModel(description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
 @JsonTypeName("MediaUpload_allOf_upload_parameters")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MediaUploadAllOfUploadParameters   {
-  private @Valid String xAmzDate;
-  private @Valid String xAmzSignature;
-  private @Valid String xAmzSecurityToken;
-  private @Valid String xAmzAlgorithm;
-  private @Valid String key;
-  private @Valid String policy;
-  private @Valid String xAmzCredential;
-  private @Valid String contentType;
+  private String xAmzDate;
+  private String xAmzSignature;
+  private String xAmzSecurityToken;
+  private String xAmzAlgorithm;
+  private String key;
+  private String policy;
+  private String xAmzCredential;
+  private String contentType;
 
   /**
    **/

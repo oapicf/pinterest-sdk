@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * CatalogsRetailItemsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
 
   /**
@@ -88,7 +88,7 @@ public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -116,7 +116,7 @@ public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
   /**
    * Get itemIds
    * @return itemIds
-  */
+   */
   @NotNull @Size(min = 1, max = 100) 
   @Schema(name = "item_ids", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("item_ids")
@@ -136,7 +136,7 @@ public class CatalogsRetailItemsFilter implements CatalogsItemsFilters {
   /**
    * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
    * @return catalogId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")

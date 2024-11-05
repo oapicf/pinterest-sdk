@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
+| **catalog_type** | **String** |  |  |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**Language**](Language.md) |  |  |
+| **language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  |
 | **items** | [**Array&lt;CatalogsHotelBatchItem&gt;**](CatalogsHotelBatchItem.md) | Array with catalogs item operations |  |
 | **catalog_id** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] |
 

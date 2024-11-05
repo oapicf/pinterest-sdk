@@ -42,7 +42,7 @@
     },
     {
       "name": "tracking_urls",
-      "type": ["null", "model.AdCommonTrackingUrls"],
+      "type": ["null", "model.TrackingUrls"],
       "doc": "",
       "default": null
     },
@@ -59,9 +59,9 @@
       "default": null
     },
     {
-      "name": "summary_status",
-      "type": ["null", "model.CampaignSummaryStatus"],
-      "doc": "",
+      "name": "is_flexible_daily_budgets",
+      "type": ["null", "boolean"],
+      "doc": "Determine if a campaign has flexible daily budgets setup.",
       "default": null
     }
   ]

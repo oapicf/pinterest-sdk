@@ -8,7 +8,7 @@ use WWW::OpenAPIClient::Object::SummaryPin;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media** | [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **alt_text** | **string** |  | [optional] 
 **link** | **string** |  | [optional] 
 **title** | **string** |  | [optional] 

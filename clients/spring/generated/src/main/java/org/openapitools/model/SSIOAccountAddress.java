@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * SSIOAccountAddress
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountAddress {
 
   private String display;
@@ -37,7 +37,7 @@ public class SSIOAccountAddress {
   /**
    * Address display
    * @return display
-  */
+   */
   
   @Schema(name = "display", example = "475 Brannan Street, San Francisco, CA 94103", description = "Address display", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("display")
@@ -57,7 +57,7 @@ public class SSIOAccountAddress {
   /**
    * Purpose for which the address is used, usually Billing or Businness
    * @return purpose
-  */
+   */
   
   @Schema(name = "purpose", example = "Billing", description = "Purpose for which the address is used, usually Billing or Businness", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("purpose")
@@ -77,7 +77,7 @@ public class SSIOAccountAddress {
   /**
    * Salesforce id for address
    * @return addressId
-  */
+   */
   
   @Schema(name = "address_id", example = "a1C1N000004MUrLUAW", description = "Salesforce id for address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address_id")
@@ -97,7 +97,7 @@ public class SSIOAccountAddress {
   /**
    * Legal entity for this insertion order
    * @return orderLegalEntity
-  */
+   */
   
   @Schema(name = "order_legal_entity", example = "PIN US OU", description = "Legal entity for this insertion order", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_legal_entity")

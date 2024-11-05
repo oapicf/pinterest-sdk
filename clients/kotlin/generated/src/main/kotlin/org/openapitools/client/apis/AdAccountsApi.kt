@@ -16,7 +16,7 @@
 package org.openapitools.client.apis
 
 import java.io.IOException
-import okhttp3.OkHttpClient
+import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.AdAccount
@@ -52,7 +52,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpClient = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -155,6 +155,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -187,6 +188,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -212,7 +214,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -224,7 +235,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -236,7 +256,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -248,7 +277,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -256,7 +294,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      */
      enum class ConversionReportTimeAdAccountAnalytics(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -467,6 +514,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "VIDEO_P75_COMBINED_2") VIDEO_P75_COMBINED_2("VIDEO_P75_COMBINED_2"),
          @Json(name = "VIDEO_P95_COMBINED_2") VIDEO_P95_COMBINED_2("VIDEO_P95_COMBINED_2"),
          @Json(name = "VIDEO_MRC_VIEWS_2") VIDEO_MRC_VIEWS_2("VIDEO_MRC_VIEWS_2"),
+         @Json(name = "PAID_VIDEO_VIEWABLE_RATE") PAID_VIDEO_VIEWABLE_RATE("PAID_VIDEO_VIEWABLE_RATE"),
          @Json(name = "VIDEO_LENGTH") VIDEO_LENGTH("VIDEO_LENGTH"),
          @Json(name = "ECPV_IN_DOLLAR") ECPV_IN_DOLLAR("ECPV_IN_DOLLAR"),
          @Json(name = "ECPCV_IN_DOLLAR") ECPCV_IN_DOLLAR("ECPCV_IN_DOLLAR"),
@@ -499,6 +547,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "LEADS") LEADS("LEADS"),
          @Json(name = "COST_PER_LEAD") COST_PER_LEAD("COST_PER_LEAD"),
          @Json(name = "QUIZ_COMPLETED") QUIZ_COMPLETED("QUIZ_COMPLETED"),
+         @Json(name = "QUIZ_PIN_RESULT_OPEN") QUIZ_PIN_RESULT_OPEN("QUIZ_PIN_RESULT_OPEN"),
          @Json(name = "QUIZ_COMPLETION_RATE") QUIZ_COMPLETION_RATE("QUIZ_COMPLETION_RATE"),
          @Json(name = "SHOWCASE_PIN_CLICKTHROUGH") SHOWCASE_PIN_CLICKTHROUGH("SHOWCASE_PIN_CLICKTHROUGH"),
          @Json(name = "SHOWCASE_SUBPAGE_CLICKTHROUGH") SHOWCASE_SUBPAGE_CLICKTHROUGH("SHOWCASE_SUBPAGE_CLICKTHROUGH"),
@@ -524,7 +573,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "TOTAL_SEARCH_CONVERSION_RATE") TOTAL_SEARCH_CONVERSION_RATE("TOTAL_SEARCH_CONVERSION_RATE"),
          @Json(name = "TOTAL_WATCH_VIDEO_CONVERSION_RATE") TOTAL_WATCH_VIDEO_CONVERSION_RATE("TOTAL_WATCH_VIDEO_CONVERSION_RATE"),
          @Json(name = "TOTAL_UNKNOWN_CONVERSION_RATE") TOTAL_UNKNOWN_CONVERSION_RATE("TOTAL_UNKNOWN_CONVERSION_RATE"),
-         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE")
+         @Json(name = "TOTAL_CUSTOM_CONVERSION_RATE") TOTAL_CUSTOM_CONVERSION_RATE("TOTAL_CUSTOM_CONVERSION_RATE");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -536,7 +594,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -548,7 +615,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -560,7 +636,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
          @Json(name = "7") _7(7),
          @Json(name = "14") _14(14),
          @Json(name = "30") _30(30),
-         @Json(name = "60") _60(60)
+         @Json(name = "60") _60(60);
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -568,7 +653,16 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      */
      enum class ConversionReportTimeAdAccountTargetingAnalyticsGet(val value: kotlin.String) {
          @Json(name = "TIME_OF_AD_ACTION") AD_ACTION("TIME_OF_AD_ACTION"),
-         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION")
+         @Json(name = "TIME_OF_CONVERSION") CONVERSION("TIME_OF_CONVERSION");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
@@ -577,7 +671,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -618,7 +712,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -646,7 +740,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * @param adAccountId Unique identifier of an ad account.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
@@ -841,7 +935,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * List ad accounts
      * Get a list of the ad_accounts that the \&quot;operation user_account\&quot; has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param includeSharedAccounts Include shared ad accounts (optional, default to true)
      * @return AdAccountsList200Response
      * @throws IllegalStateException If the request is not correctly configured
@@ -874,7 +968,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * List ad accounts
      * Get a list of the ad_accounts that the \&quot;operation user_account\&quot; has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param includeSharedAccounts Include shared ad accounts (optional, default to true)
      * @return ApiResponse<AdAccountsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -894,7 +988,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * To obtain the request config of the operation adAccountsList
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param includeSharedAccounts Include shared ad accounts (optional, default to true)
      * @return RequestConfig
      */
@@ -1325,7 +1419,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
 
     /**
      * Delete ads data for ad account in API Sandbox
-     * Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+     * Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
      * @param adAccountId Unique identifier of an ad account.
      * @return kotlin.String
      * @throws IllegalStateException If the request is not correctly configured
@@ -1356,7 +1450,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
 
     /**
      * Delete ads data for ad account in API Sandbox
-     * Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+     * Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
      * @param adAccountId Unique identifier of an ad account.
      * @return ApiResponse<kotlin.String?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -1399,14 +1493,23 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      */
      enum class OrderTemplatesList(val value: kotlin.String) {
          @Json(name = "ASCENDING") ASCENDING("ASCENDING"),
-         @Json(name = "DESCENDING") DESCENDING("DESCENDING")
+         @Json(name = "DESCENDING") DESCENDING("DESCENDING");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
      }
 
     /**
      * List templates
      * Gets all Templates associated with an ad account ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return TemplatesList200Response
@@ -1440,7 +1543,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * List templates
      * Gets all Templates associated with an ad account ID.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<TemplatesList200Response?>
@@ -1461,7 +1564,7 @@ class AdAccountsApi(basePath: kotlin.String = defaultBasePath, client: OkHttpCli
      * To obtain the request config of the operation templatesList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -39,7 +39,7 @@ func (r ApiBoardsUserFollowsListRequest) Bookmark(bookmark string) ApiBoardsUser
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiBoardsUserFollowsListRequest) PageSize(pageSize int32) ApiBoardsUserFollowsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -98,22 +98,22 @@ func (a *UserAccountAPIService) BoardsUserFollowsListExecute(r ApiBoardsUserFoll
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.explicitFollowing != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.explicitFollowing = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -208,7 +208,7 @@ func (r ApiFollowUserUpdateRequest) Execute() (*UserSummary, *http.Response, err
 /*
 FollowUserUpdate Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
 Use this request, as a signed-in user, to follow another user.
 
@@ -337,7 +337,7 @@ func (r ApiFollowersListRequest) Bookmark(bookmark string) ApiFollowersListReque
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiFollowersListRequest) PageSize(pageSize int32) ApiFollowersListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -384,10 +384,10 @@ func (a *UserAccountAPIService) FollowersListExecute(r ApiFollowersListRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -625,7 +625,7 @@ func (a *UserAccountAPIService) UnverifyWebsiteDeleteExecute(r ApiUnverifyWebsit
 		return nil, reportError("website is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "website", r.website, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "website", r.website, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -814,49 +814,49 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
 	if r.fromClaimedContent != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
 		var defaultValue string = "BOTH"
 		r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.contentType = &defaultValue
 	}
 	if r.source != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	}
 	if r.splitField != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "form", "")
 	} else {
 		var defaultValue string = "NO_SPLIT"
 		r.splitField = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1083,53 +1083,53 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopPinsExecute(r ApiUserAcco
 		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
 	if r.fromClaimedContent != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
 		var defaultValue string = "BOTH"
 		r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.contentType = &defaultValue
 	}
 	if r.source != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	}
 	if r.numOfPins != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "form", "")
 	} else {
 		var defaultValue int32 = 10
 		r.numOfPins = &defaultValue
 	}
 	if r.createdInLastNDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "form", "")
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1345,53 +1345,53 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopVideoPinsExecute(r ApiUse
 		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
 	if r.fromClaimedContent != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
 		var defaultValue string = "BOTH"
 		r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.contentType = &defaultValue
 	}
 	if r.source != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
 		var defaultValue string = "ALL"
 		r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "csv")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	}
 	if r.numOfPins != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "form", "")
 	} else {
 		var defaultValue int32 = 10
 		r.numOfPins = &defaultValue
 	}
 	if r.createdInLastNDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "form", "")
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1480,7 +1480,7 @@ func (r ApiUserAccountFollowedInterestsRequest) Bookmark(bookmark string) ApiUse
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiUserAccountFollowedInterestsRequest) PageSize(pageSize int32) ApiUserAccountFollowedInterestsRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1530,10 +1530,10 @@ func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAcc
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -1655,7 +1655,7 @@ UserAccountGet Get user account
 Get account information for the "operation user_account"
 - By default, the "operation user_account" is the token user_account.
 
-If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUserAccountGetRequest
@@ -1689,7 +1689,7 @@ func (a *UserAccountAPIService) UserAccountGetExecute(r ApiUserAccountGetRequest
 	localVarFormParams := url.Values{}
 
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1780,7 +1780,7 @@ func (r ApiUserFollowingGetRequest) Bookmark(bookmark string) ApiUserFollowingGe
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiUserFollowingGetRequest) PageSize(pageSize int32) ApiUserFollowingGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1845,28 +1845,28 @@ func (a *UserAccountAPIService) UserFollowingGetExecute(r ApiUserFollowingGetReq
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.feedType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", r.feedType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", r.feedType, "form", "")
 	} else {
 		var defaultValue UserFollowingFeedType = "ALL"
 		r.feedType = &defaultValue
 	}
 	if r.explicitFollowing != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.explicitFollowing = &defaultValue
 	}
 	if r.adAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1943,7 +1943,7 @@ func (r ApiUserWebsitesGetRequest) Bookmark(bookmark string) ApiUserWebsitesGetR
 	return r
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiUserWebsitesGetRequest) PageSize(pageSize int32) ApiUserWebsitesGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -1990,10 +1990,10 @@ func (a *UserAccountAPIService) UserWebsitesGetExecute(r ApiUserWebsitesGetReque
 	localVarFormParams := url.Values{}
 
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
@@ -2075,11 +2075,18 @@ type ApiVerifyWebsiteUpdateRequest struct {
 	ctx context.Context
 	ApiService *UserAccountAPIService
 	userWebsiteVerifyRequest *UserWebsiteVerifyRequest
+	adAccountId *string
 }
 
 // Verify a website.
 func (r ApiVerifyWebsiteUpdateRequest) UserWebsiteVerifyRequest(userWebsiteVerifyRequest UserWebsiteVerifyRequest) ApiVerifyWebsiteUpdateRequest {
 	r.userWebsiteVerifyRequest = &userWebsiteVerifyRequest
+	return r
+}
+
+// Unique identifier of an ad account.
+func (r ApiVerifyWebsiteUpdateRequest) AdAccountId(adAccountId string) ApiVerifyWebsiteUpdateRequest {
+	r.adAccountId = &adAccountId
 	return r
 }
 
@@ -2126,6 +2133,9 @@ func (a *UserAccountAPIService) VerifyWebsiteUpdateExecute(r ApiVerifyWebsiteUpd
 		return localVarReturnValue, nil, reportError("userWebsiteVerifyRequest is required and must be specified")
 	}
 
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -2193,6 +2203,13 @@ func (a *UserAccountAPIService) VerifyWebsiteUpdateExecute(r ApiVerifyWebsiteUpd
 type ApiWebsiteVerificationGetRequest struct {
 	ctx context.Context
 	ApiService *UserAccountAPIService
+	adAccountId *string
+}
+
+// Unique identifier of an ad account.
+func (r ApiWebsiteVerificationGetRequest) AdAccountId(adAccountId string) ApiWebsiteVerificationGetRequest {
+	r.adAccountId = &adAccountId
+	return r
 }
 
 func (r ApiWebsiteVerificationGetRequest) Execute() (*UserWebsiteVerificationCode, *http.Response, error) {
@@ -2235,6 +2252,9 @@ func (a *UserAccountAPIService) WebsiteVerificationGetExecute(r ApiWebsiteVerifi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.adAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

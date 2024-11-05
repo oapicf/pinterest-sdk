@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CatalogsProductGroupsList200Response._
 
 case class CatalogsProductGroupsList200Response (
-  items: List[CatalogsProductGroupsList200ResponseAllOfItemsInner],
+  items: List[CatalogsVerticalProductGroup],
 bookmark: Option[String])
 
 object CatalogsProductGroupsList200Response {

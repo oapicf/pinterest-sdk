@@ -37,8 +37,7 @@ SSIOInsertionOrderCommon <- R6::R6Class(
     `media_contact_email` = NULL,
     `agency_link` = NULL,
     `user_email` = NULL,
-    #' Initialize a new SSIOInsertionOrderCommon class.
-    #'
+
     #' @description
     #' Initialize a new SSIOInsertionOrderCommon class.
     #'
@@ -55,7 +54,6 @@ SSIOInsertionOrderCommon <- R6::R6Class(
     #' @param agency_link URL link for agency
     #' @param user_email The email of user submitting the insertion order
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`start_date` = NULL, `end_date` = NULL, `po_number` = NULL, `budget_amount` = NULL, `billing_contact_firstname` = NULL, `billing_contact_lastname` = NULL, `billing_contact_email` = NULL, `media_contact_firstname` = NULL, `media_contact_lastname` = NULL, `media_contact_email` = NULL, `agency_link` = NULL, `user_email` = NULL, ...) {
       if (!is.null(`start_date`)) {
         if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
@@ -127,13 +125,11 @@ SSIOInsertionOrderCommon <- R6::R6Class(
         self$`user_email` <- `user_email`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOInsertionOrderCommon in JSON format
-    #' @export
     toJSON = function() {
       SSIOInsertionOrderCommonObject <- list()
       if (!is.null(self$`start_date`)) {
@@ -186,14 +182,12 @@ SSIOInsertionOrderCommon <- R6::R6Class(
       }
       SSIOInsertionOrderCommonObject
     },
-    #' Deserialize JSON string into an instance of SSIOInsertionOrderCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOInsertionOrderCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOInsertionOrderCommon
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`start_date`)) {
@@ -234,13 +228,11 @@ SSIOInsertionOrderCommon <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return SSIOInsertionOrderCommon in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`start_date`)) {
@@ -343,14 +335,12 @@ SSIOInsertionOrderCommon <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of SSIOInsertionOrderCommon
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of SSIOInsertionOrderCommon
     #'
     #' @param input_json the JSON input
     #' @return the instance of SSIOInsertionOrderCommon
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`start_date` <- this_object$`start_date`
@@ -367,33 +357,27 @@ SSIOInsertionOrderCommon <- R6::R6Class(
       self$`user_email` <- this_object$`user_email`
       self
     },
-    #' Validate JSON input with respect to SSIOInsertionOrderCommon
-    #'
+
     #' @description
     #' Validate JSON input with respect to SSIOInsertionOrderCommon and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of SSIOInsertionOrderCommon
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
         return(FALSE)
@@ -405,13 +389,11 @@ SSIOInsertionOrderCommon <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
@@ -424,12 +406,9 @@ SSIOInsertionOrderCommon <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

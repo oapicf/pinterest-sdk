@@ -107,7 +107,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/targeting_analytics', {
     },
     {
       "name" => "targeting_types",
-      "description" => "Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.",
+      "description" => "Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.",
       "dataType" => "Array<AdsAnalyticsTargetingType>",
       "collectionFormat" => "csv",
       "paramType" => "query",
@@ -240,7 +240,7 @@ MyApp.add_route('GET', '/v5/ad_accounts', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",
@@ -431,7 +431,7 @@ MyApp.add_route('DELETE', '/v5/ad_accounts/{ad_account_id}/sandbox', {
   "nickname" => "sandbox/delete",
   "responseClass" => "String",
   "endpoint" => "/ad_accounts/{ad_account_id}/sandbox",
-  "notes" => "Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.",
+  "notes" => "Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -457,7 +457,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/templates', {
   "parameters" => [
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",

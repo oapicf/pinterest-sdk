@@ -25,7 +25,7 @@ data class CatalogsFeedProductCounts(
 
     @Schema(example = "null", description = "The number of products successfully ingested from the feed file.")
     @get:JsonProperty("ingested") val ingested: kotlin.Int? = null
-) {
+    ) {
 
 }
 

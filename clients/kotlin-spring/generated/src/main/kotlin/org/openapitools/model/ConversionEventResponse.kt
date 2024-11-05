@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.ConversionTagType
@@ -38,7 +39,7 @@ data class ConversionEventResponse(
 
     @Schema(example = "1564768710", description = "Creation date in epoch format.")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null
-) {
+    ) {
 
 }
 

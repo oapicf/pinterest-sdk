@@ -1,9 +1,9 @@
 package apimodels;
 
-import apimodels.AdCommonTrackingUrls;
 import apimodels.CampaignSummaryStatus;
 import apimodels.EntityStatus;
 import apimodels.ObjectiveType;
+import apimodels.TrackingUrls;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 /**
  * CampaignResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CampaignResponse   {
   @JsonProperty("id")
@@ -52,7 +52,7 @@ public class CampaignResponse   {
   @JsonProperty("tracking_urls")
   @Valid
 
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @JsonProperty("start_time")
   
@@ -62,10 +62,9 @@ public class CampaignResponse   {
   
   private Integer endTime;
 
-  @JsonProperty("summary_status")
-  @Valid
-
-  private CampaignSummaryStatus summaryStatus;
+  @JsonProperty("is_flexible_daily_budgets")
+  
+  private Boolean isFlexibleDailyBudgets;
 
   @JsonProperty("objective_type")
   @Valid
@@ -84,13 +83,14 @@ public class CampaignResponse   {
   
   private String type;
 
-  @JsonProperty("is_flexible_daily_budgets")
-  
-  private Boolean isFlexibleDailyBudgets;
-
   @JsonProperty("is_campaign_budget_optimization")
   
   private Boolean isCampaignBudgetOptimization;
+
+  @JsonProperty("summary_status")
+  @Valid
+
+  private CampaignSummaryStatus summaryStatus;
 
   public CampaignResponse id(String id) {
     this.id = id;
@@ -211,7 +211,7 @@ public class CampaignResponse   {
     this.orderLineId = orderLineId;
   }
 
-  public CampaignResponse trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public CampaignResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -220,11 +220,11 @@ public class CampaignResponse   {
    * Get trackingUrls
    * @return trackingUrls
   **/
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -262,21 +262,21 @@ public class CampaignResponse   {
     this.endTime = endTime;
   }
 
-  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
     return this;
   }
 
    /**
-   * Get summaryStatus
-   * @return summaryStatus
+   * Determine if a campaign has flexible daily budgets setup.
+   * @return isFlexibleDailyBudgets
   **/
-  public CampaignSummaryStatus getSummaryStatus() {
-    return summaryStatus;
+  public Boolean getIsFlexibleDailyBudgets() {
+    return isFlexibleDailyBudgets;
   }
 
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
-    this.summaryStatus = summaryStatus;
+  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
+    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
   }
 
   public CampaignResponse objectiveType(ObjectiveType objectiveType) {
@@ -347,23 +347,6 @@ public class CampaignResponse   {
     this.type = type;
   }
 
-  public CampaignResponse isFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-    return this;
-  }
-
-   /**
-   * Determines if a campaign has flexible daily budgets setup.
-   * @return isFlexibleDailyBudgets
-  **/
-  public Boolean getIsFlexibleDailyBudgets() {
-    return isFlexibleDailyBudgets;
-  }
-
-  public void setIsFlexibleDailyBudgets(Boolean isFlexibleDailyBudgets) {
-    this.isFlexibleDailyBudgets = isFlexibleDailyBudgets;
-  }
-
   public CampaignResponse isCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
     return this;
@@ -379,6 +362,23 @@ public class CampaignResponse   {
 
   public void setIsCampaignBudgetOptimization(Boolean isCampaignBudgetOptimization) {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
+  }
+
+  public CampaignResponse summaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
+    return this;
+  }
+
+   /**
+   * Get summaryStatus
+   * @return summaryStatus
+  **/
+  public CampaignSummaryStatus getSummaryStatus() {
+    return summaryStatus;
+  }
+
+  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
+    this.summaryStatus = summaryStatus;
   }
 
 
@@ -401,18 +401,18 @@ public class CampaignResponse   {
         Objects.equals(trackingUrls, campaignResponse.trackingUrls) &&
         Objects.equals(startTime, campaignResponse.startTime) &&
         Objects.equals(endTime, campaignResponse.endTime) &&
-        Objects.equals(summaryStatus, campaignResponse.summaryStatus) &&
+        Objects.equals(isFlexibleDailyBudgets, campaignResponse.isFlexibleDailyBudgets) &&
         Objects.equals(objectiveType, campaignResponse.objectiveType) &&
         Objects.equals(createdTime, campaignResponse.createdTime) &&
         Objects.equals(updatedTime, campaignResponse.updatedTime) &&
         Objects.equals(type, campaignResponse.type) &&
-        Objects.equals(isFlexibleDailyBudgets, campaignResponse.isFlexibleDailyBudgets) &&
-        Objects.equals(isCampaignBudgetOptimization, campaignResponse.isCampaignBudgetOptimization);
+        Objects.equals(isCampaignBudgetOptimization, campaignResponse.isCampaignBudgetOptimization) &&
+        Objects.equals(summaryStatus, campaignResponse.summaryStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, summaryStatus, objectiveType, createdTime, updatedTime, type, isFlexibleDailyBudgets, isCampaignBudgetOptimization);
+    return Objects.hash(id, adAccountId, name, status, lifetimeSpendCap, dailySpendCap, orderLineId, trackingUrls, startTime, endTime, isFlexibleDailyBudgets, objectiveType, createdTime, updatedTime, type, isCampaignBudgetOptimization, summaryStatus);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -431,13 +431,13 @@ public class CampaignResponse   {
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
+    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    isFlexibleDailyBudgets: ").append(toIndentedString(isFlexibleDailyBudgets)).append("\n");
     sb.append("    isCampaignBudgetOptimization: ").append(toIndentedString(isCampaignBudgetOptimization)).append("\n");
+    sb.append("    summaryStatus: ").append(toIndentedString(summaryStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

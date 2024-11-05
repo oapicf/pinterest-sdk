@@ -39,5 +39,17 @@ class QuizPinDataTest : ShouldSpec() {
             //modelInstance.results shouldBe ("TODO")
         }
 
+        // to test the property `tieBreakerType` - Quiz ad tie breaker type, default is RANDOM
+        should("test tieBreakerType") {
+            // uncomment below to test the property
+            //modelInstance.tieBreakerType shouldBe ("TODO")
+        }
+
+        // to test the property `tieBreakerCustomResult`
+        should("test tieBreakerCustomResult") {
+            // uncomment below to test the property
+            //modelInstance.tieBreakerCustomResult shouldBe ("TODO")
+        }
+
     }
 }

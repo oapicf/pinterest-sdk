@@ -23,8 +23,7 @@ BulkDownloadRequest <- R6::R6Class(
     `updated_since` = NULL,
     `campaign_filter` = NULL,
     `output_format` = NULL,
-    #' Initialize a new BulkDownloadRequest class.
-    #'
+
     #' @description
     #' Initialize a new BulkDownloadRequest class.
     #'
@@ -34,7 +33,6 @@ BulkDownloadRequest <- R6::R6Class(
     #' @param campaign_filter campaign_filter
     #' @param output_format output_format. Default to "JSON".
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`entity_types` = NULL, `entity_ids` = NULL, `updated_since` = NULL, `campaign_filter` = NULL, `output_format` = "JSON", ...) {
       if (!is.null(`entity_types`)) {
         stopifnot(is.vector(`entity_types`), length(`entity_types`) != 0)
@@ -64,13 +62,11 @@ BulkDownloadRequest <- R6::R6Class(
         self$`output_format` <- `output_format`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkDownloadRequest in JSON format
-    #' @export
     toJSON = function() {
       BulkDownloadRequestObject <- list()
       if (!is.null(self$`entity_types`)) {
@@ -95,14 +91,12 @@ BulkDownloadRequest <- R6::R6Class(
       }
       BulkDownloadRequestObject
     },
-    #' Deserialize JSON string into an instance of BulkDownloadRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkDownloadRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkDownloadRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`entity_types`)) {
@@ -126,13 +120,11 @@ BulkDownloadRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return BulkDownloadRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`entity_types`)) {
@@ -179,14 +171,12 @@ BulkDownloadRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of BulkDownloadRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of BulkDownloadRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of BulkDownloadRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`entity_types` <- ApiClient$new()$deserializeObj(this_object$`entity_types`, "array[BulkEntityType]", loadNamespace("openapi"))
@@ -196,33 +186,27 @@ BulkDownloadRequest <- R6::R6Class(
       self$`output_format` <- BulkOutputFormat$new()$fromJSON(jsonlite::toJSON(this_object$`output_format`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to BulkDownloadRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to BulkDownloadRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of BulkDownloadRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (length(self$`entity_types`) > 5) {
         return(FALSE)
@@ -237,13 +221,11 @@ BulkDownloadRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`entity_types`) > 5) {
@@ -259,12 +241,9 @@ BulkDownloadRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

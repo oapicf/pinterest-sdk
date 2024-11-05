@@ -14,6 +14,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::ItemResponseAnyOf.openapi_one_of
 # =>
 # [
+#   :'CatalogsCreativeAssetsItemResponse',
 #   :'CatalogsHotelItemResponse',
 #   :'CatalogsRetailItemResponse'
 # ]
@@ -44,6 +45,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::ItemResponseAnyOf.openapi_discriminator_mapping
 # =>
 # {
+#   :'CREATIVE_ASSETS' => :'CatalogsCreativeAssetsItemResponse',
 #   :'HOTEL' => :'CatalogsHotelItemResponse',
 #   :'RETAIL' => :'CatalogsRetailItemResponse'
 # }
@@ -59,7 +61,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::ItemResponseAnyOf.build(data)
-# => #<CatalogsHotelItemResponse:0x00007fdd4aab02a0>
+# => #<CatalogsCreativeAssetsItemResponse:0x00007fdd4aab02a0>
 
 PinterestSdkClient::ItemResponseAnyOf.build(data_that_doesnt_match)
 # => nil
@@ -73,6 +75,7 @@ PinterestSdkClient::ItemResponseAnyOf.build(data_that_doesnt_match)
 
 #### Return type
 
+- `CatalogsCreativeAssetsItemResponse`
 - `CatalogsHotelItemResponse`
 - `CatalogsRetailItemResponse`
 - `nil` (if no type matches)

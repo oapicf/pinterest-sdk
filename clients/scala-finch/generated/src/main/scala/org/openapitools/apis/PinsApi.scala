@@ -33,6 +33,7 @@ object PinsApi {
     * @return Bundled compilation of all service endpoints.
     */
     def endpoints(da: DataAccessor) =
+        multiPins/analytics(da) :+:
         pins/analytics(da) :+:
         pins/create(da) :+:
         pins/delete(da) :+:
@@ -61,6 +62,20 @@ object PinsApi {
       def toZonedDateTime: ZonedDateTime = ZonedDateTime.parse(s, datetimeformatter)
 
     }
+
+        /**
+        * 
+        * @return An endpoint representing a Map[String, Map]
+        */
+        private def multiPins/analytics(da: DataAccessor): Endpoint[Map[String, Map]] =
+        get("pins" :: "analytics" :: params("pin_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("metric_types") :: paramOption("app_types") :: paramOption("ad_account_id")) { (pinIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], adAccountId: Option[String]) =>
+          da.Pins_multiPins/analytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
 
         /**
         * 

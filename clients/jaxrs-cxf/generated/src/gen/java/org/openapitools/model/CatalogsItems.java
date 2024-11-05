@@ -24,7 +24,7 @@ public class CatalogsItems  {
  /**
    * Array with catalogs items
   **/
-  private List<@Valid ItemResponse> items;
+  private List<@Valid ItemResponse> items = new ArrayList<>();
  /**
    * Array with catalogs items
    * @return items

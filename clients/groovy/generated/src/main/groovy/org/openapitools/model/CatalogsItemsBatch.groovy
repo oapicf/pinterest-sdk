@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BatchOperationStatus;
+import org.openapitools.model.CatalogsCreativeAssetsItemsBatch;
 import org.openapitools.model.CatalogsHotelItemsBatch;
 import org.openapitools.model.CatalogsRetailItemsBatch;
 import org.openapitools.model.CatalogsType;
-import org.openapitools.model.HotelProcessingRecord;
+import org.openapitools.model.CreativeAssetsProcessingRecord;
 
 @Canonical
 class CatalogsItemsBatch {
@@ -18,12 +19,12 @@ class CatalogsItemsBatch {
     CatalogsType catalogType
     /* Id of the catalogs items batch */
     String batchId
-    /* Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
     Date createdTime
-    /* Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+    /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     Date completedTime
     
     BatchOperationStatus status
     /* Array with the catalogs items processing records part of the catalogs items batch */
-    List<HotelProcessingRecord> items
+    List<CreativeAssetsProcessingRecord> items = new ArrayList<>()
 }

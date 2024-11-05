@@ -17,7 +17,7 @@ class BulkDownloadRequestCampaignFilter {
     /* Campaign name */
     String name
     
-    List<CampaignSummaryStatus> campaignStatus
+    List<CampaignSummaryStatus> campaignStatus = new ArrayList<>()
     
-    List<ObjectiveType> objectiveType
+    List<ObjectiveType> objectiveType = new ArrayList<>()
 }

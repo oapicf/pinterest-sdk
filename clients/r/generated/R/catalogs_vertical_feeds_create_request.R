@@ -16,17 +16,18 @@ CatalogsVerticalFeedsCreateRequest <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("CatalogsHotelFeedsCreateRequest", "CatalogsRetailFeedsCreateRequest"),
-    #' Initialize a new CatalogsVerticalFeedsCreateRequest.
-    #'
+    one_of = list("CatalogsCreativeAssetsFeedsCreateRequest", "CatalogsHotelFeedsCreateRequest", "CatalogsRetailFeedsCreateRequest"),
+
     #' @description
     #' Initialize a new CatalogsVerticalFeedsCreateRequest.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsHotelFeedsCreateRequest", "CatalogsRetailFeedsCreateRequest"
-    #' @export
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsCreativeAssetsFeedsCreateRequest", "CatalogsHotelFeedsCreateRequest", "CatalogsRetailFeedsCreateRequest"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsCreativeAssetsFeedsCreateRequest") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsCreativeAssetsFeedsCreateRequest"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsHotelFeedsCreateRequest") {
         self$actual_instance <- instance
         self$actual_type <- "CatalogsHotelFeedsCreateRequest"
@@ -34,30 +35,28 @@ CatalogsVerticalFeedsCreateRequest <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "CatalogsRetailFeedsCreateRequest"
       } else {
-        stop(paste("Failed to initialize CatalogsVerticalFeedsCreateRequest with oneOf schemas CatalogsHotelFeedsCreateRequest, CatalogsRetailFeedsCreateRequest. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsVerticalFeedsCreateRequest with oneOf schemas CatalogsCreativeAssetsFeedsCreateRequest, CatalogsHotelFeedsCreateRequest, CatalogsRetailFeedsCreateRequest. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsVerticalFeedsCreateRequest.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsVerticalFeedsCreateRequest.
     #' An alias to the method `fromJSON` .
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsVerticalFeedsCreateRequest.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsVerticalFeedsCreateRequest.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsVerticalFeedsCreateRequest.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsVerticalFeedsCreateRequest.
-    #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
       matched_schemas <- list() #names of matched schemas
@@ -94,29 +93,42 @@ CatalogsVerticalFeedsCreateRequest <- R6::R6Class(
         error_messages <- append(error_messages, `CatalogsHotelFeedsCreateRequest_result`["message"])
       }
 
+      `CatalogsCreativeAssetsFeedsCreateRequest_result` <- tryCatch({
+          `CatalogsCreativeAssetsFeedsCreateRequest`$public_methods$validateJSON(input)
+          `CatalogsCreativeAssetsFeedsCreateRequest_instance` <- `CatalogsCreativeAssetsFeedsCreateRequest`$new()
+          instance <- `CatalogsCreativeAssetsFeedsCreateRequest_instance`$fromJSON(input)
+          instance_type <- "CatalogsCreativeAssetsFeedsCreateRequest"
+          matched_schemas <- append(matched_schemas, "CatalogsCreativeAssetsFeedsCreateRequest")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsCreativeAssetsFeedsCreateRequest_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsCreativeAssetsFeedsCreateRequest_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into CatalogsVerticalFeedsCreateRequest with oneOf schemas CatalogsHotelFeedsCreateRequest, CatalogsRetailFeedsCreateRequest. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into CatalogsVerticalFeedsCreateRequest with oneOf schemas CatalogsCreativeAssetsFeedsCreateRequest, CatalogsHotelFeedsCreateRequest, CatalogsRetailFeedsCreateRequest. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into CatalogsVerticalFeedsCreateRequest with oneOf schemas CatalogsHotelFeedsCreateRequest, CatalogsRetailFeedsCreateRequest. Details: >>",
+        stop(paste("No match found when deserializing the input into CatalogsVerticalFeedsCreateRequest with oneOf schemas CatalogsCreativeAssetsFeedsCreateRequest, CatalogsHotelFeedsCreateRequest, CatalogsRetailFeedsCreateRequest. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 
       self
     },
-    #' Serialize CatalogsVerticalFeedsCreateRequest to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsVerticalFeedsCreateRequest to JSON string.
     #'
     #' @return JSON string representation of the CatalogsVerticalFeedsCreateRequest.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify(self$actual_instance$toJSONString()))
@@ -124,13 +136,11 @@ CatalogsVerticalFeedsCreateRequest <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsVerticalFeedsCreateRequest to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsVerticalFeedsCreateRequest to JSON.
     #'
     #' @return JSON representation of the CatalogsVerticalFeedsCreateRequest.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -138,14 +148,12 @@ CatalogsVerticalFeedsCreateRequest <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsVerticalFeedsCreateRequest.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsVerticalFeedsCreateRequest and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -158,13 +166,11 @@ CatalogsVerticalFeedsCreateRequest <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -174,12 +180,9 @@ CatalogsVerticalFeedsCreateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

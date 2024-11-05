@@ -1,7 +1,7 @@
 /*
  * CatalogsVerticalProductGroupCreateRequest.h
  *
- * Request object for creating a hotel product group.
+ * Request object for creating a catalog based product group.
  */
 
 #ifndef _CatalogsVerticalProductGroupCreateRequest_H_
@@ -9,8 +9,12 @@
 
 
 #include <string>
+#include "CatalogsCreativeAssetsProductGroupCreateRequest.h"
+#include "CatalogsCreativeAssetsProductGroupFilters.h"
 #include "CatalogsHotelProductGroupCreateRequest.h"
-#include "CatalogsHotelProductGroupFilters.h"
+#include "CatalogsLocale.h"
+#include "CatalogsRetailProductGroupCreateRequest.h"
+#include "Country.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -22,7 +26,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Request object for creating a hotel product group.
+/*! \brief Request object for creating a catalog based product group.
  *
  *  \ingroup Models
  *
@@ -70,25 +74,41 @@ public:
 	void setDescription(std::string  description);
 	/*! \brief Get 
 	 */
-	CatalogsHotelProductGroupFilters getFilters();
+	CatalogsCreativeAssetsProductGroupFilters getFilters();
 
 	/*! \brief Set 
 	 */
-	void setFilters(CatalogsHotelProductGroupFilters  filters);
-	/*! \brief Get Catalog id pertaining to the hotel product group.
+	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
+	/*! \brief Get Catalog id pertaining to the creative assets product group.
 	 */
 	std::string getCatalogId();
 
-	/*! \brief Set Catalog id pertaining to the hotel product group.
+	/*! \brief Set Catalog id pertaining to the creative assets product group.
 	 */
 	void setCatalogId(std::string  catalog_id);
+	/*! \brief Get 
+	 */
+	Country getCountry();
+
+	/*! \brief Set 
+	 */
+	void setCountry(Country  country);
+	/*! \brief Get 
+	 */
+	CatalogsLocale getLocale();
+
+	/*! \brief Set 
+	 */
+	void setLocale(CatalogsLocale  locale);
 
 private:
 	std::string catalog_type;
 	std::string name;
 	std::string description;
-	CatalogsHotelProductGroupFilters filters;
+	CatalogsCreativeAssetsProductGroupFilters filters;
 	std::string catalog_id;
+	Country country;
+	CatalogsLocale locale;
 	void __init();
 	void __cleanup();
 

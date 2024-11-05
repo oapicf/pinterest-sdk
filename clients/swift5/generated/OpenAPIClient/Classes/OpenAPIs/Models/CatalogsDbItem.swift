@@ -12,11 +12,11 @@ import AnyCodable
 
 public struct CatalogsDbItem: Codable, JSONEncodable, Hashable {
 
-    public var createdAt: Date?
-    public var id: String?
-    public var updatedAt: Date?
+    public var createdAt: Date
+    public var id: String
+    public var updatedAt: Date
 
-    public init(createdAt: Date? = nil, id: String? = nil, updatedAt: Date? = nil) {
+    public init(createdAt: Date, id: String, updatedAt: Date) {
         self.createdAt = createdAt
         self.id = id
         self.updatedAt = updatedAt
@@ -32,9 +32,9 @@ public struct CatalogsDbItem: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
+        try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(id, forKey: .id)
+        try container.encode(updatedAt, forKey: .updatedAt)
     }
 }
 

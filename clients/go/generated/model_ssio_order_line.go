@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -27,7 +27,7 @@ type SSIOOrderLine struct {
 	// The pin order id associated with the order line in SFDC
 	PinOrderId NullableString `json:"pin_order_id,omitempty"`
 	// Last modified date.
-	LastModifiedDateTime NullableString `json:"last_modified_date_time,omitempty"`
+	LastModifiedDateTime NullableString `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
 	// Start date of the order line.
 	StartDate NullableString `json:"start_date,omitempty"`
 	// End date of the order line.
@@ -58,7 +58,7 @@ type SSIOOrderLine struct {
 	// The SFDC id for the terms
 	AcceptedTermsId NullableString `json:"accepted_terms_id,omitempty"`
 	// The UTC timestamp (to the nearest sec) of when terms were accepted
-	AcceptedTermsTime NullableString `json:"accepted_terms_time,omitempty"`
+	AcceptedTermsTime NullableString `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
 	// If Budget order line, the budget amount.
 	BudgetAmount NullableFloat32 `json:"budget_amount,omitempty"`
 	// If Ongoing (perpetual) order line, the estimated monthly spend

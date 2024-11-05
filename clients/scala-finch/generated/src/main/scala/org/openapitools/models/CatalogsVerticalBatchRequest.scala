@@ -5,12 +5,12 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CatalogsHotelBatchItem
+import org.openapitools.models.CatalogsCreativeAssetsBatchItem
+import org.openapitools.models.CatalogsCreativeAssetsBatchRequest
 import org.openapitools.models.CatalogsHotelBatchRequest
+import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.CatalogsRetailBatchRequest
-import org.openapitools.models.CatalogsType
 import org.openapitools.models.Country
-import org.openapitools.models.Language
 import scala.collection.immutable.Seq
 
 /**
@@ -18,13 +18,13 @@ import scala.collection.immutable.Seq
  * @param catalogUnderscoretype 
  * @param country 
  * @param language 
- * @param items Array with catalogs item operations
- * @param catalogUnderscoreid Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @param items Array with creative assets item operations
+ * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
-case class CatalogsVerticalBatchRequest(catalogUnderscoretype: CatalogsType,
+case class CatalogsVerticalBatchRequest(catalogUnderscoretype: String,
                 country: Country,
-                language: Language,
-                items: Seq[CatalogsHotelBatchItem],
+                language: CatalogsItemsRequestLanguage,
+                items: Seq[CatalogsCreativeAssetsBatchItem],
                 catalogUnderscoreid: Option[String]
                 )
 

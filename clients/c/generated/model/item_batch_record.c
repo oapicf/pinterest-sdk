@@ -24,7 +24,7 @@ pinterest_rest_api_item_batch_record__e item_batch_record_update_mask_FromString
 
 item_batch_record_t *item_batch_record_create(
     char *item_id,
-    item_attributes_t *attributes,
+    item_attributes_request_t *attributes,
     list_t *update_mask
     ) {
     item_batch_record_t *item_batch_record_local_var = malloc(sizeof(item_batch_record_t));
@@ -49,7 +49,7 @@ void item_batch_record_free(item_batch_record_t *item_batch_record) {
         item_batch_record->item_id = NULL;
     }
     if (item_batch_record->attributes) {
-        item_attributes_free(item_batch_record->attributes);
+        item_attributes_request_free(item_batch_record->attributes);
         item_batch_record->attributes = NULL;
     }
     if (item_batch_record->update_mask) {
@@ -75,7 +75,7 @@ cJSON *item_batch_record_convertToJSON(item_batch_record_t *item_batch_record) {
 
     // item_batch_record->attributes
     if(item_batch_record->attributes) {
-    cJSON *attributes_local_JSON = item_attributes_convertToJSON(item_batch_record->attributes);
+    cJSON *attributes_local_JSON = item_attributes_request_convertToJSON(item_batch_record->attributes);
     if(attributes_local_JSON == NULL) {
     goto fail; //model
     }
@@ -118,7 +118,7 @@ item_batch_record_t *item_batch_record_parseFromJSON(cJSON *item_batch_recordJSO
     item_batch_record_t *item_batch_record_local_var = NULL;
 
     // define the local variable for item_batch_record->attributes
-    item_attributes_t *attributes_local_nonprim = NULL;
+    item_attributes_request_t *attributes_local_nonprim = NULL;
 
     // define the local list for item_batch_record->update_mask
     list_t *update_maskList = NULL;
@@ -135,7 +135,7 @@ item_batch_record_t *item_batch_record_parseFromJSON(cJSON *item_batch_recordJSO
     // item_batch_record->attributes
     cJSON *attributes = cJSON_GetObjectItemCaseSensitive(item_batch_recordJSON, "attributes");
     if (attributes) { 
-    attributes_local_nonprim = item_attributes_parseFromJSON(attributes); //nonprimitive
+    attributes_local_nonprim = item_attributes_request_parseFromJSON(attributes); //nonprimitive
     }
 
     // item_batch_record->update_mask
@@ -169,7 +169,7 @@ item_batch_record_t *item_batch_record_parseFromJSON(cJSON *item_batch_recordJSO
     return item_batch_record_local_var;
 end:
     if (attributes_local_nonprim) {
-        item_attributes_free(attributes_local_nonprim);
+        item_attributes_request_free(attributes_local_nonprim);
         attributes_local_nonprim = NULL;
     }
     if (update_maskList) {

@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionWarnings {
 
   private Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
@@ -41,7 +41,7 @@ public class CatalogsFeedIngestionWarnings {
   /**
    * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
    * @return ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
-  */
+   */
   
   @Schema(name = "ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR")
@@ -61,7 +61,7 @@ public class CatalogsFeedIngestionWarnings {
   /**
    * Additional image files are unreadable. Please upload new files to continue.
    * @return ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE
-  */
+   */
   
   @Schema(name = "ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE", description = "Additional image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE")
@@ -81,7 +81,7 @@ public class CatalogsFeedIngestionWarnings {
   /**
    * Additional image files are unreadable. Please check your link and upload new files to continue.
    * @return ADDITIONAL_IMAGE_MALFORMED_URL
-  */
+   */
   
   @Schema(name = "ADDITIONAL_IMAGE_MALFORMED_URL", description = "Additional image files are unreadable. Please check your link and upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_MALFORMED_URL")
@@ -101,7 +101,7 @@ public class CatalogsFeedIngestionWarnings {
   /**
    * Additional image files are unreadable. Please upload new files to continue.
    * @return ADDITIONAL_IMAGE_FILE_NOT_FOUND
-  */
+   */
   
   @Schema(name = "ADDITIONAL_IMAGE_FILE_NOT_FOUND", description = "Additional image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_FOUND")
@@ -121,7 +121,7 @@ public class CatalogsFeedIngestionWarnings {
   /**
    * Additional image files are unreadable. Please upload new files to continue.
    * @return ADDITIONAL_IMAGE_INVALID_FILE
-  */
+   */
   
   @Schema(name = "ADDITIONAL_IMAGE_INVALID_FILE", description = "Additional image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_INVALID_FILE")
@@ -141,7 +141,7 @@ public class CatalogsFeedIngestionWarnings {
   /**
    * price is not a supported column. Use base_price and sale_price instead.
    * @return HOTEL_PRICE_HEADER_IS_PRESENT
-  */
+   */
   
   @Schema(name = "HOTEL_PRICE_HEADER_IS_PRESENT", description = "price is not a supported column. Use base_price and sale_price instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("HOTEL_PRICE_HEADER_IS_PRESENT")

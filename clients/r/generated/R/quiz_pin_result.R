@@ -23,8 +23,7 @@ QuizPinResult <- R6::R6Class(
     `ios_deep_link` = NULL,
     `destination_url` = NULL,
     `result_id` = NULL,
-    #' Initialize a new QuizPinResult class.
-    #'
+
     #' @description
     #' Initialize a new QuizPinResult class.
     #'
@@ -34,7 +33,6 @@ QuizPinResult <- R6::R6Class(
     #' @param destination_url destination_url
     #' @param result_id result_id
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`organic_pin_id` = NULL, `android_deep_link` = NULL, `ios_deep_link` = NULL, `destination_url` = NULL, `result_id` = NULL, ...) {
       if (!is.null(`organic_pin_id`)) {
         if (!(is.character(`organic_pin_id`) && length(`organic_pin_id`) == 1)) {
@@ -64,13 +62,11 @@ QuizPinResult <- R6::R6Class(
         self$`result_id` <- `result_id`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return QuizPinResult in JSON format
-    #' @export
     toJSON = function() {
       QuizPinResultObject <- list()
       if (!is.null(self$`organic_pin_id`)) {
@@ -95,14 +91,12 @@ QuizPinResult <- R6::R6Class(
       }
       QuizPinResultObject
     },
-    #' Deserialize JSON string into an instance of QuizPinResult
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of QuizPinResult
     #'
     #' @param input_json the JSON input
     #' @return the instance of QuizPinResult
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`organic_pin_id`)) {
@@ -122,13 +116,11 @@ QuizPinResult <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return QuizPinResult in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`organic_pin_id`)) {
@@ -175,14 +167,12 @@ QuizPinResult <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of QuizPinResult
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of QuizPinResult
     #'
     #' @param input_json the JSON input
     #' @return the instance of QuizPinResult
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`organic_pin_id` <- this_object$`organic_pin_id`
@@ -192,53 +182,42 @@ QuizPinResult <- R6::R6Class(
       self$`result_id` <- this_object$`result_id`
       self
     },
-    #' Validate JSON input with respect to QuizPinResult
-    #'
+
     #' @description
     #' Validate JSON input with respect to QuizPinResult and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of QuizPinResult
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

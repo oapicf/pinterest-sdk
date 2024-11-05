@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.SummaryPinMedia;
+import org.openapitools.model.PinMedia;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SummaryPin  {
   
   @ApiModelProperty(value = "")
-  private SummaryPinMedia media;
+  private PinMedia media;
 
   @ApiModelProperty(value = "")
   private String altText;
@@ -34,18 +34,10 @@ public class SummaryPin  {
    * @return media
   **/
   @JsonProperty("media")
-  public SummaryPinMedia getMedia() {
+  public PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(SummaryPinMedia media) {
-    this.media = media;
-  }
-
-  public SummaryPin media(SummaryPinMedia media) {
-    this.media = media;
-    return this;
-  }
 
  /**
    * Get altText

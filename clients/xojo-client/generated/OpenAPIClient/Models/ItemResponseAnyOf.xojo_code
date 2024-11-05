@@ -23,7 +23,7 @@ Protected Class ItemResponseAnyOf
 
 
 	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.CatalogsHotelAttributes
+		Escapedattributes As OpenAPIClient.Models.CatalogsCreativeAssetsAttributes
 	#tag EndProperty
 
 
@@ -32,6 +32,14 @@ Protected Class ItemResponseAnyOf
 			The catalog hotel id in the merchant namespace
 		#tag EndNote
 		hotel_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The catalog creative assets id in the merchant namespace
+		#tag EndNote
+		creative_assets_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -100,11 +108,19 @@ Protected Class ItemResponseAnyOf
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsHotelAttributes"
+			Type="CatalogsCreativeAssetsAttributes"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="hotel_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="creative_assets_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

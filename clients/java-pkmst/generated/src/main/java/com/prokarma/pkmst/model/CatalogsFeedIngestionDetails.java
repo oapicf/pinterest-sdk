@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * CatalogsFeedIngestionDetails
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsFeedIngestionDetails   {
   @JsonProperty("errors")
   private CatalogsFeedIngestionErrors errors;
@@ -33,10 +33,10 @@ public class CatalogsFeedIngestionDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get errors
    * @return errors
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedIngestionErrors getErrors() {
     return errors;
@@ -51,10 +51,10 @@ public class CatalogsFeedIngestionDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get info
    * @return info
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedIngestionInfo getInfo() {
     return info;
@@ -69,10 +69,10 @@ public class CatalogsFeedIngestionDetails   {
     return this;
   }
 
-   /**
+  /**
    * Get warnings
    * @return warnings
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsFeedIngestionWarnings getWarnings() {
     return warnings;

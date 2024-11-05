@@ -18,14 +18,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AudienceCreateCustomRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCreateCustomRequest   {
-  private @Valid String adAccountId;
-  private @Valid String name;
-  private @Valid AudienceRule rule;
-  private @Valid AudienceSharingType sharingType;
-  private @Valid AudienceDataParty dataParty;
-  private @Valid String category;
+  private String adAccountId;
+  private String name;
+  private AudienceRule rule;
+  private AudienceSharingType sharingType;
+  private AudienceDataParty dataParty;
+  private String category;
 
   /**
    * Ad account ID.
@@ -38,7 +38,7 @@ public class AudienceCreateCustomRequest   {
   
   @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 
@@ -58,8 +58,7 @@ public class AudienceCreateCustomRequest   {
   
   @ApiModelProperty(example = "string", required = true, value = "Audience name.")
   @JsonProperty("name")
-  @NotNull
-  public String getName() {
+  @NotNull public String getName() {
     return name;
   }
 
@@ -78,8 +77,7 @@ public class AudienceCreateCustomRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("rule")
-  @NotNull
-  public AudienceRule getRule() {
+  @NotNull @Valid public AudienceRule getRule() {
     return rule;
   }
 
@@ -98,8 +96,7 @@ public class AudienceCreateCustomRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("sharing_type")
-  @NotNull
-  public AudienceSharingType getSharingType() {
+  @NotNull public AudienceSharingType getSharingType() {
     return sharingType;
   }
 
@@ -118,8 +115,7 @@ public class AudienceCreateCustomRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("data_party")
-  @NotNull
-  public AudienceDataParty getDataParty() {
+  @NotNull public AudienceDataParty getDataParty() {
     return dataParty;
   }
 

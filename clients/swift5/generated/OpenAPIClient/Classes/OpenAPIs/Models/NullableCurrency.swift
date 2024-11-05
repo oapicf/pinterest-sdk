@@ -175,5 +175,4 @@ public enum NullableCurrency: String, Codable, CaseIterable {
     case zar = "ZAR"
     case zmw = "ZMW"
     case zwd = "ZWD"
-    case null = "null"
 }

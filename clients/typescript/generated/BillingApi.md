@@ -18,31 +18,30 @@ Method | HTTP request | Description
 # **adsCreditRedeem**
 > AdsCreditRedeemResponse adsCreditRedeem(adsCreditRedeemRequest)
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiAdsCreditRedeemRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiAdsCreditRedeemRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiAdsCreditRedeemRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // AdsCreditRedeemRequest | Redeem ad credits request.
+    // Redeem ad credits request.
   adsCreditRedeemRequest: {
     offerCodeHash: "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67",
     validateOnly: true,
   },
 };
 
-apiInstance.adsCreditRedeem(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.adsCreditRedeem(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -80,30 +79,29 @@ Name | Type | Description  | Notes
 # **adsCreditsDiscountsGet**
 > AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet()
 
-Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiAdsCreditsDiscountsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiAdsCreditsDiscountsGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiAdsCreditsDiscountsGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.adsCreditsDiscountsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.adsCreditsDiscountsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -113,7 +111,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -141,32 +139,31 @@ Name | Type | Description  | Notes
 # **billingProfilesGet**
 > BillingProfilesGet200Response billingProfilesGet()
 
-Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
 
 ### Example
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiBillingProfilesGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiBillingProfilesGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiBillingProfilesGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // boolean | Return active billing profiles, if false return all billing profiles.
+    // Return active billing profiles, if false return all billing profiles.
   isActive: true,
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.billingProfilesGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.billingProfilesGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -177,7 +174,7 @@ Name | Type | Description  | Notes
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
  **isActive** | [**boolean**] | Return active billing profiles, if false return all billing profiles. | defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -211,20 +208,19 @@ Get Salesforce account details including bill-to information to be used in inser
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiSsioAccountsGetRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiSsioAccountsGetRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiSsioAccountsGetRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
 };
 
-apiInstance.ssioAccountsGet(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.ssioAccountsGet(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -267,22 +263,21 @@ Create insertion order through SSIO for <code>ad_account_id</code>. - The token\
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiSsioInsertionOrderCreateRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiSsioInsertionOrderCreateRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiSsioInsertionOrderCreateRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // SSIOCreateInsertionOrderRequest | Order line to create.
-  sSIOCreateInsertionOrderRequest: null,
+    // Order line to create.
+  sSIOCreateInsertionOrderRequest: ,
 };
 
-apiInstance.ssioInsertionOrderCreate(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.ssioInsertionOrderCreate(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -326,22 +321,21 @@ Edit insertion order through SSIO for <code>ad_account_id</code>. - The token\'s
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiSsioInsertionOrderEditRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiSsioInsertionOrderEditRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiSsioInsertionOrderEditRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // SSIOEditInsertionOrderRequest | Order line to create.
-  sSIOEditInsertionOrderRequest: null,
+    // Order line to create.
+  sSIOEditInsertionOrderRequest: ,
 };
 
-apiInstance.ssioInsertionOrderEdit(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.ssioInsertionOrderEdit(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -385,24 +379,23 @@ Get insertion order status for account id <code>ad_account_id</code>. - The toke
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiSsioInsertionOrdersStatusGetByAdAccountRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiSsioInsertionOrdersStatusGetByAdAccountRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiSsioInsertionOrdersStatusGetByAdAccountRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
 };
 
-apiInstance.ssioInsertionOrdersStatusGetByAdAccount(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.ssioInsertionOrdersStatusGetByAdAccount(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -412,7 +405,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
 
 
 ### Return type
@@ -447,22 +440,21 @@ Get insertion order status for pin order id <code>pin_order_id</code>. - The tok
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiSsioInsertionOrdersStatusGetByPinOrderIdRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiSsioInsertionOrdersStatusGetByPinOrderIdRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiSsioInsertionOrdersStatusGetByPinOrderIdRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | The pin order id associated with the ssio insertion order
+    // The pin order id associated with the ssio insertion order
   pinOrderId: "0Q01N0000015hekSVDFDC",
 };
 
-apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -506,26 +498,25 @@ Get Salesforce order lines for account id <code>ad_account_id</code>. - The toke
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+import { createConfiguration, BillingApi } from '';
+import type { BillingApiSsioOrderLinesGetByAdAccountRequest } from '';
 
-const configuration = .createConfiguration();
-const apiInstance = new .BillingApi(configuration);
+const configuration = createConfiguration();
+const apiInstance = new BillingApi(configuration);
 
-let body:.BillingApiSsioOrderLinesGetByAdAccountRequest = {
-  // string | Unique identifier of an ad account.
+const request: BillingApiSsioOrderLinesGetByAdAccountRequest = {
+    // Unique identifier of an ad account.
   adAccountId: "4",
-  // string | Cursor used to fetch the next page of items (optional)
+    // Cursor used to fetch the next page of items (optional)
   bookmark: "bookmark_example",
-  // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/getting-started/pagination/\'>Pagination</a> for more information. (optional)
+    // Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
   pageSize: 25,
-  // string | The pin order id associated with the ssio insertino order (optional)
+    // The pin order id associated with the ssio insertino order (optional)
   pinOrderId: "0Q01N0000015hekSVDFDC",
 };
 
-apiInstance.ssioOrderLinesGetByAdAccount(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+const data = await apiInstance.ssioOrderLinesGetByAdAccount(request);
+console.log('API called successfully. Returned data:', data);
 ```
 
 
@@ -535,7 +526,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined
  **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined
- **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
+ **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25
  **pinOrderId** | [**string**] | The pin order id associated with the ssio insertino order | (optional) defaults to undefined
 
 

@@ -2,7 +2,7 @@
 
 # CatalogsVerticalProductGroupUpdateRequest
 
-Request object for updating a hotel product group.
+Request object for updating a catalog based product group.
 
 ## Properties
 
@@ -11,7 +11,9 @@ Request object for updating a hotel product group.
 |**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
-|**filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  |  [optional] |
+|**filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional] |
+|**country** | **Country** |  |  [optional] |
+|**locale** | **CatalogsLocale** |  |  [optional] |
 
 
 
@@ -19,7 +21,7 @@ Request object for updating a hotel product group.
 
 | Name | Value |
 |---- | -----|
-| HOTEL | &quot;HOTEL&quot; |
+| CREATIVE_ASSETS | &quot;CREATIVE_ASSETS&quot; |
 
 
 

@@ -59,5 +59,8 @@ data class MediaUploadAllOfUploadParameters (
     @Json(name = "Content-Type")
     val contentType: kotlin.String? = null
 
-)
+) {
+
+
+}
 

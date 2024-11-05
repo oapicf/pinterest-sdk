@@ -17,7 +17,7 @@ public class AdGroupArrayResponseElement  {
   private AdGroupResponse data;
 
   @ApiModelProperty(value = "")
-  private List<Exception> exceptions;
+  private List<Exception> exceptions = new ArrayList<>();
  /**
    * Get data
    * @return data

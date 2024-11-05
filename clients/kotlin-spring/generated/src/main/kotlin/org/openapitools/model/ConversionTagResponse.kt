@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.ConversionTagConfigs
@@ -60,7 +61,7 @@ data class ConversionTagResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("configs") val configs: ConversionTagConfigs? = null
-) {
+    ) {
 
 }
 

@@ -3,8 +3,12 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.CatalogsListProductsByFilterRequestOneOf;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsListProductsByFeedBasedFilter;
+import com.prokarma.pkmst.model.CatalogsLocale;
 import com.prokarma.pkmst.model.CatalogsProductGroupFilters;
+import com.prokarma.pkmst.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest;
+import com.prokarma.pkmst.model.Country;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -17,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Request object to list products for a given product group filter.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsListProductsByFilterRequest   {
   @JsonProperty("feed_id")
   private String feedId;
@@ -30,10 +34,10 @@ public class CatalogsListProductsByFilterRequest   {
     return this;
   }
 
-   /**
+  /**
    * Catalog Feed id pertaining to the catalog product group filter.
    * @return feedId
-  **/
+   */
   @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group filter.")
   public String getFeedId() {
     return feedId;
@@ -48,10 +52,10 @@ public class CatalogsListProductsByFilterRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CatalogsProductGroupFilters getFilters() {
     return filters;

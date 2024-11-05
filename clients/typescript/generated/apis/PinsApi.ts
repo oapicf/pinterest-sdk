@@ -22,12 +22,112 @@ import { PinsSaveRequest } from '../models/PinsSaveRequest';
 export class PinsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"https://developers.pinterest.com/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Get multiple Pin analytics
+     * @param pinIds List of Pin IDs.
+     * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     * @param metricTypes Pin metric types to get data for.
+     * @param appTypes Apps or devices to get data for, default is all.
+     * @param adAccountId Unique identifier of an ad account.
+     */
+    public async multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'pinIds' is not null or undefined
+        if (pinIds === null || pinIds === undefined) {
+            throw new RequiredError("PinsApi", "multiPinsAnalytics", "pinIds");
+        }
+
+
+        // verify required parameter 'startDate' is not null or undefined
+        if (startDate === null || startDate === undefined) {
+            throw new RequiredError("PinsApi", "multiPinsAnalytics", "startDate");
+        }
+
+
+        // verify required parameter 'endDate' is not null or undefined
+        if (endDate === null || endDate === undefined) {
+            throw new RequiredError("PinsApi", "multiPinsAnalytics", "endDate");
+        }
+
+
+        // verify required parameter 'metricTypes' is not null or undefined
+        if (metricTypes === null || metricTypes === undefined) {
+            throw new RequiredError("PinsApi", "multiPinsAnalytics", "metricTypes");
+        }
+
+
+
+
+        // Path Params
+        const localVarPath = '/pins/analytics';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (pinIds !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(pinIds, "Array<string>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("pin_ids", serializedParam);
+            }
+        }
+
+        // Query Params
+        if (startDate !== undefined) {
+            requestContext.setQueryParam("start_date", ObjectSerializer.serialize(startDate, "string", "date"));
+        }
+
+        // Query Params
+        if (endDate !== undefined) {
+            requestContext.setQueryParam("end_date", ObjectSerializer.serialize(endDate, "string", "date"));
+        }
+
+        // Query Params
+        if (appTypes !== undefined) {
+            requestContext.setQueryParam("app_types", ObjectSerializer.serialize(appTypes, "'ALL' | 'MOBILE' | 'TABLET' | 'WEB'", ""));
+        }
+
+        // Query Params
+        if (metricTypes !== undefined) {
+            requestContext.setQueryParam("metric_types", ObjectSerializer.serialize(metricTypes, "Array<PinsAnalyticsMetricTypesParameterInner>", ""));
+        }
+
+        // Query Params
+        if (adAccountId !== undefined) {
+            requestContext.setQueryParam("ad_account_id", ObjectSerializer.serialize(adAccountId, "string", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      * Get Pin analytics
      * @param pinId Unique identifier of a Pin.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param metricTypes Pin metric types to get data for, default is all.
+     * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
      * @param appTypes Apps or devices to get data for, default is all.
      * @param splitField How to split the data into groups. Not including this param means data won\&#39;t be split.
      * @param adAccountId Unique identifier of an ad account.
@@ -107,6 +207,11 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -117,7 +222,7 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user\'s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\'s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \'curated content\', please use our <a href=\'/docs/add-ons/save-button\'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href=\'/docs/content/content-creation/\'>Content App Solutions Guide</a>.  <strong><a href=\'/docs/content/content-creation/#Creating%20video%20Pins\'>Learn more</a></strong> about video Pin creation.
+     * Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user\'s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\'s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \'curated content\', please use our <a href=\'/docs/web-features/add-ons-overview/\'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href=\'/docs/api-features/content-overview/\'>Content App Solutions Guide</a>.  <strong><a href=\'/docs/api-features/creating-boards-and-pins/#creating-video-pins\'>Learn more</a></strong> about video Pin creation.
      * Create Pin
      * @param pinCreate Create a new Pin.
      * @param adAccountId Unique identifier of an ad account.
@@ -259,6 +364,11 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -269,10 +379,10 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get a list of the Pins owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".
+     * Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href=\'/docs/api/v5/#operation/boards/list_pins\'>GET List Pins on Board</a>.
      * List Pins
      * @param bookmark Cursor used to fetch the next page of items
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/getting-started/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param pinFilter Pin filter.
      * @param includeProtectedPins Specify if return pins from protected boards
      * @param pinType The type of pins to return, currently only enabled for private pins
@@ -325,7 +435,10 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (creativeTypes !== undefined) {
-            requestContext.setQueryParam("creative_types", ObjectSerializer.serialize(creativeTypes, "Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>", ""));
+            const serializedParams = ObjectSerializer.serialize(creativeTypes, "Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("creative_types", serializedParam);
+            }
         }
 
         // Query Params
@@ -342,6 +455,11 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
         authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["client_credentials"]
         if (authMethod?.applySecurityAuthentication) {
             await authMethod?.applySecurityAuthentication(requestContext);
         }
@@ -418,7 +536,7 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/new/about-beta-access/\'>Learn more</a>.</strong>
+     * Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
      * Update Pin
      * @param pinId Unique identifier of a Pin.
      * @param pinUpdate 
@@ -483,6 +601,70 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
 }
 
 export class PinsApiResponseProcessor {
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to multiPinsAnalytics
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async multiPinsAnalyticsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; } >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: { [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; } = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }", ""
+            ) as { [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; };
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Invalid pins analytics parameters.", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not authorized to access board or Pin.", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Pin not found.", body, response.headers);
+        }
+        if (isCodeInRange("429", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: { [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; } = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }", ""
+            ) as { [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; };
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
 
     /**
      * Unwraps the actual response sent by the server from the response context and deserializes the response content

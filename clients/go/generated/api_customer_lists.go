@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -46,13 +46,13 @@ CustomerListsCreate Create customer lists
 
 <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p>
 <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
-or the <a href="/docs/ads/targeting/#Audiences" target="_blank">Audiences</a> section of the ads management guide.<p/>
-<p><b>Please review our <u><a href="https://help.pinterest.com/en/business/article/audience-targeting#section-13341" target="_blank">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p>
+or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a> section of the ads management guide.<p/>
+ <p><b>Please review our <u><a href="https://help.pinterest.com/en/business/article/audience-targeting#section-13341" target="_blank">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p>
 <p>When you create a customer list, the system scans the list for existing Pinterest accounts;
 the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process
 is complete. The filtered list – containing only the Pinterest accounts that were included in your starting
 list – is what will be used to create the audience.</p>
-<p>Note that once you have created your customer list, you must convert it into an audience (of the “CUSTOMER_LIST” type)
+<p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type)
 using the <a href="#operation/create_audience_handler">create audience endpoint</a> before it can be used.</p>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -289,7 +289,7 @@ type ApiCustomerListsListRequest struct {
 	bookmark *string
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiCustomerListsListRequest) PageSize(pageSize int32) ApiCustomerListsListRequest {
 	r.pageSize = &pageSize
 	return r
@@ -317,7 +317,7 @@ CustomerListsList Get customer lists
 <p>Get a set of customer lists including id and name based on the filters provided.</p>
 <p>(Customer lists are a type of audience.) For more information, see
 <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
- or the <a href="/docs/ads/targeting/#Audiences" target="_blank">Audiences</a>
+ or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a>
 section of the ads management guide.</p>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -358,16 +358,16 @@ func (a *CustomerListsAPIService) CustomerListsListExecute(r ApiCustomerListsLis
 	}
 
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -454,9 +454,9 @@ CustomerListsUpdate Update customer list
 <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p>
 <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest
 accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records
-to add will be deleted when the matching process is complete.</p>
+ to add will be deleted when the matching process is complete.</p>
 <p>For more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting" target="_blank">Audience targeting</a>
-or the <a href="/docs/ads/targeting/#Audiences" target="_blank">Audiences</a>
+or the <a href="/docs/api-features/targeting-overview/" target="_blank">Audiences</a>
 section of the ads management guide.</p>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

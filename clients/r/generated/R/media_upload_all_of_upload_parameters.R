@@ -29,8 +29,7 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
     `policy` = NULL,
     `x-amz-credential` = NULL,
     `Content-Type` = NULL,
-    #' Initialize a new MediaUploadAllOfUploadParameters class.
-    #'
+
     #' @description
     #' Initialize a new MediaUploadAllOfUploadParameters class.
     #'
@@ -43,7 +42,6 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
     #' @param x-amz-credential x-amz-credential
     #' @param Content-Type Content-Type
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`x-amz-date` = NULL, `x-amz-signature` = NULL, `x-amz-security-token` = NULL, `x-amz-algorithm` = NULL, `key` = NULL, `policy` = NULL, `x-amz-credential` = NULL, `Content-Type` = NULL, ...) {
       if (!is.null(`x-amz-date`)) {
         if (!(is.character(`x-amz-date`) && length(`x-amz-date`) == 1)) {
@@ -94,13 +92,11 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
         self$`Content-Type` <- `Content-Type`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return MediaUploadAllOfUploadParameters in JSON format
-    #' @export
     toJSON = function() {
       MediaUploadAllOfUploadParametersObject <- list()
       if (!is.null(self$`x-amz-date`)) {
@@ -137,14 +133,12 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
       }
       MediaUploadAllOfUploadParametersObject
     },
-    #' Deserialize JSON string into an instance of MediaUploadAllOfUploadParameters
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of MediaUploadAllOfUploadParameters
     #'
     #' @param input_json the JSON input
     #' @return the instance of MediaUploadAllOfUploadParameters
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`x-amz-date`)) {
@@ -173,13 +167,11 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return MediaUploadAllOfUploadParameters in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`x-amz-date`)) {
@@ -250,14 +242,12 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of MediaUploadAllOfUploadParameters
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of MediaUploadAllOfUploadParameters
     #'
     #' @param input_json the JSON input
     #' @return the instance of MediaUploadAllOfUploadParameters
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`x-amz-date` <- this_object$`x-amz-date`
@@ -270,53 +260,42 @@ MediaUploadAllOfUploadParameters <- R6::R6Class(
       self$`Content-Type` <- this_object$`Content-Type`
       self
     },
-    #' Validate JSON input with respect to MediaUploadAllOfUploadParameters
-    #'
+
     #' @description
     #' Validate JSON input with respect to MediaUploadAllOfUploadParameters and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of MediaUploadAllOfUploadParameters
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

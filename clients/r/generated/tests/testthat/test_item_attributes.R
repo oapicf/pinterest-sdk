@@ -23,7 +23,7 @@ test_that("adult", {
 
 test_that("age_group", {
   # tests for the property `age_group` (character)
-  # The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  # The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`age_group`, "EXPECTED_RESULT")
@@ -31,7 +31,7 @@ test_that("age_group", {
 
 test_that("availability", {
   # tests for the property `availability` (character)
-  # The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+  # The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`availability`, "EXPECTED_RESULT")
@@ -143,7 +143,7 @@ test_that("free_shipping_limit", {
 
 test_that("gender", {
   # tests for the property `gender` (character)
-  # The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+  # The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`gender`, "EXPECTED_RESULT")
@@ -319,7 +319,7 @@ test_that("size", {
 
 test_that("size_system", {
   # tests for the property `size_system` (character)
-  # Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+  # Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`size_system`, "EXPECTED_RESULT")
@@ -327,7 +327,7 @@ test_that("size_system", {
 
 test_that("size_type", {
   # tests for the property `size_type` (character)
-  # Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  # Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`size_type`, "EXPECTED_RESULT")
@@ -379,4 +379,12 @@ test_that("image_link", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`image_link`, "EXPECTED_RESULT")
+})
+
+test_that("video_link", {
+  # tests for the property `video_link` (character)
+  # &lt;p&gt;&lt;&#x3D; 2,000 characters&lt;/p&gt; &lt;p&gt;Hosted link to the product video.&lt;/p&gt; &lt;p&gt;File types for linked videos must be .mp4, .mov or .m4v.&lt;/p&gt; &lt;p&gt;File size cannot exceed 2GB.&lt;/p&gt;
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`video_link`, "EXPECTED_RESULT")
 })

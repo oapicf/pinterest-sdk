@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,13 +13,22 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
 // CatalogsVerticalProductGroup - struct for CatalogsVerticalProductGroup
 type CatalogsVerticalProductGroup struct {
+	CatalogsCreativeAssetsProductGroup *CatalogsCreativeAssetsProductGroup
 	CatalogsHotelProductGroup *CatalogsHotelProductGroup
 	CatalogsRetailProductGroup *CatalogsRetailProductGroup
+}
+
+// CatalogsCreativeAssetsProductGroupAsCatalogsVerticalProductGroup is a convenience function that returns CatalogsCreativeAssetsProductGroup wrapped in CatalogsVerticalProductGroup
+func CatalogsCreativeAssetsProductGroupAsCatalogsVerticalProductGroup(v *CatalogsCreativeAssetsProductGroup) CatalogsVerticalProductGroup {
+	return CatalogsVerticalProductGroup{
+		CatalogsCreativeAssetsProductGroup: v,
+	}
 }
 
 // CatalogsHotelProductGroupAsCatalogsVerticalProductGroup is a convenience function that returns CatalogsHotelProductGroup wrapped in CatalogsVerticalProductGroup
@@ -41,6 +50,23 @@ func CatalogsRetailProductGroupAsCatalogsVerticalProductGroup(v *CatalogsRetailP
 func (dst *CatalogsVerticalProductGroup) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into CatalogsCreativeAssetsProductGroup
+	err = newStrictDecoder(data).Decode(&dst.CatalogsCreativeAssetsProductGroup)
+	if err == nil {
+		jsonCatalogsCreativeAssetsProductGroup, _ := json.Marshal(dst.CatalogsCreativeAssetsProductGroup)
+		if string(jsonCatalogsCreativeAssetsProductGroup) == "{}" { // empty struct
+			dst.CatalogsCreativeAssetsProductGroup = nil
+		} else {
+			if err = validator.Validate(dst.CatalogsCreativeAssetsProductGroup); err != nil {
+				dst.CatalogsCreativeAssetsProductGroup = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CatalogsCreativeAssetsProductGroup = nil
+	}
+
 	// try to unmarshal data into CatalogsHotelProductGroup
 	err = newStrictDecoder(data).Decode(&dst.CatalogsHotelProductGroup)
 	if err == nil {
@@ -48,7 +74,11 @@ func (dst *CatalogsVerticalProductGroup) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsHotelProductGroup) == "{}" { // empty struct
 			dst.CatalogsHotelProductGroup = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsHotelProductGroup); err != nil {
+				dst.CatalogsHotelProductGroup = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsHotelProductGroup = nil
@@ -61,7 +91,11 @@ func (dst *CatalogsVerticalProductGroup) UnmarshalJSON(data []byte) error {
 		if string(jsonCatalogsRetailProductGroup) == "{}" { // empty struct
 			dst.CatalogsRetailProductGroup = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.CatalogsRetailProductGroup); err != nil {
+				dst.CatalogsRetailProductGroup = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.CatalogsRetailProductGroup = nil
@@ -69,6 +103,7 @@ func (dst *CatalogsVerticalProductGroup) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.CatalogsCreativeAssetsProductGroup = nil
 		dst.CatalogsHotelProductGroup = nil
 		dst.CatalogsRetailProductGroup = nil
 
@@ -82,6 +117,10 @@ func (dst *CatalogsVerticalProductGroup) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CatalogsVerticalProductGroup) MarshalJSON() ([]byte, error) {
+	if src.CatalogsCreativeAssetsProductGroup != nil {
+		return json.Marshal(&src.CatalogsCreativeAssetsProductGroup)
+	}
+
 	if src.CatalogsHotelProductGroup != nil {
 		return json.Marshal(&src.CatalogsHotelProductGroup)
 	}
@@ -98,6 +137,10 @@ func (obj *CatalogsVerticalProductGroup) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.CatalogsCreativeAssetsProductGroup != nil {
+		return obj.CatalogsCreativeAssetsProductGroup
+	}
+
 	if obj.CatalogsHotelProductGroup != nil {
 		return obj.CatalogsHotelProductGroup
 	}

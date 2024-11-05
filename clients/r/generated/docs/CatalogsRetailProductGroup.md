@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  | [optional] [Enum: ] 
 **created_at** | **integer** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **updated_at** | **integer** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**feed_id** | **character** |  | [Enum: [null]] 
+**catalog_id** | **character** | Catalog id pertaining to the retail product group. | [Pattern: ^\\d+$] 
+**feed_id** | **character** | id of the catalogs feed belonging to this catalog product group | [Pattern: ^\\d+$] 
+**country** | **character** |  | [optional] 
+**locale** | **character** |  | [optional] 
 
 

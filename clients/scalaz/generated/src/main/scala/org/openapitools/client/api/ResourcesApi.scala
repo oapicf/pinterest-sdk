@@ -136,7 +136,7 @@ object ResourcesApi {
     } yield resp
   }
 
-  def targetingOptionsGet(host: String, targetingType: String, clientId: String, oauthSignature: String, timestamp: String)(implicit clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String]): Task[List[Any]] = {
+  def targetingOptionsGet(host: String, targetingType: String, clientId: String, oauthSignature: String, timestamp: String, adAccountId: String)(implicit clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[List[Any]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[Any]] = jsonOf[List[Any]]
 
     val path = "/resources/targeting/{targeting_type}".replaceAll("\\{" + "targeting_type" + "\\}",escape(targetingType.toString))
@@ -146,7 +146,7 @@ object ResourcesApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))))
+      ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -267,7 +267,7 @@ class HttpServiceResourcesApi(service: HttpService) {
     } yield resp
   }
 
-  def targetingOptionsGet(targetingType: String, clientId: String, oauthSignature: String, timestamp: String)(implicit clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String]): Task[List[Any]] = {
+  def targetingOptionsGet(targetingType: String, clientId: String, oauthSignature: String, timestamp: String, adAccountId: String)(implicit clientIdQuery: QueryParam[String], oauthSignatureQuery: QueryParam[String], timestampQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[List[Any]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[Any]] = jsonOf[List[Any]]
 
     val path = "/resources/targeting/{targeting_type}".replaceAll("\\{" + "targeting_type" + "\\}",escape(targetingType.toString))
@@ -277,7 +277,7 @@ class HttpServiceResourcesApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))))
+      ("clientId", Some(client_idQuery.toParamString(client_id))), ("oauthSignature", Some(oauth_signatureQuery.toParamString(oauth_signature))), ("timestamp", Some(timestampQuery.toParamString(timestamp))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

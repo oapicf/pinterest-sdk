@@ -14,9 +14,6 @@ import AnyCodable
 public struct CatalogsDeleteRetailItem: Codable, JSONEncodable, Hashable {
 
     public enum Operation: String, Codable, CaseIterable {
-        case create = "CREATE"
-        case update = "UPDATE"
-        case upsert = "UPSERT"
         case delete = "DELETE"
     }
     /** The catalog item id in the merchant namespace */

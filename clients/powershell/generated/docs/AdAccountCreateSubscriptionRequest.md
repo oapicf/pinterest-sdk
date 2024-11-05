@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **LeadFormId** | **String** | Lead form ID. | [optional] 
 **PartnerAccessToken** | **String** | Partner access token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
 **PartnerRefreshToken** | **String** | Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param. | [optional] 
+**PartnerMetadata** | [**AdAccountCreateSubscriptionRequestPartnerMetadata**](AdAccountCreateSubscriptionRequestPartnerMetadata.md) |  | [optional] 
 
 ## Examples
 
@@ -15,7 +16,8 @@ Name | Type | Description | Notes
 $AdAccountCreateSubscriptionRequest = Initialize-PSOpenAPIToolsAdAccountCreateSubscriptionRequest  -WebhookUrl https://webhook.example.com/xyz `
  -LeadFormId 383791336903426390 `
  -PartnerAccessToken null `
- -PartnerRefreshToken null
+ -PartnerRefreshToken null `
+ -PartnerMetadata null
 ```
 
 - Convert the resource to JSON

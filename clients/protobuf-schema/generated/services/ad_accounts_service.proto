@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -92,7 +92,7 @@ message AdAccountTargetingAnalyticsGetRequest {
   string startDate = 2;
   // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
   string endDate = 3;
-  // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other.
+  // Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   repeated AdsAnalyticsTargetingType targetingTypes = 4;
   // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
   repeated string columns = 5;
@@ -126,7 +126,7 @@ message AdAccountsGetRequest {
 message AdAccountsListRequest {
   // Cursor used to fetch the next page of items
   string bookmark = 1;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 2;
   // Include shared ad accounts
   bool includeSharedAccounts = 3;
@@ -190,7 +190,7 @@ message SandboxDeleteResponse {
 message TemplatesListRequest {
   // Unique identifier of an ad account.
   string adAccountId = 1;
-  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   int32 pageSize = 2;
   // The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
   string order = 3;

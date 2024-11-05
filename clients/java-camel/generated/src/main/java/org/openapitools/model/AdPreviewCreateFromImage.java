@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * AdPreviewCreateFromImage
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdPreviewCreateFromImage implements AdPreviewRequest {
 
   private String imageUrl;
@@ -45,7 +45,7 @@ public class AdPreviewCreateFromImage implements AdPreviewRequest {
   /**
    * Image URL.
    * @return imageUrl
-  */
+   */
   @NotNull 
   @Schema(name = "image_url", example = "https://somewebsite.com/someimage.jpg", description = "Image URL.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("image_url")
@@ -65,7 +65,7 @@ public class AdPreviewCreateFromImage implements AdPreviewRequest {
   /**
    * Title displayed below ad.
    * @return title
-  */
+   */
   @NotNull 
   @Schema(name = "title", example = "My Preview Image", description = "Title displayed below ad.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("title")

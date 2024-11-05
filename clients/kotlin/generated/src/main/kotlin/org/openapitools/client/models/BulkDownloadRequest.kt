@@ -53,5 +53,8 @@ data class BulkDownloadRequest (
     @Json(name = "output_format")
     val outputFormat: BulkOutputFormat? = "JSON"
 
-)
+) {
+
+
+}
 

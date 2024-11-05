@@ -14,6 +14,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsVerticalBatchRequest.openapi_one_of
 # =>
 # [
+#   :'CatalogsCreativeAssetsBatchRequest',
 #   :'CatalogsHotelBatchRequest',
 #   :'CatalogsRetailBatchRequest'
 # ]
@@ -44,6 +45,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsVerticalBatchRequest.openapi_discriminator_mapping
 # =>
 # {
+#   :'CREATIVE_ASSETS' => :'CatalogsCreativeAssetsBatchRequest',
 #   :'HOTEL' => :'CatalogsHotelBatchRequest',
 #   :'RETAIL' => :'CatalogsRetailBatchRequest'
 # }
@@ -59,7 +61,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::CatalogsVerticalBatchRequest.build(data)
-# => #<CatalogsHotelBatchRequest:0x00007fdd4aab02a0>
+# => #<CatalogsCreativeAssetsBatchRequest:0x00007fdd4aab02a0>
 
 PinterestSdkClient::CatalogsVerticalBatchRequest.build(data_that_doesnt_match)
 # => nil
@@ -73,6 +75,7 @@ PinterestSdkClient::CatalogsVerticalBatchRequest.build(data_that_doesnt_match)
 
 #### Return type
 
+- `CatalogsCreativeAssetsBatchRequest`
 - `CatalogsHotelBatchRequest`
 - `CatalogsRetailBatchRequest`
 - `nil` (if no type matches)

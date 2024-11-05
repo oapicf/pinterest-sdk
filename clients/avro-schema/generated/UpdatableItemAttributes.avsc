@@ -19,13 +19,13 @@
     {
       "name": "age_group",
       "type": ["null", "string"],
-      "doc": "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.",
+      "doc": "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.",
       "default": null
     },
     {
       "name": "availability",
       "type": ["null", "string"],
-      "doc": "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.",
+      "doc": "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.",
       "default": null
     },
     {
@@ -109,7 +109,7 @@
     {
       "name": "gender",
       "type": ["null", "string"],
-      "doc": "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.",
+      "doc": "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.",
       "default": null
     },
     {
@@ -241,13 +241,13 @@
     {
       "name": "size_system",
       "type": ["null", "string"],
-      "doc": "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.",
+      "doc": "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.",
       "default": null
     },
     {
       "name": "size_type",
       "type": ["null", "string"],
-      "doc": "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.",
+      "doc": "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.",
       "default": null
     },
     {

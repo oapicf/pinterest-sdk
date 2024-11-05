@@ -12,7 +12,7 @@ import org.openapitools.model.CatalogsHotelProductGroupFilters;
 /**
  * CatalogsHotelProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelProductGroup   {
   /**
    * Gets or Sets catalogType
@@ -199,10 +199,10 @@ public class CatalogsHotelProductGroup   {
   }
 
    /**
-   * Get catalogId
+   * Catalog id pertaining to the hotel product group.
    * @return catalogId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
   public String getCatalogId() {
     return catalogId;
   }

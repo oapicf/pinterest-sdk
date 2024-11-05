@@ -16,13 +16,13 @@ case class CatalogsItemsBatch (
   catalogType: CatalogsType,
 /* Id of the catalogs items batch */
   batchId: Option[String],
-/* Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD */
+/* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
   createdTime: Option[OffsetDateTime],
-/* Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD */
+/* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
   completedTime: Option[OffsetDateTime],
 status: Option[BatchOperationStatus],
 /* Array with the catalogs items processing records part of the catalogs items batch */
-  items: Option[List[HotelProcessingRecord]])
+  items: Option[List[CreativeAssetsProcessingRecord]])
 
 object CatalogsItemsBatch {
   import DateTimeCodecs._

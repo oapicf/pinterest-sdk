@@ -29,7 +29,7 @@ data class PinUpdateCarouselSlotsInner(
 
     @Schema(example = "null", description = "Carousel Pin slot link.")
     @get:JsonProperty("link") val link: kotlin.String? = null
-) {
+    ) {
 
 }
 

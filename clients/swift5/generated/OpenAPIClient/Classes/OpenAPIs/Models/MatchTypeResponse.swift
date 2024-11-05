@@ -17,5 +17,4 @@ public enum MatchTypeResponse: String, Codable, CaseIterable {
     case exact = "EXACT"
     case exactNegative = "EXACT_NEGATIVE"
     case phraseNegative = "PHRASE_NEGATIVE"
-    case null = "null"
 }

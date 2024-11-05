@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum EnhancedMatchStatusType {
 
-    @JsonProperty("UNKNOWN") UNKNOWN(String.valueOf("UNKNOWN")), @JsonProperty("NOT_VALIDATED") NOT_VALIDATED(String.valueOf("NOT_VALIDATED")), @JsonProperty("VALIDATING_IN_PROGRESS") VALIDATING_IN_PROGRESS(String.valueOf("VALIDATING_IN_PROGRESS")), @JsonProperty("VALIDATION_COMPLETE") VALIDATION_COMPLETE(String.valueOf("VALIDATION_COMPLETE")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("UNKNOWN") UNKNOWN(String.valueOf("UNKNOWN")), @JsonProperty("NOT_VALIDATED") NOT_VALIDATED(String.valueOf("NOT_VALIDATED")), @JsonProperty("VALIDATING_IN_PROGRESS") VALIDATING_IN_PROGRESS(String.valueOf("VALIDATING_IN_PROGRESS")), @JsonProperty("VALIDATION_COMPLETE") VALIDATION_COMPLETE(String.valueOf("VALIDATION_COMPLETE"));
 
 
     private String value;

@@ -51,7 +51,7 @@ Mono<AdsCreditRedeemResponse> BillingApi.adsCreditRedeem(adAccountIdadsCreditRed
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -78,14 +78,14 @@ Mono<AdsCreditsDiscountsGet200Response> BillingApi.adsCreditsDiscountsGet(adAcco
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -106,7 +106,7 @@ Mono<BillingProfilesGet200Response> BillingApi.billingProfilesGet(adAccountIdisA
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -114,7 +114,7 @@ Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint mig
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **isActive** | `Boolean`| Return active billing profiles, if false return all billing profiles. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -222,7 +222,7 @@ Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -277,7 +277,7 @@ Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
 | **pinOrderId** | `String`| The pin order id associated with the ssio insertino order | [optional parameter] |
 
 

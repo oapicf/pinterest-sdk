@@ -24,14 +24,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("BidFloorSpec")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BidFloorSpec   {
-  private @Valid List<Country> countries;
-  private @Valid Currency currency;
-  private @Valid ObjectiveType objectiveType;
-  private @Valid ActionType billableEvent;
-  private @Valid OptimizationGoalMetadata optimizationGoalMetadata;
-  private @Valid CreativeType creativeType;
+  private @Valid List<Country> countries = new ArrayList<>();
+  private Currency currency;
+  private ObjectiveType objectiveType;
+  private ActionType billableEvent;
+  private OptimizationGoalMetadata optimizationGoalMetadata;
+  private CreativeType creativeType;
 
   /**
    **/
@@ -78,8 +78,7 @@ public class BidFloorSpec   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("currency")
-  @NotNull
-  public Currency getCurrency() {
+  @NotNull public Currency getCurrency() {
     return currency;
   }
 
@@ -117,8 +116,7 @@ public class BidFloorSpec   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("billable_event")
-  @NotNull
-  public ActionType getBillableEvent() {
+  @NotNull public ActionType getBillableEvent() {
     return billableEvent;
   }
 
@@ -137,7 +135,7 @@ public class BidFloorSpec   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("optimization_goal_metadata")
-  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
+  @Valid public OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 

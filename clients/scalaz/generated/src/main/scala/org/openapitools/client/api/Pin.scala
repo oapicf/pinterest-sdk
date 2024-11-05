@@ -29,11 +29,11 @@ creativeType: Option[CreativeType],
 boardOwner: Option[BoardOwner],
 /* Whether the \"operation user_account\" is the Pin owner. */
   isOwner: Option[Boolean],
-media: Option[SummaryPinMedia],
+media: Option[PinMedia],
 mediaSource: Option[PinMediaSource],
 /* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
   parentPinId: Option[String],
-/* Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information. */
+/* Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. */
   isStandard: Option[Boolean],
 /* Whether the Pin has been promoted or not. */
   hasBeenPromoted: Option[Boolean],

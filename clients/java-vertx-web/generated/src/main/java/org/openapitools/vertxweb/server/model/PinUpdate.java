@@ -21,7 +21,7 @@ public class PinUpdate   {
   private String description;
   private String link;
   private String title;
-  private List<PinUpdateCarouselSlotsInner> carouselSlots;
+  private List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
   private String note;
 
   public PinUpdate () {

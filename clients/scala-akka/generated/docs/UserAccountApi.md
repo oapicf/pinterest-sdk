@@ -66,7 +66,7 @@ object Example extends App {
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
     val explicitFollowing: Boolean = true // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 
@@ -101,7 +101,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
@@ -133,7 +133,7 @@ No authorization required
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -245,7 +245,7 @@ object Example extends App {
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     
     val request = apiInstance.followersList(bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -276,7 +276,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
 
 ### Return type
 
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
+ **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [enum: ALL, YOUR_PINS, OTHER_PINS]
@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
  **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
  **sortBy** | **String**| Specify sorting order for metrics | [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE]
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
+ **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [enum: ALL, YOUR_PINS, OTHER_PINS]
@@ -773,7 +773,7 @@ Name | Type | Description  | Notes
  **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
  **sortBy** | **String**| Specify sorting order for video metrics | [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START]
  **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [enum: OTHER, CLAIMED, BOTH]
- **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO]
+ **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [enum: ALL, PAID, ORGANIC]
  **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [enum: ALL, YOUR_PINS, OTHER_PINS]
@@ -837,7 +837,7 @@ object Example extends App {
 
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     
     val request = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -869,7 +869,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **String**| A valid username |
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
 
 ### Return type
 
@@ -901,7 +901,7 @@ No authorization required
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
 
 ### Example
 
@@ -1010,7 +1010,7 @@ object Example extends App {
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
     val feedType: UserFollowingFeedType = feedType_example // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
 
@@ -1047,7 +1047,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
  **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY]
  **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
@@ -1104,7 +1104,7 @@ object Example extends App {
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
     val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
 
-    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     
     val request = apiInstance.userWebsitesGet(bookmark, pageSize)
     val response = apiInvoker.execute(request)
@@ -1135,7 +1135,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
 
 ### Return type
 
@@ -1190,8 +1190,10 @@ object Example extends App {
     val apiInvoker = ApiInvoker()
     val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
     val userWebsiteVerifyRequest: UserWebsiteVerifyRequest =  // UserWebsiteVerifyRequest | Verify a website.
+
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
     
-    val request = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest)
+    val request = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -1220,6 +1222,7 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. |
+ **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 
@@ -1244,7 +1247,7 @@ No authorization required
 
 ## websiteVerificationGet
 
-> websiteVerificationGet(): ApiRequest[UserWebsiteVerificationCode]
+> websiteVerificationGet(websiteVerificationGetRequest): ApiRequest[UserWebsiteVerificationCode]
 
 Get user verification code for website claiming
 
@@ -1270,8 +1273,10 @@ object Example extends App {
     import system.dispatcher
     
     val apiInvoker = ApiInvoker()
-    val apiInstance = UserAccountApi("https://api.pinterest.com/v5")    
-    val request = apiInstance.websiteVerificationGet()
+    val apiInstance = UserAccountApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+    
+    val request = apiInstance.websiteVerificationGet(adAccountId)
     val response = apiInvoker.execute(request)
 
     response.onComplete {
@@ -1296,7 +1301,10 @@ object Example extends App {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
 ### Return type
 

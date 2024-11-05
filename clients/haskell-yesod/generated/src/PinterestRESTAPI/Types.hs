@@ -10,10 +10,11 @@ module PinterestRESTAPI.Types (
   AdAccountAnalyticsResponseInner (..),
   AdAccountCreateRequest (..),
   AdAccountCreateSubscriptionRequest (..),
+  AdAccountCreateSubscriptionRequestPartnerMetadata (..),
   AdAccountCreateSubscriptionResponse (..),
   AdAccountGetSubscriptionResponse (..),
   AdAccountOwner (..),
-  AdAccountsCatalogsProductGroupsList200Response (..),
+  AdAccountsAudiencesSharedAccountsList200Response (..),
   AdAccountsCountryResponse (..),
   AdAccountsCountryResponseData (..),
   AdAccountsList200Response (..),
@@ -21,8 +22,6 @@ module PinterestRESTAPI.Types (
   AdArrayResponse (..),
   AdArrayResponseElement (..),
   AdCommon (..),
-  AdCommonQuizPinData (..),
-  AdCommonTrackingUrls (..),
   AdCountry (..),
   AdCreateRequest (..),
   AdGroupArrayResponse (..),
@@ -31,8 +30,6 @@ module PinterestRESTAPI.Types (
   AdGroupAudienceSizingRequestKeywordsInner (..),
   AdGroupAudienceSizingResponse (..),
   AdGroupCommon (..),
-  AdGroupCommonOptimizationGoalMetadata (..),
-  AdGroupCommonTrackingUrls (..),
   AdGroupCreateRequest (..),
   AdGroupResponse (..),
   AdGroupSummaryStatus (..),
@@ -46,6 +43,8 @@ module PinterestRESTAPI.Types (
   AdPreviewURLResponse (..),
   AdResponse (..),
   AdUpdateRequest (..),
+  AdsAnalyticsAdTargetingType (..),
+  AdsAnalyticsCampaignTargetingType (..),
   AdsAnalyticsCreateAsyncRequest (..),
   AdsAnalyticsCreateAsyncResponse (..),
   AdsAnalyticsFilterColumn (..),
@@ -59,9 +58,28 @@ module PinterestRESTAPI.Types (
   AdsCreditRedeemResponse (..),
   AdsCreditsDiscountsGet200Response (..),
   AdsList200Response (..),
+  AdvancedAuctionBidOptions (..),
+  AdvancedAuctionItem (..),
+  AdvancedAuctionItems (..),
+  AdvancedAuctionItemsGetRecord (..),
+  AdvancedAuctionItemsGetRequest (..),
+  AdvancedAuctionItemsSubmitDeleteRecord (..),
+  AdvancedAuctionItemsSubmitRecord (..),
+  AdvancedAuctionItemsSubmitRequest (..),
+  AdvancedAuctionItemsSubmitUpsertRecord (..),
+  AdvancedAuctionKey (..),
+  AdvancedAuctionOperation (..),
+  AdvancedAuctionOperationError (..),
+  AdvancedAuctionProcessedItem (..),
+  AdvancedAuctionProcessedItems (..),
   AnalyticsDailyMetrics (..),
   AnalyticsMetricsResponse (..),
+  AppTypeMultipliers (..),
+  AssetGroupBinding (..),
+  AssetGroupType (..),
+  AssetIdPermissions (..),
   Audience (..),
+  AudienceAccountType (..),
   AudienceCategory (..),
   AudienceCommon (..),
   AudienceCreateCustomRequest (..),
@@ -77,13 +95,19 @@ module PinterestRESTAPI.Types (
   AudienceInsightType (..),
   AudienceInsightsResponse (..),
   AudienceRule (..),
+  AudienceShareType (..),
   AudienceSharingType (..),
   AudienceSubcategory (..),
   AudienceType (..),
   AudienceUpdateOperationType (..),
   AudienceUpdateRequest (..),
   AudiencesList200Response (..),
+  AuthRespondInvitesBody (..),
+  AuthRespondInvitesBodyInvitesInner (..),
+  AuthRespondInvitesBodyInvitesInnerAction (..),
   AvailabilityFilter (..),
+  BaseInviteDataResponse (..),
+  BaseInviteDataResponseInviteData (..),
   BatchOperation (..),
   BatchOperationStatus (..),
   BidFloor (..),
@@ -115,7 +139,24 @@ module PinterestRESTAPI.Types (
   BulkUpsertResponse (..),
   BulkUpsertStatus (..),
   BulkUpsertStatusResponse (..),
+  BusinessAccessError (..),
   BusinessAccessRole (..),
+  BusinessAccessUserSummary (..),
+  BusinessAssetMembersGet200Response (..),
+  BusinessAssetPartnersGet200Response (..),
+  BusinessAssetsGet200Response (..),
+  BusinessMemberAssetsGet200Response (..),
+  BusinessMemberAssetsSummary (..),
+  BusinessMemberAssetsSummaryAdAccountsInner (..),
+  BusinessMemberAssetsSummaryProfilesInner (..),
+  BusinessMembersAssetAccessDeleteRequest (..),
+  BusinessMembersAssetAccessDeleteRequestAccessesInner (..),
+  BusinessPartnerAssetAccessGet200Response (..),
+  BusinessRole (..),
+  BusinessRoleCheckMode (..),
+  BusinessRoleForMembers (..),
+  BusinessSharedAudience (..),
+  BusinessSharedAudienceResponse (..),
   CampaignCommon (..),
   CampaignCreateCommon (..),
   CampaignCreateRequest (..),
@@ -129,15 +170,42 @@ module PinterestRESTAPI.Types (
   CampaignUpdateResponse (..),
   CampaignsAnalyticsResponseInner (..),
   CampaignsList200Response (..),
+  CancelInvitesBody (..),
   Catalog (..),
-  CatalogProductGroup (..),
+  CatalogsCreateCreativeAssetsItem (..),
   CatalogsCreateHotelItem (..),
+  CatalogsCreateReportResponse (..),
+  CatalogsCreateRequest (..),
   CatalogsCreateRetailItem (..),
+  CatalogsCreativeAssetsAttributes (..),
+  CatalogsCreativeAssetsBatchItem (..),
+  CatalogsCreativeAssetsBatchRequest (..),
+  CatalogsCreativeAssetsFeed (..),
+  CatalogsCreativeAssetsFeedsCreateRequest (..),
+  CatalogsCreativeAssetsFeedsUpdateRequest (..),
+  CatalogsCreativeAssetsItemErrorResponse (..),
+  CatalogsCreativeAssetsItemResponse (..),
+  CatalogsCreativeAssetsItemsBatch (..),
+  CatalogsCreativeAssetsItemsFilter (..),
+  CatalogsCreativeAssetsItemsPostFilter (..),
+  CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest (..),
+  CatalogsCreativeAssetsProduct (..),
+  CatalogsCreativeAssetsProductGroup (..),
+  CatalogsCreativeAssetsProductGroupCreateRequest (..),
+  CatalogsCreativeAssetsProductGroupFilterKeys (..),
+  CatalogsCreativeAssetsProductGroupFilters (..),
+  CatalogsCreativeAssetsProductGroupFiltersAllOf (..),
+  CatalogsCreativeAssetsProductGroupFiltersAnyOf (..),
+  CatalogsCreativeAssetsProductGroupProductCounts (..),
+  CatalogsCreativeAssetsProductGroupUpdateRequest (..),
+  CatalogsCreativeAssetsProductMetadata (..),
   CatalogsDbItem (..),
+  CatalogsDeleteCreativeAssetsItem (..),
   CatalogsDeleteHotelItem (..),
   CatalogsDeleteRetailItem (..),
   CatalogsFeed (..),
   CatalogsFeedCredentials (..),
+  CatalogsFeedIngestion (..),
   CatalogsFeedIngestionDetails (..),
   CatalogsFeedIngestionErrors (..),
   CatalogsFeedIngestionInfo (..),
@@ -166,13 +234,20 @@ module PinterestRESTAPI.Types (
   CatalogsHotelItemResponse (..),
   CatalogsHotelItemsBatch (..),
   CatalogsHotelItemsFilter (..),
+  CatalogsHotelItemsPostFilter (..),
+  CatalogsHotelListProductsByCatalogBasedFilterRequest (..),
+  CatalogsHotelProduct (..),
   CatalogsHotelProductGroup (..),
   CatalogsHotelProductGroupCreateRequest (..),
   CatalogsHotelProductGroupFilterKeys (..),
   CatalogsHotelProductGroupFilters (..),
   CatalogsHotelProductGroupFiltersAllOf (..),
   CatalogsHotelProductGroupFiltersAnyOf (..),
+  CatalogsHotelProductGroupProductCounts (..),
   CatalogsHotelProductGroupUpdateRequest (..),
+  CatalogsHotelProductMetadata (..),
+  CatalogsHotelReportParameters (..),
+  CatalogsHotelReportParametersReport (..),
   CatalogsItemValidationDetails (..),
   CatalogsItemValidationErrors (..),
   CatalogsItemValidationIssue (..),
@@ -185,14 +260,16 @@ module PinterestRESTAPI.Types (
   CatalogsItemsDeleteBatchRequest (..),
   CatalogsItemsDeleteDiscontinuedBatchRequest (..),
   CatalogsItemsFilters (..),
+  CatalogsItemsPostFilters (..),
+  CatalogsItemsRequest (..),
+  CatalogsItemsRequestLanguage (..),
   CatalogsItemsUpdateBatchRequest (..),
   CatalogsItemsUpsertBatchRequest (..),
   CatalogsList200Response (..),
+  CatalogsListProductsByFeedBasedFilter (..),
   CatalogsListProductsByFilterRequest (..),
-  CatalogsListProductsByFilterRequestOneOf (..),
   CatalogsLocale (..),
   CatalogsProduct (..),
-  CatalogsProductGroup (..),
   CatalogsProductGroupCreateRequest (..),
   CatalogsProductGroupCurrencyCriteria (..),
   CatalogsProductGroupFilterKeys (..),
@@ -204,21 +281,25 @@ module PinterestRESTAPI.Types (
   CatalogsProductGroupFiltersRequestAnyOf1 (..),
   CatalogsProductGroupMultipleCountriesCriteria (..),
   CatalogsProductGroupMultipleGenderCriteria (..),
+  CatalogsProductGroupMultipleMediaTypesCriteria (..),
   CatalogsProductGroupMultipleStringCriteria (..),
   CatalogsProductGroupMultipleStringListCriteria (..),
   CatalogsProductGroupPinsList200Response (..),
   CatalogsProductGroupPricingCriteria (..),
   CatalogsProductGroupPricingCurrencyCriteria (..),
-  CatalogsProductGroupProductCounts (..),
+  CatalogsProductGroupProductCountsVertical (..),
   CatalogsProductGroupStatus (..),
   CatalogsProductGroupType (..),
   CatalogsProductGroupUpdateRequest (..),
-  CatalogsProductGroupsCreate201Response (..),
-  CatalogsProductGroupsCreateRequest (..),
   CatalogsProductGroupsList200Response (..),
-  CatalogsProductGroupsList200ResponseAllOfItemsInner (..),
   CatalogsProductGroupsUpdateRequest (..),
-  CatalogsProductMetadata (..),
+  CatalogsReport (..),
+  CatalogsReportDistributionIssueFilter (..),
+  CatalogsReportDistributionStats (..),
+  CatalogsReportFeedIngestionFilter (..),
+  CatalogsReportFeedIngestionStats (..),
+  CatalogsReportParameters (..),
+  CatalogsReportStats (..),
   CatalogsRetailBatchRequest (..),
   CatalogsRetailBatchRequestItemsInner (..),
   CatalogsRetailFeed (..),
@@ -228,12 +309,23 @@ module PinterestRESTAPI.Types (
   CatalogsRetailItemResponse (..),
   CatalogsRetailItemsBatch (..),
   CatalogsRetailItemsFilter (..),
+  CatalogsRetailItemsPostFilter (..),
+  CatalogsRetailListProductsByCatalogBasedFilterRequest (..),
+  CatalogsRetailProduct (..),
   CatalogsRetailProductGroup (..),
+  CatalogsRetailProductGroupCreateRequest (..),
+  CatalogsRetailProductGroupProductCounts (..),
+  CatalogsRetailProductGroupUpdateRequest (..),
+  CatalogsRetailProductMetadata (..),
+  CatalogsRetailReportParameters (..),
   CatalogsStatus (..),
   CatalogsType (..),
+  CatalogsUpdatableCreativeAssetsAttributes (..),
   CatalogsUpdatableHotelAttributes (..),
+  CatalogsUpdateCreativeAssetsItem (..),
   CatalogsUpdateHotelItem (..),
   CatalogsUpdateRetailItem (..),
+  CatalogsUpsertCreativeAssetsItem (..),
   CatalogsUpsertHotelItem (..),
   CatalogsUpsertRetailItem (..),
   CatalogsVerticalBatchRequest (..),
@@ -242,6 +334,7 @@ module PinterestRESTAPI.Types (
   CatalogsVerticalProductGroup (..),
   CatalogsVerticalProductGroupCreateRequest (..),
   CatalogsVerticalProductGroupUpdateRequest (..),
+  CatalogsVerticalsListProductsByCatalogBasedFilterRequest (..),
   ConditionFilter (..),
   ConversionApiResponse (..),
   ConversionApiResponseEventsInner (..),
@@ -252,6 +345,9 @@ module PinterestRESTAPI.Types (
   ConversionEventsDataInnerCustomData (..),
   ConversionEventsDataInnerCustomDataContentsInner (..),
   ConversionEventsUserData (..),
+  ConversionEventsUserDataAnyOf (..),
+  ConversionEventsUserDataAnyOf1 (..),
+  ConversionEventsUserDataAnyOf2 (..),
   ConversionReportAttributionType (..),
   ConversionReportTimeType (..),
   ConversionTagCommon (..),
@@ -262,9 +358,24 @@ module PinterestRESTAPI.Types (
   ConversionTagType (..),
   Country (..),
   CountryFilter (..),
+  CreateAssetAccessRequestBody (..),
+  CreateAssetAccessRequestBodyAssetRequestsInner (..),
+  CreateAssetAccessRequestErrorMessageInner (..),
+  CreateAssetAccessRequestResponse (..),
+  CreateAssetGroupBody (..),
+  CreateAssetGroupResponse (..),
+  CreateAssetInvitesRequest (..),
+  CreateAssetInvitesRequestItem (..),
+  CreateInvitesResultsResponseArray (..),
+  CreateInvitesResultsResponseArrayItemsInner (..),
+  CreateInvitesResultsResponseArrayItemsInnerInvite (..),
   CreateMMMReportRequest (..),
   CreateMMMReportResponse (..),
   CreateMMMReportResponseData (..),
+  CreateMembershipOrPartnershipInvitesBody (..),
+  CreativeAssetsIdFilter (..),
+  CreativeAssetsProcessingRecord (..),
+  CreativeAssetsVisibilityType (..),
   CreativeType (..),
   Currency (..),
   CurrencyFilter (..),
@@ -279,6 +390,21 @@ module PinterestRESTAPI.Types (
   CustomerListsList200Response (..),
   DataOutputFormat (..),
   DataStatus (..),
+  DeleteAssetGroupBody (..),
+  DeleteAssetGroupResponse (..),
+  DeleteAssetGroupResponseExceptionsInner (..),
+  DeleteInvitesResultsResponseArray (..),
+  DeleteInvitesResultsResponseArrayItemsInner (..),
+  DeleteInvitesResultsResponseArrayItemsInnerException (..),
+  DeleteMemberAccessResult (..),
+  DeleteMemberAccessResultsResponseArray (..),
+  DeletePartnerAssetAccessBody (..),
+  DeletePartnerAssetAccessBodyAccessesInner (..),
+  DeletePartnerAssetsResult (..),
+  DeletePartnerAssetsResultsResponseArray (..),
+  DeletePartnersRequest (..),
+  DeletePartnersResponse (..),
+  DeletedMembersResponse (..),
   DeliveryMetricsResponse (..),
   DeliveryMetricsResponseItemsInner (..),
   DetailedError (..),
@@ -295,8 +421,15 @@ module PinterestRESTAPI.Types (
   Gender (..),
   GenderFilter (..),
   GetAudiencesOrderBy (..),
+  GetBusinessAssetTypeResponse (..),
+  GetBusinessAssetsResponse (..),
+  GetBusinessEmployers200Response (..),
+  GetBusinessMembers200Response (..),
+  GetBusinessPartners200Response (..),
+  GetInvites200Response (..),
   GetMMMReportResponse (..),
   GetMMMReportResponseData (..),
+  GetPartnerAssetsResponse (..),
   GoogleProductCategory0Filter (..),
   GoogleProductCategory1Filter (..),
   GoogleProductCategory2Filter (..),
@@ -324,7 +457,17 @@ module PinterestRESTAPI.Types (
   IntegrationRequestPatch (..),
   IntegrationsGetList200Response (..),
   Interest (..),
+  InviteAssetsSummary (..),
+  InviteAssetsSummaryAdAccountsInner (..),
+  InviteAssetsSummaryProfilesInner (..),
+  InviteBusinessRoleBinding (..),
+  InviteExceptionResponse (..),
+  InviteResponse (..),
+  InviteStatus (..),
+  InviteType (..),
   ItemAttributes (..),
+  ItemAttributesRequest (..),
+  ItemAttributesRequestAllOfImageLink (..),
   ItemBatchRecord (..),
   ItemCreateBatchRecord (..),
   ItemDeleteBatchRecord (..),
@@ -353,7 +496,11 @@ module PinterestRESTAPI.Types (
   KeywordsRequest (..),
   KeywordsResponse (..),
   Language (..),
+  LeadFormArrayResponse (..),
+  LeadFormArrayResponseItemsInner (..),
   LeadFormCommon (..),
+  LeadFormCommonPolicyLinksInner (..),
+  LeadFormCreateRequest (..),
   LeadFormQuestion (..),
   LeadFormQuestionFieldType (..),
   LeadFormQuestionType (..),
@@ -361,7 +508,12 @@ module PinterestRESTAPI.Types (
   LeadFormStatus (..),
   LeadFormTestRequest (..),
   LeadFormTestResponse (..),
+  LeadFormUpdateRequest (..),
   LeadFormsList200Response (..),
+  LeadsExportCreateRequest (..),
+  LeadsExportCreateResponse (..),
+  LeadsExportResponseData (..),
+  LeadsExportStatus (..),
   LineItem (..),
   LinkedBusiness (..),
   MMMReportingColumn (..),
@@ -370,27 +522,36 @@ module PinterestRESTAPI.Types (
   MatchTypeResponse (..),
   MaxPriceFilter (..),
   MediaList200Response (..),
+  MediaType (..),
+  MediaTypeFilter (..),
   MediaUpload (..),
   MediaUploadAllOfUploadParameters (..),
   MediaUploadDetails (..),
   MediaUploadRequest (..),
   MediaUploadStatus (..),
   MediaUploadType (..),
+  MemberBusinessRole (..),
+  MembersToDeleteBody (..),
+  MembersToDeleteBodyMembersInner (..),
   MetricsReportingLevel (..),
   MetricsResponse (..),
   MinPriceFilter (..),
+  MultipleProductGroupsInner (..),
   NonNullableCatalogsCurrency (..),
   NonNullableProductAvailabilityType (..),
   NullableCatalogsItemFieldType (..),
   NullableCurrency (..),
+  OauthAccessTokenRequestClientCredentials (..),
   OauthAccessTokenRequestCode (..),
   OauthAccessTokenRequestRefresh (..),
   OauthAccessTokenResponse (..),
+  OauthAccessTokenResponseClientCredentials (..),
   OauthAccessTokenResponseCode (..),
   OauthAccessTokenResponseEverlastingRefresh (..),
   OauthAccessTokenResponseIntegrationRefresh (..),
   OauthAccessTokenResponseRefresh (..),
   ObjectiveType (..),
+  OperationType (..),
   OptimizationGoalMetadata (..),
   OptimizationGoalMetadataConversionTagV3GoalMetadata (..),
   OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows (..),
@@ -409,6 +570,8 @@ module PinterestRESTAPI.Types (
   PageVisitConversionTagsGet200Response (..),
   Paginated (..),
   PartnerType (..),
+  Permissions (..),
+  PermissionsWithOwner (..),
   Pin (..),
   PinAnalyticsMetricsResponse (..),
   PinAnalyticsMetricsResponseDailyMetricsInner (..),
@@ -425,6 +588,7 @@ module PinterestRESTAPI.Types (
   PinMediaSourcePinURL (..),
   PinMediaSourceVideoID (..),
   PinMediaWithImage (..),
+  PinMediaWithImageAllOfImages (..),
   PinMediaWithImageAndVideo (..),
   PinMediaWithImages (..),
   PinMediaWithVideo (..),
@@ -437,15 +601,19 @@ module PinterestRESTAPI.Types (
   PinsSaveRequest (..),
   PinterestTagEventData (..),
   PlacementGroupType (..),
+  PlacementMultipliers (..),
   PriceFilter (..),
   ProductAvailabilityType (..),
   ProductGroupAnalyticsResponseInner (..),
   ProductGroupPromotion (..),
   ProductGroupPromotionCreateRequest (..),
+  ProductGroupPromotionCreateRequestElement (..),
   ProductGroupPromotionResponse (..),
+  ProductGroupPromotionResponseElement (..),
   ProductGroupPromotionResponseItem (..),
   ProductGroupPromotionUpdateRequest (..),
   ProductGroupPromotionsList200Response (..),
+  ProductGroupReferenceFilter (..),
   ProductGroupSummaryStatus (..),
   ProductType0Filter (..),
   ProductType1Filter (..),
@@ -459,6 +627,9 @@ module PinterestRESTAPI.Types (
   RelatedTerms (..),
   RelatedTermsRelatedTermsListInner (..),
   ReportingColumnAsync (..),
+  ReportsStats200Response (..),
+  RespondToInvitesResponseArray (..),
+  RespondToInvitesResponseArrayItemsInner (..),
   Role (..),
   SSIOAccountAddress (..),
   SSIOAccountItem (..),
@@ -474,14 +645,28 @@ module PinterestRESTAPI.Types (
   SSIOOrderLine (..),
   SearchPartnerPins200Response (..),
   SearchUserBoardsGet200Response (..),
+  SharedAudience (..),
+  SharedAudienceAccount (..),
+  SharedAudienceCommon (..),
+  SharedAudienceResponse (..),
+  SharedAudienceResponseCommon (..),
   SingleInterestTargetingOptionResponse (..),
   SsioInsertionOrdersStatusGetByAdAccount200Response (..),
   SsioOrderLinesGetByAdAccount200Response (..),
   SummaryPin (..),
-  SummaryPinMedia (..),
   TargetingAdvertiserCountry (..),
   TargetingSpec (..),
+  TargetingSpecAppType (..),
   TargetingSpecSHOPPINGRETARGETING (..),
+  TargetingTemplateAudienceSizing (..),
+  TargetingTemplateAudienceSizingReachEstimate (..),
+  TargetingTemplateCommon (..),
+  TargetingTemplateCreate (..),
+  TargetingTemplateGetResponseData (..),
+  TargetingTemplateKeyword (..),
+  TargetingTemplateList200Response (..),
+  TargetingTemplateResponseData (..),
+  TargetingTemplateUpdateRequest (..),
   TargetingTypeFilter (..),
   TemplateResponse (..),
   TemplateResponseDateRange (..),
@@ -502,17 +687,40 @@ module PinterestRESTAPI.Types (
   TrendingKeywordsResponseTrendsInnerTimeSeries (..),
   TrendsSupportedRegion (..),
   UpdatableItemAttributes (..),
+  UpdateAssetGroupBody (..),
+  UpdateAssetGroupBodyAssetGroupsToUpdateInner (..),
+  UpdateAssetGroupResponse (..),
+  UpdateAssetGroupResponseExceptionsInner (..),
+  UpdateInvitesResultsResponseArray (..),
+  UpdateInvitesResultsResponseArrayItemsInner (..),
+  UpdateMaskBidOptionField (..),
   UpdateMaskFieldType (..),
+  UpdateMemberAssetAccessBody (..),
+  UpdateMemberAssetAccessBodyAccessesInner (..),
+  UpdateMemberAssetsResultsResponseArray (..),
+  UpdateMemberAssetsResultsResponseArrayItemsInner (..),
+  UpdateMemberBusinessRoleBody (..),
+  UpdateMemberResult (..),
+  UpdateMemberResultsResponseArray (..),
+  UpdatePartnerAssetAccessBody (..),
+  UpdatePartnerAssetAccessBodyAccessesInner (..),
+  UpdatePartnerAssetsResult (..),
+  UpdatePartnerAssetsResultsResponseArray (..),
+  UpdatePartnerResultsResponseArray (..),
+  UpdatePartnerResultsResponseArrayItemsInner (..),
   UserAccountFollowedInterests200Response (..),
+  UserBusinessRoleBinding (..),
   UserFollowingFeedType (..),
   UserFollowingGet200Response (..),
   UserListOperationType (..),
   UserListType (..),
+  UserSingleAssetBinding (..),
   UserSummary (..),
   UserWebsiteSummary (..),
   UserWebsiteVerificationCode (..),
   UserWebsiteVerifyRequest (..),
   UserWebsitesGet200Response (..),
+  UsersForIndividualAssetResponse (..),
   VideoMetadata (..),
   ) where
 
@@ -666,6 +874,7 @@ data AdAccountCreateSubscriptionRequest = AdAccountCreateSubscriptionRequest
   , adAccountCreateSubscriptionRequestLeadUnderscoreformUnderscoreid :: Maybe Text -- ^ Lead form ID.
   , adAccountCreateSubscriptionRequestPartnerUnderscoreaccessUnderscoretoken :: Maybe Text -- ^ Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
   , adAccountCreateSubscriptionRequestPartnerUnderscorerefreshUnderscoretoken :: Maybe Text -- ^ Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+  , adAccountCreateSubscriptionRequestPartnerUnderscoremetadata :: Maybe AdAccountCreateSubscriptionRequestPartnerMetadata -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON AdAccountCreateSubscriptionRequest where
@@ -685,6 +894,29 @@ optionsAdAccountCreateSubscriptionRequest =
       , ("adAccountCreateSubscriptionRequestLeadUnderscoreformUnderscoreid", "lead_form_id")
       , ("adAccountCreateSubscriptionRequestPartnerUnderscoreaccessUnderscoretoken", "partner_access_token")
       , ("adAccountCreateSubscriptionRequestPartnerUnderscorerefreshUnderscoretoken", "partner_refresh_token")
+      , ("adAccountCreateSubscriptionRequestPartnerUnderscoremetadata", "partner_metadata")
+      ]
+
+
+-- | Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+data AdAccountCreateSubscriptionRequestPartnerMetadata = AdAccountCreateSubscriptionRequestPartnerMetadata
+  { adAccountCreateSubscriptionRequestPartnerMetadataSubscriberUnderscorekey :: Maybe Text -- ^ Text field value that uniquely identifies a subscriber.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdAccountCreateSubscriptionRequestPartnerMetadata where
+  parseJSON = genericParseJSON optionsAdAccountCreateSubscriptionRequestPartnerMetadata
+instance ToJSON AdAccountCreateSubscriptionRequestPartnerMetadata where
+  toJSON = genericToJSON optionsAdAccountCreateSubscriptionRequestPartnerMetadata
+
+optionsAdAccountCreateSubscriptionRequestPartnerMetadata :: Options
+optionsAdAccountCreateSubscriptionRequestPartnerMetadata =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("adAccountCreateSubscriptionRequestPartnerMetadataSubscriberUnderscorekey", "subscriber_key")
       ]
 
 
@@ -779,26 +1011,26 @@ optionsAdAccountOwner =
 
 
 -- | 
-data AdAccountsCatalogsProductGroupsList200Response = AdAccountsCatalogsProductGroupsList200Response
-  { adAccountsCatalogsProductGroupsList200ResponseItems :: [CatalogProductGroup] -- ^ 
-  , adAccountsCatalogsProductGroupsList200ResponseBookmark :: Maybe Text -- ^ 
+data AdAccountsAudiencesSharedAccountsList200Response = AdAccountsAudiencesSharedAccountsList200Response
+  { adAccountsAudiencesSharedAccountsList200ResponseItems :: [SharedAudienceAccount] -- ^ 
+  , adAccountsAudiencesSharedAccountsList200ResponseBookmark :: Maybe Text -- ^ 
   } deriving (Show, Eq, Generic)
 
-instance FromJSON AdAccountsCatalogsProductGroupsList200Response where
-  parseJSON = genericParseJSON optionsAdAccountsCatalogsProductGroupsList200Response
-instance ToJSON AdAccountsCatalogsProductGroupsList200Response where
-  toJSON = genericToJSON optionsAdAccountsCatalogsProductGroupsList200Response
+instance FromJSON AdAccountsAudiencesSharedAccountsList200Response where
+  parseJSON = genericParseJSON optionsAdAccountsAudiencesSharedAccountsList200Response
+instance ToJSON AdAccountsAudiencesSharedAccountsList200Response where
+  toJSON = genericToJSON optionsAdAccountsAudiencesSharedAccountsList200Response
 
-optionsAdAccountsCatalogsProductGroupsList200Response :: Options
-optionsAdAccountsCatalogsProductGroupsList200Response =
+optionsAdAccountsAudiencesSharedAccountsList200Response :: Options
+optionsAdAccountsAudiencesSharedAccountsList200Response =
   defaultOptions
     { omitNothingFields  = True
     , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
     }
   where
     table =
-      [ ("adAccountsCatalogsProductGroupsList200ResponseItems", "items")
-      , ("adAccountsCatalogsProductGroupsList200ResponseBookmark", "bookmark")
+      [ ("adAccountsAudiencesSharedAccountsList200ResponseItems", "items")
+      , ("adAccountsAudiencesSharedAccountsList200ResponseBookmark", "bookmark")
       ]
 
 
@@ -949,24 +1181,24 @@ optionsAdArrayResponseElement =
 -- | Creation fields
 data AdCommon = AdCommon
   { adCommonAdUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the ad group that contains the ad.
-  , adCommonAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  , adCommonAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices.
   , adCommonCarouselUnderscoreandroidUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on Android.
   , adCommonCarouselUnderscoredestinationUnderscoreurls :: Maybe [Text] -- ^ Comma-separated destination URLs for the carousel pin to promote.
   , adCommonCarouselUnderscoreiosUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on iOS.
   , adCommonClickUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking url for the ad clicks.
   , adCommonCreativeUnderscoretype :: Maybe CreativeType -- ^ 
   , adCommonDestinationUnderscoreurl :: Maybe Text -- ^ Destination URL.
-  , adCommonIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  , adCommonIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices.
   , adCommonIsUnderscorepinUnderscoredeleted :: Maybe Bool -- ^ Is original pin deleted?
   , adCommonIsUnderscoreremovable :: Maybe Bool -- ^ Is pin repinnable?
   , adCommonName :: Maybe Text -- ^ Name of the ad - 255 chars max.
   , adCommonStatus :: Maybe EntityStatus -- ^ 
-  , adCommonTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , adCommonTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , adCommonViewUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking URL for ad impressions.
   , adCommonLeadUnderscoreformUnderscoreid :: Maybe Text -- ^ Lead form ID for lead ad generation.
   , adCommonGridUnderscoreclickUnderscoretype :: Maybe GridClickType -- ^ 
-  , adCommonCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-  , adCommonQuizUnderscorepinUnderscoredata :: Maybe AdCommonQuizPinData -- ^ 
+  , adCommonCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  , adCommonQuizUnderscorepinUnderscoredata :: Maybe QuizPinData -- ^ Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON AdCommon where
@@ -1004,60 +1236,6 @@ optionsAdCommon =
       ]
 
 
--- | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-data AdCommonQuizPinData = AdCommonQuizPinData
-  { adCommonQuizPinDataQuestions :: Maybe [QuizPinQuestion] -- ^ 
-  , adCommonQuizPinDataResults :: Maybe [QuizPinResult] -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON AdCommonQuizPinData where
-  parseJSON = genericParseJSON optionsAdCommonQuizPinData
-instance ToJSON AdCommonQuizPinData where
-  toJSON = genericToJSON optionsAdCommonQuizPinData
-
-optionsAdCommonQuizPinData :: Options
-optionsAdCommonQuizPinData =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("adCommonQuizPinDataQuestions", "questions")
-      , ("adCommonQuizPinDataResults", "results")
-      ]
-
-
--- | 
-data AdCommonTrackingUrls = AdCommonTrackingUrls
-  { adCommonTrackingUrlsImpression :: Maybe [Text] -- ^ 
-  , adCommonTrackingUrlsClick :: Maybe [Text] -- ^ 
-  , adCommonTrackingUrlsEngagement :: Maybe [Text] -- ^ 
-  , adCommonTrackingUrlsBuyableUnderscorebutton :: Maybe [Text] -- ^ 
-  , adCommonTrackingUrlsAudienceUnderscoreverification :: Maybe [Text] -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON AdCommonTrackingUrls where
-  parseJSON = genericParseJSON optionsAdCommonTrackingUrls
-instance ToJSON AdCommonTrackingUrls where
-  toJSON = genericToJSON optionsAdCommonTrackingUrls
-
-optionsAdCommonTrackingUrls :: Options
-optionsAdCommonTrackingUrls =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("adCommonTrackingUrlsImpression", "impression")
-      , ("adCommonTrackingUrlsClick", "click")
-      , ("adCommonTrackingUrlsEngagement", "engagement")
-      , ("adCommonTrackingUrlsBuyableUnderscorebutton", "buyable_button")
-      , ("adCommonTrackingUrlsAudienceUnderscoreverification", "audience_verification")
-      ]
-
-
 -- | Country ID from ISO 3166-1 alpha-2.
 data AdCountry = AdCountry
   { 
@@ -1083,24 +1261,24 @@ optionsAdCountry =
 -- | 
 data AdCreateRequest = AdCreateRequest
   { adCreateRequestAdUnderscoregroupUnderscoreid :: Text -- ^ ID of the ad group that contains the ad.
-  , adCreateRequestAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  , adCreateRequestAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices.
   , adCreateRequestCarouselUnderscoreandroidUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on Android.
   , adCreateRequestCarouselUnderscoredestinationUnderscoreurls :: Maybe [Text] -- ^ Comma-separated destination URLs for the carousel pin to promote.
   , adCreateRequestCarouselUnderscoreiosUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on iOS.
   , adCreateRequestClickUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking url for the ad clicks.
   , adCreateRequestCreativeUnderscoretype :: CreativeType -- ^ 
   , adCreateRequestDestinationUnderscoreurl :: Maybe Text -- ^ Destination URL.
-  , adCreateRequestIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  , adCreateRequestIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices.
   , adCreateRequestIsUnderscorepinUnderscoredeleted :: Maybe Bool -- ^ Is original pin deleted?
   , adCreateRequestIsUnderscoreremovable :: Maybe Bool -- ^ Is pin repinnable?
   , adCreateRequestName :: Maybe Text -- ^ Name of the ad - 255 chars max.
   , adCreateRequestStatus :: Maybe EntityStatus -- ^ 
-  , adCreateRequestTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , adCreateRequestTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , adCreateRequestViewUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking URL for ad impressions.
   , adCreateRequestLeadUnderscoreformUnderscoreid :: Maybe Text -- ^ Lead form ID for lead ad generation.
   , adCreateRequestGridUnderscoreclickUnderscoretype :: Maybe GridClickType -- ^ 
-  , adCreateRequestCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-  , adCreateRequestQuizUnderscorepinUnderscoredata :: Maybe AdCommonQuizPinData -- ^ 
+  , adCreateRequestCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  , adCreateRequestQuizUnderscorepinUnderscoredata :: Maybe QuizPinData -- ^ Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   , adCreateRequestPinUnderscoreid :: Text -- ^ Pin ID.
   } deriving (Show, Eq, Generic)
 
@@ -1272,19 +1450,20 @@ data AdGroupCommon = AdGroupCommon
   , adGroupCommonStatus :: Maybe EntityStatus -- ^ Ad group/entity status.
   , adGroupCommonBudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
   , adGroupCommonBidUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-  , adGroupCommonOptimizationUnderscoregoalUnderscoremetadata :: Maybe AdGroupCommonOptimizationGoalMetadata -- ^ 
+  , adGroupCommonOptimizationUnderscoregoalUnderscoremetadata :: Maybe OptimizationGoalMetadata -- ^ Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
   , adGroupCommonBudgetUnderscoretype :: Maybe BudgetType -- ^ 
   , adGroupCommonStartUnderscoretime :: Maybe Int -- ^ Ad group start time. Unix timestamp in seconds. Defaults to current time.
   , adGroupCommonEndUnderscoretime :: Maybe Int -- ^ Ad group end time. Unix timestamp in seconds.
   , adGroupCommonTargetingUnderscorespec :: Maybe TargetingSpec -- ^ 
-  , adGroupCommonLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-  , adGroupCommonTrackingUnderscoreurls :: Maybe AdGroupCommonTrackingUrls -- ^ 
+  , adGroupCommonLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  , adGroupCommonTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
   , adGroupCommonAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  , adGroupCommonPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+  , adGroupCommonPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
   , adGroupCommonPacingUnderscoredeliveryUnderscoretype :: Maybe PacingDeliveryType -- ^ 
   , adGroupCommonCampaignUnderscoreid :: Maybe Text -- ^ Campaign ID of the ad group.
   , adGroupCommonBillableUnderscoreevent :: Maybe ActionType -- ^ 
-  , adGroupCommonBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type
+  , adGroupCommonBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+  , adGroupCommonTargetingUnderscoretemplateUnderscoreids :: Maybe [Text] -- ^ Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
   } deriving (Show, Eq, Generic)
 
 instance FromJSON AdGroupCommon where
@@ -1317,62 +1496,7 @@ optionsAdGroupCommon =
       , ("adGroupCommonCampaignUnderscoreid", "campaign_id")
       , ("adGroupCommonBillableUnderscoreevent", "billable_event")
       , ("adGroupCommonBidUnderscorestrategyUnderscoretype", "bid_strategy_type")
-      ]
-
-
--- | Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.
-data AdGroupCommonOptimizationGoalMetadata = AdGroupCommonOptimizationGoalMetadata
-  { adGroupCommonOptimizationGoalMetadataConversionUnderscoretagUnderscorev3UnderscoregoalUnderscoremetadata :: Maybe OptimizationGoalMetadataConversionTagV3GoalMetadata -- ^ 
-  , adGroupCommonOptimizationGoalMetadataFrequencyUnderscoregoalUnderscoremetadata :: Maybe OptimizationGoalMetadataFrequencyGoalMetadata -- ^ 
-  , adGroupCommonOptimizationGoalMetadataScrollupUnderscoregoalUnderscoremetadata :: Maybe OptimizationGoalMetadataScrollupGoalMetadata -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON AdGroupCommonOptimizationGoalMetadata where
-  parseJSON = genericParseJSON optionsAdGroupCommonOptimizationGoalMetadata
-instance ToJSON AdGroupCommonOptimizationGoalMetadata where
-  toJSON = genericToJSON optionsAdGroupCommonOptimizationGoalMetadata
-
-optionsAdGroupCommonOptimizationGoalMetadata :: Options
-optionsAdGroupCommonOptimizationGoalMetadata =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("adGroupCommonOptimizationGoalMetadataConversionUnderscoretagUnderscorev3UnderscoregoalUnderscoremetadata", "conversion_tag_v3_goal_metadata")
-      , ("adGroupCommonOptimizationGoalMetadataFrequencyUnderscoregoalUnderscoremetadata", "frequency_goal_metadata")
-      , ("adGroupCommonOptimizationGoalMetadataScrollupUnderscoregoalUnderscoremetadata", "scrollup_goal_metadata")
-      ]
-
-
--- | Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
-data AdGroupCommonTrackingUrls = AdGroupCommonTrackingUrls
-  { adGroupCommonTrackingUrlsImpression :: Maybe [Text] -- ^ 
-  , adGroupCommonTrackingUrlsClick :: Maybe [Text] -- ^ 
-  , adGroupCommonTrackingUrlsEngagement :: Maybe [Text] -- ^ 
-  , adGroupCommonTrackingUrlsBuyableUnderscorebutton :: Maybe [Text] -- ^ 
-  , adGroupCommonTrackingUrlsAudienceUnderscoreverification :: Maybe [Text] -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON AdGroupCommonTrackingUrls where
-  parseJSON = genericParseJSON optionsAdGroupCommonTrackingUrls
-instance ToJSON AdGroupCommonTrackingUrls where
-  toJSON = genericToJSON optionsAdGroupCommonTrackingUrls
-
-optionsAdGroupCommonTrackingUrls :: Options
-optionsAdGroupCommonTrackingUrls =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("adGroupCommonTrackingUrlsImpression", "impression")
-      , ("adGroupCommonTrackingUrlsClick", "click")
-      , ("adGroupCommonTrackingUrlsEngagement", "engagement")
-      , ("adGroupCommonTrackingUrlsBuyableUnderscorebutton", "buyable_button")
-      , ("adGroupCommonTrackingUrlsAudienceUnderscoreverification", "audience_verification")
+      , ("adGroupCommonTargetingUnderscoretemplateUnderscoreids", "targeting_template_ids")
       ]
 
 
@@ -1382,19 +1506,20 @@ data AdGroupCreateRequest = AdGroupCreateRequest
   , adGroupCreateRequestStatus :: Maybe EntityStatus -- ^ Ad group/entity status.
   , adGroupCreateRequestBudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
   , adGroupCreateRequestBidUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-  , adGroupCreateRequestOptimizationUnderscoregoalUnderscoremetadata :: Maybe AdGroupCommonOptimizationGoalMetadata -- ^ 
+  , adGroupCreateRequestOptimizationUnderscoregoalUnderscoremetadata :: Maybe OptimizationGoalMetadata -- ^ Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
   , adGroupCreateRequestBudgetUnderscoretype :: Maybe BudgetType -- ^ 
   , adGroupCreateRequestStartUnderscoretime :: Maybe Int -- ^ Ad group start time. Unix timestamp in seconds. Defaults to current time.
   , adGroupCreateRequestEndUnderscoretime :: Maybe Int -- ^ Ad group end time. Unix timestamp in seconds.
   , adGroupCreateRequestTargetingUnderscorespec :: Maybe TargetingSpec -- ^ 
-  , adGroupCreateRequestLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-  , adGroupCreateRequestTrackingUnderscoreurls :: Maybe AdGroupCommonTrackingUrls -- ^ 
+  , adGroupCreateRequestLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  , adGroupCreateRequestTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
   , adGroupCreateRequestAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group.Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  , adGroupCreateRequestPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+  , adGroupCreateRequestPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
   , adGroupCreateRequestPacingUnderscoredeliveryUnderscoretype :: Maybe PacingDeliveryType -- ^ 
   , adGroupCreateRequestCampaignUnderscoreid :: Text -- ^ Campaign ID of the ad group.
   , adGroupCreateRequestBillableUnderscoreevent :: ActionType -- ^ 
-  , adGroupCreateRequestBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type
+  , adGroupCreateRequestBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+  , adGroupCreateRequestTargetingUnderscoretemplateUnderscoreids :: Maybe [Text] -- ^ Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
   } deriving (Show, Eq, Generic)
 
 instance FromJSON AdGroupCreateRequest where
@@ -1427,6 +1552,7 @@ optionsAdGroupCreateRequest =
       , ("adGroupCreateRequestCampaignUnderscoreid", "campaign_id")
       , ("adGroupCreateRequestBillableUnderscoreevent", "billable_event")
       , ("adGroupCreateRequestBidUnderscorestrategyUnderscoretype", "bid_strategy_type")
+      , ("adGroupCreateRequestTargetingUnderscoretemplateUnderscoreids", "targeting_template_ids")
       ]
 
 
@@ -1436,19 +1562,20 @@ data AdGroupResponse = AdGroupResponse
   , adGroupResponseStatus :: Maybe EntityStatus -- ^ Ad group/entity status.
   , adGroupResponseBudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
   , adGroupResponseBidUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-  , adGroupResponseOptimizationUnderscoregoalUnderscoremetadata :: Maybe AdGroupCommonOptimizationGoalMetadata -- ^ 
+  , adGroupResponseOptimizationUnderscoregoalUnderscoremetadata :: Maybe OptimizationGoalMetadata -- ^ Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
   , adGroupResponseBudgetUnderscoretype :: Maybe BudgetType -- ^ 
   , adGroupResponseStartUnderscoretime :: Maybe Int -- ^ Ad group start time. Unix timestamp in seconds. Defaults to current time.
   , adGroupResponseEndUnderscoretime :: Maybe Int -- ^ Ad group end time. Unix timestamp in seconds.
   , adGroupResponseTargetingUnderscorespec :: Maybe TargetingSpec -- ^ 
-  , adGroupResponseLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-  , adGroupResponseTrackingUnderscoreurls :: Maybe AdGroupCommonTrackingUrls -- ^ 
+  , adGroupResponseLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  , adGroupResponseTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
   , adGroupResponseAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  , adGroupResponsePlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+  , adGroupResponsePlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
   , adGroupResponsePacingUnderscoredeliveryUnderscoretype :: Maybe PacingDeliveryType -- ^ 
   , adGroupResponseCampaignUnderscoreid :: Maybe Text -- ^ Campaign ID of the ad group.
   , adGroupResponseBillableUnderscoreevent :: Maybe ActionType -- ^ 
-  , adGroupResponseBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type
+  , adGroupResponseBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+  , adGroupResponseTargetingUnderscoretemplateUnderscoreids :: Maybe [Text] -- ^ Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
   , adGroupResponseId :: Maybe Text -- ^ Ad group ID.
   , adGroupResponseAdUnderscoreaccountUnderscoreid :: Maybe Text -- ^ Advertiser ID.
   , adGroupResponseCreatedUnderscoretime :: Maybe Int -- ^ Ad group creation time. Unix timestamp in seconds.
@@ -1490,6 +1617,7 @@ optionsAdGroupResponse =
       , ("adGroupResponseCampaignUnderscoreid", "campaign_id")
       , ("adGroupResponseBillableUnderscoreevent", "billable_event")
       , ("adGroupResponseBidUnderscorestrategyUnderscoretype", "bid_strategy_type")
+      , ("adGroupResponseTargetingUnderscoretemplateUnderscoreids", "targeting_template_ids")
       , ("adGroupResponseId", "id")
       , ("adGroupResponseAdUnderscoreaccountUnderscoreid", "ad_account_id")
       , ("adGroupResponseCreatedUnderscoretime", "created_time")
@@ -1530,19 +1658,20 @@ data AdGroupUpdateRequest = AdGroupUpdateRequest
   , adGroupUpdateRequestStatus :: Maybe EntityStatus -- ^ Ad group/entity status.
   , adGroupUpdateRequestBudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
   , adGroupUpdateRequestBidUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-  , adGroupUpdateRequestOptimizationUnderscoregoalUnderscoremetadata :: Maybe AdGroupCommonOptimizationGoalMetadata -- ^ 
+  , adGroupUpdateRequestOptimizationUnderscoregoalUnderscoremetadata :: Maybe OptimizationGoalMetadata -- ^ Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
   , adGroupUpdateRequestBudgetUnderscoretype :: Maybe BudgetType -- ^ 
   , adGroupUpdateRequestStartUnderscoretime :: Maybe Int -- ^ Ad group start time. Unix timestamp in seconds. Defaults to current time.
   , adGroupUpdateRequestEndUnderscoretime :: Maybe Int -- ^ Ad group end time. Unix timestamp in seconds.
   , adGroupUpdateRequestTargetingUnderscorespec :: Maybe TargetingSpec -- ^ 
-  , adGroupUpdateRequestLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"https://developers.pinterest.com/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-  , adGroupUpdateRequestTrackingUnderscoreurls :: Maybe AdGroupCommonTrackingUrls -- ^ 
+  , adGroupUpdateRequestLifetimeUnderscorefrequencyUnderscorecap :: Maybe Int -- ^ Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  , adGroupUpdateRequestTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
   , adGroupUpdateRequestAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  , adGroupUpdateRequestPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"https://developers.pinterest.com/docs/redoc/#section/Placement-group\">Placement group</a>.
+  , adGroupUpdateRequestPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
   , adGroupUpdateRequestPacingUnderscoredeliveryUnderscoretype :: Maybe PacingDeliveryType -- ^ 
   , adGroupUpdateRequestCampaignUnderscoreid :: Maybe Text -- ^ Campaign ID of the ad group.
   , adGroupUpdateRequestBillableUnderscoreevent :: Maybe ActionType -- ^ 
-  , adGroupUpdateRequestBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type
+  , adGroupUpdateRequestBidUnderscorestrategyUnderscoretype :: Maybe Text -- ^ Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+  , adGroupUpdateRequestTargetingUnderscoretemplateUnderscoreids :: Maybe [Text] -- ^ Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
   , adGroupUpdateRequestId :: Text -- ^ Ad group ID.
   } deriving (Show, Eq, Generic)
 
@@ -1576,6 +1705,7 @@ optionsAdGroupUpdateRequest =
       , ("adGroupUpdateRequestCampaignUnderscoreid", "campaign_id")
       , ("adGroupUpdateRequestBillableUnderscoreevent", "billable_event")
       , ("adGroupUpdateRequestBidUnderscorestrategyUnderscoretype", "bid_strategy_type")
+      , ("adGroupUpdateRequestTargetingUnderscoretemplateUnderscoreids", "targeting_template_ids")
       , ("adGroupUpdateRequestId", "id")
       ]
 
@@ -1727,24 +1857,24 @@ optionsAdPreviewURLResponse =
 -- | 
 data AdResponse = AdResponse
   { adResponseAdUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the ad group that contains the ad.
-  , adResponseAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  , adResponseAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices.
   , adResponseCarouselUnderscoreandroidUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on Android.
   , adResponseCarouselUnderscoredestinationUnderscoreurls :: Maybe [Text] -- ^ Comma-separated destination URLs for the carousel pin to promote.
   , adResponseCarouselUnderscoreiosUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on iOS.
   , adResponseClickUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking url for the ad clicks.
   , adResponseCreativeUnderscoretype :: Maybe CreativeType -- ^ 
   , adResponseDestinationUnderscoreurl :: Maybe Text -- ^ Destination URL.
-  , adResponseIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  , adResponseIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices.
   , adResponseIsUnderscorepinUnderscoredeleted :: Maybe Bool -- ^ Is original pin deleted?
   , adResponseIsUnderscoreremovable :: Maybe Bool -- ^ Is pin repinnable?
   , adResponseName :: Maybe Text -- ^ Name of the ad - 255 chars max.
   , adResponseStatus :: Maybe EntityStatus -- ^ 
-  , adResponseTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , adResponseTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , adResponseViewUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking URL for ad impressions.
   , adResponseLeadUnderscoreformUnderscoreid :: Maybe Text -- ^ Lead form ID for lead ad generation.
   , adResponseGridUnderscoreclickUnderscoretype :: Maybe GridClickType -- ^ 
-  , adResponseCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-  , adResponseQuizUnderscorepinUnderscoredata :: Maybe AdCommonQuizPinData -- ^ 
+  , adResponseCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  , adResponseQuizUnderscorepinUnderscoredata :: Maybe QuizPinData -- ^ Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   , adResponsePinUnderscoreid :: Maybe Text -- ^ Pin ID.
   , adResponseAdUnderscoreaccountUnderscoreid :: Maybe Text -- ^ The ID of the advertiser that this ad belongs to.
   , adResponseCampaignUnderscoreid :: Maybe Text -- ^ ID of the ad campaign that contains this ad.
@@ -1809,24 +1939,24 @@ optionsAdResponse =
 -- | 
 data AdUpdateRequest = AdUpdateRequest
   { adUpdateRequestAdUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the ad group that contains the ad.
-  , adUpdateRequestAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+  , adUpdateRequestAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for Android devices.
   , adUpdateRequestCarouselUnderscoreandroidUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on Android.
   , adUpdateRequestCarouselUnderscoredestinationUnderscoreurls :: Maybe [Text] -- ^ Comma-separated destination URLs for the carousel pin to promote.
   , adUpdateRequestCarouselUnderscoreiosUnderscoredeepUnderscorelinks :: Maybe [Text] -- ^ Comma-separated deep links for the carousel pin on iOS.
   , adUpdateRequestClickUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking url for the ad clicks.
   , adUpdateRequestCreativeUnderscoretype :: Maybe CreativeType -- ^ 
   , adUpdateRequestDestinationUnderscoreurl :: Maybe Text -- ^ Destination URL.
-  , adUpdateRequestIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+  , adUpdateRequestIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ Deep link URL for iOS devices.
   , adUpdateRequestIsUnderscorepinUnderscoredeleted :: Maybe Bool -- ^ Is original pin deleted?
   , adUpdateRequestIsUnderscoreremovable :: Maybe Bool -- ^ Is pin repinnable?
   , adUpdateRequestName :: Maybe Text -- ^ Name of the ad - 255 chars max.
   , adUpdateRequestStatus :: Maybe EntityStatus -- ^ 
-  , adUpdateRequestTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , adUpdateRequestTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , adUpdateRequestViewUnderscoretrackingUnderscoreurl :: Maybe Text -- ^ Tracking URL for ad impressions.
   , adUpdateRequestLeadUnderscoreformUnderscoreid :: Maybe Text -- ^ Lead form ID for lead ad generation.
   , adUpdateRequestGridUnderscoreclickUnderscoretype :: Maybe GridClickType -- ^ 
-  , adUpdateRequestCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-  , adUpdateRequestQuizUnderscorepinUnderscoredata :: Maybe AdCommonQuizPinData -- ^ 
+  , adUpdateRequestCustomizableUnderscorectaUnderscoretype :: Maybe Text -- ^ Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  , adUpdateRequestQuizUnderscorepinUnderscoredata :: Maybe QuizPinData -- ^ Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   , adUpdateRequestId :: Text -- ^ The ID of this ad.
   , adUpdateRequestPinUnderscoreid :: Maybe Text -- ^ Pin ID. This field may only be updated for draft ads.
   } deriving (Show, Eq, Generic)
@@ -1868,6 +1998,50 @@ optionsAdUpdateRequest =
       ]
 
 
+-- | Reporting targeting type for ads
+data AdsAnalyticsAdTargetingType = AdsAnalyticsAdTargetingType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdsAnalyticsAdTargetingType where
+  parseJSON = genericParseJSON optionsAdsAnalyticsAdTargetingType
+instance ToJSON AdsAnalyticsAdTargetingType where
+  toJSON = genericToJSON optionsAdsAnalyticsAdTargetingType
+
+optionsAdsAnalyticsAdTargetingType :: Options
+optionsAdsAnalyticsAdTargetingType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | Reporting targeting type for campaigns
+data AdsAnalyticsCampaignTargetingType = AdsAnalyticsCampaignTargetingType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdsAnalyticsCampaignTargetingType where
+  parseJSON = genericParseJSON optionsAdsAnalyticsCampaignTargetingType
+instance ToJSON AdsAnalyticsCampaignTargetingType where
+  toJSON = genericToJSON optionsAdsAnalyticsCampaignTargetingType
+
+optionsAdsAnalyticsCampaignTargetingType :: Options
+optionsAdsAnalyticsCampaignTargetingType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
 -- | 
 data AdsAnalyticsCreateAsyncRequest = AdsAnalyticsCreateAsyncRequest
   { adsAnalyticsCreateAsyncRequestStartUnderscoredate :: Text -- ^ Metric report start date (UTC). Format: YYYY-MM-DD
@@ -1888,11 +2062,14 @@ data AdsAnalyticsCreateAsyncRequest = AdsAnalyticsCreateAsyncRequest
   , adsAnalyticsCreateAsyncRequestProductUnderscoregroupUnderscoreids :: Maybe [Text] -- ^ List of product group ids
   , adsAnalyticsCreateAsyncRequestProductUnderscoregroupUnderscorestatuses :: Maybe [ProductGroupSummaryStatus] -- ^ List of values for filtering
   , adsAnalyticsCreateAsyncRequestProductUnderscoreitemUnderscoreids :: Maybe [Text] -- ^ List of product item ids
-  , adsAnalyticsCreateAsyncRequestTargetingUnderscoretypes :: Maybe [AdsAnalyticsTargetingType] -- ^ List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+  , adsAnalyticsCreateAsyncRequestTargetingUnderscoretypes :: Maybe [AdsAnalyticsTargetingType] -- ^ List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   , adsAnalyticsCreateAsyncRequestMetricsUnderscorefilters :: Maybe [AdsAnalyticsMetricsFilter] -- ^ List of metrics filters
   , adsAnalyticsCreateAsyncRequestColumns :: [ReportingColumnAsync] -- ^ Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
   , adsAnalyticsCreateAsyncRequestLevel :: MetricsReportingLevel -- ^ Level of the report
   , adsAnalyticsCreateAsyncRequestReportUnderscoreformat :: Maybe DataOutputFormat -- ^ Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+  , adsAnalyticsCreateAsyncRequestPrimaryUnderscoresort :: Maybe Text -- ^ Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+  , adsAnalyticsCreateAsyncRequestStartUnderscorehour :: Maybe Int -- ^ Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+  , adsAnalyticsCreateAsyncRequestEndUnderscorehour :: Maybe Int -- ^ Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON AdsAnalyticsCreateAsyncRequest where
@@ -1931,6 +2108,9 @@ optionsAdsAnalyticsCreateAsyncRequest =
       , ("adsAnalyticsCreateAsyncRequestColumns", "columns")
       , ("adsAnalyticsCreateAsyncRequestLevel", "level")
       , ("adsAnalyticsCreateAsyncRequestReportUnderscoreformat", "report_format")
+      , ("adsAnalyticsCreateAsyncRequestPrimaryUnderscoresort", "primary_sort")
+      , ("adsAnalyticsCreateAsyncRequestStartUnderscorehour", "start_hour")
+      , ("adsAnalyticsCreateAsyncRequestEndUnderscorehour", "end_hour")
       ]
 
 
@@ -2214,6 +2394,346 @@ optionsAdsList200Response =
       ]
 
 
+-- | Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).
+data AdvancedAuctionBidOptions = AdvancedAuctionBidOptions
+  { advancedAuctionBidOptionsBidUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int64 -- ^ Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
+  , advancedAuctionBidOptionsAppUnderscoretypeUnderscoremultipliers :: Maybe AppTypeMultipliers -- ^ 
+  , advancedAuctionBidOptionsPlacementUnderscoremultipliers :: Maybe PlacementMultipliers -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionBidOptions where
+  parseJSON = genericParseJSON optionsAdvancedAuctionBidOptions
+instance ToJSON AdvancedAuctionBidOptions where
+  toJSON = genericToJSON optionsAdvancedAuctionBidOptions
+
+optionsAdvancedAuctionBidOptions :: Options
+optionsAdvancedAuctionBidOptions =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionBidOptionsBidUnderscoreinUnderscoremicroUnderscorecurrency", "bid_in_micro_currency")
+      , ("advancedAuctionBidOptionsAppUnderscoretypeUnderscoremultipliers", "app_type_multipliers")
+      , ("advancedAuctionBidOptionsPlacementUnderscoremultipliers", "placement_multipliers")
+      ]
+
+
+-- | 
+data AdvancedAuctionItem = AdvancedAuctionItem
+  { advancedAuctionItemItemUnderscoreid :: Text -- ^ The catalog retail item id in the merchant namespace
+  , advancedAuctionItemCountry :: Country -- ^ 
+  , advancedAuctionItemLanguage :: Language -- ^ 
+  , advancedAuctionItemBidUnderscoreoptions :: AdvancedAuctionBidOptions -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItem where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItem
+instance ToJSON AdvancedAuctionItem where
+  toJSON = genericToJSON optionsAdvancedAuctionItem
+
+optionsAdvancedAuctionItem :: Options
+optionsAdvancedAuctionItem =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemItemUnderscoreid", "item_id")
+      , ("advancedAuctionItemCountry", "country")
+      , ("advancedAuctionItemLanguage", "language")
+      , ("advancedAuctionItemBidUnderscoreoptions", "bid_options")
+      ]
+
+
+-- | Response object containing item bid options
+data AdvancedAuctionItems = AdvancedAuctionItems
+  { advancedAuctionItemsCatalogUnderscoreid :: Maybe Text -- ^ Response object of item bid options
+  , advancedAuctionItemsItems :: Maybe [AdvancedAuctionItem] -- ^ Array with item bid options
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItems where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItems
+instance ToJSON AdvancedAuctionItems where
+  toJSON = genericToJSON optionsAdvancedAuctionItems
+
+optionsAdvancedAuctionItems :: Options
+optionsAdvancedAuctionItems =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemsCatalogUnderscoreid", "catalog_id")
+      , ("advancedAuctionItemsItems", "items")
+      ]
+
+
+-- | Object uniquely identifying a retail catalog item
+data AdvancedAuctionItemsGetRecord = AdvancedAuctionItemsGetRecord
+  { advancedAuctionItemsGetRecordItemUnderscoreid :: Text -- ^ The catalog retail item id in the merchant namespace
+  , advancedAuctionItemsGetRecordCountry :: Country -- ^ 
+  , advancedAuctionItemsGetRecordLanguage :: Language -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItemsGetRecord where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItemsGetRecord
+instance ToJSON AdvancedAuctionItemsGetRecord where
+  toJSON = genericToJSON optionsAdvancedAuctionItemsGetRecord
+
+optionsAdvancedAuctionItemsGetRecord :: Options
+optionsAdvancedAuctionItemsGetRecord =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemsGetRecordItemUnderscoreid", "item_id")
+      , ("advancedAuctionItemsGetRecordCountry", "country")
+      , ("advancedAuctionItemsGetRecordLanguage", "language")
+      ]
+
+
+-- | Request object used to get bid options values for a batch of retail catalog items
+data AdvancedAuctionItemsGetRequest = AdvancedAuctionItemsGetRequest
+  { advancedAuctionItemsGetRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the retail item
+  , advancedAuctionItemsGetRequestItems :: [AdvancedAuctionItemsGetRecord] -- ^ A list of retail catalog items to fetch bid options for
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItemsGetRequest where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItemsGetRequest
+instance ToJSON AdvancedAuctionItemsGetRequest where
+  toJSON = genericToJSON optionsAdvancedAuctionItemsGetRequest
+
+optionsAdvancedAuctionItemsGetRequest :: Options
+optionsAdvancedAuctionItemsGetRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemsGetRequestCatalogUnderscoreid", "catalog_id")
+      , ("advancedAuctionItemsGetRequestItems", "items")
+      ]
+
+
+-- | Object describing an item bid option deletion operation
+data AdvancedAuctionItemsSubmitDeleteRecord = AdvancedAuctionItemsSubmitDeleteRecord
+  { advancedAuctionItemsSubmitDeleteRecordItemUnderscoreid :: Text -- ^ The catalog retail item id in the merchant namespace
+  , advancedAuctionItemsSubmitDeleteRecordCountry :: Country -- ^ 
+  , advancedAuctionItemsSubmitDeleteRecordLanguage :: Language -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItemsSubmitDeleteRecord where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItemsSubmitDeleteRecord
+instance ToJSON AdvancedAuctionItemsSubmitDeleteRecord where
+  toJSON = genericToJSON optionsAdvancedAuctionItemsSubmitDeleteRecord
+
+optionsAdvancedAuctionItemsSubmitDeleteRecord :: Options
+optionsAdvancedAuctionItemsSubmitDeleteRecord =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemsSubmitDeleteRecordItemUnderscoreid", "item_id")
+      , ("advancedAuctionItemsSubmitDeleteRecordCountry", "country")
+      , ("advancedAuctionItemsSubmitDeleteRecordLanguage", "language")
+      ]
+
+
+-- | Object describing an item bid option operation
+data AdvancedAuctionItemsSubmitRecord = AdvancedAuctionItemsSubmitRecord
+  { advancedAuctionItemsSubmitRecordOperation :: AdvancedAuctionOperation -- ^ 
+  , advancedAuctionItemsSubmitRecordItemUnderscoreid :: Text -- ^ The catalog retail item id in the merchant namespace
+  , advancedAuctionItemsSubmitRecordCountry :: Country -- ^ 
+  , advancedAuctionItemsSubmitRecordLanguage :: Language -- ^ 
+  , advancedAuctionItemsSubmitRecordBidUnderscoreoptions :: AdvancedAuctionBidOptions -- ^ 
+  , advancedAuctionItemsSubmitRecordUpdateUnderscoremask :: [UpdateMaskBidOptionField] -- ^ The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItemsSubmitRecord where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItemsSubmitRecord
+instance ToJSON AdvancedAuctionItemsSubmitRecord where
+  toJSON = genericToJSON optionsAdvancedAuctionItemsSubmitRecord
+
+optionsAdvancedAuctionItemsSubmitRecord :: Options
+optionsAdvancedAuctionItemsSubmitRecord =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemsSubmitRecordOperation", "operation")
+      , ("advancedAuctionItemsSubmitRecordItemUnderscoreid", "item_id")
+      , ("advancedAuctionItemsSubmitRecordCountry", "country")
+      , ("advancedAuctionItemsSubmitRecordLanguage", "language")
+      , ("advancedAuctionItemsSubmitRecordBidUnderscoreoptions", "bid_options")
+      , ("advancedAuctionItemsSubmitRecordUpdateUnderscoremask", "update_mask")
+      ]
+
+
+-- | Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
+data AdvancedAuctionItemsSubmitRequest = AdvancedAuctionItemsSubmitRequest
+  { advancedAuctionItemsSubmitRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to all items
+  , advancedAuctionItemsSubmitRequestItems :: [AdvancedAuctionItemsSubmitRecord] -- ^ Array of item bid option operations
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItemsSubmitRequest where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItemsSubmitRequest
+instance ToJSON AdvancedAuctionItemsSubmitRequest where
+  toJSON = genericToJSON optionsAdvancedAuctionItemsSubmitRequest
+
+optionsAdvancedAuctionItemsSubmitRequest :: Options
+optionsAdvancedAuctionItemsSubmitRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemsSubmitRequestCatalogUnderscoreid", "catalog_id")
+      , ("advancedAuctionItemsSubmitRequestItems", "items")
+      ]
+
+
+-- | Object describing an item bid option upsert operation
+data AdvancedAuctionItemsSubmitUpsertRecord = AdvancedAuctionItemsSubmitUpsertRecord
+  { advancedAuctionItemsSubmitUpsertRecordItemUnderscoreid :: Text -- ^ The catalog retail item id in the merchant namespace
+  , advancedAuctionItemsSubmitUpsertRecordCountry :: Country -- ^ 
+  , advancedAuctionItemsSubmitUpsertRecordLanguage :: Language -- ^ 
+  , advancedAuctionItemsSubmitUpsertRecordBidUnderscoreoptions :: AdvancedAuctionBidOptions -- ^ 
+  , advancedAuctionItemsSubmitUpsertRecordUpdateUnderscoremask :: [UpdateMaskBidOptionField] -- ^ The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionItemsSubmitUpsertRecord where
+  parseJSON = genericParseJSON optionsAdvancedAuctionItemsSubmitUpsertRecord
+instance ToJSON AdvancedAuctionItemsSubmitUpsertRecord where
+  toJSON = genericToJSON optionsAdvancedAuctionItemsSubmitUpsertRecord
+
+optionsAdvancedAuctionItemsSubmitUpsertRecord :: Options
+optionsAdvancedAuctionItemsSubmitUpsertRecord =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionItemsSubmitUpsertRecordItemUnderscoreid", "item_id")
+      , ("advancedAuctionItemsSubmitUpsertRecordCountry", "country")
+      , ("advancedAuctionItemsSubmitUpsertRecordLanguage", "language")
+      , ("advancedAuctionItemsSubmitUpsertRecordBidUnderscoreoptions", "bid_options")
+      , ("advancedAuctionItemsSubmitUpsertRecordUpdateUnderscoremask", "update_mask")
+      ]
+
+
+-- | Object uniquely identifying a retail catalog item
+data AdvancedAuctionKey = AdvancedAuctionKey
+  { advancedAuctionKeyItemUnderscoreid :: Text -- ^ The catalog retail item id in the merchant namespace
+  , advancedAuctionKeyCountry :: Country -- ^ 
+  , advancedAuctionKeyLanguage :: Language -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionKey where
+  parseJSON = genericParseJSON optionsAdvancedAuctionKey
+instance ToJSON AdvancedAuctionKey where
+  toJSON = genericToJSON optionsAdvancedAuctionKey
+
+optionsAdvancedAuctionKey :: Options
+optionsAdvancedAuctionKey =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionKeyItemUnderscoreid", "item_id")
+      , ("advancedAuctionKeyCountry", "country")
+      , ("advancedAuctionKeyLanguage", "language")
+      ]
+
+
+-- | 
+data AdvancedAuctionOperation = AdvancedAuctionOperation
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionOperation where
+  parseJSON = genericParseJSON optionsAdvancedAuctionOperation
+instance ToJSON AdvancedAuctionOperation where
+  toJSON = genericToJSON optionsAdvancedAuctionOperation
+
+optionsAdvancedAuctionOperation :: Options
+optionsAdvancedAuctionOperation =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | Error which occurred when applying a bid options operation to a specific item.
+data AdvancedAuctionOperationError = AdvancedAuctionOperationError
+  { advancedAuctionOperationErrorCode :: Maybe Int -- ^ The error code for the item bid option operation validation error
+  , advancedAuctionOperationErrorMessage :: Maybe Text -- ^ Message describing the item bid option operation validation error
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionOperationError where
+  parseJSON = genericParseJSON optionsAdvancedAuctionOperationError
+instance ToJSON AdvancedAuctionOperationError where
+  toJSON = genericToJSON optionsAdvancedAuctionOperationError
+
+optionsAdvancedAuctionOperationError :: Options
+optionsAdvancedAuctionOperationError =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionOperationErrorCode", "code")
+      , ("advancedAuctionOperationErrorMessage", "message")
+      ]
+
+
+-- | Object describing the result of an operation on an item bid option
+newtype AdvancedAuctionProcessedItem = AdvancedAuctionProcessedItem { unAdvancedAuctionProcessedItem :: AdvancedAuctionItemsSubmitRecord }
+  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+
+-- | Response object containing the results of an operation on an item bid option
+data AdvancedAuctionProcessedItems = AdvancedAuctionProcessedItems
+  { advancedAuctionProcessedItemsCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to all items
+  , advancedAuctionProcessedItemsItems :: Maybe [AdvancedAuctionProcessedItem] -- ^ Array of advanced auction processed items
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AdvancedAuctionProcessedItems where
+  parseJSON = genericParseJSON optionsAdvancedAuctionProcessedItems
+instance ToJSON AdvancedAuctionProcessedItems where
+  toJSON = genericToJSON optionsAdvancedAuctionProcessedItems
+
+optionsAdvancedAuctionProcessedItems :: Options
+optionsAdvancedAuctionProcessedItems =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("advancedAuctionProcessedItemsCatalogUnderscoreid", "catalog_id")
+      , ("advancedAuctionProcessedItemsItems", "items")
+      ]
+
+
 -- | 
 data AnalyticsDailyMetrics = AnalyticsDailyMetrics
   { analyticsDailyMetricsDataUnderscorestatus :: Maybe DataStatus -- ^ 
@@ -2264,6 +2784,100 @@ optionsAnalyticsMetricsResponse =
       ]
 
 
+-- | This represents a mapping from app type targeting criteria to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified app type in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All app type multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
+newtype AppTypeMultipliers = AppTypeMultipliers { unAppTypeMultipliers :: (Map.Map Text Double) }
+  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+
+-- | 
+data AssetGroupBinding = AssetGroupBinding
+  { assetGroupBindingId :: Maybe Text -- ^ Asset Group ID.
+  , assetGroupBindingAssetUnderscoregroupUnderscorename :: Maybe Text -- ^ Asset Group name
+  , assetGroupBindingAssetUnderscoregroupUnderscoredescription :: Maybe Text -- ^ Asset group description
+  , assetGroupBindingAssetUnderscoregroupUnderscoretypes :: Maybe [Text] -- ^ Asset group types
+  , assetGroupBindingAdUnderscoreaccountsUnderscoreids :: Maybe [Text] -- ^ A list of ad account IDs under the asset group
+  , assetGroupBindingProfilesUnderscoreids :: Maybe [Text] -- ^ A list of profile IDs under asset group
+  , assetGroupBindingCreatedUnderscoretime :: Maybe Int -- ^ The creation time of the asset group
+  , assetGroupBindingUpdatedUnderscoretime :: Maybe Int -- ^ The last update time of the asset group
+  , assetGroupBindingOwner :: Maybe BusinessAccessUserSummary -- ^ The data of the business that owns the asset group.
+  , assetGroupBindingCreatedUnderscoreby :: Maybe BusinessAccessUserSummary -- ^ The data of the user that created the asset group.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AssetGroupBinding where
+  parseJSON = genericParseJSON optionsAssetGroupBinding
+instance ToJSON AssetGroupBinding where
+  toJSON = genericToJSON optionsAssetGroupBinding
+
+optionsAssetGroupBinding :: Options
+optionsAssetGroupBinding =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("assetGroupBindingId", "id")
+      , ("assetGroupBindingAssetUnderscoregroupUnderscorename", "asset_group_name")
+      , ("assetGroupBindingAssetUnderscoregroupUnderscoredescription", "asset_group_description")
+      , ("assetGroupBindingAssetUnderscoregroupUnderscoretypes", "asset_group_types")
+      , ("assetGroupBindingAdUnderscoreaccountsUnderscoreids", "ad_accounts_ids")
+      , ("assetGroupBindingProfilesUnderscoreids", "profiles_ids")
+      , ("assetGroupBindingCreatedUnderscoretime", "created_time")
+      , ("assetGroupBindingUpdatedUnderscoretime", "updated_time")
+      , ("assetGroupBindingOwner", "owner")
+      , ("assetGroupBindingCreatedUnderscoreby", "created_by")
+      ]
+
+
+-- | Asset group type
+data AssetGroupType = AssetGroupType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AssetGroupType where
+  parseJSON = genericParseJSON optionsAssetGroupType
+instance ToJSON AssetGroupType where
+  toJSON = genericToJSON optionsAssetGroupType
+
+optionsAssetGroupType :: Options
+optionsAssetGroupType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | An object containing the permissions a business member has on the asset.
+data AssetIdPermissions = AssetIdPermissions
+  { assetIdPermissionsAssetUnderscoreid :: Maybe Text -- ^ Unique identifier of a business asset.
+  , assetIdPermissionsAssetUnderscoretype :: Maybe Text -- ^ Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  , assetIdPermissionsPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  , assetIdPermissionsAssetUnderscoregroupUnderscoreinfo :: Maybe AssetGroupBinding -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AssetIdPermissions where
+  parseJSON = genericParseJSON optionsAssetIdPermissions
+instance ToJSON AssetIdPermissions where
+  toJSON = genericToJSON optionsAssetIdPermissions
+
+optionsAssetIdPermissions :: Options
+optionsAssetIdPermissions =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("assetIdPermissionsAssetUnderscoreid", "asset_id")
+      , ("assetIdPermissionsAssetUnderscoretype", "asset_type")
+      , ("assetIdPermissionsPermissions", "permissions")
+      , ("assetIdPermissionsAssetUnderscoregroupUnderscoreinfo", "asset_group_info")
+      ]
+
+
 -- | 
 data Audience = Audience
   { audienceAdUnderscoreaccountUnderscoreid :: Maybe Text -- ^ Ad account ID.
@@ -2303,6 +2917,28 @@ optionsAudience =
       , ("audienceType", "type")
       , ("audienceCreatedUnderscoretimestamp", "created_timestamp")
       , ("audienceUpdatedUnderscoretimestamp", "updated_timestamp")
+      ]
+
+
+-- | 
+data AudienceAccountType = AudienceAccountType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AudienceAccountType where
+  parseJSON = genericParseJSON optionsAudienceAccountType
+instance ToJSON AudienceAccountType where
+  toJSON = genericToJSON optionsAudienceAccountType
+
+optionsAudienceAccountType :: Options
+optionsAudienceAccountType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
       ]
 
 
@@ -2680,7 +3316,7 @@ optionsAudienceInsightsResponse =
       ]
 
 
--- | JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
+-- | JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
 data AudienceRule = AudienceRule
   { audienceRuleCountry :: Maybe Text -- ^ Valid countries include: \"US\", \"CA\", and \"GB\".
   , audienceRuleCustomerUnderscorelistUnderscoreid :: Maybe Text -- ^ Customer list ID. For CUSTOMER_LIST `audience_type`.
@@ -2737,6 +3373,28 @@ optionsAudienceRule =
       , ("audienceRuleAdUnderscoreid", "ad_id")
       , ("audienceRuleObjectiveUnderscoretype", "objective_type")
       , ("audienceRuleAdUnderscoreaccountUnderscoreid", "ad_account_id")
+      ]
+
+
+-- | 
+data AudienceShareType = AudienceShareType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AudienceShareType where
+  parseJSON = genericParseJSON optionsAudienceShareType
+instance ToJSON AudienceShareType where
+  toJSON = genericToJSON optionsAudienceShareType
+
+optionsAudienceShareType :: Options
+optionsAudienceShareType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
       ]
 
 
@@ -2890,6 +3548,76 @@ optionsAudiencesList200Response =
       ]
 
 
+-- | An object with a list of all the invites the user would like to respond to and the action to take.
+data AuthRespondInvitesBody = AuthRespondInvitesBody
+  { authRespondInvitesBodyInvites :: [AuthRespondInvitesBodyInvitesInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AuthRespondInvitesBody where
+  parseJSON = genericParseJSON optionsAuthRespondInvitesBody
+instance ToJSON AuthRespondInvitesBody where
+  toJSON = genericToJSON optionsAuthRespondInvitesBody
+
+optionsAuthRespondInvitesBody :: Options
+optionsAuthRespondInvitesBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("authRespondInvitesBodyInvites", "invites")
+      ]
+
+
+-- | 
+data AuthRespondInvitesBodyInvitesInner = AuthRespondInvitesBodyInvitesInner
+  { authRespondInvitesBodyInvitesInnerAction :: AuthRespondInvitesBodyInvitesInnerAction -- ^ 
+  , authRespondInvitesBodyInvitesInnerInviteUnderscoreid :: Text -- ^ Unique identifier of an invite.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AuthRespondInvitesBodyInvitesInner where
+  parseJSON = genericParseJSON optionsAuthRespondInvitesBodyInvitesInner
+instance ToJSON AuthRespondInvitesBodyInvitesInner where
+  toJSON = genericToJSON optionsAuthRespondInvitesBodyInvitesInner
+
+optionsAuthRespondInvitesBodyInvitesInner :: Options
+optionsAuthRespondInvitesBodyInvitesInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("authRespondInvitesBodyInvitesInnerAction", "action")
+      , ("authRespondInvitesBodyInvitesInnerInviteUnderscoreid", "invite_id")
+      ]
+
+
+-- | 
+data AuthRespondInvitesBodyInvitesInnerAction = AuthRespondInvitesBodyInvitesInnerAction
+  { authRespondInvitesBodyInvitesInnerActionAcceptUnderscoreinvite :: Bool -- ^ Whether the invite/request is accepted.
+  , authRespondInvitesBodyInvitesInnerActionAssetUnderscoreidUnderscoretoUnderscorepermissions :: Maybe (Map.Map String [Permissions]) -- ^ An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON AuthRespondInvitesBodyInvitesInnerAction where
+  parseJSON = genericParseJSON optionsAuthRespondInvitesBodyInvitesInnerAction
+instance ToJSON AuthRespondInvitesBodyInvitesInnerAction where
+  toJSON = genericToJSON optionsAuthRespondInvitesBodyInvitesInnerAction
+
+optionsAuthRespondInvitesBodyInvitesInnerAction :: Options
+optionsAuthRespondInvitesBodyInvitesInnerAction =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("authRespondInvitesBodyInvitesInnerActionAcceptUnderscoreinvite", "accept_invite")
+      , ("authRespondInvitesBodyInvitesInnerActionAssetUnderscoreidUnderscoretoUnderscorepermissions", "asset_id_to_permissions")
+      ]
+
+
 -- | 
 data AvailabilityFilter = AvailabilityFilter
   { availabilityFilterAVAILABILITY :: CatalogsProductGroupMultipleStringCriteria -- ^ 
@@ -2909,6 +3637,64 @@ optionsAvailabilityFilter =
   where
     table =
       [ ("availabilityFilterAVAILABILITY", "AVAILABILITY")
+      ]
+
+
+-- | 
+data BaseInviteDataResponse = BaseInviteDataResponse
+  { baseInviteDataResponseId :: Maybe Text -- ^ Unique identifier of the invite/request.
+  , baseInviteDataResponseInviteUnderscoredata :: Maybe BaseInviteDataResponseInviteData -- ^ 
+  , baseInviteDataResponseIsUnderscorereceivedUnderscoreinvite :: Maybe Bool -- ^ Indicates whether the invite/request was received.
+  , baseInviteDataResponseUser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the member/partner that was sent the invite/request.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BaseInviteDataResponse where
+  parseJSON = genericParseJSON optionsBaseInviteDataResponse
+instance ToJSON BaseInviteDataResponse where
+  toJSON = genericToJSON optionsBaseInviteDataResponse
+
+optionsBaseInviteDataResponse :: Options
+optionsBaseInviteDataResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("baseInviteDataResponseId", "id")
+      , ("baseInviteDataResponseInviteUnderscoredata", "invite_data")
+      , ("baseInviteDataResponseIsUnderscorereceivedUnderscoreinvite", "is_received_invite")
+      , ("baseInviteDataResponseUser", "user")
+      ]
+
+
+-- | Metadata for the invite/request.
+data BaseInviteDataResponseInviteData = BaseInviteDataResponseInviteData
+  { baseInviteDataResponseInviteDataInviteUnderscoreexpiration :: Maybe Int -- ^ The date and time when the invite/request will expire. Returned in milliseconds.
+  , baseInviteDataResponseInviteDataInviteUnderscorestatus :: Maybe Text -- ^ The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.
+  , baseInviteDataResponseInviteDataInviteUnderscoretype :: Maybe Text -- ^ The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER_INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
+  , baseInviteDataResponseInviteDataLastUnderscoreupdatedUnderscoretime :: Maybe Int -- ^ The date and time the invite/request was last updated. Returned in milliseconds.
+  , baseInviteDataResponseInviteDataSentUnderscoreat :: Maybe Int -- ^ The date and time the invite/request was sent/created. Returned in milliseconds.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BaseInviteDataResponseInviteData where
+  parseJSON = genericParseJSON optionsBaseInviteDataResponseInviteData
+instance ToJSON BaseInviteDataResponseInviteData where
+  toJSON = genericToJSON optionsBaseInviteDataResponseInviteData
+
+optionsBaseInviteDataResponseInviteData :: Options
+optionsBaseInviteDataResponseInviteData =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("baseInviteDataResponseInviteDataInviteUnderscoreexpiration", "invite_expiration")
+      , ("baseInviteDataResponseInviteDataInviteUnderscorestatus", "invite_status")
+      , ("baseInviteDataResponseInviteDataInviteUnderscoretype", "invite_type")
+      , ("baseInviteDataResponseInviteDataLastUnderscoreupdatedUnderscoretime", "last_updated_time")
+      , ("baseInviteDataResponseInviteDataSentUnderscoreat", "sent_at")
       ]
 
 
@@ -3692,6 +4478,30 @@ optionsBulkUpsertStatusResponse =
       ]
 
 
+-- | 
+data BusinessAccessError = BusinessAccessError
+  { businessAccessErrorCode :: Int -- ^ 
+  , businessAccessErrorMessage :: Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessAccessError where
+  parseJSON = genericParseJSON optionsBusinessAccessError
+instance ToJSON BusinessAccessError where
+  toJSON = genericToJSON optionsBusinessAccessError
+
+optionsBusinessAccessError :: Options
+optionsBusinessAccessError =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessAccessErrorCode", "code")
+      , ("businessAccessErrorMessage", "message")
+      ]
+
+
 -- | Permission role for business access.
 data BusinessAccessRole = BusinessAccessRole
   { 
@@ -3714,6 +4524,388 @@ optionsBusinessAccessRole =
       ]
 
 
+-- | Metadata of the member/partner that has access to the asset.
+data BusinessAccessUserSummary = BusinessAccessUserSummary
+  { businessAccessUserSummaryEmail :: Maybe Text -- ^ Email of the business member/partner.
+  , businessAccessUserSummaryId :: Maybe Text -- ^ Unique identifier of the business member/partner.
+  , businessAccessUserSummaryUsername :: Maybe Text -- ^ Username of the business member/partner.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessAccessUserSummary where
+  parseJSON = genericParseJSON optionsBusinessAccessUserSummary
+instance ToJSON BusinessAccessUserSummary where
+  toJSON = genericToJSON optionsBusinessAccessUserSummary
+
+optionsBusinessAccessUserSummary :: Options
+optionsBusinessAccessUserSummary =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessAccessUserSummaryEmail", "email")
+      , ("businessAccessUserSummaryId", "id")
+      , ("businessAccessUserSummaryUsername", "username")
+      ]
+
+
+-- | 
+data BusinessAssetMembersGet200Response = BusinessAssetMembersGet200Response
+  { businessAssetMembersGet200ResponseItems :: [UserSingleAssetBinding] -- ^ List of members with permissions to the asset.
+  , businessAssetMembersGet200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessAssetMembersGet200Response where
+  parseJSON = genericParseJSON optionsBusinessAssetMembersGet200Response
+instance ToJSON BusinessAssetMembersGet200Response where
+  toJSON = genericToJSON optionsBusinessAssetMembersGet200Response
+
+optionsBusinessAssetMembersGet200Response :: Options
+optionsBusinessAssetMembersGet200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessAssetMembersGet200ResponseItems", "items")
+      , ("businessAssetMembersGet200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data BusinessAssetPartnersGet200Response = BusinessAssetPartnersGet200Response
+  { businessAssetPartnersGet200ResponseItems :: [UserSingleAssetBinding] -- ^ List of partners with permissions to the asset.
+  , businessAssetPartnersGet200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessAssetPartnersGet200Response where
+  parseJSON = genericParseJSON optionsBusinessAssetPartnersGet200Response
+instance ToJSON BusinessAssetPartnersGet200Response where
+  toJSON = genericToJSON optionsBusinessAssetPartnersGet200Response
+
+optionsBusinessAssetPartnersGet200Response :: Options
+optionsBusinessAssetPartnersGet200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessAssetPartnersGet200ResponseItems", "items")
+      , ("businessAssetPartnersGet200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data BusinessAssetsGet200Response = BusinessAssetsGet200Response
+  { businessAssetsGet200ResponseItems :: [GetBusinessAssetsResponse] -- ^ List of assets the requesting business has access to.
+  , businessAssetsGet200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessAssetsGet200Response where
+  parseJSON = genericParseJSON optionsBusinessAssetsGet200Response
+instance ToJSON BusinessAssetsGet200Response where
+  toJSON = genericToJSON optionsBusinessAssetsGet200Response
+
+optionsBusinessAssetsGet200Response :: Options
+optionsBusinessAssetsGet200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessAssetsGet200ResponseItems", "items")
+      , ("businessAssetsGet200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data BusinessMemberAssetsGet200Response = BusinessMemberAssetsGet200Response
+  { businessMemberAssetsGet200ResponseItems :: [AssetIdPermissions] -- ^ List asset permissions the given member was granted.
+  , businessMemberAssetsGet200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessMemberAssetsGet200Response where
+  parseJSON = genericParseJSON optionsBusinessMemberAssetsGet200Response
+instance ToJSON BusinessMemberAssetsGet200Response where
+  toJSON = genericToJSON optionsBusinessMemberAssetsGet200Response
+
+optionsBusinessMemberAssetsGet200Response :: Options
+optionsBusinessMemberAssetsGet200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessMemberAssetsGet200ResponseItems", "items")
+      , ("businessMemberAssetsGet200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | Ad accounts and profiles the business member/partner has access to.
+data BusinessMemberAssetsSummary = BusinessMemberAssetsSummary
+  { businessMemberAssetsSummaryAdUnderscoreaccounts :: Maybe [BusinessMemberAssetsSummaryAdAccountsInner] -- ^ List of ad account IDs and respective permission levels.
+  , businessMemberAssetsSummaryProfiles :: Maybe [BusinessMemberAssetsSummaryProfilesInner] -- ^ List of profile IDs and respective permission levels.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessMemberAssetsSummary where
+  parseJSON = genericParseJSON optionsBusinessMemberAssetsSummary
+instance ToJSON BusinessMemberAssetsSummary where
+  toJSON = genericToJSON optionsBusinessMemberAssetsSummary
+
+optionsBusinessMemberAssetsSummary :: Options
+optionsBusinessMemberAssetsSummary =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessMemberAssetsSummaryAdUnderscoreaccounts", "ad_accounts")
+      , ("businessMemberAssetsSummaryProfiles", "profiles")
+      ]
+
+
+-- | 
+data BusinessMemberAssetsSummaryAdAccountsInner = BusinessMemberAssetsSummaryAdAccountsInner
+  { businessMemberAssetsSummaryAdAccountsInnerId :: Maybe Text -- ^ Unique identifier of a business ad account.
+  , businessMemberAssetsSummaryAdAccountsInnerPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessMemberAssetsSummaryAdAccountsInner where
+  parseJSON = genericParseJSON optionsBusinessMemberAssetsSummaryAdAccountsInner
+instance ToJSON BusinessMemberAssetsSummaryAdAccountsInner where
+  toJSON = genericToJSON optionsBusinessMemberAssetsSummaryAdAccountsInner
+
+optionsBusinessMemberAssetsSummaryAdAccountsInner :: Options
+optionsBusinessMemberAssetsSummaryAdAccountsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessMemberAssetsSummaryAdAccountsInnerId", "id")
+      , ("businessMemberAssetsSummaryAdAccountsInnerPermissions", "permissions")
+      ]
+
+
+-- | 
+data BusinessMemberAssetsSummaryProfilesInner = BusinessMemberAssetsSummaryProfilesInner
+  { businessMemberAssetsSummaryProfilesInnerId :: Maybe Text -- ^ Unique identifier of a business profile.
+  , businessMemberAssetsSummaryProfilesInnerPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessMemberAssetsSummaryProfilesInner where
+  parseJSON = genericParseJSON optionsBusinessMemberAssetsSummaryProfilesInner
+instance ToJSON BusinessMemberAssetsSummaryProfilesInner where
+  toJSON = genericToJSON optionsBusinessMemberAssetsSummaryProfilesInner
+
+optionsBusinessMemberAssetsSummaryProfilesInner :: Options
+optionsBusinessMemberAssetsSummaryProfilesInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessMemberAssetsSummaryProfilesInnerId", "id")
+      , ("businessMemberAssetsSummaryProfilesInnerPermissions", "permissions")
+      ]
+
+
+-- | 
+data BusinessMembersAssetAccessDeleteRequest = BusinessMembersAssetAccessDeleteRequest
+  { businessMembersAssetAccessDeleteRequestAccesses :: [BusinessMembersAssetAccessDeleteRequestAccessesInner] -- ^ List of members asset access to be deleted
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessMembersAssetAccessDeleteRequest where
+  parseJSON = genericParseJSON optionsBusinessMembersAssetAccessDeleteRequest
+instance ToJSON BusinessMembersAssetAccessDeleteRequest where
+  toJSON = genericToJSON optionsBusinessMembersAssetAccessDeleteRequest
+
+optionsBusinessMembersAssetAccessDeleteRequest :: Options
+optionsBusinessMembersAssetAccessDeleteRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessMembersAssetAccessDeleteRequestAccesses", "accesses")
+      ]
+
+
+-- | 
+data BusinessMembersAssetAccessDeleteRequestAccessesInner = BusinessMembersAssetAccessDeleteRequestAccessesInner
+  { businessMembersAssetAccessDeleteRequestAccessesInnerAssetUnderscoreid :: Text -- ^ Id of the asset on which to remove member permissions.
+  , businessMembersAssetAccessDeleteRequestAccessesInnerMemberUnderscoreid :: Text -- ^ Unique identifier of the member on which to perform the asset permission removal
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessMembersAssetAccessDeleteRequestAccessesInner where
+  parseJSON = genericParseJSON optionsBusinessMembersAssetAccessDeleteRequestAccessesInner
+instance ToJSON BusinessMembersAssetAccessDeleteRequestAccessesInner where
+  toJSON = genericToJSON optionsBusinessMembersAssetAccessDeleteRequestAccessesInner
+
+optionsBusinessMembersAssetAccessDeleteRequestAccessesInner :: Options
+optionsBusinessMembersAssetAccessDeleteRequestAccessesInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessMembersAssetAccessDeleteRequestAccessesInnerAssetUnderscoreid", "asset_id")
+      , ("businessMembersAssetAccessDeleteRequestAccessesInnerMemberUnderscoreid", "member_id")
+      ]
+
+
+-- | 
+data BusinessPartnerAssetAccessGet200Response = BusinessPartnerAssetAccessGet200Response
+  { businessPartnerAssetAccessGet200ResponseItems :: [GetPartnerAssetsResponse] -- ^ List assets on which you granted access to your partner or assets on which your partner has granted you access.
+  , businessPartnerAssetAccessGet200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessPartnerAssetAccessGet200Response where
+  parseJSON = genericParseJSON optionsBusinessPartnerAssetAccessGet200Response
+instance ToJSON BusinessPartnerAssetAccessGet200Response where
+  toJSON = genericToJSON optionsBusinessPartnerAssetAccessGet200Response
+
+optionsBusinessPartnerAssetAccessGet200Response :: Options
+optionsBusinessPartnerAssetAccessGet200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessPartnerAssetAccessGet200ResponseItems", "items")
+      , ("businessPartnerAssetAccessGet200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | The access level a member/partner has to the business. Values are case-sensitive. &lt;br&gt; - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. &lt;br&gt; - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. &lt;br&gt; - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+data BusinessRole = BusinessRole
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessRole where
+  parseJSON = genericParseJSON optionsBusinessRole
+instance ToJSON BusinessRole where
+  toJSON = genericToJSON optionsBusinessRole
+
+optionsBusinessRole :: Options
+optionsBusinessRole =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | Specifies if the partner is internal or external.
+data BusinessRoleCheckMode = BusinessRoleCheckMode
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessRoleCheckMode where
+  parseJSON = genericParseJSON optionsBusinessRoleCheckMode
+instance ToJSON BusinessRoleCheckMode where
+  toJSON = genericToJSON optionsBusinessRoleCheckMode
+
+optionsBusinessRoleCheckMode :: Options
+optionsBusinessRoleCheckMode =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | The access level a member has to the business. Values are case-sensitive. &lt;br&gt; - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. &lt;br&gt; - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
+data BusinessRoleForMembers = BusinessRoleForMembers
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessRoleForMembers where
+  parseJSON = genericParseJSON optionsBusinessRoleForMembers
+instance ToJSON BusinessRoleForMembers where
+  toJSON = genericToJSON optionsBusinessRoleForMembers
+
+optionsBusinessRoleForMembers :: Options
+optionsBusinessRoleForMembers =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | 
+data BusinessSharedAudience = BusinessSharedAudience
+  { businessSharedAudienceAudienceUnderscoreid :: Text -- ^ Unique identifier of an audience
+  , businessSharedAudienceOperationUnderscoretype :: OperationType -- ^ 
+  , businessSharedAudienceRecipientUnderscorebusinessUnderscoreids :: [Text] -- ^ List of business IDs to share with or revoke from.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessSharedAudience where
+  parseJSON = genericParseJSON optionsBusinessSharedAudience
+instance ToJSON BusinessSharedAudience where
+  toJSON = genericToJSON optionsBusinessSharedAudience
+
+optionsBusinessSharedAudience :: Options
+optionsBusinessSharedAudience =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessSharedAudienceAudienceUnderscoreid", "audience_id")
+      , ("businessSharedAudienceOperationUnderscoretype", "operation_type")
+      , ("businessSharedAudienceRecipientUnderscorebusinessUnderscoreids", "recipient_business_ids")
+      ]
+
+
+-- | 
+data BusinessSharedAudienceResponse = BusinessSharedAudienceResponse
+  { businessSharedAudienceResponseAudienceUnderscoreid :: Maybe Text -- ^ Audience ID that was shared
+  , businessSharedAudienceResponsePermissions :: Maybe [Role] -- ^ 
+  , businessSharedAudienceResponseRecipientUnderscorebusinessUnderscoreids :: Maybe [Text] -- ^ Business IDs that received the audience
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON BusinessSharedAudienceResponse where
+  parseJSON = genericParseJSON optionsBusinessSharedAudienceResponse
+instance ToJSON BusinessSharedAudienceResponse where
+  toJSON = genericToJSON optionsBusinessSharedAudienceResponse
+
+optionsBusinessSharedAudienceResponse :: Options
+optionsBusinessSharedAudienceResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("businessSharedAudienceResponseAudienceUnderscoreid", "audience_id")
+      , ("businessSharedAudienceResponsePermissions", "permissions")
+      , ("businessSharedAudienceResponseRecipientUnderscorebusinessUnderscoreids", "recipient_business_ids")
+      ]
+
+
 -- | Campaign Data
 data CampaignCommon = CampaignCommon
   { campaignCommonAdUnderscoreaccountUnderscoreid :: Maybe Text -- ^ Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
@@ -3722,10 +4914,10 @@ data CampaignCommon = CampaignCommon
   , campaignCommonLifetimeUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
   , campaignCommonDailyUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
   , campaignCommonOrderUnderscorelineUnderscoreid :: Maybe Text -- ^ Order line ID that appears on the invoice.
-  , campaignCommonTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , campaignCommonTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , campaignCommonStartUnderscoretime :: Maybe Int -- ^ Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   , campaignCommonEndUnderscoretime :: Maybe Int -- ^ Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  , campaignCommonSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
+  , campaignCommonIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determine if a campaign has flexible daily budgets setup.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CampaignCommon where
@@ -3750,7 +4942,7 @@ optionsCampaignCommon =
       , ("campaignCommonTrackingUnderscoreurls", "tracking_urls")
       , ("campaignCommonStartUnderscoretime", "start_time")
       , ("campaignCommonEndUnderscoretime", "end_time")
-      , ("campaignCommonSummaryUnderscorestatus", "summary_status")
+      , ("campaignCommonIsUnderscoreflexibleUnderscoredailyUnderscorebudgets", "is_flexible_daily_budgets")
       ]
 
 
@@ -3762,10 +4954,9 @@ data CampaignCreateCommon = CampaignCreateCommon
   , campaignCreateCommonLifetimeUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
   , campaignCreateCommonDailyUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
   , campaignCreateCommonOrderUnderscorelineUnderscoreid :: Maybe Text -- ^ Order line ID that appears on the invoice.
-  , campaignCreateCommonTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , campaignCreateCommonTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , campaignCreateCommonStartUnderscoretime :: Maybe Int -- ^ Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   , campaignCreateCommonEndUnderscoretime :: Maybe Int -- ^ Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  , campaignCreateCommonSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
   , campaignCreateCommonIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determine if a campaign has flexible daily budgets setup.
   , campaignCreateCommonDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
   , campaignCreateCommonIsUnderscoreautomatedUnderscorecampaign :: Maybe Bool -- ^ Specifies whether the campaign was created in the automated campaign flow
@@ -3793,7 +4984,6 @@ optionsCampaignCreateCommon =
       , ("campaignCreateCommonTrackingUnderscoreurls", "tracking_urls")
       , ("campaignCreateCommonStartUnderscoretime", "start_time")
       , ("campaignCreateCommonEndUnderscoretime", "end_time")
-      , ("campaignCreateCommonSummaryUnderscorestatus", "summary_status")
       , ("campaignCreateCommonIsUnderscoreflexibleUnderscoredailyUnderscorebudgets", "is_flexible_daily_budgets")
       , ("campaignCreateCommonDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency", "default_ad_group_budget_in_micro_currency")
       , ("campaignCreateCommonIsUnderscoreautomatedUnderscorecampaign", "is_automated_campaign")
@@ -3808,10 +4998,9 @@ data CampaignCreateRequest = CampaignCreateRequest
   , campaignCreateRequestLifetimeUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
   , campaignCreateRequestDailyUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
   , campaignCreateRequestOrderUnderscorelineUnderscoreid :: Maybe Text -- ^ Order line ID that appears on the invoice.
-  , campaignCreateRequestTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , campaignCreateRequestTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , campaignCreateRequestStartUnderscoretime :: Maybe Int -- ^ Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   , campaignCreateRequestEndUnderscoretime :: Maybe Int -- ^ Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  , campaignCreateRequestSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
   , campaignCreateRequestIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determine if a campaign has flexible daily budgets setup.
   , campaignCreateRequestDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
   , campaignCreateRequestIsUnderscoreautomatedUnderscorecampaign :: Maybe Bool -- ^ Specifies whether the campaign was created in the automated campaign flow
@@ -3840,7 +5029,6 @@ optionsCampaignCreateRequest =
       , ("campaignCreateRequestTrackingUnderscoreurls", "tracking_urls")
       , ("campaignCreateRequestStartUnderscoretime", "start_time")
       , ("campaignCreateRequestEndUnderscoretime", "end_time")
-      , ("campaignCreateRequestSummaryUnderscorestatus", "summary_status")
       , ("campaignCreateRequestIsUnderscoreflexibleUnderscoredailyUnderscorebudgets", "is_flexible_daily_budgets")
       , ("campaignCreateRequestDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency", "default_ad_group_budget_in_micro_currency")
       , ("campaignCreateRequestIsUnderscoreautomatedUnderscorecampaign", "is_automated_campaign")
@@ -3878,11 +5066,10 @@ data CampaignCreateResponseData = CampaignCreateResponseData
   , campaignCreateResponseDataLifetimeUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
   , campaignCreateResponseDataDailyUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
   , campaignCreateResponseDataOrderUnderscorelineUnderscoreid :: Maybe Text -- ^ Order line ID that appears on the invoice.
-  , campaignCreateResponseDataTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , campaignCreateResponseDataTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , campaignCreateResponseDataStartUnderscoretime :: Maybe Int -- ^ Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   , campaignCreateResponseDataEndUnderscoretime :: Maybe Int -- ^ Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  , campaignCreateResponseDataSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
-  , campaignCreateResponseDataIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determines if a campaign has flexible daily budgets setup.
+  , campaignCreateResponseDataIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determine if a campaign has flexible daily budgets setup.
   , campaignCreateResponseDataDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
   , campaignCreateResponseDataIsUnderscoreautomatedUnderscorecampaign :: Maybe Bool -- ^ Specifies whether the campaign was created in the automated campaign flow
   , campaignCreateResponseDataId :: Maybe Text -- ^ Campaign ID.
@@ -3891,6 +5078,7 @@ data CampaignCreateResponseData = CampaignCreateResponseData
   , campaignCreateResponseDataUpdatedUnderscoretime :: Maybe Int -- ^ UTC timestamp. Last update time.
   , campaignCreateResponseDataType :: Maybe Text -- ^ Always \"campaign\".
   , campaignCreateResponseDataIsUnderscorecampaignUnderscorebudgetUnderscoreoptimization :: Maybe Bool -- ^ Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+  , campaignCreateResponseDataSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CampaignCreateResponseData where
@@ -3915,7 +5103,6 @@ optionsCampaignCreateResponseData =
       , ("campaignCreateResponseDataTrackingUnderscoreurls", "tracking_urls")
       , ("campaignCreateResponseDataStartUnderscoretime", "start_time")
       , ("campaignCreateResponseDataEndUnderscoretime", "end_time")
-      , ("campaignCreateResponseDataSummaryUnderscorestatus", "summary_status")
       , ("campaignCreateResponseDataIsUnderscoreflexibleUnderscoredailyUnderscorebudgets", "is_flexible_daily_budgets")
       , ("campaignCreateResponseDataDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency", "default_ad_group_budget_in_micro_currency")
       , ("campaignCreateResponseDataIsUnderscoreautomatedUnderscorecampaign", "is_automated_campaign")
@@ -3925,6 +5112,7 @@ optionsCampaignCreateResponseData =
       , ("campaignCreateResponseDataUpdatedUnderscoretime", "updated_time")
       , ("campaignCreateResponseDataType", "type")
       , ("campaignCreateResponseDataIsUnderscorecampaignUnderscorebudgetUnderscoreoptimization", "is_campaign_budget_optimization")
+      , ("campaignCreateResponseDataSummaryUnderscorestatus", "summary_status")
       ]
 
 
@@ -3983,16 +5171,16 @@ data CampaignResponse = CampaignResponse
   , campaignResponseLifetimeUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
   , campaignResponseDailyUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
   , campaignResponseOrderUnderscorelineUnderscoreid :: Maybe Text -- ^ Order line ID that appears on the invoice.
-  , campaignResponseTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , campaignResponseTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , campaignResponseStartUnderscoretime :: Maybe Int -- ^ Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   , campaignResponseEndUnderscoretime :: Maybe Int -- ^ Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  , campaignResponseSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
+  , campaignResponseIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determine if a campaign has flexible daily budgets setup.
   , campaignResponseObjectiveUnderscoretype :: Maybe ObjectiveType -- ^ 
   , campaignResponseCreatedUnderscoretime :: Maybe Int -- ^ Campaign creation time. Unix timestamp in seconds.
   , campaignResponseUpdatedUnderscoretime :: Maybe Int -- ^ UTC timestamp. Last update time.
   , campaignResponseType :: Maybe Text -- ^ Always \"campaign\".
-  , campaignResponseIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determines if a campaign has flexible daily budgets setup.
   , campaignResponseIsUnderscorecampaignUnderscorebudgetUnderscoreoptimization :: Maybe Bool -- ^ Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+  , campaignResponseSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CampaignResponse where
@@ -4018,13 +5206,13 @@ optionsCampaignResponse =
       , ("campaignResponseTrackingUnderscoreurls", "tracking_urls")
       , ("campaignResponseStartUnderscoretime", "start_time")
       , ("campaignResponseEndUnderscoretime", "end_time")
-      , ("campaignResponseSummaryUnderscorestatus", "summary_status")
+      , ("campaignResponseIsUnderscoreflexibleUnderscoredailyUnderscorebudgets", "is_flexible_daily_budgets")
       , ("campaignResponseObjectiveUnderscoretype", "objective_type")
       , ("campaignResponseCreatedUnderscoretime", "created_time")
       , ("campaignResponseUpdatedUnderscoretime", "updated_time")
       , ("campaignResponseType", "type")
-      , ("campaignResponseIsUnderscoreflexibleUnderscoredailyUnderscorebudgets", "is_flexible_daily_budgets")
       , ("campaignResponseIsUnderscorecampaignUnderscorebudgetUnderscoreoptimization", "is_campaign_budget_optimization")
+      , ("campaignResponseSummaryUnderscorestatus", "summary_status")
       ]
 
 
@@ -4059,10 +5247,9 @@ data CampaignUpdateRequest = CampaignUpdateRequest
   , campaignUpdateRequestLifetimeUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
   , campaignUpdateRequestDailyUnderscorespendUnderscorecap :: Maybe Int -- ^ Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
   , campaignUpdateRequestOrderUnderscorelineUnderscoreid :: Maybe Text -- ^ Order line ID that appears on the invoice.
-  , campaignUpdateRequestTrackingUnderscoreurls :: Maybe AdCommonTrackingUrls -- ^ 
+  , campaignUpdateRequestTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
   , campaignUpdateRequestStartUnderscoretime :: Maybe Int -- ^ Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   , campaignUpdateRequestEndUnderscoretime :: Maybe Int -- ^ Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  , campaignUpdateRequestSummaryUnderscorestatus :: Maybe CampaignSummaryStatus -- ^ 
   , campaignUpdateRequestIsUnderscoreflexibleUnderscoredailyUnderscorebudgets :: Maybe Bool -- ^ Determine if a campaign has flexible daily budgets setup.
   , campaignUpdateRequestDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
   , campaignUpdateRequestIsUnderscoreautomatedUnderscorecampaign :: Maybe Bool -- ^ Specifies whether the campaign was created in the automated campaign flow
@@ -4093,7 +5280,6 @@ optionsCampaignUpdateRequest =
       , ("campaignUpdateRequestTrackingUnderscoreurls", "tracking_urls")
       , ("campaignUpdateRequestStartUnderscoretime", "start_time")
       , ("campaignUpdateRequestEndUnderscoretime", "end_time")
-      , ("campaignUpdateRequestSummaryUnderscorestatus", "summary_status")
       , ("campaignUpdateRequestIsUnderscoreflexibleUnderscoredailyUnderscorebudgets", "is_flexible_daily_budgets")
       , ("campaignUpdateRequestDefaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency", "default_ad_group_budget_in_micro_currency")
       , ("campaignUpdateRequestIsUnderscoreautomatedUnderscorecampaign", "is_automated_campaign")
@@ -4152,11 +5338,33 @@ optionsCampaignsList200Response =
       ]
 
 
+-- | Request body used to cancel invites
+data CancelInvitesBody = CancelInvitesBody
+  { cancelInvitesBodyInviteUnderscoreids :: [Text] -- ^ List of invite/request ids to be cancelled
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CancelInvitesBody where
+  parseJSON = genericParseJSON optionsCancelInvitesBody
+instance ToJSON CancelInvitesBody where
+  toJSON = genericToJSON optionsCancelInvitesBody
+
+optionsCancelInvitesBody :: Options
+optionsCancelInvitesBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("cancelInvitesBodyInviteUnderscoreids", "invite_ids")
+      ]
+
+
 -- | Catalog entity
 data Catalog = Catalog
-  { catalogCreatedUnderscoreat :: Maybe UTCTime -- ^ 
+  { catalogCreatedUnderscoreat :: UTCTime -- ^ 
   , catalogId :: Text -- ^ ID of the catalog entity.
-  , catalogUpdatedUnderscoreat :: Maybe UTCTime -- ^ 
+  , catalogUpdatedUnderscoreat :: UTCTime -- ^ 
   , catalogName :: Text -- ^ A human-friendly name associated to a catalog entity.
   , catalogCatalogUnderscoretype :: CatalogsType -- ^ 
   } deriving (Show, Eq, Generic)
@@ -4182,47 +5390,29 @@ optionsCatalog =
       ]
 
 
--- | non-promoted catalog product group entity
-data CatalogProductGroup = CatalogProductGroup
-  { catalogProductGroupId :: Maybe Text -- ^ ID of the catalog product group.
-  , catalogProductGroupMerchantUnderscoreid :: Maybe Text -- ^ Merchant ID pertaining to the owner of the catalog product group.
-  , catalogProductGroupName :: Maybe Text -- ^ Name of catalog product group
-  , catalogProductGroupFilters :: Maybe Object -- ^ Object holding a list of filters
-  , catalogProductGroupFilterUnderscorev2 :: Maybe Object -- ^ Object holding a list of filters
-  , catalogProductGroupType :: Maybe Board -- ^ 
-  , catalogProductGroupStatus :: Maybe EntityStatus -- ^ 
-  , catalogProductGroupFeedUnderscoreprofileUnderscoreid :: Maybe Text -- ^ id of the feed profile belonging to this catalog product group
-  , catalogProductGroupCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
-  , catalogProductGroupLastUnderscoreupdate :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
-  , catalogProductGroupProductUnderscorecount :: Maybe Int -- ^ Amount of products in the catalog product group
-  , catalogProductGroupFeaturedUnderscoreposition :: Maybe Int -- ^ index of the featured position of the catalog product group
+-- | A creative assets item to be created.
+data CatalogsCreateCreativeAssetsItem = CatalogsCreateCreativeAssetsItem
+  { catalogsCreateCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid :: Text -- ^ The catalog creative assets id in the merchant namespace
+  , catalogsCreateCreativeAssetsItemOperation :: Text -- ^ 
+  , catalogsCreateCreativeAssetsItemAttributes :: CatalogsCreativeAssetsAttributes -- ^ 
   } deriving (Show, Eq, Generic)
 
-instance FromJSON CatalogProductGroup where
-  parseJSON = genericParseJSON optionsCatalogProductGroup
-instance ToJSON CatalogProductGroup where
-  toJSON = genericToJSON optionsCatalogProductGroup
+instance FromJSON CatalogsCreateCreativeAssetsItem where
+  parseJSON = genericParseJSON optionsCatalogsCreateCreativeAssetsItem
+instance ToJSON CatalogsCreateCreativeAssetsItem where
+  toJSON = genericToJSON optionsCatalogsCreateCreativeAssetsItem
 
-optionsCatalogProductGroup :: Options
-optionsCatalogProductGroup =
+optionsCatalogsCreateCreativeAssetsItem :: Options
+optionsCatalogsCreateCreativeAssetsItem =
   defaultOptions
     { omitNothingFields  = True
     , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
     }
   where
     table =
-      [ ("catalogProductGroupId", "id")
-      , ("catalogProductGroupMerchantUnderscoreid", "merchant_id")
-      , ("catalogProductGroupName", "name")
-      , ("catalogProductGroupFilters", "filters")
-      , ("catalogProductGroupFilterUnderscorev2", "filter_v2")
-      , ("catalogProductGroupType", "type")
-      , ("catalogProductGroupStatus", "status")
-      , ("catalogProductGroupFeedUnderscoreprofileUnderscoreid", "feed_profile_id")
-      , ("catalogProductGroupCreatedUnderscoreat", "created_at")
-      , ("catalogProductGroupLastUnderscoreupdate", "last_update")
-      , ("catalogProductGroupProductUnderscorecount", "product_count")
-      , ("catalogProductGroupFeaturedUnderscoreposition", "featured_position")
+      [ ("catalogsCreateCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsCreateCreativeAssetsItemOperation", "operation")
+      , ("catalogsCreateCreativeAssetsItemAttributes", "attributes")
       ]
 
 
@@ -4252,11 +5442,57 @@ optionsCatalogsCreateHotelItem =
       ]
 
 
+-- | 
+data CatalogsCreateReportResponse = CatalogsCreateReportResponse
+  { catalogsCreateReportResponseToken :: Maybe Text -- ^ Token to be used to get the report
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreateReportResponse where
+  parseJSON = genericParseJSON optionsCatalogsCreateReportResponse
+instance ToJSON CatalogsCreateReportResponse where
+  toJSON = genericToJSON optionsCatalogsCreateReportResponse
+
+optionsCatalogsCreateReportResponse :: Options
+optionsCatalogsCreateReportResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreateReportResponseToken", "token")
+      ]
+
+
+-- | Request object for creating a catalog.
+data CatalogsCreateRequest = CatalogsCreateRequest
+  { catalogsCreateRequestCatalogUnderscoretype :: Text -- ^ Type of the catalog entity.
+  , catalogsCreateRequestName :: Text -- ^ A human-friendly name associated to a given catalog.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreateRequest where
+  parseJSON = genericParseJSON optionsCatalogsCreateRequest
+instance ToJSON CatalogsCreateRequest where
+  toJSON = genericToJSON optionsCatalogsCreateRequest
+
+optionsCatalogsCreateRequest :: Options
+optionsCatalogsCreateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreateRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreateRequestName", "name")
+      ]
+
+
 -- | An item to be created
 data CatalogsCreateRetailItem = CatalogsCreateRetailItem
   { catalogsCreateRetailItemItemUnderscoreid :: Text -- ^ The catalog item id in the merchant namespace
   , catalogsCreateRetailItemOperation :: Text -- ^ 
-  , catalogsCreateRetailItemAttributes :: ItemAttributes -- ^ 
+  , catalogsCreateRetailItemAttributes :: ItemAttributesRequest -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsCreateRetailItem where
@@ -4279,10 +5515,690 @@ optionsCatalogsCreateRetailItem =
 
 
 -- | 
+data CatalogsCreativeAssetsAttributes = CatalogsCreativeAssetsAttributes
+  { catalogsCreativeAssetsAttributesTitle :: Maybe Text -- ^ The name of the creative assets.
+  , catalogsCreativeAssetsAttributesDescription :: Maybe Text -- ^ Brief description of the creative assets.
+  , catalogsCreativeAssetsAttributesLink :: Maybe Text -- ^ Link to the creative assets page.
+  , catalogsCreativeAssetsAttributesIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ IOS deep link to the creative assets page.
+  , catalogsCreativeAssetsAttributesAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Link to the creative assets page.
+  , catalogsCreativeAssetsAttributesGoogleUnderscoreproductUnderscorecategory :: Maybe Text -- ^ The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+  , catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore0 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore1 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore2 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore3 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore4 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsCreativeAssetsAttributesVisibility :: Maybe Text -- ^ Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  , catalogsCreativeAssetsAttributesImageUnderscorelink :: Maybe Text -- ^ The creative assets image.
+  , catalogsCreativeAssetsAttributesVideoUnderscorelink :: Maybe Text -- ^ The creative assets video.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsAttributes where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsAttributes
+instance ToJSON CatalogsCreativeAssetsAttributes where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsAttributes
+
+optionsCatalogsCreativeAssetsAttributes :: Options
+optionsCatalogsCreativeAssetsAttributes =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsAttributesTitle", "title")
+      , ("catalogsCreativeAssetsAttributesDescription", "description")
+      , ("catalogsCreativeAssetsAttributesLink", "link")
+      , ("catalogsCreativeAssetsAttributesIosUnderscoredeepUnderscorelink", "ios_deep_link")
+      , ("catalogsCreativeAssetsAttributesAndroidUnderscoredeepUnderscorelink", "android_deep_link")
+      , ("catalogsCreativeAssetsAttributesGoogleUnderscoreproductUnderscorecategory", "google_product_category")
+      , ("catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore0", "custom_label_0")
+      , ("catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore1", "custom_label_1")
+      , ("catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore2", "custom_label_2")
+      , ("catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore3", "custom_label_3")
+      , ("catalogsCreativeAssetsAttributesCustomUnderscorelabelUnderscore4", "custom_label_4")
+      , ("catalogsCreativeAssetsAttributesVisibility", "visibility")
+      , ("catalogsCreativeAssetsAttributesImageUnderscorelink", "image_link")
+      , ("catalogsCreativeAssetsAttributesVideoUnderscorelink", "video_link")
+      ]
+
+
+-- | Creative assets batch item
+data CatalogsCreativeAssetsBatchItem = CatalogsCreativeAssetsBatchItem
+  { catalogsCreativeAssetsBatchItemCreativeUnderscoreassetsUnderscoreid :: Text -- ^ The catalog creative assets id in the merchant namespace
+  , catalogsCreativeAssetsBatchItemOperation :: Text -- ^ 
+  , catalogsCreativeAssetsBatchItemAttributes :: CatalogsUpdatableCreativeAssetsAttributes -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsBatchItem where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsBatchItem
+instance ToJSON CatalogsCreativeAssetsBatchItem where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsBatchItem
+
+optionsCatalogsCreativeAssetsBatchItem :: Options
+optionsCatalogsCreativeAssetsBatchItem =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsBatchItemCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsCreativeAssetsBatchItemOperation", "operation")
+      , ("catalogsCreativeAssetsBatchItemAttributes", "attributes")
+      ]
+
+
+-- | Request object to update catalogs creative assets items
+data CatalogsCreativeAssetsBatchRequest = CatalogsCreativeAssetsBatchRequest
+  { catalogsCreativeAssetsBatchRequestCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsBatchRequestCountry :: Country -- ^ 
+  , catalogsCreativeAssetsBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsCreativeAssetsBatchRequestItems :: [CatalogsCreativeAssetsBatchItem] -- ^ Array with creative assets item operations
+  , catalogsCreativeAssetsBatchRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsBatchRequest where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsBatchRequest
+instance ToJSON CatalogsCreativeAssetsBatchRequest where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsBatchRequest
+
+optionsCatalogsCreativeAssetsBatchRequest :: Options
+optionsCatalogsCreativeAssetsBatchRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsBatchRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsBatchRequestCountry", "country")
+      , ("catalogsCreativeAssetsBatchRequestLanguage", "language")
+      , ("catalogsCreativeAssetsBatchRequestItems", "items")
+      , ("catalogsCreativeAssetsBatchRequestCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | Catalogs Creative Asset Feed object
+data CatalogsCreativeAssetsFeed = CatalogsCreativeAssetsFeed
+  { catalogsCreativeAssetsFeedCreatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsCreativeAssetsFeedId :: Text -- ^ 
+  , catalogsCreativeAssetsFeedUpdatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsCreativeAssetsFeedName :: Text -- ^ A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+  , catalogsCreativeAssetsFeedFormat :: CatalogsFormat -- ^ 
+  , catalogsCreativeAssetsFeedCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsCreativeAssetsFeedCredentials :: CatalogsFeedCredentials -- ^ 
+  , catalogsCreativeAssetsFeedLocation :: Text -- ^ The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  , catalogsCreativeAssetsFeedPreferredUnderscoreprocessingUnderscoreschedule :: CatalogsFeedProcessingSchedule -- ^ 
+  , catalogsCreativeAssetsFeedStatus :: CatalogsStatus -- ^ 
+  , catalogsCreativeAssetsFeedDefaultUnderscorecurrency :: NullableCurrency -- ^ 
+  , catalogsCreativeAssetsFeedDefaultUnderscorelocale :: Text -- ^ The locale used within a feed for product descriptions.
+  , catalogsCreativeAssetsFeedDefaultUnderscorecountry :: Country -- ^ 
+  , catalogsCreativeAssetsFeedCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsFeed where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsFeed
+instance ToJSON CatalogsCreativeAssetsFeed where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsFeed
+
+optionsCatalogsCreativeAssetsFeed :: Options
+optionsCatalogsCreativeAssetsFeed =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsFeedCreatedUnderscoreat", "created_at")
+      , ("catalogsCreativeAssetsFeedId", "id")
+      , ("catalogsCreativeAssetsFeedUpdatedUnderscoreat", "updated_at")
+      , ("catalogsCreativeAssetsFeedName", "name")
+      , ("catalogsCreativeAssetsFeedFormat", "format")
+      , ("catalogsCreativeAssetsFeedCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsFeedCredentials", "credentials")
+      , ("catalogsCreativeAssetsFeedLocation", "location")
+      , ("catalogsCreativeAssetsFeedPreferredUnderscoreprocessingUnderscoreschedule", "preferred_processing_schedule")
+      , ("catalogsCreativeAssetsFeedStatus", "status")
+      , ("catalogsCreativeAssetsFeedDefaultUnderscorecurrency", "default_currency")
+      , ("catalogsCreativeAssetsFeedDefaultUnderscorelocale", "default_locale")
+      , ("catalogsCreativeAssetsFeedDefaultUnderscorecountry", "default_country")
+      , ("catalogsCreativeAssetsFeedCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | Request object for creating a feed.
+data CatalogsCreativeAssetsFeedsCreateRequest = CatalogsCreativeAssetsFeedsCreateRequest
+  { catalogsCreativeAssetsFeedsCreateRequestDefaultUnderscorecurrency :: Maybe NullableCurrency -- ^ 
+  , catalogsCreativeAssetsFeedsCreateRequestName :: Text -- ^ A human-friendly name associated to a given feed.
+  , catalogsCreativeAssetsFeedsCreateRequestFormat :: CatalogsFormat -- ^ 
+  , catalogsCreativeAssetsFeedsCreateRequestDefaultUnderscorelocale :: CatalogsFeedsCreateRequestDefaultLocale -- ^ 
+  , catalogsCreativeAssetsFeedsCreateRequestDefaultUnderscorecountry :: Country -- ^ 
+  , catalogsCreativeAssetsFeedsCreateRequestCredentials :: Maybe CatalogsFeedCredentials -- ^ 
+  , catalogsCreativeAssetsFeedsCreateRequestLocation :: Text -- ^ The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  , catalogsCreativeAssetsFeedsCreateRequestPreferredUnderscoreprocessingUnderscoreschedule :: Maybe CatalogsFeedProcessingSchedule -- ^ 
+  , catalogsCreativeAssetsFeedsCreateRequestCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsCreativeAssetsFeedsCreateRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+  , catalogsCreativeAssetsFeedsCreateRequestStatus :: Maybe CatalogsStatus -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsFeedsCreateRequest where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsFeedsCreateRequest
+instance ToJSON CatalogsCreativeAssetsFeedsCreateRequest where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsFeedsCreateRequest
+
+optionsCatalogsCreativeAssetsFeedsCreateRequest :: Options
+optionsCatalogsCreativeAssetsFeedsCreateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsFeedsCreateRequestDefaultUnderscorecurrency", "default_currency")
+      , ("catalogsCreativeAssetsFeedsCreateRequestName", "name")
+      , ("catalogsCreativeAssetsFeedsCreateRequestFormat", "format")
+      , ("catalogsCreativeAssetsFeedsCreateRequestDefaultUnderscorelocale", "default_locale")
+      , ("catalogsCreativeAssetsFeedsCreateRequestDefaultUnderscorecountry", "default_country")
+      , ("catalogsCreativeAssetsFeedsCreateRequestCredentials", "credentials")
+      , ("catalogsCreativeAssetsFeedsCreateRequestLocation", "location")
+      , ("catalogsCreativeAssetsFeedsCreateRequestPreferredUnderscoreprocessingUnderscoreschedule", "preferred_processing_schedule")
+      , ("catalogsCreativeAssetsFeedsCreateRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsFeedsCreateRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsCreativeAssetsFeedsCreateRequestStatus", "status")
+      ]
+
+
+-- | Request object for updating a feed.
+data CatalogsCreativeAssetsFeedsUpdateRequest = CatalogsCreativeAssetsFeedsUpdateRequest
+  { catalogsCreativeAssetsFeedsUpdateRequestDefaultUnderscorecurrency :: Maybe NullableCurrency -- ^ 
+  , catalogsCreativeAssetsFeedsUpdateRequestName :: Maybe Text -- ^ A human-friendly name associated to a given feed.
+  , catalogsCreativeAssetsFeedsUpdateRequestFormat :: Maybe CatalogsFormat -- ^ 
+  , catalogsCreativeAssetsFeedsUpdateRequestCredentials :: Maybe CatalogsFeedCredentials -- ^ 
+  , catalogsCreativeAssetsFeedsUpdateRequestLocation :: Maybe Text -- ^ The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  , catalogsCreativeAssetsFeedsUpdateRequestPreferredUnderscoreprocessingUnderscoreschedule :: Maybe CatalogsFeedProcessingSchedule -- ^ 
+  , catalogsCreativeAssetsFeedsUpdateRequestStatus :: Maybe CatalogsStatus -- ^ 
+  , catalogsCreativeAssetsFeedsUpdateRequestCatalogUnderscoretype :: CatalogsType -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsFeedsUpdateRequest where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsFeedsUpdateRequest
+instance ToJSON CatalogsCreativeAssetsFeedsUpdateRequest where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsFeedsUpdateRequest
+
+optionsCatalogsCreativeAssetsFeedsUpdateRequest :: Options
+optionsCatalogsCreativeAssetsFeedsUpdateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsFeedsUpdateRequestDefaultUnderscorecurrency", "default_currency")
+      , ("catalogsCreativeAssetsFeedsUpdateRequestName", "name")
+      , ("catalogsCreativeAssetsFeedsUpdateRequestFormat", "format")
+      , ("catalogsCreativeAssetsFeedsUpdateRequestCredentials", "credentials")
+      , ("catalogsCreativeAssetsFeedsUpdateRequestLocation", "location")
+      , ("catalogsCreativeAssetsFeedsUpdateRequestPreferredUnderscoreprocessingUnderscoreschedule", "preferred_processing_schedule")
+      , ("catalogsCreativeAssetsFeedsUpdateRequestStatus", "status")
+      , ("catalogsCreativeAssetsFeedsUpdateRequestCatalogUnderscoretype", "catalog_type")
+      ]
+
+
+-- | Object describing a creative assets item error
+data CatalogsCreativeAssetsItemErrorResponse = CatalogsCreativeAssetsItemErrorResponse
+  { catalogsCreativeAssetsItemErrorResponseCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsCreativeAssetsItemErrorResponseCreativeUnderscoreassetsUnderscoreid :: Maybe Text -- ^ The catalog creative assets id in the merchant namespace
+  , catalogsCreativeAssetsItemErrorResponseErrors :: Maybe [ItemValidationEvent] -- ^ Array with the errors for the item id requested
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsItemErrorResponse where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsItemErrorResponse
+instance ToJSON CatalogsCreativeAssetsItemErrorResponse where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsItemErrorResponse
+
+optionsCatalogsCreativeAssetsItemErrorResponse :: Options
+optionsCatalogsCreativeAssetsItemErrorResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsItemErrorResponseCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsItemErrorResponseCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsCreativeAssetsItemErrorResponseErrors", "errors")
+      ]
+
+
+-- | Object describing a hotel record
+data CatalogsCreativeAssetsItemResponse = CatalogsCreativeAssetsItemResponse
+  { catalogsCreativeAssetsItemResponseCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsCreativeAssetsItemResponseCreativeUnderscoreassetsUnderscoreid :: Maybe Text -- ^ The catalog creative assets id in the merchant namespace
+  , catalogsCreativeAssetsItemResponsePins :: Maybe [Pin] -- ^ The pins mapped to the item
+  , catalogsCreativeAssetsItemResponseAttributes :: Maybe CatalogsCreativeAssetsAttributes -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsItemResponse where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsItemResponse
+instance ToJSON CatalogsCreativeAssetsItemResponse where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsItemResponse
+
+optionsCatalogsCreativeAssetsItemResponse :: Options
+optionsCatalogsCreativeAssetsItemResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsItemResponseCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsItemResponseCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsCreativeAssetsItemResponsePins", "pins")
+      , ("catalogsCreativeAssetsItemResponseAttributes", "attributes")
+      ]
+
+
+-- | Object describing the catalogs creative assets items batch
+data CatalogsCreativeAssetsItemsBatch = CatalogsCreativeAssetsItemsBatch
+  { catalogsCreativeAssetsItemsBatchBatchUnderscoreid :: Maybe Text -- ^ Id of the catalogs items batch
+  , catalogsCreativeAssetsItemsBatchCreatedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+  , catalogsCreativeAssetsItemsBatchCompletedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
+  , catalogsCreativeAssetsItemsBatchStatus :: Maybe BatchOperationStatus -- ^ 
+  , catalogsCreativeAssetsItemsBatchCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsCreativeAssetsItemsBatchItems :: Maybe [CreativeAssetsProcessingRecord] -- ^ Array with the catalogs items processing records part of the catalogs items batch
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsItemsBatch where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsItemsBatch
+instance ToJSON CatalogsCreativeAssetsItemsBatch where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsItemsBatch
+
+optionsCatalogsCreativeAssetsItemsBatch :: Options
+optionsCatalogsCreativeAssetsItemsBatch =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsItemsBatchBatchUnderscoreid", "batch_id")
+      , ("catalogsCreativeAssetsItemsBatchCreatedUnderscoretime", "created_time")
+      , ("catalogsCreativeAssetsItemsBatchCompletedUnderscoretime", "completed_time")
+      , ("catalogsCreativeAssetsItemsBatchStatus", "status")
+      , ("catalogsCreativeAssetsItemsBatchCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsItemsBatchItems", "items")
+      ]
+
+
+-- | 
+data CatalogsCreativeAssetsItemsFilter = CatalogsCreativeAssetsItemsFilter
+  { catalogsCreativeAssetsItemsFilterCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsItemsFilterCreativeUnderscoreassetsUnderscoreids :: [Text] -- ^ 
+  , catalogsCreativeAssetsItemsFilterCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsItemsFilter where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsItemsFilter
+instance ToJSON CatalogsCreativeAssetsItemsFilter where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsItemsFilter
+
+optionsCatalogsCreativeAssetsItemsFilter :: Options
+optionsCatalogsCreativeAssetsItemsFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsItemsFilterCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsItemsFilterCreativeUnderscoreassetsUnderscoreids", "creative_assets_ids")
+      , ("catalogsCreativeAssetsItemsFilterCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | 
+data CatalogsCreativeAssetsItemsPostFilter = CatalogsCreativeAssetsItemsPostFilter
+  { catalogsCreativeAssetsItemsPostFilterCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsItemsPostFilterCreativeUnderscoreassetsUnderscoreids :: [Text] -- ^ 
+  , catalogsCreativeAssetsItemsPostFilterCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsItemsPostFilter where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsItemsPostFilter
+instance ToJSON CatalogsCreativeAssetsItemsPostFilter where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsItemsPostFilter
+
+optionsCatalogsCreativeAssetsItemsPostFilter :: Options
+optionsCatalogsCreativeAssetsItemsPostFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsItemsPostFilterCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsItemsPostFilterCreativeUnderscoreassetsUnderscoreids", "creative_assets_ids")
+      , ("catalogsCreativeAssetsItemsPostFilterCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | Request object to list products for a given creative assets catalog_id and product group filter.
+data CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+  { catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  , catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+instance ToJSON CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+
+optionsCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest :: Options
+optionsCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsCreativeAssetsListProductsByCatalogBasedFilterRequestFilters", "filters")
+      ]
+
+
+-- | 
+data CatalogsCreativeAssetsProduct = CatalogsCreativeAssetsProduct
+  { catalogsCreativeAssetsProductCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsProductMetadata :: CatalogsCreativeAssetsProductMetadata -- ^ 
+  , catalogsCreativeAssetsProductPin :: Pin -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProduct where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProduct
+instance ToJSON CatalogsCreativeAssetsProduct where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProduct
+
+optionsCatalogsCreativeAssetsProduct :: Options
+optionsCatalogsCreativeAssetsProduct =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsProductMetadata", "metadata")
+      , ("catalogsCreativeAssetsProductPin", "pin")
+      ]
+
+
+-- | 
+data CatalogsCreativeAssetsProductGroup = CatalogsCreativeAssetsProductGroup
+  { catalogsCreativeAssetsProductGroupCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsProductGroupId :: Text -- ^ ID of the creative assets product group.
+  , catalogsCreativeAssetsProductGroupName :: Maybe Text -- ^ Name of creative assets product group
+  , catalogsCreativeAssetsProductGroupDescription :: Maybe Text -- ^ 
+  , catalogsCreativeAssetsProductGroupFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  , catalogsCreativeAssetsProductGroupCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
+  , catalogsCreativeAssetsProductGroupUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
+  , catalogsCreativeAssetsProductGroupCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroup where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroup
+instance ToJSON CatalogsCreativeAssetsProductGroup where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroup
+
+optionsCatalogsCreativeAssetsProductGroup :: Options
+optionsCatalogsCreativeAssetsProductGroup =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsProductGroupId", "id")
+      , ("catalogsCreativeAssetsProductGroupName", "name")
+      , ("catalogsCreativeAssetsProductGroupDescription", "description")
+      , ("catalogsCreativeAssetsProductGroupFilters", "filters")
+      , ("catalogsCreativeAssetsProductGroupCreatedUnderscoreat", "created_at")
+      , ("catalogsCreativeAssetsProductGroupUpdatedUnderscoreat", "updated_at")
+      , ("catalogsCreativeAssetsProductGroupCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | Request object for creating a creative assets product group.
+data CatalogsCreativeAssetsProductGroupCreateRequest = CatalogsCreativeAssetsProductGroupCreateRequest
+  { catalogsCreativeAssetsProductGroupCreateRequestCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsProductGroupCreateRequestName :: Text -- ^ 
+  , catalogsCreativeAssetsProductGroupCreateRequestDescription :: Maybe Text -- ^ 
+  , catalogsCreativeAssetsProductGroupCreateRequestFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  , catalogsCreativeAssetsProductGroupCreateRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroupCreateRequest where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroupCreateRequest
+instance ToJSON CatalogsCreativeAssetsProductGroupCreateRequest where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroupCreateRequest
+
+optionsCatalogsCreativeAssetsProductGroupCreateRequest :: Options
+optionsCatalogsCreativeAssetsProductGroupCreateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupCreateRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsProductGroupCreateRequestName", "name")
+      , ("catalogsCreativeAssetsProductGroupCreateRequestDescription", "description")
+      , ("catalogsCreativeAssetsProductGroupCreateRequestFilters", "filters")
+      , ("catalogsCreativeAssetsProductGroupCreateRequestCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | 
+data CatalogsCreativeAssetsProductGroupFilterKeys = CatalogsCreativeAssetsProductGroupFilterKeys
+  { catalogsCreativeAssetsProductGroupFilterKeysCREATIVEUnderscoreASSETSUnderscoreID :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore0 :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore1 :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore2 :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore3 :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore4 :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore6 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore5 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore4 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore3 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore2 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsCreativeAssetsProductGroupFilterKeysMEDIAUnderscoreTYPE :: CatalogsProductGroupMultipleMediaTypesCriteria -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroupFilterKeys where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroupFilterKeys
+instance ToJSON CatalogsCreativeAssetsProductGroupFilterKeys where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroupFilterKeys
+
+optionsCatalogsCreativeAssetsProductGroupFilterKeys :: Options
+optionsCatalogsCreativeAssetsProductGroupFilterKeys =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupFilterKeysCREATIVEUnderscoreASSETSUnderscoreID", "CREATIVE_ASSETS_ID")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore0", "CUSTOM_LABEL_0")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore1", "CUSTOM_LABEL_1")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore2", "CUSTOM_LABEL_2")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore3", "CUSTOM_LABEL_3")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore4", "CUSTOM_LABEL_4")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore6", "GOOGLE_PRODUCT_CATEGORY_6")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore5", "GOOGLE_PRODUCT_CATEGORY_5")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore4", "GOOGLE_PRODUCT_CATEGORY_4")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore3", "GOOGLE_PRODUCT_CATEGORY_3")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore2", "GOOGLE_PRODUCT_CATEGORY_2")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1", "GOOGLE_PRODUCT_CATEGORY_1")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0", "GOOGLE_PRODUCT_CATEGORY_0")
+      , ("catalogsCreativeAssetsProductGroupFilterKeysMEDIAUnderscoreTYPE", "MEDIA_TYPE")
+      ]
+
+
+-- | Object holding a group of filters for a creative assets product group
+data CatalogsCreativeAssetsProductGroupFilters = CatalogsCreativeAssetsProductGroupFilters
+  { catalogsCreativeAssetsProductGroupFiltersAnyUnderscoreof :: [CatalogsCreativeAssetsProductGroupFilterKeys] -- ^ 
+  , catalogsCreativeAssetsProductGroupFiltersAllUnderscoreof :: [CatalogsCreativeAssetsProductGroupFilterKeys] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroupFilters where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroupFilters
+instance ToJSON CatalogsCreativeAssetsProductGroupFilters where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroupFilters
+
+optionsCatalogsCreativeAssetsProductGroupFilters :: Options
+optionsCatalogsCreativeAssetsProductGroupFilters =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupFiltersAnyUnderscoreof", "any_of")
+      , ("catalogsCreativeAssetsProductGroupFiltersAllUnderscoreof", "all_of")
+      ]
+
+
+-- | 
+data CatalogsCreativeAssetsProductGroupFiltersAllOf = CatalogsCreativeAssetsProductGroupFiltersAllOf
+  { catalogsCreativeAssetsProductGroupFiltersAllOfAllUnderscoreof :: [CatalogsCreativeAssetsProductGroupFilterKeys] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroupFiltersAllOf where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroupFiltersAllOf
+instance ToJSON CatalogsCreativeAssetsProductGroupFiltersAllOf where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroupFiltersAllOf
+
+optionsCatalogsCreativeAssetsProductGroupFiltersAllOf :: Options
+optionsCatalogsCreativeAssetsProductGroupFiltersAllOf =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupFiltersAllOfAllUnderscoreof", "all_of")
+      ]
+
+
+-- | 
+data CatalogsCreativeAssetsProductGroupFiltersAnyOf = CatalogsCreativeAssetsProductGroupFiltersAnyOf
+  { catalogsCreativeAssetsProductGroupFiltersAnyOfAnyUnderscoreof :: [CatalogsCreativeAssetsProductGroupFilterKeys] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroupFiltersAnyOf where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroupFiltersAnyOf
+instance ToJSON CatalogsCreativeAssetsProductGroupFiltersAnyOf where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroupFiltersAnyOf
+
+optionsCatalogsCreativeAssetsProductGroupFiltersAnyOf :: Options
+optionsCatalogsCreativeAssetsProductGroupFiltersAnyOf =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupFiltersAnyOfAnyUnderscoreof", "any_of")
+      ]
+
+
+-- | Product counts for a Creative Assets CatalogsProductGroup
+data CatalogsCreativeAssetsProductGroupProductCounts = CatalogsCreativeAssetsProductGroupProductCounts
+  { catalogsCreativeAssetsProductGroupProductCountsCatalogUnderscoretype :: Text -- ^ 
+  , catalogsCreativeAssetsProductGroupProductCountsTotal :: Double -- ^ 
+  , catalogsCreativeAssetsProductGroupProductCountsVideos :: Double -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroupProductCounts where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroupProductCounts
+instance ToJSON CatalogsCreativeAssetsProductGroupProductCounts where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroupProductCounts
+
+optionsCatalogsCreativeAssetsProductGroupProductCounts :: Options
+optionsCatalogsCreativeAssetsProductGroupProductCounts =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupProductCountsCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsProductGroupProductCountsTotal", "total")
+      , ("catalogsCreativeAssetsProductGroupProductCountsVideos", "videos")
+      ]
+
+
+-- | Request object for updating a creative assets product group.
+data CatalogsCreativeAssetsProductGroupUpdateRequest = CatalogsCreativeAssetsProductGroupUpdateRequest
+  { catalogsCreativeAssetsProductGroupUpdateRequestCatalogUnderscoretype :: Maybe Text -- ^ 
+  , catalogsCreativeAssetsProductGroupUpdateRequestName :: Maybe Text -- ^ 
+  , catalogsCreativeAssetsProductGroupUpdateRequestDescription :: Maybe Text -- ^ 
+  , catalogsCreativeAssetsProductGroupUpdateRequestFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductGroupUpdateRequest where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductGroupUpdateRequest
+instance ToJSON CatalogsCreativeAssetsProductGroupUpdateRequest where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductGroupUpdateRequest
+
+optionsCatalogsCreativeAssetsProductGroupUpdateRequest :: Options
+optionsCatalogsCreativeAssetsProductGroupUpdateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductGroupUpdateRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsCreativeAssetsProductGroupUpdateRequestName", "name")
+      , ("catalogsCreativeAssetsProductGroupUpdateRequestDescription", "description")
+      , ("catalogsCreativeAssetsProductGroupUpdateRequestFilters", "filters")
+      ]
+
+
+-- | Creative assets product metadata entity
+data CatalogsCreativeAssetsProductMetadata = CatalogsCreativeAssetsProductMetadata
+  { catalogsCreativeAssetsProductMetadataCreativeUnderscoreassetsUnderscoreid :: Text -- ^ The user-created unique ID that represents the creative assets item.
+  , catalogsCreativeAssetsProductMetadataVisibility :: CreativeAssetsVisibilityType -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsCreativeAssetsProductMetadata where
+  parseJSON = genericParseJSON optionsCatalogsCreativeAssetsProductMetadata
+instance ToJSON CatalogsCreativeAssetsProductMetadata where
+  toJSON = genericToJSON optionsCatalogsCreativeAssetsProductMetadata
+
+optionsCatalogsCreativeAssetsProductMetadata :: Options
+optionsCatalogsCreativeAssetsProductMetadata =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsCreativeAssetsProductMetadataCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsCreativeAssetsProductMetadataVisibility", "visibility")
+      ]
+
+
+-- | 
 data CatalogsDbItem = CatalogsDbItem
-  { catalogsDbItemCreatedUnderscoreat :: Maybe UTCTime -- ^ 
-  , catalogsDbItemId :: Maybe Text -- ^ 
-  , catalogsDbItemUpdatedUnderscoreat :: Maybe UTCTime -- ^ 
+  { catalogsDbItemCreatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsDbItemId :: Text -- ^ 
+  , catalogsDbItemUpdatedUnderscoreat :: UTCTime -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsDbItem where
@@ -4301,6 +6217,30 @@ optionsCatalogsDbItem =
       [ ("catalogsDbItemCreatedUnderscoreat", "created_at")
       , ("catalogsDbItemId", "id")
       , ("catalogsDbItemUpdatedUnderscoreat", "updated_at")
+      ]
+
+
+-- | A creative assets item to be deleted
+data CatalogsDeleteCreativeAssetsItem = CatalogsDeleteCreativeAssetsItem
+  { catalogsDeleteCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid :: Text -- ^ The catalog creative assets id in the merchant namespace
+  , catalogsDeleteCreativeAssetsItemOperation :: Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsDeleteCreativeAssetsItem where
+  parseJSON = genericParseJSON optionsCatalogsDeleteCreativeAssetsItem
+instance ToJSON CatalogsDeleteCreativeAssetsItem where
+  toJSON = genericToJSON optionsCatalogsDeleteCreativeAssetsItem
+
+optionsCatalogsDeleteCreativeAssetsItem :: Options
+optionsCatalogsDeleteCreativeAssetsItem =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsDeleteCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsDeleteCreativeAssetsItemOperation", "operation")
       ]
 
 
@@ -4354,9 +6294,9 @@ optionsCatalogsDeleteRetailItem =
 
 -- | Catalogs Feed object
 data CatalogsFeed = CatalogsFeed
-  { catalogsFeedCreatedUnderscoreat :: Maybe UTCTime -- ^ 
-  , catalogsFeedId :: Maybe Text -- ^ 
-  , catalogsFeedUpdatedUnderscoreat :: Maybe UTCTime -- ^ 
+  { catalogsFeedCreatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsFeedId :: Text -- ^ 
+  , catalogsFeedUpdatedUnderscoreat :: UTCTime -- ^ 
   , catalogsFeedName :: Text -- ^ A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
   , catalogsFeedFormat :: CatalogsFormat -- ^ 
   , catalogsFeedCatalogUnderscoretype :: CatalogsType -- ^ 
@@ -4423,6 +6363,34 @@ optionsCatalogsFeedCredentials =
     table =
       [ ("catalogsFeedCredentialsPassword", "password")
       , ("catalogsFeedCredentialsUsername", "username")
+      ]
+
+
+-- | 
+data CatalogsFeedIngestion = CatalogsFeedIngestion
+  { catalogsFeedIngestionId :: Text -- ^ 
+  , catalogsFeedIngestionFeedUnderscoreid :: Text -- ^ 
+  , catalogsFeedIngestionCreatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsFeedIngestionStatus :: CatalogsFeedProcessingStatus -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsFeedIngestion where
+  parseJSON = genericParseJSON optionsCatalogsFeedIngestion
+instance ToJSON CatalogsFeedIngestion where
+  toJSON = genericToJSON optionsCatalogsFeedIngestion
+
+optionsCatalogsFeedIngestion :: Options
+optionsCatalogsFeedIngestion =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsFeedIngestionId", "id")
+      , ("catalogsFeedIngestionFeedUnderscoreid", "feed_id")
+      , ("catalogsFeedIngestionCreatedUnderscoreat", "created_at")
+      , ("catalogsFeedIngestionStatus", "status")
       ]
 
 
@@ -4548,9 +6516,9 @@ optionsCatalogsFeedIngestionWarnings =
 
 -- | 
 data CatalogsFeedProcessingResult = CatalogsFeedProcessingResult
-  { catalogsFeedProcessingResultCreatedUnderscoreat :: Maybe UTCTime -- ^ 
-  , catalogsFeedProcessingResultId :: Maybe Text -- ^ 
-  , catalogsFeedProcessingResultUpdatedUnderscoreat :: Maybe UTCTime -- ^ 
+  { catalogsFeedProcessingResultCreatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsFeedProcessingResultId :: Text -- ^ 
+  , catalogsFeedProcessingResultUpdatedUnderscoreat :: UTCTime -- ^ 
   , catalogsFeedProcessingResultIngestionUnderscoredetails :: CatalogsFeedIngestionDetails -- ^ 
   , catalogsFeedProcessingResultStatus :: CatalogsFeedProcessingStatus -- ^ 
   , catalogsFeedProcessingResultProductUnderscorecounts :: CatalogsFeedProductCounts -- ^ 
@@ -4889,6 +6857,7 @@ data CatalogsFeedsCreateRequest = CatalogsFeedsCreateRequest
   , catalogsFeedsCreateRequestPreferredUnderscoreprocessingUnderscoreschedule :: Maybe CatalogsFeedProcessingSchedule -- ^ 
   , catalogsFeedsCreateRequestDefaultUnderscorecountry :: Maybe Country -- ^ 
   , catalogsFeedsCreateRequestDefaultUnderscoreavailability :: Maybe ProductAvailabilityType -- ^ 
+  , catalogsFeedsCreateRequestStatus :: Maybe CatalogsStatus -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsFeedsCreateRequest where
@@ -4913,6 +6882,7 @@ optionsCatalogsFeedsCreateRequest =
       , ("catalogsFeedsCreateRequestPreferredUnderscoreprocessingUnderscoreschedule", "preferred_processing_schedule")
       , ("catalogsFeedsCreateRequestDefaultUnderscorecountry", "default_country")
       , ("catalogsFeedsCreateRequestDefaultUnderscoreavailability", "default_availability")
+      , ("catalogsFeedsCreateRequestStatus", "status")
       ]
 
 
@@ -5136,9 +7106,9 @@ optionsCatalogsHotelBatchItem =
 
 -- | Request object to update catalogs hotel items
 data CatalogsHotelBatchRequest = CatalogsHotelBatchRequest
-  { catalogsHotelBatchRequestCatalogUnderscoretype :: CatalogsType -- ^ 
+  { catalogsHotelBatchRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsHotelBatchRequestCountry :: Country -- ^ 
-  , catalogsHotelBatchRequestLanguage :: Language -- ^ 
+  , catalogsHotelBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsHotelBatchRequestItems :: [CatalogsHotelBatchItem] -- ^ Array with catalogs item operations
   , catalogsHotelBatchRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
   } deriving (Show, Eq, Generic)
@@ -5166,9 +7136,9 @@ optionsCatalogsHotelBatchRequest =
 
 -- | Catalogs Hotel Feed object
 data CatalogsHotelFeed = CatalogsHotelFeed
-  { catalogsHotelFeedCreatedUnderscoreat :: Maybe UTCTime -- ^ 
-  , catalogsHotelFeedId :: Maybe Text -- ^ 
-  , catalogsHotelFeedUpdatedUnderscoreat :: Maybe UTCTime -- ^ 
+  { catalogsHotelFeedCreatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsHotelFeedId :: Text -- ^ 
+  , catalogsHotelFeedUpdatedUnderscoreat :: UTCTime -- ^ 
   , catalogsHotelFeedName :: Text -- ^ A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
   , catalogsHotelFeedFormat :: CatalogsFormat -- ^ 
   , catalogsHotelFeedCatalogUnderscoretype :: CatalogsType -- ^ 
@@ -5221,6 +7191,7 @@ data CatalogsHotelFeedsCreateRequest = CatalogsHotelFeedsCreateRequest
   , catalogsHotelFeedsCreateRequestPreferredUnderscoreprocessingUnderscoreschedule :: Maybe CatalogsFeedProcessingSchedule -- ^ 
   , catalogsHotelFeedsCreateRequestCatalogUnderscoretype :: CatalogsType -- ^ 
   , catalogsHotelFeedsCreateRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  , catalogsHotelFeedsCreateRequestStatus :: Maybe CatalogsStatus -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsHotelFeedsCreateRequest where
@@ -5245,6 +7216,7 @@ optionsCatalogsHotelFeedsCreateRequest =
       , ("catalogsHotelFeedsCreateRequestPreferredUnderscoreprocessingUnderscoreschedule", "preferred_processing_schedule")
       , ("catalogsHotelFeedsCreateRequestCatalogUnderscoretype", "catalog_type")
       , ("catalogsHotelFeedsCreateRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsHotelFeedsCreateRequestStatus", "status")
       ]
 
 
@@ -5369,8 +7341,8 @@ optionsCatalogsHotelItemResponse =
 -- | Object describing the catalogs hotel items batch
 data CatalogsHotelItemsBatch = CatalogsHotelItemsBatch
   { catalogsHotelItemsBatchBatchUnderscoreid :: Maybe Text -- ^ Id of the catalogs items batch
-  , catalogsHotelItemsBatchCreatedUnderscoretime :: Maybe UTCTime -- ^ Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
-  , catalogsHotelItemsBatchCompletedUnderscoretime :: Maybe UTCTime -- ^ Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+  , catalogsHotelItemsBatchCreatedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+  , catalogsHotelItemsBatchCompletedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   , catalogsHotelItemsBatchStatus :: Maybe BatchOperationStatus -- ^ 
   , catalogsHotelItemsBatchCatalogUnderscoretype :: CatalogsType -- ^ 
   , catalogsHotelItemsBatchItems :: Maybe [HotelProcessingRecord] -- ^ Array with the catalogs items processing records part of the catalogs items batch
@@ -5425,6 +7397,84 @@ optionsCatalogsHotelItemsFilter =
 
 
 -- | 
+data CatalogsHotelItemsPostFilter = CatalogsHotelItemsPostFilter
+  { catalogsHotelItemsPostFilterCatalogUnderscoretype :: Text -- ^ 
+  , catalogsHotelItemsPostFilterHotelUnderscoreids :: [Text] -- ^ 
+  , catalogsHotelItemsPostFilterCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsHotelItemsPostFilter where
+  parseJSON = genericParseJSON optionsCatalogsHotelItemsPostFilter
+instance ToJSON CatalogsHotelItemsPostFilter where
+  toJSON = genericToJSON optionsCatalogsHotelItemsPostFilter
+
+optionsCatalogsHotelItemsPostFilter :: Options
+optionsCatalogsHotelItemsPostFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsHotelItemsPostFilterCatalogUnderscoretype", "catalog_type")
+      , ("catalogsHotelItemsPostFilterHotelUnderscoreids", "hotel_ids")
+      , ("catalogsHotelItemsPostFilterCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | Request object to list products for a given hotel catalog_id and product group filter.
+data CatalogsHotelListProductsByCatalogBasedFilterRequest = CatalogsHotelListProductsByCatalogBasedFilterRequest
+  { catalogsHotelListProductsByCatalogBasedFilterRequestCatalogUnderscoretype :: Text -- ^ 
+  , catalogsHotelListProductsByCatalogBasedFilterRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the hotel product group.
+  , catalogsHotelListProductsByCatalogBasedFilterRequestFilters :: CatalogsHotelProductGroupFilters -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsHotelListProductsByCatalogBasedFilterRequest where
+  parseJSON = genericParseJSON optionsCatalogsHotelListProductsByCatalogBasedFilterRequest
+instance ToJSON CatalogsHotelListProductsByCatalogBasedFilterRequest where
+  toJSON = genericToJSON optionsCatalogsHotelListProductsByCatalogBasedFilterRequest
+
+optionsCatalogsHotelListProductsByCatalogBasedFilterRequest :: Options
+optionsCatalogsHotelListProductsByCatalogBasedFilterRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsHotelListProductsByCatalogBasedFilterRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsHotelListProductsByCatalogBasedFilterRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsHotelListProductsByCatalogBasedFilterRequestFilters", "filters")
+      ]
+
+
+-- | 
+data CatalogsHotelProduct = CatalogsHotelProduct
+  { catalogsHotelProductCatalogUnderscoretype :: Text -- ^ 
+  , catalogsHotelProductMetadata :: CatalogsHotelProductMetadata -- ^ 
+  , catalogsHotelProductPin :: Pin -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsHotelProduct where
+  parseJSON = genericParseJSON optionsCatalogsHotelProduct
+instance ToJSON CatalogsHotelProduct where
+  toJSON = genericToJSON optionsCatalogsHotelProduct
+
+optionsCatalogsHotelProduct :: Options
+optionsCatalogsHotelProduct =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsHotelProductCatalogUnderscoretype", "catalog_type")
+      , ("catalogsHotelProductMetadata", "metadata")
+      , ("catalogsHotelProductPin", "pin")
+      ]
+
+
+-- | 
 data CatalogsHotelProductGroup = CatalogsHotelProductGroup
   { catalogsHotelProductGroupCatalogUnderscoretype :: Text -- ^ 
   , catalogsHotelProductGroupId :: Text -- ^ ID of the hotel product group.
@@ -5433,7 +7483,7 @@ data CatalogsHotelProductGroup = CatalogsHotelProductGroup
   , catalogsHotelProductGroupFilters :: CatalogsHotelProductGroupFilters -- ^ 
   , catalogsHotelProductGroupCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
   , catalogsHotelProductGroupUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
-  , catalogsHotelProductGroupCatalogUnderscoreid :: Text -- ^ 
+  , catalogsHotelProductGroupCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the hotel product group.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsHotelProductGroup where
@@ -5596,6 +7646,30 @@ optionsCatalogsHotelProductGroupFiltersAnyOf =
       ]
 
 
+-- | Product counts for a Hotel CatalogsProductGroup
+data CatalogsHotelProductGroupProductCounts = CatalogsHotelProductGroupProductCounts
+  { catalogsHotelProductGroupProductCountsCatalogUnderscoretype :: Text -- ^ 
+  , catalogsHotelProductGroupProductCountsTotal :: Double -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsHotelProductGroupProductCounts where
+  parseJSON = genericParseJSON optionsCatalogsHotelProductGroupProductCounts
+instance ToJSON CatalogsHotelProductGroupProductCounts where
+  toJSON = genericToJSON optionsCatalogsHotelProductGroupProductCounts
+
+optionsCatalogsHotelProductGroupProductCounts :: Options
+optionsCatalogsHotelProductGroupProductCounts =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsHotelProductGroupProductCountsCatalogUnderscoretype", "catalog_type")
+      , ("catalogsHotelProductGroupProductCountsTotal", "total")
+      ]
+
+
 -- | Request object for updating a hotel product group.
 data CatalogsHotelProductGroupUpdateRequest = CatalogsHotelProductGroupUpdateRequest
   { catalogsHotelProductGroupUpdateRequestCatalogUnderscoretype :: Maybe Text -- ^ 
@@ -5621,6 +7695,80 @@ optionsCatalogsHotelProductGroupUpdateRequest =
       , ("catalogsHotelProductGroupUpdateRequestName", "name")
       , ("catalogsHotelProductGroupUpdateRequestDescription", "description")
       , ("catalogsHotelProductGroupUpdateRequestFilters", "filters")
+      ]
+
+
+-- | Hotel product metadata entity
+data CatalogsHotelProductMetadata = CatalogsHotelProductMetadata
+  { catalogsHotelProductMetadataHotelUnderscoreid :: Text -- ^ The user-created unique ID that represents the hotel item.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsHotelProductMetadata where
+  parseJSON = genericParseJSON optionsCatalogsHotelProductMetadata
+instance ToJSON CatalogsHotelProductMetadata where
+  toJSON = genericToJSON optionsCatalogsHotelProductMetadata
+
+optionsCatalogsHotelProductMetadata :: Options
+optionsCatalogsHotelProductMetadata =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsHotelProductMetadataHotelUnderscoreid", "hotel_id")
+      ]
+
+
+-- | Parameters for hotel report
+data CatalogsHotelReportParameters = CatalogsHotelReportParameters
+  { catalogsHotelReportParametersCatalogUnderscoretype :: Text -- ^ 
+  , catalogsHotelReportParametersReport :: CatalogsHotelReportParametersReport -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsHotelReportParameters where
+  parseJSON = genericParseJSON optionsCatalogsHotelReportParameters
+instance ToJSON CatalogsHotelReportParameters where
+  toJSON = genericToJSON optionsCatalogsHotelReportParameters
+
+optionsCatalogsHotelReportParameters :: Options
+optionsCatalogsHotelReportParameters =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsHotelReportParametersCatalogUnderscoretype", "catalog_type")
+      , ("catalogsHotelReportParametersReport", "report")
+      ]
+
+
+-- | 
+data CatalogsHotelReportParametersReport = CatalogsHotelReportParametersReport
+  { catalogsHotelReportParametersReportReportUnderscoretype :: Maybe Text -- ^ 
+  , catalogsHotelReportParametersReportFeedUnderscoreid :: Text -- ^ ID of the feed entity.
+  , catalogsHotelReportParametersReportProcessingUnderscoreresultUnderscoreid :: Maybe Text -- ^ Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+  , catalogsHotelReportParametersReportCatalogUnderscoreid :: Maybe Text -- ^ Unique identifier of a catalog. If not given, oldest catalog will be used
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsHotelReportParametersReport where
+  parseJSON = genericParseJSON optionsCatalogsHotelReportParametersReport
+instance ToJSON CatalogsHotelReportParametersReport where
+  toJSON = genericToJSON optionsCatalogsHotelReportParametersReport
+
+optionsCatalogsHotelReportParametersReport :: Options
+optionsCatalogsHotelReportParametersReport =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsHotelReportParametersReportReportUnderscoretype", "report_type")
+      , ("catalogsHotelReportParametersReportFeedUnderscoreid", "feed_id")
+      , ("catalogsHotelReportParametersReportProcessingUnderscoreresultUnderscoreid", "processing_result_id")
+      , ("catalogsHotelReportParametersReportCatalogUnderscoreid", "catalog_id")
       ]
 
 
@@ -5898,10 +8046,10 @@ optionsCatalogsItems =
 data CatalogsItemsBatch = CatalogsItemsBatch
   { catalogsItemsBatchCatalogUnderscoretype :: CatalogsType -- ^ 
   , catalogsItemsBatchBatchUnderscoreid :: Maybe Text -- ^ Id of the catalogs items batch
-  , catalogsItemsBatchCreatedUnderscoretime :: Maybe UTCTime -- ^ Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
-  , catalogsItemsBatchCompletedUnderscoretime :: Maybe UTCTime -- ^ Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+  , catalogsItemsBatchCreatedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+  , catalogsItemsBatchCompletedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   , catalogsItemsBatchStatus :: Maybe BatchOperationStatus -- ^ 
-  , catalogsItemsBatchItems :: Maybe [HotelProcessingRecord] -- ^ Array with the catalogs items processing records part of the catalogs items batch
+  , catalogsItemsBatchItems :: Maybe [CreativeAssetsProcessingRecord] -- ^ Array with the catalogs items processing records part of the catalogs items batch
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsItemsBatch where
@@ -5929,7 +8077,7 @@ optionsCatalogsItemsBatch =
 -- | Request object of catalogs items batch
 data CatalogsItemsBatchRequest = CatalogsItemsBatchRequest
   { catalogsItemsBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsBatchRequestLanguage :: Language -- ^ 
+  , catalogsItemsBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsItemsBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsBatchRequestItems :: [ItemDeleteBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -5957,7 +8105,7 @@ optionsCatalogsItemsBatchRequest =
 -- | Request object to create catalogs items
 data CatalogsItemsCreateBatchRequest = CatalogsItemsCreateBatchRequest
   { catalogsItemsCreateBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsCreateBatchRequestLanguage :: Language -- ^ 
+  , catalogsItemsCreateBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsItemsCreateBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsCreateBatchRequestItems :: [ItemCreateBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -5985,7 +8133,7 @@ optionsCatalogsItemsCreateBatchRequest =
 -- | Request object to delete catalogs items
 data CatalogsItemsDeleteBatchRequest = CatalogsItemsDeleteBatchRequest
   { catalogsItemsDeleteBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsDeleteBatchRequestLanguage :: Language -- ^ 
+  , catalogsItemsDeleteBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsItemsDeleteBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsDeleteBatchRequestItems :: [ItemDeleteBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -6013,7 +8161,7 @@ optionsCatalogsItemsDeleteBatchRequest =
 -- | Request object to discontinue catalogs items
 data CatalogsItemsDeleteDiscontinuedBatchRequest = CatalogsItemsDeleteDiscontinuedBatchRequest
   { catalogsItemsDeleteDiscontinuedBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsDeleteDiscontinuedBatchRequestLanguage :: Language -- ^ 
+  , catalogsItemsDeleteDiscontinuedBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsItemsDeleteDiscontinuedBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsDeleteDiscontinuedBatchRequestItems :: [ItemDeleteDiscontinuedBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -6042,8 +8190,9 @@ optionsCatalogsItemsDeleteDiscontinuedBatchRequest =
 data CatalogsItemsFilters = CatalogsItemsFilters
   { catalogsItemsFiltersCatalogUnderscoretype :: CatalogsType -- ^ 
   , catalogsItemsFiltersItemUnderscoreids :: [Text] -- ^ 
-  , catalogsItemsFiltersCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  , catalogsItemsFiltersCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   , catalogsItemsFiltersHotelUnderscoreids :: [Text] -- ^ 
+  , catalogsItemsFiltersCreativeUnderscoreassetsUnderscoreids :: [Text] -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsItemsFilters where
@@ -6063,13 +8212,92 @@ optionsCatalogsItemsFilters =
       , ("catalogsItemsFiltersItemUnderscoreids", "item_ids")
       , ("catalogsItemsFiltersCatalogUnderscoreid", "catalog_id")
       , ("catalogsItemsFiltersHotelUnderscoreids", "hotel_ids")
+      , ("catalogsItemsFiltersCreativeUnderscoreassetsUnderscoreids", "creative_assets_ids")
+      ]
+
+
+-- | 
+data CatalogsItemsPostFilters = CatalogsItemsPostFilters
+  { catalogsItemsPostFiltersCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsItemsPostFiltersItemUnderscoreids :: [Text] -- ^ 
+  , catalogsItemsPostFiltersCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  , catalogsItemsPostFiltersHotelUnderscoreids :: [Text] -- ^ 
+  , catalogsItemsPostFiltersCreativeUnderscoreassetsUnderscoreids :: [Text] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsItemsPostFilters where
+  parseJSON = genericParseJSON optionsCatalogsItemsPostFilters
+instance ToJSON CatalogsItemsPostFilters where
+  toJSON = genericToJSON optionsCatalogsItemsPostFilters
+
+optionsCatalogsItemsPostFilters :: Options
+optionsCatalogsItemsPostFilters =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsItemsPostFiltersCatalogUnderscoretype", "catalog_type")
+      , ("catalogsItemsPostFiltersItemUnderscoreids", "item_ids")
+      , ("catalogsItemsPostFiltersCatalogUnderscoreid", "catalog_id")
+      , ("catalogsItemsPostFiltersHotelUnderscoreids", "hotel_ids")
+      , ("catalogsItemsPostFiltersCreativeUnderscoreassetsUnderscoreids", "creative_assets_ids")
+      ]
+
+
+-- | Request object of catalogs items
+data CatalogsItemsRequest = CatalogsItemsRequest
+  { catalogsItemsRequestCountry :: Country -- ^ 
+  , catalogsItemsRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsRequestFilters :: CatalogsItemsPostFilters -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsItemsRequest where
+  parseJSON = genericParseJSON optionsCatalogsItemsRequest
+instance ToJSON CatalogsItemsRequest where
+  toJSON = genericToJSON optionsCatalogsItemsRequest
+
+optionsCatalogsItemsRequest :: Options
+optionsCatalogsItemsRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsItemsRequestCountry", "country")
+      , ("catalogsItemsRequestLanguage", "language")
+      , ("catalogsItemsRequestFilters", "filters")
+      ]
+
+
+-- | We recommend using the CatalogsLocale values.
+data CatalogsItemsRequestLanguage = CatalogsItemsRequestLanguage
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsItemsRequestLanguage where
+  parseJSON = genericParseJSON optionsCatalogsItemsRequestLanguage
+instance ToJSON CatalogsItemsRequestLanguage where
+  toJSON = genericToJSON optionsCatalogsItemsRequestLanguage
+
+optionsCatalogsItemsRequestLanguage :: Options
+optionsCatalogsItemsRequestLanguage =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
       ]
 
 
 -- | Request object to update catalogs items
 data CatalogsItemsUpdateBatchRequest = CatalogsItemsUpdateBatchRequest
   { catalogsItemsUpdateBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsUpdateBatchRequestLanguage :: Language -- ^ 
+  , catalogsItemsUpdateBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsItemsUpdateBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsUpdateBatchRequestItems :: [ItemUpdateBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -6097,7 +8325,7 @@ optionsCatalogsItemsUpdateBatchRequest =
 -- | Request object to upsert catalogs items
 data CatalogsItemsUpsertBatchRequest = CatalogsItemsUpsertBatchRequest
   { catalogsItemsUpsertBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsUpsertBatchRequestLanguage :: Language -- ^ 
+  , catalogsItemsUpsertBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsItemsUpsertBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsUpsertBatchRequestItems :: [ItemUpsertBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -6146,10 +8374,38 @@ optionsCatalogsList200Response =
       ]
 
 
+-- | Request object to list products for a given feed_id and product group filter.
+data CatalogsListProductsByFeedBasedFilter = CatalogsListProductsByFeedBasedFilter
+  { catalogsListProductsByFeedBasedFilterFeedUnderscoreid :: Text -- ^ Catalog Feed id pertaining to the catalog product group filter.
+  , catalogsListProductsByFeedBasedFilterFilters :: CatalogsProductGroupFilters -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsListProductsByFeedBasedFilter where
+  parseJSON = genericParseJSON optionsCatalogsListProductsByFeedBasedFilter
+instance ToJSON CatalogsListProductsByFeedBasedFilter where
+  toJSON = genericToJSON optionsCatalogsListProductsByFeedBasedFilter
+
+optionsCatalogsListProductsByFeedBasedFilter :: Options
+optionsCatalogsListProductsByFeedBasedFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsListProductsByFeedBasedFilterFeedUnderscoreid", "feed_id")
+      , ("catalogsListProductsByFeedBasedFilterFilters", "filters")
+      ]
+
+
 -- | Request object to list products for a given product group filter.
 data CatalogsListProductsByFilterRequest = CatalogsListProductsByFilterRequest
   { catalogsListProductsByFilterRequestFeedUnderscoreid :: Text -- ^ Catalog Feed id pertaining to the catalog product group filter.
-  , catalogsListProductsByFilterRequestFilters :: CatalogsProductGroupFilters -- ^ 
+  , catalogsListProductsByFilterRequestFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  , catalogsListProductsByFilterRequestCatalogUnderscoretype :: Text -- ^ 
+  , catalogsListProductsByFilterRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  , catalogsListProductsByFilterRequestCountry :: Country -- ^ 
+  , catalogsListProductsByFilterRequestLocale :: CatalogsLocale -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsListProductsByFilterRequest where
@@ -6167,30 +8423,10 @@ optionsCatalogsListProductsByFilterRequest =
     table =
       [ ("catalogsListProductsByFilterRequestFeedUnderscoreid", "feed_id")
       , ("catalogsListProductsByFilterRequestFilters", "filters")
-      ]
-
-
--- | Request object to list products for a given feed_id and product group filter.
-data CatalogsListProductsByFilterRequestOneOf = CatalogsListProductsByFilterRequestOneOf
-  { catalogsListProductsByFilterRequestOneOfFeedUnderscoreid :: Text -- ^ Catalog Feed id pertaining to the catalog product group filter.
-  , catalogsListProductsByFilterRequestOneOfFilters :: CatalogsProductGroupFilters -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CatalogsListProductsByFilterRequestOneOf where
-  parseJSON = genericParseJSON optionsCatalogsListProductsByFilterRequestOneOf
-instance ToJSON CatalogsListProductsByFilterRequestOneOf where
-  toJSON = genericToJSON optionsCatalogsListProductsByFilterRequestOneOf
-
-optionsCatalogsListProductsByFilterRequestOneOf :: Options
-optionsCatalogsListProductsByFilterRequestOneOf =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("catalogsListProductsByFilterRequestOneOfFeedUnderscoreid", "feed_id")
-      , ("catalogsListProductsByFilterRequestOneOfFilters", "filters")
+      , ("catalogsListProductsByFilterRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsListProductsByFilterRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsListProductsByFilterRequestCountry", "country")
+      , ("catalogsListProductsByFilterRequestLocale", "locale")
       ]
 
 
@@ -6216,9 +8452,10 @@ optionsCatalogsLocale =
       ]
 
 
--- | 
+-- | Catalogs product for all verticals
 data CatalogsProduct = CatalogsProduct
-  { catalogsProductMetadata :: CatalogsProductMetadata -- ^ 
+  { catalogsProductCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsProductMetadata :: CatalogsCreativeAssetsProductMetadata -- ^ 
   , catalogsProductPin :: Pin -- ^ 
   } deriving (Show, Eq, Generic)
 
@@ -6235,50 +8472,9 @@ optionsCatalogsProduct =
     }
   where
     table =
-      [ ("catalogsProductMetadata", "metadata")
+      [ ("catalogsProductCatalogUnderscoretype", "catalog_type")
+      , ("catalogsProductMetadata", "metadata")
       , ("catalogsProductPin", "pin")
-      ]
-
-
--- | catalog product group entity
-data CatalogsProductGroup = CatalogsProductGroup
-  { catalogsProductGroupId :: Text -- ^ ID of the catalog product group.
-  , catalogsProductGroupName :: Maybe Text -- ^ Name of catalog product group
-  , catalogsProductGroupDescription :: Maybe Text -- ^ 
-  , catalogsProductGroupFilters :: CatalogsProductGroupFilters -- ^ 
-  , catalogsProductGroupIsUnderscorefeatured :: Maybe Bool -- ^ boolean indicator of whether the product group is being featured or not
-  , catalogsProductGroupType :: Maybe CatalogsProductGroupType -- ^ 
-  , catalogsProductGroupStatus :: Maybe CatalogsProductGroupStatus -- ^ 
-  , catalogsProductGroupCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
-  , catalogsProductGroupUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
-  , catalogsProductGroupFeedUnderscoreid :: Text -- ^ id of the catalogs feed belonging to this catalog product group
-  , catalogsProductGroupCatalogUnderscoretype :: Maybe Text -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CatalogsProductGroup where
-  parseJSON = genericParseJSON optionsCatalogsProductGroup
-instance ToJSON CatalogsProductGroup where
-  toJSON = genericToJSON optionsCatalogsProductGroup
-
-optionsCatalogsProductGroup :: Options
-optionsCatalogsProductGroup =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("catalogsProductGroupId", "id")
-      , ("catalogsProductGroupName", "name")
-      , ("catalogsProductGroupDescription", "description")
-      , ("catalogsProductGroupFilters", "filters")
-      , ("catalogsProductGroupIsUnderscorefeatured", "is_featured")
-      , ("catalogsProductGroupType", "type")
-      , ("catalogsProductGroupStatus", "status")
-      , ("catalogsProductGroupCreatedUnderscoreat", "created_at")
-      , ("catalogsProductGroupUpdatedUnderscoreat", "updated_at")
-      , ("catalogsProductGroupFeedUnderscoreid", "feed_id")
-      , ("catalogsProductGroupCatalogUnderscoretype", "catalog_type")
       ]
 
 
@@ -6352,6 +8548,7 @@ data CatalogsProductGroupFilterKeys = CatalogsProductGroupFilterKeys
   , catalogsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore4 :: CatalogsProductGroupMultipleStringCriteria -- ^ 
   , catalogsProductGroupFilterKeysITEMUnderscoreGROUPUnderscoreID :: CatalogsProductGroupMultipleStringCriteria -- ^ 
   , catalogsProductGroupFilterKeysGENDER :: CatalogsProductGroupMultipleGenderCriteria -- ^ 
+  , catalogsProductGroupFilterKeysMEDIAUnderscoreTYPE :: CatalogsProductGroupMultipleMediaTypesCriteria -- ^ 
   , catalogsProductGroupFilterKeysPRODUCTUnderscoreTYPEUnderscore4 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
   , catalogsProductGroupFilterKeysPRODUCTUnderscoreTYPEUnderscore3 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
   , catalogsProductGroupFilterKeysPRODUCTUnderscoreTYPEUnderscore2 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
@@ -6364,6 +8561,7 @@ data CatalogsProductGroupFilterKeys = CatalogsProductGroupFilterKeys
   , catalogsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore2 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
   , catalogsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
   , catalogsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0 :: CatalogsProductGroupMultipleStringListCriteria -- ^ 
+  , catalogsProductGroupFilterKeysPRODUCTUnderscoreGROUP :: CatalogsProductGroupMultipleStringCriteria -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsProductGroupFilterKeys where
@@ -6393,6 +8591,7 @@ optionsCatalogsProductGroupFilterKeys =
       , ("catalogsProductGroupFilterKeysCUSTOMUnderscoreLABELUnderscore4", "CUSTOM_LABEL_4")
       , ("catalogsProductGroupFilterKeysITEMUnderscoreGROUPUnderscoreID", "ITEM_GROUP_ID")
       , ("catalogsProductGroupFilterKeysGENDER", "GENDER")
+      , ("catalogsProductGroupFilterKeysMEDIAUnderscoreTYPE", "MEDIA_TYPE")
       , ("catalogsProductGroupFilterKeysPRODUCTUnderscoreTYPEUnderscore4", "PRODUCT_TYPE_4")
       , ("catalogsProductGroupFilterKeysPRODUCTUnderscoreTYPEUnderscore3", "PRODUCT_TYPE_3")
       , ("catalogsProductGroupFilterKeysPRODUCTUnderscoreTYPEUnderscore2", "PRODUCT_TYPE_2")
@@ -6405,6 +8604,7 @@ optionsCatalogsProductGroupFilterKeys =
       , ("catalogsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore2", "GOOGLE_PRODUCT_CATEGORY_2")
       , ("catalogsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1", "GOOGLE_PRODUCT_CATEGORY_1")
       , ("catalogsProductGroupFilterKeysGOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0", "GOOGLE_PRODUCT_CATEGORY_0")
+      , ("catalogsProductGroupFilterKeysPRODUCTUnderscoreGROUP", "PRODUCT_GROUP")
       ]
 
 
@@ -6593,6 +8793,30 @@ optionsCatalogsProductGroupMultipleGenderCriteria =
 
 
 -- | 
+data CatalogsProductGroupMultipleMediaTypesCriteria = CatalogsProductGroupMultipleMediaTypesCriteria
+  { catalogsProductGroupMultipleMediaTypesCriteriaValues :: [MediaType] -- ^ 
+  , catalogsProductGroupMultipleMediaTypesCriteriaNegated :: Maybe Bool -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsProductGroupMultipleMediaTypesCriteria where
+  parseJSON = genericParseJSON optionsCatalogsProductGroupMultipleMediaTypesCriteria
+instance ToJSON CatalogsProductGroupMultipleMediaTypesCriteria where
+  toJSON = genericToJSON optionsCatalogsProductGroupMultipleMediaTypesCriteria
+
+optionsCatalogsProductGroupMultipleMediaTypesCriteria :: Options
+optionsCatalogsProductGroupMultipleMediaTypesCriteria =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsProductGroupMultipleMediaTypesCriteriaValues", "values")
+      , ("catalogsProductGroupMultipleMediaTypesCriteriaNegated", "negated")
+      ]
+
+
+-- | 
 data CatalogsProductGroupMultipleStringCriteria = CatalogsProductGroupMultipleStringCriteria
   { catalogsProductGroupMultipleStringCriteriaValues :: [Text] -- ^ 
   , catalogsProductGroupMultipleStringCriteriaNegated :: Maybe Bool -- ^ 
@@ -6719,30 +8943,34 @@ optionsCatalogsProductGroupPricingCurrencyCriteria =
 
 
 -- | Product counts for a CatalogsProductGroup
-data CatalogsProductGroupProductCounts = CatalogsProductGroupProductCounts
-  { catalogsProductGroupProductCountsInUnderscorestock :: Double -- ^ 
-  , catalogsProductGroupProductCountsOutUnderscoreofUnderscorestock :: Double -- ^ 
-  , catalogsProductGroupProductCountsPreorder :: Double -- ^ 
-  , catalogsProductGroupProductCountsTotal :: Double -- ^ 
+data CatalogsProductGroupProductCountsVertical = CatalogsProductGroupProductCountsVertical
+  { catalogsProductGroupProductCountsVerticalCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsProductGroupProductCountsVerticalInUnderscorestock :: Double -- ^ 
+  , catalogsProductGroupProductCountsVerticalOutUnderscoreofUnderscorestock :: Double -- ^ 
+  , catalogsProductGroupProductCountsVerticalPreorder :: Double -- ^ 
+  , catalogsProductGroupProductCountsVerticalTotal :: Double -- ^ 
+  , catalogsProductGroupProductCountsVerticalVideos :: Double -- ^ 
   } deriving (Show, Eq, Generic)
 
-instance FromJSON CatalogsProductGroupProductCounts where
-  parseJSON = genericParseJSON optionsCatalogsProductGroupProductCounts
-instance ToJSON CatalogsProductGroupProductCounts where
-  toJSON = genericToJSON optionsCatalogsProductGroupProductCounts
+instance FromJSON CatalogsProductGroupProductCountsVertical where
+  parseJSON = genericParseJSON optionsCatalogsProductGroupProductCountsVertical
+instance ToJSON CatalogsProductGroupProductCountsVertical where
+  toJSON = genericToJSON optionsCatalogsProductGroupProductCountsVertical
 
-optionsCatalogsProductGroupProductCounts :: Options
-optionsCatalogsProductGroupProductCounts =
+optionsCatalogsProductGroupProductCountsVertical :: Options
+optionsCatalogsProductGroupProductCountsVertical =
   defaultOptions
     { omitNothingFields  = True
     , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
     }
   where
     table =
-      [ ("catalogsProductGroupProductCountsInUnderscorestock", "in_stock")
-      , ("catalogsProductGroupProductCountsOutUnderscoreofUnderscorestock", "out_of_stock")
-      , ("catalogsProductGroupProductCountsPreorder", "preorder")
-      , ("catalogsProductGroupProductCountsTotal", "total")
+      [ ("catalogsProductGroupProductCountsVerticalCatalogUnderscoretype", "catalog_type")
+      , ("catalogsProductGroupProductCountsVerticalInUnderscorestock", "in_stock")
+      , ("catalogsProductGroupProductCountsVerticalOutUnderscoreofUnderscorestock", "out_of_stock")
+      , ("catalogsProductGroupProductCountsVerticalPreorder", "preorder")
+      , ("catalogsProductGroupProductCountsVerticalTotal", "total")
+      , ("catalogsProductGroupProductCountsVerticalVideos", "videos")
       ]
 
 
@@ -6819,86 +9047,8 @@ optionsCatalogsProductGroupUpdateRequest =
 
 
 -- | 
-data CatalogsProductGroupsCreate201Response = CatalogsProductGroupsCreate201Response
-  { catalogsProductGroupsCreate201ResponseId :: Text -- ^ ID of the catalog product group.
-  , catalogsProductGroupsCreate201ResponseName :: Maybe Text -- ^ Name of catalog product group
-  , catalogsProductGroupsCreate201ResponseDescription :: Maybe Text -- ^ 
-  , catalogsProductGroupsCreate201ResponseFilters :: CatalogsProductGroupFilters -- ^ 
-  , catalogsProductGroupsCreate201ResponseIsUnderscorefeatured :: Maybe Bool -- ^ boolean indicator of whether the product group is being featured or not
-  , catalogsProductGroupsCreate201ResponseType :: Maybe CatalogsProductGroupType -- ^ 
-  , catalogsProductGroupsCreate201ResponseStatus :: Maybe CatalogsProductGroupStatus -- ^ 
-  , catalogsProductGroupsCreate201ResponseCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
-  , catalogsProductGroupsCreate201ResponseUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
-  , catalogsProductGroupsCreate201ResponseFeedUnderscoreid :: Text -- ^ 
-  , catalogsProductGroupsCreate201ResponseCatalogUnderscoretype :: Text -- ^ 
-  , catalogsProductGroupsCreate201ResponseCatalogUnderscoreid :: Text -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CatalogsProductGroupsCreate201Response where
-  parseJSON = genericParseJSON optionsCatalogsProductGroupsCreate201Response
-instance ToJSON CatalogsProductGroupsCreate201Response where
-  toJSON = genericToJSON optionsCatalogsProductGroupsCreate201Response
-
-optionsCatalogsProductGroupsCreate201Response :: Options
-optionsCatalogsProductGroupsCreate201Response =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("catalogsProductGroupsCreate201ResponseId", "id")
-      , ("catalogsProductGroupsCreate201ResponseName", "name")
-      , ("catalogsProductGroupsCreate201ResponseDescription", "description")
-      , ("catalogsProductGroupsCreate201ResponseFilters", "filters")
-      , ("catalogsProductGroupsCreate201ResponseIsUnderscorefeatured", "is_featured")
-      , ("catalogsProductGroupsCreate201ResponseType", "type")
-      , ("catalogsProductGroupsCreate201ResponseStatus", "status")
-      , ("catalogsProductGroupsCreate201ResponseCreatedUnderscoreat", "created_at")
-      , ("catalogsProductGroupsCreate201ResponseUpdatedUnderscoreat", "updated_at")
-      , ("catalogsProductGroupsCreate201ResponseFeedUnderscoreid", "feed_id")
-      , ("catalogsProductGroupsCreate201ResponseCatalogUnderscoretype", "catalog_type")
-      , ("catalogsProductGroupsCreate201ResponseCatalogUnderscoreid", "catalog_id")
-      ]
-
-
--- | 
-data CatalogsProductGroupsCreateRequest = CatalogsProductGroupsCreateRequest
-  { catalogsProductGroupsCreateRequestName :: Text -- ^ 
-  , catalogsProductGroupsCreateRequestDescription :: Maybe Text -- ^ 
-  , catalogsProductGroupsCreateRequestIsUnderscorefeatured :: Maybe Bool -- ^ boolean indicator of whether the product group is being featured or not
-  , catalogsProductGroupsCreateRequestFilters :: CatalogsHotelProductGroupFilters -- ^ 
-  , catalogsProductGroupsCreateRequestFeedUnderscoreid :: Text -- ^ Catalog Feed id pertaining to the catalog product group.
-  , catalogsProductGroupsCreateRequestCatalogUnderscoretype :: Text -- ^ 
-  , catalogsProductGroupsCreateRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the hotel product group.
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CatalogsProductGroupsCreateRequest where
-  parseJSON = genericParseJSON optionsCatalogsProductGroupsCreateRequest
-instance ToJSON CatalogsProductGroupsCreateRequest where
-  toJSON = genericToJSON optionsCatalogsProductGroupsCreateRequest
-
-optionsCatalogsProductGroupsCreateRequest :: Options
-optionsCatalogsProductGroupsCreateRequest =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("catalogsProductGroupsCreateRequestName", "name")
-      , ("catalogsProductGroupsCreateRequestDescription", "description")
-      , ("catalogsProductGroupsCreateRequestIsUnderscorefeatured", "is_featured")
-      , ("catalogsProductGroupsCreateRequestFilters", "filters")
-      , ("catalogsProductGroupsCreateRequestFeedUnderscoreid", "feed_id")
-      , ("catalogsProductGroupsCreateRequestCatalogUnderscoretype", "catalog_type")
-      , ("catalogsProductGroupsCreateRequestCatalogUnderscoreid", "catalog_id")
-      ]
-
-
--- | 
 data CatalogsProductGroupsList200Response = CatalogsProductGroupsList200Response
-  { catalogsProductGroupsList200ResponseItems :: [CatalogsProductGroupsList200ResponseAllOfItemsInner] -- ^ 
+  { catalogsProductGroupsList200ResponseItems :: [CatalogsVerticalProductGroup] -- ^ 
   , catalogsProductGroupsList200ResponseBookmark :: Maybe Text -- ^ 
   } deriving (Show, Eq, Generic)
 
@@ -6921,56 +9071,14 @@ optionsCatalogsProductGroupsList200Response =
 
 
 -- | 
-data CatalogsProductGroupsList200ResponseAllOfItemsInner = CatalogsProductGroupsList200ResponseAllOfItemsInner
-  { catalogsProductGroupsList200ResponseAllOfItemsInnerId :: Text -- ^ ID of the catalog product group.
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerName :: Maybe Text -- ^ Name of catalog product group
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerDescription :: Maybe Text -- ^ 
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerFilters :: CatalogsProductGroupFilters -- ^ 
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerIsUnderscorefeatured :: Maybe Bool -- ^ boolean indicator of whether the product group is being featured or not
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerType :: Maybe CatalogsProductGroupType -- ^ 
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerStatus :: Maybe CatalogsProductGroupStatus -- ^ 
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerFeedUnderscoreid :: Text -- ^ 
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerCatalogUnderscoretype :: Text -- ^ 
-  , catalogsProductGroupsList200ResponseAllOfItemsInnerCatalogUnderscoreid :: Text -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CatalogsProductGroupsList200ResponseAllOfItemsInner where
-  parseJSON = genericParseJSON optionsCatalogsProductGroupsList200ResponseAllOfItemsInner
-instance ToJSON CatalogsProductGroupsList200ResponseAllOfItemsInner where
-  toJSON = genericToJSON optionsCatalogsProductGroupsList200ResponseAllOfItemsInner
-
-optionsCatalogsProductGroupsList200ResponseAllOfItemsInner :: Options
-optionsCatalogsProductGroupsList200ResponseAllOfItemsInner =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ ("catalogsProductGroupsList200ResponseAllOfItemsInnerId", "id")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerName", "name")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerDescription", "description")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerFilters", "filters")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerIsUnderscorefeatured", "is_featured")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerType", "type")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerStatus", "status")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerCreatedUnderscoreat", "created_at")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerUpdatedUnderscoreat", "updated_at")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerFeedUnderscoreid", "feed_id")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerCatalogUnderscoretype", "catalog_type")
-      , ("catalogsProductGroupsList200ResponseAllOfItemsInnerCatalogUnderscoreid", "catalog_id")
-      ]
-
-
--- | 
 data CatalogsProductGroupsUpdateRequest = CatalogsProductGroupsUpdateRequest
   { catalogsProductGroupsUpdateRequestName :: Maybe Text -- ^ 
   , catalogsProductGroupsUpdateRequestDescription :: Maybe Text -- ^ 
   , catalogsProductGroupsUpdateRequestIsUnderscorefeatured :: Maybe Bool -- ^ boolean indicator of whether the product group is being featured or not
-  , catalogsProductGroupsUpdateRequestFilters :: Maybe CatalogsHotelProductGroupFilters -- ^ 
+  , catalogsProductGroupsUpdateRequestFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters -- ^ 
   , catalogsProductGroupsUpdateRequestCatalogUnderscoretype :: Maybe Text -- ^ 
+  , catalogsProductGroupsUpdateRequestCountry :: Maybe Country -- ^ 
+  , catalogsProductGroupsUpdateRequestLocale :: Maybe CatalogsLocale -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsProductGroupsUpdateRequest where
@@ -6991,46 +9099,224 @@ optionsCatalogsProductGroupsUpdateRequest =
       , ("catalogsProductGroupsUpdateRequestIsUnderscorefeatured", "is_featured")
       , ("catalogsProductGroupsUpdateRequestFilters", "filters")
       , ("catalogsProductGroupsUpdateRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsProductGroupsUpdateRequestCountry", "country")
+      , ("catalogsProductGroupsUpdateRequestLocale", "locale")
       ]
 
 
--- | Product metadata entity
-data CatalogsProductMetadata = CatalogsProductMetadata
-  { catalogsProductMetadataItemUnderscoreid :: Text -- ^ The user-created unique ID that represents the product.
-  , catalogsProductMetadataItemUnderscoregroupUnderscoreid :: Text -- ^ The parent ID of the product.
-  , catalogsProductMetadataAvailability :: NonNullableProductAvailabilityType -- ^ 
-  , catalogsProductMetadataPrice :: Double -- ^ The price of the product.
-  , catalogsProductMetadataSaleUnderscoreprice :: Double -- ^ The discounted price of the product.
-  , catalogsProductMetadataCurrency :: NonNullableCatalogsCurrency -- ^ 
+-- | 
+data CatalogsReport = CatalogsReport
+  { catalogsReportReportUnderscorestatus :: Maybe Text -- ^ 
+  , catalogsReportUrl :: Maybe Text -- ^ URL to download the report
+  , catalogsReportSize :: Maybe Double -- ^ Size of the report in bytes
   } deriving (Show, Eq, Generic)
 
-instance FromJSON CatalogsProductMetadata where
-  parseJSON = genericParseJSON optionsCatalogsProductMetadata
-instance ToJSON CatalogsProductMetadata where
-  toJSON = genericToJSON optionsCatalogsProductMetadata
+instance FromJSON CatalogsReport where
+  parseJSON = genericParseJSON optionsCatalogsReport
+instance ToJSON CatalogsReport where
+  toJSON = genericToJSON optionsCatalogsReport
 
-optionsCatalogsProductMetadata :: Options
-optionsCatalogsProductMetadata =
+optionsCatalogsReport :: Options
+optionsCatalogsReport =
   defaultOptions
     { omitNothingFields  = True
     , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
     }
   where
     table =
-      [ ("catalogsProductMetadataItemUnderscoreid", "item_id")
-      , ("catalogsProductMetadataItemUnderscoregroupUnderscoreid", "item_group_id")
-      , ("catalogsProductMetadataAvailability", "availability")
-      , ("catalogsProductMetadataPrice", "price")
-      , ("catalogsProductMetadataSaleUnderscoreprice", "sale_price")
-      , ("catalogsProductMetadataCurrency", "currency")
+      [ ("catalogsReportReportUnderscorestatus", "report_status")
+      , ("catalogsReportUrl", "url")
+      , ("catalogsReportSize", "size")
+      ]
+
+
+-- | 
+data CatalogsReportDistributionIssueFilter = CatalogsReportDistributionIssueFilter
+  { catalogsReportDistributionIssueFilterReportUnderscoretype :: Text -- ^ 
+  , catalogsReportDistributionIssueFilterCatalogUnderscoreid :: Maybe Text -- ^ Unique identifier of a catalog. If not given, oldest catalog will be used
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsReportDistributionIssueFilter where
+  parseJSON = genericParseJSON optionsCatalogsReportDistributionIssueFilter
+instance ToJSON CatalogsReportDistributionIssueFilter where
+  toJSON = genericToJSON optionsCatalogsReportDistributionIssueFilter
+
+optionsCatalogsReportDistributionIssueFilter :: Options
+optionsCatalogsReportDistributionIssueFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsReportDistributionIssueFilterReportUnderscoretype", "report_type")
+      , ("catalogsReportDistributionIssueFilterCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | 
+data CatalogsReportDistributionStats = CatalogsReportDistributionStats
+  { catalogsReportDistributionStatsReportUnderscoretype :: Maybe Text -- ^ 
+  , catalogsReportDistributionStatsCatalogUnderscoreid :: Maybe Text -- ^ ID of the catalog entity.
+  , catalogsReportDistributionStatsCode :: Maybe Int -- ^ The event code that a diagnostics aggregated number references
+  , catalogsReportDistributionStatsCodeUnderscorelabel :: Maybe Text -- ^ A human-friendly label for the event code (e.g, 'SPAM')
+  , catalogsReportDistributionStatsMessage :: Maybe Text -- ^ Title message describing the diagnostic issue
+  , catalogsReportDistributionStatsOccurrences :: Maybe Int -- ^ Number of occurrences of the issue
+  , catalogsReportDistributionStatsIneligibleUnderscoreforUnderscoreads :: Maybe Bool -- ^ Indicates if issue makes items ineligible for ads distribution
+  , catalogsReportDistributionStatsIneligibleUnderscoreforUnderscoreorganic :: Maybe Bool -- ^ Indicates if issue makes items ineligible for organic distribution
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsReportDistributionStats where
+  parseJSON = genericParseJSON optionsCatalogsReportDistributionStats
+instance ToJSON CatalogsReportDistributionStats where
+  toJSON = genericToJSON optionsCatalogsReportDistributionStats
+
+optionsCatalogsReportDistributionStats :: Options
+optionsCatalogsReportDistributionStats =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsReportDistributionStatsReportUnderscoretype", "report_type")
+      , ("catalogsReportDistributionStatsCatalogUnderscoreid", "catalog_id")
+      , ("catalogsReportDistributionStatsCode", "code")
+      , ("catalogsReportDistributionStatsCodeUnderscorelabel", "code_label")
+      , ("catalogsReportDistributionStatsMessage", "message")
+      , ("catalogsReportDistributionStatsOccurrences", "occurrences")
+      , ("catalogsReportDistributionStatsIneligibleUnderscoreforUnderscoreads", "ineligible_for_ads")
+      , ("catalogsReportDistributionStatsIneligibleUnderscoreforUnderscoreorganic", "ineligible_for_organic")
+      ]
+
+
+-- | 
+data CatalogsReportFeedIngestionFilter = CatalogsReportFeedIngestionFilter
+  { catalogsReportFeedIngestionFilterReportUnderscoretype :: Text -- ^ 
+  , catalogsReportFeedIngestionFilterFeedUnderscoreid :: Text -- ^ ID of the feed entity.
+  , catalogsReportFeedIngestionFilterProcessingUnderscoreresultUnderscoreid :: Maybe Text -- ^ Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsReportFeedIngestionFilter where
+  parseJSON = genericParseJSON optionsCatalogsReportFeedIngestionFilter
+instance ToJSON CatalogsReportFeedIngestionFilter where
+  toJSON = genericToJSON optionsCatalogsReportFeedIngestionFilter
+
+optionsCatalogsReportFeedIngestionFilter :: Options
+optionsCatalogsReportFeedIngestionFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsReportFeedIngestionFilterReportUnderscoretype", "report_type")
+      , ("catalogsReportFeedIngestionFilterFeedUnderscoreid", "feed_id")
+      , ("catalogsReportFeedIngestionFilterProcessingUnderscoreresultUnderscoreid", "processing_result_id")
+      ]
+
+
+-- | 
+data CatalogsReportFeedIngestionStats = CatalogsReportFeedIngestionStats
+  { catalogsReportFeedIngestionStatsReportUnderscoretype :: Maybe Text -- ^ 
+  , catalogsReportFeedIngestionStatsCatalogUnderscoreid :: Maybe Text -- ^ ID of the catalog entity.
+  , catalogsReportFeedIngestionStatsCode :: Maybe Int -- ^ The event code that a diagnostics aggregated number references
+  , catalogsReportFeedIngestionStatsCodeUnderscorelabel :: Maybe Text -- ^ A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
+  , catalogsReportFeedIngestionStatsMessage :: Maybe Text -- ^ Title message describing the diagnostic issue
+  , catalogsReportFeedIngestionStatsOccurrences :: Maybe Int -- ^ Number of occurrences of the issue
+  , catalogsReportFeedIngestionStatsSeverity :: Maybe Text -- ^ An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsReportFeedIngestionStats where
+  parseJSON = genericParseJSON optionsCatalogsReportFeedIngestionStats
+instance ToJSON CatalogsReportFeedIngestionStats where
+  toJSON = genericToJSON optionsCatalogsReportFeedIngestionStats
+
+optionsCatalogsReportFeedIngestionStats :: Options
+optionsCatalogsReportFeedIngestionStats =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsReportFeedIngestionStatsReportUnderscoretype", "report_type")
+      , ("catalogsReportFeedIngestionStatsCatalogUnderscoreid", "catalog_id")
+      , ("catalogsReportFeedIngestionStatsCode", "code")
+      , ("catalogsReportFeedIngestionStatsCodeUnderscorelabel", "code_label")
+      , ("catalogsReportFeedIngestionStatsMessage", "message")
+      , ("catalogsReportFeedIngestionStatsOccurrences", "occurrences")
+      , ("catalogsReportFeedIngestionStatsSeverity", "severity")
+      ]
+
+
+-- | Report parameters
+data CatalogsReportParameters = CatalogsReportParameters
+  { catalogsReportParametersCatalogUnderscoretype :: CatalogsType -- ^ 
+  , catalogsReportParametersReport :: CatalogsHotelReportParametersReport -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsReportParameters where
+  parseJSON = genericParseJSON optionsCatalogsReportParameters
+instance ToJSON CatalogsReportParameters where
+  toJSON = genericToJSON optionsCatalogsReportParameters
+
+optionsCatalogsReportParameters :: Options
+optionsCatalogsReportParameters =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsReportParametersCatalogUnderscoretype", "catalog_type")
+      , ("catalogsReportParametersReport", "report")
+      ]
+
+
+-- | Diagnostics aggregated numbers
+data CatalogsReportStats = CatalogsReportStats
+  { catalogsReportStatsReportUnderscoretype :: Text -- ^ 
+  , catalogsReportStatsCatalogUnderscoreid :: Maybe Text -- ^ ID of the catalog entity.
+  , catalogsReportStatsCode :: Maybe Int -- ^ The event code that a diagnostics aggregated number references
+  , catalogsReportStatsCodeUnderscorelabel :: Maybe Text -- ^ A human-friendly label for the event code (e.g, 'SPAM')
+  , catalogsReportStatsMessage :: Maybe Text -- ^ Title message describing the diagnostic issue
+  , catalogsReportStatsOccurrences :: Maybe Int -- ^ Number of occurrences of the issue
+  , catalogsReportStatsSeverity :: Maybe Text -- ^ An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
+  , catalogsReportStatsIneligibleUnderscoreforUnderscoreads :: Maybe Bool -- ^ Indicates if issue makes items ineligible for ads distribution
+  , catalogsReportStatsIneligibleUnderscoreforUnderscoreorganic :: Maybe Bool -- ^ Indicates if issue makes items ineligible for organic distribution
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsReportStats where
+  parseJSON = genericParseJSON optionsCatalogsReportStats
+instance ToJSON CatalogsReportStats where
+  toJSON = genericToJSON optionsCatalogsReportStats
+
+optionsCatalogsReportStats :: Options
+optionsCatalogsReportStats =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsReportStatsReportUnderscoretype", "report_type")
+      , ("catalogsReportStatsCatalogUnderscoreid", "catalog_id")
+      , ("catalogsReportStatsCode", "code")
+      , ("catalogsReportStatsCodeUnderscorelabel", "code_label")
+      , ("catalogsReportStatsMessage", "message")
+      , ("catalogsReportStatsOccurrences", "occurrences")
+      , ("catalogsReportStatsSeverity", "severity")
+      , ("catalogsReportStatsIneligibleUnderscoreforUnderscoreads", "ineligible_for_ads")
+      , ("catalogsReportStatsIneligibleUnderscoreforUnderscoreorganic", "ineligible_for_organic")
       ]
 
 
 -- | A request object that can have multiple operations on a single retail batch
 data CatalogsRetailBatchRequest = CatalogsRetailBatchRequest
-  { catalogsRetailBatchRequestCatalogUnderscoretype :: CatalogsType -- ^ 
+  { catalogsRetailBatchRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsRetailBatchRequestCountry :: Country -- ^ 
-  , catalogsRetailBatchRequestLanguage :: Language -- ^ 
+  , catalogsRetailBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , catalogsRetailBatchRequestItems :: [CatalogsRetailBatchRequestItemsInner] -- ^ Array with catalogs item operations
   } deriving (Show, Eq, Generic)
 
@@ -7058,7 +9344,7 @@ optionsCatalogsRetailBatchRequest =
 data CatalogsRetailBatchRequestItemsInner = CatalogsRetailBatchRequestItemsInner
   { catalogsRetailBatchRequestItemsInnerItemUnderscoreid :: Text -- ^ The catalog item id in the merchant namespace
   , catalogsRetailBatchRequestItemsInnerOperation :: Text -- ^ 
-  , catalogsRetailBatchRequestItemsInnerAttributes :: ItemAttributes -- ^ 
+  , catalogsRetailBatchRequestItemsInnerAttributes :: ItemAttributesRequest -- ^ 
   , catalogsRetailBatchRequestItemsInnerUpdateUnderscoremask :: Maybe [UpdateMaskFieldType] -- ^ The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
   } deriving (Show, Eq, Generic)
 
@@ -7084,9 +9370,9 @@ optionsCatalogsRetailBatchRequestItemsInner =
 
 -- | Catalogs Retail Feed object
 data CatalogsRetailFeed = CatalogsRetailFeed
-  { catalogsRetailFeedCreatedUnderscoreat :: Maybe UTCTime -- ^ 
-  , catalogsRetailFeedId :: Maybe Text -- ^ 
-  , catalogsRetailFeedUpdatedUnderscoreat :: Maybe UTCTime -- ^ 
+  { catalogsRetailFeedCreatedUnderscoreat :: UTCTime -- ^ 
+  , catalogsRetailFeedId :: Text -- ^ 
+  , catalogsRetailFeedUpdatedUnderscoreat :: UTCTime -- ^ 
   , catalogsRetailFeedName :: Text -- ^ A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
   , catalogsRetailFeedFormat :: CatalogsFormat -- ^ 
   , catalogsRetailFeedCatalogUnderscoretype :: CatalogsType -- ^ 
@@ -7142,6 +9428,7 @@ data CatalogsRetailFeedsCreateRequest = CatalogsRetailFeedsCreateRequest
   , catalogsRetailFeedsCreateRequestCatalogUnderscoretype :: CatalogsType -- ^ 
   , catalogsRetailFeedsCreateRequestDefaultUnderscorecountry :: Country -- ^ 
   , catalogsRetailFeedsCreateRequestDefaultUnderscoreavailability :: Maybe ProductAvailabilityType -- ^ 
+  , catalogsRetailFeedsCreateRequestStatus :: Maybe CatalogsStatus -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsRetailFeedsCreateRequest where
@@ -7167,6 +9454,7 @@ optionsCatalogsRetailFeedsCreateRequest =
       , ("catalogsRetailFeedsCreateRequestCatalogUnderscoretype", "catalog_type")
       , ("catalogsRetailFeedsCreateRequestDefaultUnderscorecountry", "default_country")
       , ("catalogsRetailFeedsCreateRequestDefaultUnderscoreavailability", "default_availability")
+      , ("catalogsRetailFeedsCreateRequestStatus", "status")
       ]
 
 
@@ -7265,8 +9553,8 @@ optionsCatalogsRetailItemResponse =
 -- | Object describing the catalogs retail items batch
 data CatalogsRetailItemsBatch = CatalogsRetailItemsBatch
   { catalogsRetailItemsBatchBatchUnderscoreid :: Maybe Text -- ^ Id of the catalogs items batch
-  , catalogsRetailItemsBatchCreatedUnderscoretime :: Maybe UTCTime -- ^ Time of the batch creation: YYYY-MM-DD'T'hh:mm:ssTZD
-  , catalogsRetailItemsBatchCompletedUnderscoretime :: Maybe UTCTime -- ^ Time of the batch completion: YYYY-MM-DD'T'hh:mm:ssTZD
+  , catalogsRetailItemsBatchCreatedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+  , catalogsRetailItemsBatchCompletedUnderscoretime :: Maybe UTCTime -- ^ Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   , catalogsRetailItemsBatchStatus :: Maybe BatchOperationStatus -- ^ 
   , catalogsRetailItemsBatchCatalogUnderscoretype :: CatalogsType -- ^ 
   , catalogsRetailItemsBatchItems :: Maybe [ItemProcessingRecord] -- ^ Array with the catalogs items processing records part of the catalogs items batch
@@ -7321,6 +9609,88 @@ optionsCatalogsRetailItemsFilter =
 
 
 -- | 
+data CatalogsRetailItemsPostFilter = CatalogsRetailItemsPostFilter
+  { catalogsRetailItemsPostFilterCatalogUnderscoretype :: Text -- ^ 
+  , catalogsRetailItemsPostFilterItemUnderscoreids :: [Text] -- ^ 
+  , catalogsRetailItemsPostFilterCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailItemsPostFilter where
+  parseJSON = genericParseJSON optionsCatalogsRetailItemsPostFilter
+instance ToJSON CatalogsRetailItemsPostFilter where
+  toJSON = genericToJSON optionsCatalogsRetailItemsPostFilter
+
+optionsCatalogsRetailItemsPostFilter :: Options
+optionsCatalogsRetailItemsPostFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailItemsPostFilterCatalogUnderscoretype", "catalog_type")
+      , ("catalogsRetailItemsPostFilterItemUnderscoreids", "item_ids")
+      , ("catalogsRetailItemsPostFilterCatalogUnderscoreid", "catalog_id")
+      ]
+
+
+-- | Request object to list products for a given retail catalog_id and product group filter.
+data CatalogsRetailListProductsByCatalogBasedFilterRequest = CatalogsRetailListProductsByCatalogBasedFilterRequest
+  { catalogsRetailListProductsByCatalogBasedFilterRequestCatalogUnderscoretype :: Text -- ^ Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  , catalogsRetailListProductsByCatalogBasedFilterRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the retail product group.
+  , catalogsRetailListProductsByCatalogBasedFilterRequestFilters :: CatalogsProductGroupFilters -- ^ 
+  , catalogsRetailListProductsByCatalogBasedFilterRequestCountry :: Country -- ^ 
+  , catalogsRetailListProductsByCatalogBasedFilterRequestLocale :: CatalogsLocale -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailListProductsByCatalogBasedFilterRequest where
+  parseJSON = genericParseJSON optionsCatalogsRetailListProductsByCatalogBasedFilterRequest
+instance ToJSON CatalogsRetailListProductsByCatalogBasedFilterRequest where
+  toJSON = genericToJSON optionsCatalogsRetailListProductsByCatalogBasedFilterRequest
+
+optionsCatalogsRetailListProductsByCatalogBasedFilterRequest :: Options
+optionsCatalogsRetailListProductsByCatalogBasedFilterRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailListProductsByCatalogBasedFilterRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsRetailListProductsByCatalogBasedFilterRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsRetailListProductsByCatalogBasedFilterRequestFilters", "filters")
+      , ("catalogsRetailListProductsByCatalogBasedFilterRequestCountry", "country")
+      , ("catalogsRetailListProductsByCatalogBasedFilterRequestLocale", "locale")
+      ]
+
+
+-- | 
+data CatalogsRetailProduct = CatalogsRetailProduct
+  { catalogsRetailProductCatalogUnderscoretype :: Text -- ^ 
+  , catalogsRetailProductMetadata :: CatalogsRetailProductMetadata -- ^ 
+  , catalogsRetailProductPin :: Pin -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailProduct where
+  parseJSON = genericParseJSON optionsCatalogsRetailProduct
+instance ToJSON CatalogsRetailProduct where
+  toJSON = genericToJSON optionsCatalogsRetailProduct
+
+optionsCatalogsRetailProduct :: Options
+optionsCatalogsRetailProduct =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailProductCatalogUnderscoretype", "catalog_type")
+      , ("catalogsRetailProductMetadata", "metadata")
+      , ("catalogsRetailProductPin", "pin")
+      ]
+
+
+-- | 
 data CatalogsRetailProductGroup = CatalogsRetailProductGroup
   { catalogsRetailProductGroupCatalogUnderscoretype :: Text -- ^ 
   , catalogsRetailProductGroupId :: Text -- ^ ID of the catalog product group.
@@ -7332,7 +9702,10 @@ data CatalogsRetailProductGroup = CatalogsRetailProductGroup
   , catalogsRetailProductGroupStatus :: Maybe CatalogsProductGroupStatus -- ^ 
   , catalogsRetailProductGroupCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
   , catalogsRetailProductGroupUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
-  , catalogsRetailProductGroupFeedUnderscoreid :: Text -- ^ 
+  , catalogsRetailProductGroupCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the retail product group.
+  , catalogsRetailProductGroupFeedUnderscoreid :: Text -- ^ id of the catalogs feed belonging to this catalog product group
+  , catalogsRetailProductGroupCountry :: Maybe Text -- ^ 
+  , catalogsRetailProductGroupLocale :: Maybe Text -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsRetailProductGroup where
@@ -7358,7 +9731,164 @@ optionsCatalogsRetailProductGroup =
       , ("catalogsRetailProductGroupStatus", "status")
       , ("catalogsRetailProductGroupCreatedUnderscoreat", "created_at")
       , ("catalogsRetailProductGroupUpdatedUnderscoreat", "updated_at")
+      , ("catalogsRetailProductGroupCatalogUnderscoreid", "catalog_id")
       , ("catalogsRetailProductGroupFeedUnderscoreid", "feed_id")
+      , ("catalogsRetailProductGroupCountry", "country")
+      , ("catalogsRetailProductGroupLocale", "locale")
+      ]
+
+
+-- | Request object for creating a product group.
+data CatalogsRetailProductGroupCreateRequest = CatalogsRetailProductGroupCreateRequest
+  { catalogsRetailProductGroupCreateRequestCatalogUnderscoretype :: Text -- ^ Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  , catalogsRetailProductGroupCreateRequestName :: Text -- ^ 
+  , catalogsRetailProductGroupCreateRequestDescription :: Maybe Text -- ^ 
+  , catalogsRetailProductGroupCreateRequestFilters :: CatalogsProductGroupFiltersRequest -- ^ 
+  , catalogsRetailProductGroupCreateRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the retail product group.
+  , catalogsRetailProductGroupCreateRequestCountry :: Country -- ^ 
+  , catalogsRetailProductGroupCreateRequestLocale :: CatalogsLocale -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailProductGroupCreateRequest where
+  parseJSON = genericParseJSON optionsCatalogsRetailProductGroupCreateRequest
+instance ToJSON CatalogsRetailProductGroupCreateRequest where
+  toJSON = genericToJSON optionsCatalogsRetailProductGroupCreateRequest
+
+optionsCatalogsRetailProductGroupCreateRequest :: Options
+optionsCatalogsRetailProductGroupCreateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailProductGroupCreateRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsRetailProductGroupCreateRequestName", "name")
+      , ("catalogsRetailProductGroupCreateRequestDescription", "description")
+      , ("catalogsRetailProductGroupCreateRequestFilters", "filters")
+      , ("catalogsRetailProductGroupCreateRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsRetailProductGroupCreateRequestCountry", "country")
+      , ("catalogsRetailProductGroupCreateRequestLocale", "locale")
+      ]
+
+
+-- | Product counts for a Retail CatalogsProductGroup
+data CatalogsRetailProductGroupProductCounts = CatalogsRetailProductGroupProductCounts
+  { catalogsRetailProductGroupProductCountsCatalogUnderscoretype :: Text -- ^ 
+  , catalogsRetailProductGroupProductCountsInUnderscorestock :: Double -- ^ 
+  , catalogsRetailProductGroupProductCountsOutUnderscoreofUnderscorestock :: Double -- ^ 
+  , catalogsRetailProductGroupProductCountsPreorder :: Double -- ^ 
+  , catalogsRetailProductGroupProductCountsTotal :: Double -- ^ 
+  , catalogsRetailProductGroupProductCountsVideos :: Maybe Double -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailProductGroupProductCounts where
+  parseJSON = genericParseJSON optionsCatalogsRetailProductGroupProductCounts
+instance ToJSON CatalogsRetailProductGroupProductCounts where
+  toJSON = genericToJSON optionsCatalogsRetailProductGroupProductCounts
+
+optionsCatalogsRetailProductGroupProductCounts :: Options
+optionsCatalogsRetailProductGroupProductCounts =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailProductGroupProductCountsCatalogUnderscoretype", "catalog_type")
+      , ("catalogsRetailProductGroupProductCountsInUnderscorestock", "in_stock")
+      , ("catalogsRetailProductGroupProductCountsOutUnderscoreofUnderscorestock", "out_of_stock")
+      , ("catalogsRetailProductGroupProductCountsPreorder", "preorder")
+      , ("catalogsRetailProductGroupProductCountsTotal", "total")
+      , ("catalogsRetailProductGroupProductCountsVideos", "videos")
+      ]
+
+
+-- | Request object for updating a retail product group.
+data CatalogsRetailProductGroupUpdateRequest = CatalogsRetailProductGroupUpdateRequest
+  { catalogsRetailProductGroupUpdateRequestCatalogUnderscoretype :: Maybe Text -- ^ Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  , catalogsRetailProductGroupUpdateRequestName :: Maybe Text -- ^ 
+  , catalogsRetailProductGroupUpdateRequestDescription :: Maybe Text -- ^ 
+  , catalogsRetailProductGroupUpdateRequestFilters :: Maybe CatalogsProductGroupFiltersRequest -- ^ 
+  , catalogsRetailProductGroupUpdateRequestCountry :: Maybe Country -- ^ 
+  , catalogsRetailProductGroupUpdateRequestLocale :: Maybe CatalogsLocale -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailProductGroupUpdateRequest where
+  parseJSON = genericParseJSON optionsCatalogsRetailProductGroupUpdateRequest
+instance ToJSON CatalogsRetailProductGroupUpdateRequest where
+  toJSON = genericToJSON optionsCatalogsRetailProductGroupUpdateRequest
+
+optionsCatalogsRetailProductGroupUpdateRequest :: Options
+optionsCatalogsRetailProductGroupUpdateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailProductGroupUpdateRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsRetailProductGroupUpdateRequestName", "name")
+      , ("catalogsRetailProductGroupUpdateRequestDescription", "description")
+      , ("catalogsRetailProductGroupUpdateRequestFilters", "filters")
+      , ("catalogsRetailProductGroupUpdateRequestCountry", "country")
+      , ("catalogsRetailProductGroupUpdateRequestLocale", "locale")
+      ]
+
+
+-- | Retail product metadata entity
+data CatalogsRetailProductMetadata = CatalogsRetailProductMetadata
+  { catalogsRetailProductMetadataItemUnderscoreid :: Text -- ^ The user-created unique ID that represents the product.
+  , catalogsRetailProductMetadataItemUnderscoregroupUnderscoreid :: Text -- ^ The parent ID of the product.
+  , catalogsRetailProductMetadataAvailability :: NonNullableProductAvailabilityType -- ^ 
+  , catalogsRetailProductMetadataPrice :: Double -- ^ The price of the product.
+  , catalogsRetailProductMetadataSaleUnderscoreprice :: Double -- ^ The discounted price of the product.
+  , catalogsRetailProductMetadataCurrency :: NonNullableCatalogsCurrency -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailProductMetadata where
+  parseJSON = genericParseJSON optionsCatalogsRetailProductMetadata
+instance ToJSON CatalogsRetailProductMetadata where
+  toJSON = genericToJSON optionsCatalogsRetailProductMetadata
+
+optionsCatalogsRetailProductMetadata :: Options
+optionsCatalogsRetailProductMetadata =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailProductMetadataItemUnderscoreid", "item_id")
+      , ("catalogsRetailProductMetadataItemUnderscoregroupUnderscoreid", "item_group_id")
+      , ("catalogsRetailProductMetadataAvailability", "availability")
+      , ("catalogsRetailProductMetadataPrice", "price")
+      , ("catalogsRetailProductMetadataSaleUnderscoreprice", "sale_price")
+      , ("catalogsRetailProductMetadataCurrency", "currency")
+      ]
+
+
+-- | Parameters for retail report
+data CatalogsRetailReportParameters = CatalogsRetailReportParameters
+  { catalogsRetailReportParametersCatalogUnderscoretype :: Text -- ^ 
+  , catalogsRetailReportParametersReport :: CatalogsHotelReportParametersReport -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsRetailReportParameters where
+  parseJSON = genericParseJSON optionsCatalogsRetailReportParameters
+instance ToJSON CatalogsRetailReportParameters where
+  toJSON = genericToJSON optionsCatalogsRetailReportParameters
+
+optionsCatalogsRetailReportParameters :: Options
+optionsCatalogsRetailReportParameters =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsRetailReportParametersCatalogUnderscoretype", "catalog_type")
+      , ("catalogsRetailReportParametersReport", "report")
       ]
 
 
@@ -7403,6 +9933,50 @@ optionsCatalogsType =
   where
     table =
       [ 
+      ]
+
+
+-- | 
+data CatalogsUpdatableCreativeAssetsAttributes = CatalogsUpdatableCreativeAssetsAttributes
+  { catalogsUpdatableCreativeAssetsAttributesTitle :: Maybe Text -- ^ The name of the creative assets.
+  , catalogsUpdatableCreativeAssetsAttributesDescription :: Maybe Text -- ^ Brief description of the creative assets.
+  , catalogsUpdatableCreativeAssetsAttributesLink :: Maybe Text -- ^ Link to the creative assets page.
+  , catalogsUpdatableCreativeAssetsAttributesIosUnderscoredeepUnderscorelink :: Maybe Text -- ^ IOS deep link to the creative assets page.
+  , catalogsUpdatableCreativeAssetsAttributesAndroidUnderscoredeepUnderscorelink :: Maybe Text -- ^ Link to the creative assets page.
+  , catalogsUpdatableCreativeAssetsAttributesGoogleUnderscoreproductUnderscorecategory :: Maybe Text -- ^ The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+  , catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore0 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore1 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore2 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore3 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore4 :: Maybe Text -- ^ Custom grouping of creative assets.
+  , catalogsUpdatableCreativeAssetsAttributesVisibility :: Maybe Text -- ^ Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsUpdatableCreativeAssetsAttributes where
+  parseJSON = genericParseJSON optionsCatalogsUpdatableCreativeAssetsAttributes
+instance ToJSON CatalogsUpdatableCreativeAssetsAttributes where
+  toJSON = genericToJSON optionsCatalogsUpdatableCreativeAssetsAttributes
+
+optionsCatalogsUpdatableCreativeAssetsAttributes :: Options
+optionsCatalogsUpdatableCreativeAssetsAttributes =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsUpdatableCreativeAssetsAttributesTitle", "title")
+      , ("catalogsUpdatableCreativeAssetsAttributesDescription", "description")
+      , ("catalogsUpdatableCreativeAssetsAttributesLink", "link")
+      , ("catalogsUpdatableCreativeAssetsAttributesIosUnderscoredeepUnderscorelink", "ios_deep_link")
+      , ("catalogsUpdatableCreativeAssetsAttributesAndroidUnderscoredeepUnderscorelink", "android_deep_link")
+      , ("catalogsUpdatableCreativeAssetsAttributesGoogleUnderscoreproductUnderscorecategory", "google_product_category")
+      , ("catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore0", "custom_label_0")
+      , ("catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore1", "custom_label_1")
+      , ("catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore2", "custom_label_2")
+      , ("catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore3", "custom_label_3")
+      , ("catalogsUpdatableCreativeAssetsAttributesCustomUnderscorelabelUnderscore4", "custom_label_4")
+      , ("catalogsUpdatableCreativeAssetsAttributesVisibility", "visibility")
       ]
 
 
@@ -7460,6 +10034,32 @@ optionsCatalogsUpdatableHotelAttributes =
       ]
 
 
+-- | A creative assets item to be updated.
+data CatalogsUpdateCreativeAssetsItem = CatalogsUpdateCreativeAssetsItem
+  { catalogsUpdateCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid :: Text -- ^ The catalog creative assets item id in the merchant namespace
+  , catalogsUpdateCreativeAssetsItemOperation :: Text -- ^ 
+  , catalogsUpdateCreativeAssetsItemAttributes :: CatalogsUpdatableCreativeAssetsAttributes -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsUpdateCreativeAssetsItem where
+  parseJSON = genericParseJSON optionsCatalogsUpdateCreativeAssetsItem
+instance ToJSON CatalogsUpdateCreativeAssetsItem where
+  toJSON = genericToJSON optionsCatalogsUpdateCreativeAssetsItem
+
+optionsCatalogsUpdateCreativeAssetsItem :: Options
+optionsCatalogsUpdateCreativeAssetsItem =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsUpdateCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsUpdateCreativeAssetsItemOperation", "operation")
+      , ("catalogsUpdateCreativeAssetsItemAttributes", "attributes")
+      ]
+
+
 -- | Object describing an hotel item batch record
 data CatalogsUpdateHotelItem = CatalogsUpdateHotelItem
   { catalogsUpdateHotelItemHotelUnderscoreid :: Text -- ^ The catalog hotel item id in the merchant namespace
@@ -7514,6 +10114,32 @@ optionsCatalogsUpdateRetailItem =
       ]
 
 
+-- | A creative assets item to be upserted.
+data CatalogsUpsertCreativeAssetsItem = CatalogsUpsertCreativeAssetsItem
+  { catalogsUpsertCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid :: Text -- ^ The catalog creative assets id in the merchant namespace
+  , catalogsUpsertCreativeAssetsItemOperation :: Text -- ^ 
+  , catalogsUpsertCreativeAssetsItemAttributes :: CatalogsCreativeAssetsAttributes -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsUpsertCreativeAssetsItem where
+  parseJSON = genericParseJSON optionsCatalogsUpsertCreativeAssetsItem
+instance ToJSON CatalogsUpsertCreativeAssetsItem where
+  toJSON = genericToJSON optionsCatalogsUpsertCreativeAssetsItem
+
+optionsCatalogsUpsertCreativeAssetsItem :: Options
+optionsCatalogsUpsertCreativeAssetsItem =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsUpsertCreativeAssetsItemCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("catalogsUpsertCreativeAssetsItemOperation", "operation")
+      , ("catalogsUpsertCreativeAssetsItemAttributes", "attributes")
+      ]
+
+
 -- | A hotel item to be upserted.
 data CatalogsUpsertHotelItem = CatalogsUpsertHotelItem
   { catalogsUpsertHotelItemHotelUnderscoreid :: Text -- ^ The catalog hotel id in the merchant namespace
@@ -7544,7 +10170,7 @@ optionsCatalogsUpsertHotelItem =
 data CatalogsUpsertRetailItem = CatalogsUpsertRetailItem
   { catalogsUpsertRetailItemItemUnderscoreid :: Text -- ^ The catalog item id in the merchant namespace
   , catalogsUpsertRetailItemOperation :: Text -- ^ 
-  , catalogsUpsertRetailItemAttributes :: ItemAttributes -- ^ 
+  , catalogsUpsertRetailItemAttributes :: ItemAttributesRequest -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsUpsertRetailItem where
@@ -7568,11 +10194,11 @@ optionsCatalogsUpsertRetailItem =
 
 -- | A request object that can have multiple operations on a single batch
 data CatalogsVerticalBatchRequest = CatalogsVerticalBatchRequest
-  { catalogsVerticalBatchRequestCatalogUnderscoretype :: CatalogsType -- ^ 
+  { catalogsVerticalBatchRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsVerticalBatchRequestCountry :: Country -- ^ 
-  , catalogsVerticalBatchRequestLanguage :: Language -- ^ 
-  , catalogsVerticalBatchRequestItems :: [CatalogsHotelBatchItem] -- ^ Array with catalogs item operations
-  , catalogsVerticalBatchRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  , catalogsVerticalBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsVerticalBatchRequestItems :: [CatalogsCreativeAssetsBatchItem] -- ^ Array with creative assets item operations
+  , catalogsVerticalBatchRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsVerticalBatchRequest where
@@ -7608,7 +10234,8 @@ data CatalogsVerticalFeedsCreateRequest = CatalogsVerticalFeedsCreateRequest
   , catalogsVerticalFeedsCreateRequestCatalogUnderscoretype :: CatalogsType -- ^ 
   , catalogsVerticalFeedsCreateRequestDefaultUnderscorecountry :: Country -- ^ 
   , catalogsVerticalFeedsCreateRequestDefaultUnderscoreavailability :: Maybe ProductAvailabilityType -- ^ 
-  , catalogsVerticalFeedsCreateRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  , catalogsVerticalFeedsCreateRequestStatus :: Maybe CatalogsStatus -- ^ 
+  , catalogsVerticalFeedsCreateRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsVerticalFeedsCreateRequest where
@@ -7634,6 +10261,7 @@ optionsCatalogsVerticalFeedsCreateRequest =
       , ("catalogsVerticalFeedsCreateRequestCatalogUnderscoretype", "catalog_type")
       , ("catalogsVerticalFeedsCreateRequestDefaultUnderscorecountry", "default_country")
       , ("catalogsVerticalFeedsCreateRequestDefaultUnderscoreavailability", "default_availability")
+      , ("catalogsVerticalFeedsCreateRequestStatus", "status")
       , ("catalogsVerticalFeedsCreateRequestCatalogUnderscoreid", "catalog_id")
       ]
 
@@ -7679,17 +10307,19 @@ optionsCatalogsVerticalFeedsUpdateRequest =
 -- | 
 data CatalogsVerticalProductGroup = CatalogsVerticalProductGroup
   { catalogsVerticalProductGroupCatalogUnderscoretype :: Text -- ^ 
-  , catalogsVerticalProductGroupId :: Text -- ^ ID of the catalog product group.
-  , catalogsVerticalProductGroupName :: Maybe Text -- ^ Name of catalog product group
+  , catalogsVerticalProductGroupId :: Text -- ^ ID of the creative assets product group.
+  , catalogsVerticalProductGroupName :: Maybe Text -- ^ Name of creative assets product group
   , catalogsVerticalProductGroupDescription :: Maybe Text -- ^ 
-  , catalogsVerticalProductGroupFilters :: CatalogsProductGroupFilters -- ^ 
-  , catalogsVerticalProductGroupCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
-  , catalogsVerticalProductGroupUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
-  , catalogsVerticalProductGroupCatalogUnderscoreid :: Text -- ^ 
+  , catalogsVerticalProductGroupFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
   , catalogsVerticalProductGroupIsUnderscorefeatured :: Maybe Bool -- ^ boolean indicator of whether the product group is being featured or not
   , catalogsVerticalProductGroupType :: Maybe CatalogsProductGroupType -- ^ 
   , catalogsVerticalProductGroupStatus :: Maybe CatalogsProductGroupStatus -- ^ 
-  , catalogsVerticalProductGroupFeedUnderscoreid :: Text -- ^ 
+  , catalogsVerticalProductGroupCreatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of when catalog product group was created.
+  , catalogsVerticalProductGroupUpdatedUnderscoreat :: Maybe Int -- ^ Unix timestamp in seconds of last time catalog product group was updated.
+  , catalogsVerticalProductGroupCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  , catalogsVerticalProductGroupFeedUnderscoreid :: Text -- ^ id of the catalogs feed belonging to this catalog product group
+  , catalogsVerticalProductGroupCountry :: Maybe Text -- ^ 
+  , catalogsVerticalProductGroupLocale :: Maybe Text -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsVerticalProductGroup where
@@ -7710,23 +10340,27 @@ optionsCatalogsVerticalProductGroup =
       , ("catalogsVerticalProductGroupName", "name")
       , ("catalogsVerticalProductGroupDescription", "description")
       , ("catalogsVerticalProductGroupFilters", "filters")
-      , ("catalogsVerticalProductGroupCreatedUnderscoreat", "created_at")
-      , ("catalogsVerticalProductGroupUpdatedUnderscoreat", "updated_at")
-      , ("catalogsVerticalProductGroupCatalogUnderscoreid", "catalog_id")
       , ("catalogsVerticalProductGroupIsUnderscorefeatured", "is_featured")
       , ("catalogsVerticalProductGroupType", "type")
       , ("catalogsVerticalProductGroupStatus", "status")
+      , ("catalogsVerticalProductGroupCreatedUnderscoreat", "created_at")
+      , ("catalogsVerticalProductGroupUpdatedUnderscoreat", "updated_at")
+      , ("catalogsVerticalProductGroupCatalogUnderscoreid", "catalog_id")
       , ("catalogsVerticalProductGroupFeedUnderscoreid", "feed_id")
+      , ("catalogsVerticalProductGroupCountry", "country")
+      , ("catalogsVerticalProductGroupLocale", "locale")
       ]
 
 
--- | Request object for creating a hotel product group.
+-- | Request object for creating a catalog based product group.
 data CatalogsVerticalProductGroupCreateRequest = CatalogsVerticalProductGroupCreateRequest
   { catalogsVerticalProductGroupCreateRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsVerticalProductGroupCreateRequestName :: Text -- ^ 
   , catalogsVerticalProductGroupCreateRequestDescription :: Maybe Text -- ^ 
-  , catalogsVerticalProductGroupCreateRequestFilters :: CatalogsHotelProductGroupFilters -- ^ 
-  , catalogsVerticalProductGroupCreateRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the hotel product group.
+  , catalogsVerticalProductGroupCreateRequestFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  , catalogsVerticalProductGroupCreateRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  , catalogsVerticalProductGroupCreateRequestCountry :: Country -- ^ 
+  , catalogsVerticalProductGroupCreateRequestLocale :: CatalogsLocale -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsVerticalProductGroupCreateRequest where
@@ -7747,15 +10381,19 @@ optionsCatalogsVerticalProductGroupCreateRequest =
       , ("catalogsVerticalProductGroupCreateRequestDescription", "description")
       , ("catalogsVerticalProductGroupCreateRequestFilters", "filters")
       , ("catalogsVerticalProductGroupCreateRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsVerticalProductGroupCreateRequestCountry", "country")
+      , ("catalogsVerticalProductGroupCreateRequestLocale", "locale")
       ]
 
 
--- | Request object for updating a hotel product group.
+-- | Request object for updating a catalog based product group.
 data CatalogsVerticalProductGroupUpdateRequest = CatalogsVerticalProductGroupUpdateRequest
   { catalogsVerticalProductGroupUpdateRequestCatalogUnderscoretype :: Maybe Text -- ^ 
   , catalogsVerticalProductGroupUpdateRequestName :: Maybe Text -- ^ 
   , catalogsVerticalProductGroupUpdateRequestDescription :: Maybe Text -- ^ 
-  , catalogsVerticalProductGroupUpdateRequestFilters :: Maybe CatalogsHotelProductGroupFilters -- ^ 
+  , catalogsVerticalProductGroupUpdateRequestFilters :: Maybe CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  , catalogsVerticalProductGroupUpdateRequestCountry :: Maybe Country -- ^ 
+  , catalogsVerticalProductGroupUpdateRequestLocale :: Maybe CatalogsLocale -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CatalogsVerticalProductGroupUpdateRequest where
@@ -7775,6 +10413,38 @@ optionsCatalogsVerticalProductGroupUpdateRequest =
       , ("catalogsVerticalProductGroupUpdateRequestName", "name")
       , ("catalogsVerticalProductGroupUpdateRequestDescription", "description")
       , ("catalogsVerticalProductGroupUpdateRequestFilters", "filters")
+      , ("catalogsVerticalProductGroupUpdateRequestCountry", "country")
+      , ("catalogsVerticalProductGroupUpdateRequestLocale", "locale")
+      ]
+
+
+-- | Request object to list products for a given catalog_id and product group filter.
+data CatalogsVerticalsListProductsByCatalogBasedFilterRequest = CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+  { catalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogUnderscoretype :: Text -- ^ 
+  , catalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  , catalogsVerticalsListProductsByCatalogBasedFilterRequestFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  , catalogsVerticalsListProductsByCatalogBasedFilterRequestCountry :: Country -- ^ 
+  , catalogsVerticalsListProductsByCatalogBasedFilterRequestLocale :: CatalogsLocale -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CatalogsVerticalsListProductsByCatalogBasedFilterRequest where
+  parseJSON = genericParseJSON optionsCatalogsVerticalsListProductsByCatalogBasedFilterRequest
+instance ToJSON CatalogsVerticalsListProductsByCatalogBasedFilterRequest where
+  toJSON = genericToJSON optionsCatalogsVerticalsListProductsByCatalogBasedFilterRequest
+
+optionsCatalogsVerticalsListProductsByCatalogBasedFilterRequest :: Options
+optionsCatalogsVerticalsListProductsByCatalogBasedFilterRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("catalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogUnderscoretype", "catalog_type")
+      , ("catalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogUnderscoreid", "catalog_id")
+      , ("catalogsVerticalsListProductsByCatalogBasedFilterRequestFilters", "filters")
+      , ("catalogsVerticalsListProductsByCatalogBasedFilterRequestCountry", "country")
+      , ("catalogsVerticalsListProductsByCatalogBasedFilterRequestLocale", "locale")
       ]
 
 
@@ -7926,8 +10596,8 @@ optionsConversionEvents =
 
 -- | 
 data ConversionEventsDataInner = ConversionEventsDataInner
-  { conversionEventsDataInnerEventUnderscorename :: Text -- ^ The type of the user event. Please use the right event_name otherwise the event won’t be accepted and show up correctly in reports. <li><code>add_to_cart</code> <li><code>checkout</code> <li><code>custom</code> <li><code>lead</code> <li><code>page_visit</code> <li><code>search</code> <li><code>signup</code> <li><code>view_category</code> <li><code>watch_video</code>
-  , conversionEventsDataInnerActionUnderscoresource :: Text -- ^ The source indicating where the conversion event occurred. <li><code>app_android</code> <li><code>app_ios</code> <li><code>web</code> <li><code>offline</code>
+  { conversionEventsDataInnerEventUnderscorename :: Text -- ^ <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
+  , conversionEventsDataInnerActionUnderscoresource :: Text -- ^ <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
   , conversionEventsDataInnerEventUnderscoretime :: Int64 -- ^ The time when the event happened. Unix timestamp in seconds.
   , conversionEventsDataInnerEventUnderscoreid :: Text -- ^ A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
   , conversionEventsDataInnerEventUnderscoresourceUnderscoreurl :: Maybe Text -- ^ URL of the web conversion event.
@@ -7994,7 +10664,7 @@ data ConversionEventsDataInnerCustomData = ConversionEventsDataInnerCustomData
   , conversionEventsDataInnerCustomDataNumUnderscoreitems :: Maybe Int64 -- ^ Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
   , conversionEventsDataInnerCustomDataOrderUnderscoreid :: Maybe Text -- ^ The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
   , conversionEventsDataInnerCustomDataSearchUnderscorestring :: Maybe Text -- ^ The search string related to the user conversion event.
-  , conversionEventsDataInnerCustomDataOptUnderscoreoutUnderscoretype :: Maybe Text -- ^ Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
+  , conversionEventsDataInnerCustomDataOptUnderscoreoutUnderscoretype :: Maybe Text -- ^ Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
   , conversionEventsDataInnerCustomDataNp :: Maybe Text -- ^ Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
   } deriving (Show, Eq, Generic)
 
@@ -8060,18 +10730,22 @@ optionsConversionEventsDataInnerCustomDataContentsInner =
 
 -- | Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
 data ConversionEventsUserData = ConversionEventsUserData
-  { conversionEventsUserDataPh :: Maybe [Text] -- ^ Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-  , conversionEventsUserDataGe :: Maybe [Text] -- ^ Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender.
-  , conversionEventsUserDataDb :: Maybe [Text] -- ^ Sha256 hashes of user's date of birthday, given as year, month, and day.
-  , conversionEventsUserDataLn :: Maybe [Text] -- ^ Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-  , conversionEventsUserDataFn :: Maybe [Text] -- ^ Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
-  , conversionEventsUserDataCt :: Maybe [Text] -- ^ Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing).
-  , conversionEventsUserDataSt :: Maybe [Text] -- ^ Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing).
-  , conversionEventsUserDataZp :: Maybe [Text] -- ^ Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing).
-  , conversionEventsUserDataCountry :: Maybe [Text] -- ^ Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase.
-  , conversionEventsUserDataExternalUnderscoreid :: Maybe [Text] -- ^ Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA.
+  { conversionEventsUserDataPh :: Maybe [Text] -- ^ Sha256 hashes of user's phone numbers, only digits with country code, area code, and number. Remove any symbols, letters, spaces and leading zeros. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataGe :: Maybe [Text] -- ^ Sha256 hashes of user's gender, in lowercase. Either \"f\" or \"m\" or \"n\" for non-binary gender. The string should be in the UTF-8 format.
+  , conversionEventsUserDataDb :: Maybe [Text] -- ^ Sha256 hashes of user's date of birthday, given as year, month, and day. The string should be in the UTF-8 format.
+  , conversionEventsUserDataLn :: Maybe [Text] -- ^ Sha256 hashes of user's last name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataFn :: Maybe [Text] -- ^ Sha256 hashes of user's first name, in lowercase. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataCt :: Maybe [Text] -- ^ Sha256 hashes of user's city, in lowercase, and without spaces or punctuation. User residency city (mostly billing). The string should be in the UTF-8 format.
+  , conversionEventsUserDataSt :: Maybe [Text] -- ^ Sha256 hashes of user's state, given as a two-letter code in lowercase. User residency state (mostly billing). The string should be in the UTF-8 format.
+  , conversionEventsUserDataZp :: Maybe [Text] -- ^ Sha256 hashes of user's zipcode, only digits. User residency zipcode (mostly billing). The string should be in the UTF-8 format.
+  , conversionEventsUserDataCountry :: Maybe [Text] -- ^ Sha256 hashes of two-character ISO-3166 country code indicating the user's country, in lowercase. The string should be in the UTF-8 format.
+  , conversionEventsUserDataExternalUnderscoreid :: Maybe [Text] -- ^ Sha256 hashes of the unique id from the advertiser that identifies a user in their space, e.g. user id, loyalty id, etc. We highly recommend this on all events. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
   , conversionEventsUserDataClickUnderscoreid :: Maybe Text -- ^ The unique identifier stored in _epik cookie on your domain or &epik= query parameter in the URL. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA.
   , conversionEventsUserDataPartnerUnderscoreid :: Maybe Text -- ^ A unique identifier of visitors' information defined by third party partners. e.g RampID
+  , conversionEventsUserDataEm :: [Text] -- ^ Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataHashedUnderscoremaids :: [Text] -- ^ Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataClientUnderscoreipUnderscoreaddress :: Text -- ^ The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+  , conversionEventsUserDataClientUnderscoreuserUnderscoreagent :: Text -- ^ The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ConversionEventsUserData where
@@ -8099,6 +10773,94 @@ optionsConversionEventsUserData =
       , ("conversionEventsUserDataExternalUnderscoreid", "external_id")
       , ("conversionEventsUserDataClickUnderscoreid", "click_id")
       , ("conversionEventsUserDataPartnerUnderscoreid", "partner_id")
+      , ("conversionEventsUserDataEm", "em")
+      , ("conversionEventsUserDataHashedUnderscoremaids", "hashed_maids")
+      , ("conversionEventsUserDataClientUnderscoreipUnderscoreaddress", "client_ip_address")
+      , ("conversionEventsUserDataClientUnderscoreuserUnderscoreagent", "client_user_agent")
+      ]
+
+
+-- | 
+data ConversionEventsUserDataAnyOf = ConversionEventsUserDataAnyOf
+  { conversionEventsUserDataAnyOfEm :: [Text] -- ^ Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataAnyOfHashedUnderscoremaids :: Maybe [Text] -- ^ Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataAnyOfClientUnderscoreipUnderscoreaddress :: Maybe Text -- ^ The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+  , conversionEventsUserDataAnyOfClientUnderscoreuserUnderscoreagent :: Maybe Text -- ^ The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ConversionEventsUserDataAnyOf where
+  parseJSON = genericParseJSON optionsConversionEventsUserDataAnyOf
+instance ToJSON ConversionEventsUserDataAnyOf where
+  toJSON = genericToJSON optionsConversionEventsUserDataAnyOf
+
+optionsConversionEventsUserDataAnyOf :: Options
+optionsConversionEventsUserDataAnyOf =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("conversionEventsUserDataAnyOfEm", "em")
+      , ("conversionEventsUserDataAnyOfHashedUnderscoremaids", "hashed_maids")
+      , ("conversionEventsUserDataAnyOfClientUnderscoreipUnderscoreaddress", "client_ip_address")
+      , ("conversionEventsUserDataAnyOfClientUnderscoreuserUnderscoreagent", "client_user_agent")
+      ]
+
+
+-- | 
+data ConversionEventsUserDataAnyOf1 = ConversionEventsUserDataAnyOf1
+  { conversionEventsUserDataAnyOf1Em :: Maybe [Text] -- ^ Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataAnyOf1HashedUnderscoremaids :: [Text] -- ^ Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataAnyOf1ClientUnderscoreipUnderscoreaddress :: Maybe Text -- ^ The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+  , conversionEventsUserDataAnyOf1ClientUnderscoreuserUnderscoreagent :: Maybe Text -- ^ The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ConversionEventsUserDataAnyOf1 where
+  parseJSON = genericParseJSON optionsConversionEventsUserDataAnyOf1
+instance ToJSON ConversionEventsUserDataAnyOf1 where
+  toJSON = genericToJSON optionsConversionEventsUserDataAnyOf1
+
+optionsConversionEventsUserDataAnyOf1 :: Options
+optionsConversionEventsUserDataAnyOf1 =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("conversionEventsUserDataAnyOf1Em", "em")
+      , ("conversionEventsUserDataAnyOf1HashedUnderscoremaids", "hashed_maids")
+      , ("conversionEventsUserDataAnyOf1ClientUnderscoreipUnderscoreaddress", "client_ip_address")
+      , ("conversionEventsUserDataAnyOf1ClientUnderscoreuserUnderscoreagent", "client_user_agent")
+      ]
+
+
+-- | 
+data ConversionEventsUserDataAnyOf2 = ConversionEventsUserDataAnyOf2
+  { conversionEventsUserDataAnyOf2Em :: Maybe [Text] -- ^ Sha256 hashes of lowercase version of user's email addresses. Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataAnyOf2HashedUnderscoremaids :: Maybe [Text] -- ^ Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.
+  , conversionEventsUserDataAnyOf2ClientUnderscoreipUnderscoreaddress :: Text -- ^ The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+  , conversionEventsUserDataAnyOf2ClientUnderscoreuserUnderscoreagent :: Text -- ^ The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ConversionEventsUserDataAnyOf2 where
+  parseJSON = genericParseJSON optionsConversionEventsUserDataAnyOf2
+instance ToJSON ConversionEventsUserDataAnyOf2 where
+  toJSON = genericToJSON optionsConversionEventsUserDataAnyOf2
+
+optionsConversionEventsUserDataAnyOf2 :: Options
+optionsConversionEventsUserDataAnyOf2 =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("conversionEventsUserDataAnyOf2Em", "em")
+      , ("conversionEventsUserDataAnyOf2HashedUnderscoremaids", "hashed_maids")
+      , ("conversionEventsUserDataAnyOf2ClientUnderscoreipUnderscoreaddress", "client_ip_address")
+      , ("conversionEventsUserDataAnyOf2ClientUnderscoreuserUnderscoreagent", "client_user_agent")
       ]
 
 
@@ -8380,6 +11142,266 @@ optionsCountryFilter =
       ]
 
 
+-- | An object containing a list of all the asset access requests
+data CreateAssetAccessRequestBody = CreateAssetAccessRequestBody
+  { createAssetAccessRequestBodyAssetUnderscorerequests :: [CreateAssetAccessRequestBodyAssetRequestsInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetAccessRequestBody where
+  parseJSON = genericParseJSON optionsCreateAssetAccessRequestBody
+instance ToJSON CreateAssetAccessRequestBody where
+  toJSON = genericToJSON optionsCreateAssetAccessRequestBody
+
+optionsCreateAssetAccessRequestBody :: Options
+optionsCreateAssetAccessRequestBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetAccessRequestBodyAssetUnderscorerequests", "asset_requests")
+      ]
+
+
+-- | 
+data CreateAssetAccessRequestBodyAssetRequestsInner = CreateAssetAccessRequestBodyAssetRequestsInner
+  { createAssetAccessRequestBodyAssetRequestsInnerPartnerUnderscoreid :: Text -- ^ Unique identifier of a business partner to request asset access to.
+  , createAssetAccessRequestBodyAssetRequestsInnerAssetUnderscoreidUnderscoretoUnderscorepermissions :: (Map.Map String [Permissions]) -- ^ An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetAccessRequestBodyAssetRequestsInner where
+  parseJSON = genericParseJSON optionsCreateAssetAccessRequestBodyAssetRequestsInner
+instance ToJSON CreateAssetAccessRequestBodyAssetRequestsInner where
+  toJSON = genericToJSON optionsCreateAssetAccessRequestBodyAssetRequestsInner
+
+optionsCreateAssetAccessRequestBodyAssetRequestsInner :: Options
+optionsCreateAssetAccessRequestBodyAssetRequestsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetAccessRequestBodyAssetRequestsInnerPartnerUnderscoreid", "partner_id")
+      , ("createAssetAccessRequestBodyAssetRequestsInnerAssetUnderscoreidUnderscoretoUnderscorepermissions", "asset_id_to_permissions")
+      ]
+
+
+-- | 
+data CreateAssetAccessRequestErrorMessageInner = CreateAssetAccessRequestErrorMessageInner
+  { createAssetAccessRequestErrorMessageInnerCode :: Maybe Int -- ^ Error code associated with the error in requesting asset access.
+  , createAssetAccessRequestErrorMessageInnerMessages :: Maybe [Text] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetAccessRequestErrorMessageInner where
+  parseJSON = genericParseJSON optionsCreateAssetAccessRequestErrorMessageInner
+instance ToJSON CreateAssetAccessRequestErrorMessageInner where
+  toJSON = genericToJSON optionsCreateAssetAccessRequestErrorMessageInner
+
+optionsCreateAssetAccessRequestErrorMessageInner :: Options
+optionsCreateAssetAccessRequestErrorMessageInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetAccessRequestErrorMessageInnerCode", "code")
+      , ("createAssetAccessRequestErrorMessageInnerMessages", "messages")
+      ]
+
+
+-- | 
+data CreateAssetAccessRequestResponse = CreateAssetAccessRequestResponse
+  { createAssetAccessRequestResponseExceptions :: Maybe [CreateAssetAccessRequestErrorMessageInner] -- ^ A list of errors associated with the asset access requests. Will be returned if there is an error.
+  , createAssetAccessRequestResponseInvites :: Maybe (Map.Map String Text) -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetAccessRequestResponse where
+  parseJSON = genericParseJSON optionsCreateAssetAccessRequestResponse
+instance ToJSON CreateAssetAccessRequestResponse where
+  toJSON = genericToJSON optionsCreateAssetAccessRequestResponse
+
+optionsCreateAssetAccessRequestResponse :: Options
+optionsCreateAssetAccessRequestResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetAccessRequestResponseExceptions", "exceptions")
+      , ("createAssetAccessRequestResponseInvites", "invites")
+      ]
+
+
+-- | 
+data CreateAssetGroupBody = CreateAssetGroupBody
+  { createAssetGroupBodyAssetUnderscoregroupUnderscorename :: Text -- ^ Asset Group name
+  , createAssetGroupBodyAssetUnderscoregroupUnderscoredescription :: Text -- ^ Asset group description
+  , createAssetGroupBodyAssetUnderscoregroupUnderscoretypes :: [AssetGroupType] -- ^ Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetGroupBody where
+  parseJSON = genericParseJSON optionsCreateAssetGroupBody
+instance ToJSON CreateAssetGroupBody where
+  toJSON = genericToJSON optionsCreateAssetGroupBody
+
+optionsCreateAssetGroupBody :: Options
+optionsCreateAssetGroupBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetGroupBodyAssetUnderscoregroupUnderscorename", "asset_group_name")
+      , ("createAssetGroupBodyAssetUnderscoregroupUnderscoredescription", "asset_group_description")
+      , ("createAssetGroupBodyAssetUnderscoregroupUnderscoretypes", "asset_group_types")
+      ]
+
+
+-- | 
+data CreateAssetGroupResponse = CreateAssetGroupResponse
+  { createAssetGroupResponseAssetUnderscoregroup :: Maybe AssetGroupBinding -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetGroupResponse where
+  parseJSON = genericParseJSON optionsCreateAssetGroupResponse
+instance ToJSON CreateAssetGroupResponse where
+  toJSON = genericToJSON optionsCreateAssetGroupResponse
+
+optionsCreateAssetGroupResponse :: Options
+optionsCreateAssetGroupResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetGroupResponseAssetUnderscoregroup", "asset_group")
+      ]
+
+
+-- | Request body for updating asset roles for existing invites.
+data CreateAssetInvitesRequest = CreateAssetInvitesRequest
+  { createAssetInvitesRequestInvites :: [CreateAssetInvitesRequestItem] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetInvitesRequest where
+  parseJSON = genericParseJSON optionsCreateAssetInvitesRequest
+instance ToJSON CreateAssetInvitesRequest where
+  toJSON = genericToJSON optionsCreateAssetInvitesRequest
+
+optionsCreateAssetInvitesRequest :: Options
+optionsCreateAssetInvitesRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetInvitesRequestInvites", "invites")
+      ]
+
+
+-- | Object declaring an asset role update to an invite.
+data CreateAssetInvitesRequestItem = CreateAssetInvitesRequestItem
+  { createAssetInvitesRequestItemInviteUnderscoreid :: Text -- ^ Unique identifier of an invite.
+  , createAssetInvitesRequestItemInviteUnderscoretype :: InviteType -- ^ 
+  , createAssetInvitesRequestItemAssetUnderscoreidUnderscoretoUnderscorepermissions :: (Map.Map String [Permissions]) -- ^ An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateAssetInvitesRequestItem where
+  parseJSON = genericParseJSON optionsCreateAssetInvitesRequestItem
+instance ToJSON CreateAssetInvitesRequestItem where
+  toJSON = genericToJSON optionsCreateAssetInvitesRequestItem
+
+optionsCreateAssetInvitesRequestItem :: Options
+optionsCreateAssetInvitesRequestItem =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createAssetInvitesRequestItemInviteUnderscoreid", "invite_id")
+      , ("createAssetInvitesRequestItemInviteUnderscoretype", "invite_type")
+      , ("createAssetInvitesRequestItemAssetUnderscoreidUnderscoretoUnderscorepermissions", "asset_id_to_permissions")
+      ]
+
+
+-- | 
+data CreateInvitesResultsResponseArray = CreateInvitesResultsResponseArray
+  { createInvitesResultsResponseArrayItems :: Maybe [CreateInvitesResultsResponseArrayItemsInner] -- ^ List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateInvitesResultsResponseArray where
+  parseJSON = genericParseJSON optionsCreateInvitesResultsResponseArray
+instance ToJSON CreateInvitesResultsResponseArray where
+  toJSON = genericToJSON optionsCreateInvitesResultsResponseArray
+
+optionsCreateInvitesResultsResponseArray :: Options
+optionsCreateInvitesResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createInvitesResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data CreateInvitesResultsResponseArrayItemsInner = CreateInvitesResultsResponseArrayItemsInner
+  { createInvitesResultsResponseArrayItemsInnerException :: Maybe InviteExceptionResponse -- ^ 
+  , createInvitesResultsResponseArrayItemsInnerInvite :: Maybe CreateInvitesResultsResponseArrayItemsInnerInvite -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateInvitesResultsResponseArrayItemsInner where
+  parseJSON = genericParseJSON optionsCreateInvitesResultsResponseArrayItemsInner
+instance ToJSON CreateInvitesResultsResponseArrayItemsInner where
+  toJSON = genericToJSON optionsCreateInvitesResultsResponseArrayItemsInner
+
+optionsCreateInvitesResultsResponseArrayItemsInner :: Options
+optionsCreateInvitesResultsResponseArrayItemsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createInvitesResultsResponseArrayItemsInnerException", "exception")
+      , ("createInvitesResultsResponseArrayItemsInnerInvite", "invite")
+      ]
+
+
+-- | An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
+data CreateInvitesResultsResponseArrayItemsInnerInvite = CreateInvitesResultsResponseArrayItemsInnerInvite
+  { createInvitesResultsResponseArrayItemsInnerInviteId :: Maybe Text -- ^ Unique identifier of the invite/request.
+  , createInvitesResultsResponseArrayItemsInnerInviteUser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the member/partner that was sent the invite/request.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateInvitesResultsResponseArrayItemsInnerInvite where
+  parseJSON = genericParseJSON optionsCreateInvitesResultsResponseArrayItemsInnerInvite
+instance ToJSON CreateInvitesResultsResponseArrayItemsInnerInvite where
+  toJSON = genericToJSON optionsCreateInvitesResultsResponseArrayItemsInnerInvite
+
+optionsCreateInvitesResultsResponseArrayItemsInnerInvite :: Options
+optionsCreateInvitesResultsResponseArrayItemsInnerInvite =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createInvitesResultsResponseArrayItemsInnerInviteId", "id")
+      , ("createInvitesResultsResponseArrayItemsInnerInviteUser", "user")
+      ]
+
+
 -- | 
 data CreateMMMReportRequest = CreateMMMReportRequest
   { createMMMReportRequestReportUnderscorename :: Text -- ^ Name of the Marketing Mix Modeling (MMM) report
@@ -8465,6 +11487,106 @@ optionsCreateMMMReportResponseData =
       , ("createMMMReportResponseDataToken", "token")
       , ("createMMMReportResponseDataMessage", "message")
       , ("createMMMReportResponseDataStatus", "status")
+      ]
+
+
+-- | Body to be used on path to send Members or Partners Invite or Request
+data CreateMembershipOrPartnershipInvitesBody = CreateMembershipOrPartnershipInvitesBody
+  { createMembershipOrPartnershipInvitesBodyBusinessUnderscorerole :: Text -- ^ The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+  , createMembershipOrPartnershipInvitesBodyInviteUnderscoretype :: InviteType -- ^ 
+  , createMembershipOrPartnershipInvitesBodyMembers :: Maybe [Text] -- ^ A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
+  , createMembershipOrPartnershipInvitesBodyPartners :: Maybe [Text] -- ^ A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreateMembershipOrPartnershipInvitesBody where
+  parseJSON = genericParseJSON optionsCreateMembershipOrPartnershipInvitesBody
+instance ToJSON CreateMembershipOrPartnershipInvitesBody where
+  toJSON = genericToJSON optionsCreateMembershipOrPartnershipInvitesBody
+
+optionsCreateMembershipOrPartnershipInvitesBody :: Options
+optionsCreateMembershipOrPartnershipInvitesBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("createMembershipOrPartnershipInvitesBodyBusinessUnderscorerole", "business_role")
+      , ("createMembershipOrPartnershipInvitesBodyInviteUnderscoretype", "invite_type")
+      , ("createMembershipOrPartnershipInvitesBodyMembers", "members")
+      , ("createMembershipOrPartnershipInvitesBodyPartners", "partners")
+      ]
+
+
+-- | 
+data CreativeAssetsIdFilter = CreativeAssetsIdFilter
+  { creativeAssetsIdFilterCREATIVEUnderscoreASSETSUnderscoreID :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreativeAssetsIdFilter where
+  parseJSON = genericParseJSON optionsCreativeAssetsIdFilter
+instance ToJSON CreativeAssetsIdFilter where
+  toJSON = genericToJSON optionsCreativeAssetsIdFilter
+
+optionsCreativeAssetsIdFilter :: Options
+optionsCreativeAssetsIdFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("creativeAssetsIdFilterCREATIVEUnderscoreASSETSUnderscoreID", "CREATIVE_ASSETS_ID")
+      ]
+
+
+-- | Object describing an item processing record
+data CreativeAssetsProcessingRecord = CreativeAssetsProcessingRecord
+  { creativeAssetsProcessingRecordCreativeUnderscoreassetsUnderscoreid :: Maybe Text -- ^ The catalog creative assets id in the merchant namespace
+  , creativeAssetsProcessingRecordErrors :: Maybe [ItemValidationEvent] -- ^ Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
+  , creativeAssetsProcessingRecordWarnings :: Maybe [ItemValidationEvent] -- ^ Array with the validation warnings for the item processing record
+  , creativeAssetsProcessingRecordStatus :: Maybe ItemProcessingStatus -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreativeAssetsProcessingRecord where
+  parseJSON = genericParseJSON optionsCreativeAssetsProcessingRecord
+instance ToJSON CreativeAssetsProcessingRecord where
+  toJSON = genericToJSON optionsCreativeAssetsProcessingRecord
+
+optionsCreativeAssetsProcessingRecord :: Options
+optionsCreativeAssetsProcessingRecord =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("creativeAssetsProcessingRecordCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
+      , ("creativeAssetsProcessingRecordErrors", "errors")
+      , ("creativeAssetsProcessingRecordWarnings", "warnings")
+      , ("creativeAssetsProcessingRecordStatus", "status")
+      ]
+
+
+-- | Creative assets visibility.
+data CreativeAssetsVisibilityType = CreativeAssetsVisibilityType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON CreativeAssetsVisibilityType where
+  parseJSON = genericParseJSON optionsCreativeAssetsVisibilityType
+instance ToJSON CreativeAssetsVisibilityType where
+  toJSON = genericToJSON optionsCreativeAssetsVisibilityType
+
+optionsCreativeAssetsVisibilityType :: Options
+optionsCreativeAssetsVisibilityType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
       ]
 
 
@@ -8808,6 +11930,362 @@ optionsDataStatus =
       ]
 
 
+-- | Request body used to delete asset groups
+data DeleteAssetGroupBody = DeleteAssetGroupBody
+  { deleteAssetGroupBodyAssetUnderscoregroupsUnderscoretoUnderscoredelete :: [Text] -- ^ List of ids of asset groups to be deleted
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteAssetGroupBody where
+  parseJSON = genericParseJSON optionsDeleteAssetGroupBody
+instance ToJSON DeleteAssetGroupBody where
+  toJSON = genericToJSON optionsDeleteAssetGroupBody
+
+optionsDeleteAssetGroupBody :: Options
+optionsDeleteAssetGroupBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteAssetGroupBodyAssetUnderscoregroupsUnderscoretoUnderscoredelete", "asset_groups_to_delete")
+      ]
+
+
+-- | 
+data DeleteAssetGroupResponse = DeleteAssetGroupResponse
+  { deleteAssetGroupResponseDeletedUnderscoreassetUnderscoregroups :: Maybe [Text] -- ^ A list of ids of successfully deleted asset groups.
+  , deleteAssetGroupResponseExceptions :: Maybe [DeleteAssetGroupResponseExceptionsInner] -- ^ A list of errors associated with the asset groups. Will be returned if there is an error.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteAssetGroupResponse where
+  parseJSON = genericParseJSON optionsDeleteAssetGroupResponse
+instance ToJSON DeleteAssetGroupResponse where
+  toJSON = genericToJSON optionsDeleteAssetGroupResponse
+
+optionsDeleteAssetGroupResponse :: Options
+optionsDeleteAssetGroupResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteAssetGroupResponseDeletedUnderscoreassetUnderscoregroups", "deleted_asset_groups")
+      , ("deleteAssetGroupResponseExceptions", "exceptions")
+      ]
+
+
+-- | 
+data DeleteAssetGroupResponseExceptionsInner = DeleteAssetGroupResponseExceptionsInner
+  { deleteAssetGroupResponseExceptionsInnerCode :: Maybe Int -- ^ Error code associated with the error deleting asset group.
+  , deleteAssetGroupResponseExceptionsInnerMessage :: Maybe Text -- ^ Error message associated with the error deleting asset group.
+  , deleteAssetGroupResponseExceptionsInnerAssetUnderscoregroupUnderscoreid :: Maybe Text -- ^ Asset group id of the exception.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteAssetGroupResponseExceptionsInner where
+  parseJSON = genericParseJSON optionsDeleteAssetGroupResponseExceptionsInner
+instance ToJSON DeleteAssetGroupResponseExceptionsInner where
+  toJSON = genericToJSON optionsDeleteAssetGroupResponseExceptionsInner
+
+optionsDeleteAssetGroupResponseExceptionsInner :: Options
+optionsDeleteAssetGroupResponseExceptionsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteAssetGroupResponseExceptionsInnerCode", "code")
+      , ("deleteAssetGroupResponseExceptionsInnerMessage", "message")
+      , ("deleteAssetGroupResponseExceptionsInnerAssetUnderscoregroupUnderscoreid", "asset_group_id")
+      ]
+
+
+-- | Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id
+data DeleteInvitesResultsResponseArray = DeleteInvitesResultsResponseArray
+  { deleteInvitesResultsResponseArrayItems :: Maybe [DeleteInvitesResultsResponseArrayItemsInner] -- ^ List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteInvitesResultsResponseArray where
+  parseJSON = genericParseJSON optionsDeleteInvitesResultsResponseArray
+instance ToJSON DeleteInvitesResultsResponseArray where
+  toJSON = genericToJSON optionsDeleteInvitesResultsResponseArray
+
+optionsDeleteInvitesResultsResponseArray :: Options
+optionsDeleteInvitesResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteInvitesResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data DeleteInvitesResultsResponseArrayItemsInner = DeleteInvitesResultsResponseArrayItemsInner
+  { deleteInvitesResultsResponseArrayItemsInnerException :: Maybe DeleteInvitesResultsResponseArrayItemsInnerException -- ^ 
+  , deleteInvitesResultsResponseArrayItemsInnerInvite :: Maybe BaseInviteDataResponse -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteInvitesResultsResponseArrayItemsInner where
+  parseJSON = genericParseJSON optionsDeleteInvitesResultsResponseArrayItemsInner
+instance ToJSON DeleteInvitesResultsResponseArrayItemsInner where
+  toJSON = genericToJSON optionsDeleteInvitesResultsResponseArrayItemsInner
+
+optionsDeleteInvitesResultsResponseArrayItemsInner :: Options
+optionsDeleteInvitesResultsResponseArrayItemsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteInvitesResultsResponseArrayItemsInnerException", "exception")
+      , ("deleteInvitesResultsResponseArrayItemsInnerInvite", "invite")
+      ]
+
+
+-- | An exception object if there is an error performing the cancellation. It will only be provided if there is an error.
+data DeleteInvitesResultsResponseArrayItemsInnerException = DeleteInvitesResultsResponseArrayItemsInnerException
+  { deleteInvitesResultsResponseArrayItemsInnerExceptionInviteUnderscoreid :: Maybe Text -- ^ Unique identifier of an invite.
+  , deleteInvitesResultsResponseArrayItemsInnerExceptionMessage :: Maybe Text -- ^ Error message associated with the error in performing the action on the invite/request.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteInvitesResultsResponseArrayItemsInnerException where
+  parseJSON = genericParseJSON optionsDeleteInvitesResultsResponseArrayItemsInnerException
+instance ToJSON DeleteInvitesResultsResponseArrayItemsInnerException where
+  toJSON = genericToJSON optionsDeleteInvitesResultsResponseArrayItemsInnerException
+
+optionsDeleteInvitesResultsResponseArrayItemsInnerException :: Options
+optionsDeleteInvitesResultsResponseArrayItemsInnerException =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteInvitesResultsResponseArrayItemsInnerExceptionInviteUnderscoreid", "invite_id")
+      , ("deleteInvitesResultsResponseArrayItemsInnerExceptionMessage", "message")
+      ]
+
+
+-- | The terminated asset access.
+data DeleteMemberAccessResult = DeleteMemberAccessResult
+  { deleteMemberAccessResultAssetUnderscoreid :: Maybe Text -- ^ Unique identifier of the business asset.
+  , deleteMemberAccessResultMemberUnderscoreid :: Maybe Text -- ^ Unique identifier of the business member.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteMemberAccessResult where
+  parseJSON = genericParseJSON optionsDeleteMemberAccessResult
+instance ToJSON DeleteMemberAccessResult where
+  toJSON = genericToJSON optionsDeleteMemberAccessResult
+
+optionsDeleteMemberAccessResult :: Options
+optionsDeleteMemberAccessResult =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteMemberAccessResultAssetUnderscoreid", "asset_id")
+      , ("deleteMemberAccessResultMemberUnderscoreid", "member_id")
+      ]
+
+
+-- | 
+data DeleteMemberAccessResultsResponseArray = DeleteMemberAccessResultsResponseArray
+  { deleteMemberAccessResultsResponseArrayItems :: Maybe [DeleteMemberAccessResult] -- ^ List of member asset permissions that were deleted.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeleteMemberAccessResultsResponseArray where
+  parseJSON = genericParseJSON optionsDeleteMemberAccessResultsResponseArray
+instance ToJSON DeleteMemberAccessResultsResponseArray where
+  toJSON = genericToJSON optionsDeleteMemberAccessResultsResponseArray
+
+optionsDeleteMemberAccessResultsResponseArray :: Options
+optionsDeleteMemberAccessResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deleteMemberAccessResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data DeletePartnerAssetAccessBody = DeletePartnerAssetAccessBody
+  { deletePartnerAssetAccessBodyAccesses :: [DeletePartnerAssetAccessBodyAccessesInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeletePartnerAssetAccessBody where
+  parseJSON = genericParseJSON optionsDeletePartnerAssetAccessBody
+instance ToJSON DeletePartnerAssetAccessBody where
+  toJSON = genericToJSON optionsDeletePartnerAssetAccessBody
+
+optionsDeletePartnerAssetAccessBody :: Options
+optionsDeletePartnerAssetAccessBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deletePartnerAssetAccessBodyAccesses", "accesses")
+      ]
+
+
+-- | 
+data DeletePartnerAssetAccessBodyAccessesInner = DeletePartnerAssetAccessBodyAccessesInner
+  { deletePartnerAssetAccessBodyAccessesInnerPartnerUnderscoreid :: Text -- ^ Unique identifier of a business partner to update asset access to.
+  , deletePartnerAssetAccessBodyAccessesInnerAssetUnderscoreid :: Text -- ^ Unique identifier of the business asset.
+  , deletePartnerAssetAccessBodyAccessesInnerPartnerUnderscoretype :: Maybe Text -- ^ If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeletePartnerAssetAccessBodyAccessesInner where
+  parseJSON = genericParseJSON optionsDeletePartnerAssetAccessBodyAccessesInner
+instance ToJSON DeletePartnerAssetAccessBodyAccessesInner where
+  toJSON = genericToJSON optionsDeletePartnerAssetAccessBodyAccessesInner
+
+optionsDeletePartnerAssetAccessBodyAccessesInner :: Options
+optionsDeletePartnerAssetAccessBodyAccessesInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deletePartnerAssetAccessBodyAccessesInnerPartnerUnderscoreid", "partner_id")
+      , ("deletePartnerAssetAccessBodyAccessesInnerAssetUnderscoreid", "asset_id")
+      , ("deletePartnerAssetAccessBodyAccessesInnerPartnerUnderscoretype", "partner_type")
+      ]
+
+
+-- | The terminated asset access.
+data DeletePartnerAssetsResult = DeletePartnerAssetsResult
+  { deletePartnerAssetsResultAssetUnderscoreid :: Maybe Text -- ^ Unique identifier of a business asset.
+  , deletePartnerAssetsResultAssetUnderscoretype :: Maybe Text -- ^ Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  , deletePartnerAssetsResultPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  , deletePartnerAssetsResultIsUnderscoresharedUnderscorepartner :: Maybe Bool -- ^ If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
+  , deletePartnerAssetsResultPartnerUnderscoreid :: Maybe Text -- ^ Unique identifier of a business partner.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeletePartnerAssetsResult where
+  parseJSON = genericParseJSON optionsDeletePartnerAssetsResult
+instance ToJSON DeletePartnerAssetsResult where
+  toJSON = genericToJSON optionsDeletePartnerAssetsResult
+
+optionsDeletePartnerAssetsResult :: Options
+optionsDeletePartnerAssetsResult =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deletePartnerAssetsResultAssetUnderscoreid", "asset_id")
+      , ("deletePartnerAssetsResultAssetUnderscoretype", "asset_type")
+      , ("deletePartnerAssetsResultPermissions", "permissions")
+      , ("deletePartnerAssetsResultIsUnderscoresharedUnderscorepartner", "is_shared_partner")
+      , ("deletePartnerAssetsResultPartnerUnderscoreid", "partner_id")
+      ]
+
+
+-- | 
+data DeletePartnerAssetsResultsResponseArray = DeletePartnerAssetsResultsResponseArray
+  { deletePartnerAssetsResultsResponseArrayItems :: Maybe [DeletePartnerAssetsResult] -- ^ List of terminated asset access.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeletePartnerAssetsResultsResponseArray where
+  parseJSON = genericParseJSON optionsDeletePartnerAssetsResultsResponseArray
+instance ToJSON DeletePartnerAssetsResultsResponseArray where
+  toJSON = genericToJSON optionsDeletePartnerAssetsResultsResponseArray
+
+optionsDeletePartnerAssetsResultsResponseArray :: Options
+optionsDeletePartnerAssetsResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deletePartnerAssetsResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data DeletePartnersRequest = DeletePartnersRequest
+  { deletePartnersRequestPartnerUnderscoreids :: [Text] -- ^ 
+  , deletePartnersRequestPartnerUnderscoretype :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeletePartnersRequest where
+  parseJSON = genericParseJSON optionsDeletePartnersRequest
+instance ToJSON DeletePartnersRequest where
+  toJSON = genericToJSON optionsDeletePartnersRequest
+
+optionsDeletePartnersRequest :: Options
+optionsDeletePartnersRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deletePartnersRequestPartnerUnderscoreids", "partner_ids")
+      , ("deletePartnersRequestPartnerUnderscoretype", "partner_type")
+      ]
+
+
+-- | An object with a list of partners that were deleted.
+data DeletePartnersResponse = DeletePartnersResponse
+  { deletePartnersResponseDeletedUnderscorepartners :: Maybe [Text] -- ^ List of partners whose business partnership have been terminated.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeletePartnersResponse where
+  parseJSON = genericParseJSON optionsDeletePartnersResponse
+instance ToJSON DeletePartnersResponse where
+  toJSON = genericToJSON optionsDeletePartnersResponse
+
+optionsDeletePartnersResponse :: Options
+optionsDeletePartnersResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deletePartnersResponseDeletedUnderscorepartners", "deleted_partners")
+      ]
+
+
+-- | An object with a list of members that were deleted.
+data DeletedMembersResponse = DeletedMembersResponse
+  { deletedMembersResponseDeletedUnderscoremembers :: Maybe [Text] -- ^ List of members whose business membership have been terminated.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON DeletedMembersResponse where
+  parseJSON = genericParseJSON optionsDeletedMembersResponse
+instance ToJSON DeletedMembersResponse where
+  toJSON = genericToJSON optionsDeletedMembersResponse
+
+optionsDeletedMembersResponse :: Options
+optionsDeletedMembersResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("deletedMembersResponseDeletedUnderscoremembers", "deleted_members")
+      ]
+
+
 -- | 
 data DeliveryMetricsResponse = DeliveryMetricsResponse
   { deliveryMetricsResponseItems :: Maybe [DeliveryMetricsResponseItemsInner] -- ^ 
@@ -9012,7 +12490,8 @@ data FeedsCreateRequest = FeedsCreateRequest
   , feedsCreateRequestCatalogUnderscoretype :: CatalogsType -- ^ 
   , feedsCreateRequestDefaultUnderscorecountry :: Country -- ^ 
   , feedsCreateRequestDefaultUnderscoreavailability :: Maybe ProductAvailabilityType -- ^ 
-  , feedsCreateRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  , feedsCreateRequestStatus :: Maybe CatalogsStatus -- ^ 
+  , feedsCreateRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON FeedsCreateRequest where
@@ -9038,6 +12517,7 @@ optionsFeedsCreateRequest =
       , ("feedsCreateRequestCatalogUnderscoretype", "catalog_type")
       , ("feedsCreateRequestDefaultUnderscorecountry", "default_country")
       , ("feedsCreateRequestDefaultUnderscoreavailability", "default_availability")
+      , ("feedsCreateRequestStatus", "status")
       , ("feedsCreateRequestCatalogUnderscoreid", "catalog_id")
       ]
 
@@ -9216,6 +12696,150 @@ optionsGetAudiencesOrderBy =
       ]
 
 
+-- | Type of asset.
+data GetBusinessAssetTypeResponse = GetBusinessAssetTypeResponse
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON GetBusinessAssetTypeResponse where
+  parseJSON = genericParseJSON optionsGetBusinessAssetTypeResponse
+instance ToJSON GetBusinessAssetTypeResponse where
+  toJSON = genericToJSON optionsGetBusinessAssetTypeResponse
+
+optionsGetBusinessAssetTypeResponse :: Options
+optionsGetBusinessAssetTypeResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | An object containing the permissions a business has on the asset.
+data GetBusinessAssetsResponse = GetBusinessAssetsResponse
+  { getBusinessAssetsResponseAssetUnderscoreid :: Maybe Text -- ^ Unique identifier of a business asset.
+  , getBusinessAssetsResponseAssetUnderscoretype :: Maybe Text -- ^ Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  , getBusinessAssetsResponseAssetUnderscoregroupUnderscoreinfo :: Maybe AssetGroupBinding -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON GetBusinessAssetsResponse where
+  parseJSON = genericParseJSON optionsGetBusinessAssetsResponse
+instance ToJSON GetBusinessAssetsResponse where
+  toJSON = genericToJSON optionsGetBusinessAssetsResponse
+
+optionsGetBusinessAssetsResponse :: Options
+optionsGetBusinessAssetsResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("getBusinessAssetsResponseAssetUnderscoreid", "asset_id")
+      , ("getBusinessAssetsResponseAssetUnderscoretype", "asset_type")
+      , ("getBusinessAssetsResponseAssetUnderscoregroupUnderscoreinfo", "asset_group_info")
+      ]
+
+
+-- | 
+data GetBusinessEmployers200Response = GetBusinessEmployers200Response
+  { getBusinessEmployers200ResponseItems :: [UserBusinessRoleBinding] -- ^ List of employers.
+  , getBusinessEmployers200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON GetBusinessEmployers200Response where
+  parseJSON = genericParseJSON optionsGetBusinessEmployers200Response
+instance ToJSON GetBusinessEmployers200Response where
+  toJSON = genericToJSON optionsGetBusinessEmployers200Response
+
+optionsGetBusinessEmployers200Response :: Options
+optionsGetBusinessEmployers200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("getBusinessEmployers200ResponseItems", "items")
+      , ("getBusinessEmployers200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data GetBusinessMembers200Response = GetBusinessMembers200Response
+  { getBusinessMembers200ResponseItems :: [UserBusinessRoleBinding] -- ^ List of business members.
+  , getBusinessMembers200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON GetBusinessMembers200Response where
+  parseJSON = genericParseJSON optionsGetBusinessMembers200Response
+instance ToJSON GetBusinessMembers200Response where
+  toJSON = genericToJSON optionsGetBusinessMembers200Response
+
+optionsGetBusinessMembers200Response :: Options
+optionsGetBusinessMembers200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("getBusinessMembers200ResponseItems", "items")
+      , ("getBusinessMembers200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data GetBusinessPartners200Response = GetBusinessPartners200Response
+  { getBusinessPartners200ResponseItems :: [UserBusinessRoleBinding] -- ^ List of business partners.
+  , getBusinessPartners200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON GetBusinessPartners200Response where
+  parseJSON = genericParseJSON optionsGetBusinessPartners200Response
+instance ToJSON GetBusinessPartners200Response where
+  toJSON = genericToJSON optionsGetBusinessPartners200Response
+
+optionsGetBusinessPartners200Response :: Options
+optionsGetBusinessPartners200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("getBusinessPartners200ResponseItems", "items")
+      , ("getBusinessPartners200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data GetInvites200Response = GetInvites200Response
+  { getInvites200ResponseItems :: [InviteResponse] -- ^ List of invite and request data.
+  , getInvites200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON GetInvites200Response where
+  parseJSON = genericParseJSON optionsGetInvites200Response
+instance ToJSON GetInvites200Response where
+  toJSON = genericToJSON optionsGetInvites200Response
+
+optionsGetInvites200Response :: Options
+optionsGetInvites200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("getInvites200ResponseItems", "items")
+      , ("getInvites200ResponseBookmark", "bookmark")
+      ]
+
+
 -- | 
 data GetMMMReportResponse = GetMMMReportResponse
   { getMMMReportResponseCode :: Maybe Double -- ^ 
@@ -9267,6 +12891,34 @@ optionsGetMMMReportResponseData =
       [ ("getMMMReportResponseDataReportUnderscorestatus", "report_status")
       , ("getMMMReportResponseDataUrl", "url")
       , ("getMMMReportResponseDataSize", "size")
+      ]
+
+
+-- | An object containing the permissions a you/your business partner has on the asset.
+data GetPartnerAssetsResponse = GetPartnerAssetsResponse
+  { getPartnerAssetsResponseAssetUnderscoreid :: Maybe Text -- ^ Unique identifier of a business asset.
+  , getPartnerAssetsResponseAssetUnderscoretype :: Maybe Text -- ^ Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  , getPartnerAssetsResponsePermissions :: Maybe [Text] -- ^ The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset.
+  , getPartnerAssetsResponseAssetUnderscoregroupUnderscoreinfo :: Maybe AssetGroupBinding -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON GetPartnerAssetsResponse where
+  parseJSON = genericParseJSON optionsGetPartnerAssetsResponse
+instance ToJSON GetPartnerAssetsResponse where
+  toJSON = genericToJSON optionsGetPartnerAssetsResponse
+
+optionsGetPartnerAssetsResponse :: Options
+optionsGetPartnerAssetsResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("getPartnerAssetsResponseAssetUnderscoreid", "asset_id")
+      , ("getPartnerAssetsResponseAssetUnderscoretype", "asset_type")
+      , ("getPartnerAssetsResponsePermissions", "permissions")
+      , ("getPartnerAssetsResponseAssetUnderscoregroupUnderscoreinfo", "asset_group_info")
       ]
 
 
@@ -9446,7 +13098,7 @@ optionsGranularity =
       ]
 
 
--- | Where a user is taken after clicking on an ad in grid.
+-- | Where a user is taken after clicking on an ad in grid. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt;  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
 data GridClickType = GridClickType
   { 
   } deriving (Show, Eq, Generic)
@@ -10056,12 +13708,226 @@ optionsInterest =
       ]
 
 
+-- | Ad accounts and profiles the member/partner will be granted access to with this invite/request.
+data InviteAssetsSummary = InviteAssetsSummary
+  { inviteAssetsSummaryAdUnderscoreaccounts :: Maybe [InviteAssetsSummaryAdAccountsInner] -- ^ List of ad account IDs and respective permission levels that will be assigned.
+  , inviteAssetsSummaryProfiles :: Maybe [InviteAssetsSummaryProfilesInner] -- ^ List of profile IDs and respective permission levels that will be assigned.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteAssetsSummary where
+  parseJSON = genericParseJSON optionsInviteAssetsSummary
+instance ToJSON InviteAssetsSummary where
+  toJSON = genericToJSON optionsInviteAssetsSummary
+
+optionsInviteAssetsSummary :: Options
+optionsInviteAssetsSummary =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("inviteAssetsSummaryAdUnderscoreaccounts", "ad_accounts")
+      , ("inviteAssetsSummaryProfiles", "profiles")
+      ]
+
+
+-- | 
+data InviteAssetsSummaryAdAccountsInner = InviteAssetsSummaryAdAccountsInner
+  { inviteAssetsSummaryAdAccountsInnerId :: Maybe Text -- ^ Unique identifier of a business ad account.
+  , inviteAssetsSummaryAdAccountsInnerPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteAssetsSummaryAdAccountsInner where
+  parseJSON = genericParseJSON optionsInviteAssetsSummaryAdAccountsInner
+instance ToJSON InviteAssetsSummaryAdAccountsInner where
+  toJSON = genericToJSON optionsInviteAssetsSummaryAdAccountsInner
+
+optionsInviteAssetsSummaryAdAccountsInner :: Options
+optionsInviteAssetsSummaryAdAccountsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("inviteAssetsSummaryAdAccountsInnerId", "id")
+      , ("inviteAssetsSummaryAdAccountsInnerPermissions", "permissions")
+      ]
+
+
+-- | 
+data InviteAssetsSummaryProfilesInner = InviteAssetsSummaryProfilesInner
+  { inviteAssetsSummaryProfilesInnerId :: Maybe Text -- ^ Unique identifier of a business profile.
+  , inviteAssetsSummaryProfilesInnerPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteAssetsSummaryProfilesInner where
+  parseJSON = genericParseJSON optionsInviteAssetsSummaryProfilesInner
+instance ToJSON InviteAssetsSummaryProfilesInner where
+  toJSON = genericToJSON optionsInviteAssetsSummaryProfilesInner
+
+optionsInviteAssetsSummaryProfilesInner :: Options
+optionsInviteAssetsSummaryProfilesInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("inviteAssetsSummaryProfilesInnerId", "id")
+      , ("inviteAssetsSummaryProfilesInnerPermissions", "permissions")
+      ]
+
+
+-- | An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+data InviteBusinessRoleBinding = InviteBusinessRoleBinding
+  { inviteBusinessRoleBindingCreatedUnderscorebyUnderscorebusinessUnderscoreid :: Maybe Text -- ^ Unique identifier for the business that created the invite/request.
+  , inviteBusinessRoleBindingCreatedUnderscorebyUnderscoreuserUnderscoreid :: Maybe Text -- ^ Unique identifier for the user that created the invite/request.
+  , inviteBusinessRoleBindingUser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the user that updated the invite/request.
+  , inviteBusinessRoleBindingId :: Maybe Text -- ^ Unique identifier of the invite/request.
+  , inviteBusinessRoleBindingInviteUnderscoredata :: Maybe BaseInviteDataResponseInviteData -- ^ 
+  , inviteBusinessRoleBindingIsUnderscorereceivedUnderscoreinvite :: Maybe Bool -- ^ Indicates whether the invite/request was received.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteBusinessRoleBinding where
+  parseJSON = genericParseJSON optionsInviteBusinessRoleBinding
+instance ToJSON InviteBusinessRoleBinding where
+  toJSON = genericToJSON optionsInviteBusinessRoleBinding
+
+optionsInviteBusinessRoleBinding :: Options
+optionsInviteBusinessRoleBinding =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("inviteBusinessRoleBindingCreatedUnderscorebyUnderscorebusinessUnderscoreid", "created_by_business_id")
+      , ("inviteBusinessRoleBindingCreatedUnderscorebyUnderscoreuserUnderscoreid", "created_by_user_id")
+      , ("inviteBusinessRoleBindingUser", "user")
+      , ("inviteBusinessRoleBindingId", "id")
+      , ("inviteBusinessRoleBindingInviteUnderscoredata", "invite_data")
+      , ("inviteBusinessRoleBindingIsUnderscorereceivedUnderscoreinvite", "is_received_invite")
+      ]
+
+
+-- | An exception object if there is an error performing the action. Will only be provided if there is an error.
+data InviteExceptionResponse = InviteExceptionResponse
+  { inviteExceptionResponseInviteUnderscoreorUnderscorerequestUnderscoreid :: Maybe Text -- ^ Unique identifier of the invite/request.
+  , inviteExceptionResponseCode :: Maybe Int -- ^ Error code associated with the error in performing the action on the invite/request.
+  , inviteExceptionResponseMessage :: Maybe Text -- ^ Error message associated with the error in performing the action on the invite/request.
+  , inviteExceptionResponseUsersUnderscoreorUnderscorepartnerUnderscoreids :: Maybe [Text] -- ^ A list of users' usernames or emails OR a list of partner ids that caused the error.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteExceptionResponse where
+  parseJSON = genericParseJSON optionsInviteExceptionResponse
+instance ToJSON InviteExceptionResponse where
+  toJSON = genericToJSON optionsInviteExceptionResponse
+
+optionsInviteExceptionResponse :: Options
+optionsInviteExceptionResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("inviteExceptionResponseInviteUnderscoreorUnderscorerequestUnderscoreid", "invite_or_request_id")
+      , ("inviteExceptionResponseCode", "code")
+      , ("inviteExceptionResponseMessage", "message")
+      , ("inviteExceptionResponseUsersUnderscoreorUnderscorepartnerUnderscoreids", "users_or_partner_ids")
+      ]
+
+
+-- | 
+data InviteResponse = InviteResponse
+  { inviteResponseAssetsUnderscoresummary :: Maybe InviteAssetsSummary -- ^ 
+  , inviteResponseBusinessUnderscoreroles :: Maybe [Text] -- ^ The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  , inviteResponseCreatedUnderscorebyUnderscorebusiness :: Maybe BusinessAccessUserSummary -- ^ Metadata for the business that created the invite/request.
+  , inviteResponseCreatedUnderscorebyUnderscoreuser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the user that created the invite/request.
+  , inviteResponseCreatedUnderscoretime :: Maybe Int -- ^ The time the invite/request was created. Returned in milliseconds.
+  , inviteResponseId :: Maybe Text -- ^ Unique identifier of the invite/request.
+  , inviteResponseInviteUnderscoredata :: Maybe BaseInviteDataResponseInviteData -- ^ 
+  , inviteResponseIsUnderscorereceivedUnderscoreinvite :: Maybe Bool -- ^ Indicates whether the invite/request was received.
+  , inviteResponseUser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the member/partner that was sent the invite/request.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteResponse where
+  parseJSON = genericParseJSON optionsInviteResponse
+instance ToJSON InviteResponse where
+  toJSON = genericToJSON optionsInviteResponse
+
+optionsInviteResponse :: Options
+optionsInviteResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("inviteResponseAssetsUnderscoresummary", "assets_summary")
+      , ("inviteResponseBusinessUnderscoreroles", "business_roles")
+      , ("inviteResponseCreatedUnderscorebyUnderscorebusiness", "created_by_business")
+      , ("inviteResponseCreatedUnderscorebyUnderscoreuser", "created_by_user")
+      , ("inviteResponseCreatedUnderscoretime", "created_time")
+      , ("inviteResponseId", "id")
+      , ("inviteResponseInviteUnderscoredata", "invite_data")
+      , ("inviteResponseIsUnderscorereceivedUnderscoreinvite", "is_received_invite")
+      , ("inviteResponseUser", "user")
+      ]
+
+
+-- | The current status of the invite.
+data InviteStatus = InviteStatus
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteStatus where
+  parseJSON = genericParseJSON optionsInviteStatus
+instance ToJSON InviteStatus where
+  toJSON = genericToJSON optionsInviteStatus
+
+optionsInviteStatus :: Options
+optionsInviteStatus =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | The type of invite. &lt;br&gt;&#39;MEMBER_INVITE&#39; is to invite a member to access your business assets. &lt;br&gt;&#39;PARTNER INVITE&#39; is to invite a partner to access your business assets. &lt;br&gt;&#39;PARTNER_REQUEST&#39; is to request access a partner&#39;s business assets.
+data InviteType = InviteType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON InviteType where
+  parseJSON = genericParseJSON optionsInviteType
+instance ToJSON InviteType where
+  toJSON = genericToJSON optionsInviteType
+
+optionsInviteType :: Options
+optionsInviteType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
 -- | 
 data ItemAttributes = ItemAttributes
   { itemAttributesAdUnderscorelink :: Maybe Text -- ^ Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
   , itemAttributesAdult :: Maybe Bool -- ^ Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
-  , itemAttributesAgeUnderscoregroup :: Maybe Text -- ^ The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
-  , itemAttributesAvailability :: Maybe Text -- ^ The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+  , itemAttributesAgeUnderscoregroup :: Maybe Text -- ^ The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  , itemAttributesAvailability :: Maybe Text -- ^ The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
   , itemAttributesAverageUnderscorereviewUnderscorerating :: Maybe Double -- ^ Average reviews for the item. Can be a number from 1-5.
   , itemAttributesBrand :: Maybe Text -- ^ The brand of the product.
   , itemAttributesCheckoutUnderscoreenabled :: Maybe Bool -- ^ This attribute is not supported anymore.
@@ -10075,7 +13941,7 @@ data ItemAttributes = ItemAttributes
   , itemAttributesDescription :: Maybe Text -- ^ <p><= 10000 characters</p> <p>The description of the product.</p>
   , itemAttributesFreeUnderscoreshippingUnderscorelabel :: Maybe Bool -- ^ The item is free to ship.
   , itemAttributesFreeUnderscoreshippingUnderscorelimit :: Maybe Text -- ^ The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
-  , itemAttributesGender :: Maybe Text -- ^ The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+  , itemAttributesGender :: Maybe Text -- ^ The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
   , itemAttributesGoogleUnderscoreproductUnderscorecategory :: Maybe Text -- ^ The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
   , itemAttributesGtin :: Maybe Int -- ^ The unique universal product identifier.
   , itemAttributesId :: Maybe Text -- ^ <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
@@ -10097,14 +13963,15 @@ data ItemAttributes = ItemAttributes
   , itemAttributesShippingUnderscoreweight :: Maybe Text -- ^ The weight of the product. Ensure there is a space between the numeric string and the metric.
   , itemAttributesShippingUnderscorewidth :: Maybe Text -- ^ The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
   , itemAttributesSize :: Maybe Text -- ^ The size of the product.
-  , itemAttributesSizeUnderscoresystem :: Maybe Text -- ^ Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
-  , itemAttributesSizeUnderscoretype :: Maybe Text -- ^ Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  , itemAttributesSizeUnderscoresystem :: Maybe Text -- ^ Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+  , itemAttributesSizeUnderscoretype :: Maybe Text -- ^ Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
   , itemAttributesTax :: Maybe Text -- ^ Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
   , itemAttributesTitle :: Maybe Text -- ^ <p><= 500 characters</p> <p>The name of the product.</p>
   , itemAttributesVariantUnderscorenames :: Maybe [Text] -- ^ Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
   , itemAttributesVariantUnderscorevalues :: Maybe [Text] -- ^ Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
   , itemAttributesAdditionalUnderscoreimageUnderscorelink :: Maybe [Text] -- ^ <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
   , itemAttributesImageUnderscorelink :: Maybe [Text] -- ^ <p><= 2000 characters</p> <p>The link to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
+  , itemAttributesVideoUnderscorelink :: Maybe Text -- ^ <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ItemAttributes where
@@ -10167,13 +14034,152 @@ optionsItemAttributes =
       , ("itemAttributesVariantUnderscorevalues", "variant_values")
       , ("itemAttributesAdditionalUnderscoreimageUnderscorelink", "additional_image_link")
       , ("itemAttributesImageUnderscorelink", "image_link")
+      , ("itemAttributesVideoUnderscorelink", "video_link")
+      ]
+
+
+-- | 
+data ItemAttributesRequest = ItemAttributesRequest
+  { itemAttributesRequestAdUnderscorelink :: Maybe Text -- ^ Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
+  , itemAttributesRequestAdult :: Maybe Bool -- ^ Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
+  , itemAttributesRequestAgeUnderscoregroup :: Maybe Text -- ^ The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  , itemAttributesRequestAvailability :: Maybe Text -- ^ The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+  , itemAttributesRequestAverageUnderscorereviewUnderscorerating :: Maybe Double -- ^ Average reviews for the item. Can be a number from 1-5.
+  , itemAttributesRequestBrand :: Maybe Text -- ^ The brand of the product.
+  , itemAttributesRequestCheckoutUnderscoreenabled :: Maybe Bool -- ^ This attribute is not supported anymore.
+  , itemAttributesRequestColor :: Maybe Text -- ^ The primary color of the product.
+  , itemAttributesRequestCondition :: Maybe Text -- ^ The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
+  , itemAttributesRequestCustomUnderscorelabelUnderscore0 :: Maybe Text -- ^ <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  , itemAttributesRequestCustomUnderscorelabelUnderscore1 :: Maybe Text -- ^ <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  , itemAttributesRequestCustomUnderscorelabelUnderscore2 :: Maybe Text -- ^ <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  , itemAttributesRequestCustomUnderscorelabelUnderscore3 :: Maybe Text -- ^ <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  , itemAttributesRequestCustomUnderscorelabelUnderscore4 :: Maybe Text -- ^ <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  , itemAttributesRequestDescription :: Maybe Text -- ^ <p><= 10000 characters</p> <p>The description of the product.</p>
+  , itemAttributesRequestFreeUnderscoreshippingUnderscorelabel :: Maybe Bool -- ^ The item is free to ship.
+  , itemAttributesRequestFreeUnderscoreshippingUnderscorelimit :: Maybe Text -- ^ The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
+  , itemAttributesRequestGender :: Maybe Text -- ^ The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+  , itemAttributesRequestGoogleUnderscoreproductUnderscorecategory :: Maybe Text -- ^ The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+  , itemAttributesRequestGtin :: Maybe Int -- ^ The unique universal product identifier.
+  , itemAttributesRequestId :: Maybe Text -- ^ <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
+  , itemAttributesRequestItemUnderscoregroupUnderscoreid :: Maybe Text -- ^ <p><= 127 characters</p> <p>The parent ID of the product.</p>
+  , itemAttributesRequestLastUnderscoreupdatedUnderscoretime :: Maybe Int64 -- ^ The millisecond timestamp when the item was lastly modified by the merchant.
+  , itemAttributesRequestLink :: Maybe Text -- ^ <p><= 511 characters</p> <p>The landing page for the product.</p>
+  , itemAttributesRequestMaterial :: Maybe Text -- ^ The material used to make the product.
+  , itemAttributesRequestMinUnderscoreadUnderscoreprice :: Maybe Text -- ^ The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
+  , itemAttributesRequestMobileUnderscorelink :: Maybe Text -- ^ The mobile-optimized version of your landing page. Must begin with http:// or https://.
+  , itemAttributesRequestMpn :: Maybe Text -- ^ Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
+  , itemAttributesRequestNumberUnderscoreofUnderscoreratings :: Maybe Int -- ^ The number of ratings for the item.
+  , itemAttributesRequestNumberUnderscoreofUnderscorereviews :: Maybe Int -- ^ The number of reviews available for the item.
+  , itemAttributesRequestPattern :: Maybe Text -- ^ The description of the pattern used for the product.
+  , itemAttributesRequestPrice :: Maybe Text -- ^ The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+  , itemAttributesRequestProductUnderscoretype :: Maybe Text -- ^ <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
+  , itemAttributesRequestSaleUnderscoreprice :: Maybe Text -- ^ The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
+  , itemAttributesRequestShipping :: Maybe Text -- ^ Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
+  , itemAttributesRequestShippingUnderscoreheight :: Maybe Text -- ^ The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+  , itemAttributesRequestShippingUnderscoreweight :: Maybe Text -- ^ The weight of the product. Ensure there is a space between the numeric string and the metric.
+  , itemAttributesRequestShippingUnderscorewidth :: Maybe Text -- ^ The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+  , itemAttributesRequestSize :: Maybe Text -- ^ The size of the product.
+  , itemAttributesRequestSizeUnderscoresystem :: Maybe Text -- ^ Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+  , itemAttributesRequestSizeUnderscoretype :: Maybe Text -- ^ Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  , itemAttributesRequestTax :: Maybe Text -- ^ Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
+  , itemAttributesRequestTitle :: Maybe Text -- ^ <p><= 500 characters</p> <p>The name of the product.</p>
+  , itemAttributesRequestVariantUnderscorenames :: Maybe [Text] -- ^ Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
+  , itemAttributesRequestVariantUnderscorevalues :: Maybe [Text] -- ^ Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
+  , itemAttributesRequestAdditionalUnderscoreimageUnderscorelink :: Maybe [Text] -- ^ <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
+  , itemAttributesRequestImageUnderscorelink :: Maybe ItemAttributesRequestAllOfImageLink -- ^ 
+  , itemAttributesRequestVideoUnderscorelink :: Maybe Text -- ^ <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ItemAttributesRequest where
+  parseJSON = genericParseJSON optionsItemAttributesRequest
+instance ToJSON ItemAttributesRequest where
+  toJSON = genericToJSON optionsItemAttributesRequest
+
+optionsItemAttributesRequest :: Options
+optionsItemAttributesRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("itemAttributesRequestAdUnderscorelink", "ad_link")
+      , ("itemAttributesRequestAdult", "adult")
+      , ("itemAttributesRequestAgeUnderscoregroup", "age_group")
+      , ("itemAttributesRequestAvailability", "availability")
+      , ("itemAttributesRequestAverageUnderscorereviewUnderscorerating", "average_review_rating")
+      , ("itemAttributesRequestBrand", "brand")
+      , ("itemAttributesRequestCheckoutUnderscoreenabled", "checkout_enabled")
+      , ("itemAttributesRequestColor", "color")
+      , ("itemAttributesRequestCondition", "condition")
+      , ("itemAttributesRequestCustomUnderscorelabelUnderscore0", "custom_label_0")
+      , ("itemAttributesRequestCustomUnderscorelabelUnderscore1", "custom_label_1")
+      , ("itemAttributesRequestCustomUnderscorelabelUnderscore2", "custom_label_2")
+      , ("itemAttributesRequestCustomUnderscorelabelUnderscore3", "custom_label_3")
+      , ("itemAttributesRequestCustomUnderscorelabelUnderscore4", "custom_label_4")
+      , ("itemAttributesRequestDescription", "description")
+      , ("itemAttributesRequestFreeUnderscoreshippingUnderscorelabel", "free_shipping_label")
+      , ("itemAttributesRequestFreeUnderscoreshippingUnderscorelimit", "free_shipping_limit")
+      , ("itemAttributesRequestGender", "gender")
+      , ("itemAttributesRequestGoogleUnderscoreproductUnderscorecategory", "google_product_category")
+      , ("itemAttributesRequestGtin", "gtin")
+      , ("itemAttributesRequestId", "id")
+      , ("itemAttributesRequestItemUnderscoregroupUnderscoreid", "item_group_id")
+      , ("itemAttributesRequestLastUnderscoreupdatedUnderscoretime", "last_updated_time")
+      , ("itemAttributesRequestLink", "link")
+      , ("itemAttributesRequestMaterial", "material")
+      , ("itemAttributesRequestMinUnderscoreadUnderscoreprice", "min_ad_price")
+      , ("itemAttributesRequestMobileUnderscorelink", "mobile_link")
+      , ("itemAttributesRequestMpn", "mpn")
+      , ("itemAttributesRequestNumberUnderscoreofUnderscoreratings", "number_of_ratings")
+      , ("itemAttributesRequestNumberUnderscoreofUnderscorereviews", "number_of_reviews")
+      , ("itemAttributesRequestPattern", "pattern")
+      , ("itemAttributesRequestPrice", "price")
+      , ("itemAttributesRequestProductUnderscoretype", "product_type")
+      , ("itemAttributesRequestSaleUnderscoreprice", "sale_price")
+      , ("itemAttributesRequestShipping", "shipping")
+      , ("itemAttributesRequestShippingUnderscoreheight", "shipping_height")
+      , ("itemAttributesRequestShippingUnderscoreweight", "shipping_weight")
+      , ("itemAttributesRequestShippingUnderscorewidth", "shipping_width")
+      , ("itemAttributesRequestSize", "size")
+      , ("itemAttributesRequestSizeUnderscoresystem", "size_system")
+      , ("itemAttributesRequestSizeUnderscoretype", "size_type")
+      , ("itemAttributesRequestTax", "tax")
+      , ("itemAttributesRequestTitle", "title")
+      , ("itemAttributesRequestVariantUnderscorenames", "variant_names")
+      , ("itemAttributesRequestVariantUnderscorevalues", "variant_values")
+      , ("itemAttributesRequestAdditionalUnderscoreimageUnderscorelink", "additional_image_link")
+      , ("itemAttributesRequestImageUnderscorelink", "image_link")
+      , ("itemAttributesRequestVideoUnderscorelink", "video_link")
+      ]
+
+
+-- | &lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The links to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.&lt;/p&gt;
+data ItemAttributesRequestAllOfImageLink = ItemAttributesRequestAllOfImageLink
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ItemAttributesRequestAllOfImageLink where
+  parseJSON = genericParseJSON optionsItemAttributesRequestAllOfImageLink
+instance ToJSON ItemAttributesRequestAllOfImageLink where
+  toJSON = genericToJSON optionsItemAttributesRequestAllOfImageLink
+
+optionsItemAttributesRequestAllOfImageLink :: Options
+optionsItemAttributesRequestAllOfImageLink =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
       ]
 
 
 -- | Object describing an item batch record
 data ItemBatchRecord = ItemBatchRecord
   { itemBatchRecordItemUnderscoreid :: Maybe Text -- ^ The catalog item id in the merchant namespace
-  , itemBatchRecordAttributes :: Maybe ItemAttributes -- ^ 
+  , itemBatchRecordAttributes :: Maybe ItemAttributesRequest -- ^ 
   , itemBatchRecordUpdateUnderscoremask :: Maybe [UpdateMaskFieldType] -- ^ The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
   } deriving (Show, Eq, Generic)
 
@@ -10199,7 +14205,7 @@ optionsItemBatchRecord =
 -- | Object describing an item batch record to create items
 data ItemCreateBatchRecord = ItemCreateBatchRecord
   { itemCreateBatchRecordItemUnderscoreid :: Maybe Text -- ^ The catalog item id in the merchant namespace
-  , itemCreateBatchRecordAttributes :: Maybe ItemAttributes -- ^ 
+  , itemCreateBatchRecordAttributes :: Maybe ItemAttributesRequest -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ItemCreateBatchRecord where
@@ -10363,8 +14369,9 @@ data ItemResponse = ItemResponse
   { itemResponseCatalogUnderscoretype :: CatalogsType -- ^ 
   , itemResponseItemUnderscoreid :: Maybe Text -- ^ The catalog item id in the merchant namespace
   , itemResponsePins :: Maybe [Pin] -- ^ The pins mapped to the item
-  , itemResponseAttributes :: Maybe CatalogsHotelAttributes -- ^ 
+  , itemResponseAttributes :: Maybe CatalogsCreativeAssetsAttributes -- ^ 
   , itemResponseHotelUnderscoreid :: Maybe Text -- ^ The catalog hotel id in the merchant namespace
+  , itemResponseCreativeUnderscoreassetsUnderscoreid :: Maybe Text -- ^ The catalog creative assets id in the merchant namespace
   , itemResponseErrors :: Maybe [ItemValidationEvent] -- ^ Array with the errors for the item id requested
   } deriving (Show, Eq, Generic)
 
@@ -10386,6 +14393,7 @@ optionsItemResponse =
       , ("itemResponsePins", "pins")
       , ("itemResponseAttributes", "attributes")
       , ("itemResponseHotelUnderscoreid", "hotel_id")
+      , ("itemResponseCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
       , ("itemResponseErrors", "errors")
       ]
 
@@ -10395,8 +14403,9 @@ data ItemResponseAnyOf = ItemResponseAnyOf
   { itemResponseAnyOfCatalogUnderscoretype :: CatalogsType -- ^ 
   , itemResponseAnyOfItemUnderscoreid :: Maybe Text -- ^ The catalog retail item id in the merchant namespace
   , itemResponseAnyOfPins :: Maybe [Pin] -- ^ The pins mapped to the item
-  , itemResponseAnyOfAttributes :: Maybe CatalogsHotelAttributes -- ^ 
+  , itemResponseAnyOfAttributes :: Maybe CatalogsCreativeAssetsAttributes -- ^ 
   , itemResponseAnyOfHotelUnderscoreid :: Maybe Text -- ^ The catalog hotel id in the merchant namespace
+  , itemResponseAnyOfCreativeUnderscoreassetsUnderscoreid :: Maybe Text -- ^ The catalog creative assets id in the merchant namespace
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ItemResponseAnyOf where
@@ -10417,6 +14426,7 @@ optionsItemResponseAnyOf =
       , ("itemResponseAnyOfPins", "pins")
       , ("itemResponseAnyOfAttributes", "attributes")
       , ("itemResponseAnyOfHotelUnderscoreid", "hotel_id")
+      , ("itemResponseAnyOfCreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
       ]
 
 
@@ -10426,6 +14436,7 @@ data ItemResponseAnyOf1 = ItemResponseAnyOf1
   , itemResponseAnyOf1ItemUnderscoreid :: Maybe Text -- ^ The catalog item id in the merchant namespace
   , itemResponseAnyOf1Errors :: Maybe [ItemValidationEvent] -- ^ Array with the errors for the item id requested
   , itemResponseAnyOf1HotelUnderscoreid :: Maybe Text -- ^ The catalog hotel id in the merchant namespace
+  , itemResponseAnyOf1CreativeUnderscoreassetsUnderscoreid :: Maybe Text -- ^ The catalog creative assets id in the merchant namespace
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ItemResponseAnyOf1 where
@@ -10445,6 +14456,7 @@ optionsItemResponseAnyOf1 =
       , ("itemResponseAnyOf1ItemUnderscoreid", "item_id")
       , ("itemResponseAnyOf1Errors", "errors")
       , ("itemResponseAnyOf1HotelUnderscoreid", "hotel_id")
+      , ("itemResponseAnyOf1CreativeUnderscoreassetsUnderscoreid", "creative_assets_id")
       ]
 
 
@@ -10477,7 +14489,7 @@ optionsItemUpdateBatchRecord =
 -- | Object describing an item batch record to upsert items
 data ItemUpsertBatchRecord = ItemUpsertBatchRecord
   { itemUpsertBatchRecordItemUnderscoreid :: Maybe Text -- ^ The catalog item id in the merchant namespace
-  , itemUpsertBatchRecordAttributes :: Maybe ItemAttributes -- ^ 
+  , itemUpsertBatchRecordAttributes :: Maybe ItemAttributesRequest -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ItemUpsertBatchRecord where
@@ -10526,11 +14538,11 @@ optionsItemValidationEvent =
 
 -- | 
 data ItemsBatchPostRequest = ItemsBatchPostRequest
-  { itemsBatchPostRequestCatalogUnderscoretype :: CatalogsType -- ^ 
+  { itemsBatchPostRequestCatalogUnderscoretype :: Text -- ^ 
   , itemsBatchPostRequestCountry :: Country -- ^ 
-  , itemsBatchPostRequestLanguage :: Language -- ^ 
+  , itemsBatchPostRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
   , itemsBatchPostRequestItems :: [ItemDeleteBatchRecord] -- ^ Array with catalogs items
-  , itemsBatchPostRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  , itemsBatchPostRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   , itemsBatchPostRequestOperation :: BatchOperation -- ^ 
   } deriving (Show, Eq, Generic)
 
@@ -10582,14 +14594,14 @@ optionsItemsIssuesList200Response =
 
 -- | 
 data Keyword = Keyword
-  { keywordArchived :: Maybe Bool -- ^ 
+  { keywordBid :: Maybe Int -- ^ </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  , keywordMatchUnderscoretype :: MatchTypeResponse -- ^ 
+  , keywordValue :: Text -- ^ Keyword value (120 chars max).
+  , keywordArchived :: Maybe Bool -- ^ 
   , keywordId :: Maybe Text -- ^ Keyword ID .
   , keywordParentUnderscoreid :: Maybe Text -- ^ Keyword parent entity ID (advertiser, campaign, ad group).
   , keywordParentUnderscoretype :: Maybe Text -- ^ Parent entity type
   , keywordType :: Maybe Text -- ^ Always keyword
-  , keywordBid :: Maybe Int -- ^ Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  , keywordMatchUnderscoretype :: MatchTypeResponse -- ^ 
-  , keywordValue :: Text -- ^ Keyword value (120 chars max).
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Keyword where
@@ -10605,14 +14617,14 @@ optionsKeyword =
     }
   where
     table =
-      [ ("keywordArchived", "archived")
+      [ ("keywordBid", "bid")
+      , ("keywordMatchUnderscoretype", "match_type")
+      , ("keywordValue", "value")
+      , ("keywordArchived", "archived")
       , ("keywordId", "id")
       , ("keywordParentUnderscoreid", "parent_id")
       , ("keywordParentUnderscoretype", "parent_type")
       , ("keywordType", "type")
-      , ("keywordBid", "bid")
-      , ("keywordMatchUnderscoretype", "match_type")
-      , ("keywordValue", "value")
       ]
 
 
@@ -10692,7 +14704,7 @@ optionsKeywordMetricsResponse =
 data KeywordUpdate = KeywordUpdate
   { keywordUpdateId :: Text -- ^ Keyword ID.
   , keywordUpdateArchived :: Maybe Bool -- ^ Is keyword archived?
-  , keywordUpdateBid :: Maybe Int -- ^ Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  , keywordUpdateBid :: Maybe Int -- ^ </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON KeywordUpdate where
@@ -10716,7 +14728,7 @@ optionsKeywordUpdate =
 
 -- | 
 data KeywordUpdateBody = KeywordUpdateBody
-  { keywordUpdateBodyKeywords :: [KeywordUpdate] -- ^ Keywords to update. Object array. Each object has 3 possible fields:<br>1. \"id\": (required) keyword ID<br>2. \"archived\": boolean. Should keyword be archived?<br>3. \"bid\": number<br>For example: [{\"id\":\"2886610576653\", \"archived\": false, \"bid\": 20000}, {\"id\":\"2886610576654\",  \"archived\": true, \"bid\": 20000}, ...]
+  { keywordUpdateBodyKeywords :: [KeywordUpdate] -- ^ Keywords to update. Object array. Each object has 2 possible fields:<br>1. \"id\": (required) keyword ID<br>2. \"archived\": boolean. Should keyword be archived?<br>For example: [{\"id\":\"2886610576653\", \"archived\": false}, {\"id\":\"2886610576654\",  \"archived\": true}, ...]
   } deriving (Show, Eq, Generic)
 
 instance FromJSON KeywordUpdateBody where
@@ -10738,7 +14750,7 @@ optionsKeywordUpdateBody =
 
 -- | 
 data KeywordsCommon = KeywordsCommon
-  { keywordsCommonBid :: Maybe Int -- ^ Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  { keywordsCommonBid :: Maybe Int -- ^ </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
   , keywordsCommonMatchUnderscoretype :: MatchTypeResponse -- ^ 
   , keywordsCommonValue :: Text -- ^ Keyword value (120 chars max).
   } deriving (Show, Eq, Generic)
@@ -10878,15 +14890,62 @@ optionsLanguage =
       ]
 
 
+-- | 
+data LeadFormArrayResponse = LeadFormArrayResponse
+  { leadFormArrayResponseItems :: Maybe [LeadFormArrayResponseItemsInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadFormArrayResponse where
+  parseJSON = genericParseJSON optionsLeadFormArrayResponse
+instance ToJSON LeadFormArrayResponse where
+  toJSON = genericToJSON optionsLeadFormArrayResponse
+
+optionsLeadFormArrayResponse :: Options
+optionsLeadFormArrayResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadFormArrayResponseItems", "items")
+      ]
+
+
+-- | 
+data LeadFormArrayResponseItemsInner = LeadFormArrayResponseItemsInner
+  { leadFormArrayResponseItemsInnerData :: Maybe LeadFormResponse -- ^ 
+  , leadFormArrayResponseItemsInnerExceptions :: Maybe [Exception] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadFormArrayResponseItemsInner where
+  parseJSON = genericParseJSON optionsLeadFormArrayResponseItemsInner
+instance ToJSON LeadFormArrayResponseItemsInner where
+  toJSON = genericToJSON optionsLeadFormArrayResponseItemsInner
+
+optionsLeadFormArrayResponseItemsInner :: Options
+optionsLeadFormArrayResponseItemsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadFormArrayResponseItemsInnerData", "data")
+      , ("leadFormArrayResponseItemsInnerExceptions", "exceptions")
+      ]
+
+
 -- | Creation fields
 data LeadFormCommon = LeadFormCommon
   { leadFormCommonName :: Maybe Text -- ^ Internal name of the lead form.
   , leadFormCommonPrivacyUnderscorepolicyUnderscorelink :: Maybe Text -- ^ A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-  , leadFormCommonHasUnderscoreacceptedUnderscoreterms :: Maybe Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+  , leadFormCommonHasUnderscoreacceptedUnderscoreterms :: Maybe Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
   , leadFormCommonCompletionUnderscoremessage :: Maybe Text -- ^ A message for people who complete the form to let them know what happens next.
   , leadFormCommonStatus :: Maybe LeadFormStatus -- ^ 
   , leadFormCommonDisclosureUnderscorelanguage :: Maybe Text -- ^ Additional disclosure language to be included in the lead form.
   , leadFormCommonQuestions :: Maybe [LeadFormQuestion] -- ^ List of questions to be displayed on the lead form.
+  , leadFormCommonPolicyUnderscorelinks :: Maybe [LeadFormCommonPolicyLinksInner] -- ^ List of additional policy links to be displayed on the lead form.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON LeadFormCommon where
@@ -10909,6 +14968,67 @@ optionsLeadFormCommon =
       , ("leadFormCommonStatus", "status")
       , ("leadFormCommonDisclosureUnderscorelanguage", "disclosure_language")
       , ("leadFormCommonQuestions", "questions")
+      , ("leadFormCommonPolicyUnderscorelinks", "policy_links")
+      ]
+
+
+-- | 
+data LeadFormCommonPolicyLinksInner = LeadFormCommonPolicyLinksInner
+  { leadFormCommonPolicyLinksInnerLabel :: Maybe Text -- ^ Policy label for an additional policy link.
+  , leadFormCommonPolicyLinksInnerLink :: Maybe Text -- ^ Policy link for an additional policy link.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadFormCommonPolicyLinksInner where
+  parseJSON = genericParseJSON optionsLeadFormCommonPolicyLinksInner
+instance ToJSON LeadFormCommonPolicyLinksInner where
+  toJSON = genericToJSON optionsLeadFormCommonPolicyLinksInner
+
+optionsLeadFormCommonPolicyLinksInner :: Options
+optionsLeadFormCommonPolicyLinksInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadFormCommonPolicyLinksInnerLabel", "label")
+      , ("leadFormCommonPolicyLinksInnerLink", "link")
+      ]
+
+
+-- | 
+data LeadFormCreateRequest = LeadFormCreateRequest
+  { leadFormCreateRequestName :: Text -- ^ Internal name of the lead form.
+  , leadFormCreateRequestPrivacyUnderscorepolicyUnderscorelink :: Text -- ^ A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+  , leadFormCreateRequestHasUnderscoreacceptedUnderscoreterms :: Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+  , leadFormCreateRequestCompletionUnderscoremessage :: Text -- ^ A message for people who complete the form to let them know what happens next.
+  , leadFormCreateRequestStatus :: Maybe LeadFormStatus -- ^ 
+  , leadFormCreateRequestDisclosureUnderscorelanguage :: Maybe Text -- ^ Additional disclosure language to be included in the lead form.
+  , leadFormCreateRequestQuestions :: [LeadFormQuestion] -- ^ List of questions to be displayed on the lead form.
+  , leadFormCreateRequestPolicyUnderscorelinks :: Maybe [LeadFormCommonPolicyLinksInner] -- ^ List of additional policy links to be displayed on the lead form.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadFormCreateRequest where
+  parseJSON = genericParseJSON optionsLeadFormCreateRequest
+instance ToJSON LeadFormCreateRequest where
+  toJSON = genericToJSON optionsLeadFormCreateRequest
+
+optionsLeadFormCreateRequest :: Options
+optionsLeadFormCreateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadFormCreateRequestName", "name")
+      , ("leadFormCreateRequestPrivacyUnderscorepolicyUnderscorelink", "privacy_policy_link")
+      , ("leadFormCreateRequestHasUnderscoreacceptedUnderscoreterms", "has_accepted_terms")
+      , ("leadFormCreateRequestCompletionUnderscoremessage", "completion_message")
+      , ("leadFormCreateRequestStatus", "status")
+      , ("leadFormCreateRequestDisclosureUnderscorelanguage", "disclosure_language")
+      , ("leadFormCreateRequestQuestions", "questions")
+      , ("leadFormCreateRequestPolicyUnderscorelinks", "policy_links")
       ]
 
 
@@ -10988,11 +15108,12 @@ optionsLeadFormQuestionType =
 data LeadFormResponse = LeadFormResponse
   { leadFormResponseName :: Maybe Text -- ^ Internal name of the lead form.
   , leadFormResponsePrivacyUnderscorepolicyUnderscorelink :: Maybe Text -- ^ A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-  , leadFormResponseHasUnderscoreacceptedUnderscoreterms :: Maybe Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+  , leadFormResponseHasUnderscoreacceptedUnderscoreterms :: Maybe Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
   , leadFormResponseCompletionUnderscoremessage :: Maybe Text -- ^ A message for people who complete the form to let them know what happens next.
   , leadFormResponseStatus :: Maybe LeadFormStatus -- ^ 
   , leadFormResponseDisclosureUnderscorelanguage :: Maybe Text -- ^ Additional disclosure language to be included in the lead form.
   , leadFormResponseQuestions :: Maybe [LeadFormQuestion] -- ^ List of questions to be displayed on the lead form.
+  , leadFormResponsePolicyUnderscorelinks :: Maybe [LeadFormCommonPolicyLinksInner] -- ^ List of additional policy links to be displayed on the lead form.
   , leadFormResponseId :: Maybe Text -- ^ The ID of this lead form
   , leadFormResponseAdUnderscoreaccountUnderscoreid :: Maybe Text -- ^ The Ad Account ID that this lead form belongs to.
   , leadFormResponseCreatedUnderscoretime :: Maybe Int -- ^ Lead form creation time. Unix timestamp in seconds.
@@ -11019,6 +15140,7 @@ optionsLeadFormResponse =
       , ("leadFormResponseStatus", "status")
       , ("leadFormResponseDisclosureUnderscorelanguage", "disclosure_language")
       , ("leadFormResponseQuestions", "questions")
+      , ("leadFormResponsePolicyUnderscorelinks", "policy_links")
       , ("leadFormResponseId", "id")
       , ("leadFormResponseAdUnderscoreaccountUnderscoreid", "ad_account_id")
       , ("leadFormResponseCreatedUnderscoretime", "created_time")
@@ -11093,6 +15215,44 @@ optionsLeadFormTestResponse =
 
 
 -- | 
+data LeadFormUpdateRequest = LeadFormUpdateRequest
+  { leadFormUpdateRequestName :: Maybe Text -- ^ Internal name of the lead form.
+  , leadFormUpdateRequestPrivacyUnderscorepolicyUnderscorelink :: Maybe Text -- ^ A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+  , leadFormUpdateRequestHasUnderscoreacceptedUnderscoreterms :: Maybe Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+  , leadFormUpdateRequestCompletionUnderscoremessage :: Maybe Text -- ^ A message for people who complete the form to let them know what happens next.
+  , leadFormUpdateRequestStatus :: Maybe LeadFormStatus -- ^ 
+  , leadFormUpdateRequestDisclosureUnderscorelanguage :: Maybe Text -- ^ Additional disclosure language to be included in the lead form.
+  , leadFormUpdateRequestQuestions :: Maybe [LeadFormQuestion] -- ^ List of questions to be displayed on the lead form.
+  , leadFormUpdateRequestPolicyUnderscorelinks :: Maybe [LeadFormCommonPolicyLinksInner] -- ^ List of additional policy links to be displayed on the lead form.
+  , leadFormUpdateRequestId :: Text -- ^ The ID of this lead form to be updated
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadFormUpdateRequest where
+  parseJSON = genericParseJSON optionsLeadFormUpdateRequest
+instance ToJSON LeadFormUpdateRequest where
+  toJSON = genericToJSON optionsLeadFormUpdateRequest
+
+optionsLeadFormUpdateRequest :: Options
+optionsLeadFormUpdateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadFormUpdateRequestName", "name")
+      , ("leadFormUpdateRequestPrivacyUnderscorepolicyUnderscorelink", "privacy_policy_link")
+      , ("leadFormUpdateRequestHasUnderscoreacceptedUnderscoreterms", "has_accepted_terms")
+      , ("leadFormUpdateRequestCompletionUnderscoremessage", "completion_message")
+      , ("leadFormUpdateRequestStatus", "status")
+      , ("leadFormUpdateRequestDisclosureUnderscorelanguage", "disclosure_language")
+      , ("leadFormUpdateRequestQuestions", "questions")
+      , ("leadFormUpdateRequestPolicyUnderscorelinks", "policy_links")
+      , ("leadFormUpdateRequestId", "id")
+      ]
+
+
+-- | 
 data LeadFormsList200Response = LeadFormsList200Response
   { leadFormsList200ResponseItems :: [LeadFormResponse] -- ^ 
   , leadFormsList200ResponseBookmark :: Maybe Text -- ^ 
@@ -11113,6 +15273,100 @@ optionsLeadFormsList200Response =
     table =
       [ ("leadFormsList200ResponseItems", "items")
       , ("leadFormsList200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data LeadsExportCreateRequest = LeadsExportCreateRequest
+  { leadsExportCreateRequestStartUnderscoredate :: Text -- ^ Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+  , leadsExportCreateRequestEndUnderscoredate :: Text -- ^ Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+  , leadsExportCreateRequestAdUnderscoreid :: Text -- ^ ID for the ad collecting leads
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadsExportCreateRequest where
+  parseJSON = genericParseJSON optionsLeadsExportCreateRequest
+instance ToJSON LeadsExportCreateRequest where
+  toJSON = genericToJSON optionsLeadsExportCreateRequest
+
+optionsLeadsExportCreateRequest :: Options
+optionsLeadsExportCreateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadsExportCreateRequestStartUnderscoredate", "start_date")
+      , ("leadsExportCreateRequestEndUnderscoredate", "end_date")
+      , ("leadsExportCreateRequestAdUnderscoreid", "ad_id")
+      ]
+
+
+-- | 
+data LeadsExportCreateResponse = LeadsExportCreateResponse
+  { leadsExportCreateResponseLeadsUnderscoreexportUnderscoreid :: Maybe Text -- ^ ID for the leads export job
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadsExportCreateResponse where
+  parseJSON = genericParseJSON optionsLeadsExportCreateResponse
+instance ToJSON LeadsExportCreateResponse where
+  toJSON = genericToJSON optionsLeadsExportCreateResponse
+
+optionsLeadsExportCreateResponse :: Options
+optionsLeadsExportCreateResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadsExportCreateResponseLeadsUnderscoreexportUnderscoreid", "leads_export_id")
+      ]
+
+
+-- | 
+data LeadsExportResponseData = LeadsExportResponseData
+  { leadsExportResponseDataExportUnderscorestatus :: Maybe LeadsExportStatus -- ^ 
+  , leadsExportResponseDataDownloadUnderscoreurl :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadsExportResponseData where
+  parseJSON = genericParseJSON optionsLeadsExportResponseData
+instance ToJSON LeadsExportResponseData where
+  toJSON = genericToJSON optionsLeadsExportResponseData
+
+optionsLeadsExportResponseData :: Options
+optionsLeadsExportResponseData =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("leadsExportResponseDataExportUnderscorestatus", "export_status")
+      , ("leadsExportResponseDataDownloadUnderscoreurl", "download_url")
+      ]
+
+
+-- | Status of a leads export job
+data LeadsExportStatus = LeadsExportStatus
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON LeadsExportStatus where
+  parseJSON = genericParseJSON optionsLeadsExportStatus
+instance ToJSON LeadsExportStatus where
+  toJSON = genericToJSON optionsLeadsExportStatus
+
+optionsLeadsExportStatus :: Options
+optionsLeadsExportStatus =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
       ]
 
 
@@ -11316,6 +15570,50 @@ optionsMediaList200Response =
       ]
 
 
+-- | 
+data MediaType = MediaType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON MediaType where
+  parseJSON = genericParseJSON optionsMediaType
+instance ToJSON MediaType where
+  toJSON = genericToJSON optionsMediaType
+
+optionsMediaType :: Options
+optionsMediaType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | 
+data MediaTypeFilter = MediaTypeFilter
+  { mediaTypeFilterMEDIAUnderscoreTYPE :: CatalogsProductGroupMultipleMediaTypesCriteria -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON MediaTypeFilter where
+  parseJSON = genericParseJSON optionsMediaTypeFilter
+instance ToJSON MediaTypeFilter where
+  toJSON = genericToJSON optionsMediaTypeFilter
+
+optionsMediaTypeFilter :: Options
+optionsMediaTypeFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("mediaTypeFilterMEDIAUnderscoreTYPE", "MEDIA_TYPE")
+      ]
+
+
 -- | Media upload that has been registered but not uploaded/processed yet.
 data MediaUpload = MediaUpload
   { mediaUploadMediaUnderscoreid :: Maybe Text -- ^ Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
@@ -11472,6 +15770,74 @@ optionsMediaUploadType =
       ]
 
 
+-- | The access level a member/partner has to the business. Values are case-sensitive. &lt;br&gt; - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. &lt;br&gt; - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
+data MemberBusinessRole = MemberBusinessRole
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON MemberBusinessRole where
+  parseJSON = genericParseJSON optionsMemberBusinessRole
+instance ToJSON MemberBusinessRole where
+  toJSON = genericToJSON optionsMemberBusinessRole
+
+optionsMemberBusinessRole :: Options
+optionsMemberBusinessRole =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | 
+data MembersToDeleteBody = MembersToDeleteBody
+  { membersToDeleteBodyMembers :: [MembersToDeleteBodyMembersInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON MembersToDeleteBody where
+  parseJSON = genericParseJSON optionsMembersToDeleteBody
+instance ToJSON MembersToDeleteBody where
+  toJSON = genericToJSON optionsMembersToDeleteBody
+
+optionsMembersToDeleteBody :: Options
+optionsMembersToDeleteBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("membersToDeleteBodyMembers", "members")
+      ]
+
+
+-- | 
+data MembersToDeleteBodyMembersInner = MembersToDeleteBodyMembersInner
+  { membersToDeleteBodyMembersInnerMemberUnderscoreid :: Text -- ^ Unique identifier of the member
+  , membersToDeleteBodyMembersInnerBusinessUnderscorerole :: BusinessRoleForMembers -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON MembersToDeleteBodyMembersInner where
+  parseJSON = genericParseJSON optionsMembersToDeleteBodyMembersInner
+instance ToJSON MembersToDeleteBodyMembersInner where
+  toJSON = genericToJSON optionsMembersToDeleteBodyMembersInner
+
+optionsMembersToDeleteBodyMembersInner :: Options
+optionsMembersToDeleteBodyMembersInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("membersToDeleteBodyMembersInnerMemberUnderscoreid", "member_id")
+      , ("membersToDeleteBodyMembersInnerBusinessUnderscorerole", "business_role")
+      ]
+
+
 -- | Level of the reporting request
 data MetricsReportingLevel = MetricsReportingLevel
   { 
@@ -11535,6 +15901,44 @@ optionsMinPriceFilter =
   where
     table =
       [ ("minPriceFilterMINUnderscorePRICE", "MIN_PRICE")
+      ]
+
+
+-- | 
+data MultipleProductGroupsInner = MultipleProductGroupsInner
+  { multipleProductGroupsInnerName :: Text -- ^ 
+  , multipleProductGroupsInnerDescription :: Maybe Text -- ^ 
+  , multipleProductGroupsInnerIsUnderscorefeatured :: Maybe Bool -- ^ boolean indicator of whether the product group is being featured or not
+  , multipleProductGroupsInnerFilters :: CatalogsCreativeAssetsProductGroupFilters -- ^ 
+  , multipleProductGroupsInnerFeedUnderscoreid :: Text -- ^ Catalog Feed id pertaining to the catalog product group.
+  , multipleProductGroupsInnerCatalogUnderscoretype :: Text -- ^ 
+  , multipleProductGroupsInnerCatalogUnderscoreid :: Text -- ^ Catalog id pertaining to the creative assets product group.
+  , multipleProductGroupsInnerCountry :: Country -- ^ 
+  , multipleProductGroupsInnerLocale :: CatalogsLocale -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON MultipleProductGroupsInner where
+  parseJSON = genericParseJSON optionsMultipleProductGroupsInner
+instance ToJSON MultipleProductGroupsInner where
+  toJSON = genericToJSON optionsMultipleProductGroupsInner
+
+optionsMultipleProductGroupsInner :: Options
+optionsMultipleProductGroupsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("multipleProductGroupsInnerName", "name")
+      , ("multipleProductGroupsInnerDescription", "description")
+      , ("multipleProductGroupsInnerIsUnderscorefeatured", "is_featured")
+      , ("multipleProductGroupsInnerFilters", "filters")
+      , ("multipleProductGroupsInnerFeedUnderscoreid", "feed_id")
+      , ("multipleProductGroupsInnerCatalogUnderscoretype", "catalog_type")
+      , ("multipleProductGroupsInnerCatalogUnderscoreid", "catalog_id")
+      , ("multipleProductGroupsInnerCountry", "country")
+      , ("multipleProductGroupsInnerLocale", "locale")
       ]
 
 
@@ -11626,13 +16030,83 @@ optionsNullableCurrency =
       ]
 
 
+-- | A request to receive a client token.
+data OauthAccessTokenRequestClientCredentials = OauthAccessTokenRequestClientCredentials
+  { oauthAccessTokenRequestClientCredentialsGrantUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenRequestClientCredentialsScope :: Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenRequestClientCredentials where
+  parseJSON = genericParseJSON optionsOauthAccessTokenRequestClientCredentials
+instance ToJSON OauthAccessTokenRequestClientCredentials where
+  toJSON = genericToJSON optionsOauthAccessTokenRequestClientCredentials
+
+optionsOauthAccessTokenRequestClientCredentials :: Options
+optionsOauthAccessTokenRequestClientCredentials =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenRequestClientCredentialsGrantUnderscoretype", "grant_type")
+      , ("oauthAccessTokenRequestClientCredentialsScope", "scope")
+      ]
+
+
 -- | A request to exchange an authorization code for an access token.
-newtype OauthAccessTokenRequestCode = OauthAccessTokenRequestCode { unOauthAccessTokenRequestCode :: OauthAccessTokenRequest }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+data OauthAccessTokenRequestCode = OauthAccessTokenRequestCode
+  { oauthAccessTokenRequestCodeGrantUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenRequestCodeCode :: Text -- ^ 
+  , oauthAccessTokenRequestCodeRedirectUnderscoreuri :: Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenRequestCode where
+  parseJSON = genericParseJSON optionsOauthAccessTokenRequestCode
+instance ToJSON OauthAccessTokenRequestCode where
+  toJSON = genericToJSON optionsOauthAccessTokenRequestCode
+
+optionsOauthAccessTokenRequestCode :: Options
+optionsOauthAccessTokenRequestCode =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenRequestCodeGrantUnderscoretype", "grant_type")
+      , ("oauthAccessTokenRequestCodeCode", "code")
+      , ("oauthAccessTokenRequestCodeRedirectUnderscoreuri", "redirect_uri")
+      ]
+
 
 -- | A request to exchange a refresh token for a new access token.
-newtype OauthAccessTokenRequestRefresh = OauthAccessTokenRequestRefresh { unOauthAccessTokenRequestRefresh :: OauthAccessTokenRequest }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+data OauthAccessTokenRequestRefresh = OauthAccessTokenRequestRefresh
+  { oauthAccessTokenRequestRefreshGrantUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenRequestRefreshRefreshUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenRequestRefreshScope :: Maybe Text -- ^ 
+  , oauthAccessTokenRequestRefreshRefreshUnderscoreon :: Maybe Bool -- ^ Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenRequestRefresh where
+  parseJSON = genericParseJSON optionsOauthAccessTokenRequestRefresh
+instance ToJSON OauthAccessTokenRequestRefresh where
+  toJSON = genericToJSON optionsOauthAccessTokenRequestRefresh
+
+optionsOauthAccessTokenRequestRefresh :: Options
+optionsOauthAccessTokenRequestRefresh =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenRequestRefreshGrantUnderscoretype", "grant_type")
+      , ("oauthAccessTokenRequestRefreshRefreshUnderscoretoken", "refresh_token")
+      , ("oauthAccessTokenRequestRefreshScope", "scope")
+      , ("oauthAccessTokenRequestRefreshRefreshUnderscoreon", "refresh_on")
+      ]
+
 
 -- | A successful OAuth access token response.
 data OauthAccessTokenResponse = OauthAccessTokenResponse
@@ -11664,23 +16138,171 @@ optionsOauthAccessTokenResponse =
       ]
 
 
+-- | A successful OAuth client token response for the client token flow.
+data OauthAccessTokenResponseClientCredentials = OauthAccessTokenResponseClientCredentials
+  { oauthAccessTokenResponseClientCredentialsResponseUnderscoretype :: Maybe Text -- ^ 
+  , oauthAccessTokenResponseClientCredentialsAccessUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseClientCredentialsTokenUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenResponseClientCredentialsExpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseClientCredentialsScope :: Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenResponseClientCredentials where
+  parseJSON = genericParseJSON optionsOauthAccessTokenResponseClientCredentials
+instance ToJSON OauthAccessTokenResponseClientCredentials where
+  toJSON = genericToJSON optionsOauthAccessTokenResponseClientCredentials
+
+optionsOauthAccessTokenResponseClientCredentials :: Options
+optionsOauthAccessTokenResponseClientCredentials =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenResponseClientCredentialsResponseUnderscoretype", "response_type")
+      , ("oauthAccessTokenResponseClientCredentialsAccessUnderscoretoken", "access_token")
+      , ("oauthAccessTokenResponseClientCredentialsTokenUnderscoretype", "token_type")
+      , ("oauthAccessTokenResponseClientCredentialsExpiresUnderscorein", "expires_in")
+      , ("oauthAccessTokenResponseClientCredentialsScope", "scope")
+      ]
+
+
 -- | A successful OAuth access token response for the authorization code flow.
-newtype OauthAccessTokenResponseCode = OauthAccessTokenResponseCode { unOauthAccessTokenResponseCode :: OauthAccessTokenResponse }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+data OauthAccessTokenResponseCode = OauthAccessTokenResponseCode
+  { oauthAccessTokenResponseCodeResponseUnderscoretype :: Maybe Text -- ^ 
+  , oauthAccessTokenResponseCodeAccessUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseCodeTokenUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenResponseCodeExpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseCodeScope :: Text -- ^ 
+  , oauthAccessTokenResponseCodeRefreshUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseCodeRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenResponseCode where
+  parseJSON = genericParseJSON optionsOauthAccessTokenResponseCode
+instance ToJSON OauthAccessTokenResponseCode where
+  toJSON = genericToJSON optionsOauthAccessTokenResponseCode
+
+optionsOauthAccessTokenResponseCode :: Options
+optionsOauthAccessTokenResponseCode =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenResponseCodeResponseUnderscoretype", "response_type")
+      , ("oauthAccessTokenResponseCodeAccessUnderscoretoken", "access_token")
+      , ("oauthAccessTokenResponseCodeTokenUnderscoretype", "token_type")
+      , ("oauthAccessTokenResponseCodeExpiresUnderscorein", "expires_in")
+      , ("oauthAccessTokenResponseCodeScope", "scope")
+      , ("oauthAccessTokenResponseCodeRefreshUnderscoretoken", "refresh_token")
+      , ("oauthAccessTokenResponseCodeRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
+      ]
+
 
 -- | A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
-newtype OauthAccessTokenResponseEverlastingRefresh = OauthAccessTokenResponseEverlastingRefresh { unOauthAccessTokenResponseEverlastingRefresh :: OauthAccessTokenResponse }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+data OauthAccessTokenResponseEverlastingRefresh = OauthAccessTokenResponseEverlastingRefresh
+  { oauthAccessTokenResponseEverlastingRefreshResponseUnderscoretype :: Maybe Text -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshAccessUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshTokenUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshExpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshScope :: Text -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscoreat :: Int -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenResponseEverlastingRefresh where
+  parseJSON = genericParseJSON optionsOauthAccessTokenResponseEverlastingRefresh
+instance ToJSON OauthAccessTokenResponseEverlastingRefresh where
+  toJSON = genericToJSON optionsOauthAccessTokenResponseEverlastingRefresh
+
+optionsOauthAccessTokenResponseEverlastingRefresh :: Options
+optionsOauthAccessTokenResponseEverlastingRefresh =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenResponseEverlastingRefreshResponseUnderscoretype", "response_type")
+      , ("oauthAccessTokenResponseEverlastingRefreshAccessUnderscoretoken", "access_token")
+      , ("oauthAccessTokenResponseEverlastingRefreshTokenUnderscoretype", "token_type")
+      , ("oauthAccessTokenResponseEverlastingRefreshExpiresUnderscorein", "expires_in")
+      , ("oauthAccessTokenResponseEverlastingRefreshScope", "scope")
+      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretoken", "refresh_token")
+      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
+      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscoreat", "refresh_token_expires_at")
+      ]
+
 
 -- | A successful OAuth access token response for the refresh token flow, with an added refresh token.
-newtype OauthAccessTokenResponseIntegrationRefresh = OauthAccessTokenResponseIntegrationRefresh { unOauthAccessTokenResponseIntegrationRefresh :: OauthAccessTokenResponse }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+data OauthAccessTokenResponseIntegrationRefresh = OauthAccessTokenResponseIntegrationRefresh
+  { oauthAccessTokenResponseIntegrationRefreshResponseUnderscoretype :: Maybe Text -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshAccessUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshTokenUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshExpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshScope :: Text -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OauthAccessTokenResponseIntegrationRefresh where
+  parseJSON = genericParseJSON optionsOauthAccessTokenResponseIntegrationRefresh
+instance ToJSON OauthAccessTokenResponseIntegrationRefresh where
+  toJSON = genericToJSON optionsOauthAccessTokenResponseIntegrationRefresh
+
+optionsOauthAccessTokenResponseIntegrationRefresh :: Options
+optionsOauthAccessTokenResponseIntegrationRefresh =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenResponseIntegrationRefreshResponseUnderscoretype", "response_type")
+      , ("oauthAccessTokenResponseIntegrationRefreshAccessUnderscoretoken", "access_token")
+      , ("oauthAccessTokenResponseIntegrationRefreshTokenUnderscoretype", "token_type")
+      , ("oauthAccessTokenResponseIntegrationRefreshExpiresUnderscorein", "expires_in")
+      , ("oauthAccessTokenResponseIntegrationRefreshScope", "scope")
+      , ("oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretoken", "refresh_token")
+      , ("oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
+      ]
+
 
 -- | A successful OAuth access token response for the refresh token flow.
-newtype OauthAccessTokenResponseRefresh = OauthAccessTokenResponseRefresh { unOauthAccessTokenResponseRefresh :: OauthAccessTokenResponse }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+data OauthAccessTokenResponseRefresh = OauthAccessTokenResponseRefresh
+  { oauthAccessTokenResponseRefreshResponseUnderscoretype :: Maybe Text -- ^ 
+  , oauthAccessTokenResponseRefreshAccessUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseRefreshTokenUnderscoretype :: Text -- ^ 
+  , oauthAccessTokenResponseRefreshExpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseRefreshScope :: Text -- ^ 
+  } deriving (Show, Eq, Generic)
 
--- | Campaign objective type. If set as one of [\&quot;AWARENESS\&quot;, \&quot;CONSIDERATION\&quot;, \&quot;WEB_CONVERSION\&quot;, \&quot;CATALOG_SALES\&quot;] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\&quot;WEB_SESSIONS\&quot;] in BETA. For update, only draft campaigns may update objective type.
+instance FromJSON OauthAccessTokenResponseRefresh where
+  parseJSON = genericParseJSON optionsOauthAccessTokenResponseRefresh
+instance ToJSON OauthAccessTokenResponseRefresh where
+  toJSON = genericToJSON optionsOauthAccessTokenResponseRefresh
+
+optionsOauthAccessTokenResponseRefresh :: Options
+optionsOauthAccessTokenResponseRefresh =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("oauthAccessTokenResponseRefreshResponseUnderscoretype", "response_type")
+      , ("oauthAccessTokenResponseRefreshAccessUnderscoretoken", "access_token")
+      , ("oauthAccessTokenResponseRefreshTokenUnderscoretype", "token_type")
+      , ("oauthAccessTokenResponseRefreshExpiresUnderscorein", "expires_in")
+      , ("oauthAccessTokenResponseRefreshScope", "scope")
+      ]
+
+
+-- | Campaign objective type. If set as one of [\&quot;AWARENESS\&quot;, \&quot;CONSIDERATION\&quot;, \&quot;WEB_CONVERSION\&quot;, \&quot;CATALOG_SALES\&quot;, \&quot;VIDEO_COMPLETION\&quot;] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\&quot;WEB_SESSIONS\&quot;] is DEPRECATED. For update, only draft campaigns may update objective type.
 data ObjectiveType = ObjectiveType
   { 
   } deriving (Show, Eq, Generic)
@@ -11692,6 +16314,28 @@ instance ToJSON ObjectiveType where
 
 optionsObjectiveType :: Options
 optionsObjectiveType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | Operation type to share a specific audience or revoke access to a previously shared audience
+data OperationType = OperationType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON OperationType where
+  parseJSON = genericParseJSON optionsOperationType
+instance ToJSON OperationType where
+  toJSON = genericToJSON optionsOperationType
+
+optionsOperationType :: Options
+optionsOperationType =
   defaultOptions
     { omitNothingFields  = True
     , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
@@ -11734,7 +16378,7 @@ data OptimizationGoalMetadataConversionTagV3GoalMetadata = OptimizationGoalMetad
   , optimizationGoalMetadataConversionTagV3GoalMetadataConversionUnderscoreevent :: Maybe Text -- ^ 
   , optimizationGoalMetadataConversionTagV3GoalMetadataConversionUnderscoretagUnderscoreid :: Maybe Text -- ^ 
   , optimizationGoalMetadataConversionTagV3GoalMetadataCpaUnderscoregoalUnderscorevalueUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Text -- ^ 
-  , optimizationGoalMetadataConversionTagV3GoalMetadataIsUnderscoreroasUnderscoreoptimized :: Maybe Bool -- ^ Ad group is ROAS optimized
+  , optimizationGoalMetadataConversionTagV3GoalMetadataIsUnderscoreroasUnderscoreoptimized :: Maybe Bool -- ^ ROAS optimization is not supported
   , optimizationGoalMetadataConversionTagV3GoalMetadataLearningUnderscoremodeUnderscoretype :: Maybe Text -- ^ Conversion learning model type
   } deriving (Show, Eq, Generic)
 
@@ -12170,6 +16814,50 @@ optionsPartnerType =
       ]
 
 
+-- | 
+data Permissions = Permissions
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON Permissions where
+  parseJSON = genericParseJSON optionsPermissions
+instance ToJSON Permissions where
+  toJSON = genericToJSON optionsPermissions
+
+optionsPermissions :: Options
+optionsPermissions =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
+-- | 
+data PermissionsWithOwner = PermissionsWithOwner
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON PermissionsWithOwner where
+  parseJSON = genericParseJSON optionsPermissionsWithOwner
+instance ToJSON PermissionsWithOwner where
+  toJSON = genericToJSON optionsPermissionsWithOwner
+
+optionsPermissionsWithOwner :: Options
+optionsPermissionsWithOwner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
 -- | Pin
 data Pin = Pin
   { pinId :: Maybe Text -- ^ 
@@ -12184,10 +16872,10 @@ data Pin = Pin
   , pinBoardUnderscoresectionUnderscoreid :: Maybe Text -- ^ The board section to which this Pin belongs.
   , pinBoardUnderscoreowner :: Maybe BoardOwner -- ^ 
   , pinIsUnderscoreowner :: Maybe Bool -- ^ Whether the \"operation user_account\" is the Pin owner.
-  , pinMedia :: Maybe SummaryPinMedia -- ^ 
+  , pinMedia :: Maybe PinMedia -- ^ 
   , pinMediaUnderscoresource :: Maybe PinMediaSource -- ^ 
   , pinParentUnderscorepinUnderscoreid :: Maybe Text -- ^ The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-  , pinIsUnderscorestandard :: Maybe Bool -- ^ Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+  , pinIsUnderscorestandard :: Maybe Bool -- ^ Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
   , pinHasUnderscorebeenUnderscorepromoted :: Maybe Bool -- ^ Whether the Pin has been promoted or not.
   , pinNote :: Maybe Text -- ^ Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
   , pinPinUnderscoremetrics :: Maybe Object -- ^ Pin metrics with associated time intervals if any.
@@ -12292,7 +16980,7 @@ data PinCreate = PinCreate
   , pinCreateBoardUnderscoreid :: Maybe Text -- ^ The board to which this Pin belongs.
   , pinCreateBoardUnderscoresectionUnderscoreid :: Maybe Text -- ^ The board section to which this Pin belongs.
   , pinCreateBoardUnderscoreowner :: Maybe BoardOwner -- ^ 
-  , pinCreateMedia :: Maybe SummaryPinMedia -- ^ 
+  , pinCreateMedia :: Maybe PinMedia -- ^ 
   , pinCreateMediaUnderscoresource :: Maybe PinMediaSource -- ^ 
   , pinCreateParentUnderscorepinUnderscoreid :: Maybe Text -- ^ The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
   , pinCreateNote :: Maybe Text -- ^ Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
@@ -12658,6 +17346,34 @@ optionsPinMediaSourceVideoID =
 newtype PinMediaWithImage = PinMediaWithImage { unPinMediaWithImage :: PinMedia }
   deriving (Show, Eq, FromJSON, ToJSON, Generic)
 
+-- | 
+data PinMediaWithImageAllOfImages = PinMediaWithImageAllOfImages
+  { pinMediaWithImageAllOfImages150x150 :: Maybe Object -- ^ 
+  , pinMediaWithImageAllOfImages400x300 :: Maybe Object -- ^ 
+  , pinMediaWithImageAllOfImages600x :: Maybe Object -- ^ 
+  , pinMediaWithImageAllOfImages1200x :: Maybe Object -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON PinMediaWithImageAllOfImages where
+  parseJSON = genericParseJSON optionsPinMediaWithImageAllOfImages
+instance ToJSON PinMediaWithImageAllOfImages where
+  toJSON = genericToJSON optionsPinMediaWithImageAllOfImages
+
+optionsPinMediaWithImageAllOfImages :: Options
+optionsPinMediaWithImageAllOfImages =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("pinMediaWithImageAllOfImages150x150", "150x150")
+      , ("pinMediaWithImageAllOfImages400x300", "400x300")
+      , ("pinMediaWithImageAllOfImages600x", "600x")
+      , ("pinMediaWithImageAllOfImages1200x", "1200x")
+      ]
+
+
 -- | Pin with a mix of images and videos.
 newtype PinMediaWithImageAndVideo = PinMediaWithImageAndVideo { unPinMediaWithImageAndVideo :: PinMedia }
   deriving (Show, Eq, FromJSON, ToJSON, Generic)
@@ -12828,7 +17544,7 @@ optionsPinsSaveRequest =
       ]
 
 
--- | Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot;, \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
+-- | Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
 data PinterestTagEventData = PinterestTagEventData
   { pinterestTagEventDataCurrency :: Maybe Currency -- ^ 
   , pinterestTagEventDataLeadUnderscoretype :: Maybe Text -- ^ Promotion code. For example, \"Newsletter\".
@@ -12891,6 +17607,10 @@ optionsPlacementGroupType =
       [ 
       ]
 
+
+-- | This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
+newtype PlacementMultipliers = PlacementMultipliers { unPlacementMultipliers :: (Map.Map Text Double) }
+  deriving (Show, Eq, FromJSON, ToJSON, Generic)
 
 -- | 
 data PriceFilter = PriceFilter
@@ -12956,7 +17676,6 @@ data ProductGroupPromotion = ProductGroupPromotion
   , productGroupPromotionTrackingUnderscoreurl :: Maybe Text -- ^ Tracking template for proudct group promotions. 4000 limit
   , productGroupPromotionCatalogUnderscoreproductUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the catalogs product group that this product group promotion references
   , productGroupPromotionCatalogUnderscoreproductUnderscoregroupUnderscorename :: Maybe Text -- ^ Catalogs product group name
-  , productGroupPromotionCreativeUnderscoretype :: Maybe CreativeType -- ^ 
   , productGroupPromotionCollectionsUnderscoreheroUnderscorepinUnderscoreid :: Maybe Text -- ^ Hero Pin ID if this PG is promoted as a Collection
   , productGroupPromotionCollectionsUnderscoreheroUnderscoredestinationUnderscoreurl :: Maybe Text -- ^ Collections Hero Destination Url
   , productGroupPromotionGridUnderscoreclickUnderscoretype :: Maybe GridClickType -- ^ 
@@ -12989,7 +17708,6 @@ optionsProductGroupPromotion =
       , ("productGroupPromotionTrackingUnderscoreurl", "tracking_url")
       , ("productGroupPromotionCatalogUnderscoreproductUnderscoregroupUnderscoreid", "catalog_product_group_id")
       , ("productGroupPromotionCatalogUnderscoreproductUnderscoregroupUnderscorename", "catalog_product_group_name")
-      , ("productGroupPromotionCreativeUnderscoretype", "creative_type")
       , ("productGroupPromotionCollectionsUnderscoreheroUnderscorepinUnderscoreid", "collections_hero_pin_id")
       , ("productGroupPromotionCollectionsUnderscoreheroUnderscoredestinationUnderscoreurl", "collections_hero_destination_url")
       , ("productGroupPromotionGridUnderscoreclickUnderscoretype", "grid_click_type")
@@ -12999,7 +17717,7 @@ optionsProductGroupPromotion =
 -- | 
 data ProductGroupPromotionCreateRequest = ProductGroupPromotionCreateRequest
   { productGroupPromotionCreateRequestAdUnderscoregroupUnderscoreid :: Text -- ^ ID of the Ad Group the Product Group Promotion belongs to.
-  , productGroupPromotionCreateRequestProductUnderscoregroupUnderscorepromotion :: [ProductGroupPromotion] -- ^ 
+  , productGroupPromotionCreateRequestProductUnderscoregroupUnderscorepromotion :: [ProductGroupPromotionCreateRequestElement] -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ProductGroupPromotionCreateRequest where
@@ -13017,6 +17735,62 @@ optionsProductGroupPromotionCreateRequest =
     table =
       [ ("productGroupPromotionCreateRequestAdUnderscoregroupUnderscoreid", "ad_group_id")
       , ("productGroupPromotionCreateRequestProductUnderscoregroupUnderscorepromotion", "product_group_promotion")
+      ]
+
+
+-- | 
+data ProductGroupPromotionCreateRequestElement = ProductGroupPromotionCreateRequestElement
+  { productGroupPromotionCreateRequestElementId :: Maybe Text -- ^ ID of the product group promotion.
+  , productGroupPromotionCreateRequestElementAdUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the ad group the product group belongs to.
+  , productGroupPromotionCreateRequestElementBidUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ The bid in micro currency.
+  , productGroupPromotionCreateRequestElementIncluded :: Maybe Bool -- ^ True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+  , productGroupPromotionCreateRequestElementDefinition :: Maybe Text -- ^ The full product group definition path
+  , productGroupPromotionCreateRequestElementRelativeUnderscoredefinition :: Maybe Text -- ^ The definition of the product group, relative to its parent - an attribute name/value pair
+  , productGroupPromotionCreateRequestElementParentUnderscoreid :: Maybe Text -- ^ The parent Product Group ID of this Product Group
+  , productGroupPromotionCreateRequestElementSlideshowUnderscorecollectionsUnderscoretitle :: Maybe Text -- ^ Slideshow Collections Title
+  , productGroupPromotionCreateRequestElementSlideshowUnderscorecollectionsUnderscoredescription :: Maybe Text -- ^ Slideshow Collections Description
+  , productGroupPromotionCreateRequestElementIsUnderscoremdl :: Maybe Bool -- ^ If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+  , productGroupPromotionCreateRequestElementStatus :: Maybe EntityStatus -- ^ 
+  , productGroupPromotionCreateRequestElementTrackingUnderscoreurl :: Maybe Text -- ^ Tracking template for proudct group promotions. 4000 limit
+  , productGroupPromotionCreateRequestElementCatalogUnderscoreproductUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the catalogs product group that this product group promotion references
+  , productGroupPromotionCreateRequestElementCatalogUnderscoreproductUnderscoregroupUnderscorename :: Maybe Text -- ^ Catalogs product group name
+  , productGroupPromotionCreateRequestElementCollectionsUnderscoreheroUnderscorepinUnderscoreid :: Maybe Text -- ^ Hero Pin ID if this PG is promoted as a Collection
+  , productGroupPromotionCreateRequestElementCollectionsUnderscoreheroUnderscoredestinationUnderscoreurl :: Maybe Text -- ^ Collections Hero Destination Url
+  , productGroupPromotionCreateRequestElementGridUnderscoreclickUnderscoretype :: Maybe GridClickType -- ^ 
+  , productGroupPromotionCreateRequestElementCreativeUnderscoretype :: Maybe CreativeType -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ProductGroupPromotionCreateRequestElement where
+  parseJSON = genericParseJSON optionsProductGroupPromotionCreateRequestElement
+instance ToJSON ProductGroupPromotionCreateRequestElement where
+  toJSON = genericToJSON optionsProductGroupPromotionCreateRequestElement
+
+optionsProductGroupPromotionCreateRequestElement :: Options
+optionsProductGroupPromotionCreateRequestElement =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("productGroupPromotionCreateRequestElementId", "id")
+      , ("productGroupPromotionCreateRequestElementAdUnderscoregroupUnderscoreid", "ad_group_id")
+      , ("productGroupPromotionCreateRequestElementBidUnderscoreinUnderscoremicroUnderscorecurrency", "bid_in_micro_currency")
+      , ("productGroupPromotionCreateRequestElementIncluded", "included")
+      , ("productGroupPromotionCreateRequestElementDefinition", "definition")
+      , ("productGroupPromotionCreateRequestElementRelativeUnderscoredefinition", "relative_definition")
+      , ("productGroupPromotionCreateRequestElementParentUnderscoreid", "parent_id")
+      , ("productGroupPromotionCreateRequestElementSlideshowUnderscorecollectionsUnderscoretitle", "slideshow_collections_title")
+      , ("productGroupPromotionCreateRequestElementSlideshowUnderscorecollectionsUnderscoredescription", "slideshow_collections_description")
+      , ("productGroupPromotionCreateRequestElementIsUnderscoremdl", "is_mdl")
+      , ("productGroupPromotionCreateRequestElementStatus", "status")
+      , ("productGroupPromotionCreateRequestElementTrackingUnderscoreurl", "tracking_url")
+      , ("productGroupPromotionCreateRequestElementCatalogUnderscoreproductUnderscoregroupUnderscoreid", "catalog_product_group_id")
+      , ("productGroupPromotionCreateRequestElementCatalogUnderscoreproductUnderscoregroupUnderscorename", "catalog_product_group_name")
+      , ("productGroupPromotionCreateRequestElementCollectionsUnderscoreheroUnderscorepinUnderscoreid", "collections_hero_pin_id")
+      , ("productGroupPromotionCreateRequestElementCollectionsUnderscoreheroUnderscoredestinationUnderscoreurl", "collections_hero_destination_url")
+      , ("productGroupPromotionCreateRequestElementGridUnderscoreclickUnderscoretype", "grid_click_type")
+      , ("productGroupPromotionCreateRequestElementCreativeUnderscoretype", "creative_type")
       ]
 
 
@@ -13043,8 +17817,64 @@ optionsProductGroupPromotionResponse =
 
 
 -- | 
+data ProductGroupPromotionResponseElement = ProductGroupPromotionResponseElement
+  { productGroupPromotionResponseElementId :: Maybe Text -- ^ ID of the product group promotion.
+  , productGroupPromotionResponseElementAdUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the ad group the product group belongs to.
+  , productGroupPromotionResponseElementBidUnderscoreinUnderscoremicroUnderscorecurrency :: Maybe Int -- ^ The bid in micro currency.
+  , productGroupPromotionResponseElementIncluded :: Maybe Bool -- ^ True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+  , productGroupPromotionResponseElementDefinition :: Maybe Text -- ^ The full product group definition path
+  , productGroupPromotionResponseElementRelativeUnderscoredefinition :: Maybe Text -- ^ The definition of the product group, relative to its parent - an attribute name/value pair
+  , productGroupPromotionResponseElementParentUnderscoreid :: Maybe Text -- ^ The parent Product Group ID of this Product Group
+  , productGroupPromotionResponseElementSlideshowUnderscorecollectionsUnderscoretitle :: Maybe Text -- ^ Slideshow Collections Title
+  , productGroupPromotionResponseElementSlideshowUnderscorecollectionsUnderscoredescription :: Maybe Text -- ^ Slideshow Collections Description
+  , productGroupPromotionResponseElementIsUnderscoremdl :: Maybe Bool -- ^ If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+  , productGroupPromotionResponseElementStatus :: Maybe EntityStatus -- ^ 
+  , productGroupPromotionResponseElementTrackingUnderscoreurl :: Maybe Text -- ^ Tracking template for proudct group promotions. 4000 limit
+  , productGroupPromotionResponseElementCatalogUnderscoreproductUnderscoregroupUnderscoreid :: Maybe Text -- ^ ID of the catalogs product group that this product group promotion references
+  , productGroupPromotionResponseElementCatalogUnderscoreproductUnderscoregroupUnderscorename :: Maybe Text -- ^ Catalogs product group name
+  , productGroupPromotionResponseElementCollectionsUnderscoreheroUnderscorepinUnderscoreid :: Maybe Text -- ^ Hero Pin ID if this PG is promoted as a Collection
+  , productGroupPromotionResponseElementCollectionsUnderscoreheroUnderscoredestinationUnderscoreurl :: Maybe Text -- ^ Collections Hero Destination Url
+  , productGroupPromotionResponseElementGridUnderscoreclickUnderscoretype :: Maybe GridClickType -- ^ 
+  , productGroupPromotionResponseElementCreativeUnderscoretype :: Maybe CreativeType -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ProductGroupPromotionResponseElement where
+  parseJSON = genericParseJSON optionsProductGroupPromotionResponseElement
+instance ToJSON ProductGroupPromotionResponseElement where
+  toJSON = genericToJSON optionsProductGroupPromotionResponseElement
+
+optionsProductGroupPromotionResponseElement :: Options
+optionsProductGroupPromotionResponseElement =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("productGroupPromotionResponseElementId", "id")
+      , ("productGroupPromotionResponseElementAdUnderscoregroupUnderscoreid", "ad_group_id")
+      , ("productGroupPromotionResponseElementBidUnderscoreinUnderscoremicroUnderscorecurrency", "bid_in_micro_currency")
+      , ("productGroupPromotionResponseElementIncluded", "included")
+      , ("productGroupPromotionResponseElementDefinition", "definition")
+      , ("productGroupPromotionResponseElementRelativeUnderscoredefinition", "relative_definition")
+      , ("productGroupPromotionResponseElementParentUnderscoreid", "parent_id")
+      , ("productGroupPromotionResponseElementSlideshowUnderscorecollectionsUnderscoretitle", "slideshow_collections_title")
+      , ("productGroupPromotionResponseElementSlideshowUnderscorecollectionsUnderscoredescription", "slideshow_collections_description")
+      , ("productGroupPromotionResponseElementIsUnderscoremdl", "is_mdl")
+      , ("productGroupPromotionResponseElementStatus", "status")
+      , ("productGroupPromotionResponseElementTrackingUnderscoreurl", "tracking_url")
+      , ("productGroupPromotionResponseElementCatalogUnderscoreproductUnderscoregroupUnderscoreid", "catalog_product_group_id")
+      , ("productGroupPromotionResponseElementCatalogUnderscoreproductUnderscoregroupUnderscorename", "catalog_product_group_name")
+      , ("productGroupPromotionResponseElementCollectionsUnderscoreheroUnderscorepinUnderscoreid", "collections_hero_pin_id")
+      , ("productGroupPromotionResponseElementCollectionsUnderscoreheroUnderscoredestinationUnderscoreurl", "collections_hero_destination_url")
+      , ("productGroupPromotionResponseElementGridUnderscoreclickUnderscoretype", "grid_click_type")
+      , ("productGroupPromotionResponseElementCreativeUnderscoretype", "creative_type")
+      ]
+
+
+-- | 
 data ProductGroupPromotionResponseItem = ProductGroupPromotionResponseItem
-  { productGroupPromotionResponseItemData :: Maybe ProductGroupPromotion -- ^ 
+  { productGroupPromotionResponseItemData :: Maybe ProductGroupPromotionResponseElement -- ^ 
   , productGroupPromotionResponseItemExceptions :: Maybe [Exception] -- ^ 
   } deriving (Show, Eq, Generic)
 
@@ -13111,6 +17941,28 @@ optionsProductGroupPromotionsList200Response =
     table =
       [ ("productGroupPromotionsList200ResponseItems", "items")
       , ("productGroupPromotionsList200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data ProductGroupReferenceFilter = ProductGroupReferenceFilter
+  { productGroupReferenceFilterPRODUCTUnderscoreGROUP :: CatalogsProductGroupMultipleStringCriteria -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ProductGroupReferenceFilter where
+  parseJSON = genericParseJSON optionsProductGroupReferenceFilter
+instance ToJSON ProductGroupReferenceFilter where
+  toJSON = genericToJSON optionsProductGroupReferenceFilter
+
+optionsProductGroupReferenceFilter :: Options
+optionsProductGroupReferenceFilter =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("productGroupReferenceFilterPRODUCTUnderscoreGROUP", "PRODUCT_GROUP")
       ]
 
 
@@ -13250,6 +18102,8 @@ optionsProductType4Filter =
 data QuizPinData = QuizPinData
   { quizPinDataQuestions :: Maybe [QuizPinQuestion] -- ^ 
   , quizPinDataResults :: Maybe [QuizPinResult] -- ^ 
+  , quizPinDataTieUnderscorebreakerUnderscoretype :: Maybe Text -- ^ Quiz ad tie breaker type, default is RANDOM
+  , quizPinDataTieUnderscorebreakerUnderscorecustomUnderscoreresult :: Maybe QuizPinResult -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON QuizPinData where
@@ -13267,6 +18121,8 @@ optionsQuizPinData =
     table =
       [ ("quizPinDataQuestions", "questions")
       , ("quizPinDataResults", "results")
+      , ("quizPinDataTieUnderscorebreakerUnderscoretype", "tie_breaker_type")
+      , ("quizPinDataTieUnderscorebreakerUnderscorecustomUnderscoreresult", "tie_breaker_custom_result")
       ]
 
 
@@ -13419,6 +18275,76 @@ optionsReportingColumnAsync =
   where
     table =
       [ 
+      ]
+
+
+-- | 
+data ReportsStats200Response = ReportsStats200Response
+  { reportsStats200ResponseItems :: [CatalogsReportStats] -- ^ 
+  , reportsStats200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON ReportsStats200Response where
+  parseJSON = genericParseJSON optionsReportsStats200Response
+instance ToJSON ReportsStats200Response where
+  toJSON = genericToJSON optionsReportsStats200Response
+
+optionsReportsStats200Response :: Options
+optionsReportsStats200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("reportsStats200ResponseItems", "items")
+      , ("reportsStats200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data RespondToInvitesResponseArray = RespondToInvitesResponseArray
+  { respondToInvitesResponseArrayItems :: Maybe [RespondToInvitesResponseArrayItemsInner] -- ^ List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON RespondToInvitesResponseArray where
+  parseJSON = genericParseJSON optionsRespondToInvitesResponseArray
+instance ToJSON RespondToInvitesResponseArray where
+  toJSON = genericToJSON optionsRespondToInvitesResponseArray
+
+optionsRespondToInvitesResponseArray :: Options
+optionsRespondToInvitesResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("respondToInvitesResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data RespondToInvitesResponseArrayItemsInner = RespondToInvitesResponseArrayItemsInner
+  { respondToInvitesResponseArrayItemsInnerException :: Maybe InviteExceptionResponse -- ^ 
+  , respondToInvitesResponseArrayItemsInnerInvite :: Maybe BaseInviteDataResponse -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON RespondToInvitesResponseArrayItemsInner where
+  parseJSON = genericParseJSON optionsRespondToInvitesResponseArrayItemsInner
+instance ToJSON RespondToInvitesResponseArrayItemsInner where
+  toJSON = genericToJSON optionsRespondToInvitesResponseArrayItemsInner
+
+optionsRespondToInvitesResponseArrayItemsInner :: Options
+optionsRespondToInvitesResponseArrayItemsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("respondToInvitesResponseArrayItemsInnerException", "exception")
+      , ("respondToInvitesResponseArrayItemsInnerInvite", "invite")
       ]
 
 
@@ -13935,6 +18861,134 @@ optionsSearchUserBoardsGet200Response =
 
 
 -- | 
+data SharedAudience = SharedAudience
+  { sharedAudienceAudienceUnderscoreid :: Text -- ^ Unique identifier of an audience
+  , sharedAudienceOperationUnderscoretype :: OperationType -- ^ 
+  , sharedAudienceRecipientUnderscoreaccountUnderscoreids :: [Text] -- ^ List of ad account IDs to share with or revoke from.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON SharedAudience where
+  parseJSON = genericParseJSON optionsSharedAudience
+instance ToJSON SharedAudience where
+  toJSON = genericToJSON optionsSharedAudience
+
+optionsSharedAudience :: Options
+optionsSharedAudience =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("sharedAudienceAudienceUnderscoreid", "audience_id")
+      , ("sharedAudienceOperationUnderscoretype", "operation_type")
+      , ("sharedAudienceRecipientUnderscoreaccountUnderscoreids", "recipient_account_ids")
+      ]
+
+
+-- | 
+data SharedAudienceAccount = SharedAudienceAccount
+  { sharedAudienceAccountAccountUnderscoreid :: Text -- ^ Account ID (ad account or business ID).
+  , sharedAudienceAccountAccountUnderscorename :: Text -- ^ Account name.
+  , sharedAudienceAccountAccountUnderscoretype :: Text -- ^ account type
+  , sharedAudienceAccountSharedUnderscoreonUnderscoretimestamp :: Int -- ^ Epoch timestamp in seconds for the shared audience event
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON SharedAudienceAccount where
+  parseJSON = genericParseJSON optionsSharedAudienceAccount
+instance ToJSON SharedAudienceAccount where
+  toJSON = genericToJSON optionsSharedAudienceAccount
+
+optionsSharedAudienceAccount :: Options
+optionsSharedAudienceAccount =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("sharedAudienceAccountAccountUnderscoreid", "account_id")
+      , ("sharedAudienceAccountAccountUnderscorename", "account_name")
+      , ("sharedAudienceAccountAccountUnderscoretype", "account_type")
+      , ("sharedAudienceAccountSharedUnderscoreonUnderscoretimestamp", "shared_on_timestamp")
+      ]
+
+
+-- | 
+data SharedAudienceCommon = SharedAudienceCommon
+  { sharedAudienceCommonAudienceUnderscoreid :: Maybe Text -- ^ Unique identifier of an audience
+  , sharedAudienceCommonOperationUnderscoretype :: Maybe OperationType -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON SharedAudienceCommon where
+  parseJSON = genericParseJSON optionsSharedAudienceCommon
+instance ToJSON SharedAudienceCommon where
+  toJSON = genericToJSON optionsSharedAudienceCommon
+
+optionsSharedAudienceCommon :: Options
+optionsSharedAudienceCommon =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("sharedAudienceCommonAudienceUnderscoreid", "audience_id")
+      , ("sharedAudienceCommonOperationUnderscoretype", "operation_type")
+      ]
+
+
+-- | 
+data SharedAudienceResponse = SharedAudienceResponse
+  { sharedAudienceResponseAudienceUnderscoreid :: Maybe Text -- ^ Audience ID that was shared
+  , sharedAudienceResponsePermissions :: Maybe [Role] -- ^ 
+  , sharedAudienceResponseRecipientUnderscoreaccountUnderscoreids :: Maybe [Text] -- ^ Account IDs that received the audience
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON SharedAudienceResponse where
+  parseJSON = genericParseJSON optionsSharedAudienceResponse
+instance ToJSON SharedAudienceResponse where
+  toJSON = genericToJSON optionsSharedAudienceResponse
+
+optionsSharedAudienceResponse :: Options
+optionsSharedAudienceResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("sharedAudienceResponseAudienceUnderscoreid", "audience_id")
+      , ("sharedAudienceResponsePermissions", "permissions")
+      , ("sharedAudienceResponseRecipientUnderscoreaccountUnderscoreids", "recipient_account_ids")
+      ]
+
+
+-- | 
+data SharedAudienceResponseCommon = SharedAudienceResponseCommon
+  { sharedAudienceResponseCommonAudienceUnderscoreid :: Maybe Text -- ^ Audience ID that was shared
+  , sharedAudienceResponseCommonPermissions :: Maybe [Role] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON SharedAudienceResponseCommon where
+  parseJSON = genericParseJSON optionsSharedAudienceResponseCommon
+instance ToJSON SharedAudienceResponseCommon where
+  toJSON = genericToJSON optionsSharedAudienceResponseCommon
+
+optionsSharedAudienceResponseCommon :: Options
+optionsSharedAudienceResponseCommon =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("sharedAudienceResponseCommonAudienceUnderscoreid", "audience_id")
+      , ("sharedAudienceResponseCommonPermissions", "permissions")
+      ]
+
+
+-- | 
 data SingleInterestTargetingOptionResponse = SingleInterestTargetingOptionResponse
   { singleInterestTargetingOptionResponseId :: Maybe Text -- ^ 
   , singleInterestTargetingOptionResponseName :: Maybe Text -- ^ 
@@ -14012,7 +19066,7 @@ optionsSsioOrderLinesGetByAdAccount200Response =
 
 -- | Summarized pin information
 data SummaryPin = SummaryPin
-  { summaryPinMedia :: Maybe SummaryPinMedia -- ^ 
+  { summaryPinMedia :: Maybe PinMedia -- ^ 
   , summaryPinAltUnderscoretext :: Maybe Text -- ^ 
   , summaryPinLink :: Maybe Text -- ^ 
   , summaryPinTitle :: Maybe Text -- ^ 
@@ -14040,10 +19094,6 @@ optionsSummaryPin =
       ]
 
 
--- | 
-newtype SummaryPinMedia = SummaryPinMedia { unSummaryPinMedia :: PinMedia }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
-
 -- | Advertiser&#39;s ISO two character country code.
 data TargetingAdvertiserCountry = TargetingAdvertiserCountry
   { 
@@ -14066,17 +19116,17 @@ optionsTargetingAdvertiserCountry =
       ]
 
 
--- | Ad group targeting specification defining the ad group target audience. For example, {\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}
+-- | Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
 data TargetingSpec = TargetingSpec
   { targetingSpecAGEUnderscoreBUCKET :: Maybe [Text] -- ^ Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
   , targetingSpecAPPTYPE :: Maybe [Text] -- ^ Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
   , targetingSpecAUDIENCEUnderscoreEXCLUDE :: Maybe [Text] -- ^ Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
-  , targetingSpecAUDIENCEUnderscoreINCLUDEQuote :: Maybe [Text] -- ^ Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
+  , targetingSpecAUDIENCEUnderscoreINCLUDE :: Maybe [Text] -- ^ Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
   , targetingSpecGENDER :: Maybe [Text] -- ^ Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-  , targetingSpecGEO :: Maybe [Text] -- ^ Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. If the GEO field is missing, the default behavior in terms of ad delivery is that **No geos will be selected**.
+  , targetingSpecGEO :: Maybe [Text] -- ^ Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
   , targetingSpecINTEREST :: Maybe [Text] -- ^ Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
-  , targetingSpecLOCALE :: Maybe [Text] -- ^ 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be target, only english non-sublanguage will be targeted**.
-  , targetingSpecLOCATION :: Maybe [Text] -- ^ 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. If the LOCATION field is missing, the default behavior in terms of ad delivery is that **Selects default country if not specified (US) and all regions within that country**.
+  , targetingSpecLOCALE :: Maybe [Text] -- ^ 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+  , targetingSpecLOCATION :: Maybe [Text] -- ^ 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
   , targetingSpecSHOPPINGUnderscoreRETARGETING :: Maybe [TargetingSpecSHOPPINGRETARGETING] -- ^ Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
   , targetingSpecTARGETINGUnderscoreSTRATEGY :: Maybe [Text] -- ^ 
   } deriving (Show, Eq, Generic)
@@ -14097,7 +19147,7 @@ optionsTargetingSpec =
       [ ("targetingSpecAGEUnderscoreBUCKET", "AGE_BUCKET")
       , ("targetingSpecAPPTYPE", "APPTYPE")
       , ("targetingSpecAUDIENCEUnderscoreEXCLUDE", "AUDIENCE_EXCLUDE")
-      , ("targetingSpecAUDIENCEUnderscoreINCLUDEQuote", "AUDIENCE_INCLUDE'")
+      , ("targetingSpecAUDIENCEUnderscoreINCLUDE", "AUDIENCE_INCLUDE")
       , ("targetingSpecGENDER", "GENDER")
       , ("targetingSpecGEO", "GEO")
       , ("targetingSpecINTEREST", "INTEREST")
@@ -14105,6 +19155,28 @@ optionsTargetingSpec =
       , ("targetingSpecLOCATION", "LOCATION")
       , ("targetingSpecSHOPPINGUnderscoreRETARGETING", "SHOPPING_RETARGETING")
       , ("targetingSpecTARGETINGUnderscoreSTRATEGY", "TARGETING_STRATEGY")
+      ]
+
+
+-- | 
+data TargetingSpecAppType = TargetingSpecAppType
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingSpecAppType where
+  parseJSON = genericParseJSON optionsTargetingSpecAppType
+instance ToJSON TargetingSpecAppType where
+  toJSON = genericToJSON optionsTargetingSpecAppType
+
+optionsTargetingSpecAppType :: Options
+optionsTargetingSpecAppType =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
       ]
 
 
@@ -14134,9 +19206,283 @@ optionsTargetingSpecSHOPPINGRETARGETING =
       ]
 
 
+-- | Gets an audience size estimate for a set of given targeting spec data. &lt;p&gt;Returns:&lt;/p&gt; An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
+data TargetingTemplateAudienceSizing = TargetingTemplateAudienceSizing
+  { targetingTemplateAudienceSizingReachUnderscoreestimate :: Maybe TargetingTemplateAudienceSizingReachEstimate -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateAudienceSizing where
+  parseJSON = genericParseJSON optionsTargetingTemplateAudienceSizing
+instance ToJSON TargetingTemplateAudienceSizing where
+  toJSON = genericToJSON optionsTargetingTemplateAudienceSizing
+
+optionsTargetingTemplateAudienceSizing :: Options
+optionsTargetingTemplateAudienceSizing =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateAudienceSizingReachUnderscoreestimate", "reach_estimate")
+      ]
+
+
+-- | 
+data TargetingTemplateAudienceSizingReachEstimate = TargetingTemplateAudienceSizingReachEstimate
+  { targetingTemplateAudienceSizingReachEstimateEstimate :: Maybe Int64 -- ^ 
+  , targetingTemplateAudienceSizingReachEstimateLowerUnderscorebound :: Maybe Int64 -- ^ 
+  , targetingTemplateAudienceSizingReachEstimateUpperUnderscorebound :: Maybe Int64 -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateAudienceSizingReachEstimate where
+  parseJSON = genericParseJSON optionsTargetingTemplateAudienceSizingReachEstimate
+instance ToJSON TargetingTemplateAudienceSizingReachEstimate where
+  toJSON = genericToJSON optionsTargetingTemplateAudienceSizingReachEstimate
+
+optionsTargetingTemplateAudienceSizingReachEstimate :: Options
+optionsTargetingTemplateAudienceSizingReachEstimate =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateAudienceSizingReachEstimateEstimate", "estimate")
+      , ("targetingTemplateAudienceSizingReachEstimateLowerUnderscorebound", "lower_bound")
+      , ("targetingTemplateAudienceSizingReachEstimateUpperUnderscorebound", "upper_bound")
+      ]
+
+
+-- | 
+data TargetingTemplateCommon = TargetingTemplateCommon
+  { targetingTemplateCommonName :: Maybe Text -- ^ targeting template name
+  , targetingTemplateCommonAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  , targetingTemplateCommonTargetingUnderscoreattributes :: Maybe TargetingSpec -- ^ 
+  , targetingTemplateCommonPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ 
+  , targetingTemplateCommonKeywords :: Maybe [TargetingTemplateKeyword] -- ^ 
+  , targetingTemplateCommonTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateCommon where
+  parseJSON = genericParseJSON optionsTargetingTemplateCommon
+instance ToJSON TargetingTemplateCommon where
+  toJSON = genericToJSON optionsTargetingTemplateCommon
+
+optionsTargetingTemplateCommon :: Options
+optionsTargetingTemplateCommon =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateCommonName", "name")
+      , ("targetingTemplateCommonAutoUnderscoretargetingUnderscoreenabled", "auto_targeting_enabled")
+      , ("targetingTemplateCommonTargetingUnderscoreattributes", "targeting_attributes")
+      , ("targetingTemplateCommonPlacementUnderscoregroup", "placement_group")
+      , ("targetingTemplateCommonKeywords", "keywords")
+      , ("targetingTemplateCommonTrackingUnderscoreurls", "tracking_urls")
+      ]
+
+
+-- | 
+data TargetingTemplateCreate = TargetingTemplateCreate
+  { targetingTemplateCreateName :: Text -- ^ Name of targeting template.
+  , targetingTemplateCreateAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  , targetingTemplateCreateTargetingUnderscoreattributes :: TargetingSpec -- ^ 
+  , targetingTemplateCreatePlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ 
+  , targetingTemplateCreateKeywords :: Maybe [TargetingTemplateKeyword] -- ^ 
+  , targetingTemplateCreateTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateCreate where
+  parseJSON = genericParseJSON optionsTargetingTemplateCreate
+instance ToJSON TargetingTemplateCreate where
+  toJSON = genericToJSON optionsTargetingTemplateCreate
+
+optionsTargetingTemplateCreate :: Options
+optionsTargetingTemplateCreate =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateCreateName", "name")
+      , ("targetingTemplateCreateAutoUnderscoretargetingUnderscoreenabled", "auto_targeting_enabled")
+      , ("targetingTemplateCreateTargetingUnderscoreattributes", "targeting_attributes")
+      , ("targetingTemplateCreatePlacementUnderscoregroup", "placement_group")
+      , ("targetingTemplateCreateKeywords", "keywords")
+      , ("targetingTemplateCreateTrackingUnderscoreurls", "tracking_urls")
+      ]
+
+
+-- | 
+data TargetingTemplateGetResponseData = TargetingTemplateGetResponseData
+  { targetingTemplateGetResponseDataName :: Maybe Text -- ^ targeting template name
+  , targetingTemplateGetResponseDataAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  , targetingTemplateGetResponseDataTargetingUnderscoreattributes :: Maybe TargetingSpec -- ^ 
+  , targetingTemplateGetResponseDataPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ 
+  , targetingTemplateGetResponseDataKeywords :: Maybe [TargetingTemplateKeyword] -- ^ 
+  , targetingTemplateGetResponseDataTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
+  , targetingTemplateGetResponseDataId :: Maybe Text -- ^ Targeting template ID.
+  , targetingTemplateGetResponseDataCreatedUnderscoretime :: Maybe Int -- ^ Targeting template created time. Unix timestamp in seconds.
+  , targetingTemplateGetResponseDataUpdatedUnderscoretime :: Maybe Int -- ^ Targeting template updated time.Unix timestamp in seconds.
+  , targetingTemplateGetResponseDataAdUnderscoreaccountUnderscoreid :: Maybe Text -- ^ The ID of the advertiser that this targeting template belongs to.
+  , targetingTemplateGetResponseDataStatus :: Maybe Text -- ^ Indicate targeting template is active or Deleted
+  , targetingTemplateGetResponseDataSizing :: Maybe TargetingTemplateAudienceSizing -- ^ 
+  , targetingTemplateGetResponseDataValid :: Maybe Bool -- ^ Inform if the targeting template is valid (ex. would be false if has revoked audience)
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateGetResponseData where
+  parseJSON = genericParseJSON optionsTargetingTemplateGetResponseData
+instance ToJSON TargetingTemplateGetResponseData where
+  toJSON = genericToJSON optionsTargetingTemplateGetResponseData
+
+optionsTargetingTemplateGetResponseData :: Options
+optionsTargetingTemplateGetResponseData =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateGetResponseDataName", "name")
+      , ("targetingTemplateGetResponseDataAutoUnderscoretargetingUnderscoreenabled", "auto_targeting_enabled")
+      , ("targetingTemplateGetResponseDataTargetingUnderscoreattributes", "targeting_attributes")
+      , ("targetingTemplateGetResponseDataPlacementUnderscoregroup", "placement_group")
+      , ("targetingTemplateGetResponseDataKeywords", "keywords")
+      , ("targetingTemplateGetResponseDataTrackingUnderscoreurls", "tracking_urls")
+      , ("targetingTemplateGetResponseDataId", "id")
+      , ("targetingTemplateGetResponseDataCreatedUnderscoretime", "created_time")
+      , ("targetingTemplateGetResponseDataUpdatedUnderscoretime", "updated_time")
+      , ("targetingTemplateGetResponseDataAdUnderscoreaccountUnderscoreid", "ad_account_id")
+      , ("targetingTemplateGetResponseDataStatus", "status")
+      , ("targetingTemplateGetResponseDataSizing", "sizing")
+      , ("targetingTemplateGetResponseDataValid", "valid")
+      ]
+
+
+-- | 
+data TargetingTemplateKeyword = TargetingTemplateKeyword
+  { targetingTemplateKeywordMatchUnderscoretype :: Maybe MatchType -- ^ 
+  , targetingTemplateKeywordValue :: Maybe Text -- ^ The keyword targeting (120 chars max).
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateKeyword where
+  parseJSON = genericParseJSON optionsTargetingTemplateKeyword
+instance ToJSON TargetingTemplateKeyword where
+  toJSON = genericToJSON optionsTargetingTemplateKeyword
+
+optionsTargetingTemplateKeyword :: Options
+optionsTargetingTemplateKeyword =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateKeywordMatchUnderscoretype", "match_type")
+      , ("targetingTemplateKeywordValue", "value")
+      ]
+
+
+-- | 
+data TargetingTemplateList200Response = TargetingTemplateList200Response
+  { targetingTemplateList200ResponseItems :: [TargetingTemplateResponseData] -- ^ 
+  , targetingTemplateList200ResponseBookmark :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateList200Response where
+  parseJSON = genericParseJSON optionsTargetingTemplateList200Response
+instance ToJSON TargetingTemplateList200Response where
+  toJSON = genericToJSON optionsTargetingTemplateList200Response
+
+optionsTargetingTemplateList200Response :: Options
+optionsTargetingTemplateList200Response =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateList200ResponseItems", "items")
+      , ("targetingTemplateList200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data TargetingTemplateResponseData = TargetingTemplateResponseData
+  { targetingTemplateResponseDataName :: Maybe Text -- ^ targeting template name
+  , targetingTemplateResponseDataAutoUnderscoretargetingUnderscoreenabled :: Maybe Bool -- ^ Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  , targetingTemplateResponseDataTargetingUnderscoreattributes :: Maybe TargetingSpec -- ^ 
+  , targetingTemplateResponseDataPlacementUnderscoregroup :: Maybe PlacementGroupType -- ^ 
+  , targetingTemplateResponseDataKeywords :: Maybe [TargetingTemplateKeyword] -- ^ 
+  , targetingTemplateResponseDataTrackingUnderscoreurls :: Maybe TrackingUrls -- ^ 
+  , targetingTemplateResponseDataId :: Maybe Text -- ^ Targeting template ID.
+  , targetingTemplateResponseDataCreatedUnderscoretime :: Maybe Int -- ^ Targeting template created time. Unix timestamp in seconds.
+  , targetingTemplateResponseDataUpdatedUnderscoretime :: Maybe Int -- ^ Targeting template updated time.Unix timestamp in seconds.
+  , targetingTemplateResponseDataAdUnderscoreaccountUnderscoreid :: Maybe Text -- ^ The ID of the advertiser that this targeting template belongs to.
+  , targetingTemplateResponseDataStatus :: Maybe Text -- ^ Indicate targeting template is active or Deleted
+  , targetingTemplateResponseDataSizing :: Maybe TargetingTemplateAudienceSizing -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateResponseData where
+  parseJSON = genericParseJSON optionsTargetingTemplateResponseData
+instance ToJSON TargetingTemplateResponseData where
+  toJSON = genericToJSON optionsTargetingTemplateResponseData
+
+optionsTargetingTemplateResponseData :: Options
+optionsTargetingTemplateResponseData =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateResponseDataName", "name")
+      , ("targetingTemplateResponseDataAutoUnderscoretargetingUnderscoreenabled", "auto_targeting_enabled")
+      , ("targetingTemplateResponseDataTargetingUnderscoreattributes", "targeting_attributes")
+      , ("targetingTemplateResponseDataPlacementUnderscoregroup", "placement_group")
+      , ("targetingTemplateResponseDataKeywords", "keywords")
+      , ("targetingTemplateResponseDataTrackingUnderscoreurls", "tracking_urls")
+      , ("targetingTemplateResponseDataId", "id")
+      , ("targetingTemplateResponseDataCreatedUnderscoretime", "created_time")
+      , ("targetingTemplateResponseDataUpdatedUnderscoretime", "updated_time")
+      , ("targetingTemplateResponseDataAdUnderscoreaccountUnderscoreid", "ad_account_id")
+      , ("targetingTemplateResponseDataStatus", "status")
+      , ("targetingTemplateResponseDataSizing", "sizing")
+      ]
+
+
+-- | 
+data TargetingTemplateUpdateRequest = TargetingTemplateUpdateRequest
+  { targetingTemplateUpdateRequestOperationUnderscoretype :: Text -- ^ 
+  , targetingTemplateUpdateRequestId :: Text -- ^ Targeting template ID
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TargetingTemplateUpdateRequest where
+  parseJSON = genericParseJSON optionsTargetingTemplateUpdateRequest
+instance ToJSON TargetingTemplateUpdateRequest where
+  toJSON = genericToJSON optionsTargetingTemplateUpdateRequest
+
+optionsTargetingTemplateUpdateRequest :: Options
+optionsTargetingTemplateUpdateRequest =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("targetingTemplateUpdateRequestOperationUnderscoretype", "operation_type")
+      , ("targetingTemplateUpdateRequestId", "id")
+      ]
+
+
 -- | 
 data TargetingTypeFilter = TargetingTypeFilter
-  { targetingTypeFilterTargetingUnderscoretypes :: Maybe [AdsAnalyticsTargetingType] -- ^ List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+  { targetingTypeFilterTargetingUnderscoretypes :: Maybe [AdsAnalyticsTargetingType] -- ^ List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON TargetingTypeFilter where
@@ -14642,8 +19988,8 @@ optionsTrendsSupportedRegion =
 data UpdatableItemAttributes = UpdatableItemAttributes
   { updatableItemAttributesAdUnderscorelink :: Maybe Text -- ^ Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
   , updatableItemAttributesAdult :: Maybe Bool -- ^ Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
-  , updatableItemAttributesAgeUnderscoregroup :: Maybe Text -- ^ The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
-  , updatableItemAttributesAvailability :: Maybe Text -- ^ The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+  , updatableItemAttributesAgeUnderscoregroup :: Maybe Text -- ^ The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  , updatableItemAttributesAvailability :: Maybe Text -- ^ The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
   , updatableItemAttributesAverageUnderscorereviewUnderscorerating :: Maybe Double -- ^ Average reviews for the item. Can be a number from 1-5.
   , updatableItemAttributesBrand :: Maybe Text -- ^ The brand of the product.
   , updatableItemAttributesCheckoutUnderscoreenabled :: Maybe Bool -- ^ This attribute is not supported anymore.
@@ -14657,7 +20003,7 @@ data UpdatableItemAttributes = UpdatableItemAttributes
   , updatableItemAttributesDescription :: Maybe Text -- ^ <p><= 10000 characters</p> <p>The description of the product.</p>
   , updatableItemAttributesFreeUnderscoreshippingUnderscorelabel :: Maybe Bool -- ^ The item is free to ship.
   , updatableItemAttributesFreeUnderscoreshippingUnderscorelimit :: Maybe Text -- ^ The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
-  , updatableItemAttributesGender :: Maybe Text -- ^ The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+  , updatableItemAttributesGender :: Maybe Text -- ^ The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
   , updatableItemAttributesGoogleUnderscoreproductUnderscorecategory :: Maybe Text -- ^ The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
   , updatableItemAttributesGtin :: Maybe Int -- ^ The unique universal product identifier.
   , updatableItemAttributesId :: Maybe Text -- ^ <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
@@ -14679,8 +20025,8 @@ data UpdatableItemAttributes = UpdatableItemAttributes
   , updatableItemAttributesShippingUnderscoreweight :: Maybe Text -- ^ The weight of the product. Ensure there is a space between the numeric string and the metric.
   , updatableItemAttributesShippingUnderscorewidth :: Maybe Text -- ^ The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
   , updatableItemAttributesSize :: Maybe Text -- ^ The size of the product.
-  , updatableItemAttributesSizeUnderscoresystem :: Maybe Text -- ^ Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
-  , updatableItemAttributesSizeUnderscoretype :: Maybe Text -- ^ Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  , updatableItemAttributesSizeUnderscoresystem :: Maybe Text -- ^ Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+  , updatableItemAttributesSizeUnderscoretype :: Maybe Text -- ^ Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
   , updatableItemAttributesTax :: Maybe Text -- ^ Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
   , updatableItemAttributesTitle :: Maybe Text -- ^ <p><= 500 characters</p> <p>The name of the product.</p>
   , updatableItemAttributesVariantUnderscorenames :: Maybe [Text] -- ^ Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
@@ -14748,6 +20094,178 @@ optionsUpdatableItemAttributes =
       ]
 
 
+-- | 
+data UpdateAssetGroupBody = UpdateAssetGroupBody
+  { updateAssetGroupBodyAssetUnderscoregroupsUnderscoretoUnderscoreupdate :: Maybe [UpdateAssetGroupBodyAssetGroupsToUpdateInner] -- ^ A list of asset groups and the data that will be used to update them.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateAssetGroupBody where
+  parseJSON = genericParseJSON optionsUpdateAssetGroupBody
+instance ToJSON UpdateAssetGroupBody where
+  toJSON = genericToJSON optionsUpdateAssetGroupBody
+
+optionsUpdateAssetGroupBody :: Options
+optionsUpdateAssetGroupBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateAssetGroupBodyAssetUnderscoregroupsUnderscoretoUnderscoreupdate", "asset_groups_to_update")
+      ]
+
+
+-- | 
+data UpdateAssetGroupBodyAssetGroupsToUpdateInner = UpdateAssetGroupBodyAssetGroupsToUpdateInner
+  { updateAssetGroupBodyAssetGroupsToUpdateInnerAssetUnderscoregroupUnderscoreid :: Text -- ^ Unique identifier of the asset group to update.
+  , updateAssetGroupBodyAssetGroupsToUpdateInnerName :: Maybe Text -- ^ Asset Group name
+  , updateAssetGroupBodyAssetGroupsToUpdateInnerDescription :: Maybe Text -- ^ Asset group description
+  , updateAssetGroupBodyAssetGroupsToUpdateInnerAssetUnderscoregroupUnderscoretypes :: Maybe [AssetGroupType] -- ^ Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+  , updateAssetGroupBodyAssetGroupsToUpdateInnerAssetsUnderscoretoUnderscoreadd :: Maybe [Text] -- ^ A list of asset ids to add to the asset group.
+  , updateAssetGroupBodyAssetGroupsToUpdateInnerAssetsUnderscoretoUnderscoreremove :: Maybe [Text] -- ^ A list of asset ids to remove from the asset group.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateAssetGroupBodyAssetGroupsToUpdateInner where
+  parseJSON = genericParseJSON optionsUpdateAssetGroupBodyAssetGroupsToUpdateInner
+instance ToJSON UpdateAssetGroupBodyAssetGroupsToUpdateInner where
+  toJSON = genericToJSON optionsUpdateAssetGroupBodyAssetGroupsToUpdateInner
+
+optionsUpdateAssetGroupBodyAssetGroupsToUpdateInner :: Options
+optionsUpdateAssetGroupBodyAssetGroupsToUpdateInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateAssetGroupBodyAssetGroupsToUpdateInnerAssetUnderscoregroupUnderscoreid", "asset_group_id")
+      , ("updateAssetGroupBodyAssetGroupsToUpdateInnerName", "name")
+      , ("updateAssetGroupBodyAssetGroupsToUpdateInnerDescription", "description")
+      , ("updateAssetGroupBodyAssetGroupsToUpdateInnerAssetUnderscoregroupUnderscoretypes", "asset_group_types")
+      , ("updateAssetGroupBodyAssetGroupsToUpdateInnerAssetsUnderscoretoUnderscoreadd", "assets_to_add")
+      , ("updateAssetGroupBodyAssetGroupsToUpdateInnerAssetsUnderscoretoUnderscoreremove", "assets_to_remove")
+      ]
+
+
+-- | 
+data UpdateAssetGroupResponse = UpdateAssetGroupResponse
+  { updateAssetGroupResponseUpdatedUnderscoreassetUnderscoregroups :: Maybe [AssetGroupBinding] -- ^ A list of successfully edited asset groups.
+  , updateAssetGroupResponseExceptions :: Maybe [UpdateAssetGroupResponseExceptionsInner] -- ^ A list of errors associated with the asset groups. Will be returned if there is an error.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateAssetGroupResponse where
+  parseJSON = genericParseJSON optionsUpdateAssetGroupResponse
+instance ToJSON UpdateAssetGroupResponse where
+  toJSON = genericToJSON optionsUpdateAssetGroupResponse
+
+optionsUpdateAssetGroupResponse :: Options
+optionsUpdateAssetGroupResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateAssetGroupResponseUpdatedUnderscoreassetUnderscoregroups", "updated_asset_groups")
+      , ("updateAssetGroupResponseExceptions", "exceptions")
+      ]
+
+
+-- | 
+data UpdateAssetGroupResponseExceptionsInner = UpdateAssetGroupResponseExceptionsInner
+  { updateAssetGroupResponseExceptionsInnerCode :: Maybe Int -- ^ Error code associated with the error editing asset group.
+  , updateAssetGroupResponseExceptionsInnerMessage :: Maybe Text -- ^ Error message associated with the error editing asset group.
+  , updateAssetGroupResponseExceptionsInnerAssetUnderscoregroupUnderscoreid :: Maybe Text -- ^ Asset group id of the exception.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateAssetGroupResponseExceptionsInner where
+  parseJSON = genericParseJSON optionsUpdateAssetGroupResponseExceptionsInner
+instance ToJSON UpdateAssetGroupResponseExceptionsInner where
+  toJSON = genericToJSON optionsUpdateAssetGroupResponseExceptionsInner
+
+optionsUpdateAssetGroupResponseExceptionsInner :: Options
+optionsUpdateAssetGroupResponseExceptionsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateAssetGroupResponseExceptionsInnerCode", "code")
+      , ("updateAssetGroupResponseExceptionsInnerMessage", "message")
+      , ("updateAssetGroupResponseExceptionsInnerAssetUnderscoregroupUnderscoreid", "asset_group_id")
+      ]
+
+
+-- | 
+data UpdateInvitesResultsResponseArray = UpdateInvitesResultsResponseArray
+  { updateInvitesResultsResponseArrayItems :: Maybe [UpdateInvitesResultsResponseArrayItemsInner] -- ^ List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateInvitesResultsResponseArray where
+  parseJSON = genericParseJSON optionsUpdateInvitesResultsResponseArray
+instance ToJSON UpdateInvitesResultsResponseArray where
+  toJSON = genericToJSON optionsUpdateInvitesResultsResponseArray
+
+optionsUpdateInvitesResultsResponseArray :: Options
+optionsUpdateInvitesResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateInvitesResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data UpdateInvitesResultsResponseArrayItemsInner = UpdateInvitesResultsResponseArrayItemsInner
+  { updateInvitesResultsResponseArrayItemsInnerException :: Maybe InviteExceptionResponse -- ^ 
+  , updateInvitesResultsResponseArrayItemsInnerInvite :: Maybe InviteBusinessRoleBinding -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateInvitesResultsResponseArrayItemsInner where
+  parseJSON = genericParseJSON optionsUpdateInvitesResultsResponseArrayItemsInner
+instance ToJSON UpdateInvitesResultsResponseArrayItemsInner where
+  toJSON = genericToJSON optionsUpdateInvitesResultsResponseArrayItemsInner
+
+optionsUpdateInvitesResultsResponseArrayItemsInner :: Options
+optionsUpdateInvitesResultsResponseArrayItemsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateInvitesResultsResponseArrayItemsInnerException", "exception")
+      , ("updateInvitesResultsResponseArrayItemsInnerInvite", "invite")
+      ]
+
+
+-- | bid option field to apply operation updates to
+data UpdateMaskBidOptionField = UpdateMaskBidOptionField
+  { 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMaskBidOptionField where
+  parseJSON = genericParseJSON optionsUpdateMaskBidOptionField
+instance ToJSON UpdateMaskBidOptionField where
+  toJSON = genericToJSON optionsUpdateMaskBidOptionField
+
+optionsUpdateMaskBidOptionField :: Options
+optionsUpdateMaskBidOptionField =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ 
+      ]
+
+
 -- | The field types supported by the update mask
 data UpdateMaskFieldType = UpdateMaskFieldType
   { 
@@ -14767,6 +20285,312 @@ optionsUpdateMaskFieldType =
   where
     table =
       [ 
+      ]
+
+
+-- | An object with a list of all the new accesses.
+data UpdateMemberAssetAccessBody = UpdateMemberAssetAccessBody
+  { updateMemberAssetAccessBodyAccesses :: [UpdateMemberAssetAccessBodyAccessesInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMemberAssetAccessBody where
+  parseJSON = genericParseJSON optionsUpdateMemberAssetAccessBody
+instance ToJSON UpdateMemberAssetAccessBody where
+  toJSON = genericToJSON optionsUpdateMemberAssetAccessBody
+
+optionsUpdateMemberAssetAccessBody :: Options
+optionsUpdateMemberAssetAccessBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateMemberAssetAccessBodyAccesses", "accesses")
+      ]
+
+
+-- | 
+data UpdateMemberAssetAccessBodyAccessesInner = UpdateMemberAssetAccessBodyAccessesInner
+  { updateMemberAssetAccessBodyAccessesInnerAssetUnderscoreid :: Text -- ^ Id of the asset to update.
+  , updateMemberAssetAccessBodyAccessesInnerMemberUnderscoreid :: Text -- ^ Unique identifier of the member on which to perform the update
+  , updateMemberAssetAccessBodyAccessesInnerPermissions :: [Permissions] -- ^ A non-empty array of permissions to assign to the member.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMemberAssetAccessBodyAccessesInner where
+  parseJSON = genericParseJSON optionsUpdateMemberAssetAccessBodyAccessesInner
+instance ToJSON UpdateMemberAssetAccessBodyAccessesInner where
+  toJSON = genericToJSON optionsUpdateMemberAssetAccessBodyAccessesInner
+
+optionsUpdateMemberAssetAccessBodyAccessesInner :: Options
+optionsUpdateMemberAssetAccessBodyAccessesInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateMemberAssetAccessBodyAccessesInnerAssetUnderscoreid", "asset_id")
+      , ("updateMemberAssetAccessBodyAccessesInnerMemberUnderscoreid", "member_id")
+      , ("updateMemberAssetAccessBodyAccessesInnerPermissions", "permissions")
+      ]
+
+
+-- | 
+data UpdateMemberAssetsResultsResponseArray = UpdateMemberAssetsResultsResponseArray
+  { updateMemberAssetsResultsResponseArrayItems :: Maybe [UpdateMemberAssetsResultsResponseArrayItemsInner] -- ^ List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMemberAssetsResultsResponseArray where
+  parseJSON = genericParseJSON optionsUpdateMemberAssetsResultsResponseArray
+instance ToJSON UpdateMemberAssetsResultsResponseArray where
+  toJSON = genericToJSON optionsUpdateMemberAssetsResultsResponseArray
+
+optionsUpdateMemberAssetsResultsResponseArray :: Options
+optionsUpdateMemberAssetsResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateMemberAssetsResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data UpdateMemberAssetsResultsResponseArrayItemsInner = UpdateMemberAssetsResultsResponseArrayItemsInner
+  { updateMemberAssetsResultsResponseArrayItemsInnerResponse :: Maybe UsersForIndividualAssetResponse -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMemberAssetsResultsResponseArrayItemsInner where
+  parseJSON = genericParseJSON optionsUpdateMemberAssetsResultsResponseArrayItemsInner
+instance ToJSON UpdateMemberAssetsResultsResponseArrayItemsInner where
+  toJSON = genericToJSON optionsUpdateMemberAssetsResultsResponseArrayItemsInner
+
+optionsUpdateMemberAssetsResultsResponseArrayItemsInner :: Options
+optionsUpdateMemberAssetsResultsResponseArrayItemsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateMemberAssetsResultsResponseArrayItemsInnerResponse", "response")
+      ]
+
+
+-- | Single instance of a business member to have its role updated
+data UpdateMemberBusinessRoleBody = UpdateMemberBusinessRoleBody
+  { updateMemberBusinessRoleBodyBusinessUnderscorerole :: BusinessRoleForMembers -- ^ 
+  , updateMemberBusinessRoleBodyMemberUnderscoreid :: Text -- ^ Unique identifier of the member
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMemberBusinessRoleBody where
+  parseJSON = genericParseJSON optionsUpdateMemberBusinessRoleBody
+instance ToJSON UpdateMemberBusinessRoleBody where
+  toJSON = genericToJSON optionsUpdateMemberBusinessRoleBody
+
+optionsUpdateMemberBusinessRoleBody :: Options
+optionsUpdateMemberBusinessRoleBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateMemberBusinessRoleBodyBusinessUnderscorerole", "business_role")
+      , ("updateMemberBusinessRoleBodyMemberUnderscoreid", "member_id")
+      ]
+
+
+-- | 
+data UpdateMemberResult = UpdateMemberResult
+  { updateMemberResultBusinessUnderscorerole :: Maybe Text -- ^ The access level a member has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. <br> - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
+  , updateMemberResultMemberUnderscoreid :: Maybe Text -- ^ Unique identifier of the business member.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMemberResult where
+  parseJSON = genericParseJSON optionsUpdateMemberResult
+instance ToJSON UpdateMemberResult where
+  toJSON = genericToJSON optionsUpdateMemberResult
+
+optionsUpdateMemberResult :: Options
+optionsUpdateMemberResult =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateMemberResultBusinessUnderscorerole", "business_role")
+      , ("updateMemberResultMemberUnderscoreid", "member_id")
+      ]
+
+
+-- | 
+data UpdateMemberResultsResponseArray = UpdateMemberResultsResponseArray
+  { updateMemberResultsResponseArrayItems :: Maybe [UpdateMemberResult] -- ^ List of members with updated business access role.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdateMemberResultsResponseArray where
+  parseJSON = genericParseJSON optionsUpdateMemberResultsResponseArray
+instance ToJSON UpdateMemberResultsResponseArray where
+  toJSON = genericToJSON optionsUpdateMemberResultsResponseArray
+
+optionsUpdateMemberResultsResponseArray :: Options
+optionsUpdateMemberResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updateMemberResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data UpdatePartnerAssetAccessBody = UpdatePartnerAssetAccessBody
+  { updatePartnerAssetAccessBodyAccesses :: [UpdatePartnerAssetAccessBodyAccessesInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdatePartnerAssetAccessBody where
+  parseJSON = genericParseJSON optionsUpdatePartnerAssetAccessBody
+instance ToJSON UpdatePartnerAssetAccessBody where
+  toJSON = genericToJSON optionsUpdatePartnerAssetAccessBody
+
+optionsUpdatePartnerAssetAccessBody :: Options
+optionsUpdatePartnerAssetAccessBody =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updatePartnerAssetAccessBodyAccesses", "accesses")
+      ]
+
+
+-- | 
+data UpdatePartnerAssetAccessBodyAccessesInner = UpdatePartnerAssetAccessBodyAccessesInner
+  { updatePartnerAssetAccessBodyAccessesInnerPartnerUnderscoreid :: Text -- ^ Unique identifier of a business partner to update asset access to.
+  , updatePartnerAssetAccessBodyAccessesInnerAssetUnderscoreid :: Text -- ^ Unique identifier of the business asset.
+  , updatePartnerAssetAccessBodyAccessesInnerPermissions :: [Permissions] -- ^ A non-empty array of permissions to assign to the partner.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdatePartnerAssetAccessBodyAccessesInner where
+  parseJSON = genericParseJSON optionsUpdatePartnerAssetAccessBodyAccessesInner
+instance ToJSON UpdatePartnerAssetAccessBodyAccessesInner where
+  toJSON = genericToJSON optionsUpdatePartnerAssetAccessBodyAccessesInner
+
+optionsUpdatePartnerAssetAccessBodyAccessesInner :: Options
+optionsUpdatePartnerAssetAccessBodyAccessesInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updatePartnerAssetAccessBodyAccessesInnerPartnerUnderscoreid", "partner_id")
+      , ("updatePartnerAssetAccessBodyAccessesInnerAssetUnderscoreid", "asset_id")
+      , ("updatePartnerAssetAccessBodyAccessesInnerPermissions", "permissions")
+      ]
+
+
+-- | An object containing the permissions a business partner has on the asset.
+data UpdatePartnerAssetsResult = UpdatePartnerAssetsResult
+  { updatePartnerAssetsResultAssetUnderscoreid :: Maybe Text -- ^ Unique identifier of a business asset.
+  , updatePartnerAssetsResultAssetUnderscoretype :: Maybe Text -- ^ Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  , updatePartnerAssetsResultPartnerUnderscoreid :: Maybe Text -- ^ Unique identifier of a business partner.
+  , updatePartnerAssetsResultPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdatePartnerAssetsResult where
+  parseJSON = genericParseJSON optionsUpdatePartnerAssetsResult
+instance ToJSON UpdatePartnerAssetsResult where
+  toJSON = genericToJSON optionsUpdatePartnerAssetsResult
+
+optionsUpdatePartnerAssetsResult :: Options
+optionsUpdatePartnerAssetsResult =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updatePartnerAssetsResultAssetUnderscoreid", "asset_id")
+      , ("updatePartnerAssetsResultAssetUnderscoretype", "asset_type")
+      , ("updatePartnerAssetsResultPartnerUnderscoreid", "partner_id")
+      , ("updatePartnerAssetsResultPermissions", "permissions")
+      ]
+
+
+-- | 
+data UpdatePartnerAssetsResultsResponseArray = UpdatePartnerAssetsResultsResponseArray
+  { updatePartnerAssetsResultsResponseArrayItems :: Maybe [UpdatePartnerAssetsResult] -- ^ List of assigned/updated partner asset access.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdatePartnerAssetsResultsResponseArray where
+  parseJSON = genericParseJSON optionsUpdatePartnerAssetsResultsResponseArray
+instance ToJSON UpdatePartnerAssetsResultsResponseArray where
+  toJSON = genericToJSON optionsUpdatePartnerAssetsResultsResponseArray
+
+optionsUpdatePartnerAssetsResultsResponseArray :: Options
+optionsUpdatePartnerAssetsResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updatePartnerAssetsResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data UpdatePartnerResultsResponseArray = UpdatePartnerResultsResponseArray
+  { updatePartnerResultsResponseArrayItems :: Maybe [UpdatePartnerResultsResponseArrayItemsInner] -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdatePartnerResultsResponseArray where
+  parseJSON = genericParseJSON optionsUpdatePartnerResultsResponseArray
+instance ToJSON UpdatePartnerResultsResponseArray where
+  toJSON = genericToJSON optionsUpdatePartnerResultsResponseArray
+
+optionsUpdatePartnerResultsResponseArray :: Options
+optionsUpdatePartnerResultsResponseArray =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updatePartnerResultsResponseArrayItems", "items")
+      ]
+
+
+-- | 
+data UpdatePartnerResultsResponseArrayItemsInner = UpdatePartnerResultsResponseArrayItemsInner
+  { updatePartnerResultsResponseArrayItemsInnerException :: Maybe BusinessAccessError -- ^ 
+  , updatePartnerResultsResponseArrayItemsInnerMemberUnderscoreorUnderscorepartnerUnderscoreid :: Maybe Text -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UpdatePartnerResultsResponseArrayItemsInner where
+  parseJSON = genericParseJSON optionsUpdatePartnerResultsResponseArrayItemsInner
+instance ToJSON UpdatePartnerResultsResponseArrayItemsInner where
+  toJSON = genericToJSON optionsUpdatePartnerResultsResponseArrayItemsInner
+
+optionsUpdatePartnerResultsResponseArrayItemsInner :: Options
+optionsUpdatePartnerResultsResponseArrayItemsInner =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("updatePartnerResultsResponseArrayItemsInnerException", "exception")
+      , ("updatePartnerResultsResponseArrayItemsInnerMemberUnderscoreorUnderscorepartnerUnderscoreid", "member_or_partner_id")
       ]
 
 
@@ -14791,6 +20615,42 @@ optionsUserAccountFollowedInterests200Response =
     table =
       [ ("userAccountFollowedInterests200ResponseItems", "items")
       , ("userAccountFollowedInterests200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | 
+data UserBusinessRoleBinding = UserBusinessRoleBinding
+  { userBusinessRoleBindingAssetsUnderscoresummary :: Maybe BusinessMemberAssetsSummary -- ^ 
+  , userBusinessRoleBindingBusinessUnderscoreroles :: Maybe [Text] -- ^ The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  , userBusinessRoleBindingCreatedUnderscorebyUnderscorebusiness :: Maybe BusinessAccessUserSummary -- ^ Metadata for the business that created the business relationship.
+  , userBusinessRoleBindingCreatedUnderscorebyUnderscoreuser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the user that created the business relationship.
+  , userBusinessRoleBindingCreatedUnderscoretime :: Maybe Int -- ^ The time the business relationship was created. Returned in milliseconds.
+  , userBusinessRoleBindingId :: Maybe Text -- ^ Unique identifier of the business member/business partner/employer.
+  , userBusinessRoleBindingIsUnderscoresharedUnderscorepartner :: Maybe Bool -- ^ This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+  , userBusinessRoleBindingUser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the business member/business partner/employer.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UserBusinessRoleBinding where
+  parseJSON = genericParseJSON optionsUserBusinessRoleBinding
+instance ToJSON UserBusinessRoleBinding where
+  toJSON = genericToJSON optionsUserBusinessRoleBinding
+
+optionsUserBusinessRoleBinding :: Options
+optionsUserBusinessRoleBinding =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("userBusinessRoleBindingAssetsUnderscoresummary", "assets_summary")
+      , ("userBusinessRoleBindingBusinessUnderscoreroles", "business_roles")
+      , ("userBusinessRoleBindingCreatedUnderscorebyUnderscorebusiness", "created_by_business")
+      , ("userBusinessRoleBindingCreatedUnderscorebyUnderscoreuser", "created_by_user")
+      , ("userBusinessRoleBindingCreatedUnderscoretime", "created_time")
+      , ("userBusinessRoleBindingId", "id")
+      , ("userBusinessRoleBindingIsUnderscoresharedUnderscorepartner", "is_shared_partner")
+      , ("userBusinessRoleBindingUser", "user")
       ]
 
 
@@ -14881,6 +20741,30 @@ optionsUserListType =
   where
     table =
       [ 
+      ]
+
+
+-- | An object containing the permissions a business member/partner has on the asset.
+data UserSingleAssetBinding = UserSingleAssetBinding
+  { userSingleAssetBindingPermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  , userSingleAssetBindingUser :: Maybe BusinessAccessUserSummary -- ^ 
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UserSingleAssetBinding where
+  parseJSON = genericParseJSON optionsUserSingleAssetBinding
+instance ToJSON UserSingleAssetBinding where
+  toJSON = genericToJSON optionsUserSingleAssetBinding
+
+optionsUserSingleAssetBinding :: Options
+optionsUserSingleAssetBinding =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("userSingleAssetBindingPermissions", "permissions")
+      , ("userSingleAssetBindingUser", "user")
       ]
 
 
@@ -15009,6 +20893,32 @@ optionsUserWebsitesGet200Response =
     table =
       [ ("userWebsitesGet200ResponseItems", "items")
       , ("userWebsitesGet200ResponseBookmark", "bookmark")
+      ]
+
+
+-- | An object containing the permissions a business member has on the asset.
+data UsersForIndividualAssetResponse = UsersForIndividualAssetResponse
+  { usersForIndividualAssetResponseAssetUnderscoreid :: Maybe Text -- ^ Unique identifier of a business asset.
+  , usersForIndividualAssetResponseMemberUnderscoreid :: Maybe Text -- ^ Unique identifier of the business member with asset access.
+  , usersForIndividualAssetResponsePermissions :: Maybe [Text] -- ^ Permission levels member or partner has on an asset.
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON UsersForIndividualAssetResponse where
+  parseJSON = genericParseJSON optionsUsersForIndividualAssetResponse
+instance ToJSON UsersForIndividualAssetResponse where
+  toJSON = genericToJSON optionsUsersForIndividualAssetResponse
+
+optionsUsersForIndividualAssetResponse :: Options
+optionsUsersForIndividualAssetResponse =
+  defaultOptions
+    { omitNothingFields  = True
+    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
+    }
+  where
+    table =
+      [ ("usersForIndividualAssetResponseAssetUnderscoreid", "asset_id")
+      , ("usersForIndividualAssetResponseMemberUnderscoreid", "member_id")
+      , ("usersForIndividualAssetResponsePermissions", "permissions")
       ]
 
 

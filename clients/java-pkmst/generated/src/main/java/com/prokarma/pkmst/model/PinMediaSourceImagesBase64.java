@@ -20,7 +20,7 @@ import java.util.List;
  */
 @ApiModel(description = "Multiple Base64-encoded images media source")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaSourceImagesBase64   {
   /**
    * Gets or Sets sourceType
@@ -66,10 +66,10 @@ public class PinMediaSourceImagesBase64   {
     return this;
   }
 
-   /**
+  /**
    * Get sourceType
    * @return sourceType
-  **/
+   */
   @ApiModelProperty(value = "")
   public SourceTypeEnum getSourceType() {
     return sourceType;
@@ -92,10 +92,10 @@ public class PinMediaSourceImagesBase64   {
     return this;
   }
 
-   /**
+  /**
    * Array with image objects.
    * @return items
-  **/
+   */
   @ApiModelProperty(required = true, value = "Array with image objects.")
   public List<PinMediaSourceImagesBase64ItemsInner> getItems() {
     return items;
@@ -110,11 +110,11 @@ public class PinMediaSourceImagesBase64   {
     return this;
   }
 
-   /**
+  /**
    * Get index
    * minimum: 0
    * @return index
-  **/
+   */
   @ApiModelProperty(value = "")
   public Integer getIndex() {
     return index;

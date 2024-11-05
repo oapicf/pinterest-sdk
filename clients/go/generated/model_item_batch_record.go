@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -72,7 +73,11 @@ func (dst *ItemBatchRecord) UnmarshalJSON(data []byte) error {
 		if string(jsonItemCreateBatchRecord) == "{}" { // empty struct
 			dst.ItemCreateBatchRecord = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ItemCreateBatchRecord); err != nil {
+				dst.ItemCreateBatchRecord = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ItemCreateBatchRecord = nil
@@ -85,7 +90,11 @@ func (dst *ItemBatchRecord) UnmarshalJSON(data []byte) error {
 		if string(jsonItemDeleteBatchRecord) == "{}" { // empty struct
 			dst.ItemDeleteBatchRecord = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ItemDeleteBatchRecord); err != nil {
+				dst.ItemDeleteBatchRecord = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ItemDeleteBatchRecord = nil
@@ -98,7 +107,11 @@ func (dst *ItemBatchRecord) UnmarshalJSON(data []byte) error {
 		if string(jsonItemDeleteDiscontinuedBatchRecord) == "{}" { // empty struct
 			dst.ItemDeleteDiscontinuedBatchRecord = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ItemDeleteDiscontinuedBatchRecord); err != nil {
+				dst.ItemDeleteDiscontinuedBatchRecord = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ItemDeleteDiscontinuedBatchRecord = nil
@@ -111,7 +124,11 @@ func (dst *ItemBatchRecord) UnmarshalJSON(data []byte) error {
 		if string(jsonItemUpdateBatchRecord) == "{}" { // empty struct
 			dst.ItemUpdateBatchRecord = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ItemUpdateBatchRecord); err != nil {
+				dst.ItemUpdateBatchRecord = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ItemUpdateBatchRecord = nil
@@ -124,7 +141,11 @@ func (dst *ItemBatchRecord) UnmarshalJSON(data []byte) error {
 		if string(jsonItemUpsertBatchRecord) == "{}" { // empty struct
 			dst.ItemUpsertBatchRecord = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ItemUpsertBatchRecord); err != nil {
+				dst.ItemUpsertBatchRecord = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ItemUpsertBatchRecord = nil

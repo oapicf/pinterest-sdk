@@ -2,9 +2,12 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.Error
+import org.openapitools.model.LeadFormArrayResponse
+import org.openapitools.model.LeadFormCreateRequest
 import org.openapitools.model.LeadFormResponse
 import org.openapitools.model.LeadFormTestRequest
 import org.openapitools.model.LeadFormTestResponse
+import org.openapitools.model.LeadFormUpdateRequest
 import org.openapitools.model.LeadFormsList200Response
 
 class LeadFormsApi {
@@ -74,6 +77,36 @@ class LeadFormsApi {
 
     }
 
+    def leadFormsCreate ( String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/lead_forms"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (leadFormCreateRequest == null) {
+            throw new RuntimeException("missing required params leadFormCreateRequest")
+        }
+
+
+
+        contentType = 'application/json';
+        bodyParams = leadFormCreateRequest
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "POST", "",
+                    LeadFormArrayResponse.class )
+
+    }
+
     def leadFormsList ( String adAccountId, Integer pageSize, String order, String bookmark, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/lead_forms"
 
@@ -104,6 +137,36 @@ class LeadFormsApi {
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
                     LeadFormsList200Response.class )
+
+    }
+
+    def leadFormsUpdate ( String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/lead_forms"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (leadFormUpdateRequest == null) {
+            throw new RuntimeException("missing required params leadFormUpdateRequest")
+        }
+
+
+
+        contentType = 'application/json';
+        bodyParams = leadFormUpdateRequest
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "PATCH", "",
+                    LeadFormArrayResponse.class )
 
     }
 

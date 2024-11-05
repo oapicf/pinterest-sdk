@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.ItemAttributes
+open OpenAPI.Model.ItemAttributesRequest
 
 module CatalogsCreateRetailItem =
 
@@ -16,7 +16,7 @@ module CatalogsCreateRetailItem =
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
     [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : ItemAttributes;
+    Attributes : ItemAttributesRequest;
   }
 
   //#endregion

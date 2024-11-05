@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinOption", description = " This field contains multiple options to a quiz question.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QuizPinOption {
 
   private BigDecimal id;
@@ -35,7 +35,7 @@ public class QuizPinOption {
   /**
    * Get id
    * @return id
-  */
+   */
   @Valid 
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -55,7 +55,7 @@ public class QuizPinOption {
   /**
    * Get text
    * @return text
-  */
+   */
   
   @Schema(name = "text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("text")

@@ -9,7 +9,7 @@ use WWW::OpenAPIClient::Object::CatalogsItemsDeleteDiscontinuedBatchRequest;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | 
-**language** | [**Language**](Language.md) |  | 
+**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | 
 **items** | [**ARRAY[ItemDeleteDiscontinuedBatchRecord]**](ItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 

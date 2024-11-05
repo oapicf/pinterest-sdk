@@ -119,7 +119,5 @@ The class is defined in **[NullableCatalogsItemFieldType.java](../../src/main/ja
 
 * `SHIPPING_HEIGHT` (value: `"SHIPPING_HEIGHT"`)
 
-* `NULL` (value: `"null"`)
-
 
 

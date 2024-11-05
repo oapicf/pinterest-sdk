@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.Exception;
-import org.openapitools.model.ProductGroupPromotion;
+import org.openapitools.model.ProductGroupPromotionResponseElement;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -18,7 +18,7 @@ public class ProductGroupPromotionResponseItem  {
   
   @ApiModelProperty(value = "")
   @Valid
-  private ProductGroupPromotion data;
+  private ProductGroupPromotionResponseElement data;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -28,21 +28,21 @@ public class ProductGroupPromotionResponseItem  {
   * @return data
   */
   @JsonProperty("data")
-  public ProductGroupPromotion getData() {
+  public ProductGroupPromotionResponseElement getData() {
     return data;
   }
 
   /**
    * Sets the <code>data</code> property.
    */
- public void setData(ProductGroupPromotion data) {
+ public void setData(ProductGroupPromotionResponseElement data) {
     this.data = data;
   }
 
   /**
    * Sets the <code>data</code> property.
    */
-  public ProductGroupPromotionResponseItem data(ProductGroupPromotion data) {
+  public ProductGroupPromotionResponseItem data(ProductGroupPromotionResponseElement data) {
     this.data = data;
     return this;
   }

@@ -15,7 +15,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Examples
 
@@ -94,7 +94,7 @@ end
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Examples
 
@@ -105,13 +105,16 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::SearchApi.new
 opts = {
   ad_account_id: 'ad_account_id_example', # String | Unique identifier of an ad account.
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+  page_size: 56, # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   query: 'query_example' # String | Search query. Can contain pin description keywords or comma-separated pin IDs.
 }
 
@@ -148,7 +151,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. | [optional] |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
 | **query** | **String** | Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
 
 ### Return type
@@ -157,7 +160,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -171,7 +174,7 @@ end
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Examples
 

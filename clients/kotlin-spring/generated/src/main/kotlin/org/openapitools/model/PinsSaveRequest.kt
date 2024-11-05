@@ -27,7 +27,7 @@ data class PinsSaveRequest(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Unique identifier of the board section to which the pin will be saved.")
     @get:JsonProperty("board_section_id") val boardSectionId: kotlin.String? = null
-) {
+    ) {
 
 }
 

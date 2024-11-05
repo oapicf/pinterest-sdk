@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,9 @@ var _ MappedNullable = &AdsAnalyticsCreateAsyncRequest{}
 // AdsAnalyticsCreateAsyncRequest struct for AdsAnalyticsCreateAsyncRequest
 type AdsAnalyticsCreateAsyncRequest struct {
 	// Metric report start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date"`
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// Metric report end date (UTC). Format: YYYY-MM-DD
-	EndDate string `json:"end_date"`
+	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 	Granularity Granularity `json:"granularity"`
 	// Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
@@ -58,7 +58,7 @@ type AdsAnalyticsCreateAsyncRequest struct {
 	ProductGroupStatuses []ProductGroupSummaryStatus `json:"product_group_statuses,omitempty"`
 	// List of product item ids
 	ProductItemIds []string `json:"product_item_ids,omitempty"`
-	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+	// List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
 	TargetingTypes []AdsAnalyticsTargetingType `json:"targeting_types,omitempty"`
 	// List of metrics filters
 	MetricsFilters []AdsAnalyticsMetricsFilter `json:"metrics_filters,omitempty"`
@@ -68,6 +68,12 @@ type AdsAnalyticsCreateAsyncRequest struct {
 	Level MetricsReportingLevel `json:"level"`
 	// Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
 	ReportFormat *DataOutputFormat `json:"report_format,omitempty"`
+	// Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+	PrimarySort *string `json:"primary_sort,omitempty"`
+	// Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+	StartHour *int32 `json:"start_hour,omitempty"`
+	// Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+	EndHour *int32 `json:"end_hour,omitempty"`
 }
 
 type _AdsAnalyticsCreateAsyncRequest AdsAnalyticsCreateAsyncRequest
@@ -810,6 +816,102 @@ func (o *AdsAnalyticsCreateAsyncRequest) SetReportFormat(v DataOutputFormat) {
 	o.ReportFormat = &v
 }
 
+// GetPrimarySort returns the PrimarySort field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySort() string {
+	if o == nil || IsNil(o.PrimarySort) {
+		var ret string
+		return ret
+	}
+	return *o.PrimarySort
+}
+
+// GetPrimarySortOk returns a tuple with the PrimarySort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetPrimarySortOk() (*string, bool) {
+	if o == nil || IsNil(o.PrimarySort) {
+		return nil, false
+	}
+	return o.PrimarySort, true
+}
+
+// HasPrimarySort returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasPrimarySort() bool {
+	if o != nil && !IsNil(o.PrimarySort) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimarySort gets a reference to the given string and assigns it to the PrimarySort field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetPrimarySort(v string) {
+	o.PrimarySort = &v
+}
+
+// GetStartHour returns the StartHour field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetStartHour() int32 {
+	if o == nil || IsNil(o.StartHour) {
+		var ret int32
+		return ret
+	}
+	return *o.StartHour
+}
+
+// GetStartHourOk returns a tuple with the StartHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetStartHourOk() (*int32, bool) {
+	if o == nil || IsNil(o.StartHour) {
+		return nil, false
+	}
+	return o.StartHour, true
+}
+
+// HasStartHour returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasStartHour() bool {
+	if o != nil && !IsNil(o.StartHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartHour gets a reference to the given int32 and assigns it to the StartHour field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetStartHour(v int32) {
+	o.StartHour = &v
+}
+
+// GetEndHour returns the EndHour field value if set, zero value otherwise.
+func (o *AdsAnalyticsCreateAsyncRequest) GetEndHour() int32 {
+	if o == nil || IsNil(o.EndHour) {
+		var ret int32
+		return ret
+	}
+	return *o.EndHour
+}
+
+// GetEndHourOk returns a tuple with the EndHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) GetEndHourOk() (*int32, bool) {
+	if o == nil || IsNil(o.EndHour) {
+		return nil, false
+	}
+	return o.EndHour, true
+}
+
+// HasEndHour returns a boolean if a field has been set.
+func (o *AdsAnalyticsCreateAsyncRequest) HasEndHour() bool {
+	if o != nil && !IsNil(o.EndHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndHour gets a reference to the given int32 and assigns it to the EndHour field.
+func (o *AdsAnalyticsCreateAsyncRequest) SetEndHour(v int32) {
+	o.EndHour = &v
+}
+
 func (o AdsAnalyticsCreateAsyncRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -878,6 +980,15 @@ func (o AdsAnalyticsCreateAsyncRequest) ToMap() (map[string]interface{}, error) 
 	toSerialize["level"] = o.Level
 	if !IsNil(o.ReportFormat) {
 		toSerialize["report_format"] = o.ReportFormat
+	}
+	if !IsNil(o.PrimarySort) {
+		toSerialize["primary_sort"] = o.PrimarySort
+	}
+	if !IsNil(o.StartHour) {
+		toSerialize["start_hour"] = o.StartHour
+	}
+	if !IsNil(o.EndHour) {
+		toSerialize["end_hour"] = o.EndHour
 	}
 	return toSerialize, nil
 }

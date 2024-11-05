@@ -7,5 +7,5 @@ type CatalogsRetailItemsFilter struct {
 	ItemIds []string `json:"item_ids"`
 
 	// Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-	CatalogId string `json:"catalog_id,omitempty"`
+	CatalogId string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 }

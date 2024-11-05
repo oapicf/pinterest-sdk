@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &PinsSaveRequest{}
 // PinsSaveRequest struct for PinsSaveRequest
 type PinsSaveRequest struct {
 	// Unique identifier of the board to which the pin will be saved.
-	BoardId NullableString `json:"board_id,omitempty"`
+	BoardId NullableString `json:"board_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Unique identifier of the board section to which the pin will be saved.
-	BoardSectionId NullableString `json:"board_section_id,omitempty"`
+	BoardSectionId NullableString `json:"board_section_id,omitempty" validate:"regexp=^\\\\d+$"`
 }
 
 // NewPinsSaveRequest instantiates a new PinsSaveRequest object

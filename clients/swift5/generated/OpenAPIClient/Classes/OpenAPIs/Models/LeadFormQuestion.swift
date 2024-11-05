@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct LeadFormQuestion: Codable, JSONEncodable, Hashable {
 
+    static let customQuestionOptionsRule = ArrayRule(minItems: 0, maxItems: 5, uniqueItems: false)
     public var questionType: LeadFormQuestionType?
     public var customQuestionFieldType: LeadFormQuestionFieldType?
     /** Question label for a custom question. */

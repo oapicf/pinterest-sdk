@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("catalogs_product_group_pins_list_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupPinsList200Response   {
   private @Valid List<@Valid CatalogsProduct> items = new ArrayList<>();
-  private @Valid String bookmark;
+  private String bookmark;
 
   /**
    * Pins
@@ -37,8 +37,7 @@ public class CatalogsProductGroupPinsList200Response   {
   
   @ApiModelProperty(required = true, value = "Pins")
   @JsonProperty("items")
-  @NotNull
-  public List<CatalogsProduct> getItems() {
+  @NotNull @Valid public List<@Valid CatalogsProduct> getItems() {
     return items;
   }
 

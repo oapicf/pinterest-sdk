@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.12.0
+ * OpenAPI document version: 5.14.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,14 +25,14 @@ import org.openapitools.model.SSIOAccountPMPName;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-03-14T23:03:06.281391477Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2024-11-05T02:05:24.181167181Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SSIOAccountResponse   {
   
   private Boolean eligible;
   private Boolean canEdit;
-  private List<SSIOAccountItem> billtoInfos;
+  private List<SSIOAccountItem> billtoInfos = new ArrayList<>();
   private String currency;
-  private List<SSIOAccountPMPName> pmpNames;
+  private List<SSIOAccountPMPName> pmpNames = new ArrayList<>();
   private String error;
 
   /**

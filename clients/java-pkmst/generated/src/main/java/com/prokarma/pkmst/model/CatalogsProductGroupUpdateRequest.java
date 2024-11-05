@@ -17,7 +17,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for updating a product group.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsProductGroupUpdateRequest   {
   @JsonProperty("name")
   private String name;
@@ -36,10 +36,10 @@ public class CatalogsProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getName() {
     return name;
@@ -54,10 +54,10 @@ public class CatalogsProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
@@ -72,10 +72,10 @@ public class CatalogsProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * boolean indicator of whether the product group is being featured or not
    * @return isFeatured
-  **/
+   */
   @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
   public Boolean getIsFeatured() {
     return isFeatured;
@@ -90,10 +90,10 @@ public class CatalogsProductGroupUpdateRequest   {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @ApiModelProperty(value = "")
   public CatalogsProductGroupFiltersRequest getFilters() {
     return filters;

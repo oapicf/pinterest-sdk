@@ -37,7 +37,7 @@ data class CatalogsItemValidationIssues(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("warnings", required = true) val warnings: CatalogsItemValidationWarnings
-) {
+    ) {
 
 }
 

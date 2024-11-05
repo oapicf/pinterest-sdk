@@ -3,7 +3,7 @@ package models
 // PinMediaWithVideo - Pin with video.
 type PinMediaWithVideo struct {
 
-	Images ImageMetadataImages `json:"images,omitempty"`
+	Images PinMediaWithImageAllOfImages `json:"images,omitempty"`
 
 	CoverImageUrl string `json:"cover_image_url,omitempty"`
 

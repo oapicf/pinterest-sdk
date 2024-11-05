@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationRecord", description = "Integration record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationRecord {
 
   private String id;
@@ -67,7 +67,7 @@ public class IntegrationRecord {
   /**
    * Get id
    * @return id
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -87,7 +87,7 @@ public class IntegrationRecord {
   /**
    * Get externalBusinessId
    * @return externalBusinessId
-  */
+   */
   
   @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("external_business_id")
@@ -107,7 +107,7 @@ public class IntegrationRecord {
   /**
    * Get connectedMerchantId
    * @return connectedMerchantId
-  */
+   */
   
   @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_merchant_id")
@@ -127,7 +127,7 @@ public class IntegrationRecord {
   /**
    * Get connectedUserId
    * @return connectedUserId
-  */
+   */
   
   @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_user_id")
@@ -147,7 +147,7 @@ public class IntegrationRecord {
   /**
    * Get connectedAdvertiserId
    * @return connectedAdvertiserId
-  */
+   */
   
   @Schema(name = "connected_advertiser_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
@@ -167,7 +167,7 @@ public class IntegrationRecord {
   /**
    * Get connectedLbaId
    * @return connectedLbaId
-  */
+   */
   
   @Schema(name = "connected_lba_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_lba_id")
@@ -187,7 +187,7 @@ public class IntegrationRecord {
   /**
    * Get connectedTagId
    * @return connectedTagId
-  */
+   */
   
   @Schema(name = "connected_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_tag_id")
@@ -207,7 +207,7 @@ public class IntegrationRecord {
   /**
    * Get partnerAccessToken
    * @return partnerAccessToken
-  */
+   */
   
   @Schema(name = "partner_access_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token")
@@ -227,7 +227,7 @@ public class IntegrationRecord {
   /**
    * Get partnerRefreshToken
    * @return partnerRefreshToken
-  */
+   */
   
   @Schema(name = "partner_refresh_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token")
@@ -247,7 +247,7 @@ public class IntegrationRecord {
   /**
    * Get partnerPrimaryEmail
    * @return partnerPrimaryEmail
-  */
+   */
   
   @Schema(name = "partner_primary_email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_primary_email")
@@ -267,7 +267,7 @@ public class IntegrationRecord {
   /**
    * Get partnerAccessTokenExpiry
    * @return partnerAccessTokenExpiry
-  */
+   */
   
   @Schema(name = "partner_access_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token_expiry")
@@ -287,7 +287,7 @@ public class IntegrationRecord {
   /**
    * Get partnerRefreshTokenExpiry
    * @return partnerRefreshTokenExpiry
-  */
+   */
   
   @Schema(name = "partner_refresh_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token_expiry")
@@ -307,7 +307,7 @@ public class IntegrationRecord {
   /**
    * Get scopes
    * @return scopes
-  */
+   */
   
   @Schema(name = "scopes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scopes")
@@ -327,7 +327,7 @@ public class IntegrationRecord {
   /**
    * Get partnerMetadata
    * @return partnerMetadata
-  */
+   */
   
   @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_metadata")
@@ -347,7 +347,7 @@ public class IntegrationRecord {
   /**
    * Get additionalId1
    * @return additionalId1
-  */
+   */
   
   @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_id_1")
@@ -367,7 +367,7 @@ public class IntegrationRecord {
   /**
    * Get createdTime
    * @return createdTime
-  */
+   */
   
   @Schema(name = "created_time", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
@@ -387,7 +387,7 @@ public class IntegrationRecord {
   /**
    * Get updatedTime
    * @return updatedTime
-  */
+   */
   
   @Schema(name = "updated_time", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")

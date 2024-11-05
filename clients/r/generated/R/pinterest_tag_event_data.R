@@ -1,7 +1,7 @@
 #' Create a new PinterestTagEventData
 #'
 #' @description
-#' Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\", \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }
+#' Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\" , \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }
 #'
 #' @docType class
 #' @title PinterestTagEventData
@@ -35,8 +35,7 @@ PinterestTagEventData <- R6::R6Class(
     `search_query` = NULL,
     `value` = NULL,
     `video_title` = NULL,
-    #' Initialize a new PinterestTagEventData class.
-    #'
+
     #' @description
     #' Initialize a new PinterestTagEventData class.
     #'
@@ -52,7 +51,6 @@ PinterestTagEventData <- R6::R6Class(
     #' @param value Product value. For example, \"199.98\"
     #' @param video_title Video title. For example, \"How to style your Parker Boots\".
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`currency` = NULL, `lead_type` = NULL, `line_items` = NULL, `order_id` = NULL, `order_quantity` = NULL, `page_name` = NULL, `promo_code` = NULL, `property` = NULL, `search_query` = NULL, `value` = NULL, `video_title` = NULL, ...) {
       if (!is.null(`currency`)) {
         if (!(`currency` %in% c())) {
@@ -120,13 +118,11 @@ PinterestTagEventData <- R6::R6Class(
         self$`video_title` <- `video_title`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinterestTagEventData in JSON format
-    #' @export
     toJSON = function() {
       PinterestTagEventDataObject <- list()
       if (!is.null(self$`currency`)) {
@@ -175,14 +171,12 @@ PinterestTagEventData <- R6::R6Class(
       }
       PinterestTagEventDataObject
     },
-    #' Deserialize JSON string into an instance of PinterestTagEventData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinterestTagEventData
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinterestTagEventData
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`currency`)) {
@@ -224,13 +218,11 @@ PinterestTagEventData <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return PinterestTagEventData in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`currency`)) {
@@ -325,14 +317,12 @@ PinterestTagEventData <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of PinterestTagEventData
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of PinterestTagEventData
     #'
     #' @param input_json the JSON input
     #' @return the instance of PinterestTagEventData
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`currency` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
@@ -348,53 +338,42 @@ PinterestTagEventData <- R6::R6Class(
       self$`video_title` <- this_object$`video_title`
       self
     },
-    #' Validate JSON input with respect to PinterestTagEventData
-    #'
+
     #' @description
     #' Validate JSON input with respect to PinterestTagEventData and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of PinterestTagEventData
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

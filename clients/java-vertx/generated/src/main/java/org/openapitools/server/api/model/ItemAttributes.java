@@ -58,13 +58,14 @@ public class ItemAttributes   {
   private List<String> variantNames;
   private List<String> variantValues;
   private List<String> additionalImageLink;
-  private List<String> imageLink;
+  private List<String> imageLink = new ArrayList<>();
+  private String videoLink;
 
   public ItemAttributes () {
 
   }
 
-  public ItemAttributes (String adLink, Boolean adult, String ageGroup, String availability, BigDecimal averageReviewRating, String brand, Boolean checkoutEnabled, String color, String condition, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String description, Boolean freeShippingLabel, String freeShippingLimit, String gender, String googleProductCategory, Integer gtin, String id, String itemGroupId, Long lastUpdatedTime, String link, String material, String minAdPrice, String mobileLink, String mpn, Integer numberOfRatings, Integer numberOfReviews, String pattern, String price, String productType, String salePrice, String shipping, String shippingHeight, String shippingWeight, String shippingWidth, String size, String sizeSystem, String sizeType, String tax, String title, List<String> variantNames, List<String> variantValues, List<String> additionalImageLink, List<String> imageLink) {
+  public ItemAttributes (String adLink, Boolean adult, String ageGroup, String availability, BigDecimal averageReviewRating, String brand, Boolean checkoutEnabled, String color, String condition, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String description, Boolean freeShippingLabel, String freeShippingLimit, String gender, String googleProductCategory, Integer gtin, String id, String itemGroupId, Long lastUpdatedTime, String link, String material, String minAdPrice, String mobileLink, String mpn, Integer numberOfRatings, Integer numberOfReviews, String pattern, String price, String productType, String salePrice, String shipping, String shippingHeight, String shippingWeight, String shippingWidth, String size, String sizeSystem, String sizeType, String tax, String title, List<String> variantNames, List<String> variantValues, List<String> additionalImageLink, List<String> imageLink, String videoLink) {
     this.adLink = adLink;
     this.adult = adult;
     this.ageGroup = ageGroup;
@@ -112,6 +113,7 @@ public class ItemAttributes   {
     this.variantValues = variantValues;
     this.additionalImageLink = additionalImageLink;
     this.imageLink = imageLink;
+    this.videoLink = videoLink;
   }
 
     
@@ -537,6 +539,15 @@ public class ItemAttributes   {
     this.imageLink = imageLink;
   }
 
+    
+  @JsonProperty("video_link")
+  public String getVideoLink() {
+    return videoLink;
+  }
+  public void setVideoLink(String videoLink) {
+    this.videoLink = videoLink;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -593,12 +604,13 @@ public class ItemAttributes   {
         Objects.equals(variantNames, itemAttributes.variantNames) &&
         Objects.equals(variantValues, itemAttributes.variantValues) &&
         Objects.equals(additionalImageLink, itemAttributes.additionalImageLink) &&
-        Objects.equals(imageLink, itemAttributes.imageLink);
+        Objects.equals(imageLink, itemAttributes.imageLink) &&
+        Objects.equals(videoLink, itemAttributes.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink);
+    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
   }
 
   @Override
@@ -653,6 +665,7 @@ public class ItemAttributes   {
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
+    sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }

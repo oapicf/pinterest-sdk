@@ -26,7 +26,7 @@ class TargetingTypeFilterTest : ShouldSpec() {
         // uncomment below to create an instance of TargetingTypeFilter
         //val modelInstance = TargetingTypeFilter()
 
-        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
+        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
         should("test targetingTypes") {
             // uncomment below to test the property
             //modelInstance.targetingTypes shouldBe ("TODO")

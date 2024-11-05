@@ -51,5 +51,6 @@ data class CatalogsRetailItemsFilter (
     enum class CatalogType(val value: kotlin.String) {
         @Json(name = "RETAIL") RETAIL("RETAIL");
     }
+
 }
 

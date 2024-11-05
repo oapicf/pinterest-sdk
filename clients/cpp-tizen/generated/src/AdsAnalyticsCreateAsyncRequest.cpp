@@ -46,6 +46,9 @@ AdsAnalyticsCreateAsyncRequest::__init()
 	//new std::list()std::list> columns;
 	//level = std::string();
 	//report_format = std::string();
+	//primary_sort = std::string();
+	//start_hour = int(0);
+	//end_hour = int(0);
 }
 
 void
@@ -165,6 +168,21 @@ AdsAnalyticsCreateAsyncRequest::__cleanup()
 	//
 	//delete report_format;
 	//report_format = NULL;
+	//}
+	//if(primary_sort != NULL) {
+	//
+	//delete primary_sort;
+	//primary_sort = NULL;
+	//}
+	//if(start_hour != NULL) {
+	//
+	//delete start_hour;
+	//start_hour = NULL;
+	//}
+	//if(end_hour != NULL) {
+	//
+	//delete end_hour;
+	//end_hour = NULL;
 	//}
 	//
 }
@@ -620,6 +638,39 @@ AdsAnalyticsCreateAsyncRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *primary_sortKey = "primary_sort";
+	node = json_object_get_member(pJsonObject, primary_sortKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&primary_sort, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *start_hourKey = "start_hour";
+	node = json_object_get_member(pJsonObject, start_hourKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&start_hour, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *end_hourKey = "end_hour";
+	node = json_object_get_member(pJsonObject, end_hourKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&end_hour, node, "int", "");
+		} else {
+			
+		}
+	}
 }
 
 AdsAnalyticsCreateAsyncRequest::AdsAnalyticsCreateAsyncRequest(char* json)
@@ -1048,6 +1099,33 @@ AdsAnalyticsCreateAsyncRequest::toJson()
 	}
 	const gchar *report_formatKey = "report_format";
 	json_object_set_member(pJsonObject, report_formatKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPrimarySort();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *primary_sortKey = "primary_sort";
+	json_object_set_member(pJsonObject, primary_sortKey, node);
+	if (isprimitive("int")) {
+		int obj = getStartHour();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *start_hourKey = "start_hour";
+	json_object_set_member(pJsonObject, start_hourKey, node);
+	if (isprimitive("int")) {
+		int obj = getEndHour();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *end_hourKey = "end_hour";
+	json_object_set_member(pJsonObject, end_hourKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -1330,6 +1408,42 @@ void
 AdsAnalyticsCreateAsyncRequest::setReportFormat(DataOutputFormat  report_format)
 {
 	this->report_format = report_format;
+}
+
+std::string
+AdsAnalyticsCreateAsyncRequest::getPrimarySort()
+{
+	return primary_sort;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setPrimarySort(std::string  primary_sort)
+{
+	this->primary_sort = primary_sort;
+}
+
+int
+AdsAnalyticsCreateAsyncRequest::getStartHour()
+{
+	return start_hour;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setStartHour(int  start_hour)
+{
+	this->start_hour = start_hour;
+}
+
+int
+AdsAnalyticsCreateAsyncRequest::getEndHour()
+{
+	return end_hour;
+}
+
+void
+AdsAnalyticsCreateAsyncRequest::setEndHour(int  end_hour)
+{
+	this->end_hour = end_hour;
 }
 
 

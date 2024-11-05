@@ -12,12 +12,15 @@ import AnyCodable
 
 /** Request object for creating a feed. */
 public enum CatalogsVerticalFeedsCreateRequest: Codable, JSONEncodable, Hashable {
+    case typeCatalogsCreativeAssetsFeedsCreateRequest(CatalogsCreativeAssetsFeedsCreateRequest)
     case typeCatalogsHotelFeedsCreateRequest(CatalogsHotelFeedsCreateRequest)
     case typeCatalogsRetailFeedsCreateRequest(CatalogsRetailFeedsCreateRequest)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeCatalogsCreativeAssetsFeedsCreateRequest(let value):
+            try container.encode(value)
         case .typeCatalogsHotelFeedsCreateRequest(let value):
             try container.encode(value)
         case .typeCatalogsRetailFeedsCreateRequest(let value):
@@ -27,7 +30,9 @@ public enum CatalogsVerticalFeedsCreateRequest: Codable, JSONEncodable, Hashable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(CatalogsHotelFeedsCreateRequest.self) {
+        if let value = try? container.decode(CatalogsCreativeAssetsFeedsCreateRequest.self) {
+            self = .typeCatalogsCreativeAssetsFeedsCreateRequest(value)
+        } else if let value = try? container.decode(CatalogsHotelFeedsCreateRequest.self) {
             self = .typeCatalogsHotelFeedsCreateRequest(value)
         } else if let value = try? container.decode(CatalogsRetailFeedsCreateRequest.self) {
             self = .typeCatalogsRetailFeedsCreateRequest(value)

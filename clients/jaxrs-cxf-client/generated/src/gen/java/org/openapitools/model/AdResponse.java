@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.PinPromotionSummaryStatus;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -24,9 +24,9 @@ public class AdResponse  {
   **/
   private String adGroupId;
 
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
  /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
   **/
   private String androidDeepLink;
 
@@ -63,9 +63,9 @@ public class AdResponse  {
   **/
   private String destinationUrl;
 
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
  /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
   **/
   private String iosDeepLink;
 
@@ -91,7 +91,7 @@ public class AdResponse  {
   private EntityStatus status;
 
   @ApiModelProperty(value = "")
-  private AdCommonTrackingUrls trackingUrls;
+  private TrackingUrls trackingUrls;
 
   @ApiModelProperty(value = "Tracking URL for ad impressions.")
  /**
@@ -110,7 +110,7 @@ public class AdResponse  {
 
 public enum CustomizableCtaTypeEnum {
 
-GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE")), ORDER_NOW(String.valueOf("ORDER_NOW")), SHOP_NOW(String.valueOf("SHOP_NOW")), SIGN_UP(String.valueOf("SIGN_UP")), SUBSCRIBE(String.valueOf("SUBSCRIBE")), BUY_NOW(String.valueOf("BUY_NOW")), CONTACT_US(String.valueOf("CONTACT_US")), GET_QUOTE(String.valueOf("GET_QUOTE")), VISIT_WEBSITE(String.valueOf("VISIT_WEBSITE")), APPLY_NOW(String.valueOf("APPLY_NOW")), BOOK_NOW(String.valueOf("BOOK_NOW")), REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), REGISTER_NOW(String.valueOf("REGISTER_NOW")), FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_NOW(String.valueOf("WATCH_NOW")), READ_MORE(String.valueOf("READ_MORE")), NULL(String.valueOf("null"));
+GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE")), ORDER_NOW(String.valueOf("ORDER_NOW")), SHOP_NOW(String.valueOf("SHOP_NOW")), SIGN_UP(String.valueOf("SIGN_UP")), SUBSCRIBE(String.valueOf("SUBSCRIBE")), BUY_NOW(String.valueOf("BUY_NOW")), CONTACT_US(String.valueOf("CONTACT_US")), GET_QUOTE(String.valueOf("GET_QUOTE")), VISIT_SITE(String.valueOf("VISIT_SITE")), APPLY_NOW(String.valueOf("APPLY_NOW")), BOOK_NOW(String.valueOf("BOOK_NOW")), REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), REGISTER_NOW(String.valueOf("REGISTER_NOW")), FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_NOW(String.valueOf("WATCH_NOW")), READ_MORE(String.valueOf("READ_MORE"));
 
 
     private String value;
@@ -138,14 +138,17 @@ GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE"))
     }
 }
 
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
  /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
   **/
   private CustomizableCtaTypeEnum customizableCtaType;
 
-  @ApiModelProperty(value = "")
-  private AdCommonQuizPinData quizPinData;
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
+ /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  **/
+  private QuizPinData quizPinData;
 
   @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
  /**
@@ -217,13 +220,13 @@ HASHTAGS(String.valueOf("HASHTAGS")), PROMOTIONS_AND_PRICES(String.valueOf("PROM
  /**
    * Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
   **/
-  private List<RejectedReasonsEnum> rejectedReasons;
+  private List<RejectedReasonsEnum> rejectedReasons = new ArrayList<>();
 
   @ApiModelProperty(value = "Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".")
  /**
    * Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
   **/
-  private List<String> rejectionLabels;
+  private List<String> rejectionLabels = new ArrayList<>();
 
 public enum ReviewStatusEnum {
 
@@ -297,7 +300,7 @@ OTHER(String.valueOf("OTHER")), PENDING(String.valueOf("PENDING")), REJECTED(Str
   }
 
  /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    * @return androidDeepLink
   **/
   @JsonProperty("android_deep_link")
@@ -438,7 +441,7 @@ OTHER(String.valueOf("OTHER")), PENDING(String.valueOf("PENDING")), REJECTED(Str
   }
 
  /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    * @return iosDeepLink
   **/
   @JsonProperty("ios_deep_link")
@@ -532,15 +535,15 @@ OTHER(String.valueOf("OTHER")), PENDING(String.valueOf("PENDING")), REJECTED(Str
    * @return trackingUrls
   **/
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
-  public AdResponse trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdResponse trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -600,7 +603,7 @@ OTHER(String.valueOf("OTHER")), PENDING(String.valueOf("PENDING")), REJECTED(Str
   }
 
  /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    * @return customizableCtaType
   **/
   @JsonProperty("customizable_cta_type")
@@ -621,19 +624,19 @@ OTHER(String.valueOf("OTHER")), PENDING(String.valueOf("PENDING")), REJECTED(Str
   }
 
  /**
-   * Get quizPinData
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    * @return quizPinData
   **/
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  public QuizPinData getQuizPinData() {
     return quizPinData;
   }
 
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 
-  public AdResponse quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdResponse quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }

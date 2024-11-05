@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("CustomerListUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CustomerListUpdateRequest   {
-  private @Valid String records;
-  private @Valid UserListOperationType operationType;
-  private @Valid Exception exceptions;
+  private String records;
+  private UserListOperationType operationType;
+  private Exception exceptions;
 
   /**
    * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
@@ -34,8 +34,7 @@ public class CustomerListUpdateRequest   {
   
   @ApiModelProperty(example = "email2@pinterest.com,email6@pinterest.com,", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
   @JsonProperty("records")
-  @NotNull
-  public String getRecords() {
+  @NotNull public String getRecords() {
     return records;
   }
 
@@ -54,8 +53,7 @@ public class CustomerListUpdateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("operation_type")
-  @NotNull
-  public UserListOperationType getOperationType() {
+  @NotNull public UserListOperationType getOperationType() {
     return operationType;
   }
 
@@ -74,7 +72,7 @@ public class CustomerListUpdateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("exceptions")
-  public Exception getExceptions() {
+  @Valid public Exception getExceptions() {
     return exceptions;
   }
 

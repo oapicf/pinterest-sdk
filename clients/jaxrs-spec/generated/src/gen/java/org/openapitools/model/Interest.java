@@ -15,12 +15,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("Interest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Interest   {
-  private @Valid String canonicalUrl;
-  private @Valid String id;
-  private @Valid String key;
-  private @Valid String name;
+  private String canonicalUrl;
+  private String id;
+  private String key;
+  private String name;
 
   /**
    **/
@@ -51,7 +51,7 @@ public class Interest   {
   
   @ApiModelProperty(example = "903972677830", value = "")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 

@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "AdAccountCreateSubscriptionRequest_partner_metadata.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -73,12 +74,20 @@ public:
 	/*! \brief Set Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 	 */
 	void setPartnerRefreshToken(std::string  partner_refresh_token);
+	/*! \brief Get 
+	 */
+	AdAccountCreateSubscriptionRequest_partner_metadata getPartnerMetadata();
+
+	/*! \brief Set 
+	 */
+	void setPartnerMetadata(AdAccountCreateSubscriptionRequest_partner_metadata  partner_metadata);
 
 private:
 	std::string webhook_url;
 	std::string lead_form_id;
 	std::string partner_access_token;
 	std::string partner_refresh_token;
+	AdAccountCreateSubscriptionRequest_partner_metadata partner_metadata;
 	void __init();
 	void __cleanup();
 

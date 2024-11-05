@@ -107,7 +107,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@6333048b");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -164,8 +164,8 @@ public class AdGroupsControllerTest {
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
-        MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+        MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
+            .accept("[Ljava.lang.String;@1d4746c8");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupAudienceSizingResponse.class);
@@ -179,7 +179,7 @@ public class AdGroupsControllerTest {
      *
      * The method should: Get bid floors
      *
-     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
+     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt;  &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -213,7 +213,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@1d0e0179");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BidFloor.class);
@@ -227,7 +227,7 @@ public class AdGroupsControllerTest {
      *
      * The method should: Create ad groups
      *
-     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -236,7 +236,7 @@ public class AdGroupsControllerTest {
     void adGroupsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        List<AdGroupCreateRequest> adGroupCreateRequest = Arrays.asList();
+        List<@Valid AdGroupCreateRequest> adGroupCreateRequest = Arrays.asList();
 
         // when
         AdGroupArrayResponse result = controller.adGroupsCreate(adAccountId, adGroupCreateRequest).block();
@@ -255,13 +255,13 @@ public class AdGroupsControllerTest {
     @Disabled("Not Implemented")
     void adGroupsCreateClientApiTest() throws IOException {
         // given
-        List<AdGroupCreateRequest> body = Arrays.asList();
+        List<@Valid AdGroupCreateRequest> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ad_groups").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@7921a40c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupArrayResponse.class);
@@ -309,7 +309,7 @@ public class AdGroupsControllerTest {
             put("ad_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@2cde0ff");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupResponse.class);
@@ -362,7 +362,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@259b8768");
         request.getParameters()
             .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
@@ -427,7 +427,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@48735f6b");
         request.getParameters()
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -462,7 +462,7 @@ public class AdGroupsControllerTest {
     void adGroupsUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        List<AdGroupUpdateRequest> adGroupUpdateRequest = Arrays.asList();
+        List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest = Arrays.asList();
 
         // when
         AdGroupArrayResponse result = controller.adGroupsUpdate(adAccountId, adGroupUpdateRequest).block();
@@ -481,13 +481,13 @@ public class AdGroupsControllerTest {
     @Disabled("Not Implemented")
     void adGroupsUpdateClientApiTest() throws IOException {
         // given
-        List<AdGroupUpdateRequest> body = Arrays.asList();
+        List<@Valid AdGroupUpdateRequest> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ad_groups").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("application/json");
+            .accept("[Ljava.lang.String;@3c0693ad");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupArrayResponse.class);

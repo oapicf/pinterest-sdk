@@ -3,14 +3,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metadata** | [**CatalogsProductMetadata**](CatalogsProductMetadata.md) |  | 
+**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**Metadata** | [**CatalogsCreativeAssetsProductMetadata**](CatalogsCreativeAssetsProductMetadata.md) |  | 
 **Pin** | [**Pin**](Pin.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProduct = Initialize-PSOpenAPIToolsCatalogsProduct  -Metadata null `
+$CatalogsProduct = Initialize-PSOpenAPIToolsCatalogsProduct  -CatalogType null `
+ -Metadata null `
  -Pin null
 ```
 

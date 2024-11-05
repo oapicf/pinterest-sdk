@@ -5,13 +5,13 @@
 
 
 char* ads_analytics_targeting_type_ads_analytics_targeting_type_ToString(pinterest_rest_api_ads_analytics_targeting_type__e ads_analytics_targeting_type) {
-    char *ads_analytics_targeting_typeArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION" };
+    char *ads_analytics_targeting_typeArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION", "AGE_BUCKET_AND_GENDER" };
     return ads_analytics_targeting_typeArray[ads_analytics_targeting_type];
 }
 
 pinterest_rest_api_ads_analytics_targeting_type__e ads_analytics_targeting_type_ads_analytics_targeting_type_FromString(char* ads_analytics_targeting_type) {
     int stringToReturn = 0;
-    char *ads_analytics_targeting_typeArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION" };
+    char *ads_analytics_targeting_typeArray[] =  { "NULL", "KEYWORD", "APPTYPE", "GENDER", "LOCATION", "PLACEMENT", "COUNTRY", "TARGETED_INTEREST", "PINNER_INTEREST", "AUDIENCE_INCLUDE", "GEO", "AGE_BUCKET", "REGION", "AGE_BUCKET_AND_GENDER" };
     size_t sizeofArray = sizeof(ads_analytics_targeting_typeArray) / sizeof(ads_analytics_targeting_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(ads_analytics_targeting_type, ads_analytics_targeting_typeArray[stringToReturn]) == 0) {

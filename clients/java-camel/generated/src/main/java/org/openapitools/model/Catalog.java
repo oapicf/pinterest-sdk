@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Catalog", description = "Catalog entity")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Catalog {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -45,8 +45,10 @@ public class Catalog {
   /**
    * Constructor with only required parameters
    */
-  public Catalog(String id, String name, CatalogsType catalogType) {
+  public Catalog(Date createdAt, String id, Date updatedAt, String name, CatalogsType catalogType) {
+    this.createdAt = createdAt;
     this.id = id;
+    this.updatedAt = updatedAt;
     this.name = JsonNullable.of(name);
     this.catalogType = catalogType;
   }
@@ -59,9 +61,9 @@ public class Catalog {
   /**
    * Get createdAt
    * @return createdAt
-  */
-  @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -79,7 +81,7 @@ public class Catalog {
   /**
    * ID of the catalog entity.
    * @return id
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "864344156814050986", description = "ID of the catalog entity.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
@@ -99,9 +101,9 @@ public class Catalog {
   /**
    * Get updatedAt
    * @return updatedAt
-  */
-  @Valid 
-  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -119,7 +121,7 @@ public class Catalog {
   /**
    * A human-friendly name associated to a catalog entity.
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", description = "A human-friendly name associated to a catalog entity.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -139,7 +141,7 @@ public class Catalog {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")

@@ -15,9 +15,8 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AdCommonTrackingUrls
-import org.openapitools.client.models.CampaignSummaryStatus
 import org.openapitools.client.models.EntityStatus
+import org.openapitools.client.models.TrackingUrls
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -34,7 +33,6 @@ import com.squareup.moshi.JsonClass
  * @param trackingUrls 
  * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
  * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
- * @param summaryStatus 
  * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup.
  * @param defaultAdGroupBudgetInMicroCurrency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
  * @param isAutomatedCampaign Specifies whether the campaign was created in the automated campaign flow
@@ -52,7 +50,7 @@ data class CampaignCreateCommon (
     val name: kotlin.String? = null,
 
     @Json(name = "status")
-    val status: EntityStatus? = "ACTIVE",
+    val status: EntityStatus? = null,
 
     /* Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. */
     @Json(name = "lifetime_spend_cap")
@@ -67,7 +65,7 @@ data class CampaignCreateCommon (
     val orderLineId: kotlin.String? = null,
 
     @Json(name = "tracking_urls")
-    val trackingUrls: AdCommonTrackingUrls? = null,
+    val trackingUrls: TrackingUrls? = null,
 
     /* Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
     @Json(name = "start_time")
@@ -77,12 +75,9 @@ data class CampaignCreateCommon (
     @Json(name = "end_time")
     val endTime: kotlin.Int? = null,
 
-    @Json(name = "summary_status")
-    val summaryStatus: CampaignSummaryStatus? = null,
-
     /* Determine if a campaign has flexible daily budgets setup. */
     @Json(name = "is_flexible_daily_budgets")
-    val isFlexibleDailyBudgets: kotlin.Boolean? = false,
+    val isFlexibleDailyBudgets: kotlin.Boolean? = null,
 
     /* When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */
     @Json(name = "default_ad_group_budget_in_micro_currency")
@@ -90,7 +85,10 @@ data class CampaignCreateCommon (
 
     /* Specifies whether the campaign was created in the automated campaign flow */
     @Json(name = "is_automated_campaign")
-    val isAutomatedCampaign: kotlin.Boolean? = false
+    val isAutomatedCampaign: kotlin.Boolean? = null
 
-)
+) {
+
+
+}
 

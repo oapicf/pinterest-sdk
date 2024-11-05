@@ -14,7 +14,7 @@ import org.openapitools.server.api.model.TopVideoPinsAnalyticsResponsePinsInner;
 public class TopVideoPinsAnalyticsResponse   {
   
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
-  private List<TopVideoPinsAnalyticsResponsePinsInner> pins;
+  private List<TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
 
   public enum SortByEnum {
@@ -25,7 +25,7 @@ public class TopVideoPinsAnalyticsResponse   {
     VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME"),
     VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
     QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
-    VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+    VIDEO_10_S_VIEW("VIDEO_10S_VIEW"),
     VIDEO_START("VIDEO_START");
 
     private String value;

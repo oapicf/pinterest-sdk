@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ItemAttributes;
+import org.openapitools.model.ItemAttributesRequest;
 import org.openapitools.model.ItemCreateBatchRecord;
 import org.openapitools.model.ItemDeleteBatchRecord;
 import org.openapitools.model.ItemDeleteDiscontinuedBatchRecord;
@@ -35,7 +35,7 @@ public class ItemBatchRecord  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private ItemAttributes attributes;
+  private ItemAttributesRequest attributes;
 
  /**
   * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
@@ -72,21 +72,21 @@ public class ItemBatchRecord  {
   * @return attributes
   */
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
   /**
    * Sets the <code>attributes</code> property.
    */
- public void setAttributes(ItemAttributes attributes) {
+ public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
   /**
    * Sets the <code>attributes</code> property.
    */
-  public ItemBatchRecord attributes(ItemAttributes attributes) {
+  public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }

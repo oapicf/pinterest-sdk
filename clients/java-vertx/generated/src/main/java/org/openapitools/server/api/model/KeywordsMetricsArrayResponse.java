@@ -11,7 +11,7 @@ import org.openapitools.server.api.model.KeywordMetricsResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class KeywordsMetricsArrayResponse   {
   
-  private List<KeywordMetricsResponse> data;
+  private List<KeywordMetricsResponse> data = new ArrayList<>();
 
   public KeywordsMetricsArrayResponse () {
 

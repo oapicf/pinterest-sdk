@@ -16,7 +16,7 @@ case class OptimizationGoalMetadataConversionTagV3GoalMetadata (
 conversionEvent: Option[ConversionEvent],
 conversionTagId: Option[String],
 cpaGoalValueInMicroCurrency: Option[String],
-/* Ad group is ROAS optimized */
+/* ROAS optimization is not supported */
   isRoasOptimized: Option[Boolean],
 /* Conversion learning model type */
   learningModeType: Option[LearningModeType])
@@ -72,20 +72,17 @@ object OptimizationGoalMetadataConversionTagV3GoalMetadata {
   sealed trait LearningModeType
   case object NOTACTIVE extends LearningModeType
   case object ACTIVE extends LearningModeType
-  case object `Null` extends LearningModeType
 
   object LearningModeType {
     def toLearningModeType(s: String): Option[LearningModeType] = s match {
       case "NOTACTIVE" => Some(NOTACTIVE)
       case "ACTIVE" => Some(ACTIVE)
-      case "`Null`" => Some(`Null`)
       case _ => None
     }
 
     def fromLearningModeType(x: LearningModeType): String = x match {
       case NOTACTIVE => "NOTACTIVE"
       case ACTIVE => "ACTIVE"
-      case `Null` => "`Null`"
     }
   }
 

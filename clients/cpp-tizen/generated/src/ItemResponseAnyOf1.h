@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CatalogsCreativeAssetsItemErrorResponse.h"
 #include "CatalogsHotelItemErrorResponse.h"
 #include "CatalogsRetailItemErrorResponse.h"
 #include "CatalogsType.h"
@@ -78,12 +79,20 @@ public:
 	/*! \brief Set The catalog hotel id in the merchant namespace
 	 */
 	void setHotelId(std::string  hotel_id);
+	/*! \brief Get The catalog creative assets id in the merchant namespace
+	 */
+	std::string getCreativeAssetsId();
+
+	/*! \brief Set The catalog creative assets id in the merchant namespace
+	 */
+	void setCreativeAssetsId(std::string  creative_assets_id);
 
 private:
 	CatalogsType catalog_type;
 	std::string item_id;
 	std::list <ItemValidationEvent>errors;
 	std::string hotel_id;
+	std::string creative_assets_id;
 	void __init();
 	void __cleanup();
 

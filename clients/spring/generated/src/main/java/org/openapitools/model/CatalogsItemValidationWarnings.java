@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsItemValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsItemValidationWarnings {
 
   private CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
@@ -118,7 +118,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get AD_LINK_FORMAT_WARNING
    * @return AD_LINK_FORMAT_WARNING
-  */
+   */
   @Valid 
   @Schema(name = "AD_LINK_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_FORMAT_WARNING")
@@ -138,7 +138,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get AD_LINK_SAME_AS_LINK
    * @return AD_LINK_SAME_AS_LINK
-  */
+   */
   @Valid 
   @Schema(name = "AD_LINK_SAME_AS_LINK", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_SAME_AS_LINK")
@@ -158,7 +158,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
    * @return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
-  */
+   */
   @Valid 
   @Schema(name = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
@@ -178,7 +178,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get ADDITIONAL_IMAGE_LINK_WARNING
    * @return ADDITIONAL_IMAGE_LINK_WARNING
-  */
+   */
   @Valid 
   @Schema(name = "ADDITIONAL_IMAGE_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_WARNING")
@@ -198,7 +198,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get ADWORDS_FORMAT_WARNING
    * @return ADWORDS_FORMAT_WARNING
-  */
+   */
   @Valid 
   @Schema(name = "ADWORDS_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_WARNING")
@@ -218,7 +218,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get ADWORDS_SAME_AS_LINK
    * @return ADWORDS_SAME_AS_LINK
-  */
+   */
   @Valid 
   @Schema(name = "ADWORDS_SAME_AS_LINK", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_SAME_AS_LINK")
@@ -238,7 +238,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get AGE_GROUP_INVALID
    * @return AGE_GROUP_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "AGE_GROUP_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AGE_GROUP_INVALID")
@@ -258,7 +258,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SIZE_SYSTEM_INVALID
    * @return SIZE_SYSTEM_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SIZE_SYSTEM_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_SYSTEM_INVALID")
@@ -278,7 +278,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get ANDROID_DEEP_LINK_INVALID
    * @return ANDROID_DEEP_LINK_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "ANDROID_DEEP_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ANDROID_DEEP_LINK_INVALID")
@@ -298,7 +298,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get AVAILABILITY_DATE_INVALID
    * @return AVAILABILITY_DATE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "AVAILABILITY_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_DATE_INVALID")
@@ -318,7 +318,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get COUNTRY_DOES_NOT_MAP_TO_CURRENCY
    * @return COUNTRY_DOES_NOT_MAP_TO_CURRENCY
-  */
+   */
   @Valid 
   @Schema(name = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
@@ -338,7 +338,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get CUSTOM_LABEL_LENGTH_TOO_LONG
    * @return CUSTOM_LABEL_LENGTH_TOO_LONG
-  */
+   */
   @Valid 
   @Schema(name = "CUSTOM_LABEL_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("CUSTOM_LABEL_LENGTH_TOO_LONG")
@@ -358,7 +358,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get DESCRIPTION_LENGTH_TOO_LONG
    * @return DESCRIPTION_LENGTH_TOO_LONG
-  */
+   */
   @Valid 
   @Schema(name = "DESCRIPTION_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_LENGTH_TOO_LONG")
@@ -378,7 +378,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get EXPIRATION_DATE_INVALID
    * @return EXPIRATION_DATE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "EXPIRATION_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("EXPIRATION_DATE_INVALID")
@@ -398,7 +398,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get GENDER_INVALID
    * @return GENDER_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "GENDER_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GENDER_INVALID")
@@ -418,7 +418,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get GTIN_INVALID
    * @return GTIN_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "GTIN_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GTIN_INVALID")
@@ -438,7 +438,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get IMAGE_LINK_WARNING
    * @return IMAGE_LINK_WARNING
-  */
+   */
   @Valid 
   @Schema(name = "IMAGE_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_WARNING")
@@ -458,7 +458,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get IOS_DEEP_LINK_INVALID
    * @return IOS_DEEP_LINK_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "IOS_DEEP_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IOS_DEEP_LINK_INVALID")
@@ -478,7 +478,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get IS_BUNDLE_INVALID
    * @return IS_BUNDLE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "IS_BUNDLE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IS_BUNDLE_INVALID")
@@ -498,7 +498,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
    * @return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
-  */
+   */
   @Valid 
   @Schema(name = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
@@ -518,7 +518,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get LINK_FORMAT_WARNING
    * @return LINK_FORMAT_WARNING
-  */
+   */
   @Valid 
   @Schema(name = "LINK_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_WARNING")
@@ -538,7 +538,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get MIN_AD_PRICE_INVALID
    * @return MIN_AD_PRICE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "MIN_AD_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MIN_AD_PRICE_INVALID")
@@ -558,7 +558,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get MPN_INVALID
    * @return MPN_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "MPN_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MPN_INVALID")
@@ -578,7 +578,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get MULTIPACK_INVALID
    * @return MULTIPACK_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "MULTIPACK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MULTIPACK_INVALID")
@@ -598,7 +598,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get OPTIONAL_CONDITION_INVALID
    * @return OPTIONAL_CONDITION_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "OPTIONAL_CONDITION_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_INVALID")
@@ -618,7 +618,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get OPTIONAL_CONDITION_MISSING
    * @return OPTIONAL_CONDITION_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "OPTIONAL_CONDITION_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_MISSING")
@@ -638,7 +638,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get OPTIONAL_PRODUCT_CATEGORY_INVALID
    * @return OPTIONAL_PRODUCT_CATEGORY_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_INVALID")
@@ -658,7 +658,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get OPTIONAL_PRODUCT_CATEGORY_MISSING
    * @return OPTIONAL_PRODUCT_CATEGORY_MISSING
-  */
+   */
   @Valid 
   @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_MISSING")
@@ -678,7 +678,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get PRODUCT_CATEGORY_DEPTH_WARNING
    * @return PRODUCT_CATEGORY_DEPTH_WARNING
-  */
+   */
   @Valid 
   @Schema(name = "PRODUCT_CATEGORY_DEPTH_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_CATEGORY_DEPTH_WARNING")
@@ -698,7 +698,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get PRODUCT_TYPE_LENGTH_TOO_LONG
    * @return PRODUCT_TYPE_LENGTH_TOO_LONG
-  */
+   */
   @Valid 
   @Schema(name = "PRODUCT_TYPE_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_TYPE_LENGTH_TOO_LONG")
@@ -718,7 +718,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SALES_PRICE_INVALID
    * @return SALES_PRICE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SALES_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_INVALID")
@@ -738,7 +738,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SALES_PRICE_TOO_LOW
    * @return SALES_PRICE_TOO_LOW
-  */
+   */
   @Valid 
   @Schema(name = "SALES_PRICE_TOO_LOW", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_LOW")
@@ -758,7 +758,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SALES_PRICE_TOO_HIGH
    * @return SALES_PRICE_TOO_HIGH
-  */
+   */
   @Valid 
   @Schema(name = "SALES_PRICE_TOO_HIGH", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_HIGH")
@@ -778,7 +778,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SALE_DATE_INVALID
    * @return SALE_DATE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SALE_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALE_DATE_INVALID")
@@ -798,7 +798,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SHIPPING_INVALID
    * @return SHIPPING_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SHIPPING_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_INVALID")
@@ -818,7 +818,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SHIPPING_HEIGHT_INVALID
    * @return SHIPPING_HEIGHT_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SHIPPING_HEIGHT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_HEIGHT_INVALID")
@@ -838,7 +838,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SHIPPING_WEIGHT_INVALID
    * @return SHIPPING_WEIGHT_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SHIPPING_WEIGHT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WEIGHT_INVALID")
@@ -858,7 +858,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SHIPPING_WIDTH_INVALID
    * @return SHIPPING_WIDTH_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SHIPPING_WIDTH_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WIDTH_INVALID")
@@ -878,7 +878,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get SIZE_TYPE_INVALID
    * @return SIZE_TYPE_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "SIZE_TYPE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_TYPE_INVALID")
@@ -898,7 +898,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get TAX_INVALID
    * @return TAX_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "TAX_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TAX_INVALID")
@@ -918,7 +918,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get TITLE_LENGTH_TOO_LONG
    * @return TITLE_LENGTH_TOO_LONG
-  */
+   */
   @Valid 
   @Schema(name = "TITLE_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_LENGTH_TOO_LONG")
@@ -938,7 +938,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get TOO_MANY_ADDITIONAL_IMAGE_LINKS
    * @return TOO_MANY_ADDITIONAL_IMAGE_LINKS
-  */
+   */
   @Valid 
   @Schema(name = "TOO_MANY_ADDITIONAL_IMAGE_LINKS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
@@ -958,7 +958,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get UTM_SOURCE_AUTO_CORRECTED
    * @return UTM_SOURCE_AUTO_CORRECTED
-  */
+   */
   @Valid 
   @Schema(name = "UTM_SOURCE_AUTO_CORRECTED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("UTM_SOURCE_AUTO_CORRECTED")
@@ -978,7 +978,7 @@ public class CatalogsItemValidationWarnings {
   /**
    * Get WEIGHT_UNIT_INVALID
    * @return WEIGHT_UNIT_INVALID
-  */
+   */
   @Valid 
   @Schema(name = "WEIGHT_UNIT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("WEIGHT_UNIT_INVALID")

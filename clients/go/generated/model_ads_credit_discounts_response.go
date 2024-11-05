@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ type AdsCreditDiscountsResponse struct {
 	// True if the offer code is currently active.
 	Active *bool `json:"active,omitempty"`
 	// Advertiser ID the offer was applied to.
-	AdvertiserId *string `json:"advertiser_id,omitempty"`
+	AdvertiserId *string `json:"advertiser_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// The type of discount of this credit
 	DiscountType NullableString `json:"discountType,omitempty"`
 	// The discount applied in the offer’s currency value.

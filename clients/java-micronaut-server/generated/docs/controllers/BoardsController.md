@@ -86,13 +86,14 @@ Name | Type | Description  | Notes
 **boardId** | `String` | Unique identifier of a board. |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**BoardSectionsList200Response**](../../docs/models/BoardSectionsList200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`
+* **client_credentials**, scopes: `boards:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -115,13 +116,14 @@ Name | Type | Description  | Notes
 **sectionId** | `String` | Unique identifier of a board section. |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 
 ### Return type
 [**BoardsListPins200Response**](../../docs/models/BoardsListPins200Response.md)
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`, `pins:read`
+* **client_credentials**, scopes: `boards:read`, `pins:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -226,6 +228,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`
+* **client_credentials**, scopes: `boards:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -246,7 +249,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 **privacy** | `String` | Privacy setting for a board. | [optional parameter] [enum: `ALL`, `PROTECTED`, `PUBLIC`, `SECRET`, `PUBLIC_AND_SECRET`]
 
 ### Return type
@@ -254,6 +257,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`
+* **client_credentials**, scopes: `boards:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -274,7 +278,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **boardId** | `String` | Unique identifier of a board. |
 **bookmark** | `String` | Cursor used to fetch the next page of items | [optional parameter]
-**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
+**pageSize** | `Integer` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`]
 **creativeTypes** | [**List&lt;String&gt;**](../../docs/models/String.md) | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional parameter] [enum: `REGULAR`, `VIDEO`, `SHOPPING`, `CAROUSEL`, `MAX_VIDEO`, `SHOP_THE_PIN`, `COLLECTION`, `IDEA`]
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 **pinMetrics** | `Boolean` | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional parameter] [default to `false`]
@@ -284,6 +288,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `boards:read`, `pins:read`
+* **client_credentials**, scopes: `boards:read`, `pins:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined

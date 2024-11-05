@@ -19,8 +19,7 @@ CustomerListUpdateRequest <- R6::R6Class(
     `records` = NULL,
     `operation_type` = NULL,
     `exceptions` = NULL,
-    #' Initialize a new CustomerListUpdateRequest class.
-    #'
+
     #' @description
     #' Initialize a new CustomerListUpdateRequest class.
     #'
@@ -28,7 +27,6 @@ CustomerListUpdateRequest <- R6::R6Class(
     #' @param operation_type operation_type
     #' @param exceptions exceptions
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`records`, `operation_type`, `exceptions` = NULL, ...) {
       if (!missing(`records`)) {
         if (!(is.character(`records`) && length(`records`) == 1)) {
@@ -48,13 +46,11 @@ CustomerListUpdateRequest <- R6::R6Class(
         self$`exceptions` <- `exceptions`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CustomerListUpdateRequest in JSON format
-    #' @export
     toJSON = function() {
       CustomerListUpdateRequestObject <- list()
       if (!is.null(self$`records`)) {
@@ -71,14 +67,12 @@ CustomerListUpdateRequest <- R6::R6Class(
       }
       CustomerListUpdateRequestObject
     },
-    #' Deserialize JSON string into an instance of CustomerListUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CustomerListUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CustomerListUpdateRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`records`)) {
@@ -96,13 +90,11 @@ CustomerListUpdateRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CustomerListUpdateRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`records`)) {
@@ -133,14 +125,12 @@ CustomerListUpdateRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CustomerListUpdateRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CustomerListUpdateRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CustomerListUpdateRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`records` <- this_object$`records`
@@ -148,13 +138,11 @@ CustomerListUpdateRequest <- R6::R6Class(
       self$`exceptions` <- Exception$new()$fromJSON(jsonlite::toJSON(this_object$`exceptions`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to CustomerListUpdateRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CustomerListUpdateRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `records`
@@ -172,23 +160,19 @@ CustomerListUpdateRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CustomerListUpdateRequest: the required field `operation_type` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CustomerListUpdateRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `records` is null
       if (is.null(self$`records`)) {
@@ -202,13 +186,11 @@ CustomerListUpdateRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `records` is null
@@ -223,12 +205,9 @@ CustomerListUpdateRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

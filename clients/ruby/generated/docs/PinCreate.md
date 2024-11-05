@@ -13,8 +13,8 @@
 | **alt_text** | **String** |  | [optional] |
 | **board_id** | **String** | The board to which this Pin belongs. | [optional] |
 | **board_section_id** | **String** | The board section to which this Pin belongs. | [optional] |
-| **board_owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] |
-| **media** | [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] |
+| **board_owner** | [**BoardOwner**](BoardOwner.md) |  | [optional][readonly] |
+| **media** | [**PinMedia**](PinMedia.md) |  | [optional][readonly] |
 | **media_source** | [**PinMediaSource**](PinMediaSource.md) |  | [optional] |
 | **parent_pin_id** | **String** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] |
 | **note** | **String** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] |

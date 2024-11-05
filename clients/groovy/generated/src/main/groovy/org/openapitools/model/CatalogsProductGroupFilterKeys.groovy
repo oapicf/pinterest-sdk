@@ -7,6 +7,7 @@ import org.openapitools.model.AvailabilityFilter;
 import org.openapitools.model.BrandFilter;
 import org.openapitools.model.CatalogsProductGroupCurrencyCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleGenderCriteria;
+import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 import org.openapitools.model.CatalogsProductGroupPricingCriteria;
@@ -28,7 +29,9 @@ import org.openapitools.model.GoogleProductCategory6Filter;
 import org.openapitools.model.ItemGroupIdFilter;
 import org.openapitools.model.ItemIdFilter;
 import org.openapitools.model.MaxPriceFilter;
+import org.openapitools.model.MediaTypeFilter;
 import org.openapitools.model.MinPriceFilter;
+import org.openapitools.model.ProductGroupReferenceFilter;
 import org.openapitools.model.ProductType0Filter;
 import org.openapitools.model.ProductType1Filter;
 import org.openapitools.model.ProductType2Filter;
@@ -66,6 +69,8 @@ class CatalogsProductGroupFilterKeys {
     
     CatalogsProductGroupMultipleGenderCriteria GENDER
     
+    CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE
+    
     CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_4
     
     CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3
@@ -89,4 +94,6 @@ class CatalogsProductGroupFilterKeys {
     CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1
     
     CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0
+    
+    CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP
 }

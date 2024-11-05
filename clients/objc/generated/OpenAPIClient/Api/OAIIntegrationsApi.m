@@ -393,7 +393,7 @@ NSInteger kOAIIntegrationsApiMissingParamErrorCode = 234513;
 /// Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @returns OAIIntegrationsGetList200Response*
 ///

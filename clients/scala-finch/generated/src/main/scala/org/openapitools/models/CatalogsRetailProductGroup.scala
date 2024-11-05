@@ -21,7 +21,10 @@ import org.openapitools.models.CatalogsProductGroupType
  * @param status 
  * @param createdUnderscoreat Unix timestamp in seconds of when catalog product group was created.
  * @param updatedUnderscoreat Unix timestamp in seconds of last time catalog product group was updated.
- * @param feedUnderscoreid 
+ * @param catalogUnderscoreid Catalog id pertaining to the retail product group.
+ * @param feedUnderscoreid id of the catalogs feed belonging to this catalog product group
+ * @param country 
+ * @param locale 
  */
 case class CatalogsRetailProductGroup(catalogUnderscoretype: String,
                 id: String,
@@ -33,7 +36,10 @@ case class CatalogsRetailProductGroup(catalogUnderscoretype: String,
                 status: Option[CatalogsProductGroupStatus],
                 createdUnderscoreat: Option[Int],
                 updatedUnderscoreat: Option[Int],
-                feedUnderscoreid: String
+                catalogUnderscoreid: String,
+                feedUnderscoreid: String,
+                country: Option[String],
+                locale: Option[String]
                 )
 
 object CatalogsRetailProductGroup {

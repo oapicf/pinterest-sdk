@@ -40,10 +40,12 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $explicit_following = false; # boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
@@ -61,7 +63,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **explicit_following** | **boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
@@ -71,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -85,7 +87,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```perl
@@ -146,10 +148,12 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 eval {
     my $result = $api_instance->followers_list(bookmark => $bookmark, page_size => $page_size);
@@ -165,7 +169,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -173,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -197,6 +201,8 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 
@@ -218,7 +224,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -357,6 +363,8 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $start_date = DateTime->from_epoch(epoch => str2time('null')); # DATE | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -404,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -427,6 +435,8 @@ use WWW::OpenAPIClient::UserAccountApi;
 my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
@@ -475,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -499,11 +509,13 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $username = username; # string | A valid username
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 eval {
     my $result = $api_instance->user_account_followed_interests(username => $username, bookmark => $bookmark, page_size => $page_size);
@@ -520,7 +532,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **string**| A valid username | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -528,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -542,7 +554,7 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```perl
@@ -551,6 +563,8 @@ use WWW::OpenAPIClient::UserAccountApi;
 my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
+    access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
@@ -577,7 +591,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -601,10 +615,12 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $feed_type = "feed_type_example"; # UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
 my $explicit_following = false; # boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
@@ -623,7 +639,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **feed_type** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
  **explicit_following** | **boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false]
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
@@ -634,7 +650,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -661,7 +677,7 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 );
 
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 eval {
     my $result = $api_instance->user_websites_get(bookmark => $bookmark, page_size => $page_size);
@@ -677,7 +693,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -695,7 +711,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_website_update**
-> UserWebsiteSummary verify_website_update(user_website_verify_request => $user_website_verify_request)
+> UserWebsiteSummary verify_website_update(user_website_verify_request => $user_website_verify_request, ad_account_id => $ad_account_id)
 
 Verify website
 
@@ -712,9 +728,10 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 );
 
 my $user_website_verify_request = WWW::OpenAPIClient::Object::UserWebsiteVerifyRequest->new(); # UserWebsiteVerifyRequest | Verify a website.
+my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->verify_website_update(user_website_verify_request => $user_website_verify_request);
+    my $result = $api_instance->verify_website_update(user_website_verify_request => $user_website_verify_request, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -727,6 +744,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_website_verify_request** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | 
+ **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -744,7 +762,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **website_verification_get**
-> UserWebsiteVerificationCode website_verification_get()
+> UserWebsiteVerificationCode website_verification_get(ad_account_id => $ad_account_id)
 
 Get user verification code for website claiming
 
@@ -758,11 +776,14 @@ my $api_instance = WWW::OpenAPIClient::UserAccountApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
+my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->website_verification_get();
+    my $result = $api_instance->website_verification_get(ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -771,7 +792,10 @@ if ($@) {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -779,7 +803,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

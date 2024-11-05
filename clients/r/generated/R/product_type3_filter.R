@@ -15,27 +15,23 @@ ProductType3Filter <- R6::R6Class(
   "ProductType3Filter",
   public = list(
     `PRODUCT_TYPE_3` = NULL,
-    #' Initialize a new ProductType3Filter class.
-    #'
+
     #' @description
     #' Initialize a new ProductType3Filter class.
     #'
     #' @param PRODUCT_TYPE_3 PRODUCT_TYPE_3
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`PRODUCT_TYPE_3`, ...) {
       if (!missing(`PRODUCT_TYPE_3`)) {
         stopifnot(R6::is.R6(`PRODUCT_TYPE_3`))
         self$`PRODUCT_TYPE_3` <- `PRODUCT_TYPE_3`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductType3Filter in JSON format
-    #' @export
     toJSON = function() {
       ProductType3FilterObject <- list()
       if (!is.null(self$`PRODUCT_TYPE_3`)) {
@@ -44,14 +40,12 @@ ProductType3Filter <- R6::R6Class(
       }
       ProductType3FilterObject
     },
-    #' Deserialize JSON string into an instance of ProductType3Filter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductType3Filter
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductType3Filter
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`PRODUCT_TYPE_3`)) {
@@ -61,13 +55,11 @@ ProductType3Filter <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ProductType3Filter in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`PRODUCT_TYPE_3`)) {
@@ -82,26 +74,22 @@ ProductType3Filter <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ProductType3Filter
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ProductType3Filter
     #'
     #' @param input_json the JSON input
     #' @return the instance of ProductType3Filter
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`PRODUCT_TYPE_3` <- CatalogsProductGroupMultipleStringListCriteria$new()$fromJSON(jsonlite::toJSON(this_object$`PRODUCT_TYPE_3`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to ProductType3Filter
-    #'
+
     #' @description
     #' Validate JSON input with respect to ProductType3Filter and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `PRODUCT_TYPE_3`
@@ -111,23 +99,19 @@ ProductType3Filter <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for ProductType3Filter: the required field `PRODUCT_TYPE_3` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ProductType3Filter
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `PRODUCT_TYPE_3` is null
       if (is.null(self$`PRODUCT_TYPE_3`)) {
@@ -136,13 +120,11 @@ ProductType3Filter <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `PRODUCT_TYPE_3` is null
@@ -152,12 +134,9 @@ ProductType3Filter <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

@@ -9,6 +9,6 @@ package org.openapitools.server.model
 */
 final case class ProductGroupPromotionCreateRequest (
   adGroupId: String,
-  productGroupPromotion: Seq[ProductGroupPromotion]
+  productGroupPromotion: Seq[ProductGroupPromotionCreateRequestElement]
 )
 

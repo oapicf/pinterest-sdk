@@ -2,7 +2,7 @@
 
 # CatalogsVerticalProductGroupCreateRequest
 
-Request object for creating a hotel product group.
+Request object for creating a catalog based product group.
 
 The class is defined in **[CatalogsVerticalProductGroupCreateRequest.java](../../src/main/java/org/openapitools/model/CatalogsVerticalProductGroupCreateRequest.java)**
 
@@ -13,14 +13,18 @@ Name | Type | Description | Notes
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **name** | `String` |  | 
 **description** | `String` |  |  [optional property]
-**filters** | [`CatalogsHotelProductGroupFilters`](CatalogsHotelProductGroupFilters.md) |  | 
-**catalogId** | `String` | Catalog id pertaining to the hotel product group. | 
+**filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**catalogId** | `String` | Catalog id pertaining to the creative assets product group. | 
+**country** | `Country` |  | 
+**locale** | `CatalogsLocale` |  | 
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
-HOTEL | `"HOTEL"`
+CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
+
+
 
 
 

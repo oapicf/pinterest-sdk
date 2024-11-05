@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  * AdAccountsCountryResponseData
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountsCountryResponseData   {
   @JsonProperty("code")
   private AdCountry code;
@@ -36,10 +36,10 @@ public class AdAccountsCountryResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Get code
    * @return code
-  **/
+   */
   @ApiModelProperty(value = "")
   public AdCountry getCode() {
     return code;
@@ -54,10 +54,10 @@ public class AdAccountsCountryResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Country currency.
    * @return currency
-  **/
+   */
   @ApiModelProperty(example = "Dollars", value = "Country currency.")
   public String getCurrency() {
     return currency;
@@ -72,10 +72,10 @@ public class AdAccountsCountryResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Country index
    * @return index
-  **/
+   */
   @ApiModelProperty(example = "1", value = "Country index")
   public BigDecimal getIndex() {
     return index;
@@ -90,10 +90,10 @@ public class AdAccountsCountryResponseData   {
     return this;
   }
 
-   /**
+  /**
    * Country name
    * @return name
-  **/
+   */
   @ApiModelProperty(example = "United States of America", value = "Country name")
   public String getName() {
     return name;

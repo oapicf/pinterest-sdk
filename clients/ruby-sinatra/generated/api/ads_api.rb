@@ -7,7 +7,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/ad_previews', {
   "nickname" => "ad_previews/create",
   "responseClass" => "AdPreviewURLResponse",
   "endpoint" => "/ad_accounts/{ad_account_id}/ad_previews",
-  "notes" => "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.",
+  "notes" => "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -60,8 +60,8 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics'
     },
     {
       "name" => "targeting_types",
-      "description" => "Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other.",
-      "dataType" => "Array<AdsAnalyticsTargetingType>",
+      "description" => "Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.",
+      "dataType" => "Array<AdsAnalyticsAdTargetingType>",
       "collectionFormat" => "csv",
       "paramType" => "query",
     },
@@ -138,7 +138,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ads/analytics', {
   "nickname" => "ads/analytics",
   "responseClass" => "Array<AdsAnalyticsResponse_inner>",
   "endpoint" => "/ad_accounts/{ad_account_id}/ads/analytics",
-  "notes" => "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+  "notes" => "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
   "parameters" => [
     {
       "name" => "start_date",
@@ -205,6 +205,20 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ads/analytics', {
       "dataType" => "String",
       "allowableValues" => "[TIME_OF_AD_ACTION, TIME_OF_CONVERSION]",
       "defaultValue" => "'TIME_OF_AD_ACTION'",
+      "paramType" => "query",
+    },
+    {
+      "name" => "pin_ids",
+      "description" => "List of Pin IDs.",
+      "dataType" => "Array<String>",
+      "collectionFormat" => "multi",
+      "paramType" => "query",
+    },
+    {
+      "name" => "campaign_ids",
+      "description" => "List of Campaign Ids to use to filter the results.",
+      "dataType" => "Array<String>",
+      "collectionFormat" => "multi",
       "paramType" => "query",
     },
     {
@@ -315,7 +329,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/ads', {
     },
     {
       "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
+      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
       "dataType" => "Integer",
       "allowableValues" => "",
       "defaultValue" => "25",

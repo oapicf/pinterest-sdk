@@ -6,11 +6,11 @@ type OptimizationGoalMetadataConversionTagV3GoalMetadata struct {
 
 	ConversionEvent string `json:"conversion_event,omitempty"`
 
-	ConversionTagId string `json:"conversion_tag_id,omitempty"`
+	ConversionTagId string `json:"conversion_tag_id,omitempty" validate:"regexp=^[0-9]+$"`
 
-	CpaGoalValueInMicroCurrency string `json:"cpa_goal_value_in_micro_currency,omitempty"`
+	CpaGoalValueInMicroCurrency string `json:"cpa_goal_value_in_micro_currency,omitempty" validate:"regexp=^[0-9]+$"`
 
-	// Ad group is ROAS optimized
+	// ROAS optimization is not supported
 	IsRoasOptimized *bool `json:"is_roas_optimized,omitempty"`
 
 	// Conversion learning model type

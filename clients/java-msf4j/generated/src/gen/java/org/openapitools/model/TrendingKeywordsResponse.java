@@ -13,7 +13,7 @@ import org.openapitools.model.TrendingKeywordsResponseTrendsInner;
 /**
  * TrendingKeywordsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-03-14T23:02:29.393275857Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2024-11-05T02:04:18.164649512Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendingKeywordsResponse   {
   @JsonProperty("trends")
   private List<@Valid TrendingKeywordsResponseTrendsInner> trends = null;
@@ -25,7 +25,7 @@ public class TrendingKeywordsResponse   {
 
   public TrendingKeywordsResponse addTrendsItem(TrendingKeywordsResponseTrendsInner trendsItem) {
     if (this.trends == null) {
-      this.trends = ;
+      this.trends = new ArrayList<>();
     }
     this.trends.add(trendsItem);
     return this;

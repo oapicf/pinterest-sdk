@@ -47,7 +47,7 @@ Protected Class CampaignCommon
 
 
 	#tag Property, Flags = &h0
-		tracking_urls As OpenAPIClient.Models.AdCommonTrackingUrls
+		tracking_urls As OpenAPIClient.Models.TrackingUrls
 	#tag EndProperty
 
 
@@ -68,7 +68,10 @@ Protected Class CampaignCommon
 
 
 	#tag Property, Flags = &h0
-		summary_status As Xoson.O.OptionalString
+		#tag Note
+			Determine if a campaign has flexible daily budgets setup.
+		#tag EndNote
+		is_flexible_daily_budgets As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -161,7 +164,7 @@ Protected Class CampaignCommon
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdCommonTrackingUrls"
+			Type="TrackingUrls"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -181,11 +184,11 @@ Protected Class CampaignCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="summary_status"
+			Name="is_flexible_daily_budgets"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CampaignSummaryStatus"
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

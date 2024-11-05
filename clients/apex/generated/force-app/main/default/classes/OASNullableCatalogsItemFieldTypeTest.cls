@@ -58,8 +58,7 @@ private class OASNullableCatalogsItemFieldTypeTest {
             OASNullableCatalogsItemFieldType.VARIANT_VALUES,
             OASNullableCatalogsItemFieldType.MIN_AD_PRICE,
             OASNullableCatalogsItemFieldType.SHIPPING_WIDTH,
-            OASNullableCatalogsItemFieldType.SHIPPING_HEIGHT,
-            OASNullableCatalogsItemFieldType.NULL
+            OASNullableCatalogsItemFieldType.SHIPPING_HEIGHT
         };
         Set<OASNullableCatalogsItemFieldType> actual  = new Set<OASNullableCatalogsItemFieldType>(OASNullableCatalogsItemFieldType.values());
         System.assertEquals(expected, actual);

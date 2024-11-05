@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * CatalogsDbItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsDbItem {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -31,6 +31,19 @@ public class CatalogsDbItem {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime updatedAt;
 
+  public CatalogsDbItem() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CatalogsDbItem(OffsetDateTime createdAt, String id, OffsetDateTime updatedAt) {
+    this.createdAt = createdAt;
+    this.id = id;
+    this.updatedAt = updatedAt;
+  }
+
   public CatalogsDbItem createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
@@ -39,9 +52,9 @@ public class CatalogsDbItem {
   /**
    * Get createdAt
    * @return createdAt
-  */
-  @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_at")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -59,9 +72,9 @@ public class CatalogsDbItem {
   /**
    * Get id
    * @return id
-  */
-  
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull 
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -79,9 +92,9 @@ public class CatalogsDbItem {
   /**
    * Get updatedAt
    * @return updatedAt
-  */
-  @Valid 
-  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("updated_at")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;

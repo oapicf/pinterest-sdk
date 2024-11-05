@@ -9,11 +9,12 @@
 #' @format An \code{R6Class} generator object
 #' @field name Internal name of the lead form. character [optional]
 #' @field privacy_policy_link A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. character [optional]
-#' @field has_accepted_terms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad. character [optional]
+#' @field has_accepted_terms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO character [optional]
 #' @field completion_message A message for people who complete the form to let them know what happens next. character [optional]
 #' @field status  \link{LeadFormStatus} [optional]
 #' @field disclosure_language Additional disclosure language to be included in the lead form. character [optional]
 #' @field questions List of questions to be displayed on the lead form. list(\link{LeadFormQuestion}) [optional]
+#' @field policy_links List of additional policy links to be displayed on the lead form. list(\link{LeadFormCommonPolicyLinksInner}) [optional]
 #' @field id The ID of this lead form character [optional]
 #' @field ad_account_id The Ad Account ID that this lead form belongs to. character [optional]
 #' @field created_time Lead form creation time. Unix timestamp in seconds. integer [optional]
@@ -31,29 +32,29 @@ LeadFormResponse <- R6::R6Class(
     `status` = NULL,
     `disclosure_language` = NULL,
     `questions` = NULL,
+    `policy_links` = NULL,
     `id` = NULL,
     `ad_account_id` = NULL,
     `created_time` = NULL,
     `updated_time` = NULL,
-    #' Initialize a new LeadFormResponse class.
-    #'
+
     #' @description
     #' Initialize a new LeadFormResponse class.
     #'
     #' @param name Internal name of the lead form.
     #' @param privacy_policy_link A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-    #' @param has_accepted_terms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
+    #' @param has_accepted_terms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
     #' @param completion_message A message for people who complete the form to let them know what happens next.
     #' @param status status
     #' @param disclosure_language Additional disclosure language to be included in the lead form.
     #' @param questions List of questions to be displayed on the lead form.
+    #' @param policy_links List of additional policy links to be displayed on the lead form.
     #' @param id The ID of this lead form
     #' @param ad_account_id The Ad Account ID that this lead form belongs to.
     #' @param created_time Lead form creation time. Unix timestamp in seconds.
     #' @param updated_time Last update time. Unix timestamp in seconds.
     #' @param ... Other optional arguments.
-    #' @export
-    initialize = function(`name` = NULL, `privacy_policy_link` = NULL, `has_accepted_terms` = NULL, `completion_message` = NULL, `status` = NULL, `disclosure_language` = NULL, `questions` = NULL, `id` = NULL, `ad_account_id` = NULL, `created_time` = NULL, `updated_time` = NULL, ...) {
+    initialize = function(`name` = NULL, `privacy_policy_link` = NULL, `has_accepted_terms` = NULL, `completion_message` = NULL, `status` = NULL, `disclosure_language` = NULL, `questions` = NULL, `policy_links` = NULL, `id` = NULL, `ad_account_id` = NULL, `created_time` = NULL, `updated_time` = NULL, ...) {
       if (!is.null(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -96,6 +97,11 @@ LeadFormResponse <- R6::R6Class(
         sapply(`questions`, function(x) stopifnot(R6::is.R6(x)))
         self$`questions` <- `questions`
       }
+      if (!is.null(`policy_links`)) {
+        stopifnot(is.vector(`policy_links`), length(`policy_links`) != 0)
+        sapply(`policy_links`, function(x) stopifnot(R6::is.R6(x)))
+        self$`policy_links` <- `policy_links`
+      }
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
@@ -121,13 +127,11 @@ LeadFormResponse <- R6::R6Class(
         self$`updated_time` <- `updated_time`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LeadFormResponse in JSON format
-    #' @export
     toJSON = function() {
       LeadFormResponseObject <- list()
       if (!is.null(self$`name`)) {
@@ -158,6 +162,10 @@ LeadFormResponse <- R6::R6Class(
         LeadFormResponseObject[["questions"]] <-
           lapply(self$`questions`, function(x) x$toJSON())
       }
+      if (!is.null(self$`policy_links`)) {
+        LeadFormResponseObject[["policy_links"]] <-
+          lapply(self$`policy_links`, function(x) x$toJSON())
+      }
       if (!is.null(self$`id`)) {
         LeadFormResponseObject[["id"]] <-
           self$`id`
@@ -176,14 +184,12 @@ LeadFormResponse <- R6::R6Class(
       }
       LeadFormResponseObject
     },
-    #' Deserialize JSON string into an instance of LeadFormResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LeadFormResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of LeadFormResponse
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`name`)) {
@@ -209,6 +215,9 @@ LeadFormResponse <- R6::R6Class(
       if (!is.null(this_object$`questions`)) {
         self$`questions` <- ApiClient$new()$deserializeObj(this_object$`questions`, "array[LeadFormQuestion]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`policy_links`)) {
+        self$`policy_links` <- ApiClient$new()$deserializeObj(this_object$`policy_links`, "array[LeadFormCommonPolicyLinksInner]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
@@ -223,13 +232,11 @@ LeadFormResponse <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return LeadFormResponse in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`name`)) {
@@ -288,6 +295,14 @@ LeadFormResponse <- R6::R6Class(
           paste(sapply(self$`questions`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
           )
         },
+        if (!is.null(self$`policy_links`)) {
+          sprintf(
+          '"policy_links":
+          [%s]
+',
+          paste(sapply(self$`policy_links`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
+          )
+        },
         if (!is.null(self$`id`)) {
           sprintf(
           '"id":
@@ -324,14 +339,12 @@ LeadFormResponse <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of LeadFormResponse
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of LeadFormResponse
     #'
     #' @param input_json the JSON input
     #' @return the instance of LeadFormResponse
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
@@ -341,44 +354,46 @@ LeadFormResponse <- R6::R6Class(
       self$`status` <- LeadFormStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`disclosure_language` <- this_object$`disclosure_language`
       self$`questions` <- ApiClient$new()$deserializeObj(this_object$`questions`, "array[LeadFormQuestion]", loadNamespace("openapi"))
+      self$`policy_links` <- ApiClient$new()$deserializeObj(this_object$`policy_links`, "array[LeadFormCommonPolicyLinksInner]", loadNamespace("openapi"))
       self$`id` <- this_object$`id`
       self$`ad_account_id` <- this_object$`ad_account_id`
       self$`created_time` <- this_object$`created_time`
       self$`updated_time` <- this_object$`updated_time`
       self
     },
-    #' Validate JSON input with respect to LeadFormResponse
-    #'
+
     #' @description
     #' Validate JSON input with respect to LeadFormResponse and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of LeadFormResponse
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (length(self$`questions`) > 10) {
         return(FALSE)
       }
       if (length(self$`questions`) < 0) {
+        return(FALSE)
+      }
+
+      if (length(self$`policy_links`) > 3) {
+        return(FALSE)
+      }
+      if (length(self$`policy_links`) < 0) {
         return(FALSE)
       }
 
@@ -392,13 +407,11 @@ LeadFormResponse <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (length(self$`questions`) > 10) {
@@ -406,6 +419,13 @@ LeadFormResponse <- R6::R6Class(
       }
       if (length(self$`questions`) < 0) {
         invalid_fields["questions"] <- "Invalid length for ``, number of items must be greater than or equal to 0."
+      }
+
+      if (length(self$`policy_links`) > 3) {
+        invalid_fields["policy_links"] <- "Invalid length for `policy_links`, number of items must be less than or equal to 3."
+      }
+      if (length(self$`policy_links`) < 0) {
+        invalid_fields["policy_links"] <- "Invalid length for ``, number of items must be greater than or equal to 0."
       }
 
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -418,12 +438,9 @@ LeadFormResponse <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

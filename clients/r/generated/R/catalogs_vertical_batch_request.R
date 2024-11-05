@@ -16,17 +16,18 @@ CatalogsVerticalBatchRequest <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("CatalogsHotelBatchRequest", "CatalogsRetailBatchRequest"),
-    #' Initialize a new CatalogsVerticalBatchRequest.
-    #'
+    one_of = list("CatalogsCreativeAssetsBatchRequest", "CatalogsHotelBatchRequest", "CatalogsRetailBatchRequest"),
+
     #' @description
     #' Initialize a new CatalogsVerticalBatchRequest.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsHotelBatchRequest", "CatalogsRetailBatchRequest"
-    #' @export
+    #' @param instance an instance of the object defined in the oneOf schemas: "CatalogsCreativeAssetsBatchRequest", "CatalogsHotelBatchRequest", "CatalogsRetailBatchRequest"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsCreativeAssetsBatchRequest") {
+        self$actual_instance <- instance
+        self$actual_type <- "CatalogsCreativeAssetsBatchRequest"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "CatalogsHotelBatchRequest") {
         self$actual_instance <- instance
         self$actual_type <- "CatalogsHotelBatchRequest"
@@ -34,30 +35,28 @@ CatalogsVerticalBatchRequest <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "CatalogsRetailBatchRequest"
       } else {
-        stop(paste("Failed to initialize CatalogsVerticalBatchRequest with oneOf schemas CatalogsHotelBatchRequest, CatalogsRetailBatchRequest. Provided class name: ",
+        stop(paste("Failed to initialize CatalogsVerticalBatchRequest with oneOf schemas CatalogsCreativeAssetsBatchRequest, CatalogsHotelBatchRequest, CatalogsRetailBatchRequest. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
-    #' Deserialize JSON string into an instance of CatalogsVerticalBatchRequest.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsVerticalBatchRequest.
     #' An alias to the method `fromJSON` .
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsVerticalBatchRequest.
-    #' @export
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
-    #' Deserialize JSON string into an instance of CatalogsVerticalBatchRequest.
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CatalogsVerticalBatchRequest.
     #'
     #' @param input The input JSON.
+    #'
     #' @return An instance of CatalogsVerticalBatchRequest.
-    #' @export
     fromJSON = function(input) {
       matched <- 0 # match counter
       matched_schemas <- list() #names of matched schemas
@@ -94,29 +93,42 @@ CatalogsVerticalBatchRequest <- R6::R6Class(
         error_messages <- append(error_messages, `CatalogsHotelBatchRequest_result`["message"])
       }
 
+      `CatalogsCreativeAssetsBatchRequest_result` <- tryCatch({
+          `CatalogsCreativeAssetsBatchRequest`$public_methods$validateJSON(input)
+          `CatalogsCreativeAssetsBatchRequest_instance` <- `CatalogsCreativeAssetsBatchRequest`$new()
+          instance <- `CatalogsCreativeAssetsBatchRequest_instance`$fromJSON(input)
+          instance_type <- "CatalogsCreativeAssetsBatchRequest"
+          matched_schemas <- append(matched_schemas, "CatalogsCreativeAssetsBatchRequest")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`CatalogsCreativeAssetsBatchRequest_result`["error"])) {
+        error_messages <- append(error_messages, `CatalogsCreativeAssetsBatchRequest_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into CatalogsVerticalBatchRequest with oneOf schemas CatalogsHotelBatchRequest, CatalogsRetailBatchRequest. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into CatalogsVerticalBatchRequest with oneOf schemas CatalogsCreativeAssetsBatchRequest, CatalogsHotelBatchRequest, CatalogsRetailBatchRequest. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into CatalogsVerticalBatchRequest with oneOf schemas CatalogsHotelBatchRequest, CatalogsRetailBatchRequest. Details: >>",
+        stop(paste("No match found when deserializing the input into CatalogsVerticalBatchRequest with oneOf schemas CatalogsCreativeAssetsBatchRequest, CatalogsHotelBatchRequest, CatalogsRetailBatchRequest. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 
       self
     },
-    #' Serialize CatalogsVerticalBatchRequest to JSON string.
-    #'
+
     #' @description
     #' Serialize CatalogsVerticalBatchRequest to JSON string.
     #'
     #' @return JSON string representation of the CatalogsVerticalBatchRequest.
-    #' @export
     toJSONString = function() {
       if (!is.null(self$actual_instance)) {
         as.character(jsonlite::minify(self$actual_instance$toJSONString()))
@@ -124,13 +136,11 @@ CatalogsVerticalBatchRequest <- R6::R6Class(
         NULL
       }
     },
-    #' Serialize CatalogsVerticalBatchRequest to JSON.
-    #'
+
     #' @description
     #' Serialize CatalogsVerticalBatchRequest to JSON.
     #'
     #' @return JSON representation of the CatalogsVerticalBatchRequest.
-    #' @export
     toJSON = function() {
       if (!is.null(self$actual_instance)) {
         self$actual_instance$toJSON()
@@ -138,14 +148,12 @@ CatalogsVerticalBatchRequest <- R6::R6Class(
         NULL
       }
     },
-    #' Validate the input JSON with respect to CatalogsVerticalBatchRequest.
-    #'
+
     #' @description
     #' Validate the input JSON with respect to CatalogsVerticalBatchRequest and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
-    #' @export
     validateJSON = function(input) {
       # backup current values
       actual_instance_bak <- self$actual_instance
@@ -158,13 +166,11 @@ CatalogsVerticalBatchRequest <- R6::R6Class(
       self$actual_instance <- actual_instance_bak
       self$actual_type <- actual_type_bak
     },
-    #' Returns the string representation of the instance.
-    #'
+
     #' @description
     #' Returns the string representation of the instance.
     #'
     #' @return The string representation of the instance.
-    #' @export
     toString = function() {
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
@@ -174,12 +180,9 @@ CatalogsVerticalBatchRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

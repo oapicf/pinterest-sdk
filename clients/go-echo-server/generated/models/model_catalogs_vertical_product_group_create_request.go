@@ -1,6 +1,10 @@
 package models
 
-// CatalogsVerticalProductGroupCreateRequest - Request object for creating a hotel product group.
+import (
+	"gopkg.in/validator.v2"
+)
+
+// CatalogsVerticalProductGroupCreateRequest - Request object for creating a catalog based product group.
 type CatalogsVerticalProductGroupCreateRequest struct {
 
 	CatalogType string `json:"catalog_type"`
@@ -9,8 +13,12 @@ type CatalogsVerticalProductGroupCreateRequest struct {
 
 	Description *string `json:"description,omitempty"`
 
-	Filters CatalogsHotelProductGroupFilters `json:"filters"`
+	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 
-	// Catalog id pertaining to the hotel product group.
+	// Catalog id pertaining to the creative assets product group.
 	CatalogId string `json:"catalog_id"`
+
+	Country Country `json:"country"`
+
+	Locale CatalogsLocale `json:"locale"`
 }

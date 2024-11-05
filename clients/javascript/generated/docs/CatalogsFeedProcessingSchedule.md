@@ -786,8 +786,6 @@ Name | Type | Description | Notes
 
 * `WET` (value: `"WET"`)
 
-* `null` (value: `"null"`)
-
 
 
 

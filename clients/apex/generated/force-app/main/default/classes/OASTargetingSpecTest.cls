@@ -70,13 +70,6 @@ private class OASTargetingSpecTest {
     }
 
     @isTest
-    private static void maintainRenamedProperties() {
-        OASTargetingSpec targetingSpec = new OASTargetingSpec();
-        Map<String, String> x-property-mappings = targetingSpec.getx-property-mappings();
-        System.assertEquals('AUDIENCE_INCLUDE', x-property-mappings.get('AUDIENCE_INCLUDE&#39;'));
-    }
-
-    @isTest
     private static void defaultValuesPopulated() {
         OASTargetingSpec targetingSpec = new OASTargetingSpec();
         System.assertEquals(new List<String>(), targetingSpec.AGE_BUCKET);

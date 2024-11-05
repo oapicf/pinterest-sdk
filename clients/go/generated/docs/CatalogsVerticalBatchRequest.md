@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**Language**](Language.md) |  | 
-**Items** | [**[]CatalogsHotelBatchItem**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**CatalogId** | Pointer to **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
+**Items** | [**[]CatalogsCreativeAssetsBatchItem**](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | 
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 
 ## Methods
 
 ### NewCatalogsVerticalBatchRequest
 
-`func NewCatalogsVerticalBatchRequest(catalogType CatalogsType, country Country, language Language, items []CatalogsHotelBatchItem, ) *CatalogsVerticalBatchRequest`
+`func NewCatalogsVerticalBatchRequest(catalogType string, country Country, language CatalogsItemsRequestLanguage, items []CatalogsCreativeAssetsBatchItem, ) *CatalogsVerticalBatchRequest`
 
 NewCatalogsVerticalBatchRequest instantiates a new CatalogsVerticalBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogType
 
-`func (o *CatalogsVerticalBatchRequest) GetCatalogType() CatalogsType`
+`func (o *CatalogsVerticalBatchRequest) GetCatalogType() string`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsVerticalBatchRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
+`func (o *CatalogsVerticalBatchRequest) GetCatalogTypeOk() (*string, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsVerticalBatchRequest) SetCatalogType(v CatalogsType)`
+`func (o *CatalogsVerticalBatchRequest) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
 
@@ -71,40 +71,40 @@ SetCountry sets Country field to given value.
 
 ### GetLanguage
 
-`func (o *CatalogsVerticalBatchRequest) GetLanguage() Language`
+`func (o *CatalogsVerticalBatchRequest) GetLanguage() CatalogsItemsRequestLanguage`
 
 GetLanguage returns the Language field if non-nil, zero value otherwise.
 
 ### GetLanguageOk
 
-`func (o *CatalogsVerticalBatchRequest) GetLanguageOk() (*Language, bool)`
+`func (o *CatalogsVerticalBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool)`
 
 GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguage
 
-`func (o *CatalogsVerticalBatchRequest) SetLanguage(v Language)`
+`func (o *CatalogsVerticalBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage)`
 
 SetLanguage sets Language field to given value.
 
 
 ### GetItems
 
-`func (o *CatalogsVerticalBatchRequest) GetItems() []CatalogsHotelBatchItem`
+`func (o *CatalogsVerticalBatchRequest) GetItems() []CatalogsCreativeAssetsBatchItem`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *CatalogsVerticalBatchRequest) GetItemsOk() (*[]CatalogsHotelBatchItem, bool)`
+`func (o *CatalogsVerticalBatchRequest) GetItemsOk() (*[]CatalogsCreativeAssetsBatchItem, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *CatalogsVerticalBatchRequest) SetItems(v []CatalogsHotelBatchItem)`
+`func (o *CatalogsVerticalBatchRequest) SetItems(v []CatalogsCreativeAssetsBatchItem)`
 
 SetItems sets Items field to given value.
 

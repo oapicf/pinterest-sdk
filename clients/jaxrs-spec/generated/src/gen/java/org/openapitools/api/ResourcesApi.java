@@ -22,7 +22,7 @@ import javax.validation.Valid;
 */
 @Path("/resources")
 @Api(description = "the resources API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ResourcesApi {
 
     @GET
@@ -43,7 +43,7 @@ public class ResourcesApi {
     @GET
     @Path("/delivery_metrics")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get available metrics' definitions", notes = "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.", response = DeliveryMetricsResponse.class, authorizations = {
+    @ApiOperation(value = "Get available metrics' definitions", notes = "Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.", response = DeliveryMetricsResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc."),
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
@@ -75,7 +75,7 @@ public class ResourcesApi {
     @GET
     @Path("/lead_form_questions")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get lead form questions", notes = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
+    @ApiOperation(value = "Get lead form questions", notes = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>", response = Void.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "ads:read", description = "See all of your advertising data, including ads, ad groups, campaigns etc.") })
          }, tags={ "resources" })
@@ -113,7 +113,7 @@ public class ResourcesApi {
         @ApiResponse(code = 200, message = "Success", response = Object.class, responseContainer = "List"),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response targetingOptionsGet(@PathParam("targeting_type") @ApiParam("Public targeting type.") String targetingType,@QueryParam("client_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Client ID.")  String clientId,@QueryParam("oauth_signature")  @ApiParam("Oauth signature")  String oauthSignature,@QueryParam("timestamp") @Pattern(regexp="\\d+")  @ApiParam("Timestamp")  String timestamp) {
+    public Response targetingOptionsGet(@PathParam("targeting_type") @ApiParam("Public targeting type.") String targetingType,@QueryParam("client_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Client ID.")  String clientId,@QueryParam("oauth_signature")  @ApiParam("Oauth signature")  String oauthSignature,@QueryParam("timestamp") @Pattern(regexp="\\d+")  @ApiParam("Timestamp")  String timestamp,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
         return Response.ok().entity("magic!").build();
     }
 }

@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class SummaryPin (
-    _media: Option[SummaryPinMedia],
+    _media: Option[PinMedia],
     _altText: Option[String],
     _link: Option[String],
     _title: Option[String],

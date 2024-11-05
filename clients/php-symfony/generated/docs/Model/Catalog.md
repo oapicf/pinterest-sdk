@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | **\DateTime** |  | [optional] 
+**createdAt** | **\DateTime** |  | 
 **id** | **string** | ID of the catalog entity. | 
-**updatedAt** | **\DateTime** |  | [optional] 
+**updatedAt** | **\DateTime** |  | 
 **name** | **string** | A human-friendly name associated to a catalog entity. | 
 **catalogType** | [**OpenAPI\Server\Model\CatalogsType**](CatalogsType.md) |  | 
 

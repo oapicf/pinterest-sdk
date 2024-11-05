@@ -35,7 +35,7 @@ open class LeadFormsAPI {
     /**
      Get lead form by id
      - GET /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}
-     - Gets a lead form given it's ID. It must also be associated with the provided ad account ID. Retrieving an advertiser's lead form will only contain results if you're a part of the Lead ads beta. If you're interested in joining the beta, please reach out to your Pinterest account manager.
+     - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -91,7 +91,7 @@ open class LeadFormsAPI {
     /**
      Create lead form test data
      - POST /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
-     - Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+     - Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -125,6 +125,58 @@ open class LeadFormsAPI {
     }
 
     /**
+     Create lead forms
+     
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter leadFormCreateRequest: (body) List of lead forms to create, size limit [1, 30]. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func leadFormsCreate(adAccountId: String, leadFormCreateRequest: [LeadFormCreateRequest], apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LeadFormArrayResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return leadFormsCreateWithRequestBuilder(adAccountId: adAccountId, leadFormCreateRequest: leadFormCreateRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create lead forms
+     - POST /ad_accounts/{ad_account_id}/lead_forms
+     - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter leadFormCreateRequest: (body) List of lead forms to create, size limit [1, 30]. 
+     - returns: RequestBuilder<LeadFormArrayResponse> 
+     */
+    open class func leadFormsCreateWithRequestBuilder(adAccountId: String, leadFormCreateRequest: [LeadFormCreateRequest]) -> RequestBuilder<LeadFormArrayResponse> {
+        var localVariablePath = "/ad_accounts/{ad_account_id}/lead_forms"
+        let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
+        let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: leadFormCreateRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<LeadFormArrayResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      * enum for parameter order
      */
     public enum Order_leadFormsList: String, CaseIterable {
@@ -133,10 +185,10 @@ open class LeadFormsAPI {
     }
 
     /**
-     Get lead forms
+     List lead forms
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -155,14 +207,14 @@ open class LeadFormsAPI {
     }
 
     /**
-     Get lead forms
+     List lead forms
      - GET /ad_accounts/{ad_account_id}/lead_forms
-     - Gets all Lead Forms associated with an ad account ID. Retrieving an advertiser's list of lead forms will only contain results if you're a part of the Lead ads beta.  If you're interested in joining the beta, please reach out to your Pinterest account manager.
+     - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - returns: RequestBuilder<LeadFormsList200Response> 
@@ -191,5 +243,57 @@ open class LeadFormsAPI {
         let localVariableRequestBuilder: RequestBuilder<LeadFormsList200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Update lead forms
+     
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter leadFormUpdateRequest: (body) List of lead forms to update, size limit [1, 30]. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func leadFormsUpdate(adAccountId: String, leadFormUpdateRequest: [LeadFormUpdateRequest], apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: LeadFormArrayResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return leadFormsUpdateWithRequestBuilder(adAccountId: adAccountId, leadFormUpdateRequest: leadFormUpdateRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update lead forms
+     - PATCH /ad_accounts/{ad_account_id}/lead_forms
+     - <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter leadFormUpdateRequest: (body) List of lead forms to update, size limit [1, 30]. 
+     - returns: RequestBuilder<LeadFormArrayResponse> 
+     */
+    open class func leadFormsUpdateWithRequestBuilder(adAccountId: String, leadFormUpdateRequest: [LeadFormUpdateRequest]) -> RequestBuilder<LeadFormArrayResponse> {
+        var localVariablePath = "/ad_accounts/{ad_account_id}/lead_forms"
+        let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
+        let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: leadFormUpdateRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<LeadFormArrayResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

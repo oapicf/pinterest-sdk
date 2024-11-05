@@ -24,7 +24,7 @@ public class AudienceInsightsResponse  {
  /**
    * Category interest distribution
   **/
-  private List<AudienceCategory> categories;
+  private List<AudienceCategory> categories = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   private AudienceDemographics demographics;

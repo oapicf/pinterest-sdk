@@ -22,11 +22,16 @@ import org.openapitools.server.infrastructure.*
 import org.openapitools.server.apis.AdAccountsApi
 import org.openapitools.server.apis.AdGroupsApi
 import org.openapitools.server.apis.AdsApi
+import org.openapitools.server.apis.AdvancedAuctionApi
 import org.openapitools.server.apis.AudienceInsightsApi
+import org.openapitools.server.apis.AudienceSharingApi
 import org.openapitools.server.apis.AudiencesApi
 import org.openapitools.server.apis.BillingApi
 import org.openapitools.server.apis.BoardsApi
 import org.openapitools.server.apis.BulkApi
+import org.openapitools.server.apis.BusinessAccessAssetsApi
+import org.openapitools.server.apis.BusinessAccessInviteApi
+import org.openapitools.server.apis.BusinessAccessRelationshipsApi
 import org.openapitools.server.apis.CampaignsApi
 import org.openapitools.server.apis.CatalogsApi
 import org.openapitools.server.apis.ConversionEventsApi
@@ -36,14 +41,15 @@ import org.openapitools.server.apis.IntegrationsApi
 import org.openapitools.server.apis.KeywordsApi
 import org.openapitools.server.apis.LeadAdsApi
 import org.openapitools.server.apis.LeadFormsApi
+import org.openapitools.server.apis.LeadsExportApi
 import org.openapitools.server.apis.MediaApi
 import org.openapitools.server.apis.OauthApi
 import org.openapitools.server.apis.OrderLinesApi
 import org.openapitools.server.apis.PinsApi
 import org.openapitools.server.apis.ProductGroupPromotionsApi
-import org.openapitools.server.apis.ProductGroupsApi
 import org.openapitools.server.apis.ResourcesApi
 import org.openapitools.server.apis.SearchApi
+import org.openapitools.server.apis.TargetingTemplateApi
 import org.openapitools.server.apis.TermsApi
 import org.openapitools.server.apis.TermsOfServiceApi
 import org.openapitools.server.apis.UserAccountApi
@@ -91,16 +97,29 @@ fun Application.main() {
                 null
             }
         }
+        oauth("client_credentials") {
+            client = HttpClient(Apache)
+            providerLookup = { applicationAuthProvider(this@main.environment.config) }
+            urlProvider = { _ ->
+                // TODO: define a callback url here.
+                "/"
+            }
+        }
     }
     install(Routing) {
         AdAccountsApi()
         AdGroupsApi()
         AdsApi()
+        AdvancedAuctionApi()
         AudienceInsightsApi()
+        AudienceSharingApi()
         AudiencesApi()
         BillingApi()
         BoardsApi()
         BulkApi()
+        BusinessAccessAssetsApi()
+        BusinessAccessInviteApi()
+        BusinessAccessRelationshipsApi()
         CampaignsApi()
         CatalogsApi()
         ConversionEventsApi()
@@ -110,14 +129,15 @@ fun Application.main() {
         KeywordsApi()
         LeadAdsApi()
         LeadFormsApi()
+        LeadsExportApi()
         MediaApi()
         OauthApi()
         OrderLinesApi()
         PinsApi()
         ProductGroupPromotionsApi()
-        ProductGroupsApi()
         ResourcesApi()
         SearchApi()
+        TargetingTemplateApi()
         TermsApi()
         TermsOfServiceApi()
         UserAccountApi()

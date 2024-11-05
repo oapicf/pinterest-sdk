@@ -17,7 +17,7 @@ public class TopPinsAnalyticsResponse  {
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @ApiModelProperty(value = "")
-  private List<TopPinsAnalyticsResponsePinsInner> pins;
+  private List<TopPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
 public enum SortByEnum {
 

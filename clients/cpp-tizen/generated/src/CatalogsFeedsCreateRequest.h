@@ -13,6 +13,7 @@
 #include "CatalogsFeedProcessingSchedule.h"
 #include "CatalogsFeedsCreateRequest_default_locale.h"
 #include "CatalogsFormat.h"
+#include "CatalogsStatus.h"
 #include "Country.h"
 #include "NullableCurrency.h"
 #include "ProductAvailabilityType.h"
@@ -115,6 +116,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setDefaultAvailability(ProductAvailabilityType  default_availability);
+	/*! \brief Get 
+	 */
+	CatalogsStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(CatalogsStatus  status);
 
 private:
 	NullableCurrency default_currency;
@@ -126,6 +134,7 @@ private:
 	CatalogsFeedProcessingSchedule preferred_processing_schedule;
 	Country default_country;
 	ProductAvailabilityType default_availability;
+	CatalogsStatus status;
 	void __init();
 	void __cleanup();
 

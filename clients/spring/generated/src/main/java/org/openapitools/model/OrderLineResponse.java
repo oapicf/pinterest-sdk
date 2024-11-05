@@ -23,14 +23,14 @@ import javax.annotation.Generated;
  * OrderLineResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OrderLineResponse {
 
   @Valid
-  private List<OrderLineError> errors;
+  private List<OrderLineError> errors = new ArrayList<>();
 
   @Valid
-  private List<OrderLine> orderLine;
+  private List<OrderLine> orderLine = new ArrayList<>();
 
   public OrderLineResponse errors(List<OrderLineError> errors) {
     this.errors = errors;
@@ -48,7 +48,7 @@ public class OrderLineResponse {
   /**
    * Error list if update(s) fail.
    * @return errors
-  */
+   */
   @Valid 
   @Schema(name = "errors", description = "Error list if update(s) fail.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")
@@ -76,7 +76,7 @@ public class OrderLineResponse {
   /**
    * Order Line object array.
    * @return orderLine
-  */
+   */
   @Valid 
   @Schema(name = "order_line", description = "Order Line object array.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_line")

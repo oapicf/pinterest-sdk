@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.CreativeType;
 import org.openapitools.vertxweb.server.model.EntityStatus;
 import org.openapitools.vertxweb.server.model.GridClickType;
 
@@ -26,7 +25,6 @@ public class ProductGroupPromotion   {
   private String trackingUrl;
   private String catalogProductGroupId;
   private String catalogProductGroupName;
-  private CreativeType creativeType;
   private String collectionsHeroPinId;
   private String collectionsHeroDestinationUrl;
   private GridClickType gridClickType;
@@ -35,7 +33,7 @@ public class ProductGroupPromotion   {
 
   }
 
-  public ProductGroupPromotion (String id, String adGroupId, Integer bidInMicroCurrency, Boolean included, String definition, String relativeDefinition, String parentId, String slideshowCollectionsTitle, String slideshowCollectionsDescription, Boolean isMdl, EntityStatus status, String trackingUrl, String catalogProductGroupId, String catalogProductGroupName, CreativeType creativeType, String collectionsHeroPinId, String collectionsHeroDestinationUrl, GridClickType gridClickType) {
+  public ProductGroupPromotion (String id, String adGroupId, Integer bidInMicroCurrency, Boolean included, String definition, String relativeDefinition, String parentId, String slideshowCollectionsTitle, String slideshowCollectionsDescription, Boolean isMdl, EntityStatus status, String trackingUrl, String catalogProductGroupId, String catalogProductGroupName, String collectionsHeroPinId, String collectionsHeroDestinationUrl, GridClickType gridClickType) {
     this.id = id;
     this.adGroupId = adGroupId;
     this.bidInMicroCurrency = bidInMicroCurrency;
@@ -50,7 +48,6 @@ public class ProductGroupPromotion   {
     this.trackingUrl = trackingUrl;
     this.catalogProductGroupId = catalogProductGroupId;
     this.catalogProductGroupName = catalogProductGroupName;
-    this.creativeType = creativeType;
     this.collectionsHeroPinId = collectionsHeroPinId;
     this.collectionsHeroDestinationUrl = collectionsHeroDestinationUrl;
     this.gridClickType = gridClickType;
@@ -183,15 +180,6 @@ public class ProductGroupPromotion   {
   }
 
     
-  @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
-    
   @JsonProperty("collections_hero_pin_id")
   public String getCollectionsHeroPinId() {
     return collectionsHeroPinId;
@@ -242,7 +230,6 @@ public class ProductGroupPromotion   {
         Objects.equals(trackingUrl, productGroupPromotion.trackingUrl) &&
         Objects.equals(catalogProductGroupId, productGroupPromotion.catalogProductGroupId) &&
         Objects.equals(catalogProductGroupName, productGroupPromotion.catalogProductGroupName) &&
-        Objects.equals(creativeType, productGroupPromotion.creativeType) &&
         Objects.equals(collectionsHeroPinId, productGroupPromotion.collectionsHeroPinId) &&
         Objects.equals(collectionsHeroDestinationUrl, productGroupPromotion.collectionsHeroDestinationUrl) &&
         Objects.equals(gridClickType, productGroupPromotion.gridClickType);
@@ -250,7 +237,7 @@ public class ProductGroupPromotion   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, creativeType, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
+    return Objects.hash(id, adGroupId, bidInMicroCurrency, included, definition, relativeDefinition, parentId, slideshowCollectionsTitle, slideshowCollectionsDescription, isMdl, status, trackingUrl, catalogProductGroupId, catalogProductGroupName, collectionsHeroPinId, collectionsHeroDestinationUrl, gridClickType);
   }
 
   @Override
@@ -272,7 +259,6 @@ public class ProductGroupPromotion   {
     sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    catalogProductGroupId: ").append(toIndentedString(catalogProductGroupId)).append("\n");
     sb.append("    catalogProductGroupName: ").append(toIndentedString(catalogProductGroupName)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    collectionsHeroPinId: ").append(toIndentedString(collectionsHeroPinId)).append("\n");
     sb.append("    collectionsHeroDestinationUrl: ").append(toIndentedString(collectionsHeroDestinationUrl)).append("\n");
     sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");

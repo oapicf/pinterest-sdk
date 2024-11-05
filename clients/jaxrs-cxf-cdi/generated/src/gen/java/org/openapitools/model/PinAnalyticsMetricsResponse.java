@@ -24,7 +24,7 @@ public class PinAnalyticsMetricsResponse   {
   
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
 
-  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics;
+  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
 
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 

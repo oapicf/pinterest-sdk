@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -45,11 +45,11 @@ func (r ApiConversionTagsCreateRequest) Execute() (*ConversionTagResponse, *http
 ConversionTagsCreate Create conversion tag
 
 Create a conversion tag, also known as <a href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag" target="_blank">Pinterest tag</a>, with the option to enable enhanced match.<p/>
-The Pinterest Tag tracks actions people take on the ad account’s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/>
+The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/>
 For more information, see:<p/>
 <a class="reference external" href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag">Set up the Pinterest tag</a><p/>
-<a class="reference external" href="https://developers.pinterest.com/docs/conversions/pinterest-tag/">Pinterest Tag</a><p/>
-<a class="reference external" href="https://developers.pinterest.com/docs/conversions/enhanced-match/">Enhanced match</a>
+<a class="reference external" href="/docs/api-features/pinterest-tag/">Pinterest Tag</a><p/>
+<a class="reference external" href="/docs/api-features/pinterest-tag/#enhanced-match">Enhanced match</a>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -336,7 +336,7 @@ func (a *ConversionTagsAPIService) ConversionTagsListExecute(r ApiConversionTags
 	}
 
 	if r.filterDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter_deleted", r.filterDeleted, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter_deleted", r.filterDeleted, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.filterDeleted = &defaultValue
@@ -526,7 +526,7 @@ type ApiPageVisitConversionTagsGetRequest struct {
 	bookmark *string
 }
 
-// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
+// Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.
 func (r ApiPageVisitConversionTagsGetRequest) PageSize(pageSize int32) ApiPageVisitConversionTagsGetRequest {
 	r.pageSize = &pageSize
 	return r
@@ -591,16 +591,16 @@ func (a *ConversionTagsAPIService) PageVisitConversionTagsGetExecute(r ApiPageVi
 	}
 
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
 		var defaultValue int32 = 25
 		r.pageSize = &defaultValue
 	}
 	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	if r.bookmark != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

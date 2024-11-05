@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -63,18 +64,26 @@ data class CustomerList(
     @field:Valid
     @Schema(example = "null", description = "Customer list errors")
     @get:JsonProperty("exceptions") val exceptions: kotlin.Any? = null
-) {
+    ) {
 
     /**
     * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
     * Values: PROCESSING,READY,TOO_SMALL,UPLOADING
     */
-    enum class Status(val value: kotlin.String) {
+    enum class Status(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("PROCESSING") PROCESSING("PROCESSING"),
-        @JsonProperty("READY") READY("READY"),
-        @JsonProperty("TOO_SMALL") TOO_SMALL("TOO_SMALL"),
-        @JsonProperty("UPLOADING") UPLOADING("UPLOADING")
+        PROCESSING("PROCESSING"),
+        READY("READY"),
+        TOO_SMALL("TOO_SMALL"),
+        UPLOADING("UPLOADING");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Status {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

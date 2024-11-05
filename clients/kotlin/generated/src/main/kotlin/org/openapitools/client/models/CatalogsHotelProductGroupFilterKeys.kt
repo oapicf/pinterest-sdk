@@ -75,5 +75,8 @@ data class CatalogsHotelProductGroupFilterKeys (
     @Json(name = "COUNTRY")
     val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
 
-)
+) {
+
+
+}
 

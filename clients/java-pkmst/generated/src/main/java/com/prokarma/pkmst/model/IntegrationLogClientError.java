@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "System error details included in the log sent by the client.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLogClientError   {
   @JsonProperty("cause")
   private String cause;
@@ -49,10 +49,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Original cause of the error.
    * @return cause
-  **/
+   */
   @ApiModelProperty(value = "Original cause of the error.")
   public String getCause() {
     return cause;
@@ -67,10 +67,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Column number in the line of the file that raised the error.
    * @return columnNumber
-  **/
+   */
   @ApiModelProperty(value = "Column number in the line of the file that raised the error.")
   public Integer getColumnNumber() {
     return columnNumber;
@@ -85,10 +85,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Filename where the error happened.
    * @return fileName
-  **/
+   */
   @ApiModelProperty(value = "Filename where the error happened.")
   public String getFileName() {
     return fileName;
@@ -103,10 +103,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Line number where the error happened.
    * @return lineNumber
-  **/
+   */
   @ApiModelProperty(value = "Line number where the error happened.")
   public Integer getLineNumber() {
     return lineNumber;
@@ -121,10 +121,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Human-readable description of the error.
    * @return message
-  **/
+   */
   @ApiModelProperty(value = "Human-readable description of the error.")
   public String getMessage() {
     return message;
@@ -139,10 +139,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * More detail about the message.
    * @return messageDetail
-  **/
+   */
   @ApiModelProperty(value = "More detail about the message.")
   public String getMessageDetail() {
     return messageDetail;
@@ -157,10 +157,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Filename where the error happened.
    * @return name
-  **/
+   */
   @ApiModelProperty(value = "Filename where the error happened.")
   public String getName() {
     return name;
@@ -175,10 +175,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Integer that specifies the error code.
    * @return number
-  **/
+   */
   @ApiModelProperty(value = "Integer that specifies the error code.")
   public Integer getNumber() {
     return number;
@@ -193,10 +193,10 @@ public class IntegrationLogClientError   {
     return this;
   }
 
-   /**
+  /**
    * Stack trace of where the error happened.
    * @return stackTrace
-  **/
+   */
   @ApiModelProperty(value = "Stack trace of where the error happened.")
   public String getStackTrace() {
     return stackTrace;

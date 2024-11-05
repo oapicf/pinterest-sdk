@@ -59,7 +59,7 @@ public class CreateMMMReportRequest   {
   private LevelEnum level;
   private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
   private List<MMMReportingColumn> columns = new ArrayList<>();
-  private List<TargetingAdvertiserCountry> countries;
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
   public CreateMMMReportRequest () {
 

@@ -19,10 +19,10 @@
 #' @field board_section_id The board section to which this Pin belongs. character [optional]
 #' @field board_owner  \link{BoardOwner} [optional]
 #' @field is_owner Whether the \"operation user_account\" is the Pin owner. character [optional]
-#' @field media  \link{SummaryPinMedia} [optional]
+#' @field media  \link{PinMedia} [optional]
 #' @field media_source  \link{PinMediaSource} [optional]
 #' @field parent_pin_id The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. character [optional]
-#' @field is_standard Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information. character [optional]
+#' @field is_standard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. character [optional]
 #' @field has_been_promoted Whether the Pin has been promoted or not. character [optional]
 #' @field note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. character [optional]
 #' @field pin_metrics Pin metrics with associated time intervals if any. object [optional]
@@ -51,8 +51,7 @@ Pin <- R6::R6Class(
     `has_been_promoted` = NULL,
     `note` = NULL,
     `pin_metrics` = NULL,
-    #' Initialize a new Pin class.
-    #'
+
     #' @description
     #' Initialize a new Pin class.
     #'
@@ -71,12 +70,11 @@ Pin <- R6::R6Class(
     #' @param media media
     #' @param media_source media_source
     #' @param parent_pin_id The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-    #' @param is_standard Whether the Pin is standard or not. See documentation on <a href=\"https://developers.pinterest.com/docs/content/update/\">Changes to Pin creation</a> for more information.
+    #' @param is_standard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
     #' @param has_been_promoted Whether the Pin has been promoted or not.
     #' @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
     #' @param pin_metrics Pin metrics with associated time intervals if any.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`id` = NULL, `created_at` = NULL, `link` = NULL, `title` = NULL, `description` = NULL, `dominant_color` = NULL, `alt_text` = NULL, `creative_type` = NULL, `board_id` = NULL, `board_section_id` = NULL, `board_owner` = NULL, `is_owner` = NULL, `media` = NULL, `media_source` = NULL, `parent_pin_id` = NULL, `is_standard` = NULL, `has_been_promoted` = NULL, `note` = NULL, `pin_metrics` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -185,13 +183,11 @@ Pin <- R6::R6Class(
         self$`pin_metrics` <- `pin_metrics`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Pin in JSON format
-    #' @export
     toJSON = function() {
       PinObject <- list()
       if (!is.null(self$`id`)) {
@@ -272,14 +268,12 @@ Pin <- R6::R6Class(
       }
       PinObject
     },
-    #' Deserialize JSON string into an instance of Pin
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Pin
     #'
     #' @param input_json the JSON input
     #' @return the instance of Pin
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`id`)) {
@@ -323,7 +317,7 @@ Pin <- R6::R6Class(
         self$`is_owner` <- this_object$`is_owner`
       }
       if (!is.null(this_object$`media`)) {
-        `media_object` <- SummaryPinMedia$new()
+        `media_object` <- PinMedia$new()
         `media_object`$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
         self$`media` <- `media_object`
       }
@@ -349,13 +343,11 @@ Pin <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return Pin in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`id`)) {
@@ -514,14 +506,12 @@ Pin <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of Pin
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of Pin
     #'
     #' @param input_json the JSON input
     #' @return the instance of Pin
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
@@ -536,7 +526,7 @@ Pin <- R6::R6Class(
       self$`board_section_id` <- this_object$`board_section_id`
       self$`board_owner` <- BoardOwner$new()$fromJSON(jsonlite::toJSON(this_object$`board_owner`, auto_unbox = TRUE, digits = NA))
       self$`is_owner` <- this_object$`is_owner`
-      self$`media` <- SummaryPinMedia$new()$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
+      self$`media` <- PinMedia$new()$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
       self$`media_source` <- PinMediaSource$new()$fromJSON(jsonlite::toJSON(this_object$`media_source`, auto_unbox = TRUE, digits = NA))
       self$`parent_pin_id` <- this_object$`parent_pin_id`
       self$`is_standard` <- this_object$`is_standard`
@@ -545,33 +535,27 @@ Pin <- R6::R6Class(
       self$`pin_metrics` <- this_object$`pin_metrics`
       self
     },
-    #' Validate JSON input with respect to Pin
-    #'
+
     #' @description
     #' Validate JSON input with respect to Pin and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of Pin
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       if (!str_detect(self$`id`, "^\\d+$")) {
         return(FALSE)
@@ -599,13 +583,11 @@ Pin <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       if (!str_detect(self$`id`, "^\\d+$")) {
@@ -634,12 +616,9 @@ Pin <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

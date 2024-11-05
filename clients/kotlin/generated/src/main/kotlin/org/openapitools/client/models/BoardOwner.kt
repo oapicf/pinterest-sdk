@@ -31,5 +31,8 @@ data class BoardOwner (
     @Json(name = "username")
     val username: kotlin.String? = null
 
-)
+) {
+
+
+}
 

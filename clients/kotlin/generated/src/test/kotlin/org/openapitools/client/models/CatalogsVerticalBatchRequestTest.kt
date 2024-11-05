@@ -19,12 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsVerticalBatchRequest
-import org.openapitools.client.models.CatalogsHotelBatchItem
+import org.openapitools.client.models.CatalogsCreativeAssetsBatchItem
+import org.openapitools.client.models.CatalogsCreativeAssetsBatchRequest
 import org.openapitools.client.models.CatalogsHotelBatchRequest
+import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsRetailBatchRequest
-import org.openapitools.client.models.CatalogsType
 import org.openapitools.client.models.Country
-import org.openapitools.client.models.Language
 
 class CatalogsVerticalBatchRequestTest : ShouldSpec() {
     init {
@@ -49,13 +49,13 @@ class CatalogsVerticalBatchRequestTest : ShouldSpec() {
             //modelInstance.language shouldBe ("TODO")
         }
 
-        // to test the property `items` - Array with catalogs item operations
+        // to test the property `items` - Array with creative assets item operations
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")
         }
 
-        // to test the property `catalogId` - Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+        // to test the property `catalogId` - Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")

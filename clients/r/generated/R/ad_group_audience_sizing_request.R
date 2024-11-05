@@ -25,8 +25,7 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
     `targeting_spec` = NULL,
     `product_group_ids` = NULL,
     `keywords` = NULL,
-    #' Initialize a new AdGroupAudienceSizingRequest class.
-    #'
+
     #' @description
     #' Initialize a new AdGroupAudienceSizingRequest class.
     #'
@@ -37,7 +36,6 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
     #' @param product_group_ids Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
     #' @param keywords Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`auto_targeting_enabled` = TRUE, `placement_group` = "ALL", `creative_types` = NULL, `targeting_spec` = NULL, `product_group_ids` = NULL, `keywords` = NULL, ...) {
       if (!is.null(`auto_targeting_enabled`)) {
         if (!(is.logical(`auto_targeting_enabled`) && length(`auto_targeting_enabled`) == 1)) {
@@ -72,13 +70,11 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
         self$`keywords` <- `keywords`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdGroupAudienceSizingRequest in JSON format
-    #' @export
     toJSON = function() {
       AdGroupAudienceSizingRequestObject <- list()
       if (!is.null(self$`auto_targeting_enabled`)) {
@@ -107,14 +103,12 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
       }
       AdGroupAudienceSizingRequestObject
     },
-    #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdGroupAudienceSizingRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`auto_targeting_enabled`)) {
@@ -141,13 +135,11 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return AdGroupAudienceSizingRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`auto_targeting_enabled`)) {
@@ -202,14 +194,12 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of AdGroupAudienceSizingRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of AdGroupAudienceSizingRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
@@ -220,53 +210,42 @@ AdGroupAudienceSizingRequest <- R6::R6Class(
       self$`keywords` <- ApiClient$new()$deserializeObj(this_object$`keywords`, "array[AdGroupAudienceSizingRequestKeywordsInner]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to AdGroupAudienceSizingRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to AdGroupAudienceSizingRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of AdGroupAudienceSizingRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

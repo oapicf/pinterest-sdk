@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsHotelAttributes
@@ -32,15 +33,23 @@ data class CatalogsUpsertHotelItem(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("attributes", required = true) val attributes: CatalogsHotelAttributes
-) {
+    ) {
 
     /**
     * 
     * Values: UPSERT
     */
-    enum class Operation(val value: kotlin.String) {
+    enum class Operation(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("UPSERT") UPSERT("UPSERT")
+        UPSERT("UPSERT");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): Operation {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

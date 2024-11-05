@@ -71,8 +71,25 @@ void main() {
       // TODO
     });
 
+    // Catalog id pertaining to the retail product group.
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // id of the catalogs feed belonging to this catalog product group
     // String feedId
     test('to test the property `feedId`', () async {
+      // TODO
+    });
+
+    // String country
+    test('to test the property `country`', () async {
+      // TODO
+    });
+
+    // String locale
+    test('to test the property `locale`', () async {
       // TODO
     });
 

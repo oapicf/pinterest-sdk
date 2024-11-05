@@ -149,7 +149,7 @@ data class CatalogsFeedValidationErrors(
 
     @Schema(example = "null", description = "Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.")
     @get:JsonProperty("PRICE_CANNOT_BE_DETERMINED") val PRICE_CANNOT_BE_DETERMINED: kotlin.Int? = null
-) {
+    ) {
 
 }
 

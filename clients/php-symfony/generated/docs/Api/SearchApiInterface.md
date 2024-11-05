@@ -25,7 +25,7 @@ services:
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example Implementation
 ```php
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 Search user's boards
 
-Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example Implementation
 ```php
@@ -109,6 +109,14 @@ class SearchApi implements SearchApiInterface
      * Configure OAuth2 access token for authorization: pinterest_oauth2
      */
     public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
     {
         // Retrieve logged in user from $oauthToken ...
     }
@@ -133,7 +141,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **query** | **string**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional]
 
 ### Return type
@@ -142,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -156,7 +164,7 @@ Name | Type | Description  | Notes
 
 Search user's Pins
 
-Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example Implementation
 ```php

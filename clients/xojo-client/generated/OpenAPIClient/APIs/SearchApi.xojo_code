@@ -14,7 +14,7 @@ Protected Class SearchApi
 		  // Invokes SearchApiCallbackHandler.SearchPartnerPinsCallback(SearchPartnerPins200Response) on completion. 
 		  //
 		  // - GET /search/partner/pins
-		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -151,18 +151,21 @@ Protected Class SearchApi
 		  // - 
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
 		  // - parameter query: (query) Search query. Can contain pin description keywords or comma-separated pin IDs. (optional, default to Sample)
 		  //
 		  // Invokes SearchApiCallbackHandler.SearchUserBoardsGetCallback(SearchUserBoardsGet200Response) on completion. 
 		  //
 		  // - GET /search/boards
-		  // - Search for boards for the "operation user_account". This includes boards of all board types. - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+		  // - Search for boards for the "operation user_account". This includes boards of all board types. - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -178,6 +181,7 @@ Protected Class SearchApi
 		  If query <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("query") + "=" + EncodeURLComponent(query)
 		  
 
+		  
 		  
 		  
 
@@ -297,7 +301,7 @@ Protected Class SearchApi
 		  // Invokes SearchApiCallbackHandler.SearchUserPinsListCallback(PinsList200Response) on completion. 
 		  //
 		  // - GET /search/pins
-		  // - Search for pins for the "operation user_account". - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+		  // - Search for pins for the "operation user_account". - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:

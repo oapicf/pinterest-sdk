@@ -15,9 +15,9 @@ public struct ItemCreateBatchRecord: Codable, JSONEncodable, Hashable {
 
     /** The catalog item id in the merchant namespace */
     public var itemId: String?
-    public var attributes: ItemAttributes?
+    public var attributes: ItemAttributesRequest?
 
-    public init(itemId: String? = nil, attributes: ItemAttributes? = nil) {
+    public init(itemId: String? = nil, attributes: ItemAttributesRequest? = nil) {
         self.itemId = itemId
         self.attributes = attributes
     }

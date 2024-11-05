@@ -42,5 +42,8 @@ data class AdsCreditRedeemResponse (
     @Json(name = "errorMessage")
     val errorMessage: kotlin.String? = null
 
-)
+) {
+
+
+}
 

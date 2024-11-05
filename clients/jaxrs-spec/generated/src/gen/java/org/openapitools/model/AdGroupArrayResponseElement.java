@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdGroupArrayResponseElement")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdGroupArrayResponseElement   {
-  private @Valid AdGroupResponse data;
-  private @Valid List<@Valid Exception> exceptions;
+  private AdGroupResponse data;
+  private @Valid List<@Valid Exception> exceptions = new ArrayList<>();
 
   /**
    **/
@@ -35,7 +35,7 @@ public class AdGroupArrayResponseElement   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public AdGroupResponse getData() {
+  @Valid public AdGroupResponse getData() {
     return data;
   }
 
@@ -54,7 +54,7 @@ public class AdGroupArrayResponseElement   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("exceptions")
-  public List<Exception> getExceptions() {
+  @Valid public List<@Valid Exception> getExceptions() {
     return exceptions;
   }
 

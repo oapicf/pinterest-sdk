@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+    // Deep link URL for Android devices.
     // String androidDeepLink
     test('to test the property `androidDeepLink`', () async {
       // TODO
@@ -63,7 +63,7 @@ void main() {
       // TODO
     });
 
-    // Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+    // Deep link URL for iOS devices.
     // String iosDeepLink
     test('to test the property `iosDeepLink`', () async {
       // TODO
@@ -92,7 +92,7 @@ void main() {
       // TODO
     });
 
-    // AdCommonTrackingUrls trackingUrls
+    // TrackingUrls trackingUrls
     test('to test the property `trackingUrls`', () async {
       // TODO
     });
@@ -114,13 +114,14 @@ void main() {
       // TODO
     });
 
-    // Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+    // Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
     // String customizableCtaType
     test('to test the property `customizableCtaType`', () async {
       // TODO
     });
 
-    // AdCommonQuizPinData quizPinData
+    // Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+    // QuizPinData quizPinData
     test('to test the property `quizPinData`', () async {
       // TODO
     });

@@ -30,6 +30,6 @@ public interface ResourcesApi  {
     void metricsReadyStateGet(String date, Handler<AsyncResult<BookClosedResponse>> handler);
 
     //targeting_options/get
-    void targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, Handler<AsyncResult<List<Object>>> handler);
+    void targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId, Handler<AsyncResult<List<Object>>> handler);
 
 }

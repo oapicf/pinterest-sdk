@@ -46,11 +46,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	/*! \brief Get </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 	 */
 	int getBid();
 
-	/*! \brief Set Keyword custom bid in microcurrency - null if inherited from parent ad group.
+	/*! \brief Set </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 	 */
 	void setBid(int  bid);
 	/*! \brief Get 

@@ -14,7 +14,7 @@ import org.openapitools.server.api.model.ItemResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsItems   {
   
-  private List<ItemResponse> items;
+  private List<ItemResponse> items = new ArrayList<>();
 
   public CatalogsItems () {
 

@@ -30,7 +30,6 @@ case class ProductGroupPromotion (
     _catalogProductGroupId: Option[String],
     /* Catalogs product group name */
     _catalogProductGroupName: Option[String],
-    _creativeType: Option[CreativeType],
     /* Hero Pin ID if this PG is promoted as a Collection */
     _collectionsHeroPinId: Option[String],
     /* Collections Hero Destination Url */
@@ -38,10 +37,10 @@ case class ProductGroupPromotion (
     _gridClickType: Option[GridClickType]
 )
 object ProductGroupPromotion {
-    def toStringBody(var_id: Object, var_adGroupId: Object, var_bidInMicroCurrency: Object, var_included: Object, var_definition: Object, var_relativeDefinition: Object, var_parentId: Object, var_slideshowCollectionsTitle: Object, var_slideshowCollectionsDescription: Object, var_isMdl: Object, var_status: Object, var_trackingUrl: Object, var_catalogProductGroupId: Object, var_catalogProductGroupName: Object, var_creativeType: Object, var_collectionsHeroPinId: Object, var_collectionsHeroDestinationUrl: Object, var_gridClickType: Object) =
+    def toStringBody(var_id: Object, var_adGroupId: Object, var_bidInMicroCurrency: Object, var_included: Object, var_definition: Object, var_relativeDefinition: Object, var_parentId: Object, var_slideshowCollectionsTitle: Object, var_slideshowCollectionsDescription: Object, var_isMdl: Object, var_status: Object, var_trackingUrl: Object, var_catalogProductGroupId: Object, var_catalogProductGroupName: Object, var_collectionsHeroPinId: Object, var_collectionsHeroDestinationUrl: Object, var_gridClickType: Object) =
         s"""
         | {
-        | "id":$var_id,"adGroupId":$var_adGroupId,"bidInMicroCurrency":$var_bidInMicroCurrency,"included":$var_included,"definition":$var_definition,"relativeDefinition":$var_relativeDefinition,"parentId":$var_parentId,"slideshowCollectionsTitle":$var_slideshowCollectionsTitle,"slideshowCollectionsDescription":$var_slideshowCollectionsDescription,"isMdl":$var_isMdl,"status":$var_status,"trackingUrl":$var_trackingUrl,"catalogProductGroupId":$var_catalogProductGroupId,"catalogProductGroupName":$var_catalogProductGroupName,"creativeType":$var_creativeType,"collectionsHeroPinId":$var_collectionsHeroPinId,"collectionsHeroDestinationUrl":$var_collectionsHeroDestinationUrl,"gridClickType":$var_gridClickType
+        | "id":$var_id,"adGroupId":$var_adGroupId,"bidInMicroCurrency":$var_bidInMicroCurrency,"included":$var_included,"definition":$var_definition,"relativeDefinition":$var_relativeDefinition,"parentId":$var_parentId,"slideshowCollectionsTitle":$var_slideshowCollectionsTitle,"slideshowCollectionsDescription":$var_slideshowCollectionsDescription,"isMdl":$var_isMdl,"status":$var_status,"trackingUrl":$var_trackingUrl,"catalogProductGroupId":$var_catalogProductGroupId,"catalogProductGroupName":$var_catalogProductGroupName,"collectionsHeroPinId":$var_collectionsHeroPinId,"collectionsHeroDestinationUrl":$var_collectionsHeroDestinationUrl,"gridClickType":$var_gridClickType
         | }
         """.stripMargin
 }

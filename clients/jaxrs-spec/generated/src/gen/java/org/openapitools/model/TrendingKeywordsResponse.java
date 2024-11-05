@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("TrendingKeywordsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendingKeywordsResponse   {
-  private @Valid List<@Valid TrendingKeywordsResponseTrendsInner> trends;
+  private @Valid List<@Valid TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
 
   /**
    * The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.
@@ -34,7 +34,7 @@ public class TrendingKeywordsResponse   {
   
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
   @JsonProperty("trends")
-  public List<TrendingKeywordsResponseTrendsInner> getTrends() {
+  @Valid public List<@Valid TrendingKeywordsResponseTrendsInner> getTrends() {
     return trends;
   }
 

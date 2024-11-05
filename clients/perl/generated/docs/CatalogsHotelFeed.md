@@ -8,9 +8,9 @@ use WWW::OpenAPIClient::Object::CatalogsHotelFeed;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **DATE_TIME** |  | [optional] 
-**id** | **string** |  | [optional] 
-**updated_at** | **DATE_TIME** |  | [optional] 
+**created_at** | **DATE_TIME** |  | 
+**id** | **string** |  | 
+**updated_at** | **DATE_TIME** |  | 
 **name** | **string** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 

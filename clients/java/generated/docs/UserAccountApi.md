@@ -47,9 +47,13 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
@@ -71,7 +75,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
@@ -81,7 +85,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -101,7 +105,7 @@ public class Example {
 
 Follow user
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/new/about-beta-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```java
@@ -193,9 +197,13 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       FollowersList200Response result = apiInstance.followersList(bookmark, pageSize);
       System.out.println(result);
@@ -215,7 +223,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -223,7 +231,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -264,6 +272,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     try {
       List<LinkedBusiness> result = apiInstance.linkedBusinessAccountsGet();
@@ -288,7 +300,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -428,7 +440,7 @@ public class Example {
 | **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
 | **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
-| **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO] |
+| **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
 | **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
 | **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
@@ -484,6 +496,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     LocalDate startDate = LocalDate.now(); // LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     LocalDate endDate = LocalDate.now(); // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
@@ -519,7 +535,7 @@ public class Example {
 | **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
 | **sortBy** | **String**| Specify sorting order for metrics | [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE] |
 | **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
-| **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO] |
+| **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
 | **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
 | **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
@@ -534,7 +550,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -575,6 +591,10 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     LocalDate startDate = LocalDate.now(); // LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
     LocalDate endDate = LocalDate.now(); // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
@@ -610,7 +630,7 @@ public class Example {
 | **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
 | **sortBy** | **String**| Specify sorting order for video metrics | [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] |
 | **fromClaimedContent** | **String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
-| **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA, PRODUCT, REGULAR, VIDEO] |
+| **pinFormat** | **String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
 | **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
 | **contentType** | **String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
 | **source** | **String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
@@ -625,7 +645,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -666,10 +686,14 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String username = "username"; // String | A valid username
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       UserAccountFollowedInterests200Response result = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize);
       System.out.println(result);
@@ -690,7 +714,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **username** | **String**| A valid username | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -698,7 +722,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -720,7 +744,7 @@ public class Example {
 
 Get user account
 
-Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/reference/business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
 
 ### Example
 ```java
@@ -740,6 +764,10 @@ public class Example {
     // Configure OAuth2 access token for authorization: pinterest_oauth2
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
@@ -769,7 +797,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -810,9 +838,13 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     UserFollowingFeedType feedType = UserFollowingFeedType.fromValue("ALL"); // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
     Boolean explicitFollowing = false; // Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
@@ -835,7 +867,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to ALL] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
 | **explicitFollowing** | **Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
@@ -846,7 +878,7 @@ public class Example {
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -888,7 +920,7 @@ public class Example {
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
     try {
       UserWebsitesGet200Response result = apiInstance.userWebsitesGet(bookmark, pageSize);
       System.out.println(result);
@@ -908,7 +940,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -932,7 +964,7 @@ public class Example {
 
 <a id="verifyWebsiteUpdate"></a>
 # **verifyWebsiteUpdate**
-> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest)
+> UserWebsiteSummary verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
 
 Verify website
 
@@ -959,8 +991,9 @@ public class Example {
 
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
     UserWebsiteVerifyRequest userWebsiteVerifyRequest = new UserWebsiteVerifyRequest(); // UserWebsiteVerifyRequest | Verify a website.
+    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      UserWebsiteSummary result = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest);
+      UserWebsiteSummary result = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#verifyWebsiteUpdate");
@@ -978,6 +1011,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **userWebsiteVerifyRequest** | [**UserWebsiteVerifyRequest**](UserWebsiteVerifyRequest.md)| Verify a website. | |
+| **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -1000,7 +1034,7 @@ public class Example {
 
 <a id="websiteVerificationGet"></a>
 # **websiteVerificationGet**
-> UserWebsiteVerificationCode websiteVerificationGet()
+> UserWebsiteVerificationCode websiteVerificationGet(adAccountId)
 
 Get user verification code for website claiming
 
@@ -1025,9 +1059,14 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     UserAccountApi apiInstance = new UserAccountApi(defaultClient);
+    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      UserWebsiteVerificationCode result = apiInstance.websiteVerificationGet();
+      UserWebsiteVerificationCode result = apiInstance.websiteVerificationGet(adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UserAccountApi#websiteVerificationGet");
@@ -1041,7 +1080,10 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -1049,7 +1091,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

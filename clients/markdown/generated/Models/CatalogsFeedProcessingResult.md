@@ -3,9 +3,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **created\_at** | **Date** |  | [optional] [default to null] |
-| **id** | **String** |  | [optional] [default to null] |
-| **updated\_at** | **Date** |  | [optional] [default to null] |
+| **created\_at** | **Date** |  | [default to null] |
+| **id** | **String** |  | [default to null] |
+| **updated\_at** | **Date** |  | [default to null] |
 | **ingestion\_details** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | [default to null] |
 | **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | [default to null] |
 | **product\_counts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | [default to null] |

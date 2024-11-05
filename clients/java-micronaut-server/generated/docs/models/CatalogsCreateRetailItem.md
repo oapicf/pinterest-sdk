@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **itemId** | `String` | The catalog item id in the merchant namespace | 
 **operation** | [**OperationEnum**](#OperationEnum) |  | 
-**attributes** | [`ItemAttributes`](ItemAttributes.md) |  | 
+**attributes** | [`ItemAttributesRequest`](ItemAttributesRequest.md) |  | 
 
 
 ## OperationEnum
@@ -20,9 +20,6 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 CREATE | `"CREATE"`
-UPDATE | `"UPDATE"`
-UPSERT | `"UPSERT"`
-DELETE | `"DELETE"`
 
 
 

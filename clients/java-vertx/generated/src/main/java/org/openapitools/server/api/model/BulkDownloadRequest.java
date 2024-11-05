@@ -17,8 +17,8 @@ import org.openapitools.server.api.model.BulkOutputFormat;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BulkDownloadRequest   {
   
-  private List<BulkEntityType> entityTypes;
-  private List<String> entityIds;
+  private List<BulkEntityType> entityTypes = new ArrayList<>();
+  private List<String> entityIds = new ArrayList<>();
   private String updatedSince;
   private BulkDownloadRequestCampaignFilter campaignFilter;
   private BulkOutputFormat outputFormat = "JSON";

@@ -29,7 +29,7 @@ data class CatalogsFeedIngestionInfo(
 
     @Schema(example = "null", description = "The number of ingested products that are in preorder.")
     @get:JsonProperty("PREORDER") val PREORDER: kotlin.Int? = null
-) {
+    ) {
 
 }
 

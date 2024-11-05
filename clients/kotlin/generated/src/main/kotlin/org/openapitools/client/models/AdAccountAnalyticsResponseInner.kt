@@ -37,5 +37,8 @@ data class AdAccountAnalyticsResponseInner (
     @Json(name = "DATE")
     val DATE: java.time.LocalDate? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Any>()
+) : kotlin.collections.HashMap<String, kotlin.Any>() {
+
+
+}
 

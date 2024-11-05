@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -14,10 +14,10 @@ syntax = "proto3";
 
 package openapitools;
 
-import public "models/ad_common_tracking_urls.proto";
 import public "models/campaign_summary_status.proto";
 import public "models/entity_status.proto";
 import public "models/objective_type.proto";
+import public "models/tracking_urls.proto";
 
 message CampaignCreateResponseData {
 
@@ -38,7 +38,7 @@ message CampaignCreateResponseData {
   // Order line ID that appears on the invoice.
   optional string order_line_id = 3191467;
 
-  AdCommonTrackingUrls tracking_urls = 127999343;
+  TrackingUrls tracking_urls = 127999343;
 
   // Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   optional int32 start_time = 499403640;
@@ -46,16 +46,14 @@ message CampaignCreateResponseData {
   // Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
   optional int32 end_time = 114938804;
 
-  CampaignSummaryStatus summary_status = 8412845;
-
-  // Determines if a campaign has flexible daily budgets setup.
+  // Determine if a campaign has flexible daily budgets setup.
   optional bool is_flexible_daily_budgets = 492936940;
 
   // When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
   optional int32 default_ad_group_budget_in_micro_currency = 160880153;
 
   // Specifies whether the campaign was created in the automated campaign flow
-  bool is_automated_campaign = 526068725;
+  optional bool is_automated_campaign = 526068725;
 
   // Campaign ID.
   string id = 3355;
@@ -73,5 +71,7 @@ message CampaignCreateResponseData {
 
   // Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
   optional bool is_campaign_budget_optimization = 108629651;
+
+  CampaignSummaryStatus summary_status = 8412845;
 
 }

@@ -51,7 +51,7 @@ class LeadAdsApiTest : ShouldSpec() {
         should("test adAccountsSubscriptionsGetList") {
             // uncomment below to test adAccountsSubscriptionsGetList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val result : AdAccountsSubscriptionsGetList200Response = apiInstance.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark)
             //result shouldBe ("TODO")

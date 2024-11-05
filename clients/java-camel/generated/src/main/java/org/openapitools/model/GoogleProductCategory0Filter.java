@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * GoogleProductCategory0Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GoogleProductCategory0Filter {
 
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
@@ -43,7 +43,7 @@ public class GoogleProductCategory0Filter {
   /**
    * Get GOOGLE_PRODUCT_CATEGORY_0
    * @return GOOGLE_PRODUCT_CATEGORY_0
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "GOOGLE_PRODUCT_CATEGORY_0", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("GOOGLE_PRODUCT_CATEGORY_0")

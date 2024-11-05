@@ -13,11 +13,12 @@ import javax.validation.Valid;
 /**
  * Batch of logs sent from an integration application.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class IntegrationLogsRequest   {
   @JsonProperty("logs")
   @NotNull
+@Size(min=1,max=250)
 @Valid
 
   private List<@Valid IntegrationLog> logs = new ArrayList<>();

@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * AudienceCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AudienceCommon {
 
   private String adAccountId;
@@ -36,7 +36,7 @@ public class AudienceCommon {
   /**
    * Ad account ID.
    * @return adAccountId
-  */
+   */
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
@@ -56,7 +56,7 @@ public class AudienceCommon {
   /**
    * Audience name.
    * @return name
-  */
+   */
   
   @Schema(name = "name", example = "string", description = "Audience name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -76,7 +76,7 @@ public class AudienceCommon {
   /**
    * Get rule
    * @return rule
-  */
+   */
   @Valid 
   @Schema(name = "rule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rule")

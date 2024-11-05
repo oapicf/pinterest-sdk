@@ -42,5 +42,8 @@ data class UserWebsiteSummary (
     @Json(name = "verified_at")
     val verifiedAt: kotlin.String? = null
 
-)
+) {
+
+
+}
 

@@ -40,6 +40,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -48,7 +51,7 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $explicit_following = false; // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
@@ -65,7 +68,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
@@ -75,7 +78,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -94,7 +97,7 @@ followUserUpdate($username, $follow_user_request): \OpenAPI\Client\Model\UserSum
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 
@@ -168,6 +171,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -176,7 +182,7 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->followersList($bookmark, $page_size);
@@ -191,7 +197,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -199,7 +205,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -230,6 +236,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -256,7 +265,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -424,6 +433,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -475,7 +487,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -504,6 +516,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: client_credentials
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -557,7 +572,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -588,6 +603,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -597,7 +615,7 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
 );
 $username = username; // string | A valid username
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->userAccountFollowedInterests($username, $bookmark, $page_size);
@@ -613,7 +631,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **username** | **string**| A valid username | |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -621,7 +639,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -640,7 +658,7 @@ userAccountGet($ad_account_id): \OpenAPI\Client\Model\Account
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 
@@ -650,6 +668,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: pinterest_oauth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: client_credentials
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
@@ -681,7 +702,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -712,6 +733,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -720,8 +744,8 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
-$feed_type = 'feed_type_example'; // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$feed_type = 'feed_type_example'; // \OpenAPI\Client\Model\UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
 $explicit_following = false; // bool | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
@@ -738,8 +762,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **feed_type** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **feed_type** | **\OpenAPI\Client\Model\UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] |
 | **explicit_following** | **bool**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
@@ -749,7 +773,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -788,7 +812,7 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     $config
 );
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 
 try {
     $result = $apiInstance->userWebsitesGet($bookmark, $page_size);
@@ -803,7 +827,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -825,7 +849,7 @@ try {
 ## `verifyWebsiteUpdate()`
 
 ```php
-verifyWebsiteUpdate($user_website_verify_request): \OpenAPI\Client\Model\UserWebsiteSummary
+verifyWebsiteUpdate($user_website_verify_request, $ad_account_id): \OpenAPI\Client\Model\UserWebsiteSummary
 ```
 
 Verify website
@@ -850,9 +874,10 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     $config
 );
 $user_website_verify_request = new \OpenAPI\Client\Model\UserWebsiteVerifyRequest(); // \OpenAPI\Client\Model\UserWebsiteVerifyRequest | Verify a website.
+$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->verifyWebsiteUpdate($user_website_verify_request);
+    $result = $apiInstance->verifyWebsiteUpdate($user_website_verify_request, $ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserAccountApi->verifyWebsiteUpdate: ', $e->getMessage(), PHP_EOL;
@@ -864,6 +889,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **user_website_verify_request** | [**\OpenAPI\Client\Model\UserWebsiteVerifyRequest**](../Model/UserWebsiteVerifyRequest.md)| Verify a website. | |
+| **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -885,7 +911,7 @@ try {
 ## `websiteVerificationGet()`
 
 ```php
-websiteVerificationGet(): \OpenAPI\Client\Model\UserWebsiteVerificationCode
+websiteVerificationGet($ad_account_id): \OpenAPI\Client\Model\UserWebsiteVerificationCode
 ```
 
 Get user verification code for website claiming
@@ -902,6 +928,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -909,9 +938,10 @@ $apiInstance = new OpenAPI\Client\Api\UserAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
+$ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
-    $result = $apiInstance->websiteVerificationGet();
+    $result = $apiInstance->websiteVerificationGet($ad_account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserAccountApi->websiteVerificationGet: ', $e->getMessage(), PHP_EOL;
@@ -920,7 +950,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
@@ -928,7 +960,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

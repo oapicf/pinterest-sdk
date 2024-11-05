@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,12 +19,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Entity status
 * Values: ACTIVE,PAUSED,ARCHIVED,DRAFT,DELETED_DRAFT
 */
-enum class EntityStatus(val value: kotlin.String) {
+enum class EntityStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("ACTIVE") ACTIVE("ACTIVE"),
-    @JsonProperty("PAUSED") PAUSED("PAUSED"),
-    @JsonProperty("ARCHIVED") ARCHIVED("ARCHIVED"),
-    @JsonProperty("DRAFT") DRAFT("DRAFT"),
-    @JsonProperty("DELETED_DRAFT") DELETED_DRAFT("DELETED_DRAFT")
+    ACTIVE("ACTIVE"),
+    PAUSED("PAUSED"),
+    ARCHIVED("ARCHIVED"),
+    DRAFT("DRAFT"),
+    DELETED_DRAFT("DELETED_DRAFT");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): EntityStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

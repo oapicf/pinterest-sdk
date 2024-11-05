@@ -14,7 +14,7 @@ import ProductGroupPromotionCreateRequest._
 case class ProductGroupPromotionCreateRequest (
   /* ID of the Ad Group the Product Group Promotion belongs to. */
   adGroupId: String,
-productGroupPromotion: List[ProductGroupPromotion])
+productGroupPromotion: List[ProductGroupPromotionCreateRequestElement])
 
 object ProductGroupPromotionCreateRequest {
   import DateTimeCodecs._

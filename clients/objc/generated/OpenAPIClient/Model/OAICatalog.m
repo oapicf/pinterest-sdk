@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"createdAt", @"updatedAt", ];
+  NSArray *optionalProperties = @[];
   return [optionalProperties containsObject:propertyName];
 }
 

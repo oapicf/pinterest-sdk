@@ -9,9 +9,8 @@
 
 
 #include <string>
-#include "AdCommon_tracking_urls.h"
-#include "CampaignSummaryStatus.h"
 #include "EntityStatus.h"
+#include "TrackingUrls.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -92,11 +91,11 @@ public:
 	void setOrderLineId(std::string  order_line_id);
 	/*! \brief Get 
 	 */
-	AdCommon_tracking_urls getTrackingUrls();
+	TrackingUrls getTrackingUrls();
 
 	/*! \brief Set 
 	 */
-	void setTrackingUrls(AdCommon_tracking_urls  tracking_urls);
+	void setTrackingUrls(TrackingUrls  tracking_urls);
 	/*! \brief Get Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	int getStartTime();
@@ -111,13 +110,13 @@ public:
 	/*! \brief Set Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	void setEndTime(int  end_time);
-	/*! \brief Get 
+	/*! \brief Get Determine if a campaign has flexible daily budgets setup.
 	 */
-	CampaignSummaryStatus getSummaryStatus();
+	bool getIsFlexibleDailyBudgets();
 
-	/*! \brief Set 
+	/*! \brief Set Determine if a campaign has flexible daily budgets setup.
 	 */
-	void setSummaryStatus(CampaignSummaryStatus  summary_status);
+	void setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets);
 
 private:
 	std::string ad_account_id;
@@ -126,10 +125,10 @@ private:
 	int lifetime_spend_cap;
 	int daily_spend_cap;
 	std::string order_line_id;
-	AdCommon_tracking_urls tracking_urls;
+	TrackingUrls tracking_urls;
 	int start_time;
 	int end_time;
-	CampaignSummaryStatus summary_status;
+	bool is_flexible_daily_budgets;
 	void __init();
 	void __cleanup();
 

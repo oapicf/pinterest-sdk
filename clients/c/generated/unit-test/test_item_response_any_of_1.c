@@ -25,6 +25,7 @@ item_response_any_of_1_t* instantiate_item_response_any_of_1(int include_optiona
       pinterest_rest_api_item_response_any_of_1__RETAIL,
       "DS0294-M",
       list_createList(),
+      "DS0294-M",
       "DS0294-M"
     );
   } else {
@@ -32,6 +33,7 @@ item_response_any_of_1_t* instantiate_item_response_any_of_1(int include_optiona
       pinterest_rest_api_item_response_any_of_1__RETAIL,
       "DS0294-M",
       list_createList(),
+      "DS0294-M",
       "DS0294-M"
     );
   }

@@ -3,8 +3,8 @@ package com.prokarma.pkmst.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.prokarma.pkmst.model.ImageMetadataImages;
 import com.prokarma.pkmst.model.PinMedia;
+import com.prokarma.pkmst.model.PinMediaWithImageAllOfImages;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -17,26 +17,26 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Pin with image.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinMediaWithImage extends PinMedia  {
   @JsonProperty("images")
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
 
-  public PinMediaWithImage images(ImageMetadataImages images) {
+  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
 
-   /**
+  /**
    * Get images
    * @return images
-  **/
+   */
   @ApiModelProperty(value = "")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

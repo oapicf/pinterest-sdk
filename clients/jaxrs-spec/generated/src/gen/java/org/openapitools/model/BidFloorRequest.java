@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("BidFloorRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BidFloorRequest   {
   private @Valid List<@Valid BidFloorSpec> bidFloorSpecs = new ArrayList<>();
-  private @Valid TargetingSpec targetingSpec;
+  private TargetingSpec targetingSpec;
 
   /**
    **/
@@ -35,8 +35,7 @@ public class BidFloorRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("bid_floor_specs")
-  @NotNull
-  public List<BidFloorSpec> getBidFloorSpecs() {
+  @NotNull @Valid public List<@Valid BidFloorSpec> getBidFloorSpecs() {
     return bidFloorSpecs;
   }
 
@@ -71,7 +70,7 @@ public class BidFloorRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
+  @Valid public TargetingSpec getTargetingSpec() {
     return targetingSpec;
   }
 

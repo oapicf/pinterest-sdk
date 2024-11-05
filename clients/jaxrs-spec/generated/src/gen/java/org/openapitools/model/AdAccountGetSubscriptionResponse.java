@@ -16,17 +16,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdAccountGetSubscriptionResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccountGetSubscriptionResponse   {
-  private @Valid String leadFormId;
-  private @Valid String webhookUrl;
-  private @Valid String id;
-  private @Valid String userAccountId;
-  private @Valid String adAccountId;
-  private @Valid String apiVersion;
-  private @Valid String cryptographicKey;
-  private @Valid String cryptographicAlgorithm;
-  private @Valid Integer createdTime;
+  private String leadFormId;
+  private String webhookUrl;
+  private String id;
+  private String userAccountId;
+  private String adAccountId;
+  private String apiVersion;
+  private String cryptographicKey;
+  private String cryptographicAlgorithm;
+  private Integer createdTime;
 
   /**
    * Lead form ID.
@@ -39,7 +39,7 @@ public class AdAccountGetSubscriptionResponse   {
   
   @ApiModelProperty(example = "383791336903426390", value = "Lead form ID.")
   @JsonProperty("lead_form_id")
- @Pattern(regexp="^\\d+$")  public String getLeadFormId() {
+   @Pattern(regexp="^\\d+$")public String getLeadFormId() {
     return leadFormId;
   }
 
@@ -79,7 +79,7 @@ public class AdAccountGetSubscriptionResponse   {
   
   @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
   @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
+   @Pattern(regexp="^\\d+$")public String getId() {
     return id;
   }
 
@@ -99,7 +99,7 @@ public class AdAccountGetSubscriptionResponse   {
   
   @ApiModelProperty(example = "549755885175", value = "User account used to subscribe lead data.")
   @JsonProperty("user_account_id")
- @Pattern(regexp="^\\d+$")  public String getUserAccountId() {
+   @Pattern(regexp="^\\d+$")public String getUserAccountId() {
     return userAccountId;
   }
 
@@ -119,7 +119,7 @@ public class AdAccountGetSubscriptionResponse   {
   
   @ApiModelProperty(example = "549755885176", value = "The Ad Account ID that this lead form belongs to.")
   @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+   @Pattern(regexp="^\\d+$")public String getAdAccountId() {
     return adAccountId;
   }
 

@@ -13,7 +13,8 @@
        'location' := binary(),
        'preferred_processing_schedule' => openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule(),
        'default_country' => openapi_country:openapi_country(),
-       'default_availability' => openapi_product_availability_type:openapi_product_availability_type()
+       'default_availability' => openapi_product_availability_type:openapi_product_availability_type(),
+       'status' => openapi_catalogs_status:openapi_catalogs_status()
      }.
 
 encode(#{ 'default_currency' := DefaultCurrency,
@@ -24,7 +25,8 @@ encode(#{ 'default_currency' := DefaultCurrency,
           'location' := Location,
           'preferred_processing_schedule' := PreferredProcessingSchedule,
           'default_country' := DefaultCountry,
-          'default_availability' := DefaultAvailability
+          'default_availability' := DefaultAvailability,
+          'status' := Status
         }) ->
     #{ 'default_currency' => DefaultCurrency,
        'name' => Name,
@@ -34,5 +36,6 @@ encode(#{ 'default_currency' := DefaultCurrency,
        'location' => Location,
        'preferred_processing_schedule' => PreferredProcessingSchedule,
        'default_country' => DefaultCountry,
-       'default_availability' => DefaultAvailability
+       'default_availability' => DefaultAvailability,
+       'status' => Status
      }.

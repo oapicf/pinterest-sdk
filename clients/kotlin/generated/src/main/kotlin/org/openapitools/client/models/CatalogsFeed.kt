@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CatalogsCreativeAssetsFeed
 import org.openapitools.client.models.CatalogsFeedCredentials
 import org.openapitools.client.models.CatalogsFeedProcessingSchedule
 import org.openapitools.client.models.CatalogsFormat
@@ -32,6 +33,9 @@ import com.squareup.moshi.JsonClass
 /**
  * Catalogs Feed object
  *
+ * @param createdAt 
+ * @param id 
+ * @param updatedAt 
  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
  * @param format 
  * @param catalogType 
@@ -44,14 +48,17 @@ import com.squareup.moshi.JsonClass
  * @param defaultCountry 
  * @param defaultAvailability 
  * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
- * @param createdAt 
- * @param id 
- * @param updatedAt 
  */
 
 
 interface CatalogsFeed {
 
+    @Json(name = "created_at")
+    val createdAt: java.time.OffsetDateTime
+    @Json(name = "id")
+    val id: kotlin.String
+    @Json(name = "updated_at")
+    val updatedAt: java.time.OffsetDateTime
     /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
     @Json(name = "name")
     val name: kotlin.String?
@@ -80,11 +87,6 @@ interface CatalogsFeed {
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String?
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime?
-    @Json(name = "id")
-    val id: kotlin.String?
-    @Json(name = "updated_at")
-    val updatedAt: java.time.OffsetDateTime?
+
 }
 

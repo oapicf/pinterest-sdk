@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Audience operation type (update or remove).
 * Values: UPDATE,REMOVE
 */
-enum class AudienceUpdateOperationType(val value: kotlin.String) {
+enum class AudienceUpdateOperationType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("UPDATE") UPDATE("UPDATE"),
-    @JsonProperty("REMOVE") REMOVE("REMOVE")
+    UPDATE("UPDATE"),
+    REMOVE("REMOVE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): AudienceUpdateOperationType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

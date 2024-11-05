@@ -33,7 +33,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public interface UserAccountApiService {
       Response boardsUserFollowsList(String bookmark,Integer pageSize,Boolean explicitFollowing,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
@@ -57,8 +57,8 @@ public interface UserAccountApiService {
       throws NotFoundException;
       Response userWebsitesGet(String bookmark,Integer pageSize,SecurityContext securityContext)
       throws NotFoundException;
-      Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest,SecurityContext securityContext)
+      Response verifyWebsiteUpdate(UserWebsiteVerifyRequest userWebsiteVerifyRequest,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
-      Response websiteVerificationGet(SecurityContext securityContext)
+      Response websiteVerificationGet(String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
 }

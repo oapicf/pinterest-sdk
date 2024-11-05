@@ -5,9 +5,9 @@
 -export_type([openapi_items_batch_post_request/0]).
 
 -type openapi_items_batch_post_request() ::
-    #{ 'catalog_type' := openapi_catalogs_type:openapi_catalogs_type(),
+    #{ 'catalog_type' := binary(),
        'country' := openapi_country:openapi_country(),
-       'language' := openapi_language:openapi_language(),
+       'language' := openapi_catalogs_items_request_language:openapi_catalogs_items_request_language(),
        'items' := list(),
        'catalog_id' => binary(),
        'operation' := openapi_batch_operation:openapi_batch_operation()

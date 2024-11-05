@@ -33,5 +33,8 @@ data class TrendingKeywordsResponse (
     @Json(name = "trends")
     val trends: kotlin.collections.List<TrendingKeywordsResponseTrendsInner>? = null
 
-)
+) {
+
+
+}
 

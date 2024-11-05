@@ -57,7 +57,7 @@ class ProductGroupPromotionsApiTest : ShouldSpec() {
             //val productGroupPromotionIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Product group promotion Ids.
             //val entityStatuses : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Entity status
             //val adGroupId : kotlin.String = 123123123 // kotlin.String | Ad group Id.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val result : ProductGroupPromotionsList200Response = apiInstance.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark)

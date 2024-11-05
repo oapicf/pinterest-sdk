@@ -63,16 +63,39 @@ module AdAccountsApiHandlerTestsHelper =
 
   AnalyticsCreateReportBody <- WebUtility.HtmlDecode "{
   &quot;end_date&quot; : &quot;2020-12-20&quot;,
-  &quot;attribution_types&quot; : [ &quot;INDIVIDUAL&quot;, &quot;INDIVIDUAL&quot; ],
   &quot;view_window_days&quot; : 1,
-  &quot;level&quot; : &quot;CAMPAIGN&quot;,
   &quot;report_format&quot; : &quot;JSON&quot;,
-  &quot;granularity&quot; : &quot;granularity&quot;,
+  &quot;metrics_filters&quot; : [ {
+    &quot;field&quot; : &quot;SPEND_IN_DOLLAR&quot;,
+    &quot;values&quot; : [ 5.962133916683182, 5.962133916683182 ],
+    &quot;operator&quot; : &quot;LESS_THAN&quot;
+  }, {
+    &quot;field&quot; : &quot;SPEND_IN_DOLLAR&quot;,
+    &quot;values&quot; : [ 5.962133916683182, 5.962133916683182 ],
+    &quot;operator&quot; : &quot;LESS_THAN&quot;
+  } ],
   &quot;columns&quot; : [ &quot;SPEND_IN_MICRO_DOLLAR&quot;, &quot;SPEND_IN_MICRO_DOLLAR&quot; ],
+  &quot;campaign_ids&quot; : [ &quot;12345678&quot; ],
   &quot;click_window_days&quot; : 0,
   &quot;conversion_report_time&quot; : &quot;TIME_OF_AD_ACTION&quot;,
+  &quot;product_group_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot;, &quot;VIDEO_VIEW&quot; ],
+  &quot;product_group_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
+  &quot;campaign_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
+  &quot;start_hour&quot; : 12,
+  &quot;ad_group_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;end_hour&quot; : 5,
+  &quot;targeting_types&quot; : [ &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot; ],
+  &quot;start_date&quot; : &quot;2020-12-20&quot;,
+  &quot;level&quot; : &quot;CAMPAIGN&quot;,
+  &quot;ad_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;ad_statuses&quot; : [ &quot;APPROVED&quot;, &quot;PAUSED&quot; ],
+  &quot;primary_sort&quot; : &quot;BY_ID&quot;,
+  &quot;attribution_types&quot; : [ &quot;INDIVIDUAL&quot;, &quot;INDIVIDUAL&quot; ],
+  &quot;granularity&quot; : &quot;granularity&quot;,
+  &quot;ad_group_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
   &quot;engagement_window_days&quot; : 6,
-  &quot;start_date&quot; : &quot;2020-12-20&quot;
+  &quot;product_item_ids&quot; : [ &quot;12345678&quot; ]
 }"
   AnalyticsCreateReportExamples <- AnalyticsCreateReportExamples.Add("application/json", AnalyticsCreateReportBody)
 

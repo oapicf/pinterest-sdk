@@ -15,7 +15,7 @@
 
 typedef struct item_batch_record_t item_batch_record_t;
 
-#include "item_attributes.h"
+#include "item_attributes_request.h"
 #include "item_create_batch_record.h"
 #include "item_delete_batch_record.h"
 #include "item_delete_discontinued_batch_record.h"
@@ -35,14 +35,14 @@ pinterest_rest_api_item_batch_record__e item_batch_record_update_mask_FromString
 
 typedef struct item_batch_record_t {
     char *item_id; // string
-    struct item_attributes_t *attributes; //model
+    struct item_attributes_request_t *attributes; //model
     list_t *update_mask; //nonprimitive container
 
 } item_batch_record_t;
 
 item_batch_record_t *item_batch_record_create(
     char *item_id,
-    item_attributes_t *attributes,
+    item_attributes_request_t *attributes,
     list_t *update_mask
 );
 

@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.AdCommonQuizPinData;
-import org.openapitools.model.AdCommonTrackingUrls;
 import org.openapitools.model.CreativeType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
+import org.openapitools.model.QuizPinData;
+import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -24,28 +24,28 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdCreateRequest   {
-  private @Valid String adGroupId;
-  private @Valid String androidDeepLink;
+  private String adGroupId;
+  private String androidDeepLink;
   private @Valid List<String> carouselAndroidDeepLinks;
   private @Valid List<String> carouselDestinationUrls;
   private @Valid List<String> carouselIosDeepLinks;
-  private @Valid String clickTrackingUrl;
-  private @Valid CreativeType creativeType;
-  private @Valid String destinationUrl;
-  private @Valid String iosDeepLink;
-  private @Valid Boolean isPinDeleted;
-  private @Valid Boolean isRemovable;
-  private @Valid String name;
-  private @Valid EntityStatus status;
-  private @Valid AdCommonTrackingUrls trackingUrls;
-  private @Valid String viewTrackingUrl;
-  private @Valid String leadFormId;
-  private @Valid GridClickType gridClickType;
+  private String clickTrackingUrl;
+  private CreativeType creativeType;
+  private String destinationUrl;
+  private String iosDeepLink;
+  private Boolean isPinDeleted;
+  private Boolean isRemovable;
+  private String name;
+  private EntityStatus status;
+  private TrackingUrls trackingUrls;
+  private String viewTrackingUrl;
+  private String leadFormId;
+  private GridClickType gridClickType;
   public enum CustomizableCtaTypeEnum {
 
-    GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE")), ORDER_NOW(String.valueOf("ORDER_NOW")), SHOP_NOW(String.valueOf("SHOP_NOW")), SIGN_UP(String.valueOf("SIGN_UP")), SUBSCRIBE(String.valueOf("SUBSCRIBE")), BUY_NOW(String.valueOf("BUY_NOW")), CONTACT_US(String.valueOf("CONTACT_US")), GET_QUOTE(String.valueOf("GET_QUOTE")), VISIT_WEBSITE(String.valueOf("VISIT_WEBSITE")), APPLY_NOW(String.valueOf("APPLY_NOW")), BOOK_NOW(String.valueOf("BOOK_NOW")), REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), REGISTER_NOW(String.valueOf("REGISTER_NOW")), FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_NOW(String.valueOf("WATCH_NOW")), READ_MORE(String.valueOf("READ_MORE")), NULL(String.valueOf("null"));
+    GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE")), ORDER_NOW(String.valueOf("ORDER_NOW")), SHOP_NOW(String.valueOf("SHOP_NOW")), SIGN_UP(String.valueOf("SIGN_UP")), SUBSCRIBE(String.valueOf("SUBSCRIBE")), BUY_NOW(String.valueOf("BUY_NOW")), CONTACT_US(String.valueOf("CONTACT_US")), GET_QUOTE(String.valueOf("GET_QUOTE")), VISIT_SITE(String.valueOf("VISIT_SITE")), APPLY_NOW(String.valueOf("APPLY_NOW")), BOOK_NOW(String.valueOf("BOOK_NOW")), REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), REGISTER_NOW(String.valueOf("REGISTER_NOW")), FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_NOW(String.valueOf("WATCH_NOW")), READ_MORE(String.valueOf("READ_MORE"));
 
 
     private String value;
@@ -90,9 +90,9 @@ public class AdCreateRequest   {
     }
 }
 
-  private @Valid CustomizableCtaTypeEnum customizableCtaType;
-  private @Valid AdCommonQuizPinData quizPinData;
-  private @Valid String pinId;
+  private CustomizableCtaTypeEnum customizableCtaType;
+  private QuizPinData quizPinData;
+  private String pinId;
 
   /**
    * ID of the ad group that contains the ad.
@@ -105,8 +105,7 @@ public class AdCreateRequest   {
   
   @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group that contains the ad.")
   @JsonProperty("ad_group_id")
-  @NotNull
- @Pattern(regexp="^(AG)?\\d+$")  public String getAdGroupId() {
+  @NotNull  @Pattern(regexp="^(AG)?\\d+$")public String getAdGroupId() {
     return adGroupId;
   }
 
@@ -116,7 +115,7 @@ public class AdCreateRequest   {
   }
 
   /**
-   * Deep link URL for Android devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for Android devices.
    **/
   public AdCreateRequest androidDeepLink(String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
@@ -124,7 +123,7 @@ public class AdCreateRequest   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for Android devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
   @JsonProperty("android_deep_link")
   public String getAndroidDeepLink() {
     return androidDeepLink;
@@ -273,8 +272,7 @@ public class AdCreateRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("creative_type")
-  @NotNull
-  public CreativeType getCreativeType() {
+  @NotNull public CreativeType getCreativeType() {
     return creativeType;
   }
 
@@ -304,7 +302,7 @@ public class AdCreateRequest   {
   }
 
   /**
-   * Deep link URL for iOS devices. Not currently available. Using this field will generate an error.
+   * Deep link URL for iOS devices.
    **/
   public AdCreateRequest iosDeepLink(String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
@@ -312,7 +310,7 @@ public class AdCreateRequest   {
   }
 
   
-  @ApiModelProperty(value = "Deep link URL for iOS devices. Not currently available. Using this field will generate an error.")
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
   @JsonProperty("ios_deep_link")
   public String getIosDeepLink() {
     return iosDeepLink;
@@ -404,7 +402,7 @@ public class AdCreateRequest   {
 
   /**
    **/
-  public AdCreateRequest trackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public AdCreateRequest trackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
     return this;
   }
@@ -412,12 +410,12 @@ public class AdCreateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tracking_urls")
-  public AdCommonTrackingUrls getTrackingUrls() {
+  @Valid public TrackingUrls getTrackingUrls() {
     return trackingUrls;
   }
 
   @JsonProperty("tracking_urls")
-  public void setTrackingUrls(AdCommonTrackingUrls trackingUrls) {
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
   }
 
@@ -452,7 +450,7 @@ public class AdCreateRequest   {
   
   @ApiModelProperty(value = "Lead form ID for lead ad generation.")
   @JsonProperty("lead_form_id")
- @Pattern(regexp="^(AG)?\\d+$")  public String getLeadFormId() {
+   @Pattern(regexp="^(AG)?\\d+$")public String getLeadFormId() {
     return leadFormId;
   }
 
@@ -481,7 +479,7 @@ public class AdCreateRequest   {
   }
 
   /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
    **/
   public AdCreateRequest customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
     this.customizableCtaType = customizableCtaType;
@@ -489,7 +487,7 @@ public class AdCreateRequest   {
   }
 
   
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_WEBSITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
   @JsonProperty("customizable_cta_type")
   public CustomizableCtaTypeEnum getCustomizableCtaType() {
     return customizableCtaType;
@@ -501,21 +499,22 @@ public class AdCreateRequest   {
   }
 
   /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
    **/
-  public AdCreateRequest quizPinData(AdCommonQuizPinData quizPinData) {
+  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
   @JsonProperty("quiz_pin_data")
-  public AdCommonQuizPinData getQuizPinData() {
+  @Valid public QuizPinData getQuizPinData() {
     return quizPinData;
   }
 
   @JsonProperty("quiz_pin_data")
-  public void setQuizPinData(AdCommonQuizPinData quizPinData) {
+  public void setQuizPinData(QuizPinData quizPinData) {
     this.quizPinData = quizPinData;
   }
 
@@ -530,8 +529,7 @@ public class AdCreateRequest   {
   
   @ApiModelProperty(example = "394205773611545468", required = true, value = "Pin ID.")
   @JsonProperty("pin_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getPinId() {
+  @NotNull  @Pattern(regexp="^\\d+$")public String getPinId() {
     return pinId;
   }
 

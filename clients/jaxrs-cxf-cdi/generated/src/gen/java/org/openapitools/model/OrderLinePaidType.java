@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum OrderLinePaidType {
 
-    @JsonProperty("PAID") PAID(String.valueOf("PAID")), @JsonProperty("BONUS") BONUS(String.valueOf("BONUS")), @JsonProperty("MAKE_GOOD") MAKE_GOOD(String.valueOf("MAKE_GOOD")), @JsonProperty("TEST") TEST(String.valueOf("TEST")), @JsonProperty("null") NULL(String.valueOf("null"));
+    @JsonProperty("PAID") PAID(String.valueOf("PAID")), @JsonProperty("BONUS") BONUS(String.valueOf("BONUS")), @JsonProperty("MAKE_GOOD") MAKE_GOOD(String.valueOf("MAKE_GOOD")), @JsonProperty("TEST") TEST(String.valueOf("TEST"));
 
 
     private String value;

@@ -13,28 +13,48 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsHotelBatchItem;
+import org.openapitools.model.CatalogsCreativeAssetsBatchItem;
+import org.openapitools.model.CatalogsCreativeAssetsBatchRequest;
 import org.openapitools.model.CatalogsHotelBatchRequest;
+import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsRetailBatchRequest;
-import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Country;
-import org.openapitools.model.Language;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A request object that can have multiple operations on a single batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-03-14T23:04:54.712028318Z[Etc/UTC]", comments = "Generator version: 7.4.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@ApiModel(description="A request object that can have multiple operations on a single batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2024-11-05T02:20:54.377772266Z[Etc/UTC]", comments = "Generator version: 7.9.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsBatchRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelBatchRequest.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailBatchRequest.class, name = "RETAIL"),
 })
 
 public class CatalogsVerticalBatchRequest   {
   
-  private CatalogsType catalogType;
+
+  /**
+   * Gets or Sets catalogType
+   */
+  public enum CatalogTypeEnum {
+    CREATIVE_ASSETS("CREATIVE_ASSETS");
+    private String value;
+
+    CatalogTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  private CatalogTypeEnum catalogType;
   private Country country;
-  private Language language;
-  private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
+  private CatalogsItemsRequestLanguage language;
+  private List<@Valid CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
   private String catalogId;
 
   /**
@@ -43,10 +63,10 @@ public class CatalogsVerticalBatchRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
   @NotNull
-  public CatalogsType getCatalogType() {
+  public CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogsType catalogType) {
+  public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
@@ -69,32 +89,32 @@ public class CatalogsVerticalBatchRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("language")
   @NotNull
-  public Language getLanguage() {
+  public CatalogsItemsRequestLanguage getLanguage() {
     return language;
   }
-  public void setLanguage(Language language) {
+  public void setLanguage(CatalogsItemsRequestLanguage language) {
     this.language = language;
   }
 
   /**
-   * Array with catalogs item operations
+   * Array with creative assets item operations
    **/
   
-  @ApiModelProperty(required = true, value = "Array with catalogs item operations")
+  @ApiModelProperty(required = true, value = "Array with creative assets item operations")
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=1000)  public List<@Valid CatalogsHotelBatchItem> getItems() {
+ @Size(min=1,max=1000)  public List<@Valid CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
   }
-  public void setItems(List<@Valid CatalogsHotelBatchItem> items) {
+  public void setItems(List<@Valid CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
   }
 
   /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
    **/
   
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
   @JsonProperty("catalog_id")
  @Pattern(regexp="^\\d+$")  public String getCatalogId() {
     return catalogId;

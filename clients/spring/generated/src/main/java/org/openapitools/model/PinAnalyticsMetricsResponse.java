@@ -25,14 +25,14 @@ import javax.annotation.Generated;
  * PinAnalyticsMetricsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PinAnalyticsMetricsResponse {
 
   @Valid
   private Map<String, Integer> lifetimeMetrics = new HashMap<>();
 
   @Valid
-  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics;
+  private List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
 
   @Valid
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
@@ -53,7 +53,7 @@ public class PinAnalyticsMetricsResponse {
   /**
    * The lifetime metric name and value.
    * @return lifetimeMetrics
-  */
+   */
   
   @Schema(name = "lifetime_metrics", example = "{\"TOTAL_COMMENTS\":10,\"TOTAL_REACTIONS\":12}", description = "The lifetime metric name and value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lifetime_metrics")
@@ -81,7 +81,7 @@ public class PinAnalyticsMetricsResponse {
   /**
    * Array with the requested daily metric records
    * @return dailyMetrics
-  */
+   */
   @Valid 
   @Schema(name = "daily_metrics", description = "Array with the requested daily metric records", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("daily_metrics")
@@ -109,7 +109,7 @@ public class PinAnalyticsMetricsResponse {
   /**
    * The metric name and value over the requested period for each requested metric
    * @return summaryMetrics
-  */
+   */
   @Valid 
   @Schema(name = "summary_metrics", example = "{\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"PIN_CLICK\":37,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", description = "The metric name and value over the requested period for each requested metric", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("summary_metrics")

@@ -10,7 +10,7 @@
         "type": "enum",
         "name": "CatalogsVerticalProductGroup_catalogUnderscoretype",
         "symbols": [
-          "RETAIL"
+          "CREATIVE_ASSETS"
         ]
       },
       "doc": ""
@@ -18,12 +18,12 @@
     {
       "name": "id",
       "type": "string",
-      "doc": "ID of the catalog product group."
+      "doc": "ID of the creative assets product group."
     },
     {
       "name": "name",
       "type": ["null", "string"],
-      "doc": "Name of catalog product group",
+      "doc": "Name of creative assets product group",
       "default": null
     },
     {
@@ -34,24 +34,7 @@
     },
     {
       "name": "filters",
-      "type": "model.CatalogsProductGroupFilters",
-      "doc": ""
-    },
-    {
-      "name": "created_at",
-      "type": ["null", "int"],
-      "doc": "Unix timestamp in seconds of when catalog product group was created.",
-      "default": null
-    },
-    {
-      "name": "updated_at",
-      "type": ["null", "int"],
-      "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
-      "default": null
-    },
-    {
-      "name": "catalog_id",
-      "type": "string",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
       "doc": ""
     },
     {
@@ -73,15 +56,38 @@
       "default": null
     },
     {
+      "name": "created_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of when catalog product group was created.",
+      "default": null
+    },
+    {
+      "name": "updated_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
+      "default": null
+    },
+    {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
       "name": "feed_id",
-      "type": {
-        "type": "enum",
-        "name": "CatalogsVerticalProductGroup_feedUnderscoreid",
-        "symbols": [
-          "null"
-        ]
-      },
-      "doc": ""
+      "type": "string",
+      "doc": "id of the catalogs feed belonging to this catalog product group"
+    },
+    {
+      "name": "country",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "locale",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
     }
   ]
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -217,7 +217,7 @@ func (a *BulkAPIService) BulkRequestGetExecute(r ApiBulkRequestGetRequest) (*Bul
 	}
 
 	if r.includeDetails != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", r.includeDetails, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", r.includeDetails, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.includeDetails = &defaultValue

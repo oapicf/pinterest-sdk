@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * AdPreviewCreateFromPin
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdPreviewCreateFromPin implements AdPreviewRequest {
 
   private String pinId;
@@ -42,7 +42,7 @@ public class AdPreviewCreateFromPin implements AdPreviewRequest {
   /**
    * Pin ID.
    * @return pinId
-  */
+   */
   @NotNull 
   @Schema(name = "pin_id", example = "7389479023", description = "Pin ID.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("pin_id")

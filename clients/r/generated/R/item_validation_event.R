@@ -19,8 +19,7 @@ ItemValidationEvent <- R6::R6Class(
     `attribute` = NULL,
     `code` = NULL,
     `message` = NULL,
-    #' Initialize a new ItemValidationEvent class.
-    #'
+
     #' @description
     #' Initialize a new ItemValidationEvent class.
     #'
@@ -28,7 +27,6 @@ ItemValidationEvent <- R6::R6Class(
     #' @param code The event code that the item validation event references
     #' @param message Title message describing the item validation event
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`attribute` = NULL, `code` = NULL, `message` = NULL, ...) {
       if (!is.null(`attribute`)) {
         if (!(is.character(`attribute`) && length(`attribute`) == 1)) {
@@ -49,13 +47,11 @@ ItemValidationEvent <- R6::R6Class(
         self$`message` <- `message`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ItemValidationEvent in JSON format
-    #' @export
     toJSON = function() {
       ItemValidationEventObject <- list()
       if (!is.null(self$`attribute`)) {
@@ -72,14 +68,12 @@ ItemValidationEvent <- R6::R6Class(
       }
       ItemValidationEventObject
     },
-    #' Deserialize JSON string into an instance of ItemValidationEvent
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ItemValidationEvent
     #'
     #' @param input_json the JSON input
     #' @return the instance of ItemValidationEvent
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attribute`)) {
@@ -93,13 +87,11 @@ ItemValidationEvent <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return ItemValidationEvent in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`attribute`)) {
@@ -130,14 +122,12 @@ ItemValidationEvent <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of ItemValidationEvent
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of ItemValidationEvent
     #'
     #' @param input_json the JSON input
     #' @return the instance of ItemValidationEvent
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`attribute` <- this_object$`attribute`
@@ -145,53 +135,42 @@ ItemValidationEvent <- R6::R6Class(
       self$`message` <- this_object$`message`
       self
     },
-    #' Validate JSON input with respect to ItemValidationEvent
-    #'
+
     #' @description
     #' Validate JSON input with respect to ItemValidationEvent and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of ItemValidationEvent
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

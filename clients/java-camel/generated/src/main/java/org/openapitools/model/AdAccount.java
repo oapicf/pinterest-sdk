@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  * AdAccount
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AdAccount {
 
   private String id;
@@ -42,7 +42,7 @@ public class AdAccount {
   private Currency currency;
 
   @Valid
-  private List<BusinessAccessRole> permissions;
+  private List<BusinessAccessRole> permissions = new ArrayList<>();
 
   private JsonNullable<Integer> createdTime = JsonNullable.<Integer>undefined();
 
@@ -56,7 +56,7 @@ public class AdAccount {
   /**
    * Get id
    * @return id
-  */
+   */
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
@@ -76,7 +76,7 @@ public class AdAccount {
   /**
    * Get name
    * @return name
-  */
+   */
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
@@ -96,7 +96,7 @@ public class AdAccount {
   /**
    * Get owner
    * @return owner
-  */
+   */
   @Valid 
   @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("owner")
@@ -116,7 +116,7 @@ public class AdAccount {
   /**
    * Get country
    * @return country
-  */
+   */
   @Valid 
   @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
@@ -136,7 +136,7 @@ public class AdAccount {
   /**
    * Get currency
    * @return currency
-  */
+   */
   @Valid 
   @Schema(name = "currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
@@ -164,7 +164,7 @@ public class AdAccount {
   /**
    * Get permissions
    * @return permissions
-  */
+   */
   @Valid 
   @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("permissions")
@@ -184,7 +184,7 @@ public class AdAccount {
   /**
    * Creation time. Unix timestamp in seconds.
    * @return createdTime
-  */
+   */
   
   @Schema(name = "created_time", example = "1451431341", description = "Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
@@ -204,7 +204,7 @@ public class AdAccount {
   /**
    * Last update time. Unix timestamp in seconds.
    * @return updatedTime
-  */
+   */
   
   @Schema(name = "updated_time", example = "1451431341", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")

@@ -1,6 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import javax.validation.constraints.DecimalMax
@@ -43,25 +44,41 @@ data class PinMediaSourceVideoID(
 
     @Schema(example = "null", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = true
-) {
+    ) {
 
     /**
     * 
     * Values: video_id
     */
-    enum class SourceType(val value: kotlin.String) {
+    enum class SourceType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("video_id") video_id("video_id")
+        video_id("video_id");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): SourceType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
     /**
     * Content type for cover image Base64.
     * Values: jpeg,png
     */
-    enum class CoverImageContentType(val value: kotlin.String) {
+    enum class CoverImageContentType(@get:JsonValue val value: kotlin.String) {
 
-        @JsonProperty("image/jpeg") jpeg("image/jpeg"),
-        @JsonProperty("image/png") png("image/png")
+        jpeg("image/jpeg"),
+        png("image/png");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): CoverImageContentType {
+                return values().first{it -> it.value == value}
+            }
+        }
     }
 
 }

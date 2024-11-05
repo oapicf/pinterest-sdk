@@ -15,11 +15,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ImageDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-14T23:05:05.545684373Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-11-05T02:21:14.931372798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ImageDetails   {
-  private @Valid Integer width;
-  private @Valid Integer height;
-  private @Valid String url;
+  private Integer width;
+  private Integer height;
+  private String url;
 
   /**
    * minimum: 100
@@ -32,8 +32,7 @@ public class ImageDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("width")
-  @NotNull
- @Min(100)  public Integer getWidth() {
+  @NotNull  @Min(100)public Integer getWidth() {
     return width;
   }
 
@@ -53,8 +52,7 @@ public class ImageDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("height")
-  @NotNull
- @Min(100)  public Integer getHeight() {
+  @NotNull  @Min(100)public Integer getHeight() {
     return height;
   }
 
@@ -73,8 +71,7 @@ public class ImageDetails   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("url")
-  @NotNull
-  public String getUrl() {
+  @NotNull public String getUrl() {
     return url;
   }
 

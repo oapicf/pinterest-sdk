@@ -32,7 +32,7 @@ Board::__init()
 	//pin_count = int(0);
 	//follower_count = int(0);
 	//media = new Board_media();
-	//owner = new Board_owner();
+	//owner = null;
 	//privacy = std::string();
 }
 
@@ -209,11 +209,11 @@ Board::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Board_owner")) {
-			jsonToValue(&owner, node, "Board_owner", "Board_owner");
+		if (isprimitive("BoardOwner")) {
+			jsonToValue(&owner, node, "BoardOwner", "BoardOwner");
 		} else {
 			
-			Board_owner* obj = static_cast<Board_owner*> (&owner);
+			BoardOwner* obj = static_cast<BoardOwner*> (&owner);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -327,13 +327,13 @@ Board::toJson()
 	}
 	const gchar *mediaKey = "media";
 	json_object_set_member(pJsonObject, mediaKey, node);
-	if (isprimitive("Board_owner")) {
-		Board_owner obj = getOwner();
-		node = converttoJson(&obj, "Board_owner", "");
+	if (isprimitive("BoardOwner")) {
+		BoardOwner obj = getOwner();
+		node = converttoJson(&obj, "BoardOwner", "");
 	}
 	else {
 		
-		Board_owner obj = static_cast<Board_owner> (getOwner());
+		BoardOwner obj = static_cast<BoardOwner> (getOwner());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -466,14 +466,14 @@ Board::setMedia(Board_media  media)
 	this->media = media;
 }
 
-Board_owner
+BoardOwner
 Board::getOwner()
 {
 	return owner;
 }
 
 void
-Board::setOwner(Board_owner  owner)
+Board::setOwner(BoardOwner  owner)
 {
 	this->owner = owner;
 }

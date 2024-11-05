@@ -4,11 +4,10 @@ open System
 open System.Collections.Generic
 open OpenAPI.Model.BatchOperation
 open OpenAPI.Model.CatalogsItemsBatchRequest
-open OpenAPI.Model.CatalogsType
+open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.CatalogsVerticalBatchRequest
 open OpenAPI.Model.Country
 open OpenAPI.Model.ItemDeleteBatchRecord
-open OpenAPI.Model.Language
 
 module ItemsBatchPostRequest =
 
@@ -17,7 +16,7 @@ module ItemsBatchPostRequest =
 
   type items_batch_post_request = {
     Country : Country;
-    Language : Language;
+    Language : CatalogsItemsRequestLanguage;
     Operation : BatchOperation;
     Items : ItemDeleteBatchRecord[];
   }

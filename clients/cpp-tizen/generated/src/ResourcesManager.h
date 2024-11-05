@@ -56,7 +56,7 @@ bool adAccountCountriesGetAsync(char * accessToken,
 
 /*! \brief Get available metrics' definitions. *Synchronous*
  *
- * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+ * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
  * \param reportType Report type.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -69,7 +69,7 @@ bool deliveryMetricsGetSync(char * accessToken,
 
 /*! \brief Get available metrics' definitions. *Asynchronous*
  *
- * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/content/analytics/'>Organic Analytics</a> and <a href='/docs/ads/ad-analytics-reporting/'>Ads Analytics</a> for more information.
+ * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
  * \param reportType Report type.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -110,7 +110,7 @@ bool interestTargetingOptionsGetAsync(char * accessToken,
 
 /*! \brief Get lead form questions. *Synchronous*
  *
- * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -122,7 +122,7 @@ bool leadFormQuestionsGetSync(char * accessToken,
 
 /*! \brief Get lead form questions. *Asynchronous*
  *
- * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -167,12 +167,13 @@ bool metricsReadyStateGetAsync(char * accessToken,
  * \param clientId Client ID.
  * \param oauthSignature Oauth signature
  * \param timestamp Timestamp
+ * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool targetingOptionsGetSync(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, 
+	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData);
 
@@ -183,12 +184,13 @@ bool targetingOptionsGetSync(char * accessToken,
  * \param clientId Client ID.
  * \param oauthSignature Oauth signature
  * \param timestamp Timestamp
+ * \param adAccountId Unique identifier of an ad account.
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool targetingOptionsGetAsync(char * accessToken,
-	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, 
+	std::string targetingType, std::string clientId, std::string oauthSignature, std::string timestamp, std::string adAccountId, 
 	void(* handler)(std::list<std::string>, Error, void* )
 	, void* userData);
 

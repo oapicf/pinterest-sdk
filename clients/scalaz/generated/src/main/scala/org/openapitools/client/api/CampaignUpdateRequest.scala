@@ -25,12 +25,11 @@ status: Option[EntityStatus],
   dailySpendCap: Option[Integer],
 /* Order line ID that appears on the invoice. */
   orderLineId: Option[String],
-trackingUrls: Option[AdCommonTrackingUrls],
+trackingUrls: Option[TrackingUrls],
 /* Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
   startTime: Option[Integer],
 /* Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
   endTime: Option[Integer],
-summaryStatus: Option[CampaignSummaryStatus],
 /* Determine if a campaign has flexible daily budgets setup. */
   isFlexibleDailyBudgets: Option[Boolean],
 /* When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */

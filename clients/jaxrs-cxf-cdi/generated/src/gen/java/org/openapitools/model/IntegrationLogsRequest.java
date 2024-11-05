@@ -35,7 +35,7 @@ public class IntegrationLogsRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("logs")
   @NotNull
-  public List<@Valid IntegrationLog> getLogs() {
+ @Size(min=1,max=250)  public List<@Valid IntegrationLog> getLogs() {
     return logs;
   }
   public void setLogs(List<@Valid IntegrationLog> logs) {

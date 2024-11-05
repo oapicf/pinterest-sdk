@@ -44,14 +44,13 @@ public struct ProductGroupPromotion: Codable, JSONEncodable, Hashable {
     public var catalogProductGroupId: String?
     /** Catalogs product group name */
     public var catalogProductGroupName: String?
-    public var creativeType: CreativeType?
     /** Hero Pin ID if this PG is promoted as a Collection */
     public var collectionsHeroPinId: String?
     /** Collections Hero Destination Url */
     public var collectionsHeroDestinationUrl: String?
     public var gridClickType: GridClickType?
 
-    public init(id: String? = nil, adGroupId: String? = nil, bidInMicroCurrency: Int? = nil, included: Bool? = nil, definition: String? = nil, relativeDefinition: String? = nil, parentId: String? = nil, slideshowCollectionsTitle: String? = nil, slideshowCollectionsDescription: String? = nil, isMdl: Bool? = nil, status: EntityStatus? = nil, trackingUrl: String? = nil, catalogProductGroupId: String? = nil, catalogProductGroupName: String? = nil, creativeType: CreativeType? = nil, collectionsHeroPinId: String? = nil, collectionsHeroDestinationUrl: String? = nil, gridClickType: GridClickType? = nil) {
+    public init(id: String? = nil, adGroupId: String? = nil, bidInMicroCurrency: Int? = nil, included: Bool? = nil, definition: String? = nil, relativeDefinition: String? = nil, parentId: String? = nil, slideshowCollectionsTitle: String? = nil, slideshowCollectionsDescription: String? = nil, isMdl: Bool? = nil, status: EntityStatus? = nil, trackingUrl: String? = nil, catalogProductGroupId: String? = nil, catalogProductGroupName: String? = nil, collectionsHeroPinId: String? = nil, collectionsHeroDestinationUrl: String? = nil, gridClickType: GridClickType? = nil) {
         self.id = id
         self.adGroupId = adGroupId
         self.bidInMicroCurrency = bidInMicroCurrency
@@ -66,7 +65,6 @@ public struct ProductGroupPromotion: Codable, JSONEncodable, Hashable {
         self.trackingUrl = trackingUrl
         self.catalogProductGroupId = catalogProductGroupId
         self.catalogProductGroupName = catalogProductGroupName
-        self.creativeType = creativeType
         self.collectionsHeroPinId = collectionsHeroPinId
         self.collectionsHeroDestinationUrl = collectionsHeroDestinationUrl
         self.gridClickType = gridClickType
@@ -87,7 +85,6 @@ public struct ProductGroupPromotion: Codable, JSONEncodable, Hashable {
         case trackingUrl = "tracking_url"
         case catalogProductGroupId = "catalog_product_group_id"
         case catalogProductGroupName = "catalog_product_group_name"
-        case creativeType = "creative_type"
         case collectionsHeroPinId = "collections_hero_pin_id"
         case collectionsHeroDestinationUrl = "collections_hero_destination_url"
         case gridClickType = "grid_click_type"
@@ -111,7 +108,6 @@ public struct ProductGroupPromotion: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(trackingUrl, forKey: .trackingUrl)
         try container.encodeIfPresent(catalogProductGroupId, forKey: .catalogProductGroupId)
         try container.encodeIfPresent(catalogProductGroupName, forKey: .catalogProductGroupName)
-        try container.encodeIfPresent(creativeType, forKey: .creativeType)
         try container.encodeIfPresent(collectionsHeroPinId, forKey: .collectionsHeroPinId)
         try container.encodeIfPresent(collectionsHeroDestinationUrl, forKey: .collectionsHeroDestinationUrl)
         try container.encodeIfPresent(gridClickType, forKey: .gridClickType)

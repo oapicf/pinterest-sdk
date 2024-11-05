@@ -27,7 +27,7 @@ data class CreateMMMReportResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("data") val `data`: CreateMMMReportResponseData? = null
-) {
+    ) {
 
 }
 

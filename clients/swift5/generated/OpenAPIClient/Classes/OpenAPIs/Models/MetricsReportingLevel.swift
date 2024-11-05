@@ -24,4 +24,5 @@ public enum MetricsReportingLevel: String, Codable, CaseIterable {
     case productGroup = "PRODUCT_GROUP"
     case productGroupTargeting = "PRODUCT_GROUP_TARGETING"
     case productItem = "PRODUCT_ITEM"
+    case productItemTargeting = "PRODUCT_ITEM_TARGETING"
 }

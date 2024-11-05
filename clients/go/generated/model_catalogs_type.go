@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,12 +23,14 @@ type CatalogsType string
 const (
 	RETAIL CatalogsType = "RETAIL"
 	HOTEL CatalogsType = "HOTEL"
+	CREATIVE_ASSETS CatalogsType = "CREATIVE_ASSETS"
 )
 
 // All allowed values of CatalogsType enum
 var AllowedCatalogsTypeEnumValues = []CatalogsType{
 	"RETAIL",
 	"HOTEL",
+	"CREATIVE_ASSETS",
 }
 
 func (v *CatalogsType) UnmarshalJSON(src []byte) error {

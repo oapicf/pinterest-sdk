@@ -31,7 +31,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelFeed", description = "Catalogs Hotel Feed object")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-14T23:15:39.458648915Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CatalogsHotelFeed implements CatalogsFeed {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -69,7 +69,10 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelFeed(String name, CatalogsFormat format, CatalogsType catalogType, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status, NullableCurrency defaultCurrency, String defaultLocale, String catalogId) {
+  public CatalogsHotelFeed(OffsetDateTime createdAt, String id, OffsetDateTime updatedAt, String name, CatalogsFormat format, CatalogsType catalogType, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status, NullableCurrency defaultCurrency, String defaultLocale, String catalogId) {
+    this.createdAt = createdAt;
+    this.id = id;
+    this.updatedAt = updatedAt;
     this.name = JsonNullable.of(name);
     this.format = format;
     this.catalogType = catalogType;
@@ -90,9 +93,9 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get createdAt
    * @return createdAt
-  */
-  @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "created_at", example = "2022-03-14T15:15:22Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_at")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -110,9 +113,9 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get id
    * @return id
-  */
-  
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull 
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -130,9 +133,9 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get updatedAt
    * @return updatedAt
-  */
-  @Valid 
-  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+   */
+  @NotNull @Valid 
+  @Schema(name = "updated_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("updated_at")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -150,7 +153,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
    * @return name
-  */
+   */
   @NotNull 
   @Schema(name = "name", description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
@@ -170,7 +173,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get format
    * @return format
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "format", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("format")
@@ -190,7 +193,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get catalogType
    * @return catalogType
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
@@ -210,7 +213,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get credentials
    * @return credentials
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "credentials", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("credentials")
@@ -230,7 +233,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    * @return location
-  */
+   */
   @NotNull 
   @Schema(name = "location", description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("location")
@@ -250,7 +253,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get preferredProcessingSchedule
    * @return preferredProcessingSchedule
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("preferred_processing_schedule")
@@ -270,7 +273,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get status
    * @return status
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("status")
@@ -290,7 +293,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Get defaultCurrency
    * @return defaultCurrency
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("default_currency")
@@ -310,7 +313,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * The locale used within a feed for product descriptions.
    * @return defaultLocale
-  */
+   */
   @NotNull 
   @Schema(name = "default_locale", example = "en-US", description = "The locale used within a feed for product descriptions.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("default_locale")
@@ -330,7 +333,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
   /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    * @return catalogId
-  */
+   */
   @NotNull @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_id")

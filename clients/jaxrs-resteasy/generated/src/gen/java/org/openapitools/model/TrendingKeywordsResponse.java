@@ -13,12 +13,11 @@ import org.openapitools.model.TrendingKeywordsResponseTrendsInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
-import javax.validation.Valid;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-03-14T23:04:42.546429009Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2024-11-05T02:20:31.447227872Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TrendingKeywordsResponse   {
   
-  private List<@Valid TrendingKeywordsResponseTrendsInner> trends;
+  private List<@Valid TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
 
   /**
    * The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.

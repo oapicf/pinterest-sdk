@@ -3,7 +3,7 @@
 
   Pinterest's REST API
 
-  The version of the OpenAPI document: 5.12.0
+  The version of the OpenAPI document: 5.14.0
 
   Contact: blah+oapicf@cliffano.com
 
@@ -72,5 +72,4 @@ enum NullableCatalogsItemFieldType {
   NullableCatalogsItemFieldType_MIN_AD_PRICE = 53;
   NullableCatalogsItemFieldType_SHIPPING_WIDTH = 54;
   NullableCatalogsItemFieldType_SHIPPING_HEIGHT = 55;
-  NullableCatalogsItemFieldType_NULL = 56;
 }

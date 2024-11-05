@@ -10,9 +10,9 @@ The class is defined in **[CatalogsRetailFeed.java](../../src/main/java/org/open
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdAt** | `OffsetDateTime` |  |  [optional property]
-**id** | `String` |  |  [optional property]
-**updatedAt** | `OffsetDateTime` |  |  [optional property]
+**createdAt** | `OffsetDateTime` |  | 
+**id** | `String` |  | 
+**updatedAt** | `OffsetDateTime` |  | 
 **name** | `String` | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
 **_format** | `CatalogsFormat` |  | 
 **catalogType** | `CatalogsType` |  | 

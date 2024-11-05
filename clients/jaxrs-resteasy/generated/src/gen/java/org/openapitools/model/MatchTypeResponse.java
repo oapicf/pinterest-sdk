@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 public enum MatchTypeResponse {
-    BROAD, PHRASE, EXACT, EXACT_NEGATIVE, PHRASE_NEGATIVE, NULL
+    BROAD, PHRASE, EXACT, EXACT_NEGATIVE, PHRASE_NEGATIVE
 }

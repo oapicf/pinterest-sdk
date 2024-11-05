@@ -64,13 +64,13 @@ API.Client.PinCreate.prototype.boardId;
 API.Client.PinCreate.prototype.boardSectionId;
 
 /**
- * @type {!API.Client.Board_owner}
+ * @type {!API.Client.BoardOwner}
  * @export
  */
 API.Client.PinCreate.prototype.boardOwner;
 
 /**
- * @type {!API.Client.SummaryPin_media}
+ * @type {!API.Client.PinMedia}
  * @export
  */
 API.Client.PinCreate.prototype.media;

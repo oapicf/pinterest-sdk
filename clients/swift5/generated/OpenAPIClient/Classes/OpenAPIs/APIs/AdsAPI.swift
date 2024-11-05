@@ -35,7 +35,7 @@ open class AdsAPI {
     /**
      Create ad preview with pin or image
      - POST /ad_accounts/{ad_account_id}/ad_previews
-     - Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires.
+     - Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -159,6 +159,7 @@ open class AdsAPI {
         case videoP75Combined2 = "VIDEO_P75_COMBINED_2"
         case videoP95Combined2 = "VIDEO_P95_COMBINED_2"
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
+        case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
@@ -191,6 +192,7 @@ open class AdsAPI {
         case leads = "LEADS"
         case costPerLead = "COST_PER_LEAD"
         case quizCompleted = "QUIZ_COMPLETED"
+        case quizPinResultOpen = "QUIZ_PIN_RESULT_OPEN"
         case quizCompletionRate = "QUIZ_COMPLETION_RATE"
         case showcasePinClickthrough = "SHOWCASE_PIN_CLICKTHROUGH"
         case showcaseSubpageClickthrough = "SHOWCASE_SUBPAGE_CLICKTHROUGH"
@@ -270,7 +272,7 @@ open class AdsAPI {
      - parameter adIds: (query) List of Ad Ids to use to filter the results. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. 
+     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. 
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
@@ -282,7 +284,7 @@ open class AdsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func adTargetingAnalyticsGet(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsTargetingType], columns: [Columns_adTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_adTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adTargetingAnalyticsGet? = nil, attributionTypes: ConversionReportAttributionType? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MetricsResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func adTargetingAnalyticsGet(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdTargetingType], columns: [Columns_adTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_adTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adTargetingAnalyticsGet? = nil, attributionTypes: ConversionReportAttributionType? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MetricsResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return adTargetingAnalyticsGetWithRequestBuilder(adAccountId: adAccountId, adIds: adIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -304,7 +306,7 @@ open class AdsAPI {
      - parameter adIds: (query) List of Ad Ids to use to filter the results. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. 
+     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. 
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
@@ -314,7 +316,7 @@ open class AdsAPI {
      - parameter attributionTypes: (query) List of types of attribution for the conversion report (optional)
      - returns: RequestBuilder<MetricsResponse> 
      */
-    open class func adTargetingAnalyticsGetWithRequestBuilder(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsTargetingType], columns: [Columns_adTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_adTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adTargetingAnalyticsGet? = nil, attributionTypes: ConversionReportAttributionType? = nil) -> RequestBuilder<MetricsResponse> {
+    open class func adTargetingAnalyticsGetWithRequestBuilder(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdTargetingType], columns: [Columns_adTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_adTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adTargetingAnalyticsGet? = nil, attributionTypes: ConversionReportAttributionType? = nil) -> RequestBuilder<MetricsResponse> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/ads/targeting_analytics"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -443,6 +445,7 @@ open class AdsAPI {
         case videoP75Combined2 = "VIDEO_P75_COMBINED_2"
         case videoP95Combined2 = "VIDEO_P95_COMBINED_2"
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
+        case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
@@ -475,6 +478,7 @@ open class AdsAPI {
         case leads = "LEADS"
         case costPerLead = "COST_PER_LEAD"
         case quizCompleted = "QUIZ_COMPLETED"
+        case quizPinResultOpen = "QUIZ_PIN_RESULT_OPEN"
         case quizCompletionRate = "QUIZ_COMPLETION_RATE"
         case showcasePinClickthrough = "SHOWCASE_PIN_CLICKTHROUGH"
         case showcaseSubpageClickthrough = "SHOWCASE_SUBPAGE_CLICKTHROUGH"
@@ -553,19 +557,21 @@ open class AdsAPI {
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-     - parameter adIds: (query) List of Ad Ids to use to filter the results. 
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
+     - parameter adIds: (query) List of Ad Ids to use to filter the results. (optional)
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
      - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - parameter pinIds: (query) List of Pin IDs. (optional)
+     - parameter campaignIds: (query) List of Campaign Ids to use to filter the results. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func adsAnalytics(adAccountId: String, startDate: Date, endDate: Date, adIds: [String], columns: [Columns_adsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AdsAnalyticsResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
-        return adsAnalyticsWithRequestBuilder(adAccountId: adAccountId, startDate: startDate, endDate: endDate, adIds: adIds, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime).execute(apiResponseQueue) { result in
+    open class func adsAnalytics(adAccountId: String, startDate: Date, endDate: Date, columns: [Columns_adsAnalytics], granularity: Granularity, adIds: [String]? = nil, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil, pinIds: [String]? = nil, campaignIds: [String]? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AdsAnalyticsResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
+        return adsAnalyticsWithRequestBuilder(adAccountId: adAccountId, startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adIds: adIds, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, pinIds: pinIds, campaignIds: campaignIds).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -578,23 +584,25 @@ open class AdsAPI {
     /**
      Get ad analytics
      - GET /ad_accounts/{ad_account_id}/ads/analytics
-     - Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     - Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-     - parameter adIds: (query) List of Ad Ids to use to filter the results. 
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
+     - parameter adIds: (query) List of Ad Ids to use to filter the results. (optional)
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
      - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - parameter pinIds: (query) List of Pin IDs. (optional)
+     - parameter campaignIds: (query) List of Campaign Ids to use to filter the results. (optional)
      - returns: RequestBuilder<[AdsAnalyticsResponseInner]> 
      */
-    open class func adsAnalyticsWithRequestBuilder(adAccountId: String, startDate: Date, endDate: Date, adIds: [String], columns: [Columns_adsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil) -> RequestBuilder<[AdsAnalyticsResponseInner]> {
+    open class func adsAnalyticsWithRequestBuilder(adAccountId: String, startDate: Date, endDate: Date, columns: [Columns_adsAnalytics], granularity: Granularity, adIds: [String]? = nil, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil, pinIds: [String]? = nil, campaignIds: [String]? = nil) -> RequestBuilder<[AdsAnalyticsResponseInner]> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/ads/analytics"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -606,13 +614,15 @@ open class AdsAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "start_date": (wrappedValue: startDate.encodeToJSON(), isExplode: true),
             "end_date": (wrappedValue: endDate.encodeToJSON(), isExplode: true),
-            "ad_ids": (wrappedValue: adIds.encodeToJSON(), isExplode: true),
+            "ad_ids": (wrappedValue: adIds?.encodeToJSON(), isExplode: true),
             "columns": (wrappedValue: columns.encodeToJSON(), isExplode: false),
             "granularity": (wrappedValue: granularity.encodeToJSON(), isExplode: true),
             "click_window_days": (wrappedValue: clickWindowDays?.encodeToJSON(), isExplode: true),
             "engagement_window_days": (wrappedValue: engagementWindowDays?.encodeToJSON(), isExplode: true),
             "view_window_days": (wrappedValue: viewWindowDays?.encodeToJSON(), isExplode: true),
             "conversion_report_time": (wrappedValue: conversionReportTime?.encodeToJSON(), isExplode: true),
+            "pin_ids": (wrappedValue: pinIds?.encodeToJSON(), isExplode: true),
+            "campaign_ids": (wrappedValue: campaignIds?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -760,7 +770,7 @@ open class AdsAPI {
      - parameter adGroupIds: (query) List of Ad group Ids to use to filter the results. (optional)
      - parameter adIds: (query) List of Ad Ids to use to filter the results. (optional)
      - parameter entityStatuses: (query) Entity status (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -790,7 +800,7 @@ open class AdsAPI {
      - parameter adGroupIds: (query) List of Ad group Ids to use to filter the results. (optional)
      - parameter adIds: (query) List of Ad Ids to use to filter the results. (optional)
      - parameter entityStatuses: (query) Entity status (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - returns: RequestBuilder<AdsList200Response> 

@@ -29,8 +29,7 @@ CreateMMMReportRequest <- R6::R6Class(
     `targeting_types` = NULL,
     `columns` = NULL,
     `countries` = NULL,
-    #' Initialize a new CreateMMMReportRequest class.
-    #'
+
     #' @description
     #' Initialize a new CreateMMMReportRequest class.
     #'
@@ -43,7 +42,6 @@ CreateMMMReportRequest <- R6::R6Class(
     #' @param columns Metric and entity columns
     #' @param countries A List of countries for filtering
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`report_name`, `start_date`, `end_date`, `granularity`, `level`, `targeting_types`, `columns`, `countries` = NULL, ...) {
       if (!missing(`report_name`)) {
         if (!(is.character(`report_name`) && length(`report_name`) == 1)) {
@@ -97,13 +95,11 @@ CreateMMMReportRequest <- R6::R6Class(
         self$`countries` <- `countries`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CreateMMMReportRequest in JSON format
-    #' @export
     toJSON = function() {
       CreateMMMReportRequestObject <- list()
       if (!is.null(self$`report_name`)) {
@@ -140,14 +136,12 @@ CreateMMMReportRequest <- R6::R6Class(
       }
       CreateMMMReportRequestObject
     },
-    #' Deserialize JSON string into an instance of CreateMMMReportRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CreateMMMReportRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CreateMMMReportRequest
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`report_name`)) {
@@ -182,13 +176,11 @@ CreateMMMReportRequest <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return CreateMMMReportRequest in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`report_name`)) {
@@ -259,14 +251,12 @@ CreateMMMReportRequest <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of CreateMMMReportRequest
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of CreateMMMReportRequest
     #'
     #' @param input_json the JSON input
     #' @return the instance of CreateMMMReportRequest
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`report_name` <- this_object$`report_name`
@@ -285,13 +275,11 @@ CreateMMMReportRequest <- R6::R6Class(
       self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[TargetingAdvertiserCountry]", loadNamespace("openapi"))
       self
     },
-    #' Validate JSON input with respect to CreateMMMReportRequest
-    #'
+
     #' @description
     #' Validate JSON input with respect to CreateMMMReportRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
       # check the required field `report_name`
@@ -349,23 +337,19 @@ CreateMMMReportRequest <- R6::R6Class(
         stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `columns` is missing."))
       }
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of CreateMMMReportRequest
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       # check if the required `report_name` is null
       if (is.null(self$`report_name`)) {
@@ -419,13 +403,11 @@ CreateMMMReportRequest <- R6::R6Class(
 
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       # check if the required `report_name` is null
@@ -480,12 +462,9 @@ CreateMMMReportRequest <- R6::R6Class(
 
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

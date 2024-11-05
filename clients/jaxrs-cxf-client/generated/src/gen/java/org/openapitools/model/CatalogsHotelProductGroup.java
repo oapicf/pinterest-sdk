@@ -73,7 +73,10 @@ HOTEL(String.valueOf("HOTEL"));
   **/
   private Integer updatedAt;
 
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
+ /**
+   * Catalog id pertaining to the hotel product group.
+  **/
   private String catalogId;
  /**
    * Get catalogType
@@ -205,7 +208,7 @@ HOTEL(String.valueOf("HOTEL"));
   }
 
  /**
-   * Get catalogId
+   * Catalog id pertaining to the hotel product group.
    * @return catalogId
   **/
   @JsonProperty("catalog_id")

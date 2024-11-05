@@ -183,6 +183,14 @@ class BoardsApi implements BoardsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -204,7 +212,7 @@ Name | Type | Description  | Notes
  **boardId** | **string**| Unique identifier of a board. |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -212,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -248,6 +256,14 @@ class BoardsApi implements BoardsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -270,7 +286,7 @@ Name | Type | Description  | Notes
  **sectionId** | **string**| Unique identifier of a board section. |
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -278,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -505,6 +521,14 @@ class BoardsApi implements BoardsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -532,7 +556,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -568,6 +592,14 @@ class BoardsApi implements BoardsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -588,7 +620,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **privacy** | **string**| Privacy setting for a board. | [optional]
 
 ### Return type
@@ -597,7 +629,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -633,6 +665,14 @@ class BoardsApi implements BoardsApiInterface
         // Retrieve logged in user from $oauthToken ...
     }
 
+    /**
+     * Configure OAuth2 access token for authorization: client_credentials
+     */
+    public function setclient_credentials($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
     // ...
 
     /**
@@ -653,7 +693,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **boardId** | **string**| Unique identifier of a board. |
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **creativeTypes** | [**string**](../Model/string.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional]
  **adAccountId** | **string**| Unique identifier of an ad account. | [optional]
  **pinMetrics** | **bool**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
@@ -664,7 +704,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 

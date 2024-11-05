@@ -15,7 +15,8 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.CatalogsHotelAttributes
+import org.openapitools.client.models.CatalogsCreativeAssetsAttributes
+import org.openapitools.client.models.CatalogsCreativeAssetsItemResponse
 import org.openapitools.client.models.CatalogsHotelItemResponse
 import org.openapitools.client.models.CatalogsRetailItemResponse
 import org.openapitools.client.models.CatalogsType
@@ -32,6 +33,7 @@ import com.squareup.moshi.JsonClass
  * @param pins The pins mapped to the item
  * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
+ * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
 
 
@@ -46,9 +48,13 @@ interface ItemResponseAnyOf {
     @Json(name = "pins")
     val pins: kotlin.collections.List<Pin>?
     @Json(name = "attributes")
-    val attributes: CatalogsHotelAttributes?
+    val attributes: CatalogsCreativeAssetsAttributes?
     /* The catalog hotel id in the merchant namespace */
     @Json(name = "hotel_id")
     val hotelId: kotlin.String?
+    /* The catalog creative assets id in the merchant namespace */
+    @Json(name = "creative_assets_id")
+    val creativeAssetsId: kotlin.String?
+
 }
 

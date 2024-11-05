@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Order Line Paid Type
  *
- * Values: PAID,BONUS,MAKE_GOOD,TEST,`null`
+ * Values: PAID,BONUS,MAKE_GOOD,TEST
  */
 
 @JsonClass(generateAdapter = false)
@@ -38,10 +38,7 @@ enum class OrderLinePaidType(val value: kotlin.String) {
     MAKE_GOOD("MAKE_GOOD"),
 
     @Json(name = "TEST")
-    TEST("TEST"),
-
-    @Json(name = "null")
-    `null`("null");
+    TEST("TEST");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

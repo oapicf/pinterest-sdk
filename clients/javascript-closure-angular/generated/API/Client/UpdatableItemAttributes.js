@@ -20,14 +20,14 @@ API.Client.UpdatableItemAttributes.prototype.adLink;
 API.Client.UpdatableItemAttributes.prototype.adult;
 
 /**
- * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+ * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
  * @type {!string}
  * @export
  */
 API.Client.UpdatableItemAttributes.prototype.ageGroup;
 
 /**
- * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
+ * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
  * @type {!string}
  * @export
  */
@@ -125,7 +125,7 @@ API.Client.UpdatableItemAttributes.prototype.freeShippingLabel;
 API.Client.UpdatableItemAttributes.prototype.freeShippingLimit;
 
 /**
- * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
+ * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
  * @type {!string}
  * @export
  */
@@ -279,14 +279,14 @@ API.Client.UpdatableItemAttributes.prototype.shippingWidth;
 API.Client.UpdatableItemAttributes.prototype.size;
 
 /**
- * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
+ * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
  * @type {!string}
  * @export
  */
 API.Client.UpdatableItemAttributes.prototype.sizeSystem;
 
 /**
- * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
+ * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
  * @type {!string}
  * @export
  */

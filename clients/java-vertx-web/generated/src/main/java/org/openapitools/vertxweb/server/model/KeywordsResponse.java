@@ -12,8 +12,8 @@ import org.openapitools.vertxweb.server.model.KeywordError;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class KeywordsResponse   {
   
-  private List<KeywordError> errors;
-  private List<Keyword> keywords;
+  private List<KeywordError> errors = new ArrayList<>();
+  private List<Keyword> keywords = new ArrayList<>();
 
   public KeywordsResponse () {
 

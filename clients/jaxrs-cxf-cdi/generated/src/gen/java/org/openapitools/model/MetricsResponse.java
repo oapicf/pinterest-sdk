@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class MetricsResponse   {
   
-  private List<Object> data;
+  private List<Object> data = new ArrayList<>();
 
   /**
    **/

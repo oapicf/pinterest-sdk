@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  */
 @ApiModel(description = " This field contains multiple options to a quiz question.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QuizPinOption   {
   @JsonProperty("id")
   private BigDecimal id;
@@ -29,10 +29,10 @@ public class QuizPinOption   {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @ApiModelProperty(value = "")
   public BigDecimal getId() {
     return id;
@@ -47,10 +47,10 @@ public class QuizPinOption   {
     return this;
   }
 
-   /**
+  /**
    * Get text
    * @return text
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getText() {
     return text;

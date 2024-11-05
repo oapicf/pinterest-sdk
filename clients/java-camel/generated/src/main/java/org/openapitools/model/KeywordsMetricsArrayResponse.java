@@ -22,11 +22,11 @@ import javax.annotation.Generated;
  * KeywordsMetricsArrayResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class KeywordsMetricsArrayResponse {
 
   @Valid
-  private List<@Valid KeywordMetricsResponse> data;
+  private List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
 
   public KeywordsMetricsArrayResponse data(List<@Valid KeywordMetricsResponse> data) {
     this.data = data;
@@ -44,7 +44,7 @@ public class KeywordsMetricsArrayResponse {
   /**
    * Get data
    * @return data
-  */
+   */
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")

@@ -107,6 +107,7 @@ open class AdAccountsAPI {
         case videoP75Combined2 = "VIDEO_P75_COMBINED_2"
         case videoP95Combined2 = "VIDEO_P95_COMBINED_2"
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
+        case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
@@ -139,6 +140,7 @@ open class AdAccountsAPI {
         case leads = "LEADS"
         case costPerLead = "COST_PER_LEAD"
         case quizCompleted = "QUIZ_COMPLETED"
+        case quizPinResultOpen = "QUIZ_PIN_RESULT_OPEN"
         case quizCompletionRate = "QUIZ_COMPLETION_RATE"
         case showcasePinClickthrough = "SHOWCASE_PIN_CLICKTHROUGH"
         case showcaseSubpageClickthrough = "SHOWCASE_SUBPAGE_CLICKTHROUGH"
@@ -382,6 +384,7 @@ open class AdAccountsAPI {
         case videoP75Combined2 = "VIDEO_P75_COMBINED_2"
         case videoP95Combined2 = "VIDEO_P95_COMBINED_2"
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
+        case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
@@ -414,6 +417,7 @@ open class AdAccountsAPI {
         case leads = "LEADS"
         case costPerLead = "COST_PER_LEAD"
         case quizCompleted = "QUIZ_COMPLETED"
+        case quizPinResultOpen = "QUIZ_PIN_RESULT_OPEN"
         case quizCompletionRate = "QUIZ_COMPLETION_RATE"
         case showcasePinClickthrough = "SHOWCASE_PIN_CLICKTHROUGH"
         case showcaseSubpageClickthrough = "SHOWCASE_SUBPAGE_CLICKTHROUGH"
@@ -492,7 +496,7 @@ open class AdAccountsAPI {
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. 
+     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. 
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
@@ -525,7 +529,7 @@ open class AdAccountsAPI {
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
-     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. 
+     - parameter targetingTypes: (query) Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. 
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
@@ -669,7 +673,7 @@ open class AdAccountsAPI {
      List ad accounts
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter includeSharedAccounts: (query) Include shared ad accounts (optional, default to true)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -694,7 +698,7 @@ open class AdAccountsAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter includeSharedAccounts: (query) Include shared ad accounts (optional, default to true)
      - returns: RequestBuilder<AdAccountsList200Response> 
      */
@@ -1023,7 +1027,7 @@ open class AdAccountsAPI {
     /**
      Delete ads data for ad account in API Sandbox
      - DELETE /ad_accounts/{ad_account_id}/sandbox
-     - Delete an ad account and all the ads data associated with that account.  A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5).  Go to https://developers.pinterest.com/docs/dev-tools/sandbox/ for more information.
+     - Delete an ad account and all the ads data associated with that account. A string message is returned indicating the status of the delete operation.  Note: This endpoint is only allowed in the Pinterest API Sandbox (https://api-sandbox.pinterest.com/v5). Go to /docs/developer-tools/sandbox/ for more information.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -1063,7 +1067,7 @@ open class AdAccountsAPI {
      List templates
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -1089,7 +1093,7 @@ open class AdAccountsAPI {
        - type: oauth2
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - returns: RequestBuilder<TemplatesList200Response> 

@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,9 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Bulk file output format
 * Values: CSV,JSON
 */
-enum class BulkOutputFormat(val value: kotlin.String) {
+enum class BulkOutputFormat(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("CSV") CSV("CSV"),
-    @JsonProperty("JSON") JSON("JSON")
+    CSV("CSV"),
+    JSON("JSON");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): BulkOutputFormat {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

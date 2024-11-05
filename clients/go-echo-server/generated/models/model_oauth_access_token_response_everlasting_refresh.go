@@ -3,6 +3,16 @@ package models
 // OauthAccessTokenResponseEverlastingRefresh - A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
 type OauthAccessTokenResponseEverlastingRefresh struct {
 
+	ResponseType string `json:"response_type,omitempty"`
+
+	AccessToken string `json:"access_token"`
+
+	TokenType string `json:"token_type"`
+
+	ExpiresIn int32 `json:"expires_in"`
+
+	Scope string `json:"scope"`
+
 	RefreshToken string `json:"refresh_token"`
 
 	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`

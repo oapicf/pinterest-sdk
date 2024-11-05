@@ -24,8 +24,8 @@ catalogs_items_batch_t* instantiate_catalogs_items_batch(int include_optional) {
     catalogs_items_batch = catalogs_items_batch_create(
       pinterest_rest_api_catalogs_items_batch__RETAIL,
       "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e",
-      "2020-01-01T20:10:40Z",
-      "2022-03-10T15:37:10Z",
+      "2013-10-20T19:20:30+01:00",
+      "2013-10-20T19:20:30+01:00",
       pinterest_rest_api_catalogs_items_batch__"PROCESSING",
       list_createList()
     );
@@ -33,8 +33,8 @@ catalogs_items_batch_t* instantiate_catalogs_items_batch(int include_optional) {
     catalogs_items_batch = catalogs_items_batch_create(
       pinterest_rest_api_catalogs_items_batch__RETAIL,
       "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e",
-      "2020-01-01T20:10:40Z",
-      "2022-03-10T15:37:10Z",
+      "2013-10-20T19:20:30+01:00",
+      "2013-10-20T19:20:30+01:00",
       pinterest_rest_api_catalogs_items_batch__"PROCESSING",
       list_createList()
     );

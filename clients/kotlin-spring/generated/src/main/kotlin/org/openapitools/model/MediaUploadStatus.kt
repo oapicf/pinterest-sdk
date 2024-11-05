@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,11 +19,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Media upload status
 * Values: registered,processing,succeeded,failed
 */
-enum class MediaUploadStatus(val value: kotlin.String) {
+enum class MediaUploadStatus(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("registered") registered("registered"),
-    @JsonProperty("processing") processing("processing"),
-    @JsonProperty("succeeded") succeeded("succeeded"),
-    @JsonProperty("failed") failed("failed")
+    registered("registered"),
+    processing("processing"),
+    succeeded("succeeded"),
+    failed("failed");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): MediaUploadStatus {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

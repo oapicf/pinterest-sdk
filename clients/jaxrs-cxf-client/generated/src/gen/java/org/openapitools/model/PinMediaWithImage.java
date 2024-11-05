@@ -1,8 +1,8 @@
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
-import org.openapitools.model.ImageMetadataImages;
 import org.openapitools.model.PinMedia;
+import org.openapitools.model.PinMediaWithImageAllOfImages;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -16,21 +16,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinMediaWithImage extends PinMedia {
   
   @ApiModelProperty(value = "")
-  private ImageMetadataImages images;
+  private PinMediaWithImageAllOfImages images;
  /**
    * Get images
    * @return images
   **/
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 
-  public PinMediaWithImage images(ImageMetadataImages images) {
+  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }

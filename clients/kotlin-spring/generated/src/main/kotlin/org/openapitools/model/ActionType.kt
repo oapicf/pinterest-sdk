@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -18,10 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 * Ad group billable event type. For update, only draft ad groups may update billable event.
 * Values: CLICKTHROUGH,IMPRESSION,VIDEO_V_50_MRC
 */
-enum class ActionType(val value: kotlin.String) {
+enum class ActionType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("CLICKTHROUGH") CLICKTHROUGH("CLICKTHROUGH"),
-    @JsonProperty("IMPRESSION") IMPRESSION("IMPRESSION"),
-    @JsonProperty("VIDEO_V_50_MRC") VIDEO_V_50_MRC("VIDEO_V_50_MRC")
+    CLICKTHROUGH("CLICKTHROUGH"),
+    IMPRESSION("IMPRESSION"),
+    VIDEO_V_50_MRC("VIDEO_V_50_MRC");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): ActionType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

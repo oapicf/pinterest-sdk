@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.12.0
+API version: 5.14.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"fmt"
 )
+
+// checks if the CatalogsRetailBatchRequestItemsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CatalogsRetailBatchRequestItemsInner{}
 
 // CatalogsRetailBatchRequestItemsInner struct for CatalogsRetailBatchRequestItemsInner
 type CatalogsRetailBatchRequestItemsInner struct {
@@ -236,6 +239,26 @@ func (src *CatalogsRetailBatchRequestItemsInner) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, nil // no data in anyOf schemas
+}
+
+func (src CatalogsRetailBatchRequestItemsInner) ToMap() (map[string]interface{}, error) {
+	if src.CatalogsCreateRetailItem != nil {
+		return src.CatalogsCreateRetailItem.ToMap()
+	}
+
+	if src.CatalogsDeleteRetailItem != nil {
+		return src.CatalogsDeleteRetailItem.ToMap()
+	}
+
+	if src.CatalogsUpdateRetailItem != nil {
+		return src.CatalogsUpdateRetailItem.ToMap()
+	}
+
+	if src.CatalogsUpsertRetailItem != nil {
+		return src.CatalogsUpsertRetailItem.ToMap()
+	}
+
+    return nil, nil // no data in anyOf schemas
 }
 
 type NullableCatalogsRetailBatchRequestItemsInner struct {

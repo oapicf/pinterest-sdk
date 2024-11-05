@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]CatalogsProductGroupsList200ResponseAllOfItemsInner**](CatalogsProductGroupsList200ResponseAllOfItemsInner.md) |  | 
+**Items** | [**[]CatalogsVerticalProductGroup**](CatalogsVerticalProductGroup.md) |  | 
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
 ### NewCatalogsProductGroupsList200Response
 
-`func NewCatalogsProductGroupsList200Response(items []CatalogsProductGroupsList200ResponseAllOfItemsInner, ) *CatalogsProductGroupsList200Response`
+`func NewCatalogsProductGroupsList200Response(items []CatalogsVerticalProductGroup, ) *CatalogsProductGroupsList200Response`
 
 NewCatalogsProductGroupsList200Response instantiates a new CatalogsProductGroupsList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetItems
 
-`func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsProductGroupsList200ResponseAllOfItemsInner`
+`func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsVerticalProductGroup`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *CatalogsProductGroupsList200Response) GetItemsOk() (*[]CatalogsProductGroupsList200ResponseAllOfItemsInner, bool)`
+`func (o *CatalogsProductGroupsList200Response) GetItemsOk() (*[]CatalogsVerticalProductGroup, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsProductGroupsList200ResponseAllOfItemsInner)`
+`func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsVerticalProductGroup)`
 
 SetItems sets Items field to given value.
 

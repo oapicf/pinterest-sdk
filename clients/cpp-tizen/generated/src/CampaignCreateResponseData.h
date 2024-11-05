@@ -9,10 +9,10 @@
 
 
 #include <string>
-#include "AdCommon_tracking_urls.h"
 #include "CampaignSummaryStatus.h"
 #include "EntityStatus.h"
 #include "ObjectiveType.h"
+#include "TrackingUrls.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -93,11 +93,11 @@ public:
 	void setOrderLineId(std::string  order_line_id);
 	/*! \brief Get 
 	 */
-	AdCommon_tracking_urls getTrackingUrls();
+	TrackingUrls getTrackingUrls();
 
 	/*! \brief Set 
 	 */
-	void setTrackingUrls(AdCommon_tracking_urls  tracking_urls);
+	void setTrackingUrls(TrackingUrls  tracking_urls);
 	/*! \brief Get Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	int getStartTime();
@@ -112,18 +112,11 @@ public:
 	/*! \brief Set Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
 	 */
 	void setEndTime(int  end_time);
-	/*! \brief Get 
-	 */
-	CampaignSummaryStatus getSummaryStatus();
-
-	/*! \brief Set 
-	 */
-	void setSummaryStatus(CampaignSummaryStatus  summary_status);
-	/*! \brief Get Determines if a campaign has flexible daily budgets setup.
+	/*! \brief Get Determine if a campaign has flexible daily budgets setup.
 	 */
 	bool getIsFlexibleDailyBudgets();
 
-	/*! \brief Set Determines if a campaign has flexible daily budgets setup.
+	/*! \brief Set Determine if a campaign has flexible daily budgets setup.
 	 */
 	void setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets);
 	/*! \brief Get When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
@@ -182,6 +175,13 @@ public:
 	/*! \brief Set Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 	 */
 	void setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization);
+	/*! \brief Get 
+	 */
+	CampaignSummaryStatus getSummaryStatus();
+
+	/*! \brief Set 
+	 */
+	void setSummaryStatus(CampaignSummaryStatus  summary_status);
 
 private:
 	std::string ad_account_id;
@@ -190,10 +190,9 @@ private:
 	int lifetime_spend_cap;
 	int daily_spend_cap;
 	std::string order_line_id;
-	AdCommon_tracking_urls tracking_urls;
+	TrackingUrls tracking_urls;
 	int start_time;
 	int end_time;
-	CampaignSummaryStatus summary_status;
 	bool is_flexible_daily_budgets;
 	int default_ad_group_budget_in_micro_currency;
 	bool is_automated_campaign;
@@ -203,6 +202,7 @@ private:
 	int updated_time;
 	std::string type;
 	bool is_campaign_budget_optimization;
+	CampaignSummaryStatus summary_status;
 	void __init();
 	void __cleanup();
 

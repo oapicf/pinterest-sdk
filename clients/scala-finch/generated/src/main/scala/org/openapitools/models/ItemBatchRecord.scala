@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ItemAttributes
+import org.openapitools.models.ItemAttributesRequest
 import org.openapitools.models.ItemCreateBatchRecord
 import org.openapitools.models.ItemDeleteBatchRecord
 import org.openapitools.models.ItemDeleteDiscontinuedBatchRecord
@@ -21,7 +21,7 @@ import scala.collection.immutable.Seq
  * @param updateUnderscoremask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
  */
 case class ItemBatchRecord(itemUnderscoreid: Option[String],
-                attributes: Option[ItemAttributes],
+                attributes: Option[ItemAttributesRequest],
                 updateUnderscoremask: Option[Seq[UpdateMaskFieldType]]
                 )
 

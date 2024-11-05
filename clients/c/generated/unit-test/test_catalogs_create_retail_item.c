@@ -16,7 +16,7 @@
 #include "../model/catalogs_create_retail_item.h"
 catalogs_create_retail_item_t* instantiate_catalogs_create_retail_item(int include_optional);
 
-#include "test_item_attributes.c"
+#include "test_item_attributes_request.c"
 
 
 catalogs_create_retail_item_t* instantiate_catalogs_create_retail_item(int include_optional) {
@@ -26,7 +26,7 @@ catalogs_create_retail_item_t* instantiate_catalogs_create_retail_item(int inclu
       "DS0294-M",
       pinterest_rest_api_catalogs_create_retail_item_OPERATION_CREATE,
        // false, not to have infinite recursion
-      instantiate_item_attributes(0)
+      instantiate_item_attributes_request(0)
     );
   } else {
     catalogs_create_retail_item = catalogs_create_retail_item_create(

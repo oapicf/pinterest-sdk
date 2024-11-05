@@ -10,13 +10,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
+import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
-import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.CatalogsProductGroupStatus;
 import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
 import java.util.NoSuchElementException;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -34,13 +34,15 @@ import javax.annotation.Generated;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroup.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroup.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailProductGroup.class, name = "RETAIL"),
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroup.class, name = "CatalogsCreativeAssetsProductGroup"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroup.class, name = "CatalogsHotelProductGroup"),
   @JsonSubTypes.Type(value = CatalogsRetailProductGroup.class, name = "CatalogsRetailProductGroup")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
-public interface CatalogsVerticalProductGroup extends CatalogsProductGroupsCreate201Response {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public interface CatalogsVerticalProductGroup {
     public String getCatalogType();
 }

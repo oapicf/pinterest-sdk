@@ -19,7 +19,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Schema for log sent from an integration application.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-03-14T23:02:40.880156196Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2024-11-05T02:04:39.133647094Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IntegrationLog   {
   @JsonProperty("client_timestamp")
   private Integer clientTimestamp;
@@ -129,10 +129,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Timestamp in milliseconds of when the log was executed at the client.
    * @return clientTimestamp
-  **/
+   */
   @ApiModelProperty(required = true, value = "Timestamp in milliseconds of when the log was executed at the client.")
   public Integer getClientTimestamp() {
     return clientTimestamp;
@@ -147,10 +147,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Log event type
    * @return eventType
-  **/
+   */
   @ApiModelProperty(required = true, value = "Log event type")
   public EventTypeEnum getEventType() {
     return eventType;
@@ -165,10 +165,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Log level type
    * @return logLevel
-  **/
+   */
   @ApiModelProperty(required = true, value = "Log level type")
   public LogLevelEnum getLogLevel() {
     return logLevel;
@@ -183,10 +183,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Get externalBusinessId
    * @return externalBusinessId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getExternalBusinessId() {
     return externalBusinessId;
@@ -201,10 +201,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Get advertiserId
    * @return advertiserId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAdvertiserId() {
     return advertiserId;
@@ -219,10 +219,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Get merchantId
    * @return merchantId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getMerchantId() {
     return merchantId;
@@ -237,10 +237,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Get tagId
    * @return tagId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getTagId() {
     return tagId;
@@ -255,10 +255,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Get feedProfileId
    * @return feedProfileId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getFeedProfileId() {
     return feedProfileId;
@@ -273,10 +273,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Explanation of the event that occured.
    * @return message
-  **/
+   */
   @ApiModelProperty(value = "Explanation of the event that occured.")
   public String getMessage() {
     return message;
@@ -291,10 +291,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Version number of the integration application.
    * @return appVersionNumber
-  **/
+   */
   @ApiModelProperty(value = "Version number of the integration application.")
   public String getAppVersionNumber() {
     return appVersionNumber;
@@ -309,10 +309,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Version number of the platform the integration application is running on.
    * @return platformVersionNumber
-  **/
+   */
   @ApiModelProperty(value = "Version number of the platform the integration application is running on.")
   public String getPlatformVersionNumber() {
     return platformVersionNumber;
@@ -327,10 +327,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Get error
    * @return error
-  **/
+   */
   @ApiModelProperty(value = "")
   public IntegrationLogClientError getError() {
     return error;
@@ -345,10 +345,10 @@ public class IntegrationLog   {
     return this;
   }
 
-   /**
+  /**
    * Get request
    * @return request
-  **/
+   */
   @ApiModelProperty(value = "")
   public IntegrationLogClientRequest getRequest() {
     return request;

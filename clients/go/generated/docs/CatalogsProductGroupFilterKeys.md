@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  | 
+**MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | 
 **PRODUCTTYPE4** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **PRODUCTTYPE3** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **PRODUCTTYPE2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
@@ -30,12 +31,13 @@ Name | Type | Description | Notes
 **GOOGLEPRODUCTCATEGORY2** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
+**PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Methods
 
 ### NewCatalogsProductGroupFilterKeys
 
-`func NewCatalogsProductGroupFilterKeys(mINPRICE CatalogsProductGroupPricingCriteria, mAXPRICE CatalogsProductGroupPricingCriteria, cURRENCY CatalogsProductGroupCurrencyCriteria, iTEMID CatalogsProductGroupMultipleStringCriteria, aVAILABILITY CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cONDITION CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL2 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria, iTEMGROUPID CatalogsProductGroupMultipleStringCriteria, gENDER CatalogsProductGroupMultipleGenderCriteria, pRODUCTTYPE4 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, ) *CatalogsProductGroupFilterKeys`
+`func NewCatalogsProductGroupFilterKeys(mINPRICE CatalogsProductGroupPricingCriteria, mAXPRICE CatalogsProductGroupPricingCriteria, cURRENCY CatalogsProductGroupCurrencyCriteria, iTEMID CatalogsProductGroupMultipleStringCriteria, aVAILABILITY CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cONDITION CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL2 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria, iTEMGROUPID CatalogsProductGroupMultipleStringCriteria, gENDER CatalogsProductGroupMultipleGenderCriteria, mEDIATYPE CatalogsProductGroupMultipleMediaTypesCriteria, pRODUCTTYPE4 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, pRODUCTGROUP CatalogsProductGroupMultipleStringCriteria, ) *CatalogsProductGroupFilterKeys`
 
 NewCatalogsProductGroupFilterKeys instantiates a new CatalogsProductGroupFilterKeys object
 This constructor will assign default values to properties that have it defined,
@@ -330,6 +332,26 @@ and a boolean to check if the value has been set.
 SetGENDER sets GENDER field to given value.
 
 
+### GetMEDIA_TYPE
+
+`func (o *CatalogsProductGroupFilterKeys) GetMEDIA_TYPE() CatalogsProductGroupMultipleMediaTypesCriteria`
+
+GetMEDIA_TYPE returns the MEDIA_TYPE field if non-nil, zero value otherwise.
+
+### GetMEDIA_TYPEOk
+
+`func (o *CatalogsProductGroupFilterKeys) GetMEDIA_TYPEOk() (*CatalogsProductGroupMultipleMediaTypesCriteria, bool)`
+
+GetMEDIA_TYPEOk returns a tuple with the MEDIA_TYPE field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMEDIA_TYPE
+
+`func (o *CatalogsProductGroupFilterKeys) SetMEDIA_TYPE(v CatalogsProductGroupMultipleMediaTypesCriteria)`
+
+SetMEDIA_TYPE sets MEDIA_TYPE field to given value.
+
+
 ### GetPRODUCTTYPE4
 
 `func (o *CatalogsProductGroupFilterKeys) GetPRODUCTTYPE4() CatalogsProductGroupMultipleStringListCriteria`
@@ -568,6 +590,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsProductGroupFilterKeys) SetGOOGLEPRODUCTCATEGORY0(v CatalogsProductGroupMultipleStringListCriteria)`
 
 SetGOOGLEPRODUCTCATEGORY0 sets GOOGLEPRODUCTCATEGORY0 field to given value.
+
+
+### GetPRODUCT_GROUP
+
+`func (o *CatalogsProductGroupFilterKeys) GetPRODUCT_GROUP() CatalogsProductGroupMultipleStringCriteria`
+
+GetPRODUCT_GROUP returns the PRODUCT_GROUP field if non-nil, zero value otherwise.
+
+### GetPRODUCT_GROUPOk
+
+`func (o *CatalogsProductGroupFilterKeys) GetPRODUCT_GROUPOk() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+
+GetPRODUCT_GROUPOk returns a tuple with the PRODUCT_GROUP field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPRODUCT_GROUP
+
+`func (o *CatalogsProductGroupFilterKeys) SetPRODUCT_GROUP(v CatalogsProductGroupMultipleStringCriteria)`
+
+SetPRODUCT_GROUP sets PRODUCT_GROUP field to given value.
 
 
 

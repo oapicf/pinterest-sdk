@@ -57,5 +57,8 @@ data class SSIOAccountResponse (
     @Json(name = "error")
     val error: kotlin.String? = null
 
-)
+) {
+
+
+}
 

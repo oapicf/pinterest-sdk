@@ -14,7 +14,9 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsVerticalProductGroupUpdateRequest.openapi_one_of
 # =>
 # [
-#   :'CatalogsHotelProductGroupUpdateRequest'
+#   :'CatalogsCreativeAssetsProductGroupUpdateRequest',
+#   :'CatalogsHotelProductGroupUpdateRequest',
+#   :'CatalogsRetailProductGroupUpdateRequest'
 # ]
 ```
 
@@ -43,7 +45,9 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsVerticalProductGroupUpdateRequest.openapi_discriminator_mapping
 # =>
 # {
-#   :'HOTEL' => :'CatalogsHotelProductGroupUpdateRequest'
+#   :'CREATIVE_ASSETS' => :'CatalogsCreativeAssetsProductGroupUpdateRequest',
+#   :'HOTEL' => :'CatalogsHotelProductGroupUpdateRequest',
+#   :'RETAIL' => :'CatalogsRetailProductGroupUpdateRequest'
 # }
 ```
 
@@ -57,7 +61,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::CatalogsVerticalProductGroupUpdateRequest.build(data)
-# => #<CatalogsHotelProductGroupUpdateRequest:0x00007fdd4aab02a0>
+# => #<CatalogsCreativeAssetsProductGroupUpdateRequest:0x00007fdd4aab02a0>
 
 PinterestSdkClient::CatalogsVerticalProductGroupUpdateRequest.build(data_that_doesnt_match)
 # => nil
@@ -71,6 +75,8 @@ PinterestSdkClient::CatalogsVerticalProductGroupUpdateRequest.build(data_that_do
 
 #### Return type
 
+- `CatalogsCreativeAssetsProductGroupUpdateRequest`
 - `CatalogsHotelProductGroupUpdateRequest`
+- `CatalogsRetailProductGroupUpdateRequest`
 - `nil` (if no type matches)
 

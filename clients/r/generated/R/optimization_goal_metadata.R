@@ -19,8 +19,7 @@ OptimizationGoalMetadata <- R6::R6Class(
     `conversion_tag_v3_goal_metadata` = NULL,
     `frequency_goal_metadata` = NULL,
     `scrollup_goal_metadata` = NULL,
-    #' Initialize a new OptimizationGoalMetadata class.
-    #'
+
     #' @description
     #' Initialize a new OptimizationGoalMetadata class.
     #'
@@ -28,7 +27,6 @@ OptimizationGoalMetadata <- R6::R6Class(
     #' @param frequency_goal_metadata frequency_goal_metadata
     #' @param scrollup_goal_metadata scrollup_goal_metadata
     #' @param ... Other optional arguments.
-    #' @export
     initialize = function(`conversion_tag_v3_goal_metadata` = NULL, `frequency_goal_metadata` = NULL, `scrollup_goal_metadata` = NULL, ...) {
       if (!is.null(`conversion_tag_v3_goal_metadata`)) {
         stopifnot(R6::is.R6(`conversion_tag_v3_goal_metadata`))
@@ -43,13 +41,11 @@ OptimizationGoalMetadata <- R6::R6Class(
         self$`scrollup_goal_metadata` <- `scrollup_goal_metadata`
       }
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OptimizationGoalMetadata in JSON format
-    #' @export
     toJSON = function() {
       OptimizationGoalMetadataObject <- list()
       if (!is.null(self$`conversion_tag_v3_goal_metadata`)) {
@@ -66,14 +62,12 @@ OptimizationGoalMetadata <- R6::R6Class(
       }
       OptimizationGoalMetadataObject
     },
-    #' Deserialize JSON string into an instance of OptimizationGoalMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OptimizationGoalMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of OptimizationGoalMetadata
-    #' @export
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`conversion_tag_v3_goal_metadata`)) {
@@ -93,13 +87,11 @@ OptimizationGoalMetadata <- R6::R6Class(
       }
       self
     },
-    #' To JSON string
-    #'
+
     #' @description
     #' To JSON String
     #'
     #' @return OptimizationGoalMetadata in JSON format
-    #' @export
     toJSONString = function() {
       jsoncontent <- c(
         if (!is.null(self$`conversion_tag_v3_goal_metadata`)) {
@@ -130,14 +122,12 @@ OptimizationGoalMetadata <- R6::R6Class(
       jsoncontent <- paste(jsoncontent, collapse = ",")
       json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
     },
-    #' Deserialize JSON string into an instance of OptimizationGoalMetadata
-    #'
+
     #' @description
     #' Deserialize JSON string into an instance of OptimizationGoalMetadata
     #'
     #' @param input_json the JSON input
     #' @return the instance of OptimizationGoalMetadata
-    #' @export
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`conversion_tag_v3_goal_metadata` <- OptimizationGoalMetadataConversionTagV3GoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`conversion_tag_v3_goal_metadata`, auto_unbox = TRUE, digits = NA))
@@ -145,53 +135,42 @@ OptimizationGoalMetadata <- R6::R6Class(
       self$`scrollup_goal_metadata` <- OptimizationGoalMetadataScrollupGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`scrollup_goal_metadata`, auto_unbox = TRUE, digits = NA))
       self
     },
-    #' Validate JSON input with respect to OptimizationGoalMetadata
-    #'
+
     #' @description
     #' Validate JSON input with respect to OptimizationGoalMetadata and throw an exception if invalid
     #'
     #' @param input the JSON input
-    #' @export
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
     },
-    #' To string (JSON format)
-    #'
+
     #' @description
     #' To string (JSON format)
     #'
     #' @return String representation of OptimizationGoalMetadata
-    #' @export
     toString = function() {
       self$toJSONString()
     },
-    #' Return true if the values in all fields are valid.
-    #'
+
     #' @description
     #' Return true if the values in all fields are valid.
     #'
     #' @return true if the values in all fields are valid.
-    #' @export
     isValid = function() {
       TRUE
     },
-    #' Return a list of invalid fields (if any).
-    #'
+
     #' @description
     #' Return a list of invalid fields (if any).
     #'
     #' @return A list of invalid fields (if any).
-    #' @export
     getInvalidFields = function() {
       invalid_fields <- list()
       invalid_fields
     },
-    #' Print the object
-    #'
+
     #' @description
     #' Print the object
-    #'
-    #' @export
     print = function() {
       print(jsonlite::prettify(self$toJSONString()))
       invisible(self)

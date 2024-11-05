@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Media** | Pointer to [**SummaryPinMedia**](SummaryPinMedia.md) |  | [optional] 
+**Media** | Pointer to [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **AltText** | Pointer to **NullableString** |  | [optional] 
 **Link** | Pointer to **NullableString** |  | [optional] 
 **Title** | Pointer to **NullableString** |  | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMedia
 
-`func (o *SummaryPin) GetMedia() SummaryPinMedia`
+`func (o *SummaryPin) GetMedia() PinMedia`
 
 GetMedia returns the Media field if non-nil, zero value otherwise.
 
 ### GetMediaOk
 
-`func (o *SummaryPin) GetMediaOk() (*SummaryPinMedia, bool)`
+`func (o *SummaryPin) GetMediaOk() (*PinMedia, bool)`
 
 GetMediaOk returns a tuple with the Media field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedia
 
-`func (o *SummaryPin) SetMedia(v SummaryPinMedia)`
+`func (o *SummaryPin) SetMedia(v PinMedia)`
 
 SetMedia sets Media field to given value.
 

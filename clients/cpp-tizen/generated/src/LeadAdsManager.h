@@ -30,7 +30,7 @@ public:
 
 /*! \brief Delete lead ads subscription. *Synchronous*
  *
- * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param subscriptionId Unique identifier of a subscription. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -44,7 +44,7 @@ bool adAccountsSubscriptionsDelByIdSync(char * accessToken,
 
 /*! \brief Delete lead ads subscription. *Asynchronous*
  *
- * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param subscriptionId Unique identifier of a subscription. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -59,7 +59,7 @@ bool adAccountsSubscriptionsDelByIdAsync(char * accessToken,
 
 /*! \brief Get lead ads subscription. *Synchronous*
  *
- * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param subscriptionId Unique identifier of a subscription. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -73,7 +73,7 @@ bool adAccountsSubscriptionsGetByIdSync(char * accessToken,
 
 /*! \brief Get lead ads subscription. *Asynchronous*
  *
- * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param subscriptionId Unique identifier of a subscription. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -88,9 +88,9 @@ bool adAccountsSubscriptionsGetByIdAsync(char * accessToken,
 
 /*! \brief Get lead ads subscriptions. *Synchronous*
  *
- * Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param bookmark Cursor used to fetch the next page of items
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -103,9 +103,9 @@ bool adAccountsSubscriptionsGetListSync(char * accessToken,
 
 /*! \brief Get lead ads subscriptions. *Asynchronous*
  *
- * Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
- * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information.
+ * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param bookmark Cursor used to fetch the next page of items
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -119,7 +119,7 @@ bool adAccountsSubscriptionsGetListAsync(char * accessToken,
 
 /*! \brief Create lead ads subscription. *Synchronous*
  *
- * Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param adAccountCreateSubscriptionRequest Subscription to create. *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -133,7 +133,7 @@ bool adAccountsSubscriptionsPostSync(char * accessToken,
 
 /*! \brief Create lead ads subscription. *Asynchronous*
  *
- * Create a lead ads webhook subscription. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>
+ * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param adAccountCreateSubscriptionRequest Subscription to create. *Required*
  * \param handler The callback function to be invoked on completion. *Required*

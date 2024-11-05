@@ -12,7 +12,7 @@ import javax.validation.Valid;
 /**
  * OptimizationGoalMetadataConversionTagV3GoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-03-14T23:02:53.026613321Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2024-11-05T02:05:01.869958855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   @JsonProperty("attribution_windows")
@@ -91,9 +91,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   public enum LearningModeTypeEnum {
     NOT_ACTIVE("NOT_ACTIVE"),
     
-    ACTIVE("ACTIVE"),
-    
-    NULL("null");
+    ACTIVE("ACTIVE");
 
     private final String value;
 
@@ -196,7 +194,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata   {
   }
 
    /**
-   * Ad group is ROAS optimized
+   * ROAS optimization is not supported
    * @return isRoasOptimized
   **/
   public Boolean getIsRoasOptimized() {

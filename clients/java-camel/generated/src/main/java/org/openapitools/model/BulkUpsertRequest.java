@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertRequest", description = "Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BulkUpsertRequest {
 
   private BulkUpsertRequestCreate create;
@@ -36,7 +36,7 @@ public class BulkUpsertRequest {
   /**
    * Get create
    * @return create
-  */
+   */
   @Valid 
   @Schema(name = "create", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("create")
@@ -56,7 +56,7 @@ public class BulkUpsertRequest {
   /**
    * Get update
    * @return update
-  */
+   */
   @Valid 
   @Schema(name = "update", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("update")

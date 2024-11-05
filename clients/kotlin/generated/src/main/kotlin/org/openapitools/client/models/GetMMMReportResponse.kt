@@ -44,5 +44,8 @@ data class GetMMMReportResponse (
     @Json(name = "status")
     val status: kotlin.String? = null
 
-)
+) {
+
+
+}
 

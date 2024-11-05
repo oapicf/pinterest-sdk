@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -16,14 +17,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * The enhanced match status of the tag
-* Values: UNKNOWN,NOT_VALIDATED,VALIDATING_IN_PROGRESS,VALIDATION_COMPLETE,`null`
+* Values: UNKNOWN,NOT_VALIDATED,VALIDATING_IN_PROGRESS,VALIDATION_COMPLETE
 */
-enum class EnhancedMatchStatusType(val value: kotlin.String) {
+enum class EnhancedMatchStatusType(@get:JsonValue val value: kotlin.String) {
 
-    @JsonProperty("UNKNOWN") UNKNOWN("UNKNOWN"),
-    @JsonProperty("NOT_VALIDATED") NOT_VALIDATED("NOT_VALIDATED"),
-    @JsonProperty("VALIDATING_IN_PROGRESS") VALIDATING_IN_PROGRESS("VALIDATING_IN_PROGRESS"),
-    @JsonProperty("VALIDATION_COMPLETE") VALIDATION_COMPLETE("VALIDATION_COMPLETE"),
-    @JsonProperty("null") `null`("null")
+    UNKNOWN("UNKNOWN"),
+    NOT_VALIDATED("NOT_VALIDATED"),
+    VALIDATING_IN_PROGRESS("VALIDATING_IN_PROGRESS"),
+    VALIDATION_COMPLETE("VALIDATION_COMPLETE");
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun forValue(value: kotlin.String): EnhancedMatchStatusType {
+                return values().first{it -> it.value == value}
+        }
+    }
 }
 

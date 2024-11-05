@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * ConditionFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-03-14T23:03:40.689435566Z[Etc/UTC]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2024-11-05T02:06:27.403847795Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConditionFilter {
 
   private CatalogsProductGroupMultipleStringCriteria CONDITION;
@@ -43,7 +43,7 @@ public class ConditionFilter {
   /**
    * Get CONDITION
    * @return CONDITION
-  */
+   */
   @NotNull @Valid 
   @Schema(name = "CONDITION", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("CONDITION")

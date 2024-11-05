@@ -40,9 +40,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 NSNumber* explicitFollowing = @(NO); // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to @(NO))
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
@@ -68,7 +71,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **explicitFollowing** | **NSNumber***| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to @(NO)]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
@@ -78,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -96,7 +99,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/new/about-beta-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```objc
@@ -164,9 +167,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
@@ -188,7 +194,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -196,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -220,6 +226,9 @@ Get a list of your linked business accounts.
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -247,7 +256,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -427,6 +436,9 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
@@ -489,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -524,6 +536,9 @@ Gets analytics data about a user's top video pins (limited to the top 50). - By 
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -588,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -616,10 +631,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* username = username; // A valid username
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
@@ -643,7 +661,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **NSString***| A valid username | 
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -651,7 +669,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -668,13 +686,16 @@ Name | Type | Description  | Notes
 
 Get user account
 
-Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/reference/business-access/'>Understanding Business Access</a> for more information.
+Get account information for the \"operation user_account\" - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
 ### Example
 ```objc
 OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 
@@ -706,7 +727,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -736,9 +757,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 OAIUserFollowingFeedType feedType = [[OAIUserFollowingFeedType alloc] init]; // Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
 NSNumber* explicitFollowing = @(NO); // Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional) (default to @(NO))
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
@@ -766,7 +790,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
  **feedType** | **OAIUserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] 
  **explicitFollowing** | **NSNumber***| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to @(NO)]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
@@ -777,7 +801,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -806,7 +830,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* bookmark = @"bookmark_example"; // Cursor used to fetch the next page of items (optional)
-NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/getting-started/pagination/'>Pagination</a> for more information. (optional) (default to @25)
+NSNumber* pageSize = @25; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to @25)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
@@ -828,7 +852,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **NSString***| Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/getting-started/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
+ **pageSize** | **NSNumber***| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to @25]
 
 ### Return type
 
@@ -848,6 +872,7 @@ Name | Type | Description  | Notes
 # **verifyWebsiteUpdate**
 ```objc
 -(NSURLSessionTask*) verifyWebsiteUpdateWithUserWebsiteVerifyRequest: (OAIUserWebsiteVerifyRequest*) userWebsiteVerifyRequest
+    adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(OAIUserWebsiteSummary* output, NSError* error)) handler;
 ```
 
@@ -864,11 +889,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 OAIUserWebsiteVerifyRequest* userWebsiteVerifyRequest = [[OAIUserWebsiteVerifyRequest alloc] init]; // Verify a website.
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // Verify website
 [apiInstance verifyWebsiteUpdateWithUserWebsiteVerifyRequest:userWebsiteVerifyRequest
+              adAccountId:adAccountId
           completionHandler: ^(OAIUserWebsiteSummary* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -884,6 +911,7 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userWebsiteVerifyRequest** | [**OAIUserWebsiteVerifyRequest***](OAIUserWebsiteVerifyRequest.md)| Verify a website. | 
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -902,8 +930,8 @@ Name | Type | Description  | Notes
 
 # **websiteVerificationGet**
 ```objc
--(NSURLSessionTask*) websiteVerificationGetWithCompletionHandler: 
-        (void (^)(OAIUserWebsiteVerificationCode* output, NSError* error)) handler;
+-(NSURLSessionTask*) websiteVerificationGetWithAdAccountId: (NSString*) adAccountId
+        completionHandler: (void (^)(OAIUserWebsiteVerificationCode* output, NSError* error)) handler;
 ```
 
 Get user verification code for website claiming
@@ -917,13 +945,17 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 // Configure OAuth2 access token for authorization: (authentication scheme: pinterest_oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+// Configure OAuth2 access token for authorization: (authentication scheme: client_credentials)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+
+NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
 OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 
 // Get user verification code for website claiming
-[apiInstance websiteVerificationGetWithCompletionHandler: 
-          ^(OAIUserWebsiteVerificationCode* output, NSError* error) {
+[apiInstance websiteVerificationGetWithAdAccountId:adAccountId
+          completionHandler: ^(OAIUserWebsiteVerificationCode* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -934,7 +966,10 @@ OAIUserAccountApi*apiInstance = [[OAIUserAccountApi alloc] init];
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
@@ -942,7 +977,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
